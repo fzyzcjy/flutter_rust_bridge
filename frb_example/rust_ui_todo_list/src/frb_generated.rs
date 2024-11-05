@@ -46,6 +46,90 @@ flutter_rust_bridge::frb_generated_default_handler!();
 
 // Section: wire_funcs
 
+fn wire__crate__frb_generated__BaseRustState_create_notify_ui_stream_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "BaseRustState_create_notify_ui_stream",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_that = <RustOpaqueMoi<
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BaseRustState>,
+            >>::sse_decode(&mut deserializer);
+            let api_sink =
+                <StreamSink<(), flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(
+                    &mut deserializer,
+                );
+            deserializer.end();
+            transform_result_sse::<_, ()>((move || {
+                let mut api_that_guard = None;
+                let decode_indices_ =
+                    flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
+                        flutter_rust_bridge::for_generated::LockableOrderInfo::new(
+                            &api_that, 0, true,
+                        ),
+                    ]);
+                for i in decode_indices_ {
+                    match i {
+                        0 => api_that_guard = Some(api_that.lockable_decode_sync_ref_mut()),
+                        _ => unreachable!(),
+                    }
+                }
+                let mut api_that_guard = api_that_guard.unwrap();
+                let output_ok = Result::<_, ()>::Ok({
+                    crate::frb_generated::BaseRustState::create_notify_ui_stream(
+                        &mut *api_that_guard,
+                        api_sink,
+                    );
+                })?;
+                Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__frb_generated__BaseRustState_empty_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "BaseRustState_empty",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end();
+            transform_result_sse::<_, ()>((move || {
+                let output_ok = Result::<_, ()>::Ok(crate::frb_generated::BaseRustState::empty())?;
+                Ok(output_ok)
+            })())
+        },
+    )
+}
 fn wire__crate__app__RustState_add_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -516,90 +600,6 @@ fn wire__crate__app__RustState_toggle_impl(
         },
     )
 }
-fn wire__crate__frb_generated__BaseRustState_create_notify_ui_stream_impl(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "BaseRustState_create_notify_ui_stream",
-            port: None,
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BaseRustState>,
-            >>::sse_decode(&mut deserializer);
-            let api_sink =
-                <StreamSink<(), flutter_rust_bridge::for_generated::SseCodec>>::sse_decode(
-                    &mut deserializer,
-                );
-            deserializer.end();
-            transform_result_sse::<_, ()>((move || {
-                let mut api_that_guard = None;
-                let decode_indices_ =
-                    flutter_rust_bridge::for_generated::lockable_compute_decode_order(vec![
-                        flutter_rust_bridge::for_generated::LockableOrderInfo::new(
-                            &api_that, 0, true,
-                        ),
-                    ]);
-                for i in decode_indices_ {
-                    match i {
-                        0 => api_that_guard = Some(api_that.lockable_decode_sync_ref_mut()),
-                        _ => unreachable!(),
-                    }
-                }
-                let mut api_that_guard = api_that_guard.unwrap();
-                let output_ok = Result::<_, ()>::Ok({
-                    crate::frb_generated::BaseRustState::create_notify_ui_stream(
-                        &mut *api_that_guard,
-                        api_sink,
-                    );
-                })?;
-                Ok(output_ok)
-            })())
-        },
-    )
-}
-fn wire__crate__frb_generated__BaseRustState_empty_impl(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "BaseRustState_empty",
-            port: None,
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            deserializer.end();
-            transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(crate::frb_generated::BaseRustState::empty())?;
-                Ok(output_ok)
-            })())
-        },
-    )
-}
 
 // Section: related_funcs
 
@@ -813,30 +813,30 @@ fn pde_ffi_dispatcher_sync_impl(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
-        1 => wire__crate__app__RustState_add_impl(ptr, rust_vec_len, data_len),
-        2 => wire__crate__app__RustState_auto_accessor_get_filter_impl(ptr, rust_vec_len, data_len),
-        3 => wire__crate__app__RustState_auto_accessor_get_input_text_impl(
+        1 => wire__crate__frb_generated__BaseRustState_create_notify_ui_stream_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        4 => wire__crate__app__RustState_auto_accessor_set_filter_impl(ptr, rust_vec_len, data_len),
-        5 => wire__crate__app__RustState_auto_accessor_set_input_text_impl(
+        2 => wire__crate__frb_generated__BaseRustState_empty_impl(ptr, rust_vec_len, data_len),
+        3 => wire__crate__app__RustState_add_impl(ptr, rust_vec_len, data_len),
+        4 => wire__crate__app__RustState_auto_accessor_get_filter_impl(ptr, rust_vec_len, data_len),
+        5 => wire__crate__app__RustState_auto_accessor_get_input_text_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        6 => wire__crate__app__RustState_filtered_items_impl(ptr, rust_vec_len, data_len),
-        7 => wire__crate__app__RustState_new_impl(ptr, rust_vec_len, data_len),
-        8 => wire__crate__app__RustState_remove_impl(ptr, rust_vec_len, data_len),
-        9 => wire__crate__app__RustState_set_base_state_impl(ptr, rust_vec_len, data_len),
-        10 => wire__crate__app__RustState_toggle_impl(ptr, rust_vec_len, data_len),
-        11 => wire__crate__frb_generated__BaseRustState_create_notify_ui_stream_impl(
+        6 => wire__crate__app__RustState_auto_accessor_set_filter_impl(ptr, rust_vec_len, data_len),
+        7 => wire__crate__app__RustState_auto_accessor_set_input_text_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        12 => wire__crate__frb_generated__BaseRustState_empty_impl(ptr, rust_vec_len, data_len),
+        8 => wire__crate__app__RustState_filtered_items_impl(ptr, rust_vec_len, data_len),
+        9 => wire__crate__app__RustState_new_impl(ptr, rust_vec_len, data_len),
+        10 => wire__crate__app__RustState_remove_impl(ptr, rust_vec_len, data_len),
+        11 => wire__crate__app__RustState_set_base_state_impl(ptr, rust_vec_len, data_len),
+        12 => wire__crate__app__RustState_toggle_impl(ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
