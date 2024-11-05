@@ -1,5 +1,6 @@
 use crate::command_run;
 use crate::commands::command_runner::call_shell;
+use crate::library::commands::fvm::command_arg_maybe_fvm;
 use crate::utils::dart_repository::dart_repo::DartRepository;
 use anyhow::bail;
 use log::debug;
@@ -12,6 +13,7 @@ pub fn dart_build_runner(dart_root: &Path) -> anyhow::Result<()> {
     let repo = DartRepository::from_path(dart_root).unwrap();
     let out = command_run!(
         call_shell[Some(dart_root), Some(dart_run_extra_env())],
+        ?command_arg_maybe_fvm(dart_root),
         *repo.toolchain.as_run_command(),
         *repo.command_extra_args(),
         "run",

@@ -1,6 +1,7 @@
 use crate::command_run;
 use crate::commands::command_runner::call_shell;
 use crate::library::commands::command_runner::check_exit_code;
+use crate::library::commands::fvm::command_arg_maybe_fvm;
 use crate::utils::path_utils::{normalize_windows_unc_path, path_to_string};
 use anyhow::Context;
 use itertools::Itertools;
@@ -24,6 +25,7 @@ pub fn dart_format(
 
     let res = command_run!(
         call_shell[Some(base_path), None],
+        ?command_arg_maybe_fvm(base_path),
         "dart",
         "format",
         "--line-length",
