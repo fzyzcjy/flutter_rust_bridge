@@ -254,8 +254,7 @@ fn generate_redirect_body(func: &MirFunc, params: &[ExternFuncParam]) -> String 
 }
 
 pub(crate) fn wire_func_name(func: &MirFunc) -> String {
-    let name = &func.name;
-    format!("wire__{}__{}", name.namespace.safe_ident(), name.name)
+    format!("wire__{}__{}", func.namespace.safe_ident(), &func.name.name)
 }
 
 fn ffi_call_mode(mode: MirFuncMode) -> &'static str {
