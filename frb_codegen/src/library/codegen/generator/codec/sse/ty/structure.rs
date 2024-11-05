@@ -84,7 +84,7 @@ impl<'a> GeneralizedStructGenerator<'a> {
                     self.context.as_api_dart_context(),
                 ),
                 &(self.st.fields.iter())
-                    .map(|x| x.name.style(lang))
+                    .map(|x| x.name.style(lang, false))
                     .collect_vec(),
                 &(self.st.fields.iter())
                     .map(|x| format!("var_{}", x.name.dart_style().clone()))
