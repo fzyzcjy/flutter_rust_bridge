@@ -387,7 +387,7 @@ More specifically, thanks for all these contributions:
 * [patmuk](https://github.com/patmuk): Set MSRV. Fail fast. Improve message. Support relative config. Improve multiple docs. Fix warning.
 * [banool](https://github.com/banool): Fix pubspec parsing. Fix symbol-stripping doc.
 * [AlexV525](https://github.com/AlexV525): Add Dart fix. Fix folder.
-* [anlumo](https://github.com/anlumo): Fix freezed + methods. Non-clone RustOpaque.
+* [anlumo](https://github.com/anlumo): Fix freezed + methods. Non-clone RustOpaque. Update syn.
 * [temeddix](https://github.com/temeddix): Fix broken CI. Custom num workers. Fix MacOS doc steps. Update doc. Make zero-copy defaultable.
 * [NightFeather0615](https://github.com/NightFeather0615): Fix Vec bool.
 * [fmeef](https://github.com/fmeef): Add cargo feature flag.
