@@ -19,8 +19,8 @@ class StructWithRawNameField {
     required this.type,
   });
 
-  static Future<StructWithRawNameField> default_() =>
-      RustLib.instance.api.crateApiMinimalStructWithRawNameFieldDefault();
+  static Future<void> dummyFunction() =>
+      RustLib.instance.api.crateApiMinimalStructWithRawNameFieldDummyFunction();
 
   @override
   int get hashCode => type.hashCode;

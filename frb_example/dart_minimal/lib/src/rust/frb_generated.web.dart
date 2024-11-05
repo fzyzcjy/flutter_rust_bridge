@@ -61,6 +61,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
+  int cst_encode_i_32(int raw);
+
+  @protected
+  void cst_encode_unit(void raw);
+
+  @protected
   void sse_encode_String(String self, SseSerializer serializer);
 
   @protected
@@ -88,6 +94,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
 class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
+
+  void wire__crate__api__minimal__for(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire__crate__api__minimal__for(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__minimal__init_app(NativePortType port_) =>
+      wasmModule.wire__crate__api__minimal__init_app(port_);
+
+  void wire__crate__api__minimal__minimal_adder(
+          NativePortType port_, int a, int b) =>
+      wasmModule.wire__crate__api__minimal__minimal_adder(port_, a, b);
+
+  void wire__crate__api__minimal__struct_with_raw_name_field_dummy_function(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__minimal__struct_with_raw_name_field_dummy_function(
+              port_, ptr_, rust_vec_len_, data_len_);
 }
 
 @JS('wasm_bindgen')
@@ -95,4 +125,19 @@ external RustLibWasmModule get wasmModule;
 
 @JS()
 @anonymous
-extension type RustLibWasmModule._(JSObject _) implements JSObject {}
+extension type RustLibWasmModule._(JSObject _) implements JSObject {
+  external void wire__crate__api__minimal__for(NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
+
+  external void wire__crate__api__minimal__init_app(NativePortType port_);
+
+  external void wire__crate__api__minimal__minimal_adder(
+      NativePortType port_, int a, int b);
+
+  external void
+      wire__crate__api__minimal__struct_with_raw_name_field_dummy_function(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+}

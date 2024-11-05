@@ -68,7 +68,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.5.1';
 
   @override
-  int get rustContentHash => 283146804;
+  int get rustContentHash => -2086848367;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -85,7 +85,7 @@ abstract class RustLibApi extends BaseApi {
 
   Future<int> crateApiMinimalMinimalAdder({required int a, required int b});
 
-  Future<StructWithRawNameField> crateApiMinimalStructWithRawNameFieldDefault();
+  Future<void> crateApiMinimalStructWithRawNameFieldDummyFunction();
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -102,8 +102,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_String(type, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1, port: port_);
+        final raw_ = serializer.intoRaw();
+        return wire.wire__crate__api__minimal__for(
+            port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -124,12 +125,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<void> crateApiMinimalInitApp() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 2, port: port_);
+        return wire.wire__crate__api__minimal__init_app(port_);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_unit,
         decodeErrorData: null,
       ),
       constMeta: kCrateApiMinimalInitAppConstMeta,
@@ -147,14 +146,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   Future<int> crateApiMinimalMinimalAdder({required int a, required int b}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_i_32(a, serializer);
-        sse_encode_i_32(b, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 3, port: port_);
+        var arg0 = cst_encode_i_32(a);
+        var arg1 = cst_encode_i_32(b);
+        return wire.wire__crate__api__minimal__minimal_adder(port_, arg0, arg1);
       },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_i_32,
+      codec: DcoCodec(
+        decodeSuccessData: dco_decode_i_32,
         decodeErrorData: null,
       ),
       constMeta: kCrateApiMinimalMinimalAdderConstMeta,
@@ -170,29 +167,31 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<StructWithRawNameField>
-      crateApiMinimalStructWithRawNameFieldDefault() {
+  Future<void> crateApiMinimalStructWithRawNameFieldDummyFunction() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 4, port: port_);
+        final raw_ = serializer.intoRaw();
+        return wire
+            .wire__crate__api__minimal__struct_with_raw_name_field_dummy_function(
+                port_, raw_.ptr, raw_.rustVecLen, raw_.dataLen);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_struct_with_raw_name_field,
+        decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiMinimalStructWithRawNameFieldDefaultConstMeta,
+      constMeta: kCrateApiMinimalStructWithRawNameFieldDummyFunctionConstMeta,
       argValues: [],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiMinimalStructWithRawNameFieldDefaultConstMeta =>
-      const TaskConstMeta(
-        debugName: "struct_with_raw_name_field_default",
-        argNames: [],
-      );
+  TaskConstMeta
+      get kCrateApiMinimalStructWithRawNameFieldDummyFunctionConstMeta =>
+          const TaskConstMeta(
+            debugName: "struct_with_raw_name_field_dummy_function",
+            argNames: [],
+          );
 
   @protected
   String dco_decode_String(dynamic raw) {
@@ -278,6 +277,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   bool sse_decode_bool(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getUint8() != 0;
+  }
+
+  @protected
+  int cst_encode_i_32(int raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
+  void cst_encode_unit(void raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw;
   }
 
   @protected
