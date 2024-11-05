@@ -28,9 +28,9 @@ struct WireSyncRust2DartSse frb_pde_ffi_dispatcher_sync(int32_t func_id,
                                                         int32_t data_len_);
 
 void frb_dart_fn_deliver_output(int32_t call_id,
-                            uint8_t *ptr_,
-                            int32_t rust_vec_len_,
-                            int32_t data_len_);
+                                uint8_t *ptr_,
+                                int32_t rust_vec_len_,
+                                int32_t data_len_);
 
 int32_t frb_get_rust_content_hash(void);
 
@@ -40,7 +40,7 @@ int32_t frb_get_rust_content_hash(void);
  * This should never be called manually.
  */
 const void *frb_dart_opaque_dart2rust_encode(GeneralizedDartHandle handle,
-                                         MessagePort dart_handler_port);
+                                             MessagePort dart_handler_port);
 
 void frb_dart_opaque_drop_thread_box_persistent_handle(uintptr_t ptr);
 
