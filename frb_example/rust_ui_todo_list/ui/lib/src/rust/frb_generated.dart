@@ -898,18 +898,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
 // Section: extra_from_parser
 
-Future<void> runRustApp({
-  required Widget Function(RustState state) body,
-  required RustState Function() state,
+Future<void> runRustApp<T>({
+  required Widget Function(T state) body,
+  required T Function() state,
 }) async {
   await RustLib.init();
-  runApp(_MyApp(body: body, state: state()));
+  runApp(_MyApp(body: (s) => body(s), state: state()));
 }
 
 // improve typing later
 class _MyApp extends StatefulWidget {
-  final Widget Function(RustState state) body;
-  final RustState state;
+  final Widget Function(dynamic state) body;
+  final dynamic state;
 
   const _MyApp({
     required this.body,
