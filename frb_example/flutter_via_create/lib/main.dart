@@ -9,9 +9,7 @@ Future<void> main() async {
 
 Future<String?> _loadTestData() async {
   try {
-    final jsonString =
-        await rootBundle.loadString('assets/test_data/training_plan.json');
-
+    final jsonString = '{"weeks": 10}';
     final trainingPlan = TrainingPlan.testDeserialize(content: jsonString);
     return "success";
   } catch (e) {
