@@ -10,7 +10,7 @@ use std::path::Path;
 pub fn dart_build_runner(dart_root: &Path) -> anyhow::Result<()> {
     debug!("Running build_runner at dart_root={dart_root:?}");
 
-    let repo = DartRepository::from_path(dart_root).unwrap();
+    let repo = DartRepository::from_path(dart_root)?;
     let out = command_run!(
         call_shell[Some(dart_root), Some(dart_run_extra_env())],
         ?command_arg_maybe_fvm(dart_root),
