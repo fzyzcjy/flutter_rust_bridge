@@ -15,7 +15,17 @@ fn should_use_fvm(pwd: &Path) -> bool {
 }
 
 fn has_fvmrc(pwd: &Path) -> bool {
-    pwd.join(".fvmrc").exists()
+    let mut directory = pwd;
+    loop {
+        if directory.join(".fvmrc").exists() {
+            return true;
+        }
+        if let Some(parent) = directory.parent() {
+            directory = parent;
+        } else {
+            return false;
+        }
+    }
 }
 
 fn has_fvm_installation() -> bool {
