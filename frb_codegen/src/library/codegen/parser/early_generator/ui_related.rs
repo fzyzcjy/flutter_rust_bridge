@@ -78,18 +78,18 @@ fn generate_dart_boilerplate() -> String {
     r###"
 import 'package:flutter/material.dart';
 
-Future<void> runRustApp({
-  required Widget Function(RustState state) body,
-  required RustState Function() state,
+Future<void> runRustApp<T>({
+  required Widget Function(T state) body,
+  required T Function() state,
 }) async {
   await RustLib.init();
-  runApp(_MyApp(body: body, state: state()));
+  runApp(_MyApp<T>(body: body, state: state()));
 }
 
 // improve typing later
-class _MyApp extends StatefulWidget {
-  final Widget Function(RustState state) body;
-  final RustState state;
+class _MyApp<T> extends StatefulWidget {
+  final Widget Function(T state) body;
+  final T state;
 
   const _MyApp({
     required this.body,
