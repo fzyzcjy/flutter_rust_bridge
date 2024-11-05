@@ -182,7 +182,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             IrValueOrSkip::Skip(reason) => return Ok(create_output_skip(func, reason)),
         };
 
-        let func_name = clear_raw_identifier(&parse_name(&func.item_fn.name(), &owner));
+        let func_name = clear_raw_identifier(parse_name(&func.item_fn.name(), &owner));
 
         if attributes.ignore() {
             return Ok(create_output_skip(func, IgnoreBecauseExplicitAttribute));
