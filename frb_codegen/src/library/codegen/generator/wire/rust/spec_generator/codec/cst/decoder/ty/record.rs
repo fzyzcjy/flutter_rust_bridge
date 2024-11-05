@@ -19,7 +19,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for RecordWireRustCodecCstGenerat
             .enumerate()
             .map(|(idx, field)| Acc {
                 web: format!("self_.get({idx}).cst_decode()"),
-                io: format!("self.{}.cst_decode()", field.name.rust_style()),
+                io: format!("self.{}.cst_decode()", field.name.rust_style(true)),
                 ..Default::default()
             })
             .collect();

@@ -22,7 +22,7 @@ impl StructOrRecord {
             Lang::RustLang(_) => match self {
                 StructOrRecord::Struct => {
                     if is_field_named {
-                        field.name.rust_style().to_owned()
+                        field.name.rust_style(false).to_owned()
                     } else {
                         format!("{}", index)
                     }

@@ -34,7 +34,11 @@ fn handle_type(pack: &MirPack, ty: MirType) -> Vec<String> {
                     MirVariantKind::Value => vec![],
                     MirVariantKind::Struct(st) => handle_struct(
                         st,
-                        &format!("{}.{}", ty.ident.0.rust_style(), variant.name.rust_style()),
+                        &format!(
+                            "{}.{}",
+                            ty.ident.0.rust_style(),
+                            variant.name.rust_style(true)
+                        ),
                     ),
                 })
                 .collect_vec()
@@ -52,7 +56,7 @@ fn handle_struct(st: &MirStruct, partial_name: &str) -> Vec<String> {
 
 fn handle_field(field: &MirField, partial_name: &str) -> Option<String> {
     if matches!(field.ty, MirType::RustAutoOpaqueImplicit(_)) {
-        Some(format!("{partial_name}.{}", field.name.rust_style()))
+        Some(format!("{partial_name}.{}", field.name.rust_style(true)))
     } else {
         None
     }

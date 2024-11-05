@@ -1,6 +1,7 @@
 use crate::codegen::generator::codec::structs::CodecModePack;
 use crate::codegen::ir::mir::comment::MirComment;
 use crate::codegen::ir::mir::field::MirField;
+use crate::codegen::ir::mir::ident::MirIdent;
 use crate::codegen::ir::mir::ty::delegate::{
     MirTypeDelegate, MirTypeDelegatePrimitiveEnum, MirTypeDelegateProxyVariant,
 };
@@ -8,14 +9,14 @@ use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::trait_def::MirTypeTraitDef;
 use crate::codegen::ir::mir::ty::{MirContext, MirType, MirTypeTrait};
 use crate::if_then_some;
-use crate::utils::namespace::NamespacedName;
+use crate::utils::namespace::{Namespace, NamespacedName};
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 
 crate::mir! {
 pub struct MirFunc {
-    pub name: NamespacedName,
-    pub dart_name: Option<String>,
+    pub namespace: Namespace,
+    pub name: MirIdent,
     pub id: Option<i32>,
     pub inputs: Vec<MirFuncInput>,
     pub output: MirFuncOutput,
@@ -178,15 +179,23 @@ impl MirFunc {
     //     }
     // }
 
+    pub(crate) fn namespaced_name_rust_style(&self, strip_raw_identifier: bool) -> String {
+        NamespacedName::new(
+            self.namespace.clone(),
+            self.name.rust_style(strip_raw_identifier),
+        )
+        .rust_style()
+    }
+
     pub(crate) fn name_dart_api(&self) -> String {
-        (self.dart_name.clone()).unwrap_or_else(|| self.name.name.to_owned().to_case(Case::Camel))
+        self.name.dart_style()
     }
 
     pub(crate) fn name_dart_wire(&self) -> String {
         let raw = format!(
             "{}_{}",
-            self.name.namespace.path().into_iter().join("_"),
-            self.name.name
+            self.namespace.path().into_iter().join("_"),
+            self.name.rust_style(true)
         );
         raw.to_case(Case::Camel)
     }

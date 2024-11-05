@@ -223,3 +223,17 @@ impl StructWithRustAutoOpaqueWithNonCloneData {
 pub fn feature_gated_function() -> String {
     "test".to_owned()
 }
+
+pub struct StructWithRawNameField {
+    pub r#type: String,
+}
+
+impl StructWithRawNameField {
+    #[frb(serialize)]
+    pub fn dummy_function() {}
+}
+
+#[frb(serialize)]
+pub fn r#for(r#type: String) {
+    let _ = r#type;
+}
