@@ -180,14 +180,14 @@ impl MirFunc {
     // }
 
     pub(crate) fn name_dart_api(&self) -> String {
-        (self.dart_name.clone()).unwrap_or_else(|| self.name.name.to_owned().to_case(Case::Camel))
+        self.name.dart_style()
     }
 
     pub(crate) fn name_dart_wire(&self) -> String {
         let raw = format!(
             "{}_{}",
-            self.name.namespace.path().into_iter().join("_"),
-            self.name.name
+            self.namespace.path().into_iter().join("_"),
+            self.name.rust_style(true)
         );
         raw.to_case(Case::Camel)
     }
