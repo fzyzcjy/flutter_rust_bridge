@@ -23,6 +23,9 @@ The API of handler may have breaking change across minor version bumps,
 which is unlike most parts of flutter_rust_bridge which follows semantics versioning.
 However, usually it can be easily migrated by adding the corresponding parameters in your code.
 
+Currently, the custom `FLUTTER_RUST_BRIDGE_HANDLER` needs to be inside files covered by `rust_input`,
+(the `api` folder by default). However, if your scenario need to put it outside, feel free to create an issue.
+
 ## States in handler
 
 If you are only using the provided handler and executor (with your own arguments),
