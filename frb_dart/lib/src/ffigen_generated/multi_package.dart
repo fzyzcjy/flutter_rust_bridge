@@ -301,52 +301,51 @@ class MultiPackageCBinding {
   /// # Safety
   ///
   /// This should never be called manually.
-  ffi.Pointer<ffi.Void> frb_dart_opaque_dart2rust_encode(
+  ffi.Pointer<ffi.Void> dart_opaque_dart2rust_encode(
     Object handle,
     int dart_handler_port,
   ) {
-    return _frb_dart_opaque_dart2rust_encode(
+    return _dart_opaque_dart2rust_encode(
       handle,
       dart_handler_port,
     );
   }
 
-  late final _frb_dart_opaque_dart2rust_encodePtr = _lookup<
+  late final _dart_opaque_dart2rust_encodePtr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<ffi.Void> Function(
-              ffi.Handle, MessagePort)>>('frb_dart_opaque_dart2rust_encode');
-  late final _frb_dart_opaque_dart2rust_encode =
-      _frb_dart_opaque_dart2rust_encodePtr
-          .asFunction<ffi.Pointer<ffi.Void> Function(Object, int)>();
+              ffi.Handle, MessagePort)>>('dart_opaque_dart2rust_encode');
+  late final _dart_opaque_dart2rust_encode = _dart_opaque_dart2rust_encodePtr
+      .asFunction<ffi.Pointer<ffi.Void> Function(Object, int)>();
 
-  void frb_dart_opaque_drop_thread_box_persistent_handle(
+  void dart_opaque_drop_thread_box_persistent_handle(
     int ptr,
   ) {
-    return _frb_dart_opaque_drop_thread_box_persistent_handle(
+    return _dart_opaque_drop_thread_box_persistent_handle(
       ptr,
     );
   }
 
-  late final _frb_dart_opaque_drop_thread_box_persistent_handlePtr =
+  late final _dart_opaque_drop_thread_box_persistent_handlePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.UintPtr)>>(
-          'frb_dart_opaque_drop_thread_box_persistent_handle');
-  late final _frb_dart_opaque_drop_thread_box_persistent_handle =
-      _frb_dart_opaque_drop_thread_box_persistent_handlePtr
+          'dart_opaque_drop_thread_box_persistent_handle');
+  late final _dart_opaque_drop_thread_box_persistent_handle =
+      _dart_opaque_drop_thread_box_persistent_handlePtr
           .asFunction<void Function(int)>();
 
-  Object frb_dart_opaque_rust2dart_decode(
+  Object dart_opaque_rust2dart_decode(
     int ptr,
   ) {
-    return _frb_dart_opaque_rust2dart_decode(
+    return _dart_opaque_rust2dart_decode(
       ptr,
     );
   }
 
-  late final _frb_dart_opaque_rust2dart_decodePtr =
+  late final _dart_opaque_rust2dart_decodePtr =
       _lookup<ffi.NativeFunction<ffi.Handle Function(ffi.UintPtr)>>(
-          'frb_dart_opaque_rust2dart_decode');
-  late final _frb_dart_opaque_rust2dart_decode =
-      _frb_dart_opaque_rust2dart_decodePtr.asFunction<Object Function(int)>();
+          'dart_opaque_rust2dart_decode');
+  late final _dart_opaque_rust2dart_decode =
+      _dart_opaque_rust2dart_decodePtr.asFunction<Object Function(int)>();
 
   ffi.Pointer<ffi.Uint8> rust_vec_u8_new(
     int len,

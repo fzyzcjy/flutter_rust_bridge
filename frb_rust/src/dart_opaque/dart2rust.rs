@@ -36,11 +36,11 @@ pub unsafe fn sse_decode_dart_opaque(raw: usize) -> DartOpaque {
 /// This should never be called manually.
 #[cfg(target_family = "wasm")]
 #[wasm_bindgen]
-pub unsafe fn frb_dart_opaque_dart2rust_encode(
+pub unsafe fn dart_opaque_dart2rust_encode(
     handle: GeneralizedDartHandle,
     dart_handler_port: MessagePort,
 ) -> usize {
-    frb_dart_opaque_dart2rust_encode_inner(handle, dart_handler_port) as _
+    dart_opaque_dart2rust_encode_inner(handle, dart_handler_port) as _
 }
 
 /// # Safety
@@ -48,14 +48,14 @@ pub unsafe fn frb_dart_opaque_dart2rust_encode(
 /// This should never be called manually.
 #[cfg(not(target_family = "wasm"))]
 #[no_mangle]
-pub unsafe extern "C" fn frb_dart_opaque_dart2rust_encode(
+pub unsafe extern "C" fn dart_opaque_dart2rust_encode(
     handle: GeneralizedDartHandle,
     dart_handler_port: MessagePort,
 ) -> *const std::ffi::c_void {
-    frb_dart_opaque_dart2rust_encode_inner(handle, dart_handler_port)
+    dart_opaque_dart2rust_encode_inner(handle, dart_handler_port)
 }
 
-unsafe fn frb_dart_opaque_dart2rust_encode_inner(
+unsafe fn dart_opaque_dart2rust_encode_inner(
     handle: GeneralizedDartHandle,
     dart_handler_port: MessagePort,
 ) -> *const std::ffi::c_void {
