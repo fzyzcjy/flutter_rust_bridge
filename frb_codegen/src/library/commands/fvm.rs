@@ -2,7 +2,7 @@ use crate::command_run;
 use crate::library::commands::command_runner::call_shell;
 use std::path::Path;
 
-pub(crate) fn command_arg_maybe_fvm(pwd: &Path) -> Option<String> {
+pub(crate) fn command_arg_maybe_fvm(pwd: Option<&Path>) -> Option<String> {
     if should_use_fvm(pwd) {
         Some("fvm".to_owned())
     } else {
@@ -10,8 +10,8 @@ pub(crate) fn command_arg_maybe_fvm(pwd: &Path) -> Option<String> {
     }
 }
 
-fn should_use_fvm(pwd: &Path) -> bool {
-    has_fvmrc(pwd) && has_fvm_installation()
+fn should_use_fvm(pwd: Option<&Path>) -> bool {
+    pwd.map_or(true, has_fvmrc) && has_fvm_installation()
 }
 
 fn has_fvmrc(pwd: &Path) -> bool {

@@ -12,7 +12,7 @@ pub fn dart_fix(base_path: &Path) -> Result<()> {
 
     let res = command_run!(
         call_shell[Some(base_path), None],
-        ?command_arg_maybe_fvm(base_path),
+        ?command_arg_maybe_fvm(Some(base_path)),
         "dart",
         "fix",
         "--apply",
