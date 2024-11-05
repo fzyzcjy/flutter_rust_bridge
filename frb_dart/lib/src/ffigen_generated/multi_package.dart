@@ -267,13 +267,13 @@ class MultiPackageCBinding {
           WireSyncRust2DartSse Function(
               int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void dart_fn_deliver_output(
+  void frb_dart_fn_deliver_output(
     int call_id,
     ffi.Pointer<ffi.Uint8> ptr_,
     int rust_vec_len_,
     int data_len_,
   ) {
-    return _dart_fn_deliver_output(
+    return _frb_dart_fn_deliver_output(
       call_id,
       ptr_,
       rust_vec_len_,
@@ -281,11 +281,11 @@ class MultiPackageCBinding {
     );
   }
 
-  late final _dart_fn_deliver_outputPtr = _lookup<
+  late final _frb_dart_fn_deliver_outputPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(ffi.Int32, ffi.Pointer<ffi.Uint8>, ffi.Int32,
-              ffi.Int32)>>('dart_fn_deliver_output');
-  late final _dart_fn_deliver_output = _dart_fn_deliver_outputPtr
+              ffi.Int32)>>('frb_dart_fn_deliver_output');
+  late final _frb_dart_fn_deliver_output = _frb_dart_fn_deliver_outputPtr
       .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
   int frb_get_rust_content_hash() {
@@ -301,152 +301,155 @@ class MultiPackageCBinding {
   /// # Safety
   ///
   /// This should never be called manually.
-  ffi.Pointer<ffi.Void> dart_opaque_dart2rust_encode(
+  ffi.Pointer<ffi.Void> frb_dart_opaque_dart2rust_encode(
     Object handle,
     int dart_handler_port,
   ) {
-    return _dart_opaque_dart2rust_encode(
+    return _frb_dart_opaque_dart2rust_encode(
       handle,
       dart_handler_port,
     );
   }
 
-  late final _dart_opaque_dart2rust_encodePtr = _lookup<
+  late final _frb_dart_opaque_dart2rust_encodePtr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<ffi.Void> Function(
-              ffi.Handle, MessagePort)>>('dart_opaque_dart2rust_encode');
-  late final _dart_opaque_dart2rust_encode = _dart_opaque_dart2rust_encodePtr
-      .asFunction<ffi.Pointer<ffi.Void> Function(Object, int)>();
+              ffi.Handle, MessagePort)>>('frb_dart_opaque_dart2rust_encode');
+  late final _frb_dart_opaque_dart2rust_encode =
+      _frb_dart_opaque_dart2rust_encodePtr
+          .asFunction<ffi.Pointer<ffi.Void> Function(Object, int)>();
 
-  void dart_opaque_drop_thread_box_persistent_handle(
+  void frb_dart_opaque_drop_thread_box_persistent_handle(
     int ptr,
   ) {
-    return _dart_opaque_drop_thread_box_persistent_handle(
+    return _frb_dart_opaque_drop_thread_box_persistent_handle(
       ptr,
     );
   }
 
-  late final _dart_opaque_drop_thread_box_persistent_handlePtr =
+  late final _frb_dart_opaque_drop_thread_box_persistent_handlePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.UintPtr)>>(
-          'dart_opaque_drop_thread_box_persistent_handle');
-  late final _dart_opaque_drop_thread_box_persistent_handle =
-      _dart_opaque_drop_thread_box_persistent_handlePtr
+          'frb_dart_opaque_drop_thread_box_persistent_handle');
+  late final _frb_dart_opaque_drop_thread_box_persistent_handle =
+      _frb_dart_opaque_drop_thread_box_persistent_handlePtr
           .asFunction<void Function(int)>();
 
-  Object dart_opaque_rust2dart_decode(
+  Object frb_dart_opaque_rust2dart_decode(
     int ptr,
   ) {
-    return _dart_opaque_rust2dart_decode(
+    return _frb_dart_opaque_rust2dart_decode(
       ptr,
     );
   }
 
-  late final _dart_opaque_rust2dart_decodePtr =
+  late final _frb_dart_opaque_rust2dart_decodePtr =
       _lookup<ffi.NativeFunction<ffi.Handle Function(ffi.UintPtr)>>(
-          'dart_opaque_rust2dart_decode');
-  late final _dart_opaque_rust2dart_decode =
-      _dart_opaque_rust2dart_decodePtr.asFunction<Object Function(int)>();
+          'frb_dart_opaque_rust2dart_decode');
+  late final _frb_dart_opaque_rust2dart_decode =
+      _frb_dart_opaque_rust2dart_decodePtr.asFunction<Object Function(int)>();
 
-  ffi.Pointer<ffi.Uint8> rust_vec_u8_new(
+  ffi.Pointer<ffi.Uint8> frb_rust_vec_u8_new(
     int len,
   ) {
-    return _rust_vec_u8_new(
+    return _frb_rust_vec_u8_new(
       len,
     );
   }
 
-  late final _rust_vec_u8_newPtr =
+  late final _frb_rust_vec_u8_newPtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Uint8> Function(ffi.Int32)>>(
-          'rust_vec_u8_new');
-  late final _rust_vec_u8_new =
-      _rust_vec_u8_newPtr.asFunction<ffi.Pointer<ffi.Uint8> Function(int)>();
+          'frb_rust_vec_u8_new');
+  late final _frb_rust_vec_u8_new = _frb_rust_vec_u8_newPtr
+      .asFunction<ffi.Pointer<ffi.Uint8> Function(int)>();
 
-  ffi.Pointer<ffi.Uint8> rust_vec_u8_resize(
+  ffi.Pointer<ffi.Uint8> frb_rust_vec_u8_resize(
     ffi.Pointer<ffi.Uint8> ptr,
     int old_len,
     int new_len,
   ) {
-    return _rust_vec_u8_resize(
+    return _frb_rust_vec_u8_resize(
       ptr,
       old_len,
       new_len,
     );
   }
 
-  late final _rust_vec_u8_resizePtr = _lookup<
+  late final _frb_rust_vec_u8_resizePtr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<ffi.Uint8> Function(ffi.Pointer<ffi.Uint8>, ffi.Int32,
-              ffi.Int32)>>('rust_vec_u8_resize');
-  late final _rust_vec_u8_resize = _rust_vec_u8_resizePtr.asFunction<
+              ffi.Int32)>>('frb_rust_vec_u8_resize');
+  late final _frb_rust_vec_u8_resize = _frb_rust_vec_u8_resizePtr.asFunction<
       ffi.Pointer<ffi.Uint8> Function(ffi.Pointer<ffi.Uint8>, int, int)>();
 
-  void rust_vec_u8_free(
+  void frb_rust_vec_u8_free(
     ffi.Pointer<ffi.Uint8> ptr,
     int len,
   ) {
-    return _rust_vec_u8_free(
+    return _frb_rust_vec_u8_free(
       ptr,
       len,
     );
   }
 
-  late final _rust_vec_u8_freePtr = _lookup<
+  late final _frb_rust_vec_u8_freePtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              ffi.Pointer<ffi.Uint8>, ffi.Int32)>>('rust_vec_u8_free');
-  late final _rust_vec_u8_free = _rust_vec_u8_freePtr
+              ffi.Pointer<ffi.Uint8>, ffi.Int32)>>('frb_rust_vec_u8_free');
+  late final _frb_rust_vec_u8_free = _frb_rust_vec_u8_freePtr
       .asFunction<void Function(ffi.Pointer<ffi.Uint8>, int)>();
 
   /// # Safety
   ///
   /// This function should never be called manually.
-  int init_frb_dart_api_dl(
+  int frb_init_frb_dart_api_dl(
     ffi.Pointer<ffi.Void> data,
   ) {
-    return _init_frb_dart_api_dl(
+    return _frb_init_frb_dart_api_dl(
       data,
     );
   }
 
-  late final _init_frb_dart_api_dlPtr =
+  late final _frb_init_frb_dart_api_dlPtr =
       _lookup<ffi.NativeFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>)>>(
-          'init_frb_dart_api_dl');
-  late final _init_frb_dart_api_dl = _init_frb_dart_api_dlPtr
+          'frb_init_frb_dart_api_dl');
+  late final _frb_init_frb_dart_api_dl = _frb_init_frb_dart_api_dlPtr
       .asFunction<int Function(ffi.Pointer<ffi.Void>)>();
 
   /// # Safety
   ///
   /// This function should never be called manually.
-  void free_wire_sync_rust2dart_dco(
+  void frb_free_wire_sync_rust2dart_dco(
     WireSyncRust2DartDco value,
   ) {
-    return _free_wire_sync_rust2dart_dco(
+    return _frb_free_wire_sync_rust2dart_dco(
       value,
     );
   }
 
-  late final _free_wire_sync_rust2dart_dcoPtr =
+  late final _frb_free_wire_sync_rust2dart_dcoPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncRust2DartDco)>>(
-          'free_wire_sync_rust2dart_dco');
-  late final _free_wire_sync_rust2dart_dco = _free_wire_sync_rust2dart_dcoPtr
-      .asFunction<void Function(WireSyncRust2DartDco)>();
+          'frb_free_wire_sync_rust2dart_dco');
+  late final _frb_free_wire_sync_rust2dart_dco =
+      _frb_free_wire_sync_rust2dart_dcoPtr
+          .asFunction<void Function(WireSyncRust2DartDco)>();
 
   /// # Safety
   ///
   /// This function should never be called manually.
-  void free_wire_sync_rust2dart_sse(
+  void frb_free_wire_sync_rust2dart_sse(
     WireSyncRust2DartSse value,
   ) {
-    return _free_wire_sync_rust2dart_sse(
+    return _frb_free_wire_sync_rust2dart_sse(
       value,
     );
   }
 
-  late final _free_wire_sync_rust2dart_ssePtr =
+  late final _frb_free_wire_sync_rust2dart_ssePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncRust2DartSse)>>(
-          'free_wire_sync_rust2dart_sse');
-  late final _free_wire_sync_rust2dart_sse = _free_wire_sync_rust2dart_ssePtr
-      .asFunction<void Function(WireSyncRust2DartSse)>();
+          'frb_free_wire_sync_rust2dart_sse');
+  late final _frb_free_wire_sync_rust2dart_sse =
+      _frb_free_wire_sync_rust2dart_ssePtr
+          .asFunction<void Function(WireSyncRust2DartSse)>();
 }
 
 /// A Dart_CObject is used for representing Dart objects as native C
