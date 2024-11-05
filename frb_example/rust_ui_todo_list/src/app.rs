@@ -3,7 +3,7 @@
 use flutter_rust_bridge::frb;
 
 #[frb(ui_state)]
-pub struct RenamedRustState {
+pub struct RustState {
     items: Vec<Item>,
     pub input_text: String,
     pub filter: Filter,
@@ -25,7 +25,7 @@ pub enum Filter {
 }
 
 #[frb(ui_mutation)]
-impl RenamedRustState {
+impl RustState {
     pub fn add(&mut self) {
         let id = self.next_id;
         self.next_id += 1;
@@ -47,7 +47,7 @@ impl RenamedRustState {
     }
 }
 
-impl RenamedRustState {
+impl RustState {
     pub fn new() -> Self {
         Self {
             items: vec![],
