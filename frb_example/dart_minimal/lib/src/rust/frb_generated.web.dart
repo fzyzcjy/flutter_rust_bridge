@@ -21,38 +21,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
-  String dco_decode_String(dynamic raw);
-
-  @protected
   int dco_decode_i_32(dynamic raw);
-
-  @protected
-  Uint8List dco_decode_list_prim_u_8_strict(dynamic raw);
-
-  @protected
-  StructWithRawNameField dco_decode_struct_with_raw_name_field(dynamic raw);
-
-  @protected
-  int dco_decode_u_8(dynamic raw);
 
   @protected
   void dco_decode_unit(dynamic raw);
 
   @protected
-  String sse_decode_String(SseDeserializer deserializer);
-
-  @protected
   int sse_decode_i_32(SseDeserializer deserializer);
-
-  @protected
-  Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer);
-
-  @protected
-  StructWithRawNameField sse_decode_struct_with_raw_name_field(
-      SseDeserializer deserializer);
-
-  @protected
-  int sse_decode_u_8(SseDeserializer deserializer);
 
   @protected
   void sse_decode_unit(SseDeserializer deserializer);
@@ -61,27 +36,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
-  int cst_encode_i_32(int raw);
-
-  @protected
-  void cst_encode_unit(void raw);
-
-  @protected
-  void sse_encode_String(String self, SseSerializer serializer);
-
-  @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_list_prim_u_8_strict(
-      Uint8List self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_struct_with_raw_name_field(
-      StructWithRawNameField self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_u_8(int self, SseSerializer serializer);
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer);
@@ -94,30 +49,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
 class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
-
-  void wire__crate__api__minimal__for(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule.wire__crate__api__minimal__for(
-          port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire__crate__api__minimal__init_app(NativePortType port_) =>
-      wasmModule.wire__crate__api__minimal__init_app(port_);
-
-  void wire__crate__api__minimal__minimal_adder(
-          NativePortType port_, int a, int b) =>
-      wasmModule.wire__crate__api__minimal__minimal_adder(port_, a, b);
-
-  void wire__crate__api__minimal__struct_with_raw_name_field_dummy_function(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule
-          .wire__crate__api__minimal__struct_with_raw_name_field_dummy_function(
-              port_, ptr_, rust_vec_len_, data_len_);
 }
 
 @JS('wasm_bindgen')
@@ -125,19 +56,4 @@ external RustLibWasmModule get wasmModule;
 
 @JS()
 @anonymous
-extension type RustLibWasmModule._(JSObject _) implements JSObject {
-  external void wire__crate__api__minimal__for(NativePortType port_,
-      PlatformGeneralizedUint8ListPtr ptr_, int rust_vec_len_, int data_len_);
-
-  external void wire__crate__api__minimal__init_app(NativePortType port_);
-
-  external void wire__crate__api__minimal__minimal_adder(
-      NativePortType port_, int a, int b);
-
-  external void
-      wire__crate__api__minimal__struct_with_raw_name_field_dummy_function(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-}
+extension type RustLibWasmModule._(JSObject _) implements JSObject {}
