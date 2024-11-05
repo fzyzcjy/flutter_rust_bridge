@@ -53,7 +53,7 @@ impl WireRustCodecEntrypointTrait<'_> for CstWireRustCodecEntrypoint {
             .inputs
             .iter()
             .map(|field| {
-                let name = field.inner.name.rust_style(true).to_owned();
+                let name = field.inner.name.rust_style(false).to_owned();
                 Acc::new(|target| match target {
                     TargetOrCommon::Common => ExternFuncParam {
                         name: name.clone(),
