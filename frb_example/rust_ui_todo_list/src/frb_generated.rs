@@ -38,7 +38,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.5.1";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -1253672655;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 1448374496;
 
 // Section: executor
 
@@ -130,14 +130,14 @@ fn wire__crate__frb_generated__BaseRustState_empty_impl(
         },
     )
 }
-fn wire__crate__app__RustState_add_impl(
+fn wire__crate__app__RenamedRustState_add_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "RustState_add",
+            debug_name: "RenamedRustState_add",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -152,7 +152,7 @@ fn wire__crate__app__RustState_add_impl(
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustState>,
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RenamedRustState>,
             >>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
@@ -171,7 +171,7 @@ fn wire__crate__app__RustState_add_impl(
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
                 let output_ok = Result::<_, ()>::Ok({
-                    crate::app::RustState::add(&mut *api_that_guard);
+                    crate::app::RenamedRustState::add(&mut *api_that_guard);
                 })?;
                 api_that_guard.base_state.on_mutation();
                 Ok(output_ok)
@@ -179,14 +179,14 @@ fn wire__crate__app__RustState_add_impl(
         },
     )
 }
-fn wire__crate__app__RustState_auto_accessor_get_filter_impl(
+fn wire__crate__app__RenamedRustState_auto_accessor_get_filter_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "RustState_auto_accessor_get_filter",
+            debug_name: "RenamedRustState_auto_accessor_get_filter",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -201,7 +201,7 @@ fn wire__crate__app__RustState_auto_accessor_get_filter_impl(
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustState>,
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RenamedRustState>,
             >>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
@@ -225,14 +225,14 @@ fn wire__crate__app__RustState_auto_accessor_get_filter_impl(
         },
     )
 }
-fn wire__crate__app__RustState_auto_accessor_get_input_text_impl(
+fn wire__crate__app__RenamedRustState_auto_accessor_get_input_text_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "RustState_auto_accessor_get_input_text",
+            debug_name: "RenamedRustState_auto_accessor_get_input_text",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -247,7 +247,7 @@ fn wire__crate__app__RustState_auto_accessor_get_input_text_impl(
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustState>,
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RenamedRustState>,
             >>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
@@ -271,14 +271,14 @@ fn wire__crate__app__RustState_auto_accessor_get_input_text_impl(
         },
     )
 }
-fn wire__crate__app__RustState_auto_accessor_set_filter_impl(
+fn wire__crate__app__RenamedRustState_auto_accessor_set_filter_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "RustState_auto_accessor_set_filter",
+            debug_name: "RenamedRustState_auto_accessor_set_filter",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -293,7 +293,7 @@ fn wire__crate__app__RustState_auto_accessor_set_filter_impl(
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustState>,
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RenamedRustState>,
             >>::sse_decode(&mut deserializer);
             let api_filter = <crate::app::Filter>::sse_decode(&mut deserializer);
             deserializer.end();
@@ -323,14 +323,14 @@ fn wire__crate__app__RustState_auto_accessor_set_filter_impl(
         },
     )
 }
-fn wire__crate__app__RustState_auto_accessor_set_input_text_impl(
+fn wire__crate__app__RenamedRustState_auto_accessor_set_input_text_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "RustState_auto_accessor_set_input_text",
+            debug_name: "RenamedRustState_auto_accessor_set_input_text",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -345,7 +345,7 @@ fn wire__crate__app__RustState_auto_accessor_set_input_text_impl(
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustState>,
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RenamedRustState>,
             >>::sse_decode(&mut deserializer);
             let api_input_text = <String>::sse_decode(&mut deserializer);
             deserializer.end();
@@ -375,14 +375,14 @@ fn wire__crate__app__RustState_auto_accessor_set_input_text_impl(
         },
     )
 }
-fn wire__crate__app__RustState_filtered_items_impl(
+fn wire__crate__app__RenamedRustState_filtered_items_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "RustState_filtered_items",
+            debug_name: "RenamedRustState_filtered_items",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -397,7 +397,7 @@ fn wire__crate__app__RustState_filtered_items_impl(
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustState>,
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RenamedRustState>,
             >>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
@@ -415,21 +415,22 @@ fn wire__crate__app__RustState_filtered_items_impl(
                     }
                 }
                 let api_that_guard = api_that_guard.unwrap();
-                let output_ok =
-                    Result::<_, ()>::Ok(crate::app::RustState::filtered_items(&*api_that_guard))?;
+                let output_ok = Result::<_, ()>::Ok(crate::app::RenamedRustState::filtered_items(
+                    &*api_that_guard,
+                ))?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__app__RustState_new_impl(
+fn wire__crate__app__RenamedRustState_new_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "RustState_new",
+            debug_name: "RenamedRustState_new",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -445,20 +446,20 @@ fn wire__crate__app__RustState_new_impl(
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(crate::app::RustState::new())?;
+                let output_ok = Result::<_, ()>::Ok(crate::app::RenamedRustState::new())?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__app__RustState_remove_impl(
+fn wire__crate__app__RenamedRustState_remove_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "RustState_remove",
+            debug_name: "RenamedRustState_remove",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -473,7 +474,7 @@ fn wire__crate__app__RustState_remove_impl(
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustState>,
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RenamedRustState>,
             >>::sse_decode(&mut deserializer);
             let api_id = <i32>::sse_decode(&mut deserializer);
             deserializer.end();
@@ -493,7 +494,7 @@ fn wire__crate__app__RustState_remove_impl(
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
                 let output_ok = Result::<_, ()>::Ok({
-                    crate::app::RustState::remove(&mut *api_that_guard, api_id);
+                    crate::app::RenamedRustState::remove(&mut *api_that_guard, api_id);
                 })?;
                 api_that_guard.base_state.on_mutation();
                 Ok(output_ok)
@@ -501,14 +502,14 @@ fn wire__crate__app__RustState_remove_impl(
         },
     )
 }
-fn wire__crate__app__RustState_set_base_state_impl(
+fn wire__crate__app__RenamedRustState_set_base_state_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "RustState_set_base_state",
+            debug_name: "RenamedRustState_set_base_state",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -523,7 +524,7 @@ fn wire__crate__app__RustState_set_base_state_impl(
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustState>,
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RenamedRustState>,
             >>::sse_decode(&mut deserializer);
             let api_base_state = <BaseRustState>::sse_decode(&mut deserializer);
             deserializer.end();
@@ -543,21 +544,24 @@ fn wire__crate__app__RustState_set_base_state_impl(
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
                 let output_ok = Result::<_, ()>::Ok({
-                    crate::app::RustState::set_base_state(&mut *api_that_guard, api_base_state);
+                    crate::app::RenamedRustState::set_base_state(
+                        &mut *api_that_guard,
+                        api_base_state,
+                    );
                 })?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__app__RustState_toggle_impl(
+fn wire__crate__app__RenamedRustState_toggle_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "RustState_toggle",
+            debug_name: "RenamedRustState_toggle",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -572,7 +576,7 @@ fn wire__crate__app__RustState_toggle_impl(
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that = <RustOpaqueMoi<
-                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustState>,
+                flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RenamedRustState>,
             >>::sse_decode(&mut deserializer);
             let api_id = <i32>::sse_decode(&mut deserializer);
             deserializer.end();
@@ -592,7 +596,7 @@ fn wire__crate__app__RustState_toggle_impl(
                 }
                 let mut api_that_guard = api_that_guard.unwrap();
                 let output_ok = Result::<_, ()>::Ok({
-                    crate::app::RustState::toggle(&mut *api_that_guard, api_id);
+                    crate::app::RenamedRustState::toggle(&mut *api_that_guard, api_id);
                 })?;
                 api_that_guard.base_state.on_mutation();
                 Ok(output_ok)
@@ -607,7 +611,7 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BaseRustState>
 );
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
-    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustState>
+    flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RenamedRustState>
 );
 
 // Section: extra_from_parser
@@ -662,11 +666,11 @@ impl SseDecode for BaseRustState {
     }
 }
 
-impl SseDecode for RustState {
+impl SseDecode for RenamedRustState {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <RustOpaqueMoi<
-            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustState>,
+            flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RenamedRustState>,
         >>::sse_decode(deserializer);
         return flutter_rust_bridge::for_generated::rust_auto_opaque_decode_owned(inner);
     }
@@ -683,7 +687,7 @@ impl SseDecode
 }
 
 impl SseDecode
-    for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustState>>
+    for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RenamedRustState>>
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -819,24 +823,32 @@ fn pde_ffi_dispatcher_sync_impl(
             data_len,
         ),
         2 => wire__crate__frb_generated__BaseRustState_empty_impl(ptr, rust_vec_len, data_len),
-        3 => wire__crate__app__RustState_add_impl(ptr, rust_vec_len, data_len),
-        4 => wire__crate__app__RustState_auto_accessor_get_filter_impl(ptr, rust_vec_len, data_len),
-        5 => wire__crate__app__RustState_auto_accessor_get_input_text_impl(
+        3 => wire__crate__app__RenamedRustState_add_impl(ptr, rust_vec_len, data_len),
+        4 => wire__crate__app__RenamedRustState_auto_accessor_get_filter_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        6 => wire__crate__app__RustState_auto_accessor_set_filter_impl(ptr, rust_vec_len, data_len),
-        7 => wire__crate__app__RustState_auto_accessor_set_input_text_impl(
+        5 => wire__crate__app__RenamedRustState_auto_accessor_get_input_text_impl(
             ptr,
             rust_vec_len,
             data_len,
         ),
-        8 => wire__crate__app__RustState_filtered_items_impl(ptr, rust_vec_len, data_len),
-        9 => wire__crate__app__RustState_new_impl(ptr, rust_vec_len, data_len),
-        10 => wire__crate__app__RustState_remove_impl(ptr, rust_vec_len, data_len),
-        11 => wire__crate__app__RustState_set_base_state_impl(ptr, rust_vec_len, data_len),
-        12 => wire__crate__app__RustState_toggle_impl(ptr, rust_vec_len, data_len),
+        6 => wire__crate__app__RenamedRustState_auto_accessor_set_filter_impl(
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        7 => wire__crate__app__RenamedRustState_auto_accessor_set_input_text_impl(
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        8 => wire__crate__app__RenamedRustState_filtered_items_impl(ptr, rust_vec_len, data_len),
+        9 => wire__crate__app__RenamedRustState_new_impl(ptr, rust_vec_len, data_len),
+        10 => wire__crate__app__RenamedRustState_remove_impl(ptr, rust_vec_len, data_len),
+        11 => wire__crate__app__RenamedRustState_set_base_state_impl(ptr, rust_vec_len, data_len),
+        12 => wire__crate__app__RenamedRustState_toggle_impl(ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
@@ -859,16 +871,16 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<BaseRustState>> for BaseRustSt
 }
 
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for FrbWrapper<RustState> {
+impl flutter_rust_bridge::IntoDart for FrbWrapper<RenamedRustState> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self.0)
             .into_dart()
     }
 }
-impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for FrbWrapper<RustState> {}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for FrbWrapper<RenamedRustState> {}
 
-impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<RustState>> for RustState {
-    fn into_into_dart(self) -> FrbWrapper<RustState> {
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<RenamedRustState>> for RenamedRustState {
+    fn into_into_dart(self) -> FrbWrapper<RenamedRustState> {
         self.into()
     }
 }
@@ -922,10 +934,10 @@ impl SseEncode for BaseRustState {
     }
 }
 
-impl SseEncode for RustState {
+impl SseEncode for RenamedRustState {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustState>>>::sse_encode(flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self), serializer);
+        <RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RenamedRustState>>>::sse_encode(flutter_rust_bridge::for_generated::rust_auto_opaque_encode::<_, MoiArc<_>>(self), serializer);
     }
 }
 
@@ -941,7 +953,7 @@ impl SseEncode
 }
 
 impl SseEncode
-    for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustState>>
+    for RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RenamedRustState>>
 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -1081,17 +1093,17 @@ mod io {
     }
 
     #[no_mangle]
-    pub extern "C" fn frbgen_frb_example_rust_ui_todo_list_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
+    pub extern "C" fn frbgen_frb_example_rust_ui_todo_list_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRenamedRustState(
         ptr: *const std::ffi::c_void,
     ) {
-        MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustState>>::increment_strong_count(ptr as _);
+        MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RenamedRustState>>::increment_strong_count(ptr as _);
     }
 
     #[no_mangle]
-    pub extern "C" fn frbgen_frb_example_rust_ui_todo_list_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
+    pub extern "C" fn frbgen_frb_example_rust_ui_todo_list_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRenamedRustState(
         ptr: *const std::ffi::c_void,
     ) {
-        MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustState>>::decrement_strong_count(ptr as _);
+        MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RenamedRustState>>::decrement_strong_count(ptr as _);
     }
 }
 #[cfg(not(target_family = "wasm"))]
@@ -1134,17 +1146,17 @@ mod web {
     }
 
     #[wasm_bindgen]
-    pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
+    pub fn rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRenamedRustState(
         ptr: *const std::ffi::c_void,
     ) {
-        MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustState>>::increment_strong_count(ptr as _);
+        MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RenamedRustState>>::increment_strong_count(ptr as _);
     }
 
     #[wasm_bindgen]
-    pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
+    pub fn rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRenamedRustState(
         ptr: *const std::ffi::c_void,
     ) {
-        MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustState>>::decrement_strong_count(ptr as _);
+        MoiArc::<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RenamedRustState>>::decrement_strong_count(ptr as _);
     }
 }
 #[cfg(target_family = "wasm")]

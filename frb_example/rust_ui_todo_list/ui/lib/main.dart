@@ -5,9 +5,9 @@ import 'package:frb_example_rust_ui_todo_list/src/rust/app.dart';
 import 'package:frb_example_rust_ui_todo_list/src/rust/frb_generated.dart';
 import 'package:styled_widget/styled_widget.dart';
 
-void main() => runRustApp(body: body, state: RustState.new);
+void main() => runRustApp(body: body, state: RenamedRustState.new);
 
-Widget body(RustState state) {
+Widget body(RenamedRustState state) {
   return [
     SyncTextField(
       decoration:
@@ -30,7 +30,7 @@ Widget body(RustState state) {
   ].toColumn().padding(all: 16);
 }
 
-Widget todoItem(RustState state, Item item) {
+Widget todoItem(RenamedRustState state, Item item) {
   return [
     Checkbox(
         value: item.completed, onChanged: (_) => state.toggle(id: item.id)),

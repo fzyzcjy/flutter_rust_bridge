@@ -71,7 +71,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.5.1';
 
   @override
-  int get rustContentHash => -1253672655;
+  int get rustContentHash => 1448374496;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -87,28 +87,33 @@ abstract class RustLibApi extends BaseApi {
 
   BaseRustState crateFrbGeneratedBaseRustStateEmpty();
 
-  void crateAppRustStateAdd({required RustState that});
+  void crateAppRenamedRustStateAdd({required RenamedRustState that});
 
-  Filter crateAppRustStateAutoAccessorGetFilter({required RustState that});
+  Filter crateAppRenamedRustStateAutoAccessorGetFilter(
+      {required RenamedRustState that});
 
-  String crateAppRustStateAutoAccessorGetInputText({required RustState that});
+  String crateAppRenamedRustStateAutoAccessorGetInputText(
+      {required RenamedRustState that});
 
-  void crateAppRustStateAutoAccessorSetFilter(
-      {required RustState that, required Filter filter});
+  void crateAppRenamedRustStateAutoAccessorSetFilter(
+      {required RenamedRustState that, required Filter filter});
 
-  void crateAppRustStateAutoAccessorSetInputText(
-      {required RustState that, required String inputText});
+  void crateAppRenamedRustStateAutoAccessorSetInputText(
+      {required RenamedRustState that, required String inputText});
 
-  List<Item> crateAppRustStateFilteredItems({required RustState that});
+  List<Item> crateAppRenamedRustStateFilteredItems(
+      {required RenamedRustState that});
 
-  RustState crateAppRustStateNew();
+  RenamedRustState crateAppRenamedRustStateNew();
 
-  void crateAppRustStateRemove({required RustState that, required int id});
+  void crateAppRenamedRustStateRemove(
+      {required RenamedRustState that, required int id});
 
-  void crateAppRustStateSetBaseState(
-      {required RustState that, required BaseRustState baseState});
+  void crateAppRenamedRustStateSetBaseState(
+      {required RenamedRustState that, required BaseRustState baseState});
 
-  void crateAppRustStateToggle({required RustState that, required int id});
+  void crateAppRenamedRustStateToggle(
+      {required RenamedRustState that, required int id});
 
   RustArcIncrementStrongCountFnType
       get rust_arc_increment_strong_count_BaseRustState;
@@ -120,12 +125,13 @@ abstract class RustLibApi extends BaseApi {
       get rust_arc_decrement_strong_count_BaseRustStatePtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RustState;
+      get rust_arc_increment_strong_count_RenamedRustState;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RustState;
+      get rust_arc_decrement_strong_count_RenamedRustState;
 
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_RustStatePtr;
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_RenamedRustStatePtr;
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -191,11 +197,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  void crateAppRustStateAdd({required RustState that}) {
+  void crateAppRenamedRustStateAdd({required RenamedRustState that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRenamedRustState(
             that, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 3)!;
       },
@@ -203,23 +209,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kCrateAppRustStateAddConstMeta,
+      constMeta: kCrateAppRenamedRustStateAddConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateAppRustStateAddConstMeta => const TaskConstMeta(
-        debugName: "RustState_add",
+  TaskConstMeta get kCrateAppRenamedRustStateAddConstMeta =>
+      const TaskConstMeta(
+        debugName: "RenamedRustState_add",
         argNames: ["that"],
       );
 
   @override
-  Filter crateAppRustStateAutoAccessorGetFilter({required RustState that}) {
+  Filter crateAppRenamedRustStateAutoAccessorGetFilter(
+      {required RenamedRustState that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRenamedRustState(
             that, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 4)!;
       },
@@ -227,24 +235,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_filter,
         decodeErrorData: null,
       ),
-      constMeta: kCrateAppRustStateAutoAccessorGetFilterConstMeta,
+      constMeta: kCrateAppRenamedRustStateAutoAccessorGetFilterConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateAppRustStateAutoAccessorGetFilterConstMeta =>
+  TaskConstMeta get kCrateAppRenamedRustStateAutoAccessorGetFilterConstMeta =>
       const TaskConstMeta(
-        debugName: "RustState_auto_accessor_get_filter",
+        debugName: "RenamedRustState_auto_accessor_get_filter",
         argNames: ["that"],
       );
 
   @override
-  String crateAppRustStateAutoAccessorGetInputText({required RustState that}) {
+  String crateAppRenamedRustStateAutoAccessorGetInputText(
+      {required RenamedRustState that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRenamedRustState(
             that, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 5)!;
       },
@@ -252,25 +261,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_String,
         decodeErrorData: null,
       ),
-      constMeta: kCrateAppRustStateAutoAccessorGetInputTextConstMeta,
+      constMeta: kCrateAppRenamedRustStateAutoAccessorGetInputTextConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateAppRustStateAutoAccessorGetInputTextConstMeta =>
-      const TaskConstMeta(
-        debugName: "RustState_auto_accessor_get_input_text",
-        argNames: ["that"],
-      );
+  TaskConstMeta
+      get kCrateAppRenamedRustStateAutoAccessorGetInputTextConstMeta =>
+          const TaskConstMeta(
+            debugName: "RenamedRustState_auto_accessor_get_input_text",
+            argNames: ["that"],
+          );
 
   @override
-  void crateAppRustStateAutoAccessorSetFilter(
-      {required RustState that, required Filter filter}) {
+  void crateAppRenamedRustStateAutoAccessorSetFilter(
+      {required RenamedRustState that, required Filter filter}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRenamedRustState(
             that, serializer);
         sse_encode_filter(filter, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 6)!;
@@ -279,25 +289,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kCrateAppRustStateAutoAccessorSetFilterConstMeta,
+      constMeta: kCrateAppRenamedRustStateAutoAccessorSetFilterConstMeta,
       argValues: [that, filter],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateAppRustStateAutoAccessorSetFilterConstMeta =>
+  TaskConstMeta get kCrateAppRenamedRustStateAutoAccessorSetFilterConstMeta =>
       const TaskConstMeta(
-        debugName: "RustState_auto_accessor_set_filter",
+        debugName: "RenamedRustState_auto_accessor_set_filter",
         argNames: ["that", "filter"],
       );
 
   @override
-  void crateAppRustStateAutoAccessorSetInputText(
-      {required RustState that, required String inputText}) {
+  void crateAppRenamedRustStateAutoAccessorSetInputText(
+      {required RenamedRustState that, required String inputText}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRenamedRustState(
             that, serializer);
         sse_encode_String(inputText, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 7)!;
@@ -306,24 +316,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kCrateAppRustStateAutoAccessorSetInputTextConstMeta,
+      constMeta: kCrateAppRenamedRustStateAutoAccessorSetInputTextConstMeta,
       argValues: [that, inputText],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateAppRustStateAutoAccessorSetInputTextConstMeta =>
-      const TaskConstMeta(
-        debugName: "RustState_auto_accessor_set_input_text",
-        argNames: ["that", "inputText"],
-      );
+  TaskConstMeta
+      get kCrateAppRenamedRustStateAutoAccessorSetInputTextConstMeta =>
+          const TaskConstMeta(
+            debugName: "RenamedRustState_auto_accessor_set_input_text",
+            argNames: ["that", "inputText"],
+          );
 
   @override
-  List<Item> crateAppRustStateFilteredItems({required RustState that}) {
+  List<Item> crateAppRenamedRustStateFilteredItems(
+      {required RenamedRustState that}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
+        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRenamedRustState(
             that, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 8)!;
       },
@@ -331,20 +343,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_list_item,
         decodeErrorData: null,
       ),
-      constMeta: kCrateAppRustStateFilteredItemsConstMeta,
+      constMeta: kCrateAppRenamedRustStateFilteredItemsConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateAppRustStateFilteredItemsConstMeta =>
+  TaskConstMeta get kCrateAppRenamedRustStateFilteredItemsConstMeta =>
       const TaskConstMeta(
-        debugName: "RustState_filtered_items",
+        debugName: "RenamedRustState_filtered_items",
         argNames: ["that"],
       );
 
   @override
-  RustState crateAppRustStateNew() {
+  RenamedRustState crateAppRenamedRustStateNew() {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -352,26 +364,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       },
       codec: SseCodec(
         decodeSuccessData:
-            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState,
+            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRenamedRustState,
         decodeErrorData: null,
       ),
-      constMeta: kCrateAppRustStateNewConstMeta,
+      constMeta: kCrateAppRenamedRustStateNewConstMeta,
       argValues: [],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateAppRustStateNewConstMeta => const TaskConstMeta(
-        debugName: "RustState_new",
+  TaskConstMeta get kCrateAppRenamedRustStateNewConstMeta =>
+      const TaskConstMeta(
+        debugName: "RenamedRustState_new",
         argNames: [],
       );
 
   @override
-  void crateAppRustStateRemove({required RustState that, required int id}) {
+  void crateAppRenamedRustStateRemove(
+      {required RenamedRustState that, required int id}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRenamedRustState(
             that, serializer);
         sse_encode_i_32(id, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 10)!;
@@ -380,24 +394,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kCrateAppRustStateRemoveConstMeta,
+      constMeta: kCrateAppRenamedRustStateRemoveConstMeta,
       argValues: [that, id],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateAppRustStateRemoveConstMeta => const TaskConstMeta(
-        debugName: "RustState_remove",
+  TaskConstMeta get kCrateAppRenamedRustStateRemoveConstMeta =>
+      const TaskConstMeta(
+        debugName: "RenamedRustState_remove",
         argNames: ["that", "id"],
       );
 
   @override
-  void crateAppRustStateSetBaseState(
-      {required RustState that, required BaseRustState baseState}) {
+  void crateAppRenamedRustStateSetBaseState(
+      {required RenamedRustState that, required BaseRustState baseState}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRenamedRustState(
             that, serializer);
         sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustState(
             baseState, serializer);
@@ -407,24 +422,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kCrateAppRustStateSetBaseStateConstMeta,
+      constMeta: kCrateAppRenamedRustStateSetBaseStateConstMeta,
       argValues: [that, baseState],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateAppRustStateSetBaseStateConstMeta =>
+  TaskConstMeta get kCrateAppRenamedRustStateSetBaseStateConstMeta =>
       const TaskConstMeta(
-        debugName: "RustState_set_base_state",
+        debugName: "RenamedRustState_set_base_state",
         argNames: ["that", "baseState"],
       );
 
   @override
-  void crateAppRustStateToggle({required RustState that, required int id}) {
+  void crateAppRenamedRustStateToggle(
+      {required RenamedRustState that, required int id}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
+        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRenamedRustState(
             that, serializer);
         sse_encode_i_32(id, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 12)!;
@@ -433,14 +449,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kCrateAppRustStateToggleConstMeta,
+      constMeta: kCrateAppRenamedRustStateToggleConstMeta,
       argValues: [that, id],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateAppRustStateToggleConstMeta => const TaskConstMeta(
-        debugName: "RustState_toggle",
+  TaskConstMeta get kCrateAppRenamedRustStateToggleConstMeta =>
+      const TaskConstMeta(
+        debugName: "RenamedRustState_toggle",
         argNames: ["that", "id"],
       );
 
@@ -453,12 +470,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustState;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_RustState => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState;
+      get rust_arc_increment_strong_count_RenamedRustState => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRenamedRustState;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_RustState => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState;
+      get rust_arc_decrement_strong_count_RenamedRustState => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRenamedRustState;
 
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw) {
@@ -475,11 +492,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  RustState
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
+  RenamedRustState
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRenamedRustState(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return RustStateImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return RenamedRustStateImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -491,19 +508,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  RustState
-      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
+  RenamedRustState
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRenamedRustState(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return RustStateImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return RenamedRustStateImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
-  RustState
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
+  RenamedRustState
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRenamedRustState(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return RustStateImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return RenamedRustStateImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -515,11 +532,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  RustState
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
+  RenamedRustState
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRenamedRustState(
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return RustStateImpl.frbInternalDcoDecode(raw as List<dynamic>);
+    return RenamedRustStateImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
@@ -612,11 +629,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  RustState
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
+  RenamedRustState
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRenamedRustState(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return RustStateImpl.frbInternalSseDecode(
+    return RenamedRustStateImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -630,20 +647,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  RustState
-      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
+  RenamedRustState
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRenamedRustState(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return RustStateImpl.frbInternalSseDecode(
+    return RenamedRustStateImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
   @protected
-  RustState
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
+  RenamedRustState
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRenamedRustState(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return RustStateImpl.frbInternalSseDecode(
+    return RenamedRustStateImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -657,11 +674,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  RustState
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
+  RenamedRustState
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRenamedRustState(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return RustStateImpl.frbInternalSseDecode(
+    return RenamedRustStateImpl.frbInternalSseDecode(
         sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
   }
 
@@ -762,11 +779,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
-          RustState self, SseSerializer serializer) {
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRenamedRustState(
+          RenamedRustState self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as RustStateImpl).frbInternalSseEncode(move: true), serializer);
+        (self as RenamedRustStateImpl).frbInternalSseEncode(move: true),
+        serializer);
   }
 
   @protected
@@ -781,20 +799,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
-          RustState self, SseSerializer serializer) {
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRenamedRustState(
+          RenamedRustState self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as RustStateImpl).frbInternalSseEncode(move: false), serializer);
+        (self as RenamedRustStateImpl).frbInternalSseEncode(move: false),
+        serializer);
   }
 
   @protected
   void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
-          RustState self, SseSerializer serializer) {
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRenamedRustState(
+          RenamedRustState self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as RustStateImpl).frbInternalSseEncode(move: false), serializer);
+        (self as RenamedRustStateImpl).frbInternalSseEncode(move: false),
+        serializer);
   }
 
   @protected
@@ -809,11 +829,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
-          RustState self, SseSerializer serializer) {
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRenamedRustState(
+          RenamedRustState self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as RustStateImpl).frbInternalSseEncode(move: null), serializer);
+        (self as RenamedRustStateImpl).frbInternalSseEncode(move: null),
+        serializer);
   }
 
   @protected
@@ -1050,56 +1071,58 @@ class BaseRustStateImpl extends RustOpaque implements BaseRustState {
 }
 
 @sealed
-class RustStateImpl extends RustOpaque implements RustState {
+class RenamedRustStateImpl extends RustOpaque implements RenamedRustState {
   // Not to be used by end users
-  RustStateImpl.frbInternalDcoDecode(List<dynamic> wire)
+  RenamedRustStateImpl.frbInternalDcoDecode(List<dynamic> wire)
       : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
-  RustStateImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
+  RenamedRustStateImpl.frbInternalSseDecode(
+      BigInt ptr, int externalSizeOnNative)
       : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_RustState,
+        RustLib.instance.api.rust_arc_increment_strong_count_RenamedRustState,
     rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_RustState,
-    rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_RustStatePtr,
+        RustLib.instance.api.rust_arc_decrement_strong_count_RenamedRustState,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance.api.rust_arc_decrement_strong_count_RenamedRustStatePtr,
   );
 
-  void add() => RustLib.instance.api.crateAppRustStateAdd(
+  void add() => RustLib.instance.api.crateAppRenamedRustStateAdd(
         that: this,
       );
 
   Filter get filter =>
-      RustLib.instance.api.crateAppRustStateAutoAccessorGetFilter(
+      RustLib.instance.api.crateAppRenamedRustStateAutoAccessorGetFilter(
         that: this,
       );
 
   String get inputText =>
-      RustLib.instance.api.crateAppRustStateAutoAccessorGetInputText(
+      RustLib.instance.api.crateAppRenamedRustStateAutoAccessorGetInputText(
         that: this,
       );
 
-  set filter(Filter filter) => RustLib.instance.api
-      .crateAppRustStateAutoAccessorSetFilter(that: this, filter: filter);
+  set filter(Filter filter) =>
+      RustLib.instance.api.crateAppRenamedRustStateAutoAccessorSetFilter(
+          that: this, filter: filter);
 
   set inputText(String inputText) =>
-      RustLib.instance.api.crateAppRustStateAutoAccessorSetInputText(
+      RustLib.instance.api.crateAppRenamedRustStateAutoAccessorSetInputText(
           that: this, inputText: inputText);
 
   List<Item> filteredItems() =>
-      RustLib.instance.api.crateAppRustStateFilteredItems(
+      RustLib.instance.api.crateAppRenamedRustStateFilteredItems(
         that: this,
       );
 
   void remove({required int id}) =>
-      RustLib.instance.api.crateAppRustStateRemove(that: this, id: id);
+      RustLib.instance.api.crateAppRenamedRustStateRemove(that: this, id: id);
 
   void setBaseState({required BaseRustState baseState}) => RustLib.instance.api
-      .crateAppRustStateSetBaseState(that: this, baseState: baseState);
+      .crateAppRenamedRustStateSetBaseState(that: this, baseState: baseState);
 
   void toggle({required int id}) =>
-      RustLib.instance.api.crateAppRustStateToggle(that: this, id: id);
+      RustLib.instance.api.crateAppRenamedRustStateToggle(that: this, id: id);
 }
