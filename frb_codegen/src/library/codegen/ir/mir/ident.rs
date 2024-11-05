@@ -17,8 +17,12 @@ impl MirIdent {
         }
     }
 
-    pub fn rust_style(&self) -> String {
-        self.rust_style.clone()
+    pub fn rust_style(&self, strip_raw_identifier: bool) -> String {
+        if strip_raw_identifier {
+            strip_prefix_rhash(&self.rust_style).to_owned()
+        } else {
+            self.rust_style.clone()
+        }
     }
 
     pub fn c_style(&self) -> String {
