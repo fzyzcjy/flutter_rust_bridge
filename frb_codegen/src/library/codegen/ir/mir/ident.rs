@@ -64,7 +64,7 @@ fn convert_rust_to_c_style(raw: &str) -> String {
     ans
 }
 
-fn convert_rust_to_dart_style(raw: &str) -> String {
+pub(crate) fn convert_rust_to_dart_style(raw: &str) -> String {
     let ans = strip_prefix_rhash(raw).to_case(Case::Camel);
     dart_keywords::escape(ans)
 }

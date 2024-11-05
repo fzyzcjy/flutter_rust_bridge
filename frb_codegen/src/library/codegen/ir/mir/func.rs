@@ -1,6 +1,7 @@
 use crate::codegen::generator::codec::structs::CodecModePack;
 use crate::codegen::ir::mir::comment::MirComment;
 use crate::codegen::ir::mir::field::MirField;
+use crate::codegen::ir::mir::ident::convert_rust_to_dart_style;
 use crate::codegen::ir::mir::ty::delegate::{
     MirTypeDelegate, MirTypeDelegatePrimitiveEnum, MirTypeDelegateProxyVariant,
 };
@@ -179,7 +180,7 @@ impl MirFunc {
     // }
 
     pub(crate) fn name_dart_api(&self) -> String {
-        (self.dart_name.clone()).unwrap_or_else(|| self.name.name.to_owned().to_case(Case::Camel))
+        (self.dart_name.clone()).unwrap_or_else(|| convert_rust_to_dart_style(&self.name.name))
     }
 
     pub(crate) fn name_dart_wire(&self) -> String {
