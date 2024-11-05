@@ -20,3 +20,7 @@ pub(crate) fn extract_src_types_in_paths<I: SynItemStructOrEnum>(
         })
         .collect_vec())
 }
+
+pub(crate) fn clear_raw_identifier(raw_name: &str) -> String {
+    raw_name.replace("r#", "")
+}
