@@ -83,13 +83,13 @@ Future<void> runRustApp<T>({
   required T Function() state,
 }) async {
   await RustLib.init();
-  runApp(_MyApp<T>(body: body, state: state()));
+  runApp(_MyApp(body: (s) => body(s), state: state()));
 }
 
 // improve typing later
-class _MyApp<T> extends StatefulWidget {
-  final Widget Function(T state) body;
-  final T state;
+class _MyApp extends StatefulWidget {
+  final Widget Function(dynamic state) body;
+  final dynamic state;
 
   const _MyApp({
     required this.body,
