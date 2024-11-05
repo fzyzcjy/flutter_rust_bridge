@@ -68,7 +68,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.5.1';
 
   @override
-  int get rustContentHash => -1088612256;
+  int get rustContentHash => 283146804;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -116,7 +116,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta get kCrateApiMinimalForConstMeta => const TaskConstMeta(
-        debugName: "for_",
+        debugName: "r#for",
         argNames: ["type"],
       );
 
@@ -139,7 +139,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta get kCrateApiMinimalInitAppConstMeta => const TaskConstMeta(
-        debugName: "initApp",
+        debugName: "init_app",
         argNames: [],
       );
 
@@ -165,7 +165,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiMinimalMinimalAdderConstMeta =>
       const TaskConstMeta(
-        debugName: "minimalAdder",
+        debugName: "minimal_adder",
         argNames: ["a", "b"],
       );
 
@@ -190,7 +190,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kCrateApiMinimalStructWithRawNameFieldDefaultConstMeta =>
       const TaskConstMeta(
-        debugName: "structWithRawNameFieldDefault",
+        debugName: "struct_with_raw_name_field_default",
         argNames: [],
       );
 
