@@ -93,7 +93,7 @@ fn generate_inner_func_args(func: &MirFunc) -> Vec<String> {
 fn generate_wrap_info_obj(func: &MirFunc) -> String {
     format!(
         "flutter_rust_bridge::for_generated::TaskInfo{{ debug_name: \"{name}\", port: {port}, mode: flutter_rust_bridge::for_generated::FfiCallMode::{mode} }}",
-        name = func.name.name,
+        name = func.name,
         port = if has_port_argument(func.mode) {
             "Some(port_)"
         } else {
@@ -254,7 +254,7 @@ fn generate_redirect_body(func: &MirFunc, params: &[ExternFuncParam]) -> String 
 }
 
 pub(crate) fn wire_func_name(func: &MirFunc) -> String {
-    format!("wire__{}__{}", func.namespace.safe_ident(), &func.name.name)
+    format!("wire__{}__{}", func.namespace.safe_ident(), &func.name)
 }
 
 fn ffi_call_mode(mode: MirFuncMode) -> &'static str {
