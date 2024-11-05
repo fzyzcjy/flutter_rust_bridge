@@ -93,7 +93,7 @@ fn generate_inner_func_args(func: &MirFunc) -> Vec<String> {
 fn generate_wrap_info_obj(func: &MirFunc) -> String {
     format!(
         "flutter_rust_bridge::for_generated::TaskInfo{{ debug_name: \"{name}\", port: {port}, mode: flutter_rust_bridge::for_generated::FfiCallMode::{mode} }}",
-        name = func.name.name,
+        name = func.name.rust_style(true),
         port = if has_port_argument(func.mode) {
             "Some(port_)"
         } else {
@@ -111,7 +111,11 @@ fn generate_code_call_inner_func_result(func: &MirFunc, inner_func_args: Vec<Str
     let mut ans = (func.rust_call_code.clone()).unwrap_or_else(|| {
         match &func.owner {
             MirFuncOwnerInfo::Function => {
-                format!("{}({})", func.name.rust_style(), inner_func_args.join(", "))
+                format!(
+                    "{}({})",
+                    func.name.rust_style(true),
+                    inner_func_args.join(", ")
+                )
             }
             MirFuncOwnerInfo::Method(method) => {
                 let owner_ty_name = method.owner_ty_name().unwrap().rust_style();
@@ -254,8 +258,11 @@ fn generate_redirect_body(func: &MirFunc, params: &[ExternFuncParam]) -> String 
 }
 
 pub(crate) fn wire_func_name(func: &MirFunc) -> String {
-    let name = &func.name;
-    format!("wire__{}__{}", name.namespace.safe_ident(), name.name)
+    format!(
+        "wire__{}__{}",
+        func.namespace.safe_ident(),
+        func.name.rust_style(true)
+    )
 }
 
 fn ffi_call_mode(mode: MirFuncMode) -> &'static str {

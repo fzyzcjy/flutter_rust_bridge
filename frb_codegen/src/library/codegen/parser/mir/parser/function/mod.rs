@@ -31,7 +31,7 @@ pub(crate) fn parse(
 fn sort_and_add_func_id(funcs: Vec<MirFunc>) -> Vec<MirFunc> {
     (funcs.into_iter())
         // to give downstream a stable output
-        .sorted_by_cached_key(|func| func.name.clone())
+        .sorted_by_cached_key(|func| func.name.rust_style(true).clone())
         .enumerate()
         .map(|(index, f)| MirFunc {
             id: Some((index + 1) as _),

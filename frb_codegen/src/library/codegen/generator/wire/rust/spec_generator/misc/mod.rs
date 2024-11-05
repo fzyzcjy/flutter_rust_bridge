@@ -260,7 +260,7 @@ fn generate_content_hash(mir_pack: &MirPack) -> i32 {
     let mut hasher = Sha1::new();
     hasher.update(
         (mir_pack.funcs_with_impl().iter())
-            .map(|func| func.name.rust_style())
+            .map(|func| func.name.rust_style(true))
             .sorted()
             .join("\n")
             .as_bytes(),

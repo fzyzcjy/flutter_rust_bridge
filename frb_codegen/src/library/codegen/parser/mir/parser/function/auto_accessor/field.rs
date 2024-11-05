@@ -70,11 +70,8 @@ pub(super) fn parse_auto_accessor_of_field(
     };
 
     let mir_func = MirFunc {
-        name: NamespacedName::new(
-            struct_name.namespace.clone(),
-            parse_effective_function_name_of_method(&owner),
-        ),
-        dart_name: None,
+        namespace: struct_name.namespace.clone(),
+        name: MirIdent::new(parse_effective_function_name_of_method(&owner), None),
         id: None,
         inputs,
         output: MirFuncOutput {
