@@ -7,18 +7,36 @@ Future<void> main() async {
   runApp(const MyApp());
 }
 
+Future<String?> _loadTestData() async {
+  try {
+    final jsonString =
+        await rootBundle.loadString('assets/test_data/training_plan.json');
+
+    final trainingPlan = TrainingPlan.testDeserialize(content: jsonString);
+    return "success";
+  } catch (e) {
+    print('Error loading test data: $e');
+    return null;
+  }
+}
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: const Text('flutter_rust_bridge quickstart')),
-        body: Center(
-          child: Text(
-              'Action: Call Rust `greet("Tom")`\nResult: `${greet(name: "Tom")}`'),
-        ),
+      home: FutureBuilder<String?>(
+        future: _loadTestData(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError || !snapshot.hasData) {
+            return const Center(child: Text('Error loading test data'));
+          } else {
+            return Center(child: Text(snapshot.data ?? "no title"));
+          }
+        },
       ),
     );
   }
