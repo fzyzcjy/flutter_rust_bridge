@@ -9,5 +9,5 @@ pub(crate) fn command_arg_maybe_fvm(pwd: &Path) -> Option<String> {
 }
 
 fn detect_fvm(pwd: &Path) -> bool {
-    TODO
+    pwd.join(".fvmrc").exists()
 }
