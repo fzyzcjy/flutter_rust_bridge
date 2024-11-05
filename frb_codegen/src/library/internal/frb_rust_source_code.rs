@@ -113,7 +113,7 @@ fn generate_dart_fn_deliver_output(target: Target) -> ExternFunc {
     };
 
     ExternFunc {
-        partial_func_name: "dart_fn_deliver_output".into(),
+        partial_func_name: "frb_dart_fn_deliver_output".into(),
         params,
         return_type: None,
         body: format!(
