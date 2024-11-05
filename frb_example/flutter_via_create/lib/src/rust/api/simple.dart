@@ -6,5 +6,29 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
+
 String greet({required String name}) =>
     RustLib.instance.api.crateApiSimpleGreet(name: name);
+
+class TrainingPlan {
+  final int weeks;
+
+  const TrainingPlan({
+    required this.weeks,
+  });
+
+  static TrainingPlan testDeserialize({required String content}) =>
+      RustLib.instance.api
+          .crateApiSimpleTrainingPlanTestDeserialize(content: content);
+
+  @override
+  int get hashCode => weeks.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TrainingPlan &&
+          runtimeType == other.runtimeType &&
+          weeks == other.weeks;
+}
