@@ -9,8 +9,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // These functions are ignored because they are not marked as `pub`: `check`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `assert_receiver_is_total_eq`, `clone`, `clone`, `eq`, `fmt`
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RenamedRustState>>
-abstract class RenamedRustState implements RustOpaqueInterface {
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustState>>
+abstract class RustState implements RustOpaqueInterface {
   void add();
 
   Filter get filter;
@@ -23,8 +23,7 @@ abstract class RenamedRustState implements RustOpaqueInterface {
 
   List<Item> filteredItems();
 
-  factory RenamedRustState() =>
-      RustLib.instance.api.crateAppRenamedRustStateNew();
+  factory RustState() => RustLib.instance.api.crateAppRustStateNew();
 
   void remove({required int id});
 
