@@ -43,6 +43,7 @@
 - kyrias: Use portable atomic.
 - Markus43: Fix folder removal.
 - Krysl: Add preamble.
+- SirKrlos: Fix fvm call.
 - Vollbrecht: Warn absolute path.
 - w-ensink: Improve doc. Fix CI. Refactor. Add tests.
 - smw-wagnerma: Improve Windows encoding handling.

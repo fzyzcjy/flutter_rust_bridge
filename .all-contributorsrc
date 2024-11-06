@@ -442,6 +442,15 @@
       ]
     },
     {
+      "login": "SirKrlos",
+      "name": "José Carlos",
+      "avatar_url": "https://avatars.githubusercontent.com/u/64156428?v=4",
+      "profile": "https://github.com/SirKrlos",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "Vollbrecht",
       "name": "Frederick Vollbrecht",
       "avatar_url": "https://avatars.githubusercontent.com/u/12041081?v=4",
@@ -998,15 +1007,6 @@
       "profile": "https://thesimplekid.com",
       "contributions": [
         "doc"
-      ]
-    },
-    {
-      "login": "SirKrlos",
-      "name": "José Carlos",
-      "avatar_url": "https://avatars.githubusercontent.com/u/64156428?v=4",
-      "profile": "https://github.com/SirKrlos",
-      "contributions": [
-        "code"
       ]
     }
   ],
