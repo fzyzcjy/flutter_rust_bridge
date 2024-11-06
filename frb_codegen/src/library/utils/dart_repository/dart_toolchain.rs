@@ -1,4 +1,5 @@
 use crate::commands::command_runner::call_shell;
+use crate::library::commands::fvm::command_arg_maybe_fvm;
 use crate::{command_args, command_run};
 use std::fmt::Display;
 use std::path::PathBuf;
@@ -46,7 +47,7 @@ impl DartToolchain {
             DartToolchain::Dart => "dart",
             DartToolchain::Flutter => "flutter",
         };
-        command_run!(call_shell[None, None], toolchain, "--version")
+        command_run!(call_shell[None, None], ?command_arg_maybe_fvm(None), toolchain, "--version")
             .unwrap()
             .status
             .success()
