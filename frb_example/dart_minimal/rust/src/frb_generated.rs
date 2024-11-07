@@ -119,7 +119,7 @@ fn wire__crate__api__minimal__load_xml_file_impl(
 #[allow(clippy::unnecessary_literal_unwrap)]
 const _: fn() = || {
     let FirstEntry = None::<xml_parser::FirstEntry>.unwrap();
-    let _: Box<xml_parser::FirstEntry> = FirstEntry.item;
+    let _: Option<Box<xml_parser::FirstEntry>> = FirstEntry.item;
 };
 
 // Section: dart2rust
@@ -142,7 +142,7 @@ impl SseDecode for Box<xml_parser::FirstEntry> {
 impl SseDecode for xml_parser::FirstEntry {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_item = <Box<xml_parser::FirstEntry>>::sse_decode(deserializer);
+        let mut var_item = <Option<Box<xml_parser::FirstEntry>>>::sse_decode(deserializer);
         return xml_parser::FirstEntry { item: var_item };
     }
 }
@@ -164,6 +164,17 @@ impl SseDecode for Option<xml_parser::FirstEntry> {
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         if (<bool>::sse_decode(deserializer)) {
             return Some(<xml_parser::FirstEntry>::sse_decode(deserializer));
+        } else {
+            return None;
+        }
+    }
+}
+
+impl SseDecode for Option<Box<xml_parser::FirstEntry>> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        if (<bool>::sse_decode(deserializer)) {
+            return Some(<Box<xml_parser::FirstEntry>>::sse_decode(deserializer));
         } else {
             return None;
         }
@@ -260,7 +271,7 @@ impl SseEncode for Box<xml_parser::FirstEntry> {
 impl SseEncode for xml_parser::FirstEntry {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <Box<xml_parser::FirstEntry>>::sse_encode(self.item, serializer);
+        <Option<Box<xml_parser::FirstEntry>>>::sse_encode(self.item, serializer);
     }
 }
 
@@ -280,6 +291,16 @@ impl SseEncode for Option<xml_parser::FirstEntry> {
         <bool>::sse_encode(self.is_some(), serializer);
         if let Some(value) = self {
             <xml_parser::FirstEntry>::sse_encode(value, serializer);
+        }
+    }
+}
+
+impl SseEncode for Option<Box<xml_parser::FirstEntry>> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <bool>::sse_encode(self.is_some(), serializer);
+        if let Some(value) = self {
+            <Box<xml_parser::FirstEntry>>::sse_encode(value, serializer);
         }
     }
 }

@@ -165,7 +165,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return FirstEntry(
-      item: dco_decode_box_first_entry(arr[0]),
+      item: dco_decode_opt_box_first_entry(arr[0]),
     );
   }
 
@@ -179,6 +179,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   FirstEntry? dco_decode_opt_box_autoadd_first_entry(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw == null ? null : dco_decode_box_autoadd_first_entry(raw);
+  }
+
+  @protected
+  FirstEntry? dco_decode_opt_box_first_entry(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return raw == null ? null : dco_decode_box_first_entry(raw);
   }
 
   @protected
@@ -215,7 +221,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   FirstEntry sse_decode_first_entry(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    var var_item = sse_decode_box_first_entry(deserializer);
+    var var_item = sse_decode_opt_box_first_entry(deserializer);
     return FirstEntry(item: var_item);
   }
 
@@ -233,6 +239,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
     if (sse_decode_bool(deserializer)) {
       return (sse_decode_box_autoadd_first_entry(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  FirstEntry? sse_decode_opt_box_first_entry(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_first_entry(deserializer));
     } else {
       return null;
     }
@@ -283,7 +300,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_first_entry(FirstEntry self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_box_first_entry(self.item, serializer);
+    sse_encode_opt_box_first_entry(self.item, serializer);
   }
 
   @protected
@@ -302,6 +319,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_bool(self != null, serializer);
     if (self != null) {
       sse_encode_box_autoadd_first_entry(self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_first_entry(
+      FirstEntry? self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_first_entry(self, serializer);
     }
   }
 
