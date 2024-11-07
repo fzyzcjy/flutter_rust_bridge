@@ -6,5 +6,8 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<int> minimalAdder({required int a, required int b}) =>
-    RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
+Future<XmlReadout?> loadXmlFile({required String filePath}) =>
+    RustLib.instance.api.crateApiMinimalLoadXmlFile(filePath: filePath);
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<XmlReadout>>
+abstract class XmlReadout implements RustOpaqueInterface {}
