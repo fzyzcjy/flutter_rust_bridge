@@ -38,6 +38,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   FirstEntry? dco_decode_opt_box_autoadd_first_entry(dynamic raw);
 
   @protected
+  FirstEntry? dco_decode_opt_box_first_entry(dynamic raw);
+
+  @protected
   int dco_decode_u_8(dynamic raw);
 
   @protected
@@ -61,6 +64,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   FirstEntry? sse_decode_opt_box_autoadd_first_entry(
       SseDeserializer deserializer);
+
+  @protected
+  FirstEntry? sse_decode_opt_box_first_entry(SseDeserializer deserializer);
 
   @protected
   int sse_decode_u_8(SseDeserializer deserializer);
@@ -93,6 +99,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_opt_box_autoadd_first_entry(
+      FirstEntry? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_first_entry(
       FirstEntry? self, SseSerializer serializer);
 
   @protected
