@@ -119,7 +119,7 @@ fn wire__crate__api__minimal__load_xml_file_impl(
 #[allow(clippy::unnecessary_literal_unwrap)]
 const _: fn() = || {
     let FirstEntry = None::<xml_parser::FirstEntry>.unwrap();
-    let _: Box<xml_parser::FirstEntry> = FirstEntry.item;
+    let _: Box<Option<xml_parser::FirstEntry>> = FirstEntry.item;
 };
 
 // Section: dart2rust
@@ -132,17 +132,17 @@ impl SseDecode for String {
     }
 }
 
-impl SseDecode for Box<xml_parser::FirstEntry> {
+impl SseDecode for Box<Option<xml_parser::FirstEntry>> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        return Box::new(<xml_parser::FirstEntry>::sse_decode(deserializer));
+        return Box::new(<Option<xml_parser::FirstEntry>>::sse_decode(deserializer));
     }
 }
 
 impl SseDecode for xml_parser::FirstEntry {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_item = <Box<xml_parser::FirstEntry>>::sse_decode(deserializer);
+        let mut var_item = <Box<Option<xml_parser::FirstEntry>>>::sse_decode(deserializer);
         return xml_parser::FirstEntry { item: var_item };
     }
 }
@@ -250,17 +250,17 @@ impl SseEncode for String {
     }
 }
 
-impl SseEncode for Box<xml_parser::FirstEntry> {
+impl SseEncode for Box<Option<xml_parser::FirstEntry>> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <xml_parser::FirstEntry>::sse_encode(*self, serializer);
+        <Option<xml_parser::FirstEntry>>::sse_encode(*self, serializer);
     }
 }
 
 impl SseEncode for xml_parser::FirstEntry {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <Box<xml_parser::FirstEntry>>::sse_encode(self.item, serializer);
+        <Box<Option<xml_parser::FirstEntry>>>::sse_encode(self.item, serializer);
     }
 }
 

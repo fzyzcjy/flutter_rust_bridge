@@ -153,9 +153,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  FirstEntry dco_decode_box_first_entry(dynamic raw) {
+  FirstEntry? dco_decode_box_opt_box_autoadd_first_entry(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dco_decode_first_entry(raw);
+    return raw as FirstEntry?;
   }
 
   @protected
@@ -165,7 +165,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return FirstEntry(
-      item: dco_decode_box_first_entry(arr[0]),
+      item: dco_decode_box_opt_box_autoadd_first_entry(arr[0]),
     );
   }
 
@@ -207,15 +207,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  FirstEntry sse_decode_box_first_entry(SseDeserializer deserializer) {
+  FirstEntry? sse_decode_box_opt_box_autoadd_first_entry(
+      SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return (sse_decode_first_entry(deserializer));
+    return (sse_decode_opt_box_autoadd_first_entry(deserializer));
   }
 
   @protected
   FirstEntry sse_decode_first_entry(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    var var_item = sse_decode_box_first_entry(deserializer);
+    var var_item = sse_decode_box_opt_box_autoadd_first_entry(deserializer);
     return FirstEntry(item: var_item);
   }
 
@@ -275,15 +276,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_box_first_entry(FirstEntry self, SseSerializer serializer) {
+  void sse_encode_box_opt_box_autoadd_first_entry(
+      FirstEntry? self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_first_entry(self, serializer);
+    sse_encode_opt_box_autoadd_first_entry(self, serializer);
   }
 
   @protected
   void sse_encode_first_entry(FirstEntry self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_box_first_entry(self.item, serializer);
+    sse_encode_box_opt_box_autoadd_first_entry(self.item, serializer);
   }
 
   @protected
