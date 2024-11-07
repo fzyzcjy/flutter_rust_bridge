@@ -1,5 +1,5 @@
 # See `pure_dart` example for comments on the configs
-rust_input: crate::api, xml_parser
+rust_input: rust/src/api/**/*.rs
 dart_output: lib/src/rust
 c_output: frb_generated.h
 dump_all: true
