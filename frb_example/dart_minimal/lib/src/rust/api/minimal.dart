@@ -4,10 +4,8 @@
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
 import '../frb_generated.dart';
+import '../third_party/xml_parser.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<XmlReadout?> loadXmlFile({required String filePath}) =>
+Future<FirstEntry?> loadXmlFile({required String filePath}) =>
     RustLib.instance.api.crateApiMinimalLoadXmlFile(filePath: filePath);
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<XmlReadout>>
-abstract class XmlReadout implements RustOpaqueInterface {}

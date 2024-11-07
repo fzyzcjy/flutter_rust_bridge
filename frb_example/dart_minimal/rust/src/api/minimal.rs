@@ -6,6 +6,6 @@ pub fn init_app() {
     flutter_rust_bridge::setup_default_user_utils();
 }
 
-pub fn load_xml_file(file_path: &str) -> Option<XmlReadout> {
+pub fn load_xml_file(file_path: &str) -> Option<FirstEntry> {
     panic!()
 }

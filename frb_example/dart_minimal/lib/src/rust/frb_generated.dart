@@ -10,6 +10,7 @@ import 'frb_generated.dart';
 import 'frb_generated.io.dart'
     if (dart.library.js_interop) 'frb_generated.web.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'third_party/xml_parser.dart';
 
 /// Main entrypoint of the Rust API
 class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
@@ -81,15 +82,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 abstract class RustLibApi extends BaseApi {
   Future<void> crateApiMinimalInitApp();
 
-  Future<XmlReadout?> crateApiMinimalLoadXmlFile({required String filePath});
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_XmlReadout;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_XmlReadout;
-
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_XmlReadoutPtr;
+  Future<FirstEntry?> crateApiMinimalLoadXmlFile({required String filePath});
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -124,7 +117,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<XmlReadout?> crateApiMinimalLoadXmlFile({required String filePath}) {
+  Future<FirstEntry?> crateApiMinimalLoadXmlFile({required String filePath}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -133,8 +126,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             funcId: 2, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerXmlReadout,
+        decodeSuccessData: sse_decode_opt_box_autoadd_first_entry,
         decodeErrorData: null,
       ),
       constMeta: kCrateApiMinimalLoadXmlFileConstMeta,
@@ -148,30 +140,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["filePath"],
       );
 
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_XmlReadout => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerXmlReadout;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_XmlReadout => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerXmlReadout;
-
-  @protected
-  XmlReadout
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerXmlReadout(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return XmlReadoutImpl.frbInternalDcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
-  XmlReadout
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerXmlReadout(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return XmlReadoutImpl.frbInternalDcoDecode(raw as List<dynamic>);
-  }
-
   @protected
   String dco_decode_String(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -179,12 +147,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  XmlReadout
-      dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerXmlReadout(
-          dynamic raw) {
+  FirstEntry dco_decode_box_autoadd_first_entry(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerXmlReadout(
-        raw);
+    return dco_decode_first_entry(raw);
+  }
+
+  @protected
+  FirstEntry dco_decode_box_first_entry(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_first_entry(raw);
+  }
+
+  @protected
+  FirstEntry dco_decode_first_entry(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return FirstEntry(
+      item: dco_decode_opt_box_first_entry(arr[0]),
+    );
   }
 
   @protected
@@ -194,14 +176,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  XmlReadout?
-      dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerXmlReadout(
-          dynamic raw) {
+  FirstEntry? dco_decode_opt_box_autoadd_first_entry(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw == null
-        ? null
-        : dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerXmlReadout(
-            raw);
+    return raw == null ? null : dco_decode_box_autoadd_first_entry(raw);
+  }
+
+  @protected
+  FirstEntry? dco_decode_opt_box_first_entry(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return raw == null ? null : dco_decode_box_first_entry(raw);
   }
 
   @protected
@@ -217,30 +200,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  BigInt dco_decode_usize(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dcoDecodeU64(raw);
-  }
-
-  @protected
-  XmlReadout
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerXmlReadout(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return XmlReadoutImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  XmlReadout
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerXmlReadout(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return XmlReadoutImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
   String sse_decode_String(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_prim_u_8_strict(deserializer);
@@ -248,12 +207,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  XmlReadout
-      sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerXmlReadout(
-          SseDeserializer deserializer) {
+  FirstEntry sse_decode_box_autoadd_first_entry(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return (sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerXmlReadout(
-        deserializer));
+    return (sse_decode_first_entry(deserializer));
+  }
+
+  @protected
+  FirstEntry sse_decode_box_first_entry(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_first_entry(deserializer));
+  }
+
+  @protected
+  FirstEntry sse_decode_first_entry(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_item = sse_decode_opt_box_first_entry(deserializer);
+    return FirstEntry(item: var_item);
   }
 
   @protected
@@ -264,14 +233,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  XmlReadout?
-      sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerXmlReadout(
-          SseDeserializer deserializer) {
+  FirstEntry? sse_decode_opt_box_autoadd_first_entry(
+      SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     if (sse_decode_bool(deserializer)) {
-      return (sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerXmlReadout(
-          deserializer));
+      return (sse_decode_box_autoadd_first_entry(deserializer));
+    } else {
+      return null;
+    }
+  }
+
+  @protected
+  FirstEntry? sse_decode_opt_box_first_entry(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    if (sse_decode_bool(deserializer)) {
+      return (sse_decode_box_first_entry(deserializer));
     } else {
       return null;
     }
@@ -289,12 +267,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  BigInt sse_decode_usize(SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return deserializer.buffer.getBigUint64();
-  }
-
-  @protected
   int sse_decode_i_32(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getInt32();
@@ -307,36 +279,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerXmlReadout(
-          XmlReadout self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as XmlReadoutImpl).frbInternalSseEncode(move: true), serializer);
-  }
-
-  @protected
-  void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerXmlReadout(
-          XmlReadout self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as XmlReadoutImpl).frbInternalSseEncode(move: null), serializer);
-  }
-
-  @protected
   void sse_encode_String(String self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_prim_u_8_strict(utf8.encoder.convert(self), serializer);
   }
 
   @protected
-  void
-      sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerXmlReadout(
-          XmlReadout self, SseSerializer serializer) {
+  void sse_encode_box_autoadd_first_entry(
+      FirstEntry self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerXmlReadout(
-        self, serializer);
+    sse_encode_first_entry(self, serializer);
+  }
+
+  @protected
+  void sse_encode_box_first_entry(FirstEntry self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_first_entry(self, serializer);
+  }
+
+  @protected
+  void sse_encode_first_entry(FirstEntry self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_opt_box_first_entry(self.item, serializer);
   }
 
   @protected
@@ -348,15 +312,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void
-      sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerXmlReadout(
-          XmlReadout? self, SseSerializer serializer) {
+  void sse_encode_opt_box_autoadd_first_entry(
+      FirstEntry? self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     sse_encode_bool(self != null, serializer);
     if (self != null) {
-      sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerXmlReadout(
-          self, serializer);
+      sse_encode_box_autoadd_first_entry(self, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_opt_box_first_entry(
+      FirstEntry? self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    sse_encode_bool(self != null, serializer);
+    if (self != null) {
+      sse_encode_box_first_entry(self, serializer);
     }
   }
 
@@ -372,12 +345,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_usize(BigInt self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    serializer.buffer.putBigUint64(self);
-  }
-
-  @protected
   void sse_encode_i_32(int self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     serializer.buffer.putInt32(self);
@@ -388,24 +355,4 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     serializer.buffer.putUint8(self ? 1 : 0);
   }
-}
-
-@sealed
-class XmlReadoutImpl extends RustOpaque implements XmlReadout {
-  // Not to be used by end users
-  XmlReadoutImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  XmlReadoutImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_XmlReadout,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_XmlReadout,
-    rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_XmlReadoutPtr,
-  );
 }
