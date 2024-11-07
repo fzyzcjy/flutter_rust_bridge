@@ -8,3 +8,4 @@ crate-type = ["cdylib"]
 
 [dependencies]
 flutter_rust_bridge = { path = "../../../frb_rust" }
+xml_parser = { path = "./src/xml_parser" }
