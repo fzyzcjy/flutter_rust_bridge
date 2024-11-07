@@ -239,7 +239,9 @@ fn pde_ffi_dispatcher_sync_impl(
 // Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for FrbWrapper<xml_parser::FirstEntry> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        [self.0.item.into_into_dart().into_dart()].into_dart()
+        Option::into_into_dart(self.0.item);
+        panic!();
+        // [self.0.item.into_into_dart().into_dart()].into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
