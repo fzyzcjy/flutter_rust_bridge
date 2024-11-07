@@ -7,7 +7,7 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 class FirstEntry {
-  final FirstEntry? item;
+  final FirstEntry item;
 
   const FirstEntry({
     required this.item,
