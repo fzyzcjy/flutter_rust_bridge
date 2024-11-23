@@ -406,6 +406,7 @@ const sidebars = {
                         'guides/how-to/stateful-rust',
                         'guides/how-to/protobuf-json',
                         'guides/how-to/ndk-init',
+                        'guides/how-to/build-release',
                         'guides/how-to/regression',
                         'guides/how-to/object-pool',
                         'guides/how-to/gitignore',
