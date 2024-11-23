@@ -832,7 +832,7 @@ jobs:
           # no `frb_example--flutter_via_integrate` since it is similar to `flutter_via_create`
         device:
           - "iPad (10th generation) Simulator (17.2)"
-          - "iPhone 14 Pro Max Simulator (17.2)"
+          - "iPhone 15 Pro Max Simulator (17.2)"
 
     steps:
       # setup
