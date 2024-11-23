@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkflutter_rust_bridge=self.webpackChunkflutter_rust_bridge||[]).push([[8423],{60804:(e,r,t)=>{t.r(r)}}]);
