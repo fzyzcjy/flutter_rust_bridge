@@ -23,7 +23,7 @@ exclude = [
 resolver = "2"
 
 [workspace.package]
-version = "2.5.0"
+version = "2.6.0"
 edition = "2021"
 license = "MIT"
 description = "High-level memory-safe binding generator for Flutter/Dart <-> Rust"
@@ -32,7 +32,7 @@ keywords = ["flutter", "dart", "ffi", "code-generation", "bindings"]
 categories = ["development-tools::ffi"]
 
 [workspace.dependencies]
-allo-isolate = { version = "0.1.25", features = ["anyhow"] }
+allo-isolate = { version = "0.1.26", features = ["anyhow"] }
 #allo-isolate = { git = "https://github.com/shekohex/allo-isolate", features = ["anyhow"] }
 anyhow = "1.0.64"
 chrono = "0.4.23"
@@ -41,9 +41,9 @@ uuid = "1.1.2"
 thiserror = "1.0"
 backtrace = "0.3.68"
 
-flutter_rust_bridge_macros = { path = "frb_macros", version = "=2.5.0" }
-flutter_rust_bridge = { path = "frb_rust", default-features = false, version = "=2.5.0" }
-flutter_rust_bridge_codegen = { path = "frb_codegen", version = "=2.5.0" }
+flutter_rust_bridge_macros = { path = "frb_macros", version = "=2.6.0" }
+flutter_rust_bridge = { path = "frb_rust", default-features = false, version = "=2.6.0" }
+flutter_rust_bridge_codegen = { path = "frb_codegen", version = "=2.6.0" }
 
 [profile.release.package.flutter_rust_bridge_codegen]
 strip = "debuginfo"

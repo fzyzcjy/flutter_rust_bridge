@@ -25,7 +25,10 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for EnumRefWireRustCodecDcoGenera
                 let tag = format!("{idx}.into_dart()");
                 let fields = (Some(tag).into_iter())
                     .chain(variant.kind.fields().iter().map(|field| {
-                        format!("{}.into_into_dart().into_dart()", field.name.rust_style())
+                        format!(
+                            "{}.into_into_dart().into_dart()",
+                            field.name.rust_style(false)
+                        )
                     }))
                     .join(",\n");
                 format!("[{fields}].into_dart()")

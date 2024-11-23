@@ -26,7 +26,7 @@ macro_rules! frb_generated_io_extern_func {
         }
 
         #[no_mangle]
-        pub extern "C" fn dart_fn_deliver_output(
+        pub extern "C" fn frb_dart_fn_deliver_output(
             call_id: i32,
             ptr_: *mut u8,
             rust_vec_len_: i32,
@@ -70,7 +70,7 @@ macro_rules! frb_generated_web_extern_func {
         }
 
         #[wasm_bindgen]
-        pub fn dart_fn_deliver_output(
+        pub fn frb_dart_fn_deliver_output(
             call_id: i32,
             ptr_: $crate::for_generated::PlatformGeneralizedUint8ListPtr,
             rust_vec_len_: i32,

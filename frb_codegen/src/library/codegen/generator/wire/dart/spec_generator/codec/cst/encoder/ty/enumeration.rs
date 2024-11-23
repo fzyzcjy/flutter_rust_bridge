@@ -60,7 +60,7 @@ impl<'a> EnumRefWireDartCodecCstGenerator<'a> {
                     .map(|field| {
                         format!(
                             "var pre_{} = cst_encode_{}(apiObj.{});",
-                            field.name.rust_style(),
+                            field.name.rust_style(true),
                             field.ty.safe_ident(),
                             field.name.dart_style()
                         )
@@ -72,7 +72,10 @@ impl<'a> EnumRefWireDartCodecCstGenerator<'a> {
                     .fields
                     .iter()
                     .map(|field| {
-                        format!("{r}.{name} = pre_{name};", name = field.name.rust_style())
+                        format!(
+                            "{r}.{name} = pre_{name};",
+                            name = field.name.rust_style(true)
+                        )
                     })
                     .join("\n");
 
@@ -108,6 +111,6 @@ fn generate_encode_body_variant(index: usize, variant: &MirEnumVariant) -> Strin
         "if (raw is {variant}) {{
             return [{index} {fields}].jsify()!;
         }}",
-        variant = variant.wrapper_name.rust_style(),
+        variant = variant.wrapper_name.rust_style(true),
     )
 }

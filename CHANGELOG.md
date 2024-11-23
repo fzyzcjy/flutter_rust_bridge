@@ -1,5 +1,19 @@
 # Changelog
 
+## 2.6.0
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Update syn as a transitive dependency to version 2.0 #2371 (thanks @anlumo)
+* Auto detect and use fvm #2390
+* More full support of raw identifiers #2391
+* Clear up symbols #2392
+* Allow ui_state attribute to be used with arbitrary associated struct name #2393
+
+## 2.5.1
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Upgrade allo-isolate to fix upstream bugs #2363
+
 ## 2.5.0
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.

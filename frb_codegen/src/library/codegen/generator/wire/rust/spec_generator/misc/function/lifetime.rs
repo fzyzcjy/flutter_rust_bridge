@@ -47,7 +47,7 @@ fn is_interest_field(field: &MirFuncInput) -> bool {
 }
 
 fn get_variable_name(field: &MirFuncInput) -> String {
-    field.inner.name.rust_style()
+    field.inner.name.rust_style(true)
 }
 
 pub(crate) fn generate_inner_func_arg(raw: &str, field: &MirFuncInput) -> String {

@@ -31,7 +31,7 @@
 - patmuk: Set MSRV. Fail fast. Improve message. Support relative config. Improve multiple docs. Fix warning.
 - banool: Fix pubspec parsing. Fix symbol-stripping doc.
 - AlexV525: Add Dart fix. Fix folder.
-- anlumo: Fix freezed + methods. Non-clone RustOpaque.
+- anlumo: Fix freezed + methods. Non-clone RustOpaque. Update syn.
 - temeddix: Fix broken CI. Custom num workers. Fix MacOS doc steps. Update doc. Make zero-copy defaultable.
 - NightFeather0615: Fix Vec bool.
 - fmeef: Add cargo feature flag.
@@ -43,6 +43,7 @@
 - kyrias: Use portable atomic.
 - Markus43: Fix folder removal.
 - Krysl: Add preamble.
+- SirKrlos: Fix fvm call.
 - Vollbrecht: Warn absolute path.
 - w-ensink: Improve doc. Fix CI. Refactor. Add tests.
 - smw-wagnerma: Improve Windows encoding handling.
@@ -78,6 +79,7 @@
 - canxin121: Fix permission.
 - pixelshot91: Update cargokit. Fix doc link.
 - TrackerSB: Bump allo-isolate.
+- bubnov: Improve doc.
 - Dampfwalze: Improve doc.
 - samuel-cavalcanti: Improve doc.
 - zaynetro: Improve doc.

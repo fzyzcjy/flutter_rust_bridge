@@ -442,6 +442,15 @@
       ]
     },
     {
+      "login": "SirKrlos",
+      "name": "José Carlos",
+      "avatar_url": "https://avatars.githubusercontent.com/u/64156428?v=4",
+      "profile": "https://github.com/SirKrlos",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "Vollbrecht",
       "name": "Frederick Vollbrecht",
       "avatar_url": "https://avatars.githubusercontent.com/u/12041081?v=4",
@@ -755,6 +764,15 @@
       "profile": "https://steinbrecher-bayern.de",
       "contributions": [
         "code"
+      ]
+    },
+    {
+      "login": "bubnov",
+      "name": "Slavik Bubnov",
+      "avatar_url": "https://avatars.githubusercontent.com/u/818612?v=4",
+      "profile": "https://github.com/bubnov",
+      "contributions": [
+        "doc"
       ]
     },
     {

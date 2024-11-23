@@ -81,7 +81,7 @@ fn generate_decode_statement(
 }
 
 fn get_variable_name(field: &MirFuncInput) -> String {
-    field.inner.name.rust_style()
+    field.inner.name.rust_style(true)
 }
 
 fn filter_interest_fields(func: &MirFunc) -> Vec<FieldInfo> {

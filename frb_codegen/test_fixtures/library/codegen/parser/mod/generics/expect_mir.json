@@ -166,7 +166,6 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "dart_name": null,
       "id": 1,
       "impl_mode": "Normal",
       "initializer": false,
@@ -219,7 +218,11 @@
         }
       ],
       "mode": "Normal",
-      "name": "crate::api/func_enum_bool",
+      "name": {
+        "dart_style": null,
+        "rust_style": "func_enum_bool"
+      },
+      "namespace": "crate::api",
       "output": {
         "error": null,
         "normal": {
@@ -242,7 +245,6 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "dart_name": null,
       "id": 2,
       "impl_mode": "Normal",
       "initializer": false,
@@ -295,7 +297,11 @@
         }
       ],
       "mode": "Normal",
-      "name": "crate::api/func_enum_string",
+      "name": {
+        "dart_style": null,
+        "rust_style": "func_enum_string"
+      },
+      "namespace": "crate::api",
       "output": {
         "error": null,
         "normal": {
@@ -318,7 +324,6 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "dart_name": null,
       "id": 3,
       "impl_mode": "Normal",
       "initializer": false,
@@ -371,7 +376,11 @@
         }
       ],
       "mode": "Normal",
-      "name": "crate::api/func_struct_bool",
+      "name": {
+        "dart_style": null,
+        "rust_style": "func_struct_bool"
+      },
+      "namespace": "crate::api",
       "output": {
         "error": null,
         "normal": {
@@ -394,7 +403,6 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "dart_name": null,
       "id": 4,
       "impl_mode": "Normal",
       "initializer": false,
@@ -447,7 +455,11 @@
         }
       ],
       "mode": "Normal",
-      "name": "crate::api/func_struct_string",
+      "name": {
+        "dart_style": null,
+        "rust_style": "func_struct_string"
+      },
+      "namespace": "crate::api",
       "output": {
         "error": null,
         "normal": {
@@ -470,7 +482,6 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "dart_name": null,
       "id": 5,
       "impl_mode": "Normal",
       "initializer": false,
@@ -523,7 +534,11 @@
         }
       ],
       "mode": "Normal",
-      "name": "crate::api/func_struct_string_repeated",
+      "name": {
+        "dart_style": null,
+        "rust_style": "func_struct_string_repeated"
+      },
+      "namespace": "crate::api",
       "output": {
         "error": null,
         "normal": {

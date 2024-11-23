@@ -80,13 +80,14 @@ where
     }
 }
 
-impl<T> IntoIntoDart<T> for Box<T>
+impl<T, D> IntoIntoDart<D> for Box<T>
 where
-    T: IntoDart,
+    T: IntoIntoDart<D>,
+    D: IntoDart,
 {
     #[inline(always)]
-    fn into_into_dart(self) -> T {
-        *self
+    fn into_into_dart(self) -> D {
+        (*self).into_into_dart()
     }
 }
 

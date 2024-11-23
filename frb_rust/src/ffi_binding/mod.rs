@@ -13,12 +13,16 @@ mod web;
 pub use web::*;
 
 #[no_mangle]
-pub unsafe extern "C" fn rust_vec_u8_new(len: i32) -> *mut u8 {
+pub unsafe extern "C" fn frb_rust_vec_u8_new(len: i32) -> *mut u8 {
     new_leak_vec_ptr::<u8>(0, len)
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn rust_vec_u8_resize(ptr: *mut u8, old_len: i32, new_len: i32) -> *mut u8 {
+pub unsafe extern "C" fn frb_rust_vec_u8_resize(
+    ptr: *mut u8,
+    old_len: i32,
+    new_len: i32,
+) -> *mut u8 {
     let mut vec = vec_from_leak_ptr(ptr, old_len);
     vec_resize(&mut vec, new_len);
     into_leak_vec_ptr(vec).0
@@ -37,6 +41,6 @@ fn vec_resize(vec: &mut Vec<u8>, new_len: i32) {
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn rust_vec_u8_free(ptr: *mut u8, len: i32) {
+pub unsafe extern "C" fn frb_rust_vec_u8_free(ptr: *mut u8, len: i32) {
     vec_from_leak_ptr(ptr, len);
 }

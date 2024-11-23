@@ -62,7 +62,7 @@ impl WireRustCodecEntrypointTrait<'_> for SseWireRustCodecEntrypoint {
             .map(|field| {
                 let gen = WireRustGenerator::new(field.inner.ty.clone(), context);
 
-                let name = field.inner.name.rust_style();
+                let name = field.inner.name.rust_style(true);
                 let effective_rust_api_type = (gen.generate_wire_func_call_decode_type())
                     .unwrap_or_else(|| field.inner.ty.rust_api_type());
 

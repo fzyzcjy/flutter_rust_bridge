@@ -43,7 +43,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
         let variant_name = if self.context.config.dart_enums_style {
             dart_keywords::escape(variant.name.dart_style())
         } else {
-            variant.name.rust_style().to_string()
+            variant.name.rust_style(true).to_string()
         };
 
         format!(
