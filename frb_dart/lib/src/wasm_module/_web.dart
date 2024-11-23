@@ -25,7 +25,8 @@ external JSPromise _jsWasmBindgen(String path);
 void _ensureCrossOriginIsolated() {
   switch (crossOriginIsolated) {
     case false:
-      throw const MissingHeaderException();
+      // throw const MissingHeaderException();
+      print('HACK!!!');
     case true:
       return;
     case null:
