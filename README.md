@@ -189,7 +189,7 @@ There are still many features not covered here, such as parsing third party pack
 Check out [the documentation](https://fzyzcjy.github.io/flutter_rust_bridge/) for [quickstart](https://fzyzcjy.github.io/flutter_rust_bridge/quickstart), [full guides](https://fzyzcjy.github.io/flutter_rust_bridge/guides) and more.
 
 ## 📎 P.S. Achieve ~60 FPS, no matter how janky the Flutter app was due to build/layout
-Here is my another open-source library :) https://github.com/fzyzcjy/flutter_smooth.
+Here is my other open-source library :) https://github.com/fzyzcjy/flutter_smooth.
 
 ## ✨ Acknowledgments and contributors
 
