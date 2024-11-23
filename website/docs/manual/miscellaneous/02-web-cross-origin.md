@@ -10,19 +10,17 @@ the web server needs to respond with the following headers:
 
 ## When `flutter run`
 
-### After Flutter 3.17
-
-A [pull request](https://github.com/flutter/flutter/pull/136297) has already been merged into Flutter in 2023 Oct.
-Then, doing it is as easy as:
-
 ```shell
 flutter run \
     --web-header=Cross-Origin-Opener-Policy=same-origin --web-header=Cross-Origin-Embedder-Policy=require-corp
 ```
 
-### Before Flutter 3.17
+<details>
+<summary>When using Flutter < 3.17</summary>
 
-Temporarily (before >=3.17), the Flutter source code installed on your computer needs to be hacked as follows.
+A [pull request](https://github.com/flutter/flutter/pull/136297) has already been merged into Flutter in 2023 Oct.
+
+If you are still using Flutter before 3.17, the Flutter source code installed on your computer needs to be hacked as follows.
 
 Suppose your `flutter` is installed at `/whatever-path/bin/flutter` (this can be found by e.g. `which flutter`).
 Firstly, modify the file at `/whatever-path/packages/flutter_tools/lib/src/isolated/devfs_web.dart`.
@@ -49,6 +47,8 @@ Secondly, you need to remove the following file to let Flutter understand the so
 ```shell
 rm /whatever-path/bin/cache/flutter_tools.stamp
 ```
+
+</details>
 
 ## When deploy
 
