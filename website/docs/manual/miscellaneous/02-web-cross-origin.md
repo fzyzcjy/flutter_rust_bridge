@@ -10,15 +10,14 @@ the web server needs to respond with the following headers:
 
 ## When `flutter run`
 
+Thanks to [this pull request](https://github.com/flutter/flutter/pull/136297), we can:
+
 ```shell
-flutter run \
-    --web-header=Cross-Origin-Opener-Policy=same-origin --web-header=Cross-Origin-Embedder-Policy=require-corp
+flutter run --web-header=Cross-Origin-Opener-Policy=same-origin --web-header=Cross-Origin-Embedder-Policy=require-corp
 ```
 
 <details>
-<summary>When using Flutter < 3.17</summary>
-
-A [pull request](https://github.com/flutter/flutter/pull/136297) has already been merged into Flutter in 2023 Oct.
+<summary>When using Flutter &lt; 3.17</summary>
 
 If you are still using Flutter before 3.17, the Flutter source code installed on your computer needs to be hacked as follows.
 
@@ -49,6 +48,14 @@ rm /whatever-path/bin/cache/flutter_tools.stamp
 ```
 
 </details>
+
+## When `flutter drive`
+
+Thanks to [this pull request](https://github.com/flutter/flutter/pull/136297), we can do something similar:
+
+```shell
+flutter drive --web-header=Cross-Origin-Opener-Policy=same-origin --web-header=Cross-Origin-Embedder-Policy=require-corp
+```
 
 ## When deploy
 
