@@ -70,6 +70,7 @@
 - vhdirk: Support dashed crate.
 - rhian-cs: Add Cargo workspace doc.
 - TENX-S: Improve doc. Reproduce a bug.
+- CJBuchel: Remove throw.
 - polypixeldev: Improve doc.
 - CicadaCinema: Bump version. Improve doc.
 - CosmicHorrorDev: Change deps.
