@@ -1017,6 +1017,16 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "CJBuchel",
+      "name": "Connor J Buchel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/35585061?v=4",
+      "profile": "https://github.com/CJBuchel",
+      "contributions": [
+        "code",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
