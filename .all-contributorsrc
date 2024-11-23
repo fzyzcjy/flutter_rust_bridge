@@ -1008,6 +1008,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "ernstvanderlinden",
+      "name": "Ernest M. van der Linden",
+      "avatar_url": "https://avatars.githubusercontent.com/u/23011957?v=4",
+      "profile": "https://github.com/ernstvanderlinden",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
