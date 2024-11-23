@@ -60,7 +60,7 @@ Thanks to [this pull request](https://github.com/flutter/flutter/pull/136297), w
 flutter drive --web-header=Cross-Origin-Opener-Policy=same-origin --web-header=Cross-Origin-Embedder-Policy=require-corp
 ```
 
-## When `flutter run` without cross-origin
+## Use without cross-origin headers
 While not recommended, it is possible to use FRB WASM without using cross-origin isolation.
 Such as in rare cases where HTTPS hosting is not an option.
 In these cases most browsers (for security reasons) will ignore cross-origin headers unless a valid HTTPS connection is made.
