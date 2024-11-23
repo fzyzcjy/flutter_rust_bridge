@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:js_interop';
 
-import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
 import 'package:web/web.dart' as web;
 
@@ -25,7 +24,10 @@ external JSPromise _jsWasmBindgen(String path);
 void _ensureCrossOriginIsolated() {
   switch (crossOriginIsolated) {
     case false:
-      throw const MissingHeaderException();
+      web.console.warn(
+          'Warning: Buffers cannot be shared due to missing cross-origin headers. Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/manual/miscellaneous/web-cross-origin for details.'
+              .toJS);
+      return;
     case true:
       return;
     case null:

@@ -3,10 +3,13 @@
 ## Background
 
 When using Rust (WASM) and Flutter on the web platform,
-the web server needs to respond with the following headers:
+the web server needs to respond with the following headers to enable shared buffers:
 
 - `Cross-Origin-Opener-Policy`: `same-origin`
 - `Cross-Origin-Embedder-Policy`: `credentialless` OR `require-corp` (Safari seems to need `require-corp`)
+
+Cross-origin isolated documents have less restrictions on advanced features, such as asynchronous WASM which utilize shared buffers.
+You can read more about crossOriginIsolation [here](https://developer.mozilla.org/en-US/docs/Web/API/Window/crossOriginIsolated).
 
 ## When `flutter run`
 
@@ -57,6 +60,19 @@ Thanks to [this pull request](https://github.com/flutter/flutter/pull/136297), w
 flutter drive --web-header=Cross-Origin-Opener-Policy=same-origin --web-header=Cross-Origin-Embedder-Policy=require-corp
 ```
 
-## When deploy
+## When `flutter run` without cross-origin
+While not recommended, it is possible to use FRB WASM without using cross-origin isolation.
+Such as in rare cases where HTTPS hosting is not an option.
+In these cases most browsers (for security reasons) will ignore cross-origin headers unless a valid HTTPS connection is made.
+To avoid this we can restrict ourselves to only using the main thread, and making sure we don't try and spawn any more.
+This will stop the need for shared buffers, and likewise will not need the cross-origin headers sent by the web server.
 
+In rust
+- `pub async fn`: On main thread (when in web)
+- `#[frb(sync)] pub fn`: On main thread
+- `pub fn`: NOT on the main thread by default
+
+Alternatively use option `default_dart_async: false` to avoid annotating each function with `#[frb(sync)]`
+
+## When deploy
 Please refer to the web server you are using to see how to add these HTTP headers.

@@ -31,20 +31,6 @@ abstract class FrbBacktracedException extends FrbException {
   String get backtrace;
 }
 
-/// Thrown when the browser is not run in a [cross-origin isolated] environment.
-///
-/// [cross-origin isolated]: https://developer.mozilla.org/en-US/docs/Web/API/crossOriginIsolated
-class MissingHeaderException implements FrbException {
-  /// Constructs an exception
-  const MissingHeaderException();
-
-  static const _message =
-      '''Buffers cannot be shared due to missing cross-origin headers. Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/manual/miscellaneous/web-cross-origin for details.''';
-
-  @override
-  String toString() => _message;
-}
-
 /// Platform is not matched
 class PlatformMismatchException implements FrbException {
   /// Constructs an exception
