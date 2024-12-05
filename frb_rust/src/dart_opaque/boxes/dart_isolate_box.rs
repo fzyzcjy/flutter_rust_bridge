@@ -28,11 +28,11 @@ impl<T: Debug> AsRef<T> for DartIsolateBox<T> {
 }
 
 #[derive(Debug, PartialEq, Eq)]
-pub(crate) struct GuardedBoxContextDartIsolate(dart_sys_fork::Dart_Isolate);
+pub(crate) struct GuardedBoxContextDartIsolate(dart_sys::Dart_Isolate);
 
 impl GuardedBoxContext for GuardedBoxContextDartIsolate {
     fn current() -> Self {
-        Self(unsafe { dart_sys_fork::Dart_CurrentIsolate_DL.unwrap()() })
+        Self(unsafe { dart_sys::Dart_CurrentIsolate_DL.unwrap()() })
     }
 }
 
