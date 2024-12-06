@@ -45,7 +45,7 @@ class MultiPackageCBinding {
   /// \param message The message to send.
   ///
   /// \return True if the message was posted.
-  int Dart_PostCObject(
+  bool Dart_PostCObject(
     int port_id,
     ffi.Pointer<Dart_CObject> message,
   ) {
@@ -57,10 +57,10 @@ class MultiPackageCBinding {
 
   late final _Dart_PostCObjectPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int Function(
+          ffi.Bool Function(
               Dart_Port, ffi.Pointer<Dart_CObject>)>>('Dart_PostCObject');
   late final _Dart_PostCObject = _Dart_PostCObjectPtr.asFunction<
-      int Function(int, ffi.Pointer<Dart_CObject>)>();
+      bool Function(int, ffi.Pointer<Dart_CObject>)>();
 
   /// Posts a message on some port. The message will contain the integer 'message'.
   ///
@@ -68,7 +68,7 @@ class MultiPackageCBinding {
   /// \param message The message to send.
   ///
   /// \return True if the message was posted.
-  int Dart_PostInteger(
+  bool Dart_PostInteger(
     int port_id,
     int message,
   ) {
@@ -79,10 +79,10 @@ class MultiPackageCBinding {
   }
 
   late final _Dart_PostIntegerPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(Dart_Port, ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(Dart_Port, ffi.Int64)>>(
           'Dart_PostInteger');
   late final _Dart_PostInteger =
-      _Dart_PostIntegerPtr.asFunction<int Function(int, int)>();
+      _Dart_PostIntegerPtr.asFunction<bool Function(int, int)>();
 
   /// Creates a new native port.  When messages are received on this
   /// native port, then they will be dispatched to the provided native
@@ -98,7 +98,7 @@ class MultiPackageCBinding {
   int Dart_NewNativePort(
     ffi.Pointer<ffi.Char> name,
     Dart_NativeMessageHandler handler,
-    ffi.Pointer<bool> handle_concurrently,
+    bool handle_concurrently,
   ) {
     return _Dart_NewNativePort(
       name,
@@ -110,41 +110,9 @@ class MultiPackageCBinding {
   late final _Dart_NewNativePortPtr = _lookup<
       ffi.NativeFunction<
           Dart_Port Function(ffi.Pointer<ffi.Char>, Dart_NativeMessageHandler,
-              ffi.Pointer<bool>)>>('Dart_NewNativePort');
+              ffi.Bool)>>('Dart_NewNativePort');
   late final _Dart_NewNativePort = _Dart_NewNativePortPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Char>, Dart_NativeMessageHandler,
-          ffi.Pointer<bool>)>();
-
-  /// Creates a new native port.  When messages are received on this
-  /// native port, then they will be dispatched to the provided native
-  /// message handler using up to |max_concurrency| concurrent threads.
-  ///
-  /// \param name The name of this port in debugging messages.
-  /// \param handler The C handler to run when messages arrive on the port.
-  /// \param max_concurrency Size of the thread pool used by the native port.
-  ///
-  /// \return If successful, returns the port id for the native port.  In
-  /// case of error, returns ILLEGAL_PORT.
-  int Dart_NewConcurrentNativePort(
-    ffi.Pointer<ffi.Char> name,
-    Dart_NativeMessageHandler handler,
-    int max_concurrency,
-  ) {
-    return _Dart_NewConcurrentNativePort(
-      name,
-      handler,
-      max_concurrency,
-    );
-  }
-
-  late final _Dart_NewConcurrentNativePortPtr = _lookup<
-      ffi.NativeFunction<
-          Dart_Port Function(ffi.Pointer<ffi.Char>, Dart_NativeMessageHandler,
-              ffi.IntPtr)>>('Dart_NewConcurrentNativePort');
-  late final _Dart_NewConcurrentNativePort =
-      _Dart_NewConcurrentNativePortPtr.asFunction<
-          int Function(
-              ffi.Pointer<ffi.Char>, Dart_NativeMessageHandler, int)>();
+      int Function(ffi.Pointer<ffi.Char>, Dart_NativeMessageHandler, bool)>();
 
   /// Closes the native port with the given id.
   ///
@@ -153,7 +121,7 @@ class MultiPackageCBinding {
   /// \param native_port_id The id of the native port to close.
   ///
   /// \return Returns true if the port was closed successfully.
-  int Dart_CloseNativePort(
+  bool Dart_CloseNativePort(
     int native_port_id,
   ) {
     return _Dart_CloseNativePort(
@@ -162,10 +130,10 @@ class MultiPackageCBinding {
   }
 
   late final _Dart_CloseNativePortPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(Dart_Port)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(Dart_Port)>>(
           'Dart_CloseNativePort');
   late final _Dart_CloseNativePort =
-      _Dart_CloseNativePortPtr.asFunction<int Function(int)>();
+      _Dart_CloseNativePortPtr.asFunction<bool Function(int)>();
 
   /// Forces all loaded classes and functions to be compiled eagerly in
   /// the current isolate..
@@ -533,6 +501,7 @@ final class _Dart_CObject extends ffi.Struct {
 }
 
 final class UnnamedUnion1 extends ffi.Union {
+  @ffi.Bool()
   external bool as_bool;
 
   @ffi.Int32()
@@ -558,36 +527,6 @@ final class UnnamedUnion1 extends ffi.Union {
 
   external UnnamedStruct6 as_native_pointer;
 }
-
-/// An isolate initialization callback function.
-///
-/// This callback, provided by the embedder, is called when the VM has created an
-/// isolate within an existing isolate group (i.e. from the same source as an
-/// existing isolate).
-///
-/// The callback should setup native resolvers and might want to set a custom
-/// message handler via [Dart_SetMessageNotifyCallback] and mark the isolate as
-/// runnable.
-///
-/// This callback may be called on a different thread than the one
-/// running the parent isolate.
-///
-/// When the function returns `false`, it is the responsibility of this
-/// function to ensure that `Dart_ShutdownIsolate` has been called.
-///
-/// When the function returns `false`, the function should set *error to
-/// a malloc-allocated buffer containing a useful error message.  The
-/// caller of this function (the VM) will make sure that the buffer is
-/// freed.
-///
-/// \param child_isolate_data The callback data to associate with the new
-/// child isolate.
-/// \param error A structure into which the embedder can place a
-/// C string containing an error message in the case the initialization fails.
-///
-/// \return The embedder returns true if the initialization was successful and
-/// false otherwise (in which case the VM will terminate the isolate).
-typedef bool = ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Int>)>;
 
 final class UnnamedStruct1 extends ffi.Struct {
   @Dart_Port()
@@ -710,10 +649,10 @@ final class DartCObject extends ffi.Opaque {}
 /// return true if the message was posted.
 typedef DartPostCObjectFnType
     = ffi.Pointer<ffi.NativeFunction<DartPostCObjectFnTypeFunction>>;
-typedef DartPostCObjectFnTypeFunction = ffi.Int Function(
-    DartPort, ffi.Pointer<DartCObject>);
-typedef DartDartPostCObjectFnTypeFunction = int Function(
-    DartDartPort, ffi.Pointer<DartCObject>);
+typedef DartPostCObjectFnTypeFunction = ffi.Bool Function(
+    DartPort port_id, ffi.Pointer<DartCObject> message);
+typedef DartDartPostCObjectFnTypeFunction = bool Function(
+    DartDartPort port_id, ffi.Pointer<DartCObject> message);
 
 /// A port is used to send or receive inter-isolate messages
 typedef DartPort = ffi.Int64;
