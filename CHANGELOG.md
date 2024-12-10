@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.7.0
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Remove default case in enums #2439 (thanks @Tienisto)
+* Switch from dart-sys-fork to dart-sys #2438 (thanks @evdokimovs)
+* Fix call build-web with fvm support #2429 (thanks @SirKrlos)
+* Replaced WASM header exception with warning #2423 (thanks @CJBuchel)
+* Fix Option<Box<T>> compilation error in DCO codec #2398
+* Fix call toolchain version with fvm support #2395 (thanks @SirKrlos)
+* Doc update and linting: #2423 (thanks @CJBuchel), #2422, #2421, #2349 (thanks @ernstvanderlinden), #2394
+
 ## 2.6.0
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
