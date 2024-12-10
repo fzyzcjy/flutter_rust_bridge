@@ -35268,6 +35268,9 @@ impl flutter_rust_bridge::IntoDart
             web_audio_api::context::AudioContextLatencyCategory::Custom(field0) => {
                 [3.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
+            _ => {
+                unimplemented!("");
+            }
         }
     }
 }
@@ -35426,6 +35429,9 @@ impl flutter_rust_bridge::IntoDart for crate::frb_generated::AudioNodeImplemento
             crate::frb_generated::AudioNodeImplementor::Variant22(field0) => {
                 [22.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
+            _ => {
+                unimplemented!("");
+            }
         }
     }
 }
@@ -35570,7 +35576,7 @@ crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAu
 field0.into_into_dart().into_dart()].into_dart() }
 crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum::Variant31(field0) => { [31.into_dart(),
 field0.into_into_dart().into_dart()].into_dart() }
- }
+ _ => { unimplemented!(""); }}
                 }
             }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum {}
@@ -35584,7 +35590,7 @@ impl flutter_rust_bridge::IntoDart for crate::frb_generated::Auto_Ref_RustOpaque
                 fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
                     match self {crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum::Variant0(field0) => { [0.into_dart(),
 field0.into_into_dart().into_dart()].into_dart() }
- }
+ _ => { unimplemented!(""); }}
                 }
             }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum {}
@@ -37245,6 +37251,9 @@ impl SseEncode for web_audio_api::context::AudioContextLatencyCategory {
                 <i32>::sse_encode(3, serializer);
                 <f64>::sse_encode(field0, serializer);
             }
+            _ => {
+                unimplemented!("");
+            }
         }
     }
 }
@@ -37397,6 +37406,9 @@ impl SseEncode for crate::frb_generated::AudioNodeImplementor {
                 <i32>::sse_encode(22, serializer);
                 <RustAutoOpaqueMoi<WaveShaperNode>>::sse_encode(field0, serializer);
             }
+            _ => {
+                unimplemented!("");
+            }
         }
     }
 }
@@ -37497,14 +37509,14 @@ crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAu
  }
 crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum::Variant31(field0) => { <i32>::sse_encode(31, serializer); <RustAutoOpaqueMoi<StereoPannerNode>>::sse_encode(field0, serializer);
  }
- }}
+ _ => { unimplemented!(""); }}}
                 }
 
 impl SseEncode for crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum {
                     // Codec=Sse (Serialization based), see doc to use other codecs
                     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {match self {crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum::Variant0(field0) => { <i32>::sse_encode(0, serializer); <RustAutoOpaqueMoi<MediaStreamAudioDestinationNode>>::sse_encode(field0, serializer);
  }
- }}
+ _ => { unimplemented!(""); }}}
                 }
 
 impl SseEncode for web_audio_api::AutomationRate {
