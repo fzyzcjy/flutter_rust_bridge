@@ -111,7 +111,11 @@ pub(crate) fn generate_enum_encode_rust_general(
         })
         .collect_vec();
 
-    lang.switch_expr(self_ref, &variants, None)
+    lang.switch_expr(
+        self_ref,
+        &variants,
+        matches!(lang, Lang::RustLang(_)).then(|| format!("{};", lang.throw_unimplemented(""))),
+    )
 }
 
 fn pattern_match_enum_variant(lang: &Lang, variant: &MirEnumVariant) -> String {
