@@ -176,7 +176,7 @@ Future<void> generateInternalBookHelp(GenerateConfig config) async {
         relativePwd: 'frb_codegen',
         coverage: config.coverage,
         coverageName: 'GenerateInternalBookHelp',
-        extraEnv: {'RUST_LOG': 'ERROR'},
+        extraEnv: {'RUST_LOG': 'error'},
       );
       File('${exec.pwd}website/docs/generated/_frb-codegen-command-${cmd.isEmpty ? "main" : cmd}.mdx')
           .writeAsStringSync('```\n${resp.stdout}```');
