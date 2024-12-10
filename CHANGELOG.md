@@ -7,7 +7,7 @@
 * Switch from dart-sys-fork to dart-sys #2438 (thanks @evdokimovs)
 * Fix call build-web with fvm support #2429 (thanks @SirKrlos)
 * Replaced WASM header exception with warning #2423 (thanks @CJBuchel)
-* Fix Option<Box<T>> compilation error in DCO codec #2398
+* Fix Option Box compilation error in DCO codec #2398
 * Fix call toolchain version with fvm support #2395 (thanks @SirKrlos)
 * Doc update and linting: #2423 (thanks @CJBuchel), #2422, #2421, #2349 (thanks @ernstvanderlinden), #2394
 
