@@ -176,6 +176,7 @@ Future<void> generateInternalBookHelp(GenerateConfig config) async {
         relativePwd: 'frb_codegen',
         coverage: config.coverage,
         coverageName: 'GenerateInternalBookHelp',
+        extraEnv: {'RUST_LOG': 'ERROR'},
       );
       File('${exec.pwd}website/docs/generated/_frb-codegen-command-${cmd.isEmpty ? "main" : cmd}.mdx')
           .writeAsStringSync('```\n${resp.stdout}```');
@@ -379,17 +380,18 @@ Future<RunCommandOutput> executeFrbCodegen(
   bool postRelease = false,
   required String coverageName,
   bool nightly = false,
+  Map<String, String>? extraEnv,
 }) async {
   if (postRelease) {
     assert(!coverage);
     return await exec('flutter_rust_bridge_codegen $cmd',
-        relativePwd: relativePwd);
+        relativePwd: relativePwd, extraEnv: extraEnv);
   } else {
     final outputCodecovPath = '${getCoverageDir(coverageName)}/codecov.json';
     final ans = await exec(
       'cargo ${nightly ? "+nightly" : ""} ${coverage ? "llvm-cov run --codecov --output-path $outputCodecovPath" : "run"} --manifest-path ${exec.pwd}frb_codegen/Cargo.toml -- $cmd',
       relativePwd: relativePwd,
-      extraEnv: {'RUST_BACKTRACE': '1'},
+      extraEnv: {'RUST_BACKTRACE': '1', ...?extraEnv},
     );
     if (coverage) transformCodecovReport(outputCodecovPath);
     return ans;
