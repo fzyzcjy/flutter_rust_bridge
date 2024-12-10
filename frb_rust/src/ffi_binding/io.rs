@@ -9,7 +9,7 @@ use crate::platform_types::{WireSyncRust2DartDco, WireSyncRust2DartSse};
 #[no_mangle]
 pub unsafe extern "C" fn frb_init_frb_dart_api_dl(data: *mut std::ffi::c_void) -> isize {
     #[cfg(feature = "dart-opaque")]
-    return dart_sys_fork::Dart_InitializeApiDL(data);
+    return dart_sys::Dart_InitializeApiDL(data);
     #[cfg(not(feature = "dart-opaque"))]
     return 0;
 }

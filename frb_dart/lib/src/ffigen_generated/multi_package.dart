@@ -114,6 +114,37 @@ class MultiPackageCBinding {
   late final _Dart_NewNativePort = _Dart_NewNativePortPtr.asFunction<
       int Function(ffi.Pointer<ffi.Char>, Dart_NativeMessageHandler, bool)>();
 
+  /// Creates a new native port.  When messages are received on this
+  /// native port, then they will be dispatched to the provided native
+  /// message handler using up to |max_concurrency| concurrent threads.
+  ///
+  /// \param name The name of this port in debugging messages.
+  /// \param handler The C handler to run when messages arrive on the port.
+  /// \param max_concurrency Size of the thread pool used by the native port.
+  ///
+  /// \return If successful, returns the port id for the native port.  In
+  /// case of error, returns ILLEGAL_PORT.
+  int Dart_NewConcurrentNativePort(
+    ffi.Pointer<ffi.Char> name,
+    Dart_NativeMessageHandler handler,
+    int max_concurrency,
+  ) {
+    return _Dart_NewConcurrentNativePort(
+      name,
+      handler,
+      max_concurrency,
+    );
+  }
+
+  late final _Dart_NewConcurrentNativePortPtr = _lookup<
+      ffi.NativeFunction<
+          Dart_Port Function(ffi.Pointer<ffi.Char>, Dart_NativeMessageHandler,
+              ffi.IntPtr)>>('Dart_NewConcurrentNativePort');
+  late final _Dart_NewConcurrentNativePort =
+      _Dart_NewConcurrentNativePortPtr.asFunction<
+          int Function(
+              ffi.Pointer<ffi.Char>, Dart_NativeMessageHandler, int)>();
+
   /// Closes the native port with the given id.
   ///
   /// The port must have been allocated by a call to Dart_NewNativePort.
