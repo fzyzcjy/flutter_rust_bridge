@@ -39,9 +39,7 @@ pub fn configure_opinionated_logging(path: &str, verbose: bool) -> Result<(), fe
             .level(LevelFilter::Info)
             .level_for("cbindgen", LevelFilter::Error)
             .chain(std::io::stdout()),
-        // frb-coverage:ignore-start
-        _ => panic!("only allow \"debug\" or \"info\""),
-        // frb-coverage:ignore-end
+        _ => fern_logger.level(level_filter).chain(std::io::stdout()),
     };
 
     let (max_level, fern_logger) = fern_logger.into_log();

@@ -114,7 +114,7 @@ pub(crate) fn generate_enum_encode_rust_general(
     lang.switch_expr(
         self_ref,
         &variants,
-        Some(format!("{};", lang.throw_unimplemented(""))),
+        matches!(lang, Lang::RustLang(_)).then(|| format!("{};", lang.throw_unimplemented(""))),
     )
 }
 
