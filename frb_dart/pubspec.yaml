@@ -1,6 +1,6 @@
 name: flutter_rust_bridge
 description: Flutter/Dart <-> Rust binding generator, feature-rich, but seamless and simple
-version: 2.6.0
+version: 2.7.0
 repository: https://github.com/fzyzcjy/flutter_rust_bridge
 environment:
   sdk: ">=3.4.0 <4.0.0"
