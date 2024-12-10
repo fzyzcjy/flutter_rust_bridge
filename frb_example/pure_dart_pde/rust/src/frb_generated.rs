@@ -43805,9 +43805,6 @@ impl flutter_rust_bridge::IntoDart for crate::api::misc_example::AbcTwinNormal {
             crate::api::misc_example::AbcTwinNormal::JustInt(field0) => {
                 [3.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -43840,9 +43837,6 @@ impl flutter_rust_bridge::IntoDart
             crate::api::pseudo_manual::misc_example_twin_rust_async::AbcTwinRustAsync::JustInt(
                 field0,
             ) => [3.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -43878,9 +43872,6 @@ impl flutter_rust_bridge::IntoDart
             }
             crate::api::pseudo_manual::misc_example_twin_sync::AbcTwinSync::JustInt(field0) => {
                 [3.into_dart(), field0.into_into_dart().into_dart()].into_dart()
-            }
-            _ => {
-                unimplemented!("");
             }
         }
     }
@@ -44030,9 +44021,6 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::api::mirror::Applicatio
             ]
             .into_dart(),
             crate::api::mirror::ApplicationMessage::Exit => [2.into_dart()].into_dart(),
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -44172,7 +44160,7 @@ impl flutter_rust_bridge::IntoDart for crate::frb_generated::Auto_Ref_RustOpaque
 field0.into_into_dart().into_dart()].into_dart() }
 crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum::Variant1(field0) => { [1.into_dart(),
 field0.into_into_dart().into_dart()].into_dart() }
- _ => { unimplemented!(""); }}
+ }
                 }
             }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum {}
@@ -44252,9 +44240,6 @@ impl flutter_rust_bridge::IntoDart
             crate::api::pseudo_manual::basic::BasicGeneralEnumTwinNormal::Orange => {
                 [1.into_dart()].into_dart()
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -44277,7 +44262,7 @@ impl flutter_rust_bridge::IntoDart
         match self {crate::api::pseudo_manual::basic_twin_rust_async::BasicGeneralEnumTwinRustAsync::Apple{field} => { [0.into_dart(),
 field.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::basic_twin_rust_async::BasicGeneralEnumTwinRustAsync::Orange => { [1.into_dart()].into_dart() }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -44306,9 +44291,6 @@ impl flutter_rust_bridge::IntoDart
             } => [0.into_dart(), field.into_into_dart().into_dart()].into_dart(),
             crate::api::pseudo_manual::basic_twin_sync::BasicGeneralEnumTwinSync::Orange => {
                 [1.into_dart()].into_dart()
-            }
-            _ => {
-                unimplemented!("");
             }
         }
     }
@@ -45037,9 +45019,6 @@ impl flutter_rust_bridge::IntoDart for crate::api::exception::CustomEnumErrorTwi
                 backtrace.into_into_dart().into_dart(),
             ]
             .into_dart(),
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -45065,7 +45044,7 @@ backtrace.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_rust_async::CustomEnumErrorTwinRustAsync::Two{message,backtrace} => { [1.into_dart(),
 message.into_into_dart().into_dart(),
 backtrace.into_into_dart().into_dart()].into_dart() }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -45107,9 +45086,6 @@ impl flutter_rust_bridge::IntoDart
                 backtrace.into_into_dart().into_dart(),
             ]
             .into_dart(),
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -45144,9 +45120,6 @@ impl flutter_rust_bridge::IntoDart for crate::api::exception::CustomErrorTwinNor
                 backtrace.into_into_dart().into_dart(),
             ]
             .into_dart(),
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -45172,7 +45145,7 @@ backtrace.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_rust_async::CustomErrorTwinRustAsync::Error1{e,backtrace} => { [1.into_dart(),
 e.into_into_dart().into_dart(),
 backtrace.into_into_dart().into_dart()].into_dart() }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -45214,9 +45187,6 @@ impl flutter_rust_bridge::IntoDart
                 backtrace.into_into_dart().into_dart(),
             ]
             .into_dart(),
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -45243,9 +45213,6 @@ impl flutter_rust_bridge::IntoDart for crate::api::exception::CustomNestedError1
             crate::api::exception::CustomNestedError1TwinNormal::ErrorNested(field0) => {
                 [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -45269,7 +45236,7 @@ impl flutter_rust_bridge::IntoDart
 field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError1TwinRustAsync::ErrorNested(field0) => { [1.into_dart(),
 field0.into_into_dart().into_dart()].into_dart() }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -45296,7 +45263,7 @@ impl flutter_rust_bridge::IntoDart
 field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_sync::CustomNestedError1TwinSync::ErrorNested(field0) => { [1.into_dart(),
 field0.into_into_dart().into_dart()].into_dart() }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -45324,9 +45291,6 @@ impl flutter_rust_bridge::IntoDart for crate::api::exception::CustomNestedError2
             crate::api::exception::CustomNestedError2TwinNormal::CustomNested2Number(field0) => {
                 [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -45350,7 +45314,7 @@ impl flutter_rust_bridge::IntoDart
 field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError2TwinRustAsync::CustomNested2Number(field0) => { [1.into_dart(),
 field0.into_into_dart().into_dart()].into_dart() }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -45377,7 +45341,7 @@ impl flutter_rust_bridge::IntoDart
 field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_sync::CustomNestedError2TwinSync::CustomNested2Number(field0) => { [1.into_dart(),
 field0.into_into_dart().into_dart()].into_dart() }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -45405,9 +45369,6 @@ impl flutter_rust_bridge::IntoDart for crate::api::exception::CustomNestedErrorI
             crate::api::exception::CustomNestedErrorInnerTwinNormal::Four(field0) => {
                 [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -45431,7 +45392,7 @@ impl flutter_rust_bridge::IntoDart
 field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorInnerTwinRustAsync::Four(field0) => { [1.into_dart(),
 field0.into_into_dart().into_dart()].into_dart() }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -45460,7 +45421,7 @@ impl flutter_rust_bridge::IntoDart
 field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync::Four(field0) => { [1.into_dart(),
 field0.into_into_dart().into_dart()].into_dart() }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -45488,9 +45449,6 @@ impl flutter_rust_bridge::IntoDart for crate::api::exception::CustomNestedErrorO
             crate::api::exception::CustomNestedErrorOuterTwinNormal::Two(field0) => {
                 [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -45514,7 +45472,7 @@ impl flutter_rust_bridge::IntoDart
 field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorOuterTwinRustAsync::Two(field0) => { [1.into_dart(),
 field0.into_into_dart().into_dart()].into_dart() }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -45546,9 +45504,6 @@ impl flutter_rust_bridge::IntoDart
             crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorOuterTwinSync::Two(
                 field0,
             ) => [1.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -45956,9 +45911,6 @@ impl flutter_rust_bridge::IntoDart for crate::api::enumeration::DistanceTwinNorm
             crate::api::enumeration::DistanceTwinNormal::Map(field0) => {
                 [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -45981,7 +45933,7 @@ impl flutter_rust_bridge::IntoDart
         match self {crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceTwinRustAsync::Unknown => { [0.into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceTwinRustAsync::Map(field0) => { [1.into_dart(),
 field0.into_into_dart().into_dart()].into_dart() }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -46010,9 +45962,6 @@ impl flutter_rust_bridge::IntoDart
             }
             crate::api::pseudo_manual::enumeration_twin_sync::DistanceTwinSync::Map(field0) => {
                 [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
-            }
-            _ => {
-                unimplemented!("");
             }
         }
     }
@@ -46179,9 +46128,6 @@ impl flutter_rust_bridge::IntoDart for crate::api::dart_opaque::EnumDartOpaqueTw
             crate::api::dart_opaque::EnumDartOpaqueTwinNormal::Opaque(field0) => {
                 [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -46205,7 +46151,7 @@ impl flutter_rust_bridge::IntoDart
 field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::dart_opaque_twin_rust_async::EnumDartOpaqueTwinRustAsync::Opaque(field0) => { [1.into_dart(),
 field0.into_into_dart().into_dart()].into_dart() }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -46235,9 +46181,6 @@ impl flutter_rust_bridge::IntoDart
             crate::api::pseudo_manual::dart_opaque_twin_sync::EnumDartOpaqueTwinSync::Opaque(
                 field0,
             ) => [1.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -46276,9 +46219,6 @@ impl flutter_rust_bridge::IntoDart for crate::api::rust_opaque::EnumOpaqueTwinNo
                 [4.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
             crate::api::rust_opaque::EnumOpaqueTwinNormal::Nothing => [5.into_dart()].into_dart(),
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -46309,7 +46249,7 @@ field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::RwLock(field0) => { [4.into_dart(),
 field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::Nothing => { [5.into_dart()].into_dart() }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -46350,9 +46290,6 @@ impl flutter_rust_bridge::IntoDart
             ) => [4.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
             crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync::Nothing => {
                 [5.into_dart()].into_dart()
-            }
-            _ => {
-                unimplemented!("");
             }
         }
     }
@@ -46536,9 +46473,6 @@ impl flutter_rust_bridge::IntoDart
             crate::api::rust_auto_opaque::EnumWithGoodAndOpaqueTwinNormal::Opaque(field0) => {
                 [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -46561,7 +46495,7 @@ impl flutter_rust_bridge::IntoDart for crate::api::pseudo_manual::rust_auto_opaq
 field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::EnumWithGoodAndOpaqueTwinRustAsync::Opaque(field0) => { [1.into_dart(),
 field0.into_into_dart().into_dart()].into_dart() }
- _ => { unimplemented!(""); }}
+ }
                 }
             }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::EnumWithGoodAndOpaqueTwinRustAsync {}
@@ -46579,7 +46513,7 @@ impl flutter_rust_bridge::IntoDart
 field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::EnumWithGoodAndOpaqueTwinSync::Opaque(field0) => { [1.into_dart(),
 field0.into_into_dart().into_dart()].into_dart() }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -46608,9 +46542,6 @@ impl flutter_rust_bridge::IntoDart for crate::api::enumeration::EnumWithItemMixe
             crate::api::enumeration::EnumWithItemMixedTwinNormal::C { c_field } => {
                 [2.into_dart(), c_field.into_into_dart().into_dart()].into_dart()
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -46635,7 +46566,7 @@ crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemMixedTwinRus
 field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemMixedTwinRustAsync::C{c_field} => { [2.into_dart(),
 c_field.into_into_dart().into_dart()].into_dart() }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -46669,9 +46600,6 @@ impl flutter_rust_bridge::IntoDart
             crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync::C {
                 c_field,
             } => [2.into_dart(), c_field.into_into_dart().into_dart()].into_dart(),
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -46700,9 +46628,6 @@ impl flutter_rust_bridge::IntoDart for crate::api::enumeration::EnumWithItemStru
             crate::api::enumeration::EnumWithItemStructTwinNormal::B { b_field } => {
                 [1.into_dart(), b_field.into_into_dart().into_dart()].into_dart()
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -46726,7 +46651,7 @@ impl flutter_rust_bridge::IntoDart
 a_field.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemStructTwinRustAsync::B{b_field} => { [1.into_dart(),
 b_field.into_into_dart().into_dart()].into_dart() }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -46757,9 +46682,6 @@ impl flutter_rust_bridge::IntoDart
             crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemStructTwinSync::B {
                 b_field,
             } => [1.into_dart(), b_field.into_into_dart().into_dart()].into_dart(),
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -46788,9 +46710,6 @@ impl flutter_rust_bridge::IntoDart for crate::api::enumeration::EnumWithItemTupl
             crate::api::enumeration::EnumWithItemTupleTwinNormal::B(field0) => {
                 [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -46814,7 +46733,7 @@ impl flutter_rust_bridge::IntoDart
 field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemTupleTwinRustAsync::B(field0) => { [1.into_dart(),
 field0.into_into_dart().into_dart()].into_dart() }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -46845,9 +46764,6 @@ impl flutter_rust_bridge::IntoDart
             crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync::B(
                 field0,
             ) => [1.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -47302,9 +47218,6 @@ impl flutter_rust_bridge::IntoDart for crate::api::enumeration::KitchenSinkTwinN
             crate::api::enumeration::KitchenSinkTwinNormal::Enums(field0) => {
                 [5.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -47339,7 +47252,7 @@ crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync
 field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync::Enums(field0) => { [5.into_dart(),
 field0.into_into_dart().into_dart()].into_dart() }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -47401,9 +47314,6 @@ impl flutter_rust_bridge::IntoDart
             crate::api::pseudo_manual::enumeration_twin_sync::KitchenSinkTwinSync::Enums(
                 field0,
             ) => [5.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -47584,9 +47494,6 @@ impl flutter_rust_bridge::IntoDart for crate::api::enumeration::MeasureTwinNorma
             crate::api::enumeration::MeasureTwinNormal::Distance(field0) => {
                 [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -47610,7 +47517,7 @@ impl flutter_rust_bridge::IntoDart
 field0.into_into_dart().into_dart()].into_dart() }
 crate::api::pseudo_manual::enumeration_twin_rust_async::MeasureTwinRustAsync::Distance(field0) => { [1.into_dart(),
 field0.into_into_dart().into_dart()].into_dart() }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -47639,9 +47546,6 @@ impl flutter_rust_bridge::IntoDart
             }
             crate::api::pseudo_manual::enumeration_twin_sync::MeasureTwinSync::Distance(field0) => {
                 [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
-            }
-            _ => {
-                unimplemented!("");
             }
         }
     }
@@ -48715,9 +48619,6 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::api::mirror::RawStringE
             crate::api::mirror::RawStringEnumMirrored::ListOfNested(field0) => {
                 [2.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -48838,9 +48739,6 @@ impl flutter_rust_bridge::IntoDart for crate::api::method::SimpleEnumTwinNormal 
             crate::api::method::SimpleEnumTwinNormal::Second(field0) => {
                 [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -48867,9 +48765,6 @@ impl flutter_rust_bridge::IntoDart
             crate::api::pseudo_manual::method_twin_rust_async::SimpleEnumTwinRustAsync::Second(
                 field0,
             ) => [1.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -48899,9 +48794,6 @@ impl flutter_rust_bridge::IntoDart
             }
             crate::api::pseudo_manual::method_twin_sync::SimpleEnumTwinSync::Second(field0) => {
                 [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
-            }
-            _ => {
-                unimplemented!("");
             }
         }
     }
@@ -49131,9 +49023,6 @@ impl flutter_rust_bridge::IntoDart
             crate::frb_generated::SimpleTraitForDynTwinNormalImplementor::Variant1(field0) => {
                 [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -49240,9 +49129,6 @@ impl flutter_rust_bridge::IntoDart for crate::api::enumeration::SpeedTwinNormal 
             crate::api::enumeration::SpeedTwinNormal::GPS(field0) => {
                 [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -49269,9 +49155,6 @@ impl flutter_rust_bridge::IntoDart
             crate::api::pseudo_manual::enumeration_twin_rust_async::SpeedTwinRustAsync::GPS(
                 field0,
             ) => [1.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -49301,9 +49184,6 @@ impl flutter_rust_bridge::IntoDart
             }
             crate::api::pseudo_manual::enumeration_twin_sync::SpeedTwinSync::GPS(field0) => {
                 [1.into_dart(), field0.into_into_dart().into_dart()].into_dart()
-            }
-            _ => {
-                unimplemented!("");
             }
         }
     }
@@ -53686,9 +53566,6 @@ impl SseEncode for crate::api::misc_example::AbcTwinNormal {
                 <i32>::sse_encode(3, serializer);
                 <i32>::sse_encode(field0, serializer);
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -53721,9 +53598,6 @@ impl SseEncode for crate::api::pseudo_manual::misc_example_twin_rust_async::AbcT
                 <i32>::sse_encode(3, serializer);
                 <i32>::sse_encode(field0, serializer);
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -53753,9 +53627,6 @@ impl SseEncode for crate::api::pseudo_manual::misc_example_twin_sync::AbcTwinSyn
             crate::api::pseudo_manual::misc_example_twin_sync::AbcTwinSync::JustInt(field0) => {
                 <i32>::sse_encode(3, serializer);
                 <i32>::sse_encode(field0, serializer);
-            }
-            _ => {
-                unimplemented!("");
             }
         }
     }
@@ -53820,9 +53691,6 @@ impl SseEncode for crate::api::mirror::ApplicationMessage {
             }
             crate::api::mirror::ApplicationMessage::Exit => {
                 <i32>::sse_encode(2, serializer);
-            }
-            _ => {
-                unimplemented!("");
             }
         }
     }
@@ -53898,7 +53766,7 @@ impl SseEncode for crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridge
  }
 crate::frb_generated::Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum::Variant1(field0) => { <i32>::sse_encode(1, serializer); <RustAutoOpaqueMoi<MyNodeTwinNormal>>::sse_encode(field0, serializer);
  }
- _ => { unimplemented!(""); }}}
+ }}
                 }
 
 impl SseEncode for crate::api::misc_example::BTwinNormal {
@@ -53933,9 +53801,6 @@ impl SseEncode for crate::api::pseudo_manual::basic::BasicGeneralEnumTwinNormal 
             crate::api::pseudo_manual::basic::BasicGeneralEnumTwinNormal::Orange => {
                 <i32>::sse_encode(1, serializer);
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -53946,7 +53811,7 @@ impl SseEncode for crate::api::pseudo_manual::basic_twin_rust_async::BasicGenera
         match self {crate::api::pseudo_manual::basic_twin_rust_async::BasicGeneralEnumTwinRustAsync::Apple{field} => { <i32>::sse_encode(0, serializer); <String>::sse_encode(field, serializer);
  }
 crate::api::pseudo_manual::basic_twin_rust_async::BasicGeneralEnumTwinRustAsync::Orange => { <i32>::sse_encode(1, serializer);  }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 
@@ -53962,9 +53827,6 @@ impl SseEncode for crate::api::pseudo_manual::basic_twin_sync::BasicGeneralEnumT
             }
             crate::api::pseudo_manual::basic_twin_sync::BasicGeneralEnumTwinSync::Orange => {
                 <i32>::sse_encode(1, serializer);
-            }
-            _ => {
-                unimplemented!("");
             }
         }
     }
@@ -54525,9 +54387,6 @@ impl SseEncode for crate::api::exception::CustomEnumErrorTwinNormal {
                 <u32>::sse_encode(message, serializer);
                 <backtrace::Backtrace>::sse_encode(backtrace, serializer);
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -54543,7 +54402,7 @@ impl SseEncode
 crate::api::pseudo_manual::exception_twin_rust_async::CustomEnumErrorTwinRustAsync::Two{message,backtrace} => { <i32>::sse_encode(1, serializer); <u32>::sse_encode(message, serializer);
 <backtrace::Backtrace>::sse_encode(backtrace, serializer);
  }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 
@@ -54567,9 +54426,6 @@ impl SseEncode for crate::api::pseudo_manual::exception_twin_sync::CustomEnumErr
                 <u32>::sse_encode(message, serializer);
                 <backtrace::Backtrace>::sse_encode(backtrace, serializer);
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -54588,9 +54444,6 @@ impl SseEncode for crate::api::exception::CustomErrorTwinNormal {
                 <u32>::sse_encode(e, serializer);
                 <backtrace::Backtrace>::sse_encode(backtrace, serializer);
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -54604,7 +54457,7 @@ impl SseEncode for crate::api::pseudo_manual::exception_twin_rust_async::CustomE
 crate::api::pseudo_manual::exception_twin_rust_async::CustomErrorTwinRustAsync::Error1{e,backtrace} => { <i32>::sse_encode(1, serializer); <u32>::sse_encode(e, serializer);
 <backtrace::Backtrace>::sse_encode(backtrace, serializer);
  }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 
@@ -54628,9 +54481,6 @@ impl SseEncode for crate::api::pseudo_manual::exception_twin_sync::CustomErrorTw
                 <u32>::sse_encode(e, serializer);
                 <backtrace::Backtrace>::sse_encode(backtrace, serializer);
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -54649,9 +54499,6 @@ impl SseEncode for crate::api::exception::CustomNestedError1TwinNormal {
                     field0, serializer,
                 );
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -54665,7 +54512,7 @@ impl SseEncode
  }
 crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError1TwinRustAsync::ErrorNested(field0) => { <i32>::sse_encode(1, serializer); <crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError2TwinRustAsync>::sse_encode(field0, serializer);
  }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 
@@ -54676,7 +54523,7 @@ impl SseEncode for crate::api::pseudo_manual::exception_twin_sync::CustomNestedE
  }
 crate::api::pseudo_manual::exception_twin_sync::CustomNestedError1TwinSync::ErrorNested(field0) => { <i32>::sse_encode(1, serializer); <crate::api::pseudo_manual::exception_twin_sync::CustomNestedError2TwinSync>::sse_encode(field0, serializer);
  }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 
@@ -54692,9 +54539,6 @@ impl SseEncode for crate::api::exception::CustomNestedError2TwinNormal {
                 <i32>::sse_encode(1, serializer);
                 <u32>::sse_encode(field0, serializer);
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -54708,7 +54552,7 @@ impl SseEncode
  }
 crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedError2TwinRustAsync::CustomNested2Number(field0) => { <i32>::sse_encode(1, serializer); <u32>::sse_encode(field0, serializer);
  }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 
@@ -54719,7 +54563,7 @@ impl SseEncode for crate::api::pseudo_manual::exception_twin_sync::CustomNestedE
  }
 crate::api::pseudo_manual::exception_twin_sync::CustomNestedError2TwinSync::CustomNested2Number(field0) => { <i32>::sse_encode(1, serializer); <u32>::sse_encode(field0, serializer);
  }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 
@@ -54735,9 +54579,6 @@ impl SseEncode for crate::api::exception::CustomNestedErrorInnerTwinNormal {
                 <i32>::sse_encode(1, serializer);
                 <u32>::sse_encode(field0, serializer);
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -54751,7 +54592,7 @@ impl SseEncode
  }
 crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorInnerTwinRustAsync::Four(field0) => { <i32>::sse_encode(1, serializer); <u32>::sse_encode(field0, serializer);
  }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 
@@ -54762,7 +54603,7 @@ impl SseEncode for crate::api::pseudo_manual::exception_twin_sync::CustomNestedE
  }
 crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync::Four(field0) => { <i32>::sse_encode(1, serializer); <u32>::sse_encode(field0, serializer);
  }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 
@@ -54780,9 +54621,6 @@ impl SseEncode for crate::api::exception::CustomNestedErrorOuterTwinNormal {
                     field0, serializer,
                 );
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -54796,7 +54634,7 @@ impl SseEncode
  }
 crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorOuterTwinRustAsync::Two(field0) => { <i32>::sse_encode(1, serializer); <crate::api::pseudo_manual::exception_twin_rust_async::CustomNestedErrorInnerTwinRustAsync>::sse_encode(field0, serializer);
  }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 
@@ -54815,9 +54653,6 @@ impl SseEncode for crate::api::pseudo_manual::exception_twin_sync::CustomNestedE
             ) => {
                 <i32>::sse_encode(1, serializer);
                 <crate::api::pseudo_manual::exception_twin_sync::CustomNestedErrorInnerTwinSync>::sse_encode(field0, serializer);
-            }
-            _ => {
-                unimplemented!("");
             }
         }
     }
@@ -54969,9 +54804,6 @@ impl SseEncode for crate::api::enumeration::DistanceTwinNormal {
                 <i32>::sse_encode(1, serializer);
                 <f64>::sse_encode(field0, serializer);
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -54982,7 +54814,7 @@ impl SseEncode for crate::api::pseudo_manual::enumeration_twin_rust_async::Dista
         match self {crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceTwinRustAsync::Unknown => { <i32>::sse_encode(0, serializer);  }
 crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceTwinRustAsync::Map(field0) => { <i32>::sse_encode(1, serializer); <f64>::sse_encode(field0, serializer);
  }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 
@@ -54996,9 +54828,6 @@ impl SseEncode for crate::api::pseudo_manual::enumeration_twin_sync::DistanceTwi
             crate::api::pseudo_manual::enumeration_twin_sync::DistanceTwinSync::Map(field0) => {
                 <i32>::sse_encode(1, serializer);
                 <f64>::sse_encode(field0, serializer);
-            }
-            _ => {
-                unimplemented!("");
             }
         }
     }
@@ -55073,9 +54902,6 @@ impl SseEncode for crate::api::dart_opaque::EnumDartOpaqueTwinNormal {
                 <i32>::sse_encode(1, serializer);
                 <flutter_rust_bridge::DartOpaque>::sse_encode(field0, serializer);
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -55089,7 +54915,7 @@ impl SseEncode
  }
 crate::api::pseudo_manual::dart_opaque_twin_rust_async::EnumDartOpaqueTwinRustAsync::Opaque(field0) => { <i32>::sse_encode(1, serializer); <flutter_rust_bridge::DartOpaque>::sse_encode(field0, serializer);
  }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 
@@ -55108,9 +54934,6 @@ impl SseEncode for crate::api::pseudo_manual::dart_opaque_twin_sync::EnumDartOpa
             ) => {
                 <i32>::sse_encode(1, serializer);
                 <flutter_rust_bridge::DartOpaque>::sse_encode(field0, serializer);
-            }
-            _ => {
-                unimplemented!("");
             }
         }
     }
@@ -55143,9 +54966,6 @@ impl SseEncode for crate::api::rust_opaque::EnumOpaqueTwinNormal {
             crate::api::rust_opaque::EnumOpaqueTwinNormal::Nothing => {
                 <i32>::sse_encode(5, serializer);
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -55177,7 +54997,7 @@ crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync:
 crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::RwLock(field0) => { <i32>::sse_encode(4, serializer); <RustOpaqueMoi<RwLock < HideDataTwinRustAsync >>>::sse_encode(field0, serializer);
  }
 crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync::Nothing => { <i32>::sse_encode(5, serializer);  }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 
@@ -55224,9 +55044,6 @@ impl SseEncode for crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueT
             }
             crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync::Nothing => {
                 <i32>::sse_encode(5, serializer);
-            }
-            _ => {
-                unimplemented!("");
             }
         }
     }
@@ -55334,9 +55151,6 @@ impl SseEncode for crate::api::rust_auto_opaque::EnumWithGoodAndOpaqueTwinNormal
                 <i32>::sse_encode(1, serializer);
                 <NonCloneSimpleTwinNormal>::sse_encode(field0, serializer);
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -55347,7 +55161,7 @@ impl SseEncode for crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::
  }
 crate::api::pseudo_manual::rust_auto_opaque_twin_rust_async::EnumWithGoodAndOpaqueTwinRustAsync::Opaque(field0) => { <i32>::sse_encode(1, serializer); <NonCloneSimpleTwinRustAsync>::sse_encode(field0, serializer);
  }
- _ => { unimplemented!(""); }}}
+ }}
                 }
 
 impl SseEncode
@@ -55359,7 +55173,7 @@ impl SseEncode
  }
 crate::api::pseudo_manual::rust_auto_opaque_twin_sync::EnumWithGoodAndOpaqueTwinSync::Opaque(field0) => { <i32>::sse_encode(1, serializer); <NonCloneSimpleTwinSync>::sse_encode(field0, serializer);
  }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 
@@ -55378,9 +55192,6 @@ impl SseEncode for crate::api::enumeration::EnumWithItemMixedTwinNormal {
                 <i32>::sse_encode(2, serializer);
                 <String>::sse_encode(c_field, serializer);
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -55395,7 +55206,7 @@ crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemMixedTwinRus
  }
 crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemMixedTwinRustAsync::C{c_field} => { <i32>::sse_encode(2, serializer); <String>::sse_encode(c_field, serializer);
  }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 
@@ -55418,9 +55229,6 @@ impl SseEncode for crate::api::pseudo_manual::enumeration_twin_sync::EnumWithIte
                 <i32>::sse_encode(2, serializer);
                 <String>::sse_encode(c_field, serializer);
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -55437,9 +55245,6 @@ impl SseEncode for crate::api::enumeration::EnumWithItemStructTwinNormal {
                 <i32>::sse_encode(1, serializer);
                 <Vec<i32>>::sse_encode(b_field, serializer);
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -55453,7 +55258,7 @@ impl SseEncode
  }
 crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemStructTwinRustAsync::B{b_field} => { <i32>::sse_encode(1, serializer); <Vec<i32>>::sse_encode(b_field, serializer);
  }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 
@@ -55473,9 +55278,6 @@ impl SseEncode for crate::api::pseudo_manual::enumeration_twin_sync::EnumWithIte
                 <i32>::sse_encode(1, serializer);
                 <Vec<i32>>::sse_encode(b_field, serializer);
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -55492,9 +55294,6 @@ impl SseEncode for crate::api::enumeration::EnumWithItemTupleTwinNormal {
                 <i32>::sse_encode(1, serializer);
                 <Vec<i32>>::sse_encode(field0, serializer);
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -55508,7 +55307,7 @@ impl SseEncode
  }
 crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemTupleTwinRustAsync::B(field0) => { <i32>::sse_encode(1, serializer); <Vec<i32>>::sse_encode(field0, serializer);
  }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 
@@ -55527,9 +55326,6 @@ impl SseEncode for crate::api::pseudo_manual::enumeration_twin_sync::EnumWithIte
             ) => {
                 <i32>::sse_encode(1, serializer);
                 <Vec<i32>>::sse_encode(field0, serializer);
-            }
-            _ => {
-                unimplemented!("");
             }
         }
     }
@@ -55839,9 +55635,6 @@ impl SseEncode for crate::api::enumeration::KitchenSinkTwinNormal {
                 <i32>::sse_encode(5, serializer);
                 <crate::api::misc_example::WeekdaysTwinNormal>::sse_encode(field0, serializer);
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -55866,7 +55659,7 @@ crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync
  }
 crate::api::pseudo_manual::enumeration_twin_rust_async::KitchenSinkTwinRustAsync::Enums(field0) => { <i32>::sse_encode(5, serializer); <crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync>::sse_encode(field0, serializer);
  }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 
@@ -55916,9 +55709,6 @@ impl SseEncode for crate::api::pseudo_manual::enumeration_twin_sync::KitchenSink
                 <crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync>::sse_encode(
                     field0, serializer,
                 );
-            }
-            _ => {
-                unimplemented!("");
             }
         }
     }
@@ -57330,9 +57120,6 @@ impl SseEncode for crate::api::enumeration::MeasureTwinNormal {
                 <i32>::sse_encode(1, serializer);
                 <Box<crate::api::enumeration::DistanceTwinNormal>>::sse_encode(field0, serializer);
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -57344,7 +57131,7 @@ impl SseEncode for crate::api::pseudo_manual::enumeration_twin_rust_async::Measu
  }
 crate::api::pseudo_manual::enumeration_twin_rust_async::MeasureTwinRustAsync::Distance(field0) => { <i32>::sse_encode(1, serializer); <Box<crate::api::pseudo_manual::enumeration_twin_rust_async::DistanceTwinRustAsync>>::sse_encode(field0, serializer);
  }
- _ => { unimplemented!(""); }}
+ }
     }
 }
 
@@ -57361,9 +57148,6 @@ impl SseEncode for crate::api::pseudo_manual::enumeration_twin_sync::MeasureTwin
             crate::api::pseudo_manual::enumeration_twin_sync::MeasureTwinSync::Distance(field0) => {
                 <i32>::sse_encode(1, serializer);
                 <Box<crate::api::pseudo_manual::enumeration_twin_sync::DistanceTwinSync>>::sse_encode(field0, serializer);
-            }
-            _ => {
-                unimplemented!("");
             }
         }
     }
@@ -58734,9 +58518,6 @@ impl SseEncode for crate::api::mirror::RawStringEnumMirrored {
                 <i32>::sse_encode(2, serializer);
                 <crate::api::mirror::ListOfNestedRawStringMirrored>::sse_encode(field0, serializer);
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -59206,9 +58987,6 @@ impl SseEncode for crate::api::method::SimpleEnumTwinNormal {
                 <i32>::sse_encode(1, serializer);
                 <String>::sse_encode(field0, serializer);
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -59226,9 +59004,6 @@ impl SseEncode for crate::api::pseudo_manual::method_twin_rust_async::SimpleEnum
                 <i32>::sse_encode(1, serializer);
                 <String>::sse_encode(field0, serializer);
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -59243,9 +59018,6 @@ impl SseEncode for crate::api::pseudo_manual::method_twin_sync::SimpleEnumTwinSy
             crate::api::pseudo_manual::method_twin_sync::SimpleEnumTwinSync::Second(field0) => {
                 <i32>::sse_encode(1, serializer);
                 <String>::sse_encode(field0, serializer);
-            }
-            _ => {
-                unimplemented!("");
             }
         }
     }
@@ -59347,9 +59119,6 @@ impl SseEncode for crate::frb_generated::SimpleTraitForDynTwinNormalImplementor 
                     field0, serializer,
                 );
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -59393,9 +59162,6 @@ impl SseEncode for crate::api::enumeration::SpeedTwinNormal {
                 <i32>::sse_encode(1, serializer);
                 <f64>::sse_encode(field0, serializer);
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -59413,9 +59179,6 @@ impl SseEncode for crate::api::pseudo_manual::enumeration_twin_rust_async::Speed
                 <i32>::sse_encode(1, serializer);
                 <f64>::sse_encode(field0, serializer);
             }
-            _ => {
-                unimplemented!("");
-            }
         }
     }
 }
@@ -59430,9 +59193,6 @@ impl SseEncode for crate::api::pseudo_manual::enumeration_twin_sync::SpeedTwinSy
             crate::api::pseudo_manual::enumeration_twin_sync::SpeedTwinSync::GPS(field0) => {
                 <i32>::sse_encode(1, serializer);
                 <f64>::sse_encode(field0, serializer);
-            }
-            _ => {
-                unimplemented!("");
             }
         }
     }

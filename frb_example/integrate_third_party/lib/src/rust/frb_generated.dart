@@ -26491,8 +26491,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case AudioContextLatencyCategory_Custom(field0: final field0):
         sse_encode_i_32(3, serializer);
         sse_encode_f_64(field0, serializer);
-      default:
-        throw UnimplementedError('');
     }
   }
 
@@ -26618,8 +26616,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(22, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
             field0, serializer);
-      default:
-        throw UnimplementedError('');
     }
   }
 
@@ -26849,8 +26845,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(31, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
             field0, serializer);
-      default:
-        throw UnimplementedError('');
     }
   }
 
@@ -26867,8 +26861,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(0, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
             field0, serializer);
-      default:
-        throw UnimplementedError('');
     }
   }
 
