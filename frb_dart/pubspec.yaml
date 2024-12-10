@@ -1,5 +1,5 @@
 name: flutter_rust_bridge
-description: High-level memory-safe binding generator for Flutter/Dart <-> Rust
+description: Flutter/Dart <-> Rust binding generator, feature-rich, but seamless and simple
 version: 2.6.0
 repository: https://github.com/fzyzcjy/flutter_rust_bridge
 environment:
