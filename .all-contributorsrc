@@ -1036,6 +1036,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "Integral-Tech",
+      "name": "Integral",
+      "avatar_url": "https://avatars.githubusercontent.com/u/71180087?v=4",
+      "profile": "https://blog.i7.homes",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
