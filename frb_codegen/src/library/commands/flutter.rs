@@ -33,7 +33,7 @@ pub fn flutter_create(name: &str, org: &Option<String>, template: Template) -> a
 }
 
 #[allow(clippy::vec_init_then_push)]
-pub fn flutter_pub_add(items: &[String], pwd: Option<&Path>) -> anyhow::Result<()> {
+pub fn flutter_pub_add(items: &[&str], pwd: Option<&Path>) -> anyhow::Result<()> {
     info!(
         "Execute flutter pub add {} (this may take a while)",
         items.join(" ")

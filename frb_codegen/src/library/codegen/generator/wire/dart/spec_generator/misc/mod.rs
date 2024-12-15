@@ -88,7 +88,7 @@ fn generate_boilerplate(
     } = &context.config.dart_output_class_name_pack;
 
     let dart_preamble = &context.api_dart_config.dart_preamble.as_str();
-    let file_top = generate_code_header()
+    let file_top = generate_code_header().to_string()
         + if !dart_preamble.is_empty() {"\n\n"} else {""} + dart_preamble
         + "\n\n// ignore_for_file: unused_import, unused_element, unnecessary_import, duplicate_ignore, invalid_use_of_internal_member, annotate_overrides, non_constant_identifier_names, curly_braces_in_flow_control_structures, prefer_const_literals_to_create_immutables, unused_field\n";
 

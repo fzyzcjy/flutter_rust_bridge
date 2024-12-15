@@ -11,7 +11,7 @@ use std::path::{Path, PathBuf};
 /// Any target path content
 pub(super) fn overlay_dir(
     current_reference_dir: &Dir,
-    replacements: &HashMap<&str, String>,
+    replacements: &HashMap<&str, &str>,
     base_target_path: &Path,
     modifier: &impl Fn(&Path, &[u8], Option<Vec<u8>>) -> Option<(PathBuf, Vec<u8>)>,
     filter: &impl Fn(&Path) -> bool,
@@ -53,24 +53,18 @@ pub(super) fn overlay_dir(
     Ok(())
 }
 
-pub(crate) fn compute_effective_path(path: &Path, replacements: &HashMap<&str, String>) -> PathBuf {
+pub(crate) fn compute_effective_path(path: &Path, replacements: &HashMap<&str, &str>) -> PathBuf {
     replace_string_content(&path_to_string(path).unwrap(), replacements).into()
 }
 
-pub(crate) fn replace_file_content(
-    content: &[u8],
-    replacements: &HashMap<&str, String>,
-) -> Vec<u8> {
+pub(crate) fn replace_file_content(content: &[u8], replacements: &HashMap<&str, &str>) -> Vec<u8> {
     match String::from_utf8(content.to_owned()) {
         Ok(string_content) => replace_string_content(&string_content, replacements).into_bytes(),
         Err(e) => e.into_bytes(),
     }
 }
 
-pub(crate) fn replace_string_content(
-    content: &str,
-    replacements: &HashMap<&str, String>,
-) -> String {
+pub(crate) fn replace_string_content(content: &str, replacements: &HashMap<&str, &str>) -> String {
     let mut result = content.to_string();
 
     for (key, value) in replacements {

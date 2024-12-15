@@ -87,7 +87,7 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
 
 fn execute_overlay_dir(
     current_reference_dir: &Dir,
-    replacements: &HashMap<&'static str, String>,
+    replacements: &HashMap<&'static str, &str>,
     dart_root: &Path,
     config: &IntegrateConfig,
     comment_out_files: Option<&[String]>,
@@ -110,39 +110,33 @@ fn execute_overlay_dir(
     )
 }
 
-fn compute_replacements(
-    config: &IntegrateConfig,
-    dart_package_name: &String,
-    rust_crate_name: &String,
-) -> HashMap<&'static str, String> {
+fn compute_replacements<'a>(
+    config: &'a IntegrateConfig,
+    dart_package_name: &'a str,
+    rust_crate_name: &'a str,
+) -> HashMap<&'static str, &'a str> {
     let mut replacements = HashMap::new();
-    replacements.insert(
-        "REPLACE_ME_DART_PACKAGE_NAME",
-        dart_package_name.to_string(),
-    );
+    replacements.insert("REPLACE_ME_DART_PACKAGE_NAME", dart_package_name);
     match &config.template {
         Template::App => {
-            replacements.insert("REPLACE_ME_RUST_CRATE_NAME", rust_crate_name.to_string());
+            replacements.insert("REPLACE_ME_RUST_CRATE_NAME", rust_crate_name);
         }
         Template::Plugin => {
-            replacements.insert("REPLACE_ME_RUST_CRATE_NAME", dart_package_name.to_string());
+            replacements.insert("REPLACE_ME_RUST_CRATE_NAME", dart_package_name);
         }
     }
-    replacements.insert("REPLACE_ME_RUST_CRATE_DIR", config.rust_crate_dir.clone());
-    replacements.insert(
-        "REPLACE_ME_FRB_VERSION",
-        env!("CARGO_PKG_VERSION").to_string(),
-    );
+    replacements.insert("REPLACE_ME_RUST_CRATE_DIR", config.rust_crate_dir.as_str());
+    replacements.insert("REPLACE_ME_FRB_VERSION", env!("CARGO_PKG_VERSION"));
 
     let rust_frb_dependency = if config.enable_local_dependency {
-        r#"{ path = "../../../frb_rust" }"#.to_owned()
+        r#"{ path = "../../../frb_rust" }"#
     } else {
-        format!(r#""={}""#, env!("CARGO_PKG_VERSION"))
+        concat!(r#""="#, env!("CARGO_PKG_VERSION"), r#"""#)
     };
     replacements.insert("REPLACE_ME_RUST_FRB_DEPENDENCY", rust_frb_dependency);
 
-    replacements.insert("Cargo.toml.template", "Cargo.toml".to_owned());
-    replacements.insert("Cargo.lock.template", "Cargo.lock".to_owned());
+    replacements.insert("Cargo.toml.template", "Cargo.toml");
+    replacements.insert("Cargo.lock.template", "Cargo.lock");
 
     replacements
 }
@@ -191,7 +185,7 @@ fn modify_file(
     target_path: PathBuf,
     reference_content: &[u8],
     existing_content: Option<Vec<u8>>,
-    replacements: &HashMap<&str, String>,
+    replacements: &HashMap<&str, &str>,
     enable_local_dependency: bool,
     comment_out_files: Option<&[String]>,
 ) -> Option<(PathBuf, Vec<u8>)> {
@@ -316,16 +310,9 @@ fn pub_add_dependencies(
 ) -> Result<()> {
     // frb-coverage:ignore-end
     match template {
-        Template::App => flutter_pub_add(
-            &[rust_crate_name.into(), "--path=rust_builder".into()],
-            None,
-        )?,
+        Template::App => flutter_pub_add(&[rust_crate_name, "--path=rust_builder"], None)?,
         Template::Plugin => flutter_pub_add(
-            &[
-                "integration_test".into(),
-                "--dev".into(),
-                "--sdk=flutter".into(),
-            ],
+            &["integration_test", "--dev", "--sdk=flutter"],
             Some(Path::new("example")),
         )?,
     }
@@ -333,17 +320,10 @@ fn pub_add_dependencies(
     pub_add_dependency_frb(enable_local_dependency, None)?;
 
     // // Temporarily avoid `^` before https://github.com/flutter/flutter/issues/84270 is fixed
-    // flutter_pub_add(&["ffigen:8.0.2".into(), "--dev".into()])?;
+    // flutter_pub_add(&["ffigen:8.0.2", "--dev"])?;
 
     if enable_integration_test {
-        flutter_pub_add(
-            &[
-                "integration_test".into(),
-                "--dev".into(),
-                "--sdk=flutter".into(),
-            ],
-            None,
-        )?;
+        flutter_pub_add(&["integration_test", "--dev", "--sdk=flutter"], None)?;
         // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
         // frb-coverage:ignore-start
     }
@@ -356,17 +336,15 @@ pub(crate) fn pub_add_dependency_frb(
     enable_local_dependency: bool,
     pwd: Option<&Path>,
 ) -> Result<()> {
-    flutter_pub_add(
-        &if enable_local_dependency {
-            vec![
-                "flutter_rust_bridge".to_owned(),
-                "--path=../../frb_dart".to_owned(),
-            ]
-        } else {
-            vec![format!("flutter_rust_bridge:{}", env!("CARGO_PKG_VERSION"))]
-        },
-        pwd,
-    )?;
+    if enable_local_dependency {
+        flutter_pub_add(&["flutter_rust_bridge", "--path=../../frb_dart"], pwd)?;
+    } else {
+        flutter_pub_add(
+            &[concat!("flutter_rust_bridge:", env!("CARGO_PKG_VERSION"))],
+            pwd,
+        )?;
+    };
+
     Ok(())
 }
 

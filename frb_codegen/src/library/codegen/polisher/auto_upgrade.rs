@@ -39,7 +39,7 @@ impl Upgrader for DartUpgrader {
             .has_specified_and_installed(
                 "flutter_rust_bridge",
                 DartDependencyMode::Main,
-                &VersionReq::from_str(&format!("={}", env!("CARGO_PKG_VERSION")))?,
+                &VersionReq::from_str(concat!("=", env!("CARGO_PKG_VERSION")))?,
             )
             .is_ok())
     }
@@ -55,15 +55,12 @@ impl Upgrader for RustUpgrader {
     fn check(base_dir: &Path) -> Result<bool> {
         let manifest = cargo_toml::Manifest::from_path(base_dir.join("Cargo.toml"))?;
         let dep = &manifest.dependencies["flutter_rust_bridge"];
-        Ok(dep.req() == format!("={}", env!("CARGO_PKG_VERSION")))
+        Ok(dep.req() == concat!("=", env!("CARGO_PKG_VERSION")))
     }
 
     fn upgrade(base_dir: &Path) -> Result<()> {
         cargo_add(
-            &[format!(
-                "flutter_rust_bridge@={}",
-                env!("CARGO_PKG_VERSION")
-            )],
+            &[concat!("flutter_rust_bridge@=", env!("CARGO_PKG_VERSION"))],
             base_dir,
         )
     }

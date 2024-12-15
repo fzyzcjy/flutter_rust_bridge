@@ -44,7 +44,7 @@ pub(crate) fn generate(
 ) -> anyhow::Result<WireRustOutputSpecMisc> {
     let content_hash = generate_content_hash(context.mir_pack);
     Ok(WireRustOutputSpecMisc {
-        code_header: Acc::new(|_| vec![(generate_code_header() + "\n\n").into()]),
+        code_header: Acc::new(|_| vec![(generate_code_header().to_string() + "\n\n").into()]),
         file_attributes: Acc::new_common(vec![FILE_ATTRIBUTES.to_string().into()]),
         imports: generate_imports(&cache.distinct_types, context),
         executor: Acc::new_common(vec![generate_handler(context.mir_pack).into()]),
