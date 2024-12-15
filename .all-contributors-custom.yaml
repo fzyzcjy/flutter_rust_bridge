@@ -63,6 +63,7 @@
 - h3x4d3c1m4l: Fix when outside folder.
 - HalidOdat: Improve config method. Hint build.rs.
 - Berrysoft: Fix missing symbols.
+- Integral-Tech: Use concat.
 - bus710: Add a case in troubleshooting.
 - Demezy: Mention troubleshooting.
 - gutenfries: Bump proc-macros.
