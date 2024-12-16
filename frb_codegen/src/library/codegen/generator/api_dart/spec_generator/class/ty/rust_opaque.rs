@@ -14,7 +14,7 @@ use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::basic_code::dart_header_code::DartHeaderCode;
 use itertools::{concat, Itertools};
 
-impl ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'_> {
+impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
         let Info {
             dart_api_type,

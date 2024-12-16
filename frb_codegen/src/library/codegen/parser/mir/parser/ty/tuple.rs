@@ -12,7 +12,7 @@ use anyhow::Result;
 use itertools::Itertools;
 use syn::TypeTuple;
 
-impl TypeParserWithContext<'_, '_, '_> {
+impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_tuple(&mut self, type_tuple: &TypeTuple) -> anyhow::Result<MirType> {
         if type_tuple.elems.is_empty() {
             return Ok(Primitive(MirTypePrimitive::Unit));

@@ -1,7 +1,7 @@
 use crate::codegen::generator::codec::sse::ty::delegate::simple_delegate_encode;
 use crate::codegen::generator::codec::sse::ty::*;
 
-impl CodecSseTyTrait for DartFnCodecSseTy<'_> {
+impl<'a> CodecSseTyTrait for DartFnCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
         self.should_generate(lang).then(|| {
             simple_delegate_encode(
@@ -17,7 +17,7 @@ impl CodecSseTyTrait for DartFnCodecSseTy<'_> {
     }
 }
 
-impl DartFnCodecSseTy<'_> {
+impl<'a> DartFnCodecSseTy<'a> {
     fn should_generate(&self, lang: &Lang) -> bool {
         !matches!(lang, Lang::RustLang(_))
     }

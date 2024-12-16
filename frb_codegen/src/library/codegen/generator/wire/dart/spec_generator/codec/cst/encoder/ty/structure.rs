@@ -12,7 +12,7 @@ use crate::codegen::ir::mir::ty::structure::{MirStruct, MirTypeStructRef};
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
 
-impl WireDartCodecCstGeneratorEncoderTrait for StructRefWireDartCodecCstGenerator<'_> {
+impl<'a> WireDartCodecCstGeneratorEncoderTrait for StructRefWireDartCodecCstGenerator<'a> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         self.new_generalized_generator().generate_encode_func_body()
     }
@@ -26,7 +26,7 @@ impl WireDartCodecCstGeneratorEncoderTrait for StructRefWireDartCodecCstGenerato
     }
 }
 
-impl StructRefWireDartCodecCstGenerator<'_> {
+impl<'a> StructRefWireDartCodecCstGenerator<'a> {
     fn new_generalized_generator(&self) -> GeneralizedStructGenerator {
         GeneralizedStructGenerator::new(self.mir.clone(), self.context, Struct)
     }

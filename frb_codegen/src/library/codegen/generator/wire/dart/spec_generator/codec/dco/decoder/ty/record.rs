@@ -3,7 +3,7 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
 
-impl WireDartCodecDcoGeneratorDecoderTrait for RecordWireDartCodecDcoGenerator<'_> {
+impl<'a> WireDartCodecDcoGeneratorDecoderTrait for RecordWireDartCodecDcoGenerator<'a> {
     fn generate_impl_decode_body(&self) -> String {
         let len = self.mir.values.len();
         let values = self

@@ -9,7 +9,7 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
-  FRB_MAIN_RUST_VERSION: 1.83.0
+  FRB_MAIN_RUST_VERSION: 1.79.0
   FRB_MAIN_DART_VERSION: 3.4.0
   FRB_MAIN_FLUTTER_VERSION: 3.22.0
 
@@ -532,11 +532,13 @@ jobs:
           # run on various rust versions
           - image: ubuntu-latest
             version: nightly
+          - image: ubuntu-latest
+            version: nightly-2023-12-16
           # tests the MSRV
           # run on all rust packages, though only needed for frb_rust and frb_codegen
           - image: ubuntu-latest
             # update this, if a later MSRV is needed
-            version: 1.83.0
+            version: 1.74.0
 
     steps:
       # setup

@@ -1,6 +1,6 @@
 use crate::codegen::generator::codec::sse::ty::*;
 
-impl CodecSseTyTrait for TraitDefCodecSseTy<'_> {
+impl<'a> CodecSseTyTrait for TraitDefCodecSseTy<'a> {
     fn generate_encode(&self, _lang: &Lang) -> Option<String> {
         None
     }

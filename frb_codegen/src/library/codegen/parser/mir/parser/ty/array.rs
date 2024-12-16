@@ -9,7 +9,7 @@ use anyhow::bail;
 use std::collections::HashMap;
 use syn::Expr;
 
-impl TypeParserWithContext<'_, '_, '_> {
+impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_array(
         &mut self,
         type_array: &syn::TypeArray,

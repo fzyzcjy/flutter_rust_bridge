@@ -14,7 +14,7 @@ use crate::codegen::ir::mir::ty::general_list::MirTypeGeneralList;
 use crate::codegen::ir::mir::ty::MirType::{Delegate, Optional};
 use crate::codegen::ir::mir::ty::{MirType, MirTypeTrait};
 
-impl WireRustCodecCstGeneratorDecoderTrait for GeneralListWireRustCodecCstGenerator<'_> {
+impl<'a> WireRustCodecCstGeneratorDecoderTrait for GeneralListWireRustCodecCstGenerator<'a> {
     fn generate_decoder_class(&self) -> Option<WireRustOutputCode> {
         Some(generate_class_from_fields(
             self.mir.clone(),

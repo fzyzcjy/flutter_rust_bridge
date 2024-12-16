@@ -17,7 +17,7 @@ use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::syn_utils::ty_to_string;
 use syn::{FnArg, Type};
 
-impl FunctionParser<'_, '_> {
+impl<'a, 'b> FunctionParser<'a, 'b> {
     pub(super) fn parse_owner(
         &mut self,
         func: &HirFlatFunction,

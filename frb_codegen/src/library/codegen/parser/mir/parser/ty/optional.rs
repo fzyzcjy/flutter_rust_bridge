@@ -11,7 +11,7 @@ use anyhow::ensure;
 use quote::ToTokens;
 use syn::TypePath;
 
-impl TypeParserWithContext<'_, '_, '_> {
+impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_optional(
         &mut self,
         type_path: &TypePath,

@@ -237,7 +237,7 @@ fn modify_file(
 fn comment_out_existing_file_and_write_template(
     existing_content: Vec<u8>,
     path: PathBuf,
-    src: &[u8],
+    src: &Vec<u8>,
 ) -> Option<(PathBuf, Vec<u8>)> {
     let existing_content = String::from_utf8(existing_content);
     let commented_existing_content = existing_content
@@ -248,7 +248,7 @@ fn comment_out_existing_file_and_write_template(
             )
         })
         .unwrap_or_default();
-    Some((path, [commented_existing_content.as_bytes(), src].concat()))
+    return Some((path, [commented_existing_content.as_bytes(), src].concat()));
 }
 
 fn filter_file(path: &Path, enable_integration_test: bool) -> bool {

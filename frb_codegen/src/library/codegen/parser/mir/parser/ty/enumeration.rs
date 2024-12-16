@@ -25,7 +25,7 @@ use crate::utils::namespace::{Namespace, NamespacedName};
 use std::collections::HashMap;
 use syn::{Attribute, Field, Ident, ItemEnum, Type, Variant, Visibility};
 
-impl TypeParserWithContext<'_, '_, '_> {
+impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_enum(
         &mut self,
         path: &syn::Path,

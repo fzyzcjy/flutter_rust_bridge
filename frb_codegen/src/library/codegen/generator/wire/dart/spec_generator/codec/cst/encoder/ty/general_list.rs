@@ -5,7 +5,7 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::{MirType, MirTypeTrait};
 
-impl WireDartCodecCstGeneratorEncoderTrait for GeneralListWireDartCodecCstGenerator<'_> {
+impl<'a> WireDartCodecCstGeneratorEncoderTrait for GeneralListWireDartCodecCstGenerator<'a> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         // NOTE the memory strategy is same as PrimitiveList, see comments there.
         let ident = self.mir.safe_ident();

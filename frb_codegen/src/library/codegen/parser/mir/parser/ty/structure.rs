@@ -19,7 +19,7 @@ use anyhow::bail;
 use std::collections::HashMap;
 use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, ItemStruct, Type, Visibility};
 
-impl TypeParserWithContext<'_, '_, '_> {
+impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_struct(
         &mut self,
         path: &syn::Path,

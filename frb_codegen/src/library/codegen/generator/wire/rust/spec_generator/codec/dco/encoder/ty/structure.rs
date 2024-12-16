@@ -6,7 +6,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
 use itertools::Itertools;
 
-impl WireRustCodecDcoGeneratorEncoderTrait for StructRefWireRustCodecDcoGenerator<'_> {
+impl<'a> WireRustCodecDcoGeneratorEncoderTrait for StructRefWireRustCodecDcoGenerator<'a> {
     fn generate_impl_into_dart(&self) -> Option<String> {
         let src = self.mir.get(self.context.mir_pack);
 

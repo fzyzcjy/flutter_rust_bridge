@@ -5,7 +5,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 
-impl WireRustCodecCstGeneratorDecoderTrait for RecordWireRustCodecCstGenerator<'_> {
+impl<'a> WireRustCodecCstGeneratorDecoderTrait for RecordWireRustCodecCstGenerator<'a> {
     fn generate_decoder_class(&self) -> Option<WireRustOutputCode> {
         self.as_struct_generator().generate_decoder_class()
     }

@@ -11,7 +11,7 @@ use crate::codegen::ir::mir::ty::delegate::{
 };
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 
-impl WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator<'_> {
+impl<'a> WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator<'a> {
     fn generate_decoder_class(&self) -> Option<WireRustOutputCode> {
         None
     }
@@ -184,7 +184,7 @@ impl WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator
     }
 }
 
-impl DelegateWireRustCodecCstGenerator<'_> {
+impl<'a> DelegateWireRustCodecCstGenerator<'a> {
     fn generate_skip_web_if_jsvalue(&self, acc: String) -> Acc<Option<String>> {
         if is_js_value(&self.mir.get_delegate()) {
             Acc {

@@ -7,7 +7,7 @@ use crate::codegen::ir::mir::ty::MirType::Primitive;
 use crate::codegen::parser::mir::parser::ty::unencodable::SplayedSegment;
 use crate::codegen::parser::mir::parser::ty::{TypeParserParsingContext, TypeParserWithContext};
 
-impl TypeParserWithContext<'_, '_, '_> {
+impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_primitive(
         &mut self,
         last_segment: &SplayedSegment,

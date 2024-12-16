@@ -1,4 +1,4 @@
 use crate::codegen::generator::wire::rust::spec_generator::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 
-impl WireRustGeneratorMiscTrait for RecordWireRustGenerator<'_> {}
+impl<'a> WireRustGeneratorMiscTrait for RecordWireRustGenerator<'a> {}

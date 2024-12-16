@@ -14,7 +14,7 @@ use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartG
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 
-impl WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGenerator<'_> {
+impl<'a> WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGenerator<'a> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         match &self.mir {
             MirTypeDelegate::Array(ref array) => match &array.mode {

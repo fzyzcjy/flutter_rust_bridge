@@ -80,7 +80,7 @@ where
 
             if attrs_opaque.is_none()
                 && (self.parser_info().object_pool.get(&ident))
-                    .is_some_and(|obj| Self::compute_default_opaque(obj))
+                    .map_or(false, |obj| Self::compute_default_opaque(obj))
             {
                 debug!("Treat {name} as opaque by compute_default_opaque");
                 return Ok(Some((

@@ -4,7 +4,7 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
 
-impl WireDartCodecDcoGeneratorDecoderTrait for StructRefWireDartCodecDcoGenerator<'_> {
+impl<'a> WireDartCodecDcoGeneratorDecoderTrait for StructRefWireDartCodecDcoGenerator<'a> {
     fn generate_impl_decode_body(&self) -> String {
         let s = self.mir.get(self.context.mir_pack);
 

@@ -13,7 +13,7 @@ use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::primitive_list::MirTypePrimitiveList;
 use crate::codegen::ir::mir::ty::MirTypeTrait;
 
-impl WireRustCodecCstGeneratorDecoderTrait for PrimitiveListWireRustCodecCstGenerator<'_> {
+impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveListWireRustCodecCstGenerator<'a> {
     fn generate_decoder_class(&self) -> Option<WireRustOutputCode> {
         Some(generate_class_from_fields(
             self.mir.clone(),

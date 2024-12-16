@@ -6,7 +6,7 @@ use crate::codegen::ir::mir::ty::MirTypeTrait;
 use crate::library::misc::consts::HANDLER_NAME;
 use itertools::Itertools;
 
-impl WireRustGeneratorMiscTrait for DartFnWireRustGenerator<'_> {
+impl<'a> WireRustGeneratorMiscTrait for DartFnWireRustGenerator<'a> {
     fn generate_related_funcs(&self) -> Acc<WireRustOutputCode> {
         let safe_ident = self.mir.safe_ident();
 

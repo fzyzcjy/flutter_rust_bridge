@@ -19,7 +19,7 @@ use quote::ToTokens;
 use regex::Regex;
 use syn::Type;
 
-impl TypeParserWithContext<'_, '_, '_> {
+impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_rust_auto_opaque_implicit(
         &mut self,
         namespace: Option<Namespace>,

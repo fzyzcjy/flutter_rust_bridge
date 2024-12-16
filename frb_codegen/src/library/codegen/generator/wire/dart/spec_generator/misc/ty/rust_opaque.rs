@@ -8,7 +8,7 @@ use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartG
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use convert_case::{Case, Casing};
 
-impl WireDartGeneratorMiscTrait for RustOpaqueWireDartGenerator<'_> {
+impl<'a> WireDartGeneratorMiscTrait for RustOpaqueWireDartGenerator<'a> {
     fn generate_extra_functions(&self) -> Option<Acc<WireDartOutputCode>> {
         Some(generate_rust_arc_functions(
             self.mir.clone().into(),

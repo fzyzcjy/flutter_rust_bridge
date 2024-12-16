@@ -8,7 +8,7 @@ use crate::codegen::parser::mir::ParseMode;
 use crate::utils::namespace::Namespace;
 use syn::Type;
 
-impl TypeParserWithContext<'_, '_, '_> {
+impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_maybe_lifetimeable(
         &mut self,
         original: MirTypeRustAutoOpaqueImplicit,

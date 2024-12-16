@@ -3,7 +3,7 @@ use crate::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGen
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
 
-impl WireRustGeneratorMiscTrait for StructRefWireRustGenerator<'_> {
+impl<'a> WireRustGeneratorMiscTrait for StructRefWireRustGenerator<'a> {
     fn wrapper_struct_name(&self) -> Option<String> {
         let src = self.mir.get(self.context.mir_pack);
         src.wrapper_name.clone()

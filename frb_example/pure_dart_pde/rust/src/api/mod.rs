@@ -7,7 +7,7 @@ pub mod benchmark_misc;
 pub mod casted_primitive;
 pub mod chrono_type;
 pub mod comment;
-#[cfg(target_os = "unknown")]
+#[cfg(target_os = "non_existent_os")]
 pub mod conditionally_compiled_module;
 pub mod constructor;
 pub mod custom_handler;

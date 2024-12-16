@@ -2,7 +2,7 @@ use crate::codegen::generator::codec::sse::ty::delegate::generate_unimplemented_
 use crate::codegen::generator::codec::sse::ty::*;
 use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 
-impl CodecSseTyTrait for DynamicCodecSseTy<'_> {
+impl<'a> CodecSseTyTrait for DynamicCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
         Some(format!(
             "{};",

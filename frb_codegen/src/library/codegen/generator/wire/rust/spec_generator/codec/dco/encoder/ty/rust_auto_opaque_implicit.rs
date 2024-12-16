@@ -8,7 +8,9 @@ use crate::codegen::ir::mir::func::OwnershipMode;
 use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqueImplicit;
 use crate::codegen::ir::mir::ty::MirTypeTrait;
 
-impl WireRustCodecDcoGeneratorEncoderTrait for RustAutoOpaqueImplicitWireRustCodecDcoGenerator<'_> {
+impl<'a> WireRustCodecDcoGeneratorEncoderTrait
+    for RustAutoOpaqueImplicitWireRustCodecDcoGenerator<'a>
+{
     fn generate_impl_into_dart(&self) -> Option<String> {
         if self.mir.ownership_mode == OwnershipMode::Owned {
             let rust_api_type = self.mir.rust_api_type();

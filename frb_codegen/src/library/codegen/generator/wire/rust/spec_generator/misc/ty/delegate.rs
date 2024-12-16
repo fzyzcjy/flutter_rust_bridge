@@ -5,7 +5,7 @@ use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::namespace::Namespace;
 use itertools::Itertools;
 
-impl WireRustGeneratorMiscTrait for DelegateWireRustGenerator<'_> {
+impl<'a> WireRustGeneratorMiscTrait for DelegateWireRustGenerator<'a> {
     fn generate_imports(&self) -> Option<Vec<Namespace>> {
         if let MirTypeDelegate::CustomSerDes(mir) = &self.mir {
             Some(

@@ -139,7 +139,7 @@ fn generate_code_lockable_impl(
 
             fn lockable_decode_async_ref<'a>(
                 &'a self,
-            ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Self::RwLockReadGuard<'a>> + Send + 'a>>
+            ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Self::RwLockReadGuard<'_>> + Send + 'a>>
             where
                 Self: Sync + 'a,
             {{
@@ -148,7 +148,7 @@ fn generate_code_lockable_impl(
 
             fn lockable_decode_async_ref_mut<'a>(
                 &'a self,
-            ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Self::RwLockWriteGuard<'a>> + Send + 'a>>
+            ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Self::RwLockWriteGuard<'_>> + Send + 'a>>
             where
                 Self: Sync + 'a,
             {{

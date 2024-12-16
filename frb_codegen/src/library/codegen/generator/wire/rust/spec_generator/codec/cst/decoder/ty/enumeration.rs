@@ -13,7 +13,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::
 
 const NIL_FIELD: &str = "nil__";
 
-impl WireRustCodecCstGeneratorDecoderTrait for EnumRefWireRustCodecCstGenerator<'_> {
+impl<'a> WireRustCodecCstGeneratorDecoderTrait for EnumRefWireRustCodecCstGenerator<'a> {
     fn generate_decoder_class(&self) -> Option<WireRustOutputCode> {
         let src = self.mir.get(self.context.mir_pack);
         if src.mode == MirEnumMode::Simple {
@@ -120,7 +120,7 @@ impl WireRustCodecCstGeneratorDecoderTrait for EnumRefWireRustCodecCstGenerator<
     }
 }
 
-impl EnumRefWireRustCodecCstGenerator<'_> {
+impl<'a> EnumRefWireRustCodecCstGenerator<'a> {
     fn generate_decoder_enum_variant(
         &self,
         variant_name: &MirIdent,

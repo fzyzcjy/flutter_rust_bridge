@@ -6,7 +6,7 @@ use crate::utils::basic_code::dart_header_code::DartHeaderCode;
 use crate::utils::dart_keywords;
 use itertools::Itertools;
 
-impl EnumRefApiDartGenerator<'_> {
+impl<'a> EnumRefApiDartGenerator<'a> {
     pub(crate) fn generate_mode_simple(
         &self,
         src: &MirEnum,

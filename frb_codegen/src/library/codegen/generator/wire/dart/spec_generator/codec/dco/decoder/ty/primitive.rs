@@ -3,7 +3,7 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::ty::WireDartCodecDcoGeneratorDecoderTrait;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 
-impl WireDartCodecDcoGeneratorDecoderTrait for PrimitiveWireDartCodecDcoGenerator<'_> {
+impl<'a> WireDartCodecDcoGeneratorDecoderTrait for PrimitiveWireDartCodecDcoGenerator<'a> {
     fn generate_impl_decode_body(&self) -> String {
         match self.mir {
             MirTypePrimitive::Unit => "return;".to_owned(),

@@ -1,7 +1,7 @@
 use crate::codegen::generator::wire::rust::spec_generator::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 
-impl WireRustGeneratorMiscTrait for DartOpaqueWireRustGenerator<'_> {
+impl<'a> WireRustGeneratorMiscTrait for DartOpaqueWireRustGenerator<'a> {
     // fn generate_related_funcs(&self) -> Acc<WireRustOutputCode> {
     //     Acc::new(|target| match target {
     //         TargetOrCommon::Io | TargetOrCommon::Web => {

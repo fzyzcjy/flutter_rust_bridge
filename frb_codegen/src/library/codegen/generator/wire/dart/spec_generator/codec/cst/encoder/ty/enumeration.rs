@@ -7,7 +7,7 @@ use crate::codegen::ir::mir::ty::enumeration::{MirEnumVariant, MirVariantKind};
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
 
-impl WireDartCodecCstGeneratorEncoderTrait for EnumRefWireDartCodecCstGenerator<'_> {
+impl<'a> WireDartCodecCstGeneratorEncoderTrait for EnumRefWireDartCodecCstGenerator<'a> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         let variants = (self.mir.get(self.context.mir_pack).variants())
             .iter()
@@ -42,7 +42,7 @@ impl WireDartCodecCstGeneratorEncoderTrait for EnumRefWireDartCodecCstGenerator<
     }
 }
 
-impl EnumRefWireDartCodecCstGenerator<'_> {
+impl<'a> EnumRefWireDartCodecCstGenerator<'a> {
     fn generate_api_fill_to_wire_body_variant(
         &self,
         index: usize,

@@ -11,7 +11,7 @@ use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartG
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 
-impl CodecSseTyTrait for DelegateCodecSseTy<'_> {
+impl<'a> CodecSseTyTrait for DelegateCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
         let inner_expr = match lang {
             Lang::DartLang(_) => match &self.mir {

@@ -11,7 +11,7 @@ use crate::codegen::parser::mir::ParseMode;
 use anyhow::bail;
 use syn::*;
 
-impl FunctionParser<'_, '_> {
+impl<'a, 'b> FunctionParser<'a, 'b> {
     pub(super) fn parse_fn_output(
         &mut self,
         sig: &Signature,

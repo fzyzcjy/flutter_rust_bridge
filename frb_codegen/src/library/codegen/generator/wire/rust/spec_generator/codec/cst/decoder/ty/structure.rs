@@ -10,7 +10,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::
 use crate::codegen::ir::mir::ty::{MirType, MirTypeTrait};
 use itertools::Itertools;
 
-impl WireRustCodecCstGeneratorDecoderTrait for StructRefWireRustCodecCstGenerator<'_> {
+impl<'a> WireRustCodecCstGeneratorDecoderTrait for StructRefWireRustCodecCstGenerator<'a> {
     fn generate_decoder_class(&self) -> Option<WireRustOutputCode> {
         let s = self.mir.get(self.context.mir_pack);
         Some(generate_class_from_fields(

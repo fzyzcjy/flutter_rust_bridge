@@ -6,7 +6,7 @@ use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 
-impl WireDartCodecCstGeneratorEncoderTrait for PrimitiveWireDartCodecCstGenerator<'_> {
+impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveWireDartCodecCstGenerator<'a> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         match self.mir {
             MirTypePrimitive::I64 | MirTypePrimitive::Isize => Acc {

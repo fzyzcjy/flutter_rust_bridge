@@ -66,7 +66,7 @@ impl<T: ?Sized + 'static, A: BaseArc<T>> Clone for RustOpaqueBase<T, A> {
     }
 }
 
-impl<T: 'static + Default, A: BaseArc<T>> Default for RustOpaqueBase<T, A> {
+impl<T: ?Sized + 'static + Default, A: BaseArc<T>> Default for RustOpaqueBase<T, A> {
     fn default() -> Self {
         RustOpaqueBase::new(T::default())
     }

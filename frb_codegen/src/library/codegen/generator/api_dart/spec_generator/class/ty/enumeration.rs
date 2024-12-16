@@ -8,7 +8,7 @@ use crate::codegen::ir::mir::ty::enumeration::MirEnumMode;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 
-impl ApiDartGeneratorClassTrait for EnumRefApiDartGenerator<'_> {
+impl<'a> ApiDartGeneratorClassTrait for EnumRefApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
         let src = self.mir.get(self.context.mir_pack);
 

@@ -1,7 +1,7 @@
 use crate::codegen::generator::codec::sse::ty::*;
 use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 
-impl CodecSseTyTrait for BoxedCodecSseTy<'_> {
+impl<'a> CodecSseTyTrait for BoxedCodecSseTy<'a> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
         let wrapper = match lang {
             Lang::DartLang(_) => "",
@@ -25,7 +25,7 @@ impl CodecSseTyTrait for BoxedCodecSseTy<'_> {
     }
 }
 
-impl BoxedCodecSseTy<'_> {
+impl<'a> BoxedCodecSseTy<'a> {
     fn should_generate(&self, lang: &Lang) -> bool {
         // The fake Box is only needed for CST codec, thus here we mostly ignore it.
         self.mir.exist_in_real_api || matches!(lang, Lang::DartLang(_))

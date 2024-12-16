@@ -10,7 +10,7 @@ use crate::utils::syn_utils::ty_to_string;
 use anyhow::Context;
 use syn::TypeTraitObject;
 
-impl TypeParserWithContext<'_, '_, '_> {
+impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_trait_object(
         &mut self,
         type_trait_object: &TypeTraitObject,
