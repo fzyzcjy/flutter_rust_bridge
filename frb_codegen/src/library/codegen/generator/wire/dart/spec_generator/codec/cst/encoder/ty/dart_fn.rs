@@ -4,7 +4,7 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
 use crate::codegen::ir::mir::ty::MirTypeTrait;
 
-impl<'a> WireDartCodecCstGeneratorEncoderTrait for DartFnWireDartCodecCstGenerator<'a> {
+impl WireDartCodecCstGeneratorEncoderTrait for DartFnWireDartCodecCstGenerator<'_> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         Acc::new_common(Some(format!(
             "return cst_encode_DartOpaque(encode_{}(raw));",

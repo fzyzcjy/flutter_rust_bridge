@@ -6,7 +6,7 @@ use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGenerated
 use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 
-impl<'a> ApiDartGeneratorClassTrait for TraitDefApiDartGenerator<'a> {
+impl ApiDartGeneratorClassTrait for TraitDefApiDartGenerator<'_> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
         let dart_api_type = &self.mir.name.name;
         let methods = generate_api_methods(

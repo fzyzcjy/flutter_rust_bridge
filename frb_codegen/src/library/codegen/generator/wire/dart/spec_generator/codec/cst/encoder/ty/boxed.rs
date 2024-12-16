@@ -8,7 +8,7 @@ use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::MirType::StructRef;
 use crate::codegen::ir::mir::ty::{MirType, MirTypeTrait};
 
-impl<'a> WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerator<'a> {
+impl WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerator<'_> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         let mir_safe_ident = self.mir.safe_ident();
         let inner_safe_ident = self.mir.inner.safe_ident();

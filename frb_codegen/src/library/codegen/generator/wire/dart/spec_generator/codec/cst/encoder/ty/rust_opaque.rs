@@ -5,7 +5,7 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ApiDartGenerator;
 
-impl<'a> WireDartCodecCstGeneratorEncoderTrait for RustOpaqueWireDartCodecCstGenerator<'a> {
+impl WireDartCodecCstGeneratorEncoderTrait for RustOpaqueWireDartCodecCstGenerator<'_> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         Acc::new_common(Some(format!(
             "// ignore: invalid_use_of_internal_member

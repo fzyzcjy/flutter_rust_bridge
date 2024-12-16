@@ -15,7 +15,7 @@ use itertools::Itertools;
 
 const BACKTRACE_IDENT: &str = "backtrace";
 
-impl<'a> EnumRefApiDartGenerator<'a> {
+impl EnumRefApiDartGenerator<'_> {
     pub(crate) fn generate_mode_complex(
         &self,
         src: &MirEnum,

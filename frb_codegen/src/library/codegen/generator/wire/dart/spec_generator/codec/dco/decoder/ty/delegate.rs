@@ -8,7 +8,7 @@ use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartG
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 
-impl<'a> WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGenerator<'a> {
+impl WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGenerator<'_> {
     fn generate_impl_decode_body(&self) -> String {
         match &self.mir {
             MirTypeDelegate::Array(array) => match &array.mode {

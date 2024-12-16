@@ -8,7 +8,7 @@ use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 use crate::utils::namespace::Namespace;
 use syn::Type;
 
-impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
+impl TypeParserWithContext<'_, '_, '_> {
     pub(crate) fn parse_type_path_data_rust_auto_opaque_explicit(
         &mut self,
         last_segment: &SplayedSegment,

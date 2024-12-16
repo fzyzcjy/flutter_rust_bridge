@@ -30498,7 +30498,7 @@ impl Lockable for SimpleTraitForDynTwinNormalImplementor {
 
     fn lockable_decode_async_ref<'a>(
         &'a self,
-    ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Self::RwLockReadGuard<'_>> + Send + 'a>>
+    ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Self::RwLockReadGuard<'a>> + Send + 'a>>
     where
         Self: Sync + 'a,
     {
@@ -30507,7 +30507,7 @@ impl Lockable for SimpleTraitForDynTwinNormalImplementor {
 
     fn lockable_decode_async_ref_mut<'a>(
         &'a self,
-    ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Self::RwLockWriteGuard<'_>> + Send + 'a>>
+    ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Self::RwLockWriteGuard<'a>> + Send + 'a>>
     where
         Self: Sync + 'a,
     {
@@ -30635,7 +30635,7 @@ Self::Variant1(inner) => flutter_rust_bridge::for_generated::rust_auto_opaque_lo
 
             fn lockable_decode_async_ref<'a>(
                 &'a self,
-            ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Self::RwLockReadGuard<'_>> + Send + 'a>>
+            ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Self::RwLockReadGuard<'a>> + Send + 'a>>
             where
                 Self: Sync + 'a,
             {
@@ -30644,7 +30644,7 @@ Self::Variant1(inner) => flutter_rust_bridge::for_generated::rust_auto_opaque_lo
 
             fn lockable_decode_async_ref_mut<'a>(
                 &'a self,
-            ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Self::RwLockWriteGuard<'_>> + Send + 'a>>
+            ) -> std::pin::Pin<Box<dyn std::future::Future<Output = Self::RwLockWriteGuard<'a>> + Send + 'a>>
             where
                 Self: Sync + 'a,
             {

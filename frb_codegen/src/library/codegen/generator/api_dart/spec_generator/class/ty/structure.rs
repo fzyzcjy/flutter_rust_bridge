@@ -10,7 +10,7 @@ use crate::codegen::generator::api_dart::spec_generator::misc::{
 use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 
-impl<'a> ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'a> {
+impl ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'_> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
         let src = self.mir.get(self.context.mir_pack);
         let comments = generate_dart_comments(&src.comments);

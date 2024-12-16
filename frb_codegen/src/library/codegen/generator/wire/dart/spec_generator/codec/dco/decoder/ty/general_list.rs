@@ -4,7 +4,7 @@ use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 
-impl<'a> WireDartCodecDcoGeneratorDecoderTrait for GeneralListWireDartCodecDcoGenerator<'a> {
+impl WireDartCodecDcoGeneratorDecoderTrait for GeneralListWireDartCodecDcoGenerator<'_> {
     fn generate_impl_decode_body(&self) -> String {
         if let MirType::Delegate(MirTypeDelegate::Uuid) = &*self.mir.inner {
             return "const kUuidSizeInBytes = 16;

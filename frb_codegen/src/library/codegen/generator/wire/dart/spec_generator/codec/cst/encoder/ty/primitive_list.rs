@@ -5,7 +5,7 @@ use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::MirTypeTrait;
 
-impl<'a> WireDartCodecCstGeneratorEncoderTrait for PrimitiveListWireDartCodecCstGenerator<'a> {
+impl WireDartCodecCstGeneratorEncoderTrait for PrimitiveListWireDartCodecCstGenerator<'_> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         // We do not care about codecov of unsupported things
         // frb-coverage:ignore-start

@@ -8,7 +8,7 @@ use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartG
 use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 use convert_case::{Case, Casing};
 
-impl<'a> CodecSseTyTrait for RustOpaqueCodecSseTy<'a> {
+impl CodecSseTyTrait for RustOpaqueCodecSseTy<'_> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
         Some(generate_generalized_rust_opaque_encode(
             lang,

@@ -12,7 +12,7 @@ use std::collections::HashMap;
 use std::fmt::Debug;
 use syn::Type;
 
-impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
+impl TypeParserWithContext<'_, '_, '_> {
     pub(crate) fn parse_type_path_data_rust_opaque(
         &mut self,
         last_segment: &SplayedSegment,

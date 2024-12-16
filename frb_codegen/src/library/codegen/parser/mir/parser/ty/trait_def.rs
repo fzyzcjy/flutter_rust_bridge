@@ -3,7 +3,7 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::parser::ty::unencodable::SplayedSegment;
 use crate::codegen::parser::mir::parser::ty::{TypeParser, TypeParserWithContext};
 
-impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
+impl TypeParserWithContext<'_, '_, '_> {
     pub(crate) fn parse_type_path_data_trait(
         &mut self,
         last_segment: &SplayedSegment,

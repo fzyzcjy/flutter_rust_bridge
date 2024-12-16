@@ -4,7 +4,7 @@ use crate::codegen::ir::mir::ty::enumeration::MirVariantKind;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
 
-impl<'a> WireRustGeneratorMiscTrait for EnumRefWireRustGenerator<'a> {
+impl WireRustGeneratorMiscTrait for EnumRefWireRustGenerator<'_> {
     fn wrapper_struct_name(&self) -> Option<String> {
         let src = self.mir.get(self.context.mir_pack);
         src.wrapper_name.clone()

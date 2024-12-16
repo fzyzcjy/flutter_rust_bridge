@@ -18,7 +18,7 @@ use anyhow::{bail, Context};
 use itertools::Itertools;
 use syn::{parse_str, Type};
 
-impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
+impl TypeParserWithContext<'_, '_, '_> {
     pub(crate) fn parse_type_path_data_concrete(
         &mut self,
         last_segment: &SplayedSegment,

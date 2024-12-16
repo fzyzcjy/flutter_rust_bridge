@@ -10,7 +10,7 @@ use crate::codegen::ir::mir::ty::enumeration::MirTypeEnumRef;
 use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;
 
-impl<'a> WireRustCodecDcoGeneratorEncoderTrait for EnumRefWireRustCodecDcoGenerator<'a> {
+impl WireRustCodecDcoGeneratorEncoderTrait for EnumRefWireRustCodecDcoGenerator<'_> {
     fn generate_impl_into_dart(&self) -> Option<String> {
         let src = self.mir.get(self.context.mir_pack);
         let (name, _self_path) =

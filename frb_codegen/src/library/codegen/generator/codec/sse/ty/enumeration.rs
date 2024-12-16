@@ -6,7 +6,7 @@ use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;
 
-impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
+impl CodecSseTyTrait for EnumRefCodecSseTy<'_> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
         let src = self.mir.get(self.context.mir_pack);
         Some(generate_enum_encode_rust_general(
