@@ -224,11 +224,11 @@ function makeMutClosure(arg0, arg1, dtor, f) {
     return real;
 }
 function __wbg_adapter_34(arg0, arg1, arg2) {
-    wasm._dyn_core__ops__function__FnMut__A____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h991aa56619e600ce(arg0, arg1, addHeapObject(arg2));
+    wasm._dyn_core__ops__function__FnMut__A____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h51cec718f08ef57b(arg0, arg1, addHeapObject(arg2));
 }
 
 function __wbg_adapter_37(arg0, arg1, arg2) {
-    wasm._dyn_core__ops__function__FnMut__A____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__ha3fc19e8a9945055(arg0, arg1, addHeapObject(arg2));
+    wasm._dyn_core__ops__function__FnMut__A____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h6dca53705d1569dd(arg0, arg1, addHeapObject(arg2));
 }
 
 /**
@@ -324,28 +324,6 @@ __exports.receive_transfer_closure = function(payload, transfer) {
 };
 
 /**
-* # Safety
-*
-* This should never be called manually.
-* @param {any} handle
-* @param {any} dart_handler_port
-* @returns {number}
-*/
-__exports.frb_dart_opaque_dart2rust_encode = function(handle, dart_handler_port) {
-    const ret = wasm.frb_dart_opaque_dart2rust_encode(addHeapObject(handle), addHeapObject(dart_handler_port));
-    return ret >>> 0;
-};
-
-/**
-* @param {number} ptr
-* @returns {any}
-*/
-__exports.frb_dart_opaque_rust2dart_decode = function(ptr) {
-    const ret = wasm.frb_dart_opaque_rust2dart_decode(ptr);
-    return takeObject(ret);
-};
-
-/**
 * @param {number} ptr
 */
 __exports.frb_dart_opaque_drop_thread_box_persistent_handle = function(ptr) {
@@ -358,8 +336,30 @@ __exports.wasm_start_callback = function() {
     wasm.wasm_start_callback();
 };
 
+/**
+* @param {number} ptr
+* @returns {any}
+*/
+__exports.frb_dart_opaque_rust2dart_decode = function(ptr) {
+    const ret = wasm.frb_dart_opaque_rust2dart_decode(ptr);
+    return takeObject(ret);
+};
+
+/**
+* # Safety
+*
+* This should never be called manually.
+* @param {any} handle
+* @param {any} dart_handler_port
+* @returns {number}
+*/
+__exports.frb_dart_opaque_dart2rust_encode = function(handle, dart_handler_port) {
+    const ret = wasm.frb_dart_opaque_dart2rust_encode(addHeapObject(handle), addHeapObject(dart_handler_port));
+    return ret >>> 0;
+};
+
 function __wbg_adapter_122(arg0, arg1, arg2, arg3) {
-    wasm.wasm_bindgen__convert__closures__invoke2_mut__h4875530c926e2b6b(arg0, arg1, addHeapObject(arg2), addHeapObject(arg3));
+    wasm.wasm_bindgen__convert__closures__invoke2_mut__h053eae177ea21e2c(arg0, arg1, addHeapObject(arg2), addHeapObject(arg3));
 }
 
 const WorkerPoolFinalization = (typeof FinalizationRegistry === 'undefined')
@@ -779,15 +779,15 @@ function __wbg_get_imports() {
         const ret = wasm.memory;
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper364 = function(arg0, arg1, arg2) {
-        const ret = makeMutClosure(arg0, arg1, 138, __wbg_adapter_34);
-        return addHeapObject(ret);
-    };
-    imports.wbg.__wbindgen_closure_wrapper435 = function(arg0, arg1, arg2) {
-        const ret = makeMutClosure(arg0, arg1, 168, __wbg_adapter_37);
+    imports.wbg.__wbindgen_closure_wrapper396 = function(arg0, arg1, arg2) {
+        const ret = makeMutClosure(arg0, arg1, 152, __wbg_adapter_34);
         return addHeapObject(ret);
     };
     imports.wbg.__wbindgen_closure_wrapper437 = function(arg0, arg1, arg2) {
+        const ret = makeMutClosure(arg0, arg1, 168, __wbg_adapter_37);
+        return addHeapObject(ret);
+    };
+    imports.wbg.__wbindgen_closure_wrapper439 = function(arg0, arg1, arg2) {
         const ret = makeMutClosure(arg0, arg1, 168, __wbg_adapter_37);
         return addHeapObject(ret);
     };
