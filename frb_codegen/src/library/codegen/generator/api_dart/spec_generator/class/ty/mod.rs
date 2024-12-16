@@ -25,13 +25,13 @@ pub(crate) trait ApiDartGeneratorClassTrait {
 }
 
 // the following have empty implementation
-impl<'a> ApiDartGeneratorClassTrait for BoxedApiDartGenerator<'a> {}
-impl<'a> ApiDartGeneratorClassTrait for DartFnApiDartGenerator<'a> {}
-impl<'a> ApiDartGeneratorClassTrait for DartOpaqueApiDartGenerator<'a> {}
-impl<'a> ApiDartGeneratorClassTrait for DynamicApiDartGenerator<'a> {}
-impl<'a> ApiDartGeneratorClassTrait for GeneralListApiDartGenerator<'a> {}
-impl<'a> ApiDartGeneratorClassTrait for OptionalApiDartGenerator<'a> {}
-impl<'a> ApiDartGeneratorClassTrait for PrimitiveApiDartGenerator<'a> {}
-impl<'a> ApiDartGeneratorClassTrait for PrimitiveListApiDartGenerator<'a> {}
-impl<'a> ApiDartGeneratorClassTrait for RecordApiDartGenerator<'a> {}
-impl<'a> ApiDartGeneratorClassTrait for RustAutoOpaqueImplicitApiDartGenerator<'a> {}
+impl ApiDartGeneratorClassTrait for BoxedApiDartGenerator<'_> {}
+impl ApiDartGeneratorClassTrait for DartFnApiDartGenerator<'_> {}
+impl ApiDartGeneratorClassTrait for DartOpaqueApiDartGenerator<'_> {}
+impl ApiDartGeneratorClassTrait for DynamicApiDartGenerator<'_> {}
+impl ApiDartGeneratorClassTrait for GeneralListApiDartGenerator<'_> {}
+impl ApiDartGeneratorClassTrait for OptionalApiDartGenerator<'_> {}
+impl ApiDartGeneratorClassTrait for PrimitiveApiDartGenerator<'_> {}
+impl ApiDartGeneratorClassTrait for PrimitiveListApiDartGenerator<'_> {}
+impl ApiDartGeneratorClassTrait for RecordApiDartGenerator<'_> {}
+impl ApiDartGeneratorClassTrait for RustAutoOpaqueImplicitApiDartGenerator<'_> {}

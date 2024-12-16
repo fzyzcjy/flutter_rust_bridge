@@ -8,7 +8,7 @@ use crate::codegen::ir::mir::ty::MirTypeTrait;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use itertools::Itertools;
 
-impl<'a> WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'a> {
+impl WireDartGeneratorMiscTrait for DartFnWireDartGenerator<'_> {
     fn generate_extra_functions(&self) -> Option<Acc<WireDartOutputCode>> {
         let num_params = self.mir.inputs.len();
         let raw_parameter_names = (0..num_params).map(|i| format!("rawArg{i}")).join(", ");

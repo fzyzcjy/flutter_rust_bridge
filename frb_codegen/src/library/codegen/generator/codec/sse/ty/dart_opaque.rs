@@ -3,7 +3,7 @@ use crate::codegen::generator::codec::sse::ty::delegate::{
 };
 use crate::codegen::generator::codec::sse::ty::*;
 
-impl<'a> CodecSseTyTrait for DartOpaqueCodecSseTy<'a> {
+impl CodecSseTyTrait for DartOpaqueCodecSseTy<'_> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
         Some(match lang {
             Lang::DartLang(_) => {

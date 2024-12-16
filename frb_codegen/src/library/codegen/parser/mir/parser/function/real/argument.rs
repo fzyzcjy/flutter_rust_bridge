@@ -17,7 +17,7 @@ use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use anyhow::Context;
 use syn::*;
 
-impl<'a, 'b> FunctionParser<'a, 'b> {
+impl FunctionParser<'_, '_> {
     pub(super) fn parse_fn_arg(
         &mut self,
         sig_input: &FnArg,

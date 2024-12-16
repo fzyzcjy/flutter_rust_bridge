@@ -8,7 +8,7 @@ use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use itertools::Itertools;
 
-impl<'a> StructRefApiDartGenerator<'a> {
+impl StructRefApiDartGenerator<'_> {
     #[allow(clippy::too_many_arguments)]
     pub(crate) fn generate_mode_freezed(
         &self,

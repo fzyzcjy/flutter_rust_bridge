@@ -7,7 +7,7 @@ use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::MirTypeTrait;
 use MirTypePrimitive::Unit;
 
-impl<'a> WireRustCodecCstGeneratorDecoderTrait for PrimitiveWireRustCodecCstGenerator<'a> {
+impl WireRustCodecCstGeneratorDecoderTrait for PrimitiveWireRustCodecCstGenerator<'_> {
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         match self.mir {
             Unit => Acc::new(|_| None),

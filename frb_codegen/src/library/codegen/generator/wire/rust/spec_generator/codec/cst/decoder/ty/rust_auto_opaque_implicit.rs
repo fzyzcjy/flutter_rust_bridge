@@ -9,9 +9,7 @@ use crate::codegen::ir::mir::ty::rust_auto_opaque_implicit::MirTypeRustAutoOpaqu
 use crate::codegen::ir::mir::ty::MirTypeTrait;
 use std::borrow::Cow;
 
-impl<'a> WireRustCodecCstGeneratorDecoderTrait
-    for RustAutoOpaqueImplicitWireRustCodecCstGenerator<'a>
-{
+impl WireRustCodecCstGeneratorDecoderTrait for RustAutoOpaqueImplicitWireRustCodecCstGenerator<'_> {
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         Acc {
             io: generate_decode(&self.mir),

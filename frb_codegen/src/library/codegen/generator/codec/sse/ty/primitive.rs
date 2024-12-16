@@ -1,6 +1,6 @@
 use crate::codegen::generator::codec::sse::ty::*;
 
-impl<'a> CodecSseTyTrait for PrimitiveCodecSseTy<'a> {
+impl CodecSseTyTrait for PrimitiveCodecSseTy<'_> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
         let dart_cast = match self.mir {
             MirTypePrimitive::Bool => " ? 1 : 0",

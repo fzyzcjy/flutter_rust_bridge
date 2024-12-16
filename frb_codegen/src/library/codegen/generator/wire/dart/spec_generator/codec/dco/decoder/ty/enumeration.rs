@@ -4,7 +4,7 @@ use crate::codegen::ir::mir::ty::enumeration::{MirEnumMode, MirVariantKind};
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
 
-impl<'a> WireDartCodecDcoGeneratorDecoderTrait for EnumRefWireDartCodecDcoGenerator<'a> {
+impl WireDartCodecDcoGeneratorDecoderTrait for EnumRefWireDartCodecDcoGenerator<'_> {
     fn generate_impl_decode_body(&self) -> String {
         let enu = self.mir.get(self.context.mir_pack);
         assert_eq!(enu.mode, MirEnumMode::Complex);
