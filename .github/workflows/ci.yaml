@@ -532,8 +532,6 @@ jobs:
           # run on various rust versions
           - image: ubuntu-latest
             version: nightly
-          - image: ubuntu-latest
-            version: nightly-2023-12-16
           # tests the MSRV
           # run on all rust packages, though only needed for frb_rust and frb_codegen
           - image: ubuntu-latest
