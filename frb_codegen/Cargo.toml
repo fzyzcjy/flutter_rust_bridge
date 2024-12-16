@@ -2,7 +2,7 @@
 categories.workspace = true
 description.workspace = true
 edition.workspace = true
-rust-version = "1.74.0"
+rust-version = "1.83.0"
 keywords.workspace = true
 license.workspace = true
 name = "flutter_rust_bridge_codegen"
