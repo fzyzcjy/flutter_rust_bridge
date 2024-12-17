@@ -72,7 +72,8 @@ pub(crate) fn cbindgen_raw(
     let parsed_crate_dir = parse_crate_dir(rust_crate_dir)?;
     debug!("cbindgen parsed_crate_dir={}", parsed_crate_dir);
 
-    let bindings = cbindgen::generate_with_config(parsed_crate_dir, config).inspect_err(|e| {
+    #[allow(clippy::manual_inspect)]
+    let bindings = cbindgen::generate_with_config(parsed_crate_dir, config).map_err(|e| {
         // This will stop the whole generator and tell the users, so we do not care about testing it
         // frb-coverage:ignore-start
         if let Error::ParseSyntaxError { src_path, .. } = &e {
@@ -80,6 +81,7 @@ pub(crate) fn cbindgen_raw(
                 fs::read_to_string(src_path).unwrap_or_else(|_| "CANNOT READ FILE".into());
             info!("More information: src_path={src_path:?} content={content}");
         }
+        e
         // frb-coverage:ignore-end
     })?;
 
