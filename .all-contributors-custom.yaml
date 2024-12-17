@@ -31,6 +31,7 @@
 - patmuk: Set MSRV. Fail fast. Improve message. Support relative config. Improve multiple docs. Fix warning.
 - banool: Fix pubspec parsing. Fix symbol-stripping doc.
 - AlexV525: Add Dart fix. Fix folder.
+- Integral-Tech: Use concat. Fix lint.
 - Tienisto: Remove default enum case. Add mock init.
 - anlumo: Fix freezed + methods. Non-clone RustOpaque. Update syn.
 - temeddix: Fix broken CI. Custom num workers. Fix MacOS doc steps. Update doc. Make zero-copy defaultable.
@@ -63,7 +64,6 @@
 - h3x4d3c1m4l: Fix when outside folder.
 - HalidOdat: Improve config method. Hint build.rs.
 - Berrysoft: Fix missing symbols.
-- Integral-Tech: Use concat.
 - bus710: Add a case in troubleshooting.
 - Demezy: Mention troubleshooting.
 - gutenfries: Bump proc-macros.
