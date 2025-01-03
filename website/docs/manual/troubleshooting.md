@@ -141,6 +141,10 @@ Try to uninstall the rust toolchain and install it again from the scratch:
 
 Check [the related issue on GitHub](https://github.com/fzyzcjy/flutter_rust_bridge/issues/2348) for the context.
 
+## Warning: unexpected `cfg` condition name: `frb_expand`
+
+Please refer to [#2425](https://github.com/fzyzcjy/flutter_rust_bridge/issues/2425) for more details.
+
 ## Other problems?
 
 Don't hesitate to [open an issue](https://github.com/fzyzcjy/flutter_rust_bridge/issues/new/choose)! I usually reply
