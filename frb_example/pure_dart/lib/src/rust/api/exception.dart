@@ -8,7 +8,9 @@ import 'dart:io';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+
 part 'exception.freezed.dart';
+part 'exception.g.dart';
 
 Future<int> funcReturnErrorTwinNormal() =>
     RustLib.instance.api.crateApiExceptionFuncReturnErrorTwinNormal();
@@ -90,6 +92,9 @@ sealed class CustomEnumErrorTwinNormal
     required int message,
     required String backtrace,
   }) = CustomEnumErrorTwinNormal_Two;
+
+  factory CustomEnumErrorTwinNormal.fromJson(Map<String, dynamic> json) =>
+      _$CustomEnumErrorTwinNormalFromJson(json);
 }
 
 @freezed
@@ -108,6 +113,9 @@ sealed class CustomErrorTwinNormal
     required int e,
     required String backtrace,
   }) = CustomErrorTwinNormal_Error1;
+
+  factory CustomErrorTwinNormal.fromJson(Map<String, dynamic> json) =>
+      _$CustomErrorTwinNormalFromJson(json);
 }
 
 @freezed
@@ -122,6 +130,9 @@ sealed class CustomNestedError1TwinNormal
   const factory CustomNestedError1TwinNormal.errorNested(
     CustomNestedError2TwinNormal field0,
   ) = CustomNestedError1TwinNormal_ErrorNested;
+
+  factory CustomNestedError1TwinNormal.fromJson(Map<String, dynamic> json) =>
+      _$CustomNestedError1TwinNormalFromJson(json);
 }
 
 @freezed
@@ -134,6 +145,9 @@ sealed class CustomNestedError2TwinNormal with _$CustomNestedError2TwinNormal {
   const factory CustomNestedError2TwinNormal.customNested2Number(
     int field0,
   ) = CustomNestedError2TwinNormal_CustomNested2Number;
+
+  factory CustomNestedError2TwinNormal.fromJson(Map<String, dynamic> json) =>
+      _$CustomNestedError2TwinNormalFromJson(json);
 }
 
 @freezed
@@ -147,6 +161,10 @@ sealed class CustomNestedErrorInnerTwinNormal
   const factory CustomNestedErrorInnerTwinNormal.four(
     int field0,
   ) = CustomNestedErrorInnerTwinNormal_Four;
+
+  factory CustomNestedErrorInnerTwinNormal.fromJson(
+          Map<String, dynamic> json) =>
+      _$CustomNestedErrorInnerTwinNormalFromJson(json);
 }
 
 @freezed
@@ -160,6 +178,10 @@ sealed class CustomNestedErrorOuterTwinNormal
   const factory CustomNestedErrorOuterTwinNormal.two(
     CustomNestedErrorInnerTwinNormal field0,
   ) = CustomNestedErrorOuterTwinNormal_Two;
+
+  factory CustomNestedErrorOuterTwinNormal.fromJson(
+          Map<String, dynamic> json) =>
+      _$CustomNestedErrorOuterTwinNormalFromJson(json);
 }
 
 class CustomStructErrorAnotherTwinNormal implements FrbException {

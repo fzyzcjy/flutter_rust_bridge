@@ -9,7 +9,9 @@ import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+
 part 'misc_example_twin_rust_async.freezed.dart';
+part 'misc_example_twin_rust_async.g.dart';
 
 // These functions are ignored because they are not marked as `pub`: `visibility_restricted_func_twin_rust_async`
 // These types are ignored because they are not used by any `pub` functions: `MySizeFreezedTwinRustAsync`
@@ -108,6 +110,9 @@ sealed class AbcTwinRustAsync with _$AbcTwinRustAsync {
   const factory AbcTwinRustAsync.justInt(
     int field0,
   ) = AbcTwinRustAsync_JustInt;
+
+  factory AbcTwinRustAsync.fromJson(Map<String, dynamic> json) =>
+      _$AbcTwinRustAsyncFromJson(json);
 }
 
 class BTwinRustAsync {

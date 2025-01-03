@@ -9,7 +9,9 @@ import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'package:meta/meta.dart' as meta;
+
 part 'attribute_twin_sync_sse.freezed.dart';
+part 'attribute_twin_sync_sse.g.dart';
 
 // These types are ignored because they are not used by any `pub` functions: `IgnoredStructTwinSyncSse`, `StructWithOnlyIgnoredMethodTwinSyncSse`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`

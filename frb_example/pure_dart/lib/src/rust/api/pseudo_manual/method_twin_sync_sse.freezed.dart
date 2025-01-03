@@ -14,6 +14,23 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+SimpleEnumTwinSyncSse _$SimpleEnumTwinSyncSseFromJson(
+    Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'first':
+      return SimpleEnumTwinSyncSse_First.fromJson(json);
+    case 'second':
+      return SimpleEnumTwinSyncSse_Second.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          'runtimeType',
+          'SimpleEnumTwinSyncSse',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
+}
+
 /// @nodoc
 mixin _$SimpleEnumTwinSyncSse {
   @optionalTypeArgs
@@ -54,6 +71,7 @@ mixin _$SimpleEnumTwinSyncSse {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -95,9 +113,18 @@ class __$$SimpleEnumTwinSyncSse_FirstImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$SimpleEnumTwinSyncSse_FirstImpl extends SimpleEnumTwinSyncSse_First {
-  const _$SimpleEnumTwinSyncSse_FirstImpl() : super._();
+  const _$SimpleEnumTwinSyncSse_FirstImpl({final String? $type})
+      : $type = $type ?? 'first',
+        super._();
+
+  factory _$SimpleEnumTwinSyncSse_FirstImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$SimpleEnumTwinSyncSse_FirstImplFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -111,6 +138,7 @@ class _$SimpleEnumTwinSyncSse_FirstImpl extends SimpleEnumTwinSyncSse_First {
             other is _$SimpleEnumTwinSyncSse_FirstImpl);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -175,12 +203,22 @@ class _$SimpleEnumTwinSyncSse_FirstImpl extends SimpleEnumTwinSyncSse_First {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SimpleEnumTwinSyncSse_FirstImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class SimpleEnumTwinSyncSse_First extends SimpleEnumTwinSyncSse {
   const factory SimpleEnumTwinSyncSse_First() =
       _$SimpleEnumTwinSyncSse_FirstImpl;
   const SimpleEnumTwinSyncSse_First._() : super._();
+
+  factory SimpleEnumTwinSyncSse_First.fromJson(Map<String, dynamic> json) =
+      _$SimpleEnumTwinSyncSse_FirstImpl.fromJson;
 }
 
 /// @nodoc
@@ -218,12 +256,21 @@ class __$$SimpleEnumTwinSyncSse_SecondImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$SimpleEnumTwinSyncSse_SecondImpl extends SimpleEnumTwinSyncSse_Second {
-  const _$SimpleEnumTwinSyncSse_SecondImpl(this.field0) : super._();
+  const _$SimpleEnumTwinSyncSse_SecondImpl(this.field0, {final String? $type})
+      : $type = $type ?? 'second',
+        super._();
+
+  factory _$SimpleEnumTwinSyncSse_SecondImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$SimpleEnumTwinSyncSse_SecondImplFromJson(json);
 
   @override
   final String field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -238,6 +285,7 @@ class _$SimpleEnumTwinSyncSse_SecondImpl extends SimpleEnumTwinSyncSse_Second {
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -310,12 +358,22 @@ class _$SimpleEnumTwinSyncSse_SecondImpl extends SimpleEnumTwinSyncSse_Second {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SimpleEnumTwinSyncSse_SecondImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class SimpleEnumTwinSyncSse_Second extends SimpleEnumTwinSyncSse {
   const factory SimpleEnumTwinSyncSse_Second(final String field0) =
       _$SimpleEnumTwinSyncSse_SecondImpl;
   const SimpleEnumTwinSyncSse_Second._() : super._();
+
+  factory SimpleEnumTwinSyncSse_Second.fromJson(Map<String, dynamic> json) =
+      _$SimpleEnumTwinSyncSse_SecondImpl.fromJson;
 
   String get field0;
   @JsonKey(ignore: true)

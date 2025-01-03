@@ -8,7 +8,9 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+
 part 'exception_twin_sync.freezed.dart';
+part 'exception_twin_sync.g.dart';
 
 int funcReturnErrorTwinSync() => RustLib.instance.api
     .crateApiPseudoManualExceptionTwinSyncFuncReturnErrorTwinSync();
@@ -91,6 +93,9 @@ sealed class CustomEnumErrorTwinSync
     required int message,
     required String backtrace,
   }) = CustomEnumErrorTwinSync_Two;
+
+  factory CustomEnumErrorTwinSync.fromJson(Map<String, dynamic> json) =>
+      _$CustomEnumErrorTwinSyncFromJson(json);
 }
 
 @freezed
@@ -109,6 +114,9 @@ sealed class CustomErrorTwinSync
     required int e,
     required String backtrace,
   }) = CustomErrorTwinSync_Error1;
+
+  factory CustomErrorTwinSync.fromJson(Map<String, dynamic> json) =>
+      _$CustomErrorTwinSyncFromJson(json);
 }
 
 @freezed
@@ -123,6 +131,9 @@ sealed class CustomNestedError1TwinSync
   const factory CustomNestedError1TwinSync.errorNested(
     CustomNestedError2TwinSync field0,
   ) = CustomNestedError1TwinSync_ErrorNested;
+
+  factory CustomNestedError1TwinSync.fromJson(Map<String, dynamic> json) =>
+      _$CustomNestedError1TwinSyncFromJson(json);
 }
 
 @freezed
@@ -135,6 +146,9 @@ sealed class CustomNestedError2TwinSync with _$CustomNestedError2TwinSync {
   const factory CustomNestedError2TwinSync.customNested2Number(
     int field0,
   ) = CustomNestedError2TwinSync_CustomNested2Number;
+
+  factory CustomNestedError2TwinSync.fromJson(Map<String, dynamic> json) =>
+      _$CustomNestedError2TwinSyncFromJson(json);
 }
 
 @freezed
@@ -148,6 +162,9 @@ sealed class CustomNestedErrorInnerTwinSync
   const factory CustomNestedErrorInnerTwinSync.four(
     int field0,
   ) = CustomNestedErrorInnerTwinSync_Four;
+
+  factory CustomNestedErrorInnerTwinSync.fromJson(Map<String, dynamic> json) =>
+      _$CustomNestedErrorInnerTwinSyncFromJson(json);
 }
 
 @freezed
@@ -161,6 +178,9 @@ sealed class CustomNestedErrorOuterTwinSync
   const factory CustomNestedErrorOuterTwinSync.two(
     CustomNestedErrorInnerTwinSync field0,
   ) = CustomNestedErrorOuterTwinSync_Two;
+
+  factory CustomNestedErrorOuterTwinSync.fromJson(Map<String, dynamic> json) =>
+      _$CustomNestedErrorOuterTwinSyncFromJson(json);
 }
 
 class CustomStructErrorAnotherTwinSync implements FrbException {

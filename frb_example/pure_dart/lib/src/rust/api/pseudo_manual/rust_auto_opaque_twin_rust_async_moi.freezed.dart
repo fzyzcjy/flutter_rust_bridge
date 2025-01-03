@@ -14,6 +14,23 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+EnumWithGoodAndOpaqueTwinRustAsyncMoi
+    _$EnumWithGoodAndOpaqueTwinRustAsyncMoiFromJson(Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'good':
+      return EnumWithGoodAndOpaqueTwinRustAsyncMoi_Good.fromJson(json);
+    case 'opaque':
+      return EnumWithGoodAndOpaqueTwinRustAsyncMoi_Opaque.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          'runtimeType',
+          'EnumWithGoodAndOpaqueTwinRustAsyncMoi',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
+}
+
 /// @nodoc
 mixin _$EnumWithGoodAndOpaqueTwinRustAsyncMoi {
   Object get field0 => throw _privateConstructorUsedError;
@@ -60,6 +77,7 @@ mixin _$EnumWithGoodAndOpaqueTwinRustAsyncMoi {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -119,14 +137,23 @@ class __$$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImpl
     extends EnumWithGoodAndOpaqueTwinRustAsyncMoi_Good {
-  const _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImpl(this.field0)
-      : super._();
+  const _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImpl(this.field0,
+      {final String? $type})
+      : $type = $type ?? 'good',
+        super._();
+
+  factory _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImplFromJson(json);
 
   @override
   final String field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -141,6 +168,7 @@ class _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImpl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -220,6 +248,13 @@ class _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImpl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class EnumWithGoodAndOpaqueTwinRustAsyncMoi_Good
@@ -227,6 +262,10 @@ abstract class EnumWithGoodAndOpaqueTwinRustAsyncMoi_Good
   const factory EnumWithGoodAndOpaqueTwinRustAsyncMoi_Good(
       final String field0) = _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImpl;
   const EnumWithGoodAndOpaqueTwinRustAsyncMoi_Good._() : super._();
+
+  factory EnumWithGoodAndOpaqueTwinRustAsyncMoi_Good.fromJson(
+          Map<String, dynamic> json) =
+      _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImpl.fromJson;
 
   @override
   String get field0;
@@ -274,14 +313,23 @@ class __$$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImpl
     extends EnumWithGoodAndOpaqueTwinRustAsyncMoi_Opaque {
-  const _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImpl(this.field0)
-      : super._();
+  const _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImpl(this.field0,
+      {final String? $type})
+      : $type = $type ?? 'opaque',
+        super._();
+
+  factory _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImplFromJson(json);
 
   @override
   final NonCloneSimpleTwinRustAsyncMoi field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -296,6 +344,7 @@ class _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImpl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -375,6 +424,13 @@ class _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImpl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class EnumWithGoodAndOpaqueTwinRustAsyncMoi_Opaque
@@ -383,6 +439,10 @@ abstract class EnumWithGoodAndOpaqueTwinRustAsyncMoi_Opaque
           final NonCloneSimpleTwinRustAsyncMoi field0) =
       _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImpl;
   const EnumWithGoodAndOpaqueTwinRustAsyncMoi_Opaque._() : super._();
+
+  factory EnumWithGoodAndOpaqueTwinRustAsyncMoi_Opaque.fromJson(
+          Map<String, dynamic> json) =
+      _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImpl.fromJson;
 
   @override
   NonCloneSimpleTwinRustAsyncMoi get field0;

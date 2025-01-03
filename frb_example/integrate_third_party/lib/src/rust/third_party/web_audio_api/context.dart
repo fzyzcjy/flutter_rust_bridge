@@ -11,7 +11,9 @@ import 'media_streams.dart';
 import 'node.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+
 part 'context.freezed.dart';
+part 'context.g.dart';
 
 // These functions are ignored because they have generic arguments: `decode_audio_data_sync`, `decode_audio_data_sync`, `decode_audio_data_sync`, `set_onstatechange`, `set_onstatechange`, `set_onstatechange`, `set_onstatechange`
 // These types are ignored because they are not used by any `pub` functions: `AudioNodeId`
@@ -753,6 +755,9 @@ sealed class AudioContextLatencyCategory with _$AudioContextLatencyCategory {
   const factory AudioContextLatencyCategory.custom(
     double field0,
   ) = AudioContextLatencyCategory_Custom;
+
+  factory AudioContextLatencyCategory.fromJson(Map<String, dynamic> json) =>
+      _$AudioContextLatencyCategoryFromJson(json);
 
   static Future<AudioContextLatencyCategory> default_() => RustLib.instance.api
       .webAudioApiContextAudioContextLatencyCategoryDefault();

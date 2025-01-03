@@ -14,6 +14,23 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+EnumWithGoodAndOpaqueTwinMoi _$EnumWithGoodAndOpaqueTwinMoiFromJson(
+    Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'good':
+      return EnumWithGoodAndOpaqueTwinMoi_Good.fromJson(json);
+    case 'opaque':
+      return EnumWithGoodAndOpaqueTwinMoi_Opaque.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          'runtimeType',
+          'EnumWithGoodAndOpaqueTwinMoi',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
+}
+
 /// @nodoc
 mixin _$EnumWithGoodAndOpaqueTwinMoi {
   Object get field0 => throw _privateConstructorUsedError;
@@ -55,6 +72,7 @@ mixin _$EnumWithGoodAndOpaqueTwinMoi {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -113,13 +131,23 @@ class __$$EnumWithGoodAndOpaqueTwinMoi_GoodImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$EnumWithGoodAndOpaqueTwinMoi_GoodImpl
     extends EnumWithGoodAndOpaqueTwinMoi_Good {
-  const _$EnumWithGoodAndOpaqueTwinMoi_GoodImpl(this.field0) : super._();
+  const _$EnumWithGoodAndOpaqueTwinMoi_GoodImpl(this.field0,
+      {final String? $type})
+      : $type = $type ?? 'good',
+        super._();
+
+  factory _$EnumWithGoodAndOpaqueTwinMoi_GoodImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$EnumWithGoodAndOpaqueTwinMoi_GoodImplFromJson(json);
 
   @override
   final String field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -134,6 +162,7 @@ class _$EnumWithGoodAndOpaqueTwinMoi_GoodImpl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -206,6 +235,13 @@ class _$EnumWithGoodAndOpaqueTwinMoi_GoodImpl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$EnumWithGoodAndOpaqueTwinMoi_GoodImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class EnumWithGoodAndOpaqueTwinMoi_Good
@@ -213,6 +249,10 @@ abstract class EnumWithGoodAndOpaqueTwinMoi_Good
   const factory EnumWithGoodAndOpaqueTwinMoi_Good(final String field0) =
       _$EnumWithGoodAndOpaqueTwinMoi_GoodImpl;
   const EnumWithGoodAndOpaqueTwinMoi_Good._() : super._();
+
+  factory EnumWithGoodAndOpaqueTwinMoi_Good.fromJson(
+          Map<String, dynamic> json) =
+      _$EnumWithGoodAndOpaqueTwinMoi_GoodImpl.fromJson;
 
   @override
   String get field0;
@@ -257,13 +297,23 @@ class __$$EnumWithGoodAndOpaqueTwinMoi_OpaqueImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$EnumWithGoodAndOpaqueTwinMoi_OpaqueImpl
     extends EnumWithGoodAndOpaqueTwinMoi_Opaque {
-  const _$EnumWithGoodAndOpaqueTwinMoi_OpaqueImpl(this.field0) : super._();
+  const _$EnumWithGoodAndOpaqueTwinMoi_OpaqueImpl(this.field0,
+      {final String? $type})
+      : $type = $type ?? 'opaque',
+        super._();
+
+  factory _$EnumWithGoodAndOpaqueTwinMoi_OpaqueImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$EnumWithGoodAndOpaqueTwinMoi_OpaqueImplFromJson(json);
 
   @override
   final NonCloneSimpleTwinMoi field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -278,6 +328,7 @@ class _$EnumWithGoodAndOpaqueTwinMoi_OpaqueImpl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -350,6 +401,13 @@ class _$EnumWithGoodAndOpaqueTwinMoi_OpaqueImpl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$EnumWithGoodAndOpaqueTwinMoi_OpaqueImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class EnumWithGoodAndOpaqueTwinMoi_Opaque
@@ -358,6 +416,10 @@ abstract class EnumWithGoodAndOpaqueTwinMoi_Opaque
           final NonCloneSimpleTwinMoi field0) =
       _$EnumWithGoodAndOpaqueTwinMoi_OpaqueImpl;
   const EnumWithGoodAndOpaqueTwinMoi_Opaque._() : super._();
+
+  factory EnumWithGoodAndOpaqueTwinMoi_Opaque.fromJson(
+          Map<String, dynamic> json) =
+      _$EnumWithGoodAndOpaqueTwinMoi_OpaqueImpl.fromJson;
 
   @override
   NonCloneSimpleTwinMoi get field0;

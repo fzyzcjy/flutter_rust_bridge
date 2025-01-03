@@ -14,6 +14,23 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+BasicGeneralEnumTwinSse _$BasicGeneralEnumTwinSseFromJson(
+    Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'apple':
+      return BasicGeneralEnumTwinSse_Apple.fromJson(json);
+    case 'orange':
+      return BasicGeneralEnumTwinSse_Orange.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          'runtimeType',
+          'BasicGeneralEnumTwinSse',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
+}
+
 /// @nodoc
 mixin _$BasicGeneralEnumTwinSse {
   @optionalTypeArgs
@@ -54,6 +71,7 @@ mixin _$BasicGeneralEnumTwinSse {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -110,13 +128,23 @@ class __$$BasicGeneralEnumTwinSse_AppleImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$BasicGeneralEnumTwinSse_AppleImpl
     extends BasicGeneralEnumTwinSse_Apple {
-  const _$BasicGeneralEnumTwinSse_AppleImpl({required this.field}) : super._();
+  const _$BasicGeneralEnumTwinSse_AppleImpl(
+      {required this.field, final String? $type})
+      : $type = $type ?? 'apple',
+        super._();
+
+  factory _$BasicGeneralEnumTwinSse_AppleImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$BasicGeneralEnumTwinSse_AppleImplFromJson(json);
 
   @override
   final String field;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -131,6 +159,7 @@ class _$BasicGeneralEnumTwinSse_AppleImpl
             (identical(other.field, field) || other.field == field));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field);
 
@@ -203,12 +232,22 @@ class _$BasicGeneralEnumTwinSse_AppleImpl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$BasicGeneralEnumTwinSse_AppleImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class BasicGeneralEnumTwinSse_Apple extends BasicGeneralEnumTwinSse {
   const factory BasicGeneralEnumTwinSse_Apple({required final String field}) =
       _$BasicGeneralEnumTwinSse_AppleImpl;
   const BasicGeneralEnumTwinSse_Apple._() : super._();
+
+  factory BasicGeneralEnumTwinSse_Apple.fromJson(Map<String, dynamic> json) =
+      _$BasicGeneralEnumTwinSse_AppleImpl.fromJson;
 
   String get field;
   @JsonKey(ignore: true)
@@ -237,10 +276,19 @@ class __$$BasicGeneralEnumTwinSse_OrangeImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$BasicGeneralEnumTwinSse_OrangeImpl
     extends BasicGeneralEnumTwinSse_Orange {
-  const _$BasicGeneralEnumTwinSse_OrangeImpl() : super._();
+  const _$BasicGeneralEnumTwinSse_OrangeImpl({final String? $type})
+      : $type = $type ?? 'orange',
+        super._();
+
+  factory _$BasicGeneralEnumTwinSse_OrangeImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$BasicGeneralEnumTwinSse_OrangeImplFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -254,6 +302,7 @@ class _$BasicGeneralEnumTwinSse_OrangeImpl
             other is _$BasicGeneralEnumTwinSse_OrangeImpl);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -318,10 +367,20 @@ class _$BasicGeneralEnumTwinSse_OrangeImpl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$BasicGeneralEnumTwinSse_OrangeImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class BasicGeneralEnumTwinSse_Orange extends BasicGeneralEnumTwinSse {
   const factory BasicGeneralEnumTwinSse_Orange() =
       _$BasicGeneralEnumTwinSse_OrangeImpl;
   const BasicGeneralEnumTwinSse_Orange._() : super._();
+
+  factory BasicGeneralEnumTwinSse_Orange.fromJson(Map<String, dynamic> json) =
+      _$BasicGeneralEnumTwinSse_OrangeImpl.fromJson;
 }

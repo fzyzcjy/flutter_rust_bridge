@@ -8,7 +8,9 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+
 part 'rust_auto_opaque_twin_rust_async.freezed.dart';
+part 'rust_auto_opaque_twin_rust_async.g.dart';
 
 // These functions are ignored (category: IgnoreBecauseNotAllowedOwner): `f`
 
@@ -281,6 +283,10 @@ sealed class EnumWithGoodAndOpaqueTwinRustAsync
   const factory EnumWithGoodAndOpaqueTwinRustAsync.opaque(
     NonCloneSimpleTwinRustAsync field0,
   ) = EnumWithGoodAndOpaqueTwinRustAsync_Opaque;
+
+  factory EnumWithGoodAndOpaqueTwinRustAsync.fromJson(
+          Map<String, dynamic> json) =>
+      _$EnumWithGoodAndOpaqueTwinRustAsyncFromJson(json);
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinRustAsync {

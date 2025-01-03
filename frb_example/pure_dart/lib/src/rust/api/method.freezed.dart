@@ -14,6 +14,22 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+SimpleEnumTwinNormal _$SimpleEnumTwinNormalFromJson(Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'first':
+      return SimpleEnumTwinNormal_First.fromJson(json);
+    case 'second':
+      return SimpleEnumTwinNormal_Second.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          'runtimeType',
+          'SimpleEnumTwinNormal',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
+}
+
 /// @nodoc
 mixin _$SimpleEnumTwinNormal {
   @optionalTypeArgs
@@ -54,6 +70,7 @@ mixin _$SimpleEnumTwinNormal {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -95,9 +112,18 @@ class __$$SimpleEnumTwinNormal_FirstImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$SimpleEnumTwinNormal_FirstImpl extends SimpleEnumTwinNormal_First {
-  const _$SimpleEnumTwinNormal_FirstImpl() : super._();
+  const _$SimpleEnumTwinNormal_FirstImpl({final String? $type})
+      : $type = $type ?? 'first',
+        super._();
+
+  factory _$SimpleEnumTwinNormal_FirstImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$SimpleEnumTwinNormal_FirstImplFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -111,6 +137,7 @@ class _$SimpleEnumTwinNormal_FirstImpl extends SimpleEnumTwinNormal_First {
             other is _$SimpleEnumTwinNormal_FirstImpl);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -175,11 +202,21 @@ class _$SimpleEnumTwinNormal_FirstImpl extends SimpleEnumTwinNormal_First {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SimpleEnumTwinNormal_FirstImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class SimpleEnumTwinNormal_First extends SimpleEnumTwinNormal {
   const factory SimpleEnumTwinNormal_First() = _$SimpleEnumTwinNormal_FirstImpl;
   const SimpleEnumTwinNormal_First._() : super._();
+
+  factory SimpleEnumTwinNormal_First.fromJson(Map<String, dynamic> json) =
+      _$SimpleEnumTwinNormal_FirstImpl.fromJson;
 }
 
 /// @nodoc
@@ -217,12 +254,21 @@ class __$$SimpleEnumTwinNormal_SecondImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$SimpleEnumTwinNormal_SecondImpl extends SimpleEnumTwinNormal_Second {
-  const _$SimpleEnumTwinNormal_SecondImpl(this.field0) : super._();
+  const _$SimpleEnumTwinNormal_SecondImpl(this.field0, {final String? $type})
+      : $type = $type ?? 'second',
+        super._();
+
+  factory _$SimpleEnumTwinNormal_SecondImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$SimpleEnumTwinNormal_SecondImplFromJson(json);
 
   @override
   final String field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -237,6 +283,7 @@ class _$SimpleEnumTwinNormal_SecondImpl extends SimpleEnumTwinNormal_Second {
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -308,12 +355,22 @@ class _$SimpleEnumTwinNormal_SecondImpl extends SimpleEnumTwinNormal_Second {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SimpleEnumTwinNormal_SecondImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class SimpleEnumTwinNormal_Second extends SimpleEnumTwinNormal {
   const factory SimpleEnumTwinNormal_Second(final String field0) =
       _$SimpleEnumTwinNormal_SecondImpl;
   const SimpleEnumTwinNormal_Second._() : super._();
+
+  factory SimpleEnumTwinNormal_Second.fromJson(Map<String, dynamic> json) =
+      _$SimpleEnumTwinNormal_SecondImpl.fromJson;
 
   String get field0;
   @JsonKey(ignore: true)

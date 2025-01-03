@@ -8,7 +8,9 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+
 part 'exception_twin_rust_async_sse.freezed.dart';
+part 'exception_twin_rust_async_sse.g.dart';
 
 Future<int> funcReturnErrorTwinRustAsyncSse() => RustLib.instance.api
     .crateApiPseudoManualExceptionTwinRustAsyncSseFuncReturnErrorTwinRustAsyncSse();
@@ -95,6 +97,9 @@ sealed class CustomEnumErrorTwinRustAsyncSse
     required int message,
     required String backtrace,
   }) = CustomEnumErrorTwinRustAsyncSse_Two;
+
+  factory CustomEnumErrorTwinRustAsyncSse.fromJson(Map<String, dynamic> json) =>
+      _$CustomEnumErrorTwinRustAsyncSseFromJson(json);
 }
 
 @freezed
@@ -113,6 +118,9 @@ sealed class CustomErrorTwinRustAsyncSse
     required int e,
     required String backtrace,
   }) = CustomErrorTwinRustAsyncSse_Error1;
+
+  factory CustomErrorTwinRustAsyncSse.fromJson(Map<String, dynamic> json) =>
+      _$CustomErrorTwinRustAsyncSseFromJson(json);
 }
 
 @freezed
@@ -127,6 +135,10 @@ sealed class CustomNestedError1TwinRustAsyncSse
   const factory CustomNestedError1TwinRustAsyncSse.errorNested(
     CustomNestedError2TwinRustAsyncSse field0,
   ) = CustomNestedError1TwinRustAsyncSse_ErrorNested;
+
+  factory CustomNestedError1TwinRustAsyncSse.fromJson(
+          Map<String, dynamic> json) =>
+      _$CustomNestedError1TwinRustAsyncSseFromJson(json);
 }
 
 @freezed
@@ -140,6 +152,10 @@ sealed class CustomNestedError2TwinRustAsyncSse
   const factory CustomNestedError2TwinRustAsyncSse.customNested2Number(
     int field0,
   ) = CustomNestedError2TwinRustAsyncSse_CustomNested2Number;
+
+  factory CustomNestedError2TwinRustAsyncSse.fromJson(
+          Map<String, dynamic> json) =>
+      _$CustomNestedError2TwinRustAsyncSseFromJson(json);
 }
 
 @freezed
@@ -153,6 +169,10 @@ sealed class CustomNestedErrorInnerTwinRustAsyncSse
   const factory CustomNestedErrorInnerTwinRustAsyncSse.four(
     int field0,
   ) = CustomNestedErrorInnerTwinRustAsyncSse_Four;
+
+  factory CustomNestedErrorInnerTwinRustAsyncSse.fromJson(
+          Map<String, dynamic> json) =>
+      _$CustomNestedErrorInnerTwinRustAsyncSseFromJson(json);
 }
 
 @freezed
@@ -166,6 +186,10 @@ sealed class CustomNestedErrorOuterTwinRustAsyncSse
   const factory CustomNestedErrorOuterTwinRustAsyncSse.two(
     CustomNestedErrorInnerTwinRustAsyncSse field0,
   ) = CustomNestedErrorOuterTwinRustAsyncSse_Two;
+
+  factory CustomNestedErrorOuterTwinRustAsyncSse.fromJson(
+          Map<String, dynamic> json) =>
+      _$CustomNestedErrorOuterTwinRustAsyncSseFromJson(json);
 }
 
 class CustomStructErrorAnotherTwinRustAsyncSse implements FrbException {

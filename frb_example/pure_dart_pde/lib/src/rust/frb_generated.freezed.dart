@@ -14,6 +14,26 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum
+    _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnumFromJson(
+        Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'variant0':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0
+          .fromJson(json);
+    case 'variant1':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1
+          .fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          'runtimeType',
+          'Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
+}
+
 /// @nodoc
 mixin _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum {
   MyNodeTwinNormal get field0 => throw _privateConstructorUsedError;
@@ -73,7 +93,7 @@ mixin _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerM
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnumCopyWith<
           Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum>
@@ -176,15 +196,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant0',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0ImplFromJson(
+          json);
 
   @override
   final MyNodeTwinNormal field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -200,6 +230,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerM
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -292,6 +323,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerM
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0
@@ -301,6 +339,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0Impl
+      .fromJson;
 
   @override
   MyNodeTwinNormal get field0;
@@ -363,15 +406,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant1',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1ImplFromJson(
+          json);
 
   @override
   final MyNodeTwinNormal field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -387,6 +440,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerM
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -479,6 +533,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerM
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1
@@ -489,6 +550,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1._()
       : super._();
 
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1Impl
+      .fromJson;
+
   @override
   MyNodeTwinNormal get field0;
   @override
@@ -496,6 +562,24 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
   _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1ImplCopyWith<
           _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1Impl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+SimpleTraitForDynTwinNormalImplementor
+    _$SimpleTraitForDynTwinNormalImplementorFromJson(
+        Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'variant0':
+      return SimpleTraitForDynTwinNormalImplementor_Variant0.fromJson(json);
+    case 'variant1':
+      return SimpleTraitForDynTwinNormalImplementor_Variant1.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          'runtimeType',
+          'SimpleTraitForDynTwinNormalImplementor',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
 }
 
 /// @nodoc
@@ -549,6 +633,7 @@ mixin _$SimpleTraitForDynTwinNormalImplementor {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -611,14 +696,23 @@ class __$$SimpleTraitForDynTwinNormalImplementor_Variant0ImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$SimpleTraitForDynTwinNormalImplementor_Variant0Impl
     extends SimpleTraitForDynTwinNormalImplementor_Variant0 {
-  const _$SimpleTraitForDynTwinNormalImplementor_Variant0Impl(this.field0)
-      : super._();
+  const _$SimpleTraitForDynTwinNormalImplementor_Variant0Impl(this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant0',
+        super._();
+
+  factory _$SimpleTraitForDynTwinNormalImplementor_Variant0Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$SimpleTraitForDynTwinNormalImplementor_Variant0ImplFromJson(json);
 
   @override
   final StructOneWithTraitForDynTwinNormal field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -633,6 +727,7 @@ class _$SimpleTraitForDynTwinNormalImplementor_Variant0Impl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -717,6 +812,13 @@ class _$SimpleTraitForDynTwinNormalImplementor_Variant0Impl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SimpleTraitForDynTwinNormalImplementor_Variant0ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class SimpleTraitForDynTwinNormalImplementor_Variant0
@@ -725,6 +827,10 @@ abstract class SimpleTraitForDynTwinNormalImplementor_Variant0
           final StructOneWithTraitForDynTwinNormal field0) =
       _$SimpleTraitForDynTwinNormalImplementor_Variant0Impl;
   const SimpleTraitForDynTwinNormalImplementor_Variant0._() : super._();
+
+  factory SimpleTraitForDynTwinNormalImplementor_Variant0.fromJson(
+          Map<String, dynamic> json) =
+      _$SimpleTraitForDynTwinNormalImplementor_Variant0Impl.fromJson;
 
   @override
   StructOneWithTraitForDynTwinNormal get field0;
@@ -773,14 +879,23 @@ class __$$SimpleTraitForDynTwinNormalImplementor_Variant1ImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$SimpleTraitForDynTwinNormalImplementor_Variant1Impl
     extends SimpleTraitForDynTwinNormalImplementor_Variant1 {
-  const _$SimpleTraitForDynTwinNormalImplementor_Variant1Impl(this.field0)
-      : super._();
+  const _$SimpleTraitForDynTwinNormalImplementor_Variant1Impl(this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant1',
+        super._();
+
+  factory _$SimpleTraitForDynTwinNormalImplementor_Variant1Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$SimpleTraitForDynTwinNormalImplementor_Variant1ImplFromJson(json);
 
   @override
   final StructTwoWithTraitForDynTwinNormal field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -795,6 +910,7 @@ class _$SimpleTraitForDynTwinNormalImplementor_Variant1Impl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -879,6 +995,13 @@ class _$SimpleTraitForDynTwinNormalImplementor_Variant1Impl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SimpleTraitForDynTwinNormalImplementor_Variant1ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class SimpleTraitForDynTwinNormalImplementor_Variant1
@@ -887,6 +1010,10 @@ abstract class SimpleTraitForDynTwinNormalImplementor_Variant1
           final StructTwoWithTraitForDynTwinNormal field0) =
       _$SimpleTraitForDynTwinNormalImplementor_Variant1Impl;
   const SimpleTraitForDynTwinNormalImplementor_Variant1._() : super._();
+
+  factory SimpleTraitForDynTwinNormalImplementor_Variant1.fromJson(
+          Map<String, dynamic> json) =
+      _$SimpleTraitForDynTwinNormalImplementor_Variant1Impl.fromJson;
 
   @override
   StructTwoWithTraitForDynTwinNormal get field0;

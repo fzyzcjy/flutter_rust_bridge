@@ -14,6 +14,23 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+BasicGeneralEnumTwinSyncSse _$BasicGeneralEnumTwinSyncSseFromJson(
+    Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'apple':
+      return BasicGeneralEnumTwinSyncSse_Apple.fromJson(json);
+    case 'orange':
+      return BasicGeneralEnumTwinSyncSse_Orange.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          'runtimeType',
+          'BasicGeneralEnumTwinSyncSse',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
+}
+
 /// @nodoc
 mixin _$BasicGeneralEnumTwinSyncSse {
   @optionalTypeArgs
@@ -54,6 +71,7 @@ mixin _$BasicGeneralEnumTwinSyncSse {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -112,14 +130,23 @@ class __$$BasicGeneralEnumTwinSyncSse_AppleImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$BasicGeneralEnumTwinSyncSse_AppleImpl
     extends BasicGeneralEnumTwinSyncSse_Apple {
-  const _$BasicGeneralEnumTwinSyncSse_AppleImpl({required this.field})
-      : super._();
+  const _$BasicGeneralEnumTwinSyncSse_AppleImpl(
+      {required this.field, final String? $type})
+      : $type = $type ?? 'apple',
+        super._();
+
+  factory _$BasicGeneralEnumTwinSyncSse_AppleImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$BasicGeneralEnumTwinSyncSse_AppleImplFromJson(json);
 
   @override
   final String field;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -134,6 +161,7 @@ class _$BasicGeneralEnumTwinSyncSse_AppleImpl
             (identical(other.field, field) || other.field == field));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field);
 
@@ -206,6 +234,13 @@ class _$BasicGeneralEnumTwinSyncSse_AppleImpl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$BasicGeneralEnumTwinSyncSse_AppleImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class BasicGeneralEnumTwinSyncSse_Apple
@@ -213,6 +248,10 @@ abstract class BasicGeneralEnumTwinSyncSse_Apple
   const factory BasicGeneralEnumTwinSyncSse_Apple(
       {required final String field}) = _$BasicGeneralEnumTwinSyncSse_AppleImpl;
   const BasicGeneralEnumTwinSyncSse_Apple._() : super._();
+
+  factory BasicGeneralEnumTwinSyncSse_Apple.fromJson(
+          Map<String, dynamic> json) =
+      _$BasicGeneralEnumTwinSyncSse_AppleImpl.fromJson;
 
   String get field;
   @JsonKey(ignore: true)
@@ -241,10 +280,19 @@ class __$$BasicGeneralEnumTwinSyncSse_OrangeImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$BasicGeneralEnumTwinSyncSse_OrangeImpl
     extends BasicGeneralEnumTwinSyncSse_Orange {
-  const _$BasicGeneralEnumTwinSyncSse_OrangeImpl() : super._();
+  const _$BasicGeneralEnumTwinSyncSse_OrangeImpl({final String? $type})
+      : $type = $type ?? 'orange',
+        super._();
+
+  factory _$BasicGeneralEnumTwinSyncSse_OrangeImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$BasicGeneralEnumTwinSyncSse_OrangeImplFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -258,6 +306,7 @@ class _$BasicGeneralEnumTwinSyncSse_OrangeImpl
             other is _$BasicGeneralEnumTwinSyncSse_OrangeImpl);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -322,6 +371,13 @@ class _$BasicGeneralEnumTwinSyncSse_OrangeImpl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$BasicGeneralEnumTwinSyncSse_OrangeImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class BasicGeneralEnumTwinSyncSse_Orange
@@ -329,4 +385,8 @@ abstract class BasicGeneralEnumTwinSyncSse_Orange
   const factory BasicGeneralEnumTwinSyncSse_Orange() =
       _$BasicGeneralEnumTwinSyncSse_OrangeImpl;
   const BasicGeneralEnumTwinSyncSse_Orange._() : super._();
+
+  factory BasicGeneralEnumTwinSyncSse_Orange.fromJson(
+          Map<String, dynamic> json) =
+      _$BasicGeneralEnumTwinSyncSse_OrangeImpl.fromJson;
 }

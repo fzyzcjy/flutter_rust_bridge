@@ -14,6 +14,19 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+SimpleEnumTwinSse _$SimpleEnumTwinSseFromJson(Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'first':
+      return SimpleEnumTwinSse_First.fromJson(json);
+    case 'second':
+      return SimpleEnumTwinSse_Second.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'runtimeType', 'SimpleEnumTwinSse',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
+}
+
 /// @nodoc
 mixin _$SimpleEnumTwinSse {
   @optionalTypeArgs
@@ -54,6 +67,7 @@ mixin _$SimpleEnumTwinSse {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -93,9 +107,17 @@ class __$$SimpleEnumTwinSse_FirstImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$SimpleEnumTwinSse_FirstImpl extends SimpleEnumTwinSse_First {
-  const _$SimpleEnumTwinSse_FirstImpl() : super._();
+  const _$SimpleEnumTwinSse_FirstImpl({final String? $type})
+      : $type = $type ?? 'first',
+        super._();
+
+  factory _$SimpleEnumTwinSse_FirstImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SimpleEnumTwinSse_FirstImplFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -109,6 +131,7 @@ class _$SimpleEnumTwinSse_FirstImpl extends SimpleEnumTwinSse_First {
             other is _$SimpleEnumTwinSse_FirstImpl);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -173,11 +196,21 @@ class _$SimpleEnumTwinSse_FirstImpl extends SimpleEnumTwinSse_First {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SimpleEnumTwinSse_FirstImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class SimpleEnumTwinSse_First extends SimpleEnumTwinSse {
   const factory SimpleEnumTwinSse_First() = _$SimpleEnumTwinSse_FirstImpl;
   const SimpleEnumTwinSse_First._() : super._();
+
+  factory SimpleEnumTwinSse_First.fromJson(Map<String, dynamic> json) =
+      _$SimpleEnumTwinSse_FirstImpl.fromJson;
 }
 
 /// @nodoc
@@ -215,12 +248,20 @@ class __$$SimpleEnumTwinSse_SecondImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$SimpleEnumTwinSse_SecondImpl extends SimpleEnumTwinSse_Second {
-  const _$SimpleEnumTwinSse_SecondImpl(this.field0) : super._();
+  const _$SimpleEnumTwinSse_SecondImpl(this.field0, {final String? $type})
+      : $type = $type ?? 'second',
+        super._();
+
+  factory _$SimpleEnumTwinSse_SecondImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SimpleEnumTwinSse_SecondImplFromJson(json);
 
   @override
   final String field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -235,6 +276,7 @@ class _$SimpleEnumTwinSse_SecondImpl extends SimpleEnumTwinSse_Second {
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -306,12 +348,22 @@ class _$SimpleEnumTwinSse_SecondImpl extends SimpleEnumTwinSse_Second {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SimpleEnumTwinSse_SecondImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class SimpleEnumTwinSse_Second extends SimpleEnumTwinSse {
   const factory SimpleEnumTwinSse_Second(final String field0) =
       _$SimpleEnumTwinSse_SecondImpl;
   const SimpleEnumTwinSse_Second._() : super._();
+
+  factory SimpleEnumTwinSse_Second.fromJson(Map<String, dynamic> json) =
+      _$SimpleEnumTwinSse_SecondImpl.fromJson;
 
   String get field0;
   @JsonKey(ignore: true)

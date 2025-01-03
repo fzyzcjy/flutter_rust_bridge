@@ -9,7 +9,9 @@ import '../../frb_generated.dart';
 import 'misc_example_twin_sync_sse.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+
 part 'enumeration_twin_sync_sse.freezed.dart';
+part 'enumeration_twin_sync_sse.g.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
 
@@ -78,6 +80,9 @@ sealed class DistanceTwinSyncSse with _$DistanceTwinSyncSse {
   const factory DistanceTwinSyncSse.map(
     double field0,
   ) = DistanceTwinSyncSse_Map;
+
+  factory DistanceTwinSyncSse.fromJson(Map<String, dynamic> json) =>
+      _$DistanceTwinSyncSseFromJson(json);
 }
 
 enum EnumSimpleTwinSyncSse {
@@ -104,6 +109,9 @@ sealed class EnumWithItemMixedTwinSyncSse with _$EnumWithItemMixedTwinSyncSse {
   const factory EnumWithItemMixedTwinSyncSse.c({
     required String cField,
   }) = EnumWithItemMixedTwinSyncSse_C;
+
+  factory EnumWithItemMixedTwinSyncSse.fromJson(Map<String, dynamic> json) =>
+      _$EnumWithItemMixedTwinSyncSseFromJson(json);
 }
 
 @freezed
@@ -117,6 +125,9 @@ sealed class EnumWithItemStructTwinSyncSse
   const factory EnumWithItemStructTwinSyncSse.b({
     required Int32List bField,
   }) = EnumWithItemStructTwinSyncSse_B;
+
+  factory EnumWithItemStructTwinSyncSse.fromJson(Map<String, dynamic> json) =>
+      _$EnumWithItemStructTwinSyncSseFromJson(json);
 }
 
 @freezed
@@ -129,6 +140,9 @@ sealed class EnumWithItemTupleTwinSyncSse with _$EnumWithItemTupleTwinSyncSse {
   const factory EnumWithItemTupleTwinSyncSse.b(
     Int32List field0,
   ) = EnumWithItemTupleTwinSyncSse_B;
+
+  factory EnumWithItemTupleTwinSyncSse.fromJson(Map<String, dynamic> json) =>
+      _$EnumWithItemTupleTwinSyncSseFromJson(json);
 }
 
 @freezed
@@ -158,6 +172,9 @@ sealed class KitchenSinkTwinSyncSse with _$KitchenSinkTwinSyncSse {
   const factory KitchenSinkTwinSyncSse.enums([
     @Default(WeekdaysTwinSyncSse.sunday) WeekdaysTwinSyncSse field0,
   ]) = KitchenSinkTwinSyncSse_Enums;
+
+  factory KitchenSinkTwinSyncSse.fromJson(Map<String, dynamic> json) =>
+      _$KitchenSinkTwinSyncSseFromJson(json);
 }
 
 @freezed
@@ -170,6 +187,9 @@ sealed class MeasureTwinSyncSse with _$MeasureTwinSyncSse {
   const factory MeasureTwinSyncSse.distance(
     DistanceTwinSyncSse field0,
   ) = MeasureTwinSyncSse_Distance;
+
+  factory MeasureTwinSyncSse.fromJson(Map<String, dynamic> json) =>
+      _$MeasureTwinSyncSseFromJson(json);
 }
 
 class NoteTwinSyncSse {
@@ -201,4 +221,7 @@ sealed class SpeedTwinSyncSse with _$SpeedTwinSyncSse {
   const factory SpeedTwinSyncSse.gps(
     double field0,
   ) = SpeedTwinSyncSse_GPS;
+
+  factory SpeedTwinSyncSse.fromJson(Map<String, dynamic> json) =>
+      _$SpeedTwinSyncSseFromJson(json);
 }

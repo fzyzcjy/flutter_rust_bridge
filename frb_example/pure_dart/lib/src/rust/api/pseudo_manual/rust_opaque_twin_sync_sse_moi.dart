@@ -10,7 +10,9 @@ import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_opaque_twin_moi.dart';
+
 part 'rust_opaque_twin_sync_sse_moi.freezed.dart';
+part 'rust_opaque_twin_sync_sse_moi.g.dart';
 
 HideDataTwinSyncSseMoi createOpaqueTwinSyncSseMoi() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueTwinSyncSseMoiCreateOpaqueTwinSyncSseMoi();
@@ -142,6 +144,9 @@ sealed class EnumOpaqueTwinSyncSseMoi with _$EnumOpaqueTwinSyncSseMoi {
   ) = EnumOpaqueTwinSyncSseMoi_RwLock;
   const factory EnumOpaqueTwinSyncSseMoi.nothing() =
       EnumOpaqueTwinSyncSseMoi_Nothing;
+
+  factory EnumOpaqueTwinSyncSseMoi.fromJson(Map<String, dynamic> json) =>
+      _$EnumOpaqueTwinSyncSseMoiFromJson(json);
 }
 
 class EnumOpaqueTwinSyncSseMoiArray5

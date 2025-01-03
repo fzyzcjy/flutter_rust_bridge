@@ -9,7 +9,9 @@ import '../../frb_generated.dart';
 import 'misc_example_twin_rust_async.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+
 part 'enumeration_twin_rust_async.freezed.dart';
+part 'enumeration_twin_rust_async.g.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
 
@@ -80,6 +82,9 @@ sealed class DistanceTwinRustAsync with _$DistanceTwinRustAsync {
   const factory DistanceTwinRustAsync.map(
     double field0,
   ) = DistanceTwinRustAsync_Map;
+
+  factory DistanceTwinRustAsync.fromJson(Map<String, dynamic> json) =>
+      _$DistanceTwinRustAsyncFromJson(json);
 }
 
 enum EnumSimpleTwinRustAsync {
@@ -107,6 +112,9 @@ sealed class EnumWithItemMixedTwinRustAsync
   const factory EnumWithItemMixedTwinRustAsync.c({
     required String cField,
   }) = EnumWithItemMixedTwinRustAsync_C;
+
+  factory EnumWithItemMixedTwinRustAsync.fromJson(Map<String, dynamic> json) =>
+      _$EnumWithItemMixedTwinRustAsyncFromJson(json);
 }
 
 @freezed
@@ -120,6 +128,9 @@ sealed class EnumWithItemStructTwinRustAsync
   const factory EnumWithItemStructTwinRustAsync.b({
     required Int32List bField,
   }) = EnumWithItemStructTwinRustAsync_B;
+
+  factory EnumWithItemStructTwinRustAsync.fromJson(Map<String, dynamic> json) =>
+      _$EnumWithItemStructTwinRustAsyncFromJson(json);
 }
 
 @freezed
@@ -133,6 +144,9 @@ sealed class EnumWithItemTupleTwinRustAsync
   const factory EnumWithItemTupleTwinRustAsync.b(
     Int32List field0,
   ) = EnumWithItemTupleTwinRustAsync_B;
+
+  factory EnumWithItemTupleTwinRustAsync.fromJson(Map<String, dynamic> json) =>
+      _$EnumWithItemTupleTwinRustAsyncFromJson(json);
 }
 
 @freezed
@@ -163,6 +177,9 @@ sealed class KitchenSinkTwinRustAsync with _$KitchenSinkTwinRustAsync {
   const factory KitchenSinkTwinRustAsync.enums([
     @Default(WeekdaysTwinRustAsync.sunday) WeekdaysTwinRustAsync field0,
   ]) = KitchenSinkTwinRustAsync_Enums;
+
+  factory KitchenSinkTwinRustAsync.fromJson(Map<String, dynamic> json) =>
+      _$KitchenSinkTwinRustAsyncFromJson(json);
 }
 
 @freezed
@@ -175,6 +192,9 @@ sealed class MeasureTwinRustAsync with _$MeasureTwinRustAsync {
   const factory MeasureTwinRustAsync.distance(
     DistanceTwinRustAsync field0,
   ) = MeasureTwinRustAsync_Distance;
+
+  factory MeasureTwinRustAsync.fromJson(Map<String, dynamic> json) =>
+      _$MeasureTwinRustAsyncFromJson(json);
 }
 
 class NoteTwinRustAsync {
@@ -206,4 +226,7 @@ sealed class SpeedTwinRustAsync with _$SpeedTwinRustAsync {
   const factory SpeedTwinRustAsync.gps(
     double field0,
   ) = SpeedTwinRustAsync_GPS;
+
+  factory SpeedTwinRustAsync.fromJson(Map<String, dynamic> json) =>
+      _$SpeedTwinRustAsyncFromJson(json);
 }

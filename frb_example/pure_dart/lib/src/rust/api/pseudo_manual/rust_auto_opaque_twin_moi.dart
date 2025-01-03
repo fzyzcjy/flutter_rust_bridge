@@ -8,7 +8,9 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+
 part 'rust_auto_opaque_twin_moi.freezed.dart';
+part 'rust_auto_opaque_twin_moi.g.dart';
 
 // These functions are ignored (category: IgnoreBecauseNotAllowedOwner): `f`
 
@@ -278,6 +280,9 @@ sealed class EnumWithGoodAndOpaqueTwinMoi with _$EnumWithGoodAndOpaqueTwinMoi {
   const factory EnumWithGoodAndOpaqueTwinMoi.opaque(
     NonCloneSimpleTwinMoi field0,
   ) = EnumWithGoodAndOpaqueTwinMoi_Opaque;
+
+  factory EnumWithGoodAndOpaqueTwinMoi.fromJson(Map<String, dynamic> json) =>
+      _$EnumWithGoodAndOpaqueTwinMoiFromJson(json);
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinMoi {

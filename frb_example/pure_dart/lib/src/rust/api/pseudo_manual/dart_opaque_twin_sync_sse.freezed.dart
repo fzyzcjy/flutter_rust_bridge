@@ -14,6 +14,23 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+EnumDartOpaqueTwinSyncSse _$EnumDartOpaqueTwinSyncSseFromJson(
+    Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'primitive':
+      return EnumDartOpaqueTwinSyncSse_Primitive.fromJson(json);
+    case 'opaque':
+      return EnumDartOpaqueTwinSyncSse_Opaque.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          'runtimeType',
+          'EnumDartOpaqueTwinSyncSse',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
+}
+
 /// @nodoc
 mixin _$EnumDartOpaqueTwinSyncSse {
   Object get field0 => throw _privateConstructorUsedError;
@@ -56,6 +73,7 @@ mixin _$EnumDartOpaqueTwinSyncSse {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -112,13 +130,23 @@ class __$$EnumDartOpaqueTwinSyncSse_PrimitiveImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$EnumDartOpaqueTwinSyncSse_PrimitiveImpl
     extends EnumDartOpaqueTwinSyncSse_Primitive {
-  const _$EnumDartOpaqueTwinSyncSse_PrimitiveImpl(this.field0) : super._();
+  const _$EnumDartOpaqueTwinSyncSse_PrimitiveImpl(this.field0,
+      {final String? $type})
+      : $type = $type ?? 'primitive',
+        super._();
+
+  factory _$EnumDartOpaqueTwinSyncSse_PrimitiveImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$EnumDartOpaqueTwinSyncSse_PrimitiveImplFromJson(json);
 
   @override
   final int field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -133,6 +161,7 @@ class _$EnumDartOpaqueTwinSyncSse_PrimitiveImpl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -206,6 +235,13 @@ class _$EnumDartOpaqueTwinSyncSse_PrimitiveImpl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$EnumDartOpaqueTwinSyncSse_PrimitiveImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class EnumDartOpaqueTwinSyncSse_Primitive
@@ -213,6 +249,10 @@ abstract class EnumDartOpaqueTwinSyncSse_Primitive
   const factory EnumDartOpaqueTwinSyncSse_Primitive(final int field0) =
       _$EnumDartOpaqueTwinSyncSse_PrimitiveImpl;
   const EnumDartOpaqueTwinSyncSse_Primitive._() : super._();
+
+  factory EnumDartOpaqueTwinSyncSse_Primitive.fromJson(
+          Map<String, dynamic> json) =
+      _$EnumDartOpaqueTwinSyncSse_PrimitiveImpl.fromJson;
 
   @override
   int get field0;
@@ -254,13 +294,23 @@ class __$$EnumDartOpaqueTwinSyncSse_OpaqueImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$EnumDartOpaqueTwinSyncSse_OpaqueImpl
     extends EnumDartOpaqueTwinSyncSse_Opaque {
-  const _$EnumDartOpaqueTwinSyncSse_OpaqueImpl(this.field0) : super._();
+  const _$EnumDartOpaqueTwinSyncSse_OpaqueImpl(this.field0,
+      {final String? $type})
+      : $type = $type ?? 'opaque',
+        super._();
+
+  factory _$EnumDartOpaqueTwinSyncSse_OpaqueImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$EnumDartOpaqueTwinSyncSse_OpaqueImplFromJson(json);
 
   @override
   final Object field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -275,6 +325,7 @@ class _$EnumDartOpaqueTwinSyncSse_OpaqueImpl
             const DeepCollectionEquality().equals(other.field0, field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
@@ -349,6 +400,13 @@ class _$EnumDartOpaqueTwinSyncSse_OpaqueImpl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$EnumDartOpaqueTwinSyncSse_OpaqueImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class EnumDartOpaqueTwinSyncSse_Opaque
@@ -356,6 +414,9 @@ abstract class EnumDartOpaqueTwinSyncSse_Opaque
   const factory EnumDartOpaqueTwinSyncSse_Opaque(final Object field0) =
       _$EnumDartOpaqueTwinSyncSse_OpaqueImpl;
   const EnumDartOpaqueTwinSyncSse_Opaque._() : super._();
+
+  factory EnumDartOpaqueTwinSyncSse_Opaque.fromJson(Map<String, dynamic> json) =
+      _$EnumDartOpaqueTwinSyncSse_OpaqueImpl.fromJson;
 
   @override
   Object get field0;

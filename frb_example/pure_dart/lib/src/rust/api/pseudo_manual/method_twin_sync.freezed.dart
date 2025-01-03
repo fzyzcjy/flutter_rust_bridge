@@ -14,6 +14,19 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+SimpleEnumTwinSync _$SimpleEnumTwinSyncFromJson(Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'first':
+      return SimpleEnumTwinSync_First.fromJson(json);
+    case 'second':
+      return SimpleEnumTwinSync_Second.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'runtimeType', 'SimpleEnumTwinSync',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
+}
+
 /// @nodoc
 mixin _$SimpleEnumTwinSync {
   @optionalTypeArgs
@@ -54,6 +67,7 @@ mixin _$SimpleEnumTwinSync {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -94,9 +108,17 @@ class __$$SimpleEnumTwinSync_FirstImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$SimpleEnumTwinSync_FirstImpl extends SimpleEnumTwinSync_First {
-  const _$SimpleEnumTwinSync_FirstImpl() : super._();
+  const _$SimpleEnumTwinSync_FirstImpl({final String? $type})
+      : $type = $type ?? 'first',
+        super._();
+
+  factory _$SimpleEnumTwinSync_FirstImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SimpleEnumTwinSync_FirstImplFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -110,6 +132,7 @@ class _$SimpleEnumTwinSync_FirstImpl extends SimpleEnumTwinSync_First {
             other is _$SimpleEnumTwinSync_FirstImpl);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -174,11 +197,21 @@ class _$SimpleEnumTwinSync_FirstImpl extends SimpleEnumTwinSync_First {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SimpleEnumTwinSync_FirstImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class SimpleEnumTwinSync_First extends SimpleEnumTwinSync {
   const factory SimpleEnumTwinSync_First() = _$SimpleEnumTwinSync_FirstImpl;
   const SimpleEnumTwinSync_First._() : super._();
+
+  factory SimpleEnumTwinSync_First.fromJson(Map<String, dynamic> json) =
+      _$SimpleEnumTwinSync_FirstImpl.fromJson;
 }
 
 /// @nodoc
@@ -216,12 +249,20 @@ class __$$SimpleEnumTwinSync_SecondImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$SimpleEnumTwinSync_SecondImpl extends SimpleEnumTwinSync_Second {
-  const _$SimpleEnumTwinSync_SecondImpl(this.field0) : super._();
+  const _$SimpleEnumTwinSync_SecondImpl(this.field0, {final String? $type})
+      : $type = $type ?? 'second',
+        super._();
+
+  factory _$SimpleEnumTwinSync_SecondImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SimpleEnumTwinSync_SecondImplFromJson(json);
 
   @override
   final String field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -236,6 +277,7 @@ class _$SimpleEnumTwinSync_SecondImpl extends SimpleEnumTwinSync_Second {
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -307,12 +349,22 @@ class _$SimpleEnumTwinSync_SecondImpl extends SimpleEnumTwinSync_Second {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SimpleEnumTwinSync_SecondImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class SimpleEnumTwinSync_Second extends SimpleEnumTwinSync {
   const factory SimpleEnumTwinSync_Second(final String field0) =
       _$SimpleEnumTwinSync_SecondImpl;
   const SimpleEnumTwinSync_Second._() : super._();
+
+  factory SimpleEnumTwinSync_Second.fromJson(Map<String, dynamic> json) =
+      _$SimpleEnumTwinSync_SecondImpl.fromJson;
 
   String get field0;
   @JsonKey(ignore: true)

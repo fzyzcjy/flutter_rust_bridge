@@ -14,6 +14,23 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+CustomEnumErrorTwinNormal _$CustomEnumErrorTwinNormalFromJson(
+    Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'one':
+      return CustomEnumErrorTwinNormal_One.fromJson(json);
+    case 'two':
+      return CustomEnumErrorTwinNormal_Two.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          'runtimeType',
+          'CustomEnumErrorTwinNormal',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
+}
+
 /// @nodoc
 mixin _$CustomEnumErrorTwinNormal {
   Object get message => throw _privateConstructorUsedError;
@@ -56,7 +73,7 @@ mixin _$CustomEnumErrorTwinNormal {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CustomEnumErrorTwinNormalCopyWith<CustomEnumErrorTwinNormal> get copyWith =>
       throw _privateConstructorUsedError;
@@ -138,17 +155,25 @@ class __$$CustomEnumErrorTwinNormal_OneImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$CustomEnumErrorTwinNormal_OneImpl
     extends CustomEnumErrorTwinNormal_One {
   const _$CustomEnumErrorTwinNormal_OneImpl(
-      {required this.message, required this.backtrace})
-      : super._();
+      {required this.message, required this.backtrace, final String? $type})
+      : $type = $type ?? 'one',
+        super._();
+
+  factory _$CustomEnumErrorTwinNormal_OneImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$CustomEnumErrorTwinNormal_OneImplFromJson(json);
 
   @override
   final String message;
   @override
   final String backtrace;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -165,6 +190,7 @@ class _$CustomEnumErrorTwinNormal_OneImpl
                 other.backtrace == backtrace));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, message, backtrace);
 
@@ -237,6 +263,13 @@ class _$CustomEnumErrorTwinNormal_OneImpl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CustomEnumErrorTwinNormal_OneImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class CustomEnumErrorTwinNormal_One extends CustomEnumErrorTwinNormal
@@ -245,6 +278,9 @@ abstract class CustomEnumErrorTwinNormal_One extends CustomEnumErrorTwinNormal
       {required final String message,
       required final String backtrace}) = _$CustomEnumErrorTwinNormal_OneImpl;
   const CustomEnumErrorTwinNormal_One._() : super._();
+
+  factory CustomEnumErrorTwinNormal_One.fromJson(Map<String, dynamic> json) =
+      _$CustomEnumErrorTwinNormal_OneImpl.fromJson;
 
   @override
   String get message;
@@ -299,17 +335,25 @@ class __$$CustomEnumErrorTwinNormal_TwoImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$CustomEnumErrorTwinNormal_TwoImpl
     extends CustomEnumErrorTwinNormal_Two {
   const _$CustomEnumErrorTwinNormal_TwoImpl(
-      {required this.message, required this.backtrace})
-      : super._();
+      {required this.message, required this.backtrace, final String? $type})
+      : $type = $type ?? 'two',
+        super._();
+
+  factory _$CustomEnumErrorTwinNormal_TwoImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$CustomEnumErrorTwinNormal_TwoImplFromJson(json);
 
   @override
   final int message;
   @override
   final String backtrace;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -326,6 +370,7 @@ class _$CustomEnumErrorTwinNormal_TwoImpl
                 other.backtrace == backtrace));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, message, backtrace);
 
@@ -398,6 +443,13 @@ class _$CustomEnumErrorTwinNormal_TwoImpl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CustomEnumErrorTwinNormal_TwoImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class CustomEnumErrorTwinNormal_Two extends CustomEnumErrorTwinNormal
@@ -406,6 +458,9 @@ abstract class CustomEnumErrorTwinNormal_Two extends CustomEnumErrorTwinNormal
       {required final int message,
       required final String backtrace}) = _$CustomEnumErrorTwinNormal_TwoImpl;
   const CustomEnumErrorTwinNormal_Two._() : super._();
+
+  factory CustomEnumErrorTwinNormal_Two.fromJson(Map<String, dynamic> json) =
+      _$CustomEnumErrorTwinNormal_TwoImpl.fromJson;
 
   @override
   int get message;
@@ -416,6 +471,23 @@ abstract class CustomEnumErrorTwinNormal_Two extends CustomEnumErrorTwinNormal
   _$$CustomEnumErrorTwinNormal_TwoImplCopyWith<
           _$CustomEnumErrorTwinNormal_TwoImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+CustomErrorTwinNormal _$CustomErrorTwinNormalFromJson(
+    Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'error0':
+      return CustomErrorTwinNormal_Error0.fromJson(json);
+    case 'error1':
+      return CustomErrorTwinNormal_Error1.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          'runtimeType',
+          'CustomErrorTwinNormal',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
 }
 
 /// @nodoc
@@ -460,7 +532,7 @@ mixin _$CustomErrorTwinNormal {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CustomErrorTwinNormalCopyWith<CustomErrorTwinNormal> get copyWith =>
       throw _privateConstructorUsedError;
@@ -542,16 +614,24 @@ class __$$CustomErrorTwinNormal_Error0ImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$CustomErrorTwinNormal_Error0Impl extends CustomErrorTwinNormal_Error0 {
   const _$CustomErrorTwinNormal_Error0Impl(
-      {required this.e, required this.backtrace})
-      : super._();
+      {required this.e, required this.backtrace, final String? $type})
+      : $type = $type ?? 'error0',
+        super._();
+
+  factory _$CustomErrorTwinNormal_Error0Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$CustomErrorTwinNormal_Error0ImplFromJson(json);
 
   @override
   final String e;
   @override
   final String backtrace;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -568,6 +648,7 @@ class _$CustomErrorTwinNormal_Error0Impl extends CustomErrorTwinNormal_Error0 {
                 other.backtrace == backtrace));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, e, backtrace);
 
@@ -640,6 +721,13 @@ class _$CustomErrorTwinNormal_Error0Impl extends CustomErrorTwinNormal_Error0 {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CustomErrorTwinNormal_Error0ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class CustomErrorTwinNormal_Error0 extends CustomErrorTwinNormal
@@ -648,6 +736,9 @@ abstract class CustomErrorTwinNormal_Error0 extends CustomErrorTwinNormal
       {required final String e,
       required final String backtrace}) = _$CustomErrorTwinNormal_Error0Impl;
   const CustomErrorTwinNormal_Error0._() : super._();
+
+  factory CustomErrorTwinNormal_Error0.fromJson(Map<String, dynamic> json) =
+      _$CustomErrorTwinNormal_Error0Impl.fromJson;
 
   @override
   String get e;
@@ -702,16 +793,24 @@ class __$$CustomErrorTwinNormal_Error1ImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$CustomErrorTwinNormal_Error1Impl extends CustomErrorTwinNormal_Error1 {
   const _$CustomErrorTwinNormal_Error1Impl(
-      {required this.e, required this.backtrace})
-      : super._();
+      {required this.e, required this.backtrace, final String? $type})
+      : $type = $type ?? 'error1',
+        super._();
+
+  factory _$CustomErrorTwinNormal_Error1Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$CustomErrorTwinNormal_Error1ImplFromJson(json);
 
   @override
   final int e;
   @override
   final String backtrace;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -728,6 +827,7 @@ class _$CustomErrorTwinNormal_Error1Impl extends CustomErrorTwinNormal_Error1 {
                 other.backtrace == backtrace));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, e, backtrace);
 
@@ -800,6 +900,13 @@ class _$CustomErrorTwinNormal_Error1Impl extends CustomErrorTwinNormal_Error1 {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CustomErrorTwinNormal_Error1ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class CustomErrorTwinNormal_Error1 extends CustomErrorTwinNormal
@@ -808,6 +915,9 @@ abstract class CustomErrorTwinNormal_Error1 extends CustomErrorTwinNormal
       {required final int e,
       required final String backtrace}) = _$CustomErrorTwinNormal_Error1Impl;
   const CustomErrorTwinNormal_Error1._() : super._();
+
+  factory CustomErrorTwinNormal_Error1.fromJson(Map<String, dynamic> json) =
+      _$CustomErrorTwinNormal_Error1Impl.fromJson;
 
   @override
   int get e;
@@ -818,6 +928,23 @@ abstract class CustomErrorTwinNormal_Error1 extends CustomErrorTwinNormal
   _$$CustomErrorTwinNormal_Error1ImplCopyWith<
           _$CustomErrorTwinNormal_Error1Impl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+CustomNestedError1TwinNormal _$CustomNestedError1TwinNormalFromJson(
+    Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'customNested1':
+      return CustomNestedError1TwinNormal_CustomNested1.fromJson(json);
+    case 'errorNested':
+      return CustomNestedError1TwinNormal_ErrorNested.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          'runtimeType',
+          'CustomNestedError1TwinNormal',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
 }
 
 /// @nodoc
@@ -867,6 +994,7 @@ mixin _$CustomNestedError1TwinNormal {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -926,14 +1054,23 @@ class __$$CustomNestedError1TwinNormal_CustomNested1ImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$CustomNestedError1TwinNormal_CustomNested1Impl
     extends CustomNestedError1TwinNormal_CustomNested1 {
-  const _$CustomNestedError1TwinNormal_CustomNested1Impl(this.field0)
-      : super._();
+  const _$CustomNestedError1TwinNormal_CustomNested1Impl(this.field0,
+      {final String? $type})
+      : $type = $type ?? 'customNested1',
+        super._();
+
+  factory _$CustomNestedError1TwinNormal_CustomNested1Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$CustomNestedError1TwinNormal_CustomNested1ImplFromJson(json);
 
   @override
   final String field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -948,6 +1085,7 @@ class _$CustomNestedError1TwinNormal_CustomNested1Impl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -1028,6 +1166,13 @@ class _$CustomNestedError1TwinNormal_CustomNested1Impl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CustomNestedError1TwinNormal_CustomNested1ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class CustomNestedError1TwinNormal_CustomNested1
@@ -1035,6 +1180,10 @@ abstract class CustomNestedError1TwinNormal_CustomNested1
   const factory CustomNestedError1TwinNormal_CustomNested1(
       final String field0) = _$CustomNestedError1TwinNormal_CustomNested1Impl;
   const CustomNestedError1TwinNormal_CustomNested1._() : super._();
+
+  factory CustomNestedError1TwinNormal_CustomNested1.fromJson(
+          Map<String, dynamic> json) =
+      _$CustomNestedError1TwinNormal_CustomNested1Impl.fromJson;
 
   @override
   String get field0;
@@ -1089,13 +1238,23 @@ class __$$CustomNestedError1TwinNormal_ErrorNestedImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$CustomNestedError1TwinNormal_ErrorNestedImpl
     extends CustomNestedError1TwinNormal_ErrorNested {
-  const _$CustomNestedError1TwinNormal_ErrorNestedImpl(this.field0) : super._();
+  const _$CustomNestedError1TwinNormal_ErrorNestedImpl(this.field0,
+      {final String? $type})
+      : $type = $type ?? 'errorNested',
+        super._();
+
+  factory _$CustomNestedError1TwinNormal_ErrorNestedImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$CustomNestedError1TwinNormal_ErrorNestedImplFromJson(json);
 
   @override
   final CustomNestedError2TwinNormal field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -1110,6 +1269,7 @@ class _$CustomNestedError1TwinNormal_ErrorNestedImpl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -1189,6 +1349,13 @@ class _$CustomNestedError1TwinNormal_ErrorNestedImpl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CustomNestedError1TwinNormal_ErrorNestedImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class CustomNestedError1TwinNormal_ErrorNested
@@ -1198,12 +1365,33 @@ abstract class CustomNestedError1TwinNormal_ErrorNested
       _$CustomNestedError1TwinNormal_ErrorNestedImpl;
   const CustomNestedError1TwinNormal_ErrorNested._() : super._();
 
+  factory CustomNestedError1TwinNormal_ErrorNested.fromJson(
+          Map<String, dynamic> json) =
+      _$CustomNestedError1TwinNormal_ErrorNestedImpl.fromJson;
+
   @override
   CustomNestedError2TwinNormal get field0;
   @JsonKey(ignore: true)
   _$$CustomNestedError1TwinNormal_ErrorNestedImplCopyWith<
           _$CustomNestedError1TwinNormal_ErrorNestedImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+CustomNestedError2TwinNormal _$CustomNestedError2TwinNormalFromJson(
+    Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'customNested2':
+      return CustomNestedError2TwinNormal_CustomNested2.fromJson(json);
+    case 'customNested2Number':
+      return CustomNestedError2TwinNormal_CustomNested2Number.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          'runtimeType',
+          'CustomNestedError2TwinNormal',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
 }
 
 /// @nodoc
@@ -1254,6 +1442,7 @@ mixin _$CustomNestedError2TwinNormal {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1313,14 +1502,23 @@ class __$$CustomNestedError2TwinNormal_CustomNested2ImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$CustomNestedError2TwinNormal_CustomNested2Impl
     extends CustomNestedError2TwinNormal_CustomNested2 {
-  const _$CustomNestedError2TwinNormal_CustomNested2Impl(this.field0)
-      : super._();
+  const _$CustomNestedError2TwinNormal_CustomNested2Impl(this.field0,
+      {final String? $type})
+      : $type = $type ?? 'customNested2',
+        super._();
+
+  factory _$CustomNestedError2TwinNormal_CustomNested2Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$CustomNestedError2TwinNormal_CustomNested2ImplFromJson(json);
 
   @override
   final String field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -1335,6 +1533,7 @@ class _$CustomNestedError2TwinNormal_CustomNested2Impl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -1416,6 +1615,13 @@ class _$CustomNestedError2TwinNormal_CustomNested2Impl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CustomNestedError2TwinNormal_CustomNested2ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class CustomNestedError2TwinNormal_CustomNested2
@@ -1423,6 +1629,10 @@ abstract class CustomNestedError2TwinNormal_CustomNested2
   const factory CustomNestedError2TwinNormal_CustomNested2(
       final String field0) = _$CustomNestedError2TwinNormal_CustomNested2Impl;
   const CustomNestedError2TwinNormal_CustomNested2._() : super._();
+
+  factory CustomNestedError2TwinNormal_CustomNested2.fromJson(
+          Map<String, dynamic> json) =
+      _$CustomNestedError2TwinNormal_CustomNested2Impl.fromJson;
 
   @override
   String get field0;
@@ -1472,14 +1682,23 @@ class __$$CustomNestedError2TwinNormal_CustomNested2NumberImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$CustomNestedError2TwinNormal_CustomNested2NumberImpl
     extends CustomNestedError2TwinNormal_CustomNested2Number {
-  const _$CustomNestedError2TwinNormal_CustomNested2NumberImpl(this.field0)
-      : super._();
+  const _$CustomNestedError2TwinNormal_CustomNested2NumberImpl(this.field0,
+      {final String? $type})
+      : $type = $type ?? 'customNested2Number',
+        super._();
+
+  factory _$CustomNestedError2TwinNormal_CustomNested2NumberImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$CustomNestedError2TwinNormal_CustomNested2NumberImplFromJson(json);
 
   @override
   final int field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -1494,6 +1713,7 @@ class _$CustomNestedError2TwinNormal_CustomNested2NumberImpl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -1575,6 +1795,13 @@ class _$CustomNestedError2TwinNormal_CustomNested2NumberImpl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CustomNestedError2TwinNormal_CustomNested2NumberImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class CustomNestedError2TwinNormal_CustomNested2Number
@@ -1584,12 +1811,33 @@ abstract class CustomNestedError2TwinNormal_CustomNested2Number
       _$CustomNestedError2TwinNormal_CustomNested2NumberImpl;
   const CustomNestedError2TwinNormal_CustomNested2Number._() : super._();
 
+  factory CustomNestedError2TwinNormal_CustomNested2Number.fromJson(
+          Map<String, dynamic> json) =
+      _$CustomNestedError2TwinNormal_CustomNested2NumberImpl.fromJson;
+
   @override
   int get field0;
   @JsonKey(ignore: true)
   _$$CustomNestedError2TwinNormal_CustomNested2NumberImplCopyWith<
           _$CustomNestedError2TwinNormal_CustomNested2NumberImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+CustomNestedErrorInnerTwinNormal _$CustomNestedErrorInnerTwinNormalFromJson(
+    Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'three':
+      return CustomNestedErrorInnerTwinNormal_Three.fromJson(json);
+    case 'four':
+      return CustomNestedErrorInnerTwinNormal_Four.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          'runtimeType',
+          'CustomNestedErrorInnerTwinNormal',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
 }
 
 /// @nodoc
@@ -1634,6 +1882,7 @@ mixin _$CustomNestedErrorInnerTwinNormal {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1692,13 +1941,23 @@ class __$$CustomNestedErrorInnerTwinNormal_ThreeImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$CustomNestedErrorInnerTwinNormal_ThreeImpl
     extends CustomNestedErrorInnerTwinNormal_Three {
-  const _$CustomNestedErrorInnerTwinNormal_ThreeImpl(this.field0) : super._();
+  const _$CustomNestedErrorInnerTwinNormal_ThreeImpl(this.field0,
+      {final String? $type})
+      : $type = $type ?? 'three',
+        super._();
+
+  factory _$CustomNestedErrorInnerTwinNormal_ThreeImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$CustomNestedErrorInnerTwinNormal_ThreeImplFromJson(json);
 
   @override
   final String field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -1713,6 +1972,7 @@ class _$CustomNestedErrorInnerTwinNormal_ThreeImpl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -1787,6 +2047,13 @@ class _$CustomNestedErrorInnerTwinNormal_ThreeImpl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CustomNestedErrorInnerTwinNormal_ThreeImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class CustomNestedErrorInnerTwinNormal_Three
@@ -1794,6 +2061,10 @@ abstract class CustomNestedErrorInnerTwinNormal_Three
   const factory CustomNestedErrorInnerTwinNormal_Three(final String field0) =
       _$CustomNestedErrorInnerTwinNormal_ThreeImpl;
   const CustomNestedErrorInnerTwinNormal_Three._() : super._();
+
+  factory CustomNestedErrorInnerTwinNormal_Three.fromJson(
+          Map<String, dynamic> json) =
+      _$CustomNestedErrorInnerTwinNormal_ThreeImpl.fromJson;
 
   @override
   String get field0;
@@ -1838,13 +2109,23 @@ class __$$CustomNestedErrorInnerTwinNormal_FourImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$CustomNestedErrorInnerTwinNormal_FourImpl
     extends CustomNestedErrorInnerTwinNormal_Four {
-  const _$CustomNestedErrorInnerTwinNormal_FourImpl(this.field0) : super._();
+  const _$CustomNestedErrorInnerTwinNormal_FourImpl(this.field0,
+      {final String? $type})
+      : $type = $type ?? 'four',
+        super._();
+
+  factory _$CustomNestedErrorInnerTwinNormal_FourImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$CustomNestedErrorInnerTwinNormal_FourImplFromJson(json);
 
   @override
   final int field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -1859,6 +2140,7 @@ class _$CustomNestedErrorInnerTwinNormal_FourImpl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -1932,6 +2214,13 @@ class _$CustomNestedErrorInnerTwinNormal_FourImpl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CustomNestedErrorInnerTwinNormal_FourImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class CustomNestedErrorInnerTwinNormal_Four
@@ -1940,12 +2229,33 @@ abstract class CustomNestedErrorInnerTwinNormal_Four
       _$CustomNestedErrorInnerTwinNormal_FourImpl;
   const CustomNestedErrorInnerTwinNormal_Four._() : super._();
 
+  factory CustomNestedErrorInnerTwinNormal_Four.fromJson(
+          Map<String, dynamic> json) =
+      _$CustomNestedErrorInnerTwinNormal_FourImpl.fromJson;
+
   @override
   int get field0;
   @JsonKey(ignore: true)
   _$$CustomNestedErrorInnerTwinNormal_FourImplCopyWith<
           _$CustomNestedErrorInnerTwinNormal_FourImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+CustomNestedErrorOuterTwinNormal _$CustomNestedErrorOuterTwinNormalFromJson(
+    Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'one':
+      return CustomNestedErrorOuterTwinNormal_One.fromJson(json);
+    case 'two':
+      return CustomNestedErrorOuterTwinNormal_Two.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          'runtimeType',
+          'CustomNestedErrorOuterTwinNormal',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
 }
 
 /// @nodoc
@@ -1989,6 +2299,7 @@ mixin _$CustomNestedErrorOuterTwinNormal {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2047,13 +2358,23 @@ class __$$CustomNestedErrorOuterTwinNormal_OneImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$CustomNestedErrorOuterTwinNormal_OneImpl
     extends CustomNestedErrorOuterTwinNormal_One {
-  const _$CustomNestedErrorOuterTwinNormal_OneImpl(this.field0) : super._();
+  const _$CustomNestedErrorOuterTwinNormal_OneImpl(this.field0,
+      {final String? $type})
+      : $type = $type ?? 'one',
+        super._();
+
+  factory _$CustomNestedErrorOuterTwinNormal_OneImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$CustomNestedErrorOuterTwinNormal_OneImplFromJson(json);
 
   @override
   final String field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -2068,6 +2389,7 @@ class _$CustomNestedErrorOuterTwinNormal_OneImpl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -2140,6 +2462,13 @@ class _$CustomNestedErrorOuterTwinNormal_OneImpl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CustomNestedErrorOuterTwinNormal_OneImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class CustomNestedErrorOuterTwinNormal_One
@@ -2147,6 +2476,10 @@ abstract class CustomNestedErrorOuterTwinNormal_One
   const factory CustomNestedErrorOuterTwinNormal_One(final String field0) =
       _$CustomNestedErrorOuterTwinNormal_OneImpl;
   const CustomNestedErrorOuterTwinNormal_One._() : super._();
+
+  factory CustomNestedErrorOuterTwinNormal_One.fromJson(
+          Map<String, dynamic> json) =
+      _$CustomNestedErrorOuterTwinNormal_OneImpl.fromJson;
 
   @override
   String get field0;
@@ -2202,13 +2535,23 @@ class __$$CustomNestedErrorOuterTwinNormal_TwoImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$CustomNestedErrorOuterTwinNormal_TwoImpl
     extends CustomNestedErrorOuterTwinNormal_Two {
-  const _$CustomNestedErrorOuterTwinNormal_TwoImpl(this.field0) : super._();
+  const _$CustomNestedErrorOuterTwinNormal_TwoImpl(this.field0,
+      {final String? $type})
+      : $type = $type ?? 'two',
+        super._();
+
+  factory _$CustomNestedErrorOuterTwinNormal_TwoImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$CustomNestedErrorOuterTwinNormal_TwoImplFromJson(json);
 
   @override
   final CustomNestedErrorInnerTwinNormal field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -2223,6 +2566,7 @@ class _$CustomNestedErrorOuterTwinNormal_TwoImpl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -2295,6 +2639,13 @@ class _$CustomNestedErrorOuterTwinNormal_TwoImpl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CustomNestedErrorOuterTwinNormal_TwoImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class CustomNestedErrorOuterTwinNormal_Two
@@ -2303,6 +2654,10 @@ abstract class CustomNestedErrorOuterTwinNormal_Two
           final CustomNestedErrorInnerTwinNormal field0) =
       _$CustomNestedErrorOuterTwinNormal_TwoImpl;
   const CustomNestedErrorOuterTwinNormal_Two._() : super._();
+
+  factory CustomNestedErrorOuterTwinNormal_Two.fromJson(
+          Map<String, dynamic> json) =
+      _$CustomNestedErrorOuterTwinNormal_TwoImpl.fromJson;
 
   @override
   CustomNestedErrorInnerTwinNormal get field0;

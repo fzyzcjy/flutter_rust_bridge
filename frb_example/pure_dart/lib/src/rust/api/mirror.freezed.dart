@@ -14,6 +14,21 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+ApplicationMessage _$ApplicationMessageFromJson(Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'displayMessage':
+      return ApplicationMessage_DisplayMessage.fromJson(json);
+    case 'renderPixel':
+      return ApplicationMessage_RenderPixel.fromJson(json);
+    case 'exit':
+      return ApplicationMessage_Exit.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'runtimeType', 'ApplicationMessage',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
+}
+
 /// @nodoc
 mixin _$ApplicationMessage {
   @optionalTypeArgs
@@ -61,6 +76,7 @@ mixin _$ApplicationMessage {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -116,13 +132,23 @@ class __$$ApplicationMessage_DisplayMessageImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$ApplicationMessage_DisplayMessageImpl
     extends ApplicationMessage_DisplayMessage {
-  const _$ApplicationMessage_DisplayMessageImpl(this.field0) : super._();
+  const _$ApplicationMessage_DisplayMessageImpl(this.field0,
+      {final String? $type})
+      : $type = $type ?? 'displayMessage',
+        super._();
+
+  factory _$ApplicationMessage_DisplayMessageImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$ApplicationMessage_DisplayMessageImplFromJson(json);
 
   @override
   final String field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -137,6 +163,7 @@ class _$ApplicationMessage_DisplayMessageImpl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -216,12 +243,23 @@ class _$ApplicationMessage_DisplayMessageImpl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ApplicationMessage_DisplayMessageImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class ApplicationMessage_DisplayMessage extends ApplicationMessage {
   const factory ApplicationMessage_DisplayMessage(final String field0) =
       _$ApplicationMessage_DisplayMessageImpl;
   const ApplicationMessage_DisplayMessage._() : super._();
+
+  factory ApplicationMessage_DisplayMessage.fromJson(
+          Map<String, dynamic> json) =
+      _$ApplicationMessage_DisplayMessageImpl.fromJson;
 
   String get field0;
   @JsonKey(ignore: true)
@@ -270,16 +308,25 @@ class __$$ApplicationMessage_RenderPixelImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$ApplicationMessage_RenderPixelImpl
     extends ApplicationMessage_RenderPixel {
-  const _$ApplicationMessage_RenderPixelImpl({required this.x, required this.y})
-      : super._();
+  const _$ApplicationMessage_RenderPixelImpl(
+      {required this.x, required this.y, final String? $type})
+      : $type = $type ?? 'renderPixel',
+        super._();
+
+  factory _$ApplicationMessage_RenderPixelImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$ApplicationMessage_RenderPixelImplFromJson(json);
 
   @override
   final int x;
   @override
   final int y;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -295,6 +342,7 @@ class _$ApplicationMessage_RenderPixelImpl
             (identical(other.y, y) || other.y == y));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, x, y);
 
@@ -374,6 +422,13 @@ class _$ApplicationMessage_RenderPixelImpl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ApplicationMessage_RenderPixelImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class ApplicationMessage_RenderPixel extends ApplicationMessage {
@@ -381,6 +436,9 @@ abstract class ApplicationMessage_RenderPixel extends ApplicationMessage {
       {required final int x,
       required final int y}) = _$ApplicationMessage_RenderPixelImpl;
   const ApplicationMessage_RenderPixel._() : super._();
+
+  factory ApplicationMessage_RenderPixel.fromJson(Map<String, dynamic> json) =
+      _$ApplicationMessage_RenderPixelImpl.fromJson;
 
   int get x;
   int get y;
@@ -410,9 +468,17 @@ class __$$ApplicationMessage_ExitImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$ApplicationMessage_ExitImpl extends ApplicationMessage_Exit {
-  const _$ApplicationMessage_ExitImpl() : super._();
+  const _$ApplicationMessage_ExitImpl({final String? $type})
+      : $type = $type ?? 'exit',
+        super._();
+
+  factory _$ApplicationMessage_ExitImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ApplicationMessage_ExitImplFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -426,6 +492,7 @@ class _$ApplicationMessage_ExitImpl extends ApplicationMessage_Exit {
             other is _$ApplicationMessage_ExitImpl);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -497,11 +564,40 @@ class _$ApplicationMessage_ExitImpl extends ApplicationMessage_Exit {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ApplicationMessage_ExitImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class ApplicationMessage_Exit extends ApplicationMessage {
   const factory ApplicationMessage_Exit() = _$ApplicationMessage_ExitImpl;
   const ApplicationMessage_Exit._() : super._();
+
+  factory ApplicationMessage_Exit.fromJson(Map<String, dynamic> json) =
+      _$ApplicationMessage_ExitImpl.fromJson;
+}
+
+RawStringEnumMirrored _$RawStringEnumMirroredFromJson(
+    Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'raw':
+      return RawStringEnumMirrored_Raw.fromJson(json);
+    case 'nested':
+      return RawStringEnumMirrored_Nested.fromJson(json);
+    case 'listOfNested':
+      return RawStringEnumMirrored_ListOfNested.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          'runtimeType',
+          'RawStringEnumMirrored',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
 }
 
 /// @nodoc
@@ -553,6 +649,7 @@ mixin _$RawStringEnumMirrored {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -609,12 +706,20 @@ class __$$RawStringEnumMirrored_RawImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$RawStringEnumMirrored_RawImpl extends RawStringEnumMirrored_Raw {
-  const _$RawStringEnumMirrored_RawImpl(this.field0) : super._();
+  const _$RawStringEnumMirrored_RawImpl(this.field0, {final String? $type})
+      : $type = $type ?? 'raw',
+        super._();
+
+  factory _$RawStringEnumMirrored_RawImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RawStringEnumMirrored_RawImplFromJson(json);
 
   @override
   final RawStringMirrored field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -629,6 +734,7 @@ class _$RawStringEnumMirrored_RawImpl extends RawStringEnumMirrored_Raw {
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -708,12 +814,22 @@ class _$RawStringEnumMirrored_RawImpl extends RawStringEnumMirrored_Raw {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$RawStringEnumMirrored_RawImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class RawStringEnumMirrored_Raw extends RawStringEnumMirrored {
   const factory RawStringEnumMirrored_Raw(final RawStringMirrored field0) =
       _$RawStringEnumMirrored_RawImpl;
   const RawStringEnumMirrored_Raw._() : super._();
+
+  factory RawStringEnumMirrored_Raw.fromJson(Map<String, dynamic> json) =
+      _$RawStringEnumMirrored_RawImpl.fromJson;
 
   @override
   RawStringMirrored get field0;
@@ -757,12 +873,21 @@ class __$$RawStringEnumMirrored_NestedImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$RawStringEnumMirrored_NestedImpl extends RawStringEnumMirrored_Nested {
-  const _$RawStringEnumMirrored_NestedImpl(this.field0) : super._();
+  const _$RawStringEnumMirrored_NestedImpl(this.field0, {final String? $type})
+      : $type = $type ?? 'nested',
+        super._();
+
+  factory _$RawStringEnumMirrored_NestedImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$RawStringEnumMirrored_NestedImplFromJson(json);
 
   @override
   final NestedRawStringMirrored field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -777,6 +902,7 @@ class _$RawStringEnumMirrored_NestedImpl extends RawStringEnumMirrored_Nested {
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -857,6 +983,13 @@ class _$RawStringEnumMirrored_NestedImpl extends RawStringEnumMirrored_Nested {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$RawStringEnumMirrored_NestedImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class RawStringEnumMirrored_Nested extends RawStringEnumMirrored {
@@ -864,6 +997,9 @@ abstract class RawStringEnumMirrored_Nested extends RawStringEnumMirrored {
           final NestedRawStringMirrored field0) =
       _$RawStringEnumMirrored_NestedImpl;
   const RawStringEnumMirrored_Nested._() : super._();
+
+  factory RawStringEnumMirrored_Nested.fromJson(Map<String, dynamic> json) =
+      _$RawStringEnumMirrored_NestedImpl.fromJson;
 
   @override
   NestedRawStringMirrored get field0;
@@ -908,13 +1044,23 @@ class __$$RawStringEnumMirrored_ListOfNestedImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$RawStringEnumMirrored_ListOfNestedImpl
     extends RawStringEnumMirrored_ListOfNested {
-  const _$RawStringEnumMirrored_ListOfNestedImpl(this.field0) : super._();
+  const _$RawStringEnumMirrored_ListOfNestedImpl(this.field0,
+      {final String? $type})
+      : $type = $type ?? 'listOfNested',
+        super._();
+
+  factory _$RawStringEnumMirrored_ListOfNestedImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$RawStringEnumMirrored_ListOfNestedImplFromJson(json);
 
   @override
   final ListOfNestedRawStringMirrored field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -929,6 +1075,7 @@ class _$RawStringEnumMirrored_ListOfNestedImpl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -1009,6 +1156,13 @@ class _$RawStringEnumMirrored_ListOfNestedImpl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$RawStringEnumMirrored_ListOfNestedImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class RawStringEnumMirrored_ListOfNested
@@ -1017,6 +1171,10 @@ abstract class RawStringEnumMirrored_ListOfNested
           final ListOfNestedRawStringMirrored field0) =
       _$RawStringEnumMirrored_ListOfNestedImpl;
   const RawStringEnumMirrored_ListOfNested._() : super._();
+
+  factory RawStringEnumMirrored_ListOfNested.fromJson(
+          Map<String, dynamic> json) =
+      _$RawStringEnumMirrored_ListOfNestedImpl.fromJson;
 
   @override
   ListOfNestedRawStringMirrored get field0;

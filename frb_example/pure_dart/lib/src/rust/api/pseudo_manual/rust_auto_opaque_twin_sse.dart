@@ -9,7 +9,9 @@ import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_auto_opaque_twin_moi.dart';
+
 part 'rust_auto_opaque_twin_sse.freezed.dart';
+part 'rust_auto_opaque_twin_sse.g.dart';
 
 Future<void> rustAutoOpaqueArgOwnTwinSse(
         {required NonCloneSimpleTwinSse arg, required int expect}) =>
@@ -274,6 +276,9 @@ sealed class EnumWithGoodAndOpaqueTwinSse with _$EnumWithGoodAndOpaqueTwinSse {
   const factory EnumWithGoodAndOpaqueTwinSse.opaque(
     NonCloneSimpleTwinSse field0,
   ) = EnumWithGoodAndOpaqueTwinSse_Opaque;
+
+  factory EnumWithGoodAndOpaqueTwinSse.fromJson(Map<String, dynamic> json) =>
+      _$EnumWithGoodAndOpaqueTwinSseFromJson(json);
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinSse {

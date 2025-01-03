@@ -150,7 +150,9 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'package:meta/meta.dart' as meta;
 import 'package:uuid/uuid.dart';
+
 part 'frb_generated.freezed.dart';
+part 'frb_generated.g.dart';
 
 /// Main entrypoint of the Rust API
 class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
@@ -75855,6 +75857,11 @@ sealed class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueI
   const factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum.variant1(
     MyNodeTwinNormal field0,
   ) = Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1;
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum.fromJson(
+          Map<String, dynamic> json) =>
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnumFromJson(
+          json);
 }
 
 @freezed
@@ -75868,6 +75875,10 @@ sealed class SimpleTraitForDynTwinNormalImplementor
   const factory SimpleTraitForDynTwinNormalImplementor.variant1(
     StructTwoWithTraitForDynTwinNormal field0,
   ) = SimpleTraitForDynTwinNormalImplementor_Variant1;
+
+  factory SimpleTraitForDynTwinNormalImplementor.fromJson(
+          Map<String, dynamic> json) =>
+      _$SimpleTraitForDynTwinNormalImplementorFromJson(json);
 }
 
 @sealed

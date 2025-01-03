@@ -9,7 +9,9 @@ import '../../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+
 part 'method_twin_rust_async.freezed.dart';
+part 'method_twin_rust_async.g.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 
@@ -140,6 +142,9 @@ sealed class SimpleEnumTwinRustAsync with _$SimpleEnumTwinRustAsync {
   const factory SimpleEnumTwinRustAsync.second(
     String field0,
   ) = SimpleEnumTwinRustAsync_Second;
+
+  factory SimpleEnumTwinRustAsync.fromJson(Map<String, dynamic> json) =>
+      _$SimpleEnumTwinRustAsyncFromJson(json);
 
   static Future<SimpleEnumTwinRustAsync> returnSelfTwinRustAsync(
           {required String one}) =>

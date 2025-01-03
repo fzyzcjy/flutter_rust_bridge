@@ -9,7 +9,9 @@ import '../../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+
 part 'rust_opaque_twin_rust_async.freezed.dart';
+part 'rust_opaque_twin_rust_async.g.dart';
 
 Future<HideDataTwinRustAsync> createOpaqueTwinRustAsync() =>
     RustLib.instance.api
@@ -150,6 +152,9 @@ sealed class EnumOpaqueTwinRustAsync with _$EnumOpaqueTwinRustAsync {
   ) = EnumOpaqueTwinRustAsync_RwLock;
   const factory EnumOpaqueTwinRustAsync.nothing() =
       EnumOpaqueTwinRustAsync_Nothing;
+
+  factory EnumOpaqueTwinRustAsync.fromJson(Map<String, dynamic> json) =>
+      _$EnumOpaqueTwinRustAsyncFromJson(json);
 }
 
 class EnumOpaqueTwinRustAsyncArray5

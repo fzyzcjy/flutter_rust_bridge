@@ -9,7 +9,9 @@ import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_auto_opaque_twin_moi.dart';
+
 part 'rust_auto_opaque_twin_sync_sse_moi.freezed.dart';
+part 'rust_auto_opaque_twin_sync_sse_moi.g.dart';
 
 void rustAutoOpaqueArgOwnTwinSyncSseMoi(
         {required NonCloneSimpleTwinSyncSseMoi arg, required int expect}) =>
@@ -279,6 +281,10 @@ sealed class EnumWithGoodAndOpaqueTwinSyncSseMoi
   const factory EnumWithGoodAndOpaqueTwinSyncSseMoi.opaque(
     NonCloneSimpleTwinSyncSseMoi field0,
   ) = EnumWithGoodAndOpaqueTwinSyncSseMoi_Opaque;
+
+  factory EnumWithGoodAndOpaqueTwinSyncSseMoi.fromJson(
+          Map<String, dynamic> json) =>
+      _$EnumWithGoodAndOpaqueTwinSyncSseMoiFromJson(json);
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinSyncSseMoi {

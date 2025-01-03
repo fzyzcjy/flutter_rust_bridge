@@ -9,7 +9,9 @@ import '../../frb_generated.dart';
 import '../dart_opaque.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+
 part 'dart_opaque_twin_sync.freezed.dart';
+part 'dart_opaque_twin_sync.g.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `deref`, `initialize`
 
@@ -120,4 +122,7 @@ sealed class EnumDartOpaqueTwinSync with _$EnumDartOpaqueTwinSync {
   const factory EnumDartOpaqueTwinSync.opaque(
     Object field0,
   ) = EnumDartOpaqueTwinSync_Opaque;
+
+  factory EnumDartOpaqueTwinSync.fromJson(Map<String, dynamic> json) =>
+      _$EnumDartOpaqueTwinSyncFromJson(json);
 }

@@ -14,6 +14,23 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+AbcTwinRustAsyncSse _$AbcTwinRustAsyncSseFromJson(Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'a':
+      return AbcTwinRustAsyncSse_A.fromJson(json);
+    case 'b':
+      return AbcTwinRustAsyncSse_B.fromJson(json);
+    case 'c':
+      return AbcTwinRustAsyncSse_C.fromJson(json);
+    case 'justInt':
+      return AbcTwinRustAsyncSse_JustInt.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'runtimeType', 'AbcTwinRustAsyncSse',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
+}
+
 /// @nodoc
 mixin _$AbcTwinRustAsyncSse {
   Object get field0 => throw _privateConstructorUsedError;
@@ -67,6 +84,7 @@ mixin _$AbcTwinRustAsyncSse {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -120,12 +138,20 @@ class __$$AbcTwinRustAsyncSse_AImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AbcTwinRustAsyncSse_AImpl extends AbcTwinRustAsyncSse_A {
-  const _$AbcTwinRustAsyncSse_AImpl(this.field0) : super._();
+  const _$AbcTwinRustAsyncSse_AImpl(this.field0, {final String? $type})
+      : $type = $type ?? 'a',
+        super._();
+
+  factory _$AbcTwinRustAsyncSse_AImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AbcTwinRustAsyncSse_AImplFromJson(json);
 
   @override
   final ATwinRustAsyncSse field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -140,6 +166,7 @@ class _$AbcTwinRustAsyncSse_AImpl extends AbcTwinRustAsyncSse_A {
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -223,12 +250,22 @@ class _$AbcTwinRustAsyncSse_AImpl extends AbcTwinRustAsyncSse_A {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AbcTwinRustAsyncSse_AImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class AbcTwinRustAsyncSse_A extends AbcTwinRustAsyncSse {
   const factory AbcTwinRustAsyncSse_A(final ATwinRustAsyncSse field0) =
       _$AbcTwinRustAsyncSse_AImpl;
   const AbcTwinRustAsyncSse_A._() : super._();
+
+  factory AbcTwinRustAsyncSse_A.fromJson(Map<String, dynamic> json) =
+      _$AbcTwinRustAsyncSse_AImpl.fromJson;
 
   @override
   ATwinRustAsyncSse get field0;
@@ -270,12 +307,20 @@ class __$$AbcTwinRustAsyncSse_BImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AbcTwinRustAsyncSse_BImpl extends AbcTwinRustAsyncSse_B {
-  const _$AbcTwinRustAsyncSse_BImpl(this.field0) : super._();
+  const _$AbcTwinRustAsyncSse_BImpl(this.field0, {final String? $type})
+      : $type = $type ?? 'b',
+        super._();
+
+  factory _$AbcTwinRustAsyncSse_BImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AbcTwinRustAsyncSse_BImplFromJson(json);
 
   @override
   final BTwinRustAsyncSse field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -290,6 +335,7 @@ class _$AbcTwinRustAsyncSse_BImpl extends AbcTwinRustAsyncSse_B {
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -373,12 +419,22 @@ class _$AbcTwinRustAsyncSse_BImpl extends AbcTwinRustAsyncSse_B {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AbcTwinRustAsyncSse_BImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class AbcTwinRustAsyncSse_B extends AbcTwinRustAsyncSse {
   const factory AbcTwinRustAsyncSse_B(final BTwinRustAsyncSse field0) =
       _$AbcTwinRustAsyncSse_BImpl;
   const AbcTwinRustAsyncSse_B._() : super._();
+
+  factory AbcTwinRustAsyncSse_B.fromJson(Map<String, dynamic> json) =
+      _$AbcTwinRustAsyncSse_BImpl.fromJson;
 
   @override
   BTwinRustAsyncSse get field0;
@@ -420,12 +476,20 @@ class __$$AbcTwinRustAsyncSse_CImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AbcTwinRustAsyncSse_CImpl extends AbcTwinRustAsyncSse_C {
-  const _$AbcTwinRustAsyncSse_CImpl(this.field0) : super._();
+  const _$AbcTwinRustAsyncSse_CImpl(this.field0, {final String? $type})
+      : $type = $type ?? 'c',
+        super._();
+
+  factory _$AbcTwinRustAsyncSse_CImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AbcTwinRustAsyncSse_CImplFromJson(json);
 
   @override
   final CTwinRustAsyncSse field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -440,6 +504,7 @@ class _$AbcTwinRustAsyncSse_CImpl extends AbcTwinRustAsyncSse_C {
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -523,12 +588,22 @@ class _$AbcTwinRustAsyncSse_CImpl extends AbcTwinRustAsyncSse_C {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AbcTwinRustAsyncSse_CImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class AbcTwinRustAsyncSse_C extends AbcTwinRustAsyncSse {
   const factory AbcTwinRustAsyncSse_C(final CTwinRustAsyncSse field0) =
       _$AbcTwinRustAsyncSse_CImpl;
   const AbcTwinRustAsyncSse_C._() : super._();
+
+  factory AbcTwinRustAsyncSse_C.fromJson(Map<String, dynamic> json) =
+      _$AbcTwinRustAsyncSse_CImpl.fromJson;
 
   @override
   CTwinRustAsyncSse get field0;
@@ -572,12 +647,21 @@ class __$$AbcTwinRustAsyncSse_JustIntImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AbcTwinRustAsyncSse_JustIntImpl extends AbcTwinRustAsyncSse_JustInt {
-  const _$AbcTwinRustAsyncSse_JustIntImpl(this.field0) : super._();
+  const _$AbcTwinRustAsyncSse_JustIntImpl(this.field0, {final String? $type})
+      : $type = $type ?? 'justInt',
+        super._();
+
+  factory _$AbcTwinRustAsyncSse_JustIntImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$AbcTwinRustAsyncSse_JustIntImplFromJson(json);
 
   @override
   final int field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -592,6 +676,7 @@ class _$AbcTwinRustAsyncSse_JustIntImpl extends AbcTwinRustAsyncSse_JustInt {
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -675,12 +760,22 @@ class _$AbcTwinRustAsyncSse_JustIntImpl extends AbcTwinRustAsyncSse_JustInt {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AbcTwinRustAsyncSse_JustIntImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class AbcTwinRustAsyncSse_JustInt extends AbcTwinRustAsyncSse {
   const factory AbcTwinRustAsyncSse_JustInt(final int field0) =
       _$AbcTwinRustAsyncSse_JustIntImpl;
   const AbcTwinRustAsyncSse_JustInt._() : super._();
+
+  factory AbcTwinRustAsyncSse_JustInt.fromJson(Map<String, dynamic> json) =
+      _$AbcTwinRustAsyncSse_JustIntImpl.fromJson;
 
   @override
   int get field0;

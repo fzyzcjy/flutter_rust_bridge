@@ -14,6 +14,23 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+SimpleEnumTwinRustAsyncSse _$SimpleEnumTwinRustAsyncSseFromJson(
+    Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'first':
+      return SimpleEnumTwinRustAsyncSse_First.fromJson(json);
+    case 'second':
+      return SimpleEnumTwinRustAsyncSse_Second.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          'runtimeType',
+          'SimpleEnumTwinRustAsyncSse',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
+}
+
 /// @nodoc
 mixin _$SimpleEnumTwinRustAsyncSse {
   @optionalTypeArgs
@@ -54,6 +71,7 @@ mixin _$SimpleEnumTwinRustAsyncSse {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -96,10 +114,19 @@ class __$$SimpleEnumTwinRustAsyncSse_FirstImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$SimpleEnumTwinRustAsyncSse_FirstImpl
     extends SimpleEnumTwinRustAsyncSse_First {
-  const _$SimpleEnumTwinRustAsyncSse_FirstImpl() : super._();
+  const _$SimpleEnumTwinRustAsyncSse_FirstImpl({final String? $type})
+      : $type = $type ?? 'first',
+        super._();
+
+  factory _$SimpleEnumTwinRustAsyncSse_FirstImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$SimpleEnumTwinRustAsyncSse_FirstImplFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -113,6 +140,7 @@ class _$SimpleEnumTwinRustAsyncSse_FirstImpl
             other is _$SimpleEnumTwinRustAsyncSse_FirstImpl);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -177,6 +205,13 @@ class _$SimpleEnumTwinRustAsyncSse_FirstImpl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SimpleEnumTwinRustAsyncSse_FirstImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class SimpleEnumTwinRustAsyncSse_First
@@ -184,6 +219,9 @@ abstract class SimpleEnumTwinRustAsyncSse_First
   const factory SimpleEnumTwinRustAsyncSse_First() =
       _$SimpleEnumTwinRustAsyncSse_FirstImpl;
   const SimpleEnumTwinRustAsyncSse_First._() : super._();
+
+  factory SimpleEnumTwinRustAsyncSse_First.fromJson(Map<String, dynamic> json) =
+      _$SimpleEnumTwinRustAsyncSse_FirstImpl.fromJson;
 }
 
 /// @nodoc
@@ -221,13 +259,23 @@ class __$$SimpleEnumTwinRustAsyncSse_SecondImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$SimpleEnumTwinRustAsyncSse_SecondImpl
     extends SimpleEnumTwinRustAsyncSse_Second {
-  const _$SimpleEnumTwinRustAsyncSse_SecondImpl(this.field0) : super._();
+  const _$SimpleEnumTwinRustAsyncSse_SecondImpl(this.field0,
+      {final String? $type})
+      : $type = $type ?? 'second',
+        super._();
+
+  factory _$SimpleEnumTwinRustAsyncSse_SecondImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$SimpleEnumTwinRustAsyncSse_SecondImplFromJson(json);
 
   @override
   final String field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -242,6 +290,7 @@ class _$SimpleEnumTwinRustAsyncSse_SecondImpl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -314,6 +363,13 @@ class _$SimpleEnumTwinRustAsyncSse_SecondImpl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SimpleEnumTwinRustAsyncSse_SecondImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class SimpleEnumTwinRustAsyncSse_Second
@@ -321,6 +377,10 @@ abstract class SimpleEnumTwinRustAsyncSse_Second
   const factory SimpleEnumTwinRustAsyncSse_Second(final String field0) =
       _$SimpleEnumTwinRustAsyncSse_SecondImpl;
   const SimpleEnumTwinRustAsyncSse_Second._() : super._();
+
+  factory SimpleEnumTwinRustAsyncSse_Second.fromJson(
+          Map<String, dynamic> json) =
+      _$SimpleEnumTwinRustAsyncSse_SecondImpl.fromJson;
 
   String get field0;
   @JsonKey(ignore: true)

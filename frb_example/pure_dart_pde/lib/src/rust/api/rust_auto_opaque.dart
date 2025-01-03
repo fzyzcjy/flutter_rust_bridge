@@ -9,7 +9,9 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'pseudo_manual/rust_auto_opaque_twin_rust_async.dart';
+
 part 'rust_auto_opaque.freezed.dart';
+part 'rust_auto_opaque.g.dart';
 
 Future<void> rustAutoOpaqueArgOwnTwinNormal(
         {required NonCloneSimpleTwinNormal arg, required int expect}) =>
@@ -268,6 +270,9 @@ sealed class EnumWithGoodAndOpaqueTwinNormal
   const factory EnumWithGoodAndOpaqueTwinNormal.opaque(
     NonCloneSimpleTwinNormal field0,
   ) = EnumWithGoodAndOpaqueTwinNormal_Opaque;
+
+  factory EnumWithGoodAndOpaqueTwinNormal.fromJson(Map<String, dynamic> json) =>
+      _$EnumWithGoodAndOpaqueTwinNormalFromJson(json);
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinNormal {

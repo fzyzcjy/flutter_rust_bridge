@@ -14,6 +14,27 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
+AudioContextLatencyCategory _$AudioContextLatencyCategoryFromJson(
+    Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'balanced':
+      return AudioContextLatencyCategory_Balanced.fromJson(json);
+    case 'interactive':
+      return AudioContextLatencyCategory_Interactive.fromJson(json);
+    case 'playback':
+      return AudioContextLatencyCategory_Playback.fromJson(json);
+    case 'custom':
+      return AudioContextLatencyCategory_Custom.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          'runtimeType',
+          'AudioContextLatencyCategory',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
+}
+
 /// @nodoc
 mixin _$AudioContextLatencyCategory {
   @optionalTypeArgs
@@ -71,6 +92,7 @@ mixin _$AudioContextLatencyCategory {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -114,10 +136,19 @@ class __$$AudioContextLatencyCategory_BalancedImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AudioContextLatencyCategory_BalancedImpl
     extends AudioContextLatencyCategory_Balanced {
-  const _$AudioContextLatencyCategory_BalancedImpl() : super._();
+  const _$AudioContextLatencyCategory_BalancedImpl({final String? $type})
+      : $type = $type ?? 'balanced',
+        super._();
+
+  factory _$AudioContextLatencyCategory_BalancedImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$AudioContextLatencyCategory_BalancedImplFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -131,6 +162,7 @@ class _$AudioContextLatencyCategory_BalancedImpl
             other is _$AudioContextLatencyCategory_BalancedImpl);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -212,6 +244,13 @@ class _$AudioContextLatencyCategory_BalancedImpl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AudioContextLatencyCategory_BalancedImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class AudioContextLatencyCategory_Balanced
@@ -219,6 +258,10 @@ abstract class AudioContextLatencyCategory_Balanced
   const factory AudioContextLatencyCategory_Balanced() =
       _$AudioContextLatencyCategory_BalancedImpl;
   const AudioContextLatencyCategory_Balanced._() : super._();
+
+  factory AudioContextLatencyCategory_Balanced.fromJson(
+          Map<String, dynamic> json) =
+      _$AudioContextLatencyCategory_BalancedImpl.fromJson;
 }
 
 /// @nodoc
@@ -241,10 +284,19 @@ class __$$AudioContextLatencyCategory_InteractiveImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AudioContextLatencyCategory_InteractiveImpl
     extends AudioContextLatencyCategory_Interactive {
-  const _$AudioContextLatencyCategory_InteractiveImpl() : super._();
+  const _$AudioContextLatencyCategory_InteractiveImpl({final String? $type})
+      : $type = $type ?? 'interactive',
+        super._();
+
+  factory _$AudioContextLatencyCategory_InteractiveImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$AudioContextLatencyCategory_InteractiveImplFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -258,6 +310,7 @@ class _$AudioContextLatencyCategory_InteractiveImpl
             other is _$AudioContextLatencyCategory_InteractiveImpl);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -339,6 +392,13 @@ class _$AudioContextLatencyCategory_InteractiveImpl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AudioContextLatencyCategory_InteractiveImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class AudioContextLatencyCategory_Interactive
@@ -346,6 +406,10 @@ abstract class AudioContextLatencyCategory_Interactive
   const factory AudioContextLatencyCategory_Interactive() =
       _$AudioContextLatencyCategory_InteractiveImpl;
   const AudioContextLatencyCategory_Interactive._() : super._();
+
+  factory AudioContextLatencyCategory_Interactive.fromJson(
+          Map<String, dynamic> json) =
+      _$AudioContextLatencyCategory_InteractiveImpl.fromJson;
 }
 
 /// @nodoc
@@ -368,10 +432,19 @@ class __$$AudioContextLatencyCategory_PlaybackImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AudioContextLatencyCategory_PlaybackImpl
     extends AudioContextLatencyCategory_Playback {
-  const _$AudioContextLatencyCategory_PlaybackImpl() : super._();
+  const _$AudioContextLatencyCategory_PlaybackImpl({final String? $type})
+      : $type = $type ?? 'playback',
+        super._();
+
+  factory _$AudioContextLatencyCategory_PlaybackImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$AudioContextLatencyCategory_PlaybackImplFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -385,6 +458,7 @@ class _$AudioContextLatencyCategory_PlaybackImpl
             other is _$AudioContextLatencyCategory_PlaybackImpl);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -466,6 +540,13 @@ class _$AudioContextLatencyCategory_PlaybackImpl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AudioContextLatencyCategory_PlaybackImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class AudioContextLatencyCategory_Playback
@@ -473,6 +554,10 @@ abstract class AudioContextLatencyCategory_Playback
   const factory AudioContextLatencyCategory_Playback() =
       _$AudioContextLatencyCategory_PlaybackImpl;
   const AudioContextLatencyCategory_Playback._() : super._();
+
+  factory AudioContextLatencyCategory_Playback.fromJson(
+          Map<String, dynamic> json) =
+      _$AudioContextLatencyCategory_PlaybackImpl.fromJson;
 }
 
 /// @nodoc
@@ -510,13 +595,23 @@ class __$$AudioContextLatencyCategory_CustomImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AudioContextLatencyCategory_CustomImpl
     extends AudioContextLatencyCategory_Custom {
-  const _$AudioContextLatencyCategory_CustomImpl(this.field0) : super._();
+  const _$AudioContextLatencyCategory_CustomImpl(this.field0,
+      {final String? $type})
+      : $type = $type ?? 'custom',
+        super._();
+
+  factory _$AudioContextLatencyCategory_CustomImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$AudioContextLatencyCategory_CustomImplFromJson(json);
 
   @override
   final double field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -531,6 +626,7 @@ class _$AudioContextLatencyCategory_CustomImpl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -620,6 +716,13 @@ class _$AudioContextLatencyCategory_CustomImpl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AudioContextLatencyCategory_CustomImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class AudioContextLatencyCategory_Custom
@@ -627,6 +730,10 @@ abstract class AudioContextLatencyCategory_Custom
   const factory AudioContextLatencyCategory_Custom(final double field0) =
       _$AudioContextLatencyCategory_CustomImpl;
   const AudioContextLatencyCategory_Custom._() : super._();
+
+  factory AudioContextLatencyCategory_Custom.fromJson(
+          Map<String, dynamic> json) =
+      _$AudioContextLatencyCategory_CustomImpl.fromJson;
 
   double get field0;
   @JsonKey(ignore: true)

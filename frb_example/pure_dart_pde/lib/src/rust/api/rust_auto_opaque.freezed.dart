@@ -14,6 +14,23 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+EnumWithGoodAndOpaqueTwinNormal _$EnumWithGoodAndOpaqueTwinNormalFromJson(
+    Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'good':
+      return EnumWithGoodAndOpaqueTwinNormal_Good.fromJson(json);
+    case 'opaque':
+      return EnumWithGoodAndOpaqueTwinNormal_Opaque.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          'runtimeType',
+          'EnumWithGoodAndOpaqueTwinNormal',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
+}
+
 /// @nodoc
 mixin _$EnumWithGoodAndOpaqueTwinNormal {
   Object get field0 => throw _privateConstructorUsedError;
@@ -56,6 +73,7 @@ mixin _$EnumWithGoodAndOpaqueTwinNormal {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -114,13 +132,23 @@ class __$$EnumWithGoodAndOpaqueTwinNormal_GoodImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$EnumWithGoodAndOpaqueTwinNormal_GoodImpl
     extends EnumWithGoodAndOpaqueTwinNormal_Good {
-  const _$EnumWithGoodAndOpaqueTwinNormal_GoodImpl(this.field0) : super._();
+  const _$EnumWithGoodAndOpaqueTwinNormal_GoodImpl(this.field0,
+      {final String? $type})
+      : $type = $type ?? 'good',
+        super._();
+
+  factory _$EnumWithGoodAndOpaqueTwinNormal_GoodImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$EnumWithGoodAndOpaqueTwinNormal_GoodImplFromJson(json);
 
   @override
   final String field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -135,6 +163,7 @@ class _$EnumWithGoodAndOpaqueTwinNormal_GoodImpl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -208,6 +237,13 @@ class _$EnumWithGoodAndOpaqueTwinNormal_GoodImpl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$EnumWithGoodAndOpaqueTwinNormal_GoodImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class EnumWithGoodAndOpaqueTwinNormal_Good
@@ -215,6 +251,10 @@ abstract class EnumWithGoodAndOpaqueTwinNormal_Good
   const factory EnumWithGoodAndOpaqueTwinNormal_Good(final String field0) =
       _$EnumWithGoodAndOpaqueTwinNormal_GoodImpl;
   const EnumWithGoodAndOpaqueTwinNormal_Good._() : super._();
+
+  factory EnumWithGoodAndOpaqueTwinNormal_Good.fromJson(
+          Map<String, dynamic> json) =
+      _$EnumWithGoodAndOpaqueTwinNormal_GoodImpl.fromJson;
 
   @override
   String get field0;
@@ -259,13 +299,23 @@ class __$$EnumWithGoodAndOpaqueTwinNormal_OpaqueImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$EnumWithGoodAndOpaqueTwinNormal_OpaqueImpl
     extends EnumWithGoodAndOpaqueTwinNormal_Opaque {
-  const _$EnumWithGoodAndOpaqueTwinNormal_OpaqueImpl(this.field0) : super._();
+  const _$EnumWithGoodAndOpaqueTwinNormal_OpaqueImpl(this.field0,
+      {final String? $type})
+      : $type = $type ?? 'opaque',
+        super._();
+
+  factory _$EnumWithGoodAndOpaqueTwinNormal_OpaqueImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$EnumWithGoodAndOpaqueTwinNormal_OpaqueImplFromJson(json);
 
   @override
   final NonCloneSimpleTwinNormal field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -280,6 +330,7 @@ class _$EnumWithGoodAndOpaqueTwinNormal_OpaqueImpl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -354,6 +405,13 @@ class _$EnumWithGoodAndOpaqueTwinNormal_OpaqueImpl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$EnumWithGoodAndOpaqueTwinNormal_OpaqueImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class EnumWithGoodAndOpaqueTwinNormal_Opaque
@@ -362,6 +420,10 @@ abstract class EnumWithGoodAndOpaqueTwinNormal_Opaque
           final NonCloneSimpleTwinNormal field0) =
       _$EnumWithGoodAndOpaqueTwinNormal_OpaqueImpl;
   const EnumWithGoodAndOpaqueTwinNormal_Opaque._() : super._();
+
+  factory EnumWithGoodAndOpaqueTwinNormal_Opaque.fromJson(
+          Map<String, dynamic> json) =
+      _$EnumWithGoodAndOpaqueTwinNormal_OpaqueImpl.fromJson;
 
   @override
   NonCloneSimpleTwinNormal get field0;

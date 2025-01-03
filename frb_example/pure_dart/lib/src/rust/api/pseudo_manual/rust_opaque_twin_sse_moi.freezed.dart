@@ -14,6 +14,30 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+EnumOpaqueTwinSseMoi _$EnumOpaqueTwinSseMoiFromJson(Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'struct':
+      return EnumOpaqueTwinSseMoi_Struct.fromJson(json);
+    case 'primitive':
+      return EnumOpaqueTwinSseMoi_Primitive.fromJson(json);
+    case 'traitObj':
+      return EnumOpaqueTwinSseMoi_TraitObj.fromJson(json);
+    case 'mutex':
+      return EnumOpaqueTwinSseMoi_Mutex.fromJson(json);
+    case 'rwLock':
+      return EnumOpaqueTwinSseMoi_RwLock.fromJson(json);
+    case 'nothing':
+      return EnumOpaqueTwinSseMoi_Nothing.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          'runtimeType',
+          'EnumOpaqueTwinSseMoi',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
+}
+
 /// @nodoc
 mixin _$EnumOpaqueTwinSseMoi {
   @optionalTypeArgs
@@ -78,6 +102,7 @@ mixin _$EnumOpaqueTwinSseMoi {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -134,12 +159,21 @@ class __$$EnumOpaqueTwinSseMoi_StructImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$EnumOpaqueTwinSseMoi_StructImpl extends EnumOpaqueTwinSseMoi_Struct {
-  const _$EnumOpaqueTwinSseMoi_StructImpl(this.field0) : super._();
+  const _$EnumOpaqueTwinSseMoi_StructImpl(this.field0, {final String? $type})
+      : $type = $type ?? 'struct',
+        super._();
+
+  factory _$EnumOpaqueTwinSseMoi_StructImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$EnumOpaqueTwinSseMoi_StructImplFromJson(json);
 
   @override
   final HideDataTwinSseMoi field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -154,6 +188,7 @@ class _$EnumOpaqueTwinSseMoi_StructImpl extends EnumOpaqueTwinSseMoi_Struct {
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -249,12 +284,22 @@ class _$EnumOpaqueTwinSseMoi_StructImpl extends EnumOpaqueTwinSseMoi_Struct {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$EnumOpaqueTwinSseMoi_StructImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class EnumOpaqueTwinSseMoi_Struct extends EnumOpaqueTwinSseMoi {
   const factory EnumOpaqueTwinSseMoi_Struct(final HideDataTwinSseMoi field0) =
       _$EnumOpaqueTwinSseMoi_StructImpl;
   const EnumOpaqueTwinSseMoi_Struct._() : super._();
+
+  factory EnumOpaqueTwinSseMoi_Struct.fromJson(Map<String, dynamic> json) =
+      _$EnumOpaqueTwinSseMoi_StructImpl.fromJson;
 
   HideDataTwinSseMoi get field0;
   @JsonKey(ignore: true)
@@ -297,13 +342,22 @@ class __$$EnumOpaqueTwinSseMoi_PrimitiveImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$EnumOpaqueTwinSseMoi_PrimitiveImpl
     extends EnumOpaqueTwinSseMoi_Primitive {
-  const _$EnumOpaqueTwinSseMoi_PrimitiveImpl(this.field0) : super._();
+  const _$EnumOpaqueTwinSseMoi_PrimitiveImpl(this.field0, {final String? $type})
+      : $type = $type ?? 'primitive',
+        super._();
+
+  factory _$EnumOpaqueTwinSseMoi_PrimitiveImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$EnumOpaqueTwinSseMoi_PrimitiveImplFromJson(json);
 
   @override
   final I16 field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -318,6 +372,7 @@ class _$EnumOpaqueTwinSseMoi_PrimitiveImpl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -414,12 +469,22 @@ class _$EnumOpaqueTwinSseMoi_PrimitiveImpl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$EnumOpaqueTwinSseMoi_PrimitiveImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class EnumOpaqueTwinSseMoi_Primitive extends EnumOpaqueTwinSseMoi {
   const factory EnumOpaqueTwinSseMoi_Primitive(final I16 field0) =
       _$EnumOpaqueTwinSseMoi_PrimitiveImpl;
   const EnumOpaqueTwinSseMoi_Primitive._() : super._();
+
+  factory EnumOpaqueTwinSseMoi_Primitive.fromJson(Map<String, dynamic> json) =
+      _$EnumOpaqueTwinSseMoi_PrimitiveImpl.fromJson;
 
   I16 get field0;
   @JsonKey(ignore: true)
@@ -463,13 +528,22 @@ class __$$EnumOpaqueTwinSseMoi_TraitObjImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$EnumOpaqueTwinSseMoi_TraitObjImpl
     extends EnumOpaqueTwinSseMoi_TraitObj {
-  const _$EnumOpaqueTwinSseMoi_TraitObjImpl(this.field0) : super._();
+  const _$EnumOpaqueTwinSseMoi_TraitObjImpl(this.field0, {final String? $type})
+      : $type = $type ?? 'traitObj',
+        super._();
+
+  factory _$EnumOpaqueTwinSseMoi_TraitObjImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$EnumOpaqueTwinSseMoi_TraitObjImplFromJson(json);
 
   @override
   final BoxDartDebugTwinSseMoi field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -484,6 +558,7 @@ class _$EnumOpaqueTwinSseMoi_TraitObjImpl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -580,6 +655,13 @@ class _$EnumOpaqueTwinSseMoi_TraitObjImpl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$EnumOpaqueTwinSseMoi_TraitObjImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class EnumOpaqueTwinSseMoi_TraitObj extends EnumOpaqueTwinSseMoi {
@@ -587,6 +669,9 @@ abstract class EnumOpaqueTwinSseMoi_TraitObj extends EnumOpaqueTwinSseMoi {
           final BoxDartDebugTwinSseMoi field0) =
       _$EnumOpaqueTwinSseMoi_TraitObjImpl;
   const EnumOpaqueTwinSseMoi_TraitObj._() : super._();
+
+  factory EnumOpaqueTwinSseMoi_TraitObj.fromJson(Map<String, dynamic> json) =
+      _$EnumOpaqueTwinSseMoi_TraitObjImpl.fromJson;
 
   BoxDartDebugTwinSseMoi get field0;
   @JsonKey(ignore: true)
@@ -630,12 +715,21 @@ class __$$EnumOpaqueTwinSseMoi_MutexImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$EnumOpaqueTwinSseMoi_MutexImpl extends EnumOpaqueTwinSseMoi_Mutex {
-  const _$EnumOpaqueTwinSseMoi_MutexImpl(this.field0) : super._();
+  const _$EnumOpaqueTwinSseMoi_MutexImpl(this.field0, {final String? $type})
+      : $type = $type ?? 'mutex',
+        super._();
+
+  factory _$EnumOpaqueTwinSseMoi_MutexImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$EnumOpaqueTwinSseMoi_MutexImplFromJson(json);
 
   @override
   final MutexHideDataTwinSseMoi field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -650,6 +744,7 @@ class _$EnumOpaqueTwinSseMoi_MutexImpl extends EnumOpaqueTwinSseMoi_Mutex {
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -745,12 +840,22 @@ class _$EnumOpaqueTwinSseMoi_MutexImpl extends EnumOpaqueTwinSseMoi_Mutex {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$EnumOpaqueTwinSseMoi_MutexImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class EnumOpaqueTwinSseMoi_Mutex extends EnumOpaqueTwinSseMoi {
   const factory EnumOpaqueTwinSseMoi_Mutex(
       final MutexHideDataTwinSseMoi field0) = _$EnumOpaqueTwinSseMoi_MutexImpl;
   const EnumOpaqueTwinSseMoi_Mutex._() : super._();
+
+  factory EnumOpaqueTwinSseMoi_Mutex.fromJson(Map<String, dynamic> json) =
+      _$EnumOpaqueTwinSseMoi_MutexImpl.fromJson;
 
   MutexHideDataTwinSseMoi get field0;
   @JsonKey(ignore: true)
@@ -793,12 +898,21 @@ class __$$EnumOpaqueTwinSseMoi_RwLockImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$EnumOpaqueTwinSseMoi_RwLockImpl extends EnumOpaqueTwinSseMoi_RwLock {
-  const _$EnumOpaqueTwinSseMoi_RwLockImpl(this.field0) : super._();
+  const _$EnumOpaqueTwinSseMoi_RwLockImpl(this.field0, {final String? $type})
+      : $type = $type ?? 'rwLock',
+        super._();
+
+  factory _$EnumOpaqueTwinSseMoi_RwLockImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$EnumOpaqueTwinSseMoi_RwLockImplFromJson(json);
 
   @override
   final RwLockHideDataTwinSseMoi field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -813,6 +927,7 @@ class _$EnumOpaqueTwinSseMoi_RwLockImpl extends EnumOpaqueTwinSseMoi_RwLock {
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -908,6 +1023,13 @@ class _$EnumOpaqueTwinSseMoi_RwLockImpl extends EnumOpaqueTwinSseMoi_RwLock {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$EnumOpaqueTwinSseMoi_RwLockImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class EnumOpaqueTwinSseMoi_RwLock extends EnumOpaqueTwinSseMoi {
@@ -915,6 +1037,9 @@ abstract class EnumOpaqueTwinSseMoi_RwLock extends EnumOpaqueTwinSseMoi {
           final RwLockHideDataTwinSseMoi field0) =
       _$EnumOpaqueTwinSseMoi_RwLockImpl;
   const EnumOpaqueTwinSseMoi_RwLock._() : super._();
+
+  factory EnumOpaqueTwinSseMoi_RwLock.fromJson(Map<String, dynamic> json) =
+      _$EnumOpaqueTwinSseMoi_RwLockImpl.fromJson;
 
   RwLockHideDataTwinSseMoi get field0;
   @JsonKey(ignore: true)
@@ -942,9 +1067,18 @@ class __$$EnumOpaqueTwinSseMoi_NothingImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$EnumOpaqueTwinSseMoi_NothingImpl extends EnumOpaqueTwinSseMoi_Nothing {
-  const _$EnumOpaqueTwinSseMoi_NothingImpl() : super._();
+  const _$EnumOpaqueTwinSseMoi_NothingImpl({final String? $type})
+      : $type = $type ?? 'nothing',
+        super._();
+
+  factory _$EnumOpaqueTwinSseMoi_NothingImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$EnumOpaqueTwinSseMoi_NothingImplFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -958,6 +1092,7 @@ class _$EnumOpaqueTwinSseMoi_NothingImpl extends EnumOpaqueTwinSseMoi_Nothing {
             other is _$EnumOpaqueTwinSseMoi_NothingImpl);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -1046,10 +1181,20 @@ class _$EnumOpaqueTwinSseMoi_NothingImpl extends EnumOpaqueTwinSseMoi_Nothing {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$EnumOpaqueTwinSseMoi_NothingImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class EnumOpaqueTwinSseMoi_Nothing extends EnumOpaqueTwinSseMoi {
   const factory EnumOpaqueTwinSseMoi_Nothing() =
       _$EnumOpaqueTwinSseMoi_NothingImpl;
   const EnumOpaqueTwinSseMoi_Nothing._() : super._();
+
+  factory EnumOpaqueTwinSseMoi_Nothing.fromJson(Map<String, dynamic> json) =
+      _$EnumOpaqueTwinSseMoi_NothingImpl.fromJson;
 }
