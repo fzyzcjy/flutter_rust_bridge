@@ -1,7 +1,7 @@
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ConfigDumpContent;
 use crate::command_args;
-use crate::library::commands::command_runner::execute_command;
+use crate::library::commands::command_runner::{execute_command, ExecuteCommandOptions};
 use crate::utils::crate_name::CrateName;
 use anyhow::{bail, Context, Result};
 use itertools::Itertools;
@@ -92,8 +92,15 @@ fn run_raw(
     )]
     .into();
 
-    let output = execute_command("cargo", &args, Some(rust_crate_dir), Some(extra_env))
-        .with_context(|| format!("Could not expand rust code at path {rust_crate_dir:?}"))?;
+    let output = execute_command(
+        "cargo",
+        &args,
+        Some(rust_crate_dir),
+        Some(ExecuteCommandOptions {
+            envs: Some(extra_env),
+        }),
+    )
+    .with_context(|| format!("Could not expand rust code at path {rust_crate_dir:?}"))?;
 
     let stdout = String::from_utf8(output.stdout)?;
     let stderr = String::from_utf8(output.stderr)?;
