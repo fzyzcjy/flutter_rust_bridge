@@ -4,6 +4,7 @@ use flutter_rust_bridge::frb;
 pub fn init_app() {
     flutter_rust_bridge::setup_default_user_utils();
     log::warn!("hi init_app");
+    panic!("boom");
 }
 
 pub fn minimal_adder(a: i32, b: i32) -> i32 {
