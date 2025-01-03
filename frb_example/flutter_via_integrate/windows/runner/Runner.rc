@@ -93,7 +93,7 @@ BEGIN
             VALUE "FileDescription", "flutter_via_integrate" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "flutter_via_integrate" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2024 com.example. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2025 com.example. All rights reserved." "\0"
             VALUE "OriginalFilename", "flutter_via_integrate.exe" "\0"
             VALUE "ProductName", "flutter_via_integrate" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
