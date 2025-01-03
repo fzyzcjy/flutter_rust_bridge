@@ -157,15 +157,13 @@ pub(crate) fn execute_command<'a>(
             warn!("See keywords such as `error` in command output. Maybe there is a problem? command={:?} stdout={:?}", cmd, stdout);
             // frb-coverage:ignore-end
         }
-    } else {
-        if options.log_when_error.unwrap_or(true) {
-            warn!(
-                "command={:?} stdout={} stderr={}",
-                cmd,
-                stdout,
-                String::from_utf8_lossy(&result.stderr)
-            );
-        }
+    } else if options.log_when_error.unwrap_or(true) {
+        warn!(
+            "command={:?} stdout={} stderr={}",
+            cmd,
+            stdout,
+            String::from_utf8_lossy(&result.stderr)
+        );
     }
     Ok(result)
 }
