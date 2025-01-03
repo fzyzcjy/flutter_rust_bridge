@@ -13,7 +13,10 @@ pub fn dart_build_runner(dart_root: &Path) -> anyhow::Result<()> {
 
     let repo = DartRepository::from_path(dart_root)?;
     let out = command_run!(
-        call_shell[Some(dart_root), Some(ExecuteCommandOptions{envs:Some(dart_run_extra_env())})],
+        call_shell[Some(dart_root), Some(ExecuteCommandOptions {
+            envs: Some(dart_run_extra_env()),
+            ..Default::default()
+        })],
         ?command_arg_maybe_fvm(Some(dart_root)),
         *repo.toolchain.as_run_command(),
         *repo.command_extra_args(),

@@ -98,6 +98,7 @@ fn run_raw(
         Some(rust_crate_dir),
         Some(ExecuteCommandOptions {
             envs: Some(extra_env),
+            ..Default::default()
         }),
     )
     .with_context(|| format!("Could not expand rust code at path {rust_crate_dir:?}"))?;

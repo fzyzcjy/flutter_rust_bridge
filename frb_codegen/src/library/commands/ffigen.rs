@@ -79,7 +79,10 @@ pub(crate) fn ffigen_raw(config: &FfigenCommandConfig, dart_root: &Path) -> anyh
 
     let repo = DartRepository::from_path(dart_root).unwrap();
     let res = command_run!(
-        call_shell[Some(dart_root), Some(ExecuteCommandOptions{envs:Some(dart_run_extra_env())})],
+        call_shell[Some(dart_root), Some(ExecuteCommandOptions {
+            envs: Some(dart_run_extra_env()),
+            ..Default::default()
+        })],
         *repo.toolchain.as_run_command(),
         *repo.command_extra_args(),
         "run",
