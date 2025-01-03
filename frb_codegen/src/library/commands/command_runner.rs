@@ -111,6 +111,7 @@ pub(crate) fn call_shell_info(cmd: &[PathBuf]) -> CommandInfo {
 #[derive(Default)]
 pub(crate) struct ExecuteCommandOptions {
     pub envs: Option<HashMap<String, String>>,
+    pub log_when_error: Option<bool>,
 }
 
 pub(crate) fn execute_command<'a>(
@@ -119,6 +120,8 @@ pub(crate) fn execute_command<'a>(
     current_dir: Option<&Path>,
     options: Option<ExecuteCommandOptions>,
 ) -> anyhow::Result<Output> {
+    let options = options.unwrap_or_default();
+
     let args = args.into_iter().collect_vec();
     let args_display = args.iter().map(|path| path.to_string_lossy()).join(" ");
     let mut cmd = Command::new(bin);
@@ -127,7 +130,7 @@ pub(crate) fn execute_command<'a>(
     if let Some(current_dir) = current_dir {
         cmd.current_dir(normalize_windows_unc_path(&path_to_string(current_dir)?));
     }
-    if let Some(envs) = options.unwrap_or_default().envs {
+    if let Some(envs) = options.envs {
         cmd.envs(envs);
     }
 
@@ -155,12 +158,14 @@ pub(crate) fn execute_command<'a>(
             // frb-coverage:ignore-end
         }
     } else {
-        warn!(
-            "command={:?} stdout={} stderr={}",
-            cmd,
-            stdout,
-            String::from_utf8_lossy(&result.stderr)
-        );
+        if options.log_when_error.unwrap_or(true) {
+            warn!(
+                "command={:?} stdout={} stderr={}",
+                cmd,
+                stdout,
+                String::from_utf8_lossy(&result.stderr)
+            );
+        }
     }
     Ok(result)
 }

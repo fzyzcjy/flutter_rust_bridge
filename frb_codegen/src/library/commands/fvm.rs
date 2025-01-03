@@ -1,5 +1,7 @@
 use crate::command_run;
-use crate::library::commands::command_runner::{call_shell, execute_command};
+use crate::library::commands::command_runner::{
+    call_shell, execute_command, ExecuteCommandOptions,
+};
 use std::path::Path;
 
 pub(crate) fn command_arg_maybe_fvm(pwd: Option<&Path>) -> Option<String> {
@@ -34,6 +36,6 @@ fn has_fvmrc(pwd: &Path) -> bool {
 
 #[allow(clippy::vec_init_then_push)]
 fn has_fvm_installation() -> bool {
-    command_run!(call_shell[None, None], "fvm", "--version")
+    command_run!(call_shell[None, Some(ExecuteCommandOptions { log_when_error: Some(false), ..Default::default() })], "fvm", "--version")
         .map_or(false, |res| res.status.success())
 }
