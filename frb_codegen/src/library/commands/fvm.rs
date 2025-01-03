@@ -1,5 +1,5 @@
 use crate::command_run;
-use crate::library::commands::command_runner::call_shell;
+use crate::library::commands::command_runner::{call_shell, execute_command};
 use std::path::Path;
 
 pub(crate) fn command_arg_maybe_fvm(pwd: Option<&Path>) -> Option<String> {
