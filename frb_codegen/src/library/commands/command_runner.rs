@@ -25,12 +25,12 @@ macro_rules! command_run {
         let args = $crate::command_args!($($rest)*);
         $crate::library::commands::command_runner::execute_command($binary, args.iter(), None, None)
     }};
-    ($binary:ident in $pwd:expr, envs = $envs:expr, $($rest:tt)*) => {{
+    ($binary:ident in $pwd:expr, options = $options:expr, $($rest:tt)*) => {{
         let args = $crate::command_args!($($rest)*);
-        $crate::library::commands::command_runner::execute_command($binary, args.iter(), $pwd, $envs)
+        $crate::library::commands::command_runner::execute_command($binary, args.iter(), $pwd, $options)
     }};
     ($binary:ident in $pwd:expr, $($rest:tt)*) => {{
-        $crate::command_run!($binary in $pwd, envs = None, $($rest)*)
+        $crate::command_run!($binary in $pwd, options = None, $($rest)*)
     }};
     ($command:path $([ $($args:expr),* ])?, $($rest:tt)*) => {{
         let args = $crate::command_args!($($rest)*);
@@ -76,11 +76,11 @@ macro_rules! command_args {
 pub(crate) fn call_shell(
     cmd: &[PathBuf],
     pwd: Option<&Path>,
-    envs: Option<HashMap<String, String>>,
+    options: Option<ExecuteCommandOptions>,
 ) -> anyhow::Result<Output> {
     let CommandInfo { program, args } = call_shell_info(cmd);
     let program = &program;
-    command_run!(program in pwd, envs = envs, *args)
+    command_run!(program in pwd, options = options, *args)
 }
 
 pub(crate) struct CommandInfo {
@@ -108,12 +108,20 @@ pub(crate) fn call_shell_info(cmd: &[PathBuf]) -> CommandInfo {
     };
 }
 
+#[derive(Default)]
+pub(crate) struct ExecuteCommandOptions {
+    pub envs: Option<HashMap<String, String>>,
+    pub log_when_error: Option<bool>,
+}
+
 pub(crate) fn execute_command<'a>(
     bin: &str,
     args: impl IntoIterator<Item = &'a PathBuf>,
     current_dir: Option<&Path>,
-    envs: Option<HashMap<String, String>>,
+    options: Option<ExecuteCommandOptions>,
 ) -> anyhow::Result<Output> {
+    let options = options.unwrap_or_default();
+
     let args = args.into_iter().collect_vec();
     let args_display = args.iter().map(|path| path.to_string_lossy()).join(" ");
     let mut cmd = Command::new(bin);
@@ -122,7 +130,7 @@ pub(crate) fn execute_command<'a>(
     if let Some(current_dir) = current_dir {
         cmd.current_dir(normalize_windows_unc_path(&path_to_string(current_dir)?));
     }
-    if let Some(envs) = envs {
+    if let Some(envs) = options.envs {
         cmd.envs(envs);
     }
 
@@ -149,7 +157,7 @@ pub(crate) fn execute_command<'a>(
             warn!("See keywords such as `error` in command output. Maybe there is a problem? command={:?} stdout={:?}", cmd, stdout);
             // frb-coverage:ignore-end
         }
-    } else {
+    } else if options.log_when_error.unwrap_or(true) {
         warn!(
             "command={:?} stdout={} stderr={}",
             cmd,
