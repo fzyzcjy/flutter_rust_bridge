@@ -9,7 +9,7 @@ import 'package:web/web.dart' as web;
 Future<void> initializeWasmModule({required String root}) async {
   _ensureCrossOriginIsolated();
   final packageInfo = await PackageInfo.fromPlatform();
-  final version = packageInfo.version + packageInfo.buildNumber;
+  final version = '${packageInfo.version}.${packageInfo.buildNumber}';
 
   final script = web.HTMLScriptElement()..src = '$root.js?version=$version';
   web.document.head!.append(script);
