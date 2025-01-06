@@ -2,18 +2,21 @@ import 'dart:async';
 import 'dart:js_interop';
 
 import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:web/web.dart' as web;
 
 /// {@macro flutter_rust_bridge.internal}
 Future<void> initializeWasmModule({required String root}) async {
   _ensureCrossOriginIsolated();
+  PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
-  final script = web.HTMLScriptElement()..src = '$root.js';
+  final script = web.HTMLScriptElement()..src = '$root.js?version=${packageInfo.version}';
   web.document.head!.append(script);
 
   await script.onLoad.first;
 
   jsEval('window.wasm_bindgen = wasm_bindgen');
+
 
   await _jsWasmBindgen('${root}_bg.wasm').toDart;
 }
