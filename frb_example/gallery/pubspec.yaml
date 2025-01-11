@@ -13,6 +13,7 @@ dependencies:
   flutter_rust_bridge:
     path: ../../frb_dart
   freezed_annotation: ^2.2.0
+  json_annotation: ^4.9.0
 dev_dependencies:
   test: ^1.21.4
   freezed: ^2.1.0+1
@@ -23,6 +24,7 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   integration_test:
     sdk: flutter
+  json_serializable: ^6.9.0
 
 flutter:
   uses-material-design: true

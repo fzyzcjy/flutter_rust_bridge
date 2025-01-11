@@ -20,7 +20,9 @@ dependencies:
   uuid: ^4.1.0
   collection: ^1.16.0
   protobuf: ^3.1.0 # `protobuf` is only used for comparison
+  json_annotation: ^4.9.0
 dev_dependencies:
   build_runner: ^2.4.4
   freezed: ^2.1.0+1
   ffigen: ^11.0.0
+  json_serializable: ^6.9.0
