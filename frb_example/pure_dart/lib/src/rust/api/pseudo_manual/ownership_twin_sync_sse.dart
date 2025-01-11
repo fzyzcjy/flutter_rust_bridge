@@ -8,46 +8,42 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`
 
-String borrowStringTwinSyncSse({required String arg}) => RustLib.instance.api
-    .crateApiPseudoManualOwnershipTwinSyncSseBorrowStringTwinSyncSse(arg: arg);
+            // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`
 
-String borrowStrTwinSyncSse({required String arg}) => RustLib.instance.api
-    .crateApiPseudoManualOwnershipTwinSyncSseBorrowStrTwinSyncSse(arg: arg);
 
-int borrowI32TwinSyncSse({required int arg}) => RustLib.instance.api
-    .crateApiPseudoManualOwnershipTwinSyncSseBorrowI32TwinSyncSse(arg: arg);
+            String borrowStringTwinSyncSse({required String arg }) => RustLib.instance.api.crateApiPseudoManualOwnershipTwinSyncSseBorrowStringTwinSyncSse(arg: arg);
 
-Uint8List borrowSliceU8TwinSyncSse({required List<int> arg}) => RustLib
-    .instance.api
-    .crateApiPseudoManualOwnershipTwinSyncSseBorrowSliceU8TwinSyncSse(arg: arg);
+String borrowStrTwinSyncSse({required String arg }) => RustLib.instance.api.crateApiPseudoManualOwnershipTwinSyncSseBorrowStrTwinSyncSse(arg: arg);
 
-List<String> borrowSliceStringTwinSyncSse({required List<String> arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOwnershipTwinSyncSseBorrowSliceStringTwinSyncSse(
-            arg: arg);
+int borrowI32TwinSyncSse({required int arg }) => RustLib.instance.api.crateApiPseudoManualOwnershipTwinSyncSseBorrowI32TwinSyncSse(arg: arg);
 
-SimpleStructForBorrowTwinSyncSse borrowStructTwinSyncSse(
-        {required SimpleStructForBorrowTwinSyncSse arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOwnershipTwinSyncSseBorrowStructTwinSyncSse(
-            arg: arg);
+Uint8List borrowSliceU8TwinSyncSse({required List<int> arg }) => RustLib.instance.api.crateApiPseudoManualOwnershipTwinSyncSseBorrowSliceU8TwinSyncSse(arg: arg);
 
-class SimpleStructForBorrowTwinSyncSse {
-  final String one;
+List<String> borrowSliceStringTwinSyncSse({required List<String> arg }) => RustLib.instance.api.crateApiPseudoManualOwnershipTwinSyncSseBorrowSliceStringTwinSyncSse(arg: arg);
 
-  const SimpleStructForBorrowTwinSyncSse({
-    required this.one,
-  });
+SimpleStructForBorrowTwinSyncSse borrowStructTwinSyncSse({required SimpleStructForBorrowTwinSyncSse arg }) => RustLib.instance.api.crateApiPseudoManualOwnershipTwinSyncSseBorrowStructTwinSyncSse(arg: arg);
 
-  @override
-  int get hashCode => one.hashCode;
+            class SimpleStructForBorrowTwinSyncSse  {
+                final String one;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SimpleStructForBorrowTwinSyncSse &&
-          runtimeType == other.runtimeType &&
-          one == other.one;
-}
+                const SimpleStructForBorrowTwinSyncSse({required this.one ,});
+
+                
+                
+
+                
+        @override
+        int get hashCode => one.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is SimpleStructForBorrowTwinSyncSse &&
+                runtimeType == other.runtimeType
+                && one == other.one;
+        
+            }
+            

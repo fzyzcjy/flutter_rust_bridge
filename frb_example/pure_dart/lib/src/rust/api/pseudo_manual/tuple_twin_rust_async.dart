@@ -8,11 +8,12 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<(String, int)> testTupleTwinRustAsync({(String, int)? value}) => RustLib
-    .instance.api
-    .crateApiPseudoManualTupleTwinRustAsyncTestTupleTwinRustAsync(value: value);
 
-Future<void> testTuple2TwinRustAsync({required List<(String, int)> value}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualTupleTwinRustAsyncTestTuple2TwinRustAsync(
-            value: value);
+            
+
+            Future<(String,int)> testTupleTwinRustAsync({(String,int)? value }) => RustLib.instance.api.crateApiPseudoManualTupleTwinRustAsyncTestTupleTwinRustAsync(value: value);
+
+Future<void> testTuple2TwinRustAsync({required List<(String,int)> value }) => RustLib.instance.api.crateApiPseudoManualTupleTwinRustAsyncTestTuple2TwinRustAsync(value: value);
+
+            
+            

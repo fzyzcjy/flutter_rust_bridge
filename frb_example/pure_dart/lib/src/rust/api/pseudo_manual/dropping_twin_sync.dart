@@ -8,17 +8,29 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `deref`, `drop`, `initialize`
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DroppableTwinSync>>
-abstract class DroppableTwinSync implements RustOpaqueInterface {
-  Stream<int> createStreamTwinSync();
+            // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `deref`, `drop`, `initialize`
 
-  static int getDropCountTwinSync() => RustLib.instance.api
-      .crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncGetDropCountTwinSync();
 
-  static DroppableTwinSync newTwinSync() => RustLib.instance.api
-      .crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncNewTwinSync();
+            
 
-  void simpleMethodTwinSync();
-}
+            
+                // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DroppableTwinSync>>
+                abstract class DroppableTwinSync implements RustOpaqueInterface {
+                     Stream<int>  createStreamTwinSync();
+
+
+static int  getDropCountTwinSync()=>RustLib.instance.api.crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncGetDropCountTwinSync();
+
+
+static DroppableTwinSync  newTwinSync()=>RustLib.instance.api.crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncNewTwinSync();
+
+
+ void  simpleMethodTwinSync();
+
+
+
+                    
+                }
+                
+            

@@ -8,10 +8,12 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-(String, int) testTupleTwinSyncSse({(String, int)? value}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualTupleTwinSyncSseTestTupleTwinSyncSse(value: value);
 
-void testTuple2TwinSyncSse({required List<(String, int)> value}) => RustLib
-    .instance.api
-    .crateApiPseudoManualTupleTwinSyncSseTestTuple2TwinSyncSse(value: value);
+            
+
+            (String,int) testTupleTwinSyncSse({(String,int)? value }) => RustLib.instance.api.crateApiPseudoManualTupleTwinSyncSseTestTupleTwinSyncSse(value: value);
+
+void testTuple2TwinSyncSse({required List<(String,int)> value }) => RustLib.instance.api.crateApiPseudoManualTupleTwinSyncSseTestTuple2TwinSyncSse(value: value);
+
+            
+            

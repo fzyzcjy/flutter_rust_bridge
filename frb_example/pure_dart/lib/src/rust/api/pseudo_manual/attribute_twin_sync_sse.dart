@@ -9,50 +9,52 @@ import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'package:meta/meta.dart' as meta;
-part 'attribute_twin_sync_sse.freezed.dart';
 
-// These types are ignored because they are not used by any `pub` functions: `IgnoredStructTwinSyncSse`, `StructWithOnlyIgnoredMethodTwinSyncSse`
+                part 'attribute_twin_sync_sse.freezed.dart';
+                part 'attribute_twin_sync_sse.g.dart';
+                
+
+            // These types are ignored because they are not used by any `pub` functions: `IgnoredStructTwinSyncSse`, `StructWithOnlyIgnoredMethodTwinSyncSse`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 // These functions are ignored (category: IgnoreBecauseExplicitAttribute): `func_should_not_exist_in_dart_twin_sync_sse`, `method_should_not_exist_in_dart_twin_sync_sse`
 // These functions are ignored (category: IgnoreBecauseOwnerTyShouldIgnore): `method_should_not_exist_in_dart_twin_sync_sse`
 
-void handleCustomizedStructTwinSyncSse({required CustomizedTwinSyncSse val}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualAttributeTwinSyncSseHandleCustomizedStructTwinSyncSse(
-            val: val);
 
-UserIdTwinSyncSse nextUserIdTwinSyncSse(
-        {UserIdTwinSyncSse userId = const UserIdTwinSyncSse()}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualAttributeTwinSyncSseNextUserIdTwinSyncSse(
-            userId: userId);
+            void handleCustomizedStructTwinSyncSse({required CustomizedTwinSyncSse val }) => RustLib.instance.api.crateApiPseudoManualAttributeTwinSyncSseHandleCustomizedStructTwinSyncSse(val: val);
 
-class CustomizedTwinSyncSse {
-  final String finalField;
-  String? nonFinalField;
+UserIdTwinSyncSse nextUserIdTwinSyncSse({UserIdTwinSyncSse userId = const UserIdTwinSyncSse()}) => RustLib.instance.api.crateApiPseudoManualAttributeTwinSyncSseNextUserIdTwinSyncSse(userId: userId);
 
-  CustomizedTwinSyncSse({
-    required this.finalField,
-    this.nonFinalField,
-  });
+            class CustomizedTwinSyncSse  {
+                final String finalField;
+ String? nonFinalField;
 
-  @override
-  int get hashCode => finalField.hashCode ^ nonFinalField.hashCode;
+                CustomizedTwinSyncSse({required this.finalField ,this.nonFinalField ,});
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CustomizedTwinSyncSse &&
-          runtimeType == other.runtimeType &&
-          finalField == other.finalField &&
-          nonFinalField == other.nonFinalField;
-}
+                
+                
+
+                
+        @override
+        int get hashCode => finalField.hashCode^nonFinalField.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is CustomizedTwinSyncSse &&
+                runtimeType == other.runtimeType
+                && finalField == other.finalField&& nonFinalField == other.nonFinalField;
+        
+            }
 
 /// Example for @freezed and @meta.immutable
 @freezed
 @meta.immutable
-class UserIdTwinSyncSse with _$UserIdTwinSyncSse {
-  const factory UserIdTwinSyncSse({
-    @Default(0) int value,
-  }) = _UserIdTwinSyncSse;
-}
+class UserIdTwinSyncSse with _$UserIdTwinSyncSse  {
+                
+                const factory UserIdTwinSyncSse({@Default(0)  int value,}) = _UserIdTwinSyncSse;
+                
+                
+            }
+            

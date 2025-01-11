@@ -10,170 +10,131 @@ import '../../frb_generated.dart';
 import '../mirror.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<ApplicationSettings> getAppSettingsTwinSse() => RustLib.instance.api
-    .crateApiPseudoManualMirrorTwinSseGetAppSettingsTwinSse();
 
-Future<ApplicationSettings> getFallibleAppSettingsTwinSse() =>
-    RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSseGetFallibleAppSettingsTwinSse();
+            
 
-Future<bool> isAppEmbeddedTwinSse({required ApplicationSettings appSettings}) =>
-    RustLib.instance.api.crateApiPseudoManualMirrorTwinSseIsAppEmbeddedTwinSse(
-        appSettings: appSettings);
+            Future<ApplicationSettings> getAppSettingsTwinSse() => RustLib.instance.api.crateApiPseudoManualMirrorTwinSseGetAppSettingsTwinSse();
 
-Stream<ApplicationSettings> appSettingsStreamTwinSse() => RustLib.instance.api
-    .crateApiPseudoManualMirrorTwinSseAppSettingsStreamTwinSse();
+Future<ApplicationSettings> getFallibleAppSettingsTwinSse() => RustLib.instance.api.crateApiPseudoManualMirrorTwinSseGetFallibleAppSettingsTwinSse();
 
-Stream<List<ApplicationSettings>> appSettingsVecStreamTwinSse() =>
-    RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSseAppSettingsVecStreamTwinSse();
+Future<bool> isAppEmbeddedTwinSse({required ApplicationSettings appSettings }) => RustLib.instance.api.crateApiPseudoManualMirrorTwinSseIsAppEmbeddedTwinSse(appSettings: appSettings);
 
-Stream<MirrorStructTwinSse> mirrorStructStreamTwinSse() => RustLib.instance.api
-    .crateApiPseudoManualMirrorTwinSseMirrorStructStreamTwinSse();
+Stream<ApplicationSettings> appSettingsStreamTwinSse() => RustLib.instance.api.crateApiPseudoManualMirrorTwinSseAppSettingsStreamTwinSse();
 
-Stream<(ApplicationSettings, RawStringEnumMirrored)>
-    mirrorTupleStreamTwinSse() => RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSseMirrorTupleStreamTwinSse();
+Stream<List<ApplicationSettings>> appSettingsVecStreamTwinSse() => RustLib.instance.api.crateApiPseudoManualMirrorTwinSseAppSettingsVecStreamTwinSse();
 
-Future<ApplicationMessage> getMessageTwinSse() =>
-    RustLib.instance.api.crateApiPseudoManualMirrorTwinSseGetMessageTwinSse();
+Stream<MirrorStructTwinSse> mirrorStructStreamTwinSse() => RustLib.instance.api.crateApiPseudoManualMirrorTwinSseMirrorStructStreamTwinSse();
 
-Future<Numbers> repeatNumberTwinSse(
-        {required int num, required BigInt times}) =>
-    RustLib.instance.api.crateApiPseudoManualMirrorTwinSseRepeatNumberTwinSse(
-        num: num, times: times);
+Stream<(ApplicationSettings,RawStringEnumMirrored)> mirrorTupleStreamTwinSse() => RustLib.instance.api.crateApiPseudoManualMirrorTwinSseMirrorTupleStreamTwinSse();
 
-Future<Sequences> repeatSequenceTwinSse(
-        {required int seq, required BigInt times}) =>
-    RustLib.instance.api.crateApiPseudoManualMirrorTwinSseRepeatSequenceTwinSse(
-        seq: seq, times: times);
+Future<ApplicationMessage> getMessageTwinSse() => RustLib.instance.api.crateApiPseudoManualMirrorTwinSseGetMessageTwinSse();
 
-Future<int?> firstNumberTwinSse({required Numbers nums}) => RustLib.instance.api
-    .crateApiPseudoManualMirrorTwinSseFirstNumberTwinSse(nums: nums);
+Future<Numbers> repeatNumberTwinSse({required int num , required BigInt times }) => RustLib.instance.api.crateApiPseudoManualMirrorTwinSseRepeatNumberTwinSse(num: num, times: times);
 
-Future<int?> firstSequenceTwinSse({required Sequences seqs}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSseFirstSequenceTwinSse(seqs: seqs);
+Future<Sequences> repeatSequenceTwinSse({required int seq , required BigInt times }) => RustLib.instance.api.crateApiPseudoManualMirrorTwinSseRepeatSequenceTwinSse(seq: seq, times: times);
 
-Future<RawStringMirrored> testRawStringMirroredTwinSse() => RustLib.instance.api
-    .crateApiPseudoManualMirrorTwinSseTestRawStringMirroredTwinSse();
+Future<int?> firstNumberTwinSse({required Numbers nums }) => RustLib.instance.api.crateApiPseudoManualMirrorTwinSseFirstNumberTwinSse(nums: nums);
 
-Future<NestedRawStringMirrored> testNestedRawStringMirroredTwinSse() =>
-    RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSseTestNestedRawStringMirroredTwinSse();
+Future<int?> firstSequenceTwinSse({required Sequences seqs }) => RustLib.instance.api.crateApiPseudoManualMirrorTwinSseFirstSequenceTwinSse(seqs: seqs);
 
-Future<RawStringEnumMirrored> testRawStringEnumMirroredTwinSse(
-        {required bool nested}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSseTestRawStringEnumMirroredTwinSse(
-            nested: nested);
+Future<RawStringMirrored> testRawStringMirroredTwinSse() => RustLib.instance.api.crateApiPseudoManualMirrorTwinSseTestRawStringMirroredTwinSse();
 
-Future<ListOfNestedRawStringMirrored>
-    testListOfRawNestedStringMirroredTwinSse() => RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSseTestListOfRawNestedStringMirroredTwinSse();
+Future<NestedRawStringMirrored> testNestedRawStringMirroredTwinSse() => RustLib.instance.api.crateApiPseudoManualMirrorTwinSseTestNestedRawStringMirroredTwinSse();
 
-Future<
-    List<
-        RawStringMirrored>> testFallibleOfRawStringMirroredTwinSse() => RustLib
-    .instance.api
-    .crateApiPseudoManualMirrorTwinSseTestFallibleOfRawStringMirroredTwinSse();
+Future<RawStringEnumMirrored> testRawStringEnumMirroredTwinSse({required bool nested }) => RustLib.instance.api.crateApiPseudoManualMirrorTwinSseTestRawStringEnumMirroredTwinSse(nested: nested);
 
-Future<List<RawStringEnumMirrored>> testListOfNestedEnumsMirroredTwinSse() =>
-    RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSseTestListOfNestedEnumsMirroredTwinSse();
+Future<ListOfNestedRawStringMirrored> testListOfRawNestedStringMirroredTwinSse() => RustLib.instance.api.crateApiPseudoManualMirrorTwinSseTestListOfRawNestedStringMirroredTwinSse();
 
-Future<ContainsMirroredSubStructTwinSse>
-    testContainsMirroredSubStructTwinSse() => RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSseTestContainsMirroredSubStructTwinSse();
+Future<List<RawStringMirrored>> testFallibleOfRawStringMirroredTwinSse() => RustLib.instance.api.crateApiPseudoManualMirrorTwinSseTestFallibleOfRawStringMirroredTwinSse();
 
-Future<StructWithHashMap> testHashmapWithMirroredValueTwinSse() =>
-    RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSseTestHashmapWithMirroredValueTwinSse();
+Future<List<RawStringEnumMirrored>> testListOfNestedEnumsMirroredTwinSse() => RustLib.instance.api.crateApiPseudoManualMirrorTwinSseTestListOfNestedEnumsMirroredTwinSse();
 
-Stream<ApplicationMode> mirrorEnumStreamTwinSse() => RustLib.instance.api
-    .crateApiPseudoManualMirrorTwinSseMirrorEnumStreamTwinSse();
+Future<ContainsMirroredSubStructTwinSse> testContainsMirroredSubStructTwinSse() => RustLib.instance.api.crateApiPseudoManualMirrorTwinSseTestContainsMirroredSubStructTwinSse();
 
-Stream<ApplicationMode?> mirrorOptionEnumStreamTwinSse() => RustLib.instance.api
-    .crateApiPseudoManualMirrorTwinSseMirrorOptionEnumStreamTwinSse();
+Future<StructWithHashMap> testHashmapWithMirroredValueTwinSse() => RustLib.instance.api.crateApiPseudoManualMirrorTwinSseTestHashmapWithMirroredValueTwinSse();
 
-Stream<List<ApplicationMode>> mirrorVecEnumStreamTwinSse() =>
-    RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSseMirrorVecEnumStreamTwinSse();
+Stream<ApplicationMode> mirrorEnumStreamTwinSse() => RustLib.instance.api.crateApiPseudoManualMirrorTwinSseMirrorEnumStreamTwinSse();
 
-Stream<Map<int, ApplicationMode>> mirrorMapEnumStreamTwinSse() =>
-    RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSseMirrorMapEnumStreamTwinSse();
+Stream<ApplicationMode?> mirrorOptionEnumStreamTwinSse() => RustLib.instance.api.crateApiPseudoManualMirrorTwinSseMirrorOptionEnumStreamTwinSse();
 
-Stream<Set<ApplicationMode>> mirrorSetEnumStreamTwinSse() =>
-    RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSseMirrorSetEnumStreamTwinSse();
+Stream<List<ApplicationMode>> mirrorVecEnumStreamTwinSse() => RustLib.instance.api.crateApiPseudoManualMirrorTwinSseMirrorVecEnumStreamTwinSse();
 
-Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinSse() =>
-    RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSseMirrorArrayEnumStreamTwinSse();
+Stream<Map<int, ApplicationMode>> mirrorMapEnumStreamTwinSse() => RustLib.instance.api.crateApiPseudoManualMirrorTwinSseMirrorMapEnumStreamTwinSse();
 
-class AnotherTwinSse {
-  final String a;
+Stream<Set<ApplicationMode>> mirrorSetEnumStreamTwinSse() => RustLib.instance.api.crateApiPseudoManualMirrorTwinSseMirrorSetEnumStreamTwinSse();
 
-  const AnotherTwinSse({
-    required this.a,
-  });
+Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinSse() => RustLib.instance.api.crateApiPseudoManualMirrorTwinSseMirrorArrayEnumStreamTwinSse();
 
-  @override
-  int get hashCode => a.hashCode;
+            class AnotherTwinSse  {
+                final String a;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is AnotherTwinSse &&
-          runtimeType == other.runtimeType &&
-          a == other.a;
-}
+                const AnotherTwinSse({required this.a ,});
 
-class ContainsMirroredSubStructTwinSse {
-  final RawStringMirrored test;
-  final AnotherTwinSse test2;
+                
+                
 
-  const ContainsMirroredSubStructTwinSse({
-    required this.test,
-    required this.test2,
-  });
+                
+        @override
+        int get hashCode => a.hashCode;
+        
 
-  @override
-  int get hashCode => test.hashCode ^ test2.hashCode;
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is AnotherTwinSse &&
+                runtimeType == other.runtimeType
+                && a == other.a;
+        
+            }
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ContainsMirroredSubStructTwinSse &&
-          runtimeType == other.runtimeType &&
-          test == other.test &&
-          test2 == other.test2;
-}
+class ContainsMirroredSubStructTwinSse  {
+                final RawStringMirrored test;
+final AnotherTwinSse test2;
 
-class MirrorStructTwinSse {
-  final ApplicationSettings a;
-  final MyStruct b;
-  final List<MyEnum> c;
-  final List<ApplicationSettings> d;
+                const ContainsMirroredSubStructTwinSse({required this.test ,required this.test2 ,});
 
-  const MirrorStructTwinSse({
-    required this.a,
-    required this.b,
-    required this.c,
-    required this.d,
-  });
+                
+                
 
-  @override
-  int get hashCode => a.hashCode ^ b.hashCode ^ c.hashCode ^ d.hashCode;
+                
+        @override
+        int get hashCode => test.hashCode^test2.hashCode;
+        
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is MirrorStructTwinSse &&
-          runtimeType == other.runtimeType &&
-          a == other.a &&
-          b == other.b &&
-          c == other.c &&
-          d == other.d;
-}
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is ContainsMirroredSubStructTwinSse &&
+                runtimeType == other.runtimeType
+                && test == other.test&& test2 == other.test2;
+        
+            }
+
+class MirrorStructTwinSse  {
+                final ApplicationSettings a;
+final MyStruct b;
+final List<MyEnum> c;
+final List<ApplicationSettings> d;
+
+                const MirrorStructTwinSse({required this.a ,required this.b ,required this.c ,required this.d ,});
+
+                
+                
+
+                
+        @override
+        int get hashCode => a.hashCode^b.hashCode^c.hashCode^d.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is MirrorStructTwinSse &&
+                runtimeType == other.runtimeType
+                && a == other.a&& b == other.b&& c == other.c&& d == other.d;
+        
+            }
+            

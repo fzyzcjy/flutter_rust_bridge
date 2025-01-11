@@ -9,110 +9,101 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'pseudo_manual/stream_twin_rust_async.dart';
 
-// These functions are ignored because they are not marked as `pub`: `handle_stream_inner`
+
+            // These functions are ignored because they are not marked as `pub`: `handle_stream_inner`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 
-Future<Stream<String>> funcStreamReturnErrorTwinNormal() =>
-    RustLib.instance.api.crateApiStreamFuncStreamReturnErrorTwinNormal();
 
-Future<Stream<String>> funcStreamReturnPanicTwinNormal() =>
-    RustLib.instance.api.crateApiStreamFuncStreamReturnPanicTwinNormal();
+            Future<Stream<String>> funcStreamReturnErrorTwinNormal() => RustLib.instance.api.crateApiStreamFuncStreamReturnErrorTwinNormal();
 
-Stream<int> funcStreamSinkArgPositionTwinNormal(
-        {required int a, required int b}) =>
-    RustLib.instance.api
-        .crateApiStreamFuncStreamSinkArgPositionTwinNormal(a: a, b: b);
+Future<Stream<String>> funcStreamReturnPanicTwinNormal() => RustLib.instance.api.crateApiStreamFuncStreamReturnPanicTwinNormal();
 
-Stream<MyStreamEntryTwinNormal> handleStreamOfStructTwinNormal() =>
-    RustLib.instance.api.crateApiStreamHandleStreamOfStructTwinNormal();
+Stream<int> funcStreamSinkArgPositionTwinNormal({required int a , required int b }) => RustLib.instance.api.crateApiStreamFuncStreamSinkArgPositionTwinNormal(a: a, b: b);
 
-Stream<LogTwinNormal> handleStreamSinkAt1TwinNormal(
-        {required int key, required int max}) =>
-    RustLib.instance.api
-        .crateApiStreamHandleStreamSinkAt1TwinNormal(key: key, max: max);
+Stream<MyStreamEntryTwinNormal> handleStreamOfStructTwinNormal() => RustLib.instance.api.crateApiStreamHandleStreamOfStructTwinNormal();
 
-Stream<LogTwinNormal> handleStreamSinkAt2TwinNormal(
-        {required int key, required int max}) =>
-    RustLib.instance.api
-        .crateApiStreamHandleStreamSinkAt2TwinNormal(key: key, max: max);
+Stream<LogTwinNormal> handleStreamSinkAt1TwinNormal({required int key , required int max }) => RustLib.instance.api.crateApiStreamHandleStreamSinkAt1TwinNormal(key: key, max: max);
 
-Stream<LogTwinNormal> handleStreamSinkAt3TwinNormal(
-        {required int key, required int max}) =>
-    RustLib.instance.api
-        .crateApiStreamHandleStreamSinkAt3TwinNormal(key: key, max: max);
+Stream<LogTwinNormal> handleStreamSinkAt2TwinNormal({required int key , required int max }) => RustLib.instance.api.crateApiStreamHandleStreamSinkAt2TwinNormal(key: key, max: max);
 
-Stream<U8Array2> streamSinkFixedSizedPrimitiveArrayTwinNormal() =>
-    RustLib.instance.api
-        .crateApiStreamStreamSinkFixedSizedPrimitiveArrayTwinNormal();
+Stream<LogTwinNormal> handleStreamSinkAt3TwinNormal({required int key , required int max }) => RustLib.instance.api.crateApiStreamHandleStreamSinkAt3TwinNormal(key: key, max: max);
 
-Future<void> streamSinkInsideVecTwinNormal(
-        {required List<RustStreamSink<int>> arg}) =>
-    RustLib.instance.api.crateApiStreamStreamSinkInsideVecTwinNormal(arg: arg);
+Stream<U8Array2> streamSinkFixedSizedPrimitiveArrayTwinNormal() => RustLib.instance.api.crateApiStreamStreamSinkFixedSizedPrimitiveArrayTwinNormal();
 
-Future<void> streamSinkInsideStructTwinNormal(
-        {required MyStructContainingStreamSinkTwinNormal arg}) =>
-    RustLib.instance.api
-        .crateApiStreamStreamSinkInsideStructTwinNormal(arg: arg);
+Future<void> streamSinkInsideVecTwinNormal({required List<RustStreamSink<int>> arg }) => RustLib.instance.api.crateApiStreamStreamSinkInsideVecTwinNormal(arg: arg);
 
-Stream<int> funcStreamAddValueAndErrorTwinNormal() =>
-    RustLib.instance.api.crateApiStreamFuncStreamAddValueAndErrorTwinNormal();
+Future<void> streamSinkInsideStructTwinNormal({required MyStructContainingStreamSinkTwinNormal arg }) => RustLib.instance.api.crateApiStreamStreamSinkInsideStructTwinNormal(arg: arg);
 
-class LogTwinNormal {
-  final int key;
-  final int value;
+Stream<int> funcStreamAddValueAndErrorTwinNormal() => RustLib.instance.api.crateApiStreamFuncStreamAddValueAndErrorTwinNormal();
 
-  const LogTwinNormal({
-    required this.key,
-    required this.value,
-  });
+            class LogTwinNormal  {
+                final int key;
+final int value;
 
-  @override
-  int get hashCode => key.hashCode ^ value.hashCode;
+                const LogTwinNormal({required this.key ,required this.value ,});
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is LogTwinNormal &&
-          runtimeType == other.runtimeType &&
-          key == other.key &&
-          value == other.value;
-}
+                
+                
 
-class MyStreamEntryTwinNormal {
-  final String hello;
+                
+        @override
+        int get hashCode => key.hashCode^value.hashCode;
+        
 
-  const MyStreamEntryTwinNormal({
-    required this.hello,
-  });
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is LogTwinNormal &&
+                runtimeType == other.runtimeType
+                && key == other.key&& value == other.value;
+        
+            }
 
-  @override
-  int get hashCode => hello.hashCode;
+class MyStreamEntryTwinNormal  {
+                final String hello;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is MyStreamEntryTwinNormal &&
-          runtimeType == other.runtimeType &&
-          hello == other.hello;
-}
+                const MyStreamEntryTwinNormal({required this.hello ,});
 
-class MyStructContainingStreamSinkTwinNormal {
-  final int a;
-  final RustStreamSink<int> b;
+                
+                
 
-  const MyStructContainingStreamSinkTwinNormal({
-    required this.a,
-    required this.b,
-  });
+                
+        @override
+        int get hashCode => hello.hashCode;
+        
 
-  @override
-  int get hashCode => a.hashCode ^ b.hashCode;
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is MyStreamEntryTwinNormal &&
+                runtimeType == other.runtimeType
+                && hello == other.hello;
+        
+            }
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is MyStructContainingStreamSinkTwinNormal &&
-          runtimeType == other.runtimeType &&
-          a == other.a &&
-          b == other.b;
-}
+class MyStructContainingStreamSinkTwinNormal  {
+                final int a;
+final RustStreamSink<int> b;
+
+                const MyStructContainingStreamSinkTwinNormal({required this.a ,required this.b ,});
+
+                
+                
+
+                
+        @override
+        int get hashCode => a.hashCode^b.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is MyStructContainingStreamSinkTwinNormal &&
+                runtimeType == other.runtimeType
+                && a == other.a&& b == other.b;
+        
+            }
+            

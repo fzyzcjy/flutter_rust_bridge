@@ -9,43 +9,38 @@ import '../auxiliary/sample_types.dart';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<BigInt> handleTypeAliasIdTwinNormal({required BigInt input}) =>
-    RustLib.instance.api
-        .crateApiTypeAliasHandleTypeAliasIdTwinNormal(input: input);
 
-Future<BigInt> handleTypeNestAliasIdTwinNormal({required BigInt input}) =>
-    RustLib.instance.api
-        .crateApiTypeAliasHandleTypeNestAliasIdTwinNormal(input: input);
+            
 
-Future<TestModelTwinNormal> handleTypeAliasModelTwinNormal(
-        {required BigInt input}) =>
-    RustLib.instance.api
-        .crateApiTypeAliasHandleTypeAliasModelTwinNormal(input: input);
+            Future<BigInt> handleTypeAliasIdTwinNormal({required BigInt input }) => RustLib.instance.api.crateApiTypeAliasHandleTypeAliasIdTwinNormal(input: input);
 
-class TestModelTwinNormal {
-  final BigInt id;
-  final String name;
-  final MyEnum aliasEnum;
-  final MyStruct aliasStruct;
+Future<BigInt> handleTypeNestAliasIdTwinNormal({required BigInt input }) => RustLib.instance.api.crateApiTypeAliasHandleTypeNestAliasIdTwinNormal(input: input);
 
-  const TestModelTwinNormal({
-    required this.id,
-    required this.name,
-    required this.aliasEnum,
-    required this.aliasStruct,
-  });
+Future<TestModelTwinNormal> handleTypeAliasModelTwinNormal({required BigInt input }) => RustLib.instance.api.crateApiTypeAliasHandleTypeAliasModelTwinNormal(input: input);
 
-  @override
-  int get hashCode =>
-      id.hashCode ^ name.hashCode ^ aliasEnum.hashCode ^ aliasStruct.hashCode;
+            class TestModelTwinNormal  {
+                final BigInt id;
+final String name;
+final MyEnum aliasEnum;
+final MyStruct aliasStruct;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is TestModelTwinNormal &&
-          runtimeType == other.runtimeType &&
-          id == other.id &&
-          name == other.name &&
-          aliasEnum == other.aliasEnum &&
-          aliasStruct == other.aliasStruct;
-}
+                const TestModelTwinNormal({required this.id ,required this.name ,required this.aliasEnum ,required this.aliasStruct ,});
+
+                
+                
+
+                
+        @override
+        int get hashCode => id.hashCode^name.hashCode^aliasEnum.hashCode^aliasStruct.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is TestModelTwinNormal &&
+                runtimeType == other.runtimeType
+                && id == other.id&& name == other.name&& aliasEnum == other.aliasEnum&& aliasStruct == other.aliasStruct;
+        
+            }
+            

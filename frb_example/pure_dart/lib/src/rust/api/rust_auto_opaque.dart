@@ -9,308 +9,248 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'pseudo_manual/rust_auto_opaque_twin_moi.dart';
-part 'rust_auto_opaque.freezed.dart';
 
-Future<void> rustAutoOpaqueArgOwnTwinNormal(
-        {required NonCloneSimpleTwinNormal arg, required int expect}) =>
-    RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueArgOwnTwinNormal(
-        arg: arg, expect: expect);
+                part 'rust_auto_opaque.freezed.dart';
+                part 'rust_auto_opaque.g.dart';
+                
 
-Future<void> rustAutoOpaqueArgBorrowTwinNormal(
-        {required NonCloneSimpleTwinNormal arg, required int expect}) =>
-    RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueArgBorrowTwinNormal(
-            arg: arg, expect: expect);
+            
 
-Future<void> rustAutoOpaqueArgMutBorrowTwinNormal(
-        {required NonCloneSimpleTwinNormal arg,
-        required int expect,
-        required int adder}) =>
-    RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueArgMutBorrowTwinNormal(
-            arg: arg, expect: expect, adder: adder);
+            Future<void> rustAutoOpaqueArgOwnTwinNormal({required NonCloneSimpleTwinNormal arg , required int expect }) => RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueArgOwnTwinNormal(arg: arg, expect: expect);
 
-Future<NonCloneSimpleTwinNormal> rustAutoOpaqueReturnOwnTwinNormal(
-        {required int initial}) =>
-    RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueReturnOwnTwinNormal(
-            initial: initial);
+Future<void> rustAutoOpaqueArgBorrowTwinNormal({required NonCloneSimpleTwinNormal arg , required int expect }) => RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueArgBorrowTwinNormal(arg: arg, expect: expect);
 
-Future<NonCloneSimpleTwinNormal> rustAutoOpaqueArgOwnAndReturnOwnTwinNormal(
-        {required NonCloneSimpleTwinNormal arg}) =>
-    RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueArgOwnAndReturnOwnTwinNormal(
-            arg: arg);
+Future<void> rustAutoOpaqueArgMutBorrowTwinNormal({required NonCloneSimpleTwinNormal arg , required int expect , required int adder }) => RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueArgMutBorrowTwinNormal(arg: arg, expect: expect, adder: adder);
 
-Future<void> rustAutoOpaqueTwoArgsTwinNormal(
-        {required NonCloneSimpleTwinNormal a,
-        required NonCloneSimpleTwinNormal b}) =>
-    RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueTwoArgsTwinNormal(a: a, b: b);
+Future<NonCloneSimpleTwinNormal> rustAutoOpaqueReturnOwnTwinNormal({required int initial }) => RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueReturnOwnTwinNormal(initial: initial);
 
-Future<void> rustAutoOpaqueNormalAndOpaqueArgTwinNormal(
-        {required NonCloneSimpleTwinNormal a, required String b}) =>
-    RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueNormalAndOpaqueArgTwinNormal(
-            a: a, b: b);
+Future<NonCloneSimpleTwinNormal> rustAutoOpaqueArgOwnAndReturnOwnTwinNormal({required NonCloneSimpleTwinNormal arg }) => RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueArgOwnAndReturnOwnTwinNormal(arg: arg);
+
+Future<void> rustAutoOpaqueTwoArgsTwinNormal({required NonCloneSimpleTwinNormal a , required NonCloneSimpleTwinNormal b }) => RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueTwoArgsTwinNormal(a: a, b: b);
+
+Future<void> rustAutoOpaqueNormalAndOpaqueArgTwinNormal({required NonCloneSimpleTwinNormal a , required String b }) => RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueNormalAndOpaqueArgTwinNormal(a: a, b: b);
 
 /// "+" inside the type signature
-Future<void> rustAutoOpaquePlusSignArgTwinNormal(
-        {required BoxMyTraitTwinNormal arg}) =>
-    RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaquePlusSignArgTwinNormal(arg: arg);
+Future<void> rustAutoOpaquePlusSignArgTwinNormal({required BoxMyTraitTwinNormal arg }) => RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaquePlusSignArgTwinNormal(arg: arg);
 
-Future<BoxMyTraitTwinNormal> rustAutoOpaquePlusSignReturnTwinNormal() =>
-    RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaquePlusSignReturnTwinNormal();
+Future<BoxMyTraitTwinNormal> rustAutoOpaquePlusSignReturnTwinNormal() => RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaquePlusSignReturnTwinNormal();
 
-Future<void> rustAutoOpaqueCallableArgTwinNormal(
-        {required BoxFnStringString arg}) =>
-    RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueCallableArgTwinNormal(arg: arg);
+Future<void> rustAutoOpaqueCallableArgTwinNormal({required BoxFnStringString arg }) => RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueCallableArgTwinNormal(arg: arg);
 
-Future<BoxFnStringString> rustAutoOpaqueCallableReturnTwinNormal() =>
-    RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueCallableReturnTwinNormal();
+Future<BoxFnStringString> rustAutoOpaqueCallableReturnTwinNormal() => RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueCallableReturnTwinNormal();
 
-Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinNormal(
-        {required StructWithGoodAndOpaqueFieldTwinNormal arg}) =>
-    RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinNormal(
-            arg: arg);
+Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinNormal({required StructWithGoodAndOpaqueFieldTwinNormal arg }) => RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinNormal(arg: arg);
 
-Future<StructWithGoodAndOpaqueFieldTwinNormal>
-    rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinNormal() => RustLib
-        .instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinNormal();
+Future<StructWithGoodAndOpaqueFieldTwinNormal> rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinNormal() => RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinNormal();
 
-Future<void> rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinNormal(
-        {required EnumWithGoodAndOpaqueTwinNormal arg}) =>
-    RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinNormal(
-            arg: arg);
+Future<void> rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinNormal({required EnumWithGoodAndOpaqueTwinNormal arg }) => RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinNormal(arg: arg);
 
-Future<EnumWithGoodAndOpaqueTwinNormal>
-    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinNormal() => RustLib
-        .instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinNormal();
+Future<EnumWithGoodAndOpaqueTwinNormal> rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinNormal() => RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinNormal();
 
-Future<EnumWithGoodAndOpaqueTwinNormal>
-    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinNormal() => RustLib
-        .instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinNormal();
+Future<EnumWithGoodAndOpaqueTwinNormal> rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinNormal() => RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinNormal();
 
-Future<void> rustAutoOpaqueDummyTwinNormal(
-        {required StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal a,
-        required EnumWithGoodAndOpaqueWithoutOptionTwinNormal b}) =>
-    RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueDummyTwinNormal(a: a, b: b);
+Future<void> rustAutoOpaqueDummyTwinNormal({required StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal a , required EnumWithGoodAndOpaqueWithoutOptionTwinNormal b }) => RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueDummyTwinNormal(a: a, b: b);
 
-Future<void> rustAutoOpaqueEnumArgBorrowTwinNormal(
-        {required NonCloneSimpleEnumTwinNormal arg}) =>
-    RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueEnumArgBorrowTwinNormal(arg: arg);
+Future<void> rustAutoOpaqueEnumArgBorrowTwinNormal({required NonCloneSimpleEnumTwinNormal arg }) => RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueEnumArgBorrowTwinNormal(arg: arg);
 
-Future<NonCloneSimpleEnumTwinNormal> rustAutoOpaqueEnumReturnOwnTwinNormal() =>
-    RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueEnumReturnOwnTwinNormal();
+Future<NonCloneSimpleEnumTwinNormal> rustAutoOpaqueEnumReturnOwnTwinNormal() => RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueEnumReturnOwnTwinNormal();
 
-Stream<NonCloneSimpleTwinNormal> rustAutoOpaqueStreamSinkTwinNormal() =>
-    RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueStreamSinkTwinNormal();
+Stream<NonCloneSimpleTwinNormal> rustAutoOpaqueStreamSinkTwinNormal() => RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueStreamSinkTwinNormal();
 
-Future<void> rustAutoOpaqueArgVecOwnTwinNormal(
-        {required List<NonCloneSimpleTwinNormal> arg,
-        required List<int> expect}) =>
-    RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueArgVecOwnTwinNormal(
-            arg: arg, expect: expect);
+Future<void> rustAutoOpaqueArgVecOwnTwinNormal({required List<NonCloneSimpleTwinNormal> arg , required List<int> expect }) => RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueArgVecOwnTwinNormal(arg: arg, expect: expect);
 
-Future<List<NonCloneSimpleTwinNormal>> rustAutoOpaqueReturnVecOwnTwinNormal() =>
-    RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueReturnVecOwnTwinNormal();
+Future<List<NonCloneSimpleTwinNormal>> rustAutoOpaqueReturnVecOwnTwinNormal() => RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueReturnVecOwnTwinNormal();
 
-Future<void> rustAutoOpaqueExplicitArgTwinNormal(
-        {required NonCloneSimpleTwinNormal arg, required int expect}) =>
-    RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueExplicitArgTwinNormal(
-            arg: arg, expect: expect);
+Future<void> rustAutoOpaqueExplicitArgTwinNormal({required NonCloneSimpleTwinNormal arg , required int expect }) => RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueExplicitArgTwinNormal(arg: arg, expect: expect);
 
-Future<void> rustAutoOpaqueExplicitStructTwinNormal(
-        {required StructWithExplicitAutoOpaqueFieldTwinNormal arg}) =>
-    RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueExplicitStructTwinNormal(arg: arg);
+Future<void> rustAutoOpaqueExplicitStructTwinNormal({required StructWithExplicitAutoOpaqueFieldTwinNormal arg }) => RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueExplicitStructTwinNormal(arg: arg);
 
-Future<StructWithExplicitAutoOpaqueFieldTwinNormal>
-    rustAutoOpaqueExplicitReturnStructTwinNormal() => RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueExplicitReturnStructTwinNormal();
+Future<StructWithExplicitAutoOpaqueFieldTwinNormal> rustAutoOpaqueExplicitReturnStructTwinNormal() => RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueExplicitReturnStructTwinNormal();
 
-Future<NonCloneSimpleTwinNormal> rustAutoOpaqueExplicitReturnTwinNormal(
-        {required int initial}) =>
-    RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueExplicitReturnTwinNormal(
-            initial: initial);
+Future<NonCloneSimpleTwinNormal> rustAutoOpaqueExplicitReturnTwinNormal({required int initial }) => RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueExplicitReturnTwinNormal(initial: initial);
 
-Future<int> rustAutoOpaqueSleepTwinNormal(
-        {required NonCloneSimpleTwinNormal apple,
-        required NonCloneSimpleTwinNormal orange}) =>
-    RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueSleepTwinNormal(
-        apple: apple, orange: orange);
+Future<int> rustAutoOpaqueSleepTwinNormal({required NonCloneSimpleTwinNormal apple , required NonCloneSimpleTwinNormal orange }) => RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueSleepTwinNormal(apple: apple, orange: orange);
 
-Future<(OpaqueOneTwinNormal, OpaqueTwoTwinNormal)>
-    rustAutoOpaqueReturnOpaqueOneAndTwoTwinNormal() => RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueReturnOpaqueOneAndTwoTwinNormal();
+Future<(OpaqueOneTwinNormal,OpaqueTwoTwinNormal)> rustAutoOpaqueReturnOpaqueOneAndTwoTwinNormal() => RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueReturnOpaqueOneAndTwoTwinNormal();
 
-Future<OpaqueTwoTwinNormal> rustAutoOpaqueReturnOpaqueTwoTwinNormal() =>
-    RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueReturnOpaqueTwoTwinNormal();
+Future<OpaqueTwoTwinNormal> rustAutoOpaqueReturnOpaqueTwoTwinNormal() => RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueReturnOpaqueTwoTwinNormal();
 
-Future<int> rustAutoOpaqueBorrowAndMutBorrowTwinNormal(
-        {required NonCloneSimpleTwinNormal borrow,
-        required NonCloneSimpleTwinNormal mutBorrow}) =>
-    RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueBorrowAndMutBorrowTwinNormal(
-            borrow: borrow, mutBorrow: mutBorrow);
+Future<int> rustAutoOpaqueBorrowAndMutBorrowTwinNormal({required NonCloneSimpleTwinNormal borrow , required NonCloneSimpleTwinNormal mutBorrow }) => RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueBorrowAndMutBorrowTwinNormal(borrow: borrow, mutBorrow: mutBorrow);
 
-Future<int> rustAutoOpaqueBorrowAndBorrowTwinNormal(
-        {required NonCloneSimpleTwinNormal a,
-        required NonCloneSimpleTwinNormal b}) =>
-    RustLib.instance.api
-        .crateApiRustAutoOpaqueRustAutoOpaqueBorrowAndBorrowTwinNormal(
-            a: a, b: b);
+Future<int> rustAutoOpaqueBorrowAndBorrowTwinNormal({required NonCloneSimpleTwinNormal a , required NonCloneSimpleTwinNormal b }) => RustLib.instance.api.crateApiRustAutoOpaqueRustAutoOpaqueBorrowAndBorrowTwinNormal(a: a, b: b);
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn MyTraitTwinNormal + Send + Sync >>>
-abstract class BoxMyTraitTwinNormal implements RustOpaqueInterface {}
+            
+                // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn MyTraitTwinNormal + Send + Sync >>>
+                abstract class BoxMyTraitTwinNormal implements RustOpaqueInterface {
+                    
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<EnumWithGoodAndOpaqueWithoutOptionTwinNormal>>
-abstract class EnumWithGoodAndOpaqueWithoutOptionTwinNormal
-    implements RustOpaqueInterface {}
+                    
+                }
+                
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleEnumTwinNormal>>
-abstract class NonCloneSimpleEnumTwinNormal implements RustOpaqueInterface {}
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinNormal>>
-abstract class NonCloneSimpleTwinNormal implements RustOpaqueInterface {
-  Future<void> instanceMethodArgBorrowTwinNormal();
+                // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<EnumWithGoodAndOpaqueWithoutOptionTwinNormal>>
+                abstract class EnumWithGoodAndOpaqueWithoutOptionTwinNormal implements RustOpaqueInterface {
+                    
 
-  Future<void> instanceMethodArgMutBorrowTwinNormal();
+                    
+                }
+                
 
-  Future<void> instanceMethodArgOwnTwinNormal();
 
-  Future<int> get instanceMethodGetterTwinNormal;
+                // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleEnumTwinNormal>>
+                abstract class NonCloneSimpleEnumTwinNormal implements RustOpaqueInterface {
+                    
 
-  Future<NonCloneSimpleTwinNormal> instanceMethodReturnOwnTwinNormal();
+                    
+                }
+                
 
-  /// named constructor
-  static Future<NonCloneSimpleTwinNormal> newCustomNameTwinNormal() => RustLib
-      .instance.api
-      .crateApiRustAutoOpaqueNonCloneSimpleTwinNormalNewCustomNameTwinNormal();
 
-  /// unnamed constructor
-  static Future<NonCloneSimpleTwinNormal> newTwinNormal() =>
-      RustLib.instance.api
-          .crateApiRustAutoOpaqueNonCloneSimpleTwinNormalNewTwinNormal();
+                // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinNormal>>
+                abstract class NonCloneSimpleTwinNormal implements RustOpaqueInterface {
+                     Future<void>  instanceMethodArgBorrowTwinNormal();
 
-  /// constructor with Result
-  static Future<NonCloneSimpleTwinNormal> newWithResultTwinNormal() => RustLib
-      .instance.api
-      .crateApiRustAutoOpaqueNonCloneSimpleTwinNormalNewWithResultTwinNormal();
 
-  static Future<void> staticMethodArgBorrowTwinNormal(
-          {required NonCloneSimpleTwinNormal arg}) =>
-      RustLib.instance.api
-          .crateApiRustAutoOpaqueNonCloneSimpleTwinNormalStaticMethodArgBorrowTwinNormal(
-              arg: arg);
+ Future<void>  instanceMethodArgMutBorrowTwinNormal();
 
-  static Future<void> staticMethodArgMutBorrowTwinNormal(
-          {required NonCloneSimpleTwinNormal arg}) =>
-      RustLib.instance.api
-          .crateApiRustAutoOpaqueNonCloneSimpleTwinNormalStaticMethodArgMutBorrowTwinNormal(
-              arg: arg);
 
-  static Future<void> staticMethodArgOwnTwinNormal(
-          {required NonCloneSimpleTwinNormal arg}) =>
-      RustLib.instance.api
-          .crateApiRustAutoOpaqueNonCloneSimpleTwinNormalStaticMethodArgOwnTwinNormal(
-              arg: arg);
+ Future<void>  instanceMethodArgOwnTwinNormal();
 
-  static Future<NonCloneSimpleTwinNormal> staticMethodReturnOwnTwinNormal() =>
-      RustLib.instance.api
-          .crateApiRustAutoOpaqueNonCloneSimpleTwinNormalStaticMethodReturnOwnTwinNormal();
-}
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueOneTwinNormal>>
-abstract class OpaqueOneTwinNormal implements RustOpaqueInterface {}
+ Future<int> get instanceMethodGetterTwinNormal;
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueTwoTwinNormal>>
-abstract class OpaqueTwoTwinNormal implements RustOpaqueInterface {}
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal>>
-abstract class StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal
-    implements RustOpaqueInterface {
-  String get good;
+ Future<NonCloneSimpleTwinNormal>  instanceMethodReturnOwnTwinNormal();
+
+
+/// named constructor
+static Future<NonCloneSimpleTwinNormal>  newCustomNameTwinNormal()=>RustLib.instance.api.crateApiRustAutoOpaqueNonCloneSimpleTwinNormalNewCustomNameTwinNormal();
+
+
+/// unnamed constructor
+static Future<NonCloneSimpleTwinNormal>  newTwinNormal()=>RustLib.instance.api.crateApiRustAutoOpaqueNonCloneSimpleTwinNormalNewTwinNormal();
+
+
+/// constructor with Result
+static Future<NonCloneSimpleTwinNormal>  newWithResultTwinNormal()=>RustLib.instance.api.crateApiRustAutoOpaqueNonCloneSimpleTwinNormalNewWithResultTwinNormal();
+
+
+static Future<void>  staticMethodArgBorrowTwinNormal({required NonCloneSimpleTwinNormal arg })=>RustLib.instance.api.crateApiRustAutoOpaqueNonCloneSimpleTwinNormalStaticMethodArgBorrowTwinNormal(arg: arg);
+
+
+static Future<void>  staticMethodArgMutBorrowTwinNormal({required NonCloneSimpleTwinNormal arg })=>RustLib.instance.api.crateApiRustAutoOpaqueNonCloneSimpleTwinNormalStaticMethodArgMutBorrowTwinNormal(arg: arg);
+
+
+static Future<void>  staticMethodArgOwnTwinNormal({required NonCloneSimpleTwinNormal arg })=>RustLib.instance.api.crateApiRustAutoOpaqueNonCloneSimpleTwinNormalStaticMethodArgOwnTwinNormal(arg: arg);
+
+
+static Future<NonCloneSimpleTwinNormal>  staticMethodReturnOwnTwinNormal()=>RustLib.instance.api.crateApiRustAutoOpaqueNonCloneSimpleTwinNormalStaticMethodReturnOwnTwinNormal();
+
+
+
+                    
+                }
+                
+
+
+                // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueOneTwinNormal>>
+                abstract class OpaqueOneTwinNormal implements RustOpaqueInterface {
+                    
+
+                    
+                }
+                
+
+
+                // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueTwoTwinNormal>>
+                abstract class OpaqueTwoTwinNormal implements RustOpaqueInterface {
+                    
+
+                    
+                }
+                
+
+
+                // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal>>
+                abstract class StructWithGoodAndOpaqueFieldWithoutOptionTwinNormal implements RustOpaqueInterface {
+                     String get good;
+
 
   set good(String good);
-}
 
-abstract class MyTraitTwinNormal {
-  Future<void> f();
-}
+
+
+                    
+                }
+                
+
+
+                abstract class MyTraitTwinNormal {
+                     Future<void>  f();
+
+
+                }
+                
 
 @freezed
-sealed class EnumWithGoodAndOpaqueTwinNormal
-    with _$EnumWithGoodAndOpaqueTwinNormal {
-  const EnumWithGoodAndOpaqueTwinNormal._();
+                sealed class EnumWithGoodAndOpaqueTwinNormal with _$EnumWithGoodAndOpaqueTwinNormal  {
+                    const EnumWithGoodAndOpaqueTwinNormal._();
 
-  const factory EnumWithGoodAndOpaqueTwinNormal.good(
-    String field0,
-  ) = EnumWithGoodAndOpaqueTwinNormal_Good;
-  const factory EnumWithGoodAndOpaqueTwinNormal.opaque(
-    NonCloneSimpleTwinNormal field0,
-  ) = EnumWithGoodAndOpaqueTwinNormal_Opaque;
-}
+                     const factory EnumWithGoodAndOpaqueTwinNormal.good(  String field0,) = EnumWithGoodAndOpaqueTwinNormal_Good;
+ const factory EnumWithGoodAndOpaqueTwinNormal.opaque(  NonCloneSimpleTwinNormal field0,) = EnumWithGoodAndOpaqueTwinNormal_Opaque;
 
-class StructWithExplicitAutoOpaqueFieldTwinNormal {
-  final NonCloneSimpleTwinNormal autoOpaque;
-  final int normal;
+                    factory EnumWithGoodAndOpaqueTwinNormal.fromJson(Map<String, dynamic> json) => _$EnumWithGoodAndOpaqueTwinNormalFromJson(json);
 
-  const StructWithExplicitAutoOpaqueFieldTwinNormal({
-    required this.autoOpaque,
-    required this.normal,
-  });
+                    
+                }
 
-  @override
-  int get hashCode => autoOpaque.hashCode ^ normal.hashCode;
+class StructWithExplicitAutoOpaqueFieldTwinNormal  {
+                final NonCloneSimpleTwinNormal autoOpaque;
+final int normal;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is StructWithExplicitAutoOpaqueFieldTwinNormal &&
-          runtimeType == other.runtimeType &&
-          autoOpaque == other.autoOpaque &&
-          normal == other.normal;
-}
+                const StructWithExplicitAutoOpaqueFieldTwinNormal({required this.autoOpaque ,required this.normal ,});
 
-class StructWithGoodAndOpaqueFieldTwinNormal {
-  final String good;
-  final NonCloneSimpleTwinNormal opaque;
-  final NonCloneSimpleTwinNormal? optionOpaque;
+                
+                
 
-  const StructWithGoodAndOpaqueFieldTwinNormal({
-    required this.good,
-    required this.opaque,
-    this.optionOpaque,
-  });
+                
+        @override
+        int get hashCode => autoOpaque.hashCode^normal.hashCode;
+        
 
-  @override
-  int get hashCode => good.hashCode ^ opaque.hashCode ^ optionOpaque.hashCode;
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is StructWithExplicitAutoOpaqueFieldTwinNormal &&
+                runtimeType == other.runtimeType
+                && autoOpaque == other.autoOpaque&& normal == other.normal;
+        
+            }
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is StructWithGoodAndOpaqueFieldTwinNormal &&
-          runtimeType == other.runtimeType &&
-          good == other.good &&
-          opaque == other.opaque &&
-          optionOpaque == other.optionOpaque;
-}
+class StructWithGoodAndOpaqueFieldTwinNormal  {
+                final String good;
+final NonCloneSimpleTwinNormal opaque;
+final NonCloneSimpleTwinNormal? optionOpaque;
+
+                const StructWithGoodAndOpaqueFieldTwinNormal({required this.good ,required this.opaque ,this.optionOpaque ,});
+
+                
+                
+
+                
+        @override
+        int get hashCode => good.hashCode^opaque.hashCode^optionOpaque.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is StructWithGoodAndOpaqueFieldTwinNormal &&
+                runtimeType == other.runtimeType
+                && good == other.good&& opaque == other.opaque&& optionOpaque == other.optionOpaque;
+        
+            }
+            

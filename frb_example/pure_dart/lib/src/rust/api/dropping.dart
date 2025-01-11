@@ -8,18 +8,30 @@ import 'dart:io';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These types are ignored because they are not used by any `pub` functions: `DROP_COUNT`
+
+            // These types are ignored because they are not used by any `pub` functions: `DROP_COUNT`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `deref`, `drop`, `initialize`
 
-// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DroppableTwinNormal>>
-abstract class DroppableTwinNormal implements RustOpaqueInterface {
-  Stream<int> createStream();
 
-  static Future<int> getDropCountTwinNormal() => RustLib.instance.api
-      .crateApiDroppingDroppableTwinNormalGetDropCountTwinNormal();
+            
 
-  static Future<DroppableTwinNormal> newTwinNormal() =>
-      RustLib.instance.api.crateApiDroppingDroppableTwinNormalNewTwinNormal();
+            
+                // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DroppableTwinNormal>>
+                abstract class DroppableTwinNormal implements RustOpaqueInterface {
+                     Stream<int>  createStream();
 
-  Future<void> simpleMethodTwinNormal();
-}
+
+static Future<int>  getDropCountTwinNormal()=>RustLib.instance.api.crateApiDroppingDroppableTwinNormalGetDropCountTwinNormal();
+
+
+static Future<DroppableTwinNormal>  newTwinNormal()=>RustLib.instance.api.crateApiDroppingDroppableTwinNormalNewTwinNormal();
+
+
+ Future<void>  simpleMethodTwinNormal();
+
+
+
+                    
+                }
+                
+            

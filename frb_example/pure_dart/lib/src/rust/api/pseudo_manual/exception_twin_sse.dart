@@ -8,274 +8,240 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-part 'exception_twin_sse.freezed.dart';
 
-Future<int> funcReturnErrorTwinSse() => RustLib.instance.api
-    .crateApiPseudoManualExceptionTwinSseFuncReturnErrorTwinSse();
+                part 'exception_twin_sse.freezed.dart';
+                part 'exception_twin_sse.g.dart';
+                
 
-Future<int> funcTypeFalliblePanicTwinSse() => RustLib.instance.api
-    .crateApiPseudoManualExceptionTwinSseFuncTypeFalliblePanicTwinSse();
+            
 
-Future<int> funcTypeInfalliblePanicTwinSse() => RustLib.instance.api
-    .crateApiPseudoManualExceptionTwinSseFuncTypeInfalliblePanicTwinSse();
+            Future<int> funcReturnErrorTwinSse() => RustLib.instance.api.crateApiPseudoManualExceptionTwinSseFuncReturnErrorTwinSse();
 
-Future<int> customEnumErrorReturnOkTwinSse({required int arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualExceptionTwinSseCustomEnumErrorReturnOkTwinSse(
-            arg: arg);
+Future<int> funcTypeFalliblePanicTwinSse() => RustLib.instance.api.crateApiPseudoManualExceptionTwinSseFuncTypeFalliblePanicTwinSse();
 
-Future<void> customEnumErrorPanicTwinSse() => RustLib.instance.api
-    .crateApiPseudoManualExceptionTwinSseCustomEnumErrorPanicTwinSse();
+Future<int> funcTypeInfalliblePanicTwinSse() => RustLib.instance.api.crateApiPseudoManualExceptionTwinSseFuncTypeInfalliblePanicTwinSse();
 
-Future<int> customEnumErrorReturnErrorTwinSse() => RustLib.instance.api
-    .crateApiPseudoManualExceptionTwinSseCustomEnumErrorReturnErrorTwinSse();
+Future<int> customEnumErrorReturnOkTwinSse({required int arg }) => RustLib.instance.api.crateApiPseudoManualExceptionTwinSseCustomEnumErrorReturnOkTwinSse(arg: arg);
 
-Future<void> customNestedErrorReturnErrorTwinSse(
-        {required CustomNestedErrorOuterTwinSse arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualExceptionTwinSseCustomNestedErrorReturnErrorTwinSse(
-            arg: arg);
+Future<void> customEnumErrorPanicTwinSse() => RustLib.instance.api.crateApiPseudoManualExceptionTwinSseCustomEnumErrorPanicTwinSse();
 
-Future<void> customStructErrorReturnErrorTwinSse(
-        {required CustomStructErrorTwinSse arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualExceptionTwinSseCustomStructErrorReturnErrorTwinSse(
-            arg: arg);
+Future<int> customEnumErrorReturnErrorTwinSse() => RustLib.instance.api.crateApiPseudoManualExceptionTwinSseCustomEnumErrorReturnErrorTwinSse();
 
-Future<int> returnErrCustomErrorTwinSse() => RustLib.instance.api
-    .crateApiPseudoManualExceptionTwinSseReturnErrCustomErrorTwinSse();
+Future<void> customNestedErrorReturnErrorTwinSse({required CustomNestedErrorOuterTwinSse arg }) => RustLib.instance.api.crateApiPseudoManualExceptionTwinSseCustomNestedErrorReturnErrorTwinSse(arg: arg);
 
-Future<int> returnOkCustomErrorTwinSse() => RustLib.instance.api
-    .crateApiPseudoManualExceptionTwinSseReturnOkCustomErrorTwinSse();
+Future<void> customStructErrorReturnErrorTwinSse({required CustomStructErrorTwinSse arg }) => RustLib.instance.api.crateApiPseudoManualExceptionTwinSseCustomStructErrorReturnErrorTwinSse(arg: arg);
 
-Future<int> returnErrorVariantTwinSse({required int variant}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualExceptionTwinSseReturnErrorVariantTwinSse(
-            variant: variant);
+Future<int> returnErrCustomErrorTwinSse() => RustLib.instance.api.crateApiPseudoManualExceptionTwinSseReturnErrCustomErrorTwinSse();
 
-Future<void> returnCustomNestedError1TwinSse() => RustLib.instance.api
-    .crateApiPseudoManualExceptionTwinSseReturnCustomNestedError1TwinSse();
+Future<int> returnOkCustomErrorTwinSse() => RustLib.instance.api.crateApiPseudoManualExceptionTwinSseReturnOkCustomErrorTwinSse();
 
-Future<void> returnCustomNestedError1Variant1TwinSse() => RustLib.instance.api
-    .crateApiPseudoManualExceptionTwinSseReturnCustomNestedError1Variant1TwinSse();
+Future<int> returnErrorVariantTwinSse({required int variant }) => RustLib.instance.api.crateApiPseudoManualExceptionTwinSseReturnErrorVariantTwinSse(variant: variant);
 
-Future<void> returnCustomNestedError2TwinSse() => RustLib.instance.api
-    .crateApiPseudoManualExceptionTwinSseReturnCustomNestedError2TwinSse();
+Future<void> returnCustomNestedError1TwinSse() => RustLib.instance.api.crateApiPseudoManualExceptionTwinSseReturnCustomNestedError1TwinSse();
 
-Future<void> returnCustomStructErrorTwinSse() => RustLib.instance.api
-    .crateApiPseudoManualExceptionTwinSseReturnCustomStructErrorTwinSse();
+Future<void> returnCustomNestedError1Variant1TwinSse() => RustLib.instance.api.crateApiPseudoManualExceptionTwinSseReturnCustomNestedError1Variant1TwinSse();
 
-Future<int> returnCustomStructOkTwinSse() => RustLib.instance.api
-    .crateApiPseudoManualExceptionTwinSseReturnCustomStructOkTwinSse();
+Future<void> returnCustomNestedError2TwinSse() => RustLib.instance.api.crateApiPseudoManualExceptionTwinSseReturnCustomNestedError2TwinSse();
 
-Future<void> throwAnyhowTwinSse() => RustLib.instance.api
-    .crateApiPseudoManualExceptionTwinSseThrowAnyhowTwinSse();
+Future<void> returnCustomStructErrorTwinSse() => RustLib.instance.api.crateApiPseudoManualExceptionTwinSseReturnCustomStructErrorTwinSse();
 
-Future<void> panicWithCustomResultTwinSse() => RustLib.instance.api
-    .crateApiPseudoManualExceptionTwinSsePanicWithCustomResultTwinSse();
+Future<int> returnCustomStructOkTwinSse() => RustLib.instance.api.crateApiPseudoManualExceptionTwinSseReturnCustomStructOkTwinSse();
 
-Future<Stream<String>> streamSinkThrowAnyhowTwinSse() => RustLib.instance.api
-    .crateApiPseudoManualExceptionTwinSseStreamSinkThrowAnyhowTwinSse();
+Future<void> throwAnyhowTwinSse() => RustLib.instance.api.crateApiPseudoManualExceptionTwinSseThrowAnyhowTwinSse();
+
+Future<void> panicWithCustomResultTwinSse() => RustLib.instance.api.crateApiPseudoManualExceptionTwinSsePanicWithCustomResultTwinSse();
+
+Future<Stream<String>> streamSinkThrowAnyhowTwinSse() => RustLib.instance.api.crateApiPseudoManualExceptionTwinSseStreamSinkThrowAnyhowTwinSse();
+
+            @freezed
+                sealed class CustomEnumErrorTwinSse with _$CustomEnumErrorTwinSse implements FrbException {
+                    const CustomEnumErrorTwinSse._();
+
+                    @Implements<FrbBacktracedException>() const factory CustomEnumErrorTwinSse.one({   required String message ,  required String backtrace , }) = CustomEnumErrorTwinSse_One;
+@Implements<FrbBacktracedException>() const factory CustomEnumErrorTwinSse.two({   required int message ,  required String backtrace , }) = CustomEnumErrorTwinSse_Two;
+
+                    factory CustomEnumErrorTwinSse.fromJson(Map<String, dynamic> json) => _$CustomEnumErrorTwinSseFromJson(json);
+
+                    
+                }
 
 @freezed
-sealed class CustomEnumErrorTwinSse
-    with _$CustomEnumErrorTwinSse
-    implements FrbException {
-  const CustomEnumErrorTwinSse._();
+                sealed class CustomErrorTwinSse with _$CustomErrorTwinSse implements FrbException {
+                    const CustomErrorTwinSse._();
 
-  @Implements<FrbBacktracedException>()
-  const factory CustomEnumErrorTwinSse.one({
-    required String message,
-    required String backtrace,
-  }) = CustomEnumErrorTwinSse_One;
-  @Implements<FrbBacktracedException>()
-  const factory CustomEnumErrorTwinSse.two({
-    required int message,
-    required String backtrace,
-  }) = CustomEnumErrorTwinSse_Two;
-}
+                    @Implements<FrbBacktracedException>() const factory CustomErrorTwinSse.error0({   required String e ,  required String backtrace , }) = CustomErrorTwinSse_Error0;
+@Implements<FrbBacktracedException>() const factory CustomErrorTwinSse.error1({   required int e ,  required String backtrace , }) = CustomErrorTwinSse_Error1;
+
+                    factory CustomErrorTwinSse.fromJson(Map<String, dynamic> json) => _$CustomErrorTwinSseFromJson(json);
+
+                    
+                }
 
 @freezed
-sealed class CustomErrorTwinSse
-    with _$CustomErrorTwinSse
-    implements FrbException {
-  const CustomErrorTwinSse._();
+                sealed class CustomNestedError1TwinSse with _$CustomNestedError1TwinSse implements FrbException {
+                    const CustomNestedError1TwinSse._();
 
-  @Implements<FrbBacktracedException>()
-  const factory CustomErrorTwinSse.error0({
-    required String e,
-    required String backtrace,
-  }) = CustomErrorTwinSse_Error0;
-  @Implements<FrbBacktracedException>()
-  const factory CustomErrorTwinSse.error1({
-    required int e,
-    required String backtrace,
-  }) = CustomErrorTwinSse_Error1;
-}
+                     const factory CustomNestedError1TwinSse.customNested1(  String field0,) = CustomNestedError1TwinSse_CustomNested1;
+ const factory CustomNestedError1TwinSse.errorNested(  CustomNestedError2TwinSse field0,) = CustomNestedError1TwinSse_ErrorNested;
+
+                    factory CustomNestedError1TwinSse.fromJson(Map<String, dynamic> json) => _$CustomNestedError1TwinSseFromJson(json);
+
+                    
+                }
 
 @freezed
-sealed class CustomNestedError1TwinSse
-    with _$CustomNestedError1TwinSse
-    implements FrbException {
-  const CustomNestedError1TwinSse._();
+                sealed class CustomNestedError2TwinSse with _$CustomNestedError2TwinSse  {
+                    const CustomNestedError2TwinSse._();
 
-  const factory CustomNestedError1TwinSse.customNested1(
-    String field0,
-  ) = CustomNestedError1TwinSse_CustomNested1;
-  const factory CustomNestedError1TwinSse.errorNested(
-    CustomNestedError2TwinSse field0,
-  ) = CustomNestedError1TwinSse_ErrorNested;
-}
+                     const factory CustomNestedError2TwinSse.customNested2(  String field0,) = CustomNestedError2TwinSse_CustomNested2;
+ const factory CustomNestedError2TwinSse.customNested2Number(  int field0,) = CustomNestedError2TwinSse_CustomNested2Number;
+
+                    factory CustomNestedError2TwinSse.fromJson(Map<String, dynamic> json) => _$CustomNestedError2TwinSseFromJson(json);
+
+                    
+                }
 
 @freezed
-sealed class CustomNestedError2TwinSse with _$CustomNestedError2TwinSse {
-  const CustomNestedError2TwinSse._();
+                sealed class CustomNestedErrorInnerTwinSse with _$CustomNestedErrorInnerTwinSse  {
+                    const CustomNestedErrorInnerTwinSse._();
 
-  const factory CustomNestedError2TwinSse.customNested2(
-    String field0,
-  ) = CustomNestedError2TwinSse_CustomNested2;
-  const factory CustomNestedError2TwinSse.customNested2Number(
-    int field0,
-  ) = CustomNestedError2TwinSse_CustomNested2Number;
-}
+                     const factory CustomNestedErrorInnerTwinSse.three(  String field0,) = CustomNestedErrorInnerTwinSse_Three;
+ const factory CustomNestedErrorInnerTwinSse.four(  int field0,) = CustomNestedErrorInnerTwinSse_Four;
 
-@freezed
-sealed class CustomNestedErrorInnerTwinSse
-    with _$CustomNestedErrorInnerTwinSse {
-  const CustomNestedErrorInnerTwinSse._();
+                    factory CustomNestedErrorInnerTwinSse.fromJson(Map<String, dynamic> json) => _$CustomNestedErrorInnerTwinSseFromJson(json);
 
-  const factory CustomNestedErrorInnerTwinSse.three(
-    String field0,
-  ) = CustomNestedErrorInnerTwinSse_Three;
-  const factory CustomNestedErrorInnerTwinSse.four(
-    int field0,
-  ) = CustomNestedErrorInnerTwinSse_Four;
-}
+                    
+                }
 
 @freezed
-sealed class CustomNestedErrorOuterTwinSse
-    with _$CustomNestedErrorOuterTwinSse {
-  const CustomNestedErrorOuterTwinSse._();
+                sealed class CustomNestedErrorOuterTwinSse with _$CustomNestedErrorOuterTwinSse  {
+                    const CustomNestedErrorOuterTwinSse._();
 
-  const factory CustomNestedErrorOuterTwinSse.one(
-    String field0,
-  ) = CustomNestedErrorOuterTwinSse_One;
-  const factory CustomNestedErrorOuterTwinSse.two(
-    CustomNestedErrorInnerTwinSse field0,
-  ) = CustomNestedErrorOuterTwinSse_Two;
-}
+                     const factory CustomNestedErrorOuterTwinSse.one(  String field0,) = CustomNestedErrorOuterTwinSse_One;
+ const factory CustomNestedErrorOuterTwinSse.two(  CustomNestedErrorInnerTwinSse field0,) = CustomNestedErrorOuterTwinSse_Two;
+
+                    factory CustomNestedErrorOuterTwinSse.fromJson(Map<String, dynamic> json) => _$CustomNestedErrorOuterTwinSseFromJson(json);
+
+                    
+                }
 
 class CustomStructErrorAnotherTwinSse implements FrbException {
-  final String message;
+                final String message;
 
-  const CustomStructErrorAnotherTwinSse({
-    required this.message,
-  });
+                const CustomStructErrorAnotherTwinSse({required this.message ,});
 
-  @override
-  int get hashCode => message.hashCode;
+                
+                
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CustomStructErrorAnotherTwinSse &&
-          runtimeType == other.runtimeType &&
-          message == other.message;
-}
+                
+        @override
+        int get hashCode => message.hashCode;
+        
 
-class CustomStructErrorTwinSse {
-  final String a;
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is CustomStructErrorAnotherTwinSse &&
+                runtimeType == other.runtimeType
+                && message == other.message;
+        
+            }
 
-  const CustomStructErrorTwinSse({
-    required this.a,
-  });
+class CustomStructErrorTwinSse  {
+                final String a;
 
-  @override
-  int get hashCode => a.hashCode;
+                const CustomStructErrorTwinSse({required this.a ,});
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CustomStructErrorTwinSse &&
-          runtimeType == other.runtimeType &&
-          a == other.a;
-}
+                
+                
 
-class CustomStructTwinSse {
-  final String message;
+                
+        @override
+        int get hashCode => a.hashCode;
+        
 
-  const CustomStructTwinSse({
-    required this.message,
-  });
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is CustomStructErrorTwinSse &&
+                runtimeType == other.runtimeType
+                && a == other.a;
+        
+            }
 
-  static Future<CustomStructTwinSse> newTwinSse({required String message}) =>
-      RustLib.instance.api
-          .crateApiPseudoManualExceptionTwinSseCustomStructTwinSseNewTwinSse(
-              message: message);
+class CustomStructTwinSse  {
+                final String message;
 
-  Future<void> nonstaticReturnCustomStructErrorTwinSse() => RustLib.instance.api
-          .crateApiPseudoManualExceptionTwinSseCustomStructTwinSseNonstaticReturnCustomStructErrorTwinSse(
-        that: this,
-      );
+                const CustomStructTwinSse({required this.message ,});
 
-  Future<int> nonstaticReturnCustomStructOkTwinSse() => RustLib.instance.api
-          .crateApiPseudoManualExceptionTwinSseCustomStructTwinSseNonstaticReturnCustomStructOkTwinSse(
-        that: this,
-      );
+                static Future<CustomStructTwinSse>  newTwinSse({required String message })=>RustLib.instance.api.crateApiPseudoManualExceptionTwinSseCustomStructTwinSseNewTwinSse(message: message);
 
-  static Future<void> staticReturnCustomStructErrorTwinSse() => RustLib
-      .instance.api
-      .crateApiPseudoManualExceptionTwinSseCustomStructTwinSseStaticReturnCustomStructErrorTwinSse();
 
-  static Future<int> staticReturnCustomStructOkTwinSse() => RustLib.instance.api
-      .crateApiPseudoManualExceptionTwinSseCustomStructTwinSseStaticReturnCustomStructOkTwinSse();
+ Future<void>  nonstaticReturnCustomStructErrorTwinSse()=>RustLib.instance.api.crateApiPseudoManualExceptionTwinSseCustomStructTwinSseNonstaticReturnCustomStructErrorTwinSse(that: this, );
 
-  @override
-  int get hashCode => message.hashCode;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CustomStructTwinSse &&
-          runtimeType == other.runtimeType &&
-          message == other.message;
-}
+ Future<int>  nonstaticReturnCustomStructOkTwinSse()=>RustLib.instance.api.crateApiPseudoManualExceptionTwinSseCustomStructTwinSseNonstaticReturnCustomStructOkTwinSse(that: this, );
 
-class SomeStructTwinSse {
-  final int value;
 
-  const SomeStructTwinSse({
-    required this.value,
-  });
+static Future<void>  staticReturnCustomStructErrorTwinSse()=>RustLib.instance.api.crateApiPseudoManualExceptionTwinSseCustomStructTwinSseStaticReturnCustomStructErrorTwinSse();
 
-  static Future<SomeStructTwinSse> newTwinSse({required int value}) =>
-      RustLib.instance.api
-          .crateApiPseudoManualExceptionTwinSseSomeStructTwinSseNewTwinSse(
-              value: value);
 
-  Future<int> nonStaticReturnErrCustomErrorTwinSse() => RustLib.instance.api
-          .crateApiPseudoManualExceptionTwinSseSomeStructTwinSseNonStaticReturnErrCustomErrorTwinSse(
-        that: this,
-      );
+static Future<int>  staticReturnCustomStructOkTwinSse()=>RustLib.instance.api.crateApiPseudoManualExceptionTwinSseCustomStructTwinSseStaticReturnCustomStructOkTwinSse();
 
-  Future<int> nonStaticReturnOkCustomErrorTwinSse() => RustLib.instance.api
-          .crateApiPseudoManualExceptionTwinSseSomeStructTwinSseNonStaticReturnOkCustomErrorTwinSse(
-        that: this,
-      );
 
-  static Future<int> staticReturnErrCustomErrorTwinSse() => RustLib.instance.api
-      .crateApiPseudoManualExceptionTwinSseSomeStructTwinSseStaticReturnErrCustomErrorTwinSse();
+                
 
-  static Future<int> staticReturnOkCustomErrorTwinSse() => RustLib.instance.api
-      .crateApiPseudoManualExceptionTwinSseSomeStructTwinSseStaticReturnOkCustomErrorTwinSse();
+                
+        @override
+        int get hashCode => message.hashCode;
+        
 
-  @override
-  int get hashCode => value.hashCode;
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is CustomStructTwinSse &&
+                runtimeType == other.runtimeType
+                && message == other.message;
+        
+            }
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SomeStructTwinSse &&
-          runtimeType == other.runtimeType &&
-          value == other.value;
-}
+class SomeStructTwinSse  {
+                final int value;
+
+                const SomeStructTwinSse({required this.value ,});
+
+                static Future<SomeStructTwinSse>  newTwinSse({required int value })=>RustLib.instance.api.crateApiPseudoManualExceptionTwinSseSomeStructTwinSseNewTwinSse(value: value);
+
+
+ Future<int>  nonStaticReturnErrCustomErrorTwinSse()=>RustLib.instance.api.crateApiPseudoManualExceptionTwinSseSomeStructTwinSseNonStaticReturnErrCustomErrorTwinSse(that: this, );
+
+
+ Future<int>  nonStaticReturnOkCustomErrorTwinSse()=>RustLib.instance.api.crateApiPseudoManualExceptionTwinSseSomeStructTwinSseNonStaticReturnOkCustomErrorTwinSse(that: this, );
+
+
+static Future<int>  staticReturnErrCustomErrorTwinSse()=>RustLib.instance.api.crateApiPseudoManualExceptionTwinSseSomeStructTwinSseStaticReturnErrCustomErrorTwinSse();
+
+
+static Future<int>  staticReturnOkCustomErrorTwinSse()=>RustLib.instance.api.crateApiPseudoManualExceptionTwinSseSomeStructTwinSseStaticReturnOkCustomErrorTwinSse();
+
+
+                
+
+                
+        @override
+        int get hashCode => value.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is SomeStructTwinSse &&
+                runtimeType == other.runtimeType
+                && value == other.value;
+        
+            }
+            

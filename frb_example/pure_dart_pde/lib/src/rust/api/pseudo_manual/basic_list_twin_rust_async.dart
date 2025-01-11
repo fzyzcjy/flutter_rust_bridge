@@ -9,101 +9,40 @@ import '../../frb_generated.dart';
 import 'basic_twin_rust_async.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<Int8List> exampleBasicListTypeI8TwinRustAsync(
-        {required List<int> arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeI8TwinRustAsync(
-            arg: arg);
 
-Future<Int16List> exampleBasicListTypeI16TwinRustAsync(
-        {required List<int> arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeI16TwinRustAsync(
-            arg: arg);
+            
 
-Future<Int32List> exampleBasicListTypeI32TwinRustAsync(
-        {required List<int> arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeI32TwinRustAsync(
-            arg: arg);
+            Future<Int8List> exampleBasicListTypeI8TwinRustAsync({required List<int> arg }) => RustLib.instance.api.crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeI8TwinRustAsync(arg: arg);
 
-Future<Int64List> exampleBasicListTypeI64TwinRustAsync(
-        {required Int64List arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeI64TwinRustAsync(
-            arg: arg);
+Future<Int16List> exampleBasicListTypeI16TwinRustAsync({required List<int> arg }) => RustLib.instance.api.crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeI16TwinRustAsync(arg: arg);
 
-Future<Uint8List> exampleBasicListTypeU8TwinRustAsync(
-        {required List<int> arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeU8TwinRustAsync(
-            arg: arg);
+Future<Int32List> exampleBasicListTypeI32TwinRustAsync({required List<int> arg }) => RustLib.instance.api.crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeI32TwinRustAsync(arg: arg);
 
-Future<Uint16List> exampleBasicListTypeU16TwinRustAsync(
-        {required List<int> arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeU16TwinRustAsync(
-            arg: arg);
+Future<Int64List> exampleBasicListTypeI64TwinRustAsync({required Int64List arg }) => RustLib.instance.api.crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeI64TwinRustAsync(arg: arg);
 
-Future<Uint32List> exampleBasicListTypeU32TwinRustAsync(
-        {required List<int> arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeU32TwinRustAsync(
-            arg: arg);
+Future<Uint8List> exampleBasicListTypeU8TwinRustAsync({required List<int> arg }) => RustLib.instance.api.crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeU8TwinRustAsync(arg: arg);
 
-Future<Uint64List> exampleBasicListTypeU64TwinRustAsync(
-        {required Uint64List arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeU64TwinRustAsync(
-            arg: arg);
+Future<Uint16List> exampleBasicListTypeU16TwinRustAsync({required List<int> arg }) => RustLib.instance.api.crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeU16TwinRustAsync(arg: arg);
 
-Future<Float32List> exampleBasicListTypeF32TwinRustAsync(
-        {required List<double> arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeF32TwinRustAsync(
-            arg: arg);
+Future<Uint32List> exampleBasicListTypeU32TwinRustAsync({required List<int> arg }) => RustLib.instance.api.crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeU32TwinRustAsync(arg: arg);
 
-Future<Float64List> exampleBasicListTypeF64TwinRustAsync(
-        {required List<double> arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeF64TwinRustAsync(
-            arg: arg);
+Future<Uint64List> exampleBasicListTypeU64TwinRustAsync({required Uint64List arg }) => RustLib.instance.api.crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeU64TwinRustAsync(arg: arg);
 
-Future<List<bool>> exampleBasicListTypeBoolTwinRustAsync(
-        {required List<bool> arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeBoolTwinRustAsync(
-            arg: arg);
+Future<Float32List> exampleBasicListTypeF32TwinRustAsync({required List<double> arg }) => RustLib.instance.api.crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeF32TwinRustAsync(arg: arg);
 
-Future<List<String>> exampleBasicListTypeStringTwinRustAsync(
-        {required List<String> arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeStringTwinRustAsync(
-            arg: arg);
+Future<Float64List> exampleBasicListTypeF64TwinRustAsync({required List<double> arg }) => RustLib.instance.api.crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeF64TwinRustAsync(arg: arg);
 
-Future<List<Uint8List>> exampleBasicListTypeBytesTwinRustAsync(
-        {required List<Uint8List> arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeBytesTwinRustAsync(
-            arg: arg);
+Future<List<bool>> exampleBasicListTypeBoolTwinRustAsync({required List<bool> arg }) => RustLib.instance.api.crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeBoolTwinRustAsync(arg: arg);
 
-Future<List<BasicPrimitiveEnumTwinRustAsync>>
-    exampleBasicListTypeBasicPrimitiveEnumTwinRustAsyncTwinRustAsync(
-            {required List<BasicPrimitiveEnumTwinRustAsync> arg}) =>
-        RustLib.instance.api
-            .crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeBasicPrimitiveEnumTwinRustAsyncTwinRustAsync(
-                arg: arg);
+Future<List<String>> exampleBasicListTypeStringTwinRustAsync({required List<String> arg }) => RustLib.instance.api.crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeStringTwinRustAsync(arg: arg);
 
-Future<List<BasicGeneralEnumTwinRustAsync>>
-    exampleBasicListTypeBasicGeneralEnumTwinRustAsyncTwinRustAsync(
-            {required List<BasicGeneralEnumTwinRustAsync> arg}) =>
-        RustLib.instance.api
-            .crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeBasicGeneralEnumTwinRustAsyncTwinRustAsync(
-                arg: arg);
+Future<List<Uint8List>> exampleBasicListTypeBytesTwinRustAsync({required List<Uint8List> arg }) => RustLib.instance.api.crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeBytesTwinRustAsync(arg: arg);
 
-Future<List<BasicStructTwinRustAsync>>
-    exampleBasicListTypeBasicStructTwinRustAsyncTwinRustAsync(
-            {required List<BasicStructTwinRustAsync> arg}) =>
-        RustLib.instance.api
-            .crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeBasicStructTwinRustAsyncTwinRustAsync(
-                arg: arg);
+Future<List<BasicPrimitiveEnumTwinRustAsync>> exampleBasicListTypeBasicPrimitiveEnumTwinRustAsyncTwinRustAsync({required List<BasicPrimitiveEnumTwinRustAsync> arg }) => RustLib.instance.api.crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeBasicPrimitiveEnumTwinRustAsyncTwinRustAsync(arg: arg);
+
+Future<List<BasicGeneralEnumTwinRustAsync>> exampleBasicListTypeBasicGeneralEnumTwinRustAsyncTwinRustAsync({required List<BasicGeneralEnumTwinRustAsync> arg }) => RustLib.instance.api.crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeBasicGeneralEnumTwinRustAsyncTwinRustAsync(arg: arg);
+
+Future<List<BasicStructTwinRustAsync>> exampleBasicListTypeBasicStructTwinRustAsyncTwinRustAsync({required List<BasicStructTwinRustAsync> arg }) => RustLib.instance.api.crateApiPseudoManualBasicListTwinRustAsyncExampleBasicListTypeBasicStructTwinRustAsyncTwinRustAsync(arg: arg);
+
+            
+            

@@ -8,9 +8,12 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Stream<String> funcStreamRealisticTwinSse({required String arg}) => RustLib
-    .instance.api
-    .crateApiPseudoManualStreamMiscTwinSseFuncStreamRealisticTwinSse(arg: arg);
 
-Future<Stream<int>> streamSinkDartAsyncTwinSse() => RustLib.instance.api
-    .crateApiPseudoManualStreamMiscTwinSseStreamSinkDartAsyncTwinSse();
+            
+
+            Stream<String> funcStreamRealisticTwinSse({required String arg }) => RustLib.instance.api.crateApiPseudoManualStreamMiscTwinSseFuncStreamRealisticTwinSse(arg: arg);
+
+Future<Stream<int>> streamSinkDartAsyncTwinSse() => RustLib.instance.api.crateApiPseudoManualStreamMiscTwinSseStreamSinkDartAsyncTwinSse();
+
+            
+            

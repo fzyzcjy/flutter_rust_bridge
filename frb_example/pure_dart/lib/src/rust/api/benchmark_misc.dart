@@ -8,5 +8,10 @@ import 'dart:io';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-void benchmarkVoidSemiSerialize() =>
-    RustLib.instance.api.crateApiBenchmarkMiscBenchmarkVoidSemiSerialize();
+
+            
+
+            void benchmarkVoidSemiSerialize() => RustLib.instance.api.crateApiBenchmarkMiscBenchmarkVoidSemiSerialize();
+
+            
+            

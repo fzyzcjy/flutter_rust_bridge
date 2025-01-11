@@ -11,51 +11,24 @@ import 'enumeration_twin_rust_async.dart';
 import 'misc_example_twin_rust_async.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<Map<int, int>> funcHashMapI32I32TwinRustAsync(
-        {required Map<int, int> arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMapAndSetTwinRustAsyncFuncHashMapI32I32TwinRustAsync(
-            arg: arg);
 
-Future<Set<int>> funcHashSetI32TwinRustAsync({required Set<int> arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMapAndSetTwinRustAsyncFuncHashSetI32TwinRustAsync(
-            arg: arg);
+            
 
-Future<Map<String, String>> funcHashMapStringStringTwinRustAsync(
-        {required Map<String, String> arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMapAndSetTwinRustAsyncFuncHashMapStringStringTwinRustAsync(
-            arg: arg);
+            Future<Map<int, int>> funcHashMapI32I32TwinRustAsync({required Map<int, int> arg }) => RustLib.instance.api.crateApiPseudoManualMapAndSetTwinRustAsyncFuncHashMapI32I32TwinRustAsync(arg: arg);
 
-Future<Set<String>> funcHashSetStringTwinRustAsync(
-        {required Set<String> arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMapAndSetTwinRustAsyncFuncHashSetStringTwinRustAsync(
-            arg: arg);
+Future<Set<int>> funcHashSetI32TwinRustAsync({required Set<int> arg }) => RustLib.instance.api.crateApiPseudoManualMapAndSetTwinRustAsyncFuncHashSetI32TwinRustAsync(arg: arg);
 
-Future<Map<String, Uint8List>> funcHashMapStringBytesTwinRustAsync(
-        {required Map<String, Uint8List> arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMapAndSetTwinRustAsyncFuncHashMapStringBytesTwinRustAsync(
-            arg: arg);
+Future<Map<String, String>> funcHashMapStringStringTwinRustAsync({required Map<String, String> arg }) => RustLib.instance.api.crateApiPseudoManualMapAndSetTwinRustAsyncFuncHashMapStringStringTwinRustAsync(arg: arg);
 
-Future<Map<String, MySize>> funcHashMapStringStructTwinRustAsync(
-        {required Map<String, MySize> arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMapAndSetTwinRustAsyncFuncHashMapStringStructTwinRustAsync(
-            arg: arg);
+Future<Set<String>> funcHashSetStringTwinRustAsync({required Set<String> arg }) => RustLib.instance.api.crateApiPseudoManualMapAndSetTwinRustAsyncFuncHashSetStringTwinRustAsync(arg: arg);
 
-Future<
-    Map<String, EnumSimpleTwinRustAsync>> funcHashMapStringSimpleEnumTwinRustAsync(
-        {required Map<String, EnumSimpleTwinRustAsync> arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMapAndSetTwinRustAsyncFuncHashMapStringSimpleEnumTwinRustAsync(
-            arg: arg);
+Future<Map<String, Uint8List>> funcHashMapStringBytesTwinRustAsync({required Map<String, Uint8List> arg }) => RustLib.instance.api.crateApiPseudoManualMapAndSetTwinRustAsyncFuncHashMapStringBytesTwinRustAsync(arg: arg);
 
-Future<Map<String, KitchenSinkTwinRustAsync>>
-    funcHashMapStringComplexEnumTwinRustAsync(
-            {required Map<String, KitchenSinkTwinRustAsync> arg}) =>
-        RustLib.instance.api
-            .crateApiPseudoManualMapAndSetTwinRustAsyncFuncHashMapStringComplexEnumTwinRustAsync(
-                arg: arg);
+Future<Map<String, MySize>> funcHashMapStringStructTwinRustAsync({required Map<String, MySize> arg }) => RustLib.instance.api.crateApiPseudoManualMapAndSetTwinRustAsyncFuncHashMapStringStructTwinRustAsync(arg: arg);
+
+Future<Map<String, EnumSimpleTwinRustAsync>> funcHashMapStringSimpleEnumTwinRustAsync({required Map<String, EnumSimpleTwinRustAsync> arg }) => RustLib.instance.api.crateApiPseudoManualMapAndSetTwinRustAsyncFuncHashMapStringSimpleEnumTwinRustAsync(arg: arg);
+
+Future<Map<String, KitchenSinkTwinRustAsync>> funcHashMapStringComplexEnumTwinRustAsync({required Map<String, KitchenSinkTwinRustAsync> arg }) => RustLib.instance.api.crateApiPseudoManualMapAndSetTwinRustAsyncFuncHashMapStringComplexEnumTwinRustAsync(arg: arg);
+
+            
+            

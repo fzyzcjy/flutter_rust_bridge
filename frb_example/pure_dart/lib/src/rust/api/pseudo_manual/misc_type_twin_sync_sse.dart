@@ -9,33 +9,38 @@ import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 
-void funcReturnUnitTwinSyncSse() => RustLib.instance.api
-    .crateApiPseudoManualMiscTypeTwinSyncSseFuncReturnUnitTwinSyncSse();
+            // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 
-List<MySize> handleListOfStructTwinSyncSse({required List<MySize> l}) => RustLib
-    .instance.api
-    .crateApiPseudoManualMiscTypeTwinSyncSseHandleListOfStructTwinSyncSse(l: l);
 
-List<String> handleStringListTwinSyncSse({required List<String> names}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscTypeTwinSyncSseHandleStringListTwinSyncSse(
-            names: names);
+            void funcReturnUnitTwinSyncSse() => RustLib.instance.api.crateApiPseudoManualMiscTypeTwinSyncSseFuncReturnUnitTwinSyncSse();
 
-EmptyTwinSyncSse emptyStructTwinSyncSse({required EmptyTwinSyncSse empty}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscTypeTwinSyncSseEmptyStructTwinSyncSse(
-            empty: empty);
+List<MySize> handleListOfStructTwinSyncSse({required List<MySize> l }) => RustLib.instance.api.crateApiPseudoManualMiscTypeTwinSyncSseHandleListOfStructTwinSyncSse(l: l);
 
-class EmptyTwinSyncSse {
-  const EmptyTwinSyncSse();
+List<String> handleStringListTwinSyncSse({required List<String> names }) => RustLib.instance.api.crateApiPseudoManualMiscTypeTwinSyncSseHandleStringListTwinSyncSse(names: names);
 
-  @override
-  int get hashCode => 0;
+EmptyTwinSyncSse emptyStructTwinSyncSse({required EmptyTwinSyncSse empty }) => RustLib.instance.api.crateApiPseudoManualMiscTypeTwinSyncSseEmptyStructTwinSyncSse(empty: empty);
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is EmptyTwinSyncSse && runtimeType == other.runtimeType;
-}
+            class EmptyTwinSyncSse  {
+                
+
+                const EmptyTwinSyncSse();
+
+                
+                
+
+                
+        @override
+        int get hashCode => 0;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is EmptyTwinSyncSse &&
+                runtimeType == other.runtimeType
+                ;
+        
+            }
+            

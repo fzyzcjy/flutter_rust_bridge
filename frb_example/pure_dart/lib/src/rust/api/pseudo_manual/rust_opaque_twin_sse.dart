@@ -11,156 +11,161 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_opaque_sync_twin_sse.dart';
 import 'rust_opaque_twin_rust_async.dart';
-part 'rust_opaque_twin_sse.freezed.dart';
 
-Future<HideDataTwinSse> createOpaqueTwinSse() => RustLib.instance.api
-    .crateApiPseudoManualRustOpaqueTwinSseCreateOpaqueTwinSse();
+                part 'rust_opaque_twin_sse.freezed.dart';
+                part 'rust_opaque_twin_sse.g.dart';
+                
 
-Future<HideDataTwinSse?> createOptionOpaqueTwinSse({HideDataTwinSse? opaque}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSseCreateOptionOpaqueTwinSse(
-            opaque: opaque);
+            
 
-Future<EnumOpaqueTwinSseArray5> createArrayOpaqueEnumTwinSse() =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSseCreateArrayOpaqueEnumTwinSse();
+            Future<HideDataTwinSse> createOpaqueTwinSse() => RustLib.instance.api.crateApiPseudoManualRustOpaqueTwinSseCreateOpaqueTwinSse();
 
-Future<String> runEnumOpaqueTwinSse({required EnumOpaqueTwinSse opaque}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSseRunEnumOpaqueTwinSse(
-            opaque: opaque);
+Future<HideDataTwinSse?> createOptionOpaqueTwinSse({HideDataTwinSse? opaque }) => RustLib.instance.api.crateApiPseudoManualRustOpaqueTwinSseCreateOptionOpaqueTwinSse(opaque: opaque);
 
-Future<String> runOpaqueTwinSse({required HideDataTwinSse opaque}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSseRunOpaqueTwinSse(opaque: opaque);
+Future<EnumOpaqueTwinSseArray5> createArrayOpaqueEnumTwinSse() => RustLib.instance.api.crateApiPseudoManualRustOpaqueTwinSseCreateArrayOpaqueEnumTwinSse();
 
-Future<String> runOpaqueWithDelayTwinSse({required HideDataTwinSse opaque}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSseRunOpaqueWithDelayTwinSse(
-            opaque: opaque);
+Future<String> runEnumOpaqueTwinSse({required EnumOpaqueTwinSse opaque }) => RustLib.instance.api.crateApiPseudoManualRustOpaqueTwinSseRunEnumOpaqueTwinSse(opaque: opaque);
 
-Future<HideDataTwinSseArray2> opaqueArrayTwinSse() => RustLib.instance.api
-    .crateApiPseudoManualRustOpaqueTwinSseOpaqueArrayTwinSse();
+Future<String> runOpaqueTwinSse({required HideDataTwinSse opaque }) => RustLib.instance.api.crateApiPseudoManualRustOpaqueTwinSseRunOpaqueTwinSse(opaque: opaque);
 
-Future<String> runNonCloneTwinSse({required NonCloneDataTwinSse clone}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSseRunNonCloneTwinSse(clone: clone);
+Future<String> runOpaqueWithDelayTwinSse({required HideDataTwinSse opaque }) => RustLib.instance.api.crateApiPseudoManualRustOpaqueTwinSseRunOpaqueWithDelayTwinSse(opaque: opaque);
 
-Future<void> opaqueArrayRunTwinSse({required HideDataTwinSseArray2 data}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSseOpaqueArrayRunTwinSse(data: data);
+Future<HideDataTwinSseArray2> opaqueArrayTwinSse() => RustLib.instance.api.crateApiPseudoManualRustOpaqueTwinSseOpaqueArrayTwinSse();
 
-Future<List<HideDataTwinSse>> opaqueVecTwinSse() => RustLib.instance.api
-    .crateApiPseudoManualRustOpaqueTwinSseOpaqueVecTwinSse();
+Future<String> runNonCloneTwinSse({required NonCloneDataTwinSse clone }) => RustLib.instance.api.crateApiPseudoManualRustOpaqueTwinSseRunNonCloneTwinSse(clone: clone);
 
-Future<void> opaqueVecRunTwinSse({required List<HideDataTwinSse> data}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSseOpaqueVecRunTwinSse(data: data);
+Future<void> opaqueArrayRunTwinSse({required HideDataTwinSseArray2 data }) => RustLib.instance.api.crateApiPseudoManualRustOpaqueTwinSseOpaqueArrayRunTwinSse(data: data);
 
-Future<OpaqueNestedTwinSse> createNestedOpaqueTwinSse() => RustLib.instance.api
-    .crateApiPseudoManualRustOpaqueTwinSseCreateNestedOpaqueTwinSse();
+Future<List<HideDataTwinSse>> opaqueVecTwinSse() => RustLib.instance.api.crateApiPseudoManualRustOpaqueTwinSseOpaqueVecTwinSse();
 
-Future<void> runNestedOpaqueTwinSse({required OpaqueNestedTwinSse opaque}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSseRunNestedOpaqueTwinSse(
-            opaque: opaque);
+Future<void> opaqueVecRunTwinSse({required List<HideDataTwinSse> data }) => RustLib.instance.api.crateApiPseudoManualRustOpaqueTwinSseOpaqueVecRunTwinSse(data: data);
 
-Future<String> unwrapRustOpaqueTwinSse({required HideDataTwinSse opaque}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSseUnwrapRustOpaqueTwinSse(
-            opaque: opaque);
+Future<OpaqueNestedTwinSse> createNestedOpaqueTwinSse() => RustLib.instance.api.crateApiPseudoManualRustOpaqueTwinSseCreateNestedOpaqueTwinSse();
+
+Future<void> runNestedOpaqueTwinSse({required OpaqueNestedTwinSse opaque }) => RustLib.instance.api.crateApiPseudoManualRustOpaqueTwinSseRunNestedOpaqueTwinSse(opaque: opaque);
+
+Future<String> unwrapRustOpaqueTwinSse({required HideDataTwinSse opaque }) => RustLib.instance.api.crateApiPseudoManualRustOpaqueTwinSseUnwrapRustOpaqueTwinSse(opaque: opaque);
 
 /// Function to check the code generator.
 /// FrbOpaqueReturn must be only return type.
 /// FrbOpaqueReturn must not be used as an argument.
-Future<FrbOpaqueReturnTwinSse> frbGeneratorTestTwinSse() => RustLib.instance.api
-    .crateApiPseudoManualRustOpaqueTwinSseFrbGeneratorTestTwinSse();
+Future<FrbOpaqueReturnTwinSse> frbGeneratorTestTwinSse() => RustLib.instance.api.crateApiPseudoManualRustOpaqueTwinSseFrbGeneratorTestTwinSse();
 
-// Rust type: RustOpaqueNom<Box < dyn DartDebugTwinSse >>
-abstract class BoxDartDebugTwinSse implements RustOpaqueInterface {}
+            
+                // Rust type: RustOpaqueNom<Box < dyn DartDebugTwinSse >>
+                abstract class BoxDartDebugTwinSse implements RustOpaqueInterface {
+                    
 
-// Rust type: RustOpaqueNom<FrbOpaqueReturnTwinSse>
-abstract class FrbOpaqueReturnTwinSse implements RustOpaqueInterface {}
+                    
+                }
+                
 
-// Rust type: RustOpaqueNom<HideDataTwinSse>
-abstract class HideDataTwinSse implements RustOpaqueInterface {}
 
-class HideDataTwinSseArray2 extends NonGrowableListView<HideDataTwinSse> {
-  static const arraySize = 2;
+                // Rust type: RustOpaqueNom<FrbOpaqueReturnTwinSse>
+                abstract class FrbOpaqueReturnTwinSse implements RustOpaqueInterface {
+                    
 
-  @internal
-  List<HideDataTwinSse> get inner => _inner;
-  final List<HideDataTwinSse> _inner;
+                    
+                }
+                
 
-  HideDataTwinSseArray2(this._inner)
-      : assert(_inner.length == arraySize),
-        super(_inner);
 
-  HideDataTwinSseArray2.init(HideDataTwinSse fill)
-      : this(List<HideDataTwinSse>.filled(arraySize, fill));
-}
+                // Rust type: RustOpaqueNom<HideDataTwinSse>
+                abstract class HideDataTwinSse implements RustOpaqueInterface {
+                    
 
-// Rust type: RustOpaqueNom<Mutex < HideDataTwinSse >>
-abstract class MutexHideDataTwinSse implements RustOpaqueInterface {}
+                    
+                }
+                
 
-// Rust type: RustOpaqueNom<RwLock < HideDataTwinSse >>
-abstract class RwLockHideDataTwinSse implements RustOpaqueInterface {}
+
+            class HideDataTwinSseArray2 extends NonGrowableListView<HideDataTwinSse> {
+                static const arraySize = 2;
+
+                @internal
+                List<HideDataTwinSse> get inner => _inner;
+                final List<HideDataTwinSse> _inner;
+
+                HideDataTwinSseArray2(this._inner)
+                    : assert(_inner.length == arraySize),
+                      super(_inner);
+  
+                HideDataTwinSseArray2.init(HideDataTwinSse fill): this(List<HideDataTwinSse>.filled(arraySize,fill));
+              }
+            
+
+
+                // Rust type: RustOpaqueNom<Mutex < HideDataTwinSse >>
+                abstract class MutexHideDataTwinSse implements RustOpaqueInterface {
+                    
+
+                    
+                }
+                
+
+
+                // Rust type: RustOpaqueNom<RwLock < HideDataTwinSse >>
+                abstract class RwLockHideDataTwinSse implements RustOpaqueInterface {
+                    
+
+                    
+                }
+                
 
 @freezed
-sealed class EnumOpaqueTwinSse with _$EnumOpaqueTwinSse {
-  const EnumOpaqueTwinSse._();
+                sealed class EnumOpaqueTwinSse with _$EnumOpaqueTwinSse  {
+                    const EnumOpaqueTwinSse._();
 
-  const factory EnumOpaqueTwinSse.struct(
-    HideDataTwinSse field0,
-  ) = EnumOpaqueTwinSse_Struct;
-  const factory EnumOpaqueTwinSse.primitive(
-    I32 field0,
-  ) = EnumOpaqueTwinSse_Primitive;
-  const factory EnumOpaqueTwinSse.traitObj(
-    BoxDartDebugTwinSse field0,
-  ) = EnumOpaqueTwinSse_TraitObj;
-  const factory EnumOpaqueTwinSse.mutex(
-    MutexHideDataTwinSse field0,
-  ) = EnumOpaqueTwinSse_Mutex;
-  const factory EnumOpaqueTwinSse.rwLock(
-    RwLockHideDataTwinSse field0,
-  ) = EnumOpaqueTwinSse_RwLock;
-  const factory EnumOpaqueTwinSse.nothing() = EnumOpaqueTwinSse_Nothing;
-}
+                     const factory EnumOpaqueTwinSse.struct(  HideDataTwinSse field0,) = EnumOpaqueTwinSse_Struct;
+ const factory EnumOpaqueTwinSse.primitive(  I32 field0,) = EnumOpaqueTwinSse_Primitive;
+ const factory EnumOpaqueTwinSse.traitObj(  BoxDartDebugTwinSse field0,) = EnumOpaqueTwinSse_TraitObj;
+ const factory EnumOpaqueTwinSse.mutex(  MutexHideDataTwinSse field0,) = EnumOpaqueTwinSse_Mutex;
+ const factory EnumOpaqueTwinSse.rwLock(  RwLockHideDataTwinSse field0,) = EnumOpaqueTwinSse_RwLock;
+ const factory EnumOpaqueTwinSse.nothing() = EnumOpaqueTwinSse_Nothing;
 
-class EnumOpaqueTwinSseArray5 extends NonGrowableListView<EnumOpaqueTwinSse> {
-  static const arraySize = 5;
+                    factory EnumOpaqueTwinSse.fromJson(Map<String, dynamic> json) => _$EnumOpaqueTwinSseFromJson(json);
 
-  @internal
-  List<EnumOpaqueTwinSse> get inner => _inner;
-  final List<EnumOpaqueTwinSse> _inner;
+                    
+                }
 
-  EnumOpaqueTwinSseArray5(this._inner)
-      : assert(_inner.length == arraySize),
-        super(_inner);
 
-  EnumOpaqueTwinSseArray5.init(EnumOpaqueTwinSse fill)
-      : this(List<EnumOpaqueTwinSse>.filled(arraySize, fill));
-}
+            class EnumOpaqueTwinSseArray5 extends NonGrowableListView<EnumOpaqueTwinSse> {
+                static const arraySize = 5;
+
+                @internal
+                List<EnumOpaqueTwinSse> get inner => _inner;
+                final List<EnumOpaqueTwinSse> _inner;
+
+                EnumOpaqueTwinSseArray5(this._inner)
+                    : assert(_inner.length == arraySize),
+                      super(_inner);
+  
+                EnumOpaqueTwinSseArray5.init(EnumOpaqueTwinSse fill): this(List<EnumOpaqueTwinSse>.filled(arraySize,fill));
+              }
+            
 
 /// [`HideDataTwinSse`] has private fields.
-class OpaqueNestedTwinSse {
-  final HideDataTwinSse first;
-  final HideDataTwinSse second;
+class OpaqueNestedTwinSse  {
+                final HideDataTwinSse first;
+final HideDataTwinSse second;
 
-  const OpaqueNestedTwinSse({
-    required this.first,
-    required this.second,
-  });
+                const OpaqueNestedTwinSse({required this.first ,required this.second ,});
 
-  @override
-  int get hashCode => first.hashCode ^ second.hashCode;
+                
+                
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is OpaqueNestedTwinSse &&
-          runtimeType == other.runtimeType &&
-          first == other.first &&
-          second == other.second;
-}
+                
+        @override
+        int get hashCode => first.hashCode^second.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is OpaqueNestedTwinSse &&
+                runtimeType == other.runtimeType
+                && first == other.first&& second == other.second;
+        
+            }
+            

@@ -9,48 +9,52 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'package:meta/meta.dart' as meta;
-part 'attribute.freezed.dart';
 
-// These types are ignored because they are not used by any `pub` functions: `IgnoredStructTwinNormal`, `StructWithOnlyIgnoredMethodTwinNormal`
+                part 'attribute.freezed.dart';
+                part 'attribute.g.dart';
+                
+
+            // These types are ignored because they are not used by any `pub` functions: `IgnoredStructTwinNormal`, `StructWithOnlyIgnoredMethodTwinNormal`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 // These functions are ignored (category: IgnoreBecauseExplicitAttribute): `func_should_not_exist_in_dart_twin_normal`, `method_should_not_exist_in_dart_twin_normal`
 // These functions are ignored (category: IgnoreBecauseOwnerTyShouldIgnore): `method_should_not_exist_in_dart_twin_normal`
 
-Future<void> handleCustomizedStructTwinNormal(
-        {required CustomizedTwinNormal val}) =>
-    RustLib.instance.api
-        .crateApiAttributeHandleCustomizedStructTwinNormal(val: val);
 
-Future<UserIdTwinNormal> nextUserIdTwinNormal(
-        {UserIdTwinNormal userId = const UserIdTwinNormal()}) =>
-    RustLib.instance.api.crateApiAttributeNextUserIdTwinNormal(userId: userId);
+            Future<void> handleCustomizedStructTwinNormal({required CustomizedTwinNormal val }) => RustLib.instance.api.crateApiAttributeHandleCustomizedStructTwinNormal(val: val);
 
-class CustomizedTwinNormal {
-  final String finalField;
-  String? nonFinalField;
+Future<UserIdTwinNormal> nextUserIdTwinNormal({UserIdTwinNormal userId = const UserIdTwinNormal()}) => RustLib.instance.api.crateApiAttributeNextUserIdTwinNormal(userId: userId);
 
-  CustomizedTwinNormal({
-    required this.finalField,
-    this.nonFinalField,
-  });
+            class CustomizedTwinNormal  {
+                final String finalField;
+ String? nonFinalField;
 
-  @override
-  int get hashCode => finalField.hashCode ^ nonFinalField.hashCode;
+                CustomizedTwinNormal({required this.finalField ,this.nonFinalField ,});
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CustomizedTwinNormal &&
-          runtimeType == other.runtimeType &&
-          finalField == other.finalField &&
-          nonFinalField == other.nonFinalField;
-}
+                
+                
+
+                
+        @override
+        int get hashCode => finalField.hashCode^nonFinalField.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is CustomizedTwinNormal &&
+                runtimeType == other.runtimeType
+                && finalField == other.finalField&& nonFinalField == other.nonFinalField;
+        
+            }
 
 /// Example for @freezed and @meta.immutable
 @freezed
 @meta.immutable
-class UserIdTwinNormal with _$UserIdTwinNormal {
-  const factory UserIdTwinNormal({
-    @Default(0) int value,
-  }) = _UserIdTwinNormal;
-}
+class UserIdTwinNormal with _$UserIdTwinNormal  {
+                
+                const factory UserIdTwinNormal({@Default(0)  int value,}) = _UserIdTwinNormal;
+                
+                
+            }
+            

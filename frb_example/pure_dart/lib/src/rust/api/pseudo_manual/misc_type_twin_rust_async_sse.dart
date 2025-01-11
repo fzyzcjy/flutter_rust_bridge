@@ -9,37 +9,38 @@ import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 
-Future<void> funcReturnUnitTwinRustAsyncSse() => RustLib.instance.api
-    .crateApiPseudoManualMiscTypeTwinRustAsyncSseFuncReturnUnitTwinRustAsyncSse();
+            // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 
-Future<List<MySize>> handleListOfStructTwinRustAsyncSse(
-        {required List<MySize> l}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscTypeTwinRustAsyncSseHandleListOfStructTwinRustAsyncSse(
-            l: l);
 
-Future<List<String>> handleStringListTwinRustAsyncSse(
-        {required List<String> names}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscTypeTwinRustAsyncSseHandleStringListTwinRustAsyncSse(
-            names: names);
+            Future<void> funcReturnUnitTwinRustAsyncSse() => RustLib.instance.api.crateApiPseudoManualMiscTypeTwinRustAsyncSseFuncReturnUnitTwinRustAsyncSse();
 
-Future<EmptyTwinRustAsyncSse> emptyStructTwinRustAsyncSse(
-        {required EmptyTwinRustAsyncSse empty}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscTypeTwinRustAsyncSseEmptyStructTwinRustAsyncSse(
-            empty: empty);
+Future<List<MySize>> handleListOfStructTwinRustAsyncSse({required List<MySize> l }) => RustLib.instance.api.crateApiPseudoManualMiscTypeTwinRustAsyncSseHandleListOfStructTwinRustAsyncSse(l: l);
 
-class EmptyTwinRustAsyncSse {
-  const EmptyTwinRustAsyncSse();
+Future<List<String>> handleStringListTwinRustAsyncSse({required List<String> names }) => RustLib.instance.api.crateApiPseudoManualMiscTypeTwinRustAsyncSseHandleStringListTwinRustAsyncSse(names: names);
 
-  @override
-  int get hashCode => 0;
+Future<EmptyTwinRustAsyncSse> emptyStructTwinRustAsyncSse({required EmptyTwinRustAsyncSse empty }) => RustLib.instance.api.crateApiPseudoManualMiscTypeTwinRustAsyncSseEmptyStructTwinRustAsyncSse(empty: empty);
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is EmptyTwinRustAsyncSse && runtimeType == other.runtimeType;
-}
+            class EmptyTwinRustAsyncSse  {
+                
+
+                const EmptyTwinRustAsyncSse();
+
+                
+                
+
+                
+        @override
+        int get hashCode => 0;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is EmptyTwinRustAsyncSse &&
+                runtimeType == other.runtimeType
+                ;
+        
+            }
+            

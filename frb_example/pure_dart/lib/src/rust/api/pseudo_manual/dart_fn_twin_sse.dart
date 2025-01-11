@@ -8,80 +8,47 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<void> rustCallDartSimpleTwinSse(
-        {required FutureOr<void> Function() callback}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartFnTwinSseRustCallDartSimpleTwinSse(
-            callback: callback);
 
-Future<void> rustCallDartOneArgTwinSse(
-        {required FutureOr<void> Function(String) callback}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartFnTwinSseRustCallDartOneArgTwinSse(
-            callback: callback);
+            
 
-Future<void> rustCallDartTwoArgsTwinSse(
-        {required FutureOr<void> Function(
-                String, DemoStructForRustCallDartTwinSse)
-            callback}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartFnTwinSseRustCallDartTwoArgsTwinSse(
-            callback: callback);
+            Future<void> rustCallDartSimpleTwinSse({required FutureOr<void> Function() callback }) => RustLib.instance.api.crateApiPseudoManualDartFnTwinSseRustCallDartSimpleTwinSse(callback: callback);
 
-Future<void> rustCallDartReturnTwinSse(
-        {required FutureOr<String> Function() callback}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartFnTwinSseRustCallDartReturnTwinSse(
-            callback: callback);
+Future<void> rustCallDartOneArgTwinSse({required FutureOr<void> Function(String) callback }) => RustLib.instance.api.crateApiPseudoManualDartFnTwinSseRustCallDartOneArgTwinSse(callback: callback);
 
-Future<void> rustCallDartLoopbackTwinSse(
-        {required FutureOr<DemoStructForRustCallDartTwinSse> Function(
-                DemoStructForRustCallDartTwinSse)
-            callback}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartFnTwinSseRustCallDartLoopbackTwinSse(
-            callback: callback);
+Future<void> rustCallDartTwoArgsTwinSse({required FutureOr<void> Function(String, DemoStructForRustCallDartTwinSse) callback }) => RustLib.instance.api.crateApiPseudoManualDartFnTwinSseRustCallDartTwoArgsTwinSse(callback: callback);
 
-Future<void> rustCallDartWithDartOpaqueArgTwinSse(
-        {required Object input,
-        required FutureOr<void> Function(Object) callback}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartFnTwinSseRustCallDartWithDartOpaqueArgTwinSse(
-            input: input, callback: callback);
+Future<void> rustCallDartReturnTwinSse({required FutureOr<String> Function() callback }) => RustLib.instance.api.crateApiPseudoManualDartFnTwinSseRustCallDartReturnTwinSse(callback: callback);
 
-Future<Object> rustCallDartWithDartOpaqueResultTwinSse(
-        {required FutureOr<Object> Function() callback}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartFnTwinSseRustCallDartWithDartOpaqueResultTwinSse(
-            callback: callback);
+Future<void> rustCallDartLoopbackTwinSse({required FutureOr<DemoStructForRustCallDartTwinSse> Function(DemoStructForRustCallDartTwinSse) callback }) => RustLib.instance.api.crateApiPseudoManualDartFnTwinSseRustCallDartLoopbackTwinSse(callback: callback);
 
-Future<void> rustCallDartMultiTimesTwinSse(
-        {required FutureOr<void> Function() callback, required int numTimes}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartFnTwinSseRustCallDartMultiTimesTwinSse(
-            callback: callback, numTimes: numTimes);
+Future<void> rustCallDartWithDartOpaqueArgTwinSse({required Object input , required FutureOr<void> Function(Object) callback }) => RustLib.instance.api.crateApiPseudoManualDartFnTwinSseRustCallDartWithDartOpaqueArgTwinSse(input: input, callback: callback);
 
-Future<void> rustCallDartReturnResultTwinSse(
-        {required FutureOr<String> Function(String) callback,
-        String? expectOutput}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartFnTwinSseRustCallDartReturnResultTwinSse(
-            callback: callback, expectOutput: expectOutput);
+Future<Object> rustCallDartWithDartOpaqueResultTwinSse({required FutureOr<Object> Function() callback }) => RustLib.instance.api.crateApiPseudoManualDartFnTwinSseRustCallDartWithDartOpaqueResultTwinSse(callback: callback);
 
-class DemoStructForRustCallDartTwinSse {
-  final String name;
+Future<void> rustCallDartMultiTimesTwinSse({required FutureOr<void> Function() callback , required int numTimes }) => RustLib.instance.api.crateApiPseudoManualDartFnTwinSseRustCallDartMultiTimesTwinSse(callback: callback, numTimes: numTimes);
 
-  const DemoStructForRustCallDartTwinSse({
-    required this.name,
-  });
+Future<void> rustCallDartReturnResultTwinSse({required FutureOr<String> Function(String) callback , String? expectOutput }) => RustLib.instance.api.crateApiPseudoManualDartFnTwinSseRustCallDartReturnResultTwinSse(callback: callback, expectOutput: expectOutput);
 
-  @override
-  int get hashCode => name.hashCode;
+            class DemoStructForRustCallDartTwinSse  {
+                final String name;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is DemoStructForRustCallDartTwinSse &&
-          runtimeType == other.runtimeType &&
-          name == other.name;
-}
+                const DemoStructForRustCallDartTwinSse({required this.name ,});
+
+                
+                
+
+                
+        @override
+        int get hashCode => name.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is DemoStructForRustCallDartTwinSse &&
+                runtimeType == other.runtimeType
+                && name == other.name;
+        
+            }
+            

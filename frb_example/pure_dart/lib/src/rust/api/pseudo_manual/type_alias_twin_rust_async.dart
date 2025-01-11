@@ -9,46 +9,38 @@ import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<BigInt> handleTypeAliasIdTwinRustAsync({required BigInt input}) => RustLib
-    .instance.api
-    .crateApiPseudoManualTypeAliasTwinRustAsyncHandleTypeAliasIdTwinRustAsync(
-        input: input);
 
-Future<BigInt> handleTypeNestAliasIdTwinRustAsync({required BigInt input}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualTypeAliasTwinRustAsyncHandleTypeNestAliasIdTwinRustAsync(
-            input: input);
+            
 
-Future<TestModelTwinRustAsync> handleTypeAliasModelTwinRustAsync(
-        {required BigInt input}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualTypeAliasTwinRustAsyncHandleTypeAliasModelTwinRustAsync(
-            input: input);
+            Future<BigInt> handleTypeAliasIdTwinRustAsync({required BigInt input }) => RustLib.instance.api.crateApiPseudoManualTypeAliasTwinRustAsyncHandleTypeAliasIdTwinRustAsync(input: input);
 
-class TestModelTwinRustAsync {
-  final BigInt id;
-  final String name;
-  final MyEnum aliasEnum;
-  final MyStruct aliasStruct;
+Future<BigInt> handleTypeNestAliasIdTwinRustAsync({required BigInt input }) => RustLib.instance.api.crateApiPseudoManualTypeAliasTwinRustAsyncHandleTypeNestAliasIdTwinRustAsync(input: input);
 
-  const TestModelTwinRustAsync({
-    required this.id,
-    required this.name,
-    required this.aliasEnum,
-    required this.aliasStruct,
-  });
+Future<TestModelTwinRustAsync> handleTypeAliasModelTwinRustAsync({required BigInt input }) => RustLib.instance.api.crateApiPseudoManualTypeAliasTwinRustAsyncHandleTypeAliasModelTwinRustAsync(input: input);
 
-  @override
-  int get hashCode =>
-      id.hashCode ^ name.hashCode ^ aliasEnum.hashCode ^ aliasStruct.hashCode;
+            class TestModelTwinRustAsync  {
+                final BigInt id;
+final String name;
+final MyEnum aliasEnum;
+final MyStruct aliasStruct;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is TestModelTwinRustAsync &&
-          runtimeType == other.runtimeType &&
-          id == other.id &&
-          name == other.name &&
-          aliasEnum == other.aliasEnum &&
-          aliasStruct == other.aliasStruct;
-}
+                const TestModelTwinRustAsync({required this.id ,required this.name ,required this.aliasEnum ,required this.aliasStruct ,});
+
+                
+                
+
+                
+        @override
+        int get hashCode => id.hashCode^name.hashCode^aliasEnum.hashCode^aliasStruct.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is TestModelTwinRustAsync &&
+                runtimeType == other.runtimeType
+                && id == other.id&& name == other.name&& aliasEnum == other.aliasEnum&& aliasStruct == other.aliasStruct;
+        
+            }
+            

@@ -9,184 +9,161 @@ import '../frb_generated.dart';
 import 'misc_example.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-part 'enumeration.freezed.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
+                part 'enumeration.freezed.dart';
+                part 'enumeration.g.dart';
+                
 
-Future<EnumSimpleTwinNormal> funcEnumSimpleTwinNormal(
-        {required EnumSimpleTwinNormal arg}) =>
-    RustLib.instance.api.crateApiEnumerationFuncEnumSimpleTwinNormal(arg: arg);
+            // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
 
-Future<EnumWithItemMixedTwinNormal> funcEnumWithItemMixedTwinNormal(
-        {required EnumWithItemMixedTwinNormal arg}) =>
-    RustLib.instance.api
-        .crateApiEnumerationFuncEnumWithItemMixedTwinNormal(arg: arg);
 
-Future<EnumWithItemTupleTwinNormal> funcEnumWithItemTupleTwinNormal(
-        {required EnumWithItemTupleTwinNormal arg}) =>
-    RustLib.instance.api
-        .crateApiEnumerationFuncEnumWithItemTupleTwinNormal(arg: arg);
+            Future<EnumSimpleTwinNormal> funcEnumSimpleTwinNormal({required EnumSimpleTwinNormal arg }) => RustLib.instance.api.crateApiEnumerationFuncEnumSimpleTwinNormal(arg: arg);
 
-Future<EnumWithItemStructTwinNormal> funcEnumWithItemStructTwinNormal(
-        {required EnumWithItemStructTwinNormal arg}) =>
-    RustLib.instance.api
-        .crateApiEnumerationFuncEnumWithItemStructTwinNormal(arg: arg);
+Future<EnumWithItemMixedTwinNormal> funcEnumWithItemMixedTwinNormal({required EnumWithItemMixedTwinNormal arg }) => RustLib.instance.api.crateApiEnumerationFuncEnumWithItemMixedTwinNormal(arg: arg);
 
-Future<EnumWithDiscriminantTwinNormal> funcEnumWithDiscriminantTwinNormal(
-        {required EnumWithDiscriminantTwinNormal arg}) =>
-    RustLib.instance.api
-        .crateApiEnumerationFuncEnumWithDiscriminantTwinNormal(arg: arg);
+Future<EnumWithItemTupleTwinNormal> funcEnumWithItemTupleTwinNormal({required EnumWithItemTupleTwinNormal arg }) => RustLib.instance.api.crateApiEnumerationFuncEnumWithItemTupleTwinNormal(arg: arg);
 
-Future<Uint8List> printNoteTwinNormal({required NoteTwinNormal note}) =>
-    RustLib.instance.api.crateApiEnumerationPrintNoteTwinNormal(note: note);
+Future<EnumWithItemStructTwinNormal> funcEnumWithItemStructTwinNormal({required EnumWithItemStructTwinNormal arg }) => RustLib.instance.api.crateApiEnumerationFuncEnumWithItemStructTwinNormal(arg: arg);
 
-Future<WeekdaysTwinNormal?> handleReturnEnumTwinNormal(
-        {required String input}) =>
-    RustLib.instance.api
-        .crateApiEnumerationHandleReturnEnumTwinNormal(input: input);
+Future<EnumWithDiscriminantTwinNormal> funcEnumWithDiscriminantTwinNormal({required EnumWithDiscriminantTwinNormal arg }) => RustLib.instance.api.crateApiEnumerationFuncEnumWithDiscriminantTwinNormal(arg: arg);
 
-Future<WeekdaysTwinNormal> handleEnumParameterTwinNormal(
-        {required WeekdaysTwinNormal weekday}) =>
-    RustLib.instance.api
-        .crateApiEnumerationHandleEnumParameterTwinNormal(weekday: weekday);
+Future<Uint8List> printNoteTwinNormal({required NoteTwinNormal note }) => RustLib.instance.api.crateApiEnumerationPrintNoteTwinNormal(note: note);
 
-Future<MeasureTwinNormal?> multiplyByTenTwinNormal(
-        {required MeasureTwinNormal measure}) =>
-    RustLib.instance.api
-        .crateApiEnumerationMultiplyByTenTwinNormal(measure: measure);
+Future<WeekdaysTwinNormal?> handleReturnEnumTwinNormal({required String input }) => RustLib.instance.api.crateApiEnumerationHandleReturnEnumTwinNormal(input: input);
 
-Future<KitchenSinkTwinNormal> handleEnumStructTwinNormal(
-        {required KitchenSinkTwinNormal val}) =>
-    RustLib.instance.api
-        .crateApiEnumerationHandleEnumStructTwinNormal(val: val);
+Future<WeekdaysTwinNormal> handleEnumParameterTwinNormal({required WeekdaysTwinNormal weekday }) => RustLib.instance.api.crateApiEnumerationHandleEnumParameterTwinNormal(weekday: weekday);
 
-@freezed
-sealed class DistanceTwinNormal with _$DistanceTwinNormal {
-  const DistanceTwinNormal._();
+Future<MeasureTwinNormal?> multiplyByTenTwinNormal({required MeasureTwinNormal measure }) => RustLib.instance.api.crateApiEnumerationMultiplyByTenTwinNormal(measure: measure);
 
-  const factory DistanceTwinNormal.unknown() = DistanceTwinNormal_Unknown;
-  const factory DistanceTwinNormal.map(
-    double field0,
-  ) = DistanceTwinNormal_Map;
-}
+Future<KitchenSinkTwinNormal> handleEnumStructTwinNormal({required KitchenSinkTwinNormal val }) => RustLib.instance.api.crateApiEnumerationHandleEnumStructTwinNormal(val: val);
+
+            @freezed
+                sealed class DistanceTwinNormal with _$DistanceTwinNormal  {
+                    const DistanceTwinNormal._();
+
+                     const factory DistanceTwinNormal.unknown() = DistanceTwinNormal_Unknown;
+ const factory DistanceTwinNormal.map(  double field0,) = DistanceTwinNormal_Map;
+
+                    factory DistanceTwinNormal.fromJson(Map<String, dynamic> json) => _$DistanceTwinNormalFromJson(json);
+
+                    
+                }
 
 enum EnumSimpleTwinNormal {
-  a,
-  b,
-  ;
-}
+                    a,
+b,
+                    ;
+                    
+                }
 
 enum EnumWithDiscriminantTwinNormal {
-  oneHundred,
-  fifty,
-  ;
-}
+                    oneHundred,
+fifty,
+                    ;
+                    
+                }
 
 @freezed
-sealed class EnumWithItemMixedTwinNormal with _$EnumWithItemMixedTwinNormal {
-  const EnumWithItemMixedTwinNormal._();
+                sealed class EnumWithItemMixedTwinNormal with _$EnumWithItemMixedTwinNormal  {
+                    const EnumWithItemMixedTwinNormal._();
 
-  const factory EnumWithItemMixedTwinNormal.a() = EnumWithItemMixedTwinNormal_A;
-  const factory EnumWithItemMixedTwinNormal.b(
-    Uint8List field0,
-  ) = EnumWithItemMixedTwinNormal_B;
-  const factory EnumWithItemMixedTwinNormal.c({
-    required String cField,
-  }) = EnumWithItemMixedTwinNormal_C;
-}
+                     const factory EnumWithItemMixedTwinNormal.a() = EnumWithItemMixedTwinNormal_A;
+ const factory EnumWithItemMixedTwinNormal.b(  Uint8List field0,) = EnumWithItemMixedTwinNormal_B;
+ const factory EnumWithItemMixedTwinNormal.c({   required String cField , }) = EnumWithItemMixedTwinNormal_C;
 
-@freezed
-sealed class EnumWithItemStructTwinNormal with _$EnumWithItemStructTwinNormal {
-  const EnumWithItemStructTwinNormal._();
+                    factory EnumWithItemMixedTwinNormal.fromJson(Map<String, dynamic> json) => _$EnumWithItemMixedTwinNormalFromJson(json);
 
-  const factory EnumWithItemStructTwinNormal.a({
-    required Uint8List aField,
-  }) = EnumWithItemStructTwinNormal_A;
-  const factory EnumWithItemStructTwinNormal.b({
-    required Int32List bField,
-  }) = EnumWithItemStructTwinNormal_B;
-}
+                    
+                }
 
 @freezed
-sealed class EnumWithItemTupleTwinNormal with _$EnumWithItemTupleTwinNormal {
-  const EnumWithItemTupleTwinNormal._();
+                sealed class EnumWithItemStructTwinNormal with _$EnumWithItemStructTwinNormal  {
+                    const EnumWithItemStructTwinNormal._();
 
-  const factory EnumWithItemTupleTwinNormal.a(
-    Uint8List field0,
-  ) = EnumWithItemTupleTwinNormal_A;
-  const factory EnumWithItemTupleTwinNormal.b(
-    Int32List field0,
-  ) = EnumWithItemTupleTwinNormal_B;
-}
+                     const factory EnumWithItemStructTwinNormal.a({   required Uint8List aField , }) = EnumWithItemStructTwinNormal_A;
+ const factory EnumWithItemStructTwinNormal.b({   required Int32List bField , }) = EnumWithItemStructTwinNormal_B;
 
-@freezed
-sealed class KitchenSinkTwinNormal with _$KitchenSinkTwinNormal {
-  const KitchenSinkTwinNormal._();
+                    factory EnumWithItemStructTwinNormal.fromJson(Map<String, dynamic> json) => _$EnumWithItemStructTwinNormalFromJson(json);
 
-  /// Comment on variant
-  const factory KitchenSinkTwinNormal.empty() = KitchenSinkTwinNormal_Empty;
-  const factory KitchenSinkTwinNormal.primitives({
-    /// Dart field comment
-    @Default(-1) int int32,
-    required double float64,
-    required bool boolean,
-  }) = KitchenSinkTwinNormal_Primitives;
-  const factory KitchenSinkTwinNormal.nested(
-    int field0, [
-    @Default(KitchenSinkTwinNormal.empty()) KitchenSinkTwinNormal field1,
-  ]) = KitchenSinkTwinNormal_Nested;
-  const factory KitchenSinkTwinNormal.optional([
-    /// Comment on anonymous field
-    @Default(-1) int? field0,
-    int? field1,
-  ]) = KitchenSinkTwinNormal_Optional;
-  const factory KitchenSinkTwinNormal.buffer(
-    Uint8List field0,
-  ) = KitchenSinkTwinNormal_Buffer;
-  const factory KitchenSinkTwinNormal.enums([
-    @Default(WeekdaysTwinNormal.sunday) WeekdaysTwinNormal field0,
-  ]) = KitchenSinkTwinNormal_Enums;
-}
+                    
+                }
 
 @freezed
-sealed class MeasureTwinNormal with _$MeasureTwinNormal {
-  const MeasureTwinNormal._();
+                sealed class EnumWithItemTupleTwinNormal with _$EnumWithItemTupleTwinNormal  {
+                    const EnumWithItemTupleTwinNormal._();
 
-  const factory MeasureTwinNormal.speed(
-    SpeedTwinNormal field0,
-  ) = MeasureTwinNormal_Speed;
-  const factory MeasureTwinNormal.distance(
-    DistanceTwinNormal field0,
-  ) = MeasureTwinNormal_Distance;
-}
+                     const factory EnumWithItemTupleTwinNormal.a(  Uint8List field0,) = EnumWithItemTupleTwinNormal_A;
+ const factory EnumWithItemTupleTwinNormal.b(  Int32List field0,) = EnumWithItemTupleTwinNormal_B;
 
-class NoteTwinNormal {
-  final WeekdaysTwinNormal day;
-  final String body;
+                    factory EnumWithItemTupleTwinNormal.fromJson(Map<String, dynamic> json) => _$EnumWithItemTupleTwinNormalFromJson(json);
 
-  const NoteTwinNormal({
-    this.day = WeekdaysTwinNormal.sunday,
-    required this.body,
-  });
-
-  @override
-  int get hashCode => day.hashCode ^ body.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is NoteTwinNormal &&
-          runtimeType == other.runtimeType &&
-          day == other.day &&
-          body == other.body;
-}
+                    
+                }
 
 @freezed
-sealed class SpeedTwinNormal with _$SpeedTwinNormal {
-  const SpeedTwinNormal._();
+                sealed class KitchenSinkTwinNormal with _$KitchenSinkTwinNormal  {
+                    const KitchenSinkTwinNormal._();
 
-  const factory SpeedTwinNormal.unknown() = SpeedTwinNormal_Unknown;
-  const factory SpeedTwinNormal.gps(
-    double field0,
-  ) = SpeedTwinNormal_GPS;
-}
+                     /// Comment on variant
+const factory KitchenSinkTwinNormal.empty() = KitchenSinkTwinNormal_Empty;
+ const factory KitchenSinkTwinNormal.primitives({ /// Dart field comment
+ @Default(-1) int int32 ,  required double float64 ,  required bool boolean , }) = KitchenSinkTwinNormal_Primitives;
+ const factory KitchenSinkTwinNormal.nested(  int field0,[ @Default(KitchenSinkTwinNormal.empty()) KitchenSinkTwinNormal field1,]) = KitchenSinkTwinNormal_Nested;
+ const factory KitchenSinkTwinNormal.optional([/// Comment on anonymous field
+ @Default(-1) int? field0,  int? field1,]) = KitchenSinkTwinNormal_Optional;
+ const factory KitchenSinkTwinNormal.buffer(  Uint8List field0,) = KitchenSinkTwinNormal_Buffer;
+ const factory KitchenSinkTwinNormal.enums([ @Default(WeekdaysTwinNormal.sunday) WeekdaysTwinNormal field0,]) = KitchenSinkTwinNormal_Enums;
+
+                    factory KitchenSinkTwinNormal.fromJson(Map<String, dynamic> json) => _$KitchenSinkTwinNormalFromJson(json);
+
+                    
+                }
+
+@freezed
+                sealed class MeasureTwinNormal with _$MeasureTwinNormal  {
+                    const MeasureTwinNormal._();
+
+                     const factory MeasureTwinNormal.speed(  SpeedTwinNormal field0,) = MeasureTwinNormal_Speed;
+ const factory MeasureTwinNormal.distance(  DistanceTwinNormal field0,) = MeasureTwinNormal_Distance;
+
+                    factory MeasureTwinNormal.fromJson(Map<String, dynamic> json) => _$MeasureTwinNormalFromJson(json);
+
+                    
+                }
+
+class NoteTwinNormal  {
+                final WeekdaysTwinNormal day;
+final String body;
+
+                const NoteTwinNormal({this.day = WeekdaysTwinNormal.sunday,required this.body ,});
+
+                
+                
+
+                
+        @override
+        int get hashCode => day.hashCode^body.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is NoteTwinNormal &&
+                runtimeType == other.runtimeType
+                && day == other.day&& body == other.body;
+        
+            }
+
+@freezed
+                sealed class SpeedTwinNormal with _$SpeedTwinNormal  {
+                    const SpeedTwinNormal._();
+
+                     const factory SpeedTwinNormal.unknown() = SpeedTwinNormal_Unknown;
+ const factory SpeedTwinNormal.gps(  double field0,) = SpeedTwinNormal_GPS;
+
+                    factory SpeedTwinNormal.fromJson(Map<String, dynamic> json) => _$SpeedTwinNormalFromJson(json);
+
+                    
+                }
+            

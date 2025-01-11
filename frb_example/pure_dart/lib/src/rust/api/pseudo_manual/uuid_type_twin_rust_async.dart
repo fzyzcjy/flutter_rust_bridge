@@ -9,38 +9,36 @@ import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:uuid/uuid.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 
-Future<UuidValue> handleUuidTwinRustAsync({required UuidValue id}) => RustLib
-    .instance.api
-    .crateApiPseudoManualUuidTypeTwinRustAsyncHandleUuidTwinRustAsync(id: id);
+            // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 
-Future<List<UuidValue>> handleUuidsTwinRustAsync(
-        {required List<UuidValue> ids}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualUuidTypeTwinRustAsyncHandleUuidsTwinRustAsync(
-            ids: ids);
 
-Future<FeatureUuidTwinRustAsync> handleNestedUuidsTwinRustAsync(
-        {required FeatureUuidTwinRustAsync ids}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualUuidTypeTwinRustAsyncHandleNestedUuidsTwinRustAsync(
-            ids: ids);
+            Future<UuidValue> handleUuidTwinRustAsync({required UuidValue id }) => RustLib.instance.api.crateApiPseudoManualUuidTypeTwinRustAsyncHandleUuidTwinRustAsync(id: id);
 
-class FeatureUuidTwinRustAsync {
-  final UuidValue one;
+Future<List<UuidValue>> handleUuidsTwinRustAsync({required List<UuidValue> ids }) => RustLib.instance.api.crateApiPseudoManualUuidTypeTwinRustAsyncHandleUuidsTwinRustAsync(ids: ids);
 
-  const FeatureUuidTwinRustAsync({
-    required this.one,
-  });
+Future<FeatureUuidTwinRustAsync> handleNestedUuidsTwinRustAsync({required FeatureUuidTwinRustAsync ids }) => RustLib.instance.api.crateApiPseudoManualUuidTypeTwinRustAsyncHandleNestedUuidsTwinRustAsync(ids: ids);
 
-  @override
-  int get hashCode => one.hashCode;
+            class FeatureUuidTwinRustAsync  {
+                final UuidValue one;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is FeatureUuidTwinRustAsync &&
-          runtimeType == other.runtimeType &&
-          one == other.one;
-}
+                const FeatureUuidTwinRustAsync({required this.one ,});
+
+                
+                
+
+                
+        @override
+        int get hashCode => one.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is FeatureUuidTwinRustAsync &&
+                runtimeType == other.runtimeType
+                && one == other.one;
+        
+            }
+            

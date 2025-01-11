@@ -8,56 +8,59 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-RawStringItemStructTwinSync testRawStringItemStructTwinSync() =>
-    RustLib.instance.api
-        .crateApiPseudoManualRawStringTwinSyncTestRawStringItemStructTwinSync();
 
-MoreThanJustOneRawStringStructTwinSync
-    testMoreThanJustOneRawStringStructTwinSync() => RustLib.instance.api
-        .crateApiPseudoManualRawStringTwinSyncTestMoreThanJustOneRawStringStructTwinSync();
+            
 
-class MoreThanJustOneRawStringStructTwinSync {
-  final String regular;
-  final String type;
-  final bool async_;
-  final String another;
+            RawStringItemStructTwinSync testRawStringItemStructTwinSync() => RustLib.instance.api.crateApiPseudoManualRawStringTwinSyncTestRawStringItemStructTwinSync();
 
-  const MoreThanJustOneRawStringStructTwinSync({
-    required this.regular,
-    required this.type,
-    required this.async_,
-    required this.another,
-  });
+MoreThanJustOneRawStringStructTwinSync testMoreThanJustOneRawStringStructTwinSync() => RustLib.instance.api.crateApiPseudoManualRawStringTwinSyncTestMoreThanJustOneRawStringStructTwinSync();
 
-  @override
-  int get hashCode =>
-      regular.hashCode ^ type.hashCode ^ async_.hashCode ^ another.hashCode;
+            class MoreThanJustOneRawStringStructTwinSync  {
+                final String regular;
+final String type;
+final bool async_;
+final String another;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is MoreThanJustOneRawStringStructTwinSync &&
-          runtimeType == other.runtimeType &&
-          regular == other.regular &&
-          type == other.type &&
-          async_ == other.async_ &&
-          another == other.another;
-}
+                const MoreThanJustOneRawStringStructTwinSync({required this.regular ,required this.type ,required this.async_ ,required this.another ,});
 
-class RawStringItemStructTwinSync {
-  final String type;
+                
+                
 
-  const RawStringItemStructTwinSync({
-    required this.type,
-  });
+                
+        @override
+        int get hashCode => regular.hashCode^type.hashCode^async_.hashCode^another.hashCode;
+        
 
-  @override
-  int get hashCode => type.hashCode;
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is MoreThanJustOneRawStringStructTwinSync &&
+                runtimeType == other.runtimeType
+                && regular == other.regular&& type == other.type&& async_ == other.async_&& another == other.another;
+        
+            }
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is RawStringItemStructTwinSync &&
-          runtimeType == other.runtimeType &&
-          type == other.type;
-}
+class RawStringItemStructTwinSync  {
+                final String type;
+
+                const RawStringItemStructTwinSync({required this.type ,});
+
+                
+                
+
+                
+        @override
+        int get hashCode => type.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is RawStringItemStructTwinSync &&
+                runtimeType == other.runtimeType
+                && type == other.type;
+        
+            }
+            

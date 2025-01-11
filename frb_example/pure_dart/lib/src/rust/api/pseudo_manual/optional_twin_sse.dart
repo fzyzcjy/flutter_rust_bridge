@@ -10,199 +10,133 @@ import 'misc_example_twin_sse.dart';
 import 'newtype_pattern_twin_sse.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `fmt`, `fmt`, `fmt`
 
-Future<double?> handleOptionalReturnTwinSse(
-        {required double left, required double right}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSseHandleOptionalReturnTwinSse(
-            left: left, right: right);
+            // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `fmt`, `fmt`, `fmt`
 
-Future<ElementTwinSse?> handleOptionalStructTwinSse({String? document}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSseHandleOptionalStructTwinSse(
-            document: document);
 
-Future<ExoticOptionalsTwinSse?> handleOptionalIncrementTwinSse(
-        {ExoticOptionalsTwinSse? opt}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSseHandleOptionalIncrementTwinSse(
-            opt: opt);
+            Future<double?> handleOptionalReturnTwinSse({required double left , required double right }) => RustLib.instance.api.crateApiPseudoManualOptionalTwinSseHandleOptionalReturnTwinSse(left: left, right: right);
 
-Future<double> handleIncrementBoxedOptionalTwinSse({double? opt}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSseHandleIncrementBoxedOptionalTwinSse(
-            opt: opt);
+Future<ElementTwinSse?> handleOptionalStructTwinSse({String? document }) => RustLib.instance.api.crateApiPseudoManualOptionalTwinSseHandleOptionalStructTwinSse(document: document);
 
-Future<OptVecsTwinSse> handleVecOfOptsTwinSse({required OptVecsTwinSse opt}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSseHandleVecOfOptsTwinSse(opt: opt);
+Future<ExoticOptionalsTwinSse?> handleOptionalIncrementTwinSse({ExoticOptionalsTwinSse? opt }) => RustLib.instance.api.crateApiPseudoManualOptionalTwinSseHandleOptionalIncrementTwinSse(opt: opt);
 
-Future<String> handleOptionBoxArgumentsTwinSse(
-        {int? i8Box,
-        int? u8Box,
-        int? i32Box,
-        PlatformInt64? i64Box,
-        double? f64Box,
-        bool? boolbox,
-        ExoticOptionalsTwinSse? structbox}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSseHandleOptionBoxArgumentsTwinSse(
-            i8Box: i8Box,
-            u8Box: u8Box,
-            i32Box: i32Box,
-            i64Box: i64Box,
-            f64Box: f64Box,
-            boolbox: boolbox,
-            structbox: structbox);
+Future<double> handleIncrementBoxedOptionalTwinSse({double? opt }) => RustLib.instance.api.crateApiPseudoManualOptionalTwinSseHandleIncrementBoxedOptionalTwinSse(opt: opt);
 
-class AttributeTwinSse {
-  final String key;
-  final String value;
+Future<OptVecsTwinSse> handleVecOfOptsTwinSse({required OptVecsTwinSse opt }) => RustLib.instance.api.crateApiPseudoManualOptionalTwinSseHandleVecOfOptsTwinSse(opt: opt);
 
-  const AttributeTwinSse({
-    required this.key,
-    required this.value,
-  });
+Future<String> handleOptionBoxArgumentsTwinSse({int? i8Box , int? u8Box , int? i32Box , PlatformInt64? i64Box , double? f64Box , bool? boolbox , ExoticOptionalsTwinSse? structbox }) => RustLib.instance.api.crateApiPseudoManualOptionalTwinSseHandleOptionBoxArgumentsTwinSse(i8Box: i8Box, u8Box: u8Box, i32Box: i32Box, i64Box: i64Box, f64Box: f64Box, boolbox: boolbox, structbox: structbox);
 
-  @override
-  int get hashCode => key.hashCode ^ value.hashCode;
+            class AttributeTwinSse  {
+                final String key;
+final String value;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is AttributeTwinSse &&
-          runtimeType == other.runtimeType &&
-          key == other.key &&
-          value == other.value;
-}
+                const AttributeTwinSse({required this.key ,required this.value ,});
 
-class ElementTwinSse {
-  final String? tag;
-  final String? text;
-  final List<AttributeTwinSse>? attributes;
-  final List<ElementTwinSse>? children;
+                
+                
 
-  const ElementTwinSse({
-    this.tag,
-    this.text,
-    this.attributes,
-    this.children,
-  });
+                
+        @override
+        int get hashCode => key.hashCode^value.hashCode;
+        
 
-  static Future<ElementTwinSse> default_() => RustLib.instance.api
-      .crateApiPseudoManualOptionalTwinSseElementTwinSseDefault();
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is AttributeTwinSse &&
+                runtimeType == other.runtimeType
+                && key == other.key&& value == other.value;
+        
+            }
 
-  @override
-  int get hashCode =>
-      tag.hashCode ^ text.hashCode ^ attributes.hashCode ^ children.hashCode;
+class ElementTwinSse  {
+                final String? tag;
+final String? text;
+final List<AttributeTwinSse>? attributes;
+final List<ElementTwinSse>? children;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ElementTwinSse &&
-          runtimeType == other.runtimeType &&
-          tag == other.tag &&
-          text == other.text &&
-          attributes == other.attributes &&
-          children == other.children;
-}
+                const ElementTwinSse({this.tag ,this.text ,this.attributes ,this.children ,});
 
-class ExoticOptionalsTwinSse {
-  final int? int32;
-  final PlatformInt64? int64;
-  final double? float64;
-  final bool? boolean;
-  final Uint8List? zerocopy;
-  final Int8List? int8List;
-  final Uint8List? uint8List;
-  final Int32List? int32List;
-  final Float32List? float32List;
-  final Float64List? float64List;
-  final List<AttributeTwinSse>? attributes;
-  final List<AttributeTwinSse?> attributesNullable;
-  final List<AttributeTwinSse?>? nullableAttributes;
-  final NewTypeIntTwinSse? newtypeint;
+                static Future<ElementTwinSse>  default_()=>RustLib.instance.api.crateApiPseudoManualOptionalTwinSseElementTwinSseDefault();
 
-  const ExoticOptionalsTwinSse({
-    this.int32,
-    this.int64,
-    this.float64,
-    this.boolean,
-    this.zerocopy,
-    this.int8List,
-    this.uint8List,
-    this.int32List,
-    this.float32List,
-    this.float64List,
-    this.attributes,
-    required this.attributesNullable,
-    this.nullableAttributes,
-    this.newtypeint,
-  });
 
-  @override
-  int get hashCode =>
-      int32.hashCode ^
-      int64.hashCode ^
-      float64.hashCode ^
-      boolean.hashCode ^
-      zerocopy.hashCode ^
-      int8List.hashCode ^
-      uint8List.hashCode ^
-      int32List.hashCode ^
-      float32List.hashCode ^
-      float64List.hashCode ^
-      attributes.hashCode ^
-      attributesNullable.hashCode ^
-      nullableAttributes.hashCode ^
-      newtypeint.hashCode;
+                
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ExoticOptionalsTwinSse &&
-          runtimeType == other.runtimeType &&
-          int32 == other.int32 &&
-          int64 == other.int64 &&
-          float64 == other.float64 &&
-          boolean == other.boolean &&
-          zerocopy == other.zerocopy &&
-          int8List == other.int8List &&
-          uint8List == other.uint8List &&
-          int32List == other.int32List &&
-          float32List == other.float32List &&
-          float64List == other.float64List &&
-          attributes == other.attributes &&
-          attributesNullable == other.attributesNullable &&
-          nullableAttributes == other.nullableAttributes &&
-          newtypeint == other.newtypeint;
-}
+                
+        @override
+        int get hashCode => tag.hashCode^text.hashCode^attributes.hashCode^children.hashCode;
+        
 
-class OptVecsTwinSse {
-  final List<int?> i32;
-  final List<WeekdaysTwinSse?> enums;
-  final List<String?> strings;
-  final List<Int32List?> buffers;
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is ElementTwinSse &&
+                runtimeType == other.runtimeType
+                && tag == other.tag&& text == other.text&& attributes == other.attributes&& children == other.children;
+        
+            }
 
-  const OptVecsTwinSse({
-    required this.i32,
-    required this.enums,
-    required this.strings,
-    required this.buffers,
-  });
+class ExoticOptionalsTwinSse  {
+                final int? int32;
+final PlatformInt64? int64;
+final double? float64;
+final bool? boolean;
+final Uint8List? zerocopy;
+final Int8List? int8List;
+final Uint8List? uint8List;
+final Int32List? int32List;
+final Float32List? float32List;
+final Float64List? float64List;
+final List<AttributeTwinSse>? attributes;
+final List<AttributeTwinSse?> attributesNullable;
+final List<AttributeTwinSse?>? nullableAttributes;
+final NewTypeIntTwinSse? newtypeint;
 
-  @override
-  int get hashCode =>
-      i32.hashCode ^ enums.hashCode ^ strings.hashCode ^ buffers.hashCode;
+                const ExoticOptionalsTwinSse({this.int32 ,this.int64 ,this.float64 ,this.boolean ,this.zerocopy ,this.int8List ,this.uint8List ,this.int32List ,this.float32List ,this.float64List ,this.attributes ,required this.attributesNullable ,this.nullableAttributes ,this.newtypeint ,});
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is OptVecsTwinSse &&
-          runtimeType == other.runtimeType &&
-          i32 == other.i32 &&
-          enums == other.enums &&
-          strings == other.strings &&
-          buffers == other.buffers;
-}
+                
+                
+
+                
+        @override
+        int get hashCode => int32.hashCode^int64.hashCode^float64.hashCode^boolean.hashCode^zerocopy.hashCode^int8List.hashCode^uint8List.hashCode^int32List.hashCode^float32List.hashCode^float64List.hashCode^attributes.hashCode^attributesNullable.hashCode^nullableAttributes.hashCode^newtypeint.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is ExoticOptionalsTwinSse &&
+                runtimeType == other.runtimeType
+                && int32 == other.int32&& int64 == other.int64&& float64 == other.float64&& boolean == other.boolean&& zerocopy == other.zerocopy&& int8List == other.int8List&& uint8List == other.uint8List&& int32List == other.int32List&& float32List == other.float32List&& float64List == other.float64List&& attributes == other.attributes&& attributesNullable == other.attributesNullable&& nullableAttributes == other.nullableAttributes&& newtypeint == other.newtypeint;
+        
+            }
+
+class OptVecsTwinSse  {
+                final List<int?> i32;
+final List<WeekdaysTwinSse?> enums;
+final List<String?> strings;
+final List<Int32List?> buffers;
+
+                const OptVecsTwinSse({required this.i32 ,required this.enums ,required this.strings ,required this.buffers ,});
+
+                
+                
+
+                
+        @override
+        int get hashCode => i32.hashCode^enums.hashCode^strings.hashCode^buffers.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is OptVecsTwinSse &&
+                runtimeType == other.runtimeType
+                && i32 == other.i32&& enums == other.enums&& strings == other.strings&& buffers == other.buffers;
+        
+            }
+            

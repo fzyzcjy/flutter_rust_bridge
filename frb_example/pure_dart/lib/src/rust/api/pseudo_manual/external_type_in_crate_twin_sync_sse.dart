@@ -11,18 +11,16 @@ import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-bool useImportedStructTwinSyncSse({required MyStruct myStruct}) => RustLib
-    .instance.api
-    .crateApiPseudoManualExternalTypeInCrateTwinSyncSseUseImportedStructTwinSyncSse(
-        myStruct: myStruct);
 
-bool useImportedEnumTwinSyncSse({required MyEnum myEnum}) => RustLib
-    .instance.api
-    .crateApiPseudoManualExternalTypeInCrateTwinSyncSseUseImportedEnumTwinSyncSse(
-        myEnum: myEnum);
+            
 
-OldSimpleStruct callOldModuleSystemTwinSyncSse() => RustLib.instance.api
-    .crateApiPseudoManualExternalTypeInCrateTwinSyncSseCallOldModuleSystemTwinSyncSse();
+            bool useImportedStructTwinSyncSse({required MyStruct myStruct }) => RustLib.instance.api.crateApiPseudoManualExternalTypeInCrateTwinSyncSseUseImportedStructTwinSyncSse(myStruct: myStruct);
 
-NewSimpleStruct callNewModuleSystemTwinSyncSse() => RustLib.instance.api
-    .crateApiPseudoManualExternalTypeInCrateTwinSyncSseCallNewModuleSystemTwinSyncSse();
+bool useImportedEnumTwinSyncSse({required MyEnum myEnum }) => RustLib.instance.api.crateApiPseudoManualExternalTypeInCrateTwinSyncSseUseImportedEnumTwinSyncSse(myEnum: myEnum);
+
+OldSimpleStruct callOldModuleSystemTwinSyncSse() => RustLib.instance.api.crateApiPseudoManualExternalTypeInCrateTwinSyncSseCallOldModuleSystemTwinSyncSse();
+
+NewSimpleStruct callNewModuleSystemTwinSyncSse() => RustLib.instance.api.crateApiPseudoManualExternalTypeInCrateTwinSyncSseCallNewModuleSystemTwinSyncSse();
+
+            
+            
