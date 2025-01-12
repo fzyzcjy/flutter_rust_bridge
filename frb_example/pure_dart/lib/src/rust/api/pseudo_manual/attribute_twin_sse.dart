@@ -10,51 +10,50 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'package:meta/meta.dart' as meta;
 
-                part 'attribute_twin_sse.freezed.dart';
-                part 'attribute_twin_sse.g.dart';
-                
+part 'attribute_twin_sse.freezed.dart';
+part 'attribute_twin_sse.g.dart';
 
-            // These types are ignored because they are not used by any `pub` functions: `IgnoredStructTwinSse`, `StructWithOnlyIgnoredMethodTwinSse`
+// These types are ignored because they are not used by any `pub` functions: `IgnoredStructTwinSse`, `StructWithOnlyIgnoredMethodTwinSse`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 // These functions are ignored (category: IgnoreBecauseExplicitAttribute): `func_should_not_exist_in_dart_twin_sse`, `method_should_not_exist_in_dart_twin_sse`
 // These functions are ignored (category: IgnoreBecauseOwnerTyShouldIgnore): `method_should_not_exist_in_dart_twin_sse`
 
+Future<void> handleCustomizedStructTwinSse({required CustomizedTwinSse val}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualAttributeTwinSseHandleCustomizedStructTwinSse(
+            val: val);
 
-            Future<void> handleCustomizedStructTwinSse({required CustomizedTwinSse val }) => RustLib.instance.api.crateApiPseudoManualAttributeTwinSseHandleCustomizedStructTwinSse(val: val);
+Future<UserIdTwinSse> nextUserIdTwinSse(
+        {UserIdTwinSse userId = const UserIdTwinSse()}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualAttributeTwinSseNextUserIdTwinSse(userId: userId);
 
-Future<UserIdTwinSse> nextUserIdTwinSse({UserIdTwinSse userId = const UserIdTwinSse()}) => RustLib.instance.api.crateApiPseudoManualAttributeTwinSseNextUserIdTwinSse(userId: userId);
+class CustomizedTwinSse {
+  final String finalField;
+  String? nonFinalField;
 
-            class CustomizedTwinSse  {
-                final String finalField;
- String? nonFinalField;
+  CustomizedTwinSse({
+    required this.finalField,
+    this.nonFinalField,
+  });
 
-                CustomizedTwinSse({required this.finalField ,this.nonFinalField ,});
+  @override
+  int get hashCode => finalField.hashCode ^ nonFinalField.hashCode;
 
-                
-                
-
-                
-        @override
-        int get hashCode => finalField.hashCode^nonFinalField.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is CustomizedTwinSse &&
-                runtimeType == other.runtimeType
-                && finalField == other.finalField&& nonFinalField == other.nonFinalField;
-        
-            }
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CustomizedTwinSse &&
+          runtimeType == other.runtimeType &&
+          finalField == other.finalField &&
+          nonFinalField == other.nonFinalField;
+}
 
 /// Example for @freezed and @meta.immutable
 @freezed
 @meta.immutable
-class UserIdTwinSse with _$UserIdTwinSse  {
-                
-                const factory UserIdTwinSse({@Default(0)  int value,}) = _UserIdTwinSse;
-                
-                
-            }
-            
+class UserIdTwinSse with _$UserIdTwinSse {
+  const factory UserIdTwinSse({
+    @Default(0) int value,
+  }) = _UserIdTwinSse;
+}

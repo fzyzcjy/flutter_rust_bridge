@@ -8,31 +8,18 @@
 import 'frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+class Simple {
+  final int val;
 
-            
+  const Simple({
+    required this.val,
+  });
 
-            
+  @override
+  int get hashCode => val.hashCode;
 
-            class Simple  {
-                final int val;
-
-                const Simple({required this.val ,});
-
-                
-                
-
-                
-        @override
-        int get hashCode => val.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is Simple &&
-                runtimeType == other.runtimeType
-                && val == other.val;
-        
-            }
-            
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Simple && runtimeType == other.runtimeType && val == other.val;
+}

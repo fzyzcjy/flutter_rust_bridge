@@ -9,45 +9,25 @@ import '../frb_generated.dart';
 import 'misc_no_twin_example_a.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+Future<void> sameFunctionNameInDifferentFiles() => RustLib.instance.api
+    .crateApiMiscNoTwinExampleBSameFunctionNameInDifferentFiles();
 
-            
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructInMiscNoTwinExampleB>>
+abstract class StructInMiscNoTwinExampleB implements RustOpaqueInterface {
+  Future<StructInMiscNoTwinExampleA> getStructInMiscNoTwinExampleA();
 
-            Future<void> sameFunctionNameInDifferentFiles() => RustLib.instance.api.crateApiMiscNoTwinExampleBSameFunctionNameInDifferentFiles();
+  Future<void> sampleFunctionB();
+}
 
-            
-                // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructInMiscNoTwinExampleB>>
-                abstract class StructInMiscNoTwinExampleB implements RustOpaqueInterface {
-                     Future<StructInMiscNoTwinExampleA>  getStructInMiscNoTwinExampleA();
+class StructWithImplBlockInAnotherFileDependency {
+  const StructWithImplBlockInAnotherFileDependency();
 
+  @override
+  int get hashCode => 0;
 
- Future<void>  sampleFunctionB();
-
-
-
-                    
-                }
-                
-
-class StructWithImplBlockInAnotherFileDependency  {
-                
-
-                const StructWithImplBlockInAnotherFileDependency();
-
-                
-                
-
-                
-        @override
-        int get hashCode => 0;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is StructWithImplBlockInAnotherFileDependency &&
-                runtimeType == other.runtimeType
-                ;
-        
-            }
-            
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithImplBlockInAnotherFileDependency &&
+          runtimeType == other.runtimeType;
+}

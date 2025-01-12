@@ -10,249 +10,273 @@ import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 
-                part 'method_twin_rust_async_sse.freezed.dart';
-                part 'method_twin_rust_async_sse.g.dart';
-                
+part 'method_twin_rust_async_sse.freezed.dart';
+part 'method_twin_rust_async_sse.g.dart';
 
-            // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 
+Future<SumWithTwinRustAsyncSse> getSumStructTwinRustAsyncSse() => RustLib
+    .instance.api
+    .crateApiPseudoManualMethodTwinRustAsyncSseGetSumStructTwinRustAsyncSse();
 
-            Future<SumWithTwinRustAsyncSse> getSumStructTwinRustAsyncSse() => RustLib.instance.api.crateApiPseudoManualMethodTwinRustAsyncSseGetSumStructTwinRustAsyncSse();
+Future<SumWithTwinRustAsyncSseArray3> getSumArrayTwinRustAsyncSse(
+        {required int a, required int b, required int c}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMethodTwinRustAsyncSseGetSumArrayTwinRustAsyncSse(
+            a: a, b: b, c: c);
 
-Future<SumWithTwinRustAsyncSseArray3> getSumArrayTwinRustAsyncSse({required int a , required int b , required int c }) => RustLib.instance.api.crateApiPseudoManualMethodTwinRustAsyncSseGetSumArrayTwinRustAsyncSse(a: a, b: b, c: c);
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StaticGetterOnlyTwinRustAsyncSse>>
+abstract class StaticGetterOnlyTwinRustAsyncSse implements RustOpaqueInterface {
+  static Future<int> get staticGetterTwinRustAsyncSse => RustLib.instance.api
+      .crateApiPseudoManualMethodTwinRustAsyncSseStaticGetterOnlyTwinRustAsyncSseStaticGetterTwinRustAsyncSse();
+}
 
-            
-                // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StaticGetterOnlyTwinRustAsyncSse>>
-                abstract class StaticGetterOnlyTwinRustAsyncSse implements RustOpaqueInterface {
-                    static Future<int> get staticGetterTwinRustAsyncSse=>RustLib.instance.api.crateApiPseudoManualMethodTwinRustAsyncSseStaticGetterOnlyTwinRustAsyncSseStaticGetterTwinRustAsyncSse();
+class ConcatenateWithTwinRustAsyncSse {
+  final String a;
 
+  const ConcatenateWithTwinRustAsyncSse({
+    required this.a,
+  });
 
+  static Future<String> concatenateStaticTwinRustAsyncSse(
+          {required String a, required String b}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinRustAsyncSseConcatenateWithTwinRustAsyncSseConcatenateStaticTwinRustAsyncSse(
+              a: a, b: b);
 
-                    
-                }
-                
+  Future<String> concatenateTwinRustAsyncSse({required String b}) => RustLib
+      .instance.api
+      .crateApiPseudoManualMethodTwinRustAsyncSseConcatenateWithTwinRustAsyncSseConcatenateTwinRustAsyncSse(
+          that: this, b: b);
 
-class ConcatenateWithTwinRustAsyncSse  {
-                final String a;
+  static Stream<int> handleSomeStaticStreamSinkSingleArgTwinRustAsyncSse() =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinRustAsyncSseConcatenateWithTwinRustAsyncSseHandleSomeStaticStreamSinkSingleArgTwinRustAsyncSse();
 
-                const ConcatenateWithTwinRustAsyncSse({required this.a ,});
+  static Stream<
+      Log2TwinRustAsyncSse> handleSomeStaticStreamSinkTwinRustAsyncSse(
+          {required int key, required int max}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinRustAsyncSseConcatenateWithTwinRustAsyncSseHandleSomeStaticStreamSinkTwinRustAsyncSse(
+              key: key, max: max);
 
-                static Future<String>  concatenateStaticTwinRustAsyncSse({required String a , required String b })=>RustLib.instance.api.crateApiPseudoManualMethodTwinRustAsyncSseConcatenateWithTwinRustAsyncSseConcatenateStaticTwinRustAsyncSse(a: a, b: b);
+  Stream<int> handleSomeStreamSinkAt1TwinRustAsyncSse() => RustLib.instance.api
+          .crateApiPseudoManualMethodTwinRustAsyncSseConcatenateWithTwinRustAsyncSseHandleSomeStreamSinkAt1TwinRustAsyncSse(
+        that: this,
+      );
 
+  Stream<Log2TwinRustAsyncSse> handleSomeStreamSinkTwinRustAsyncSse(
+          {required int key, required int max}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinRustAsyncSseConcatenateWithTwinRustAsyncSseHandleSomeStreamSinkTwinRustAsyncSse(
+              that: this, key: key, max: max);
 
- Future<String>  concatenateTwinRustAsyncSse({required String b })=>RustLib.instance.api.crateApiPseudoManualMethodTwinRustAsyncSseConcatenateWithTwinRustAsyncSseConcatenateTwinRustAsyncSse(that: this, b: b);
+  static Future<ConcatenateWithTwinRustAsyncSse> newTwinRustAsyncSse(
+          {required String a}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinRustAsyncSseConcatenateWithTwinRustAsyncSseNewTwinRustAsyncSse(
+              a: a);
 
+  Future<String> get simpleGetterTwinRustAsyncSse => RustLib.instance.api
+          .crateApiPseudoManualMethodTwinRustAsyncSseConcatenateWithTwinRustAsyncSseSimpleGetterTwinRustAsyncSse(
+        that: this,
+      );
 
-static Stream<int>  handleSomeStaticStreamSinkSingleArgTwinRustAsyncSse()=>RustLib.instance.api.crateApiPseudoManualMethodTwinRustAsyncSseConcatenateWithTwinRustAsyncSseHandleSomeStaticStreamSinkSingleArgTwinRustAsyncSse();
+  @override
+  int get hashCode => a.hashCode;
 
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ConcatenateWithTwinRustAsyncSse &&
+          runtimeType == other.runtimeType &&
+          a == other.a;
+}
 
-static Stream<Log2TwinRustAsyncSse>  handleSomeStaticStreamSinkTwinRustAsyncSse({required int key , required int max })=>RustLib.instance.api.crateApiPseudoManualMethodTwinRustAsyncSseConcatenateWithTwinRustAsyncSseHandleSomeStaticStreamSinkTwinRustAsyncSse(key: key, max: max);
+class Log2TwinRustAsyncSse {
+  final int key;
+  final String value;
 
+  const Log2TwinRustAsyncSse({
+    required this.key,
+    required this.value,
+  });
 
- Stream<int>  handleSomeStreamSinkAt1TwinRustAsyncSse()=>RustLib.instance.api.crateApiPseudoManualMethodTwinRustAsyncSseConcatenateWithTwinRustAsyncSseHandleSomeStreamSinkAt1TwinRustAsyncSse(that: this, );
+  @override
+  int get hashCode => key.hashCode ^ value.hashCode;
 
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Log2TwinRustAsyncSse &&
+          runtimeType == other.runtimeType &&
+          key == other.key &&
+          value == other.value;
+}
 
- Stream<Log2TwinRustAsyncSse>  handleSomeStreamSinkTwinRustAsyncSse({required int key , required int max })=>RustLib.instance.api.crateApiPseudoManualMethodTwinRustAsyncSseConcatenateWithTwinRustAsyncSseHandleSomeStreamSinkTwinRustAsyncSse(that: this, key: key, max: max);
+class MyCallableTwinRustAsyncSse {
+  final String one;
 
+  const MyCallableTwinRustAsyncSse({
+    required this.one,
+  });
 
-static Future<ConcatenateWithTwinRustAsyncSse>  newTwinRustAsyncSse({required String a })=>RustLib.instance.api.crateApiPseudoManualMethodTwinRustAsyncSseConcatenateWithTwinRustAsyncSseNewTwinRustAsyncSse(a: a);
+  Future<String> call({required String two}) => RustLib.instance.api
+      .crateApiPseudoManualMethodTwinRustAsyncSseMyCallableTwinRustAsyncSseCall(
+          that: this, two: two);
 
+  @override
+  int get hashCode => one.hashCode;
 
- Future<String> get simpleGetterTwinRustAsyncSse=>RustLib.instance.api.crateApiPseudoManualMethodTwinRustAsyncSseConcatenateWithTwinRustAsyncSseSimpleGetterTwinRustAsyncSse(that: this, );
-
-
-                
-
-                
-        @override
-        int get hashCode => a.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is ConcatenateWithTwinRustAsyncSse &&
-                runtimeType == other.runtimeType
-                && a == other.a;
-        
-            }
-
-class Log2TwinRustAsyncSse  {
-                final int key;
-final String value;
-
-                const Log2TwinRustAsyncSse({required this.key ,required this.value ,});
-
-                
-                
-
-                
-        @override
-        int get hashCode => key.hashCode^value.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is Log2TwinRustAsyncSse &&
-                runtimeType == other.runtimeType
-                && key == other.key&& value == other.value;
-        
-            }
-
-class MyCallableTwinRustAsyncSse  {
-                final String one;
-
-                const MyCallableTwinRustAsyncSse({required this.one ,});
-
-                 Future<String>  call({required String two })=>RustLib.instance.api.crateApiPseudoManualMethodTwinRustAsyncSseMyCallableTwinRustAsyncSseCall(that: this, two: two);
-
-
-                
-
-                
-        @override
-        int get hashCode => one.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is MyCallableTwinRustAsyncSse &&
-                runtimeType == other.runtimeType
-                && one == other.one;
-        
-            }
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MyCallableTwinRustAsyncSse &&
+          runtimeType == other.runtimeType &&
+          one == other.one;
+}
 
 @freezed
-                sealed class SimpleEnumTwinRustAsyncSse with _$SimpleEnumTwinRustAsyncSse  {
-                    const SimpleEnumTwinRustAsyncSse._();
+sealed class SimpleEnumTwinRustAsyncSse with _$SimpleEnumTwinRustAsyncSse {
+  const SimpleEnumTwinRustAsyncSse._();
 
-                     const factory SimpleEnumTwinRustAsyncSse.first() = SimpleEnumTwinRustAsyncSse_First;
- const factory SimpleEnumTwinRustAsyncSse.second(  String field0,) = SimpleEnumTwinRustAsyncSse_Second;
+  const factory SimpleEnumTwinRustAsyncSse.first() =
+      SimpleEnumTwinRustAsyncSse_First;
+  const factory SimpleEnumTwinRustAsyncSse.second(
+    String field0,
+  ) = SimpleEnumTwinRustAsyncSse_Second;
 
-                    factory SimpleEnumTwinRustAsyncSse.fromJson(Map<String, dynamic> json) => _$SimpleEnumTwinRustAsyncSseFromJson(json);
+  factory SimpleEnumTwinRustAsyncSse.fromJson(Map<String, dynamic> json) =>
+      _$SimpleEnumTwinRustAsyncSseFromJson(json);
 
-                    static Future<SimpleEnumTwinRustAsyncSse>  returnSelfTwinRustAsyncSse({required String one })=>RustLib.instance.api.crateApiPseudoManualMethodTwinRustAsyncSseSimpleEnumTwinRustAsyncSseReturnSelfTwinRustAsyncSse(one: one);
+  static Future<SimpleEnumTwinRustAsyncSse> returnSelfTwinRustAsyncSse(
+          {required String one}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinRustAsyncSseSimpleEnumTwinRustAsyncSseReturnSelfTwinRustAsyncSse(
+              one: one);
 
-
- Future<String>  simpleMethodTwinRustAsyncSse()=>RustLib.instance.api.crateApiPseudoManualMethodTwinRustAsyncSseSimpleEnumTwinRustAsyncSseSimpleMethodTwinRustAsyncSse(that: this, );
-
-
-                }
+  Future<String> simpleMethodTwinRustAsyncSse() => RustLib.instance.api
+          .crateApiPseudoManualMethodTwinRustAsyncSseSimpleEnumTwinRustAsyncSseSimpleMethodTwinRustAsyncSse(
+        that: this,
+      );
+}
 
 enum SimplePrimitiveEnumTwinRustAsyncSse {
-                    first,
-second,
-                    ;
-                     Future<int>  simpleMethodTwinRustAsyncSse()=>RustLib.instance.api.crateApiPseudoManualMethodTwinRustAsyncSseSimplePrimitiveEnumTwinRustAsyncSseSimpleMethodTwinRustAsyncSse(that: this, );
+  first,
+  second,
+  ;
 
+  Future<int> simpleMethodTwinRustAsyncSse() => RustLib.instance.api
+          .crateApiPseudoManualMethodTwinRustAsyncSseSimplePrimitiveEnumTwinRustAsyncSseSimpleMethodTwinRustAsyncSse(
+        that: this,
+      );
+}
 
-                }
+class SimpleStructTwinRustAsyncSse {
+  final String one;
 
-class SimpleStructTwinRustAsyncSse  {
-                final String one;
+  const SimpleStructTwinRustAsyncSse({
+    required this.one,
+  });
 
-                const SimpleStructTwinRustAsyncSse({required this.one ,});
+  static Future<String> argSelfTwinRustAsyncSse(
+          {required SimpleStructTwinRustAsyncSse a,
+          required SimpleStructTwinRustAsyncSse b}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinRustAsyncSseSimpleStructTwinRustAsyncSseArgSelfTwinRustAsyncSse(
+              a: a, b: b);
 
-                static Future<String>  argSelfTwinRustAsyncSse({required SimpleStructTwinRustAsyncSse a , required SimpleStructTwinRustAsyncSse b })=>RustLib.instance.api.crateApiPseudoManualMethodTwinRustAsyncSseSimpleStructTwinRustAsyncSseArgSelfTwinRustAsyncSse(a: a, b: b);
+  Future<String> receiverBorrowTwinRustAsyncSse() => RustLib.instance.api
+          .crateApiPseudoManualMethodTwinRustAsyncSseSimpleStructTwinRustAsyncSseReceiverBorrowTwinRustAsyncSse(
+        that: this,
+      );
 
+  Future<String> receiverOwnTwinRustAsyncSse() => RustLib.instance.api
+          .crateApiPseudoManualMethodTwinRustAsyncSseSimpleStructTwinRustAsyncSseReceiverOwnTwinRustAsyncSse(
+        that: this,
+      );
 
- Future<String>  receiverBorrowTwinRustAsyncSse()=>RustLib.instance.api.crateApiPseudoManualMethodTwinRustAsyncSseSimpleStructTwinRustAsyncSseReceiverBorrowTwinRustAsyncSse(that: this, );
+  static Future<SimpleStructTwinRustAsyncSse> returnSelfTwinRustAsyncSse(
+          {required String one}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinRustAsyncSseSimpleStructTwinRustAsyncSseReturnSelfTwinRustAsyncSse(
+              one: one);
 
+  static Future<List<String>> vecSelfTwinRustAsyncSse(
+          {required List<SimpleStructTwinRustAsyncSse> arg}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinRustAsyncSseSimpleStructTwinRustAsyncSseVecSelfTwinRustAsyncSse(
+              arg: arg);
 
- Future<String>  receiverOwnTwinRustAsyncSse()=>RustLib.instance.api.crateApiPseudoManualMethodTwinRustAsyncSseSimpleStructTwinRustAsyncSseReceiverOwnTwinRustAsyncSse(that: this, );
+  @override
+  int get hashCode => one.hashCode;
 
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SimpleStructTwinRustAsyncSse &&
+          runtimeType == other.runtimeType &&
+          one == other.one;
+}
 
-static Future<SimpleStructTwinRustAsyncSse>  returnSelfTwinRustAsyncSse({required String one })=>RustLib.instance.api.crateApiPseudoManualMethodTwinRustAsyncSseSimpleStructTwinRustAsyncSseReturnSelfTwinRustAsyncSse(one: one);
+class StaticOnlyTwinRustAsyncSse {
+  final String one;
 
+  const StaticOnlyTwinRustAsyncSse({
+    required this.one,
+  });
 
-static Future<List<String>>  vecSelfTwinRustAsyncSse({required List<SimpleStructTwinRustAsyncSse> arg })=>RustLib.instance.api.crateApiPseudoManualMethodTwinRustAsyncSseSimpleStructTwinRustAsyncSseVecSelfTwinRustAsyncSse(arg: arg);
+  static Future<int> staticMethodTwinRustAsyncSse({required int a}) => RustLib
+      .instance.api
+      .crateApiPseudoManualMethodTwinRustAsyncSseStaticOnlyTwinRustAsyncSseStaticMethodTwinRustAsyncSse(
+          a: a);
 
+  @override
+  int get hashCode => one.hashCode;
 
-                
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StaticOnlyTwinRustAsyncSse &&
+          runtimeType == other.runtimeType &&
+          one == other.one;
+}
 
-                
-        @override
-        int get hashCode => one.hashCode;
-        
+class SumWithTwinRustAsyncSse {
+  final int x;
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is SimpleStructTwinRustAsyncSse &&
-                runtimeType == other.runtimeType
-                && one == other.one;
-        
-            }
+  const SumWithTwinRustAsyncSse({
+    required this.x,
+  });
 
-class StaticOnlyTwinRustAsyncSse  {
-                final String one;
+  Future<int> sumTwinRustAsyncSse({required int y, required int z}) => RustLib
+      .instance.api
+      .crateApiPseudoManualMethodTwinRustAsyncSseSumWithTwinRustAsyncSseSumTwinRustAsyncSse(
+          that: this, y: y, z: z);
 
-                const StaticOnlyTwinRustAsyncSse({required this.one ,});
+  @override
+  int get hashCode => x.hashCode;
 
-                static Future<int>  staticMethodTwinRustAsyncSse({required int a })=>RustLib.instance.api.crateApiPseudoManualMethodTwinRustAsyncSseStaticOnlyTwinRustAsyncSseStaticMethodTwinRustAsyncSse(a: a);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SumWithTwinRustAsyncSse &&
+          runtimeType == other.runtimeType &&
+          x == other.x;
+}
 
+class SumWithTwinRustAsyncSseArray3
+    extends NonGrowableListView<SumWithTwinRustAsyncSse> {
+  static const arraySize = 3;
 
-                
+  @internal
+  List<SumWithTwinRustAsyncSse> get inner => _inner;
+  final List<SumWithTwinRustAsyncSse> _inner;
 
-                
-        @override
-        int get hashCode => one.hashCode;
-        
+  SumWithTwinRustAsyncSseArray3(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is StaticOnlyTwinRustAsyncSse &&
-                runtimeType == other.runtimeType
-                && one == other.one;
-        
-            }
-
-class SumWithTwinRustAsyncSse  {
-                final int x;
-
-                const SumWithTwinRustAsyncSse({required this.x ,});
-
-                 Future<int>  sumTwinRustAsyncSse({required int y , required int z })=>RustLib.instance.api.crateApiPseudoManualMethodTwinRustAsyncSseSumWithTwinRustAsyncSseSumTwinRustAsyncSse(that: this, y: y, z: z);
-
-
-                
-
-                
-        @override
-        int get hashCode => x.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is SumWithTwinRustAsyncSse &&
-                runtimeType == other.runtimeType
-                && x == other.x;
-        
-            }
-
-
-            class SumWithTwinRustAsyncSseArray3 extends NonGrowableListView<SumWithTwinRustAsyncSse> {
-                static const arraySize = 3;
-
-                @internal
-                List<SumWithTwinRustAsyncSse> get inner => _inner;
-                final List<SumWithTwinRustAsyncSse> _inner;
-
-                SumWithTwinRustAsyncSseArray3(this._inner)
-                    : assert(_inner.length == arraySize),
-                      super(_inner);
-  
-                SumWithTwinRustAsyncSseArray3.init(SumWithTwinRustAsyncSse fill): this(List<SumWithTwinRustAsyncSse>.filled(arraySize,fill));
-              }
-            
-            
+  SumWithTwinRustAsyncSseArray3.init(SumWithTwinRustAsyncSse fill)
+      : this(List<SumWithTwinRustAsyncSse>.filled(arraySize, fill));
+}

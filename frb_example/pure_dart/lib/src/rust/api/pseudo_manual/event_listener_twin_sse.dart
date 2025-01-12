@@ -9,26 +9,33 @@ import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 
-                part 'event_listener_twin_sse.freezed.dart';
-                part 'event_listener_twin_sse.g.dart';
-                
+part 'event_listener_twin_sse.freezed.dart';
+part 'event_listener_twin_sse.g.dart';
 
-            // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `deref`, `initialize`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `deref`, `initialize`
 
+Future<Stream<EventTwinSse>> registerEventListenerTwinSse() =>
+    RustLib.instance.api
+        .crateApiPseudoManualEventListenerTwinSseRegisterEventListenerTwinSse();
 
-            Future<Stream<EventTwinSse>> registerEventListenerTwinSse() => RustLib.instance.api.crateApiPseudoManualEventListenerTwinSseRegisterEventListenerTwinSse();
+Future<void> closeEventListenerTwinSse() => RustLib.instance.api
+    .crateApiPseudoManualEventListenerTwinSseCloseEventListenerTwinSse();
 
-Future<void> closeEventListenerTwinSse() => RustLib.instance.api.crateApiPseudoManualEventListenerTwinSseCloseEventListenerTwinSse();
+Future<void> createEventTwinSse(
+        {required String address, required String payload}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualEventListenerTwinSseCreateEventTwinSse(
+            address: address, payload: payload);
 
-Future<void> createEventTwinSse({required String address , required String payload }) => RustLib.instance.api.crateApiPseudoManualEventListenerTwinSseCreateEventTwinSse(address: address, payload: payload);
-
-            @freezed
-class EventTwinSse with _$EventTwinSse  {
-                const EventTwinSse._();
-                const factory EventTwinSse({ required  String address, required  String payload,}) = _EventTwinSse;
-                 Future<String>  asStringTwinSse()=>RustLib.instance.api.crateApiPseudoManualEventListenerTwinSseEventTwinSseAsStringTwinSse(that: this, );
-
-
-                
-            }
-            
+@freezed
+class EventTwinSse with _$EventTwinSse {
+  const EventTwinSse._();
+  const factory EventTwinSse({
+    required String address,
+    required String payload,
+  }) = _EventTwinSse;
+  Future<String> asStringTwinSse() => RustLib.instance.api
+          .crateApiPseudoManualEventListenerTwinSseEventTwinSseAsStringTwinSse(
+        that: this,
+      );
+}

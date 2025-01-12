@@ -8,78 +8,96 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 
-            // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
+DateTime datetimeUtcTwinSync({required DateTime d}) => RustLib.instance.api
+    .crateApiPseudoManualChronoTypeTwinSyncDatetimeUtcTwinSync(d: d);
 
+DateTime datetimeLocalTwinSync({required DateTime d}) => RustLib.instance.api
+    .crateApiPseudoManualChronoTypeTwinSyncDatetimeLocalTwinSync(d: d);
 
-            DateTime datetimeUtcTwinSync({required DateTime d }) => RustLib.instance.api.crateApiPseudoManualChronoTypeTwinSyncDatetimeUtcTwinSync(d: d);
+DateTime naivedatetimeTwinSync({required DateTime d}) => RustLib.instance.api
+    .crateApiPseudoManualChronoTypeTwinSyncNaivedatetimeTwinSync(d: d);
 
-DateTime datetimeLocalTwinSync({required DateTime d }) => RustLib.instance.api.crateApiPseudoManualChronoTypeTwinSyncDatetimeLocalTwinSync(d: d);
+DateTime? optionalEmptyDatetimeUtcTwinSync({DateTime? d}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinSyncOptionalEmptyDatetimeUtcTwinSync(
+            d: d);
 
-DateTime naivedatetimeTwinSync({required DateTime d }) => RustLib.instance.api.crateApiPseudoManualChronoTypeTwinSyncNaivedatetimeTwinSync(d: d);
+Duration durationTwinSync({required Duration d}) => RustLib.instance.api
+    .crateApiPseudoManualChronoTypeTwinSyncDurationTwinSync(d: d);
 
-DateTime? optionalEmptyDatetimeUtcTwinSync({DateTime? d }) => RustLib.instance.api.crateApiPseudoManualChronoTypeTwinSyncOptionalEmptyDatetimeUtcTwinSync(d: d);
+List<Duration> handleTimestampsTwinSync(
+        {required List<DateTime> timestamps, required DateTime epoch}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinSyncHandleTimestampsTwinSync(
+            timestamps: timestamps, epoch: epoch);
 
-Duration durationTwinSync({required Duration d }) => RustLib.instance.api.crateApiPseudoManualChronoTypeTwinSyncDurationTwinSync(d: d);
+List<DateTime> handleDurationsTwinSync(
+        {required List<Duration> durations, required DateTime since}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinSyncHandleDurationsTwinSync(
+            durations: durations, since: since);
 
-List<Duration> handleTimestampsTwinSync({required List<DateTime> timestamps , required DateTime epoch }) => RustLib.instance.api.crateApiPseudoManualChronoTypeTwinSyncHandleTimestampsTwinSync(timestamps: timestamps, epoch: epoch);
+TestChronoTwinSync testChronoTwinSync() => RustLib.instance.api
+    .crateApiPseudoManualChronoTypeTwinSyncTestChronoTwinSync();
 
-List<DateTime> handleDurationsTwinSync({required List<Duration> durations , required DateTime since }) => RustLib.instance.api.crateApiPseudoManualChronoTypeTwinSyncHandleDurationsTwinSync(durations: durations, since: since);
+TestChronoTwinSync testPreciseChronoTwinSync() => RustLib.instance.api
+    .crateApiPseudoManualChronoTypeTwinSyncTestPreciseChronoTwinSync();
 
-TestChronoTwinSync testChronoTwinSync() => RustLib.instance.api.crateApiPseudoManualChronoTypeTwinSyncTestChronoTwinSync();
+Duration howLongDoesItTakeTwinSync({required FeatureChronoTwinSync mine}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinSyncHowLongDoesItTakeTwinSync(
+            mine: mine);
 
-TestChronoTwinSync testPreciseChronoTwinSync() => RustLib.instance.api.crateApiPseudoManualChronoTypeTwinSyncTestPreciseChronoTwinSync();
+class FeatureChronoTwinSync {
+  final DateTime utc;
+  final DateTime local;
+  final Duration duration;
+  final DateTime naive;
 
-Duration howLongDoesItTakeTwinSync({required FeatureChronoTwinSync mine }) => RustLib.instance.api.crateApiPseudoManualChronoTypeTwinSyncHowLongDoesItTakeTwinSync(mine: mine);
+  const FeatureChronoTwinSync({
+    required this.utc,
+    required this.local,
+    required this.duration,
+    required this.naive,
+  });
 
-            class FeatureChronoTwinSync  {
-                final DateTime utc;
-final DateTime local;
-final Duration duration;
-final DateTime naive;
+  @override
+  int get hashCode =>
+      utc.hashCode ^ local.hashCode ^ duration.hashCode ^ naive.hashCode;
 
-                const FeatureChronoTwinSync({required this.utc ,required this.local ,required this.duration ,required this.naive ,});
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is FeatureChronoTwinSync &&
+          runtimeType == other.runtimeType &&
+          utc == other.utc &&
+          local == other.local &&
+          duration == other.duration &&
+          naive == other.naive;
+}
 
-                
-                
+class TestChronoTwinSync {
+  final DateTime? dt;
+  final DateTime? dt2;
+  final Duration? du;
 
-                
-        @override
-        int get hashCode => utc.hashCode^local.hashCode^duration.hashCode^naive.hashCode;
-        
+  const TestChronoTwinSync({
+    this.dt,
+    this.dt2,
+    this.du,
+  });
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is FeatureChronoTwinSync &&
-                runtimeType == other.runtimeType
-                && utc == other.utc&& local == other.local&& duration == other.duration&& naive == other.naive;
-        
-            }
+  @override
+  int get hashCode => dt.hashCode ^ dt2.hashCode ^ du.hashCode;
 
-class TestChronoTwinSync  {
-                final DateTime? dt;
-final DateTime? dt2;
-final Duration? du;
-
-                const TestChronoTwinSync({this.dt ,this.dt2 ,this.du ,});
-
-                
-                
-
-                
-        @override
-        int get hashCode => dt.hashCode^dt2.hashCode^du.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is TestChronoTwinSync &&
-                runtimeType == other.runtimeType
-                && dt == other.dt&& dt2 == other.dt2&& du == other.du;
-        
-            }
-            
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TestChronoTwinSync &&
+          runtimeType == other.runtimeType &&
+          dt == other.dt &&
+          dt2 == other.dt2 &&
+          du == other.du;
+}

@@ -8,12 +8,9 @@ import 'dart:io';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+Future<void> funcAsyncVoidTwinNormal() =>
+    RustLib.instance.api.crateApiAsyncMiscFuncAsyncVoidTwinNormal();
 
-            
-
-            Future<void> funcAsyncVoidTwinNormal() => RustLib.instance.api.crateApiAsyncMiscFuncAsyncVoidTwinNormal();
-
-Future<int> funcAsyncSimpleAddTwinNormal({required int a , required int b }) => RustLib.instance.api.crateApiAsyncMiscFuncAsyncSimpleAddTwinNormal(a: a, b: b);
-
-            
-            
+Future<int> funcAsyncSimpleAddTwinNormal({required int a, required int b}) =>
+    RustLib.instance.api
+        .crateApiAsyncMiscFuncAsyncSimpleAddTwinNormal(a: a, b: b);

@@ -8,10 +8,8 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-
-            
-
-            Future<int?> primitiveOptionalTypesTwinRustAsyncSse({int? myI32 , PlatformInt64? myI64 , double? myF64 , bool? myBool }) => RustLib.instance.api.crateApiPseudoManualOptionalPrimitiveMiscTwinRustAsyncSsePrimitiveOptionalTypesTwinRustAsyncSse(myI32: myI32, myI64: myI64, myF64: myF64, myBool: myBool);
-
-            
-            
+Future<int?> primitiveOptionalTypesTwinRustAsyncSse(
+        {int? myI32, PlatformInt64? myI64, double? myF64, bool? myBool}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualOptionalPrimitiveMiscTwinRustAsyncSsePrimitiveOptionalTypesTwinRustAsyncSse(
+            myI32: myI32, myI64: myI64, myF64: myF64, myBool: myBool);

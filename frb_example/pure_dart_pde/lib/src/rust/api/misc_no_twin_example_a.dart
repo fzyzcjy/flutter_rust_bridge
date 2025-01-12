@@ -10,381 +10,291 @@ import '../frb_generated.dart';
 import 'misc_no_twin_example_b.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-
-            // These functions are ignored because they are not marked as `pub`: `log`
+// These functions are ignored because they are not marked as `pub`: `log`
 // These types are ignored because they are not used by any `pub` functions: `Issue2170Struct`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`
 
+Future<void> sameFunctionNameInDifferentFiles() => RustLib.instance.api
+    .crateApiMiscNoTwinExampleASameFunctionNameInDifferentFiles();
 
-            Future<void> sameFunctionNameInDifferentFiles() => RustLib.instance.api.crateApiMiscNoTwinExampleASameFunctionNameInDifferentFiles();
+Future<void> renamedFunction() => RustLib.instance.api
+    .crateApiMiscNoTwinExampleAFunctionWithCustomNameTwinNormal();
 
-Future<void> renamedFunction() => RustLib.instance.api.crateApiMiscNoTwinExampleAFunctionWithCustomNameTwinNormal();
+Future<void> functionWithArgTypeNameOverride(
+        {required BoxAnyMyDartTypeRename a}) =>
+    RustLib.instance.api
+        .crateApiMiscNoTwinExampleAFunctionWithArgTypeNameOverride(a: a);
 
-Future<void> functionWithArgTypeNameOverride({required BoxAnyMyDartTypeRename a }) => RustLib.instance.api.crateApiMiscNoTwinExampleAFunctionWithArgTypeNameOverride(a: a);
+Future<String> featureGatedFunction() =>
+    RustLib.instance.api.crateApiMiscNoTwinExampleAFeatureGatedFunction();
 
-Future<String> featureGatedFunction() => RustLib.instance.api.crateApiMiscNoTwinExampleAFeatureGatedFunction();
+Future<void> for_({required String type}) =>
+    RustLib.instance.api.crateApiMiscNoTwinExampleAFor(type: type);
 
-Future<void> for_({required String type }) => RustLib.instance.api.crateApiMiscNoTwinExampleAFor(type: type);
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn Any + Send + Sync + 'static >>>
+abstract class BoxAnyMyDartTypeRename implements RustOpaqueInterface {}
 
-            
-                // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn Any + Send + Sync + 'static >>>
-                abstract class BoxAnyMyDartTypeRename implements RustOpaqueInterface {
-                    
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DeliberateFailSanityCheckTwinNormal>>
+abstract class DeliberateFailSanityCheckTwinNormal
+    implements RustOpaqueInterface {
+  Uint8List get deliberateBadFieldA;
 
-                    
-                }
-                
+  OpaqueItemTwinNormal get deliberateBadFieldB;
 
+  List<OpaqueItemTwinNormal> get deliberateBadFieldC;
 
-                // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DeliberateFailSanityCheckTwinNormal>>
-                abstract class DeliberateFailSanityCheckTwinNormal implements RustOpaqueInterface {
-                     Uint8List get deliberateBadFieldA;
+  String get goodFieldA;
 
+  int get goodFieldB;
 
- OpaqueItemTwinNormal get deliberateBadFieldB;
-
-
- List<OpaqueItemTwinNormal> get deliberateBadFieldC;
-
-
- String get goodFieldA;
-
-
- int get goodFieldB;
-
-
- OpaqueItemTwinNormal get goodFieldC;
-
+  OpaqueItemTwinNormal get goodFieldC;
 
   set deliberateBadFieldA(Uint8List deliberateBadFieldA);
 
-
   set deliberateBadFieldB(OpaqueItemTwinNormal deliberateBadFieldB);
-
 
   set deliberateBadFieldC(List<OpaqueItemTwinNormal> deliberateBadFieldC);
 
-
   set goodFieldA(String goodFieldA);
-
 
   set goodFieldB(int goodFieldB);
 
-
   set goodFieldC(OpaqueItemTwinNormal goodFieldC);
 
+  static Future<void> dummyFunctionTwinNormal() => RustLib.instance.api
+      .crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalDummyFunctionTwinNormal();
+}
 
-static Future<void>  dummyFunctionTwinNormal()=>RustLib.instance.api.crateApiMiscNoTwinExampleADeliberateFailSanityCheckTwinNormalDummyFunctionTwinNormal();
-
-
-
-                    
-                }
-                
-
-
-                // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ItemContainerSolutionOneTwinNormal>>
-                abstract class ItemContainerSolutionOneTwinNormal implements RustOpaqueInterface {
-                     String get name;
-
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ItemContainerSolutionOneTwinNormal>>
+abstract class ItemContainerSolutionOneTwinNormal
+    implements RustOpaqueInterface {
+  String get name;
 
   set name(String name);
 
+  static Future<ItemContainerSolutionOneTwinNormal> createTwinNormal() => RustLib
+      .instance.api
+      .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalCreateTwinNormal();
 
-static Future<ItemContainerSolutionOneTwinNormal>  createTwinNormal()=>RustLib.instance.api.crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalCreateTwinNormal();
+  Future<Int32List> getItemContentsTwinNormal();
+}
 
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyStructWithTryFromTwinNormal>>
+abstract class MyStructWithTryFromTwinNormal implements RustOpaqueInterface {
+  static Future<MyStructWithTryFromTwinNormal> tryFrom(
+          {required String value}) =>
+      RustLib.instance.api
+          .crateApiMiscNoTwinExampleAMyStructWithTryFromTwinNormalTryFrom(
+              value: value);
 
- Future<Int32List>  getItemContentsTwinNormal();
+  Future<String> valueTwinNormal();
+}
 
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinNormal>>
+abstract class OpaqueItemTwinNormal implements RustOpaqueInterface {}
 
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SimpleLogger>>
+abstract class SimpleLogger implements RustOpaqueInterface {
+  List<String> getAndReset();
 
-                    
-                }
-                
+  factory SimpleLogger() =>
+      RustLib.instance.api.crateApiMiscNoTwinExampleASimpleLoggerNew();
+}
 
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructInMiscNoTwinExampleA>>
+abstract class StructInMiscNoTwinExampleA implements RustOpaqueInterface {
+  Future<void> sampleFunctionA();
+}
 
-                // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyStructWithTryFromTwinNormal>>
-                abstract class MyStructWithTryFromTwinNormal implements RustOpaqueInterface {
-                    static Future<MyStructWithTryFromTwinNormal>  tryFrom({required String value })=>RustLib.instance.api.crateApiMiscNoTwinExampleAMyStructWithTryFromTwinNormalTryFrom(value: value);
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithImplBlockInMultiFile>>
+abstract class StructWithImplBlockInMultiFile implements RustOpaqueInterface {
+  Future<void> methodInA();
 
+  Future<void> methodInB();
+}
 
- Future<String>  valueTwinNormal();
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithRustAutoOpaqueFieldWithManyDeriveInner>>
+abstract class StructWithRustAutoOpaqueFieldWithManyDeriveInner
+    implements RustOpaqueInterface {
+  static Future<StructWithRustAutoOpaqueFieldWithManyDeriveInner> default_() =>
+      RustLib.instance.api
+          .crateApiMiscNoTwinExampleAStructWithRustAutoOpaqueFieldWithManyDeriveInnerDefault();
+}
 
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithSimpleSetterTwinNormal>>
+abstract class StructWithSimpleSetterTwinNormal implements RustOpaqueInterface {
+  int get something;
 
-
-                    
-                }
-                
-
-
-                // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueItemTwinNormal>>
-                abstract class OpaqueItemTwinNormal implements RustOpaqueInterface {
-                    
-
-                    
-                }
-                
-
-
-                // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SimpleLogger>>
-                abstract class SimpleLogger implements RustOpaqueInterface {
-                     List<String>  getAndReset();
-
-
-factory SimpleLogger()=>RustLib.instance.api.crateApiMiscNoTwinExampleASimpleLoggerNew();
-
-
-
-                    
-                }
-                
-
-
-                // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructInMiscNoTwinExampleA>>
-                abstract class StructInMiscNoTwinExampleA implements RustOpaqueInterface {
-                     Future<void>  sampleFunctionA();
-
-
-
-                    
-                }
-                
-
-
-                // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithImplBlockInMultiFile>>
-                abstract class StructWithImplBlockInMultiFile implements RustOpaqueInterface {
-                     Future<void>  methodInA();
-
-
- Future<void>  methodInB();
-
-
-
-                    
-                }
-                
-
-
-                // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithRustAutoOpaqueFieldWithManyDeriveInner>>
-                abstract class StructWithRustAutoOpaqueFieldWithManyDeriveInner implements RustOpaqueInterface {
-                    static Future<StructWithRustAutoOpaqueFieldWithManyDeriveInner>  default_()=>RustLib.instance.api.crateApiMiscNoTwinExampleAStructWithRustAutoOpaqueFieldWithManyDeriveInnerDefault();
-
-
-
-                    
-                }
-                
-
-
-                // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithSimpleSetterTwinNormal>>
-                abstract class StructWithSimpleSetterTwinNormal implements RustOpaqueInterface {
-                     int get something;
-
-
-factory StructWithSimpleSetterTwinNormal()=>RustLib.instance.api.crateApiMiscNoTwinExampleAStructWithSimpleSetterTwinNormalNew();
-
+  factory StructWithSimpleSetterTwinNormal() => RustLib.instance.api
+      .crateApiMiscNoTwinExampleAStructWithSimpleSetterTwinNormalNew();
 
   set something(int value);
 
-
- int get simpleGetter;
-
+  int get simpleGetter;
 
   set simpleSetter(int value);
+}
 
+abstract class Issue2170Trait {
+  Future<void> method();
+}
 
+class ItemContainerSolutionTwoTwinNormal {
+  String name;
+  final List<OpaqueItemTwinNormal> items;
 
-                    
-                }
-                
+  ItemContainerSolutionTwoTwinNormal({
+    required this.name,
+    required this.items,
+  });
 
+  static Future<ItemContainerSolutionTwoTwinNormal> createTwinNormal() => RustLib
+      .instance.api
+      .crateApiMiscNoTwinExampleAItemContainerSolutionTwoTwinNormalCreateTwinNormal();
 
-                abstract class Issue2170Trait {
-                     Future<void>  method();
+  Future<Int32List> getItemContentsTwinNormal() => RustLib.instance.api
+          .crateApiMiscNoTwinExampleAItemContainerSolutionTwoTwinNormalGetItemContentsTwinNormal(
+        that: this,
+      );
 
+  @override
+  int get hashCode => name.hashCode ^ items.hashCode;
 
-                }
-                
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ItemContainerSolutionTwoTwinNormal &&
+          runtimeType == other.runtimeType &&
+          name == other.name &&
+          items == other.items;
+}
 
-class ItemContainerSolutionTwoTwinNormal  {
-                 String name;
-final List<OpaqueItemTwinNormal> items;
+class MyStructWithSync {
+  const MyStructWithSync();
 
-                ItemContainerSolutionTwoTwinNormal({required this.name ,required this.items ,});
+  Future<void> sync() =>
+      RustLib.instance.api.crateApiMiscNoTwinExampleAMyStructWithSyncSync(
+        that: this,
+      );
 
-                static Future<ItemContainerSolutionTwoTwinNormal>  createTwinNormal()=>RustLib.instance.api.crateApiMiscNoTwinExampleAItemContainerSolutionTwoTwinNormalCreateTwinNormal();
+  @override
+  int get hashCode => 0;
 
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MyStructWithSync && runtimeType == other.runtimeType;
+}
 
- Future<Int32List>  getItemContentsTwinNormal()=>RustLib.instance.api.crateApiMiscNoTwinExampleAItemContainerSolutionTwoTwinNormalGetItemContentsTwinNormal(that: this, );
+class StructWithCustomNameMethodTwinNormal {
+  final int field0;
 
+  const StructWithCustomNameMethodTwinNormal({
+    required this.field0,
+  });
 
-                
+  void renamedMethod() => RustLib.instance.api
+          .crateApiMiscNoTwinExampleAStructWithCustomNameMethodTwinNormalMethodWithCustomNameTwinNormal(
+        that: this,
+      );
 
-                
-        @override
-        int get hashCode => name.hashCode^items.hashCode;
-        
+  @override
+  int get hashCode => field0.hashCode;
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is ItemContainerSolutionTwoTwinNormal &&
-                runtimeType == other.runtimeType
-                && name == other.name&& items == other.items;
-        
-            }
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithCustomNameMethodTwinNormal &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
 
-class MyStructWithSync  {
-                
+class StructWithImplBlockInAnotherFile {
+  const StructWithImplBlockInAnotherFile();
 
-                const MyStructWithSync();
+  static Future<void> f(
+          {required StructWithImplBlockInAnotherFileDependency arg}) =>
+      RustLib.instance.api
+          .crateApiMiscNoTwinExampleAStructWithImplBlockInAnotherFileF(
+              arg: arg);
 
-                 Future<void>  sync()=>RustLib.instance.api.crateApiMiscNoTwinExampleAMyStructWithSyncSync(that: this, );
+  @override
+  int get hashCode => 0;
 
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithImplBlockInAnotherFile &&
+          runtimeType == other.runtimeType;
+}
 
-                
+class StructWithRawNameField {
+  final String type;
 
-                
-        @override
-        int get hashCode => 0;
-        
+  const StructWithRawNameField({
+    required this.type,
+  });
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is MyStructWithSync &&
-                runtimeType == other.runtimeType
-                ;
-        
-            }
+  static Future<void> dummyFunction() => RustLib.instance.api
+      .crateApiMiscNoTwinExampleAStructWithRawNameFieldDummyFunction();
 
-class StructWithCustomNameMethodTwinNormal  {
-                final int field0;
+  @override
+  int get hashCode => type.hashCode;
 
-                const StructWithCustomNameMethodTwinNormal({required this.field0 ,});
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithRawNameField &&
+          runtimeType == other.runtimeType &&
+          type == other.type;
+}
 
-                 void  renamedMethod()=>RustLib.instance.api.crateApiMiscNoTwinExampleAStructWithCustomNameMethodTwinNormalMethodWithCustomNameTwinNormal(that: this, );
+class StructWithRustAutoOpaqueFieldWithManyDerive {
+  final StructWithRustAutoOpaqueFieldWithManyDeriveInner content;
 
+  const StructWithRustAutoOpaqueFieldWithManyDerive({
+    required this.content,
+  });
 
-                
+  static Future<StructWithRustAutoOpaqueFieldWithManyDerive> default_() => RustLib
+      .instance.api
+      .crateApiMiscNoTwinExampleAStructWithRustAutoOpaqueFieldWithManyDeriveDefault();
 
-                
-        @override
-        int get hashCode => field0.hashCode;
-        
+  Future<void> f() => RustLib.instance.api
+          .crateApiMiscNoTwinExampleAStructWithRustAutoOpaqueFieldWithManyDeriveF(
+        that: this,
+      );
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is StructWithCustomNameMethodTwinNormal &&
-                runtimeType == other.runtimeType
-                && field0 == other.field0;
-        
-            }
+  @override
+  int get hashCode => content.hashCode;
 
-class StructWithImplBlockInAnotherFile  {
-                
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithRustAutoOpaqueFieldWithManyDerive &&
+          runtimeType == other.runtimeType &&
+          content == other.content;
+}
 
-                const StructWithImplBlockInAnotherFile();
+class StructWithRustAutoOpaqueWithNonCloneData {
+  final NonCloneDataRaw content;
 
-                static Future<void>  f({required StructWithImplBlockInAnotherFileDependency arg })=>RustLib.instance.api.crateApiMiscNoTwinExampleAStructWithImplBlockInAnotherFileF(arg: arg);
+  const StructWithRustAutoOpaqueWithNonCloneData({
+    required this.content,
+  });
 
+  Future<void> f() => RustLib.instance.api
+          .crateApiMiscNoTwinExampleAStructWithRustAutoOpaqueWithNonCloneDataF(
+        that: this,
+      );
 
-                
+  @override
+  int get hashCode => content.hashCode;
 
-                
-        @override
-        int get hashCode => 0;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is StructWithImplBlockInAnotherFile &&
-                runtimeType == other.runtimeType
-                ;
-        
-            }
-
-class StructWithRawNameField  {
-                final String type;
-
-                const StructWithRawNameField({required this.type ,});
-
-                static Future<void>  dummyFunction()=>RustLib.instance.api.crateApiMiscNoTwinExampleAStructWithRawNameFieldDummyFunction();
-
-
-                
-
-                
-        @override
-        int get hashCode => type.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is StructWithRawNameField &&
-                runtimeType == other.runtimeType
-                && type == other.type;
-        
-            }
-
-class StructWithRustAutoOpaqueFieldWithManyDerive  {
-                final StructWithRustAutoOpaqueFieldWithManyDeriveInner content;
-
-                const StructWithRustAutoOpaqueFieldWithManyDerive({required this.content ,});
-
-                static Future<StructWithRustAutoOpaqueFieldWithManyDerive>  default_()=>RustLib.instance.api.crateApiMiscNoTwinExampleAStructWithRustAutoOpaqueFieldWithManyDeriveDefault();
-
-
- Future<void>  f()=>RustLib.instance.api.crateApiMiscNoTwinExampleAStructWithRustAutoOpaqueFieldWithManyDeriveF(that: this, );
-
-
-                
-
-                
-        @override
-        int get hashCode => content.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is StructWithRustAutoOpaqueFieldWithManyDerive &&
-                runtimeType == other.runtimeType
-                && content == other.content;
-        
-            }
-
-class StructWithRustAutoOpaqueWithNonCloneData  {
-                final NonCloneDataRaw content;
-
-                const StructWithRustAutoOpaqueWithNonCloneData({required this.content ,});
-
-                 Future<void>  f()=>RustLib.instance.api.crateApiMiscNoTwinExampleAStructWithRustAutoOpaqueWithNonCloneDataF(that: this, );
-
-
-                
-
-                
-        @override
-        int get hashCode => content.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is StructWithRustAutoOpaqueWithNonCloneData &&
-                runtimeType == other.runtimeType
-                && content == other.content;
-        
-            }
-            
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithRustAutoOpaqueWithNonCloneData &&
+          runtimeType == other.runtimeType &&
+          content == other.content;
+}

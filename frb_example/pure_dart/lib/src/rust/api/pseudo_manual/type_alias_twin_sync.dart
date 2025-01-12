@@ -9,38 +9,45 @@ import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+BigInt handleTypeAliasIdTwinSync({required BigInt input}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualTypeAliasTwinSyncHandleTypeAliasIdTwinSync(
+            input: input);
 
-            
+BigInt handleTypeNestAliasIdTwinSync({required BigInt input}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualTypeAliasTwinSyncHandleTypeNestAliasIdTwinSync(
+            input: input);
 
-            BigInt handleTypeAliasIdTwinSync({required BigInt input }) => RustLib.instance.api.crateApiPseudoManualTypeAliasTwinSyncHandleTypeAliasIdTwinSync(input: input);
+TestModelTwinSync handleTypeAliasModelTwinSync({required BigInt input}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualTypeAliasTwinSyncHandleTypeAliasModelTwinSync(
+            input: input);
 
-BigInt handleTypeNestAliasIdTwinSync({required BigInt input }) => RustLib.instance.api.crateApiPseudoManualTypeAliasTwinSyncHandleTypeNestAliasIdTwinSync(input: input);
+class TestModelTwinSync {
+  final BigInt id;
+  final String name;
+  final MyEnum aliasEnum;
+  final MyStruct aliasStruct;
 
-TestModelTwinSync handleTypeAliasModelTwinSync({required BigInt input }) => RustLib.instance.api.crateApiPseudoManualTypeAliasTwinSyncHandleTypeAliasModelTwinSync(input: input);
+  const TestModelTwinSync({
+    required this.id,
+    required this.name,
+    required this.aliasEnum,
+    required this.aliasStruct,
+  });
 
-            class TestModelTwinSync  {
-                final BigInt id;
-final String name;
-final MyEnum aliasEnum;
-final MyStruct aliasStruct;
+  @override
+  int get hashCode =>
+      id.hashCode ^ name.hashCode ^ aliasEnum.hashCode ^ aliasStruct.hashCode;
 
-                const TestModelTwinSync({required this.id ,required this.name ,required this.aliasEnum ,required this.aliasStruct ,});
-
-                
-                
-
-                
-        @override
-        int get hashCode => id.hashCode^name.hashCode^aliasEnum.hashCode^aliasStruct.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is TestModelTwinSync &&
-                runtimeType == other.runtimeType
-                && id == other.id&& name == other.name&& aliasEnum == other.aliasEnum&& aliasStruct == other.aliasStruct;
-        
-            }
-            
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TestModelTwinSync &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          name == other.name &&
+          aliasEnum == other.aliasEnum &&
+          aliasStruct == other.aliasStruct;
+}

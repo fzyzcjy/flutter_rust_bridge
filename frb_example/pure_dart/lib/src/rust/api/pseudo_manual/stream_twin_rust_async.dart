@@ -9,117 +9,134 @@ import '../../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-
-            // These functions are ignored because they are not marked as `pub`: `handle_stream_inner`
+// These functions are ignored because they are not marked as `pub`: `handle_stream_inner`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 
+Future<Stream<String>> funcStreamReturnErrorTwinRustAsync() => RustLib
+    .instance.api
+    .crateApiPseudoManualStreamTwinRustAsyncFuncStreamReturnErrorTwinRustAsync();
 
-            Future<Stream<String>> funcStreamReturnErrorTwinRustAsync() => RustLib.instance.api.crateApiPseudoManualStreamTwinRustAsyncFuncStreamReturnErrorTwinRustAsync();
+Future<Stream<String>> funcStreamReturnPanicTwinRustAsync() => RustLib
+    .instance.api
+    .crateApiPseudoManualStreamTwinRustAsyncFuncStreamReturnPanicTwinRustAsync();
 
-Future<Stream<String>> funcStreamReturnPanicTwinRustAsync() => RustLib.instance.api.crateApiPseudoManualStreamTwinRustAsyncFuncStreamReturnPanicTwinRustAsync();
+Stream<int> funcStreamSinkArgPositionTwinRustAsync(
+        {required int a, required int b}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualStreamTwinRustAsyncFuncStreamSinkArgPositionTwinRustAsync(
+            a: a, b: b);
 
-Stream<int> funcStreamSinkArgPositionTwinRustAsync({required int a , required int b }) => RustLib.instance.api.crateApiPseudoManualStreamTwinRustAsyncFuncStreamSinkArgPositionTwinRustAsync(a: a, b: b);
+Stream<MyStreamEntryTwinRustAsync> handleStreamOfStructTwinRustAsync() => RustLib
+    .instance.api
+    .crateApiPseudoManualStreamTwinRustAsyncHandleStreamOfStructTwinRustAsync();
 
-Stream<MyStreamEntryTwinRustAsync> handleStreamOfStructTwinRustAsync() => RustLib.instance.api.crateApiPseudoManualStreamTwinRustAsyncHandleStreamOfStructTwinRustAsync();
+Stream<LogTwinRustAsync> handleStreamSinkAt1TwinRustAsync(
+        {required int key, required int max}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualStreamTwinRustAsyncHandleStreamSinkAt1TwinRustAsync(
+            key: key, max: max);
 
-Stream<LogTwinRustAsync> handleStreamSinkAt1TwinRustAsync({required int key , required int max }) => RustLib.instance.api.crateApiPseudoManualStreamTwinRustAsyncHandleStreamSinkAt1TwinRustAsync(key: key, max: max);
+Stream<LogTwinRustAsync> handleStreamSinkAt2TwinRustAsync(
+        {required int key, required int max}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualStreamTwinRustAsyncHandleStreamSinkAt2TwinRustAsync(
+            key: key, max: max);
 
-Stream<LogTwinRustAsync> handleStreamSinkAt2TwinRustAsync({required int key , required int max }) => RustLib.instance.api.crateApiPseudoManualStreamTwinRustAsyncHandleStreamSinkAt2TwinRustAsync(key: key, max: max);
+Stream<LogTwinRustAsync> handleStreamSinkAt3TwinRustAsync(
+        {required int key, required int max}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualStreamTwinRustAsyncHandleStreamSinkAt3TwinRustAsync(
+            key: key, max: max);
 
-Stream<LogTwinRustAsync> handleStreamSinkAt3TwinRustAsync({required int key , required int max }) => RustLib.instance.api.crateApiPseudoManualStreamTwinRustAsyncHandleStreamSinkAt3TwinRustAsync(key: key, max: max);
+Stream<U8Array2> streamSinkFixedSizedPrimitiveArrayTwinRustAsync() => RustLib
+    .instance.api
+    .crateApiPseudoManualStreamTwinRustAsyncStreamSinkFixedSizedPrimitiveArrayTwinRustAsync();
 
-Stream<U8Array2> streamSinkFixedSizedPrimitiveArrayTwinRustAsync() => RustLib.instance.api.crateApiPseudoManualStreamTwinRustAsyncStreamSinkFixedSizedPrimitiveArrayTwinRustAsync();
+Future<void> streamSinkInsideVecTwinRustAsync(
+        {required List<RustStreamSink<int>> arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualStreamTwinRustAsyncStreamSinkInsideVecTwinRustAsync(
+            arg: arg);
 
-Future<void> streamSinkInsideVecTwinRustAsync({required List<RustStreamSink<int>> arg }) => RustLib.instance.api.crateApiPseudoManualStreamTwinRustAsyncStreamSinkInsideVecTwinRustAsync(arg: arg);
+Future<void> streamSinkInsideStructTwinRustAsync(
+        {required MyStructContainingStreamSinkTwinRustAsync arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualStreamTwinRustAsyncStreamSinkInsideStructTwinRustAsync(
+            arg: arg);
 
-Future<void> streamSinkInsideStructTwinRustAsync({required MyStructContainingStreamSinkTwinRustAsync arg }) => RustLib.instance.api.crateApiPseudoManualStreamTwinRustAsyncStreamSinkInsideStructTwinRustAsync(arg: arg);
+Stream<int> funcStreamAddValueAndErrorTwinRustAsync() => RustLib.instance.api
+    .crateApiPseudoManualStreamTwinRustAsyncFuncStreamAddValueAndErrorTwinRustAsync();
 
-Stream<int> funcStreamAddValueAndErrorTwinRustAsync() => RustLib.instance.api.crateApiPseudoManualStreamTwinRustAsyncFuncStreamAddValueAndErrorTwinRustAsync();
+class LogTwinRustAsync {
+  final int key;
+  final int value;
 
-            class LogTwinRustAsync  {
-                final int key;
-final int value;
+  const LogTwinRustAsync({
+    required this.key,
+    required this.value,
+  });
 
-                const LogTwinRustAsync({required this.key ,required this.value ,});
+  @override
+  int get hashCode => key.hashCode ^ value.hashCode;
 
-                
-                
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is LogTwinRustAsync &&
+          runtimeType == other.runtimeType &&
+          key == other.key &&
+          value == other.value;
+}
 
-                
-        @override
-        int get hashCode => key.hashCode^value.hashCode;
-        
+class MyStreamEntryTwinRustAsync {
+  final String hello;
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is LogTwinRustAsync &&
-                runtimeType == other.runtimeType
-                && key == other.key&& value == other.value;
-        
-            }
+  const MyStreamEntryTwinRustAsync({
+    required this.hello,
+  });
 
-class MyStreamEntryTwinRustAsync  {
-                final String hello;
+  @override
+  int get hashCode => hello.hashCode;
 
-                const MyStreamEntryTwinRustAsync({required this.hello ,});
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MyStreamEntryTwinRustAsync &&
+          runtimeType == other.runtimeType &&
+          hello == other.hello;
+}
 
-                
-                
+class MyStructContainingStreamSinkTwinRustAsync {
+  final int a;
+  final RustStreamSink<int> b;
 
-                
-        @override
-        int get hashCode => hello.hashCode;
-        
+  const MyStructContainingStreamSinkTwinRustAsync({
+    required this.a,
+    required this.b,
+  });
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is MyStreamEntryTwinRustAsync &&
-                runtimeType == other.runtimeType
-                && hello == other.hello;
-        
-            }
+  @override
+  int get hashCode => a.hashCode ^ b.hashCode;
 
-class MyStructContainingStreamSinkTwinRustAsync  {
-                final int a;
-final RustStreamSink<int> b;
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MyStructContainingStreamSinkTwinRustAsync &&
+          runtimeType == other.runtimeType &&
+          a == other.a &&
+          b == other.b;
+}
 
-                const MyStructContainingStreamSinkTwinRustAsync({required this.a ,required this.b ,});
+class U8Array2 extends NonGrowableListView<int> {
+  static const arraySize = 2;
 
-                
-                
+  @internal
+  Uint8List get inner => _inner;
+  final Uint8List _inner;
 
-                
-        @override
-        int get hashCode => a.hashCode^b.hashCode;
-        
+  U8Array2(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is MyStructContainingStreamSinkTwinRustAsync &&
-                runtimeType == other.runtimeType
-                && a == other.a&& b == other.b;
-        
-            }
-
-
-            class U8Array2 extends NonGrowableListView<int> {
-                static const arraySize = 2;
-
-                @internal
-                Uint8List get inner => _inner;
-                final Uint8List _inner;
-
-                U8Array2(this._inner)
-                    : assert(_inner.length == arraySize),
-                      super(_inner);
-  
-                U8Array2.init(): this(Uint8List(arraySize));
-              }
-            
-            
+  U8Array2.init() : this(Uint8List(arraySize));
+}

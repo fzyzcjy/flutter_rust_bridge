@@ -10,247 +10,320 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_auto_opaque_twin_moi.dart';
 
-                part 'rust_auto_opaque_twin_sse_moi.freezed.dart';
-                part 'rust_auto_opaque_twin_sse_moi.g.dart';
-                
+part 'rust_auto_opaque_twin_sse_moi.freezed.dart';
+part 'rust_auto_opaque_twin_sse_moi.g.dart';
 
-            
+Future<void> rustAutoOpaqueArgOwnTwinSseMoi(
+        {required NonCloneSimpleTwinSseMoi arg, required int expect}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueArgOwnTwinSseMoi(
+            arg: arg, expect: expect);
 
-            Future<void> rustAutoOpaqueArgOwnTwinSseMoi({required NonCloneSimpleTwinSseMoi arg , required int expect }) => RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueArgOwnTwinSseMoi(arg: arg, expect: expect);
+Future<void> rustAutoOpaqueArgBorrowTwinSseMoi(
+        {required NonCloneSimpleTwinSseMoi arg, required int expect}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueArgBorrowTwinSseMoi(
+            arg: arg, expect: expect);
 
-Future<void> rustAutoOpaqueArgBorrowTwinSseMoi({required NonCloneSimpleTwinSseMoi arg , required int expect }) => RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueArgBorrowTwinSseMoi(arg: arg, expect: expect);
+Future<void> rustAutoOpaqueArgMutBorrowTwinSseMoi(
+        {required NonCloneSimpleTwinSseMoi arg,
+        required int expect,
+        required int adder}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueArgMutBorrowTwinSseMoi(
+            arg: arg, expect: expect, adder: adder);
 
-Future<void> rustAutoOpaqueArgMutBorrowTwinSseMoi({required NonCloneSimpleTwinSseMoi arg , required int expect , required int adder }) => RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueArgMutBorrowTwinSseMoi(arg: arg, expect: expect, adder: adder);
+Future<NonCloneSimpleTwinSseMoi> rustAutoOpaqueReturnOwnTwinSseMoi(
+        {required int initial}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueReturnOwnTwinSseMoi(
+            initial: initial);
 
-Future<NonCloneSimpleTwinSseMoi> rustAutoOpaqueReturnOwnTwinSseMoi({required int initial }) => RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueReturnOwnTwinSseMoi(initial: initial);
+Future<NonCloneSimpleTwinSseMoi> rustAutoOpaqueArgOwnAndReturnOwnTwinSseMoi(
+        {required NonCloneSimpleTwinSseMoi arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueArgOwnAndReturnOwnTwinSseMoi(
+            arg: arg);
 
-Future<NonCloneSimpleTwinSseMoi> rustAutoOpaqueArgOwnAndReturnOwnTwinSseMoi({required NonCloneSimpleTwinSseMoi arg }) => RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueArgOwnAndReturnOwnTwinSseMoi(arg: arg);
+Future<void> rustAutoOpaqueTwoArgsTwinSseMoi(
+        {required NonCloneSimpleTwinSseMoi a,
+        required NonCloneSimpleTwinSseMoi b}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueTwoArgsTwinSseMoi(
+            a: a, b: b);
 
-Future<void> rustAutoOpaqueTwoArgsTwinSseMoi({required NonCloneSimpleTwinSseMoi a , required NonCloneSimpleTwinSseMoi b }) => RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueTwoArgsTwinSseMoi(a: a, b: b);
-
-Future<void> rustAutoOpaqueNormalAndOpaqueArgTwinSseMoi({required NonCloneSimpleTwinSseMoi a , required String b }) => RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueNormalAndOpaqueArgTwinSseMoi(a: a, b: b);
+Future<void> rustAutoOpaqueNormalAndOpaqueArgTwinSseMoi(
+        {required NonCloneSimpleTwinSseMoi a, required String b}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueNormalAndOpaqueArgTwinSseMoi(
+            a: a, b: b);
 
 /// "+" inside the type signature
-Future<void> rustAutoOpaquePlusSignArgTwinSseMoi({required BoxMyTraitTwinSseMoi arg }) => RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaquePlusSignArgTwinSseMoi(arg: arg);
-
-Future<BoxMyTraitTwinSseMoi> rustAutoOpaquePlusSignReturnTwinSseMoi() => RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaquePlusSignReturnTwinSseMoi();
-
-Future<void> rustAutoOpaqueCallableArgTwinSseMoi({required BoxFnStringString arg }) => RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueCallableArgTwinSseMoi(arg: arg);
-
-Future<BoxFnStringString> rustAutoOpaqueCallableReturnTwinSseMoi() => RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueCallableReturnTwinSseMoi();
-
-Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSseMoi({required StructWithGoodAndOpaqueFieldTwinSseMoi arg }) => RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSseMoi(arg: arg);
-
-Future<StructWithGoodAndOpaqueFieldTwinSseMoi> rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSseMoi() => RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSseMoi();
-
-Future<void> rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSseMoi({required EnumWithGoodAndOpaqueTwinSseMoi arg }) => RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSseMoi(arg: arg);
-
-Future<EnumWithGoodAndOpaqueTwinSseMoi> rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinSseMoi() => RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinSseMoi();
-
-Future<EnumWithGoodAndOpaqueTwinSseMoi> rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinSseMoi() => RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinSseMoi();
-
-Future<void> rustAutoOpaqueDummyTwinSseMoi({required StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi a , required EnumWithGoodAndOpaqueWithoutOptionTwinSseMoi b }) => RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueDummyTwinSseMoi(a: a, b: b);
-
-Future<void> rustAutoOpaqueEnumArgBorrowTwinSseMoi({required NonCloneSimpleEnumTwinSseMoi arg }) => RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueEnumArgBorrowTwinSseMoi(arg: arg);
-
-Future<NonCloneSimpleEnumTwinSseMoi> rustAutoOpaqueEnumReturnOwnTwinSseMoi() => RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueEnumReturnOwnTwinSseMoi();
-
-Stream<NonCloneSimpleTwinSseMoi> rustAutoOpaqueStreamSinkTwinSseMoi() => RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueStreamSinkTwinSseMoi();
-
-Future<void> rustAutoOpaqueArgVecOwnTwinSseMoi({required List<NonCloneSimpleTwinSseMoi> arg , required List<int> expect }) => RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueArgVecOwnTwinSseMoi(arg: arg, expect: expect);
-
-Future<List<NonCloneSimpleTwinSseMoi>> rustAutoOpaqueReturnVecOwnTwinSseMoi() => RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueReturnVecOwnTwinSseMoi();
-
-Future<void> rustAutoOpaqueExplicitArgTwinSseMoi({required NonCloneSimpleTwinSseMoi arg , required int expect }) => RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueExplicitArgTwinSseMoi(arg: arg, expect: expect);
-
-Future<void> rustAutoOpaqueExplicitStructTwinSseMoi({required StructWithExplicitAutoOpaqueFieldTwinSseMoi arg }) => RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueExplicitStructTwinSseMoi(arg: arg);
-
-Future<StructWithExplicitAutoOpaqueFieldTwinSseMoi> rustAutoOpaqueExplicitReturnStructTwinSseMoi() => RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueExplicitReturnStructTwinSseMoi();
-
-Future<NonCloneSimpleTwinSseMoi> rustAutoOpaqueExplicitReturnTwinSseMoi({required int initial }) => RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueExplicitReturnTwinSseMoi(initial: initial);
-
-Future<int> rustAutoOpaqueSleepTwinSseMoi({required NonCloneSimpleTwinSseMoi apple , required NonCloneSimpleTwinSseMoi orange }) => RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueSleepTwinSseMoi(apple: apple, orange: orange);
-
-Future<(OpaqueOneTwinSseMoi,OpaqueTwoTwinSseMoi)> rustAutoOpaqueReturnOpaqueOneAndTwoTwinSseMoi() => RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueReturnOpaqueOneAndTwoTwinSseMoi();
-
-Future<OpaqueTwoTwinSseMoi> rustAutoOpaqueReturnOpaqueTwoTwinSseMoi() => RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueReturnOpaqueTwoTwinSseMoi();
-
-Future<int> rustAutoOpaqueBorrowAndMutBorrowTwinSseMoi({required NonCloneSimpleTwinSseMoi borrow , required NonCloneSimpleTwinSseMoi mutBorrow }) => RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueBorrowAndMutBorrowTwinSseMoi(borrow: borrow, mutBorrow: mutBorrow);
-
-Future<int> rustAutoOpaqueBorrowAndBorrowTwinSseMoi({required NonCloneSimpleTwinSseMoi a , required NonCloneSimpleTwinSseMoi b }) => RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueBorrowAndBorrowTwinSseMoi(a: a, b: b);
-
-            
-                // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn MyTraitTwinSseMoi + Send + Sync >>>
-                abstract class BoxMyTraitTwinSseMoi implements RustOpaqueInterface {
-                    
-
-                    
-                }
-                
-
-
-                // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<EnumWithGoodAndOpaqueWithoutOptionTwinSseMoi>>
-                abstract class EnumWithGoodAndOpaqueWithoutOptionTwinSseMoi implements RustOpaqueInterface {
-                    
-
-                    
-                }
-                
-
-
-                // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleEnumTwinSseMoi>>
-                abstract class NonCloneSimpleEnumTwinSseMoi implements RustOpaqueInterface {
-                    
-
-                    
-                }
-                
-
-
-                // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSseMoi>>
-                abstract class NonCloneSimpleTwinSseMoi implements RustOpaqueInterface {
-                     Future<void>  instanceMethodArgBorrowTwinSseMoi();
-
-
- Future<void>  instanceMethodArgMutBorrowTwinSseMoi();
-
-
- Future<void>  instanceMethodArgOwnTwinSseMoi();
-
-
- Future<int> get instanceMethodGetterTwinSseMoi;
-
-
- Future<NonCloneSimpleTwinSseMoi>  instanceMethodReturnOwnTwinSseMoi();
-
-
-/// named constructor
-static Future<NonCloneSimpleTwinSseMoi>  newCustomNameTwinSseMoi()=>RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiNonCloneSimpleTwinSseMoiNewCustomNameTwinSseMoi();
-
-
-/// unnamed constructor
-static Future<NonCloneSimpleTwinSseMoi>  newTwinSseMoi()=>RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiNonCloneSimpleTwinSseMoiNewTwinSseMoi();
-
-
-/// constructor with Result
-static Future<NonCloneSimpleTwinSseMoi>  newWithResultTwinSseMoi()=>RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiNonCloneSimpleTwinSseMoiNewWithResultTwinSseMoi();
-
-
-static Future<void>  staticMethodArgBorrowTwinSseMoi({required NonCloneSimpleTwinSseMoi arg })=>RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiNonCloneSimpleTwinSseMoiStaticMethodArgBorrowTwinSseMoi(arg: arg);
-
-
-static Future<void>  staticMethodArgMutBorrowTwinSseMoi({required NonCloneSimpleTwinSseMoi arg })=>RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiNonCloneSimpleTwinSseMoiStaticMethodArgMutBorrowTwinSseMoi(arg: arg);
-
-
-static Future<void>  staticMethodArgOwnTwinSseMoi({required NonCloneSimpleTwinSseMoi arg })=>RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiNonCloneSimpleTwinSseMoiStaticMethodArgOwnTwinSseMoi(arg: arg);
-
-
-static Future<NonCloneSimpleTwinSseMoi>  staticMethodReturnOwnTwinSseMoi()=>RustLib.instance.api.crateApiPseudoManualRustAutoOpaqueTwinSseMoiNonCloneSimpleTwinSseMoiStaticMethodReturnOwnTwinSseMoi();
-
-
-
-                    
-                }
-                
-
-
-                // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueOneTwinSseMoi>>
-                abstract class OpaqueOneTwinSseMoi implements RustOpaqueInterface {
-                    
-
-                    
-                }
-                
-
-
-                // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueTwoTwinSseMoi>>
-                abstract class OpaqueTwoTwinSseMoi implements RustOpaqueInterface {
-                    
-
-                    
-                }
-                
-
-
-                // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi>>
-                abstract class StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi implements RustOpaqueInterface {
-                     String get good;
-
+Future<void> rustAutoOpaquePlusSignArgTwinSseMoi(
+        {required BoxMyTraitTwinSseMoi arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaquePlusSignArgTwinSseMoi(
+            arg: arg);
+
+Future<BoxMyTraitTwinSseMoi> rustAutoOpaquePlusSignReturnTwinSseMoi() => RustLib
+    .instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaquePlusSignReturnTwinSseMoi();
+
+Future<void> rustAutoOpaqueCallableArgTwinSseMoi(
+        {required BoxFnStringString arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueCallableArgTwinSseMoi(
+            arg: arg);
+
+Future<BoxFnStringString> rustAutoOpaqueCallableReturnTwinSseMoi() => RustLib
+    .instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueCallableReturnTwinSseMoi();
+
+Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSseMoi(
+        {required StructWithGoodAndOpaqueFieldTwinSseMoi arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSseMoi(
+            arg: arg);
+
+Future<StructWithGoodAndOpaqueFieldTwinSseMoi>
+    rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSseMoi() => RustLib
+        .instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSseMoi();
+
+Future<void> rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSseMoi(
+        {required EnumWithGoodAndOpaqueTwinSseMoi arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSseMoi(
+            arg: arg);
+
+Future<EnumWithGoodAndOpaqueTwinSseMoi>
+    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinSseMoi() => RustLib
+        .instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinSseMoi();
+
+Future<EnumWithGoodAndOpaqueTwinSseMoi>
+    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinSseMoi() => RustLib
+        .instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinSseMoi();
+
+Future<void> rustAutoOpaqueDummyTwinSseMoi(
+        {required StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi a,
+        required EnumWithGoodAndOpaqueWithoutOptionTwinSseMoi b}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueDummyTwinSseMoi(
+            a: a, b: b);
+
+Future<void> rustAutoOpaqueEnumArgBorrowTwinSseMoi(
+        {required NonCloneSimpleEnumTwinSseMoi arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueEnumArgBorrowTwinSseMoi(
+            arg: arg);
+
+Future<NonCloneSimpleEnumTwinSseMoi> rustAutoOpaqueEnumReturnOwnTwinSseMoi() =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueEnumReturnOwnTwinSseMoi();
+
+Stream<NonCloneSimpleTwinSseMoi> rustAutoOpaqueStreamSinkTwinSseMoi() => RustLib
+    .instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueStreamSinkTwinSseMoi();
+
+Future<void> rustAutoOpaqueArgVecOwnTwinSseMoi(
+        {required List<NonCloneSimpleTwinSseMoi> arg,
+        required List<int> expect}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueArgVecOwnTwinSseMoi(
+            arg: arg, expect: expect);
+
+Future<List<NonCloneSimpleTwinSseMoi>> rustAutoOpaqueReturnVecOwnTwinSseMoi() =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueReturnVecOwnTwinSseMoi();
+
+Future<void> rustAutoOpaqueExplicitArgTwinSseMoi(
+        {required NonCloneSimpleTwinSseMoi arg, required int expect}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueExplicitArgTwinSseMoi(
+            arg: arg, expect: expect);
+
+Future<void> rustAutoOpaqueExplicitStructTwinSseMoi(
+        {required StructWithExplicitAutoOpaqueFieldTwinSseMoi arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueExplicitStructTwinSseMoi(
+            arg: arg);
+
+Future<StructWithExplicitAutoOpaqueFieldTwinSseMoi>
+    rustAutoOpaqueExplicitReturnStructTwinSseMoi() => RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueExplicitReturnStructTwinSseMoi();
+
+Future<NonCloneSimpleTwinSseMoi> rustAutoOpaqueExplicitReturnTwinSseMoi(
+        {required int initial}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueExplicitReturnTwinSseMoi(
+            initial: initial);
+
+Future<int> rustAutoOpaqueSleepTwinSseMoi(
+        {required NonCloneSimpleTwinSseMoi apple,
+        required NonCloneSimpleTwinSseMoi orange}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueSleepTwinSseMoi(
+            apple: apple, orange: orange);
+
+Future<(OpaqueOneTwinSseMoi, OpaqueTwoTwinSseMoi)>
+    rustAutoOpaqueReturnOpaqueOneAndTwoTwinSseMoi() => RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueReturnOpaqueOneAndTwoTwinSseMoi();
+
+Future<OpaqueTwoTwinSseMoi> rustAutoOpaqueReturnOpaqueTwoTwinSseMoi() => RustLib
+    .instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueReturnOpaqueTwoTwinSseMoi();
+
+Future<int> rustAutoOpaqueBorrowAndMutBorrowTwinSseMoi(
+        {required NonCloneSimpleTwinSseMoi borrow,
+        required NonCloneSimpleTwinSseMoi mutBorrow}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueBorrowAndMutBorrowTwinSseMoi(
+            borrow: borrow, mutBorrow: mutBorrow);
+
+Future<int> rustAutoOpaqueBorrowAndBorrowTwinSseMoi(
+        {required NonCloneSimpleTwinSseMoi a,
+        required NonCloneSimpleTwinSseMoi b}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseMoiRustAutoOpaqueBorrowAndBorrowTwinSseMoi(
+            a: a, b: b);
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn MyTraitTwinSseMoi + Send + Sync >>>
+abstract class BoxMyTraitTwinSseMoi implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<EnumWithGoodAndOpaqueWithoutOptionTwinSseMoi>>
+abstract class EnumWithGoodAndOpaqueWithoutOptionTwinSseMoi
+    implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleEnumTwinSseMoi>>
+abstract class NonCloneSimpleEnumTwinSseMoi implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneSimpleTwinSseMoi>>
+abstract class NonCloneSimpleTwinSseMoi implements RustOpaqueInterface {
+  Future<void> instanceMethodArgBorrowTwinSseMoi();
+
+  Future<void> instanceMethodArgMutBorrowTwinSseMoi();
+
+  Future<void> instanceMethodArgOwnTwinSseMoi();
+
+  Future<int> get instanceMethodGetterTwinSseMoi;
+
+  Future<NonCloneSimpleTwinSseMoi> instanceMethodReturnOwnTwinSseMoi();
+
+  /// named constructor
+  static Future<NonCloneSimpleTwinSseMoi> newCustomNameTwinSseMoi() => RustLib
+      .instance.api
+      .crateApiPseudoManualRustAutoOpaqueTwinSseMoiNonCloneSimpleTwinSseMoiNewCustomNameTwinSseMoi();
+
+  /// unnamed constructor
+  static Future<NonCloneSimpleTwinSseMoi> newTwinSseMoi() => RustLib
+      .instance.api
+      .crateApiPseudoManualRustAutoOpaqueTwinSseMoiNonCloneSimpleTwinSseMoiNewTwinSseMoi();
+
+  /// constructor with Result
+  static Future<NonCloneSimpleTwinSseMoi> newWithResultTwinSseMoi() => RustLib
+      .instance.api
+      .crateApiPseudoManualRustAutoOpaqueTwinSseMoiNonCloneSimpleTwinSseMoiNewWithResultTwinSseMoi();
+
+  static Future<void> staticMethodArgBorrowTwinSseMoi(
+          {required NonCloneSimpleTwinSseMoi arg}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSseMoiNonCloneSimpleTwinSseMoiStaticMethodArgBorrowTwinSseMoi(
+              arg: arg);
+
+  static Future<void> staticMethodArgMutBorrowTwinSseMoi(
+          {required NonCloneSimpleTwinSseMoi arg}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSseMoiNonCloneSimpleTwinSseMoiStaticMethodArgMutBorrowTwinSseMoi(
+              arg: arg);
+
+  static Future<void> staticMethodArgOwnTwinSseMoi(
+          {required NonCloneSimpleTwinSseMoi arg}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSseMoiNonCloneSimpleTwinSseMoiStaticMethodArgOwnTwinSseMoi(
+              arg: arg);
+
+  static Future<NonCloneSimpleTwinSseMoi> staticMethodReturnOwnTwinSseMoi() =>
+      RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSseMoiNonCloneSimpleTwinSseMoiStaticMethodReturnOwnTwinSseMoi();
+}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueOneTwinSseMoi>>
+abstract class OpaqueOneTwinSseMoi implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueTwoTwinSseMoi>>
+abstract class OpaqueTwoTwinSseMoi implements RustOpaqueInterface {}
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi>>
+abstract class StructWithGoodAndOpaqueFieldWithoutOptionTwinSseMoi
+    implements RustOpaqueInterface {
+  String get good;
 
   set good(String good);
+}
 
-
-
-                    
-                }
-                
-
-
-                abstract class MyTraitTwinSseMoi {
-                     Future<void>  f();
-
-
-                }
-                
+abstract class MyTraitTwinSseMoi {
+  Future<void> f();
+}
 
 @freezed
-                sealed class EnumWithGoodAndOpaqueTwinSseMoi with _$EnumWithGoodAndOpaqueTwinSseMoi  {
-                    const EnumWithGoodAndOpaqueTwinSseMoi._();
+sealed class EnumWithGoodAndOpaqueTwinSseMoi
+    with _$EnumWithGoodAndOpaqueTwinSseMoi {
+  const EnumWithGoodAndOpaqueTwinSseMoi._();
 
-                     const factory EnumWithGoodAndOpaqueTwinSseMoi.good(  String field0,) = EnumWithGoodAndOpaqueTwinSseMoi_Good;
- const factory EnumWithGoodAndOpaqueTwinSseMoi.opaque(  NonCloneSimpleTwinSseMoi field0,) = EnumWithGoodAndOpaqueTwinSseMoi_Opaque;
+  const factory EnumWithGoodAndOpaqueTwinSseMoi.good(
+    String field0,
+  ) = EnumWithGoodAndOpaqueTwinSseMoi_Good;
+  const factory EnumWithGoodAndOpaqueTwinSseMoi.opaque(
+    NonCloneSimpleTwinSseMoi field0,
+  ) = EnumWithGoodAndOpaqueTwinSseMoi_Opaque;
 
-                    factory EnumWithGoodAndOpaqueTwinSseMoi.fromJson(Map<String, dynamic> json) => _$EnumWithGoodAndOpaqueTwinSseMoiFromJson(json);
+  factory EnumWithGoodAndOpaqueTwinSseMoi.fromJson(Map<String, dynamic> json) =>
+      _$EnumWithGoodAndOpaqueTwinSseMoiFromJson(json);
+}
 
-                    
-                }
+class StructWithExplicitAutoOpaqueFieldTwinSseMoi {
+  final NonCloneSimpleTwinSseMoi autoOpaque;
+  final int normal;
 
-class StructWithExplicitAutoOpaqueFieldTwinSseMoi  {
-                final NonCloneSimpleTwinSseMoi autoOpaque;
-final int normal;
+  const StructWithExplicitAutoOpaqueFieldTwinSseMoi({
+    required this.autoOpaque,
+    required this.normal,
+  });
 
-                const StructWithExplicitAutoOpaqueFieldTwinSseMoi({required this.autoOpaque ,required this.normal ,});
+  @override
+  int get hashCode => autoOpaque.hashCode ^ normal.hashCode;
 
-                
-                
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithExplicitAutoOpaqueFieldTwinSseMoi &&
+          runtimeType == other.runtimeType &&
+          autoOpaque == other.autoOpaque &&
+          normal == other.normal;
+}
 
-                
-        @override
-        int get hashCode => autoOpaque.hashCode^normal.hashCode;
-        
+class StructWithGoodAndOpaqueFieldTwinSseMoi {
+  final String good;
+  final NonCloneSimpleTwinSseMoi opaque;
+  final NonCloneSimpleTwinSseMoi? optionOpaque;
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is StructWithExplicitAutoOpaqueFieldTwinSseMoi &&
-                runtimeType == other.runtimeType
-                && autoOpaque == other.autoOpaque&& normal == other.normal;
-        
-            }
+  const StructWithGoodAndOpaqueFieldTwinSseMoi({
+    required this.good,
+    required this.opaque,
+    this.optionOpaque,
+  });
 
-class StructWithGoodAndOpaqueFieldTwinSseMoi  {
-                final String good;
-final NonCloneSimpleTwinSseMoi opaque;
-final NonCloneSimpleTwinSseMoi? optionOpaque;
+  @override
+  int get hashCode => good.hashCode ^ opaque.hashCode ^ optionOpaque.hashCode;
 
-                const StructWithGoodAndOpaqueFieldTwinSseMoi({required this.good ,required this.opaque ,this.optionOpaque ,});
-
-                
-                
-
-                
-        @override
-        int get hashCode => good.hashCode^opaque.hashCode^optionOpaque.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is StructWithGoodAndOpaqueFieldTwinSseMoi &&
-                runtimeType == other.runtimeType
-                && good == other.good&& opaque == other.opaque&& optionOpaque == other.optionOpaque;
-        
-            }
-            
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithGoodAndOpaqueFieldTwinSseMoi &&
+          runtimeType == other.runtimeType &&
+          good == other.good &&
+          opaque == other.opaque &&
+          optionOpaque == other.optionOpaque;
+}

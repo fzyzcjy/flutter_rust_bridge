@@ -9,12 +9,7 @@ import 'dep.dart';
 import 'frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+Future<void> firstFunction() => RustLib.instance.api.crateApiFirstFunction();
 
-            
-
-            Future<void> firstFunction() => RustLib.instance.api.crateApiFirstFunction();
-
-Future<void> secondFunction({required Simple arg }) => RustLib.instance.api.crateApiSecondFunction(arg: arg);
-
-            
-            
+Future<void> secondFunction({required Simple arg}) =>
+    RustLib.instance.api.crateApiSecondFunction(arg: arg);

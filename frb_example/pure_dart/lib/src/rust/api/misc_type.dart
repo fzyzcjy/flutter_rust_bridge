@@ -9,38 +9,31 @@ import '../auxiliary/sample_types.dart';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 
-            // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
+Future<void> funcReturnUnitTwinNormal() =>
+    RustLib.instance.api.crateApiMiscTypeFuncReturnUnitTwinNormal();
 
+Future<List<MySize>> handleListOfStructTwinNormal({required List<MySize> l}) =>
+    RustLib.instance.api.crateApiMiscTypeHandleListOfStructTwinNormal(l: l);
 
-            Future<void> funcReturnUnitTwinNormal() => RustLib.instance.api.crateApiMiscTypeFuncReturnUnitTwinNormal();
+Future<List<String>> handleStringListTwinNormal(
+        {required List<String> names}) =>
+    RustLib.instance.api
+        .crateApiMiscTypeHandleStringListTwinNormal(names: names);
 
-Future<List<MySize>> handleListOfStructTwinNormal({required List<MySize> l }) => RustLib.instance.api.crateApiMiscTypeHandleListOfStructTwinNormal(l: l);
+Future<EmptyTwinNormal> emptyStructTwinNormal(
+        {required EmptyTwinNormal empty}) =>
+    RustLib.instance.api.crateApiMiscTypeEmptyStructTwinNormal(empty: empty);
 
-Future<List<String>> handleStringListTwinNormal({required List<String> names }) => RustLib.instance.api.crateApiMiscTypeHandleStringListTwinNormal(names: names);
+class EmptyTwinNormal {
+  const EmptyTwinNormal();
 
-Future<EmptyTwinNormal> emptyStructTwinNormal({required EmptyTwinNormal empty }) => RustLib.instance.api.crateApiMiscTypeEmptyStructTwinNormal(empty: empty);
+  @override
+  int get hashCode => 0;
 
-            class EmptyTwinNormal  {
-                
-
-                const EmptyTwinNormal();
-
-                
-                
-
-                
-        @override
-        int get hashCode => 0;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is EmptyTwinNormal &&
-                runtimeType == other.runtimeType
-                ;
-        
-            }
-            
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EmptyTwinNormal && runtimeType == other.runtimeType;
+}

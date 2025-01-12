@@ -8,12 +8,15 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+int primitiveTypesTwinSync(
+        {required int myI32,
+        required PlatformInt64 myI64,
+        required double myF64,
+        required bool myBool}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualPrimitiveMiscTwinSyncPrimitiveTypesTwinSync(
+            myI32: myI32, myI64: myI64, myF64: myF64, myBool: myBool);
 
-            
-
-            int primitiveTypesTwinSync({required int myI32 , required PlatformInt64 myI64 , required double myF64 , required bool myBool }) => RustLib.instance.api.crateApiPseudoManualPrimitiveMiscTwinSyncPrimitiveTypesTwinSync(myI32: myI32, myI64: myI64, myF64: myF64, myBool: myBool);
-
-int primitiveU32TwinSync({required int myU32 }) => RustLib.instance.api.crateApiPseudoManualPrimitiveMiscTwinSyncPrimitiveU32TwinSync(myU32: myU32);
-
-            
-            
+int primitiveU32TwinSync({required int myU32}) => RustLib.instance.api
+    .crateApiPseudoManualPrimitiveMiscTwinSyncPrimitiveU32TwinSync(
+        myU32: myU32);

@@ -10,192 +10,185 @@ import '../array.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+U8Array5 getArrayTwinSyncSse() => RustLib.instance.api
+    .crateApiPseudoManualArrayTwinSyncSseGetArrayTwinSyncSse();
 
-            
+PointTwinSyncSseArray2 getComplexArrayTwinSyncSse() => RustLib.instance.api
+    .crateApiPseudoManualArrayTwinSyncSseGetComplexArrayTwinSyncSse();
 
-            U8Array5 getArrayTwinSyncSse() => RustLib.instance.api.crateApiPseudoManualArrayTwinSyncSseGetArrayTwinSyncSse();
+MessageIdTwinSyncSse newMsgidTwinSyncSse({required U8Array32 id}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualArrayTwinSyncSseNewMsgidTwinSyncSse(id: id);
 
-PointTwinSyncSseArray2 getComplexArrayTwinSyncSse() => RustLib.instance.api.crateApiPseudoManualArrayTwinSyncSseGetComplexArrayTwinSyncSse();
+U8Array32 useMsgidTwinSyncSse({required MessageIdTwinSyncSse id}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualArrayTwinSyncSseUseMsgidTwinSyncSse(id: id);
 
-MessageIdTwinSyncSse newMsgidTwinSyncSse({required U8Array32 id }) => RustLib.instance.api.crateApiPseudoManualArrayTwinSyncSseNewMsgidTwinSyncSse(id: id);
+BlobTwinSyncSse boxedBlobTwinSyncSse({required U8Array1600 blob}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualArrayTwinSyncSseBoxedBlobTwinSyncSse(blob: blob);
 
-U8Array32 useMsgidTwinSyncSse({required MessageIdTwinSyncSse id }) => RustLib.instance.api.crateApiPseudoManualArrayTwinSyncSseUseMsgidTwinSyncSse(id: id);
+U8Array1600 useBoxedBlobTwinSyncSse({required BlobTwinSyncSse blob}) => RustLib
+    .instance.api
+    .crateApiPseudoManualArrayTwinSyncSseUseBoxedBlobTwinSyncSse(blob: blob);
 
-BlobTwinSyncSse boxedBlobTwinSyncSse({required U8Array1600 blob }) => RustLib.instance.api.crateApiPseudoManualArrayTwinSyncSseBoxedBlobTwinSyncSse(blob: blob);
+FeedIdTwinSyncSse returnBoxedFeedIdTwinSyncSse({required U8Array8 id}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualArrayTwinSyncSseReturnBoxedFeedIdTwinSyncSse(
+            id: id);
 
-U8Array1600 useBoxedBlobTwinSyncSse({required BlobTwinSyncSse blob }) => RustLib.instance.api.crateApiPseudoManualArrayTwinSyncSseUseBoxedBlobTwinSyncSse(blob: blob);
+U8Array8 returnBoxedRawFeedIdTwinSyncSse({required FeedIdTwinSyncSse id}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualArrayTwinSyncSseReturnBoxedRawFeedIdTwinSyncSse(
+            id: id);
 
-FeedIdTwinSyncSse returnBoxedFeedIdTwinSyncSse({required U8Array8 id }) => RustLib.instance.api.crateApiPseudoManualArrayTwinSyncSseReturnBoxedFeedIdTwinSyncSse(id: id);
+TestIdTwinSyncSse funcTestIdTwinSyncSse({required TestIdTwinSyncSse id}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualArrayTwinSyncSseFuncTestIdTwinSyncSse(id: id);
 
-U8Array8 returnBoxedRawFeedIdTwinSyncSse({required FeedIdTwinSyncSse id }) => RustLib.instance.api.crateApiPseudoManualArrayTwinSyncSseReturnBoxedRawFeedIdTwinSyncSse(id: id);
+double lastNumberTwinSyncSse({required F64Array16 array}) => RustLib
+    .instance.api
+    .crateApiPseudoManualArrayTwinSyncSseLastNumberTwinSyncSse(array: array);
 
-TestIdTwinSyncSse funcTestIdTwinSyncSse({required TestIdTwinSyncSse id }) => RustLib.instance.api.crateApiPseudoManualArrayTwinSyncSseFuncTestIdTwinSyncSse(id: id);
+TestIdTwinSyncSseArray2 nestedIdTwinSyncSse(
+        {required TestIdTwinSyncSseArray4 id}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualArrayTwinSyncSseNestedIdTwinSyncSse(id: id);
 
-double lastNumberTwinSyncSse({required F64Array16 array }) => RustLib.instance.api.crateApiPseudoManualArrayTwinSyncSseLastNumberTwinSyncSse(array: array);
+class BlobTwinSyncSse {
+  final U8Array1600 field0;
 
-TestIdTwinSyncSseArray2 nestedIdTwinSyncSse({required TestIdTwinSyncSseArray4 id }) => RustLib.instance.api.crateApiPseudoManualArrayTwinSyncSseNestedIdTwinSyncSse(id: id);
+  const BlobTwinSyncSse({
+    required this.field0,
+  });
 
-            class BlobTwinSyncSse  {
-                final U8Array1600 field0;
+  @override
+  int get hashCode => field0.hashCode;
 
-                const BlobTwinSyncSse({required this.field0 ,});
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BlobTwinSyncSse &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
 
-                
-                
+class FeedIdTwinSyncSse {
+  final U8Array8 field0;
 
-                
-        @override
-        int get hashCode => field0.hashCode;
-        
+  const FeedIdTwinSyncSse({
+    required this.field0,
+  });
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is BlobTwinSyncSse &&
-                runtimeType == other.runtimeType
-                && field0 == other.field0;
-        
-            }
+  @override
+  int get hashCode => field0.hashCode;
 
-class FeedIdTwinSyncSse  {
-                final U8Array8 field0;
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is FeedIdTwinSyncSse &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
 
-                const FeedIdTwinSyncSse({required this.field0 ,});
+class MessageIdTwinSyncSse {
+  final U8Array32 field0;
 
-                
-                
+  const MessageIdTwinSyncSse({
+    required this.field0,
+  });
 
-                
-        @override
-        int get hashCode => field0.hashCode;
-        
+  @override
+  int get hashCode => field0.hashCode;
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is FeedIdTwinSyncSse &&
-                runtimeType == other.runtimeType
-                && field0 == other.field0;
-        
-            }
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MessageIdTwinSyncSse &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
 
-class MessageIdTwinSyncSse  {
-                final U8Array32 field0;
+class PointTwinSyncSse {
+  final double x;
+  final double y;
 
-                const MessageIdTwinSyncSse({required this.field0 ,});
+  const PointTwinSyncSse({
+    required this.x,
+    required this.y,
+  });
 
-                
-                
+  @override
+  int get hashCode => x.hashCode ^ y.hashCode;
 
-                
-        @override
-        int get hashCode => field0.hashCode;
-        
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PointTwinSyncSse &&
+          runtimeType == other.runtimeType &&
+          x == other.x &&
+          y == other.y;
+}
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is MessageIdTwinSyncSse &&
-                runtimeType == other.runtimeType
-                && field0 == other.field0;
-        
-            }
+class PointTwinSyncSseArray2 extends NonGrowableListView<PointTwinSyncSse> {
+  static const arraySize = 2;
 
-class PointTwinSyncSse  {
-                final double x;
-final double y;
+  @internal
+  List<PointTwinSyncSse> get inner => _inner;
+  final List<PointTwinSyncSse> _inner;
 
-                const PointTwinSyncSse({required this.x ,required this.y ,});
+  PointTwinSyncSseArray2(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
 
-                
-                
+  PointTwinSyncSseArray2.init(PointTwinSyncSse fill)
+      : this(List<PointTwinSyncSse>.filled(arraySize, fill));
+}
 
-                
-        @override
-        int get hashCode => x.hashCode^y.hashCode;
-        
+class TestIdTwinSyncSse {
+  final I32Array2 field0;
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is PointTwinSyncSse &&
-                runtimeType == other.runtimeType
-                && x == other.x&& y == other.y;
-        
-            }
+  const TestIdTwinSyncSse({
+    required this.field0,
+  });
 
+  @override
+  int get hashCode => field0.hashCode;
 
-            class PointTwinSyncSseArray2 extends NonGrowableListView<PointTwinSyncSse> {
-                static const arraySize = 2;
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TestIdTwinSyncSse &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
 
-                @internal
-                List<PointTwinSyncSse> get inner => _inner;
-                final List<PointTwinSyncSse> _inner;
+class TestIdTwinSyncSseArray2 extends NonGrowableListView<TestIdTwinSyncSse> {
+  static const arraySize = 2;
 
-                PointTwinSyncSseArray2(this._inner)
-                    : assert(_inner.length == arraySize),
-                      super(_inner);
-  
-                PointTwinSyncSseArray2.init(PointTwinSyncSse fill): this(List<PointTwinSyncSse>.filled(arraySize,fill));
-              }
-            
+  @internal
+  List<TestIdTwinSyncSse> get inner => _inner;
+  final List<TestIdTwinSyncSse> _inner;
 
-class TestIdTwinSyncSse  {
-                final I32Array2 field0;
+  TestIdTwinSyncSseArray2(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
 
-                const TestIdTwinSyncSse({required this.field0 ,});
+  TestIdTwinSyncSseArray2.init(TestIdTwinSyncSse fill)
+      : this(List<TestIdTwinSyncSse>.filled(arraySize, fill));
+}
 
-                
-                
+class TestIdTwinSyncSseArray4 extends NonGrowableListView<TestIdTwinSyncSse> {
+  static const arraySize = 4;
 
-                
-        @override
-        int get hashCode => field0.hashCode;
-        
+  @internal
+  List<TestIdTwinSyncSse> get inner => _inner;
+  final List<TestIdTwinSyncSse> _inner;
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is TestIdTwinSyncSse &&
-                runtimeType == other.runtimeType
-                && field0 == other.field0;
-        
-            }
+  TestIdTwinSyncSseArray4(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
 
-
-            class TestIdTwinSyncSseArray2 extends NonGrowableListView<TestIdTwinSyncSse> {
-                static const arraySize = 2;
-
-                @internal
-                List<TestIdTwinSyncSse> get inner => _inner;
-                final List<TestIdTwinSyncSse> _inner;
-
-                TestIdTwinSyncSseArray2(this._inner)
-                    : assert(_inner.length == arraySize),
-                      super(_inner);
-  
-                TestIdTwinSyncSseArray2.init(TestIdTwinSyncSse fill): this(List<TestIdTwinSyncSse>.filled(arraySize,fill));
-              }
-            
-
-
-            class TestIdTwinSyncSseArray4 extends NonGrowableListView<TestIdTwinSyncSse> {
-                static const arraySize = 4;
-
-                @internal
-                List<TestIdTwinSyncSse> get inner => _inner;
-                final List<TestIdTwinSyncSse> _inner;
-
-                TestIdTwinSyncSseArray4(this._inner)
-                    : assert(_inner.length == arraySize),
-                      super(_inner);
-  
-                TestIdTwinSyncSseArray4.init(TestIdTwinSyncSse fill): this(List<TestIdTwinSyncSse>.filled(arraySize,fill));
-              }
-            
-            
+  TestIdTwinSyncSseArray4.init(TestIdTwinSyncSse fill)
+      : this(List<TestIdTwinSyncSse>.filled(arraySize, fill));
+}

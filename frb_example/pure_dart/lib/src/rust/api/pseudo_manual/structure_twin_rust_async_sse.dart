@@ -8,184 +8,181 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+Future<
+    StructWithZeroFieldTwinRustAsyncSse> funcStructWithZeroFieldTwinRustAsyncSse(
+        {required StructWithZeroFieldTwinRustAsyncSse arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualStructureTwinRustAsyncSseFuncStructWithZeroFieldTwinRustAsyncSse(
+            arg: arg);
 
-            
+Future<
+    StructWithOneFieldTwinRustAsyncSse> funcStructWithOneFieldTwinRustAsyncSse(
+        {required StructWithOneFieldTwinRustAsyncSse arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualStructureTwinRustAsyncSseFuncStructWithOneFieldTwinRustAsyncSse(
+            arg: arg);
 
-            Future<StructWithZeroFieldTwinRustAsyncSse> funcStructWithZeroFieldTwinRustAsyncSse({required StructWithZeroFieldTwinRustAsyncSse arg }) => RustLib.instance.api.crateApiPseudoManualStructureTwinRustAsyncSseFuncStructWithZeroFieldTwinRustAsyncSse(arg: arg);
+Future<
+    StructWithTwoFieldTwinRustAsyncSse> funcStructWithTwoFieldTwinRustAsyncSse(
+        {required StructWithTwoFieldTwinRustAsyncSse arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualStructureTwinRustAsyncSseFuncStructWithTwoFieldTwinRustAsyncSse(
+            arg: arg);
 
-Future<StructWithOneFieldTwinRustAsyncSse> funcStructWithOneFieldTwinRustAsyncSse({required StructWithOneFieldTwinRustAsyncSse arg }) => RustLib.instance.api.crateApiPseudoManualStructureTwinRustAsyncSseFuncStructWithOneFieldTwinRustAsyncSse(arg: arg);
+Future<TupleStructWithOneFieldTwinRustAsyncSse>
+    funcTupleStructWithOneFieldTwinRustAsyncSse(
+            {required TupleStructWithOneFieldTwinRustAsyncSse arg}) =>
+        RustLib.instance.api
+            .crateApiPseudoManualStructureTwinRustAsyncSseFuncTupleStructWithOneFieldTwinRustAsyncSse(
+                arg: arg);
 
-Future<StructWithTwoFieldTwinRustAsyncSse> funcStructWithTwoFieldTwinRustAsyncSse({required StructWithTwoFieldTwinRustAsyncSse arg }) => RustLib.instance.api.crateApiPseudoManualStructureTwinRustAsyncSseFuncStructWithTwoFieldTwinRustAsyncSse(arg: arg);
+Future<TupleStructWithTwoFieldTwinRustAsyncSse>
+    funcTupleStructWithTwoFieldTwinRustAsyncSse(
+            {required TupleStructWithTwoFieldTwinRustAsyncSse arg}) =>
+        RustLib.instance.api
+            .crateApiPseudoManualStructureTwinRustAsyncSseFuncTupleStructWithTwoFieldTwinRustAsyncSse(
+                arg: arg);
 
-Future<TupleStructWithOneFieldTwinRustAsyncSse> funcTupleStructWithOneFieldTwinRustAsyncSse({required TupleStructWithOneFieldTwinRustAsyncSse arg }) => RustLib.instance.api.crateApiPseudoManualStructureTwinRustAsyncSseFuncTupleStructWithOneFieldTwinRustAsyncSse(arg: arg);
+Future<StructWithFieldRenameTwinRustAsyncSse>
+    funcForStructWithFieldRenameTwinRustAsyncSse(
+            {required StructWithFieldRenameTwinRustAsyncSse arg}) =>
+        RustLib.instance.api
+            .crateApiPseudoManualStructureTwinRustAsyncSseFuncForStructWithFieldRenameTwinRustAsyncSse(
+                arg: arg);
 
-Future<TupleStructWithTwoFieldTwinRustAsyncSse> funcTupleStructWithTwoFieldTwinRustAsyncSse({required TupleStructWithTwoFieldTwinRustAsyncSse arg }) => RustLib.instance.api.crateApiPseudoManualStructureTwinRustAsyncSseFuncTupleStructWithTwoFieldTwinRustAsyncSse(arg: arg);
+Future<StructWithDartKeywordFieldTwinRustAsyncSse>
+    funcForStructWithDartKeywordFieldTwinRustAsyncSse(
+            {required StructWithDartKeywordFieldTwinRustAsyncSse arg}) =>
+        RustLib.instance.api
+            .crateApiPseudoManualStructureTwinRustAsyncSseFuncForStructWithDartKeywordFieldTwinRustAsyncSse(
+                arg: arg);
 
-Future<StructWithFieldRenameTwinRustAsyncSse> funcForStructWithFieldRenameTwinRustAsyncSse({required StructWithFieldRenameTwinRustAsyncSse arg }) => RustLib.instance.api.crateApiPseudoManualStructureTwinRustAsyncSseFuncForStructWithFieldRenameTwinRustAsyncSse(arg: arg);
+class StructWithDartKeywordFieldTwinRustAsyncSse {
+  final int class_;
+  final PlatformInt64 interface_;
 
-Future<StructWithDartKeywordFieldTwinRustAsyncSse> funcForStructWithDartKeywordFieldTwinRustAsyncSse({required StructWithDartKeywordFieldTwinRustAsyncSse arg }) => RustLib.instance.api.crateApiPseudoManualStructureTwinRustAsyncSseFuncForStructWithDartKeywordFieldTwinRustAsyncSse(arg: arg);
+  const StructWithDartKeywordFieldTwinRustAsyncSse({
+    required this.class_,
+    required this.interface_,
+  });
 
-            class StructWithDartKeywordFieldTwinRustAsyncSse  {
-                final int class_;
-final PlatformInt64 interface_;
+  @override
+  int get hashCode => class_.hashCode ^ interface_.hashCode;
 
-                const StructWithDartKeywordFieldTwinRustAsyncSse({required this.class_ ,required this.interface_ ,});
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithDartKeywordFieldTwinRustAsyncSse &&
+          runtimeType == other.runtimeType &&
+          class_ == other.class_ &&
+          interface_ == other.interface_;
+}
 
-                
-                
+class StructWithFieldRenameTwinRustAsyncSse {
+  final int renamed_field;
 
-                
-        @override
-        int get hashCode => class_.hashCode^interface_.hashCode;
-        
+  const StructWithFieldRenameTwinRustAsyncSse({
+    required this.renamed_field,
+  });
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is StructWithDartKeywordFieldTwinRustAsyncSse &&
-                runtimeType == other.runtimeType
-                && class_ == other.class_&& interface_ == other.interface_;
-        
-            }
+  @override
+  int get hashCode => renamed_field.hashCode;
 
-class StructWithFieldRenameTwinRustAsyncSse  {
-                final int renamed_field;
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithFieldRenameTwinRustAsyncSse &&
+          runtimeType == other.runtimeType &&
+          renamed_field == other.renamed_field;
+}
 
-                const StructWithFieldRenameTwinRustAsyncSse({required this.renamed_field ,});
+class StructWithOneFieldTwinRustAsyncSse {
+  final int a;
 
-                
-                
+  const StructWithOneFieldTwinRustAsyncSse({
+    required this.a,
+  });
 
-                
-        @override
-        int get hashCode => renamed_field.hashCode;
-        
+  @override
+  int get hashCode => a.hashCode;
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is StructWithFieldRenameTwinRustAsyncSse &&
-                runtimeType == other.runtimeType
-                && renamed_field == other.renamed_field;
-        
-            }
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithOneFieldTwinRustAsyncSse &&
+          runtimeType == other.runtimeType &&
+          a == other.a;
+}
 
-class StructWithOneFieldTwinRustAsyncSse  {
-                final int a;
+class StructWithTwoFieldTwinRustAsyncSse {
+  final int a;
+  final int b;
 
-                const StructWithOneFieldTwinRustAsyncSse({required this.a ,});
+  const StructWithTwoFieldTwinRustAsyncSse({
+    required this.a,
+    required this.b,
+  });
 
-                
-                
+  @override
+  int get hashCode => a.hashCode ^ b.hashCode;
 
-                
-        @override
-        int get hashCode => a.hashCode;
-        
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithTwoFieldTwinRustAsyncSse &&
+          runtimeType == other.runtimeType &&
+          a == other.a &&
+          b == other.b;
+}
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is StructWithOneFieldTwinRustAsyncSse &&
-                runtimeType == other.runtimeType
-                && a == other.a;
-        
-            }
+class StructWithZeroFieldTwinRustAsyncSse {
+  const StructWithZeroFieldTwinRustAsyncSse();
 
-class StructWithTwoFieldTwinRustAsyncSse  {
-                final int a;
-final int b;
+  @override
+  int get hashCode => 0;
 
-                const StructWithTwoFieldTwinRustAsyncSse({required this.a ,required this.b ,});
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithZeroFieldTwinRustAsyncSse &&
+          runtimeType == other.runtimeType;
+}
 
-                
-                
+class TupleStructWithOneFieldTwinRustAsyncSse {
+  final int field0;
 
-                
-        @override
-        int get hashCode => a.hashCode^b.hashCode;
-        
+  const TupleStructWithOneFieldTwinRustAsyncSse({
+    required this.field0,
+  });
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is StructWithTwoFieldTwinRustAsyncSse &&
-                runtimeType == other.runtimeType
-                && a == other.a&& b == other.b;
-        
-            }
+  @override
+  int get hashCode => field0.hashCode;
 
-class StructWithZeroFieldTwinRustAsyncSse  {
-                
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TupleStructWithOneFieldTwinRustAsyncSse &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
 
-                const StructWithZeroFieldTwinRustAsyncSse();
+class TupleStructWithTwoFieldTwinRustAsyncSse {
+  final int field0;
+  final int field1;
 
-                
-                
+  const TupleStructWithTwoFieldTwinRustAsyncSse({
+    required this.field0,
+    required this.field1,
+  });
 
-                
-        @override
-        int get hashCode => 0;
-        
+  @override
+  int get hashCode => field0.hashCode ^ field1.hashCode;
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is StructWithZeroFieldTwinRustAsyncSse &&
-                runtimeType == other.runtimeType
-                ;
-        
-            }
-
-class TupleStructWithOneFieldTwinRustAsyncSse  {
-                final int field0;
-
-                const TupleStructWithOneFieldTwinRustAsyncSse({required this.field0 ,});
-
-                
-                
-
-                
-        @override
-        int get hashCode => field0.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is TupleStructWithOneFieldTwinRustAsyncSse &&
-                runtimeType == other.runtimeType
-                && field0 == other.field0;
-        
-            }
-
-class TupleStructWithTwoFieldTwinRustAsyncSse  {
-                final int field0;
-final int field1;
-
-                const TupleStructWithTwoFieldTwinRustAsyncSse({required this.field0 ,required this.field1 ,});
-
-                
-                
-
-                
-        @override
-        int get hashCode => field0.hashCode^field1.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is TupleStructWithTwoFieldTwinRustAsyncSse &&
-                runtimeType == other.runtimeType
-                && field0 == other.field0&& field1 == other.field1;
-        
-            }
-            
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TupleStructWithTwoFieldTwinRustAsyncSse &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0 &&
+          field1 == other.field1;
+}

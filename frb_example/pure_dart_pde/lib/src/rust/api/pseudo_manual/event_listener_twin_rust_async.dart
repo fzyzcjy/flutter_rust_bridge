@@ -9,26 +9,35 @@ import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 
-                part 'event_listener_twin_rust_async.freezed.dart';
-                part 'event_listener_twin_rust_async.g.dart';
-                
+part 'event_listener_twin_rust_async.freezed.dart';
+part 'event_listener_twin_rust_async.g.dart';
 
-            // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `deref`, `initialize`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `deref`, `initialize`
 
+Future<
+    Stream<
+        EventTwinRustAsync>> registerEventListenerTwinRustAsync() => RustLib
+    .instance.api
+    .crateApiPseudoManualEventListenerTwinRustAsyncRegisterEventListenerTwinRustAsync();
 
-            Future<Stream<EventTwinRustAsync>> registerEventListenerTwinRustAsync() => RustLib.instance.api.crateApiPseudoManualEventListenerTwinRustAsyncRegisterEventListenerTwinRustAsync();
+Future<void> closeEventListenerTwinRustAsync() => RustLib.instance.api
+    .crateApiPseudoManualEventListenerTwinRustAsyncCloseEventListenerTwinRustAsync();
 
-Future<void> closeEventListenerTwinRustAsync() => RustLib.instance.api.crateApiPseudoManualEventListenerTwinRustAsyncCloseEventListenerTwinRustAsync();
+Future<void> createEventTwinRustAsync(
+        {required String address, required String payload}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualEventListenerTwinRustAsyncCreateEventTwinRustAsync(
+            address: address, payload: payload);
 
-Future<void> createEventTwinRustAsync({required String address , required String payload }) => RustLib.instance.api.crateApiPseudoManualEventListenerTwinRustAsyncCreateEventTwinRustAsync(address: address, payload: payload);
-
-            @freezed
-class EventTwinRustAsync with _$EventTwinRustAsync  {
-                const EventTwinRustAsync._();
-                const factory EventTwinRustAsync({ required  String address, required  String payload,}) = _EventTwinRustAsync;
-                 Future<String>  asStringTwinRustAsync()=>RustLib.instance.api.crateApiPseudoManualEventListenerTwinRustAsyncEventTwinRustAsyncAsStringTwinRustAsync(that: this, );
-
-
-                
-            }
-            
+@freezed
+class EventTwinRustAsync with _$EventTwinRustAsync {
+  const EventTwinRustAsync._();
+  const factory EventTwinRustAsync({
+    required String address,
+    required String payload,
+  }) = _EventTwinRustAsync;
+  Future<String> asStringTwinRustAsync() => RustLib.instance.api
+          .crateApiPseudoManualEventListenerTwinRustAsyncEventTwinRustAsyncAsStringTwinRustAsync(
+        that: this,
+      );
+}

@@ -8,184 +8,169 @@ import 'dart:io';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+Future<StructWithZeroFieldTwinNormal> funcStructWithZeroFieldTwinNormal(
+        {required StructWithZeroFieldTwinNormal arg}) =>
+    RustLib.instance.api
+        .crateApiStructureFuncStructWithZeroFieldTwinNormal(arg: arg);
 
-            
+Future<StructWithOneFieldTwinNormal> funcStructWithOneFieldTwinNormal(
+        {required StructWithOneFieldTwinNormal arg}) =>
+    RustLib.instance.api
+        .crateApiStructureFuncStructWithOneFieldTwinNormal(arg: arg);
 
-            Future<StructWithZeroFieldTwinNormal> funcStructWithZeroFieldTwinNormal({required StructWithZeroFieldTwinNormal arg }) => RustLib.instance.api.crateApiStructureFuncStructWithZeroFieldTwinNormal(arg: arg);
+Future<StructWithTwoFieldTwinNormal> funcStructWithTwoFieldTwinNormal(
+        {required StructWithTwoFieldTwinNormal arg}) =>
+    RustLib.instance.api
+        .crateApiStructureFuncStructWithTwoFieldTwinNormal(arg: arg);
 
-Future<StructWithOneFieldTwinNormal> funcStructWithOneFieldTwinNormal({required StructWithOneFieldTwinNormal arg }) => RustLib.instance.api.crateApiStructureFuncStructWithOneFieldTwinNormal(arg: arg);
+Future<TupleStructWithOneFieldTwinNormal> funcTupleStructWithOneFieldTwinNormal(
+        {required TupleStructWithOneFieldTwinNormal arg}) =>
+    RustLib.instance.api
+        .crateApiStructureFuncTupleStructWithOneFieldTwinNormal(arg: arg);
 
-Future<StructWithTwoFieldTwinNormal> funcStructWithTwoFieldTwinNormal({required StructWithTwoFieldTwinNormal arg }) => RustLib.instance.api.crateApiStructureFuncStructWithTwoFieldTwinNormal(arg: arg);
+Future<TupleStructWithTwoFieldTwinNormal> funcTupleStructWithTwoFieldTwinNormal(
+        {required TupleStructWithTwoFieldTwinNormal arg}) =>
+    RustLib.instance.api
+        .crateApiStructureFuncTupleStructWithTwoFieldTwinNormal(arg: arg);
 
-Future<TupleStructWithOneFieldTwinNormal> funcTupleStructWithOneFieldTwinNormal({required TupleStructWithOneFieldTwinNormal arg }) => RustLib.instance.api.crateApiStructureFuncTupleStructWithOneFieldTwinNormal(arg: arg);
+Future<StructWithFieldRenameTwinNormal> funcForStructWithFieldRenameTwinNormal(
+        {required StructWithFieldRenameTwinNormal arg}) =>
+    RustLib.instance.api
+        .crateApiStructureFuncForStructWithFieldRenameTwinNormal(arg: arg);
 
-Future<TupleStructWithTwoFieldTwinNormal> funcTupleStructWithTwoFieldTwinNormal({required TupleStructWithTwoFieldTwinNormal arg }) => RustLib.instance.api.crateApiStructureFuncTupleStructWithTwoFieldTwinNormal(arg: arg);
+Future<StructWithDartKeywordFieldTwinNormal>
+    funcForStructWithDartKeywordFieldTwinNormal(
+            {required StructWithDartKeywordFieldTwinNormal arg}) =>
+        RustLib.instance.api
+            .crateApiStructureFuncForStructWithDartKeywordFieldTwinNormal(
+                arg: arg);
 
-Future<StructWithFieldRenameTwinNormal> funcForStructWithFieldRenameTwinNormal({required StructWithFieldRenameTwinNormal arg }) => RustLib.instance.api.crateApiStructureFuncForStructWithFieldRenameTwinNormal(arg: arg);
+class StructWithDartKeywordFieldTwinNormal {
+  final int class_;
+  final PlatformInt64 interface_;
 
-Future<StructWithDartKeywordFieldTwinNormal> funcForStructWithDartKeywordFieldTwinNormal({required StructWithDartKeywordFieldTwinNormal arg }) => RustLib.instance.api.crateApiStructureFuncForStructWithDartKeywordFieldTwinNormal(arg: arg);
+  const StructWithDartKeywordFieldTwinNormal({
+    required this.class_,
+    required this.interface_,
+  });
 
-            class StructWithDartKeywordFieldTwinNormal  {
-                final int class_;
-final PlatformInt64 interface_;
+  @override
+  int get hashCode => class_.hashCode ^ interface_.hashCode;
 
-                const StructWithDartKeywordFieldTwinNormal({required this.class_ ,required this.interface_ ,});
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithDartKeywordFieldTwinNormal &&
+          runtimeType == other.runtimeType &&
+          class_ == other.class_ &&
+          interface_ == other.interface_;
+}
 
-                
-                
+class StructWithFieldRenameTwinNormal {
+  final int renamed_field;
 
-                
-        @override
-        int get hashCode => class_.hashCode^interface_.hashCode;
-        
+  const StructWithFieldRenameTwinNormal({
+    required this.renamed_field,
+  });
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is StructWithDartKeywordFieldTwinNormal &&
-                runtimeType == other.runtimeType
-                && class_ == other.class_&& interface_ == other.interface_;
-        
-            }
+  @override
+  int get hashCode => renamed_field.hashCode;
 
-class StructWithFieldRenameTwinNormal  {
-                final int renamed_field;
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithFieldRenameTwinNormal &&
+          runtimeType == other.runtimeType &&
+          renamed_field == other.renamed_field;
+}
 
-                const StructWithFieldRenameTwinNormal({required this.renamed_field ,});
+class StructWithOneFieldTwinNormal {
+  final int a;
 
-                
-                
+  const StructWithOneFieldTwinNormal({
+    required this.a,
+  });
 
-                
-        @override
-        int get hashCode => renamed_field.hashCode;
-        
+  @override
+  int get hashCode => a.hashCode;
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is StructWithFieldRenameTwinNormal &&
-                runtimeType == other.runtimeType
-                && renamed_field == other.renamed_field;
-        
-            }
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithOneFieldTwinNormal &&
+          runtimeType == other.runtimeType &&
+          a == other.a;
+}
 
-class StructWithOneFieldTwinNormal  {
-                final int a;
+class StructWithTwoFieldTwinNormal {
+  final int a;
+  final int b;
 
-                const StructWithOneFieldTwinNormal({required this.a ,});
+  const StructWithTwoFieldTwinNormal({
+    required this.a,
+    required this.b,
+  });
 
-                
-                
+  @override
+  int get hashCode => a.hashCode ^ b.hashCode;
 
-                
-        @override
-        int get hashCode => a.hashCode;
-        
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithTwoFieldTwinNormal &&
+          runtimeType == other.runtimeType &&
+          a == other.a &&
+          b == other.b;
+}
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is StructWithOneFieldTwinNormal &&
-                runtimeType == other.runtimeType
-                && a == other.a;
-        
-            }
+class StructWithZeroFieldTwinNormal {
+  const StructWithZeroFieldTwinNormal();
 
-class StructWithTwoFieldTwinNormal  {
-                final int a;
-final int b;
+  @override
+  int get hashCode => 0;
 
-                const StructWithTwoFieldTwinNormal({required this.a ,required this.b ,});
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithZeroFieldTwinNormal &&
+          runtimeType == other.runtimeType;
+}
 
-                
-                
+class TupleStructWithOneFieldTwinNormal {
+  final int field0;
 
-                
-        @override
-        int get hashCode => a.hashCode^b.hashCode;
-        
+  const TupleStructWithOneFieldTwinNormal({
+    required this.field0,
+  });
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is StructWithTwoFieldTwinNormal &&
-                runtimeType == other.runtimeType
-                && a == other.a&& b == other.b;
-        
-            }
+  @override
+  int get hashCode => field0.hashCode;
 
-class StructWithZeroFieldTwinNormal  {
-                
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TupleStructWithOneFieldTwinNormal &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
 
-                const StructWithZeroFieldTwinNormal();
+class TupleStructWithTwoFieldTwinNormal {
+  final int field0;
+  final int field1;
 
-                
-                
+  const TupleStructWithTwoFieldTwinNormal({
+    required this.field0,
+    required this.field1,
+  });
 
-                
-        @override
-        int get hashCode => 0;
-        
+  @override
+  int get hashCode => field0.hashCode ^ field1.hashCode;
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is StructWithZeroFieldTwinNormal &&
-                runtimeType == other.runtimeType
-                ;
-        
-            }
-
-class TupleStructWithOneFieldTwinNormal  {
-                final int field0;
-
-                const TupleStructWithOneFieldTwinNormal({required this.field0 ,});
-
-                
-                
-
-                
-        @override
-        int get hashCode => field0.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is TupleStructWithOneFieldTwinNormal &&
-                runtimeType == other.runtimeType
-                && field0 == other.field0;
-        
-            }
-
-class TupleStructWithTwoFieldTwinNormal  {
-                final int field0;
-final int field1;
-
-                const TupleStructWithTwoFieldTwinNormal({required this.field0 ,required this.field1 ,});
-
-                
-                
-
-                
-        @override
-        int get hashCode => field0.hashCode^field1.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is TupleStructWithTwoFieldTwinNormal &&
-                runtimeType == other.runtimeType
-                && field0 == other.field0&& field1 == other.field1;
-        
-            }
-            
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TupleStructWithTwoFieldTwinNormal &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0 &&
+          field1 == other.field1;
+}

@@ -8,12 +8,14 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+Future<int> primitiveTypesTwinSse(
+        {required int myI32,
+        required PlatformInt64 myI64,
+        required double myF64,
+        required bool myBool}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualPrimitiveMiscTwinSsePrimitiveTypesTwinSse(
+            myI32: myI32, myI64: myI64, myF64: myF64, myBool: myBool);
 
-            
-
-            Future<int> primitiveTypesTwinSse({required int myI32 , required PlatformInt64 myI64 , required double myF64 , required bool myBool }) => RustLib.instance.api.crateApiPseudoManualPrimitiveMiscTwinSsePrimitiveTypesTwinSse(myI32: myI32, myI64: myI64, myF64: myF64, myBool: myBool);
-
-Future<int> primitiveU32TwinSse({required int myU32 }) => RustLib.instance.api.crateApiPseudoManualPrimitiveMiscTwinSsePrimitiveU32TwinSse(myU32: myU32);
-
-            
-            
+Future<int> primitiveU32TwinSse({required int myU32}) => RustLib.instance.api
+    .crateApiPseudoManualPrimitiveMiscTwinSsePrimitiveU32TwinSse(myU32: myU32);

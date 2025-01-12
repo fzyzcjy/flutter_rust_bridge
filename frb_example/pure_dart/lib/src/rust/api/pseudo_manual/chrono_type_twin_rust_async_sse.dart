@@ -8,78 +8,107 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 
-            // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
+Future<DateTime> datetimeUtcTwinRustAsyncSse({required DateTime d}) => RustLib
+    .instance.api
+    .crateApiPseudoManualChronoTypeTwinRustAsyncSseDatetimeUtcTwinRustAsyncSse(
+        d: d);
 
+Future<DateTime> datetimeLocalTwinRustAsyncSse({required DateTime d}) => RustLib
+    .instance.api
+    .crateApiPseudoManualChronoTypeTwinRustAsyncSseDatetimeLocalTwinRustAsyncSse(
+        d: d);
 
-            Future<DateTime> datetimeUtcTwinRustAsyncSse({required DateTime d }) => RustLib.instance.api.crateApiPseudoManualChronoTypeTwinRustAsyncSseDatetimeUtcTwinRustAsyncSse(d: d);
+Future<DateTime> naivedatetimeTwinRustAsyncSse({required DateTime d}) => RustLib
+    .instance.api
+    .crateApiPseudoManualChronoTypeTwinRustAsyncSseNaivedatetimeTwinRustAsyncSse(
+        d: d);
 
-Future<DateTime> datetimeLocalTwinRustAsyncSse({required DateTime d }) => RustLib.instance.api.crateApiPseudoManualChronoTypeTwinRustAsyncSseDatetimeLocalTwinRustAsyncSse(d: d);
+Future<DateTime?> optionalEmptyDatetimeUtcTwinRustAsyncSse({DateTime? d}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinRustAsyncSseOptionalEmptyDatetimeUtcTwinRustAsyncSse(
+            d: d);
 
-Future<DateTime> naivedatetimeTwinRustAsyncSse({required DateTime d }) => RustLib.instance.api.crateApiPseudoManualChronoTypeTwinRustAsyncSseNaivedatetimeTwinRustAsyncSse(d: d);
+Future<Duration> durationTwinRustAsyncSse({required Duration d}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinRustAsyncSseDurationTwinRustAsyncSse(
+            d: d);
 
-Future<DateTime?> optionalEmptyDatetimeUtcTwinRustAsyncSse({DateTime? d }) => RustLib.instance.api.crateApiPseudoManualChronoTypeTwinRustAsyncSseOptionalEmptyDatetimeUtcTwinRustAsyncSse(d: d);
+Future<List<Duration>> handleTimestampsTwinRustAsyncSse(
+        {required List<DateTime> timestamps, required DateTime epoch}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinRustAsyncSseHandleTimestampsTwinRustAsyncSse(
+            timestamps: timestamps, epoch: epoch);
 
-Future<Duration> durationTwinRustAsyncSse({required Duration d }) => RustLib.instance.api.crateApiPseudoManualChronoTypeTwinRustAsyncSseDurationTwinRustAsyncSse(d: d);
+Future<List<DateTime>> handleDurationsTwinRustAsyncSse(
+        {required List<Duration> durations, required DateTime since}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinRustAsyncSseHandleDurationsTwinRustAsyncSse(
+            durations: durations, since: since);
 
-Future<List<Duration>> handleTimestampsTwinRustAsyncSse({required List<DateTime> timestamps , required DateTime epoch }) => RustLib.instance.api.crateApiPseudoManualChronoTypeTwinRustAsyncSseHandleTimestampsTwinRustAsyncSse(timestamps: timestamps, epoch: epoch);
+Future<TestChronoTwinRustAsyncSse> testChronoTwinRustAsyncSse() => RustLib
+    .instance.api
+    .crateApiPseudoManualChronoTypeTwinRustAsyncSseTestChronoTwinRustAsyncSse();
 
-Future<List<DateTime>> handleDurationsTwinRustAsyncSse({required List<Duration> durations , required DateTime since }) => RustLib.instance.api.crateApiPseudoManualChronoTypeTwinRustAsyncSseHandleDurationsTwinRustAsyncSse(durations: durations, since: since);
+Future<TestChronoTwinRustAsyncSse> testPreciseChronoTwinRustAsyncSse() => RustLib
+    .instance.api
+    .crateApiPseudoManualChronoTypeTwinRustAsyncSseTestPreciseChronoTwinRustAsyncSse();
 
-Future<TestChronoTwinRustAsyncSse> testChronoTwinRustAsyncSse() => RustLib.instance.api.crateApiPseudoManualChronoTypeTwinRustAsyncSseTestChronoTwinRustAsyncSse();
+Future<Duration> howLongDoesItTakeTwinRustAsyncSse(
+        {required FeatureChronoTwinRustAsyncSse mine}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinRustAsyncSseHowLongDoesItTakeTwinRustAsyncSse(
+            mine: mine);
 
-Future<TestChronoTwinRustAsyncSse> testPreciseChronoTwinRustAsyncSse() => RustLib.instance.api.crateApiPseudoManualChronoTypeTwinRustAsyncSseTestPreciseChronoTwinRustAsyncSse();
+class FeatureChronoTwinRustAsyncSse {
+  final DateTime utc;
+  final DateTime local;
+  final Duration duration;
+  final DateTime naive;
 
-Future<Duration> howLongDoesItTakeTwinRustAsyncSse({required FeatureChronoTwinRustAsyncSse mine }) => RustLib.instance.api.crateApiPseudoManualChronoTypeTwinRustAsyncSseHowLongDoesItTakeTwinRustAsyncSse(mine: mine);
+  const FeatureChronoTwinRustAsyncSse({
+    required this.utc,
+    required this.local,
+    required this.duration,
+    required this.naive,
+  });
 
-            class FeatureChronoTwinRustAsyncSse  {
-                final DateTime utc;
-final DateTime local;
-final Duration duration;
-final DateTime naive;
+  @override
+  int get hashCode =>
+      utc.hashCode ^ local.hashCode ^ duration.hashCode ^ naive.hashCode;
 
-                const FeatureChronoTwinRustAsyncSse({required this.utc ,required this.local ,required this.duration ,required this.naive ,});
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is FeatureChronoTwinRustAsyncSse &&
+          runtimeType == other.runtimeType &&
+          utc == other.utc &&
+          local == other.local &&
+          duration == other.duration &&
+          naive == other.naive;
+}
 
-                
-                
+class TestChronoTwinRustAsyncSse {
+  final DateTime? dt;
+  final DateTime? dt2;
+  final Duration? du;
 
-                
-        @override
-        int get hashCode => utc.hashCode^local.hashCode^duration.hashCode^naive.hashCode;
-        
+  const TestChronoTwinRustAsyncSse({
+    this.dt,
+    this.dt2,
+    this.du,
+  });
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is FeatureChronoTwinRustAsyncSse &&
-                runtimeType == other.runtimeType
-                && utc == other.utc&& local == other.local&& duration == other.duration&& naive == other.naive;
-        
-            }
+  @override
+  int get hashCode => dt.hashCode ^ dt2.hashCode ^ du.hashCode;
 
-class TestChronoTwinRustAsyncSse  {
-                final DateTime? dt;
-final DateTime? dt2;
-final Duration? du;
-
-                const TestChronoTwinRustAsyncSse({this.dt ,this.dt2 ,this.du ,});
-
-                
-                
-
-                
-        @override
-        int get hashCode => dt.hashCode^dt2.hashCode^du.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is TestChronoTwinRustAsyncSse &&
-                runtimeType == other.runtimeType
-                && dt == other.dt&& dt2 == other.dt2&& du == other.du;
-        
-            }
-            
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TestChronoTwinRustAsyncSse &&
+          runtimeType == other.runtimeType &&
+          dt == other.dt &&
+          dt2 == other.dt2 &&
+          du == other.du;
+}

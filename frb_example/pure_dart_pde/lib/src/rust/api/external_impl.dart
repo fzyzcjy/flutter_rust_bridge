@@ -8,47 +8,35 @@ import 'dart:io';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SimpleOpaqueExternalStructWithMethod>>
+abstract class SimpleOpaqueExternalStructWithMethod
+    implements RustOpaqueInterface {
+  factory SimpleOpaqueExternalStructWithMethod({required String a}) =>
+      RustLib.instance.api
+          .crateApiExternalImplSimpleOpaqueExternalStructWithMethodNew(a: a);
 
-            
+  Future<String> simpleExternalMethod();
+}
 
-            
+class SimpleTranslatableExternalStructWithMethod {
+  final String a;
 
-            
-                // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<SimpleOpaqueExternalStructWithMethod>>
-                abstract class SimpleOpaqueExternalStructWithMethod implements RustOpaqueInterface {
-                    factory SimpleOpaqueExternalStructWithMethod({required String a })=>RustLib.instance.api.crateApiExternalImplSimpleOpaqueExternalStructWithMethodNew(a: a);
+  const SimpleTranslatableExternalStructWithMethod({
+    required this.a,
+  });
 
+  Future<String> simpleExternalMethod() => RustLib.instance.api
+          .crateApiExternalImplSimpleTranslatableExternalStructWithMethodSimpleExternalMethod(
+        that: this,
+      );
 
- Future<String>  simpleExternalMethod();
+  @override
+  int get hashCode => a.hashCode;
 
-
-
-                    
-                }
-                
-
-class SimpleTranslatableExternalStructWithMethod  {
-                final String a;
-
-                const SimpleTranslatableExternalStructWithMethod({required this.a ,});
-
-                 Future<String>  simpleExternalMethod()=>RustLib.instance.api.crateApiExternalImplSimpleTranslatableExternalStructWithMethodSimpleExternalMethod(that: this, );
-
-
-                
-
-                
-        @override
-        int get hashCode => a.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is SimpleTranslatableExternalStructWithMethod &&
-                runtimeType == other.runtimeType
-                && a == other.a;
-        
-            }
-            
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SimpleTranslatableExternalStructWithMethod &&
+          runtimeType == other.runtimeType &&
+          a == other.a;
+}

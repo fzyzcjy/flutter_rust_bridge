@@ -9,31 +9,25 @@ import '../deliberate_name_conflict.dart';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+Future<StructInUpperLevel> testDuplicatedModuleNames(
+        {required StructInLowerLevel s}) =>
+    RustLib.instance.api
+        .crateApiDeliberateNameConflictTestDuplicatedModuleNames(s: s);
 
-            
+class StructInLowerLevel {
+  final StructInUpperLevel inner;
 
-            Future<StructInUpperLevel> testDuplicatedModuleNames({required StructInLowerLevel s }) => RustLib.instance.api.crateApiDeliberateNameConflictTestDuplicatedModuleNames(s: s);
+  const StructInLowerLevel({
+    required this.inner,
+  });
 
-            class StructInLowerLevel  {
-                final StructInUpperLevel inner;
+  @override
+  int get hashCode => inner.hashCode;
 
-                const StructInLowerLevel({required this.inner ,});
-
-                
-                
-
-                
-        @override
-        int get hashCode => inner.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is StructInLowerLevel &&
-                runtimeType == other.runtimeType
-                && inner == other.inner;
-        
-            }
-            
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructInLowerLevel &&
+          runtimeType == other.runtimeType &&
+          inner == other.inner;
+}

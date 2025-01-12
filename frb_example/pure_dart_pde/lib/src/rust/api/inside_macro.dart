@@ -8,57 +8,47 @@ import 'dart:io';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+Future<MacroStruct> funcMacroStructTwinNormal({required MacroStruct arg}) =>
+    RustLib.instance.api.crateApiInsideMacroFuncMacroStructTwinNormal(arg: arg);
 
-            
+Future<AnotherMacroStructTwinNormal> anotherMacroStructTwinNormal() =>
+    RustLib.instance.api.crateApiInsideMacroAnotherMacroStructTwinNormal();
 
-            Future<MacroStruct> funcMacroStructTwinNormal({required MacroStruct arg }) => RustLib.instance.api.crateApiInsideMacroFuncMacroStructTwinNormal(arg: arg);
+class AnotherMacroStructTwinNormal {
+  final int data;
+  int nonFinalData;
 
-Future<AnotherMacroStructTwinNormal> anotherMacroStructTwinNormal() => RustLib.instance.api.crateApiInsideMacroAnotherMacroStructTwinNormal();
+  AnotherMacroStructTwinNormal({
+    required this.data,
+    required this.nonFinalData,
+  });
 
-            class AnotherMacroStructTwinNormal  {
-                final int data;
- int nonFinalData;
+  @override
+  int get hashCode => data.hashCode ^ nonFinalData.hashCode;
 
-                AnotherMacroStructTwinNormal({required this.data ,required this.nonFinalData ,});
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AnotherMacroStructTwinNormal &&
+          runtimeType == other.runtimeType &&
+          data == other.data &&
+          nonFinalData == other.nonFinalData;
+}
 
-                
-                
+class MacroStruct {
+  final int data;
 
-                
-        @override
-        int get hashCode => data.hashCode^nonFinalData.hashCode;
-        
+  const MacroStruct({
+    required this.data,
+  });
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is AnotherMacroStructTwinNormal &&
-                runtimeType == other.runtimeType
-                && data == other.data&& nonFinalData == other.nonFinalData;
-        
-            }
+  @override
+  int get hashCode => data.hashCode;
 
-class MacroStruct  {
-                final int data;
-
-                const MacroStruct({required this.data ,});
-
-                
-                
-
-                
-        @override
-        int get hashCode => data.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is MacroStruct &&
-                runtimeType == other.runtimeType
-                && data == other.data;
-        
-            }
-            
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MacroStruct &&
+          runtimeType == other.runtimeType &&
+          data == other.data;
+}

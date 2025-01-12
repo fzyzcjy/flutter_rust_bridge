@@ -9,36 +9,35 @@ import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:uuid/uuid.dart';
 
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 
-            // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
+Future<UuidValue> handleUuidTwinSse({required UuidValue id}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualUuidTypeTwinSseHandleUuidTwinSse(id: id);
 
+Future<List<UuidValue>> handleUuidsTwinSse({required List<UuidValue> ids}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualUuidTypeTwinSseHandleUuidsTwinSse(ids: ids);
 
-            Future<UuidValue> handleUuidTwinSse({required UuidValue id }) => RustLib.instance.api.crateApiPseudoManualUuidTypeTwinSseHandleUuidTwinSse(id: id);
+Future<FeatureUuidTwinSse> handleNestedUuidsTwinSse(
+        {required FeatureUuidTwinSse ids}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualUuidTypeTwinSseHandleNestedUuidsTwinSse(ids: ids);
 
-Future<List<UuidValue>> handleUuidsTwinSse({required List<UuidValue> ids }) => RustLib.instance.api.crateApiPseudoManualUuidTypeTwinSseHandleUuidsTwinSse(ids: ids);
+class FeatureUuidTwinSse {
+  final UuidValue one;
 
-Future<FeatureUuidTwinSse> handleNestedUuidsTwinSse({required FeatureUuidTwinSse ids }) => RustLib.instance.api.crateApiPseudoManualUuidTypeTwinSseHandleNestedUuidsTwinSse(ids: ids);
+  const FeatureUuidTwinSse({
+    required this.one,
+  });
 
-            class FeatureUuidTwinSse  {
-                final UuidValue one;
+  @override
+  int get hashCode => one.hashCode;
 
-                const FeatureUuidTwinSse({required this.one ,});
-
-                
-                
-
-                
-        @override
-        int get hashCode => one.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is FeatureUuidTwinSse &&
-                runtimeType == other.runtimeType
-                && one == other.one;
-        
-            }
-            
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is FeatureUuidTwinSse &&
+          runtimeType == other.runtimeType &&
+          one == other.one;
+}

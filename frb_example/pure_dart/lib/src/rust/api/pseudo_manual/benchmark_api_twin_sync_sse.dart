@@ -8,88 +8,128 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-
-            // These functions are ignored because they are not marked as `pub`: `create_binary_tree_map`, `create_binary_tree_protobuf`, `create_binary_tree`, `create_blob`
+// These functions are ignored because they are not marked as `pub`: `create_binary_tree_map`, `create_binary_tree_protobuf`, `create_binary_tree`, `create_blob`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `deref`, `deref`, `fmt`, `fmt`, `initialize`, `initialize`
 
+void benchmarkVoidTwinSyncSse() => RustLib.instance.api
+    .crateApiPseudoManualBenchmarkApiTwinSyncSseBenchmarkVoidTwinSyncSse();
 
-            void benchmarkVoidTwinSyncSse() => RustLib.instance.api.crateApiPseudoManualBenchmarkApiTwinSyncSseBenchmarkVoidTwinSyncSse();
+int benchmarkInputBytesTwinSyncSse({required List<int> bytes}) => RustLib
+    .instance.api
+    .crateApiPseudoManualBenchmarkApiTwinSyncSseBenchmarkInputBytesTwinSyncSse(
+        bytes: bytes);
 
-int benchmarkInputBytesTwinSyncSse({required List<int> bytes }) => RustLib.instance.api.crateApiPseudoManualBenchmarkApiTwinSyncSseBenchmarkInputBytesTwinSyncSse(bytes: bytes);
+Uint8List benchmarkOutputBytesTwinSyncSse({required int size}) => RustLib
+    .instance.api
+    .crateApiPseudoManualBenchmarkApiTwinSyncSseBenchmarkOutputBytesTwinSyncSse(
+        size: size);
 
-Uint8List benchmarkOutputBytesTwinSyncSse({required int size }) => RustLib.instance.api.crateApiPseudoManualBenchmarkApiTwinSyncSseBenchmarkOutputBytesTwinSyncSse(size: size);
+void benchmarkBinaryTreeInputTwinSyncSse(
+        {required BenchmarkBinaryTreeTwinSyncSse tree}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBenchmarkApiTwinSyncSseBenchmarkBinaryTreeInputTwinSyncSse(
+            tree: tree);
 
-void benchmarkBinaryTreeInputTwinSyncSse({required BenchmarkBinaryTreeTwinSyncSse tree }) => RustLib.instance.api.crateApiPseudoManualBenchmarkApiTwinSyncSseBenchmarkBinaryTreeInputTwinSyncSse(tree: tree);
+BenchmarkBinaryTreeTwinSyncSse benchmarkBinaryTreeOutputTwinSyncSse(
+        {required int depth}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBenchmarkApiTwinSyncSseBenchmarkBinaryTreeOutputTwinSyncSse(
+            depth: depth);
 
-BenchmarkBinaryTreeTwinSyncSse benchmarkBinaryTreeOutputTwinSyncSse({required int depth }) => RustLib.instance.api.crateApiPseudoManualBenchmarkApiTwinSyncSseBenchmarkBinaryTreeOutputTwinSyncSse(depth: depth);
+void benchmarkBinaryTreeInputProtobufTwinSyncSse({required List<int> raw}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBenchmarkApiTwinSyncSseBenchmarkBinaryTreeInputProtobufTwinSyncSse(
+            raw: raw);
 
-void benchmarkBinaryTreeInputProtobufTwinSyncSse({required List<int> raw }) => RustLib.instance.api.crateApiPseudoManualBenchmarkApiTwinSyncSseBenchmarkBinaryTreeInputProtobufTwinSyncSse(raw: raw);
+Uint8List benchmarkBinaryTreeOutputProtobufTwinSyncSse({required int depth}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBenchmarkApiTwinSyncSseBenchmarkBinaryTreeOutputProtobufTwinSyncSse(
+            depth: depth);
 
-Uint8List benchmarkBinaryTreeOutputProtobufTwinSyncSse({required int depth }) => RustLib.instance.api.crateApiPseudoManualBenchmarkApiTwinSyncSseBenchmarkBinaryTreeOutputProtobufTwinSyncSse(depth: depth);
+void benchmarkBinaryTreeInputJsonTwinSyncSse({required String raw}) => RustLib
+    .instance.api
+    .crateApiPseudoManualBenchmarkApiTwinSyncSseBenchmarkBinaryTreeInputJsonTwinSyncSse(
+        raw: raw);
 
-void benchmarkBinaryTreeInputJsonTwinSyncSse({required String raw }) => RustLib.instance.api.crateApiPseudoManualBenchmarkApiTwinSyncSseBenchmarkBinaryTreeInputJsonTwinSyncSse(raw: raw);
+String benchmarkBinaryTreeOutputJsonTwinSyncSse({required int depth}) => RustLib
+    .instance.api
+    .crateApiPseudoManualBenchmarkApiTwinSyncSseBenchmarkBinaryTreeOutputJsonTwinSyncSse(
+        depth: depth);
 
-String benchmarkBinaryTreeOutputJsonTwinSyncSse({required int depth }) => RustLib.instance.api.crateApiPseudoManualBenchmarkApiTwinSyncSseBenchmarkBinaryTreeOutputJsonTwinSyncSse(depth: depth);
+void benchmarkBlobInputTwinSyncSse({required BenchmarkBlobTwinSyncSse blob}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBenchmarkApiTwinSyncSseBenchmarkBlobInputTwinSyncSse(
+            blob: blob);
 
-void benchmarkBlobInputTwinSyncSse({required BenchmarkBlobTwinSyncSse blob }) => RustLib.instance.api.crateApiPseudoManualBenchmarkApiTwinSyncSseBenchmarkBlobInputTwinSyncSse(blob: blob);
+BenchmarkBlobTwinSyncSse benchmarkBlobOutputTwinSyncSse({required int size}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBenchmarkApiTwinSyncSseBenchmarkBlobOutputTwinSyncSse(
+            size: size);
 
-BenchmarkBlobTwinSyncSse benchmarkBlobOutputTwinSyncSse({required int size }) => RustLib.instance.api.crateApiPseudoManualBenchmarkApiTwinSyncSseBenchmarkBlobOutputTwinSyncSse(size: size);
+void benchmarkBlobInputProtobufTwinSyncSse({required List<int> raw}) => RustLib
+    .instance.api
+    .crateApiPseudoManualBenchmarkApiTwinSyncSseBenchmarkBlobInputProtobufTwinSyncSse(
+        raw: raw);
 
-void benchmarkBlobInputProtobufTwinSyncSse({required List<int> raw }) => RustLib.instance.api.crateApiPseudoManualBenchmarkApiTwinSyncSseBenchmarkBlobInputProtobufTwinSyncSse(raw: raw);
+Uint8List benchmarkBlobOutputProtobufTwinSyncSse({required int size}) => RustLib
+    .instance.api
+    .crateApiPseudoManualBenchmarkApiTwinSyncSseBenchmarkBlobOutputProtobufTwinSyncSse(
+        size: size);
 
-Uint8List benchmarkBlobOutputProtobufTwinSyncSse({required int size }) => RustLib.instance.api.crateApiPseudoManualBenchmarkApiTwinSyncSseBenchmarkBlobOutputProtobufTwinSyncSse(size: size);
+void benchmarkBlobInputJsonTwinSyncSse({required String raw}) => RustLib
+    .instance.api
+    .crateApiPseudoManualBenchmarkApiTwinSyncSseBenchmarkBlobInputJsonTwinSyncSse(
+        raw: raw);
 
-void benchmarkBlobInputJsonTwinSyncSse({required String raw }) => RustLib.instance.api.crateApiPseudoManualBenchmarkApiTwinSyncSseBenchmarkBlobInputJsonTwinSyncSse(raw: raw);
+String benchmarkBlobOutputJsonTwinSyncSse({required int size}) => RustLib
+    .instance.api
+    .crateApiPseudoManualBenchmarkApiTwinSyncSseBenchmarkBlobOutputJsonTwinSyncSse(
+        size: size);
 
-String benchmarkBlobOutputJsonTwinSyncSse({required int size }) => RustLib.instance.api.crateApiPseudoManualBenchmarkApiTwinSyncSseBenchmarkBlobOutputJsonTwinSyncSse(size: size);
+class BenchmarkBinaryTreeTwinSyncSse {
+  final String name;
+  final BenchmarkBinaryTreeTwinSyncSse? left;
+  final BenchmarkBinaryTreeTwinSyncSse? right;
 
-            class BenchmarkBinaryTreeTwinSyncSse  {
-                final String name;
-final BenchmarkBinaryTreeTwinSyncSse? left;
-final BenchmarkBinaryTreeTwinSyncSse? right;
+  const BenchmarkBinaryTreeTwinSyncSse({
+    required this.name,
+    this.left,
+    this.right,
+  });
 
-                const BenchmarkBinaryTreeTwinSyncSse({required this.name ,this.left ,this.right ,});
+  @override
+  int get hashCode => name.hashCode ^ left.hashCode ^ right.hashCode;
 
-                
-                
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BenchmarkBinaryTreeTwinSyncSse &&
+          runtimeType == other.runtimeType &&
+          name == other.name &&
+          left == other.left &&
+          right == other.right;
+}
 
-                
-        @override
-        int get hashCode => name.hashCode^left.hashCode^right.hashCode;
-        
+class BenchmarkBlobTwinSyncSse {
+  final Uint8List first;
+  final Uint8List second;
+  final Uint8List third;
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is BenchmarkBinaryTreeTwinSyncSse &&
-                runtimeType == other.runtimeType
-                && name == other.name&& left == other.left&& right == other.right;
-        
-            }
+  const BenchmarkBlobTwinSyncSse({
+    required this.first,
+    required this.second,
+    required this.third,
+  });
 
-class BenchmarkBlobTwinSyncSse  {
-                final Uint8List first;
-final Uint8List second;
-final Uint8List third;
+  @override
+  int get hashCode => first.hashCode ^ second.hashCode ^ third.hashCode;
 
-                const BenchmarkBlobTwinSyncSse({required this.first ,required this.second ,required this.third ,});
-
-                
-                
-
-                
-        @override
-        int get hashCode => first.hashCode^second.hashCode^third.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is BenchmarkBlobTwinSyncSse &&
-                runtimeType == other.runtimeType
-                && first == other.first&& second == other.second&& third == other.third;
-        
-            }
-            
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BenchmarkBlobTwinSyncSse &&
+          runtimeType == other.runtimeType &&
+          first == other.first &&
+          second == other.second &&
+          third == other.third;
+}

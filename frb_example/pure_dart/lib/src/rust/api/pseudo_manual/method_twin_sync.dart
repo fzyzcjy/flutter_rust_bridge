@@ -10,249 +10,261 @@ import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 
-                part 'method_twin_sync.freezed.dart';
-                part 'method_twin_sync.g.dart';
-                
+part 'method_twin_sync.freezed.dart';
+part 'method_twin_sync.g.dart';
 
-            // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 
+SumWithTwinSync getSumStructTwinSync() => RustLib.instance.api
+    .crateApiPseudoManualMethodTwinSyncGetSumStructTwinSync();
 
-            SumWithTwinSync getSumStructTwinSync() => RustLib.instance.api.crateApiPseudoManualMethodTwinSyncGetSumStructTwinSync();
+SumWithTwinSyncArray3 getSumArrayTwinSync(
+        {required int a, required int b, required int c}) =>
+    RustLib.instance.api.crateApiPseudoManualMethodTwinSyncGetSumArrayTwinSync(
+        a: a, b: b, c: c);
 
-SumWithTwinSyncArray3 getSumArrayTwinSync({required int a , required int b , required int c }) => RustLib.instance.api.crateApiPseudoManualMethodTwinSyncGetSumArrayTwinSync(a: a, b: b, c: c);
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StaticGetterOnlyTwinSync>>
+abstract class StaticGetterOnlyTwinSync implements RustOpaqueInterface {
+  static int get staticGetterTwinSync => RustLib.instance.api
+      .crateApiPseudoManualMethodTwinSyncStaticGetterOnlyTwinSyncStaticGetterTwinSync();
+}
 
-            
-                // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StaticGetterOnlyTwinSync>>
-                abstract class StaticGetterOnlyTwinSync implements RustOpaqueInterface {
-                    static int get staticGetterTwinSync=>RustLib.instance.api.crateApiPseudoManualMethodTwinSyncStaticGetterOnlyTwinSyncStaticGetterTwinSync();
+class ConcatenateWithTwinSync {
+  final String a;
 
+  const ConcatenateWithTwinSync({
+    required this.a,
+  });
 
+  static String concatenateStaticTwinSync(
+          {required String a, required String b}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinSyncConcatenateWithTwinSyncConcatenateStaticTwinSync(
+              a: a, b: b);
 
-                    
-                }
-                
+  String concatenateTwinSync({required String b}) => RustLib.instance.api
+      .crateApiPseudoManualMethodTwinSyncConcatenateWithTwinSyncConcatenateTwinSync(
+          that: this, b: b);
 
-class ConcatenateWithTwinSync  {
-                final String a;
+  static Stream<int> handleSomeStaticStreamSinkSingleArgTwinSync() => RustLib
+      .instance.api
+      .crateApiPseudoManualMethodTwinSyncConcatenateWithTwinSyncHandleSomeStaticStreamSinkSingleArgTwinSync();
 
-                const ConcatenateWithTwinSync({required this.a ,});
+  static Stream<Log2TwinSync> handleSomeStaticStreamSinkTwinSync(
+          {required int key, required int max}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinSyncConcatenateWithTwinSyncHandleSomeStaticStreamSinkTwinSync(
+              key: key, max: max);
 
-                static String  concatenateStaticTwinSync({required String a , required String b })=>RustLib.instance.api.crateApiPseudoManualMethodTwinSyncConcatenateWithTwinSyncConcatenateStaticTwinSync(a: a, b: b);
+  Stream<int> handleSomeStreamSinkAt1TwinSync() => RustLib.instance.api
+          .crateApiPseudoManualMethodTwinSyncConcatenateWithTwinSyncHandleSomeStreamSinkAt1TwinSync(
+        that: this,
+      );
 
+  Stream<Log2TwinSync> handleSomeStreamSinkTwinSync(
+          {required int key, required int max}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinSyncConcatenateWithTwinSyncHandleSomeStreamSinkTwinSync(
+              that: this, key: key, max: max);
 
- String  concatenateTwinSync({required String b })=>RustLib.instance.api.crateApiPseudoManualMethodTwinSyncConcatenateWithTwinSyncConcatenateTwinSync(that: this, b: b);
+  static ConcatenateWithTwinSync newTwinSync({required String a}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinSyncConcatenateWithTwinSyncNewTwinSync(
+              a: a);
 
+  String get simpleGetterTwinSync => RustLib.instance.api
+          .crateApiPseudoManualMethodTwinSyncConcatenateWithTwinSyncSimpleGetterTwinSync(
+        that: this,
+      );
 
-static Stream<int>  handleSomeStaticStreamSinkSingleArgTwinSync()=>RustLib.instance.api.crateApiPseudoManualMethodTwinSyncConcatenateWithTwinSyncHandleSomeStaticStreamSinkSingleArgTwinSync();
+  @override
+  int get hashCode => a.hashCode;
 
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ConcatenateWithTwinSync &&
+          runtimeType == other.runtimeType &&
+          a == other.a;
+}
 
-static Stream<Log2TwinSync>  handleSomeStaticStreamSinkTwinSync({required int key , required int max })=>RustLib.instance.api.crateApiPseudoManualMethodTwinSyncConcatenateWithTwinSyncHandleSomeStaticStreamSinkTwinSync(key: key, max: max);
+class Log2TwinSync {
+  final int key;
+  final String value;
 
+  const Log2TwinSync({
+    required this.key,
+    required this.value,
+  });
 
- Stream<int>  handleSomeStreamSinkAt1TwinSync()=>RustLib.instance.api.crateApiPseudoManualMethodTwinSyncConcatenateWithTwinSyncHandleSomeStreamSinkAt1TwinSync(that: this, );
+  @override
+  int get hashCode => key.hashCode ^ value.hashCode;
 
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Log2TwinSync &&
+          runtimeType == other.runtimeType &&
+          key == other.key &&
+          value == other.value;
+}
 
- Stream<Log2TwinSync>  handleSomeStreamSinkTwinSync({required int key , required int max })=>RustLib.instance.api.crateApiPseudoManualMethodTwinSyncConcatenateWithTwinSyncHandleSomeStreamSinkTwinSync(that: this, key: key, max: max);
+class MyCallableTwinSync {
+  final String one;
 
+  const MyCallableTwinSync({
+    required this.one,
+  });
 
-static ConcatenateWithTwinSync  newTwinSync({required String a })=>RustLib.instance.api.crateApiPseudoManualMethodTwinSyncConcatenateWithTwinSyncNewTwinSync(a: a);
+  String call({required String two}) => RustLib.instance.api
+      .crateApiPseudoManualMethodTwinSyncMyCallableTwinSyncCall(
+          that: this, two: two);
 
+  @override
+  int get hashCode => one.hashCode;
 
- String get simpleGetterTwinSync=>RustLib.instance.api.crateApiPseudoManualMethodTwinSyncConcatenateWithTwinSyncSimpleGetterTwinSync(that: this, );
-
-
-                
-
-                
-        @override
-        int get hashCode => a.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is ConcatenateWithTwinSync &&
-                runtimeType == other.runtimeType
-                && a == other.a;
-        
-            }
-
-class Log2TwinSync  {
-                final int key;
-final String value;
-
-                const Log2TwinSync({required this.key ,required this.value ,});
-
-                
-                
-
-                
-        @override
-        int get hashCode => key.hashCode^value.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is Log2TwinSync &&
-                runtimeType == other.runtimeType
-                && key == other.key&& value == other.value;
-        
-            }
-
-class MyCallableTwinSync  {
-                final String one;
-
-                const MyCallableTwinSync({required this.one ,});
-
-                 String  call({required String two })=>RustLib.instance.api.crateApiPseudoManualMethodTwinSyncMyCallableTwinSyncCall(that: this, two: two);
-
-
-                
-
-                
-        @override
-        int get hashCode => one.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is MyCallableTwinSync &&
-                runtimeType == other.runtimeType
-                && one == other.one;
-        
-            }
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MyCallableTwinSync &&
+          runtimeType == other.runtimeType &&
+          one == other.one;
+}
 
 @freezed
-                sealed class SimpleEnumTwinSync with _$SimpleEnumTwinSync  {
-                    const SimpleEnumTwinSync._();
+sealed class SimpleEnumTwinSync with _$SimpleEnumTwinSync {
+  const SimpleEnumTwinSync._();
 
-                     const factory SimpleEnumTwinSync.first() = SimpleEnumTwinSync_First;
- const factory SimpleEnumTwinSync.second(  String field0,) = SimpleEnumTwinSync_Second;
+  const factory SimpleEnumTwinSync.first() = SimpleEnumTwinSync_First;
+  const factory SimpleEnumTwinSync.second(
+    String field0,
+  ) = SimpleEnumTwinSync_Second;
 
-                    factory SimpleEnumTwinSync.fromJson(Map<String, dynamic> json) => _$SimpleEnumTwinSyncFromJson(json);
+  factory SimpleEnumTwinSync.fromJson(Map<String, dynamic> json) =>
+      _$SimpleEnumTwinSyncFromJson(json);
 
-                    static SimpleEnumTwinSync  returnSelfTwinSync({required String one })=>RustLib.instance.api.crateApiPseudoManualMethodTwinSyncSimpleEnumTwinSyncReturnSelfTwinSync(one: one);
+  static SimpleEnumTwinSync returnSelfTwinSync({required String one}) => RustLib
+      .instance.api
+      .crateApiPseudoManualMethodTwinSyncSimpleEnumTwinSyncReturnSelfTwinSync(
+          one: one);
 
-
- String  simpleMethodTwinSync()=>RustLib.instance.api.crateApiPseudoManualMethodTwinSyncSimpleEnumTwinSyncSimpleMethodTwinSync(that: this, );
-
-
-                }
+  String simpleMethodTwinSync() => RustLib.instance.api
+          .crateApiPseudoManualMethodTwinSyncSimpleEnumTwinSyncSimpleMethodTwinSync(
+        that: this,
+      );
+}
 
 enum SimplePrimitiveEnumTwinSync {
-                    first,
-second,
-                    ;
-                     int  simpleMethodTwinSync()=>RustLib.instance.api.crateApiPseudoManualMethodTwinSyncSimplePrimitiveEnumTwinSyncSimpleMethodTwinSync(that: this, );
+  first,
+  second,
+  ;
 
+  int simpleMethodTwinSync() => RustLib.instance.api
+          .crateApiPseudoManualMethodTwinSyncSimplePrimitiveEnumTwinSyncSimpleMethodTwinSync(
+        that: this,
+      );
+}
 
-                }
+class SimpleStructTwinSync {
+  final String one;
 
-class SimpleStructTwinSync  {
-                final String one;
+  const SimpleStructTwinSync({
+    required this.one,
+  });
 
-                const SimpleStructTwinSync({required this.one ,});
+  static String argSelfTwinSync(
+          {required SimpleStructTwinSync a, required SimpleStructTwinSync b}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinSyncSimpleStructTwinSyncArgSelfTwinSync(
+              a: a, b: b);
 
-                static String  argSelfTwinSync({required SimpleStructTwinSync a , required SimpleStructTwinSync b })=>RustLib.instance.api.crateApiPseudoManualMethodTwinSyncSimpleStructTwinSyncArgSelfTwinSync(a: a, b: b);
+  String receiverBorrowTwinSync() => RustLib.instance.api
+          .crateApiPseudoManualMethodTwinSyncSimpleStructTwinSyncReceiverBorrowTwinSync(
+        that: this,
+      );
 
+  String receiverOwnTwinSync() => RustLib.instance.api
+          .crateApiPseudoManualMethodTwinSyncSimpleStructTwinSyncReceiverOwnTwinSync(
+        that: this,
+      );
 
- String  receiverBorrowTwinSync()=>RustLib.instance.api.crateApiPseudoManualMethodTwinSyncSimpleStructTwinSyncReceiverBorrowTwinSync(that: this, );
+  static SimpleStructTwinSync returnSelfTwinSync({required String one}) => RustLib
+      .instance.api
+      .crateApiPseudoManualMethodTwinSyncSimpleStructTwinSyncReturnSelfTwinSync(
+          one: one);
 
+  static List<String> vecSelfTwinSync(
+          {required List<SimpleStructTwinSync> arg}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinSyncSimpleStructTwinSyncVecSelfTwinSync(
+              arg: arg);
 
- String  receiverOwnTwinSync()=>RustLib.instance.api.crateApiPseudoManualMethodTwinSyncSimpleStructTwinSyncReceiverOwnTwinSync(that: this, );
+  @override
+  int get hashCode => one.hashCode;
 
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SimpleStructTwinSync &&
+          runtimeType == other.runtimeType &&
+          one == other.one;
+}
 
-static SimpleStructTwinSync  returnSelfTwinSync({required String one })=>RustLib.instance.api.crateApiPseudoManualMethodTwinSyncSimpleStructTwinSyncReturnSelfTwinSync(one: one);
+class StaticOnlyTwinSync {
+  final String one;
 
+  const StaticOnlyTwinSync({
+    required this.one,
+  });
 
-static List<String>  vecSelfTwinSync({required List<SimpleStructTwinSync> arg })=>RustLib.instance.api.crateApiPseudoManualMethodTwinSyncSimpleStructTwinSyncVecSelfTwinSync(arg: arg);
+  static int staticMethodTwinSync({required int a}) => RustLib.instance.api
+      .crateApiPseudoManualMethodTwinSyncStaticOnlyTwinSyncStaticMethodTwinSync(
+          a: a);
 
+  @override
+  int get hashCode => one.hashCode;
 
-                
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StaticOnlyTwinSync &&
+          runtimeType == other.runtimeType &&
+          one == other.one;
+}
 
-                
-        @override
-        int get hashCode => one.hashCode;
-        
+class SumWithTwinSync {
+  final int x;
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is SimpleStructTwinSync &&
-                runtimeType == other.runtimeType
-                && one == other.one;
-        
-            }
+  const SumWithTwinSync({
+    required this.x,
+  });
 
-class StaticOnlyTwinSync  {
-                final String one;
+  int sumTwinSync({required int y, required int z}) => RustLib.instance.api
+      .crateApiPseudoManualMethodTwinSyncSumWithTwinSyncSumTwinSync(
+          that: this, y: y, z: z);
 
-                const StaticOnlyTwinSync({required this.one ,});
+  @override
+  int get hashCode => x.hashCode;
 
-                static int  staticMethodTwinSync({required int a })=>RustLib.instance.api.crateApiPseudoManualMethodTwinSyncStaticOnlyTwinSyncStaticMethodTwinSync(a: a);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SumWithTwinSync &&
+          runtimeType == other.runtimeType &&
+          x == other.x;
+}
 
+class SumWithTwinSyncArray3 extends NonGrowableListView<SumWithTwinSync> {
+  static const arraySize = 3;
 
-                
+  @internal
+  List<SumWithTwinSync> get inner => _inner;
+  final List<SumWithTwinSync> _inner;
 
-                
-        @override
-        int get hashCode => one.hashCode;
-        
+  SumWithTwinSyncArray3(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is StaticOnlyTwinSync &&
-                runtimeType == other.runtimeType
-                && one == other.one;
-        
-            }
-
-class SumWithTwinSync  {
-                final int x;
-
-                const SumWithTwinSync({required this.x ,});
-
-                 int  sumTwinSync({required int y , required int z })=>RustLib.instance.api.crateApiPseudoManualMethodTwinSyncSumWithTwinSyncSumTwinSync(that: this, y: y, z: z);
-
-
-                
-
-                
-        @override
-        int get hashCode => x.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is SumWithTwinSync &&
-                runtimeType == other.runtimeType
-                && x == other.x;
-        
-            }
-
-
-            class SumWithTwinSyncArray3 extends NonGrowableListView<SumWithTwinSync> {
-                static const arraySize = 3;
-
-                @internal
-                List<SumWithTwinSync> get inner => _inner;
-                final List<SumWithTwinSync> _inner;
-
-                SumWithTwinSyncArray3(this._inner)
-                    : assert(_inner.length == arraySize),
-                      super(_inner);
-  
-                SumWithTwinSyncArray3.init(SumWithTwinSync fill): this(List<SumWithTwinSync>.filled(arraySize,fill));
-              }
-            
-            
+  SumWithTwinSyncArray3.init(SumWithTwinSync fill)
+      : this(List<SumWithTwinSync>.filled(arraySize, fill));
+}

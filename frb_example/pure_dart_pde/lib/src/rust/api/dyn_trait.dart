@@ -8,56 +8,42 @@ import 'dart:io';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+Future<int> funcArgDynTraitTwinNormal(
+        {required SimpleTraitForDynTwinNormal arg}) =>
+    RustLib.instance.api.crateApiDynTraitFuncArgDynTraitTwinNormal(arg: arg);
 
-            
-
-            Future<int> funcArgDynTraitTwinNormal({required SimpleTraitForDynTwinNormal arg }) => RustLib.instance.api.crateApiDynTraitFuncArgDynTraitTwinNormal(arg: arg);
-
-            
-                // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitForDynTwinNormal>>
-                abstract class StructOneWithTraitForDynTwinNormal implements RustOpaqueInterface, SimpleTraitForDynTwinNormal {
-                     int get one;
-
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitForDynTwinNormal>>
+abstract class StructOneWithTraitForDynTwinNormal
+    implements RustOpaqueInterface, SimpleTraitForDynTwinNormal {
+  int get one;
 
   set one(int one);
 
+  static Future<StructOneWithTraitForDynTwinNormal> createTwinNormal(
+          {required int one}) =>
+      RustLib.instance.api
+          .crateApiDynTraitStructOneWithTraitForDynTwinNormalCreateTwinNormal(
+              one: one);
 
-static Future<StructOneWithTraitForDynTwinNormal>  createTwinNormal({required int one })=>RustLib.instance.api.crateApiDynTraitStructOneWithTraitForDynTwinNormalCreateTwinNormal(one: one);
+  Future<int> simpleMethodTwinNormal();
+}
 
-
- Future<int>  simpleMethodTwinNormal();
-
-
-
-                    
-                }
-                
-
-
-                // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitForDynTwinNormal>>
-                abstract class StructTwoWithTraitForDynTwinNormal implements RustOpaqueInterface, SimpleTraitForDynTwinNormal {
-                     int get two;
-
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitForDynTwinNormal>>
+abstract class StructTwoWithTraitForDynTwinNormal
+    implements RustOpaqueInterface, SimpleTraitForDynTwinNormal {
+  int get two;
 
   set two(int two);
 
+  static Future<StructTwoWithTraitForDynTwinNormal> createTwinNormal(
+          {required int two}) =>
+      RustLib.instance.api
+          .crateApiDynTraitStructTwoWithTraitForDynTwinNormalCreateTwinNormal(
+              two: two);
 
-static Future<StructTwoWithTraitForDynTwinNormal>  createTwinNormal({required int two })=>RustLib.instance.api.crateApiDynTraitStructTwoWithTraitForDynTwinNormalCreateTwinNormal(two: two);
+  Future<int> simpleMethodTwinNormal();
+}
 
-
- Future<int>  simpleMethodTwinNormal();
-
-
-
-                    
-                }
-                
-
-
-                abstract class SimpleTraitForDynTwinNormal {
-                     Future<int>  simpleMethodTwinNormal();
-
-
-                }
-                
-            
+abstract class SimpleTraitForDynTwinNormal {
+  Future<int> simpleMethodTwinNormal();
+}

@@ -8,78 +8,93 @@ import 'dart:io';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 
-            // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
+Future<DateTime> datetimeUtcTwinNormal({required DateTime d}) =>
+    RustLib.instance.api.crateApiChronoTypeDatetimeUtcTwinNormal(d: d);
 
+Future<DateTime> datetimeLocalTwinNormal({required DateTime d}) =>
+    RustLib.instance.api.crateApiChronoTypeDatetimeLocalTwinNormal(d: d);
 
-            Future<DateTime> datetimeUtcTwinNormal({required DateTime d }) => RustLib.instance.api.crateApiChronoTypeDatetimeUtcTwinNormal(d: d);
+Future<DateTime> naivedatetimeTwinNormal({required DateTime d}) =>
+    RustLib.instance.api.crateApiChronoTypeNaivedatetimeTwinNormal(d: d);
 
-Future<DateTime> datetimeLocalTwinNormal({required DateTime d }) => RustLib.instance.api.crateApiChronoTypeDatetimeLocalTwinNormal(d: d);
+Future<DateTime?> optionalEmptyDatetimeUtcTwinNormal({DateTime? d}) =>
+    RustLib.instance.api
+        .crateApiChronoTypeOptionalEmptyDatetimeUtcTwinNormal(d: d);
 
-Future<DateTime> naivedatetimeTwinNormal({required DateTime d }) => RustLib.instance.api.crateApiChronoTypeNaivedatetimeTwinNormal(d: d);
+Future<Duration> durationTwinNormal({required Duration d}) =>
+    RustLib.instance.api.crateApiChronoTypeDurationTwinNormal(d: d);
 
-Future<DateTime?> optionalEmptyDatetimeUtcTwinNormal({DateTime? d }) => RustLib.instance.api.crateApiChronoTypeOptionalEmptyDatetimeUtcTwinNormal(d: d);
+Future<List<Duration>> handleTimestampsTwinNormal(
+        {required List<DateTime> timestamps, required DateTime epoch}) =>
+    RustLib.instance.api.crateApiChronoTypeHandleTimestampsTwinNormal(
+        timestamps: timestamps, epoch: epoch);
 
-Future<Duration> durationTwinNormal({required Duration d }) => RustLib.instance.api.crateApiChronoTypeDurationTwinNormal(d: d);
+Future<List<DateTime>> handleDurationsTwinNormal(
+        {required List<Duration> durations, required DateTime since}) =>
+    RustLib.instance.api.crateApiChronoTypeHandleDurationsTwinNormal(
+        durations: durations, since: since);
 
-Future<List<Duration>> handleTimestampsTwinNormal({required List<DateTime> timestamps , required DateTime epoch }) => RustLib.instance.api.crateApiChronoTypeHandleTimestampsTwinNormal(timestamps: timestamps, epoch: epoch);
+Future<TestChronoTwinNormal> testChronoTwinNormal() =>
+    RustLib.instance.api.crateApiChronoTypeTestChronoTwinNormal();
 
-Future<List<DateTime>> handleDurationsTwinNormal({required List<Duration> durations , required DateTime since }) => RustLib.instance.api.crateApiChronoTypeHandleDurationsTwinNormal(durations: durations, since: since);
+Future<TestChronoTwinNormal> testPreciseChronoTwinNormal() =>
+    RustLib.instance.api.crateApiChronoTypeTestPreciseChronoTwinNormal();
 
-Future<TestChronoTwinNormal> testChronoTwinNormal() => RustLib.instance.api.crateApiChronoTypeTestChronoTwinNormal();
+Future<Duration> howLongDoesItTakeTwinNormal(
+        {required FeatureChronoTwinNormal mine}) =>
+    RustLib.instance.api
+        .crateApiChronoTypeHowLongDoesItTakeTwinNormal(mine: mine);
 
-Future<TestChronoTwinNormal> testPreciseChronoTwinNormal() => RustLib.instance.api.crateApiChronoTypeTestPreciseChronoTwinNormal();
+class FeatureChronoTwinNormal {
+  final DateTime utc;
+  final DateTime local;
+  final Duration duration;
+  final DateTime naive;
 
-Future<Duration> howLongDoesItTakeTwinNormal({required FeatureChronoTwinNormal mine }) => RustLib.instance.api.crateApiChronoTypeHowLongDoesItTakeTwinNormal(mine: mine);
+  const FeatureChronoTwinNormal({
+    required this.utc,
+    required this.local,
+    required this.duration,
+    required this.naive,
+  });
 
-            class FeatureChronoTwinNormal  {
-                final DateTime utc;
-final DateTime local;
-final Duration duration;
-final DateTime naive;
+  @override
+  int get hashCode =>
+      utc.hashCode ^ local.hashCode ^ duration.hashCode ^ naive.hashCode;
 
-                const FeatureChronoTwinNormal({required this.utc ,required this.local ,required this.duration ,required this.naive ,});
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is FeatureChronoTwinNormal &&
+          runtimeType == other.runtimeType &&
+          utc == other.utc &&
+          local == other.local &&
+          duration == other.duration &&
+          naive == other.naive;
+}
 
-                
-                
+class TestChronoTwinNormal {
+  final DateTime? dt;
+  final DateTime? dt2;
+  final Duration? du;
 
-                
-        @override
-        int get hashCode => utc.hashCode^local.hashCode^duration.hashCode^naive.hashCode;
-        
+  const TestChronoTwinNormal({
+    this.dt,
+    this.dt2,
+    this.du,
+  });
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is FeatureChronoTwinNormal &&
-                runtimeType == other.runtimeType
-                && utc == other.utc&& local == other.local&& duration == other.duration&& naive == other.naive;
-        
-            }
+  @override
+  int get hashCode => dt.hashCode ^ dt2.hashCode ^ du.hashCode;
 
-class TestChronoTwinNormal  {
-                final DateTime? dt;
-final DateTime? dt2;
-final Duration? du;
-
-                const TestChronoTwinNormal({this.dt ,this.dt2 ,this.du ,});
-
-                
-                
-
-                
-        @override
-        int get hashCode => dt.hashCode^dt2.hashCode^du.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is TestChronoTwinNormal &&
-                runtimeType == other.runtimeType
-                && dt == other.dt&& dt2 == other.dt2&& du == other.du;
-        
-            }
-            
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TestChronoTwinNormal &&
+          runtimeType == other.runtimeType &&
+          dt == other.dt &&
+          dt2 == other.dt2 &&
+          du == other.du;
+}

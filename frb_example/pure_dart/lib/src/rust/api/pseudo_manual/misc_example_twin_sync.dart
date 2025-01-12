@@ -10,227 +10,232 @@ import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 
-                part 'misc_example_twin_sync.freezed.dart';
-                part 'misc_example_twin_sync.g.dart';
-                
+part 'misc_example_twin_sync.freezed.dart';
+part 'misc_example_twin_sync.g.dart';
 
-            // These functions are ignored because they are not marked as `pub`: `visibility_restricted_func_twin_sync`
+// These functions are ignored because they are not marked as `pub`: `visibility_restricted_func_twin_sync`
 // These types are ignored because they are not used by any `pub` functions: `MySizeFreezedTwinSync`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`
 
+MyTreeNodeTwinSync handleComplexStructTwinSync(
+        {required MyTreeNodeTwinSync s}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinSyncHandleComplexStructTwinSync(
+            s: s);
 
-            MyTreeNodeTwinSync handleComplexStructTwinSync({required MyTreeNodeTwinSync s }) => RustLib.instance.api.crateApiPseudoManualMiscExampleTwinSyncHandleComplexStructTwinSync(s: s);
+List<WeekdaysTwinSync> listOfPrimitiveEnumsTwinSync(
+        {required List<WeekdaysTwinSync> weekdays}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinSyncListOfPrimitiveEnumsTwinSync(
+            weekdays: weekdays);
 
-List<WeekdaysTwinSync> listOfPrimitiveEnumsTwinSync({required List<WeekdaysTwinSync> weekdays }) => RustLib.instance.api.crateApiPseudoManualMiscExampleTwinSyncListOfPrimitiveEnumsTwinSync(weekdays: weekdays);
+MyNestedStructTwinSync handleNestedStructTwinSync(
+        {required MyNestedStructTwinSync s}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinSyncHandleNestedStructTwinSync(
+            s: s);
 
-MyNestedStructTwinSync handleNestedStructTwinSync({required MyNestedStructTwinSync s }) => RustLib.instance.api.crateApiPseudoManualMiscExampleTwinSyncHandleNestedStructTwinSync(s: s);
+BigBuffersTwinSync handleBigBuffersTwinSync() => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinSyncHandleBigBuffersTwinSync();
 
-BigBuffersTwinSync handleBigBuffersTwinSync() => RustLib.instance.api.crateApiPseudoManualMiscExampleTwinSyncHandleBigBuffersTwinSync();
+AbcTwinSync testAbcEnumTwinSync({required AbcTwinSync abc}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinSyncTestAbcEnumTwinSync(abc: abc);
 
-AbcTwinSync testAbcEnumTwinSync({required AbcTwinSync abc }) => RustLib.instance.api.crateApiPseudoManualMiscExampleTwinSyncTestAbcEnumTwinSync(abc: abc);
+StructWithEnumTwinSync testStructWithEnumTwinSync(
+        {required StructWithEnumTwinSync se}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinSyncTestStructWithEnumTwinSync(
+            se: se);
 
-StructWithEnumTwinSync testStructWithEnumTwinSync({required StructWithEnumTwinSync se }) => RustLib.instance.api.crateApiPseudoManualMiscExampleTwinSyncTestStructWithEnumTwinSync(se: se);
+String handleStringTwinSync({required String s}) => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinSyncHandleStringTwinSync(s: s);
 
-String handleStringTwinSync({required String s }) => RustLib.instance.api.crateApiPseudoManualMiscExampleTwinSyncHandleStringTwinSync(s: s);
+String handleCharTwinSync({required String arg}) => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinSyncHandleCharTwinSync(arg: arg);
 
-String handleCharTwinSync({required String arg }) => RustLib.instance.api.crateApiPseudoManualMiscExampleTwinSyncHandleCharTwinSync(arg: arg);
+Uint8List handleVecU8TwinSync({required List<int> v}) => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinSyncHandleVecU8TwinSync(v: v);
 
-Uint8List handleVecU8TwinSync({required List<int> v }) => RustLib.instance.api.crateApiPseudoManualMiscExampleTwinSyncHandleVecU8TwinSync(v: v);
+MySize handleStructTwinSync({required MySize arg, required MySize boxed}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinSyncHandleStructTwinSync(
+            arg: arg, boxed: boxed);
 
-MySize handleStructTwinSync({required MySize arg , required MySize boxed }) => RustLib.instance.api.crateApiPseudoManualMiscExampleTwinSyncHandleStructTwinSync(arg: arg, boxed: boxed);
+int positionalArgumentsTwinSync(int a, int b) => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinSyncPositionalArgumentsTwinSync(
+        a: a, b: b);
 
-int positionalArgumentsTwinSync(int a, int b) => RustLib.instance.api.crateApiPseudoManualMiscExampleTwinSyncPositionalArgumentsTwinSync(a: a, b: b);
+class ATwinSync {
+  final String a;
 
-            class ATwinSync  {
-                final String a;
+  const ATwinSync({
+    required this.a,
+  });
 
-                const ATwinSync({required this.a ,});
+  @override
+  int get hashCode => a.hashCode;
 
-                
-                
-
-                
-        @override
-        int get hashCode => a.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is ATwinSync &&
-                runtimeType == other.runtimeType
-                && a == other.a;
-        
-            }
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ATwinSync && runtimeType == other.runtimeType && a == other.a;
+}
 
 @freezed
-                sealed class AbcTwinSync with _$AbcTwinSync  {
-                    const AbcTwinSync._();
+sealed class AbcTwinSync with _$AbcTwinSync {
+  const AbcTwinSync._();
 
-                     const factory AbcTwinSync.a(  ATwinSync field0,) = AbcTwinSync_A;
- const factory AbcTwinSync.b(  BTwinSync field0,) = AbcTwinSync_B;
- const factory AbcTwinSync.c(  CTwinSync field0,) = AbcTwinSync_C;
- const factory AbcTwinSync.justInt(  int field0,) = AbcTwinSync_JustInt;
+  const factory AbcTwinSync.a(
+    ATwinSync field0,
+  ) = AbcTwinSync_A;
+  const factory AbcTwinSync.b(
+    BTwinSync field0,
+  ) = AbcTwinSync_B;
+  const factory AbcTwinSync.c(
+    CTwinSync field0,
+  ) = AbcTwinSync_C;
+  const factory AbcTwinSync.justInt(
+    int field0,
+  ) = AbcTwinSync_JustInt;
 
-                    factory AbcTwinSync.fromJson(Map<String, dynamic> json) => _$AbcTwinSyncFromJson(json);
+  factory AbcTwinSync.fromJson(Map<String, dynamic> json) =>
+      _$AbcTwinSyncFromJson(json);
+}
 
-                    
-                }
+class BTwinSync {
+  final int b;
 
-class BTwinSync  {
-                final int b;
+  const BTwinSync({
+    required this.b,
+  });
 
-                const BTwinSync({required this.b ,});
+  @override
+  int get hashCode => b.hashCode;
 
-                
-                
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BTwinSync && runtimeType == other.runtimeType && b == other.b;
+}
 
-                
-        @override
-        int get hashCode => b.hashCode;
-        
+class BigBuffersTwinSync {
+  final Int64List int64;
+  final Uint64List uint64;
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is BTwinSync &&
-                runtimeType == other.runtimeType
-                && b == other.b;
-        
-            }
+  const BigBuffersTwinSync({
+    required this.int64,
+    required this.uint64,
+  });
 
-class BigBuffersTwinSync  {
-                final Int64List int64;
-final Uint64List uint64;
+  @override
+  int get hashCode => int64.hashCode ^ uint64.hashCode;
 
-                const BigBuffersTwinSync({required this.int64 ,required this.uint64 ,});
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BigBuffersTwinSync &&
+          runtimeType == other.runtimeType &&
+          int64 == other.int64 &&
+          uint64 == other.uint64;
+}
 
-                
-                
+class CTwinSync {
+  final bool c;
 
-                
-        @override
-        int get hashCode => int64.hashCode^uint64.hashCode;
-        
+  const CTwinSync({
+    required this.c,
+  });
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is BigBuffersTwinSync &&
-                runtimeType == other.runtimeType
-                && int64 == other.int64&& uint64 == other.uint64;
-        
-            }
+  @override
+  int get hashCode => c.hashCode;
 
-class CTwinSync  {
-                final bool c;
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CTwinSync && runtimeType == other.runtimeType && c == other.c;
+}
 
-                const CTwinSync({required this.c ,});
+class MyNestedStructTwinSync {
+  final MyTreeNodeTwinSync treeNode;
+  final WeekdaysTwinSync weekday;
 
-                
-                
+  const MyNestedStructTwinSync({
+    required this.treeNode,
+    required this.weekday,
+  });
 
-                
-        @override
-        int get hashCode => c.hashCode;
-        
+  @override
+  int get hashCode => treeNode.hashCode ^ weekday.hashCode;
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is CTwinSync &&
-                runtimeType == other.runtimeType
-                && c == other.c;
-        
-            }
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MyNestedStructTwinSync &&
+          runtimeType == other.runtimeType &&
+          treeNode == other.treeNode &&
+          weekday == other.weekday;
+}
 
-class MyNestedStructTwinSync  {
-                final MyTreeNodeTwinSync treeNode;
-final WeekdaysTwinSync weekday;
+class MyTreeNodeTwinSync {
+  final int valueI32;
+  final Uint8List valueVecU8;
+  final bool valueBoolean;
+  final List<MyTreeNodeTwinSync> children;
 
-                const MyNestedStructTwinSync({required this.treeNode ,required this.weekday ,});
+  const MyTreeNodeTwinSync({
+    required this.valueI32,
+    required this.valueVecU8,
+    required this.valueBoolean,
+    required this.children,
+  });
 
-                
-                
+  @override
+  int get hashCode =>
+      valueI32.hashCode ^
+      valueVecU8.hashCode ^
+      valueBoolean.hashCode ^
+      children.hashCode;
 
-                
-        @override
-        int get hashCode => treeNode.hashCode^weekday.hashCode;
-        
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MyTreeNodeTwinSync &&
+          runtimeType == other.runtimeType &&
+          valueI32 == other.valueI32 &&
+          valueVecU8 == other.valueVecU8 &&
+          valueBoolean == other.valueBoolean &&
+          children == other.children;
+}
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is MyNestedStructTwinSync &&
-                runtimeType == other.runtimeType
-                && treeNode == other.treeNode&& weekday == other.weekday;
-        
-            }
+class StructWithEnumTwinSync {
+  final AbcTwinSync abc1;
+  final AbcTwinSync abc2;
 
-class MyTreeNodeTwinSync  {
-                final int valueI32;
-final Uint8List valueVecU8;
-final bool valueBoolean;
-final List<MyTreeNodeTwinSync> children;
+  const StructWithEnumTwinSync({
+    required this.abc1,
+    required this.abc2,
+  });
 
-                const MyTreeNodeTwinSync({required this.valueI32 ,required this.valueVecU8 ,required this.valueBoolean ,required this.children ,});
+  @override
+  int get hashCode => abc1.hashCode ^ abc2.hashCode;
 
-                
-                
-
-                
-        @override
-        int get hashCode => valueI32.hashCode^valueVecU8.hashCode^valueBoolean.hashCode^children.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is MyTreeNodeTwinSync &&
-                runtimeType == other.runtimeType
-                && valueI32 == other.valueI32&& valueVecU8 == other.valueVecU8&& valueBoolean == other.valueBoolean&& children == other.children;
-        
-            }
-
-class StructWithEnumTwinSync  {
-                final AbcTwinSync abc1;
-final AbcTwinSync abc2;
-
-                const StructWithEnumTwinSync({required this.abc1 ,required this.abc2 ,});
-
-                
-                
-
-                
-        @override
-        int get hashCode => abc1.hashCode^abc2.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is StructWithEnumTwinSync &&
-                runtimeType == other.runtimeType
-                && abc1 == other.abc1&& abc2 == other.abc2;
-        
-            }
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithEnumTwinSync &&
+          runtimeType == other.runtimeType &&
+          abc1 == other.abc1 &&
+          abc2 == other.abc2;
+}
 
 enum WeekdaysTwinSync {
-                    monday,
-tuesday,
-wednesday,
-thursday,
-friday,
-saturday,
-sunday,
-                    ;
-                    
-                }
-            
+  monday,
+  tuesday,
+  wednesday,
+  thursday,
+  friday,
+  saturday,
+  sunday,
+  ;
+}
