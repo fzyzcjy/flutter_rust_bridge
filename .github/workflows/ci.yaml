@@ -38,6 +38,7 @@ jobs:
           submodules: recursive
       # https://github.com/puppeteer/puppeteer/pull/13196
       - name: Disable AppArmor
+        if: ${{ matrix.os == 'ubuntu-latest' }}
         run: echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
       - uses: dart-lang/setup-dart@v1
         with:
