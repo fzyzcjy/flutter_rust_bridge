@@ -20,7 +20,7 @@ concurrency:
 jobs:
   test_dart_web:
     name: 'Test :: Dart :: Web'
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
