@@ -20,13 +20,12 @@ concurrency:
 jobs:
   test_dart_web:
     name: 'Test :: Dart :: Web'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     strategy:
       fail-fast: false
       matrix:
         package:
           - frb_example--dart_minimal
-          # no need for `frb_example--deliberate_bad`, `frb_example--dart_build_rs`
 
     steps:
       # setup
@@ -36,10 +35,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
-      # https://github.com/puppeteer/puppeteer/pull/13196
-      - name: Disable AppArmor
-        if: ${{ matrix.os == 'ubuntu-latest' }}
-        run: echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
       - uses: dart-lang/setup-dart@v1
         with:
           sdk: ${{ env.FRB_MAIN_DART_VERSION }}
