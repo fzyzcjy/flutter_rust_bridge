@@ -83,3 +83,6 @@ thread-pool = ["dep:threadpool"]
 user-utils = ["dep:android_logger", "dep:oslog"]
 uuid = ["dep:uuid", "allo-isolate/uuid"]
 wasm-start = ["console_error_panic_hook"]
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }

@@ -69,3 +69,6 @@ x86_64-pc-windows-msvc = { pkg-fmt = "zip" }
 
 [features]
 default = ["anyhow/backtrace"]
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }

@@ -13,3 +13,6 @@ extend = "1.2.0"
 anyhow = "1.0.86"
 paste = "1.0.15"
 delegate-attr = "0.3.0"
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }
