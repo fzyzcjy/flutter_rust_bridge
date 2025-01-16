@@ -641,6 +641,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
+      # https://github.com/puppeteer/puppeteer/pull/13196
+      - name: Disable AppArmor
+        run: echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
       - uses: dart-lang/setup-dart@v1
         with:
           sdk: ${{ env.FRB_MAIN_DART_VERSION }}
@@ -721,7 +724,7 @@ jobs:
           - frb_example--dart_minimal
           - frb_example--pure_dart
           - frb_example--pure_dart_pde
-          - frb_example--deliberate_bad
+          # - frb_example--deliberate_bad # wait for https://github.com/rust-lang/rust/issues/111073
           # no need for `frb_example--dart_build_rs`
 
     steps:
@@ -959,6 +962,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
+      # https://github.com/puppeteer/puppeteer/pull/13196
+      - name: Disable AppArmor
+        run: echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
       - uses: subosito/flutter-action@v2
         with:
           cache: true
