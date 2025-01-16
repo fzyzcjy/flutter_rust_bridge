@@ -20,7 +20,7 @@ const kTestResultKey = '__result__';
 Future<void> executeTestWeb(TestWebConfig config) async {
   // puppeteer uses logging
   Logger.root
-    ..level = Level.ALL
+    ..level = Level.INFO
     ..onRecord.listen((record) =>
         print('${record.level.name}: ${record.time}: ${record.message}'));
 
