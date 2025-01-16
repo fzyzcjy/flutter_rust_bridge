@@ -100,8 +100,12 @@ class _Duplicator {
       final fileName = path.basename(file.path);
       final fileStem = path.basenameWithoutExtension(file.path);
       if (file is! File ||
-          path.extension(file.path) != '.${generator.extension}') continue;
-      if (generator.duplicatorBlacklistNames.contains(fileName)) continue;
+          path.extension(file.path) != '.${generator.extension}') {
+        continue;
+      }
+      if (generator.duplicatorBlacklistNames.contains(fileName)) {
+        continue;
+      }
       if (DuplicatorMode.allValues
           .any((mode) => fileStem.contains(mode.postfix))) {
         continue;
@@ -113,7 +117,9 @@ class _Duplicator {
       final chosenModes = _computeModes(annotation);
 
       for (final mode in chosenModes) {
-        if (annotation.forbiddenDuplicatorModes.contains(mode)) continue;
+        if (annotation.forbiddenDuplicatorModes.contains(mode)) {
+          continue;
+        }
 
         var outputText = computeDuplicatorPrelude(' from `$fileName`') +
             (annotation.addCode ?? '') +
@@ -183,7 +189,9 @@ class Annotation {
         .split('\n')
         .where((line) => line.startsWith(kPrefix))
         .firstOrNull;
-    if (line == null) return const Annotation();
+    if (line == null) {
+      return const Annotation();
+    }
 
     final data =
         jsonDecode(line.substring(kPrefix.length)) as Map<String, Object?>;
