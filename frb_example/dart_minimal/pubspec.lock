@@ -210,10 +210,10 @@ packages:
     dependency: "direct dev"
     description:
       name: ffigen
-      sha256: dead012f29db2be71ea152458f5eab600de98fbc244e01088ae6bf2616bceca7
+      sha256: "2119b4fe3aad0db94dc9531b90283c4640a6231070e613c400b426a4da08c704"
       url: "https://pub.dev"
     source: hosted
-    version: "11.0.0"
+    version: "16.1.0"
   file:
     dependency: transitive
     description:
@@ -336,10 +336,10 @@ packages:
     dependency: "direct main"
     description:
       name: lints
-      sha256: "0a217c6c989d21039f1498c3ed9f3ed71b354e69873f13a8dfc3c9fe76f1b452"
+      sha256: c35bb79562d980e9a453fc715854e1ed39e24e7d0297a880ef54e17f9874a9d7
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.1"
+    version: "5.1.1"
   logging:
     dependency: transitive
     description:
