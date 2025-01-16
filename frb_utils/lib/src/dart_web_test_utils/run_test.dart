@@ -9,7 +9,6 @@ import 'package:flutter_rust_bridge_utils/src/commands/serve_web_command.dart';
 import 'package:flutter_rust_bridge_utils/src/commands/test_web_command.dart';
 import 'package:flutter_rust_bridge_utils/src/dart_web_test_utils/static_content.dart';
 import 'package:flutter_rust_bridge_utils/src/serve_web/run_server.dart';
-import 'package:logging/logging.dart';
 import 'package:path/path.dart' as path;
 import 'package:puppeteer/puppeteer.dart' hide Response;
 import 'package:shelf/shelf.dart';
@@ -18,12 +17,6 @@ import 'package:shelf_web_socket/shelf_web_socket.dart';
 const kTestResultKey = '__result__';
 
 Future<void> executeTestWeb(TestWebConfig config) async {
-  // puppeteer uses logging
-  Logger.root
-    ..level = Level.ALL
-    ..onRecord.listen((record) =>
-        print('${record.level.name}: ${record.time}: ${record.message}'));
-
   final dartRoot =
       await findDartPackageDirectory(path.dirname(config.entrypoint));
   final webRoot = '$dartRoot/web';

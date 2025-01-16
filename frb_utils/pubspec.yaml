@@ -22,7 +22,6 @@ dependencies:
   js: ^0.6.4
   test_core: ^0.5.9
   path: ^1.8.1
-  logging: ^1.0.0
 
 dev_dependencies:
   build_runner: ^2.2.0
