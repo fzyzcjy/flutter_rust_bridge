@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.7.1
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Replace format! with concat! for string literals #2454 (thanks @Integral-Tech)
+* chore: fix cargo clippy warnings #2457 (thanks @Integral-Tech)
+* chore: downgrade rust version in frb_codegen (thanks @Integral-Tech)
+* Do not warn when fvm not found or for unexpected condition name #2478
+
 ## 2.7.0
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
