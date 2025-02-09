@@ -16,4 +16,8 @@ Future<void> main() async {
     print('Action: Call rust (after)');
   });
   print('Action: Configure tests (end)');
+
+  test('hi', () async {
+    expect(constArray().inner[0], 1.5);
+  });
 }
