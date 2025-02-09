@@ -12,7 +12,7 @@ part of 'basic_twin_sync.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$BasicGeneralEnumTwinSync {
@@ -73,6 +73,9 @@ class _$BasicGeneralEnumTwinSyncCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of BasicGeneralEnumTwinSync
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -95,6 +98,8 @@ class __$$BasicGeneralEnumTwinSync_AppleImplCopyWithImpl<$Res>
       $Res Function(_$BasicGeneralEnumTwinSync_AppleImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BasicGeneralEnumTwinSync
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -134,7 +139,9 @@ class _$BasicGeneralEnumTwinSync_AppleImpl
   @override
   int get hashCode => Object.hash(runtimeType, field);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BasicGeneralEnumTwinSync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BasicGeneralEnumTwinSync_AppleImplCopyWith<
@@ -211,7 +218,10 @@ abstract class BasicGeneralEnumTwinSync_Apple extends BasicGeneralEnumTwinSync {
   const BasicGeneralEnumTwinSync_Apple._() : super._();
 
   String get field;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BasicGeneralEnumTwinSync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BasicGeneralEnumTwinSync_AppleImplCopyWith<
           _$BasicGeneralEnumTwinSync_AppleImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -234,6 +244,9 @@ class __$$BasicGeneralEnumTwinSync_OrangeImplCopyWithImpl<$Res>
       _$BasicGeneralEnumTwinSync_OrangeImpl _value,
       $Res Function(_$BasicGeneralEnumTwinSync_OrangeImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of BasicGeneralEnumTwinSync
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

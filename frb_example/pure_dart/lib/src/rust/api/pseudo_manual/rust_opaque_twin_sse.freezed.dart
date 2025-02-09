@@ -12,7 +12,7 @@ part of 'rust_opaque_twin_sse.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$EnumOpaqueTwinSse {
@@ -96,6 +96,9 @@ class _$EnumOpaqueTwinSseCopyWithImpl<$Res, $Val extends EnumOpaqueTwinSse>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of EnumOpaqueTwinSse
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -118,6 +121,8 @@ class __$$EnumOpaqueTwinSse_StructImplCopyWithImpl<$Res>
       $Res Function(_$EnumOpaqueTwinSse_StructImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumOpaqueTwinSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -156,7 +161,9 @@ class _$EnumOpaqueTwinSse_StructImpl extends EnumOpaqueTwinSse_Struct {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumOpaqueTwinSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumOpaqueTwinSse_StructImplCopyWith<_$EnumOpaqueTwinSse_StructImpl>
@@ -256,7 +263,10 @@ abstract class EnumOpaqueTwinSse_Struct extends EnumOpaqueTwinSse {
   const EnumOpaqueTwinSse_Struct._() : super._();
 
   HideDataTwinSse get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumOpaqueTwinSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumOpaqueTwinSse_StructImplCopyWith<_$EnumOpaqueTwinSse_StructImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -281,6 +291,8 @@ class __$$EnumOpaqueTwinSse_PrimitiveImplCopyWithImpl<$Res>
       $Res Function(_$EnumOpaqueTwinSse_PrimitiveImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumOpaqueTwinSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -319,7 +331,9 @@ class _$EnumOpaqueTwinSse_PrimitiveImpl extends EnumOpaqueTwinSse_Primitive {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumOpaqueTwinSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumOpaqueTwinSse_PrimitiveImplCopyWith<_$EnumOpaqueTwinSse_PrimitiveImpl>
@@ -419,7 +433,10 @@ abstract class EnumOpaqueTwinSse_Primitive extends EnumOpaqueTwinSse {
   const EnumOpaqueTwinSse_Primitive._() : super._();
 
   I32 get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumOpaqueTwinSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumOpaqueTwinSse_PrimitiveImplCopyWith<_$EnumOpaqueTwinSse_PrimitiveImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -444,6 +461,8 @@ class __$$EnumOpaqueTwinSse_TraitObjImplCopyWithImpl<$Res>
       $Res Function(_$EnumOpaqueTwinSse_TraitObjImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumOpaqueTwinSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -482,7 +501,9 @@ class _$EnumOpaqueTwinSse_TraitObjImpl extends EnumOpaqueTwinSse_TraitObj {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumOpaqueTwinSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumOpaqueTwinSse_TraitObjImplCopyWith<_$EnumOpaqueTwinSse_TraitObjImpl>
@@ -582,7 +603,10 @@ abstract class EnumOpaqueTwinSse_TraitObj extends EnumOpaqueTwinSse {
   const EnumOpaqueTwinSse_TraitObj._() : super._();
 
   BoxDartDebugTwinSse get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumOpaqueTwinSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumOpaqueTwinSse_TraitObjImplCopyWith<_$EnumOpaqueTwinSse_TraitObjImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -606,6 +630,8 @@ class __$$EnumOpaqueTwinSse_MutexImplCopyWithImpl<$Res>
       $Res Function(_$EnumOpaqueTwinSse_MutexImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumOpaqueTwinSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -644,7 +670,9 @@ class _$EnumOpaqueTwinSse_MutexImpl extends EnumOpaqueTwinSse_Mutex {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumOpaqueTwinSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumOpaqueTwinSse_MutexImplCopyWith<_$EnumOpaqueTwinSse_MutexImpl>
@@ -744,7 +772,10 @@ abstract class EnumOpaqueTwinSse_Mutex extends EnumOpaqueTwinSse {
   const EnumOpaqueTwinSse_Mutex._() : super._();
 
   MutexHideDataTwinSse get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumOpaqueTwinSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumOpaqueTwinSse_MutexImplCopyWith<_$EnumOpaqueTwinSse_MutexImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -769,6 +800,8 @@ class __$$EnumOpaqueTwinSse_RwLockImplCopyWithImpl<$Res>
       $Res Function(_$EnumOpaqueTwinSse_RwLockImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumOpaqueTwinSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -807,7 +840,9 @@ class _$EnumOpaqueTwinSse_RwLockImpl extends EnumOpaqueTwinSse_RwLock {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumOpaqueTwinSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumOpaqueTwinSse_RwLockImplCopyWith<_$EnumOpaqueTwinSse_RwLockImpl>
@@ -907,7 +942,10 @@ abstract class EnumOpaqueTwinSse_RwLock extends EnumOpaqueTwinSse {
   const EnumOpaqueTwinSse_RwLock._() : super._();
 
   RwLockHideDataTwinSse get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumOpaqueTwinSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumOpaqueTwinSse_RwLockImplCopyWith<_$EnumOpaqueTwinSse_RwLockImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -929,6 +967,9 @@ class __$$EnumOpaqueTwinSse_NothingImplCopyWithImpl<$Res>
       _$EnumOpaqueTwinSse_NothingImpl _value,
       $Res Function(_$EnumOpaqueTwinSse_NothingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of EnumOpaqueTwinSse
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

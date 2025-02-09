@@ -12,7 +12,7 @@ part of 'misc_example_twin_sync.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AbcTwinSync {
@@ -85,6 +85,9 @@ class _$AbcTwinSyncCopyWithImpl<$Res, $Val extends AbcTwinSync>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AbcTwinSync
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -104,6 +107,8 @@ class __$$AbcTwinSync_AImplCopyWithImpl<$Res>
       _$AbcTwinSync_AImpl _value, $Res Function(_$AbcTwinSync_AImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AbcTwinSync
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -142,7 +147,9 @@ class _$AbcTwinSync_AImpl extends AbcTwinSync_A {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AbcTwinSync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AbcTwinSync_AImplCopyWith<_$AbcTwinSync_AImpl> get copyWith =>
@@ -229,7 +236,10 @@ abstract class AbcTwinSync_A extends AbcTwinSync {
 
   @override
   ATwinSync get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AbcTwinSync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AbcTwinSync_AImplCopyWith<_$AbcTwinSync_AImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -251,6 +261,8 @@ class __$$AbcTwinSync_BImplCopyWithImpl<$Res>
       _$AbcTwinSync_BImpl _value, $Res Function(_$AbcTwinSync_BImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AbcTwinSync
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -289,7 +301,9 @@ class _$AbcTwinSync_BImpl extends AbcTwinSync_B {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AbcTwinSync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AbcTwinSync_BImplCopyWith<_$AbcTwinSync_BImpl> get copyWith =>
@@ -376,7 +390,10 @@ abstract class AbcTwinSync_B extends AbcTwinSync {
 
   @override
   BTwinSync get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AbcTwinSync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AbcTwinSync_BImplCopyWith<_$AbcTwinSync_BImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -398,6 +415,8 @@ class __$$AbcTwinSync_CImplCopyWithImpl<$Res>
       _$AbcTwinSync_CImpl _value, $Res Function(_$AbcTwinSync_CImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AbcTwinSync
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -436,7 +455,9 @@ class _$AbcTwinSync_CImpl extends AbcTwinSync_C {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AbcTwinSync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AbcTwinSync_CImplCopyWith<_$AbcTwinSync_CImpl> get copyWith =>
@@ -523,7 +544,10 @@ abstract class AbcTwinSync_C extends AbcTwinSync {
 
   @override
   CTwinSync get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AbcTwinSync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AbcTwinSync_CImplCopyWith<_$AbcTwinSync_CImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -545,6 +569,8 @@ class __$$AbcTwinSync_JustIntImplCopyWithImpl<$Res>
       $Res Function(_$AbcTwinSync_JustIntImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AbcTwinSync
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -583,7 +609,9 @@ class _$AbcTwinSync_JustIntImpl extends AbcTwinSync_JustInt {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AbcTwinSync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AbcTwinSync_JustIntImplCopyWith<_$AbcTwinSync_JustIntImpl> get copyWith =>
@@ -672,7 +700,10 @@ abstract class AbcTwinSync_JustInt extends AbcTwinSync {
 
   @override
   int get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AbcTwinSync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AbcTwinSync_JustIntImplCopyWith<_$AbcTwinSync_JustIntImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

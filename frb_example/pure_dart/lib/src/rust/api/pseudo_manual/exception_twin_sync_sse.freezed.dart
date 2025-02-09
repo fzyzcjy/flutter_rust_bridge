@@ -12,7 +12,7 @@ part of 'exception_twin_sync_sse.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$CustomEnumErrorTwinSyncSse {
@@ -57,7 +57,9 @@ mixin _$CustomEnumErrorTwinSyncSse {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomEnumErrorTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CustomEnumErrorTwinSyncSseCopyWith<CustomEnumErrorTwinSyncSse>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -83,6 +85,8 @@ class _$CustomEnumErrorTwinSyncSseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CustomEnumErrorTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -119,6 +123,8 @@ class __$$CustomEnumErrorTwinSyncSse_OneImplCopyWithImpl<$Res>
       $Res Function(_$CustomEnumErrorTwinSyncSse_OneImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomEnumErrorTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -169,7 +175,9 @@ class _$CustomEnumErrorTwinSyncSse_OneImpl
   @override
   int get hashCode => Object.hash(runtimeType, message, backtrace);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomEnumErrorTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomEnumErrorTwinSyncSse_OneImplCopyWith<
@@ -251,8 +259,11 @@ abstract class CustomEnumErrorTwinSyncSse_One extends CustomEnumErrorTwinSyncSse
   String get message;
   @override
   String get backtrace;
+
+  /// Create a copy of CustomEnumErrorTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomEnumErrorTwinSyncSse_OneImplCopyWith<
           _$CustomEnumErrorTwinSyncSse_OneImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -280,6 +291,8 @@ class __$$CustomEnumErrorTwinSyncSse_TwoImplCopyWithImpl<$Res>
       $Res Function(_$CustomEnumErrorTwinSyncSse_TwoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomEnumErrorTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -330,7 +343,9 @@ class _$CustomEnumErrorTwinSyncSse_TwoImpl
   @override
   int get hashCode => Object.hash(runtimeType, message, backtrace);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomEnumErrorTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomEnumErrorTwinSyncSse_TwoImplCopyWith<
@@ -412,8 +427,11 @@ abstract class CustomEnumErrorTwinSyncSse_Two extends CustomEnumErrorTwinSyncSse
   int get message;
   @override
   String get backtrace;
+
+  /// Create a copy of CustomEnumErrorTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomEnumErrorTwinSyncSse_TwoImplCopyWith<
           _$CustomEnumErrorTwinSyncSse_TwoImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -462,7 +480,9 @@ mixin _$CustomErrorTwinSyncSse {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomErrorTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CustomErrorTwinSyncSseCopyWith<CustomErrorTwinSyncSse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -487,6 +507,8 @@ class _$CustomErrorTwinSyncSseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CustomErrorTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -523,6 +545,8 @@ class __$$CustomErrorTwinSyncSse_Error0ImplCopyWithImpl<$Res>
       $Res Function(_$CustomErrorTwinSyncSse_Error0Impl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomErrorTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -573,7 +597,9 @@ class _$CustomErrorTwinSyncSse_Error0Impl
   @override
   int get hashCode => Object.hash(runtimeType, e, backtrace);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomErrorTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomErrorTwinSyncSse_Error0ImplCopyWith<
@@ -655,8 +681,11 @@ abstract class CustomErrorTwinSyncSse_Error0 extends CustomErrorTwinSyncSse
   String get e;
   @override
   String get backtrace;
+
+  /// Create a copy of CustomErrorTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomErrorTwinSyncSse_Error0ImplCopyWith<
           _$CustomErrorTwinSyncSse_Error0Impl>
       get copyWith => throw _privateConstructorUsedError;
@@ -684,6 +713,8 @@ class __$$CustomErrorTwinSyncSse_Error1ImplCopyWithImpl<$Res>
       $Res Function(_$CustomErrorTwinSyncSse_Error1Impl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomErrorTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -734,7 +765,9 @@ class _$CustomErrorTwinSyncSse_Error1Impl
   @override
   int get hashCode => Object.hash(runtimeType, e, backtrace);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomErrorTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomErrorTwinSyncSse_Error1ImplCopyWith<
@@ -816,8 +849,11 @@ abstract class CustomErrorTwinSyncSse_Error1 extends CustomErrorTwinSyncSse
   int get e;
   @override
   String get backtrace;
+
+  /// Create a copy of CustomErrorTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomErrorTwinSyncSse_Error1ImplCopyWith<
           _$CustomErrorTwinSyncSse_Error1Impl>
       get copyWith => throw _privateConstructorUsedError;
@@ -891,6 +927,9 @@ class _$CustomNestedError1TwinSyncSseCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CustomNestedError1TwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -916,6 +955,8 @@ class __$$CustomNestedError1TwinSyncSse_CustomNested1ImplCopyWithImpl<$Res>
       $Res Function(_$CustomNestedError1TwinSyncSse_CustomNested1Impl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomNestedError1TwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -956,7 +997,9 @@ class _$CustomNestedError1TwinSyncSse_CustomNested1Impl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomNestedError1TwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomNestedError1TwinSyncSse_CustomNested1ImplCopyWith<
@@ -1043,7 +1086,10 @@ abstract class CustomNestedError1TwinSyncSse_CustomNested1
 
   @override
   String get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomNestedError1TwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomNestedError1TwinSyncSse_CustomNested1ImplCopyWith<
           _$CustomNestedError1TwinSyncSse_CustomNested1Impl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1071,6 +1117,8 @@ class __$$CustomNestedError1TwinSyncSse_ErrorNestedImplCopyWithImpl<$Res>
       $Res Function(_$CustomNestedError1TwinSyncSse_ErrorNestedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomNestedError1TwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1084,6 +1132,8 @@ class __$$CustomNestedError1TwinSyncSse_ErrorNestedImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of CustomNestedError1TwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CustomNestedError2TwinSyncSseCopyWith<$Res> get field0 {
@@ -1119,7 +1169,9 @@ class _$CustomNestedError1TwinSyncSse_ErrorNestedImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomNestedError1TwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomNestedError1TwinSyncSse_ErrorNestedImplCopyWith<
@@ -1207,7 +1259,10 @@ abstract class CustomNestedError1TwinSyncSse_ErrorNested
 
   @override
   CustomNestedError2TwinSyncSse get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomNestedError1TwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomNestedError1TwinSyncSse_ErrorNestedImplCopyWith<
           _$CustomNestedError1TwinSyncSse_ErrorNestedImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1282,6 +1337,9 @@ class _$CustomNestedError2TwinSyncSseCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CustomNestedError2TwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1307,6 +1365,8 @@ class __$$CustomNestedError2TwinSyncSse_CustomNested2ImplCopyWithImpl<$Res>
       $Res Function(_$CustomNestedError2TwinSyncSse_CustomNested2Impl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomNestedError2TwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1347,7 +1407,9 @@ class _$CustomNestedError2TwinSyncSse_CustomNested2Impl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomNestedError2TwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomNestedError2TwinSyncSse_CustomNested2ImplCopyWith<
@@ -1435,7 +1497,10 @@ abstract class CustomNestedError2TwinSyncSse_CustomNested2
 
   @override
   String get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomNestedError2TwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomNestedError2TwinSyncSse_CustomNested2ImplCopyWith<
           _$CustomNestedError2TwinSyncSse_CustomNested2Impl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1467,6 +1532,8 @@ class __$$CustomNestedError2TwinSyncSse_CustomNested2NumberImplCopyWithImpl<
           _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomNestedError2TwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1507,7 +1574,9 @@ class _$CustomNestedError2TwinSyncSse_CustomNested2NumberImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomNestedError2TwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomNestedError2TwinSyncSse_CustomNested2NumberImplCopyWith<
@@ -1596,7 +1665,10 @@ abstract class CustomNestedError2TwinSyncSse_CustomNested2Number
 
   @override
   int get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomNestedError2TwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomNestedError2TwinSyncSse_CustomNested2NumberImplCopyWith<
           _$CustomNestedError2TwinSyncSse_CustomNested2NumberImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1666,6 +1738,9 @@ class _$CustomNestedErrorInnerTwinSyncSseCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CustomNestedErrorInnerTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1688,6 +1763,8 @@ class __$$CustomNestedErrorInnerTwinSyncSse_ThreeImplCopyWithImpl<$Res>
       $Res Function(_$CustomNestedErrorInnerTwinSyncSse_ThreeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomNestedErrorInnerTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1727,7 +1804,9 @@ class _$CustomNestedErrorInnerTwinSyncSse_ThreeImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomNestedErrorInnerTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomNestedErrorInnerTwinSyncSse_ThreeImplCopyWith<
@@ -1809,7 +1888,10 @@ abstract class CustomNestedErrorInnerTwinSyncSse_Three
 
   @override
   String get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomNestedErrorInnerTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomNestedErrorInnerTwinSyncSse_ThreeImplCopyWith<
           _$CustomNestedErrorInnerTwinSyncSse_ThreeImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1835,6 +1917,8 @@ class __$$CustomNestedErrorInnerTwinSyncSse_FourImplCopyWithImpl<$Res>
       $Res Function(_$CustomNestedErrorInnerTwinSyncSse_FourImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomNestedErrorInnerTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1874,7 +1958,9 @@ class _$CustomNestedErrorInnerTwinSyncSse_FourImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomNestedErrorInnerTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomNestedErrorInnerTwinSyncSse_FourImplCopyWith<
@@ -1956,7 +2042,10 @@ abstract class CustomNestedErrorInnerTwinSyncSse_Four
 
   @override
   int get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomNestedErrorInnerTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomNestedErrorInnerTwinSyncSse_FourImplCopyWith<
           _$CustomNestedErrorInnerTwinSyncSse_FourImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -2024,6 +2113,9 @@ class _$CustomNestedErrorOuterTwinSyncSseCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CustomNestedErrorOuterTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2046,6 +2138,8 @@ class __$$CustomNestedErrorOuterTwinSyncSse_OneImplCopyWithImpl<$Res>
       $Res Function(_$CustomNestedErrorOuterTwinSyncSse_OneImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomNestedErrorOuterTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2085,7 +2179,9 @@ class _$CustomNestedErrorOuterTwinSyncSse_OneImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomNestedErrorOuterTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomNestedErrorOuterTwinSyncSse_OneImplCopyWith<
@@ -2164,7 +2260,10 @@ abstract class CustomNestedErrorOuterTwinSyncSse_One
 
   @override
   String get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomNestedErrorOuterTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomNestedErrorOuterTwinSyncSse_OneImplCopyWith<
           _$CustomNestedErrorOuterTwinSyncSse_OneImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -2192,6 +2291,8 @@ class __$$CustomNestedErrorOuterTwinSyncSse_TwoImplCopyWithImpl<$Res>
       $Res Function(_$CustomNestedErrorOuterTwinSyncSse_TwoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomNestedErrorOuterTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2205,6 +2306,8 @@ class __$$CustomNestedErrorOuterTwinSyncSse_TwoImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of CustomNestedErrorOuterTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CustomNestedErrorInnerTwinSyncSseCopyWith<$Res> get field0 {
@@ -2240,7 +2343,9 @@ class _$CustomNestedErrorOuterTwinSyncSse_TwoImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomNestedErrorOuterTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomNestedErrorOuterTwinSyncSse_TwoImplCopyWith<
@@ -2320,7 +2425,10 @@ abstract class CustomNestedErrorOuterTwinSyncSse_Two
 
   @override
   CustomNestedErrorInnerTwinSyncSse get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomNestedErrorOuterTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomNestedErrorOuterTwinSyncSse_TwoImplCopyWith<
           _$CustomNestedErrorOuterTwinSyncSse_TwoImpl>
       get copyWith => throw _privateConstructorUsedError;

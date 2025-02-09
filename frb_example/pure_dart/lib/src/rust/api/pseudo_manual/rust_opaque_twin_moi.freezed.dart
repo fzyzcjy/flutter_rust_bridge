@@ -12,7 +12,7 @@ part of 'rust_opaque_twin_moi.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$EnumOpaqueTwinMoi {
@@ -96,6 +96,9 @@ class _$EnumOpaqueTwinMoiCopyWithImpl<$Res, $Val extends EnumOpaqueTwinMoi>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of EnumOpaqueTwinMoi
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -118,6 +121,8 @@ class __$$EnumOpaqueTwinMoi_StructImplCopyWithImpl<$Res>
       $Res Function(_$EnumOpaqueTwinMoi_StructImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumOpaqueTwinMoi
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -156,7 +161,9 @@ class _$EnumOpaqueTwinMoi_StructImpl extends EnumOpaqueTwinMoi_Struct {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumOpaqueTwinMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumOpaqueTwinMoi_StructImplCopyWith<_$EnumOpaqueTwinMoi_StructImpl>
@@ -256,7 +263,10 @@ abstract class EnumOpaqueTwinMoi_Struct extends EnumOpaqueTwinMoi {
   const EnumOpaqueTwinMoi_Struct._() : super._();
 
   HideDataTwinMoi get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumOpaqueTwinMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumOpaqueTwinMoi_StructImplCopyWith<_$EnumOpaqueTwinMoi_StructImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -281,6 +291,8 @@ class __$$EnumOpaqueTwinMoi_PrimitiveImplCopyWithImpl<$Res>
       $Res Function(_$EnumOpaqueTwinMoi_PrimitiveImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumOpaqueTwinMoi
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -319,7 +331,9 @@ class _$EnumOpaqueTwinMoi_PrimitiveImpl extends EnumOpaqueTwinMoi_Primitive {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumOpaqueTwinMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumOpaqueTwinMoi_PrimitiveImplCopyWith<_$EnumOpaqueTwinMoi_PrimitiveImpl>
@@ -419,7 +433,10 @@ abstract class EnumOpaqueTwinMoi_Primitive extends EnumOpaqueTwinMoi {
   const EnumOpaqueTwinMoi_Primitive._() : super._();
 
   I16 get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumOpaqueTwinMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumOpaqueTwinMoi_PrimitiveImplCopyWith<_$EnumOpaqueTwinMoi_PrimitiveImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -444,6 +461,8 @@ class __$$EnumOpaqueTwinMoi_TraitObjImplCopyWithImpl<$Res>
       $Res Function(_$EnumOpaqueTwinMoi_TraitObjImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumOpaqueTwinMoi
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -482,7 +501,9 @@ class _$EnumOpaqueTwinMoi_TraitObjImpl extends EnumOpaqueTwinMoi_TraitObj {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumOpaqueTwinMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumOpaqueTwinMoi_TraitObjImplCopyWith<_$EnumOpaqueTwinMoi_TraitObjImpl>
@@ -582,7 +603,10 @@ abstract class EnumOpaqueTwinMoi_TraitObj extends EnumOpaqueTwinMoi {
   const EnumOpaqueTwinMoi_TraitObj._() : super._();
 
   BoxDartDebugTwinMoi get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumOpaqueTwinMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumOpaqueTwinMoi_TraitObjImplCopyWith<_$EnumOpaqueTwinMoi_TraitObjImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -606,6 +630,8 @@ class __$$EnumOpaqueTwinMoi_MutexImplCopyWithImpl<$Res>
       $Res Function(_$EnumOpaqueTwinMoi_MutexImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumOpaqueTwinMoi
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -644,7 +670,9 @@ class _$EnumOpaqueTwinMoi_MutexImpl extends EnumOpaqueTwinMoi_Mutex {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumOpaqueTwinMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumOpaqueTwinMoi_MutexImplCopyWith<_$EnumOpaqueTwinMoi_MutexImpl>
@@ -744,7 +772,10 @@ abstract class EnumOpaqueTwinMoi_Mutex extends EnumOpaqueTwinMoi {
   const EnumOpaqueTwinMoi_Mutex._() : super._();
 
   MutexHideDataTwinMoi get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumOpaqueTwinMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumOpaqueTwinMoi_MutexImplCopyWith<_$EnumOpaqueTwinMoi_MutexImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -769,6 +800,8 @@ class __$$EnumOpaqueTwinMoi_RwLockImplCopyWithImpl<$Res>
       $Res Function(_$EnumOpaqueTwinMoi_RwLockImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumOpaqueTwinMoi
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -807,7 +840,9 @@ class _$EnumOpaqueTwinMoi_RwLockImpl extends EnumOpaqueTwinMoi_RwLock {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumOpaqueTwinMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumOpaqueTwinMoi_RwLockImplCopyWith<_$EnumOpaqueTwinMoi_RwLockImpl>
@@ -907,7 +942,10 @@ abstract class EnumOpaqueTwinMoi_RwLock extends EnumOpaqueTwinMoi {
   const EnumOpaqueTwinMoi_RwLock._() : super._();
 
   RwLockHideDataTwinMoi get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumOpaqueTwinMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumOpaqueTwinMoi_RwLockImplCopyWith<_$EnumOpaqueTwinMoi_RwLockImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -929,6 +967,9 @@ class __$$EnumOpaqueTwinMoi_NothingImplCopyWithImpl<$Res>
       _$EnumOpaqueTwinMoi_NothingImpl _value,
       $Res Function(_$EnumOpaqueTwinMoi_NothingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of EnumOpaqueTwinMoi
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

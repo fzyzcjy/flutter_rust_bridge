@@ -12,7 +12,7 @@ part of 'basic.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$BasicGeneralEnumTwinNormal {
@@ -74,6 +74,9 @@ class _$BasicGeneralEnumTwinNormalCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of BasicGeneralEnumTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -96,6 +99,8 @@ class __$$BasicGeneralEnumTwinNormal_AppleImplCopyWithImpl<$Res>
       $Res Function(_$BasicGeneralEnumTwinNormal_AppleImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BasicGeneralEnumTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -136,7 +141,9 @@ class _$BasicGeneralEnumTwinNormal_AppleImpl
   @override
   int get hashCode => Object.hash(runtimeType, field);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BasicGeneralEnumTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BasicGeneralEnumTwinNormal_AppleImplCopyWith<
@@ -214,7 +221,10 @@ abstract class BasicGeneralEnumTwinNormal_Apple
   const BasicGeneralEnumTwinNormal_Apple._() : super._();
 
   String get field;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BasicGeneralEnumTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BasicGeneralEnumTwinNormal_AppleImplCopyWith<
           _$BasicGeneralEnumTwinNormal_AppleImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -237,6 +247,9 @@ class __$$BasicGeneralEnumTwinNormal_OrangeImplCopyWithImpl<$Res>
       _$BasicGeneralEnumTwinNormal_OrangeImpl _value,
       $Res Function(_$BasicGeneralEnumTwinNormal_OrangeImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of BasicGeneralEnumTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

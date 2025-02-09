@@ -5,8 +5,7 @@ import 'package:frb_example_gallery/src/rust/api/mandelbrot.dart';
 class AnimatedReplaceableImage extends StatefulWidget {
   final ImageProvider image;
 
-  const AnimatedReplaceableImage({Key? key, required this.image})
-      : super(key: key);
+  const AnimatedReplaceableImage({super.key, required this.image});
 
   @override
   AnimatedReplaceableImageState createState() =>

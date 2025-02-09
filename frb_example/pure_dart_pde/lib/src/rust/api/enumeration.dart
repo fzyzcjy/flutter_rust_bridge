@@ -115,7 +115,7 @@ sealed class EnumWithItemTupleTwinNormal with _$EnumWithItemTupleTwinNormal {
     Uint8List field0,
   ) = EnumWithItemTupleTwinNormal_A;
   const factory EnumWithItemTupleTwinNormal.b(
-    Int32List field0,
+    int field0,
   ) = EnumWithItemTupleTwinNormal_B;
 }
 

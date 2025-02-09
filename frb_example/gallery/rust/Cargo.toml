@@ -12,3 +12,6 @@ anyhow = { version = "1.0.75", features = ["backtrace"] }
 num = "0.4"
 image = "0.24.3"
 crossbeam = "0.8"
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }

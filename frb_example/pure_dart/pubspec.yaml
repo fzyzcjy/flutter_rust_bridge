@@ -7,13 +7,13 @@ environment:
 dependencies:
   benchmark_harness: ^2.2.2
   meta: ^1.8.0
-  lints: ^2.0.1
+  lints: ^5.1.1
   flutter_rust_bridge:
     path: ../../frb_dart
   flutter_rust_bridge_utils:
     path: ../../frb_utils
   mocktail: ^1.0.1
-  vm_service: ^9.0.0
+  vm_service: ^13.0.0
   freezed_annotation: ^2.2.0
   js: ^0.6.5
   test: ^1.21.4
@@ -23,4 +23,4 @@ dependencies:
 dev_dependencies:
   build_runner: ^2.4.4
   freezed: ^2.1.0+1
-  ffigen: ^11.0.0
+  ffigen: ^16.1.0

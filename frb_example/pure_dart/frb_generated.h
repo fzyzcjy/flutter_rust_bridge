@@ -793,7 +793,7 @@ typedef struct wire_cst_EnumWithItemTupleTwinNormal_A {
 } wire_cst_EnumWithItemTupleTwinNormal_A;
 
 typedef struct wire_cst_EnumWithItemTupleTwinNormal_B {
-  struct wire_cst_list_prim_i_32_strict *field0;
+  int32_t field0;
 } wire_cst_EnumWithItemTupleTwinNormal_B;
 
 typedef union EnumWithItemTupleTwinNormalKind {
@@ -811,7 +811,7 @@ typedef struct wire_cst_EnumWithItemTupleTwinRustAsync_A {
 } wire_cst_EnumWithItemTupleTwinRustAsync_A;
 
 typedef struct wire_cst_EnumWithItemTupleTwinRustAsync_B {
-  struct wire_cst_list_prim_i_32_strict *field0;
+  int32_t field0;
 } wire_cst_EnumWithItemTupleTwinRustAsync_B;
 
 typedef union EnumWithItemTupleTwinRustAsyncKind {
@@ -829,7 +829,7 @@ typedef struct wire_cst_EnumWithItemTupleTwinSync_A {
 } wire_cst_EnumWithItemTupleTwinSync_A;
 
 typedef struct wire_cst_EnumWithItemTupleTwinSync_B {
-  struct wire_cst_list_prim_i_32_strict *field0;
+  int32_t field0;
 } wire_cst_EnumWithItemTupleTwinSync_B;
 
 typedef union EnumWithItemTupleTwinSyncKind {

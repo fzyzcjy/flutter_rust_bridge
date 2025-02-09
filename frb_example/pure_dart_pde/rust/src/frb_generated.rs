@@ -35664,7 +35664,7 @@ impl SseDecode for crate::api::enumeration::EnumWithItemTupleTwinNormal {
                 return crate::api::enumeration::EnumWithItemTupleTwinNormal::A(var_field0);
             }
             1 => {
-                let mut var_field0 = <Vec<i32>>::sse_decode(deserializer);
+                let mut var_field0 = <i32>::sse_decode(deserializer);
                 return crate::api::enumeration::EnumWithItemTupleTwinNormal::B(var_field0);
             }
             _ => {
@@ -35686,7 +35686,7 @@ impl SseDecode
                 return crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemTupleTwinRustAsync::A(var_field0);
             }
             1 => {
-                let mut var_field0 = <Vec<i32>>::sse_decode(deserializer);
+                let mut var_field0 = <i32>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemTupleTwinRustAsync::B(var_field0);
             }
             _ => {
@@ -35706,7 +35706,7 @@ impl SseDecode for crate::api::pseudo_manual::enumeration_twin_sync::EnumWithIte
                 return crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync::A(var_field0);
             }
             1 => {
-                let mut var_field0 = <Vec<i32>>::sse_decode(deserializer);
+                let mut var_field0 = <i32>::sse_decode(deserializer);
                 return crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemTupleTwinSync::B(var_field0);
             }
             _ => {
@@ -55702,7 +55702,7 @@ impl SseEncode for crate::api::enumeration::EnumWithItemTupleTwinNormal {
             }
             crate::api::enumeration::EnumWithItemTupleTwinNormal::B(field0) => {
                 <i32>::sse_encode(1, serializer);
-                <Vec<i32>>::sse_encode(field0, serializer);
+                <i32>::sse_encode(field0, serializer);
             }
             _ => {
                 unimplemented!("");
@@ -55718,7 +55718,7 @@ impl SseEncode
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         match self {crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemTupleTwinRustAsync::A(field0) => { <i32>::sse_encode(0, serializer); <Vec<u8>>::sse_encode(field0, serializer);
  }
-crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemTupleTwinRustAsync::B(field0) => { <i32>::sse_encode(1, serializer); <Vec<i32>>::sse_encode(field0, serializer);
+crate::api::pseudo_manual::enumeration_twin_rust_async::EnumWithItemTupleTwinRustAsync::B(field0) => { <i32>::sse_encode(1, serializer); <i32>::sse_encode(field0, serializer);
  }
  _ => { unimplemented!(""); }}
     }
@@ -55738,7 +55738,7 @@ impl SseEncode for crate::api::pseudo_manual::enumeration_twin_sync::EnumWithIte
                 field0,
             ) => {
                 <i32>::sse_encode(1, serializer);
-                <Vec<i32>>::sse_encode(field0, serializer);
+                <i32>::sse_encode(field0, serializer);
             }
             _ => {
                 unimplemented!("");

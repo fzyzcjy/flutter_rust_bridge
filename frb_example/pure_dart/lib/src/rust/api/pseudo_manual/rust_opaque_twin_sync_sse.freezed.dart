@@ -12,7 +12,7 @@ part of 'rust_opaque_twin_sync_sse.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$EnumOpaqueTwinSyncSse {
@@ -97,6 +97,9 @@ class _$EnumOpaqueTwinSyncSseCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of EnumOpaqueTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -119,6 +122,8 @@ class __$$EnumOpaqueTwinSyncSse_StructImplCopyWithImpl<$Res>
       $Res Function(_$EnumOpaqueTwinSyncSse_StructImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumOpaqueTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -157,7 +162,9 @@ class _$EnumOpaqueTwinSyncSse_StructImpl extends EnumOpaqueTwinSyncSse_Struct {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumOpaqueTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumOpaqueTwinSyncSse_StructImplCopyWith<
@@ -258,7 +265,10 @@ abstract class EnumOpaqueTwinSyncSse_Struct extends EnumOpaqueTwinSyncSse {
   const EnumOpaqueTwinSyncSse_Struct._() : super._();
 
   HideDataTwinSyncSse get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumOpaqueTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumOpaqueTwinSyncSse_StructImplCopyWith<
           _$EnumOpaqueTwinSyncSse_StructImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -284,6 +294,8 @@ class __$$EnumOpaqueTwinSyncSse_PrimitiveImplCopyWithImpl<$Res>
       $Res Function(_$EnumOpaqueTwinSyncSse_PrimitiveImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumOpaqueTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -323,7 +335,9 @@ class _$EnumOpaqueTwinSyncSse_PrimitiveImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumOpaqueTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumOpaqueTwinSyncSse_PrimitiveImplCopyWith<
@@ -424,7 +438,10 @@ abstract class EnumOpaqueTwinSyncSse_Primitive extends EnumOpaqueTwinSyncSse {
   const EnumOpaqueTwinSyncSse_Primitive._() : super._();
 
   I32 get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumOpaqueTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumOpaqueTwinSyncSse_PrimitiveImplCopyWith<
           _$EnumOpaqueTwinSyncSse_PrimitiveImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -450,6 +467,8 @@ class __$$EnumOpaqueTwinSyncSse_TraitObjImplCopyWithImpl<$Res>
       $Res Function(_$EnumOpaqueTwinSyncSse_TraitObjImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumOpaqueTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -489,7 +508,9 @@ class _$EnumOpaqueTwinSyncSse_TraitObjImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumOpaqueTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumOpaqueTwinSyncSse_TraitObjImplCopyWith<
@@ -591,7 +612,10 @@ abstract class EnumOpaqueTwinSyncSse_TraitObj extends EnumOpaqueTwinSyncSse {
   const EnumOpaqueTwinSyncSse_TraitObj._() : super._();
 
   BoxDartDebugTwinSyncSse get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumOpaqueTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumOpaqueTwinSyncSse_TraitObjImplCopyWith<
           _$EnumOpaqueTwinSyncSse_TraitObjImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -617,6 +641,8 @@ class __$$EnumOpaqueTwinSyncSse_MutexImplCopyWithImpl<$Res>
       $Res Function(_$EnumOpaqueTwinSyncSse_MutexImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumOpaqueTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -655,7 +681,9 @@ class _$EnumOpaqueTwinSyncSse_MutexImpl extends EnumOpaqueTwinSyncSse_Mutex {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumOpaqueTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumOpaqueTwinSyncSse_MutexImplCopyWith<_$EnumOpaqueTwinSyncSse_MutexImpl>
@@ -756,7 +784,10 @@ abstract class EnumOpaqueTwinSyncSse_Mutex extends EnumOpaqueTwinSyncSse {
   const EnumOpaqueTwinSyncSse_Mutex._() : super._();
 
   MutexHideDataTwinSyncSse get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumOpaqueTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumOpaqueTwinSyncSse_MutexImplCopyWith<_$EnumOpaqueTwinSyncSse_MutexImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -781,6 +812,8 @@ class __$$EnumOpaqueTwinSyncSse_RwLockImplCopyWithImpl<$Res>
       $Res Function(_$EnumOpaqueTwinSyncSse_RwLockImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumOpaqueTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -819,7 +852,9 @@ class _$EnumOpaqueTwinSyncSse_RwLockImpl extends EnumOpaqueTwinSyncSse_RwLock {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumOpaqueTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumOpaqueTwinSyncSse_RwLockImplCopyWith<
@@ -921,7 +956,10 @@ abstract class EnumOpaqueTwinSyncSse_RwLock extends EnumOpaqueTwinSyncSse {
   const EnumOpaqueTwinSyncSse_RwLock._() : super._();
 
   RwLockHideDataTwinSyncSse get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumOpaqueTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumOpaqueTwinSyncSse_RwLockImplCopyWith<
           _$EnumOpaqueTwinSyncSse_RwLockImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -944,6 +982,9 @@ class __$$EnumOpaqueTwinSyncSse_NothingImplCopyWithImpl<$Res>
       _$EnumOpaqueTwinSyncSse_NothingImpl _value,
       $Res Function(_$EnumOpaqueTwinSyncSse_NothingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of EnumOpaqueTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

@@ -12,7 +12,7 @@ part of 'raw_string_twin_rust_async_sse.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$RawStringItemEnumTwinRustAsyncSse {
@@ -76,6 +76,9 @@ class _$RawStringItemEnumTwinRustAsyncSseCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of RawStringItemEnumTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -98,6 +101,8 @@ class __$$RawStringItemEnumTwinRustAsyncSse_RegularImplCopyWithImpl<$Res>
       $Res Function(_$RawStringItemEnumTwinRustAsyncSse_RegularImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RawStringItemEnumTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -138,7 +143,9 @@ class _$RawStringItemEnumTwinRustAsyncSse_RegularImpl
   @override
   int get hashCode => Object.hash(runtimeType, regular);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RawStringItemEnumTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RawStringItemEnumTwinRustAsyncSse_RegularImplCopyWith<
@@ -220,7 +227,10 @@ abstract class RawStringItemEnumTwinRustAsyncSse_Regular
   const RawStringItemEnumTwinRustAsyncSse_Regular._() : super._();
 
   String get regular;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of RawStringItemEnumTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RawStringItemEnumTwinRustAsyncSse_RegularImplCopyWith<
           _$RawStringItemEnumTwinRustAsyncSse_RegularImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -246,6 +256,8 @@ class __$$RawStringItemEnumTwinRustAsyncSse_RawImplCopyWithImpl<$Res>
       $Res Function(_$RawStringItemEnumTwinRustAsyncSse_RawImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RawStringItemEnumTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -286,7 +298,9 @@ class _$RawStringItemEnumTwinRustAsyncSse_RawImpl
   @override
   int get hashCode => Object.hash(runtimeType, type);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RawStringItemEnumTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RawStringItemEnumTwinRustAsyncSse_RawImplCopyWith<
@@ -366,7 +380,10 @@ abstract class RawStringItemEnumTwinRustAsyncSse_Raw
   const RawStringItemEnumTwinRustAsyncSse_Raw._() : super._();
 
   String get type;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of RawStringItemEnumTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RawStringItemEnumTwinRustAsyncSse_RawImplCopyWith<
           _$RawStringItemEnumTwinRustAsyncSse_RawImpl>
       get copyWith => throw _privateConstructorUsedError;

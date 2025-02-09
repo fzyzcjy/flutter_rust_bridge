@@ -12,13 +12,15 @@ part of 'attribute.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$UserIdTwinNormal {
   int get value => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserIdTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UserIdTwinNormalCopyWith<UserIdTwinNormal> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -42,6 +44,8 @@ class _$UserIdTwinNormalCopyWithImpl<$Res, $Val extends UserIdTwinNormal>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UserIdTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -75,6 +79,8 @@ class __$$UserIdTwinNormalImplCopyWithImpl<$Res>
       $Res Function(_$UserIdTwinNormalImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UserIdTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -114,7 +120,9 @@ class _$UserIdTwinNormalImpl implements _UserIdTwinNormal {
   @override
   int get hashCode => Object.hash(runtimeType, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserIdTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UserIdTwinNormalImplCopyWith<_$UserIdTwinNormalImpl> get copyWith =>
@@ -127,8 +135,11 @@ abstract class _UserIdTwinNormal implements UserIdTwinNormal {
 
   @override
   int get value;
+
+  /// Create a copy of UserIdTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UserIdTwinNormalImplCopyWith<_$UserIdTwinNormalImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

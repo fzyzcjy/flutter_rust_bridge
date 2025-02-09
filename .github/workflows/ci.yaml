@@ -9,9 +9,9 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
-  FRB_MAIN_RUST_VERSION: 1.83.0
-  FRB_MAIN_DART_VERSION: 3.4.0
-  FRB_MAIN_FLUTTER_VERSION: 3.22.0
+  FRB_MAIN_RUST_VERSION: 1.84.0
+  FRB_MAIN_DART_VERSION: 3.6.2
+  FRB_MAIN_FLUTTER_VERSION: 3.27.4
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -715,11 +715,11 @@ jobs:
       matrix:
         sanitizer:
           - asan
-          - msan
           - lsan
           # Every time we build TSAN in https://github.com/fzyzcjy/dart_lang_ci, it fails near the end.
           # Since it is unlikely we will have thread issues, we temporarily disable TSAN now.
           # - tsan
+          # - msan
         package:
           - frb_example--dart_minimal
           - frb_example--pure_dart

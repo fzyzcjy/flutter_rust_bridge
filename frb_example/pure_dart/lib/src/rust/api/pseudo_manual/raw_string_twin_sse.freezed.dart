@@ -12,7 +12,7 @@ part of 'raw_string_twin_sse.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$RawStringItemEnumTwinSse {
@@ -73,6 +73,9 @@ class _$RawStringItemEnumTwinSseCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of RawStringItemEnumTwinSse
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -95,6 +98,8 @@ class __$$RawStringItemEnumTwinSse_RegularImplCopyWithImpl<$Res>
       $Res Function(_$RawStringItemEnumTwinSse_RegularImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RawStringItemEnumTwinSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -135,7 +140,9 @@ class _$RawStringItemEnumTwinSse_RegularImpl
   @override
   int get hashCode => Object.hash(runtimeType, regular);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RawStringItemEnumTwinSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RawStringItemEnumTwinSse_RegularImplCopyWith<
@@ -213,7 +220,10 @@ abstract class RawStringItemEnumTwinSse_Regular
   const RawStringItemEnumTwinSse_Regular._() : super._();
 
   String get regular;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of RawStringItemEnumTwinSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RawStringItemEnumTwinSse_RegularImplCopyWith<
           _$RawStringItemEnumTwinSse_RegularImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -239,6 +249,8 @@ class __$$RawStringItemEnumTwinSse_RawImplCopyWithImpl<$Res>
       $Res Function(_$RawStringItemEnumTwinSse_RawImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RawStringItemEnumTwinSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -277,7 +289,9 @@ class _$RawStringItemEnumTwinSse_RawImpl extends RawStringItemEnumTwinSse_Raw {
   @override
   int get hashCode => Object.hash(runtimeType, type);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RawStringItemEnumTwinSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RawStringItemEnumTwinSse_RawImplCopyWith<
@@ -354,7 +368,10 @@ abstract class RawStringItemEnumTwinSse_Raw extends RawStringItemEnumTwinSse {
   const RawStringItemEnumTwinSse_Raw._() : super._();
 
   String get type;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of RawStringItemEnumTwinSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RawStringItemEnumTwinSse_RawImplCopyWith<
           _$RawStringItemEnumTwinSse_RawImpl>
       get copyWith => throw _privateConstructorUsedError;

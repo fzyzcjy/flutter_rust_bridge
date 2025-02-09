@@ -12,14 +12,16 @@ part of 'event_listener.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$EventTwinNormal {
   String get address => throw _privateConstructorUsedError;
   String get payload => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EventTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $EventTwinNormalCopyWith<EventTwinNormal> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$EventTwinNormalCopyWithImpl<$Res, $Val extends EventTwinNormal>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of EventTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +85,8 @@ class __$$EventTwinNormalImplCopyWithImpl<$Res>
       _$EventTwinNormalImpl _value, $Res Function(_$EventTwinNormalImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EventTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -128,7 +134,9 @@ class _$EventTwinNormalImpl extends _EventTwinNormal {
   @override
   int get hashCode => Object.hash(runtimeType, address, payload);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EventTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EventTwinNormalImplCopyWith<_$EventTwinNormalImpl> get copyWith =>
@@ -146,8 +154,11 @@ abstract class _EventTwinNormal extends EventTwinNormal {
   String get address;
   @override
   String get payload;
+
+  /// Create a copy of EventTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EventTwinNormalImplCopyWith<_$EventTwinNormalImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
