@@ -14,3 +14,7 @@ pub enum MyEnumWithJsonSerializable {
     Apple(String),
     Orange { a: i32 },
 }
+
+impl MyEnumWithJsonSerializable {
+    pub fn f(&self) {}
+}
