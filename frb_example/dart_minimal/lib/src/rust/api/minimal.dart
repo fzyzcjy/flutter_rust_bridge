@@ -4,7 +4,26 @@
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
 import '../frb_generated.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
+
+int constInt() => RustLib.instance.api.crateApiMinimalConstInt();
+
+F32Array3 constArray() => RustLib.instance.api.crateApiMinimalConstArray();
+
+class F32Array3 extends NonGrowableListView<double> {
+  static const arraySize = 3;
+
+  @internal
+  Float32List get inner => _inner;
+  final Float32List _inner;
+
+  F32Array3(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
+
+  F32Array3.init() : this(Float32List(arraySize));
+}
