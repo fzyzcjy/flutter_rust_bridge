@@ -1,9 +1,7 @@
 mod field;
 
-use crate::codegen::generator::codec::structs::CodecMode;
 use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::mir::func::{MirFunc, MirFuncAccessorMode, OwnershipMode};
-use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::{MirContext, MirType};
 use crate::codegen::ir::misc::skip::{IrValueOrSkip, MirFuncOrSkip};
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
