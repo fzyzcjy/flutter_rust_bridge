@@ -32,7 +32,7 @@ impl StructRefApiDartGenerator<'_> {
         let implements_exception = generate_dart_maybe_implements_exception(self.mir.is_exception);
         let methods_str = &methods.code;
         let json_serializable_extra_code =
-            compute_json_serializable_extra_code(src.needs_json_serializable, &name);
+            compute_json_serializable_extra_code(src.needs_json_serializable, class_name);
 
         format!(
             "{comments}{metadata}class {class_name} with _${class_name} {implements_exception} {{
