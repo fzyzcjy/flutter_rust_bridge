@@ -441,3 +441,168 @@ abstract class MyEnumWithJsonSerializable_Orange
           _$MyEnumWithJsonSerializable_OrangeImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
+
+MyStructWithJsonSerializable _$MyStructWithJsonSerializableFromJson(
+    Map<String, dynamic> json) {
+  return _MyStructWithJsonSerializable.fromJson(json);
+}
+
+/// @nodoc
+mixin _$MyStructWithJsonSerializable {
+  String get fieldOne => throw _privateConstructorUsedError;
+
+  /// Serializes this MyStructWithJsonSerializable to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of MyStructWithJsonSerializable
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $MyStructWithJsonSerializableCopyWith<MyStructWithJsonSerializable>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MyStructWithJsonSerializableCopyWith<$Res> {
+  factory $MyStructWithJsonSerializableCopyWith(
+          MyStructWithJsonSerializable value,
+          $Res Function(MyStructWithJsonSerializable) then) =
+      _$MyStructWithJsonSerializableCopyWithImpl<$Res,
+          MyStructWithJsonSerializable>;
+  @useResult
+  $Res call({String fieldOne});
+}
+
+/// @nodoc
+class _$MyStructWithJsonSerializableCopyWithImpl<$Res,
+        $Val extends MyStructWithJsonSerializable>
+    implements $MyStructWithJsonSerializableCopyWith<$Res> {
+  _$MyStructWithJsonSerializableCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of MyStructWithJsonSerializable
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? fieldOne = null,
+  }) {
+    return _then(_value.copyWith(
+      fieldOne: null == fieldOne
+          ? _value.fieldOne
+          : fieldOne // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$MyStructWithJsonSerializableImplCopyWith<$Res>
+    implements $MyStructWithJsonSerializableCopyWith<$Res> {
+  factory _$$MyStructWithJsonSerializableImplCopyWith(
+          _$MyStructWithJsonSerializableImpl value,
+          $Res Function(_$MyStructWithJsonSerializableImpl) then) =
+      __$$MyStructWithJsonSerializableImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String fieldOne});
+}
+
+/// @nodoc
+class __$$MyStructWithJsonSerializableImplCopyWithImpl<$Res>
+    extends _$MyStructWithJsonSerializableCopyWithImpl<$Res,
+        _$MyStructWithJsonSerializableImpl>
+    implements _$$MyStructWithJsonSerializableImplCopyWith<$Res> {
+  __$$MyStructWithJsonSerializableImplCopyWithImpl(
+      _$MyStructWithJsonSerializableImpl _value,
+      $Res Function(_$MyStructWithJsonSerializableImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of MyStructWithJsonSerializable
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? fieldOne = null,
+  }) {
+    return _then(_$MyStructWithJsonSerializableImpl(
+      fieldOne: null == fieldOne
+          ? _value.fieldOne
+          : fieldOne // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$MyStructWithJsonSerializableImpl extends _MyStructWithJsonSerializable {
+  const _$MyStructWithJsonSerializableImpl({required this.fieldOne})
+      : super._();
+
+  factory _$MyStructWithJsonSerializableImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$MyStructWithJsonSerializableImplFromJson(json);
+
+  @override
+  final String fieldOne;
+
+  @override
+  String toString() {
+    return 'MyStructWithJsonSerializable(fieldOne: $fieldOne)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MyStructWithJsonSerializableImpl &&
+            (identical(other.fieldOne, fieldOne) ||
+                other.fieldOne == fieldOne));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, fieldOne);
+
+  /// Create a copy of MyStructWithJsonSerializable
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MyStructWithJsonSerializableImplCopyWith<
+          _$MyStructWithJsonSerializableImpl>
+      get copyWith => __$$MyStructWithJsonSerializableImplCopyWithImpl<
+          _$MyStructWithJsonSerializableImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$MyStructWithJsonSerializableImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _MyStructWithJsonSerializable
+    extends MyStructWithJsonSerializable {
+  const factory _MyStructWithJsonSerializable(
+      {required final String fieldOne}) = _$MyStructWithJsonSerializableImpl;
+  const _MyStructWithJsonSerializable._() : super._();
+
+  factory _MyStructWithJsonSerializable.fromJson(Map<String, dynamic> json) =
+      _$MyStructWithJsonSerializableImpl.fromJson;
+
+  @override
+  String get fieldOne;
+
+  /// Create a copy of MyStructWithJsonSerializable
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$MyStructWithJsonSerializableImplCopyWith<
+          _$MyStructWithJsonSerializableImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}

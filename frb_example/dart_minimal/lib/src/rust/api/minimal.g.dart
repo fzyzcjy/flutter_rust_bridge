@@ -35,3 +35,15 @@ Map<String, dynamic> _$$MyEnumWithJsonSerializable_OrangeImplToJson(
       'a': instance.a,
       'runtimeType': instance.$type,
     };
+
+_$MyStructWithJsonSerializableImpl _$$MyStructWithJsonSerializableImplFromJson(
+        Map<String, dynamic> json) =>
+    _$MyStructWithJsonSerializableImpl(
+      fieldOne: json['fieldOne'] as String,
+    );
+
+Map<String, dynamic> _$$MyStructWithJsonSerializableImplToJson(
+        _$MyStructWithJsonSerializableImpl instance) =>
+    <String, dynamic>{
+      'fieldOne': instance.fieldOne,
+    };

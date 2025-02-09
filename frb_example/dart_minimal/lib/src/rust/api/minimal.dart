@@ -32,6 +32,7 @@ sealed class MyEnumWithJsonSerializable with _$MyEnumWithJsonSerializable {
       );
 }
 
+@freezed
 class MyStructWithJsonSerializable with _$MyStructWithJsonSerializable {
   const MyStructWithJsonSerializable._();
   const factory MyStructWithJsonSerializable({
