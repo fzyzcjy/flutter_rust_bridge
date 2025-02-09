@@ -5,6 +5,7 @@ use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncAccessorMode, MirFuncArgMode, MirFuncImplMode, MirFuncMode, MirFuncOutput,
     MirFuncOwnerInfo,
 };
+use crate::codegen::ir::mir::ident::MirIdent;
 use crate::codegen::ir::misc::skip::{IrSkip, IrSkipReason, IrValueOrSkip, MirFuncOrSkip};
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
@@ -52,7 +53,7 @@ fn parse_constant(
 
     Ok(MirFuncOrSkip::Value(MirFunc {
         namespace: namespace.clone(),
-        name,
+        name: MirIdent::new(name, None),
         id: None,
         inputs: vec![],
         output: MirFuncOutput {
