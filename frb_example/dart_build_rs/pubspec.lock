@@ -93,10 +93,10 @@ packages:
     dependency: "direct dev"
     description:
       name: build_runner
-      sha256: "67d591d602906ef9201caf93452495ad1812bea2074f04e25dbd7c133785821b"
+      sha256: "028819cfb90051c6b5440c7e574d1896f8037e3c96cf17aaeb054c9311cfbf4d"
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.7"
+    version: "2.4.13"
   build_runner_core:
     dependency: transitive
     description:
@@ -259,10 +259,10 @@ packages:
     dependency: transitive
     description:
       name: frontend_server_client
-      sha256: "408e3ca148b31c20282ad6f37ebfa6f4bdc8fede5b74bc2f08d9d92b55db3612"
+      sha256: f64a0333a82f30b0cca061bc3d143813a486dc086b574bfb233b7c1372427694
       url: "https://pub.dev"
     source: hosted
-    version: "3.2.0"
+    version: "4.0.0"
   glob:
     dependency: transitive
     description:
@@ -355,10 +355,10 @@ packages:
     dependency: transitive
     description:
       name: meta
-      sha256: d584fa6707a52763a52446f02cc621b077888fb63b93bbcb1143a7be5a0c0c04
+      sha256: e3641ec5d63ebf0d9b41bd43201a66e3fc79a65db5f61fc181f04cd27aab950c
       url: "https://pub.dev"
     source: hosted
-    version: "1.11.0"
+    version: "1.16.0"
   mime:
     dependency: transitive
     description:
@@ -571,26 +571,26 @@ packages:
     dependency: "direct dev"
     description:
       name: test
-      sha256: a1f7595805820fcc05e5c52e3a231aedd0b72972cb333e8c738a8b1239448b6f
+      sha256: "301b213cd241ca982e9ba50266bd3f5bd1ea33f1455554c5abb85d1be0e2d87e"
       url: "https://pub.dev"
     source: hosted
-    version: "1.24.9"
+    version: "1.25.15"
   test_api:
     dependency: transitive
     description:
       name: test_api
-      sha256: "5c2f730018264d276c20e4f1503fd1308dfbbae39ec8ee63c5236311ac06954b"
+      sha256: fb31f383e2ee25fbbfe06b40fe21e1e458d14080e3c67e7ba0acfde4df4e0bbd
       url: "https://pub.dev"
     source: hosted
-    version: "0.6.1"
+    version: "0.7.4"
   test_core:
     dependency: transitive
     description:
       name: test_core
-      sha256: a757b14fc47507060a162cc2530d9a4a2f92f5100a952c7443b5cad5ef5b106a
+      sha256: "84d17c3486c8dfdbe5e12a50c8ae176d15e2a771b96909a9442b40173649ccaa"
       url: "https://pub.dev"
     source: hosted
-    version: "0.5.9"
+    version: "0.6.8"
   timing:
     dependency: transitive
     description:
@@ -664,4 +664,4 @@ packages:
     source: hosted
     version: "2.1.1"
 sdks:
-  dart: ">=3.4.0 <4.0.0"
+  dart: ">=3.5.0 <4.0.0"
