@@ -90,40 +90,6 @@ class RustLibWire implements BaseWire {
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr
       .asFunction<void Function(DartPostCObjectFnType)>();
 
-  void wire__crate__api__minimal__init_app(
-    int port_,
-  ) {
-    return _wire__crate__api__minimal__init_app(
-      port_,
-    );
-  }
-
-  late final _wire__crate__api__minimal__init_appPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-      'frbgen_frb_example_dart_minimal_wire__crate__api__minimal__init_app');
-  late final _wire__crate__api__minimal__init_app =
-      _wire__crate__api__minimal__init_appPtr.asFunction<void Function(int)>();
-
-  void wire__crate__api__minimal__minimal_adder(
-    int port_,
-    int a,
-    int b,
-  ) {
-    return _wire__crate__api__minimal__minimal_adder(
-      port_,
-      a,
-      b,
-    );
-  }
-
-  late final _wire__crate__api__minimal__minimal_adderPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32)>>(
-      'frbgen_frb_example_dart_minimal_wire__crate__api__minimal__minimal_adder');
-  late final _wire__crate__api__minimal__minimal_adder =
-      _wire__crate__api__minimal__minimal_adderPtr
-          .asFunction<void Function(int, int, int)>();
-
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();
   }
