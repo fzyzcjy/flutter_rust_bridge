@@ -92,10 +92,16 @@ fn generate_end_api_text(
             import: "import 'package:freezed_annotation/freezed_annotation.dart' hide protected;"
                 .into(),
             part: format!(
-                "
-                part '{name}.freezed.dart';
-                part '{name}.g.dart';
-                ",
+                "part '{name}.freezed.dart';",
+                name = dart_output_path.file_stem().unwrap().to_str().unwrap()
+            ),
+            ..Default::default()
+        };
+    }
+    if item.needs_json_serializable {
+        header += DartHeaderCode {
+            part: format!(
+                "part '{name}.g.dart';",
                 name = dart_output_path.file_stem().unwrap().to_str().unwrap()
             ),
             ..Default::default()

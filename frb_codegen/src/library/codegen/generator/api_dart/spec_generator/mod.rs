@@ -45,6 +45,7 @@ pub(crate) struct ApiDartOutputSpecItem {
     pub preamble: String,
     pub skips: Vec<IrSkip>,
     pub needs_freezed: bool,
+    pub needs_json_serializable: bool,
 }
 
 pub(crate) fn generate(
