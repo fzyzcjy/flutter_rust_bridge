@@ -8,3 +8,11 @@ pub fn init_app() {
 pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
+
+use std::collections::HashSet;
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn test(vals: HashSet<u64>) -> String {
+    format!("{:?}", vals)
+}
+
