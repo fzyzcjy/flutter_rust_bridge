@@ -31,7 +31,7 @@ fn parse_constant(
     type_parser: &mut TypeParser,
     parse_mode: ParseMode,
     constant: &HirFlatConstant,
-) -> Result<IrValueOrSkip<MirFunc, IrSkip>, Error> {
+) -> anyhow::Result<IrValueOrSkip<MirFunc, IrSkip>> {
     let context =
         create_simplified_parsing_context(constant.namespace.clone(), config, parse_mode)?;
 
