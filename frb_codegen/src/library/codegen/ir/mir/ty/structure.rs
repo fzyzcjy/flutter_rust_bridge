@@ -20,8 +20,7 @@ pub struct MirStruct {
     pub wrapper_name: Option<String>,
     pub fields: Vec<MirField>,
     pub is_fields_named: bool,
-    // Use public getter
-    dart_metadata: Vec<MirDartAnnotation>,
+    pub dart_metadata_raw: Vec<MirDartAnnotation>,
     pub ignore: bool,
     pub needs_json_serializable: bool,
     pub generate_hash: bool,
@@ -70,7 +69,7 @@ impl MirTypeTrait for MirTypeStructRef {
 
 impl MirStruct {
     pub fn effective_dart_metadata(&self) -> Vec<MirDartAnnotation> {
-        let mut ans = self.dart_metadata.clone();
+        let mut ans = self.dart_metadata_raw.clone();
         if self.needs_json_serializable && !dart_metadata_has_freezed(&ans) {
             ans.push(MirDartAnnotation {
                 content: "freezed".to_string(),

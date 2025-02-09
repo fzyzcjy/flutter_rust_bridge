@@ -39,7 +39,7 @@ impl TypeParserWithContext<'_, '_, '_> {
                 name: NamespacedName::new(namespace.clone(), safe_ident.clone()),
                 wrapper_name: None,
                 is_fields_named: true,
-                dart_metadata: vec![],
+                dart_metadata_raw: vec![],
                 ignore: false,
                 needs_json_serializable: false,
                 generate_hash: true,

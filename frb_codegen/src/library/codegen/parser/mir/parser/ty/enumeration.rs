@@ -113,7 +113,7 @@ impl TypeParserWithContext<'_, '_, '_> {
             name: compute_enum_variant_kind_struct_name(&src_enum.name, variant_name),
             wrapper_name: None,
             is_fields_named: field_ident.is_some(),
-            dart_metadata: attributes.dart_metadata(),
+            dart_metadata_raw: attributes.dart_metadata(),
             ignore: attributes.ignore(),
             needs_json_serializable: attributes.json_serializable(),
             generate_hash: true,
