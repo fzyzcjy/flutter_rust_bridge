@@ -20,7 +20,7 @@ pub struct MirStruct {
     pub wrapper_name: Option<String>,
     pub fields: Vec<MirField>,
     pub is_fields_named: bool,
-    pub dart_metadata: Vec<MirDartAnnotation>,
+    dart_metadata: Vec<MirDartAnnotation>,
     pub ignore: bool,
     pub needs_json_serializable: bool,
     pub generate_hash: bool,
