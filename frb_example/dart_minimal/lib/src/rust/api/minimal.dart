@@ -5,23 +5,6 @@
 
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-part 'minimal.freezed.dart';
 
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
-
-Future<RawStringItemEnumTwinNormal> testRawStringItemEnumTwinNormal() =>
-    RustLib.instance.api.crateApiMinimalTestRawStringItemEnumTwinNormal();
-
-@freezed
-sealed class RawStringItemEnumTwinNormal with _$RawStringItemEnumTwinNormal {
-  const RawStringItemEnumTwinNormal._();
-
-  const factory RawStringItemEnumTwinNormal.regular({
-    required String regular,
-  }) = RawStringItemEnumTwinNormal_Regular;
-  const factory RawStringItemEnumTwinNormal.raw({
-    required String type,
-  }) = RawStringItemEnumTwinNormal_Raw;
-}

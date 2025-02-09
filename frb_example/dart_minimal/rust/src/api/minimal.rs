@@ -8,14 +8,3 @@ pub fn init_app() {
 pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
-
-pub enum RawStringItemEnumTwinNormal {
-    Regular { regular: String },
-    Raw { r#type: String },
-}
-
-pub fn test_raw_string_item_enum_twin_normal() -> RawStringItemEnumTwinNormal {
-    RawStringItemEnumTwinNormal::Raw {
-        r#type: "test".to_owned(),
-    }
-}
