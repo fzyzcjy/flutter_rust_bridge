@@ -3,6 +3,7 @@ use crate::codegen::misc::SELF_CRATE_THIRD_PARTY_NAMESPACE;
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 use crate::utils::namespace::Namespace;
 use itertools::Itertools;
+use syn::Visibility;
 
 pub(crate) fn transform(
     mut pack: HirFlatPack,
@@ -21,7 +22,13 @@ fn filter_function(pack: &mut HirFlatPack, config: &ParserHirInternalConfig) {
 
 fn filter_constant(pack: &mut HirFlatPack, config: &ParserHirInternalConfig) {
     pack.constants = (pack.constants.drain(..))
-        .filter(|x| should_keep(&x.namespace, TODO, config))
+        .filter(|x| {
+            should_keep(
+                &x.namespace,
+                matches!(x.item_const.vis, Visibility::Public(_)),
+                config,
+            )
+        })
         .collect_vec();
 }
 
