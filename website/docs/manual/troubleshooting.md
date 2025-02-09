@@ -148,7 +148,7 @@ Please refer to [#2425](https://github.com/fzyzcjy/flutter_rust_bridge/issues/24
 Shortly speaking, it seems flutter_rust_bridge cannot do much, just like the same scenario in [cargo-fuzz](https://github.com/rust-fuzz/cargo-fuzz/issues/372).
 Instead, users may need to add the section below in `Cargo.toml`:
 
-```toml
+```
 [lints.rust]
 unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }
 ```
