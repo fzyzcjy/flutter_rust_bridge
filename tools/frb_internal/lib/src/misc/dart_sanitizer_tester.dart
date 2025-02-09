@@ -239,8 +239,7 @@ Future<void> _execAndCheckWithSanitizerEnvVar(
       'FRB_SIMPLE_BUILD_CARGO_NIGHTLY': '1',
       'FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS': _cargoBuildExtraArgs,
       // because we unconventionally specified the `--target` in cargo build
-      'FRB_DART_LOAD_EXTERNAL_LIBRARY_NATIVE_LIB_DIR':
-          'rust/target/x86_64-unknown-linux-gnu/release/',
+      'FRB_DART_LOAD_EXTERNAL_LIBRARY_NATIVE_LIB_DIR': 'rust/target/release/',
       ...kEnvEnableRustBacktrace,
     },
     checkExitCode: false,
