@@ -33,13 +33,11 @@ fn parse_constant(
     parse_mode: ParseMode,
     constant: &HirFlatConstant,
 ) -> anyhow::Result<IrValueOrSkip<MirFunc, IrSkip>> {
-    let name = constant.item_const.ident.to_string();
-    let type_str = TODO;
-
     let namespace = &constant.namespace;
+    let name = constant.item_const.ident.to_string();
     let context = create_simplified_parsing_context(namespace.clone(), config, parse_mode)?;
 
-    let ty_direct_parse = match type_parser.parse_type(&syn::parse_str(type_str)?, &context) {
+    let ty_direct_parse = match type_parser.parse_type(&constant.item_const.ty, &context) {
         Ok(value) => value,
         // We do not care about parsing errors here (e.g. some type that we do not support)
         Err(_) => {
