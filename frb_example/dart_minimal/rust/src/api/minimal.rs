@@ -18,3 +18,12 @@ pub enum MyEnumWithJsonSerializable {
 impl MyEnumWithJsonSerializable {
     pub fn f(&self) {}
 }
+
+#[frb(json_serializable)]
+pub struct MyStructWithJsonSerializable {
+    field_one: String,
+}
+
+impl MyStructWithJsonSerializable {
+    pub fn f(&self) {}
+}
