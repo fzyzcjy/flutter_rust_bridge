@@ -5,48 +5,6 @@
 
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-part 'minimal.freezed.dart';
-part 'minimal.g.dart';
 
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
-
-@freezed
-sealed class MyEnumWithJsonSerializableTwinNormal
-    with _$MyEnumWithJsonSerializableTwinNormal {
-  const MyEnumWithJsonSerializableTwinNormal._();
-
-  const factory MyEnumWithJsonSerializableTwinNormal.apple(
-    String field0,
-  ) = MyEnumWithJsonSerializableTwinNormal_Apple;
-  const factory MyEnumWithJsonSerializableTwinNormal.orange({
-    required int a,
-  }) = MyEnumWithJsonSerializableTwinNormal_Orange;
-
-  factory MyEnumWithJsonSerializableTwinNormal.fromJson(
-          Map<String, dynamic> json) =>
-      _$MyEnumWithJsonSerializableTwinNormalFromJson(json);
-
-  Future<void> f() =>
-      RustLib.instance.api.crateApiMinimalMyEnumWithJsonSerializableTwinNormalF(
-        that: this,
-      );
-}
-
-@freezed
-class MyStructWithJsonSerializableTwinNormal
-    with _$MyStructWithJsonSerializableTwinNormal {
-  const MyStructWithJsonSerializableTwinNormal._();
-  const factory MyStructWithJsonSerializableTwinNormal({
-    required String fieldOne,
-  }) = _MyStructWithJsonSerializableTwinNormal;
-  Future<void> f() => RustLib.instance.api
-          .crateApiMinimalMyStructWithJsonSerializableTwinNormalF(
-        that: this,
-      );
-
-  factory MyStructWithJsonSerializableTwinNormal.fromJson(
-          Map<String, dynamic> json) =>
-      _$MyStructWithJsonSerializableTwinNormalFromJson(json);
-}
