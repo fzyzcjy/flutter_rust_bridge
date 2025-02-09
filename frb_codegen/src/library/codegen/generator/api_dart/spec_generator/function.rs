@@ -101,7 +101,7 @@ pub(crate) fn generate(
         func_expr,
         func_impl,
         func_params,
-        func_return_type,
+        func_return_type: return_type_and_params.return_type,
         src_lineno_pseudo: func.src_lineno_pseudo,
         return_stream,
     })
@@ -191,7 +191,7 @@ pub(crate) fn compute_return_type_and_params(
             func_params: format!("({})", compute_params_str(func_params, func.arg_mode)),
             maybe_accessor: "",
         },
-    };
+    }
 }
 
 pub(crate) fn compute_params_str(
