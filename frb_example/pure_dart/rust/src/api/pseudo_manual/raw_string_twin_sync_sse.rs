@@ -14,6 +14,19 @@ pub fn test_raw_string_item_struct_twin_sync_sse() -> RawStringItemStructTwinSyn
     }
 }
 
+pub enum RawStringItemEnumTwinSyncSse {
+    Regular { regular: String },
+    Raw { r#type: String },
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn test_raw_string_item_enum_twin_sync_sse() -> RawStringItemEnumTwinSyncSse {
+    RawStringItemEnumTwinSyncSse::Raw {
+        r#type: "test".to_owned(),
+    }
+}
+
 pub struct MoreThanJustOneRawStringStructTwinSyncSse {
     pub regular: String,
     pub r#type: String,

@@ -14,6 +14,18 @@ pub async fn test_raw_string_item_struct_twin_rust_async_sse() -> RawStringItemS
     }
 }
 
+pub enum RawStringItemEnumTwinRustAsyncSse {
+    Regular { regular: String },
+    Raw { r#type: String },
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn test_raw_string_item_enum_twin_rust_async_sse() -> RawStringItemEnumTwinRustAsyncSse {
+    RawStringItemEnumTwinRustAsyncSse::Raw {
+        r#type: "test".to_owned(),
+    }
+}
+
 pub struct MoreThanJustOneRawStringStructTwinRustAsyncSse {
     pub regular: String,
     pub r#type: String,

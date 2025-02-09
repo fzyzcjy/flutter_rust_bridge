@@ -13,6 +13,18 @@ pub fn test_raw_string_item_struct_twin_sync() -> RawStringItemStructTwinSync {
     }
 }
 
+pub enum RawStringItemEnumTwinSync {
+    Regular { regular: String },
+    Raw { r#type: String },
+}
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn test_raw_string_item_enum_twin_sync() -> RawStringItemEnumTwinSync {
+    RawStringItemEnumTwinSync::Raw {
+        r#type: "test".to_owned(),
+    }
+}
+
 pub struct MoreThanJustOneRawStringStructTwinSync {
     pub regular: String,
     pub r#type: String,

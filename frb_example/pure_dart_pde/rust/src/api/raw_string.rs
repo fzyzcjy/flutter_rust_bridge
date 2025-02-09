@@ -10,6 +10,17 @@ pub fn test_raw_string_item_struct_twin_normal() -> RawStringItemStructTwinNorma
     }
 }
 
+pub enum RawStringItemEnumTwinNormal {
+    Regular { regular: String },
+    Raw { r#type: String },
+}
+
+pub fn test_raw_string_item_enum_twin_normal() -> RawStringItemEnumTwinNormal {
+    RawStringItemEnumTwinNormal::Raw {
+        r#type: "test".to_owned(),
+    }
+}
+
 pub struct MoreThanJustOneRawStringStructTwinNormal {
     pub regular: String,
     pub r#type: String,

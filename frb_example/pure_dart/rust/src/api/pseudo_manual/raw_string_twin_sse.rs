@@ -13,6 +13,18 @@ pub fn test_raw_string_item_struct_twin_sse() -> RawStringItemStructTwinSse {
     }
 }
 
+pub enum RawStringItemEnumTwinSse {
+    Regular { regular: String },
+    Raw { r#type: String },
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+pub fn test_raw_string_item_enum_twin_sse() -> RawStringItemEnumTwinSse {
+    RawStringItemEnumTwinSse::Raw {
+        r#type: "test".to_owned(),
+    }
+}
+
 pub struct MoreThanJustOneRawStringStructTwinSse {
     pub regular: String,
     pub r#type: String,
