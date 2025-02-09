@@ -236,7 +236,10 @@ fn generate_signature(
         compute_return_type_and_params(func, &func_return_type_raw, &func_params);
 
     if default_constructor_mode == Some(MirFuncDefaultConstructorMode::DartConstructor) {
-        return format!("factory {dart_class_name}{func_params}");
+        return format!(
+            "factory {dart_class_name}{func_params}",
+            func_params = return_type_and_params.func_params
+        );
     }
 
     format!(
