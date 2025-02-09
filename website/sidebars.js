@@ -413,6 +413,7 @@ const sidebars = {
                         'guides/how-to/rust-compilation',
                         'guides/how-to/cargo-workspaces',
                         'guides/how-to/cross-origin',
+                        'guides/how-to/transferable-typed-data',
                     ],
                 },
                 'guides/users',
