@@ -12,7 +12,7 @@ part of 'mirror.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ApplicationMessage {
@@ -79,6 +79,9 @@ class _$ApplicationMessageCopyWithImpl<$Res, $Val extends ApplicationMessage>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ApplicationMessage
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -101,6 +104,8 @@ class __$$ApplicationMessage_DisplayMessageImplCopyWithImpl<$Res>
       $Res Function(_$ApplicationMessage_DisplayMessageImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApplicationMessage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -140,7 +145,9 @@ class _$ApplicationMessage_DisplayMessageImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApplicationMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ApplicationMessage_DisplayMessageImplCopyWith<
@@ -224,7 +231,10 @@ abstract class ApplicationMessage_DisplayMessage extends ApplicationMessage {
   const ApplicationMessage_DisplayMessage._() : super._();
 
   String get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ApplicationMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApplicationMessage_DisplayMessageImplCopyWith<
           _$ApplicationMessage_DisplayMessageImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -250,6 +260,8 @@ class __$$ApplicationMessage_RenderPixelImplCopyWithImpl<$Res>
       $Res Function(_$ApplicationMessage_RenderPixelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApplicationMessage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -298,7 +310,9 @@ class _$ApplicationMessage_RenderPixelImpl
   @override
   int get hashCode => Object.hash(runtimeType, x, y);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApplicationMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ApplicationMessage_RenderPixelImplCopyWith<
@@ -384,7 +398,10 @@ abstract class ApplicationMessage_RenderPixel extends ApplicationMessage {
 
   int get x;
   int get y;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ApplicationMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApplicationMessage_RenderPixelImplCopyWith<
           _$ApplicationMessage_RenderPixelImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -407,6 +424,9 @@ class __$$ApplicationMessage_ExitImplCopyWithImpl<$Res>
       _$ApplicationMessage_ExitImpl _value,
       $Res Function(_$ApplicationMessage_ExitImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ApplicationMessage
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -572,6 +592,9 @@ class _$RawStringEnumMirroredCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of RawStringEnumMirrored
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -594,6 +617,8 @@ class __$$RawStringEnumMirrored_RawImplCopyWithImpl<$Res>
       $Res Function(_$RawStringEnumMirrored_RawImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RawStringEnumMirrored
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -632,7 +657,9 @@ class _$RawStringEnumMirrored_RawImpl extends RawStringEnumMirrored_Raw {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RawStringEnumMirrored
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RawStringEnumMirrored_RawImplCopyWith<_$RawStringEnumMirrored_RawImpl>
@@ -717,7 +744,10 @@ abstract class RawStringEnumMirrored_Raw extends RawStringEnumMirrored {
 
   @override
   RawStringMirrored get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of RawStringEnumMirrored
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RawStringEnumMirrored_RawImplCopyWith<_$RawStringEnumMirrored_RawImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -742,6 +772,8 @@ class __$$RawStringEnumMirrored_NestedImplCopyWithImpl<$Res>
       $Res Function(_$RawStringEnumMirrored_NestedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RawStringEnumMirrored
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -780,7 +812,9 @@ class _$RawStringEnumMirrored_NestedImpl extends RawStringEnumMirrored_Nested {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RawStringEnumMirrored
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RawStringEnumMirrored_NestedImplCopyWith<
@@ -867,7 +901,10 @@ abstract class RawStringEnumMirrored_Nested extends RawStringEnumMirrored {
 
   @override
   NestedRawStringMirrored get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of RawStringEnumMirrored
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RawStringEnumMirrored_NestedImplCopyWith<
           _$RawStringEnumMirrored_NestedImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -893,6 +930,8 @@ class __$$RawStringEnumMirrored_ListOfNestedImplCopyWithImpl<$Res>
       $Res Function(_$RawStringEnumMirrored_ListOfNestedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RawStringEnumMirrored
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -932,7 +971,9 @@ class _$RawStringEnumMirrored_ListOfNestedImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RawStringEnumMirrored
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RawStringEnumMirrored_ListOfNestedImplCopyWith<
@@ -1020,7 +1061,10 @@ abstract class RawStringEnumMirrored_ListOfNested
 
   @override
   ListOfNestedRawStringMirrored get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of RawStringEnumMirrored
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RawStringEnumMirrored_ListOfNestedImplCopyWith<
           _$RawStringEnumMirrored_ListOfNestedImpl>
       get copyWith => throw _privateConstructorUsedError;

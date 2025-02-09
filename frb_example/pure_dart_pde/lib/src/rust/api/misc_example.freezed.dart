@@ -12,7 +12,7 @@ part of 'misc_example.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AbcTwinNormal {
@@ -85,6 +85,9 @@ class _$AbcTwinNormalCopyWithImpl<$Res, $Val extends AbcTwinNormal>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AbcTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -104,6 +107,8 @@ class __$$AbcTwinNormal_AImplCopyWithImpl<$Res>
       _$AbcTwinNormal_AImpl _value, $Res Function(_$AbcTwinNormal_AImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AbcTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -142,7 +147,9 @@ class _$AbcTwinNormal_AImpl extends AbcTwinNormal_A {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AbcTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AbcTwinNormal_AImplCopyWith<_$AbcTwinNormal_AImpl> get copyWith =>
@@ -231,7 +238,10 @@ abstract class AbcTwinNormal_A extends AbcTwinNormal {
 
   @override
   ATwinNormal get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AbcTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AbcTwinNormal_AImplCopyWith<_$AbcTwinNormal_AImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -253,6 +263,8 @@ class __$$AbcTwinNormal_BImplCopyWithImpl<$Res>
       _$AbcTwinNormal_BImpl _value, $Res Function(_$AbcTwinNormal_BImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AbcTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -291,7 +303,9 @@ class _$AbcTwinNormal_BImpl extends AbcTwinNormal_B {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AbcTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AbcTwinNormal_BImplCopyWith<_$AbcTwinNormal_BImpl> get copyWith =>
@@ -380,7 +394,10 @@ abstract class AbcTwinNormal_B extends AbcTwinNormal {
 
   @override
   BTwinNormal get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AbcTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AbcTwinNormal_BImplCopyWith<_$AbcTwinNormal_BImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -402,6 +419,8 @@ class __$$AbcTwinNormal_CImplCopyWithImpl<$Res>
       _$AbcTwinNormal_CImpl _value, $Res Function(_$AbcTwinNormal_CImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AbcTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -440,7 +459,9 @@ class _$AbcTwinNormal_CImpl extends AbcTwinNormal_C {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AbcTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AbcTwinNormal_CImplCopyWith<_$AbcTwinNormal_CImpl> get copyWith =>
@@ -529,7 +550,10 @@ abstract class AbcTwinNormal_C extends AbcTwinNormal {
 
   @override
   CTwinNormal get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AbcTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AbcTwinNormal_CImplCopyWith<_$AbcTwinNormal_CImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -552,6 +576,8 @@ class __$$AbcTwinNormal_JustIntImplCopyWithImpl<$Res>
       $Res Function(_$AbcTwinNormal_JustIntImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AbcTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -590,7 +616,9 @@ class _$AbcTwinNormal_JustIntImpl extends AbcTwinNormal_JustInt {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AbcTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AbcTwinNormal_JustIntImplCopyWith<_$AbcTwinNormal_JustIntImpl>
@@ -679,7 +707,10 @@ abstract class AbcTwinNormal_JustInt extends AbcTwinNormal {
 
   @override
   int get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AbcTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AbcTwinNormal_JustIntImplCopyWith<_$AbcTwinNormal_JustIntImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

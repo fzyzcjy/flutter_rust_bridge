@@ -12,7 +12,7 @@ part of 'method_twin_sse.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SimpleEnumTwinSse {
@@ -72,6 +72,9 @@ class _$SimpleEnumTwinSseCopyWithImpl<$Res, $Val extends SimpleEnumTwinSse>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SimpleEnumTwinSse
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -90,6 +93,9 @@ class __$$SimpleEnumTwinSse_FirstImplCopyWithImpl<$Res>
       _$SimpleEnumTwinSse_FirstImpl _value,
       $Res Function(_$SimpleEnumTwinSse_FirstImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SimpleEnumTwinSse
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -200,6 +206,8 @@ class __$$SimpleEnumTwinSse_SecondImplCopyWithImpl<$Res>
       $Res Function(_$SimpleEnumTwinSse_SecondImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SimpleEnumTwinSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -238,7 +246,9 @@ class _$SimpleEnumTwinSse_SecondImpl extends SimpleEnumTwinSse_Second {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SimpleEnumTwinSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SimpleEnumTwinSse_SecondImplCopyWith<_$SimpleEnumTwinSse_SecondImpl>
@@ -314,7 +324,10 @@ abstract class SimpleEnumTwinSse_Second extends SimpleEnumTwinSse {
   const SimpleEnumTwinSse_Second._() : super._();
 
   String get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SimpleEnumTwinSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SimpleEnumTwinSse_SecondImplCopyWith<_$SimpleEnumTwinSse_SecondImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

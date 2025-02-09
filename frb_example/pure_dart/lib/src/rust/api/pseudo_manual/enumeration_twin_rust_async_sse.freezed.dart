@@ -12,7 +12,7 @@ part of 'enumeration_twin_rust_async_sse.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$DistanceTwinRustAsyncSse {
@@ -73,6 +73,9 @@ class _$DistanceTwinRustAsyncSseCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of DistanceTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -92,6 +95,9 @@ class __$$DistanceTwinRustAsyncSse_UnknownImplCopyWithImpl<$Res>
       _$DistanceTwinRustAsyncSse_UnknownImpl _value,
       $Res Function(_$DistanceTwinRustAsyncSse_UnknownImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of DistanceTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -205,6 +211,8 @@ class __$$DistanceTwinRustAsyncSse_MapImplCopyWithImpl<$Res>
       $Res Function(_$DistanceTwinRustAsyncSse_MapImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DistanceTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -243,7 +251,9 @@ class _$DistanceTwinRustAsyncSse_MapImpl extends DistanceTwinRustAsyncSse_Map {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DistanceTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DistanceTwinRustAsyncSse_MapImplCopyWith<
@@ -320,7 +330,10 @@ abstract class DistanceTwinRustAsyncSse_Map extends DistanceTwinRustAsyncSse {
   const DistanceTwinRustAsyncSse_Map._() : super._();
 
   double get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DistanceTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DistanceTwinRustAsyncSse_MapImplCopyWith<
           _$DistanceTwinRustAsyncSse_MapImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -393,6 +406,9 @@ class _$EnumWithItemMixedTwinRustAsyncSseCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of EnumWithItemMixedTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -412,6 +428,9 @@ class __$$EnumWithItemMixedTwinRustAsyncSse_AImplCopyWithImpl<$Res>
       _$EnumWithItemMixedTwinRustAsyncSse_AImpl _value,
       $Res Function(_$EnumWithItemMixedTwinRustAsyncSse_AImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of EnumWithItemMixedTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -531,6 +550,8 @@ class __$$EnumWithItemMixedTwinRustAsyncSse_BImplCopyWithImpl<$Res>
       $Res Function(_$EnumWithItemMixedTwinRustAsyncSse_BImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumWithItemMixedTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -571,7 +592,9 @@ class _$EnumWithItemMixedTwinRustAsyncSse_BImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumWithItemMixedTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumWithItemMixedTwinRustAsyncSse_BImplCopyWith<
@@ -655,7 +678,10 @@ abstract class EnumWithItemMixedTwinRustAsyncSse_B
   const EnumWithItemMixedTwinRustAsyncSse_B._() : super._();
 
   Uint8List get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumWithItemMixedTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumWithItemMixedTwinRustAsyncSse_BImplCopyWith<
           _$EnumWithItemMixedTwinRustAsyncSse_BImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -681,6 +707,8 @@ class __$$EnumWithItemMixedTwinRustAsyncSse_CImplCopyWithImpl<$Res>
       $Res Function(_$EnumWithItemMixedTwinRustAsyncSse_CImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumWithItemMixedTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -721,7 +749,9 @@ class _$EnumWithItemMixedTwinRustAsyncSse_CImpl
   @override
   int get hashCode => Object.hash(runtimeType, cField);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumWithItemMixedTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumWithItemMixedTwinRustAsyncSse_CImplCopyWith<
@@ -806,7 +836,10 @@ abstract class EnumWithItemMixedTwinRustAsyncSse_C
   const EnumWithItemMixedTwinRustAsyncSse_C._() : super._();
 
   String get cField;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumWithItemMixedTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumWithItemMixedTwinRustAsyncSse_CImplCopyWith<
           _$EnumWithItemMixedTwinRustAsyncSse_CImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -873,6 +906,9 @@ class _$EnumWithItemStructTwinRustAsyncSseCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of EnumWithItemStructTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -895,6 +931,8 @@ class __$$EnumWithItemStructTwinRustAsyncSse_AImplCopyWithImpl<$Res>
       $Res Function(_$EnumWithItemStructTwinRustAsyncSse_AImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumWithItemStructTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -936,7 +974,9 @@ class _$EnumWithItemStructTwinRustAsyncSse_AImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(aField));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumWithItemStructTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumWithItemStructTwinRustAsyncSse_AImplCopyWith<
@@ -1015,7 +1055,10 @@ abstract class EnumWithItemStructTwinRustAsyncSse_A
   const EnumWithItemStructTwinRustAsyncSse_A._() : super._();
 
   Uint8List get aField;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumWithItemStructTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumWithItemStructTwinRustAsyncSse_AImplCopyWith<
           _$EnumWithItemStructTwinRustAsyncSse_AImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1041,6 +1084,8 @@ class __$$EnumWithItemStructTwinRustAsyncSse_BImplCopyWithImpl<$Res>
       $Res Function(_$EnumWithItemStructTwinRustAsyncSse_BImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumWithItemStructTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1082,7 +1127,9 @@ class _$EnumWithItemStructTwinRustAsyncSse_BImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(bField));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumWithItemStructTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumWithItemStructTwinRustAsyncSse_BImplCopyWith<
@@ -1161,7 +1208,10 @@ abstract class EnumWithItemStructTwinRustAsyncSse_B
   const EnumWithItemStructTwinRustAsyncSse_B._() : super._();
 
   Int32List get bField;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumWithItemStructTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumWithItemStructTwinRustAsyncSse_BImplCopyWith<
           _$EnumWithItemStructTwinRustAsyncSse_BImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1169,7 +1219,7 @@ abstract class EnumWithItemStructTwinRustAsyncSse_B
 
 /// @nodoc
 mixin _$EnumWithItemTupleTwinRustAsyncSse {
-  List<int> get field0 => throw _privateConstructorUsedError;
+  _TypedIntList get field0 => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Uint8List field0) a,
@@ -1229,6 +1279,9 @@ class _$EnumWithItemTupleTwinRustAsyncSseCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of EnumWithItemTupleTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1251,6 +1304,8 @@ class __$$EnumWithItemTupleTwinRustAsyncSse_AImplCopyWithImpl<$Res>
       $Res Function(_$EnumWithItemTupleTwinRustAsyncSse_AImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumWithItemTupleTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1291,7 +1346,9 @@ class _$EnumWithItemTupleTwinRustAsyncSse_AImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumWithItemTupleTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumWithItemTupleTwinRustAsyncSse_AImplCopyWith<
@@ -1370,7 +1427,10 @@ abstract class EnumWithItemTupleTwinRustAsyncSse_A
 
   @override
   Uint8List get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumWithItemTupleTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumWithItemTupleTwinRustAsyncSse_AImplCopyWith<
           _$EnumWithItemTupleTwinRustAsyncSse_AImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1396,6 +1456,8 @@ class __$$EnumWithItemTupleTwinRustAsyncSse_BImplCopyWithImpl<$Res>
       $Res Function(_$EnumWithItemTupleTwinRustAsyncSse_BImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumWithItemTupleTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1436,7 +1498,9 @@ class _$EnumWithItemTupleTwinRustAsyncSse_BImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumWithItemTupleTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumWithItemTupleTwinRustAsyncSse_BImplCopyWith<
@@ -1515,7 +1579,10 @@ abstract class EnumWithItemTupleTwinRustAsyncSse_B
 
   @override
   Int32List get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumWithItemTupleTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumWithItemTupleTwinRustAsyncSse_BImplCopyWith<
           _$EnumWithItemTupleTwinRustAsyncSse_BImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1610,6 +1677,9 @@ class _$KitchenSinkTwinRustAsyncSseCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of KitchenSinkTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1629,6 +1699,9 @@ class __$$KitchenSinkTwinRustAsyncSse_EmptyImplCopyWithImpl<$Res>
       _$KitchenSinkTwinRustAsyncSse_EmptyImpl _value,
       $Res Function(_$KitchenSinkTwinRustAsyncSse_EmptyImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of KitchenSinkTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1770,6 +1843,8 @@ class __$$KitchenSinkTwinRustAsyncSse_PrimitivesImplCopyWithImpl<$Res>
       $Res Function(_$KitchenSinkTwinRustAsyncSse_PrimitivesImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of KitchenSinkTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1829,7 +1904,9 @@ class _$KitchenSinkTwinRustAsyncSse_PrimitivesImpl
   @override
   int get hashCode => Object.hash(runtimeType, int32, float64, boolean);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of KitchenSinkTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$KitchenSinkTwinRustAsyncSse_PrimitivesImplCopyWith<
@@ -1942,7 +2019,10 @@ abstract class KitchenSinkTwinRustAsyncSse_Primitives
   int get int32;
   double get float64;
   bool get boolean;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of KitchenSinkTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KitchenSinkTwinRustAsyncSse_PrimitivesImplCopyWith<
           _$KitchenSinkTwinRustAsyncSse_PrimitivesImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1970,6 +2050,8 @@ class __$$KitchenSinkTwinRustAsyncSse_NestedImplCopyWithImpl<$Res>
       $Res Function(_$KitchenSinkTwinRustAsyncSse_NestedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of KitchenSinkTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1988,6 +2070,8 @@ class __$$KitchenSinkTwinRustAsyncSse_NestedImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of KitchenSinkTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $KitchenSinkTwinRustAsyncSseCopyWith<$Res> get field1 {
@@ -2028,7 +2112,9 @@ class _$KitchenSinkTwinRustAsyncSse_NestedImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0, field1);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of KitchenSinkTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$KitchenSinkTwinRustAsyncSse_NestedImplCopyWith<
@@ -2136,7 +2222,10 @@ abstract class KitchenSinkTwinRustAsyncSse_Nested
 
   int get field0;
   KitchenSinkTwinRustAsyncSse get field1;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of KitchenSinkTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KitchenSinkTwinRustAsyncSse_NestedImplCopyWith<
           _$KitchenSinkTwinRustAsyncSse_NestedImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -2162,6 +2251,8 @@ class __$$KitchenSinkTwinRustAsyncSse_OptionalImplCopyWithImpl<$Res>
       $Res Function(_$KitchenSinkTwinRustAsyncSse_OptionalImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of KitchenSinkTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2213,7 +2304,9 @@ class _$KitchenSinkTwinRustAsyncSse_OptionalImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0, field1);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of KitchenSinkTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$KitchenSinkTwinRustAsyncSse_OptionalImplCopyWith<
@@ -2322,7 +2415,10 @@ abstract class KitchenSinkTwinRustAsyncSse_Optional
   /// Comment on anonymous field
   int? get field0;
   int? get field1;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of KitchenSinkTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KitchenSinkTwinRustAsyncSse_OptionalImplCopyWith<
           _$KitchenSinkTwinRustAsyncSse_OptionalImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -2348,6 +2444,8 @@ class __$$KitchenSinkTwinRustAsyncSse_BufferImplCopyWithImpl<$Res>
       $Res Function(_$KitchenSinkTwinRustAsyncSse_BufferImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of KitchenSinkTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2388,7 +2486,9 @@ class _$KitchenSinkTwinRustAsyncSse_BufferImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of KitchenSinkTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$KitchenSinkTwinRustAsyncSse_BufferImplCopyWith<
@@ -2494,7 +2594,10 @@ abstract class KitchenSinkTwinRustAsyncSse_Buffer
   const KitchenSinkTwinRustAsyncSse_Buffer._() : super._();
 
   Uint8List get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of KitchenSinkTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KitchenSinkTwinRustAsyncSse_BufferImplCopyWith<
           _$KitchenSinkTwinRustAsyncSse_BufferImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -2520,6 +2623,8 @@ class __$$KitchenSinkTwinRustAsyncSse_EnumsImplCopyWithImpl<$Res>
       $Res Function(_$KitchenSinkTwinRustAsyncSse_EnumsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of KitchenSinkTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2562,7 +2667,9 @@ class _$KitchenSinkTwinRustAsyncSse_EnumsImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of KitchenSinkTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$KitchenSinkTwinRustAsyncSse_EnumsImplCopyWith<
@@ -2669,7 +2776,10 @@ abstract class KitchenSinkTwinRustAsyncSse_Enums
   const KitchenSinkTwinRustAsyncSse_Enums._() : super._();
 
   WeekdaysTwinRustAsyncSse get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of KitchenSinkTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KitchenSinkTwinRustAsyncSse_EnumsImplCopyWith<
           _$KitchenSinkTwinRustAsyncSse_EnumsImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -2735,6 +2845,9 @@ class _$MeasureTwinRustAsyncSseCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MeasureTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2759,6 +2872,8 @@ class __$$MeasureTwinRustAsyncSse_SpeedImplCopyWithImpl<$Res>
       $Res Function(_$MeasureTwinRustAsyncSse_SpeedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MeasureTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2772,6 +2887,8 @@ class __$$MeasureTwinRustAsyncSse_SpeedImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of MeasureTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SpeedTwinRustAsyncSseCopyWith<$Res> get field0 {
@@ -2806,7 +2923,9 @@ class _$MeasureTwinRustAsyncSse_SpeedImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MeasureTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MeasureTwinRustAsyncSse_SpeedImplCopyWith<
@@ -2884,7 +3003,10 @@ abstract class MeasureTwinRustAsyncSse_Speed extends MeasureTwinRustAsyncSse {
 
   @override
   SpeedTwinRustAsyncSse get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MeasureTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MeasureTwinRustAsyncSse_SpeedImplCopyWith<
           _$MeasureTwinRustAsyncSse_SpeedImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -2912,6 +3034,8 @@ class __$$MeasureTwinRustAsyncSse_DistanceImplCopyWithImpl<$Res>
       $Res Function(_$MeasureTwinRustAsyncSse_DistanceImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MeasureTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2925,6 +3049,8 @@ class __$$MeasureTwinRustAsyncSse_DistanceImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of MeasureTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DistanceTwinRustAsyncSseCopyWith<$Res> get field0 {
@@ -2959,7 +3085,9 @@ class _$MeasureTwinRustAsyncSse_DistanceImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MeasureTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MeasureTwinRustAsyncSse_DistanceImplCopyWith<
@@ -3039,7 +3167,10 @@ abstract class MeasureTwinRustAsyncSse_Distance
 
   @override
   DistanceTwinRustAsyncSse get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MeasureTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MeasureTwinRustAsyncSse_DistanceImplCopyWith<
           _$MeasureTwinRustAsyncSse_DistanceImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -3104,6 +3235,9 @@ class _$SpeedTwinRustAsyncSseCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SpeedTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -3123,6 +3257,9 @@ class __$$SpeedTwinRustAsyncSse_UnknownImplCopyWithImpl<$Res>
       _$SpeedTwinRustAsyncSse_UnknownImpl _value,
       $Res Function(_$SpeedTwinRustAsyncSse_UnknownImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SpeedTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -3235,6 +3372,8 @@ class __$$SpeedTwinRustAsyncSse_GPSImplCopyWithImpl<$Res>
       $Res Function(_$SpeedTwinRustAsyncSse_GPSImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SpeedTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3273,7 +3412,9 @@ class _$SpeedTwinRustAsyncSse_GPSImpl extends SpeedTwinRustAsyncSse_GPS {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SpeedTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SpeedTwinRustAsyncSse_GPSImplCopyWith<_$SpeedTwinRustAsyncSse_GPSImpl>
@@ -3349,7 +3490,10 @@ abstract class SpeedTwinRustAsyncSse_GPS extends SpeedTwinRustAsyncSse {
   const SpeedTwinRustAsyncSse_GPS._() : super._();
 
   double get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SpeedTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SpeedTwinRustAsyncSse_GPSImplCopyWith<_$SpeedTwinRustAsyncSse_GPSImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

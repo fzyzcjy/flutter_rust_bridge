@@ -12,13 +12,15 @@ part of 'attribute_twin_sync_sse.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$UserIdTwinSyncSse {
   int get value => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserIdTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UserIdTwinSyncSseCopyWith<UserIdTwinSyncSse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -42,6 +44,8 @@ class _$UserIdTwinSyncSseCopyWithImpl<$Res, $Val extends UserIdTwinSyncSse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UserIdTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -75,6 +79,8 @@ class __$$UserIdTwinSyncSseImplCopyWithImpl<$Res>
       $Res Function(_$UserIdTwinSyncSseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UserIdTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -114,7 +120,9 @@ class _$UserIdTwinSyncSseImpl implements _UserIdTwinSyncSse {
   @override
   int get hashCode => Object.hash(runtimeType, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserIdTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UserIdTwinSyncSseImplCopyWith<_$UserIdTwinSyncSseImpl> get copyWith =>
@@ -127,8 +135,11 @@ abstract class _UserIdTwinSyncSse implements UserIdTwinSyncSse {
 
   @override
   int get value;
+
+  /// Create a copy of UserIdTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UserIdTwinSyncSseImplCopyWith<_$UserIdTwinSyncSseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

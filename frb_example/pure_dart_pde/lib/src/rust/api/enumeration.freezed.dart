@@ -12,7 +12,7 @@ part of 'enumeration.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$DistanceTwinNormal {
@@ -72,6 +72,9 @@ class _$DistanceTwinNormalCopyWithImpl<$Res, $Val extends DistanceTwinNormal>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of DistanceTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -91,6 +94,9 @@ class __$$DistanceTwinNormal_UnknownImplCopyWithImpl<$Res>
       _$DistanceTwinNormal_UnknownImpl _value,
       $Res Function(_$DistanceTwinNormal_UnknownImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of DistanceTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -200,6 +206,8 @@ class __$$DistanceTwinNormal_MapImplCopyWithImpl<$Res>
       $Res Function(_$DistanceTwinNormal_MapImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DistanceTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -238,7 +246,9 @@ class _$DistanceTwinNormal_MapImpl extends DistanceTwinNormal_Map {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DistanceTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DistanceTwinNormal_MapImplCopyWith<_$DistanceTwinNormal_MapImpl>
@@ -314,7 +324,10 @@ abstract class DistanceTwinNormal_Map extends DistanceTwinNormal {
   const DistanceTwinNormal_Map._() : super._();
 
   double get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DistanceTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DistanceTwinNormal_MapImplCopyWith<_$DistanceTwinNormal_MapImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -386,6 +399,9 @@ class _$EnumWithItemMixedTwinNormalCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of EnumWithItemMixedTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -405,6 +421,9 @@ class __$$EnumWithItemMixedTwinNormal_AImplCopyWithImpl<$Res>
       _$EnumWithItemMixedTwinNormal_AImpl _value,
       $Res Function(_$EnumWithItemMixedTwinNormal_AImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of EnumWithItemMixedTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -524,6 +543,8 @@ class __$$EnumWithItemMixedTwinNormal_BImplCopyWithImpl<$Res>
       $Res Function(_$EnumWithItemMixedTwinNormal_BImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumWithItemMixedTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -564,7 +585,9 @@ class _$EnumWithItemMixedTwinNormal_BImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumWithItemMixedTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumWithItemMixedTwinNormal_BImplCopyWith<
@@ -648,7 +671,10 @@ abstract class EnumWithItemMixedTwinNormal_B
   const EnumWithItemMixedTwinNormal_B._() : super._();
 
   Uint8List get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumWithItemMixedTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumWithItemMixedTwinNormal_BImplCopyWith<
           _$EnumWithItemMixedTwinNormal_BImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -674,6 +700,8 @@ class __$$EnumWithItemMixedTwinNormal_CImplCopyWithImpl<$Res>
       $Res Function(_$EnumWithItemMixedTwinNormal_CImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumWithItemMixedTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -713,7 +741,9 @@ class _$EnumWithItemMixedTwinNormal_CImpl
   @override
   int get hashCode => Object.hash(runtimeType, cField);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumWithItemMixedTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumWithItemMixedTwinNormal_CImplCopyWith<
@@ -797,7 +827,10 @@ abstract class EnumWithItemMixedTwinNormal_C
   const EnumWithItemMixedTwinNormal_C._() : super._();
 
   String get cField;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumWithItemMixedTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumWithItemMixedTwinNormal_CImplCopyWith<
           _$EnumWithItemMixedTwinNormal_CImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -864,6 +897,9 @@ class _$EnumWithItemStructTwinNormalCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of EnumWithItemStructTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -886,6 +922,8 @@ class __$$EnumWithItemStructTwinNormal_AImplCopyWithImpl<$Res>
       $Res Function(_$EnumWithItemStructTwinNormal_AImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumWithItemStructTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -927,7 +965,9 @@ class _$EnumWithItemStructTwinNormal_AImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(aField));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumWithItemStructTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumWithItemStructTwinNormal_AImplCopyWith<
@@ -1005,7 +1045,10 @@ abstract class EnumWithItemStructTwinNormal_A
   const EnumWithItemStructTwinNormal_A._() : super._();
 
   Uint8List get aField;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumWithItemStructTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumWithItemStructTwinNormal_AImplCopyWith<
           _$EnumWithItemStructTwinNormal_AImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1031,6 +1074,8 @@ class __$$EnumWithItemStructTwinNormal_BImplCopyWithImpl<$Res>
       $Res Function(_$EnumWithItemStructTwinNormal_BImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumWithItemStructTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1072,7 +1117,9 @@ class _$EnumWithItemStructTwinNormal_BImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(bField));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumWithItemStructTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumWithItemStructTwinNormal_BImplCopyWith<
@@ -1150,7 +1197,10 @@ abstract class EnumWithItemStructTwinNormal_B
   const EnumWithItemStructTwinNormal_B._() : super._();
 
   Int32List get bField;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumWithItemStructTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumWithItemStructTwinNormal_BImplCopyWith<
           _$EnumWithItemStructTwinNormal_BImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1158,7 +1208,7 @@ abstract class EnumWithItemStructTwinNormal_B
 
 /// @nodoc
 mixin _$EnumWithItemTupleTwinNormal {
-  List<int> get field0 => throw _privateConstructorUsedError;
+  _TypedIntList get field0 => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Uint8List field0) a,
@@ -1218,6 +1268,9 @@ class _$EnumWithItemTupleTwinNormalCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of EnumWithItemTupleTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1240,6 +1293,8 @@ class __$$EnumWithItemTupleTwinNormal_AImplCopyWithImpl<$Res>
       $Res Function(_$EnumWithItemTupleTwinNormal_AImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumWithItemTupleTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1280,7 +1335,9 @@ class _$EnumWithItemTupleTwinNormal_AImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumWithItemTupleTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumWithItemTupleTwinNormal_AImplCopyWith<
@@ -1359,7 +1416,10 @@ abstract class EnumWithItemTupleTwinNormal_A
 
   @override
   Uint8List get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumWithItemTupleTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumWithItemTupleTwinNormal_AImplCopyWith<
           _$EnumWithItemTupleTwinNormal_AImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1385,6 +1445,8 @@ class __$$EnumWithItemTupleTwinNormal_BImplCopyWithImpl<$Res>
       $Res Function(_$EnumWithItemTupleTwinNormal_BImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumWithItemTupleTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1425,7 +1487,9 @@ class _$EnumWithItemTupleTwinNormal_BImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumWithItemTupleTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumWithItemTupleTwinNormal_BImplCopyWith<
@@ -1504,7 +1568,10 @@ abstract class EnumWithItemTupleTwinNormal_B
 
   @override
   Int32List get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumWithItemTupleTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumWithItemTupleTwinNormal_BImplCopyWith<
           _$EnumWithItemTupleTwinNormal_BImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1595,6 +1662,9 @@ class _$KitchenSinkTwinNormalCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of KitchenSinkTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1614,6 +1684,9 @@ class __$$KitchenSinkTwinNormal_EmptyImplCopyWithImpl<$Res>
       _$KitchenSinkTwinNormal_EmptyImpl _value,
       $Res Function(_$KitchenSinkTwinNormal_EmptyImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of KitchenSinkTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1751,6 +1824,8 @@ class __$$KitchenSinkTwinNormal_PrimitivesImplCopyWithImpl<$Res>
       $Res Function(_$KitchenSinkTwinNormal_PrimitivesImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of KitchenSinkTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1810,7 +1885,9 @@ class _$KitchenSinkTwinNormal_PrimitivesImpl
   @override
   int get hashCode => Object.hash(runtimeType, int32, float64, boolean);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of KitchenSinkTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$KitchenSinkTwinNormal_PrimitivesImplCopyWith<
@@ -1918,7 +1995,10 @@ abstract class KitchenSinkTwinNormal_Primitives extends KitchenSinkTwinNormal {
   int get int32;
   double get float64;
   bool get boolean;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of KitchenSinkTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KitchenSinkTwinNormal_PrimitivesImplCopyWith<
           _$KitchenSinkTwinNormal_PrimitivesImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1946,6 +2026,8 @@ class __$$KitchenSinkTwinNormal_NestedImplCopyWithImpl<$Res>
       $Res Function(_$KitchenSinkTwinNormal_NestedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of KitchenSinkTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1964,6 +2046,8 @@ class __$$KitchenSinkTwinNormal_NestedImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of KitchenSinkTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $KitchenSinkTwinNormalCopyWith<$Res> get field1 {
@@ -2003,7 +2087,9 @@ class _$KitchenSinkTwinNormal_NestedImpl extends KitchenSinkTwinNormal_Nested {
   @override
   int get hashCode => Object.hash(runtimeType, field0, field1);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of KitchenSinkTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$KitchenSinkTwinNormal_NestedImplCopyWith<
@@ -2108,7 +2194,10 @@ abstract class KitchenSinkTwinNormal_Nested extends KitchenSinkTwinNormal {
 
   int get field0;
   KitchenSinkTwinNormal get field1;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of KitchenSinkTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KitchenSinkTwinNormal_NestedImplCopyWith<
           _$KitchenSinkTwinNormal_NestedImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -2134,6 +2223,8 @@ class __$$KitchenSinkTwinNormal_OptionalImplCopyWithImpl<$Res>
       $Res Function(_$KitchenSinkTwinNormal_OptionalImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of KitchenSinkTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2184,7 +2275,9 @@ class _$KitchenSinkTwinNormal_OptionalImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0, field1);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of KitchenSinkTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$KitchenSinkTwinNormal_OptionalImplCopyWith<
@@ -2290,7 +2383,10 @@ abstract class KitchenSinkTwinNormal_Optional extends KitchenSinkTwinNormal {
   /// Comment on anonymous field
   int? get field0;
   int? get field1;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of KitchenSinkTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KitchenSinkTwinNormal_OptionalImplCopyWith<
           _$KitchenSinkTwinNormal_OptionalImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -2316,6 +2412,8 @@ class __$$KitchenSinkTwinNormal_BufferImplCopyWithImpl<$Res>
       $Res Function(_$KitchenSinkTwinNormal_BufferImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of KitchenSinkTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2355,7 +2453,9 @@ class _$KitchenSinkTwinNormal_BufferImpl extends KitchenSinkTwinNormal_Buffer {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of KitchenSinkTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$KitchenSinkTwinNormal_BufferImplCopyWith<
@@ -2458,7 +2558,10 @@ abstract class KitchenSinkTwinNormal_Buffer extends KitchenSinkTwinNormal {
   const KitchenSinkTwinNormal_Buffer._() : super._();
 
   Uint8List get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of KitchenSinkTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KitchenSinkTwinNormal_BufferImplCopyWith<
           _$KitchenSinkTwinNormal_BufferImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -2484,6 +2587,8 @@ class __$$KitchenSinkTwinNormal_EnumsImplCopyWithImpl<$Res>
       $Res Function(_$KitchenSinkTwinNormal_EnumsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of KitchenSinkTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2525,7 +2630,9 @@ class _$KitchenSinkTwinNormal_EnumsImpl extends KitchenSinkTwinNormal_Enums {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of KitchenSinkTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$KitchenSinkTwinNormal_EnumsImplCopyWith<_$KitchenSinkTwinNormal_EnumsImpl>
@@ -2627,7 +2734,10 @@ abstract class KitchenSinkTwinNormal_Enums extends KitchenSinkTwinNormal {
   const KitchenSinkTwinNormal_Enums._() : super._();
 
   WeekdaysTwinNormal get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of KitchenSinkTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KitchenSinkTwinNormal_EnumsImplCopyWith<_$KitchenSinkTwinNormal_EnumsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -2691,6 +2801,9 @@ class _$MeasureTwinNormalCopyWithImpl<$Res, $Val extends MeasureTwinNormal>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MeasureTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2714,6 +2827,8 @@ class __$$MeasureTwinNormal_SpeedImplCopyWithImpl<$Res>
       $Res Function(_$MeasureTwinNormal_SpeedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MeasureTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2727,6 +2842,8 @@ class __$$MeasureTwinNormal_SpeedImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of MeasureTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SpeedTwinNormalCopyWith<$Res> get field0 {
@@ -2760,7 +2877,9 @@ class _$MeasureTwinNormal_SpeedImpl extends MeasureTwinNormal_Speed {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MeasureTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MeasureTwinNormal_SpeedImplCopyWith<_$MeasureTwinNormal_SpeedImpl>
@@ -2837,7 +2956,10 @@ abstract class MeasureTwinNormal_Speed extends MeasureTwinNormal {
 
   @override
   SpeedTwinNormal get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MeasureTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MeasureTwinNormal_SpeedImplCopyWith<_$MeasureTwinNormal_SpeedImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -2864,6 +2986,8 @@ class __$$MeasureTwinNormal_DistanceImplCopyWithImpl<$Res>
       $Res Function(_$MeasureTwinNormal_DistanceImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MeasureTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2877,6 +3001,8 @@ class __$$MeasureTwinNormal_DistanceImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of MeasureTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DistanceTwinNormalCopyWith<$Res> get field0 {
@@ -2910,7 +3036,9 @@ class _$MeasureTwinNormal_DistanceImpl extends MeasureTwinNormal_Distance {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MeasureTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MeasureTwinNormal_DistanceImplCopyWith<_$MeasureTwinNormal_DistanceImpl>
@@ -2987,7 +3115,10 @@ abstract class MeasureTwinNormal_Distance extends MeasureTwinNormal {
 
   @override
   DistanceTwinNormal get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MeasureTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MeasureTwinNormal_DistanceImplCopyWith<_$MeasureTwinNormal_DistanceImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -3050,6 +3181,9 @@ class _$SpeedTwinNormalCopyWithImpl<$Res, $Val extends SpeedTwinNormal>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SpeedTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -3068,6 +3202,9 @@ class __$$SpeedTwinNormal_UnknownImplCopyWithImpl<$Res>
       _$SpeedTwinNormal_UnknownImpl _value,
       $Res Function(_$SpeedTwinNormal_UnknownImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SpeedTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -3175,6 +3312,8 @@ class __$$SpeedTwinNormal_GPSImplCopyWithImpl<$Res>
       $Res Function(_$SpeedTwinNormal_GPSImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SpeedTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3213,7 +3352,9 @@ class _$SpeedTwinNormal_GPSImpl extends SpeedTwinNormal_GPS {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SpeedTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SpeedTwinNormal_GPSImplCopyWith<_$SpeedTwinNormal_GPSImpl> get copyWith =>
@@ -3289,7 +3430,10 @@ abstract class SpeedTwinNormal_GPS extends SpeedTwinNormal {
   const SpeedTwinNormal_GPS._() : super._();
 
   double get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SpeedTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SpeedTwinNormal_GPSImplCopyWith<_$SpeedTwinNormal_GPSImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
