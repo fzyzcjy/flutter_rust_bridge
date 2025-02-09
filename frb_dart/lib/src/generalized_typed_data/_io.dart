@@ -57,8 +57,9 @@ class Uint64List extends TypedList<BigInt, int> {
   /// Construct a list of the [length].
   factory Uint64List(int length) => Uint64List.raw($data.Uint64List(length));
 
-  /// Construct a list raw `List<int>`.
-  Uint64List.fromList(List<int> ints) : inner = $data.Uint64List.fromList(ints);
+  /// Construct a list raw `List`.
+  Uint64List.fromList(List<dynamic> ints)
+      : inner = $data.Uint64List.fromList(ints as List<int>);
 
   /// Construct a list view
   Uint64List.view($data.ByteBuffer buffer, [int offsetInBytes = 0, int? length])
