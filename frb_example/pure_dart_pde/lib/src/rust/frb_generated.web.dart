@@ -4485,6 +4485,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   RawStringEnumMirrored dco_decode_raw_string_enum_mirrored(dynamic raw);
 
   @protected
+  RawStringItemEnumTwinNormal dco_decode_raw_string_item_enum_twin_normal(
+      dynamic raw);
+
+  @protected
+  RawStringItemEnumTwinRustAsync
+      dco_decode_raw_string_item_enum_twin_rust_async(dynamic raw);
+
+  @protected
+  RawStringItemEnumTwinSync dco_decode_raw_string_item_enum_twin_sync(
+      dynamic raw);
+
+  @protected
   RawStringItemStructTwinNormal dco_decode_raw_string_item_struct_twin_normal(
       dynamic raw);
 
@@ -9324,6 +9336,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   RawStringEnumMirrored sse_decode_raw_string_enum_mirrored(
+      SseDeserializer deserializer);
+
+  @protected
+  RawStringItemEnumTwinNormal sse_decode_raw_string_item_enum_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  RawStringItemEnumTwinRustAsync
+      sse_decode_raw_string_item_enum_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  RawStringItemEnumTwinSync sse_decode_raw_string_item_enum_twin_sync(
       SseDeserializer deserializer);
 
   @protected
@@ -14228,6 +14253,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_raw_string_enum_mirrored(
       RawStringEnumMirrored self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_raw_string_item_enum_twin_normal(
+      RawStringItemEnumTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_raw_string_item_enum_twin_rust_async(
+      RawStringItemEnumTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_raw_string_item_enum_twin_sync(
+      RawStringItemEnumTwinSync self, SseSerializer serializer);
 
   @protected
   void sse_encode_raw_string_item_struct_twin_normal(
