@@ -15,13 +15,13 @@ pub(crate) fn transform(
 
 fn filter_function(pack: &mut HirFlatPack, config: &ParserHirInternalConfig) {
     pack.functions = (pack.functions.drain(..))
-        .filter(|f| should_keep(&f.namespace, f.is_public().unwrap_or(true), config))
+        .filter(|x| should_keep(&x.namespace, x.is_public().unwrap_or(true), config))
         .collect_vec();
 }
 
 fn filter_constant(pack: &mut HirFlatPack, config: &ParserHirInternalConfig) {
     pack.constants = (pack.constants.drain(..))
-        .filter(|f| should_keep(&f.namespace, TODO, config))
+        .filter(|x| should_keep(&x.namespace, TODO, config))
         .collect_vec();
 }
 
