@@ -5,8 +5,29 @@
 
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-
-// These types are ignored because they are not used by any `pub` functions: `MyEnumWithJsonSerializable`
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+part 'minimal.freezed.dart';
+part 'minimal.g.dart';
 
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
+
+@freezed
+sealed class MyEnumWithJsonSerializable with _$MyEnumWithJsonSerializable {
+  const MyEnumWithJsonSerializable._();
+
+  const factory MyEnumWithJsonSerializable.apple(
+    String field0,
+  ) = MyEnumWithJsonSerializable_Apple;
+  const factory MyEnumWithJsonSerializable.orange({
+    required int a,
+  }) = MyEnumWithJsonSerializable_Orange;
+
+  factory MyEnumWithJsonSerializable.fromJson(Map<String, dynamic> json) =>
+      _$MyEnumWithJsonSerializableFromJson(json);
+
+  Future<void> f() =>
+      RustLib.instance.api.crateApiMinimalMyEnumWithJsonSerializableF(
+        that: this,
+      );
+}
