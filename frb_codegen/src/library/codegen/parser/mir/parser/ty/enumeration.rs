@@ -59,7 +59,8 @@ impl TypeParserWithContext<'_, '_, '_> {
             &name.namespace.crate_name(),
             self.context,
         );
-        let needs_json_serializable = TODO;
+
+        let attributes = FrbAttributes::parse(&src_enum.src.attrs)?;
 
         Ok(MirEnum {
             name,
@@ -68,7 +69,7 @@ impl TypeParserWithContext<'_, '_, '_> {
             variants,
             mode,
             ignore,
-            needs_json_serializable,
+            needs_json_serializable: attributes.json_serializable(),
         })
     }
 
