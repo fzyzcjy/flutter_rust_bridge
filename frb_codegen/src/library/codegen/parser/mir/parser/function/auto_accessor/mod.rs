@@ -62,18 +62,7 @@ fn parse_auto_accessors_of_struct(
     type_parser: &mut TypeParser,
     parse_mode: ParseMode,
 ) -> anyhow::Result<Vec<MirFuncAndSanityCheckInfo>> {
-    let context = create_parsing_context(
-        struct_name,
-        config
-            .rust_input_namespace_pack
-            .rust_output_path_namespace
-            .clone(),
-        config.default_stream_sink_codec,
-        config.default_rust_opaque_codec,
-        config.enable_lifetime,
-        config.type_64bit_int,
-        parse_mode,
-    )?;
+    let context = create_simplified_parsing_context(struct_name, config, parse_mode)?;
 
     let ty_direct_parse =
         match type_parser.parse_type(&syn::parse_str(&struct_name.name)?, &context) {
@@ -125,25 +114,24 @@ fn parse_auto_accessors_of_struct(
         .collect()
 }
 
-fn create_parsing_context(
+pub(crate) fn create_simplified_parsing_context(
     struct_name: &NamespacedName,
-    rust_output_path_namespace: Namespace,
-    default_stream_sink_codec: CodecMode,
-    default_rust_opaque_codec: RustOpaqueCodecMode,
-    enable_lifetime: bool,
-    type_64bit_int: bool,
+    config: &ParserMirInternalConfig,
     parse_mode: ParseMode,
 ) -> anyhow::Result<TypeParserParsingContext> {
     Ok(TypeParserParsingContext {
         initiated_namespace: struct_name.namespace.to_owned(),
         func_attributes: FrbAttributes::parse(&[])?,
         struct_or_enum_attributes: None,
-        rust_output_path_namespace,
-        default_stream_sink_codec,
-        default_rust_opaque_codec,
+        rust_output_path_namespace: config
+            .rust_input_namespace_pack
+            .rust_output_path_namespace
+            .clone(),
+        default_stream_sink_codec: config.default_stream_sink_codec,
+        default_rust_opaque_codec: config.default_rust_opaque_codec,
         owner: None,
-        enable_lifetime,
-        type_64bit_int,
+        enable_lifetime: config.enable_lifetime,
+        type_64bit_int: config.type_64bit_int,
         forbid_type_self: false,
         parse_mode,
     })
