@@ -67,17 +67,21 @@ pub(crate) fn generate(
         context.config.dart_enums_style,
         &return_stream,
     );
-    let return_type_and_params = compute_return_type_and_params(func, TODO, &func_params);
-    let func_return_type = generate_function_dart_return_type(
+    let func_return_type_raw = generate_function_dart_return_type(
         func,
         &ApiDartGenerator::new(func.output.normal.clone(), context).dart_api_type(),
         &return_stream,
         context,
     );
+    let return_type_and_params =
+        compute_return_type_and_params(func, &func_return_type_raw, &func_params);
 
     let func_expr = format!(
-        "{func_return_type} {func_name}({func_params_str})",
+        "{return_type} {maybe_accessor} {func_name}{func_params_str}",
+        return_type = return_type_and_params.return_type,
+        maybe_accessor = return_type_and_params.maybe_accessor,
         func_name = func.name_dart_api(),
+        func_params_str = return_type_and_params.func_params,
     );
 
     let func_comments = generate_dart_comments(&func.comments);
@@ -157,36 +161,36 @@ fn generate_params(
 pub(crate) struct ReturnTypeAndParams {
     pub(crate) return_type: String,
     pub(crate) func_params: String,
-    pub(crate) maybe_accessor: String,
+    pub(crate) maybe_accessor: &'static str,
 }
 
 pub(crate) fn compute_return_type_and_params(
     func: &MirFunc,
-    api_dart_func: &ApiDartGeneratedFunction,
+    func_return_type: &str,
     func_params: &[ApiDartGeneratedFunctionParam],
-) {
+) -> ReturnTypeAndParams {
     match func.accessor {
-        Some(MirFuncAccessorMode::Getter) => (
-            api_dart_func.func_return_type.as_ref(),
-            "".to_owned(),
-            "get",
-        ),
-        Some(MirFuncAccessorMode::Setter) => (
-            "",
-            // TODO: merge with below
-            format!(
+        Some(MirFuncAccessorMode::Getter) => ReturnTypeAndParams {
+            return_type: func_return_type.to_owned(),
+            func_params: "".to_owned(),
+            maybe_accessor: "get",
+        },
+        Some(MirFuncAccessorMode::Setter) => ReturnTypeAndParams {
+            return_type: "".to_owned(),
+            // TODO: merge
+            func_params: format!(
                 "({})",
                 (func_params.iter())
                     .map(|x| x.full(MirFuncArgMode::Positional))
                     .join(", ")
             ),
-            "set",
-        ),
-        None => (
-            api_dart_func.func_return_type.as_ref(),
-            format!("({})", compute_params_str(func_params, func.arg_mode)),
-            "",
-        ),
+            maybe_accessor: "set",
+        },
+        None => ReturnTypeAndParams {
+            return_type: func_return_type.to_owned(),
+            func_params: format!("({})", compute_params_str(func_params, func.arg_mode)),
+            maybe_accessor: "",
+        },
     };
 }
 
