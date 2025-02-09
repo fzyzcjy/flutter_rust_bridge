@@ -259,7 +259,8 @@ Future<String> _getSanitizedDartBinary(TestDartSanitizerConfig config) async {
     return '~/dart-sdk/sdk/out/${config.sanitizer.dartSdkBuildOutDir}/dart-sdk/bin/dart';
   }
 
-  const releaseName = 'Build_2023.12.01_09-42-01';
+  // const releaseName = 'Build_2023.12.01_09-42-01';
+  const releaseName = 'Build_2025.02.09_04-28-46';
   final baseName = '${config.sanitizer.dartSdkBuildOutDir}_dart-sdk';
   final fileNameTarGz = '$baseName.tar.gz';
 
