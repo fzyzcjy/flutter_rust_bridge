@@ -11,12 +11,8 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 
 use std::collections::HashSet;
 
-// #[flutter_rust_bridge::frb(sync)]
-// pub fn fn_hashset_u64(vals: HashSet<u64>) -> String {
-//     format!("{:?}", vals)
-// }
-
 #[flutter_rust_bridge::frb(sync)]
-pub fn fn_vec_u64(vals: Vec<u64>) -> String {
+pub fn test(vals: HashSet<u64>) -> String {
     format!("{:?}", vals)
 }
+
