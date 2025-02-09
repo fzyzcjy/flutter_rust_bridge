@@ -136,13 +136,14 @@ fn wire__crate__api__minimal__my_enum_with_json_serializable_f_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_that =
-                <crate::api::minimal::MyEnumWithJsonSerializable>::sse_decode(&mut deserializer);
+            let api_that = <crate::api::minimal::MyEnumWithJsonSerializableTwinNormal>::sse_decode(
+                &mut deserializer,
+            );
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok = Result::<_, ()>::Ok({
-                        crate::api::minimal::MyEnumWithJsonSerializable::f(&api_that);
+                        crate::api::minimal::MyEnumWithJsonSerializableTwinNormal::f(&api_that);
                     })?;
                     Ok(output_ok)
                 })())
@@ -173,12 +174,14 @@ fn wire__crate__api__minimal__my_struct_with_json_serializable_f_impl(
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_that =
-                <crate::api::minimal::MyStructWithJsonSerializable>::sse_decode(&mut deserializer);
+                <crate::api::minimal::MyStructWithJsonSerializableTwinNormal>::sse_decode(
+                    &mut deserializer,
+                );
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok = Result::<_, ()>::Ok({
-                        crate::api::minimal::MyStructWithJsonSerializable::f(&api_that);
+                        crate::api::minimal::MyStructWithJsonSerializableTwinNormal::f(&api_that);
                     })?;
                     Ok(output_ok)
                 })())
@@ -216,18 +219,22 @@ impl SseDecode for Vec<u8> {
     }
 }
 
-impl SseDecode for crate::api::minimal::MyEnumWithJsonSerializable {
+impl SseDecode for crate::api::minimal::MyEnumWithJsonSerializableTwinNormal {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut tag_ = <i32>::sse_decode(deserializer);
         match tag_ {
             0 => {
                 let mut var_field0 = <String>::sse_decode(deserializer);
-                return crate::api::minimal::MyEnumWithJsonSerializable::Apple(var_field0);
+                return crate::api::minimal::MyEnumWithJsonSerializableTwinNormal::Apple(
+                    var_field0,
+                );
             }
             1 => {
                 let mut var_a = <i32>::sse_decode(deserializer);
-                return crate::api::minimal::MyEnumWithJsonSerializable::Orange { a: var_a };
+                return crate::api::minimal::MyEnumWithJsonSerializableTwinNormal::Orange {
+                    a: var_a,
+                };
             }
             _ => {
                 unimplemented!("");
@@ -236,11 +243,11 @@ impl SseDecode for crate::api::minimal::MyEnumWithJsonSerializable {
     }
 }
 
-impl SseDecode for crate::api::minimal::MyStructWithJsonSerializable {
+impl SseDecode for crate::api::minimal::MyStructWithJsonSerializableTwinNormal {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_fieldOne = <String>::sse_decode(deserializer);
-        return crate::api::minimal::MyStructWithJsonSerializable {
+        return crate::api::minimal::MyStructWithJsonSerializableTwinNormal {
             field_one: var_fieldOne,
         };
     }
@@ -307,13 +314,13 @@ fn pde_ffi_dispatcher_sync_impl(
 // Section: rust2dart
 
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for crate::api::minimal::MyEnumWithJsonSerializable {
+impl flutter_rust_bridge::IntoDart for crate::api::minimal::MyEnumWithJsonSerializableTwinNormal {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         match self {
-            crate::api::minimal::MyEnumWithJsonSerializable::Apple(field0) => {
+            crate::api::minimal::MyEnumWithJsonSerializableTwinNormal::Apple(field0) => {
                 [0.into_dart(), field0.into_into_dart().into_dart()].into_dart()
             }
-            crate::api::minimal::MyEnumWithJsonSerializable::Orange { a } => {
+            crate::api::minimal::MyEnumWithJsonSerializableTwinNormal::Orange { a } => {
                 [1.into_dart(), a.into_into_dart().into_dart()].into_dart()
             }
             _ => {
@@ -323,30 +330,30 @@ impl flutter_rust_bridge::IntoDart for crate::api::minimal::MyEnumWithJsonSerial
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::api::minimal::MyEnumWithJsonSerializable
+    for crate::api::minimal::MyEnumWithJsonSerializableTwinNormal
 {
 }
-impl flutter_rust_bridge::IntoIntoDart<crate::api::minimal::MyEnumWithJsonSerializable>
-    for crate::api::minimal::MyEnumWithJsonSerializable
+impl flutter_rust_bridge::IntoIntoDart<crate::api::minimal::MyEnumWithJsonSerializableTwinNormal>
+    for crate::api::minimal::MyEnumWithJsonSerializableTwinNormal
 {
-    fn into_into_dart(self) -> crate::api::minimal::MyEnumWithJsonSerializable {
+    fn into_into_dart(self) -> crate::api::minimal::MyEnumWithJsonSerializableTwinNormal {
         self
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
-impl flutter_rust_bridge::IntoDart for crate::api::minimal::MyStructWithJsonSerializable {
+impl flutter_rust_bridge::IntoDart for crate::api::minimal::MyStructWithJsonSerializableTwinNormal {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [self.field_one.into_into_dart().into_dart()].into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
-    for crate::api::minimal::MyStructWithJsonSerializable
+    for crate::api::minimal::MyStructWithJsonSerializableTwinNormal
 {
 }
-impl flutter_rust_bridge::IntoIntoDart<crate::api::minimal::MyStructWithJsonSerializable>
-    for crate::api::minimal::MyStructWithJsonSerializable
+impl flutter_rust_bridge::IntoIntoDart<crate::api::minimal::MyStructWithJsonSerializableTwinNormal>
+    for crate::api::minimal::MyStructWithJsonSerializableTwinNormal
 {
-    fn into_into_dart(self) -> crate::api::minimal::MyStructWithJsonSerializable {
+    fn into_into_dart(self) -> crate::api::minimal::MyStructWithJsonSerializableTwinNormal {
         self
     }
 }
@@ -375,15 +382,15 @@ impl SseEncode for Vec<u8> {
     }
 }
 
-impl SseEncode for crate::api::minimal::MyEnumWithJsonSerializable {
+impl SseEncode for crate::api::minimal::MyEnumWithJsonSerializableTwinNormal {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         match self {
-            crate::api::minimal::MyEnumWithJsonSerializable::Apple(field0) => {
+            crate::api::minimal::MyEnumWithJsonSerializableTwinNormal::Apple(field0) => {
                 <i32>::sse_encode(0, serializer);
                 <String>::sse_encode(field0, serializer);
             }
-            crate::api::minimal::MyEnumWithJsonSerializable::Orange { a } => {
+            crate::api::minimal::MyEnumWithJsonSerializableTwinNormal::Orange { a } => {
                 <i32>::sse_encode(1, serializer);
                 <i32>::sse_encode(a, serializer);
             }
@@ -394,7 +401,7 @@ impl SseEncode for crate::api::minimal::MyEnumWithJsonSerializable {
     }
 }
 
-impl SseEncode for crate::api::minimal::MyStructWithJsonSerializable {
+impl SseEncode for crate::api::minimal::MyStructWithJsonSerializableTwinNormal {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <String>::sse_encode(self.field_one, serializer);

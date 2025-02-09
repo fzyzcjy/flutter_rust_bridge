@@ -10,20 +10,20 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 }
 
 #[frb(json_serializable)]
-pub enum MyEnumWithJsonSerializable {
+pub enum MyEnumWithJsonSerializableTwinNormal {
     Apple(String),
     Orange { a: i32 },
 }
 
-impl MyEnumWithJsonSerializable {
+impl MyEnumWithJsonSerializableTwinNormal {
     pub fn f(&self) {}
 }
 
 #[frb(json_serializable)]
-pub struct MyStructWithJsonSerializable {
+pub struct MyStructWithJsonSerializableTwinNormal {
     field_one: String,
 }
 
-impl MyStructWithJsonSerializable {
+impl MyStructWithJsonSerializableTwinNormal {
     pub fn f(&self) {}
 }
