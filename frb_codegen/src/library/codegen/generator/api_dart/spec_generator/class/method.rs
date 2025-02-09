@@ -1,13 +1,12 @@
 use crate::codegen::generator::api_dart;
 use crate::codegen::generator::api_dart::spec_generator::class::proxy_variant;
 use crate::codegen::generator::api_dart::spec_generator::function::{
-    compute_params_str, compute_return_type_and_params, ApiDartGeneratedFunction,
-    ApiDartGeneratedFunctionParam,
+    compute_return_type_and_params, ApiDartGeneratedFunction, ApiDartGeneratedFunctionParam,
 };
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_dart_comments;
 use crate::codegen::ir::mir::func::{
-    MirFunc, MirFuncAccessorMode, MirFuncArgMode, MirFuncDefaultConstructorMode, MirFuncImplMode,
-    MirFuncImplModeDartOnly, MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
+    MirFunc, MirFuncDefaultConstructorMode, MirFuncImplMode, MirFuncImplModeDartOnly,
+    MirFuncOwnerInfo, MirFuncOwnerInfoMethod, MirFuncOwnerInfoMethodMode,
 };
 use crate::codegen::ir::mir::ty::MirType;
 use crate::if_then_some;
@@ -233,7 +232,7 @@ fn generate_signature(
     let maybe_static = if is_static_method { "static" } else { "" };
     let func_return_type_raw = &api_dart_func.func_return_type;
     let return_type_and_params =
-        compute_return_type_and_params(func, &func_return_type_raw, &func_params);
+        compute_return_type_and_params(func, func_return_type_raw, func_params);
 
     if default_constructor_mode == Some(MirFuncDefaultConstructorMode::DartConstructor) {
         return format!(

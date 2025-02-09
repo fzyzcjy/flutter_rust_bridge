@@ -33,7 +33,7 @@ fn filter_constant(pack: &mut HirFlatPack, config: &ParserHirInternalConfig) {
 }
 
 fn should_keep(namespace: &Namespace, is_public: bool, config: &ParserHirInternalConfig) -> bool {
-    is_interest_module(&namespace, config) && (namespace.crate_name().is_self_crate() || is_public)
+    is_interest_module(namespace, config) && (namespace.crate_name().is_self_crate() || is_public)
 }
 
 fn is_interest_module(namespace: &Namespace, config: &ParserHirInternalConfig) -> bool {
