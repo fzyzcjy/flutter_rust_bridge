@@ -19,6 +19,9 @@ void main() {
     expect(() => Int64List.fromList([10]) + 42, throwsA(isA<ArgumentError>()));
     expect(() => Int64List.fromList([10]).length = 100,
         throwsA(isA<UnmodifiableTypedListException>()));
+    // #2512
+    expect(Uint64List.fromList([BigInt.parse('922337203685477807')])[0],
+        BigInt.parse('922337203685477807'));
     // expect(() => Int64List.fromList([10]).dart2raw(0.5),
     //     throwsA(isA<ArgumentError>()));
   });
@@ -36,7 +39,7 @@ void main() {
     expect(() => Uint64List.fromList([10]) + 42, throwsA(isA<ArgumentError>()));
     expect(() => Uint64List.fromList([10]).length = 100,
         throwsA(isA<UnmodifiableTypedListException>()));
-    // #2512
+    // #2512, test when larger than 63 bit value
     expect(Uint64List.fromList([BigInt.parse('9223372036854775999')])[0],
         BigInt.parse('9223372036854775999'));
     // expect(() => Uint64List.fromList([10]).dart2raw(0.5),
