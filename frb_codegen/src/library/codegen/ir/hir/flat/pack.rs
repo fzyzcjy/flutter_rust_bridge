@@ -15,6 +15,7 @@ pub(crate) struct HirFlatPack {
     pub structs: Vec<HirFlatStruct>,
     pub traits: Vec<HirFlatTrait>,
     pub trait_impls: Vec<HirFlatTraitImpl>,
+    pub constants: Vec<HirFlatFunction>,
     pub types: Vec<HirFlatTypeAlias>,
     pub existing_handler: Option<NamespacedName>,
     pub extra_rust_output_code: String,
@@ -29,6 +30,7 @@ impl HirFlatPack {
         visitor.visit(&mut self.structs);
         visitor.visit(&mut self.traits);
         visitor.visit(&mut self.trait_impls);
+        visitor.visit(&mut self.constants);
         visitor.visit(&mut self.types);
     }
 }
