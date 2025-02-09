@@ -6,7 +6,7 @@ use crate::codegen::generator::api_dart::spec_generator::misc::{
     generate_dart_comments, generate_imports_which_types_and_funcs_use,
 };
 use crate::codegen::ir::mir::field::MirField;
-use crate::codegen::ir::mir::func::{MirFunc, MirFuncArgMode, MirFuncMode};
+use crate::codegen::ir::mir::func::{MirFunc, MirFuncAccessorMode, MirFuncArgMode, MirFuncMode};
 use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateStreamSink};
 use crate::codegen::ir::mir::ty::MirType;
 use crate::if_then_some;
@@ -67,7 +67,7 @@ pub(crate) fn generate(
         context.config.dart_enums_style,
         &return_stream,
     );
-    let func_params_str = compute_params_str(&func_params, func.arg_mode);
+    let return_type_and_params = compute_return_type_and_params(func, TODO, &func_params);
     let func_return_type = generate_function_dart_return_type(
         func,
         &ApiDartGenerator::new(func.output.normal.clone(), context).dart_api_type(),
@@ -154,11 +154,47 @@ fn generate_params(
     params
 }
 
+pub(crate) struct ReturnTypeAndParams {
+    pub(crate) return_type: String,
+    pub(crate) func_params: String,
+    pub(crate) maybe_accessor: String,
+}
+
+pub(crate) fn compute_return_type_and_params(
+    func: &MirFunc,
+    api_dart_func: &ApiDartGeneratedFunction,
+    func_params: &[ApiDartGeneratedFunctionParam],
+) {
+    match func.accessor {
+        Some(MirFuncAccessorMode::Getter) => (
+            api_dart_func.func_return_type.as_ref(),
+            "".to_owned(),
+            "get",
+        ),
+        Some(MirFuncAccessorMode::Setter) => (
+            "",
+            // TODO: merge with below
+            format!(
+                "({})",
+                (func_params.iter())
+                    .map(|x| x.full(MirFuncArgMode::Positional))
+                    .join(", ")
+            ),
+            "set",
+        ),
+        None => (
+            api_dart_func.func_return_type.as_ref(),
+            format!("({})", compute_params_str(func_params, func.arg_mode)),
+            "",
+        ),
+    };
+}
+
 pub(crate) fn compute_params_str(
-    params: &[ApiDartGeneratedFunctionParam],
+    func_params: &[ApiDartGeneratedFunctionParam],
     mode: MirFuncArgMode,
 ) -> String {
-    let mut params_str = params.iter().map(|x| x.full(mode)).join(", ");
+    let mut params_str = func_params.iter().map(|x| x.full(mode)).join(", ");
     if !params_str.is_empty() && mode == MirFuncArgMode::Named {
         params_str = format!("{{{params_str}}}");
     }
