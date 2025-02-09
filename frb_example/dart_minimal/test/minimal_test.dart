@@ -16,4 +16,11 @@ Future<void> main() async {
     print('Action: Call rust (after)');
   });
   print('Action: Configure tests (end)');
+
+  test('const int', () async {
+    expect(constIntTwinNormal(), 42);
+  });
+  test('const array', () async {
+    expect(constArrayTwinNormal().inner, [1.5, 3.0, 6.0]);
+  });
 }

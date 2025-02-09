@@ -47,11 +47,4 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('feature test enabled', () async {
     expect(await featureGatedFunction(), "test");
   });
-
-  test('const int', () async {
-    expect(constIntTwinNormal(), 42);
-  });
-  test('const array', () async {
-    expect(constArrayTwinNormal().inner, [1.5, 3.0, 6.0]);
-  });
 }
