@@ -21,12 +21,12 @@ Future<void> main() async {
   test('MyEnumWithJsonSerializableTwinNormal', () async {
     final obj = MyEnumWithJsonSerializableTwinNormal.fromJson(
         {'runtimeType': 'apple', 'field0': 'hi'});
-    expect(jsonEncode(obj), 'WHAT');
+    expect(obj.toJson(), {'runtimeType': 'apple', 'field0': 'hi'});
   });
 
   test('MyStructWithJsonSerializableTwinNormal', () async {
     final obj =
         MyStructWithJsonSerializableTwinNormal.fromJson({'fieldOne': 'hi'});
-    expect(jsonEncode(obj), 'WHAT');
+    expect(obj.toJson(), {'fieldOne': 'hi'});
   });
 }
