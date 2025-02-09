@@ -68,7 +68,7 @@ fn wire__crate__api__minimal__CONST_ARRAY_impl(
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(TODO_code)?;
+                let output_ok = Result::<_, ()>::Ok(crate::api::minimal::CONST_ARRAY)?;
                 Ok(output_ok)
             })())
         },
@@ -97,7 +97,7 @@ fn wire__crate__api__minimal__CONST_INT_impl(
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(TODO_code)?;
+                let output_ok = Result::<_, ()>::Ok(crate::api::minimal::CONST_INT)?;
                 Ok(output_ok)
             })())
         },
