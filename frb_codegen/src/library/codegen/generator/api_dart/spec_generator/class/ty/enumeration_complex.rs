@@ -37,8 +37,7 @@ impl EnumRefApiDartGenerator<'_> {
         let maybe_implements_exception =
             generate_dart_maybe_implements_exception(self.mir.is_exception);
 
-        let needs_json_serializable = TODO;
-        let json_serializable_extra_code = if needs_json_serializable {
+        let json_serializable_extra_code = if src.needs_json_serializable {
             format!("factory {name}.fromJson(Map<String, dynamic> json) => _${name}FromJson(json);",)
         } else {
             "".to_owned()
@@ -60,7 +59,7 @@ impl EnumRefApiDartGenerator<'_> {
                 }}",
             ),
             needs_freezed: true,
-            needs_json_serializable,
+            needs_json_serializable: src.needs_json_serializable,
             header,
         })
     }
