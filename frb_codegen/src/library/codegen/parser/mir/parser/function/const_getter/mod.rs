@@ -54,7 +54,7 @@ fn parse_constant(
         id: None,
         inputs: vec![],
         output: MirFuncOutput {
-            normal: TODO,
+            normal: ty_direct_parse,
             error: None,
         },
         owner: MirFuncOwnerInfo::Function,
