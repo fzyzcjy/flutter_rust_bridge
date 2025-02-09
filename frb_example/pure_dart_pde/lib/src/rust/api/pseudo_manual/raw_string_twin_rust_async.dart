@@ -7,10 +7,16 @@ import 'dart:io';
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+part 'raw_string_twin_rust_async.freezed.dart';
 
 Future<RawStringItemStructTwinRustAsync>
     testRawStringItemStructTwinRustAsync() => RustLib.instance.api
         .crateApiPseudoManualRawStringTwinRustAsyncTestRawStringItemStructTwinRustAsync();
+
+Future<RawStringItemEnumTwinRustAsync> testRawStringItemEnumTwinRustAsync() =>
+    RustLib.instance.api
+        .crateApiPseudoManualRawStringTwinRustAsyncTestRawStringItemEnumTwinRustAsync();
 
 Future<MoreThanJustOneRawStringStructTwinRustAsync>
     testMoreThanJustOneRawStringStructTwinRustAsync() => RustLib.instance.api
@@ -42,6 +48,19 @@ class MoreThanJustOneRawStringStructTwinRustAsync {
           type == other.type &&
           async_ == other.async_ &&
           another == other.another;
+}
+
+@freezed
+sealed class RawStringItemEnumTwinRustAsync
+    with _$RawStringItemEnumTwinRustAsync {
+  const RawStringItemEnumTwinRustAsync._();
+
+  const factory RawStringItemEnumTwinRustAsync.regular({
+    required String regular,
+  }) = RawStringItemEnumTwinRustAsync_Regular;
+  const factory RawStringItemEnumTwinRustAsync.raw({
+    required String type,
+  }) = RawStringItemEnumTwinRustAsync_Raw;
 }
 
 class RawStringItemStructTwinRustAsync {
