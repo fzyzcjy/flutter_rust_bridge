@@ -7325,6 +7325,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   double dco_decode_f_32(dynamic raw);
 
   @protected
+  F32Array3 dco_decode_f_32_array_3(dynamic raw);
+
+  @protected
   double dco_decode_f_64(dynamic raw);
 
   @protected
@@ -16732,6 +16735,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   double sse_decode_f_32(SseDeserializer deserializer);
 
   @protected
+  F32Array3 sse_decode_f_32_array_3(SseDeserializer deserializer);
+
+  @protected
   double sse_decode_f_64(SseDeserializer deserializer);
 
   @protected
@@ -24386,6 +24392,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           raw.nullableAttributes),
       cst_encode_opt_box_autoadd_new_type_int_twin_sync(raw.newtypeint)
     ].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_f_32_array_3(F32Array3 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return Float32List.fromList(raw).jsify()!;
   }
 
   @protected
@@ -35964,6 +35976,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_f_32(double self, SseSerializer serializer);
 
   @protected
+  void sse_encode_f_32_array_3(F32Array3 self, SseSerializer serializer);
+
+  @protected
   void sse_encode_f_64(double self, SseSerializer serializer);
 
   @protected
@@ -39117,6 +39132,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
 class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__CONST_ARRAY_TWIN_NORMAL() =>
+          wasmModule
+              .wire__crate__api__misc_no_twin_example_a__CONST_ARRAY_TWIN_NORMAL();
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__CONST_INT_TWIN_NORMAL() =>
+          wasmModule
+              .wire__crate__api__misc_no_twin_example_a__CONST_INT_TWIN_NORMAL();
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_auto_accessor_get_one(
@@ -62522,6 +62547,12 @@ external RustLibWasmModule get wasmModule;
 @JS()
 @anonymous
 extension type RustLibWasmModule._(JSObject _) implements JSObject {
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__CONST_ARRAY_TWIN_NORMAL();
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__CONST_INT_TWIN_NORMAL();
+
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_auto_accessor_get_one(
           int that);
