@@ -101,7 +101,7 @@ pub(crate) fn generate(
         func_expr,
         func_impl,
         func_params,
-        func_return_type: return_type_and_params.return_type,
+        func_return_type: func_return_type_raw,
         src_lineno_pseudo: func.src_lineno_pseudo,
         return_stream,
     })
