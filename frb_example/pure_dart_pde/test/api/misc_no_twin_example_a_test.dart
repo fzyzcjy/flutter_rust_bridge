@@ -56,4 +56,16 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('const array', () async {
     expect(constArrayTwinNormal.inner, [1.5, 3.0, 6.0]);
   });
+
+  test('MyEnumWithJsonSerializableTwinNormal', () async {
+    final dict = {'runtimeType': 'apple', 'field0': 'hi'};
+    final obj = MyEnumWithJsonSerializableTwinNormal.fromJson(dict);
+    expect(obj.toJson(), dict);
+  });
+
+  test('MyStructWithJsonSerializableTwinNormal', () async {
+    final dict = {'fieldOne': 'hi'};
+    final obj = MyStructWithJsonSerializableTwinNormal.fromJson(dict);
+    expect(obj.toJson(), dict);
+  });
 }
