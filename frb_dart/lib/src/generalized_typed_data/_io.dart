@@ -59,7 +59,9 @@ class Uint64List extends TypedList<BigInt, int> {
 
   /// Construct a list raw `List`.
   Uint64List.fromList(List<dynamic> ints)
-      : inner = $data.Uint64List.fromList(ints as List<int>);
+      : inner = (ints is List<int>)
+            ? $data.Uint64List.fromList(ints)
+            : $data.Uint64List.fromList(ints.map(_outer2inner).toList());
 
   /// Construct a list view
   Uint64List.view($data.ByteBuffer buffer, [int offsetInBytes = 0, int? length])
@@ -82,7 +84,9 @@ class Uint64List extends TypedList<BigInt, int> {
   }
 
   @override
-  int outer2inner(Object? value) {
+  int outer2inner(Object? value) => _outer2inner(value);
+
+  static int _outer2inner(Object? value) {
     if (value is int) return value;
     if (value is BigInt) {
       if (value > _maxI64b) {
