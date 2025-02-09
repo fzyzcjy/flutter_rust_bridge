@@ -23,6 +23,7 @@ pub(crate) fn parse(
     let items = concat([
         real::parse(src_fns, type_parser, config, parse_mode)?,
         auto_accessor::parse(config, src_structs, type_parser, parse_mode)?,
+        const_getter::parse(config, type_parser, parse_mode)?,
     ]);
     let (funcs, skips) = IrValueOrSkip::split(items);
     let funcs = sort_and_add_func_id(funcs);
