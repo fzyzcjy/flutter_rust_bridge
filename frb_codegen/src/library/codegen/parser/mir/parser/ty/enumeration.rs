@@ -115,6 +115,7 @@ impl TypeParserWithContext<'_, '_, '_> {
             is_fields_named: field_ident.is_some(),
             dart_metadata: attributes.dart_metadata(),
             ignore: attributes.ignore(),
+            needs_json_serializable: attributes.json_serializable(),
             generate_hash: true,
             generate_eq: true,
             ui_state: attributes.ui_state(),

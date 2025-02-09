@@ -41,6 +41,7 @@ impl TypeParserWithContext<'_, '_, '_> {
                 is_fields_named: true,
                 dart_metadata: vec![],
                 ignore: false,
+                needs_json_serializable: false,
                 generate_hash: true,
                 generate_eq: true,
                 ui_state: false,
