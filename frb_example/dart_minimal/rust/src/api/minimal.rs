@@ -8,3 +8,6 @@ pub fn init_app() {
 pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
+
+pub const CONST_INT: i32 = 42;
+pub const CONST_ARRAY: [f32; 3] = [1.5, 3.0, 6.0];
