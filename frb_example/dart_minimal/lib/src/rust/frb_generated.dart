@@ -68,7 +68,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.7.1';
 
   @override
-  int get rustContentHash => -1053729712;
+  int get rustContentHash => -1233995820;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -85,6 +85,9 @@ abstract class RustLibApi extends BaseApi {
 
   Future<void> crateApiMinimalMyEnumWithJsonSerializableF(
       {required MyEnumWithJsonSerializable that});
+
+  Future<void> crateApiMinimalMyStructWithJsonSerializableF(
+      {required MyStructWithJsonSerializable that});
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -170,6 +173,33 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["that"],
       );
 
+  @override
+  Future<void> crateApiMinimalMyStructWithJsonSerializableF(
+      {required MyStructWithJsonSerializable that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_my_struct_with_json_serializable(
+            that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 4, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiMinimalMyStructWithJsonSerializableFConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiMinimalMyStructWithJsonSerializableFConstMeta =>
+      const TaskConstMeta(
+        debugName: "my_struct_with_json_serializable_f",
+        argNames: ["that"],
+      );
+
   @protected
   String dco_decode_String(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -181,6 +211,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_box_autoadd_my_enum_with_json_serializable(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_my_enum_with_json_serializable(raw);
+  }
+
+  @protected
+  MyStructWithJsonSerializable
+      dco_decode_box_autoadd_my_struct_with_json_serializable(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_my_struct_with_json_serializable(raw);
   }
 
   @protected
@@ -214,6 +251,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  MyStructWithJsonSerializable dco_decode_my_struct_with_json_serializable(
+      dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return MyStructWithJsonSerializable(
+      fieldOne: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
   int dco_decode_u_8(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw as int;
@@ -238,6 +287,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_my_enum_with_json_serializable(deserializer));
+  }
+
+  @protected
+  MyStructWithJsonSerializable
+      sse_decode_box_autoadd_my_struct_with_json_serializable(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_my_struct_with_json_serializable(deserializer));
   }
 
   @protected
@@ -272,6 +329,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  MyStructWithJsonSerializable sse_decode_my_struct_with_json_serializable(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_fieldOne = sse_decode_String(deserializer);
+    return MyStructWithJsonSerializable(fieldOne: var_fieldOne);
+  }
+
+  @protected
   int sse_decode_u_8(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getUint8();
@@ -302,6 +367,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_box_autoadd_my_struct_with_json_serializable(
+      MyStructWithJsonSerializable self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_my_struct_with_json_serializable(self, serializer);
+  }
+
+  @protected
   void sse_encode_i_32(int self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     serializer.buffer.putInt32(self);
@@ -327,6 +399,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(1, serializer);
         sse_encode_i_32(a, serializer);
     }
+  }
+
+  @protected
+  void sse_encode_my_struct_with_json_serializable(
+      MyStructWithJsonSerializable self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(self.fieldOne, serializer);
   }
 
   @protected

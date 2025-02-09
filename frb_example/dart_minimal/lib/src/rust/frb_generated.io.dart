@@ -26,6 +26,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_box_autoadd_my_enum_with_json_serializable(dynamic raw);
 
   @protected
+  MyStructWithJsonSerializable
+      dco_decode_box_autoadd_my_struct_with_json_serializable(dynamic raw);
+
+  @protected
   int dco_decode_i_32(dynamic raw);
 
   @protected
@@ -33,6 +37,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MyEnumWithJsonSerializable dco_decode_my_enum_with_json_serializable(
+      dynamic raw);
+
+  @protected
+  MyStructWithJsonSerializable dco_decode_my_struct_with_json_serializable(
       dynamic raw);
 
   @protected
@@ -50,6 +58,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  MyStructWithJsonSerializable
+      sse_decode_box_autoadd_my_struct_with_json_serializable(
+          SseDeserializer deserializer);
+
+  @protected
   int sse_decode_i_32(SseDeserializer deserializer);
 
   @protected
@@ -57,6 +70,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MyEnumWithJsonSerializable sse_decode_my_enum_with_json_serializable(
+      SseDeserializer deserializer);
+
+  @protected
+  MyStructWithJsonSerializable sse_decode_my_struct_with_json_serializable(
       SseDeserializer deserializer);
 
   @protected
@@ -76,6 +93,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       MyEnumWithJsonSerializable self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_my_struct_with_json_serializable(
+      MyStructWithJsonSerializable self, SseSerializer serializer);
+
+  @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
 
   @protected
@@ -85,6 +106,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_my_enum_with_json_serializable(
       MyEnumWithJsonSerializable self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_struct_with_json_serializable(
+      MyStructWithJsonSerializable self, SseSerializer serializer);
 
   @protected
   void sse_encode_u_8(int self, SseSerializer serializer);

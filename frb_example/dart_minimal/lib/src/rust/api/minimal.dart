@@ -31,3 +31,17 @@ sealed class MyEnumWithJsonSerializable with _$MyEnumWithJsonSerializable {
         that: this,
       );
 }
+
+class MyStructWithJsonSerializable with _$MyStructWithJsonSerializable {
+  const MyStructWithJsonSerializable._();
+  const factory MyStructWithJsonSerializable({
+    required String fieldOne,
+  }) = _MyStructWithJsonSerializable;
+  Future<void> f() =>
+      RustLib.instance.api.crateApiMinimalMyStructWithJsonSerializableF(
+        that: this,
+      );
+
+  factory MyStructWithJsonSerializable.fromJson(Map<String, dynamic> json) =>
+      _$MyStructWithJsonSerializableFromJson(json);
+}
