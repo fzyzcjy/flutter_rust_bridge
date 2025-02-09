@@ -38,6 +38,7 @@ fn parse_constant(
     let name = constant.item_const.ident.to_string();
     let context = create_simplified_parsing_context(namespace.clone(), config, parse_mode)?;
 
+    // reserved name
     if &name == "_" {
         return Ok(None);
     }
