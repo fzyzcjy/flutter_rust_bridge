@@ -21,7 +21,7 @@ impl MyEnumWithJsonSerializableTwinNormal {
 
 #[frb(json_serializable)]
 pub struct MyStructWithJsonSerializableTwinNormal {
-    field_one: String,
+    pub field_one: String,
 }
 
 impl MyStructWithJsonSerializableTwinNormal {
