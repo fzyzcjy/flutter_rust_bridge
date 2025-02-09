@@ -20,9 +20,12 @@ pub(crate) fn parse(
     type_parser: &mut TypeParser,
     parse_mode: ParseMode,
 ) -> anyhow::Result<Vec<MirFuncOrSkip>> {
-    (src_constants.iter())
+    Ok((src_constants.iter())
         .map(|constant| parse_constant(config, type_parser, parse_mode, constant))
-        .collect()
+        .collect::<anyhow::Result<Vec<_>>>()?
+        .into_iter()
+        .flatten()
+        .collect())
 }
 
 fn parse_constant(
@@ -30,25 +33,29 @@ fn parse_constant(
     type_parser: &mut TypeParser,
     parse_mode: ParseMode,
     constant: &HirFlatConstant,
-) -> anyhow::Result<IrValueOrSkip<MirFunc, IrSkip>> {
+) -> anyhow::Result<Option<IrValueOrSkip<MirFunc, IrSkip>>> {
     let namespace = &constant.namespace;
     let name = constant.item_const.ident.to_string();
     let context = create_simplified_parsing_context(namespace.clone(), config, parse_mode)?;
+
+    if &name == "_" {
+        return Ok(None);
+    }
 
     let ty_direct_parse = match type_parser.parse_type(&constant.item_const.ty, &context) {
         Ok(value) => value,
         // We do not care about parsing errors here (e.g. some type that we do not support)
         Err(_) => {
-            return Ok(IrValueOrSkip::Skip(IrSkip {
+            return Ok(Some(IrValueOrSkip::Skip(IrSkip {
                 name: NamespacedName::new(namespace.clone(), name),
                 reason: IrSkipReason::Err,
-            }))
+            })))
         }
     };
 
     let rust_call_code = format!("{}::{name}", namespace.joined_path);
 
-    Ok(MirFuncOrSkip::Value(MirFunc {
+    Ok(Some(MirFuncOrSkip::Value(MirFunc {
         namespace: namespace.clone(),
         name: MirIdent::new(name, None),
         id: None,
@@ -73,5 +80,5 @@ fn parse_constant(
         rust_aop_after: None,
         impl_mode: MirFuncImplMode::Normal,
         src_lineno_pseudo: constant.item_const.span().start().line,
-    }))
+    })))
 }
