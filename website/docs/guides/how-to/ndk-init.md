@@ -1,11 +1,14 @@
 # Android NDK Init
 
+:::info
 This page is only needed to read if you want to use Android NDK in Rust code,
 and see "android context was not initialized" error, or want to know more about`ndk_context` initialization.
+:::
 
 Related issues:
 [#1323](https://github.com/fzyzcjy/flutter_rust_bridge/issues/1323),
-[#1868](https://github.com/fzyzcjy/flutter_rust_bridge/issues/1868).
+[#1868](https://github.com/fzyzcjy/flutter_rust_bridge/issues/1868),
+[#2466](https://github.com/fzyzcjy/flutter_rust_bridge/issues/2466).
 
 ## Method 1
 
