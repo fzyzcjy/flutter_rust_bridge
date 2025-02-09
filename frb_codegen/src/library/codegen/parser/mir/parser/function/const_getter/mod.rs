@@ -5,7 +5,7 @@ use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncAccessorMode, MirFuncArgMode, MirFuncImplMode, MirFuncMode, MirFuncOutput,
     MirFuncOwnerInfo,
 };
-use crate::codegen::ir::misc::skip::MirFuncOrSkip;
+use crate::codegen::ir::misc::skip::{IrSkip, MirFuncOrSkip};
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::auto_accessor::create_simplified_parsing_context;
@@ -24,7 +24,15 @@ pub(crate) fn parse(
         .map(|constant| {
             let context =
                 create_simplified_parsing_context(constant.namespace.clone(), config, parse_mode)?;
+
+            let ty_direct_parse = match type_parser.parse_type(&syn::parse_str(TODO)?, &context) {
+                Ok(value) => value,
+                // We do not care about parsing errors here (e.g. some type that we do not support)
+                Err(_) => return Ok(TODO),
+            };
+
             let rust_call_code = "TODO_code".to_owned();
+
             Ok(MirFuncOrSkip::Value(MirFunc {
                 namespace: constant.namespace.clone(),
                 name: TODO,
