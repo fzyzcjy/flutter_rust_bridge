@@ -19,7 +19,7 @@ Future<void> run(TestDartSanitizerConfig config) async {
 
   // Otherwise it seems the sanitized dart binary does not compile native assets
   await exec(
-      'dart --enable-experiment=native-assets test test/empty_entrypoint.dart',
+      'dart --enable-experiment=native-assets run test/empty_entrypoint.dart',
       relativePwd: config.package);
 
   if (config.package == 'frb_example/deliberate_bad') {
