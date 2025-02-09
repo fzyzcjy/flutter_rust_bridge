@@ -237,3 +237,6 @@ impl StructWithRawNameField {
 pub fn r#for(r#type: String) {
     let _ = r#type;
 }
+
+pub const CONST_INT_TWIN_NORMAL: i32 = 42;
+pub const CONST_ARRAY_TWIN_NORMAL: [f32; 3] = [1.5, 3.0, 6.0];
