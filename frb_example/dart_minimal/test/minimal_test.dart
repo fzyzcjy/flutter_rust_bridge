@@ -19,14 +19,14 @@ Future<void> main() async {
   print('Action: Configure tests (end)');
 
   test('MyEnumWithJsonSerializableTwinNormal', () async {
-    final obj = MyEnumWithJsonSerializableTwinNormal.fromJson(
-        {'runtimeType': 'apple', 'field0': 'hi'});
-    expect(obj.toJson(), {'runtimeType': 'apple', 'field0': 'hi'});
+    final dict = {'runtimeType': 'apple', 'field0': 'hi'};
+    final obj = MyEnumWithJsonSerializableTwinNormal.fromJson(dict);
+    expect(obj.toJson(), dict);
   });
 
   test('MyStructWithJsonSerializableTwinNormal', () async {
-    final obj =
-        MyStructWithJsonSerializableTwinNormal.fromJson({'fieldOne': 'hi'});
-    expect(obj.toJson(), {'fieldOne': 'hi'});
+    final dict = {'fieldOne': 'hi'};
+    final obj = MyStructWithJsonSerializableTwinNormal.fromJson(dict);
+    expect(obj.toJson(), dict);
   });
 }
