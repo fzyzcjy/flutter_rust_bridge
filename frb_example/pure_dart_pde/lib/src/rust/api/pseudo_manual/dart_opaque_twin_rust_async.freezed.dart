@@ -12,7 +12,7 @@ part of 'dart_opaque_twin_rust_async.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$EnumDartOpaqueTwinRustAsync {
@@ -77,6 +77,9 @@ class _$EnumDartOpaqueTwinRustAsyncCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of EnumDartOpaqueTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -99,6 +102,8 @@ class __$$EnumDartOpaqueTwinRustAsync_PrimitiveImplCopyWithImpl<$Res>
       $Res Function(_$EnumDartOpaqueTwinRustAsync_PrimitiveImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumDartOpaqueTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -138,7 +143,9 @@ class _$EnumDartOpaqueTwinRustAsync_PrimitiveImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumDartOpaqueTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumDartOpaqueTwinRustAsync_PrimitiveImplCopyWith<
@@ -218,7 +225,10 @@ abstract class EnumDartOpaqueTwinRustAsync_Primitive
 
   @override
   int get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumDartOpaqueTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumDartOpaqueTwinRustAsync_PrimitiveImplCopyWith<
           _$EnumDartOpaqueTwinRustAsync_PrimitiveImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -244,6 +254,8 @@ class __$$EnumDartOpaqueTwinRustAsync_OpaqueImplCopyWithImpl<$Res>
       $Res Function(_$EnumDartOpaqueTwinRustAsync_OpaqueImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumDartOpaqueTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -281,7 +293,9 @@ class _$EnumDartOpaqueTwinRustAsync_OpaqueImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumDartOpaqueTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumDartOpaqueTwinRustAsync_OpaqueImplCopyWith<
@@ -361,7 +375,10 @@ abstract class EnumDartOpaqueTwinRustAsync_Opaque
 
   @override
   Object get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumDartOpaqueTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumDartOpaqueTwinRustAsync_OpaqueImplCopyWith<
           _$EnumDartOpaqueTwinRustAsync_OpaqueImpl>
       get copyWith => throw _privateConstructorUsedError;

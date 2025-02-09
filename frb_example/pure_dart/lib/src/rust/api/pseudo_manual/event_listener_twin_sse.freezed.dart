@@ -12,14 +12,16 @@ part of 'event_listener_twin_sse.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$EventTwinSse {
   String get address => throw _privateConstructorUsedError;
   String get payload => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EventTwinSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $EventTwinSseCopyWith<EventTwinSse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$EventTwinSseCopyWithImpl<$Res, $Val extends EventTwinSse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of EventTwinSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +85,8 @@ class __$$EventTwinSseImplCopyWithImpl<$Res>
       _$EventTwinSseImpl _value, $Res Function(_$EventTwinSseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EventTwinSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -128,7 +134,9 @@ class _$EventTwinSseImpl extends _EventTwinSse {
   @override
   int get hashCode => Object.hash(runtimeType, address, payload);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EventTwinSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EventTwinSseImplCopyWith<_$EventTwinSseImpl> get copyWith =>
@@ -145,8 +153,11 @@ abstract class _EventTwinSse extends EventTwinSse {
   String get address;
   @override
   String get payload;
+
+  /// Create a copy of EventTwinSse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EventTwinSseImplCopyWith<_$EventTwinSseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

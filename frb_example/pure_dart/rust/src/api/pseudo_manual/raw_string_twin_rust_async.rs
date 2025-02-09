@@ -12,6 +12,17 @@ pub async fn test_raw_string_item_struct_twin_rust_async() -> RawStringItemStruc
     }
 }
 
+pub enum RawStringItemEnumTwinRustAsync {
+    Regular { regular: String },
+    Raw { r#type: String },
+}
+
+pub async fn test_raw_string_item_enum_twin_rust_async() -> RawStringItemEnumTwinRustAsync {
+    RawStringItemEnumTwinRustAsync::Raw {
+        r#type: "test".to_owned(),
+    }
+}
+
 pub struct MoreThanJustOneRawStringStructTwinRustAsync {
     pub regular: String,
     pub r#type: String,

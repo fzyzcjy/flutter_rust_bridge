@@ -12,7 +12,7 @@ part of 'rust_opaque.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$EnumOpaqueTwinNormal {
@@ -97,6 +97,9 @@ class _$EnumOpaqueTwinNormalCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of EnumOpaqueTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -119,6 +122,8 @@ class __$$EnumOpaqueTwinNormal_StructImplCopyWithImpl<$Res>
       $Res Function(_$EnumOpaqueTwinNormal_StructImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumOpaqueTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -157,7 +162,9 @@ class _$EnumOpaqueTwinNormal_StructImpl extends EnumOpaqueTwinNormal_Struct {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumOpaqueTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumOpaqueTwinNormal_StructImplCopyWith<_$EnumOpaqueTwinNormal_StructImpl>
@@ -257,7 +264,10 @@ abstract class EnumOpaqueTwinNormal_Struct extends EnumOpaqueTwinNormal {
   const EnumOpaqueTwinNormal_Struct._() : super._();
 
   HideDataTwinNormal get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumOpaqueTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumOpaqueTwinNormal_StructImplCopyWith<_$EnumOpaqueTwinNormal_StructImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -282,6 +292,8 @@ class __$$EnumOpaqueTwinNormal_PrimitiveImplCopyWithImpl<$Res>
       $Res Function(_$EnumOpaqueTwinNormal_PrimitiveImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumOpaqueTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -321,7 +333,9 @@ class _$EnumOpaqueTwinNormal_PrimitiveImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumOpaqueTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumOpaqueTwinNormal_PrimitiveImplCopyWith<
@@ -422,7 +436,10 @@ abstract class EnumOpaqueTwinNormal_Primitive extends EnumOpaqueTwinNormal {
   const EnumOpaqueTwinNormal_Primitive._() : super._();
 
   I32 get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumOpaqueTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumOpaqueTwinNormal_PrimitiveImplCopyWith<
           _$EnumOpaqueTwinNormal_PrimitiveImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -448,6 +465,8 @@ class __$$EnumOpaqueTwinNormal_TraitObjImplCopyWithImpl<$Res>
       $Res Function(_$EnumOpaqueTwinNormal_TraitObjImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumOpaqueTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -487,7 +506,9 @@ class _$EnumOpaqueTwinNormal_TraitObjImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumOpaqueTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumOpaqueTwinNormal_TraitObjImplCopyWith<
@@ -589,7 +610,10 @@ abstract class EnumOpaqueTwinNormal_TraitObj extends EnumOpaqueTwinNormal {
   const EnumOpaqueTwinNormal_TraitObj._() : super._();
 
   BoxDartDebugTwinNormal get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumOpaqueTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumOpaqueTwinNormal_TraitObjImplCopyWith<
           _$EnumOpaqueTwinNormal_TraitObjImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -615,6 +639,8 @@ class __$$EnumOpaqueTwinNormal_MutexImplCopyWithImpl<$Res>
       $Res Function(_$EnumOpaqueTwinNormal_MutexImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumOpaqueTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -653,7 +679,9 @@ class _$EnumOpaqueTwinNormal_MutexImpl extends EnumOpaqueTwinNormal_Mutex {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumOpaqueTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumOpaqueTwinNormal_MutexImplCopyWith<_$EnumOpaqueTwinNormal_MutexImpl>
@@ -753,7 +781,10 @@ abstract class EnumOpaqueTwinNormal_Mutex extends EnumOpaqueTwinNormal {
   const EnumOpaqueTwinNormal_Mutex._() : super._();
 
   MutexHideDataTwinNormal get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumOpaqueTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumOpaqueTwinNormal_MutexImplCopyWith<_$EnumOpaqueTwinNormal_MutexImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -778,6 +809,8 @@ class __$$EnumOpaqueTwinNormal_RwLockImplCopyWithImpl<$Res>
       $Res Function(_$EnumOpaqueTwinNormal_RwLockImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumOpaqueTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -816,7 +849,9 @@ class _$EnumOpaqueTwinNormal_RwLockImpl extends EnumOpaqueTwinNormal_RwLock {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumOpaqueTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumOpaqueTwinNormal_RwLockImplCopyWith<_$EnumOpaqueTwinNormal_RwLockImpl>
@@ -917,7 +952,10 @@ abstract class EnumOpaqueTwinNormal_RwLock extends EnumOpaqueTwinNormal {
   const EnumOpaqueTwinNormal_RwLock._() : super._();
 
   RwLockHideDataTwinNormal get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumOpaqueTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumOpaqueTwinNormal_RwLockImplCopyWith<_$EnumOpaqueTwinNormal_RwLockImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -939,6 +977,9 @@ class __$$EnumOpaqueTwinNormal_NothingImplCopyWithImpl<$Res>
       _$EnumOpaqueTwinNormal_NothingImpl _value,
       $Res Function(_$EnumOpaqueTwinNormal_NothingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of EnumOpaqueTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

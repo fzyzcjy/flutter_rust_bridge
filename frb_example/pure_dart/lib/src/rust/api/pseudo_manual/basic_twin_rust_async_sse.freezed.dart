@@ -12,7 +12,7 @@ part of 'basic_twin_rust_async_sse.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$BasicGeneralEnumTwinRustAsyncSse {
@@ -77,6 +77,9 @@ class _$BasicGeneralEnumTwinRustAsyncSseCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of BasicGeneralEnumTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -99,6 +102,8 @@ class __$$BasicGeneralEnumTwinRustAsyncSse_AppleImplCopyWithImpl<$Res>
       $Res Function(_$BasicGeneralEnumTwinRustAsyncSse_AppleImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BasicGeneralEnumTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -139,7 +144,9 @@ class _$BasicGeneralEnumTwinRustAsyncSse_AppleImpl
   @override
   int get hashCode => Object.hash(runtimeType, field);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BasicGeneralEnumTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BasicGeneralEnumTwinRustAsyncSse_AppleImplCopyWith<
@@ -221,7 +228,10 @@ abstract class BasicGeneralEnumTwinRustAsyncSse_Apple
   const BasicGeneralEnumTwinRustAsyncSse_Apple._() : super._();
 
   String get field;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BasicGeneralEnumTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BasicGeneralEnumTwinRustAsyncSse_AppleImplCopyWith<
           _$BasicGeneralEnumTwinRustAsyncSse_AppleImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -244,6 +254,9 @@ class __$$BasicGeneralEnumTwinRustAsyncSse_OrangeImplCopyWithImpl<$Res>
       _$BasicGeneralEnumTwinRustAsyncSse_OrangeImpl _value,
       $Res Function(_$BasicGeneralEnumTwinRustAsyncSse_OrangeImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of BasicGeneralEnumTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

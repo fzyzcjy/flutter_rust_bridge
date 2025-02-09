@@ -12,7 +12,7 @@ part of 'exception.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$CustomEnumErrorTwinNormal {
@@ -57,7 +57,9 @@ mixin _$CustomEnumErrorTwinNormal {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomEnumErrorTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CustomEnumErrorTwinNormalCopyWith<CustomEnumErrorTwinNormal> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -82,6 +84,8 @@ class _$CustomEnumErrorTwinNormalCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CustomEnumErrorTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -118,6 +122,8 @@ class __$$CustomEnumErrorTwinNormal_OneImplCopyWithImpl<$Res>
       $Res Function(_$CustomEnumErrorTwinNormal_OneImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomEnumErrorTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -168,7 +174,9 @@ class _$CustomEnumErrorTwinNormal_OneImpl
   @override
   int get hashCode => Object.hash(runtimeType, message, backtrace);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomEnumErrorTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomEnumErrorTwinNormal_OneImplCopyWith<
@@ -250,8 +258,11 @@ abstract class CustomEnumErrorTwinNormal_One extends CustomEnumErrorTwinNormal
   String get message;
   @override
   String get backtrace;
+
+  /// Create a copy of CustomEnumErrorTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomEnumErrorTwinNormal_OneImplCopyWith<
           _$CustomEnumErrorTwinNormal_OneImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -279,6 +290,8 @@ class __$$CustomEnumErrorTwinNormal_TwoImplCopyWithImpl<$Res>
       $Res Function(_$CustomEnumErrorTwinNormal_TwoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomEnumErrorTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -329,7 +342,9 @@ class _$CustomEnumErrorTwinNormal_TwoImpl
   @override
   int get hashCode => Object.hash(runtimeType, message, backtrace);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomEnumErrorTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomEnumErrorTwinNormal_TwoImplCopyWith<
@@ -411,8 +426,11 @@ abstract class CustomEnumErrorTwinNormal_Two extends CustomEnumErrorTwinNormal
   int get message;
   @override
   String get backtrace;
+
+  /// Create a copy of CustomEnumErrorTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomEnumErrorTwinNormal_TwoImplCopyWith<
           _$CustomEnumErrorTwinNormal_TwoImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -461,7 +479,9 @@ mixin _$CustomErrorTwinNormal {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomErrorTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CustomErrorTwinNormalCopyWith<CustomErrorTwinNormal> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -486,6 +506,8 @@ class _$CustomErrorTwinNormalCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CustomErrorTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -522,6 +544,8 @@ class __$$CustomErrorTwinNormal_Error0ImplCopyWithImpl<$Res>
       $Res Function(_$CustomErrorTwinNormal_Error0Impl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomErrorTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -571,7 +595,9 @@ class _$CustomErrorTwinNormal_Error0Impl extends CustomErrorTwinNormal_Error0 {
   @override
   int get hashCode => Object.hash(runtimeType, e, backtrace);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomErrorTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomErrorTwinNormal_Error0ImplCopyWith<
@@ -653,8 +679,11 @@ abstract class CustomErrorTwinNormal_Error0 extends CustomErrorTwinNormal
   String get e;
   @override
   String get backtrace;
+
+  /// Create a copy of CustomErrorTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomErrorTwinNormal_Error0ImplCopyWith<
           _$CustomErrorTwinNormal_Error0Impl>
       get copyWith => throw _privateConstructorUsedError;
@@ -682,6 +711,8 @@ class __$$CustomErrorTwinNormal_Error1ImplCopyWithImpl<$Res>
       $Res Function(_$CustomErrorTwinNormal_Error1Impl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomErrorTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -731,7 +762,9 @@ class _$CustomErrorTwinNormal_Error1Impl extends CustomErrorTwinNormal_Error1 {
   @override
   int get hashCode => Object.hash(runtimeType, e, backtrace);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomErrorTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomErrorTwinNormal_Error1ImplCopyWith<
@@ -813,8 +846,11 @@ abstract class CustomErrorTwinNormal_Error1 extends CustomErrorTwinNormal
   int get e;
   @override
   String get backtrace;
+
+  /// Create a copy of CustomErrorTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomErrorTwinNormal_Error1ImplCopyWith<
           _$CustomErrorTwinNormal_Error1Impl>
       get copyWith => throw _privateConstructorUsedError;
@@ -888,6 +924,9 @@ class _$CustomNestedError1TwinNormalCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CustomNestedError1TwinNormal
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -911,6 +950,8 @@ class __$$CustomNestedError1TwinNormal_CustomNested1ImplCopyWithImpl<$Res>
       $Res Function(_$CustomNestedError1TwinNormal_CustomNested1Impl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomNestedError1TwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -951,7 +992,9 @@ class _$CustomNestedError1TwinNormal_CustomNested1Impl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomNestedError1TwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomNestedError1TwinNormal_CustomNested1ImplCopyWith<
@@ -1038,7 +1081,10 @@ abstract class CustomNestedError1TwinNormal_CustomNested1
 
   @override
   String get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomNestedError1TwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomNestedError1TwinNormal_CustomNested1ImplCopyWith<
           _$CustomNestedError1TwinNormal_CustomNested1Impl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1066,6 +1112,8 @@ class __$$CustomNestedError1TwinNormal_ErrorNestedImplCopyWithImpl<$Res>
       $Res Function(_$CustomNestedError1TwinNormal_ErrorNestedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomNestedError1TwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1079,6 +1127,8 @@ class __$$CustomNestedError1TwinNormal_ErrorNestedImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of CustomNestedError1TwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CustomNestedError2TwinNormalCopyWith<$Res> get field0 {
@@ -1113,7 +1163,9 @@ class _$CustomNestedError1TwinNormal_ErrorNestedImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomNestedError1TwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomNestedError1TwinNormal_ErrorNestedImplCopyWith<
@@ -1200,7 +1252,10 @@ abstract class CustomNestedError1TwinNormal_ErrorNested
 
   @override
   CustomNestedError2TwinNormal get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomNestedError1TwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomNestedError1TwinNormal_ErrorNestedImplCopyWith<
           _$CustomNestedError1TwinNormal_ErrorNestedImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1275,6 +1330,9 @@ class _$CustomNestedError2TwinNormalCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CustomNestedError2TwinNormal
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1298,6 +1356,8 @@ class __$$CustomNestedError2TwinNormal_CustomNested2ImplCopyWithImpl<$Res>
       $Res Function(_$CustomNestedError2TwinNormal_CustomNested2Impl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomNestedError2TwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1338,7 +1398,9 @@ class _$CustomNestedError2TwinNormal_CustomNested2Impl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomNestedError2TwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomNestedError2TwinNormal_CustomNested2ImplCopyWith<
@@ -1426,7 +1488,10 @@ abstract class CustomNestedError2TwinNormal_CustomNested2
 
   @override
   String get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomNestedError2TwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomNestedError2TwinNormal_CustomNested2ImplCopyWith<
           _$CustomNestedError2TwinNormal_CustomNested2Impl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1457,6 +1522,8 @@ class __$$CustomNestedError2TwinNormal_CustomNested2NumberImplCopyWithImpl<$Res>
           _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomNestedError2TwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1497,7 +1564,9 @@ class _$CustomNestedError2TwinNormal_CustomNested2NumberImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomNestedError2TwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomNestedError2TwinNormal_CustomNested2NumberImplCopyWith<
@@ -1586,7 +1655,10 @@ abstract class CustomNestedError2TwinNormal_CustomNested2Number
 
   @override
   int get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomNestedError2TwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomNestedError2TwinNormal_CustomNested2NumberImplCopyWith<
           _$CustomNestedError2TwinNormal_CustomNested2NumberImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1655,6 +1727,9 @@ class _$CustomNestedErrorInnerTwinNormalCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CustomNestedErrorInnerTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1677,6 +1752,8 @@ class __$$CustomNestedErrorInnerTwinNormal_ThreeImplCopyWithImpl<$Res>
       $Res Function(_$CustomNestedErrorInnerTwinNormal_ThreeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomNestedErrorInnerTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1716,7 +1793,9 @@ class _$CustomNestedErrorInnerTwinNormal_ThreeImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomNestedErrorInnerTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomNestedErrorInnerTwinNormal_ThreeImplCopyWith<
@@ -1797,7 +1876,10 @@ abstract class CustomNestedErrorInnerTwinNormal_Three
 
   @override
   String get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomNestedErrorInnerTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomNestedErrorInnerTwinNormal_ThreeImplCopyWith<
           _$CustomNestedErrorInnerTwinNormal_ThreeImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1823,6 +1905,8 @@ class __$$CustomNestedErrorInnerTwinNormal_FourImplCopyWithImpl<$Res>
       $Res Function(_$CustomNestedErrorInnerTwinNormal_FourImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomNestedErrorInnerTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1862,7 +1946,9 @@ class _$CustomNestedErrorInnerTwinNormal_FourImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomNestedErrorInnerTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomNestedErrorInnerTwinNormal_FourImplCopyWith<
@@ -1942,7 +2028,10 @@ abstract class CustomNestedErrorInnerTwinNormal_Four
 
   @override
   int get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomNestedErrorInnerTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomNestedErrorInnerTwinNormal_FourImplCopyWith<
           _$CustomNestedErrorInnerTwinNormal_FourImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -2010,6 +2099,9 @@ class _$CustomNestedErrorOuterTwinNormalCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CustomNestedErrorOuterTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2032,6 +2124,8 @@ class __$$CustomNestedErrorOuterTwinNormal_OneImplCopyWithImpl<$Res>
       $Res Function(_$CustomNestedErrorOuterTwinNormal_OneImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomNestedErrorOuterTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2071,7 +2165,9 @@ class _$CustomNestedErrorOuterTwinNormal_OneImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomNestedErrorOuterTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomNestedErrorOuterTwinNormal_OneImplCopyWith<
@@ -2150,7 +2246,10 @@ abstract class CustomNestedErrorOuterTwinNormal_One
 
   @override
   String get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomNestedErrorOuterTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomNestedErrorOuterTwinNormal_OneImplCopyWith<
           _$CustomNestedErrorOuterTwinNormal_OneImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -2178,6 +2277,8 @@ class __$$CustomNestedErrorOuterTwinNormal_TwoImplCopyWithImpl<$Res>
       $Res Function(_$CustomNestedErrorOuterTwinNormal_TwoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomNestedErrorOuterTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2191,6 +2292,8 @@ class __$$CustomNestedErrorOuterTwinNormal_TwoImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of CustomNestedErrorOuterTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CustomNestedErrorInnerTwinNormalCopyWith<$Res> get field0 {
@@ -2226,7 +2329,9 @@ class _$CustomNestedErrorOuterTwinNormal_TwoImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomNestedErrorOuterTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomNestedErrorOuterTwinNormal_TwoImplCopyWith<
@@ -2306,7 +2411,10 @@ abstract class CustomNestedErrorOuterTwinNormal_Two
 
   @override
   CustomNestedErrorInnerTwinNormal get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomNestedErrorOuterTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomNestedErrorOuterTwinNormal_TwoImplCopyWith<
           _$CustomNestedErrorOuterTwinNormal_TwoImpl>
       get copyWith => throw _privateConstructorUsedError;

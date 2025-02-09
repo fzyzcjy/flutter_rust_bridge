@@ -12,7 +12,7 @@ part of 'rust_auto_opaque_twin_moi.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$EnumWithGoodAndOpaqueTwinMoi {
@@ -76,6 +76,9 @@ class _$EnumWithGoodAndOpaqueTwinMoiCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of EnumWithGoodAndOpaqueTwinMoi
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -98,6 +101,8 @@ class __$$EnumWithGoodAndOpaqueTwinMoi_GoodImplCopyWithImpl<$Res>
       $Res Function(_$EnumWithGoodAndOpaqueTwinMoi_GoodImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumWithGoodAndOpaqueTwinMoi
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -137,7 +142,9 @@ class _$EnumWithGoodAndOpaqueTwinMoi_GoodImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumWithGoodAndOpaqueTwinMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumWithGoodAndOpaqueTwinMoi_GoodImplCopyWith<
@@ -216,7 +223,10 @@ abstract class EnumWithGoodAndOpaqueTwinMoi_Good
 
   @override
   String get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumWithGoodAndOpaqueTwinMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumWithGoodAndOpaqueTwinMoi_GoodImplCopyWith<
           _$EnumWithGoodAndOpaqueTwinMoi_GoodImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -242,6 +252,8 @@ class __$$EnumWithGoodAndOpaqueTwinMoi_OpaqueImplCopyWithImpl<$Res>
       $Res Function(_$EnumWithGoodAndOpaqueTwinMoi_OpaqueImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumWithGoodAndOpaqueTwinMoi
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -281,7 +293,9 @@ class _$EnumWithGoodAndOpaqueTwinMoi_OpaqueImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumWithGoodAndOpaqueTwinMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumWithGoodAndOpaqueTwinMoi_OpaqueImplCopyWith<
@@ -361,7 +375,10 @@ abstract class EnumWithGoodAndOpaqueTwinMoi_Opaque
 
   @override
   NonCloneSimpleTwinMoi get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumWithGoodAndOpaqueTwinMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumWithGoodAndOpaqueTwinMoi_OpaqueImplCopyWith<
           _$EnumWithGoodAndOpaqueTwinMoi_OpaqueImpl>
       get copyWith => throw _privateConstructorUsedError;

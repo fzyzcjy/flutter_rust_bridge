@@ -123,7 +123,7 @@ sealed class EnumWithItemTupleTwinSync with _$EnumWithItemTupleTwinSync {
     Uint8List field0,
   ) = EnumWithItemTupleTwinSync_A;
   const factory EnumWithItemTupleTwinSync.b(
-    Int32List field0,
+    int field0,
   ) = EnumWithItemTupleTwinSync_B;
 }
 

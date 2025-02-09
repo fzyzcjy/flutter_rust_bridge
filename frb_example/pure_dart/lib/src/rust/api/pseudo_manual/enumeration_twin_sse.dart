@@ -124,7 +124,7 @@ sealed class EnumWithItemTupleTwinSse with _$EnumWithItemTupleTwinSse {
     Uint8List field0,
   ) = EnumWithItemTupleTwinSse_A;
   const factory EnumWithItemTupleTwinSse.b(
-    Int32List field0,
+    int field0,
   ) = EnumWithItemTupleTwinSse_B;
 }
 

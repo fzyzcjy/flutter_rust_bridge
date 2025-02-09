@@ -7,9 +7,14 @@ import 'dart:io';
 
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+part 'raw_string.freezed.dart';
 
 Future<RawStringItemStructTwinNormal> testRawStringItemStructTwinNormal() =>
     RustLib.instance.api.crateApiRawStringTestRawStringItemStructTwinNormal();
+
+Future<RawStringItemEnumTwinNormal> testRawStringItemEnumTwinNormal() =>
+    RustLib.instance.api.crateApiRawStringTestRawStringItemEnumTwinNormal();
 
 Future<MoreThanJustOneRawStringStructTwinNormal>
     testMoreThanJustOneRawStringStructTwinNormal() => RustLib.instance.api
@@ -41,6 +46,18 @@ class MoreThanJustOneRawStringStructTwinNormal {
           type == other.type &&
           async_ == other.async_ &&
           another == other.another;
+}
+
+@freezed
+sealed class RawStringItemEnumTwinNormal with _$RawStringItemEnumTwinNormal {
+  const RawStringItemEnumTwinNormal._();
+
+  const factory RawStringItemEnumTwinNormal.regular({
+    required String regular,
+  }) = RawStringItemEnumTwinNormal_Regular;
+  const factory RawStringItemEnumTwinNormal.raw({
+    required String type,
+  }) = RawStringItemEnumTwinNormal_Raw;
 }
 
 class RawStringItemStructTwinNormal {
