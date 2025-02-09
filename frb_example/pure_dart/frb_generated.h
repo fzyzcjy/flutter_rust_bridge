@@ -14,6 +14,8 @@ void store_dart_post_cobject(DartPostCObjectFnType ptr);
 // EXTRA END
 typedef struct _Dart_Handle* Dart_Handle;
 
+#define CONST_INT_TWIN_NORMAL 42
+
 typedef struct benchmark_raw_list_prim_u_8 {
   uint8_t *ptr;
   int32_t len;
@@ -3493,6 +3495,10 @@ struct benchmark_raw_list_prim_u_8 benchmark_raw_new_list_prim_u_8(int32_t len);
 int32_t benchmark_raw_input_bytes(struct benchmark_raw_list_prim_u_8 bytes);
 
 void benchmark_raw_output_bytes(int64_t port, int32_t message_id, int32_t size);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__CONST_ARRAY_TWIN_NORMAL(void);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__CONST_INT_TWIN_NORMAL(void);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__constructor__ConstructorOpaqueStructTwinNormal_auto_accessor_get_one(uintptr_t that);
 
@@ -16460,6 +16466,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_example__positional_arguments_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_example__test_abc_enum_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_example__test_struct_with_enum_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__CONST_ARRAY_TWIN_NORMAL);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__CONST_INT_TWIN_NORMAL);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_a);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_b);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_c);

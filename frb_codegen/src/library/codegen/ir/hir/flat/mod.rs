@@ -1,4 +1,5 @@
 pub(crate) mod component;
+pub(crate) mod constant;
 pub(crate) mod function;
 pub(crate) mod pack;
 pub(crate) mod struct_or_enum;

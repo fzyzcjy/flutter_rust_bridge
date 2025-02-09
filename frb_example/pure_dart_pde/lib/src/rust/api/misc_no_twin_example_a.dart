@@ -8,6 +8,7 @@ import 'dart:io';
 import '../auxiliary/sample_types.dart';
 import '../frb_generated.dart';
 import 'misc_no_twin_example_b.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These functions are ignored because they are not marked as `pub`: `log`
@@ -30,6 +31,12 @@ Future<String> featureGatedFunction() =>
 
 Future<void> for_({required String type}) =>
     RustLib.instance.api.crateApiMiscNoTwinExampleAFor(type: type);
+
+int get constIntTwinNormal =>
+    RustLib.instance.api.crateApiMiscNoTwinExampleAConstIntTwinNormal();
+
+F32Array3 get constArrayTwinNormal =>
+    RustLib.instance.api.crateApiMiscNoTwinExampleAConstArrayTwinNormal();
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn Any + Send + Sync + 'static >>>
 abstract class BoxAnyMyDartTypeRename implements RustOpaqueInterface {}
@@ -137,6 +144,20 @@ abstract class StructWithSimpleSetterTwinNormal implements RustOpaqueInterface {
 
 abstract class Issue2170Trait {
   Future<void> method();
+}
+
+class F32Array3 extends NonGrowableListView<double> {
+  static const arraySize = 3;
+
+  @internal
+  Float32List get inner => _inner;
+  final Float32List _inner;
+
+  F32Array3(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
+
+  F32Array3.init() : this(Float32List(arraySize));
 }
 
 class ItemContainerSolutionTwoTwinNormal {
