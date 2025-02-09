@@ -51,6 +51,7 @@ impl ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'_> {
                 "
             ),
             needs_freezed: false,
+            needs_json_serializable: false,
             header: methods.header + impl_header + extra_code.header,
         })
     }

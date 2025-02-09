@@ -31,6 +31,7 @@ impl ApiDartGeneratorClassTrait for TraitDefApiDartGenerator<'_> {
                 "
             ),
             needs_freezed: false,
+            needs_json_serializable: false,
             header: methods.header,
         })
     }

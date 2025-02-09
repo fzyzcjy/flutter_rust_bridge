@@ -27,7 +27,7 @@ pub(super) fn polish(
 ) -> anyhow::Result<()> {
     execute_try_add_mod_to_lib(config);
     execute_duplicate_c_output(config)?;
-    ensure_dependencies(config, needs_freezed)?;
+    ensure_dependencies(config, needs_freezed, needs_json_serializable)?;
 
     warn_if_fail(
         execute_build_runner(needs_freezed, config, progress_bar_pack),
