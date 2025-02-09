@@ -46,7 +46,7 @@ fn parse_constant(
         }
     };
 
-    let rust_call_code = "TODO_code".to_owned();
+    let rust_call_code = format!("{}::{name}", namespace.joined_path);
 
     Ok(MirFuncOrSkip::Value(MirFunc {
         namespace: namespace.clone(),
