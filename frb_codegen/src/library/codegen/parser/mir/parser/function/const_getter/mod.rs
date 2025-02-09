@@ -1,6 +1,4 @@
-use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
 use crate::codegen::ir::hir::flat::constant::HirFlatConstant;
-use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncAccessorMode, MirFuncArgMode, MirFuncImplMode, MirFuncMode, MirFuncOutput,
     MirFuncOwnerInfo,
@@ -14,8 +12,6 @@ use crate::codegen::parser::mir::parser::function::real::compute_codec_mode_pack
 use crate::codegen::parser::mir::parser::ty::TypeParser;
 use crate::codegen::parser::mir::ParseMode;
 use crate::utils::namespace::NamespacedName;
-use anyhow::Error;
-use std::collections::HashMap;
 use syn::spanned::Spanned;
 
 pub(crate) fn parse(
