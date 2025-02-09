@@ -70,12 +70,12 @@ fn parse_constant(
         accessor: Some(MirFuncAccessorMode::Getter),
         comments: vec![],
         codec_mode_pack: compute_codec_mode_pack(
-            &FrbAttributes::parse(&[]).unwrap(),
+            &FrbAttributes::parse(&[])?,
             &config.force_codec_mode_pack,
         ),
         rust_call_code: Some(rust_call_code),
         rust_aop_after: None,
         impl_mode: MirFuncImplMode::Normal,
-        src_lineno_pseudo: TODO,
+        src_lineno_pseudo: constant.TODO.span().start().line,
     }))
 }
