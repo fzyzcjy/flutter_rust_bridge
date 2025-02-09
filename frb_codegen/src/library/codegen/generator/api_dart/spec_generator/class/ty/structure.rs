@@ -58,7 +58,7 @@ impl ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'_> {
                 )
             },
             needs_freezed: src.using_freezed(),
-            needs_json_serializable: false,
+            needs_json_serializable: src.needs_json_serializable,
             header: methods.header + extra_code.header,
         })
     }

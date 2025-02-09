@@ -22,6 +22,7 @@ pub struct MirStruct {
     pub is_fields_named: bool,
     pub dart_metadata: Vec<MirDartAnnotation>,
     pub ignore: bool,
+    pub needs_json_serializable: bool,
     pub generate_hash: bool,
     pub generate_eq: bool,
     pub ui_state: bool,
@@ -68,7 +69,7 @@ impl MirTypeTrait for MirTypeStructRef {
 
 impl MirStruct {
     pub fn using_freezed(&self) -> bool {
-        self.dart_metadata.iter().any(|it| it.content == "freezed")
+        self.dart_metadata.iter().any(|it| it.content == "freezed") || self.needs_json_serializable
     }
 
     pub fn is_empty(&self) -> bool {
