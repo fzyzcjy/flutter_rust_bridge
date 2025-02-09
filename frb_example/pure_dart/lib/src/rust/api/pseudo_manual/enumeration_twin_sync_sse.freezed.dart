@@ -1213,23 +1213,23 @@ abstract class EnumWithItemStructTwinSyncSse_B
 
 /// @nodoc
 mixin _$EnumWithItemTupleTwinSyncSse {
-  _TypedIntList get field0 => throw _privateConstructorUsedError;
+  Object get field0 => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Uint8List field0) a,
-    required TResult Function(Int32List field0) b,
+    required TResult Function(int field0) b,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Uint8List field0)? a,
-    TResult? Function(Int32List field0)? b,
+    TResult? Function(int field0)? b,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Uint8List field0)? a,
-    TResult Function(Int32List field0)? b,
+    TResult Function(int field0)? b,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1354,7 +1354,7 @@ class _$EnumWithItemTupleTwinSyncSse_AImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Uint8List field0) a,
-    required TResult Function(Int32List field0) b,
+    required TResult Function(int field0) b,
   }) {
     return a(field0);
   }
@@ -1363,7 +1363,7 @@ class _$EnumWithItemTupleTwinSyncSse_AImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Uint8List field0)? a,
-    TResult? Function(Int32List field0)? b,
+    TResult? Function(int field0)? b,
   }) {
     return a?.call(field0);
   }
@@ -1372,7 +1372,7 @@ class _$EnumWithItemTupleTwinSyncSse_AImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Uint8List field0)? a,
-    TResult Function(Int32List field0)? b,
+    TResult Function(int field0)? b,
     required TResult orElse(),
   }) {
     if (a != null) {
@@ -1437,7 +1437,7 @@ abstract class _$$EnumWithItemTupleTwinSyncSse_BImplCopyWith<$Res> {
           $Res Function(_$EnumWithItemTupleTwinSyncSse_BImpl) then) =
       __$$EnumWithItemTupleTwinSyncSse_BImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Int32List field0});
+  $Res call({int field0});
 }
 
 /// @nodoc
@@ -1461,7 +1461,7 @@ class __$$EnumWithItemTupleTwinSyncSse_BImplCopyWithImpl<$Res>
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
-              as Int32List,
+              as int,
     ));
   }
 }
@@ -1473,7 +1473,7 @@ class _$EnumWithItemTupleTwinSyncSse_BImpl
   const _$EnumWithItemTupleTwinSyncSse_BImpl(this.field0) : super._();
 
   @override
-  final Int32List field0;
+  final int field0;
 
   @override
   String toString() {
@@ -1485,12 +1485,11 @@ class _$EnumWithItemTupleTwinSyncSse_BImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnumWithItemTupleTwinSyncSse_BImpl &&
-            const DeepCollectionEquality().equals(other.field0, field0));
+            (identical(other.field0, field0) || other.field0 == field0));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+  int get hashCode => Object.hash(runtimeType, field0);
 
   /// Create a copy of EnumWithItemTupleTwinSyncSse
   /// with the given fields replaced by the non-null parameter values.
@@ -1506,7 +1505,7 @@ class _$EnumWithItemTupleTwinSyncSse_BImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Uint8List field0) a,
-    required TResult Function(Int32List field0) b,
+    required TResult Function(int field0) b,
   }) {
     return b(field0);
   }
@@ -1515,7 +1514,7 @@ class _$EnumWithItemTupleTwinSyncSse_BImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Uint8List field0)? a,
-    TResult? Function(Int32List field0)? b,
+    TResult? Function(int field0)? b,
   }) {
     return b?.call(field0);
   }
@@ -1524,7 +1523,7 @@ class _$EnumWithItemTupleTwinSyncSse_BImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Uint8List field0)? a,
-    TResult Function(Int32List field0)? b,
+    TResult Function(int field0)? b,
     required TResult orElse(),
   }) {
     if (b != null) {
@@ -1567,12 +1566,12 @@ class _$EnumWithItemTupleTwinSyncSse_BImpl
 
 abstract class EnumWithItemTupleTwinSyncSse_B
     extends EnumWithItemTupleTwinSyncSse {
-  const factory EnumWithItemTupleTwinSyncSse_B(final Int32List field0) =
+  const factory EnumWithItemTupleTwinSyncSse_B(final int field0) =
       _$EnumWithItemTupleTwinSyncSse_BImpl;
   const EnumWithItemTupleTwinSyncSse_B._() : super._();
 
   @override
-  Int32List get field0;
+  int get field0;
 
   /// Create a copy of EnumWithItemTupleTwinSyncSse
   /// with the given fields replaced by the non-null parameter values.

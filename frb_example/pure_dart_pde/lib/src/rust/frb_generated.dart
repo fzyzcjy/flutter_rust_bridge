@@ -48836,7 +48836,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 1:
         return EnumWithItemTupleTwinNormal_B(
-          dco_decode_list_prim_i_32_strict(raw[1]),
+          dco_decode_i_32(raw[1]),
         );
       default:
         throw Exception("unreachable");
@@ -48854,7 +48854,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 1:
         return EnumWithItemTupleTwinRustAsync_B(
-          dco_decode_list_prim_i_32_strict(raw[1]),
+          dco_decode_i_32(raw[1]),
         );
       default:
         throw Exception("unreachable");
@@ -48872,7 +48872,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         );
       case 1:
         return EnumWithItemTupleTwinSync_B(
-          dco_decode_list_prim_i_32_strict(raw[1]),
+          dco_decode_i_32(raw[1]),
         );
       default:
         throw Exception("unreachable");
@@ -59956,7 +59956,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var var_field0 = sse_decode_list_prim_u_8_strict(deserializer);
         return EnumWithItemTupleTwinNormal_A(var_field0);
       case 1:
-        var var_field0 = sse_decode_list_prim_i_32_strict(deserializer);
+        var var_field0 = sse_decode_i_32(deserializer);
         return EnumWithItemTupleTwinNormal_B(var_field0);
       default:
         throw UnimplementedError('');
@@ -59975,7 +59975,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var var_field0 = sse_decode_list_prim_u_8_strict(deserializer);
         return EnumWithItemTupleTwinRustAsync_A(var_field0);
       case 1:
-        var var_field0 = sse_decode_list_prim_i_32_strict(deserializer);
+        var var_field0 = sse_decode_i_32(deserializer);
         return EnumWithItemTupleTwinRustAsync_B(var_field0);
       default:
         throw UnimplementedError('');
@@ -59993,7 +59993,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var var_field0 = sse_decode_list_prim_u_8_strict(deserializer);
         return EnumWithItemTupleTwinSync_A(var_field0);
       case 1:
-        var var_field0 = sse_decode_list_prim_i_32_strict(deserializer);
+        var var_field0 = sse_decode_i_32(deserializer);
         return EnumWithItemTupleTwinSync_B(var_field0);
       default:
         throw UnimplementedError('');
@@ -71763,7 +71763,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_list_prim_u_8_strict(field0, serializer);
       case EnumWithItemTupleTwinNormal_B(field0: final field0):
         sse_encode_i_32(1, serializer);
-        sse_encode_list_prim_i_32_strict(field0, serializer);
+        sse_encode_i_32(field0, serializer);
     }
   }
 
@@ -71777,7 +71777,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_list_prim_u_8_strict(field0, serializer);
       case EnumWithItemTupleTwinRustAsync_B(field0: final field0):
         sse_encode_i_32(1, serializer);
-        sse_encode_list_prim_i_32_strict(field0, serializer);
+        sse_encode_i_32(field0, serializer);
     }
   }
 
@@ -71791,7 +71791,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_list_prim_u_8_strict(field0, serializer);
       case EnumWithItemTupleTwinSync_B(field0: final field0):
         sse_encode_i_32(1, serializer);
-        sse_encode_list_prim_i_32_strict(field0, serializer);
+        sse_encode_i_32(field0, serializer);
     }
   }
 

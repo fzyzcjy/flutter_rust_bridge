@@ -131,7 +131,7 @@ sealed class EnumWithItemTupleTwinRustAsync
     Uint8List field0,
   ) = EnumWithItemTupleTwinRustAsync_A;
   const factory EnumWithItemTupleTwinRustAsync.b(
-    Int32List field0,
+    int field0,
   ) = EnumWithItemTupleTwinRustAsync_B;
 }
 

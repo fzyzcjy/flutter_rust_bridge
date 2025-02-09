@@ -27,7 +27,7 @@ pub fn func_enum_with_item_mixed_twin_normal(
 
 pub enum EnumWithItemTupleTwinNormal {
     A(Vec<u8>),
-    B(Vec<i32>),
+    B(i32),
 }
 
 pub fn func_enum_with_item_tuple_twin_normal(

@@ -31,7 +31,7 @@ pub async fn func_enum_with_item_mixed_twin_rust_async(
 
 pub enum EnumWithItemTupleTwinRustAsync {
     A(Vec<u8>),
-    B(Vec<i32>),
+    B(i32),
 }
 
 pub async fn func_enum_with_item_tuple_twin_rust_async(

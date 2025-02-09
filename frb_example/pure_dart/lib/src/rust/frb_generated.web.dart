@@ -24270,7 +24270,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return [0, cst_encode_list_prim_u_8_strict(raw.field0)].jsify()!;
     }
     if (raw is EnumWithItemTupleTwinNormal_B) {
-      return [1, cst_encode_list_prim_i_32_strict(raw.field0)].jsify()!;
+      return [1, cst_encode_i_32(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
@@ -24284,7 +24284,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return [0, cst_encode_list_prim_u_8_strict(raw.field0)].jsify()!;
     }
     if (raw is EnumWithItemTupleTwinRustAsync_B) {
-      return [1, cst_encode_list_prim_i_32_strict(raw.field0)].jsify()!;
+      return [1, cst_encode_i_32(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');
@@ -24298,7 +24298,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       return [0, cst_encode_list_prim_u_8_strict(raw.field0)].jsify()!;
     }
     if (raw is EnumWithItemTupleTwinSync_B) {
-      return [1, cst_encode_list_prim_i_32_strict(raw.field0)].jsify()!;
+      return [1, cst_encode_i_32(raw.field0)].jsify()!;
     }
 
     throw Exception('unreachable');

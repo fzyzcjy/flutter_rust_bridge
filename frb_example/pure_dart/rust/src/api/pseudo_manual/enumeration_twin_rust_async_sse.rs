@@ -33,7 +33,7 @@ pub async fn func_enum_with_item_mixed_twin_rust_async_sse(
 
 pub enum EnumWithItemTupleTwinRustAsyncSse {
     A(Vec<u8>),
-    B(Vec<i32>),
+    B(i32),
 }
 
 #[flutter_rust_bridge::frb(serialize)]
