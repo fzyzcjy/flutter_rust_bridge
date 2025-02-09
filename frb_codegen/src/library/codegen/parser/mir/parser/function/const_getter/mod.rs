@@ -16,6 +16,7 @@ use crate::codegen::parser::mir::ParseMode;
 use crate::utils::namespace::NamespacedName;
 use anyhow::Error;
 use std::collections::HashMap;
+use syn::spanned::Spanned;
 
 pub(crate) fn parse(
     config: &ParserMirInternalConfig,
@@ -75,6 +76,6 @@ fn parse_constant(
         rust_call_code: Some(rust_call_code),
         rust_aop_after: None,
         impl_mode: MirFuncImplMode::Normal,
-        src_lineno_pseudo: constant.TODO.span().start().line,
+        src_lineno_pseudo: constant.item_const.span().start().line,
     }))
 }
