@@ -5,7 +5,7 @@ use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncAccessorMode, MirFuncArgMode, MirFuncImplMode, MirFuncMode, MirFuncOutput,
     MirFuncOwnerInfo,
 };
-use crate::codegen::ir::misc::skip::{IrSkip, IrValueOrSkip, MirFuncOrSkip};
+use crate::codegen::ir::misc::skip::{IrSkip, IrSkipReason, IrValueOrSkip, MirFuncOrSkip};
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::auto_accessor::create_simplified_parsing_context;
@@ -38,7 +38,12 @@ fn parse_constant(
     let ty_direct_parse = match type_parser.parse_type(&syn::parse_str(TODO)?, &context) {
         Ok(value) => value,
         // We do not care about parsing errors here (e.g. some type that we do not support)
-        Err(_) => return Ok(TODO),
+        Err(_) => {
+            return Ok(IrValueOrSkip::Skip(IrSkip {
+                name: TODO,
+                reason: IrSkipReason::Err,
+            }))
+        }
     };
 
     let rust_call_code = "TODO_code".to_owned();
