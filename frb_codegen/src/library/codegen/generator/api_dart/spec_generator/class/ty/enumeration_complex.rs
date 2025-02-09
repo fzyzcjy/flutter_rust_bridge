@@ -36,9 +36,13 @@ impl EnumRefApiDartGenerator<'_> {
         };
         let maybe_implements_exception =
             generate_dart_maybe_implements_exception(self.mir.is_exception);
-        let json_serde = format!(
-            "factory {name}.fromJson(Map<String, dynamic> json) => _${name}FromJson(json);",
-        );
+
+        let needs_json_serializable = TODO;
+        let json_serializable_extra_code = if needs_json_serializable {
+            format!("factory {name}.fromJson(Map<String, dynamic> json) => _${name}FromJson(json);",)
+        } else {
+            "".to_owned()
+        };
 
         Some(ApiDartGeneratedClass {
             namespace: src.name.namespace.clone(),
@@ -50,12 +54,13 @@ impl EnumRefApiDartGenerator<'_> {
 
                     {variants}
 
-                    {json_serde}
+                    {json_serializable_extra_code}
 
                     {extra_body}
                 }}",
             ),
             needs_freezed: true,
+            needs_json_serializable,
             header,
         })
     }
