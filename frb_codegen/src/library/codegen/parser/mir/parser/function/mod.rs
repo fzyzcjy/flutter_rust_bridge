@@ -1,3 +1,4 @@
+use crate::codegen::ir::hir::flat::constant::HirFlatConstant;
 use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::mir::func::MirFunc;
@@ -16,6 +17,7 @@ pub(crate) mod ui_related;
 pub(crate) fn parse(
     config: &ParserMirInternalConfig,
     src_fns: &[HirFlatFunction],
+    src_constants: &[HirFlatConstant],
     type_parser: &mut TypeParser,
     src_structs: &HashMap<String, &HirFlatStruct>,
     parse_mode: ParseMode,
@@ -23,7 +25,7 @@ pub(crate) fn parse(
     let items = concat([
         real::parse(src_fns, type_parser, config, parse_mode)?,
         auto_accessor::parse(config, src_structs, type_parser, parse_mode)?,
-        const_getter::parse(config, type_parser, parse_mode)?,
+        const_getter::parse(config, src_constants, type_parser, parse_mode)?,
     ]);
     let (funcs, skips) = IrValueOrSkip::split(items);
     let funcs = sort_and_add_func_id(funcs);

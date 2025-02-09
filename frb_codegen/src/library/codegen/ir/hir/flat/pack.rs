@@ -1,4 +1,5 @@
 use crate::codegen::ir::hir::flat::component::HirFlatComponent;
+use crate::codegen::ir::hir::flat::constant::HirFlatConstant;
 use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::hir::flat::struct_or_enum::{HirFlatEnum, HirFlatStruct};
 use crate::codegen::ir::hir::flat::trait_impl::HirFlatTraitImpl;
@@ -15,7 +16,7 @@ pub(crate) struct HirFlatPack {
     pub structs: Vec<HirFlatStruct>,
     pub traits: Vec<HirFlatTrait>,
     pub trait_impls: Vec<HirFlatTraitImpl>,
-    pub constants: Vec<HirFlatFunction>,
+    pub constants: Vec<HirFlatConstant>,
     pub types: Vec<HirFlatTypeAlias>,
     pub existing_handler: Option<NamespacedName>,
     pub extra_rust_output_code: String,
