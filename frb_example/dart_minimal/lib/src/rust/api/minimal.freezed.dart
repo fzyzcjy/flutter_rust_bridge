@@ -14,25 +14,25 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-MyEnumWithJsonSerializable _$MyEnumWithJsonSerializableFromJson(
-    Map<String, dynamic> json) {
+MyEnumWithJsonSerializableTwinNormal
+    _$MyEnumWithJsonSerializableTwinNormalFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType']) {
     case 'apple':
-      return MyEnumWithJsonSerializable_Apple.fromJson(json);
+      return MyEnumWithJsonSerializableTwinNormal_Apple.fromJson(json);
     case 'orange':
-      return MyEnumWithJsonSerializable_Orange.fromJson(json);
+      return MyEnumWithJsonSerializableTwinNormal_Orange.fromJson(json);
 
     default:
       throw CheckedFromJsonException(
           json,
           'runtimeType',
-          'MyEnumWithJsonSerializable',
+          'MyEnumWithJsonSerializableTwinNormal',
           'Invalid union type "${json['runtimeType']}"!');
   }
 }
 
 /// @nodoc
-mixin _$MyEnumWithJsonSerializable {
+mixin _$MyEnumWithJsonSerializableTwinNormal {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String field0) apple,
@@ -54,79 +54,84 @@ mixin _$MyEnumWithJsonSerializable {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(MyEnumWithJsonSerializable_Apple value) apple,
-    required TResult Function(MyEnumWithJsonSerializable_Orange value) orange,
+    required TResult Function(MyEnumWithJsonSerializableTwinNormal_Apple value)
+        apple,
+    required TResult Function(MyEnumWithJsonSerializableTwinNormal_Orange value)
+        orange,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(MyEnumWithJsonSerializable_Apple value)? apple,
-    TResult? Function(MyEnumWithJsonSerializable_Orange value)? orange,
+    TResult? Function(MyEnumWithJsonSerializableTwinNormal_Apple value)? apple,
+    TResult? Function(MyEnumWithJsonSerializableTwinNormal_Orange value)?
+        orange,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(MyEnumWithJsonSerializable_Apple value)? apple,
-    TResult Function(MyEnumWithJsonSerializable_Orange value)? orange,
+    TResult Function(MyEnumWithJsonSerializableTwinNormal_Apple value)? apple,
+    TResult Function(MyEnumWithJsonSerializableTwinNormal_Orange value)? orange,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 
-  /// Serializes this MyEnumWithJsonSerializable to a JSON map.
+  /// Serializes this MyEnumWithJsonSerializableTwinNormal to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MyEnumWithJsonSerializableCopyWith<$Res> {
-  factory $MyEnumWithJsonSerializableCopyWith(MyEnumWithJsonSerializable value,
-          $Res Function(MyEnumWithJsonSerializable) then) =
-      _$MyEnumWithJsonSerializableCopyWithImpl<$Res,
-          MyEnumWithJsonSerializable>;
+abstract class $MyEnumWithJsonSerializableTwinNormalCopyWith<$Res> {
+  factory $MyEnumWithJsonSerializableTwinNormalCopyWith(
+          MyEnumWithJsonSerializableTwinNormal value,
+          $Res Function(MyEnumWithJsonSerializableTwinNormal) then) =
+      _$MyEnumWithJsonSerializableTwinNormalCopyWithImpl<$Res,
+          MyEnumWithJsonSerializableTwinNormal>;
 }
 
 /// @nodoc
-class _$MyEnumWithJsonSerializableCopyWithImpl<$Res,
-        $Val extends MyEnumWithJsonSerializable>
-    implements $MyEnumWithJsonSerializableCopyWith<$Res> {
-  _$MyEnumWithJsonSerializableCopyWithImpl(this._value, this._then);
+class _$MyEnumWithJsonSerializableTwinNormalCopyWithImpl<$Res,
+        $Val extends MyEnumWithJsonSerializableTwinNormal>
+    implements $MyEnumWithJsonSerializableTwinNormalCopyWith<$Res> {
+  _$MyEnumWithJsonSerializableTwinNormalCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of MyEnumWithJsonSerializable
+  /// Create a copy of MyEnumWithJsonSerializableTwinNormal
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$MyEnumWithJsonSerializable_AppleImplCopyWith<$Res> {
-  factory _$$MyEnumWithJsonSerializable_AppleImplCopyWith(
-          _$MyEnumWithJsonSerializable_AppleImpl value,
-          $Res Function(_$MyEnumWithJsonSerializable_AppleImpl) then) =
-      __$$MyEnumWithJsonSerializable_AppleImplCopyWithImpl<$Res>;
+abstract class _$$MyEnumWithJsonSerializableTwinNormal_AppleImplCopyWith<$Res> {
+  factory _$$MyEnumWithJsonSerializableTwinNormal_AppleImplCopyWith(
+          _$MyEnumWithJsonSerializableTwinNormal_AppleImpl value,
+          $Res Function(_$MyEnumWithJsonSerializableTwinNormal_AppleImpl)
+              then) =
+      __$$MyEnumWithJsonSerializableTwinNormal_AppleImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String field0});
 }
 
 /// @nodoc
-class __$$MyEnumWithJsonSerializable_AppleImplCopyWithImpl<$Res>
-    extends _$MyEnumWithJsonSerializableCopyWithImpl<$Res,
-        _$MyEnumWithJsonSerializable_AppleImpl>
-    implements _$$MyEnumWithJsonSerializable_AppleImplCopyWith<$Res> {
-  __$$MyEnumWithJsonSerializable_AppleImplCopyWithImpl(
-      _$MyEnumWithJsonSerializable_AppleImpl _value,
-      $Res Function(_$MyEnumWithJsonSerializable_AppleImpl) _then)
+class __$$MyEnumWithJsonSerializableTwinNormal_AppleImplCopyWithImpl<$Res>
+    extends _$MyEnumWithJsonSerializableTwinNormalCopyWithImpl<$Res,
+        _$MyEnumWithJsonSerializableTwinNormal_AppleImpl>
+    implements _$$MyEnumWithJsonSerializableTwinNormal_AppleImplCopyWith<$Res> {
+  __$$MyEnumWithJsonSerializableTwinNormal_AppleImplCopyWithImpl(
+      _$MyEnumWithJsonSerializableTwinNormal_AppleImpl _value,
+      $Res Function(_$MyEnumWithJsonSerializableTwinNormal_AppleImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MyEnumWithJsonSerializable
+  /// Create a copy of MyEnumWithJsonSerializableTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$MyEnumWithJsonSerializable_AppleImpl(
+    return _then(_$MyEnumWithJsonSerializableTwinNormal_AppleImpl(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
@@ -137,16 +142,16 @@ class __$$MyEnumWithJsonSerializable_AppleImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$MyEnumWithJsonSerializable_AppleImpl
-    extends MyEnumWithJsonSerializable_Apple {
-  const _$MyEnumWithJsonSerializable_AppleImpl(this.field0,
+class _$MyEnumWithJsonSerializableTwinNormal_AppleImpl
+    extends MyEnumWithJsonSerializableTwinNormal_Apple {
+  const _$MyEnumWithJsonSerializableTwinNormal_AppleImpl(this.field0,
       {final String? $type})
       : $type = $type ?? 'apple',
         super._();
 
-  factory _$MyEnumWithJsonSerializable_AppleImpl.fromJson(
+  factory _$MyEnumWithJsonSerializableTwinNormal_AppleImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$MyEnumWithJsonSerializable_AppleImplFromJson(json);
+      _$$MyEnumWithJsonSerializableTwinNormal_AppleImplFromJson(json);
 
   @override
   final String field0;
@@ -156,14 +161,14 @@ class _$MyEnumWithJsonSerializable_AppleImpl
 
   @override
   String toString() {
-    return 'MyEnumWithJsonSerializable.apple(field0: $field0)';
+    return 'MyEnumWithJsonSerializableTwinNormal.apple(field0: $field0)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MyEnumWithJsonSerializable_AppleImpl &&
+            other is _$MyEnumWithJsonSerializableTwinNormal_AppleImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
@@ -171,15 +176,17 @@ class _$MyEnumWithJsonSerializable_AppleImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  /// Create a copy of MyEnumWithJsonSerializable
+  /// Create a copy of MyEnumWithJsonSerializableTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$MyEnumWithJsonSerializable_AppleImplCopyWith<
-          _$MyEnumWithJsonSerializable_AppleImpl>
-      get copyWith => __$$MyEnumWithJsonSerializable_AppleImplCopyWithImpl<
-          _$MyEnumWithJsonSerializable_AppleImpl>(this, _$identity);
+  _$$MyEnumWithJsonSerializableTwinNormal_AppleImplCopyWith<
+          _$MyEnumWithJsonSerializableTwinNormal_AppleImpl>
+      get copyWith =>
+          __$$MyEnumWithJsonSerializableTwinNormal_AppleImplCopyWithImpl<
+                  _$MyEnumWithJsonSerializableTwinNormal_AppleImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -215,8 +222,10 @@ class _$MyEnumWithJsonSerializable_AppleImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(MyEnumWithJsonSerializable_Apple value) apple,
-    required TResult Function(MyEnumWithJsonSerializable_Orange value) orange,
+    required TResult Function(MyEnumWithJsonSerializableTwinNormal_Apple value)
+        apple,
+    required TResult Function(MyEnumWithJsonSerializableTwinNormal_Orange value)
+        orange,
   }) {
     return apple(this);
   }
@@ -224,8 +233,9 @@ class _$MyEnumWithJsonSerializable_AppleImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(MyEnumWithJsonSerializable_Apple value)? apple,
-    TResult? Function(MyEnumWithJsonSerializable_Orange value)? orange,
+    TResult? Function(MyEnumWithJsonSerializableTwinNormal_Apple value)? apple,
+    TResult? Function(MyEnumWithJsonSerializableTwinNormal_Orange value)?
+        orange,
   }) {
     return apple?.call(this);
   }
@@ -233,8 +243,8 @@ class _$MyEnumWithJsonSerializable_AppleImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(MyEnumWithJsonSerializable_Apple value)? apple,
-    TResult Function(MyEnumWithJsonSerializable_Orange value)? orange,
+    TResult Function(MyEnumWithJsonSerializableTwinNormal_Apple value)? apple,
+    TResult Function(MyEnumWithJsonSerializableTwinNormal_Orange value)? orange,
     required TResult orElse(),
   }) {
     if (apple != null) {
@@ -245,59 +255,63 @@ class _$MyEnumWithJsonSerializable_AppleImpl
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$MyEnumWithJsonSerializable_AppleImplToJson(
+    return _$$MyEnumWithJsonSerializableTwinNormal_AppleImplToJson(
       this,
     );
   }
 }
 
-abstract class MyEnumWithJsonSerializable_Apple
-    extends MyEnumWithJsonSerializable {
-  const factory MyEnumWithJsonSerializable_Apple(final String field0) =
-      _$MyEnumWithJsonSerializable_AppleImpl;
-  const MyEnumWithJsonSerializable_Apple._() : super._();
+abstract class MyEnumWithJsonSerializableTwinNormal_Apple
+    extends MyEnumWithJsonSerializableTwinNormal {
+  const factory MyEnumWithJsonSerializableTwinNormal_Apple(
+      final String field0) = _$MyEnumWithJsonSerializableTwinNormal_AppleImpl;
+  const MyEnumWithJsonSerializableTwinNormal_Apple._() : super._();
 
-  factory MyEnumWithJsonSerializable_Apple.fromJson(Map<String, dynamic> json) =
-      _$MyEnumWithJsonSerializable_AppleImpl.fromJson;
+  factory MyEnumWithJsonSerializableTwinNormal_Apple.fromJson(
+          Map<String, dynamic> json) =
+      _$MyEnumWithJsonSerializableTwinNormal_AppleImpl.fromJson;
 
   String get field0;
 
-  /// Create a copy of MyEnumWithJsonSerializable
+  /// Create a copy of MyEnumWithJsonSerializableTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MyEnumWithJsonSerializable_AppleImplCopyWith<
-          _$MyEnumWithJsonSerializable_AppleImpl>
+  _$$MyEnumWithJsonSerializableTwinNormal_AppleImplCopyWith<
+          _$MyEnumWithJsonSerializableTwinNormal_AppleImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$MyEnumWithJsonSerializable_OrangeImplCopyWith<$Res> {
-  factory _$$MyEnumWithJsonSerializable_OrangeImplCopyWith(
-          _$MyEnumWithJsonSerializable_OrangeImpl value,
-          $Res Function(_$MyEnumWithJsonSerializable_OrangeImpl) then) =
-      __$$MyEnumWithJsonSerializable_OrangeImplCopyWithImpl<$Res>;
+abstract class _$$MyEnumWithJsonSerializableTwinNormal_OrangeImplCopyWith<
+    $Res> {
+  factory _$$MyEnumWithJsonSerializableTwinNormal_OrangeImplCopyWith(
+          _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl value,
+          $Res Function(_$MyEnumWithJsonSerializableTwinNormal_OrangeImpl)
+              then) =
+      __$$MyEnumWithJsonSerializableTwinNormal_OrangeImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int a});
 }
 
 /// @nodoc
-class __$$MyEnumWithJsonSerializable_OrangeImplCopyWithImpl<$Res>
-    extends _$MyEnumWithJsonSerializableCopyWithImpl<$Res,
-        _$MyEnumWithJsonSerializable_OrangeImpl>
-    implements _$$MyEnumWithJsonSerializable_OrangeImplCopyWith<$Res> {
-  __$$MyEnumWithJsonSerializable_OrangeImplCopyWithImpl(
-      _$MyEnumWithJsonSerializable_OrangeImpl _value,
-      $Res Function(_$MyEnumWithJsonSerializable_OrangeImpl) _then)
+class __$$MyEnumWithJsonSerializableTwinNormal_OrangeImplCopyWithImpl<$Res>
+    extends _$MyEnumWithJsonSerializableTwinNormalCopyWithImpl<$Res,
+        _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl>
+    implements
+        _$$MyEnumWithJsonSerializableTwinNormal_OrangeImplCopyWith<$Res> {
+  __$$MyEnumWithJsonSerializableTwinNormal_OrangeImplCopyWithImpl(
+      _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl _value,
+      $Res Function(_$MyEnumWithJsonSerializableTwinNormal_OrangeImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MyEnumWithJsonSerializable
+  /// Create a copy of MyEnumWithJsonSerializableTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? a = null,
   }) {
-    return _then(_$MyEnumWithJsonSerializable_OrangeImpl(
+    return _then(_$MyEnumWithJsonSerializableTwinNormal_OrangeImpl(
       a: null == a
           ? _value.a
           : a // ignore: cast_nullable_to_non_nullable
@@ -308,16 +322,16 @@ class __$$MyEnumWithJsonSerializable_OrangeImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$MyEnumWithJsonSerializable_OrangeImpl
-    extends MyEnumWithJsonSerializable_Orange {
-  const _$MyEnumWithJsonSerializable_OrangeImpl(
+class _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl
+    extends MyEnumWithJsonSerializableTwinNormal_Orange {
+  const _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl(
       {required this.a, final String? $type})
       : $type = $type ?? 'orange',
         super._();
 
-  factory _$MyEnumWithJsonSerializable_OrangeImpl.fromJson(
+  factory _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$MyEnumWithJsonSerializable_OrangeImplFromJson(json);
+      _$$MyEnumWithJsonSerializableTwinNormal_OrangeImplFromJson(json);
 
   @override
   final int a;
@@ -327,14 +341,14 @@ class _$MyEnumWithJsonSerializable_OrangeImpl
 
   @override
   String toString() {
-    return 'MyEnumWithJsonSerializable.orange(a: $a)';
+    return 'MyEnumWithJsonSerializableTwinNormal.orange(a: $a)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MyEnumWithJsonSerializable_OrangeImpl &&
+            other is _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl &&
             (identical(other.a, a) || other.a == a));
   }
 
@@ -342,15 +356,17 @@ class _$MyEnumWithJsonSerializable_OrangeImpl
   @override
   int get hashCode => Object.hash(runtimeType, a);
 
-  /// Create a copy of MyEnumWithJsonSerializable
+  /// Create a copy of MyEnumWithJsonSerializableTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$MyEnumWithJsonSerializable_OrangeImplCopyWith<
-          _$MyEnumWithJsonSerializable_OrangeImpl>
-      get copyWith => __$$MyEnumWithJsonSerializable_OrangeImplCopyWithImpl<
-          _$MyEnumWithJsonSerializable_OrangeImpl>(this, _$identity);
+  _$$MyEnumWithJsonSerializableTwinNormal_OrangeImplCopyWith<
+          _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl>
+      get copyWith =>
+          __$$MyEnumWithJsonSerializableTwinNormal_OrangeImplCopyWithImpl<
+                  _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -386,8 +402,10 @@ class _$MyEnumWithJsonSerializable_OrangeImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(MyEnumWithJsonSerializable_Apple value) apple,
-    required TResult Function(MyEnumWithJsonSerializable_Orange value) orange,
+    required TResult Function(MyEnumWithJsonSerializableTwinNormal_Apple value)
+        apple,
+    required TResult Function(MyEnumWithJsonSerializableTwinNormal_Orange value)
+        orange,
   }) {
     return orange(this);
   }
@@ -395,8 +413,9 @@ class _$MyEnumWithJsonSerializable_OrangeImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(MyEnumWithJsonSerializable_Apple value)? apple,
-    TResult? Function(MyEnumWithJsonSerializable_Orange value)? orange,
+    TResult? Function(MyEnumWithJsonSerializableTwinNormal_Apple value)? apple,
+    TResult? Function(MyEnumWithJsonSerializableTwinNormal_Orange value)?
+        orange,
   }) {
     return orange?.call(this);
   }
@@ -404,8 +423,8 @@ class _$MyEnumWithJsonSerializable_OrangeImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(MyEnumWithJsonSerializable_Apple value)? apple,
-    TResult Function(MyEnumWithJsonSerializable_Orange value)? orange,
+    TResult Function(MyEnumWithJsonSerializableTwinNormal_Apple value)? apple,
+    TResult Function(MyEnumWithJsonSerializableTwinNormal_Orange value)? orange,
     required TResult orElse(),
   }) {
     if (orange != null) {
@@ -416,74 +435,77 @@ class _$MyEnumWithJsonSerializable_OrangeImpl
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$MyEnumWithJsonSerializable_OrangeImplToJson(
+    return _$$MyEnumWithJsonSerializableTwinNormal_OrangeImplToJson(
       this,
     );
   }
 }
 
-abstract class MyEnumWithJsonSerializable_Orange
-    extends MyEnumWithJsonSerializable {
-  const factory MyEnumWithJsonSerializable_Orange({required final int a}) =
-      _$MyEnumWithJsonSerializable_OrangeImpl;
-  const MyEnumWithJsonSerializable_Orange._() : super._();
+abstract class MyEnumWithJsonSerializableTwinNormal_Orange
+    extends MyEnumWithJsonSerializableTwinNormal {
+  const factory MyEnumWithJsonSerializableTwinNormal_Orange(
+          {required final int a}) =
+      _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl;
+  const MyEnumWithJsonSerializableTwinNormal_Orange._() : super._();
 
-  factory MyEnumWithJsonSerializable_Orange.fromJson(
+  factory MyEnumWithJsonSerializableTwinNormal_Orange.fromJson(
           Map<String, dynamic> json) =
-      _$MyEnumWithJsonSerializable_OrangeImpl.fromJson;
+      _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl.fromJson;
 
   int get a;
 
-  /// Create a copy of MyEnumWithJsonSerializable
+  /// Create a copy of MyEnumWithJsonSerializableTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MyEnumWithJsonSerializable_OrangeImplCopyWith<
-          _$MyEnumWithJsonSerializable_OrangeImpl>
+  _$$MyEnumWithJsonSerializableTwinNormal_OrangeImplCopyWith<
+          _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
-MyStructWithJsonSerializable _$MyStructWithJsonSerializableFromJson(
-    Map<String, dynamic> json) {
-  return _MyStructWithJsonSerializable.fromJson(json);
+MyStructWithJsonSerializableTwinNormal
+    _$MyStructWithJsonSerializableTwinNormalFromJson(
+        Map<String, dynamic> json) {
+  return _MyStructWithJsonSerializableTwinNormal.fromJson(json);
 }
 
 /// @nodoc
-mixin _$MyStructWithJsonSerializable {
+mixin _$MyStructWithJsonSerializableTwinNormal {
   String get fieldOne => throw _privateConstructorUsedError;
 
-  /// Serializes this MyStructWithJsonSerializable to a JSON map.
+  /// Serializes this MyStructWithJsonSerializableTwinNormal to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of MyStructWithJsonSerializable
+  /// Create a copy of MyStructWithJsonSerializableTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $MyStructWithJsonSerializableCopyWith<MyStructWithJsonSerializable>
+  $MyStructWithJsonSerializableTwinNormalCopyWith<
+          MyStructWithJsonSerializableTwinNormal>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MyStructWithJsonSerializableCopyWith<$Res> {
-  factory $MyStructWithJsonSerializableCopyWith(
-          MyStructWithJsonSerializable value,
-          $Res Function(MyStructWithJsonSerializable) then) =
-      _$MyStructWithJsonSerializableCopyWithImpl<$Res,
-          MyStructWithJsonSerializable>;
+abstract class $MyStructWithJsonSerializableTwinNormalCopyWith<$Res> {
+  factory $MyStructWithJsonSerializableTwinNormalCopyWith(
+          MyStructWithJsonSerializableTwinNormal value,
+          $Res Function(MyStructWithJsonSerializableTwinNormal) then) =
+      _$MyStructWithJsonSerializableTwinNormalCopyWithImpl<$Res,
+          MyStructWithJsonSerializableTwinNormal>;
   @useResult
   $Res call({String fieldOne});
 }
 
 /// @nodoc
-class _$MyStructWithJsonSerializableCopyWithImpl<$Res,
-        $Val extends MyStructWithJsonSerializable>
-    implements $MyStructWithJsonSerializableCopyWith<$Res> {
-  _$MyStructWithJsonSerializableCopyWithImpl(this._value, this._then);
+class _$MyStructWithJsonSerializableTwinNormalCopyWithImpl<$Res,
+        $Val extends MyStructWithJsonSerializableTwinNormal>
+    implements $MyStructWithJsonSerializableTwinNormalCopyWith<$Res> {
+  _$MyStructWithJsonSerializableTwinNormalCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of MyStructWithJsonSerializable
+  /// Create a copy of MyStructWithJsonSerializableTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -500,35 +522,35 @@ class _$MyStructWithJsonSerializableCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$MyStructWithJsonSerializableImplCopyWith<$Res>
-    implements $MyStructWithJsonSerializableCopyWith<$Res> {
-  factory _$$MyStructWithJsonSerializableImplCopyWith(
-          _$MyStructWithJsonSerializableImpl value,
-          $Res Function(_$MyStructWithJsonSerializableImpl) then) =
-      __$$MyStructWithJsonSerializableImplCopyWithImpl<$Res>;
+abstract class _$$MyStructWithJsonSerializableTwinNormalImplCopyWith<$Res>
+    implements $MyStructWithJsonSerializableTwinNormalCopyWith<$Res> {
+  factory _$$MyStructWithJsonSerializableTwinNormalImplCopyWith(
+          _$MyStructWithJsonSerializableTwinNormalImpl value,
+          $Res Function(_$MyStructWithJsonSerializableTwinNormalImpl) then) =
+      __$$MyStructWithJsonSerializableTwinNormalImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String fieldOne});
 }
 
 /// @nodoc
-class __$$MyStructWithJsonSerializableImplCopyWithImpl<$Res>
-    extends _$MyStructWithJsonSerializableCopyWithImpl<$Res,
-        _$MyStructWithJsonSerializableImpl>
-    implements _$$MyStructWithJsonSerializableImplCopyWith<$Res> {
-  __$$MyStructWithJsonSerializableImplCopyWithImpl(
-      _$MyStructWithJsonSerializableImpl _value,
-      $Res Function(_$MyStructWithJsonSerializableImpl) _then)
+class __$$MyStructWithJsonSerializableTwinNormalImplCopyWithImpl<$Res>
+    extends _$MyStructWithJsonSerializableTwinNormalCopyWithImpl<$Res,
+        _$MyStructWithJsonSerializableTwinNormalImpl>
+    implements _$$MyStructWithJsonSerializableTwinNormalImplCopyWith<$Res> {
+  __$$MyStructWithJsonSerializableTwinNormalImplCopyWithImpl(
+      _$MyStructWithJsonSerializableTwinNormalImpl _value,
+      $Res Function(_$MyStructWithJsonSerializableTwinNormalImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MyStructWithJsonSerializable
+  /// Create a copy of MyStructWithJsonSerializableTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? fieldOne = null,
   }) {
-    return _then(_$MyStructWithJsonSerializableImpl(
+    return _then(_$MyStructWithJsonSerializableTwinNormalImpl(
       fieldOne: null == fieldOne
           ? _value.fieldOne
           : fieldOne // ignore: cast_nullable_to_non_nullable
@@ -539,27 +561,28 @@ class __$$MyStructWithJsonSerializableImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$MyStructWithJsonSerializableImpl extends _MyStructWithJsonSerializable {
-  const _$MyStructWithJsonSerializableImpl({required this.fieldOne})
+class _$MyStructWithJsonSerializableTwinNormalImpl
+    extends _MyStructWithJsonSerializableTwinNormal {
+  const _$MyStructWithJsonSerializableTwinNormalImpl({required this.fieldOne})
       : super._();
 
-  factory _$MyStructWithJsonSerializableImpl.fromJson(
+  factory _$MyStructWithJsonSerializableTwinNormalImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$MyStructWithJsonSerializableImplFromJson(json);
+      _$$MyStructWithJsonSerializableTwinNormalImplFromJson(json);
 
   @override
   final String fieldOne;
 
   @override
   String toString() {
-    return 'MyStructWithJsonSerializable(fieldOne: $fieldOne)';
+    return 'MyStructWithJsonSerializableTwinNormal(fieldOne: $fieldOne)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MyStructWithJsonSerializableImpl &&
+            other is _$MyStructWithJsonSerializableTwinNormalImpl &&
             (identical(other.fieldOne, fieldOne) ||
                 other.fieldOne == fieldOne));
   }
@@ -568,41 +591,44 @@ class _$MyStructWithJsonSerializableImpl extends _MyStructWithJsonSerializable {
   @override
   int get hashCode => Object.hash(runtimeType, fieldOne);
 
-  /// Create a copy of MyStructWithJsonSerializable
+  /// Create a copy of MyStructWithJsonSerializableTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$MyStructWithJsonSerializableImplCopyWith<
-          _$MyStructWithJsonSerializableImpl>
-      get copyWith => __$$MyStructWithJsonSerializableImplCopyWithImpl<
-          _$MyStructWithJsonSerializableImpl>(this, _$identity);
+  _$$MyStructWithJsonSerializableTwinNormalImplCopyWith<
+          _$MyStructWithJsonSerializableTwinNormalImpl>
+      get copyWith =>
+          __$$MyStructWithJsonSerializableTwinNormalImplCopyWithImpl<
+              _$MyStructWithJsonSerializableTwinNormalImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$MyStructWithJsonSerializableImplToJson(
+    return _$$MyStructWithJsonSerializableTwinNormalImplToJson(
       this,
     );
   }
 }
 
-abstract class _MyStructWithJsonSerializable
-    extends MyStructWithJsonSerializable {
-  const factory _MyStructWithJsonSerializable(
-      {required final String fieldOne}) = _$MyStructWithJsonSerializableImpl;
-  const _MyStructWithJsonSerializable._() : super._();
+abstract class _MyStructWithJsonSerializableTwinNormal
+    extends MyStructWithJsonSerializableTwinNormal {
+  const factory _MyStructWithJsonSerializableTwinNormal(
+          {required final String fieldOne}) =
+      _$MyStructWithJsonSerializableTwinNormalImpl;
+  const _MyStructWithJsonSerializableTwinNormal._() : super._();
 
-  factory _MyStructWithJsonSerializable.fromJson(Map<String, dynamic> json) =
-      _$MyStructWithJsonSerializableImpl.fromJson;
+  factory _MyStructWithJsonSerializableTwinNormal.fromJson(
+          Map<String, dynamic> json) =
+      _$MyStructWithJsonSerializableTwinNormalImpl.fromJson;
 
   @override
   String get fieldOne;
 
-  /// Create a copy of MyStructWithJsonSerializable
+  /// Create a copy of MyStructWithJsonSerializableTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MyStructWithJsonSerializableImplCopyWith<
-          _$MyStructWithJsonSerializableImpl>
+  _$$MyStructWithJsonSerializableTwinNormalImplCopyWith<
+          _$MyStructWithJsonSerializableTwinNormalImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

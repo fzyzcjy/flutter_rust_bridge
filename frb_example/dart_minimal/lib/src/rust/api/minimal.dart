@@ -13,36 +13,40 @@ Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
 
 @freezed
-sealed class MyEnumWithJsonSerializable with _$MyEnumWithJsonSerializable {
-  const MyEnumWithJsonSerializable._();
+sealed class MyEnumWithJsonSerializableTwinNormal
+    with _$MyEnumWithJsonSerializableTwinNormal {
+  const MyEnumWithJsonSerializableTwinNormal._();
 
-  const factory MyEnumWithJsonSerializable.apple(
+  const factory MyEnumWithJsonSerializableTwinNormal.apple(
     String field0,
-  ) = MyEnumWithJsonSerializable_Apple;
-  const factory MyEnumWithJsonSerializable.orange({
+  ) = MyEnumWithJsonSerializableTwinNormal_Apple;
+  const factory MyEnumWithJsonSerializableTwinNormal.orange({
     required int a,
-  }) = MyEnumWithJsonSerializable_Orange;
+  }) = MyEnumWithJsonSerializableTwinNormal_Orange;
 
-  factory MyEnumWithJsonSerializable.fromJson(Map<String, dynamic> json) =>
-      _$MyEnumWithJsonSerializableFromJson(json);
+  factory MyEnumWithJsonSerializableTwinNormal.fromJson(
+          Map<String, dynamic> json) =>
+      _$MyEnumWithJsonSerializableTwinNormalFromJson(json);
 
   Future<void> f() =>
-      RustLib.instance.api.crateApiMinimalMyEnumWithJsonSerializableF(
+      RustLib.instance.api.crateApiMinimalMyEnumWithJsonSerializableTwinNormalF(
         that: this,
       );
 }
 
 @freezed
-class MyStructWithJsonSerializable with _$MyStructWithJsonSerializable {
-  const MyStructWithJsonSerializable._();
-  const factory MyStructWithJsonSerializable({
+class MyStructWithJsonSerializableTwinNormal
+    with _$MyStructWithJsonSerializableTwinNormal {
+  const MyStructWithJsonSerializableTwinNormal._();
+  const factory MyStructWithJsonSerializableTwinNormal({
     required String fieldOne,
-  }) = _MyStructWithJsonSerializable;
-  Future<void> f() =>
-      RustLib.instance.api.crateApiMinimalMyStructWithJsonSerializableF(
+  }) = _MyStructWithJsonSerializableTwinNormal;
+  Future<void> f() => RustLib.instance.api
+          .crateApiMinimalMyStructWithJsonSerializableTwinNormalF(
         that: this,
       );
 
-  factory MyStructWithJsonSerializable.fromJson(Map<String, dynamic> json) =>
-      _$MyStructWithJsonSerializableFromJson(json);
+  factory MyStructWithJsonSerializableTwinNormal.fromJson(
+          Map<String, dynamic> json) =>
+      _$MyStructWithJsonSerializableTwinNormalFromJson(json);
 }

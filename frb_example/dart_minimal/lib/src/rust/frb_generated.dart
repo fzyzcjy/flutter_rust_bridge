@@ -68,7 +68,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.7.1';
 
   @override
-  int get rustContentHash => -1233995820;
+  int get rustContentHash => -1785427348;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -83,11 +83,11 @@ abstract class RustLibApi extends BaseApi {
 
   Future<int> crateApiMinimalMinimalAdder({required int a, required int b});
 
-  Future<void> crateApiMinimalMyEnumWithJsonSerializableF(
-      {required MyEnumWithJsonSerializable that});
+  Future<void> crateApiMinimalMyEnumWithJsonSerializableTwinNormalF(
+      {required MyEnumWithJsonSerializableTwinNormal that});
 
-  Future<void> crateApiMinimalMyStructWithJsonSerializableF(
-      {required MyStructWithJsonSerializable that});
+  Future<void> crateApiMinimalMyStructWithJsonSerializableTwinNormalF(
+      {required MyStructWithJsonSerializableTwinNormal that});
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -148,12 +148,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<void> crateApiMinimalMyEnumWithJsonSerializableF(
-      {required MyEnumWithJsonSerializable that}) {
+  Future<void> crateApiMinimalMyEnumWithJsonSerializableTwinNormalF(
+      {required MyEnumWithJsonSerializableTwinNormal that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_box_autoadd_my_enum_with_json_serializable(that, serializer);
+        sse_encode_box_autoadd_my_enum_with_json_serializable_twin_normal(
+            that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 3, port: port_);
       },
@@ -161,25 +162,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiMinimalMyEnumWithJsonSerializableFConstMeta,
+      constMeta: kCrateApiMinimalMyEnumWithJsonSerializableTwinNormalFConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiMinimalMyEnumWithJsonSerializableFConstMeta =>
-      const TaskConstMeta(
-        debugName: "my_enum_with_json_serializable_f",
-        argNames: ["that"],
-      );
+  TaskConstMeta
+      get kCrateApiMinimalMyEnumWithJsonSerializableTwinNormalFConstMeta =>
+          const TaskConstMeta(
+            debugName: "my_enum_with_json_serializable_twin_normal_f",
+            argNames: ["that"],
+          );
 
   @override
-  Future<void> crateApiMinimalMyStructWithJsonSerializableF(
-      {required MyStructWithJsonSerializable that}) {
+  Future<void> crateApiMinimalMyStructWithJsonSerializableTwinNormalF(
+      {required MyStructWithJsonSerializableTwinNormal that}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_box_autoadd_my_struct_with_json_serializable(
+        sse_encode_box_autoadd_my_struct_with_json_serializable_twin_normal(
             that, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 4, port: port_);
@@ -188,17 +190,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiMinimalMyStructWithJsonSerializableFConstMeta,
+      constMeta:
+          kCrateApiMinimalMyStructWithJsonSerializableTwinNormalFConstMeta,
       argValues: [that],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiMinimalMyStructWithJsonSerializableFConstMeta =>
-      const TaskConstMeta(
-        debugName: "my_struct_with_json_serializable_f",
-        argNames: ["that"],
-      );
+  TaskConstMeta
+      get kCrateApiMinimalMyStructWithJsonSerializableTwinNormalFConstMeta =>
+          const TaskConstMeta(
+            debugName: "my_struct_with_json_serializable_twin_normal_f",
+            argNames: ["that"],
+          );
 
   @protected
   String dco_decode_String(dynamic raw) {
@@ -207,17 +211,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  MyEnumWithJsonSerializable
-      dco_decode_box_autoadd_my_enum_with_json_serializable(dynamic raw) {
+  MyEnumWithJsonSerializableTwinNormal
+      dco_decode_box_autoadd_my_enum_with_json_serializable_twin_normal(
+          dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dco_decode_my_enum_with_json_serializable(raw);
+    return dco_decode_my_enum_with_json_serializable_twin_normal(raw);
   }
 
   @protected
-  MyStructWithJsonSerializable
-      dco_decode_box_autoadd_my_struct_with_json_serializable(dynamic raw) {
+  MyStructWithJsonSerializableTwinNormal
+      dco_decode_box_autoadd_my_struct_with_json_serializable_twin_normal(
+          dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dco_decode_my_struct_with_json_serializable(raw);
+    return dco_decode_my_struct_with_json_serializable_twin_normal(raw);
   }
 
   @protected
@@ -233,16 +239,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  MyEnumWithJsonSerializable dco_decode_my_enum_with_json_serializable(
-      dynamic raw) {
+  MyEnumWithJsonSerializableTwinNormal
+      dco_decode_my_enum_with_json_serializable_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     switch (raw[0]) {
       case 0:
-        return MyEnumWithJsonSerializable_Apple(
+        return MyEnumWithJsonSerializableTwinNormal_Apple(
           dco_decode_String(raw[1]),
         );
       case 1:
-        return MyEnumWithJsonSerializable_Orange(
+        return MyEnumWithJsonSerializableTwinNormal_Orange(
           a: dco_decode_i_32(raw[1]),
         );
       default:
@@ -251,13 +257,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  MyStructWithJsonSerializable dco_decode_my_struct_with_json_serializable(
-      dynamic raw) {
+  MyStructWithJsonSerializableTwinNormal
+      dco_decode_my_struct_with_json_serializable_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return MyStructWithJsonSerializable(
+    return MyStructWithJsonSerializableTwinNormal(
       fieldOne: dco_decode_String(arr[0]),
     );
   }
@@ -282,19 +288,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  MyEnumWithJsonSerializable
-      sse_decode_box_autoadd_my_enum_with_json_serializable(
+  MyEnumWithJsonSerializableTwinNormal
+      sse_decode_box_autoadd_my_enum_with_json_serializable_twin_normal(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return (sse_decode_my_enum_with_json_serializable(deserializer));
+    return (sse_decode_my_enum_with_json_serializable_twin_normal(
+        deserializer));
   }
 
   @protected
-  MyStructWithJsonSerializable
-      sse_decode_box_autoadd_my_struct_with_json_serializable(
+  MyStructWithJsonSerializableTwinNormal
+      sse_decode_box_autoadd_my_struct_with_json_serializable_twin_normal(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return (sse_decode_my_struct_with_json_serializable(deserializer));
+    return (sse_decode_my_struct_with_json_serializable_twin_normal(
+        deserializer));
   }
 
   @protected
@@ -311,29 +319,31 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  MyEnumWithJsonSerializable sse_decode_my_enum_with_json_serializable(
-      SseDeserializer deserializer) {
+  MyEnumWithJsonSerializableTwinNormal
+      sse_decode_my_enum_with_json_serializable_twin_normal(
+          SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     var tag_ = sse_decode_i_32(deserializer);
     switch (tag_) {
       case 0:
         var var_field0 = sse_decode_String(deserializer);
-        return MyEnumWithJsonSerializable_Apple(var_field0);
+        return MyEnumWithJsonSerializableTwinNormal_Apple(var_field0);
       case 1:
         var var_a = sse_decode_i_32(deserializer);
-        return MyEnumWithJsonSerializable_Orange(a: var_a);
+        return MyEnumWithJsonSerializableTwinNormal_Orange(a: var_a);
       default:
         throw UnimplementedError('');
     }
   }
 
   @protected
-  MyStructWithJsonSerializable sse_decode_my_struct_with_json_serializable(
-      SseDeserializer deserializer) {
+  MyStructWithJsonSerializableTwinNormal
+      sse_decode_my_struct_with_json_serializable_twin_normal(
+          SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_fieldOne = sse_decode_String(deserializer);
-    return MyStructWithJsonSerializable(fieldOne: var_fieldOne);
+    return MyStructWithJsonSerializableTwinNormal(fieldOne: var_fieldOne);
   }
 
   @protected
@@ -360,17 +370,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_box_autoadd_my_enum_with_json_serializable(
-      MyEnumWithJsonSerializable self, SseSerializer serializer) {
+  void sse_encode_box_autoadd_my_enum_with_json_serializable_twin_normal(
+      MyEnumWithJsonSerializableTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_my_enum_with_json_serializable(self, serializer);
+    sse_encode_my_enum_with_json_serializable_twin_normal(self, serializer);
   }
 
   @protected
-  void sse_encode_box_autoadd_my_struct_with_json_serializable(
-      MyStructWithJsonSerializable self, SseSerializer serializer) {
+  void sse_encode_box_autoadd_my_struct_with_json_serializable_twin_normal(
+      MyStructWithJsonSerializableTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_my_struct_with_json_serializable(self, serializer);
+    sse_encode_my_struct_with_json_serializable_twin_normal(self, serializer);
   }
 
   @protected
@@ -388,22 +398,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_my_enum_with_json_serializable(
-      MyEnumWithJsonSerializable self, SseSerializer serializer) {
+  void sse_encode_my_enum_with_json_serializable_twin_normal(
+      MyEnumWithJsonSerializableTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     switch (self) {
-      case MyEnumWithJsonSerializable_Apple(field0: final field0):
+      case MyEnumWithJsonSerializableTwinNormal_Apple(field0: final field0):
         sse_encode_i_32(0, serializer);
         sse_encode_String(field0, serializer);
-      case MyEnumWithJsonSerializable_Orange(a: final a):
+      case MyEnumWithJsonSerializableTwinNormal_Orange(a: final a):
         sse_encode_i_32(1, serializer);
         sse_encode_i_32(a, serializer);
     }
   }
 
   @protected
-  void sse_encode_my_struct_with_json_serializable(
-      MyStructWithJsonSerializable self, SseSerializer serializer) {
+  void sse_encode_my_struct_with_json_serializable_twin_normal(
+      MyStructWithJsonSerializableTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(self.fieldOne, serializer);
   }
