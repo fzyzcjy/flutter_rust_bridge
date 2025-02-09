@@ -13,6 +13,8 @@ import 'web_audio_api/worklet.dart';
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `fmt`, `fmt`
 // These functions are ignored (category: IgnoreBecauseOwnerTyShouldIgnore): `load`, `load`, `new`, `new`, `store`, `store`
 
+int get maxChannels => RustLib.instance.api.webAudioApiMaxChannels();
+
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AudioBuffer>>
 abstract class AudioBuffer implements RustOpaqueInterface {
   /// Duration in seconds of the `AudioBuffer`
