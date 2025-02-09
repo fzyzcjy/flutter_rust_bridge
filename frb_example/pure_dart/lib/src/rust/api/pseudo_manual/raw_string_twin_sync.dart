@@ -7,10 +7,16 @@ import 'dart:io';
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+part 'raw_string_twin_sync.freezed.dart';
 
 RawStringItemStructTwinSync testRawStringItemStructTwinSync() =>
     RustLib.instance.api
         .crateApiPseudoManualRawStringTwinSyncTestRawStringItemStructTwinSync();
+
+RawStringItemEnumTwinSync testRawStringItemEnumTwinSync() =>
+    RustLib.instance.api
+        .crateApiPseudoManualRawStringTwinSyncTestRawStringItemEnumTwinSync();
 
 MoreThanJustOneRawStringStructTwinSync
     testMoreThanJustOneRawStringStructTwinSync() => RustLib.instance.api
@@ -42,6 +48,18 @@ class MoreThanJustOneRawStringStructTwinSync {
           type == other.type &&
           async_ == other.async_ &&
           another == other.another;
+}
+
+@freezed
+sealed class RawStringItemEnumTwinSync with _$RawStringItemEnumTwinSync {
+  const RawStringItemEnumTwinSync._();
+
+  const factory RawStringItemEnumTwinSync.regular({
+    required String regular,
+  }) = RawStringItemEnumTwinSync_Regular;
+  const factory RawStringItemEnumTwinSync.raw({
+    required String type,
+  }) = RawStringItemEnumTwinSync_Raw;
 }
 
 class RawStringItemStructTwinSync {
