@@ -22,10 +22,10 @@ pub fn datetime_local_twin_normal(
     assert_eq!(&d.year(), &2022);
     assert_eq!(&d.month(), &9);
     assert_eq!(&d.day(), &10);
+    assert_eq!(&d.hour(), &20);
     if cfg!(target_arch = "wasm32") {
         assert_eq!(&d.nanosecond(), &123_000_000);
     } else {
-        assert_eq!(&d.hour(), &20);
         assert_eq!(&d.nanosecond(), &123_456_000);
     }
     assert_eq!(&d.minute(), &48);
