@@ -8,61 +8,85 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These functions are ignored (category: IgnoreBecauseSelfTypeNotAllowed): `method_with_bad_self_twin_sync`
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyImplTraitWithSelfTwinSync>>
-abstract class MyImplTraitWithSelfTwinSync
-    implements RustOpaqueInterface, MyTraitWithSelfTwinSync {
-  Future<void> methodWithBadSelfTwinSync(
-      {required MyImplTraitWithSelfTwinSync another});
+            // These functions are ignored (category: IgnoreBecauseSelfTypeNotAllowed): `method_with_bad_self_twin_sync`
 
-  Future<MyImplTraitWithSelfTwinSync> methodWithGoodSelfTwinSync();
-}
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitTwinSync>>
-abstract class StructOneWithTraitTwinSync
-    implements RustOpaqueInterface, SimpleTraitTwinSync {
-  int get one;
+            
+
+            
+                // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyImplTraitWithSelfTwinSync>>
+                abstract class MyImplTraitWithSelfTwinSync implements RustOpaqueInterface, MyTraitWithSelfTwinSync {
+                     Future<void>  methodWithBadSelfTwinSync({required MyImplTraitWithSelfTwinSync another });
+
+
+ Future<MyImplTraitWithSelfTwinSync>  methodWithGoodSelfTwinSync();
+
+
+
+                    
+                }
+                
+
+
+                // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitTwinSync>>
+                abstract class StructOneWithTraitTwinSync implements RustOpaqueInterface, SimpleTraitTwinSync {
+                     int get one;
+
 
   set one(int one);
 
-  Future<int> simpleTraitFnReceiverBorrowTwinSync();
 
-  static Future<StructOneWithTraitTwinSync> simpleTraitFnTwinSync(
-          {required int value}) =>
-      RustLib.instance.api
-          .crateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncSimpleTraitFnTwinSync(
-              value: value);
+ Future<int>  simpleTraitFnReceiverBorrowTwinSync();
 
-  static Future<int> simpleTraitFnWithDefaultImplTwinSync() => RustLib
-      .instance.api
-      .crateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncSimpleTraitFnWithDefaultImplTwinSync();
-}
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitTwinSync>>
-abstract class StructTwoWithTraitTwinSync
-    implements RustOpaqueInterface, SimpleTraitTwinSync {
-  int get two;
+static Future<StructOneWithTraitTwinSync>  simpleTraitFnTwinSync({required int value })=>RustLib.instance.api.crateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncSimpleTraitFnTwinSync(value: value);
+
+
+static Future<int>  simpleTraitFnWithDefaultImplTwinSync()=>RustLib.instance.api.crateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncSimpleTraitFnWithDefaultImplTwinSync();
+
+
+
+                    
+                }
+                
+
+
+                // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructTwoWithTraitTwinSync>>
+                abstract class StructTwoWithTraitTwinSync implements RustOpaqueInterface, SimpleTraitTwinSync {
+                     int get two;
+
 
   set two(int two);
 
-  Future<int> simpleTraitFnReceiverBorrowTwinSync();
 
-  static Future<StructTwoWithTraitTwinSync> simpleTraitFnTwinSync(
-          {required int value}) =>
-      RustLib.instance.api
-          .crateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncSimpleTraitFnTwinSync(
-              value: value);
+ Future<int>  simpleTraitFnReceiverBorrowTwinSync();
 
-  static Future<int> simpleTraitFnWithDefaultImplTwinSync() => RustLib
-      .instance.api
-      .crateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncSimpleTraitFnWithDefaultImplTwinSync();
-}
 
-abstract class MyTraitWithSelfTwinSync {
-  Future<MyTraitWithSelfTwinSync> methodWithGoodSelfTwinSync();
-}
+static Future<StructTwoWithTraitTwinSync>  simpleTraitFnTwinSync({required int value })=>RustLib.instance.api.crateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncSimpleTraitFnTwinSync(value: value);
 
-abstract class SimpleTraitTwinSync {
-  Future<int> simpleTraitFnReceiverBorrowTwinSync();
-}
+
+static Future<int>  simpleTraitFnWithDefaultImplTwinSync()=>RustLib.instance.api.crateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncSimpleTraitFnWithDefaultImplTwinSync();
+
+
+
+                    
+                }
+                
+
+
+                abstract class MyTraitWithSelfTwinSync {
+                     Future<MyTraitWithSelfTwinSync>  methodWithGoodSelfTwinSync();
+
+
+                }
+                
+
+
+                abstract class SimpleTraitTwinSync {
+                     Future<int>  simpleTraitFnReceiverBorrowTwinSync();
+
+
+                }
+                
+            

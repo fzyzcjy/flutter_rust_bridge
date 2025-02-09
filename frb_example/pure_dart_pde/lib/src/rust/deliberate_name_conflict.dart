@@ -8,20 +8,31 @@ import 'dart:io';
 import 'frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-class StructInUpperLevel {
-  final BigInt upper;
 
-  const StructInUpperLevel({
-    required this.upper,
-  });
+            
 
-  @override
-  int get hashCode => upper.hashCode;
+            
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is StructInUpperLevel &&
-          runtimeType == other.runtimeType &&
-          upper == other.upper;
-}
+            class StructInUpperLevel  {
+                final BigInt upper;
+
+                const StructInUpperLevel({required this.upper ,});
+
+                
+                
+
+                
+        @override
+        int get hashCode => upper.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is StructInUpperLevel &&
+                runtimeType == other.runtimeType
+                && upper == other.upper;
+        
+            }
+            

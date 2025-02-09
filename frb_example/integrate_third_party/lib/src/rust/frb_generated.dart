@@ -24,9 +24,7 @@ import 'third_party/web_audio_api/media_recorder.dart';
 import 'third_party/web_audio_api/media_streams.dart';
 import 'third_party/web_audio_api/node.dart';
 import 'third_party/web_audio_api/worklet.dart';
-
 part 'frb_generated.freezed.dart';
-part 'frb_generated.g.dart';
 
 /// Main entrypoint of the Rust API
 class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
@@ -27422,9 +27420,6 @@ sealed class AudioNodeImplementor with _$AudioNodeImplementor {
   const factory AudioNodeImplementor.variant22(
     WaveShaperNode field0,
   ) = AudioNodeImplementor_Variant22;
-
-  factory AudioNodeImplementor.fromJson(Map<String, dynamic> json) =>
-      _$AudioNodeImplementorFromJson(json);
 }
 
 @freezed
@@ -27529,11 +27524,6 @@ sealed class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueI
   const factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant31(
     StereoPannerNode field0,
   ) = Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant31;
-
-  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.fromJson(
-          Map<String, dynamic> json) =>
-      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnumFromJson(
-          json);
 }
 
 @freezed
@@ -27545,11 +27535,6 @@ sealed class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueI
   const factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum.variant0(
     MediaStreamAudioDestinationNode field0,
   ) = Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum_Variant0;
-
-  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum.fromJson(
-          Map<String, dynamic> json) =>
-      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumFromJson(
-          json);
 }
 
 @sealed

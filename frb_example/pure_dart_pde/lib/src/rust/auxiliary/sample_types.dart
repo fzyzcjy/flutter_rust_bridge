@@ -8,50 +8,71 @@ import 'dart:io';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneDataRaw>>
-abstract class NonCloneDataRaw implements RustOpaqueInterface {}
+
+            
+
+            
+
+            
+                // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneDataRaw>>
+                abstract class NonCloneDataRaw implements RustOpaqueInterface {
+                    
+
+                    
+                }
+                
 
 enum MyEnum {
-  false_,
-  true_,
-  ;
-}
+                    false_,
+true_,
+                    ;
+                    
+                }
 
-class MySize {
-  final int width;
-  final int height;
+class MySize  {
+                final int width;
+final int height;
 
-  const MySize({
-    required this.width,
-    required this.height,
-  });
+                const MySize({required this.width ,required this.height ,});
 
-  @override
-  int get hashCode => width.hashCode ^ height.hashCode;
+                
+                
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is MySize &&
-          runtimeType == other.runtimeType &&
-          width == other.width &&
-          height == other.height;
-}
+                
+        @override
+        int get hashCode => width.hashCode^height.hashCode;
+        
 
-class MyStruct {
-  final bool content;
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is MySize &&
+                runtimeType == other.runtimeType
+                && width == other.width&& height == other.height;
+        
+            }
 
-  const MyStruct({
-    required this.content,
-  });
+class MyStruct  {
+                final bool content;
 
-  @override
-  int get hashCode => content.hashCode;
+                const MyStruct({required this.content ,});
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is MyStruct &&
-          runtimeType == other.runtimeType &&
-          content == other.content;
-}
+                
+                
+
+                
+        @override
+        int get hashCode => content.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is MyStruct &&
+                runtimeType == other.runtimeType
+                && content == other.content;
+        
+            }
+            

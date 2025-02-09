@@ -8,74 +8,100 @@ import 'dart:io';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConstructorOpaqueStructTwinNormal>>
-abstract class ConstructorOpaqueStructTwinNormal
-    implements RustOpaqueInterface {
-  String get one;
+
+            
+
+            
+
+            
+                // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConstructorOpaqueStructTwinNormal>>
+                abstract class ConstructorOpaqueStructTwinNormal implements RustOpaqueInterface {
+                     String get one;
+
 
   set one(String one);
 
-  void check();
+
+ void  check();
+
 
   // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
-  static Future<ConstructorOpaqueStructTwinNormal> newInstance() =>
-      RustLib.instance.api
-          .crateApiConstructorConstructorOpaqueStructTwinNormalNew();
-}
+static Future<ConstructorOpaqueStructTwinNormal>  newInstance()=>RustLib.instance.api.crateApiConstructorConstructorOpaqueStructTwinNormalNew();
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConstructorOpaqueSyncStructTwinNormal>>
-abstract class ConstructorOpaqueSyncStructTwinNormal
-    implements RustOpaqueInterface {
-  String get one;
+
+
+                    
+                }
+                
+
+
+                // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConstructorOpaqueSyncStructTwinNormal>>
+                abstract class ConstructorOpaqueSyncStructTwinNormal implements RustOpaqueInterface {
+                     String get one;
+
 
   set one(String one);
 
-  void check();
 
-  factory ConstructorOpaqueSyncStructTwinNormal() => RustLib.instance.api
-      .crateApiConstructorConstructorOpaqueSyncStructTwinNormalNew();
-}
+ void  check();
 
-class ConstructorTranslatableStructTwinNormal {
-  final String one;
 
-  const ConstructorTranslatableStructTwinNormal({
-    required this.one,
-  });
+factory ConstructorOpaqueSyncStructTwinNormal()=>RustLib.instance.api.crateApiConstructorConstructorOpaqueSyncStructTwinNormalNew();
 
-  // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
-  static Future<ConstructorTranslatableStructTwinNormal> newInstance() =>
-      RustLib.instance.api
-          .crateApiConstructorConstructorTranslatableStructTwinNormalNew();
 
-  @override
-  int get hashCode => one.hashCode;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ConstructorTranslatableStructTwinNormal &&
-          runtimeType == other.runtimeType &&
-          one == other.one;
-}
+                    
+                }
+                
 
-class ConstructorTranslatableSyncStructTwinNormal {
-  final String one;
+class ConstructorTranslatableStructTwinNormal  {
+                final String one;
 
-  const ConstructorTranslatableSyncStructTwinNormal.raw({
-    required this.one,
-  });
+                const ConstructorTranslatableStructTwinNormal({required this.one ,});
 
-  factory ConstructorTranslatableSyncStructTwinNormal() => RustLib.instance.api
-      .crateApiConstructorConstructorTranslatableSyncStructTwinNormalNew();
+                  // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
+static Future<ConstructorTranslatableStructTwinNormal>  newInstance()=>RustLib.instance.api.crateApiConstructorConstructorTranslatableStructTwinNormalNew();
 
-  @override
-  int get hashCode => one.hashCode;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ConstructorTranslatableSyncStructTwinNormal &&
-          runtimeType == other.runtimeType &&
-          one == other.one;
-}
+                
+
+                
+        @override
+        int get hashCode => one.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is ConstructorTranslatableStructTwinNormal &&
+                runtimeType == other.runtimeType
+                && one == other.one;
+        
+            }
+
+class ConstructorTranslatableSyncStructTwinNormal  {
+                final String one;
+
+                const ConstructorTranslatableSyncStructTwinNormal.raw({required this.one ,});
+
+                factory ConstructorTranslatableSyncStructTwinNormal()=>RustLib.instance.api.crateApiConstructorConstructorTranslatableSyncStructTwinNormalNew();
+
+
+                
+
+                
+        @override
+        int get hashCode => one.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is ConstructorTranslatableSyncStructTwinNormal &&
+                runtimeType == other.runtimeType
+                && one == other.one;
+        
+            }
+            

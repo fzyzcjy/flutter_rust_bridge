@@ -10,419 +10,416 @@ import '../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-
 part 'mirror.freezed.dart';
-part 'mirror.g.dart';
 
-Future<ApplicationSettings> getAppSettingsTwinNormal() =>
-    RustLib.instance.api.crateApiMirrorGetAppSettingsTwinNormal();
+            
 
-Future<ApplicationSettings> getFallibleAppSettingsTwinNormal() =>
-    RustLib.instance.api.crateApiMirrorGetFallibleAppSettingsTwinNormal();
+            Future<ApplicationSettings>  getAppSettingsTwinNormal() => RustLib.instance.api.crateApiMirrorGetAppSettingsTwinNormal();
 
-Future<bool> isAppEmbeddedTwinNormal(
-        {required ApplicationSettings appSettings}) =>
-    RustLib.instance.api
-        .crateApiMirrorIsAppEmbeddedTwinNormal(appSettings: appSettings);
+Future<ApplicationSettings>  getFallibleAppSettingsTwinNormal() => RustLib.instance.api.crateApiMirrorGetFallibleAppSettingsTwinNormal();
 
-Stream<ApplicationSettings> appSettingsStreamTwinNormal() =>
-    RustLib.instance.api.crateApiMirrorAppSettingsStreamTwinNormal();
+Future<bool>  isAppEmbeddedTwinNormal({required ApplicationSettings appSettings }) => RustLib.instance.api.crateApiMirrorIsAppEmbeddedTwinNormal(appSettings: appSettings);
 
-Stream<List<ApplicationSettings>> appSettingsVecStreamTwinNormal() =>
-    RustLib.instance.api.crateApiMirrorAppSettingsVecStreamTwinNormal();
+Stream<ApplicationSettings>  appSettingsStreamTwinNormal() => RustLib.instance.api.crateApiMirrorAppSettingsStreamTwinNormal();
 
-Stream<MirrorStructTwinNormal> mirrorStructStreamTwinNormal() =>
-    RustLib.instance.api.crateApiMirrorMirrorStructStreamTwinNormal();
+Stream<List<ApplicationSettings>>  appSettingsVecStreamTwinNormal() => RustLib.instance.api.crateApiMirrorAppSettingsVecStreamTwinNormal();
 
-Stream<(ApplicationSettings, RawStringEnumMirrored)>
-    mirrorTupleStreamTwinNormal() =>
-        RustLib.instance.api.crateApiMirrorMirrorTupleStreamTwinNormal();
+Stream<MirrorStructTwinNormal>  mirrorStructStreamTwinNormal() => RustLib.instance.api.crateApiMirrorMirrorStructStreamTwinNormal();
 
-Future<ApplicationMessage> getMessageTwinNormal() =>
-    RustLib.instance.api.crateApiMirrorGetMessageTwinNormal();
+Stream<(ApplicationSettings,RawStringEnumMirrored)>  mirrorTupleStreamTwinNormal() => RustLib.instance.api.crateApiMirrorMirrorTupleStreamTwinNormal();
 
-Future<Numbers> repeatNumberTwinNormal(
-        {required int num, required BigInt times}) =>
-    RustLib.instance.api
-        .crateApiMirrorRepeatNumberTwinNormal(num: num, times: times);
+Future<ApplicationMessage>  getMessageTwinNormal() => RustLib.instance.api.crateApiMirrorGetMessageTwinNormal();
 
-Future<Sequences> repeatSequenceTwinNormal(
-        {required int seq, required BigInt times}) =>
-    RustLib.instance.api
-        .crateApiMirrorRepeatSequenceTwinNormal(seq: seq, times: times);
+Future<Numbers>  repeatNumberTwinNormal({required int num , required BigInt times }) => RustLib.instance.api.crateApiMirrorRepeatNumberTwinNormal(num: num, times: times);
 
-Future<int?> firstNumberTwinNormal({required Numbers nums}) =>
-    RustLib.instance.api.crateApiMirrorFirstNumberTwinNormal(nums: nums);
+Future<Sequences>  repeatSequenceTwinNormal({required int seq , required BigInt times }) => RustLib.instance.api.crateApiMirrorRepeatSequenceTwinNormal(seq: seq, times: times);
 
-Future<int?> firstSequenceTwinNormal({required Sequences seqs}) =>
-    RustLib.instance.api.crateApiMirrorFirstSequenceTwinNormal(seqs: seqs);
+Future<int?>  firstNumberTwinNormal({required Numbers nums }) => RustLib.instance.api.crateApiMirrorFirstNumberTwinNormal(nums: nums);
 
-Future<RawStringMirrored> testRawStringMirroredTwinNormal() =>
-    RustLib.instance.api.crateApiMirrorTestRawStringMirroredTwinNormal();
+Future<int?>  firstSequenceTwinNormal({required Sequences seqs }) => RustLib.instance.api.crateApiMirrorFirstSequenceTwinNormal(seqs: seqs);
 
-Future<NestedRawStringMirrored> testNestedRawStringMirroredTwinNormal() =>
-    RustLib.instance.api.crateApiMirrorTestNestedRawStringMirroredTwinNormal();
+Future<RawStringMirrored>  testRawStringMirroredTwinNormal() => RustLib.instance.api.crateApiMirrorTestRawStringMirroredTwinNormal();
 
-Future<RawStringEnumMirrored> testRawStringEnumMirroredTwinNormal(
-        {required bool nested}) =>
-    RustLib.instance.api
-        .crateApiMirrorTestRawStringEnumMirroredTwinNormal(nested: nested);
+Future<NestedRawStringMirrored>  testNestedRawStringMirroredTwinNormal() => RustLib.instance.api.crateApiMirrorTestNestedRawStringMirroredTwinNormal();
 
-Future<ListOfNestedRawStringMirrored>
-    testListOfRawNestedStringMirroredTwinNormal() => RustLib.instance.api
-        .crateApiMirrorTestListOfRawNestedStringMirroredTwinNormal();
+Future<RawStringEnumMirrored>  testRawStringEnumMirroredTwinNormal({required bool nested }) => RustLib.instance.api.crateApiMirrorTestRawStringEnumMirroredTwinNormal(nested: nested);
 
-Future<List<RawStringMirrored>> testFallibleOfRawStringMirroredTwinNormal() =>
-    RustLib.instance.api
-        .crateApiMirrorTestFallibleOfRawStringMirroredTwinNormal();
+Future<ListOfNestedRawStringMirrored>  testListOfRawNestedStringMirroredTwinNormal() => RustLib.instance.api.crateApiMirrorTestListOfRawNestedStringMirroredTwinNormal();
 
-Future<List<RawStringEnumMirrored>> testListOfNestedEnumsMirroredTwinNormal() =>
-    RustLib.instance.api
-        .crateApiMirrorTestListOfNestedEnumsMirroredTwinNormal();
+Future<List<RawStringMirrored>>  testFallibleOfRawStringMirroredTwinNormal() => RustLib.instance.api.crateApiMirrorTestFallibleOfRawStringMirroredTwinNormal();
 
-Future<ContainsMirroredSubStructTwinNormal>
-    testContainsMirroredSubStructTwinNormal() => RustLib.instance.api
-        .crateApiMirrorTestContainsMirroredSubStructTwinNormal();
+Future<List<RawStringEnumMirrored>>  testListOfNestedEnumsMirroredTwinNormal() => RustLib.instance.api.crateApiMirrorTestListOfNestedEnumsMirroredTwinNormal();
 
-Future<StructWithHashMap> testHashmapWithMirroredValueTwinNormal() =>
-    RustLib.instance.api.crateApiMirrorTestHashmapWithMirroredValueTwinNormal();
+Future<ContainsMirroredSubStructTwinNormal>  testContainsMirroredSubStructTwinNormal() => RustLib.instance.api.crateApiMirrorTestContainsMirroredSubStructTwinNormal();
 
-Stream<ApplicationMode> mirrorEnumStreamTwinNormal() =>
-    RustLib.instance.api.crateApiMirrorMirrorEnumStreamTwinNormal();
+Future<StructWithHashMap>  testHashmapWithMirroredValueTwinNormal() => RustLib.instance.api.crateApiMirrorTestHashmapWithMirroredValueTwinNormal();
 
-Stream<ApplicationMode?> mirrorOptionEnumStreamTwinNormal() =>
-    RustLib.instance.api.crateApiMirrorMirrorOptionEnumStreamTwinNormal();
+Stream<ApplicationMode>  mirrorEnumStreamTwinNormal() => RustLib.instance.api.crateApiMirrorMirrorEnumStreamTwinNormal();
 
-Stream<List<ApplicationMode>> mirrorVecEnumStreamTwinNormal() =>
-    RustLib.instance.api.crateApiMirrorMirrorVecEnumStreamTwinNormal();
+Stream<ApplicationMode?>  mirrorOptionEnumStreamTwinNormal() => RustLib.instance.api.crateApiMirrorMirrorOptionEnumStreamTwinNormal();
 
-Stream<Map<int, ApplicationMode>> mirrorMapEnumStreamTwinNormal() =>
-    RustLib.instance.api.crateApiMirrorMirrorMapEnumStreamTwinNormal();
+Stream<List<ApplicationMode>>  mirrorVecEnumStreamTwinNormal() => RustLib.instance.api.crateApiMirrorMirrorVecEnumStreamTwinNormal();
 
-Stream<Set<ApplicationMode>> mirrorSetEnumStreamTwinNormal() =>
-    RustLib.instance.api.crateApiMirrorMirrorSetEnumStreamTwinNormal();
+Stream<Map<int, ApplicationMode>>  mirrorMapEnumStreamTwinNormal() => RustLib.instance.api.crateApiMirrorMirrorMapEnumStreamTwinNormal();
 
-Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinNormal() =>
-    RustLib.instance.api.crateApiMirrorMirrorArrayEnumStreamTwinNormal();
+Stream<Set<ApplicationMode>>  mirrorSetEnumStreamTwinNormal() => RustLib.instance.api.crateApiMirrorMirrorSetEnumStreamTwinNormal();
 
-class AnotherTwinNormal {
-  final String a;
+Stream<ApplicationModeArray2>  mirrorArrayEnumStreamTwinNormal() => RustLib.instance.api.crateApiMirrorMirrorArrayEnumStreamTwinNormal();
 
-  const AnotherTwinNormal({
-    required this.a,
-  });
+            class AnotherTwinNormal  {
+                final String a;
 
-  @override
-  int get hashCode => a.hashCode;
+                const AnotherTwinNormal({required this.a ,});
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is AnotherTwinNormal &&
-          runtimeType == other.runtimeType &&
-          a == other.a;
-}
+                
+                
 
-class ApplicationEnv {
-  final List<ApplicationEnvVar> vars;
+                
+        @override
+        int get hashCode => a.hashCode;
+        
 
-  const ApplicationEnv({
-    required this.vars,
-  });
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is AnotherTwinNormal &&
+                runtimeType == other.runtimeType
+                && a == other.a;
+        
+            }
 
-  @override
-  int get hashCode => vars.hashCode;
+class ApplicationEnv  {
+                final List<ApplicationEnvVar> vars;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ApplicationEnv &&
-          runtimeType == other.runtimeType &&
-          vars == other.vars;
-}
+                const ApplicationEnv({required this.vars ,});
 
-class ApplicationEnvVar {
-  final String field0;
-  final bool field1;
+                
+                
 
-  const ApplicationEnvVar({
-    required this.field0,
-    required this.field1,
-  });
+                
+        @override
+        int get hashCode => vars.hashCode;
+        
 
-  @override
-  int get hashCode => field0.hashCode ^ field1.hashCode;
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is ApplicationEnv &&
+                runtimeType == other.runtimeType
+                && vars == other.vars;
+        
+            }
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ApplicationEnvVar &&
-          runtimeType == other.runtimeType &&
-          field0 == other.field0 &&
-          field1 == other.field1;
-}
+class ApplicationEnvVar  {
+                final String field0;
+final bool field1;
+
+                const ApplicationEnvVar({required this.field0 ,required this.field1 ,});
+
+                
+                
+
+                
+        @override
+        int get hashCode => field0.hashCode^field1.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is ApplicationEnvVar &&
+                runtimeType == other.runtimeType
+                && field0 == other.field0&& field1 == other.field1;
+        
+            }
 
 @freezed
-sealed class ApplicationMessage with _$ApplicationMessage {
-  const ApplicationMessage._();
+                sealed class ApplicationMessage with _$ApplicationMessage  {
+                    const ApplicationMessage._();
 
-  const factory ApplicationMessage.displayMessage(
-    String field0,
-  ) = ApplicationMessage_DisplayMessage;
-  const factory ApplicationMessage.renderPixel({
-    required int x,
-    required int y,
-  }) = ApplicationMessage_RenderPixel;
-  const factory ApplicationMessage.exit() = ApplicationMessage_Exit;
+                     const factory ApplicationMessage.displayMessage(  String field0,) = ApplicationMessage_DisplayMessage;
+ const factory ApplicationMessage.renderPixel({   required int x ,  required int y , }) = ApplicationMessage_RenderPixel;
+ const factory ApplicationMessage.exit() = ApplicationMessage_Exit;
 
-  factory ApplicationMessage.fromJson(Map<String, dynamic> json) =>
-      _$ApplicationMessageFromJson(json);
-}
+                    
+
+                    
+                }
 
 enum ApplicationMode {
-  standalone,
-  embedded,
-  ;
-}
+                    standalone,
+embedded,
+                    ;
+                    
+                }
 
-class ApplicationModeArray2 extends NonGrowableListView<ApplicationMode> {
-  static const arraySize = 2;
 
-  @internal
-  List<ApplicationMode> get inner => _inner;
-  final List<ApplicationMode> _inner;
+            class ApplicationModeArray2 extends NonGrowableListView<ApplicationMode> {
+                static const arraySize = 2;
 
-  ApplicationModeArray2(this._inner)
-      : assert(_inner.length == arraySize),
-        super(_inner);
+                @internal
+                List<ApplicationMode> get inner => _inner;
+                final List<ApplicationMode> _inner;
 
-  ApplicationModeArray2.init(ApplicationMode fill)
-      : this(List<ApplicationMode>.filled(arraySize, fill));
-}
+                ApplicationModeArray2(this._inner)
+                    : assert(_inner.length == arraySize),
+                      super(_inner);
+  
+                ApplicationModeArray2.init(ApplicationMode fill): this(List<ApplicationMode>.filled(arraySize,fill));
+              }
+            
 
-class ApplicationSettings {
-  final String name;
-  final String version;
-  final ApplicationMode mode;
-  final ApplicationEnv env;
-  final ApplicationEnv? envOptional;
+class ApplicationSettings  {
+                final String name;
+final String version;
+final ApplicationMode mode;
+final ApplicationEnv env;
+final ApplicationEnv? envOptional;
 
-  const ApplicationSettings({
-    required this.name,
-    required this.version,
-    required this.mode,
-    required this.env,
-    this.envOptional,
-  });
+                const ApplicationSettings({required this.name ,required this.version ,required this.mode ,required this.env ,this.envOptional ,});
 
-  @override
-  int get hashCode =>
-      name.hashCode ^
-      version.hashCode ^
-      mode.hashCode ^
-      env.hashCode ^
-      envOptional.hashCode;
+                
+                
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ApplicationSettings &&
-          runtimeType == other.runtimeType &&
-          name == other.name &&
-          version == other.version &&
-          mode == other.mode &&
-          env == other.env &&
-          envOptional == other.envOptional;
-}
+                
+        @override
+        int get hashCode => name.hashCode^version.hashCode^mode.hashCode^env.hashCode^envOptional.hashCode;
+        
 
-class ContainsMirroredSubStructTwinNormal {
-  final RawStringMirrored test;
-  final AnotherTwinNormal test2;
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is ApplicationSettings &&
+                runtimeType == other.runtimeType
+                && name == other.name&& version == other.version&& mode == other.mode&& env == other.env&& envOptional == other.envOptional;
+        
+            }
 
-  const ContainsMirroredSubStructTwinNormal({
-    required this.test,
-    required this.test2,
-  });
+class ContainsMirroredSubStructTwinNormal  {
+                final RawStringMirrored test;
+final AnotherTwinNormal test2;
 
-  @override
-  int get hashCode => test.hashCode ^ test2.hashCode;
+                const ContainsMirroredSubStructTwinNormal({required this.test ,required this.test2 ,});
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ContainsMirroredSubStructTwinNormal &&
-          runtimeType == other.runtimeType &&
-          test == other.test &&
-          test2 == other.test2;
-}
+                
+                
 
-class HashMapValue {
-  final String inner;
+                
+        @override
+        int get hashCode => test.hashCode^test2.hashCode;
+        
 
-  const HashMapValue({
-    required this.inner,
-  });
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is ContainsMirroredSubStructTwinNormal &&
+                runtimeType == other.runtimeType
+                && test == other.test&& test2 == other.test2;
+        
+            }
 
-  @override
-  int get hashCode => inner.hashCode;
+class HashMapValue  {
+                final String inner;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is HashMapValue &&
-          runtimeType == other.runtimeType &&
-          inner == other.inner;
-}
+                const HashMapValue({required this.inner ,});
 
-class ListOfNestedRawStringMirrored {
-  final List<NestedRawStringMirrored> raw;
+                
+                
 
-  const ListOfNestedRawStringMirrored({
-    required this.raw,
-  });
+                
+        @override
+        int get hashCode => inner.hashCode;
+        
 
-  @override
-  int get hashCode => raw.hashCode;
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is HashMapValue &&
+                runtimeType == other.runtimeType
+                && inner == other.inner;
+        
+            }
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ListOfNestedRawStringMirrored &&
-          runtimeType == other.runtimeType &&
-          raw == other.raw;
-}
+class ListOfNestedRawStringMirrored  {
+                final List<NestedRawStringMirrored> raw;
 
-class MirrorStructTwinNormal {
-  final ApplicationSettings a;
-  final MyStruct b;
-  final List<MyEnum> c;
-  final List<ApplicationSettings> d;
+                const ListOfNestedRawStringMirrored({required this.raw ,});
 
-  const MirrorStructTwinNormal({
-    required this.a,
-    required this.b,
-    required this.c,
-    required this.d,
-  });
+                
+                
 
-  @override
-  int get hashCode => a.hashCode ^ b.hashCode ^ c.hashCode ^ d.hashCode;
+                
+        @override
+        int get hashCode => raw.hashCode;
+        
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is MirrorStructTwinNormal &&
-          runtimeType == other.runtimeType &&
-          a == other.a &&
-          b == other.b &&
-          c == other.c &&
-          d == other.d;
-}
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is ListOfNestedRawStringMirrored &&
+                runtimeType == other.runtimeType
+                && raw == other.raw;
+        
+            }
 
-class NestedRawStringMirrored {
-  final RawStringMirrored raw;
+class MirrorStructTwinNormal  {
+                final ApplicationSettings a;
+final MyStruct b;
+final List<MyEnum> c;
+final List<ApplicationSettings> d;
 
-  const NestedRawStringMirrored({
-    required this.raw,
-  });
+                const MirrorStructTwinNormal({required this.a ,required this.b ,required this.c ,required this.d ,});
 
-  @override
-  int get hashCode => raw.hashCode;
+                
+                
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is NestedRawStringMirrored &&
-          runtimeType == other.runtimeType &&
-          raw == other.raw;
-}
+                
+        @override
+        int get hashCode => a.hashCode^b.hashCode^c.hashCode^d.hashCode;
+        
 
-class Numbers {
-  final Int32List field0;
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is MirrorStructTwinNormal &&
+                runtimeType == other.runtimeType
+                && a == other.a&& b == other.b&& c == other.c&& d == other.d;
+        
+            }
 
-  const Numbers({
-    required this.field0,
-  });
+class NestedRawStringMirrored  {
+                final RawStringMirrored raw;
 
-  @override
-  int get hashCode => field0.hashCode;
+                const NestedRawStringMirrored({required this.raw ,});
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Numbers &&
-          runtimeType == other.runtimeType &&
-          field0 == other.field0;
-}
+                
+                
+
+                
+        @override
+        int get hashCode => raw.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is NestedRawStringMirrored &&
+                runtimeType == other.runtimeType
+                && raw == other.raw;
+        
+            }
+
+class Numbers  {
+                final Int32List field0;
+
+                const Numbers({required this.field0 ,});
+
+                
+                
+
+                
+        @override
+        int get hashCode => field0.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is Numbers &&
+                runtimeType == other.runtimeType
+                && field0 == other.field0;
+        
+            }
 
 @freezed
-sealed class RawStringEnumMirrored with _$RawStringEnumMirrored {
-  const RawStringEnumMirrored._();
+                sealed class RawStringEnumMirrored with _$RawStringEnumMirrored  {
+                    const RawStringEnumMirrored._();
 
-  const factory RawStringEnumMirrored.raw(
-    RawStringMirrored field0,
-  ) = RawStringEnumMirrored_Raw;
-  const factory RawStringEnumMirrored.nested(
-    NestedRawStringMirrored field0,
-  ) = RawStringEnumMirrored_Nested;
-  const factory RawStringEnumMirrored.listOfNested(
-    ListOfNestedRawStringMirrored field0,
-  ) = RawStringEnumMirrored_ListOfNested;
+                     const factory RawStringEnumMirrored.raw(  RawStringMirrored field0,) = RawStringEnumMirrored_Raw;
+ const factory RawStringEnumMirrored.nested(  NestedRawStringMirrored field0,) = RawStringEnumMirrored_Nested;
+ const factory RawStringEnumMirrored.listOfNested(  ListOfNestedRawStringMirrored field0,) = RawStringEnumMirrored_ListOfNested;
 
-  factory RawStringEnumMirrored.fromJson(Map<String, dynamic> json) =>
-      _$RawStringEnumMirroredFromJson(json);
-}
+                    
 
-class RawStringMirrored {
-  final String value;
+                    
+                }
 
-  const RawStringMirrored({
-    required this.value,
-  });
+class RawStringMirrored  {
+                final String value;
 
-  @override
-  int get hashCode => value.hashCode;
+                const RawStringMirrored({required this.value ,});
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is RawStringMirrored &&
-          runtimeType == other.runtimeType &&
-          value == other.value;
-}
+                
+                
 
-class Sequences {
-  final Int32List field0;
+                
+        @override
+        int get hashCode => value.hashCode;
+        
 
-  const Sequences({
-    required this.field0,
-  });
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is RawStringMirrored &&
+                runtimeType == other.runtimeType
+                && value == other.value;
+        
+            }
 
-  @override
-  int get hashCode => field0.hashCode;
+class Sequences  {
+                final Int32List field0;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Sequences &&
-          runtimeType == other.runtimeType &&
-          field0 == other.field0;
-}
+                const Sequences({required this.field0 ,});
 
-class StructWithHashMap {
-  final Map<String, HashMapValue> map;
+                
+                
 
-  const StructWithHashMap({
-    required this.map,
-  });
+                
+        @override
+        int get hashCode => field0.hashCode;
+        
 
-  @override
-  int get hashCode => map.hashCode;
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is Sequences &&
+                runtimeType == other.runtimeType
+                && field0 == other.field0;
+        
+            }
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is StructWithHashMap &&
-          runtimeType == other.runtimeType &&
-          map == other.map;
-}
+class StructWithHashMap  {
+                final Map<String, HashMapValue> map;
+
+                const StructWithHashMap({required this.map ,});
+
+                
+                
+
+                
+        @override
+        int get hashCode => map.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is StructWithHashMap &&
+                runtimeType == other.runtimeType
+                && map == other.map;
+        
+            }
+            

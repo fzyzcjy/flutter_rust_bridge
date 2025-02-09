@@ -9,249 +9,225 @@ import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-
 part 'misc_example_twin_rust_async.freezed.dart';
-part 'misc_example_twin_rust_async.g.dart';
 
-// These functions are ignored because they are not marked as `pub`: `visibility_restricted_func_twin_rust_async`
+            // These functions are ignored because they are not marked as `pub`: `visibility_restricted_func_twin_rust_async`
 // These types are ignored because they are not used by any `pub` functions: `MySizeFreezedTwinRustAsync`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`
 
-Future<MyTreeNodeTwinRustAsync> handleComplexStructTwinRustAsync(
-        {required MyTreeNodeTwinRustAsync s}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinRustAsyncHandleComplexStructTwinRustAsync(
-            s: s);
 
-Future<List<WeekdaysTwinRustAsync>> listOfPrimitiveEnumsTwinRustAsync(
-        {required List<WeekdaysTwinRustAsync> weekdays}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinRustAsyncListOfPrimitiveEnumsTwinRustAsync(
-            weekdays: weekdays);
+            Future<MyTreeNodeTwinRustAsync>  handleComplexStructTwinRustAsync({required MyTreeNodeTwinRustAsync s }) => RustLib.instance.api.crateApiPseudoManualMiscExampleTwinRustAsyncHandleComplexStructTwinRustAsync(s: s);
 
-Future<MyNestedStructTwinRustAsync> handleNestedStructTwinRustAsync(
-        {required MyNestedStructTwinRustAsync s}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinRustAsyncHandleNestedStructTwinRustAsync(
-            s: s);
+Future<List<WeekdaysTwinRustAsync>>  listOfPrimitiveEnumsTwinRustAsync({required List<WeekdaysTwinRustAsync> weekdays }) => RustLib.instance.api.crateApiPseudoManualMiscExampleTwinRustAsyncListOfPrimitiveEnumsTwinRustAsync(weekdays: weekdays);
 
-Future<BigBuffersTwinRustAsync> handleBigBuffersTwinRustAsync() => RustLib
-    .instance.api
-    .crateApiPseudoManualMiscExampleTwinRustAsyncHandleBigBuffersTwinRustAsync();
+Future<MyNestedStructTwinRustAsync>  handleNestedStructTwinRustAsync({required MyNestedStructTwinRustAsync s }) => RustLib.instance.api.crateApiPseudoManualMiscExampleTwinRustAsyncHandleNestedStructTwinRustAsync(s: s);
 
-Future<AbcTwinRustAsync> testAbcEnumTwinRustAsync(
-        {required AbcTwinRustAsync abc}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinRustAsyncTestAbcEnumTwinRustAsync(
-            abc: abc);
+Future<BigBuffersTwinRustAsync>  handleBigBuffersTwinRustAsync() => RustLib.instance.api.crateApiPseudoManualMiscExampleTwinRustAsyncHandleBigBuffersTwinRustAsync();
 
-Future<StructWithEnumTwinRustAsync> testStructWithEnumTwinRustAsync(
-        {required StructWithEnumTwinRustAsync se}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinRustAsyncTestStructWithEnumTwinRustAsync(
-            se: se);
+Future<AbcTwinRustAsync>  testAbcEnumTwinRustAsync({required AbcTwinRustAsync abc }) => RustLib.instance.api.crateApiPseudoManualMiscExampleTwinRustAsyncTestAbcEnumTwinRustAsync(abc: abc);
 
-Future<String> handleStringTwinRustAsync({required String s}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinRustAsyncHandleStringTwinRustAsync(
-            s: s);
+Future<StructWithEnumTwinRustAsync>  testStructWithEnumTwinRustAsync({required StructWithEnumTwinRustAsync se }) => RustLib.instance.api.crateApiPseudoManualMiscExampleTwinRustAsyncTestStructWithEnumTwinRustAsync(se: se);
 
-Future<String> handleCharTwinRustAsync({required String arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinRustAsyncHandleCharTwinRustAsync(
-            arg: arg);
+Future<String>  handleStringTwinRustAsync({required String s }) => RustLib.instance.api.crateApiPseudoManualMiscExampleTwinRustAsyncHandleStringTwinRustAsync(s: s);
 
-Future<Uint8List> handleVecU8TwinRustAsync({required List<int> v}) => RustLib
-    .instance.api
-    .crateApiPseudoManualMiscExampleTwinRustAsyncHandleVecU8TwinRustAsync(v: v);
+Future<String>  handleCharTwinRustAsync({required String arg }) => RustLib.instance.api.crateApiPseudoManualMiscExampleTwinRustAsyncHandleCharTwinRustAsync(arg: arg);
 
-Future<MySize> handleStructTwinRustAsync(
-        {required MySize arg, required MySize boxed}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinRustAsyncHandleStructTwinRustAsync(
-            arg: arg, boxed: boxed);
+Future<Uint8List>  handleVecU8TwinRustAsync({required List<int> v }) => RustLib.instance.api.crateApiPseudoManualMiscExampleTwinRustAsyncHandleVecU8TwinRustAsync(v: v);
 
-Future<int> positionalArgumentsTwinRustAsync(int a, int b) => RustLib
-    .instance.api
-    .crateApiPseudoManualMiscExampleTwinRustAsyncPositionalArgumentsTwinRustAsync(
-        a: a, b: b);
+Future<MySize>  handleStructTwinRustAsync({required MySize arg , required MySize boxed }) => RustLib.instance.api.crateApiPseudoManualMiscExampleTwinRustAsyncHandleStructTwinRustAsync(arg: arg, boxed: boxed);
 
-class ATwinRustAsync {
-  final String a;
+Future<int>  positionalArgumentsTwinRustAsync(int a, int b) => RustLib.instance.api.crateApiPseudoManualMiscExampleTwinRustAsyncPositionalArgumentsTwinRustAsync(a: a, b: b);
 
-  const ATwinRustAsync({
-    required this.a,
-  });
+            class ATwinRustAsync  {
+                final String a;
 
-  @override
-  int get hashCode => a.hashCode;
+                const ATwinRustAsync({required this.a ,});
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ATwinRustAsync &&
-          runtimeType == other.runtimeType &&
-          a == other.a;
-}
+                
+                
+
+                
+        @override
+        int get hashCode => a.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is ATwinRustAsync &&
+                runtimeType == other.runtimeType
+                && a == other.a;
+        
+            }
 
 @freezed
-sealed class AbcTwinRustAsync with _$AbcTwinRustAsync {
-  const AbcTwinRustAsync._();
+                sealed class AbcTwinRustAsync with _$AbcTwinRustAsync  {
+                    const AbcTwinRustAsync._();
 
-  const factory AbcTwinRustAsync.a(
-    ATwinRustAsync field0,
-  ) = AbcTwinRustAsync_A;
-  const factory AbcTwinRustAsync.b(
-    BTwinRustAsync field0,
-  ) = AbcTwinRustAsync_B;
-  const factory AbcTwinRustAsync.c(
-    CTwinRustAsync field0,
-  ) = AbcTwinRustAsync_C;
-  const factory AbcTwinRustAsync.justInt(
-    int field0,
-  ) = AbcTwinRustAsync_JustInt;
+                     const factory AbcTwinRustAsync.a(  ATwinRustAsync field0,) = AbcTwinRustAsync_A;
+ const factory AbcTwinRustAsync.b(  BTwinRustAsync field0,) = AbcTwinRustAsync_B;
+ const factory AbcTwinRustAsync.c(  CTwinRustAsync field0,) = AbcTwinRustAsync_C;
+ const factory AbcTwinRustAsync.justInt(  int field0,) = AbcTwinRustAsync_JustInt;
 
-  factory AbcTwinRustAsync.fromJson(Map<String, dynamic> json) =>
-      _$AbcTwinRustAsyncFromJson(json);
-}
+                    
 
-class BTwinRustAsync {
-  final int b;
+                    
+                }
 
-  const BTwinRustAsync({
-    required this.b,
-  });
+class BTwinRustAsync  {
+                final int b;
 
-  @override
-  int get hashCode => b.hashCode;
+                const BTwinRustAsync({required this.b ,});
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is BTwinRustAsync &&
-          runtimeType == other.runtimeType &&
-          b == other.b;
-}
+                
+                
 
-class BigBuffersTwinRustAsync {
-  final Int64List int64;
-  final Uint64List uint64;
+                
+        @override
+        int get hashCode => b.hashCode;
+        
 
-  const BigBuffersTwinRustAsync({
-    required this.int64,
-    required this.uint64,
-  });
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is BTwinRustAsync &&
+                runtimeType == other.runtimeType
+                && b == other.b;
+        
+            }
 
-  @override
-  int get hashCode => int64.hashCode ^ uint64.hashCode;
+class BigBuffersTwinRustAsync  {
+                final Int64List int64;
+final Uint64List uint64;
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is BigBuffersTwinRustAsync &&
-          runtimeType == other.runtimeType &&
-          int64 == other.int64 &&
-          uint64 == other.uint64;
-}
+                const BigBuffersTwinRustAsync({required this.int64 ,required this.uint64 ,});
 
-class CTwinRustAsync {
-  final bool c;
+                
+                
 
-  const CTwinRustAsync({
-    required this.c,
-  });
+                
+        @override
+        int get hashCode => int64.hashCode^uint64.hashCode;
+        
 
-  @override
-  int get hashCode => c.hashCode;
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is BigBuffersTwinRustAsync &&
+                runtimeType == other.runtimeType
+                && int64 == other.int64&& uint64 == other.uint64;
+        
+            }
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CTwinRustAsync &&
-          runtimeType == other.runtimeType &&
-          c == other.c;
-}
+class CTwinRustAsync  {
+                final bool c;
 
-class MyNestedStructTwinRustAsync {
-  final MyTreeNodeTwinRustAsync treeNode;
-  final WeekdaysTwinRustAsync weekday;
+                const CTwinRustAsync({required this.c ,});
 
-  const MyNestedStructTwinRustAsync({
-    required this.treeNode,
-    required this.weekday,
-  });
+                
+                
 
-  @override
-  int get hashCode => treeNode.hashCode ^ weekday.hashCode;
+                
+        @override
+        int get hashCode => c.hashCode;
+        
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is MyNestedStructTwinRustAsync &&
-          runtimeType == other.runtimeType &&
-          treeNode == other.treeNode &&
-          weekday == other.weekday;
-}
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is CTwinRustAsync &&
+                runtimeType == other.runtimeType
+                && c == other.c;
+        
+            }
 
-class MyTreeNodeTwinRustAsync {
-  final int valueI32;
-  final Uint8List valueVecU8;
-  final bool valueBoolean;
-  final List<MyTreeNodeTwinRustAsync> children;
+class MyNestedStructTwinRustAsync  {
+                final MyTreeNodeTwinRustAsync treeNode;
+final WeekdaysTwinRustAsync weekday;
 
-  const MyTreeNodeTwinRustAsync({
-    required this.valueI32,
-    required this.valueVecU8,
-    required this.valueBoolean,
-    required this.children,
-  });
+                const MyNestedStructTwinRustAsync({required this.treeNode ,required this.weekday ,});
 
-  @override
-  int get hashCode =>
-      valueI32.hashCode ^
-      valueVecU8.hashCode ^
-      valueBoolean.hashCode ^
-      children.hashCode;
+                
+                
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is MyTreeNodeTwinRustAsync &&
-          runtimeType == other.runtimeType &&
-          valueI32 == other.valueI32 &&
-          valueVecU8 == other.valueVecU8 &&
-          valueBoolean == other.valueBoolean &&
-          children == other.children;
-}
+                
+        @override
+        int get hashCode => treeNode.hashCode^weekday.hashCode;
+        
 
-class StructWithEnumTwinRustAsync {
-  final AbcTwinRustAsync abc1;
-  final AbcTwinRustAsync abc2;
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is MyNestedStructTwinRustAsync &&
+                runtimeType == other.runtimeType
+                && treeNode == other.treeNode&& weekday == other.weekday;
+        
+            }
 
-  const StructWithEnumTwinRustAsync({
-    required this.abc1,
-    required this.abc2,
-  });
+class MyTreeNodeTwinRustAsync  {
+                final int valueI32;
+final Uint8List valueVecU8;
+final bool valueBoolean;
+final List<MyTreeNodeTwinRustAsync> children;
 
-  @override
-  int get hashCode => abc1.hashCode ^ abc2.hashCode;
+                const MyTreeNodeTwinRustAsync({required this.valueI32 ,required this.valueVecU8 ,required this.valueBoolean ,required this.children ,});
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is StructWithEnumTwinRustAsync &&
-          runtimeType == other.runtimeType &&
-          abc1 == other.abc1 &&
-          abc2 == other.abc2;
-}
+                
+                
+
+                
+        @override
+        int get hashCode => valueI32.hashCode^valueVecU8.hashCode^valueBoolean.hashCode^children.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is MyTreeNodeTwinRustAsync &&
+                runtimeType == other.runtimeType
+                && valueI32 == other.valueI32&& valueVecU8 == other.valueVecU8&& valueBoolean == other.valueBoolean&& children == other.children;
+        
+            }
+
+class StructWithEnumTwinRustAsync  {
+                final AbcTwinRustAsync abc1;
+final AbcTwinRustAsync abc2;
+
+                const StructWithEnumTwinRustAsync({required this.abc1 ,required this.abc2 ,});
+
+                
+                
+
+                
+        @override
+        int get hashCode => abc1.hashCode^abc2.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is StructWithEnumTwinRustAsync &&
+                runtimeType == other.runtimeType
+                && abc1 == other.abc1&& abc2 == other.abc2;
+        
+            }
 
 enum WeekdaysTwinRustAsync {
-  monday,
-  tuesday,
-  wednesday,
-  thursday,
-  friday,
-  saturday,
-  sunday,
-  ;
-}
+                    monday,
+tuesday,
+wednesday,
+thursday,
+friday,
+saturday,
+sunday,
+                    ;
+                    
+                }
+            
