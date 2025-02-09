@@ -10,9 +10,11 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
 
-int constInt() => RustLib.instance.api.crateApiMinimalConstInt();
+int constIntTwinNormal() =>
+    RustLib.instance.api.crateApiMinimalConstIntTwinNormal();
 
-F32Array3 constArray() => RustLib.instance.api.crateApiMinimalConstArray();
+F32Array3 constArrayTwinNormal() =>
+    RustLib.instance.api.crateApiMinimalConstArrayTwinNormal();
 
 class F32Array3 extends NonGrowableListView<double> {
   static const arraySize = 3;

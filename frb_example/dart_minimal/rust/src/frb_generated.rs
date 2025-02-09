@@ -37,7 +37,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.7.1";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 508254727;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 852417482;
 
 // Section: executor
 
@@ -45,14 +45,14 @@ flutter_rust_bridge::frb_generated_default_handler!();
 
 // Section: wire_funcs
 
-fn wire__crate__api__minimal__CONST_ARRAY_impl(
+fn wire__crate__api__minimal__CONST_ARRAY_TWIN_NORMAL_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "CONST_ARRAY",
+            debug_name: "CONST_ARRAY_TWIN_NORMAL",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -68,20 +68,20 @@ fn wire__crate__api__minimal__CONST_ARRAY_impl(
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(crate::api::minimal::CONST_ARRAY)?;
+                let output_ok = Result::<_, ()>::Ok(crate::api::minimal::CONST_ARRAY_TWIN_NORMAL)?;
                 Ok(output_ok)
             })())
         },
     )
 }
-fn wire__crate__api__minimal__CONST_INT_impl(
+fn wire__crate__api__minimal__CONST_INT_TWIN_NORMAL_impl(
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "CONST_INT",
+            debug_name: "CONST_INT_TWIN_NORMAL",
             port: None,
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
@@ -97,7 +97,7 @@ fn wire__crate__api__minimal__CONST_INT_impl(
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             deserializer.end();
             transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(crate::api::minimal::CONST_INT)?;
+                let output_ok = Result::<_, ()>::Ok(crate::api::minimal::CONST_INT_TWIN_NORMAL)?;
                 Ok(output_ok)
             })())
         },
@@ -244,8 +244,8 @@ fn pde_ffi_dispatcher_sync_impl(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
-        1 => wire__crate__api__minimal__CONST_ARRAY_impl(ptr, rust_vec_len, data_len),
-        2 => wire__crate__api__minimal__CONST_INT_impl(ptr, rust_vec_len, data_len),
+        1 => wire__crate__api__minimal__CONST_ARRAY_TWIN_NORMAL_impl(ptr, rust_vec_len, data_len),
+        2 => wire__crate__api__minimal__CONST_INT_TWIN_NORMAL_impl(ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }

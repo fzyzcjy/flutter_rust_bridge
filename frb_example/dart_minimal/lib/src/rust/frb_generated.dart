@@ -68,7 +68,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.7.1';
 
   @override
-  int get rustContentHash => 508254727;
+  int get rustContentHash => 852417482;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -79,9 +79,9 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  F32Array3 crateApiMinimalConstArray();
+  F32Array3 crateApiMinimalConstArrayTwinNormal();
 
-  int crateApiMinimalConstInt();
+  int crateApiMinimalConstIntTwinNormal();
 
   Future<void> crateApiMinimalInitApp();
 
@@ -97,7 +97,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  F32Array3 crateApiMinimalConstArray() {
+  F32Array3 crateApiMinimalConstArrayTwinNormal() {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -107,19 +107,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_f_32_array_3,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiMinimalConstArrayConstMeta,
+      constMeta: kCrateApiMinimalConstArrayTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiMinimalConstArrayConstMeta => const TaskConstMeta(
-        debugName: "CONST_ARRAY",
+  TaskConstMeta get kCrateApiMinimalConstArrayTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "CONST_ARRAY_TWIN_NORMAL",
         argNames: [],
       );
 
   @override
-  int crateApiMinimalConstInt() {
+  int crateApiMinimalConstIntTwinNormal() {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
@@ -129,14 +130,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_i_32,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiMinimalConstIntConstMeta,
+      constMeta: kCrateApiMinimalConstIntTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiMinimalConstIntConstMeta => const TaskConstMeta(
-        debugName: "CONST_INT",
+  TaskConstMeta get kCrateApiMinimalConstIntTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "CONST_INT_TWIN_NORMAL",
         argNames: [],
       );
 
