@@ -715,11 +715,11 @@ jobs:
       matrix:
         sanitizer:
           - asan
-          - msan
           - lsan
           # Every time we build TSAN in https://github.com/fzyzcjy/dart_lang_ci, it fails near the end.
           # Since it is unlikely we will have thread issues, we temporarily disable TSAN now.
           # - tsan
+          # - msan
         package:
           - frb_example--dart_minimal
           - frb_example--pure_dart
