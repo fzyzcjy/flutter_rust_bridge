@@ -77,11 +77,11 @@ pub(crate) fn generate(
         compute_return_type_and_params(func, &func_return_type_raw, &func_params);
 
     let func_expr = format!(
-        "{return_type} {maybe_accessor} {func_name}{func_params_str}",
+        "{return_type} {maybe_accessor} {func_name}{func_params}",
+        func_name = func.name_dart_api(),
         return_type = return_type_and_params.return_type,
         maybe_accessor = return_type_and_params.maybe_accessor,
-        func_name = func.name_dart_api(),
-        func_params_str = return_type_and_params.func_params,
+        func_params = return_type_and_params.func_params,
     );
 
     let func_comments = generate_dart_comments(&func.comments);
