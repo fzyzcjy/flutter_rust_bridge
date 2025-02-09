@@ -7,9 +7,6 @@ pub fn datetime_utc_twin_normal(d: chrono::DateTime<chrono::Utc>) -> chrono::Dat
     assert_eq!(&d.hour(), &20);
     assert_eq!(&d.minute(), &48);
     assert_eq!(&d.second(), &53);
-    #[cfg(target_arch = "wasm32")]
-    assert_eq!(&d.nanosecond(), &123_000_000);
-    #[cfg(not(target_arch = "wasm32"))]
     assert_eq!(&d.nanosecond(), &123_456_000);
     d
 }
@@ -22,12 +19,8 @@ pub fn datetime_local_twin_normal(
     assert_eq!(&d.year(), &2022);
     assert_eq!(&d.month(), &9);
     assert_eq!(&d.day(), &10);
-    if cfg!(target_arch = "wasm32") {
-        assert_eq!(&d.nanosecond(), &123_000_000);
-    } else {
-        assert_eq!(&d.hour(), &20);
-        assert_eq!(&d.nanosecond(), &123_456_000);
-    }
+    assert_eq!(&d.hour(), &20);
+    assert_eq!(&d.nanosecond(), &123_456_000);
     assert_eq!(&d.minute(), &48);
     assert_eq!(&d.second(), &53);
     d
@@ -41,9 +34,6 @@ pub fn naivedatetime_twin_normal(d: chrono::NaiveDateTime) -> chrono::NaiveDateT
     assert_eq!(&d.hour(), &20);
     assert_eq!(&d.minute(), &48);
     assert_eq!(&d.second(), &53);
-    #[cfg(target_arch = "wasm32")]
-    assert_eq!(&d.nanosecond(), &123_000_000);
-    #[cfg(not(target_arch = "wasm32"))]
     assert_eq!(&d.nanosecond(), &123_456_000);
     d
 }
@@ -137,9 +127,6 @@ pub fn how_long_does_it_take_twin_normal(
     assert_eq!(&mine.naive.hour(), &20);
     assert_eq!(&mine.naive.minute(), &48);
     assert_eq!(&mine.naive.second(), &53);
-    #[cfg(target_arch = "wasm32")]
-    assert_eq!(&mine.naive.nanosecond(), &123_000_000);
-    #[cfg(not(target_arch = "wasm32"))]
     assert_eq!(&mine.naive.nanosecond(), &123_456_000);
     Ok(difference)
 }
