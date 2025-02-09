@@ -21,12 +21,13 @@ pub(crate) mod internal_config;
 pub(super) fn polish(
     config: &PolisherInternalConfig,
     needs_freezed: bool,
+    needs_json_serializable: bool,
     output_paths: &[PathBuf],
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<()> {
     execute_try_add_mod_to_lib(config);
     execute_duplicate_c_output(config)?;
-    ensure_dependency_freezed(config, needs_freezed)?;
+    ensure_dependencies(config, needs_freezed)?;
 
     warn_if_fail(
         execute_build_runner(needs_freezed, config, progress_bar_pack),
@@ -57,9 +58,10 @@ pub(super) fn polish(
     Ok(())
 }
 
-fn ensure_dependency_freezed(
+fn ensure_dependencies(
     config: &PolisherInternalConfig,
     needs_freezed: bool,
+    needs_json_serializable: bool,
 ) -> anyhow::Result<()> {
     lazy_static! {
         pub(crate) static ref ANY_REQUIREMENT: VersionReq = VersionReq::parse(">= 1.0.0").unwrap();
@@ -80,17 +82,19 @@ fn ensure_dependency_freezed(
         )?;
     }
 
-    // TODO add something like `needs_json_serializable`
-    // repo.has_specified_and_installed(
-    //     "json_annotation",
-    //     DartDependencyMode::Main,
-    //     &ANY_REQUIREMENT,
-    // )?;
-    // repo.has_specified_and_installed(
-    //     "json_serializable",
-    //     DartDependencyMode::Dev,
-    //     &ANY_REQUIREMENT,
-    // )?;
+    if needs_json_serializable {
+        let repo = DartRepository::from_path(&config.dart_root)?;
+        repo.has_specified_and_installed(
+            "json_annotation",
+            DartDependencyMode::Main,
+            &ANY_REQUIREMENT,
+        )?;
+        repo.has_specified_and_installed(
+            "json_serializable",
+            DartDependencyMode::Dev,
+            &ANY_REQUIREMENT,
+        )?;
+    }
 
     Ok(())
 }
