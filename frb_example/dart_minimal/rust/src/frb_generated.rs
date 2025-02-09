@@ -32,9 +32,9 @@ use flutter_rust_bridge::{Handler, IntoIntoDart};
 // Section: boilerplate
 
 flutter_rust_bridge::frb_generated_boilerplate!(
-    default_stream_sink_codec = DcoCodec,
-    default_rust_opaque = RustOpaqueNom,
-    default_rust_auto_opaque = RustAutoOpaqueNom,
+    default_stream_sink_codec = SseCodec,
+    default_rust_opaque = RustOpaqueMoi,
+    default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.7.1";
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -2119384465;
@@ -47,16 +47,29 @@ flutter_rust_bridge::frb_generated_default_handler!();
 
 fn wire__crate__api__minimal__init_app_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "init_app",
             port: Some(port_),
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end();
             move |context| {
-                transform_result_dco::<_, _, ()>((move || {
+                transform_result_sse::<_, ()>((move || {
                     let output_ok = Result::<_, ()>::Ok({
                         crate::api::minimal::init_app();
                     })?;
@@ -68,20 +81,31 @@ fn wire__crate__api__minimal__init_app_impl(
 }
 fn wire__crate__api__minimal__minimal_adder_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
-    a: impl CstDecode<i32>,
-    b: impl CstDecode<i32>,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::DcoCodec, _, _>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "minimal_adder",
             port: Some(port_),
             mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
         },
         move || {
-            let api_a = a.cst_decode();
-            let api_b = b.cst_decode();
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_a = <i32>::sse_decode(&mut deserializer);
+            let api_b = <i32>::sse_decode(&mut deserializer);
+            deserializer.end();
             move |context| {
-                transform_result_dco::<_, _, ()>((move || {
+                transform_result_sse::<_, ()>((move || {
                     let output_ok =
                         Result::<_, ()>::Ok(crate::api::minimal::minimal_adder(api_a, api_b))?;
                     Ok(output_ok)
@@ -93,12 +117,6 @@ fn wire__crate__api__minimal__minimal_adder_impl(
 
 // Section: dart2rust
 
-impl CstDecode<i32> for i32 {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    fn cst_decode(self) -> i32 {
-        self
-    }
-}
 impl SseDecode for i32 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -127,6 +145,8 @@ fn pde_ffi_dispatcher_primary_impl(
 ) {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
+        1 => wire__crate__api__minimal__init_app_impl(port, ptr, rust_vec_len, data_len),
+        2 => wire__crate__api__minimal__minimal_adder_impl(port, ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
@@ -181,22 +201,6 @@ mod io {
     // Section: boilerplate
 
     flutter_rust_bridge::frb_generated_boilerplate_io!();
-
-    #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_frb_example_dart_minimal_wire__crate__api__minimal__init_app(
-        port_: i64,
-    ) {
-        wire__crate__api__minimal__init_app_impl(port_)
-    }
-
-    #[unsafe(no_mangle)]
-    pub extern "C" fn frbgen_frb_example_dart_minimal_wire__crate__api__minimal__minimal_adder(
-        port_: i64,
-        a: i32,
-        b: i32,
-    ) {
-        wire__crate__api__minimal__minimal_adder_impl(port_, a, b)
-    }
 }
 #[cfg(not(target_family = "wasm"))]
 pub use io::*;
@@ -221,31 +225,6 @@ mod web {
     // Section: boilerplate
 
     flutter_rust_bridge::frb_generated_boilerplate_web!();
-
-    // Section: dart2rust
-
-    impl CstDecode<i32> for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue {
-        // Codec=Cst (C-struct based), see doc to use other codecs
-        fn cst_decode(self) -> i32 {
-            self.unchecked_into_f64() as _
-        }
-    }
-
-    #[wasm_bindgen]
-    pub fn wire__crate__api__minimal__init_app(
-        port_: flutter_rust_bridge::for_generated::MessagePort,
-    ) {
-        wire__crate__api__minimal__init_app_impl(port_)
-    }
-
-    #[wasm_bindgen]
-    pub fn wire__crate__api__minimal__minimal_adder(
-        port_: flutter_rust_bridge::for_generated::MessagePort,
-        a: i32,
-        b: i32,
-    ) {
-        wire__crate__api__minimal__minimal_adder_impl(port_, a, b)
-    }
 }
 #[cfg(target_family = "wasm")]
 pub use web::*;
