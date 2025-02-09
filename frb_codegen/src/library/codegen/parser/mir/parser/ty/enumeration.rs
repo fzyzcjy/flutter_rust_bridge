@@ -59,6 +59,7 @@ impl TypeParserWithContext<'_, '_, '_> {
             &name.namespace.crate_name(),
             self.context,
         );
+        let needs_json_serializable = TODO;
 
         Ok(MirEnum {
             name,
@@ -67,6 +68,7 @@ impl TypeParserWithContext<'_, '_, '_> {
             variants,
             mode,
             ignore,
+            needs_json_serializable,
         })
     }
 
