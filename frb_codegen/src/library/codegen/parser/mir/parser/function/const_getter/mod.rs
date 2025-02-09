@@ -23,12 +23,12 @@ pub(crate) fn parse(
     parse_mode: ParseMode,
 ) -> anyhow::Result<Vec<MirFuncOrSkip>> {
     (src_constants.iter())
-        .map(|constant| parse_constant(&config, type_parser, parse_mode, constant))
+        .map(|constant| parse_constant(config, type_parser, parse_mode, constant))
         .collect()
 }
 
 fn parse_constant(
-    config: &&ParserMirInternalConfig,
+    config: &ParserMirInternalConfig,
     type_parser: &mut TypeParser,
     parse_mode: ParseMode,
     constant: &HirFlatConstant,
