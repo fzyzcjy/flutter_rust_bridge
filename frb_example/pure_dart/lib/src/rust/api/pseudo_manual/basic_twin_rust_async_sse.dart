@@ -8,7 +8,9 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+
 part 'basic_twin_rust_async_sse.freezed.dart';
+part 'basic_twin_rust_async_sse.g.dart';
 
 Future<int> exampleBasicTypeI8TwinRustAsyncSse(
         {required int arg, required String expect}) =>
@@ -139,6 +141,10 @@ sealed class BasicGeneralEnumTwinRustAsyncSse
   }) = BasicGeneralEnumTwinRustAsyncSse_Apple;
   const factory BasicGeneralEnumTwinRustAsyncSse.orange() =
       BasicGeneralEnumTwinRustAsyncSse_Orange;
+
+  factory BasicGeneralEnumTwinRustAsyncSse.fromJson(
+          Map<String, dynamic> json) =>
+      _$BasicGeneralEnumTwinRustAsyncSseFromJson(json);
 }
 
 enum BasicPrimitiveEnumTwinRustAsyncSse {

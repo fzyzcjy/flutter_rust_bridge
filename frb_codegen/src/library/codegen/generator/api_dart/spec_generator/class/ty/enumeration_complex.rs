@@ -36,6 +36,9 @@ impl EnumRefApiDartGenerator<'_> {
         };
         let maybe_implements_exception =
             generate_dart_maybe_implements_exception(self.mir.is_exception);
+        let json_serde = format!(
+            "factory {name}.fromJson(Map<String, dynamic> json) => _${name}FromJson(json);",
+        );
 
         Some(ApiDartGeneratedClass {
             namespace: src.name.namespace.clone(),
@@ -46,6 +49,8 @@ impl EnumRefApiDartGenerator<'_> {
                     const {name}._();
 
                     {variants}
+
+                    {json_serde}
 
                     {extra_body}
                 }}",

@@ -11,7 +11,9 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_opaque_sync_twin_sse.dart';
 import 'rust_opaque_twin_rust_async.dart';
+
 part 'rust_opaque_twin_sse.freezed.dart';
+part 'rust_opaque_twin_sse.g.dart';
 
 Future<HideDataTwinSse> createOpaqueTwinSse() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueTwinSseCreateOpaqueTwinSse();
@@ -126,6 +128,9 @@ sealed class EnumOpaqueTwinSse with _$EnumOpaqueTwinSse {
     RwLockHideDataTwinSse field0,
   ) = EnumOpaqueTwinSse_RwLock;
   const factory EnumOpaqueTwinSse.nothing() = EnumOpaqueTwinSse_Nothing;
+
+  factory EnumOpaqueTwinSse.fromJson(Map<String, dynamic> json) =>
+      _$EnumOpaqueTwinSseFromJson(json);
 }
 
 class EnumOpaqueTwinSseArray5 extends NonGrowableListView<EnumOpaqueTwinSse> {

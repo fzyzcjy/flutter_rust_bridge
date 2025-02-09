@@ -9,7 +9,9 @@ import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+
 part 'misc_example_twin_sync.freezed.dart';
+part 'misc_example_twin_sync.g.dart';
 
 // These functions are ignored because they are not marked as `pub`: `visibility_restricted_func_twin_sync`
 // These types are ignored because they are not used by any `pub` functions: `MySizeFreezedTwinSync`
@@ -96,6 +98,9 @@ sealed class AbcTwinSync with _$AbcTwinSync {
   const factory AbcTwinSync.justInt(
     int field0,
   ) = AbcTwinSync_JustInt;
+
+  factory AbcTwinSync.fromJson(Map<String, dynamic> json) =>
+      _$AbcTwinSyncFromJson(json);
 }
 
 class BTwinSync {

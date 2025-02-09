@@ -8,7 +8,9 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+
 part 'basic_twin_sse.freezed.dart';
+part 'basic_twin_sse.g.dart';
 
 Future<int> exampleBasicTypeI8TwinSse(
         {required int arg, required String expect}) =>
@@ -130,6 +132,9 @@ sealed class BasicGeneralEnumTwinSse with _$BasicGeneralEnumTwinSse {
   }) = BasicGeneralEnumTwinSse_Apple;
   const factory BasicGeneralEnumTwinSse.orange() =
       BasicGeneralEnumTwinSse_Orange;
+
+  factory BasicGeneralEnumTwinSse.fromJson(Map<String, dynamic> json) =>
+      _$BasicGeneralEnumTwinSseFromJson(json);
 }
 
 enum BasicPrimitiveEnumTwinSse {

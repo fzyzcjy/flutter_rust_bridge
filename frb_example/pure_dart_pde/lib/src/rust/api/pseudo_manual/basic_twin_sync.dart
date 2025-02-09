@@ -8,7 +8,9 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+
 part 'basic_twin_sync.freezed.dart';
+part 'basic_twin_sync.g.dart';
 
 int exampleBasicTypeI8TwinSync({required int arg, required String expect}) =>
     RustLib.instance.api
@@ -122,6 +124,9 @@ sealed class BasicGeneralEnumTwinSync with _$BasicGeneralEnumTwinSync {
   }) = BasicGeneralEnumTwinSync_Apple;
   const factory BasicGeneralEnumTwinSync.orange() =
       BasicGeneralEnumTwinSync_Orange;
+
+  factory BasicGeneralEnumTwinSync.fromJson(Map<String, dynamic> json) =>
+      _$BasicGeneralEnumTwinSyncFromJson(json);
 }
 
 enum BasicPrimitiveEnumTwinSync {

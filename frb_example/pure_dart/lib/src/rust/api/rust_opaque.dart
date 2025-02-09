@@ -10,7 +10,9 @@ import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'pseudo_manual/rust_opaque_twin_rust_async.dart';
+
 part 'rust_opaque.freezed.dart';
+part 'rust_opaque.g.dart';
 
 Future<HideDataTwinNormal> createOpaqueTwinNormal() =>
     RustLib.instance.api.crateApiRustOpaqueCreateOpaqueTwinNormal();
@@ -124,6 +126,9 @@ sealed class EnumOpaqueTwinNormal with _$EnumOpaqueTwinNormal {
     RwLockHideDataTwinNormal field0,
   ) = EnumOpaqueTwinNormal_RwLock;
   const factory EnumOpaqueTwinNormal.nothing() = EnumOpaqueTwinNormal_Nothing;
+
+  factory EnumOpaqueTwinNormal.fromJson(Map<String, dynamic> json) =>
+      _$EnumOpaqueTwinNormalFromJson(json);
 }
 
 class EnumOpaqueTwinNormalArray5

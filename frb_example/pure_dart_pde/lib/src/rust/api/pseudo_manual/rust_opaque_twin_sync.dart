@@ -10,7 +10,9 @@ import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_opaque_twin_rust_async.dart';
+
 part 'rust_opaque_twin_sync.freezed.dart';
+part 'rust_opaque_twin_sync.g.dart';
 
 HideDataTwinSync createOpaqueTwinSync() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueTwinSyncCreateOpaqueTwinSync();
@@ -127,6 +129,9 @@ sealed class EnumOpaqueTwinSync with _$EnumOpaqueTwinSync {
     RwLockHideDataTwinSync field0,
   ) = EnumOpaqueTwinSync_RwLock;
   const factory EnumOpaqueTwinSync.nothing() = EnumOpaqueTwinSync_Nothing;
+
+  factory EnumOpaqueTwinSync.fromJson(Map<String, dynamic> json) =>
+      _$EnumOpaqueTwinSyncFromJson(json);
 }
 
 class EnumOpaqueTwinSyncArray5 extends NonGrowableListView<EnumOpaqueTwinSync> {

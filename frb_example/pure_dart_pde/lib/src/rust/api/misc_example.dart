@@ -9,7 +9,9 @@ import '../auxiliary/sample_types.dart';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+
 part 'misc_example.freezed.dart';
+part 'misc_example.g.dart';
 
 // These functions are ignored because they are not marked as `pub`: `visibility_restricted_func_twin_normal`
 // These types are ignored because they are not used by any `pub` functions: `MySizeFreezedTwinNormal`
@@ -88,6 +90,9 @@ sealed class AbcTwinNormal with _$AbcTwinNormal {
   const factory AbcTwinNormal.justInt(
     int field0,
   ) = AbcTwinNormal_JustInt;
+
+  factory AbcTwinNormal.fromJson(Map<String, dynamic> json) =>
+      _$AbcTwinNormalFromJson(json);
 }
 
 class BTwinNormal {

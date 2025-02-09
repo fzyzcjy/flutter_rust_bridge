@@ -9,7 +9,9 @@ import '../../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+
 part 'method_twin_sse.freezed.dart';
+part 'method_twin_sse.g.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 
@@ -137,6 +139,9 @@ sealed class SimpleEnumTwinSse with _$SimpleEnumTwinSse {
   const factory SimpleEnumTwinSse.second(
     String field0,
   ) = SimpleEnumTwinSse_Second;
+
+  factory SimpleEnumTwinSse.fromJson(Map<String, dynamic> json) =>
+      _$SimpleEnumTwinSseFromJson(json);
 
   static Future<SimpleEnumTwinSse> returnSelfTwinSse({required String one}) =>
       RustLib.instance.api

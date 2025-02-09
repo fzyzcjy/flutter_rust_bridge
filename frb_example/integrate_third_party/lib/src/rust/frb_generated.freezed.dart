@@ -14,6 +14,64 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
+AudioNodeImplementor _$AudioNodeImplementorFromJson(Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'variant0':
+      return AudioNodeImplementor_Variant0.fromJson(json);
+    case 'variant1':
+      return AudioNodeImplementor_Variant1.fromJson(json);
+    case 'variant2':
+      return AudioNodeImplementor_Variant2.fromJson(json);
+    case 'variant3':
+      return AudioNodeImplementor_Variant3.fromJson(json);
+    case 'variant4':
+      return AudioNodeImplementor_Variant4.fromJson(json);
+    case 'variant5':
+      return AudioNodeImplementor_Variant5.fromJson(json);
+    case 'variant6':
+      return AudioNodeImplementor_Variant6.fromJson(json);
+    case 'variant7':
+      return AudioNodeImplementor_Variant7.fromJson(json);
+    case 'variant8':
+      return AudioNodeImplementor_Variant8.fromJson(json);
+    case 'variant9':
+      return AudioNodeImplementor_Variant9.fromJson(json);
+    case 'variant10':
+      return AudioNodeImplementor_Variant10.fromJson(json);
+    case 'variant11':
+      return AudioNodeImplementor_Variant11.fromJson(json);
+    case 'variant12':
+      return AudioNodeImplementor_Variant12.fromJson(json);
+    case 'variant13':
+      return AudioNodeImplementor_Variant13.fromJson(json);
+    case 'variant14':
+      return AudioNodeImplementor_Variant14.fromJson(json);
+    case 'variant15':
+      return AudioNodeImplementor_Variant15.fromJson(json);
+    case 'variant16':
+      return AudioNodeImplementor_Variant16.fromJson(json);
+    case 'variant17':
+      return AudioNodeImplementor_Variant17.fromJson(json);
+    case 'variant18':
+      return AudioNodeImplementor_Variant18.fromJson(json);
+    case 'variant19':
+      return AudioNodeImplementor_Variant19.fromJson(json);
+    case 'variant20':
+      return AudioNodeImplementor_Variant20.fromJson(json);
+    case 'variant21':
+      return AudioNodeImplementor_Variant21.fromJson(json);
+    case 'variant22':
+      return AudioNodeImplementor_Variant22.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          'runtimeType',
+          'AudioNodeImplementor',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
+}
+
 /// @nodoc
 mixin _$AudioNodeImplementor {
   Object get field0 => throw _privateConstructorUsedError;
@@ -181,6 +239,7 @@ mixin _$AudioNodeImplementor {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -237,13 +296,22 @@ class __$$AudioNodeImplementor_Variant0ImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AudioNodeImplementor_Variant0Impl
     extends AudioNodeImplementor_Variant0 {
-  const _$AudioNodeImplementor_Variant0Impl(this.field0) : super._();
+  const _$AudioNodeImplementor_Variant0Impl(this.field0, {final String? $type})
+      : $type = $type ?? 'variant0',
+        super._();
+
+  factory _$AudioNodeImplementor_Variant0Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$AudioNodeImplementor_Variant0ImplFromJson(json);
 
   @override
   final AnalyserNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -258,6 +326,7 @@ class _$AudioNodeImplementor_Variant0Impl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -456,12 +525,22 @@ class _$AudioNodeImplementor_Variant0Impl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AudioNodeImplementor_Variant0ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class AudioNodeImplementor_Variant0 extends AudioNodeImplementor {
   const factory AudioNodeImplementor_Variant0(final AnalyserNode field0) =
       _$AudioNodeImplementor_Variant0Impl;
   const AudioNodeImplementor_Variant0._() : super._();
+
+  factory AudioNodeImplementor_Variant0.fromJson(Map<String, dynamic> json) =
+      _$AudioNodeImplementor_Variant0Impl.fromJson;
 
   @override
   AnalyserNode get field0;
@@ -506,13 +585,22 @@ class __$$AudioNodeImplementor_Variant1ImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AudioNodeImplementor_Variant1Impl
     extends AudioNodeImplementor_Variant1 {
-  const _$AudioNodeImplementor_Variant1Impl(this.field0) : super._();
+  const _$AudioNodeImplementor_Variant1Impl(this.field0, {final String? $type})
+      : $type = $type ?? 'variant1',
+        super._();
+
+  factory _$AudioNodeImplementor_Variant1Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$AudioNodeImplementor_Variant1ImplFromJson(json);
 
   @override
   final AudioBufferSourceNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -527,6 +615,7 @@ class _$AudioNodeImplementor_Variant1Impl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -725,12 +814,22 @@ class _$AudioNodeImplementor_Variant1Impl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AudioNodeImplementor_Variant1ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class AudioNodeImplementor_Variant1 extends AudioNodeImplementor {
   const factory AudioNodeImplementor_Variant1(
       final AudioBufferSourceNode field0) = _$AudioNodeImplementor_Variant1Impl;
   const AudioNodeImplementor_Variant1._() : super._();
+
+  factory AudioNodeImplementor_Variant1.fromJson(Map<String, dynamic> json) =
+      _$AudioNodeImplementor_Variant1Impl.fromJson;
 
   @override
   AudioBufferSourceNode get field0;
@@ -775,13 +874,22 @@ class __$$AudioNodeImplementor_Variant2ImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AudioNodeImplementor_Variant2Impl
     extends AudioNodeImplementor_Variant2 {
-  const _$AudioNodeImplementor_Variant2Impl(this.field0) : super._();
+  const _$AudioNodeImplementor_Variant2Impl(this.field0, {final String? $type})
+      : $type = $type ?? 'variant2',
+        super._();
+
+  factory _$AudioNodeImplementor_Variant2Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$AudioNodeImplementor_Variant2ImplFromJson(json);
 
   @override
   final AudioDestinationNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -796,6 +904,7 @@ class _$AudioNodeImplementor_Variant2Impl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -994,12 +1103,22 @@ class _$AudioNodeImplementor_Variant2Impl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AudioNodeImplementor_Variant2ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class AudioNodeImplementor_Variant2 extends AudioNodeImplementor {
   const factory AudioNodeImplementor_Variant2(
       final AudioDestinationNode field0) = _$AudioNodeImplementor_Variant2Impl;
   const AudioNodeImplementor_Variant2._() : super._();
+
+  factory AudioNodeImplementor_Variant2.fromJson(Map<String, dynamic> json) =
+      _$AudioNodeImplementor_Variant2Impl.fromJson;
 
   @override
   AudioDestinationNode get field0;
@@ -1044,13 +1163,22 @@ class __$$AudioNodeImplementor_Variant3ImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AudioNodeImplementor_Variant3Impl
     extends AudioNodeImplementor_Variant3 {
-  const _$AudioNodeImplementor_Variant3Impl(this.field0) : super._();
+  const _$AudioNodeImplementor_Variant3Impl(this.field0, {final String? $type})
+      : $type = $type ?? 'variant3',
+        super._();
+
+  factory _$AudioNodeImplementor_Variant3Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$AudioNodeImplementor_Variant3ImplFromJson(json);
 
   @override
   final AudioParam field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -1065,6 +1193,7 @@ class _$AudioNodeImplementor_Variant3Impl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -1263,12 +1392,22 @@ class _$AudioNodeImplementor_Variant3Impl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AudioNodeImplementor_Variant3ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class AudioNodeImplementor_Variant3 extends AudioNodeImplementor {
   const factory AudioNodeImplementor_Variant3(final AudioParam field0) =
       _$AudioNodeImplementor_Variant3Impl;
   const AudioNodeImplementor_Variant3._() : super._();
+
+  factory AudioNodeImplementor_Variant3.fromJson(Map<String, dynamic> json) =
+      _$AudioNodeImplementor_Variant3Impl.fromJson;
 
   @override
   AudioParam get field0;
@@ -1313,13 +1452,22 @@ class __$$AudioNodeImplementor_Variant4ImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AudioNodeImplementor_Variant4Impl
     extends AudioNodeImplementor_Variant4 {
-  const _$AudioNodeImplementor_Variant4Impl(this.field0) : super._();
+  const _$AudioNodeImplementor_Variant4Impl(this.field0, {final String? $type})
+      : $type = $type ?? 'variant4',
+        super._();
+
+  factory _$AudioNodeImplementor_Variant4Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$AudioNodeImplementor_Variant4ImplFromJson(json);
 
   @override
   final AudioWorkletNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -1334,6 +1482,7 @@ class _$AudioNodeImplementor_Variant4Impl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -1532,12 +1681,22 @@ class _$AudioNodeImplementor_Variant4Impl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AudioNodeImplementor_Variant4ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class AudioNodeImplementor_Variant4 extends AudioNodeImplementor {
   const factory AudioNodeImplementor_Variant4(final AudioWorkletNode field0) =
       _$AudioNodeImplementor_Variant4Impl;
   const AudioNodeImplementor_Variant4._() : super._();
+
+  factory AudioNodeImplementor_Variant4.fromJson(Map<String, dynamic> json) =
+      _$AudioNodeImplementor_Variant4Impl.fromJson;
 
   @override
   AudioWorkletNode get field0;
@@ -1582,13 +1741,22 @@ class __$$AudioNodeImplementor_Variant5ImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AudioNodeImplementor_Variant5Impl
     extends AudioNodeImplementor_Variant5 {
-  const _$AudioNodeImplementor_Variant5Impl(this.field0) : super._();
+  const _$AudioNodeImplementor_Variant5Impl(this.field0, {final String? $type})
+      : $type = $type ?? 'variant5',
+        super._();
+
+  factory _$AudioNodeImplementor_Variant5Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$AudioNodeImplementor_Variant5ImplFromJson(json);
 
   @override
   final BiquadFilterNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -1603,6 +1771,7 @@ class _$AudioNodeImplementor_Variant5Impl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -1801,12 +1970,22 @@ class _$AudioNodeImplementor_Variant5Impl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AudioNodeImplementor_Variant5ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class AudioNodeImplementor_Variant5 extends AudioNodeImplementor {
   const factory AudioNodeImplementor_Variant5(final BiquadFilterNode field0) =
       _$AudioNodeImplementor_Variant5Impl;
   const AudioNodeImplementor_Variant5._() : super._();
+
+  factory AudioNodeImplementor_Variant5.fromJson(Map<String, dynamic> json) =
+      _$AudioNodeImplementor_Variant5Impl.fromJson;
 
   @override
   BiquadFilterNode get field0;
@@ -1851,13 +2030,22 @@ class __$$AudioNodeImplementor_Variant6ImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AudioNodeImplementor_Variant6Impl
     extends AudioNodeImplementor_Variant6 {
-  const _$AudioNodeImplementor_Variant6Impl(this.field0) : super._();
+  const _$AudioNodeImplementor_Variant6Impl(this.field0, {final String? $type})
+      : $type = $type ?? 'variant6',
+        super._();
+
+  factory _$AudioNodeImplementor_Variant6Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$AudioNodeImplementor_Variant6ImplFromJson(json);
 
   @override
   final ChannelMergerNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -1872,6 +2060,7 @@ class _$AudioNodeImplementor_Variant6Impl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -2070,12 +2259,22 @@ class _$AudioNodeImplementor_Variant6Impl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AudioNodeImplementor_Variant6ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class AudioNodeImplementor_Variant6 extends AudioNodeImplementor {
   const factory AudioNodeImplementor_Variant6(final ChannelMergerNode field0) =
       _$AudioNodeImplementor_Variant6Impl;
   const AudioNodeImplementor_Variant6._() : super._();
+
+  factory AudioNodeImplementor_Variant6.fromJson(Map<String, dynamic> json) =
+      _$AudioNodeImplementor_Variant6Impl.fromJson;
 
   @override
   ChannelMergerNode get field0;
@@ -2120,13 +2319,22 @@ class __$$AudioNodeImplementor_Variant7ImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AudioNodeImplementor_Variant7Impl
     extends AudioNodeImplementor_Variant7 {
-  const _$AudioNodeImplementor_Variant7Impl(this.field0) : super._();
+  const _$AudioNodeImplementor_Variant7Impl(this.field0, {final String? $type})
+      : $type = $type ?? 'variant7',
+        super._();
+
+  factory _$AudioNodeImplementor_Variant7Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$AudioNodeImplementor_Variant7ImplFromJson(json);
 
   @override
   final ChannelSplitterNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -2141,6 +2349,7 @@ class _$AudioNodeImplementor_Variant7Impl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -2339,12 +2548,22 @@ class _$AudioNodeImplementor_Variant7Impl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AudioNodeImplementor_Variant7ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class AudioNodeImplementor_Variant7 extends AudioNodeImplementor {
   const factory AudioNodeImplementor_Variant7(
       final ChannelSplitterNode field0) = _$AudioNodeImplementor_Variant7Impl;
   const AudioNodeImplementor_Variant7._() : super._();
+
+  factory AudioNodeImplementor_Variant7.fromJson(Map<String, dynamic> json) =
+      _$AudioNodeImplementor_Variant7Impl.fromJson;
 
   @override
   ChannelSplitterNode get field0;
@@ -2389,13 +2608,22 @@ class __$$AudioNodeImplementor_Variant8ImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AudioNodeImplementor_Variant8Impl
     extends AudioNodeImplementor_Variant8 {
-  const _$AudioNodeImplementor_Variant8Impl(this.field0) : super._();
+  const _$AudioNodeImplementor_Variant8Impl(this.field0, {final String? $type})
+      : $type = $type ?? 'variant8',
+        super._();
+
+  factory _$AudioNodeImplementor_Variant8Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$AudioNodeImplementor_Variant8ImplFromJson(json);
 
   @override
   final ConstantSourceNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -2410,6 +2638,7 @@ class _$AudioNodeImplementor_Variant8Impl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -2608,12 +2837,22 @@ class _$AudioNodeImplementor_Variant8Impl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AudioNodeImplementor_Variant8ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class AudioNodeImplementor_Variant8 extends AudioNodeImplementor {
   const factory AudioNodeImplementor_Variant8(final ConstantSourceNode field0) =
       _$AudioNodeImplementor_Variant8Impl;
   const AudioNodeImplementor_Variant8._() : super._();
+
+  factory AudioNodeImplementor_Variant8.fromJson(Map<String, dynamic> json) =
+      _$AudioNodeImplementor_Variant8Impl.fromJson;
 
   @override
   ConstantSourceNode get field0;
@@ -2658,13 +2897,22 @@ class __$$AudioNodeImplementor_Variant9ImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AudioNodeImplementor_Variant9Impl
     extends AudioNodeImplementor_Variant9 {
-  const _$AudioNodeImplementor_Variant9Impl(this.field0) : super._();
+  const _$AudioNodeImplementor_Variant9Impl(this.field0, {final String? $type})
+      : $type = $type ?? 'variant9',
+        super._();
+
+  factory _$AudioNodeImplementor_Variant9Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$AudioNodeImplementor_Variant9ImplFromJson(json);
 
   @override
   final ConvolverNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -2679,6 +2927,7 @@ class _$AudioNodeImplementor_Variant9Impl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -2877,12 +3126,22 @@ class _$AudioNodeImplementor_Variant9Impl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AudioNodeImplementor_Variant9ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class AudioNodeImplementor_Variant9 extends AudioNodeImplementor {
   const factory AudioNodeImplementor_Variant9(final ConvolverNode field0) =
       _$AudioNodeImplementor_Variant9Impl;
   const AudioNodeImplementor_Variant9._() : super._();
+
+  factory AudioNodeImplementor_Variant9.fromJson(Map<String, dynamic> json) =
+      _$AudioNodeImplementor_Variant9Impl.fromJson;
 
   @override
   ConvolverNode get field0;
@@ -2927,13 +3186,22 @@ class __$$AudioNodeImplementor_Variant10ImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AudioNodeImplementor_Variant10Impl
     extends AudioNodeImplementor_Variant10 {
-  const _$AudioNodeImplementor_Variant10Impl(this.field0) : super._();
+  const _$AudioNodeImplementor_Variant10Impl(this.field0, {final String? $type})
+      : $type = $type ?? 'variant10',
+        super._();
+
+  factory _$AudioNodeImplementor_Variant10Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$AudioNodeImplementor_Variant10ImplFromJson(json);
 
   @override
   final DelayNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -2948,6 +3216,7 @@ class _$AudioNodeImplementor_Variant10Impl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -3146,12 +3415,22 @@ class _$AudioNodeImplementor_Variant10Impl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AudioNodeImplementor_Variant10ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class AudioNodeImplementor_Variant10 extends AudioNodeImplementor {
   const factory AudioNodeImplementor_Variant10(final DelayNode field0) =
       _$AudioNodeImplementor_Variant10Impl;
   const AudioNodeImplementor_Variant10._() : super._();
+
+  factory AudioNodeImplementor_Variant10.fromJson(Map<String, dynamic> json) =
+      _$AudioNodeImplementor_Variant10Impl.fromJson;
 
   @override
   DelayNode get field0;
@@ -3196,13 +3475,22 @@ class __$$AudioNodeImplementor_Variant11ImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AudioNodeImplementor_Variant11Impl
     extends AudioNodeImplementor_Variant11 {
-  const _$AudioNodeImplementor_Variant11Impl(this.field0) : super._();
+  const _$AudioNodeImplementor_Variant11Impl(this.field0, {final String? $type})
+      : $type = $type ?? 'variant11',
+        super._();
+
+  factory _$AudioNodeImplementor_Variant11Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$AudioNodeImplementor_Variant11ImplFromJson(json);
 
   @override
   final DynamicsCompressorNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -3217,6 +3505,7 @@ class _$AudioNodeImplementor_Variant11Impl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -3415,6 +3704,13 @@ class _$AudioNodeImplementor_Variant11Impl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AudioNodeImplementor_Variant11ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class AudioNodeImplementor_Variant11 extends AudioNodeImplementor {
@@ -3422,6 +3718,9 @@ abstract class AudioNodeImplementor_Variant11 extends AudioNodeImplementor {
           final DynamicsCompressorNode field0) =
       _$AudioNodeImplementor_Variant11Impl;
   const AudioNodeImplementor_Variant11._() : super._();
+
+  factory AudioNodeImplementor_Variant11.fromJson(Map<String, dynamic> json) =
+      _$AudioNodeImplementor_Variant11Impl.fromJson;
 
   @override
   DynamicsCompressorNode get field0;
@@ -3466,13 +3765,22 @@ class __$$AudioNodeImplementor_Variant12ImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AudioNodeImplementor_Variant12Impl
     extends AudioNodeImplementor_Variant12 {
-  const _$AudioNodeImplementor_Variant12Impl(this.field0) : super._();
+  const _$AudioNodeImplementor_Variant12Impl(this.field0, {final String? $type})
+      : $type = $type ?? 'variant12',
+        super._();
+
+  factory _$AudioNodeImplementor_Variant12Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$AudioNodeImplementor_Variant12ImplFromJson(json);
 
   @override
   final GainNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -3487,6 +3795,7 @@ class _$AudioNodeImplementor_Variant12Impl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -3685,12 +3994,22 @@ class _$AudioNodeImplementor_Variant12Impl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AudioNodeImplementor_Variant12ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class AudioNodeImplementor_Variant12 extends AudioNodeImplementor {
   const factory AudioNodeImplementor_Variant12(final GainNode field0) =
       _$AudioNodeImplementor_Variant12Impl;
   const AudioNodeImplementor_Variant12._() : super._();
+
+  factory AudioNodeImplementor_Variant12.fromJson(Map<String, dynamic> json) =
+      _$AudioNodeImplementor_Variant12Impl.fromJson;
 
   @override
   GainNode get field0;
@@ -3735,13 +4054,22 @@ class __$$AudioNodeImplementor_Variant13ImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AudioNodeImplementor_Variant13Impl
     extends AudioNodeImplementor_Variant13 {
-  const _$AudioNodeImplementor_Variant13Impl(this.field0) : super._();
+  const _$AudioNodeImplementor_Variant13Impl(this.field0, {final String? $type})
+      : $type = $type ?? 'variant13',
+        super._();
+
+  factory _$AudioNodeImplementor_Variant13Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$AudioNodeImplementor_Variant13ImplFromJson(json);
 
   @override
   final IirFilterNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -3756,6 +4084,7 @@ class _$AudioNodeImplementor_Variant13Impl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -3954,12 +4283,22 @@ class _$AudioNodeImplementor_Variant13Impl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AudioNodeImplementor_Variant13ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class AudioNodeImplementor_Variant13 extends AudioNodeImplementor {
   const factory AudioNodeImplementor_Variant13(final IirFilterNode field0) =
       _$AudioNodeImplementor_Variant13Impl;
   const AudioNodeImplementor_Variant13._() : super._();
+
+  factory AudioNodeImplementor_Variant13.fromJson(Map<String, dynamic> json) =
+      _$AudioNodeImplementor_Variant13Impl.fromJson;
 
   @override
   IirFilterNode get field0;
@@ -4004,13 +4343,22 @@ class __$$AudioNodeImplementor_Variant14ImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AudioNodeImplementor_Variant14Impl
     extends AudioNodeImplementor_Variant14 {
-  const _$AudioNodeImplementor_Variant14Impl(this.field0) : super._();
+  const _$AudioNodeImplementor_Variant14Impl(this.field0, {final String? $type})
+      : $type = $type ?? 'variant14',
+        super._();
+
+  factory _$AudioNodeImplementor_Variant14Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$AudioNodeImplementor_Variant14ImplFromJson(json);
 
   @override
   final MediaElementAudioSourceNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -4025,6 +4373,7 @@ class _$AudioNodeImplementor_Variant14Impl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -4223,6 +4572,13 @@ class _$AudioNodeImplementor_Variant14Impl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AudioNodeImplementor_Variant14ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class AudioNodeImplementor_Variant14 extends AudioNodeImplementor {
@@ -4230,6 +4586,9 @@ abstract class AudioNodeImplementor_Variant14 extends AudioNodeImplementor {
           final MediaElementAudioSourceNode field0) =
       _$AudioNodeImplementor_Variant14Impl;
   const AudioNodeImplementor_Variant14._() : super._();
+
+  factory AudioNodeImplementor_Variant14.fromJson(Map<String, dynamic> json) =
+      _$AudioNodeImplementor_Variant14Impl.fromJson;
 
   @override
   MediaElementAudioSourceNode get field0;
@@ -4274,13 +4633,22 @@ class __$$AudioNodeImplementor_Variant15ImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AudioNodeImplementor_Variant15Impl
     extends AudioNodeImplementor_Variant15 {
-  const _$AudioNodeImplementor_Variant15Impl(this.field0) : super._();
+  const _$AudioNodeImplementor_Variant15Impl(this.field0, {final String? $type})
+      : $type = $type ?? 'variant15',
+        super._();
+
+  factory _$AudioNodeImplementor_Variant15Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$AudioNodeImplementor_Variant15ImplFromJson(json);
 
   @override
   final MediaStreamAudioDestinationNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -4295,6 +4663,7 @@ class _$AudioNodeImplementor_Variant15Impl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -4493,6 +4862,13 @@ class _$AudioNodeImplementor_Variant15Impl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AudioNodeImplementor_Variant15ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class AudioNodeImplementor_Variant15 extends AudioNodeImplementor {
@@ -4500,6 +4876,9 @@ abstract class AudioNodeImplementor_Variant15 extends AudioNodeImplementor {
           final MediaStreamAudioDestinationNode field0) =
       _$AudioNodeImplementor_Variant15Impl;
   const AudioNodeImplementor_Variant15._() : super._();
+
+  factory AudioNodeImplementor_Variant15.fromJson(Map<String, dynamic> json) =
+      _$AudioNodeImplementor_Variant15Impl.fromJson;
 
   @override
   MediaStreamAudioDestinationNode get field0;
@@ -4544,13 +4923,22 @@ class __$$AudioNodeImplementor_Variant16ImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AudioNodeImplementor_Variant16Impl
     extends AudioNodeImplementor_Variant16 {
-  const _$AudioNodeImplementor_Variant16Impl(this.field0) : super._();
+  const _$AudioNodeImplementor_Variant16Impl(this.field0, {final String? $type})
+      : $type = $type ?? 'variant16',
+        super._();
+
+  factory _$AudioNodeImplementor_Variant16Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$AudioNodeImplementor_Variant16ImplFromJson(json);
 
   @override
   final MediaStreamAudioSourceNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -4565,6 +4953,7 @@ class _$AudioNodeImplementor_Variant16Impl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -4763,6 +5152,13 @@ class _$AudioNodeImplementor_Variant16Impl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AudioNodeImplementor_Variant16ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class AudioNodeImplementor_Variant16 extends AudioNodeImplementor {
@@ -4770,6 +5166,9 @@ abstract class AudioNodeImplementor_Variant16 extends AudioNodeImplementor {
           final MediaStreamAudioSourceNode field0) =
       _$AudioNodeImplementor_Variant16Impl;
   const AudioNodeImplementor_Variant16._() : super._();
+
+  factory AudioNodeImplementor_Variant16.fromJson(Map<String, dynamic> json) =
+      _$AudioNodeImplementor_Variant16Impl.fromJson;
 
   @override
   MediaStreamAudioSourceNode get field0;
@@ -4814,13 +5213,22 @@ class __$$AudioNodeImplementor_Variant17ImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AudioNodeImplementor_Variant17Impl
     extends AudioNodeImplementor_Variant17 {
-  const _$AudioNodeImplementor_Variant17Impl(this.field0) : super._();
+  const _$AudioNodeImplementor_Variant17Impl(this.field0, {final String? $type})
+      : $type = $type ?? 'variant17',
+        super._();
+
+  factory _$AudioNodeImplementor_Variant17Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$AudioNodeImplementor_Variant17ImplFromJson(json);
 
   @override
   final MediaStreamTrackAudioSourceNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -4835,6 +5243,7 @@ class _$AudioNodeImplementor_Variant17Impl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -5033,6 +5442,13 @@ class _$AudioNodeImplementor_Variant17Impl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AudioNodeImplementor_Variant17ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class AudioNodeImplementor_Variant17 extends AudioNodeImplementor {
@@ -5040,6 +5456,9 @@ abstract class AudioNodeImplementor_Variant17 extends AudioNodeImplementor {
           final MediaStreamTrackAudioSourceNode field0) =
       _$AudioNodeImplementor_Variant17Impl;
   const AudioNodeImplementor_Variant17._() : super._();
+
+  factory AudioNodeImplementor_Variant17.fromJson(Map<String, dynamic> json) =
+      _$AudioNodeImplementor_Variant17Impl.fromJson;
 
   @override
   MediaStreamTrackAudioSourceNode get field0;
@@ -5084,13 +5503,22 @@ class __$$AudioNodeImplementor_Variant18ImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AudioNodeImplementor_Variant18Impl
     extends AudioNodeImplementor_Variant18 {
-  const _$AudioNodeImplementor_Variant18Impl(this.field0) : super._();
+  const _$AudioNodeImplementor_Variant18Impl(this.field0, {final String? $type})
+      : $type = $type ?? 'variant18',
+        super._();
+
+  factory _$AudioNodeImplementor_Variant18Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$AudioNodeImplementor_Variant18ImplFromJson(json);
 
   @override
   final OscillatorNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -5105,6 +5533,7 @@ class _$AudioNodeImplementor_Variant18Impl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -5303,12 +5732,22 @@ class _$AudioNodeImplementor_Variant18Impl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AudioNodeImplementor_Variant18ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class AudioNodeImplementor_Variant18 extends AudioNodeImplementor {
   const factory AudioNodeImplementor_Variant18(final OscillatorNode field0) =
       _$AudioNodeImplementor_Variant18Impl;
   const AudioNodeImplementor_Variant18._() : super._();
+
+  factory AudioNodeImplementor_Variant18.fromJson(Map<String, dynamic> json) =
+      _$AudioNodeImplementor_Variant18Impl.fromJson;
 
   @override
   OscillatorNode get field0;
@@ -5353,13 +5792,22 @@ class __$$AudioNodeImplementor_Variant19ImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AudioNodeImplementor_Variant19Impl
     extends AudioNodeImplementor_Variant19 {
-  const _$AudioNodeImplementor_Variant19Impl(this.field0) : super._();
+  const _$AudioNodeImplementor_Variant19Impl(this.field0, {final String? $type})
+      : $type = $type ?? 'variant19',
+        super._();
+
+  factory _$AudioNodeImplementor_Variant19Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$AudioNodeImplementor_Variant19ImplFromJson(json);
 
   @override
   final PannerNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -5374,6 +5822,7 @@ class _$AudioNodeImplementor_Variant19Impl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -5572,12 +6021,22 @@ class _$AudioNodeImplementor_Variant19Impl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AudioNodeImplementor_Variant19ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class AudioNodeImplementor_Variant19 extends AudioNodeImplementor {
   const factory AudioNodeImplementor_Variant19(final PannerNode field0) =
       _$AudioNodeImplementor_Variant19Impl;
   const AudioNodeImplementor_Variant19._() : super._();
+
+  factory AudioNodeImplementor_Variant19.fromJson(Map<String, dynamic> json) =
+      _$AudioNodeImplementor_Variant19Impl.fromJson;
 
   @override
   PannerNode get field0;
@@ -5622,13 +6081,22 @@ class __$$AudioNodeImplementor_Variant20ImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AudioNodeImplementor_Variant20Impl
     extends AudioNodeImplementor_Variant20 {
-  const _$AudioNodeImplementor_Variant20Impl(this.field0) : super._();
+  const _$AudioNodeImplementor_Variant20Impl(this.field0, {final String? $type})
+      : $type = $type ?? 'variant20',
+        super._();
+
+  factory _$AudioNodeImplementor_Variant20Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$AudioNodeImplementor_Variant20ImplFromJson(json);
 
   @override
   final ScriptProcessorNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -5643,6 +6111,7 @@ class _$AudioNodeImplementor_Variant20Impl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -5841,12 +6310,22 @@ class _$AudioNodeImplementor_Variant20Impl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AudioNodeImplementor_Variant20ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class AudioNodeImplementor_Variant20 extends AudioNodeImplementor {
   const factory AudioNodeImplementor_Variant20(
       final ScriptProcessorNode field0) = _$AudioNodeImplementor_Variant20Impl;
   const AudioNodeImplementor_Variant20._() : super._();
+
+  factory AudioNodeImplementor_Variant20.fromJson(Map<String, dynamic> json) =
+      _$AudioNodeImplementor_Variant20Impl.fromJson;
 
   @override
   ScriptProcessorNode get field0;
@@ -5891,13 +6370,22 @@ class __$$AudioNodeImplementor_Variant21ImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AudioNodeImplementor_Variant21Impl
     extends AudioNodeImplementor_Variant21 {
-  const _$AudioNodeImplementor_Variant21Impl(this.field0) : super._();
+  const _$AudioNodeImplementor_Variant21Impl(this.field0, {final String? $type})
+      : $type = $type ?? 'variant21',
+        super._();
+
+  factory _$AudioNodeImplementor_Variant21Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$AudioNodeImplementor_Variant21ImplFromJson(json);
 
   @override
   final StereoPannerNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -5912,6 +6400,7 @@ class _$AudioNodeImplementor_Variant21Impl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -6110,12 +6599,22 @@ class _$AudioNodeImplementor_Variant21Impl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AudioNodeImplementor_Variant21ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class AudioNodeImplementor_Variant21 extends AudioNodeImplementor {
   const factory AudioNodeImplementor_Variant21(final StereoPannerNode field0) =
       _$AudioNodeImplementor_Variant21Impl;
   const AudioNodeImplementor_Variant21._() : super._();
+
+  factory AudioNodeImplementor_Variant21.fromJson(Map<String, dynamic> json) =
+      _$AudioNodeImplementor_Variant21Impl.fromJson;
 
   @override
   StereoPannerNode get field0;
@@ -6160,13 +6659,22 @@ class __$$AudioNodeImplementor_Variant22ImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$AudioNodeImplementor_Variant22Impl
     extends AudioNodeImplementor_Variant22 {
-  const _$AudioNodeImplementor_Variant22Impl(this.field0) : super._();
+  const _$AudioNodeImplementor_Variant22Impl(this.field0, {final String? $type})
+      : $type = $type ?? 'variant22',
+        super._();
+
+  factory _$AudioNodeImplementor_Variant22Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$AudioNodeImplementor_Variant22ImplFromJson(json);
 
   @override
   final WaveShaperNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -6181,6 +6689,7 @@ class _$AudioNodeImplementor_Variant22Impl
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -6379,6 +6888,13 @@ class _$AudioNodeImplementor_Variant22Impl
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AudioNodeImplementor_Variant22ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class AudioNodeImplementor_Variant22 extends AudioNodeImplementor {
@@ -6386,12 +6902,125 @@ abstract class AudioNodeImplementor_Variant22 extends AudioNodeImplementor {
       _$AudioNodeImplementor_Variant22Impl;
   const AudioNodeImplementor_Variant22._() : super._();
 
+  factory AudioNodeImplementor_Variant22.fromJson(Map<String, dynamic> json) =
+      _$AudioNodeImplementor_Variant22Impl.fromJson;
+
   @override
   WaveShaperNode get field0;
   @JsonKey(ignore: true)
   _$$AudioNodeImplementor_Variant22ImplCopyWith<
           _$AudioNodeImplementor_Variant22Impl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+    _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnumFromJson(
+        Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'variant0':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant0
+          .fromJson(json);
+    case 'variant1':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant1
+          .fromJson(json);
+    case 'variant2':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant2
+          .fromJson(json);
+    case 'variant3':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant3
+          .fromJson(json);
+    case 'variant4':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant4
+          .fromJson(json);
+    case 'variant5':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant5
+          .fromJson(json);
+    case 'variant6':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant6
+          .fromJson(json);
+    case 'variant7':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant7
+          .fromJson(json);
+    case 'variant8':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant8
+          .fromJson(json);
+    case 'variant9':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant9
+          .fromJson(json);
+    case 'variant10':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant10
+          .fromJson(json);
+    case 'variant11':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant11
+          .fromJson(json);
+    case 'variant12':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant12
+          .fromJson(json);
+    case 'variant13':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant13
+          .fromJson(json);
+    case 'variant14':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant14
+          .fromJson(json);
+    case 'variant15':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant15
+          .fromJson(json);
+    case 'variant16':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant16
+          .fromJson(json);
+    case 'variant17':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant17
+          .fromJson(json);
+    case 'variant18':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant18
+          .fromJson(json);
+    case 'variant19':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant19
+          .fromJson(json);
+    case 'variant20':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant20
+          .fromJson(json);
+    case 'variant21':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant21
+          .fromJson(json);
+    case 'variant22':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant22
+          .fromJson(json);
+    case 'variant23':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant23
+          .fromJson(json);
+    case 'variant24':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant24
+          .fromJson(json);
+    case 'variant25':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant25
+          .fromJson(json);
+    case 'variant26':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant26
+          .fromJson(json);
+    case 'variant27':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant27
+          .fromJson(json);
+    case 'variant28':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant28
+          .fromJson(json);
+    case 'variant29':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant29
+          .fromJson(json);
+    case 'variant30':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant30
+          .fromJson(json);
+    case 'variant31':
+      return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant31
+          .fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          'runtimeType',
+          'Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
 }
 
 /// @nodoc
@@ -6903,6 +7532,7 @@ mixin _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -6982,15 +7612,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant0Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant0 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant0Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant0',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant0Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant0ImplFromJson(
+          json);
 
   @override
   final AudioBufferSourceNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -7006,6 +7646,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -7548,6 +8189,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant0ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant0
@@ -7557,6 +8205,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant0Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant0._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant0.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant0Impl
+      .fromJson;
 
   @override
   AudioBufferSourceNode get field0;
@@ -7614,15 +8267,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant1Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant1 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant1Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant1',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant1Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant1ImplFromJson(
+          json);
 
   @override
   final AudioBufferSourceNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -7638,6 +8301,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -8180,6 +8844,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant1ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant1
@@ -8189,6 +8860,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant1Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant1._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant1.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant1Impl
+      .fromJson;
 
   @override
   AudioBufferSourceNode get field0;
@@ -8246,15 +8922,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant2Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant2 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant2Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant2',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant2Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant2ImplFromJson(
+          json);
 
   @override
   final AudioListener field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -8270,6 +8956,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -8812,6 +9499,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant2ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant2
@@ -8821,6 +9515,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant2Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant2._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant2.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant2Impl
+      .fromJson;
 
   @override
   AudioListener get field0;
@@ -8878,15 +9577,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant3Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant3 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant3Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant3',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant3Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant3ImplFromJson(
+          json);
 
   @override
   final AudioListener field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -8902,6 +9611,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -9444,6 +10154,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant3ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant3
@@ -9453,6 +10170,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant3Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant3._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant3.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant3Impl
+      .fromJson;
 
   @override
   AudioListener get field0;
@@ -9510,15 +10232,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant4Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant4 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant4Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant4',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant4Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant4ImplFromJson(
+          json);
 
   @override
   final AudioListener field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -9534,6 +10266,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -10076,6 +10809,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant4ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant4
@@ -10085,6 +10825,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant4Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant4._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant4.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant4Impl
+      .fromJson;
 
   @override
   AudioListener get field0;
@@ -10142,15 +10887,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant5Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant5 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant5Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant5',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant5Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant5ImplFromJson(
+          json);
 
   @override
   final AudioListener field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -10166,6 +10921,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -10708,6 +11464,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant5ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant5
@@ -10717,6 +11480,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant5Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant5._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant5.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant5Impl
+      .fromJson;
 
   @override
   AudioListener get field0;
@@ -10774,15 +11542,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant6Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant6 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant6Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant6',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant6Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant6ImplFromJson(
+          json);
 
   @override
   final AudioListener field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -10798,6 +11576,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -11340,6 +12119,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant6ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant6
@@ -11349,6 +12135,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant6Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant6._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant6.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant6Impl
+      .fromJson;
 
   @override
   AudioListener get field0;
@@ -11406,15 +12197,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant7Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant7 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant7Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant7',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant7Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant7ImplFromJson(
+          json);
 
   @override
   final AudioListener field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -11430,6 +12231,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -11972,6 +12774,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant7ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant7
@@ -11981,6 +12790,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant7Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant7._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant7.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant7Impl
+      .fromJson;
 
   @override
   AudioListener get field0;
@@ -12038,15 +12852,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant8Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant8 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant8Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant8',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant8Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant8ImplFromJson(
+          json);
 
   @override
   final AudioListener field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -12062,6 +12886,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -12604,6 +13429,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant8ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant8
@@ -12613,6 +13445,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant8Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant8._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant8.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant8Impl
+      .fromJson;
 
   @override
   AudioListener get field0;
@@ -12670,15 +13507,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant9Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant9 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant9Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant9',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant9Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant9ImplFromJson(
+          json);
 
   @override
   final AudioListener field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -12694,6 +13541,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -13236,6 +14084,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant9ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant9
@@ -13245,6 +14100,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant9Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant9._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant9.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant9Impl
+      .fromJson;
 
   @override
   AudioListener get field0;
@@ -13302,15 +14162,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant10Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant10 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant10Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant10',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant10Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant10ImplFromJson(
+          json);
 
   @override
   final AudioListener field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -13326,6 +14196,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -13868,6 +14739,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant10ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant10
@@ -13877,6 +14755,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant10Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant10._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant10.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant10Impl
+      .fromJson;
 
   @override
   AudioListener get field0;
@@ -13934,15 +14817,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant11Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant11 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant11Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant11',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant11Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant11ImplFromJson(
+          json);
 
   @override
   final BiquadFilterNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -13958,6 +14851,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -14500,6 +15394,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant11ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant11
@@ -14509,6 +15410,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant11Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant11._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant11.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant11Impl
+      .fromJson;
 
   @override
   BiquadFilterNode get field0;
@@ -14566,15 +15472,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant12Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant12 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant12Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant12',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant12Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant12ImplFromJson(
+          json);
 
   @override
   final BiquadFilterNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -14590,6 +15506,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -15132,6 +16049,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant12ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant12
@@ -15141,6 +16065,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant12Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant12._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant12.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant12Impl
+      .fromJson;
 
   @override
   BiquadFilterNode get field0;
@@ -15198,15 +16127,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant13Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant13 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant13Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant13',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant13Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant13ImplFromJson(
+          json);
 
   @override
   final BiquadFilterNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -15222,6 +16161,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -15764,6 +16704,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant13ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant13
@@ -15773,6 +16720,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant13Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant13._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant13.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant13Impl
+      .fromJson;
 
   @override
   BiquadFilterNode get field0;
@@ -15830,15 +16782,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant14Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant14 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant14Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant14',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant14Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant14ImplFromJson(
+          json);
 
   @override
   final BiquadFilterNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -15854,6 +16816,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -16396,6 +17359,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant14ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant14
@@ -16405,6 +17375,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant14Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant14._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant14.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant14Impl
+      .fromJson;
 
   @override
   BiquadFilterNode get field0;
@@ -16462,15 +17437,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant15Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant15 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant15Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant15',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant15Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant15ImplFromJson(
+          json);
 
   @override
   final ConstantSourceNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -16486,6 +17471,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -17028,6 +18014,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant15ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant15
@@ -17037,6 +18030,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant15Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant15._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant15.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant15Impl
+      .fromJson;
 
   @override
   ConstantSourceNode get field0;
@@ -17094,15 +18092,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant16Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant16 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant16Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant16',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant16Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant16ImplFromJson(
+          json);
 
   @override
   final DelayNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -17118,6 +18126,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -17660,6 +18669,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant16ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant16
@@ -17669,6 +18685,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant16Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant16._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant16.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant16Impl
+      .fromJson;
 
   @override
   DelayNode get field0;
@@ -17726,15 +18747,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant17Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant17 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant17Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant17',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant17Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant17ImplFromJson(
+          json);
 
   @override
   final DynamicsCompressorNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -17750,6 +18781,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -18292,6 +19324,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant17ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant17
@@ -18301,6 +19340,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant17Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant17._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant17.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant17Impl
+      .fromJson;
 
   @override
   DynamicsCompressorNode get field0;
@@ -18358,15 +19402,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant18Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant18 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant18Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant18',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant18Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant18ImplFromJson(
+          json);
 
   @override
   final DynamicsCompressorNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -18382,6 +19436,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -18924,6 +19979,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant18ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant18
@@ -18933,6 +19995,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant18Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant18._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant18.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant18Impl
+      .fromJson;
 
   @override
   DynamicsCompressorNode get field0;
@@ -18990,15 +20057,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant19Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant19 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant19Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant19',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant19Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant19ImplFromJson(
+          json);
 
   @override
   final DynamicsCompressorNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -19014,6 +20091,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -19556,6 +20634,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant19ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant19
@@ -19565,6 +20650,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant19Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant19._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant19.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant19Impl
+      .fromJson;
 
   @override
   DynamicsCompressorNode get field0;
@@ -19622,15 +20712,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant20Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant20 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant20Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant20',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant20Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant20ImplFromJson(
+          json);
 
   @override
   final DynamicsCompressorNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -19646,6 +20746,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -20188,6 +21289,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant20ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant20
@@ -20197,6 +21305,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant20Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant20._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant20.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant20Impl
+      .fromJson;
 
   @override
   DynamicsCompressorNode get field0;
@@ -20254,15 +21367,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant21Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant21 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant21Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant21',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant21Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant21ImplFromJson(
+          json);
 
   @override
   final DynamicsCompressorNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -20278,6 +21401,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -20820,6 +21944,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant21ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant21
@@ -20829,6 +21960,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant21Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant21._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant21.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant21Impl
+      .fromJson;
 
   @override
   DynamicsCompressorNode get field0;
@@ -20886,15 +22022,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant22Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant22 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant22Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant22',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant22Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant22ImplFromJson(
+          json);
 
   @override
   final GainNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -20910,6 +22056,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -21452,6 +22599,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant22ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant22
@@ -21461,6 +22615,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant22Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant22._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant22.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant22Impl
+      .fromJson;
 
   @override
   GainNode get field0;
@@ -21518,15 +22677,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant23Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant23 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant23Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant23',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant23Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant23ImplFromJson(
+          json);
 
   @override
   final OscillatorNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -21542,6 +22711,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -22084,6 +23254,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant23ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant23
@@ -22093,6 +23270,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant23Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant23._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant23.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant23Impl
+      .fromJson;
 
   @override
   OscillatorNode get field0;
@@ -22150,15 +23332,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant24Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant24 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant24Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant24',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant24Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant24ImplFromJson(
+          json);
 
   @override
   final OscillatorNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -22174,6 +23366,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -22716,6 +23909,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant24ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant24
@@ -22725,6 +23925,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant24Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant24._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant24.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant24Impl
+      .fromJson;
 
   @override
   OscillatorNode get field0;
@@ -22782,15 +23987,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant25Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant25 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant25Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant25',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant25Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant25ImplFromJson(
+          json);
 
   @override
   final PannerNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -22806,6 +24021,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -23348,6 +24564,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant25ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant25
@@ -23357,6 +24580,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant25Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant25._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant25.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant25Impl
+      .fromJson;
 
   @override
   PannerNode get field0;
@@ -23414,15 +24642,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant26Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant26 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant26Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant26',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant26Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant26ImplFromJson(
+          json);
 
   @override
   final PannerNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -23438,6 +24676,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -23980,6 +25219,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant26ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant26
@@ -23989,6 +25235,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant26Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant26._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant26.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant26Impl
+      .fromJson;
 
   @override
   PannerNode get field0;
@@ -24046,15 +25297,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant27Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant27 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant27Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant27',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant27Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant27ImplFromJson(
+          json);
 
   @override
   final PannerNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -24070,6 +25331,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -24612,6 +25874,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant27ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant27
@@ -24621,6 +25890,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant27Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant27._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant27.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant27Impl
+      .fromJson;
 
   @override
   PannerNode get field0;
@@ -24678,15 +25952,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant28Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant28 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant28Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant28',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant28Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant28ImplFromJson(
+          json);
 
   @override
   final PannerNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -24702,6 +25986,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -25244,6 +26529,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant28ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant28
@@ -25253,6 +26545,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant28Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant28._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant28.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant28Impl
+      .fromJson;
 
   @override
   PannerNode get field0;
@@ -25310,15 +26607,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant29Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant29 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant29Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant29',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant29Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant29ImplFromJson(
+          json);
 
   @override
   final PannerNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -25334,6 +26641,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -25876,6 +27184,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant29ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant29
@@ -25885,6 +27200,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant29Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant29._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant29.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant29Impl
+      .fromJson;
 
   @override
   PannerNode get field0;
@@ -25942,15 +27262,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant30Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant30 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant30Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant30',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant30Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant30ImplFromJson(
+          json);
 
   @override
   final PannerNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -25966,6 +27296,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -26508,6 +27839,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant30ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant30
@@ -26517,6 +27855,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant30Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant30._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant30.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant30Impl
+      .fromJson;
 
   @override
   PannerNode get field0;
@@ -26574,15 +27917,25 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant31Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant31 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant31Impl(
-      this.field0)
-      : super._();
+      this.field0,
+      {final String? $type})
+      : $type = $type ?? 'variant31',
+        super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant31Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant31ImplFromJson(
+          json);
 
   @override
   final StereoPannerNode field0;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -26598,6 +27951,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -27140,6 +28494,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerA
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant31ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant31
@@ -27150,12 +28511,24 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant31._()
       : super._();
 
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant31.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant31Impl
+      .fromJson;
+
   @override
   StereoPannerNode get field0;
   @JsonKey(ignore: true)
   _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant31ImplCopyWith<
           _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant31Impl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum
+    _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumFromJson(
+        Map<String, dynamic> json) {
+  return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum_Variant0
+      .fromJson(json);
 }
 
 /// @nodoc
@@ -27203,7 +28576,7 @@ mixin _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerM
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumCopyWith<
           Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum>
@@ -27306,12 +28679,17 @@ class __$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInne
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum_Variant0Impl
     extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum_Variant0 {
   const _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum_Variant0Impl(
       this.field0)
       : super._();
+
+  factory _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum_Variant0Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum_Variant0ImplFromJson(
+          json);
 
   @override
   final MediaStreamAudioDestinationNode field0;
@@ -27330,6 +28708,7 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerM
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
@@ -27407,6 +28786,13 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerM
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum_Variant0ImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum_Variant0
@@ -27416,6 +28802,11 @@ abstract class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqu
       _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum_Variant0Impl;
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum_Variant0._()
       : super._();
+
+  factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum_Variant0.fromJson(
+          Map<String, dynamic> json) =
+      _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum_Variant0Impl
+      .fromJson;
 
   @override
   MediaStreamAudioDestinationNode get field0;
