@@ -74,21 +74,24 @@ fn ensure_dependency_freezed(
             &ANY_REQUIREMENT,
         )?;
         repo.has_specified_and_installed(
-            "json_annotation",
-            DartDependencyMode::Main,
-            &ANY_REQUIREMENT,
-        )?;
-        repo.has_specified_and_installed(
-            "json_serializable",
-            DartDependencyMode::Dev,
-            &ANY_REQUIREMENT,
-        )?;
-        repo.has_specified_and_installed(
             "build_runner",
             DartDependencyMode::Dev,
             &ANY_REQUIREMENT,
         )?;
     }
+
+    // TODO add something like `needs_json_serializable`
+    // repo.has_specified_and_installed(
+    //     "json_annotation",
+    //     DartDependencyMode::Main,
+    //     &ANY_REQUIREMENT,
+    // )?;
+    // repo.has_specified_and_installed(
+    //     "json_serializable",
+    //     DartDependencyMode::Dev,
+    //     &ANY_REQUIREMENT,
+    // )?;
+
     Ok(())
 }
 
