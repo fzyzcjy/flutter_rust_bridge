@@ -134,7 +134,7 @@ impl EnumRefWireRustCodecCstGenerator<'_> {
                     WireRustCodecCstGenerator::new(field.ty.clone(), self.context);
                 format!(
                     "{}: {}{},",
-                    field.name.rust_style(true),
+                    field.name.rust_style(false),
                     field_generator.rust_wire_modifier(Target::Io),
                     field_generator.rust_wire_type(Target::Io)
                 )
@@ -165,7 +165,7 @@ fn generate_impl_cst_decode_body_variant(
                 .iter()
                 .enumerate()
                 .map(|(idx, field)| {
-                    let field_name = field.name.rust_style(true);
+                    let field_name = field.name.rust_style(false);
                     let field_ = if st.is_fields_named {
                         format!("{field_name}: ")
                     } else {

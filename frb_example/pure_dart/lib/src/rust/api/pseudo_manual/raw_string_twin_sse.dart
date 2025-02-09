@@ -7,10 +7,16 @@ import 'dart:io';
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+part 'raw_string_twin_sse.freezed.dart';
 
 Future<RawStringItemStructTwinSse> testRawStringItemStructTwinSse() =>
     RustLib.instance.api
         .crateApiPseudoManualRawStringTwinSseTestRawStringItemStructTwinSse();
+
+Future<RawStringItemEnumTwinSse> testRawStringItemEnumTwinSse() =>
+    RustLib.instance.api
+        .crateApiPseudoManualRawStringTwinSseTestRawStringItemEnumTwinSse();
 
 Future<MoreThanJustOneRawStringStructTwinSse>
     testMoreThanJustOneRawStringStructTwinSse() => RustLib.instance.api
@@ -42,6 +48,18 @@ class MoreThanJustOneRawStringStructTwinSse {
           type == other.type &&
           async_ == other.async_ &&
           another == other.another;
+}
+
+@freezed
+sealed class RawStringItemEnumTwinSse with _$RawStringItemEnumTwinSse {
+  const RawStringItemEnumTwinSse._();
+
+  const factory RawStringItemEnumTwinSse.regular({
+    required String regular,
+  }) = RawStringItemEnumTwinSse_Regular;
+  const factory RawStringItemEnumTwinSse.raw({
+    required String type,
+  }) = RawStringItemEnumTwinSse_Raw;
 }
 
 class RawStringItemStructTwinSse {

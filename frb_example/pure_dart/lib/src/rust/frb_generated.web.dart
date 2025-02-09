@@ -9135,6 +9135,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   RawStringEnumMirrored dco_decode_raw_string_enum_mirrored(dynamic raw);
 
   @protected
+  RawStringItemEnumTwinNormal dco_decode_raw_string_item_enum_twin_normal(
+      dynamic raw);
+
+  @protected
+  RawStringItemEnumTwinRustAsync
+      dco_decode_raw_string_item_enum_twin_rust_async(dynamic raw);
+
+  @protected
+  RawStringItemEnumTwinRustAsyncSse
+      dco_decode_raw_string_item_enum_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  RawStringItemEnumTwinSse dco_decode_raw_string_item_enum_twin_sse(
+      dynamic raw);
+
+  @protected
+  RawStringItemEnumTwinSync dco_decode_raw_string_item_enum_twin_sync(
+      dynamic raw);
+
+  @protected
+  RawStringItemEnumTwinSyncSse dco_decode_raw_string_item_enum_twin_sync_sse(
+      dynamic raw);
+
+  @protected
   RawStringItemStructTwinNormal dco_decode_raw_string_item_struct_twin_normal(
       dynamic raw);
 
@@ -18768,6 +18792,32 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  RawStringItemEnumTwinNormal sse_decode_raw_string_item_enum_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  RawStringItemEnumTwinRustAsync
+      sse_decode_raw_string_item_enum_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  RawStringItemEnumTwinRustAsyncSse
+      sse_decode_raw_string_item_enum_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  RawStringItemEnumTwinSse sse_decode_raw_string_item_enum_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  RawStringItemEnumTwinSync sse_decode_raw_string_item_enum_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  RawStringItemEnumTwinSyncSse sse_decode_raw_string_item_enum_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
   RawStringItemStructTwinNormal sse_decode_raw_string_item_struct_twin_normal(
       SseDeserializer deserializer);
 
@@ -26838,6 +26888,48 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
         2,
         cst_encode_box_autoadd_list_of_nested_raw_string_mirrored(raw.field0)
       ].jsify()!;
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  JSAny cst_encode_raw_string_item_enum_twin_normal(
+      RawStringItemEnumTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    if (raw is RawStringItemEnumTwinNormal_Regular) {
+      return [0, cst_encode_String(raw.regular)].jsify()!;
+    }
+    if (raw is RawStringItemEnumTwinNormal_Raw) {
+      return [1, cst_encode_String(raw.type)].jsify()!;
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  JSAny cst_encode_raw_string_item_enum_twin_rust_async(
+      RawStringItemEnumTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    if (raw is RawStringItemEnumTwinRustAsync_Regular) {
+      return [0, cst_encode_String(raw.regular)].jsify()!;
+    }
+    if (raw is RawStringItemEnumTwinRustAsync_Raw) {
+      return [1, cst_encode_String(raw.type)].jsify()!;
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  JSAny cst_encode_raw_string_item_enum_twin_sync(
+      RawStringItemEnumTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    if (raw is RawStringItemEnumTwinSync_Regular) {
+      return [0, cst_encode_String(raw.regular)].jsify()!;
+    }
+    if (raw is RawStringItemEnumTwinSync_Raw) {
+      return [1, cst_encode_String(raw.type)].jsify()!;
     }
 
     throw Exception('unreachable');
@@ -37863,6 +37955,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_raw_string_enum_mirrored(
       RawStringEnumMirrored self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_raw_string_item_enum_twin_normal(
+      RawStringItemEnumTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_raw_string_item_enum_twin_rust_async(
+      RawStringItemEnumTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_raw_string_item_enum_twin_rust_async_sse(
+      RawStringItemEnumTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_raw_string_item_enum_twin_sse(
+      RawStringItemEnumTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_raw_string_item_enum_twin_sync(
+      RawStringItemEnumTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_raw_string_item_enum_twin_sync_sse(
+      RawStringItemEnumTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_raw_string_item_struct_twin_normal(
@@ -59191,6 +59307,50 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__mirror_twin_sync_sse__test_raw_string_enum_mirrored_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
+  void wire__crate__api__raw_string__test_raw_string_item_enum_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__raw_string__test_raw_string_item_enum_twin_normal(
+              port_);
+
+  void wire__crate__api__pseudo_manual__raw_string_twin_rust_async__test_raw_string_item_enum_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__raw_string_twin_rust_async__test_raw_string_item_enum_twin_rust_async(
+              port_);
+
+  void wire__crate__api__pseudo_manual__raw_string_twin_rust_async_sse__test_raw_string_item_enum_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__raw_string_twin_rust_async_sse__test_raw_string_item_enum_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__raw_string_twin_sse__test_raw_string_item_enum_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__raw_string_twin_sse__test_raw_string_item_enum_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__raw_string_twin_sync__test_raw_string_item_enum_twin_sync() =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__raw_string_twin_sync__test_raw_string_item_enum_twin_sync();
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__raw_string_twin_sync_sse__test_raw_string_item_enum_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__raw_string_twin_sync_sse__test_raw_string_item_enum_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
   void wire__crate__api__raw_string__test_raw_string_item_struct_twin_normal(
           NativePortType port_) =>
       wasmModule
@@ -76386,6 +76546,37 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__mirror_twin_sync_sse__test_raw_string_enum_mirrored_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__raw_string__test_raw_string_item_enum_twin_normal(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__raw_string_twin_rust_async__test_raw_string_item_enum_twin_rust_async(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__raw_string_twin_rust_async_sse__test_raw_string_item_enum_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__raw_string_twin_sse__test_raw_string_item_enum_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__raw_string_twin_sync__test_raw_string_item_enum_twin_sync();
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__raw_string_twin_sync_sse__test_raw_string_item_enum_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
