@@ -33,7 +33,7 @@ fn parse_constant(
     parse_mode: ParseMode,
     constant: &HirFlatConstant,
 ) -> anyhow::Result<IrValueOrSkip<MirFunc, IrSkip>> {
-    let name = TODO;
+    let name = constant.item_const.ident.to_string();
     let type_str = TODO;
 
     let namespace = &constant.namespace;
