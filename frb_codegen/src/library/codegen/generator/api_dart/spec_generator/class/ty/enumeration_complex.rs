@@ -38,7 +38,7 @@ impl EnumRefApiDartGenerator<'_> {
             generate_dart_maybe_implements_exception(self.mir.is_exception);
 
         let json_serializable_extra_code =
-            compute_json_serializable_extra_code(src.needs_json_serializable, &name);
+            compute_json_serializable_extra_code(src.needs_json_serializable, name);
 
         Some(ApiDartGeneratedClass {
             namespace: src.name.namespace.clone(),
