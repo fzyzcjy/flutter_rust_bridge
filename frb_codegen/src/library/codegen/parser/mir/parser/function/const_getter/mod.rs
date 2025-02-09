@@ -8,6 +8,7 @@ use crate::codegen::ir::mir::func::{
 use crate::codegen::ir::misc::skip::MirFuncOrSkip;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
+use crate::codegen::parser::mir::parser::function::auto_accessor::create_simplified_parsing_context;
 use crate::codegen::parser::mir::parser::function::real::compute_codec_mode_pack;
 use crate::codegen::parser::mir::parser::ty::TypeParser;
 use crate::codegen::parser::mir::ParseMode;
@@ -21,6 +22,8 @@ pub(crate) fn parse(
 ) -> anyhow::Result<Vec<MirFuncOrSkip>> {
     (src_constants.iter())
         .map(|constant| {
+            let context =
+                create_simplified_parsing_context(constant.namespace.clone(), config, parse_mode)?;
             let rust_call_code = "TODO_code".to_owned();
             Ok(MirFuncOrSkip::Value(MirFunc {
                 namespace: constant.namespace.clone(),

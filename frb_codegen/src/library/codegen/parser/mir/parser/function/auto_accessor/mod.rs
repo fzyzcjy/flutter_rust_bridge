@@ -62,7 +62,8 @@ fn parse_auto_accessors_of_struct(
     type_parser: &mut TypeParser,
     parse_mode: ParseMode,
 ) -> anyhow::Result<Vec<MirFuncAndSanityCheckInfo>> {
-    let context = create_simplified_parsing_context(struct_name, config, parse_mode)?;
+    let context =
+        create_simplified_parsing_context(struct_name.namespace.to_owned(), config, parse_mode)?;
 
     let ty_direct_parse =
         match type_parser.parse_type(&syn::parse_str(&struct_name.name)?, &context) {
@@ -115,12 +116,12 @@ fn parse_auto_accessors_of_struct(
 }
 
 pub(crate) fn create_simplified_parsing_context(
-    struct_name: &NamespacedName,
+    initiated_namespace: Namespace,
     config: &ParserMirInternalConfig,
     parse_mode: ParseMode,
 ) -> anyhow::Result<TypeParserParsingContext> {
     Ok(TypeParserParsingContext {
-        initiated_namespace: struct_name.namespace.to_owned(),
+        initiated_namespace,
         func_attributes: FrbAttributes::parse(&[])?,
         struct_or_enum_attributes: None,
         rust_output_path_namespace: config
