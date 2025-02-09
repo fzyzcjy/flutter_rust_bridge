@@ -18,7 +18,6 @@ Future<void> initializeWasmModule({required String root}) async {
 
   jsEval('window.wasm_bindgen = wasm_bindgen');
 
-
   await _jsWasmBindgen('${root}_bg.wasm?version=$version').toDart;
 }
 
