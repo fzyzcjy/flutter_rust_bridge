@@ -12,6 +12,7 @@ use crate::codegen::parser::mir::parser::function::auto_accessor::create_simplif
 use crate::codegen::parser::mir::parser::function::real::compute_codec_mode_pack;
 use crate::codegen::parser::mir::parser::ty::TypeParser;
 use crate::codegen::parser::mir::ParseMode;
+use crate::utils::namespace::NamespacedName;
 use anyhow::Error;
 use std::collections::HashMap;
 
@@ -32,15 +33,18 @@ fn parse_constant(
     parse_mode: ParseMode,
     constant: &HirFlatConstant,
 ) -> anyhow::Result<IrValueOrSkip<MirFunc, IrSkip>> {
-    let context =
-        create_simplified_parsing_context(constant.namespace.clone(), config, parse_mode)?;
+    let name = TODO;
+    let type_str = TODO;
 
-    let ty_direct_parse = match type_parser.parse_type(&syn::parse_str(TODO)?, &context) {
+    let namespace = &constant.namespace;
+    let context = create_simplified_parsing_context(namespace.clone(), config, parse_mode)?;
+
+    let ty_direct_parse = match type_parser.parse_type(&syn::parse_str(type_str)?, &context) {
         Ok(value) => value,
         // We do not care about parsing errors here (e.g. some type that we do not support)
         Err(_) => {
             return Ok(IrValueOrSkip::Skip(IrSkip {
-                name: TODO,
+                name: NamespacedName::new(namespace.clone(), name),
                 reason: IrSkipReason::Err,
             }))
         }
@@ -49,8 +53,8 @@ fn parse_constant(
     let rust_call_code = "TODO_code".to_owned();
 
     Ok(MirFuncOrSkip::Value(MirFunc {
-        namespace: constant.namespace.clone(),
-        name: TODO,
+        namespace: namespace.clone(),
+        name,
         id: None,
         inputs: vec![],
         output: MirFuncOutput {
