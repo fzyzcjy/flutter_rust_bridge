@@ -17,3 +17,6 @@ md-5 = "0.10.6"
 
 [lib]
 proc-macro = true
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }

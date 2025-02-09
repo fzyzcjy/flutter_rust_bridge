@@ -1,9 +1,5 @@
 [workspace]
-members = [
-    "frb_codegen",
-    "frb_macros",
-    "frb_rust",
-]
+members = ["frb_codegen", "frb_macros", "frb_rust"]
 exclude = [
     # Exclude example packages to ensure the example mimics how a typical user will use it.
     # For example, the `target` directory is different with and without workspaces.
@@ -47,4 +43,7 @@ flutter_rust_bridge_codegen = { path = "frb_codegen", version = "=2.7.1" }
 
 [profile.release.package.flutter_rust_bridge_codegen]
 strip = "debuginfo"
-debug = 1 # preserves some debug information
+debug = 1           # preserves some debug information
+
+[workspace.lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }

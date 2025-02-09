@@ -8,3 +8,6 @@ edition = "2018"
 [dependencies]
 
 [workspace]
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }

@@ -26,3 +26,5 @@ tokio = { version = "1.34.0", features = ["rt"] }
 
 [features]
 internal_feature_for_testing = []
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }
