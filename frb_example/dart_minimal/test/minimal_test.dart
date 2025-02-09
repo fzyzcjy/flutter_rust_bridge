@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:frb_example_dart_minimal/src/rust/api/minimal.dart';
 import 'package:frb_example_dart_minimal/src/rust/frb_generated.dart';
@@ -16,4 +17,16 @@ Future<void> main() async {
     print('Action: Call rust (after)');
   });
   print('Action: Configure tests (end)');
+
+  test('MyEnumWithJsonSerializableTwinNormal', () async {
+    final obj = MyEnumWithJsonSerializableTwinNormal.fromJson(
+        {'runtimeType': 'apple', 'field0': 'hi'});
+    expect(jsonEncode(obj), 'WHAT');
+  });
+
+  test('MyStructWithJsonSerializableTwinNormal', () async {
+    final obj =
+        MyStructWithJsonSerializableTwinNormal.fromJson({'fieldOne': 'hi'});
+    expect(jsonEncode(obj), 'WHAT');
+  });
 }
