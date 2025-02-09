@@ -81,7 +81,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 abstract class RustLibApi extends BaseApi {
   int crateApiMinimalMyStructAutoAccessorGetA({required MyStruct that});
 
-  void crateApiMinimalMyStructAutoAccessorSetA(
+  crateApiMinimalMyStructAutoAccessorSetA(
       {required MyStruct that, required int a});
 
   Future<void> crateApiMinimalInitApp();
@@ -131,7 +131,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  void crateApiMinimalMyStructAutoAccessorSetA(
+  crateApiMinimalMyStructAutoAccessorSetA(
       {required MyStruct that, required int a}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
