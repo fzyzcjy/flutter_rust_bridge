@@ -33,6 +33,7 @@
 - AlexV525: Add Dart fix. Fix folder.
 - Integral-Tech: Use concat. Fix lint.
 - Tienisto: Remove default enum case. Add mock init.
+- satvikpendem: 'Add json_serializable. Update CI. Little co-work #989.'
 - anlumo: Fix freezed + methods. Non-clone RustOpaque. Update syn.
 - temeddix: Fix broken CI. Custom num workers. Fix MacOS doc steps. Update doc. Make zero-copy defaultable.
 - NightFeather0615: Fix Vec bool.
@@ -40,6 +41,7 @@
 - alexlapa: Fix DartOpaque.
 - SirKrlos: Fix fvm calls.
 - OfficialBoyfriend: Fix error display.
+- jippeholwerda: Fix raw identifier.
 - wxitcode: Add org option. Support MacOS log. Fix a typo.
 - atezet: Upgrade dependencies. Follow rustfmt.
 - evdokimovs: Change dependencies.
@@ -103,7 +105,6 @@
 - lker-dev: Fix doc link.
 - jaiakash: Fix doc link.
 - feber: Fix doc link.
-- satvikpendem: 'Little co-work #989.'
 - ernstvanderlinden: Fix a typo.
 - damywise: Fix a typo.
 - rustui: Fix a typo.

@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.8.0
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Support JSON serialization on Dart side #2488 (thanks @satvikpendem) and #2538
+* Support converting constants into getters #2539
+* Update no_mangle code generation #2537
+* Fix compiler error when using HashSet with u64 and type_64bit_int is false #2536
+* Do not strip raw identifiers for Rust enum value fields #2496 (thanks @jippeholwerda) and #2535
+* Update versions in CI #2495 (thanks @satvikpendem) and #2534
+
 ## 2.7.1
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
