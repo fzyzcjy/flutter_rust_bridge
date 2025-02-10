@@ -20,8 +20,9 @@ pub struct MirStruct {
     pub wrapper_name: Option<String>,
     pub fields: Vec<MirField>,
     pub is_fields_named: bool,
-    pub dart_metadata: Vec<MirDartAnnotation>,
+    pub dart_metadata_raw: Vec<MirDartAnnotation>,
     pub ignore: bool,
+    pub needs_json_serializable: bool,
     pub generate_hash: bool,
     pub generate_eq: bool,
     pub ui_state: bool,
@@ -67,8 +68,19 @@ impl MirTypeTrait for MirTypeStructRef {
 }
 
 impl MirStruct {
+    pub fn effective_dart_metadata(&self) -> Vec<MirDartAnnotation> {
+        let mut ans = self.dart_metadata_raw.clone();
+        if self.needs_json_serializable && !dart_metadata_has_freezed(&ans) {
+            ans.push(MirDartAnnotation {
+                content: "freezed".to_string(),
+                library: None,
+            });
+        }
+        ans
+    }
+
     pub fn using_freezed(&self) -> bool {
-        self.dart_metadata.iter().any(|it| it.content == "freezed")
+        dart_metadata_has_freezed(&self.effective_dart_metadata())
     }
 
     pub fn is_empty(&self) -> bool {
@@ -78,6 +90,10 @@ impl MirStruct {
     pub fn brackets_pair(&self) -> (char, char) {
         rust_brackets_pair(self.is_fields_named)
     }
+}
+
+fn dart_metadata_has_freezed(dart_metadata: &[MirDartAnnotation]) -> bool {
+    dart_metadata.iter().any(|it| it.content == "freezed")
 }
 
 impl From<NamespacedName> for MirStructIdent {

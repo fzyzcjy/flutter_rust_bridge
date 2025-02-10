@@ -2663,6 +2663,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   MyCallableTwinSync dco_decode_box_autoadd_my_callable_twin_sync(dynamic raw);
 
   @protected
+  MyEnumWithJsonSerializableTwinNormal
+      dco_decode_box_autoadd_my_enum_with_json_serializable_twin_normal(
+          dynamic raw);
+
+  @protected
   MyNestedStructTwinNormal dco_decode_box_autoadd_my_nested_struct_twin_normal(
       dynamic raw);
 
@@ -2688,6 +2693,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   MyStructContainingStreamSinkTwinRustAsync
       dco_decode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  MyStructWithJsonSerializableTwinNormal
+      dco_decode_box_autoadd_my_struct_with_json_serializable_twin_normal(
           dynamic raw);
 
   @protected
@@ -4069,6 +4079,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   MyEnum dco_decode_my_enum(dynamic raw);
 
   @protected
+  MyEnumWithJsonSerializableTwinNormal
+      dco_decode_my_enum_with_json_serializable_twin_normal(dynamic raw);
+
+  @protected
   MyNestedStructTwinNormal dco_decode_my_nested_struct_twin_normal(dynamic raw);
 
   @protected
@@ -4098,6 +4112,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   MyStructContainingStreamSinkTwinRustAsync
       dco_decode_my_struct_containing_stream_sink_twin_rust_async(dynamic raw);
+
+  @protected
+  MyStructWithJsonSerializableTwinNormal
+      dco_decode_my_struct_with_json_serializable_twin_normal(dynamic raw);
 
   @protected
   MyStructWithSync dco_decode_my_struct_with_sync(dynamic raw);
@@ -7277,6 +7295,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  MyEnumWithJsonSerializableTwinNormal
+      sse_decode_box_autoadd_my_enum_with_json_serializable_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
   MyNestedStructTwinNormal sse_decode_box_autoadd_my_nested_struct_twin_normal(
       SseDeserializer deserializer);
 
@@ -7303,6 +7326,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   MyStructContainingStreamSinkTwinRustAsync
       sse_decode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  MyStructWithJsonSerializableTwinNormal
+      sse_decode_box_autoadd_my_struct_with_json_serializable_twin_normal(
           SseDeserializer deserializer);
 
   @protected
@@ -8875,6 +8903,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   MyEnum sse_decode_my_enum(SseDeserializer deserializer);
 
   @protected
+  MyEnumWithJsonSerializableTwinNormal
+      sse_decode_my_enum_with_json_serializable_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
   MyNestedStructTwinNormal sse_decode_my_nested_struct_twin_normal(
       SseDeserializer deserializer);
 
@@ -8908,6 +8941,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   MyStructContainingStreamSinkTwinRustAsync
       sse_decode_my_struct_containing_stream_sink_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  MyStructWithJsonSerializableTwinNormal
+      sse_decode_my_struct_with_json_serializable_twin_normal(
           SseDeserializer deserializer);
 
   @protected
@@ -12258,6 +12296,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       MyCallableTwinSync self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_my_enum_with_json_serializable_twin_normal(
+      MyEnumWithJsonSerializableTwinNormal self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_my_nested_struct_twin_normal(
       MyNestedStructTwinNormal self, SseSerializer serializer);
 
@@ -12283,6 +12325,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_box_autoadd_my_struct_containing_stream_sink_twin_rust_async(
       MyStructContainingStreamSinkTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_my_struct_with_json_serializable_twin_normal(
+      MyStructWithJsonSerializableTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_my_struct_with_sync(
@@ -13804,6 +13850,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_my_enum(MyEnum self, SseSerializer serializer);
 
   @protected
+  void sse_encode_my_enum_with_json_serializable_twin_normal(
+      MyEnumWithJsonSerializableTwinNormal self, SseSerializer serializer);
+
+  @protected
   void sse_encode_my_nested_struct_twin_normal(
       MyNestedStructTwinNormal self, SseSerializer serializer);
 
@@ -13836,6 +13886,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_my_struct_containing_stream_sink_twin_rust_async(
       MyStructContainingStreamSinkTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_struct_with_json_serializable_twin_normal(
+      MyStructWithJsonSerializableTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_my_struct_with_sync(

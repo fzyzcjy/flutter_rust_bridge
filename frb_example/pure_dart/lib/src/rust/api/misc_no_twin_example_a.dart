@@ -10,6 +10,9 @@ import '../frb_generated.dart';
 import 'misc_no_twin_example_b.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+part 'misc_no_twin_example_a.freezed.dart';
+part 'misc_no_twin_example_a.g.dart';
 
 // These functions are ignored because they are not marked as `pub`: `log`
 // These types are ignored because they are not used by any `pub` functions: `Issue2170Struct`
@@ -188,6 +191,45 @@ class ItemContainerSolutionTwoTwinNormal {
           runtimeType == other.runtimeType &&
           name == other.name &&
           items == other.items;
+}
+
+@freezed
+sealed class MyEnumWithJsonSerializableTwinNormal
+    with _$MyEnumWithJsonSerializableTwinNormal {
+  const MyEnumWithJsonSerializableTwinNormal._();
+
+  const factory MyEnumWithJsonSerializableTwinNormal.apple(
+    String field0,
+  ) = MyEnumWithJsonSerializableTwinNormal_Apple;
+  const factory MyEnumWithJsonSerializableTwinNormal.orange({
+    required int a,
+  }) = MyEnumWithJsonSerializableTwinNormal_Orange;
+
+  factory MyEnumWithJsonSerializableTwinNormal.fromJson(
+          Map<String, dynamic> json) =>
+      _$MyEnumWithJsonSerializableTwinNormalFromJson(json);
+
+  Future<void> f() => RustLib.instance.api
+          .crateApiMiscNoTwinExampleAMyEnumWithJsonSerializableTwinNormalF(
+        that: this,
+      );
+}
+
+@freezed
+class MyStructWithJsonSerializableTwinNormal
+    with _$MyStructWithJsonSerializableTwinNormal {
+  const MyStructWithJsonSerializableTwinNormal._();
+  const factory MyStructWithJsonSerializableTwinNormal({
+    required String fieldOne,
+  }) = _MyStructWithJsonSerializableTwinNormal;
+  Future<void> f() => RustLib.instance.api
+          .crateApiMiscNoTwinExampleAMyStructWithJsonSerializableTwinNormalF(
+        that: this,
+      );
+
+  factory MyStructWithJsonSerializableTwinNormal.fromJson(
+          Map<String, dynamic> json) =>
+      _$MyStructWithJsonSerializableTwinNormalFromJson(json);
 }
 
 class MyStructWithSync {

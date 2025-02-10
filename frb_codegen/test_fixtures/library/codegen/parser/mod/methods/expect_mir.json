@@ -6,6 +6,7 @@
       "ignore": false,
       "mode": "Simple",
       "name": "crate::api/MyEnum",
+      "needs_json_serializable": false,
       "variants": [
         {
           "comments": [],
@@ -317,13 +318,14 @@
   "struct_pool": {
     "crate::api/MyStruct": {
       "comments": [],
-      "dart_metadata": [],
+      "dart_metadata_raw": [],
       "fields": [],
       "generate_eq": true,
       "generate_hash": true,
       "ignore": false,
       "is_fields_named": true,
       "name": "crate::api/MyStruct",
+      "needs_json_serializable": false,
       "ui_state": false,
       "wrapper_name": null
     }

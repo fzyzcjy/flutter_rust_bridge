@@ -98,6 +98,15 @@ fn generate_end_api_text(
             ..Default::default()
         };
     }
+    if item.needs_json_serializable {
+        header += DartHeaderCode {
+            part: format!(
+                "part '{name}.g.dart';",
+                name = dart_output_path.file_stem().unwrap().to_str().unwrap()
+            ),
+            ..Default::default()
+        };
+    }
 
     header += item.imports.clone();
 

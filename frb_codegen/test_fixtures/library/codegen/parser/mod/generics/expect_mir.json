@@ -6,13 +6,14 @@
       "ignore": true,
       "mode": "Complex",
       "name": "crate::api/MyGenericEnum",
+      "needs_json_serializable": false,
       "variants": [
         {
           "comments": [],
           "kind": {
             "Struct": {
               "comments": [],
-              "dart_metadata": [],
+              "dart_metadata_raw": [],
               "fields": [
                 {
                   "comments": [],
@@ -62,6 +63,7 @@
               "ignore": false,
               "is_fields_named": false,
               "name": "crate::api::MyGenericEnum/One",
+              "needs_json_serializable": false,
               "ui_state": false,
               "wrapper_name": null
             }
@@ -80,7 +82,7 @@
           "kind": {
             "Struct": {
               "comments": [],
-              "dart_metadata": [],
+              "dart_metadata_raw": [],
               "fields": [
                 {
                   "comments": [],
@@ -130,6 +132,7 @@
               "ignore": false,
               "is_fields_named": false,
               "name": "crate::api::MyGenericEnum/Two",
+              "needs_json_serializable": false,
               "ui_state": false,
               "wrapper_name": null
             }
@@ -558,7 +561,7 @@
   "struct_pool": {
     "crate::api/MyGenericStruct": {
       "comments": [],
-      "dart_metadata": [],
+      "dart_metadata_raw": [],
       "fields": [
         {
           "comments": [],
@@ -668,6 +671,7 @@
       "ignore": true,
       "is_fields_named": true,
       "name": "crate::api/MyGenericStruct",
+      "needs_json_serializable": false,
       "ui_state": false,
       "wrapper_name": null
     }

@@ -242,3 +242,22 @@ pub fn r#for(r#type: String) {
 
 pub const CONST_INT_TWIN_NORMAL: i32 = 42;
 pub const CONST_ARRAY_TWIN_NORMAL: [f32; 3] = [1.5, 3.0, 6.0];
+
+#[frb(json_serializable)]
+pub enum MyEnumWithJsonSerializableTwinNormal {
+    Apple(String),
+    Orange { a: i32 },
+}
+
+impl MyEnumWithJsonSerializableTwinNormal {
+    pub fn f(&self) {}
+}
+
+#[frb(json_serializable)]
+pub struct MyStructWithJsonSerializableTwinNormal {
+    pub field_one: String,
+}
+
+impl MyStructWithJsonSerializableTwinNormal {
+    pub fn f(&self) {}
+}

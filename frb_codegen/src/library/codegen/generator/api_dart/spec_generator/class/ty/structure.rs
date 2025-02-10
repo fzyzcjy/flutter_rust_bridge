@@ -14,7 +14,7 @@ impl ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'_> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
         let src = self.mir.get(self.context.mir_pack);
         let comments = generate_dart_comments(&src.comments);
-        let metadata = generate_dart_metadata(&src.dart_metadata);
+        let metadata = generate_dart_metadata(&src.effective_dart_metadata());
 
         let constructor_postfix = dart_constructor_postfix(
             &src.name.name,
@@ -58,6 +58,7 @@ impl ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'_> {
                 )
             },
             needs_freezed: src.using_freezed(),
+            needs_json_serializable: src.needs_json_serializable,
             header: methods.header + extra_code.header,
         })
     }

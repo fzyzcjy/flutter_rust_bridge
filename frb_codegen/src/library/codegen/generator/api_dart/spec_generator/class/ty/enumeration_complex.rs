@@ -37,6 +37,9 @@ impl EnumRefApiDartGenerator<'_> {
         let maybe_implements_exception =
             generate_dart_maybe_implements_exception(self.mir.is_exception);
 
+        let json_serializable_extra_code =
+            compute_json_serializable_extra_code(src.needs_json_serializable, name);
+
         Some(ApiDartGeneratedClass {
             namespace: src.name.namespace.clone(),
             class_name: name.clone(),
@@ -47,10 +50,13 @@ impl EnumRefApiDartGenerator<'_> {
 
                     {variants}
 
+                    {json_serializable_extra_code}
+
                     {extra_body}
                 }}",
             ),
             needs_freezed: true,
+            needs_json_serializable: src.needs_json_serializable,
             header,
         })
     }
@@ -150,4 +156,15 @@ fn optional_boundary_index(fields: &[MirField]) -> Option<usize> {
                 .all(|field| field.is_optional())
                 .then_some(idx)
         })
+}
+
+pub(crate) fn compute_json_serializable_extra_code(
+    needs_json_serializable: bool,
+    name: &str,
+) -> String {
+    if needs_json_serializable {
+        format!("factory {name}.fromJson(Map<String, dynamic> json) => _${name}FromJson(json);")
+    } else {
+        "".to_owned()
+    }
 }

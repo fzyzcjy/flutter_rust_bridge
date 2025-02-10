@@ -255,7 +255,7 @@ impl ApiDartGeneratorInfoTrait for StructRefApiDartGenerator<'_> {
     fn dart_import(&self) -> Option<String> {
         let st = self.mir.get(self.context.mir_pack);
         Some(
-            st.dart_metadata
+            st.effective_dart_metadata()
                 .iter()
                 .flat_map(|it| &it.library)
                 .map(|it| it.to_code())

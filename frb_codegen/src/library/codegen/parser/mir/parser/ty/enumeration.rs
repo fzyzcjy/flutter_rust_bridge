@@ -60,6 +60,8 @@ impl TypeParserWithContext<'_, '_, '_> {
             self.context,
         );
 
+        let attributes = FrbAttributes::parse(&src_enum.src.attrs)?;
+
         Ok(MirEnum {
             name,
             wrapper_name,
@@ -67,6 +69,7 @@ impl TypeParserWithContext<'_, '_, '_> {
             variants,
             mode,
             ignore,
+            needs_json_serializable: attributes.json_serializable(),
         })
     }
 
@@ -110,8 +113,9 @@ impl TypeParserWithContext<'_, '_, '_> {
             name: compute_enum_variant_kind_struct_name(&src_enum.name, variant_name),
             wrapper_name: None,
             is_fields_named: field_ident.is_some(),
-            dart_metadata: attributes.dart_metadata(),
+            dart_metadata_raw: attributes.dart_metadata(),
             ignore: attributes.ignore(),
+            needs_json_serializable: attributes.json_serializable(),
             generate_hash: true,
             generate_eq: true,
             ui_state: attributes.ui_state(),

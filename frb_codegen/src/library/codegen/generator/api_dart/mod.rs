@@ -13,6 +13,7 @@ use anyhow::Result;
 pub(crate) struct GeneratorApiDartOutput {
     pub output_texts: PathTexts,
     pub needs_freezed: bool,
+    pub needs_json_serializable: bool,
 }
 
 pub(crate) fn generate(
@@ -34,6 +35,10 @@ pub(crate) fn generate(
     Ok(GeneratorApiDartOutput {
         output_texts: text.output_texts,
         needs_freezed: spec.namespaced_items.values().any(|x| x.needs_freezed),
+        needs_json_serializable: spec
+            .namespaced_items
+            .values()
+            .any(|x| x.needs_json_serializable),
     })
 }
 

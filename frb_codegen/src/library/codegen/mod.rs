@@ -65,6 +65,7 @@ fn generate_once(internal_config: &InternalConfig, dumper: &Dumper) -> anyhow::R
     polisher::polish(
         &internal_config.polisher,
         generator_output.dart_needs_freezed,
+        generator_output.dart_needs_json_serializable,
         &generator_output.output_texts.paths(),
         &progress_bar_pack,
     )?;

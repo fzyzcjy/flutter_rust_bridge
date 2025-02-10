@@ -78,6 +78,7 @@ fn generate_array(
             "
         ),
         needs_freezed: false,
+        needs_json_serializable: false,
     })
 }
 
