@@ -3,6 +3,7 @@
 ## 2.8.0
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Support unignoring a struct or enum #2542
 * Support JSON serialization on Dart side #2488 (thanks @satvikpendem) and #2538
 * Support converting constants into getters #2539
 * Update no_mangle code generation #2537
