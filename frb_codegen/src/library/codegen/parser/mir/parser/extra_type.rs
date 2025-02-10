@@ -50,5 +50,9 @@ fn parse_item<Item: SynItemStructOrEnum>(
 ) -> anyhow::Result<MirExtraType> {
     let context =
         create_simplified_parsing_context(item.name.namespace.clone(), config, parse_mode)?;
-    type_parser.parse_type(&syn::parse_str(&item.name.name)?, &context)
+    let ty = type_parser.parse_type(&syn::parse_str(&item.name.name)?, &context)?;
+    Ok(MirExtraType {
+        ty,
+        codec_mode_pack: TODO,
+    })
 }
