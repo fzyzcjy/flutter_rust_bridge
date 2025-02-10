@@ -68,7 +68,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.7.1';
 
   @override
-  int get rustContentHash => -2059415564;
+  int get rustContentHash => -2119384465;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -79,15 +79,6 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  MyEnumWithoutFnWithUnignoreTwinNormal
-      crateApiMinimalDummyForUnignoreCrateApiMinimalMyEnumWithoutFnWithUnignoreTwinNormal();
-
-  MyStructWithoutFnWithUnignoreTwinNormal
-      crateApiMinimalDummyForUnignoreCrateApiMinimalMyStructWithoutFnWithUnignoreTwinNormal();
-
-  MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
-      crateApiMinimalDummyForUnignoreCrateApiMinimalMyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal();
-
   Future<void> crateApiMinimalInitApp();
 
   Future<int> crateApiMinimalMinimalAdder({required int a, required int b});
@@ -102,96 +93,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  MyEnumWithoutFnWithUnignoreTwinNormal
-      crateApiMinimalDummyForUnignoreCrateApiMinimalMyEnumWithoutFnWithUnignoreTwinNormal() {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_my_enum_without_fn_with_unignore_twin_normal,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiMinimalDummyForUnignoreCrateApiMinimalMyEnumWithoutFnWithUnignoreTwinNormalConstMeta,
-      argValues: [],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiMinimalDummyForUnignoreCrateApiMinimalMyEnumWithoutFnWithUnignoreTwinNormalConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "dummy_for_unignore_crate_api_minimal_MyEnumWithoutFnWithUnignoreTwinNormal",
-            argNames: [],
-          );
-
-  @override
-  MyStructWithoutFnWithUnignoreTwinNormal
-      crateApiMinimalDummyForUnignoreCrateApiMinimalMyStructWithoutFnWithUnignoreTwinNormal() {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 2)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_my_struct_without_fn_with_unignore_twin_normal,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiMinimalDummyForUnignoreCrateApiMinimalMyStructWithoutFnWithUnignoreTwinNormalConstMeta,
-      argValues: [],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiMinimalDummyForUnignoreCrateApiMinimalMyStructWithoutFnWithUnignoreTwinNormalConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "dummy_for_unignore_crate_api_minimal_MyStructWithoutFnWithUnignoreTwinNormal",
-            argNames: [],
-          );
-
-  @override
-  MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
-      crateApiMinimalDummyForUnignoreCrateApiMinimalMyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal() {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 3)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_my_struct_without_fn_with_unignore_with_json_serializable_twin_normal,
-        decodeErrorData: null,
-      ),
-      constMeta:
-          kCrateApiMinimalDummyForUnignoreCrateApiMinimalMyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalConstMeta,
-      argValues: [],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiMinimalDummyForUnignoreCrateApiMinimalMyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalConstMeta =>
-          const TaskConstMeta(
-            debugName:
-                "dummy_for_unignore_crate_api_minimal_MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal",
-            argNames: [],
-          );
-
-  @override
   Future<void> crateApiMinimalInitApp() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 4, port: port_);
+            funcId: 1, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -216,7 +123,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(a, serializer);
         sse_encode_i_32(b, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 5, port: port_);
+            funcId: 2, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -235,64 +142,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @protected
-  String dco_decode_String(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as String;
-  }
-
-  @protected
   int dco_decode_i_32(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
-  }
-
-  @protected
-  Uint8List dco_decode_list_prim_u_8_strict(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as Uint8List;
-  }
-
-  @protected
-  MyEnumWithoutFnWithUnignoreTwinNormal
-      dco_decode_my_enum_without_fn_with_unignore_twin_normal(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    switch (raw[0]) {
-      case 0:
-        return MyEnumWithoutFnWithUnignoreTwinNormal_One(
-          dco_decode_String(raw[1]),
-        );
-      default:
-        throw Exception("unreachable");
-    }
-  }
-
-  @protected
-  MyStructWithoutFnWithUnignoreTwinNormal
-      dco_decode_my_struct_without_fn_with_unignore_twin_normal(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
-    if (arr.length != 1)
-      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return MyStructWithoutFnWithUnignoreTwinNormal(
-      a: dco_decode_String(arr[0]),
-    );
-  }
-
-  @protected
-  MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
-      dco_decode_my_struct_without_fn_with_unignore_with_json_serializable_twin_normal(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
-    if (arr.length != 1)
-      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal(
-      a: dco_decode_String(arr[0]),
-    );
-  }
-
-  @protected
-  int dco_decode_u_8(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw as int;
   }
@@ -304,64 +154,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  String sse_decode_String(SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    var inner = sse_decode_list_prim_u_8_strict(deserializer);
-    return utf8.decoder.convert(inner);
-  }
-
-  @protected
   int sse_decode_i_32(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getInt32();
-  }
-
-  @protected
-  Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    var len_ = sse_decode_i_32(deserializer);
-    return deserializer.buffer.getUint8List(len_);
-  }
-
-  @protected
-  MyEnumWithoutFnWithUnignoreTwinNormal
-      sse_decode_my_enum_without_fn_with_unignore_twin_normal(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-
-    var tag_ = sse_decode_i_32(deserializer);
-    switch (tag_) {
-      case 0:
-        var var_field0 = sse_decode_String(deserializer);
-        return MyEnumWithoutFnWithUnignoreTwinNormal_One(var_field0);
-      default:
-        throw UnimplementedError('');
-    }
-  }
-
-  @protected
-  MyStructWithoutFnWithUnignoreTwinNormal
-      sse_decode_my_struct_without_fn_with_unignore_twin_normal(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    var var_a = sse_decode_String(deserializer);
-    return MyStructWithoutFnWithUnignoreTwinNormal(a: var_a);
-  }
-
-  @protected
-  MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
-      sse_decode_my_struct_without_fn_with_unignore_with_json_serializable_twin_normal(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    var var_a = sse_decode_String(deserializer);
-    return MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal(
-        a: var_a);
-  }
-
-  @protected
-  int sse_decode_u_8(SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return deserializer.buffer.getUint8();
   }
 
   @protected
@@ -376,56 +171,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_String(String self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_list_prim_u_8_strict(utf8.encoder.convert(self), serializer);
-  }
-
-  @protected
   void sse_encode_i_32(int self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     serializer.buffer.putInt32(self);
-  }
-
-  @protected
-  void sse_encode_list_prim_u_8_strict(
-      Uint8List self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_i_32(self.length, serializer);
-    serializer.buffer.putUint8List(self);
-  }
-
-  @protected
-  void sse_encode_my_enum_without_fn_with_unignore_twin_normal(
-      MyEnumWithoutFnWithUnignoreTwinNormal self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    switch (self) {
-      case MyEnumWithoutFnWithUnignoreTwinNormal_One(field0: final field0):
-        sse_encode_i_32(0, serializer);
-        sse_encode_String(field0, serializer);
-    }
-  }
-
-  @protected
-  void sse_encode_my_struct_without_fn_with_unignore_twin_normal(
-      MyStructWithoutFnWithUnignoreTwinNormal self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_String(self.a, serializer);
-  }
-
-  @protected
-  void
-      sse_encode_my_struct_without_fn_with_unignore_with_json_serializable_twin_normal(
-          MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal self,
-          SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_String(self.a, serializer);
-  }
-
-  @protected
-  void sse_encode_u_8(int self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    serializer.buffer.putUint8(self);
   }
 
   @protected
