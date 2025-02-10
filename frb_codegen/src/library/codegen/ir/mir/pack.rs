@@ -61,9 +61,6 @@ impl MirPack {
         }
 
         for extra_ty in &self.extra_types_all {
-            if filter_func.is_some() {
-                continue;
-            }
             f(extra_ty);
         }
     }
