@@ -157,6 +157,7 @@ const sidebars = {
                         'guides/functions/callables',
                         'guides/functions/properties',
                         'guides/functions/constructors',
+                        'guides/functions/constants',
                         'guides/functions/eq-hash',
                         'guides/functions/ignoring',
                         'guides/functions/renaming',
