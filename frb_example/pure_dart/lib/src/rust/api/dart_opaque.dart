@@ -9,9 +9,7 @@ import '../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-
 part 'dart_opaque.freezed.dart';
-part 'dart_opaque.g.dart';
 
 // These types are ignored because they are not used by any `pub` functions: `DART_OPAQUE`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `deref`, `initialize`
@@ -131,7 +129,4 @@ sealed class EnumDartOpaqueTwinNormal with _$EnumDartOpaqueTwinNormal {
   const factory EnumDartOpaqueTwinNormal.opaque(
     Object field0,
   ) = EnumDartOpaqueTwinNormal_Opaque;
-
-  factory EnumDartOpaqueTwinNormal.fromJson(Map<String, dynamic> json) =>
-      _$EnumDartOpaqueTwinNormalFromJson(json);
 }

@@ -9,9 +9,7 @@ import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_auto_opaque_twin_moi.dart';
-
 part 'rust_auto_opaque_twin_rust_async.freezed.dart';
-part 'rust_auto_opaque_twin_rust_async.g.dart';
 
 Future<void> rustAutoOpaqueArgOwnTwinRustAsync(
         {required NonCloneSimpleTwinRustAsync arg, required int expect}) =>
@@ -279,10 +277,6 @@ sealed class EnumWithGoodAndOpaqueTwinRustAsync
   const factory EnumWithGoodAndOpaqueTwinRustAsync.opaque(
     NonCloneSimpleTwinRustAsync field0,
   ) = EnumWithGoodAndOpaqueTwinRustAsync_Opaque;
-
-  factory EnumWithGoodAndOpaqueTwinRustAsync.fromJson(
-          Map<String, dynamic> json) =>
-      _$EnumWithGoodAndOpaqueTwinRustAsyncFromJson(json);
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinRustAsync {

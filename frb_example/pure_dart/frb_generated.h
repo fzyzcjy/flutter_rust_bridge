@@ -1717,6 +1717,28 @@ typedef struct wire_cst_my_callable_twin_sync {
   struct wire_cst_list_prim_u_8_strict *one;
 } wire_cst_my_callable_twin_sync;
 
+typedef struct wire_cst_MyEnumWithJsonSerializableTwinNormal_Apple {
+  struct wire_cst_list_prim_u_8_strict *field0;
+} wire_cst_MyEnumWithJsonSerializableTwinNormal_Apple;
+
+typedef struct wire_cst_MyEnumWithJsonSerializableTwinNormal_Orange {
+  int32_t a;
+} wire_cst_MyEnumWithJsonSerializableTwinNormal_Orange;
+
+typedef union MyEnumWithJsonSerializableTwinNormalKind {
+  struct wire_cst_MyEnumWithJsonSerializableTwinNormal_Apple Apple;
+  struct wire_cst_MyEnumWithJsonSerializableTwinNormal_Orange Orange;
+} MyEnumWithJsonSerializableTwinNormalKind;
+
+typedef struct wire_cst_my_enum_with_json_serializable_twin_normal {
+  int32_t tag;
+  union MyEnumWithJsonSerializableTwinNormalKind kind;
+} wire_cst_my_enum_with_json_serializable_twin_normal;
+
+typedef struct wire_cst_my_struct_with_json_serializable_twin_normal {
+  struct wire_cst_list_prim_u_8_strict *field_one;
+} wire_cst_my_struct_with_json_serializable_twin_normal;
+
 typedef struct wire_cst_my_struct_with_sync {
 
 } wire_cst_my_struct_with_sync;
@@ -10001,9 +10023,15 @@ WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manua
                                                                                                                                         int32_t rust_vec_len_,
                                                                                                                                         int32_t data_len_);
 
+void frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__my_enum_with_json_serializable_twin_normal_f(int64_t port_,
+                                                                                                                         struct wire_cst_my_enum_with_json_serializable_twin_normal *that);
+
 void frbgen_frb_example_pure_dart_wire__crate__api__customization__my_init_one(int64_t port_);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__customization__my_init_two(int64_t port_);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__my_struct_with_json_serializable_twin_normal_f(int64_t port_,
+                                                                                                                           struct wire_cst_my_struct_with_json_serializable_twin_normal *that);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__my_struct_with_sync_sync(int64_t port_,
                                                                                                      struct wire_cst_my_struct_with_sync *that);
@@ -14789,6 +14817,8 @@ struct wire_cst_my_callable_twin_rust_async *frbgen_frb_example_pure_dart_cst_ne
 
 struct wire_cst_my_callable_twin_sync *frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_callable_twin_sync(void);
 
+struct wire_cst_my_enum_with_json_serializable_twin_normal *frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_enum_with_json_serializable_twin_normal(void);
+
 struct wire_cst_my_nested_struct_twin_normal *frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_nested_struct_twin_normal(void);
 
 struct wire_cst_my_nested_struct_twin_rust_async *frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_nested_struct_twin_rust_async(void);
@@ -14802,6 +14832,8 @@ struct wire_cst_my_struct *frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_s
 struct wire_cst_my_struct_containing_stream_sink_twin_normal *frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_struct_containing_stream_sink_twin_normal(void);
 
 struct wire_cst_my_struct_containing_stream_sink_twin_rust_async *frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_struct_containing_stream_sink_twin_rust_async(void);
+
+struct wire_cst_my_struct_with_json_serializable_twin_normal *frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_struct_with_json_serializable_twin_normal(void);
 
 struct wire_cst_my_struct_with_sync *frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_struct_with_sync(void);
 
@@ -15492,6 +15524,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_callable_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_callable_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_callable_twin_sync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_enum_with_json_serializable_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_nested_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_nested_struct_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_nested_struct_twin_sync);
@@ -15499,6 +15532,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_struct);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_struct_containing_stream_sink_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_struct_containing_stream_sink_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_struct_with_json_serializable_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_struct_with_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_tree_node_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_my_tree_node_twin_rust_async);
@@ -16504,6 +16538,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__function_with_custom_name_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__item_container_solution_two_twin_normal_create_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__item_container_solution_two_twin_normal_get_item_contents_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__my_enum_with_json_serializable_twin_normal_f);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__my_struct_with_json_serializable_twin_normal_f);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__my_struct_with_sync_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__same_function_name_in_different_files);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__struct_with_custom_name_method_twin_normal_method_with_custom_name_twin_normal);

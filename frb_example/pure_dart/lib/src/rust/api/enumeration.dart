@@ -9,9 +9,7 @@ import '../frb_generated.dart';
 import 'misc_example.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-
 part 'enumeration.freezed.dart';
-part 'enumeration.g.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
 
@@ -70,9 +68,6 @@ sealed class DistanceTwinNormal with _$DistanceTwinNormal {
   const factory DistanceTwinNormal.map(
     double field0,
   ) = DistanceTwinNormal_Map;
-
-  factory DistanceTwinNormal.fromJson(Map<String, dynamic> json) =>
-      _$DistanceTwinNormalFromJson(json);
 }
 
 enum EnumSimpleTwinNormal {
@@ -98,9 +93,6 @@ sealed class EnumWithItemMixedTwinNormal with _$EnumWithItemMixedTwinNormal {
   const factory EnumWithItemMixedTwinNormal.c({
     required String cField,
   }) = EnumWithItemMixedTwinNormal_C;
-
-  factory EnumWithItemMixedTwinNormal.fromJson(Map<String, dynamic> json) =>
-      _$EnumWithItemMixedTwinNormalFromJson(json);
 }
 
 @freezed
@@ -113,9 +105,6 @@ sealed class EnumWithItemStructTwinNormal with _$EnumWithItemStructTwinNormal {
   const factory EnumWithItemStructTwinNormal.b({
     required Int32List bField,
   }) = EnumWithItemStructTwinNormal_B;
-
-  factory EnumWithItemStructTwinNormal.fromJson(Map<String, dynamic> json) =>
-      _$EnumWithItemStructTwinNormalFromJson(json);
 }
 
 @freezed
@@ -128,9 +117,6 @@ sealed class EnumWithItemTupleTwinNormal with _$EnumWithItemTupleTwinNormal {
   const factory EnumWithItemTupleTwinNormal.b(
     int field0,
   ) = EnumWithItemTupleTwinNormal_B;
-
-  factory EnumWithItemTupleTwinNormal.fromJson(Map<String, dynamic> json) =>
-      _$EnumWithItemTupleTwinNormalFromJson(json);
 }
 
 @freezed
@@ -160,9 +146,6 @@ sealed class KitchenSinkTwinNormal with _$KitchenSinkTwinNormal {
   const factory KitchenSinkTwinNormal.enums([
     @Default(WeekdaysTwinNormal.sunday) WeekdaysTwinNormal field0,
   ]) = KitchenSinkTwinNormal_Enums;
-
-  factory KitchenSinkTwinNormal.fromJson(Map<String, dynamic> json) =>
-      _$KitchenSinkTwinNormalFromJson(json);
 }
 
 @freezed
@@ -175,9 +158,6 @@ sealed class MeasureTwinNormal with _$MeasureTwinNormal {
   const factory MeasureTwinNormal.distance(
     DistanceTwinNormal field0,
   ) = MeasureTwinNormal_Distance;
-
-  factory MeasureTwinNormal.fromJson(Map<String, dynamic> json) =>
-      _$MeasureTwinNormalFromJson(json);
 }
 
 class NoteTwinNormal {
@@ -209,7 +189,4 @@ sealed class SpeedTwinNormal with _$SpeedTwinNormal {
   const factory SpeedTwinNormal.gps(
     double field0,
   ) = SpeedTwinNormal_GPS;
-
-  factory SpeedTwinNormal.fromJson(Map<String, dynamic> json) =>
-      _$SpeedTwinNormalFromJson(json);
 }

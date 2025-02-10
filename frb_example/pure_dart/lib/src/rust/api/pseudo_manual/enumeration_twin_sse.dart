@@ -9,9 +9,7 @@ import '../../frb_generated.dart';
 import 'misc_example_twin_sse.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-
 part 'enumeration_twin_sse.freezed.dart';
-part 'enumeration_twin_sse.g.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
 
@@ -79,9 +77,6 @@ sealed class DistanceTwinSse with _$DistanceTwinSse {
   const factory DistanceTwinSse.map(
     double field0,
   ) = DistanceTwinSse_Map;
-
-  factory DistanceTwinSse.fromJson(Map<String, dynamic> json) =>
-      _$DistanceTwinSseFromJson(json);
 }
 
 enum EnumSimpleTwinSse {
@@ -107,9 +102,6 @@ sealed class EnumWithItemMixedTwinSse with _$EnumWithItemMixedTwinSse {
   const factory EnumWithItemMixedTwinSse.c({
     required String cField,
   }) = EnumWithItemMixedTwinSse_C;
-
-  factory EnumWithItemMixedTwinSse.fromJson(Map<String, dynamic> json) =>
-      _$EnumWithItemMixedTwinSseFromJson(json);
 }
 
 @freezed
@@ -122,9 +114,6 @@ sealed class EnumWithItemStructTwinSse with _$EnumWithItemStructTwinSse {
   const factory EnumWithItemStructTwinSse.b({
     required Int32List bField,
   }) = EnumWithItemStructTwinSse_B;
-
-  factory EnumWithItemStructTwinSse.fromJson(Map<String, dynamic> json) =>
-      _$EnumWithItemStructTwinSseFromJson(json);
 }
 
 @freezed
@@ -137,9 +126,6 @@ sealed class EnumWithItemTupleTwinSse with _$EnumWithItemTupleTwinSse {
   const factory EnumWithItemTupleTwinSse.b(
     int field0,
   ) = EnumWithItemTupleTwinSse_B;
-
-  factory EnumWithItemTupleTwinSse.fromJson(Map<String, dynamic> json) =>
-      _$EnumWithItemTupleTwinSseFromJson(json);
 }
 
 @freezed
@@ -169,9 +155,6 @@ sealed class KitchenSinkTwinSse with _$KitchenSinkTwinSse {
   const factory KitchenSinkTwinSse.enums([
     @Default(WeekdaysTwinSse.sunday) WeekdaysTwinSse field0,
   ]) = KitchenSinkTwinSse_Enums;
-
-  factory KitchenSinkTwinSse.fromJson(Map<String, dynamic> json) =>
-      _$KitchenSinkTwinSseFromJson(json);
 }
 
 @freezed
@@ -184,9 +167,6 @@ sealed class MeasureTwinSse with _$MeasureTwinSse {
   const factory MeasureTwinSse.distance(
     DistanceTwinSse field0,
   ) = MeasureTwinSse_Distance;
-
-  factory MeasureTwinSse.fromJson(Map<String, dynamic> json) =>
-      _$MeasureTwinSseFromJson(json);
 }
 
 class NoteTwinSse {
@@ -218,7 +198,4 @@ sealed class SpeedTwinSse with _$SpeedTwinSse {
   const factory SpeedTwinSse.gps(
     double field0,
   ) = SpeedTwinSse_GPS;
-
-  factory SpeedTwinSse.fromJson(Map<String, dynamic> json) =>
-      _$SpeedTwinSseFromJson(json);
 }

@@ -8,9 +8,7 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-
 part 'exception_twin_rust_async.freezed.dart';
-part 'exception_twin_rust_async.g.dart';
 
 Future<int> funcReturnErrorTwinRustAsync() => RustLib.instance.api
     .crateApiPseudoManualExceptionTwinRustAsyncFuncReturnErrorTwinRustAsync();
@@ -97,9 +95,6 @@ sealed class CustomEnumErrorTwinRustAsync
     required int message,
     required String backtrace,
   }) = CustomEnumErrorTwinRustAsync_Two;
-
-  factory CustomEnumErrorTwinRustAsync.fromJson(Map<String, dynamic> json) =>
-      _$CustomEnumErrorTwinRustAsyncFromJson(json);
 }
 
 @freezed
@@ -118,9 +113,6 @@ sealed class CustomErrorTwinRustAsync
     required int e,
     required String backtrace,
   }) = CustomErrorTwinRustAsync_Error1;
-
-  factory CustomErrorTwinRustAsync.fromJson(Map<String, dynamic> json) =>
-      _$CustomErrorTwinRustAsyncFromJson(json);
 }
 
 @freezed
@@ -135,9 +127,6 @@ sealed class CustomNestedError1TwinRustAsync
   const factory CustomNestedError1TwinRustAsync.errorNested(
     CustomNestedError2TwinRustAsync field0,
   ) = CustomNestedError1TwinRustAsync_ErrorNested;
-
-  factory CustomNestedError1TwinRustAsync.fromJson(Map<String, dynamic> json) =>
-      _$CustomNestedError1TwinRustAsyncFromJson(json);
 }
 
 @freezed
@@ -151,9 +140,6 @@ sealed class CustomNestedError2TwinRustAsync
   const factory CustomNestedError2TwinRustAsync.customNested2Number(
     int field0,
   ) = CustomNestedError2TwinRustAsync_CustomNested2Number;
-
-  factory CustomNestedError2TwinRustAsync.fromJson(Map<String, dynamic> json) =>
-      _$CustomNestedError2TwinRustAsyncFromJson(json);
 }
 
 @freezed
@@ -167,10 +153,6 @@ sealed class CustomNestedErrorInnerTwinRustAsync
   const factory CustomNestedErrorInnerTwinRustAsync.four(
     int field0,
   ) = CustomNestedErrorInnerTwinRustAsync_Four;
-
-  factory CustomNestedErrorInnerTwinRustAsync.fromJson(
-          Map<String, dynamic> json) =>
-      _$CustomNestedErrorInnerTwinRustAsyncFromJson(json);
 }
 
 @freezed
@@ -184,10 +166,6 @@ sealed class CustomNestedErrorOuterTwinRustAsync
   const factory CustomNestedErrorOuterTwinRustAsync.two(
     CustomNestedErrorInnerTwinRustAsync field0,
   ) = CustomNestedErrorOuterTwinRustAsync_Two;
-
-  factory CustomNestedErrorOuterTwinRustAsync.fromJson(
-          Map<String, dynamic> json) =>
-      _$CustomNestedErrorOuterTwinRustAsyncFromJson(json);
 }
 
 class CustomStructErrorAnotherTwinRustAsync implements FrbException {

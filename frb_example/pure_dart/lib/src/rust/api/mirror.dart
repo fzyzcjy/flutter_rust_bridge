@@ -10,9 +10,7 @@ import '../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-
 part 'mirror.freezed.dart';
-part 'mirror.g.dart';
 
 Future<ApplicationSettings> getAppSettingsTwinNormal() =>
     RustLib.instance.api.crateApiMirrorGetAppSettingsTwinNormal();
@@ -174,9 +172,6 @@ sealed class ApplicationMessage with _$ApplicationMessage {
     required int y,
   }) = ApplicationMessage_RenderPixel;
   const factory ApplicationMessage.exit() = ApplicationMessage_Exit;
-
-  factory ApplicationMessage.fromJson(Map<String, dynamic> json) =>
-      _$ApplicationMessageFromJson(json);
 }
 
 enum ApplicationMode {
@@ -368,9 +363,6 @@ sealed class RawStringEnumMirrored with _$RawStringEnumMirrored {
   const factory RawStringEnumMirrored.listOfNested(
     ListOfNestedRawStringMirrored field0,
   ) = RawStringEnumMirrored_ListOfNested;
-
-  factory RawStringEnumMirrored.fromJson(Map<String, dynamic> json) =>
-      _$RawStringEnumMirroredFromJson(json);
 }
 
 class RawStringMirrored {
