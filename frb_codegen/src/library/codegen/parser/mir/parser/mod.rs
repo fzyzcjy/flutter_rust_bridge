@@ -75,7 +75,13 @@ pub(crate) fn parse(
         &structs_map,
         parse_mode,
     )?;
-    let extra_types_all = extra_type::parse()?;
+    let extra_types_all = extra_type::parse(
+        config,
+        &structs_map,
+        &enums_map,
+        &mut type_parser,
+        parse_mode,
+    )?;
 
     let (struct_pool, enum_pool, dart_code_of_type) = type_parser.consume();
 
