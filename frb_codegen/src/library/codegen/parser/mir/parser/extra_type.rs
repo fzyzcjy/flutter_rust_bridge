@@ -3,7 +3,6 @@ use crate::codegen::ir::hir::flat::struct_or_enum::{
 };
 use crate::codegen::ir::hir::misc::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::ir::mir::extra_type::MirExtraType;
-use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::auto_accessor::create_simplified_parsing_context;
