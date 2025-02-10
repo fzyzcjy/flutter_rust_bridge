@@ -29,14 +29,16 @@ pub(crate) fn parse(
     parse_mode: ParseMode,
 ) -> anyhow::Result<Vec<MirFuncOrSkip>> {
     Ok(concat([
-        parse_structs_or_enums(src_structs, config)?,
-        parse_structs_or_enums(src_enums, config)?,
+        parse_structs_or_enums(src_structs, config, type_parser, parse_mode)?,
+        parse_structs_or_enums(src_enums, config, type_parser, parse_mode)?,
     ]))
 }
 
 fn parse_structs_or_enums<Item: SynItemStructOrEnum>(
     items: &[HirFlatStructOrEnum<Item>],
     config: &ParserMirInternalConfig,
+    type_parser: &mut TypeParser,
+    parse_mode: ParseMode,
 ) -> anyhow::Result<Vec<MirFuncOrSkip>> {
     (items.iter())
         .filter(|item| (config.rust_input_namespace_pack).is_interest(&item.name.namespace))
@@ -45,19 +47,19 @@ fn parse_structs_or_enums<Item: SynItemStructOrEnum>(
                 FrbAttributes::parse(item.src.attrs()).unwrap_or_else(|_| FrbAttributes(vec![]));
             attrs.unignore()
         })
-        .map(|item| TODO)
+        .map(|item| parse_item(config, item, type_parser, parse_mode))
         .collect()
 }
 
 fn parse_item<Item: SynItemStructOrEnum>(
     config: &ParserMirInternalConfig,
-    namespace: Namespace,
-    item: &Item,
+    item: &HirFlatStructOrEnum<Item>,
     type_parser: &mut TypeParser,
     parse_mode: ParseMode,
 ) -> anyhow::Result<MirFuncOrSkip> {
-    let context = create_simplified_parsing_context(namespace.clone(), config, parse_mode)?;
-    let ty_direct_parse = type_parser.parse_type(TODO, &context)?;
+    let context =
+        create_simplified_parsing_context(item.name.namespace.clone(), config, parse_mode)?;
+    let ty_direct_parse = type_parser.parse_type(&syn::parse_str(&item.name.name)?, &context)?;
 
     Ok(MirFuncOrSkip::Value(MirFunc {
         namespace,
