@@ -160,6 +160,7 @@
     }
   },
   "extra_rust_output_code": "",
+  "extra_types_all": [],
   "funcs_all": [
     {
       "accessor": null,

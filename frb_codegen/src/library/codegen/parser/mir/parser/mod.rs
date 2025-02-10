@@ -1,5 +1,6 @@
 pub(crate) mod attribute;
 pub(crate) mod custom_ser_des;
+pub(crate) mod extra_type;
 pub(crate) mod function;
 pub(crate) mod lifetime_extractor;
 pub(crate) mod lifetime_replacer;
@@ -74,11 +75,19 @@ pub(crate) fn parse(
         &structs_map,
         parse_mode,
     )?;
+    let extra_types_all = extra_type::parse(
+        config,
+        &structs_map,
+        &enums_map,
+        &mut type_parser,
+        parse_mode,
+    )?;
 
     let (struct_pool, enum_pool, dart_code_of_type) = type_parser.consume();
 
     let mut ans = MirPack {
         funcs_all,
+        extra_types_all,
         struct_pool,
         enum_pool,
         dart_code_of_type,

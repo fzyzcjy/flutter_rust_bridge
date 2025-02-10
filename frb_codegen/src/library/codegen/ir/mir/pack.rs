@@ -1,4 +1,5 @@
-use crate::codegen::generator::codec::structs::CodecMode;
+use crate::codegen::generator::codec::structs::{CodecMode, CodecModePack};
+use crate::codegen::ir::mir::extra_type::MirExtraType;
 use crate::codegen::ir::mir::func::{MirFunc, MirFuncImplMode};
 use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
 use crate::codegen::ir::mir::ty::enumeration::{MirEnum, MirEnumIdent};
@@ -18,6 +19,7 @@ pub type MirEnumPool = HashMap<MirEnumIdent, MirEnum>;
 #[derive(Debug, Clone, serde::Serialize)]
 pub struct MirPack {
     pub funcs_all: Vec<MirFunc>, // Do not direct use, but use things like `funcs_with_impl`
+    pub extra_types_all: Vec<MirExtraType>,
     pub struct_pool: MirStructPool,
     pub enum_pool: MirEnumPool,
     pub dart_code_of_type: HashMap<String, GeneralDartCode>,
@@ -39,24 +41,32 @@ impl MirPack {
     #[allow(clippy::type_complexity)]
     pub fn distinct_types(
         &self,
-        filter_func: Option<Box<dyn Fn(&MirFunc) -> bool>>,
+        filter: Option<Box<dyn Fn(&CodecModePack) -> bool>>,
     ) -> Vec<MirType> {
         let mut gatherer = DistinctTypeGatherer::new();
-        self.visit_types(&mut |ty| gatherer.add(ty), &filter_func);
+        self.visit_types(&mut |ty| gatherer.add(ty), &filter);
         gatherer.gather()
     }
 
     /// [f] returns [true] if it wants to stop going to the *children* of this subtree
+    #[allow(clippy::type_complexity)]
     fn visit_types<F: FnMut(&MirType) -> bool>(
         &self,
         f: &mut F,
-        filter_func: &Option<impl Fn(&MirFunc) -> bool>,
+        filter: &Option<Box<dyn Fn(&CodecModePack) -> bool>>,
     ) {
         for func in &self.funcs_all {
-            if filter_func.is_some() && !filter_func.as_ref().unwrap()(func) {
+            if filter.is_some() && !filter.as_ref().unwrap()(&func.codec_mode_pack) {
                 continue;
             }
             func.visit_types(f, self)
+        }
+
+        for extra_ty in &self.extra_types_all {
+            if filter.is_some() && !filter.as_ref().unwrap()(&extra_ty.codec_mode_pack) {
+                continue;
+            }
+            extra_ty.ty.visit_types(f, self);
         }
     }
 }
@@ -79,8 +89,8 @@ impl MirPackComputedCache {
             .map(|codec| {
                 (
                     codec,
-                    mir_pack.distinct_types(Some(Box::new(move |f: &MirFunc| {
-                        (f.codec_mode_pack.all().iter()).any(|c| *c == codec)
+                    mir_pack.distinct_types(Some(Box::new(move |codec_mode_pack| {
+                        (codec_mode_pack.all().iter()).any(|c| *c == codec)
                     }))),
                 )
             })

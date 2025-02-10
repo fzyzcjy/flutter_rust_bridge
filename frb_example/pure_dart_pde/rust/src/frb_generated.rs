@@ -38267,6 +38267,22 @@ impl SseDecode for crate::api::misc_no_twin_example_a::MyEnumWithJsonSerializabl
     }
 }
 
+impl SseDecode for crate::api::misc_no_twin_example_a::MyEnumWithoutFnWithUnignoreTwinNormal {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut tag_ = <i32>::sse_decode(deserializer);
+        match tag_ {
+            0 => {
+                let mut var_field0 = <String>::sse_decode(deserializer);
+                return crate::api::misc_no_twin_example_a::MyEnumWithoutFnWithUnignoreTwinNormal::One(var_field0);
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
 impl SseDecode for crate::api::misc_example::MyNestedStructTwinNormal {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -38390,6 +38406,22 @@ impl SseDecode for crate::api::misc_no_twin_example_a::MyStructWithSync {
         return crate::api::misc_no_twin_example_a::MyStructWithSync {};
     }
 }
+
+impl SseDecode for crate::api::misc_no_twin_example_a::MyStructWithoutFnWithUnignoreTwinNormal {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_a = <String>::sse_decode(deserializer);
+        return crate::api::misc_no_twin_example_a::MyStructWithoutFnWithUnignoreTwinNormal {
+            a: var_a,
+        };
+    }
+}
+
+impl SseDecode for crate::api::misc_no_twin_example_a::MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal {
+                    // Codec=Sse (Serialization based), see doc to use other codecs
+                    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {let mut var_a = <String>::sse_decode(deserializer);
+return crate::api::misc_no_twin_example_a::MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal{a: var_a};}
+                }
 
 impl SseDecode for crate::api::misc_example::MyTreeNodeTwinNormal {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -48252,6 +48284,36 @@ impl
     }
 }
 // Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart
+    for crate::api::misc_no_twin_example_a::MyEnumWithoutFnWithUnignoreTwinNormal
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self {
+            crate::api::misc_no_twin_example_a::MyEnumWithoutFnWithUnignoreTwinNormal::One(
+                field0,
+            ) => [0.into_dart(), field0.into_into_dart().into_dart()].into_dart(),
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::misc_no_twin_example_a::MyEnumWithoutFnWithUnignoreTwinNormal
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::misc_no_twin_example_a::MyEnumWithoutFnWithUnignoreTwinNormal,
+    > for crate::api::misc_no_twin_example_a::MyEnumWithoutFnWithUnignoreTwinNormal
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::misc_no_twin_example_a::MyEnumWithoutFnWithUnignoreTwinNormal {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for crate::api::misc_example::MyNestedStructTwinNormal {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [
@@ -48486,6 +48548,43 @@ impl flutter_rust_bridge::IntoIntoDart<crate::api::misc_no_twin_example_a::MyStr
         self
     }
 }
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart
+    for crate::api::misc_no_twin_example_a::MyStructWithoutFnWithUnignoreTwinNormal
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [self.a.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::misc_no_twin_example_a::MyStructWithoutFnWithUnignoreTwinNormal
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::misc_no_twin_example_a::MyStructWithoutFnWithUnignoreTwinNormal,
+    > for crate::api::misc_no_twin_example_a::MyStructWithoutFnWithUnignoreTwinNormal
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::misc_no_twin_example_a::MyStructWithoutFnWithUnignoreTwinNormal {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for crate::api::misc_no_twin_example_a::MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal {
+                fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+                    [
+                    self.a.into_into_dart().into_dart()
+                ].into_dart()
+                }
+            }
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for crate::api::misc_no_twin_example_a::MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal {}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::misc_no_twin_example_a::MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal> for crate::api::misc_no_twin_example_a::MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal {
+            fn into_into_dart(self) -> crate::api::misc_no_twin_example_a::MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal {
+                self
+            }
+        }
 // Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for crate::api::misc_example::MyTreeNodeTwinNormal {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
@@ -57924,6 +58023,23 @@ impl SseEncode for crate::api::misc_no_twin_example_a::MyEnumWithJsonSerializabl
     }
 }
 
+impl SseEncode for crate::api::misc_no_twin_example_a::MyEnumWithoutFnWithUnignoreTwinNormal {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        match self {
+            crate::api::misc_no_twin_example_a::MyEnumWithoutFnWithUnignoreTwinNormal::One(
+                field0,
+            ) => {
+                <i32>::sse_encode(0, serializer);
+                <String>::sse_encode(field0, serializer);
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
 impl SseEncode for crate::api::misc_example::MyNestedStructTwinNormal {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -58018,6 +58134,18 @@ impl SseEncode for crate::api::misc_no_twin_example_a::MyStructWithSync {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {}
 }
+
+impl SseEncode for crate::api::misc_no_twin_example_a::MyStructWithoutFnWithUnignoreTwinNormal {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(self.a, serializer);
+    }
+}
+
+impl SseEncode for crate::api::misc_no_twin_example_a::MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal {
+                    // Codec=Sse (Serialization based), see doc to use other codecs
+                    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {<String>::sse_encode(self.a, serializer);}
+                }
 
 impl SseEncode for crate::api::misc_example::MyTreeNodeTwinNormal {
     // Codec=Sse (Serialization based), see doc to use other codecs

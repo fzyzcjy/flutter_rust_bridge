@@ -15,7 +15,7 @@ part 'misc_no_twin_example_a.freezed.dart';
 part 'misc_no_twin_example_a.g.dart';
 
 // These functions are ignored because they are not marked as `pub`: `log`
-// These types are ignored because they are not used by any `pub` functions: `Issue2170Struct`
+// These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `Issue2170Struct`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`
 
 Future<void> sameFunctionNameInDifferentFiles() => RustLib.instance.api
@@ -216,6 +216,16 @@ sealed class MyEnumWithJsonSerializableTwinNormal
 }
 
 @freezed
+sealed class MyEnumWithoutFnWithUnignoreTwinNormal
+    with _$MyEnumWithoutFnWithUnignoreTwinNormal {
+  const MyEnumWithoutFnWithUnignoreTwinNormal._();
+
+  const factory MyEnumWithoutFnWithUnignoreTwinNormal.one(
+    String field0,
+  ) = MyEnumWithoutFnWithUnignoreTwinNormal_One;
+}
+
+@freezed
 class MyStructWithJsonSerializableTwinNormal
     with _$MyStructWithJsonSerializableTwinNormal {
   const MyStructWithJsonSerializableTwinNormal._();
@@ -247,6 +257,37 @@ class MyStructWithSync {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is MyStructWithSync && runtimeType == other.runtimeType;
+}
+
+class MyStructWithoutFnWithUnignoreTwinNormal {
+  final String a;
+
+  const MyStructWithoutFnWithUnignoreTwinNormal({
+    required this.a,
+  });
+
+  @override
+  int get hashCode => a.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MyStructWithoutFnWithUnignoreTwinNormal &&
+          runtimeType == other.runtimeType &&
+          a == other.a;
+}
+
+@freezed
+class MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
+    with _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal {
+  const factory MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal({
+    required String a,
+  }) = _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal;
+
+  factory MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal.fromJson(
+          Map<String, dynamic> json) =>
+      _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalFromJson(
+          json);
 }
 
 class StructWithCustomNameMethodTwinNormal {

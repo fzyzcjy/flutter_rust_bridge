@@ -4083,6 +4083,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_my_enum_with_json_serializable_twin_normal(dynamic raw);
 
   @protected
+  MyEnumWithoutFnWithUnignoreTwinNormal
+      dco_decode_my_enum_without_fn_with_unignore_twin_normal(dynamic raw);
+
+  @protected
   MyNestedStructTwinNormal dco_decode_my_nested_struct_twin_normal(dynamic raw);
 
   @protected
@@ -4119,6 +4123,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MyStructWithSync dco_decode_my_struct_with_sync(dynamic raw);
+
+  @protected
+  MyStructWithoutFnWithUnignoreTwinNormal
+      dco_decode_my_struct_without_fn_with_unignore_twin_normal(dynamic raw);
+
+  @protected
+  MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
+      dco_decode_my_struct_without_fn_with_unignore_with_json_serializable_twin_normal(
+          dynamic raw);
 
   @protected
   MyTreeNodeTwinNormal dco_decode_my_tree_node_twin_normal(dynamic raw);
@@ -8908,6 +8921,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  MyEnumWithoutFnWithUnignoreTwinNormal
+      sse_decode_my_enum_without_fn_with_unignore_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
   MyNestedStructTwinNormal sse_decode_my_nested_struct_twin_normal(
       SseDeserializer deserializer);
 
@@ -8950,6 +8968,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MyStructWithSync sse_decode_my_struct_with_sync(SseDeserializer deserializer);
+
+  @protected
+  MyStructWithoutFnWithUnignoreTwinNormal
+      sse_decode_my_struct_without_fn_with_unignore_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
+      sse_decode_my_struct_without_fn_with_unignore_with_json_serializable_twin_normal(
+          SseDeserializer deserializer);
 
   @protected
   MyTreeNodeTwinNormal sse_decode_my_tree_node_twin_normal(
@@ -13854,6 +13882,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       MyEnumWithJsonSerializableTwinNormal self, SseSerializer serializer);
 
   @protected
+  void sse_encode_my_enum_without_fn_with_unignore_twin_normal(
+      MyEnumWithoutFnWithUnignoreTwinNormal self, SseSerializer serializer);
+
+  @protected
   void sse_encode_my_nested_struct_twin_normal(
       MyNestedStructTwinNormal self, SseSerializer serializer);
 
@@ -13894,6 +13926,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_my_struct_with_sync(
       MyStructWithSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_my_struct_without_fn_with_unignore_twin_normal(
+      MyStructWithoutFnWithUnignoreTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_my_struct_without_fn_with_unignore_with_json_serializable_twin_normal(
+          MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal self,
+          SseSerializer serializer);
 
   @protected
   void sse_encode_my_tree_node_twin_normal(

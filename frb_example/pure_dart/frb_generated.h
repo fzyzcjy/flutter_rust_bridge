@@ -3292,6 +3292,19 @@ typedef struct wire_cst_more_than_just_one_raw_string_struct_twin_sync {
   struct wire_cst_list_prim_u_8_strict *another;
 } wire_cst_more_than_just_one_raw_string_struct_twin_sync;
 
+typedef struct wire_cst_MyEnumWithoutFnWithUnignoreTwinNormal_One {
+  struct wire_cst_list_prim_u_8_strict *field0;
+} wire_cst_MyEnumWithoutFnWithUnignoreTwinNormal_One;
+
+typedef union MyEnumWithoutFnWithUnignoreTwinNormalKind {
+  struct wire_cst_MyEnumWithoutFnWithUnignoreTwinNormal_One One;
+} MyEnumWithoutFnWithUnignoreTwinNormalKind;
+
+typedef struct wire_cst_my_enum_without_fn_with_unignore_twin_normal {
+  int32_t tag;
+  union MyEnumWithoutFnWithUnignoreTwinNormalKind kind;
+} wire_cst_my_enum_without_fn_with_unignore_twin_normal;
+
 typedef struct wire_cst_my_stream_entry_twin_normal {
   struct wire_cst_list_prim_u_8_strict *hello;
 } wire_cst_my_stream_entry_twin_normal;
@@ -3299,6 +3312,14 @@ typedef struct wire_cst_my_stream_entry_twin_normal {
 typedef struct wire_cst_my_stream_entry_twin_rust_async {
   struct wire_cst_list_prim_u_8_strict *hello;
 } wire_cst_my_stream_entry_twin_rust_async;
+
+typedef struct wire_cst_my_struct_without_fn_with_unignore_twin_normal {
+  struct wire_cst_list_prim_u_8_strict *a;
+} wire_cst_my_struct_without_fn_with_unignore_twin_normal;
+
+typedef struct wire_cst_my_struct_without_fn_with_unignore_with_json_serializable_twin_normal {
+  struct wire_cst_list_prim_u_8_strict *a;
+} wire_cst_my_struct_without_fn_with_unignore_with_json_serializable_twin_normal;
 
 typedef struct wire_cst_new_simple_struct {
   int32_t field;
