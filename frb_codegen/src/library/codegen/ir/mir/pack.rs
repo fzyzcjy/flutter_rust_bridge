@@ -1,4 +1,5 @@
 use crate::codegen::generator::codec::structs::CodecMode;
+use crate::codegen::ir::mir::extra_type::MirExtraType;
 use crate::codegen::ir::mir::func::{MirFunc, MirFuncImplMode};
 use crate::codegen::ir::mir::trait_impl::MirTraitImpl;
 use crate::codegen::ir::mir::ty::enumeration::{MirEnum, MirEnumIdent};
@@ -18,7 +19,7 @@ pub type MirEnumPool = HashMap<MirEnumIdent, MirEnum>;
 #[derive(Debug, Clone, serde::Serialize)]
 pub struct MirPack {
     pub funcs_all: Vec<MirFunc>, // Do not direct use, but use things like `funcs_with_impl`
-    pub extra_types_all: Vec<MirType>,
+    pub extra_types_all: Vec<MirExtraType>,
     pub struct_pool: MirStructPool,
     pub enum_pool: MirEnumPool,
     pub dart_code_of_type: HashMap<String, GeneralDartCode>,
