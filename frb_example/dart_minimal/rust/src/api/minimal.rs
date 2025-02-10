@@ -9,12 +9,12 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
 
-// #[frb(unignore)]
+#[frb(unignore)]
 pub struct MyStructWithoutFnWithUnignoreTwinNormal {
     a: String,
 }
 
-// #[frb(unignore)]
+#[frb(unignore)]
 pub enum MyEnumWithoutFnWithUnignoreTwinNormal {
     One(String),
 }
