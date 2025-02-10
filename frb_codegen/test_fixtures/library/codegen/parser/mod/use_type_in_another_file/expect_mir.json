@@ -6,6 +6,7 @@
       "ignore": false,
       "mode": "Simple",
       "name": "crate::another_file/EnumInAnotherFile",
+      "needs_json_serializable": false,
       "variants": [
         {
           "comments": [],
@@ -134,7 +135,7 @@
   "struct_pool": {
     "crate::another_file/StructInAnotherFile": {
       "comments": [],
-      "dart_metadata": [],
+      "dart_metadata_raw": [],
       "fields": [
         {
           "comments": [],
@@ -160,6 +161,7 @@
       "ignore": false,
       "is_fields_named": true,
       "name": "crate::another_file/StructInAnotherFile",
+      "needs_json_serializable": false,
       "ui_state": false,
       "wrapper_name": null
     }
