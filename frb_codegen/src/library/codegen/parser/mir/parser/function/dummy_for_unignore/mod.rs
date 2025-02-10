@@ -73,6 +73,7 @@ fn parse_item<Item: SynItemStructOrEnum>(
         stream_dart_await: false,
         rust_async: false,
         initializer: false,
+        hidden: true,
         arg_mode: MirFuncArgMode::Positional,
         accessor: Some(MirFuncAccessorMode::Getter),
         comments: vec![],
