@@ -7,6 +7,7 @@ use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::auto_accessor::create_simplified_parsing_context;
+use crate::codegen::parser::mir::parser::function::real::compute_codec_mode_pack;
 use crate::codegen::parser::mir::parser::ty::TypeParser;
 use crate::codegen::parser::mir::ParseMode;
 use itertools::concat;
@@ -53,6 +54,9 @@ fn parse_item<Item: SynItemStructOrEnum>(
     let ty = type_parser.parse_type(&syn::parse_str(&item.name.name)?, &context)?;
     Ok(MirExtraType {
         ty,
-        codec_mode_pack: TODO,
+        codec_mode_pack: compute_codec_mode_pack(
+            &FrbAttributes::parse(&[])?,
+            &config.force_codec_mode_pack,
+        ),
     })
 }
