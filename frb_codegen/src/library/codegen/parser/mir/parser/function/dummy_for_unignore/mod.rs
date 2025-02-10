@@ -4,6 +4,7 @@ use crate::codegen::ir::hir::flat::struct_or_enum::{
 use crate::codegen::ir::hir::misc::syn_item_struct_or_enum::SynItemStructOrEnum;
 use crate::codegen::ir::misc::skip::MirFuncOrSkip;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
+use crate::codegen::parser::mir::parser::misc::extract_src_types_in_paths;
 use crate::codegen::parser::mir::parser::ty::TypeParser;
 use crate::codegen::parser::mir::ParseMode;
 use itertools::concat;
@@ -17,13 +18,17 @@ pub(crate) fn parse(
     parse_mode: ParseMode,
 ) -> anyhow::Result<Vec<MirFuncOrSkip>> {
     Ok(concat([
-        parse_structs_or_enums(src_structs)?,
-        parse_structs_or_enums(src_enums)?,
+        parse_structs_or_enums(src_structs, config)?,
+        parse_structs_or_enums(src_enums, config)?,
     ]))
 }
 
 fn parse_structs_or_enums<Item: SynItemStructOrEnum>(
     items: &[HirFlatStructOrEnum<Item>],
+    config: &ParserMirInternalConfig,
 ) -> anyhow::Result<Vec<MirFuncOrSkip>> {
-    TODO
+    (items.iter())
+        .filter(|item| (config.rust_input_namespace_pack).is_interest(&item.name.namespace))
+        .map(|item| TODO)
+        .collect()
 }
