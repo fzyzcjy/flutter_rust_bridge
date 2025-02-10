@@ -30,19 +30,6 @@ See below for an example.
 
 If you want the generated Dart class to be [`freezed`](https://pub.dev/packages/freezed) (which is like data-classes in other languages like Kotlin), simply put `#[frb(dart_metadata=("freezed"))]` and it will generate everything needed for you.
 
-## JSON serialization support (`json_serializable`)
-
-In order to make the generated Dart class automatically support JSON serialization,
-mark the struct/enum with `#[frb(json_serializable)]`.
-
-Then, the class will have `fromJson` and `toJson` methods, thus the type can be used in, for example, `jsonDecode` and `jsonEncode`.
-
-## Unignore the type
-
-By default, when a struct/enum is never used by any function that flutter_rust_bridge recognizes,
-it will be ignored. This is because such struct/enum is usually unused when communicating between Dart and Rust.
-However, if you want the struct/enum to be generated regardless of such scenario, put `#[frb(unignore)]` on it.
-
 ## Rename fields
 
 The `#[frb(name = "...")]` can be utilized to change the Dart name of a struct field.
