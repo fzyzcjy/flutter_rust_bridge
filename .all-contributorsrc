@@ -351,6 +351,15 @@
       ]
     },
     {
+      "login": "satvikpendem",
+      "name": "Satvik Pendem",
+      "avatar_url": "https://avatars.githubusercontent.com/u/42670561?v=4",
+      "profile": "https://satvikpendem.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "anlumo",
       "name": "Andreas Monitzer",
       "avatar_url": "https://avatars.githubusercontent.com/u/644763?v=4",
@@ -410,6 +419,15 @@
       "name": "九月",
       "avatar_url": "https://avatars.githubusercontent.com/u/52571365?v=4",
       "profile": "https://woini.men",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "jippeholwerda",
+      "name": "Jippe Holwerda",
+      "avatar_url": "https://avatars.githubusercontent.com/u/117410?v=4",
+      "profile": "https://github.com/jippeholwerda",
       "contributions": [
         "code"
       ]
@@ -981,15 +999,6 @@
       "profile": "https://feber.dev",
       "contributions": [
         "doc"
-      ]
-    },
-    {
-      "login": "satvikpendem",
-      "name": "Satvik Pendem",
-      "avatar_url": "https://avatars.githubusercontent.com/u/42670561?v=4",
-      "profile": "https://satvikpendem.com",
-      "contributions": [
-        "code"
       ]
     },
     {
