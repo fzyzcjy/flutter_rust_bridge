@@ -52,7 +52,7 @@ impl MirPack {
     fn visit_types<F: FnMut(&MirType) -> bool>(
         &self,
         f: &mut F,
-        filter: Option<Box<dyn Fn(&CodecModePack) -> bool>>,
+        filter: &Option<Box<dyn Fn(&CodecModePack) -> bool>>,
     ) {
         for func in &self.funcs_all {
             if filter.is_some() && !filter.as_ref().unwrap()(&func.codec_mode_pack) {
@@ -65,7 +65,7 @@ impl MirPack {
             if filter.is_some() && !filter.as_ref().unwrap()(&extra_ty.codec_mode_pack) {
                 continue;
             }
-            extra_ty.visit_types(f, self);
+            extra_ty.ty.visit_types(f, self);
         }
     }
 }
