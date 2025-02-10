@@ -216,6 +216,16 @@ sealed class MyEnumWithJsonSerializableTwinNormal
 }
 
 @freezed
+sealed class MyEnumWithoutFnWithUnignoreTwinNormal
+    with _$MyEnumWithoutFnWithUnignoreTwinNormal {
+  const MyEnumWithoutFnWithUnignoreTwinNormal._();
+
+  const factory MyEnumWithoutFnWithUnignoreTwinNormal.one(
+    String field0,
+  ) = MyEnumWithoutFnWithUnignoreTwinNormal_One;
+}
+
+@freezed
 class MyStructWithJsonSerializableTwinNormal
     with _$MyStructWithJsonSerializableTwinNormal {
   const MyStructWithJsonSerializableTwinNormal._();
@@ -247,6 +257,37 @@ class MyStructWithSync {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is MyStructWithSync && runtimeType == other.runtimeType;
+}
+
+class MyStructWithoutFnWithUnignoreTwinNormal {
+  final String a;
+
+  const MyStructWithoutFnWithUnignoreTwinNormal({
+    required this.a,
+  });
+
+  @override
+  int get hashCode => a.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MyStructWithoutFnWithUnignoreTwinNormal &&
+          runtimeType == other.runtimeType &&
+          a == other.a;
+}
+
+@freezed
+class MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
+    with _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal {
+  const factory MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal({
+    required String a,
+  }) = _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal;
+
+  factory MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal.fromJson(
+          Map<String, dynamic> json) =>
+      _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalFromJson(
+          json);
 }
 
 class StructWithCustomNameMethodTwinNormal {
