@@ -80,51 +80,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
-  ffi.Pointer<wire_cst_list_prim_u_8_strict> cst_encode_String(String raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_list_prim_u_8_strict(utf8.encoder.convert(raw));
-  }
-
-  @protected
-  ffi.Pointer<wire_cst_list_prim_u_8_strict> cst_encode_list_prim_u_8_strict(
-      Uint8List raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    final ans = wire.cst_new_list_prim_u_8_strict(raw.length);
-    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
-    return ans;
-  }
-
-  @protected
-  void cst_api_fill_to_wire_my_enum_without_fn_with_unignore_twin_normal(
-      MyEnumWithoutFnWithUnignoreTwinNormal apiObj,
-      wire_cst_my_enum_without_fn_with_unignore_twin_normal wireObj) {
-    if (apiObj is MyEnumWithoutFnWithUnignoreTwinNormal_One) {
-      var pre_field0 = cst_encode_String(apiObj.field0);
-      wireObj.tag = 0;
-      wireObj.kind.One.field0 = pre_field0;
-      return;
-    }
-  }
-
-  @protected
-  void cst_api_fill_to_wire_my_struct_without_fn_with_unignore_twin_normal(
-      MyStructWithoutFnWithUnignoreTwinNormal apiObj,
-      wire_cst_my_struct_without_fn_with_unignore_twin_normal wireObj) {
-    wireObj.a = cst_encode_String(apiObj.a);
-  }
-
-  @protected
-  void cst_api_fill_to_wire_my_struct_without_fn_with_unignore_with_json_serializable_twin_normal(
-      MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal apiObj,
-      wire_cst_my_struct_without_fn_with_unignore_with_json_serializable_twin_normal
-          wireObj) {
-    wireObj.a = cst_encode_String(apiObj.a);
-  }
-
-  @protected
-  int cst_encode_u_8(int raw);
-
-  @protected
   void sse_encode_String(String self, SseSerializer serializer);
 
   @protected

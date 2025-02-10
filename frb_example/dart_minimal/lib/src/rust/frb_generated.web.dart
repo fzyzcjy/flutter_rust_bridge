@@ -82,47 +82,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
-  String cst_encode_String(String raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw;
-  }
-
-  @protected
-  JSAny cst_encode_list_prim_u_8_strict(Uint8List raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.jsify()!;
-  }
-
-  @protected
-  JSAny cst_encode_my_enum_without_fn_with_unignore_twin_normal(
-      MyEnumWithoutFnWithUnignoreTwinNormal raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    if (raw is MyEnumWithoutFnWithUnignoreTwinNormal_One) {
-      return [0, cst_encode_String(raw.field0)].jsify()!;
-    }
-
-    throw Exception('unreachable');
-  }
-
-  @protected
-  JSAny cst_encode_my_struct_without_fn_with_unignore_twin_normal(
-      MyStructWithoutFnWithUnignoreTwinNormal raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.a)].jsify()!;
-  }
-
-  @protected
-  JSAny
-      cst_encode_my_struct_without_fn_with_unignore_with_json_serializable_twin_normal(
-          MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal raw) {
-    // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.a)].jsify()!;
-  }
-
-  @protected
-  int cst_encode_u_8(int raw);
-
-  @protected
   void sse_encode_String(String self, SseSerializer serializer);
 
   @protected
