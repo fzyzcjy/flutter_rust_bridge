@@ -60,10 +60,11 @@ fn parse_item<Item: SynItemStructOrEnum>(
     let context =
         create_simplified_parsing_context(item.name.namespace.clone(), config, parse_mode)?;
     let ty_direct_parse = type_parser.parse_type(&syn::parse_str(&item.name.name)?, &context)?;
+    let fn_name = format!("dummy_for_unignore_{}", item.name.safe_ident());
 
     Ok(MirFuncOrSkip::Value(MirFunc {
         namespace,
-        name: MirIdent::new(TODO, None),
+        name: MirIdent::new(fn_name, None),
         id: None,
         inputs: vec![],
         output: MirFuncOutput {
