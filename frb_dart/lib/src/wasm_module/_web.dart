@@ -2,23 +2,25 @@ import 'dart:async';
 import 'dart:js_interop';
 
 import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 import 'package:web/web.dart' as web;
+
+import 'dart:ui_web';
+import 'dart:convert';
+import 'dart:html' as html;
 
 /// {@macro flutter_rust_bridge.internal}
 Future<void> initializeWasmModule({required String root}) async {
   _ensureCrossOriginIsolated();
-  final packageInfo = await PackageInfo.fromPlatform();
-  final version = '${packageInfo.version}.${packageInfo.buildNumber}';
-
-  final script = web.HTMLScriptElement()..src = '$root.js?version=$version';
+  final versionQuery = await _getVersionQuery();
+  
+  final script = web.HTMLScriptElement()..src = '$root.js?$versionQuery';
   web.document.head!.append(script);
 
   await script.onLoad.first;
 
   jsEval('window.wasm_bindgen = wasm_bindgen');
 
-  await _jsWasmBindgen('${root}_bg.wasm?version=$version').toDart;
+  await _jsWasmBindgen('${root}_bg.wasm?$versionQuery').toDart;
 }
 
 @JS('wasm_bindgen')
@@ -38,5 +40,26 @@ void _ensureCrossOriginIsolated() {
           'Warning: crossOriginIsolated is null, browser might not support buffer sharing.'
               .toJS);
       return;
+  }
+}
+
+Future<String> _getVersionQuery() async {
+  String baseUrl = assetManager.getAssetUrl('').replaceAll('${assetManager.assetsDir}/', '');
+  return await _request(baseUrl) ??
+          await _request(web.window.document.baseURI) ??
+          '';
+}
+
+Future<String?> _request(String baseUrl) async {
+  try {
+    final req = await html.HttpRequest.request('$baseUrl/version.json?t=${DateTime.now().millisecondsSinceEpoch}');
+    if (req.status == 200) {
+      final response = req.responseText;
+      final versionMap = jsonDecode(response!);
+      return 'version=${versionMap['version']!}.${versionMap['build_number']!}';
+    }
+    return null;
+  } catch (e) {
+    return null;
   }
 }
