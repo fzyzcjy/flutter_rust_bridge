@@ -7,19 +7,16 @@ use crate::codegen::ir::mir::func::{
     MirFuncOwnerInfo,
 };
 use crate::codegen::ir::mir::ident::MirIdent;
-use crate::codegen::ir::misc::skip::{IrSkip, IrSkipReason, IrValueOrSkip, MirFuncOrSkip};
+use crate::codegen::ir::misc::skip::MirFuncOrSkip;
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use crate::codegen::parser::mir::parser::function::auto_accessor::create_simplified_parsing_context;
 use crate::codegen::parser::mir::parser::function::real::compute_codec_mode_pack;
-use crate::codegen::parser::mir::parser::misc::extract_src_types_in_paths;
 use crate::codegen::parser::mir::parser::ty::TypeParser;
 use crate::codegen::parser::mir::ParseMode;
-use crate::utils::namespace::{Namespace, NamespacedName};
 use itertools::concat;
 use std::collections::HashMap;
 use syn::spanned::Spanned;
-use syn::ItemStruct;
 
 pub(crate) fn parse(
     config: &ParserMirInternalConfig,
