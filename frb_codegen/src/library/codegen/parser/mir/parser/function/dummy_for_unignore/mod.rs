@@ -35,12 +35,12 @@ pub(crate) fn parse(
 }
 
 fn parse_structs_or_enums<Item: SynItemStructOrEnum>(
-    items: &[HirFlatStructOrEnum<Item>],
+    items: &HashMap<String, &HirFlatStructOrEnum<Item>>,
     config: &ParserMirInternalConfig,
     type_parser: &mut TypeParser,
     parse_mode: ParseMode,
 ) -> anyhow::Result<Vec<MirFuncOrSkip>> {
-    (items.iter())
+    (items.values())
         .filter(|item| (config.rust_input_namespace_pack).is_interest(&item.name.namespace))
         .filter(|item| {
             let attrs =
@@ -63,7 +63,7 @@ fn parse_item<Item: SynItemStructOrEnum>(
     let fn_name = format!("dummy_for_unignore_{}", item.name.safe_ident());
 
     Ok(MirFuncOrSkip::Value(MirFunc {
-        namespace,
+        namespace: item.name.namespace.clone(),
         name: MirIdent::new(fn_name, None),
         id: None,
         inputs: vec![],
