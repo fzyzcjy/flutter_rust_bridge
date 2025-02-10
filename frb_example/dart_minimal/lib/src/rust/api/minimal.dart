@@ -6,21 +6,10 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-
 part 'minimal.freezed.dart';
 
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
-
-MyStructWithoutFnWithUnignoreTwinNormal
-    get dummyForUnignoreCrateApiMinimalMyStructWithoutFnWithUnignoreTwinNormal =>
-        RustLib.instance.api
-            .crateApiMinimalDummyForUnignoreCrateApiMinimalMyStructWithoutFnWithUnignoreTwinNormal();
-
-MyEnumWithoutFnWithUnignoreTwinNormal
-    get dummyForUnignoreCrateApiMinimalMyEnumWithoutFnWithUnignoreTwinNormal =>
-        RustLib.instance.api
-            .crateApiMinimalDummyForUnignoreCrateApiMinimalMyEnumWithoutFnWithUnignoreTwinNormal();
 
 @freezed
 sealed class MyEnumWithoutFnWithUnignoreTwinNormal
