@@ -35,4 +35,6 @@ fn parse_structs_or_enums<Item: SynItemStructOrEnum>(
                 FrbAttributes::parse(item.src.attrs()).unwrap_or_else(|_| FrbAttributes(vec![]));
             attrs.unignore()
         })
+        .map(|item| TODO)
+        .collect()
 }
