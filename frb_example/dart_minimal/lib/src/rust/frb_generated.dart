@@ -68,7 +68,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.7.1';
 
   @override
-  int get rustContentHash => 1599385424;
+  int get rustContentHash => -2059415564;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -84,6 +84,9 @@ abstract class RustLibApi extends BaseApi {
 
   MyStructWithoutFnWithUnignoreTwinNormal
       crateApiMinimalDummyForUnignoreCrateApiMinimalMyStructWithoutFnWithUnignoreTwinNormal();
+
+  MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
+      crateApiMinimalDummyForUnignoreCrateApiMinimalMyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal();
 
   Future<void> crateApiMinimalInitApp();
 
@@ -155,12 +158,40 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
+  MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
+      crateApiMinimalDummyForUnignoreCrateApiMinimalMyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal() {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 3)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData:
+            sse_decode_my_struct_without_fn_with_unignore_with_json_serializable_twin_normal,
+        decodeErrorData: null,
+      ),
+      constMeta:
+          kCrateApiMinimalDummyForUnignoreCrateApiMinimalMyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta
+      get kCrateApiMinimalDummyForUnignoreCrateApiMinimalMyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "dummy_for_unignore_crate_api_minimal_MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal",
+            argNames: [],
+          );
+
+  @override
   Future<void> crateApiMinimalInitApp() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 3, port: port_);
+            funcId: 4, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -185,7 +216,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(a, serializer);
         sse_encode_i_32(b, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 4, port: port_);
+            funcId: 5, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -248,6 +279,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
+      dco_decode_my_struct_without_fn_with_unignore_with_json_serializable_twin_normal(
+          dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal(
+      a: dco_decode_String(arr[0]),
+    );
+  }
+
+  @protected
   int dco_decode_u_8(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw as int;
@@ -305,6 +349,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
+      sse_decode_my_struct_without_fn_with_unignore_with_json_serializable_twin_normal(
+          SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_a = sse_decode_String(deserializer);
+    return MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal(
+        a: var_a);
+  }
+
+  @protected
   int sse_decode_u_8(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getUint8();
@@ -355,6 +409,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_my_struct_without_fn_with_unignore_twin_normal(
       MyStructWithoutFnWithUnignoreTwinNormal self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(self.a, serializer);
+  }
+
+  @protected
+  void
+      sse_encode_my_struct_without_fn_with_unignore_with_json_serializable_twin_normal(
+          MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal self,
+          SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(self.a, serializer);
   }

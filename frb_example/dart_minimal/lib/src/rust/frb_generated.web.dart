@@ -38,6 +38,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_my_struct_without_fn_with_unignore_twin_normal(dynamic raw);
 
   @protected
+  MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
+      dco_decode_my_struct_without_fn_with_unignore_with_json_serializable_twin_normal(
+          dynamic raw);
+
+  @protected
   int dco_decode_u_8(dynamic raw);
 
   @protected
@@ -60,6 +65,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   MyStructWithoutFnWithUnignoreTwinNormal
       sse_decode_my_struct_without_fn_with_unignore_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
+      sse_decode_my_struct_without_fn_with_unignore_with_json_serializable_twin_normal(
           SseDeserializer deserializer);
 
   @protected
@@ -88,6 +98,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_my_struct_without_fn_with_unignore_twin_normal(
       MyStructWithoutFnWithUnignoreTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_my_struct_without_fn_with_unignore_with_json_serializable_twin_normal(
+          MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal self,
+          SseSerializer serializer);
 
   @protected
   void sse_encode_u_8(int self, SseSerializer serializer);

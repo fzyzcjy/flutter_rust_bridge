@@ -18,3 +18,8 @@ pub struct MyStructWithoutFnWithUnignoreTwinNormal {
 pub enum MyEnumWithoutFnWithUnignoreTwinNormal {
     One(String),
 }
+
+#[frb(unignore, json_serializable)]
+pub struct MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal {
+    a: String,
+}

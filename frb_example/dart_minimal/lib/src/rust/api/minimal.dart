@@ -7,6 +7,7 @@ import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'minimal.freezed.dart';
+part 'minimal.g.dart';
 
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
@@ -37,4 +38,17 @@ class MyStructWithoutFnWithUnignoreTwinNormal {
       other is MyStructWithoutFnWithUnignoreTwinNormal &&
           runtimeType == other.runtimeType &&
           a == other.a;
+}
+
+@freezed
+class MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
+    with _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal {
+  const factory MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal({
+    required String a,
+  }) = _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal;
+
+  factory MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal.fromJson(
+          Map<String, dynamic> json) =>
+      _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalFromJson(
+          json);
 }
