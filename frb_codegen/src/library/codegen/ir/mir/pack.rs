@@ -49,6 +49,7 @@ impl MirPack {
     }
 
     /// [f] returns [true] if it wants to stop going to the *children* of this subtree
+    #[allow(clippy::type_complexity)]
     fn visit_types<F: FnMut(&MirType) -> bool>(
         &self,
         f: &mut F,
