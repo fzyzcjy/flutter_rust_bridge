@@ -44537,21 +44537,6 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__dart_opaque_twin_sync_sse__drop_static_dart_opaque_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__dummy_for_unignore_crate_api_misc_no_twin_example_a_MyEnumWithoutFnWithUnignoreTwinNormal() =>
-          wasmModule
-              .wire__crate__api__misc_no_twin_example_a__dummy_for_unignore_crate_api_misc_no_twin_example_a_MyEnumWithoutFnWithUnignoreTwinNormal();
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__dummy_for_unignore_crate_api_misc_no_twin_example_a_MyStructWithoutFnWithUnignoreTwinNormal() =>
-          wasmModule
-              .wire__crate__api__misc_no_twin_example_a__dummy_for_unignore_crate_api_misc_no_twin_example_a_MyStructWithoutFnWithUnignoreTwinNormal();
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__dummy_for_unignore_crate_api_misc_no_twin_example_a_MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal() =>
-          wasmModule
-              .wire__crate__api__misc_no_twin_example_a__dummy_for_unignore_crate_api_misc_no_twin_example_a_MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal();
-
   void wire__crate__api__chrono_type__duration_twin_normal(
           NativePortType port_, JSAny d) =>
       wasmModule.wire__crate__api__chrono_type__duration_twin_normal(port_, d);
@@ -66335,15 +66320,6 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__dummy_for_unignore_crate_api_misc_no_twin_example_a_MyEnumWithoutFnWithUnignoreTwinNormal();
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__dummy_for_unignore_crate_api_misc_no_twin_example_a_MyStructWithoutFnWithUnignoreTwinNormal();
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__misc_no_twin_example_a__dummy_for_unignore_crate_api_misc_no_twin_example_a_MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal();
 
   external void wire__crate__api__chrono_type__duration_twin_normal(
       NativePortType port_, JSAny d);
