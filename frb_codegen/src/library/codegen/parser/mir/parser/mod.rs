@@ -69,6 +69,7 @@ pub(crate) fn parse(
     let (funcs_all, funcs_skip) = function::parse(
         config,
         &hir_flat.functions,
+        &hir_flat.constants,
         &mut type_parser,
         &structs_map,
         parse_mode,
