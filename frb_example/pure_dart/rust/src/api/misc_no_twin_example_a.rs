@@ -262,7 +262,7 @@ impl MyStructWithJsonSerializableTwinNormal {
 
 #[frb(unignore)]
 pub struct MyStructWithoutFnWithUnignoreTwinNormal {
-    a: String,
+    pub a: String,
 }
 
 #[frb(unignore)]
@@ -272,5 +272,5 @@ pub enum MyEnumWithoutFnWithUnignoreTwinNormal {
 
 #[frb(unignore, json_serializable)]
 pub struct MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal {
-    a: String,
+    pub a: String,
 }
