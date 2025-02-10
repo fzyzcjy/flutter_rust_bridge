@@ -61,7 +61,7 @@ impl MirPack {
         }
 
         for extra_ty in &self.extra_types_all {
-            f(extra_ty);
+            extra_ty.visit_types(f, self);
         }
     }
 }
