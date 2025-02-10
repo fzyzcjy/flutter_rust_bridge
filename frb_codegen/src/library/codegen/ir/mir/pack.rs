@@ -18,6 +18,7 @@ pub type MirEnumPool = HashMap<MirEnumIdent, MirEnum>;
 #[derive(Debug, Clone, serde::Serialize)]
 pub struct MirPack {
     pub funcs_all: Vec<MirFunc>, // Do not direct use, but use things like `funcs_with_impl`
+    pub extra_types_all: Vec<MirType>,
     pub struct_pool: MirStructPool,
     pub enum_pool: MirEnumPool,
     pub dart_code_of_type: HashMap<String, GeneralDartCode>,
@@ -57,6 +58,13 @@ impl MirPack {
                 continue;
             }
             func.visit_types(f, self)
+        }
+
+        for extra_ty in &self.extra_types_all {
+            if filter_func.is_some() {
+                continue;
+            }
+            f(extra_ty);
         }
     }
 }
