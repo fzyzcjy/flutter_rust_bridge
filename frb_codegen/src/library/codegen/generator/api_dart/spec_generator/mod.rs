@@ -112,7 +112,7 @@ fn generate_item(
         .map(|funcs| {
             funcs
                 .iter()
-                .filter(|f| (f.owner == MirFuncOwnerInfo::Function) && !f.initializer && !f.hidden)
+                .filter(|f| (f.owner == MirFuncOwnerInfo::Function) && !f.initializer)
                 .map(|f| function::generate(f, context))
                 .collect::<Result<Vec<_>>>()
         })

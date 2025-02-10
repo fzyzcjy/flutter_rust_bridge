@@ -149,10 +149,6 @@ impl NamespacedName {
             Lang::RustLang(_) => self.rust_style(),
         }
     }
-
-    pub fn safe_ident(&self) -> String {
-        self.rust_style().replace("::", "_")
-    }
 }
 
 impl Serialize for NamespacedName {

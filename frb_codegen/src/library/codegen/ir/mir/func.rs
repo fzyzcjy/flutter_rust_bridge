@@ -25,7 +25,6 @@ pub struct MirFunc {
     pub stream_dart_await: bool,
     pub rust_async: bool,
     pub initializer: bool,
-    pub hidden: bool,
     pub arg_mode: MirFuncArgMode,
     pub accessor: Option<MirFuncAccessorMode>,
     pub comments: Vec<MirComment>,

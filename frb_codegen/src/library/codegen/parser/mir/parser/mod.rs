@@ -70,9 +70,8 @@ pub(crate) fn parse(
         config,
         &hir_flat.functions,
         &hir_flat.constants,
-        &structs_map,
-        &enums_map,
         &mut type_parser,
+        &structs_map,
         parse_mode,
     )?;
 
