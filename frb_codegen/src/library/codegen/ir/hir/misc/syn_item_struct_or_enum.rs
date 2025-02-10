@@ -1,6 +1,7 @@
+use syn::spanned::Spanned;
 use syn::*;
 
-pub(crate) trait SynItemStructOrEnum: Clone {
+pub(crate) trait SynItemStructOrEnum: Spanned + Clone {
     fn attrs(&self) -> &[Attribute];
 
     fn attrs_mut(&mut self) -> &mut Vec<Attribute>;

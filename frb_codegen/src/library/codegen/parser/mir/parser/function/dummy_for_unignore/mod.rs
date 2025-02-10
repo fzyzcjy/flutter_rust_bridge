@@ -2,14 +2,24 @@ use crate::codegen::ir::hir::flat::struct_or_enum::{
     HirFlatEnum, HirFlatStruct, HirFlatStructOrEnum,
 };
 use crate::codegen::ir::hir::misc::syn_item_struct_or_enum::SynItemStructOrEnum;
-use crate::codegen::ir::misc::skip::MirFuncOrSkip;
+use crate::codegen::ir::mir::func::{
+    MirFunc, MirFuncAccessorMode, MirFuncArgMode, MirFuncImplMode, MirFuncMode, MirFuncOutput,
+    MirFuncOwnerInfo,
+};
+use crate::codegen::ir::mir::ident::MirIdent;
+use crate::codegen::ir::misc::skip::{IrSkip, IrSkipReason, IrValueOrSkip, MirFuncOrSkip};
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
+use crate::codegen::parser::mir::parser::function::auto_accessor::create_simplified_parsing_context;
+use crate::codegen::parser::mir::parser::function::real::compute_codec_mode_pack;
 use crate::codegen::parser::mir::parser::misc::extract_src_types_in_paths;
 use crate::codegen::parser::mir::parser::ty::TypeParser;
 use crate::codegen::parser::mir::ParseMode;
+use crate::utils::namespace::{Namespace, NamespacedName};
 use itertools::concat;
 use std::collections::HashMap;
+use syn::spanned::Spanned;
+use syn::ItemStruct;
 
 pub(crate) fn parse(
     config: &ParserMirInternalConfig,
@@ -37,4 +47,42 @@ fn parse_structs_or_enums<Item: SynItemStructOrEnum>(
         })
         .map(|item| TODO)
         .collect()
+}
+
+fn parse_item<Item: SynItemStructOrEnum>(
+    config: &ParserMirInternalConfig,
+    namespace: Namespace,
+    item: &Item,
+    type_parser: &mut TypeParser,
+    parse_mode: ParseMode,
+) -> anyhow::Result<MirFuncOrSkip> {
+    let context = create_simplified_parsing_context(namespace.clone(), config, parse_mode)?;
+    let ty_direct_parse = type_parser.parse_type(TODO, &context)?;
+
+    Ok(MirFuncOrSkip::Value(MirFunc {
+        namespace,
+        name: MirIdent::new(TODO, None),
+        id: None,
+        inputs: vec![],
+        output: MirFuncOutput {
+            normal: ty_direct_parse,
+            error: None,
+        },
+        owner: MirFuncOwnerInfo::Function,
+        mode: MirFuncMode::Sync,
+        stream_dart_await: false,
+        rust_async: false,
+        initializer: false,
+        arg_mode: MirFuncArgMode::Positional,
+        accessor: Some(MirFuncAccessorMode::Getter),
+        comments: vec![],
+        codec_mode_pack: compute_codec_mode_pack(
+            &FrbAttributes::parse(&[])?,
+            &config.force_codec_mode_pack,
+        ),
+        rust_call_code: None,
+        rust_aop_after: None,
+        impl_mode: MirFuncImplMode::Normal,
+        src_lineno_pseudo: item.span().start().line,
+    }))
 }
