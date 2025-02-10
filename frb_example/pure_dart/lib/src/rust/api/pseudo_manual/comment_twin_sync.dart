@@ -8,7 +8,7 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These types are ignored because they are not used by any `pub` functions: `ComplexEnumWithCommentsTwinSync`, `SimpleEnumWithCommentsTwinSync`
+// These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `ComplexEnumWithCommentsTwinSync`, `SimpleEnumWithCommentsTwinSync`
 
 /// This is single line comment
 void functionWithCommentsTripleSlashSingleLineTwinSync() => RustLib.instance.api
