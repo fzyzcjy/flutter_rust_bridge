@@ -10,72 +10,72 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'raw_string_twin_sync.freezed.dart';
 
-            
+RawStringItemStructTwinSync testRawStringItemStructTwinSync() =>
+    RustLib.instance.api
+        .crateApiPseudoManualRawStringTwinSyncTestRawStringItemStructTwinSync();
 
-            RawStringItemStructTwinSync  testRawStringItemStructTwinSync() => RustLib.instance.api.crateApiPseudoManualRawStringTwinSyncTestRawStringItemStructTwinSync();
+RawStringItemEnumTwinSync testRawStringItemEnumTwinSync() =>
+    RustLib.instance.api
+        .crateApiPseudoManualRawStringTwinSyncTestRawStringItemEnumTwinSync();
 
-RawStringItemEnumTwinSync  testRawStringItemEnumTwinSync() => RustLib.instance.api.crateApiPseudoManualRawStringTwinSyncTestRawStringItemEnumTwinSync();
+MoreThanJustOneRawStringStructTwinSync
+    testMoreThanJustOneRawStringStructTwinSync() => RustLib.instance.api
+        .crateApiPseudoManualRawStringTwinSyncTestMoreThanJustOneRawStringStructTwinSync();
 
-MoreThanJustOneRawStringStructTwinSync  testMoreThanJustOneRawStringStructTwinSync() => RustLib.instance.api.crateApiPseudoManualRawStringTwinSyncTestMoreThanJustOneRawStringStructTwinSync();
+class MoreThanJustOneRawStringStructTwinSync {
+  final String regular;
+  final String type;
+  final bool async_;
+  final String another;
 
-            class MoreThanJustOneRawStringStructTwinSync  {
-                final String regular;
-final String type;
-final bool async_;
-final String another;
+  const MoreThanJustOneRawStringStructTwinSync({
+    required this.regular,
+    required this.type,
+    required this.async_,
+    required this.another,
+  });
 
-                const MoreThanJustOneRawStringStructTwinSync({required this.regular ,required this.type ,required this.async_ ,required this.another ,});
+  @override
+  int get hashCode =>
+      regular.hashCode ^ type.hashCode ^ async_.hashCode ^ another.hashCode;
 
-                
-                
-
-                
-        @override
-        int get hashCode => regular.hashCode^type.hashCode^async_.hashCode^another.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is MoreThanJustOneRawStringStructTwinSync &&
-                runtimeType == other.runtimeType
-                && regular == other.regular&& type == other.type&& async_ == other.async_&& another == other.another;
-        
-            }
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MoreThanJustOneRawStringStructTwinSync &&
+          runtimeType == other.runtimeType &&
+          regular == other.regular &&
+          type == other.type &&
+          async_ == other.async_ &&
+          another == other.another;
+}
 
 @freezed
-                sealed class RawStringItemEnumTwinSync with _$RawStringItemEnumTwinSync  {
-                    const RawStringItemEnumTwinSync._();
+sealed class RawStringItemEnumTwinSync with _$RawStringItemEnumTwinSync {
+  const RawStringItemEnumTwinSync._();
 
-                     const factory RawStringItemEnumTwinSync.regular({   required String regular , }) = RawStringItemEnumTwinSync_Regular;
- const factory RawStringItemEnumTwinSync.raw({   required String type , }) = RawStringItemEnumTwinSync_Raw;
+  const factory RawStringItemEnumTwinSync.regular({
+    required String regular,
+  }) = RawStringItemEnumTwinSync_Regular;
+  const factory RawStringItemEnumTwinSync.raw({
+    required String type,
+  }) = RawStringItemEnumTwinSync_Raw;
+}
 
-                    
+class RawStringItemStructTwinSync {
+  final String type;
 
-                    
-                }
+  const RawStringItemStructTwinSync({
+    required this.type,
+  });
 
-class RawStringItemStructTwinSync  {
-                final String type;
+  @override
+  int get hashCode => type.hashCode;
 
-                const RawStringItemStructTwinSync({required this.type ,});
-
-                
-                
-
-                
-        @override
-        int get hashCode => type.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is RawStringItemStructTwinSync &&
-                runtimeType == other.runtimeType
-                && type == other.type;
-        
-            }
-            
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is RawStringItemStructTwinSync &&
+          runtimeType == other.runtimeType &&
+          type == other.type;
+}

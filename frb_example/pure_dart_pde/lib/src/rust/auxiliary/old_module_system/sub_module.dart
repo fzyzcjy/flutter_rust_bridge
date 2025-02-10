@@ -8,31 +8,20 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+class OldSimpleStruct {
+  final int field;
 
-            
+  const OldSimpleStruct({
+    required this.field,
+  });
 
-            
+  @override
+  int get hashCode => field.hashCode;
 
-            class OldSimpleStruct  {
-                final int field;
-
-                const OldSimpleStruct({required this.field ,});
-
-                
-                
-
-                
-        @override
-        int get hashCode => field.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is OldSimpleStruct &&
-                runtimeType == other.runtimeType
-                && field == other.field;
-        
-            }
-            
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is OldSimpleStruct &&
+          runtimeType == other.runtimeType &&
+          field == other.field;
+}
