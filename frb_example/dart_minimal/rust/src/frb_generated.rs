@@ -37,7 +37,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.7.1";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -2119384465;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -2059415564;
 
 // Section: executor
 
@@ -45,6 +45,45 @@ flutter_rust_bridge::frb_generated_default_handler!();
 
 // Section: wire_funcs
 
+fn wire__crate__api__minimal__dummy_for_unignore_crate_api_minimal_MyEnumWithoutFnWithUnignoreTwinNormal_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "dummy_for_unignore_crate_api_minimal_MyEnumWithoutFnWithUnignoreTwinNormal", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end();
+                transform_result_sse::<_, ()>((move || {
+                     let output_ok = Result::<_,()>::Ok(crate::api::minimal::dummy_for_unignore_crate_api_minimal_MyEnumWithoutFnWithUnignoreTwinNormal())?;   Ok(output_ok)
+                })()) })
+}
+fn wire__crate__api__minimal__dummy_for_unignore_crate_api_minimal_MyStructWithoutFnWithUnignoreTwinNormal_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "dummy_for_unignore_crate_api_minimal_MyStructWithoutFnWithUnignoreTwinNormal", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end();
+                transform_result_sse::<_, ()>((move || {
+                     let output_ok = Result::<_,()>::Ok(crate::api::minimal::dummy_for_unignore_crate_api_minimal_MyStructWithoutFnWithUnignoreTwinNormal())?;   Ok(output_ok)
+                })()) })
+}
+fn wire__crate__api__minimal__dummy_for_unignore_crate_api_minimal_MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "dummy_for_unignore_crate_api_minimal_MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
+            let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
+            let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end();
+                transform_result_sse::<_, ()>((move || {
+                     let output_ok = Result::<_,()>::Ok(crate::api::minimal::dummy_for_unignore_crate_api_minimal_MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal())?;   Ok(output_ok)
+                })()) })
+}
 fn wire__crate__api__minimal__init_app_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -117,10 +156,73 @@ fn wire__crate__api__minimal__minimal_adder_impl(
 
 // Section: dart2rust
 
+impl SseDecode for String {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <Vec<u8>>::sse_decode(deserializer);
+        return String::from_utf8(inner).unwrap();
+    }
+}
+
 impl SseDecode for i32 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         deserializer.cursor.read_i32::<NativeEndian>().unwrap()
+    }
+}
+
+impl SseDecode for Vec<u8> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut len_ = <i32>::sse_decode(deserializer);
+        let mut ans_ = vec![];
+        for idx_ in 0..len_ {
+            ans_.push(<u8>::sse_decode(deserializer));
+        }
+        return ans_;
+    }
+}
+
+impl SseDecode for crate::api::minimal::MyEnumWithoutFnWithUnignoreTwinNormal {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut tag_ = <i32>::sse_decode(deserializer);
+        match tag_ {
+            0 => {
+                let mut var_field0 = <String>::sse_decode(deserializer);
+                return crate::api::minimal::MyEnumWithoutFnWithUnignoreTwinNormal::One(var_field0);
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
+impl SseDecode for crate::api::minimal::MyStructWithoutFnWithUnignoreTwinNormal {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_a = <String>::sse_decode(deserializer);
+        return crate::api::minimal::MyStructWithoutFnWithUnignoreTwinNormal { a: var_a };
+    }
+}
+
+impl SseDecode
+    for crate::api::minimal::MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_a = <String>::sse_decode(deserializer);
+        return crate::api::minimal::MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal {
+            a: var_a,
+        };
+    }
+}
+
+impl SseDecode for u8 {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        deserializer.cursor.read_u8().unwrap()
     }
 }
 
@@ -145,8 +247,8 @@ fn pde_ffi_dispatcher_primary_impl(
 ) {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
-        1 => wire__crate__api__minimal__init_app_impl(port, ptr, rust_vec_len, data_len),
-        2 => wire__crate__api__minimal__minimal_adder_impl(port, ptr, rust_vec_len, data_len),
+        4 => wire__crate__api__minimal__init_app_impl(port, ptr, rust_vec_len, data_len),
+        5 => wire__crate__api__minimal__minimal_adder_impl(port, ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
@@ -159,16 +261,141 @@ fn pde_ffi_dispatcher_sync_impl(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
-        _ => unreachable!(),
-    }
+                        1 => wire__crate__api__minimal__dummy_for_unignore_crate_api_minimal_MyEnumWithoutFnWithUnignoreTwinNormal_impl(ptr, rust_vec_len, data_len),
+2 => wire__crate__api__minimal__dummy_for_unignore_crate_api_minimal_MyStructWithoutFnWithUnignoreTwinNormal_impl(ptr, rust_vec_len, data_len),
+3 => wire__crate__api__minimal__dummy_for_unignore_crate_api_minimal_MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal_impl(ptr, rust_vec_len, data_len),
+                        _ => unreachable!(),
+                    }
 }
 
 // Section: rust2dart
+
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for crate::api::minimal::MyEnumWithoutFnWithUnignoreTwinNormal {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self {
+            crate::api::minimal::MyEnumWithoutFnWithUnignoreTwinNormal::One(field0) => {
+                [0.into_dart(), field0.into_into_dart().into_dart()].into_dart()
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::minimal::MyEnumWithoutFnWithUnignoreTwinNormal
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::minimal::MyEnumWithoutFnWithUnignoreTwinNormal>
+    for crate::api::minimal::MyEnumWithoutFnWithUnignoreTwinNormal
+{
+    fn into_into_dart(self) -> crate::api::minimal::MyEnumWithoutFnWithUnignoreTwinNormal {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart
+    for crate::api::minimal::MyStructWithoutFnWithUnignoreTwinNormal
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [self.a.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::minimal::MyStructWithoutFnWithUnignoreTwinNormal
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::minimal::MyStructWithoutFnWithUnignoreTwinNormal>
+    for crate::api::minimal::MyStructWithoutFnWithUnignoreTwinNormal
+{
+    fn into_into_dart(self) -> crate::api::minimal::MyStructWithoutFnWithUnignoreTwinNormal {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart
+    for crate::api::minimal::MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
+{
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [self.a.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::minimal::MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
+{
+}
+impl
+    flutter_rust_bridge::IntoIntoDart<
+        crate::api::minimal::MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal,
+    > for crate::api::minimal::MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
+{
+    fn into_into_dart(
+        self,
+    ) -> crate::api::minimal::MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal {
+        self
+    }
+}
+
+impl SseEncode for String {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<u8>>::sse_encode(self.into_bytes(), serializer);
+    }
+}
 
 impl SseEncode for i32 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         serializer.cursor.write_i32::<NativeEndian>(self).unwrap();
+    }
+}
+
+impl SseEncode for Vec<u8> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.len() as _, serializer);
+        for item in self {
+            <u8>::sse_encode(item, serializer);
+        }
+    }
+}
+
+impl SseEncode for crate::api::minimal::MyEnumWithoutFnWithUnignoreTwinNormal {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        match self {
+            crate::api::minimal::MyEnumWithoutFnWithUnignoreTwinNormal::One(field0) => {
+                <i32>::sse_encode(0, serializer);
+                <String>::sse_encode(field0, serializer);
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
+impl SseEncode for crate::api::minimal::MyStructWithoutFnWithUnignoreTwinNormal {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(self.a, serializer);
+    }
+}
+
+impl SseEncode
+    for crate::api::minimal::MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
+{
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(self.a, serializer);
+    }
+}
+
+impl SseEncode for u8 {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        serializer.cursor.write_u8(self).unwrap();
     }
 }
 
