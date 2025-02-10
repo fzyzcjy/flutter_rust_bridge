@@ -266,6 +266,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                 .then(|| UI_MUTATION_FUNCTION_RUST_AOP_AFTER.to_owned()),
             impl_mode,
             src_lineno_pseudo: src_lineno,
+            hidden: false,
         }))
     }
 }

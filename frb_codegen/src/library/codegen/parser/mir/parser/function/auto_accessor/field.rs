@@ -86,6 +86,7 @@ pub(super) fn parse_auto_accessor_of_field(
         stream_dart_await: false,
         rust_async: false,
         initializer: false,
+        hidden: false,
         arg_mode: MirFuncArgMode::Named,
         accessor: Some(accessor_mode),
         comments: vec![],
