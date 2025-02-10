@@ -43,8 +43,8 @@ fn parse_structs_or_enums<Item: SynItemStructOrEnum>(
     (items.values())
         .filter(|item| (config.rust_input_namespace_pack).is_interest(&item.name.namespace))
         .filter(|item| {
-            let attrs =
-                FrbAttributes::parse(item.src.attrs()).unwrap_or_else(|_| FrbAttributes(vec![]));
+            let attrs = FrbAttributes::parse(item.src.attrs())
+                .unwrap_or_else(|_| FrbAttributes::parse(&[]).unwrap());
             attrs.unignore()
         })
         .map(|item| parse_item(config, item, type_parser, parse_mode))
@@ -86,6 +86,6 @@ fn parse_item<Item: SynItemStructOrEnum>(
         rust_call_code: None,
         rust_aop_after: None,
         impl_mode: MirFuncImplMode::Normal,
-        src_lineno_pseudo: item.span().start().line,
+        src_lineno_pseudo: item.src.span().start().line,
     }))
 }
