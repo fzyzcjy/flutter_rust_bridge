@@ -26,6 +26,7 @@ pub(crate) fn parse(
     let items = concat([
         real::parse(src_fns, type_parser, config, parse_mode)?,
         auto_accessor::parse(config, src_structs, type_parser, parse_mode)?,
+        dummy_for_unignore::parse(config, type_parser, parse_mode)?,
         const_getter::parse(config, src_constants, type_parser, parse_mode)?,
     ]);
     let (funcs, skips) = IrValueOrSkip::split(items);
