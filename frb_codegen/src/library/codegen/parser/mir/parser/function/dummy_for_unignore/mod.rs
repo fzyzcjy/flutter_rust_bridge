@@ -16,7 +16,6 @@ use crate::codegen::parser::mir::parser::ty::TypeParser;
 use crate::codegen::parser::mir::ParseMode;
 use itertools::concat;
 use std::collections::HashMap;
-use syn::spanned::Spanned;
 
 pub(crate) fn parse(
     config: &ParserMirInternalConfig,
