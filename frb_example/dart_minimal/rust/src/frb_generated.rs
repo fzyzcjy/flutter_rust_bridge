@@ -335,6 +335,87 @@ mod io {
     // Section: boilerplate
 
     flutter_rust_bridge::frb_generated_boilerplate_io!();
+
+    // Section: dart2rust
+
+    impl CstDecode<crate::api::minimal::MyEnumWithoutFnWithUnignoreTwinNormal>
+        for wire_cst_my_enum_without_fn_with_unignore_twin_normal
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> crate::api::minimal::MyEnumWithoutFnWithUnignoreTwinNormal {
+            match self.tag {
+                0 => {
+                    let ans = unsafe { self.kind.One };
+                    crate::api::minimal::MyEnumWithoutFnWithUnignoreTwinNormal::One(
+                        ans.field0.cst_decode(),
+                    )
+                }
+                _ => unreachable!(),
+            }
+        }
+    }
+    impl CstDecode<crate::api::minimal::MyStructWithoutFnWithUnignoreTwinNormal>
+        for wire_cst_my_struct_without_fn_with_unignore_twin_normal
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> crate::api::minimal::MyStructWithoutFnWithUnignoreTwinNormal {
+            crate::api::minimal::MyStructWithoutFnWithUnignoreTwinNormal {
+                a: self.a.cst_decode(),
+            }
+        }
+    }
+    impl CstDecode<crate::api::minimal::MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal>
+        for wire_cst_my_struct_without_fn_with_unignore_with_json_serializable_twin_normal
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> crate::api::minimal::MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
+        {
+            crate::api::minimal::MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal {
+                a: self.a.cst_decode(),
+            }
+        }
+    }
+    impl NewWithNullPtr for wire_cst_my_enum_without_fn_with_unignore_twin_normal {
+        fn new_with_null_ptr() -> Self {
+            Self {
+                tag: -1,
+                kind: MyEnumWithoutFnWithUnignoreTwinNormalKind { nil__: () },
+            }
+        }
+    }
+    impl Default for wire_cst_my_enum_without_fn_with_unignore_twin_normal {
+        fn default() -> Self {
+            Self::new_with_null_ptr()
+        }
+    }
+    impl NewWithNullPtr for wire_cst_my_struct_without_fn_with_unignore_twin_normal {
+        fn new_with_null_ptr() -> Self {
+            Self {
+                a: core::ptr::null_mut(),
+            }
+        }
+    }
+    impl Default for wire_cst_my_struct_without_fn_with_unignore_twin_normal {
+        fn default() -> Self {
+            Self::new_with_null_ptr()
+        }
+    }
+    impl NewWithNullPtr
+        for wire_cst_my_struct_without_fn_with_unignore_with_json_serializable_twin_normal
+    {
+        fn new_with_null_ptr() -> Self {
+            Self {
+                a: core::ptr::null_mut(),
+            }
+        }
+    }
+    impl Default for wire_cst_my_struct_without_fn_with_unignore_with_json_serializable_twin_normal {
+        fn default() -> Self {
+            Self::new_with_null_ptr()
+        }
+    }
 }
 #[cfg(not(target_family = "wasm"))]
 pub use io::*;
@@ -359,6 +440,64 @@ mod web {
     // Section: boilerplate
 
     flutter_rust_bridge::frb_generated_boilerplate_web!();
+
+    // Section: dart2rust
+
+    impl CstDecode<crate::api::minimal::MyEnumWithoutFnWithUnignoreTwinNormal>
+        for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> crate::api::minimal::MyEnumWithoutFnWithUnignoreTwinNormal {
+            let self_ = self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Array>();
+            match self_.get(0).unchecked_into_f64() as _ {
+                0 => crate::api::minimal::MyEnumWithoutFnWithUnignoreTwinNormal::One(
+                    self_.get(1).cst_decode(),
+                ),
+                _ => unreachable!(),
+            }
+        }
+    }
+    impl CstDecode<crate::api::minimal::MyStructWithoutFnWithUnignoreTwinNormal>
+        for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(self) -> crate::api::minimal::MyStructWithoutFnWithUnignoreTwinNormal {
+            let self_ = self
+                .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+                .unwrap();
+            assert_eq!(
+                self_.length(),
+                1,
+                "Expected 1 elements, got {}",
+                self_.length()
+            );
+            crate::api::minimal::MyStructWithoutFnWithUnignoreTwinNormal {
+                a: self_.get(0).cst_decode(),
+            }
+        }
+    }
+    impl CstDecode<crate::api::minimal::MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal>
+        for flutter_rust_bridge::for_generated::wasm_bindgen::JsValue
+    {
+        // Codec=Cst (C-struct based), see doc to use other codecs
+        fn cst_decode(
+            self,
+        ) -> crate::api::minimal::MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
+        {
+            let self_ = self
+                .dyn_into::<flutter_rust_bridge::for_generated::js_sys::Array>()
+                .unwrap();
+            assert_eq!(
+                self_.length(),
+                1,
+                "Expected 1 elements, got {}",
+                self_.length()
+            );
+            crate::api::minimal::MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal {
+                a: self_.get(0).cst_decode(),
+            }
+        }
+    }
 }
 #[cfg(target_family = "wasm")]
 pub use web::*;

@@ -62,6 +62,33 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
+  void cst_api_fill_to_wire_my_enum_without_fn_with_unignore_twin_normal(
+      MyEnumWithoutFnWithUnignoreTwinNormal apiObj,
+      wire_cst_my_enum_without_fn_with_unignore_twin_normal wireObj) {
+    if (apiObj is MyEnumWithoutFnWithUnignoreTwinNormal_One) {
+      var pre_field0 = cst_encode_String(apiObj.field0);
+      wireObj.tag = 0;
+      wireObj.kind.One.field0 = pre_field0;
+      return;
+    }
+  }
+
+  @protected
+  void cst_api_fill_to_wire_my_struct_without_fn_with_unignore_twin_normal(
+      MyStructWithoutFnWithUnignoreTwinNormal apiObj,
+      wire_cst_my_struct_without_fn_with_unignore_twin_normal wireObj) {
+    wireObj.a = cst_encode_String(apiObj.a);
+  }
+
+  @protected
+  void cst_api_fill_to_wire_my_struct_without_fn_with_unignore_with_json_serializable_twin_normal(
+      MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal apiObj,
+      wire_cst_my_struct_without_fn_with_unignore_with_json_serializable_twin_normal
+          wireObj) {
+    wireObj.a = cst_encode_String(apiObj.a);
+  }
+
+  @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
 
   @protected
