@@ -16,23 +16,24 @@ pub(crate) fn transform(
 
 fn filter_function(pack: &mut HirFlatPack, config: &ParserHirInternalConfig) {
     pack.functions = (pack.functions.drain(..))
-        .filter(|x| {
-            let is_public = x.is_public().unwrap_or(true);
-            is_interest_module(&x.namespace, config)
-                && (x.namespace.crate_name().is_self_crate() || is_public)
-        })
+        .filter(|x| should_keep(&x.namespace, x.is_public().unwrap_or(true), config))
         .collect_vec();
 }
 
 fn filter_constant(pack: &mut HirFlatPack, config: &ParserHirInternalConfig) {
     pack.constants = (pack.constants.drain(..))
         .filter(|x| {
-            let namespace = &x.namespace;
-            let is_public = matches!(x.item_const.vis, Visibility::Public(_));
-            is_interest_module(namespace, config)
-                && (namespace.crate_name().is_self_crate() || is_public)
+            should_keep(
+                &x.namespace,
+                matches!(x.item_const.vis, Visibility::Public(_)),
+                config,
+            )
         })
         .collect_vec();
+}
+
+fn should_keep(namespace: &Namespace, is_public: bool, config: &ParserHirInternalConfig) -> bool {
+    is_interest_module(namespace, config) && (namespace.crate_name().is_self_crate() || is_public)
 }
 
 fn is_interest_module(namespace: &Namespace, config: &ParserHirInternalConfig) -> bool {
