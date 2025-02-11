@@ -41,7 +41,7 @@ pub fn flutter_pub_add(items: &[&str], pwd: Option<&Path>) -> anyhow::Result<()>
         "pub".to_owned(),
         "add".to_owned(),
     ]);
-    full_args.extend(items);
+    full_args.extend(items.iter().map(|x| x.to_string()));
 
     info!(
         "Execute `{}` inside {pwd:?} (this may take a while)",
