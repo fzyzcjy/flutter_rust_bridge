@@ -1,4 +1,5 @@
 use crate::codegen::ir::hir::flat::constant::HirFlatConstant;
+use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncAccessorMode, MirFuncArgMode, MirFuncImplMode, MirFuncMode, MirFuncOutput,
     MirFuncOwnerInfo,
@@ -45,21 +46,16 @@ fn parse_constant(
         return Ok(None);
     }
     if attributes.ignore() {
-        return Ok(Some(IrValueOrSkip::Skip(IrSkip {
-            name: NamespacedName::new(namespace.clone(), name),
-            reason: IgnoreBecauseExplicitAttribute,
-        })));
+        return Ok(Some(create_output_skip(
+            constant,
+            IgnoreBecauseExplicitAttribute,
+        )));
     }
 
     let ty_direct_parse = match type_parser.parse_type(&constant.item_const.ty, &context) {
         Ok(value) => value,
         // We do not care about parsing errors here (e.g. some type that we do not support)
-        Err(_) => {
-            return Ok(Some(IrValueOrSkip::Skip(IrSkip {
-                name: NamespacedName::new(namespace.clone(), name),
-                reason: IrSkipReason::Err,
-            })))
-        }
+        Err(_) => return Ok(Some(create_output_skip(constant, IrSkipReason::Err))),
     };
 
     let rust_call_code = format!("{}::{name}", namespace.joined_path);
@@ -90,4 +86,14 @@ fn parse_constant(
         impl_mode: MirFuncImplMode::Normal,
         src_lineno_pseudo: constant.item_const.span().start().line,
     })))
+}
+
+fn create_output_skip(constant: &HirFlatConstant, reason: IrSkipReason) -> MirFuncOrSkip {
+    IrValueOrSkip::Skip(IrSkip {
+        name: NamespacedName::new(
+            constant.namespace.clone(),
+            constant.item_const.ident.to_string(),
+        ),
+        reason,
+    })
 }
