@@ -4,6 +4,7 @@ use crate::codegen::ir::mir::func::{
     MirFuncOwnerInfo,
 };
 use crate::codegen::ir::mir::ident::MirIdent;
+use crate::codegen::ir::misc::skip::IrSkipReason::IgnoreBecauseExplicitAttribute;
 use crate::codegen::ir::misc::skip::{IrSkip, IrSkipReason, IrValueOrSkip, MirFuncOrSkip};
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
@@ -37,10 +38,17 @@ fn parse_constant(
     let namespace = &constant.namespace;
     let name = constant.item_const.ident.to_string();
     let context = create_simplified_parsing_context(namespace.clone(), config, parse_mode)?;
+    let attributes = FrbAttributes::parse(&constant.item_const.attrs)?;
 
     // reserved name
     if &name == "_" {
         return Ok(None);
+    }
+    if attributes.ignore() {
+        return Ok(Some(IrValueOrSkip::Skip(IrSkip {
+            name: NamespacedName::new(namespace.clone(), name),
+            reason: IgnoreBecauseExplicitAttribute,
+        })));
     }
 
     let ty_direct_parse = match type_parser.parse_type(&constant.item_const.ty, &context) {
