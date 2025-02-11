@@ -8,28 +8,24 @@ use std::path::Path;
 
 #[allow(clippy::vec_init_then_push)]
 pub fn flutter_create(name: &str, org: &Option<String>, template: Template) -> anyhow::Result<()> {
-    let mut args = vec![name];
+    let mut full_args = vec![];
+    full_args.extend(command_arg_maybe_fvm(pwd));
+    full_args.extend(vec!["flutter", "create", name]);
     if let Some(o) = org {
-        args.extend(["--org", o]);
+        full_args.extend(["--org", o]);
     }
     match template {
-        Template::App => args.extend(["--template", "app"]),
-        Template::Plugin => args.extend([
+        Template::App => full_args.extend(["--template", "app"]),
+        Template::Plugin => full_args.extend([
             "--template",
             "plugin_ffi",
             "--platforms",
             "android,ios,linux,macos,windows",
         ]),
     }
-    info!(
-        "Execute `flutter create {}` (this may take a while)",
-        args.join(" ")
-    );
-    check_exit_code(&command_run!(
-        call_shell[None, None],
-        ?command_arg_maybe_fvm(None),
-        "flutter", "create", *args
-    )?)
+
+    info!("Execute `{}` (this may take a while)", full_args.join(" "));
+    check_exit_code(&command_run!(call_shell[None, None], *full_args)?)
 }
 
 #[allow(clippy::vec_init_then_push)]
@@ -39,7 +35,10 @@ pub fn flutter_pub_add(items: &[&str], pwd: Option<&Path>) -> anyhow::Result<()>
     full_args.extend(vec!["flutter", "pub", "add"]);
     full_args.extend(items);
 
-    info!("Execute `{}` (this may take a while)", full_args.join(" "));
+    info!(
+        "Execute `{}` inside {pwd:?} (this may take a while)",
+        full_args.join(" ")
+    );
     check_exit_code(&command_run!(call_shell[pwd, None], *full_args)?)
 }
 
