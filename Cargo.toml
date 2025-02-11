@@ -19,7 +19,7 @@ exclude = [
 resolver = "2"
 
 [workspace.package]
-version = "2.7.1"
+version = "2.8.0"
 edition = "2021"
 license = "MIT"
 description = "Flutter/Dart <-> Rust binding generator, feature-rich, but seamless and simple"
@@ -37,9 +37,9 @@ uuid = "1.1.2"
 thiserror = "1.0"
 backtrace = "0.3.68"
 
-flutter_rust_bridge_macros = { path = "frb_macros", version = "=2.7.1" }
-flutter_rust_bridge = { path = "frb_rust", default-features = false, version = "=2.7.1" }
-flutter_rust_bridge_codegen = { path = "frb_codegen", version = "=2.7.1" }
+flutter_rust_bridge_macros = { path = "frb_macros", version = "=2.8.0" }
+flutter_rust_bridge = { path = "frb_rust", default-features = false, version = "=2.8.0" }
+flutter_rust_bridge_codegen = { path = "frb_codegen", version = "=2.8.0" }
 
 [profile.release.package.flutter_rust_bridge_codegen]
 strip = "debuginfo"
