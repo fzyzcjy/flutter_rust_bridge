@@ -139,8 +139,14 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     ) -> anyhow::Result<MirFuncOrSkip> {
         debug!("parse_function function name: {:?}", func.item_fn.name());
 
+        let src_lineno = func.item_fn.span().start().line;
+        let attributes = FrbAttributes::parse(func.item_fn.attrs())?;
+
         if func.is_public() == Some(false) {
             return Ok(create_output_skip(func, IgnoreBecauseFunctionNotPub));
+        }
+        if attributes.ignore() {
+            return Ok(create_output_skip(func, IgnoreBecauseExplicitAttribute));
         }
 
         // If enable lifetime, the lifetime "generics" should be acceptable (though other generics still not)
@@ -148,8 +154,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             return Ok(create_output_skip(func, IgnoreBecauseFunctionGeneric));
         }
 
-        let src_lineno = func.item_fn.span().start().line;
-        let attributes = FrbAttributes::parse(func.item_fn.attrs())?;
         if attributes.dart2rust().is_some() || attributes.rust2dart().is_some() {
             return Ok(create_output_skip(func, IgnoreSilently));
         }
@@ -183,10 +187,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         };
 
         let func_name = parse_name(&func.item_fn.name(), &owner);
-
-        if attributes.ignore() {
-            return Ok(create_output_skip(func, IgnoreBecauseExplicitAttribute));
-        }
 
         let lifetime_info = parse_function_lifetime(func.item_fn.sig(), &owner)?;
 
