@@ -242,8 +242,11 @@ pub const CONST_INT_TWIN_NORMAL: i32 = 42;
 pub const CONST_ARRAY_TWIN_NORMAL: [f32; 3] = [1.5, 3.0, 6.0];
 
 // These consts should be ignored
+#[allow(dead_code)]
 pub(crate) const CONST_PUB_CRATE_SHOULD_IGNORE: i32 = 42;
+#[allow(dead_code)]
 const CONST_PRIVATE_SHOULD_IGNORE: i32 = 42;
+#[allow(dead_code)]
 #[frb(ignore)]
 pub const CONST_WITH_EXPLICIT_IGNORE_SHOULD_IGNORE: i32 = 42;
 
