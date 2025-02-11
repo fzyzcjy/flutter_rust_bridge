@@ -5,7 +5,9 @@ use crate::codegen::ir::mir::func::{
     MirFuncOwnerInfo,
 };
 use crate::codegen::ir::mir::ident::MirIdent;
-use crate::codegen::ir::misc::skip::IrSkipReason::IgnoreBecauseExplicitAttribute;
+use crate::codegen::ir::misc::skip::IrSkipReason::{
+    IgnoreBecauseExplicitAttribute, IgnoreBecauseFunctionNotPub,
+};
 use crate::codegen::ir::misc::skip::{IrSkip, IrSkipReason, IrValueOrSkip, MirFuncOrSkip};
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
@@ -15,6 +17,7 @@ use crate::codegen::parser::mir::parser::ty::TypeParser;
 use crate::codegen::parser::mir::ParseMode;
 use crate::utils::namespace::NamespacedName;
 use syn::spanned::Spanned;
+use syn::Visibility;
 
 pub(crate) fn parse(
     config: &ParserMirInternalConfig,
@@ -45,17 +48,17 @@ fn parse_constant(
     if &name == "_" {
         return Ok(None);
     }
+    if !matches!(&constant.item_const.vis, Visibility::Public(_)) {
+        return Ok(create_output_skip(constant, IgnoreBecauseFunctionNotPub));
+    }
     if attributes.ignore() {
-        return Ok(Some(create_output_skip(
-            constant,
-            IgnoreBecauseExplicitAttribute,
-        )));
+        return Ok(create_output_skip(constant, IgnoreBecauseExplicitAttribute));
     }
 
     let ty_direct_parse = match type_parser.parse_type(&constant.item_const.ty, &context) {
         Ok(value) => value,
         // We do not care about parsing errors here (e.g. some type that we do not support)
-        Err(_) => return Ok(Some(create_output_skip(constant, IrSkipReason::Err))),
+        Err(_) => return Ok(create_output_skip(constant, IrSkipReason::Err)),
     };
 
     let rust_call_code = format!("{}::{name}", namespace.joined_path);
@@ -88,12 +91,12 @@ fn parse_constant(
     })))
 }
 
-fn create_output_skip(constant: &HirFlatConstant, reason: IrSkipReason) -> MirFuncOrSkip {
-    IrValueOrSkip::Skip(IrSkip {
+fn create_output_skip(constant: &HirFlatConstant, reason: IrSkipReason) -> Option<MirFuncOrSkip> {
+    Some(IrValueOrSkip::Skip(IrSkip {
         name: NamespacedName::new(
             constant.namespace.clone(),
             constant.item_const.ident.to_string(),
         ),
         reason,
-    })
+    }))
 }
