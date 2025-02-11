@@ -1,5 +1,4 @@
 use crate::codegen::ir::hir::flat::constant::HirFlatConstant;
-use crate::codegen::ir::hir::flat::function::HirFlatFunction;
 use crate::codegen::ir::mir::func::{
     MirFunc, MirFuncAccessorMode, MirFuncArgMode, MirFuncImplMode, MirFuncMode, MirFuncOutput,
     MirFuncOwnerInfo,
