@@ -243,6 +243,12 @@ pub fn r#for(r#type: String) {
 pub const CONST_INT_TWIN_NORMAL: i32 = 42;
 pub const CONST_ARRAY_TWIN_NORMAL: [f32; 3] = [1.5, 3.0, 6.0];
 
+// These consts should be ignored
+pub(crate) const CONST_PUB_CRATE_SHOULD_IGNORE: i32 = 42;
+const CONST_PRIVATE_SHOULD_IGNORE: i32 = 42;
+#[frb(ignore)]
+pub const CONST_WITH_EXPLICIT_IGNORE_SHOULD_IGNORE: i32 = 42;
+
 #[frb(json_serializable)]
 pub enum MyEnumWithJsonSerializableTwinNormal {
     Apple(String),
