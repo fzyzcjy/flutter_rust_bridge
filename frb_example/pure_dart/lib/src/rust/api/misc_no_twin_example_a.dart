@@ -14,9 +14,10 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'misc_no_twin_example_a.freezed.dart';
 part 'misc_no_twin_example_a.g.dart';
 
-// These functions are ignored because they are not marked as `pub`: `log`
+// These functions are ignored because they are not marked as `pub`: `CONST_PRIVATE_SHOULD_IGNORE`, `CONST_PUB_CRATE_SHOULD_IGNORE`, `log`
 // These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `Issue2170Struct`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`
+// These functions are ignored (category: IgnoreBecauseExplicitAttribute): `CONST_WITH_EXPLICIT_IGNORE_SHOULD_IGNORE`
 
 Future<void> sameFunctionNameInDifferentFiles() => RustLib.instance.api
     .crateApiMiscNoTwinExampleASameFunctionNameInDifferentFiles();
