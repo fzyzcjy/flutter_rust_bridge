@@ -153,6 +153,12 @@ Instead, users may need to add the section below in `Cargo.toml`:
 unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }
 ```
 
+## `flutter_rust_bridge_codegen` is running forever
+
+A debug approach is to use `RUST_LOG=debug flutter_rust_bridge_codegen your_args` to get more logs.
+For example, suppose it is stuck at executing `fvm flutter pub get ...`,
+then maybe try to execute that command directly in the shell and see whether it also get stuck.
+
 ## Other problems?
 
 Don't hesitate to [open an issue](https://github.com/fzyzcjy/flutter_rust_bridge/issues/new/choose)! I usually reply
