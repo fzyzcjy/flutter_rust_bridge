@@ -10,17 +10,21 @@ use std::path::Path;
 pub fn flutter_create(name: &str, org: &Option<String>, template: Template) -> anyhow::Result<()> {
     let mut full_args = vec![];
     full_args.extend(command_arg_maybe_fvm(None));
-    full_args.extend(vec!["flutter", "create", name]);
+    full_args.extend(vec![
+        "flutter".to_owned(),
+        "create".to_owned(),
+        name.to_owned(),
+    ]);
     if let Some(o) = org {
-        full_args.extend(["--org", o]);
+        full_args.extend(["--org".to_owned(), o.to_owned()]);
     }
     match template {
-        Template::App => full_args.extend(["--template", "app"]),
+        Template::App => full_args.extend(["--template".to_owned(), "app".to_owned()]),
         Template::Plugin => full_args.extend([
-            "--template",
-            "plugin_ffi",
-            "--platforms",
-            "android,ios,linux,macos,windows",
+            "--template".to_owned(),
+            "plugin_ffi".to_owned(),
+            "--platforms".to_owned(),
+            "android,ios,linux,macos,windows".to_owned(),
         ]),
     }
 
@@ -32,7 +36,11 @@ pub fn flutter_create(name: &str, org: &Option<String>, template: Template) -> a
 pub fn flutter_pub_add(items: &[&str], pwd: Option<&Path>) -> anyhow::Result<()> {
     let mut full_args = vec![];
     full_args.extend(command_arg_maybe_fvm(pwd));
-    full_args.extend(vec!["flutter", "pub", "add"]);
+    full_args.extend(vec![
+        "flutter".to_owned(),
+        "pub".to_owned(),
+        "add".to_owned(),
+    ]);
     full_args.extend(items);
 
     info!(
@@ -46,7 +54,11 @@ pub fn flutter_pub_add(items: &[&str], pwd: Option<&Path>) -> anyhow::Result<()>
 pub fn flutter_pub_get(path: &Path) -> anyhow::Result<()> {
     let mut full_args = vec![];
     full_args.extend(command_arg_maybe_fvm(Some(path)));
-    full_args.extend(vec!["flutter", "pub", "get"]);
+    full_args.extend(vec![
+        "flutter".to_owned(),
+        "pub".to_owned(),
+        "get".to_owned(),
+    ]);
 
     info!(
         "Execute `{}` inside {path:?} (this may take a while)",
