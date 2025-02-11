@@ -9,7 +9,7 @@ use std::path::Path;
 #[allow(clippy::vec_init_then_push)]
 pub fn flutter_create(name: &str, org: &Option<String>, template: Template) -> anyhow::Result<()> {
     let mut full_args = vec![];
-    full_args.extend(command_arg_maybe_fvm(pwd));
+    full_args.extend(command_arg_maybe_fvm(None));
     full_args.extend(vec!["flutter", "create", name]);
     if let Some(o) = org {
         full_args.extend(["--org", o]);
