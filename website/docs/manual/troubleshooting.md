@@ -153,6 +153,10 @@ Instead, users may need to add the section below in `Cargo.toml`:
 unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }
 ```
 
+## Command is running forever
+
+A debug approach is to use `RUST_LOG=debug flutter_rust_bridge_codegen your_args` to get more logs.
+
 ## Other problems?
 
 Don't hesitate to [open an issue](https://github.com/fzyzcjy/flutter_rust_bridge/issues/new/choose)! I usually reply
