@@ -16,6 +16,8 @@ typedef struct _Dart_Handle* Dart_Handle;
 
 #define CONST_INT_TWIN_NORMAL 42
 
+#define CONST_WITH_EXPLICIT_IGNORE_SHOULD_IGNORE 42
+
 typedef struct benchmark_raw_list_prim_u_8 {
   uint8_t *ptr;
   int32_t len;
