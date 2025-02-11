@@ -17,9 +17,8 @@ pub(crate) fn transform(
 fn filter_function(pack: &mut HirFlatPack, config: &ParserHirInternalConfig) {
     pack.functions = (pack.functions.drain(..))
         .filter(|x| {
-            let is_public = x.is_public().unwrap_or(true);
             is_interest_module(&x.namespace, config)
-                && (x.namespace.crate_name().is_self_crate() || is_public)
+                && (x.namespace.crate_name().is_self_crate() || x.is_public().unwrap_or(true))
         })
         .collect_vec();
 }
@@ -27,10 +26,8 @@ fn filter_function(pack: &mut HirFlatPack, config: &ParserHirInternalConfig) {
 fn filter_constant(pack: &mut HirFlatPack, config: &ParserHirInternalConfig) {
     pack.constants = (pack.constants.drain(..))
         .filter(|x| {
-            let namespace = &x.namespace;
-            let is_public = matches!(x.item_const.vis, Visibility::Public(_));
-            is_interest_module(namespace, config)
-                && (namespace.crate_name().is_self_crate() || is_public)
+            is_interest_module(&x.namespace, config)
+                && matches!(x.item_const.vis, Visibility::Public(_))
         })
         .collect_vec();
 }
