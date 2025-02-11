@@ -34,18 +34,13 @@ pub fn flutter_create(name: &str, org: &Option<String>, template: Template) -> a
 
 #[allow(clippy::vec_init_then_push)]
 pub fn flutter_pub_add(items: &[&str], pwd: Option<&Path>) -> anyhow::Result<()> {
-    info!(
-        "Execute flutter pub add {} (this may take a while)",
-        items.join(" ")
-    );
-    check_exit_code(&command_run!(
-        call_shell[pwd, None],
-        ?command_arg_maybe_fvm(pwd),
-        "flutter",
-        "pub",
-        "add",
-        *items
-    )?)
+    let mut full_args = vec![];
+    full_args.extend(command_arg_maybe_fvm(pwd));
+    full_args.extend(vec!["flutter", "pub", "add"]);
+    full_args.extend(items);
+
+    info!("Execute {} (this may take a while)", full_args.join(" "));
+    check_exit_code(&command_run!(call_shell[pwd, None], *full_args)?)
 }
 
 #[allow(clippy::vec_init_then_push)]
