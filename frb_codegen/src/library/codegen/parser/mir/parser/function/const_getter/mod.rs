@@ -4,6 +4,9 @@ use crate::codegen::ir::mir::func::{
     MirFuncOwnerInfo,
 };
 use crate::codegen::ir::mir::ident::MirIdent;
+use crate::codegen::ir::misc::skip::IrSkipReason::{
+    IgnoreBecauseExplicitAttribute, IgnoreBecauseFunctionNotPub,
+};
 use crate::codegen::ir::misc::skip::{IrSkip, IrSkipReason, IrValueOrSkip, MirFuncOrSkip};
 use crate::codegen::parser::mir::internal_config::ParserMirInternalConfig;
 use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
@@ -13,6 +16,7 @@ use crate::codegen::parser::mir::parser::ty::TypeParser;
 use crate::codegen::parser::mir::ParseMode;
 use crate::utils::namespace::NamespacedName;
 use syn::spanned::Spanned;
+use syn::Visibility;
 
 pub(crate) fn parse(
     config: &ParserMirInternalConfig,
@@ -37,21 +41,23 @@ fn parse_constant(
     let namespace = &constant.namespace;
     let name = constant.item_const.ident.to_string();
     let context = create_simplified_parsing_context(namespace.clone(), config, parse_mode)?;
+    let attributes = FrbAttributes::parse(&constant.item_const.attrs)?;
 
     // reserved name
     if &name == "_" {
         return Ok(None);
     }
+    if !matches!(&constant.item_const.vis, Visibility::Public(_)) {
+        return Ok(create_output_skip(constant, IgnoreBecauseFunctionNotPub));
+    }
+    if attributes.ignore() {
+        return Ok(create_output_skip(constant, IgnoreBecauseExplicitAttribute));
+    }
 
     let ty_direct_parse = match type_parser.parse_type(&constant.item_const.ty, &context) {
         Ok(value) => value,
         // We do not care about parsing errors here (e.g. some type that we do not support)
-        Err(_) => {
-            return Ok(Some(IrValueOrSkip::Skip(IrSkip {
-                name: NamespacedName::new(namespace.clone(), name),
-                reason: IrSkipReason::Err,
-            })))
-        }
+        Err(_) => return Ok(create_output_skip(constant, IrSkipReason::Err)),
     };
 
     let rust_call_code = format!("{}::{name}", namespace.joined_path);
@@ -82,4 +88,14 @@ fn parse_constant(
         impl_mode: MirFuncImplMode::Normal,
         src_lineno_pseudo: constant.item_const.span().start().line,
     })))
+}
+
+fn create_output_skip(constant: &HirFlatConstant, reason: IrSkipReason) -> Option<MirFuncOrSkip> {
+    Some(IrValueOrSkip::Skip(IrSkip {
+        name: NamespacedName::new(
+            constant.namespace.clone(),
+            constant.item_const.ident.to_string(),
+        ),
+        reason,
+    }))
 }
