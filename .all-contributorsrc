@@ -1054,6 +1054,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "xuwaters",
+      "name": "Wei Xu",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1222863?v=4",
+      "profile": "https://github.com/xuwaters",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
