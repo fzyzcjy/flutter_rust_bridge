@@ -52,7 +52,7 @@ indicatif = "0.17.7"
 indicatif-log-bridge = "0.2.2"
 notify = "6.1.1"
 notify-debouncer-mini = "0.4.1"
-cargo_toml = "0.18.0"
+cargo_toml = "0.21.0"
 hex = "0.4.3"
 sha1 = "0.10.6"
 
