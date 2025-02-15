@@ -39,6 +39,7 @@
 - NightFeather0615: Fix Vec bool.
 - fmeef: Add cargo feature flag.
 - alexlapa: Fix DartOpaque.
+- xuwaters: Support edition 2024.
 - SirKrlos: Fix fvm calls.
 - OfficialBoyfriend: Fix error display.
 - jippeholwerda: Fix raw identifier.
