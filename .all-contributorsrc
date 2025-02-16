@@ -1063,6 +1063,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "iazel",
+      "name": "Salvatore Pelligra",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1616917?v=4",
+      "profile": "https://github.com/iazel",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
