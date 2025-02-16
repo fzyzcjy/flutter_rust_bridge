@@ -13,22 +13,22 @@ List<dynamic> wireSyncRust2DartDcoIntoDart(WireSyncRust2DartDco syncReturn) =>
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 int dcoDecodeI64(dynamic raw) {
-    if (raw is int) {
-        return raw;
-    } else {
-        throw Exception(
-            'dcoDecodeI64 unexpected type=${raw.runtimeType} value=$raw');
-    }
+  if (raw is int) {
+    return raw;
+  } else {
+    throw Exception(
+        'dcoDecodeI64 unexpected type=${raw.runtimeType} value=$raw');
+  }
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 BigInt dcoDecodeU64(dynamic raw) {
-    if (raw is num) {
-        return BigInt.from(raw).toUnsigned(64);
-    } else {
-        throw Exception(
-            'dcoDecodeU64 unexpected type=${raw.runtimeType} value=$raw');
-    }
+  if (raw is num) {
+    return BigInt.from(raw).toUnsigned(64);
+  } else {
+    throw Exception(
+        'dcoDecodeU64 unexpected type=${raw.runtimeType} value=$raw');
+  }
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
