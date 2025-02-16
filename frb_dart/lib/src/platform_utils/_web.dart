@@ -24,7 +24,7 @@ external JSBigInt _jsBigInt(String raw);
 JSAny castNativeBigInt(BigInt value) => _jsBigInt(value.toString());
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-BigInt jsBigIntToDartBigInt(Object raw) {
+BigInt jsBigIntToDartBigInt(dynamic raw) {
   if (raw is int) return BigInt.from(raw);
 
   final jsAny = raw.jsify();
