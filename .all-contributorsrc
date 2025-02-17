@@ -1072,6 +1072,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "adam-huganir",
+      "name": "Adam Huganir",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2143122?v=4",
+      "profile": "https://github.com/adam-huganir",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
