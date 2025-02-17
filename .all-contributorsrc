@@ -1020,6 +1020,15 @@
       ]
     },
     {
+      "login": "adam-huganir",
+      "name": "Adam Huganir",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2143122?v=4",
+      "profile": "https://github.com/adam-huganir",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
       "login": "ernstvanderlinden",
       "name": "Ernest M. van der Linden",
       "avatar_url": "https://avatars.githubusercontent.com/u/23011957?v=4",
@@ -1069,15 +1078,6 @@
       "name": "thesimplekid",
       "avatar_url": "https://avatars.githubusercontent.com/u/8606367?v=4",
       "profile": "https://thesimplekid.com",
-      "contributions": [
-        "doc"
-      ]
-    },
-    {
-      "login": "adam-huganir",
-      "name": "Adam Huganir",
-      "avatar_url": "https://avatars.githubusercontent.com/u/2143122?v=4",
-      "profile": "https://github.com/adam-huganir",
       "contributions": [
         "doc"
       ]
