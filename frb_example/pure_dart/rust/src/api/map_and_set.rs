@@ -13,11 +13,13 @@ impl std::hash::BuildHasher for CustomHasher {
         self.0.build_hasher()
     }
 
-    fn hash_one<T>(&self, x: T)
+    fn hash_one<T>(&self, x: T) -> u64
     where
         T: std::hash::Hash,
+        Self: Sized,
+        Self::Hasher: std::hash::Hasher,
     {
-        self.0.hash_one(x);
+        self.0.hash_one(x)
     }
 }
 
