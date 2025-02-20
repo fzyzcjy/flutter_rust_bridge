@@ -21,12 +21,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
     {10, 20},
   ]);
 
-  addTestsIdentityFunctionCall(funcHashMapStringStringTwinNormal, <Map<String, String>>[
+  addTestsIdentityFunctionCall(
+      funcHashMapStringStringTwinNormal, <Map<String, String>>[
     {},
     {'a': 'b'},
     {'a': 'b', 'c': 'd'},
   ]);
-  addTestsIdentityFunctionCall(funcHashMapStringStringHasherTwinNormal, <Map<String, String>>[
+  addTestsIdentityFunctionCall(
+      funcHashMapStringStringHasherTwinNormal, <Map<String, String>>[
     {},
     {'a': 'b'},
     {'a': 'b', 'c': 'd'},
@@ -42,7 +44,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     {'a', 'b'},
   ]);
 
-  addTestsIdentityFunctionCall(funcHashMapStringBytesTwinNormal, <Map<String, Uint8List>>[
+  addTestsIdentityFunctionCall(
+      funcHashMapStringBytesTwinNormal, <Map<String, Uint8List>>[
     {},
     {
       'a': Uint8List.fromList([10, 20])
