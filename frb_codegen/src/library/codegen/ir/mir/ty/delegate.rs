@@ -68,11 +68,13 @@ pub enum MirTypeDelegateTime {
 pub struct MirTypeDelegateMap {
     pub key: Box<MirType>,
     pub value: Box<MirType>,
+    pub hasher: Option<Box<MirType>>,
     pub element_delegate: MirTypeRecord,
 }
 
 pub struct MirTypeDelegateSet {
     pub inner: Box<MirType>,
+    pub hasher: Option<Box<MirType>>,
 }
 
 pub struct MirTypeDelegateStreamSink {
@@ -141,11 +143,20 @@ impl MirTypeTrait for MirTypeDelegate {
     ) {
         self.get_delegate().visit_types(f, mir_context);
 
-        #[allow(clippy::single_match)]
         match self {
             Self::StreamSink(mir) => {
                 mir.inner_ok.visit_types(f, mir_context);
                 mir.inner_err.visit_types(f, mir_context);
+            }
+            Self::Map(MirTypeDelegateMap {
+                hasher: Some(hasher),
+                ..
+            })
+            | Self::Set(MirTypeDelegateSet {
+                hasher: Some(hasher),
+                ..
+            }) => {
+                hasher.visit_types(f, mir_context);
             }
             // ... others
             _ => {}
@@ -169,9 +180,24 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::Backtrace => "Backtrace".to_owned(),
             MirTypeDelegate::AnyhowException => "AnyhowException".to_owned(),
             MirTypeDelegate::Map(mir) => {
-                format!("Map_{}_{}", mir.key.safe_ident(), mir.value.safe_ident())
+                if let Some(hasher) = &mir.hasher {
+                    format!(
+                        "Map_{}_{}_{}",
+                        mir.key.safe_ident(),
+                        mir.value.safe_ident(),
+                        hasher.safe_ident(),
+                    )
+                } else {
+                    format!("Map_{}_{}", mir.key.safe_ident(), mir.value.safe_ident())
+                }
             }
-            MirTypeDelegate::Set(mir) => format!("Set_{}", mir.inner.safe_ident()),
+            MirTypeDelegate::Set(mir) => {
+                if let Some(hasher) = &mir.hasher {
+                    format!("Set_{}_{}", mir.inner.safe_ident(), hasher.safe_ident())
+                } else {
+                    format!("Set_{}", mir.inner.safe_ident())
+                }
+            }
             MirTypeDelegate::StreamSink(mir) => {
                 format!("StreamSink_{}_{}", mir.inner_ok.safe_ident(), mir.codec)
             }
@@ -239,13 +265,32 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::AnyhowException => {
                 "flutter_rust_bridge::for_generated::anyhow::Error".to_owned()
             }
-            MirTypeDelegate::Map(mir) => format!(
-                "std::collections::HashMap<{}, {}>",
-                mir.key.rust_api_type(),
-                mir.value.rust_api_type()
-            ),
+            MirTypeDelegate::Map(mir) => {
+                if let Some(hasher) = &mir.hasher {
+                    format!(
+                        "std::collections::HashMap<{}, {}, {}>",
+                        mir.key.rust_api_type(),
+                        mir.value.rust_api_type(),
+                        hasher.rust_api_type(),
+                    )
+                } else {
+                    format!(
+                        "std::collections::HashMap<{}, {}>",
+                        mir.key.rust_api_type(),
+                        mir.value.rust_api_type()
+                    )
+                }
+            }
             MirTypeDelegate::Set(mir) => {
-                format!("std::collections::HashSet<{}>", mir.inner.rust_api_type())
+                if let Some(hasher) = &mir.hasher {
+                    format!(
+                        "std::collections::HashSet<{}, {}>",
+                        mir.inner.rust_api_type(),
+                        hasher.rust_api_type(),
+                    )
+                } else {
+                    format!("std::collections::HashSet<{}>", mir.inner.rust_api_type())
+                }
             }
             MirTypeDelegate::StreamSink(mir) => {
                 format!(
