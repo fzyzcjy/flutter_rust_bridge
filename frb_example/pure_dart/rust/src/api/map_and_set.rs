@@ -1,6 +1,5 @@
 use crate::api::enumeration::{EnumSimpleTwinNormal, KitchenSinkTwinNormal};
 use crate::auxiliary::sample_types::MySize;
-use fxhash::FxHashBuilder;
 use std::collections::{HashMap, HashSet};
 
 /// flutter_rust_bridge:ignore
