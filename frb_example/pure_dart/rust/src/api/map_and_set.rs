@@ -1,6 +1,26 @@
 use crate::api::enumeration::{EnumSimpleTwinNormal, KitchenSinkTwinNormal};
 use crate::auxiliary::sample_types::MySize;
+use fxhash::FxHashBuilder;
 use std::collections::{HashMap, HashSet};
+
+/// flutter_rust_bridge:ignore
+#[derive(Clone, Debug, Default)]
+pub struct CustomHasher(std::collections::hash_map::RandomState);
+
+impl std::hash::BuildHasher for CustomHasher {
+    type Hasher = std::collections::hash_map::DefaultHasher;
+
+    fn build_hasher(&self) -> Self::Hasher {
+        self.0.build_hasher()
+    }
+
+    fn hash_one<T>(&self, x: T)
+    where
+        T: std::hash::Hash,
+    {
+        self.0.hash_one(x);
+    }
+}
 
 pub fn func_hash_map_i32_i32_twin_normal(arg: HashMap<i32, i32>) -> HashMap<i32, i32> {
     arg
@@ -16,7 +36,19 @@ pub fn func_hash_map_string_string_twin_normal(
     arg
 }
 
+pub fn func_hash_map_string_string_hasher_twin_normal(
+    arg: HashMap<String, String, CustomHasher>,
+) -> HashMap<String, String, CustomHasher> {
+    arg
+}
+
 pub fn func_hash_set_string_twin_normal(arg: HashSet<String>) -> HashSet<String> {
+    arg
+}
+
+pub fn func_hash_set_string_hasher_twin_normal(
+    arg: HashSet<String, CustomHasher>,
+) -> HashSet<String, CustomHasher> {
     arg
 }
 
