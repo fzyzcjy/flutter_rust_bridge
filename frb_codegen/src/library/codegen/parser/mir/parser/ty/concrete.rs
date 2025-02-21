@@ -77,11 +77,28 @@ impl TypeParserWithContext<'_, '_, '_> {
                 Delegate(MirTypeDelegate::Map(MirTypeDelegateMap {
                     key: Box::new(key.clone()),
                     value: Box::new(value.clone()),
+                    hasher: None,
+                    element_delegate: self.create_mir_record(vec![key, value]),
+                }))
+            },
+            ("HashMap", [key, value, hasher]) => {
+                let key  = self.parse_type(key)?;
+                let value  = self.parse_type(value)?;
+                let hasher  = self.parse_type(hasher)?;
+                Delegate(MirTypeDelegate::Map(MirTypeDelegateMap {
+                    key: Box::new(key.clone()),
+                    value: Box::new(value.clone()),
+                    hasher: Some(Box::new(hasher)),
                     element_delegate: self.create_mir_record(vec![key, value]),
                 }))
             },
             ("HashSet", [inner]) => Delegate(MirTypeDelegate::Set(MirTypeDelegateSet {
                 inner: Box::new(self.parse_type(inner)?),
+                hasher: None,
+            })),
+            ("HashSet", [inner, hasher]) => Delegate(MirTypeDelegate::Set(MirTypeDelegateSet {
+                inner: Box::new(self.parse_type(inner)?),
+                hasher: Some(Box::new(self.parse_type(hasher)?)),
             })),
 
             ("StreamSink", [inner ]) => Delegate(MirTypeDelegate::StreamSink(MirTypeDelegateStreamSink {
