@@ -180,23 +180,25 @@ impl MirTypeTrait for MirTypeDelegate {
             MirTypeDelegate::Backtrace => "Backtrace".to_owned(),
             MirTypeDelegate::AnyhowException => "AnyhowException".to_owned(),
             MirTypeDelegate::Map(mir) => {
-                if let Some(hasher) = &mir.hasher {
-                    format!(
-                        "Map_{}_{}_{}",
-                        mir.key.safe_ident(),
-                        mir.value.safe_ident(),
-                        hasher.safe_ident(),
-                    )
-                } else {
-                    format!("Map_{}_{}", mir.key.safe_ident(), mir.value.safe_ident())
-                }
+                format!(
+                    "Map_{}_{}_{}",
+                    mir.key.safe_ident(),
+                    mir.value.safe_ident(),
+                    mir.hasher
+                        .as_ref()
+                        .map(|h| h.safe_ident())
+                        .unwrap_or_else(|| "None".to_owned()),
+                )
             }
             MirTypeDelegate::Set(mir) => {
-                if let Some(hasher) = &mir.hasher {
-                    format!("Set_{}_{}", mir.inner.safe_ident(), hasher.safe_ident())
-                } else {
-                    format!("Set_{}", mir.inner.safe_ident())
-                }
+                format!(
+                    "Set_{}_{}",
+                    mir.inner.safe_ident(),
+                    mir.hasher
+                        .as_ref()
+                        .map(|h| h.safe_ident())
+                        .unwrap_or_else(|| "None".to_owned())
+                )
             }
             MirTypeDelegate::StreamSink(mir) => {
                 format!("StreamSink_{}_{}", mir.inner_ok.safe_ident(), mir.codec)
@@ -266,31 +268,27 @@ impl MirTypeTrait for MirTypeDelegate {
                 "flutter_rust_bridge::for_generated::anyhow::Error".to_owned()
             }
             MirTypeDelegate::Map(mir) => {
-                if let Some(hasher) = &mir.hasher {
-                    format!(
-                        "std::collections::HashMap<{}, {}, {}>",
-                        mir.key.rust_api_type(),
-                        mir.value.rust_api_type(),
-                        hasher.rust_api_type(),
-                    )
-                } else {
-                    format!(
-                        "std::collections::HashMap<{}, {}>",
-                        mir.key.rust_api_type(),
-                        mir.value.rust_api_type()
-                    )
-                }
+                format!(
+                    "std::collections::HashMap<{}, {}{postfix}>",
+                    mir.key.rust_api_type(),
+                    mir.value.rust_api_type(),
+                    postfix = mir
+                        .hasher
+                        .as_ref()
+                        .map(|h| format!(", {}", h.rust_api_type()))
+                        .unwrap_or_default()
+                )
             }
             MirTypeDelegate::Set(mir) => {
-                if let Some(hasher) = &mir.hasher {
-                    format!(
-                        "std::collections::HashSet<{}, {}>",
-                        mir.inner.rust_api_type(),
-                        hasher.rust_api_type(),
-                    )
-                } else {
-                    format!("std::collections::HashSet<{}>", mir.inner.rust_api_type())
-                }
+                format!(
+                    "std::collections::HashSet<{}{postfix}>",
+                    mir.inner.rust_api_type(),
+                    postfix = mir
+                        .hasher
+                        .as_ref()
+                        .map(|h| format!(", {}", h.rust_api_type()))
+                        .unwrap_or_default(),
+                )
             }
             MirTypeDelegate::StreamSink(mir) => {
                 format!(

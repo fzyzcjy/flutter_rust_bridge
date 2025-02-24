@@ -72,34 +72,13 @@ impl TypeParserWithContext<'_, '_, '_> {
             ("Vec", [element]) => mir_list(self.parse_type(element)?, true),
 
             ("HashMap", [key, value]) => {
-                let key  = self.parse_type(key)?;
-                let value  = self.parse_type(value)?;
-                Delegate(MirTypeDelegate::Map(MirTypeDelegateMap {
-                    key: Box::new(key.clone()),
-                    value: Box::new(value.clone()),
-                    hasher: None,
-                    element_delegate: self.create_mir_record(vec![key, value]),
-                }))
+                self.parse_mir_hash_map(key, value, None)?
             },
             ("HashMap", [key, value, hasher]) => {
-                let key  = self.parse_type(key)?;
-                let value  = self.parse_type(value)?;
-                let hasher  = self.parse_type(hasher)?;
-                Delegate(MirTypeDelegate::Map(MirTypeDelegateMap {
-                    key: Box::new(key.clone()),
-                    value: Box::new(value.clone()),
-                    hasher: Some(Box::new(hasher)),
-                    element_delegate: self.create_mir_record(vec![key, value]),
-                }))
+                self.parse_mir_hash_map(key, value, Some(hasher))?
             },
-            ("HashSet", [inner]) => Delegate(MirTypeDelegate::Set(MirTypeDelegateSet {
-                inner: Box::new(self.parse_type(inner)?),
-                hasher: None,
-            })),
-            ("HashSet", [inner, hasher]) => Delegate(MirTypeDelegate::Set(MirTypeDelegateSet {
-                inner: Box::new(self.parse_type(inner)?),
-                hasher: Some(Box::new(self.parse_type(hasher)?)),
-            })),
+            ("HashSet", [inner]) => self.parse_mir_hash_set(inner, None)?,
+            ("HashSet", [inner, hasher]) => self.parse_mir_hash_set(inner, Some(hasher))?,
 
             ("StreamSink", [inner ]) => Delegate(MirTypeDelegate::StreamSink(MirTypeDelegateStreamSink {
                 inner_ok: Box::new(self.parse_type(inner)?),
@@ -114,6 +93,36 @@ impl TypeParserWithContext<'_, '_, '_> {
 
             _ => return Ok(None),
         }))
+    }
+
+    fn parse_mir_hash_map(
+        &mut self,
+        key: &Type,
+        value: &Type,
+        hasher: Option<&Type>,
+    ) -> anyhow::Result<MirType> {
+        let key = self.parse_type(key)?;
+        let value = self.parse_type(value)?;
+        let hasher = hasher.map(|hasher| self.parse_type(hasher)).transpose()?;
+
+        Ok(Delegate(MirTypeDelegate::Map(MirTypeDelegateMap {
+            key: Box::new(key.clone()),
+            value: Box::new(value.clone()),
+            hasher: hasher.map(Box::new),
+            element_delegate: self.create_mir_record(vec![key, value]),
+        })))
+    }
+
+    fn parse_mir_hash_set(
+        &mut self,
+        inner: &Type,
+        hasher: Option<&Type>,
+    ) -> anyhow::Result<MirType> {
+        let hasher = hasher.map(|hasher| self.parse_type(hasher)).transpose()?;
+        Ok(Delegate(MirTypeDelegate::Set(MirTypeDelegateSet {
+            inner: Box::new(self.parse_type(inner)?),
+            hasher: hasher.map(Box::new),
+        })))
     }
 
     fn parse_type_self(&mut self) -> anyhow::Result<MirType> {
