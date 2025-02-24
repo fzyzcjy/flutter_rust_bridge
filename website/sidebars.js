@@ -415,6 +415,7 @@ const sidebars = {
                         'guides/how-to/cargo-workspaces',
                         'guides/how-to/cross-origin',
                         'guides/how-to/transferable-typed-data',
+                        'guides/how-to/nix',
                     ],
                 },
                 'guides/users',
