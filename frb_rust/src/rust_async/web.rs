@@ -1,26 +1,46 @@
+use super::BaseAsyncRuntime;
 use crate::thread_pool::BaseThreadPool;
 use crate::transfer;
+#[cfg(feature = "async-std-runtime")]
+pub use async_std::sync::{RwLock, RwLockReadGuard, RwLockWriteGuard};
 use futures::channel::oneshot;
 use std::future::Future;
 use std::pin::Pin;
 use std::task::{Context, Poll};
+#[cfg(feature = "tokio-runtime")]
 pub use tokio::sync::{RwLock, RwLockReadGuard, RwLockWriteGuard};
 
-pub trait BaseAsyncRuntime {
-    fn spawn<F>(&self, future: F)
-    where
-        F: Future<Output = ()> + 'static;
+// ref: async-std's implementation
+// https://github.com/async-rs/async-std/blob/8fea0500990c9d8977cbeef55bc9003cca39abc8/src/task/join_handle.rs#L23
+pub struct JoinHandle<T>(oneshot::Receiver<T>);
+
+impl<T> JoinHandle<T> {
+    fn create_pair() -> (oneshot::Sender<T>, Self) {
+        let (sender, receiver) = oneshot::channel::<T>();
+        (sender, Self(receiver))
+    }
+}
+
+impl<T> Future for JoinHandle<T> {
+    type Output = Result<T, oneshot::Canceled>;
+
+    fn poll(mut self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output> {
+        Pin::new(&mut self.0).poll(cx)
+    }
 }
 
 #[derive(Debug, Clone, Copy, Default)]
 pub struct SimpleAsyncRuntime;
 
 impl BaseAsyncRuntime for SimpleAsyncRuntime {
+    type JoinHandle<O> = wasm_bindgen_futures::JsFuture;
+
+    #[cfg(feature = "rust-async")]
     fn spawn<F>(&self, future: F)
     where
         F: Future<Output = ()> + 'static,
     {
-        wasm_bindgen_futures::spawn_local(future)
+        wasm_bindgen_futures::spawn_local(future);
     }
 }
 
@@ -58,24 +78,4 @@ where
         (sender.send(output)).unwrap_or_else(|_| panic!("Fail to send output in spawn_local"));
     }));
     handle
-}
-
-// ref: async-std's implementation
-// https://github.com/async-rs/async-std/blob/8fea0500990c9d8977cbeef55bc9003cca39abc8/src/task/join_handle.rs#L23
-pub struct JoinHandle<T>(oneshot::Receiver<T>);
-
-impl<T> JoinHandle<T> {
-    fn create_pair() -> (oneshot::Sender<T>, Self) {
-        let (sender, receiver) = oneshot::channel::<T>();
-        (sender, Self(receiver))
-    }
-}
-
-impl<T> Future for JoinHandle<T> {
-    // tokio uses `super::Result<T>`
-    type Output = Result<T, oneshot::Canceled>;
-
-    fn poll(mut self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output> {
-        Pin::new(&mut self.0).poll(cx)
-    }
 }
