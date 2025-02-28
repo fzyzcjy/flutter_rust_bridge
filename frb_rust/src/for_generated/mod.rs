@@ -49,7 +49,7 @@ pub use crate::platform_types::{
 };
 pub use crate::rust2dart::action::Rust2DartAction;
 pub use crate::rust_async;
-pub use crate::rust_async::{BaseAsyncRuntime, SimpleAsyncRuntime};
+pub use crate::rust_async::BaseAsyncRuntime;
 #[cfg(feature = "rust-async")]
 pub use crate::rust_auto_opaque::dart2rust_explicit::rust_auto_opaque_explicit_decode;
 #[cfg(feature = "rust-async")]
