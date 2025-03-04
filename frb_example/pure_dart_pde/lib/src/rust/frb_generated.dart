@@ -17209,12 +17209,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_basic_general_enum_twin_normal(arg, serializer);
+        sse_encode_Map_i_32_basic_general_enum_twin_normal_None(
+            arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 422, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_basic_general_enum_twin_normal,
+        decodeSuccessData:
+            sse_decode_Map_i_32_basic_general_enum_twin_normal_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -17239,13 +17241,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_basic_general_enum_twin_rust_async(arg, serializer);
+        sse_encode_Map_i_32_basic_general_enum_twin_rust_async_None(
+            arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 423, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
-            sse_decode_Map_i_32_basic_general_enum_twin_rust_async,
+            sse_decode_Map_i_32_basic_general_enum_twin_rust_async_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -17270,11 +17273,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_basic_general_enum_twin_sync(arg, serializer);
+        sse_encode_Map_i_32_basic_general_enum_twin_sync_None(arg, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 424)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_basic_general_enum_twin_sync,
+        decodeSuccessData:
+            sse_decode_Map_i_32_basic_general_enum_twin_sync_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -17299,12 +17303,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_basic_primitive_enum_twin_normal(arg, serializer);
+        sse_encode_Map_i_32_basic_primitive_enum_twin_normal_None(
+            arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 425, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_basic_primitive_enum_twin_normal,
+        decodeSuccessData:
+            sse_decode_Map_i_32_basic_primitive_enum_twin_normal_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -17329,14 +17335,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_basic_primitive_enum_twin_rust_async(
+        sse_encode_Map_i_32_basic_primitive_enum_twin_rust_async_None(
             arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 426, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData:
-            sse_decode_Map_i_32_basic_primitive_enum_twin_rust_async,
+            sse_decode_Map_i_32_basic_primitive_enum_twin_rust_async_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -17361,11 +17367,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_basic_primitive_enum_twin_sync(arg, serializer);
+        sse_encode_Map_i_32_basic_primitive_enum_twin_sync_None(
+            arg, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 427)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_basic_primitive_enum_twin_sync,
+        decodeSuccessData:
+            sse_decode_Map_i_32_basic_primitive_enum_twin_sync_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -17390,12 +17398,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_basic_struct_twin_normal(arg, serializer);
+        sse_encode_Map_i_32_basic_struct_twin_normal_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 428, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_basic_struct_twin_normal,
+        decodeSuccessData: sse_decode_Map_i_32_basic_struct_twin_normal_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -17420,12 +17428,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_basic_struct_twin_rust_async(arg, serializer);
+        sse_encode_Map_i_32_basic_struct_twin_rust_async_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 429, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_basic_struct_twin_rust_async,
+        decodeSuccessData:
+            sse_decode_Map_i_32_basic_struct_twin_rust_async_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -17450,11 +17459,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_basic_struct_twin_sync(arg, serializer);
+        sse_encode_Map_i_32_basic_struct_twin_sync_None(arg, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 430)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_basic_struct_twin_sync,
+        decodeSuccessData: sse_decode_Map_i_32_basic_struct_twin_sync_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -17479,12 +17488,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_bool(arg, serializer);
+        sse_encode_Map_i_32_bool_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 431, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_bool,
+        decodeSuccessData: sse_decode_Map_i_32_bool_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -17508,12 +17517,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_bool(arg, serializer);
+        sse_encode_Map_i_32_bool_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 432, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_bool,
+        decodeSuccessData: sse_decode_Map_i_32_bool_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -17537,11 +17546,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_bool(arg, serializer);
+        sse_encode_Map_i_32_bool_None(arg, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 433)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_bool,
+        decodeSuccessData: sse_decode_Map_i_32_bool_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -17565,12 +17574,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_list_prim_u_8_strict(arg, serializer);
+        sse_encode_Map_i_32_list_prim_u_8_strict_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 434, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_list_prim_u_8_strict,
+        decodeSuccessData: sse_decode_Map_i_32_list_prim_u_8_strict_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -17594,12 +17603,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_list_prim_u_8_strict(arg, serializer);
+        sse_encode_Map_i_32_list_prim_u_8_strict_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 435, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_list_prim_u_8_strict,
+        decodeSuccessData: sse_decode_Map_i_32_list_prim_u_8_strict_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -17623,11 +17632,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_list_prim_u_8_strict(arg, serializer);
+        sse_encode_Map_i_32_list_prim_u_8_strict_None(arg, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 436)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_list_prim_u_8_strict,
+        decodeSuccessData: sse_decode_Map_i_32_list_prim_u_8_strict_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -17651,12 +17660,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_f_32(arg, serializer);
+        sse_encode_Map_i_32_f_32_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 437, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_f_32,
+        decodeSuccessData: sse_decode_Map_i_32_f_32_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -17680,12 +17689,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_f_32(arg, serializer);
+        sse_encode_Map_i_32_f_32_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 438, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_f_32,
+        decodeSuccessData: sse_decode_Map_i_32_f_32_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -17709,11 +17718,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_f_32(arg, serializer);
+        sse_encode_Map_i_32_f_32_None(arg, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 439)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_f_32,
+        decodeSuccessData: sse_decode_Map_i_32_f_32_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -17737,12 +17746,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_f_64(arg, serializer);
+        sse_encode_Map_i_32_f_64_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 440, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_f_64,
+        decodeSuccessData: sse_decode_Map_i_32_f_64_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -17766,12 +17775,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_f_64(arg, serializer);
+        sse_encode_Map_i_32_f_64_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 441, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_f_64,
+        decodeSuccessData: sse_decode_Map_i_32_f_64_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -17795,11 +17804,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_f_64(arg, serializer);
+        sse_encode_Map_i_32_f_64_None(arg, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 442)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_f_64,
+        decodeSuccessData: sse_decode_Map_i_32_f_64_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -17823,12 +17832,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_I128(arg, serializer);
+        sse_encode_Map_i_32_I128_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 443, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_I128,
+        decodeSuccessData: sse_decode_Map_i_32_I128_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -17852,12 +17861,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_I128(arg, serializer);
+        sse_encode_Map_i_32_I128_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 444, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_I128,
+        decodeSuccessData: sse_decode_Map_i_32_I128_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -17881,11 +17890,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_I128(arg, serializer);
+        sse_encode_Map_i_32_I128_None(arg, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 445)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_I128,
+        decodeSuccessData: sse_decode_Map_i_32_I128_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -17909,12 +17918,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_i_16(arg, serializer);
+        sse_encode_Map_i_32_i_16_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 446, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_i_16,
+        decodeSuccessData: sse_decode_Map_i_32_i_16_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -17938,12 +17947,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_i_16(arg, serializer);
+        sse_encode_Map_i_32_i_16_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 447, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_i_16,
+        decodeSuccessData: sse_decode_Map_i_32_i_16_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -17967,11 +17976,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_i_16(arg, serializer);
+        sse_encode_Map_i_32_i_16_None(arg, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 448)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_i_16,
+        decodeSuccessData: sse_decode_Map_i_32_i_16_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -17995,12 +18004,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_i_32(arg, serializer);
+        sse_encode_Map_i_32_i_32_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 449, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_i_32,
+        decodeSuccessData: sse_decode_Map_i_32_i_32_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18024,12 +18033,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_i_32(arg, serializer);
+        sse_encode_Map_i_32_i_32_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 450, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_i_32,
+        decodeSuccessData: sse_decode_Map_i_32_i_32_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18053,11 +18062,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_i_32(arg, serializer);
+        sse_encode_Map_i_32_i_32_None(arg, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 451)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_i_32,
+        decodeSuccessData: sse_decode_Map_i_32_i_32_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18081,12 +18090,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_i_64(arg, serializer);
+        sse_encode_Map_i_32_i_64_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 452, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_i_64,
+        decodeSuccessData: sse_decode_Map_i_32_i_64_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18110,12 +18119,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_i_64(arg, serializer);
+        sse_encode_Map_i_32_i_64_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 453, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_i_64,
+        decodeSuccessData: sse_decode_Map_i_32_i_64_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18139,11 +18148,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_i_64(arg, serializer);
+        sse_encode_Map_i_32_i_64_None(arg, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 454)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_i_64,
+        decodeSuccessData: sse_decode_Map_i_32_i_64_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18167,12 +18176,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_i_8(arg, serializer);
+        sse_encode_Map_i_32_i_8_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 455, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_i_8,
+        decodeSuccessData: sse_decode_Map_i_32_i_8_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18196,12 +18205,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_i_8(arg, serializer);
+        sse_encode_Map_i_32_i_8_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 456, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_i_8,
+        decodeSuccessData: sse_decode_Map_i_32_i_8_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18225,11 +18234,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_i_8(arg, serializer);
+        sse_encode_Map_i_32_i_8_None(arg, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 457)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_i_8,
+        decodeSuccessData: sse_decode_Map_i_32_i_8_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18253,12 +18262,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_isize(arg, serializer);
+        sse_encode_Map_i_32_isize_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 458, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_isize,
+        decodeSuccessData: sse_decode_Map_i_32_isize_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18282,12 +18291,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_isize(arg, serializer);
+        sse_encode_Map_i_32_isize_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 459, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_isize,
+        decodeSuccessData: sse_decode_Map_i_32_isize_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18311,11 +18320,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_isize(arg, serializer);
+        sse_encode_Map_i_32_isize_None(arg, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 460)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_isize,
+        decodeSuccessData: sse_decode_Map_i_32_isize_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18339,12 +18348,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_String(arg, serializer);
+        sse_encode_Map_i_32_String_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 461, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_String,
+        decodeSuccessData: sse_decode_Map_i_32_String_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18368,12 +18377,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_String(arg, serializer);
+        sse_encode_Map_i_32_String_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 462, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_String,
+        decodeSuccessData: sse_decode_Map_i_32_String_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18397,11 +18406,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_String(arg, serializer);
+        sse_encode_Map_i_32_String_None(arg, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 463)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_String,
+        decodeSuccessData: sse_decode_Map_i_32_String_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18425,12 +18434,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_U128(arg, serializer);
+        sse_encode_Map_i_32_U128_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 464, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_U128,
+        decodeSuccessData: sse_decode_Map_i_32_U128_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18454,12 +18463,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_U128(arg, serializer);
+        sse_encode_Map_i_32_U128_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 465, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_U128,
+        decodeSuccessData: sse_decode_Map_i_32_U128_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18483,11 +18492,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_U128(arg, serializer);
+        sse_encode_Map_i_32_U128_None(arg, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 466)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_U128,
+        decodeSuccessData: sse_decode_Map_i_32_U128_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18511,12 +18520,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_u_16(arg, serializer);
+        sse_encode_Map_i_32_u_16_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 467, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_u_16,
+        decodeSuccessData: sse_decode_Map_i_32_u_16_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18540,12 +18549,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_u_16(arg, serializer);
+        sse_encode_Map_i_32_u_16_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 468, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_u_16,
+        decodeSuccessData: sse_decode_Map_i_32_u_16_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18569,11 +18578,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_u_16(arg, serializer);
+        sse_encode_Map_i_32_u_16_None(arg, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 469)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_u_16,
+        decodeSuccessData: sse_decode_Map_i_32_u_16_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18597,12 +18606,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_u_32(arg, serializer);
+        sse_encode_Map_i_32_u_32_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 470, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_u_32,
+        decodeSuccessData: sse_decode_Map_i_32_u_32_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18626,12 +18635,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_u_32(arg, serializer);
+        sse_encode_Map_i_32_u_32_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 471, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_u_32,
+        decodeSuccessData: sse_decode_Map_i_32_u_32_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18655,11 +18664,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_u_32(arg, serializer);
+        sse_encode_Map_i_32_u_32_None(arg, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 472)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_u_32,
+        decodeSuccessData: sse_decode_Map_i_32_u_32_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18683,12 +18692,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_u_64(arg, serializer);
+        sse_encode_Map_i_32_u_64_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 473, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_u_64,
+        decodeSuccessData: sse_decode_Map_i_32_u_64_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18712,12 +18721,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_u_64(arg, serializer);
+        sse_encode_Map_i_32_u_64_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 474, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_u_64,
+        decodeSuccessData: sse_decode_Map_i_32_u_64_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18741,11 +18750,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_u_64(arg, serializer);
+        sse_encode_Map_i_32_u_64_None(arg, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 475)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_u_64,
+        decodeSuccessData: sse_decode_Map_i_32_u_64_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18769,12 +18778,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_u_8(arg, serializer);
+        sse_encode_Map_i_32_u_8_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 476, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_u_8,
+        decodeSuccessData: sse_decode_Map_i_32_u_8_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18798,12 +18807,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_u_8(arg, serializer);
+        sse_encode_Map_i_32_u_8_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 477, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_u_8,
+        decodeSuccessData: sse_decode_Map_i_32_u_8_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18827,11 +18836,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_u_8(arg, serializer);
+        sse_encode_Map_i_32_u_8_None(arg, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 478)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_u_8,
+        decodeSuccessData: sse_decode_Map_i_32_u_8_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18855,12 +18864,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_usize(arg, serializer);
+        sse_encode_Map_i_32_usize_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 479, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_usize,
+        decodeSuccessData: sse_decode_Map_i_32_usize_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18884,12 +18893,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_usize(arg, serializer);
+        sse_encode_Map_i_32_usize_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 480, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_usize,
+        decodeSuccessData: sse_decode_Map_i_32_usize_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -18913,11 +18922,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_usize(arg, serializer);
+        sse_encode_Map_i_32_usize_None(arg, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 481)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_usize,
+        decodeSuccessData: sse_decode_Map_i_32_usize_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -23417,12 +23426,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_i_32(arg, serializer);
+        sse_encode_Map_i_32_i_32_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 640, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_i_32,
+        decodeSuccessData: sse_decode_Map_i_32_i_32_None,
         decodeErrorData: null,
       ),
       constMeta: kCrateApiMapAndSetFuncHashMapI32I32TwinNormalConstMeta,
@@ -23444,12 +23453,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_i_32(arg, serializer);
+        sse_encode_Map_i_32_i_32_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 641, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_i_32,
+        decodeSuccessData: sse_decode_Map_i_32_i_32_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -23472,11 +23481,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_i_32_i_32(arg, serializer);
+        sse_encode_Map_i_32_i_32_None(arg, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 642)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_i_32_i_32,
+        decodeSuccessData: sse_decode_Map_i_32_i_32_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -23500,12 +23509,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_String_list_prim_u_8_strict(arg, serializer);
+        sse_encode_Map_String_list_prim_u_8_strict_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 643, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_String_list_prim_u_8_strict,
+        decodeSuccessData: sse_decode_Map_String_list_prim_u_8_strict_None,
         decodeErrorData: null,
       ),
       constMeta: kCrateApiMapAndSetFuncHashMapStringBytesTwinNormalConstMeta,
@@ -23528,12 +23537,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_String_list_prim_u_8_strict(arg, serializer);
+        sse_encode_Map_String_list_prim_u_8_strict_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 644, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_String_list_prim_u_8_strict,
+        decodeSuccessData: sse_decode_Map_String_list_prim_u_8_strict_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -23557,11 +23566,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_String_list_prim_u_8_strict(arg, serializer);
+        sse_encode_Map_String_list_prim_u_8_strict_None(arg, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 645)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_String_list_prim_u_8_strict,
+        decodeSuccessData: sse_decode_Map_String_list_prim_u_8_strict_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -23585,12 +23594,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_String_kitchen_sink_twin_normal(arg, serializer);
+        sse_encode_Map_String_kitchen_sink_twin_normal_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 646, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_String_kitchen_sink_twin_normal,
+        decodeSuccessData: sse_decode_Map_String_kitchen_sink_twin_normal_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -23614,12 +23623,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_String_kitchen_sink_twin_rust_async(arg, serializer);
+        sse_encode_Map_String_kitchen_sink_twin_rust_async_None(
+            arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 647, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_String_kitchen_sink_twin_rust_async,
+        decodeSuccessData:
+            sse_decode_Map_String_kitchen_sink_twin_rust_async_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -23643,11 +23654,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_String_kitchen_sink_twin_sync(arg, serializer);
+        sse_encode_Map_String_kitchen_sink_twin_sync_None(arg, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 648)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_String_kitchen_sink_twin_sync,
+        decodeSuccessData: sse_decode_Map_String_kitchen_sink_twin_sync_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -23671,12 +23682,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_String_enum_simple_twin_normal(arg, serializer);
+        sse_encode_Map_String_enum_simple_twin_normal_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 649, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_String_enum_simple_twin_normal,
+        decodeSuccessData: sse_decode_Map_String_enum_simple_twin_normal_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -23700,12 +23711,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_String_enum_simple_twin_rust_async(arg, serializer);
+        sse_encode_Map_String_enum_simple_twin_rust_async_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 650, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_String_enum_simple_twin_rust_async,
+        decodeSuccessData:
+            sse_decode_Map_String_enum_simple_twin_rust_async_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -23729,11 +23741,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_String_enum_simple_twin_sync(arg, serializer);
+        sse_encode_Map_String_enum_simple_twin_sync_None(arg, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 651)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_String_enum_simple_twin_sync,
+        decodeSuccessData: sse_decode_Map_String_enum_simple_twin_sync_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -23757,12 +23769,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_String_String(arg, serializer);
+        sse_encode_Map_String_String_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 652, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_String_String,
+        decodeSuccessData: sse_decode_Map_String_String_None,
         decodeErrorData: null,
       ),
       constMeta: kCrateApiMapAndSetFuncHashMapStringStringTwinNormalConstMeta,
@@ -23785,12 +23797,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_String_String(arg, serializer);
+        sse_encode_Map_String_String_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 653, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_String_String,
+        decodeSuccessData: sse_decode_Map_String_String_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -23814,11 +23826,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_String_String(arg, serializer);
+        sse_encode_Map_String_String_None(arg, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 654)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_String_String,
+        decodeSuccessData: sse_decode_Map_String_String_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -23842,12 +23854,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_String_my_size(arg, serializer);
+        sse_encode_Map_String_my_size_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 655, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_String_my_size,
+        decodeSuccessData: sse_decode_Map_String_my_size_None,
         decodeErrorData: null,
       ),
       constMeta: kCrateApiMapAndSetFuncHashMapStringStructTwinNormalConstMeta,
@@ -23870,12 +23882,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_String_my_size(arg, serializer);
+        sse_encode_Map_String_my_size_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 656, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_String_my_size,
+        decodeSuccessData: sse_decode_Map_String_my_size_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -23899,11 +23911,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Map_String_my_size(arg, serializer);
+        sse_encode_Map_String_my_size_None(arg, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 657)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Map_String_my_size,
+        decodeSuccessData: sse_decode_Map_String_my_size_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -23926,12 +23938,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Set_i_32(arg, serializer);
+        sse_encode_Set_i_32_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 658, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Set_i_32,
+        decodeSuccessData: sse_decode_Set_i_32_None,
         decodeErrorData: null,
       ),
       constMeta: kCrateApiMapAndSetFuncHashSetI32TwinNormalConstMeta,
@@ -23953,12 +23965,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Set_i_32(arg, serializer);
+        sse_encode_Set_i_32_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 659, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Set_i_32,
+        decodeSuccessData: sse_decode_Set_i_32_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -23981,11 +23993,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Set_i_32(arg, serializer);
+        sse_encode_Set_i_32_None(arg, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 660)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Set_i_32,
+        decodeSuccessData: sse_decode_Set_i_32_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -24008,12 +24020,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Set_String(arg, serializer);
+        sse_encode_Set_String_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 661, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Set_String,
+        decodeSuccessData: sse_decode_Set_String_None,
         decodeErrorData: null,
       ),
       constMeta: kCrateApiMapAndSetFuncHashSetStringTwinNormalConstMeta,
@@ -24035,12 +24047,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Set_String(arg, serializer);
+        sse_encode_Set_String_None(arg, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 662, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Set_String,
+        decodeSuccessData: sse_decode_Set_String_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -24063,11 +24075,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Set_String(arg, serializer);
+        sse_encode_Set_String_None(arg, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 663)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Set_String,
+        decodeSuccessData: sse_decode_Set_String_None,
         decodeErrorData: null,
       ),
       constMeta:
@@ -30309,7 +30321,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_Map_u_8_application_mode_Sse(sink, serializer);
+        sse_encode_StreamSink_Map_u_8_application_mode_None_Sse(
+            sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 886, port: port_);
       },
@@ -30337,7 +30350,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_Map_u_8_application_mode_Sse(sink, serializer);
+        sse_encode_StreamSink_Map_u_8_application_mode_None_Sse(
+            sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 887, port: port_);
       },
@@ -30367,7 +30381,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_Map_u_8_application_mode_Sse(sink, serializer);
+        sse_encode_StreamSink_Map_u_8_application_mode_None_Sse(
+            sink, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 888)!;
       },
       codec: SseCodec(
@@ -30484,7 +30499,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_Set_application_mode_Sse(sink, serializer);
+        sse_encode_StreamSink_Set_application_mode_None_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 892, port: port_);
       },
@@ -30512,7 +30527,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_Set_application_mode_Sse(sink, serializer);
+        sse_encode_StreamSink_Set_application_mode_None_Sse(sink, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 893, port: port_);
       },
@@ -30542,7 +30557,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_Set_application_mode_Sse(sink, serializer);
+        sse_encode_StreamSink_Set_application_mode_None_Sse(sink, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 894)!;
       },
       codec: SseCodec(
@@ -44048,7 +44063,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Map<String, String> dco_decode_Map_String_String(dynamic raw) {
+  Map<String, String> dco_decode_Map_String_String_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(dco_decode_list_record_string_string(raw)
         .map((e) => MapEntry(e.$1, e.$2)));
@@ -44056,7 +44071,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Map<String, EnumSimpleTwinNormal>
-      dco_decode_Map_String_enum_simple_twin_normal(dynamic raw) {
+      dco_decode_Map_String_enum_simple_twin_normal_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(
         dco_decode_list_record_string_enum_simple_twin_normal(raw)
@@ -44065,7 +44080,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Map<String, EnumSimpleTwinRustAsync>
-      dco_decode_Map_String_enum_simple_twin_rust_async(dynamic raw) {
+      dco_decode_Map_String_enum_simple_twin_rust_async_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(
         dco_decode_list_record_string_enum_simple_twin_rust_async(raw)
@@ -44073,8 +44088,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Map<String, EnumSimpleTwinSync> dco_decode_Map_String_enum_simple_twin_sync(
-      dynamic raw) {
+  Map<String, EnumSimpleTwinSync>
+      dco_decode_Map_String_enum_simple_twin_sync_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(
         dco_decode_list_record_string_enum_simple_twin_sync(raw)
@@ -44082,7 +44097,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Map<String, HashMapValue> dco_decode_Map_String_hash_map_value(dynamic raw) {
+  Map<String, HashMapValue> dco_decode_Map_String_hash_map_value_None(
+      dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(dco_decode_list_record_string_hash_map_value(raw)
         .map((e) => MapEntry(e.$1, e.$2)));
@@ -44090,7 +44106,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Map<String, KitchenSinkTwinNormal>
-      dco_decode_Map_String_kitchen_sink_twin_normal(dynamic raw) {
+      dco_decode_Map_String_kitchen_sink_twin_normal_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(
         dco_decode_list_record_string_kitchen_sink_twin_normal(raw)
@@ -44099,7 +44115,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Map<String, KitchenSinkTwinRustAsync>
-      dco_decode_Map_String_kitchen_sink_twin_rust_async(dynamic raw) {
+      dco_decode_Map_String_kitchen_sink_twin_rust_async_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(
         dco_decode_list_record_string_kitchen_sink_twin_rust_async(raw)
@@ -44107,8 +44123,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Map<String, KitchenSinkTwinSync> dco_decode_Map_String_kitchen_sink_twin_sync(
-      dynamic raw) {
+  Map<String, KitchenSinkTwinSync>
+      dco_decode_Map_String_kitchen_sink_twin_sync_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(
         dco_decode_list_record_string_kitchen_sink_twin_sync(raw)
@@ -44116,7 +44132,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Map<String, Uint8List> dco_decode_Map_String_list_prim_u_8_strict(
+  Map<String, Uint8List> dco_decode_Map_String_list_prim_u_8_strict_None(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(
@@ -44125,28 +44141,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Map<String, MySize> dco_decode_Map_String_my_size(dynamic raw) {
+  Map<String, MySize> dco_decode_Map_String_my_size_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(dco_decode_list_record_string_my_size(raw)
         .map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
-  Map<int, BigInt> dco_decode_Map_i_32_I128(dynamic raw) {
+  Map<int, BigInt> dco_decode_Map_i_32_I128_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(dco_decode_list_record_i_32_i_128(raw)
         .map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
-  Map<int, String> dco_decode_Map_i_32_String(dynamic raw) {
+  Map<int, String> dco_decode_Map_i_32_String_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(dco_decode_list_record_i_32_string(raw)
         .map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
-  Map<int, BigInt> dco_decode_Map_i_32_U128(dynamic raw) {
+  Map<int, BigInt> dco_decode_Map_i_32_U128_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(dco_decode_list_record_i_32_u_128(raw)
         .map((e) => MapEntry(e.$1, e.$2)));
@@ -44154,7 +44170,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Map<int, BasicGeneralEnumTwinNormal>
-      dco_decode_Map_i_32_basic_general_enum_twin_normal(dynamic raw) {
+      dco_decode_Map_i_32_basic_general_enum_twin_normal_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(
         dco_decode_list_record_i_32_basic_general_enum_twin_normal(raw)
@@ -44163,7 +44179,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Map<int, BasicGeneralEnumTwinRustAsync>
-      dco_decode_Map_i_32_basic_general_enum_twin_rust_async(dynamic raw) {
+      dco_decode_Map_i_32_basic_general_enum_twin_rust_async_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(
         dco_decode_list_record_i_32_basic_general_enum_twin_rust_async(raw)
@@ -44172,7 +44188,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Map<int, BasicGeneralEnumTwinSync>
-      dco_decode_Map_i_32_basic_general_enum_twin_sync(dynamic raw) {
+      dco_decode_Map_i_32_basic_general_enum_twin_sync_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(
         dco_decode_list_record_i_32_basic_general_enum_twin_sync(raw)
@@ -44181,7 +44197,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Map<int, BasicPrimitiveEnumTwinNormal>
-      dco_decode_Map_i_32_basic_primitive_enum_twin_normal(dynamic raw) {
+      dco_decode_Map_i_32_basic_primitive_enum_twin_normal_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(
         dco_decode_list_record_i_32_basic_primitive_enum_twin_normal(raw)
@@ -44190,7 +44206,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Map<int, BasicPrimitiveEnumTwinRustAsync>
-      dco_decode_Map_i_32_basic_primitive_enum_twin_rust_async(dynamic raw) {
+      dco_decode_Map_i_32_basic_primitive_enum_twin_rust_async_None(
+          dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(
         dco_decode_list_record_i_32_basic_primitive_enum_twin_rust_async(raw)
@@ -44199,7 +44216,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Map<int, BasicPrimitiveEnumTwinSync>
-      dco_decode_Map_i_32_basic_primitive_enum_twin_sync(dynamic raw) {
+      dco_decode_Map_i_32_basic_primitive_enum_twin_sync_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(
         dco_decode_list_record_i_32_basic_primitive_enum_twin_sync(raw)
@@ -44207,8 +44224,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Map<int, BasicStructTwinNormal> dco_decode_Map_i_32_basic_struct_twin_normal(
-      dynamic raw) {
+  Map<int, BasicStructTwinNormal>
+      dco_decode_Map_i_32_basic_struct_twin_normal_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(
         dco_decode_list_record_i_32_basic_struct_twin_normal(raw)
@@ -44217,7 +44234,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Map<int, BasicStructTwinRustAsync>
-      dco_decode_Map_i_32_basic_struct_twin_rust_async(dynamic raw) {
+      dco_decode_Map_i_32_basic_struct_twin_rust_async_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(
         dco_decode_list_record_i_32_basic_struct_twin_rust_async(raw)
@@ -44225,7 +44242,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Map<int, BasicStructTwinSync> dco_decode_Map_i_32_basic_struct_twin_sync(
+  Map<int, BasicStructTwinSync> dco_decode_Map_i_32_basic_struct_twin_sync_None(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(
@@ -44234,105 +44251,107 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Map<int, bool> dco_decode_Map_i_32_bool(dynamic raw) {
+  Map<int, bool> dco_decode_Map_i_32_bool_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(
         dco_decode_list_record_i_32_bool(raw).map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
-  Map<int, double> dco_decode_Map_i_32_f_32(dynamic raw) {
+  Map<int, double> dco_decode_Map_i_32_f_32_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(
         dco_decode_list_record_i_32_f_32(raw).map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
-  Map<int, double> dco_decode_Map_i_32_f_64(dynamic raw) {
+  Map<int, double> dco_decode_Map_i_32_f_64_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(
         dco_decode_list_record_i_32_f_64(raw).map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
-  Map<int, int> dco_decode_Map_i_32_i_16(dynamic raw) {
+  Map<int, int> dco_decode_Map_i_32_i_16_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(
         dco_decode_list_record_i_32_i_16(raw).map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
-  Map<int, int> dco_decode_Map_i_32_i_32(dynamic raw) {
+  Map<int, int> dco_decode_Map_i_32_i_32_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(
         dco_decode_list_record_i_32_i_32(raw).map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
-  Map<int, PlatformInt64> dco_decode_Map_i_32_i_64(dynamic raw) {
+  Map<int, PlatformInt64> dco_decode_Map_i_32_i_64_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(
         dco_decode_list_record_i_32_i_64(raw).map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
-  Map<int, int> dco_decode_Map_i_32_i_8(dynamic raw) {
+  Map<int, int> dco_decode_Map_i_32_i_8_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(
         dco_decode_list_record_i_32_i_8(raw).map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
-  Map<int, PlatformInt64> dco_decode_Map_i_32_isize(dynamic raw) {
+  Map<int, PlatformInt64> dco_decode_Map_i_32_isize_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(dco_decode_list_record_i_32_isize(raw)
         .map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
-  Map<int, Uint8List> dco_decode_Map_i_32_list_prim_u_8_strict(dynamic raw) {
+  Map<int, Uint8List> dco_decode_Map_i_32_list_prim_u_8_strict_None(
+      dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(dco_decode_list_record_i_32_list_prim_u_8_strict(raw)
         .map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
-  Map<int, int> dco_decode_Map_i_32_u_16(dynamic raw) {
+  Map<int, int> dco_decode_Map_i_32_u_16_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(
         dco_decode_list_record_i_32_u_16(raw).map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
-  Map<int, int> dco_decode_Map_i_32_u_32(dynamic raw) {
+  Map<int, int> dco_decode_Map_i_32_u_32_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(
         dco_decode_list_record_i_32_u_32(raw).map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
-  Map<int, BigInt> dco_decode_Map_i_32_u_64(dynamic raw) {
+  Map<int, BigInt> dco_decode_Map_i_32_u_64_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(
         dco_decode_list_record_i_32_u_64(raw).map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
-  Map<int, int> dco_decode_Map_i_32_u_8(dynamic raw) {
+  Map<int, int> dco_decode_Map_i_32_u_8_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(
         dco_decode_list_record_i_32_u_8(raw).map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
-  Map<int, BigInt> dco_decode_Map_i_32_usize(dynamic raw) {
+  Map<int, BigInt> dco_decode_Map_i_32_usize_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(dco_decode_list_record_i_32_usize(raw)
         .map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
-  Map<int, ApplicationMode> dco_decode_Map_u_8_application_mode(dynamic raw) {
+  Map<int, ApplicationMode> dco_decode_Map_u_8_application_mode_None(
+      dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Map.fromEntries(dco_decode_list_record_u_8_application_mode(raw)
         .map((e) => MapEntry(e.$1, e.$2)));
@@ -45110,19 +45129,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Set<String> dco_decode_Set_String(dynamic raw) {
+  Set<String> dco_decode_Set_String_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Set.from(dco_decode_list_String(raw));
   }
 
   @protected
-  Set<ApplicationMode> dco_decode_Set_application_mode(dynamic raw) {
+  Set<ApplicationMode> dco_decode_Set_application_mode_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Set.from(dco_decode_list_application_mode(raw));
   }
 
   @protected
-  Set<int> dco_decode_Set_i_32(dynamic raw) {
+  Set<int> dco_decode_Set_i_32_None(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return Set.from(dco_decode_list_prim_i_32_strict(raw));
   }
@@ -45153,14 +45172,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   RustStreamSink<Map<int, ApplicationMode>>
-      dco_decode_StreamSink_Map_u_8_application_mode_Sse(dynamic raw) {
+      dco_decode_StreamSink_Map_u_8_application_mode_None_Sse(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
 
   @protected
   RustStreamSink<Set<ApplicationMode>>
-      dco_decode_StreamSink_Set_application_mode_Sse(dynamic raw) {
+      dco_decode_StreamSink_Set_application_mode_None_Sse(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
@@ -53090,7 +53109,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return StructWithHashMap(
-      map: dco_decode_Map_String_hash_map_value(arr[0]),
+      map: dco_decode_Map_String_hash_map_value_None(arr[0]),
     );
   }
 
@@ -55231,7 +55250,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Map<String, String> sse_decode_Map_String_String(
+  Map<String, String> sse_decode_Map_String_String_None(
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_record_string_string(deserializer);
@@ -55240,7 +55259,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Map<String, EnumSimpleTwinNormal>
-      sse_decode_Map_String_enum_simple_twin_normal(
+      sse_decode_Map_String_enum_simple_twin_normal_None(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
@@ -55250,7 +55269,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Map<String, EnumSimpleTwinRustAsync>
-      sse_decode_Map_String_enum_simple_twin_rust_async(
+      sse_decode_Map_String_enum_simple_twin_rust_async_None(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
@@ -55259,8 +55278,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Map<String, EnumSimpleTwinSync> sse_decode_Map_String_enum_simple_twin_sync(
-      SseDeserializer deserializer) {
+  Map<String, EnumSimpleTwinSync>
+      sse_decode_Map_String_enum_simple_twin_sync_None(
+          SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
         sse_decode_list_record_string_enum_simple_twin_sync(deserializer);
@@ -55268,7 +55288,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Map<String, HashMapValue> sse_decode_Map_String_hash_map_value(
+  Map<String, HashMapValue> sse_decode_Map_String_hash_map_value_None(
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_record_string_hash_map_value(deserializer);
@@ -55277,7 +55297,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Map<String, KitchenSinkTwinNormal>
-      sse_decode_Map_String_kitchen_sink_twin_normal(
+      sse_decode_Map_String_kitchen_sink_twin_normal_None(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
@@ -55287,7 +55307,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Map<String, KitchenSinkTwinRustAsync>
-      sse_decode_Map_String_kitchen_sink_twin_rust_async(
+      sse_decode_Map_String_kitchen_sink_twin_rust_async_None(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_record_string_kitchen_sink_twin_rust_async(
@@ -55296,8 +55316,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Map<String, KitchenSinkTwinSync> sse_decode_Map_String_kitchen_sink_twin_sync(
-      SseDeserializer deserializer) {
+  Map<String, KitchenSinkTwinSync>
+      sse_decode_Map_String_kitchen_sink_twin_sync_None(
+          SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
         sse_decode_list_record_string_kitchen_sink_twin_sync(deserializer);
@@ -55305,7 +55326,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Map<String, Uint8List> sse_decode_Map_String_list_prim_u_8_strict(
+  Map<String, Uint8List> sse_decode_Map_String_list_prim_u_8_strict_None(
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
@@ -55314,7 +55335,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Map<String, MySize> sse_decode_Map_String_my_size(
+  Map<String, MySize> sse_decode_Map_String_my_size_None(
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_record_string_my_size(deserializer);
@@ -55322,21 +55343,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Map<int, BigInt> sse_decode_Map_i_32_I128(SseDeserializer deserializer) {
+  Map<int, BigInt> sse_decode_Map_i_32_I128_None(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_record_i_32_i_128(deserializer);
     return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
-  Map<int, String> sse_decode_Map_i_32_String(SseDeserializer deserializer) {
+  Map<int, String> sse_decode_Map_i_32_String_None(
+      SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_record_i_32_string(deserializer);
     return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
-  Map<int, BigInt> sse_decode_Map_i_32_U128(SseDeserializer deserializer) {
+  Map<int, BigInt> sse_decode_Map_i_32_U128_None(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_record_i_32_u_128(deserializer);
     return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
@@ -55344,7 +55366,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Map<int, BasicGeneralEnumTwinNormal>
-      sse_decode_Map_i_32_basic_general_enum_twin_normal(
+      sse_decode_Map_i_32_basic_general_enum_twin_normal_None(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_record_i_32_basic_general_enum_twin_normal(
@@ -55354,7 +55376,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Map<int, BasicGeneralEnumTwinRustAsync>
-      sse_decode_Map_i_32_basic_general_enum_twin_rust_async(
+      sse_decode_Map_i_32_basic_general_enum_twin_rust_async_None(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_record_i_32_basic_general_enum_twin_rust_async(
@@ -55364,7 +55386,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Map<int, BasicGeneralEnumTwinSync>
-      sse_decode_Map_i_32_basic_general_enum_twin_sync(
+      sse_decode_Map_i_32_basic_general_enum_twin_sync_None(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
@@ -55374,7 +55396,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Map<int, BasicPrimitiveEnumTwinNormal>
-      sse_decode_Map_i_32_basic_primitive_enum_twin_normal(
+      sse_decode_Map_i_32_basic_primitive_enum_twin_normal_None(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_record_i_32_basic_primitive_enum_twin_normal(
@@ -55384,7 +55406,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Map<int, BasicPrimitiveEnumTwinRustAsync>
-      sse_decode_Map_i_32_basic_primitive_enum_twin_rust_async(
+      sse_decode_Map_i_32_basic_primitive_enum_twin_rust_async_None(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
@@ -55395,7 +55417,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Map<int, BasicPrimitiveEnumTwinSync>
-      sse_decode_Map_i_32_basic_primitive_enum_twin_sync(
+      sse_decode_Map_i_32_basic_primitive_enum_twin_sync_None(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_record_i_32_basic_primitive_enum_twin_sync(
@@ -55404,8 +55426,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Map<int, BasicStructTwinNormal> sse_decode_Map_i_32_basic_struct_twin_normal(
-      SseDeserializer deserializer) {
+  Map<int, BasicStructTwinNormal>
+      sse_decode_Map_i_32_basic_struct_twin_normal_None(
+          SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
         sse_decode_list_record_i_32_basic_struct_twin_normal(deserializer);
@@ -55414,7 +55437,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Map<int, BasicStructTwinRustAsync>
-      sse_decode_Map_i_32_basic_struct_twin_rust_async(
+      sse_decode_Map_i_32_basic_struct_twin_rust_async_None(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
@@ -55423,7 +55446,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Map<int, BasicStructTwinSync> sse_decode_Map_i_32_basic_struct_twin_sync(
+  Map<int, BasicStructTwinSync> sse_decode_Map_i_32_basic_struct_twin_sync_None(
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
@@ -55432,42 +55455,42 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Map<int, bool> sse_decode_Map_i_32_bool(SseDeserializer deserializer) {
+  Map<int, bool> sse_decode_Map_i_32_bool_None(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_record_i_32_bool(deserializer);
     return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
-  Map<int, double> sse_decode_Map_i_32_f_32(SseDeserializer deserializer) {
+  Map<int, double> sse_decode_Map_i_32_f_32_None(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_record_i_32_f_32(deserializer);
     return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
-  Map<int, double> sse_decode_Map_i_32_f_64(SseDeserializer deserializer) {
+  Map<int, double> sse_decode_Map_i_32_f_64_None(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_record_i_32_f_64(deserializer);
     return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
-  Map<int, int> sse_decode_Map_i_32_i_16(SseDeserializer deserializer) {
+  Map<int, int> sse_decode_Map_i_32_i_16_None(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_record_i_32_i_16(deserializer);
     return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
-  Map<int, int> sse_decode_Map_i_32_i_32(SseDeserializer deserializer) {
+  Map<int, int> sse_decode_Map_i_32_i_32_None(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_record_i_32_i_32(deserializer);
     return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
-  Map<int, PlatformInt64> sse_decode_Map_i_32_i_64(
+  Map<int, PlatformInt64> sse_decode_Map_i_32_i_64_None(
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_record_i_32_i_64(deserializer);
@@ -55475,14 +55498,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Map<int, int> sse_decode_Map_i_32_i_8(SseDeserializer deserializer) {
+  Map<int, int> sse_decode_Map_i_32_i_8_None(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_record_i_32_i_8(deserializer);
     return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
-  Map<int, PlatformInt64> sse_decode_Map_i_32_isize(
+  Map<int, PlatformInt64> sse_decode_Map_i_32_isize_None(
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_record_i_32_isize(deserializer);
@@ -55490,7 +55513,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Map<int, Uint8List> sse_decode_Map_i_32_list_prim_u_8_strict(
+  Map<int, Uint8List> sse_decode_Map_i_32_list_prim_u_8_strict_None(
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_record_i_32_list_prim_u_8_strict(deserializer);
@@ -55498,42 +55521,43 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Map<int, int> sse_decode_Map_i_32_u_16(SseDeserializer deserializer) {
+  Map<int, int> sse_decode_Map_i_32_u_16_None(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_record_i_32_u_16(deserializer);
     return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
-  Map<int, int> sse_decode_Map_i_32_u_32(SseDeserializer deserializer) {
+  Map<int, int> sse_decode_Map_i_32_u_32_None(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_record_i_32_u_32(deserializer);
     return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
-  Map<int, BigInt> sse_decode_Map_i_32_u_64(SseDeserializer deserializer) {
+  Map<int, BigInt> sse_decode_Map_i_32_u_64_None(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_record_i_32_u_64(deserializer);
     return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
-  Map<int, int> sse_decode_Map_i_32_u_8(SseDeserializer deserializer) {
+  Map<int, int> sse_decode_Map_i_32_u_8_None(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_record_i_32_u_8(deserializer);
     return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
-  Map<int, BigInt> sse_decode_Map_i_32_usize(SseDeserializer deserializer) {
+  Map<int, BigInt> sse_decode_Map_i_32_usize_None(
+      SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_record_i_32_usize(deserializer);
     return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
   }
 
   @protected
-  Map<int, ApplicationMode> sse_decode_Map_u_8_application_mode(
+  Map<int, ApplicationMode> sse_decode_Map_u_8_application_mode_None(
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_record_u_8_application_mode(deserializer);
@@ -56341,14 +56365,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Set<String> sse_decode_Set_String(SseDeserializer deserializer) {
+  Set<String> sse_decode_Set_String_None(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_String(deserializer);
     return Set.from(inner);
   }
 
   @protected
-  Set<ApplicationMode> sse_decode_Set_application_mode(
+  Set<ApplicationMode> sse_decode_Set_application_mode_None(
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_application_mode(deserializer);
@@ -56356,7 +56380,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Set<int> sse_decode_Set_i_32(SseDeserializer deserializer) {
+  Set<int> sse_decode_Set_i_32_None(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_prim_i_32_strict(deserializer);
     return Set.from(inner);
@@ -56388,7 +56412,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   RustStreamSink<Map<int, ApplicationMode>>
-      sse_decode_StreamSink_Map_u_8_application_mode_Sse(
+      sse_decode_StreamSink_Map_u_8_application_mode_None_Sse(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
@@ -56396,7 +56420,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   RustStreamSink<Set<ApplicationMode>>
-      sse_decode_StreamSink_Set_application_mode_Sse(
+      sse_decode_StreamSink_Set_application_mode_None_Sse(
           SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
@@ -64893,7 +64917,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   StructWithHashMap sse_decode_struct_with_hash_map(
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    var var_map = sse_decode_Map_String_hash_map_value(deserializer);
+    var var_map = sse_decode_Map_String_hash_map_value_None(deserializer);
     return StructWithHashMap(map: var_map);
   }
 
@@ -67221,7 +67245,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_String_String(
+  void sse_encode_Map_String_String_None(
       Map<String, String> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_string_string(
@@ -67229,7 +67253,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_String_enum_simple_twin_normal(
+  void sse_encode_Map_String_enum_simple_twin_normal_None(
       Map<String, EnumSimpleTwinNormal> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_string_enum_simple_twin_normal(
@@ -67237,7 +67261,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_String_enum_simple_twin_rust_async(
+  void sse_encode_Map_String_enum_simple_twin_rust_async_None(
       Map<String, EnumSimpleTwinRustAsync> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_string_enum_simple_twin_rust_async(
@@ -67245,7 +67269,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_String_enum_simple_twin_sync(
+  void sse_encode_Map_String_enum_simple_twin_sync_None(
       Map<String, EnumSimpleTwinSync> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_string_enum_simple_twin_sync(
@@ -67253,7 +67277,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_String_hash_map_value(
+  void sse_encode_Map_String_hash_map_value_None(
       Map<String, HashMapValue> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_string_hash_map_value(
@@ -67261,7 +67285,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_String_kitchen_sink_twin_normal(
+  void sse_encode_Map_String_kitchen_sink_twin_normal_None(
       Map<String, KitchenSinkTwinNormal> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_string_kitchen_sink_twin_normal(
@@ -67269,7 +67293,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_String_kitchen_sink_twin_rust_async(
+  void sse_encode_Map_String_kitchen_sink_twin_rust_async_None(
       Map<String, KitchenSinkTwinRustAsync> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_string_kitchen_sink_twin_rust_async(
@@ -67277,7 +67301,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_String_kitchen_sink_twin_sync(
+  void sse_encode_Map_String_kitchen_sink_twin_sync_None(
       Map<String, KitchenSinkTwinSync> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_string_kitchen_sink_twin_sync(
@@ -67285,7 +67309,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_String_list_prim_u_8_strict(
+  void sse_encode_Map_String_list_prim_u_8_strict_None(
       Map<String, Uint8List> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_string_list_prim_u_8_strict(
@@ -67293,7 +67317,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_String_my_size(
+  void sse_encode_Map_String_my_size_None(
       Map<String, MySize> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_string_my_size(
@@ -67301,7 +67325,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_i_32_I128(
+  void sse_encode_Map_i_32_I128_None(
       Map<int, BigInt> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_i_32_i_128(
@@ -67309,7 +67333,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_i_32_String(
+  void sse_encode_Map_i_32_String_None(
       Map<int, String> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_i_32_string(
@@ -67317,7 +67341,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_i_32_U128(
+  void sse_encode_Map_i_32_U128_None(
       Map<int, BigInt> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_i_32_u_128(
@@ -67325,7 +67349,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_i_32_basic_general_enum_twin_normal(
+  void sse_encode_Map_i_32_basic_general_enum_twin_normal_None(
       Map<int, BasicGeneralEnumTwinNormal> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_i_32_basic_general_enum_twin_normal(
@@ -67333,7 +67357,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_i_32_basic_general_enum_twin_rust_async(
+  void sse_encode_Map_i_32_basic_general_enum_twin_rust_async_None(
       Map<int, BasicGeneralEnumTwinRustAsync> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_i_32_basic_general_enum_twin_rust_async(
@@ -67341,7 +67365,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_i_32_basic_general_enum_twin_sync(
+  void sse_encode_Map_i_32_basic_general_enum_twin_sync_None(
       Map<int, BasicGeneralEnumTwinSync> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_i_32_basic_general_enum_twin_sync(
@@ -67349,7 +67373,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_i_32_basic_primitive_enum_twin_normal(
+  void sse_encode_Map_i_32_basic_primitive_enum_twin_normal_None(
       Map<int, BasicPrimitiveEnumTwinNormal> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_i_32_basic_primitive_enum_twin_normal(
@@ -67357,7 +67381,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_i_32_basic_primitive_enum_twin_rust_async(
+  void sse_encode_Map_i_32_basic_primitive_enum_twin_rust_async_None(
       Map<int, BasicPrimitiveEnumTwinRustAsync> self,
       SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -67366,7 +67390,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_i_32_basic_primitive_enum_twin_sync(
+  void sse_encode_Map_i_32_basic_primitive_enum_twin_sync_None(
       Map<int, BasicPrimitiveEnumTwinSync> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_i_32_basic_primitive_enum_twin_sync(
@@ -67374,7 +67398,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_i_32_basic_struct_twin_normal(
+  void sse_encode_Map_i_32_basic_struct_twin_normal_None(
       Map<int, BasicStructTwinNormal> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_i_32_basic_struct_twin_normal(
@@ -67382,7 +67406,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_i_32_basic_struct_twin_rust_async(
+  void sse_encode_Map_i_32_basic_struct_twin_rust_async_None(
       Map<int, BasicStructTwinRustAsync> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_i_32_basic_struct_twin_rust_async(
@@ -67390,7 +67414,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_i_32_basic_struct_twin_sync(
+  void sse_encode_Map_i_32_basic_struct_twin_sync_None(
       Map<int, BasicStructTwinSync> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_i_32_basic_struct_twin_sync(
@@ -67398,14 +67422,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_i_32_bool(Map<int, bool> self, SseSerializer serializer) {
+  void sse_encode_Map_i_32_bool_None(
+      Map<int, bool> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_i_32_bool(
         self.entries.map((e) => (e.key, e.value)).toList(), serializer);
   }
 
   @protected
-  void sse_encode_Map_i_32_f_32(
+  void sse_encode_Map_i_32_f_32_None(
       Map<int, double> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_i_32_f_32(
@@ -67413,7 +67438,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_i_32_f_64(
+  void sse_encode_Map_i_32_f_64_None(
       Map<int, double> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_i_32_f_64(
@@ -67421,21 +67446,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_i_32_i_16(Map<int, int> self, SseSerializer serializer) {
+  void sse_encode_Map_i_32_i_16_None(
+      Map<int, int> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_i_32_i_16(
         self.entries.map((e) => (e.key, e.value)).toList(), serializer);
   }
 
   @protected
-  void sse_encode_Map_i_32_i_32(Map<int, int> self, SseSerializer serializer) {
+  void sse_encode_Map_i_32_i_32_None(
+      Map<int, int> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_i_32_i_32(
         self.entries.map((e) => (e.key, e.value)).toList(), serializer);
   }
 
   @protected
-  void sse_encode_Map_i_32_i_64(
+  void sse_encode_Map_i_32_i_64_None(
       Map<int, PlatformInt64> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_i_32_i_64(
@@ -67443,14 +67470,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_i_32_i_8(Map<int, int> self, SseSerializer serializer) {
+  void sse_encode_Map_i_32_i_8_None(
+      Map<int, int> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_i_32_i_8(
         self.entries.map((e) => (e.key, e.value)).toList(), serializer);
   }
 
   @protected
-  void sse_encode_Map_i_32_isize(
+  void sse_encode_Map_i_32_isize_None(
       Map<int, PlatformInt64> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_i_32_isize(
@@ -67458,7 +67486,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_i_32_list_prim_u_8_strict(
+  void sse_encode_Map_i_32_list_prim_u_8_strict_None(
       Map<int, Uint8List> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_i_32_list_prim_u_8_strict(
@@ -67466,21 +67494,23 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_i_32_u_16(Map<int, int> self, SseSerializer serializer) {
+  void sse_encode_Map_i_32_u_16_None(
+      Map<int, int> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_i_32_u_16(
         self.entries.map((e) => (e.key, e.value)).toList(), serializer);
   }
 
   @protected
-  void sse_encode_Map_i_32_u_32(Map<int, int> self, SseSerializer serializer) {
+  void sse_encode_Map_i_32_u_32_None(
+      Map<int, int> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_i_32_u_32(
         self.entries.map((e) => (e.key, e.value)).toList(), serializer);
   }
 
   @protected
-  void sse_encode_Map_i_32_u_64(
+  void sse_encode_Map_i_32_u_64_None(
       Map<int, BigInt> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_i_32_u_64(
@@ -67488,14 +67518,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_i_32_u_8(Map<int, int> self, SseSerializer serializer) {
+  void sse_encode_Map_i_32_u_8_None(
+      Map<int, int> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_i_32_u_8(
         self.entries.map((e) => (e.key, e.value)).toList(), serializer);
   }
 
   @protected
-  void sse_encode_Map_i_32_usize(
+  void sse_encode_Map_i_32_usize_None(
       Map<int, BigInt> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_i_32_usize(
@@ -67503,7 +67534,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Map_u_8_application_mode(
+  void sse_encode_Map_u_8_application_mode_None(
       Map<int, ApplicationMode> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_record_u_8_application_mode(
@@ -68451,20 +68482,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Set_String(Set<String> self, SseSerializer serializer) {
+  void sse_encode_Set_String_None(Set<String> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_String(self.toList(), serializer);
   }
 
   @protected
-  void sse_encode_Set_application_mode(
+  void sse_encode_Set_application_mode_None(
       Set<ApplicationMode> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_application_mode(self.toList(), serializer);
   }
 
   @protected
-  void sse_encode_Set_i_32(Set<int> self, SseSerializer serializer) {
+  void sse_encode_Set_i_32_None(Set<int> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_prim_i_32_strict(
         Int32List.fromList(self.toList()), serializer);
@@ -68519,27 +68550,27 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_StreamSink_Map_u_8_application_mode_Sse(
+  void sse_encode_StreamSink_Map_u_8_application_mode_None_Sse(
       RustStreamSink<Map<int, ApplicationMode>> self,
       SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(
         self.setupAndSerialize(
             codec: SseCodec(
-          decodeSuccessData: sse_decode_Map_u_8_application_mode,
+          decodeSuccessData: sse_decode_Map_u_8_application_mode_None,
           decodeErrorData: sse_decode_AnyhowException,
         )),
         serializer);
   }
 
   @protected
-  void sse_encode_StreamSink_Set_application_mode_Sse(
+  void sse_encode_StreamSink_Set_application_mode_None_Sse(
       RustStreamSink<Set<ApplicationMode>> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(
         self.setupAndSerialize(
             codec: SseCodec(
-          decodeSuccessData: sse_decode_Set_application_mode,
+          decodeSuccessData: sse_decode_Set_application_mode_None,
           decodeErrorData: sse_decode_AnyhowException,
         )),
         serializer);
@@ -75969,7 +76000,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_struct_with_hash_map(
       StructWithHashMap self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_Map_String_hash_map_value(self.map, serializer);
+    sse_encode_Map_String_hash_map_value_None(self.map, serializer);
   }
 
   @protected
