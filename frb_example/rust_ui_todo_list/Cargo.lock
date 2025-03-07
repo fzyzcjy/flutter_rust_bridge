@@ -29,8 +29,7 @@ dependencies = [
 [[package]]
 name = "allo-isolate"
 version = "0.1.26"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1f67642eb6773fb42a95dd3b348c305ee18dee6642274c6b412d67e985e3befc"
+source = "git+https://github.com/alexlapa/allo-isolate?branch=redundant-boxing#733ce6b8a83048f74b735e365b958f63cdb0db5a"
 dependencies = [
  "anyhow",
  "atomic",
