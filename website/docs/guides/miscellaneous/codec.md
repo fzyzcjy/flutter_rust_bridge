@@ -23,8 +23,12 @@ and SSE for both directions.
 
 Currently, CST+DCO is the default choice. To use SSE instead, specify `#[frb(serialize)]` to your function.
 (The attribute syntax may be changed in the future, but should be as minimal as changing the name.)
+On the other hand, if `full_dep` is false,
+i.e. users are not required to install full dependencies like LLVM in order to use flutter_rust_bridge,
+then CST+DCO codec cannot be enabled and SSE is used.
 
-For simplicity of implementation, Rust-Call-Dart uses DCO+SSE and cannot be changed currently,
+Some features are not implemented in both codecs for simplicity of implementation.
+For example, Rust-Call-Dart uses DCO+SSE and cannot be changed currently,
 but this should usually be no problem.
 If you find any difficulties due to this, feel free to create an issue.
 

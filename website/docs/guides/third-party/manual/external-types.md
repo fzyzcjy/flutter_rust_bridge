@@ -89,3 +89,71 @@ pub struct FId(pub [u8; 32]);
 #[frb(mirror(MessageId, BlobId, FeedId))]
 pub struct Id(pub [u8; 32]);
 ```
+
+## Traits
+
+Before flutter_rust_bridge supports more advanced parsing,
+traits in external third-party packages can be utilized
+through a proxy/wrapper/newtype design pattern as illustrated through the following example. 
+
+### Example
+
+In this example,
+assume there is an external crate/package called 'calc' that contains a trait by name `Calc` (and an implementation `CalcImpl`),
+and we demonstrate how to use this trait and implementation in our `flutter_rust_bridge` based package.
+
+#### External crate
+
+*<external_crate>/calc.rs* : 
+
+```rust
+pub trait Calc {
+    fn add(&self, a: u32, b: u32) -> u32;
+}
+
+pub struct CalcImpl {}
+
+impl Calc for CalcImpl {
+    fn add(&self, a: u32, b: u32) -> u32 {
+        a + b
+    }
+}
+```
+
+#### Our crate
+
+##### Scenario 1
+
+*rust/src/api/calc.rs* 
+
+```rust
+pub fn new_calc() -> Box<dyn Calc> {
+    Box::new(CalcImpl {})
+}
+```
+
+Then we get an opaque object about `Calc`, which can be passed back to Rust functions.
+
+##### Scenario 2
+
+If we want to have the methods on the `Calc` trait exposed as methods in Dart,
+one approach is to use Rust's commonly-seen proxy/wrapper/newtype design pattern as follows.
+
+*rust/src/api/calc.rs* 
+
+```rust
+// So-called "newtype" pattern
+pub struct CalcWrapper(Box<dyn Calc + Send + Sync>);
+
+impl CalcWrapper {
+    pub fn new() -> Self {
+        Self(Box::new(CalcImpl {})) // or whatever else...
+    }
+    
+    pub fn add(&self, a: u32, b: u32) -> u32 {
+        self.0.add(a, b)
+    }
+}
+```
+
+This should work now as you have an equivalent type in `dart` to use all those member methods / functions in the underlying Rust trait. 
