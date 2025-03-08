@@ -26,3 +26,8 @@ jobs:
         with:
           context: ./docker
           push: true
+          tags: ghcr.io/fzyzcjy/flutter_rust_bridge_dev:latest
+
+      - name: Inspect
+        run: |
+          docker buildx imagetools inspect ghcr.io/fzyzcjy/flutter_rust_bridge_dev:latest
