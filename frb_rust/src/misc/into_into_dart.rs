@@ -91,7 +91,7 @@ where
     }
 }
 
-impl<KT, KD, VT, VD> IntoIntoDart<HashMap<KD, VD>> for HashMap<KT, VT>
+impl<KT, KD, VT, VD, S> IntoIntoDart<HashMap<KD, VD>> for HashMap<KT, VT, S>
 where
     KT: IntoIntoDart<KD>,
     VT: IntoIntoDart<VD>,
@@ -107,7 +107,7 @@ where
     }
 }
 
-impl<T, D> IntoIntoDart<HashSet<D>> for HashSet<T>
+impl<T, D, S> IntoIntoDart<HashSet<D>> for HashSet<T, S>
 where
     T: IntoIntoDart<D>,
     HashSet<D>: IntoDart,
