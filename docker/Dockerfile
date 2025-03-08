@@ -9,6 +9,7 @@ SHELL ["/bin/bash", "-c"]
 RUN \
     set -euxo pipefail ; \
     mkdir /workspace ; \
-    flutter --version ; fvm flutter --version ; cargo --version ; rustc --version
+    git config --global --add safe.directory /usr/local/flutter ; \
+    flutter --version ; cargo --version ; rustc --version
 
 WORKDIR "/workspace"
