@@ -6,6 +6,8 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+Stream<int> streamFn() => RustLib.instance.api.crateApiSimpleStreamFn();
+
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Test>>
 abstract class Test implements RustOpaqueInterface {
   Future<void> call();
