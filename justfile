@@ -12,6 +12,9 @@ codegen *args:
         --manifest-path {{justfile_directory()}}/frb_codegen/Cargo.toml \
         -- {{args}}
 
+docker-build:
+    cd docker && docker build . --tag ghcr.io/fzyzcjy/flutter_rust_bridge_dev:latest
+
 # rsync code from my host to VM
 _rsync_ubuntu:
     #!/usr/bin/env bash
