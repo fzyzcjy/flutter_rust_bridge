@@ -24,7 +24,7 @@ trait Upgrader {
             if enable_auto_upgrade {
                 Self::upgrade(base_dir)?;
             } else {
-                TODO;
+                log::warn!("Auto upgrader find wrong Dart/Rust flutter_rust_bridge dependency version, please enable `auto_upgrade_dependencies` flag or upgrade manually.");
             }
         }
         Ok(())
