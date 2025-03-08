@@ -20,6 +20,7 @@ use web_sys::{Event, Worker};
 pub struct WorkerPool {
     state: Rc<PoolState>,
     script_src: String,
+    worker_js_preamble: String,
 }
 
 struct PoolState {
@@ -40,7 +41,11 @@ impl WorkerPool {
     /// Returns any error that may happen while a JS web worker is created and a
     /// message is sent to it.
     #[wasm_bindgen(constructor)]
-    pub fn new(initial: usize, script_src: String) -> Result<WorkerPool, JsValue> {
+    pub fn new(
+        initial: usize,
+        script_src: String,
+        worker_js_preamble: String,
+    ) -> Result<WorkerPool, JsValue> {
         let pool = WorkerPool {
             script_src,
             state: Rc::new(PoolState {
@@ -53,6 +58,7 @@ impl WorkerPool {
                     }
                 }),
             }),
+            worker_js_preamble,
         };
         for _ in 0..initial {
             let worker = pool.spawn()?;
@@ -228,6 +234,7 @@ impl Default for WorkerPool {
         Self::new(
             get_wasm_hardware_concurrency(),
             script_path().expect("fail to get script path"),
+            "".to_string(),
         )
         .expect("fail to create WorkerPool")
     }
