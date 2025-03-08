@@ -55,7 +55,7 @@ void simpleBuild(List<String> args, {List<String> features = const []}) async {
       input.packageRoot.resolve('build.rs'),
     };
     print('dependencies: $dependencies');
-    output.dependencies.dependencies.addAll(dependencies);
+    output.addDependencies(dependencies);
 
     await output.writeToFile(outDir: input.outDir);
 
@@ -65,8 +65,6 @@ void simpleBuild(List<String> args, {List<String> features = const []}) async {
 
     // Insert code that downloads or builds the asset to `assetPath`.
     await File.fromUri(assetSourcePath).copy(assetPath.toFilePath());
-
-    output.addDependencies([assetSourcePath]);
 
     output.assets.code.add(CodeAsset(
       package: packageName,
