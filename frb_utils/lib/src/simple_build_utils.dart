@@ -19,14 +19,11 @@ void simpleBuild(List<String> args, {List<String> features = const []}) async {
     final packageName = input.packageName;
     final assetPath = input.outputDirectory.resolve(assetName);
     final assetSourcePath = input.packageRoot.resolveUri(packageAssetPath);
-    if (!input.dryRun) {
-      // Insert code that downloads or builds the asset to `assetPath`.
-      await File.fromUri(assetSourcePath).copy(assetPath.toFilePath());
 
-      output.addDependencies([
-        assetSourcePath,
-      ]);
-    }
+    // Insert code that downloads or builds the asset to `assetPath`.
+    await File.fromUri(assetSourcePath).copy(assetPath.toFilePath());
+
+    output.addDependencies([assetSourcePath]);
 
     output.assets.code.add(
       // TODO: Change to DataAsset once the Dart/Flutter SDK can consume it.
@@ -39,7 +36,6 @@ void simpleBuild(List<String> args, {List<String> features = const []}) async {
         architecture: input.config.code.targetArchitecture,
       ),
     );
-
   });
 }
 
@@ -60,21 +56,21 @@ void _buildCore() {
   } else {
     final featureArgs = features.expand((x) => ['--features', x]).toList();
     await runCommand(
-    'cargo',
-    [
-      if (cargoNightly) '+nightly',
-      'build',
-      '--release',
-      ...cargoExtraArgs,
-      ...featureArgs,
-    ],
-    pwd: rustCrateDir.toFilePath(),
-    printCommandInStderr: true,
-    env: {
-      // Though runCommand auto pass environment variable to commands,
-      // we do this to explicitly show this important flag
-      if (rustflags != null) 'RUSTFLAGS': rustflags,
-    },
+      'cargo',
+      [
+        if (cargoNightly) '+nightly',
+        'build',
+        '--release',
+        ...cargoExtraArgs,
+        ...featureArgs,
+      ],
+      pwd: rustCrateDir.toFilePath(),
+      printCommandInStderr: true,
+      env: {
+        // Though runCommand auto pass environment variable to commands,
+        // we do this to explicitly show this important flag
+        if (rustflags != null) 'RUSTFLAGS': rustflags,
+      },
     );
   }
 
@@ -86,5 +82,4 @@ void _buildCore() {
   output.dependencies.dependencies.addAll(dependencies);
 
   await output.writeToFile(outDir: input.outDir);
-
 }
