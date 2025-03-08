@@ -1,5 +1,7 @@
 FROM rust:1.84.0-bookworm
 
+ENTRYPOINT "/bin/bash"
+
 RUN \
     set -euxo pipefail ; \
     curl -fsSL https://fvm.app/install.sh | bash ; \
