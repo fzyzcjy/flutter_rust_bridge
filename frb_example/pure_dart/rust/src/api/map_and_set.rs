@@ -4,9 +4,9 @@ use std::collections::{HashMap, HashSet};
 
 /// flutter_rust_bridge:ignore
 #[derive(Clone, Debug, Default)]
-pub struct CustomHasher(std::collections::hash_map::RandomState);
+pub struct CustomHasherTwinNormal(std::collections::hash_map::RandomState);
 
-impl std::hash::BuildHasher for CustomHasher {
+impl std::hash::BuildHasher for CustomHasherTwinNormal {
     type Hasher = std::collections::hash_map::DefaultHasher;
 
     fn build_hasher(&self) -> Self::Hasher {
@@ -38,8 +38,8 @@ pub fn func_hash_map_string_string_twin_normal(
 }
 
 pub fn func_hash_map_string_string_hasher_twin_normal(
-    arg: HashMap<String, String, CustomHasher>,
-) -> HashMap<String, String, CustomHasher> {
+    arg: HashMap<String, String, CustomHasherTwinNormal>,
+) -> HashMap<String, String, CustomHasherTwinNormal> {
     arg
 }
 
@@ -48,8 +48,8 @@ pub fn func_hash_set_string_twin_normal(arg: HashSet<String>) -> HashSet<String>
 }
 
 pub fn func_hash_set_string_hasher_twin_normal(
-    arg: HashSet<String, CustomHasher>,
-) -> HashSet<String, CustomHasher> {
+    arg: HashSet<String, CustomHasherTwinNormal>,
+) -> HashSet<String, CustomHasherTwinNormal> {
     arg
 }
 
