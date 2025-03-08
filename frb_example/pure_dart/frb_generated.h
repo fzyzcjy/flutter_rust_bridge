@@ -8166,6 +8166,25 @@ WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manua
 void frbgen_frb_example_pure_dart_wire__crate__api__map_and_set__func_hash_map_string_string_hasher_twin_normal(int64_t port_,
                                                                                                                 struct wire_cst_list_record_string_string *arg);
 
+void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_string_hasher_twin_rust_async(int64_t port_,
+                                                                                                                                                   struct wire_cst_list_record_string_string *arg);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_map_string_string_hasher_twin_rust_async_sse(int64_t port_,
+                                                                                                                                                           uint8_t *ptr_,
+                                                                                                                                                           int32_t rust_vec_len_,
+                                                                                                                                                           int32_t data_len_);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_map_string_string_hasher_twin_sse(int64_t port_,
+                                                                                                                                     uint8_t *ptr_,
+                                                                                                                                     int32_t rust_vec_len_,
+                                                                                                                                     int32_t data_len_);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_string_hasher_twin_sync(struct wire_cst_list_record_string_string *arg);
+
+WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_string_string_hasher_twin_sync_sse(uint8_t *ptr_,
+                                                                                                                                                               int32_t rust_vec_len_,
+                                                                                                                                                               int32_t data_len_);
+
 void frbgen_frb_example_pure_dart_wire__crate__api__map_and_set__func_hash_map_string_string_twin_normal(int64_t port_,
                                                                                                          struct wire_cst_list_record_string_string *arg);
 
@@ -8234,6 +8253,25 @@ WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manua
 
 void frbgen_frb_example_pure_dart_wire__crate__api__map_and_set__func_hash_set_string_hasher_twin_normal(int64_t port_,
                                                                                                          struct wire_cst_list_String *arg);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_set_string_hasher_twin_rust_async(int64_t port_,
+                                                                                                                                            struct wire_cst_list_String *arg);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_set_string_hasher_twin_rust_async_sse(int64_t port_,
+                                                                                                                                                    uint8_t *ptr_,
+                                                                                                                                                    int32_t rust_vec_len_,
+                                                                                                                                                    int32_t data_len_);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_set_string_hasher_twin_sse(int64_t port_,
+                                                                                                                              uint8_t *ptr_,
+                                                                                                                              int32_t rust_vec_len_,
+                                                                                                                              int32_t data_len_);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_set_string_hasher_twin_sync(struct wire_cst_list_String *arg);
+
+WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_set_string_hasher_twin_sync_sse(uint8_t *ptr_,
+                                                                                                                                                        int32_t rust_vec_len_,
+                                                                                                                                                        int32_t data_len_);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__map_and_set__func_hash_set_string_twin_normal(int64_t port_,
                                                                                                   struct wire_cst_list_String *arg);
@@ -17718,41 +17756,51 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_bytes_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_complex_enum_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_simple_enum_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_string_hasher_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_string_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_struct_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_set_i32_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_set_string_hasher_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_set_string_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_map_i32_i32_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_map_string_bytes_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_map_string_complex_enum_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_map_string_simple_enum_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_map_string_string_hasher_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_map_string_string_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_map_string_struct_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_set_i32_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_set_string_hasher_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_set_string_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_map_i32_i32_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_map_string_bytes_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_map_string_complex_enum_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_map_string_simple_enum_twin_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_map_string_string_hasher_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_map_string_string_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_map_string_struct_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_set_i32_twin_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_set_string_hasher_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_set_string_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_i32_i32_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_bytes_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_complex_enum_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_simple_enum_twin_sync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_string_hasher_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_string_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_struct_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_set_i32_twin_sync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_set_string_hasher_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_set_string_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_i32_i32_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_string_bytes_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_string_complex_enum_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_string_simple_enum_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_string_string_hasher_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_string_string_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_string_struct_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_set_i32_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_set_string_hasher_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_set_string_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__method_twin_rust_async__StaticGetterOnlyTwinRustAsync_static_getter_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__method_twin_rust_async__concatenate_with_twin_rust_async_concatenate_static_twin_rust_async);

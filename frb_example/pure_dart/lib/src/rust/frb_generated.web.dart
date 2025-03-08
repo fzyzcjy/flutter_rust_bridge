@@ -49064,6 +49064,46 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__map_and_set__func_hash_map_string_string_hasher_twin_normal(
               port_, arg);
 
+  void wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_string_hasher_twin_rust_async(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_string_hasher_twin_rust_async(
+              port_, arg);
+
+  void wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_map_string_string_hasher_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_map_string_string_hasher_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_map_string_string_hasher_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_map_string_string_hasher_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_string_hasher_twin_sync(
+              JSAny arg) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_string_hasher_twin_sync(
+                  arg);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_string_string_hasher_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_string_string_hasher_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
   void wire__crate__api__map_and_set__func_hash_map_string_string_twin_normal(
           NativePortType port_, JSAny arg) =>
       wasmModule
@@ -49206,6 +49246,46 @@ class RustLibWire implements BaseWire {
       wasmModule
           .wire__crate__api__map_and_set__func_hash_set_string_hasher_twin_normal(
               port_, arg);
+
+  void wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_set_string_hasher_twin_rust_async(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_set_string_hasher_twin_rust_async(
+              port_, arg);
+
+  void wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_set_string_hasher_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_set_string_hasher_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_set_string_hasher_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_set_string_hasher_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_set_string_hasher_twin_sync(
+              JSAny arg) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_set_string_hasher_twin_sync(
+                  arg);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_set_string_hasher_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_set_string_hasher_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__map_and_set__func_hash_set_string_twin_normal(
           NativePortType port_, JSAny arg) =>
@@ -69528,6 +69608,34 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           NativePortType port_, JSAny arg);
 
   external void
+      wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_string_hasher_twin_rust_async(
+          NativePortType port_, JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_map_string_string_hasher_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_map_string_string_hasher_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_string_hasher_twin_sync(
+          JSAny arg);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_string_string_hasher_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
       wire__crate__api__map_and_set__func_hash_map_string_string_twin_normal(
           NativePortType port_, JSAny arg);
 
@@ -69625,6 +69733,34 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external void
       wire__crate__api__map_and_set__func_hash_set_string_hasher_twin_normal(
           NativePortType port_, JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_set_string_hasher_twin_rust_async(
+          NativePortType port_, JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_set_string_hasher_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_set_string_hasher_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_set_string_hasher_twin_sync(
+          JSAny arg);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_set_string_hasher_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
 
   external void wire__crate__api__map_and_set__func_hash_set_string_twin_normal(
       NativePortType port_, JSAny arg);

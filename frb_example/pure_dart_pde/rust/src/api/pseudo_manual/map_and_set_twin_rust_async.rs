@@ -10,6 +10,27 @@ use crate::api::pseudo_manual::enumeration_twin_rust_async::{
 use crate::auxiliary::sample_types::MySize;
 use std::collections::{HashMap, HashSet};
 
+/// flutter_rust_bridge:ignore
+#[derive(Clone, Debug, Default)]
+pub struct CustomHasher(std::collections::hash_map::RandomState);
+
+impl std::hash::BuildHasher for CustomHasher {
+    type Hasher = std::collections::hash_map::DefaultHasher;
+
+    fn build_hasher(&self) -> Self::Hasher {
+        self.0.build_hasher()
+    }
+
+    fn hash_one<T>(&self, x: T) -> u64
+    where
+        T: std::hash::Hash,
+        Self: Sized,
+        Self::Hasher: std::hash::Hasher,
+    {
+        self.0.hash_one(x)
+    }
+}
+
 pub async fn func_hash_map_i32_i32_twin_rust_async(arg: HashMap<i32, i32>) -> HashMap<i32, i32> {
     arg
 }
@@ -24,7 +45,19 @@ pub async fn func_hash_map_string_string_twin_rust_async(
     arg
 }
 
+pub async fn func_hash_map_string_string_hasher_twin_rust_async(
+    arg: HashMap<String, String, CustomHasher>,
+) -> HashMap<String, String, CustomHasher> {
+    arg
+}
+
 pub async fn func_hash_set_string_twin_rust_async(arg: HashSet<String>) -> HashSet<String> {
+    arg
+}
+
+pub async fn func_hash_set_string_hasher_twin_rust_async(
+    arg: HashSet<String, CustomHasher>,
+) -> HashSet<String, CustomHasher> {
     arg
 }
 

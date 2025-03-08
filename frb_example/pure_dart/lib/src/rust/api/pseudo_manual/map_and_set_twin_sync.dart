@@ -7,9 +7,12 @@ import 'dart:io';
 
 import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
+import '../map_and_set.dart';
 import 'enumeration_twin_sync.dart';
 import 'misc_example_twin_sync.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `build_hasher`, `clone`, `fmt`, `hash_one`
 
 Map<int, int> funcHashMapI32I32TwinSync({required Map<int, int> arg}) => RustLib
     .instance.api
@@ -24,9 +27,20 @@ Map<String, String> funcHashMapStringStringTwinSync(
         .crateApiPseudoManualMapAndSetTwinSyncFuncHashMapStringStringTwinSync(
             arg: arg);
 
+Map<String, String> funcHashMapStringStringHasherTwinSync(
+        {required Map<String, String> arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMapAndSetTwinSyncFuncHashMapStringStringHasherTwinSync(
+            arg: arg);
+
 Set<String> funcHashSetStringTwinSync({required Set<String> arg}) => RustLib
     .instance.api
     .crateApiPseudoManualMapAndSetTwinSyncFuncHashSetStringTwinSync(arg: arg);
+
+Set<String> funcHashSetStringHasherTwinSync({required Set<String> arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMapAndSetTwinSyncFuncHashSetStringHasherTwinSync(
+            arg: arg);
 
 Map<String, Uint8List> funcHashMapStringBytesTwinSync(
         {required Map<String, Uint8List> arg}) =>

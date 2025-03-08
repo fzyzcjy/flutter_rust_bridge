@@ -7,9 +7,12 @@ import 'dart:io';
 
 import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
+import '../map_and_set.dart';
 import 'enumeration_twin_rust_async.dart';
 import 'misc_example_twin_rust_async.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `build_hasher`, `clone`, `fmt`, `hash_one`
 
 Future<Map<int, int>> funcHashMapI32I32TwinRustAsync(
         {required Map<int, int> arg}) =>
@@ -28,10 +31,22 @@ Future<Map<String, String>> funcHashMapStringStringTwinRustAsync(
         .crateApiPseudoManualMapAndSetTwinRustAsyncFuncHashMapStringStringTwinRustAsync(
             arg: arg);
 
+Future<Map<String, String>> funcHashMapStringStringHasherTwinRustAsync(
+        {required Map<String, String> arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMapAndSetTwinRustAsyncFuncHashMapStringStringHasherTwinRustAsync(
+            arg: arg);
+
 Future<Set<String>> funcHashSetStringTwinRustAsync(
         {required Set<String> arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualMapAndSetTwinRustAsyncFuncHashSetStringTwinRustAsync(
+            arg: arg);
+
+Future<Set<String>> funcHashSetStringHasherTwinRustAsync(
+        {required Set<String> arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMapAndSetTwinRustAsyncFuncHashSetStringHasherTwinRustAsync(
             arg: arg);
 
 Future<Map<String, Uint8List>> funcHashMapStringBytesTwinRustAsync(
