@@ -74,6 +74,7 @@
 - anstadnik: Check keywords.
 - syndim: Add a bracket to box.
 - vhdirk: Support dashed crate.
+- akkumar: External traits doc.
 - rhian-cs: Add Cargo workspace doc.
 - TENX-S: Improve doc. Reproduce a bug.
 - CJBuchel: Remove throw.
