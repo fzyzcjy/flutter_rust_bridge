@@ -49,7 +49,7 @@ class ReceivePort extends Stream<dynamic> {
     return subscription;
   }
 
-  static dynamic _extractData(web.MessageEvent event) => event.data;
+  static dynamic _extractData(web.MessageEvent event) => event.data.dartify();
 
   /// {@macro flutter_rust_bridge.same_as_native}
   SendPort get sendPort => _rawReceivePort.sendPort;
