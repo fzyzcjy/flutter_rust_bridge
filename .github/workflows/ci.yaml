@@ -9,6 +9,7 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
+  # Please update (1) .fvmrc (2) post_release.yaml as well
   FRB_MAIN_RUST_VERSION: 1.84.0
   FRB_MAIN_DART_VERSION: 3.7.0
   FRB_MAIN_FLUTTER_VERSION: 3.29.1
