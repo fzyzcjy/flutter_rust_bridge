@@ -137,9 +137,6 @@ Future<void> main() async {
   Future<void> cb() async {}
 
   final t = Test(cb: cb);
- 
-  streamFn().listen((x) => print('listen from stream x=$x'));
-
   runApp(MyApp(t: t));
 }
 
@@ -154,17 +151,16 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(title: const Text('flutter_rust_bridge quickstart')),
         body: Center(
-          // child: FutureBuilder(
-          //   future: t.call(),
-          //   builder: (context, snapshot) {
-          //     if (snapshot.connectionState == ConnectionState.done) {
-          //       return Text("Done");
-          //     } else {
-          //       return const CircularProgressIndicator();
-          //     }
-          //   },
-          // ),
-          child: Text('hi'),
+          child: FutureBuilder(
+            future: t.call(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                return Text("Done");
+              } else {
+                return const CircularProgressIndicator();
+              }
+            },
+          ),
         ),
       ),
     );
