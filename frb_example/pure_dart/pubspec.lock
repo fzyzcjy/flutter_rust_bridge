@@ -137,14 +137,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.3"
-  cli_config:
-    dependency: transitive
-    description:
-      name: cli_config
-      sha256: "65c7830649e1f8247660f1b783effb460255d6e2c1ac94eb823cf1f84e59b288"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.1.2"
   cli_util:
     dependency: transitive
     description:
@@ -395,10 +387,10 @@ packages:
     dependency: transitive
     description:
       name: native_assets_cli
-      sha256: "51d1af3ebc2437f5883ed749f1877cb82d6a569b0712dad02c8370e6e4f2b5e3"
+      sha256: "537e258b4ee782d81344414c722822014c9e5429f2f98a84a0c2e796f71f4798"
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.0"
+    version: "0.11.0"
   node_preamble:
     dependency: transitive
     description:
