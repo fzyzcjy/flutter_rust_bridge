@@ -4,7 +4,7 @@ pub struct Test(Box<dyn Fn() -> DartFnFuture<()> + Send + Sync>);
 
 impl Test {
     #[frb(sync)]
-    pub fn new(cb: impl Fn() -> DartFnFuture<()> + Send + Sync + 'static) -> Self {
+    pub fn new(cb: impl Fn(String, i32, f64) -> DartFnFuture<()> + Send + Sync + 'static) -> Self {
         Test(Box::new(cb))
     }
 

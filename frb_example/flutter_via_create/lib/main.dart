@@ -134,7 +134,7 @@ import 'package:flutter_via_create/src/rust/frb_generated.dart';
 Future<void> main() async {
   await RustLib.init();
 
-  Future<void> cb() async {}
+  Future<void> cb(String a, int b, double c) async {}
 
   final t = Test(cb: cb);
   runApp(MyApp(t: t));

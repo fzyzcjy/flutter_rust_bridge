@@ -10,6 +10,6 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 abstract class Test implements RustOpaqueInterface {
   Future<void> call();
 
-  factory Test({required FutureOr<void> Function() cb}) =>
+  factory Test({required FutureOr<void> Function(String, int, double) cb}) =>
       RustLib.instance.api.crateApiSimpleTestNew(cb: cb);
 }
