@@ -89,3 +89,110 @@ pub struct FId(pub [u8; 32]);
 #[frb(mirror(MessageId, BlobId, FeedId))]
 pub struct Id(pub [u8; 32]);
 ```
+
+## Traits in External Third-Party
+
+Traits in External Third-party packages can be exposed / parsed through a `Proxy / Wrapper` design pattern as illustrated through the following example. 
+
+### Example
+
+#### External Third-party rust library
+
+Assume there is an external crate/package called 'calc' that contains a trait by name `Calc` ( and an implementation `MyCalc` ) . 
+
+How do we use this trait and implementation in our `flutter_rust_bridge` based package ? 
+
+*<external_crate>/calc.rs* : 
+
+```rust
+
+pub trait Calc {
+    fn add(&self, a: u32, b: u32) -> u32;
+
+    fn overflow_add(&self, a: u32, b: u32) -> Result<u32, CalcError>;
+}
+
+pub struct MyCalc {}
+
+impl Calc for MyCalc {
+    fn add(&self, a: u32, b: u32) -> u32 {
+        a + b
+    }
+
+    fn overflow_add(&self, a: u32, b: u32) -> Result<u32, CalcError> {
+        Err(CalcError::OverflowError)
+    }
+}
+```
+
+#### flutter_rust_bridge based package
+
+Suppose we want to use the above mentioned third-party package in our flutter/dart project, we first create a package separately based on `flutter_rust_bridge` . 
+
+The scope of creating a package for `flutter_rust_bridge` is beyond the scope of this example. But assume that is created, we can try to use the above mentioned trait as below. 
+
+##### Use Calc trait - Attempt 1 
+
+*rust/src/api/calc.rs* 
+
+```rust
+use third_party::{Calc, MyCalc};
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn new_calc() -> Box<dyn Calc> {
+    Box::new(MyCalc {})
+}
+```
+
+Then invoke `flutter_rust_bridge_codegen  generate` to generate the dart code from the rust libraries.
+
+While the dart package does get generated, it is not really useful practically. 
+
+```dart
+Future<BoxCalc> newCalc() => RustLib.instance.api.crateApiParserNewCalc();
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn Calc + Send + Sync >>>
+abstract class BoxCalc implements RustOpaqueInterface {}
+```
+
+As you can see above, `BoxCalc` by itself is useless even if it is error-free since it does not have anything about the methods / functions in the trait. 
+
+##### Use Calc trait - Attempt 2 
+
+To address the above given issue, we use a `Proxy/Wrapper` pattern to address the same as below. 
+
+* Create a new type for the `Box<Calc>`
+* Create a new struct with the type as a member.
+* Re-implement all the methods with a proxy to the actual trait implementation
+
+*rust/src/api/calc.rs* 
+
+```rust
+#[frb(ignore)]
+type ThirdPartyCalc = Box<dyn Calc + Send + Sync>;
+
+#[frb]
+pub struct CalcWrapper(ThirdPartyCalc);
+
+impl CalcWrapper {
+    pub fn add(&self, a: u32, b: u32) -> u32 {
+        self.0.add(a, b)
+    }
+
+    pub fn overflow_add(&self, a: u32, b: u32) -> Result<u32, CalcError> {
+        self.0.overflow_add(a, b)
+    }
+}
+
+#[flutter_rust_bridge::frb(sync)]
+pub fn new_calc() -> CalcWrapper {
+    CalcWrapper(Box::new(MyCalc {}))
+}
+```
+
+This should work now as you have an equivalent type in `dart` to use all those member methods / functions in the underlying Rust trait. 
+
+
+
+
+
