@@ -18,7 +18,7 @@ dependencies:
   web_socket_channel: ^2.2.0
   flutter_rust_bridge:
     path: ../frb_dart
-  native_assets_cli: ^0.2.0
+  native_assets_cli: ^0.11.0
   js: ^0.6.4
   test_core: ^0.6.8
   path: ^1.8.1
