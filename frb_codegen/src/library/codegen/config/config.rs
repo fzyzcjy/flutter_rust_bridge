@@ -35,6 +35,7 @@ pub struct Config {
     pub enable_lifetime: Option<bool>,
     pub type_64bit_int: Option<bool>,
     pub default_dart_async: Option<bool>,
+    pub auto_upgrade_dependency: Option<bool>,
     pub stop_on_error: Option<bool>,
     pub dump: Option<Vec<ConfigDumpContent>>,
     pub dump_all: Option<bool>,
