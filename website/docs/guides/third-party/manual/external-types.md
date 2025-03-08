@@ -90,109 +90,70 @@ pub struct FId(pub [u8; 32]);
 pub struct Id(pub [u8; 32]);
 ```
 
-## Traits in External Third-Party
+## Traits
 
-Traits in External Third-party packages can be exposed / parsed through a `Proxy / Wrapper` design pattern as illustrated through the following example. 
+Before flutter_rust_bridge supports more advanced parsing,
+traits in external third-party packages can be utilized
+through a proxy/wrapper/newtype design pattern as illustrated through the following example. 
 
 ### Example
 
-#### External Third-party rust library
+In this example,
+assume there is an external crate/package called 'calc' that contains a trait by name `Calc` (and an implementation `CalcImpl`),
+and we demonstrate how to use this trait and implementation in our `flutter_rust_bridge` based package.
 
-Assume there is an external crate/package called 'calc' that contains a trait by name `Calc` ( and an implementation `MyCalc` ) . 
-
-How do we use this trait and implementation in our `flutter_rust_bridge` based package ? 
+#### External crate
 
 *<external_crate>/calc.rs* : 
 
 ```rust
-
 pub trait Calc {
     fn add(&self, a: u32, b: u32) -> u32;
-
-    fn overflow_add(&self, a: u32, b: u32) -> Result<u32, CalcError>;
 }
 
-pub struct MyCalc {}
+pub struct CalcImpl {}
 
-impl Calc for MyCalc {
+impl Calc for CalcImpl {
     fn add(&self, a: u32, b: u32) -> u32 {
         a + b
     }
-
-    fn overflow_add(&self, a: u32, b: u32) -> Result<u32, CalcError> {
-        Err(CalcError::OverflowError)
-    }
 }
 ```
 
-#### flutter_rust_bridge based package
+#### Our crate
 
-Suppose we want to use the above mentioned third-party package in our flutter/dart project, we first create a package separately based on `flutter_rust_bridge` . 
-
-The scope of creating a package for `flutter_rust_bridge` is beyond the scope of this example. But assume that is created, we can try to use the above mentioned trait as below. 
-
-##### Use Calc trait - Attempt 1 
+##### Scenario 1
 
 *rust/src/api/calc.rs* 
 
 ```rust
-use third_party::{Calc, MyCalc};
-
-#[flutter_rust_bridge::frb(sync)]
 pub fn new_calc() -> Box<dyn Calc> {
-    Box::new(MyCalc {})
+    Box::new(CalcImpl {})
 }
 ```
 
-Then invoke `flutter_rust_bridge_codegen  generate` to generate the dart code from the rust libraries.
+Then we get an opaque object about `Calc`, which can be passed back to Rust functions.
 
-While the dart package does get generated, it is not really useful practically. 
+##### Scenario 2
 
-```dart
-Future<BoxCalc> newCalc() => RustLib.instance.api.crateApiParserNewCalc();
-
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn Calc + Send + Sync >>>
-abstract class BoxCalc implements RustOpaqueInterface {}
-```
-
-As you can see above, `BoxCalc` by itself is useless even if it is error-free since it does not have anything about the methods / functions in the trait. 
-
-##### Use Calc trait - Attempt 2 
-
-To address the above given issue, we use a `Proxy/Wrapper` pattern to address the same as below. 
-
-* Create a new type for the `Box<Calc>`
-* Create a new struct with the type as a member.
-* Re-implement all the methods with a proxy to the actual trait implementation
+If we want to have the methods on the `Calc` trait exposed as methods in Dart,
+one approach is to use Rust's commonly-seen proxy/wrapper/newtype design pattern as follows.
 
 *rust/src/api/calc.rs* 
 
 ```rust
-#[frb(ignore)]
-type ThirdPartyCalc = Box<dyn Calc + Send + Sync>;
-
-#[frb]
-pub struct CalcWrapper(ThirdPartyCalc);
+// So-called "newtype" pattern
+pub struct CalcWrapper(Box<dyn Calc + Send + Sync>);
 
 impl CalcWrapper {
+    pub fn new() -> Self {
+        Self(Box::new(CalcImpl {})) // or whatever else...
+    }
+    
     pub fn add(&self, a: u32, b: u32) -> u32 {
         self.0.add(a, b)
     }
-
-    pub fn overflow_add(&self, a: u32, b: u32) -> Result<u32, CalcError> {
-        self.0.overflow_add(a, b)
-    }
-}
-
-#[flutter_rust_bridge::frb(sync)]
-pub fn new_calc() -> CalcWrapper {
-    CalcWrapper(Box::new(MyCalc {}))
 }
 ```
 
 This should work now as you have an equivalent type in `dart` to use all those member methods / functions in the underlying Rust trait. 
-
-
-
-
-
