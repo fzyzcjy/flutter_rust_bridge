@@ -11,6 +11,7 @@ pub(super) fn execute(
     progress_bar_pack: &GeneratorProgressBarPack,
     dart_root: &Path,
     rust_crate_dir: &Path,
+    enable_auto_upgrade: bool,
 ) -> Result<()> {
     let _pb = progress_bar_pack.polish_upgrade.start();
     DartUpgrader::execute(dart_root, enable_auto_upgrade)?;
