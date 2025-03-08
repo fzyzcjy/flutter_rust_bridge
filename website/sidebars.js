@@ -412,6 +412,7 @@ const sidebars = {
                         'guides/how-to/object-pool',
                         'guides/how-to/gitignore',
                         'guides/how-to/rust-compilation',
+                        'guides/how-to/precompiled-rust',
                         'guides/how-to/cargo-workspaces',
                         'guides/how-to/cross-origin',
                         'guides/how-to/transferable-typed-data',
