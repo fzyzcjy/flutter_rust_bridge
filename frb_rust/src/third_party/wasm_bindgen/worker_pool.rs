@@ -30,6 +30,18 @@ struct PoolState {
 
 #[wasm_bindgen]
 impl WorkerPool {
+    pub fn new(
+        initial: Option<usize>,
+        script_src: Option<String>,
+        worker_js_preamble: Option<String>,
+    ) -> Result<WorkerPool, JsValue> {
+        Self::new_raw(
+            initial.unwrap_or_else(get_wasm_hardware_concurrency),
+            script_src.unwrap_or_else(|| script_path().expect("fail to get script path")),
+            worker_js_preamble.unwrap_or_default(),
+        )
+    }
+
     /// Creates a new `WorkerPool` which immediately creates `initial` workers.
     ///
     /// The pool created here can be used over a long period of time, and it
@@ -41,7 +53,7 @@ impl WorkerPool {
     /// Returns any error that may happen while a JS web worker is created and a
     /// message is sent to it.
     #[wasm_bindgen(constructor)]
-    pub fn new(
+    pub fn new_raw(
         initial: usize,
         script_src: String,
         worker_js_preamble: String,
@@ -231,12 +243,7 @@ impl PoolState {
 
 impl Default for WorkerPool {
     fn default() -> Self {
-        Self::new(
-            get_wasm_hardware_concurrency(),
-            script_path().expect("fail to get script path"),
-            "".to_string(),
-        )
-        .expect("fail to create WorkerPool")
+        Self::new(None, None, None).expect("fail to create WorkerPool")
     }
 }
 
