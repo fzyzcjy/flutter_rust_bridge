@@ -59,13 +59,6 @@ void simpleBuild(List<String> args, {List<String> features = const []}) async {
 
     await output.writeToFile(outDir: input.outDir);
 
-    final packageName = input.packageName;
-    final assetPath = input.outputDirectory.resolve(assetName);
-    final assetSourcePath = input.packageRoot.resolveUri(packageAssetPath);
-
-    // Insert code that downloads or builds the asset to `assetPath`.
-    await File.fromUri(assetSourcePath).copy(assetPath.toFilePath());
-
     output.assets.code.add(CodeAsset(
       package: packageName,
       name: 'asset.txt',
