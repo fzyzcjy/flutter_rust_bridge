@@ -7,6 +7,10 @@ Object decodeDartOpaqueCommon(
   if (raw is BigInt) {
     raw = raw.toInt();
   }
+  if (raw is double) {
+    assert(raw.toInt().toDouble() == raw);
+    raw = raw.toInt();
+  }
   return generalizedFrbRustBinding.dartOpaqueRust2DartDecode(raw);
 }
 
