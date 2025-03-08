@@ -13,14 +13,18 @@ pub(super) fn execute(
     rust_crate_dir: &Path,
 ) -> Result<()> {
     let _pb = progress_bar_pack.polish_upgrade.start();
-    DartUpgrader::execute(dart_root)?;
-    RustUpgrader::execute(rust_crate_dir)
+    DartUpgrader::execute(dart_root, enable_auto_upgrade)?;
+    RustUpgrader::execute(rust_crate_dir, enable_auto_upgrade)
 }
 
 trait Upgrader {
-    fn execute(base_dir: &Path) -> Result<()> {
+    fn execute(base_dir: &Path, enable_auto_upgrade: bool) -> Result<()> {
         if !Self::check(base_dir)? {
-            Self::upgrade(base_dir)?;
+            if enable_auto_upgrade {
+                Self::upgrade(base_dir)?;
+            } else {
+                TODO;
+            }
         }
         Ok(())
     }
