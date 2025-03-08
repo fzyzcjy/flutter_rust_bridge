@@ -18,19 +18,17 @@ use crate::codegen::parser::hir::flat::parser::syn_item::item_type::parse_syn_it
 use crate::codegen::parser::hir::internal_config::ParserHirInternalConfig;
 
 pub(crate) fn parse_syn_item(
-    config: &ParserHirInternalConfig,
     item: syn::Item,
     meta: &HirNaiveFlatItemMeta,
     target: &mut HirFlatPack,
+    parse_const: bool,
 ) -> anyhow::Result<()> {
     match item {
         syn::Item::Struct(x) => (target.structs).extend(parse_syn_item_struct(&x, meta)?),
         syn::Item::Enum(x) => (target.enums).extend(parse_syn_item_enum(&x, meta)?),
         syn::Item::Type(x) => target.types.extend(parse_syn_item_type(x)),
         syn::Item::Fn(x) => target.functions.push(parse_syn_item_fn(x, meta)),
-        syn::Item::Const(x) if config.parse_const => {
-            target.constants.push(parse_syn_item_const(x, meta))
-        }
+        syn::Item::Const(x) if parse_const => target.constants.push(parse_syn_item_const(x, meta)),
         syn::Item::Impl(x) => parse_syn_item_impl(target, x, meta),
         syn::Item::Trait(x) => parse_syn_item_trait(target, x, meta),
         _ => {}
