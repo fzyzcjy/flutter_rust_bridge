@@ -49,6 +49,7 @@ impl Upgrader for DartUpgrader {
     }
 
     fn upgrade(base_dir: &Path) -> Result<()> {
+        log::info!("Auto upgrade Dart dependency");
         pub_add_dependency_frb(false, Some(base_dir))
     }
 }
@@ -63,6 +64,7 @@ impl Upgrader for RustUpgrader {
     }
 
     fn upgrade(base_dir: &Path) -> Result<()> {
+        log::info!("Auto upgrade Rust dependency");
         cargo_add(
             &[concat!("flutter_rust_bridge@=", env!("CARGO_PKG_VERSION"))],
             base_dir,
