@@ -10,8 +10,8 @@ on:
 env:
   CARGO_TERM_COLOR: always
   FRB_MAIN_RUST_VERSION: 1.84.0
-  FRB_MAIN_DART_VERSION: 3.6.2
-  FRB_MAIN_FLUTTER_VERSION: 3.27.4
+  FRB_MAIN_DART_VERSION: 3.7.0
+  FRB_MAIN_FLUTTER_VERSION: 3.29.1
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -650,7 +650,8 @@ jobs:
           architecture: x64
       - uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: nightly-2025-02-01
+          # Need to change in sync with run_test.dart
+          toolchain: nightly-2025-03-07
           target: wasm32-unknown-unknown
           components: rust-src,rustfmt
       - name: Cache dependencies
