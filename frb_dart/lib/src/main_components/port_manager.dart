@@ -34,12 +34,7 @@ class DartHandlerPortManager extends BaseLazyPortManager {
   DartHandlerPortManager(this._generalizedFrbRustBinding, this._handler);
 
   @override
-  void onData(Object? message) {
-    if (message is! List<dynamic>) {
-      throw UnimplementedError(
-          'Unsupported message type=${message?.runtimeType} message=$message');
-    }
-
+  void onData(covariant List<dynamic> message) {
     switch (message[0]) {
       case _DartHandlerPortAction.dartOpaqueDrop:
         assert(message.length == 2);
