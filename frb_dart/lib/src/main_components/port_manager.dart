@@ -35,6 +35,7 @@ class DartHandlerPortManager extends BaseLazyPortManager {
 
   @override
   void onData(covariant List<dynamic> message) {
+    print('hi onData $message');
     switch (message[0]) {
       case _DartHandlerPortAction.dartOpaqueDrop:
         assert(message.length == 2);
