@@ -165,6 +165,10 @@ pub(crate) struct GenerateCommandArgsPrimary {
     #[arg(long)]
     pub no_auto_upgrade_dependency: bool,
 
+    /// Whether to automatically parse constants
+    #[arg(long)]
+    pub parse_const: bool,
+
     /// If having error when, for example, parsing a function, directly stop instead of continue and skip it
     #[arg(long)]
     pub stop_on_error: bool,
