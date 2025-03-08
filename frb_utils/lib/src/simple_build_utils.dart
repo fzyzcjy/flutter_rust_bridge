@@ -4,7 +4,6 @@ import 'dart:io';
 
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:native_assets_cli/code_assets.dart';
-import 'package:native_assets_cli/native_assets_cli.dart';
 
 /// Utilities that can be used in `build.dart`.
 /// Do not export this function for public use yet, since Dart's `build.dart` support
@@ -57,13 +56,13 @@ void simpleBuild(List<String> args, {List<String> features = const []}) async {
     print('dependencies: $dependencies');
     output.addDependencies(dependencies);
 
-    // output.assets.code.add(CodeAsset(
-    //   package: input.packageName,
-    //   name: 'asset.txt',
-    //   file: assetPath,
-    //   linkMode: DynamicLoadingBundled(),
-    //   os: input.config.code.targetOS,
-    //   architecture: input.config.code.targetArchitecture,
-    // ));
+    output.assets.code.add(CodeAsset(
+      package: input.packageName,
+      name: 'asset.txt',
+      file: assetPath,
+      linkMode: DynamicLoadingBundled(),
+      os: input.config.code.targetOS,
+      architecture: input.config.code.targetArchitecture,
+    ));
   });
 }
