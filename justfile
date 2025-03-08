@@ -15,6 +15,9 @@ codegen *args:
 docker-build:
     cd docker && docker build . --tag ghcr.io/fzyzcjy/flutter_rust_bridge_dev:latest
 
+docker-run *args:
+    docker run -it -v .:/workspace ghcr.io/fzyzcjy/flutter_rust_bridge_dev:latest {{args}}
+
 # rsync code from my host to VM
 _rsync_ubuntu:
     #!/usr/bin/env bash

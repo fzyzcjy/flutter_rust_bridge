@@ -10,6 +10,7 @@ RUN \
     set -euxo pipefail ; \
     mkdir /workspace ; \
     git config --global --add safe.directory /usr/local/flutter ; \
+    dart --disable-analytics ; \
     flutter --version ; cargo --version ; rustc --version
 
 WORKDIR "/workspace"
