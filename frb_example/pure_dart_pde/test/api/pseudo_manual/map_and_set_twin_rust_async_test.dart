@@ -33,7 +33,19 @@ Future<void> main({bool skipRustLibInit = false}) async {
     {'a': 'b'},
     {'a': 'b', 'c': 'd'},
   ]);
+  addTestsIdentityFunctionCall(
+      funcHashMapStringStringHasherTwinRustAsync, <Map<String, String>>[
+    {},
+    {'a': 'b'},
+    {'a': 'b', 'c': 'd'},
+  ]);
   addTestsIdentityFunctionCall(funcHashSetStringTwinRustAsync, <Set<String>>[
+    {},
+    {'a'},
+    {'a', 'b'},
+  ]);
+  addTestsIdentityFunctionCall(
+      funcHashSetStringHasherTwinRustAsync, <Set<String>>[
     {},
     {'a'},
     {'a', 'b'},
