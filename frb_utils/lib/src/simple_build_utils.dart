@@ -57,10 +57,8 @@ void simpleBuild(List<String> args, {List<String> features = const []}) async {
     print('dependencies: $dependencies');
     output.addDependencies(dependencies);
 
-    await output.writeToFile(outDir: input.outDir);
-
     output.assets.code.add(CodeAsset(
-      package: packageName,
+      package: input.packageName,
       name: 'asset.txt',
       file: assetPath,
       linkMode: DynamicLoadingBundled(),
