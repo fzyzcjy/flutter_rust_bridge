@@ -90,9 +90,11 @@ impl WorkerPool {
     /// Returns any error that may happen while a JS web worker is created and a
     /// message is sent to it.
     fn spawn(&self) -> Result<Worker, JsValue> {
-        let src = &self.script_src;
+        let worker_js_preamble = &self.worker_js_preamble;
+        let script_src = &self.script_src;
         let script = format!(
-            "importScripts('{}');
+            "{worker_js_preamble}
+            importScripts('{script_src}');
             const FRB_ACTION_PANIC = 3;
             onmessage = event => {{
                 let init = wasm_bindgen(...event.data).catch(err => {{
@@ -115,7 +117,6 @@ impl WorkerPool {
                     }}
                 }}
             }}",
-            src
         );
         let blob = Blob::new_with_blob_sequence_and_options(
             &Array::from_iter([JsValue::from(script)]).into(),
