@@ -56,13 +56,13 @@ void simpleBuild(List<String> args, {List<String> features = const []}) async {
     print('dependencies: $dependencies');
     output.addDependencies(dependencies);
 
-    output.assets.code.add(CodeAsset(
-      package: input.packageName,
-      name: 'asset.txt',
-      file: assetPath,
-      linkMode: DynamicLoadingBundled(),
-      os: input.config.code.targetOS,
-      architecture: input.config.code.targetArchitecture,
-    ));
+    // output.assets.code.add(CodeAsset(
+    //   package: input.packageName,
+    //   name: 'asset.txt',
+    //   file: assetPath,
+    //   linkMode: DynamicLoadingBundled(),
+    //   os: input.config.code.targetOS,
+    //   architecture: input.config.code.targetArchitecture,
+    // ));
   });
 }
