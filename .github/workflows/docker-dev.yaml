@@ -2,6 +2,9 @@ name: Docker Dev Env Build
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
+  pull_request: { } # TODO temp
 
 jobs:
   build-and-push:
