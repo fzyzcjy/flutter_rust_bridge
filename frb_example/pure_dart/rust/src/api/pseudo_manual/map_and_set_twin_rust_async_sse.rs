@@ -10,9 +10,9 @@ use std::collections::{HashMap, HashSet};
 
 /// flutter_rust_bridge:ignore
 #[derive(Clone, Debug, Default)]
-pub struct CustomHasher(std::collections::hash_map::RandomState);
+pub struct CustomHasherTwinRustAsyncSse(std::collections::hash_map::RandomState);
 
-impl std::hash::BuildHasher for CustomHasher {
+impl std::hash::BuildHasher for CustomHasherTwinRustAsyncSse {
     type Hasher = std::collections::hash_map::DefaultHasher;
 
     fn build_hasher(&self) -> Self::Hasher {
@@ -50,8 +50,8 @@ pub async fn func_hash_map_string_string_twin_rust_async_sse(
 
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn func_hash_map_string_string_hasher_twin_rust_async_sse(
-    arg: HashMap<String, String, CustomHasher>,
-) -> HashMap<String, String, CustomHasher> {
+    arg: HashMap<String, String, CustomHasherTwinRustAsyncSse>,
+) -> HashMap<String, String, CustomHasherTwinRustAsyncSse> {
     arg
 }
 
@@ -62,8 +62,8 @@ pub async fn func_hash_set_string_twin_rust_async_sse(arg: HashSet<String>) -> H
 
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn func_hash_set_string_hasher_twin_rust_async_sse(
-    arg: HashSet<String, CustomHasher>,
-) -> HashSet<String, CustomHasher> {
+    arg: HashSet<String, CustomHasherTwinRustAsyncSse>,
+) -> HashSet<String, CustomHasherTwinRustAsyncSse> {
     arg
 }
 

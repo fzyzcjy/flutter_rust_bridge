@@ -7,12 +7,12 @@ import 'dart:io';
 
 import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
-import '../map_and_set.dart';
 import 'enumeration_twin_sync_sse.dart';
 import 'misc_example_twin_sync_sse.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `build_hasher`, `clone`, `fmt`, `hash_one`
+// These functions are ignored (category: IgnoreBecauseOwnerTyShouldIgnore): `default`
 
 Map<int, int> funcHashMapI32I32TwinSyncSse({required Map<int, int> arg}) =>
     RustLib.instance.api
@@ -69,3 +69,6 @@ Map<String, KitchenSinkTwinSyncSse> funcHashMapStringComplexEnumTwinSyncSse(
     RustLib.instance.api
         .crateApiPseudoManualMapAndSetTwinSyncSseFuncHashMapStringComplexEnumTwinSyncSse(
             arg: arg);
+
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<CustomHasherTwinSyncSse>>
+abstract class CustomHasherTwinSyncSse implements RustOpaqueInterface {}

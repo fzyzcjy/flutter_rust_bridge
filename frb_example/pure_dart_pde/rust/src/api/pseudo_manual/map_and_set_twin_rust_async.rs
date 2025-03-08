@@ -12,9 +12,9 @@ use std::collections::{HashMap, HashSet};
 
 /// flutter_rust_bridge:ignore
 #[derive(Clone, Debug, Default)]
-pub struct CustomHasher(std::collections::hash_map::RandomState);
+pub struct CustomHasherTwinRustAsync(std::collections::hash_map::RandomState);
 
-impl std::hash::BuildHasher for CustomHasher {
+impl std::hash::BuildHasher for CustomHasherTwinRustAsync {
     type Hasher = std::collections::hash_map::DefaultHasher;
 
     fn build_hasher(&self) -> Self::Hasher {
@@ -46,8 +46,8 @@ pub async fn func_hash_map_string_string_twin_rust_async(
 }
 
 pub async fn func_hash_map_string_string_hasher_twin_rust_async(
-    arg: HashMap<String, String, CustomHasher>,
-) -> HashMap<String, String, CustomHasher> {
+    arg: HashMap<String, String, CustomHasherTwinRustAsync>,
+) -> HashMap<String, String, CustomHasherTwinRustAsync> {
     arg
 }
 
@@ -56,8 +56,8 @@ pub async fn func_hash_set_string_twin_rust_async(arg: HashSet<String>) -> HashS
 }
 
 pub async fn func_hash_set_string_hasher_twin_rust_async(
-    arg: HashSet<String, CustomHasher>,
-) -> HashSet<String, CustomHasher> {
+    arg: HashSet<String, CustomHasherTwinRustAsync>,
+) -> HashSet<String, CustomHasherTwinRustAsync> {
     arg
 }
 

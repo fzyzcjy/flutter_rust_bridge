@@ -60,5 +60,5 @@ Future<Map<String, KitchenSinkTwinNormal>>
         RustLib.instance.api
             .crateApiMapAndSetFuncHashMapStringComplexEnumTwinNormal(arg: arg);
 
-// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<CustomHasher>>
-abstract class CustomHasher implements RustOpaqueInterface {}
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<CustomHasherTwinNormal>>
+abstract class CustomHasherTwinNormal implements RustOpaqueInterface {}

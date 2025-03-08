@@ -10,9 +10,9 @@ use std::collections::{HashMap, HashSet};
 
 /// flutter_rust_bridge:ignore
 #[derive(Clone, Debug, Default)]
-pub struct CustomHasher(std::collections::hash_map::RandomState);
+pub struct CustomHasherTwinSyncSse(std::collections::hash_map::RandomState);
 
-impl std::hash::BuildHasher for CustomHasher {
+impl std::hash::BuildHasher for CustomHasherTwinSyncSse {
     type Hasher = std::collections::hash_map::DefaultHasher;
 
     fn build_hasher(&self) -> Self::Hasher {
@@ -52,8 +52,8 @@ pub fn func_hash_map_string_string_twin_sync_sse(
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn func_hash_map_string_string_hasher_twin_sync_sse(
-    arg: HashMap<String, String, CustomHasher>,
-) -> HashMap<String, String, CustomHasher> {
+    arg: HashMap<String, String, CustomHasherTwinSyncSse>,
+) -> HashMap<String, String, CustomHasherTwinSyncSse> {
     arg
 }
 
@@ -66,8 +66,8 @@ pub fn func_hash_set_string_twin_sync_sse(arg: HashSet<String>) -> HashSet<Strin
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
 pub fn func_hash_set_string_hasher_twin_sync_sse(
-    arg: HashSet<String, CustomHasher>,
-) -> HashSet<String, CustomHasher> {
+    arg: HashSet<String, CustomHasherTwinSyncSse>,
+) -> HashSet<String, CustomHasherTwinSyncSse> {
     arg
 }
 
