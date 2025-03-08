@@ -8,6 +8,7 @@ crate-type = ["cdylib"]
 
 [dependencies]
 flutter_rust_bridge = { path = "../../../frb_rust" }
+loro = "1.4.6"
 
 [lints.rust]
 unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }
