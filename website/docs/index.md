@@ -409,7 +409,7 @@ More specifically, thanks for all these contributions:
 * [Integral-Tech](https://github.com/Integral-Tech): Use concat. Fix lint.
 * [Tienisto](https://github.com/Tienisto): Remove default enum case. Add mock init.
 * [satvikpendem](https://github.com/satvikpendem): Add json_serializable. Update CI. Little co-work #989.
-* [anlumo](https://github.com/anlumo): Fix freezed + methods. Non-clone RustOpaque. Update syn.
+* [anlumo](https://github.com/anlumo): Fix freezed + methods. Non-clone RustOpaque. Update syn. Support custom hasher.
 * [temeddix](https://github.com/temeddix): Fix broken CI. Custom num workers. Fix MacOS doc steps. Update doc. Make zero-copy defaultable.
 * [NightFeather0615](https://github.com/NightFeather0615): Fix Vec bool.
 * [fmeef](https://github.com/fmeef): Add cargo feature flag.
