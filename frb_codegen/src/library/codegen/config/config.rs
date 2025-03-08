@@ -92,6 +92,7 @@ generate_merge!(
     enable_lifetime,
     type_64bit_int,
     default_dart_async,
+    auto_upgrade_dependency,
     stop_on_error,
     dump,
     dump_all,
