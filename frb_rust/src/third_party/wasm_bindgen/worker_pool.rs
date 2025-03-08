@@ -20,6 +20,7 @@ use web_sys::{Event, Worker};
 pub struct WorkerPool {
     state: Rc<PoolState>,
     script_src: String,
+    worker_js_preamble: String,
 }
 
 struct PoolState {
@@ -29,6 +30,18 @@ struct PoolState {
 
 #[wasm_bindgen]
 impl WorkerPool {
+    pub fn new(
+        initial: Option<usize>,
+        script_src: Option<String>,
+        worker_js_preamble: Option<String>,
+    ) -> Result<WorkerPool, JsValue> {
+        Self::new_raw(
+            initial.unwrap_or_else(get_wasm_hardware_concurrency),
+            script_src.unwrap_or_else(|| script_path().expect("fail to get script path")),
+            worker_js_preamble.unwrap_or_default(),
+        )
+    }
+
     /// Creates a new `WorkerPool` which immediately creates `initial` workers.
     ///
     /// The pool created here can be used over a long period of time, and it
@@ -40,7 +53,11 @@ impl WorkerPool {
     /// Returns any error that may happen while a JS web worker is created and a
     /// message is sent to it.
     #[wasm_bindgen(constructor)]
-    pub fn new(initial: usize, script_src: String) -> Result<WorkerPool, JsValue> {
+    pub fn new_raw(
+        initial: usize,
+        script_src: String,
+        worker_js_preamble: String,
+    ) -> Result<WorkerPool, JsValue> {
         let pool = WorkerPool {
             script_src,
             state: Rc::new(PoolState {
@@ -53,6 +70,7 @@ impl WorkerPool {
                     }
                 }),
             }),
+            worker_js_preamble,
         };
         for _ in 0..initial {
             let worker = pool.spawn()?;
@@ -72,9 +90,11 @@ impl WorkerPool {
     /// Returns any error that may happen while a JS web worker is created and a
     /// message is sent to it.
     fn spawn(&self) -> Result<Worker, JsValue> {
-        let src = &self.script_src;
+        let worker_js_preamble = &self.worker_js_preamble;
+        let script_src = &self.script_src;
         let script = format!(
-            "importScripts('{}');
+            "{worker_js_preamble}
+            importScripts('{script_src}');
             const FRB_ACTION_PANIC = 3;
             onmessage = event => {{
                 let init = wasm_bindgen(...event.data).catch(err => {{
@@ -97,7 +117,6 @@ impl WorkerPool {
                     }}
                 }}
             }}",
-            src
         );
         let blob = Blob::new_with_blob_sequence_and_options(
             &Array::from_iter([JsValue::from(script)]).into(),
@@ -225,11 +244,7 @@ impl PoolState {
 
 impl Default for WorkerPool {
     fn default() -> Self {
-        Self::new(
-            get_wasm_hardware_concurrency(),
-            script_path().expect("fail to get script path"),
-        )
-        .expect("fail to create WorkerPool")
+        Self::new(None, None, None).expect("fail to create WorkerPool")
     }
 }
 
