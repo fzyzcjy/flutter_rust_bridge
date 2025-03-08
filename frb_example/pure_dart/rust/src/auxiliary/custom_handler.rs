@@ -35,10 +35,35 @@ impl BaseThreadPool for MyCustomThreadPool {
 pub struct MyCustomAsyncRuntime;
 
 impl BaseAsyncRuntime for MyCustomAsyncRuntime {
-    fn spawn<F>(&self, future: F) -> JoinHandle<F::Output>
+    type JoinHandle<O> = JoinHandle<O>;
+
+    #[cfg(not(target_family = "wasm"))]
+    fn spawn<F>(&self, future: F) -> Self::JoinHandle<F::Output>
     where
         F: Future + Send + 'static,
         F::Output: Send + 'static,
+    {
+        unimplemented!()
+    }
+
+    #[cfg(not(target_family = "wasm"))]
+    fn spawn_blocking<F>(&self, func: F) -> Self::JoinHandle<F::Output>
+    where
+        F: FnOnce() + Send + 'static,
+        F::Output: Send + 'static,
+    {
+        unimplemented!()
+    }
+
+    #[cfg(not(target_family = "wasm"))]
+    fn block_on<F: Future>(&self, future: F) -> F::Output {
+        unimplemented!()
+    }
+
+    #[cfg(target_family = "wasm")]
+    fn spawn<F>(&self, future: F)
+    where
+        F: Future<Output = ()> + 'static,
     {
         unimplemented!()
     }
