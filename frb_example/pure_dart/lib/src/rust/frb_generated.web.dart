@@ -668,6 +668,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal;
 
   CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_CustomHasherTwinNormalPtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_CustomHasherTwinRustAsyncPtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_CustomHasherTwinRustAsyncSsePtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsyncSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_CustomHasherTwinSsePtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSse;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_CustomHasherTwinSyncPtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_CustomHasherTwinSyncSsePtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSyncSse;
+
+  CrossPlatformFinalizerArg
       get rust_arc_decrement_strong_count_DeliberateFailSanityCheckTwinNormalPtr =>
           wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal;
 
@@ -1366,6 +1390,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   ConstructorOpaqueSyncStructTwinNormal
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
+          dynamic raw);
+
+  @protected
+  CustomHasherTwinNormal
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
+          dynamic raw);
+
+  @protected
+  CustomHasherTwinRustAsync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsync(
+          dynamic raw);
+
+  @protected
+  CustomHasherTwinRustAsyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  CustomHasherTwinSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSse(
+          dynamic raw);
+
+  @protected
+  CustomHasherTwinSync
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
+          dynamic raw);
+
+  @protected
+  CustomHasherTwinSyncSse
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSyncSse(
           dynamic raw);
 
   @protected
@@ -2736,191 +2790,227 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
-  Map<String, String> dco_decode_Map_String_String(dynamic raw);
+  Map<String, String>
+      dco_decode_Map_String_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
+          dynamic raw);
+
+  @protected
+  Map<String, String>
+      dco_decode_Map_String_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsync(
+          dynamic raw);
+
+  @protected
+  Map<String, String>
+      dco_decode_Map_String_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  Map<String, String>
+      dco_decode_Map_String_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSse(
+          dynamic raw);
+
+  @protected
+  Map<String, String>
+      dco_decode_Map_String_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
+          dynamic raw);
+
+  @protected
+  Map<String, String>
+      dco_decode_Map_String_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  Map<String, String> dco_decode_Map_String_String_None(dynamic raw);
 
   @protected
   Map<String, EnumSimpleTwinNormal>
-      dco_decode_Map_String_enum_simple_twin_normal(dynamic raw);
+      dco_decode_Map_String_enum_simple_twin_normal_None(dynamic raw);
 
   @protected
   Map<String, EnumSimpleTwinRustAsync>
-      dco_decode_Map_String_enum_simple_twin_rust_async(dynamic raw);
+      dco_decode_Map_String_enum_simple_twin_rust_async_None(dynamic raw);
 
   @protected
   Map<String, EnumSimpleTwinRustAsyncSse>
-      dco_decode_Map_String_enum_simple_twin_rust_async_sse(dynamic raw);
+      dco_decode_Map_String_enum_simple_twin_rust_async_sse_None(dynamic raw);
 
   @protected
-  Map<String, EnumSimpleTwinSse> dco_decode_Map_String_enum_simple_twin_sse(
-      dynamic raw);
+  Map<String, EnumSimpleTwinSse>
+      dco_decode_Map_String_enum_simple_twin_sse_None(dynamic raw);
 
   @protected
-  Map<String, EnumSimpleTwinSync> dco_decode_Map_String_enum_simple_twin_sync(
-      dynamic raw);
+  Map<String, EnumSimpleTwinSync>
+      dco_decode_Map_String_enum_simple_twin_sync_None(dynamic raw);
 
   @protected
   Map<String, EnumSimpleTwinSyncSse>
-      dco_decode_Map_String_enum_simple_twin_sync_sse(dynamic raw);
+      dco_decode_Map_String_enum_simple_twin_sync_sse_None(dynamic raw);
 
   @protected
-  Map<String, HashMapValue> dco_decode_Map_String_hash_map_value(dynamic raw);
+  Map<String, HashMapValue> dco_decode_Map_String_hash_map_value_None(
+      dynamic raw);
 
   @protected
   Map<String, KitchenSinkTwinNormal>
-      dco_decode_Map_String_kitchen_sink_twin_normal(dynamic raw);
+      dco_decode_Map_String_kitchen_sink_twin_normal_None(dynamic raw);
 
   @protected
   Map<String, KitchenSinkTwinRustAsync>
-      dco_decode_Map_String_kitchen_sink_twin_rust_async(dynamic raw);
+      dco_decode_Map_String_kitchen_sink_twin_rust_async_None(dynamic raw);
 
   @protected
   Map<String, KitchenSinkTwinRustAsyncSse>
-      dco_decode_Map_String_kitchen_sink_twin_rust_async_sse(dynamic raw);
+      dco_decode_Map_String_kitchen_sink_twin_rust_async_sse_None(dynamic raw);
 
   @protected
-  Map<String, KitchenSinkTwinSse> dco_decode_Map_String_kitchen_sink_twin_sse(
-      dynamic raw);
+  Map<String, KitchenSinkTwinSse>
+      dco_decode_Map_String_kitchen_sink_twin_sse_None(dynamic raw);
 
   @protected
-  Map<String, KitchenSinkTwinSync> dco_decode_Map_String_kitchen_sink_twin_sync(
-      dynamic raw);
+  Map<String, KitchenSinkTwinSync>
+      dco_decode_Map_String_kitchen_sink_twin_sync_None(dynamic raw);
 
   @protected
   Map<String, KitchenSinkTwinSyncSse>
-      dco_decode_Map_String_kitchen_sink_twin_sync_sse(dynamic raw);
+      dco_decode_Map_String_kitchen_sink_twin_sync_sse_None(dynamic raw);
 
   @protected
-  Map<String, Uint8List> dco_decode_Map_String_list_prim_u_8_strict(
+  Map<String, Uint8List> dco_decode_Map_String_list_prim_u_8_strict_None(
       dynamic raw);
 
   @protected
-  Map<String, MySize> dco_decode_Map_String_my_size(dynamic raw);
+  Map<String, MySize> dco_decode_Map_String_my_size_None(dynamic raw);
 
   @protected
-  Map<int, BigInt> dco_decode_Map_i_32_I128(dynamic raw);
+  Map<int, BigInt> dco_decode_Map_i_32_I128_None(dynamic raw);
 
   @protected
-  Map<int, String> dco_decode_Map_i_32_String(dynamic raw);
+  Map<int, String> dco_decode_Map_i_32_String_None(dynamic raw);
 
   @protected
-  Map<int, BigInt> dco_decode_Map_i_32_U128(dynamic raw);
+  Map<int, BigInt> dco_decode_Map_i_32_U128_None(dynamic raw);
 
   @protected
   Map<int, BasicGeneralEnumTwinNormal>
-      dco_decode_Map_i_32_basic_general_enum_twin_normal(dynamic raw);
+      dco_decode_Map_i_32_basic_general_enum_twin_normal_None(dynamic raw);
 
   @protected
   Map<int, BasicGeneralEnumTwinRustAsync>
-      dco_decode_Map_i_32_basic_general_enum_twin_rust_async(dynamic raw);
+      dco_decode_Map_i_32_basic_general_enum_twin_rust_async_None(dynamic raw);
 
   @protected
   Map<int, BasicGeneralEnumTwinRustAsyncSse>
-      dco_decode_Map_i_32_basic_general_enum_twin_rust_async_sse(dynamic raw);
+      dco_decode_Map_i_32_basic_general_enum_twin_rust_async_sse_None(
+          dynamic raw);
 
   @protected
   Map<int, BasicGeneralEnumTwinSse>
-      dco_decode_Map_i_32_basic_general_enum_twin_sse(dynamic raw);
+      dco_decode_Map_i_32_basic_general_enum_twin_sse_None(dynamic raw);
 
   @protected
   Map<int, BasicGeneralEnumTwinSync>
-      dco_decode_Map_i_32_basic_general_enum_twin_sync(dynamic raw);
+      dco_decode_Map_i_32_basic_general_enum_twin_sync_None(dynamic raw);
 
   @protected
   Map<int, BasicGeneralEnumTwinSyncSse>
-      dco_decode_Map_i_32_basic_general_enum_twin_sync_sse(dynamic raw);
+      dco_decode_Map_i_32_basic_general_enum_twin_sync_sse_None(dynamic raw);
 
   @protected
   Map<int, BasicPrimitiveEnumTwinNormal>
-      dco_decode_Map_i_32_basic_primitive_enum_twin_normal(dynamic raw);
+      dco_decode_Map_i_32_basic_primitive_enum_twin_normal_None(dynamic raw);
 
   @protected
   Map<int, BasicPrimitiveEnumTwinRustAsync>
-      dco_decode_Map_i_32_basic_primitive_enum_twin_rust_async(dynamic raw);
+      dco_decode_Map_i_32_basic_primitive_enum_twin_rust_async_None(
+          dynamic raw);
 
   @protected
   Map<int, BasicPrimitiveEnumTwinRustAsyncSse>
-      dco_decode_Map_i_32_basic_primitive_enum_twin_rust_async_sse(dynamic raw);
+      dco_decode_Map_i_32_basic_primitive_enum_twin_rust_async_sse_None(
+          dynamic raw);
 
   @protected
   Map<int, BasicPrimitiveEnumTwinSse>
-      dco_decode_Map_i_32_basic_primitive_enum_twin_sse(dynamic raw);
+      dco_decode_Map_i_32_basic_primitive_enum_twin_sse_None(dynamic raw);
 
   @protected
   Map<int, BasicPrimitiveEnumTwinSync>
-      dco_decode_Map_i_32_basic_primitive_enum_twin_sync(dynamic raw);
+      dco_decode_Map_i_32_basic_primitive_enum_twin_sync_None(dynamic raw);
 
   @protected
   Map<int, BasicPrimitiveEnumTwinSyncSse>
-      dco_decode_Map_i_32_basic_primitive_enum_twin_sync_sse(dynamic raw);
+      dco_decode_Map_i_32_basic_primitive_enum_twin_sync_sse_None(dynamic raw);
 
   @protected
-  Map<int, BasicStructTwinNormal> dco_decode_Map_i_32_basic_struct_twin_normal(
-      dynamic raw);
+  Map<int, BasicStructTwinNormal>
+      dco_decode_Map_i_32_basic_struct_twin_normal_None(dynamic raw);
 
   @protected
   Map<int, BasicStructTwinRustAsync>
-      dco_decode_Map_i_32_basic_struct_twin_rust_async(dynamic raw);
+      dco_decode_Map_i_32_basic_struct_twin_rust_async_None(dynamic raw);
 
   @protected
   Map<int, BasicStructTwinRustAsyncSse>
-      dco_decode_Map_i_32_basic_struct_twin_rust_async_sse(dynamic raw);
+      dco_decode_Map_i_32_basic_struct_twin_rust_async_sse_None(dynamic raw);
 
   @protected
-  Map<int, BasicStructTwinSse> dco_decode_Map_i_32_basic_struct_twin_sse(
+  Map<int, BasicStructTwinSse> dco_decode_Map_i_32_basic_struct_twin_sse_None(
       dynamic raw);
 
   @protected
-  Map<int, BasicStructTwinSync> dco_decode_Map_i_32_basic_struct_twin_sync(
+  Map<int, BasicStructTwinSync> dco_decode_Map_i_32_basic_struct_twin_sync_None(
       dynamic raw);
 
   @protected
   Map<int, BasicStructTwinSyncSse>
-      dco_decode_Map_i_32_basic_struct_twin_sync_sse(dynamic raw);
+      dco_decode_Map_i_32_basic_struct_twin_sync_sse_None(dynamic raw);
 
   @protected
-  Map<int, bool> dco_decode_Map_i_32_bool(dynamic raw);
+  Map<int, bool> dco_decode_Map_i_32_bool_None(dynamic raw);
 
   @protected
-  Map<int, double> dco_decode_Map_i_32_f_32(dynamic raw);
+  Map<int, double> dco_decode_Map_i_32_f_32_None(dynamic raw);
 
   @protected
-  Map<int, double> dco_decode_Map_i_32_f_64(dynamic raw);
+  Map<int, double> dco_decode_Map_i_32_f_64_None(dynamic raw);
 
   @protected
-  Map<int, int> dco_decode_Map_i_32_i_16(dynamic raw);
+  Map<int, int> dco_decode_Map_i_32_i_16_None(dynamic raw);
 
   @protected
-  Map<int, int> dco_decode_Map_i_32_i_32(dynamic raw);
+  Map<int, int> dco_decode_Map_i_32_i_32_None(dynamic raw);
 
   @protected
-  Map<int, PlatformInt64> dco_decode_Map_i_32_i_64(dynamic raw);
+  Map<int, PlatformInt64> dco_decode_Map_i_32_i_64_None(dynamic raw);
 
   @protected
-  Map<int, int> dco_decode_Map_i_32_i_8(dynamic raw);
+  Map<int, int> dco_decode_Map_i_32_i_8_None(dynamic raw);
 
   @protected
-  Map<int, PlatformInt64> dco_decode_Map_i_32_isize(dynamic raw);
+  Map<int, PlatformInt64> dco_decode_Map_i_32_isize_None(dynamic raw);
 
   @protected
-  Map<int, Uint8List> dco_decode_Map_i_32_list_prim_u_8_strict(dynamic raw);
+  Map<int, Uint8List> dco_decode_Map_i_32_list_prim_u_8_strict_None(
+      dynamic raw);
 
   @protected
-  Map<int, int> dco_decode_Map_i_32_u_16(dynamic raw);
+  Map<int, int> dco_decode_Map_i_32_u_16_None(dynamic raw);
 
   @protected
-  Map<int, int> dco_decode_Map_i_32_u_32(dynamic raw);
+  Map<int, int> dco_decode_Map_i_32_u_32_None(dynamic raw);
 
   @protected
-  Map<int, BigInt> dco_decode_Map_i_32_u_64(dynamic raw);
+  Map<int, BigInt> dco_decode_Map_i_32_u_64_None(dynamic raw);
 
   @protected
-  Map<int, int> dco_decode_Map_i_32_u_8(dynamic raw);
+  Map<int, int> dco_decode_Map_i_32_u_8_None(dynamic raw);
 
   @protected
-  Map<int, BigInt> dco_decode_Map_i_32_usize(dynamic raw);
+  Map<int, BigInt> dco_decode_Map_i_32_usize_None(dynamic raw);
 
   @protected
-  Map<int, ApplicationMode> dco_decode_Map_u_8_application_mode(dynamic raw);
+  Map<int, ApplicationMode> dco_decode_Map_u_8_application_mode_None(
+      dynamic raw);
 
   @protected
   MyAudioParamTwinNormal
@@ -3369,6 +3459,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   ConstructorOpaqueSyncStructTwinNormal
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
+          dynamic raw);
+
+  @protected
+  CustomHasherTwinNormal
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
+          dynamic raw);
+
+  @protected
+  CustomHasherTwinRustAsync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsync(
+          dynamic raw);
+
+  @protected
+  CustomHasherTwinRustAsyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  CustomHasherTwinSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSse(
+          dynamic raw);
+
+  @protected
+  CustomHasherTwinSync
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
+          dynamic raw);
+
+  @protected
+  CustomHasherTwinSyncSse
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSyncSse(
           dynamic raw);
 
   @protected
@@ -3993,13 +4113,43 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   I32 dco_decode_RustOpaque_i32(dynamic raw);
 
   @protected
-  Set<String> dco_decode_Set_String(dynamic raw);
+  Set<String>
+      dco_decode_Set_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
+          dynamic raw);
 
   @protected
-  Set<ApplicationMode> dco_decode_Set_application_mode(dynamic raw);
+  Set<String>
+      dco_decode_Set_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsync(
+          dynamic raw);
 
   @protected
-  Set<int> dco_decode_Set_i_32(dynamic raw);
+  Set<String>
+      dco_decode_Set_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsyncSse(
+          dynamic raw);
+
+  @protected
+  Set<String>
+      dco_decode_Set_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSse(
+          dynamic raw);
+
+  @protected
+  Set<String>
+      dco_decode_Set_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
+          dynamic raw);
+
+  @protected
+  Set<String>
+      dco_decode_Set_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSyncSse(
+          dynamic raw);
+
+  @protected
+  Set<String> dco_decode_Set_String_None(dynamic raw);
+
+  @protected
+  Set<ApplicationMode> dco_decode_Set_application_mode_None(dynamic raw);
+
+  @protected
+  Set<int> dco_decode_Set_i_32_None(dynamic raw);
 
   @protected
   RustStreamSink<NonCloneSimpleTwinMoi>
@@ -4063,19 +4213,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   RustStreamSink<Map<int, ApplicationMode>>
-      dco_decode_StreamSink_Map_u_8_application_mode_Dco(dynamic raw);
+      dco_decode_StreamSink_Map_u_8_application_mode_None_Dco(dynamic raw);
 
   @protected
   RustStreamSink<Map<int, ApplicationMode>>
-      dco_decode_StreamSink_Map_u_8_application_mode_Sse(dynamic raw);
+      dco_decode_StreamSink_Map_u_8_application_mode_None_Sse(dynamic raw);
 
   @protected
   RustStreamSink<Set<ApplicationMode>>
-      dco_decode_StreamSink_Set_application_mode_Dco(dynamic raw);
+      dco_decode_StreamSink_Set_application_mode_None_Dco(dynamic raw);
 
   @protected
   RustStreamSink<Set<ApplicationMode>>
-      dco_decode_StreamSink_Set_application_mode_Sse(dynamic raw);
+      dco_decode_StreamSink_Set_application_mode_None_Sse(dynamic raw);
 
   @protected
   RustStreamSink<String> dco_decode_StreamSink_String_Dco(dynamic raw);
@@ -10451,6 +10601,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  CustomHasherTwinNormal
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomHasherTwinRustAsync
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsync(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomHasherTwinRustAsyncSse
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomHasherTwinSse
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSse(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomHasherTwinSync
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomHasherTwinSyncSse
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
   DeliberateFailSanityCheckTwinNormal
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
           SseDeserializer deserializer);
@@ -11748,220 +11928,256 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
-  Map<String, String> sse_decode_Map_String_String(
+  Map<String, String>
+      sse_decode_Map_String_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  Map<String, String>
+      sse_decode_Map_String_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsync(
+          SseDeserializer deserializer);
+
+  @protected
+  Map<String, String>
+      sse_decode_Map_String_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  Map<String, String>
+      sse_decode_Map_String_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSse(
+          SseDeserializer deserializer);
+
+  @protected
+  Map<String, String>
+      sse_decode_Map_String_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  Map<String, String>
+      sse_decode_Map_String_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  Map<String, String> sse_decode_Map_String_String_None(
       SseDeserializer deserializer);
 
   @protected
   Map<String, EnumSimpleTwinNormal>
-      sse_decode_Map_String_enum_simple_twin_normal(
+      sse_decode_Map_String_enum_simple_twin_normal_None(
           SseDeserializer deserializer);
 
   @protected
   Map<String, EnumSimpleTwinRustAsync>
-      sse_decode_Map_String_enum_simple_twin_rust_async(
+      sse_decode_Map_String_enum_simple_twin_rust_async_None(
           SseDeserializer deserializer);
 
   @protected
   Map<String, EnumSimpleTwinRustAsyncSse>
-      sse_decode_Map_String_enum_simple_twin_rust_async_sse(
+      sse_decode_Map_String_enum_simple_twin_rust_async_sse_None(
           SseDeserializer deserializer);
 
   @protected
-  Map<String, EnumSimpleTwinSse> sse_decode_Map_String_enum_simple_twin_sse(
-      SseDeserializer deserializer);
+  Map<String, EnumSimpleTwinSse>
+      sse_decode_Map_String_enum_simple_twin_sse_None(
+          SseDeserializer deserializer);
 
   @protected
-  Map<String, EnumSimpleTwinSync> sse_decode_Map_String_enum_simple_twin_sync(
-      SseDeserializer deserializer);
+  Map<String, EnumSimpleTwinSync>
+      sse_decode_Map_String_enum_simple_twin_sync_None(
+          SseDeserializer deserializer);
 
   @protected
   Map<String, EnumSimpleTwinSyncSse>
-      sse_decode_Map_String_enum_simple_twin_sync_sse(
+      sse_decode_Map_String_enum_simple_twin_sync_sse_None(
           SseDeserializer deserializer);
 
   @protected
-  Map<String, HashMapValue> sse_decode_Map_String_hash_map_value(
+  Map<String, HashMapValue> sse_decode_Map_String_hash_map_value_None(
       SseDeserializer deserializer);
 
   @protected
   Map<String, KitchenSinkTwinNormal>
-      sse_decode_Map_String_kitchen_sink_twin_normal(
+      sse_decode_Map_String_kitchen_sink_twin_normal_None(
           SseDeserializer deserializer);
 
   @protected
   Map<String, KitchenSinkTwinRustAsync>
-      sse_decode_Map_String_kitchen_sink_twin_rust_async(
+      sse_decode_Map_String_kitchen_sink_twin_rust_async_None(
           SseDeserializer deserializer);
 
   @protected
   Map<String, KitchenSinkTwinRustAsyncSse>
-      sse_decode_Map_String_kitchen_sink_twin_rust_async_sse(
+      sse_decode_Map_String_kitchen_sink_twin_rust_async_sse_None(
           SseDeserializer deserializer);
 
   @protected
-  Map<String, KitchenSinkTwinSse> sse_decode_Map_String_kitchen_sink_twin_sse(
-      SseDeserializer deserializer);
+  Map<String, KitchenSinkTwinSse>
+      sse_decode_Map_String_kitchen_sink_twin_sse_None(
+          SseDeserializer deserializer);
 
   @protected
-  Map<String, KitchenSinkTwinSync> sse_decode_Map_String_kitchen_sink_twin_sync(
-      SseDeserializer deserializer);
+  Map<String, KitchenSinkTwinSync>
+      sse_decode_Map_String_kitchen_sink_twin_sync_None(
+          SseDeserializer deserializer);
 
   @protected
   Map<String, KitchenSinkTwinSyncSse>
-      sse_decode_Map_String_kitchen_sink_twin_sync_sse(
+      sse_decode_Map_String_kitchen_sink_twin_sync_sse_None(
           SseDeserializer deserializer);
 
   @protected
-  Map<String, Uint8List> sse_decode_Map_String_list_prim_u_8_strict(
+  Map<String, Uint8List> sse_decode_Map_String_list_prim_u_8_strict_None(
       SseDeserializer deserializer);
 
   @protected
-  Map<String, MySize> sse_decode_Map_String_my_size(
+  Map<String, MySize> sse_decode_Map_String_my_size_None(
       SseDeserializer deserializer);
 
   @protected
-  Map<int, BigInt> sse_decode_Map_i_32_I128(SseDeserializer deserializer);
+  Map<int, BigInt> sse_decode_Map_i_32_I128_None(SseDeserializer deserializer);
 
   @protected
-  Map<int, String> sse_decode_Map_i_32_String(SseDeserializer deserializer);
+  Map<int, String> sse_decode_Map_i_32_String_None(
+      SseDeserializer deserializer);
 
   @protected
-  Map<int, BigInt> sse_decode_Map_i_32_U128(SseDeserializer deserializer);
+  Map<int, BigInt> sse_decode_Map_i_32_U128_None(SseDeserializer deserializer);
 
   @protected
   Map<int, BasicGeneralEnumTwinNormal>
-      sse_decode_Map_i_32_basic_general_enum_twin_normal(
+      sse_decode_Map_i_32_basic_general_enum_twin_normal_None(
           SseDeserializer deserializer);
 
   @protected
   Map<int, BasicGeneralEnumTwinRustAsync>
-      sse_decode_Map_i_32_basic_general_enum_twin_rust_async(
+      sse_decode_Map_i_32_basic_general_enum_twin_rust_async_None(
           SseDeserializer deserializer);
 
   @protected
   Map<int, BasicGeneralEnumTwinRustAsyncSse>
-      sse_decode_Map_i_32_basic_general_enum_twin_rust_async_sse(
+      sse_decode_Map_i_32_basic_general_enum_twin_rust_async_sse_None(
           SseDeserializer deserializer);
 
   @protected
   Map<int, BasicGeneralEnumTwinSse>
-      sse_decode_Map_i_32_basic_general_enum_twin_sse(
+      sse_decode_Map_i_32_basic_general_enum_twin_sse_None(
           SseDeserializer deserializer);
 
   @protected
   Map<int, BasicGeneralEnumTwinSync>
-      sse_decode_Map_i_32_basic_general_enum_twin_sync(
+      sse_decode_Map_i_32_basic_general_enum_twin_sync_None(
           SseDeserializer deserializer);
 
   @protected
   Map<int, BasicGeneralEnumTwinSyncSse>
-      sse_decode_Map_i_32_basic_general_enum_twin_sync_sse(
+      sse_decode_Map_i_32_basic_general_enum_twin_sync_sse_None(
           SseDeserializer deserializer);
 
   @protected
   Map<int, BasicPrimitiveEnumTwinNormal>
-      sse_decode_Map_i_32_basic_primitive_enum_twin_normal(
+      sse_decode_Map_i_32_basic_primitive_enum_twin_normal_None(
           SseDeserializer deserializer);
 
   @protected
   Map<int, BasicPrimitiveEnumTwinRustAsync>
-      sse_decode_Map_i_32_basic_primitive_enum_twin_rust_async(
+      sse_decode_Map_i_32_basic_primitive_enum_twin_rust_async_None(
           SseDeserializer deserializer);
 
   @protected
   Map<int, BasicPrimitiveEnumTwinRustAsyncSse>
-      sse_decode_Map_i_32_basic_primitive_enum_twin_rust_async_sse(
+      sse_decode_Map_i_32_basic_primitive_enum_twin_rust_async_sse_None(
           SseDeserializer deserializer);
 
   @protected
   Map<int, BasicPrimitiveEnumTwinSse>
-      sse_decode_Map_i_32_basic_primitive_enum_twin_sse(
+      sse_decode_Map_i_32_basic_primitive_enum_twin_sse_None(
           SseDeserializer deserializer);
 
   @protected
   Map<int, BasicPrimitiveEnumTwinSync>
-      sse_decode_Map_i_32_basic_primitive_enum_twin_sync(
+      sse_decode_Map_i_32_basic_primitive_enum_twin_sync_None(
           SseDeserializer deserializer);
 
   @protected
   Map<int, BasicPrimitiveEnumTwinSyncSse>
-      sse_decode_Map_i_32_basic_primitive_enum_twin_sync_sse(
+      sse_decode_Map_i_32_basic_primitive_enum_twin_sync_sse_None(
           SseDeserializer deserializer);
 
   @protected
-  Map<int, BasicStructTwinNormal> sse_decode_Map_i_32_basic_struct_twin_normal(
-      SseDeserializer deserializer);
+  Map<int, BasicStructTwinNormal>
+      sse_decode_Map_i_32_basic_struct_twin_normal_None(
+          SseDeserializer deserializer);
 
   @protected
   Map<int, BasicStructTwinRustAsync>
-      sse_decode_Map_i_32_basic_struct_twin_rust_async(
+      sse_decode_Map_i_32_basic_struct_twin_rust_async_None(
           SseDeserializer deserializer);
 
   @protected
   Map<int, BasicStructTwinRustAsyncSse>
-      sse_decode_Map_i_32_basic_struct_twin_rust_async_sse(
+      sse_decode_Map_i_32_basic_struct_twin_rust_async_sse_None(
           SseDeserializer deserializer);
 
   @protected
-  Map<int, BasicStructTwinSse> sse_decode_Map_i_32_basic_struct_twin_sse(
+  Map<int, BasicStructTwinSse> sse_decode_Map_i_32_basic_struct_twin_sse_None(
       SseDeserializer deserializer);
 
   @protected
-  Map<int, BasicStructTwinSync> sse_decode_Map_i_32_basic_struct_twin_sync(
+  Map<int, BasicStructTwinSync> sse_decode_Map_i_32_basic_struct_twin_sync_None(
       SseDeserializer deserializer);
 
   @protected
   Map<int, BasicStructTwinSyncSse>
-      sse_decode_Map_i_32_basic_struct_twin_sync_sse(
+      sse_decode_Map_i_32_basic_struct_twin_sync_sse_None(
           SseDeserializer deserializer);
 
   @protected
-  Map<int, bool> sse_decode_Map_i_32_bool(SseDeserializer deserializer);
+  Map<int, bool> sse_decode_Map_i_32_bool_None(SseDeserializer deserializer);
 
   @protected
-  Map<int, double> sse_decode_Map_i_32_f_32(SseDeserializer deserializer);
+  Map<int, double> sse_decode_Map_i_32_f_32_None(SseDeserializer deserializer);
 
   @protected
-  Map<int, double> sse_decode_Map_i_32_f_64(SseDeserializer deserializer);
+  Map<int, double> sse_decode_Map_i_32_f_64_None(SseDeserializer deserializer);
 
   @protected
-  Map<int, int> sse_decode_Map_i_32_i_16(SseDeserializer deserializer);
+  Map<int, int> sse_decode_Map_i_32_i_16_None(SseDeserializer deserializer);
 
   @protected
-  Map<int, int> sse_decode_Map_i_32_i_32(SseDeserializer deserializer);
+  Map<int, int> sse_decode_Map_i_32_i_32_None(SseDeserializer deserializer);
 
   @protected
-  Map<int, PlatformInt64> sse_decode_Map_i_32_i_64(
+  Map<int, PlatformInt64> sse_decode_Map_i_32_i_64_None(
       SseDeserializer deserializer);
 
   @protected
-  Map<int, int> sse_decode_Map_i_32_i_8(SseDeserializer deserializer);
+  Map<int, int> sse_decode_Map_i_32_i_8_None(SseDeserializer deserializer);
 
   @protected
-  Map<int, PlatformInt64> sse_decode_Map_i_32_isize(
+  Map<int, PlatformInt64> sse_decode_Map_i_32_isize_None(
       SseDeserializer deserializer);
 
   @protected
-  Map<int, Uint8List> sse_decode_Map_i_32_list_prim_u_8_strict(
+  Map<int, Uint8List> sse_decode_Map_i_32_list_prim_u_8_strict_None(
       SseDeserializer deserializer);
 
   @protected
-  Map<int, int> sse_decode_Map_i_32_u_16(SseDeserializer deserializer);
+  Map<int, int> sse_decode_Map_i_32_u_16_None(SseDeserializer deserializer);
 
   @protected
-  Map<int, int> sse_decode_Map_i_32_u_32(SseDeserializer deserializer);
+  Map<int, int> sse_decode_Map_i_32_u_32_None(SseDeserializer deserializer);
 
   @protected
-  Map<int, BigInt> sse_decode_Map_i_32_u_64(SseDeserializer deserializer);
+  Map<int, BigInt> sse_decode_Map_i_32_u_64_None(SseDeserializer deserializer);
 
   @protected
-  Map<int, int> sse_decode_Map_i_32_u_8(SseDeserializer deserializer);
+  Map<int, int> sse_decode_Map_i_32_u_8_None(SseDeserializer deserializer);
 
   @protected
-  Map<int, BigInt> sse_decode_Map_i_32_usize(SseDeserializer deserializer);
+  Map<int, BigInt> sse_decode_Map_i_32_usize_None(SseDeserializer deserializer);
 
   @protected
-  Map<int, ApplicationMode> sse_decode_Map_u_8_application_mode(
+  Map<int, ApplicationMode> sse_decode_Map_u_8_application_mode_None(
       SseDeserializer deserializer);
 
   @protected
@@ -12451,6 +12667,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   ConstructorOpaqueSyncStructTwinNormal
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomHasherTwinNormal
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomHasherTwinRustAsync
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsync(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomHasherTwinRustAsyncSse
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomHasherTwinSse
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSse(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomHasherTwinSync
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  CustomHasherTwinSyncSse
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSyncSse(
           SseDeserializer deserializer);
 
   @protected
@@ -13075,14 +13321,44 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   I32 sse_decode_RustOpaque_i32(SseDeserializer deserializer);
 
   @protected
-  Set<String> sse_decode_Set_String(SseDeserializer deserializer);
+  Set<String>
+      sse_decode_Set_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
+          SseDeserializer deserializer);
 
   @protected
-  Set<ApplicationMode> sse_decode_Set_application_mode(
+  Set<String>
+      sse_decode_Set_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsync(
+          SseDeserializer deserializer);
+
+  @protected
+  Set<String>
+      sse_decode_Set_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  Set<String>
+      sse_decode_Set_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSse(
+          SseDeserializer deserializer);
+
+  @protected
+  Set<String>
+      sse_decode_Set_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
+          SseDeserializer deserializer);
+
+  @protected
+  Set<String>
+      sse_decode_Set_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSyncSse(
+          SseDeserializer deserializer);
+
+  @protected
+  Set<String> sse_decode_Set_String_None(SseDeserializer deserializer);
+
+  @protected
+  Set<ApplicationMode> sse_decode_Set_application_mode_None(
       SseDeserializer deserializer);
 
   @protected
-  Set<int> sse_decode_Set_i_32(SseDeserializer deserializer);
+  Set<int> sse_decode_Set_i_32_None(SseDeserializer deserializer);
 
   @protected
   RustStreamSink<NonCloneSimpleTwinMoi>
@@ -13146,22 +13422,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   RustStreamSink<Map<int, ApplicationMode>>
-      sse_decode_StreamSink_Map_u_8_application_mode_Dco(
+      sse_decode_StreamSink_Map_u_8_application_mode_None_Dco(
           SseDeserializer deserializer);
 
   @protected
   RustStreamSink<Map<int, ApplicationMode>>
-      sse_decode_StreamSink_Map_u_8_application_mode_Sse(
+      sse_decode_StreamSink_Map_u_8_application_mode_None_Sse(
           SseDeserializer deserializer);
 
   @protected
   RustStreamSink<Set<ApplicationMode>>
-      sse_decode_StreamSink_Set_application_mode_Dco(
+      sse_decode_StreamSink_Set_application_mode_None_Dco(
           SseDeserializer deserializer);
 
   @protected
   RustStreamSink<Set<ApplicationMode>>
-      sse_decode_StreamSink_Set_application_mode_Sse(
+      sse_decode_StreamSink_Set_application_mode_None_Sse(
           SseDeserializer deserializer);
 
   @protected
@@ -20246,14 +20522,41 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  JSAny cst_encode_Map_String_String(Map<String, String> raw) {
+  JSAny
+      cst_encode_Map_String_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
+          Map<String, String> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_string_string(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  JSAny cst_encode_Map_String_enum_simple_twin_normal(
+  JSAny
+      cst_encode_Map_String_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsync(
+          Map<String, String> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_list_record_string_string(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  JSAny
+      cst_encode_Map_String_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
+          Map<String, String> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_list_record_string_string(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  JSAny cst_encode_Map_String_String_None(Map<String, String> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_list_record_string_string(
+        raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  JSAny cst_encode_Map_String_enum_simple_twin_normal_None(
       Map<String, EnumSimpleTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_string_enum_simple_twin_normal(
@@ -20261,7 +20564,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  JSAny cst_encode_Map_String_enum_simple_twin_rust_async(
+  JSAny cst_encode_Map_String_enum_simple_twin_rust_async_None(
       Map<String, EnumSimpleTwinRustAsync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_string_enum_simple_twin_rust_async(
@@ -20269,7 +20572,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  JSAny cst_encode_Map_String_enum_simple_twin_sync(
+  JSAny cst_encode_Map_String_enum_simple_twin_sync_None(
       Map<String, EnumSimpleTwinSync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_string_enum_simple_twin_sync(
@@ -20277,14 +20580,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  JSAny cst_encode_Map_String_hash_map_value(Map<String, HashMapValue> raw) {
+  JSAny cst_encode_Map_String_hash_map_value_None(
+      Map<String, HashMapValue> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_string_hash_map_value(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  JSAny cst_encode_Map_String_kitchen_sink_twin_normal(
+  JSAny cst_encode_Map_String_kitchen_sink_twin_normal_None(
       Map<String, KitchenSinkTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_string_kitchen_sink_twin_normal(
@@ -20292,7 +20596,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  JSAny cst_encode_Map_String_kitchen_sink_twin_rust_async(
+  JSAny cst_encode_Map_String_kitchen_sink_twin_rust_async_None(
       Map<String, KitchenSinkTwinRustAsync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_string_kitchen_sink_twin_rust_async(
@@ -20300,7 +20604,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  JSAny cst_encode_Map_String_kitchen_sink_twin_sync(
+  JSAny cst_encode_Map_String_kitchen_sink_twin_sync_None(
       Map<String, KitchenSinkTwinSync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_string_kitchen_sink_twin_sync(
@@ -20308,42 +20612,43 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  JSAny cst_encode_Map_String_list_prim_u_8_strict(Map<String, Uint8List> raw) {
+  JSAny cst_encode_Map_String_list_prim_u_8_strict_None(
+      Map<String, Uint8List> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_string_list_prim_u_8_strict(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  JSAny cst_encode_Map_String_my_size(Map<String, MySize> raw) {
+  JSAny cst_encode_Map_String_my_size_None(Map<String, MySize> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_string_my_size(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  JSAny cst_encode_Map_i_32_I128(Map<int, BigInt> raw) {
+  JSAny cst_encode_Map_i_32_I128_None(Map<int, BigInt> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_i_128(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  JSAny cst_encode_Map_i_32_String(Map<int, String> raw) {
+  JSAny cst_encode_Map_i_32_String_None(Map<int, String> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_string(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  JSAny cst_encode_Map_i_32_U128(Map<int, BigInt> raw) {
+  JSAny cst_encode_Map_i_32_U128_None(Map<int, BigInt> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_u_128(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  JSAny cst_encode_Map_i_32_basic_general_enum_twin_normal(
+  JSAny cst_encode_Map_i_32_basic_general_enum_twin_normal_None(
       Map<int, BasicGeneralEnumTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_basic_general_enum_twin_normal(
@@ -20351,7 +20656,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  JSAny cst_encode_Map_i_32_basic_general_enum_twin_rust_async(
+  JSAny cst_encode_Map_i_32_basic_general_enum_twin_rust_async_None(
       Map<int, BasicGeneralEnumTwinRustAsync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_basic_general_enum_twin_rust_async(
@@ -20359,7 +20664,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  JSAny cst_encode_Map_i_32_basic_general_enum_twin_sync(
+  JSAny cst_encode_Map_i_32_basic_general_enum_twin_sync_None(
       Map<int, BasicGeneralEnumTwinSync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_basic_general_enum_twin_sync(
@@ -20367,7 +20672,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  JSAny cst_encode_Map_i_32_basic_primitive_enum_twin_normal(
+  JSAny cst_encode_Map_i_32_basic_primitive_enum_twin_normal_None(
       Map<int, BasicPrimitiveEnumTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_basic_primitive_enum_twin_normal(
@@ -20375,7 +20680,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  JSAny cst_encode_Map_i_32_basic_primitive_enum_twin_rust_async(
+  JSAny cst_encode_Map_i_32_basic_primitive_enum_twin_rust_async_None(
       Map<int, BasicPrimitiveEnumTwinRustAsync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_basic_primitive_enum_twin_rust_async(
@@ -20383,7 +20688,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  JSAny cst_encode_Map_i_32_basic_primitive_enum_twin_sync(
+  JSAny cst_encode_Map_i_32_basic_primitive_enum_twin_sync_None(
       Map<int, BasicPrimitiveEnumTwinSync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_basic_primitive_enum_twin_sync(
@@ -20391,7 +20696,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  JSAny cst_encode_Map_i_32_basic_struct_twin_normal(
+  JSAny cst_encode_Map_i_32_basic_struct_twin_normal_None(
       Map<int, BasicStructTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_basic_struct_twin_normal(
@@ -20399,7 +20704,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  JSAny cst_encode_Map_i_32_basic_struct_twin_rust_async(
+  JSAny cst_encode_Map_i_32_basic_struct_twin_rust_async_None(
       Map<int, BasicStructTwinRustAsync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_basic_struct_twin_rust_async(
@@ -20407,7 +20712,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  JSAny cst_encode_Map_i_32_basic_struct_twin_sync(
+  JSAny cst_encode_Map_i_32_basic_struct_twin_sync_None(
       Map<int, BasicStructTwinSync> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_basic_struct_twin_sync(
@@ -20415,105 +20720,106 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  JSAny cst_encode_Map_i_32_bool(Map<int, bool> raw) {
+  JSAny cst_encode_Map_i_32_bool_None(Map<int, bool> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_bool(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  JSAny cst_encode_Map_i_32_f_32(Map<int, double> raw) {
+  JSAny cst_encode_Map_i_32_f_32_None(Map<int, double> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_f_32(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  JSAny cst_encode_Map_i_32_f_64(Map<int, double> raw) {
+  JSAny cst_encode_Map_i_32_f_64_None(Map<int, double> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_f_64(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  JSAny cst_encode_Map_i_32_i_16(Map<int, int> raw) {
+  JSAny cst_encode_Map_i_32_i_16_None(Map<int, int> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_i_16(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  JSAny cst_encode_Map_i_32_i_32(Map<int, int> raw) {
+  JSAny cst_encode_Map_i_32_i_32_None(Map<int, int> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_i_32(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  JSAny cst_encode_Map_i_32_i_64(Map<int, PlatformInt64> raw) {
+  JSAny cst_encode_Map_i_32_i_64_None(Map<int, PlatformInt64> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_i_64(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  JSAny cst_encode_Map_i_32_i_8(Map<int, int> raw) {
+  JSAny cst_encode_Map_i_32_i_8_None(Map<int, int> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_i_8(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  JSAny cst_encode_Map_i_32_isize(Map<int, PlatformInt64> raw) {
+  JSAny cst_encode_Map_i_32_isize_None(Map<int, PlatformInt64> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_isize(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  JSAny cst_encode_Map_i_32_list_prim_u_8_strict(Map<int, Uint8List> raw) {
+  JSAny cst_encode_Map_i_32_list_prim_u_8_strict_None(Map<int, Uint8List> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_list_prim_u_8_strict(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  JSAny cst_encode_Map_i_32_u_16(Map<int, int> raw) {
+  JSAny cst_encode_Map_i_32_u_16_None(Map<int, int> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_u_16(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  JSAny cst_encode_Map_i_32_u_32(Map<int, int> raw) {
+  JSAny cst_encode_Map_i_32_u_32_None(Map<int, int> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_u_32(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  JSAny cst_encode_Map_i_32_u_64(Map<int, BigInt> raw) {
+  JSAny cst_encode_Map_i_32_u_64_None(Map<int, BigInt> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_u_64(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  JSAny cst_encode_Map_i_32_u_8(Map<int, int> raw) {
+  JSAny cst_encode_Map_i_32_u_8_None(Map<int, int> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_u_8(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  JSAny cst_encode_Map_i_32_usize(Map<int, BigInt> raw) {
+  JSAny cst_encode_Map_i_32_usize_None(Map<int, BigInt> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_i_32_usize(
         raw.entries.map((e) => (e.key, e.value)).toList());
   }
 
   @protected
-  JSAny cst_encode_Map_u_8_application_mode(Map<int, ApplicationMode> raw) {
+  JSAny cst_encode_Map_u_8_application_mode_None(
+      Map<int, ApplicationMode> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_u_8_application_mode(
         raw.entries.map((e) => (e.key, e.value)).toList());
@@ -20562,19 +20868,43 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  JSAny cst_encode_Set_String(Set<String> raw) {
+  JSAny
+      cst_encode_Set_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
+          Set<String> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_String(raw.toList());
   }
 
   @protected
-  JSAny cst_encode_Set_application_mode(Set<ApplicationMode> raw) {
+  JSAny
+      cst_encode_Set_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsync(
+          Set<String> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_list_String(raw.toList());
+  }
+
+  @protected
+  JSAny
+      cst_encode_Set_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
+          Set<String> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_list_String(raw.toList());
+  }
+
+  @protected
+  JSAny cst_encode_Set_String_None(Set<String> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_list_String(raw.toList());
+  }
+
+  @protected
+  JSAny cst_encode_Set_application_mode_None(Set<ApplicationMode> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_application_mode(raw.toList());
   }
 
   @protected
-  JSAny cst_encode_Set_i_32(Set<int> raw) {
+  JSAny cst_encode_Set_i_32_None(Set<int> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_prim_i_32_strict(Int32List.fromList(raw.toList()));
   }
@@ -20658,23 +20988,23 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  String cst_encode_StreamSink_Map_u_8_application_mode_Dco(
+  String cst_encode_StreamSink_Map_u_8_application_mode_None_Dco(
       RustStreamSink<Map<int, ApplicationMode>> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-      decodeSuccessData: dco_decode_Map_u_8_application_mode,
+      decodeSuccessData: dco_decode_Map_u_8_application_mode_None,
       decodeErrorData: dco_decode_AnyhowException,
     )));
   }
 
   @protected
-  String cst_encode_StreamSink_Set_application_mode_Dco(
+  String cst_encode_StreamSink_Set_application_mode_None_Dco(
       RustStreamSink<Set<ApplicationMode>> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
         codec: DcoCodec(
-      decodeSuccessData: dco_decode_Set_application_mode,
+      decodeSuccessData: dco_decode_Set_application_mode_None,
       decodeErrorData: dco_decode_AnyhowException,
     )));
   }
@@ -27926,7 +28256,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   JSAny cst_encode_struct_with_hash_map(StructWithHashMap raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_Map_String_hash_map_value(raw.map)].jsify()!;
+    return [cst_encode_Map_String_hash_map_value_None(raw.map)].jsify()!;
   }
 
   @protected
@@ -28387,6 +28717,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
       ConstructorOpaqueSyncStructTwinNormal raw);
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
+      CustomHasherTwinNormal raw);
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsync(
+      CustomHasherTwinRustAsync raw);
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
+      CustomHasherTwinSync raw);
 
   @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
@@ -29280,6 +29622,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       ConstructorOpaqueSyncStructTwinNormal raw);
 
   @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
+      CustomHasherTwinNormal raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsync(
+      CustomHasherTwinRustAsync raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
+      CustomHasherTwinSync raw);
+
+  @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
       DeliberateFailSanityCheckTwinNormal raw);
 
@@ -29882,6 +30236,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
           ConstructorOpaqueSyncStructTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
+          CustomHasherTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsync(
+          CustomHasherTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsyncSse(
+          CustomHasherTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSse(
+          CustomHasherTwinSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
+          CustomHasherTwinSync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSyncSse(
+          CustomHasherTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void
@@ -31318,206 +31702,243 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           LtTypeWithMultiDepTwinSync self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_String_String(
+  void
+      sse_encode_Map_String_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
+          Map<String, String> self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Map_String_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsync(
+          Map<String, String> self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Map_String_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsyncSse(
+          Map<String, String> self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Map_String_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSse(
+          Map<String, String> self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Map_String_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
+          Map<String, String> self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Map_String_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSyncSse(
+          Map<String, String> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_String_None(
       Map<String, String> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_String_enum_simple_twin_normal(
+  void sse_encode_Map_String_enum_simple_twin_normal_None(
       Map<String, EnumSimpleTwinNormal> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_String_enum_simple_twin_rust_async(
+  void sse_encode_Map_String_enum_simple_twin_rust_async_None(
       Map<String, EnumSimpleTwinRustAsync> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_String_enum_simple_twin_rust_async_sse(
+  void sse_encode_Map_String_enum_simple_twin_rust_async_sse_None(
       Map<String, EnumSimpleTwinRustAsyncSse> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_String_enum_simple_twin_sse(
+  void sse_encode_Map_String_enum_simple_twin_sse_None(
       Map<String, EnumSimpleTwinSse> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_String_enum_simple_twin_sync(
+  void sse_encode_Map_String_enum_simple_twin_sync_None(
       Map<String, EnumSimpleTwinSync> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_String_enum_simple_twin_sync_sse(
+  void sse_encode_Map_String_enum_simple_twin_sync_sse_None(
       Map<String, EnumSimpleTwinSyncSse> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_String_hash_map_value(
+  void sse_encode_Map_String_hash_map_value_None(
       Map<String, HashMapValue> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_String_kitchen_sink_twin_normal(
+  void sse_encode_Map_String_kitchen_sink_twin_normal_None(
       Map<String, KitchenSinkTwinNormal> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_String_kitchen_sink_twin_rust_async(
+  void sse_encode_Map_String_kitchen_sink_twin_rust_async_None(
       Map<String, KitchenSinkTwinRustAsync> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_String_kitchen_sink_twin_rust_async_sse(
+  void sse_encode_Map_String_kitchen_sink_twin_rust_async_sse_None(
       Map<String, KitchenSinkTwinRustAsyncSse> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_String_kitchen_sink_twin_sse(
+  void sse_encode_Map_String_kitchen_sink_twin_sse_None(
       Map<String, KitchenSinkTwinSse> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_String_kitchen_sink_twin_sync(
+  void sse_encode_Map_String_kitchen_sink_twin_sync_None(
       Map<String, KitchenSinkTwinSync> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_String_kitchen_sink_twin_sync_sse(
+  void sse_encode_Map_String_kitchen_sink_twin_sync_sse_None(
       Map<String, KitchenSinkTwinSyncSse> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_String_list_prim_u_8_strict(
+  void sse_encode_Map_String_list_prim_u_8_strict_None(
       Map<String, Uint8List> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_String_my_size(
+  void sse_encode_Map_String_my_size_None(
       Map<String, MySize> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_I128(
+  void sse_encode_Map_i_32_I128_None(
       Map<int, BigInt> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_String(
+  void sse_encode_Map_i_32_String_None(
       Map<int, String> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_U128(
+  void sse_encode_Map_i_32_U128_None(
       Map<int, BigInt> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_basic_general_enum_twin_normal(
+  void sse_encode_Map_i_32_basic_general_enum_twin_normal_None(
       Map<int, BasicGeneralEnumTwinNormal> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_basic_general_enum_twin_rust_async(
+  void sse_encode_Map_i_32_basic_general_enum_twin_rust_async_None(
       Map<int, BasicGeneralEnumTwinRustAsync> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_basic_general_enum_twin_rust_async_sse(
+  void sse_encode_Map_i_32_basic_general_enum_twin_rust_async_sse_None(
       Map<int, BasicGeneralEnumTwinRustAsyncSse> self,
       SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_basic_general_enum_twin_sse(
+  void sse_encode_Map_i_32_basic_general_enum_twin_sse_None(
       Map<int, BasicGeneralEnumTwinSse> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_basic_general_enum_twin_sync(
+  void sse_encode_Map_i_32_basic_general_enum_twin_sync_None(
       Map<int, BasicGeneralEnumTwinSync> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_basic_general_enum_twin_sync_sse(
+  void sse_encode_Map_i_32_basic_general_enum_twin_sync_sse_None(
       Map<int, BasicGeneralEnumTwinSyncSse> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_basic_primitive_enum_twin_normal(
+  void sse_encode_Map_i_32_basic_primitive_enum_twin_normal_None(
       Map<int, BasicPrimitiveEnumTwinNormal> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_basic_primitive_enum_twin_rust_async(
+  void sse_encode_Map_i_32_basic_primitive_enum_twin_rust_async_None(
       Map<int, BasicPrimitiveEnumTwinRustAsync> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_basic_primitive_enum_twin_rust_async_sse(
+  void sse_encode_Map_i_32_basic_primitive_enum_twin_rust_async_sse_None(
       Map<int, BasicPrimitiveEnumTwinRustAsyncSse> self,
       SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_basic_primitive_enum_twin_sse(
+  void sse_encode_Map_i_32_basic_primitive_enum_twin_sse_None(
       Map<int, BasicPrimitiveEnumTwinSse> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_basic_primitive_enum_twin_sync(
+  void sse_encode_Map_i_32_basic_primitive_enum_twin_sync_None(
       Map<int, BasicPrimitiveEnumTwinSync> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_basic_primitive_enum_twin_sync_sse(
+  void sse_encode_Map_i_32_basic_primitive_enum_twin_sync_sse_None(
       Map<int, BasicPrimitiveEnumTwinSyncSse> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_basic_struct_twin_normal(
+  void sse_encode_Map_i_32_basic_struct_twin_normal_None(
       Map<int, BasicStructTwinNormal> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_basic_struct_twin_rust_async(
+  void sse_encode_Map_i_32_basic_struct_twin_rust_async_None(
       Map<int, BasicStructTwinRustAsync> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_basic_struct_twin_rust_async_sse(
+  void sse_encode_Map_i_32_basic_struct_twin_rust_async_sse_None(
       Map<int, BasicStructTwinRustAsyncSse> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_basic_struct_twin_sse(
+  void sse_encode_Map_i_32_basic_struct_twin_sse_None(
       Map<int, BasicStructTwinSse> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_basic_struct_twin_sync(
+  void sse_encode_Map_i_32_basic_struct_twin_sync_None(
       Map<int, BasicStructTwinSync> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_basic_struct_twin_sync_sse(
+  void sse_encode_Map_i_32_basic_struct_twin_sync_sse_None(
       Map<int, BasicStructTwinSyncSse> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_bool(Map<int, bool> self, SseSerializer serializer);
+  void sse_encode_Map_i_32_bool_None(
+      Map<int, bool> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_f_32(
+  void sse_encode_Map_i_32_f_32_None(
       Map<int, double> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_f_64(
+  void sse_encode_Map_i_32_f_64_None(
       Map<int, double> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_i_16(Map<int, int> self, SseSerializer serializer);
+  void sse_encode_Map_i_32_i_16_None(
+      Map<int, int> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_i_32(Map<int, int> self, SseSerializer serializer);
+  void sse_encode_Map_i_32_i_32_None(
+      Map<int, int> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_i_64(
+  void sse_encode_Map_i_32_i_64_None(
       Map<int, PlatformInt64> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_i_8(Map<int, int> self, SseSerializer serializer);
+  void sse_encode_Map_i_32_i_8_None(
+      Map<int, int> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_isize(
+  void sse_encode_Map_i_32_isize_None(
       Map<int, PlatformInt64> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_list_prim_u_8_strict(
+  void sse_encode_Map_i_32_list_prim_u_8_strict_None(
       Map<int, Uint8List> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_u_16(Map<int, int> self, SseSerializer serializer);
+  void sse_encode_Map_i_32_u_16_None(
+      Map<int, int> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_u_32(Map<int, int> self, SseSerializer serializer);
+  void sse_encode_Map_i_32_u_32_None(
+      Map<int, int> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_u_64(
+  void sse_encode_Map_i_32_u_64_None(
       Map<int, BigInt> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_u_8(Map<int, int> self, SseSerializer serializer);
+  void sse_encode_Map_i_32_u_8_None(
+      Map<int, int> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_i_32_usize(
+  void sse_encode_Map_i_32_usize_None(
       Map<int, BigInt> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Map_u_8_application_mode(
+  void sse_encode_Map_u_8_application_mode_None(
       Map<int, ApplicationMode> self, SseSerializer serializer);
 
   @protected
@@ -31982,6 +32403,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
           ConstructorOpaqueSyncStructTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
+          CustomHasherTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsync(
+          CustomHasherTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsyncSse(
+          CustomHasherTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSse(
+          CustomHasherTwinSse self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
+          CustomHasherTwinSync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSyncSse(
+          CustomHasherTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void
@@ -32630,14 +33081,44 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_RustOpaque_i32(I32 self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Set_String(Set<String> self, SseSerializer serializer);
+  void
+      sse_encode_Set_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
+          Set<String> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Set_application_mode(
+  void
+      sse_encode_Set_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsync(
+          Set<String> self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Set_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsyncSse(
+          Set<String> self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Set_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSse(
+          Set<String> self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Set_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
+          Set<String> self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Set_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSyncSse(
+          Set<String> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Set_String_None(Set<String> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Set_application_mode_None(
       Set<ApplicationMode> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Set_i_32(Set<int> self, SseSerializer serializer);
+  void sse_encode_Set_i_32_None(Set<int> self, SseSerializer serializer);
 
   @protected
   void
@@ -32710,19 +33191,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseSerializer serializer);
 
   @protected
-  void sse_encode_StreamSink_Map_u_8_application_mode_Dco(
+  void sse_encode_StreamSink_Map_u_8_application_mode_None_Dco(
       RustStreamSink<Map<int, ApplicationMode>> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_StreamSink_Map_u_8_application_mode_Sse(
+  void sse_encode_StreamSink_Map_u_8_application_mode_None_Sse(
       RustStreamSink<Map<int, ApplicationMode>> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_StreamSink_Set_application_mode_Dco(
+  void sse_encode_StreamSink_Set_application_mode_None_Dco(
       RustStreamSink<Set<ApplicationMode>> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_StreamSink_Set_application_mode_Sse(
+  void sse_encode_StreamSink_Set_application_mode_None_Sse(
       RustStreamSink<Set<ApplicationMode>> self, SseSerializer serializer);
 
   @protected
@@ -48947,6 +49428,52 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_string_simple_enum_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
+  void wire__crate__api__map_and_set__func_hash_map_string_string_hasher_twin_normal(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__map_and_set__func_hash_map_string_string_hasher_twin_normal(
+              port_, arg);
+
+  void wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_string_hasher_twin_rust_async(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_string_hasher_twin_rust_async(
+              port_, arg);
+
+  void wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_map_string_string_hasher_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_map_string_string_hasher_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_map_string_string_hasher_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_map_string_string_hasher_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_string_hasher_twin_sync(
+              JSAny arg) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_string_hasher_twin_sync(
+                  arg);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_string_string_hasher_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_string_string_hasher_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
   void wire__crate__api__map_and_set__func_hash_map_string_string_twin_normal(
           NativePortType port_, JSAny arg) =>
       wasmModule
@@ -49082,6 +49609,52 @@ class RustLibWire implements BaseWire {
               int data_len_) =>
           wasmModule
               .wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_set_i32_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__map_and_set__func_hash_set_string_hasher_twin_normal(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__map_and_set__func_hash_set_string_hasher_twin_normal(
+              port_, arg);
+
+  void wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_set_string_hasher_twin_rust_async(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_set_string_hasher_twin_rust_async(
+              port_, arg);
+
+  void wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_set_string_hasher_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_set_string_hasher_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_set_string_hasher_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_set_string_hasher_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_set_string_hasher_twin_sync(
+              JSAny arg) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_set_string_hasher_twin_sync(
+                  arg);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_set_string_hasher_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_set_string_hasher_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__map_and_set__func_hash_set_string_twin_normal(
@@ -61221,6 +61794,78 @@ class RustLibWire implements BaseWire {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
               ptr);
 
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
+          int ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
+          int ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsync(
+          int ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsync(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsync(
+          int ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsync(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsyncSse(
+          int ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsyncSse(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsyncSse(
+          int ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsyncSse(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSse(
+          int ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSse(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSse(
+          int ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSse(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
+          int ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
+          int ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSyncSse(
+          int ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSyncSse(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSyncSse(
+          int ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSyncSse(
+              ptr);
+
   void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
           int ptr) =>
       wasmModule
@@ -69389,6 +70034,38 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int data_len_);
 
   external void
+      wire__crate__api__map_and_set__func_hash_map_string_string_hasher_twin_normal(
+          NativePortType port_, JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_map_string_string_hasher_twin_rust_async(
+          NativePortType port_, JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_map_string_string_hasher_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_map_string_string_hasher_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_map_string_string_hasher_twin_sync(
+          JSAny arg);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_map_string_string_hasher_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
       wire__crate__api__map_and_set__func_hash_map_string_string_twin_normal(
           NativePortType port_, JSAny arg);
 
@@ -69479,6 +70156,38 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_set_i32_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__map_and_set__func_hash_set_string_hasher_twin_normal(
+          NativePortType port_, JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__func_hash_set_string_hasher_twin_rust_async(
+          NativePortType port_, JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__func_hash_set_string_hasher_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__map_and_set_twin_sse__func_hash_set_string_hasher_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__map_and_set_twin_sync__func_hash_set_string_hasher_twin_sync(
+          JSAny arg);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__func_hash_set_string_hasher_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
@@ -77911,6 +78620,54 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueSyncStructTwinNormal(
+          int ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
+          int ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
+          int ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsync(
+          int ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsync(
+          int ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsyncSse(
+          int ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsyncSse(
+          int ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSse(
+          int ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSse(
+          int ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
+          int ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
+          int ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSyncSse(
+          int ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSyncSse(
           int ptr);
 
   external void

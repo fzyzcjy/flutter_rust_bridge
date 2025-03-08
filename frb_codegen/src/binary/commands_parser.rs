@@ -57,6 +57,7 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgsPrima
         enable_lifetime: positive_bool_arg(args.enable_lifetime),
         type_64bit_int: positive_bool_arg(args.type_64bit_int),
         default_dart_async: negative_bool_arg(args.no_default_dart_async),
+        auto_upgrade_dependency: negative_bool_arg(args.no_auto_upgrade_dependency),
         stop_on_error: positive_bool_arg(args.stop_on_error),
         dump: args.dump,
         dump_all: positive_bool_arg(args.dump_all),
