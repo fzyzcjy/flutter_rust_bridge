@@ -16,6 +16,49 @@ void simpleBuild(List<String> args, {List<String> features = const []}) async {
       throw UnsupportedError('LinkModePreference.static is not supported.');
     }
 
+    final rustCrateDir = input.packageRoot.resolve('rust');
+
+    final cargoNightly =
+        Platform.environment['FRB_SIMPLE_BUILD_CARGO_NIGHTLY'] == '1';
+    final cargoExtraArgs =
+        Platform.environment['FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS']?.split(' ') ??
+            const <String>[];
+    final skip = Platform.environment['FRB_SIMPLE_BUILD_SKIP'] == '1';
+    final rustflags = Platform.environment['RUSTFLAGS'];
+
+    if (skip) {
+      print(
+          'frb_utils::simpleBuild SKIP BUILD since environment variable requires this');
+    } else {
+      final featureArgs = features.expand((x) => ['--features', x]).toList();
+      await runCommand(
+        'cargo',
+        [
+          if (cargoNightly) '+nightly',
+          'build',
+          '--release',
+          ...cargoExtraArgs,
+          ...featureArgs,
+        ],
+        pwd: rustCrateDir.toFilePath(),
+        printCommandInStderr: true,
+        env: {
+          // Though runCommand auto pass environment variable to commands,
+          // we do this to explicitly show this important flag
+          if (rustflags != null) 'RUSTFLAGS': rustflags,
+        },
+      );
+    }
+
+    final dependencies = {
+      rustCrateDir,
+      input.packageRoot.resolve('build.rs'),
+    };
+    print('dependencies: $dependencies');
+    output.dependencies.dependencies.addAll(dependencies);
+
+    await output.writeToFile(outDir: input.outDir);
+
     final packageName = input.packageName;
     final assetPath = input.outputDirectory.resolve(assetName);
     final assetSourcePath = input.packageRoot.resolveUri(packageAssetPath);
@@ -25,61 +68,13 @@ void simpleBuild(List<String> args, {List<String> features = const []}) async {
 
     output.addDependencies([assetSourcePath]);
 
-    output.assets.code.add(
-      // TODO: Change to DataAsset once the Dart/Flutter SDK can consume it.
-      CodeAsset(
-        package: packageName,
-        name: 'asset.txt',
-        file: assetPath,
-        linkMode: DynamicLoadingBundled(),
-        os: input.config.code.targetOS,
-        architecture: input.config.code.targetArchitecture,
-      ),
-    );
+    output.assets.code.add(CodeAsset(
+      package: packageName,
+      name: 'asset.txt',
+      file: assetPath,
+      linkMode: DynamicLoadingBundled(),
+      os: input.config.code.targetOS,
+      architecture: input.config.code.targetArchitecture,
+    ));
   });
-}
-
-void _buildCore() {
-  final rustCrateDir = input.packageRoot.resolve('rust');
-
-  final cargoNightly =
-      Platform.environment['FRB_SIMPLE_BUILD_CARGO_NIGHTLY'] == '1';
-  final cargoExtraArgs =
-      Platform.environment['FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS']?.split(' ') ??
-          const <String>[];
-  final skip = Platform.environment['FRB_SIMPLE_BUILD_SKIP'] == '1';
-  final rustflags = Platform.environment['RUSTFLAGS'];
-
-  if (skip) {
-    print(
-        'frb_utils::simpleBuild SKIP BUILD since environment variable requires this');
-  } else {
-    final featureArgs = features.expand((x) => ['--features', x]).toList();
-    await runCommand(
-      'cargo',
-      [
-        if (cargoNightly) '+nightly',
-        'build',
-        '--release',
-        ...cargoExtraArgs,
-        ...featureArgs,
-      ],
-      pwd: rustCrateDir.toFilePath(),
-      printCommandInStderr: true,
-      env: {
-        // Though runCommand auto pass environment variable to commands,
-        // we do this to explicitly show this important flag
-        if (rustflags != null) 'RUSTFLAGS': rustflags,
-      },
-    );
-  }
-
-  final dependencies = {
-    rustCrateDir,
-    input.packageRoot.resolve('build.rs'),
-  };
-  print('dependencies: $dependencies');
-  output.dependencies.dependencies.addAll(dependencies);
-
-  await output.writeToFile(outDir: input.outDir);
 }
