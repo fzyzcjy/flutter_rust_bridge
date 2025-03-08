@@ -27,7 +27,7 @@ flutter_rust_bridge::for_generated::lazy_static! {
         = flutter_rust_bridge::DefaultHandler::new_simple(&THREAD_POOL);
 }
 
-#[flutter_rust_bridge::frb(sync)] // Synchronous mode for simplicity of the demo
+// #[flutter_rust_bridge::frb(sync)] // Synchronous mode for simplicity of the demo
 pub fn greet(name: String) -> String {
     format!("Hello, {name}!")
 }
