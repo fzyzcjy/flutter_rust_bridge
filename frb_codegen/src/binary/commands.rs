@@ -161,6 +161,10 @@ pub(crate) struct GenerateCommandArgsPrimary {
     #[arg(long)]
     pub no_default_dart_async: bool,
 
+    /// Whether to skip auto upgrading the dependencies
+    #[arg(long)]
+    pub no_auto_upgrade_dependency: bool,
+
     /// If having error when, for example, parsing a function, directly stop instead of continue and skip it
     #[arg(long)]
     pub stop_on_error: bool,
