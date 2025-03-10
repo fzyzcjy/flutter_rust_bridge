@@ -452,7 +452,6 @@ const sidebars = {
                     },
                     items: [
                         'guides/contributing/overview',
-                        'guides/contributing/tip',
                         {
                             type: 'category',
                             label: 'Submodules',
@@ -470,6 +469,7 @@ const sidebars = {
                                 'guides/contributing/submodules/manual-test',
                             ],
                         },
+                        'guides/contributing/tip',
                     ],
                 },
             ],

@@ -1,5 +1,11 @@
 # Overview
 
+:::tip
+It is not a prerequisite to go through these documents before making a PR,
+and these are here for completeness and cases when one needs to dig deeper into the internals.
+In addition, feel free to ping me (@fzyzcjy) to ask for hints and suggestions on implementation.
+:::
+
 ## Prelude
 
 Firstly, welcome, and thanks for your contributions!
