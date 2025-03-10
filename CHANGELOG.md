@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.9.0
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Add support for the optional hasher argument on HashMap and HashSet #2567 #2603 (thanks @anlumo)
+* Support worker_js_preamble in web workers #2609
+* Add parse_const config #2604
+* Disable parsing constants by default #2604
+* Add auto_upgrade_dependency option #2602
+* Fix generated dart code #2557 (thanks @iazel)
+* Add support for rust edition 2024 #2554 (thanks @xuwaters)
+
 ## 2.8.0
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
