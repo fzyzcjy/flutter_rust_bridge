@@ -11,7 +11,7 @@ anyhow = { version = "1.0.64", features = ["backtrace"] }
 flutter_rust_bridge = { path = "../../../frb_rust", features = ["chrono", "uuid", "backtrace"] }
 log = "0.4.19"
 backtrace = "0.3.68"
-chrono = "0.4.26"
+chrono = "0.4.40"
 uuid = "1.4.1"
 frb_example_pure_dart_example_external_lib = { path = "./example_external_lib" }
 wasm-bindgen = "0.2.88" # TODO temp experiment
