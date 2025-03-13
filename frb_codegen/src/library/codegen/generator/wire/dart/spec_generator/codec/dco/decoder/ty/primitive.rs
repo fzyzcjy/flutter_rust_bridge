@@ -8,10 +8,10 @@ impl WireDartCodecDcoGeneratorDecoderTrait for PrimitiveWireDartCodecDcoGenerato
         match self.mir {
             MirTypePrimitive::Unit => "return;".to_owned(),
             MirTypePrimitive::I64 | MirTypePrimitive::Isize => {
-                "return dcoDecodeI64(raw);".to_owned()
+                "return dcoDecodeI64(raw as int);".to_owned()
             }
             MirTypePrimitive::U64 | MirTypePrimitive::Usize => {
-                "return dcoDecodeU64(raw);".to_owned()
+                "return dcoDecodeU64(raw as int);".to_owned()
             }
             _ => gen_decode_simple_type_cast(self.mir.clone().into(), self.context),
         }
