@@ -16,3 +16,8 @@ pub use web::*;
 mod stub;
 #[cfg(not(feature = "rust-async"))]
 pub use stub::*;
+
+#[cfg(feature = "rust-async")]
+pub mod base;
+#[cfg(feature = "rust-async")]
+pub use base::*;

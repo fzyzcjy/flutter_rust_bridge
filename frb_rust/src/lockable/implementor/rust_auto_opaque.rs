@@ -20,12 +20,24 @@ impl<T: Send + Sync, A: BaseArc<RustAutoOpaqueInner<T>>> Lockable
         self.order
     }
 
-    fn lockable_decode_sync_ref(&self) -> Self::RwLockReadGuard<'_> {
-        self.data.blocking_read()
-    }
+    cfg_if::cfg_if! {
+        if #[cfg(any(feature = "rust-async-tokio", target_family = "wasm"))]  {
+            fn lockable_decode_sync_ref(&self) -> Self::RwLockReadGuard<'_> {
+                self.data.blocking_read()
+            }
 
-    fn lockable_decode_sync_ref_mut(&self) -> Self::RwLockWriteGuard<'_> {
-        self.data.blocking_write()
+            fn lockable_decode_sync_ref_mut(&self) -> Self::RwLockWriteGuard<'_> {
+                self.data.blocking_write()
+            }
+        } else if #[cfg(all(feature = "rust-async-async-std", not(target_family = "wasm")))] {
+            fn lockable_decode_sync_ref(&self) -> Self::RwLockReadGuard<'_> {
+                self.data.read_blocking()
+            }
+
+            fn lockable_decode_sync_ref_mut(&self) -> Self::RwLockWriteGuard<'_> {
+                self.data.write_blocking()
+            }
+        }
     }
 
     fn lockable_decode_async_ref<'a>(

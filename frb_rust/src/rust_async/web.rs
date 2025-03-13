@@ -1,3 +1,4 @@
+use super::BaseAsyncRuntime;
 use crate::thread_pool::BaseThreadPool;
 use crate::transfer;
 use futures::channel::oneshot;
@@ -6,16 +7,12 @@ use std::pin::Pin;
 use std::task::{Context, Poll};
 pub use tokio::sync::{RwLock, RwLockReadGuard, RwLockWriteGuard};
 
-pub trait BaseAsyncRuntime {
-    fn spawn<F>(&self, future: F)
-    where
-        F: Future<Output = ()> + 'static;
-}
-
 #[derive(Debug, Clone, Copy, Default)]
 pub struct SimpleAsyncRuntime;
 
 impl BaseAsyncRuntime for SimpleAsyncRuntime {
+    type JoinHandle<O> = wasm_bindgen_futures::JsFuture;
+
     fn spawn<F>(&self, future: F)
     where
         F: Future<Output = ()> + 'static,

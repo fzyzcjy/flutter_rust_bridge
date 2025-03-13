@@ -37,11 +37,25 @@ impl BaseThreadPool for MyCustomThreadPool {
 pub struct MyCustomAsyncRuntime;
 
 impl BaseAsyncRuntime for MyCustomAsyncRuntime {
+    type JoinHandle<O> = flutter_rust_bridge::JoinHandle<O>;
+
     fn spawn<F>(&self, future: F) -> JoinHandle<F::Output>
     where
         F: Future + Send + 'static,
         F::Output: Send + 'static,
     {
+        unimplemented!()
+    }
+
+    fn spawn_blocking<F>(&self, func: F) -> Self::JoinHandle<F::Output>
+    where
+        F: FnOnce() + Send + 'static,
+        F::Output: Send + 'static,
+    {
+        unimplemented!()
+    }
+
+    fn block_on<F: std::future::Future>(&self, future: F) -> F::Output {
         unimplemented!()
     }
 }
