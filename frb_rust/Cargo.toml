@@ -13,6 +13,7 @@ categories.workspace = true
 anyhow = { workspace = true, optional = true }
 backtrace = { workspace = true, optional = true }
 byteorder = "1.5.0"
+cfg-if = "1.0"
 chrono = { workspace = true, optional = true }
 delegate-attr = "0.3.0"
 flutter_rust_bridge_macros = { workspace = true }
@@ -21,6 +22,9 @@ lazy_static = { workspace = true }
 log = { version = "0.4", optional = true }
 portable-atomic = { version = "1.8.0", optional = true }
 uuid = { workspace = true, optional = true }
+# for unstable features in async-std check https://github.com/async-rs/async-std/issues/815#issuecomment-711429572
+async-std = { version = "1.12.0", optional = true, features = ["unstable"] }
+async-lock = { version = "3.3.0", optional = true }
 
 [target.'cfg(not(target_family = "wasm"))'.dependencies]
 allo-isolate = { workspace = true, features = ["anyhow", "backtrace", "zero-copy"] }
@@ -70,6 +74,7 @@ default = [
     "log",
     "portable-atomic",
     "rust-async",
+    "rust-async-tokio",
     "thread-pool",
     "user-utils",
     "wasm-start",
@@ -79,6 +84,8 @@ chrono = ["dep:chrono", "allo-isolate/chrono"]
 dart-opaque = ["dep:dart-sys"]
 portable-atomic = ["dep:portable-atomic"]
 rust-async = ["dep:tokio", "dep:futures", "dep:wasm-bindgen-futures"]
+rust-async-tokio = ["dep:tokio"]
+rust-async-async-std = ["dep:async-std", "dep:async-lock"]
 thread-pool = ["dep:threadpool"]
 user-utils = ["dep:android_logger", "dep:oslog"]
 uuid = ["dep:uuid", "allo-isolate/uuid"]
@@ -86,3 +93,9 @@ wasm-start = ["console_error_panic_hook"]
 
 [lints.rust]
 unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }
+
+[package.metadata.rust-analyzer]
+cargo-features = ["mutually-exclusive-features"]
+
+[package.metadata.mutually-exclusive-features]
+runtime = ["rust-async-tokio", "rust-async-async-std"]

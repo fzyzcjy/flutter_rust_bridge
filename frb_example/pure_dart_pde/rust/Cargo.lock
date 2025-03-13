@@ -285,6 +285,7 @@ dependencies = [
  "build-target",
  "bytemuck",
  "byteorder",
+ "cfg-if",
  "chrono",
  "console_error_panic_hook",
  "dart-sys",

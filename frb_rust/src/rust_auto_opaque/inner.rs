@@ -1,7 +1,7 @@
 use crate::lockable::order::LockableOrder;
+use crate::rust_async::RwLock;
 use std::fmt;
 use std::fmt::Formatter;
-use tokio::sync::RwLock;
 
 pub struct RustAutoOpaqueInner<T> {
     pub(crate) data: RwLock<T>,
