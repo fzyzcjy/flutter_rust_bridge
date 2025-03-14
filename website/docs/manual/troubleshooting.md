@@ -159,6 +159,14 @@ A debug approach is to use `RUST_LOG=debug flutter_rust_bridge_codegen your_args
 For example, suppose it is stuck at executing `fvm flutter pub get ...`,
 then maybe try to execute that command directly in the shell and see whether it also get stuck.
 
+## ``Custom build for`` ... ``exited with code 255.``
+
+Please refer to [#1808](https://github.com/fzyzcjy/flutter_rust_bridge/issues/1808) for more details.
+
+In short, to fix this error all you have to do is ensure that there are no spaces anywhere in the path to the directory of your project.
+
+When you are on Windows, a path like ``C:/Users/your_user/Documents/My Projects/test`` could for example cause this error because there is a space between ``My`` and ``Projects``.
+
 ## Other problems?
 
 Don't hesitate to [open an issue](https://github.com/fzyzcjy/flutter_rust_bridge/issues/new/choose)! I usually reply
