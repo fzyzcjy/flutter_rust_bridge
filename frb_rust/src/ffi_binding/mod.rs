@@ -44,3 +44,23 @@ fn vec_resize(vec: &mut Vec<u8>, new_len: i32) {
 pub unsafe extern "C" fn frb_rust_vec_u8_free(ptr: *mut u8, len: i32) {
     vec_from_leak_ptr(ptr, len);
 }
+
+#[cfg(not(target_family = "wasm"))]
+pub mod shutdown {
+    use std::ffi::c_void;
+
+    use allo_isolate::{store_dart_post_cobject, ffi::DartCObject};
+
+    /// Called by Dart's NativeFinalizer on isolate group shutdown.
+    #[unsafe(no_mangle)]
+    pub unsafe extern "C" fn frb_shutdown_callback(_: *mut c_void) {
+
+        unsafe extern "C" fn devnull(_: i64, _: *mut DartCObject) -> bool {
+            true
+        }
+
+        // So `Dart_PostCObject` won't do anything from now on.
+        store_dart_post_cobject(devnull);
+    }
+}
+

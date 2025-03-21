@@ -481,6 +481,8 @@ class MultiPackageCBinding {
   late final _frb_free_wire_sync_rust2dart_sse =
       _frb_free_wire_sync_rust2dart_ssePtr
           .asFunction<void Function(WireSyncRust2DartSse)>();
+
+  late final frb_shutdown_callback = _lookup<ffi.NativeFinalizerFunction>('frb_shutdown_callback');
 }
 
 /// A Dart_CObject is used for representing Dart objects as native C
