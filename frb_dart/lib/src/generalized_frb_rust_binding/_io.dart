@@ -5,21 +5,14 @@ import 'package:flutter_rust_bridge/src/generalized_uint8list/generalized_uint8l
 import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 
-final class ShutdownWatcher implements ffi.Finalizable {
-  static var _finalizer;
-
-  ShutdownWatcher(ffi.Pointer<ffi.NativeFinalizerFunction> callback) {
-    _finalizer = ffi.NativeFinalizer(callback);
-    _finalizer.attach(this, ffi.Pointer.fromAddress(0));
-  }
-}
-
-ShutdownWatcher? _shutdownWatcher;
-
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 class GeneralizedFrbRustBinding {
   final MultiPackageCBinding _binding;
   final String _externalLibraryDebugInfo;
+
+  /// Notifies Rust side of an isolate group shutdown. Initialized in
+  /// [initShutdownWatcher].
+  static _ShutdownWatcher? _shutdownWatcher;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   GeneralizedFrbRustBinding(ExternalLibrary externalLibrary)
@@ -38,13 +31,12 @@ class GeneralizedFrbRustBinding {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void initShutdownWatcher() {
-    _shutdownWatcher = ShutdownWatcher(_binding.frb_shutdown_callback);
+    _shutdownWatcher ??= _ShutdownWatcher(_binding.frb_shutdown_callback);
   }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  void initFrbDartApiDl() {
-    _binding.frb_init_frb_dart_api_dl(ffi.NativeApi.initializeApiDLData);
-  }
+  void initFrbDartApiDl() =>
+      _binding.frb_init_frb_dart_api_dl(ffi.NativeApi.initializeApiDLData);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void pdeFfiDispatcherPrimary({
@@ -135,5 +127,15 @@ class GeneralizedFrbRustBinding {
         'Original stack trace: $s',
       );
     }
+  }
+}
+
+/// {@macro flutter_rust_bridge.only_for_generated_code}
+final class _ShutdownWatcher implements ffi.Finalizable {
+  final ffi.NativeFinalizer _finalizer;
+
+  _ShutdownWatcher(ffi.Pointer<ffi.NativeFinalizerFunction> callback)
+      : _finalizer = ffi.NativeFinalizer(callback) {
+    _finalizer.attach(this, ffi.Pointer.fromAddress(0));
   }
 }

@@ -201,6 +201,7 @@ void _initializeApiDlData(GeneralizedFrbRustBinding generalizedFrbRustBinding) {
   generalizedFrbRustBinding.initFrbDartApiDl();
 }
 
-void _initializeShutdownWatcher(GeneralizedFrbRustBinding generalizedFrbRustBinding) {
+void _initializeShutdownWatcher(
+    GeneralizedFrbRustBinding generalizedFrbRustBinding) {
   generalizedFrbRustBinding.initShutdownWatcher();
 }
