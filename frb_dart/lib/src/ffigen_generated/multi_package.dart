@@ -482,9 +482,24 @@ class MultiPackageCBinding {
       _frb_free_wire_sync_rust2dart_ssePtr
           .asFunction<void Function(WireSyncRust2DartSse)>();
 
-  /// Should be called when we detect isolate group shutting down.
-  late final frb_shutdown_callback =
-      _lookup<ffi.NativeFinalizerFunction>('frb_shutdown_callback');
+  /// # Safety
+  ///
+  /// This function should never be called manually.
+  ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>
+      frb_get_shutdown_callback() {
+    return _frb_get_shutdown_callback();
+  }
+
+  late final _frb_get_shutdown_callbackPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<
+                  ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>
+              Function()>>('frb_get_shutdown_callback');
+  late final _frb_get_shutdown_callback =
+      _frb_get_shutdown_callbackPtr.asFunction<
+          ffi.Pointer<
+                  ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>
+              Function()>();
 }
 
 /// A Dart_CObject is used for representing Dart objects as native C
