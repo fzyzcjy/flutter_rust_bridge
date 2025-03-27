@@ -24,7 +24,7 @@ pub struct MirRustOpaqueInner(pub MirLifetimeAwareType);
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize, Hash, Display, EnumIter)]
-pub(crate) enum RustOpaqueCodecMode {
+pub enum RustOpaqueCodecMode {
     Nom,
     Moi,
 }
