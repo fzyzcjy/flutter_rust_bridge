@@ -1,0 +1,26 @@
+[package]
+name = "frb_example_feat_no_dart_opaque"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+flutter_rust_bridge = { path = "../../../frb_rust", default-features = false, features = [
+    "anyhow",
+    # "dart-opaque",
+    "log",
+    "portable-atomic",
+    "rust-async",
+    "thread-pool",
+    "user-utils",
+    "wasm-start",
+] }
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }
+
+[features]
+default = []
+dart-opaque = []

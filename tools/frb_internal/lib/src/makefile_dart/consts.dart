@@ -5,6 +5,7 @@ import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart'
 const kRustPackagesAllowWeb = [
   'frb_rust',
   'frb_example/dart_minimal/rust',
+  'frb_example/feat_no_dart_opaque/rust',
   'frb_example/pure_dart/rust',
   'frb_example/pure_dart_pde/rust',
   'frb_example/dart_build_rs/rust',
