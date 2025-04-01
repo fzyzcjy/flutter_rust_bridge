@@ -76,8 +76,8 @@ impl InternalConfig {
 
         let full_dep = config.full_dep.unwrap_or(false);
         let default_stream_sink_codec = generate_default_stream_sink_codec(full_dep);
-        let default_rust_opaque_codec =
-            generate_default_rust_opaque_codec(full_dep, config.default_rust_opaque_codec.clone());
+        let default_rust_opaque_codec = (config.default_rust_opaque_codec.clone())
+            .unwrap_or(generate_default_rust_opaque_codec(full_dep));
         let enable_local_dependency = config.local.unwrap_or_default();
         let stop_on_error = config.stop_on_error.unwrap_or_default();
 
@@ -185,15 +185,12 @@ fn generate_default_stream_sink_codec(full_dep: bool) -> CodecMode {
     }
 }
 
-fn generate_default_rust_opaque_codec(
-    full_dep: bool,
-    rust_opaque_codec: Option<RustOpaqueCodecMode>,
-) -> RustOpaqueCodecMode {
-    rust_opaque_codec.unwrap_or(if full_dep {
+fn generate_default_rust_opaque_codec(full_dep: bool) -> RustOpaqueCodecMode {
+    if full_dep {
         RustOpaqueCodecMode::Nom
     } else {
         RustOpaqueCodecMode::Moi
-    })
+    }
 }
 
 #[cfg(test)]
