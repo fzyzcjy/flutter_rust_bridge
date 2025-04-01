@@ -187,9 +187,9 @@ fn generate_default_stream_sink_codec(full_dep: bool) -> CodecMode {
 
 fn generate_default_rust_opaque_codec(
     full_dep: bool,
-    rust_opaque: Option<RustOpaqueCodecMode>,
+    rust_opaque_codec: Option<RustOpaqueCodecMode>,
 ) -> RustOpaqueCodecMode {
-    rust_opaque.unwrap_or(if full_dep {
+    rust_opaque_codec.unwrap_or(if full_dep {
         RustOpaqueCodecMode::Nom
     } else {
         RustOpaqueCodecMode::Moi
