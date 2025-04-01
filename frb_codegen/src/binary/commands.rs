@@ -1,6 +1,6 @@
 use crate::codegen::ConfigDumpContent;
 use clap::{Args, Parser, Subcommand, ValueEnum};
-use lib_flutter_rust_bridge_codegen::{codegen::RustOpaqueCodecMode, misc::Template};
+use lib_flutter_rust_bridge_codegen::misc::Template;
 use std::path::PathBuf;
 
 // The name `Cli`, `Commands` come from https://docs.rs/clap/latest/clap/_derive/_tutorial/chapter_0/index.html
@@ -277,15 +277,6 @@ impl From<TemplateArg> for Template {
         match value {
             TemplateArg::App => Template::App,
             TemplateArg::Plugin => Template::Plugin,
-        }
-    }
-}
-
-impl From<RustOpaqueCodecModeArg> for RustOpaqueCodecMode {
-    fn from(value: RustOpaqueCodecModeArg) -> Self {
-        match value {
-            RustOpaqueCodecModeArg::Moi => RustOpaqueCodecMode::Moi,
-            RustOpaqueCodecModeArg::Nom => RustOpaqueCodecMode::Nom,
         }
     }
 }
