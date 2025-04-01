@@ -52,6 +52,22 @@ impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> RustAutoOpaqueBase<T, A> {
             pub fn try_write(&self) -> Option<RwLockWriteGuard<'_, T>> {
                 self.0.data.try_write()
             }
+        } else {
+            pub fn blocking_read(&self) -> RwLockReadGuard<'_, T> {
+                self.0.data.blocking_read()
+            }
+
+            pub fn blocking_write(&self) -> RwLockWriteGuard<'_, T> {
+                    self.0.data.blocking_write()
+            }
+
+            pub fn try_read(&self) -> Option<RwLockReadGuard<'_, T>> {
+                self.0.data.try_read()
+            }
+
+            pub fn try_write(&self) -> Option<RwLockWriteGuard<'_, T>> {
+                self.0.data.try_write()
+            }
         }
     }
 }

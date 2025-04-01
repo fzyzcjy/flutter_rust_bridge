@@ -14,10 +14,14 @@ pub mod async_std_runtime {
     pub use super::async_std_impl::*;
 }
 
+mod stub;
+
 cfg_if::cfg_if! {
     if #[cfg(feature = "rust-async-tokio")] {
         pub use tokio_runtime::*;
     } else if #[cfg(feature = "rust-async-async-std")] {
         pub use async_std_runtime::*;
+    } else {
+        pub use stub::*;
     }
 }

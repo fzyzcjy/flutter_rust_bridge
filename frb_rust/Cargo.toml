@@ -74,7 +74,7 @@ default = [
     "log",
     "portable-atomic",
     "rust-async",
-    "rust-async-tokio",
+    # "rust-async-tokio",
     "thread-pool",
     "user-utils",
     "wasm-start",
@@ -83,7 +83,7 @@ backtrace = ["dep:backtrace", "allo-isolate/backtrace"]
 chrono = ["dep:chrono", "allo-isolate/chrono"]
 dart-opaque = ["dep:dart-sys"]
 portable-atomic = ["dep:portable-atomic"]
-rust-async = ["dep:tokio", "dep:futures", "dep:wasm-bindgen-futures"]
+rust-async = ["dep:futures", "dep:wasm-bindgen-futures"]
 rust-async-tokio = ["dep:tokio"]
 rust-async-async-std = ["dep:async-std", "dep:async-lock"]
 thread-pool = ["dep:threadpool"]

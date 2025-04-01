@@ -40,6 +40,14 @@ impl<T: Send + Sync, A: BaseArc<RustAutoOpaqueInner<T>>> Lockable
         }
     }
 
+    fn lockable_decode_sync_ref(&self) -> Self::RwLockReadGuard<'_> {
+        self.data.blocking_read()
+    }
+
+    fn lockable_decode_sync_ref_mut(&self) -> Self::RwLockWriteGuard<'_> {
+        self.data.blocking_write()
+    }
+
     fn lockable_decode_async_ref<'a>(
         &'a self,
     ) -> Pin<Box<dyn Future<Output = Self::RwLockReadGuard<'a>> + Send + 'a>>

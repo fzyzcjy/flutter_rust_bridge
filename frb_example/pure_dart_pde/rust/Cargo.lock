@@ -298,7 +298,6 @@ dependencies = [
  "oslog",
  "portable-atomic",
  "threadpool",
- "tokio",
  "uuid",
  "wasm-bindgen",
  "wasm-bindgen-futures",
@@ -776,7 +775,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d0c014766411e834f7af5b8f4cf46257aab4036ca95e9d2c144a10f59ad6f5b9"
 dependencies = [
  "backtrace",
- "num_cpus",
  "pin-project-lite",
 ]
 
