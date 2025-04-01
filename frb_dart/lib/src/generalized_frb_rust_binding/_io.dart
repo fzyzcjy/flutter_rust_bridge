@@ -12,6 +12,9 @@ class GeneralizedFrbRustBinding {
 
   /// Notifies Rust side of an isolate group shutdown. Initialized in
   /// [initShutdownWatcher].
+  ///
+  /// It is static and initialized only once since there supposed to be only
+  /// one per isolate.
   static _ShutdownWatcher? _shutdownWatcher;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}

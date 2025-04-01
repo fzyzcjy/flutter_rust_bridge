@@ -48,7 +48,7 @@ pub unsafe extern "C" fn frb_get_shutdown_callback() -> unsafe extern "C" fn(*mu
     /// decremented when it is called.
     static ISOLATES_NUM: AtomicU64 = AtomicU64::new(0);
 
-    ISOLATES_NUM.add(1, Ordering::SeqCst);
+    _ = ISOLATES_NUM.fetch_add(1, Ordering::SeqCst);
 
     /// Called by Dart's `NativeFinalizer` on isolate group shutdown.
     unsafe extern "C" fn frb_shutdown_callback(_: *mut c_void) {
@@ -62,6 +62,8 @@ pub unsafe extern "C" fn frb_get_shutdown_callback() -> unsafe extern "C" fn(*mu
 
         let running = ISOLATES_NUM.fetch_sub(1, Ordering::SeqCst);
 
+        // If this is the last callback we assume that application is shutting
+        // down.
         if running == 1 {
             // So `Dart_PostCObject` won't do anything from now on. We need this
             // cause once shutdown have started `Dart_Cleanup` might be called any
