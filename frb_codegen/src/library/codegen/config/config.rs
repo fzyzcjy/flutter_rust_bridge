@@ -1,4 +1,5 @@
-use crate::codegen::{dumper::internal_config::ConfigDumpContent, RustOpaqueCodecMode};
+use crate::codegen::dumper::internal_config::ConfigDumpContent;
+use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
