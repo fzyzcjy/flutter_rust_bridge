@@ -145,7 +145,7 @@ pub(crate) struct GenerateCommandArgsPrimary {
     #[arg(long)]
     pub full_dep: bool,
 
-    /// Configure rust opaque implementation, "moi" or "nom"
+    /// Default implementation of rust opaque
     #[arg(long)]
     pub default_rust_opaque_codec: Option<RustOpaqueCodecModeArg>,
 
