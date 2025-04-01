@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.10.0
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Default RustOpaque codec changed from dependent on full_dep to Nom. Configure with default_rust_opaque_codec: Moi in flutter_rust_bridge.yaml #2664
+
 ## 2.9.0
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.

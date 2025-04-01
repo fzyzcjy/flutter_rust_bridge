@@ -16,6 +16,7 @@ use crate::codegen::dumper::Dumper;
 use crate::codegen::misc::GeneratorProgressBarPack;
 pub use config::config::{Config, MetaConfig};
 pub use dumper::internal_config::ConfigDumpContent;
+pub use ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use log::debug;
 
 /// Execute the main code generator

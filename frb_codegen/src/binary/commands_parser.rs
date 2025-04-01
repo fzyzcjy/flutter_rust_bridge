@@ -1,6 +1,6 @@
 use crate::binary::commands::{GenerateCommandArgs, GenerateCommandArgsPrimary};
 use anyhow::{Context, Result};
-use lib_flutter_rust_bridge_codegen::codegen::{Config, MetaConfig};
+use lib_flutter_rust_bridge_codegen::codegen::{Config, MetaConfig, RustOpaqueCodecMode};
 
 pub(crate) fn compute_codegen_config(args: GenerateCommandArgsPrimary) -> Result<Config> {
     let config_from_file = if let Some(config_file) = &args.config_file {
@@ -51,6 +51,7 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgsPrima
         deps_check: negative_bool_arg(args.no_deps_check),
         dart3: negative_bool_arg(args.no_dart3),
         full_dep: positive_bool_arg(args.full_dep),
+        default_rust_opaque_codec: args.default_rust_opaque_codec.map(RustOpaqueCodecMode::from),
         local: positive_bool_arg(args.local),
         default_external_library_loader_web_prefix: args.default_external_library_loader_web_prefix,
         dart_type_rename: None, // complex type, not supported on command line yet

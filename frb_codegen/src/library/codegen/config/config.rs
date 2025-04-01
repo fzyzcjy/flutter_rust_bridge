@@ -1,4 +1,4 @@
-use crate::codegen::dumper::internal_config::ConfigDumpContent;
+use crate::codegen::{dumper::internal_config::ConfigDumpContent, RustOpaqueCodecMode};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
@@ -29,6 +29,7 @@ pub struct Config {
     pub deps_check: Option<bool>,
     pub dart3: Option<bool>,
     pub full_dep: Option<bool>,
+    pub default_rust_opaque_codec: Option<RustOpaqueCodecMode>,
     pub local: Option<bool>,
     pub default_external_library_loader_web_prefix: Option<String>,
     pub dart_type_rename: Option<HashMap<String, String>>,
@@ -87,6 +88,7 @@ generate_merge!(
     deps_check,
     dart3,
     full_dep,
+    default_rust_opaque_codec,
     local,
     default_external_library_loader_web_prefix,
     dart_type_rename,
