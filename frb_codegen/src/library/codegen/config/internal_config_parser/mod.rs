@@ -76,7 +76,8 @@ impl InternalConfig {
 
         let full_dep = config.full_dep.unwrap_or(false);
         let default_stream_sink_codec = generate_default_stream_sink_codec(full_dep);
-        let rust_opaque_codec = generate_rust_opaque_codec(config.default_rust_opaque_codec.clone());
+        let default_rust_opaque_codec =
+            generate_default_rust_opaque_codec(config.default_rust_opaque_codec.clone());
         let enable_local_dependency = config.local.unwrap_or_default();
         let stop_on_error = config.stop_on_error.unwrap_or_default();
 
@@ -90,7 +91,7 @@ impl InternalConfig {
             dart_output_class_name_pack: &dart_output_class_name_pack,
             rust_output_path: &rust_output_path,
             default_stream_sink_codec,
-            default_rust_opaque_codec: rust_opaque_codec,
+            default_rust_opaque_codec,
             c_output_path: &c_output_path,
             web_enabled,
             full_dep,
@@ -115,7 +116,7 @@ impl InternalConfig {
                     rust_input_namespace_pack: rust_input_namespace_pack.clone(),
                     force_codec_mode_pack: compute_force_codec_mode_pack(full_dep),
                     default_stream_sink_codec,
-                    default_rust_opaque_codec: rust_opaque_codec,
+                    default_rust_opaque_codec,
                     stop_on_error,
                     enable_lifetime: config.enable_lifetime.unwrap_or_default(),
                     type_64bit_int: config.type_64bit_int.unwrap_or_default(),
@@ -184,7 +185,9 @@ fn generate_default_stream_sink_codec(full_dep: bool) -> CodecMode {
     }
 }
 
-fn generate_rust_opaque_codec(rust_opaque: Option<RustOpaqueCodecMode>) -> RustOpaqueCodecMode {
+fn generate_default_rust_opaque_codec(
+    rust_opaque: Option<RustOpaqueCodecMode>,
+) -> RustOpaqueCodecMode {
     rust_opaque.unwrap_or(RustOpaqueCodecMode::Nom)
 }
 
