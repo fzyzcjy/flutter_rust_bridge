@@ -1,7 +1,7 @@
 use crate::for_generated::{BaseArc, Lockable, LockableOrder, RustAutoOpaqueBase};
+use crate::rust_async::RwLock;
 use crate::rust_auto_opaque::inner::RustAutoOpaqueInner;
 use crate::rust_opaque::RustOpaqueBase;
-use tokio::sync::RwLock;
 
 // NOTE: Make these functions instead of methods, thus we can control its visibility by exporting
 // only through `for_generated::...` and do not expose to end users.
