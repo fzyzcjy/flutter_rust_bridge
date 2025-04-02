@@ -31,10 +31,11 @@
         <!-- Custom theme stylesheets -->
 
 
-        <!-- Provide site root to javascript -->
+        <!-- Provide site root and default themes to javascript -->
         <script>
-            var path_to_root = "../";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc.js"></script>
@@ -44,8 +45,8 @@
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
-                var theme = localStorage.getItem('mdbook-theme');
-                var sidebar = localStorage.getItem('mdbook-sidebar');
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
 
                 if (theme.startsWith('"') && theme.endsWith('"')) {
                     localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
@@ -59,7 +60,8 @@
 
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script>
-            var theme;
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             const html = document.documentElement;
@@ -72,8 +74,8 @@
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var sidebar = null;
-            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
@@ -109,6 +111,7 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
@@ -218,16 +221,16 @@ src/ir -- src/generator --&gt; rd[Rust &amp; Dart]
 <p>Unless otherwise noted, <code>T</code> refers to a type from the same column or the generic type.
 Does not include delegated types.</p>
 <div class="table-wrapper"><table><thead><tr><th>Rust</th><th>Rust IO Wire</th><th>Dart IO Wire</th><th>Rust JS Wire</th><th>Dart JS Wire</th><th>Dart</th></tr></thead><tbody>
-<tr><td><code>i{8..32}</code></td><td><code>i{8..32}</code></td><td><code>int</code><sup class="footnote-reference"><a href="#1">1</a></sup></td><td><code>i{8..32}</code></td><td><code>int</code></td><td><code>int</code></td></tr>
-<tr><td><code>u{8..32}</code></td><td><code>u{8..32}</code></td><td><code>int</code><sup class="footnote-reference"><a href="#1">1</a></sup></td><td><code>u{8..32}</code></td><td><code>int</code></td><td><code>int</code></td></tr>
+<tr><td><code>i{8..32}</code></td><td><code>i{8..32}</code></td><td><code>int</code><sup class="footnote-reference" id="fr-1-1"><a href="#footnote-1">1</a></sup></td><td><code>i{8..32}</code></td><td><code>int</code></td><td><code>int</code></td></tr>
+<tr><td><code>u{8..32}</code></td><td><code>u{8..32}</code></td><td><code>int</code><sup class="footnote-reference" id="fr-1-2"><a href="#footnote-1">1</a></sup></td><td><code>u{8..32}</code></td><td><code>int</code></td><td><code>int</code></td></tr>
 <tr><td><code>i64</code></td><td><code>i64</code></td><td><code>int</code></td><td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt"><code>BigInt</code></a></td><td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt"><code>BigInt</code></a></td><td><code>int</code></td></tr>
 <tr><td><code>u64</code></td><td><code>u64</code></td><td><code>int</code></td><td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt"><code>BigInt</code></a></td><td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt"><code>BigInt</code></a></td><td><code>int</code></td></tr>
 <tr><td><code>usize</code></td><td><code>usize</code></td><td><code>int</code></td><td><code>usize</code></td><td><code>int</code></td><td><code>int</code></td></tr>
 <tr><td><code>bool</code></td><td><code>bool</code></td><td><code>bool</code></td><td><code>bool</code></td><td><code>bool</code></td><td><code>bool</code></td></tr>
 <tr><td><code>Vec&lt;i{8..32}&gt;</code></td><td><code>wire_int_{8..32}_list</code></td><td><code>wire_int_{8..32}_list</code></td><td><code>Box&lt;[i{8..32}]&gt;</code></td><td><code>Int{8..32}Array</code></td><td><code>Int{8..32}List</code></td></tr>
 <tr><td><code>Vec&lt;u{8..32}&gt;</code></td><td><code>wire_uint_{8..32}_list</code></td><td><code>wire_uint_{8..32}_list</code></td><td><code>Box&lt;[u{8..32}]&gt;</code></td><td><code>Uint{8..32}Array</code></td><td><code>Uint{8..32}List</code></td></tr>
-<tr><td><code>Vec&lt;i64&gt;</code></td><td><code>wire_int_64_list</code></td><td><code>wire_int_64_list</code></td><td><code>Box&lt;[i64]&gt;</code></td><td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt64Array"><code>BigInt64Array</code></a></td><td><code>Int64List</code><sup class="footnote-reference"><a href="#2">2</a></sup></td></tr>
-<tr><td><code>Vec&lt;u64&gt;</code></td><td><code>wire_uint_64_list</code></td><td><code>wire_uint_64_list</code></td><td><code>Box&lt;[u64]&gt;</code></td><td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigUint64Array"><code>BigUint64Array</code></a></td><td><code>Uint64List</code><sup class="footnote-reference"><a href="#2">2</a></sup></td></tr>
+<tr><td><code>Vec&lt;i64&gt;</code></td><td><code>wire_int_64_list</code></td><td><code>wire_int_64_list</code></td><td><code>Box&lt;[i64]&gt;</code></td><td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt64Array"><code>BigInt64Array</code></a></td><td><code>Int64List</code><sup class="footnote-reference" id="fr-2-1"><a href="#footnote-2">2</a></sup></td></tr>
+<tr><td><code>Vec&lt;u64&gt;</code></td><td><code>wire_uint_64_list</code></td><td><code>wire_uint_64_list</code></td><td><code>Box&lt;[u64]&gt;</code></td><td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigUint64Array"><code>BigUint64Array</code></a></td><td><code>Uint64List</code><sup class="footnote-reference" id="fr-2-2"><a href="#footnote-2">2</a></sup></td></tr>
 <tr><td><code>String</code></td><td><code>wire_uint_8_list</code></td><td><code>wire_uint_8_list</code></td><td><code>String</code></td><td><code>String</code></td><td><code>String</code></td></tr>
 <tr><td><code>Vec&lt;String&gt;</code></td><td><code>wire_StringList</code></td><td><code>wire_StringList</code></td><td><code>Box&lt;[String]&gt;</code></td><td><code>List</code></td><td><code>List&lt;String&gt;</code></td></tr>
 <tr><td><code>Vec&lt;T&gt;</code></td><td><code>wire_list_t</code></td><td><code>wire_list_t</code></td><td><code>Box&lt;[JsValue]&gt;</code></td><td><code>List</code></td><td><code>List&lt;T&gt;</code></td></tr>
@@ -235,7 +238,7 @@ Does not include delegated types.</p>
 <tr><td><code>Option&lt;T&gt;</code></td><td><code>*mut T</code></td><td><code>ffi.Pointer&lt;T&gt;</code></td><td><code>Option&lt;T&gt;</code></td><td><code>T?</code></td><td><code>T?</code></td></tr>
 <tr><td><code>Option&lt;Box&lt;T&gt;&gt;</code></td><td><code>*mut T</code></td><td><code>ffi.Pointer&lt;T&gt;</code></td><td><code>Option&lt;T&gt;</code></td><td><code>T?</code></td><td><code>T?</code></td></tr>
 <tr><td>enum/struct <code>T</code></td><td><code>*mut wire_t</code></td><td><code>ffi.Pointer&lt;T&gt;</code></td><td><code>Array</code></td><td><code>List</code></td><td>class <code>T</code></td></tr>
-<tr><td>enum <code>T</code><sup class="footnote-reference"><a href="#3">3</a></sup></td><td><code>i32</code><sup class="footnote-reference"><a href="#5">4</a></sup></td><td><code>int</code><sup class="footnote-reference"><a href="#1">1</a></sup></td><td><code>i32</code><sup class="footnote-reference"><a href="#5">4</a></sup></td><td><code>int</code></td><td>enum <code>T</code></td></tr>
+<tr><td>enum <code>T</code><sup class="footnote-reference" id="fr-3-1"><a href="#footnote-3">3</a></sup></td><td><code>i32</code><sup class="footnote-reference" id="fr-5-1"><a href="#footnote-5">4</a></sup></td><td><code>int</code><sup class="footnote-reference" id="fr-1-3"><a href="#footnote-1">1</a></sup></td><td><code>i32</code><sup class="footnote-reference" id="fr-5-2"><a href="#footnote-5">4</a></sup></td><td><code>int</code></td><td>enum <code>T</code></td></tr>
 <tr><td><a href="https://docs.rs/flutter_rust_bridge/latest/flutter_rust_bridge/ffi/type.DartAbi.html"><code>DartAbi</code></a></td><td><a href="https://docs.rs/flutter_rust_bridge/latest/flutter_rust_bridge/ffi/io/ffi/struct.DartCObject.html"><code>DartCObject</code></a></td><td><code>dynamic</code></td><td><a href="https://rustwasm.github.io/wasm-bindgen/reference/types/jsvalue.html"><code>JsValue</code></a></td><td><code>dynamic</code></td><td><code>dynamic</code></td></tr>
 </tbody></table>
 </div>
@@ -298,7 +301,7 @@ keeps the ports in a JS-local scope that cannot be shared with other threads. A 
 is created by Dart, then passed to the main Rust thread. Rust then transfers its name to the workers.
 When other workers refer to a <code>StreamSink</code> from another worker, e.g. if the sink was put in a static variable,
 a new <code>BroadcastChannel</code> will be created from its name.</p>
-<p><code>BroadcastChannel</code>s are guaranteed to be unique for each invocation.<sup class="footnote-reference"><a href="#4">5</a></sup></p>
+<p><code>BroadcastChannel</code>s are guaranteed to be unique for each invocation.<sup class="footnote-reference" id="fr-4-1"><a href="#footnote-4">5</a></sup></p>
 <pre class="mermaid">sequenceDiagram
 Dart -&gt;&gt; Rust: channel
 Rust -&gt;&gt; Rust Worker 1: channel.name
@@ -327,22 +330,6 @@ to accomplish with GeneralList.</li>
 </ol>
 <h2 id="want-to-know-more-tell-me"><a class="header" href="#want-to-know-more-tell-me">Want to know more? Tell me</a></h2>
 <p>What do you want to know? Feel free to create an issue in GitHub, and I will tell more :)</p>
-<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
-<p>When behind a <code>ffi.Pointer</code>, they are their respective types from <code>dart:ffi</code>: <code>ffi.Int8</code>, <code>ffi.Int16</code>, etc.</p>
-</div>
-<div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
-<p>These types are unsupported on Web by <code>dart:typed_list</code>, so this library provides a barebores shim over the JS native types.
-If you wish to use these types, replace all <code>dart:typed_list</code> imports with this library.</p>
-</div>
-<div class="footnote-definition" id="3"><sup class="footnote-definition-label">3</sup>
-<p>Refers to C-style enums only (no fields).</p>
-</div>
-<div class="footnote-definition" id="4"><sup class="footnote-definition-label">5</sup>
-<p>This is currently implemented as a monotonically-increasing index.</p>
-</div>
-<div class="footnote-definition" id="5"><sup class="footnote-definition-label">4</sup>
-<p>Enums may also specify a <code>#[repr]</code>, which is planned to be implemented.</p>
-</div>
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 <script>
 let mdbookTheme = localStorage.getItem("mdbook-theme") || default_theme;
@@ -351,7 +338,24 @@ mermaid.initialize({
     theme: mdbookTheme == 'light' || mdbookTheme == 'rust' ? 'light' : 'dark',
 });
 </script>
-
+<hr>
+<ol class="footnote-definition"><li id="footnote-1">
+<p>When behind a <code>ffi.Pointer</code>, they are their respective types from <code>dart:ffi</code>: <code>ffi.Int8</code>, <code>ffi.Int16</code>, etc. <a href="#fr-1-1">↩</a> <a href="#fr-1-2">↩2</a> <a href="#fr-1-3">↩3</a></p>
+</li>
+<li id="footnote-2">
+<p>These types are unsupported on Web by <code>dart:typed_list</code>, so this library provides a barebores shim over the JS native types.
+If you wish to use these types, replace all <code>dart:typed_list</code> imports with this library. <a href="#fr-2-1">↩</a> <a href="#fr-2-2">↩2</a></p>
+</li>
+<li id="footnote-3">
+<p>Refers to C-style enums only (no fields). <a href="#fr-3-1">↩</a></p>
+</li>
+<li id="footnote-5">
+<p>Enums may also specify a <code>#[repr]</code>, which is planned to be implemented. <a href="#fr-5-1">↩</a> <a href="#fr-5-2">↩2</a></p>
+</li>
+<li id="footnote-4">
+<p>This is currently implemented as a monotonically-increasing index. <a href="#fr-4-1">↩</a></p>
+</li>
+</ol>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

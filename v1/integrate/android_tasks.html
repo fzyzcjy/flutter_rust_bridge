@@ -31,10 +31,11 @@
         <!-- Custom theme stylesheets -->
 
 
-        <!-- Provide site root to javascript -->
+        <!-- Provide site root and default themes to javascript -->
         <script>
-            var path_to_root = "../";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc.js"></script>
@@ -44,8 +45,8 @@
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
-                var theme = localStorage.getItem('mdbook-theme');
-                var sidebar = localStorage.getItem('mdbook-sidebar');
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
 
                 if (theme.startsWith('"') && theme.endsWith('"')) {
                     localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
@@ -59,7 +60,8 @@
 
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script>
-            var theme;
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             const html = document.documentElement;
@@ -72,8 +74,8 @@
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var sidebar = null;
-            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
@@ -109,6 +111,7 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
@@ -157,7 +160,7 @@
 Go ahead and install <code>cargo-ndk</code> if you have not already done so:</p>
 <pre><code>cargo install cargo-ndk
 </code></pre>
-<p>Next, add these lines<sup class="footnote-reference"><a href="#1">1</a></sup> near the bottom of <code>android/app/build.gradle</code>:</p>
+<p>Next, add these lines<sup class="footnote-reference" id="fr-1-1"><a href="#footnote-1">1</a></sup> near the bottom of <code>android/app/build.gradle</code>:</p>
 <pre><code class="language-gradle">[
     new Tuple2('Debug', ''),
     new Tuple2('Profile', '--release'),
@@ -197,11 +200,12 @@ and fill it with this:</p>
 <pre><code>ANDROID_NDK=(path to NDK)
 </code></pre>
 <p>Note the ABIs <code>x86_64</code> and <code>x86</code> in <code>ndk_command</code> are usually used for Android simulators. Feel free to remove them as needed.</p>
-<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<hr>
+<ol class="footnote-definition"><li id="footnote-1">
 <p>This excerpt might be outdated, please check out
-the <a href="https://github.com/Desdaemon/flutter_rust_bridge_template/blob/main/android/app/build.gradle">source file</a> at the <a href="https://github.com/Desdaemon/flutter_rust_bridge_template">template repository</a>.</p>
-</div>
-
+the <a href="https://github.com/Desdaemon/flutter_rust_bridge_template/blob/main/android/app/build.gradle">source file</a> at the <a href="https://github.com/Desdaemon/flutter_rust_bridge_template">template repository</a>. <a href="#fr-1-1">↩</a></p>
+</li>
+</ol>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
