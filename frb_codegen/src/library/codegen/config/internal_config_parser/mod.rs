@@ -76,7 +76,7 @@ impl InternalConfig {
 
         let full_dep = config.full_dep.unwrap_or(false);
         let default_stream_sink_codec = generate_default_stream_sink_codec(full_dep);
-        let default_rust_opaque_codec = (config.default_rust_opaque_codec.clone())
+        let default_rust_opaque_codec = config.default_rust_opaque_codec
             .unwrap_or(generate_default_rust_opaque_codec(full_dep));
         let enable_local_dependency = config.local.unwrap_or_default();
         let stop_on_error = config.stop_on_error.unwrap_or_default();
