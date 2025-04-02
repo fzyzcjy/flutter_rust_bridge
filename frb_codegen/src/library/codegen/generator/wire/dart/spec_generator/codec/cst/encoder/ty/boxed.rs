@@ -4,9 +4,11 @@ use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::primitive::dart_native_type_of_primitive;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
+use crate::codegen::generator::wire::rust::spec_generator::codec::cst::base::WireRustCodecCstGenerator;
 use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::MirType::StructRef;
 use crate::codegen::ir::mir::ty::{MirType, MirTypeTrait};
+use crate::library::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 
 impl WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerator<'_> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
@@ -81,20 +83,14 @@ impl WireDartCodecCstGeneratorEncoderTrait for BoxedWireDartCodecCstGenerator<'_
                     WireDartCodecCstGenerator::new(self.mir.inner.clone(), self.context)
                         .dart_wire_type(target)
                 } else {
-                    // Quick hack to remove seemingly dead code without causing any trouble ;)
-
-                    // frb-coverage:ignore-start
-                    unreachable!("Codecov says this branch is never used. If you see this message, please create an issue and let's re-enable the logic here.")
-                    // frb-coverage:ignore-end
-
-                    // format!(
-                    //     "int /* *{} */",
-                    //     WireRustCodecCstGenerator::new(
-                    //         self.mir.inner.clone(),
-                    //         self.context.as_wire_rust_context()
-                    //     )
-                    //     .rust_wire_type(target)
-                    // )
+                    format!(
+                        "int /* *{} */",
+                        WireRustCodecCstGenerator::new(
+                            self.mir.inner.clone(),
+                            self.context.as_wire_rust_context()
+                        )
+                        .rust_wire_type(target)
+                    )
                 }
             }
             Target::Io => {
