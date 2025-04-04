@@ -442,6 +442,15 @@
       ]
     },
     {
+      "login": "PaulGrandperrin",
+      "name": "Paul Grandperrin",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1748936?v=4",
+      "profile": "https://paulg.fr",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "iazel",
       "name": "Salvatore Pelligra",
       "avatar_url": "https://avatars.githubusercontent.com/u/1616917?v=4",
@@ -1089,15 +1098,6 @@
       "profile": "https://thesimplekid.com",
       "contributions": [
         "doc"
-      ]
-    },
-    {
-      "login": "PaulGrandperrin",
-      "name": "Paul Grandperrin",
-      "avatar_url": "https://avatars.githubusercontent.com/u/1748936?v=4",
-      "profile": "https://paulg.fr",
-      "contributions": [
-        "code"
       ]
     }
   ],
