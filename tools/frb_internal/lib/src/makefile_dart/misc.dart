@@ -133,6 +133,11 @@ List<FeatureConfiguration> getRustFeaturesOfPackage(String package) {
     return const [
       FeatureConfiguration(features: "internal_feature_for_testing")
     ];
+  } else if (package == "frb_example/dart_minimal/rust") {
+    return const [
+      FeatureConfiguration(features: null),
+      FeatureConfiguration(features: null, defaultFeatures: false),
+    ];
   } else {
     return const [FeatureConfiguration(features: null)];
   }
