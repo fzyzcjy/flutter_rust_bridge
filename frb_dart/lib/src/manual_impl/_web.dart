@@ -7,10 +7,10 @@ List<dynamic> wireSyncRust2DartDcoIntoDart(WireSyncRust2DartDco syncReturn) =>
     syncReturn;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-BigInt dcoDecodeI64(dynamic raw) => jsBigIntToDartBigInt(raw);
+BigInt dcoDecodeI64(Object? raw) => jsBigIntToDartBigInt(raw);
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-BigInt dcoDecodeU64(dynamic raw) => jsBigIntToDartBigInt(raw);
+BigInt dcoDecodeU64(Object? raw) => jsBigIntToDartBigInt(raw);
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 Int64List dcoDecodeInt64List(List<dynamic> raw) =>
