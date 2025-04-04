@@ -112,13 +112,28 @@ String convertConfigPackage(String raw) {
   return ans;
 }
 
-String? getRustFeaturesOfPackage(String package) {
+final class FeatureConfiguration {
+  final bool defaultFeatures;
+  final String? features;
+
+  const FeatureConfiguration({
+    required this.features,
+    this.defaultFeatures = true,
+  });
+
+  String get toCargoArgs =>
+      "${features != null ? "--features $features" : ""} ${defaultFeatures ? "" : "--no-default-features"}";
+}
+
+List<FeatureConfiguration> getRustFeaturesOfPackage(String package) {
   if (package == "frb_example/pure_dart_pde/rust" ||
       package == "frb_example/pure_dart/rust" ||
       package == "frb_example/pure_dart" ||
       package == "frb_example/pure_dart_pde") {
-    return "internal_feature_for_testing";
+    return const [
+      FeatureConfiguration(features: "internal_feature_for_testing")
+    ];
   } else {
-    return null;
+    return const [FeatureConfiguration(features: null)];
   }
 }
