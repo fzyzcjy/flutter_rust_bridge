@@ -41,7 +41,7 @@ pub unsafe extern "C" fn frb_free_wire_sync_rust2dart_sse(value: WireSyncRust2Da
 ///
 /// This function should never be called manually.
 #[no_mangle]
-pub unsafe extern "C" fn frb_get_shutdown_callback() -> unsafe extern "C" fn(*mut c_void) {
+pub unsafe extern "C" fn frb_create_shutdown_callback() -> unsafe extern "C" fn(*mut c_void) {
     /// Counter for how many active shutdown callbacks there are.
     ///
     /// It is incremented when `frb_shutdown_callback` is returned and

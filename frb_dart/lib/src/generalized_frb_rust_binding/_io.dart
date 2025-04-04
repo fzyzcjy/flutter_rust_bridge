@@ -34,7 +34,8 @@ class GeneralizedFrbRustBinding {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void initShutdownWatcher() {
-    _shutdownWatcher ??= _ShutdownWatcher(_binding.frb_get_shutdown_callback());
+    _shutdownWatcher ??=
+        _ShutdownWatcher(_binding.frb_create_shutdown_callback());
   }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}

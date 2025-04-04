@@ -78,4 +78,4 @@ void frb_free_wire_sync_rust2dart_sse(struct WireSyncRust2DartSse value);
  *
  * This function should never be called manually.
  */
-void (*frb_get_shutdown_callback(void))(void*);
+void (*frb_create_shutdown_callback(void))(void*);

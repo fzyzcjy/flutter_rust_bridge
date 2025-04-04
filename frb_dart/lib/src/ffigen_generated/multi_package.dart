@@ -486,17 +486,17 @@ class MultiPackageCBinding {
   ///
   /// This function should never be called manually.
   ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>
-      frb_get_shutdown_callback() {
-    return _frb_get_shutdown_callback();
+      frb_create_shutdown_callback() {
+    return _frb_create_shutdown_callback();
   }
 
-  late final _frb_get_shutdown_callbackPtr = _lookup<
+  late final _frb_create_shutdown_callbackPtr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<
                   ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>
-              Function()>>('frb_get_shutdown_callback');
-  late final _frb_get_shutdown_callback =
-      _frb_get_shutdown_callbackPtr.asFunction<
+              Function()>>('frb_create_shutdown_callback');
+  late final _frb_create_shutdown_callback =
+      _frb_create_shutdown_callbackPtr.asFunction<
           ffi.Pointer<
                   ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>
               Function()>();
