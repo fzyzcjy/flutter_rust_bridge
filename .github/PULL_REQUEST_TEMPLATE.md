@@ -12,4 +12,4 @@ In order to quickly iterate and avoid slowing down development pace by making CI
 
 Utility commands
 - Run codegen: `cargo run --manifest-path /path/to/flutter_rust_bridge/frb_codegen/Cargo.toml -- generate`
-* Run tests: `./frb_internal test-dart-native --package frb_example/dart_minimal`
+- Run tests: `./frb_internal test-dart-native --package frb_example/dart_minimal`
