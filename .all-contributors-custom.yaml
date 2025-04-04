@@ -43,6 +43,7 @@
 - SirKrlos: Fix fvm calls.
 - OfficialBoyfriend: Fix error display.
 - jippeholwerda: Fix raw identifier.
+- PaulGrandperrin: Fix lint.
 - iazel: Fix lint.
 - wxitcode: Add org option. Support MacOS log. Fix a typo.
 - atezet: Upgrade dependencies. Follow rustfmt.
