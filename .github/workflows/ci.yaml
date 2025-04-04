@@ -180,7 +180,6 @@ jobs:
           - ubuntu-20.04
         package:
           - frb_example--dart_minimal
-          - frb_example--feat_no_dart_opaque
           - frb_example--pure_dart
           - frb_example--pure_dart_pde
           - frb_example--dart_build_rs

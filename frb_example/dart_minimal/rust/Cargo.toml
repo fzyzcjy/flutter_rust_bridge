@@ -7,7 +7,20 @@ edition = "2021"
 crate-type = ["cdylib"]
 
 [dependencies]
-flutter_rust_bridge = { path = "../../../frb_rust" }
+flutter_rust_bridge = { path = "../../../frb_rust", default-features = false, features = [
+    "anyhow",
+    # "dart-opaque",
+    "log",
+    "portable-atomic",
+    "rust-async",
+    "thread-pool",
+    "user-utils",
+    "wasm-start",
+] }
 
 [lints.rust]
 unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }
+
+[features]
+default = ["dart-opaque"]
+dart-opaque = ["flutter_rust_bridge/dart-opaque"]
