@@ -128,6 +128,9 @@ impl InternalConfig {
             polisher: PolisherInternalConfig {
                 duplicated_c_output_path,
                 dart_format_line_length: config.dart_format_line_length.unwrap_or(80),
+                dart_format: config.dart_format.unwrap_or(true),
+                dart_fix: config.dart_fix.unwrap_or(true),
+                rust_format: config.rust_format.unwrap_or(true),
                 add_mod_to_lib: config.add_mod_to_lib.unwrap_or(true),
                 build_runner: config.build_runner.unwrap_or(true),
                 web_enabled,
