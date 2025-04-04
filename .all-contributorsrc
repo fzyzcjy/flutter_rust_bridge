@@ -1090,6 +1090,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "PaulGrandperrin",
+      "name": "Paul Grandperrin",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1748936?v=4",
+      "profile": "https://paulg.fr",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
