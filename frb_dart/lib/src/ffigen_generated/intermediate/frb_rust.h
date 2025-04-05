@@ -72,3 +72,10 @@ void frb_free_wire_sync_rust2dart_dco(WireSyncRust2DartDco value);
  * This function should never be called manually.
  */
 void frb_free_wire_sync_rust2dart_sse(struct WireSyncRust2DartSse value);
+
+/**
+ * # Safety
+ *
+ * This function should never be called manually.
+ */
+void (*frb_create_shutdown_callback(void))(void*);

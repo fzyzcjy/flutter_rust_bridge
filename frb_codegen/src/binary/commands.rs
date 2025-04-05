@@ -173,6 +173,18 @@ pub(crate) struct GenerateCommandArgsPrimary {
     #[arg(long)]
     pub parse_const: bool,
 
+    /// Whether to disable automatic Dart formatting
+    #[arg(long)]
+    pub no_dart_format: bool,
+
+    /// Whether to disable automatic Dart fix
+    #[arg(long)]
+    pub no_dart_fix: bool,
+
+    /// Whether to disable automatic Rust formatting
+    #[arg(long)]
+    pub no_rust_format: bool,
+
     /// If having error when, for example, parsing a function, directly stop instead of continue and skip it
     #[arg(long)]
     pub stop_on_error: bool,

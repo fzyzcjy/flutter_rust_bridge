@@ -167,6 +167,7 @@ class _EntrypointState<A extends BaseApi> {
   }) {
     _setUpRustToDartCommunication(generalizedFrbRustBinding);
     _initializeApiDlData(generalizedFrbRustBinding);
+    _initializeShutdownWatcher(generalizedFrbRustBinding);
   }
 
   void dispose() {
@@ -198,4 +199,9 @@ void _setUpRustToDartCommunication(
 
 void _initializeApiDlData(GeneralizedFrbRustBinding generalizedFrbRustBinding) {
   generalizedFrbRustBinding.initFrbDartApiDl();
+}
+
+void _initializeShutdownWatcher(
+    GeneralizedFrbRustBinding generalizedFrbRustBinding) {
+  generalizedFrbRustBinding.initShutdownWatcher();
 }
