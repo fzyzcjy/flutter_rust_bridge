@@ -33,20 +33,26 @@ pub(super) fn polish(
         execute_build_runner(needs_freezed, config, progress_bar_pack),
         "execute_build_runner",
     );
-    warn_if_fail(
-        execute_dart_fix(config, progress_bar_pack),
-        "execute_dart_fix",
-    );
+    if config.dart_fix {
+        warn_if_fail(
+            execute_dart_fix(config, progress_bar_pack),
+            "execute_dart_fix",
+        );
+    }
 
     // Even if formatting generated code fails, it is not a big problem, and our codegen should not fail.
-    warn_if_fail(
-        execute_dart_format(config, output_paths, progress_bar_pack),
-        "execute_dart_format",
-    );
-    warn_if_fail(
-        execute_rust_format(output_paths, &config.rust_crate_dir, progress_bar_pack),
-        "execute_rust_format",
-    );
+    if config.dart_format {
+        warn_if_fail(
+            execute_dart_format(config, output_paths, progress_bar_pack),
+            "execute_dart_format",
+        );
+    }
+    if config.rust_format {
+        warn_if_fail(
+            execute_rust_format(output_paths, &config.rust_crate_dir, progress_bar_pack),
+            "execute_rust_format",
+        );
+    }
 
     warn_if_fail(
         auto_upgrade::execute(
