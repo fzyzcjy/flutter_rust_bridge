@@ -93,6 +93,7 @@ impl WireRustCodecCstGeneratorDecoderTrait for PrimitiveListWireRustCodecCstGene
                 ),
                 target: Target::Io,
                 needs_ffigen: true,
+                cargo_feature: None,
             }.into(),
             ..Default::default()
         }

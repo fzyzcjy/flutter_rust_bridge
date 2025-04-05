@@ -95,6 +95,7 @@ fn generate_target_pde_dispatcher_mode(target: Target, mode: FfiDispatcherMode) 
         body,
         target,
         needs_ffigen: false,
+        cargo_feature: None,
     }
 }
 
@@ -122,5 +123,6 @@ fn generate_dart_fn_deliver_output(target: Target) -> ExternFunc {
         ),
         target,
         needs_ffigen: false,
+        cargo_feature: Some("dart-opaque".into()),
     }
 }
