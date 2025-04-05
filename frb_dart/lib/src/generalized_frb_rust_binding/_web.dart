@@ -17,6 +17,9 @@ class GeneralizedFrbRustBinding {
   void initFrbDartApiDl() {}
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
+  void initShutdownWatcher() {}
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
   void pdeFfiDispatcherPrimary({
     required int funcId,
     required NativePortType port,

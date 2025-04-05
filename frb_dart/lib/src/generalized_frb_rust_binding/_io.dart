@@ -10,6 +10,13 @@ class GeneralizedFrbRustBinding {
   final MultiPackageCBinding _binding;
   final String _externalLibraryDebugInfo;
 
+  /// Notifies Rust side of an isolate group shutdown. Initialized in
+  /// [initShutdownWatcher].
+  ///
+  /// It is static and initialized only once since there supposed to be only
+  /// one per isolate.
+  static _ShutdownWatcher? _shutdownWatcher;
+
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   GeneralizedFrbRustBinding(ExternalLibrary externalLibrary)
       : _binding = MultiPackageCBinding(externalLibrary.ffiDynamicLibrary),
@@ -23,6 +30,12 @@ class GeneralizedFrbRustBinding {
       _userFriendlyDynamicLibraryErrorReporting(e, s);
       rethrow;
     }
+  }
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  void initShutdownWatcher() {
+    _shutdownWatcher ??=
+        _ShutdownWatcher(_binding.frb_create_shutdown_callback());
   }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
@@ -118,5 +131,15 @@ class GeneralizedFrbRustBinding {
         'Original stack trace: $s',
       );
     }
+  }
+}
+
+/// {@macro flutter_rust_bridge.only_for_generated_code}
+final class _ShutdownWatcher implements ffi.Finalizable {
+  final ffi.NativeFinalizer _finalizer;
+
+  _ShutdownWatcher(ffi.Pointer<ffi.NativeFinalizerFunction> callback)
+      : _finalizer = ffi.NativeFinalizer(callback) {
+    _finalizer.attach(this, ffi.Pointer.fromAddress(0));
   }
 }
