@@ -13,3 +13,6 @@ log = "0.4.19"
 
 [lints.rust]
 unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }
+
+[features]
+dart-opaque = ["flutter_rust_bridge/dart-opaque"]
