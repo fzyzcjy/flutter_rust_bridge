@@ -9,6 +9,7 @@ crate-type = ["cdylib"]
 [dependencies]
 flutter_rust_bridge = { path = "../../../frb_rust", default-features = false, features = [
     "anyhow",
+    # Deliberately remove this feature to ensure frb can work without it
     # "dart-opaque",
     "log",
     "portable-atomic",
