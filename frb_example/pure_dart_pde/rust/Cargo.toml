@@ -8,7 +8,12 @@ crate-type = ["cdylib"]
 
 [dependencies]
 anyhow = { version = "1.0.64", features = ["backtrace"] }
-flutter_rust_bridge = { path = "../../../frb_rust", features = ["chrono", "uuid", "backtrace"] }
+flutter_rust_bridge = { path = "../../../frb_rust", features = [
+    "backtrace",
+    "chrono",
+    "dart-opaque",
+    "uuid",
+] }
 log = "0.4.19"
 backtrace = "0.3.68"
 chrono = "0.4.26"
@@ -26,7 +31,7 @@ tokio = { version = "1.34.0", features = ["rt"] }
 
 [features]
 internal_feature_for_testing = []
-dart-opaque = []
+dart-opaque = ["flutter_rust_bridge/dart-opaque"]
 
 [lints.rust]
 unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }
