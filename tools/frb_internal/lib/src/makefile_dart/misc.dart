@@ -131,7 +131,7 @@ List<FeatureConfiguration> getRustFeaturesOfPackage(String package) {
       package == "frb_example/pure_dart" ||
       package == "frb_example/pure_dart_pde") {
     return const [
-      FeatureConfiguration(features: "internal_feature_for_testing")
+      FeatureConfiguration(features: "internal_feature_for_testing,dart-opaque")
     ];
   } else if (package == "frb_example/dart_minimal/rust") {
     return const [
