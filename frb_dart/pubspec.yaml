@@ -15,7 +15,7 @@ dev_dependencies:
   # Temporarily remove before https://github.com/kevmoo/build_cli/issues/168 is fixed
   # build_cli: ^2.2.4
   build_runner: ^2.2.0
-  ffigen: ^11.0.0
+  ffigen: ">=11.0.0 <19.0.0"
   flutter_lints: ^3.0.1
   test: ^1.16.8
   mocktail: ^1.0.1
