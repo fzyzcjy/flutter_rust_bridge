@@ -177,7 +177,7 @@ jobs:
         image:
           - windows-2019
           - macos-13
-          - ubuntu-20.04
+          - ubuntu-24.04
         package:
           - frb_example--dart_minimal
           - frb_example--pure_dart
@@ -238,7 +238,7 @@ jobs:
         image:
           - macos-13
           - windows-2019
-          - ubuntu-20.04
+          - ubuntu-24.04
         package:
           - frb_example--flutter_via_create
           - frb_example--flutter_via_integrate
@@ -317,7 +317,7 @@ jobs:
         image:
           - windows-2019
           - macos-13
-          - ubuntu-20.04
+          - ubuntu-24.04
 
     steps:
       # setup
@@ -575,7 +575,7 @@ jobs:
         image:
           - windows-2019
           - macos-13
-          - ubuntu-20.04
+          - ubuntu-24.04
         package:
           - frb_dart
           - frb_utils
