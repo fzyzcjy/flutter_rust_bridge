@@ -17,6 +17,7 @@ pub(crate) struct ExternFunc {
     pub(crate) body: String,
     pub(crate) target: Target,
     pub(crate) needs_ffigen: bool,
+    pub(crate) cargo_feature: Option<String>,
 }
 
 #[derive(Clone, Debug, Serialize, PartialEq, Eq)]
@@ -36,12 +37,17 @@ impl ExternFunc {
             Target::Io => "#[unsafe(no_mangle)]",
             Target::Web => "#[wasm_bindgen]",
         };
+        let feature = match &self.cargo_feature {
+            Some(feature) => format!("#[cfg(feature = \"{}\")]", feature),
+            None => "".to_owned(),
+        };
         let ExternFunc { body, .. } = self;
 
         let func_name = self.func_name(c_symbol_prefix);
 
         format!(
             r#"
+                {feature}
                 {attribute}
                 pub {call_convention} fn {func_name}({}) {} {{
                     {body}

@@ -11,3 +11,6 @@ flutter_rust_bridge = REPLACE_ME_RUST_FRB_DEPENDENCY
 
 [lints.rust]
 unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }
+
+[features]
+dart-opaque = ["flutter_rust_bridge/dart-opaque"]

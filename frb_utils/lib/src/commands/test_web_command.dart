@@ -27,4 +27,7 @@ class TestWebConfig {
 
   @CliOption(help: 'Rust feature flags to set during build')
   late List<String> rustFeatures;
+
+  @CliOption(help: 'Whether to enable Rust default features', defaultsTo: true)
+  late bool defaultFeatures;
 }

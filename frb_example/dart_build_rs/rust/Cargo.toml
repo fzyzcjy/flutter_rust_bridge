@@ -18,3 +18,6 @@ anyhow = { version = "1.0.64", features = ["backtrace"] }
 
 [lints.rust]
 unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }
+
+[features]
+dart-opaque = ["flutter_rust_bridge/dart-opaque"]

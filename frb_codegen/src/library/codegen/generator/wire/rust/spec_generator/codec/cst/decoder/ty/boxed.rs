@@ -87,6 +87,7 @@ impl WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerator<'_
                     body: "flutter_rust_bridge::for_generated::new_leak_box_ptr(value)".to_owned(),
                     target: Target::Io,
                     needs_ffigen: true,
+                    cargo_feature: None,
                 }
                 .into(),
                 ..Default::default()
@@ -110,6 +111,7 @@ impl WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerator<'_
                     ),
                     target: Target::Io,
                     needs_ffigen: true,
+                    cargo_feature: None,
                 }
                     .into(),
                 ..Default::default()

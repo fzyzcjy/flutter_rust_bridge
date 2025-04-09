@@ -16,3 +16,6 @@ delegate-attr = "0.3.0"
 
 [lints.rust]
 unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }
+
+[features]
+dart-opaque = ["flutter_rust_bridge/dart-opaque"]

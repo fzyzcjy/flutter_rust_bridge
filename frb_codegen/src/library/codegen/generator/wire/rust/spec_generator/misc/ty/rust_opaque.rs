@@ -44,6 +44,7 @@ impl WireRustGeneratorMiscTrait for RustOpaqueWireRustGenerator<'_> {
                     ),
                     target,
                     needs_ffigen: false,
+                    cargo_feature: None,
                 })
                 .collect_vec()
                 .into()

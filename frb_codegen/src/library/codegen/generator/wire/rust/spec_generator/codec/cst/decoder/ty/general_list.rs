@@ -136,5 +136,6 @@ pub(crate) fn generate_list_generate_allocate_func(
         ),
         target: Target::Io,
         needs_ffigen: true,
+        cargo_feature: None,
     }
 }
