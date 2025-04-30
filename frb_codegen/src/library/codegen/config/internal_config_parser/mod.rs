@@ -15,6 +15,7 @@ use crate::utils::path_utils::{canonicalize_with_error_message, find_dart_packag
 use anyhow::Result;
 use itertools::Itertools;
 use log::debug;
+use std::fs;
 use std::path::PathBuf;
 use strum::IntoEnumIterator;
 
@@ -50,7 +51,10 @@ impl InternalConfig {
             &config.rust_output,
         )?;
 
-        let dart_output_dir = canonicalize_with_error_message(&base_dir.join(dart_output))?;
+        let dart_output_dir_raw = base_dir.join(dart_output);
+        fs::create_dir_all(&dart_output_dir_raw)?;
+
+        let dart_output_dir = canonicalize_with_error_message(&dart_output_dir_raw)?;
         let dart_output_path_pack =
             dart_path_parser::compute_dart_output_path_pack(&dart_output_dir)?;
 
