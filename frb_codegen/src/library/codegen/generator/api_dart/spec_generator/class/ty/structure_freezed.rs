@@ -35,7 +35,7 @@ impl StructRefApiDartGenerator<'_> {
             compute_json_serializable_extra_code(src.needs_json_serializable, class_name);
 
         format!(
-            "{comments}{metadata}class {class_name} with _${class_name} {implements_exception} {{
+            "{comments}{metadata}sealed class {class_name} with _${class_name} {implements_exception} {{
                 {private_constructor}
                 const factory {class_name}{constructor_postfix}({{{constructor_params}}}) = _{class_name};
                 {methods_str}
