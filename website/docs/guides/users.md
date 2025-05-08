@@ -92,6 +92,7 @@ and temporarily filtered all repositories with >=3 stars (because they can be fo
 * (9 stars) https://github.com/wangwillian0/openhaystack
 * (8 stars) https://github.com/KRTirtho/wallywiz
 * (8 stars) https://github.com/sentclose/sentc-flutter
+* (8 stars) https://github.com/zilpay/zilpay-mobile
 * (8 stars) https://github.com/team113/messenger
 * (7 stars) https://github.com/aniketambore/bit-chat-wallet
 * (7 stars) https://github.com/erikas-taroza/audiotags
