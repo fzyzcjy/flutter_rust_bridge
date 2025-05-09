@@ -24,7 +24,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('MessageId', () async {
-    final MessageIdTwinSse msgid = await newMsgidTwinSse(id: U8Array32.init());
+    final MessageIdTwinSse msgid = await newMsgidTwinSse(
+      id: U8Array32.init(),
+    );
     msgid.field0[2] = 14;
     final inner = await useMsgidTwinSse(id: msgid);
     expect(inner[2], 14);
@@ -44,7 +46,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('FeedId', () async {
     final inner = U8Array8.init();
     inner[3] = 3;
-    final FeedIdTwinSse feedId = await returnBoxedFeedIdTwinSse(id: inner);
+    final FeedIdTwinSse feedId = await returnBoxedFeedIdTwinSse(
+      id: inner,
+    );
     expect(feedId.field0[3], 3);
     feedId.field0[5] = 5;
     final raw = await returnBoxedRawFeedIdTwinSse(id: feedId);
@@ -56,7 +60,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final inner = I32Array2.init();
     inner[0] = 1;
     inner[1] = 2;
-    final testId = await funcTestIdTwinSse(id: TestIdTwinSse(field0: inner));
+    final testId = await funcTestIdTwinSse(
+      id: TestIdTwinSse(field0: inner),
+    );
     expect(testId.field0[0], 1);
     expect(testId.field0[1], 2);
   });
@@ -77,8 +83,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
     id2.field0[1] = 30;
     final id3 = TestIdTwinSse(field0: I32Array2.init());
     id3.field0[1] = 40;
-    final x =
-        await nestedIdTwinSse(id: TestIdTwinSseArray4([id0, id1, id2, id3]));
+    final x = await nestedIdTwinSse(
+      id: TestIdTwinSseArray4([id0, id1, id2, id3]),
+    );
     expect(x[0].field0[1], 10);
     expect(x[1].field0[1], 40);
   });

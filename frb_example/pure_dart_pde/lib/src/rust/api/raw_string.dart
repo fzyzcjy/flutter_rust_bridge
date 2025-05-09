@@ -17,7 +17,8 @@ Future<RawStringItemEnumTwinNormal> testRawStringItemEnumTwinNormal() =>
     RustLib.instance.api.crateApiRawStringTestRawStringItemEnumTwinNormal();
 
 Future<MoreThanJustOneRawStringStructTwinNormal>
-    testMoreThanJustOneRawStringStructTwinNormal() => RustLib.instance.api
+testMoreThanJustOneRawStringStructTwinNormal() =>
+    RustLib.instance.api
         .crateApiRawStringTestMoreThanJustOneRawStringStructTwinNormal();
 
 class MoreThanJustOneRawStringStructTwinNormal {
@@ -52,20 +53,16 @@ class MoreThanJustOneRawStringStructTwinNormal {
 sealed class RawStringItemEnumTwinNormal with _$RawStringItemEnumTwinNormal {
   const RawStringItemEnumTwinNormal._();
 
-  const factory RawStringItemEnumTwinNormal.regular({
-    required String regular,
-  }) = RawStringItemEnumTwinNormal_Regular;
-  const factory RawStringItemEnumTwinNormal.raw({
-    required String type,
-  }) = RawStringItemEnumTwinNormal_Raw;
+  const factory RawStringItemEnumTwinNormal.regular({required String regular}) =
+      RawStringItemEnumTwinNormal_Regular;
+  const factory RawStringItemEnumTwinNormal.raw({required String type}) =
+      RawStringItemEnumTwinNormal_Raw;
 }
 
 class RawStringItemStructTwinNormal {
   final String type;
 
-  const RawStringItemStructTwinNormal({
-    required this.type,
-  });
+  const RawStringItemStructTwinNormal({required this.type});
 
   @override
   int get hashCode => type.hashCode;

@@ -11,8 +11,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
     group('ConstructorTranslatableStructTwinNormal', () {
       test('call Rust constructor', () async {
         expect(
-            (await ConstructorTranslatableStructTwinNormal.newInstance()).one,
-            'hello');
+          (await ConstructorTranslatableStructTwinNormal.newInstance()).one,
+          'hello',
+        );
       });
 
       test('call Dart native constructor', () async {
@@ -34,7 +35,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
       test('call Dart native constructor', () async {
         expect(
-            ConstructorTranslatableSyncStructTwinNormal.raw(one: 'a').one, 'a');
+          ConstructorTranslatableSyncStructTwinNormal.raw(one: 'a').one,
+          'a',
+        );
       });
     });
 

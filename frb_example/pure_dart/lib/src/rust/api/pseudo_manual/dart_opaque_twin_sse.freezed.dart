@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,106 +10,98 @@ part of 'dart_opaque_twin_sse.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$EnumDartOpaqueTwinSse {
-  Object get field0 => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int field0) primitive,
-    required TResult Function(Object field0) opaque,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int field0)? primitive,
-    TResult? Function(Object field0)? opaque,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int field0)? primitive,
-    TResult Function(Object field0)? opaque,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(EnumDartOpaqueTwinSse_Primitive value) primitive,
-    required TResult Function(EnumDartOpaqueTwinSse_Opaque value) opaque,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumDartOpaqueTwinSse_Primitive value)? primitive,
-    TResult? Function(EnumDartOpaqueTwinSse_Opaque value)? opaque,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnumDartOpaqueTwinSse_Primitive value)? primitive,
-    TResult Function(EnumDartOpaqueTwinSse_Opaque value)? opaque,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  Object get field0;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is EnumDartOpaqueTwinSse &&
+            const DeepCollectionEquality().equals(other.field0, field0));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+
+  @override
+  String toString() {
+    return 'EnumDartOpaqueTwinSse(field0: $field0)';
+  }
 }
 
 /// @nodoc
-abstract class $EnumDartOpaqueTwinSseCopyWith<$Res> {
-  factory $EnumDartOpaqueTwinSseCopyWith(EnumDartOpaqueTwinSse value,
-          $Res Function(EnumDartOpaqueTwinSse) then) =
-      _$EnumDartOpaqueTwinSseCopyWithImpl<$Res, EnumDartOpaqueTwinSse>;
+class $EnumDartOpaqueTwinSseCopyWith<$Res> {
+  $EnumDartOpaqueTwinSseCopyWith(
+      EnumDartOpaqueTwinSse _, $Res Function(EnumDartOpaqueTwinSse) __);
 }
 
 /// @nodoc
-class _$EnumDartOpaqueTwinSseCopyWithImpl<$Res,
-        $Val extends EnumDartOpaqueTwinSse>
-    implements $EnumDartOpaqueTwinSseCopyWith<$Res> {
-  _$EnumDartOpaqueTwinSseCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+class EnumDartOpaqueTwinSse_Primitive extends EnumDartOpaqueTwinSse {
+  const EnumDartOpaqueTwinSse_Primitive(this.field0) : super._();
+
+  @override
+  final int field0;
 
   /// Create a copy of EnumDartOpaqueTwinSse
   /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $EnumDartOpaqueTwinSse_PrimitiveCopyWith<EnumDartOpaqueTwinSse_Primitive>
+      get copyWith => _$EnumDartOpaqueTwinSse_PrimitiveCopyWithImpl<
+          EnumDartOpaqueTwinSse_Primitive>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is EnumDartOpaqueTwinSse_Primitive &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @override
+  String toString() {
+    return 'EnumDartOpaqueTwinSse.primitive(field0: $field0)';
+  }
 }
 
 /// @nodoc
-abstract class _$$EnumDartOpaqueTwinSse_PrimitiveImplCopyWith<$Res> {
-  factory _$$EnumDartOpaqueTwinSse_PrimitiveImplCopyWith(
-          _$EnumDartOpaqueTwinSse_PrimitiveImpl value,
-          $Res Function(_$EnumDartOpaqueTwinSse_PrimitiveImpl) then) =
-      __$$EnumDartOpaqueTwinSse_PrimitiveImplCopyWithImpl<$Res>;
+abstract mixin class $EnumDartOpaqueTwinSse_PrimitiveCopyWith<$Res>
+    implements $EnumDartOpaqueTwinSseCopyWith<$Res> {
+  factory $EnumDartOpaqueTwinSse_PrimitiveCopyWith(
+          EnumDartOpaqueTwinSse_Primitive value,
+          $Res Function(EnumDartOpaqueTwinSse_Primitive) _then) =
+      _$EnumDartOpaqueTwinSse_PrimitiveCopyWithImpl;
   @useResult
   $Res call({int field0});
 }
 
 /// @nodoc
-class __$$EnumDartOpaqueTwinSse_PrimitiveImplCopyWithImpl<$Res>
-    extends _$EnumDartOpaqueTwinSseCopyWithImpl<$Res,
-        _$EnumDartOpaqueTwinSse_PrimitiveImpl>
-    implements _$$EnumDartOpaqueTwinSse_PrimitiveImplCopyWith<$Res> {
-  __$$EnumDartOpaqueTwinSse_PrimitiveImplCopyWithImpl(
-      _$EnumDartOpaqueTwinSse_PrimitiveImpl _value,
-      $Res Function(_$EnumDartOpaqueTwinSse_PrimitiveImpl) _then)
-      : super(_value, _then);
+class _$EnumDartOpaqueTwinSse_PrimitiveCopyWithImpl<$Res>
+    implements $EnumDartOpaqueTwinSse_PrimitiveCopyWith<$Res> {
+  _$EnumDartOpaqueTwinSse_PrimitiveCopyWithImpl(this._self, this._then);
+
+  final EnumDartOpaqueTwinSse_Primitive _self;
+  final $Res Function(EnumDartOpaqueTwinSse_Primitive) _then;
 
   /// Create a copy of EnumDartOpaqueTwinSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$EnumDartOpaqueTwinSse_PrimitiveImpl(
+    return _then(EnumDartOpaqueTwinSse_Primitive(
       null == field0
-          ? _value.field0
+          ? _self.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as int,
     ));
@@ -117,169 +110,25 @@ class __$$EnumDartOpaqueTwinSse_PrimitiveImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumDartOpaqueTwinSse_PrimitiveImpl
-    extends EnumDartOpaqueTwinSse_Primitive {
-  const _$EnumDartOpaqueTwinSse_PrimitiveImpl(this.field0) : super._();
-
-  @override
-  final int field0;
-
-  @override
-  String toString() {
-    return 'EnumDartOpaqueTwinSse.primitive(field0: $field0)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$EnumDartOpaqueTwinSse_PrimitiveImpl &&
-            (identical(other.field0, field0) || other.field0 == field0));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, field0);
-
-  /// Create a copy of EnumDartOpaqueTwinSse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$EnumDartOpaqueTwinSse_PrimitiveImplCopyWith<
-          _$EnumDartOpaqueTwinSse_PrimitiveImpl>
-      get copyWith => __$$EnumDartOpaqueTwinSse_PrimitiveImplCopyWithImpl<
-          _$EnumDartOpaqueTwinSse_PrimitiveImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int field0) primitive,
-    required TResult Function(Object field0) opaque,
-  }) {
-    return primitive(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int field0)? primitive,
-    TResult? Function(Object field0)? opaque,
-  }) {
-    return primitive?.call(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int field0)? primitive,
-    TResult Function(Object field0)? opaque,
-    required TResult orElse(),
-  }) {
-    if (primitive != null) {
-      return primitive(field0);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(EnumDartOpaqueTwinSse_Primitive value) primitive,
-    required TResult Function(EnumDartOpaqueTwinSse_Opaque value) opaque,
-  }) {
-    return primitive(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumDartOpaqueTwinSse_Primitive value)? primitive,
-    TResult? Function(EnumDartOpaqueTwinSse_Opaque value)? opaque,
-  }) {
-    return primitive?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnumDartOpaqueTwinSse_Primitive value)? primitive,
-    TResult Function(EnumDartOpaqueTwinSse_Opaque value)? opaque,
-    required TResult orElse(),
-  }) {
-    if (primitive != null) {
-      return primitive(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class EnumDartOpaqueTwinSse_Primitive extends EnumDartOpaqueTwinSse {
-  const factory EnumDartOpaqueTwinSse_Primitive(final int field0) =
-      _$EnumDartOpaqueTwinSse_PrimitiveImpl;
-  const EnumDartOpaqueTwinSse_Primitive._() : super._();
-
-  @override
-  int get field0;
-
-  /// Create a copy of EnumDartOpaqueTwinSse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$EnumDartOpaqueTwinSse_PrimitiveImplCopyWith<
-          _$EnumDartOpaqueTwinSse_PrimitiveImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$EnumDartOpaqueTwinSse_OpaqueImplCopyWith<$Res> {
-  factory _$$EnumDartOpaqueTwinSse_OpaqueImplCopyWith(
-          _$EnumDartOpaqueTwinSse_OpaqueImpl value,
-          $Res Function(_$EnumDartOpaqueTwinSse_OpaqueImpl) then) =
-      __$$EnumDartOpaqueTwinSse_OpaqueImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Object field0});
-}
-
-/// @nodoc
-class __$$EnumDartOpaqueTwinSse_OpaqueImplCopyWithImpl<$Res>
-    extends _$EnumDartOpaqueTwinSseCopyWithImpl<$Res,
-        _$EnumDartOpaqueTwinSse_OpaqueImpl>
-    implements _$$EnumDartOpaqueTwinSse_OpaqueImplCopyWith<$Res> {
-  __$$EnumDartOpaqueTwinSse_OpaqueImplCopyWithImpl(
-      _$EnumDartOpaqueTwinSse_OpaqueImpl _value,
-      $Res Function(_$EnumDartOpaqueTwinSse_OpaqueImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of EnumDartOpaqueTwinSse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$EnumDartOpaqueTwinSse_OpaqueImpl(
-      null == field0 ? _value.field0 : field0,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$EnumDartOpaqueTwinSse_OpaqueImpl extends EnumDartOpaqueTwinSse_Opaque {
-  const _$EnumDartOpaqueTwinSse_OpaqueImpl(this.field0) : super._();
+class EnumDartOpaqueTwinSse_Opaque extends EnumDartOpaqueTwinSse {
+  const EnumDartOpaqueTwinSse_Opaque(this.field0) : super._();
 
   @override
   final Object field0;
 
-  @override
-  String toString() {
-    return 'EnumDartOpaqueTwinSse.opaque(field0: $field0)';
-  }
+  /// Create a copy of EnumDartOpaqueTwinSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $EnumDartOpaqueTwinSse_OpaqueCopyWith<EnumDartOpaqueTwinSse_Opaque>
+      get copyWith => _$EnumDartOpaqueTwinSse_OpaqueCopyWithImpl<
+          EnumDartOpaqueTwinSse_Opaque>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumDartOpaqueTwinSse_OpaqueImpl &&
+            other is EnumDartOpaqueTwinSse_Opaque &&
             const DeepCollectionEquality().equals(other.field0, field0));
   }
 
@@ -287,91 +136,41 @@ class _$EnumDartOpaqueTwinSse_OpaqueImpl extends EnumDartOpaqueTwinSse_Opaque {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
 
+  @override
+  String toString() {
+    return 'EnumDartOpaqueTwinSse.opaque(field0: $field0)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $EnumDartOpaqueTwinSse_OpaqueCopyWith<$Res>
+    implements $EnumDartOpaqueTwinSseCopyWith<$Res> {
+  factory $EnumDartOpaqueTwinSse_OpaqueCopyWith(
+          EnumDartOpaqueTwinSse_Opaque value,
+          $Res Function(EnumDartOpaqueTwinSse_Opaque) _then) =
+      _$EnumDartOpaqueTwinSse_OpaqueCopyWithImpl;
+  @useResult
+  $Res call({Object field0});
+}
+
+/// @nodoc
+class _$EnumDartOpaqueTwinSse_OpaqueCopyWithImpl<$Res>
+    implements $EnumDartOpaqueTwinSse_OpaqueCopyWith<$Res> {
+  _$EnumDartOpaqueTwinSse_OpaqueCopyWithImpl(this._self, this._then);
+
+  final EnumDartOpaqueTwinSse_Opaque _self;
+  final $Res Function(EnumDartOpaqueTwinSse_Opaque) _then;
+
   /// Create a copy of EnumDartOpaqueTwinSse
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
   @pragma('vm:prefer-inline')
-  _$$EnumDartOpaqueTwinSse_OpaqueImplCopyWith<
-          _$EnumDartOpaqueTwinSse_OpaqueImpl>
-      get copyWith => __$$EnumDartOpaqueTwinSse_OpaqueImplCopyWithImpl<
-          _$EnumDartOpaqueTwinSse_OpaqueImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int field0) primitive,
-    required TResult Function(Object field0) opaque,
+  $Res call({
+    Object? field0 = null,
   }) {
-    return opaque(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int field0)? primitive,
-    TResult? Function(Object field0)? opaque,
-  }) {
-    return opaque?.call(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int field0)? primitive,
-    TResult Function(Object field0)? opaque,
-    required TResult orElse(),
-  }) {
-    if (opaque != null) {
-      return opaque(field0);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(EnumDartOpaqueTwinSse_Primitive value) primitive,
-    required TResult Function(EnumDartOpaqueTwinSse_Opaque value) opaque,
-  }) {
-    return opaque(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumDartOpaqueTwinSse_Primitive value)? primitive,
-    TResult? Function(EnumDartOpaqueTwinSse_Opaque value)? opaque,
-  }) {
-    return opaque?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnumDartOpaqueTwinSse_Primitive value)? primitive,
-    TResult Function(EnumDartOpaqueTwinSse_Opaque value)? opaque,
-    required TResult orElse(),
-  }) {
-    if (opaque != null) {
-      return opaque(this);
-    }
-    return orElse();
+    return _then(EnumDartOpaqueTwinSse_Opaque(
+      null == field0 ? _self.field0 : field0,
+    ));
   }
 }
 
-abstract class EnumDartOpaqueTwinSse_Opaque extends EnumDartOpaqueTwinSse {
-  const factory EnumDartOpaqueTwinSse_Opaque(final Object field0) =
-      _$EnumDartOpaqueTwinSse_OpaqueImpl;
-  const EnumDartOpaqueTwinSse_Opaque._() : super._();
-
-  @override
-  Object get field0;
-
-  /// Create a copy of EnumDartOpaqueTwinSse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$EnumDartOpaqueTwinSse_OpaqueImplCopyWith<
-          _$EnumDartOpaqueTwinSse_OpaqueImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
+// dart format on

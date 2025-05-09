@@ -16,26 +16,25 @@ part 'attribute_twin_rust_async.freezed.dart';
 // These functions are ignored (category: IgnoreBecauseExplicitAttribute): `func_should_not_exist_in_dart_twin_rust_async`, `method_should_not_exist_in_dart_twin_rust_async`
 // These functions are ignored (category: IgnoreBecauseOwnerTyShouldIgnore): `method_should_not_exist_in_dart_twin_rust_async`
 
-Future<void> handleCustomizedStructTwinRustAsync(
-        {required CustomizedTwinRustAsync val}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualAttributeTwinRustAsyncHandleCustomizedStructTwinRustAsync(
-            val: val);
+Future<void> handleCustomizedStructTwinRustAsync({
+  required CustomizedTwinRustAsync val,
+}) => RustLib.instance.api
+    .crateApiPseudoManualAttributeTwinRustAsyncHandleCustomizedStructTwinRustAsync(
+      val: val,
+    );
 
-Future<UserIdTwinRustAsync> nextUserIdTwinRustAsync(
-        {UserIdTwinRustAsync userId = const UserIdTwinRustAsync()}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualAttributeTwinRustAsyncNextUserIdTwinRustAsync(
-            userId: userId);
+Future<UserIdTwinRustAsync> nextUserIdTwinRustAsync({
+  UserIdTwinRustAsync userId = const UserIdTwinRustAsync(),
+}) => RustLib.instance.api
+    .crateApiPseudoManualAttributeTwinRustAsyncNextUserIdTwinRustAsync(
+      userId: userId,
+    );
 
 class CustomizedTwinRustAsync {
   final String finalField;
   String? nonFinalField;
 
-  CustomizedTwinRustAsync({
-    required this.finalField,
-    this.nonFinalField,
-  });
+  CustomizedTwinRustAsync({required this.finalField, this.nonFinalField});
 
   @override
   int get hashCode => finalField.hashCode ^ nonFinalField.hashCode;
@@ -53,7 +52,6 @@ class CustomizedTwinRustAsync {
 @freezed
 @meta.immutable
 class UserIdTwinRustAsync with _$UserIdTwinRustAsync {
-  const factory UserIdTwinRustAsync({
-    @Default(0) int value,
-  }) = _UserIdTwinRustAsync;
+  const factory UserIdTwinRustAsync({@Default(0) int value}) =
+      _UserIdTwinRustAsync;
 }

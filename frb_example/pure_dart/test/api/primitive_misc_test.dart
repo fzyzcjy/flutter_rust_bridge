@@ -9,12 +9,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('dart call primitiveTypes', () async {
     expect(
-        await primitiveTypesTwinNormal(
-            myI32: 123,
-            myI64: PlatformInt64Util.from(10000000000000),
-            myF64: 12345678901234567890.123,
-            myBool: true),
-        42);
+      await primitiveTypesTwinNormal(
+        myI32: 123,
+        myI64: PlatformInt64Util.from(10000000000000),
+        myF64: 12345678901234567890.123,
+        myBool: true,
+      ),
+      42,
+    );
   });
 
   test('dart call primitiveU32', () async {

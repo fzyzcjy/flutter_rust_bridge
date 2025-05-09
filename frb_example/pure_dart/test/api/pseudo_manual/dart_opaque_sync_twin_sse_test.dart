@@ -19,8 +19,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('loopback', () {
     var syncBack = syncLoopbackTwinSse(opaque: f);
-    expect((syncOptionLoopbackTwinSse(opaque: syncBack) as dynamic)(),
-        'Test_String');
+    expect(
+      (syncOptionLoopbackTwinSse(opaque: syncBack) as dynamic)(),
+      'Test_String',
+    );
     expect(syncOptionLoopbackTwinSse(opaque: null), isNull);
   });
 
@@ -31,14 +33,20 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('drop', () async {
     expect(
-        syncAcceptDartOpaqueTwinSse(opaque: createLargeList(mb: 200)), 'test');
+      syncAcceptDartOpaqueTwinSse(opaque: createLargeList(mb: 200)),
+      'test',
+    );
   });
 
   test('unwrap', () async {
-    expect(unwrapDartOpaqueTwinSse(opaque: createLargeList(mb: 200)), 'Test');
+    expect(
+      unwrapDartOpaqueTwinSse(opaque: createLargeList(mb: 200)),
+      'Test',
+    );
     await expectLater(
-        () => panicUnwrapDartOpaqueTwinSse(opaque: createLargeList(mb: 200)),
-        throwsA(isA<PanicException>()));
+      () => panicUnwrapDartOpaqueTwinSse(opaque: createLargeList(mb: 200)),
+      throwsA(isA<PanicException>()),
+    );
   });
 
   // `returnNonDroppableDartOpaqueTwinSse` is removed

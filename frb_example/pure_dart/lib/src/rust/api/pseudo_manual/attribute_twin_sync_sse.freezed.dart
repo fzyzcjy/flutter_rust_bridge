@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,75 +10,54 @@ part of 'attribute_twin_sync_sse.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$UserIdTwinSyncSse {
-  int get value => throw _privateConstructorUsedError;
+  int get value;
 
   /// Create a copy of UserIdTwinSyncSse
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $UserIdTwinSyncSseCopyWith<UserIdTwinSyncSse> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $UserIdTwinSyncSseCopyWith<$Res> {
-  factory $UserIdTwinSyncSseCopyWith(
-          UserIdTwinSyncSse value, $Res Function(UserIdTwinSyncSse) then) =
-      _$UserIdTwinSyncSseCopyWithImpl<$Res, UserIdTwinSyncSse>;
-  @useResult
-  $Res call({int value});
-}
-
-/// @nodoc
-class _$UserIdTwinSyncSseCopyWithImpl<$Res, $Val extends UserIdTwinSyncSse>
-    implements $UserIdTwinSyncSseCopyWith<$Res> {
-  _$UserIdTwinSyncSseCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of UserIdTwinSyncSse
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $UserIdTwinSyncSseCopyWith<UserIdTwinSyncSse> get copyWith =>
+      _$UserIdTwinSyncSseCopyWithImpl<UserIdTwinSyncSse>(
+          this as UserIdTwinSyncSse, _$identity);
+
   @override
-  $Res call({
-    Object? value = null,
-  }) {
-    return _then(_value.copyWith(
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is UserIdTwinSyncSse &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  @override
+  String toString() {
+    return 'UserIdTwinSyncSse(value: $value)';
   }
 }
 
 /// @nodoc
-abstract class _$$UserIdTwinSyncSseImplCopyWith<$Res>
-    implements $UserIdTwinSyncSseCopyWith<$Res> {
-  factory _$$UserIdTwinSyncSseImplCopyWith(_$UserIdTwinSyncSseImpl value,
-          $Res Function(_$UserIdTwinSyncSseImpl) then) =
-      __$$UserIdTwinSyncSseImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $UserIdTwinSyncSseCopyWith<$Res> {
+  factory $UserIdTwinSyncSseCopyWith(
+          UserIdTwinSyncSse value, $Res Function(UserIdTwinSyncSse) _then) =
+      _$UserIdTwinSyncSseCopyWithImpl;
   @useResult
   $Res call({int value});
 }
 
 /// @nodoc
-class __$$UserIdTwinSyncSseImplCopyWithImpl<$Res>
-    extends _$UserIdTwinSyncSseCopyWithImpl<$Res, _$UserIdTwinSyncSseImpl>
-    implements _$$UserIdTwinSyncSseImplCopyWith<$Res> {
-  __$$UserIdTwinSyncSseImplCopyWithImpl(_$UserIdTwinSyncSseImpl _value,
-      $Res Function(_$UserIdTwinSyncSseImpl) _then)
-      : super(_value, _then);
+class _$UserIdTwinSyncSseCopyWithImpl<$Res>
+    implements $UserIdTwinSyncSseCopyWith<$Res> {
+  _$UserIdTwinSyncSseCopyWithImpl(this._self, this._then);
+
+  final UserIdTwinSyncSse _self;
+  final $Res Function(UserIdTwinSyncSse) _then;
 
   /// Create a copy of UserIdTwinSyncSse
   /// with the given fields replaced by the non-null parameter values.
@@ -86,9 +66,9 @@ class __$$UserIdTwinSyncSseImplCopyWithImpl<$Res>
   $Res call({
     Object? value = null,
   }) {
-    return _then(_$UserIdTwinSyncSseImpl(
+    return _then(_self.copyWith(
       value: null == value
-          ? _value.value
+          ? _self.value
           : value // ignore: cast_nullable_to_non_nullable
               as int,
     ));
@@ -97,49 +77,71 @@ class __$$UserIdTwinSyncSseImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$UserIdTwinSyncSseImpl implements _UserIdTwinSyncSse {
-  const _$UserIdTwinSyncSseImpl({this.value = 0});
+class _UserIdTwinSyncSse implements UserIdTwinSyncSse {
+  const _UserIdTwinSyncSse({this.value = 0});
 
   @override
   @JsonKey()
   final int value;
 
+  /// Create a copy of UserIdTwinSyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'UserIdTwinSyncSse(value: $value)';
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$UserIdTwinSyncSseCopyWith<_UserIdTwinSyncSse> get copyWith =>
+      __$UserIdTwinSyncSseCopyWithImpl<_UserIdTwinSyncSse>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UserIdTwinSyncSseImpl &&
+            other is _UserIdTwinSyncSse &&
             (identical(other.value, value) || other.value == value));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, value);
 
+  @override
+  String toString() {
+    return 'UserIdTwinSyncSse(value: $value)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$UserIdTwinSyncSseCopyWith<$Res>
+    implements $UserIdTwinSyncSseCopyWith<$Res> {
+  factory _$UserIdTwinSyncSseCopyWith(
+          _UserIdTwinSyncSse value, $Res Function(_UserIdTwinSyncSse) _then) =
+      __$UserIdTwinSyncSseCopyWithImpl;
+  @override
+  @useResult
+  $Res call({int value});
+}
+
+/// @nodoc
+class __$UserIdTwinSyncSseCopyWithImpl<$Res>
+    implements _$UserIdTwinSyncSseCopyWith<$Res> {
+  __$UserIdTwinSyncSseCopyWithImpl(this._self, this._then);
+
+  final _UserIdTwinSyncSse _self;
+  final $Res Function(_UserIdTwinSyncSse) _then;
+
   /// Create a copy of UserIdTwinSyncSse
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$UserIdTwinSyncSseImplCopyWith<_$UserIdTwinSyncSseImpl> get copyWith =>
-      __$$UserIdTwinSyncSseImplCopyWithImpl<_$UserIdTwinSyncSseImpl>(
-          this, _$identity);
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_UserIdTwinSyncSse(
+      value: null == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
-abstract class _UserIdTwinSyncSse implements UserIdTwinSyncSse {
-  const factory _UserIdTwinSyncSse({final int value}) = _$UserIdTwinSyncSseImpl;
-
-  @override
-  int get value;
-
-  /// Create a copy of UserIdTwinSyncSse
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UserIdTwinSyncSseImplCopyWith<_$UserIdTwinSyncSseImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

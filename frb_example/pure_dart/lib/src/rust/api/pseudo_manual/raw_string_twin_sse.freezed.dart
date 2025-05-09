@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,105 +10,92 @@ part of 'raw_string_twin_sse.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$RawStringItemEnumTwinSse {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String regular) regular,
-    required TResult Function(String type) raw,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String regular)? regular,
-    TResult? Function(String type)? raw,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String regular)? regular,
-    TResult Function(String type)? raw,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(RawStringItemEnumTwinSse_Regular value) regular,
-    required TResult Function(RawStringItemEnumTwinSse_Raw value) raw,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(RawStringItemEnumTwinSse_Regular value)? regular,
-    TResult? Function(RawStringItemEnumTwinSse_Raw value)? raw,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(RawStringItemEnumTwinSse_Regular value)? regular,
-    TResult Function(RawStringItemEnumTwinSse_Raw value)? raw,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is RawStringItemEnumTwinSse);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'RawStringItemEnumTwinSse()';
+  }
 }
 
 /// @nodoc
-abstract class $RawStringItemEnumTwinSseCopyWith<$Res> {
-  factory $RawStringItemEnumTwinSseCopyWith(RawStringItemEnumTwinSse value,
-          $Res Function(RawStringItemEnumTwinSse) then) =
-      _$RawStringItemEnumTwinSseCopyWithImpl<$Res, RawStringItemEnumTwinSse>;
+class $RawStringItemEnumTwinSseCopyWith<$Res> {
+  $RawStringItemEnumTwinSseCopyWith(
+      RawStringItemEnumTwinSse _, $Res Function(RawStringItemEnumTwinSse) __);
 }
 
 /// @nodoc
-class _$RawStringItemEnumTwinSseCopyWithImpl<$Res,
-        $Val extends RawStringItemEnumTwinSse>
-    implements $RawStringItemEnumTwinSseCopyWith<$Res> {
-  _$RawStringItemEnumTwinSseCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+class RawStringItemEnumTwinSse_Regular extends RawStringItemEnumTwinSse {
+  const RawStringItemEnumTwinSse_Regular({required this.regular}) : super._();
+
+  final String regular;
 
   /// Create a copy of RawStringItemEnumTwinSse
   /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $RawStringItemEnumTwinSse_RegularCopyWith<RawStringItemEnumTwinSse_Regular>
+      get copyWith => _$RawStringItemEnumTwinSse_RegularCopyWithImpl<
+          RawStringItemEnumTwinSse_Regular>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is RawStringItemEnumTwinSse_Regular &&
+            (identical(other.regular, regular) || other.regular == regular));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, regular);
+
+  @override
+  String toString() {
+    return 'RawStringItemEnumTwinSse.regular(regular: $regular)';
+  }
 }
 
 /// @nodoc
-abstract class _$$RawStringItemEnumTwinSse_RegularImplCopyWith<$Res> {
-  factory _$$RawStringItemEnumTwinSse_RegularImplCopyWith(
-          _$RawStringItemEnumTwinSse_RegularImpl value,
-          $Res Function(_$RawStringItemEnumTwinSse_RegularImpl) then) =
-      __$$RawStringItemEnumTwinSse_RegularImplCopyWithImpl<$Res>;
+abstract mixin class $RawStringItemEnumTwinSse_RegularCopyWith<$Res>
+    implements $RawStringItemEnumTwinSseCopyWith<$Res> {
+  factory $RawStringItemEnumTwinSse_RegularCopyWith(
+          RawStringItemEnumTwinSse_Regular value,
+          $Res Function(RawStringItemEnumTwinSse_Regular) _then) =
+      _$RawStringItemEnumTwinSse_RegularCopyWithImpl;
   @useResult
   $Res call({String regular});
 }
 
 /// @nodoc
-class __$$RawStringItemEnumTwinSse_RegularImplCopyWithImpl<$Res>
-    extends _$RawStringItemEnumTwinSseCopyWithImpl<$Res,
-        _$RawStringItemEnumTwinSse_RegularImpl>
-    implements _$$RawStringItemEnumTwinSse_RegularImplCopyWith<$Res> {
-  __$$RawStringItemEnumTwinSse_RegularImplCopyWithImpl(
-      _$RawStringItemEnumTwinSse_RegularImpl _value,
-      $Res Function(_$RawStringItemEnumTwinSse_RegularImpl) _then)
-      : super(_value, _then);
+class _$RawStringItemEnumTwinSse_RegularCopyWithImpl<$Res>
+    implements $RawStringItemEnumTwinSse_RegularCopyWith<$Res> {
+  _$RawStringItemEnumTwinSse_RegularCopyWithImpl(this._self, this._then);
+
+  final RawStringItemEnumTwinSse_Regular _self;
+  final $Res Function(RawStringItemEnumTwinSse_Regular) _then;
 
   /// Create a copy of RawStringItemEnumTwinSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? regular = null,
   }) {
-    return _then(_$RawStringItemEnumTwinSse_RegularImpl(
+    return _then(RawStringItemEnumTwinSse_Regular(
       regular: null == regular
-          ? _value.regular
+          ? _self.regular
           : regular // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -116,263 +104,68 @@ class __$$RawStringItemEnumTwinSse_RegularImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RawStringItemEnumTwinSse_RegularImpl
-    extends RawStringItemEnumTwinSse_Regular {
-  const _$RawStringItemEnumTwinSse_RegularImpl({required this.regular})
-      : super._();
+class RawStringItemEnumTwinSse_Raw extends RawStringItemEnumTwinSse {
+  const RawStringItemEnumTwinSse_Raw({required this.type}) : super._();
 
-  @override
-  final String regular;
-
-  @override
-  String toString() {
-    return 'RawStringItemEnumTwinSse.regular(regular: $regular)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$RawStringItemEnumTwinSse_RegularImpl &&
-            (identical(other.regular, regular) || other.regular == regular));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, regular);
-
-  /// Create a copy of RawStringItemEnumTwinSse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$RawStringItemEnumTwinSse_RegularImplCopyWith<
-          _$RawStringItemEnumTwinSse_RegularImpl>
-      get copyWith => __$$RawStringItemEnumTwinSse_RegularImplCopyWithImpl<
-          _$RawStringItemEnumTwinSse_RegularImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String regular) regular,
-    required TResult Function(String type) raw,
-  }) {
-    return regular(this.regular);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String regular)? regular,
-    TResult? Function(String type)? raw,
-  }) {
-    return regular?.call(this.regular);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String regular)? regular,
-    TResult Function(String type)? raw,
-    required TResult orElse(),
-  }) {
-    if (regular != null) {
-      return regular(this.regular);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(RawStringItemEnumTwinSse_Regular value) regular,
-    required TResult Function(RawStringItemEnumTwinSse_Raw value) raw,
-  }) {
-    return regular(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(RawStringItemEnumTwinSse_Regular value)? regular,
-    TResult? Function(RawStringItemEnumTwinSse_Raw value)? raw,
-  }) {
-    return regular?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(RawStringItemEnumTwinSse_Regular value)? regular,
-    TResult Function(RawStringItemEnumTwinSse_Raw value)? raw,
-    required TResult orElse(),
-  }) {
-    if (regular != null) {
-      return regular(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class RawStringItemEnumTwinSse_Regular
-    extends RawStringItemEnumTwinSse {
-  const factory RawStringItemEnumTwinSse_Regular(
-      {required final String regular}) = _$RawStringItemEnumTwinSse_RegularImpl;
-  const RawStringItemEnumTwinSse_Regular._() : super._();
-
-  String get regular;
-
-  /// Create a copy of RawStringItemEnumTwinSse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$RawStringItemEnumTwinSse_RegularImplCopyWith<
-          _$RawStringItemEnumTwinSse_RegularImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$RawStringItemEnumTwinSse_RawImplCopyWith<$Res> {
-  factory _$$RawStringItemEnumTwinSse_RawImplCopyWith(
-          _$RawStringItemEnumTwinSse_RawImpl value,
-          $Res Function(_$RawStringItemEnumTwinSse_RawImpl) then) =
-      __$$RawStringItemEnumTwinSse_RawImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String type});
-}
-
-/// @nodoc
-class __$$RawStringItemEnumTwinSse_RawImplCopyWithImpl<$Res>
-    extends _$RawStringItemEnumTwinSseCopyWithImpl<$Res,
-        _$RawStringItemEnumTwinSse_RawImpl>
-    implements _$$RawStringItemEnumTwinSse_RawImplCopyWith<$Res> {
-  __$$RawStringItemEnumTwinSse_RawImplCopyWithImpl(
-      _$RawStringItemEnumTwinSse_RawImpl _value,
-      $Res Function(_$RawStringItemEnumTwinSse_RawImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of RawStringItemEnumTwinSse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? type = null,
-  }) {
-    return _then(_$RawStringItemEnumTwinSse_RawImpl(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$RawStringItemEnumTwinSse_RawImpl extends RawStringItemEnumTwinSse_Raw {
-  const _$RawStringItemEnumTwinSse_RawImpl({required this.type}) : super._();
-
-  @override
   final String type;
 
-  @override
-  String toString() {
-    return 'RawStringItemEnumTwinSse.raw(type: $type)';
-  }
+  /// Create a copy of RawStringItemEnumTwinSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $RawStringItemEnumTwinSse_RawCopyWith<RawStringItemEnumTwinSse_Raw>
+      get copyWith => _$RawStringItemEnumTwinSse_RawCopyWithImpl<
+          RawStringItemEnumTwinSse_Raw>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RawStringItemEnumTwinSse_RawImpl &&
+            other is RawStringItemEnumTwinSse_Raw &&
             (identical(other.type, type) || other.type == type));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, type);
 
+  @override
+  String toString() {
+    return 'RawStringItemEnumTwinSse.raw(type: $type)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $RawStringItemEnumTwinSse_RawCopyWith<$Res>
+    implements $RawStringItemEnumTwinSseCopyWith<$Res> {
+  factory $RawStringItemEnumTwinSse_RawCopyWith(
+          RawStringItemEnumTwinSse_Raw value,
+          $Res Function(RawStringItemEnumTwinSse_Raw) _then) =
+      _$RawStringItemEnumTwinSse_RawCopyWithImpl;
+  @useResult
+  $Res call({String type});
+}
+
+/// @nodoc
+class _$RawStringItemEnumTwinSse_RawCopyWithImpl<$Res>
+    implements $RawStringItemEnumTwinSse_RawCopyWith<$Res> {
+  _$RawStringItemEnumTwinSse_RawCopyWithImpl(this._self, this._then);
+
+  final RawStringItemEnumTwinSse_Raw _self;
+  final $Res Function(RawStringItemEnumTwinSse_Raw) _then;
+
   /// Create a copy of RawStringItemEnumTwinSse
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
   @pragma('vm:prefer-inline')
-  _$$RawStringItemEnumTwinSse_RawImplCopyWith<
-          _$RawStringItemEnumTwinSse_RawImpl>
-      get copyWith => __$$RawStringItemEnumTwinSse_RawImplCopyWithImpl<
-          _$RawStringItemEnumTwinSse_RawImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String regular) regular,
-    required TResult Function(String type) raw,
+  $Res call({
+    Object? type = null,
   }) {
-    return raw(type);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String regular)? regular,
-    TResult? Function(String type)? raw,
-  }) {
-    return raw?.call(type);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String regular)? regular,
-    TResult Function(String type)? raw,
-    required TResult orElse(),
-  }) {
-    if (raw != null) {
-      return raw(type);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(RawStringItemEnumTwinSse_Regular value) regular,
-    required TResult Function(RawStringItemEnumTwinSse_Raw value) raw,
-  }) {
-    return raw(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(RawStringItemEnumTwinSse_Regular value)? regular,
-    TResult? Function(RawStringItemEnumTwinSse_Raw value)? raw,
-  }) {
-    return raw?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(RawStringItemEnumTwinSse_Regular value)? regular,
-    TResult Function(RawStringItemEnumTwinSse_Raw value)? raw,
-    required TResult orElse(),
-  }) {
-    if (raw != null) {
-      return raw(this);
-    }
-    return orElse();
+    return _then(RawStringItemEnumTwinSse_Raw(
+      type: null == type
+          ? _self.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
-abstract class RawStringItemEnumTwinSse_Raw extends RawStringItemEnumTwinSse {
-  const factory RawStringItemEnumTwinSse_Raw({required final String type}) =
-      _$RawStringItemEnumTwinSse_RawImpl;
-  const RawStringItemEnumTwinSse_Raw._() : super._();
-
-  String get type;
-
-  /// Create a copy of RawStringItemEnumTwinSse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$RawStringItemEnumTwinSse_RawImplCopyWith<
-          _$RawStringItemEnumTwinSse_RawImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
+// dart format on

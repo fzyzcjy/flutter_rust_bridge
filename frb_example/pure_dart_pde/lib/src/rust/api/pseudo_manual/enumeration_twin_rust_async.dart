@@ -13,86 +13,88 @@ part 'enumeration_twin_rust_async.freezed.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
 
-Future<EnumSimpleTwinRustAsync> funcEnumSimpleTwinRustAsync(
-        {required EnumSimpleTwinRustAsync arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumSimpleTwinRustAsync(
-            arg: arg);
+Future<EnumSimpleTwinRustAsync> funcEnumSimpleTwinRustAsync({
+  required EnumSimpleTwinRustAsync arg,
+}) => RustLib.instance.api
+    .crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumSimpleTwinRustAsync(
+      arg: arg,
+    );
 
-Future<EnumWithItemMixedTwinRustAsync> funcEnumWithItemMixedTwinRustAsync(
-        {required EnumWithItemMixedTwinRustAsync arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumWithItemMixedTwinRustAsync(
-            arg: arg);
+Future<EnumWithItemMixedTwinRustAsync> funcEnumWithItemMixedTwinRustAsync({
+  required EnumWithItemMixedTwinRustAsync arg,
+}) => RustLib.instance.api
+    .crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumWithItemMixedTwinRustAsync(
+      arg: arg,
+    );
 
-Future<EnumWithItemTupleTwinRustAsync> funcEnumWithItemTupleTwinRustAsync(
-        {required EnumWithItemTupleTwinRustAsync arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumWithItemTupleTwinRustAsync(
-            arg: arg);
+Future<EnumWithItemTupleTwinRustAsync> funcEnumWithItemTupleTwinRustAsync({
+  required EnumWithItemTupleTwinRustAsync arg,
+}) => RustLib.instance.api
+    .crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumWithItemTupleTwinRustAsync(
+      arg: arg,
+    );
 
-Future<EnumWithItemStructTwinRustAsync> funcEnumWithItemStructTwinRustAsync(
-        {required EnumWithItemStructTwinRustAsync arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumWithItemStructTwinRustAsync(
-            arg: arg);
+Future<EnumWithItemStructTwinRustAsync> funcEnumWithItemStructTwinRustAsync({
+  required EnumWithItemStructTwinRustAsync arg,
+}) => RustLib.instance.api
+    .crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumWithItemStructTwinRustAsync(
+      arg: arg,
+    );
 
-Future<EnumWithDiscriminantTwinRustAsync> funcEnumWithDiscriminantTwinRustAsync(
-        {required EnumWithDiscriminantTwinRustAsync arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumWithDiscriminantTwinRustAsync(
-            arg: arg);
+Future<EnumWithDiscriminantTwinRustAsync>
+funcEnumWithDiscriminantTwinRustAsync({
+  required EnumWithDiscriminantTwinRustAsync arg,
+}) => RustLib.instance.api
+    .crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumWithDiscriminantTwinRustAsync(
+      arg: arg,
+    );
 
 Future<Uint8List> printNoteTwinRustAsync({required NoteTwinRustAsync note}) =>
     RustLib.instance.api
         .crateApiPseudoManualEnumerationTwinRustAsyncPrintNoteTwinRustAsync(
-            note: note);
+          note: note,
+        );
 
-Future<WeekdaysTwinRustAsync?> handleReturnEnumTwinRustAsync(
-        {required String input}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncHandleReturnEnumTwinRustAsync(
-            input: input);
+Future<WeekdaysTwinRustAsync?> handleReturnEnumTwinRustAsync({
+  required String input,
+}) => RustLib.instance.api
+    .crateApiPseudoManualEnumerationTwinRustAsyncHandleReturnEnumTwinRustAsync(
+      input: input,
+    );
 
-Future<WeekdaysTwinRustAsync> handleEnumParameterTwinRustAsync(
-        {required WeekdaysTwinRustAsync weekday}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncHandleEnumParameterTwinRustAsync(
-            weekday: weekday);
+Future<WeekdaysTwinRustAsync> handleEnumParameterTwinRustAsync({
+  required WeekdaysTwinRustAsync weekday,
+}) => RustLib.instance.api
+    .crateApiPseudoManualEnumerationTwinRustAsyncHandleEnumParameterTwinRustAsync(
+      weekday: weekday,
+    );
 
-Future<MeasureTwinRustAsync?> multiplyByTenTwinRustAsync(
-        {required MeasureTwinRustAsync measure}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncMultiplyByTenTwinRustAsync(
-            measure: measure);
+Future<MeasureTwinRustAsync?> multiplyByTenTwinRustAsync({
+  required MeasureTwinRustAsync measure,
+}) => RustLib.instance.api
+    .crateApiPseudoManualEnumerationTwinRustAsyncMultiplyByTenTwinRustAsync(
+      measure: measure,
+    );
 
-Future<KitchenSinkTwinRustAsync> handleEnumStructTwinRustAsync(
-        {required KitchenSinkTwinRustAsync val}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncHandleEnumStructTwinRustAsync(
-            val: val);
+Future<KitchenSinkTwinRustAsync> handleEnumStructTwinRustAsync({
+  required KitchenSinkTwinRustAsync val,
+}) => RustLib.instance.api
+    .crateApiPseudoManualEnumerationTwinRustAsyncHandleEnumStructTwinRustAsync(
+      val: val,
+    );
 
 @freezed
 sealed class DistanceTwinRustAsync with _$DistanceTwinRustAsync {
   const DistanceTwinRustAsync._();
 
   const factory DistanceTwinRustAsync.unknown() = DistanceTwinRustAsync_Unknown;
-  const factory DistanceTwinRustAsync.map(
-    double field0,
-  ) = DistanceTwinRustAsync_Map;
+  const factory DistanceTwinRustAsync.map(double field0) =
+      DistanceTwinRustAsync_Map;
 }
 
-enum EnumSimpleTwinRustAsync {
-  a,
-  b,
-  ;
-}
+enum EnumSimpleTwinRustAsync { a, b }
 
-enum EnumWithDiscriminantTwinRustAsync {
-  oneHundred,
-  fifty,
-  ;
-}
+enum EnumWithDiscriminantTwinRustAsync { oneHundred, fifty }
 
 @freezed
 sealed class EnumWithItemMixedTwinRustAsync
@@ -101,12 +103,10 @@ sealed class EnumWithItemMixedTwinRustAsync
 
   const factory EnumWithItemMixedTwinRustAsync.a() =
       EnumWithItemMixedTwinRustAsync_A;
-  const factory EnumWithItemMixedTwinRustAsync.b(
-    Uint8List field0,
-  ) = EnumWithItemMixedTwinRustAsync_B;
-  const factory EnumWithItemMixedTwinRustAsync.c({
-    required String cField,
-  }) = EnumWithItemMixedTwinRustAsync_C;
+  const factory EnumWithItemMixedTwinRustAsync.b(Uint8List field0) =
+      EnumWithItemMixedTwinRustAsync_B;
+  const factory EnumWithItemMixedTwinRustAsync.c({required String cField}) =
+      EnumWithItemMixedTwinRustAsync_C;
 }
 
 @freezed
@@ -114,12 +114,10 @@ sealed class EnumWithItemStructTwinRustAsync
     with _$EnumWithItemStructTwinRustAsync {
   const EnumWithItemStructTwinRustAsync._();
 
-  const factory EnumWithItemStructTwinRustAsync.a({
-    required Uint8List aField,
-  }) = EnumWithItemStructTwinRustAsync_A;
-  const factory EnumWithItemStructTwinRustAsync.b({
-    required Int32List bField,
-  }) = EnumWithItemStructTwinRustAsync_B;
+  const factory EnumWithItemStructTwinRustAsync.a({required Uint8List aField}) =
+      EnumWithItemStructTwinRustAsync_A;
+  const factory EnumWithItemStructTwinRustAsync.b({required Int32List bField}) =
+      EnumWithItemStructTwinRustAsync_B;
 }
 
 @freezed
@@ -127,12 +125,10 @@ sealed class EnumWithItemTupleTwinRustAsync
     with _$EnumWithItemTupleTwinRustAsync {
   const EnumWithItemTupleTwinRustAsync._();
 
-  const factory EnumWithItemTupleTwinRustAsync.a(
-    Uint8List field0,
-  ) = EnumWithItemTupleTwinRustAsync_A;
-  const factory EnumWithItemTupleTwinRustAsync.b(
-    int field0,
-  ) = EnumWithItemTupleTwinRustAsync_B;
+  const factory EnumWithItemTupleTwinRustAsync.a(Uint8List field0) =
+      EnumWithItemTupleTwinRustAsync_A;
+  const factory EnumWithItemTupleTwinRustAsync.b(int field0) =
+      EnumWithItemTupleTwinRustAsync_B;
 }
 
 @freezed
@@ -157,9 +153,8 @@ sealed class KitchenSinkTwinRustAsync with _$KitchenSinkTwinRustAsync {
     @Default(-1) int? field0,
     int? field1,
   ]) = KitchenSinkTwinRustAsync_Optional;
-  const factory KitchenSinkTwinRustAsync.buffer(
-    Uint8List field0,
-  ) = KitchenSinkTwinRustAsync_Buffer;
+  const factory KitchenSinkTwinRustAsync.buffer(Uint8List field0) =
+      KitchenSinkTwinRustAsync_Buffer;
   const factory KitchenSinkTwinRustAsync.enums([
     @Default(WeekdaysTwinRustAsync.sunday) WeekdaysTwinRustAsync field0,
   ]) = KitchenSinkTwinRustAsync_Enums;
@@ -169,12 +164,10 @@ sealed class KitchenSinkTwinRustAsync with _$KitchenSinkTwinRustAsync {
 sealed class MeasureTwinRustAsync with _$MeasureTwinRustAsync {
   const MeasureTwinRustAsync._();
 
-  const factory MeasureTwinRustAsync.speed(
-    SpeedTwinRustAsync field0,
-  ) = MeasureTwinRustAsync_Speed;
-  const factory MeasureTwinRustAsync.distance(
-    DistanceTwinRustAsync field0,
-  ) = MeasureTwinRustAsync_Distance;
+  const factory MeasureTwinRustAsync.speed(SpeedTwinRustAsync field0) =
+      MeasureTwinRustAsync_Speed;
+  const factory MeasureTwinRustAsync.distance(DistanceTwinRustAsync field0) =
+      MeasureTwinRustAsync_Distance;
 }
 
 class NoteTwinRustAsync {
@@ -203,7 +196,5 @@ sealed class SpeedTwinRustAsync with _$SpeedTwinRustAsync {
   const SpeedTwinRustAsync._();
 
   const factory SpeedTwinRustAsync.unknown() = SpeedTwinRustAsync_Unknown;
-  const factory SpeedTwinRustAsync.gps(
-    double field0,
-  ) = SpeedTwinRustAsync_GPS;
+  const factory SpeedTwinRustAsync.gps(double field0) = SpeedTwinRustAsync_GPS;
 }

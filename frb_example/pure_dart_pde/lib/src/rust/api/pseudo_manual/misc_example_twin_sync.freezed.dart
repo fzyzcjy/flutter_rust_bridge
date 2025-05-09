@@ -12,7 +12,8 @@ part of 'misc_example_twin_sync.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$AbcTwinSync {
@@ -23,16 +24,14 @@ mixin _$AbcTwinSync {
     required TResult Function(BTwinSync field0) b,
     required TResult Function(CTwinSync field0) c,
     required TResult Function(int field0) justInt,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ATwinSync field0)? a,
     TResult? Function(BTwinSync field0)? b,
     TResult? Function(CTwinSync field0)? c,
     TResult? Function(int field0)? justInt,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ATwinSync field0)? a,
@@ -40,24 +39,21 @@ mixin _$AbcTwinSync {
     TResult Function(CTwinSync field0)? c,
     TResult Function(int field0)? justInt,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AbcTwinSync_A value) a,
     required TResult Function(AbcTwinSync_B value) b,
     required TResult Function(AbcTwinSync_C value) c,
     required TResult Function(AbcTwinSync_JustInt value) justInt,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AbcTwinSync_A value)? a,
     TResult? Function(AbcTwinSync_B value)? b,
     TResult? Function(AbcTwinSync_C value)? c,
     TResult? Function(AbcTwinSync_JustInt value)? justInt,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AbcTwinSync_A value)? a,
@@ -65,15 +61,15 @@ mixin _$AbcTwinSync {
     TResult Function(AbcTwinSync_C value)? c,
     TResult Function(AbcTwinSync_JustInt value)? justInt,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $AbcTwinSyncCopyWith<$Res> {
   factory $AbcTwinSyncCopyWith(
-          AbcTwinSync value, $Res Function(AbcTwinSync) then) =
-      _$AbcTwinSyncCopyWithImpl<$Res, AbcTwinSync>;
+    AbcTwinSync value,
+    $Res Function(AbcTwinSync) then,
+  ) = _$AbcTwinSyncCopyWithImpl<$Res, AbcTwinSync>;
 }
 
 /// @nodoc
@@ -93,8 +89,9 @@ class _$AbcTwinSyncCopyWithImpl<$Res, $Val extends AbcTwinSync>
 /// @nodoc
 abstract class _$$AbcTwinSync_AImplCopyWith<$Res> {
   factory _$$AbcTwinSync_AImplCopyWith(
-          _$AbcTwinSync_AImpl value, $Res Function(_$AbcTwinSync_AImpl) then) =
-      __$$AbcTwinSync_AImplCopyWithImpl<$Res>;
+    _$AbcTwinSync_AImpl value,
+    $Res Function(_$AbcTwinSync_AImpl) then,
+  ) = __$$AbcTwinSync_AImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ATwinSync field0});
 }
@@ -104,22 +101,23 @@ class __$$AbcTwinSync_AImplCopyWithImpl<$Res>
     extends _$AbcTwinSyncCopyWithImpl<$Res, _$AbcTwinSync_AImpl>
     implements _$$AbcTwinSync_AImplCopyWith<$Res> {
   __$$AbcTwinSync_AImplCopyWithImpl(
-      _$AbcTwinSync_AImpl _value, $Res Function(_$AbcTwinSync_AImpl) _then)
-      : super(_value, _then);
+    _$AbcTwinSync_AImpl _value,
+    $Res Function(_$AbcTwinSync_AImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AbcTwinSync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$AbcTwinSync_AImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as ATwinSync,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$AbcTwinSync_AImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                as ATwinSync,
+      ),
+    );
   }
 }
 
@@ -247,8 +245,9 @@ abstract class AbcTwinSync_A extends AbcTwinSync {
 /// @nodoc
 abstract class _$$AbcTwinSync_BImplCopyWith<$Res> {
   factory _$$AbcTwinSync_BImplCopyWith(
-          _$AbcTwinSync_BImpl value, $Res Function(_$AbcTwinSync_BImpl) then) =
-      __$$AbcTwinSync_BImplCopyWithImpl<$Res>;
+    _$AbcTwinSync_BImpl value,
+    $Res Function(_$AbcTwinSync_BImpl) then,
+  ) = __$$AbcTwinSync_BImplCopyWithImpl<$Res>;
   @useResult
   $Res call({BTwinSync field0});
 }
@@ -258,22 +257,23 @@ class __$$AbcTwinSync_BImplCopyWithImpl<$Res>
     extends _$AbcTwinSyncCopyWithImpl<$Res, _$AbcTwinSync_BImpl>
     implements _$$AbcTwinSync_BImplCopyWith<$Res> {
   __$$AbcTwinSync_BImplCopyWithImpl(
-      _$AbcTwinSync_BImpl _value, $Res Function(_$AbcTwinSync_BImpl) _then)
-      : super(_value, _then);
+    _$AbcTwinSync_BImpl _value,
+    $Res Function(_$AbcTwinSync_BImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AbcTwinSync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$AbcTwinSync_BImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as BTwinSync,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$AbcTwinSync_BImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                as BTwinSync,
+      ),
+    );
   }
 }
 
@@ -401,8 +401,9 @@ abstract class AbcTwinSync_B extends AbcTwinSync {
 /// @nodoc
 abstract class _$$AbcTwinSync_CImplCopyWith<$Res> {
   factory _$$AbcTwinSync_CImplCopyWith(
-          _$AbcTwinSync_CImpl value, $Res Function(_$AbcTwinSync_CImpl) then) =
-      __$$AbcTwinSync_CImplCopyWithImpl<$Res>;
+    _$AbcTwinSync_CImpl value,
+    $Res Function(_$AbcTwinSync_CImpl) then,
+  ) = __$$AbcTwinSync_CImplCopyWithImpl<$Res>;
   @useResult
   $Res call({CTwinSync field0});
 }
@@ -412,22 +413,23 @@ class __$$AbcTwinSync_CImplCopyWithImpl<$Res>
     extends _$AbcTwinSyncCopyWithImpl<$Res, _$AbcTwinSync_CImpl>
     implements _$$AbcTwinSync_CImplCopyWith<$Res> {
   __$$AbcTwinSync_CImplCopyWithImpl(
-      _$AbcTwinSync_CImpl _value, $Res Function(_$AbcTwinSync_CImpl) _then)
-      : super(_value, _then);
+    _$AbcTwinSync_CImpl _value,
+    $Res Function(_$AbcTwinSync_CImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AbcTwinSync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$AbcTwinSync_CImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as CTwinSync,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$AbcTwinSync_CImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                as CTwinSync,
+      ),
+    );
   }
 }
 
@@ -554,9 +556,10 @@ abstract class AbcTwinSync_C extends AbcTwinSync {
 
 /// @nodoc
 abstract class _$$AbcTwinSync_JustIntImplCopyWith<$Res> {
-  factory _$$AbcTwinSync_JustIntImplCopyWith(_$AbcTwinSync_JustIntImpl value,
-          $Res Function(_$AbcTwinSync_JustIntImpl) then) =
-      __$$AbcTwinSync_JustIntImplCopyWithImpl<$Res>;
+  factory _$$AbcTwinSync_JustIntImplCopyWith(
+    _$AbcTwinSync_JustIntImpl value,
+    $Res Function(_$AbcTwinSync_JustIntImpl) then,
+  ) = __$$AbcTwinSync_JustIntImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int field0});
 }
@@ -565,23 +568,24 @@ abstract class _$$AbcTwinSync_JustIntImplCopyWith<$Res> {
 class __$$AbcTwinSync_JustIntImplCopyWithImpl<$Res>
     extends _$AbcTwinSyncCopyWithImpl<$Res, _$AbcTwinSync_JustIntImpl>
     implements _$$AbcTwinSync_JustIntImplCopyWith<$Res> {
-  __$$AbcTwinSync_JustIntImplCopyWithImpl(_$AbcTwinSync_JustIntImpl _value,
-      $Res Function(_$AbcTwinSync_JustIntImpl) _then)
-      : super(_value, _then);
+  __$$AbcTwinSync_JustIntImplCopyWithImpl(
+    _$AbcTwinSync_JustIntImpl _value,
+    $Res Function(_$AbcTwinSync_JustIntImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AbcTwinSync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$AbcTwinSync_JustIntImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$AbcTwinSync_JustIntImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                as int,
+      ),
+    );
   }
 }
 
@@ -616,7 +620,9 @@ class _$AbcTwinSync_JustIntImpl extends AbcTwinSync_JustInt {
   @pragma('vm:prefer-inline')
   _$$AbcTwinSync_JustIntImplCopyWith<_$AbcTwinSync_JustIntImpl> get copyWith =>
       __$$AbcTwinSync_JustIntImplCopyWithImpl<_$AbcTwinSync_JustIntImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs

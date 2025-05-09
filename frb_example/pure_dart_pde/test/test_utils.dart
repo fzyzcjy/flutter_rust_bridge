@@ -27,8 +27,9 @@ void addTestsIdentityWithExpectFunctionCall<T>(
   _addTestsRaw(
     groupName: 'call $func',
     values: values,
-    body: (value) async =>
-        expect(await func(arg: value, expect: value.toString()), value),
+    body:
+        (value) async =>
+            expect(await func(arg: value, expect: value.toString()), value),
   );
 }
 
@@ -41,10 +42,11 @@ void addTestsErrorFunctionCall<T>(
   _addTestsRaw(
     groupName: 'call $func',
     values: values,
-    body: (value) async => await expectLater(
-      () async => func(arg: value),
-      throwsA(matcher(value)),
-    ),
+    body:
+        (value) async => await expectLater(
+          () async => func(arg: value),
+          throwsA(matcher(value)),
+        ),
   );
 }
 
@@ -116,7 +118,10 @@ Future<void> expectRustPanic(
 ///
 /// But normal code should *not* rely on panic, so it should be OK.
 Future<void> expectRustPanicRaw(
-    FutureOr<void> Function() body, String mode, Matcher matcher) async {
+  FutureOr<void> Function() body,
+  String mode,
+  Matcher matcher,
+) async {
   if (kIsWeb && mode.contains('RustAsync')) {
     print('expectRustPanicRaw check it should have no response');
     // expect it timeouts (hangs), instead of throws

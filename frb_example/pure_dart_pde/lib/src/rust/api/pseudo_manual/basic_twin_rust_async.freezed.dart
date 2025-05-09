@@ -12,7 +12,8 @@ part of 'basic_twin_rust_async.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$BasicGeneralEnumTwinRustAsync {
@@ -20,55 +21,54 @@ mixin _$BasicGeneralEnumTwinRustAsync {
   TResult when<TResult extends Object?>({
     required TResult Function(String field) apple,
     required TResult Function() orange,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String field)? apple,
     TResult? Function()? orange,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String field)? apple,
     TResult Function()? orange,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(BasicGeneralEnumTwinRustAsync_Apple value) apple,
     required TResult Function(BasicGeneralEnumTwinRustAsync_Orange value)
-        orange,
-  }) =>
-      throw _privateConstructorUsedError;
+    orange,
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(BasicGeneralEnumTwinRustAsync_Apple value)? apple,
     TResult? Function(BasicGeneralEnumTwinRustAsync_Orange value)? orange,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(BasicGeneralEnumTwinRustAsync_Apple value)? apple,
     TResult Function(BasicGeneralEnumTwinRustAsync_Orange value)? orange,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BasicGeneralEnumTwinRustAsyncCopyWith<$Res> {
   factory $BasicGeneralEnumTwinRustAsyncCopyWith(
-          BasicGeneralEnumTwinRustAsync value,
-          $Res Function(BasicGeneralEnumTwinRustAsync) then) =
-      _$BasicGeneralEnumTwinRustAsyncCopyWithImpl<$Res,
-          BasicGeneralEnumTwinRustAsync>;
+    BasicGeneralEnumTwinRustAsync value,
+    $Res Function(BasicGeneralEnumTwinRustAsync) then,
+  ) =
+      _$BasicGeneralEnumTwinRustAsyncCopyWithImpl<
+        $Res,
+        BasicGeneralEnumTwinRustAsync
+      >;
 }
 
 /// @nodoc
-class _$BasicGeneralEnumTwinRustAsyncCopyWithImpl<$Res,
-        $Val extends BasicGeneralEnumTwinRustAsync>
+class _$BasicGeneralEnumTwinRustAsyncCopyWithImpl<
+  $Res,
+  $Val extends BasicGeneralEnumTwinRustAsync
+>
     implements $BasicGeneralEnumTwinRustAsyncCopyWith<$Res> {
   _$BasicGeneralEnumTwinRustAsyncCopyWithImpl(this._value, this._then);
 
@@ -84,36 +84,40 @@ class _$BasicGeneralEnumTwinRustAsyncCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$BasicGeneralEnumTwinRustAsync_AppleImplCopyWith<$Res> {
   factory _$$BasicGeneralEnumTwinRustAsync_AppleImplCopyWith(
-          _$BasicGeneralEnumTwinRustAsync_AppleImpl value,
-          $Res Function(_$BasicGeneralEnumTwinRustAsync_AppleImpl) then) =
-      __$$BasicGeneralEnumTwinRustAsync_AppleImplCopyWithImpl<$Res>;
+    _$BasicGeneralEnumTwinRustAsync_AppleImpl value,
+    $Res Function(_$BasicGeneralEnumTwinRustAsync_AppleImpl) then,
+  ) = __$$BasicGeneralEnumTwinRustAsync_AppleImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String field});
 }
 
 /// @nodoc
 class __$$BasicGeneralEnumTwinRustAsync_AppleImplCopyWithImpl<$Res>
-    extends _$BasicGeneralEnumTwinRustAsyncCopyWithImpl<$Res,
-        _$BasicGeneralEnumTwinRustAsync_AppleImpl>
+    extends
+        _$BasicGeneralEnumTwinRustAsyncCopyWithImpl<
+          $Res,
+          _$BasicGeneralEnumTwinRustAsync_AppleImpl
+        >
     implements _$$BasicGeneralEnumTwinRustAsync_AppleImplCopyWith<$Res> {
   __$$BasicGeneralEnumTwinRustAsync_AppleImplCopyWithImpl(
-      _$BasicGeneralEnumTwinRustAsync_AppleImpl _value,
-      $Res Function(_$BasicGeneralEnumTwinRustAsync_AppleImpl) _then)
-      : super(_value, _then);
+    _$BasicGeneralEnumTwinRustAsync_AppleImpl _value,
+    $Res Function(_$BasicGeneralEnumTwinRustAsync_AppleImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of BasicGeneralEnumTwinRustAsync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field = null,
-  }) {
-    return _then(_$BasicGeneralEnumTwinRustAsync_AppleImpl(
-      field: null == field
-          ? _value.field
-          : field // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? field = null}) {
+    return _then(
+      _$BasicGeneralEnumTwinRustAsync_AppleImpl(
+        field:
+            null == field
+                ? _value.field
+                : field // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
@@ -122,7 +126,7 @@ class __$$BasicGeneralEnumTwinRustAsync_AppleImplCopyWithImpl<$Res>
 class _$BasicGeneralEnumTwinRustAsync_AppleImpl
     extends BasicGeneralEnumTwinRustAsync_Apple {
   const _$BasicGeneralEnumTwinRustAsync_AppleImpl({required this.field})
-      : super._();
+    : super._();
 
   @override
   final String field;
@@ -149,9 +153,11 @@ class _$BasicGeneralEnumTwinRustAsync_AppleImpl
   @override
   @pragma('vm:prefer-inline')
   _$$BasicGeneralEnumTwinRustAsync_AppleImplCopyWith<
-          _$BasicGeneralEnumTwinRustAsync_AppleImpl>
-      get copyWith => __$$BasicGeneralEnumTwinRustAsync_AppleImplCopyWithImpl<
-          _$BasicGeneralEnumTwinRustAsync_AppleImpl>(this, _$identity);
+    _$BasicGeneralEnumTwinRustAsync_AppleImpl
+  >
+  get copyWith => __$$BasicGeneralEnumTwinRustAsync_AppleImplCopyWithImpl<
+    _$BasicGeneralEnumTwinRustAsync_AppleImpl
+  >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -189,7 +195,7 @@ class _$BasicGeneralEnumTwinRustAsync_AppleImpl
   TResult map<TResult extends Object?>({
     required TResult Function(BasicGeneralEnumTwinRustAsync_Apple value) apple,
     required TResult Function(BasicGeneralEnumTwinRustAsync_Orange value)
-        orange,
+    orange,
   }) {
     return apple(this);
   }
@@ -219,9 +225,9 @@ class _$BasicGeneralEnumTwinRustAsync_AppleImpl
 
 abstract class BasicGeneralEnumTwinRustAsync_Apple
     extends BasicGeneralEnumTwinRustAsync {
-  const factory BasicGeneralEnumTwinRustAsync_Apple(
-          {required final String field}) =
-      _$BasicGeneralEnumTwinRustAsync_AppleImpl;
+  const factory BasicGeneralEnumTwinRustAsync_Apple({
+    required final String field,
+  }) = _$BasicGeneralEnumTwinRustAsync_AppleImpl;
   const BasicGeneralEnumTwinRustAsync_Apple._() : super._();
 
   String get field;
@@ -230,27 +236,31 @@ abstract class BasicGeneralEnumTwinRustAsync_Apple
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BasicGeneralEnumTwinRustAsync_AppleImplCopyWith<
-          _$BasicGeneralEnumTwinRustAsync_AppleImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$BasicGeneralEnumTwinRustAsync_AppleImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$BasicGeneralEnumTwinRustAsync_OrangeImplCopyWith<$Res> {
   factory _$$BasicGeneralEnumTwinRustAsync_OrangeImplCopyWith(
-          _$BasicGeneralEnumTwinRustAsync_OrangeImpl value,
-          $Res Function(_$BasicGeneralEnumTwinRustAsync_OrangeImpl) then) =
-      __$$BasicGeneralEnumTwinRustAsync_OrangeImplCopyWithImpl<$Res>;
+    _$BasicGeneralEnumTwinRustAsync_OrangeImpl value,
+    $Res Function(_$BasicGeneralEnumTwinRustAsync_OrangeImpl) then,
+  ) = __$$BasicGeneralEnumTwinRustAsync_OrangeImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$BasicGeneralEnumTwinRustAsync_OrangeImplCopyWithImpl<$Res>
-    extends _$BasicGeneralEnumTwinRustAsyncCopyWithImpl<$Res,
-        _$BasicGeneralEnumTwinRustAsync_OrangeImpl>
+    extends
+        _$BasicGeneralEnumTwinRustAsyncCopyWithImpl<
+          $Res,
+          _$BasicGeneralEnumTwinRustAsync_OrangeImpl
+        >
     implements _$$BasicGeneralEnumTwinRustAsync_OrangeImplCopyWith<$Res> {
   __$$BasicGeneralEnumTwinRustAsync_OrangeImplCopyWithImpl(
-      _$BasicGeneralEnumTwinRustAsync_OrangeImpl _value,
-      $Res Function(_$BasicGeneralEnumTwinRustAsync_OrangeImpl) _then)
-      : super(_value, _then);
+    _$BasicGeneralEnumTwinRustAsync_OrangeImpl _value,
+    $Res Function(_$BasicGeneralEnumTwinRustAsync_OrangeImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of BasicGeneralEnumTwinRustAsync
   /// with the given fields replaced by the non-null parameter values.
@@ -313,7 +323,7 @@ class _$BasicGeneralEnumTwinRustAsync_OrangeImpl
   TResult map<TResult extends Object?>({
     required TResult Function(BasicGeneralEnumTwinRustAsync_Apple value) apple,
     required TResult Function(BasicGeneralEnumTwinRustAsync_Orange value)
-        orange,
+    orange,
   }) {
     return orange(this);
   }

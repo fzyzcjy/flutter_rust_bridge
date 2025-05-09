@@ -18,10 +18,11 @@ Future<ApplicationSettings> getAppSettingsTwinNormal() =>
 Future<ApplicationSettings> getFallibleAppSettingsTwinNormal() =>
     RustLib.instance.api.crateApiMirrorGetFallibleAppSettingsTwinNormal();
 
-Future<bool> isAppEmbeddedTwinNormal(
-        {required ApplicationSettings appSettings}) =>
-    RustLib.instance.api
-        .crateApiMirrorIsAppEmbeddedTwinNormal(appSettings: appSettings);
+Future<bool> isAppEmbeddedTwinNormal({
+  required ApplicationSettings appSettings,
+}) => RustLib.instance.api.crateApiMirrorIsAppEmbeddedTwinNormal(
+  appSettings: appSettings,
+);
 
 Stream<ApplicationSettings> appSettingsStreamTwinNormal() =>
     RustLib.instance.api.crateApiMirrorAppSettingsStreamTwinNormal();
@@ -33,21 +34,27 @@ Stream<MirrorStructTwinNormal> mirrorStructStreamTwinNormal() =>
     RustLib.instance.api.crateApiMirrorMirrorStructStreamTwinNormal();
 
 Stream<(ApplicationSettings, RawStringEnumMirrored)>
-    mirrorTupleStreamTwinNormal() =>
-        RustLib.instance.api.crateApiMirrorMirrorTupleStreamTwinNormal();
+mirrorTupleStreamTwinNormal() =>
+    RustLib.instance.api.crateApiMirrorMirrorTupleStreamTwinNormal();
 
 Future<ApplicationMessage> getMessageTwinNormal() =>
     RustLib.instance.api.crateApiMirrorGetMessageTwinNormal();
 
-Future<Numbers> repeatNumberTwinNormal(
-        {required int num, required BigInt times}) =>
-    RustLib.instance.api
-        .crateApiMirrorRepeatNumberTwinNormal(num: num, times: times);
+Future<Numbers> repeatNumberTwinNormal({
+  required int num,
+  required BigInt times,
+}) => RustLib.instance.api.crateApiMirrorRepeatNumberTwinNormal(
+  num: num,
+  times: times,
+);
 
-Future<Sequences> repeatSequenceTwinNormal(
-        {required int seq, required BigInt times}) =>
-    RustLib.instance.api
-        .crateApiMirrorRepeatSequenceTwinNormal(seq: seq, times: times);
+Future<Sequences> repeatSequenceTwinNormal({
+  required int seq,
+  required BigInt times,
+}) => RustLib.instance.api.crateApiMirrorRepeatSequenceTwinNormal(
+  seq: seq,
+  times: times,
+);
 
 Future<int?> firstNumberTwinNormal({required Numbers nums}) =>
     RustLib.instance.api.crateApiMirrorFirstNumberTwinNormal(nums: nums);
@@ -61,13 +68,15 @@ Future<RawStringMirrored> testRawStringMirroredTwinNormal() =>
 Future<NestedRawStringMirrored> testNestedRawStringMirroredTwinNormal() =>
     RustLib.instance.api.crateApiMirrorTestNestedRawStringMirroredTwinNormal();
 
-Future<RawStringEnumMirrored> testRawStringEnumMirroredTwinNormal(
-        {required bool nested}) =>
-    RustLib.instance.api
-        .crateApiMirrorTestRawStringEnumMirroredTwinNormal(nested: nested);
+Future<RawStringEnumMirrored> testRawStringEnumMirroredTwinNormal({
+  required bool nested,
+}) => RustLib.instance.api.crateApiMirrorTestRawStringEnumMirroredTwinNormal(
+  nested: nested,
+);
 
 Future<ListOfNestedRawStringMirrored>
-    testListOfRawNestedStringMirroredTwinNormal() => RustLib.instance.api
+testListOfRawNestedStringMirroredTwinNormal() =>
+    RustLib.instance.api
         .crateApiMirrorTestListOfRawNestedStringMirroredTwinNormal();
 
 Future<List<RawStringMirrored>> testFallibleOfRawStringMirroredTwinNormal() =>
@@ -79,7 +88,8 @@ Future<List<RawStringEnumMirrored>> testListOfNestedEnumsMirroredTwinNormal() =>
         .crateApiMirrorTestListOfNestedEnumsMirroredTwinNormal();
 
 Future<ContainsMirroredSubStructTwinNormal>
-    testContainsMirroredSubStructTwinNormal() => RustLib.instance.api
+testContainsMirroredSubStructTwinNormal() =>
+    RustLib.instance.api
         .crateApiMirrorTestContainsMirroredSubStructTwinNormal();
 
 Future<StructWithHashMap> testHashmapWithMirroredValueTwinNormal() =>
@@ -106,9 +116,7 @@ Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinNormal() =>
 class AnotherTwinNormal {
   final String a;
 
-  const AnotherTwinNormal({
-    required this.a,
-  });
+  const AnotherTwinNormal({required this.a});
 
   @override
   int get hashCode => a.hashCode;
@@ -124,9 +132,7 @@ class AnotherTwinNormal {
 class ApplicationEnv {
   final List<ApplicationEnvVar> vars;
 
-  const ApplicationEnv({
-    required this.vars,
-  });
+  const ApplicationEnv({required this.vars});
 
   @override
   int get hashCode => vars.hashCode;
@@ -143,10 +149,7 @@ class ApplicationEnvVar {
   final String field0;
   final bool field1;
 
-  const ApplicationEnvVar({
-    required this.field0,
-    required this.field1,
-  });
+  const ApplicationEnvVar({required this.field0, required this.field1});
 
   @override
   int get hashCode => field0.hashCode ^ field1.hashCode;
@@ -164,9 +167,8 @@ class ApplicationEnvVar {
 sealed class ApplicationMessage with _$ApplicationMessage {
   const ApplicationMessage._();
 
-  const factory ApplicationMessage.displayMessage(
-    String field0,
-  ) = ApplicationMessage_DisplayMessage;
+  const factory ApplicationMessage.displayMessage(String field0) =
+      ApplicationMessage_DisplayMessage;
   const factory ApplicationMessage.renderPixel({
     required int x,
     required int y,
@@ -174,11 +176,7 @@ sealed class ApplicationMessage with _$ApplicationMessage {
   const factory ApplicationMessage.exit() = ApplicationMessage_Exit;
 }
 
-enum ApplicationMode {
-  standalone,
-  embedded,
-  ;
-}
+enum ApplicationMode { standalone, embedded }
 
 class ApplicationModeArray2 extends NonGrowableListView<ApplicationMode> {
   static const arraySize = 2;
@@ -188,11 +186,11 @@ class ApplicationModeArray2 extends NonGrowableListView<ApplicationMode> {
   final List<ApplicationMode> _inner;
 
   ApplicationModeArray2(this._inner)
-      : assert(_inner.length == arraySize),
-        super(_inner);
+    : assert(_inner.length == arraySize),
+      super(_inner);
 
   ApplicationModeArray2.init(ApplicationMode fill)
-      : this(List<ApplicationMode>.filled(arraySize, fill));
+    : this(List<ApplicationMode>.filled(arraySize, fill));
 }
 
 class ApplicationSettings {
@@ -254,9 +252,7 @@ class ContainsMirroredSubStructTwinNormal {
 class HashMapValue {
   final String inner;
 
-  const HashMapValue({
-    required this.inner,
-  });
+  const HashMapValue({required this.inner});
 
   @override
   int get hashCode => inner.hashCode;
@@ -272,9 +268,7 @@ class HashMapValue {
 class ListOfNestedRawStringMirrored {
   final List<NestedRawStringMirrored> raw;
 
-  const ListOfNestedRawStringMirrored({
-    required this.raw,
-  });
+  const ListOfNestedRawStringMirrored({required this.raw});
 
   @override
   int get hashCode => raw.hashCode;
@@ -317,9 +311,7 @@ class MirrorStructTwinNormal {
 class NestedRawStringMirrored {
   final RawStringMirrored raw;
 
-  const NestedRawStringMirrored({
-    required this.raw,
-  });
+  const NestedRawStringMirrored({required this.raw});
 
   @override
   int get hashCode => raw.hashCode;
@@ -335,9 +327,7 @@ class NestedRawStringMirrored {
 class Numbers {
   final Int32List field0;
 
-  const Numbers({
-    required this.field0,
-  });
+  const Numbers({required this.field0});
 
   @override
   int get hashCode => field0.hashCode;
@@ -354,12 +344,10 @@ class Numbers {
 sealed class RawStringEnumMirrored with _$RawStringEnumMirrored {
   const RawStringEnumMirrored._();
 
-  const factory RawStringEnumMirrored.raw(
-    RawStringMirrored field0,
-  ) = RawStringEnumMirrored_Raw;
-  const factory RawStringEnumMirrored.nested(
-    NestedRawStringMirrored field0,
-  ) = RawStringEnumMirrored_Nested;
+  const factory RawStringEnumMirrored.raw(RawStringMirrored field0) =
+      RawStringEnumMirrored_Raw;
+  const factory RawStringEnumMirrored.nested(NestedRawStringMirrored field0) =
+      RawStringEnumMirrored_Nested;
   const factory RawStringEnumMirrored.listOfNested(
     ListOfNestedRawStringMirrored field0,
   ) = RawStringEnumMirrored_ListOfNested;
@@ -368,9 +356,7 @@ sealed class RawStringEnumMirrored with _$RawStringEnumMirrored {
 class RawStringMirrored {
   final String value;
 
-  const RawStringMirrored({
-    required this.value,
-  });
+  const RawStringMirrored({required this.value});
 
   @override
   int get hashCode => value.hashCode;
@@ -386,9 +372,7 @@ class RawStringMirrored {
 class Sequences {
   final Int32List field0;
 
-  const Sequences({
-    required this.field0,
-  });
+  const Sequences({required this.field0});
 
   @override
   int get hashCode => field0.hashCode;
@@ -404,9 +388,7 @@ class Sequences {
 class StructWithHashMap {
   final Map<String, HashMapValue> map;
 
-  const StructWithHashMap({
-    required this.map,
-  });
+  const StructWithHashMap({required this.map});
 
   @override
   int get hashCode => map.hashCode;

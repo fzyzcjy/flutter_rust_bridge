@@ -19,15 +19,21 @@ Future<Stream<EventTwinNormal>> registerEventListenerTwinNormal() =>
 Future<void> closeEventListenerTwinNormal() =>
     RustLib.instance.api.crateApiEventListenerCloseEventListenerTwinNormal();
 
-Future<void> createEventTwinNormal(
-        {required String address, required String payload}) =>
-    RustLib.instance.api.crateApiEventListenerCreateEventTwinNormal(
-        address: address, payload: payload);
+Future<void> createEventTwinNormal({
+  required String address,
+  required String payload,
+}) => RustLib.instance.api.crateApiEventListenerCreateEventTwinNormal(
+  address: address,
+  payload: payload,
+);
 
-void createEventSyncTwinNormal(
-        {required String address, required String payload}) =>
-    RustLib.instance.api.crateApiEventListenerCreateEventSyncTwinNormal(
-        address: address, payload: payload);
+void createEventSyncTwinNormal({
+  required String address,
+  required String payload,
+}) => RustLib.instance.api.crateApiEventListenerCreateEventSyncTwinNormal(
+  address: address,
+  payload: payload,
+);
 
 @freezed
 class EventTwinNormal with _$EventTwinNormal {
@@ -37,7 +43,5 @@ class EventTwinNormal with _$EventTwinNormal {
     required String payload,
   }) = _EventTwinNormal;
   Future<String> asStringTwinNormal() => RustLib.instance.api
-          .crateApiEventListenerEventTwinNormalAsStringTwinNormal(
-        that: this,
-      );
+      .crateApiEventListenerEventTwinNormalAsStringTwinNormal(that: this);
 }

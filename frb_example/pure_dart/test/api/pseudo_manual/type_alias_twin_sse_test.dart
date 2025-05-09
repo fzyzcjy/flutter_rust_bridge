@@ -21,7 +21,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('dart call handle_type_model', () async {
-    final testModel = await handleTypeAliasModelTwinSse(input: BigInt.from(42));
+    final testModel = await handleTypeAliasModelTwinSse(
+      input: BigInt.from(42),
+    );
     expect(testModel.id.toInt(), 42);
     expect(testModel.name, "TestModel");
     expect(testModel.aliasEnum, MyEnum.false_);

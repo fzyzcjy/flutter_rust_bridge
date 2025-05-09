@@ -19,36 +19,47 @@ DateTime datetimeLocalTwinSync({required DateTime d}) => RustLib.instance.api
 DateTime naivedatetimeTwinSync({required DateTime d}) => RustLib.instance.api
     .crateApiPseudoManualChronoTypeTwinSyncNaivedatetimeTwinSync(d: d);
 
-DateTime? optionalEmptyDatetimeUtcTwinSync({DateTime? d}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualChronoTypeTwinSyncOptionalEmptyDatetimeUtcTwinSync(
-            d: d);
+DateTime? optionalEmptyDatetimeUtcTwinSync({DateTime? d}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualChronoTypeTwinSyncOptionalEmptyDatetimeUtcTwinSync(
+      d: d,
+    );
 
 Duration durationTwinSync({required Duration d}) => RustLib.instance.api
     .crateApiPseudoManualChronoTypeTwinSyncDurationTwinSync(d: d);
 
-List<Duration> handleTimestampsTwinSync(
-        {required List<DateTime> timestamps, required DateTime epoch}) =>
+List<Duration> handleTimestampsTwinSync({
+  required List<DateTime> timestamps,
+  required DateTime epoch,
+}) => RustLib.instance.api
+    .crateApiPseudoManualChronoTypeTwinSyncHandleTimestampsTwinSync(
+      timestamps: timestamps,
+      epoch: epoch,
+    );
+
+List<DateTime> handleDurationsTwinSync({
+  required List<Duration> durations,
+  required DateTime since,
+}) => RustLib.instance.api
+    .crateApiPseudoManualChronoTypeTwinSyncHandleDurationsTwinSync(
+      durations: durations,
+      since: since,
+    );
+
+TestChronoTwinSync testChronoTwinSync() =>
     RustLib.instance.api
-        .crateApiPseudoManualChronoTypeTwinSyncHandleTimestampsTwinSync(
-            timestamps: timestamps, epoch: epoch);
+        .crateApiPseudoManualChronoTypeTwinSyncTestChronoTwinSync();
 
-List<DateTime> handleDurationsTwinSync(
-        {required List<Duration> durations, required DateTime since}) =>
+TestChronoTwinSync testPreciseChronoTwinSync() =>
     RustLib.instance.api
-        .crateApiPseudoManualChronoTypeTwinSyncHandleDurationsTwinSync(
-            durations: durations, since: since);
-
-TestChronoTwinSync testChronoTwinSync() => RustLib.instance.api
-    .crateApiPseudoManualChronoTypeTwinSyncTestChronoTwinSync();
-
-TestChronoTwinSync testPreciseChronoTwinSync() => RustLib.instance.api
-    .crateApiPseudoManualChronoTypeTwinSyncTestPreciseChronoTwinSync();
+        .crateApiPseudoManualChronoTypeTwinSyncTestPreciseChronoTwinSync();
 
 Duration howLongDoesItTakeTwinSync({required FeatureChronoTwinSync mine}) =>
     RustLib.instance.api
         .crateApiPseudoManualChronoTypeTwinSyncHowLongDoesItTakeTwinSync(
-            mine: mine);
+          mine: mine,
+        );
 
 class FeatureChronoTwinSync {
   final DateTime utc;
@@ -83,11 +94,7 @@ class TestChronoTwinSync {
   final DateTime? dt2;
   final Duration? du;
 
-  const TestChronoTwinSync({
-    this.dt,
-    this.dt2,
-    this.du,
-  });
+  const TestChronoTwinSync({this.dt, this.dt2, this.du});
 
   @override
   int get hashCode => dt.hashCode ^ dt2.hashCode ^ du.hashCode;
