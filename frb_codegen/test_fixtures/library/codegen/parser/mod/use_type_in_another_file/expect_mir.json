@@ -59,7 +59,8 @@
               "rust_style": "s"
             },
             "settings": {
-              "is_in_mirrored_enum": false
+              "is_in_mirrored_enum": false,
+              "skip_accessors": false
             },
             "ty": {
               "data": {
@@ -91,7 +92,8 @@
               "rust_style": "e"
             },
             "settings": {
-              "is_in_mirrored_enum": false
+              "is_in_mirrored_enum": false,
+              "skip_accessors": false
             },
             "ty": {
               "data": {
@@ -148,7 +150,8 @@
             "rust_style": "a"
           },
           "settings": {
-            "is_in_mirrored_enum": false
+            "is_in_mirrored_enum": false,
+            "skip_accessors": false
           },
           "ty": {
             "data": "I32",

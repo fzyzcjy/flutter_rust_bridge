@@ -101,7 +101,10 @@ impl TypeParserWithContext<'_, '_, '_> {
             is_rust_public: Some(matches!(field.vis, Visibility::Public(_))),
             comments: parse_comments(&field.attrs),
             default: attributes.default_value(),
-            settings: MirFieldSettings::default(),
+            settings: MirFieldSettings {
+                skip_accessors: attributes.ignore(),
+                ..Default::default()
+            },
         })
     }
 }
