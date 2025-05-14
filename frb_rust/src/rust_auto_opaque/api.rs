@@ -1,9 +1,9 @@
 use crate::generalized_arc::base_arc::BaseArc;
-use crate::rust_async::{RwLockReadGuard, RwLockWriteGuard};
 use crate::rust_auto_opaque::inner::RustAutoOpaqueInner;
 use crate::rust_auto_opaque::RustAutoOpaqueBase;
 use crate::rust_opaque::RustOpaqueBase;
-use tokio::sync::{RwLock, TryLockError};
+use crate::rw_lock::{RwLock, TryLockError};
+use crate::rw_lock::{RwLockReadGuard, RwLockWriteGuard};
 
 impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> RustAutoOpaqueBase<T, A> {
     pub fn new(value: T) -> Self {
@@ -20,10 +20,12 @@ impl<T, A: BaseArc<RustAutoOpaqueInner<T>>> RustAutoOpaqueBase<T, A> {
         self.0.data.blocking_write()
     }
 
+    #[cfg(feature = "rust-async")]
     pub async fn read(&self) -> RwLockReadGuard<'_, T> {
         self.0.data.read().await
     }
 
+    #[cfg(feature = "rust-async")]
     pub async fn write(&self) -> RwLockWriteGuard<'_, T> {
         self.0.data.write().await
     }
