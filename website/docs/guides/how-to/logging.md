@@ -19,9 +19,10 @@ Additionally you need to add a dependency to the chrono crate in the same way, e
 If you start with a new project (`flutter_rust_bridge_codegen create` instead of `flutter_rust_bridge_codegen generate`) these dependencies are already added for you.
 
 Next, add the macro call `enable_frb_logging!();` in a **Rust** file that is part of your `rust_input` of your `flutter_rust_bridge.yaml` configuration, at any place outside of an item (e.g. function or struct). 
+Your need to make it available via `use flutter_rust_bridge::enable_frb_logging;` or `use flutter_rust_bridge::*;`.
+
 It needs to be there so the codegeneration is picking it up and generates the needed bridge code for connecting Rust and Dart for logging.
 
-Your need to make it available via `use use flutter_rust_bridge::enable_frb_logging;` or `use flutter_rust_bridge::*;`.
 
 ## How to use it
 
@@ -32,14 +33,15 @@ You can issue log statements in Rust and Dart by following the usual way done in
 In **Rust** simply call `log::info!()` (or any of the [log crates log levels](https://docs.rs/log/latest/log/enum.Level.html)).
 Note that the log levels are translated to [Darts logging package equivalents](https://pub.dev/documentation/logging/latest/logging/Level-class.html).
 
-In **Dart** one is getting a logger instance per file, usually by `final LOGGER = Logger.('FileName');`. Instead, call `final LOGGER = FRBLogger.getLogger('LoggerName');` (where the logger name is optional and defaults to "FRBLogger").
+In **Dart** get a handle to the logger with a call to call `final LOGGER = FRBLogger.getLogger('LoggerName');` (where the logger name is optional and defaults to "FRBLogger") instead of the usual call to `final LOGGER = Logger.('FileName');`.
 This not only sets logging up for the Rust side, it returns a logger you can use as well.
-To issue a log statement, you then call `LOGGER.info('Hello world');` (or similar variants) on that instance.
+
+To issue a log statement, you then call `LOGGER.info('Hello world');` (or other log levels) on that instance.
 Doing this in `main.dart`, preferably as a global variable `final LOGGER = FRBLogger.getLogger();`, is recommended, so no Rust log statement is executed before this setup.
 
 While Rust's log crate captures the module, file and line number of the log statement, Dart's logging package does not. 
 Here it is ideomatic to create a new instance of the logger in each file, and give it a name that tells you where your log statement is originating from.
-Usually one calls `final OTHER_LOGGER = Logger("other_logger");` from the library directly, again use `final OTHER_LOGGER = FRBLogger.getLogger("other_logger");` instead. 
+Usually one calls `final OTHER_LOGGER = Logger("other_logger");` from the library directly, but again, use `final OTHER_LOGGER = FRBLogger.getLogger("other_logger");` instead. 
 This avoids the need to import the Dart logging package (but if you do the direct `Logger("other_logger")` after one initial `FRBLogger.getLogger();`, this works as well). 
 
 ## Customization
