@@ -8,3 +8,15 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<TypeForIgnore>>
+abstract class TypeForIgnore implements RustOpaqueInterface {
+  static Future<TypeForIgnore> default_() =>
+      RustLib.instance.api.crateApiMinimalTypeForIgnoreDefault();
+
+  Future<int> field1();
+
+  // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
+  static Future<TypeForIgnore> newInstance() =>
+      RustLib.instance.api.crateApiMinimalTypeForIgnoreNew();
+}
