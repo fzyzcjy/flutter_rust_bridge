@@ -5,7 +5,7 @@ mod boilerplate;
 mod boilerplate_io;
 mod boilerplate_web;
 mod cast;
-#[cfg(feature = "rust-async")]
+#[cfg(feature = "dart-opaque")]
 mod misc_rust_async;
 mod pointer;
 
@@ -72,7 +72,7 @@ pub use futures;
 #[cfg(target_family = "wasm")]
 pub use js_sys;
 pub use lazy_static::lazy_static;
-#[cfg(feature = "rust-async")]
+#[cfg(feature = "dart-opaque")]
 pub use misc_rust_async::*;
 pub use pointer::*;
 #[cfg(target_family = "wasm")]

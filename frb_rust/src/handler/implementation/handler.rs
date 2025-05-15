@@ -42,7 +42,7 @@ impl<TP: BaseThreadPool> DefaultHandler<TP> {
 pub struct SimpleHandler<E: Executor, EL: ErrorListener> {
     executor: E,
     error_listener: EL,
-    #[cfg(all(feature = "rust-async", feature = "dart-opaque"))]
+    #[cfg(feature = "dart-opaque")]
     dart_fn_handler: crate::dart_fn::handler::DartFnHandler,
 }
 
@@ -52,7 +52,7 @@ impl<E: Executor, H: ErrorListener> SimpleHandler<E, H> {
         SimpleHandler {
             executor,
             error_listener,
-            #[cfg(all(feature = "rust-async", feature = "dart-opaque"))]
+            #[cfg(feature = "dart-opaque")]
             dart_fn_handler: crate::dart_fn::handler::DartFnHandler::new(),
         }
     }
@@ -132,7 +132,7 @@ impl<E: Executor, EL: ErrorListener> Handler for SimpleHandler<E, EL> {
         )
     }
 
-    #[cfg(all(feature = "rust-async", feature = "dart-opaque"))]
+    #[cfg(feature = "dart-opaque")]
     fn dart_fn_invoke(
         &self,
         dart_fn: crate::dart_opaque::DartOpaque,
@@ -141,7 +141,7 @@ impl<E: Executor, EL: ErrorListener> Handler for SimpleHandler<E, EL> {
         self.dart_fn_handler.invoke(dart_fn, args)
     }
 
-    #[cfg(all(feature = "rust-async", feature = "dart-opaque"))]
+    #[cfg(feature = "dart-opaque")]
     fn dart_fn_handle_output(&self, call_id: i32, message: Dart2RustMessageSse) {
         self.dart_fn_handler.handle_output(call_id, message)
     }

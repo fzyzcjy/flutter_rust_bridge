@@ -56,14 +56,14 @@ pub trait Handler {
             + TaskRetFutTrait,
         Rust2DartCodec: BaseCodec;
 
-    #[cfg(all(feature = "rust-async", feature = "dart-opaque"))]
+    #[cfg(feature = "dart-opaque")]
     fn dart_fn_invoke(
         &self,
         dart_fn: crate::dart_opaque::DartOpaque,
         args: Vec<DartAbi>,
     ) -> crate::dart_fn::DartFnFuture<Dart2RustMessageSse>;
 
-    #[cfg(all(feature = "rust-async", feature = "dart-opaque"))]
+    #[cfg(feature = "dart-opaque")]
     fn dart_fn_handle_output(&self, call_id: i32, message: Dart2RustMessageSse);
 }
 

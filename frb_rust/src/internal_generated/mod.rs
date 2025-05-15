@@ -25,7 +25,6 @@ macro_rules! frb_generated_io_extern_func {
             pde_ffi_dispatcher_sync_impl(func_id, ptr_, rust_vec_len_, data_len_)
         }
 
-        #[cfg(feature = "rust-async")]
         #[unsafe(no_mangle)]
         pub extern "C" fn frb_dart_fn_deliver_output(
             call_id: i32,

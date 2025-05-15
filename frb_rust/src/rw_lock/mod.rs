@@ -1,6 +1,8 @@
 //! RwLock implementation backed by tokio if "rust-async" feature is enabled
 //! and by std otherwise.
 
+use std::fmt;
+
 #[cfg(not(feature = "rust-async"))]
 mod sync;
 
@@ -9,7 +11,7 @@ pub use sync::*;
 
 #[cfg(feature = "rust-async")]
 mod tokio;
-use std::fmt;
+
 #[cfg(feature = "rust-async")]
 pub use tokio::*;
 

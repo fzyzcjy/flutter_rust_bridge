@@ -9,7 +9,7 @@ pub(crate) mod third_party;
 pub(crate) mod thread_pool;
 
 pub(crate) mod codec;
-#[cfg(all(feature = "rust-async", feature = "dart-opaque"))]
+#[cfg(feature = "dart-opaque")]
 pub(crate) mod dart_fn;
 #[cfg(feature = "dart-opaque")]
 pub(crate) mod dart_opaque;
@@ -31,7 +31,7 @@ pub(crate) mod web_transfer;
 pub use crate::codec::sse::Dart2RustMessageSse;
 pub use crate::codec::sse::SseCodec;
 pub use crate::codec::{BaseCodec, Rust2DartMessageTrait};
-#[cfg(all(feature = "rust-async", feature = "dart-opaque"))]
+#[cfg(feature = "dart-opaque")]
 pub use crate::dart_fn::DartFnFuture;
 #[cfg(feature = "dart-opaque")]
 pub use crate::dart_opaque::DartOpaque;
