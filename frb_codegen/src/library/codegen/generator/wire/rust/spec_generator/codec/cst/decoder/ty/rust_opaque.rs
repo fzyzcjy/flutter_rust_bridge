@@ -6,7 +6,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use std::borrow::Cow;
 
-impl<'a> WireRustCodecCstGeneratorDecoderTrait for RustOpaqueWireRustCodecCstGenerator<'a> {
+impl WireRustCodecCstGeneratorDecoderTrait for RustOpaqueWireRustCodecCstGenerator<'_> {
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         Acc {
             io: Some(generate_decode_rust_opaque("self as _", self.mir.codec)),

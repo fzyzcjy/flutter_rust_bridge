@@ -3,7 +3,7 @@ use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::encoder::ty::WireDartCodecCstGeneratorEncoderTrait;
 
-impl<'a> WireDartCodecCstGeneratorEncoderTrait for TraitDefWireDartCodecCstGenerator<'a> {
+impl WireDartCodecCstGeneratorEncoderTrait for TraitDefWireDartCodecCstGenerator<'_> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         Acc::default()
     }

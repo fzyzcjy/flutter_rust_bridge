@@ -1,7 +1,7 @@
 use crate::codegen::generator::codec::sse::ty::*;
 use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 
-impl<'a> CodecSseTyTrait for OptionalCodecSseTy<'a> {
+impl CodecSseTyTrait for OptionalCodecSseTy<'_> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
         let self_is_not_null = match lang {
             Lang::DartLang(_) => "self != null",

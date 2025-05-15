@@ -25,7 +25,7 @@ And we can use it like:
 
 ```dart
 MyStructOne one = ...;
-MyStructOne two = ...;
+MyStructTwo two = ...;
 
 f(one); // allowed
 f(two); // also allowed

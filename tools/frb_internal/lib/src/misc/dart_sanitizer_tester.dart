@@ -17,6 +17,11 @@ Future<void> run(TestDartSanitizerConfig config) async {
 
   await runPubGet(config.package, kDartModeOfPackage[config.package]!);
 
+  // Otherwise it seems the sanitized dart binary does not compile native assets
+  await exec(
+      'dart --enable-experiment=native-assets run test/empty_entrypoint.dart',
+      relativePwd: config.package);
+
   if (config.package == 'frb_example/deliberate_bad') {
     await _runPackageDeliberateBad(config);
   } else {
@@ -234,8 +239,7 @@ Future<void> _execAndCheckWithSanitizerEnvVar(
       'FRB_SIMPLE_BUILD_CARGO_NIGHTLY': '1',
       'FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS': _cargoBuildExtraArgs,
       // because we unconventionally specified the `--target` in cargo build
-      'FRB_DART_LOAD_EXTERNAL_LIBRARY_NATIVE_LIB_DIR':
-          'rust/target/x86_64-unknown-linux-gnu/release/',
+      'FRB_DART_LOAD_EXTERNAL_LIBRARY_NATIVE_LIB_DIR': 'rust/target/release/',
       ...kEnvEnableRustBacktrace,
     },
     checkExitCode: false,
@@ -259,7 +263,8 @@ Future<String> _getSanitizedDartBinary(TestDartSanitizerConfig config) async {
     return '~/dart-sdk/sdk/out/${config.sanitizer.dartSdkBuildOutDir}/dart-sdk/bin/dart';
   }
 
-  const releaseName = 'Build_2023.12.01_09-42-01';
+  // const releaseName = 'Build_2023.12.01_09-42-01';
+  const releaseName = 'Build_2025.02.09_04-28-46';
   final baseName = '${config.sanitizer.dartSdkBuildOutDir}_dart-sdk';
   final fileNameTarGz = '$baseName.tar.gz';
 

@@ -13,6 +13,7 @@ pub(crate) mod wire;
 pub(crate) struct GeneratorOutput {
     pub output_texts: PathTexts,
     pub dart_needs_freezed: bool,
+    pub dart_needs_json_serializable: bool,
 }
 
 pub(crate) fn generate(
@@ -37,5 +38,6 @@ pub(crate) fn generate(
     Ok(GeneratorOutput {
         output_texts,
         dart_needs_freezed: api_dart_output.needs_freezed,
+        dart_needs_json_serializable: api_dart_output.needs_json_serializable,
     })
 }

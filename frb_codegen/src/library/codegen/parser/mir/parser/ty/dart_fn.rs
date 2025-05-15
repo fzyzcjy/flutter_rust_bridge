@@ -11,7 +11,7 @@ use syn::{
     TypeImplTrait, TypeParamBound, TypePath,
 };
 
-impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
+impl TypeParserWithContext<'_, '_, '_> {
     pub(crate) fn parse_type_impl_trait_dart_fn(
         &mut self,
         type_impl_trait: &TypeImplTrait,

@@ -5,7 +5,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::
 use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::ty::WireRustCodecCstGeneratorDecoderTrait;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 
-impl<'a> WireRustCodecCstGeneratorDecoderTrait for RecordWireRustCodecCstGenerator<'a> {
+impl WireRustCodecCstGeneratorDecoderTrait for RecordWireRustCodecCstGenerator<'_> {
     fn generate_decoder_class(&self) -> Option<WireRustOutputCode> {
         self.as_struct_generator().generate_decoder_class()
     }
@@ -19,7 +19,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for RecordWireRustCodecCstGenerat
             .enumerate()
             .map(|(idx, field)| Acc {
                 web: format!("self_.get({idx}).cst_decode()"),
-                io: format!("self.{}.cst_decode()", field.name.rust_style()),
+                io: format!("self.{}.cst_decode()", field.name.rust_style(true)),
                 ..Default::default()
             })
             .collect();

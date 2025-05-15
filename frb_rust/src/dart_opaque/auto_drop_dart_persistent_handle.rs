@@ -1,5 +1,5 @@
-use dart_sys_fork::{Dart_DeletePersistentHandle_DL, Dart_Handle, Dart_HandleFromPersistent_DL};
-use dart_sys_fork::{Dart_NewPersistentHandle_DL, Dart_PersistentHandle};
+use dart_sys::{Dart_DeletePersistentHandle_DL, Dart_Handle, Dart_HandleFromPersistent_DL};
+use dart_sys::{Dart_NewPersistentHandle_DL, Dart_PersistentHandle};
 
 #[derive(Debug)]
 /// A [Dart_PersistentHandle] that delete the handle when `Drop`ped

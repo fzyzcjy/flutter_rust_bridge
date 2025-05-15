@@ -15,7 +15,7 @@ use itertools::Itertools;
 
 const BACKTRACE_IDENT: &str = "backtrace";
 
-impl<'a> EnumRefApiDartGenerator<'a> {
+impl EnumRefApiDartGenerator<'_> {
     pub(crate) fn generate_mode_complex(
         &self,
         src: &MirEnum,
@@ -37,6 +37,9 @@ impl<'a> EnumRefApiDartGenerator<'a> {
         let maybe_implements_exception =
             generate_dart_maybe_implements_exception(self.mir.is_exception);
 
+        let json_serializable_extra_code =
+            compute_json_serializable_extra_code(src.needs_json_serializable, name);
+
         Some(ApiDartGeneratedClass {
             namespace: src.name.namespace.clone(),
             class_name: name.clone(),
@@ -47,10 +50,13 @@ impl<'a> EnumRefApiDartGenerator<'a> {
 
                     {variants}
 
+                    {json_serializable_extra_code}
+
                     {extra_body}
                 }}",
             ),
             needs_freezed: true,
+            needs_json_serializable: src.needs_json_serializable,
             header,
         })
     }
@@ -76,7 +82,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
             self.mir.ident.0.name,
             variant.name.dart_style(),
             args,
-            variant.wrapper_name.rust_style(),
+            variant.wrapper_name.rust_style(true),
         )
     }
 
@@ -130,7 +136,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
 
     fn generate_implements_exception(&self, variant: &MirEnumVariant) -> &str {
         let has_backtrace = matches!(&variant.kind,
-            MirVariantKind::Struct(MirStruct {is_fields_named: true, fields, ..}) if fields.iter().any(|field| field.name.rust_style() == BACKTRACE_IDENT));
+            MirVariantKind::Struct(MirStruct {is_fields_named: true, fields, ..}) if fields.iter().any(|field| field.name.rust_style(true) == BACKTRACE_IDENT));
         if self.mir.is_exception && has_backtrace {
             "@Implements<FrbBacktracedException>()"
         } else {
@@ -150,4 +156,15 @@ fn optional_boundary_index(fields: &[MirField]) -> Option<usize> {
                 .all(|field| field.is_optional())
                 .then_some(idx)
         })
+}
+
+pub(crate) fn compute_json_serializable_extra_code(
+    needs_json_serializable: bool,
+    name: &str,
+) -> String {
+    if needs_json_serializable {
+        format!("factory {name}.fromJson(Map<String, dynamic> json) => _${name}FromJson(json);")
+    } else {
+        "".to_owned()
+    }
 }

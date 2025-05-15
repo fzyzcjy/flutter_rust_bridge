@@ -3,6 +3,9 @@
 By default, flutter_rust_bridge tries to infer whether a type is opaque or not automatically.
 To override the default behavior, please use `#[frb(opaque)]` and `#[frb(non_opaque)]`.
 
+Sometimes, the opaqueness cannot be overrided. For example, when struct `A` is used in a function as `&mut A`.
+(This is because non-opaque types are copied field-by-field, thus it is meaningless to have a mutable reference.)
+
 ## Example
 
 If a type is indeed encodable, it will by default be translated to the corresponding Dart types.

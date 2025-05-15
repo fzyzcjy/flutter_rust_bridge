@@ -1,5 +1,72 @@
 # Changelog
 
+## 2.9.0
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Add support for the optional hasher argument on HashMap and HashSet #2567 #2603 (thanks @anlumo)
+* Support worker_js_preamble in web workers #2609
+* Add parse_const config #2604
+* Disable parsing constants by default #2604
+* Add auto_upgrade_dependency option #2602
+* Fix generated dart code #2557 (thanks @iazel)
+* Add support for rust edition 2024 #2554 (thanks @xuwaters)
+
+## 2.8.0
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Support unignoring a struct or enum #2542
+* Support JSON serialization on Dart side #2488 (thanks @satvikpendem) and #2538
+* Support converting constants into getters #2539
+* Update no_mangle code generation #2537
+* Fix compiler error when using HashSet with u64 and type_64bit_int is false #2536
+* Do not strip raw identifiers for Rust enum value fields #2496 (thanks @jippeholwerda) and #2535
+* Update versions in CI #2495 (thanks @satvikpendem) and #2534
+
+## 2.7.1
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Replace format! with concat! for string literals #2454 (thanks @Integral-Tech)
+* chore: fix cargo clippy warnings #2457 (thanks @Integral-Tech)
+* chore: downgrade rust version in frb_codegen (thanks @Integral-Tech)
+* Do not warn when fvm not found or for unexpected condition name #2478
+
+## 2.7.0
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Remove default case in enums #2439 (thanks @Tienisto)
+* Switch from dart-sys-fork to dart-sys #2438 (thanks @evdokimovs)
+* Fix call build-web with fvm support #2429 (thanks @SirKrlos)
+* Replaced WASM header exception with warning #2423 (thanks @CJBuchel)
+* Fix Option Box compilation error in DCO codec #2398
+* Fix call toolchain version with fvm support #2395 (thanks @SirKrlos)
+* Doc update and linting: #2423 (thanks @CJBuchel), #2422, #2421, #2349 (thanks @ernstvanderlinden), #2394
+
+## 2.6.0
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Update syn as a transitive dependency to version 2.0 #2371 (thanks @anlumo)
+* Auto detect and use fvm #2390
+* More full support of raw identifiers #2391
+* Clear up symbols #2392
+* Allow ui_state attribute to be used with arbitrary associated struct name #2393
+
+## 2.5.1
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Upgrade allo-isolate to fix upstream bugs #2363
+
+## 2.5.0
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Add commandline option for passing features to cargo expand during codegen #2284 (thanks @fmeef)
+* Support providing relative paths to configuration file #2320 (thanks @patmuk)
+* Use portable-atomic in frb_rust #2323 (thanks @kyrias)
+* Upgrade serde yaml #2333 (thanks @atezet)
+* Replace atty by std::io::IsTerminal #2332 (thanks @atezet)
+* Fixes cfg wasm warnings #2329 (thanks @patmuk)
+* Add docs and warning if user provides absolute rust_crate_dir #2335 (thanks @Vollbrecht)
+* Use dart_output when possible for the dart fix #2340 (thanks @AlexV525)
+
 ## 2.4.0
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.

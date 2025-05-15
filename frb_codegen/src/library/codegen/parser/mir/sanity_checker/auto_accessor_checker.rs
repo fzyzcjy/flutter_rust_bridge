@@ -9,7 +9,11 @@ pub(crate) fn check_field(
     field: &MirField,
 ) -> Option<SanityCheckHint> {
     (!field.ty.cloned_getter_semantics_reasonable()).then(|| SanityCheckHint {
-        name: format!("{}.{}", struct_name.rust_style(), field.name.rust_style()),
+        name: format!(
+            "{}.{}",
+            struct_name.rust_style(),
+            field.name.rust_style(true)
+        ),
     })
 }
 

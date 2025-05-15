@@ -10,3 +10,4 @@ pub(crate) mod ensure_tools_available;
 pub(crate) mod ffigen;
 pub(crate) mod flutter;
 pub(crate) mod format_rust;
+pub(crate) mod fvm;

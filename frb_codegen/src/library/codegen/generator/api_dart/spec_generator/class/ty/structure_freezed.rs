@@ -2,13 +2,14 @@ use crate::codegen::generator::api_dart::spec_generator::class::field::{
     generate_field_default, generate_field_required_modifier,
 };
 use crate::codegen::generator::api_dart::spec_generator::class::method::GeneratedApiMethods;
+use crate::codegen::generator::api_dart::spec_generator::class::ty::enumeration_complex::compute_json_serializable_extra_code;
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_dart_maybe_implements_exception;
 use crate::codegen::ir::mir::ty::structure::MirStruct;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use itertools::Itertools;
 
-impl<'a> StructRefApiDartGenerator<'a> {
+impl StructRefApiDartGenerator<'_> {
     #[allow(clippy::too_many_arguments)]
     pub(crate) fn generate_mode_freezed(
         &self,
@@ -30,12 +31,15 @@ impl<'a> StructRefApiDartGenerator<'a> {
             self.generate_mode_freezed_constructor_params(src, methods.num_methods > 0);
         let implements_exception = generate_dart_maybe_implements_exception(self.mir.is_exception);
         let methods_str = &methods.code;
+        let json_serializable_extra_code =
+            compute_json_serializable_extra_code(src.needs_json_serializable, class_name);
 
         format!(
             "{comments}{metadata}class {class_name} with _${class_name} {implements_exception} {{
                 {private_constructor}
                 const factory {class_name}{constructor_postfix}({{{constructor_params}}}) = _{class_name};
                 {methods_str}
+                {json_serializable_extra_code}
                 {extra_body}
             }}",
         )

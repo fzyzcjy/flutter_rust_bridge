@@ -13,7 +13,7 @@ use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegatePrim
 use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 
-impl<'a> WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerator<'a> {
+impl WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerator<'_> {
     fn generate_impl_decode_body(&self) -> Acc<Option<String>> {
         let box_inner = self.mir.inner.as_ref();
         let exist_in_real_api = self.mir.exist_in_real_api;

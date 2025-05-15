@@ -9,4 +9,5 @@ pub(crate) struct ParserHirInternalConfig {
     pub rust_crate_dir: PathBuf,
     pub third_party_crate_names: Vec<CrateName>,
     pub rust_features: Option<Vec<String>>,
+    pub parse_const: bool,
 }

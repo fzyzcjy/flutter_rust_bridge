@@ -6,7 +6,7 @@ use crate::utils::basic_code::dart_header_code::DartHeaderCode;
 use crate::utils::dart_keywords;
 use itertools::Itertools;
 
-impl<'a> EnumRefApiDartGenerator<'a> {
+impl EnumRefApiDartGenerator<'_> {
     pub(crate) fn generate_mode_simple(
         &self,
         src: &MirEnum,
@@ -35,6 +35,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
                 }}",
             ),
             needs_freezed: false,
+            needs_json_serializable: false,
             header,
         })
     }
@@ -43,7 +44,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
         let variant_name = if self.context.config.dart_enums_style {
             dart_keywords::escape(variant.name.dart_style())
         } else {
-            variant.name.rust_style().to_string()
+            variant.name.rust_style(true).to_string()
         };
 
         format!(

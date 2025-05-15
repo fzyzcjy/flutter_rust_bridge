@@ -25,7 +25,7 @@ use crate::utils::namespace::{Namespace, NamespacedName};
 use std::collections::HashMap;
 use syn::{Attribute, Field, Ident, ItemEnum, Type, Variant, Visibility};
 
-impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
+impl TypeParserWithContext<'_, '_, '_> {
     pub(crate) fn parse_type_path_data_enum(
         &mut self,
         path: &syn::Path,
@@ -60,6 +60,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             self.context,
         );
 
+        let attributes = FrbAttributes::parse(&src_enum.src.attrs)?;
+
         Ok(MirEnum {
             name,
             wrapper_name,
@@ -67,6 +69,7 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             variants,
             mode,
             ignore,
+            needs_json_serializable: attributes.json_serializable(),
         })
     }
 
@@ -110,8 +113,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             name: compute_enum_variant_kind_struct_name(&src_enum.name, variant_name),
             wrapper_name: None,
             is_fields_named: field_ident.is_some(),
-            dart_metadata: attributes.dart_metadata(),
+            dart_metadata_raw: attributes.dart_metadata(),
             ignore: attributes.ignore(),
+            needs_json_serializable: attributes.json_serializable(),
             generate_hash: true,
             generate_eq: true,
             ui_state: attributes.ui_state(),
@@ -152,7 +156,7 @@ pub(crate) fn compute_enum_variant_kind_struct_name(
     variant_name: &MirIdent,
 ) -> NamespacedName {
     let variant_namespace = enum_name.namespace.join(&enum_name.name);
-    NamespacedName::new(variant_namespace, variant_name.rust_style().to_owned())
+    NamespacedName::new(variant_namespace, variant_name.rust_style(true).to_owned())
 }
 
 struct EnumOrStructParserEnum<'a, 'b, 'c, 'd>(&'d mut TypeParserWithContext<'a, 'b, 'c>);

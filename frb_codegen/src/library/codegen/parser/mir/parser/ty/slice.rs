@@ -2,7 +2,7 @@ use crate::codegen::ir::mir::ty::general_list::mir_list;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::parser::mir::parser::ty::TypeParserWithContext;
 
-impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
+impl TypeParserWithContext<'_, '_, '_> {
     pub(crate) fn parse_type_slice(
         &mut self,
         type_slice: &syn::TypeSlice,

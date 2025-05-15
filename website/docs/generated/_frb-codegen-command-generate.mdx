@@ -78,6 +78,13 @@ Options:
       --full-dep
           Enable full dependencies
 
+      --default-rust-opaque-codec <DEFAULT_RUST_OPAQUE_CODEC>
+          Default implementation of rust opaque
+
+          Possible values:
+          - moi: Use moi codec
+          - nom: Use nom codec
+
       --enable-lifetime
           Enable parsing types with lifetimes (e.g. references and borrows)
 
@@ -86,6 +93,21 @@ Options:
 
       --no-default-dart-async
           Whether default Dart code is asynchronous or synchronous
+
+      --no-auto-upgrade-dependency
+          Whether to skip auto upgrading the dependencies
+
+      --parse-const
+          Whether to automatically parse constants
+
+      --no-dart-format
+          Whether to disable automatic Dart formatting
+
+      --no-dart-fix
+          Whether to disable automatic Dart fix
+
+      --no-rust-format
+          Whether to disable automatic Rust formatting
 
       --stop-on-error
           If having error when, for example, parsing a function, directly stop instead of continue and skip it

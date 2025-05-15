@@ -1,11 +1,14 @@
 # Android NDK Init
 
+:::info
 This page is only needed to read if you want to use Android NDK in Rust code,
 and see "android context was not initialized" error, or want to know more about`ndk_context` initialization.
+:::
 
 Related issues:
 [#1323](https://github.com/fzyzcjy/flutter_rust_bridge/issues/1323),
-[#1868](https://github.com/fzyzcjy/flutter_rust_bridge/issues/1868).
+[#1868](https://github.com/fzyzcjy/flutter_rust_bridge/issues/1868),
+[#2466](https://github.com/fzyzcjy/flutter_rust_bridge/issues/2466).
 
 ## Method 1
 
@@ -97,8 +100,8 @@ class MainActivity : FlutterActivity() {
     override fun configureFlutterEngine(
         @NonNull flutterEngine: FlutterEngine,
     ) {
-        super.configureFlutterEngine(flutterEngine)
         flutterEngine.plugins.add(MyPlugin())
+        super.configureFlutterEngine(flutterEngine)
     }
 }
 
@@ -144,18 +147,26 @@ jni = "0.21"
 
 ```rust
 #[cfg(target_os = "android")]
-use {
-    jni::{objects::JClass, objects::JObject, JNIEnv},
-    mylib::setup_android,
-};
+mod init_android_context {
+    use jni::{objects::JClass, objects::JObject, objects::GlobalRef, JNIEnv};
+    use std::sync::OnceLock;
+    use std::ffi::c_void;
 
-#[cfg(target_os = "android")]
-#[no_mangle]
-pub extern "system" fn Java_com_example_spareshare_MyPlugin_init_1android(
-    env: JNIEnv,
-    _class: JClass,
-    ctx: JObject,
-) {
-    setup_android(env, ctx);
+    static CTX: OnceLock<GlobalRef> = OnceLock::new();
+
+    #[no_mangle]
+    pub extern "system" fn Java_com_example_local_1auth_MyPlugin_init_1android(
+        env: JNIEnv,
+        _class: JClass,
+        ctx: JObject,
+    ) {
+        let global_ref = env.new_global_ref(&ctx).expect("to make global reference");
+        let vm = env.get_java_vm().unwrap();
+        let vm = vm.get_java_vm_pointer() as *mut c_void;
+        unsafe {
+            ndk_context::initialize_android_context(vm, global_ref.as_obj().as_raw() as _);
+        }
+        CTX.get_or_init(|| global_ref);
+    }
 }
 ```

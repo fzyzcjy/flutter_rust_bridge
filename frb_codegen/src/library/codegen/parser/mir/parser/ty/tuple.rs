@@ -12,7 +12,7 @@ use anyhow::Result;
 use itertools::Itertools;
 use syn::TypeTuple;
 
-impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
+impl TypeParserWithContext<'_, '_, '_> {
     pub(crate) fn parse_type_tuple(&mut self, type_tuple: &TypeTuple) -> anyhow::Result<MirType> {
         if type_tuple.elems.is_empty() {
             return Ok(Primitive(MirTypePrimitive::Unit));
@@ -39,8 +39,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 name: NamespacedName::new(namespace.clone(), safe_ident.clone()),
                 wrapper_name: None,
                 is_fields_named: true,
-                dart_metadata: vec![],
+                dart_metadata_raw: vec![],
                 ignore: false,
+                needs_json_serializable: false,
                 generate_hash: true,
                 generate_eq: true,
                 ui_state: false,

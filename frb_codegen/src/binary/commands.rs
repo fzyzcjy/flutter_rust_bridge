@@ -1,6 +1,6 @@
 use crate::codegen::ConfigDumpContent;
 use clap::{Args, Parser, Subcommand, ValueEnum};
-use lib_flutter_rust_bridge_codegen::misc::Template;
+use lib_flutter_rust_bridge_codegen::{codegen::RustOpaqueCodecMode, misc::Template};
 use std::path::PathBuf;
 
 // The name `Cli`, `Commands` come from https://docs.rs/clap/latest/clap/_derive/_tutorial/chapter_0/index.html
@@ -145,6 +145,10 @@ pub(crate) struct GenerateCommandArgsPrimary {
     #[arg(long)]
     pub full_dep: bool,
 
+    /// Default implementation of rust opaque
+    #[arg(long)]
+    pub default_rust_opaque_codec: Option<RustOpaqueCodecModeArg>,
+
     /// Use local version instead of the release version
     #[arg(long, hide = true)]
     pub local: bool,
@@ -160,6 +164,26 @@ pub(crate) struct GenerateCommandArgsPrimary {
     /// Whether default Dart code is asynchronous or synchronous
     #[arg(long)]
     pub no_default_dart_async: bool,
+
+    /// Whether to skip auto upgrading the dependencies
+    #[arg(long)]
+    pub no_auto_upgrade_dependency: bool,
+
+    /// Whether to automatically parse constants
+    #[arg(long)]
+    pub parse_const: bool,
+
+    /// Whether to disable automatic Dart formatting
+    #[arg(long)]
+    pub no_dart_format: bool,
+
+    /// Whether to disable automatic Dart fix
+    #[arg(long)]
+    pub no_dart_fix: bool,
+
+    /// Whether to disable automatic Rust formatting
+    #[arg(long)]
+    pub no_rust_format: bool,
 
     /// If having error when, for example, parsing a function, directly stop instead of continue and skip it
     #[arg(long)]
@@ -218,6 +242,14 @@ pub(crate) enum TemplateArg {
     Plugin,
 }
 
+#[derive(Debug, Copy, Clone, Eq, PartialEq, ValueEnum)]
+pub(crate) enum RustOpaqueCodecModeArg {
+    /// Use moi codec
+    Moi,
+    /// Use nom codec
+    Nom,
+}
+
 #[derive(Debug, Args)]
 pub(crate) struct CreateOrIntegrateCommandCommonArgs {
     /// The name of the generated Rust crate
@@ -257,6 +289,15 @@ impl From<TemplateArg> for Template {
         match value {
             TemplateArg::App => Template::App,
             TemplateArg::Plugin => Template::Plugin,
+        }
+    }
+}
+
+impl From<RustOpaqueCodecModeArg> for RustOpaqueCodecMode {
+    fn from(value: RustOpaqueCodecModeArg) -> Self {
+        match value {
+            RustOpaqueCodecModeArg::Moi => RustOpaqueCodecMode::Moi,
+            RustOpaqueCodecModeArg::Nom => RustOpaqueCodecMode::Nom,
         }
     }
 }

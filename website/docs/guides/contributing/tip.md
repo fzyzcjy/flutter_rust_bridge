@@ -1,4 +1,4 @@
-# Tips and procedures
+# Misc Tips
 
 ## How to add a test
 

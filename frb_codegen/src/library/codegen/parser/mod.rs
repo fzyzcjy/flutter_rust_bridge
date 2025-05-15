@@ -173,6 +173,7 @@ mod tests {
                 rust_crate_dir: rust_crate_dir.clone(),
                 third_party_crate_names: vec![],
                 rust_features: None,
+                parse_const: false,
             },
             mir: ParserMirInternalConfig {
                 rust_input_namespace_pack: rust_input_namespace_pack.clone(),

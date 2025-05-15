@@ -8,7 +8,7 @@ use crate::codegen::generator::codec::sse::ty::*;
 use crate::codegen::ir::mir::func::OwnershipMode;
 use convert_case::{Case, Casing};
 
-impl<'a> CodecSseTyTrait for RustAutoOpaqueImplicitCodecSseTy<'a> {
+impl CodecSseTyTrait for RustAutoOpaqueImplicitCodecSseTy<'_> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
         match lang {
             Lang::DartLang(_) => {

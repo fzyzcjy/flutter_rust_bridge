@@ -33,7 +33,7 @@ impl ExternFunc {
             Target::Web => "",
         };
         let attribute = match self.target {
-            Target::Io => "#[no_mangle]",
+            Target::Io => "#[unsafe(no_mangle)]",
             Target::Web => "#[wasm_bindgen]",
         };
         let ExternFunc { body, .. } = self;

@@ -12,7 +12,7 @@ part of 'misc_example_twin_rust_async_sse.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AbcTwinRustAsyncSse {
@@ -85,6 +85,9 @@ class _$AbcTwinRustAsyncSseCopyWithImpl<$Res, $Val extends AbcTwinRustAsyncSse>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AbcTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -105,6 +108,8 @@ class __$$AbcTwinRustAsyncSse_AImplCopyWithImpl<$Res>
       $Res Function(_$AbcTwinRustAsyncSse_AImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AbcTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -143,7 +148,9 @@ class _$AbcTwinRustAsyncSse_AImpl extends AbcTwinRustAsyncSse_A {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AbcTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AbcTwinRustAsyncSse_AImplCopyWith<_$AbcTwinRustAsyncSse_AImpl>
@@ -232,7 +239,10 @@ abstract class AbcTwinRustAsyncSse_A extends AbcTwinRustAsyncSse {
 
   @override
   ATwinRustAsyncSse get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AbcTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AbcTwinRustAsyncSse_AImplCopyWith<_$AbcTwinRustAsyncSse_AImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -255,6 +265,8 @@ class __$$AbcTwinRustAsyncSse_BImplCopyWithImpl<$Res>
       $Res Function(_$AbcTwinRustAsyncSse_BImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AbcTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -293,7 +305,9 @@ class _$AbcTwinRustAsyncSse_BImpl extends AbcTwinRustAsyncSse_B {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AbcTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AbcTwinRustAsyncSse_BImplCopyWith<_$AbcTwinRustAsyncSse_BImpl>
@@ -382,7 +396,10 @@ abstract class AbcTwinRustAsyncSse_B extends AbcTwinRustAsyncSse {
 
   @override
   BTwinRustAsyncSse get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AbcTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AbcTwinRustAsyncSse_BImplCopyWith<_$AbcTwinRustAsyncSse_BImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -405,6 +422,8 @@ class __$$AbcTwinRustAsyncSse_CImplCopyWithImpl<$Res>
       $Res Function(_$AbcTwinRustAsyncSse_CImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AbcTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -443,7 +462,9 @@ class _$AbcTwinRustAsyncSse_CImpl extends AbcTwinRustAsyncSse_C {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AbcTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AbcTwinRustAsyncSse_CImplCopyWith<_$AbcTwinRustAsyncSse_CImpl>
@@ -532,7 +553,10 @@ abstract class AbcTwinRustAsyncSse_C extends AbcTwinRustAsyncSse {
 
   @override
   CTwinRustAsyncSse get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AbcTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AbcTwinRustAsyncSse_CImplCopyWith<_$AbcTwinRustAsyncSse_CImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -557,6 +581,8 @@ class __$$AbcTwinRustAsyncSse_JustIntImplCopyWithImpl<$Res>
       $Res Function(_$AbcTwinRustAsyncSse_JustIntImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AbcTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -595,7 +621,9 @@ class _$AbcTwinRustAsyncSse_JustIntImpl extends AbcTwinRustAsyncSse_JustInt {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AbcTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AbcTwinRustAsyncSse_JustIntImplCopyWith<_$AbcTwinRustAsyncSse_JustIntImpl>
@@ -684,7 +712,10 @@ abstract class AbcTwinRustAsyncSse_JustInt extends AbcTwinRustAsyncSse {
 
   @override
   int get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AbcTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AbcTwinRustAsyncSse_JustIntImplCopyWith<_$AbcTwinRustAsyncSse_JustIntImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -6,7 +6,7 @@ use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;
 
-impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
+impl CodecSseTyTrait for EnumRefCodecSseTy<'_> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
         let src = self.mir.get(self.context.mir_pack);
         Some(generate_enum_encode_rust_general(
@@ -18,7 +18,7 @@ impl<'a> CodecSseTyTrait for EnumRefCodecSseTy<'a> {
                     .map(|field| {
                         format!(
                             "{};\n",
-                            lang.call_encode(&field.ty, &field.name.style(lang))
+                            lang.call_encode(&field.ty, &field.name.style(lang, false))
                         )
                     })
                     .join("");
@@ -114,7 +114,7 @@ pub(crate) fn generate_enum_encode_rust_general(
     lang.switch_expr(
         self_ref,
         &variants,
-        Some(format!("{};", lang.throw_unimplemented(""))),
+        matches!(lang, Lang::RustLang(_)).then(|| format!("{};", lang.throw_unimplemented(""))),
     )
 }
 
@@ -133,7 +133,7 @@ fn pattern_match_enum_variant(lang: &Lang, variant: &MirEnumVariant) -> String {
             }
             Lang::RustLang(_) => {
                 let pattern = (st.fields.iter())
-                    .map(|field| field.name.rust_style().to_owned())
+                    .map(|field| field.name.rust_style(false).to_owned())
                     .join(",");
                 let (left, right) = st.brackets_pair();
                 format!("{left}{pattern}{right}")

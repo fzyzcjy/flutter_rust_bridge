@@ -30,16 +30,24 @@
 - Larpoux: Fix async generation. Update web-audio-api binding.
 - patmuk: Set MSRV. Fail fast. Improve message. Support relative config. Improve multiple docs. Fix warning.
 - banool: Fix pubspec parsing. Fix symbol-stripping doc.
-- anlumo: Fix freezed + methods. Non-clone RustOpaque.
+- AlexV525: Add Dart fix. Fix folder.
+- Integral-Tech: Use concat. Fix lint.
+- Tienisto: Remove default enum case. Add mock init.
+- satvikpendem: 'Add json_serializable. Update CI. Little co-work #989.'
+- anlumo: Fix freezed + methods. Non-clone RustOpaque. Update syn. Support custom hasher.
 - temeddix: Fix broken CI. Custom num workers. Fix MacOS doc steps. Update doc. Make zero-copy defaultable.
 - NightFeather0615: Fix Vec bool.
-- AlexV525: Add Dart fix.
 - fmeef: Add cargo feature flag.
 - alexlapa: Fix DartOpaque.
+- xuwaters: Support edition 2024.
+- SirKrlos: Fix fvm calls.
 - OfficialBoyfriend: Fix error display.
+- jippeholwerda: Fix raw identifier.
+- PaulGrandperrin: Fix lint.
+- iazel: Fix lint.
 - wxitcode: Add org option. Support MacOS log. Fix a typo.
-- Tienisto: Add mock init.
 - atezet: Upgrade dependencies. Follow rustfmt.
+- evdokimovs: Change dependencies.
 - kyrias: Use portable atomic.
 - Markus43: Fix folder removal.
 - Krysl: Add preamble.
@@ -67,8 +75,10 @@
 - anstadnik: Check keywords.
 - syndim: Add a bracket to box.
 - vhdirk: Support dashed crate.
+- akkumar: External traits doc.
 - rhian-cs: Add Cargo workspace doc.
 - TENX-S: Improve doc. Reproduce a bug.
+- CJBuchel: Remove throw.
 - polypixeldev: Improve doc.
 - CicadaCinema: Bump version. Improve doc.
 - CosmicHorrorDev: Change deps.
@@ -78,6 +88,7 @@
 - canxin121: Fix permission.
 - pixelshot91: Update cargokit. Fix doc link.
 - TrackerSB: Bump allo-isolate.
+- bubnov: Improve doc.
 - Dampfwalze: Improve doc.
 - samuel-cavalcanti: Improve doc.
 - zaynetro: Improve doc.
@@ -98,7 +109,8 @@
 - lker-dev: Fix doc link.
 - jaiakash: Fix doc link.
 - feber: Fix doc link.
-- satvikpendem: 'Little co-work #989.'
+- adam-huganir: Fix a typo.
+- ernstvanderlinden: Fix a typo.
 - damywise: Fix a typo.
 - rustui: Fix a typo.
 - escwxyz: Fix a typo.

@@ -14,7 +14,7 @@ use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::utils::basic_code::dart_header_code::DartHeaderCode;
 
-impl<'a> ApiDartGeneratorClassTrait for DelegateApiDartGenerator<'a> {
+impl ApiDartGeneratorClassTrait for DelegateApiDartGenerator<'_> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
         match &self.mir {
             MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum { mir, .. }) => {
@@ -78,6 +78,7 @@ fn generate_array(
             "
         ),
         needs_freezed: false,
+        needs_json_serializable: false,
     })
 }
 

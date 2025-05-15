@@ -15,4 +15,5 @@ pub(crate) struct ApiDartGeneratedClass {
     pub(crate) class_name: String,
     pub(crate) code: String,
     pub(crate) needs_freezed: bool,
+    pub(crate) needs_json_serializable: bool,
 }

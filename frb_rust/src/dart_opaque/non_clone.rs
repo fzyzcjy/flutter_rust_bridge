@@ -68,7 +68,7 @@ impl Drop for DartOpaqueNonClone {
     }
 }
 
-/// Drop by sending to a Dart port and let the handler there call [dart_opaque_drop_thread_box_persistent_handle]
+/// Drop by sending to a Dart port and let the handler there call [frb_dart_opaque_drop_thread_box_persistent_handle]
 fn drop_thread_box_persistent_handle_via_port(
     persistent_handle: GeneralizedDartHandleBox<GeneralizedAutoDropDartPersistentHandle>,
     dart_handler_port: &SendableMessagePortHandle,
@@ -93,17 +93,17 @@ fn drop_thread_box_persistent_handle_via_port(
 
 #[cfg(not(target_family = "wasm"))]
 #[no_mangle]
-pub unsafe extern "C" fn dart_opaque_drop_thread_box_persistent_handle(ptr: usize) {
-    dart_opaque_drop_thread_box_persistent_handle_inner(ptr)
+pub unsafe extern "C" fn frb_dart_opaque_drop_thread_box_persistent_handle(ptr: usize) {
+    frb_dart_opaque_drop_thread_box_persistent_handle_inner(ptr)
 }
 
 #[cfg(target_family = "wasm")]
 #[wasm_bindgen]
-pub unsafe extern "C" fn dart_opaque_drop_thread_box_persistent_handle(ptr: usize) {
-    dart_opaque_drop_thread_box_persistent_handle_inner(ptr)
+pub unsafe extern "C" fn frb_dart_opaque_drop_thread_box_persistent_handle(ptr: usize) {
+    frb_dart_opaque_drop_thread_box_persistent_handle_inner(ptr)
 }
 
-unsafe fn dart_opaque_drop_thread_box_persistent_handle_inner(ptr: usize) {
+unsafe fn frb_dart_opaque_drop_thread_box_persistent_handle_inner(ptr: usize) {
     let value: GeneralizedDartHandleBox<GeneralizedAutoDropDartPersistentHandle> =
         *box_from_leak_ptr(ptr as _);
     drop(value);

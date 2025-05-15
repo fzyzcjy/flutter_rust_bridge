@@ -93,7 +93,7 @@ BEGIN
             VALUE "FileDescription", "frb_example_rust_ui_todo_list" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "frb_example_rust_ui_todo_list" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2024 com.example. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2025 com.example. All rights reserved." "\0"
             VALUE "OriginalFilename", "frb_example_rust_ui_todo_list.exe" "\0"
             VALUE "ProductName", "frb_example_rust_ui_todo_list" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"

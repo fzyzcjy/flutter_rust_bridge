@@ -2,6 +2,7 @@ rust_input: rust/src/api/**/*.rs
 dart_output: lib/src/rust
 c_output: frb_generated.h
 full_dep: true
+parse_const: true
 
 # this config, together with usage of that type, tests the feature of type rename
 dart_type_rename:

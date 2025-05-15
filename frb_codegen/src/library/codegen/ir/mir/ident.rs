@@ -17,8 +17,12 @@ impl MirIdent {
         }
     }
 
-    pub fn rust_style(&self) -> String {
-        self.rust_style.clone()
+    pub fn rust_style(&self, strip_raw_identifier: bool) -> String {
+        if strip_raw_identifier {
+            strip_prefix_rhash(&self.rust_style).to_owned()
+        } else {
+            self.rust_style.clone()
+        }
     }
 
     pub fn c_style(&self) -> String {
@@ -29,10 +33,10 @@ impl MirIdent {
         (self.dart_style.clone()).unwrap_or_else(|| convert_rust_to_dart_style(&self.rust_style))
     }
 
-    pub fn style(&self, lang: &Lang) -> String {
+    pub fn style(&self, lang: &Lang, rust_strip_raw_identifier: bool) -> String {
         match lang {
             Lang::DartLang(_) => self.dart_style(),
-            Lang::RustLang(_) => self.rust_style().to_string(),
+            Lang::RustLang(_) => self.rust_style(rust_strip_raw_identifier).to_string(),
         }
     }
 }

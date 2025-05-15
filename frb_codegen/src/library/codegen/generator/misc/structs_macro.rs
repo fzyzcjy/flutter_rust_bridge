@@ -86,6 +86,7 @@ macro_rules! codegen_generator_structs {
             $(
                 #[allow(dead_code)]
                 #[derive(Debug, Clone)]
+                #[allow(dead_code)]
                 pub(crate) struct [<$name $generator_name>]<'a> {
                     pub(crate) mir: [<MirType $name>],
                     pub(crate) context: [<$generator_name Context>]<'a>,

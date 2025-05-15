@@ -12,10 +12,10 @@ List<dynamic> wireSyncRust2DartDcoIntoDart(WireSyncRust2DartDco syncReturn) =>
     dartCObjectIntoDart(syncReturn.ref);
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-int dcoDecodeI64(int raw) => raw;
+int dcoDecodeI64(Object? raw) => raw as int;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-BigInt dcoDecodeU64(int raw) => BigInt.from(raw).toUnsigned(64);
+BigInt dcoDecodeU64(Object? raw) => BigInt.from(raw as int).toUnsigned(64);
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 Int64List dcoDecodeInt64List($data.Int64List raw) => Int64List.raw(raw);

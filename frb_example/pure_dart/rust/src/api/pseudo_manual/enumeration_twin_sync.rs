@@ -31,7 +31,7 @@ pub fn func_enum_with_item_mixed_twin_sync(
 
 pub enum EnumWithItemTupleTwinSync {
     A(Vec<u8>),
-    B(Vec<i32>),
+    B(i32),
 }
 
 #[flutter_rust_bridge::frb(sync)]

@@ -4,7 +4,7 @@ use crate::library::commands::command_runner::check_exit_code;
 use std::path::Path;
 
 #[allow(clippy::vec_init_then_push)]
-pub fn cargo_add(args: &[String], pwd: &Path) -> anyhow::Result<()> {
+pub fn cargo_add(args: &[&str], pwd: &Path) -> anyhow::Result<()> {
     check_exit_code(&command_run!(
         call_shell[Some(pwd), None],
         "cargo",

@@ -6,7 +6,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
 use itertools::Itertools;
 
-impl<'a> WireRustCodecDcoGeneratorEncoderTrait for StructRefWireRustCodecDcoGenerator<'a> {
+impl WireRustCodecDcoGeneratorEncoderTrait for StructRefWireRustCodecDcoGenerator<'_> {
     fn generate_impl_into_dart(&self) -> Option<String> {
         let src = self.mir.get(self.context.mir_pack);
 
@@ -20,7 +20,7 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for StructRefWireRustCodecDcoGene
             .enumerate()
             .map(|(i, field)| {
                 let field_ref = if src.is_fields_named {
-                    field.name.rust_style().to_string()
+                    field.name.rust_style(false).to_string()
                 } else {
                     i.to_string()
                 };

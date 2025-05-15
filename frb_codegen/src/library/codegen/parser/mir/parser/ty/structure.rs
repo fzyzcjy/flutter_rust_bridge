@@ -19,7 +19,7 @@ use anyhow::bail;
 use std::collections::HashMap;
 use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, ItemStruct, Type, Visibility};
 
-impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
+impl TypeParserWithContext<'_, '_, '_> {
     pub(crate) fn parse_type_path_data_struct(
         &mut self,
         path: &syn::Path,
@@ -70,8 +70,9 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
             wrapper_name,
             fields,
             is_fields_named,
-            dart_metadata,
+            dart_metadata_raw: dart_metadata,
             ignore,
+            needs_json_serializable: attributes.json_serializable(),
             generate_hash: attributes.generate_hash(),
             generate_eq: attributes.generate_eq(),
             ui_state: attributes.ui_state(),

@@ -13,7 +13,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::
 
 const NIL_FIELD: &str = "nil__";
 
-impl<'a> WireRustCodecCstGeneratorDecoderTrait for EnumRefWireRustCodecCstGenerator<'a> {
+impl WireRustCodecCstGeneratorDecoderTrait for EnumRefWireRustCodecCstGenerator<'_> {
     fn generate_decoder_class(&self) -> Option<WireRustOutputCode> {
         let src = self.mir.get(self.context.mir_pack);
         if src.mode == MirEnumMode::Simple {
@@ -120,7 +120,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for EnumRefWireRustCodecCstGenera
     }
 }
 
-impl<'a> EnumRefWireRustCodecCstGenerator<'a> {
+impl EnumRefWireRustCodecCstGenerator<'_> {
     fn generate_decoder_enum_variant(
         &self,
         variant_name: &MirIdent,
@@ -134,7 +134,7 @@ impl<'a> EnumRefWireRustCodecCstGenerator<'a> {
                     WireRustCodecCstGenerator::new(field.ty.clone(), self.context);
                 format!(
                     "{}: {}{},",
-                    field.name.rust_style(),
+                    field.name.rust_style(false),
                     field_generator.rust_wire_modifier(Target::Io),
                     field_generator.rust_wire_type(Target::Io)
                 )
@@ -165,7 +165,7 @@ fn generate_impl_cst_decode_body_variant(
                 .iter()
                 .enumerate()
                 .map(|(idx, field)| {
-                    let field_name = field.name.rust_style();
+                    let field_name = field.name.rust_style(false);
                     let field_ = if st.is_fields_named {
                         format!("{field_name}: ")
                     } else {

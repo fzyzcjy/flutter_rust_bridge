@@ -75,7 +75,7 @@ fn generate_end_api_text(
 
     let preamble = &item.preamble.as_str();
     let mut header = DartHeaderCode {
-        file_top: generate_code_header()
+        file_top: generate_code_header().to_string()
             + if !preamble.is_empty() {"\n\n"} else {""} + preamble
             + "\n\n// ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import\n",
         import: format!(
@@ -93,6 +93,15 @@ fn generate_end_api_text(
                 .into(),
             part: format!(
                 "part '{name}.freezed.dart';",
+                name = dart_output_path.file_stem().unwrap().to_str().unwrap()
+            ),
+            ..Default::default()
+        };
+    }
+    if item.needs_json_serializable {
+        header += DartHeaderCode {
+            part: format!(
+                "part '{name}.g.dart';",
                 name = dart_output_path.file_stem().unwrap().to_str().unwrap()
             ),
             ..Default::default()

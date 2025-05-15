@@ -48,7 +48,7 @@ fn parse_synthesized_syn_items(
     };
     let syn_file = syn::parse_file(extra_code).with_context(|| format!("code={extra_code}"))?;
     for syn_item in syn_file.items {
-        parse_syn_item(syn_item, &meta, pack)?;
+        parse_syn_item(syn_item, &meta, pack, false)?;
     }
     Ok(())
 }

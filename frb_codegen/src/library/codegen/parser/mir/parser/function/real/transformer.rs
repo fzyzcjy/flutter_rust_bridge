@@ -7,7 +7,7 @@ use crate::codegen::parser::mir::parser::function::real::{FunctionParser, Functi
 use itertools::Itertools;
 use MirTypePrimitive::{Isize, Usize, I64, U64};
 
-impl<'a, 'b> FunctionParser<'a, 'b> {
+impl FunctionParser<'_, '_> {
     pub(super) fn transform_fn_info(&mut self, info: FunctionPartialInfo) -> FunctionPartialInfo {
         FunctionPartialInfo {
             inputs: (info.inputs.into_iter())

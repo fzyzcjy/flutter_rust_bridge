@@ -1,16 +1,15 @@
 ## Changes
 
-_Please list issues fixed by this PR here, using format "Fixes #the-issue-number"._
+Fixes #the-issue-number-here
 
-## Checklist
+## Procedure and Checklist
 
-- [ ] An issue to be fixed by this PR is listed above.
-- [ ] New tests are added to ensure new features are working. Please refer to [this page](https://cjycode.com/flutter_rust_bridge/guides/contributing/tip) to see how to add a test.
-- [ ] `./frb_internal precommit --mode slow` (or `fast`) is run (it internal runs code generator, does auto formatting, etc).
-- [ ] If this PR adds/changes features, documentations (in the `./website` folder) are updated.
-- [ ] CI is passing. Please refer to [this page](https://cjycode.com/flutter_rust_bridge/guides/contributing/tip) to see how to solve a failed CI.
+In order to quickly iterate and avoid slowing down development pace by making CI pass, only the following simplified steps are needed, and I (fzyzcjy) will handle the rest of CI / moving the tests currently (will have more automation in the future).
 
-## Remark for PR creator
+- [ ] Implement the feature / fix the bug.
+- [ ] Add tests in `frb_example/dart_minimal`.
+- [ ] Make `dart_minimal`'s CI green.
 
-- `./frb_internal --help` shows utilities for development.
-- If fzyzcjy does not reply for a few days, maybe he just did not see it, so please ping him.
+Utility commands
+- Run codegen: `cargo run --manifest-path /path/to/flutter_rust_bridge/frb_codegen/Cargo.toml -- generate`
+- Run tests: `./frb_internal test-dart-native --package frb_example/dart_minimal`

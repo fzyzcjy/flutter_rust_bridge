@@ -23,6 +23,7 @@ pub struct MirEnum {
     pub variants: Vec<MirEnumVariant>,
     pub mode: MirEnumMode,
     pub ignore: bool,
+    pub needs_json_serializable: bool,
 }
 
 #[derive(Copy)]

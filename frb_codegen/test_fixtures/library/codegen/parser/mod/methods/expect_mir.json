@@ -6,6 +6,7 @@
       "ignore": false,
       "mode": "Simple",
       "name": "crate::api/MyEnum",
+      "needs_json_serializable": false,
       "variants": [
         {
           "comments": [],
@@ -45,6 +46,7 @@
     }
   },
   "extra_rust_output_code": "",
+  "extra_types_all": [],
   "funcs_all": [
     {
       "accessor": null,
@@ -54,7 +56,6 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "dart_name": null,
       "id": 1,
       "impl_mode": "Normal",
       "initializer": false,
@@ -91,7 +92,11 @@
         }
       ],
       "mode": "Normal",
-      "name": "crate::api/my_enum_example_instance_method",
+      "name": {
+        "dart_style": null,
+        "rust_style": "my_enum_example_instance_method"
+      },
+      "namespace": "crate::api",
       "output": {
         "error": null,
         "normal": {
@@ -135,13 +140,16 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "dart_name": null,
       "id": 2,
       "impl_mode": "Normal",
       "initializer": false,
       "inputs": [],
       "mode": "Normal",
-      "name": "crate::api/my_enum_example_static_method",
+      "name": {
+        "dart_style": null,
+        "rust_style": "my_enum_example_static_method"
+      },
+      "namespace": "crate::api",
       "output": {
         "error": null,
         "normal": {
@@ -185,7 +193,6 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "dart_name": null,
       "id": 3,
       "impl_mode": "Normal",
       "initializer": false,
@@ -224,7 +231,11 @@
         }
       ],
       "mode": "Normal",
-      "name": "crate::api/my_struct_example_instance_method",
+      "name": {
+        "dart_style": null,
+        "rust_style": "my_struct_example_instance_method"
+      },
+      "namespace": "crate::api",
       "output": {
         "error": null,
         "normal": {
@@ -263,13 +274,16 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "dart_name": null,
       "id": 4,
       "impl_mode": "Normal",
       "initializer": false,
       "inputs": [],
       "mode": "Normal",
-      "name": "crate::api/my_struct_example_static_method",
+      "name": {
+        "dart_style": null,
+        "rust_style": "my_struct_example_static_method"
+      },
+      "namespace": "crate::api",
       "output": {
         "error": null,
         "normal": {
@@ -305,13 +319,14 @@
   "struct_pool": {
     "crate::api/MyStruct": {
       "comments": [],
-      "dart_metadata": [],
+      "dart_metadata_raw": [],
       "fields": [],
       "generate_eq": true,
       "generate_hash": true,
       "ignore": false,
       "is_fields_named": true,
       "name": "crate::api/MyStruct",
+      "needs_json_serializable": false,
       "ui_state": false,
       "wrapper_name": null
     }

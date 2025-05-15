@@ -2,6 +2,7 @@
 
 use crate::command_run;
 use crate::library::commands::command_runner::{call_shell, call_shell_info, check_exit_code};
+use crate::library::commands::fvm::command_arg_maybe_fvm;
 use crate::utils::dart_repository::dart_repo::DartRepository;
 use crate::utils::path_utils::{find_dart_package_dir, path_to_string};
 use anyhow::{bail, Context};
@@ -71,7 +72,11 @@ fn dart_run(
     args: Vec<String>,
 ) -> anyhow::Result<ExitStatus> {
     let handle = {
-        let mut cmd_args: Vec<PathBuf> = vec!["dart".into()];
+        let mut cmd_args: Vec<PathBuf> = if command_arg_maybe_fvm(None).is_some() {
+            vec!["fvm".into(), "dart".into()]
+        } else {
+            vec!["dart".into()]
+        };
         cmd_args.extend(repo.command_extra_args().into_iter().map_into());
         cmd_args.push("run".into());
         if dart_coverage {

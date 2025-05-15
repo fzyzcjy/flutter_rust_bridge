@@ -12,7 +12,7 @@ part of 'misc_example_twin_rust_async.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AbcTwinRustAsync {
@@ -85,6 +85,9 @@ class _$AbcTwinRustAsyncCopyWithImpl<$Res, $Val extends AbcTwinRustAsync>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AbcTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -104,6 +107,8 @@ class __$$AbcTwinRustAsync_AImplCopyWithImpl<$Res>
       $Res Function(_$AbcTwinRustAsync_AImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AbcTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -142,7 +147,9 @@ class _$AbcTwinRustAsync_AImpl extends AbcTwinRustAsync_A {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AbcTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AbcTwinRustAsync_AImplCopyWith<_$AbcTwinRustAsync_AImpl> get copyWith =>
@@ -231,7 +238,10 @@ abstract class AbcTwinRustAsync_A extends AbcTwinRustAsync {
 
   @override
   ATwinRustAsync get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AbcTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AbcTwinRustAsync_AImplCopyWith<_$AbcTwinRustAsync_AImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -253,6 +263,8 @@ class __$$AbcTwinRustAsync_BImplCopyWithImpl<$Res>
       $Res Function(_$AbcTwinRustAsync_BImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AbcTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -291,7 +303,9 @@ class _$AbcTwinRustAsync_BImpl extends AbcTwinRustAsync_B {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AbcTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AbcTwinRustAsync_BImplCopyWith<_$AbcTwinRustAsync_BImpl> get copyWith =>
@@ -380,7 +394,10 @@ abstract class AbcTwinRustAsync_B extends AbcTwinRustAsync {
 
   @override
   BTwinRustAsync get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AbcTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AbcTwinRustAsync_BImplCopyWith<_$AbcTwinRustAsync_BImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -402,6 +419,8 @@ class __$$AbcTwinRustAsync_CImplCopyWithImpl<$Res>
       $Res Function(_$AbcTwinRustAsync_CImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AbcTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -440,7 +459,9 @@ class _$AbcTwinRustAsync_CImpl extends AbcTwinRustAsync_C {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AbcTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AbcTwinRustAsync_CImplCopyWith<_$AbcTwinRustAsync_CImpl> get copyWith =>
@@ -529,7 +550,10 @@ abstract class AbcTwinRustAsync_C extends AbcTwinRustAsync {
 
   @override
   CTwinRustAsync get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AbcTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AbcTwinRustAsync_CImplCopyWith<_$AbcTwinRustAsync_CImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -553,6 +577,8 @@ class __$$AbcTwinRustAsync_JustIntImplCopyWithImpl<$Res>
       $Res Function(_$AbcTwinRustAsync_JustIntImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AbcTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -591,7 +617,9 @@ class _$AbcTwinRustAsync_JustIntImpl extends AbcTwinRustAsync_JustInt {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AbcTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AbcTwinRustAsync_JustIntImplCopyWith<_$AbcTwinRustAsync_JustIntImpl>
@@ -680,7 +708,10 @@ abstract class AbcTwinRustAsync_JustInt extends AbcTwinRustAsync {
 
   @override
   int get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AbcTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AbcTwinRustAsync_JustIntImplCopyWith<_$AbcTwinRustAsync_JustIntImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -80,17 +80,18 @@ where
     }
 }
 
-impl<T> IntoIntoDart<T> for Box<T>
+impl<T, D> IntoIntoDart<D> for Box<T>
 where
-    T: IntoDart,
+    T: IntoIntoDart<D>,
+    D: IntoDart,
 {
     #[inline(always)]
-    fn into_into_dart(self) -> T {
-        *self
+    fn into_into_dart(self) -> D {
+        (*self).into_into_dart()
     }
 }
 
-impl<KT, KD, VT, VD> IntoIntoDart<HashMap<KD, VD>> for HashMap<KT, VT>
+impl<KT, KD, VT, VD, S> IntoIntoDart<HashMap<KD, VD>> for HashMap<KT, VT, S>
 where
     KT: IntoIntoDart<KD>,
     VT: IntoIntoDart<VD>,
@@ -106,7 +107,7 @@ where
     }
 }
 
-impl<T, D> IntoIntoDart<HashSet<D>> for HashSet<T>
+impl<T, D, S> IntoIntoDart<HashSet<D>> for HashSet<T, S>
 where
     T: IntoIntoDart<D>,
     HashSet<D>: IntoDart,

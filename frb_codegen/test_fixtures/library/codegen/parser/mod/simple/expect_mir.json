@@ -11,6 +11,7 @@
     }
   },
   "extra_rust_output_code": "",
+  "extra_types_all": [],
   "funcs_all": [
     {
       "accessor": null,
@@ -20,13 +21,16 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "dart_name": null,
       "id": 1,
       "impl_mode": "Normal",
       "initializer": false,
       "inputs": [],
       "mode": "Normal",
-      "name": "crate::api/first_function",
+      "name": {
+        "dart_style": null,
+        "rust_style": "first_function"
+      },
+      "namespace": "crate::api",
       "output": {
         "error": null,
         "normal": {

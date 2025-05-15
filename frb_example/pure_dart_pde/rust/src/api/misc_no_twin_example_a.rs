@@ -225,3 +225,63 @@ impl StructWithRustAutoOpaqueWithNonCloneData {
 pub fn feature_gated_function() -> String {
     "test".to_owned()
 }
+
+pub struct StructWithRawNameField {
+    pub r#type: String,
+}
+
+impl StructWithRawNameField {
+    #[frb(serialize)]
+    pub fn dummy_function() {}
+}
+
+#[frb(serialize)]
+pub fn r#for(r#type: String) {
+    let _ = r#type;
+}
+
+pub const CONST_INT_TWIN_NORMAL: i32 = 42;
+pub const CONST_ARRAY_TWIN_NORMAL: [f32; 3] = [1.5, 3.0, 6.0];
+
+// These consts should be ignored
+#[allow(dead_code)]
+pub(crate) const CONST_PUB_CRATE_SHOULD_IGNORE: i32 = 42;
+#[allow(dead_code)]
+const CONST_PRIVATE_SHOULD_IGNORE: i32 = 42;
+#[allow(dead_code)]
+#[frb(ignore)]
+pub const CONST_WITH_EXPLICIT_IGNORE_SHOULD_IGNORE: i32 = 42;
+
+#[frb(json_serializable)]
+pub enum MyEnumWithJsonSerializableTwinNormal {
+    Apple(String),
+    Orange { a: i32 },
+}
+
+impl MyEnumWithJsonSerializableTwinNormal {
+    pub fn f(&self) {}
+}
+
+#[frb(json_serializable)]
+pub struct MyStructWithJsonSerializableTwinNormal {
+    pub field_one: String,
+}
+
+impl MyStructWithJsonSerializableTwinNormal {
+    pub fn f(&self) {}
+}
+
+#[frb(unignore)]
+pub struct MyStructWithoutFnWithUnignoreTwinNormal {
+    pub a: String,
+}
+
+#[frb(unignore)]
+pub enum MyEnumWithoutFnWithUnignoreTwinNormal {
+    One(String),
+}
+
+#[frb(unignore, json_serializable)]
+pub struct MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal {
+    pub a: String,
+}

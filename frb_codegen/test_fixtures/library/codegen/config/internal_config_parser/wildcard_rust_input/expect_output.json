@@ -1,9 +1,13 @@
 {
   "controller": {
-    "exclude_paths": ["{the-working-directory}/src/frb_generated.rs"],
+    "exclude_paths": [
+      "{the-working-directory}/src/frb_generated.rs"
+    ],
     "max_count": null,
     "watch": false,
-    "watching_paths": ["{the-working-directory}/src"]
+    "watching_paths": [
+      "{the-working-directory}/src"
+    ]
   },
   "dumper": {
     "dump_contents": [],
@@ -85,13 +89,16 @@
   },
   "parser": {
     "hir": {
+      "parse_const": false,
       "rust_crate_dir": "{the-working-directory}",
+      "rust_features": null,
       "rust_input_namespace_pack": {
-        "rust_input_namespace_prefixes": ["crate::api"],
+        "rust_input_namespace_prefixes": [
+          "crate::api"
+        ],
         "rust_output_path_namespace": "crate::frb_generated"
       },
-      "third_party_crate_names": [],
-      "rust_features": null
+      "third_party_crate_names": []
     },
     "mir": {
       "default_dart_async": true,
@@ -103,7 +110,9 @@
         "rust2dart": "Pde"
       },
       "rust_input_namespace_pack": {
-        "rust_input_namespace_prefixes": ["crate::api"],
+        "rust_input_namespace_prefixes": [
+          "crate::api"
+        ],
         "rust_output_path_namespace": "crate::frb_generated"
       },
       "stop_on_error": false,
@@ -114,11 +123,15 @@
     "add_mod_to_lib": true,
     "build_runner": true,
     "c_output_path": "{the-working-directory}/frb_generated.h",
+    "dart_fix": true,
+    "dart_format": true,
     "dart_format_line_length": 80,
+    "dart_output": "{the-working-directory}/my_dart_folder",
     "dart_root": "{the-working-directory}",
     "duplicated_c_output_path": [],
     "enable_auto_upgrade": true,
     "rust_crate_dir": "{the-working-directory}",
+    "rust_format": true,
     "rust_output_path": "{the-working-directory}/src/frb_generated.rs",
     "web_enabled": true
   },

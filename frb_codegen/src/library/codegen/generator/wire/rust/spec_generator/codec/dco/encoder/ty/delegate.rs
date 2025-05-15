@@ -9,7 +9,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::
 use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegatePrimitiveEnum};
 use itertools::Itertools;
 
-impl<'a> WireRustCodecDcoGeneratorEncoderTrait for DelegateWireRustCodecDcoGenerator<'a> {
+impl WireRustCodecDcoGeneratorEncoderTrait for DelegateWireRustCodecDcoGenerator<'_> {
     // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
     // frb-coverage:ignore-start
     fn generate_impl_into_dart(&self) -> Option<String> {

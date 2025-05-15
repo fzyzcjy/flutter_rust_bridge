@@ -7,22 +7,24 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  lints: ^2.0.1
+  lints: ^5.1.1
   rust_builder:
     path: rust_builder
   flutter_rust_bridge:
     path: ../../frb_dart
   freezed_annotation: ^2.2.0
+  json_annotation: ^4.9.0
 dev_dependencies:
   test: ^1.21.4
   freezed: ^2.1.0+1
   build_runner: ^2.4.4
-  ffigen: ^11.0.0
+  ffigen: ^16.1.0
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^5.0.0
   integration_test:
     sdk: flutter
+  json_serializable: ^6.9.0
 
 flutter:
   uses-material-design: true

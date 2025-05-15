@@ -9,3 +9,6 @@ edition = "2018"
 flutter_rust_bridge_macros.path = "../../../../../../../../frb_macros"
 
 [workspace]
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }

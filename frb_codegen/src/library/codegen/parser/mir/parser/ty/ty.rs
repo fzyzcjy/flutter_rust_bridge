@@ -5,7 +5,7 @@ use crate::utils::syn_utils::ty_to_string;
 use anyhow::Context;
 use syn::Type;
 
-impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
+impl TypeParserWithContext<'_, '_, '_> {
     pub(crate) fn parse_type(&mut self, ty: &Type) -> anyhow::Result<MirType> {
         let resolve_ty = self.resolve_alias(ty);
         let ans = self.parse_type_inner(&resolve_ty)?;

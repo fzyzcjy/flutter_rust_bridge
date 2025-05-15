@@ -3,7 +3,7 @@ use crate::codegen::generator::codec::sse::ty::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 
-impl<'a> CodecSseTyTrait for GeneralListCodecSseTy<'a> {
+impl CodecSseTyTrait for GeneralListCodecSseTy<'_> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
         Some(general_list_generate_encode(lang, &self.mir.inner))
     }

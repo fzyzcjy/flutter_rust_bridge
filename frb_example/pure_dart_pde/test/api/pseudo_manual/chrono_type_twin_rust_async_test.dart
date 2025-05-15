@@ -14,7 +14,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   test('DateTime<Utc>', () async {
-    final date = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456);
+    final date = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 0);
     final resp = await datetimeUtcTwinRustAsync(d: date);
     expect(resp.year, date.year);
     expect(resp.month, date.month);
@@ -27,7 +27,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('DateTime<Local>', () async {
-    final date = DateTime(2022, 09, 10, 20, 48, 53, 123, 456);
+    final date = DateTime(2022, 09, 10, 20, 48, 53, 123, 0);
     final resp = await datetimeLocalTwinRustAsync(d: date);
     expect(resp.year, date.year);
     expect(resp.month, date.month);
@@ -40,7 +40,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('NaiveDateTime', () async {
-    final date = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456);
+    final date = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 0);
     final resp = await naivedatetimeTwinRustAsync(d: date);
     expect(resp.year, date.year);
     expect(resp.month, date.month);
@@ -115,7 +115,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('nested chrono types', () async {
     const duration = Duration(hours: 4);
-    final naive = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456);
+    final naive = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 0);
     final local = DateTime.now();
     final utc = DateTime.now().toUtc();
     final difference = await howLongDoesItTakeTwinRustAsync(

@@ -72,9 +72,6 @@ pub use byteorder;
 pub use cast::slice_from_byte_buffer;
 #[cfg(feature = "log")]
 pub use chrono;
-#[cfg(feature = "dart-opaque")]
-#[cfg(not(target_family = "wasm"))]
-pub use dart_sys_fork as dart_sys;
 #[cfg(feature = "rust-async")]
 pub use futures;
 #[cfg(target_family = "wasm")]

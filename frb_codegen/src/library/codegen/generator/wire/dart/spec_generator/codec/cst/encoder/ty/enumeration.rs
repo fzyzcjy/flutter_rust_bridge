@@ -7,7 +7,7 @@ use crate::codegen::ir::mir::ty::enumeration::{MirEnumVariant, MirVariantKind};
 use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::Itertools;
 
-impl<'a> WireDartCodecCstGeneratorEncoderTrait for EnumRefWireDartCodecCstGenerator<'a> {
+impl WireDartCodecCstGeneratorEncoderTrait for EnumRefWireDartCodecCstGenerator<'_> {
     fn generate_encode_func_body(&self) -> Acc<Option<String>> {
         let variants = (self.mir.get(self.context.mir_pack).variants())
             .iter()
@@ -42,7 +42,7 @@ impl<'a> WireDartCodecCstGeneratorEncoderTrait for EnumRefWireDartCodecCstGenera
     }
 }
 
-impl<'a> EnumRefWireDartCodecCstGenerator<'a> {
+impl EnumRefWireDartCodecCstGenerator<'_> {
     fn generate_api_fill_to_wire_body_variant(
         &self,
         index: usize,
@@ -60,7 +60,7 @@ impl<'a> EnumRefWireDartCodecCstGenerator<'a> {
                     .map(|field| {
                         format!(
                             "var pre_{} = cst_encode_{}(apiObj.{});",
-                            field.name.rust_style(),
+                            field.name.rust_style(true),
                             field.ty.safe_ident(),
                             field.name.dart_style()
                         )
@@ -72,7 +72,10 @@ impl<'a> EnumRefWireDartCodecCstGenerator<'a> {
                     .fields
                     .iter()
                     .map(|field| {
-                        format!("{r}.{name} = pre_{name};", name = field.name.rust_style())
+                        format!(
+                            "{r}.{name} = pre_{name};",
+                            name = field.name.rust_style(true)
+                        )
                     })
                     .join("\n");
 
@@ -108,6 +111,6 @@ fn generate_encode_body_variant(index: usize, variant: &MirEnumVariant) -> Strin
         "if (raw is {variant}) {{
             return [{index} {fields}].jsify()!;
         }}",
-        variant = variant.wrapper_name.rust_style(),
+        variant = variant.wrapper_name.rust_style(true),
     )
 }

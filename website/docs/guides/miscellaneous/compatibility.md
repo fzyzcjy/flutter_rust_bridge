@@ -3,6 +3,11 @@
 Since flutter_rust_bridge v2, we will try our best to follow [semantics versioning](https://semver.org/)
 with the following exceptions.
 
+:::info
+flutter_rust_bridge will automatically upgrade the versions as well as checking them.
+So usually there is no need to care about things below manually.
+:::
+
 Firstly, all flutter_rust_bridge-related packages will need to have exactly the same version. They are:
 
 * Dart package `flutter_rust_bridge` (runtime support)
@@ -16,8 +21,6 @@ In addition, it seems better to put the limited resources to more important thin
 [As is pointed out](https://github.com/fzyzcjy/flutter_rust_bridge/issues/1432#issuecomment-1849199332),
 this is not very uncommon, e.g. Apple's Safari is kept in sync with MacOS version,
 and this should not be a problem with upgrade tools.
-
-(WIP: (1) Make a tool to check these versions agree at runtime or as a doctor command (2) tool to upgrade them in one command.)
 
 Secondly, some classes with comments explicitly mentioning breaking-change things,
 especially the `Handler` classes, may contain breaking change in minor version bump.

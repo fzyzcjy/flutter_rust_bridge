@@ -1,6 +1,7 @@
 use super::dart_build_runner::dart_run_extra_env;
 use crate::command_run;
 use crate::commands::command_runner::call_shell;
+use crate::library::commands::command_runner::ExecuteCommandOptions;
 use crate::utils::dart_repository::dart_repo::DartRepository;
 use anyhow::bail;
 use itertools::Itertools;
@@ -78,7 +79,10 @@ pub(crate) fn ffigen_raw(config: &FfigenCommandConfig, dart_root: &Path) -> anyh
 
     let repo = DartRepository::from_path(dart_root).unwrap();
     let res = command_run!(
-        call_shell[Some(dart_root), Some(dart_run_extra_env())],
+        call_shell[Some(dart_root), Some(ExecuteCommandOptions {
+            envs: Some(dart_run_extra_env()),
+            ..Default::default()
+        })],
         *repo.toolchain.as_run_command(),
         *repo.command_extra_args(),
         "run",

@@ -15,6 +15,7 @@ use crate::utils::path_utils::{canonicalize_with_error_message, find_dart_packag
 use anyhow::Result;
 use itertools::Itertools;
 use log::debug;
+use std::fs;
 use std::path::PathBuf;
 use strum::IntoEnumIterator;
 
@@ -50,7 +51,10 @@ impl InternalConfig {
             &config.rust_output,
         )?;
 
-        let dart_output_dir = canonicalize_with_error_message(&base_dir.join(dart_output))?;
+        let dart_output_dir_raw = base_dir.join(dart_output);
+        fs::create_dir_all(&dart_output_dir_raw)?;
+
+        let dart_output_dir = canonicalize_with_error_message(&dart_output_dir_raw)?;
         let dart_output_path_pack =
             dart_path_parser::compute_dart_output_path_pack(&dart_output_dir)?;
 
@@ -76,7 +80,9 @@ impl InternalConfig {
 
         let full_dep = config.full_dep.unwrap_or(false);
         let default_stream_sink_codec = generate_default_stream_sink_codec(full_dep);
-        let default_rust_opaque_codec = generate_default_rust_opaque_codec(full_dep);
+        let default_rust_opaque_codec = config
+            .default_rust_opaque_codec
+            .unwrap_or(generate_default_rust_opaque_codec(full_dep));
         let enable_local_dependency = config.local.unwrap_or_default();
         let stop_on_error = config.stop_on_error.unwrap_or_default();
 
@@ -109,6 +115,7 @@ impl InternalConfig {
                     rust_input_namespace_pack: rust_input_namespace_pack.clone(),
                     third_party_crate_names,
                     rust_features: config.rust_features.clone(),
+                    parse_const: config.parse_const.unwrap_or_default(),
                 },
                 mir: ParserMirInternalConfig {
                     rust_input_namespace_pack: rust_input_namespace_pack.clone(),
@@ -125,14 +132,19 @@ impl InternalConfig {
             polisher: PolisherInternalConfig {
                 duplicated_c_output_path,
                 dart_format_line_length: config.dart_format_line_length.unwrap_or(80),
+                dart_format: config.dart_format.unwrap_or(true),
+                dart_fix: config.dart_fix.unwrap_or(true),
+                rust_format: config.rust_format.unwrap_or(true),
                 add_mod_to_lib: config.add_mod_to_lib.unwrap_or(true),
                 build_runner: config.build_runner.unwrap_or(true),
                 web_enabled,
+                dart_output: dart_output_dir,
                 dart_root,
                 rust_crate_dir,
                 rust_output_path,
                 c_output_path,
-                enable_auto_upgrade: !enable_local_dependency,
+                enable_auto_upgrade: config.auto_upgrade_dependency.unwrap_or(true)
+                    && !enable_local_dependency,
             },
             dumper: DumperInternalConfig {
                 dump_contents: parse_dump_contents(config),

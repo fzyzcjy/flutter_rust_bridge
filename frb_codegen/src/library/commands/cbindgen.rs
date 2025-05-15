@@ -72,6 +72,7 @@ pub(crate) fn cbindgen_raw(
     let parsed_crate_dir = parse_crate_dir(rust_crate_dir)?;
     debug!("cbindgen parsed_crate_dir={}", parsed_crate_dir);
 
+    #[allow(clippy::manual_inspect)]
     let bindings = cbindgen::generate_with_config(parsed_crate_dir, config).map_err(|e| {
         // This will stop the whole generator and tell the users, so we do not care about testing it
         // frb-coverage:ignore-start

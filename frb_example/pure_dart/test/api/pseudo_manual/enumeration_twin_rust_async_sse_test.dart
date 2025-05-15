@@ -32,7 +32,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   addTestsIdentityFunctionCall(funcEnumWithItemTupleTwinRustAsyncSse, [
     EnumWithItemTupleTwinRustAsyncSse.a(Uint8List.fromList([42])),
-    EnumWithItemTupleTwinRustAsyncSse.b(Int32List.fromList([200])),
+    EnumWithItemTupleTwinRustAsyncSse.b(200),
   ]);
 
   addTestsIdentityFunctionCall(funcEnumWithDiscriminantTwinRustAsyncSse, [

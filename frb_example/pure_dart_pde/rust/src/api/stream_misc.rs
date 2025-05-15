@@ -25,7 +25,7 @@ pub fn func_stream_realistic_twin_normal(sink: StreamSink<String>, arg: String) 
         for i in 0..5 {
             let old_cnt = cnt2.fetch_add(1, Ordering::SeqCst);
             let msg = format!("(thread=child, i={i}, old_cnt={old_cnt})");
-            format!("send data to sink msg={msg}");
+            info!("send data to sink msg={msg}");
             sink2.add(msg).unwrap();
             sleep(Duration::from_millis(100));
         }
@@ -34,7 +34,7 @@ pub fn func_stream_realistic_twin_normal(sink: StreamSink<String>, arg: String) 
     for i in 0..5 {
         let old_cnt = cnt.fetch_add(1, Ordering::SeqCst);
         let msg = format!("(thread=normal, i={i}, old_cnt={old_cnt})");
-        format!("send data to sink msg={msg}");
+        info!("send data to sink msg={msg}");
         sink.add(msg).unwrap();
         sleep(Duration::from_millis(50));
     }

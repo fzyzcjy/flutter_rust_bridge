@@ -12,7 +12,7 @@ part of 'rust_opaque_twin_rust_async_sse_moi.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$EnumOpaqueTwinRustAsyncSseMoi {
@@ -104,6 +104,9 @@ class _$EnumOpaqueTwinRustAsyncSseMoiCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of EnumOpaqueTwinRustAsyncSseMoi
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -126,6 +129,8 @@ class __$$EnumOpaqueTwinRustAsyncSseMoi_StructImplCopyWithImpl<$Res>
       $Res Function(_$EnumOpaqueTwinRustAsyncSseMoi_StructImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumOpaqueTwinRustAsyncSseMoi
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -165,7 +170,9 @@ class _$EnumOpaqueTwinRustAsyncSseMoi_StructImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumOpaqueTwinRustAsyncSseMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumOpaqueTwinRustAsyncSseMoi_StructImplCopyWith<
@@ -273,7 +280,10 @@ abstract class EnumOpaqueTwinRustAsyncSseMoi_Struct
   const EnumOpaqueTwinRustAsyncSseMoi_Struct._() : super._();
 
   HideDataTwinRustAsyncSseMoi get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumOpaqueTwinRustAsyncSseMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumOpaqueTwinRustAsyncSseMoi_StructImplCopyWith<
           _$EnumOpaqueTwinRustAsyncSseMoi_StructImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -299,6 +309,8 @@ class __$$EnumOpaqueTwinRustAsyncSseMoi_PrimitiveImplCopyWithImpl<$Res>
       $Res Function(_$EnumOpaqueTwinRustAsyncSseMoi_PrimitiveImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumOpaqueTwinRustAsyncSseMoi
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -338,7 +350,9 @@ class _$EnumOpaqueTwinRustAsyncSseMoi_PrimitiveImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumOpaqueTwinRustAsyncSseMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumOpaqueTwinRustAsyncSseMoi_PrimitiveImplCopyWith<
@@ -446,7 +460,10 @@ abstract class EnumOpaqueTwinRustAsyncSseMoi_Primitive
   const EnumOpaqueTwinRustAsyncSseMoi_Primitive._() : super._();
 
   I16 get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumOpaqueTwinRustAsyncSseMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumOpaqueTwinRustAsyncSseMoi_PrimitiveImplCopyWith<
           _$EnumOpaqueTwinRustAsyncSseMoi_PrimitiveImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -472,6 +489,8 @@ class __$$EnumOpaqueTwinRustAsyncSseMoi_TraitObjImplCopyWithImpl<$Res>
       $Res Function(_$EnumOpaqueTwinRustAsyncSseMoi_TraitObjImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumOpaqueTwinRustAsyncSseMoi
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -511,7 +530,9 @@ class _$EnumOpaqueTwinRustAsyncSseMoi_TraitObjImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumOpaqueTwinRustAsyncSseMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumOpaqueTwinRustAsyncSseMoi_TraitObjImplCopyWith<
@@ -620,7 +641,10 @@ abstract class EnumOpaqueTwinRustAsyncSseMoi_TraitObj
   const EnumOpaqueTwinRustAsyncSseMoi_TraitObj._() : super._();
 
   BoxDartDebugTwinRustAsyncSseMoi get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumOpaqueTwinRustAsyncSseMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumOpaqueTwinRustAsyncSseMoi_TraitObjImplCopyWith<
           _$EnumOpaqueTwinRustAsyncSseMoi_TraitObjImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -646,6 +670,8 @@ class __$$EnumOpaqueTwinRustAsyncSseMoi_MutexImplCopyWithImpl<$Res>
       $Res Function(_$EnumOpaqueTwinRustAsyncSseMoi_MutexImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumOpaqueTwinRustAsyncSseMoi
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -685,7 +711,9 @@ class _$EnumOpaqueTwinRustAsyncSseMoi_MutexImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumOpaqueTwinRustAsyncSseMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumOpaqueTwinRustAsyncSseMoi_MutexImplCopyWith<
@@ -793,7 +821,10 @@ abstract class EnumOpaqueTwinRustAsyncSseMoi_Mutex
   const EnumOpaqueTwinRustAsyncSseMoi_Mutex._() : super._();
 
   MutexHideDataTwinRustAsyncSseMoi get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumOpaqueTwinRustAsyncSseMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumOpaqueTwinRustAsyncSseMoi_MutexImplCopyWith<
           _$EnumOpaqueTwinRustAsyncSseMoi_MutexImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -819,6 +850,8 @@ class __$$EnumOpaqueTwinRustAsyncSseMoi_RwLockImplCopyWithImpl<$Res>
       $Res Function(_$EnumOpaqueTwinRustAsyncSseMoi_RwLockImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EnumOpaqueTwinRustAsyncSseMoi
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -858,7 +891,9 @@ class _$EnumOpaqueTwinRustAsyncSseMoi_RwLockImpl
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EnumOpaqueTwinRustAsyncSseMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EnumOpaqueTwinRustAsyncSseMoi_RwLockImplCopyWith<
@@ -966,7 +1001,10 @@ abstract class EnumOpaqueTwinRustAsyncSseMoi_RwLock
   const EnumOpaqueTwinRustAsyncSseMoi_RwLock._() : super._();
 
   RwLockHideDataTwinRustAsyncSseMoi get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EnumOpaqueTwinRustAsyncSseMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumOpaqueTwinRustAsyncSseMoi_RwLockImplCopyWith<
           _$EnumOpaqueTwinRustAsyncSseMoi_RwLockImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -989,6 +1027,9 @@ class __$$EnumOpaqueTwinRustAsyncSseMoi_NothingImplCopyWithImpl<$Res>
       _$EnumOpaqueTwinRustAsyncSseMoi_NothingImpl _value,
       $Res Function(_$EnumOpaqueTwinRustAsyncSseMoi_NothingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of EnumOpaqueTwinRustAsyncSseMoi
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

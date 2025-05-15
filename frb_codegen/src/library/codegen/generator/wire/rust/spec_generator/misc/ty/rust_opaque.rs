@@ -12,7 +12,7 @@ use crate::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::namespace::Namespace;
 use itertools::Itertools;
 
-impl<'a> WireRustGeneratorMiscTrait for RustOpaqueWireRustGenerator<'a> {
+impl WireRustGeneratorMiscTrait for RustOpaqueWireRustGenerator<'_> {
     fn generate_imports(&self) -> Option<Vec<Namespace>> {
         // To expose the `pub use`s inside that file
         Some(vec![self.mir.namespace.clone()])

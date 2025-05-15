@@ -21,45 +21,56 @@ pub(crate) mod internal_config;
 pub(super) fn polish(
     config: &PolisherInternalConfig,
     needs_freezed: bool,
+    needs_json_serializable: bool,
     output_paths: &[PathBuf],
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<()> {
     execute_try_add_mod_to_lib(config);
     execute_duplicate_c_output(config)?;
-    ensure_dependency_freezed(config, needs_freezed)?;
+    ensure_dependencies(config, needs_freezed, needs_json_serializable)?;
 
     warn_if_fail(
         execute_build_runner(needs_freezed, config, progress_bar_pack),
         "execute_build_runner",
     );
-    warn_if_fail(
-        execute_dart_fix(config, progress_bar_pack),
-        "execute_dart_fix",
-    );
-
-    // Even if formatting generated code fails, it is not a big problem, and our codegen should not fail.
-    warn_if_fail(
-        execute_dart_format(config, output_paths, progress_bar_pack),
-        "execute_dart_format",
-    );
-    warn_if_fail(
-        execute_rust_format(output_paths, &config.rust_crate_dir, progress_bar_pack),
-        "execute_rust_format",
-    );
-
-    if config.enable_auto_upgrade {
+    if config.dart_fix {
         warn_if_fail(
-            auto_upgrade::execute(progress_bar_pack, &config.dart_root, &config.rust_crate_dir),
-            "auto_upgrade",
+            execute_dart_fix(config, progress_bar_pack),
+            "execute_dart_fix",
         );
     }
+
+    // Even if formatting generated code fails, it is not a big problem, and our codegen should not fail.
+    if config.dart_format {
+        warn_if_fail(
+            execute_dart_format(config, output_paths, progress_bar_pack),
+            "execute_dart_format",
+        );
+    }
+    if config.rust_format {
+        warn_if_fail(
+            execute_rust_format(output_paths, &config.rust_crate_dir, progress_bar_pack),
+            "execute_rust_format",
+        );
+    }
+
+    warn_if_fail(
+        auto_upgrade::execute(
+            progress_bar_pack,
+            &config.dart_root,
+            &config.rust_crate_dir,
+            config.enable_auto_upgrade,
+        ),
+        "auto_upgrade",
+    );
 
     Ok(())
 }
 
-fn ensure_dependency_freezed(
+fn ensure_dependencies(
     config: &PolisherInternalConfig,
     needs_freezed: bool,
+    needs_json_serializable: bool,
 ) -> anyhow::Result<()> {
     lazy_static! {
         pub(crate) static ref ANY_REQUIREMENT: VersionReq = VersionReq::parse(">= 1.0.0").unwrap();
@@ -79,6 +90,21 @@ fn ensure_dependency_freezed(
             &ANY_REQUIREMENT,
         )?;
     }
+
+    if needs_json_serializable {
+        let repo = DartRepository::from_path(&config.dart_root)?;
+        repo.has_specified_and_installed(
+            "json_annotation",
+            DartDependencyMode::Main,
+            &ANY_REQUIREMENT,
+        )?;
+        repo.has_specified_and_installed(
+            "json_serializable",
+            DartDependencyMode::Dev,
+            &ANY_REQUIREMENT,
+        )?;
+    }
+
     Ok(())
 }
 
@@ -113,7 +139,7 @@ fn execute_dart_fix(
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<()> {
     let _pb = progress_bar_pack.polish_dart_fix.start();
-    dart_fix(&config.dart_root)
+    dart_fix(&config.dart_output)
 }
 
 fn execute_dart_format(

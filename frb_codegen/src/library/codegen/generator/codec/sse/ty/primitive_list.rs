@@ -5,7 +5,7 @@ use crate::codegen::generator::codec::sse::ty::primitive::get_serializer_dart_po
 use crate::codegen::generator::codec::sse::ty::*;
 use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 
-impl<'a> CodecSseTyTrait for PrimitiveListCodecSseTy<'a> {
+impl CodecSseTyTrait for PrimitiveListCodecSseTy<'_> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
         match lang {
             Lang::DartLang(_) => {

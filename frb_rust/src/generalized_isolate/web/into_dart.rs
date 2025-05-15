@@ -41,7 +41,7 @@ impl<Tz: chrono::TimeZone> IntoDart for chrono::DateTime<Tz> {
 impl IntoDart for chrono::NaiveDateTime {
     #[inline]
     fn into_dart(self) -> DartAbi {
-        self.timestamp_millis().into_dart()
+        self.and_utc().timestamp_millis().into_dart()
     }
 }
 #[cfg(feature = "chrono")]

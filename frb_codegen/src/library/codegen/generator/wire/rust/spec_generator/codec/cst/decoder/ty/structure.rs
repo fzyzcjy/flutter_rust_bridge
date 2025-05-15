@@ -10,7 +10,7 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::cst::decoder::
 use crate::codegen::ir::mir::ty::{MirType, MirTypeTrait};
 use itertools::Itertools;
 
-impl<'a> WireRustCodecCstGeneratorDecoderTrait for StructRefWireRustCodecCstGenerator<'a> {
+impl WireRustCodecCstGeneratorDecoderTrait for StructRefWireRustCodecCstGenerator<'_> {
     fn generate_decoder_class(&self) -> Option<WireRustOutputCode> {
         let s = self.mir.get(self.context.mir_pack);
         Some(generate_class_from_fields(
@@ -23,7 +23,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for StructRefWireRustCodecCstGene
                         WireRustCodecCstGenerator::new(field.ty.clone(), self.context);
                     format!(
                         "{}: {}{}",
-                        field.name.rust_style(),
+                        field.name.rust_style(false),
                         field_generator.rust_wire_modifier(Target::Io),
                         field_generator.rust_wire_type(Target::Io)
                     )
@@ -39,7 +39,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for StructRefWireRustCodecCstGene
             .iter()
             .enumerate()
             .map(|(idx, field)| {
-                let field_name = field.name.rust_style();
+                let field_name = field.name.rust_style(false);
                 let field_ = if api_struct.is_fields_named {
                     format!("{field_name}: ")
                 } else {
@@ -85,7 +85,7 @@ impl<'a> WireRustCodecCstGeneratorDecoderTrait for StructRefWireRustCodecCstGene
                 .map(|field| {
                     format!(
                         "{}: {},",
-                        field.name.rust_style(),
+                        field.name.rust_style(false),
                         if WireRustCodecCstGenerator::new(field.ty.clone(), self.context)
                             .rust_wire_is_pointer(Target::Io)
                             || matches!(field.ty, MirType::DartOpaque(_))

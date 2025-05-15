@@ -6,6 +6,7 @@
       "ignore": false,
       "mode": "Simple",
       "name": "crate::another_file/EnumInAnotherFile",
+      "needs_json_serializable": false,
       "variants": [
         {
           "comments": [],
@@ -33,6 +34,7 @@
     }
   },
   "extra_rust_output_code": "",
+  "extra_types_all": [],
   "funcs_all": [
     {
       "accessor": null,
@@ -42,7 +44,6 @@
         "rust2dart": "Dco"
       },
       "comments": [],
-      "dart_name": null,
       "id": 1,
       "impl_mode": "Normal",
       "initializer": false,
@@ -111,7 +112,11 @@
         }
       ],
       "mode": "Normal",
-      "name": "crate::api/func_one",
+      "name": {
+        "dart_style": null,
+        "rust_style": "func_one"
+      },
+      "namespace": "crate::api",
       "output": {
         "error": null,
         "normal": {
@@ -131,7 +136,7 @@
   "struct_pool": {
     "crate::another_file/StructInAnotherFile": {
       "comments": [],
-      "dart_metadata": [],
+      "dart_metadata_raw": [],
       "fields": [
         {
           "comments": [],
@@ -157,6 +162,7 @@
       "ignore": false,
       "is_fields_named": true,
       "name": "crate::another_file/StructInAnotherFile",
+      "needs_json_serializable": false,
       "ui_state": false,
       "wrapper_name": null
     }

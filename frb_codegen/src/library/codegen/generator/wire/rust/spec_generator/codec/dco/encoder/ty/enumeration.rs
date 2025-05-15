@@ -10,7 +10,7 @@ use crate::codegen::ir::mir::ty::enumeration::MirTypeEnumRef;
 use crate::utils::namespace::NamespacedName;
 use itertools::Itertools;
 
-impl<'a> WireRustCodecDcoGeneratorEncoderTrait for EnumRefWireRustCodecDcoGenerator<'a> {
+impl WireRustCodecDcoGeneratorEncoderTrait for EnumRefWireRustCodecDcoGenerator<'_> {
     fn generate_impl_into_dart(&self) -> Option<String> {
         let src = self.mir.get(self.context.mir_pack);
         let (name, _self_path) =
@@ -25,7 +25,10 @@ impl<'a> WireRustCodecDcoGeneratorEncoderTrait for EnumRefWireRustCodecDcoGenera
                 let tag = format!("{idx}.into_dart()");
                 let fields = (Some(tag).into_iter())
                     .chain(variant.kind.fields().iter().map(|field| {
-                        format!("{}.into_into_dart().into_dart()", field.name.rust_style())
+                        format!(
+                            "{}.into_into_dart().into_dart()",
+                            field.name.rust_style(false)
+                        )
                     }))
                     .join(",\n");
                 format!("[{fields}].into_dart()")

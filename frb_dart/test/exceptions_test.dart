@@ -10,11 +10,6 @@ void main() {
     expect(AnyhowException('hello').toString(), contains('AnyhowException'));
   });
 
-  test('MissingHeaderException', () {
-    expect(const MissingHeaderException().toString(),
-        contains('cannot be shared'));
-  });
-
   test('PlatformMismatchException', () {
     expect(const PlatformMismatchException().toString(),
         contains('Not implemented on'));

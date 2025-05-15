@@ -98,6 +98,10 @@ impl FrbAttributes {
         self.any_eq(&FrbAttribute::Ignore)
     }
 
+    pub(crate) fn unignore(&self) -> bool {
+        self.any_eq(&FrbAttribute::Unignore)
+    }
+
     pub(crate) fn opaque(&self) -> Option<bool> {
         if self.any_eq(&FrbAttribute::Opaque) {
             Some(true)
@@ -125,6 +129,10 @@ impl FrbAttributes {
 
     pub(crate) fn proxy(&self) -> bool {
         self.any_eq(&FrbAttribute::Proxy)
+    }
+
+    pub(crate) fn json_serializable(&self) -> bool {
+        self.any_eq(&FrbAttribute::JsonSerializable)
     }
 
     pub(crate) fn external(&self) -> bool {
@@ -270,12 +278,14 @@ mod frb_keyword {
     syn::custom_keyword!(setter);
     syn::custom_keyword!(init);
     syn::custom_keyword!(ignore);
+    syn::custom_keyword!(unignore);
     syn::custom_keyword!(opaque);
     syn::custom_keyword!(non_opaque);
     syn::custom_keyword!(non_hash);
     syn::custom_keyword!(non_eq);
     syn::custom_keyword!(positional);
     syn::custom_keyword!(proxy);
+    syn::custom_keyword!(json_serializable);
     syn::custom_keyword!(external);
     syn::custom_keyword!(type_64bit_int);
     syn::custom_keyword!(generate_implementor_enum);
@@ -317,6 +327,7 @@ enum FrbAttribute {
     External,
     Getter,
     Ignore,
+    Unignore,
     Init,
     Mirror(FrbAttributeMirror),
     Name(FrbAttributeName),
@@ -327,6 +338,7 @@ enum FrbAttribute {
     Opaque,
     Positional,
     Proxy,
+    JsonSerializable,
     Rust2Dart(FrbAttributeSerDes),
     Setter,
     Serialize,
@@ -369,12 +381,21 @@ impl Parse for FrbAttribute {
             .or_else(|| parse_keyword::<setter, _>(input, &lookahead, setter, Setter))
             .or_else(|| parse_keyword::<init, _>(input, &lookahead, init, Init))
             .or_else(|| parse_keyword::<ignore, _>(input, &lookahead, ignore, Ignore))
+            .or_else(|| parse_keyword::<unignore, _>(input, &lookahead, unignore, Unignore))
             .or_else(|| parse_keyword::<opaque, _>(input, &lookahead, opaque, Opaque))
             .or_else(|| parse_keyword::<non_opaque, _>(input, &lookahead, non_opaque, NonOpaque))
             .or_else(|| parse_keyword::<non_hash, _>(input, &lookahead, non_hash, NonHash))
             .or_else(|| parse_keyword::<non_eq, _>(input, &lookahead, non_eq, NonEq))
             .or_else(|| parse_keyword::<positional, _>(input, &lookahead, positional, Positional))
             .or_else(|| parse_keyword::<proxy, _>(input, &lookahead, proxy, Proxy))
+            .or_else(|| {
+                parse_keyword::<json_serializable, _>(
+                    input,
+                    &lookahead,
+                    json_serializable,
+                    JsonSerializable,
+                )
+            })
             .or_else(|| parse_keyword::<external, _>(input, &lookahead, external, External))
             .or_else(|| {
                 parse_keyword::<type_64bit_int, _>(input, &lookahead, type_64bit_int, Type64bitInt)
@@ -810,6 +831,11 @@ mod tests {
     }
 
     #[test]
+    fn test_unignore() {
+        simple_keyword_tester("unignore", FrbAttribute::Unignore);
+    }
+
+    #[test]
     fn test_opaque() {
         simple_keyword_tester("opaque", FrbAttribute::Opaque);
     }
@@ -837,6 +863,11 @@ mod tests {
     #[test]
     fn test_proxy() {
         simple_keyword_tester("proxy", FrbAttribute::Proxy);
+    }
+
+    #[test]
+    fn test_json_serializable() {
+        simple_keyword_tester("json_serializable", FrbAttribute::JsonSerializable);
     }
 
     #[test]

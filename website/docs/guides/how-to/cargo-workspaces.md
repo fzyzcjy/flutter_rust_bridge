@@ -40,3 +40,7 @@ Finally, run the project:
 cd my_flutter_project/
 flutter run
 ```
+
+If flutter_rust_bridge does not find the directory of compiled outputs,
+you can customize the [library loading](load-library.md) logic to explicitly specify the directory.
+Please refer to [#2460](https://github.com/fzyzcjy/flutter_rust_bridge/issues/2460#issuecomment-2557979425) for an example.

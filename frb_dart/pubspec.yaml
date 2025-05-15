@@ -1,6 +1,6 @@
 name: flutter_rust_bridge
-description: High-level memory-safe binding generator for Flutter/Dart <-> Rust
-version: 2.4.0
+description: Flutter/Dart <-> Rust binding generator, feature-rich, but seamless and simple
+version: 2.9.0
 repository: https://github.com/fzyzcjy/flutter_rust_bridge
 environment:
   sdk: ">=3.4.0 <4.0.0"
@@ -12,7 +12,8 @@ dependencies:
   path: ^1.8.1
   web: '>=0.5.0 <2.0.0'
 dev_dependencies:
-  build_cli: ^2.2.0
+  # Temporarily remove before https://github.com/kevmoo/build_cli/issues/168 is fixed
+  # build_cli: ^2.2.4
   build_runner: ^2.2.0
   ffigen: ^11.0.0
   flutter_lints: ^3.0.1

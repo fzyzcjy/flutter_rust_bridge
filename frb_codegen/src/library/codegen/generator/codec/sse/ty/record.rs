@@ -2,7 +2,7 @@ use crate::codegen::generator::codec::sse::ty::structure::GeneralizedStructGener
 use crate::codegen::generator::codec::sse::ty::*;
 use crate::codegen::generator::misc::struct_or_record::StructOrRecord;
 
-impl<'a> CodecSseTyTrait for RecordCodecSseTy<'a> {
+impl CodecSseTyTrait for RecordCodecSseTy<'_> {
     fn generate_encode(&self, lang: &Lang) -> Option<String> {
         Some(self.new_generalized_generator().generate_encode(lang))
     }
@@ -15,7 +15,7 @@ impl<'a> CodecSseTyTrait for RecordCodecSseTy<'a> {
     }
 }
 
-impl<'a> RecordCodecSseTy<'a> {
+impl RecordCodecSseTy<'_> {
     fn new_generalized_generator(&self) -> GeneralizedStructGenerator {
         GeneralizedStructGenerator::new(
             self.mir.inner.get(self.context.mir_pack).clone(),

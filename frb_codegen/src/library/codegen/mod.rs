@@ -16,6 +16,7 @@ use crate::codegen::dumper::Dumper;
 use crate::codegen::misc::GeneratorProgressBarPack;
 pub use config::config::{Config, MetaConfig};
 pub use dumper::internal_config::ConfigDumpContent;
+pub use ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use log::debug;
 
 /// Execute the main code generator
@@ -65,6 +66,7 @@ fn generate_once(internal_config: &InternalConfig, dumper: &Dumper) -> anyhow::R
     polisher::polish(
         &internal_config.polisher,
         generator_output.dart_needs_freezed,
+        generator_output.dart_needs_json_serializable,
         &generator_output.output_texts.paths(),
         &progress_bar_pack,
     )?;

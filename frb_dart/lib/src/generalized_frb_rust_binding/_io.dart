@@ -10,6 +10,13 @@ class GeneralizedFrbRustBinding {
   final MultiPackageCBinding _binding;
   final String _externalLibraryDebugInfo;
 
+  /// Notifies Rust side of an isolate group shutdown. Initialized in
+  /// [initShutdownWatcher].
+  ///
+  /// It is static and initialized only once since there supposed to be only
+  /// one per isolate.
+  static _ShutdownWatcher? _shutdownWatcher;
+
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   GeneralizedFrbRustBinding(ExternalLibrary externalLibrary)
       : _binding = MultiPackageCBinding(externalLibrary.ffiDynamicLibrary),
@@ -26,8 +33,14 @@ class GeneralizedFrbRustBinding {
   }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
+  void initShutdownWatcher() {
+    _shutdownWatcher ??=
+        _ShutdownWatcher(_binding.frb_create_shutdown_callback());
+  }
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
   void initFrbDartApiDl() =>
-      _binding.init_frb_dart_api_dl(ffi.NativeApi.initializeApiDLData);
+      _binding.frb_init_frb_dart_api_dl(ffi.NativeApi.initializeApiDLData);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void pdeFfiDispatcherPrimary({
@@ -59,7 +72,8 @@ class GeneralizedFrbRustBinding {
     required int rustVecLen,
     required int dataLen,
   }) {
-    return _binding.dart_fn_deliver_output(callId, ptr, rustVecLen, dataLen);
+    return _binding.frb_dart_fn_deliver_output(
+        callId, ptr, rustVecLen, dataLen);
   }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
@@ -75,35 +89,36 @@ class GeneralizedFrbRustBinding {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   PlatformPointer dartOpaqueDart2RustEncode(
           Object object, NativePortType dartHandlerPort) =>
-      _binding.dart_opaque_dart2rust_encode(object, dartHandlerPort);
+      _binding.frb_dart_opaque_dart2rust_encode(object, dartHandlerPort);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   Object dartOpaqueRust2DartDecode(int ptr) =>
-      _binding.dart_opaque_rust2dart_decode(ptr);
+      _binding.frb_dart_opaque_rust2dart_decode(ptr);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void dartOpaqueDropThreadBoxPersistentHandle(int ptr) =>
-      _binding.dart_opaque_drop_thread_box_persistent_handle(ptr);
+      _binding.frb_dart_opaque_drop_thread_box_persistent_handle(ptr);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void freeWireSyncRust2DartDco(WireSyncRust2DartDco val) =>
-      _binding.free_wire_sync_rust2dart_dco(val);
+      _binding.frb_free_wire_sync_rust2dart_dco(val);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void freeWireSyncRust2DartSse(WireSyncRust2DartSse val) =>
-      _binding.free_wire_sync_rust2dart_sse(val);
+      _binding.frb_free_wire_sync_rust2dart_sse(val);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  ffi.Pointer<ffi.Uint8> rustVecU8New(int len) => _binding.rust_vec_u8_new(len);
+  ffi.Pointer<ffi.Uint8> rustVecU8New(int len) =>
+      _binding.frb_rust_vec_u8_new(len);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   ffi.Pointer<ffi.Uint8> rustVecU8Resize(
           ffi.Pointer<ffi.Uint8> ptr, int oldLen, int newLen) =>
-      _binding.rust_vec_u8_resize(ptr, oldLen, newLen);
+      _binding.frb_rust_vec_u8_resize(ptr, oldLen, newLen);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void rustVecU8Free(ffi.Pointer<ffi.Uint8> ptr, int len) =>
-      _binding.rust_vec_u8_free(ptr, len);
+      _binding.frb_rust_vec_u8_free(ptr, len);
 
   void _userFriendlyDynamicLibraryErrorReporting(
       ArgumentError e, StackTrace s) {
@@ -116,5 +131,15 @@ class GeneralizedFrbRustBinding {
         'Original stack trace: $s',
       );
     }
+  }
+}
+
+/// {@macro flutter_rust_bridge.only_for_generated_code}
+final class _ShutdownWatcher implements ffi.Finalizable {
+  final ffi.NativeFinalizer _finalizer;
+
+  _ShutdownWatcher(ffi.Pointer<ffi.NativeFinalizerFunction> callback)
+      : _finalizer = ffi.NativeFinalizer(callback) {
+    _finalizer.attach(this, ffi.Pointer.fromAddress(0));
   }
 }
