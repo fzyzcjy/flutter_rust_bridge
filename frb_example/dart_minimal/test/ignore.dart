@@ -27,4 +27,14 @@ Future<void> main() async {
     var t = await TypeForIgnore.newInstance();
     expect(await t.field1(), 1);
   });
+
+  // `#[frb(ignore_all)]` disables all auto accessors for the type by default
+  // so `field_1` should be overridden as in the above test case.
+  //
+  // `field_2` is marked with `#[frb(unignore)]` so its auto accessor should still be generated.
+  test('make sure #[frb(ignore_all)] works', () async {
+    var t = await TypeForIgnoreAll.newInstance();
+    expect(await t.field1(), 1);
+    expect(await t.field2, 0);
+  });
 }

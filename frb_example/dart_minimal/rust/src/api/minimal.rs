@@ -30,3 +30,29 @@ impl Default for TypeForIgnore {
         Self::new()
     }
 }
+
+#[flutter_rust_bridge::frb(opaque, ignore_all)]
+pub struct TypeForIgnoreAll {
+    pub field_1: u32,
+    #[frb(unignore)]
+    pub field_2: u32,
+}
+
+impl TypeForIgnoreAll {
+    pub fn new() -> Self {
+        Self {
+            field_1: 0,
+            field_2: 0,
+        }
+    }
+
+    pub fn field_1(&self) -> u32 {
+        1
+    }
+}
+
+impl Default for TypeForIgnoreAll {
+    fn default() -> Self {
+        Self::new()
+    }
+}

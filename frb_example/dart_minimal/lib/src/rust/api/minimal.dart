@@ -20,3 +20,19 @@ abstract class TypeForIgnore implements RustOpaqueInterface {
   static Future<TypeForIgnore> newInstance() =>
       RustLib.instance.api.crateApiMinimalTypeForIgnoreNew();
 }
+
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<TypeForIgnoreAll>>
+abstract class TypeForIgnoreAll implements RustOpaqueInterface {
+  int get field2;
+
+  set field2(int field2);
+
+  static Future<TypeForIgnoreAll> default_() =>
+      RustLib.instance.api.crateApiMinimalTypeForIgnoreAllDefault();
+
+  Future<int> field1();
+
+  // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
+  static Future<TypeForIgnoreAll> newInstance() =>
+      RustLib.instance.api.crateApiMinimalTypeForIgnoreAllNew();
+}
