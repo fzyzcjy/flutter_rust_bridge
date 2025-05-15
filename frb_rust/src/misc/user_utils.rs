@@ -19,17 +19,8 @@ fn setup_backtrace() {
 }
 #[cfg(feature = "log")]
 fn setup_log_to_console() {
-// Todo: Remove after verification that println indeed writes to the mobile loggers
- //     #[cfg(target_os = "android")]
-//     let _ = android_logger::init_once(
-//         android_logger::Config::default().with_max_level(log::LevelFilter::Trace),
-//     );
-
-//     #[cfg(any(target_os = "ios", target_os = "macos"))]
-//     let _ = oslog::OsLogger::new("frb_user")
-//         .level_filter(log::LevelFilter::Trace)
-//         .init();
-// TODO test and remove if not needed, i.e. printline writes into the console as well
+    // TODO test logging (how?)
+    // TODO test and remove if not needed, i.e. printline writes into the console as well
     #[cfg(target_family = "wasm")]
     let _ = crate::misc::web_utils::WebConsoleLogger::init();
 
