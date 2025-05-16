@@ -367,20 +367,23 @@ sealed class RawStringEnumMirrored with _$RawStringEnumMirrored {
 
 class RawStringMirrored {
   final String value;
+  final String type;
 
   const RawStringMirrored({
     required this.value,
+    required this.type,
   });
 
   @override
-  int get hashCode => value.hashCode;
+  int get hashCode => value.hashCode ^ type.hashCode;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is RawStringMirrored &&
           runtimeType == other.runtimeType &&
-          value == other.value;
+          value == other.value &&
+          type == other.type;
 }
 
 class Sequences {

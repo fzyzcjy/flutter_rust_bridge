@@ -27506,7 +27506,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   JSAny cst_encode_raw_string_mirrored(RawStringMirrored raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.value)].jsify()!;
+    return [cst_encode_String(raw.value), cst_encode_String(raw.type)].jsify()!;
   }
 
   @protected
