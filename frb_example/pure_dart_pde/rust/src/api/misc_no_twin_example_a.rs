@@ -333,3 +333,15 @@ impl Default for TypeForIgnoreAll {
         Self::new()
     }
 }
+
+#[allow(unused)]
+#[frb(serialize)]
+pub async fn func_with_dart_callback_across_thread(
+    dart_callback: impl Fn(String) -> flutter_rust_bridge::DartFnFuture<String> + Send + Sync + 'static,
+) {
+    let dart_callback = Arc::new(dart_callback);
+    #[cfg(not(target_family = "wasm"))]
+    tokio::task::spawn(async move {
+        dart_callback("Hello from Rust!".to_owned()).await;
+    });
+}
