@@ -268,6 +268,15 @@
       ]
     },
     {
+      "login": "aran",
+      "name": "Aran Donohue",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5295?v=4",
+      "profile": "https://github.com/aran",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "mcmah309",
       "name": "Henry",
       "avatar_url": "https://avatars.githubusercontent.com/u/56412856?v=4",
@@ -328,6 +337,15 @@
       "name": "Alex Li",
       "avatar_url": "https://avatars.githubusercontent.com/u/15884415?v=4",
       "profile": "https://github.com/AlexV525",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "kyrias",
+      "name": "Johannes Löthberg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2285387?v=4",
+      "profile": "https://remmy.io",
       "contributions": [
         "code"
       ]
@@ -401,6 +419,24 @@
       "name": "alexlapa",
       "avatar_url": "https://avatars.githubusercontent.com/u/36732824?v=4",
       "profile": "https://github.com/alexlapa",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "ski0090",
+      "name": "pyeongkang kim",
+      "avatar_url": "https://avatars.githubusercontent.com/u/45457350?v=4",
+      "profile": "https://shalom92.vercel.app/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "borgoat",
+      "name": "Giorgio Azzinnaro",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7715855?v=4",
+      "profile": "https://giorgio.azzinna.ro",
       "contributions": [
         "code"
       ]
@@ -482,15 +518,6 @@
       "name": "evdokimovs",
       "avatar_url": "https://avatars.githubusercontent.com/u/49490279?v=4",
       "profile": "https://github.com/evdokimovs",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
-      "login": "kyrias",
-      "name": "Johannes Löthberg",
-      "avatar_url": "https://avatars.githubusercontent.com/u/2285387?v=4",
-      "profile": "https://remmy.io",
       "contributions": [
         "code"
       ]
@@ -608,15 +635,6 @@
       "name": "codercengiz",
       "avatar_url": "https://avatars.githubusercontent.com/u/45819755?v=4",
       "profile": "https://github.com/codercengiz",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
-      "login": "aran",
-      "name": "Aran Donohue",
-      "avatar_url": "https://avatars.githubusercontent.com/u/5295?v=4",
-      "profile": "https://github.com/aran",
       "contributions": [
         "code"
       ]
