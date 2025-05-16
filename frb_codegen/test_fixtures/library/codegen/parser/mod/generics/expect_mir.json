@@ -26,7 +26,7 @@
                   },
                   "settings": {
                     "is_in_mirrored_enum": false,
-                    "skip_accessors": false
+                    "skip_auto_accessors": false
                   },
                   "ty": {
                     "data": {
@@ -96,7 +96,7 @@
                   },
                   "settings": {
                     "is_in_mirrored_enum": false,
-                    "skip_accessors": false
+                    "skip_auto_accessors": false
                   },
                   "ty": {
                     "data": {
@@ -188,7 +188,7 @@
             },
             "settings": {
               "is_in_mirrored_enum": false,
-              "skip_accessors": false
+              "skip_auto_accessors": false
             },
             "ty": {
               "data": {
@@ -268,7 +268,7 @@
             },
             "settings": {
               "is_in_mirrored_enum": false,
-              "skip_accessors": false
+              "skip_auto_accessors": false
             },
             "ty": {
               "data": {
@@ -348,7 +348,7 @@
             },
             "settings": {
               "is_in_mirrored_enum": false,
-              "skip_accessors": false
+              "skip_auto_accessors": false
             },
             "ty": {
               "data": {
@@ -428,7 +428,7 @@
             },
             "settings": {
               "is_in_mirrored_enum": false,
-              "skip_accessors": false
+              "skip_auto_accessors": false
             },
             "ty": {
               "data": {
@@ -508,7 +508,7 @@
             },
             "settings": {
               "is_in_mirrored_enum": false,
-              "skip_accessors": false
+              "skip_auto_accessors": false
             },
             "ty": {
               "data": {
@@ -582,7 +582,7 @@
           },
           "settings": {
             "is_in_mirrored_enum": false,
-            "skip_accessors": false
+            "skip_auto_accessors": false
           },
           "ty": {
             "data": {
@@ -625,7 +625,7 @@
           },
           "settings": {
             "is_in_mirrored_enum": false,
-            "skip_accessors": false
+            "skip_auto_accessors": false
           },
           "ty": {
             "data": {
@@ -668,7 +668,7 @@
           },
           "settings": {
             "is_in_mirrored_enum": false,
-            "skip_accessors": false
+            "skip_auto_accessors": false
           },
           "ty": {
             "data": "I32",
