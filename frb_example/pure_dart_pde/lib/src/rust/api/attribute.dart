@@ -49,7 +49,7 @@ class CustomizedTwinNormal {
 /// Example for @freezed and @meta.immutable
 @freezed
 @meta.immutable
-class UserIdTwinNormal with _$UserIdTwinNormal {
+sealed class UserIdTwinNormal with _$UserIdTwinNormal {
   const factory UserIdTwinNormal({
     @Default(0) int value,
   }) = _UserIdTwinNormal;

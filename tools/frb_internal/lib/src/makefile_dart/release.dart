@@ -177,7 +177,7 @@ VersionInfo computeVersionInfo() => _extractChangelog().$1;
         final version = RegExp(r'^## (\d.+)$').firstMatch(line)?.group(1);
         return version == null ? null : (index, version);
       })
-      .whereNotNull()
+      .nonNulls
       .toList();
 
   final newVersion = versions[0];

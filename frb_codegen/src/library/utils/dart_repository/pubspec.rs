@@ -10,12 +10,12 @@ pub(crate) struct PubspecYaml {
 
 /// e.g.
 /// ```yaml
-/// freezed: ^2.0.1
+/// freezed: ^3.0.6
 /// ```
 /// or
 /// ```yaml
 /// freezed:
-///   version: ^2.0.1
+///   version: ^3.0.6
 /// ```
 #[derive(Debug, Deserialize, PartialEq, Eq)]
 #[serde(untagged)]
