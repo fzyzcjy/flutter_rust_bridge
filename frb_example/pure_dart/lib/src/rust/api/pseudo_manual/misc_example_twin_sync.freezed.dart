@@ -1,4 +1,3 @@
-// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -10,95 +9,114 @@ part of 'misc_example_twin_sync.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AbcTwinSync {
-  Object get field0;
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is AbcTwinSync &&
-            const DeepCollectionEquality().equals(other.field0, field0));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
-
-  @override
-  String toString() {
-    return 'AbcTwinSync(field0: $field0)';
-  }
+  Object get field0 => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ATwinSync field0) a,
+    required TResult Function(BTwinSync field0) b,
+    required TResult Function(CTwinSync field0) c,
+    required TResult Function(int field0) justInt,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ATwinSync field0)? a,
+    TResult? Function(BTwinSync field0)? b,
+    TResult? Function(CTwinSync field0)? c,
+    TResult? Function(int field0)? justInt,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ATwinSync field0)? a,
+    TResult Function(BTwinSync field0)? b,
+    TResult Function(CTwinSync field0)? c,
+    TResult Function(int field0)? justInt,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AbcTwinSync_A value) a,
+    required TResult Function(AbcTwinSync_B value) b,
+    required TResult Function(AbcTwinSync_C value) c,
+    required TResult Function(AbcTwinSync_JustInt value) justInt,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AbcTwinSync_A value)? a,
+    TResult? Function(AbcTwinSync_B value)? b,
+    TResult? Function(AbcTwinSync_C value)? c,
+    TResult? Function(AbcTwinSync_JustInt value)? justInt,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AbcTwinSync_A value)? a,
+    TResult Function(AbcTwinSync_B value)? b,
+    TResult Function(AbcTwinSync_C value)? c,
+    TResult Function(AbcTwinSync_JustInt value)? justInt,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-class $AbcTwinSyncCopyWith<$Res> {
-  $AbcTwinSyncCopyWith(AbcTwinSync _, $Res Function(AbcTwinSync) __);
+abstract class $AbcTwinSyncCopyWith<$Res> {
+  factory $AbcTwinSyncCopyWith(
+          AbcTwinSync value, $Res Function(AbcTwinSync) then) =
+      _$AbcTwinSyncCopyWithImpl<$Res, AbcTwinSync>;
 }
 
 /// @nodoc
+class _$AbcTwinSyncCopyWithImpl<$Res, $Val extends AbcTwinSync>
+    implements $AbcTwinSyncCopyWith<$Res> {
+  _$AbcTwinSyncCopyWithImpl(this._value, this._then);
 
-class AbcTwinSync_A extends AbcTwinSync {
-  const AbcTwinSync_A(this.field0) : super._();
-
-  @override
-  final ATwinSync field0;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
   /// Create a copy of AbcTwinSync
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $AbcTwinSync_ACopyWith<AbcTwinSync_A> get copyWith =>
-      _$AbcTwinSync_ACopyWithImpl<AbcTwinSync_A>(this, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is AbcTwinSync_A &&
-            (identical(other.field0, field0) || other.field0 == field0));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, field0);
-
-  @override
-  String toString() {
-    return 'AbcTwinSync.a(field0: $field0)';
-  }
 }
 
 /// @nodoc
-abstract mixin class $AbcTwinSync_ACopyWith<$Res>
-    implements $AbcTwinSyncCopyWith<$Res> {
-  factory $AbcTwinSync_ACopyWith(
-          AbcTwinSync_A value, $Res Function(AbcTwinSync_A) _then) =
-      _$AbcTwinSync_ACopyWithImpl;
+abstract class _$$AbcTwinSync_AImplCopyWith<$Res> {
+  factory _$$AbcTwinSync_AImplCopyWith(
+          _$AbcTwinSync_AImpl value, $Res Function(_$AbcTwinSync_AImpl) then) =
+      __$$AbcTwinSync_AImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ATwinSync field0});
 }
 
 /// @nodoc
-class _$AbcTwinSync_ACopyWithImpl<$Res>
-    implements $AbcTwinSync_ACopyWith<$Res> {
-  _$AbcTwinSync_ACopyWithImpl(this._self, this._then);
-
-  final AbcTwinSync_A _self;
-  final $Res Function(AbcTwinSync_A) _then;
+class __$$AbcTwinSync_AImplCopyWithImpl<$Res>
+    extends _$AbcTwinSyncCopyWithImpl<$Res, _$AbcTwinSync_AImpl>
+    implements _$$AbcTwinSync_AImplCopyWith<$Res> {
+  __$$AbcTwinSync_AImplCopyWithImpl(
+      _$AbcTwinSync_AImpl _value, $Res Function(_$AbcTwinSync_AImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AbcTwinSync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  @override
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(AbcTwinSync_A(
+    return _then(_$AbcTwinSync_AImpl(
       null == field0
-          ? _self.field0
+          ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as ATwinSync,
     ));
@@ -107,63 +125,152 @@ class _$AbcTwinSync_ACopyWithImpl<$Res>
 
 /// @nodoc
 
-class AbcTwinSync_B extends AbcTwinSync {
-  const AbcTwinSync_B(this.field0) : super._();
+class _$AbcTwinSync_AImpl extends AbcTwinSync_A {
+  const _$AbcTwinSync_AImpl(this.field0) : super._();
 
   @override
-  final BTwinSync field0;
+  final ATwinSync field0;
 
-  /// Create a copy of AbcTwinSync
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $AbcTwinSync_BCopyWith<AbcTwinSync_B> get copyWith =>
-      _$AbcTwinSync_BCopyWithImpl<AbcTwinSync_B>(this, _$identity);
+  @override
+  String toString() {
+    return 'AbcTwinSync.a(field0: $field0)';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is AbcTwinSync_B &&
+            other is _$AbcTwinSync_AImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
+  /// Create a copy of AbcTwinSync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'AbcTwinSync.b(field0: $field0)';
+  @pragma('vm:prefer-inline')
+  _$$AbcTwinSync_AImplCopyWith<_$AbcTwinSync_AImpl> get copyWith =>
+      __$$AbcTwinSync_AImplCopyWithImpl<_$AbcTwinSync_AImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ATwinSync field0) a,
+    required TResult Function(BTwinSync field0) b,
+    required TResult Function(CTwinSync field0) c,
+    required TResult Function(int field0) justInt,
+  }) {
+    return a(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ATwinSync field0)? a,
+    TResult? Function(BTwinSync field0)? b,
+    TResult? Function(CTwinSync field0)? c,
+    TResult? Function(int field0)? justInt,
+  }) {
+    return a?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ATwinSync field0)? a,
+    TResult Function(BTwinSync field0)? b,
+    TResult Function(CTwinSync field0)? c,
+    TResult Function(int field0)? justInt,
+    required TResult orElse(),
+  }) {
+    if (a != null) {
+      return a(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AbcTwinSync_A value) a,
+    required TResult Function(AbcTwinSync_B value) b,
+    required TResult Function(AbcTwinSync_C value) c,
+    required TResult Function(AbcTwinSync_JustInt value) justInt,
+  }) {
+    return a(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AbcTwinSync_A value)? a,
+    TResult? Function(AbcTwinSync_B value)? b,
+    TResult? Function(AbcTwinSync_C value)? c,
+    TResult? Function(AbcTwinSync_JustInt value)? justInt,
+  }) {
+    return a?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AbcTwinSync_A value)? a,
+    TResult Function(AbcTwinSync_B value)? b,
+    TResult Function(AbcTwinSync_C value)? c,
+    TResult Function(AbcTwinSync_JustInt value)? justInt,
+    required TResult orElse(),
+  }) {
+    if (a != null) {
+      return a(this);
+    }
+    return orElse();
   }
 }
 
+abstract class AbcTwinSync_A extends AbcTwinSync {
+  const factory AbcTwinSync_A(final ATwinSync field0) = _$AbcTwinSync_AImpl;
+  const AbcTwinSync_A._() : super._();
+
+  @override
+  ATwinSync get field0;
+
+  /// Create a copy of AbcTwinSync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AbcTwinSync_AImplCopyWith<_$AbcTwinSync_AImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 /// @nodoc
-abstract mixin class $AbcTwinSync_BCopyWith<$Res>
-    implements $AbcTwinSyncCopyWith<$Res> {
-  factory $AbcTwinSync_BCopyWith(
-          AbcTwinSync_B value, $Res Function(AbcTwinSync_B) _then) =
-      _$AbcTwinSync_BCopyWithImpl;
+abstract class _$$AbcTwinSync_BImplCopyWith<$Res> {
+  factory _$$AbcTwinSync_BImplCopyWith(
+          _$AbcTwinSync_BImpl value, $Res Function(_$AbcTwinSync_BImpl) then) =
+      __$$AbcTwinSync_BImplCopyWithImpl<$Res>;
   @useResult
   $Res call({BTwinSync field0});
 }
 
 /// @nodoc
-class _$AbcTwinSync_BCopyWithImpl<$Res>
-    implements $AbcTwinSync_BCopyWith<$Res> {
-  _$AbcTwinSync_BCopyWithImpl(this._self, this._then);
-
-  final AbcTwinSync_B _self;
-  final $Res Function(AbcTwinSync_B) _then;
+class __$$AbcTwinSync_BImplCopyWithImpl<$Res>
+    extends _$AbcTwinSyncCopyWithImpl<$Res, _$AbcTwinSync_BImpl>
+    implements _$$AbcTwinSync_BImplCopyWith<$Res> {
+  __$$AbcTwinSync_BImplCopyWithImpl(
+      _$AbcTwinSync_BImpl _value, $Res Function(_$AbcTwinSync_BImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AbcTwinSync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  @override
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(AbcTwinSync_B(
+    return _then(_$AbcTwinSync_BImpl(
       null == field0
-          ? _self.field0
+          ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as BTwinSync,
     ));
@@ -172,63 +279,152 @@ class _$AbcTwinSync_BCopyWithImpl<$Res>
 
 /// @nodoc
 
-class AbcTwinSync_C extends AbcTwinSync {
-  const AbcTwinSync_C(this.field0) : super._();
+class _$AbcTwinSync_BImpl extends AbcTwinSync_B {
+  const _$AbcTwinSync_BImpl(this.field0) : super._();
 
   @override
-  final CTwinSync field0;
+  final BTwinSync field0;
 
-  /// Create a copy of AbcTwinSync
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $AbcTwinSync_CCopyWith<AbcTwinSync_C> get copyWith =>
-      _$AbcTwinSync_CCopyWithImpl<AbcTwinSync_C>(this, _$identity);
+  @override
+  String toString() {
+    return 'AbcTwinSync.b(field0: $field0)';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is AbcTwinSync_C &&
+            other is _$AbcTwinSync_BImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
+  /// Create a copy of AbcTwinSync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'AbcTwinSync.c(field0: $field0)';
+  @pragma('vm:prefer-inline')
+  _$$AbcTwinSync_BImplCopyWith<_$AbcTwinSync_BImpl> get copyWith =>
+      __$$AbcTwinSync_BImplCopyWithImpl<_$AbcTwinSync_BImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ATwinSync field0) a,
+    required TResult Function(BTwinSync field0) b,
+    required TResult Function(CTwinSync field0) c,
+    required TResult Function(int field0) justInt,
+  }) {
+    return b(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ATwinSync field0)? a,
+    TResult? Function(BTwinSync field0)? b,
+    TResult? Function(CTwinSync field0)? c,
+    TResult? Function(int field0)? justInt,
+  }) {
+    return b?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ATwinSync field0)? a,
+    TResult Function(BTwinSync field0)? b,
+    TResult Function(CTwinSync field0)? c,
+    TResult Function(int field0)? justInt,
+    required TResult orElse(),
+  }) {
+    if (b != null) {
+      return b(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AbcTwinSync_A value) a,
+    required TResult Function(AbcTwinSync_B value) b,
+    required TResult Function(AbcTwinSync_C value) c,
+    required TResult Function(AbcTwinSync_JustInt value) justInt,
+  }) {
+    return b(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AbcTwinSync_A value)? a,
+    TResult? Function(AbcTwinSync_B value)? b,
+    TResult? Function(AbcTwinSync_C value)? c,
+    TResult? Function(AbcTwinSync_JustInt value)? justInt,
+  }) {
+    return b?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AbcTwinSync_A value)? a,
+    TResult Function(AbcTwinSync_B value)? b,
+    TResult Function(AbcTwinSync_C value)? c,
+    TResult Function(AbcTwinSync_JustInt value)? justInt,
+    required TResult orElse(),
+  }) {
+    if (b != null) {
+      return b(this);
+    }
+    return orElse();
   }
 }
 
+abstract class AbcTwinSync_B extends AbcTwinSync {
+  const factory AbcTwinSync_B(final BTwinSync field0) = _$AbcTwinSync_BImpl;
+  const AbcTwinSync_B._() : super._();
+
+  @override
+  BTwinSync get field0;
+
+  /// Create a copy of AbcTwinSync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AbcTwinSync_BImplCopyWith<_$AbcTwinSync_BImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 /// @nodoc
-abstract mixin class $AbcTwinSync_CCopyWith<$Res>
-    implements $AbcTwinSyncCopyWith<$Res> {
-  factory $AbcTwinSync_CCopyWith(
-          AbcTwinSync_C value, $Res Function(AbcTwinSync_C) _then) =
-      _$AbcTwinSync_CCopyWithImpl;
+abstract class _$$AbcTwinSync_CImplCopyWith<$Res> {
+  factory _$$AbcTwinSync_CImplCopyWith(
+          _$AbcTwinSync_CImpl value, $Res Function(_$AbcTwinSync_CImpl) then) =
+      __$$AbcTwinSync_CImplCopyWithImpl<$Res>;
   @useResult
   $Res call({CTwinSync field0});
 }
 
 /// @nodoc
-class _$AbcTwinSync_CCopyWithImpl<$Res>
-    implements $AbcTwinSync_CCopyWith<$Res> {
-  _$AbcTwinSync_CCopyWithImpl(this._self, this._then);
-
-  final AbcTwinSync_C _self;
-  final $Res Function(AbcTwinSync_C) _then;
+class __$$AbcTwinSync_CImplCopyWithImpl<$Res>
+    extends _$AbcTwinSyncCopyWithImpl<$Res, _$AbcTwinSync_CImpl>
+    implements _$$AbcTwinSync_CImplCopyWith<$Res> {
+  __$$AbcTwinSync_CImplCopyWithImpl(
+      _$AbcTwinSync_CImpl _value, $Res Function(_$AbcTwinSync_CImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AbcTwinSync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  @override
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(AbcTwinSync_C(
+    return _then(_$AbcTwinSync_CImpl(
       null == field0
-          ? _self.field0
+          ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as CTwinSync,
     ));
@@ -237,67 +433,277 @@ class _$AbcTwinSync_CCopyWithImpl<$Res>
 
 /// @nodoc
 
-class AbcTwinSync_JustInt extends AbcTwinSync {
-  const AbcTwinSync_JustInt(this.field0) : super._();
+class _$AbcTwinSync_CImpl extends AbcTwinSync_C {
+  const _$AbcTwinSync_CImpl(this.field0) : super._();
 
   @override
-  final int field0;
+  final CTwinSync field0;
 
-  /// Create a copy of AbcTwinSync
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $AbcTwinSync_JustIntCopyWith<AbcTwinSync_JustInt> get copyWith =>
-      _$AbcTwinSync_JustIntCopyWithImpl<AbcTwinSync_JustInt>(this, _$identity);
+  @override
+  String toString() {
+    return 'AbcTwinSync.c(field0: $field0)';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is AbcTwinSync_JustInt &&
+            other is _$AbcTwinSync_CImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
+  /// Create a copy of AbcTwinSync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'AbcTwinSync.justInt(field0: $field0)';
+  @pragma('vm:prefer-inline')
+  _$$AbcTwinSync_CImplCopyWith<_$AbcTwinSync_CImpl> get copyWith =>
+      __$$AbcTwinSync_CImplCopyWithImpl<_$AbcTwinSync_CImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ATwinSync field0) a,
+    required TResult Function(BTwinSync field0) b,
+    required TResult Function(CTwinSync field0) c,
+    required TResult Function(int field0) justInt,
+  }) {
+    return c(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ATwinSync field0)? a,
+    TResult? Function(BTwinSync field0)? b,
+    TResult? Function(CTwinSync field0)? c,
+    TResult? Function(int field0)? justInt,
+  }) {
+    return c?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ATwinSync field0)? a,
+    TResult Function(BTwinSync field0)? b,
+    TResult Function(CTwinSync field0)? c,
+    TResult Function(int field0)? justInt,
+    required TResult orElse(),
+  }) {
+    if (c != null) {
+      return c(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AbcTwinSync_A value) a,
+    required TResult Function(AbcTwinSync_B value) b,
+    required TResult Function(AbcTwinSync_C value) c,
+    required TResult Function(AbcTwinSync_JustInt value) justInt,
+  }) {
+    return c(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AbcTwinSync_A value)? a,
+    TResult? Function(AbcTwinSync_B value)? b,
+    TResult? Function(AbcTwinSync_C value)? c,
+    TResult? Function(AbcTwinSync_JustInt value)? justInt,
+  }) {
+    return c?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AbcTwinSync_A value)? a,
+    TResult Function(AbcTwinSync_B value)? b,
+    TResult Function(AbcTwinSync_C value)? c,
+    TResult Function(AbcTwinSync_JustInt value)? justInt,
+    required TResult orElse(),
+  }) {
+    if (c != null) {
+      return c(this);
+    }
+    return orElse();
   }
 }
 
+abstract class AbcTwinSync_C extends AbcTwinSync {
+  const factory AbcTwinSync_C(final CTwinSync field0) = _$AbcTwinSync_CImpl;
+  const AbcTwinSync_C._() : super._();
+
+  @override
+  CTwinSync get field0;
+
+  /// Create a copy of AbcTwinSync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AbcTwinSync_CImplCopyWith<_$AbcTwinSync_CImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 /// @nodoc
-abstract mixin class $AbcTwinSync_JustIntCopyWith<$Res>
-    implements $AbcTwinSyncCopyWith<$Res> {
-  factory $AbcTwinSync_JustIntCopyWith(
-          AbcTwinSync_JustInt value, $Res Function(AbcTwinSync_JustInt) _then) =
-      _$AbcTwinSync_JustIntCopyWithImpl;
+abstract class _$$AbcTwinSync_JustIntImplCopyWith<$Res> {
+  factory _$$AbcTwinSync_JustIntImplCopyWith(_$AbcTwinSync_JustIntImpl value,
+          $Res Function(_$AbcTwinSync_JustIntImpl) then) =
+      __$$AbcTwinSync_JustIntImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int field0});
 }
 
 /// @nodoc
-class _$AbcTwinSync_JustIntCopyWithImpl<$Res>
-    implements $AbcTwinSync_JustIntCopyWith<$Res> {
-  _$AbcTwinSync_JustIntCopyWithImpl(this._self, this._then);
-
-  final AbcTwinSync_JustInt _self;
-  final $Res Function(AbcTwinSync_JustInt) _then;
+class __$$AbcTwinSync_JustIntImplCopyWithImpl<$Res>
+    extends _$AbcTwinSyncCopyWithImpl<$Res, _$AbcTwinSync_JustIntImpl>
+    implements _$$AbcTwinSync_JustIntImplCopyWith<$Res> {
+  __$$AbcTwinSync_JustIntImplCopyWithImpl(_$AbcTwinSync_JustIntImpl _value,
+      $Res Function(_$AbcTwinSync_JustIntImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AbcTwinSync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  @override
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(AbcTwinSync_JustInt(
+    return _then(_$AbcTwinSync_JustIntImpl(
       null == field0
-          ? _self.field0
+          ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
 }
 
-// dart format on
+/// @nodoc
+
+class _$AbcTwinSync_JustIntImpl extends AbcTwinSync_JustInt {
+  const _$AbcTwinSync_JustIntImpl(this.field0) : super._();
+
+  @override
+  final int field0;
+
+  @override
+  String toString() {
+    return 'AbcTwinSync.justInt(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AbcTwinSync_JustIntImpl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  /// Create a copy of AbcTwinSync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AbcTwinSync_JustIntImplCopyWith<_$AbcTwinSync_JustIntImpl> get copyWith =>
+      __$$AbcTwinSync_JustIntImplCopyWithImpl<_$AbcTwinSync_JustIntImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ATwinSync field0) a,
+    required TResult Function(BTwinSync field0) b,
+    required TResult Function(CTwinSync field0) c,
+    required TResult Function(int field0) justInt,
+  }) {
+    return justInt(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ATwinSync field0)? a,
+    TResult? Function(BTwinSync field0)? b,
+    TResult? Function(CTwinSync field0)? c,
+    TResult? Function(int field0)? justInt,
+  }) {
+    return justInt?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ATwinSync field0)? a,
+    TResult Function(BTwinSync field0)? b,
+    TResult Function(CTwinSync field0)? c,
+    TResult Function(int field0)? justInt,
+    required TResult orElse(),
+  }) {
+    if (justInt != null) {
+      return justInt(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AbcTwinSync_A value) a,
+    required TResult Function(AbcTwinSync_B value) b,
+    required TResult Function(AbcTwinSync_C value) c,
+    required TResult Function(AbcTwinSync_JustInt value) justInt,
+  }) {
+    return justInt(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AbcTwinSync_A value)? a,
+    TResult? Function(AbcTwinSync_B value)? b,
+    TResult? Function(AbcTwinSync_C value)? c,
+    TResult? Function(AbcTwinSync_JustInt value)? justInt,
+  }) {
+    return justInt?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AbcTwinSync_A value)? a,
+    TResult Function(AbcTwinSync_B value)? b,
+    TResult Function(AbcTwinSync_C value)? c,
+    TResult Function(AbcTwinSync_JustInt value)? justInt,
+    required TResult orElse(),
+  }) {
+    if (justInt != null) {
+      return justInt(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AbcTwinSync_JustInt extends AbcTwinSync {
+  const factory AbcTwinSync_JustInt(final int field0) =
+      _$AbcTwinSync_JustIntImpl;
+  const AbcTwinSync_JustInt._() : super._();
+
+  @override
+  int get field0;
+
+  /// Create a copy of AbcTwinSync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AbcTwinSync_JustIntImplCopyWith<_$AbcTwinSync_JustIntImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

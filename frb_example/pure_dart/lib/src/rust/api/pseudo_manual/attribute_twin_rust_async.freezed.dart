@@ -1,4 +1,3 @@
-// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -10,54 +9,40 @@ part of 'attribute_twin_rust_async.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$UserIdTwinRustAsync {
-  int get value;
+  int get value => throw _privateConstructorUsedError;
 
   /// Create a copy of UserIdTwinRustAsync
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
   $UserIdTwinRustAsyncCopyWith<UserIdTwinRustAsync> get copyWith =>
-      _$UserIdTwinRustAsyncCopyWithImpl<UserIdTwinRustAsync>(
-          this as UserIdTwinRustAsync, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is UserIdTwinRustAsync &&
-            (identical(other.value, value) || other.value == value));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, value);
-
-  @override
-  String toString() {
-    return 'UserIdTwinRustAsync(value: $value)';
-  }
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $UserIdTwinRustAsyncCopyWith<$Res> {
+abstract class $UserIdTwinRustAsyncCopyWith<$Res> {
   factory $UserIdTwinRustAsyncCopyWith(
-          UserIdTwinRustAsync value, $Res Function(UserIdTwinRustAsync) _then) =
-      _$UserIdTwinRustAsyncCopyWithImpl;
+          UserIdTwinRustAsync value, $Res Function(UserIdTwinRustAsync) then) =
+      _$UserIdTwinRustAsyncCopyWithImpl<$Res, UserIdTwinRustAsync>;
   @useResult
   $Res call({int value});
 }
 
 /// @nodoc
-class _$UserIdTwinRustAsyncCopyWithImpl<$Res>
+class _$UserIdTwinRustAsyncCopyWithImpl<$Res, $Val extends UserIdTwinRustAsync>
     implements $UserIdTwinRustAsyncCopyWith<$Res> {
-  _$UserIdTwinRustAsyncCopyWithImpl(this._self, this._then);
+  _$UserIdTwinRustAsyncCopyWithImpl(this._value, this._then);
 
-  final UserIdTwinRustAsync _self;
-  final $Res Function(UserIdTwinRustAsync) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
   /// Create a copy of UserIdTwinRustAsync
   /// with the given fields replaced by the non-null parameter values.
@@ -66,9 +51,44 @@ class _$UserIdTwinRustAsyncCopyWithImpl<$Res>
   $Res call({
     Object? value = null,
   }) {
-    return _then(_self.copyWith(
+    return _then(_value.copyWith(
       value: null == value
-          ? _self.value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$UserIdTwinRustAsyncImplCopyWith<$Res>
+    implements $UserIdTwinRustAsyncCopyWith<$Res> {
+  factory _$$UserIdTwinRustAsyncImplCopyWith(_$UserIdTwinRustAsyncImpl value,
+          $Res Function(_$UserIdTwinRustAsyncImpl) then) =
+      __$$UserIdTwinRustAsyncImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int value});
+}
+
+/// @nodoc
+class __$$UserIdTwinRustAsyncImplCopyWithImpl<$Res>
+    extends _$UserIdTwinRustAsyncCopyWithImpl<$Res, _$UserIdTwinRustAsyncImpl>
+    implements _$$UserIdTwinRustAsyncImplCopyWith<$Res> {
+  __$$UserIdTwinRustAsyncImplCopyWithImpl(_$UserIdTwinRustAsyncImpl _value,
+      $Res Function(_$UserIdTwinRustAsyncImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UserIdTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_$UserIdTwinRustAsyncImpl(
+      value: null == value
+          ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as int,
     ));
@@ -77,72 +97,50 @@ class _$UserIdTwinRustAsyncCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _UserIdTwinRustAsync implements UserIdTwinRustAsync {
-  const _UserIdTwinRustAsync({this.value = 0});
+class _$UserIdTwinRustAsyncImpl implements _UserIdTwinRustAsync {
+  const _$UserIdTwinRustAsyncImpl({this.value = 0});
 
   @override
   @JsonKey()
   final int value;
 
-  /// Create a copy of UserIdTwinRustAsync
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$UserIdTwinRustAsyncCopyWith<_UserIdTwinRustAsync> get copyWith =>
-      __$UserIdTwinRustAsyncCopyWithImpl<_UserIdTwinRustAsync>(
-          this, _$identity);
+  String toString() {
+    return 'UserIdTwinRustAsync(value: $value)';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _UserIdTwinRustAsync &&
+            other is _$UserIdTwinRustAsyncImpl &&
             (identical(other.value, value) || other.value == value));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, value);
 
+  /// Create a copy of UserIdTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'UserIdTwinRustAsync(value: $value)';
-  }
+  @pragma('vm:prefer-inline')
+  _$$UserIdTwinRustAsyncImplCopyWith<_$UserIdTwinRustAsyncImpl> get copyWith =>
+      __$$UserIdTwinRustAsyncImplCopyWithImpl<_$UserIdTwinRustAsyncImpl>(
+          this, _$identity);
 }
 
-/// @nodoc
-abstract mixin class _$UserIdTwinRustAsyncCopyWith<$Res>
-    implements $UserIdTwinRustAsyncCopyWith<$Res> {
-  factory _$UserIdTwinRustAsyncCopyWith(_UserIdTwinRustAsync value,
-          $Res Function(_UserIdTwinRustAsync) _then) =
-      __$UserIdTwinRustAsyncCopyWithImpl;
+abstract class _UserIdTwinRustAsync implements UserIdTwinRustAsync {
+  const factory _UserIdTwinRustAsync({final int value}) =
+      _$UserIdTwinRustAsyncImpl;
+
   @override
-  @useResult
-  $Res call({int value});
-}
-
-/// @nodoc
-class __$UserIdTwinRustAsyncCopyWithImpl<$Res>
-    implements _$UserIdTwinRustAsyncCopyWith<$Res> {
-  __$UserIdTwinRustAsyncCopyWithImpl(this._self, this._then);
-
-  final _UserIdTwinRustAsync _self;
-  final $Res Function(_UserIdTwinRustAsync) _then;
+  int get value;
 
   /// Create a copy of UserIdTwinRustAsync
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? value = null,
-  }) {
-    return _then(_UserIdTwinRustAsync(
-      value: null == value
-          ? _self.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UserIdTwinRustAsyncImplCopyWith<_$UserIdTwinRustAsyncImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
-
-// dart format on

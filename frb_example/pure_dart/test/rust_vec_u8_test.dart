@@ -10,9 +10,7 @@ Future<void> main() async {
 
   test('simple RustVecU8', () async {
     final vec = RustVecU8(
-      10,
-      (RustLib.instance.api as RustLibApiImpl).generalizedFrbRustBinding,
-    );
+        10, (RustLib.instance.api as RustLibApiImpl).generalizedFrbRustBinding);
     vec[0] = 42;
     vec.dispose();
   });

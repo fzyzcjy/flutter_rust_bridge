@@ -24,9 +24,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('MessageId', () async {
-    final MessageIdTwinRustAsyncSse msgid = await newMsgidTwinRustAsyncSse(
-      id: U8Array32.init(),
-    );
+    final MessageIdTwinRustAsyncSse msgid =
+        await newMsgidTwinRustAsyncSse(id: U8Array32.init());
     msgid.field0[2] = 14;
     final inner = await useMsgidTwinRustAsyncSse(id: msgid);
     expect(inner[2], 14);
@@ -48,9 +47,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final inner = U8Array8.init();
     inner[3] = 3;
     final FeedIdTwinRustAsyncSse feedId =
-        await returnBoxedFeedIdTwinRustAsyncSse(
-      id: inner,
-    );
+        await returnBoxedFeedIdTwinRustAsyncSse(id: inner);
     expect(feedId.field0[3], 3);
     feedId.field0[5] = 5;
     final raw = await returnBoxedRawFeedIdTwinRustAsyncSse(id: feedId);
@@ -63,8 +60,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     inner[0] = 1;
     inner[1] = 2;
     final testId = await funcTestIdTwinRustAsyncSse(
-      id: TestIdTwinRustAsyncSse(field0: inner),
-    );
+        id: TestIdTwinRustAsyncSse(field0: inner));
     expect(testId.field0[0], 1);
     expect(testId.field0[1], 2);
   });
@@ -86,8 +82,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final id3 = TestIdTwinRustAsyncSse(field0: I32Array2.init());
     id3.field0[1] = 40;
     final x = await nestedIdTwinRustAsyncSse(
-      id: TestIdTwinRustAsyncSseArray4([id0, id1, id2, id3]),
-    );
+        id: TestIdTwinRustAsyncSseArray4([id0, id1, id2, id3]));
     expect(x[0].field0[1], 10);
     expect(x[1].field0[1], 40);
   });

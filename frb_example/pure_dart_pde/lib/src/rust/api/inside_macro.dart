@@ -38,7 +38,9 @@ class AnotherMacroStructTwinNormal {
 class MacroStruct {
   final int data;
 
-  const MacroStruct({required this.data});
+  const MacroStruct({
+    required this.data,
+  });
 
   @override
   int get hashCode => data.hashCode;

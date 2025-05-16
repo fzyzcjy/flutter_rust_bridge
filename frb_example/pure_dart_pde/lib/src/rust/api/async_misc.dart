@@ -12,7 +12,5 @@ Future<void> funcAsyncVoidTwinNormal() =>
     RustLib.instance.api.crateApiAsyncMiscFuncAsyncVoidTwinNormal();
 
 Future<int> funcAsyncSimpleAddTwinNormal({required int a, required int b}) =>
-    RustLib.instance.api.crateApiAsyncMiscFuncAsyncSimpleAddTwinNormal(
-      a: a,
-      b: b,
-    );
+    RustLib.instance.api
+        .crateApiAsyncMiscFuncAsyncSimpleAddTwinNormal(a: a, b: b);

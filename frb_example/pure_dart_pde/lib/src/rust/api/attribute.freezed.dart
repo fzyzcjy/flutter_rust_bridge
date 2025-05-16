@@ -12,8 +12,7 @@ part of 'attribute.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$UserIdTwinNormal {
@@ -29,9 +28,8 @@ mixin _$UserIdTwinNormal {
 /// @nodoc
 abstract class $UserIdTwinNormalCopyWith<$Res> {
   factory $UserIdTwinNormalCopyWith(
-    UserIdTwinNormal value,
-    $Res Function(UserIdTwinNormal) then,
-  ) = _$UserIdTwinNormalCopyWithImpl<$Res, UserIdTwinNormal>;
+          UserIdTwinNormal value, $Res Function(UserIdTwinNormal) then) =
+      _$UserIdTwinNormalCopyWithImpl<$Res, UserIdTwinNormal>;
   @useResult
   $Res call({int value});
 }
@@ -50,27 +48,24 @@ class _$UserIdTwinNormalCopyWithImpl<$Res, $Val extends UserIdTwinNormal>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? value = null}) {
-    return _then(
-      _value.copyWith(
-            value:
-                null == value
-                    ? _value.value
-                    : value // ignore: cast_nullable_to_non_nullable
-                        as int,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_value.copyWith(
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$UserIdTwinNormalImplCopyWith<$Res>
     implements $UserIdTwinNormalCopyWith<$Res> {
-  factory _$$UserIdTwinNormalImplCopyWith(
-    _$UserIdTwinNormalImpl value,
-    $Res Function(_$UserIdTwinNormalImpl) then,
-  ) = __$$UserIdTwinNormalImplCopyWithImpl<$Res>;
+  factory _$$UserIdTwinNormalImplCopyWith(_$UserIdTwinNormalImpl value,
+          $Res Function(_$UserIdTwinNormalImpl) then) =
+      __$$UserIdTwinNormalImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int value});
@@ -80,25 +75,23 @@ abstract class _$$UserIdTwinNormalImplCopyWith<$Res>
 class __$$UserIdTwinNormalImplCopyWithImpl<$Res>
     extends _$UserIdTwinNormalCopyWithImpl<$Res, _$UserIdTwinNormalImpl>
     implements _$$UserIdTwinNormalImplCopyWith<$Res> {
-  __$$UserIdTwinNormalImplCopyWithImpl(
-    _$UserIdTwinNormalImpl _value,
-    $Res Function(_$UserIdTwinNormalImpl) _then,
-  ) : super(_value, _then);
+  __$$UserIdTwinNormalImplCopyWithImpl(_$UserIdTwinNormalImpl _value,
+      $Res Function(_$UserIdTwinNormalImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of UserIdTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? value = null}) {
-    return _then(
-      _$UserIdTwinNormalImpl(
-        value:
-            null == value
-                ? _value.value
-                : value // ignore: cast_nullable_to_non_nullable
-                    as int,
-      ),
-    );
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_$UserIdTwinNormalImpl(
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
@@ -134,9 +127,7 @@ class _$UserIdTwinNormalImpl implements _UserIdTwinNormal {
   @pragma('vm:prefer-inline')
   _$$UserIdTwinNormalImplCopyWith<_$UserIdTwinNormalImpl> get copyWith =>
       __$$UserIdTwinNormalImplCopyWithImpl<_$UserIdTwinNormalImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 }
 
 abstract class _UserIdTwinNormal implements UserIdTwinNormal {

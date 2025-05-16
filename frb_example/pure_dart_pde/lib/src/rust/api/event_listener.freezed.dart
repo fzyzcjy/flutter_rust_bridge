@@ -12,8 +12,7 @@ part of 'event_listener.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$EventTwinNormal {
@@ -30,9 +29,8 @@ mixin _$EventTwinNormal {
 /// @nodoc
 abstract class $EventTwinNormalCopyWith<$Res> {
   factory $EventTwinNormalCopyWith(
-    EventTwinNormal value,
-    $Res Function(EventTwinNormal) then,
-  ) = _$EventTwinNormalCopyWithImpl<$Res, EventTwinNormal>;
+          EventTwinNormal value, $Res Function(EventTwinNormal) then) =
+      _$EventTwinNormalCopyWithImpl<$Res, EventTwinNormal>;
   @useResult
   $Res call({String address, String payload});
 }
@@ -51,32 +49,29 @@ class _$EventTwinNormalCopyWithImpl<$Res, $Val extends EventTwinNormal>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? address = null, Object? payload = null}) {
-    return _then(
-      _value.copyWith(
-            address:
-                null == address
-                    ? _value.address
-                    : address // ignore: cast_nullable_to_non_nullable
-                        as String,
-            payload:
-                null == payload
-                    ? _value.payload
-                    : payload // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? address = null,
+    Object? payload = null,
+  }) {
+    return _then(_value.copyWith(
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      payload: null == payload
+          ? _value.payload
+          : payload // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$EventTwinNormalImplCopyWith<$Res>
     implements $EventTwinNormalCopyWith<$Res> {
-  factory _$$EventTwinNormalImplCopyWith(
-    _$EventTwinNormalImpl value,
-    $Res Function(_$EventTwinNormalImpl) then,
-  ) = __$$EventTwinNormalImplCopyWithImpl<$Res>;
+  factory _$$EventTwinNormalImplCopyWith(_$EventTwinNormalImpl value,
+          $Res Function(_$EventTwinNormalImpl) then) =
+      __$$EventTwinNormalImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String address, String payload});
@@ -87,29 +82,27 @@ class __$$EventTwinNormalImplCopyWithImpl<$Res>
     extends _$EventTwinNormalCopyWithImpl<$Res, _$EventTwinNormalImpl>
     implements _$$EventTwinNormalImplCopyWith<$Res> {
   __$$EventTwinNormalImplCopyWithImpl(
-    _$EventTwinNormalImpl _value,
-    $Res Function(_$EventTwinNormalImpl) _then,
-  ) : super(_value, _then);
+      _$EventTwinNormalImpl _value, $Res Function(_$EventTwinNormalImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EventTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? address = null, Object? payload = null}) {
-    return _then(
-      _$EventTwinNormalImpl(
-        address:
-            null == address
-                ? _value.address
-                : address // ignore: cast_nullable_to_non_nullable
-                    as String,
-        payload:
-            null == payload
-                ? _value.payload
-                : payload // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? address = null,
+    Object? payload = null,
+  }) {
+    return _then(_$EventTwinNormalImpl(
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      payload: null == payload
+          ? _value.payload
+          : payload // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -117,7 +110,7 @@ class __$$EventTwinNormalImplCopyWithImpl<$Res>
 
 class _$EventTwinNormalImpl extends _EventTwinNormal {
   const _$EventTwinNormalImpl({required this.address, required this.payload})
-    : super._();
+      : super._();
 
   @override
   final String address;
@@ -148,16 +141,13 @@ class _$EventTwinNormalImpl extends _EventTwinNormal {
   @pragma('vm:prefer-inline')
   _$$EventTwinNormalImplCopyWith<_$EventTwinNormalImpl> get copyWith =>
       __$$EventTwinNormalImplCopyWithImpl<_$EventTwinNormalImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 }
 
 abstract class _EventTwinNormal extends EventTwinNormal {
-  const factory _EventTwinNormal({
-    required final String address,
-    required final String payload,
-  }) = _$EventTwinNormalImpl;
+  const factory _EventTwinNormal(
+      {required final String address,
+      required final String payload}) = _$EventTwinNormalImpl;
   const _EventTwinNormal._() : super._();
 
   @override

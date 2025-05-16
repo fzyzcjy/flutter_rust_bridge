@@ -20,10 +20,12 @@ abstract class OpaqueStructWithDartCodeTwinNormal
 class TranslatableStructWithDartCodeTwinNormal {
   final int a;
 
-  const TranslatableStructWithDartCodeTwinNormal({required this.a});
+  const TranslatableStructWithDartCodeTwinNormal({
+    required this.a,
+  });
 
   Future<int> normalMethodTwinNormal() => RustLib.instance.api
-      .crateApiDartCodeTranslatableStructWithDartCodeTwinNormalNormalMethodTwinNormal(
+          .crateApiDartCodeTranslatableStructWithDartCodeTwinNormalNormalMethodTwinNormal(
         that: this,
       );
 

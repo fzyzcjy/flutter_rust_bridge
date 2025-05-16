@@ -13,102 +13,110 @@ part 'enumeration.freezed.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
 
-Future<EnumSimpleTwinNormal> funcEnumSimpleTwinNormal({
-  required EnumSimpleTwinNormal arg,
-}) =>
+Future<EnumSimpleTwinNormal> funcEnumSimpleTwinNormal(
+        {required EnumSimpleTwinNormal arg}) =>
     RustLib.instance.api.crateApiEnumerationFuncEnumSimpleTwinNormal(arg: arg);
 
-Future<EnumWithItemMixedTwinNormal> funcEnumWithItemMixedTwinNormal({
-  required EnumWithItemMixedTwinNormal arg,
-}) => RustLib.instance.api.crateApiEnumerationFuncEnumWithItemMixedTwinNormal(
-  arg: arg,
-);
+Future<EnumWithItemMixedTwinNormal> funcEnumWithItemMixedTwinNormal(
+        {required EnumWithItemMixedTwinNormal arg}) =>
+    RustLib.instance.api
+        .crateApiEnumerationFuncEnumWithItemMixedTwinNormal(arg: arg);
 
-Future<EnumWithItemTupleTwinNormal> funcEnumWithItemTupleTwinNormal({
-  required EnumWithItemTupleTwinNormal arg,
-}) => RustLib.instance.api.crateApiEnumerationFuncEnumWithItemTupleTwinNormal(
-  arg: arg,
-);
+Future<EnumWithItemTupleTwinNormal> funcEnumWithItemTupleTwinNormal(
+        {required EnumWithItemTupleTwinNormal arg}) =>
+    RustLib.instance.api
+        .crateApiEnumerationFuncEnumWithItemTupleTwinNormal(arg: arg);
 
-Future<EnumWithItemStructTwinNormal> funcEnumWithItemStructTwinNormal({
-  required EnumWithItemStructTwinNormal arg,
-}) => RustLib.instance.api.crateApiEnumerationFuncEnumWithItemStructTwinNormal(
-  arg: arg,
-);
+Future<EnumWithItemStructTwinNormal> funcEnumWithItemStructTwinNormal(
+        {required EnumWithItemStructTwinNormal arg}) =>
+    RustLib.instance.api
+        .crateApiEnumerationFuncEnumWithItemStructTwinNormal(arg: arg);
 
-Future<EnumWithDiscriminantTwinNormal> funcEnumWithDiscriminantTwinNormal({
-  required EnumWithDiscriminantTwinNormal arg,
-}) => RustLib.instance.api
-    .crateApiEnumerationFuncEnumWithDiscriminantTwinNormal(arg: arg);
+Future<EnumWithDiscriminantTwinNormal> funcEnumWithDiscriminantTwinNormal(
+        {required EnumWithDiscriminantTwinNormal arg}) =>
+    RustLib.instance.api
+        .crateApiEnumerationFuncEnumWithDiscriminantTwinNormal(arg: arg);
 
 Future<Uint8List> printNoteTwinNormal({required NoteTwinNormal note}) =>
     RustLib.instance.api.crateApiEnumerationPrintNoteTwinNormal(note: note);
 
-Future<WeekdaysTwinNormal?> handleReturnEnumTwinNormal({
-  required String input,
-}) => RustLib.instance.api.crateApiEnumerationHandleReturnEnumTwinNormal(
-  input: input,
-);
+Future<WeekdaysTwinNormal?> handleReturnEnumTwinNormal(
+        {required String input}) =>
+    RustLib.instance.api
+        .crateApiEnumerationHandleReturnEnumTwinNormal(input: input);
 
-Future<WeekdaysTwinNormal> handleEnumParameterTwinNormal({
-  required WeekdaysTwinNormal weekday,
-}) => RustLib.instance.api.crateApiEnumerationHandleEnumParameterTwinNormal(
-  weekday: weekday,
-);
+Future<WeekdaysTwinNormal> handleEnumParameterTwinNormal(
+        {required WeekdaysTwinNormal weekday}) =>
+    RustLib.instance.api
+        .crateApiEnumerationHandleEnumParameterTwinNormal(weekday: weekday);
 
-Future<MeasureTwinNormal?> multiplyByTenTwinNormal({
-  required MeasureTwinNormal measure,
-}) => RustLib.instance.api.crateApiEnumerationMultiplyByTenTwinNormal(
-  measure: measure,
-);
+Future<MeasureTwinNormal?> multiplyByTenTwinNormal(
+        {required MeasureTwinNormal measure}) =>
+    RustLib.instance.api
+        .crateApiEnumerationMultiplyByTenTwinNormal(measure: measure);
 
-Future<KitchenSinkTwinNormal> handleEnumStructTwinNormal({
-  required KitchenSinkTwinNormal val,
-}) => RustLib.instance.api.crateApiEnumerationHandleEnumStructTwinNormal(
-  val: val,
-);
+Future<KitchenSinkTwinNormal> handleEnumStructTwinNormal(
+        {required KitchenSinkTwinNormal val}) =>
+    RustLib.instance.api
+        .crateApiEnumerationHandleEnumStructTwinNormal(val: val);
 
 @freezed
 sealed class DistanceTwinNormal with _$DistanceTwinNormal {
   const DistanceTwinNormal._();
 
   const factory DistanceTwinNormal.unknown() = DistanceTwinNormal_Unknown;
-  const factory DistanceTwinNormal.map(double field0) = DistanceTwinNormal_Map;
+  const factory DistanceTwinNormal.map(
+    double field0,
+  ) = DistanceTwinNormal_Map;
 }
 
-enum EnumSimpleTwinNormal { a, b }
+enum EnumSimpleTwinNormal {
+  a,
+  b,
+  ;
+}
 
-enum EnumWithDiscriminantTwinNormal { oneHundred, fifty }
+enum EnumWithDiscriminantTwinNormal {
+  oneHundred,
+  fifty,
+  ;
+}
 
 @freezed
 sealed class EnumWithItemMixedTwinNormal with _$EnumWithItemMixedTwinNormal {
   const EnumWithItemMixedTwinNormal._();
 
   const factory EnumWithItemMixedTwinNormal.a() = EnumWithItemMixedTwinNormal_A;
-  const factory EnumWithItemMixedTwinNormal.b(Uint8List field0) =
-      EnumWithItemMixedTwinNormal_B;
-  const factory EnumWithItemMixedTwinNormal.c({required String cField}) =
-      EnumWithItemMixedTwinNormal_C;
+  const factory EnumWithItemMixedTwinNormal.b(
+    Uint8List field0,
+  ) = EnumWithItemMixedTwinNormal_B;
+  const factory EnumWithItemMixedTwinNormal.c({
+    required String cField,
+  }) = EnumWithItemMixedTwinNormal_C;
 }
 
 @freezed
 sealed class EnumWithItemStructTwinNormal with _$EnumWithItemStructTwinNormal {
   const EnumWithItemStructTwinNormal._();
 
-  const factory EnumWithItemStructTwinNormal.a({required Uint8List aField}) =
-      EnumWithItemStructTwinNormal_A;
-  const factory EnumWithItemStructTwinNormal.b({required Int32List bField}) =
-      EnumWithItemStructTwinNormal_B;
+  const factory EnumWithItemStructTwinNormal.a({
+    required Uint8List aField,
+  }) = EnumWithItemStructTwinNormal_A;
+  const factory EnumWithItemStructTwinNormal.b({
+    required Int32List bField,
+  }) = EnumWithItemStructTwinNormal_B;
 }
 
 @freezed
 sealed class EnumWithItemTupleTwinNormal with _$EnumWithItemTupleTwinNormal {
   const EnumWithItemTupleTwinNormal._();
 
-  const factory EnumWithItemTupleTwinNormal.a(Uint8List field0) =
-      EnumWithItemTupleTwinNormal_A;
-  const factory EnumWithItemTupleTwinNormal.b(int field0) =
-      EnumWithItemTupleTwinNormal_B;
+  const factory EnumWithItemTupleTwinNormal.a(
+    Uint8List field0,
+  ) = EnumWithItemTupleTwinNormal_A;
+  const factory EnumWithItemTupleTwinNormal.b(
+    int field0,
+  ) = EnumWithItemTupleTwinNormal_B;
 }
 
 @freezed
@@ -132,8 +140,9 @@ sealed class KitchenSinkTwinNormal with _$KitchenSinkTwinNormal {
     @Default(-1) int? field0,
     int? field1,
   ]) = KitchenSinkTwinNormal_Optional;
-  const factory KitchenSinkTwinNormal.buffer(Uint8List field0) =
-      KitchenSinkTwinNormal_Buffer;
+  const factory KitchenSinkTwinNormal.buffer(
+    Uint8List field0,
+  ) = KitchenSinkTwinNormal_Buffer;
   const factory KitchenSinkTwinNormal.enums([
     @Default(WeekdaysTwinNormal.sunday) WeekdaysTwinNormal field0,
   ]) = KitchenSinkTwinNormal_Enums;
@@ -143,10 +152,12 @@ sealed class KitchenSinkTwinNormal with _$KitchenSinkTwinNormal {
 sealed class MeasureTwinNormal with _$MeasureTwinNormal {
   const MeasureTwinNormal._();
 
-  const factory MeasureTwinNormal.speed(SpeedTwinNormal field0) =
-      MeasureTwinNormal_Speed;
-  const factory MeasureTwinNormal.distance(DistanceTwinNormal field0) =
-      MeasureTwinNormal_Distance;
+  const factory MeasureTwinNormal.speed(
+    SpeedTwinNormal field0,
+  ) = MeasureTwinNormal_Speed;
+  const factory MeasureTwinNormal.distance(
+    DistanceTwinNormal field0,
+  ) = MeasureTwinNormal_Distance;
 }
 
 class NoteTwinNormal {
@@ -175,5 +186,7 @@ sealed class SpeedTwinNormal with _$SpeedTwinNormal {
   const SpeedTwinNormal._();
 
   const factory SpeedTwinNormal.unknown() = SpeedTwinNormal_Unknown;
-  const factory SpeedTwinNormal.gps(double field0) = SpeedTwinNormal_GPS;
+  const factory SpeedTwinNormal.gps(
+    double field0,
+  ) = SpeedTwinNormal_GPS;
 }

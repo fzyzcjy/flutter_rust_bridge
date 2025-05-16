@@ -11,8 +11,7 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'raw_string_twin_rust_async.freezed.dart';
 
 Future<RawStringItemStructTwinRustAsync>
-testRawStringItemStructTwinRustAsync() =>
-    RustLib.instance.api
+    testRawStringItemStructTwinRustAsync() => RustLib.instance.api
         .crateApiPseudoManualRawStringTwinRustAsyncTestRawStringItemStructTwinRustAsync();
 
 Future<RawStringItemEnumTwinRustAsync> testRawStringItemEnumTwinRustAsync() =>
@@ -20,8 +19,7 @@ Future<RawStringItemEnumTwinRustAsync> testRawStringItemEnumTwinRustAsync() =>
         .crateApiPseudoManualRawStringTwinRustAsyncTestRawStringItemEnumTwinRustAsync();
 
 Future<MoreThanJustOneRawStringStructTwinRustAsync>
-testMoreThanJustOneRawStringStructTwinRustAsync() =>
-    RustLib.instance.api
+    testMoreThanJustOneRawStringStructTwinRustAsync() => RustLib.instance.api
         .crateApiPseudoManualRawStringTwinRustAsyncTestMoreThanJustOneRawStringStructTwinRustAsync();
 
 class MoreThanJustOneRawStringStructTwinRustAsync {
@@ -60,14 +58,17 @@ sealed class RawStringItemEnumTwinRustAsync
   const factory RawStringItemEnumTwinRustAsync.regular({
     required String regular,
   }) = RawStringItemEnumTwinRustAsync_Regular;
-  const factory RawStringItemEnumTwinRustAsync.raw({required String type}) =
-      RawStringItemEnumTwinRustAsync_Raw;
+  const factory RawStringItemEnumTwinRustAsync.raw({
+    required String type,
+  }) = RawStringItemEnumTwinRustAsync_Raw;
 }
 
 class RawStringItemStructTwinRustAsync {
   final String type;
 
-  const RawStringItemStructTwinRustAsync({required this.type});
+  const RawStringItemStructTwinRustAsync({
+    required this.type,
+  });
 
   @override
   int get hashCode => type.hashCode;

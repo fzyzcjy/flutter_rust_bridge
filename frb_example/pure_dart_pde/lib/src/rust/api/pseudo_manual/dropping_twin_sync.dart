@@ -14,13 +14,11 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 abstract class DroppableTwinSync implements RustOpaqueInterface {
   Stream<int> createStreamTwinSync();
 
-  static int getDropCountTwinSync() =>
-      RustLib.instance.api
-          .crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncGetDropCountTwinSync();
+  static int getDropCountTwinSync() => RustLib.instance.api
+      .crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncGetDropCountTwinSync();
 
-  static DroppableTwinSync newTwinSync() =>
-      RustLib.instance.api
-          .crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncNewTwinSync();
+  static DroppableTwinSync newTwinSync() => RustLib.instance.api
+      .crateApiPseudoManualDroppingTwinSyncDroppableTwinSyncNewTwinSync();
 
   void simpleMethodTwinSync();
 }

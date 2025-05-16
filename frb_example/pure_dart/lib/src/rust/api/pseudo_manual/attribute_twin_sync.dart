@@ -51,7 +51,7 @@ class CustomizedTwinSync {
 /// Example for @freezed and @meta.immutable
 @freezed
 @meta.immutable
-sealed class UserIdTwinSync with _$UserIdTwinSync {
+class UserIdTwinSync with _$UserIdTwinSync {
   const factory UserIdTwinSync({
     @Default(0) int value,
   }) = _UserIdTwinSync;

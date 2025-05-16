@@ -18,8 +18,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('dart call useImportedEnum()', () async {
-    expect(await useImportedEnumTwinNormal(myEnum: MyEnum.false_), false);
-    expect(await useImportedEnumTwinNormal(myEnum: MyEnum.true_), true);
+    expect(
+      await useImportedEnumTwinNormal(myEnum: MyEnum.false_),
+      false,
+    );
+    expect(
+      await useImportedEnumTwinNormal(myEnum: MyEnum.true_),
+      true,
+    );
   });
 
   test('resolve module for old module system', () async {

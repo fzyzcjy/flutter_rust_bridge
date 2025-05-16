@@ -32,15 +32,16 @@ abstract class ConstructorOpaqueSyncStructTwinNormal
 
   void check();
 
-  factory ConstructorOpaqueSyncStructTwinNormal() =>
-      RustLib.instance.api
-          .crateApiConstructorConstructorOpaqueSyncStructTwinNormalNew();
+  factory ConstructorOpaqueSyncStructTwinNormal() => RustLib.instance.api
+      .crateApiConstructorConstructorOpaqueSyncStructTwinNormalNew();
 }
 
 class ConstructorTranslatableStructTwinNormal {
   final String one;
 
-  const ConstructorTranslatableStructTwinNormal({required this.one});
+  const ConstructorTranslatableStructTwinNormal({
+    required this.one,
+  });
 
   // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
   static Future<ConstructorTranslatableStructTwinNormal> newInstance() =>
@@ -61,11 +62,12 @@ class ConstructorTranslatableStructTwinNormal {
 class ConstructorTranslatableSyncStructTwinNormal {
   final String one;
 
-  const ConstructorTranslatableSyncStructTwinNormal.raw({required this.one});
+  const ConstructorTranslatableSyncStructTwinNormal.raw({
+    required this.one,
+  });
 
-  factory ConstructorTranslatableSyncStructTwinNormal() =>
-      RustLib.instance.api
-          .crateApiConstructorConstructorTranslatableSyncStructTwinNormalNew();
+  factory ConstructorTranslatableSyncStructTwinNormal() => RustLib.instance.api
+      .crateApiConstructorConstructorTranslatableSyncStructTwinNormalNew();
 
   @override
   int get hashCode => one.hashCode;

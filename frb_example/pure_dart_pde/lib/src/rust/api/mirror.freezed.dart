@@ -12,8 +12,7 @@ part of 'mirror.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ApplicationMessage {
@@ -22,48 +21,53 @@ mixin _$ApplicationMessage {
     required TResult Function(String field0) displayMessage,
     required TResult Function(int x, int y) renderPixel,
     required TResult Function() exit,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String field0)? displayMessage,
     TResult? Function(int x, int y)? renderPixel,
     TResult? Function()? exit,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String field0)? displayMessage,
     TResult Function(int x, int y)? renderPixel,
     TResult Function()? exit,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ApplicationMessage_DisplayMessage value)
-    displayMessage,
+        displayMessage,
     required TResult Function(ApplicationMessage_RenderPixel value) renderPixel,
     required TResult Function(ApplicationMessage_Exit value) exit,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ApplicationMessage_DisplayMessage value)? displayMessage,
     TResult? Function(ApplicationMessage_RenderPixel value)? renderPixel,
     TResult? Function(ApplicationMessage_Exit value)? exit,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ApplicationMessage_DisplayMessage value)? displayMessage,
     TResult Function(ApplicationMessage_RenderPixel value)? renderPixel,
     TResult Function(ApplicationMessage_Exit value)? exit,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ApplicationMessageCopyWith<$Res> {
   factory $ApplicationMessageCopyWith(
-    ApplicationMessage value,
-    $Res Function(ApplicationMessage) then,
-  ) = _$ApplicationMessageCopyWithImpl<$Res, ApplicationMessage>;
+          ApplicationMessage value, $Res Function(ApplicationMessage) then) =
+      _$ApplicationMessageCopyWithImpl<$Res, ApplicationMessage>;
 }
 
 /// @nodoc
@@ -83,39 +87,36 @@ class _$ApplicationMessageCopyWithImpl<$Res, $Val extends ApplicationMessage>
 /// @nodoc
 abstract class _$$ApplicationMessage_DisplayMessageImplCopyWith<$Res> {
   factory _$$ApplicationMessage_DisplayMessageImplCopyWith(
-    _$ApplicationMessage_DisplayMessageImpl value,
-    $Res Function(_$ApplicationMessage_DisplayMessageImpl) then,
-  ) = __$$ApplicationMessage_DisplayMessageImplCopyWithImpl<$Res>;
+          _$ApplicationMessage_DisplayMessageImpl value,
+          $Res Function(_$ApplicationMessage_DisplayMessageImpl) then) =
+      __$$ApplicationMessage_DisplayMessageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String field0});
 }
 
 /// @nodoc
 class __$$ApplicationMessage_DisplayMessageImplCopyWithImpl<$Res>
-    extends
-        _$ApplicationMessageCopyWithImpl<
-          $Res,
-          _$ApplicationMessage_DisplayMessageImpl
-        >
+    extends _$ApplicationMessageCopyWithImpl<$Res,
+        _$ApplicationMessage_DisplayMessageImpl>
     implements _$$ApplicationMessage_DisplayMessageImplCopyWith<$Res> {
   __$$ApplicationMessage_DisplayMessageImplCopyWithImpl(
-    _$ApplicationMessage_DisplayMessageImpl _value,
-    $Res Function(_$ApplicationMessage_DisplayMessageImpl) _then,
-  ) : super(_value, _then);
+      _$ApplicationMessage_DisplayMessageImpl _value,
+      $Res Function(_$ApplicationMessage_DisplayMessageImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of ApplicationMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$ApplicationMessage_DisplayMessageImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as String,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$ApplicationMessage_DisplayMessageImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -150,11 +151,9 @@ class _$ApplicationMessage_DisplayMessageImpl
   @override
   @pragma('vm:prefer-inline')
   _$$ApplicationMessage_DisplayMessageImplCopyWith<
-    _$ApplicationMessage_DisplayMessageImpl
-  >
-  get copyWith => __$$ApplicationMessage_DisplayMessageImplCopyWithImpl<
-    _$ApplicationMessage_DisplayMessageImpl
-  >(this, _$identity);
+          _$ApplicationMessage_DisplayMessageImpl>
+      get copyWith => __$$ApplicationMessage_DisplayMessageImplCopyWithImpl<
+          _$ApplicationMessage_DisplayMessageImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -194,7 +193,7 @@ class _$ApplicationMessage_DisplayMessageImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ApplicationMessage_DisplayMessage value)
-    displayMessage,
+        displayMessage,
     required TResult Function(ApplicationMessage_RenderPixel value) renderPixel,
     required TResult Function(ApplicationMessage_Exit value) exit,
   }) {
@@ -237,53 +236,48 @@ abstract class ApplicationMessage_DisplayMessage extends ApplicationMessage {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApplicationMessage_DisplayMessageImplCopyWith<
-    _$ApplicationMessage_DisplayMessageImpl
-  >
-  get copyWith => throw _privateConstructorUsedError;
+          _$ApplicationMessage_DisplayMessageImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$ApplicationMessage_RenderPixelImplCopyWith<$Res> {
   factory _$$ApplicationMessage_RenderPixelImplCopyWith(
-    _$ApplicationMessage_RenderPixelImpl value,
-    $Res Function(_$ApplicationMessage_RenderPixelImpl) then,
-  ) = __$$ApplicationMessage_RenderPixelImplCopyWithImpl<$Res>;
+          _$ApplicationMessage_RenderPixelImpl value,
+          $Res Function(_$ApplicationMessage_RenderPixelImpl) then) =
+      __$$ApplicationMessage_RenderPixelImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int x, int y});
 }
 
 /// @nodoc
 class __$$ApplicationMessage_RenderPixelImplCopyWithImpl<$Res>
-    extends
-        _$ApplicationMessageCopyWithImpl<
-          $Res,
-          _$ApplicationMessage_RenderPixelImpl
-        >
+    extends _$ApplicationMessageCopyWithImpl<$Res,
+        _$ApplicationMessage_RenderPixelImpl>
     implements _$$ApplicationMessage_RenderPixelImplCopyWith<$Res> {
   __$$ApplicationMessage_RenderPixelImplCopyWithImpl(
-    _$ApplicationMessage_RenderPixelImpl _value,
-    $Res Function(_$ApplicationMessage_RenderPixelImpl) _then,
-  ) : super(_value, _then);
+      _$ApplicationMessage_RenderPixelImpl _value,
+      $Res Function(_$ApplicationMessage_RenderPixelImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of ApplicationMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? x = null, Object? y = null}) {
-    return _then(
-      _$ApplicationMessage_RenderPixelImpl(
-        x:
-            null == x
-                ? _value.x
-                : x // ignore: cast_nullable_to_non_nullable
-                    as int,
-        y:
-            null == y
-                ? _value.y
-                : y // ignore: cast_nullable_to_non_nullable
-                    as int,
-      ),
-    );
+  $Res call({
+    Object? x = null,
+    Object? y = null,
+  }) {
+    return _then(_$ApplicationMessage_RenderPixelImpl(
+      x: null == x
+          ? _value.x
+          : x // ignore: cast_nullable_to_non_nullable
+              as int,
+      y: null == y
+          ? _value.y
+          : y // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
@@ -292,7 +286,7 @@ class __$$ApplicationMessage_RenderPixelImplCopyWithImpl<$Res>
 class _$ApplicationMessage_RenderPixelImpl
     extends ApplicationMessage_RenderPixel {
   const _$ApplicationMessage_RenderPixelImpl({required this.x, required this.y})
-    : super._();
+      : super._();
 
   @override
   final int x;
@@ -322,11 +316,9 @@ class _$ApplicationMessage_RenderPixelImpl
   @override
   @pragma('vm:prefer-inline')
   _$$ApplicationMessage_RenderPixelImplCopyWith<
-    _$ApplicationMessage_RenderPixelImpl
-  >
-  get copyWith => __$$ApplicationMessage_RenderPixelImplCopyWithImpl<
-    _$ApplicationMessage_RenderPixelImpl
-  >(this, _$identity);
+          _$ApplicationMessage_RenderPixelImpl>
+      get copyWith => __$$ApplicationMessage_RenderPixelImplCopyWithImpl<
+          _$ApplicationMessage_RenderPixelImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -366,7 +358,7 @@ class _$ApplicationMessage_RenderPixelImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ApplicationMessage_DisplayMessage value)
-    displayMessage,
+        displayMessage,
     required TResult Function(ApplicationMessage_RenderPixel value) renderPixel,
     required TResult Function(ApplicationMessage_Exit value) exit,
   }) {
@@ -399,10 +391,9 @@ class _$ApplicationMessage_RenderPixelImpl
 }
 
 abstract class ApplicationMessage_RenderPixel extends ApplicationMessage {
-  const factory ApplicationMessage_RenderPixel({
-    required final int x,
-    required final int y,
-  }) = _$ApplicationMessage_RenderPixelImpl;
+  const factory ApplicationMessage_RenderPixel(
+      {required final int x,
+      required final int y}) = _$ApplicationMessage_RenderPixelImpl;
   const ApplicationMessage_RenderPixel._() : super._();
 
   int get x;
@@ -412,28 +403,27 @@ abstract class ApplicationMessage_RenderPixel extends ApplicationMessage {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApplicationMessage_RenderPixelImplCopyWith<
-    _$ApplicationMessage_RenderPixelImpl
-  >
-  get copyWith => throw _privateConstructorUsedError;
+          _$ApplicationMessage_RenderPixelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$ApplicationMessage_ExitImplCopyWith<$Res> {
   factory _$$ApplicationMessage_ExitImplCopyWith(
-    _$ApplicationMessage_ExitImpl value,
-    $Res Function(_$ApplicationMessage_ExitImpl) then,
-  ) = __$$ApplicationMessage_ExitImplCopyWithImpl<$Res>;
+          _$ApplicationMessage_ExitImpl value,
+          $Res Function(_$ApplicationMessage_ExitImpl) then) =
+      __$$ApplicationMessage_ExitImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$ApplicationMessage_ExitImplCopyWithImpl<$Res>
-    extends
-        _$ApplicationMessageCopyWithImpl<$Res, _$ApplicationMessage_ExitImpl>
+    extends _$ApplicationMessageCopyWithImpl<$Res,
+        _$ApplicationMessage_ExitImpl>
     implements _$$ApplicationMessage_ExitImplCopyWith<$Res> {
   __$$ApplicationMessage_ExitImplCopyWithImpl(
-    _$ApplicationMessage_ExitImpl _value,
-    $Res Function(_$ApplicationMessage_ExitImpl) _then,
-  ) : super(_value, _then);
+      _$ApplicationMessage_ExitImpl _value,
+      $Res Function(_$ApplicationMessage_ExitImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of ApplicationMessage
   /// with the given fields replaced by the non-null parameter values.
@@ -497,7 +487,7 @@ class _$ApplicationMessage_ExitImpl extends ApplicationMessage_Exit {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ApplicationMessage_DisplayMessage value)
-    displayMessage,
+        displayMessage,
     required TResult Function(ApplicationMessage_RenderPixel value) renderPixel,
     required TResult Function(ApplicationMessage_Exit value) exit,
   }) {
@@ -542,56 +532,59 @@ mixin _$RawStringEnumMirrored {
     required TResult Function(RawStringMirrored field0) raw,
     required TResult Function(NestedRawStringMirrored field0) nested,
     required TResult Function(ListOfNestedRawStringMirrored field0)
-    listOfNested,
-  }) => throw _privateConstructorUsedError;
+        listOfNested,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(RawStringMirrored field0)? raw,
     TResult? Function(NestedRawStringMirrored field0)? nested,
     TResult? Function(ListOfNestedRawStringMirrored field0)? listOfNested,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(RawStringMirrored field0)? raw,
     TResult Function(NestedRawStringMirrored field0)? nested,
     TResult Function(ListOfNestedRawStringMirrored field0)? listOfNested,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(RawStringEnumMirrored_Raw value) raw,
     required TResult Function(RawStringEnumMirrored_Nested value) nested,
     required TResult Function(RawStringEnumMirrored_ListOfNested value)
-    listOfNested,
-  }) => throw _privateConstructorUsedError;
+        listOfNested,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(RawStringEnumMirrored_Raw value)? raw,
     TResult? Function(RawStringEnumMirrored_Nested value)? nested,
     TResult? Function(RawStringEnumMirrored_ListOfNested value)? listOfNested,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(RawStringEnumMirrored_Raw value)? raw,
     TResult Function(RawStringEnumMirrored_Nested value)? nested,
     TResult Function(RawStringEnumMirrored_ListOfNested value)? listOfNested,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $RawStringEnumMirroredCopyWith<$Res> {
-  factory $RawStringEnumMirroredCopyWith(
-    RawStringEnumMirrored value,
-    $Res Function(RawStringEnumMirrored) then,
-  ) = _$RawStringEnumMirroredCopyWithImpl<$Res, RawStringEnumMirrored>;
+  factory $RawStringEnumMirroredCopyWith(RawStringEnumMirrored value,
+          $Res Function(RawStringEnumMirrored) then) =
+      _$RawStringEnumMirroredCopyWithImpl<$Res, RawStringEnumMirrored>;
 }
 
 /// @nodoc
-class _$RawStringEnumMirroredCopyWithImpl<
-  $Res,
-  $Val extends RawStringEnumMirrored
->
+class _$RawStringEnumMirroredCopyWithImpl<$Res,
+        $Val extends RawStringEnumMirrored>
     implements $RawStringEnumMirroredCopyWith<$Res> {
   _$RawStringEnumMirroredCopyWithImpl(this._value, this._then);
 
@@ -607,39 +600,36 @@ class _$RawStringEnumMirroredCopyWithImpl<
 /// @nodoc
 abstract class _$$RawStringEnumMirrored_RawImplCopyWith<$Res> {
   factory _$$RawStringEnumMirrored_RawImplCopyWith(
-    _$RawStringEnumMirrored_RawImpl value,
-    $Res Function(_$RawStringEnumMirrored_RawImpl) then,
-  ) = __$$RawStringEnumMirrored_RawImplCopyWithImpl<$Res>;
+          _$RawStringEnumMirrored_RawImpl value,
+          $Res Function(_$RawStringEnumMirrored_RawImpl) then) =
+      __$$RawStringEnumMirrored_RawImplCopyWithImpl<$Res>;
   @useResult
   $Res call({RawStringMirrored field0});
 }
 
 /// @nodoc
 class __$$RawStringEnumMirrored_RawImplCopyWithImpl<$Res>
-    extends
-        _$RawStringEnumMirroredCopyWithImpl<
-          $Res,
-          _$RawStringEnumMirrored_RawImpl
-        >
+    extends _$RawStringEnumMirroredCopyWithImpl<$Res,
+        _$RawStringEnumMirrored_RawImpl>
     implements _$$RawStringEnumMirrored_RawImplCopyWith<$Res> {
   __$$RawStringEnumMirrored_RawImplCopyWithImpl(
-    _$RawStringEnumMirrored_RawImpl _value,
-    $Res Function(_$RawStringEnumMirrored_RawImpl) _then,
-  ) : super(_value, _then);
+      _$RawStringEnumMirrored_RawImpl _value,
+      $Res Function(_$RawStringEnumMirrored_RawImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of RawStringEnumMirrored
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$RawStringEnumMirrored_RawImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as RawStringMirrored,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$RawStringEnumMirrored_RawImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as RawStringMirrored,
+    ));
   }
 }
 
@@ -673,9 +663,8 @@ class _$RawStringEnumMirrored_RawImpl extends RawStringEnumMirrored_Raw {
   @override
   @pragma('vm:prefer-inline')
   _$$RawStringEnumMirrored_RawImplCopyWith<_$RawStringEnumMirrored_RawImpl>
-  get copyWith => __$$RawStringEnumMirrored_RawImplCopyWithImpl<
-    _$RawStringEnumMirrored_RawImpl
-  >(this, _$identity);
+      get copyWith => __$$RawStringEnumMirrored_RawImplCopyWithImpl<
+          _$RawStringEnumMirrored_RawImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -683,7 +672,7 @@ class _$RawStringEnumMirrored_RawImpl extends RawStringEnumMirrored_Raw {
     required TResult Function(RawStringMirrored field0) raw,
     required TResult Function(NestedRawStringMirrored field0) nested,
     required TResult Function(ListOfNestedRawStringMirrored field0)
-    listOfNested,
+        listOfNested,
   }) {
     return raw(field0);
   }
@@ -718,7 +707,7 @@ class _$RawStringEnumMirrored_RawImpl extends RawStringEnumMirrored_Raw {
     required TResult Function(RawStringEnumMirrored_Raw value) raw,
     required TResult Function(RawStringEnumMirrored_Nested value) nested,
     required TResult Function(RawStringEnumMirrored_ListOfNested value)
-    listOfNested,
+        listOfNested,
   }) {
     return raw(this);
   }
@@ -760,45 +749,42 @@ abstract class RawStringEnumMirrored_Raw extends RawStringEnumMirrored {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RawStringEnumMirrored_RawImplCopyWith<_$RawStringEnumMirrored_RawImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$RawStringEnumMirrored_NestedImplCopyWith<$Res> {
   factory _$$RawStringEnumMirrored_NestedImplCopyWith(
-    _$RawStringEnumMirrored_NestedImpl value,
-    $Res Function(_$RawStringEnumMirrored_NestedImpl) then,
-  ) = __$$RawStringEnumMirrored_NestedImplCopyWithImpl<$Res>;
+          _$RawStringEnumMirrored_NestedImpl value,
+          $Res Function(_$RawStringEnumMirrored_NestedImpl) then) =
+      __$$RawStringEnumMirrored_NestedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({NestedRawStringMirrored field0});
 }
 
 /// @nodoc
 class __$$RawStringEnumMirrored_NestedImplCopyWithImpl<$Res>
-    extends
-        _$RawStringEnumMirroredCopyWithImpl<
-          $Res,
-          _$RawStringEnumMirrored_NestedImpl
-        >
+    extends _$RawStringEnumMirroredCopyWithImpl<$Res,
+        _$RawStringEnumMirrored_NestedImpl>
     implements _$$RawStringEnumMirrored_NestedImplCopyWith<$Res> {
   __$$RawStringEnumMirrored_NestedImplCopyWithImpl(
-    _$RawStringEnumMirrored_NestedImpl _value,
-    $Res Function(_$RawStringEnumMirrored_NestedImpl) _then,
-  ) : super(_value, _then);
+      _$RawStringEnumMirrored_NestedImpl _value,
+      $Res Function(_$RawStringEnumMirrored_NestedImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of RawStringEnumMirrored
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$RawStringEnumMirrored_NestedImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as NestedRawStringMirrored,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$RawStringEnumMirrored_NestedImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as NestedRawStringMirrored,
+    ));
   }
 }
 
@@ -832,11 +818,9 @@ class _$RawStringEnumMirrored_NestedImpl extends RawStringEnumMirrored_Nested {
   @override
   @pragma('vm:prefer-inline')
   _$$RawStringEnumMirrored_NestedImplCopyWith<
-    _$RawStringEnumMirrored_NestedImpl
-  >
-  get copyWith => __$$RawStringEnumMirrored_NestedImplCopyWithImpl<
-    _$RawStringEnumMirrored_NestedImpl
-  >(this, _$identity);
+          _$RawStringEnumMirrored_NestedImpl>
+      get copyWith => __$$RawStringEnumMirrored_NestedImplCopyWithImpl<
+          _$RawStringEnumMirrored_NestedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -844,7 +828,7 @@ class _$RawStringEnumMirrored_NestedImpl extends RawStringEnumMirrored_Nested {
     required TResult Function(RawStringMirrored field0) raw,
     required TResult Function(NestedRawStringMirrored field0) nested,
     required TResult Function(ListOfNestedRawStringMirrored field0)
-    listOfNested,
+        listOfNested,
   }) {
     return nested(field0);
   }
@@ -879,7 +863,7 @@ class _$RawStringEnumMirrored_NestedImpl extends RawStringEnumMirrored_Nested {
     required TResult Function(RawStringEnumMirrored_Raw value) raw,
     required TResult Function(RawStringEnumMirrored_Nested value) nested,
     required TResult Function(RawStringEnumMirrored_ListOfNested value)
-    listOfNested,
+        listOfNested,
   }) {
     return nested(this);
   }
@@ -911,8 +895,8 @@ class _$RawStringEnumMirrored_NestedImpl extends RawStringEnumMirrored_Nested {
 
 abstract class RawStringEnumMirrored_Nested extends RawStringEnumMirrored {
   const factory RawStringEnumMirrored_Nested(
-    final NestedRawStringMirrored field0,
-  ) = _$RawStringEnumMirrored_NestedImpl;
+          final NestedRawStringMirrored field0) =
+      _$RawStringEnumMirrored_NestedImpl;
   const RawStringEnumMirrored_Nested._() : super._();
 
   @override
@@ -922,47 +906,43 @@ abstract class RawStringEnumMirrored_Nested extends RawStringEnumMirrored {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RawStringEnumMirrored_NestedImplCopyWith<
-    _$RawStringEnumMirrored_NestedImpl
-  >
-  get copyWith => throw _privateConstructorUsedError;
+          _$RawStringEnumMirrored_NestedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$RawStringEnumMirrored_ListOfNestedImplCopyWith<$Res> {
   factory _$$RawStringEnumMirrored_ListOfNestedImplCopyWith(
-    _$RawStringEnumMirrored_ListOfNestedImpl value,
-    $Res Function(_$RawStringEnumMirrored_ListOfNestedImpl) then,
-  ) = __$$RawStringEnumMirrored_ListOfNestedImplCopyWithImpl<$Res>;
+          _$RawStringEnumMirrored_ListOfNestedImpl value,
+          $Res Function(_$RawStringEnumMirrored_ListOfNestedImpl) then) =
+      __$$RawStringEnumMirrored_ListOfNestedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ListOfNestedRawStringMirrored field0});
 }
 
 /// @nodoc
 class __$$RawStringEnumMirrored_ListOfNestedImplCopyWithImpl<$Res>
-    extends
-        _$RawStringEnumMirroredCopyWithImpl<
-          $Res,
-          _$RawStringEnumMirrored_ListOfNestedImpl
-        >
+    extends _$RawStringEnumMirroredCopyWithImpl<$Res,
+        _$RawStringEnumMirrored_ListOfNestedImpl>
     implements _$$RawStringEnumMirrored_ListOfNestedImplCopyWith<$Res> {
   __$$RawStringEnumMirrored_ListOfNestedImplCopyWithImpl(
-    _$RawStringEnumMirrored_ListOfNestedImpl _value,
-    $Res Function(_$RawStringEnumMirrored_ListOfNestedImpl) _then,
-  ) : super(_value, _then);
+      _$RawStringEnumMirrored_ListOfNestedImpl _value,
+      $Res Function(_$RawStringEnumMirrored_ListOfNestedImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of RawStringEnumMirrored
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$RawStringEnumMirrored_ListOfNestedImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as ListOfNestedRawStringMirrored,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$RawStringEnumMirrored_ListOfNestedImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as ListOfNestedRawStringMirrored,
+    ));
   }
 }
 
@@ -997,11 +977,9 @@ class _$RawStringEnumMirrored_ListOfNestedImpl
   @override
   @pragma('vm:prefer-inline')
   _$$RawStringEnumMirrored_ListOfNestedImplCopyWith<
-    _$RawStringEnumMirrored_ListOfNestedImpl
-  >
-  get copyWith => __$$RawStringEnumMirrored_ListOfNestedImplCopyWithImpl<
-    _$RawStringEnumMirrored_ListOfNestedImpl
-  >(this, _$identity);
+          _$RawStringEnumMirrored_ListOfNestedImpl>
+      get copyWith => __$$RawStringEnumMirrored_ListOfNestedImplCopyWithImpl<
+          _$RawStringEnumMirrored_ListOfNestedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1009,7 +987,7 @@ class _$RawStringEnumMirrored_ListOfNestedImpl
     required TResult Function(RawStringMirrored field0) raw,
     required TResult Function(NestedRawStringMirrored field0) nested,
     required TResult Function(ListOfNestedRawStringMirrored field0)
-    listOfNested,
+        listOfNested,
   }) {
     return listOfNested(field0);
   }
@@ -1044,7 +1022,7 @@ class _$RawStringEnumMirrored_ListOfNestedImpl
     required TResult Function(RawStringEnumMirrored_Raw value) raw,
     required TResult Function(RawStringEnumMirrored_Nested value) nested,
     required TResult Function(RawStringEnumMirrored_ListOfNested value)
-    listOfNested,
+        listOfNested,
   }) {
     return listOfNested(this);
   }
@@ -1077,8 +1055,8 @@ class _$RawStringEnumMirrored_ListOfNestedImpl
 abstract class RawStringEnumMirrored_ListOfNested
     extends RawStringEnumMirrored {
   const factory RawStringEnumMirrored_ListOfNested(
-    final ListOfNestedRawStringMirrored field0,
-  ) = _$RawStringEnumMirrored_ListOfNestedImpl;
+          final ListOfNestedRawStringMirrored field0) =
+      _$RawStringEnumMirrored_ListOfNestedImpl;
   const RawStringEnumMirrored_ListOfNested._() : super._();
 
   @override
@@ -1088,7 +1066,6 @@ abstract class RawStringEnumMirrored_ListOfNested
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RawStringEnumMirrored_ListOfNestedImplCopyWith<
-    _$RawStringEnumMirrored_ListOfNestedImpl
-  >
-  get copyWith => throw _privateConstructorUsedError;
+          _$RawStringEnumMirrored_ListOfNestedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

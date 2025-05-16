@@ -9,19 +9,15 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('SimpleTranslatableExternalStructWithMethod', () async {
     expect(
-      await SimpleTranslatableExternalStructWithMethod(
-        a: 'hello',
-      ).simpleExternalMethod(),
-      'hello',
-    );
+        await SimpleTranslatableExternalStructWithMethod(a: 'hello')
+            .simpleExternalMethod(),
+        'hello');
   });
 
   test('SimpleTranslatableExternalStructWithMethod', () async {
     expect(
-      await SimpleTranslatableExternalStructWithMethod(
-        a: 'hello',
-      ).simpleExternalMethod(),
-      'hello',
-    );
+        await SimpleTranslatableExternalStructWithMethod(a: 'hello')
+            .simpleExternalMethod(),
+        'hello');
   });
 }

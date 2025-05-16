@@ -13,9 +13,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('dart check that non-final field is modifiable', () {
     var customized = CustomizedTwinSync(
-      finalField: "finalField",
-      nonFinalField: "nonFinalField",
-    );
+        finalField: "finalField", nonFinalField: "nonFinalField");
     expect(customized.nonFinalField, "nonFinalField");
     customized.nonFinalField = "changed";
     expect(customized.nonFinalField, "changed");

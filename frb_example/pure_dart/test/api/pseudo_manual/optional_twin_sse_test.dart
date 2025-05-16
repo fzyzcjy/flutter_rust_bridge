@@ -41,8 +41,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(await handleOptionalIncrementTwinSse(), null);
     {
       var ret = await handleOptionalIncrementTwinSse(
-        opt: ExoticOptionalsTwinSse(attributesNullable: []),
-      );
+          opt: ExoticOptionalsTwinSse(attributesNullable: []));
       if (ret == null) fail('increment returned null for non-null params');
       final loopFor = 20;
       for (var i = 1; i < loopFor; i++) {
@@ -84,8 +83,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final optional10 = await handleOptionBoxArgumentsTwinSse(
         boolbox: true,
         structbox: await handleOptionalIncrementTwinSse(
-          opt: ExoticOptionalsTwinSse(attributesNullable: []),
-        ),
+            opt: ExoticOptionalsTwinSse(attributesNullable: [])),
       );
       print(optional10);
     }

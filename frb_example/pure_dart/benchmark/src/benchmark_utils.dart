@@ -50,7 +50,11 @@ class JsonEmitter extends ScoreEmitter {
   @override
   void emit(String testName, double value) {
     const PrintEmitter().emit(testName, value);
-    items.add({'name': testName, 'unit': "Microseconds", 'value': value});
+    items.add({
+      'name': testName,
+      'unit': "Microseconds",
+      'value': value,
+    });
   }
 }
 

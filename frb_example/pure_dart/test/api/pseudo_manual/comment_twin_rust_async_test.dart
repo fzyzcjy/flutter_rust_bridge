@@ -17,18 +17,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
     await futurizeVoidTwinRustAsync(
         functionWithCommentsSlashStarStarTwinRustAsync());
     await futurizeVoidTwinRustAsync(
-      functionWithCommentsTripleSlashMultiLineTwinRustAsync(),
-    );
+        functionWithCommentsTripleSlashMultiLineTwinRustAsync());
     await futurizeVoidTwinRustAsync(
-      functionWithCommentsTripleSlashSingleLineTwinRustAsync(),
-    );
+        functionWithCommentsTripleSlashSingleLineTwinRustAsync());
     await futurizeVoidTwinRustAsync(
-      StructWithCommentsTwinRustAsync(
-        fieldWithComments: 42,
-      ).instanceMethodTwinRustAsync(),
-    );
+        StructWithCommentsTwinRustAsync(fieldWithComments: 42)
+            .instanceMethodTwinRustAsync());
     await futurizeVoidTwinRustAsync(
-      StructWithCommentsTwinRustAsync.staticMethodTwinRustAsync(),
-    );
+        StructWithCommentsTwinRustAsync.staticMethodTwinRustAsync());
   });
 }

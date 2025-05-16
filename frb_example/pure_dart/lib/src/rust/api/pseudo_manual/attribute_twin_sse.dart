@@ -50,7 +50,7 @@ class CustomizedTwinSse {
 /// Example for @freezed and @meta.immutable
 @freezed
 @meta.immutable
-sealed class UserIdTwinSse with _$UserIdTwinSse {
+class UserIdTwinSse with _$UserIdTwinSse {
   const factory UserIdTwinSse({
     @Default(0) int value,
   }) = _UserIdTwinSse;

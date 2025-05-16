@@ -26,7 +26,7 @@ Future<void> createEventTwinSse(
             address: address, payload: payload);
 
 @freezed
-sealed class EventTwinSse with _$EventTwinSse {
+class EventTwinSse with _$EventTwinSse {
   const EventTwinSse._();
   const factory EventTwinSse({
     required String address,

@@ -38,62 +38,48 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   group('example-based tests', () {
     test('dart call handleReturnEnum', () async {
-      expect(
-        await handleReturnEnumTwinNormal(input: "Tuesday"),
-        WeekdaysTwinNormal.tuesday,
-      );
+      expect(await handleReturnEnumTwinNormal(input: "Tuesday"),
+          WeekdaysTwinNormal.tuesday);
       expect(await handleReturnEnumTwinNormal(input: "Foreverday"), null);
     });
 
     test('dart call handleEnumParameter', () async {
       expect(
-        await handleEnumParameterTwinNormal(
-          weekday: WeekdaysTwinNormal.saturday,
-        ),
-        WeekdaysTwinNormal.saturday,
-      );
+          await handleEnumParameterTwinNormal(
+              weekday: WeekdaysTwinNormal.saturday),
+          WeekdaysTwinNormal.saturday);
     });
 
     test('dart call handleEnumStruct', () async {
       expect(
-        await handleEnumStructTwinNormal(val: KitchenSinkTwinNormal_Empty()),
-        KitchenSinkTwinNormal_Empty(),
-      );
+          await handleEnumStructTwinNormal(val: KitchenSinkTwinNormal_Empty()),
+          KitchenSinkTwinNormal_Empty());
       expect(
         await handleEnumStructTwinNormal(
           val: KitchenSinkTwinNormal_Primitives(
-            int32: 0,
-            float64: 1,
-            boolean: false,
-          ),
+              int32: 0, float64: 1, boolean: false),
         ),
         KitchenSinkTwinNormal_Primitives(int32: 1, float64: 2, boolean: true),
       );
       expect(
         await handleEnumStructTwinNormal(
-          val: KitchenSinkTwinNormal_Optional(null, 0),
-        ),
+            val: KitchenSinkTwinNormal_Optional(null, 0)),
         KitchenSinkTwinNormal_Optional(null, 1),
       );
       expect(
         await handleEnumStructTwinNormal(
-          val: KitchenSinkTwinNormal_Buffer(Uint8List.fromList([])),
-        ),
+            val: KitchenSinkTwinNormal_Buffer(Uint8List.fromList([]))),
         KitchenSinkTwinNormal_Buffer(Uint8List.fromList([1])),
       );
       expect(
         await handleEnumStructTwinNormal(
-          val: KitchenSinkTwinNormal_Enums(WeekdaysTwinNormal.monday),
-        ),
+            val: KitchenSinkTwinNormal_Enums(WeekdaysTwinNormal.monday)),
         KitchenSinkTwinNormal_Enums(WeekdaysTwinNormal.tuesday),
       );
       expect(
         await handleEnumStructTwinNormal(
-          val: const KitchenSinkTwinNormal.nested(
-            0,
-            KitchenSinkTwinNormal.empty(),
-          ),
-        ),
+            val: const KitchenSinkTwinNormal.nested(
+                0, KitchenSinkTwinNormal.empty())),
         const KitchenSinkTwinNormal.nested(1, KitchenSinkTwinNormal.empty()),
       );
     });
@@ -101,38 +87,25 @@ Future<void> main({bool skipRustLibInit = false}) async {
     test('dart call multiplyByTen()', () async {
       expect(
         await multiplyByTenTwinNormal(
-          measure: MeasureTwinNormal.speed(SpeedTwinNormal_GPS(10.0)),
-        ),
+            measure: MeasureTwinNormal.speed(SpeedTwinNormal_GPS(10.0))),
         MeasureTwinNormal.speed(SpeedTwinNormal_GPS(100.0)),
       );
       expect(
         await multiplyByTenTwinNormal(
-          measure: MeasureTwinNormal.speed(SpeedTwinNormal_Unknown()),
-        ),
+            measure: MeasureTwinNormal.speed(SpeedTwinNormal_Unknown())),
         null,
       );
       final skipMinified =
           releaseMode ? skipWeb('Minified names cannot be compared.') : null;
+      expect((SpeedTwinNormal_Unknown).toString(), 'SpeedTwinNormal_Unknown',
+          skip: skipMinified);
+      expect((SpeedTwinNormal_GPS).toString(), 'SpeedTwinNormal_GPS',
+          skip: skipMinified);
       expect(
-        (SpeedTwinNormal_Unknown).toString(),
-        'SpeedTwinNormal_Unknown',
-        skip: skipMinified,
-      );
-      expect(
-        (SpeedTwinNormal_GPS).toString(),
-        'SpeedTwinNormal_GPS',
-        skip: skipMinified,
-      );
-      expect(
-        (DistanceTwinNormal_Unknown).toString(),
-        'DistanceTwinNormal_Unknown',
-        skip: skipMinified,
-      );
-      expect(
-        (DistanceTwinNormal_Map).toString(),
-        'DistanceTwinNormal_Map',
-        skip: skipMinified,
-      );
+          (DistanceTwinNormal_Unknown).toString(), 'DistanceTwinNormal_Unknown',
+          skip: skipMinified);
+      expect((DistanceTwinNormal_Map).toString(), 'DistanceTwinNormal_Map',
+          skip: skipMinified);
     });
   });
 }

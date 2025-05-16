@@ -28,7 +28,7 @@ Future<void> createEventTwinRustAsyncSse(
             address: address, payload: payload);
 
 @freezed
-sealed class EventTwinRustAsyncSse with _$EventTwinRustAsyncSse {
+class EventTwinRustAsyncSse with _$EventTwinRustAsyncSse {
   const EventTwinRustAsyncSse._();
   const factory EventTwinRustAsyncSse({
     required String address,

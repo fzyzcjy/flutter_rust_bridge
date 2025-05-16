@@ -12,8 +12,7 @@ part of 'misc_example_twin_rust_async.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AbcTwinRustAsync {
@@ -24,14 +23,16 @@ mixin _$AbcTwinRustAsync {
     required TResult Function(BTwinRustAsync field0) b,
     required TResult Function(CTwinRustAsync field0) c,
     required TResult Function(int field0) justInt,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ATwinRustAsync field0)? a,
     TResult? Function(BTwinRustAsync field0)? b,
     TResult? Function(CTwinRustAsync field0)? c,
     TResult? Function(int field0)? justInt,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ATwinRustAsync field0)? a,
@@ -39,21 +40,24 @@ mixin _$AbcTwinRustAsync {
     TResult Function(CTwinRustAsync field0)? c,
     TResult Function(int field0)? justInt,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AbcTwinRustAsync_A value) a,
     required TResult Function(AbcTwinRustAsync_B value) b,
     required TResult Function(AbcTwinRustAsync_C value) c,
     required TResult Function(AbcTwinRustAsync_JustInt value) justInt,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AbcTwinRustAsync_A value)? a,
     TResult? Function(AbcTwinRustAsync_B value)? b,
     TResult? Function(AbcTwinRustAsync_C value)? c,
     TResult? Function(AbcTwinRustAsync_JustInt value)? justInt,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AbcTwinRustAsync_A value)? a,
@@ -61,15 +65,15 @@ mixin _$AbcTwinRustAsync {
     TResult Function(AbcTwinRustAsync_C value)? c,
     TResult Function(AbcTwinRustAsync_JustInt value)? justInt,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $AbcTwinRustAsyncCopyWith<$Res> {
   factory $AbcTwinRustAsyncCopyWith(
-    AbcTwinRustAsync value,
-    $Res Function(AbcTwinRustAsync) then,
-  ) = _$AbcTwinRustAsyncCopyWithImpl<$Res, AbcTwinRustAsync>;
+          AbcTwinRustAsync value, $Res Function(AbcTwinRustAsync) then) =
+      _$AbcTwinRustAsyncCopyWithImpl<$Res, AbcTwinRustAsync>;
 }
 
 /// @nodoc
@@ -88,10 +92,9 @@ class _$AbcTwinRustAsyncCopyWithImpl<$Res, $Val extends AbcTwinRustAsync>
 
 /// @nodoc
 abstract class _$$AbcTwinRustAsync_AImplCopyWith<$Res> {
-  factory _$$AbcTwinRustAsync_AImplCopyWith(
-    _$AbcTwinRustAsync_AImpl value,
-    $Res Function(_$AbcTwinRustAsync_AImpl) then,
-  ) = __$$AbcTwinRustAsync_AImplCopyWithImpl<$Res>;
+  factory _$$AbcTwinRustAsync_AImplCopyWith(_$AbcTwinRustAsync_AImpl value,
+          $Res Function(_$AbcTwinRustAsync_AImpl) then) =
+      __$$AbcTwinRustAsync_AImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ATwinRustAsync field0});
 }
@@ -100,24 +103,23 @@ abstract class _$$AbcTwinRustAsync_AImplCopyWith<$Res> {
 class __$$AbcTwinRustAsync_AImplCopyWithImpl<$Res>
     extends _$AbcTwinRustAsyncCopyWithImpl<$Res, _$AbcTwinRustAsync_AImpl>
     implements _$$AbcTwinRustAsync_AImplCopyWith<$Res> {
-  __$$AbcTwinRustAsync_AImplCopyWithImpl(
-    _$AbcTwinRustAsync_AImpl _value,
-    $Res Function(_$AbcTwinRustAsync_AImpl) _then,
-  ) : super(_value, _then);
+  __$$AbcTwinRustAsync_AImplCopyWithImpl(_$AbcTwinRustAsync_AImpl _value,
+      $Res Function(_$AbcTwinRustAsync_AImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AbcTwinRustAsync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$AbcTwinRustAsync_AImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as ATwinRustAsync,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$AbcTwinRustAsync_AImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as ATwinRustAsync,
+    ));
   }
 }
 
@@ -152,9 +154,7 @@ class _$AbcTwinRustAsync_AImpl extends AbcTwinRustAsync_A {
   @pragma('vm:prefer-inline')
   _$$AbcTwinRustAsync_AImplCopyWith<_$AbcTwinRustAsync_AImpl> get copyWith =>
       __$$AbcTwinRustAsync_AImplCopyWithImpl<_$AbcTwinRustAsync_AImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -248,10 +248,9 @@ abstract class AbcTwinRustAsync_A extends AbcTwinRustAsync {
 
 /// @nodoc
 abstract class _$$AbcTwinRustAsync_BImplCopyWith<$Res> {
-  factory _$$AbcTwinRustAsync_BImplCopyWith(
-    _$AbcTwinRustAsync_BImpl value,
-    $Res Function(_$AbcTwinRustAsync_BImpl) then,
-  ) = __$$AbcTwinRustAsync_BImplCopyWithImpl<$Res>;
+  factory _$$AbcTwinRustAsync_BImplCopyWith(_$AbcTwinRustAsync_BImpl value,
+          $Res Function(_$AbcTwinRustAsync_BImpl) then) =
+      __$$AbcTwinRustAsync_BImplCopyWithImpl<$Res>;
   @useResult
   $Res call({BTwinRustAsync field0});
 }
@@ -260,24 +259,23 @@ abstract class _$$AbcTwinRustAsync_BImplCopyWith<$Res> {
 class __$$AbcTwinRustAsync_BImplCopyWithImpl<$Res>
     extends _$AbcTwinRustAsyncCopyWithImpl<$Res, _$AbcTwinRustAsync_BImpl>
     implements _$$AbcTwinRustAsync_BImplCopyWith<$Res> {
-  __$$AbcTwinRustAsync_BImplCopyWithImpl(
-    _$AbcTwinRustAsync_BImpl _value,
-    $Res Function(_$AbcTwinRustAsync_BImpl) _then,
-  ) : super(_value, _then);
+  __$$AbcTwinRustAsync_BImplCopyWithImpl(_$AbcTwinRustAsync_BImpl _value,
+      $Res Function(_$AbcTwinRustAsync_BImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AbcTwinRustAsync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$AbcTwinRustAsync_BImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as BTwinRustAsync,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$AbcTwinRustAsync_BImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as BTwinRustAsync,
+    ));
   }
 }
 
@@ -312,9 +310,7 @@ class _$AbcTwinRustAsync_BImpl extends AbcTwinRustAsync_B {
   @pragma('vm:prefer-inline')
   _$$AbcTwinRustAsync_BImplCopyWith<_$AbcTwinRustAsync_BImpl> get copyWith =>
       __$$AbcTwinRustAsync_BImplCopyWithImpl<_$AbcTwinRustAsync_BImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -408,10 +404,9 @@ abstract class AbcTwinRustAsync_B extends AbcTwinRustAsync {
 
 /// @nodoc
 abstract class _$$AbcTwinRustAsync_CImplCopyWith<$Res> {
-  factory _$$AbcTwinRustAsync_CImplCopyWith(
-    _$AbcTwinRustAsync_CImpl value,
-    $Res Function(_$AbcTwinRustAsync_CImpl) then,
-  ) = __$$AbcTwinRustAsync_CImplCopyWithImpl<$Res>;
+  factory _$$AbcTwinRustAsync_CImplCopyWith(_$AbcTwinRustAsync_CImpl value,
+          $Res Function(_$AbcTwinRustAsync_CImpl) then) =
+      __$$AbcTwinRustAsync_CImplCopyWithImpl<$Res>;
   @useResult
   $Res call({CTwinRustAsync field0});
 }
@@ -420,24 +415,23 @@ abstract class _$$AbcTwinRustAsync_CImplCopyWith<$Res> {
 class __$$AbcTwinRustAsync_CImplCopyWithImpl<$Res>
     extends _$AbcTwinRustAsyncCopyWithImpl<$Res, _$AbcTwinRustAsync_CImpl>
     implements _$$AbcTwinRustAsync_CImplCopyWith<$Res> {
-  __$$AbcTwinRustAsync_CImplCopyWithImpl(
-    _$AbcTwinRustAsync_CImpl _value,
-    $Res Function(_$AbcTwinRustAsync_CImpl) _then,
-  ) : super(_value, _then);
+  __$$AbcTwinRustAsync_CImplCopyWithImpl(_$AbcTwinRustAsync_CImpl _value,
+      $Res Function(_$AbcTwinRustAsync_CImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AbcTwinRustAsync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$AbcTwinRustAsync_CImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as CTwinRustAsync,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$AbcTwinRustAsync_CImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as CTwinRustAsync,
+    ));
   }
 }
 
@@ -472,9 +466,7 @@ class _$AbcTwinRustAsync_CImpl extends AbcTwinRustAsync_C {
   @pragma('vm:prefer-inline')
   _$$AbcTwinRustAsync_CImplCopyWith<_$AbcTwinRustAsync_CImpl> get copyWith =>
       __$$AbcTwinRustAsync_CImplCopyWithImpl<_$AbcTwinRustAsync_CImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -569,9 +561,9 @@ abstract class AbcTwinRustAsync_C extends AbcTwinRustAsync {
 /// @nodoc
 abstract class _$$AbcTwinRustAsync_JustIntImplCopyWith<$Res> {
   factory _$$AbcTwinRustAsync_JustIntImplCopyWith(
-    _$AbcTwinRustAsync_JustIntImpl value,
-    $Res Function(_$AbcTwinRustAsync_JustIntImpl) then,
-  ) = __$$AbcTwinRustAsync_JustIntImplCopyWithImpl<$Res>;
+          _$AbcTwinRustAsync_JustIntImpl value,
+          $Res Function(_$AbcTwinRustAsync_JustIntImpl) then) =
+      __$$AbcTwinRustAsync_JustIntImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int field0});
 }
@@ -581,23 +573,23 @@ class __$$AbcTwinRustAsync_JustIntImplCopyWithImpl<$Res>
     extends _$AbcTwinRustAsyncCopyWithImpl<$Res, _$AbcTwinRustAsync_JustIntImpl>
     implements _$$AbcTwinRustAsync_JustIntImplCopyWith<$Res> {
   __$$AbcTwinRustAsync_JustIntImplCopyWithImpl(
-    _$AbcTwinRustAsync_JustIntImpl _value,
-    $Res Function(_$AbcTwinRustAsync_JustIntImpl) _then,
-  ) : super(_value, _then);
+      _$AbcTwinRustAsync_JustIntImpl _value,
+      $Res Function(_$AbcTwinRustAsync_JustIntImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AbcTwinRustAsync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$AbcTwinRustAsync_JustIntImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as int,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$AbcTwinRustAsync_JustIntImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
@@ -631,9 +623,8 @@ class _$AbcTwinRustAsync_JustIntImpl extends AbcTwinRustAsync_JustInt {
   @override
   @pragma('vm:prefer-inline')
   _$$AbcTwinRustAsync_JustIntImplCopyWith<_$AbcTwinRustAsync_JustIntImpl>
-  get copyWith => __$$AbcTwinRustAsync_JustIntImplCopyWithImpl<
-    _$AbcTwinRustAsync_JustIntImpl
-  >(this, _$identity);
+      get copyWith => __$$AbcTwinRustAsync_JustIntImplCopyWithImpl<
+          _$AbcTwinRustAsync_JustIntImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -722,5 +713,5 @@ abstract class AbcTwinRustAsync_JustInt extends AbcTwinRustAsync {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AbcTwinRustAsync_JustIntImplCopyWith<_$AbcTwinRustAsync_JustIntImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }

@@ -12,8 +12,7 @@ part of 'event_listener_twin_rust_async.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$EventTwinRustAsync {
@@ -30,9 +29,8 @@ mixin _$EventTwinRustAsync {
 /// @nodoc
 abstract class $EventTwinRustAsyncCopyWith<$Res> {
   factory $EventTwinRustAsyncCopyWith(
-    EventTwinRustAsync value,
-    $Res Function(EventTwinRustAsync) then,
-  ) = _$EventTwinRustAsyncCopyWithImpl<$Res, EventTwinRustAsync>;
+          EventTwinRustAsync value, $Res Function(EventTwinRustAsync) then) =
+      _$EventTwinRustAsyncCopyWithImpl<$Res, EventTwinRustAsync>;
   @useResult
   $Res call({String address, String payload});
 }
@@ -51,32 +49,29 @@ class _$EventTwinRustAsyncCopyWithImpl<$Res, $Val extends EventTwinRustAsync>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? address = null, Object? payload = null}) {
-    return _then(
-      _value.copyWith(
-            address:
-                null == address
-                    ? _value.address
-                    : address // ignore: cast_nullable_to_non_nullable
-                        as String,
-            payload:
-                null == payload
-                    ? _value.payload
-                    : payload // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? address = null,
+    Object? payload = null,
+  }) {
+    return _then(_value.copyWith(
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      payload: null == payload
+          ? _value.payload
+          : payload // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$EventTwinRustAsyncImplCopyWith<$Res>
     implements $EventTwinRustAsyncCopyWith<$Res> {
-  factory _$$EventTwinRustAsyncImplCopyWith(
-    _$EventTwinRustAsyncImpl value,
-    $Res Function(_$EventTwinRustAsyncImpl) then,
-  ) = __$$EventTwinRustAsyncImplCopyWithImpl<$Res>;
+  factory _$$EventTwinRustAsyncImplCopyWith(_$EventTwinRustAsyncImpl value,
+          $Res Function(_$EventTwinRustAsyncImpl) then) =
+      __$$EventTwinRustAsyncImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String address, String payload});
@@ -86,30 +81,28 @@ abstract class _$$EventTwinRustAsyncImplCopyWith<$Res>
 class __$$EventTwinRustAsyncImplCopyWithImpl<$Res>
     extends _$EventTwinRustAsyncCopyWithImpl<$Res, _$EventTwinRustAsyncImpl>
     implements _$$EventTwinRustAsyncImplCopyWith<$Res> {
-  __$$EventTwinRustAsyncImplCopyWithImpl(
-    _$EventTwinRustAsyncImpl _value,
-    $Res Function(_$EventTwinRustAsyncImpl) _then,
-  ) : super(_value, _then);
+  __$$EventTwinRustAsyncImplCopyWithImpl(_$EventTwinRustAsyncImpl _value,
+      $Res Function(_$EventTwinRustAsyncImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EventTwinRustAsync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? address = null, Object? payload = null}) {
-    return _then(
-      _$EventTwinRustAsyncImpl(
-        address:
-            null == address
-                ? _value.address
-                : address // ignore: cast_nullable_to_non_nullable
-                    as String,
-        payload:
-            null == payload
-                ? _value.payload
-                : payload // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? address = null,
+    Object? payload = null,
+  }) {
+    return _then(_$EventTwinRustAsyncImpl(
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      payload: null == payload
+          ? _value.payload
+          : payload // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -117,7 +110,7 @@ class __$$EventTwinRustAsyncImplCopyWithImpl<$Res>
 
 class _$EventTwinRustAsyncImpl extends _EventTwinRustAsync {
   const _$EventTwinRustAsyncImpl({required this.address, required this.payload})
-    : super._();
+      : super._();
 
   @override
   final String address;
@@ -148,16 +141,13 @@ class _$EventTwinRustAsyncImpl extends _EventTwinRustAsync {
   @pragma('vm:prefer-inline')
   _$$EventTwinRustAsyncImplCopyWith<_$EventTwinRustAsyncImpl> get copyWith =>
       __$$EventTwinRustAsyncImplCopyWithImpl<_$EventTwinRustAsyncImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 }
 
 abstract class _EventTwinRustAsync extends EventTwinRustAsync {
-  const factory _EventTwinRustAsync({
-    required final String address,
-    required final String payload,
-  }) = _$EventTwinRustAsyncImpl;
+  const factory _EventTwinRustAsync(
+      {required final String address,
+      required final String payload}) = _$EventTwinRustAsyncImpl;
   const _EventTwinRustAsync._() : super._();
 
   @override

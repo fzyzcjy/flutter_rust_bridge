@@ -13,24 +13,14 @@ import '../test_utils.dart';
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
-  addTestsIdentityFunctionCall(castedPrimitiveI64TwinNormal, <int>[
-    0,
-    -1000000000,
-    1000000000,
-  ]);
-  addTestsIdentityFunctionCall(castedPrimitiveU64TwinNormal, <int>[
-    0,
-    1000000000,
-  ]);
-  addTestsIdentityFunctionCall(castedPrimitiveIsizeTwinNormal, <int>[
-    0,
-    -1000000000,
-    1000000000,
-  ]);
-  addTestsIdentityFunctionCall(castedPrimitiveUsizeTwinNormal, <int>[
-    0,
-    1000000000,
-  ]);
+  addTestsIdentityFunctionCall(
+      castedPrimitiveI64TwinNormal, <int>[0, -1000000000, 1000000000]);
+  addTestsIdentityFunctionCall(
+      castedPrimitiveU64TwinNormal, <int>[0, 1000000000]);
+  addTestsIdentityFunctionCall(
+      castedPrimitiveIsizeTwinNormal, <int>[0, -1000000000, 1000000000]);
+  addTestsIdentityFunctionCall(
+      castedPrimitiveUsizeTwinNormal, <int>[0, 1000000000]);
 
   test('StructWithCastedPrimitiveTwinNormal', () async {
     await functionForStructWithCastedPrimitiveTwinNormal(

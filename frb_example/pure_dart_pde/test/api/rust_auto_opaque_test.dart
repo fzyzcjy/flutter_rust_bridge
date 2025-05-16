@@ -23,22 +23,19 @@ Future<void> main({bool skipRustLibInit = false}) async {
       test('can be called', () async {
         final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
         await futurizeVoidTwinNormal(
-          rustAutoOpaqueArgOwnTwinNormal(arg: obj, expect: 100),
-        );
+            rustAutoOpaqueArgOwnTwinNormal(arg: obj, expect: 100));
       });
 
       test('after call, the object cannot be used again', () async {
         final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
         await futurizeVoidTwinNormal(
-          rustAutoOpaqueArgOwnTwinNormal(arg: obj, expect: 100),
-        );
+            rustAutoOpaqueArgOwnTwinNormal(arg: obj, expect: 100));
 
         expect(obj.isDisposed, true);
 
         await expectLater(
-          () => rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 100),
-          throwsA(isA<DroppableDisposedException>()),
-        );
+            () => rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 100),
+            throwsA(isA<DroppableDisposedException>()));
       });
     });
 
@@ -46,72 +43,58 @@ Future<void> main({bool skipRustLibInit = false}) async {
       test('can be called', () async {
         final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
         await futurizeVoidTwinNormal(
-          rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 100),
-        );
+            rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 100));
         expect(obj.isDisposed, false);
       });
 
       test('after call, the object can still be used again', () async {
         final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
         await futurizeVoidTwinNormal(
-          rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 100),
-        );
+            rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 100));
 
         expect(obj.isDisposed, false);
 
         await futurizeVoidTwinNormal(
-          rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 100),
-        );
+            rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 100));
       });
     });
 
     group('arg ref mut', () {
       test('can be called', () async {
         final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
-        await futurizeVoidTwinNormal(
-          rustAutoOpaqueArgMutBorrowTwinNormal(arg: obj, expect: 100, adder: 1),
-        );
+        await futurizeVoidTwinNormal(rustAutoOpaqueArgMutBorrowTwinNormal(
+            arg: obj, expect: 100, adder: 1));
         expect(obj.isDisposed, false);
       });
 
       test('after call, the object can still be used again', () async {
         final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
-        await futurizeVoidTwinNormal(
-          rustAutoOpaqueArgMutBorrowTwinNormal(arg: obj, expect: 100, adder: 1),
-        );
+        await futurizeVoidTwinNormal(rustAutoOpaqueArgMutBorrowTwinNormal(
+            arg: obj, expect: 100, adder: 1));
+
+        expect(obj.isDisposed, false);
+
+        await futurizeVoidTwinNormal(rustAutoOpaqueArgMutBorrowTwinNormal(
+            arg: obj, expect: 101, adder: 10));
 
         expect(obj.isDisposed, false);
 
         await futurizeVoidTwinNormal(
-          rustAutoOpaqueArgMutBorrowTwinNormal(
-            arg: obj,
-            expect: 101,
-            adder: 10,
-          ),
-        );
-
-        expect(obj.isDisposed, false);
-
-        await futurizeVoidTwinNormal(
-          rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 111),
-        );
+            rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 111));
       });
 
       test('does change the internal data', () async {
         final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
 
         await futurizeVoidTwinNormal(
-          rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 100),
-        );
+            rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 100));
 
-        await futurizeVoidTwinNormal(
-          rustAutoOpaqueArgMutBorrowTwinNormal(arg: obj, expect: 100, adder: 1),
-        );
+        await futurizeVoidTwinNormal(rustAutoOpaqueArgMutBorrowTwinNormal(
+            arg: obj, expect: 100, adder: 1));
 
         // expect internal data to change
         await futurizeVoidTwinNormal(
-          rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 100 + 1),
-        );
+            rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 100 + 1));
       });
     });
 
@@ -120,11 +103,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
         final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
         await Future.wait([
           futurizeVoidTwinNormal(
-            rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 100),
-          ),
+              rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 100)),
           futurizeVoidTwinNormal(
-            rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 100),
-          ),
+              rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 100)),
         ]);
       });
 
@@ -176,8 +157,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final b = await rustAutoOpaqueArgOwnAndReturnOwnTwinNormal(arg: a);
 
       await futurizeVoidTwinNormal(
-        rustAutoOpaqueArgOwnTwinNormal(arg: b, expect: 42),
-      );
+          rustAutoOpaqueArgOwnTwinNormal(arg: b, expect: 42));
     });
 
     test('call rustAutoOpaqueTwoArgsTwinNormal', () async {
@@ -191,8 +171,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final a = await rustAutoOpaqueReturnOwnTwinNormal(initial: 42);
 
       await futurizeVoidTwinNormal(
-        rustAutoOpaqueNormalAndOpaqueArgTwinNormal(a: a, b: 'hello'),
-      );
+          rustAutoOpaqueNormalAndOpaqueArgTwinNormal(a: a, b: 'hello'));
     });
   });
 
@@ -200,15 +179,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
     test('plus sign', () async {
       final obj = await rustAutoOpaquePlusSignReturnTwinNormal();
       await futurizeVoidTwinNormal(
-        rustAutoOpaquePlusSignArgTwinNormal(arg: obj),
-      );
+          rustAutoOpaquePlusSignArgTwinNormal(arg: obj));
     });
 
     test('callable', () async {
       final obj = await rustAutoOpaqueCallableReturnTwinNormal();
       await futurizeVoidTwinNormal(
-        rustAutoOpaqueCallableArgTwinNormal(arg: obj),
-      );
+          rustAutoOpaqueCallableArgTwinNormal(arg: obj));
     });
   });
 
@@ -237,14 +214,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final obj =
         await NonCloneSimpleTwinNormal.staticMethodReturnOwnTwinNormal();
     await futurizeVoidTwinNormal(
-      NonCloneSimpleTwinNormal.staticMethodArgBorrowTwinNormal(arg: obj),
-    );
+        NonCloneSimpleTwinNormal.staticMethodArgBorrowTwinNormal(arg: obj));
     await futurizeVoidTwinNormal(
-      NonCloneSimpleTwinNormal.staticMethodArgMutBorrowTwinNormal(arg: obj),
-    );
+        NonCloneSimpleTwinNormal.staticMethodArgMutBorrowTwinNormal(arg: obj));
     await futurizeVoidTwinNormal(
-      NonCloneSimpleTwinNormal.staticMethodArgOwnTwinNormal(arg: obj),
-    );
+        NonCloneSimpleTwinNormal.staticMethodArgOwnTwinNormal(arg: obj));
   });
 
   test('instance method', () async {
@@ -269,11 +243,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
         await rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinNormal();
     expect(obj.good, 'hello');
     await futurizeVoidTwinNormal(
-      rustAutoOpaqueArgBorrowTwinNormal(arg: obj.opaque, expect: 42),
-    );
+        rustAutoOpaqueArgBorrowTwinNormal(arg: obj.opaque, expect: 42));
     await futurizeVoidTwinNormal(
-      rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinNormal(arg: obj),
-    );
+        rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinNormal(arg: obj));
   });
 
   test('enums with both encodable and opaque', () async {
@@ -283,32 +255,26 @@ Future<void> main({bool skipRustLibInit = false}) async {
         (await rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinNormal());
 
     await futurizeVoidTwinNormal(
-      rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinNormal(arg: good),
-    );
+        rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinNormal(arg: good));
     await futurizeVoidTwinNormal(
-      rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinNormal(arg: opaque),
-    );
+        rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinNormal(arg: opaque));
 
     await futurizeVoidTwinNormal(
-      rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinNormal(
-        arg: EnumWithGoodAndOpaqueTwinNormal.good('hello'),
-      ),
-    );
+        rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinNormal(
+            arg: EnumWithGoodAndOpaqueTwinNormal.good('hello')));
   });
 
   test('enum opaque type', () async {
     final obj = await rustAutoOpaqueEnumReturnOwnTwinNormal();
     await futurizeVoidTwinNormal(
-      rustAutoOpaqueEnumArgBorrowTwinNormal(arg: obj),
-    );
+        rustAutoOpaqueEnumArgBorrowTwinNormal(arg: obj));
   });
 
   test('stream sink', () async {
     final stream = rustAutoOpaqueStreamSinkTwinNormal();
     final obj = (await stream.toList()).single;
     await futurizeVoidTwinNormal(
-      rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 42),
-    );
+        rustAutoOpaqueArgBorrowTwinNormal(arg: obj, expect: 42));
   });
 
   test('vec of opaque', () async {
@@ -316,57 +282,45 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     expect(vec.length, 2);
     await futurizeVoidTwinNormal(
-      rustAutoOpaqueArgBorrowTwinNormal(arg: vec[0], expect: 10),
-    );
+        rustAutoOpaqueArgBorrowTwinNormal(arg: vec[0], expect: 10));
     await futurizeVoidTwinNormal(
-      rustAutoOpaqueArgBorrowTwinNormal(arg: vec[1], expect: 20),
-    );
+        rustAutoOpaqueArgBorrowTwinNormal(arg: vec[1], expect: 20));
 
     await futurizeVoidTwinNormal(
-      rustAutoOpaqueArgVecOwnTwinNormal(arg: vec, expect: [10, 20]),
-    );
+        rustAutoOpaqueArgVecOwnTwinNormal(arg: vec, expect: [10, 20]));
   });
 
   group('Explicit rust-auto-opaque types', () {
     test('it can be created and used', () async {
       final obj = await rustAutoOpaqueExplicitReturnTwinNormal(initial: 100);
       await futurizeVoidTwinNormal(
-        rustAutoOpaqueExplicitArgTwinNormal(arg: obj, expect: 100),
-      );
+          rustAutoOpaqueExplicitArgTwinNormal(arg: obj, expect: 100));
     });
 
     test('it can be inside a struct used as argument', () async {
       final obj = await rustAutoOpaqueExplicitReturnTwinNormal(initial: 100);
-      await futurizeVoidTwinNormal(
-        rustAutoOpaqueExplicitStructTwinNormal(
+      await futurizeVoidTwinNormal(rustAutoOpaqueExplicitStructTwinNormal(
           arg: StructWithExplicitAutoOpaqueFieldTwinNormal(
-            autoOpaque: obj,
-            normal: 100,
-          ),
-        ),
-      );
+              autoOpaque: obj, normal: 100)));
     });
 
     test('it can be inside a struct used as return type', () async {
       final obj = await rustAutoOpaqueExplicitReturnStructTwinNormal();
       await futurizeVoidTwinNormal(
-        rustAutoOpaqueExplicitStructTwinNormal(arg: obj),
-      );
+          rustAutoOpaqueExplicitStructTwinNormal(arg: obj));
     });
 
     group('it can be used with automatic (implicit) ones', () {
       test('create by explicit, use by implicit', () async {
         final obj = await rustAutoOpaqueExplicitReturnTwinNormal(initial: 100);
         await futurizeVoidTwinNormal(
-          rustAutoOpaqueArgOwnTwinNormal(arg: obj, expect: 100),
-        );
+            rustAutoOpaqueArgOwnTwinNormal(arg: obj, expect: 100));
       });
 
       test('create by implicit, use by explicit', () async {
         final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
         await futurizeVoidTwinNormal(
-          rustAutoOpaqueExplicitArgTwinNormal(arg: obj, expect: 100),
-        );
+            rustAutoOpaqueExplicitArgTwinNormal(arg: obj, expect: 100));
       });
     });
   });
@@ -376,9 +330,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
       await expectRustPanic(
         () async => rustAutoOpaqueBorrowAndMutBorrowTwinNormal(
-          borrow: obj,
-          mutBorrow: obj,
-        ),
+            borrow: obj, mutBorrow: obj),
         'TwinNormal',
         messageMatcherOnNative: matches(RegExp('Cannot.*borrow.*object')),
       );
@@ -388,12 +340,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final a = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
       final b = await rustAutoOpaqueReturnOwnTwinNormal(initial: 200);
       expect(
-        await rustAutoOpaqueBorrowAndMutBorrowTwinNormal(
-          borrow: a,
-          mutBorrow: b,
-        ),
-        300,
-      );
+          await rustAutoOpaqueBorrowAndMutBorrowTwinNormal(
+              borrow: a, mutBorrow: b),
+          300);
     });
   });
 
@@ -401,9 +350,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     test('when same object', () async {
       final obj = await rustAutoOpaqueReturnOwnTwinNormal(initial: 100);
       expect(
-        await rustAutoOpaqueBorrowAndBorrowTwinNormal(a: obj, b: obj),
-        200,
-      );
+          await rustAutoOpaqueBorrowAndBorrowTwinNormal(a: obj, b: obj), 200);
     });
 
     test('when different object', () async {

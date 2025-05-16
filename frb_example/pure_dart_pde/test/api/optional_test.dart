@@ -39,8 +39,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(await handleOptionalIncrementTwinNormal(), null);
     {
       var ret = await handleOptionalIncrementTwinNormal(
-        opt: ExoticOptionalsTwinNormal(attributesNullable: []),
-      );
+          opt: ExoticOptionalsTwinNormal(attributesNullable: []));
       if (ret == null) fail('increment returned null for non-null params');
       final loopFor = 20;
       for (var i = 1; i < loopFor; i++) {
@@ -82,8 +81,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final optional10 = await handleOptionBoxArgumentsTwinNormal(
         boolbox: true,
         structbox: await handleOptionalIncrementTwinNormal(
-          opt: ExoticOptionalsTwinNormal(attributesNullable: []),
-        ),
+            opt: ExoticOptionalsTwinNormal(attributesNullable: [])),
       );
       print(optional10);
     }

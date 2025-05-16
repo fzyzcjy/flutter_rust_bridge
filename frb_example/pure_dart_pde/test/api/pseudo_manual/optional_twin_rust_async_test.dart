@@ -43,8 +43,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(await handleOptionalIncrementTwinRustAsync(), null);
     {
       var ret = await handleOptionalIncrementTwinRustAsync(
-        opt: ExoticOptionalsTwinRustAsync(attributesNullable: []),
-      );
+          opt: ExoticOptionalsTwinRustAsync(attributesNullable: []));
       if (ret == null) fail('increment returned null for non-null params');
       final loopFor = 20;
       for (var i = 1; i < loopFor; i++) {
@@ -86,8 +85,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final optional10 = await handleOptionBoxArgumentsTwinRustAsync(
         boolbox: true,
         structbox: await handleOptionalIncrementTwinRustAsync(
-          opt: ExoticOptionalsTwinRustAsync(attributesNullable: []),
-        ),
+            opt: ExoticOptionalsTwinRustAsync(attributesNullable: [])),
       );
       print(optional10);
     }

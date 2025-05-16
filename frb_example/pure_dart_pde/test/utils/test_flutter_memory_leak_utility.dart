@@ -18,10 +18,8 @@ class VmServiceUtil {
     final serverUri = (await Service.getInfo()).serverUri;
     if (serverUri == null) return null;
 
-    final vmService = await vmServiceConnectUri(
-      _toWebSocket(serverUri),
-      log: _Log(),
-    );
+    final vmService =
+        await vmServiceConnectUri(_toWebSocket(serverUri), log: _Log());
     return VmServiceUtil._(vmService);
   }
 

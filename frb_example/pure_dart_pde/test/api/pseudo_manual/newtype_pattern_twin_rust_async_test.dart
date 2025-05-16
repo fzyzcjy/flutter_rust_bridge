@@ -14,8 +14,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('dart call handleNewtype', () async {
     final newtypeResp = await handleNewtypeTwinRustAsync(
-      arg: NewTypeIntTwinRustAsync(field0: PlatformInt64Util.from(42)),
-    );
+        arg: NewTypeIntTwinRustAsync(field0: PlatformInt64Util.from(42)));
     expect(newtypeResp.field0.toInt(), 84);
   });
 }

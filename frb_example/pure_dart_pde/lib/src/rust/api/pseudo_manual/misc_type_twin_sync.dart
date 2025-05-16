@@ -11,24 +11,20 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 
-void funcReturnUnitTwinSync() =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscTypeTwinSyncFuncReturnUnitTwinSync();
+void funcReturnUnitTwinSync() => RustLib.instance.api
+    .crateApiPseudoManualMiscTypeTwinSyncFuncReturnUnitTwinSync();
 
-List<MySize> handleListOfStructTwinSync({required List<MySize> l}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualMiscTypeTwinSyncHandleListOfStructTwinSync(l: l);
+List<MySize> handleListOfStructTwinSync({required List<MySize> l}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMiscTypeTwinSyncHandleListOfStructTwinSync(l: l);
 
 List<String> handleStringListTwinSync({required List<String> names}) => RustLib
-    .instance
-    .api
+    .instance.api
     .crateApiPseudoManualMiscTypeTwinSyncHandleStringListTwinSync(names: names);
 
-EmptyTwinSync emptyStructTwinSync({required EmptyTwinSync empty}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualMiscTypeTwinSyncEmptyStructTwinSync(empty: empty);
+EmptyTwinSync emptyStructTwinSync({required EmptyTwinSync empty}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMiscTypeTwinSyncEmptyStructTwinSync(empty: empty);
 
 class EmptyTwinSync {
   const EmptyTwinSync();

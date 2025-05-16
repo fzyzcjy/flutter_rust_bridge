@@ -28,13 +28,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
       () async {
         await for (final _ in await funcStreamReturnErrorTwinRustAsyncSse()) {}
       },
-      throwsA(
-        isA<AnyhowException>().having(
-          (x) => x.message,
-          'message',
-          startsWith('deliberate error'),
-        ),
-      ),
+      throwsA(isA<AnyhowException>()
+          .having((x) => x.message, 'message', startsWith('deliberate error'))),
     );
   });
 
@@ -50,9 +45,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   Future<void> testHandleStream(
-    Stream<LogTwinRustAsyncSse> Function({required int key, required int max})
-        handleStreamFunction,
-  ) async {
+      Stream<LogTwinRustAsyncSse> Function({required int key, required int max})
+          handleStreamFunction) async {
     final max = 5;
     final key = 8;
     final stream = handleStreamFunction(key: key, max: max);
@@ -95,9 +89,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('stream_sink_inside_struct_twin_normal', () async {
     final arg = MyStructContainingStreamSinkTwinRustAsyncSse(
-      a: 1000,
-      b: RustStreamSink<int>(),
-    );
+        a: 1000, b: RustStreamSink<int>());
     await streamSinkInsideStructTwinRustAsyncSse(arg: arg);
     expect(await arg.b.stream.toList(), [1000]);
   });

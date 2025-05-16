@@ -17,156 +17,119 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   group('basic_optional', () {
+    addTestsIdentityFunctionCall(exampleBasicOptionalTypeI8TwinRustAsync,
+        <int?>[null, 0, -128, 127, 79, -79]);
+    addTestsIdentityFunctionCall(exampleBasicOptionalTypeI16TwinRustAsync,
+        <int?>[null, 0, -32768, 32767, 12345, -12345]);
+    addTestsIdentityFunctionCall(exampleBasicOptionalTypeI32TwinRustAsync,
+        <int?>[null, 0, -2147483648, 2147483647, 1234567890, -1234567890]);
     addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeI8TwinRustAsync,
-      <int?>[null, 0, -128, 127, 79, -79],
-    );
+        exampleBasicOptionalTypeI64TwinRustAsync, <PlatformInt64?>[
+      null,
+      PlatformInt64.parse("0"),
+      PlatformInt64.parse("-9007199254740992"),
+      PlatformInt64.parse("9007199254740992"),
+      PlatformInt64.parse("-9223372036854775808"),
+      PlatformInt64.parse("9223372036854775807"),
+      PlatformInt64.parse("1234567890123456789"),
+      PlatformInt64.parse("-1234567890123456789")
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeI16TwinRustAsync,
-      <int?>[null, 0, -32768, 32767, 12345, -12345],
-    );
+        exampleBasicOptionalTypeI128TwinRustAsync, <BigInt?>[
+      null,
+      BigInt.parse("0"),
+      BigInt.parse("-9007199254740992"),
+      BigInt.parse("9007199254740992"),
+      BigInt.parse("-9223372036854775808"),
+      BigInt.parse("9223372036854775807"),
+      BigInt.parse("-170141183460469231731687303715884105728"),
+      BigInt.parse("170141183460469231731687303715884105727")
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeI32TwinRustAsync,
-      <int?>[null, 0, -2147483648, 2147483647, 1234567890, -1234567890],
-    );
+        exampleBasicOptionalTypeU8TwinRustAsync, <int?>[null, 0, 255, 123]);
+    addTestsIdentityFunctionCall(exampleBasicOptionalTypeU16TwinRustAsync,
+        <int?>[null, 0, 65535, 12345]);
+    addTestsIdentityFunctionCall(exampleBasicOptionalTypeU32TwinRustAsync,
+        <int?>[null, 0, 4294967295, 2468013579]);
     addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeI64TwinRustAsync,
-      <PlatformInt64?>[
-        null,
-        PlatformInt64.parse("0"),
-        PlatformInt64.parse("-9007199254740992"),
-        PlatformInt64.parse("9007199254740992"),
-        PlatformInt64.parse("-9223372036854775808"),
-        PlatformInt64.parse("9223372036854775807"),
-        PlatformInt64.parse("1234567890123456789"),
-        PlatformInt64.parse("-1234567890123456789"),
-      ],
-    );
+        exampleBasicOptionalTypeU64TwinRustAsync, <BigInt?>[
+      null,
+      BigInt.parse("0"),
+      BigInt.parse("9007199254740992"),
+      BigInt.parse("9223372036854775807"),
+      BigInt.parse("9223372036854775808"),
+      BigInt.parse("18446744073709551615"),
+      BigInt.parse("12345678912345678913")
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeI128TwinRustAsync,
-      <BigInt?>[
-        null,
-        BigInt.parse("0"),
-        BigInt.parse("-9007199254740992"),
-        BigInt.parse("9007199254740992"),
-        BigInt.parse("-9223372036854775808"),
-        BigInt.parse("9223372036854775807"),
-        BigInt.parse("-170141183460469231731687303715884105728"),
-        BigInt.parse("170141183460469231731687303715884105727"),
-      ],
-    );
+        exampleBasicOptionalTypeU128TwinRustAsync, <BigInt?>[
+      null,
+      BigInt.parse("0"),
+      BigInt.parse("9007199254740992"),
+      BigInt.parse("9223372036854775807"),
+      BigInt.parse("9223372036854775808"),
+      BigInt.parse("18446744073709551615"),
+      BigInt.parse("340282366920938463463374607431768211455")
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeU8TwinRustAsync,
-      <int?>[null, 0, 255, 123],
-    );
+        exampleBasicOptionalTypeIsizeTwinRustAsync, <PlatformInt64?>[
+      null,
+      PlatformInt64.parse("0"),
+      PlatformInt64.parse("-2147483648"),
+      PlatformInt64.parse("2147483647"),
+      PlatformInt64.parse("-1234234567"),
+      PlatformInt64.parse("1234234567"),
+      if (!kIsWeb) PlatformInt64.parse("-9007199254740992"),
+      if (!kIsWeb) PlatformInt64.parse("9007199254740992"),
+      if (!kIsWeb) PlatformInt64.parse("-9223372036854775808"),
+      if (!kIsWeb) PlatformInt64.parse("9223372036854775807")
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeU16TwinRustAsync,
-      <int?>[null, 0, 65535, 12345],
-    );
+        exampleBasicOptionalTypeUsizeTwinRustAsync, <BigInt?>[
+      null,
+      BigInt.parse("0"),
+      BigInt.parse("4294967295"),
+      BigInt.parse("1234234567"),
+      if (!kIsWeb) BigInt.parse("9007199254740992"),
+      if (!kIsWeb) BigInt.parse("9223372036854775807"),
+      if (!kIsWeb) BigInt.parse("18446744073709551615"),
+      if (!kIsWeb) BigInt.parse("12345678912345678913")
+    ]);
+    addTestsIdentityFunctionCall(exampleBasicOptionalTypeF32TwinRustAsync,
+        <double?>[null, 0, -42.5, 123456]);
+    addTestsIdentityFunctionCall(exampleBasicOptionalTypeF64TwinRustAsync,
+        <double?>[null, 0, -42.5, 123456]);
     addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeU32TwinRustAsync,
-      <int?>[null, 0, 4294967295, 2468013579],
-    );
+        exampleBasicOptionalTypeBoolTwinRustAsync, <bool?>[null, false, true]);
+    addTestsIdentityFunctionCall(exampleBasicOptionalTypeStringTwinRustAsync,
+        <String?>[null, "", "hello", "😂"]);
     addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeU64TwinRustAsync,
-      <BigInt?>[
-        null,
-        BigInt.parse("0"),
-        BigInt.parse("9007199254740992"),
-        BigInt.parse("9223372036854775807"),
-        BigInt.parse("9223372036854775808"),
-        BigInt.parse("18446744073709551615"),
-        BigInt.parse("12345678912345678913"),
-      ],
-    );
+        exampleBasicOptionalTypeBytesTwinRustAsync, <Uint8List?>[
+      null,
+      Uint8List.fromList([]),
+      Uint8List.fromList([255, 0]),
+      Uint8List.fromList([10, 20, 30, 40])
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeU128TwinRustAsync,
-      <BigInt?>[
-        null,
-        BigInt.parse("0"),
-        BigInt.parse("9007199254740992"),
-        BigInt.parse("9223372036854775807"),
-        BigInt.parse("9223372036854775808"),
-        BigInt.parse("18446744073709551615"),
-        BigInt.parse("340282366920938463463374607431768211455"),
-      ],
-    );
+        exampleBasicOptionalTypeBasicPrimitiveEnumTwinRustAsyncTwinRustAsync,
+        <BasicPrimitiveEnumTwinRustAsync?>[
+          null,
+          BasicPrimitiveEnumTwinRustAsync.apple,
+          BasicPrimitiveEnumTwinRustAsync.orange
+        ]);
     addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeIsizeTwinRustAsync,
-      <PlatformInt64?>[
-        null,
-        PlatformInt64.parse("0"),
-        PlatformInt64.parse("-2147483648"),
-        PlatformInt64.parse("2147483647"),
-        PlatformInt64.parse("-1234234567"),
-        PlatformInt64.parse("1234234567"),
-        if (!kIsWeb) PlatformInt64.parse("-9007199254740992"),
-        if (!kIsWeb) PlatformInt64.parse("9007199254740992"),
-        if (!kIsWeb) PlatformInt64.parse("-9223372036854775808"),
-        if (!kIsWeb) PlatformInt64.parse("9223372036854775807"),
-      ],
-    );
+        exampleBasicOptionalTypeBasicGeneralEnumTwinRustAsyncTwinRustAsync,
+        <BasicGeneralEnumTwinRustAsync?>[
+          null,
+          BasicGeneralEnumTwinRustAsync.apple(field: "one"),
+          BasicGeneralEnumTwinRustAsync.orange()
+        ]);
     addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeUsizeTwinRustAsync,
-      <BigInt?>[
-        null,
-        BigInt.parse("0"),
-        BigInt.parse("4294967295"),
-        BigInt.parse("1234234567"),
-        if (!kIsWeb) BigInt.parse("9007199254740992"),
-        if (!kIsWeb) BigInt.parse("9223372036854775807"),
-        if (!kIsWeb) BigInt.parse("18446744073709551615"),
-        if (!kIsWeb) BigInt.parse("12345678912345678913"),
-      ],
-    );
-    addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeF32TwinRustAsync,
-      <double?>[null, 0, -42.5, 123456],
-    );
-    addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeF64TwinRustAsync,
-      <double?>[null, 0, -42.5, 123456],
-    );
-    addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeBoolTwinRustAsync,
-      <bool?>[null, false, true],
-    );
-    addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeStringTwinRustAsync,
-      <String?>[null, "", "hello", "😂"],
-    );
-    addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeBytesTwinRustAsync,
-      <Uint8List?>[
-        null,
-        Uint8List.fromList([]),
-        Uint8List.fromList([255, 0]),
-        Uint8List.fromList([10, 20, 30, 40]),
-      ],
-    );
-    addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeBasicPrimitiveEnumTwinRustAsyncTwinRustAsync,
-      <BasicPrimitiveEnumTwinRustAsync?>[
-        null,
-        BasicPrimitiveEnumTwinRustAsync.apple,
-        BasicPrimitiveEnumTwinRustAsync.orange,
-      ],
-    );
-    addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeBasicGeneralEnumTwinRustAsyncTwinRustAsync,
-      <BasicGeneralEnumTwinRustAsync?>[
-        null,
-        BasicGeneralEnumTwinRustAsync.apple(field: "one"),
-        BasicGeneralEnumTwinRustAsync.orange(),
-      ],
-    );
-    addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeBasicStructTwinRustAsyncTwinRustAsync,
-      <BasicStructTwinRustAsync?>[
-        null,
-        BasicStructTwinRustAsync(apple: null, orange: null),
-        BasicStructTwinRustAsync(apple: "one", orange: 42),
-      ],
-    );
+        exampleBasicOptionalTypeBasicStructTwinRustAsyncTwinRustAsync,
+        <BasicStructTwinRustAsync?>[
+          null,
+          BasicStructTwinRustAsync(apple: null, orange: null),
+          BasicStructTwinRustAsync(apple: "one", orange: 42)
+        ]);
   });
 }

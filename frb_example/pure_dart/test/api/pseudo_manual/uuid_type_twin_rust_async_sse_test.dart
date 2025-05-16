@@ -19,11 +19,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('Vec<Uuid>', () async {
     final uuid = Uuid();
-    final ids = List<UuidValue>.from([
-      uuid.v4obj(),
-      uuid.v1obj(),
-      uuid.v4obj(),
-    ]);
+    final ids =
+        List<UuidValue>.from([uuid.v4obj(), uuid.v1obj(), uuid.v4obj()]);
     final outputs = await handleUuidsTwinRustAsyncSse(ids: ids);
     expect(ids, outputs);
   });

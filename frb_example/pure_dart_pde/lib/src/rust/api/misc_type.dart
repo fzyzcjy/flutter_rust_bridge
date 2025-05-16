@@ -17,15 +17,14 @@ Future<void> funcReturnUnitTwinNormal() =>
 Future<List<MySize>> handleListOfStructTwinNormal({required List<MySize> l}) =>
     RustLib.instance.api.crateApiMiscTypeHandleListOfStructTwinNormal(l: l);
 
-Future<List<String>> handleStringListTwinNormal({
-  required List<String> names,
-}) => RustLib.instance.api.crateApiMiscTypeHandleStringListTwinNormal(
-  names: names,
-);
+Future<List<String>> handleStringListTwinNormal(
+        {required List<String> names}) =>
+    RustLib.instance.api
+        .crateApiMiscTypeHandleStringListTwinNormal(names: names);
 
-Future<EmptyTwinNormal> emptyStructTwinNormal({
-  required EmptyTwinNormal empty,
-}) => RustLib.instance.api.crateApiMiscTypeEmptyStructTwinNormal(empty: empty);
+Future<EmptyTwinNormal> emptyStructTwinNormal(
+        {required EmptyTwinNormal empty}) =>
+    RustLib.instance.api.crateApiMiscTypeEmptyStructTwinNormal(empty: empty);
 
 class EmptyTwinNormal {
   const EmptyTwinNormal();

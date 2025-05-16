@@ -14,13 +14,12 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 abstract class DroppableTwinRustAsync implements RustOpaqueInterface {
   Stream<int> createStreamTwinRustAsync();
 
-  static Future<int> getDropCountTwinRustAsync() =>
-      RustLib.instance.api
-          .crateApiPseudoManualDroppingTwinRustAsyncDroppableTwinRustAsyncGetDropCountTwinRustAsync();
+  static Future<int> getDropCountTwinRustAsync() => RustLib.instance.api
+      .crateApiPseudoManualDroppingTwinRustAsyncDroppableTwinRustAsyncGetDropCountTwinRustAsync();
 
-  static Future<DroppableTwinRustAsync> newTwinRustAsync() =>
-      RustLib.instance.api
-          .crateApiPseudoManualDroppingTwinRustAsyncDroppableTwinRustAsyncNewTwinRustAsync();
+  static Future<DroppableTwinRustAsync> newTwinRustAsync() => RustLib
+      .instance.api
+      .crateApiPseudoManualDroppingTwinRustAsyncDroppableTwinRustAsyncNewTwinRustAsync();
 
   Future<void> simpleMethodTwinRustAsync();
 }

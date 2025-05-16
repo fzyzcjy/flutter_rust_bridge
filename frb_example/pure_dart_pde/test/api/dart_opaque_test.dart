@@ -12,19 +12,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
   String f() => 'Test_String';
 
   test('loopback', () async {
-    await futurizeVoidTwinNormal(
-      loopBackArrayGetTwinNormal(
-        opaque: await loopBackArrayTwinNormal(opaque: f),
-      ),
-    );
-    await futurizeVoidTwinNormal(
-      loopBackVecGetTwinNormal(opaque: await loopBackVecTwinNormal(opaque: f)),
-    );
-    await futurizeVoidTwinNormal(
-      loopBackOptionGetTwinNormal(
-        opaque: await loopBackOptionTwinNormal(opaque: f),
-      ),
-    );
+    await futurizeVoidTwinNormal(loopBackArrayGetTwinNormal(
+        opaque: await loopBackArrayTwinNormal(opaque: f)));
+    await futurizeVoidTwinNormal(loopBackVecGetTwinNormal(
+        opaque: await loopBackVecTwinNormal(opaque: f)));
+    await futurizeVoidTwinNormal(loopBackOptionGetTwinNormal(
+        opaque: await loopBackOptionTwinNormal(opaque: f)));
 
     var back1 = await loopBackTwinNormal(opaque: f) as String Function();
     expect(back1(), 'Test_String');
@@ -35,9 +28,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('drop', () async {
     expect(
-      await asyncAcceptDartOpaqueTwinNormal(opaque: createLargeList(mb: 200)),
-      'async test',
-    );
+        await asyncAcceptDartOpaqueTwinNormal(opaque: createLargeList(mb: 200)),
+        'async test');
   });
 
   test('nested', () async {

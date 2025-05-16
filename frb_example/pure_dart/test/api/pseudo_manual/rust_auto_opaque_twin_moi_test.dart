@@ -25,22 +25,19 @@ Future<void> main({bool skipRustLibInit = false}) async {
       test('can be called', () async {
         final obj = await rustAutoOpaqueReturnOwnTwinMoi(initial: 100);
         await futurizeVoidTwinMoi(
-          rustAutoOpaqueArgOwnTwinMoi(arg: obj, expect: 100),
-        );
+            rustAutoOpaqueArgOwnTwinMoi(arg: obj, expect: 100));
       });
 
       test('after call, the object cannot be used again', () async {
         final obj = await rustAutoOpaqueReturnOwnTwinMoi(initial: 100);
         await futurizeVoidTwinMoi(
-          rustAutoOpaqueArgOwnTwinMoi(arg: obj, expect: 100),
-        );
+            rustAutoOpaqueArgOwnTwinMoi(arg: obj, expect: 100));
 
         expect(obj.isDisposed, true);
 
         await expectLater(
-          () => rustAutoOpaqueArgBorrowTwinMoi(arg: obj, expect: 100),
-          throwsA(isA<DroppableDisposedException>()),
-        );
+            () => rustAutoOpaqueArgBorrowTwinMoi(arg: obj, expect: 100),
+            throwsA(isA<DroppableDisposedException>()));
       });
     });
 
@@ -48,22 +45,19 @@ Future<void> main({bool skipRustLibInit = false}) async {
       test('can be called', () async {
         final obj = await rustAutoOpaqueReturnOwnTwinMoi(initial: 100);
         await futurizeVoidTwinMoi(
-          rustAutoOpaqueArgBorrowTwinMoi(arg: obj, expect: 100),
-        );
+            rustAutoOpaqueArgBorrowTwinMoi(arg: obj, expect: 100));
         expect(obj.isDisposed, false);
       });
 
       test('after call, the object can still be used again', () async {
         final obj = await rustAutoOpaqueReturnOwnTwinMoi(initial: 100);
         await futurizeVoidTwinMoi(
-          rustAutoOpaqueArgBorrowTwinMoi(arg: obj, expect: 100),
-        );
+            rustAutoOpaqueArgBorrowTwinMoi(arg: obj, expect: 100));
 
         expect(obj.isDisposed, false);
 
         await futurizeVoidTwinMoi(
-          rustAutoOpaqueArgBorrowTwinMoi(arg: obj, expect: 100),
-        );
+            rustAutoOpaqueArgBorrowTwinMoi(arg: obj, expect: 100));
       });
     });
 
@@ -71,49 +65,38 @@ Future<void> main({bool skipRustLibInit = false}) async {
       test('can be called', () async {
         final obj = await rustAutoOpaqueReturnOwnTwinMoi(initial: 100);
         await futurizeVoidTwinMoi(
-          rustAutoOpaqueArgMutBorrowTwinMoi(arg: obj, expect: 100, adder: 1),
-        );
+            rustAutoOpaqueArgMutBorrowTwinMoi(arg: obj, expect: 100, adder: 1));
         expect(obj.isDisposed, false);
       });
 
       test('after call, the object can still be used again', () async {
         final obj = await rustAutoOpaqueReturnOwnTwinMoi(initial: 100);
         await futurizeVoidTwinMoi(
-          rustAutoOpaqueArgMutBorrowTwinMoi(arg: obj, expect: 100, adder: 1),
-        );
+            rustAutoOpaqueArgMutBorrowTwinMoi(arg: obj, expect: 100, adder: 1));
+
+        expect(obj.isDisposed, false);
+
+        await futurizeVoidTwinMoi(rustAutoOpaqueArgMutBorrowTwinMoi(
+            arg: obj, expect: 101, adder: 10));
 
         expect(obj.isDisposed, false);
 
         await futurizeVoidTwinMoi(
-          rustAutoOpaqueArgMutBorrowTwinMoi(
-            arg: obj,
-            expect: 101,
-            adder: 10,
-          ),
-        );
-
-        expect(obj.isDisposed, false);
-
-        await futurizeVoidTwinMoi(
-          rustAutoOpaqueArgBorrowTwinMoi(arg: obj, expect: 111),
-        );
+            rustAutoOpaqueArgBorrowTwinMoi(arg: obj, expect: 111));
       });
 
       test('does change the internal data', () async {
         final obj = await rustAutoOpaqueReturnOwnTwinMoi(initial: 100);
 
         await futurizeVoidTwinMoi(
-          rustAutoOpaqueArgBorrowTwinMoi(arg: obj, expect: 100),
-        );
+            rustAutoOpaqueArgBorrowTwinMoi(arg: obj, expect: 100));
 
         await futurizeVoidTwinMoi(
-          rustAutoOpaqueArgMutBorrowTwinMoi(arg: obj, expect: 100, adder: 1),
-        );
+            rustAutoOpaqueArgMutBorrowTwinMoi(arg: obj, expect: 100, adder: 1));
 
         // expect internal data to change
         await futurizeVoidTwinMoi(
-          rustAutoOpaqueArgBorrowTwinMoi(arg: obj, expect: 100 + 1),
-        );
+            rustAutoOpaqueArgBorrowTwinMoi(arg: obj, expect: 100 + 1));
       });
     });
 
@@ -122,11 +105,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
         final obj = await rustAutoOpaqueReturnOwnTwinMoi(initial: 100);
         await Future.wait([
           futurizeVoidTwinMoi(
-            rustAutoOpaqueArgBorrowTwinMoi(arg: obj, expect: 100),
-          ),
+              rustAutoOpaqueArgBorrowTwinMoi(arg: obj, expect: 100)),
           futurizeVoidTwinMoi(
-            rustAutoOpaqueArgBorrowTwinMoi(arg: obj, expect: 100),
-          ),
+              rustAutoOpaqueArgBorrowTwinMoi(arg: obj, expect: 100)),
         ]);
       });
 
@@ -178,8 +159,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final b = await rustAutoOpaqueArgOwnAndReturnOwnTwinMoi(arg: a);
 
       await futurizeVoidTwinMoi(
-        rustAutoOpaqueArgOwnTwinMoi(arg: b, expect: 42),
-      );
+          rustAutoOpaqueArgOwnTwinMoi(arg: b, expect: 42));
     });
 
     test('call rustAutoOpaqueTwoArgsTwinMoi', () async {
@@ -193,24 +173,19 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final a = await rustAutoOpaqueReturnOwnTwinMoi(initial: 42);
 
       await futurizeVoidTwinMoi(
-        rustAutoOpaqueNormalAndOpaqueArgTwinMoi(a: a, b: 'hello'),
-      );
+          rustAutoOpaqueNormalAndOpaqueArgTwinMoi(a: a, b: 'hello'));
     });
   });
 
   group('complex type signatures', () {
     test('plus sign', () async {
       final obj = await rustAutoOpaquePlusSignReturnTwinMoi();
-      await futurizeVoidTwinMoi(
-        rustAutoOpaquePlusSignArgTwinMoi(arg: obj),
-      );
+      await futurizeVoidTwinMoi(rustAutoOpaquePlusSignArgTwinMoi(arg: obj));
     });
 
     test('callable', () async {
       final obj = await rustAutoOpaqueCallableReturnTwinMoi();
-      await futurizeVoidTwinMoi(
-        rustAutoOpaqueCallableArgTwinMoi(arg: obj),
-      );
+      await futurizeVoidTwinMoi(rustAutoOpaqueCallableArgTwinMoi(arg: obj));
     });
   });
 
@@ -238,14 +213,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('static method', () async {
     final obj = await NonCloneSimpleTwinMoi.staticMethodReturnOwnTwinMoi();
     await futurizeVoidTwinMoi(
-      NonCloneSimpleTwinMoi.staticMethodArgBorrowTwinMoi(arg: obj),
-    );
+        NonCloneSimpleTwinMoi.staticMethodArgBorrowTwinMoi(arg: obj));
     await futurizeVoidTwinMoi(
-      NonCloneSimpleTwinMoi.staticMethodArgMutBorrowTwinMoi(arg: obj),
-    );
+        NonCloneSimpleTwinMoi.staticMethodArgMutBorrowTwinMoi(arg: obj));
     await futurizeVoidTwinMoi(
-      NonCloneSimpleTwinMoi.staticMethodArgOwnTwinMoi(arg: obj),
-    );
+        NonCloneSimpleTwinMoi.staticMethodArgOwnTwinMoi(arg: obj));
   });
 
   test('instance method', () async {
@@ -270,11 +242,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
         await rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinMoi();
     expect(obj.good, 'hello');
     await futurizeVoidTwinMoi(
-      rustAutoOpaqueArgBorrowTwinMoi(arg: obj.opaque, expect: 42),
-    );
+        rustAutoOpaqueArgBorrowTwinMoi(arg: obj.opaque, expect: 42));
     await futurizeVoidTwinMoi(
-      rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinMoi(arg: obj),
-    );
+        rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinMoi(arg: obj));
   });
 
   test('enums with both encodable and opaque', () async {
@@ -284,32 +254,24 @@ Future<void> main({bool skipRustLibInit = false}) async {
         (await rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinMoi());
 
     await futurizeVoidTwinMoi(
-      rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinMoi(arg: good),
-    );
+        rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinMoi(arg: good));
     await futurizeVoidTwinMoi(
-      rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinMoi(arg: opaque),
-    );
+        rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinMoi(arg: opaque));
 
-    await futurizeVoidTwinMoi(
-      rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinMoi(
-        arg: EnumWithGoodAndOpaqueTwinMoi.good('hello'),
-      ),
-    );
+    await futurizeVoidTwinMoi(rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinMoi(
+        arg: EnumWithGoodAndOpaqueTwinMoi.good('hello')));
   });
 
   test('enum opaque type', () async {
     final obj = await rustAutoOpaqueEnumReturnOwnTwinMoi();
-    await futurizeVoidTwinMoi(
-      rustAutoOpaqueEnumArgBorrowTwinMoi(arg: obj),
-    );
+    await futurizeVoidTwinMoi(rustAutoOpaqueEnumArgBorrowTwinMoi(arg: obj));
   });
 
   test('stream sink', () async {
     final stream = rustAutoOpaqueStreamSinkTwinMoi();
     final obj = (await stream.toList()).single;
     await futurizeVoidTwinMoi(
-      rustAutoOpaqueArgBorrowTwinMoi(arg: obj, expect: 42),
-    );
+        rustAutoOpaqueArgBorrowTwinMoi(arg: obj, expect: 42));
   });
 
   test('vec of opaque', () async {
@@ -317,57 +279,44 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     expect(vec.length, 2);
     await futurizeVoidTwinMoi(
-      rustAutoOpaqueArgBorrowTwinMoi(arg: vec[0], expect: 10),
-    );
+        rustAutoOpaqueArgBorrowTwinMoi(arg: vec[0], expect: 10));
     await futurizeVoidTwinMoi(
-      rustAutoOpaqueArgBorrowTwinMoi(arg: vec[1], expect: 20),
-    );
+        rustAutoOpaqueArgBorrowTwinMoi(arg: vec[1], expect: 20));
 
     await futurizeVoidTwinMoi(
-      rustAutoOpaqueArgVecOwnTwinMoi(arg: vec, expect: [10, 20]),
-    );
+        rustAutoOpaqueArgVecOwnTwinMoi(arg: vec, expect: [10, 20]));
   });
 
   group('Explicit rust-auto-opaque types', () {
     test('it can be created and used', () async {
       final obj = await rustAutoOpaqueExplicitReturnTwinMoi(initial: 100);
       await futurizeVoidTwinMoi(
-        rustAutoOpaqueExplicitArgTwinMoi(arg: obj, expect: 100),
-      );
+          rustAutoOpaqueExplicitArgTwinMoi(arg: obj, expect: 100));
     });
 
     test('it can be inside a struct used as argument', () async {
       final obj = await rustAutoOpaqueExplicitReturnTwinMoi(initial: 100);
-      await futurizeVoidTwinMoi(
-        rustAutoOpaqueExplicitStructTwinMoi(
+      await futurizeVoidTwinMoi(rustAutoOpaqueExplicitStructTwinMoi(
           arg: StructWithExplicitAutoOpaqueFieldTwinMoi(
-            autoOpaque: obj,
-            normal: 100,
-          ),
-        ),
-      );
+              autoOpaque: obj, normal: 100)));
     });
 
     test('it can be inside a struct used as return type', () async {
       final obj = await rustAutoOpaqueExplicitReturnStructTwinMoi();
-      await futurizeVoidTwinMoi(
-        rustAutoOpaqueExplicitStructTwinMoi(arg: obj),
-      );
+      await futurizeVoidTwinMoi(rustAutoOpaqueExplicitStructTwinMoi(arg: obj));
     });
 
     group('it can be used with automatic (implicit) ones', () {
       test('create by explicit, use by implicit', () async {
         final obj = await rustAutoOpaqueExplicitReturnTwinMoi(initial: 100);
         await futurizeVoidTwinMoi(
-          rustAutoOpaqueArgOwnTwinMoi(arg: obj, expect: 100),
-        );
+            rustAutoOpaqueArgOwnTwinMoi(arg: obj, expect: 100));
       });
 
       test('create by implicit, use by explicit', () async {
         final obj = await rustAutoOpaqueReturnOwnTwinMoi(initial: 100);
         await futurizeVoidTwinMoi(
-          rustAutoOpaqueExplicitArgTwinMoi(arg: obj, expect: 100),
-        );
+            rustAutoOpaqueExplicitArgTwinMoi(arg: obj, expect: 100));
       });
     });
   });
@@ -377,9 +326,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final obj = await rustAutoOpaqueReturnOwnTwinMoi(initial: 100);
       await expectRustPanic(
         () async => rustAutoOpaqueBorrowAndMutBorrowTwinMoi(
-          borrow: obj,
-          mutBorrow: obj,
-        ),
+            borrow: obj, mutBorrow: obj),
         'TwinMoi',
         messageMatcherOnNative: matches(RegExp('Cannot.*borrow.*object')),
       );
@@ -389,22 +336,16 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final a = await rustAutoOpaqueReturnOwnTwinMoi(initial: 100);
       final b = await rustAutoOpaqueReturnOwnTwinMoi(initial: 200);
       expect(
-        await rustAutoOpaqueBorrowAndMutBorrowTwinMoi(
-          borrow: a,
-          mutBorrow: b,
-        ),
-        300,
-      );
+          await rustAutoOpaqueBorrowAndMutBorrowTwinMoi(
+              borrow: a, mutBorrow: b),
+          300);
     });
   });
 
   group('borrow + borrow', () {
     test('when same object', () async {
       final obj = await rustAutoOpaqueReturnOwnTwinMoi(initial: 100);
-      expect(
-        await rustAutoOpaqueBorrowAndBorrowTwinMoi(a: obj, b: obj),
-        200,
-      );
+      expect(await rustAutoOpaqueBorrowAndBorrowTwinMoi(a: obj, b: obj), 200);
     });
 
     test('when different object', () async {

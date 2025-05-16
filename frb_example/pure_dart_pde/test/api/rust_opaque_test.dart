@@ -24,60 +24,54 @@ Future<void> main({bool skipRustLibInit = false}) async {
     var hideData = await runOpaqueTwinNormal(opaque: opaque);
 
     expect(
-      hideData,
-      "content - Some(PrivateData "
-      "{"
-      " content: \"content nested\", "
-      "primitive: 424242, "
-      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-      "lifetime: \"static str\" "
-      "})",
-    );
+        hideData,
+        "content - Some(PrivateData "
+        "{"
+        " content: \"content nested\", "
+        "primitive: 424242, "
+        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+        "lifetime: \"static str\" "
+        "})");
     opaque.dispose();
   });
 
   test('double Call', () async {
     var data = await createOpaqueTwinNormal();
     expect(
-      await runOpaqueTwinNormal(opaque: data),
-      "content - Some(PrivateData "
-      "{"
-      " content: \"content nested\", "
-      "primitive: 424242, "
-      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-      "lifetime: \"static str\" "
-      "})",
-    );
+        await runOpaqueTwinNormal(opaque: data),
+        "content - Some(PrivateData "
+        "{"
+        " content: \"content nested\", "
+        "primitive: 424242, "
+        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+        "lifetime: \"static str\" "
+        "})");
     expect(
-      await runOpaqueTwinNormal(opaque: data),
-      "content - Some(PrivateData "
-      "{"
-      " content: \"content nested\", "
-      "primitive: 424242, "
-      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-      "lifetime: \"static str\" "
-      "})",
-    );
+        await runOpaqueTwinNormal(opaque: data),
+        "content - Some(PrivateData "
+        "{"
+        " content: \"content nested\", "
+        "primitive: 424242, "
+        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+        "lifetime: \"static str\" "
+        "})");
     data.dispose();
   });
 
   test('call after dispose', () async {
     var data = await createOpaqueTwinNormal();
     expect(
-      await runOpaqueTwinNormal(opaque: data),
-      "content - Some(PrivateData "
-      "{"
-      " content: \"content nested\", "
-      "primitive: 424242, "
-      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-      "lifetime: \"static str\" "
-      "})",
-    );
+        await runOpaqueTwinNormal(opaque: data),
+        "content - Some(PrivateData "
+        "{"
+        " content: \"content nested\", "
+        "primitive: 424242, "
+        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+        "lifetime: \"static str\" "
+        "})");
     data.dispose();
-    await expectLater(
-      () => runOpaqueTwinNormal(opaque: data),
-      throwsA(isA<DroppableDisposedException>()),
-    );
+    await expectLater(() => runOpaqueTwinNormal(opaque: data),
+        throwsA(isA<DroppableDisposedException>()));
   });
 
   test('dispose before complete', () async {
@@ -85,39 +79,33 @@ Future<void> main({bool skipRustLibInit = false}) async {
     var task = runOpaqueWithDelayTwinNormal(opaque: data);
     data.dispose();
     expect(
-      await task,
-      "content - Some(PrivateData "
-      "{"
-      " content: \"content nested\", "
-      "primitive: 424242, "
-      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-      "lifetime: \"static str\" "
-      "})",
-    );
-    await expectLater(
-      () => runOpaqueTwinNormal(opaque: data),
-      throwsA(isA<DroppableDisposedException>()),
-    );
-  });
-
-  test('create array of opaque type', () async {
-    var data = await opaqueArrayTwinNormal();
-    for (var v in data) {
-      expect(
-        await runOpaqueTwinNormal(opaque: v),
+        await task,
         "content - Some(PrivateData "
         "{"
         " content: \"content nested\", "
         "primitive: 424242, "
         "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
         "lifetime: \"static str\" "
-        "})",
-      );
+        "})");
+    await expectLater(() => runOpaqueTwinNormal(opaque: data),
+        throwsA(isA<DroppableDisposedException>()));
+  });
+
+  test('create array of opaque type', () async {
+    var data = await opaqueArrayTwinNormal();
+    for (var v in data) {
+      expect(
+          await runOpaqueTwinNormal(opaque: v),
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
       v.dispose();
-      await expectLater(
-        () => runOpaqueTwinNormal(opaque: v),
-        throwsA(isA<DroppableDisposedException>()),
-      );
+      await expectLater(() => runOpaqueTwinNormal(opaque: v),
+          throwsA(isA<DroppableDisposedException>()));
     }
   });
 
@@ -125,15 +113,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
     var data = await createArrayOpaqueEnumTwinNormal();
 
     expect(
-      await runEnumOpaqueTwinNormal(opaque: data[0]),
-      "content - Some(PrivateData "
-      "{"
-      " content: \"content nested\", "
-      "primitive: 424242, "
-      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-      "lifetime: \"static str\" "
-      "})",
-    );
+        await runEnumOpaqueTwinNormal(opaque: data[0]),
+        "content - Some(PrivateData "
+        "{"
+        " content: \"content nested\", "
+        "primitive: 424242, "
+        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+        "lifetime: \"static str\" "
+        "})");
     (data[0] as EnumOpaqueTwinNormal_Struct).field0.dispose();
 
     expect(await runEnumOpaqueTwinNormal(opaque: data[1]), "42");
@@ -143,32 +130,28 @@ Future<void> main({bool skipRustLibInit = false}) async {
     (data[2] as EnumOpaqueTwinNormal_TraitObj).field0.dispose();
 
     expect(
-      await runEnumOpaqueTwinNormal(opaque: data[3]),
-      "\"content - Some(PrivateData "
-      "{"
-      " content: \\\"content nested\\\", "
-      "primitive: 424242, "
-      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-      "lifetime: \\\"static str\\\" "
-      "})\"",
-    );
+        await runEnumOpaqueTwinNormal(opaque: data[3]),
+        "\"content - Some(PrivateData "
+        "{"
+        " content: \\\"content nested\\\", "
+        "primitive: 424242, "
+        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+        "lifetime: \\\"static str\\\" "
+        "})\"");
     (data[3] as EnumOpaqueTwinNormal_Mutex).field0.dispose();
 
     expect(
-      await runEnumOpaqueTwinNormal(opaque: data[4]),
-      "\"content - Some(PrivateData "
-      "{"
-      " content: \\\"content nested\\\", "
-      "primitive: 424242, "
-      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-      "lifetime: \\\"static str\\\" "
-      "})\"",
-    );
+        await runEnumOpaqueTwinNormal(opaque: data[4]),
+        "\"content - Some(PrivateData "
+        "{"
+        " content: \\\"content nested\\\", "
+        "primitive: 424242, "
+        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+        "lifetime: \\\"static str\\\" "
+        "})\"");
     (data[4] as EnumOpaqueTwinNormal_RwLock).field0.dispose();
-    await expectLater(
-      () => runEnumOpaqueTwinNormal(opaque: data[4]),
-      throwsA(isA<DroppableDisposedException>()),
-    );
+    await expectLater(() => runEnumOpaqueTwinNormal(opaque: data[4]),
+        throwsA(isA<DroppableDisposedException>()));
   });
 
   test('opaque field', () async {
@@ -176,44 +159,37 @@ Future<void> main({bool skipRustLibInit = false}) async {
     await futurizeVoidTwinNormal(runNestedOpaqueTwinNormal(opaque: data));
 
     expect(
-      await runOpaqueTwinNormal(opaque: data.first),
-      "content - Some(PrivateData "
-      "{"
-      " content: \"content nested\", "
-      "primitive: 424242, "
-      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-      "lifetime: \"static str\" "
-      "})",
-    );
+        await runOpaqueTwinNormal(opaque: data.first),
+        "content - Some(PrivateData "
+        "{"
+        " content: \"content nested\", "
+        "primitive: 424242, "
+        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+        "lifetime: \"static str\" "
+        "})");
     expect(
-      await runOpaqueTwinNormal(opaque: data.second),
-      "content - Some(PrivateData "
-      "{"
-      " content: \"content nested\", "
-      "primitive: 424242, "
-      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-      "lifetime: \"static str\" "
-      "})",
-    );
+        await runOpaqueTwinNormal(opaque: data.second),
+        "content - Some(PrivateData "
+        "{"
+        " content: \"content nested\", "
+        "primitive: 424242, "
+        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+        "lifetime: \"static str\" "
+        "})");
     data.first.dispose();
-    await expectLater(
-      () => runOpaqueTwinNormal(opaque: data.first),
-      throwsA(isA<DroppableDisposedException>()),
-    );
-    await expectLater(
-      () => runNestedOpaqueTwinNormal(opaque: data),
-      throwsA(isA<DroppableDisposedException>()),
-    );
+    await expectLater(() => runOpaqueTwinNormal(opaque: data.first),
+        throwsA(isA<DroppableDisposedException>()));
+    await expectLater(() => runNestedOpaqueTwinNormal(opaque: data),
+        throwsA(isA<DroppableDisposedException>()));
     expect(
-      await runOpaqueTwinNormal(opaque: data.second),
-      "content - Some(PrivateData "
-      "{"
-      " content: \"content nested\", "
-      "primitive: 424242, "
-      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-      "lifetime: \"static str\" "
-      "})",
-    );
+        await runOpaqueTwinNormal(opaque: data.second),
+        "content - Some(PrivateData "
+        "{"
+        " content: \"content nested\", "
+        "primitive: 424242, "
+        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+        "lifetime: \"static str\" "
+        "})");
     data.second.dispose();
   });
 
@@ -223,20 +199,17 @@ Future<void> main({bool skipRustLibInit = false}) async {
     data[0].dispose();
 
     expect(
-      await runOpaqueTwinNormal(opaque: data[1]),
-      "content - Some(PrivateData "
-      "{"
-      " content: \"content nested\", "
-      "primitive: 424242, "
-      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-      "lifetime: \"static str\" "
-      "})",
-    );
+        await runOpaqueTwinNormal(opaque: data[1]),
+        "content - Some(PrivateData "
+        "{"
+        " content: \"content nested\", "
+        "primitive: 424242, "
+        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+        "lifetime: \"static str\" "
+        "})");
 
-    await expectLater(
-      () => opaqueArrayRunTwinNormal(data: data),
-      throwsA(isA<DroppableDisposedException>()),
-    );
+    await expectLater(() => opaqueArrayRunTwinNormal(data: data),
+        throwsA(isA<DroppableDisposedException>()));
     data[1].dispose();
   });
 
@@ -246,20 +219,17 @@ Future<void> main({bool skipRustLibInit = false}) async {
     data[0].dispose();
 
     expect(
-      await runOpaqueTwinNormal(opaque: data[1]),
-      "content - Some(PrivateData "
-      "{"
-      " content: \"content nested\", "
-      "primitive: 424242, "
-      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-      "lifetime: \"static str\" "
-      "})",
-    );
+        await runOpaqueTwinNormal(opaque: data[1]),
+        "content - Some(PrivateData "
+        "{"
+        " content: \"content nested\", "
+        "primitive: 424242, "
+        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+        "lifetime: \"static str\" "
+        "})");
 
-    await expectLater(
-      () => opaqueVecRunTwinNormal(data: data),
-      throwsA(isA<DroppableDisposedException>()),
-    );
+    await expectLater(() => opaqueVecRunTwinNormal(data: data),
+        throwsA(isA<DroppableDisposedException>()));
     data[1].dispose();
   });
 

@@ -17,15 +17,16 @@ Future<UuidValue> handleUuidTwinNormal({required UuidValue id}) =>
 Future<List<UuidValue>> handleUuidsTwinNormal({required List<UuidValue> ids}) =>
     RustLib.instance.api.crateApiUuidTypeHandleUuidsTwinNormal(ids: ids);
 
-Future<FeatureUuidTwinNormal> handleNestedUuidsTwinNormal({
-  required FeatureUuidTwinNormal ids,
-}) =>
+Future<FeatureUuidTwinNormal> handleNestedUuidsTwinNormal(
+        {required FeatureUuidTwinNormal ids}) =>
     RustLib.instance.api.crateApiUuidTypeHandleNestedUuidsTwinNormal(ids: ids);
 
 class FeatureUuidTwinNormal {
   final UuidValue one;
 
-  const FeatureUuidTwinNormal({required this.one});
+  const FeatureUuidTwinNormal({
+    required this.one,
+  });
 
   @override
   int get hashCode => one.hashCode;

@@ -19,7 +19,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       Int8List(1)..[0] = -128,
       Int8List(1)..[0] = 127,
       Int8List(1)..[0] = 79,
-      Int8List(1)..[0] = -79,
+      Int8List(1)..[0] = -79
     ]);
     addTestsIdentityFunctionCall(exampleBasicListTypeI16TwinNormal, <Int16List>[
       Int16List(0),
@@ -27,7 +27,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       Int16List(1)..[0] = -32768,
       Int16List(1)..[0] = 32767,
       Int16List(1)..[0] = 12345,
-      Int16List(1)..[0] = -12345,
+      Int16List(1)..[0] = -12345
     ]);
     addTestsIdentityFunctionCall(exampleBasicListTypeI32TwinNormal, <Int32List>[
       Int32List(0),
@@ -35,7 +35,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       Int32List(1)..[0] = -2147483648,
       Int32List(1)..[0] = 2147483647,
       Int32List(1)..[0] = 1234567890,
-      Int32List(1)..[0] = -1234567890,
+      Int32List(1)..[0] = -1234567890
     ]);
     addTestsIdentityFunctionCall(exampleBasicListTypeI64TwinNormal, <Int64List>[
       Int64List(0),
@@ -45,115 +45,96 @@ Future<void> main({bool skipRustLibInit = false}) async {
       Int64List(1)..[0] = PlatformInt64.parse("-9223372036854775808"),
       Int64List(1)..[0] = PlatformInt64.parse("9223372036854775807"),
       Int64List(1)..[0] = PlatformInt64.parse("1234567890123456789"),
-      Int64List(1)..[0] = PlatformInt64.parse("-1234567890123456789"),
+      Int64List(1)..[0] = PlatformInt64.parse("-1234567890123456789")
     ]);
     addTestsIdentityFunctionCall(exampleBasicListTypeU8TwinNormal, <Uint8List>[
       Uint8List(0),
       Uint8List(1)..[0] = 0,
       Uint8List(1)..[0] = 255,
-      Uint8List(1)..[0] = 123,
+      Uint8List(1)..[0] = 123
     ]);
     addTestsIdentityFunctionCall(
-      exampleBasicListTypeU16TwinNormal,
-      <Uint16List>[
-        Uint16List(0),
-        Uint16List(1)..[0] = 0,
-        Uint16List(1)..[0] = 65535,
-        Uint16List(1)..[0] = 12345,
-      ],
-    );
+        exampleBasicListTypeU16TwinNormal, <Uint16List>[
+      Uint16List(0),
+      Uint16List(1)..[0] = 0,
+      Uint16List(1)..[0] = 65535,
+      Uint16List(1)..[0] = 12345
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicListTypeU32TwinNormal,
-      <Uint32List>[
-        Uint32List(0),
-        Uint32List(1)..[0] = 0,
-        Uint32List(1)..[0] = 4294967295,
-        Uint32List(1)..[0] = 2468013579,
-      ],
-    );
+        exampleBasicListTypeU32TwinNormal, <Uint32List>[
+      Uint32List(0),
+      Uint32List(1)..[0] = 0,
+      Uint32List(1)..[0] = 4294967295,
+      Uint32List(1)..[0] = 2468013579
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicListTypeU64TwinNormal,
-      <Uint64List>[
-        Uint64List(0),
-        Uint64List(1)..[0] = BigInt.parse("0"),
-        Uint64List(1)..[0] = BigInt.parse("9007199254740992"),
-        Uint64List(1)..[0] = BigInt.parse("9223372036854775807"),
-        Uint64List(1)..[0] = BigInt.parse("9223372036854775808"),
-        Uint64List(1)..[0] = BigInt.parse("18446744073709551615"),
-        Uint64List(1)..[0] = BigInt.parse("12345678912345678913"),
-      ],
-    );
+        exampleBasicListTypeU64TwinNormal, <Uint64List>[
+      Uint64List(0),
+      Uint64List(1)..[0] = BigInt.parse("0"),
+      Uint64List(1)..[0] = BigInt.parse("9007199254740992"),
+      Uint64List(1)..[0] = BigInt.parse("9223372036854775807"),
+      Uint64List(1)..[0] = BigInt.parse("9223372036854775808"),
+      Uint64List(1)..[0] = BigInt.parse("18446744073709551615"),
+      Uint64List(1)..[0] = BigInt.parse("12345678912345678913")
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicListTypeF32TwinNormal,
-      <Float32List>[
-        Float32List(0),
-        Float32List(1)..[0] = 0,
-        Float32List(1)..[0] = -42.5,
-        Float32List(1)..[0] = 123456,
-      ],
-    );
+        exampleBasicListTypeF32TwinNormal, <Float32List>[
+      Float32List(0),
+      Float32List(1)..[0] = 0,
+      Float32List(1)..[0] = -42.5,
+      Float32List(1)..[0] = 123456
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicListTypeF64TwinNormal,
-      <Float64List>[
-        Float64List(0),
-        Float64List(1)..[0] = 0,
-        Float64List(1)..[0] = -42.5,
-        Float64List(1)..[0] = 123456,
-      ],
-    );
+        exampleBasicListTypeF64TwinNormal, <Float64List>[
+      Float64List(0),
+      Float64List(1)..[0] = 0,
+      Float64List(1)..[0] = -42.5,
+      Float64List(1)..[0] = 123456
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicListTypeBoolTwinNormal,
-      <List<bool>>[
-        <bool>[],
-        <bool>[false],
-        <bool>[true],
-      ],
-    );
+        exampleBasicListTypeBoolTwinNormal, <List<bool>>[
+      <bool>[],
+      <bool>[false],
+      <bool>[true]
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicListTypeStringTwinNormal,
-      <List<String>>[
-        [],
-        [""],
-        ["hello"],
-        ["😂"],
-      ],
-    );
+        exampleBasicListTypeStringTwinNormal, <List<String>>[
+      [],
+      [""],
+      ["hello"],
+      ["😂"]
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicListTypeBytesTwinNormal,
-      <List<Uint8List>>[
-        [],
-        [Uint8List.fromList([])],
-        [
-          Uint8List.fromList([255, 0]),
-        ],
-        [
-          Uint8List.fromList([10, 20, 30, 40]),
-        ],
+        exampleBasicListTypeBytesTwinNormal, <List<Uint8List>>[
+      [],
+      [Uint8List.fromList([])],
+      [
+        Uint8List.fromList([255, 0])
       ],
-    );
+      [
+        Uint8List.fromList([10, 20, 30, 40])
+      ]
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicListTypeBasicPrimitiveEnumTwinNormalTwinNormal,
-      <List<BasicPrimitiveEnumTwinNormal>>[
-        [],
-        [BasicPrimitiveEnumTwinNormal.apple],
-        [BasicPrimitiveEnumTwinNormal.orange],
-      ],
-    );
+        exampleBasicListTypeBasicPrimitiveEnumTwinNormalTwinNormal,
+        <List<BasicPrimitiveEnumTwinNormal>>[
+          [],
+          [BasicPrimitiveEnumTwinNormal.apple],
+          [BasicPrimitiveEnumTwinNormal.orange]
+        ]);
     addTestsIdentityFunctionCall(
-      exampleBasicListTypeBasicGeneralEnumTwinNormalTwinNormal,
-      <List<BasicGeneralEnumTwinNormal>>[
-        [],
-        [BasicGeneralEnumTwinNormal.apple(field: "one")],
-        [BasicGeneralEnumTwinNormal.orange()],
-      ],
-    );
+        exampleBasicListTypeBasicGeneralEnumTwinNormalTwinNormal,
+        <List<BasicGeneralEnumTwinNormal>>[
+          [],
+          [BasicGeneralEnumTwinNormal.apple(field: "one")],
+          [BasicGeneralEnumTwinNormal.orange()]
+        ]);
     addTestsIdentityFunctionCall(
-      exampleBasicListTypeBasicStructTwinNormalTwinNormal,
-      <List<BasicStructTwinNormal>>[
-        [],
-        [BasicStructTwinNormal(apple: null, orange: null)],
-        [BasicStructTwinNormal(apple: "one", orange: 42)],
-      ],
-    );
+        exampleBasicListTypeBasicStructTwinNormalTwinNormal,
+        <List<BasicStructTwinNormal>>[
+          [],
+          [BasicStructTwinNormal(apple: null, orange: null)],
+          [BasicStructTwinNormal(apple: "one", orange: 42)]
+        ]);
   });
 }

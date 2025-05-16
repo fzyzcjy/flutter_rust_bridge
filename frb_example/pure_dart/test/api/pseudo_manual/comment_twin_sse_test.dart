@@ -16,18 +16,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('can call the functions', () async {
     await futurizeVoidTwinSse(functionWithCommentsSlashStarStarTwinSse());
     await futurizeVoidTwinSse(
-      functionWithCommentsTripleSlashMultiLineTwinSse(),
-    );
+        functionWithCommentsTripleSlashMultiLineTwinSse());
     await futurizeVoidTwinSse(
-      functionWithCommentsTripleSlashSingleLineTwinSse(),
-    );
-    await futurizeVoidTwinSse(
-      StructWithCommentsTwinSse(
-        fieldWithComments: 42,
-      ).instanceMethodTwinSse(),
-    );
-    await futurizeVoidTwinSse(
-      StructWithCommentsTwinSse.staticMethodTwinSse(),
-    );
+        functionWithCommentsTripleSlashSingleLineTwinSse());
+    await futurizeVoidTwinSse(StructWithCommentsTwinSse(fieldWithComments: 42)
+        .instanceMethodTwinSse());
+    await futurizeVoidTwinSse(StructWithCommentsTwinSse.staticMethodTwinSse());
   });
 }

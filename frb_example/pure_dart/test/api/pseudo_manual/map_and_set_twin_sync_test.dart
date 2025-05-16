@@ -26,21 +26,17 @@ Future<void> main({bool skipRustLibInit = false}) async {
   ]);
 
   addTestsIdentityFunctionCall(
-    funcHashMapStringStringTwinSync,
-    <Map<String, String>>[
-      {},
-      {'a': 'b'},
-      {'a': 'b', 'c': 'd'},
-    ],
-  );
+      funcHashMapStringStringTwinSync, <Map<String, String>>[
+    {},
+    {'a': 'b'},
+    {'a': 'b', 'c': 'd'},
+  ]);
   addTestsIdentityFunctionCall(
-    funcHashMapStringStringHasherTwinSync,
-    <Map<String, String>>[
-      {},
-      {'a': 'b'},
-      {'a': 'b', 'c': 'd'},
-    ],
-  );
+      funcHashMapStringStringHasherTwinSync, <Map<String, String>>[
+    {},
+    {'a': 'b'},
+    {'a': 'b', 'c': 'd'},
+  ]);
   addTestsIdentityFunctionCall(funcHashSetStringTwinSync, <Set<String>>[
     {},
     {'a'},
@@ -53,46 +49,44 @@ Future<void> main({bool skipRustLibInit = false}) async {
   ]);
 
   addTestsIdentityFunctionCall(
-    funcHashMapStringBytesTwinSync,
-    <Map<String, Uint8List>>[
-      {},
-      {
-        'a': Uint8List.fromList([10, 20]),
-      },
-      {
-        'a': Uint8List.fromList([10, 20]),
-        'b': Uint8List.fromList([30, 40, 50]),
-      },
-    ],
-  );
+      funcHashMapStringBytesTwinSync, <Map<String, Uint8List>>[
+    {},
+    {
+      'a': Uint8List.fromList([10, 20])
+    },
+    {
+      'a': Uint8List.fromList([10, 20]),
+      'b': Uint8List.fromList([30, 40, 50]),
+    },
+  ]);
 
   addTestsIdentityFunctionCall(
-    funcHashMapStringStructTwinSync,
-    <Map<String, MySize>>[
-      {},
-      {'a': MySize(width: 1, height: 2)},
-      {'a': MySize(width: 1, height: 2), 'b': MySize(width: 3, height: 4)},
-    ],
-  );
+      funcHashMapStringStructTwinSync, <Map<String, MySize>>[
+    {},
+    {'a': MySize(width: 1, height: 2)},
+    {
+      'a': MySize(width: 1, height: 2),
+      'b': MySize(width: 3, height: 4),
+    },
+  ]);
 
   addTestsIdentityFunctionCall(
-    funcHashMapStringSimpleEnumTwinSync,
-    <Map<String, EnumSimpleTwinSync>>[
-      {},
-      {'a': EnumSimpleTwinSync.a},
-      {'a': EnumSimpleTwinSync.a, 'b': EnumSimpleTwinSync.b},
-    ],
-  );
+      funcHashMapStringSimpleEnumTwinSync, <Map<String, EnumSimpleTwinSync>>[
+    {},
+    {'a': EnumSimpleTwinSync.a},
+    {
+      'a': EnumSimpleTwinSync.a,
+      'b': EnumSimpleTwinSync.b,
+    },
+  ]);
 
   addTestsIdentityFunctionCall(
-    funcHashMapStringComplexEnumTwinSync,
-    <Map<String, KitchenSinkTwinSync>>[
-      {},
-      {'a': KitchenSinkTwinSync.empty()},
-      {
-        'a': KitchenSinkTwinSync.buffer(Uint8List.fromList([10, 20])),
-        'b': KitchenSinkTwinSync.nested(42),
-      },
-    ],
-  );
+      funcHashMapStringComplexEnumTwinSync, <Map<String, KitchenSinkTwinSync>>[
+    {},
+    {'a': KitchenSinkTwinSync.empty()},
+    {
+      'a': KitchenSinkTwinSync.buffer(Uint8List.fromList([10, 20])),
+      'b': KitchenSinkTwinSync.nested(42),
+    },
+  ]);
 }

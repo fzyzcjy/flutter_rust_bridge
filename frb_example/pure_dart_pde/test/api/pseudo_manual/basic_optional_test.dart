@@ -13,174 +13,119 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   group('basic_optional', () {
-    addTestsIdentityFunctionCall(exampleBasicOptionalTypeI8TwinNormal, <int?>[
+    addTestsIdentityFunctionCall(exampleBasicOptionalTypeI8TwinNormal,
+        <int?>[null, 0, -128, 127, 79, -79]);
+    addTestsIdentityFunctionCall(exampleBasicOptionalTypeI16TwinNormal,
+        <int?>[null, 0, -32768, 32767, 12345, -12345]);
+    addTestsIdentityFunctionCall(exampleBasicOptionalTypeI32TwinNormal,
+        <int?>[null, 0, -2147483648, 2147483647, 1234567890, -1234567890]);
+    addTestsIdentityFunctionCall(
+        exampleBasicOptionalTypeI64TwinNormal, <PlatformInt64?>[
       null,
-      0,
-      -128,
-      127,
-      79,
-      -79,
-    ]);
-    addTestsIdentityFunctionCall(exampleBasicOptionalTypeI16TwinNormal, <int?>[
-      null,
-      0,
-      -32768,
-      32767,
-      12345,
-      -12345,
-    ]);
-    addTestsIdentityFunctionCall(exampleBasicOptionalTypeI32TwinNormal, <int?>[
-      null,
-      0,
-      -2147483648,
-      2147483647,
-      1234567890,
-      -1234567890,
+      PlatformInt64.parse("0"),
+      PlatformInt64.parse("-9007199254740992"),
+      PlatformInt64.parse("9007199254740992"),
+      PlatformInt64.parse("-9223372036854775808"),
+      PlatformInt64.parse("9223372036854775807"),
+      PlatformInt64.parse("1234567890123456789"),
+      PlatformInt64.parse("-1234567890123456789")
     ]);
     addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeI64TwinNormal,
-      <PlatformInt64?>[
-        null,
-        PlatformInt64.parse("0"),
-        PlatformInt64.parse("-9007199254740992"),
-        PlatformInt64.parse("9007199254740992"),
-        PlatformInt64.parse("-9223372036854775808"),
-        PlatformInt64.parse("9223372036854775807"),
-        PlatformInt64.parse("1234567890123456789"),
-        PlatformInt64.parse("-1234567890123456789"),
-      ],
-    );
-    addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeI128TwinNormal,
-      <BigInt?>[
-        null,
-        BigInt.parse("0"),
-        BigInt.parse("-9007199254740992"),
-        BigInt.parse("9007199254740992"),
-        BigInt.parse("-9223372036854775808"),
-        BigInt.parse("9223372036854775807"),
-        BigInt.parse("-170141183460469231731687303715884105728"),
-        BigInt.parse("170141183460469231731687303715884105727"),
-      ],
-    );
-    addTestsIdentityFunctionCall(exampleBasicOptionalTypeU8TwinNormal, <int?>[
+        exampleBasicOptionalTypeI128TwinNormal, <BigInt?>[
       null,
-      0,
-      255,
-      123,
-    ]);
-    addTestsIdentityFunctionCall(exampleBasicOptionalTypeU16TwinNormal, <int?>[
-      null,
-      0,
-      65535,
-      12345,
-    ]);
-    addTestsIdentityFunctionCall(exampleBasicOptionalTypeU32TwinNormal, <int?>[
-      null,
-      0,
-      4294967295,
-      2468013579,
+      BigInt.parse("0"),
+      BigInt.parse("-9007199254740992"),
+      BigInt.parse("9007199254740992"),
+      BigInt.parse("-9223372036854775808"),
+      BigInt.parse("9223372036854775807"),
+      BigInt.parse("-170141183460469231731687303715884105728"),
+      BigInt.parse("170141183460469231731687303715884105727")
     ]);
     addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeU64TwinNormal,
-      <BigInt?>[
-        null,
-        BigInt.parse("0"),
-        BigInt.parse("9007199254740992"),
-        BigInt.parse("9223372036854775807"),
-        BigInt.parse("9223372036854775808"),
-        BigInt.parse("18446744073709551615"),
-        BigInt.parse("12345678912345678913"),
-      ],
-    );
+        exampleBasicOptionalTypeU8TwinNormal, <int?>[null, 0, 255, 123]);
     addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeU128TwinNormal,
-      <BigInt?>[
-        null,
-        BigInt.parse("0"),
-        BigInt.parse("9007199254740992"),
-        BigInt.parse("9223372036854775807"),
-        BigInt.parse("9223372036854775808"),
-        BigInt.parse("18446744073709551615"),
-        BigInt.parse("340282366920938463463374607431768211455"),
-      ],
-    );
+        exampleBasicOptionalTypeU16TwinNormal, <int?>[null, 0, 65535, 12345]);
+    addTestsIdentityFunctionCall(exampleBasicOptionalTypeU32TwinNormal,
+        <int?>[null, 0, 4294967295, 2468013579]);
     addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeIsizeTwinNormal,
-      <PlatformInt64?>[
-        null,
-        PlatformInt64.parse("0"),
-        PlatformInt64.parse("-2147483648"),
-        PlatformInt64.parse("2147483647"),
-        PlatformInt64.parse("-1234234567"),
-        PlatformInt64.parse("1234234567"),
-        if (!kIsWeb) PlatformInt64.parse("-9007199254740992"),
-        if (!kIsWeb) PlatformInt64.parse("9007199254740992"),
-        if (!kIsWeb) PlatformInt64.parse("-9223372036854775808"),
-        if (!kIsWeb) PlatformInt64.parse("9223372036854775807"),
-      ],
-    );
+        exampleBasicOptionalTypeU64TwinNormal, <BigInt?>[
+      null,
+      BigInt.parse("0"),
+      BigInt.parse("9007199254740992"),
+      BigInt.parse("9223372036854775807"),
+      BigInt.parse("9223372036854775808"),
+      BigInt.parse("18446744073709551615"),
+      BigInt.parse("12345678912345678913")
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeUsizeTwinNormal,
-      <BigInt?>[
-        null,
-        BigInt.parse("0"),
-        BigInt.parse("4294967295"),
-        BigInt.parse("1234234567"),
-        if (!kIsWeb) BigInt.parse("9007199254740992"),
-        if (!kIsWeb) BigInt.parse("9223372036854775807"),
-        if (!kIsWeb) BigInt.parse("18446744073709551615"),
-        if (!kIsWeb) BigInt.parse("12345678912345678913"),
-      ],
-    );
+        exampleBasicOptionalTypeU128TwinNormal, <BigInt?>[
+      null,
+      BigInt.parse("0"),
+      BigInt.parse("9007199254740992"),
+      BigInt.parse("9223372036854775807"),
+      BigInt.parse("9223372036854775808"),
+      BigInt.parse("18446744073709551615"),
+      BigInt.parse("340282366920938463463374607431768211455")
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeF32TwinNormal,
-      <double?>[null, 0, -42.5, 123456],
-    );
+        exampleBasicOptionalTypeIsizeTwinNormal, <PlatformInt64?>[
+      null,
+      PlatformInt64.parse("0"),
+      PlatformInt64.parse("-2147483648"),
+      PlatformInt64.parse("2147483647"),
+      PlatformInt64.parse("-1234234567"),
+      PlatformInt64.parse("1234234567"),
+      if (!kIsWeb) PlatformInt64.parse("-9007199254740992"),
+      if (!kIsWeb) PlatformInt64.parse("9007199254740992"),
+      if (!kIsWeb) PlatformInt64.parse("-9223372036854775808"),
+      if (!kIsWeb) PlatformInt64.parse("9223372036854775807")
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeF64TwinNormal,
-      <double?>[null, 0, -42.5, 123456],
-    );
+        exampleBasicOptionalTypeUsizeTwinNormal, <BigInt?>[
+      null,
+      BigInt.parse("0"),
+      BigInt.parse("4294967295"),
+      BigInt.parse("1234234567"),
+      if (!kIsWeb) BigInt.parse("9007199254740992"),
+      if (!kIsWeb) BigInt.parse("9223372036854775807"),
+      if (!kIsWeb) BigInt.parse("18446744073709551615"),
+      if (!kIsWeb) BigInt.parse("12345678912345678913")
+    ]);
+    addTestsIdentityFunctionCall(exampleBasicOptionalTypeF32TwinNormal,
+        <double?>[null, 0, -42.5, 123456]);
+    addTestsIdentityFunctionCall(exampleBasicOptionalTypeF64TwinNormal,
+        <double?>[null, 0, -42.5, 123456]);
     addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeBoolTwinNormal,
-      <bool?>[null, false, true],
-    );
+        exampleBasicOptionalTypeBoolTwinNormal, <bool?>[null, false, true]);
+    addTestsIdentityFunctionCall(exampleBasicOptionalTypeStringTwinNormal,
+        <String?>[null, "", "hello", "😂"]);
     addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeStringTwinNormal,
-      <String?>[null, "", "hello", "😂"],
-    );
+        exampleBasicOptionalTypeBytesTwinNormal, <Uint8List?>[
+      null,
+      Uint8List.fromList([]),
+      Uint8List.fromList([255, 0]),
+      Uint8List.fromList([10, 20, 30, 40])
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeBytesTwinNormal,
-      <Uint8List?>[
-        null,
-        Uint8List.fromList([]),
-        Uint8List.fromList([255, 0]),
-        Uint8List.fromList([10, 20, 30, 40]),
-      ],
-    );
+        exampleBasicOptionalTypeBasicPrimitiveEnumTwinNormalTwinNormal,
+        <BasicPrimitiveEnumTwinNormal?>[
+          null,
+          BasicPrimitiveEnumTwinNormal.apple,
+          BasicPrimitiveEnumTwinNormal.orange
+        ]);
     addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeBasicPrimitiveEnumTwinNormalTwinNormal,
-      <BasicPrimitiveEnumTwinNormal?>[
-        null,
-        BasicPrimitiveEnumTwinNormal.apple,
-        BasicPrimitiveEnumTwinNormal.orange,
-      ],
-    );
+        exampleBasicOptionalTypeBasicGeneralEnumTwinNormalTwinNormal,
+        <BasicGeneralEnumTwinNormal?>[
+          null,
+          BasicGeneralEnumTwinNormal.apple(field: "one"),
+          BasicGeneralEnumTwinNormal.orange()
+        ]);
     addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeBasicGeneralEnumTwinNormalTwinNormal,
-      <BasicGeneralEnumTwinNormal?>[
-        null,
-        BasicGeneralEnumTwinNormal.apple(field: "one"),
-        BasicGeneralEnumTwinNormal.orange(),
-      ],
-    );
-    addTestsIdentityFunctionCall(
-      exampleBasicOptionalTypeBasicStructTwinNormalTwinNormal,
-      <BasicStructTwinNormal?>[
-        null,
-        BasicStructTwinNormal(apple: null, orange: null),
-        BasicStructTwinNormal(apple: "one", orange: 42),
-      ],
-    );
+        exampleBasicOptionalTypeBasicStructTwinNormalTwinNormal,
+        <BasicStructTwinNormal?>[
+          null,
+          BasicStructTwinNormal(apple: null, orange: null),
+          BasicStructTwinNormal(apple: "one", orange: 42)
+        ]);
   });
 }

@@ -12,57 +12,53 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `fmt`, `fmt`, `fmt`
 
-Future<double?> handleOptionalReturnTwinNormal({
-  required double left,
-  required double right,
-}) => RustLib.instance.api.crateApiOptionalHandleOptionalReturnTwinNormal(
-  left: left,
-  right: right,
-);
+Future<double?> handleOptionalReturnTwinNormal(
+        {required double left, required double right}) =>
+    RustLib.instance.api.crateApiOptionalHandleOptionalReturnTwinNormal(
+        left: left, right: right);
 
 Future<ElementTwinNormal?> handleOptionalStructTwinNormal({String? document}) =>
-    RustLib.instance.api.crateApiOptionalHandleOptionalStructTwinNormal(
-      document: document,
-    );
+    RustLib.instance.api
+        .crateApiOptionalHandleOptionalStructTwinNormal(document: document);
 
-Future<ExoticOptionalsTwinNormal?> handleOptionalIncrementTwinNormal({
-  ExoticOptionalsTwinNormal? opt,
-}) => RustLib.instance.api.crateApiOptionalHandleOptionalIncrementTwinNormal(
-  opt: opt,
-);
+Future<ExoticOptionalsTwinNormal?> handleOptionalIncrementTwinNormal(
+        {ExoticOptionalsTwinNormal? opt}) =>
+    RustLib.instance.api
+        .crateApiOptionalHandleOptionalIncrementTwinNormal(opt: opt);
 
-Future<double> handleIncrementBoxedOptionalTwinNormal({double? opt}) => RustLib
-    .instance
-    .api
-    .crateApiOptionalHandleIncrementBoxedOptionalTwinNormal(opt: opt);
+Future<double> handleIncrementBoxedOptionalTwinNormal({double? opt}) =>
+    RustLib.instance.api
+        .crateApiOptionalHandleIncrementBoxedOptionalTwinNormal(opt: opt);
 
-Future<OptVecsTwinNormal> handleVecOfOptsTwinNormal({
-  required OptVecsTwinNormal opt,
-}) => RustLib.instance.api.crateApiOptionalHandleVecOfOptsTwinNormal(opt: opt);
+Future<OptVecsTwinNormal> handleVecOfOptsTwinNormal(
+        {required OptVecsTwinNormal opt}) =>
+    RustLib.instance.api.crateApiOptionalHandleVecOfOptsTwinNormal(opt: opt);
 
-Future<String> handleOptionBoxArgumentsTwinNormal({
-  int? i8Box,
-  int? u8Box,
-  int? i32Box,
-  PlatformInt64? i64Box,
-  double? f64Box,
-  bool? boolbox,
-  ExoticOptionalsTwinNormal? structbox,
-}) => RustLib.instance.api.crateApiOptionalHandleOptionBoxArgumentsTwinNormal(
-  i8Box: i8Box,
-  u8Box: u8Box,
-  i32Box: i32Box,
-  i64Box: i64Box,
-  f64Box: f64Box,
-  boolbox: boolbox,
-  structbox: structbox,
-);
+Future<String> handleOptionBoxArgumentsTwinNormal(
+        {int? i8Box,
+        int? u8Box,
+        int? i32Box,
+        PlatformInt64? i64Box,
+        double? f64Box,
+        bool? boolbox,
+        ExoticOptionalsTwinNormal? structbox}) =>
+    RustLib.instance.api.crateApiOptionalHandleOptionBoxArgumentsTwinNormal(
+        i8Box: i8Box,
+        u8Box: u8Box,
+        i32Box: i32Box,
+        i64Box: i64Box,
+        f64Box: f64Box,
+        boolbox: boolbox,
+        structbox: structbox);
 
 class AttributeTwinNormal {
   final String key;
   final String value;
 
-  const AttributeTwinNormal({required this.key, required this.value});
+  const AttributeTwinNormal({
+    required this.key,
+    required this.value,
+  });
 
   @override
   int get hashCode => key.hashCode ^ value.hashCode;

@@ -19,8 +19,7 @@ Future<void> main() async {
   if (vmService == null) {
     // Related: https://github.com/dart-lang/sdk/issues/54155
     fail(
-      'To run these tests, you should enable VM service like: `dart --enable-vm-service test`.',
-    );
+        'To run these tests, you should enable VM service like: `dart --enable-vm-service test`.');
   }
   tearDownAll(() => vmService.dispose());
 
@@ -84,11 +83,8 @@ Future<void> main() async {
         await vmService.gc();
         await Future<void>.delayed(const Duration(milliseconds: 10));
 
-        expect(
-          anotherWeakRef.target,
-          isNull,
-          reason: 'to ensure GC is triggered',
-        );
+        expect(anotherWeakRef.target, isNull,
+            reason: 'to ensure GC is triggered');
         expect(weakRef.target, isNull);
       });
 
@@ -132,10 +128,8 @@ Future<void> main() async {
               expect(object, isNotNull);
           }
 
-          expect(
-            await DroppableTwinNormal.getDropCountTwinNormal(),
-            oldDropCount + 1,
-          );
+          expect(await DroppableTwinNormal.getDropCountTwinNormal(),
+              oldDropCount + 1);
         }
 
         test('Rust object should be dropped', () async {
@@ -145,8 +139,7 @@ Future<void> main() async {
         // #1723
         test('when holds StreamSink, Rust object should be dropped', () async {
           await _core(
-            extra: (object) async => object.createStream().listen((_) {}),
-          );
+              extra: (object) async => object.createStream().listen((_) {}));
         });
       });
     }

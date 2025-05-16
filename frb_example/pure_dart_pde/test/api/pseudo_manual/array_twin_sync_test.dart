@@ -26,9 +26,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('MessageId', () async {
-    final MessageIdTwinSync msgid = await newMsgidTwinSync(
-      id: U8Array32.init(),
-    );
+    final MessageIdTwinSync msgid =
+        await newMsgidTwinSync(id: U8Array32.init());
     msgid.field0[2] = 14;
     final inner = await useMsgidTwinSync(id: msgid);
     expect(inner[2], 14);
@@ -81,9 +80,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     id2.field0[1] = 30;
     final id3 = TestIdTwinSync(field0: I32Array2.init());
     id3.field0[1] = 40;
-    final x = await nestedIdTwinSync(
-      id: TestIdTwinSyncArray4([id0, id1, id2, id3]),
-    );
+    final x =
+        await nestedIdTwinSync(id: TestIdTwinSyncArray4([id0, id1, id2, id3]));
     expect(x[0].field0[1], 10);
     expect(x[1].field0[1], 40);
   });

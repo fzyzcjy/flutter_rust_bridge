@@ -26,60 +26,54 @@ Future<void> main({bool skipRustLibInit = false}) async {
     var hideData = await runOpaqueTwinSync(opaque: opaque);
 
     expect(
-      hideData,
-      "content - Some(PrivateData "
-      "{"
-      " content: \"content nested\", "
-      "primitive: 424242, "
-      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-      "lifetime: \"static str\" "
-      "})",
-    );
+        hideData,
+        "content - Some(PrivateData "
+        "{"
+        " content: \"content nested\", "
+        "primitive: 424242, "
+        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+        "lifetime: \"static str\" "
+        "})");
     opaque.dispose();
   });
 
   test('double Call', () async {
     var data = await createOpaqueTwinSync();
     expect(
-      await runOpaqueTwinSync(opaque: data),
-      "content - Some(PrivateData "
-      "{"
-      " content: \"content nested\", "
-      "primitive: 424242, "
-      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-      "lifetime: \"static str\" "
-      "})",
-    );
+        await runOpaqueTwinSync(opaque: data),
+        "content - Some(PrivateData "
+        "{"
+        " content: \"content nested\", "
+        "primitive: 424242, "
+        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+        "lifetime: \"static str\" "
+        "})");
     expect(
-      await runOpaqueTwinSync(opaque: data),
-      "content - Some(PrivateData "
-      "{"
-      " content: \"content nested\", "
-      "primitive: 424242, "
-      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-      "lifetime: \"static str\" "
-      "})",
-    );
+        await runOpaqueTwinSync(opaque: data),
+        "content - Some(PrivateData "
+        "{"
+        " content: \"content nested\", "
+        "primitive: 424242, "
+        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+        "lifetime: \"static str\" "
+        "})");
     data.dispose();
   });
 
   test('call after dispose', () async {
     var data = await createOpaqueTwinSync();
     expect(
-      await runOpaqueTwinSync(opaque: data),
-      "content - Some(PrivateData "
-      "{"
-      " content: \"content nested\", "
-      "primitive: 424242, "
-      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-      "lifetime: \"static str\" "
-      "})",
-    );
+        await runOpaqueTwinSync(opaque: data),
+        "content - Some(PrivateData "
+        "{"
+        " content: \"content nested\", "
+        "primitive: 424242, "
+        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+        "lifetime: \"static str\" "
+        "})");
     data.dispose();
-    await expectLater(
-      () => runOpaqueTwinSync(opaque: data),
-      throwsA(isA<DroppableDisposedException>()),
-    );
+    await expectLater(() => runOpaqueTwinSync(opaque: data),
+        throwsA(isA<DroppableDisposedException>()));
   });
 
   test('dispose before complete', () async {
@@ -87,39 +81,33 @@ Future<void> main({bool skipRustLibInit = false}) async {
     var task = runOpaqueWithDelayTwinSync(opaque: data);
     data.dispose();
     expect(
-      await task,
-      "content - Some(PrivateData "
-      "{"
-      " content: \"content nested\", "
-      "primitive: 424242, "
-      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-      "lifetime: \"static str\" "
-      "})",
-    );
-    await expectLater(
-      () => runOpaqueTwinSync(opaque: data),
-      throwsA(isA<DroppableDisposedException>()),
-    );
-  });
-
-  test('create array of opaque type', () async {
-    var data = await opaqueArrayTwinSync();
-    for (var v in data) {
-      expect(
-        await runOpaqueTwinSync(opaque: v),
+        await task,
         "content - Some(PrivateData "
         "{"
         " content: \"content nested\", "
         "primitive: 424242, "
         "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
         "lifetime: \"static str\" "
-        "})",
-      );
+        "})");
+    await expectLater(() => runOpaqueTwinSync(opaque: data),
+        throwsA(isA<DroppableDisposedException>()));
+  });
+
+  test('create array of opaque type', () async {
+    var data = await opaqueArrayTwinSync();
+    for (var v in data) {
+      expect(
+          await runOpaqueTwinSync(opaque: v),
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
       v.dispose();
-      await expectLater(
-        () => runOpaqueTwinSync(opaque: v),
-        throwsA(isA<DroppableDisposedException>()),
-      );
+      await expectLater(() => runOpaqueTwinSync(opaque: v),
+          throwsA(isA<DroppableDisposedException>()));
     }
   });
 
@@ -127,15 +115,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
     var data = await createArrayOpaqueEnumTwinSync();
 
     expect(
-      await runEnumOpaqueTwinSync(opaque: data[0]),
-      "content - Some(PrivateData "
-      "{"
-      " content: \"content nested\", "
-      "primitive: 424242, "
-      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-      "lifetime: \"static str\" "
-      "})",
-    );
+        await runEnumOpaqueTwinSync(opaque: data[0]),
+        "content - Some(PrivateData "
+        "{"
+        " content: \"content nested\", "
+        "primitive: 424242, "
+        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+        "lifetime: \"static str\" "
+        "})");
     (data[0] as EnumOpaqueTwinSync_Struct).field0.dispose();
 
     expect(await runEnumOpaqueTwinSync(opaque: data[1]), "42");
@@ -145,32 +132,28 @@ Future<void> main({bool skipRustLibInit = false}) async {
     (data[2] as EnumOpaqueTwinSync_TraitObj).field0.dispose();
 
     expect(
-      await runEnumOpaqueTwinSync(opaque: data[3]),
-      "\"content - Some(PrivateData "
-      "{"
-      " content: \\\"content nested\\\", "
-      "primitive: 424242, "
-      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-      "lifetime: \\\"static str\\\" "
-      "})\"",
-    );
+        await runEnumOpaqueTwinSync(opaque: data[3]),
+        "\"content - Some(PrivateData "
+        "{"
+        " content: \\\"content nested\\\", "
+        "primitive: 424242, "
+        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+        "lifetime: \\\"static str\\\" "
+        "})\"");
     (data[3] as EnumOpaqueTwinSync_Mutex).field0.dispose();
 
     expect(
-      await runEnumOpaqueTwinSync(opaque: data[4]),
-      "\"content - Some(PrivateData "
-      "{"
-      " content: \\\"content nested\\\", "
-      "primitive: 424242, "
-      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-      "lifetime: \\\"static str\\\" "
-      "})\"",
-    );
+        await runEnumOpaqueTwinSync(opaque: data[4]),
+        "\"content - Some(PrivateData "
+        "{"
+        " content: \\\"content nested\\\", "
+        "primitive: 424242, "
+        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+        "lifetime: \\\"static str\\\" "
+        "})\"");
     (data[4] as EnumOpaqueTwinSync_RwLock).field0.dispose();
-    await expectLater(
-      () => runEnumOpaqueTwinSync(opaque: data[4]),
-      throwsA(isA<DroppableDisposedException>()),
-    );
+    await expectLater(() => runEnumOpaqueTwinSync(opaque: data[4]),
+        throwsA(isA<DroppableDisposedException>()));
   });
 
   test('opaque field', () async {
@@ -178,44 +161,37 @@ Future<void> main({bool skipRustLibInit = false}) async {
     await futurizeVoidTwinSync(runNestedOpaqueTwinSync(opaque: data));
 
     expect(
-      await runOpaqueTwinSync(opaque: data.first),
-      "content - Some(PrivateData "
-      "{"
-      " content: \"content nested\", "
-      "primitive: 424242, "
-      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-      "lifetime: \"static str\" "
-      "})",
-    );
+        await runOpaqueTwinSync(opaque: data.first),
+        "content - Some(PrivateData "
+        "{"
+        " content: \"content nested\", "
+        "primitive: 424242, "
+        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+        "lifetime: \"static str\" "
+        "})");
     expect(
-      await runOpaqueTwinSync(opaque: data.second),
-      "content - Some(PrivateData "
-      "{"
-      " content: \"content nested\", "
-      "primitive: 424242, "
-      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-      "lifetime: \"static str\" "
-      "})",
-    );
+        await runOpaqueTwinSync(opaque: data.second),
+        "content - Some(PrivateData "
+        "{"
+        " content: \"content nested\", "
+        "primitive: 424242, "
+        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+        "lifetime: \"static str\" "
+        "})");
     data.first.dispose();
-    await expectLater(
-      () => runOpaqueTwinSync(opaque: data.first),
-      throwsA(isA<DroppableDisposedException>()),
-    );
-    await expectLater(
-      () => runNestedOpaqueTwinSync(opaque: data),
-      throwsA(isA<DroppableDisposedException>()),
-    );
+    await expectLater(() => runOpaqueTwinSync(opaque: data.first),
+        throwsA(isA<DroppableDisposedException>()));
+    await expectLater(() => runNestedOpaqueTwinSync(opaque: data),
+        throwsA(isA<DroppableDisposedException>()));
     expect(
-      await runOpaqueTwinSync(opaque: data.second),
-      "content - Some(PrivateData "
-      "{"
-      " content: \"content nested\", "
-      "primitive: 424242, "
-      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-      "lifetime: \"static str\" "
-      "})",
-    );
+        await runOpaqueTwinSync(opaque: data.second),
+        "content - Some(PrivateData "
+        "{"
+        " content: \"content nested\", "
+        "primitive: 424242, "
+        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+        "lifetime: \"static str\" "
+        "})");
     data.second.dispose();
   });
 
@@ -225,20 +201,17 @@ Future<void> main({bool skipRustLibInit = false}) async {
     data[0].dispose();
 
     expect(
-      await runOpaqueTwinSync(opaque: data[1]),
-      "content - Some(PrivateData "
-      "{"
-      " content: \"content nested\", "
-      "primitive: 424242, "
-      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-      "lifetime: \"static str\" "
-      "})",
-    );
+        await runOpaqueTwinSync(opaque: data[1]),
+        "content - Some(PrivateData "
+        "{"
+        " content: \"content nested\", "
+        "primitive: 424242, "
+        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+        "lifetime: \"static str\" "
+        "})");
 
-    await expectLater(
-      () => opaqueArrayRunTwinSync(data: data),
-      throwsA(isA<DroppableDisposedException>()),
-    );
+    await expectLater(() => opaqueArrayRunTwinSync(data: data),
+        throwsA(isA<DroppableDisposedException>()));
     data[1].dispose();
   });
 
@@ -248,20 +221,17 @@ Future<void> main({bool skipRustLibInit = false}) async {
     data[0].dispose();
 
     expect(
-      await runOpaqueTwinSync(opaque: data[1]),
-      "content - Some(PrivateData "
-      "{"
-      " content: \"content nested\", "
-      "primitive: 424242, "
-      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-      "lifetime: \"static str\" "
-      "})",
-    );
+        await runOpaqueTwinSync(opaque: data[1]),
+        "content - Some(PrivateData "
+        "{"
+        " content: \"content nested\", "
+        "primitive: 424242, "
+        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+        "lifetime: \"static str\" "
+        "})");
 
-    await expectLater(
-      () => opaqueVecRunTwinSync(data: data),
-      throwsA(isA<DroppableDisposedException>()),
-    );
+    await expectLater(() => opaqueVecRunTwinSync(data: data),
+        throwsA(isA<DroppableDisposedException>()));
     data[1].dispose();
   });
 

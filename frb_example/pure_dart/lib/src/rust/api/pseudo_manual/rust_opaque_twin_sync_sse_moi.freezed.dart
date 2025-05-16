@@ -1,4 +1,3 @@
-// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -10,92 +9,130 @@ part of 'rust_opaque_twin_sync_sse_moi.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$EnumOpaqueTwinSyncSseMoi {
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is EnumOpaqueTwinSyncSseMoi);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  String toString() {
-    return 'EnumOpaqueTwinSyncSseMoi()';
-  }
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(HideDataTwinSyncSseMoi field0) struct,
+    required TResult Function(I16 field0) primitive,
+    required TResult Function(BoxDartDebugTwinSyncSseMoi field0) traitObj,
+    required TResult Function(MutexHideDataTwinSyncSseMoi field0) mutex,
+    required TResult Function(RwLockHideDataTwinSyncSseMoi field0) rwLock,
+    required TResult Function() nothing,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(HideDataTwinSyncSseMoi field0)? struct,
+    TResult? Function(I16 field0)? primitive,
+    TResult? Function(BoxDartDebugTwinSyncSseMoi field0)? traitObj,
+    TResult? Function(MutexHideDataTwinSyncSseMoi field0)? mutex,
+    TResult? Function(RwLockHideDataTwinSyncSseMoi field0)? rwLock,
+    TResult? Function()? nothing,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(HideDataTwinSyncSseMoi field0)? struct,
+    TResult Function(I16 field0)? primitive,
+    TResult Function(BoxDartDebugTwinSyncSseMoi field0)? traitObj,
+    TResult Function(MutexHideDataTwinSyncSseMoi field0)? mutex,
+    TResult Function(RwLockHideDataTwinSyncSseMoi field0)? rwLock,
+    TResult Function()? nothing,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_Struct value) struct,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_Primitive value)
+        primitive,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_TraitObj value) traitObj,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_Mutex value) mutex,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_RwLock value) rwLock,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_Nothing value) nothing,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_Struct value)? struct,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_Primitive value)? primitive,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_TraitObj value)? traitObj,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_Mutex value)? mutex,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_RwLock value)? rwLock,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_Nothing value)? nothing,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EnumOpaqueTwinSyncSseMoi_Struct value)? struct,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_Primitive value)? primitive,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_TraitObj value)? traitObj,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_Mutex value)? mutex,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_RwLock value)? rwLock,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_Nothing value)? nothing,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-class $EnumOpaqueTwinSyncSseMoiCopyWith<$Res> {
-  $EnumOpaqueTwinSyncSseMoiCopyWith(
-      EnumOpaqueTwinSyncSseMoi _, $Res Function(EnumOpaqueTwinSyncSseMoi) __);
+abstract class $EnumOpaqueTwinSyncSseMoiCopyWith<$Res> {
+  factory $EnumOpaqueTwinSyncSseMoiCopyWith(EnumOpaqueTwinSyncSseMoi value,
+          $Res Function(EnumOpaqueTwinSyncSseMoi) then) =
+      _$EnumOpaqueTwinSyncSseMoiCopyWithImpl<$Res, EnumOpaqueTwinSyncSseMoi>;
 }
 
 /// @nodoc
+class _$EnumOpaqueTwinSyncSseMoiCopyWithImpl<$Res,
+        $Val extends EnumOpaqueTwinSyncSseMoi>
+    implements $EnumOpaqueTwinSyncSseMoiCopyWith<$Res> {
+  _$EnumOpaqueTwinSyncSseMoiCopyWithImpl(this._value, this._then);
 
-class EnumOpaqueTwinSyncSseMoi_Struct extends EnumOpaqueTwinSyncSseMoi {
-  const EnumOpaqueTwinSyncSseMoi_Struct(this.field0) : super._();
-
-  final HideDataTwinSyncSseMoi field0;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
   /// Create a copy of EnumOpaqueTwinSyncSseMoi
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $EnumOpaqueTwinSyncSseMoi_StructCopyWith<EnumOpaqueTwinSyncSseMoi_Struct>
-      get copyWith => _$EnumOpaqueTwinSyncSseMoi_StructCopyWithImpl<
-          EnumOpaqueTwinSyncSseMoi_Struct>(this, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is EnumOpaqueTwinSyncSseMoi_Struct &&
-            (identical(other.field0, field0) || other.field0 == field0));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, field0);
-
-  @override
-  String toString() {
-    return 'EnumOpaqueTwinSyncSseMoi.struct(field0: $field0)';
-  }
 }
 
 /// @nodoc
-abstract mixin class $EnumOpaqueTwinSyncSseMoi_StructCopyWith<$Res>
-    implements $EnumOpaqueTwinSyncSseMoiCopyWith<$Res> {
-  factory $EnumOpaqueTwinSyncSseMoi_StructCopyWith(
-          EnumOpaqueTwinSyncSseMoi_Struct value,
-          $Res Function(EnumOpaqueTwinSyncSseMoi_Struct) _then) =
-      _$EnumOpaqueTwinSyncSseMoi_StructCopyWithImpl;
+abstract class _$$EnumOpaqueTwinSyncSseMoi_StructImplCopyWith<$Res> {
+  factory _$$EnumOpaqueTwinSyncSseMoi_StructImplCopyWith(
+          _$EnumOpaqueTwinSyncSseMoi_StructImpl value,
+          $Res Function(_$EnumOpaqueTwinSyncSseMoi_StructImpl) then) =
+      __$$EnumOpaqueTwinSyncSseMoi_StructImplCopyWithImpl<$Res>;
   @useResult
   $Res call({HideDataTwinSyncSseMoi field0});
 }
 
 /// @nodoc
-class _$EnumOpaqueTwinSyncSseMoi_StructCopyWithImpl<$Res>
-    implements $EnumOpaqueTwinSyncSseMoi_StructCopyWith<$Res> {
-  _$EnumOpaqueTwinSyncSseMoi_StructCopyWithImpl(this._self, this._then);
-
-  final EnumOpaqueTwinSyncSseMoi_Struct _self;
-  final $Res Function(EnumOpaqueTwinSyncSseMoi_Struct) _then;
+class __$$EnumOpaqueTwinSyncSseMoi_StructImplCopyWithImpl<$Res>
+    extends _$EnumOpaqueTwinSyncSseMoiCopyWithImpl<$Res,
+        _$EnumOpaqueTwinSyncSseMoi_StructImpl>
+    implements _$$EnumOpaqueTwinSyncSseMoi_StructImplCopyWith<$Res> {
+  __$$EnumOpaqueTwinSyncSseMoi_StructImplCopyWithImpl(
+      _$EnumOpaqueTwinSyncSseMoi_StructImpl _value,
+      $Res Function(_$EnumOpaqueTwinSyncSseMoi_StructImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumOpaqueTwinSyncSseMoi
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  @override
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(EnumOpaqueTwinSyncSseMoi_Struct(
+    return _then(_$EnumOpaqueTwinSyncSseMoi_StructImpl(
       null == field0
-          ? _self.field0
+          ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as HideDataTwinSyncSseMoi,
     ));
@@ -104,65 +141,174 @@ class _$EnumOpaqueTwinSyncSseMoi_StructCopyWithImpl<$Res>
 
 /// @nodoc
 
-class EnumOpaqueTwinSyncSseMoi_Primitive extends EnumOpaqueTwinSyncSseMoi {
-  const EnumOpaqueTwinSyncSseMoi_Primitive(this.field0) : super._();
+class _$EnumOpaqueTwinSyncSseMoi_StructImpl
+    extends EnumOpaqueTwinSyncSseMoi_Struct {
+  const _$EnumOpaqueTwinSyncSseMoi_StructImpl(this.field0) : super._();
 
-  final I16 field0;
+  @override
+  final HideDataTwinSyncSseMoi field0;
 
-  /// Create a copy of EnumOpaqueTwinSyncSseMoi
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $EnumOpaqueTwinSyncSseMoi_PrimitiveCopyWith<
-          EnumOpaqueTwinSyncSseMoi_Primitive>
-      get copyWith => _$EnumOpaqueTwinSyncSseMoi_PrimitiveCopyWithImpl<
-          EnumOpaqueTwinSyncSseMoi_Primitive>(this, _$identity);
+  @override
+  String toString() {
+    return 'EnumOpaqueTwinSyncSseMoi.struct(field0: $field0)';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is EnumOpaqueTwinSyncSseMoi_Primitive &&
+            other is _$EnumOpaqueTwinSyncSseMoi_StructImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
+  /// Create a copy of EnumOpaqueTwinSyncSseMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'EnumOpaqueTwinSyncSseMoi.primitive(field0: $field0)';
+  @pragma('vm:prefer-inline')
+  _$$EnumOpaqueTwinSyncSseMoi_StructImplCopyWith<
+          _$EnumOpaqueTwinSyncSseMoi_StructImpl>
+      get copyWith => __$$EnumOpaqueTwinSyncSseMoi_StructImplCopyWithImpl<
+          _$EnumOpaqueTwinSyncSseMoi_StructImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(HideDataTwinSyncSseMoi field0) struct,
+    required TResult Function(I16 field0) primitive,
+    required TResult Function(BoxDartDebugTwinSyncSseMoi field0) traitObj,
+    required TResult Function(MutexHideDataTwinSyncSseMoi field0) mutex,
+    required TResult Function(RwLockHideDataTwinSyncSseMoi field0) rwLock,
+    required TResult Function() nothing,
+  }) {
+    return struct(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(HideDataTwinSyncSseMoi field0)? struct,
+    TResult? Function(I16 field0)? primitive,
+    TResult? Function(BoxDartDebugTwinSyncSseMoi field0)? traitObj,
+    TResult? Function(MutexHideDataTwinSyncSseMoi field0)? mutex,
+    TResult? Function(RwLockHideDataTwinSyncSseMoi field0)? rwLock,
+    TResult? Function()? nothing,
+  }) {
+    return struct?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(HideDataTwinSyncSseMoi field0)? struct,
+    TResult Function(I16 field0)? primitive,
+    TResult Function(BoxDartDebugTwinSyncSseMoi field0)? traitObj,
+    TResult Function(MutexHideDataTwinSyncSseMoi field0)? mutex,
+    TResult Function(RwLockHideDataTwinSyncSseMoi field0)? rwLock,
+    TResult Function()? nothing,
+    required TResult orElse(),
+  }) {
+    if (struct != null) {
+      return struct(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_Struct value) struct,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_Primitive value)
+        primitive,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_TraitObj value) traitObj,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_Mutex value) mutex,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_RwLock value) rwLock,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_Nothing value) nothing,
+  }) {
+    return struct(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_Struct value)? struct,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_Primitive value)? primitive,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_TraitObj value)? traitObj,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_Mutex value)? mutex,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_RwLock value)? rwLock,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_Nothing value)? nothing,
+  }) {
+    return struct?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EnumOpaqueTwinSyncSseMoi_Struct value)? struct,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_Primitive value)? primitive,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_TraitObj value)? traitObj,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_Mutex value)? mutex,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_RwLock value)? rwLock,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_Nothing value)? nothing,
+    required TResult orElse(),
+  }) {
+    if (struct != null) {
+      return struct(this);
+    }
+    return orElse();
   }
 }
 
+abstract class EnumOpaqueTwinSyncSseMoi_Struct
+    extends EnumOpaqueTwinSyncSseMoi {
+  const factory EnumOpaqueTwinSyncSseMoi_Struct(
+          final HideDataTwinSyncSseMoi field0) =
+      _$EnumOpaqueTwinSyncSseMoi_StructImpl;
+  const EnumOpaqueTwinSyncSseMoi_Struct._() : super._();
+
+  HideDataTwinSyncSseMoi get field0;
+
+  /// Create a copy of EnumOpaqueTwinSyncSseMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$EnumOpaqueTwinSyncSseMoi_StructImplCopyWith<
+          _$EnumOpaqueTwinSyncSseMoi_StructImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
 /// @nodoc
-abstract mixin class $EnumOpaqueTwinSyncSseMoi_PrimitiveCopyWith<$Res>
-    implements $EnumOpaqueTwinSyncSseMoiCopyWith<$Res> {
-  factory $EnumOpaqueTwinSyncSseMoi_PrimitiveCopyWith(
-          EnumOpaqueTwinSyncSseMoi_Primitive value,
-          $Res Function(EnumOpaqueTwinSyncSseMoi_Primitive) _then) =
-      _$EnumOpaqueTwinSyncSseMoi_PrimitiveCopyWithImpl;
+abstract class _$$EnumOpaqueTwinSyncSseMoi_PrimitiveImplCopyWith<$Res> {
+  factory _$$EnumOpaqueTwinSyncSseMoi_PrimitiveImplCopyWith(
+          _$EnumOpaqueTwinSyncSseMoi_PrimitiveImpl value,
+          $Res Function(_$EnumOpaqueTwinSyncSseMoi_PrimitiveImpl) then) =
+      __$$EnumOpaqueTwinSyncSseMoi_PrimitiveImplCopyWithImpl<$Res>;
   @useResult
   $Res call({I16 field0});
 }
 
 /// @nodoc
-class _$EnumOpaqueTwinSyncSseMoi_PrimitiveCopyWithImpl<$Res>
-    implements $EnumOpaqueTwinSyncSseMoi_PrimitiveCopyWith<$Res> {
-  _$EnumOpaqueTwinSyncSseMoi_PrimitiveCopyWithImpl(this._self, this._then);
-
-  final EnumOpaqueTwinSyncSseMoi_Primitive _self;
-  final $Res Function(EnumOpaqueTwinSyncSseMoi_Primitive) _then;
+class __$$EnumOpaqueTwinSyncSseMoi_PrimitiveImplCopyWithImpl<$Res>
+    extends _$EnumOpaqueTwinSyncSseMoiCopyWithImpl<$Res,
+        _$EnumOpaqueTwinSyncSseMoi_PrimitiveImpl>
+    implements _$$EnumOpaqueTwinSyncSseMoi_PrimitiveImplCopyWith<$Res> {
+  __$$EnumOpaqueTwinSyncSseMoi_PrimitiveImplCopyWithImpl(
+      _$EnumOpaqueTwinSyncSseMoi_PrimitiveImpl _value,
+      $Res Function(_$EnumOpaqueTwinSyncSseMoi_PrimitiveImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumOpaqueTwinSyncSseMoi
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  @override
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(EnumOpaqueTwinSyncSseMoi_Primitive(
+    return _then(_$EnumOpaqueTwinSyncSseMoi_PrimitiveImpl(
       null == field0
-          ? _self.field0
+          ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as I16,
     ));
@@ -171,64 +317,173 @@ class _$EnumOpaqueTwinSyncSseMoi_PrimitiveCopyWithImpl<$Res>
 
 /// @nodoc
 
-class EnumOpaqueTwinSyncSseMoi_TraitObj extends EnumOpaqueTwinSyncSseMoi {
-  const EnumOpaqueTwinSyncSseMoi_TraitObj(this.field0) : super._();
+class _$EnumOpaqueTwinSyncSseMoi_PrimitiveImpl
+    extends EnumOpaqueTwinSyncSseMoi_Primitive {
+  const _$EnumOpaqueTwinSyncSseMoi_PrimitiveImpl(this.field0) : super._();
 
-  final BoxDartDebugTwinSyncSseMoi field0;
+  @override
+  final I16 field0;
 
-  /// Create a copy of EnumOpaqueTwinSyncSseMoi
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $EnumOpaqueTwinSyncSseMoi_TraitObjCopyWith<EnumOpaqueTwinSyncSseMoi_TraitObj>
-      get copyWith => _$EnumOpaqueTwinSyncSseMoi_TraitObjCopyWithImpl<
-          EnumOpaqueTwinSyncSseMoi_TraitObj>(this, _$identity);
+  @override
+  String toString() {
+    return 'EnumOpaqueTwinSyncSseMoi.primitive(field0: $field0)';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is EnumOpaqueTwinSyncSseMoi_TraitObj &&
+            other is _$EnumOpaqueTwinSyncSseMoi_PrimitiveImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
+  /// Create a copy of EnumOpaqueTwinSyncSseMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'EnumOpaqueTwinSyncSseMoi.traitObj(field0: $field0)';
+  @pragma('vm:prefer-inline')
+  _$$EnumOpaqueTwinSyncSseMoi_PrimitiveImplCopyWith<
+          _$EnumOpaqueTwinSyncSseMoi_PrimitiveImpl>
+      get copyWith => __$$EnumOpaqueTwinSyncSseMoi_PrimitiveImplCopyWithImpl<
+          _$EnumOpaqueTwinSyncSseMoi_PrimitiveImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(HideDataTwinSyncSseMoi field0) struct,
+    required TResult Function(I16 field0) primitive,
+    required TResult Function(BoxDartDebugTwinSyncSseMoi field0) traitObj,
+    required TResult Function(MutexHideDataTwinSyncSseMoi field0) mutex,
+    required TResult Function(RwLockHideDataTwinSyncSseMoi field0) rwLock,
+    required TResult Function() nothing,
+  }) {
+    return primitive(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(HideDataTwinSyncSseMoi field0)? struct,
+    TResult? Function(I16 field0)? primitive,
+    TResult? Function(BoxDartDebugTwinSyncSseMoi field0)? traitObj,
+    TResult? Function(MutexHideDataTwinSyncSseMoi field0)? mutex,
+    TResult? Function(RwLockHideDataTwinSyncSseMoi field0)? rwLock,
+    TResult? Function()? nothing,
+  }) {
+    return primitive?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(HideDataTwinSyncSseMoi field0)? struct,
+    TResult Function(I16 field0)? primitive,
+    TResult Function(BoxDartDebugTwinSyncSseMoi field0)? traitObj,
+    TResult Function(MutexHideDataTwinSyncSseMoi field0)? mutex,
+    TResult Function(RwLockHideDataTwinSyncSseMoi field0)? rwLock,
+    TResult Function()? nothing,
+    required TResult orElse(),
+  }) {
+    if (primitive != null) {
+      return primitive(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_Struct value) struct,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_Primitive value)
+        primitive,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_TraitObj value) traitObj,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_Mutex value) mutex,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_RwLock value) rwLock,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_Nothing value) nothing,
+  }) {
+    return primitive(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_Struct value)? struct,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_Primitive value)? primitive,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_TraitObj value)? traitObj,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_Mutex value)? mutex,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_RwLock value)? rwLock,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_Nothing value)? nothing,
+  }) {
+    return primitive?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EnumOpaqueTwinSyncSseMoi_Struct value)? struct,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_Primitive value)? primitive,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_TraitObj value)? traitObj,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_Mutex value)? mutex,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_RwLock value)? rwLock,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_Nothing value)? nothing,
+    required TResult orElse(),
+  }) {
+    if (primitive != null) {
+      return primitive(this);
+    }
+    return orElse();
   }
 }
 
+abstract class EnumOpaqueTwinSyncSseMoi_Primitive
+    extends EnumOpaqueTwinSyncSseMoi {
+  const factory EnumOpaqueTwinSyncSseMoi_Primitive(final I16 field0) =
+      _$EnumOpaqueTwinSyncSseMoi_PrimitiveImpl;
+  const EnumOpaqueTwinSyncSseMoi_Primitive._() : super._();
+
+  I16 get field0;
+
+  /// Create a copy of EnumOpaqueTwinSyncSseMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$EnumOpaqueTwinSyncSseMoi_PrimitiveImplCopyWith<
+          _$EnumOpaqueTwinSyncSseMoi_PrimitiveImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
 /// @nodoc
-abstract mixin class $EnumOpaqueTwinSyncSseMoi_TraitObjCopyWith<$Res>
-    implements $EnumOpaqueTwinSyncSseMoiCopyWith<$Res> {
-  factory $EnumOpaqueTwinSyncSseMoi_TraitObjCopyWith(
-          EnumOpaqueTwinSyncSseMoi_TraitObj value,
-          $Res Function(EnumOpaqueTwinSyncSseMoi_TraitObj) _then) =
-      _$EnumOpaqueTwinSyncSseMoi_TraitObjCopyWithImpl;
+abstract class _$$EnumOpaqueTwinSyncSseMoi_TraitObjImplCopyWith<$Res> {
+  factory _$$EnumOpaqueTwinSyncSseMoi_TraitObjImplCopyWith(
+          _$EnumOpaqueTwinSyncSseMoi_TraitObjImpl value,
+          $Res Function(_$EnumOpaqueTwinSyncSseMoi_TraitObjImpl) then) =
+      __$$EnumOpaqueTwinSyncSseMoi_TraitObjImplCopyWithImpl<$Res>;
   @useResult
   $Res call({BoxDartDebugTwinSyncSseMoi field0});
 }
 
 /// @nodoc
-class _$EnumOpaqueTwinSyncSseMoi_TraitObjCopyWithImpl<$Res>
-    implements $EnumOpaqueTwinSyncSseMoi_TraitObjCopyWith<$Res> {
-  _$EnumOpaqueTwinSyncSseMoi_TraitObjCopyWithImpl(this._self, this._then);
-
-  final EnumOpaqueTwinSyncSseMoi_TraitObj _self;
-  final $Res Function(EnumOpaqueTwinSyncSseMoi_TraitObj) _then;
+class __$$EnumOpaqueTwinSyncSseMoi_TraitObjImplCopyWithImpl<$Res>
+    extends _$EnumOpaqueTwinSyncSseMoiCopyWithImpl<$Res,
+        _$EnumOpaqueTwinSyncSseMoi_TraitObjImpl>
+    implements _$$EnumOpaqueTwinSyncSseMoi_TraitObjImplCopyWith<$Res> {
+  __$$EnumOpaqueTwinSyncSseMoi_TraitObjImplCopyWithImpl(
+      _$EnumOpaqueTwinSyncSseMoi_TraitObjImpl _value,
+      $Res Function(_$EnumOpaqueTwinSyncSseMoi_TraitObjImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumOpaqueTwinSyncSseMoi
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  @override
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(EnumOpaqueTwinSyncSseMoi_TraitObj(
+    return _then(_$EnumOpaqueTwinSyncSseMoi_TraitObjImpl(
       null == field0
-          ? _self.field0
+          ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as BoxDartDebugTwinSyncSseMoi,
     ));
@@ -237,64 +492,174 @@ class _$EnumOpaqueTwinSyncSseMoi_TraitObjCopyWithImpl<$Res>
 
 /// @nodoc
 
-class EnumOpaqueTwinSyncSseMoi_Mutex extends EnumOpaqueTwinSyncSseMoi {
-  const EnumOpaqueTwinSyncSseMoi_Mutex(this.field0) : super._();
+class _$EnumOpaqueTwinSyncSseMoi_TraitObjImpl
+    extends EnumOpaqueTwinSyncSseMoi_TraitObj {
+  const _$EnumOpaqueTwinSyncSseMoi_TraitObjImpl(this.field0) : super._();
 
-  final MutexHideDataTwinSyncSseMoi field0;
+  @override
+  final BoxDartDebugTwinSyncSseMoi field0;
 
-  /// Create a copy of EnumOpaqueTwinSyncSseMoi
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $EnumOpaqueTwinSyncSseMoi_MutexCopyWith<EnumOpaqueTwinSyncSseMoi_Mutex>
-      get copyWith => _$EnumOpaqueTwinSyncSseMoi_MutexCopyWithImpl<
-          EnumOpaqueTwinSyncSseMoi_Mutex>(this, _$identity);
+  @override
+  String toString() {
+    return 'EnumOpaqueTwinSyncSseMoi.traitObj(field0: $field0)';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is EnumOpaqueTwinSyncSseMoi_Mutex &&
+            other is _$EnumOpaqueTwinSyncSseMoi_TraitObjImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
+  /// Create a copy of EnumOpaqueTwinSyncSseMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'EnumOpaqueTwinSyncSseMoi.mutex(field0: $field0)';
+  @pragma('vm:prefer-inline')
+  _$$EnumOpaqueTwinSyncSseMoi_TraitObjImplCopyWith<
+          _$EnumOpaqueTwinSyncSseMoi_TraitObjImpl>
+      get copyWith => __$$EnumOpaqueTwinSyncSseMoi_TraitObjImplCopyWithImpl<
+          _$EnumOpaqueTwinSyncSseMoi_TraitObjImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(HideDataTwinSyncSseMoi field0) struct,
+    required TResult Function(I16 field0) primitive,
+    required TResult Function(BoxDartDebugTwinSyncSseMoi field0) traitObj,
+    required TResult Function(MutexHideDataTwinSyncSseMoi field0) mutex,
+    required TResult Function(RwLockHideDataTwinSyncSseMoi field0) rwLock,
+    required TResult Function() nothing,
+  }) {
+    return traitObj(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(HideDataTwinSyncSseMoi field0)? struct,
+    TResult? Function(I16 field0)? primitive,
+    TResult? Function(BoxDartDebugTwinSyncSseMoi field0)? traitObj,
+    TResult? Function(MutexHideDataTwinSyncSseMoi field0)? mutex,
+    TResult? Function(RwLockHideDataTwinSyncSseMoi field0)? rwLock,
+    TResult? Function()? nothing,
+  }) {
+    return traitObj?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(HideDataTwinSyncSseMoi field0)? struct,
+    TResult Function(I16 field0)? primitive,
+    TResult Function(BoxDartDebugTwinSyncSseMoi field0)? traitObj,
+    TResult Function(MutexHideDataTwinSyncSseMoi field0)? mutex,
+    TResult Function(RwLockHideDataTwinSyncSseMoi field0)? rwLock,
+    TResult Function()? nothing,
+    required TResult orElse(),
+  }) {
+    if (traitObj != null) {
+      return traitObj(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_Struct value) struct,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_Primitive value)
+        primitive,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_TraitObj value) traitObj,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_Mutex value) mutex,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_RwLock value) rwLock,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_Nothing value) nothing,
+  }) {
+    return traitObj(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_Struct value)? struct,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_Primitive value)? primitive,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_TraitObj value)? traitObj,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_Mutex value)? mutex,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_RwLock value)? rwLock,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_Nothing value)? nothing,
+  }) {
+    return traitObj?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EnumOpaqueTwinSyncSseMoi_Struct value)? struct,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_Primitive value)? primitive,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_TraitObj value)? traitObj,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_Mutex value)? mutex,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_RwLock value)? rwLock,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_Nothing value)? nothing,
+    required TResult orElse(),
+  }) {
+    if (traitObj != null) {
+      return traitObj(this);
+    }
+    return orElse();
   }
 }
 
+abstract class EnumOpaqueTwinSyncSseMoi_TraitObj
+    extends EnumOpaqueTwinSyncSseMoi {
+  const factory EnumOpaqueTwinSyncSseMoi_TraitObj(
+          final BoxDartDebugTwinSyncSseMoi field0) =
+      _$EnumOpaqueTwinSyncSseMoi_TraitObjImpl;
+  const EnumOpaqueTwinSyncSseMoi_TraitObj._() : super._();
+
+  BoxDartDebugTwinSyncSseMoi get field0;
+
+  /// Create a copy of EnumOpaqueTwinSyncSseMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$EnumOpaqueTwinSyncSseMoi_TraitObjImplCopyWith<
+          _$EnumOpaqueTwinSyncSseMoi_TraitObjImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
 /// @nodoc
-abstract mixin class $EnumOpaqueTwinSyncSseMoi_MutexCopyWith<$Res>
-    implements $EnumOpaqueTwinSyncSseMoiCopyWith<$Res> {
-  factory $EnumOpaqueTwinSyncSseMoi_MutexCopyWith(
-          EnumOpaqueTwinSyncSseMoi_Mutex value,
-          $Res Function(EnumOpaqueTwinSyncSseMoi_Mutex) _then) =
-      _$EnumOpaqueTwinSyncSseMoi_MutexCopyWithImpl;
+abstract class _$$EnumOpaqueTwinSyncSseMoi_MutexImplCopyWith<$Res> {
+  factory _$$EnumOpaqueTwinSyncSseMoi_MutexImplCopyWith(
+          _$EnumOpaqueTwinSyncSseMoi_MutexImpl value,
+          $Res Function(_$EnumOpaqueTwinSyncSseMoi_MutexImpl) then) =
+      __$$EnumOpaqueTwinSyncSseMoi_MutexImplCopyWithImpl<$Res>;
   @useResult
   $Res call({MutexHideDataTwinSyncSseMoi field0});
 }
 
 /// @nodoc
-class _$EnumOpaqueTwinSyncSseMoi_MutexCopyWithImpl<$Res>
-    implements $EnumOpaqueTwinSyncSseMoi_MutexCopyWith<$Res> {
-  _$EnumOpaqueTwinSyncSseMoi_MutexCopyWithImpl(this._self, this._then);
-
-  final EnumOpaqueTwinSyncSseMoi_Mutex _self;
-  final $Res Function(EnumOpaqueTwinSyncSseMoi_Mutex) _then;
+class __$$EnumOpaqueTwinSyncSseMoi_MutexImplCopyWithImpl<$Res>
+    extends _$EnumOpaqueTwinSyncSseMoiCopyWithImpl<$Res,
+        _$EnumOpaqueTwinSyncSseMoi_MutexImpl>
+    implements _$$EnumOpaqueTwinSyncSseMoi_MutexImplCopyWith<$Res> {
+  __$$EnumOpaqueTwinSyncSseMoi_MutexImplCopyWithImpl(
+      _$EnumOpaqueTwinSyncSseMoi_MutexImpl _value,
+      $Res Function(_$EnumOpaqueTwinSyncSseMoi_MutexImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumOpaqueTwinSyncSseMoi
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  @override
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(EnumOpaqueTwinSyncSseMoi_Mutex(
+    return _then(_$EnumOpaqueTwinSyncSseMoi_MutexImpl(
       null == field0
-          ? _self.field0
+          ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as MutexHideDataTwinSyncSseMoi,
     ));
@@ -303,64 +668,173 @@ class _$EnumOpaqueTwinSyncSseMoi_MutexCopyWithImpl<$Res>
 
 /// @nodoc
 
-class EnumOpaqueTwinSyncSseMoi_RwLock extends EnumOpaqueTwinSyncSseMoi {
-  const EnumOpaqueTwinSyncSseMoi_RwLock(this.field0) : super._();
+class _$EnumOpaqueTwinSyncSseMoi_MutexImpl
+    extends EnumOpaqueTwinSyncSseMoi_Mutex {
+  const _$EnumOpaqueTwinSyncSseMoi_MutexImpl(this.field0) : super._();
 
-  final RwLockHideDataTwinSyncSseMoi field0;
+  @override
+  final MutexHideDataTwinSyncSseMoi field0;
 
-  /// Create a copy of EnumOpaqueTwinSyncSseMoi
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $EnumOpaqueTwinSyncSseMoi_RwLockCopyWith<EnumOpaqueTwinSyncSseMoi_RwLock>
-      get copyWith => _$EnumOpaqueTwinSyncSseMoi_RwLockCopyWithImpl<
-          EnumOpaqueTwinSyncSseMoi_RwLock>(this, _$identity);
+  @override
+  String toString() {
+    return 'EnumOpaqueTwinSyncSseMoi.mutex(field0: $field0)';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is EnumOpaqueTwinSyncSseMoi_RwLock &&
+            other is _$EnumOpaqueTwinSyncSseMoi_MutexImpl &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
+  /// Create a copy of EnumOpaqueTwinSyncSseMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'EnumOpaqueTwinSyncSseMoi.rwLock(field0: $field0)';
+  @pragma('vm:prefer-inline')
+  _$$EnumOpaqueTwinSyncSseMoi_MutexImplCopyWith<
+          _$EnumOpaqueTwinSyncSseMoi_MutexImpl>
+      get copyWith => __$$EnumOpaqueTwinSyncSseMoi_MutexImplCopyWithImpl<
+          _$EnumOpaqueTwinSyncSseMoi_MutexImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(HideDataTwinSyncSseMoi field0) struct,
+    required TResult Function(I16 field0) primitive,
+    required TResult Function(BoxDartDebugTwinSyncSseMoi field0) traitObj,
+    required TResult Function(MutexHideDataTwinSyncSseMoi field0) mutex,
+    required TResult Function(RwLockHideDataTwinSyncSseMoi field0) rwLock,
+    required TResult Function() nothing,
+  }) {
+    return mutex(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(HideDataTwinSyncSseMoi field0)? struct,
+    TResult? Function(I16 field0)? primitive,
+    TResult? Function(BoxDartDebugTwinSyncSseMoi field0)? traitObj,
+    TResult? Function(MutexHideDataTwinSyncSseMoi field0)? mutex,
+    TResult? Function(RwLockHideDataTwinSyncSseMoi field0)? rwLock,
+    TResult? Function()? nothing,
+  }) {
+    return mutex?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(HideDataTwinSyncSseMoi field0)? struct,
+    TResult Function(I16 field0)? primitive,
+    TResult Function(BoxDartDebugTwinSyncSseMoi field0)? traitObj,
+    TResult Function(MutexHideDataTwinSyncSseMoi field0)? mutex,
+    TResult Function(RwLockHideDataTwinSyncSseMoi field0)? rwLock,
+    TResult Function()? nothing,
+    required TResult orElse(),
+  }) {
+    if (mutex != null) {
+      return mutex(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_Struct value) struct,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_Primitive value)
+        primitive,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_TraitObj value) traitObj,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_Mutex value) mutex,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_RwLock value) rwLock,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_Nothing value) nothing,
+  }) {
+    return mutex(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_Struct value)? struct,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_Primitive value)? primitive,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_TraitObj value)? traitObj,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_Mutex value)? mutex,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_RwLock value)? rwLock,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_Nothing value)? nothing,
+  }) {
+    return mutex?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EnumOpaqueTwinSyncSseMoi_Struct value)? struct,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_Primitive value)? primitive,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_TraitObj value)? traitObj,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_Mutex value)? mutex,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_RwLock value)? rwLock,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_Nothing value)? nothing,
+    required TResult orElse(),
+  }) {
+    if (mutex != null) {
+      return mutex(this);
+    }
+    return orElse();
   }
 }
 
+abstract class EnumOpaqueTwinSyncSseMoi_Mutex extends EnumOpaqueTwinSyncSseMoi {
+  const factory EnumOpaqueTwinSyncSseMoi_Mutex(
+          final MutexHideDataTwinSyncSseMoi field0) =
+      _$EnumOpaqueTwinSyncSseMoi_MutexImpl;
+  const EnumOpaqueTwinSyncSseMoi_Mutex._() : super._();
+
+  MutexHideDataTwinSyncSseMoi get field0;
+
+  /// Create a copy of EnumOpaqueTwinSyncSseMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$EnumOpaqueTwinSyncSseMoi_MutexImplCopyWith<
+          _$EnumOpaqueTwinSyncSseMoi_MutexImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
 /// @nodoc
-abstract mixin class $EnumOpaqueTwinSyncSseMoi_RwLockCopyWith<$Res>
-    implements $EnumOpaqueTwinSyncSseMoiCopyWith<$Res> {
-  factory $EnumOpaqueTwinSyncSseMoi_RwLockCopyWith(
-          EnumOpaqueTwinSyncSseMoi_RwLock value,
-          $Res Function(EnumOpaqueTwinSyncSseMoi_RwLock) _then) =
-      _$EnumOpaqueTwinSyncSseMoi_RwLockCopyWithImpl;
+abstract class _$$EnumOpaqueTwinSyncSseMoi_RwLockImplCopyWith<$Res> {
+  factory _$$EnumOpaqueTwinSyncSseMoi_RwLockImplCopyWith(
+          _$EnumOpaqueTwinSyncSseMoi_RwLockImpl value,
+          $Res Function(_$EnumOpaqueTwinSyncSseMoi_RwLockImpl) then) =
+      __$$EnumOpaqueTwinSyncSseMoi_RwLockImplCopyWithImpl<$Res>;
   @useResult
   $Res call({RwLockHideDataTwinSyncSseMoi field0});
 }
 
 /// @nodoc
-class _$EnumOpaqueTwinSyncSseMoi_RwLockCopyWithImpl<$Res>
-    implements $EnumOpaqueTwinSyncSseMoi_RwLockCopyWith<$Res> {
-  _$EnumOpaqueTwinSyncSseMoi_RwLockCopyWithImpl(this._self, this._then);
-
-  final EnumOpaqueTwinSyncSseMoi_RwLock _self;
-  final $Res Function(EnumOpaqueTwinSyncSseMoi_RwLock) _then;
+class __$$EnumOpaqueTwinSyncSseMoi_RwLockImplCopyWithImpl<$Res>
+    extends _$EnumOpaqueTwinSyncSseMoiCopyWithImpl<$Res,
+        _$EnumOpaqueTwinSyncSseMoi_RwLockImpl>
+    implements _$$EnumOpaqueTwinSyncSseMoi_RwLockImplCopyWith<$Res> {
+  __$$EnumOpaqueTwinSyncSseMoi_RwLockImplCopyWithImpl(
+      _$EnumOpaqueTwinSyncSseMoi_RwLockImpl _value,
+      $Res Function(_$EnumOpaqueTwinSyncSseMoi_RwLockImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumOpaqueTwinSyncSseMoi
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  @override
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(EnumOpaqueTwinSyncSseMoi_RwLock(
+    return _then(_$EnumOpaqueTwinSyncSseMoi_RwLockImpl(
       null == field0
-          ? _self.field0
+          ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as RwLockHideDataTwinSyncSseMoi,
     ));
@@ -369,23 +843,278 @@ class _$EnumOpaqueTwinSyncSseMoi_RwLockCopyWithImpl<$Res>
 
 /// @nodoc
 
-class EnumOpaqueTwinSyncSseMoi_Nothing extends EnumOpaqueTwinSyncSseMoi {
-  const EnumOpaqueTwinSyncSseMoi_Nothing() : super._();
+class _$EnumOpaqueTwinSyncSseMoi_RwLockImpl
+    extends EnumOpaqueTwinSyncSseMoi_RwLock {
+  const _$EnumOpaqueTwinSyncSseMoi_RwLockImpl(this.field0) : super._();
+
+  @override
+  final RwLockHideDataTwinSyncSseMoi field0;
+
+  @override
+  String toString() {
+    return 'EnumOpaqueTwinSyncSseMoi.rwLock(field0: $field0)';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is EnumOpaqueTwinSyncSseMoi_Nothing);
+            other is _$EnumOpaqueTwinSyncSseMoi_RwLockImpl &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  /// Create a copy of EnumOpaqueTwinSyncSseMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EnumOpaqueTwinSyncSseMoi_RwLockImplCopyWith<
+          _$EnumOpaqueTwinSyncSseMoi_RwLockImpl>
+      get copyWith => __$$EnumOpaqueTwinSyncSseMoi_RwLockImplCopyWithImpl<
+          _$EnumOpaqueTwinSyncSseMoi_RwLockImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(HideDataTwinSyncSseMoi field0) struct,
+    required TResult Function(I16 field0) primitive,
+    required TResult Function(BoxDartDebugTwinSyncSseMoi field0) traitObj,
+    required TResult Function(MutexHideDataTwinSyncSseMoi field0) mutex,
+    required TResult Function(RwLockHideDataTwinSyncSseMoi field0) rwLock,
+    required TResult Function() nothing,
+  }) {
+    return rwLock(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(HideDataTwinSyncSseMoi field0)? struct,
+    TResult? Function(I16 field0)? primitive,
+    TResult? Function(BoxDartDebugTwinSyncSseMoi field0)? traitObj,
+    TResult? Function(MutexHideDataTwinSyncSseMoi field0)? mutex,
+    TResult? Function(RwLockHideDataTwinSyncSseMoi field0)? rwLock,
+    TResult? Function()? nothing,
+  }) {
+    return rwLock?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(HideDataTwinSyncSseMoi field0)? struct,
+    TResult Function(I16 field0)? primitive,
+    TResult Function(BoxDartDebugTwinSyncSseMoi field0)? traitObj,
+    TResult Function(MutexHideDataTwinSyncSseMoi field0)? mutex,
+    TResult Function(RwLockHideDataTwinSyncSseMoi field0)? rwLock,
+    TResult Function()? nothing,
+    required TResult orElse(),
+  }) {
+    if (rwLock != null) {
+      return rwLock(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_Struct value) struct,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_Primitive value)
+        primitive,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_TraitObj value) traitObj,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_Mutex value) mutex,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_RwLock value) rwLock,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_Nothing value) nothing,
+  }) {
+    return rwLock(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_Struct value)? struct,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_Primitive value)? primitive,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_TraitObj value)? traitObj,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_Mutex value)? mutex,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_RwLock value)? rwLock,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_Nothing value)? nothing,
+  }) {
+    return rwLock?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EnumOpaqueTwinSyncSseMoi_Struct value)? struct,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_Primitive value)? primitive,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_TraitObj value)? traitObj,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_Mutex value)? mutex,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_RwLock value)? rwLock,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_Nothing value)? nothing,
+    required TResult orElse(),
+  }) {
+    if (rwLock != null) {
+      return rwLock(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EnumOpaqueTwinSyncSseMoi_RwLock
+    extends EnumOpaqueTwinSyncSseMoi {
+  const factory EnumOpaqueTwinSyncSseMoi_RwLock(
+          final RwLockHideDataTwinSyncSseMoi field0) =
+      _$EnumOpaqueTwinSyncSseMoi_RwLockImpl;
+  const EnumOpaqueTwinSyncSseMoi_RwLock._() : super._();
+
+  RwLockHideDataTwinSyncSseMoi get field0;
+
+  /// Create a copy of EnumOpaqueTwinSyncSseMoi
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$EnumOpaqueTwinSyncSseMoi_RwLockImplCopyWith<
+          _$EnumOpaqueTwinSyncSseMoi_RwLockImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EnumOpaqueTwinSyncSseMoi_NothingImplCopyWith<$Res> {
+  factory _$$EnumOpaqueTwinSyncSseMoi_NothingImplCopyWith(
+          _$EnumOpaqueTwinSyncSseMoi_NothingImpl value,
+          $Res Function(_$EnumOpaqueTwinSyncSseMoi_NothingImpl) then) =
+      __$$EnumOpaqueTwinSyncSseMoi_NothingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$EnumOpaqueTwinSyncSseMoi_NothingImplCopyWithImpl<$Res>
+    extends _$EnumOpaqueTwinSyncSseMoiCopyWithImpl<$Res,
+        _$EnumOpaqueTwinSyncSseMoi_NothingImpl>
+    implements _$$EnumOpaqueTwinSyncSseMoi_NothingImplCopyWith<$Res> {
+  __$$EnumOpaqueTwinSyncSseMoi_NothingImplCopyWithImpl(
+      _$EnumOpaqueTwinSyncSseMoi_NothingImpl _value,
+      $Res Function(_$EnumOpaqueTwinSyncSseMoi_NothingImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of EnumOpaqueTwinSyncSseMoi
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$EnumOpaqueTwinSyncSseMoi_NothingImpl
+    extends EnumOpaqueTwinSyncSseMoi_Nothing {
+  const _$EnumOpaqueTwinSyncSseMoi_NothingImpl() : super._();
+
+  @override
+  String toString() {
+    return 'EnumOpaqueTwinSyncSseMoi.nothing()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EnumOpaqueTwinSyncSseMoi_NothingImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-  String toString() {
-    return 'EnumOpaqueTwinSyncSseMoi.nothing()';
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(HideDataTwinSyncSseMoi field0) struct,
+    required TResult Function(I16 field0) primitive,
+    required TResult Function(BoxDartDebugTwinSyncSseMoi field0) traitObj,
+    required TResult Function(MutexHideDataTwinSyncSseMoi field0) mutex,
+    required TResult Function(RwLockHideDataTwinSyncSseMoi field0) rwLock,
+    required TResult Function() nothing,
+  }) {
+    return nothing();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(HideDataTwinSyncSseMoi field0)? struct,
+    TResult? Function(I16 field0)? primitive,
+    TResult? Function(BoxDartDebugTwinSyncSseMoi field0)? traitObj,
+    TResult? Function(MutexHideDataTwinSyncSseMoi field0)? mutex,
+    TResult? Function(RwLockHideDataTwinSyncSseMoi field0)? rwLock,
+    TResult? Function()? nothing,
+  }) {
+    return nothing?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(HideDataTwinSyncSseMoi field0)? struct,
+    TResult Function(I16 field0)? primitive,
+    TResult Function(BoxDartDebugTwinSyncSseMoi field0)? traitObj,
+    TResult Function(MutexHideDataTwinSyncSseMoi field0)? mutex,
+    TResult Function(RwLockHideDataTwinSyncSseMoi field0)? rwLock,
+    TResult Function()? nothing,
+    required TResult orElse(),
+  }) {
+    if (nothing != null) {
+      return nothing();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_Struct value) struct,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_Primitive value)
+        primitive,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_TraitObj value) traitObj,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_Mutex value) mutex,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_RwLock value) rwLock,
+    required TResult Function(EnumOpaqueTwinSyncSseMoi_Nothing value) nothing,
+  }) {
+    return nothing(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_Struct value)? struct,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_Primitive value)? primitive,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_TraitObj value)? traitObj,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_Mutex value)? mutex,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_RwLock value)? rwLock,
+    TResult? Function(EnumOpaqueTwinSyncSseMoi_Nothing value)? nothing,
+  }) {
+    return nothing?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EnumOpaqueTwinSyncSseMoi_Struct value)? struct,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_Primitive value)? primitive,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_TraitObj value)? traitObj,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_Mutex value)? mutex,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_RwLock value)? rwLock,
+    TResult Function(EnumOpaqueTwinSyncSseMoi_Nothing value)? nothing,
+    required TResult orElse(),
+  }) {
+    if (nothing != null) {
+      return nothing(this);
+    }
+    return orElse();
   }
 }
 
-// dart format on
+abstract class EnumOpaqueTwinSyncSseMoi_Nothing
+    extends EnumOpaqueTwinSyncSseMoi {
+  const factory EnumOpaqueTwinSyncSseMoi_Nothing() =
+      _$EnumOpaqueTwinSyncSseMoi_NothingImpl;
+  const EnumOpaqueTwinSyncSseMoi_Nothing._() : super._();
+}

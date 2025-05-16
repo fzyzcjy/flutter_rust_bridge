@@ -255,7 +255,7 @@ sealed class MyEnumWithoutFnWithUnignoreTwinNormal
 }
 
 @freezed
-sealed class MyStructWithJsonSerializableTwinNormal
+class MyStructWithJsonSerializableTwinNormal
     with _$MyStructWithJsonSerializableTwinNormal {
   const MyStructWithJsonSerializableTwinNormal._();
   const factory MyStructWithJsonSerializableTwinNormal({
@@ -307,7 +307,7 @@ class MyStructWithoutFnWithUnignoreTwinNormal {
 }
 
 @freezed
-sealed class MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
+class MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
     with _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal {
   const factory MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal({
     required String a,

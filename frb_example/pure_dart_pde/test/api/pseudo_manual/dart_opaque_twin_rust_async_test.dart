@@ -16,21 +16,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
   String f() => 'Test_String';
 
   test('loopback', () async {
-    await futurizeVoidTwinRustAsync(
-      loopBackArrayGetTwinRustAsync(
-        opaque: await loopBackArrayTwinRustAsync(opaque: f),
-      ),
-    );
-    await futurizeVoidTwinRustAsync(
-      loopBackVecGetTwinRustAsync(
-        opaque: await loopBackVecTwinRustAsync(opaque: f),
-      ),
-    );
-    await futurizeVoidTwinRustAsync(
-      loopBackOptionGetTwinRustAsync(
-        opaque: await loopBackOptionTwinRustAsync(opaque: f),
-      ),
-    );
+    await futurizeVoidTwinRustAsync(loopBackArrayGetTwinRustAsync(
+        opaque: await loopBackArrayTwinRustAsync(opaque: f)));
+    await futurizeVoidTwinRustAsync(loopBackVecGetTwinRustAsync(
+        opaque: await loopBackVecTwinRustAsync(opaque: f)));
+    await futurizeVoidTwinRustAsync(loopBackOptionGetTwinRustAsync(
+        opaque: await loopBackOptionTwinRustAsync(opaque: f)));
 
     var back1 = await loopBackTwinRustAsync(opaque: f) as String Function();
     expect(back1(), 'Test_String');
@@ -41,18 +32,15 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('drop', () async {
     expect(
-      await asyncAcceptDartOpaqueTwinRustAsync(
-        opaque: createLargeList(mb: 200),
-      ),
-      'async test',
-    );
+        await asyncAcceptDartOpaqueTwinRustAsync(
+            opaque: createLargeList(mb: 200)),
+        'async test');
   });
 
   test('nested', () async {
     var str = await createNestedDartOpaqueTwinRustAsync(opaque1: f, opaque2: f);
     await futurizeVoidTwinRustAsync(
-      getNestedDartOpaqueTwinRustAsync(opaque: str),
-    );
+        getNestedDartOpaqueTwinRustAsync(opaque: str));
   });
 
   test('enum', () async {
@@ -63,8 +51,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('nested', () async {
     var str = await createNestedDartOpaqueTwinRustAsync(opaque1: f, opaque2: f);
     await futurizeVoidTwinRustAsync(
-      getNestedDartOpaqueTwinRustAsync(opaque: str),
-    );
+        getNestedDartOpaqueTwinRustAsync(opaque: str));
   });
 
   test('enum', () async {

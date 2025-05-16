@@ -19,52 +19,41 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('rustCallDartOneArgTwinSse', () async {
     final callbackCalls = <String>[];
-    await rustCallDartOneArgTwinSse(
-      callback: (arg) => callbackCalls.add(arg),
-    );
+    await rustCallDartOneArgTwinSse(callback: (arg) => callbackCalls.add(arg));
     expect(callbackCalls, ['a']);
   });
 
   test('rustCallDartTwoArgsTwinSse', () async {
     final callbackCalls = <(String, DemoStructForRustCallDartTwinSse)>[];
     await rustCallDartTwoArgsTwinSse(
-      callback: (a, b) => callbackCalls.add((a, b)),
-    );
-    expect(callbackCalls, [
-      ('a', DemoStructForRustCallDartTwinSse(name: 'b')),
-    ]);
+        callback: (a, b) => callbackCalls.add((a, b)));
+    expect(callbackCalls, [('a', DemoStructForRustCallDartTwinSse(name: 'b'))]);
   });
 
   test('rustCallDartReturnTwinSse', () async {
     var callCount = 0;
-    await rustCallDartReturnTwinSse(
-      callback: () {
-        callCount++;
-        return 'a';
-      },
-    );
+    await rustCallDartReturnTwinSse(callback: () {
+      callCount++;
+      return 'a';
+    });
     expect(callCount, 1);
   });
 
   test('rustCallDartLoopbackTwinSse', () async {
     var callCount = 0;
-    await rustCallDartLoopbackTwinSse(
-      callback: (arg) {
-        callCount++;
-        return arg;
-      },
-    );
+    await rustCallDartLoopbackTwinSse(callback: (arg) {
+      callCount++;
+      return arg;
+    });
     expect(callCount, 1);
   });
 
   test('rust closure be asynchronous', () async {
     var callCount = 0;
-    await rustCallDartLoopbackTwinSse(
-      callback: (arg) async {
-        callCount++;
-        return arg;
-      },
-    );
+    await rustCallDartLoopbackTwinSse(callback: (arg) async {
+      callCount++;
+      return arg;
+    });
     expect(callCount, 1);
   });
 
@@ -72,21 +61,18 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final opaque = (String whatever) => 42;
     var callbackCalls = <dynamic>[];
     await rustCallDartWithDartOpaqueArgTwinSse(
-      input: opaque,
-      callback: (arg) => callbackCalls.add(arg),
-    );
+        input: opaque, callback: (arg) => callbackCalls.add(arg));
     expect(callbackCalls[0]('hello'), 42);
   });
 
   test('rustCallDartWithDartOpaqueResultTwinSse', () async {
     final opaque = (String whatever) => 42;
     var callCount = 0;
-    final dynamic output = await rustCallDartWithDartOpaqueResultTwinSse(
-      callback: () {
-        callCount++;
-        return opaque;
-      },
-    );
+    final dynamic output =
+        await rustCallDartWithDartOpaqueResultTwinSse(callback: () {
+      callCount++;
+      return opaque;
+    });
     expect(callCount, 1);
     expect(output('hello'), 42);
   });
@@ -94,25 +80,20 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('rustCallDartMultiTimesTwinSse', () async {
     var callCount = 0;
     await rustCallDartMultiTimesTwinSse(
-      callback: () => callCount++,
-      numTimes: 10,
-    );
+        callback: () => callCount++, numTimes: 10);
     expect(callCount, 10);
   });
 
   group('rustCallDartReturnResultTwinSse', () {
     test('when normal', () async {
       await rustCallDartReturnResultTwinSse(
-        callback: (s) => s * 2,
-        expectOutput: "hihi",
-      );
+          callback: (s) => s * 2, expectOutput: "hihi");
     });
 
     test('when error', () async {
       await rustCallDartReturnResultTwinSse(
-        callback: (s) => throw Exception('dummy exception'),
-        expectOutput: null,
-      );
+          callback: (s) => throw Exception('dummy exception'),
+          expectOutput: null);
     });
   });
 }

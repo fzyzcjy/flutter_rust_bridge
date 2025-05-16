@@ -14,24 +14,21 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   test('impl class should extend trait class', () async {
-    final one = await StructOneWithTraitTwinSync.simpleTraitFnTwinSync(
-      value: 10,
-    );
+    final one =
+        await StructOneWithTraitTwinSync.simpleTraitFnTwinSync(value: 10);
     expect(one, isA<SimpleTraitTwinSync>());
   });
 
   test('call methods', () async {
-    final one = await StructOneWithTraitTwinSync.simpleTraitFnTwinSync(
-      value: 10,
-    );
+    final one =
+        await StructOneWithTraitTwinSync.simpleTraitFnTwinSync(value: 10);
     expect(await one.simpleTraitFnReceiverBorrowTwinSync(), 10);
   });
 
   test('trait default impl', () async {
     expect(
-      await StructOneWithTraitTwinSync.simpleTraitFnWithDefaultImplTwinSync(),
-      42,
-    );
+        await StructOneWithTraitTwinSync.simpleTraitFnWithDefaultImplTwinSync(),
+        42);
   });
 
   // test('use generated implementor', () async {

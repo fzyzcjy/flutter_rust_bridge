@@ -14,20 +14,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
   String f() => 'Test_String';
 
   test('loopback', () async {
-    await futurizeVoidTwinRustAsyncSse(
-      loopBackArrayGetTwinRustAsyncSse(
-        opaque: await loopBackArrayTwinRustAsyncSse(opaque: f),
-      ),
-    );
-    await futurizeVoidTwinRustAsyncSse(
-      loopBackVecGetTwinRustAsyncSse(
-          opaque: await loopBackVecTwinRustAsyncSse(opaque: f)),
-    );
-    await futurizeVoidTwinRustAsyncSse(
-      loopBackOptionGetTwinRustAsyncSse(
-        opaque: await loopBackOptionTwinRustAsyncSse(opaque: f),
-      ),
-    );
+    await futurizeVoidTwinRustAsyncSse(loopBackArrayGetTwinRustAsyncSse(
+        opaque: await loopBackArrayTwinRustAsyncSse(opaque: f)));
+    await futurizeVoidTwinRustAsyncSse(loopBackVecGetTwinRustAsyncSse(
+        opaque: await loopBackVecTwinRustAsyncSse(opaque: f)));
+    await futurizeVoidTwinRustAsyncSse(loopBackOptionGetTwinRustAsyncSse(
+        opaque: await loopBackOptionTwinRustAsyncSse(opaque: f)));
 
     var back1 = await loopBackTwinRustAsyncSse(opaque: f) as String Function();
     expect(back1(), 'Test_String');
@@ -39,10 +31,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('drop', () async {
     expect(
-      await asyncAcceptDartOpaqueTwinRustAsyncSse(
-          opaque: createLargeList(mb: 200)),
-      'async test',
-    );
+        await asyncAcceptDartOpaqueTwinRustAsyncSse(
+            opaque: createLargeList(mb: 200)),
+        'async test');
   });
 
   test('nested', () async {

@@ -11,6 +11,4 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<int> simpleAdderTwinRustAsync({required int a, required int b}) =>
     RustLib.instance.api
         .crateApiPseudoManualSimpleTwinRustAsyncSimpleAdderTwinRustAsync(
-          a: a,
-          b: b,
-        );
+            a: a, b: b);

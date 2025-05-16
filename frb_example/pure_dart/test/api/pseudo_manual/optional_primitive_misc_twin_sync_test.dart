@@ -12,31 +12,22 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('dart call optional primitiveTypes', () async {
     expect(
-      await primitiveOptionalTypesTwinSync(
-        myI32: null,
-        myI64: null,
-        myF64: null,
-        myBool: null,
-      ),
-      0,
-    );
+        await primitiveOptionalTypesTwinSync(
+            myI32: null, myI64: null, myF64: null, myBool: null),
+        0);
     expect(
-      await primitiveOptionalTypesTwinSync(
-        myI32: 0,
-        myI64: PlatformInt64Util.from(0),
-        myF64: 0,
-        myBool: false,
-      ),
-      4,
-    );
+        await primitiveOptionalTypesTwinSync(
+            myI32: 0,
+            myI64: PlatformInt64Util.from(0),
+            myF64: 0,
+            myBool: false),
+        4);
     expect(
-      await primitiveOptionalTypesTwinSync(
-        myI32: 123,
-        myI64: PlatformInt64Util.from(123),
-        myF64: 123,
-        myBool: true,
-      ),
-      4,
-    );
+        await primitiveOptionalTypesTwinSync(
+            myI32: 123,
+            myI64: PlatformInt64Util.from(123),
+            myF64: 123,
+            myBool: true),
+        4);
   });
 }
