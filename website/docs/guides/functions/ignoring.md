@@ -33,4 +33,4 @@ impl RandomStruct {
 }
 ```
 
-Currently `#[frb(ignore)]` doesn't support enums and structs yet - feel free to open an issue if your scenario needs it.
+Currently `#[frb(ignore)]` doesn't support enums yet - feel free to open an issue if your scenario needs it.
