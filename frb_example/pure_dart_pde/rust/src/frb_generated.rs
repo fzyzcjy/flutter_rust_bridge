@@ -30408,6 +30408,7 @@ const _: fn() = || {
     {
         let RawStringMirrored = None::<crate::api::mirror::RawStringMirrored>.unwrap();
         let _: String = RawStringMirrored.value;
+        let _: String = RawStringMirrored.r#type;
     }
     {
         let Sequences_ = None::<crate::api::mirror::Sequences>.unwrap();
@@ -40547,7 +40548,11 @@ impl SseDecode for crate::api::mirror::RawStringMirrored {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_value = <String>::sse_decode(deserializer);
-        return crate::api::mirror::RawStringMirrored { value: var_value };
+        let mut var_type = <String>::sse_decode(deserializer);
+        return crate::api::mirror::RawStringMirrored {
+            value: var_value,
+            r#type: var_type,
+        };
     }
 }
 
@@ -50043,7 +50048,11 @@ impl
 // Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::api::mirror::RawStringMirrored> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        [self.0.value.into_into_dart().into_dart()].into_dart()
+        [
+            self.0.value.into_into_dart().into_dart(),
+            self.0.r#type.into_into_dart().into_dart(),
+        ]
+        .into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
@@ -60278,6 +60287,7 @@ impl SseEncode for crate::api::mirror::RawStringMirrored {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <String>::sse_encode(self.value, serializer);
+        <String>::sse_encode(self.r#type, serializer);
     }
 }
 
