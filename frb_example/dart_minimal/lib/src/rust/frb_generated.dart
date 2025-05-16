@@ -68,7 +68,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.9.0';
 
   @override
-  int get rustContentHash => -1366988249;
+  int get rustContentHash => -2119384465;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -79,46 +79,9 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  int crateApiMinimalTypeForIgnoreAllAutoAccessorGetField2(
-      {required TypeForIgnoreAll that});
-
-  void crateApiMinimalTypeForIgnoreAllAutoAccessorSetField2(
-      {required TypeForIgnoreAll that, required int field2});
-
-  Future<TypeForIgnoreAll> crateApiMinimalTypeForIgnoreAllDefault();
-
-  Future<int> crateApiMinimalTypeForIgnoreAllField1(
-      {required TypeForIgnoreAll that});
-
-  Future<TypeForIgnoreAll> crateApiMinimalTypeForIgnoreAllNew();
-
-  Future<TypeForIgnore> crateApiMinimalTypeForIgnoreDefault();
-
-  Future<int> crateApiMinimalTypeForIgnoreField1({required TypeForIgnore that});
-
-  Future<TypeForIgnore> crateApiMinimalTypeForIgnoreNew();
-
   Future<void> crateApiMinimalInitApp();
 
   Future<int> crateApiMinimalMinimalAdder({required int a, required int b});
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_TypeForIgnore;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_TypeForIgnore;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_TypeForIgnorePtr;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_TypeForIgnoreAll;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_TypeForIgnoreAll;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_TypeForIgnoreAllPtr;
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -130,221 +93,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  int crateApiMinimalTypeForIgnoreAllAutoAccessorGetField2(
-      {required TypeForIgnoreAll that}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
-            that, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_u_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kCrateApiMinimalTypeForIgnoreAllAutoAccessorGetField2ConstMeta,
-      argValues: [that],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiMinimalTypeForIgnoreAllAutoAccessorGetField2ConstMeta =>
-          const TaskConstMeta(
-            debugName: "TypeForIgnoreAll_auto_accessor_get_field_2",
-            argNames: ["that"],
-          );
-
-  @override
-  void crateApiMinimalTypeForIgnoreAllAutoAccessorSetField2(
-      {required TypeForIgnoreAll that, required int field2}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
-            that, serializer);
-        sse_encode_u_32(field2, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 2)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta: kCrateApiMinimalTypeForIgnoreAllAutoAccessorSetField2ConstMeta,
-      argValues: [that, field2],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta
-      get kCrateApiMinimalTypeForIgnoreAllAutoAccessorSetField2ConstMeta =>
-          const TaskConstMeta(
-            debugName: "TypeForIgnoreAll_auto_accessor_set_field_2",
-            argNames: ["that", "field2"],
-          );
-
-  @override
-  Future<TypeForIgnoreAll> crateApiMinimalTypeForIgnoreAllDefault() {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 3, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll,
-        decodeErrorData: null,
-      ),
-      constMeta: kCrateApiMinimalTypeForIgnoreAllDefaultConstMeta,
-      argValues: [],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta get kCrateApiMinimalTypeForIgnoreAllDefaultConstMeta =>
-      const TaskConstMeta(
-        debugName: "TypeForIgnoreAll_default",
-        argNames: [],
-      );
-
-  @override
-  Future<int> crateApiMinimalTypeForIgnoreAllField1(
-      {required TypeForIgnoreAll that}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
-            that, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 4, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_u_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kCrateApiMinimalTypeForIgnoreAllField1ConstMeta,
-      argValues: [that],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta get kCrateApiMinimalTypeForIgnoreAllField1ConstMeta =>
-      const TaskConstMeta(
-        debugName: "TypeForIgnoreAll_field_1",
-        argNames: ["that"],
-      );
-
-  @override
-  Future<TypeForIgnoreAll> crateApiMinimalTypeForIgnoreAllNew() {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 5, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll,
-        decodeErrorData: null,
-      ),
-      constMeta: kCrateApiMinimalTypeForIgnoreAllNewConstMeta,
-      argValues: [],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta get kCrateApiMinimalTypeForIgnoreAllNewConstMeta =>
-      const TaskConstMeta(
-        debugName: "TypeForIgnoreAll_new",
-        argNames: [],
-      );
-
-  @override
-  Future<TypeForIgnore> crateApiMinimalTypeForIgnoreDefault() {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 6, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore,
-        decodeErrorData: null,
-      ),
-      constMeta: kCrateApiMinimalTypeForIgnoreDefaultConstMeta,
-      argValues: [],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta get kCrateApiMinimalTypeForIgnoreDefaultConstMeta =>
-      const TaskConstMeta(
-        debugName: "TypeForIgnore_default",
-        argNames: [],
-      );
-
-  @override
-  Future<int> crateApiMinimalTypeForIgnoreField1(
-      {required TypeForIgnore that}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
-            that, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 7, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_u_32,
-        decodeErrorData: null,
-      ),
-      constMeta: kCrateApiMinimalTypeForIgnoreField1ConstMeta,
-      argValues: [that],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta get kCrateApiMinimalTypeForIgnoreField1ConstMeta =>
-      const TaskConstMeta(
-        debugName: "TypeForIgnore_field_1",
-        argNames: ["that"],
-      );
-
-  @override
-  Future<TypeForIgnore> crateApiMinimalTypeForIgnoreNew() {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 8, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore,
-        decodeErrorData: null,
-      ),
-      constMeta: kCrateApiMinimalTypeForIgnoreNewConstMeta,
-      argValues: [],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta get kCrateApiMinimalTypeForIgnoreNewConstMeta =>
-      const TaskConstMeta(
-        debugName: "TypeForIgnore_new",
-        argNames: [],
-      );
-
-  @override
   Future<void> crateApiMinimalInitApp() {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 9, port: port_);
+            funcId: 1, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -369,7 +123,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_i_32(a, serializer);
         sse_encode_i_32(b, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 10, port: port_);
+            funcId: 2, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_i_32,
@@ -387,86 +141,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["a", "b"],
       );
 
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_TypeForIgnore => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_TypeForIgnore => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore;
-
-  RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_TypeForIgnoreAll => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll;
-
-  RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_TypeForIgnoreAll => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll;
-
-  @protected
-  TypeForIgnore
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return TypeForIgnoreImpl.frbInternalDcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
-  TypeForIgnoreAll
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return TypeForIgnoreAllImpl.frbInternalDcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
-  TypeForIgnoreAll
-      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return TypeForIgnoreAllImpl.frbInternalDcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
-  TypeForIgnore
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return TypeForIgnoreImpl.frbInternalDcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
-  TypeForIgnoreAll
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return TypeForIgnoreAllImpl.frbInternalDcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
-  TypeForIgnore
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return TypeForIgnoreImpl.frbInternalDcoDecode(raw as List<dynamic>);
-  }
-
-  @protected
-  TypeForIgnoreAll
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
-          dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return TypeForIgnoreAllImpl.frbInternalDcoDecode(raw as List<dynamic>);
-  }
-
   @protected
   int dco_decode_i_32(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
-  }
-
-  @protected
-  int dco_decode_u_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw as int;
   }
@@ -478,95 +154,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  BigInt dco_decode_usize(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dcoDecodeU64(raw);
-  }
-
-  @protected
-  TypeForIgnore
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return TypeForIgnoreImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  TypeForIgnoreAll
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return TypeForIgnoreAllImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  TypeForIgnoreAll
-      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return TypeForIgnoreAllImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  TypeForIgnore
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return TypeForIgnoreImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  TypeForIgnoreAll
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return TypeForIgnoreAllImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  TypeForIgnore
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return TypeForIgnoreImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
-  TypeForIgnoreAll
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
-          SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return TypeForIgnoreAllImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
-  }
-
-  @protected
   int sse_decode_i_32(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getInt32();
   }
 
   @protected
-  int sse_decode_u_32(SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return deserializer.buffer.getUint32();
-  }
-
-  @protected
   void sse_decode_unit(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-  }
-
-  @protected
-  BigInt sse_decode_usize(SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return deserializer.buffer.getBigUint64();
   }
 
   @protected
@@ -576,85 +171,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
-          TypeForIgnore self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as TypeForIgnoreImpl).frbInternalSseEncode(move: true),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
-          TypeForIgnoreAll self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as TypeForIgnoreAllImpl).frbInternalSseEncode(move: true),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
-          TypeForIgnoreAll self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as TypeForIgnoreAllImpl).frbInternalSseEncode(move: false),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
-          TypeForIgnore self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as TypeForIgnoreImpl).frbInternalSseEncode(move: false),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
-          TypeForIgnoreAll self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as TypeForIgnoreAllImpl).frbInternalSseEncode(move: false),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
-          TypeForIgnore self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as TypeForIgnoreImpl).frbInternalSseEncode(move: null),
-        serializer);
-  }
-
-  @protected
-  void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
-          TypeForIgnoreAll self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_usize(
-        (self as TypeForIgnoreAllImpl).frbInternalSseEncode(move: null),
-        serializer);
-  }
-
-  @protected
   void sse_encode_i_32(int self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     serializer.buffer.putInt32(self);
-  }
-
-  @protected
-  void sse_encode_u_32(int self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    serializer.buffer.putUint32(self);
   }
 
   @protected
@@ -663,74 +182,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_usize(BigInt self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    serializer.buffer.putBigUint64(self);
-  }
-
-  @protected
   void sse_encode_bool(bool self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     serializer.buffer.putUint8(self ? 1 : 0);
   }
-}
-
-@sealed
-class TypeForIgnoreAllImpl extends RustOpaque implements TypeForIgnoreAll {
-  // Not to be used by end users
-  TypeForIgnoreAllImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  TypeForIgnoreAllImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_TypeForIgnoreAll,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_TypeForIgnoreAll,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_TypeForIgnoreAllPtr,
-  );
-
-  int get field2 =>
-      RustLib.instance.api.crateApiMinimalTypeForIgnoreAllAutoAccessorGetField2(
-        that: this,
-      );
-
-  set field2(int field2) =>
-      RustLib.instance.api.crateApiMinimalTypeForIgnoreAllAutoAccessorSetField2(
-          that: this, field2: field2);
-
-  Future<int> field1() =>
-      RustLib.instance.api.crateApiMinimalTypeForIgnoreAllField1(
-        that: this,
-      );
-}
-
-@sealed
-class TypeForIgnoreImpl extends RustOpaque implements TypeForIgnore {
-  // Not to be used by end users
-  TypeForIgnoreImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
-
-  // Not to be used by end users
-  TypeForIgnoreImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
-
-  static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib.instance.api.rust_arc_increment_strong_count_TypeForIgnore,
-    rustArcDecrementStrongCount:
-        RustLib.instance.api.rust_arc_decrement_strong_count_TypeForIgnore,
-    rustArcDecrementStrongCountPtr:
-        RustLib.instance.api.rust_arc_decrement_strong_count_TypeForIgnorePtr,
-  );
-
-  Future<int> field1() =>
-      RustLib.instance.api.crateApiMinimalTypeForIgnoreField1(
-        that: this,
-      );
 }
