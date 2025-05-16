@@ -331,3 +331,13 @@ impl Default for TypeForIgnoreAll {
         Self::new()
     }
 }
+
+#[frb(serialize)]
+pub async fn func_with_dart_callback_across_thread(
+    dart_callback: impl Fn(String) -> DartFnFuture<String> + Send + Sync + 'static,
+) {
+    let dart_callback = Arc::new(dart_callback);
+    tokio::task::spawn(async move {
+        dart_callback("Hello from Rust!".to_owned()).await;
+    });
+}
