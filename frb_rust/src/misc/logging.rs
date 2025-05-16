@@ -1,3 +1,4 @@
+#[allow(clippy::crate_in_macro_def)]
 #[macro_export]
 macro_rules! enable_frb_logging {
   () => {
