@@ -6,7 +6,7 @@
 [![CI](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/ci.yaml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/ci.yaml)
 [![Post-Release](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/post_release.yaml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/ci.yaml)
 [![codecov](https://codecov.io/gh/fzyzcjy/flutter_rust_bridge/graph/badge.svg?token=Q7EUTZMDIF)](https://codecov.io/gh/fzyzcjy/flutter_rust_bridge)
-[![All Contributors](https://img.shields.io/badge/all_contributors-119-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-121-orange.svg?style=flat-square)](#contributors-)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6afbdad19e7245adbf9e9771777be3d7)](https://app.codacy.com/gh/fzyzcjy/flutter_rust_bridge?utm_source=github.com&utm_medium=referral&utm_content=fzyzcjy/flutter_rust_bridge&utm_campaign=Badge_Grade_Settings)
 
 [<img src="https://github.com/fzyzcjy/flutter_rust_bridge/raw/master/website/misc/flutter_favorite.png" width="200" />](https://flutter.dev/docs/development/packages-and-plugins/favorites)
@@ -397,6 +397,7 @@ More specifically, thanks for all these contributions:
 * [coder0xff](https://github.com/coder0xff): Discuss binding unmodified Rust. Refactor SupportedInnerType. Extra codegen tester.
 * [NobodyForNothing](https://github.com/NobodyForNothing): Support impl-for partially.
 * [nitn3lav](https://github.com/nitn3lav): Nested `struct`s without `Box`.
+* [aran](https://github.com/aran): Fix map + mirror. Fix pubspec. Upgrde ffigen. Replace to js_interop. Bump version. Fix typo. Configure opaque impl.
 * [mcmah309](https://github.com/mcmah309): Add cli plugin scaffold generation.
 * [AlienKevin](https://github.com/AlienKevin): Add flutter example for macOS. Add doc for Android NDK bug. Improve migration doc.
 * [alexthe2](https://github.com/alexthe2): Add Option Datetime. Add empty structs. Improve doc. Add `r#`. Fix mirror enum bug.
@@ -404,6 +405,7 @@ More specifically, thanks for all these contributions:
 * [patmuk](https://github.com/patmuk): Set MSRV. Fail fast. Improve message. Support relative config. Improve multiple docs. Fix warning.
 * [banool](https://github.com/banool): Fix pubspec parsing. Fix symbol-stripping doc.
 * [AlexV525](https://github.com/AlexV525): Add Dart fix. Fix folder.
+* [kyrias](https://github.com/kyrias): Use portable atomic. Ignore accessor fields.
 * [Integral-Tech](https://github.com/Integral-Tech): Use concat. Fix lint.
 * [Tienisto](https://github.com/Tienisto): Remove default enum case. Add mock init.
 * [satvikpendem](https://github.com/satvikpendem): Add json_serializable. Update CI. Little co-work #989.
@@ -412,6 +414,8 @@ More specifically, thanks for all these contributions:
 * [NightFeather0615](https://github.com/NightFeather0615): Fix Vec bool.
 * [fmeef](https://github.com/fmeef): Add cargo feature flag.
 * [alexlapa](https://github.com/alexlapa): Fix DartOpaque.
+* [ski0090](https://github.com/ski0090): Fix folder creation.
+* [borgoat](https://github.com/borgoat): Upgrade freezed.
 * [xuwaters](https://github.com/xuwaters): Support edition 2024.
 * [SirKrlos](https://github.com/SirKrlos): Fix fvm calls.
 * [OfficialBoyfriend](https://github.com/OfficialBoyfriend): Fix error display.
@@ -421,7 +425,6 @@ More specifically, thanks for all these contributions:
 * [wxitcode](https://github.com/wxitcode): Add org option. Support MacOS log. Fix a typo.
 * [atezet](https://github.com/atezet): Upgrade dependencies. Follow rustfmt.
 * [evdokimovs](https://github.com/evdokimovs): Change dependencies.
-* [kyrias](https://github.com/kyrias): Use portable atomic.
 * [Markus43](https://github.com/Markus43): Fix folder removal.
 * [Krysl](https://github.com/Krysl): Add preamble.
 * [Vollbrecht](https://github.com/Vollbrecht): Warn absolute path.
@@ -435,7 +438,6 @@ More specifically, thanks for all these contributions:
 * [jsonmona](https://github.com/jsonmona): Add import.
 * [MateusHBR](https://github.com/MateusHBR): Add pub get.
 * [codercengiz](https://github.com/codercengiz): Fix mirroring bug.
-* [aran](https://github.com/aran): Fix map + mirror. Fix pubspec. Upgrde ffigen. Replace to js_interop. Bump version. Fix typo.
 * [Michael-F-Bryan](https://github.com/Michael-F-Bryan): Detect broken bindings.
 * [phlip9](https://github.com/phlip9): Fix no-serde compilation.
 * [SilverMira](https://github.com/SilverMira): Fix StreamSink.
