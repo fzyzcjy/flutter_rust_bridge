@@ -68,7 +68,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.9.0';
 
   @override
-  int get rustContentHash => 1649780508;
+  int get rustContentHash => -2119384465;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -82,9 +82,6 @@ abstract class RustLibApi extends BaseApi {
   Future<void> crateApiMinimalInitApp();
 
   Future<int> crateApiMinimalMinimalAdder({required int a, required int b});
-
-  Future<void> crateApiMinimalStructWithRawFieldNameF(
-      {required StructWithRawFieldName that});
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -144,61 +141,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["a", "b"],
       );
 
-  @override
-  Future<void> crateApiMinimalStructWithRawFieldNameF(
-      {required StructWithRawFieldName that}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_box_autoadd_struct_with_raw_field_name(that, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 3, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
-      ),
-      constMeta: kCrateApiMinimalStructWithRawFieldNameFConstMeta,
-      argValues: [that],
-      apiImpl: this,
-    ));
-  }
-
-  TaskConstMeta get kCrateApiMinimalStructWithRawFieldNameFConstMeta =>
-      const TaskConstMeta(
-        debugName: "struct_with_raw_field_name_f",
-        argNames: ["that"],
-      );
-
-  @protected
-  StructWithRawFieldName dco_decode_box_autoadd_struct_with_raw_field_name(
-      dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dco_decode_struct_with_raw_field_name(raw);
-  }
-
-  @protected
-  EnumForStructWithRawFieldName dco_decode_enum_for_struct_with_raw_field_name(
-      dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    return EnumForStructWithRawFieldName.values[raw as int];
-  }
-
   @protected
   int dco_decode_i_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw as int;
-  }
-
-  @protected
-  StructWithRawFieldName dco_decode_struct_with_raw_field_name(dynamic raw) {
-    // Codec=Dco (DartCObject based), see doc to use other codecs
-    final arr = raw as List<dynamic>;
-    if (arr.length != 1)
-      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return StructWithRawFieldName(
-      type: dco_decode_enum_for_struct_with_raw_field_name(arr[0]),
-    );
   }
 
   @protected
@@ -208,32 +154,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  StructWithRawFieldName sse_decode_box_autoadd_struct_with_raw_field_name(
-      SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    return (sse_decode_struct_with_raw_field_name(deserializer));
-  }
-
-  @protected
-  EnumForStructWithRawFieldName sse_decode_enum_for_struct_with_raw_field_name(
-      SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    var inner = sse_decode_i_32(deserializer);
-    return EnumForStructWithRawFieldName.values[inner];
-  }
-
-  @protected
   int sse_decode_i_32(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getInt32();
-  }
-
-  @protected
-  StructWithRawFieldName sse_decode_struct_with_raw_field_name(
-      SseDeserializer deserializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    var var_type = sse_decode_enum_for_struct_with_raw_field_name(deserializer);
-    return StructWithRawFieldName(type: var_type);
   }
 
   @protected
@@ -248,30 +171,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_box_autoadd_struct_with_raw_field_name(
-      StructWithRawFieldName self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_struct_with_raw_field_name(self, serializer);
-  }
-
-  @protected
-  void sse_encode_enum_for_struct_with_raw_field_name(
-      EnumForStructWithRawFieldName self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_i_32(self.index, serializer);
-  }
-
-  @protected
   void sse_encode_i_32(int self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     serializer.buffer.putInt32(self);
-  }
-
-  @protected
-  void sse_encode_struct_with_raw_field_name(
-      StructWithRawFieldName self, SseSerializer serializer) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_enum_for_struct_with_raw_field_name(self.type, serializer);
   }
 
   @protected
