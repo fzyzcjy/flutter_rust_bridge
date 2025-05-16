@@ -1099,6 +1099,24 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "borgoat",
+      "name": "Giorgio Azzinnaro",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7715855?v=4",
+      "profile": "https://giorgio.azzinna.ro",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "ski0090",
+      "name": "pyeongkang kim",
+      "avatar_url": "https://avatars.githubusercontent.com/u/45457350?v=4",
+      "profile": "https://shalom92.vercel.app/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
