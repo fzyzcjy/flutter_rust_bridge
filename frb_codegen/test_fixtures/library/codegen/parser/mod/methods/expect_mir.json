@@ -71,7 +71,8 @@
               "rust_style": "that"
             },
             "settings": {
-              "is_in_mirrored_enum": false
+              "is_in_mirrored_enum": false,
+              "skip_auto_accessors": false
             },
             "ty": {
               "data": {
@@ -208,7 +209,8 @@
               "rust_style": "that"
             },
             "settings": {
-              "is_in_mirrored_enum": false
+              "is_in_mirrored_enum": false,
+              "skip_auto_accessors": false
             },
             "ty": {
               "data": {

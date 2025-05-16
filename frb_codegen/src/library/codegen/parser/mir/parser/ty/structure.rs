@@ -84,14 +84,14 @@ impl TypeParserWithContext<'_, '_, '_> {
         &mut self,
         idx: usize,
         field: &Field,
-        attributes: &FrbAttributes,
+        struct_attributes: &FrbAttributes,
     ) -> anyhow::Result<MirField> {
         let field_name = field
             .ident
             .as_ref()
             .map_or(format!("field{idx}"), ToString::to_string);
         let field_type = self.parse_type_with_context(&field.ty, |c| {
-            c.with_struct_or_enum_attributes(attributes.clone())
+            c.with_struct_or_enum_attributes(struct_attributes.clone())
         })?;
         let attributes = FrbAttributes::parse(&field.attrs)?;
         Ok(MirField {
@@ -101,7 +101,11 @@ impl TypeParserWithContext<'_, '_, '_> {
             is_rust_public: Some(matches!(field.vis, Visibility::Public(_))),
             comments: parse_comments(&field.attrs),
             default: attributes.default_value(),
-            settings: MirFieldSettings::default(),
+            settings: MirFieldSettings {
+                skip_auto_accessors: (struct_attributes.ignore_all() || attributes.ignore())
+                    && !attributes.unignore(),
+                ..Default::default()
+            },
         })
     }
 }

@@ -92,7 +92,11 @@ fn parse_auto_accessors_of_struct(
     let ty_struct = &type_parser.struct_pool()[&ty_struct_ident].to_owned();
 
     (ty_struct.fields.iter())
-        .filter(|field| field.is_rust_public.unwrap() && !is_ty_opaque_reference_type(&field.ty))
+        .filter(|field| {
+            field.is_rust_public.unwrap()
+                && !field.settings.skip_auto_accessors
+                && !is_ty_opaque_reference_type(&field.ty)
+        })
         .flat_map(|field| {
             [MirFuncAccessorMode::Getter, MirFuncAccessorMode::Setter]
                 .into_iter()

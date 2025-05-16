@@ -9,6 +9,7 @@ For example, seldomly used feature may appear near the top.
 * `#[frb(external)]`: Mark external methods.
 * `#[frb(getter)]`: Mark function as Dart getter.
 * `#[frb(ignore)]`: Ignore the object annotated.
+* `#[frb(ignore_all)]`: Ignore all fields on the object annotated.
 * `#[frb(init)]`: Mark function to be executed at startup.
 * `#[frb(mirror)]`: Manually mirror external types (can use auto mode instead).
 * `#[frb(name)]`: Rename the object.
