@@ -168,6 +168,7 @@ pub async fn first_sequence_twin_rust_async_sse(seqs: Sequences) -> Option<i32> 
 #[frb(mirror(RawStringMirrored))]
 pub struct _RawStringMirroredTwinRustAsyncSse {
     pub r#value: String,
+    pub r#type: String,
 }
 
 #[frb(mirror(NestedRawStringMirrored))]

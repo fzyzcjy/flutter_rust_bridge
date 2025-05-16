@@ -147,6 +147,7 @@ pub fn first_sequence_twin_normal(seqs: Sequences) -> Option<i32> {
 #[frb(mirror(RawStringMirrored))]
 pub struct _RawStringMirroredTwinNormal {
     pub r#value: String,
+    pub r#type: String,
 }
 
 #[frb(mirror(NestedRawStringMirrored))]

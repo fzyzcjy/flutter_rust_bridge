@@ -179,6 +179,7 @@ pub fn first_sequence_twin_sync_sse(seqs: Sequences) -> Option<i32> {
 #[frb(mirror(RawStringMirrored))]
 pub struct _RawStringMirroredTwinSyncSse {
     pub r#value: String,
+    pub r#type: String,
 }
 
 #[frb(mirror(NestedRawStringMirrored))]
