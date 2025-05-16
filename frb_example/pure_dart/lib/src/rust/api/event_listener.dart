@@ -30,7 +30,7 @@ void createEventSyncTwinNormal(
         address: address, payload: payload);
 
 @freezed
-class EventTwinNormal with _$EventTwinNormal {
+sealed class EventTwinNormal with _$EventTwinNormal {
   const EventTwinNormal._();
   const factory EventTwinNormal({
     required String address,

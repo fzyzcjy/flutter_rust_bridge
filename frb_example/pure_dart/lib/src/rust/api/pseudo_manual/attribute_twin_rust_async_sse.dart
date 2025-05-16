@@ -52,7 +52,7 @@ class CustomizedTwinRustAsyncSse {
 /// Example for @freezed and @meta.immutable
 @freezed
 @meta.immutable
-class UserIdTwinRustAsyncSse with _$UserIdTwinRustAsyncSse {
+sealed class UserIdTwinRustAsyncSse with _$UserIdTwinRustAsyncSse {
   const factory UserIdTwinRustAsyncSse({
     @Default(0) int value,
   }) = _UserIdTwinRustAsyncSse;
