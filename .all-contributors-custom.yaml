@@ -24,6 +24,7 @@
 - coder0xff: Discuss binding unmodified Rust. Refactor SupportedInnerType. Extra codegen tester.
 - NobodyForNothing: Support impl-for partially.
 - nitn3lav: Nested `struct`s without `Box`.
+- aran: Fix map + mirror. Fix pubspec. Upgrde ffigen. Replace to js_interop. Bump version. Fix typo. Configure opaque impl.
 - mcmah309: Add cli plugin scaffold generation.
 - AlienKevin: Add flutter example for macOS. Add doc for Android NDK bug. Improve migration doc.
 - alexthe2: Add Option Datetime. Add empty structs. Improve doc. Add `r#`. Fix mirror enum bug.
@@ -31,6 +32,7 @@
 - patmuk: Set MSRV. Fail fast. Improve message. Support relative config. Improve multiple docs. Fix warning.
 - banool: Fix pubspec parsing. Fix symbol-stripping doc.
 - AlexV525: Add Dart fix. Fix folder.
+- kyrias: Use portable atomic. Ignore accessor fields.
 - Integral-Tech: Use concat. Fix lint.
 - Tienisto: Remove default enum case. Add mock init.
 - satvikpendem: 'Add json_serializable. Update CI. Little co-work #989.'
@@ -39,6 +41,8 @@
 - NightFeather0615: Fix Vec bool.
 - fmeef: Add cargo feature flag.
 - alexlapa: Fix DartOpaque.
+- ski0090: Fix folder creation.
+- borgoat: Upgrade freezed.
 - xuwaters: Support edition 2024.
 - SirKrlos: Fix fvm calls.
 - OfficialBoyfriend: Fix error display.
@@ -48,7 +52,6 @@
 - wxitcode: Add org option. Support MacOS log. Fix a typo.
 - atezet: Upgrade dependencies. Follow rustfmt.
 - evdokimovs: Change dependencies.
-- kyrias: Use portable atomic.
 - Markus43: Fix folder removal.
 - Krysl: Add preamble.
 - Vollbrecht: Warn absolute path.
@@ -62,7 +65,6 @@
 - jsonmona: Add import.
 - MateusHBR: Add pub get.
 - codercengiz: Fix mirroring bug.
-- aran: Fix map + mirror. Fix pubspec. Upgrde ffigen. Replace to js_interop. Bump version. Fix typo.
 - Michael-F-Bryan: Detect broken bindings.
 - phlip9: Fix no-serde compilation.
 - SilverMira: Fix StreamSink.
