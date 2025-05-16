@@ -25,7 +25,8 @@
                     "rust_style": "field0"
                   },
                   "settings": {
-                    "is_in_mirrored_enum": false
+                    "is_in_mirrored_enum": false,
+                    "skip_accessors": false
                   },
                   "ty": {
                     "data": {
@@ -94,7 +95,8 @@
                     "rust_style": "field0"
                   },
                   "settings": {
-                    "is_in_mirrored_enum": false
+                    "is_in_mirrored_enum": false,
+                    "skip_accessors": false
                   },
                   "ty": {
                     "data": {
@@ -185,7 +187,8 @@
               "rust_style": "arg"
             },
             "settings": {
-              "is_in_mirrored_enum": false
+              "is_in_mirrored_enum": false,
+              "skip_accessors": false
             },
             "ty": {
               "data": {
@@ -264,7 +267,8 @@
               "rust_style": "arg"
             },
             "settings": {
-              "is_in_mirrored_enum": false
+              "is_in_mirrored_enum": false,
+              "skip_accessors": false
             },
             "ty": {
               "data": {
@@ -343,7 +347,8 @@
               "rust_style": "arg"
             },
             "settings": {
-              "is_in_mirrored_enum": false
+              "is_in_mirrored_enum": false,
+              "skip_accessors": false
             },
             "ty": {
               "data": {
@@ -422,7 +427,8 @@
               "rust_style": "arg"
             },
             "settings": {
-              "is_in_mirrored_enum": false
+              "is_in_mirrored_enum": false,
+              "skip_accessors": false
             },
             "ty": {
               "data": {
@@ -501,7 +507,8 @@
               "rust_style": "arg"
             },
             "settings": {
-              "is_in_mirrored_enum": false
+              "is_in_mirrored_enum": false,
+              "skip_accessors": false
             },
             "ty": {
               "data": {
@@ -574,7 +581,8 @@
             "rust_style": "generic_field"
           },
           "settings": {
-            "is_in_mirrored_enum": false
+            "is_in_mirrored_enum": false,
+            "skip_accessors": false
           },
           "ty": {
             "data": {
@@ -616,7 +624,8 @@
             "rust_style": "generic_boxed_field"
           },
           "settings": {
-            "is_in_mirrored_enum": false
+            "is_in_mirrored_enum": false,
+            "skip_accessors": false
           },
           "ty": {
             "data": {
@@ -658,7 +667,8 @@
             "rust_style": "normal_field"
           },
           "settings": {
-            "is_in_mirrored_enum": false
+            "is_in_mirrored_enum": false,
+            "skip_accessors": false
           },
           "ty": {
             "data": "I32",

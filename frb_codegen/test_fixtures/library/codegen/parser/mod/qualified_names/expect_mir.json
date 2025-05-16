@@ -36,7 +36,8 @@
               "rust_style": "chrono_duration"
             },
             "settings": {
-              "is_in_mirrored_enum": false
+              "is_in_mirrored_enum": false,
+              "skip_accessors": false
             },
             "ty": {
               "data": {
@@ -60,7 +61,8 @@
               "rust_style": "uuid_uuid"
             },
             "settings": {
-              "is_in_mirrored_enum": false
+              "is_in_mirrored_enum": false,
+              "skip_accessors": false
             },
             "ty": {
               "data": "Uuid",
