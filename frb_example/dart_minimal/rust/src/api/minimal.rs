@@ -28,3 +28,7 @@ pub enum ElementKind {
 pub struct StateType {
     pub area: [[ElementKind; 3]; 3],
 }
+
+impl StateType {
+    pub fn f(self) {}
+}
