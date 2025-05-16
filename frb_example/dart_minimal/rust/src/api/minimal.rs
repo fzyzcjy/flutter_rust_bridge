@@ -13,6 +13,10 @@ pub struct StructWithRawFieldName {
     pub r#type: EnumForStructWithRawFieldName,
 }
 
+impl StructWithRawFieldName {
+    pub fn f(self) {}
+}
+
 pub enum EnumForStructWithRawFieldName {
     One,
     Two,
