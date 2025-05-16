@@ -19,13 +19,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
+  StructWithRawFieldName dco_decode_box_autoadd_struct_with_raw_field_name(
+      dynamic raw);
+
+  @protected
+  EnumForStructWithRawFieldName dco_decode_enum_for_struct_with_raw_field_name(
+      dynamic raw);
+
+  @protected
   int dco_decode_i_32(dynamic raw);
+
+  @protected
+  StructWithRawFieldName dco_decode_struct_with_raw_field_name(dynamic raw);
 
   @protected
   void dco_decode_unit(dynamic raw);
 
   @protected
+  StructWithRawFieldName sse_decode_box_autoadd_struct_with_raw_field_name(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumForStructWithRawFieldName sse_decode_enum_for_struct_with_raw_field_name(
+      SseDeserializer deserializer);
+
+  @protected
   int sse_decode_i_32(SseDeserializer deserializer);
+
+  @protected
+  StructWithRawFieldName sse_decode_struct_with_raw_field_name(
+      SseDeserializer deserializer);
 
   @protected
   void sse_decode_unit(SseDeserializer deserializer);
@@ -34,7 +57,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
+  void sse_encode_box_autoadd_struct_with_raw_field_name(
+      StructWithRawFieldName self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_for_struct_with_raw_field_name(
+      EnumForStructWithRawFieldName self, SseSerializer serializer);
+
+  @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_raw_field_name(
+      StructWithRawFieldName self, SseSerializer serializer);
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer);
