@@ -19,22 +19,19 @@ part 'attribute_twin_sync.freezed.dart';
 void handleCustomizedStructTwinSync({required CustomizedTwinSync val}) =>
     RustLib.instance.api
         .crateApiPseudoManualAttributeTwinSyncHandleCustomizedStructTwinSync(
-            val: val);
+          val: val,
+        );
 
-UserIdTwinSync nextUserIdTwinSync(
-        {UserIdTwinSync userId = const UserIdTwinSync()}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualAttributeTwinSyncNextUserIdTwinSync(
-            userId: userId);
+UserIdTwinSync nextUserIdTwinSync({
+  UserIdTwinSync userId = const UserIdTwinSync(),
+}) => RustLib.instance.api
+    .crateApiPseudoManualAttributeTwinSyncNextUserIdTwinSync(userId: userId);
 
 class CustomizedTwinSync {
   final String finalField;
   String? nonFinalField;
 
-  CustomizedTwinSync({
-    required this.finalField,
-    this.nonFinalField,
-  });
+  CustomizedTwinSync({required this.finalField, this.nonFinalField});
 
   @override
   int get hashCode => finalField.hashCode ^ nonFinalField.hashCode;
@@ -52,7 +49,5 @@ class CustomizedTwinSync {
 @freezed
 @meta.immutable
 class UserIdTwinSync with _$UserIdTwinSync {
-  const factory UserIdTwinSync({
-    @Default(0) int value,
-  }) = _UserIdTwinSync;
+  const factory UserIdTwinSync({@Default(0) int value}) = _UserIdTwinSync;
 }

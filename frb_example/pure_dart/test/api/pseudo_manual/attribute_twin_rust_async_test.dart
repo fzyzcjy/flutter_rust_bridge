@@ -11,7 +11,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('dart check that non-final field is modifiable', () {
     var customized = CustomizedTwinRustAsync(
-        finalField: "finalField", nonFinalField: "nonFinalField");
+      finalField: "finalField",
+      nonFinalField: "nonFinalField",
+    );
     expect(customized.nonFinalField, "nonFinalField");
     customized.nonFinalField = "changed";
     expect(customized.nonFinalField, "changed");
@@ -19,7 +21,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('dart call next_user_id to test metadata annotations', () async {
     UserIdTwinRustAsync userId = UserIdTwinRustAsync(value: 11);
-    expect(await nextUserIdTwinRustAsync(userId: userId),
-        UserIdTwinRustAsync(value: 12));
+    expect(
+      await nextUserIdTwinRustAsync(userId: userId),
+      UserIdTwinRustAsync(value: 12),
+    );
   });
 }

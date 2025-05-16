@@ -14,19 +14,22 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('ConcatenateWith test', () async {
     final ConcatenateWithTwinRustAsync concatenateWith =
         ConcatenateWithTwinRustAsync(a: "hello ");
-    final String concatenated =
-        await concatenateWith.concatenateTwinRustAsync(b: "world");
+    final String concatenated = await concatenateWith.concatenateTwinRustAsync(
+      b: "world",
+    );
     expect(concatenated, equals("hello world"));
 
     final staticConcatenated =
         await ConcatenateWithTwinRustAsync.concatenateStaticTwinRustAsync(
-            a: "hello ", b: "world");
+          a: "hello ",
+          b: "world",
+        );
     expect(staticConcatenated, equals("hello world"));
 
     final concatenatedConstructor =
         await ConcatenateWithTwinRustAsync.newTwinRustAsync(a: "hello ");
-    final String concatenated2 =
-        await concatenatedConstructor.concatenateTwinRustAsync(b: "world");
+    final String concatenated2 = await concatenatedConstructor
+        .concatenateTwinRustAsync(b: "world");
     expect(concatenated2, equals("hello world"));
   });
 
@@ -55,8 +58,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
         ConcatenateWithTwinRustAsync(a: "hello ");
     final int key = 10;
     final int max = 5;
-    final stream =
-        concatenateWith.handleSomeStreamSinkTwinRustAsync(key: key, max: max);
+    final stream = concatenateWith.handleSomeStreamSinkTwinRustAsync(
+      key: key,
+      max: max,
+    );
     int cnt = 0;
     await for (final value in stream) {
       print("output from ConcatenateWith's stream: $value");
@@ -71,7 +76,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final int max = 5;
     final stream =
         ConcatenateWithTwinRustAsync.handleSomeStaticStreamSinkTwinRustAsync(
-            key: key, max: max);
+          key: key,
+          max: max,
+        );
     int cnt = 0;
     await for (final value in stream) {
       print("output from ConcatenateWith's static stream: $value");
@@ -82,8 +89,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('ConcatenateWith static stream sink at 1 test', () async {
-    final stream = ConcatenateWithTwinRustAsync
-        .handleSomeStaticStreamSinkSingleArgTwinRustAsync();
+    final stream =
+        ConcatenateWithTwinRustAsync.handleSomeStaticStreamSinkSingleArgTwinRustAsync();
     expect(stream.toList(), completion([0, 1, 2, 3, 4]));
   });
 
@@ -100,9 +107,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
   group('SimpleStruct', () {
     test('returnSelf', () async {
       expect(
-          (await SimpleStructTwinRustAsync.returnSelfTwinRustAsync(one: 'One'))
-              .one,
-          'One');
+        (await SimpleStructTwinRustAsync.returnSelfTwinRustAsync(
+          one: 'One',
+        )).one,
+        'One',
+      );
     });
 
     test('receiverBorrow', () async {
@@ -118,15 +127,19 @@ Future<void> main({bool skipRustLibInit = false}) async {
     test('argSelf', () async {
       final a = SimpleStructTwinRustAsync(one: 'a');
       final b = SimpleStructTwinRustAsync(one: 'b');
-      expect(await SimpleStructTwinRustAsync.argSelfTwinRustAsync(a: a, b: b),
-          'ab');
+      expect(
+        await SimpleStructTwinRustAsync.argSelfTwinRustAsync(a: a, b: b),
+        'ab',
+      );
     });
 
     test('vecSelf', () async {
       final a = SimpleStructTwinRustAsync(one: 'a');
       final b = SimpleStructTwinRustAsync(one: 'b');
-      expect(await SimpleStructTwinRustAsync.vecSelfTwinRustAsync(arg: [a, b]),
-          ['a', 'b']);
+      expect(
+        await SimpleStructTwinRustAsync.vecSelfTwinRustAsync(arg: [a, b]),
+        ['a', 'b'],
+      );
     });
   });
 
@@ -137,9 +150,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('SimplePrimitiveEnum', () async {
     expect(
-        await SimplePrimitiveEnumTwinRustAsync.second
-            .simpleMethodTwinRustAsync(),
-        200);
+      await SimplePrimitiveEnumTwinRustAsync.second.simpleMethodTwinRustAsync(),
+      200,
+    );
   });
 
   test('StaticOnly', () async {

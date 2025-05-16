@@ -27,17 +27,21 @@ Future<void> main({bool skipRustLibInit = false}) async {
   ]);
 
   addTestsIdentityFunctionCall(
-      funcHashMapStringStringTwinRustAsyncSse, <Map<String, String>>[
-    {},
-    {'a': 'b'},
-    {'a': 'b', 'c': 'd'},
-  ]);
+    funcHashMapStringStringTwinRustAsyncSse,
+    <Map<String, String>>[
+      {},
+      {'a': 'b'},
+      {'a': 'b', 'c': 'd'},
+    ],
+  );
   addTestsIdentityFunctionCall(
-      funcHashMapStringStringHasherTwinRustAsyncSse, <Map<String, String>>[
-    {},
-    {'a': 'b'},
-    {'a': 'b', 'c': 'd'},
-  ]);
+    funcHashMapStringStringHasherTwinRustAsyncSse,
+    <Map<String, String>>[
+      {},
+      {'a': 'b'},
+      {'a': 'b', 'c': 'd'},
+    ],
+  );
   addTestsIdentityFunctionCall(funcHashSetStringTwinRustAsyncSse, <Set<String>>[
     {},
     {'a'},
@@ -51,46 +55,46 @@ Future<void> main({bool skipRustLibInit = false}) async {
   ]);
 
   addTestsIdentityFunctionCall(
-      funcHashMapStringBytesTwinRustAsyncSse, <Map<String, Uint8List>>[
-    {},
-    {
-      'a': Uint8List.fromList([10, 20])
-    },
-    {
-      'a': Uint8List.fromList([10, 20]),
-      'b': Uint8List.fromList([30, 40, 50]),
-    },
-  ]);
+    funcHashMapStringBytesTwinRustAsyncSse,
+    <Map<String, Uint8List>>[
+      {},
+      {
+        'a': Uint8List.fromList([10, 20]),
+      },
+      {
+        'a': Uint8List.fromList([10, 20]),
+        'b': Uint8List.fromList([30, 40, 50]),
+      },
+    ],
+  );
 
   addTestsIdentityFunctionCall(
-      funcHashMapStringStructTwinRustAsyncSse, <Map<String, MySize>>[
-    {},
-    {'a': MySize(width: 1, height: 2)},
-    {
-      'a': MySize(width: 1, height: 2),
-      'b': MySize(width: 3, height: 4),
-    },
-  ]);
+    funcHashMapStringStructTwinRustAsyncSse,
+    <Map<String, MySize>>[
+      {},
+      {'a': MySize(width: 1, height: 2)},
+      {'a': MySize(width: 1, height: 2), 'b': MySize(width: 3, height: 4)},
+    ],
+  );
 
   addTestsIdentityFunctionCall(
-      funcHashMapStringSimpleEnumTwinRustAsyncSse,
-      <Map<String, EnumSimpleTwinRustAsyncSse>>[
-        {},
-        {'a': EnumSimpleTwinRustAsyncSse.a},
-        {
-          'a': EnumSimpleTwinRustAsyncSse.a,
-          'b': EnumSimpleTwinRustAsyncSse.b,
-        },
-      ]);
+    funcHashMapStringSimpleEnumTwinRustAsyncSse,
+    <Map<String, EnumSimpleTwinRustAsyncSse>>[
+      {},
+      {'a': EnumSimpleTwinRustAsyncSse.a},
+      {'a': EnumSimpleTwinRustAsyncSse.a, 'b': EnumSimpleTwinRustAsyncSse.b},
+    ],
+  );
 
   addTestsIdentityFunctionCall(
-      funcHashMapStringComplexEnumTwinRustAsyncSse,
-      <Map<String, KitchenSinkTwinRustAsyncSse>>[
-        {},
-        {'a': KitchenSinkTwinRustAsyncSse.empty()},
-        {
-          'a': KitchenSinkTwinRustAsyncSse.buffer(Uint8List.fromList([10, 20])),
-          'b': KitchenSinkTwinRustAsyncSse.nested(42),
-        },
-      ]);
+    funcHashMapStringComplexEnumTwinRustAsyncSse,
+    <Map<String, KitchenSinkTwinRustAsyncSse>>[
+      {},
+      {'a': KitchenSinkTwinRustAsyncSse.empty()},
+      {
+        'a': KitchenSinkTwinRustAsyncSse.buffer(Uint8List.fromList([10, 20])),
+        'b': KitchenSinkTwinRustAsyncSse.nested(42),
+      },
+    ],
+  );
 }

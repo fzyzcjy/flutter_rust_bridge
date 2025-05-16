@@ -33,19 +33,18 @@ class StructWithCommentsTwinNormal {
   /// Documentation on a struct field
   final int fieldWithComments;
 
-  const StructWithCommentsTwinNormal({
-    required this.fieldWithComments,
-  });
+  const StructWithCommentsTwinNormal({required this.fieldWithComments});
 
   /// Documentation on an instance method
   Future<void> instanceMethodTwinNormal() => RustLib.instance.api
-          .crateApiCommentStructWithCommentsTwinNormalInstanceMethodTwinNormal(
+      .crateApiCommentStructWithCommentsTwinNormalInstanceMethodTwinNormal(
         that: this,
       );
 
   /// Documentation on a static method
-  static Future<void> staticMethodTwinNormal() => RustLib.instance.api
-      .crateApiCommentStructWithCommentsTwinNormalStaticMethodTwinNormal();
+  static Future<void> staticMethodTwinNormal() =>
+      RustLib.instance.api
+          .crateApiCommentStructWithCommentsTwinNormalStaticMethodTwinNormal();
 
   @override
   int get hashCode => fieldWithComments.hashCode;

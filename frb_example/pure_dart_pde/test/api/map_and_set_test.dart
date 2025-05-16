@@ -24,17 +24,21 @@ Future<void> main({bool skipRustLibInit = false}) async {
   ]);
 
   addTestsIdentityFunctionCall(
-      funcHashMapStringStringTwinNormal, <Map<String, String>>[
-    {},
-    {'a': 'b'},
-    {'a': 'b', 'c': 'd'},
-  ]);
+    funcHashMapStringStringTwinNormal,
+    <Map<String, String>>[
+      {},
+      {'a': 'b'},
+      {'a': 'b', 'c': 'd'},
+    ],
+  );
   addTestsIdentityFunctionCall(
-      funcHashMapStringStringHasherTwinNormal, <Map<String, String>>[
-    {},
-    {'a': 'b'},
-    {'a': 'b', 'c': 'd'},
-  ]);
+    funcHashMapStringStringHasherTwinNormal,
+    <Map<String, String>>[
+      {},
+      {'a': 'b'},
+      {'a': 'b', 'c': 'd'},
+    ],
+  );
   addTestsIdentityFunctionCall(funcHashSetStringTwinNormal, <Set<String>>[
     {},
     {'a'},
@@ -47,46 +51,46 @@ Future<void> main({bool skipRustLibInit = false}) async {
   ]);
 
   addTestsIdentityFunctionCall(
-      funcHashMapStringBytesTwinNormal, <Map<String, Uint8List>>[
-    {},
-    {
-      'a': Uint8List.fromList([10, 20])
-    },
-    {
-      'a': Uint8List.fromList([10, 20]),
-      'b': Uint8List.fromList([30, 40, 50]),
-    },
-  ]);
+    funcHashMapStringBytesTwinNormal,
+    <Map<String, Uint8List>>[
+      {},
+      {
+        'a': Uint8List.fromList([10, 20]),
+      },
+      {
+        'a': Uint8List.fromList([10, 20]),
+        'b': Uint8List.fromList([30, 40, 50]),
+      },
+    ],
+  );
 
   addTestsIdentityFunctionCall(
-      funcHashMapStringStructTwinNormal, <Map<String, MySize>>[
-    {},
-    {'a': MySize(width: 1, height: 2)},
-    {
-      'a': MySize(width: 1, height: 2),
-      'b': MySize(width: 3, height: 4),
-    },
-  ]);
+    funcHashMapStringStructTwinNormal,
+    <Map<String, MySize>>[
+      {},
+      {'a': MySize(width: 1, height: 2)},
+      {'a': MySize(width: 1, height: 2), 'b': MySize(width: 3, height: 4)},
+    ],
+  );
 
   addTestsIdentityFunctionCall(
-      funcHashMapStringSimpleEnumTwinNormal,
-      <Map<String, EnumSimpleTwinNormal>>[
-        {},
-        {'a': EnumSimpleTwinNormal.a},
-        {
-          'a': EnumSimpleTwinNormal.a,
-          'b': EnumSimpleTwinNormal.b,
-        },
-      ]);
+    funcHashMapStringSimpleEnumTwinNormal,
+    <Map<String, EnumSimpleTwinNormal>>[
+      {},
+      {'a': EnumSimpleTwinNormal.a},
+      {'a': EnumSimpleTwinNormal.a, 'b': EnumSimpleTwinNormal.b},
+    ],
+  );
 
   addTestsIdentityFunctionCall(
-      funcHashMapStringComplexEnumTwinNormal,
-      <Map<String, KitchenSinkTwinNormal>>[
-        {},
-        {'a': KitchenSinkTwinNormal.empty()},
-        {
-          'a': KitchenSinkTwinNormal.buffer(Uint8List.fromList([10, 20])),
-          'b': KitchenSinkTwinNormal.nested(42),
-        },
-      ]);
+    funcHashMapStringComplexEnumTwinNormal,
+    <Map<String, KitchenSinkTwinNormal>>[
+      {},
+      {'a': KitchenSinkTwinNormal.empty()},
+      {
+        'a': KitchenSinkTwinNormal.buffer(Uint8List.fromList([10, 20])),
+        'b': KitchenSinkTwinNormal.nested(42),
+      },
+    ],
+  );
 }

@@ -6,59 +6,59 @@ part of 'misc_no_twin_example_a.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$MyEnumWithJsonSerializableTwinNormal_AppleImpl
-    _$$MyEnumWithJsonSerializableTwinNormal_AppleImplFromJson(
+MyEnumWithJsonSerializableTwinNormal_Apple
+    _$MyEnumWithJsonSerializableTwinNormal_AppleFromJson(
             Map<String, dynamic> json) =>
-        _$MyEnumWithJsonSerializableTwinNormal_AppleImpl(
+        MyEnumWithJsonSerializableTwinNormal_Apple(
           json['field0'] as String,
           $type: json['runtimeType'] as String?,
         );
 
-Map<String, dynamic> _$$MyEnumWithJsonSerializableTwinNormal_AppleImplToJson(
-        _$MyEnumWithJsonSerializableTwinNormal_AppleImpl instance) =>
+Map<String, dynamic> _$MyEnumWithJsonSerializableTwinNormal_AppleToJson(
+        MyEnumWithJsonSerializableTwinNormal_Apple instance) =>
     <String, dynamic>{
       'field0': instance.field0,
       'runtimeType': instance.$type,
     };
 
-_$MyEnumWithJsonSerializableTwinNormal_OrangeImpl
-    _$$MyEnumWithJsonSerializableTwinNormal_OrangeImplFromJson(
+MyEnumWithJsonSerializableTwinNormal_Orange
+    _$MyEnumWithJsonSerializableTwinNormal_OrangeFromJson(
             Map<String, dynamic> json) =>
-        _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl(
+        MyEnumWithJsonSerializableTwinNormal_Orange(
           a: (json['a'] as num).toInt(),
           $type: json['runtimeType'] as String?,
         );
 
-Map<String, dynamic> _$$MyEnumWithJsonSerializableTwinNormal_OrangeImplToJson(
-        _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl instance) =>
+Map<String, dynamic> _$MyEnumWithJsonSerializableTwinNormal_OrangeToJson(
+        MyEnumWithJsonSerializableTwinNormal_Orange instance) =>
     <String, dynamic>{
       'a': instance.a,
       'runtimeType': instance.$type,
     };
 
-_$MyStructWithJsonSerializableTwinNormalImpl
-    _$$MyStructWithJsonSerializableTwinNormalImplFromJson(
+_MyStructWithJsonSerializableTwinNormal
+    _$MyStructWithJsonSerializableTwinNormalFromJson(
             Map<String, dynamic> json) =>
-        _$MyStructWithJsonSerializableTwinNormalImpl(
+        _MyStructWithJsonSerializableTwinNormal(
           fieldOne: json['fieldOne'] as String,
         );
 
-Map<String, dynamic> _$$MyStructWithJsonSerializableTwinNormalImplToJson(
-        _$MyStructWithJsonSerializableTwinNormalImpl instance) =>
+Map<String, dynamic> _$MyStructWithJsonSerializableTwinNormalToJson(
+        _MyStructWithJsonSerializableTwinNormal instance) =>
     <String, dynamic>{
       'fieldOne': instance.fieldOne,
     };
 
-_$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl
-    _$$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImplFromJson(
+_MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
+    _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalFromJson(
             Map<String, dynamic> json) =>
-        _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl(
+        _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal(
           a: json['a'] as String,
         );
 
 Map<String, dynamic>
-    _$$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImplToJson(
-            _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl
+    _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalToJson(
+            _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
                 instance) =>
         <String, dynamic>{
           'a': instance.a,

@@ -12,21 +12,26 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   test('ConcatenateWith test', () async {
-    final ConcatenateWithTwinSync concatenateWith =
-        ConcatenateWithTwinSync(a: "hello ");
-    final String concatenated =
-        await concatenateWith.concatenateTwinSync(b: "world");
+    final ConcatenateWithTwinSync concatenateWith = ConcatenateWithTwinSync(
+      a: "hello ",
+    );
+    final String concatenated = await concatenateWith.concatenateTwinSync(
+      b: "world",
+    );
     expect(concatenated, equals("hello world"));
 
     final staticConcatenated =
         await ConcatenateWithTwinSync.concatenateStaticTwinSync(
-            a: "hello ", b: "world");
+          a: "hello ",
+          b: "world",
+        );
     expect(staticConcatenated, equals("hello world"));
 
-    final concatenatedConstructor =
-        await ConcatenateWithTwinSync.newTwinSync(a: "hello ");
-    final String concatenated2 =
-        await concatenatedConstructor.concatenateTwinSync(b: "world");
+    final concatenatedConstructor = await ConcatenateWithTwinSync.newTwinSync(
+      a: "hello ",
+    );
+    final String concatenated2 = await concatenatedConstructor
+        .concatenateTwinSync(b: "world");
     expect(concatenated2, equals("hello world"));
   });
 
@@ -43,20 +48,26 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('return SumWith array test', () async {
-    final List<SumWithTwinSync> sumWithList =
-        await getSumArrayTwinSync(a: 12, b: 23, c: 67);
+    final List<SumWithTwinSync> sumWithList = await getSumArrayTwinSync(
+      a: 12,
+      b: 23,
+      c: 67,
+    );
     expect(await sumWithList[0].sumTwinSync(y: 23, z: 67), 12 + 23 + 67);
     expect(await sumWithList[1].sumTwinSync(y: 12, z: 67), 12 + 23 + 67);
     expect(await sumWithList[2].sumTwinSync(y: 12, z: 23), 12 + 23 + 67);
   });
 
   test('ConcatenateWith stream sink test', () async {
-    final ConcatenateWithTwinSync concatenateWith =
-        ConcatenateWithTwinSync(a: "hello ");
+    final ConcatenateWithTwinSync concatenateWith = ConcatenateWithTwinSync(
+      a: "hello ",
+    );
     final int key = 10;
     final int max = 5;
-    final stream =
-        concatenateWith.handleSomeStreamSinkTwinSync(key: key, max: max);
+    final stream = concatenateWith.handleSomeStreamSinkTwinSync(
+      key: key,
+      max: max,
+    );
     int cnt = 0;
     await for (final value in stream) {
       print("output from ConcatenateWith's stream: $value");
@@ -70,7 +81,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final int key = 10;
     final int max = 5;
     final stream = ConcatenateWithTwinSync.handleSomeStaticStreamSinkTwinSync(
-        key: key, max: max);
+      key: key,
+      max: max,
+    );
     int cnt = 0;
     await for (final value in stream) {
       print("output from ConcatenateWith's static stream: $value");
@@ -98,8 +111,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   group('SimpleStruct', () {
     test('returnSelf', () async {
-      expect((await SimpleStructTwinSync.returnSelfTwinSync(one: 'One')).one,
-          'One');
+      expect(
+        (await SimpleStructTwinSync.returnSelfTwinSync(one: 'One')).one,
+        'One',
+      );
     });
 
     test('receiverBorrow', () async {
@@ -121,8 +136,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
     test('vecSelf', () async {
       final a = SimpleStructTwinSync(one: 'a');
       final b = SimpleStructTwinSync(one: 'b');
-      expect(
-          await SimpleStructTwinSync.vecSelfTwinSync(arg: [a, b]), ['a', 'b']);
+      expect(await SimpleStructTwinSync.vecSelfTwinSync(arg: [a, b]), [
+        'a',
+        'b',
+      ]);
     });
   });
 
@@ -133,7 +150,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('SimplePrimitiveEnum', () async {
     expect(
-        await SimplePrimitiveEnumTwinSync.second.simpleMethodTwinSync(), 200);
+      await SimplePrimitiveEnumTwinSync.second.simpleMethodTwinSync(),
+      200,
+    );
   });
 
   test('StaticOnly', () async {

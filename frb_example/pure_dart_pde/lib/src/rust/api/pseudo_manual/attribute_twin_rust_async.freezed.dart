@@ -12,7 +12,8 @@ part of 'attribute_twin_rust_async.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$UserIdTwinRustAsync {
@@ -28,8 +29,9 @@ mixin _$UserIdTwinRustAsync {
 /// @nodoc
 abstract class $UserIdTwinRustAsyncCopyWith<$Res> {
   factory $UserIdTwinRustAsyncCopyWith(
-          UserIdTwinRustAsync value, $Res Function(UserIdTwinRustAsync) then) =
-      _$UserIdTwinRustAsyncCopyWithImpl<$Res, UserIdTwinRustAsync>;
+    UserIdTwinRustAsync value,
+    $Res Function(UserIdTwinRustAsync) then,
+  ) = _$UserIdTwinRustAsyncCopyWithImpl<$Res, UserIdTwinRustAsync>;
   @useResult
   $Res call({int value});
 }
@@ -48,24 +50,27 @@ class _$UserIdTwinRustAsyncCopyWithImpl<$Res, $Val extends UserIdTwinRustAsync>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? value = null,
-  }) {
-    return _then(_value.copyWith(
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+  $Res call({Object? value = null}) {
+    return _then(
+      _value.copyWith(
+            value:
+                null == value
+                    ? _value.value
+                    : value // ignore: cast_nullable_to_non_nullable
+                        as int,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$UserIdTwinRustAsyncImplCopyWith<$Res>
     implements $UserIdTwinRustAsyncCopyWith<$Res> {
-  factory _$$UserIdTwinRustAsyncImplCopyWith(_$UserIdTwinRustAsyncImpl value,
-          $Res Function(_$UserIdTwinRustAsyncImpl) then) =
-      __$$UserIdTwinRustAsyncImplCopyWithImpl<$Res>;
+  factory _$$UserIdTwinRustAsyncImplCopyWith(
+    _$UserIdTwinRustAsyncImpl value,
+    $Res Function(_$UserIdTwinRustAsyncImpl) then,
+  ) = __$$UserIdTwinRustAsyncImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int value});
@@ -75,23 +80,25 @@ abstract class _$$UserIdTwinRustAsyncImplCopyWith<$Res>
 class __$$UserIdTwinRustAsyncImplCopyWithImpl<$Res>
     extends _$UserIdTwinRustAsyncCopyWithImpl<$Res, _$UserIdTwinRustAsyncImpl>
     implements _$$UserIdTwinRustAsyncImplCopyWith<$Res> {
-  __$$UserIdTwinRustAsyncImplCopyWithImpl(_$UserIdTwinRustAsyncImpl _value,
-      $Res Function(_$UserIdTwinRustAsyncImpl) _then)
-      : super(_value, _then);
+  __$$UserIdTwinRustAsyncImplCopyWithImpl(
+    _$UserIdTwinRustAsyncImpl _value,
+    $Res Function(_$UserIdTwinRustAsyncImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of UserIdTwinRustAsync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? value = null,
-  }) {
-    return _then(_$UserIdTwinRustAsyncImpl(
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+  $Res call({Object? value = null}) {
+    return _then(
+      _$UserIdTwinRustAsyncImpl(
+        value:
+            null == value
+                ? _value.value
+                : value // ignore: cast_nullable_to_non_nullable
+                    as int,
+      ),
+    );
   }
 }
 
@@ -127,7 +134,9 @@ class _$UserIdTwinRustAsyncImpl implements _UserIdTwinRustAsync {
   @pragma('vm:prefer-inline')
   _$$UserIdTwinRustAsyncImplCopyWith<_$UserIdTwinRustAsyncImpl> get copyWith =>
       __$$UserIdTwinRustAsyncImplCopyWithImpl<_$UserIdTwinRustAsyncImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _UserIdTwinRustAsync implements UserIdTwinRustAsync {
