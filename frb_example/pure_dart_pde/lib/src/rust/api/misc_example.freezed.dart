@@ -12,7 +12,8 @@ part of 'misc_example.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$AbcTwinNormal {
@@ -23,16 +24,14 @@ mixin _$AbcTwinNormal {
     required TResult Function(BTwinNormal field0) b,
     required TResult Function(CTwinNormal field0) c,
     required TResult Function(int field0) justInt,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ATwinNormal field0)? a,
     TResult? Function(BTwinNormal field0)? b,
     TResult? Function(CTwinNormal field0)? c,
     TResult? Function(int field0)? justInt,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ATwinNormal field0)? a,
@@ -40,24 +39,21 @@ mixin _$AbcTwinNormal {
     TResult Function(CTwinNormal field0)? c,
     TResult Function(int field0)? justInt,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AbcTwinNormal_A value) a,
     required TResult Function(AbcTwinNormal_B value) b,
     required TResult Function(AbcTwinNormal_C value) c,
     required TResult Function(AbcTwinNormal_JustInt value) justInt,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AbcTwinNormal_A value)? a,
     TResult? Function(AbcTwinNormal_B value)? b,
     TResult? Function(AbcTwinNormal_C value)? c,
     TResult? Function(AbcTwinNormal_JustInt value)? justInt,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AbcTwinNormal_A value)? a,
@@ -65,15 +61,15 @@ mixin _$AbcTwinNormal {
     TResult Function(AbcTwinNormal_C value)? c,
     TResult Function(AbcTwinNormal_JustInt value)? justInt,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $AbcTwinNormalCopyWith<$Res> {
   factory $AbcTwinNormalCopyWith(
-          AbcTwinNormal value, $Res Function(AbcTwinNormal) then) =
-      _$AbcTwinNormalCopyWithImpl<$Res, AbcTwinNormal>;
+    AbcTwinNormal value,
+    $Res Function(AbcTwinNormal) then,
+  ) = _$AbcTwinNormalCopyWithImpl<$Res, AbcTwinNormal>;
 }
 
 /// @nodoc
@@ -92,9 +88,10 @@ class _$AbcTwinNormalCopyWithImpl<$Res, $Val extends AbcTwinNormal>
 
 /// @nodoc
 abstract class _$$AbcTwinNormal_AImplCopyWith<$Res> {
-  factory _$$AbcTwinNormal_AImplCopyWith(_$AbcTwinNormal_AImpl value,
-          $Res Function(_$AbcTwinNormal_AImpl) then) =
-      __$$AbcTwinNormal_AImplCopyWithImpl<$Res>;
+  factory _$$AbcTwinNormal_AImplCopyWith(
+    _$AbcTwinNormal_AImpl value,
+    $Res Function(_$AbcTwinNormal_AImpl) then,
+  ) = __$$AbcTwinNormal_AImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ATwinNormal field0});
 }
@@ -104,22 +101,23 @@ class __$$AbcTwinNormal_AImplCopyWithImpl<$Res>
     extends _$AbcTwinNormalCopyWithImpl<$Res, _$AbcTwinNormal_AImpl>
     implements _$$AbcTwinNormal_AImplCopyWith<$Res> {
   __$$AbcTwinNormal_AImplCopyWithImpl(
-      _$AbcTwinNormal_AImpl _value, $Res Function(_$AbcTwinNormal_AImpl) _then)
-      : super(_value, _then);
+    _$AbcTwinNormal_AImpl _value,
+    $Res Function(_$AbcTwinNormal_AImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AbcTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$AbcTwinNormal_AImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as ATwinNormal,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$AbcTwinNormal_AImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                as ATwinNormal,
+      ),
+    );
   }
 }
 
@@ -154,7 +152,9 @@ class _$AbcTwinNormal_AImpl extends AbcTwinNormal_A {
   @pragma('vm:prefer-inline')
   _$$AbcTwinNormal_AImplCopyWith<_$AbcTwinNormal_AImpl> get copyWith =>
       __$$AbcTwinNormal_AImplCopyWithImpl<_$AbcTwinNormal_AImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -248,9 +248,10 @@ abstract class AbcTwinNormal_A extends AbcTwinNormal {
 
 /// @nodoc
 abstract class _$$AbcTwinNormal_BImplCopyWith<$Res> {
-  factory _$$AbcTwinNormal_BImplCopyWith(_$AbcTwinNormal_BImpl value,
-          $Res Function(_$AbcTwinNormal_BImpl) then) =
-      __$$AbcTwinNormal_BImplCopyWithImpl<$Res>;
+  factory _$$AbcTwinNormal_BImplCopyWith(
+    _$AbcTwinNormal_BImpl value,
+    $Res Function(_$AbcTwinNormal_BImpl) then,
+  ) = __$$AbcTwinNormal_BImplCopyWithImpl<$Res>;
   @useResult
   $Res call({BTwinNormal field0});
 }
@@ -260,22 +261,23 @@ class __$$AbcTwinNormal_BImplCopyWithImpl<$Res>
     extends _$AbcTwinNormalCopyWithImpl<$Res, _$AbcTwinNormal_BImpl>
     implements _$$AbcTwinNormal_BImplCopyWith<$Res> {
   __$$AbcTwinNormal_BImplCopyWithImpl(
-      _$AbcTwinNormal_BImpl _value, $Res Function(_$AbcTwinNormal_BImpl) _then)
-      : super(_value, _then);
+    _$AbcTwinNormal_BImpl _value,
+    $Res Function(_$AbcTwinNormal_BImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AbcTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$AbcTwinNormal_BImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as BTwinNormal,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$AbcTwinNormal_BImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                as BTwinNormal,
+      ),
+    );
   }
 }
 
@@ -310,7 +312,9 @@ class _$AbcTwinNormal_BImpl extends AbcTwinNormal_B {
   @pragma('vm:prefer-inline')
   _$$AbcTwinNormal_BImplCopyWith<_$AbcTwinNormal_BImpl> get copyWith =>
       __$$AbcTwinNormal_BImplCopyWithImpl<_$AbcTwinNormal_BImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -404,9 +408,10 @@ abstract class AbcTwinNormal_B extends AbcTwinNormal {
 
 /// @nodoc
 abstract class _$$AbcTwinNormal_CImplCopyWith<$Res> {
-  factory _$$AbcTwinNormal_CImplCopyWith(_$AbcTwinNormal_CImpl value,
-          $Res Function(_$AbcTwinNormal_CImpl) then) =
-      __$$AbcTwinNormal_CImplCopyWithImpl<$Res>;
+  factory _$$AbcTwinNormal_CImplCopyWith(
+    _$AbcTwinNormal_CImpl value,
+    $Res Function(_$AbcTwinNormal_CImpl) then,
+  ) = __$$AbcTwinNormal_CImplCopyWithImpl<$Res>;
   @useResult
   $Res call({CTwinNormal field0});
 }
@@ -416,22 +421,23 @@ class __$$AbcTwinNormal_CImplCopyWithImpl<$Res>
     extends _$AbcTwinNormalCopyWithImpl<$Res, _$AbcTwinNormal_CImpl>
     implements _$$AbcTwinNormal_CImplCopyWith<$Res> {
   __$$AbcTwinNormal_CImplCopyWithImpl(
-      _$AbcTwinNormal_CImpl _value, $Res Function(_$AbcTwinNormal_CImpl) _then)
-      : super(_value, _then);
+    _$AbcTwinNormal_CImpl _value,
+    $Res Function(_$AbcTwinNormal_CImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AbcTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$AbcTwinNormal_CImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as CTwinNormal,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$AbcTwinNormal_CImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                as CTwinNormal,
+      ),
+    );
   }
 }
 
@@ -466,7 +472,9 @@ class _$AbcTwinNormal_CImpl extends AbcTwinNormal_C {
   @pragma('vm:prefer-inline')
   _$$AbcTwinNormal_CImplCopyWith<_$AbcTwinNormal_CImpl> get copyWith =>
       __$$AbcTwinNormal_CImplCopyWithImpl<_$AbcTwinNormal_CImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -561,9 +569,9 @@ abstract class AbcTwinNormal_C extends AbcTwinNormal {
 /// @nodoc
 abstract class _$$AbcTwinNormal_JustIntImplCopyWith<$Res> {
   factory _$$AbcTwinNormal_JustIntImplCopyWith(
-          _$AbcTwinNormal_JustIntImpl value,
-          $Res Function(_$AbcTwinNormal_JustIntImpl) then) =
-      __$$AbcTwinNormal_JustIntImplCopyWithImpl<$Res>;
+    _$AbcTwinNormal_JustIntImpl value,
+    $Res Function(_$AbcTwinNormal_JustIntImpl) then,
+  ) = __$$AbcTwinNormal_JustIntImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int field0});
 }
@@ -572,23 +580,24 @@ abstract class _$$AbcTwinNormal_JustIntImplCopyWith<$Res> {
 class __$$AbcTwinNormal_JustIntImplCopyWithImpl<$Res>
     extends _$AbcTwinNormalCopyWithImpl<$Res, _$AbcTwinNormal_JustIntImpl>
     implements _$$AbcTwinNormal_JustIntImplCopyWith<$Res> {
-  __$$AbcTwinNormal_JustIntImplCopyWithImpl(_$AbcTwinNormal_JustIntImpl _value,
-      $Res Function(_$AbcTwinNormal_JustIntImpl) _then)
-      : super(_value, _then);
+  __$$AbcTwinNormal_JustIntImplCopyWithImpl(
+    _$AbcTwinNormal_JustIntImpl _value,
+    $Res Function(_$AbcTwinNormal_JustIntImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AbcTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$AbcTwinNormal_JustIntImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$AbcTwinNormal_JustIntImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                as int,
+      ),
+    );
   }
 }
 
@@ -622,8 +631,11 @@ class _$AbcTwinNormal_JustIntImpl extends AbcTwinNormal_JustInt {
   @override
   @pragma('vm:prefer-inline')
   _$$AbcTwinNormal_JustIntImplCopyWith<_$AbcTwinNormal_JustIntImpl>
-      get copyWith => __$$AbcTwinNormal_JustIntImplCopyWithImpl<
-          _$AbcTwinNormal_JustIntImpl>(this, _$identity);
+  get copyWith =>
+      __$$AbcTwinNormal_JustIntImplCopyWithImpl<_$AbcTwinNormal_JustIntImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -712,5 +724,5 @@ abstract class AbcTwinNormal_JustInt extends AbcTwinNormal {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AbcTwinNormal_JustIntImplCopyWith<_$AbcTwinNormal_JustIntImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }

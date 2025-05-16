@@ -10,19 +10,23 @@ import '../../frb_generated.dart';
 import '../mirror.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-ApplicationSettings getAppSettingsTwinSync() => RustLib.instance.api
-    .crateApiPseudoManualMirrorTwinSyncGetAppSettingsTwinSync();
+ApplicationSettings getAppSettingsTwinSync() =>
+    RustLib.instance.api
+        .crateApiPseudoManualMirrorTwinSyncGetAppSettingsTwinSync();
 
-ApplicationSettings getFallibleAppSettingsTwinSync() => RustLib.instance.api
-    .crateApiPseudoManualMirrorTwinSyncGetFallibleAppSettingsTwinSync();
+ApplicationSettings getFallibleAppSettingsTwinSync() =>
+    RustLib.instance.api
+        .crateApiPseudoManualMirrorTwinSyncGetFallibleAppSettingsTwinSync();
 
 bool isAppEmbeddedTwinSync({required ApplicationSettings appSettings}) =>
     RustLib.instance.api
         .crateApiPseudoManualMirrorTwinSyncIsAppEmbeddedTwinSync(
-            appSettings: appSettings);
+          appSettings: appSettings,
+        );
 
-Stream<ApplicationSettings> appSettingsStreamTwinSync() => RustLib.instance.api
-    .crateApiPseudoManualMirrorTwinSyncAppSettingsStreamTwinSync();
+Stream<ApplicationSettings> appSettingsStreamTwinSync() =>
+    RustLib.instance.api
+        .crateApiPseudoManualMirrorTwinSyncAppSettingsStreamTwinSync();
 
 Stream<List<ApplicationSettings>> appSettingsVecStreamTwinSync() =>
     RustLib.instance.api
@@ -33,7 +37,8 @@ Stream<MirrorStructTwinSync> mirrorStructStreamTwinSync() =>
         .crateApiPseudoManualMirrorTwinSyncMirrorStructStreamTwinSync();
 
 Stream<(ApplicationSettings, RawStringEnumMirrored)>
-    mirrorTupleStreamTwinSync() => RustLib.instance.api
+mirrorTupleStreamTwinSync() =>
+    RustLib.instance.api
         .crateApiPseudoManualMirrorTwinSyncMirrorTupleStreamTwinSync();
 
 ApplicationMessage getMessageTwinSync() =>
@@ -41,12 +46,16 @@ ApplicationMessage getMessageTwinSync() =>
 
 Numbers repeatNumberTwinSync({required int num, required BigInt times}) =>
     RustLib.instance.api.crateApiPseudoManualMirrorTwinSyncRepeatNumberTwinSync(
-        num: num, times: times);
+      num: num,
+      times: times,
+    );
 
 Sequences repeatSequenceTwinSync({required int seq, required BigInt times}) =>
     RustLib.instance.api
         .crateApiPseudoManualMirrorTwinSyncRepeatSequenceTwinSync(
-            seq: seq, times: times);
+          seq: seq,
+          times: times,
+        );
 
 int? firstNumberTwinSync({required Numbers nums}) => RustLib.instance.api
     .crateApiPseudoManualMirrorTwinSyncFirstNumberTwinSync(nums: nums);
@@ -54,40 +63,44 @@ int? firstNumberTwinSync({required Numbers nums}) => RustLib.instance.api
 int? firstSequenceTwinSync({required Sequences seqs}) => RustLib.instance.api
     .crateApiPseudoManualMirrorTwinSyncFirstSequenceTwinSync(seqs: seqs);
 
-RawStringMirrored testRawStringMirroredTwinSync() => RustLib.instance.api
-    .crateApiPseudoManualMirrorTwinSyncTestRawStringMirroredTwinSync();
-
-NestedRawStringMirrored testNestedRawStringMirroredTwinSync() => RustLib
-    .instance.api
-    .crateApiPseudoManualMirrorTwinSyncTestNestedRawStringMirroredTwinSync();
-
-RawStringEnumMirrored testRawStringEnumMirroredTwinSync(
-        {required bool nested}) =>
+RawStringMirrored testRawStringMirroredTwinSync() =>
     RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinSyncTestRawStringEnumMirroredTwinSync(
-            nested: nested);
+        .crateApiPseudoManualMirrorTwinSyncTestRawStringMirroredTwinSync();
+
+NestedRawStringMirrored testNestedRawStringMirroredTwinSync() =>
+    RustLib.instance.api
+        .crateApiPseudoManualMirrorTwinSyncTestNestedRawStringMirroredTwinSync();
+
+RawStringEnumMirrored testRawStringEnumMirroredTwinSync({
+  required bool nested,
+}) => RustLib.instance.api
+    .crateApiPseudoManualMirrorTwinSyncTestRawStringEnumMirroredTwinSync(
+      nested: nested,
+    );
 
 ListOfNestedRawStringMirrored testListOfRawNestedStringMirroredTwinSync() =>
     RustLib.instance.api
         .crateApiPseudoManualMirrorTwinSyncTestListOfRawNestedStringMirroredTwinSync();
 
-List<RawStringMirrored> testFallibleOfRawStringMirroredTwinSync() => RustLib
-    .instance.api
-    .crateApiPseudoManualMirrorTwinSyncTestFallibleOfRawStringMirroredTwinSync();
+List<RawStringMirrored> testFallibleOfRawStringMirroredTwinSync() =>
+    RustLib.instance.api
+        .crateApiPseudoManualMirrorTwinSyncTestFallibleOfRawStringMirroredTwinSync();
 
-List<RawStringEnumMirrored> testListOfNestedEnumsMirroredTwinSync() => RustLib
-    .instance.api
-    .crateApiPseudoManualMirrorTwinSyncTestListOfNestedEnumsMirroredTwinSync();
+List<RawStringEnumMirrored> testListOfNestedEnumsMirroredTwinSync() =>
+    RustLib.instance.api
+        .crateApiPseudoManualMirrorTwinSyncTestListOfNestedEnumsMirroredTwinSync();
 
 ContainsMirroredSubStructTwinSync testContainsMirroredSubStructTwinSync() =>
     RustLib.instance.api
         .crateApiPseudoManualMirrorTwinSyncTestContainsMirroredSubStructTwinSync();
 
-StructWithHashMap testHashmapWithMirroredValueTwinSync() => RustLib.instance.api
-    .crateApiPseudoManualMirrorTwinSyncTestHashmapWithMirroredValueTwinSync();
+StructWithHashMap testHashmapWithMirroredValueTwinSync() =>
+    RustLib.instance.api
+        .crateApiPseudoManualMirrorTwinSyncTestHashmapWithMirroredValueTwinSync();
 
-Stream<ApplicationMode> mirrorEnumStreamTwinSync() => RustLib.instance.api
-    .crateApiPseudoManualMirrorTwinSyncMirrorEnumStreamTwinSync();
+Stream<ApplicationMode> mirrorEnumStreamTwinSync() =>
+    RustLib.instance.api
+        .crateApiPseudoManualMirrorTwinSyncMirrorEnumStreamTwinSync();
 
 Stream<ApplicationMode?> mirrorOptionEnumStreamTwinSync() =>
     RustLib.instance.api
@@ -112,9 +125,7 @@ Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinSync() =>
 class AnotherTwinSync {
   final String a;
 
-  const AnotherTwinSync({
-    required this.a,
-  });
+  const AnotherTwinSync({required this.a});
 
   @override
   int get hashCode => a.hashCode;

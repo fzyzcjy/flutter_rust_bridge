@@ -15,8 +15,9 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 abstract class DroppableTwinNormal implements RustOpaqueInterface {
   Stream<int> createStream();
 
-  static Future<int> getDropCountTwinNormal() => RustLib.instance.api
-      .crateApiDroppingDroppableTwinNormalGetDropCountTwinNormal();
+  static Future<int> getDropCountTwinNormal() =>
+      RustLib.instance.api
+          .crateApiDroppingDroppableTwinNormalGetDropCountTwinNormal();
 
   static Future<DroppableTwinNormal> newTwinNormal() =>
       RustLib.instance.api.crateApiDroppingDroppableTwinNormalNewTwinNormal();

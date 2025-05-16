@@ -11,14 +11,19 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('ConcatenateWith test', () async {
     final ConcatenateWithTwinRustAsync concatenateWith =
-        ConcatenateWithTwinRustAsync(a: "hello ");
-    final String concatenated =
-        await concatenateWith.concatenateTwinRustAsync(b: "world");
+        ConcatenateWithTwinRustAsync(
+      a: "hello ",
+    );
+    final String concatenated = await concatenateWith.concatenateTwinRustAsync(
+      b: "world",
+    );
     expect(concatenated, equals("hello world"));
 
     final staticConcatenated =
         await ConcatenateWithTwinRustAsync.concatenateStaticTwinRustAsync(
-            a: "hello ", b: "world");
+      a: "hello ",
+      b: "world",
+    );
     expect(staticConcatenated, equals("hello world"));
 
     final concatenatedConstructor =
@@ -42,7 +47,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('return SumWith array test', () async {
     final List<SumWithTwinRustAsync> sumWithList =
-        await getSumArrayTwinRustAsync(a: 12, b: 23, c: 67);
+        await getSumArrayTwinRustAsync(
+      a: 12,
+      b: 23,
+      c: 67,
+    );
     expect(await sumWithList[0].sumTwinRustAsync(y: 23, z: 67), 12 + 23 + 67);
     expect(await sumWithList[1].sumTwinRustAsync(y: 12, z: 67), 12 + 23 + 67);
     expect(await sumWithList[2].sumTwinRustAsync(y: 12, z: 23), 12 + 23 + 67);
@@ -50,11 +59,15 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('ConcatenateWith stream sink test', () async {
     final ConcatenateWithTwinRustAsync concatenateWith =
-        ConcatenateWithTwinRustAsync(a: "hello ");
+        ConcatenateWithTwinRustAsync(
+      a: "hello ",
+    );
     final int key = 10;
     final int max = 5;
-    final stream =
-        concatenateWith.handleSomeStreamSinkTwinRustAsync(key: key, max: max);
+    final stream = concatenateWith.handleSomeStreamSinkTwinRustAsync(
+      key: key,
+      max: max,
+    );
     int cnt = 0;
     await for (final value in stream) {
       print("output from ConcatenateWith's stream: $value");
@@ -69,7 +82,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final int max = 5;
     final stream =
         ConcatenateWithTwinRustAsync.handleSomeStaticStreamSinkTwinRustAsync(
-            key: key, max: max);
+      key: key,
+      max: max,
+    );
     int cnt = 0;
     await for (final value in stream) {
       print("output from ConcatenateWith's static stream: $value");
@@ -98,9 +113,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
   group('SimpleStruct', () {
     test('returnSelf', () async {
       expect(
-          (await SimpleStructTwinRustAsync.returnSelfTwinRustAsync(one: 'One'))
-              .one,
-          'One');
+        (await SimpleStructTwinRustAsync.returnSelfTwinRustAsync(one: 'One'))
+            .one,
+        'One',
+      );
     });
 
     test('receiverBorrow', () async {
@@ -123,8 +139,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
     test('vecSelf', () async {
       final a = SimpleStructTwinRustAsync(one: 'a');
       final b = SimpleStructTwinRustAsync(one: 'b');
-      expect(await SimpleStructTwinRustAsync.vecSelfTwinRustAsync(arg: [a, b]),
-          ['a', 'b']);
+      expect(
+          await SimpleStructTwinRustAsync.vecSelfTwinRustAsync(arg: [a, b]), [
+        'a',
+        'b',
+      ]);
     });
   });
 
@@ -135,9 +154,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('SimplePrimitiveEnum', () async {
     expect(
-        await SimplePrimitiveEnumTwinRustAsync.second
-            .simpleMethodTwinRustAsync(),
-        200);
+      await SimplePrimitiveEnumTwinRustAsync.second.simpleMethodTwinRustAsync(),
+      200,
+    );
   });
 
   test('StaticOnly', () async {

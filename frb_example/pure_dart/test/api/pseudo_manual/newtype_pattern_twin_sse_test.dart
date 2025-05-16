@@ -12,7 +12,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('dart call handleNewtype', () async {
     final newtypeResp = await handleNewtypeTwinSse(
-        arg: NewTypeIntTwinSse(field0: PlatformInt64Util.from(42)));
+      arg: NewTypeIntTwinSse(field0: PlatformInt64Util.from(42)),
+    );
     expect(newtypeResp.field0.toInt(), 84);
   });
 }
