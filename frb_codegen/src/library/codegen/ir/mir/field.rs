@@ -18,7 +18,7 @@ pub struct MirField {
 #[derive(Deserialize, Default)]
 pub struct MirFieldSettings {
     pub is_in_mirrored_enum: bool,
-    pub skip_accessors: bool,
+    pub skip_auto_accessors: bool,
 }
 }
 

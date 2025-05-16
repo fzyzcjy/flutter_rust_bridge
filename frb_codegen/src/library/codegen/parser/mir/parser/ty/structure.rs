@@ -102,7 +102,7 @@ impl TypeParserWithContext<'_, '_, '_> {
             comments: parse_comments(&field.attrs),
             default: attributes.default_value(),
             settings: MirFieldSettings {
-                skip_accessors: (struct_attributes.ignore_all() || attributes.ignore())
+                skip_auto_accessors: (struct_attributes.ignore_all() || attributes.ignore())
                     && !attributes.unignore(),
                 ..Default::default()
             },
