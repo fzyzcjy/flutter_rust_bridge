@@ -47,6 +47,7 @@ struct is equivalent to applying the `ignore` attribute to all of its fields.
 
 When using `ignore_all` you can allow accessors from being generated only for
 specific fields by annotating those fields with the `unignore` attribute.
+The names are experimental and may change in the future.
 
 ## Caveats
 
