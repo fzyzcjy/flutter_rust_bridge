@@ -2693,6 +2693,7 @@ typedef struct wire_cst_element_twin_sync {
 
 typedef struct wire_cst_raw_string_mirrored {
   struct wire_cst_list_prim_u_8_strict *value;
+  struct wire_cst_list_prim_u_8_strict *type;
 } wire_cst_raw_string_mirrored;
 
 typedef struct wire_cst_nested_raw_string_mirrored {

@@ -7,6 +7,7 @@ use std::sync::Mutex;
 #[derive(Debug, Clone)]
 pub struct RawStringMirrored {
     pub r#value: String,
+    pub r#type: String,
 }
 
 #[derive(Debug, Clone)]

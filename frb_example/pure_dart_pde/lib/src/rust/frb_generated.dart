@@ -52605,10 +52605,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   RawStringMirrored dco_decode_raw_string_mirrored(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
-    if (arr.length != 1)
-      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    if (arr.length != 2)
+      throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return RawStringMirrored(
       value: dco_decode_String(arr[0]),
+      type: dco_decode_String(arr[1]),
     );
   }
 
@@ -64862,7 +64863,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_value = sse_decode_String(deserializer);
-    return RawStringMirrored(value: var_value);
+    var var_type = sse_decode_String(deserializer);
+    return RawStringMirrored(value: var_value, type: var_type);
   }
 
   @protected
@@ -76286,6 +76288,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       RawStringMirrored self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(self.value, serializer);
+    sse_encode_String(self.type, serializer);
   }
 
   @protected
