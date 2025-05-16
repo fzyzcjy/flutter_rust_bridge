@@ -9,6 +9,7 @@ import 'dart:convert';
 import 'frb_generated.dart';
 import 'frb_generated.io.dart'
     if (dart.library.js_interop) 'frb_generated.web.dart';
+import 'lib.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 /// Main entrypoint of the Rust API
@@ -68,7 +69,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.9.0';
 
   @override
-  int get rustContentHash => -2119384465;
+  int get rustContentHash => -559712972;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -82,6 +83,8 @@ abstract class RustLibApi extends BaseApi {
   Future<void> crateApiMinimalInitApp();
 
   Future<int> crateApiMinimalMinimalAdder({required int a, required int b});
+
+  Future<void> crateApiMinimalStateTypeF({required StateType that});
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -141,10 +144,98 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: ["a", "b"],
       );
 
+  @override
+  Future<void> crateApiMinimalStateTypeF({required StateType that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_state_type(that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 3, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_unit,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiMinimalStateTypeFConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiMinimalStateTypeFConstMeta => const TaskConstMeta(
+        debugName: "state_type_f",
+        argNames: ["that"],
+      );
+
+  @protected
+  StateType dco_decode_box_autoadd_state_type(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_state_type(raw);
+  }
+
+  @protected
+  ElementKind dco_decode_element_kind(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    switch (raw[0]) {
+      case 0:
+        return ElementKind_Empty();
+      case 1:
+        return ElementKind_Occupied(
+          dco_decode_entity(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  @protected
+  ElementKindArray3 dco_decode_element_kind_array_3(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return ElementKindArray3(
+        (raw as List<dynamic>).map(dco_decode_element_kind).toList());
+  }
+
+  @protected
+  ElementKindArray3Array3 dco_decode_element_kind_array_3_array_3(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return ElementKindArray3Array3(
+        (raw as List<dynamic>).map(dco_decode_element_kind_array_3).toList());
+  }
+
+  @protected
+  Entity dco_decode_entity(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return Entity.values[raw as int];
+  }
+
   @protected
   int dco_decode_i_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw as int;
+  }
+
+  @protected
+  List<ElementKind> dco_decode_list_element_kind(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return (raw as List<dynamic>).map(dco_decode_element_kind).toList();
+  }
+
+  @protected
+  List<ElementKindArray3> dco_decode_list_element_kind_array_3(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return (raw as List<dynamic>).map(dco_decode_element_kind_array_3).toList();
+  }
+
+  @protected
+  StateType dco_decode_state_type(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1)
+      throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return StateType(
+      area: dco_decode_element_kind_array_3_array_3(arr[0]),
+    );
   }
 
   @protected
@@ -154,9 +245,86 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  StateType sse_decode_box_autoadd_state_type(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_state_type(deserializer));
+  }
+
+  @protected
+  ElementKind sse_decode_element_kind(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    var tag_ = sse_decode_i_32(deserializer);
+    switch (tag_) {
+      case 0:
+        return ElementKind_Empty();
+      case 1:
+        var var_field0 = sse_decode_entity(deserializer);
+        return ElementKind_Occupied(var_field0);
+      default:
+        throw UnimplementedError('');
+    }
+  }
+
+  @protected
+  ElementKindArray3 sse_decode_element_kind_array_3(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner = sse_decode_list_element_kind(deserializer);
+    return ElementKindArray3(inner);
+  }
+
+  @protected
+  ElementKindArray3Array3 sse_decode_element_kind_array_3_array_3(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner = sse_decode_list_element_kind_array_3(deserializer);
+    return ElementKindArray3Array3(inner);
+  }
+
+  @protected
+  Entity sse_decode_entity(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner = sse_decode_i_32(deserializer);
+    return Entity.values[inner];
+  }
+
+  @protected
   int sse_decode_i_32(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getInt32();
+  }
+
+  @protected
+  List<ElementKind> sse_decode_list_element_kind(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <ElementKind>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_element_kind(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<ElementKindArray3> sse_decode_list_element_kind_array_3(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <ElementKindArray3>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_element_kind_array_3(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  StateType sse_decode_state_type(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_area = sse_decode_element_kind_array_3_array_3(deserializer);
+    return StateType(area: var_area);
   }
 
   @protected
@@ -171,9 +339,74 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_box_autoadd_state_type(
+      StateType self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_state_type(self, serializer);
+  }
+
+  @protected
+  void sse_encode_element_kind(ElementKind self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    switch (self) {
+      case ElementKind_Empty():
+        sse_encode_i_32(0, serializer);
+      case ElementKind_Occupied(field0: final field0):
+        sse_encode_i_32(1, serializer);
+        sse_encode_entity(field0, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_element_kind_array_3(
+      ElementKindArray3 self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_list_element_kind(self.inner, serializer);
+  }
+
+  @protected
+  void sse_encode_element_kind_array_3_array_3(
+      ElementKindArray3Array3 self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_list_element_kind_array_3(self.inner, serializer);
+  }
+
+  @protected
+  void sse_encode_entity(Entity self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.index, serializer);
+  }
+
+  @protected
   void sse_encode_i_32(int self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     serializer.buffer.putInt32(self);
+  }
+
+  @protected
+  void sse_encode_list_element_kind(
+      List<ElementKind> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_element_kind(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_element_kind_array_3(
+      List<ElementKindArray3> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_element_kind_array_3(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_state_type(StateType self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_element_kind_array_3_array_3(self.area, serializer);
   }
 
   @protected

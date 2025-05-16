@@ -1,4 +1,5 @@
-use flutter_rust_bridge::frb;
+use flutter_rust_bridge::for_generated::IntoDartExceptPrimitive;
+use flutter_rust_bridge::{frb, IntoDart, IntoIntoDart};
 
 #[frb(init)]
 pub fn init_app() {
@@ -31,4 +32,12 @@ pub struct StateType {
 
 impl StateType {
     pub fn f(self) {}
+}
+
+pub fn f_intodart<T: IntoDart>() {}
+pub fn f_intointodart<T: IntoIntoDart<X>, X: IntoDart>() {}
+
+pub fn g() {
+    f_intodart::<[ElementKind; 3]>();
+    f_intointodart::<[[ElementKind; 3]; 3], [[ElementKind; 3]; 3]>();
 }

@@ -10,6 +10,7 @@ import 'api/minimal.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'frb_generated.dart';
+import 'lib.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
 
 abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
@@ -21,13 +22,64 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
+  StateType dco_decode_box_autoadd_state_type(dynamic raw);
+
+  @protected
+  ElementKind dco_decode_element_kind(dynamic raw);
+
+  @protected
+  ElementKindArray3 dco_decode_element_kind_array_3(dynamic raw);
+
+  @protected
+  ElementKindArray3Array3 dco_decode_element_kind_array_3_array_3(dynamic raw);
+
+  @protected
+  Entity dco_decode_entity(dynamic raw);
+
+  @protected
   int dco_decode_i_32(dynamic raw);
+
+  @protected
+  List<ElementKind> dco_decode_list_element_kind(dynamic raw);
+
+  @protected
+  List<ElementKindArray3> dco_decode_list_element_kind_array_3(dynamic raw);
+
+  @protected
+  StateType dco_decode_state_type(dynamic raw);
 
   @protected
   void dco_decode_unit(dynamic raw);
 
   @protected
+  StateType sse_decode_box_autoadd_state_type(SseDeserializer deserializer);
+
+  @protected
+  ElementKind sse_decode_element_kind(SseDeserializer deserializer);
+
+  @protected
+  ElementKindArray3 sse_decode_element_kind_array_3(
+      SseDeserializer deserializer);
+
+  @protected
+  ElementKindArray3Array3 sse_decode_element_kind_array_3_array_3(
+      SseDeserializer deserializer);
+
+  @protected
+  Entity sse_decode_entity(SseDeserializer deserializer);
+
+  @protected
   int sse_decode_i_32(SseDeserializer deserializer);
+
+  @protected
+  List<ElementKind> sse_decode_list_element_kind(SseDeserializer deserializer);
+
+  @protected
+  List<ElementKindArray3> sse_decode_list_element_kind_array_3(
+      SseDeserializer deserializer);
+
+  @protected
+  StateType sse_decode_state_type(SseDeserializer deserializer);
 
   @protected
   void sse_decode_unit(SseDeserializer deserializer);
@@ -36,7 +88,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
+  void sse_encode_box_autoadd_state_type(
+      StateType self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_element_kind(ElementKind self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_element_kind_array_3(
+      ElementKindArray3 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_element_kind_array_3_array_3(
+      ElementKindArray3Array3 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_entity(Entity self, SseSerializer serializer);
+
+  @protected
   void sse_encode_i_32(int self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_element_kind(
+      List<ElementKind> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_element_kind_array_3(
+      List<ElementKindArray3> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_state_type(StateType self, SseSerializer serializer);
 
   @protected
   void sse_encode_unit(void self, SseSerializer serializer);
