@@ -109,6 +109,7 @@ pub fn mirror_tuple_stream_twin_normal(
         frb_example_pure_dart_example_external_lib::get_app_settings(),
         RawStringEnumMirrored::Raw(RawStringMirrored {
             value: String::from("test"),
+            r#type: "".to_string(),
         }),
     );
     sink.add(tuple).unwrap();
@@ -170,6 +171,7 @@ pub struct _ListOfRawNestedStringMirroredTwinNormal {
 pub fn test_raw_string_mirrored_twin_normal() -> RawStringMirrored {
     RawStringMirrored {
         r#value: "test".to_owned(),
+        r#type: "".to_string(),
     }
 }
 
@@ -177,6 +179,7 @@ pub fn test_nested_raw_string_mirrored_twin_normal() -> NestedRawStringMirrored 
     NestedRawStringMirrored {
         raw: RawStringMirrored {
             r#value: "test".to_owned(),
+            r#type: "".to_string(),
         },
     }
 }
@@ -186,11 +189,13 @@ pub fn test_raw_string_enum_mirrored_twin_normal(nested: bool) -> RawStringEnumM
         RawStringEnumMirrored::Nested(NestedRawStringMirrored {
             raw: RawStringMirrored {
                 r#value: "test".to_owned(),
+                r#type: "".to_string(),
             },
         })
     } else {
         RawStringEnumMirrored::Raw(RawStringMirrored {
             r#value: "test".to_owned(),
+            r#type: "".to_string(),
         })
     }
 }
@@ -200,6 +205,7 @@ pub fn test_list_of_raw_nested_string_mirrored_twin_normal() -> ListOfNestedRawS
         raw: vec![NestedRawStringMirrored {
             raw: RawStringMirrored {
                 r#value: "test".to_owned(),
+                r#type: "".to_string(),
             },
         }],
     }
@@ -209,6 +215,7 @@ pub fn test_fallible_of_raw_string_mirrored_twin_normal() -> anyhow::Result<Vec<
 {
     Ok(vec![RawStringMirrored {
         r#value: "test".to_owned(),
+        r#type: "".to_string(),
     }])
 }
 
@@ -217,10 +224,12 @@ pub fn test_list_of_nested_enums_mirrored_twin_normal() -> Vec<RawStringEnumMirr
         RawStringEnumMirrored::Nested(NestedRawStringMirrored {
             raw: RawStringMirrored {
                 r#value: "test".to_owned(),
+                r#type: "".to_string(),
             },
         }),
         RawStringEnumMirrored::Raw(RawStringMirrored {
             r#value: "test".to_owned(),
+            r#type: "".to_string(),
         }),
     ]
 }
@@ -243,6 +252,7 @@ pub fn test_contains_mirrored_sub_struct_twin_normal() -> ContainsMirroredSubStr
     ContainsMirroredSubStructTwinNormal {
         test: RawStringMirrored {
             r#value: "test".to_owned(),
+            r#type: "".to_string(),
         },
         test2: AnotherTwinNormal {
             a: "test".to_owned(),
