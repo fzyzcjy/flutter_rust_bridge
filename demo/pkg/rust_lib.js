@@ -463,7 +463,7 @@ let wasm_bindgen;
                 wasm.__wbindgen_free(deferred0_0, deferred0_1, 1);
             }
         };
-        imports.wbg.__wbg_error_adca257e286d2559 = function(arg0, arg1) {
+        imports.wbg.__wbg_error_8699a8afb74ac4af = function(arg0, arg1) {
             console.error(getStringFromWasm0(arg0, arg1));
         };
         imports.wbg.__wbg_eval_d20089e12db29559 = function() { return handleError(function (arg0, arg1) {
@@ -598,7 +598,7 @@ let wasm_bindgen;
         imports.wbg.__wbg_postMessage_925a86ed193341b7 = function() { return handleError(function (arg0, arg1, arg2) {
             arg0.postMessage(arg1, arg2);
         }, arguments) };
-        imports.wbg.__wbg_postMessage_a7ada40954b597e1 = function() { return handleError(function (arg0, arg1) {
+        imports.wbg.__wbg_postMessage_b6580510688d0bce = function() { return handleError(function (arg0, arg1) {
             arg0.postMessage(arg1);
         }, arguments) };
         imports.wbg.__wbg_postMessage_f869dc33d4b65509 = function() { return handleError(function (arg0, arg1) {
