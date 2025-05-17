@@ -4,7 +4,204 @@
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
 import '../frb_generated.dart';
+import 'dart:io';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:logging/logging.dart';
+
+// These functions are ignored because they are not marked as `pub`: `_default_log_fn`, `_default_logger_name`, `_default_max_log_level`, `from_u16`, `to_u16`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `enabled`, `flush`, `from`, `log`
+
+String rootLoggerName() => RustLib.instance.api.crateApiMinimalRootLoggerName();
+
+String maxLogLevel() => RustLib.instance.api.crateApiMinimalMaxLogLevel();
+
+void logFn({required Log2DartLogRecord record}) =>
+    RustLib.instance.api.crateApiMinimalLogFn(record: record);
+
+/// usees custom type translation to translate between log::LogLevel and Dart:logging::Level
+/// loglevel is represented by a number, so that we don't need to put \import `import 'package:logging/logging.dart';`
+/// into the dart preamble in flutter_rust_bridge.yaml
+Stream<Log2DartLogRecord> initializeLog2Dart({required int maxLogLevel}) =>
+    RustLib.instance.api
+        .crateApiMinimalInitializeLog2Dart(maxLogLevel: maxLogLevel);
 
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
+
+class FRBLogger {
+  final RustStreamSink<Log2DartLogRecord> streamSink;
+
+  const FRBLogger({
+    required this.streamSink,
+  });
+
+  // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
+  static Future<FRBLogger> newInstance() =>
+      RustLib.instance.api.crateApiMinimalFrbLoggerNew();
+
+  /// initialize the logging system, including the rust logger
+  static Logger initLogger(
+      {String name = 'FRBLogger',
+      String maxLogLevel = 'INFO',
+      Function({required Log2DartLogRecord record}) customLogFunction =
+          logFn}) {
+    String? env_log_level = Platform.environment['LOG_LEVEL'];
+    if (env_log_level != null) {
+      print(
+          'Taking log level from env: ${env_log_level} instead of the one given by code: ${maxLogLevel}');
+      maxLogLevel = env_log_level;
+    }
+
+    Log2DartLogRecord _toLog2DartLogRecord(LogRecord record) {
+      return Log2DartLogRecord(
+          levelNumber: record.level.value,
+          message: record.message,
+          loggerName: record.loggerName,
+          rustLog: false,
+          modulePath: null,
+          fileName: null,
+          lineNumber: null);
+    }
+
+    final logger = Logger(name);
+
+    Logger.root.level = _logLevelFromStr(maxLogLevel);
+
+    var stream = initializeLog2Dart(maxLogLevel: Logger.root.level.value);
+    // logs from Rust
+    stream.listen((record) {
+      customLogFunction(record: record);
+    });
+
+    // logs from Dart
+    Logger.root.onRecord.listen((record) {
+      customLogFunction(record: _toLog2DartLogRecord(record));
+    });
+
+    return logger;
+  }
+
+  /// get a new named logger, can be used for getting the inital logger instead initLogger()
+  static Logger getLogger([String? name]) {
+    var loggerName = name ?? rootLoggerName();
+    if (Logger.attachedLoggers.isEmpty) {
+      initLogger(
+          name: loggerName,
+          maxLogLevel: maxLogLevel(),
+          customLogFunction: logFn);
+    }
+    return Logger(loggerName);
+  }
+
+  static Level _logLevelFromStr(String levelStr) {
+    switch (levelStr.toUpperCase()) {
+      case 'ALL':
+        return Level.ALL;
+      case 'FINEST':
+        return Level.FINEST;
+      case 'FINER':
+        return Level.FINER;
+      case 'FINE':
+        return Level.FINE;
+      case 'CONFIG':
+        return Level.CONFIG;
+      case 'INFO':
+        return Level.INFO;
+      case 'WARNING':
+        return Level.WARNING;
+      case 'SEVERE':
+        return Level.SEVERE;
+      case 'SHOUT':
+        return Level.SHOUT;
+      case 'OFF':
+        return Level.OFF;
+      default:
+        print(
+            'unknown LOG_LEVEL: ${levelStr}. For potential values see https://pub.dev/documentation/logging/latest/logging/Level-class.html');
+        exit(1);
+    }
+  }
+
+  // convert from log level number to Dart package logging->Level
+  static Level logLevelFromNumber(int level) {
+    switch (level) {
+      case < 300:
+        return Level.ALL;
+      case < 400:
+        return Level.FINEST;
+      case < 500:
+        return Level.FINER;
+      case < 700:
+        return Level.FINE;
+      case < 800:
+        return Level.CONFIG;
+      case < 900:
+        return Level.INFO;
+      case < 1000:
+        return Level.WARNING;
+      case < 1200:
+        return Level.SEVERE;
+      case < 2000:
+        return Level.SHOUT;
+      case >= 2000:
+        return Level.OFF;
+      default:
+        return Level.ALL;
+    }
+  }
+
+  @override
+  int get hashCode => streamSink.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is FRBLogger &&
+          runtimeType == other.runtimeType &&
+          streamSink == other.streamSink;
+}
+
+/// mapping log crate's [Record](https://docs.rs/log/latest/log/struct.Record.html) to dart's Logger [LogRecord](https://pub.dev/documentation/logging/latest/logging/LogRecord-class.html).
+/// intermediary struct to avoid Record's lifetimes
+class Log2DartLogRecord {
+  final int levelNumber;
+  final String message;
+  final String loggerName;
+  final bool rustLog;
+  final String? modulePath;
+  final String? fileName;
+  final int? lineNumber;
+
+  const Log2DartLogRecord({
+    required this.levelNumber,
+    required this.message,
+    required this.loggerName,
+    required this.rustLog,
+    this.modulePath,
+    this.fileName,
+    this.lineNumber,
+  });
+
+  @override
+  int get hashCode =>
+      levelNumber.hashCode ^
+      message.hashCode ^
+      loggerName.hashCode ^
+      rustLog.hashCode ^
+      modulePath.hashCode ^
+      fileName.hashCode ^
+      lineNumber.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Log2DartLogRecord &&
+          runtimeType == other.runtimeType &&
+          levelNumber == other.levelNumber &&
+          message == other.message &&
+          loggerName == other.loggerName &&
+          rustLog == other.rustLog &&
+          modulePath == other.modulePath &&
+          fileName == other.fileName &&
+          lineNumber == other.lineNumber;
+}

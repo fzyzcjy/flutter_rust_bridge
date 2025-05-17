@@ -18,7 +18,7 @@ delegate-attr = "0.3.0"
 flutter_rust_bridge_macros = { workspace = true }
 futures = { version = "0.3.29", optional = true }
 lazy_static = { workspace = true }
-log = { version = "0.4", optional = true }
+log = { version = "0.4.20", optional = true, features = ["std"] }
 portable-atomic = { version = "1.8.0", optional = true }
 uuid = { workspace = true, optional = true }
 
@@ -47,12 +47,6 @@ web-sys = { version = "0.3.58", features = [
     "BroadcastChannel",
 ] }
 
-[target.'cfg(target_os = "android")'.dependencies]
-android_logger = { version = "0.13", optional = true }
-
-[target.'cfg(any(target_os = "ios", target_os = "macos"))'.dependencies]
-oslog = { version = "0.1.0", optional = true }
-
 [build-dependencies]
 build-target = "0.4.0"
 
@@ -68,6 +62,8 @@ default = [
     "anyhow",
     "dart-opaque",
     "log",
+    "chrono", 
+    "allo-isolate/chrono",
     "portable-atomic",
     "rust-async",
     "thread-pool",
@@ -79,8 +75,8 @@ chrono = ["dep:chrono", "allo-isolate/chrono"]
 dart-opaque = ["dep:dart-sys"]
 portable-atomic = ["dep:portable-atomic"]
 rust-async = ["dep:tokio", "dep:futures", "dep:wasm-bindgen-futures"]
+user-utils = []
 thread-pool = ["dep:threadpool"]
-user-utils = ["dep:android_logger", "dep:oslog"]
 uuid = ["dep:uuid", "allo-isolate/uuid"]
 wasm-start = ["console_error_panic_hook"]
 
