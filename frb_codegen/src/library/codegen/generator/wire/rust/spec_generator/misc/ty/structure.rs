@@ -26,7 +26,7 @@ impl WireRustGeneratorMiscTrait for StructRefWireRustGenerator<'_> {
             .enumerate()
             .map(|(i, field)| {
                 let field_access = if src.is_fields_named {
-                    field.name.rust_style(true).to_owned()
+                    field.name.rust_style(false).to_owned()
                 } else {
                     i.to_string()
                 };

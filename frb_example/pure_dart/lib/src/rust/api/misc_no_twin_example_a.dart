@@ -146,6 +146,34 @@ abstract class StructWithSimpleSetterTwinNormal implements RustOpaqueInterface {
   set simpleSetter(int value);
 }
 
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<TypeForIgnore>>
+abstract class TypeForIgnore implements RustOpaqueInterface {
+  static Future<TypeForIgnore> default_() =>
+      RustLib.instance.api.crateApiMiscNoTwinExampleATypeForIgnoreDefault();
+
+  Future<int> field1();
+
+  // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
+  static Future<TypeForIgnore> newInstance() =>
+      RustLib.instance.api.crateApiMiscNoTwinExampleATypeForIgnoreNew();
+}
+
+// Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<TypeForIgnoreAll>>
+abstract class TypeForIgnoreAll implements RustOpaqueInterface {
+  int get field2;
+
+  set field2(int field2);
+
+  static Future<TypeForIgnoreAll> default_() =>
+      RustLib.instance.api.crateApiMiscNoTwinExampleATypeForIgnoreAllDefault();
+
+  Future<int> field1();
+
+  // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
+  static Future<TypeForIgnoreAll> newInstance() =>
+      RustLib.instance.api.crateApiMiscNoTwinExampleATypeForIgnoreAllNew();
+}
+
 abstract class Issue2170Trait {
   Future<void> method();
 }
@@ -227,7 +255,7 @@ sealed class MyEnumWithoutFnWithUnignoreTwinNormal
 }
 
 @freezed
-class MyStructWithJsonSerializableTwinNormal
+sealed class MyStructWithJsonSerializableTwinNormal
     with _$MyStructWithJsonSerializableTwinNormal {
   const MyStructWithJsonSerializableTwinNormal._();
   const factory MyStructWithJsonSerializableTwinNormal({
@@ -279,7 +307,7 @@ class MyStructWithoutFnWithUnignoreTwinNormal {
 }
 
 @freezed
-class MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
+sealed class MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
     with _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal {
   const factory MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal({
     required String a,

@@ -98,6 +98,10 @@ impl FrbAttributes {
         self.any_eq(&FrbAttribute::Ignore)
     }
 
+    pub(crate) fn ignore_all(&self) -> bool {
+        self.any_eq(&FrbAttribute::IgnoreAll)
+    }
+
     pub(crate) fn unignore(&self) -> bool {
         self.any_eq(&FrbAttribute::Unignore)
     }
@@ -278,6 +282,7 @@ mod frb_keyword {
     syn::custom_keyword!(setter);
     syn::custom_keyword!(init);
     syn::custom_keyword!(ignore);
+    syn::custom_keyword!(ignore_all);
     syn::custom_keyword!(unignore);
     syn::custom_keyword!(opaque);
     syn::custom_keyword!(non_opaque);
@@ -327,6 +332,7 @@ enum FrbAttribute {
     External,
     Getter,
     Ignore,
+    IgnoreAll,
     Unignore,
     Init,
     Mirror(FrbAttributeMirror),
@@ -381,6 +387,7 @@ impl Parse for FrbAttribute {
             .or_else(|| parse_keyword::<setter, _>(input, &lookahead, setter, Setter))
             .or_else(|| parse_keyword::<init, _>(input, &lookahead, init, Init))
             .or_else(|| parse_keyword::<ignore, _>(input, &lookahead, ignore, Ignore))
+            .or_else(|| parse_keyword::<ignore_all, _>(input, &lookahead, ignore_all, IgnoreAll))
             .or_else(|| parse_keyword::<unignore, _>(input, &lookahead, unignore, Unignore))
             .or_else(|| parse_keyword::<opaque, _>(input, &lookahead, opaque, Opaque))
             .or_else(|| parse_keyword::<non_opaque, _>(input, &lookahead, non_opaque, NonOpaque))
@@ -828,6 +835,11 @@ mod tests {
     #[test]
     fn test_ignore() {
         simple_keyword_tester("ignore", FrbAttribute::Ignore);
+    }
+
+    #[test]
+    fn test_ignore_all() {
+        simple_keyword_tester("ignore_all", FrbAttribute::IgnoreAll);
     }
 
     #[test]

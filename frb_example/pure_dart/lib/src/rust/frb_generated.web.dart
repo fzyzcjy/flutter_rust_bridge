@@ -1183,6 +1183,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       get rust_arc_decrement_strong_count_StructWithSimpleSetterTwinNormalPtr =>
           wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal;
 
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_TypeForIgnorePtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore;
+
+  CrossPlatformFinalizerArg
+      get rust_arc_decrement_strong_count_TypeForIgnoreAllPtr => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll;
+
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_I16Ptr =>
       wire.rust_arc_decrement_strong_count_RustOpaque_i16;
 
@@ -2003,6 +2011,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  TypeForIgnore
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
+          dynamic raw);
+
+  @protected
+  TypeForIgnoreAll
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
+          dynamic raw);
+
+  @protected
   ConstructorOpaqueStructTwinNormal
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
           dynamic raw);
@@ -2235,6 +2253,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithSimpleSetterTwinNormal
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+          dynamic raw);
+
+  @protected
+  TypeForIgnoreAll
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
           dynamic raw);
 
   @protected
@@ -2605,6 +2628,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithSimpleSetterTwinNormal
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+          dynamic raw);
+
+  @protected
+  TypeForIgnore
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
+          dynamic raw);
+
+  @protected
+  TypeForIgnoreAll
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
           dynamic raw);
 
   @protected
@@ -4104,6 +4137,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithSimpleSetterTwinNormal
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+          dynamic raw);
+
+  @protected
+  TypeForIgnore
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
+          dynamic raw);
+
+  @protected
+  TypeForIgnoreAll
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
           dynamic raw);
 
   @protected
@@ -11211,6 +11254,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  TypeForIgnore
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
+          SseDeserializer deserializer);
+
+  @protected
+  TypeForIgnoreAll
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
+          SseDeserializer deserializer);
+
+  @protected
   ConstructorOpaqueStructTwinNormal
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
           SseDeserializer deserializer);
@@ -11443,6 +11496,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithSimpleSetterTwinNormal
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  TypeForIgnoreAll
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
           SseDeserializer deserializer);
 
   @protected
@@ -11813,6 +11871,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithSimpleSetterTwinNormal
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  TypeForIgnore
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
+          SseDeserializer deserializer);
+
+  @protected
+  TypeForIgnoreAll
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
           SseDeserializer deserializer);
 
   @protected
@@ -13312,6 +13380,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithSimpleSetterTwinNormal
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+          SseDeserializer deserializer);
+
+  @protected
+  TypeForIgnore
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
+          SseDeserializer deserializer);
+
+  @protected
+  TypeForIgnoreAll
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
           SseDeserializer deserializer);
 
   @protected
@@ -27428,7 +27506,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   JSAny cst_encode_raw_string_mirrored(RawStringMirrored raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return [cst_encode_String(raw.value)].jsify()!;
+    return [cst_encode_String(raw.value), cst_encode_String(raw.type)].jsify()!;
   }
 
   @protected
@@ -29027,6 +29105,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       StructWithSimpleSetterTwinNormal raw);
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
+      TypeForIgnore raw);
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
+      TypeForIgnoreAll raw);
+
+  @protected
   int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
       ConstructorOpaqueStructTwinNormal raw);
 
@@ -29169,6 +29255,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
       StructWithSimpleSetterTwinNormal raw);
+
+  @protected
+  int cst_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
+      TypeForIgnoreAll raw);
 
   @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
@@ -29381,6 +29471,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
       StructWithSimpleSetterTwinNormal raw);
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
+      TypeForIgnore raw);
+
+  @protected
+  int cst_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
+      TypeForIgnoreAll raw);
 
   @protected
   PlatformPointer
@@ -29936,6 +30034,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
       StructWithSimpleSetterTwinNormal raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
+      TypeForIgnore raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
+      TypeForIgnoreAll raw);
 
   @protected
   int cst_encode_RustOpaque_i16(I16 raw);
@@ -30874,6 +30980,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
+          TypeForIgnore self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
+          TypeForIgnoreAll self, SseSerializer serializer);
+
+  @protected
+  void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstructorOpaqueStructTwinNormal(
           ConstructorOpaqueStructTwinNormal self, SseSerializer serializer);
 
@@ -31118,6 +31234,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
           StructWithSimpleSetterTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
+          TypeForIgnoreAll self, SseSerializer serializer);
 
   @protected
   void
@@ -31500,6 +31621,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
           StructWithSimpleSetterTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
+          TypeForIgnore self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
+          TypeForIgnoreAll self, SseSerializer serializer);
 
   @protected
   void sse_encode_Backtrace(String self, SseSerializer serializer);
@@ -33073,6 +33204,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
           StructWithSimpleSetterTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
+          TypeForIgnore self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
+          TypeForIgnoreAll self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_i16(I16 self, SseSerializer serializer);
@@ -42203,6 +42344,54 @@ class RustLibWire implements BaseWire {
           wasmModule
               .wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_simple_setter(
                   that, value);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__TypeForIgnoreAll_auto_accessor_get_field_2(
+              int that) =>
+          wasmModule
+              .wire__crate__api__misc_no_twin_example_a__TypeForIgnoreAll_auto_accessor_get_field_2(
+                  that);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__TypeForIgnoreAll_auto_accessor_set_field_2(
+              int that, int field_2) =>
+          wasmModule
+              .wire__crate__api__misc_no_twin_example_a__TypeForIgnoreAll_auto_accessor_set_field_2(
+                  that, field_2);
+
+  void wire__crate__api__misc_no_twin_example_a__TypeForIgnoreAll_default(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__misc_no_twin_example_a__TypeForIgnoreAll_default(
+              port_);
+
+  void wire__crate__api__misc_no_twin_example_a__TypeForIgnoreAll_field_1(
+          NativePortType port_, int that) =>
+      wasmModule
+          .wire__crate__api__misc_no_twin_example_a__TypeForIgnoreAll_field_1(
+              port_, that);
+
+  void wire__crate__api__misc_no_twin_example_a__TypeForIgnoreAll_new(
+          NativePortType port_) =>
+      wasmModule.wire__crate__api__misc_no_twin_example_a__TypeForIgnoreAll_new(
+          port_);
+
+  void wire__crate__api__misc_no_twin_example_a__TypeForIgnore_default(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__misc_no_twin_example_a__TypeForIgnore_default(
+              port_);
+
+  void wire__crate__api__misc_no_twin_example_a__TypeForIgnore_field_1(
+          NativePortType port_, int that) =>
+      wasmModule
+          .wire__crate__api__misc_no_twin_example_a__TypeForIgnore_field_1(
+              port_, that);
+
+  void wire__crate__api__misc_no_twin_example_a__TypeForIgnore_new(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__misc_no_twin_example_a__TypeForIgnore_new(port_);
 
   void wire__crate__api__inside_macro__another_macro_struct_twin_normal(
           NativePortType port_) =>
@@ -63342,6 +63531,30 @@ class RustLibWire implements BaseWire {
           .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
               ptr);
 
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
+          int ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
+          int ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
+              ptr);
+
+  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
+          int ptr) =>
+      wasmModule
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
+              ptr);
+
+  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
+          int ptr) =>
+      wasmModule
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
+              ptr);
+
   void rust_arc_increment_strong_count_RustOpaque_i16(int ptr) =>
       wasmModule.rust_arc_increment_strong_count_RustOpaque_i16(ptr);
 
@@ -65002,6 +65215,34 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__StructWithSimpleSetterTwinNormal_simple_setter(
           int that, int value);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__TypeForIgnoreAll_auto_accessor_get_field_2(
+          int that);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__misc_no_twin_example_a__TypeForIgnoreAll_auto_accessor_set_field_2(
+          int that, int field_2);
+
+  external void
+      wire__crate__api__misc_no_twin_example_a__TypeForIgnoreAll_default(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__misc_no_twin_example_a__TypeForIgnoreAll_field_1(
+          NativePortType port_, int that);
+
+  external void wire__crate__api__misc_no_twin_example_a__TypeForIgnoreAll_new(
+      NativePortType port_);
+
+  external void wire__crate__api__misc_no_twin_example_a__TypeForIgnore_default(
+      NativePortType port_);
+
+  external void wire__crate__api__misc_no_twin_example_a__TypeForIgnore_field_1(
+      NativePortType port_, int that);
+
+  external void wire__crate__api__misc_no_twin_example_a__TypeForIgnore_new(
+      NativePortType port_);
 
   external void
       wire__crate__api__inside_macro__another_macro_struct_twin_normal(
@@ -79652,6 +79893,22 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStructWithSimpleSetterTwinNormal(
+          int ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
+          int ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnore(
+          int ptr);
+
+  external void
+      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
+          int ptr);
+
+  external void
+      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerTypeForIgnoreAll(
           int ptr);
 
   external void rust_arc_increment_strong_count_RustOpaque_i16(int ptr);

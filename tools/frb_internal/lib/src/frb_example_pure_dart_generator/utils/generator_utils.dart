@@ -60,7 +60,7 @@ enum DuplicatorComponentMode {
 }
 
 @freezed
-class DuplicatorMode with _$DuplicatorMode {
+sealed class DuplicatorMode with _$DuplicatorMode {
   const factory DuplicatorMode(List<DuplicatorComponentMode> components) =
       _DuplicatorMode;
 

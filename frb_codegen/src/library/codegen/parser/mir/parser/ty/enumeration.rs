@@ -143,6 +143,7 @@ impl TypeParserWithContext<'_, '_, '_> {
                         default: FrbAttributes::parse(&field.attrs)?.default_value(),
                         settings: MirFieldSettings {
                             is_in_mirrored_enum: src_enum.mirror,
+                            ..Default::default()
                         },
                     })
                 })
