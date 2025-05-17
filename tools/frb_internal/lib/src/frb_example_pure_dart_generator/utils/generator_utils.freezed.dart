@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,81 +10,67 @@ part of 'generator_utils.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$DuplicatorMode {
-  List<DuplicatorComponentMode> get components =>
-      throw _privateConstructorUsedError;
+  List<DuplicatorComponentMode> get components;
 
-  @JsonKey(ignore: true)
-  $DuplicatorModeCopyWith<DuplicatorMode> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $DuplicatorModeCopyWith<$Res> {
-  factory $DuplicatorModeCopyWith(
-          DuplicatorMode value, $Res Function(DuplicatorMode) then) =
-      _$DuplicatorModeCopyWithImpl<$Res, DuplicatorMode>;
-  @useResult
-  $Res call({List<DuplicatorComponentMode> components});
-}
-
-/// @nodoc
-class _$DuplicatorModeCopyWithImpl<$Res, $Val extends DuplicatorMode>
-    implements $DuplicatorModeCopyWith<$Res> {
-  _$DuplicatorModeCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of DuplicatorMode
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $DuplicatorModeCopyWith<DuplicatorMode> get copyWith =>
+      _$DuplicatorModeCopyWithImpl<DuplicatorMode>(
+          this as DuplicatorMode, _$identity);
+
   @override
-  $Res call({
-    Object? components = null,
-  }) {
-    return _then(_value.copyWith(
-      components: null == components
-          ? _value.components
-          : components // ignore: cast_nullable_to_non_nullable
-              as List<DuplicatorComponentMode>,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is DuplicatorMode &&
+            const DeepCollectionEquality()
+                .equals(other.components, components));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(components));
+
+  @override
+  String toString() {
+    return 'DuplicatorMode(components: $components)';
   }
 }
 
 /// @nodoc
-abstract class _$$DuplicatorModeImplCopyWith<$Res>
-    implements $DuplicatorModeCopyWith<$Res> {
-  factory _$$DuplicatorModeImplCopyWith(_$DuplicatorModeImpl value,
-          $Res Function(_$DuplicatorModeImpl) then) =
-      __$$DuplicatorModeImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $DuplicatorModeCopyWith<$Res> {
+  factory $DuplicatorModeCopyWith(
+          DuplicatorMode value, $Res Function(DuplicatorMode) _then) =
+      _$DuplicatorModeCopyWithImpl;
   @useResult
   $Res call({List<DuplicatorComponentMode> components});
 }
 
 /// @nodoc
-class __$$DuplicatorModeImplCopyWithImpl<$Res>
-    extends _$DuplicatorModeCopyWithImpl<$Res, _$DuplicatorModeImpl>
-    implements _$$DuplicatorModeImplCopyWith<$Res> {
-  __$$DuplicatorModeImplCopyWithImpl(
-      _$DuplicatorModeImpl _value, $Res Function(_$DuplicatorModeImpl) _then)
-      : super(_value, _then);
+class _$DuplicatorModeCopyWithImpl<$Res>
+    implements $DuplicatorModeCopyWith<$Res> {
+  _$DuplicatorModeCopyWithImpl(this._self, this._then);
 
+  final DuplicatorMode _self;
+  final $Res Function(DuplicatorMode) _then;
+
+  /// Create a copy of DuplicatorMode
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? components = null,
   }) {
-    return _then(_$DuplicatorModeImpl(
-      null == components
-          ? _value._components
+    return _then(_self.copyWith(
+      components: null == components
+          ? _self.components
           : components // ignore: cast_nullable_to_non_nullable
               as List<DuplicatorComponentMode>,
     ));
@@ -92,8 +79,8 @@ class __$$DuplicatorModeImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DuplicatorModeImpl extends _DuplicatorMode {
-  const _$DuplicatorModeImpl(final List<DuplicatorComponentMode> components)
+class _DuplicatorMode extends DuplicatorMode {
+  const _DuplicatorMode(final List<DuplicatorComponentMode> components)
       : _components = components,
         super._();
 
@@ -105,16 +92,19 @@ class _$DuplicatorModeImpl extends _DuplicatorMode {
     return EqualUnmodifiableListView(_components);
   }
 
+  /// Create a copy of DuplicatorMode
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'DuplicatorMode(components: $components)';
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$DuplicatorModeCopyWith<_DuplicatorMode> get copyWith =>
+      __$DuplicatorModeCopyWithImpl<_DuplicatorMode>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DuplicatorModeImpl &&
+            other is _DuplicatorMode &&
             const DeepCollectionEquality()
                 .equals(other._components, _components));
   }
@@ -123,23 +113,45 @@ class _$DuplicatorModeImpl extends _DuplicatorMode {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_components));
 
-  @JsonKey(ignore: true)
+  @override
+  String toString() {
+    return 'DuplicatorMode(components: $components)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$DuplicatorModeCopyWith<$Res>
+    implements $DuplicatorModeCopyWith<$Res> {
+  factory _$DuplicatorModeCopyWith(
+          _DuplicatorMode value, $Res Function(_DuplicatorMode) _then) =
+      __$DuplicatorModeCopyWithImpl;
+  @override
+  @useResult
+  $Res call({List<DuplicatorComponentMode> components});
+}
+
+/// @nodoc
+class __$DuplicatorModeCopyWithImpl<$Res>
+    implements _$DuplicatorModeCopyWith<$Res> {
+  __$DuplicatorModeCopyWithImpl(this._self, this._then);
+
+  final _DuplicatorMode _self;
+  final $Res Function(_DuplicatorMode) _then;
+
+  /// Create a copy of DuplicatorMode
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  _$$DuplicatorModeImplCopyWith<_$DuplicatorModeImpl> get copyWith =>
-      __$$DuplicatorModeImplCopyWithImpl<_$DuplicatorModeImpl>(
-          this, _$identity);
+  $Res call({
+    Object? components = null,
+  }) {
+    return _then(_DuplicatorMode(
+      null == components
+          ? _self._components
+          : components // ignore: cast_nullable_to_non_nullable
+              as List<DuplicatorComponentMode>,
+    ));
+  }
 }
 
-abstract class _DuplicatorMode extends DuplicatorMode {
-  const factory _DuplicatorMode(
-      final List<DuplicatorComponentMode> components) = _$DuplicatorModeImpl;
-  const _DuplicatorMode._() : super._();
-
-  @override
-  List<DuplicatorComponentMode> get components;
-  @override
-  @JsonKey(ignore: true)
-  _$$DuplicatorModeImplCopyWith<_$DuplicatorModeImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on
