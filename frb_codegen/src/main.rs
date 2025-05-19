@@ -85,9 +85,6 @@ mod tests {
     // we do not care about coverage of test themselves
     // frb-coverage:ignore-start
     fn body_execute_generate(name: &str) -> anyhow::Result<()> {
-        // if want verbose log, enable it
-        // configure_opinionated_test_logging();
-
         if env::var("FRB_SKIP_GENERATE_FRB_EXAMPLE_TEST").unwrap_or_default() == "1" {
             return Ok(());
         }

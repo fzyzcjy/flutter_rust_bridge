@@ -512,6 +512,7 @@ name = "REPLACE_ME_RUST_CRATE_NAME"
 version = "0.1.0"
 dependencies = [
  "flutter_rust_bridge",
+ "log",
 ]
 
 [[package]]
