@@ -4,22 +4,20 @@ use crate::misc::panic_backtrace::PanicBacktrace;
 /// Surely, you are free to customize everything.
 pub fn setup_default_user_utils() {
     // setup log before others, such that we can see logs in other setup functions
-    // TODO check if this is needed for web logging
-    // setup_backtrace();
+    setup_backtrace();
 }
 
-// TODO check if this is needed for web logging
-// fn setup_backtrace() {
-//     #[cfg(not(target_family = "wasm"))]
-//     if std::env::var("RUST_BACKTRACE").err() == Some(std::env::VarError::NotPresent) {
-//         std::env::set_var("RUST_BACKTRACE", "1");
-//     } else {
-//         #[cfg(feature = "log")]
-//         log::debug!("Skip setup RUST_BACKTRACE because there is already environment variable");
-//     }
+fn setup_backtrace() {
+    #[cfg(not(target_family = "wasm"))]
+    if std::env::var("RUST_BACKTRACE").err() == Some(std::env::VarError::NotPresent) {
+        std::env::set_var("RUST_BACKTRACE", "1");
+    } else {
+        #[cfg(feature = "log")]
+        log::debug!("Skip setup RUST_BACKTRACE because there is already environment variable");
+    }
 
-//     PanicBacktrace::setup();
-// }
+    PanicBacktrace::setup();
+}
 
 // TODO: check if web logging requires this setup
 // #[cfg(feature = "log")]
