@@ -9,7 +9,7 @@ crate-type = ["cdylib"]
 [dependencies]
 flutter_rust_bridge = { path = "../../../frb_rust" }
 
-log = "^0.4.27"
+log = "^0.4.20"
 
 [lints.rust] # Optional - can be removed if you do not wa
 unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }
