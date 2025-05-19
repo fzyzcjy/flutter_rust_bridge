@@ -1,4 +1,6 @@
-use flutter_rust_bridge::frb;
+use flutter_rust_bridge::*;
+
+enable_frb_logging!();
 
 #[frb(init)]
 pub fn init_app() {
@@ -6,5 +8,6 @@ pub fn init_app() {
 }
 
 pub fn minimal_adder(a: i32, b: i32) -> i32 {
+    log::info!("adding {} and {}", a, b);
     a + b
 }
