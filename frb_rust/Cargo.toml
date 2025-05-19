@@ -76,6 +76,7 @@ default = [
     "wasm-start",
 ]
 backtrace = ["dep:backtrace", "allo-isolate/backtrace"]
+log = ["dep:log", "dep:chrono"]
 chrono = ["dep:chrono", "allo-isolate/chrono"]
 dart-opaque = ["dep:dart-sys"]
 portable-atomic = ["dep:portable-atomic"]
