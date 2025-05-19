@@ -19,10 +19,11 @@ fn setup_backtrace() {
     PanicBacktrace::setup();
 }
 
-#[cfg(feature = "log")]
-fn setup_log_to_console() {
-    #[cfg(target_family = "wasm")]
-    let _ = crate::misc::web_utils::WebConsoleLogger::init();
+// TODO: check if web logging requires this setup
+// #[cfg(feature = "log")]
+// fn setup_log_to_console() {
+//     #[cfg(target_family = "wasm")]
+//     let _ = crate::misc::web_utils::WebConsoleLogger::init();
 
-    // TODO add more platforms
-}
+//     // TODO add more platforms
+// }
