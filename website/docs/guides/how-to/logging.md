@@ -13,7 +13,7 @@ Log messages are sent via a FRB's Stream implementation from Rust to Dart.
 
 ## Setup
 
-First you need to add a dependency on the logging crate in your Cargo.toml file with `cargo add log` or by putting `log = "^0.4.27"` in your Cargo.toml file under the `[dependencies]` section.
+First you need to add a dependency on the logging crate in your Cargo.toml file with `cargo add log` or by putting `log = "^0.4.20"` in your Cargo.toml file under the `[dependencies]` section.
 Additionally you need to add a dependency to the `chrono` crate in the same way (.e.g. `cargo add chrono` or by putting `chrono = "0.4.23"` in your Cargo.toml file under the `[dependencies]` section).
 
 If you start with a new project (`flutter_rust_bridge_codegen create` instead of `flutter_rust_bridge_codegen generate`) these dependencies are already added for you.
@@ -196,4 +196,4 @@ Running `(...)/target/debug/flutter_rust_bridge_codegen generate`
 thread 'main' panicked at (...)/.cargo/registry/src/index.crates.io-6f17d22bba15001f/syn-2.0.28/src/lit.rs:1095:13:
 Unrecognized literal: `(/*ERROR*/)`
 ```
-the code in the `enable_frb_logging!();` macro has not been expanded correctly - most probably you forgot to add the dependency to `log = "^0.4.27"` in your Cargo.toml file or you passed a syntactically incorrect custom function to the macro.
+the code in the `enable_frb_logging!();` macro has not been expanded correctly - most probably you forgot to add the dependency to `log = "^0.4.20"` in your Cargo.toml file or you passed a syntactically incorrect custom function to the macro.

@@ -18,7 +18,7 @@ delegate-attr = "0.3.0"
 flutter_rust_bridge_macros = { workspace = true }
 futures = { version = "0.3.29", optional = true }
 lazy_static = { workspace = true }
-log = { version = "0.4.27", optional = true, features = ["std"] }
+log = { version = "0.4.20", optional = true, features = ["std"] }
 portable-atomic = { version = "1.8.0", optional = true }
 uuid = { workspace = true, optional = true }
 
