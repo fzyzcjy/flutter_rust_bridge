@@ -15,3 +15,8 @@ frb_example/my_app
 
 # FVM Version Cache
 .fvm/
+
+# Dart & Pub related
+.dart_tool/
+/pubspec.lock
+pubspec_overrides.yaml
