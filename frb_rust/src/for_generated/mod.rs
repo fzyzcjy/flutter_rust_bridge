@@ -5,7 +5,7 @@ mod boilerplate;
 mod boilerplate_io;
 mod boilerplate_web;
 mod cast;
-#[cfg(feature = "rust-async")]
+#[cfg(feature = "dart-opaque")]
 mod misc_rust_async;
 mod pointer;
 
@@ -33,7 +33,6 @@ pub use crate::lifetimeable::lifetime_changer::{
     ouroboros_change_lifetime, ouroboros_change_lifetime_mut,
 };
 pub use crate::lifetimeable::{dependency::LifetimeableDependency, Lifetimeable};
-#[cfg(feature = "rust-async")]
 pub use crate::lockable::{
     base::Lockable, order::LockableOrder, order_computer::lockable_compute_decode_order,
     order_info::LockableOrderInfo,
@@ -52,13 +51,11 @@ pub use crate::rust_async;
 pub use crate::rust_async::{BaseAsyncRuntime, SimpleAsyncRuntime};
 #[cfg(feature = "rust-async")]
 pub use crate::rust_auto_opaque::dart2rust_explicit::rust_auto_opaque_explicit_decode;
-#[cfg(feature = "rust-async")]
 pub use crate::rust_auto_opaque::dart2rust_implicit::{
     rust_auto_opaque_decode_owned, rust_auto_opaque_encode, rust_auto_opaque_lockable_order,
 };
 #[cfg(feature = "rust-async")]
 pub use crate::rust_auto_opaque::rust2dart_explicit::rust_auto_opaque_explicit_encode;
-#[cfg(feature = "rust-async")]
 pub use crate::rust_auto_opaque::{inner::RustAutoOpaqueInner, RustAutoOpaqueBase};
 pub use crate::rust_opaque::{dart2rust::decode_rust_opaque_nom, RustOpaqueBase};
 pub use crate::stream::stream_sink::StreamSinkBase;
@@ -75,7 +72,7 @@ pub use futures;
 #[cfg(target_family = "wasm")]
 pub use js_sys;
 pub use lazy_static::lazy_static;
-#[cfg(feature = "rust-async")]
+#[cfg(feature = "dart-opaque")]
 pub use misc_rust_async::*;
 pub use pointer::*;
 #[cfg(target_family = "wasm")]
