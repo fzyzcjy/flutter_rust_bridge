@@ -10,7 +10,6 @@ dependencies:
     path: ../../frb_dart
   flutter_rust_bridge_utils:
     path: ../../frb_utils
-  logging: ^1.3.0
   freezed_annotation: ^3.0.0
   json_annotation: ^4.9.0
 dev_dependencies:
