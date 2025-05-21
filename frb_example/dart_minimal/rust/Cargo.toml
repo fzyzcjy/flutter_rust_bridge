@@ -8,6 +8,7 @@ crate-type = ["cdylib"]
 
 [dependencies]
 flutter_rust_bridge = { path = "../../../frb_rust" }
+# Optional - can be removed if you do not want logging
 log = "^0.4.20"
 
 [lints.rust]
