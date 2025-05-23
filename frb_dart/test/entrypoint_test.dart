@@ -1,4 +1,5 @@
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_common.dart';
+import 'package:flutter_rust_bridge/src/consts.dart' show kIsWeb;
 import 'package:test/test.dart';
 
 void main() {
@@ -28,7 +29,7 @@ void main() {
       entrypoint.initImpl(api: _FakeApi(), forceSameCodegenVersion: false),
       throwsA(isA<ArgumentError>()),
     );
-  });
+  }, skip: kIsWeb);
 }
 
 class _FakeBaseEntrypointWithCodegenVersion extends _FakeBaseEntrypoint {
