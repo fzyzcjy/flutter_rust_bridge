@@ -1,7 +1,4 @@
-import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart'
-    show ExternalLibrary;
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_common.dart';
-import 'package:flutter_rust_bridge/src/consts.dart' show kIsWeb;
 import 'package:test/test.dart';
 
 void main() {
@@ -18,32 +15,20 @@ void main() {
   test('Codegen version check', () {
     final entrypoint = _FakeBaseEntrypointWithCodegenVersion('2.0.0');
 
-    ExternalLibrary getExternalLibrary() {
-      return ExternalLibrary.process(iKnowHowToUseIt: true);
-    }
-
     // Version does not match, will throw a [StateError].
     expectLater(
       // ignore: invalid_use_of_protected_member
-      entrypoint.initImpl(
-        api: _FakeApi(),
-        externalLibrary: getExternalLibrary(),
-        forceSameCodegenVersion: true,
-      ),
+      entrypoint.initImpl(api: _FakeApi(), forceSameCodegenVersion: true),
       throwsA(isA<StateError>()),
     );
 
     // Version matched but the stem is fake, will throw an [ArgumentError].
     expectLater(
       // ignore: invalid_use_of_protected_member
-      entrypoint.initImpl(
-        api: _FakeApi(),
-        externalLibrary: getExternalLibrary(),
-        forceSameCodegenVersion: false,
-      ),
+      entrypoint.initImpl(api: _FakeApi(), forceSameCodegenVersion: false),
       throwsA(isA<ArgumentError>()),
     );
-  }, skip: kIsWeb);
+  });
 }
 
 class _FakeBaseEntrypointWithCodegenVersion extends _FakeBaseEntrypoint {
@@ -56,8 +41,8 @@ class _FakeBaseEntrypointWithCodegenVersion extends _FakeBaseEntrypoint {
   ExternalLibraryLoaderConfig get defaultExternalLibraryLoaderConfig =>
       const ExternalLibraryLoaderConfig(
         stem: 'fake_codegen_version',
-        ioDirectory: null,
-        webPrefix: null,
+        ioDirectory: 'fake_dir',
+        webPrefix: 'fake',
       );
 }
 
