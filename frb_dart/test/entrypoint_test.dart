@@ -1,3 +1,5 @@
+import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart'
+    show ExternalLibrary;
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_common.dart';
 import 'package:test/test.dart';
 
@@ -15,17 +17,29 @@ void main() {
   test('Codegen version check', () {
     final entrypoint = _FakeBaseEntrypointWithCodegenVersion('2.0.0');
 
+    ExternalLibrary getExternalLibrary() {
+      return ExternalLibrary.process(iKnowHowToUseIt: true);
+    }
+
     // Version does not match, will throw a [StateError].
     expectLater(
       // ignore: invalid_use_of_protected_member
-      entrypoint.initImpl(api: _FakeApi(), forceSameCodegenVersion: true),
+      entrypoint.initImpl(
+        api: _FakeApi(),
+        externalLibrary: getExternalLibrary(),
+        forceSameCodegenVersion: true,
+      ),
       throwsA(isA<StateError>()),
     );
 
     // Version matched but the stem is fake, will throw an [ArgumentError].
     expectLater(
       // ignore: invalid_use_of_protected_member
-      entrypoint.initImpl(api: _FakeApi(), forceSameCodegenVersion: false),
+      entrypoint.initImpl(
+        api: _FakeApi(),
+        externalLibrary: getExternalLibrary(),
+        forceSameCodegenVersion: false,
+      ),
       throwsA(isA<ArgumentError>()),
     );
   });
@@ -66,7 +80,7 @@ class _FakeBaseEntrypoint extends BaseEntrypoint {
 
   @override
   get wireConstructor => throw UnimplementedError();
-  // frb-coverage:ignore-end
+// frb-coverage:ignore-end
 }
 
 class _FakeApi implements BaseApi {}
