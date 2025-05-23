@@ -1,0 +1,7 @@
+include: package:lints/recommended.yaml
+
+analyzer:
+  exclude:
+    - 'frb_codegen/assets/integration_template/**.dart'
+    - 'frb_codegen/test_fixtures/**.dart'
+    - 'frb_example/**/cargokit/build_tool/**.dart'
