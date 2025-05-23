@@ -11,6 +11,39 @@ void main() {
     expect(entrypoint.initialized, true);
     expect(entrypoint.api, isA<_FakeApi>());
   });
+
+  test('Codegen version check', () {
+    final entrypoint = _FakeBaseEntrypointWithCodegenVersion('2.0.0');
+
+    // Version does not match, will throw a [StateError].
+    expectLater(
+      // ignore: invalid_use_of_protected_member
+      entrypoint.initImpl(api: _FakeApi(), forceSameCodegenVersion: true),
+      throwsA(isA<StateError>()),
+    );
+
+    // Version matched but the stem is fake, will throw an [ArgumentError].
+    expectLater(
+      // ignore: invalid_use_of_protected_member
+      entrypoint.initImpl(api: _FakeApi(), forceSameCodegenVersion: false),
+      throwsA(isA<ArgumentError>()),
+    );
+  });
+}
+
+class _FakeBaseEntrypointWithCodegenVersion extends _FakeBaseEntrypoint {
+  _FakeBaseEntrypointWithCodegenVersion(this.codegenVersion);
+
+  @override
+  final String codegenVersion;
+
+  @override
+  ExternalLibraryLoaderConfig get defaultExternalLibraryLoaderConfig =>
+      const ExternalLibraryLoaderConfig(
+        stem: 'fake_codegen_version',
+        ioDirectory: null,
+        webPrefix: null,
+      );
 }
 
 class _FakeBaseEntrypoint extends BaseEntrypoint {
