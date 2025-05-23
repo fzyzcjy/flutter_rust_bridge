@@ -1,6 +1,7 @@
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart'
     show ExternalLibrary;
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_common.dart';
+import 'package:flutter_rust_bridge/src/consts.dart' show kIsWeb;
 import 'package:test/test.dart';
 
 void main() {
@@ -42,7 +43,7 @@ void main() {
       ),
       throwsA(isA<ArgumentError>()),
     );
-  });
+  }, skip: kIsWeb);
 }
 
 class _FakeBaseEntrypointWithCodegenVersion extends _FakeBaseEntrypoint {
