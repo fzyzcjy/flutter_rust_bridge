@@ -38,12 +38,13 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
     A? api,
     BaseHandler? handler,
     ExternalLibrary? externalLibrary,
+    bool forceSameCodegenVersion = true,
   }) async {
     if (__state != null) {
       throw StateError('Should not initialize flutter_rust_bridge twice');
     }
 
-    _sanityCheckCodegenVersion();
+    _sanityCheckCodegenVersion(forceSameCodegenVersion);
 
     externalLibrary ??= await _loadDefaultExternalLibrary();
     handler ??= BaseHandler();
@@ -91,12 +92,26 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
     __state = null;
   }
 
-  void _sanityCheckCodegenVersion() {
-    if (codegenVersion != kFlutterRustBridgeRuntimeVersion) {
+  void _sanityCheckCodegenVersion(bool forceSameCodegenVersion) {
+    if (codegenVersion == kFlutterRustBridgeRuntimeVersion) {
+      return;
+    }
+    final stem = defaultExternalLibraryLoaderConfig.stem;
+    if (forceSameCodegenVersion) {
       throw StateError(
-        "flutter_rust_bridge's codegen version ($codegenVersion) should be the same as runtime version ($kFlutterRustBridgeRuntimeVersion). "
+        "$stem's codegen version ($codegenVersion) should be "
+        "the same as runtime version ($kFlutterRustBridgeRuntimeVersion). "
         "See https://cjycode.com/flutter_rust_bridge/guides/miscellaneous/upgrade/regular for details.",
       );
+    } else {
+      assert(() {
+        // ignore: avoid_print
+        print(
+          "Bypassing mismatched $stem's codegen version: "
+          "$codegenVersion vs $kFlutterRustBridgeRuntimeVersion",
+        );
+        return true;
+      }());
     }
   }
 
