@@ -50,11 +50,10 @@ jobs:
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
           components: rustfmt
-      - uses: subosito/flutter-action@v2
+      - uses: flutter-actions/setup-flutter@v4
         with:
           cache: true
-          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
-          architecture: x64
+          version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
       - if: matrix.codegen_install_mode == 'cargo-binstall'
         uses: cargo-bins/cargo-binstall@main
       - if: runner.os == 'Windows' && matrix.codegen_install_mode == 'scoop'
