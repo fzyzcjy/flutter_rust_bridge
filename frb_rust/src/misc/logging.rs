@@ -51,6 +51,20 @@ macro_rules! enable_frb_logging {
       ($log_fn(record));
     }
 
+        // TODO  fix import of StreamSync
+    // with rust_gen_target?
+    // ==> can we get that without generating code?
+    // generate code instead of Macro, macro just calls generated code
+    //
+    // doesn't work:
+    // with     use super::super::frb_generated::StreamSink;?
+    // ===> this depends on the nested deepness of the file which is calling enable_log...
+    // with instructions to put it in lob.rs?
+    // ==> this would require to put lib.rs as an input for code generation!
+    // use crate::application::bridge::frb_generated::StreamSink;
+    // use super::super::frb_generated::StreamSink;
+    // use $crate::frb_generated::StreamSink;
+        // use frb_generated::StreamSink;
     use flutter_rust_bridge::frb;
 
     #[flutter_rust_bridge::frb(dart_code = "
@@ -171,7 +185,7 @@ macro_rules! enable_frb_logging {
     ")]
     pub struct FRBLogger {
       #[allow(clippy::crate_in_macro_def)]
-      pub stream_sink: crate::frb_generated::StreamSink<Log2DartLogRecord>,
+      pub stream_sink: StreamSink<Log2DartLogRecord>,
     }
 
     impl FRBLogger {
@@ -180,10 +194,10 @@ macro_rules! enable_frb_logging {
         panic!("Initialize with `final LOGGER = FRBLogger.getLogger();` or `final LOGGER = FRBLogger.initLogger();`");
       }
     }
-    /// usees custom type translation to translate between log::LogLevel and Dart:logging::Level
+    /// uses custom type translation to translate between log::LogLevel and Dart:logging::Level
     /// loglevel is represented by a number, so that we don't need to put \import `import 'package:logging/logging.dart';`
     /// into the dart preamble in flutter_rust_bridge.yaml
-    pub fn initialize_log_2_dart(log_stream: crate::frb_generated::StreamSink<Log2DartLogRecord>, max_log_level: u16) {
+    pub fn initialize_log_2_dart(log_stream: StreamSink<Log2DartLogRecord>, max_log_level: u16) {
       log::set_boxed_logger(Box::new(FRBLogger {
         stream_sink: log_stream,
       }))

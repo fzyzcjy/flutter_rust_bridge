@@ -18,7 +18,7 @@ String maxLogLevel() => RustLib.instance.api.crateApiMinimalMaxLogLevel();
 void logFn({required Log2DartLogRecord record}) =>
     RustLib.instance.api.crateApiMinimalLogFn(record: record);
 
-/// usees custom type translation to translate between log::LogLevel and Dart:logging::Level
+/// uses custom type translation to translate between log::LogLevel and Dart:logging::Level
 /// loglevel is represented by a number, so that we don't need to put \import `import 'package:logging/logging.dart';`
 /// into the dart preamble in flutter_rust_bridge.yaml
 Stream<Log2DartLogRecord> initializeLog2Dart({required int maxLogLevel}) =>
