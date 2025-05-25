@@ -51,6 +51,8 @@ macro_rules! enable_frb_logging {
       ($log_fn(record));
     }
 
+    use flutter_rust_bridge::frb;
+
     #[flutter_rust_bridge::frb(dart_code = "
       import 'dart:io';
 

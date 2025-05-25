@@ -1,4 +1,4 @@
-use flutter_rust_bridge::*;
+use flutter_rust_bridge::enable_frb_logging;
 
 enable_frb_logging!();
 
