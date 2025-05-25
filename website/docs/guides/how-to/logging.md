@@ -14,12 +14,10 @@ Log messages are sent via a FRB's Stream implementation from Rust to Dart.
 ## Setup
 
 First you need to add a dependency on the logging crate in your Cargo.toml file with `cargo add log` or by putting `log = "^0.4.20"` in your Cargo.toml file under the `[dependencies]` section.
-Additionally you need to add a dependency to the `chrono` crate in the same way (.e.g. `cargo add chrono` or by putting `chrono = "0.4.23"` in your Cargo.toml file under the `[dependencies]` section).
-
-If you start with a new project (`flutter_rust_bridge_codegen create` instead of `flutter_rust_bridge_codegen generate`) these dependencies are already added for you.
+If you start with a new project (`flutter_rust_bridge_codegen create` instead of `flutter_rust_bridge_codegen generate`) this dependency is already added for you.
 
 Next, add the macro call `enable_frb_logging!();` in a **Rust** file that is part of your `rust_input` of your `flutter_rust_bridge.yaml` configuration, at any place outside of an item (e.g. function or struct). 
-Your need to make it available via `use flutter_rust_bridge::enable_frb_logging;` or `use flutter_rust_bridge::*;`.
+Your need to make it available via `use flutter_rust_bridge::enable_frb_logging;`.
 
 It needs to be there so the code generation is picking it up and generates the needed bridge code for connecting Rust and Dart for logging.
 
