@@ -43,7 +43,7 @@ pub(super) fn polish(
     // Even if formatting generated code fails, it is not a big problem, and our codegen should not fail.
     if config.dart_format {
         warn_if_fail(
-            execute_dart_format(config, output_paths, progress_bar_pack),
+            execute_dart_format(config, progress_bar_pack),
             "execute_dart_format",
         );
     }
@@ -144,13 +144,11 @@ fn execute_dart_fix(
 
 fn execute_dart_format(
     config: &PolisherInternalConfig,
-    output_paths: &[PathBuf],
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<()> {
     let _pb = progress_bar_pack.polish_dart_formatter.start();
     dart_format(
-        &filter_paths_by_extension(output_paths, "dart"),
-        &config.dart_root,
+        &config.dart_output,
         config.dart_format_line_length,
         &["g.dart", "freezed.dart"],
     )
