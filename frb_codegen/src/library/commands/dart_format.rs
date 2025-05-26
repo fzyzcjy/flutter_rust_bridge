@@ -11,7 +11,7 @@ pub fn dart_format(
     base_path: &Path,
     line_length: u32,
     extra_extensions: &[&str],
-) -> anyhow::Result<()> {
+) -> Result<()> {
     debug!("execute dart_format base_path={base_path:?} line_length={line_length}");
 
     let res = command_run!(
