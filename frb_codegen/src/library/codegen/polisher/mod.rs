@@ -147,11 +147,7 @@ fn execute_dart_format(
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<()> {
     let _pb = progress_bar_pack.polish_dart_formatter.start();
-    dart_format(
-        &config.dart_output,
-        config.dart_format_line_length,
-        &["g.dart", "freezed.dart"],
-    )
+    dart_format(&config.dart_output, config.dart_format_line_length)
 }
 
 fn execute_rust_format(
