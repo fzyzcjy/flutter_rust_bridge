@@ -7,11 +7,7 @@ use log::debug;
 use std::path::Path;
 
 #[allow(clippy::vec_init_then_push)]
-pub fn dart_format(
-    base_path: &Path,
-    line_length: u32,
-    extra_extensions: &[&str],
-) -> Result<()> {
+pub fn dart_format(base_path: &Path, line_length: u32, extra_extensions: &[&str]) -> Result<()> {
     debug!("execute dart_format base_path={base_path:?} line_length={line_length}");
 
     let res = command_run!(
