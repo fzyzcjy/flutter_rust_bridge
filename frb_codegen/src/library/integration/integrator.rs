@@ -80,7 +80,7 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     dart_fix(&dart_root)?;
 
     info!("Format Dart code");
-    dart_format(&[dart_root.clone()], &dart_root, 80, &[])?;
+    dart_format(&dart_root, 80, &[])?;
 
     Ok(())
 }
