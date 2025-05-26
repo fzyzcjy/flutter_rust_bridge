@@ -96,7 +96,7 @@ To do so, in your **Dart** code, call
 ```Dart
 FRBLogger.initLogger(customLogFunction: (Log2DartLogRecord record) => {print("This is ${record.level}! ${record.message}")});
 ``` 
-and in your **Rust** code call:
+or in your **Rust** code call:
 ```Rust
 enable_frb_logging!(
   customLogFunction = (|record: Log2DartLogRecord| {
