@@ -51,20 +51,6 @@ macro_rules! enable_frb_logging {
       ($log_fn(record));
     }
 
-        // TODO  fix import of StreamSync
-    // with rust_gen_target?
-    // ==> can we get that without generating code?
-    // generate code instead of Macro, macro just calls generated code
-    //
-    // doesn't work:
-    // with     use super::super::frb_generated::StreamSink;?
-    // ===> this depends on the nested deepness of the file which is calling enable_log...
-    // with instructions to put it in lob.rs?
-    // ==> this would require to put lib.rs as an input for code generation!
-    // use crate::application::bridge::frb_generated::StreamSink;
-    // use super::super::frb_generated::StreamSink;
-    // use $crate::frb_generated::StreamSink;
-        // use frb_generated::StreamSink;
     use flutter_rust_bridge::frb;
     use crate::__FrbStreamSinkForLogging as StreamSink;
 
