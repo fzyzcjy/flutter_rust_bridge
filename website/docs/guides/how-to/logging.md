@@ -16,7 +16,18 @@ Log messages are sent via a FRB's Stream implementation from Rust to Dart.
 First you need to add a dependency on the logging crate in your Cargo.toml file with `cargo add log` or by putting `log = "^0.4.20"` in your Cargo.toml file under the `[dependencies]` section.
 If you start with a new project (`flutter_rust_bridge_codegen create` instead of `flutter_rust_bridge_codegen generate`) this dependency is already added for you.
 
-Next, add the macro call `enable_frb_logging!();` in a **Rust** file that is part of your `rust_input` of your `flutter_rust_bridge.yaml` configuration, at any place outside of an item (e.g. function or struct). 
+Next, you need to expose a generated `StreamSink` so the logging code can find it. 
+For this enter
+```
+// this export is needed for logging
+pub use crate::frb_generated::StreamSink as __FrbStreamSinkForLogging;
+```
+into your project's `lib.rs`.
+
+If you have not disabled automatically configuring your `lib.rs` in your `flutter_rust_bridge.yaml` (with `add_mod_to_lib: false`) these lines are added for you. 
+
+
+Then add the macro call `enable_frb_logging!();` in a **Rust** file that is part of your `rust_input` of your `flutter_rust_bridge.yaml` configuration, at any place outside of an item (e.g. function or struct). 
 Your need to make it available via `use flutter_rust_bridge::enable_frb_logging;`.
 
 It needs to be there so the code generation is picking it up and generates the needed bridge code for connecting Rust and Dart for logging.
@@ -195,3 +206,20 @@ thread 'main' panicked at (...)/.cargo/registry/src/index.crates.io-6f17d22bba15
 Unrecognized literal: `(/*ERROR*/)`
 ```
 the code in the `enable_frb_logging!();` macro has not been expanded correctly - most probably you forgot to add the dependency to `log = "^0.4.20"` in your Cargo.toml file or you passed a syntactically incorrect custom function to the macro.
+
+### no `__FrbStreamSinkForLogging` in the root
+If you get the error message 
+```
+enable_frb_logging!();
+   | ^^^^^^^^^^^^^^^^^^^^^ no `__FrbStreamSinkForLogging` in the root
+   |
+   = note: this error originates in the macro `enable_frb_logging` (in Nightly builds, run with -Z macro-backtrace for more info)
+```
+
+the StreamSink is probably not re-exported in your project's `lib.rs`.
+Add
+```
+// this export is needed for logging
+pub use crate::frb_generated::StreamSink as __FrbStreamSinkForLogging;
+```
+to do so.
