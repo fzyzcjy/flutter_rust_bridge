@@ -39,17 +39,23 @@ fn auto_add_mod_to_lib_core(rust_crate_dir: &Path, rust_output_path: &Path) -> R
         .context("Not a UTF-8 path")?
         .to_string()
         .replace('/', "::");
-    let expect_code = format!("mod {mod_name};");
+    let expect_code = format!(
+        r#"mod {mod_name};
+// this export is needed for logging
+pub use crate::{mod_name}::StreamSink as __FrbStreamSinkForLogging;"#
+    );
 
     let path_lib_rs = path_src_folder.join("lib.rs");
 
     let raw_content_lib_rs = fs::read_to_string(path_lib_rs.clone())?;
     if !raw_content_lib_rs.contains(&expect_code) {
         info!("Inject `{}` into {:?}", &expect_code, &path_lib_rs);
-
-        let comments = " /* AUTO INJECTED BY flutter_rust_bridge. This line may not be accurate, and you can change it according to your needs. */";
-        let modified_content_lib_rs = format!("{expect_code}{comments}\n{raw_content_lib_rs}");
-
+        let modified_content_lib_rs = format!(
+            "// AUTO INJECTED BY flutter_rust_bridge. The following lines may not be accurate; change them according to your needs.\n{}\n{}\n{}",
+            expect_code,
+            "// END of AUTO INJECTED code",
+            {raw_content_lib_rs}
+        );
         fs::write(&path_lib_rs, modified_content_lib_rs).unwrap();
     }
 

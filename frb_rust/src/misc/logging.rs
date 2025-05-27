@@ -66,6 +66,7 @@ macro_rules! enable_frb_logging {
     // use $crate::frb_generated::StreamSink;
         // use frb_generated::StreamSink;
     use flutter_rust_bridge::frb;
+    use crate::__FrbStreamSinkForLogging as StreamSink;
 
     #[flutter_rust_bridge::frb(dart_code = "
       import 'dart:io';
