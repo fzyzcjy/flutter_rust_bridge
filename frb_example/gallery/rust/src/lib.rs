@@ -4,4 +4,3 @@ mod frb_generated;
 pub use crate::frb_generated::StreamSink as __FrbStreamSinkForLogging;
 // END of AUTO INJECTED code
 pub mod api;
-mod frb_generated;
