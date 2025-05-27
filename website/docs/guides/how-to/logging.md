@@ -12,22 +12,25 @@ Under the hood (and in a nutshell) our implementation uses the [rust 'log' crate
 Log messages are sent via a FRB's Stream implementation from Rust to Dart. 
 
 ## Setup
-
+### 1. add the logging dependency
 First you need to add a dependency on the logging crate in your Cargo.toml file with `cargo add log` or by putting `log = "^0.4.20"` in your Cargo.toml file under the `[dependencies]` section.
 If you start with a new project (`flutter_rust_bridge_codegen create` instead of `flutter_rust_bridge_codegen generate`) this dependency is already added for you.
 
+### 2. expose the generated StreamSink
 Next, you need to expose a generated `StreamSink` so the logging code can find it. 
-For this enter
+If you have not disabled automatically configuring your `lib.rs` in your `flutter_rust_bridge.yaml` (with `add_mod_to_lib: false`) these lines are added for you. 
+
+Otherwise, enter
 ```
 // this export is needed for logging
 pub use crate::frb_generated::StreamSink as __FrbStreamSinkForLogging;
 ```
 into your project's `lib.rs`.
 
-If you have not disabled automatically configuring your `lib.rs` in your `flutter_rust_bridge.yaml` (with `add_mod_to_lib: false`) these lines are added for you. 
+Replace `frb_generated` in `crate::frb_generated::StreamSink` with the module path where you configured the generated files to go to, i.e. the value you set for `rust_output` in the `flutter_rust_bridge.yaml` configuration file. If you did not set this option `crate::frb_generated` is the correct default, no need to change this.
 
-
-Then add the macro call `enable_frb_logging!();` in a **Rust** file that is part of your `rust_input` of your `flutter_rust_bridge.yaml` configuration, at any place outside of an item (e.g. function or struct). 
+### 3. activate logging
+Finally, add the macro call `enable_frb_logging!();` in a **Rust** file that is part of your `rust_input` of your `flutter_rust_bridge.yaml` configuration, at any place outside of an item (e.g. function or struct). 
 Your need to make it available via `use flutter_rust_bridge::enable_frb_logging;`.
 
 It needs to be there so the code generation is picking it up and generates the needed bridge code for connecting Rust and Dart for logging.
@@ -223,3 +226,4 @@ Add
 pub use crate::frb_generated::StreamSink as __FrbStreamSinkForLogging;
 ```
 to do so.
+Notice that `frb_generated` has to point to the module path where you configured the generated code to be written to, which defaults to `crate::frb_generated`.
