@@ -14,7 +14,7 @@ void main() {
   });
 
   test('Codegen version check', () {
-    final entrypoint = _FakeBaseEntrypointWithCodegenVersion('2.0.0');
+    final entrypoint = _FakeBaseEntrypointWithCodegenVersion('999.999.999');
 
     // Version does not match, will throw a [StateError].
     expectLater(
