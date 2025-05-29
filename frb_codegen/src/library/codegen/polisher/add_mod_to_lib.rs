@@ -123,7 +123,7 @@ fn process_lib_rs_content(initial_content: &str, mod_name: &str) -> String {
         output = format!("{code_to_inject_full_block}{output}");
     }
     // have only one neline in the very end
-    output = format!("{}\n\n", output.trim_end_matches('\n'));
+    output = format!("{}\n", output.trim_end_matches('\n'));
     output
 }
 
@@ -144,7 +144,7 @@ mod tests {
     }
 
     fn get_expected_full_file(mod_name: &str) -> String {
-        format!("{}pub mod api;\n\n", get_expected_new_block(mod_name))
+        format!("{}pub mod api;\n", get_expected_new_block(mod_name))
     }
 
     // --- Test Cases ---
@@ -153,7 +153,9 @@ mod tests {
     fn test_inject_into_empty_lib_rs() {
         let initial_content = "";
         let mod_name = "frb_generated";
-        let result_content = process_lib_rs_content(initial_content, mod_name);
+        let mut result_content = process_lib_rs_content(initial_content, mod_name);
+        // makes assert easier
+        result_content.push('\n');
         assert_eq!(result_content, get_expected_new_block(mod_name));
     }
 
@@ -214,7 +216,7 @@ mod tests {
         let result_content = process_lib_rs_content(&initial_content, mod_name);
 
         let expected_code = format!(
-            "{}pub mod api;\nother code;\n\n", // Old format removed, new prepended, remaining code at end
+            "{}pub mod api;\nother code;\n", // Old format removed, new prepended, remaining code at end
             get_expected_new_block(mod_name)
         );
         assert_eq!(result_content, expected_code);
@@ -227,9 +229,11 @@ mod tests {
             "mod {mod_name}; /* AUTO INJECTED BY flutter_rust_bridge. This line may not be accurate, and you can change it according to your needs. */"
         );
         let initial_content = format!("{old_injected_line}\n"); // File contains only the old format
-        let result_content = process_lib_rs_content(&initial_content, mod_name);
+        let mut result_content = process_lib_rs_content(&initial_content, mod_name);
 
         // Should be replaced by only the new block
+        // push one more \n to make comparission easier
+        result_content.push('\n');
         assert_eq!(result_content, get_expected_new_block(mod_name));
     }
 
@@ -400,7 +404,7 @@ mod tests {
              {existing_new_block}\
              pub mod feature_a;\n\
              pub mod feature_b;\n\
-             // Some footer comments\n\n"
+             // Some footer comments\n"
         );
         assert_eq!(result_content, expected_code);
     }
