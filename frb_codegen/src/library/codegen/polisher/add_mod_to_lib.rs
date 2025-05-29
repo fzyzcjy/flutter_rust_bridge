@@ -1,5 +1,5 @@
 use anyhow::*;
-use log::{info, warn};
+use log::{debug, info, warn};
 use pathdiff::diff_paths;
 use std::fs;
 use std::path::Path;
@@ -54,70 +54,97 @@ fn auto_add_mod_to_lib_core(rust_crate_dir: &Path, rust_output_path: &Path) -> R
 }
 
 fn process_lib_rs_content(initial_content: &str, mod_name: &str) -> String {
-    let mut current_content = initial_content.replace("\r\n", "\n"); // Normalize newlines to LF for consistent string operations
-
-    let code_inject_block_marker_start = "// AUTO INJECTED BY flutter_rust_bridge. The following lines may not be accurate; change them according to your needs.";
+    let code_inject_block_marker_start = "// AUTO INJECTED BY flutter_rust_bridge.";
     let code_inject_block_marker_end = "// END of AUTO INJECTED code";
 
     let code_to_inject = format!(
-        "mod {mod_name};\n\
+        "// The following lines may not be accurate; change them according to your needs.\n\
+        mod {mod_name};\n\
         // this export is needed for logging\n\
         pub use crate::{mod_name}::StreamSink as __FrbStreamSinkForLogging;"
     );
 
     let code_to_inject_full_block = format!(
-        "{code_inject_block_marker_start}\n{code_to_inject}\n{code_inject_block_marker_end}\n"
+        "{code_inject_block_marker_start}\n{code_to_inject}\n{code_inject_block_marker_end}\n\n"
     );
 
-    // no injection needed, if code block is already present
-    if !current_content.contains(&code_to_inject) {
-        info!("Injecting needed dependencies into lib.rs.");
+    // TODO remove this lines after a migration period
+    // remove FRB's per-v2.10.0 injectedd code
+    let legacy_frb_injected_code = format!("mod {mod_name}; /* AUTO INJECTED BY flutter_rust_bridge. This line may not be accurate, and you can change it according to your needs. */");
 
-        // TODO remove after a transition period
-        // code injected until FRB v.2.10
-        let old_frb_injected_code = format!("mod {mod_name}; /* AUTO INJECTED BY flutter_rust_bridge. This line may not be accurate, and you can change it according to your needs. */");
+    let mut in_injected_block = false;
+    let mut new_code_injected = false;
+    let mut output = String::new();
 
-        let mut start_index = current_content.find(&old_frb_injected_code);
-        let end_index = if start_index.is_some() {
-            current_content.rfind(&old_frb_injected_code)
-        } else {
-            start_index = current_content.find(code_inject_block_marker_start);
-            current_content.rfind(code_inject_block_marker_end)
-        };
+    debug!("injecting code to lib.rs");
+    for line in initial_content.lines() {
+        debug!("line is: '{line}'");
 
-        current_content = match start_index {
-            Some(start) => {
-                // replace the old injected code with the new one
-                current_content[..start - 1].to_string()
-                    + &code_to_inject_full_block
-                    + &current_content[end_index
-                        .expect("lib.rs is wrong! Found inject code block start but not end!")..]
+        match line.trim() {
+            trimmed_line if trimmed_line == legacy_frb_injected_code => {
+                debug!("legacy code, removing");
             }
-            None =>
-            // no old code to replace, just inject the new code
-            {
-                format!("{code_to_inject_full_block}\n{current_content}")
+            trimmed_line if trimmed_line == code_inject_block_marker_start => {
+                if !in_injected_block {
+                    in_injected_block = true;
+                    if !new_code_injected {
+                        output.push_str(&code_to_inject_full_block);
+                        debug!("INJECT code");
+                        new_code_injected = true;
+                    }
+                }
             }
-        };
-    } else {
-        info!("New code block is already present and correct after cleanup. No further injection.");
+            trimmed_line if trimmed_line == code_inject_block_marker_end => {
+                if in_injected_block {
+                    in_injected_block = false;
+                } else {
+                    panic!("\nCould not generate code for lib.rs, as the content is wrong (missing injected code start marker '{code_inject_block_marker_start}'.\nThis is the content:\n'\n{initial_content}\n'");
+                }
+            }
+            trimmed_line if trimmed_line.is_empty() => {
+                // reduce to only one newline
+                if !output.ends_with('\n') && !output.is_empty() {
+                    output.push('\n'); // normalises \r\n to \n
+                }
+            }
+            trimmed_line => {
+                if !in_injected_block {
+                    output.push_str(&format!("{trimmed_line}\n"));
+                }
+            }
+        }
+        debug!("output is: '{output}'");
     }
-    current_content
+    if in_injected_block {
+        panic!("\nCould not generate code for lib.rs, as the content is wrong (missing injected code end marker '{code_inject_block_marker_end}'.\nThis is the content:\n'\n{initial_content}\n'");
+    }
+
+    if !new_code_injected {
+        output = format!("{code_to_inject_full_block}{output}");
+    }
+    // have only one neline in the very end
+    output = format!("{}\n\n", output.trim_end_matches('\n'));
+    output
 }
 
 #[cfg(test)]
 mod tests {
-    use super::*; // Import from the same module
+    use super::*;
 
     // Helper to get the expected new injected block for tests
     fn get_expected_new_block(mod_name: &str) -> String {
         format!(
-            "// AUTO INJECTED BY flutter_rust_bridge. The following lines may not be accurate; change them according to your needs.\n\
+            "// AUTO INJECTED BY flutter_rust_bridge.\n\
+             // The following lines may not be accurate; change them according to your needs.\n\
              mod {mod_name};\n\
              // this export is needed for logging\n\
              pub use crate::{mod_name}::StreamSink as __FrbStreamSinkForLogging;\n\
-             // END of AUTO INJECTED code\n",
+             // END of AUTO INJECTED code\n\n",
         )
+    }
+
+    fn get_expected_full_file(mod_name: &str) -> String {
+        format!("{}pub mod api;\n\n", get_expected_new_block(mod_name))
     }
 
     // --- Test Cases ---
@@ -135,8 +162,7 @@ mod tests {
         let initial_content = "pub mod api;"; // No trailing newline
         let mod_name = "frb_generated";
         let result_content = process_lib_rs_content(initial_content, mod_name);
-        let expected_code = format!("{}{}\n", get_expected_new_block(mod_name), initial_content); // New block + original + a final newline from filter
-        assert_eq!(result_content, expected_code);
+        assert_eq!(result_content, get_expected_full_file(mod_name));
     }
 
     #[test]
@@ -144,36 +170,51 @@ mod tests {
         let initial_content = "pub mod api;\n"; // With trailing newline
         let mod_name = "frb_generated";
         let result_content = process_lib_rs_content(initial_content, mod_name);
-        let expected_code = format!("{}{}", get_expected_new_block(mod_name), initial_content); // New block + original
-        assert_eq!(result_content, expected_code);
+        assert_eq!(result_content, get_expected_full_file(mod_name));
+    }
+    #[test]
+    fn test_inject_into_existing_lib_rs_with_multiple_newlines_at_end() {
+        let initial_content = "pub mod api;\n\n\n"; // With trailing newline
+        let mod_name = "frb_generated";
+        let result_content = process_lib_rs_content(initial_content, mod_name);
+        assert_eq!(result_content, get_expected_full_file(mod_name));
+    }
+    #[test]
+    fn test_inject_into_existing_lib_rs_with_multiple_newlines() {
+        let initial_content = "\n\n\npub mod api;\n\n\n"; // With trailing newline
+        let mod_name = "frb_generated";
+        let result_content = process_lib_rs_content(initial_content, mod_name);
+        assert_eq!(result_content, get_expected_full_file(mod_name));
     }
 
     #[test]
     fn test_no_change_if_already_up_to_date_new_format() {
         let mod_name = "frb_generated";
-        let initial_content = format!(
-            "{}\npub mod api;\n",                        // Existing new format
-            get_expected_new_block(mod_name).trim_end() // Trim to match the prepend logic if it was appended
-        );
+        let initial_content = get_expected_full_file(mod_name);
         let result_content = process_lib_rs_content(&initial_content, mod_name);
         assert_eq!(result_content, initial_content); // Should remain unchanged
+    }
+
+    #[test]
+    fn test_leave_at_top() {
+        let mod_name = "frb_generated";
+        let result_content = process_lib_rs_content(&get_expected_full_file(mod_name), mod_name);
+        assert_eq!(result_content, get_expected_full_file(mod_name)); // Should remain unchanged
     }
 
     #[test]
     fn test_replace_old_format_with_new_format() {
         let mod_name = "frb_generated";
         let old_injected_line = format!(
-            "mod {}; /* AUTO INJECTED BY flutter_rust_bridge. This line may not be accurate, and you can change it according to your needs. */",
-            mod_name
+            "mod {mod_name}; /* AUTO INJECTED BY flutter_rust_bridge. This line may not be accurate, and you can change it according to your needs. */"
         );
         let initial_content = format!(
-            "pub mod api;\n{}\nother code;", // Old format embedded
-            old_injected_line
+            "pub mod api;\n{old_injected_line}\nother code;" // Old format embedded
         );
         let result_content = process_lib_rs_content(&initial_content, mod_name);
 
         let expected_code = format!(
-            "{}\npub mod api;\nother code;\n", // Old format removed, new prepended, remaining code at end
+            "{}pub mod api;\nother code;\n\n", // Old format removed, new prepended, remaining code at end
             get_expected_new_block(mod_name)
         );
         assert_eq!(result_content, expected_code);
@@ -183,10 +224,9 @@ mod tests {
     fn test_replace_only_old_format_file() {
         let mod_name = "frb_generated";
         let old_injected_line = format!(
-            "mod {}; /* AUTO INJECTED BY flutter_rust_bridge. This line may not be accurate, and you can change it according to your needs. */",
-            mod_name
+            "mod {mod_name}; /* AUTO INJECTED BY flutter_rust_bridge. This line may not be accurate, and you can change it according to your needs. */"
         );
-        let initial_content = format!("{}\n", old_injected_line); // File contains only the old format
+        let initial_content = format!("{old_injected_line}\n"); // File contains only the old format
         let result_content = process_lib_rs_content(&initial_content, mod_name);
 
         // Should be replaced by only the new block
@@ -197,43 +237,135 @@ mod tests {
     fn test_idempotent_after_replacement() {
         let mod_name = "frb_generated";
         let old_injected_line = format!(
-            "mod {}; /* AUTO INJECTED BY flutter_rust_bridge. This line may not be accurate, and you can change it according to your needs. */",
-            mod_name
+            "mod {mod_name}; /* AUTO INJECTED BY flutter_rust_bridge. This line may not be accurate, and you can change it according to your needs. */"
         );
-        let initial_content = format!("pub mod api;\n{}\n", old_injected_line);
+        let initial_content = format!("pub mod api;\n{old_injected_line}\n");
 
         let content_after_first_run = process_lib_rs_content(&initial_content, mod_name); // First run: replace old with new
         let content_after_second_run = process_lib_rs_content(&content_after_first_run, mod_name); // Second run: should not change
 
         assert_eq!(content_after_first_run, content_after_second_run);
-        assert_eq!(
-            content_after_second_run,
-            format!("{}\npub mod api;\n", get_expected_new_block(mod_name))
-        );
+        assert_eq!(content_after_second_run, get_expected_full_file(mod_name));
     }
 
     #[test]
     fn test_multiple_old_formats() {
         let mod_name = "frb_generated";
         let old_injected_line = format!(
-            "mod {}; /* AUTO INJECTED BY flutter_rust_bridge. This line may not be accurate, and you can change it according to your needs. */",
-            mod_name
-        );
+            "mod {mod_name}; /* AUTO INJECTED BY flutter_rust_bridge. This line may not be accurate, and you can change it according to your needs. */");
         let initial_content = format!(
-            "{}\npub mod api;\n{}\n", // Multiple old formats
-            old_injected_line, old_injected_line
+            "{old_injected_line}\npub mod api;\n{old_injected_line}\n" // Multiple old formats
         );
         let result_content = process_lib_rs_content(&initial_content, mod_name);
-        let expected_code = format!("{}\npub mod api;\n", get_expected_new_block(mod_name));
-        assert_eq!(result_content, expected_code);
+        assert_eq!(result_content, get_expected_full_file(mod_name));
+    }
+
+    #[test]
+    fn test_multpipe_code_markers() {
+        let mod_name = "frb_generated";
+        let initial_content = format!(
+            "// AUTO INJECTED BY flutter_rust_bridge.\n\
+            The following lines may not be accurate; change them according to your needs.\n\
+             mod {mod_name};\n\
+             // this export is needed for logging\n\
+             pub use crate::{mod_name}::StreamSink as __FrbStreamSinkForLogging;\n\
+             // END of AUTO INJECTED code\n\
+             pub mod api;\n
+             // AUTO INJECTED BY flutter_rust_bridge.\n\
+            The following lines may not be accurate; change them according to your needs.\n\
+             mod {mod_name};\n\
+             // this export is needed for logging\n\
+             pub use crate::{mod_name}::StreamSink as __FrbStreamSinkForLogging;\n\
+             // END of AUTO INJECTED code\n"
+        );
+        let result_content = process_lib_rs_content(&initial_content, mod_name);
+        assert_eq!(result_content, get_expected_full_file(mod_name));
+    }
+
+    #[test]
+    #[should_panic(
+        expected = "\nCould not generate code for lib.rs, as the content is wrong (missing injected code end marker '// END of AUTO INJECTED code'.\nThis is the content:\n"
+    )]
+    fn test_incomplete_code_markers_only_start() {
+        let mod_name = "frb_generated";
+        let initial_content = format!(
+            "// AUTO INJECTED BY flutter_rust_bridge.\n\
+            The following lines may not be accurate; change them according to your needs.\n\
+             mod {mod_name};\n\
+             // this export is needed for logging\n\
+             pub use crate::{mod_name}::StreamSink as __FrbStreamSinkForLogging;\n\
+             pub mod api;\n"
+        );
+        let result_content = process_lib_rs_content(&initial_content, mod_name);
+        assert_eq!(result_content, get_expected_full_file(mod_name));
+    }
+
+    #[test]
+    #[should_panic(
+        expected = "\nCould not generate code for lib.rs, as the content is wrong (missing injected code start marker '// AUTO INJECTED BY flutter_rust_bridge.'.\nThis is the content:\n"
+    )]
+    fn test_incomplete_code_markers_only_end() {
+        let mod_name = "frb_generated";
+        let initial_content = format!(
+            "mod {mod_name};\n\
+             // this export is needed for logging\n\
+             pub use crate::{mod_name}::StreamSink as __FrbStreamSinkForLogging;\n\
+             // END of AUTO INJECTED code\n\
+             pub mod api;\n"
+        );
+        let result_content = process_lib_rs_content(&initial_content, mod_name);
+        assert_eq!(result_content, get_expected_full_file(mod_name));
+    }
+
+    #[test]
+    #[should_panic(
+        expected = "\nCould not generate code for lib.rs, as the content is wrong (missing injected code end marker '// END of AUTO INJECTED code'.\nThis is the content:\n"
+    )]
+    fn test_multiple_start_code_markers_without_end() {
+        let mod_name = "frb_generated";
+        let initial_content = format!(
+            "// AUTO INJECTED BY flutter_rust_bridge.\n\
+            The following lines may not be accurate; change them according to your needs.\n\
+             mod {mod_name};\n\
+             // this export is needed for logging\n\
+             pub use crate::{mod_name}::StreamSink as __FrbStreamSinkForLogging;\n\
+             pub mod api;\n
+             // AUTO INJECTED BY flutter_rust_bridge.\n\
+            The following lines may not be accurate; change them according to your needs.\n\
+             mod {mod_name};\n\
+             // this export is needed for logging\n\
+             pub use crate::{mod_name}::StreamSink as __FrbStreamSinkForLogging;\n"
+        );
+        let result_content = process_lib_rs_content(&initial_content, mod_name);
+        assert_eq!(result_content, get_expected_full_file(mod_name));
+    }
+    #[test]
+    #[should_panic(
+        expected = "\nCould not generate code for lib.rs, as the content is wrong (missing injected code start marker '// AUTO INJECTED BY flutter_rust_bridge.'.\nThis is the content:\n"
+    )]
+    fn test_multiple_end_code_markers_without_start() {
+        let mod_name = "frb_generated";
+        let initial_content = format!(
+            "mod {mod_name};\n\
+             // this export is needed for logging\n\
+             pub use crate::{mod_name}::StreamSink as __FrbStreamSinkForLogging;\n\
+             // END of AUTO INJECTED code\n\
+             pub mod api;\n
+             mod {mod_name};\n\
+             // this export is needed for logging\n\
+             pub use crate::{mod_name}::StreamSink as __FrbStreamSinkForLogging;\n\
+             // END of AUTO INJECTED code\n"
+        );
+        let result_content = process_lib_rs_content(&initial_content, mod_name);
+        assert_eq!(result_content, get_expected_full_file(mod_name));
     }
 
     #[test]
     fn test_new_format_old_content() {
         let mod_name = "frb_generated";
-        let initial_content = 
-        format!(
-            "// AUTO INJECTED BY flutter_rust_bridge. The following lines may not be accurate; change them according to your needs.\n\
+        let initial_content = format!(
+            "// AUTO INJECTED BY flutter_rust_bridge.\n\
+            The following lines may not be accurate; change them according to your needs.\n\
              mod {mod_name};\n\
              // this export is needed for logging\n\
              pub use crate::{mod_name}::StreamSink as __FrbStreamSinkForLogging;\n\
@@ -241,12 +373,11 @@ mod tests {
              pub mod api;\n"
         );
         let result_content = process_lib_rs_content(&initial_content, mod_name);
-        let expected_code = format!("{}\npub mod api;\n", get_expected_new_block(mod_name));
-        assert_eq!(result_content, expected_code);
+        assert_eq!(result_content, get_expected_full_file(mod_name));
     }
 
     #[test]
-    fn test_mixed_formats_and_other_content() {
+    fn test_mixed_formats_and_other_content_replace_at_place() {
         let mod_name = "frb_generated";
         let old_injected_line = format!(
             "mod {mod_name}; /* AUTO INJECTED BY flutter_rust_bridge. This line may not be accurate, and you can change it according to your needs. */"
@@ -255,25 +386,21 @@ mod tests {
 
         let initial_content = format!(
             "// Some header comments\n\n\
-             {}\n\n\
+             {existing_new_block}\n\n\
              pub mod feature_a;\n\n\
-             {}\n\n\
+             {old_injected_line}\n\n\
              pub mod feature_b;\n\n\
-             {}\n\n\
-             // Some footer comments\n",
-            existing_new_block, // Existing new block
-            old_injected_line,  // Old format
-            old_injected_line   // Another old format
+             {old_injected_line}\n\n\
+             // Some footer comments\n"
         );
         let result_content = process_lib_rs_content(&initial_content, mod_name);
 
         let expected_code = format!(
-            "// Some header comments\n\n\
-             {}\n\n\
-             pub mod feature_a;\n\n\
-             pub mod feature_b;\n\n\
-             // Some footer comments\n",
-            existing_new_block
+            "// Some header comments\n\
+             {existing_new_block}\
+             pub mod feature_a;\n\
+             pub mod feature_b;\n\
+             // Some footer comments\n\n"
         );
         assert_eq!(result_content, expected_code);
     }
