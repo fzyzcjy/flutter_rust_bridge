@@ -101,7 +101,7 @@ fn process_lib_rs_content(initial_content: &str, mod_name: &str) -> String {
                     panic!("\nCould not generate code for lib.rs, as the content is wrong (missing injected code start marker '{code_inject_block_marker_start}'.\nThis is the content:\n'\n{initial_content}\n'");
                 }
             }
-            trimmed_line if trimmed_line.is_empty() => {
+            "" => {
                 // reduce to only one newline
                 if !output.ends_with('\n') && !output.is_empty() {
                     output.push('\n'); // normalises \r\n to \n
