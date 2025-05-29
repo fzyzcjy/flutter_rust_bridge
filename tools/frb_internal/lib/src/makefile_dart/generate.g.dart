@@ -39,11 +39,11 @@ ArgParser _$populateGeneratePackageConfigParser(ArgParser parser) => parser
   ..addFlag(
     'set-exit-if-changed',
   )
-  ..addFlag(
-    'coverage',
-  )
   ..addOption(
     'package',
+  )
+  ..addFlag(
+    'coverage',
   );
 
 final _$parserForGeneratePackageConfig =

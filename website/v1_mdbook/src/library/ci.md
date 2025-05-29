@@ -69,7 +69,7 @@ jobs:
     steps:
       # Setup
       - uses: actions/checkout@v3
-      - uses: subosito/flutter-action@v2
+      - uses: flutter-actions/setup-flutter@v4
       - uses: bluefireteam/melos-action@v2
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -100,7 +100,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: subosito/flutter-action@v2
+      - uses: flutter-actions/setup-flutter@v4
       - uses: bluefireteam/melos-action@v2
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -123,7 +123,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: subosito/flutter-action@v2
+      - uses: flutter-actions/setup-flutter@v4
       - uses: bluefireteam/melos-action@v2
       - uses: goto-bus-stop/setup-zig@v2
       - uses: KyleMayes/install-llvm-action@v1
@@ -154,7 +154,7 @@ jobs:
       - name: Install dependencies for flutter integration test
         run: sudo apt update && sudo apt-get install -y libglu1-mesa ninja-build clang cmake pkg-config libgtk-3-dev liblzma-dev
       - uses: pyvista/setup-headless-display-action@v1
-      - uses: subosito/flutter-action@v2
+      - uses: flutter-actions/setup-flutter@v4
       - uses: bluefireteam/melos-action@v2
       - uses: goto-bus-stop/setup-zig@v2
       - uses: KyleMayes/install-llvm-action@v1
@@ -181,7 +181,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: subosito/flutter-action@v2
+      - uses: flutter-actions/setup-flutter@v4
       - uses: bluefireteam/melos-action@v2
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -210,7 +210,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: subosito/flutter-action@v2
+      - uses: flutter-actions/setup-flutter@v4
       - uses: bluefireteam/melos-action@v2
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -296,7 +296,7 @@ jobs:
         run: |
           git config user.name "YourName"
           git config user.email "your-email@example.com"
-      - uses: subosito/flutter-action@v2
+      - uses: flutter-actions/setup-flutter@v4
       - uses: bluefireteam/melos-action@v2
 
       - name: Create the new version(s)
@@ -341,7 +341,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: subosito/flutter-action@v2
+      - uses: flutter-actions/setup-flutter@v4
       - uses: bluefireteam/melos-action@v2
       - uses: goto-bus-stop/setup-zig@v2
       - uses: KyleMayes/install-llvm-action@v1
@@ -368,7 +368,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: subosito/flutter-action@v2
+      - uses: flutter-actions/setup-flutter@v4
       - uses: bluefireteam/melos-action@v2
       - name: Setup pub.dev credentials
         run: |

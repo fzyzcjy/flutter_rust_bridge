@@ -131,6 +131,7 @@ pub fn mirror_tuple_stream_twin_sync_sse(
         frb_example_pure_dart_example_external_lib::get_app_settings(),
         RawStringEnumMirrored::Raw(RawStringMirrored {
             value: String::from("test"),
+            r#type: "".to_string(),
         }),
     );
     sink.add(tuple).unwrap();
@@ -179,6 +180,7 @@ pub fn first_sequence_twin_sync_sse(seqs: Sequences) -> Option<i32> {
 #[frb(mirror(RawStringMirrored))]
 pub struct _RawStringMirroredTwinSyncSse {
     pub r#value: String,
+    pub r#type: String,
 }
 
 #[frb(mirror(NestedRawStringMirrored))]
@@ -203,6 +205,7 @@ pub struct _ListOfRawNestedStringMirroredTwinSyncSse {
 pub fn test_raw_string_mirrored_twin_sync_sse() -> RawStringMirrored {
     RawStringMirrored {
         r#value: "test".to_owned(),
+        r#type: "".to_string(),
     }
 }
 
@@ -212,6 +215,7 @@ pub fn test_nested_raw_string_mirrored_twin_sync_sse() -> NestedRawStringMirrore
     NestedRawStringMirrored {
         raw: RawStringMirrored {
             r#value: "test".to_owned(),
+            r#type: "".to_string(),
         },
     }
 }
@@ -223,11 +227,13 @@ pub fn test_raw_string_enum_mirrored_twin_sync_sse(nested: bool) -> RawStringEnu
         RawStringEnumMirrored::Nested(NestedRawStringMirrored {
             raw: RawStringMirrored {
                 r#value: "test".to_owned(),
+                r#type: "".to_string(),
             },
         })
     } else {
         RawStringEnumMirrored::Raw(RawStringMirrored {
             r#value: "test".to_owned(),
+            r#type: "".to_string(),
         })
     }
 }
@@ -239,6 +245,7 @@ pub fn test_list_of_raw_nested_string_mirrored_twin_sync_sse() -> ListOfNestedRa
         raw: vec![NestedRawStringMirrored {
             raw: RawStringMirrored {
                 r#value: "test".to_owned(),
+                r#type: "".to_string(),
             },
         }],
     }
@@ -250,6 +257,7 @@ pub fn test_fallible_of_raw_string_mirrored_twin_sync_sse() -> anyhow::Result<Ve
 {
     Ok(vec![RawStringMirrored {
         r#value: "test".to_owned(),
+        r#type: "".to_string(),
     }])
 }
 
@@ -260,10 +268,12 @@ pub fn test_list_of_nested_enums_mirrored_twin_sync_sse() -> Vec<RawStringEnumMi
         RawStringEnumMirrored::Nested(NestedRawStringMirrored {
             raw: RawStringMirrored {
                 r#value: "test".to_owned(),
+                r#type: "".to_string(),
             },
         }),
         RawStringEnumMirrored::Raw(RawStringMirrored {
             r#value: "test".to_owned(),
+            r#type: "".to_string(),
         }),
     ]
 }
@@ -288,6 +298,7 @@ pub fn test_contains_mirrored_sub_struct_twin_sync_sse() -> ContainsMirroredSubS
     ContainsMirroredSubStructTwinSyncSse {
         test: RawStringMirrored {
             r#value: "test".to_owned(),
+            r#type: "".to_string(),
         },
         test2: AnotherTwinSyncSse {
             a: "test".to_owned(),

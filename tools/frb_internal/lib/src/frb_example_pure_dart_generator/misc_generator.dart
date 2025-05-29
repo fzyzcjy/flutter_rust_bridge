@@ -20,7 +20,7 @@ Future<void> generateRustMod(
         }
         return null;
       })
-      .whereNotNull()
+      .nonNulls
       .toList()
       .sorted();
 
