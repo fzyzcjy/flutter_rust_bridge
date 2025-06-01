@@ -25,7 +25,7 @@ macro_rules! enable_frb_logging {
   (name = $RootLoggerName:expr, maxLoglevel = $maxLogLevel:expr, customLogFunction = $log_fn:expr) => {
 
     fn _default_log_fn (record: Log2DartLogRecord) {
-      let timestamp = flutter_rust_bridge::for_generated::chrono::Local::now();
+      let timestamp = chrono::Local::now();
       let max_log_level = from_u16(record.level_number);
       let lang = if record.rust_log {"Rust"} else {"Dart"};
       let logger_name = record.logger_name;
@@ -38,21 +38,26 @@ macro_rules! enable_frb_logging {
     fn _default_max_log_level  () -> String {
       "INFO".to_string()
     }
+
     #[flutter_rust_bridge::frb(sync)]
+    #[allow(dead_code)] // used by generated dart code
     pub fn root_logger_name() -> String {
       $RootLoggerName.to_string()
     }
     #[flutter_rust_bridge::frb(sync)]
+    #[allow(dead_code)] // used by generated dart code
     pub fn max_log_level() -> String {
       $maxLogLevel.to_string()
     }
     #[flutter_rust_bridge::frb(sync)]
+    #[allow(dead_code)] // used by generated dart code
     pub fn log_fn(record: Log2DartLogRecord) {
       ($log_fn(record));
     }
 
     use flutter_rust_bridge::frb;
     use crate::__FrbStreamSinkForLogging as StreamSink;
+    use $crate::for_generated::chrono;
 
     #[flutter_rust_bridge::frb(dart_code = "
       import 'dart:io';
@@ -177,6 +182,7 @@ macro_rules! enable_frb_logging {
 
     impl FRBLogger {
       #[allow(clippy::new_without_default)]
+      #[allow(dead_code)] // needed for frb_code generation, even though it shouldn't be used!
       pub fn new() -> FRBLogger {
         panic!("Initialize with `final LOGGER = FRBLogger.getLogger();` or `final LOGGER = FRBLogger.initLogger();`");
       }
@@ -184,6 +190,7 @@ macro_rules! enable_frb_logging {
     /// uses custom type translation to translate between log::LogLevel and Dart:logging::Level
     /// loglevel is represented by a number, so that we don't need to put \import `import 'package:logging/logging.dart';`
     /// into the dart preamble in flutter_rust_bridge.yaml
+    #[allow(dead_code)] // used by generated dart code
     pub fn initialize_log_2_dart(log_stream: StreamSink<Log2DartLogRecord>, max_log_level: u16) {
       log::set_boxed_logger(Box::new(FRBLogger {
         stream_sink: log_stream,
@@ -262,24 +269,30 @@ macro_rules! enable_frb_logging {
 
     /// custom coders for log::LogLevel <-> Dart:logging::Level
     #[frb(rust2dart(dart_type = "Level", dart_code = "FRBLogger.logLevelFromNumber({})"))]
+    #[allow(dead_code)] // used by generated dart code
     pub fn encode_log_level_filter(level: log::LevelFilter) -> u16 {
       to_u16(level)
     }
     #[frb(dart2rust(dart_type = "Level", dart_code = "{}.value"))]
+    #[allow(dead_code)] // used by generated dart code
     pub fn decode_log_level_filter(level_number: u16) -> log::LevelFilter {
       from_u16(level_number)
     }
 
     /// mapping log crate's [Record](https://docs.rs/log/latest/log/struct.Record.html) to dart's Logger [LogRecord](https://pub.dev/documentation/logging/latest/logging/LogRecord-class.html).
     /// intermediary struct to avoid Record's lifetimes
+    #[derive(Clone)]
     pub struct Log2DartLogRecord {
       pub level_number: u16,   // The log level encoded. Decode with `FRBLogger.logLevelFromNumber(x)` in Dart or `from_u16(x) in Rust. : Rust::log::Recod::Level, Dart::Logger::LogRecord::Level
       pub message: String, // The String given to the log statement: Rust::log::Recod::args, Dart::Logger::LogRecord::message
       pub logger_name: String, // The name of the logger given by `FRBLogger.initLogger(name: "MyClass");`, Rust::log::Recod::target, Dart::Logger::LogRecord::loggerName
       // pub time: String, // log::Recod::?, Dart::Logger::LogRecord::time --> omitted, as there is no time record in the log crate's Record
       pub rust_log: bool, // true, if the log statement originates from Rust code
+      #[allow(dead_code)] // not used, but there for completeness. A custom log function might want to use this.
       pub module_path: Option<String>, // Rust::log::Recod::module_path, None for Dart
+      #[allow(dead_code)] // not used, but there for completeness. A custom log function might want to use this.
       pub file_name: Option<String>, // Rust::log::Recod::file_name, None for Dart
+      #[allow(dead_code)] // not used, but there for completeness. A custom log function might want to use this.
       pub line_number: Option<u32>, // Rust::log::Recod::line_number, None for Dart
     }
 
@@ -298,4 +311,348 @@ macro_rules! enable_frb_logging {
       }
     }
   };
+}
+
+#[cfg(test)]
+pub(crate) mod test {
+    use flutter_rust_bridge_macros as flutter_rust_bridge;
+    use log::{Level, Log, Metadata, Record};
+    use std::sync::{Arc, Mutex};
+
+    // A simple mock for StreamSink for testing
+    #[derive(Debug, Clone)]
+    pub struct MockStreamSink<T> {
+        pub sent_records: Arc<Mutex<Vec<T>>>,
+    }
+
+    impl<T> MockStreamSink<T> {
+        pub fn new() -> Self {
+            Self {
+                sent_records: Arc::new(Mutex::new(Vec::new())),
+            }
+        }
+
+        pub fn add(&self, item: T) -> Result<(), crate::Rust2DartSendError> {
+            self.sent_records.lock().unwrap().push(item);
+            Ok(())
+        }
+    }
+
+    // Helper to capture stdout
+    // struct CaptureStdout {
+    //     original_stdout: Option<std::io::Stdout>,
+    //     pipe_reader: Option<std::io::Stdin>, // stdin for the pipe
+    //     pipe_writer: Option<std::io::Stdout>, // stdout for the pipe
+    // }
+
+    // impl CaptureStdout {
+    //     fn new() -> Self {
+    //         // This is a bit complex and requires platform-specific code or a crate like `gag`
+    //         // For a simple example, we'll just mock the output for `_default_log_fn`
+    //         // In a real scenario, you'd use a crate like `gag` or `test_env` for robust stdout capture.
+    //         CaptureStdout {
+    //             original_stdout: None,
+    //             pipe_reader: None,
+    //             pipe_writer: None,
+    //         }
+    //     }
+
+    //     fn capture_output(&mut self) -> String {
+    //         // In a real implementation with `gag` or similar, you'd read from the captured output.
+    //         // For this example, we'll assume `_default_log_fn` is modified to accept a mutable writer.
+    //         "".to_string()
+    //     }
+    // }
+
+    #[test]
+    fn test_default_logger_name() {
+        enable_frb_logging!();
+        assert_eq!(_default_logger_name(), "FRBLogger".to_string());
+    }
+
+    #[test]
+    fn test_default_max_log_level() {
+        enable_frb_logging!();
+        assert_eq!(_default_max_log_level(), "INFO".to_string());
+    }
+
+    #[test]
+    fn test_default_log_fn() {
+        enable_frb_logging!();
+
+        let record = Log2DartLogRecord {
+            level_number: to_u16(log::LevelFilter::Debug),
+            message: "Test message".to_string(),
+            logger_name: "TestLogger".to_string(),
+            rust_log: true,
+            module_path: Some("test_module".to_string()),
+            file_name: Some("test_file.rs".to_string()),
+            line_number: Some(123),
+        };
+
+        // Due to the nature of `println!`, we can't directly capture its output within a simple test.
+        // If you truly need to test the exact string output, you'd need to:
+        // 1. Modify `_default_log_fn` to take a `&mut dyn Write` argument instead of using `println!`.
+        // 2. Pass a `Vec<u8>` or `Cursor<Vec<u8>>` to it and convert to `String` for assertion.
+        // For now, we'll just call it to ensure it doesn't panic.
+        _default_log_fn(record);
+        // No direct assertion possible on println! output without stdout capture.
+    }
+
+    #[test]
+    #[should_panic(
+        expected = "Initialize with `final LOGGER = FRBLogger.getLogger();` or `final LOGGER = FRBLogger.initLogger();`"
+    )]
+    fn test_frb_logger_new_panics() {
+        enable_frb_logging!();
+        FRBLogger::new();
+    }
+
+    #[test]
+    fn test_initialize_log_2_dart() {
+        enable_frb_logging!();
+
+        // Reset the logger and panic hook for a clean test
+        // This is crucial because `set_boxed_logger` can only be called once.
+        // In a real application, you might use a `once_cell` or similar to ensure this.
+        // For testing, we might need to "reset" the global logger state if possible,
+        // or ensure tests run in isolation (e.g., with `cargo test -- --test-threads=1`).
+        // For simplicity here, we'll try to catch a potential panic if already set.
+        let stream_sink = MockStreamSink::new();
+        let max_log_level = to_u16(log::LevelFilter::Info);
+
+        let result = std::panic::catch_unwind(|| {
+            initialize_log_2_dart(stream_sink, max_log_level);
+        });
+
+        if result.is_err() {
+            if let Err(err) = result {
+                if let Some(msg) = err.downcast_ref::<&str>() {
+                    if msg.contains("initialize_log_2_dart is called only once!") {
+                        // This is expected if another test already initialized it.
+                        // To truly test this, you'd need to ensure test isolation
+                        // or use a different testing approach that doesn't rely on global state.
+                        eprintln!("Warning: initialize_log_2_dart already called in another test. This test might not fully cover the `expect` path.");
+                    } else {
+                        panic!("Unexpected panic: {err:?}");
+                    }
+                } else {
+                    panic!("Unexpected panic type: {err:?}");
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn test_frb_logger_enabled() {
+        enable_frb_logging!();
+        let stream_sink = MockStreamSink::new();
+        let logger = FRBLogger { stream_sink };
+
+        // Temporarily set max log level for this test
+        // NOTE: This modifies global state, which can lead to flaky tests if not carefully managed.
+        // In a production setup, consider using a logging facade that allows for logger replacement
+        // or ensure tests run sequentially.
+        let original_max_level = log::max_level();
+        log::set_max_level(log::LevelFilter::Info);
+
+        let metadata_info = Metadata::builder()
+            .level(Level::Info)
+            .target("test")
+            .build();
+        let metadata_debug = Metadata::builder()
+            .level(Level::Debug)
+            .target("test")
+            .build();
+        let metadata_error = Metadata::builder()
+            .level(Level::Error)
+            .target("test")
+            .build();
+
+        assert!(logger.enabled(&metadata_info));
+        assert!(!logger.enabled(&metadata_debug)); // Debug < Info
+        assert!(logger.enabled(&metadata_error)); // Error > Info
+
+        log::set_max_level(original_max_level); // Restore original level
+    }
+
+    #[test]
+    fn test_frb_logger_log() {
+        enable_frb_logging!();
+        let logger = FRBLogger {
+            stream_sink: MockStreamSink::new(),
+        };
+
+        // Temporarily set max log level for this test
+        let original_max_level = log::max_level();
+        log::set_max_level(log::LevelFilter::Trace); // Enable all for logging
+
+        let record_info = Record::builder()
+            .level(Level::Info)
+            .target("test_target")
+            .args(format_args!("Test message info"))
+            .module_path(Some("test_module"))
+            .file(Some("test_file.rs"))
+            .line(Some(10))
+            .build();
+
+        let record_debug = Record::builder()
+            .level(Level::Debug)
+            .target("test_target_debug")
+            .args(format_args!("Test message debug"))
+            .build();
+
+        logger.log(&record_info);
+        logger.log(&record_debug);
+
+        let sent_records = logger.stream_sink.sent_records.lock().unwrap();
+        assert_eq!(sent_records.len(), 2);
+
+        let record1 = &sent_records[0];
+        assert_eq!(record1.level_number, to_u16(log::LevelFilter::Info));
+        assert_eq!(record1.message, "Test message info");
+        assert_eq!(record1.logger_name, "test_target");
+        assert!(record1.rust_log);
+        assert_eq!(record1.module_path, Some("test_module".to_string()));
+        assert_eq!(record1.file_name, Some("test_file.rs".to_string()));
+        assert_eq!(record1.line_number, Some(10));
+
+        let record2 = &sent_records[1];
+        assert_eq!(record2.level_number, to_u16(log::LevelFilter::Debug));
+        assert_eq!(record2.message, "Test message debug");
+
+        log::set_max_level(original_max_level); // Restore original level
+    }
+
+    #[test]
+    fn test_frb_logger_flush() {
+        enable_frb_logging!();
+        let stream_sink = MockStreamSink::new();
+        let logger = FRBLogger { stream_sink };
+        // This method does nothing, so we just call it to ensure it doesn't panic.
+        logger.flush();
+    }
+
+    #[test]
+    fn test_from_u16_trace() {
+        enable_frb_logging!();
+        assert_eq!(from_u16(0), log::LevelFilter::Trace);
+        assert_eq!(from_u16(300), log::LevelFilter::Trace);
+        assert_eq!(from_u16(500), log::LevelFilter::Trace);
+    }
+
+    #[test]
+    fn test_from_u16_debug() {
+        enable_frb_logging!();
+        assert_eq!(from_u16(501), log::LevelFilter::Debug);
+        assert_eq!(from_u16(700), log::LevelFilter::Debug);
+    }
+
+    #[test]
+    fn test_from_u16_info() {
+        enable_frb_logging!();
+        assert_eq!(from_u16(701), log::LevelFilter::Info);
+        assert_eq!(from_u16(800), log::LevelFilter::Info);
+    }
+
+    #[test]
+    fn test_from_u16_warn() {
+        enable_frb_logging!();
+        assert_eq!(from_u16(801), log::LevelFilter::Warn);
+        assert_eq!(from_u16(900), log::LevelFilter::Warn);
+    }
+
+    #[test]
+    fn test_from_u16_error() {
+        enable_frb_logging!();
+        assert_eq!(from_u16(901), log::LevelFilter::Error);
+        assert_eq!(from_u16(1500), log::LevelFilter::Error);
+        assert_eq!(from_u16(1999), log::LevelFilter::Error);
+    }
+
+    #[test]
+    fn test_from_u16_off() {
+        enable_frb_logging!();
+        assert_eq!(from_u16(2000), log::LevelFilter::Off);
+        assert_eq!(from_u16(3000), log::LevelFilter::Off);
+    }
+
+    #[test]
+    fn test_to_u16_trace() {
+        enable_frb_logging!();
+        assert_eq!(to_u16(log::LevelFilter::Trace), 0);
+    }
+
+    #[test]
+    fn test_to_u16_debug() {
+        enable_frb_logging!();
+        assert_eq!(to_u16(log::LevelFilter::Debug), 700);
+    }
+
+    #[test]
+    fn test_to_u16_info() {
+        enable_frb_logging!();
+        assert_eq!(to_u16(log::LevelFilter::Info), 800);
+    }
+
+    #[test]
+    fn test_to_u16_warn() {
+        enable_frb_logging!();
+        assert_eq!(to_u16(log::LevelFilter::Warn), 900);
+    }
+
+    #[test]
+    fn test_to_u16_error() {
+        enable_frb_logging!();
+        assert_eq!(to_u16(log::LevelFilter::Error), 1000);
+    }
+
+    #[test]
+    fn test_to_u16_off() {
+        enable_frb_logging!();
+        assert_eq!(to_u16(log::LevelFilter::Off), 2000);
+    }
+
+    #[test]
+    fn test_log2dartlogrecord_from_log_record() {
+        enable_frb_logging!();
+        let log_record = Record::builder()
+            .level(Level::Info)
+            .target("my_target")
+            .args(format_args!("Hello, world!"))
+            .module_path(Some("my_module"))
+            .file(Some("my_file.rs"))
+            .line(Some(42))
+            .build();
+
+        let frb_record: Log2DartLogRecord = (&log_record).into();
+
+        assert_eq!(frb_record.level_number, to_u16(log::LevelFilter::Info));
+        assert_eq!(frb_record.message, "Hello, world!");
+        assert_eq!(frb_record.logger_name, "my_target");
+        assert!(frb_record.rust_log);
+        assert_eq!(frb_record.module_path, Some("my_module".to_string()));
+        assert_eq!(frb_record.file_name, Some("my_file.rs".to_string()));
+        assert_eq!(frb_record.line_number, Some(42));
+    }
+
+    #[test]
+    fn test_log2dartlogrecord_from_log_record_no_optional_fields() {
+        enable_frb_logging!();
+        let log_record = Record::builder()
+            .level(Level::Warn)
+            .target("another_target")
+            .args(format_args!("Simple message"))
+            .build();
+
+        let frb_record: Log2DartLogRecord = (&log_record).into();
+
+        assert_eq!(frb_record.level_number, to_u16(log::LevelFilter::Warn));
+        assert_eq!(frb_record.message, "Simple message");
+        assert_eq!(frb_record.logger_name, "another_target");
+        assert!(frb_record.rust_log);
+        assert_eq!(frb_record.module_path, None);
+        assert_eq!(frb_record.file_name, None);
+        assert_eq!(frb_record.line_number, None);
+    }
 }
