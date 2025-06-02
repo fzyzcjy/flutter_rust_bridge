@@ -43,8 +43,8 @@ fn auto_add_mod_to_lib_core(rust_crate_dir: &Path, rust_output_path: &Path) -> R
 
     let final_content = process_lib_rs_content(&lib_rs_content_normalized, &mod_name);
 
-    // --- Write back only if content actually changed from the original normalized state ---
-    if final_content != lib_rs_content_normalized {
+    // --- Write back only if content actually changed from the original normalized state, ignoring white spaces ---
+    if final_content.trim() != lib_rs_content_normalized.trim() {
         fs::write(&path_lib_rs, final_content.as_bytes()).unwrap(); // Write as bytes to preserve LF newlines
     } else {
         info!("No changes needed to lib.rs. Skipping write.");
