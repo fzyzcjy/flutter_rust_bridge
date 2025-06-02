@@ -65,6 +65,7 @@ const kDartModeOfPackage = {
   'frb_utils': DartMode.dart,
   'tools/frb_internal': DartMode.dart,
   'frb_example/dart_minimal': DartMode.dart,
+  'frb_example/no_rust_async': DartMode.dart,
   'frb_example/pure_dart': DartMode.dart,
   'frb_example/pure_dart_pde': DartMode.dart,
   'frb_example/dart_build_rs': DartMode.dart,
