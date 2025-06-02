@@ -25,13 +25,17 @@ macro_rules! enable_frb_logging {
   (name = $RootLoggerName:expr, maxLoglevel = $maxLogLevel:expr, customLogFunction = $log_fn:expr) => {
 
     fn _default_log_fn (record: Log2DartLogRecord) {
+      println!("{}", _construct_default_message(record));
+    }
+    fn _construct_default_message(record: Log2DartLogRecord) -> String {
       let timestamp = chrono::Local::now();
       let max_log_level = from_u16(record.level_number);
       let lang = if record.rust_log {"Rust"} else {"Dart"};
       let logger_name = record.logger_name;
       let message = record.message;
-      println!("[{timestamp:?} {max_log_level} @{lang} {logger_name}] {message})");
+      format!("[{timestamp:?} {max_log_level} @{lang} {logger_name}] {message})")
     }
+
     fn _default_logger_name () -> String {
       "FRBLogger".to_string()
     }
@@ -338,32 +342,6 @@ pub(crate) mod test {
         }
     }
 
-    // Helper to capture stdout
-    // struct CaptureStdout {
-    //     original_stdout: Option<std::io::Stdout>,
-    //     pipe_reader: Option<std::io::Stdin>, // stdin for the pipe
-    //     pipe_writer: Option<std::io::Stdout>, // stdout for the pipe
-    // }
-
-    // impl CaptureStdout {
-    //     fn new() -> Self {
-    //         // This is a bit complex and requires platform-specific code or a crate like `gag`
-    //         // For a simple example, we'll just mock the output for `_default_log_fn`
-    //         // In a real scenario, you'd use a crate like `gag` or `test_env` for robust stdout capture.
-    //         CaptureStdout {
-    //             original_stdout: None,
-    //             pipe_reader: None,
-    //             pipe_writer: None,
-    //         }
-    //     }
-
-    //     fn capture_output(&mut self) -> String {
-    //         // In a real implementation with `gag` or similar, you'd read from the captured output.
-    //         // For this example, we'll assume `_default_log_fn` is modified to accept a mutable writer.
-    //         "".to_string()
-    //     }
-    // }
-
     #[test]
     fn test_default_logger_name() {
         enable_frb_logging!();
@@ -390,13 +368,7 @@ pub(crate) mod test {
             line_number: Some(123),
         };
 
-        // Due to the nature of `println!`, we can't directly capture its output within a simple test.
-        // If you truly need to test the exact string output, you'd need to:
-        // 1. Modify `_default_log_fn` to take a `&mut dyn Write` argument instead of using `println!`.
-        // 2. Pass a `Vec<u8>` or `Cursor<Vec<u8>>` to it and convert to `String` for assertion.
-        // For now, we'll just call it to ensure it doesn't panic.
-        _default_log_fn(record);
-        // No direct assertion possible on println! output without stdout capture.
+        assert!(_construct_default_message(record).contains("DEBUG @Rust TestLogger] Test message"));
     }
 
     #[test]
