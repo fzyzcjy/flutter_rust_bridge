@@ -1,5 +1,4 @@
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
-
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "sync sse", "rustAsync sse", "sync moi", "rustAsync moi", "sync sse moi", "rustAsync sse moi"], "enableAll": true}
 
 use super::rust_opaque::NonCloneDataTwinNormal;

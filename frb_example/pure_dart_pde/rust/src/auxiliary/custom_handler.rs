@@ -1,5 +1,4 @@
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
-
 // This file mainly serves as compilation test
 
 #![allow(unused_variables)]

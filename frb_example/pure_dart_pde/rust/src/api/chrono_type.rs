@@ -1,5 +1,4 @@
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
-
 pub fn datetime_utc_twin_normal(d: chrono::DateTime<chrono::Utc>) -> chrono::DateTime<chrono::Utc> {
     use chrono::Datelike;
     use chrono::Timelike;

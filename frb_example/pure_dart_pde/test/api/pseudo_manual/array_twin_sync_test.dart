@@ -3,7 +3,6 @@
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
 import 'package:frb_example_pure_dart_pde/src/rust/api/array.dart'; // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
-
 // FRB_INTERNAL_GENERATOR: {"addCode": "import 'package:frb_example_pure_dart_pde/src/rust/api/pseudo_manual/array_twin_sync.dart';"}
 
 import 'package:frb_example_pure_dart_pde/src/rust/api/pseudo_manual/array_twin_sync.dart';

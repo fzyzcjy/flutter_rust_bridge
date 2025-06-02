@@ -3,7 +3,6 @@
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
-
 // Mirroring example:
 // The goal of mirroring is to use external objects without needing to convert them with an intermediate type
 // In this case, the struct ApplicationSettings is defined in another crate (called external-lib)

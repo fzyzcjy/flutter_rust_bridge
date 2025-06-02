@@ -1,5 +1,4 @@
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
-
 // FRB_INTERNAL_GENERATOR: {"enableAll": true}
 
 pub use crate::auxiliary::sample_types::{HideDataRaw, NonCloneDataRaw};

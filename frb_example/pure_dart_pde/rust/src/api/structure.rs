@@ -1,5 +1,4 @@
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
-
 use flutter_rust_bridge::frb;
 
 pub struct StructWithZeroFieldTwinNormal {}

@@ -1,5 +1,4 @@
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
-
 pub struct OldSimpleStruct {
     pub field: i32,
 }

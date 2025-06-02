@@ -1,5 +1,4 @@
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
-
 use crate::frb_generated::StreamSink;
 use anyhow::{anyhow, Result};
 use backtrace::Backtrace;

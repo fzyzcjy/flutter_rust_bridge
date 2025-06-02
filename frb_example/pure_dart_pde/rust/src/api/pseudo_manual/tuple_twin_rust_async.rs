@@ -3,7 +3,6 @@
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
-
 pub async fn test_tuple_twin_rust_async(value: Option<(String, i32)>) -> (String, i32) {
     if let Some((name, value)) = value {
         (format!("Hello {name}"), value + 1)

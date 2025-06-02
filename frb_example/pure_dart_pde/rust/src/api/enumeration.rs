@@ -1,5 +1,4 @@
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
-
 use crate::api::misc_example::WeekdaysTwinNormal;
 use flutter_rust_bridge::frb;
 use log::info;

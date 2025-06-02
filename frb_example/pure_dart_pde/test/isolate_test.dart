@@ -1,5 +1,4 @@
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
-
 import 'dart:isolate';
 
 import 'package:frb_example_pure_dart_pde/src/rust/api/pseudo_manual/simple_twin_sync.dart';

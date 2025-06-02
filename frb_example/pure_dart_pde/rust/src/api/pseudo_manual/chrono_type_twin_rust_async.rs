@@ -3,7 +3,6 @@
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
-
 pub async fn datetime_utc_twin_rust_async(
     d: chrono::DateTime<chrono::Utc>,
 ) -> chrono::DateTime<chrono::Utc> {

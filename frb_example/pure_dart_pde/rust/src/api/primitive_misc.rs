@@ -1,5 +1,4 @@
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
-
 use log::info;
 
 pub fn primitive_types_twin_normal(my_i32: i32, my_i64: i64, my_f64: f64, my_bool: bool) -> i32 {

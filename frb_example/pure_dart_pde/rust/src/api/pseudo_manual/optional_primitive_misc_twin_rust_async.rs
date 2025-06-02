@@ -3,7 +3,6 @@
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
-
 use log::info;
 
 pub async fn primitive_optional_types_twin_rust_async(

@@ -1,5 +1,4 @@
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
-
 import 'package:frb_example_pure_dart_pde/src/rust/api/misc_example.dart';
 import 'package:frb_example_pure_dart_pde/src/rust/api/misc_type.dart';
 import 'package:frb_example_pure_dart_pde/src/rust/api/optional.dart';

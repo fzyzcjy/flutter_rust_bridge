@@ -1,5 +1,4 @@
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
-
 #![allow(dead_code, clippy::new_without_default)]
 
 #[derive(Debug, Clone)]

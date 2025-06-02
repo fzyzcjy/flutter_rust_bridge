@@ -1,5 +1,4 @@
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
-
 use crate::auxiliary::sample_types::MySize;
 use log::info;
 
