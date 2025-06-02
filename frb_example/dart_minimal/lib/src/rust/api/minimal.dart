@@ -8,8 +8,8 @@ import 'dart:io';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:logging/logging.dart';
 
-// These functions are ignored because they are not marked as `pub`: `_default_log_fn`, `_default_logger_name`, `_default_max_log_level`, `from_u16`, `to_u16`
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `enabled`, `flush`, `from`, `log`
+// These functions are ignored because they are not marked as `pub`: `_construct_default_message`, `_default_log_fn`, `_default_logger_name`, `_default_max_log_level`, `from_u16`, `to_u16`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `enabled`, `flush`, `from`, `log`
 
 String rootLoggerName() => RustLib.instance.api.crateApiMinimalRootLoggerName();
 
