@@ -30,10 +30,10 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
-      - uses: subosito/flutter-action@v2
+      - uses: flutter-actions/setup-flutter@v4
         with:
           cache: true
-          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+          version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
       - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: nightly
@@ -104,10 +104,10 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
-      - uses: subosito/flutter-action@v2
+      - uses: flutter-actions/setup-flutter@v4
         with:
           cache: true
-          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+          version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
 
       # execute
       - run: ./frb_internal lint-dart
@@ -210,11 +210,10 @@ jobs:
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
           components: rustfmt, clippy
-      - uses: subosito/flutter-action@v2
+      - uses: flutter-actions/setup-flutter@v4
         with:
           cache: true
-          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
-          architecture: x64
+          version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
       - uses: taiki-e/install-action@cargo-llvm-cov
 
       # execute
@@ -256,11 +255,10 @@ jobs:
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
           components: rustfmt, clippy
-      - uses: subosito/flutter-action@v2
+      - uses: flutter-actions/setup-flutter@v4
         with:
           cache: true
-          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
-          architecture: x64
+          version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
       - uses: taiki-e/install-action@cargo-llvm-cov
 
       # execute
@@ -290,11 +288,10 @@ jobs:
           components: rustfmt, clippy
       - run: rustup toolchain install nightly && rustup component add rustfmt --toolchain nightly-x86_64-unknown-linux-gnu
       - run: yarn global add all-contributors-cli
-      - uses: subosito/flutter-action@v2
+      - uses: flutter-actions/setup-flutter@v4
         with:
           cache: true
-          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
-          architecture: x64
+          version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
       - uses: taiki-e/install-action@cargo-llvm-cov
 
       # execute
@@ -415,11 +412,10 @@ jobs:
       # https://docs.flutter.dev/get-started/install/linux#linux-prerequisites
       - if: runner.os == 'Linux'
         run: sudo apt-get update && sudo apt-get install clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
-      - uses: subosito/flutter-action@v2
+      - uses: flutter-actions/setup-flutter@v4
         with:
           cache: true
-          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
-          architecture: x64
+          version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
 
       # execute
       - run: ./frb_internal build-flutter --target ${{ matrix.info.target }}
@@ -456,11 +452,10 @@ jobs:
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
           components: rustfmt
-      - uses: subosito/flutter-action@v2
+      - uses: flutter-actions/setup-flutter@v4
         with:
           cache: true
-          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
-          architecture: x64
+          version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
       # https://docs.flutter.dev/get-started/install/linux#linux-prerequisites
       - if: runner.os == 'Linux'
         run: sudo apt-get update && sudo apt-get install clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
@@ -494,11 +489,10 @@ jobs:
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
           components: rustfmt
-      - uses: subosito/flutter-action@v2
+      - uses: flutter-actions/setup-flutter@v4
         with:
           cache: true
-          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
-          architecture: x64
+          version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
       # https://docs.flutter.dev/get-started/install/linux#linux-prerequisites
       - if: runner.os == 'Linux'
         run: sudo apt-get update && sudo apt-get install clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
@@ -776,11 +770,10 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
-      - uses: subosito/flutter-action@v2
+      - uses: flutter-actions/setup-flutter@v4
         with:
           cache: true
-          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
-          architecture: x64
+          version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
       # Otherwise it fails and Flutter doctor say "You need Java 11 or higher to build your app with this version of Gradle."
       - uses: actions/setup-java@v2
         with:
@@ -851,11 +844,10 @@ jobs:
           UDID=$(xcrun xctrace list devices | grep '${{ matrix.device }} (' | awk '{print $NF}' | tr -d '()')
           echo UDID=$UDID
           xcrun simctl boot "${UDID:?No Simulator with this name found}"
-      - uses: subosito/flutter-action@v2
+      - uses: flutter-actions/setup-flutter@v4
         with:
           cache: true
-          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
-          architecture: x64
+          version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
 
       # execute
       - run: ./frb_internal test-flutter-native --package ${{ matrix.package }}
@@ -934,11 +926,10 @@ jobs:
         run: sudo apt-get update && sudo apt-get install clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
       - if: runner.os == 'Linux'
         uses: pyvista/setup-headless-display-action@v3
-      - uses: subosito/flutter-action@v2
+      - uses: flutter-actions/setup-flutter@v4
         with:
           cache: true
-          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
-          architecture: x64
+          version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
 
       # execute
       - run: ./frb_internal test-flutter-native --flutter-test-args '--device-id ${{ matrix.info.platform }}' --package ${{ matrix.info.package }}
@@ -965,11 +956,10 @@ jobs:
       # https://github.com/puppeteer/puppeteer/pull/13196
       - name: Disable AppArmor
         run: echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
-      - uses: subosito/flutter-action@v2
+      - uses: flutter-actions/setup-flutter@v4
         with:
           cache: true
-          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
-          architecture: x64
+          version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
       - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
@@ -1063,10 +1053,10 @@ jobs:
 #          rustup target add wasm32-unknown-unknown
 #          rustup component add rustfmt --toolchain nightly-x86_64-unknown-linux-gnu
 #          cargo install cargo-expand
-#      - uses: subosito/flutter-action@v2
+#      - uses: flutter-actions/setup-flutter@v4
 #        with:
 #          cache: true
-#          flutter-version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+#          version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
 #
 #      # execute
 #      - run: ./frb_internal precommit --mode ${{ matrix.mode }}
