@@ -44,7 +44,7 @@ fn auto_add_mod_to_lib_core(rust_crate_dir: &Path, rust_output_path: &Path) -> R
     let final_content = process_lib_rs_content(&lib_rs_content_normalized, &mod_name);
 
     // --- Write back only if content actually changed from the original normalized state, ignoring white spaces ---
-    if final_content.trim() != lib_rs_content_normalized.trim() {
+    if final_content.replace("/n", "") != lib_rs_content_normalized.replace("/n", "") {
         fs::write(&path_lib_rs, final_content.as_bytes()).unwrap(); // Write as bytes to preserve LF newlines
     } else {
         info!("No changes needed to lib.rs. Skipping write.");
@@ -407,5 +407,33 @@ mod tests {
              // Some footer comments\n"
         );
         assert_eq!(result_content, expected_code);
+    }
+
+    #[test]
+    fn test_do_not_change_when_only_empty_lines_differ() {
+        let mod_name = "frb_generated";
+
+        let initial_content = format!(
+            "// AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT\n\
+            \n\
+            // AUTO INJECTED BY flutter_rust_bridge.\n\
+            // The following lines may not be accurate; change them according to your needs.\n\
+            mod {mod_name};\n\
+            // this export is needed for logging\n\
+            pub use crate::{mod_name}::StreamSink as __FrbStreamSinkForLogging;\n\
+            // END of AUTO INJECTED code\n\
+            \n\
+            pub mod api;\n\
+            mod auxiliary;\n\
+            mod deliberate_name_conflict;\n\
+            pub fn function_at_lib_rs()\n\
+            \n"
+        );
+        let result_content = process_lib_rs_content(&initial_content, mod_name);
+
+        assert_eq!(
+            result_content.replace("\n", ""),
+            initial_content.replace("\n", "")
+        );
     }
 }
