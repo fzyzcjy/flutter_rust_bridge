@@ -3,7 +3,6 @@
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
-
 use crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync;
 use flutter_rust_bridge::frb;
 use log::info;

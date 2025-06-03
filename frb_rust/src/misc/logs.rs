@@ -6,13 +6,13 @@ pub(crate) fn log_warn_or_println(message: &str) {
 
     if log_enabled {
         #[cfg(feature = "log")]
-        log::warn!("{}", message);
+        log::warn!("{message}");
         // frb-coverage:ignore-start
         // this is not reachable, so not coverable
         #[cfg(not(feature = "log"))]
         unreachable!();
         // frb-coverage:ignore-end
     } else {
-        println!("{}", message);
+        println!("message");
     }
 }

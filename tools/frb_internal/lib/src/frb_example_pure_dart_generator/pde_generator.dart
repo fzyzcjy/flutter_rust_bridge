@@ -66,7 +66,7 @@ Future<void> generatePureDartPde(
         final prelude = switch (extension(file.path)) {
           '.rs' ||
           '.dart' =>
-            '// AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT\n\n',
+            '// AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT\n',
           _ => '',
         };
         return prelude +
