@@ -69,6 +69,7 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgsPrima
         dump: args.dump,
         dump_all: positive_bool_arg(args.dump_all),
         rust_features: args.rust_features,
+        web_worker_pool_max_workers: args.web_worker_pool_max_workers,
     }
 }
 

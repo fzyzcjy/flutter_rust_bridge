@@ -200,6 +200,10 @@ pub(crate) struct GenerateCommandArgsPrimary {
     /// List of cargo feature flags to enable when generating
     #[arg(long)]
     pub rust_features: Option<Vec<String>>,
+
+    /// Maximum number of web workers for the worker pool (web only)
+    #[arg(long)]
+    pub web_worker_pool_max_workers: Option<usize>,
 }
 
 #[derive(Debug, Args)]
