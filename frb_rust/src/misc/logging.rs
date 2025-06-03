@@ -53,6 +53,8 @@ macro_rules! enable_frb_logging {
     pub fn max_log_level() -> String {
       $maxLogLevel.to_string()
     }
+
+    /// this is the call for logging (from Rust and Dart (as logFn))
     #[flutter_rust_bridge::frb(sync)]
     #[allow(dead_code)] // used by generated dart code
     pub fn log_fn(record: Log2DartLogRecord) {
