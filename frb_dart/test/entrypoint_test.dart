@@ -1,4 +1,5 @@
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_common.dart';
+import 'package:flutter_rust_bridge/src/consts.dart' show kIsWeb;
 import 'package:test/test.dart';
 
 void main() {
@@ -11,6 +12,39 @@ void main() {
     expect(entrypoint.initialized, true);
     expect(entrypoint.api, isA<_FakeApi>());
   });
+
+  test('Codegen version check', () {
+    final entrypoint = _FakeBaseEntrypointWithCodegenVersion('999.999.999');
+
+    // Version does not match, will throw a [StateError].
+    expectLater(
+      // ignore: invalid_use_of_protected_member
+      entrypoint.initImpl(api: _FakeApi(), forceSameCodegenVersion: true),
+      throwsA(isA<StateError>()),
+    );
+
+    // Version matched but the stem is fake, will throw an [ArgumentError].
+    expectLater(
+      // ignore: invalid_use_of_protected_member
+      entrypoint.initImpl(api: _FakeApi(), forceSameCodegenVersion: false),
+      throwsA(isA<ArgumentError>()),
+    );
+  }, skip: kIsWeb);
+}
+
+class _FakeBaseEntrypointWithCodegenVersion extends _FakeBaseEntrypoint {
+  _FakeBaseEntrypointWithCodegenVersion(this.codegenVersion);
+
+  @override
+  final String codegenVersion;
+
+  @override
+  ExternalLibraryLoaderConfig get defaultExternalLibraryLoaderConfig =>
+      const ExternalLibraryLoaderConfig(
+        stem: 'fake_codegen_version',
+        ioDirectory: 'fake_dir',
+        webPrefix: 'fake',
+      );
 }
 
 class _FakeBaseEntrypoint extends BaseEntrypoint {
@@ -33,7 +67,7 @@ class _FakeBaseEntrypoint extends BaseEntrypoint {
 
   @override
   get wireConstructor => throw UnimplementedError();
-  // frb-coverage:ignore-end
+// frb-coverage:ignore-end
 }
 
 class _FakeApi implements BaseApi {}

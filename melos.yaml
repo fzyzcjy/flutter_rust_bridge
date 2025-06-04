@@ -1,0 +1,16 @@
+name: flutter_rust_bridge_workspace
+repository: https://github.com/fzyzcjy/flutter_rust_bridge
+
+packages:
+  - frb_dart
+  - frb_example/**
+  - frb_utils
+  - tools/frb_internal
+
+ignore:
+  - '**/cargokit/build_tool'
+
+ide:
+  intellij:
+    enabled: true
+    moduleNamePrefix: ''
