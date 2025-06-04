@@ -55,22 +55,26 @@ Future<void> lintRustFormat(LintConfig config) async {
 
 Future<void> lintRustClippy(LintConfig config) async {
   for (final package in kRustPackages) {
-    final feature = getRustFeaturesOfPackage(package);
-    if (config.fix) {
+    final featureConfigurations = getRustFeaturesOfPackage(package);
+    for (final featureConfiguration in featureConfigurations) {
+      if (config.fix) {
+        await exec(
+            'cargo fix ${featureConfiguration.toCargoArgs} --allow-dirty --allow-staged',
+            relativePwd: package);
+      }
       await exec(
-          'cargo fix ${feature != null ? "--features $feature" : ""} --allow-dirty --allow-staged',
+          'cargo clippy ${featureConfiguration.toCargoArgs} ${config.fix ? "--fix --allow-dirty --allow-staged" : ""} -- -D warnings',
           relativePwd: package);
     }
-    await exec(
-        'cargo clippy ${feature != null ? "--features $feature" : ""} ${config.fix ? "--fix --allow-dirty --allow-staged" : ""} -- -D warnings',
-        relativePwd: package);
   }
 
   for (final package in kRustPackagesAllowWeb) {
-    final feature = getRustFeaturesOfPackage(package);
-    await exec(
-        'cargo clippy ${feature != null ? "--features $feature" : ""} --target wasm32-unknown-unknown ${config.fix ? "--fix --allow-dirty --allow-staged" : ""} -- -D warnings',
-        relativePwd: package);
+    final featureConfigurations = getRustFeaturesOfPackage(package);
+    for (final featureConfiguration in featureConfigurations) {
+      await exec(
+          'cargo clippy ${featureConfiguration.toCargoArgs} --target wasm32-unknown-unknown ${config.fix ? "--fix --allow-dirty --allow-staged" : ""} -- -D warnings',
+          relativePwd: package);
+    }
   }
 }
 
