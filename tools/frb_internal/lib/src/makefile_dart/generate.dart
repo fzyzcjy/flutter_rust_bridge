@@ -398,10 +398,10 @@ Future<RunCommandOutput> executeFrbCodegen(
   }
 }
 
-Future<void> _renameDirIfExists(String src, String dst) async {
-  if (!await Directory(src).exists()) return;
-  await Directory(src).rename(dst);
-}
+// Future<void> _renameDirIfExists(String src, String dst) async {
+//   if (!await Directory(src).exists()) return;
+//   await Directory(src).rename(dst);
+// }
 
 Future<void> _wrapMaybeSetExitIfChanged(
     GenerateConfig config, Future<void> Function() inner,
