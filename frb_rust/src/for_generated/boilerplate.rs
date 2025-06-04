@@ -225,7 +225,17 @@ macro_rules! frb_generated_default_handler {
 
         #[cfg(target_family = "wasm")]
         thread_local! {
-            pub static THREAD_POOL: $crate::for_generated::SimpleThreadPool = Default::default();
+            pub static THREAD_POOL: $crate::for_generated::SimpleThreadPool = {
+                match CODEGEN_WEB_WORKER_POOL_MAX_WORKERS {
+                    Some(max) => {
+                        $crate::for_generated::SimpleThreadPool::new_with_max_workers(max)
+                            .expect("Failed to create bounded WorkerPool")
+                    }
+                    None => {
+                        Default::default()
+                    }
+                }
+            };
         }
 
         #[cfg(target_family = "wasm")]

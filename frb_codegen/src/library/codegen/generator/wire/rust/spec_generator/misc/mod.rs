@@ -53,6 +53,7 @@ pub(crate) fn generate(
             context.config.default_rust_opaque_codec,
             content_hash,
             &context.config.rust_preamble,
+            context.config.web_worker_pool_max_workers,
         ),
         wire_funcs: (context.mir_pack.funcs_with_impl().iter())
             .map(|f| generate_wire_func(f, context))
@@ -174,6 +175,7 @@ fn generate_boilerplate(
     default_rust_opaque_codec: RustOpaqueCodecMode,
     content_hash: i32,
     rust_preamble: &str,
+    web_worker_pool_max_workers: Option<usize>,
 ) -> Acc<Vec<WireRustOutputCode>> {
     let rust_preamble_formatted = if rust_preamble.is_empty() {
         "".to_owned()
@@ -194,18 +196,25 @@ fn generate_boilerplate(
                     .into(),
                 ]
             }
-            TargetOrCommon::Common => vec![format!(
-                r#"{rust_preamble_formatted}flutter_rust_bridge::frb_generated_boilerplate!(
-                    default_stream_sink_codec = {default_stream_sink_codec}Codec,
-                    default_rust_opaque = RustOpaque{default_rust_opaque_codec},
-                    default_rust_auto_opaque = RustAutoOpaque{default_rust_opaque_codec},
-                );
-                pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "{version}";
-                pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = {content_hash};
-            "#,
-                version = env!("CARGO_PKG_VERSION"),
-            )
-            .into()],
+            TargetOrCommon::Common => {
+                let web_worker_config = match web_worker_pool_max_workers {
+                    Some(max) => format!("pub(crate) const CODEGEN_WEB_WORKER_POOL_MAX_WORKERS: Option<usize> = Some({max});"),
+                    None => "pub(crate) const CODEGEN_WEB_WORKER_POOL_MAX_WORKERS: Option<usize> = None;".to_string(),
+                };
+                vec![format!(
+                    r#"{rust_preamble_formatted}flutter_rust_bridge::frb_generated_boilerplate!(
+                        default_stream_sink_codec = {default_stream_sink_codec}Codec,
+                        default_rust_opaque = RustOpaque{default_rust_opaque_codec},
+                        default_rust_auto_opaque = RustAutoOpaque{default_rust_opaque_codec},
+                    );
+                    pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "{version}";
+                    pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = {content_hash};
+                    {web_worker_config}
+                "#,
+                    version = env!("CARGO_PKG_VERSION"),
+                )
+                .into()]
+            }
         }
     })
 }

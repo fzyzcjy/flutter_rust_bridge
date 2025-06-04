@@ -45,6 +45,7 @@ pub struct Config {
     pub dump: Option<Vec<ConfigDumpContent>>,
     pub dump_all: Option<bool>,
     pub rust_features: Option<Vec<String>>,
+    pub web_worker_pool_max_workers: Option<usize>,
 }
 
 #[derive(Debug, Serialize, Deserialize, Default)]
@@ -107,4 +108,5 @@ generate_merge!(
     dump,
     dump_all,
     rust_features,
+    web_worker_pool_max_workers,
 );

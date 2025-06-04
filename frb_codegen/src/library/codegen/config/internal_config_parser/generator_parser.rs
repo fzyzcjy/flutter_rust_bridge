@@ -95,6 +95,7 @@ pub(super) fn parse(args: Args) -> anyhow::Result<GeneratorInternalConfig> {
                 default_stream_sink_codec,
                 default_rust_opaque_codec,
                 rust_preamble: config.rust_preamble.clone().unwrap_or_default(),
+                web_worker_pool_max_workers: config.web_worker_pool_max_workers,
             },
             c: GeneratorWireCInternalConfig {
                 enable: full_dep,
