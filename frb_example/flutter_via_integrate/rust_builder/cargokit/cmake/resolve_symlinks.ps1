@@ -14,14 +14,21 @@ function Resolve-Symlinks {
         if ($realPath -and !$realPath.EndsWith($separator)) {
             $realPath += $separator
         }
-        $realPath += $part
+
+        $realPath += $part.Replace('\', '/')
+
+        # The slash is important when using Get-Item on Drive letters in pwsh.
+        if (-not($realPath.Contains($separator)) -and $realPath.EndsWith(':')) {
+            $realPath += '/'
+        }
+
         $item = Get-Item $realPath
-        if ($item.Target) {
-            $realPath = $item.Target.Replace('\', '/')
+        if ($item.LinkTarget) {
+            $realPath = $item.LinkTarget.Replace('\', '/')
         }
     }
     $realPath
 }
 
-$path=Resolve-Symlinks -Path $args[0]
+$path = Resolve-Symlinks -Path $args[0]
 Write-Host $path
