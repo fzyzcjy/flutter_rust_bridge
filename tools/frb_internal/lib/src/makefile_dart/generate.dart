@@ -366,10 +366,10 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
     }
 
     // move back compilation cache to speed up future usage
-    for (final subPath in ['build', 'rust/target']) {
-      await _renameDirIfExists(
-          path.join(dirTempOriginal, subPath), path.join(dirPackage, subPath));
-    }
+    // for (final subPath in ['build', 'rust/target']) {
+    //   await _renameDirIfExists(
+    //       path.join(dirTempOriginal, subPath), path.join(dirPackage, subPath));
+    // }
   });
 }
 
