@@ -744,72 +744,73 @@ jobs:
       # execute
       - run: ./frb_internal test-dart-sanitizer --package ${{ matrix.package }} --sanitizer ${{ matrix.sanitizer }}
 
-  # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
-  test_flutter_native_android:
-    name: 'Test :: Flutter :: Native:: Android'
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        package:
-          - frb_example--flutter_via_create
-          - frb_example--flutter_package--example
-          - frb_example--rust_ui_counter--ui
-          - frb_example--rust_ui_todo_list--ui
-          # no `frb_example--flutter_via_integrate` since it is similar to `flutter_via_create`
-        device:
-          - "pixel"
-          - "Nexus 6"
-        api-level: [ 29 ]
-
-    steps:
-      # setup
-      - uses: catchpoint/workflow-telemetry-action@v1
-        with:
-          comment_on_pr: false
-      - uses: actions/checkout@v4
-        with:
-          submodules: recursive
-      - uses: flutter-actions/setup-flutter@v4
-        with:
-          cache: true
-          version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
-      # Otherwise it fails and Flutter doctor say "You need Java 11 or higher to build your app with this version of Gradle."
-      - uses: actions/setup-java@v2
-        with:
-          distribution: 'zulu'
-          java-version: "17.x"
-      - name: Enable KVM group perms
-        run: |
-          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
-          sudo udevadm control --reload-rules
-          sudo udevadm trigger --name-match=kvm
-      - name: AVD cache
-        uses: actions/cache@v3
-        id: avd-cache
-        with:
-          path: |
-            ~/.android/avd/*
-            ~/.android/adb*
-          key: avd-api-level-${{ matrix.api-level }}
-      - name: Create AVD and generate snapshot for caching
-        if: steps.avd-cache.outputs.cache-hit != 'true'
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: ${{ matrix.api-level }}
-          force-avd-creation: false
-          # emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
-          # disable-animations: false
-          script: echo "Generated AVD snapshot for caching."
-
-      # execute
-      - uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: ${{ matrix.api-level }}
-          # emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
-          # arch: x86_64
-          profile: ${{ matrix.device }}
-          script: ./frb_internal test-flutter-native --package ${{ matrix.package }}
+  # TODO re-enable when upgrading CI flutter version
+  #  # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
+  #  test_flutter_native_android:
+  #    name: 'Test :: Flutter :: Native:: Android'
+  #    runs-on: ubuntu-latest
+  #    strategy:
+  #      fail-fast: false
+  #      matrix:
+  #        package:
+  #          - frb_example--flutter_via_create
+  #          - frb_example--flutter_package--example
+  #          - frb_example--rust_ui_counter--ui
+  #          - frb_example--rust_ui_todo_list--ui
+  #          # no `frb_example--flutter_via_integrate` since it is similar to `flutter_via_create`
+  #        device:
+  #          - "pixel"
+  #          - "Nexus 6"
+  #        api-level: [ 29 ]
+  #
+  #    steps:
+  #      # setup
+  #      - uses: catchpoint/workflow-telemetry-action@v1
+  #        with:
+  #          comment_on_pr: false
+  #      - uses: actions/checkout@v4
+  #        with:
+  #          submodules: recursive
+  #      - uses: flutter-actions/setup-flutter@v4
+  #        with:
+  #          cache: true
+  #          version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+  #      # Otherwise it fails and Flutter doctor say "You need Java 11 or higher to build your app with this version of Gradle."
+  #      - uses: actions/setup-java@v2
+  #        with:
+  #          distribution: 'zulu'
+  #          java-version: "17.x"
+  #      - name: Enable KVM group perms
+  #        run: |
+  #          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+  #          sudo udevadm control --reload-rules
+  #          sudo udevadm trigger --name-match=kvm
+  #      - name: AVD cache
+  #        uses: actions/cache@v3
+  #        id: avd-cache
+  #        with:
+  #          path: |
+  #            ~/.android/avd/*
+  #            ~/.android/adb*
+  #          key: avd-api-level-${{ matrix.api-level }}
+  #      - name: Create AVD and generate snapshot for caching
+  #        if: steps.avd-cache.outputs.cache-hit != 'true'
+  #        uses: reactivecircus/android-emulator-runner@v2
+  #        with:
+  #          api-level: ${{ matrix.api-level }}
+  #          force-avd-creation: false
+  #          # emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+  #          # disable-animations: false
+  #          script: echo "Generated AVD snapshot for caching."
+  #
+  #      # execute
+  #      - uses: reactivecircus/android-emulator-runner@v2
+  #        with:
+  #          api-level: ${{ matrix.api-level }}
+  #          # emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
+  #          # arch: x86_64
+  #          profile: ${{ matrix.device }}
+  #          script: ./frb_internal test-flutter-native --package ${{ matrix.package }}
 
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
   test_flutter_native_ios:
