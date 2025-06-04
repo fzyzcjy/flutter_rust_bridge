@@ -773,7 +773,9 @@ jobs:
       - uses: flutter-actions/setup-flutter@v4
         with:
           cache: true
-          version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+          # TODO upgrade other parts as well
+          version: 3.32.0
+          # version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
       # Otherwise it fails and Flutter doctor say "You need Java 11 or higher to build your app with this version of Gradle."
       - uses: actions/setup-java@v2
         with:
