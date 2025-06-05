@@ -58,13 +58,13 @@ abstract class CargoKitBuildTask extends DefaultTask {
         def manifestDir = Paths.get(project.buildscript.sourceFile.parent, project.cargokit.manifestDir)
 
         def rootProjectDir = project.rootProject.projectDir
-        
+
         if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
             project.exec {
                 commandLine 'chmod', '+x', path
             }
         }
-        
+
         project.exec {
             executable path
             args "build-gradle"
@@ -95,7 +95,7 @@ class CargoKitPlugin implements Plugin<Project> {
    private Plugin _findFlutterPlugin(Map projects) {
         for (project in projects) {
             for (plugin in project.value.getPlugins()) {
-                if (plugin.class.name == "FlutterPlugin") {
+                if (plugin.class.name == "com.flutter.gradle.FlutterPlugin") {
                     return plugin;
                 }
             }
@@ -119,7 +119,7 @@ class CargoKitPlugin implements Plugin<Project> {
         }
 
         def cargoBuildDir = "${project.buildDir}/build"
-        
+
         // Determine if the project is an application or library
         def isApplication = plugin.project.plugins.hasPlugin('com.android.application')
         def variants = isApplication ? plugin.project.android.applicationVariants : plugin.project.android.libraryVariants
@@ -132,7 +132,7 @@ class CargoKitPlugin implements Plugin<Project> {
             def jniLibs = project.android.sourceSets.maybeCreate(buildType).jniLibs;
             jniLibs.srcDir(new File(cargoOutputDir))
 
-            def platforms = plugin.getTargetPlatforms().collect()
+            def platforms = com.flutter.gradle.FlutterPluginUtils.getTargetPlatforms(project).collect()
 
             // Same thing addFlutterDependencies does in flutter.gradle
             if (buildType == "debug") {
