@@ -76,7 +76,7 @@ default = [
 ]
 backtrace = ["dep:backtrace", "allo-isolate/backtrace"]
 chrono = ["dep:chrono", "allo-isolate/chrono"]
-dart-opaque = ["dep:dart-sys"]
+dart-opaque = ["dep:dart-sys", "dep:futures", "dep:wasm-bindgen-futures"]
 portable-atomic = ["dep:portable-atomic"]
 rust-async = ["dep:tokio", "dep:futures", "dep:wasm-bindgen-futures"]
 thread-pool = ["dep:threadpool"]

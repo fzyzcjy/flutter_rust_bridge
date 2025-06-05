@@ -8,11 +8,11 @@ impl<T: Send + Sync, A: BaseArc<RustAutoOpaqueInner<T>>> Lockable
     for RustOpaqueBase<RustAutoOpaqueInner<T>, A>
 {
     type RwLockReadGuard<'a>
-        = crate::rust_async::RwLockReadGuard<'a, T>
+        = crate::rw_lock::RwLockReadGuard<'a, T>
     where
         A: 'a;
     type RwLockWriteGuard<'a>
-        = crate::rust_async::RwLockWriteGuard<'a, T>
+        = crate::rw_lock::RwLockWriteGuard<'a, T>
     where
         A: 'a;
 
@@ -28,6 +28,7 @@ impl<T: Send + Sync, A: BaseArc<RustAutoOpaqueInner<T>>> Lockable
         self.data.blocking_write()
     }
 
+    #[cfg(feature = "rust-async")]
     fn lockable_decode_async_ref<'a>(
         &'a self,
     ) -> Pin<Box<dyn Future<Output = Self::RwLockReadGuard<'a>> + Send + 'a>>
@@ -37,6 +38,7 @@ impl<T: Send + Sync, A: BaseArc<RustAutoOpaqueInner<T>>> Lockable
         Box::pin(async move { self.data.read().await })
     }
 
+    #[cfg(feature = "rust-async")]
     fn lockable_decode_async_ref_mut<'a>(
         &'a self,
     ) -> Pin<Box<dyn Future<Output = Self::RwLockWriteGuard<'a>> + Send + 'a>>

@@ -7,7 +7,26 @@ edition = "2021"
 crate-type = ["cdylib"]
 
 [dependencies]
-flutter_rust_bridge = { path = "../../../frb_rust" }
+flutter_rust_bridge = { path = "../../../frb_rust", default-features = false, features = [
+    "anyhow",
+    "dart-opaque",
+    "log",
+    "portable-atomic",
+    # Deliberately remove this feature to ensure frb can work without it
+    # "rust-async",
+    "thread-pool",
+    "user-utils",
+    "wasm-start",
+] }
+
+[target.'cfg(not(target_family = "wasm"))'.dependencies]
+tokio = { version = "1.45", features = ["rt", "rt-multi-thread"] }
+
+[target.'cfg(target_family = "wasm")'.dependencies]
+wasm-bindgen-futures = "0.4"
 
 [lints.rust]
 unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }
+
+[features]
+rust-async = ["flutter_rust_bridge/rust-async"]

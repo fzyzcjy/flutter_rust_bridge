@@ -17,12 +17,14 @@ pub trait Lockable {
     fn lockable_decode_sync_ref_mut(&self) -> Self::RwLockWriteGuard<'_>;
 
     // Manually mimic async_trait's output to avoid introducing another runtime dependency
+    #[cfg(feature = "rust-async")]
     fn lockable_decode_async_ref<'a>(
         &'a self,
     ) -> Pin<Box<dyn core::future::Future<Output = Self::RwLockReadGuard<'a>> + Send + 'a>>
     where
         Self: Sync + 'a;
 
+    #[cfg(feature = "rust-async")]
     fn lockable_decode_async_ref_mut<'a>(
         &'a self,
     ) -> Pin<Box<dyn core::future::Future<Output = Self::RwLockWriteGuard<'a>> + Send + 'a>>

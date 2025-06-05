@@ -6,5 +6,37 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// These functions are ignored because they are not marked as `pub`: `spawn`
+
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
+
+Future<int> simpleThreadPoolFn({required int a}) =>
+    RustLib.instance.api.crateApiMinimalSimpleThreadPoolFn(a: a);
+
+int simpleSyncFn({required int a}) =>
+    RustLib.instance.api.crateApiMinimalSimpleSyncFn(a: a);
+
+Future<void> dartCallbackThreadPoolFn(
+        {required FutureOr<String> Function() cb,
+        required FutureOr<void> Function() success}) =>
+    RustLib.instance.api
+        .crateApiMinimalDartCallbackThreadPoolFn(cb: cb, success: success);
+
+void dartCallbackSyncFn(
+        {required FutureOr<String> Function() cb,
+        required FutureOr<void> Function() success}) =>
+    RustLib.instance.api
+        .crateApiMinimalDartCallbackSyncFn(cb: cb, success: success);
+
+Future<Object> dartOpaqueThreadPoolFn({required Object opaque}) =>
+    RustLib.instance.api.crateApiMinimalDartOpaqueThreadPoolFn(opaque: opaque);
+
+Object dartOpaqueSyncFn({required Object opaque}) =>
+    RustLib.instance.api.crateApiMinimalDartOpaqueSyncFn(opaque: opaque);
+
+Stream<int> streamSinkThreadPoolFn() =>
+    RustLib.instance.api.crateApiMinimalStreamSinkThreadPoolFn();
+
+Stream<int> streamSinkSyncFn() =>
+    RustLib.instance.api.crateApiMinimalStreamSinkSyncFn();
