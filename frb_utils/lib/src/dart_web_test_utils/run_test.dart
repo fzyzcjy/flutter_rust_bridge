@@ -22,8 +22,10 @@ Future<void> executeTestWeb(TestWebConfig config) async {
   final webRoot = '$dartRoot/web';
   print('executeTestWeb: Pick dartRoot=$dartRoot');
 
-  List<String> cargoArgs =
-      config.rustFeatures.expand((x) => ['--features', x]).toList();
+  List<String> cargoArgs = [
+    ...config.rustFeatures.expand((x) => ['--features', x]),
+    if (!config.defaultFeatures) '--no-default-features',
+  ];
 
   print('executeTestWeb: compile');
   await executeBuildWeb(BuildWebArgs(
