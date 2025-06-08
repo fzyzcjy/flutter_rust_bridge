@@ -1,6 +1,5 @@
 use crate::frb_generated::StreamSink;
 use flutter_rust_bridge::{frb, DartFnFuture, DartOpaque};
-use std::{thread, future::Future};
 #[cfg(target_family = "wasm")]
 use wasm_bindgen_futures::spawn_local as spawn;
 
@@ -16,7 +15,7 @@ pub fn minimal_adder(a: i32, b: i32) -> i32 {
 #[cfg(not(target_family = "wasm"))]
 fn spawn<F>(fut: F)
 where
-    F: Future + Send + 'static,
+    F: std::future::Future + Send + 'static,
     F::Output: Send + 'static,
 {
     use std::{
@@ -90,11 +89,9 @@ pub fn dart_opaque_sync_fn(opaque: DartOpaque) -> DartOpaque {
 }
 
 pub fn stream_sink_thread_pool_fn(sink: StreamSink<i32>) {
-    thread::spawn(move || {
-        sink.add(1).unwrap();
-        sink.add(2).unwrap();
-        sink.add(3).unwrap();
-    });
+    sink.add(1).unwrap();
+    sink.add(2).unwrap();
+    sink.add(3).unwrap();
 }
 
 #[frb(sync)]
