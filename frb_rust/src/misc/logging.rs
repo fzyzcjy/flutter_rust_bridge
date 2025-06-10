@@ -93,7 +93,7 @@ macro_rules! enable_frb_logging {
             lineNumber: null
           );
         }
-  
+
         final logger = Logger(name);
   
         Logger.root.level = _logLevelFromStr(maxLogLevel);
@@ -288,6 +288,15 @@ macro_rules! enable_frb_logging {
     /// mapping log crate's [Record](https://docs.rs/log/latest/log/struct.Record.html) to dart's Logger [LogRecord](https://pub.dev/documentation/logging/latest/logging/LogRecord-class.html).
     /// intermediary struct to avoid Record's lifetimes
     #[derive(Clone)]
+    #[flutter_rust_bridge::frb(dart_code = "
+      LogRecord toDartLogRecord() {
+        return LogRecord(
+          FRBLogger.logLevelFromNumber(levelNumber),
+          message,
+          loggerName,
+        );
+      }
+    ")]
     pub struct Log2DartLogRecord {
       pub level_number: u16,   // The log level encoded. Decode with `FRBLogger.logLevelFromNumber(x)` in Dart or `from_u16(x) in Rust. : Rust::log::Recod::Level, Dart::Logger::LogRecord::Level
       pub message: String, // The String given to the log statement: Rust::log::Recod::args, Dart::Logger::LogRecord::message

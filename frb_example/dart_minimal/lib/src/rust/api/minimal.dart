@@ -15,6 +15,7 @@ String rootLoggerName() => RustLib.instance.api.crateApiMinimalRootLoggerName();
 
 String maxLogLevel() => RustLib.instance.api.crateApiMinimalMaxLogLevel();
 
+/// this is the call for logging (from Rust and Dart (as logFn))
 void logFn({required Log2DartLogRecord record}) =>
     RustLib.instance.api.crateApiMinimalLogFn(record: record);
 
@@ -181,6 +182,14 @@ class Log2DartLogRecord {
     this.fileName,
     this.lineNumber,
   });
+
+  LogRecord toDartLogRecord() {
+    return LogRecord(
+      FRBLogger.logLevelFromNumber(levelNumber),
+      message,
+      loggerName,
+    );
+  }
 
   @override
   int get hashCode =>
