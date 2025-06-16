@@ -22,8 +22,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   AnyhowException dco_decode_AnyhowException(dynamic raw);
 
   @protected
-  RustStreamSink<Log2DartLogRecord>
-      dco_decode_StreamSink_log_2_dart_log_record_Sse(dynamic raw);
+  RustStreamSink<MirLogRecord> dco_decode_StreamSink_mir_log_record_Sse(
+      dynamic raw);
 
   @protected
   String dco_decode_String(dynamic raw);
@@ -32,7 +32,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool dco_decode_bool(dynamic raw);
 
   @protected
-  Log2DartLogRecord dco_decode_box_autoadd_log_2_dart_log_record(dynamic raw);
+  MirLogRecord dco_decode_box_autoadd_mir_log_record(dynamic raw);
 
   @protected
   int dco_decode_box_autoadd_u_32(dynamic raw);
@@ -47,7 +47,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Uint8List dco_decode_list_prim_u_8_strict(dynamic raw);
 
   @protected
-  Log2DartLogRecord dco_decode_log_2_dart_log_record(dynamic raw);
+  MirLogRecord dco_decode_mir_log_record(dynamic raw);
 
   @protected
   String? dco_decode_opt_String(dynamic raw);
@@ -71,9 +71,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   AnyhowException sse_decode_AnyhowException(SseDeserializer deserializer);
 
   @protected
-  RustStreamSink<Log2DartLogRecord>
-      sse_decode_StreamSink_log_2_dart_log_record_Sse(
-          SseDeserializer deserializer);
+  RustStreamSink<MirLogRecord> sse_decode_StreamSink_mir_log_record_Sse(
+      SseDeserializer deserializer);
 
   @protected
   String sse_decode_String(SseDeserializer deserializer);
@@ -82,7 +81,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
-  Log2DartLogRecord sse_decode_box_autoadd_log_2_dart_log_record(
+  MirLogRecord sse_decode_box_autoadd_mir_log_record(
       SseDeserializer deserializer);
 
   @protected
@@ -98,8 +97,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer);
 
   @protected
-  Log2DartLogRecord sse_decode_log_2_dart_log_record(
-      SseDeserializer deserializer);
+  MirLogRecord sse_decode_mir_log_record(SseDeserializer deserializer);
 
   @protected
   String? sse_decode_opt_String(SseDeserializer deserializer);
@@ -124,8 +122,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       AnyhowException self, SseSerializer serializer);
 
   @protected
-  void sse_encode_StreamSink_log_2_dart_log_record_Sse(
-      RustStreamSink<Log2DartLogRecord> self, SseSerializer serializer);
+  void sse_encode_StreamSink_mir_log_record_Sse(
+      RustStreamSink<MirLogRecord> self, SseSerializer serializer);
 
   @protected
   void sse_encode_String(String self, SseSerializer serializer);
@@ -134,8 +132,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_bool(bool self, SseSerializer serializer);
 
   @protected
-  void sse_encode_box_autoadd_log_2_dart_log_record(
-      Log2DartLogRecord self, SseSerializer serializer);
+  void sse_encode_box_autoadd_mir_log_record(
+      MirLogRecord self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_u_32(int self, SseSerializer serializer);
@@ -151,8 +149,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       Uint8List self, SseSerializer serializer);
 
   @protected
-  void sse_encode_log_2_dart_log_record(
-      Log2DartLogRecord self, SseSerializer serializer);
+  void sse_encode_mir_log_record(MirLogRecord self, SseSerializer serializer);
 
   @protected
   void sse_encode_opt_String(String? self, SseSerializer serializer);

@@ -108,17 +108,17 @@ This will overwrite any programmatically set level.
 Out-of-the-box log messages are sent to _stdout_. If you want to customize the output or replace it with one from a more sophisticated logging framework (e.g. logging to a file), all you need to do is register your custom function for log outputs.
 
 For this set the parameter `customLogFunction`.
-This is a `void Function(Log2DartLogRecord)` in Dart and `fn _default_log_fn(record: Log2DartLogRecord)` in Rust.
+This is a `void Function(MirLogRecord)` in Dart and `fn _default_log_fn(record: MirLogRecord)` in Rust.
 Instead of a function you can pass a closure as well, in both languages.
 
 To do so, in your **Dart** code, call 
 ```Dart
-FRBLogger.initLogger(customLogFunction: (Log2DartLogRecord record) => {print("This is ${record.level}! ${record.message}")});
+FRBLogger.initLogger(customLogFunction: (MirLogRecord record) => {print("This is ${record.level}! ${record.message}")});
 ``` 
 or in your **Rust** code call:
 ```Rust
 enable_frb_logging!(
-  customLogFunction = (|record: Log2DartLogRecord| {
+  customLogFunction = (|record: MirLogRecord| {
     let timestamp = chrono::Local::now();
     let max_log_level = from_u16(record.level_number);
     let lang = if record.rust_log { "Rust" } else { "Dart" };
@@ -131,6 +131,8 @@ enable_frb_logging!(
 This Rust function is the implemented default.
 
 Note that your custom log function should be written in the same language where you configure it, i.e. in Dart when using `FRBLogger.initLogger` and in Rust when using `enable_frb_logging!`.
+
+If you specify a custom log function to both calls the Dart function will be used (and the Rust function will be ignored).
 
 If you are using `FRBLogger.initLogger` (and not `enable_frb_logging!()`) be careful to call this before any `.getLogger()` call!
 `.getLogger()` is instanciating the logger singleton, thus hindering `.initLogger` to do so.
@@ -203,12 +205,12 @@ We need to map the neutral logging number to the logger framework's log levels (
 
 #### Anatomie of the log output
 
-The log function in both languages takes a `Log2DartLogRecord` as parameter:
+The log function in both languages takes a `MirLogRecord` as parameter:
 
-`Log2DartLogRecord` combines the information from Dart's [LogRecord](https://pub.dev/documentation/logging/latest/logging/LogRecord-class.html) and Rust's [log::Record](https://docs.rs/log/0.4.22/log/struct.Record.html) as follows
+`MirLogRecord` combines the information from Dart's [LogRecord](https://pub.dev/documentation/logging/latest/logging/LogRecord-class.html) and Rust's [log::Record](https://docs.rs/log/0.4.22/log/struct.Record.html) as follows
 
 ```Rust
-pub struct Log2DartLogRecord {
+pub struct MirLogRecord {
     pub level_number: u16,   // The log level encoded. Decode with `FRBLogger.logLevelFromNumber(x)` in Dart or `from_u16(x)` in Rust. : `Rust::log::Record::Level`, `Dart::Logger::LogRecord::Level`
     pub message: String, // The String given to the log statement: `Rust::log::Record::args`, `Dart::Logger::LogRecord::message`
     pub logger_name: String, // The name of the logger given by `FRBLogger.initLogger(name: "MyClass");`, `Rust::log::Record::target`, `Dart::Logger::LogRecord::loggerName`

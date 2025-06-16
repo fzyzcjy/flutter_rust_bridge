@@ -4,7 +4,6 @@
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
 import '../frb_generated.dart';
-import 'dart:io';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:logging/logging.dart';
 
@@ -16,13 +15,13 @@ String rootLoggerName() => RustLib.instance.api.crateApiMinimalRootLoggerName();
 String maxLogLevel() => RustLib.instance.api.crateApiMinimalMaxLogLevel();
 
 /// this is the call for logging (from Rust and Dart (as logFn))
-void logFn({required Log2DartLogRecord record}) =>
+void logFn({required MirLogRecord record}) =>
     RustLib.instance.api.crateApiMinimalLogFn(record: record);
 
 /// uses custom type translation to translate between log::LogLevel and Dart:logging::Level
 /// loglevel is represented by a number, so that we don't need to put \import `import 'package:logging/logging.dart';`
 /// into the dart preamble in flutter_rust_bridge.yaml
-Stream<Log2DartLogRecord> initializeLog2Dart({required int maxLogLevel}) =>
+Stream<MirLogRecord> initializeLog2Dart({required int maxLogLevel}) =>
     RustLib.instance.api
         .crateApiMinimalInitializeLog2Dart(maxLogLevel: maxLogLevel);
 
@@ -30,7 +29,7 @@ Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
 
 class FRBLogger {
-  final RustStreamSink<Log2DartLogRecord> streamSink;
+  final RustStreamSink<MirLogRecord> streamSink;
 
   const FRBLogger({
     required this.streamSink,
@@ -40,115 +39,42 @@ class FRBLogger {
   static Future<FRBLogger> newInstance() =>
       RustLib.instance.api.crateApiMinimalFrbLoggerNew();
 
-  /// initialize the logging system, including the rust logger
-  static Logger initLogger(
+  static FRBDartLogger initLogger(
       {String name = 'FRBLogger',
       String maxLogLevel = 'INFO',
-      Function({required Log2DartLogRecord record}) customLogFunction =
-          logFn}) {
-    String? env_log_level = Platform.environment['LOG_LEVEL'];
-    if (env_log_level != null) {
-      print(
-          'Taking log level from env: ${env_log_level} instead of the one given by code: ${maxLogLevel}');
-      maxLogLevel = env_log_level;
-    }
+      Function({required MirLogRecord record}) customLogFunction = logFn}) {
+    //initialize the rust side
+    Level maxLogLevelAsLevel = FRBDartLogger.logLevelFromStr(maxLogLevel);
+    int maxLogLevelNumber = maxLogLevelAsLevel.value;
+    Stream<MirLogRecord> stream =
+        initializeLog2Dart(maxLogLevel: maxLogLevelNumber);
 
-    Log2DartLogRecord _toLog2DartLogRecord(LogRecord record) {
-      return Log2DartLogRecord(
-          levelNumber: record.level.value,
-          message: record.message,
-          loggerName: record.loggerName,
-          rustLog: false,
-          modulePath: null,
-          fileName: null,
-          lineNumber: null);
-    }
+    // Functions for type conversion for interaction with frb_dart/utils/frb_logging.dart
+    // Wrap logFn to match `void Function({required dynamic record})`
+    void Function({required dynamic record}) wrappedLogFn =
+        ({required dynamic record}) {
+      // Safely cast `dynamic` record back to `MirLogRecord` for the original `logFn`
+      logFn(record: record as MirLogRecord);
+    };
+    // Wrap fromDartLogRecord to match `dynamic Function(LogRecord record)`
+    MirLogRecord Function(LogRecord record) wrappedFromDartLogRecord =
+        (LogRecord record) {
+      return MirLogRecord.fromDartLogRecord(record);
+    };
+    // Wrap customLogFunction if provided, to match `void Function({required dynamic record})?`
+    void Function({required dynamic record})? wrappedCustomLogFunction;
+    wrappedCustomLogFunction = ({required dynamic record}) {
+      customLogFunction(record: record as MirLogRecord);
+    };
 
-    final logger = Logger(name);
-
-    Logger.root.level = _logLevelFromStr(maxLogLevel);
-
-    var stream = initializeLog2Dart(maxLogLevel: Logger.root.level.value);
-    // logs from Rust
-    stream.listen((record) {
-      customLogFunction(record: record);
-    });
-
-    // logs from Dart
-    Logger.root.onRecord.listen((record) {
-      customLogFunction(record: _toLog2DartLogRecord(record));
-    });
-
-    return logger;
-  }
-
-  /// get a new named logger, can be used for getting the inital logger instead initLogger()
-  static Logger getLogger([String? name]) {
-    var loggerName = name ?? rootLoggerName();
-    if (Logger.attachedLoggers.isEmpty) {
-      initLogger(
-          name: loggerName,
-          maxLogLevel: maxLogLevel(),
-          customLogFunction: logFn);
-    }
-    return Logger(loggerName);
-  }
-
-  static Level _logLevelFromStr(String levelStr) {
-    switch (levelStr.toUpperCase()) {
-      case 'ALL':
-        return Level.ALL;
-      case 'FINEST':
-        return Level.FINEST;
-      case 'FINER':
-        return Level.FINER;
-      case 'FINE':
-        return Level.FINE;
-      case 'CONFIG':
-        return Level.CONFIG;
-      case 'INFO':
-        return Level.INFO;
-      case 'WARNING':
-        return Level.WARNING;
-      case 'SEVERE':
-        return Level.SEVERE;
-      case 'SHOUT':
-        return Level.SHOUT;
-      case 'OFF':
-        return Level.OFF;
-      default:
-        print(
-            'unknown LOG_LEVEL: ${levelStr}. For potential values see https://pub.dev/documentation/logging/latest/logging/Level-class.html');
-        exit(1);
-    }
-  }
-
-  // convert from log level number to Dart package logging->Level
-  static Level logLevelFromNumber(int level) {
-    switch (level) {
-      case < 300:
-        return Level.ALL;
-      case < 400:
-        return Level.FINEST;
-      case < 500:
-        return Level.FINER;
-      case < 700:
-        return Level.FINE;
-      case < 800:
-        return Level.CONFIG;
-      case < 900:
-        return Level.INFO;
-      case < 1000:
-        return Level.WARNING;
-      case < 1200:
-        return Level.SEVERE;
-      case < 2000:
-        return Level.SHOUT;
-      case >= 2000:
-        return Level.OFF;
-      default:
-        return Level.ALL;
-    }
+    return FRBDartLogger.initAndGetSingleton<MirLogRecord>(
+      streamSink: stream,
+      name: name,
+      logFn: wrappedLogFn,
+      fromDartLogRecord: wrappedFromDartLogRecord,
+      maxLogLevel: maxLogLevel,
+      customLogFunction: wrappedCustomLogFunction,
+    );
   }
 
   @override
@@ -164,7 +90,7 @@ class FRBLogger {
 
 /// mapping log crate's [Record](https://docs.rs/log/latest/log/struct.Record.html) to dart's Logger [LogRecord](https://pub.dev/documentation/logging/latest/logging/LogRecord-class.html).
 /// intermediary struct to avoid Record's lifetimes
-class Log2DartLogRecord {
+class MirLogRecord {
   final int levelNumber;
   final String message;
   final String loggerName;
@@ -173,7 +99,7 @@ class Log2DartLogRecord {
   final String? fileName;
   final int? lineNumber;
 
-  const Log2DartLogRecord({
+  const MirLogRecord({
     required this.levelNumber,
     required this.message,
     required this.loggerName,
@@ -183,12 +109,25 @@ class Log2DartLogRecord {
     this.lineNumber,
   });
 
-  LogRecord toDartLogRecord() {
-    return LogRecord(
-      FRBLogger.logLevelFromNumber(levelNumber),
-      message,
-      loggerName,
+  static MirLogRecord fromDartLogRecord(LogRecord record) {
+    return MirLogRecord(
+      message: record.message,
+      levelNumber: record.level.value,
+      loggerName: record.loggerName,
+      rustLog: false,
     );
+  }
+
+  static LogRecord toDartLogRecordFromMir(MirLogRecord record) {
+    return LogRecord(
+      FRBDartLogger.logLevelFromNumber(record.levelNumber),
+      record.message,
+      record.loggerName,
+    );
+  }
+
+  LogRecord toDartLogRecord() {
+    return toDartLogRecordFromMir(this);
   }
 
   @override
@@ -204,7 +143,7 @@ class Log2DartLogRecord {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is Log2DartLogRecord &&
+      other is MirLogRecord &&
           runtimeType == other.runtimeType &&
           levelNumber == other.levelNumber &&
           message == other.message &&

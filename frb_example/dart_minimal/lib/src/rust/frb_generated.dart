@@ -85,10 +85,10 @@ abstract class RustLibApi extends BaseApi {
 
   Future<void> crateApiMinimalInitApp();
 
-  Stream<Log2DartLogRecord> crateApiMinimalInitializeLog2Dart(
+  Stream<MirLogRecord> crateApiMinimalInitializeLog2Dart(
       {required int maxLogLevel});
 
-  void crateApiMinimalLogFn({required Log2DartLogRecord record});
+  void crateApiMinimalLogFn({required MirLogRecord record});
 
   String crateApiMinimalMaxLogLevel();
 
@@ -153,13 +153,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<Log2DartLogRecord> crateApiMinimalInitializeLog2Dart(
+  Stream<MirLogRecord> crateApiMinimalInitializeLog2Dart(
       {required int maxLogLevel}) {
-    final logStream = RustStreamSink<Log2DartLogRecord>();
+    final logStream = RustStreamSink<MirLogRecord>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_StreamSink_log_2_dart_log_record_Sse(logStream, serializer);
+        sse_encode_StreamSink_mir_log_record_Sse(logStream, serializer);
         sse_encode_u_16(maxLogLevel, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 3, port: port_);
@@ -182,11 +182,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  void crateApiMinimalLogFn({required Log2DartLogRecord record}) {
+  void crateApiMinimalLogFn({required MirLogRecord record}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_box_autoadd_log_2_dart_log_record(record, serializer);
+        sse_encode_box_autoadd_mir_log_record(record, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 4)!;
       },
       codec: SseCodec(
@@ -282,8 +282,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  RustStreamSink<Log2DartLogRecord>
-      dco_decode_StreamSink_log_2_dart_log_record_Sse(dynamic raw) {
+  RustStreamSink<MirLogRecord> dco_decode_StreamSink_mir_log_record_Sse(
+      dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
@@ -301,9 +301,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Log2DartLogRecord dco_decode_box_autoadd_log_2_dart_log_record(dynamic raw) {
+  MirLogRecord dco_decode_box_autoadd_mir_log_record(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dco_decode_log_2_dart_log_record(raw);
+    return dco_decode_mir_log_record(raw);
   }
 
   @protected
@@ -319,7 +319,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return FRBLogger(
-      streamSink: dco_decode_StreamSink_log_2_dart_log_record_Sse(arr[0]),
+      streamSink: dco_decode_StreamSink_mir_log_record_Sse(arr[0]),
     );
   }
 
@@ -336,12 +336,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Log2DartLogRecord dco_decode_log_2_dart_log_record(dynamic raw) {
+  MirLogRecord dco_decode_mir_log_record(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
     if (arr.length != 7)
       throw Exception('unexpected arr length: expect 7 but see ${arr.length}');
-    return Log2DartLogRecord(
+    return MirLogRecord(
       levelNumber: dco_decode_u_16(arr[0]),
       message: dco_decode_String(arr[1]),
       loggerName: dco_decode_String(arr[2]),
@@ -396,9 +396,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  RustStreamSink<Log2DartLogRecord>
-      sse_decode_StreamSink_log_2_dart_log_record_Sse(
-          SseDeserializer deserializer) {
+  RustStreamSink<MirLogRecord> sse_decode_StreamSink_mir_log_record_Sse(
+      SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     throw UnimplementedError('Unreachable ()');
   }
@@ -417,10 +416,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Log2DartLogRecord sse_decode_box_autoadd_log_2_dart_log_record(
+  MirLogRecord sse_decode_box_autoadd_mir_log_record(
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return (sse_decode_log_2_dart_log_record(deserializer));
+    return (sse_decode_mir_log_record(deserializer));
   }
 
   @protected
@@ -432,8 +431,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   FRBLogger sse_decode_frb_logger(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    var var_streamSink =
-        sse_decode_StreamSink_log_2_dart_log_record_Sse(deserializer);
+    var var_streamSink = sse_decode_StreamSink_mir_log_record_Sse(deserializer);
     return FRBLogger(streamSink: var_streamSink);
   }
 
@@ -451,8 +449,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  Log2DartLogRecord sse_decode_log_2_dart_log_record(
-      SseDeserializer deserializer) {
+  MirLogRecord sse_decode_mir_log_record(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_levelNumber = sse_decode_u_16(deserializer);
     var var_message = sse_decode_String(deserializer);
@@ -461,7 +458,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_modulePath = sse_decode_opt_String(deserializer);
     var var_fileName = sse_decode_opt_String(deserializer);
     var var_lineNumber = sse_decode_opt_box_autoadd_u_32(deserializer);
-    return Log2DartLogRecord(
+    return MirLogRecord(
         levelNumber: var_levelNumber,
         message: var_message,
         loggerName: var_loggerName,
@@ -524,13 +521,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_StreamSink_log_2_dart_log_record_Sse(
-      RustStreamSink<Log2DartLogRecord> self, SseSerializer serializer) {
+  void sse_encode_StreamSink_mir_log_record_Sse(
+      RustStreamSink<MirLogRecord> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(
         self.setupAndSerialize(
             codec: SseCodec(
-          decodeSuccessData: sse_decode_log_2_dart_log_record,
+          decodeSuccessData: sse_decode_mir_log_record,
           decodeErrorData: sse_decode_AnyhowException,
         )),
         serializer);
@@ -549,10 +546,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_box_autoadd_log_2_dart_log_record(
-      Log2DartLogRecord self, SseSerializer serializer) {
+  void sse_encode_box_autoadd_mir_log_record(
+      MirLogRecord self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_log_2_dart_log_record(self, serializer);
+    sse_encode_mir_log_record(self, serializer);
   }
 
   @protected
@@ -564,8 +561,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   void sse_encode_frb_logger(FRBLogger self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_StreamSink_log_2_dart_log_record_Sse(
-        self.streamSink, serializer);
+    sse_encode_StreamSink_mir_log_record_Sse(self.streamSink, serializer);
   }
 
   @protected
@@ -583,8 +579,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_log_2_dart_log_record(
-      Log2DartLogRecord self, SseSerializer serializer) {
+  void sse_encode_mir_log_record(MirLogRecord self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_u_16(self.levelNumber, serializer);
     sse_encode_String(self.message, serializer);

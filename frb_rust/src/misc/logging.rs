@@ -24,10 +24,10 @@ macro_rules! enable_frb_logging {
   };
   (name = $RootLoggerName:expr, maxLoglevel = $maxLogLevel:expr, customLogFunction = $log_fn:expr) => {
 
-    fn _default_log_fn (record: Log2DartLogRecord) {
+    fn _default_log_fn (record: MirLogRecord) {
       println!("{}", _construct_default_message(record));
     }
-    fn _construct_default_message(record: Log2DartLogRecord) -> String {
+    fn _construct_default_message(record: MirLogRecord) -> String {
       let timestamp = chrono::Local::now();
       let max_log_level = from_u16(record.level_number);
       let lang = if record.rust_log {"Rust"} else {"Dart"};
@@ -57,7 +57,7 @@ macro_rules! enable_frb_logging {
     /// this is the call for logging (from Rust and Dart (as logFn))
     #[flutter_rust_bridge::frb(sync)]
     #[allow(dead_code)] // used by generated dart code
-    pub fn log_fn(record: Log2DartLogRecord) {
+    pub fn log_fn(record: MirLogRecord) {
       ($log_fn(record));
     }
 
@@ -66,124 +66,49 @@ macro_rules! enable_frb_logging {
     use $crate::for_generated::chrono;
 
     #[flutter_rust_bridge::frb(dart_code = "
-      import 'dart:io';
+    import 'package:logging/logging.dart';
 
-      import 'package:logging/logging.dart';
+    static FRBDartLogger initLogger(
+        {String name = 'FRBLogger',
+        String maxLogLevel = 'INFO',
+        Function({required MirLogRecord record}) customLogFunction = logFn}) {
+      //initialize the rust side
+      Level maxLogLevelAsLevel = FRBDartLogger.logLevelFromStr(maxLogLevel);
+      int maxLogLevelNumber = maxLogLevelAsLevel.value;
+      Stream<MirLogRecord> stream =
+          initializeLog2Dart(maxLogLevel: maxLogLevelNumber);
 
-      /// initialize the logging system, including the rust logger
-      static Logger initLogger(
-      {String name = 'FRBLogger', String maxLogLevel = 'INFO',
-      Function({required Log2DartLogRecord record}) customLogFunction =
-          logFn}) {
-        String? env_log_level = Platform.environment['LOG_LEVEL'];
-        if (env_log_level != null) {
-          print(
-            'Taking log level from env: ${env_log_level} instead of the one given by code: ${maxLogLevel}');
-          maxLogLevel = env_log_level!;
-        }
+      // Functions for type conversion for interaction with frb_dart/utils/frb_logging.dart
+      // Wrap logFn to match `void Function({required dynamic record})`
+      void Function({required dynamic record}) wrappedLogFn =
+          ({required dynamic record}) {
+        // Safely cast `dynamic` record back to `MirLogRecord` for the original `logFn`
+        logFn(record: record as MirLogRecord);
+      };
+      // Wrap fromDartLogRecord to match `dynamic Function(LogRecord record)`
+      MirLogRecord Function(LogRecord record) wrappedFromDartLogRecord =
+          (LogRecord record) {
+        return MirLogRecord.fromDartLogRecord(record);
+      };
+      // Wrap customLogFunction if provided, to match `void Function({required dynamic record})?`
+      void Function({required dynamic record})? wrappedCustomLogFunction;
+      wrappedCustomLogFunction = ({required dynamic record}) {
+        customLogFunction(record: record as MirLogRecord);
+      };
 
-        Log2DartLogRecord _toLog2DartLogRecord(LogRecord record) {
-          return Log2DartLogRecord(
-            levelNumber: record.level.value,
-            message: record.message,
-            loggerName: record.loggerName,
-            rustLog: false,
-            modulePath: null,
-            fileName: null,
-            lineNumber: null
-          );
-        }
-
-        final logger = Logger(name);
-  
-        Logger.root.level = _logLevelFromStr(maxLogLevel);
-  
-        var stream = initializeLog2Dart(maxLogLevel: Logger.root.level.value);
-        // logs from Rust
-        stream.listen((record) {
-          customLogFunction(record: record);
-        });
-
-        // logs from Dart
-        Logger.root.onRecord.listen((record) {
-          customLogFunction(record: _toLog2DartLogRecord(record));
-        });
-
-        return logger;
-      }
-
-      /// get a new named logger, can be used for getting the inital logger instead initLogger()
-      static Logger getLogger([String? name]) {
-        var loggerName = name ?? rootLoggerName();
-        if (Logger.attachedLoggers.isEmpty) {
-           initLogger(
-            name: loggerName,
-            maxLogLevel: maxLogLevel(),
-            customLogFunction: logFn);
-          }
-        return Logger(loggerName);
-      }
-
-      static Level _logLevelFromStr(String levelStr) {
-        switch (levelStr.toUpperCase()) {
-          case 'ALL':
-            return Level.ALL;
-          case 'FINEST':
-            return Level.FINEST;
-          case 'FINER':
-            return Level.FINER;
-          case 'FINE':
-            return Level.FINE;
-          case 'CONFIG':
-            return Level.CONFIG;
-          case 'INFO':
-            return Level.INFO;
-          case 'WARNING':
-            return Level.WARNING;
-          case 'SEVERE':
-            return Level.SEVERE;
-          case 'SHOUT':
-            return Level.SHOUT;
-          case 'OFF':
-            return Level.OFF;
-          default:
-            print(
-              'unknown LOG_LEVEL: ${levelStr}. For potential values see https://pub.dev/documentation/logging/latest/logging/Level-class.html');
-            exit(1);
-        }
-      }
-
-      // convert from log level number to Dart package logging->Level
-      static Level logLevelFromNumber(int level) {
-        switch (level) {
-          case < 300: 
-            return Level.ALL;
-          case < 400:
-            return Level.FINEST;
-          case < 500:
-            return Level.FINER;
-          case < 700:
-            return Level.FINE;
-          case < 800:
-            return Level.CONFIG;
-          case < 900: 
-            return Level.INFO;
-          case < 1000:
-            return Level.WARNING;
-          case < 1200:
-            return Level.SEVERE;
-          case < 2000:
-            return Level.SHOUT;
-          case >= 2000:
-            return Level.OFF;
-          default:
-            return Level.ALL;
-        }  
-      }
+      return FRBDartLogger.initAndGetSingleton<MirLogRecord>(
+        streamSink: stream,
+        name: name,
+        logFn: wrappedLogFn,
+        fromDartLogRecord: wrappedFromDartLogRecord,
+        maxLogLevel: maxLogLevel,
+        customLogFunction: wrappedCustomLogFunction,
+      );
+    }
     ")]
     pub struct FRBLogger {
       #[allow(clippy::crate_in_macro_def)]
-      pub stream_sink: StreamSink<Log2DartLogRecord>,
+      pub stream_sink: StreamSink<MirLogRecord>,
     }
 
     impl FRBLogger {
@@ -197,7 +122,7 @@ macro_rules! enable_frb_logging {
     /// loglevel is represented by a number, so that we don't need to put \import `import 'package:logging/logging.dart';`
     /// into the dart preamble in flutter_rust_bridge.yaml
     #[allow(dead_code)] // used by generated dart code
-    pub fn initialize_log_2_dart(log_stream: StreamSink<Log2DartLogRecord>, max_log_level: u16) {
+    pub fn initialize_log_2_dart(log_stream: StreamSink<MirLogRecord>, max_log_level: u16) {
       log::set_boxed_logger(Box::new(FRBLogger {
         stream_sink: log_stream,
       }))
@@ -289,15 +214,26 @@ macro_rules! enable_frb_logging {
     /// intermediary struct to avoid Record's lifetimes
     #[derive(Clone)]
     #[flutter_rust_bridge::frb(dart_code = "
-      LogRecord toDartLogRecord() {
-        return LogRecord(
-          FRBLogger.logLevelFromNumber(levelNumber),
-          message,
-          loggerName,
+      static MirLogRecord fromDartLogRecord(LogRecord record) {
+        return MirLogRecord(
+          message: record.message,
+          levelNumber: record.level.value,
+          loggerName: record.loggerName,
+          rustLog: false,
         );
       }
+      static LogRecord toDartLogRecordFromMir(MirLogRecord record) {
+        return LogRecord(
+          FRBDartLogger.logLevelFromNumber(record.levelNumber),
+          record.message,
+          record.loggerName,
+        );
+      }
+      LogRecord toDartLogRecord() {
+        return toDartLogRecordFromMir(this);
+      }
     ")]
-    pub struct Log2DartLogRecord {
+    pub struct MirLogRecord {
       pub level_number: u16,   // The log level encoded. Decode with `FRBLogger.logLevelFromNumber(x)` in Dart or `from_u16(x) in Rust. : Rust::log::Recod::Level, Dart::Logger::LogRecord::Level
       pub message: String, // The String given to the log statement: Rust::log::Recod::args, Dart::Logger::LogRecord::message
       pub logger_name: String, // The name of the logger given by `FRBLogger.initLogger(name: "MyClass");`, Rust::log::Recod::target, Dart::Logger::LogRecord::loggerName
@@ -311,7 +247,7 @@ macro_rules! enable_frb_logging {
       pub line_number: Option<u32>, // Rust::log::Recod::line_number, None for Dart
     }
 
-    impl From<&log::Record<'_>> for Log2DartLogRecord {
+    impl From<&log::Record<'_>> for MirLogRecord {
       fn from(record: &log::Record) -> Self {
         Self {
           level_number: to_u16(record.level().to_level_filter()),
@@ -369,7 +305,7 @@ pub(crate) mod test {
     fn test_default_log_fn() {
         enable_frb_logging!();
 
-        let record = Log2DartLogRecord {
+        let record = MirLogRecord {
             level_number: to_u16(log::LevelFilter::Debug),
             message: "Test message".to_string(),
             logger_name: "TestLogger".to_string(),
@@ -597,7 +533,7 @@ pub(crate) mod test {
     }
 
     #[test]
-    fn test_log2dartlogrecord_from_log_record() {
+    fn test_mir_log_record_from_log_record() {
         enable_frb_logging!();
         let log_record = Record::builder()
             .level(Level::Info)
@@ -608,7 +544,7 @@ pub(crate) mod test {
             .line(Some(42))
             .build();
 
-        let frb_record: Log2DartLogRecord = (&log_record).into();
+        let frb_record: MirLogRecord = (&log_record).into();
 
         assert_eq!(frb_record.level_number, to_u16(log::LevelFilter::Info));
         assert_eq!(frb_record.message, "Hello, world!");
@@ -620,7 +556,7 @@ pub(crate) mod test {
     }
 
     #[test]
-    fn test_log2dartlogrecord_from_log_record_no_optional_fields() {
+    fn test_mir_log_record_from_log_record_no_optional_fields() {
         enable_frb_logging!();
         let log_record = Record::builder()
             .level(Level::Warn)
@@ -628,7 +564,7 @@ pub(crate) mod test {
             .args(format_args!("Simple message"))
             .build();
 
-        let frb_record: Log2DartLogRecord = (&log_record).into();
+        let frb_record: MirLogRecord = (&log_record).into();
 
         assert_eq!(frb_record.level_number, to_u16(log::LevelFilter::Warn));
         assert_eq!(frb_record.message, "Simple message");
