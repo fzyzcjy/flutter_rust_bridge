@@ -104,6 +104,10 @@ macro_rules! enable_frb_logging {
           customLogFunction: wrappedCustomLogFunction,
         );
       }
+  
+      static FRBDartLogger getLogger(String? name) {
+        return FRBDartLogger.getLogger(name);
+      }
     ")]
     pub struct FRBLogger {
       #[allow(clippy::crate_in_macro_def)]

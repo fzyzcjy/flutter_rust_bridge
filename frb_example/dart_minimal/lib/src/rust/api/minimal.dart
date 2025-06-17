@@ -76,6 +76,10 @@ class FRBLogger {
     );
   }
 
+  static FRBDartLogger getLogger(String? name) {
+    return FRBDartLogger.getLogger(name);
+  }
+
   @override
   int get hashCode => streamSink.hashCode;
 
