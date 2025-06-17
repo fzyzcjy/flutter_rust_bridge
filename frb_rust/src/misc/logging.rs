@@ -28,12 +28,9 @@ macro_rules! enable_frb_logging {
       println!("{}", _construct_default_message(record));
     }
     fn _construct_default_message(record: MirLogRecord) -> String {
-      let timestamp = chrono::Local::now();
-      let max_log_level = from_u16(record.level_number);
       let lang = if record.rust_log {"Rust"} else {"Dart"};
-      let logger_name = record.logger_name;
-      let message = record.message;
-      format!("[{timestamp:?} {max_log_level} @{lang} {logger_name}] {message})")
+      let line_number = record.line_number.map_or("".to_string(), |number| format!(":{}", number));
+      format!("[{} {} @{lang} {}{line_number}] {})", record.timestamp, record.level_name.to_uppercase(), record.logger_name, record.message)
     }
 
     fn _default_logger_name () -> String {
@@ -221,13 +218,15 @@ macro_rules! enable_frb_logging {
         return MirLogRecord(
           message: record.message,
           levelNumber: record.level.value,
+          levelName: LogLevel.fromLoggingLevel(record.level).name.toUpperCase(),
+          timestamp: record.time.toString(),
           loggerName: record.loggerName,
           rustLog: false,
         );
       }
       static LogRecord toDartLogRecordFromMir(MirLogRecord record) {
         return LogRecord(
-          LogLevel.fromNumber(record.levelNumber).toLoggingLevel(),
+          LogLevel.fromString(record.levelName).toLoggingLevel(),
           record.message,
           record.loggerName,
         );
@@ -237,10 +236,12 @@ macro_rules! enable_frb_logging {
       }
     ")]
     pub struct MirLogRecord {
+      #[allow(dead_code)] // not used, but there for completeness. A custom log function might want to use this.
       pub level_number: u16,   // The log level encoded. Decode with `LogLevel.fromNumber(x).toLoggingLevel()` in Dart or `from_u16(x) in Rust. : Rust::log::Recod::Level, Dart::Logger::LogRecord::Level
+      pub level_name: String,   // The log level name in upper case.  Rust::log::Recod::Level.level().to_string(), Dart::Logger::LogRecord::Level.name
       pub message: String, // The String given to the log statement: Rust::log::Recod::args, Dart::Logger::LogRecord::message
       pub logger_name: String, // The name of the logger given by `FRBLogger.initLogger(name: "MyClass");`, Rust::log::Recod::target, Dart::Logger::LogRecord::loggerName
-      // pub time: String, // log::Recod::?, Dart::Logger::LogRecord::time --> omitted, as there is no time record in the log crate's Record
+      pub timestamp: String, // Dart::Logger::LogRecord::time, Rust: chrono::Local::now(), as there is no time record in the log crate's Record
       pub rust_log: bool, // true, if the log statement originates from Rust code
       #[allow(dead_code)] // not used, but there for completeness. A custom log function might want to use this.
       pub module_path: Option<String>, // Rust::log::Recod::module_path, None for Dart
@@ -254,6 +255,8 @@ macro_rules! enable_frb_logging {
       fn from(record: &log::Record) -> Self {
         Self {
           level_number: to_u16(record.level().to_level_filter()),
+          level_name: record.level().to_string(),
+          timestamp: chrono::Local::now().to_string(),
           message: record.args().to_string(),
           logger_name: record.target().into(),
           rust_log: true,
@@ -310,6 +313,8 @@ pub(crate) mod test {
 
         let record = MirLogRecord {
             level_number: to_u16(log::LevelFilter::Debug),
+            level_name: "debug".to_string(),
+            timestamp: chrono::Local::now().to_string(),
             message: "Test message".to_string(),
             logger_name: "TestLogger".to_string(),
             rust_log: true,
@@ -318,7 +323,10 @@ pub(crate) mod test {
             line_number: Some(123),
         };
 
-        assert!(_construct_default_message(record).contains("DEBUG @Rust TestLogger] Test message"));
+        // println!("{}", _construct_default_message(record.clone()));
+        assert!(
+            _construct_default_message(record).contains("DEBUG @Rust TestLogger:123] Test message")
+        );
     }
 
     #[test]

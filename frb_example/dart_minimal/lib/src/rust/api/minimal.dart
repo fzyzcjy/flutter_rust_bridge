@@ -95,8 +95,10 @@ class FRBLogger {
 /// intermediary struct to avoid Record's lifetimes
 class MirLogRecord {
   final int levelNumber;
+  final String levelName;
   final String message;
   final String loggerName;
+  final String timestamp;
   final bool rustLog;
   final String? modulePath;
   final String? fileName;
@@ -104,8 +106,10 @@ class MirLogRecord {
 
   const MirLogRecord({
     required this.levelNumber,
+    required this.levelName,
     required this.message,
     required this.loggerName,
+    required this.timestamp,
     required this.rustLog,
     this.modulePath,
     this.fileName,
@@ -116,6 +120,8 @@ class MirLogRecord {
     return MirLogRecord(
       message: record.message,
       levelNumber: record.level.value,
+      levelName: LogLevel.fromLoggingLevel(record.level).name.toUpperCase(),
+      timestamp: record.time.toString(),
       loggerName: record.loggerName,
       rustLog: false,
     );
@@ -123,7 +129,7 @@ class MirLogRecord {
 
   static LogRecord toDartLogRecordFromMir(MirLogRecord record) {
     return LogRecord(
-      LogLevel.fromNumber(record.levelNumber).toLoggingLevel(),
+      LogLevel.fromString(record.levelName).toLoggingLevel(),
       record.message,
       record.loggerName,
     );
@@ -136,8 +142,10 @@ class MirLogRecord {
   @override
   int get hashCode =>
       levelNumber.hashCode ^
+      levelName.hashCode ^
       message.hashCode ^
       loggerName.hashCode ^
+      timestamp.hashCode ^
       rustLog.hashCode ^
       modulePath.hashCode ^
       fileName.hashCode ^
@@ -149,8 +157,10 @@ class MirLogRecord {
       other is MirLogRecord &&
           runtimeType == other.runtimeType &&
           levelNumber == other.levelNumber &&
+          levelName == other.levelName &&
           message == other.message &&
           loggerName == other.loggerName &&
+          timestamp == other.timestamp &&
           rustLog == other.rustLog &&
           modulePath == other.modulePath &&
           fileName == other.fileName &&

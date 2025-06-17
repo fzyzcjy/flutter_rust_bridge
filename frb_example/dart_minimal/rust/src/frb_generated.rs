@@ -350,16 +350,20 @@ impl SseDecode for crate::api::minimal::MirLogRecord {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut var_levelNumber = <u16>::sse_decode(deserializer);
+        let mut var_levelName = <String>::sse_decode(deserializer);
         let mut var_message = <String>::sse_decode(deserializer);
         let mut var_loggerName = <String>::sse_decode(deserializer);
+        let mut var_timestamp = <String>::sse_decode(deserializer);
         let mut var_rustLog = <bool>::sse_decode(deserializer);
         let mut var_modulePath = <Option<String>>::sse_decode(deserializer);
         let mut var_fileName = <Option<String>>::sse_decode(deserializer);
         let mut var_lineNumber = <Option<u32>>::sse_decode(deserializer);
         return crate::api::minimal::MirLogRecord {
             level_number: var_levelNumber,
+            level_name: var_levelName,
             message: var_message,
             logger_name: var_loggerName,
+            timestamp: var_timestamp,
             rust_log: var_rustLog,
             module_path: var_modulePath,
             file_name: var_fileName,
@@ -474,8 +478,10 @@ impl flutter_rust_bridge::IntoDart for crate::api::minimal::MirLogRecord {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         [
             self.level_number.into_into_dart().into_dart(),
+            self.level_name.into_into_dart().into_dart(),
             self.message.into_into_dart().into_dart(),
             self.logger_name.into_into_dart().into_dart(),
+            self.timestamp.into_into_dart().into_dart(),
             self.rust_log.into_into_dart().into_dart(),
             self.module_path.into_into_dart().into_dart(),
             self.file_name.into_into_dart().into_dart(),
@@ -554,8 +560,10 @@ impl SseEncode for crate::api::minimal::MirLogRecord {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <u16>::sse_encode(self.level_number, serializer);
+        <String>::sse_encode(self.level_name, serializer);
         <String>::sse_encode(self.message, serializer);
         <String>::sse_encode(self.logger_name, serializer);
+        <String>::sse_encode(self.timestamp, serializer);
         <bool>::sse_encode(self.rust_log, serializer);
         <Option<String>>::sse_encode(self.module_path, serializer);
         <Option<String>>::sse_encode(self.file_name, serializer);

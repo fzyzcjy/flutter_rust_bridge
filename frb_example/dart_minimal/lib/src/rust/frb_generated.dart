@@ -339,16 +339,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   MirLogRecord dco_decode_mir_log_record(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
-    if (arr.length != 7)
-      throw Exception('unexpected arr length: expect 7 but see ${arr.length}');
+    if (arr.length != 9)
+      throw Exception('unexpected arr length: expect 9 but see ${arr.length}');
     return MirLogRecord(
       levelNumber: dco_decode_u_16(arr[0]),
-      message: dco_decode_String(arr[1]),
-      loggerName: dco_decode_String(arr[2]),
-      rustLog: dco_decode_bool(arr[3]),
-      modulePath: dco_decode_opt_String(arr[4]),
-      fileName: dco_decode_opt_String(arr[5]),
-      lineNumber: dco_decode_opt_box_autoadd_u_32(arr[6]),
+      levelName: dco_decode_String(arr[1]),
+      message: dco_decode_String(arr[2]),
+      loggerName: dco_decode_String(arr[3]),
+      timestamp: dco_decode_String(arr[4]),
+      rustLog: dco_decode_bool(arr[5]),
+      modulePath: dco_decode_opt_String(arr[6]),
+      fileName: dco_decode_opt_String(arr[7]),
+      lineNumber: dco_decode_opt_box_autoadd_u_32(arr[8]),
     );
   }
 
@@ -452,16 +454,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   MirLogRecord sse_decode_mir_log_record(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_levelNumber = sse_decode_u_16(deserializer);
+    var var_levelName = sse_decode_String(deserializer);
     var var_message = sse_decode_String(deserializer);
     var var_loggerName = sse_decode_String(deserializer);
+    var var_timestamp = sse_decode_String(deserializer);
     var var_rustLog = sse_decode_bool(deserializer);
     var var_modulePath = sse_decode_opt_String(deserializer);
     var var_fileName = sse_decode_opt_String(deserializer);
     var var_lineNumber = sse_decode_opt_box_autoadd_u_32(deserializer);
     return MirLogRecord(
         levelNumber: var_levelNumber,
+        levelName: var_levelName,
         message: var_message,
         loggerName: var_loggerName,
+        timestamp: var_timestamp,
         rustLog: var_rustLog,
         modulePath: var_modulePath,
         fileName: var_fileName,
@@ -582,8 +588,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_mir_log_record(MirLogRecord self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_u_16(self.levelNumber, serializer);
+    sse_encode_String(self.levelName, serializer);
     sse_encode_String(self.message, serializer);
     sse_encode_String(self.loggerName, serializer);
+    sse_encode_String(self.timestamp, serializer);
     sse_encode_bool(self.rustLog, serializer);
     sse_encode_opt_String(self.modulePath, serializer);
     sse_encode_opt_String(self.fileName, serializer);

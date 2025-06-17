@@ -128,12 +128,11 @@ or in your **Rust** code call:
 ```Rust
 enable_frb_logging!(
   customLogFunction = (|record: MirLogRecord| {
-    let timestamp = chrono::Local::now();
-    let max_log_level = from_u16(record.level_number);
-    let lang = if record.rust_log { "Rust" } else { "Dart" };
-    let logger_name = record.logger_name;
-    let message = record.message;
-    println!("[{timestamp:?} {max_log_level} @{lang} {logger_name}] {message})");
+      let lang = if record.rust_log {"Rust"} else {"Dart"};
+      let line_number = record.line_number
+        .map_or("".to_string(), |number| format!(":{}", number));
+      format!("[{} {} @{lang} {}{line_number}] {})", record.timestamp,      
+        record.level_name, record.logger_name, record.message)
   })
 );
 ```

@@ -159,6 +159,34 @@ enum LogLevel {
         return Level.OFF;
     }
   }
+
+  /// converts a LogLevel to a logging package's level
+  static LogLevel fromLoggingLevel(Level level) {
+    switch (level) {
+      case Level.ALL:
+        return LogLevel.all;
+      case Level.FINEST:
+        return LogLevel.finest;
+      case Level.FINER:
+        return LogLevel.finer;
+      case Level.FINE:
+        return LogLevel.trace;
+      case Level.CONFIG:
+        return LogLevel.debug;
+      case Level.INFO:
+        return LogLevel.info;
+      case Level.WARNING:
+        return LogLevel.warn;
+      case Level.SEVERE:
+        return LogLevel.error;
+      case Level.SHOUT:
+        return LogLevel.fatal;
+      case Level.OFF:
+        return LogLevel.off;
+      default:
+        throw Exception("Unknown Dart logging level: $level");
+    }
+  }
 }
 
 /// Call Log functions from the Dart side
