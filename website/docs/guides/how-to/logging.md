@@ -180,7 +180,7 @@ late final FRBDartLogger logger;
     maxLogLevel: LogLevel.debug,
     customLogFunction: ({required record}) {
       final message =
-          "${LogLevel.fromNumber(record.levelNumber)} ${record.rustLog ? "Rust: " : "Dart: "}  ${record.message}";
+          "[${record.timestamp} ${record.levelName} ${record.rustLog ? "Rust: " : "Dart: "} LoggerName: ${record.loggerName}:${record.lineNumber ?? ""}]\n ${record.message}";
       frameworkLogger.log(_toLoggerLevel(record.levelNumber), message);
     },
   );
