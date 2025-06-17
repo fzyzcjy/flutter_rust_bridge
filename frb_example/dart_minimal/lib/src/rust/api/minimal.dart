@@ -41,11 +41,10 @@ class FRBLogger {
 
   static FRBDartLogger initLogger(
       {String name = 'FRBLogger',
-      String maxLogLevel = 'INFO',
+      LogLevel maxLogLevel = LogLevel.info,
       Function({required MirLogRecord record}) customLogFunction = logFn}) {
     //initialize the rust side
-    Level maxLogLevelAsLevel = FRBDartLogger.logLevelFromStr(maxLogLevel);
-    int maxLogLevelNumber = maxLogLevelAsLevel.value;
+    int maxLogLevelNumber = maxLogLevel.levelNumberThreshold;
     Stream<MirLogRecord> stream =
         initializeLog2Dart(maxLogLevel: maxLogLevelNumber);
 
@@ -120,7 +119,7 @@ class MirLogRecord {
 
   static LogRecord toDartLogRecordFromMir(MirLogRecord record) {
     return LogRecord(
-      FRBDartLogger.logLevelFromNumber(record.levelNumber),
+      LogLevel.fromNumber(record.levelNumber).toLoggingLevel(),
       record.message,
       record.loggerName,
     );

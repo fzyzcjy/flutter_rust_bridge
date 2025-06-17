@@ -4,6 +4,163 @@ import 'dart:io';
 // ignore: depend_on_referenced_packages
 import 'package:logging/logging.dart';
 
+/// FRB normalized LogLevels
+/// Keeps the more fine granular log levels of the logging.dart package while overwriting
+/// the unusual ones with the log level names from the rust log crate.
+///
+/// This enum also handles the conversion between
+/// its own levels and integer numbers to `logging.dart` package's `Level` enum.
+enum LogLevel {
+  /// Maps to `Level.ALL` and integer levels below 300.
+  all(
+    level: Level.ALL,
+    levelNumberThreshold: 300,
+  ),
+
+  /// Maps to `Level.FINEST` and integer levels below 400.
+  finest(
+    level: Level.FINEST,
+    levelNumberThreshold: 400,
+  ),
+
+  /// Maps to `Level.FINER` and integer levels below 500.
+  finer(
+    level: Level.FINER,
+    levelNumberThreshold: 500,
+  ),
+
+  /// Maps to `Level.FINE` and integer levels below 700. This is typically used for Trace.
+  trace(
+    level: Level.FINE,
+    levelNumberThreshold: 700,
+  ),
+
+  /// Maps to `Level.CONFIG` and integer levels below 800. This is typically used for Debug.
+  debug(
+    level: Level.CONFIG,
+    levelNumberThreshold: 800,
+  ),
+
+  /// Maps to `Level.INFO` and integer levels below 900.
+  info(
+    level: Level.INFO,
+    levelNumberThreshold: 900,
+  ),
+
+  /// Maps to `Level.WARNING` and integer levels below 1000. This is typically used for Warn.
+  warn(
+    level: Level.WARNING,
+    levelNumberThreshold: 1000,
+  ),
+
+  /// Maps to `Level.SEVERE` and integer levels below 1200. This is typically used for Error.
+  error(
+    level: Level.SEVERE,
+    levelNumberThreshold: 1200,
+  ),
+
+  /// Maps to `Level.SHOUT` and integer levels below 2000. This is typically used for Fatal/Shout.
+  fatal(
+    level: Level.SHOUT,
+    levelNumberThreshold: 2000,
+  ),
+
+  /// Maps to `Level.OFF` and integer levels equal to or above 2000.
+  off(
+    level: Level.OFF,
+    levelNumberThreshold: 2000, // Or any value that signifies 'Off'
+  );
+
+  /// logging Level
+  final Level level;
+
+  /// threshold up to which number mapps to which level
+  final int levelNumberThreshold;
+
+  const LogLevel({
+    required this.level,
+    required this.levelNumberThreshold,
+  });
+
+  /// Converts an integer level number to a [LogLevel] enum.
+  /// The conversion is based on predefined thresholds and the enum's declaration order.
+  static LogLevel fromNumber(int levelNumber) {
+    // The first level whose threshold is greater than the given levelNumber is the correct one.
+    // This assumes the enum values are declared in ascending order of their thresholds.
+    for (final level in LogLevel.values) {
+      // For 'Off', it's usually `>=` the threshold, while others are `<`.
+      // Handle the 'Off' case explicitly if its threshold logic is different.
+      if (level == LogLevel.off) {
+        if (levelNumber >= level.levelNumberThreshold) {
+          return LogLevel.off;
+        }
+      } else if (levelNumber < level.levelNumberThreshold) {
+        return level;
+      }
+    }
+    // If no specific level is matched (e.g., if levelNumber is very high but doesn't explicitly hit Off's threshold),
+    // default to Off. This can happen if the last regular level's threshold is passed.
+    return LogLevel.off;
+  }
+
+  /// Maps a string log level name to a `logging.Level`.
+  /// This is used for parsing initial configuration from strings (e.g., environment variables).
+  static LogLevel fromString(String levelStr) {
+    switch (levelStr.toUpperCase()) {
+      case 'ALL':
+        return LogLevel.all;
+      case 'FINEST':
+        return LogLevel.finest;
+      case 'FINER':
+        return LogLevel.finer;
+      case 'TRACE':
+        return LogLevel.trace;
+      case 'DEBUG':
+        return LogLevel.debug;
+      case 'INFO':
+        return LogLevel.info;
+      case 'WARN':
+        return LogLevel.warn;
+      case 'ERROR':
+        return LogLevel.error;
+      case 'FATAL':
+        return LogLevel.fatal;
+      case 'OFF':
+        return LogLevel.off;
+      default:
+        print(
+            'Unknown LOG_LEVEL: "$levelStr". For potential values, refer to LogLevel enum definition.');
+        exit(1); // Exit, as this is a critical configuration error
+    }
+  }
+
+  /// converts a LogLevel to a logging package's level
+  Level toLoggingLevel() {
+    switch (this) {
+      case LogLevel.all:
+        return Level.ALL;
+      case LogLevel.finest:
+        return Level.FINEST;
+      case LogLevel.finer:
+        return Level.FINER;
+      case LogLevel.trace:
+        return Level.FINE;
+      case LogLevel.debug:
+        return Level.CONFIG;
+      case LogLevel.info:
+        return Level.INFO;
+      case LogLevel.warn:
+        return Level.WARNING;
+      case LogLevel.error:
+        return Level.SEVERE;
+      case LogLevel.fatal:
+        return Level.SHOUT;
+      case LogLevel.off:
+        return Level.OFF;
+    }
+  }
+}
+
 /// Call Log functions from the Dart side
 /// to be instantiated with FRBLogger.initLogger()
 /// NOT initAndGetSingleton directly!
@@ -34,13 +191,14 @@ class FRBDartLogger<MirLogRecord> {
   /// This method is designed to be called **once** from the generated dart file.
   /// It takes the concrete `MirLogRecord` type's parameters as `dynamic` arguments,
   /// then creates and stores the strongly-typed singleton.
-  static FRBDartLogger<M> initAndGetSingleton<M>(
-      {required Stream<M> streamSink,
-      required void Function({required dynamic record}) logFn,
-      required M Function(LogRecord record) fromDartLogRecord,
-      String name = 'FRBLogger',
-      String maxLogLevel = 'INFO',
-      void Function({required dynamic record})? customLogFunction}) {
+  static FRBDartLogger<MirLogRecordType> initAndGetSingleton<MirLogRecordType>({
+    required Stream<MirLogRecordType> streamSink,
+    required void Function({required dynamic record}) logFn,
+    required MirLogRecordType Function(LogRecord record) fromDartLogRecord,
+    String name = 'FRBLogger',
+    LogLevel maxLogLevel = LogLevel.info,
+    void Function({required dynamic record})? customLogFunction,
+  }) {
     if (_singleton != null) {
       throw Exception('Called FRBLogger initialisation twice');
     }
@@ -49,22 +207,22 @@ class FRBDartLogger<MirLogRecord> {
     // The type `dynamic` acts as a placeholder here, but the actual functions
     // passed in `streamSink`, `logFn`, `fromDartLogRecord` will be correctly typed
     // from the calling side (generated dart code).
-    _singleton = FRBDartLogger<M>._(
+    _singleton = FRBDartLogger<MirLogRecordType>._(
       streamSink: streamSink,
       logFn: logFn,
       fromDartLogRecord: fromDartLogRecord,
     );
 
     Logger(name);
-    _currentLoggerName = name; // Accessing static field directly
+    _currentLoggerName = name;
 
     String? envLogLevel = Platform.environment['LOG_LEVEL'];
     if (envLogLevel != null) {
       print(
           'Taking log level from env: $envLogLevel instead of the one given by code: $maxLogLevel');
-      maxLogLevel = envLogLevel;
+      maxLogLevel = LogLevel.fromString(envLogLevel);
     }
-    Logger.root.level = logLevelFromStr(maxLogLevel);
+    Logger.root.level = maxLogLevel.toLoggingLevel();
 
     final Function({required dynamic record}) usedlogFn =
         customLogFunction ?? _singleton!.logFn;
@@ -79,14 +237,15 @@ class FRBDartLogger<MirLogRecord> {
       usedlogFn(record: _singleton!.fromDartLogRecord(record));
     });
 
-    return _singleton! as FRBDartLogger<M>; // Return the static _singleton
+    return _singleton! as FRBDartLogger<MirLogRecordType>;
   }
 
   /// Gets the initialized singleton logger.
   /// It returns `FRBDartLogger<dynamic>` as `frb_logger.dart` doesn't know the concrete type.
   static FRBDartLogger<dynamic> getLogger([String? name]) {
-    if (_singleton != null) {
-      throw Exception("You have to call FRBLogger.initLogger() first!");
+    if (_singleton == null) {
+      throw Exception(
+          "You have to call FRBLogger.initAndGetSingleton() first!");
     }
     var loggerName = name ?? _currentLoggerName;
     Logger(loggerName);
@@ -97,85 +256,27 @@ class FRBDartLogger<MirLogRecord> {
   // These logging methods use the MirLogRecord type from the instance they are called on.
   /// trace level logging output
   trace(String message) {
-    Logger(_currentLoggerName).log(Level.FINE, message);
+    Logger(_currentLoggerName).log(LogLevel.trace.level, message);
   }
 
   /// debug level logging output
   debug(String message) {
-    Logger(_currentLoggerName).log(Level.CONFIG, message);
+    Logger(_currentLoggerName).log(LogLevel.debug.level, message);
   }
 
   /// info level logging output
   info(String message) {
-    Logger(_currentLoggerName).log(Level.INFO, message);
+    Logger(_currentLoggerName).log(LogLevel.info.level, message);
   }
 
   /// warn level logging output
   warn(String message) {
-    Logger(_currentLoggerName).log(Level.WARNING, message);
+    Logger(_currentLoggerName).log(LogLevel.warn.level, message);
   }
 
   /// error level logging output
   error(String message) {
-    Logger(_currentLoggerName).log(Level.SHOUT, message);
-  }
-
-  /// convert to Log Level from a String
-  static Level logLevelFromStr(String levelStr) {
-    switch (levelStr.toUpperCase()) {
-      case 'ALL':
-        return Level.ALL;
-      case 'FINEST':
-        return Level.FINEST;
-      case 'FINER':
-        return Level.FINER;
-      case 'FINE':
-        return Level.FINE;
-      case 'CONFIG':
-        return Level.CONFIG;
-      case 'INFO':
-        return Level.INFO;
-      case 'WARNING':
-        return Level.WARNING;
-      case 'SEVERE':
-        return Level.SEVERE;
-      case 'SHOUT':
-        return Level.SHOUT;
-      case 'OFF':
-        return Level.OFF;
-      default:
-        print(
-            'unknown LOG_LEVEL: $levelStr. For potential values see https://pub.dev/documentation/logging/latest/logging/Level-class.html');
-        exit(1);
-    }
-  }
-
-  /// convert from log level number to Dart package logging->Level
-  static Level logLevelFromNumber(int level) {
-    switch (level) {
-      case < 300:
-        return Level.ALL;
-      case < 400:
-        return Level.FINEST;
-      case < 500:
-        return Level.FINER;
-      case < 700:
-        return Level.FINE;
-      case < 800:
-        return Level.CONFIG;
-      case < 900:
-        return Level.INFO;
-      case < 1000:
-        return Level.WARNING;
-      case < 1200:
-        return Level.SEVERE;
-      case < 2000:
-        return Level.SHOUT;
-      case >= 2000:
-        return Level.OFF;
-      default:
-        return Level.ALL;
-    }
+    Logger(_currentLoggerName).log(LogLevel.error.level, message);
   }
 
   @override

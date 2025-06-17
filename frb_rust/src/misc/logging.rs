@@ -69,42 +69,41 @@ macro_rules! enable_frb_logging {
     import 'package:logging/logging.dart';
 
     static FRBDartLogger initLogger(
-        {String name = 'FRBLogger',
-        String maxLogLevel = 'INFO',
-        Function({required MirLogRecord record}) customLogFunction = logFn}) {
-      //initialize the rust side
-      Level maxLogLevelAsLevel = FRBDartLogger.logLevelFromStr(maxLogLevel);
-      int maxLogLevelNumber = maxLogLevelAsLevel.value;
-      Stream<MirLogRecord> stream =
-          initializeLog2Dart(maxLogLevel: maxLogLevelNumber);
+      {String name = 'FRBLogger',
+      LogLevel maxLogLevel = LogLevel.info,
+      Function({required MirLogRecord record}) customLogFunction = logFn}) {
+        //initialize the rust side
+        int maxLogLevelNumber = maxLogLevel.levelNumberThreshold;
+        Stream<MirLogRecord> stream =
+            initializeLog2Dart(maxLogLevel: maxLogLevelNumber);
 
-      // Functions for type conversion for interaction with frb_dart/utils/frb_logging.dart
-      // Wrap logFn to match `void Function({required dynamic record})`
-      void Function({required dynamic record}) wrappedLogFn =
-          ({required dynamic record}) {
-        // Safely cast `dynamic` record back to `MirLogRecord` for the original `logFn`
-        logFn(record: record as MirLogRecord);
-      };
-      // Wrap fromDartLogRecord to match `dynamic Function(LogRecord record)`
-      MirLogRecord Function(LogRecord record) wrappedFromDartLogRecord =
-          (LogRecord record) {
-        return MirLogRecord.fromDartLogRecord(record);
-      };
-      // Wrap customLogFunction if provided, to match `void Function({required dynamic record})?`
-      void Function({required dynamic record})? wrappedCustomLogFunction;
-      wrappedCustomLogFunction = ({required dynamic record}) {
-        customLogFunction(record: record as MirLogRecord);
-      };
+        // Functions for type conversion for interaction with frb_dart/utils/frb_logging.dart
+        // Wrap logFn to match `void Function({required dynamic record})`
+        void Function({required dynamic record}) wrappedLogFn =
+            ({required dynamic record}) {
+          // Safely cast `dynamic` record back to `MirLogRecord` for the original `logFn`
+          logFn(record: record as MirLogRecord);
+        };
+        // Wrap fromDartLogRecord to match `dynamic Function(LogRecord record)`
+        MirLogRecord Function(LogRecord record) wrappedFromDartLogRecord =
+            (LogRecord record) {
+          return MirLogRecord.fromDartLogRecord(record);
+        };
+        // Wrap customLogFunction if provided, to match `void Function({required dynamic record})?`
+        void Function({required dynamic record})? wrappedCustomLogFunction;
+        wrappedCustomLogFunction = ({required dynamic record}) {
+          customLogFunction(record: record as MirLogRecord);
+        };
 
-      return FRBDartLogger.initAndGetSingleton<MirLogRecord>(
-        streamSink: stream,
-        name: name,
-        logFn: wrappedLogFn,
-        fromDartLogRecord: wrappedFromDartLogRecord,
-        maxLogLevel: maxLogLevel,
-        customLogFunction: wrappedCustomLogFunction,
-      );
-    }
+        return FRBDartLogger.initAndGetSingleton<MirLogRecord>(
+          streamSink: stream,
+          name: name,
+          logFn: wrappedLogFn,
+          fromDartLogRecord: wrappedFromDartLogRecord,
+          maxLogLevel: maxLogLevel,
+          customLogFunction: wrappedCustomLogFunction,
+        );
+      }
     ")]
     pub struct FRBLogger {
       #[allow(clippy::crate_in_macro_def)]
@@ -199,7 +198,7 @@ macro_rules! enable_frb_logging {
     }
 
     /// custom coders for log::LogLevel <-> Dart:logging::Level
-    #[frb(rust2dart(dart_type = "Level", dart_code = "FRBLogger.logLevelFromNumber({})"))]
+    #[frb(rust2dart(dart_type = "Level", dart_code = "LogLevel.fromNumber({}).toLoggingLevel()"))]
     #[allow(dead_code)] // used by generated dart code
     pub fn encode_log_level_filter(level: log::LevelFilter) -> u16 {
       to_u16(level)
@@ -224,7 +223,7 @@ macro_rules! enable_frb_logging {
       }
       static LogRecord toDartLogRecordFromMir(MirLogRecord record) {
         return LogRecord(
-          FRBDartLogger.logLevelFromNumber(record.levelNumber),
+          LogLevel.fromNumber(record.levelNumber).toLoggingLevel(),
           record.message,
           record.loggerName,
         );
@@ -234,7 +233,7 @@ macro_rules! enable_frb_logging {
       }
     ")]
     pub struct MirLogRecord {
-      pub level_number: u16,   // The log level encoded. Decode with `FRBLogger.logLevelFromNumber(x)` in Dart or `from_u16(x) in Rust. : Rust::log::Recod::Level, Dart::Logger::LogRecord::Level
+      pub level_number: u16,   // The log level encoded. Decode with `LogLevel.fromNumber(x).toLoggingLevel()` in Dart or `from_u16(x) in Rust. : Rust::log::Recod::Level, Dart::Logger::LogRecord::Level
       pub message: String, // The String given to the log statement: Rust::log::Recod::args, Dart::Logger::LogRecord::message
       pub logger_name: String, // The name of the logger given by `FRBLogger.initLogger(name: "MyClass");`, Rust::log::Recod::target, Dart::Logger::LogRecord::loggerName
       // pub time: String, // log::Recod::?, Dart::Logger::LogRecord::time --> omitted, as there is no time record in the log crate's Record
