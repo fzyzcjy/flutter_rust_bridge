@@ -3,13 +3,9 @@
 `flutter_rust_bridge` comes with out-of-the-box logging, but you can override it with your own as well.
 More concretely, you can overwrite the log outputting function with the one(s) of your logging framework(s) of choice, which will automatically log statements from Rust as well.
 
-This implementation assumes that one is treating the Rust code as a library in Dart. 
-Rust log statements are forwarded to Dart, all log settings (levels, etc) are to be set from the Dart code. 
-If you need it the other way around feel free to create an issue ticket.
-
 Under the hood (and in a nutshell) our implementation uses the [rust 'log' crate](https://crates.io/crates/log) and the [Dart 'logging' package](https://pub.dev/packages/logging), which are maintained by the respective language teams.
 
-Log messages are sent via a FRB's Stream implementation from Rust to Dart. 
+Log messages are sent via a FRB's Stream implementation from Rust to Dart.
 
 ## Setup
 ### 1. add the logging dependency
@@ -31,7 +27,7 @@ Replace `frb_generated` in `crate::frb_generated::StreamSink` with the module pa
 
 ### 3. activate logging
 Finally, add the macro call `enable_frb_logging!();` in a **Rust** file that is part of your `rust_input` of your `flutter_rust_bridge.yaml` configuration, at any place outside of an item (e.g. function or struct). 
-Your need to make it available via `use flutter_rust_bridge::enable_frb_logging;`.
+You need to make it available via `use flutter_rust_bridge::enable_frb_logging;`.
 
 It needs to be there so the code generation is picking it up and generates the needed bridge code for connecting Rust and Dart for logging.
 
@@ -48,16 +44,29 @@ All logs will be printed to `stdout`.
 You can issue log statements in Rust and Dart by following the usual way done in the respective 3rd party packages:
 
 In **Rust** simply call `log::info!()` (or any of the [log crates log levels](https://docs.rs/log/latest/log/enum.Level.html)).
-Note that the log levels are translated to [Dart's logging package equivalents](https://pub.dev/documentation/logging/latest/logging/Level-class.html).
 
-In **Dart** get a handle to the logger with a call to `final LOGGER = FRBLogger.getLogger('LoggerName');` (where the logger name is optional and defaults to "FRBLogger") instead of the usual call to `final LOGGER = Logger('FileName');`.
-This not only sets logging up for the Rust side, it returns a logger you can use as well.
+In **Dart** you first need to initialise logging with a call to `final LOGGER = FRBLogger.initLogger()`.
+If you do this call more than once an Exception is thrown.
+This not only sets logging up for the Rust side, it returns a logger you can use to record log statements as well.
+
+Doing this in `main.dart`, preferably as a global variable `final LOGGER = FRBLogger.initLogger();`, is recommended, so no Rust log statement is executed before this setup.
+
+To get the logger handle after the initialization you can call `final LOGGER = FRBLogger.getLogger()`.
+This is in turn calling `FRBDartLogger.getLogger()`, which you can call directly instead (there is no difference).
+
+In both calls (`.initLogger()` and `.getLogger()`) you can provide a `LoggerName` (which defaults to "FRBLogger").
 
 To issue a log statement, you then call `LOGGER.info('Hello world');` (or other log levels) on that instance.
-Doing this in `main.dart`, preferably as a global variable `final LOGGER = FRBLogger.getLogger();`, is recommended, so no Rust log statement is executed before this setup.
+Note that in **Rust** code you use the [log crates log levels](https://docs.rs/log/latest/log/enum.Level.html), while in **Dart** code you use a mixture of those and [Dart's logging package equivalents](https://pub.dev/documentation/logging/latest/logging/Level-class.html).
+
+All of Dart's logging package log levels are available, but the more exotic once have been replaced with the more common levels used in Rust:
+- FINE -> trace
+- CONFIG -> debug
+- SERVE -> error
+- SHOUT -> fatal
 
 While Rust's log crate captures the module, file and line number of the log statement, Dart's logging package does not. 
-Here it is idiomatic to create a new instance of the logger in each file, and give it a name that tells you where your log statement is originating from.
+Here it is idiomatic to get a new handle of the logger in each file, and give it a name that tells you where your log statement is originating from.
 Usually one calls `final OTHER_LOGGER = Logger("other_logger");` from the library directly, but again, use `final OTHER_LOGGER = FRBLogger.getLogger("other_logger");` instead. 
 This avoids the need to import the Dart logging package. However, if you still want to call `Logger("other_logger")`, this will work as well after at least once calling `FRBLogger.getLogger();`. 
 
@@ -88,7 +97,7 @@ Unless you want to get the root logger (with `FRBLogger.getLogger("FRBLogger")`)
 
 #### via Dart code
 
-To set the log level filter in the Dart code initialize logging with `FRBLogger.initLogger(maxLoglevel: "WARNING");` (where `newMaxLogLevel` is a log level of [Dart's logging package equivalents](https://pub.dev/documentation/logging/latest/logging/Level-class.html)). 
+To set the log level filter in the Dart code initialize logging with `FRBLogger.initLogger(maxLoglevel: "WARNING");` (where `newMaxLogLevel` is a mixture of rust's log levels and  [Dart's logging package equivalents](https://pub.dev/documentation/logging/latest/logging/Level-class.html), as described above). 
 Like anything else, this level will be applied to both, logging statements in Rust and dart.
 
 #### via Rust code
@@ -132,13 +141,10 @@ This Rust function is the implemented default.
 
 Note that your custom log function should be written in the same language where you configure it, i.e. in Dart when using `FRBLogger.initLogger` and in Rust when using `enable_frb_logging!`.
 
-If you specify a custom log function to both calls the Dart function will be used (and the Rust function will be ignored).
+If you specify a custom log function to both calls the Dart function will be used (and the custom function specified in Rust will be ignored).****
 
 If you are using `FRBLogger.initLogger` (and not `enable_frb_logging!()`) be careful to call this before any `.getLogger()` call!
-`.getLogger()` is instanciating the logger singleton, thus hindering `.initLogger` to do so.
-While on the Dart side this mostly is handled by the logging framework, the rust logger doesn't get initialized correctly.
-The error you see would be similar to
-`[ERROR:flutter/runtime/dart_vm_initializer.cc(40)] Unhandled Exception: PanicException(initialize_log_2_dart is called only once!: SetLoggerError(()))`.
+Otherwise the rust logger doesn't get initialized correctly.
 
 #### utilize a logging framework
 The logging support in FRB is intentionally keept low profile, meaning that the logging harness of the language teams (Rust and Dart) are used.
@@ -265,28 +271,85 @@ The Rust-side [log levels](https://docs.rs/log/0.4.22/log/enum.LevelFilter.html)
     }
 ```
 
+However, we replaced the more exotic levels on the Dart side with the more common levels from rust:
+- FINE -> trace
+- CONFIG -> debug
+- SERVE -> error
+- SHOUT -> fatal
+
+Thus, when logging from Dart, you can use these levels:
+```Dart
+enum LogLevel {
+  /// Maps to `Level.ALL` and integer levels below 300.
+  all(
+    level: Level.ALL,
+    levelNumberThreshold: 300,
+  ),
+
+  /// Maps to `Level.FINEST` and integer levels below 400.
+  finest(
+    level: Level.FINEST,
+    levelNumberThreshold: 400,
+  ),
+
+  /// Maps to `Level.FINER` and integer levels below 500.
+  finer(
+    level: Level.FINER,
+    levelNumberThreshold: 500,
+  ),
+
+  /// Maps to `Level.FINE` and integer levels below 700. This is typically used for Trace.
+  trace(
+    level: Level.FINE,
+    levelNumberThreshold: 700,
+  ),
+
+  /// Maps to `Level.CONFIG` and integer levels below 800. This is typically used for Debug.
+  debug(
+    level: Level.CONFIG,
+    levelNumberThreshold: 800,
+  ),
+
+  /// Maps to `Level.INFO` and integer levels below 900.
+  info(
+    level: Level.INFO,
+    levelNumberThreshold: 900,
+  ),
+
+  /// Maps to `Level.WARNING` and integer levels below 1000. This is typically used for Warn.
+  warn(
+    level: Level.WARNING,
+    levelNumberThreshold: 1000,
+  ),
+
+  /// Maps to `Level.SEVERE` and integer levels below 1200. This is typically used for Error.
+  error(
+    level: Level.SEVERE,
+    levelNumberThreshold: 1200,
+  ),
+
+  /// Maps to `Level.SHOUT` and integer levels below 2000. This is typically used for Fatal/Shout.
+  fatal(
+    level: Level.SHOUT,
+    levelNumberThreshold: 2000,
+  ),
+
+  /// Maps to `Level.OFF` and integer levels equal to or above 2000.
+  off(
+    level: Level.OFF,
+    levelNumberThreshold: 2000, // Or any value that signifies 'Off'
+  );
+```
+
 As you can see you can define additional levels(`Level(String name, int value)`, stay between 0 and 2000) in Dart. 
 They will convert to Rust seamlessly.
-
-#### Use same log levels in Dart
-If you want to use the same log levels in Dart as in Rust ("the more usual ones"), you have to include the following workaround:
-```
-```
-
-As unusual as the Dart log levels are (to us), they are from dart's language team maintained logging crate.
-Thus, they might be quite standard among dart programmers.
-Thus we opted to keep them as-is and require the above workaround, if you are more familiar with other levels.
-If you disagree feel free to raise an issue.
-If many people feel the same we will integrate the conversation in the logging logic.
-
-Note that when using another logging framework in Dart to customize the logging output, without the workaround you still need to use the logging levels defined by the logging crate.
 
 ### Remarks
 #### noop function
 
-`FRBLogger` exposes a `noop` function, called `new()`. 
+`FRBLogger` exposes a `noop` function, called `newInstance()`. 
 This is primarily needed so that the code is picked up for code generation, and not optimized away.
-However, it serves as a reminder that a direct instance of `FRBLogger` is not to be created, instead you need to use `FRBLogger.getLogger()` in your Dart code.
+However, if called it panics with reminding that a direct instance of `FRBLogger` is not to be created, instead you need to use `FRBLogger.initLogger()` in your Dart code.
 
 
 ## Troubleshooting
@@ -320,9 +383,3 @@ Notice that `frb_generated` has to point to the module path where you configured
 ### no log output in the emulator!
 If you are testing a Flutter application in an emulator the output to `stout` is not visible.
 You need to configure a logging plugin to work with, as described above in `utilize a logging framework`.
-
-### error message `[ERROR:flutter/runtime/dart_vm_initializer.cc(40)] Unhandled Exception: PanicException(initialize_log_2_dart is called only once!: SetLoggerError(()))`
-If you get an error similar to
-`[ERROR:flutter/runtime/dart_vm_initializer.cc(40)] Unhandled Exception: PanicException(initialize_log_2_dart is called only once!: SetLoggerError(()))`
-and you called `FRBLogger.initLogger`, you probably called `.getLogger()` somewhere in your code before `FRBLogger.initLogger`.
-Make sure the call to `FRBLogger.initLogger` is executed first; see above for further explanations.

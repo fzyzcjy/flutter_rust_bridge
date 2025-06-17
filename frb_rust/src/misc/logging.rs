@@ -105,7 +105,7 @@ macro_rules! enable_frb_logging {
         );
       }
   
-      static FRBDartLogger getLogger(String? name) {
+      static FRBDartLogger getLogger([String? name]) {
         return FRBDartLogger.getLogger(name);
       }
     ")]

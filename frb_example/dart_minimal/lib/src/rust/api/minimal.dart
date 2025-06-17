@@ -76,7 +76,7 @@ class FRBLogger {
     );
   }
 
-  static FRBDartLogger getLogger(String? name) {
+  static FRBDartLogger getLogger([String? name]) {
     return FRBDartLogger.getLogger(name);
   }
 
