@@ -160,35 +160,36 @@ For example, let's take the Flutter package (logger)[https://pub.dev/packages/lo
 
 1. Add the package to your app, e.g. via `dart pub add logger`.
 2. Customize the logging output before any call to `.getLogger`:
-```
+```Dart
 // import the framework doing the customized output
 import 'package:logger/logger.dart';
 // if names are clashing you might have to alias the internally used Logger class. You don't need to add it to your `pubspec.yaml`.
 import 'package:logging/logging.dart' as Logging;
+// import FRBDartLogger and LogLevel to be used in the customization
+import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 ```
 (...)
-```
-static late final Logging.Logger logger;
+```Dart
+late final FRBDartLogger logger;
 ```
 (...)
+```Dart
+  // setup logging
+  var frameworkLogger = Logger();
+  logger = FRBLogger.initLogger(
+    name: "StateHandler",
+    maxLogLevel: LogLevel.debug,
+    customLogFunction: ({required record}) {
+      final message =
+          "${LogLevel.fromNumber(record.levelNumber)} ${record.rustLog ? "Rust: " : "Dart: "}  ${record.message}";
+      frameworkLogger.log(_toLoggerLevel(record.levelNumber), message);
+    },
+  );
 ```
-    // setup logging
-    var frameworkLogger = Logger();
-    logger = FRBLogger.initLogger(
-      name: "StateHandler",
-      customLogFunction: ({required record}) {
-        final message =
-        // `.logLevelFromNumber` maps to logging.dart's log levels, not logger.dart!
-            "${FRBLogger.logLevelFromNumber(record.levelNumber)} ${record.rustLog ? "Rust: " : "Dart: "}  ${record.message}";
-        // this oprional replacement uses a custom `_toLoggerLevel(record.levelNumber)` function, see below
-        // "${_toLoggerLevel(record.levelNumber)} ${record.rustLog ? "Rust: " : "Dart: "}  ${record.message}";
-        frameworkLogger.log(_toLoggerLevel(record.levelNumber), message);
-      },
-    );
-```
-We need to map the neutral logging number to the logger framework's log levels (which are different from the logger package's levels):
-```
-// convert logging.Level to logger.level
+The framework requires a log level to be set. Our neutral representation `MirLogRecord` provides a number, which should be mapped to the logging framework's level.
+We are implementing this helper function for that:
+```Dart
+// convert MirLogRecord.levelNumber to logger.level
   static Level _toLoggerLevel(int levelNumber) {
     switch (levelNumber) {
       case <= 1000:
@@ -339,6 +340,7 @@ enum LogLevel {
     level: Level.OFF,
     levelNumberThreshold: 2000, // Or any value that signifies 'Off'
   );
+}
 ```
 
 As you can see you can define additional levels(`Level(String name, int value)`, stay between 0 and 2000) in Dart. 
