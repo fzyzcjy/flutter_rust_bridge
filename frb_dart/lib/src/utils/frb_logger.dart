@@ -11,52 +11,48 @@ import 'package:logging/logging.dart';
 /// This enum also handles the conversion between
 /// its own levels and integer numbers to `logging.dart` package's `Level` enum.
 enum LogLevel {
-  /// Maps to `Level.ALL` and integer levels below 300.
+  /// Maps to `Level.ALL` and integer levels >= 0.
   all(
+    levelNumberThreshold: 0,
+  ),
+
+  /// Maps to `Level.FINEST` and integer levels >= 300.
+  finest(
     levelNumberThreshold: 300,
   ),
 
-  /// Maps to `Level.FINEST` and integer levels below 400.
-  finest(
+  /// Maps to `Level.FINER` and integer levels >= 400.
+  finer(
     levelNumberThreshold: 400,
   ),
 
-  /// Maps to `Level.FINER` and integer levels below 500.
-  finer(
+  /// Maps to `Level.FINE` and integer levels >= 500. This is typically used for Trace.
+  trace(
     levelNumberThreshold: 500,
   ),
 
-  /// Maps to `Level.FINE` and integer levels below 700. This is typically used for Trace.
-  trace(
+  /// Maps to `Level.CONFIG` and integer levels >= 700. This is typically used for Debug.
+  debug(
     levelNumberThreshold: 700,
   ),
 
-  /// Maps to `Level.CONFIG` and integer levels below 800. This is typically used for Debug.
-  debug(
+  /// Maps to `Level.INFO` and integer levels >= 800.
+  info(
     levelNumberThreshold: 800,
   ),
 
-  /// Maps to `Level.INFO` and integer levels below 900.
-  info(
+  /// Maps to `Level.WARNING` and integer levels >= 900. This is typically used for Warn.
+  warn(
     levelNumberThreshold: 900,
   ),
 
-  /// Maps to `Level.WARNING` and integer levels below 1000. This is typically used for Warn.
-  warn(
-    levelNumberThreshold: 1000,
-  ),
-
-  /// Maps to `Level.SEVERE` and integer levels below 1200. This is typically used for Error.
+  /// Maps to `Level.SEVERE` and integer levels >= 1000. This is typically used for Error.
+  /// Maps to `Level.SHOUT` and integer levels >= 1200. This is typically used for Fatal/Shout.
   error(
-    levelNumberThreshold: 1200,
+    levelNumberThreshold: 1999,
   ),
 
-  /// Maps to `Level.SHOUT` and integer levels below 2000. This is typically used for Fatal/Shout.
-  fatal(
-    levelNumberThreshold: 2000,
-  ),
-
-  /// Maps to `Level.OFF` and integer levels equal to or above 2000.
+  /// Maps to `Level.OFF` and integer levels >= 2000.
   off(
     levelNumberThreshold: 2000, // Or any value that signifies 'Off'
   );
@@ -71,16 +67,10 @@ enum LogLevel {
   /// Converts an integer level number to a [LogLevel] enum.
   /// The conversion is based on predefined thresholds and the enum's declaration order.
   static LogLevel fromNumber(int levelNumber) {
-    // The first level whose threshold is greater than the given levelNumber is the correct one.
+    // The first level whose threshold is greater or equal than the given levelNumber is the correct one.
     // This assumes the enum values are declared in ascending order of their thresholds.
     for (final level in LogLevel.values) {
-      // For 'Off', it's usually `>=` the threshold, while others are `<`.
-      // Handle the 'Off' case explicitly if its threshold logic is different.
-      if (level == LogLevel.off) {
-        if (levelNumber >= level.levelNumberThreshold) {
-          return LogLevel.off;
-        }
-      } else if (levelNumber < level.levelNumberThreshold) {
+      if (levelNumber <= level.levelNumberThreshold) {
         return level;
       }
     }
@@ -109,8 +99,6 @@ enum LogLevel {
         return LogLevel.warn;
       case 'ERROR':
         return LogLevel.error;
-      case 'FATAL':
-        return LogLevel.fatal;
       case 'OFF':
         return LogLevel.off;
       default:
@@ -138,8 +126,6 @@ enum LogLevel {
       case LogLevel.warn:
         return Level.WARNING;
       case LogLevel.error:
-        return Level.SEVERE;
-      case LogLevel.fatal:
         return Level.SHOUT;
       case LogLevel.off:
         return Level.OFF;
@@ -166,7 +152,7 @@ enum LogLevel {
       case Level.SEVERE:
         return LogLevel.error;
       case Level.SHOUT:
-        return LogLevel.fatal;
+        return LogLevel.error;
       case Level.OFF:
         return LogLevel.off;
       default:
@@ -300,11 +286,6 @@ class FRBDartLogger<MirLogRecord> {
   /// error level logging output
   error(String message) {
     Logger(_currentLoggerName).log(LogLevel.error.toLoggingLevel(), message);
-  }
-
-  /// fatal level logging output
-  fatal(String message) {
-    Logger(_currentLoggerName).log(LogLevel.fatal.toLoggingLevel(), message);
   }
 
   @override
