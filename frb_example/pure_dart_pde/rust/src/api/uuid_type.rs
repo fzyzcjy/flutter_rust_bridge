@@ -1,5 +1,4 @@
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
-
 #[derive(Debug, Clone)]
 pub struct FeatureUuidTwinNormal {
     pub one: uuid::Uuid,

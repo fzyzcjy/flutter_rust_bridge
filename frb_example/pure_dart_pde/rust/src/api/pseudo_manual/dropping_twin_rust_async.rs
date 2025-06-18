@@ -3,7 +3,6 @@
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
-
 #![allow(clippy::new_without_default)]
 
 use crate::frb_generated::StreamSink;

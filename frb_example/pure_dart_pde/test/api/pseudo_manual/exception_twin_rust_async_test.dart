@@ -3,7 +3,6 @@
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
-
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:frb_example_pure_dart_pde/src/rust/api/pseudo_manual/exception_twin_rust_async.dart';
 import 'package:frb_example_pure_dart_pde/src/rust/frb_generated.dart';

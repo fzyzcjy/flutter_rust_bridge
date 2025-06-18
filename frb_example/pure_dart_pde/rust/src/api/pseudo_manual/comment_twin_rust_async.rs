@@ -3,7 +3,6 @@
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
-
 /// This is single line comment
 pub async fn function_with_comments_triple_slash_single_line_twin_rust_async() {}
 

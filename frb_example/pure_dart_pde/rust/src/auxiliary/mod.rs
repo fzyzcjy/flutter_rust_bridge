@@ -1,5 +1,4 @@
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
-
 pub mod benchmark_raw;
 // For simplicity, only test non-wasm
 #[cfg(not(target_family = "wasm"))]

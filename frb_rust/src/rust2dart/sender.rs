@@ -37,7 +37,7 @@ pub struct Rust2DartSendError;
 
 impl fmt::Debug for Rust2DartSendError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{}", self)
+        write!(f, "{self}")
     }
 }
 
@@ -53,7 +53,7 @@ mod tests {
 
     #[test]
     fn test_rust2dart_send_error() {
-        assert!(format!("{}", Rust2DartSendError).contains("post message"));
-        assert!(format!("{:?}", Rust2DartSendError).contains("post message"));
+        assert!(format!("{Rust2DartSendError}").contains("post message"));
+        assert!(format!("{Rust2DartSendError:?}").contains("post message"));
     }
 }

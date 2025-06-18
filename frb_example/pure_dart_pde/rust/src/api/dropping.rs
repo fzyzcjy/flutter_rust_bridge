@@ -1,5 +1,4 @@
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
-
 #![allow(clippy::new_without_default)]
 
 use crate::frb_generated::StreamSink;

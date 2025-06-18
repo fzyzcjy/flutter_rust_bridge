@@ -1,5 +1,4 @@
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
-
 // ignore_for_file: invalid_use_of_internal_member
 
 import 'package:frb_example_pure_dart_pde/src/rust/frb_generated.dart';

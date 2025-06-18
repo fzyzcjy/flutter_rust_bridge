@@ -12,6 +12,7 @@ dependencies:
     path: ../../frb_utils
   freezed_annotation: ^3.0.0
   json_annotation: ^4.9.0
+  logging: any
 dev_dependencies:
   test: ^1.21.4
   freezed: ^3.0.6
