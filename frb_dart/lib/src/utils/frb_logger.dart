@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'dart:io';
-// ignore: depend_on_referenced_packages
+
 import 'package:logging/logging.dart';
 
 /// FRB normalized LogLevels
@@ -13,72 +13,58 @@ import 'package:logging/logging.dart';
 enum LogLevel {
   /// Maps to `Level.ALL` and integer levels below 300.
   all(
-    level: Level.ALL,
     levelNumberThreshold: 300,
   ),
 
   /// Maps to `Level.FINEST` and integer levels below 400.
   finest(
-    level: Level.FINEST,
     levelNumberThreshold: 400,
   ),
 
   /// Maps to `Level.FINER` and integer levels below 500.
   finer(
-    level: Level.FINER,
     levelNumberThreshold: 500,
   ),
 
   /// Maps to `Level.FINE` and integer levels below 700. This is typically used for Trace.
   trace(
-    level: Level.FINE,
     levelNumberThreshold: 700,
   ),
 
   /// Maps to `Level.CONFIG` and integer levels below 800. This is typically used for Debug.
   debug(
-    level: Level.CONFIG,
     levelNumberThreshold: 800,
   ),
 
   /// Maps to `Level.INFO` and integer levels below 900.
   info(
-    level: Level.INFO,
     levelNumberThreshold: 900,
   ),
 
   /// Maps to `Level.WARNING` and integer levels below 1000. This is typically used for Warn.
   warn(
-    level: Level.WARNING,
     levelNumberThreshold: 1000,
   ),
 
   /// Maps to `Level.SEVERE` and integer levels below 1200. This is typically used for Error.
   error(
-    level: Level.SEVERE,
     levelNumberThreshold: 1200,
   ),
 
   /// Maps to `Level.SHOUT` and integer levels below 2000. This is typically used for Fatal/Shout.
   fatal(
-    level: Level.SHOUT,
     levelNumberThreshold: 2000,
   ),
 
   /// Maps to `Level.OFF` and integer levels equal to or above 2000.
   off(
-    level: Level.OFF,
     levelNumberThreshold: 2000, // Or any value that signifies 'Off'
   );
-
-  /// logging Level
-  final Level level;
 
   /// threshold up to which number mapps to which level
   final int levelNumberThreshold;
 
   const LogLevel({
-    required this.level,
     required this.levelNumberThreshold,
   });
 
@@ -281,29 +267,44 @@ class FRBDartLogger<MirLogRecord> {
   }
 
   // These logging methods use the MirLogRecord type from the instance they are called on.
+  /// finest level logging output
+  finest(String message) {
+    Logger(_currentLoggerName).log(LogLevel.finest.toLoggingLevel(), message);
+  }
+
+  /// finer level logging output
+  finer(String message) {
+    Logger(_currentLoggerName).log(LogLevel.finer.toLoggingLevel(), message);
+  }
+
   /// trace level logging output
   trace(String message) {
-    Logger(_currentLoggerName).log(LogLevel.trace.level, message);
+    Logger(_currentLoggerName).log(LogLevel.trace.toLoggingLevel(), message);
   }
 
   /// debug level logging output
   debug(String message) {
-    Logger(_currentLoggerName).log(LogLevel.debug.level, message);
+    Logger(_currentLoggerName).log(LogLevel.debug.toLoggingLevel(), message);
   }
 
   /// info level logging output
   info(String message) {
-    Logger(_currentLoggerName).log(LogLevel.info.level, message);
+    Logger(_currentLoggerName).log(LogLevel.info.toLoggingLevel(), message);
   }
 
   /// warn level logging output
   warn(String message) {
-    Logger(_currentLoggerName).log(LogLevel.warn.level, message);
+    Logger(_currentLoggerName).log(LogLevel.warn.toLoggingLevel(), message);
   }
 
   /// error level logging output
   error(String message) {
-    Logger(_currentLoggerName).log(LogLevel.error.level, message);
+    Logger(_currentLoggerName).log(LogLevel.error.toLoggingLevel(), message);
+  }
+
+  /// fatal level logging output
+  fatal(String message) {
+    Logger(_currentLoggerName).log(LogLevel.fatal.toLoggingLevel(), message);
   }
 
   @override
