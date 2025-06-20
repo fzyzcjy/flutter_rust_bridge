@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:frb_example_dart_minimal/src/rust/api/minimal.dart';
-import 'package:frb_example_dart_minimal/src/rust/frb_generated.dart';
+import 'package:frb_example_dart_logging/src/rust/api/minimal_logging.dart';
+import 'package:frb_example_dart_logging/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
 Future<void> main() async {

@@ -43,7 +43,7 @@ There is no need to read it word by word, since it serves as a reference to find
 - `frb_example`: Examples.
     - `pure_dart`: A pure-Dart example + contains most tests.
     - `dart_minimal`: Minimalist pure-Dart example. Suitable as a playground.
-    - `dart_minimal_logging`: Minimalist pure-Dart example with logging.
+    - `dart_logging`: Minimalist pure-Dart example with logging.
     - `flutter_via_create` / `flutter_via_integrate`: Examples automatically generated via `flutter_rust_bridge_codegen create/integrate`.
     - `deliberate_bad`: Deliberately buggy code to check sanitizers catch them.
 - `frb_dart` (`flutter_rust_bridge` Dart package): Support library for Dart - to be imported by users.

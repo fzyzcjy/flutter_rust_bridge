@@ -1,4 +1,4 @@
-name: frb_example_dart_minimal_logging
+name: frb_example_dart_logging
 description: flutter rust bridge example
 version: 1.0.0
 publish_to: none

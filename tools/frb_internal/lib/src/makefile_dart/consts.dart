@@ -37,7 +37,7 @@ const kDartExampleIntegratePackages = [
 
 const kDartExamplePackages = [
   'frb_example/dart_minimal',
-  'frb_example/dart_minimal_logging',
+  'frb_example/dart_logging',
   'frb_example/pure_dart',
   'frb_example/pure_dart_pde',
   'frb_example/dart_build_rs',
@@ -67,7 +67,7 @@ const kDartModeOfPackage = {
   'frb_utils': DartMode.dart,
   'tools/frb_internal': DartMode.dart,
   'frb_example/dart_minimal': DartMode.dart,
-  'frb_example/dart_minimal_logging': DartMode.dart,
+  'frb_example/dart_logging': DartMode.dart,
   'frb_example/pure_dart': DartMode.dart,
   'frb_example/pure_dart_pde': DartMode.dart,
   'frb_example/dart_build_rs': DartMode.dart,

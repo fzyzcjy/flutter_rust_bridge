@@ -232,7 +232,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "frb_example_dart_minimal"
+name = "frb_example_dart_logging"
 version = "0.1.0"
 dependencies = [
  "flutter_rust_bridge",

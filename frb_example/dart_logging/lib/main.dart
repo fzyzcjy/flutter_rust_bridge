@@ -1,6 +1,6 @@
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:frb_example_dart_minimal_logging/src/rust/api/minimal_logging.dart';
-import 'package:frb_example_dart_minimal_logging/src/rust/frb_generated.dart';
+import 'package:frb_example_dart_logging/src/rust/api/minimal_logging.dart';
+import 'package:frb_example_dart_logging/src/rust/frb_generated.dart';
 
 final LOGGER = FRBLogger.initLogger(maxLogLevel: LogLevel.trace);
 
