@@ -30,7 +30,7 @@ impl WireDartCodecDcoGeneratorDecoderTrait for BoxedWireDartCodecDcoGenerator<'_
             }
             // TODO merge with above
             Delegate(MirTypeDelegate::Time(time)) => {
-                format!("return dco_decode_Chrono_{}(raw);", time)
+                format!("return dco_decode_Chrono_{time}(raw);")
             }
             _ => gen_decode_simple_type_cast(self.mir.clone().into(), self.context),
         }

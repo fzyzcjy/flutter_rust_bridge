@@ -81,7 +81,7 @@ pub(crate) fn resolve_type_aliases(src: HashMap<String, Type>) -> HashMap<String
         let v_str = convert_ident_str(&v_src).unwrap();
         let v_ret = ret
             .get(&v_str)
-            .unwrap_or_else(|| panic!("{:?},\n{:?},\n{:?},\n{:?}", src, ts, ret, k))
+            .unwrap_or_else(|| panic!("{src:?},\n{ts:?},\n{ret:?},\n{k:?}"))
             .to_owned();
         ret.insert(k, v_ret);
     }
