@@ -48,7 +48,7 @@ impl IrSkipReason {
             Self::Err => {
                 "These functions have error during generation (see debug logs or enable `stop_on_error: true` for more details)".to_owned()
             }
-            _ => format!("These functions are ignored (category: {:?})", self)
+            _ => format!("These functions are ignored (category: {self:?})")
         })
     }
 }

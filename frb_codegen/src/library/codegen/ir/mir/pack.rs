@@ -90,7 +90,7 @@ impl MirPackComputedCache {
                 (
                     codec,
                     mir_pack.distinct_types(Some(Box::new(move |codec_mode_pack| {
-                        (codec_mode_pack.all().iter()).any(|c| *c == codec)
+                        codec_mode_pack.all().contains(&codec)
                     }))),
                 )
             })
