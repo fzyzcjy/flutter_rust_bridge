@@ -3,6 +3,7 @@
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
 * Overhaul of the logging implementation, from an opinionated approach to a configurable one. Please consult the [documentation](https://fzyzcjy.github.io/flutter_rust_bridge/guides/logging) for more information. If you implemented logging yourself you might have to migrate your changes.
 
+
 ## 2.10.0
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
