@@ -88,8 +88,8 @@ impl CodecSseTyTrait for DelegateCodecSseTy<'_> {
                         Some(format!("{};", lang.throw_unimplemented(""))),
                     )
                 }
-                MirTypeDelegate::Backtrace => r#"format!("{:?}", self)"#.to_owned(),
-                MirTypeDelegate::AnyhowException => r#"format!("{:?}", self)"#.to_owned(),
+                MirTypeDelegate::Backtrace => r#"format!("{self:?}")"#.to_owned(),
+                MirTypeDelegate::AnyhowException => r#"format!("{self:?}")"#.to_owned(),
                 MirTypeDelegate::Map(_) => "self.into_iter().collect()".to_owned(),
                 MirTypeDelegate::Set(_) => "self.into_iter().collect()".to_owned(),
                 MirTypeDelegate::Time(mir) => match mir {
