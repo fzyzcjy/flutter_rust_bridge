@@ -9,14 +9,12 @@ use crate::binary::commands::{Cli, Commands, CreateOrIntegrateCommandCommonArgs}
 use crate::binary::commands_parser::{compute_codegen_config, compute_codegen_meta_config};
 use clap::Parser;
 use lib_flutter_rust_bridge_codegen::integration::{CreateConfig, IntegrateConfig};
-use lib_flutter_rust_bridge_codegen::utils::logs::configure_opinionated_logging;
 use lib_flutter_rust_bridge_codegen::*;
 use log::{debug, warn};
 use std::path::Path;
 
 fn main() -> anyhow::Result<()> {
     let cli = Cli::parse();
-    configure_opinionated_logging("./logs/", cli.verbose)?;
     main_given_cli(cli)
 }
 
@@ -85,9 +83,6 @@ mod tests {
     // we do not care about coverage of test themselves
     // frb-coverage:ignore-start
     fn body_execute_generate(name: &str) -> anyhow::Result<()> {
-        // if want verbose log, enable it
-        // configure_opinionated_test_logging();
-
         if env::var("FRB_SKIP_GENERATE_FRB_EXAMPLE_TEST").unwrap_or_default() == "1" {
             return Ok(());
         }
