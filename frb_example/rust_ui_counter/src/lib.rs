@@ -8,4 +8,3 @@ pub use crate::frb_generated::StreamSink as __FrbStreamSinkForLogging;
 // END of AUTO INJECTED code
 
 pub mod app;
-mod frb_generated;
