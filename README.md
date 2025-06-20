@@ -1,5 +1,3 @@
-THIS IS TO TEST CI ONLY
-
 # [flutter_rust_bridge v2](https://github.com/fzyzcjy/flutter_rust_bridge): Flutter/Dart <-> Rust binding generator, feature-rich, but seamless and simple.
 
 [![Rust Package](https://img.shields.io/crates/v/flutter_rust_bridge.svg?color=blue)](https://crates.io/crates/flutter_rust_bridge)
