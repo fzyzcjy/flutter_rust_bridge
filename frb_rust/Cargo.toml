@@ -47,12 +47,6 @@ web-sys = { version = "0.3.58", features = [
     "BroadcastChannel",
 ] }
 
-[target.'cfg(target_os = "android")'.dependencies]
-android_logger = { version = "0.15", optional = true }
-
-[target.'cfg(any(target_os = "ios", target_os = "macos"))'.dependencies]
-oslog = { version = "0.2.0", optional = true }
-
 [build-dependencies]
 build-target = "0.4.0"
 
@@ -80,7 +74,7 @@ dart-opaque = ["dep:dart-sys"]
 portable-atomic = ["dep:portable-atomic"]
 rust-async = ["dep:tokio", "dep:futures", "dep:wasm-bindgen-futures"]
 thread-pool = ["dep:threadpool"]
-user-utils = ["dep:android_logger", "dep:oslog"]
+user-utils = []
 uuid = ["dep:uuid", "allo-isolate/uuid"]
 wasm-start = ["console_error_panic_hook"]
 
