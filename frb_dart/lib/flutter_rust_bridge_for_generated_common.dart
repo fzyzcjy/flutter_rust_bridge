@@ -29,3 +29,4 @@ export 'src/misc/simple_disposable.dart';
 export 'src/rust_arc/_common.dart';
 export 'src/stream/stream_sink.dart';
 export 'src/task.dart';
+export 'src/utils/frb_logger.dart';
