@@ -8,7 +8,7 @@ pub fn slice_from_byte_buffer<T: bytemuck::Pod>(buffer: Vec<u8>) -> Box<[T]> {
         Err(err) => {
             // clean up before panicking
             unsafe { core::ptr::drop_in_place(buf) }
-            panic!("cast error: {}", err);
+            panic!("cast error: {err}");
         }
     }
 }
