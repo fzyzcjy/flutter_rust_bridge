@@ -1,0 +1,11 @@
+# See `pure_dart` example for comments on the configs
+rust_input: rust/src/api/**/*.rs
+dart_output: lib/src/rust
+c_output: frb_generated.h
+dump_all: true
+local: true
+
+# TODO temp
+#full_dep: true
+#enable_lifetime: true
+#stop_on_error: true
