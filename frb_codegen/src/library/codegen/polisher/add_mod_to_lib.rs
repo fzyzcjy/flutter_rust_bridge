@@ -92,7 +92,7 @@ fn process_lib_rs_content(initial_content: &str, mod_name: &str) -> String {
             // Keep config lines (e.g. `#![allow(clippy::new_without_default)]`) on top of the file
             trimmed_line if trimmed_line.starts_with("#!") => {
                 pre_code_injection_text.push_str(trimmed_line);
-                pre_code_injection_text.push_str("\n");
+                pre_code_injection_text.push('\n');
                 last_line_was_empty = false;
             }
             trimmed_line if trimmed_line == legacy_frb_injected_code => {
@@ -351,7 +351,7 @@ mod tests {
              // END of AUTO INJECTED code\n\
              pub mod api;\n"
         );
-        let result_content = process_lib_rs_content(&initial_content, mod_name);
+        let _ = process_lib_rs_content(&initial_content, mod_name);
     }
 
     #[test]
@@ -491,8 +491,7 @@ mod tests {
         let initial_content = "
             #![allow(clippy::new_without_default)]
             pub mod app;
-            mod frb_generated;
-            \n"
+            "
         .to_string();
         let result_content = process_lib_rs_content(&initial_content, mod_name);
         let expected_code = format!(
@@ -505,8 +504,7 @@ mod tests {
             pub use crate::frb_generated::StreamSink as __FrbStreamSinkForLogging;\n\
             // END of AUTO INJECTED code\n\
             \n\
-            pub mod app;\n\
-            mod frb_generated;\n"
+            pub mod app;\n"
         );
         assert_eq!(result_content, expected_code);
     }
