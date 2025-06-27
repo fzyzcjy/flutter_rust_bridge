@@ -1,4 +1,3 @@
-
 #![allow(clippy::new_without_default)]
 
 // AUTO INJECTED BY flutter_rust_bridge.
