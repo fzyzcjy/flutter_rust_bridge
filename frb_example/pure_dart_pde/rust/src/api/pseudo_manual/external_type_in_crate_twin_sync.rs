@@ -3,7 +3,6 @@
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
-
 use crate::auxiliary::new_module_system::{use_new_module_system, NewSimpleStruct};
 use crate::auxiliary::old_module_system::{use_old_module_system, OldSimpleStruct};
 use crate::auxiliary::sample_types::{MyEnum, MyStruct};

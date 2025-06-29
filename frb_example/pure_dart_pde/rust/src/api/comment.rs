@@ -1,5 +1,4 @@
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
-
 /// This is single line comment
 pub fn function_with_comments_triple_slash_single_line_twin_normal() {}
 

@@ -3,7 +3,6 @@
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
-
 pub async fn borrow_string_twin_rust_async(arg: &String) -> String {
     arg.to_owned()
 }
