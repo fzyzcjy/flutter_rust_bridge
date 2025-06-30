@@ -18,7 +18,7 @@ impl Display for DartToolchain {
             DartToolchain::Flutter => "flutter",
         }
         .to_string();
-        write!(f, "{}", str)
+        write!(f, "{str}")
     }
 }
 
