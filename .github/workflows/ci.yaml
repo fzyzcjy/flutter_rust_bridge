@@ -175,7 +175,7 @@ jobs:
       fail-fast: false
       matrix:
         image:
-          - windows-2019
+          - windows-2025
           - macos-13
           - ubuntu-24.04
         package:
@@ -191,11 +191,11 @@ jobs:
           - frb_example--rust_ui_counter--ui
           - frb_example--rust_ui_todo_list--ui
         exclude:
-          - { image: windows-2019, package: frb_example--deliberate_bad }
+          - { image: windows-2025, package: frb_example--deliberate_bad }
           - { image: macos-13, package: frb_example--deliberate_bad }
-          - { image: windows-2019, package: frb_example--integrate_third_party }
+          - { image: windows-2025, package: frb_example--integrate_third_party }
           - { image: macos-13, package: frb_example--integrate_third_party }
-          - { image: windows-2019, package: frb_example--flutter_via_integrate }
+          - { image: windows-2025, package: frb_example--flutter_via_integrate }
           - { image: macos-13, package: frb_example--flutter_via_integrate }
 
     steps:
@@ -236,7 +236,7 @@ jobs:
       matrix:
         image:
           - macos-13
-          - windows-2019
+          - windows-2025
           - ubuntu-24.04
         package:
           - frb_example--flutter_via_create
@@ -312,7 +312,7 @@ jobs:
       fail-fast: false
       matrix:
         image:
-          - windows-2019
+          - windows-2025
           - macos-13
           - ubuntu-24.04
 
@@ -388,7 +388,7 @@ jobs:
       fail-fast: false
       matrix:
         info:
-          - image: windows-2019
+          - image: windows-2025
             target: windows
           - image: macos-13
             target: macos
@@ -435,7 +435,7 @@ jobs:
       fail-fast: false
       matrix:
         image:
-          - windows-2019
+          - windows-2025
           # need macos-"13" because https://github.com/fzyzcjy/flutter_rust_bridge/issues/1225
           - macos-13
           - ubuntu-latest
@@ -472,7 +472,7 @@ jobs:
       fail-fast: false
       matrix:
         image:
-          - windows-2019
+          - windows-2025
           # need macos-"13" because https://github.com/fzyzcjy/flutter_rust_bridge/issues/1225
           - macos-13
           - ubuntu-latest
@@ -519,7 +519,7 @@ jobs:
           # run on various platforms
           - image: macos-13
             version: ''
-          - image: windows-2019
+          - image: windows-2025
             version: ''
           - image: ubuntu-latest
             version: ''
@@ -567,7 +567,7 @@ jobs:
       fail-fast: false
       matrix:
         image:
-          - windows-2019
+          - windows-2025
           - macos-13
           - ubuntu-24.04
         package:
@@ -580,11 +580,11 @@ jobs:
           - frb_example--dart_build_rs
           - frb_example--deliberate_bad
         exclude:
-          - { image: windows-2019, package: frb_utils }
+          - { image: windows-2025, package: frb_utils }
           - { image: macos-13, package: frb_utils }
-          - { image: windows-2019, package: tools--frb_internal }
+          - { image: windows-2025, package: tools--frb_internal }
           - { image: macos-13, package: tools--frb_internal }
-          - { image: windows-2019, package: frb_example--deliberate_bad }
+          - { image: windows-2025, package: frb_example--deliberate_bad }
           - { image: macos-13, package: frb_example--deliberate_bad }
 
     steps:
@@ -860,7 +860,7 @@ jobs:
       fail-fast: false
       matrix:
         info:
-          - image: windows-2019
+          - image: windows-2025
             platform: windows
             package: frb_example--flutter_via_create
           # need macos-"13" because https://github.com/fzyzcjy/flutter_rust_bridge/issues/1225
@@ -871,7 +871,7 @@ jobs:
             platform: linux
             package: frb_example--flutter_via_create
 
-          - image: windows-2019
+          - image: windows-2025
             platform: windows
             package: frb_example--flutter_package--example
           - image: macos-13
@@ -881,7 +881,7 @@ jobs:
             platform: linux
             package: frb_example--flutter_package--example
 
-          - image: windows-2019
+          - image: windows-2025
             platform: windows
             package: frb_example--rust_ui_counter--ui
           - image: macos-13
@@ -891,7 +891,7 @@ jobs:
             platform: linux
             package: frb_example--rust_ui_counter--ui
 
-          - image: windows-2019
+          - image: windows-2025
             platform: windows
             package: frb_example--rust_ui_todo_list--ui
           - image: macos-13
