@@ -59,7 +59,7 @@ macro_rules! enable_frb_logging {
     }
 
     use flutter_rust_bridge::frb;
-    use crate::__FrbStreamSinkForLogging as StreamSink;
+    use crate::frb_generated::StreamSink;
     use $crate::for_generated::chrono;
 
     #[flutter_rust_bridge::frb(dart_code = "
@@ -274,27 +274,28 @@ macro_rules! enable_frb_logging {
 pub(crate) mod test {
     use flutter_rust_bridge_macros as flutter_rust_bridge;
     use log::{Level, Log, Metadata, Record};
-    use std::sync::{Arc, Mutex};
 
-    // A simple mock for StreamSink for testing
-    #[derive(Debug, Clone)]
-    pub struct MockStreamSink<T> {
-        pub sent_records: Arc<Mutex<Vec<T>>>,
-    }
+    pub mod mock_frb_generated {
+        use std::sync::{Arc, Mutex};
+        // A simple mock for StreamSink for testing
+        #[derive(Debug, Clone)]
+        pub struct StreamSink<T> {
+            pub sent_records: Arc<Mutex<Vec<T>>>,
+        }
 
-    impl<T> MockStreamSink<T> {
-        pub fn new() -> Self {
-            Self {
-                sent_records: Arc::new(Mutex::new(Vec::new())),
+        impl<T> StreamSink<T> {
+            pub fn new() -> Self {
+                Self {
+                    sent_records: Arc::new(Mutex::new(Vec::new())),
+                }
+            }
+
+            pub fn add(&self, item: T) -> Result<(), crate::Rust2DartSendError> {
+                self.sent_records.lock().unwrap().push(item);
+                Ok(())
             }
         }
-
-        pub fn add(&self, item: T) -> Result<(), crate::Rust2DartSendError> {
-            self.sent_records.lock().unwrap().push(item);
-            Ok(())
-        }
     }
-
     #[test]
     fn test_default_logger_name() {
         enable_frb_logging!();
@@ -348,7 +349,7 @@ pub(crate) mod test {
         // For testing, we might need to "reset" the global logger state if possible,
         // or ensure tests run in isolation (e.g., with `cargo test -- --test-threads=1`).
         // For simplicity here, we'll try to catch a potential panic if already set.
-        let stream_sink = MockStreamSink::new();
+        let stream_sink = StreamSink::new();
         let max_log_level = to_u16(log::LevelFilter::Info);
 
         let result = std::panic::catch_unwind(|| {
@@ -376,7 +377,7 @@ pub(crate) mod test {
     #[test]
     fn test_frb_logger_enabled() {
         enable_frb_logging!();
-        let stream_sink = MockStreamSink::new();
+        let stream_sink = StreamSink::new();
         let logger = FRBLogger { stream_sink };
 
         // Temporarily set max log level for this test
@@ -410,7 +411,7 @@ pub(crate) mod test {
     fn test_frb_logger_log() {
         enable_frb_logging!();
         let logger = FRBLogger {
-            stream_sink: MockStreamSink::new(),
+            stream_sink: StreamSink::new(),
         };
 
         // Temporarily set max log level for this test
@@ -457,7 +458,7 @@ pub(crate) mod test {
     #[test]
     fn test_frb_logger_flush() {
         enable_frb_logging!();
-        let stream_sink = MockStreamSink::new();
+        let stream_sink = StreamSink::new();
         let logger = FRBLogger { stream_sink };
         // This method does nothing, so we just call it to ensure it doesn't panic.
         logger.flush();
