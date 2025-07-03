@@ -21,20 +21,17 @@ Otherwise read the next steps:
 For a new project (if you prompted `flutter_rust_bridge_codegen create` instead of `flutter_rust_bridge_codegen generate`) the dependency is already added. 
 Otherwise you need to add a dependency on the logging crate yourself, in your Cargo.toml file with `cargo add log` or by putting `log = "^0.4.20"` in your Cargo.toml file under the `[dependencies]` section.
 
-### 3. expose the generated StreamSink (if automatic lib.rs configuration is disabled)
-Only if you disabled automatically configuring of your `lib.rs` in your `flutter_rust_bridge.yaml` (with `add_mod_to_lib: false`) you need to do this step.
+### 3. expose the generated code in lib.rs (only if automatic lib.rs configuration is disabled)
+Most probably you can skip this step - your generated code might already be available.
+Depending on your customization you might need to do this step.
 
-You need to expose a generated `StreamSink` so the logging code can find it. 
-
-Enter
-```
-// this export is needed for logging
-pub use crate::frb_generated::StreamSink as __FrbStreamSinkForLogging;
-```
-into your project's `lib.rs`.
-
-Replace `frb_generated` in `crate::frb_generated::StreamSink` with the module path where you configured the generated files to go to, i.e. the value you set for `rust_output` in the `flutter_rust_bridge.yaml` configuration file. If you did not set this option `crate::frb_generated` is the correct default, no need to change this.
-
+- I did not set `add_mod_to_lib: false`
+  - If you did not disabled automatically configuring of your `lib.rs` in your `flutter_rust_bridge.yaml` (with `add_mod_to_lib: false`) you don't have to do anything for this step and can go to the nest one.
+- I did set `add_mod_to_lib: false` and
+  - I did not set `rust_output` to a custom location
+    - If your lib.rs file contains `mod frb_generated;` you don't need any other changes and can skipp to the next step.
+  - I set `rust_output` to a custom location
+    - Additional to setting up the mod sturcture correctly so that `frb_generated` is available to the rust compiler (which you surely did already), you have to import it so the logging code can use it. Thus, add the statement `use crate::rust::output::folder::frb_generated`, where `rust::output::folder` is the path you specified in `rust_output`.
 
 ### (optional) 4. customize the log function
 Per default any log output is written to `stdout`, via `println!` in Rust.
@@ -51,16 +48,8 @@ You can issue log statements in Rust and Dart by following the usual way done in
 
 In **Rust** simply call `log::info!()` (or any of the [log crate's log levels](https://docs.rs/log/latest/log/enum.Level.html)).
 
-In **Dart** you first need to initialise logging with a call to `final LOGGER = FRBLogger.initLogger()`.
-If you do this call more than once an Exception is thrown.
-This not only sets up logging for the Rust side, it returns a logger you can use to record log statements as well.
-
-Doing this in `main.dart`, preferably as a global variable `final LOGGER = FRBLogger.initLogger();`, is recommended, so no Rust log statement is executed before this setup.
-
-To get the logger handle after the initialization you can call `final LOGGER = FRBLogger.getLogger()`.
-This is in turn calling `FRBDartLogger.getLogger()`, which you can call directly instead (they are effectively the same).
-
-In both calls (`.initLogger()` and `.getLogger()`) you can provide a `LoggerName` (which defaults to "FRBLogger").
+In **Dart** just follow the usual way of working with a logging framework: Get the logger singleto with a call to `final LOGGER = FRBLogger.getLogger()` or `final LOGGER = FRBDartLogger.getLogger()`.
+The latter calls the former, so you can use either.
 
 To issue a log statement, you then call `LOGGER.info('Hello world');` (or other log levels) on that instance.
 Note that in **Rust** code you use the [log crate's log levels](https://docs.rs/log/latest/log/enum.Level.html), while in **Dart** code you use a mixture of those and [Dart's logging package equivalents](https://pub.dev/documentation/logging/latest/logging/Level-class.html).
@@ -83,14 +72,18 @@ There are three parameters that can be customized:
 3. `customLogFunction` The function to use for logging (default: `println!`).
 
 You can override the defaults by passing arguments to `enable_frb_logging!();` in your Rust code or `FRBLogger.initLogger()` in your Dart code.
+You have the choice in which language you like to do this customization, the result is the same.
 The parameter names of these are the same for both languages.
 Be aware that while the order doesn't matter in Dart, it matters in the Rust macro call!
 
 Avoid setting these parameters on both sides (Rust and Dart) at the same time.
-The implementation will take the values set in Dart if `FRBLogger.initLogger()` is called before any subsequent `FRBLogger.getLogger();` call - otherwise, it takes the values set with `enable_frb_logging!();`.
+The implementation will take the values set in Dart if `FRBLogger.initLogger()` is called before any log statement done via Rust - otherwise, it takes the values set with `enable_frb_logging!();`.
+Thus do this preferable in `main.dart`, as a global variable `final LOGGER = FRBLogger.initLogger();`, so no Rust log statement is executed before this setup.
 
-When you customize the logging in your Dart code with `FRBLogger.initLogger()`, the call returns an instance of a logger, which you can use.
-There is no need for a call to `FRBLogger.getLogger();` (with the same name parameter), as this will return the same instance.
+The call to `FRBLogger.initLogger()` returns the logger singleton, so that a subsequent call to `FRBLogger.getLogger()` is not needed.
+Be aware that you need to call `initLogger()` before any call to `getLogger()`, and that you can call `initLogger()` only once - otherwise an exception will be thrown (so we ensure a proper setup).
+
+In both calls (`.initLogger()` and `.getLogger()`) you can provide a `LoggerName` (which defaults to "FRBLogger").
 
 ### Change the root logger name
 
@@ -368,23 +361,18 @@ Unrecognized literal: `(/*ERROR*/)`
 ```
 the code in the `enable_frb_logging!();` macro has not been expanded correctly - most probably you forgot to add the dependency to `log = "^0.4.20"` in your Cargo.toml file or you passed a syntactically incorrect custom function to the macro.
 
-### no `__FrbStreamSinkForLogging` in the root
+### no `StreamSink` in the root
 If you get the error message 
 ```
 enable_frb_logging!();
-   | ^^^^^^^^^^^^^^^^^^^^^ no `__FrbStreamSinkForLogging` in the root
+   | ^^^^^^^^^^^^^^^^^^^^^ no `StreamSink` in the root
    |
    = note: this error originates in the macro `enable_frb_logging` (in Nightly builds, run with -Z macro-backtrace for more info)
 ```
 
 the `StreamSink` is probably not re-exported in your project's `lib.rs`.
-Add
-```
-// this export is needed for logging
-pub use crate::frb_generated::StreamSink as __FrbStreamSinkForLogging;
-```
-to do so.
-Notice that `frb_generated` has to point to the module path where you configured the generated code to be written to, which defaults to `crate::frb_generated`.
+
+See Step 3 of "setup" how to make the generated code available correctly.
 
 ### no log output in the emulator!
 If you are testing a Flutter application in an emulator the output to `stdout` is not visible.
