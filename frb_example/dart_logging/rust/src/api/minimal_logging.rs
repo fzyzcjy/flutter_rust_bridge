@@ -8,6 +8,6 @@ pub fn init_app() {
 }
 
 pub fn minimal_adder(a: i32, b: i32) -> i32 {
-    log::debug!("adding {} and {}", a, b);
+    log::info!("adding {} and {}", a, b);
     a + b
 }

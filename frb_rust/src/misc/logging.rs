@@ -66,7 +66,7 @@ macro_rules! enable_frb_logging {
     import 'package:logging/logging.dart';
 
     static FRBDartLogger initLogger(
-      {String name = 'FRBLogger',
+      {String? name = 'FRBLogger',
       LogLevel maxLogLevel = LogLevel.info,
       Function({required MirLogRecord record}) customLogFunction = logFn}) {
         //initialize the rust side
@@ -94,7 +94,7 @@ macro_rules! enable_frb_logging {
 
         return FRBDartLogger.initAndGetSingleton<MirLogRecord>(
           streamSink: stream,
-          name: name,
+          name: name ?? 'FRBLogger',
           logFn: wrappedLogFn,
           fromDartLogRecord: wrappedFromDartLogRecord,
           maxLogLevel: maxLogLevel,
@@ -103,7 +103,13 @@ macro_rules! enable_frb_logging {
       }
   
       static FRBDartLogger getLogger([String? name]) {
-        return FRBDartLogger.getLogger(name);
+        FRBDartLogger logger;
+        try {
+          logger = FRBDartLogger.getLogger(name);
+        } catch (e) {
+          logger = FRBLogger.initLogger(name: name);
+        }
+        return logger;
       }
     ")]
     pub struct FRBLogger {

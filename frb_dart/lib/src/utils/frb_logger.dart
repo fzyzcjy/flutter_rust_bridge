@@ -200,7 +200,8 @@ class FRBDartLogger<MirLogRecord> {
     void Function({required dynamic record})? customLogFunction,
   }) {
     if (_singleton != null) {
-      throw Exception('Called FRBLogger.initLogger() twice!');
+      throw Exception(
+          'Called FRBLogger.initLogger() twice or after FRBLogger.getLogger()!');
     }
 
     // Assign the singleton directly using a private constructor.
@@ -244,7 +245,8 @@ class FRBDartLogger<MirLogRecord> {
   /// It returns `FRBDartLogger<dynamic>` as `frb_logger.dart` doesn't know the concrete type.
   static FRBDartLogger<dynamic> getLogger([String? name]) {
     if (_singleton == null) {
-      throw Exception("You have to call FRBLogger.initLogger() first!");
+      throw Exception(
+          "This exception should not happen - please file a bug ticket!");
     }
     var loggerName = name ?? _currentLoggerName;
     Logger(loggerName);

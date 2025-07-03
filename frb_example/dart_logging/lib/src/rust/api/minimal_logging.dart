@@ -42,7 +42,7 @@ class FRBLogger {
       RustLib.instance.api.crateApiMinimalLoggingFrbLoggerNew();
 
   static FRBDartLogger initLogger(
-      {String name = 'FRBLogger',
+      {String? name = 'FRBLogger',
       LogLevel maxLogLevel = LogLevel.info,
       Function({required MirLogRecord record}) customLogFunction = logFn}) {
     //initialize the rust side
@@ -70,7 +70,7 @@ class FRBLogger {
 
     return FRBDartLogger.initAndGetSingleton<MirLogRecord>(
       streamSink: stream,
-      name: name,
+      name: name ?? 'FRBLogger',
       logFn: wrappedLogFn,
       fromDartLogRecord: wrappedFromDartLogRecord,
       maxLogLevel: maxLogLevel,
@@ -79,7 +79,13 @@ class FRBLogger {
   }
 
   static FRBDartLogger getLogger([String? name]) {
-    return FRBDartLogger.getLogger(name);
+    FRBDartLogger logger;
+    try {
+      logger = FRBDartLogger.getLogger(name);
+    } catch (e) {
+      logger = FRBLogger.initLogger(name: name);
+    }
+    return logger;
   }
 
   @override
