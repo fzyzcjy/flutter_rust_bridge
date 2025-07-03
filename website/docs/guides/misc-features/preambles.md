@@ -6,7 +6,7 @@ We can put arbitrary extra Dart or Rust code in the generated files. This featur
 
 This can be useful, for example:
 
-* Import some extra things in the generate code. (e.g. `rust_preamble: "use some::Thing;"`)
+* Import some extra dependency packages/crates in the generate code. (e.g. `rust_preamble: "use some::Thing;"`)
 * Suppress some rules of the linter. (e.g. `dart_preamble: "// ignore_for_file: this_is_a_lint_rule"`)
 
 ## Tricks
