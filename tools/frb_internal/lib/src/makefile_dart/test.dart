@@ -307,25 +307,27 @@ Future<void> testRustPackage(TestRustPackageConfig config) async {
   await runPubGetIfNotRunYet('frb_example/dart_minimal');
   await runPubGetIfNotRunYet('frb_example/pure_dart');
   print("testRustPackage ${config.package}");
-  final feature = getRustFeaturesOfPackage(config.package);
-  await exec('cargo build ${feature != null ? "--features $feature" : ""}',
-      relativePwd: config.package);
+  final featureConfigurations = getRustFeaturesOfPackage(config.package);
+  for (final featureConfiguration in featureConfigurations) {
+    await exec('cargo build ${featureConfiguration.toCargoArgs}',
+        relativePwd: config.package);
 
-  final effectiveEnableCoverage = config.coverage &&
-      const ['frb_codegen', 'frb_rust'].contains(config.package);
+    final effectiveEnableCoverage = config.coverage &&
+        const ['frb_codegen', 'frb_rust'].contains(config.package);
 
-  final outputCodecovPath =
-      '${getCoverageDir('test_rust_package_${config.package.replaceAll("/", "_")}')}/codecov.json';
-  await exec(
-      'cargo ${effectiveEnableCoverage ? "llvm-cov --codecov --output-path $outputCodecovPath" : "test"} ${feature != null ? "--features $feature" : ""}',
-      relativePwd: config.package,
-      extraEnv: {
-        'FRB_SKIP_GENERATE_FRB_EXAMPLE_TEST': '1',
-        if (config.updateGoldens) 'UPDATE_GOLDENS': '1',
-        ...kEnvEnableRustBacktrace,
-      });
+    final outputCodecovPath =
+        '${getCoverageDir('test_rust_package_${config.package.replaceAll("/", "_")}')}/codecov.json';
+    await exec(
+        'cargo ${effectiveEnableCoverage ? "llvm-cov --codecov --output-path $outputCodecovPath" : "test"} ${featureConfiguration.toCargoArgs}',
+        relativePwd: config.package,
+        extraEnv: {
+          'FRB_SKIP_GENERATE_FRB_EXAMPLE_TEST': '1',
+          if (config.updateGoldens) 'UPDATE_GOLDENS': '1',
+          ...kEnvEnableRustBacktrace,
+        });
 
-  if (effectiveEnableCoverage) transformCodecovReport(outputCodecovPath);
+    if (effectiveEnableCoverage) transformCodecovReport(outputCodecovPath);
+  }
 }
 
 Future<void> testDartNative(TestDartNativeConfig config) async {
@@ -449,12 +451,17 @@ Future<void> testDartWeb(TestDartConfig config) async {
       // extraEnv: kEnvEnableRustBacktrace,
     );
   } else {
-    final features = getRustFeaturesOfPackage(config.package);
-    await exec(
-      'dart run flutter_rust_bridge_utils test-web --entrypoint ../$package/test/dart_web_test_entrypoint.dart ${features != null ? "--rust-features $features" : ""}',
-      relativePwd: 'frb_utils',
-      // extraEnv: kEnvEnableRustBacktrace,
-    );
+    final featureConfigurations = getRustFeaturesOfPackage(package);
+    for (final featureConfiguration in featureConfigurations) {
+      final features = featureConfiguration.features;
+      final defaultFeatures = featureConfiguration.defaultFeatures;
+
+      await exec(
+        'dart run flutter_rust_bridge_utils test-web --entrypoint ../$package/test/dart_web_test_entrypoint.dart ${defaultFeatures ? "" : "--no-default-features"} ${features != null ? "--rust-features $features" : ""}',
+        relativePwd: 'frb_utils',
+        // extraEnv: kEnvEnableRustBacktrace,
+      );
+    }
   }
 }
 

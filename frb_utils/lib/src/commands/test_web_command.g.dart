@@ -9,7 +9,8 @@ part of 'test_web_command.dart';
 TestWebConfig _$parseTestWebConfigResult(ArgResults result) => TestWebConfig()
   ..entrypoint = result['entrypoint'] as String
   ..headless = result['headless'] as bool
-  ..rustFeatures = result['rust-features'] as List<String>;
+  ..rustFeatures = result['rust-features'] as List<String>
+  ..defaultFeatures = result['default-features'] as bool;
 
 ArgParser _$populateTestWebConfigParser(ArgParser parser) => parser
   ..addOption(
@@ -24,6 +25,11 @@ ArgParser _$populateTestWebConfigParser(ArgParser parser) => parser
   ..addMultiOption(
     'rust-features',
     help: 'Rust feature flags to set during build',
+  )
+  ..addFlag(
+    'default-features',
+    help: 'Whether to enable Rust default features',
+    defaultsTo: true,
   );
 
 final _$parserForTestWebConfig = _$populateTestWebConfigParser(ArgParser());
