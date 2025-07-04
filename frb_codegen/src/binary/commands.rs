@@ -221,9 +221,21 @@ pub(crate) struct CreateCommandArgs {
 
 #[derive(Debug, Args)]
 pub(crate) struct IntegrateCommandArgs {
-    /// Generate code related to integration test
+    /// Do NOT generate code related to lib/example etc.
+    #[arg(long)]
+    pub(crate) no_enable_overlay_lib: bool,
+
+    /// Do NOT generate code related to integration test
     #[arg(long)]
     pub(crate) no_enable_integration_test: bool,
+
+    /// Do NOT apply dart fix after generating code.
+    #[arg(long)]
+    pub(crate) disable_dart_fix: bool,
+
+    /// Do NOT format dart code after generating code.
+    #[arg(long)]
+    pub(crate) disable_dart_format: bool,
 
     #[clap(flatten)]
     pub common: CreateOrIntegrateCommandCommonArgs,

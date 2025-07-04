@@ -4,8 +4,17 @@ Integrate Rust into existing Flutter project
 Usage: flutter_rust_bridge_codegen integrate [OPTIONS]
 
 Options:
+      --no-enable-overlay-lib
+          Do NOT generate code related to lib/example etc
+
       --no-enable-integration-test
-          Generate code related to integration test
+          Do NOT generate code related to integration test
+
+      --disable-dart-fix
+          Do NOT apply dart fix after generating code
+
+      --disable-dart-format
+          Do NOT format dart code after generating code
 
       --rust-crate-name <RUST_CRATE_NAME>
           The name of the generated Rust crate

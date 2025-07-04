@@ -38,7 +38,10 @@ fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
             template: args.template.into(),
         })?,
         Commands::Integrate(args) => integration::integrate(IntegrateConfig {
+            enable_overlay_lib: !args.no_enable_overlay_lib,
             enable_integration_test: !args.no_enable_integration_test,
+            enable_dart_fix: !args.disable_dart_fix,
+            enable_dart_format: !args.disable_dart_format,
             enable_local_dependency: args.common.local,
             rust_crate_name: args.common.rust_crate_name.clone(),
             rust_crate_dir: compute_rust_crate_dir(&args.common),
