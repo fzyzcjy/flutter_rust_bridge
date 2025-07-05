@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.11.0
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Fix codegen installation error caused by breaking change in dependency #2794
+* Uses the output path of Dart when executing formats #2743 (thanks @AlexV525)
+* Allow bypassing codegen version check and produce log when enabled assertion #2737 (thanks @AlexV525)
+* Fix Dart_PostCObject double free after application is closed #2653 (thanks @alexlapa)
+* Fixes CI windows image #2784 (thanks @patmuk)
+* Upgrade Cargokit #2752
+* Bump logging dependencies to help dependency resolution for regex crate #2744 (thanks @alexthe2)
+* Use flutter-actions/setup-flutter instead #2741, Add melos #2738 (thanks @AlexV525)
+
 ## 2.10.0
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.

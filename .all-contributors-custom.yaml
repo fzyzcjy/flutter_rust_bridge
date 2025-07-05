@@ -18,6 +18,9 @@
 - Cupnfish: Support arrays as function parameters. Allow multi mirror.
 - alanlzhang: Add generation for Dart metadata. Enhance and fix module parser. Fix enum in struct. Fix linter. Improve hints.
 - erikas-taroza: Support list of primitive enums. Make enum camelCase. Warn wrong path. Fix cargo expand.
+- AlexV525: Add version check skipper. Add Dart fix. Fix folder. Update CI. Use Melos.
+- alexthe2: Add Option Datetime. Add empty structs. Improve doc. Add `r#`. Fix mirror enum bug. Bump version.
+- patmuk: Set MSRV. Fail fast. Improve message. Support relative config. Improve multiple docs. Fix warning. Fix CI.
 - SiongSng: Finish implementing exception hierarchy. Fix SyncReturn bug.
 - JustSimplyKyle: Also finish implementing exception hierarchy. Allow ignore function.
 - Zaitam: Fix when method return struct. Partial migration to Dart 3.
@@ -27,12 +30,10 @@
 - aran: Fix map + mirror. Fix pubspec. Upgrde ffigen. Replace to js_interop. Bump version. Fix typo. Configure opaque impl.
 - mcmah309: Add cli plugin scaffold generation.
 - AlienKevin: Add flutter example for macOS. Add doc for Android NDK bug. Improve migration doc.
-- alexthe2: Add Option Datetime. Add empty structs. Improve doc. Add `r#`. Fix mirror enum bug.
 - Larpoux: Fix async generation. Update web-audio-api binding.
-- patmuk: Set MSRV. Fail fast. Improve message. Support relative config. Improve multiple docs. Fix warning.
 - banool: Fix pubspec parsing. Fix symbol-stripping doc.
-- AlexV525: Add Dart fix. Fix folder.
-- kyrias: Use portable atomic. Ignore accessor fields.
+- alexlapa: Fix Dart_PostCObject. Fix DartOpaque.
+- kyrias: Use portable atomic. Ignore accessor fields. Update doc.
 - Integral-Tech: Use concat. Fix lint.
 - Tienisto: Remove default enum case. Add mock init.
 - satvikpendem: 'Add json_serializable. Update CI. Little co-work #989.'
@@ -40,7 +41,6 @@
 - temeddix: Fix broken CI. Custom num workers. Fix MacOS doc steps. Update doc. Make zero-copy defaultable.
 - NightFeather0615: Fix Vec bool.
 - fmeef: Add cargo feature flag.
-- alexlapa: Fix DartOpaque.
 - ski0090: Fix folder creation.
 - borgoat: Upgrade freezed.
 - xuwaters: Support edition 2024.
