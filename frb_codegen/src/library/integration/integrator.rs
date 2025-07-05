@@ -117,7 +117,13 @@ fn execute_overlay_dir(
                 comment_out_files,
             )
         },
-        &|path| filter_file(path, config.enable_write_lib, config.enable_integration_test),
+        &|path| {
+            filter_file(
+                path,
+                config.enable_write_lib,
+                config.enable_integration_test,
+            )
+        },
     )
 }
 
@@ -277,17 +283,22 @@ fn filter_file(path: &Path, enable_write_lib: bool, enable_integration_test: boo
             || path.iter().contains(&OsStr::new("macos"))
             || path.iter().contains(&OsStr::new("linux"))
             || path.iter().contains(&OsStr::new("lib"))
-            || path.iter().contains(&OsStr::new("REPLACE_ME_RUST_CRATE_DIR"))
-            || path.iter().contains(&OsStr::new("flutter_rust_bridge.yaml")) {
+            || path
+                .iter()
+                .contains(&OsStr::new("REPLACE_ME_RUST_CRATE_DIR"))
+            || path
+                .iter()
+                .contains(&OsStr::new("flutter_rust_bridge.yaml"))
+        {
             return false;
         }
     }
 
-    if !enable_integration_test {
-        if path.iter().contains(&OsStr::new("integration_test"))
-            || path.iter().contains(&OsStr::new("test_driver")) {
-            return false;
-        }
+    if !enable_integration_test
+        && (path.iter().contains(&OsStr::new("integration_test"))
+            || path.iter().contains(&OsStr::new("test_driver")))
+    {
+        return false;
     }
 
     true
