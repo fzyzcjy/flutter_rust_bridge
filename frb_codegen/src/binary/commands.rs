@@ -225,6 +225,14 @@ pub(crate) struct IntegrateCommandArgs {
     #[arg(long)]
     pub(crate) no_enable_integration_test: bool,
 
+    /// Do NOT apply dart fix after generating code.
+    #[arg(long)]
+    pub(crate) no_dart_fix: bool,
+
+    /// Do NOT format dart code after generating code.
+    #[arg(long)]
+    pub(crate) no_dart_format: bool,
+
     #[clap(flatten)]
     pub common: CreateOrIntegrateCommandCommonArgs,
 

@@ -16,6 +16,8 @@ use std::path::{Path, PathBuf};
 
 pub struct IntegrateConfig {
     pub enable_integration_test: bool,
+    pub enable_dart_fix: bool,
+    pub enable_dart_format: bool,
     pub enable_local_dependency: bool,
     pub rust_crate_name: Option<String>,
     pub rust_crate_dir: String,
@@ -76,11 +78,19 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     info!("Setup cargokit dependencies");
     setup_cargokit_dependencies(&dart_root, &config.template)?;
 
-    info!("Apply Dart fixes");
-    dart_fix(&dart_root)?;
+    if config.enable_dart_fix {
+        info!("Apply Dart fixes");
+        dart_fix(&dart_root)?;
+    } else {
+        info!("Dart fix is disabled.")
+    }
 
-    info!("Format Dart code");
-    dart_format(&dart_root, 80)?;
+    if config.enable_dart_format {
+        info!("Format Dart code");
+        dart_format(&dart_root, 80)?;
+    } else {
+        info!("Dart format is disabled.");
+    }
 
     Ok(())
 }
