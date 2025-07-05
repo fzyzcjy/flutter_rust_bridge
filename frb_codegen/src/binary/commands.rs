@@ -221,6 +221,10 @@ pub(crate) struct CreateCommandArgs {
 
 #[derive(Debug, Args)]
 pub(crate) struct IntegrateCommandArgs {
+    /// Do NOT generate code related to lib/example etc.
+    #[arg(long)]
+    pub(crate) no_write_lib: bool,
+
     /// Do NOT generate code related to integration test
     #[arg(long)]
     pub(crate) no_integration_test: bool,

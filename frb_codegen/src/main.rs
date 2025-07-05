@@ -38,6 +38,7 @@ fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
             template: args.template.into(),
         })?,
         Commands::Integrate(args) => integration::integrate(IntegrateConfig {
+            enable_write_lib: !args.no_write_lib,
             enable_integration_test: !args.no_integration_test,
             enable_dart_fix: !args.no_dart_fix,
             enable_dart_format: !args.no_dart_format,

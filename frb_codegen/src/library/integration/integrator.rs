@@ -15,6 +15,7 @@ use std::ffi::OsStr;
 use std::path::{Path, PathBuf};
 
 pub struct IntegrateConfig {
+    pub enable_write_lib: bool,
     pub enable_integration_test: bool,
     pub enable_dart_fix: bool,
     pub enable_dart_format: bool,
@@ -116,7 +117,7 @@ fn execute_overlay_dir(
                 comment_out_files,
             )
         },
-        &|path| filter_file(path, config.enable_integration_test),
+        &|path| filter_file(path, config.enable_write_lib, config.enable_integration_test),
     )
 }
 
@@ -261,13 +262,32 @@ fn comment_out_existing_file_and_write_template(
     Some((path, [commented_existing_content.as_bytes(), src].concat()))
 }
 
-fn filter_file(path: &Path, enable_integration_test: bool) -> bool {
+fn filter_file(path: &Path, enable_write_lib: bool, enable_integration_test: bool) -> bool {
     if path.iter().contains(&OsStr::new("cargokit")) {
         return ![".git", ".github", "docs", "test"].contains(&file_name(path));
     }
 
-    if !enable_integration_test && path.iter().contains(&OsStr::new("integration_test")) {
-        return false;
+    if !enable_write_lib {
+        if path.iter().contains(&OsStr::new("rust_builder")) {
+            return true;
+        }
+        if path.iter().contains(&OsStr::new("android"))
+            || path.iter().contains(&OsStr::new("ios"))
+            || path.iter().contains(&OsStr::new("windows"))
+            || path.iter().contains(&OsStr::new("macos"))
+            || path.iter().contains(&OsStr::new("linux"))
+            || path.iter().contains(&OsStr::new("lib"))
+            || path.iter().contains(&OsStr::new("REPLACE_ME_RUST_CRATE_DIR"))
+            || path.iter().contains(&OsStr::new("flutter_rust_bridge.yaml")) {
+            return false;
+        }
+    }
+
+    if !enable_integration_test {
+        if path.iter().contains(&OsStr::new("integration_test"))
+            || path.iter().contains(&OsStr::new("test_driver")) {
+            return false;
+        }
     }
 
     true

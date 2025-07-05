@@ -44,6 +44,7 @@ pub fn create(config: CreateConfig) -> anyhow::Result<()> {
 
     info!("Step: Inject flutter_rust_bridge related code");
     integrator::integrate(IntegrateConfig {
+        enable_write_lib: true,
         enable_integration_test: true,
         enable_dart_fix: true,
         enable_dart_format: true,
