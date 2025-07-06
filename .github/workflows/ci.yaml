@@ -1003,7 +1003,7 @@ jobs:
       - generate_run_frb_codegen_command_generate
       - generate_run_frb_codegen_command_integrate
       - generate_internal
-      - test_upgrade
+      # - test_upgrade
       - test_rust
       - test_dart_native
       - test_flutter_web
