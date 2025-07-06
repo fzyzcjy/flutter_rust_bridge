@@ -465,49 +465,50 @@ jobs:
       # execute
       - run: ./frb_internal test-mimic-quickstart
 
-  test_upgrade:
-    name: 'Test :: Upgrade'
-    runs-on: ${{ matrix.image }}
-    strategy:
-      fail-fast: false
-      matrix:
-        image:
-          - windows-2025
-          # need macos-"13" because https://github.com/fzyzcjy/flutter_rust_bridge/issues/1225
-          - macos-13
-          - ubuntu-latest
+  # TODO re-enable after next release (since need old_version != new_version)
+  # test_upgrade:
+  #   name: 'Test :: Upgrade'
+  #   runs-on: ${{ matrix.image }}
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       image:
+  #         - windows-2025
+  #         # need macos-"13" because https://github.com/fzyzcjy/flutter_rust_bridge/issues/1225
+  #         - macos-13
+  #         - ubuntu-latest
 
-    steps:
-      # setup
-      - uses: catchpoint/workflow-telemetry-action@v1
-        with:
-          comment_on_pr: false
-      - uses: actions/checkout@v4
-        with:
-          submodules: recursive
-      - uses: dtolnay/rust-toolchain@stable
-        with:
-          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
-          components: rustfmt
-      - uses: flutter-actions/setup-flutter@v4
-        with:
-          cache: true
-          version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
-      # https://docs.flutter.dev/get-started/install/linux#linux-prerequisites
-      - if: runner.os == 'Linux'
-        run: sudo apt-get update && sudo apt-get install clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
-      - if: runner.os == 'Linux'
-        uses: pyvista/setup-headless-display-action@v3
-      - uses: taiki-e/install-action@cargo-llvm-cov
+  #   steps:
+  #     # setup
+  #     - uses: catchpoint/workflow-telemetry-action@v1
+  #       with:
+  #         comment_on_pr: false
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         submodules: recursive
+  #     - uses: dtolnay/rust-toolchain@stable
+  #       with:
+  #         toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
+  #         components: rustfmt
+  #     - uses: flutter-actions/setup-flutter@v4
+  #       with:
+  #         cache: true
+  #         version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+  #     # https://docs.flutter.dev/get-started/install/linux#linux-prerequisites
+  #     - if: runner.os == 'Linux'
+  #       run: sudo apt-get update && sudo apt-get install clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
+  #     - if: runner.os == 'Linux'
+  #       uses: pyvista/setup-headless-display-action@v3
+  #     - uses: taiki-e/install-action@cargo-llvm-cov
 
-      # execute
-      - run: ./frb_internal test-upgrade
+  #     # execute
+  #     - run: ./frb_internal test-upgrade
 
-      # report
-      - uses: actions/upload-artifact@v4
-        with:
-          name: ${{ github.job }}--${{ matrix.image }}--coverage
-          path: target/coverage
+  #     # report
+  #     - uses: actions/upload-artifact@v4
+  #       with:
+  #         name: ${{ github.job }}--${{ matrix.image }}--coverage
+  #         path: target/coverage
 
   test_rust:
     name: 'Test :: Rust'
