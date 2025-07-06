@@ -3,7 +3,7 @@
 ## 2.11.1
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
-* Patch release to fix installation error. For feature updates please refer to 2.11.0.
+* Patch release to fix installation error. For feature updates please refer to changelog of 2.11.0.
 
 ## 2.11.0
 
