@@ -274,7 +274,7 @@ Future<void> testUpgrade() async {
   }
 
   // This old-version can be bumped if needed
-  const oldVersion = '2.0.0-dev.20';
+  const oldVersion = '2.11.0';
   final newVersion = getFrbDartVersion();
   if (oldVersion == newVersion) {
     throw Exception('This test requires oldVersion!=newVersion');

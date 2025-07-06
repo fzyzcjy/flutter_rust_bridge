@@ -6,6 +6,8 @@ In Dart, when you want to express a long byte array such as a big image or some 
 
 [This section](../simple-correspondence) provides more details about `Vec<u8>` and its friends.
 
+Remark: `Vec<u8>` (or similar types) will be translated to `List<int>` instead of `Uint8List` in parameteres. This is because `Uint8List` is a subclass of `List<int>`, and providing the latter will allow users to pass in both types, resulting in easier usage.
+
 ## `Vec<T>`
 
 When you have normal `Vec<T>` for `T` types other than `u8`, `i8` etc, it will be converted to normal `List<T>`.

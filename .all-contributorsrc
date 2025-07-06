@@ -211,6 +211,34 @@
       ]
     },
     {
+      "login": "AlexV525",
+      "name": "Alex Li",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15884415?v=4",
+      "profile": "https://github.com/AlexV525",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "alexthe2",
+      "name": "Alex Procelewski",
+      "avatar_url": "https://avatars.githubusercontent.com/u/33789063?v=4",
+      "profile": "https://github.com/alexthe2",
+      "contributions": [
+        "doc",
+        "code"
+      ]
+    },
+    {
+      "login": "patmuk",
+      "name": "Patrick Mukherjee",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2045440?v=4",
+      "profile": "https://patrick.mukherjee.de",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "SiongSng",
       "name": "菘菘",
       "avatar_url": "https://avatars.githubusercontent.com/u/48402225?v=4",
@@ -296,29 +324,10 @@
       ]
     },
     {
-      "login": "alexthe2",
-      "name": "Alex Procelewski",
-      "avatar_url": "https://avatars.githubusercontent.com/u/33789063?v=4",
-      "profile": "https://github.com/alexthe2",
-      "contributions": [
-        "doc",
-        "code"
-      ]
-    },
-    {
       "login": "Larpoux",
       "name": "Larpoux",
       "avatar_url": "https://avatars.githubusercontent.com/u/45900255?v=4",
       "profile": "https://github.com/Larpoux",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
-      "login": "patmuk",
-      "name": "Patrick Mukherjee",
-      "avatar_url": "https://avatars.githubusercontent.com/u/2045440?v=4",
-      "profile": "https://patrick.mukherjee.de",
       "contributions": [
         "code"
       ]
@@ -333,10 +342,10 @@
       ]
     },
     {
-      "login": "AlexV525",
-      "name": "Alex Li",
-      "avatar_url": "https://avatars.githubusercontent.com/u/15884415?v=4",
-      "profile": "https://github.com/AlexV525",
+      "login": "alexlapa",
+      "name": "alexlapa",
+      "avatar_url": "https://avatars.githubusercontent.com/u/36732824?v=4",
+      "profile": "https://github.com/alexlapa",
       "contributions": [
         "code"
       ]
@@ -410,15 +419,6 @@
       "name": "Alex Ballmer",
       "avatar_url": "https://avatars.githubusercontent.com/u/4921944?v=4",
       "profile": "https://alexballmer.dev",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
-      "login": "alexlapa",
-      "name": "alexlapa",
-      "avatar_url": "https://avatars.githubusercontent.com/u/36732824?v=4",
-      "profile": "https://github.com/alexlapa",
       "contributions": [
         "code"
       ]
