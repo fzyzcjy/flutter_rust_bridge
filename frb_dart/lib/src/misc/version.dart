@@ -1,2 +1,2 @@
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-const kFlutterRustBridgeRuntimeVersion = '2.10.0';
+const kFlutterRustBridgeRuntimeVersion = '2.11.1';
