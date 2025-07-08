@@ -17,11 +17,11 @@ pub(super) fn overlay_dir(
     filter: &impl Fn(&Path) -> bool,
 ) -> Result<()> {
     for entry in current_reference_dir.entries() {
-        let target_sub_path = base_target_path.join(entry.path());
-
-        if !filter(&target_sub_path) {
+        if !filter(entry.path()) {
             continue;
         }
+
+        let target_sub_path = base_target_path.join(entry.path());
 
         let target_sub_path = compute_effective_path(&target_sub_path, replacements);
         match entry {
