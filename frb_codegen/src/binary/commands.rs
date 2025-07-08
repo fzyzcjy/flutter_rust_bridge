@@ -221,19 +221,19 @@ pub(crate) struct CreateCommandArgs {
 
 #[derive(Debug, Args)]
 pub(crate) struct IntegrateCommandArgs {
-    /// Do NOT generate code related to lib/example etc.
+    /// Do not generate code related to lib/example etc.
     #[arg(long)]
     pub(crate) no_write_lib: bool,
 
-    /// Do NOT generate code related to integration test
+    /// Do not generate code related to integration test
     #[arg(long)]
     pub(crate) no_integration_test: bool,
 
-    /// Do NOT apply dart fix after generating code.
+    /// Do not apply dart fix after generating code.
     #[arg(long)]
     pub(crate) no_dart_fix: bool,
 
-    /// Do NOT format dart code after generating code.
+    /// Do not format dart code after generating code.
     #[arg(long)]
     pub(crate) no_dart_format: bool,
 
