@@ -194,18 +194,20 @@ fn generate_boilerplate(
                     .into(),
                 ]
             }
-            TargetOrCommon::Common => vec![format!(
-                r#"{rust_preamble_formatted}flutter_rust_bridge::frb_generated_boilerplate!(
-                    default_stream_sink_codec = {default_stream_sink_codec}Codec,
-                    default_rust_opaque = RustOpaque{default_rust_opaque_codec},
-                    default_rust_auto_opaque = RustAutoOpaque{default_rust_opaque_codec},
-                );
-                pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "{version}";
-                pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = {content_hash};
-            "#,
-                version = env!("CARGO_PKG_VERSION"),
-            )
-            .into()],
+            TargetOrCommon::Common => {
+                vec![format!(
+                    r#"{rust_preamble_formatted}flutter_rust_bridge::frb_generated_boilerplate!(
+                        default_stream_sink_codec = {default_stream_sink_codec}Codec,
+                        default_rust_opaque = RustOpaque{default_rust_opaque_codec},
+                        default_rust_auto_opaque = RustAutoOpaque{default_rust_opaque_codec},
+                    );
+                    pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "{version}";
+                    pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = {content_hash};
+                "#,
+                    version = env!("CARGO_PKG_VERSION"),
+                )
+                .into()]
+            }
         }
     })
 }
