@@ -87,18 +87,12 @@ impl<'a> RustUpgrader<'a> {
             .get("flutter_rust_bridge")
             .map(|dep| (None, dep.clone()))
             .into_iter()
-            .chain(
-                manifest
-                    .target
-                    .iter()
-                    .map(|(name, target)| {
-                        target
-                            .dependencies
-                            .get("flutter_rust_bridge")
-                            .map(|dep| (Some(name.to_owned()), dep.clone()))
-                    })
-                    .flatten(),
-            )
+            .chain(manifest.target.iter().filter_map(|(name, target)| {
+                target
+                    .dependencies
+                    .get("flutter_rust_bridge")
+                    .map(|dep| (Some(name.to_owned()), dep.clone()))
+            }))
             .next()
             .ok_or_else(|| anyhow!("flutter_rust_bridge not found in Cargo.toml dependencies"))?;
 
