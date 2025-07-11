@@ -16,10 +16,10 @@ pub(super) fn execute(
 ) -> Result<()> {
     let _pb = progress_bar_pack.polish_upgrade.start();
 
-    let dart_upgrader = DartUpgrader::build(dart_root)?;
+    let dart_upgrader = DartUpgrader::new(dart_root)?;
     dart_upgrader.execute(enable_auto_upgrade)?;
 
-    let rust_upgrader = RustUpgrader::build(rust_crate_dir)?;
+    let rust_upgrader = RustUpgrader::new(rust_crate_dir)?;
     rust_upgrader.execute(enable_auto_upgrade)
 }
 
@@ -46,7 +46,7 @@ struct DartUpgrader<'a> {
 }
 
 impl<'a> DartUpgrader<'a> {
-    fn build(base_dir: &'a Path) -> Result<Self> {
+    fn new(base_dir: &'a Path) -> Result<Self> {
         Ok(Self {
             repository: DartRepository::from_path(base_dir)?,
             base_dir,
@@ -79,28 +79,34 @@ struct RustUpgrader<'a> {
 }
 
 impl<'a> RustUpgrader<'a> {
-    fn build(base_dir: &'a Path) -> Result<Self> {
+    fn new(base_dir: &'a Path) -> Result<Self> {
         let manifest = Manifest::from_path(base_dir.join("Cargo.toml"))?;
-
-        let (target_name, dependency) = manifest
-            .dependencies
-            .get("flutter_rust_bridge")
-            .map(|dep| (None, dep.clone()))
-            .into_iter()
-            .chain(manifest.target.iter().filter_map(|(name, target)| {
-                target
-                    .dependencies
-                    .get("flutter_rust_bridge")
-                    .map(|dep| (Some(name.to_owned()), dep.clone()))
-            }))
-            .next()
-            .ok_or_else(|| anyhow!("flutter_rust_bridge not found in Cargo.toml dependencies"))?;
+        let (target_name, dependency) = Self::get_dependency(manifest, "flutter_rust_bridge")?;
 
         Ok(Self {
             dependency,
             target_name,
             base_dir,
         })
+    }
+
+    fn get_dependency(
+        manifest: Manifest,
+        package_name: &str,
+    ) -> Result<(Option<String>, Dependency)> {
+        manifest
+            .dependencies
+            .get(package_name)
+            .map(|dep| (None, dep.clone()))
+            .into_iter()
+            .chain(manifest.target.iter().filter_map(|(name, target)| {
+                target
+                    .dependencies
+                    .get(package_name)
+                    .map(|dep| (Some(name.to_owned()), dep.clone()))
+            }))
+            .next()
+            .ok_or_else(|| anyhow!("flutter_rust_bridge not found in Cargo.toml dependencies"))
     }
 }
 
