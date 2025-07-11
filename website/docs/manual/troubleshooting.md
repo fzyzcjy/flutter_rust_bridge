@@ -159,6 +159,16 @@ A debug approach is to use `RUST_LOG=debug flutter_rust_bridge_codegen your_args
 For example, suppose it is stuck at executing `fvm flutter pub get ...`,
 then maybe try to execute that command directly in the shell and see whether it also get stuck.
 
+## Failed to load dynamic library 'librust_lib_my_app.so': dlopen failed: library "librust_lib_my_app.so"
+
+flutter_rust_bridge is compatible with both old and new Flutter. If you see error like `Flutter plugin not found, CargoKit plugin will not be applied.` or `dlopen failed: library "librust_lib_my_app.so" not found` in `flutter run --verbose`, then it is probably because the Cargokit (`rust_builder/cargokit`) version in your project () does not match the Flutter version and need the following changes:
+
+* To match Flutter >=3.22: Upgrade Cargokit by copy-pasting into `rust_builder/carogkit` after
+https://github.com/irondash/cargokit/commit/9b878b73cdcc8e8e00b3094257eefa4143af24f1
+* To match Flutter <=3.19: Downgrade Cargokit before that commit
+
+Related issue: https://github.com/fzyzcjy/flutter_rust_bridge/issues/2802
+
 ## Other problems?
 
 Don't hesitate to [open an issue](https://github.com/fzyzcjy/flutter_rust_bridge/issues/new/choose)! I usually reply
