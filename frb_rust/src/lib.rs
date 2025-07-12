@@ -40,6 +40,11 @@ pub use crate::handler::handler::Handler;
 pub use crate::handler::implementation::handler::DefaultHandler;
 pub use crate::misc::dart_dynamic::DartDynamic;
 pub use crate::misc::into_into_dart::IntoIntoDart;
+// needed for testing the logging feature
+// in a consuming project's lib.rs this would be
+// pub use crate::path_as_specified_by_rust_output::frb_generated;
+#[cfg(test)]
+use crate::misc::logging::test::mock_frb_generated as frb_generated;
 pub use crate::misc::panic_backtrace::{CatchUnwindWithBacktrace, PanicBacktrace};
 #[cfg(feature = "user-utils")]
 pub use crate::misc::user_utils::setup_default_user_utils;
