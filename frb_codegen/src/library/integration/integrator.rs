@@ -35,7 +35,7 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     let rust_crate_name = config
         .rust_crate_name
         .clone()
-        .unwrap_or(format!("rust_lib_{}", dart_package_name));
+        .unwrap_or(format!("rust_lib_{dart_package_name}"));
 
     info!("Overlay template onto project");
     let replacements = compute_replacements(&config, &dart_package_name, &rust_crate_name);

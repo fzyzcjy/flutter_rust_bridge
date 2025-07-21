@@ -28,8 +28,7 @@ impl Namespace {
         // frb-coverage:ignore-start
         assert!(
             !joined_path.contains('\\'),
-            "joined_path={:?} seems weird",
-            joined_path
+            "joined_path={joined_path:?} seems weird",
         );
         // frb-coverage:ignore-end
         Self { joined_path }

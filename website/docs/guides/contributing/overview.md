@@ -43,6 +43,7 @@ There is no need to read it word by word, since it serves as a reference to find
 - `frb_example`: Examples.
     - `pure_dart`: A pure-Dart example + contains most tests.
     - `dart_minimal`: Minimalist pure-Dart example. Suitable as a playground.
+    - `dart_logging`: Minimalist pure-Dart example with logging.
     - `flutter_via_create` / `flutter_via_integrate`: Examples automatically generated via `flutter_rust_bridge_codegen create/integrate`.
     - `deliberate_bad`: Deliberately buggy code to check sanitizers catch them.
 - `frb_dart` (`flutter_rust_bridge` Dart package): Support library for Dart - to be imported by users.
@@ -117,7 +118,7 @@ If you want to know more details, here is a table.
 (Code are adapted to ease understanding, thus it does not reflect actual details.)
 
 | Name      | Sample Location                                                        | Sample code                                                       | Source        |
-|-----------|------------------------------------------------------------------------|-------------------------------------------------------------------|---------------|
+| --------- | ---------------------------------------------------------------------- | ----------------------------------------------------------------- | ------------- |
 | User call | `lib/main.dart`                                                        | `print(f('Hello'));`                                              | User provided |
 | Dart API  | `lib/src/rust/api/minimal.dart`,<br/>`lib/src/rust/frb_generated.dart` | `void f(String arg) => wire_f(codec.encode(arg))`                 | Generated     |
 | Dart Wire | `lib/src/rust/frb_generated.dart`                                      | `void wire_f(char* ptr, int len); /* extern function */`          | Generated     |
