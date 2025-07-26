@@ -19,6 +19,7 @@ jobs:
   test_mimic_quickstart:
     name: 'Test :: MimicQuickstart'
     runs-on: ${{ matrix.image }}
+    if: github.repository_owner == 'fzyzcjy'
     strategy:
       fail-fast: false
       matrix:
