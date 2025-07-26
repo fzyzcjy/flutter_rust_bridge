@@ -9,7 +9,6 @@ on:
   schedule:
     # Schedule for five minutes after the hour, every hour
     - cron: "5 * * * *"
-      if: github.repository_owner == 'fzyzcjy'
 
 # By specifying the access of one of the scopes, all of those that are not
 # specified are set to 'none'.
@@ -18,6 +17,7 @@ permissions:
 
 jobs:
   noResponse:
+    if: github.repository_owner == 'fzyzcjy'
     runs-on: ubuntu-latest
     steps:
       - uses: lee-dohm/no-response@9bb0a4b5e6a45046f00353d5de7d90fb8bd773bb
