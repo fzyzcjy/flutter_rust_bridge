@@ -13,7 +13,7 @@ Widget body(RustState state) {
       decoration:
           InputDecoration(hintText: 'Input text and enter to add a todo'),
       text: state.inputText,
-      onChanged: (text) => state.inputText = text,
+      onChanged: (text) => state.inputText += text,
       onSubmitted: (_) => state.add(),
     ).padding(bottom: 8),
     ListView(children: [
