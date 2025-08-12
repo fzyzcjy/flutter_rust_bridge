@@ -1,6 +1,0 @@
-precompiled_binaries:
-  # Uri prefix used when downloading precompiled binaries.
-  url_prefix: https://github.com/REPLACE_ME_GITHUB_USERNAME/REPLACE_ME_DART_PACKAGE_NAME/releases/download/precompiled_
-
-  # Public key for verifying downloaded precompiled binaries.
-  public_key: REPLACE_ME_VERIFY_PUBLIC_KEY
