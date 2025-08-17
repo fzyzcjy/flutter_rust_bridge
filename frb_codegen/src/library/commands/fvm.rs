@@ -11,6 +11,9 @@ fn should_use_fvm(pwd: Option<&Path>) -> bool {
         false
     } else {
         let has_fvm_installation_output = has_fvm_installation();
+        if has_fvm_installation_output {
+            fvm_install_flutter_version();
+        }
         if !has_fvm_installation_output {
             log::info!("Has .fvmrc but no fvm binary installation, thus skip using fvm.");
         }
@@ -35,5 +38,12 @@ fn has_fvmrc(pwd: &Path) -> bool {
 #[allow(clippy::vec_init_then_push)]
 fn has_fvm_installation() -> bool {
     command_run!(call_shell[None, Some(ExecuteCommandOptions { log_when_error: Some(false), ..Default::default() })], "fvm", "--version")
+        .map_or(false, |res| res.status.success())
+}
+
+fn fvm_install_flutter_version() -> bool {
+    log::info!("Installing Flutter version via FVM…");
+
+    command_run!(call_shell[None, Some(ExecuteCommandOptions { log_when_error: Some(false), ..Default::default() })], "fvm", "install")
         .map_or(false, |res| res.status.success())
 }
