@@ -41,6 +41,7 @@ fn has_fvm_installation() -> bool {
         .map_or(false, |res| res.status.success())
 }
 
+#[allow(clippy::vec_init_then_push)]
 fn fvm_install_flutter_version() -> bool {
     log::info!("Installing Flutter version via FVM…");
 
