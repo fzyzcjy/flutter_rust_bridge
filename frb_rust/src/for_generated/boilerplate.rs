@@ -225,7 +225,9 @@ macro_rules! frb_generated_default_handler {
 
         #[cfg(target_family = "wasm")]
         thread_local! {
-            pub static THREAD_POOL: $crate::for_generated::SimpleThreadPool = Default::default();
+            pub static THREAD_POOL: $crate::for_generated::SimpleThreadPool = {
+                Default::default()
+            };
         }
 
         #[cfg(target_family = "wasm")]
