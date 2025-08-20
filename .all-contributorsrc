@@ -424,6 +424,15 @@
       ]
     },
     {
+      "login": "ethicnology",
+      "name": "J. Azad EMERY",
+      "avatar_url": "https://avatars.githubusercontent.com/u/25751709?v=4",
+      "profile": "https://github.com/ethicnology",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "xuxiaocheng0201",
       "name": "XuXiaoCheng",
       "avatar_url": "https://avatars.githubusercontent.com/u/78644225?v=4",
@@ -1125,15 +1134,6 @@
       "profile": "https://thesimplekid.com",
       "contributions": [
         "doc"
-      ]
-    },
-    {
-      "login": "ethicnology",
-      "name": "J. Azad EMERY",
-      "avatar_url": "https://avatars.githubusercontent.com/u/25751709?v=4",
-      "profile": "https://github.com/ethicnology",
-      "contributions": [
-        "code"
       ]
     }
   ],

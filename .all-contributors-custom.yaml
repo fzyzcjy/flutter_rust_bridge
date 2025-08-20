@@ -41,6 +41,7 @@
 - temeddix: Fix broken CI. Custom num workers. Fix MacOS doc steps. Update doc. Make zero-copy defaultable.
 - NightFeather0615: Fix Vec bool.
 - fmeef: Add cargo feature flag.
+- ethicnology: Fix fvm install.
 - xuxiaocheng0201: Support skipping in integrate.
 - ski0090: Fix folder creation.
 - borgoat: Upgrade freezed.
