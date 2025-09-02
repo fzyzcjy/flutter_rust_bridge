@@ -94,7 +94,7 @@ fn process_lib_rs_content(initial_content: &str, relative_path: &Path) -> Result
 
     let code_to_inject = format!(
         "// The following lines may not be accurate; change them according to your needs.\n\
-        mod {mod_name};{}",
+        pub mod {mod_name};{}",
         path.map_or_else(
             || "".to_string(),
             |path| {
@@ -211,7 +211,7 @@ mod tests {
         format!(
             "// AUTO INJECTED BY flutter_rust_bridge.\n\
              // The following lines may not be accurate; change them according to your needs.\n\
-             mod {};\n\
+             pub mod {};\n\
              // END of AUTO INJECTED code\n",
             mod_name.with_extension("").to_str().unwrap()
         )
@@ -220,7 +220,7 @@ mod tests {
         format!(
             "// AUTO INJECTED BY flutter_rust_bridge.\n\
              // The following lines may not be accurate; change them according to your needs.\n\
-             mod {};\n\
+             pub mod {};\n\
              use crate::{};\n\
              // END of AUTO INJECTED code\n",
             mod_name.to_str().unwrap(),
@@ -562,7 +562,7 @@ mod tests {
         let initial_content = format!(
             "// AUTO INJECTED BY flutter_rust_bridge.\n\
             // The following lines may not be accurate; change them according to your needs.\n\
-            mod {path_str};\n\
+            pub mod {path_str};\n\
             // END of AUTO INJECTED code\n\
             \n\
             // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT\n\
@@ -592,7 +592,7 @@ mod tests {
             \n\
             // AUTO INJECTED BY flutter_rust_bridge.\n\
             // The following lines may not be accurate; change them according to your needs.\n\
-            mod frb_generated;\n\
+            pub mod frb_generated;\n\
             // END of AUTO INJECTED code\n\
             \n\
             pub mod app;\n";
@@ -606,7 +606,7 @@ mod tests {
             \n\
             // AUTO INJECTED BY flutter_rust_bridge.\n\
             // The following lines may not be accurate; change them according to your needs.\n\
-            mod frb_generated;\n\
+            pub mod frb_generated;\n\
             // this export is needed for logging\n\
             use crate::frb_generated::StreamSink as __FrbStreamSinkForLogging;\n\
             // END of AUTO INJECTED code\n\
@@ -617,7 +617,7 @@ mod tests {
             \n\
             // AUTO INJECTED BY flutter_rust_bridge.\n\
             // The following lines may not be accurate; change them according to your needs.\n\
-            mod frb_generated;\n\
+            pub mod frb_generated;\n\
             // END of AUTO INJECTED code\n\
             \n\
             pub mod app;\n";
