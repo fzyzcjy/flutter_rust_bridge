@@ -33,9 +33,12 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
 
     let dart_package_name = get_dart_package_name(&dart_root)?;
     let rust_crate_name = config
-        .rust_crate_name
-        .clone()
-        .unwrap_or(format!("rust_lib_{}", dart_package_name));
+      .rust_crate_name
+      .clone()
+      .unwrap_or(match &config.template {
+          Template::App => { format!("rust_lib_{}", dart_package_name) }
+          Template::Plugin => { dart_package_name.to_owned() }
+      });
 
     info!("Overlay template onto project");
     let replacements = compute_replacements(&config, &dart_package_name, &rust_crate_name);
@@ -134,14 +137,7 @@ fn compute_replacements<'a>(
 ) -> HashMap<&'static str, &'a str> {
     let mut replacements = HashMap::new();
     replacements.insert("REPLACE_ME_DART_PACKAGE_NAME", dart_package_name);
-    match &config.template {
-        Template::App => {
-            replacements.insert("REPLACE_ME_RUST_CRATE_NAME", rust_crate_name);
-        }
-        Template::Plugin => {
-            replacements.insert("REPLACE_ME_RUST_CRATE_NAME", dart_package_name);
-        }
-    }
+    replacements.insert("REPLACE_ME_RUST_CRATE_NAME", rust_crate_name);
     replacements.insert("REPLACE_ME_RUST_CRATE_DIR", config.rust_crate_dir.as_str());
     replacements.insert("REPLACE_ME_FRB_VERSION", env!("CARGO_PKG_VERSION"));
 
