@@ -33,14 +33,14 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
 
     let dart_package_name = get_dart_package_name(&dart_root)?;
     let rust_crate_name = config
-      .rust_crate_name
-      .clone()
-      .unwrap_or(match &config.template {
-          Template::App => {
-              format!("rust_lib_{}", dart_package_name)
-          }
-          Template::Plugin => dart_package_name.to_owned(),
-      });
+        .rust_crate_name
+        .clone()
+        .unwrap_or(match &config.template {
+            Template::App => {
+                format!("rust_lib_{}", dart_package_name)
+            }
+            Template::Plugin => dart_package_name.to_owned(),
+        });
 
     info!("Overlay template onto project");
     let replacements = compute_replacements(&config, &dart_package_name, &rust_crate_name);
