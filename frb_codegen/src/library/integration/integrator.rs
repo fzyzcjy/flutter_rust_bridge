@@ -39,7 +39,7 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
           Template::App => {
               format!("rust_lib_{}", dart_package_name)
           }
-          Template::Plugin => { dart_package_name.to_owned() }
+          Template::Plugin => dart_package_name.to_owned(),
       });
 
     info!("Overlay template onto project");
