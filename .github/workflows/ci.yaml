@@ -827,8 +827,8 @@ jobs:
           - frb_example--rust_ui_todo_list--ui
           # no `frb_example--flutter_via_integrate` since it is similar to `flutter_via_create`
         device:
-          - "iPad (10th generation) Simulator (17.2)"
-          - "iPhone 15 Pro Max Simulator (17.2)"
+          - "iPad (10th generation) Simulator (18.6)"
+          - "iPhone 16 Pro Max Simulator (18.6)"
 
     steps:
       # setup
