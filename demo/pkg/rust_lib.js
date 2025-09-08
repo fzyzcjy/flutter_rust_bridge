@@ -222,6 +222,14 @@ let wasm_bindgen;
     };
 
     /**
+     * @returns {number}
+     */
+    __exports.frb_get_rust_content_hash = function() {
+        const ret = wasm.frb_get_rust_content_hash();
+        return ret;
+    };
+
+    /**
      * @param {number} func_id
      * @param {any} ptr_
      * @param {number} rust_vec_len_
@@ -231,18 +239,6 @@ let wasm_bindgen;
     __exports.frb_pde_ffi_dispatcher_sync = function(func_id, ptr_, rust_vec_len_, data_len_) {
         const ret = wasm.frb_pde_ffi_dispatcher_sync(func_id, ptr_, rust_vec_len_, data_len_);
         return ret;
-    };
-
-    /**
-     * @returns {number}
-     */
-    __exports.frb_get_rust_content_hash = function() {
-        const ret = wasm.frb_get_rust_content_hash();
-        return ret;
-    };
-
-    __exports.wasm_start_callback = function() {
-        wasm.wasm_start_callback();
     };
 
     /**
@@ -259,19 +255,6 @@ let wasm_bindgen;
     __exports.frb_dart_opaque_rust2dart_decode = function(ptr) {
         const ret = wasm.frb_dart_opaque_rust2dart_decode(ptr);
         return ret;
-    };
-
-    /**
-     * # Safety
-     *
-     * This should never be called manually.
-     * @param {any} handle
-     * @param {any} dart_handler_port
-     * @returns {number}
-     */
-    __exports.frb_dart_opaque_dart2rust_encode = function(handle, dart_handler_port) {
-        const ret = wasm.frb_dart_opaque_dart2rust_encode(handle, dart_handler_port);
-        return ret >>> 0;
     };
 
     function passArrayJsValueToWasm0(array, malloc) {
@@ -307,16 +290,33 @@ let wasm_bindgen;
         }
     };
 
+    /**
+     * # Safety
+     *
+     * This should never be called manually.
+     * @param {any} handle
+     * @param {any} dart_handler_port
+     * @returns {number}
+     */
+    __exports.frb_dart_opaque_dart2rust_encode = function(handle, dart_handler_port) {
+        const ret = wasm.frb_dart_opaque_dart2rust_encode(handle, dart_handler_port);
+        return ret >>> 0;
+    };
+
+    __exports.wasm_start_callback = function() {
+        wasm.wasm_start_callback();
+    };
+
     function __wbg_adapter_36(arg0, arg1, arg2) {
-        wasm.closure142_externref_shim(arg0, arg1, arg2);
+        wasm.closure141_externref_shim(arg0, arg1, arg2);
     }
 
     function __wbg_adapter_39(arg0, arg1, arg2) {
         wasm.closure169_externref_shim(arg0, arg1, arg2);
     }
 
-    function __wbg_adapter_117(arg0, arg1, arg2, arg3) {
-        wasm.closure215_externref_shim(arg0, arg1, arg2, arg3);
+    function __wbg_adapter_121(arg0, arg1, arg2, arg3) {
+        wasm.closure209_externref_shim(arg0, arg1, arg2, arg3);
     }
 
     const WorkerPoolFinalization = (typeof FinalizationRegistry === 'undefined')
@@ -562,7 +562,7 @@ let wasm_bindgen;
                     const a = state0.a;
                     state0.a = 0;
                     try {
-                        return __wbg_adapter_117(a, state0.b, arg0, arg1);
+                        return __wbg_adapter_121(a, state0.b, arg0, arg1);
                     } finally {
                         state0.a = a;
                     }
@@ -677,15 +677,15 @@ let wasm_bindgen;
             const ret = false;
             return ret;
         };
-        imports.wbg.__wbindgen_closure_wrapper374 = function(arg0, arg1, arg2) {
-            const ret = makeMutClosure(arg0, arg1, 143, __wbg_adapter_36);
+        imports.wbg.__wbindgen_closure_wrapper369 = function(arg0, arg1, arg2) {
+            const ret = makeMutClosure(arg0, arg1, 142, __wbg_adapter_36);
             return ret;
         };
-        imports.wbg.__wbindgen_closure_wrapper439 = function(arg0, arg1, arg2) {
+        imports.wbg.__wbindgen_closure_wrapper437 = function(arg0, arg1, arg2) {
             const ret = makeMutClosure(arg0, arg1, 170, __wbg_adapter_39);
             return ret;
         };
-        imports.wbg.__wbindgen_closure_wrapper441 = function(arg0, arg1, arg2) {
+        imports.wbg.__wbindgen_closure_wrapper438 = function(arg0, arg1, arg2) {
             const ret = makeMutClosure(arg0, arg1, 170, __wbg_adapter_39);
             return ret;
         };
