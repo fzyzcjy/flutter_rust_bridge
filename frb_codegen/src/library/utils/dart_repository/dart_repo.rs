@@ -250,13 +250,13 @@ fn determine_workspace_root(manifest_file: &PubspecYaml, manifest_path: &Path) -
                 manifest_path.parent().and_then(|parent| parent.parent())
             };
 
-            let parent_pubspec = parent_dir.and_then(|d| search_for_pubspec_starting_at(d));
+            let parent_pubspec = parent_dir.and_then(search_for_pubspec_starting_at);
 
             if let Some((parent_yaml, parent_manifest_path)) = parent_pubspec {
-                return determine_workspace_root(&parent_yaml, &parent_manifest_path);
+                determine_workspace_root(&parent_yaml, &parent_manifest_path)
             } else {
                 warn!("The pubspec {manifest_path:?} had resolution: workspace but no workspace root pubspec was found!");
-                return None;
+                None
             }
         }
         Some(_) => None,
@@ -271,10 +271,10 @@ fn determine_workspace_root(manifest_file: &PubspecYaml, manifest_path: &Path) -
 
 fn search_for_pubspec_starting_at(in_dir: &Path) -> Option<(PubspecYaml, PathBuf)> {
     let filename = DartToolchain::manifest_filename();
-    let pubspec_path = in_dir.join(&filename);
+    let pubspec_path = in_dir.join(filename);
     debug!("Checking for pubspec at {pubspec_path:?}");
     if pubspec_path.exists() {
-        match read_file_and_parse_yaml::<PubspecYaml>(&in_dir, &filename) {
+        match read_file_and_parse_yaml::<PubspecYaml>(in_dir, filename) {
             Ok(pubspec_yaml) => Some((pubspec_yaml, pubspec_path)),
             Err(e) => {
                 debug!("Couldn't load pubspec: {e}");
@@ -283,9 +283,7 @@ fn search_for_pubspec_starting_at(in_dir: &Path) -> Option<(PubspecYaml, PathBuf
         }
     } else {
         // Search all the way up recursively
-        in_dir
-            .parent()
-            .and_then(|parent| search_for_pubspec_starting_at(parent))
+        in_dir.parent().and_then(search_for_pubspec_starting_at)
     }
 }
 
