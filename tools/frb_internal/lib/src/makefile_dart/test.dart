@@ -36,6 +36,11 @@ List<Command<void>> createCommands() {
         testDartNative,
         _$populateTestDartNativeConfigParser,
         _$parseTestDartNativeConfigResult),
+    // SimpleConfigCommand(
+    //     'test-dart-workspace',
+    //     testDartWorkspace
+    // TODO: How to add a config parser?
+    //     ),
     SimpleConfigCommand('test-dart-web', testDartWeb,
         _$populateTestDartConfigParser, _$parseTestDartConfigResult),
     SimpleConfigCommand('test-dart-valgrind', testDartValgrind,
@@ -96,6 +101,14 @@ class TestDartNativeConfig {
   final bool coverage;
 
   const TestDartNativeConfig({required this.package, required this.coverage});
+}
+
+@CliOptions()
+class TestDartWorkspaceConfig {
+  @CliOption(convert: convertConfigPackage)
+  final String package;
+
+  const TestDartWorkspaceConfig({required this.package});
 }
 
 enum Sanitizer {
@@ -374,6 +387,15 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
   if (config.coverage) {
     await _formatDartCoverage(package: config.package);
   }
+}
+
+Future<void> testDartWorkspace(TestDartWorkspaceConfig config) async {
+  await runPubGetIfNotRunYet(config.package);
+
+  await exec(
+    'melos run generate',
+    relativePwd: config.package,
+  );
 }
 
 // Follow steps in https://github.com/taiki-e/cargo-llvm-cov#get-coverage-of-external-tests
