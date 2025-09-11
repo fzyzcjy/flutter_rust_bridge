@@ -2,7 +2,7 @@ use crate::utils::dart_repository::dart_toolchain::DartToolchain;
 use crate::utils::dart_repository::pubspec::*;
 use anyhow::{anyhow, bail, Context};
 use cargo_metadata::{Version, VersionReq};
-use log::debug;
+use log::{debug, warn};
 use serde::de::DeserializeOwned;
 use std::collections::HashMap;
 use std::convert::TryFrom;
@@ -14,14 +14,16 @@ use std::path::{Path, PathBuf};
 pub(crate) struct DartRepository {
     pub(crate) at: PathBuf,
     pub(crate) toolchain: DartToolchain,
+    pub(crate) workspace_root: Option<PathBuf>,
 }
 
 impl DartRepository {
     pub(crate) fn from_path(path: &Path) -> anyhow::Result<Self> {
         debug!("Guessing toolchain the runner is run into");
 
-        let manifest_file: PubspecYaml =
-            read_file_and_parse_yaml(path, DartToolchain::manifest_filename())?;
+        let filename = DartToolchain::manifest_filename();
+        let manifest_file: PubspecYaml = read_file_and_parse_yaml(path, filename)?;
+        let manifest_path = path.join(filename).to_owned();
 
         let toolchain = if option_hash_map_contains(
             &manifest_file.dependencies,
@@ -32,9 +34,12 @@ impl DartRepository {
             DartToolchain::Dart
         };
 
+        let workspace_root = determine_workspace_root(&manifest_file, manifest_path.as_path());
+
         Ok(DartRepository {
             at: path.to_owned(),
             toolchain,
+            workspace_root,
         })
     }
 
@@ -88,7 +93,7 @@ impl DartRepository {
         manager: DartDependencyMode,
         requirement: &VersionReq,
     ) -> anyhow::Result<()> {
-        let at = &self.at;
+        let at = self.workspace_root.as_ref().unwrap_or(&self.at);
         let filename = DartToolchain::lock_filename();
         debug!("Checking presence of {package} in {manager} at {at:?}");
 
@@ -231,6 +236,57 @@ fn read_file_and_parse_yaml<T: DeserializeOwned>(at: &Path, filename: &str) -> a
         // frb-coverage:ignore-end
     })?;
     Ok(file)
+}
+
+fn determine_workspace_root(manifest_file: &PubspecYaml, manifest_path: &Path) -> Option<PathBuf> {
+    debug!("Checking if {manifest_path:?} is the root of a workspace...");
+    match manifest_file.resolution.as_deref() {
+        Some("workspace") => {
+            // Should be able to assume this path points to the manifest's dir,
+            // but make sure we are robust to different inputs
+            let parent_dir = if manifest_path.is_dir() {
+                manifest_path.parent()
+            } else {
+                manifest_path.parent().and_then(|parent| parent.parent())
+            };
+
+            let parent_pubspec = parent_dir.and_then(|d| search_for_pubspec_starting_at(d));
+
+            if let Some((parent_yaml, parent_manifest_path)) = parent_pubspec {
+                return determine_workspace_root(&parent_yaml, &parent_manifest_path);
+            } else {
+                warn!("The pubspec {manifest_path:?} had resolution: workspace but no workspace root pubspec was found!");
+                return None;
+            }
+        }
+        Some(_) => None,
+        // If the manifest we are currently reading has no `resolution: ...` then it
+        // is considered the root, per: https://github.com/dart-lang/pub/blob/06e1960de9d54a6b6dce8d9a999892ef6257cda2/lib/src/entrypoint.dart#L61-L64
+        None => {
+            debug!("Seems like {manifest_path:?} is the workspace root pubspec");
+            manifest_path.parent().map(|parent| parent.to_path_buf())
+        }
+    }
+}
+
+fn search_for_pubspec_starting_at(in_dir: &Path) -> Option<(PubspecYaml, PathBuf)> {
+    let filename = DartToolchain::manifest_filename();
+    let pubspec_path = in_dir.join(&filename);
+    debug!("Checking for pubspec at {pubspec_path:?}");
+    if pubspec_path.exists() {
+        match read_file_and_parse_yaml::<PubspecYaml>(&in_dir, &filename) {
+            Ok(pubspec_yaml) => Some((pubspec_yaml, pubspec_path)),
+            Err(e) => {
+                debug!("Couldn't load pubspec: {e}");
+                None
+            }
+        }
+    } else {
+        // Search all the way up recursively
+        in_dir
+            .parent()
+            .and_then(|parent| search_for_pubspec_starting_at(parent))
+    }
 }
 
 fn option_hash_map_contains<K: Hash + Eq, V: Eq>(map: &Option<HashMap<K, V>>, key: &K) -> bool {
