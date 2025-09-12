@@ -33,7 +33,8 @@ Future<RunCommandOutput> runCommand(
 }) async {
   // ignore: avoid_print
   (printCommandInStderr ? stderr : stdout).writeAndFlush(
-      '\x1B[1m> $command ${arguments.join(' ')}\x1B[0m (pwd: $pwd, env: $env)\n');
+    '\x1B[1m> $command ${arguments.join(' ')}\x1B[0m (pwd: $pwd, env: $env)\n',
+  );
 
   final process = await Process.start(
     command,
@@ -65,7 +66,11 @@ Future<RunCommandOutput> runCommand(
         ? 'stderr=${stderrText.join("")}'
         : 'If you want to see extra information, set $envKey=1';
     throw ProcessException(
-        command, arguments, 'Bad exit code ($exitCode). $info', exitCode);
+      command,
+      arguments,
+      'Bad exit code ($exitCode). $info',
+      exitCode,
+    );
   }
 
   return RunCommandOutput(

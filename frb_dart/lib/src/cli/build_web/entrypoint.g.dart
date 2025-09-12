@@ -21,36 +21,17 @@ Config _$parseConfigResult(ArgResults result) => Config()
   ..dartCompileJsEntrypoint = result['dart-compile-js-entrypoint'] as String?;
 
 ArgParser _$populateConfigParser(ArgParser parser) => parser
-  ..addOption(
-    'dart-root',
-    help: 'Root folder of dart package',
-  )
+  ..addOption('dart-root', help: 'Root folder of dart package')
   ..addOption(
     'rust-root',
     abbr: 'c',
     help: 'Directory of the rust package',
     defaultsTo: 'rust',
   )
-  ..addOption(
-    'output',
-    abbr: 'o',
-    help: 'Output path',
-    valueHelp: 'PKG',
-  )
-  ..addFlag(
-    'release',
-    help: 'Compile in release mode',
-    negatable: false,
-  )
-  ..addFlag(
-    'verbose',
-    abbr: 'v',
-    help: 'Display more verbose information',
-  )
-  ..addMultiOption(
-    'cargo-build-args',
-    help: 'Arguments passed to cargo-build',
-  )
+  ..addOption('output', abbr: 'o', help: 'Output path', valueHelp: 'PKG')
+  ..addFlag('release', help: 'Compile in release mode', negatable: false)
+  ..addFlag('verbose', abbr: 'v', help: 'Display more verbose information')
+  ..addMultiOption('cargo-build-args', help: 'Arguments passed to cargo-build')
   ..addMultiOption(
     'wasm-bindgen-args',
     help: 'Arguments passed to wasm-bindgen',

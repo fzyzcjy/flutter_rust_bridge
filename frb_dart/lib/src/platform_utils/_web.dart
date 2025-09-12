@@ -36,7 +36,8 @@ BigInt jsBigIntToDartBigInt(Object? raw) {
   }
 
   throw Exception(
-      'jsBigIntToDartBigInt see unexpected type=${raw.runtimeType} value=$raw');
+    'jsBigIntToDartBigInt see unexpected type=${raw.runtimeType} value=$raw',
+  );
 }
 
 /// {@macro flutter_rust_bridge.internal}

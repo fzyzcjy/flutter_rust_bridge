@@ -30,9 +30,10 @@ class DcoCodec<S, E extends Object>
       decodeObject(wireSyncRust2DartDcoIntoDart(raw));
 
   @override
-  void freeWireSyncRust2Dart(WireSyncRust2DartDco raw,
-          GeneralizedFrbRustBinding generalizedFrbRustBinding) =>
-      generalizedFrbRustBinding.freeWireSyncRust2DartDco(raw);
+  void freeWireSyncRust2Dart(
+    WireSyncRust2DartDco raw,
+    GeneralizedFrbRustBinding generalizedFrbRustBinding,
+  ) => generalizedFrbRustBinding.freeWireSyncRust2DartDco(raw);
 }
 
 class _DcoSimpleDecoder<S, E extends Object> extends SimpleDecoder<S, E> {
@@ -53,8 +54,9 @@ class _DcoSimpleDecoder<S, E extends Object> extends SimpleDecoder<S, E> {
     final decodeErrorData = codec.decodeErrorData;
     if (decodeErrorData == null) {
       throw Exception(
-          'transformRust2DartMessage received error message, but no decodeErrorData to parse it. '
-          'Raw data: $rawList');
+        'transformRust2DartMessage received error message, but no decodeErrorData to parse it. '
+        'Raw data: $rawList',
+      );
     }
     return decodeErrorData(rawList[1]);
   }

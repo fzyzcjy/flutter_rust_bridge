@@ -25,15 +25,17 @@ void _ensureCrossOriginIsolated() {
   switch (crossOriginIsolated) {
     case false:
       web.console.warn(
-          'Warning: Buffers cannot be shared due to missing cross-origin headers. Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/manual/miscellaneous/web-cross-origin for details.'
-              .toJS);
+        'Warning: Buffers cannot be shared due to missing cross-origin headers. Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/manual/miscellaneous/web-cross-origin for details.'
+            .toJS,
+      );
       return;
     case true:
       return;
     case null:
       web.console.warn(
-          'Warning: crossOriginIsolated is null, browser might not support buffer sharing.'
-              .toJS);
+        'Warning: crossOriginIsolated is null, browser might not support buffer sharing.'
+            .toJS,
+      );
       return;
   }
 }

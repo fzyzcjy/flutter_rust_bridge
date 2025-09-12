@@ -55,8 +55,9 @@ class GeneralizedFrbRustBinding {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   PlatformPointer dartOpaqueDart2RustEncode(
-          Object object, NativePortType dartHandlerPort) =>
-      _frb_dart_opaque_dart2rust_encode(object.jsify()!, dartHandlerPort);
+    Object object,
+    NativePortType dartHandlerPort,
+  ) => _frb_dart_opaque_dart2rust_encode(object.jsify()!, dartHandlerPort);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   Object dartOpaqueRust2DartDecode(int ptr) =>
@@ -108,7 +109,9 @@ external int _frb_get_rust_content_hash();
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 @JS("wasm_bindgen.frb_dart_opaque_dart2rust_encode")
 external int _frb_dart_opaque_dart2rust_encode(
-    JSAny object, NativePortType dartHandlerPort);
+  JSAny object,
+  NativePortType dartHandlerPort,
+);
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 @JS("wasm_bindgen.frb_dart_opaque_rust2dart_decode")

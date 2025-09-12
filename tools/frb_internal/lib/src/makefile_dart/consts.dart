@@ -117,7 +117,7 @@ Future<void> _runPubGetIfNotRunYetRaw(String package, DartMode mode) async {
 
 Future<void> runPubGet(String package, DartMode mode) async {
   final cmd = switch (mode) {
-    DartMode.dart => 'dart --enable-experiment=native-assets',
+    DartMode.dart => 'dart',
     DartMode.flutter => 'flutter',
   };
   await exec('$cmd pub get', relativePwd: package);

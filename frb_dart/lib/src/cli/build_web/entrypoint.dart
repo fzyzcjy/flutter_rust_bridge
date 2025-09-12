@@ -58,49 +58,52 @@ class Config {
 
   /// {@macro flutter_rust_bridge.cli}
   @CliOption(
-      help:
-          'Override RUSTUP_TOOLCHAIN environment variable when running wasm-pack')
+    help:
+        'Override RUSTUP_TOOLCHAIN environment variable when running wasm-pack',
+  )
   late String? wasmPackRustupToolchain;
 
   /// {@macro flutter_rust_bridge.cli}
   @CliOption(
-      help: 'Override RUSTFLAGS environment variable when running wasm-pack')
+    help: 'Override RUSTFLAGS environment variable when running wasm-pack',
+  )
   late String? wasmPackRustflags;
 
   /// {@macro flutter_rust_bridge.cli}
   @CliOption(
-      help:
-          'If specified, compile Dart into JavaScript and use this option as entrypoint')
+    help:
+        'If specified, compile Dart into JavaScript and use this option as entrypoint',
+  )
   late String? dartCompileJsEntrypoint;
 
-// migrate to `wasmPackArgs`
-// /// {@macro flutter_rust_bridge.cli}
-// @CliOption(
-//   help: 'A comma-separated list of features to pass to `cargo build`.',
-// )
-// late String? features;
-//
-// /// {@macro flutter_rust_bridge.cli}
-// @CliOption(
-//   help: 'Whether to disable all features, useful with --features',
-//   negatable: false,
-// )
-// late bool noDefaultFeatures;
+  // migrate to `wasmPackArgs`
+  // /// {@macro flutter_rust_bridge.cli}
+  // @CliOption(
+  //   help: 'A comma-separated list of features to pass to `cargo build`.',
+  // )
+  // late String? features;
+  //
+  // /// {@macro flutter_rust_bridge.cli}
+  // @CliOption(
+  //   help: 'Whether to disable all features, useful with --features',
+  //   negatable: false,
+  // )
+  // late bool noDefaultFeatures;
 
-// migrate to `wasmPackArgs`
-// /// {@macro flutter_rust_bridge.cli}
-// @CliOption(
-//   help: 'Enable the weak references proposal\n'
-//       'Requires wasm-bindgen in path',
-// )
-// late bool weakRefs;
-//
-// /// {@macro flutter_rust_bridge.cli}
-// @CliOption(
-//   help: 'Enable the reference types proposal\n'
-//       'Requires wasm-bindgen in path',
-// )
-// late bool referenceTypes;
+  // migrate to `wasmPackArgs`
+  // /// {@macro flutter_rust_bridge.cli}
+  // @CliOption(
+  //   help: 'Enable the weak references proposal\n'
+  //       'Requires wasm-bindgen in path',
+  // )
+  // late bool weakRefs;
+  //
+  // /// {@macro flutter_rust_bridge.cli}
+  // @CliOption(
+  //   help: 'Enable the reference types proposal\n'
+  //       'Requires wasm-bindgen in path',
+  // )
+  // late bool referenceTypes;
 }
 
 BuildWebArgs _parseConfigToArgs(Config config) {

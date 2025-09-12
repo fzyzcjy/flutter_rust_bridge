@@ -16,8 +16,10 @@ class PortManager {
   PortManager(
     GeneralizedFrbRustBinding generalizedFrbRustBinding,
     BaseHandler handler,
-  ) : _dartHandlerPortManager =
-            DartHandlerPortManager(generalizedFrbRustBinding, handler);
+  ) : _dartHandlerPortManager = DartHandlerPortManager(
+        generalizedFrbRustBinding,
+        handler,
+      );
 
   /// {@macro flutter_rust_bridge.internal}
   void dispose() {
@@ -38,8 +40,9 @@ class DartHandlerPortManager extends BaseLazyPortManager {
     switch (message[0]) {
       case _DartHandlerPortAction.dartOpaqueDrop:
         assert(message.length == 2);
-        _generalizedFrbRustBinding
-            .dartOpaqueDropThreadBoxPersistentHandle(message[1]);
+        _generalizedFrbRustBinding.dartOpaqueDropThreadBoxPersistentHandle(
+          message[1],
+        );
       case _DartHandlerPortAction.dartFnInvoke:
         _handler.dartFnInvoke(message.sublist(1), _generalizedFrbRustBinding);
       // coverage:ignore-start

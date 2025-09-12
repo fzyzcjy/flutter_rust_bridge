@@ -19,7 +19,7 @@ Future<void> run(TestDartSanitizerConfig config) async {
 
   // Otherwise it seems the sanitized dart binary does not compile native assets
   await exec(
-      'dart --enable-experiment=native-assets run test/empty_entrypoint.dart',
+      'dart run test/empty_entrypoint.dart',
       relativePwd: config.package);
 
   if (config.package == 'frb_example/deliberate_bad') {
@@ -53,7 +53,7 @@ Future<void> _modifySdkMinVersion({required String path}) async {
 Future<void> _runEntrypoint(TestDartSanitizerConfig config) async {
   final sanitizedDart = await _getSanitizedDartBinary(config);
   await _execAndCheckWithSanitizerEnvVar(
-    '$sanitizedDart --enable-experiment=native-assets run test/dart_valgrind_test_entrypoint.dart',
+    '$sanitizedDart run test/dart_valgrind_test_entrypoint.dart',
     const _Info(
         name: 'entrypoint', expectSucceed: true, expectStderrContains: ''),
     config.sanitizer,
@@ -202,7 +202,7 @@ Future<void> _runPackageDeliberateBadWithDart(
   final sanitizedDart = await _getSanitizedDartBinary(config);
   for (final info in kDartOnlyInfos + kDartCallRustInfos) {
     await _execAndCheckWithSanitizerEnvVar(
-      '$sanitizedDart --enable-experiment=native-assets run '
+      '$sanitizedDart run '
       'frb_example_deliberate_bad ${info.name}',
       info,
       config.sanitizer,

@@ -21,13 +21,18 @@ class WriteBuffer {
   /// [startCapacity] determines the start size of the [WriteBuffer] in bytes.
   /// The closer that value is to the real size used, the better the
   /// performance.
-  factory WriteBuffer(
-      {int startCapacity = 8, required GeneralizedFrbRustBinding binding}) {
+  factory WriteBuffer({
+    int startCapacity = 8,
+    required GeneralizedFrbRustBinding binding,
+  }) {
     assert(startCapacity > 0);
     final ByteData eightBytes = ByteData(8);
     final Uint8List eightBytesAsList = eightBytes.buffer.asUint8List();
-    return WriteBuffer._(PlatformGeneralizedUint8List(startCapacity, binding),
-        eightBytes, eightBytesAsList);
+    return WriteBuffer._(
+      PlatformGeneralizedUint8List(startCapacity, binding),
+      eightBytes,
+      eightBytesAsList,
+    );
   }
 
   WriteBuffer._(this._buffer, this._eightBytes, this._eightBytesAsList);
@@ -248,7 +253,8 @@ class WriteBuffer {
   WriteBufferRaw intoRaw() {
     if (_isDone) {
       throw StateError(
-          'done() must not be called more than once on the same $runtimeType.');
+        'done() must not be called more than once on the same $runtimeType.',
+      );
     }
     _isDone = true;
     final raw = _buffer.intoRaw();
@@ -260,5 +266,5 @@ class WriteBuffer {
 typedef WriteBufferRaw = ({
   PlatformGeneralizedUint8ListPtr ptr,
   int rustVecLen,
-  int dataLen
+  int dataLen,
 });

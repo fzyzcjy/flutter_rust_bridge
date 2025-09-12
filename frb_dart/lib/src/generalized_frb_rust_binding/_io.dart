@@ -19,8 +19,8 @@ class GeneralizedFrbRustBinding {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   GeneralizedFrbRustBinding(ExternalLibrary externalLibrary)
-      : _binding = MultiPackageCBinding(externalLibrary.ffiDynamicLibrary),
-        _externalLibraryDebugInfo = externalLibrary.debugInfo;
+    : _binding = MultiPackageCBinding(externalLibrary.ffiDynamicLibrary),
+      _externalLibraryDebugInfo = externalLibrary.debugInfo;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void storeDartPostCObject() {
@@ -34,8 +34,9 @@ class GeneralizedFrbRustBinding {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void initShutdownWatcher() {
-    _shutdownWatcher ??=
-        _ShutdownWatcher(_binding.frb_create_shutdown_callback());
+    _shutdownWatcher ??= _ShutdownWatcher(
+      _binding.frb_create_shutdown_callback(),
+    );
   }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
@@ -51,7 +52,12 @@ class GeneralizedFrbRustBinding {
     required int dataLen,
   }) {
     _binding.frb_pde_ffi_dispatcher_primary(
-        funcId, port, ptr, rustVecLen, dataLen);
+      funcId,
+      port,
+      ptr,
+      rustVecLen,
+      dataLen,
+    );
   }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
@@ -62,7 +68,11 @@ class GeneralizedFrbRustBinding {
     required int dataLen,
   }) {
     return _binding.frb_pde_ffi_dispatcher_sync(
-        funcId, ptr, rustVecLen, dataLen);
+      funcId,
+      ptr,
+      rustVecLen,
+      dataLen,
+    );
   }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
@@ -73,7 +83,11 @@ class GeneralizedFrbRustBinding {
     required int dataLen,
   }) {
     return _binding.frb_dart_fn_deliver_output(
-        callId, ptr, rustVecLen, dataLen);
+      callId,
+      ptr,
+      rustVecLen,
+      dataLen,
+    );
   }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
@@ -88,8 +102,9 @@ class GeneralizedFrbRustBinding {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   PlatformPointer dartOpaqueDart2RustEncode(
-          Object object, NativePortType dartHandlerPort) =>
-      _binding.frb_dart_opaque_dart2rust_encode(object, dartHandlerPort);
+    Object object,
+    NativePortType dartHandlerPort,
+  ) => _binding.frb_dart_opaque_dart2rust_encode(object, dartHandlerPort);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   Object dartOpaqueRust2DartDecode(int ptr) =>
@@ -113,15 +128,19 @@ class GeneralizedFrbRustBinding {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   ffi.Pointer<ffi.Uint8> rustVecU8Resize(
-          ffi.Pointer<ffi.Uint8> ptr, int oldLen, int newLen) =>
-      _binding.frb_rust_vec_u8_resize(ptr, oldLen, newLen);
+    ffi.Pointer<ffi.Uint8> ptr,
+    int oldLen,
+    int newLen,
+  ) => _binding.frb_rust_vec_u8_resize(ptr, oldLen, newLen);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void rustVecU8Free(ffi.Pointer<ffi.Uint8> ptr, int len) =>
       _binding.frb_rust_vec_u8_free(ptr, len);
 
   void _userFriendlyDynamicLibraryErrorReporting(
-      ArgumentError e, StackTrace s) {
+    ArgumentError e,
+    StackTrace s,
+  ) {
     final message = e.message;
     if (message is String && message.contains('Failed to lookup symbol')) {
       throw ArgumentError(
@@ -139,7 +158,7 @@ final class _ShutdownWatcher implements ffi.Finalizable {
   final ffi.NativeFinalizer _finalizer;
 
   _ShutdownWatcher(ffi.Pointer<ffi.NativeFinalizerFunction> callback)
-      : _finalizer = ffi.NativeFinalizer(callback) {
+    : _finalizer = ffi.NativeFinalizer(callback) {
     _finalizer.attach(this, ffi.Pointer.fromAddress(0));
   }
 }
