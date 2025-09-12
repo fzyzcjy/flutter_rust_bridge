@@ -120,5 +120,12 @@ Future<void> runPubGet(String package, DartMode mode) async {
     DartMode.dart => 'dart',
     DartMode.flutter => 'flutter',
   };
-  await exec('$cmd pub get', relativePwd: package);
+  
+  // Add native assets flag for packages that require it
+  final extraFlags = const {
+    'frb_example/pure_dart',
+    'frb_example/pure_dart_pde',
+  }.contains(package) ? ' --enable-experiment=native-assets' : '';
+  
+  await exec('$cmd pub get$extraFlags', relativePwd: package);
 }
