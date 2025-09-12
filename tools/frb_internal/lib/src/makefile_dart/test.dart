@@ -462,7 +462,7 @@ Future<void> testDartValgrind(TestDartConfig config) async {
   await runPubGetIfNotRunYet(config.package);
 
   await exec(
-      'dart compile exe '
+      'dart compile exe --enable-experiment=native-assets '
       'test/dart_valgrind_test_entrypoint.dart -o build/valgrind_test_output/dart_valgrind_test_entrypoint',
       relativePwd: config.package);
 

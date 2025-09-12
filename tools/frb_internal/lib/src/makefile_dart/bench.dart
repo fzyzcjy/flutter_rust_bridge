@@ -72,7 +72,7 @@ const _kPackage = 'frb_example/pure_dart';
 
 Future<void> _dartBuild() async {
   await exec(
-      'dart compile exe benchmark/simple_benchmark.dart -o build/simple_benchmark/simple_benchmark',
+      'dart compile exe --enable-experiment=native-assets benchmark/simple_benchmark.dart -o build/simple_benchmark/simple_benchmark',
       relativePwd: _kPackage);
 }
 
