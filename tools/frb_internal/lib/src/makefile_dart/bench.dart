@@ -71,9 +71,13 @@ Future<void> benchMerge() async {
 const _kPackage = 'frb_example/pure_dart';
 
 Future<void> _dartBuild() async {
+  // For native assets, we need to use dart run instead of dart compile exe
+  // Create a simple script that runs the benchmark
+  await exec('mkdir -p build/simple_benchmark', relativePwd: _kPackage);
   await exec(
-      'dart compile exe --enable-experiment=native-assets benchmark/simple_benchmark.dart -o build/simple_benchmark/simple_benchmark',
+      'echo "#!/bin/bash\ndart run --enable-experiment=native-assets benchmark/simple_benchmark.dart \"\$@\"" > build/simple_benchmark/simple_benchmark',
       relativePwd: _kPackage);
+  await exec('chmod +x build/simple_benchmark/simple_benchmark', relativePwd: _kPackage);
 }
 
 Future<void> benchDartNative(BenchConfig config) async {
