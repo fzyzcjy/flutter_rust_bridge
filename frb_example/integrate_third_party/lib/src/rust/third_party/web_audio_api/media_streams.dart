@@ -17,10 +17,11 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 abstract class MediaStream implements RustOpaqueInterface, MediaStreamExt {
   Future<List<MediaStreamTrack>> getTracks();
 
-  static Future<MediaStream> fromTracks(
-          {required List<MediaStreamTrack> tracks}) =>
-      RustLib.instance.api
-          .webAudioApiMediaStreamsMediaStreamFromTracks(tracks: tracks);
+  static Future<MediaStream> fromTracks({
+    required List<MediaStreamTrack> tracks,
+  }) => RustLib.instance.api.webAudioApiMediaStreamsMediaStreamFromTracks(
+    tracks: tracks,
+  );
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamTrack>>
@@ -40,5 +41,4 @@ enum MediaStreamTrackState {
   /// will never provide more data for this track). Once a track enters this state, it never
   /// exits it.
   ended,
-  ;
 }

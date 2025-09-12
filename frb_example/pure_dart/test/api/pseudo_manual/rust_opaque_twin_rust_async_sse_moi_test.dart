@@ -26,54 +26,60 @@ Future<void> main({bool skipRustLibInit = false}) async {
     var hideData = await runOpaqueTwinRustAsyncSseMoi(opaque: opaque);
 
     expect(
-        hideData,
-        "content - Some(PrivateData "
-        "{"
-        " content: \"content nested\", "
-        "primitive: 424242, "
-        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-        "lifetime: \"static str\" "
-        "})");
+      hideData,
+      "content - Some(PrivateData "
+      "{"
+      " content: \"content nested\", "
+      "primitive: 424242, "
+      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+      "lifetime: \"static str\" "
+      "})",
+    );
     opaque.dispose();
   });
 
   test('double Call', () async {
     var data = await createOpaqueTwinRustAsyncSseMoi();
     expect(
-        await runOpaqueTwinRustAsyncSseMoi(opaque: data),
-        "content - Some(PrivateData "
-        "{"
-        " content: \"content nested\", "
-        "primitive: 424242, "
-        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-        "lifetime: \"static str\" "
-        "})");
+      await runOpaqueTwinRustAsyncSseMoi(opaque: data),
+      "content - Some(PrivateData "
+      "{"
+      " content: \"content nested\", "
+      "primitive: 424242, "
+      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+      "lifetime: \"static str\" "
+      "})",
+    );
     expect(
-        await runOpaqueTwinRustAsyncSseMoi(opaque: data),
-        "content - Some(PrivateData "
-        "{"
-        " content: \"content nested\", "
-        "primitive: 424242, "
-        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-        "lifetime: \"static str\" "
-        "})");
+      await runOpaqueTwinRustAsyncSseMoi(opaque: data),
+      "content - Some(PrivateData "
+      "{"
+      " content: \"content nested\", "
+      "primitive: 424242, "
+      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+      "lifetime: \"static str\" "
+      "})",
+    );
     data.dispose();
   });
 
   test('call after dispose', () async {
     var data = await createOpaqueTwinRustAsyncSseMoi();
     expect(
-        await runOpaqueTwinRustAsyncSseMoi(opaque: data),
-        "content - Some(PrivateData "
-        "{"
-        " content: \"content nested\", "
-        "primitive: 424242, "
-        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-        "lifetime: \"static str\" "
-        "})");
+      await runOpaqueTwinRustAsyncSseMoi(opaque: data),
+      "content - Some(PrivateData "
+      "{"
+      " content: \"content nested\", "
+      "primitive: 424242, "
+      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+      "lifetime: \"static str\" "
+      "})",
+    );
     data.dispose();
-    await expectLater(() => runOpaqueTwinRustAsyncSseMoi(opaque: data),
-        throwsA(isA<DroppableDisposedException>()));
+    await expectLater(
+      () => runOpaqueTwinRustAsyncSseMoi(opaque: data),
+      throwsA(isA<DroppableDisposedException>()),
+    );
   });
 
   test('dispose before complete', () async {
@@ -81,33 +87,39 @@ Future<void> main({bool skipRustLibInit = false}) async {
     var task = runOpaqueWithDelayTwinRustAsyncSseMoi(opaque: data);
     data.dispose();
     expect(
-        await task,
-        "content - Some(PrivateData "
-        "{"
-        " content: \"content nested\", "
-        "primitive: 424242, "
-        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-        "lifetime: \"static str\" "
-        "})");
-    await expectLater(() => runOpaqueTwinRustAsyncSseMoi(opaque: data),
-        throwsA(isA<DroppableDisposedException>()));
+      await task,
+      "content - Some(PrivateData "
+      "{"
+      " content: \"content nested\", "
+      "primitive: 424242, "
+      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+      "lifetime: \"static str\" "
+      "})",
+    );
+    await expectLater(
+      () => runOpaqueTwinRustAsyncSseMoi(opaque: data),
+      throwsA(isA<DroppableDisposedException>()),
+    );
   });
 
   test('create array of opaque type', () async {
     var data = await opaqueArrayTwinRustAsyncSseMoi();
     for (var v in data) {
       expect(
-          await runOpaqueTwinRustAsyncSseMoi(opaque: v),
-          "content - Some(PrivateData "
-          "{"
-          " content: \"content nested\", "
-          "primitive: 424242, "
-          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-          "lifetime: \"static str\" "
-          "})");
+        await runOpaqueTwinRustAsyncSseMoi(opaque: v),
+        "content - Some(PrivateData "
+        "{"
+        " content: \"content nested\", "
+        "primitive: 424242, "
+        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+        "lifetime: \"static str\" "
+        "})",
+      );
       v.dispose();
-      await expectLater(() => runOpaqueTwinRustAsyncSseMoi(opaque: v),
-          throwsA(isA<DroppableDisposedException>()));
+      await expectLater(
+        () => runOpaqueTwinRustAsyncSseMoi(opaque: v),
+        throwsA(isA<DroppableDisposedException>()),
+      );
     }
   });
 
@@ -115,127 +127,150 @@ Future<void> main({bool skipRustLibInit = false}) async {
     var data = await createArrayOpaqueEnumTwinRustAsyncSseMoi();
 
     expect(
-        await runEnumOpaqueTwinRustAsyncSseMoi(opaque: data[0]),
-        "content - Some(PrivateData "
-        "{"
-        " content: \"content nested\", "
-        "primitive: 424242, "
-        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-        "lifetime: \"static str\" "
-        "})");
+      await runEnumOpaqueTwinRustAsyncSseMoi(opaque: data[0]),
+      "content - Some(PrivateData "
+      "{"
+      " content: \"content nested\", "
+      "primitive: 424242, "
+      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+      "lifetime: \"static str\" "
+      "})",
+    );
     (data[0] as EnumOpaqueTwinRustAsyncSseMoi_Struct).field0.dispose();
 
     expect(await runEnumOpaqueTwinRustAsyncSseMoi(opaque: data[1]), "42");
     (data[1] as EnumOpaqueTwinRustAsyncSseMoi_Primitive).field0.dispose();
 
     expect(
-        await runEnumOpaqueTwinRustAsyncSseMoi(opaque: data[2]), "\"String\"");
+      await runEnumOpaqueTwinRustAsyncSseMoi(opaque: data[2]),
+      "\"String\"",
+    );
     (data[2] as EnumOpaqueTwinRustAsyncSseMoi_TraitObj).field0.dispose();
 
     expect(
-        await runEnumOpaqueTwinRustAsyncSseMoi(opaque: data[3]),
-        "\"content - Some(PrivateData "
-        "{"
-        " content: \\\"content nested\\\", "
-        "primitive: 424242, "
-        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-        "lifetime: \\\"static str\\\" "
-        "})\"");
+      await runEnumOpaqueTwinRustAsyncSseMoi(opaque: data[3]),
+      "\"content - Some(PrivateData "
+      "{"
+      " content: \\\"content nested\\\", "
+      "primitive: 424242, "
+      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+      "lifetime: \\\"static str\\\" "
+      "})\"",
+    );
     (data[3] as EnumOpaqueTwinRustAsyncSseMoi_Mutex).field0.dispose();
 
     expect(
-        await runEnumOpaqueTwinRustAsyncSseMoi(opaque: data[4]),
-        "\"content - Some(PrivateData "
-        "{"
-        " content: \\\"content nested\\\", "
-        "primitive: 424242, "
-        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-        "lifetime: \\\"static str\\\" "
-        "})\"");
+      await runEnumOpaqueTwinRustAsyncSseMoi(opaque: data[4]),
+      "\"content - Some(PrivateData "
+      "{"
+      " content: \\\"content nested\\\", "
+      "primitive: 424242, "
+      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+      "lifetime: \\\"static str\\\" "
+      "})\"",
+    );
     (data[4] as EnumOpaqueTwinRustAsyncSseMoi_RwLock).field0.dispose();
-    await expectLater(() => runEnumOpaqueTwinRustAsyncSseMoi(opaque: data[4]),
-        throwsA(isA<DroppableDisposedException>()));
+    await expectLater(
+      () => runEnumOpaqueTwinRustAsyncSseMoi(opaque: data[4]),
+      throwsA(isA<DroppableDisposedException>()),
+    );
   });
 
   test('opaque field', () async {
     var data = await createNestedOpaqueTwinRustAsyncSseMoi();
     await futurizeVoidTwinRustAsyncSseMoi(
-        runNestedOpaqueTwinRustAsyncSseMoi(opaque: data));
+      runNestedOpaqueTwinRustAsyncSseMoi(opaque: data),
+    );
 
     expect(
-        await runOpaqueTwinRustAsyncSseMoi(opaque: data.first),
-        "content - Some(PrivateData "
-        "{"
-        " content: \"content nested\", "
-        "primitive: 424242, "
-        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-        "lifetime: \"static str\" "
-        "})");
+      await runOpaqueTwinRustAsyncSseMoi(opaque: data.first),
+      "content - Some(PrivateData "
+      "{"
+      " content: \"content nested\", "
+      "primitive: 424242, "
+      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+      "lifetime: \"static str\" "
+      "})",
+    );
     expect(
-        await runOpaqueTwinRustAsyncSseMoi(opaque: data.second),
-        "content - Some(PrivateData "
-        "{"
-        " content: \"content nested\", "
-        "primitive: 424242, "
-        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-        "lifetime: \"static str\" "
-        "})");
+      await runOpaqueTwinRustAsyncSseMoi(opaque: data.second),
+      "content - Some(PrivateData "
+      "{"
+      " content: \"content nested\", "
+      "primitive: 424242, "
+      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+      "lifetime: \"static str\" "
+      "})",
+    );
     data.first.dispose();
-    await expectLater(() => runOpaqueTwinRustAsyncSseMoi(opaque: data.first),
-        throwsA(isA<DroppableDisposedException>()));
-    await expectLater(() => runNestedOpaqueTwinRustAsyncSseMoi(opaque: data),
-        throwsA(isA<DroppableDisposedException>()));
+    await expectLater(
+      () => runOpaqueTwinRustAsyncSseMoi(opaque: data.first),
+      throwsA(isA<DroppableDisposedException>()),
+    );
+    await expectLater(
+      () => runNestedOpaqueTwinRustAsyncSseMoi(opaque: data),
+      throwsA(isA<DroppableDisposedException>()),
+    );
     expect(
-        await runOpaqueTwinRustAsyncSseMoi(opaque: data.second),
-        "content - Some(PrivateData "
-        "{"
-        " content: \"content nested\", "
-        "primitive: 424242, "
-        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-        "lifetime: \"static str\" "
-        "})");
+      await runOpaqueTwinRustAsyncSseMoi(opaque: data.second),
+      "content - Some(PrivateData "
+      "{"
+      " content: \"content nested\", "
+      "primitive: 424242, "
+      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+      "lifetime: \"static str\" "
+      "})",
+    );
     data.second.dispose();
   });
 
   test('array', () async {
     var data = await opaqueArrayTwinRustAsyncSseMoi();
     await futurizeVoidTwinRustAsyncSseMoi(
-        opaqueArrayRunTwinRustAsyncSseMoi(data: data));
+      opaqueArrayRunTwinRustAsyncSseMoi(data: data),
+    );
     data[0].dispose();
 
     expect(
-        await runOpaqueTwinRustAsyncSseMoi(opaque: data[1]),
-        "content - Some(PrivateData "
-        "{"
-        " content: \"content nested\", "
-        "primitive: 424242, "
-        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-        "lifetime: \"static str\" "
-        "})");
+      await runOpaqueTwinRustAsyncSseMoi(opaque: data[1]),
+      "content - Some(PrivateData "
+      "{"
+      " content: \"content nested\", "
+      "primitive: 424242, "
+      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+      "lifetime: \"static str\" "
+      "})",
+    );
 
-    await expectLater(() => opaqueArrayRunTwinRustAsyncSseMoi(data: data),
-        throwsA(isA<DroppableDisposedException>()));
+    await expectLater(
+      () => opaqueArrayRunTwinRustAsyncSseMoi(data: data),
+      throwsA(isA<DroppableDisposedException>()),
+    );
     data[1].dispose();
   });
 
   test('vec', () async {
     var data = await opaqueVecTwinRustAsyncSseMoi();
     await futurizeVoidTwinRustAsyncSseMoi(
-        opaqueVecRunTwinRustAsyncSseMoi(data: data));
+      opaqueVecRunTwinRustAsyncSseMoi(data: data),
+    );
     data[0].dispose();
 
     expect(
-        await runOpaqueTwinRustAsyncSseMoi(opaque: data[1]),
-        "content - Some(PrivateData "
-        "{"
-        " content: \"content nested\", "
-        "primitive: 424242, "
-        "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-        "lifetime: \"static str\" "
-        "})");
+      await runOpaqueTwinRustAsyncSseMoi(opaque: data[1]),
+      "content - Some(PrivateData "
+      "{"
+      " content: \"content nested\", "
+      "primitive: 424242, "
+      "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+      "lifetime: \"static str\" "
+      "})",
+    );
 
-    await expectLater(() => opaqueVecRunTwinRustAsyncSseMoi(data: data),
-        throwsA(isA<DroppableDisposedException>()));
+    await expectLater(
+      () => opaqueVecRunTwinRustAsyncSseMoi(data: data),
+      throwsA(isA<DroppableDisposedException>()),
+    );
     data[1].dispose();
   });
 

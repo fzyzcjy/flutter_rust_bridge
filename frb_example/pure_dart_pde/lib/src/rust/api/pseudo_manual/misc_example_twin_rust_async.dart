@@ -15,71 +15,86 @@ part 'misc_example_twin_rust_async.freezed.dart';
 // These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `MySizeFreezedTwinRustAsync`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`
 
-Future<MyTreeNodeTwinRustAsync> handleComplexStructTwinRustAsync(
-        {required MyTreeNodeTwinRustAsync s}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinRustAsyncHandleComplexStructTwinRustAsync(
-            s: s);
+Future<MyTreeNodeTwinRustAsync> handleComplexStructTwinRustAsync({
+  required MyTreeNodeTwinRustAsync s,
+}) => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinRustAsyncHandleComplexStructTwinRustAsync(
+      s: s,
+    );
 
-Future<List<WeekdaysTwinRustAsync>> listOfPrimitiveEnumsTwinRustAsync(
-        {required List<WeekdaysTwinRustAsync> weekdays}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinRustAsyncListOfPrimitiveEnumsTwinRustAsync(
-            weekdays: weekdays);
+Future<List<WeekdaysTwinRustAsync>> listOfPrimitiveEnumsTwinRustAsync({
+  required List<WeekdaysTwinRustAsync> weekdays,
+}) => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinRustAsyncListOfPrimitiveEnumsTwinRustAsync(
+      weekdays: weekdays,
+    );
 
-Future<MyNestedStructTwinRustAsync> handleNestedStructTwinRustAsync(
-        {required MyNestedStructTwinRustAsync s}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinRustAsyncHandleNestedStructTwinRustAsync(
-            s: s);
+Future<MyNestedStructTwinRustAsync> handleNestedStructTwinRustAsync({
+  required MyNestedStructTwinRustAsync s,
+}) => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinRustAsyncHandleNestedStructTwinRustAsync(
+      s: s,
+    );
 
 Future<BigBuffersTwinRustAsync> handleBigBuffersTwinRustAsync() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualMiscExampleTwinRustAsyncHandleBigBuffersTwinRustAsync();
 
-Future<AbcTwinRustAsync> testAbcEnumTwinRustAsync(
-        {required AbcTwinRustAsync abc}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinRustAsyncTestAbcEnumTwinRustAsync(
-            abc: abc);
+Future<AbcTwinRustAsync> testAbcEnumTwinRustAsync({
+  required AbcTwinRustAsync abc,
+}) => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinRustAsyncTestAbcEnumTwinRustAsync(
+      abc: abc,
+    );
 
-Future<StructWithEnumTwinRustAsync> testStructWithEnumTwinRustAsync(
-        {required StructWithEnumTwinRustAsync se}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinRustAsyncTestStructWithEnumTwinRustAsync(
-            se: se);
+Future<StructWithEnumTwinRustAsync> testStructWithEnumTwinRustAsync({
+  required StructWithEnumTwinRustAsync se,
+}) => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinRustAsyncTestStructWithEnumTwinRustAsync(
+      se: se,
+    );
 
-Future<String> handleStringTwinRustAsync({required String s}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinRustAsyncHandleStringTwinRustAsync(
-            s: s);
+Future<String> handleStringTwinRustAsync({required String s}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualMiscExampleTwinRustAsyncHandleStringTwinRustAsync(
+      s: s,
+    );
 
-Future<String> handleCharTwinRustAsync({required String arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinRustAsyncHandleCharTwinRustAsync(
-            arg: arg);
+Future<String> handleCharTwinRustAsync({required String arg}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualMiscExampleTwinRustAsyncHandleCharTwinRustAsync(
+      arg: arg,
+    );
 
 Future<Uint8List> handleVecU8TwinRustAsync({required List<int> v}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualMiscExampleTwinRustAsyncHandleVecU8TwinRustAsync(v: v);
 
-Future<MySize> handleStructTwinRustAsync(
-        {required MySize arg, required MySize boxed}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinRustAsyncHandleStructTwinRustAsync(
-            arg: arg, boxed: boxed);
+Future<MySize> handleStructTwinRustAsync({
+  required MySize arg,
+  required MySize boxed,
+}) => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinRustAsyncHandleStructTwinRustAsync(
+      arg: arg,
+      boxed: boxed,
+    );
 
 Future<int> positionalArgumentsTwinRustAsync(int a, int b) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualMiscExampleTwinRustAsyncPositionalArgumentsTwinRustAsync(
-        a: a, b: b);
+      a: a,
+      b: b,
+    );
 
 class ATwinRustAsync {
   final String a;
 
-  const ATwinRustAsync({
-    required this.a,
-  });
+  const ATwinRustAsync({required this.a});
 
   @override
   int get hashCode => a.hashCode;
@@ -96,26 +111,16 @@ class ATwinRustAsync {
 sealed class AbcTwinRustAsync with _$AbcTwinRustAsync {
   const AbcTwinRustAsync._();
 
-  const factory AbcTwinRustAsync.a(
-    ATwinRustAsync field0,
-  ) = AbcTwinRustAsync_A;
-  const factory AbcTwinRustAsync.b(
-    BTwinRustAsync field0,
-  ) = AbcTwinRustAsync_B;
-  const factory AbcTwinRustAsync.c(
-    CTwinRustAsync field0,
-  ) = AbcTwinRustAsync_C;
-  const factory AbcTwinRustAsync.justInt(
-    int field0,
-  ) = AbcTwinRustAsync_JustInt;
+  const factory AbcTwinRustAsync.a(ATwinRustAsync field0) = AbcTwinRustAsync_A;
+  const factory AbcTwinRustAsync.b(BTwinRustAsync field0) = AbcTwinRustAsync_B;
+  const factory AbcTwinRustAsync.c(CTwinRustAsync field0) = AbcTwinRustAsync_C;
+  const factory AbcTwinRustAsync.justInt(int field0) = AbcTwinRustAsync_JustInt;
 }
 
 class BTwinRustAsync {
   final int b;
 
-  const BTwinRustAsync({
-    required this.b,
-  });
+  const BTwinRustAsync({required this.b});
 
   @override
   int get hashCode => b.hashCode;
@@ -132,10 +137,7 @@ class BigBuffersTwinRustAsync {
   final Int64List int64;
   final Uint64List uint64;
 
-  const BigBuffersTwinRustAsync({
-    required this.int64,
-    required this.uint64,
-  });
+  const BigBuffersTwinRustAsync({required this.int64, required this.uint64});
 
   @override
   int get hashCode => int64.hashCode ^ uint64.hashCode;
@@ -152,9 +154,7 @@ class BigBuffersTwinRustAsync {
 class CTwinRustAsync {
   final bool c;
 
-  const CTwinRustAsync({
-    required this.c,
-  });
+  const CTwinRustAsync({required this.c});
 
   @override
   int get hashCode => c.hashCode;
@@ -223,10 +223,7 @@ class StructWithEnumTwinRustAsync {
   final AbcTwinRustAsync abc1;
   final AbcTwinRustAsync abc2;
 
-  const StructWithEnumTwinRustAsync({
-    required this.abc1,
-    required this.abc2,
-  });
+  const StructWithEnumTwinRustAsync({required this.abc1, required this.abc2});
 
   @override
   int get hashCode => abc1.hashCode ^ abc2.hashCode;
@@ -248,5 +245,4 @@ enum WeekdaysTwinRustAsync {
   friday,
   saturday,
   sunday,
-  ;
 }

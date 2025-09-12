@@ -12,58 +12,63 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `fmt`, `fmt`, `fmt`
 
-Future<double?> handleOptionalReturnTwinSse(
-        {required double left, required double right}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSseHandleOptionalReturnTwinSse(
-            left: left, right: right);
+Future<double?> handleOptionalReturnTwinSse({
+  required double left,
+  required double right,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinSseHandleOptionalReturnTwinSse(
+      left: left,
+      right: right,
+    );
 
 Future<ElementTwinSse?> handleOptionalStructTwinSse({String? document}) =>
     RustLib.instance.api
         .crateApiPseudoManualOptionalTwinSseHandleOptionalStructTwinSse(
-            document: document);
+          document: document,
+        );
 
-Future<ExoticOptionalsTwinSse?> handleOptionalIncrementTwinSse(
-        {ExoticOptionalsTwinSse? opt}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSseHandleOptionalIncrementTwinSse(
-            opt: opt);
+Future<ExoticOptionalsTwinSse?> handleOptionalIncrementTwinSse({
+  ExoticOptionalsTwinSse? opt,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinSseHandleOptionalIncrementTwinSse(
+      opt: opt,
+    );
 
-Future<double> handleIncrementBoxedOptionalTwinSse({double? opt}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSseHandleIncrementBoxedOptionalTwinSse(
-            opt: opt);
+Future<double> handleIncrementBoxedOptionalTwinSse({double? opt}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualOptionalTwinSseHandleIncrementBoxedOptionalTwinSse(
+      opt: opt,
+    );
 
 Future<OptVecsTwinSse> handleVecOfOptsTwinSse({required OptVecsTwinSse opt}) =>
     RustLib.instance.api
         .crateApiPseudoManualOptionalTwinSseHandleVecOfOptsTwinSse(opt: opt);
 
-Future<String> handleOptionBoxArgumentsTwinSse(
-        {int? i8Box,
-        int? u8Box,
-        int? i32Box,
-        PlatformInt64? i64Box,
-        double? f64Box,
-        bool? boolbox,
-        ExoticOptionalsTwinSse? structbox}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSseHandleOptionBoxArgumentsTwinSse(
-            i8Box: i8Box,
-            u8Box: u8Box,
-            i32Box: i32Box,
-            i64Box: i64Box,
-            f64Box: f64Box,
-            boolbox: boolbox,
-            structbox: structbox);
+Future<String> handleOptionBoxArgumentsTwinSse({
+  int? i8Box,
+  int? u8Box,
+  int? i32Box,
+  PlatformInt64? i64Box,
+  double? f64Box,
+  bool? boolbox,
+  ExoticOptionalsTwinSse? structbox,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinSseHandleOptionBoxArgumentsTwinSse(
+      i8Box: i8Box,
+      u8Box: u8Box,
+      i32Box: i32Box,
+      i64Box: i64Box,
+      f64Box: f64Box,
+      boolbox: boolbox,
+      structbox: structbox,
+    );
 
 class AttributeTwinSse {
   final String key;
   final String value;
 
-  const AttributeTwinSse({
-    required this.key,
-    required this.value,
-  });
+  const AttributeTwinSse({required this.key, required this.value});
 
   @override
   int get hashCode => key.hashCode ^ value.hashCode;
@@ -83,12 +88,7 @@ class ElementTwinSse {
   final List<AttributeTwinSse>? attributes;
   final List<ElementTwinSse>? children;
 
-  const ElementTwinSse({
-    this.tag,
-    this.text,
-    this.attributes,
-    this.children,
-  });
+  const ElementTwinSse({this.tag, this.text, this.attributes, this.children});
 
   static Future<ElementTwinSse> default_() => RustLib.instance.api
       .crateApiPseudoManualOptionalTwinSseElementTwinSseDefault();

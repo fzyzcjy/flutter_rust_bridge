@@ -12,58 +12,64 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `fmt`, `fmt`, `fmt`
 
-double? handleOptionalReturnTwinSync(
-        {required double left, required double right}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSyncHandleOptionalReturnTwinSync(
-            left: left, right: right);
+double? handleOptionalReturnTwinSync({
+  required double left,
+  required double right,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinSyncHandleOptionalReturnTwinSync(
+      left: left,
+      right: right,
+    );
 
-ElementTwinSync? handleOptionalStructTwinSync({String? document}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSyncHandleOptionalStructTwinSync(
-            document: document);
+ElementTwinSync? handleOptionalStructTwinSync({String? document}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualOptionalTwinSyncHandleOptionalStructTwinSync(
+      document: document,
+    );
 
-ExoticOptionalsTwinSync? handleOptionalIncrementTwinSync(
-        {ExoticOptionalsTwinSync? opt}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSyncHandleOptionalIncrementTwinSync(
-            opt: opt);
+ExoticOptionalsTwinSync? handleOptionalIncrementTwinSync({
+  ExoticOptionalsTwinSync? opt,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinSyncHandleOptionalIncrementTwinSync(
+      opt: opt,
+    );
 
 double handleIncrementBoxedOptionalTwinSync({double? opt}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualOptionalTwinSyncHandleIncrementBoxedOptionalTwinSync(
-        opt: opt);
+      opt: opt,
+    );
 
 OptVecsTwinSync handleVecOfOptsTwinSync({required OptVecsTwinSync opt}) =>
     RustLib.instance.api
         .crateApiPseudoManualOptionalTwinSyncHandleVecOfOptsTwinSync(opt: opt);
 
-String handleOptionBoxArgumentsTwinSync(
-        {int? i8Box,
-        int? u8Box,
-        int? i32Box,
-        PlatformInt64? i64Box,
-        double? f64Box,
-        bool? boolbox,
-        ExoticOptionalsTwinSync? structbox}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSyncHandleOptionBoxArgumentsTwinSync(
-            i8Box: i8Box,
-            u8Box: u8Box,
-            i32Box: i32Box,
-            i64Box: i64Box,
-            f64Box: f64Box,
-            boolbox: boolbox,
-            structbox: structbox);
+String handleOptionBoxArgumentsTwinSync({
+  int? i8Box,
+  int? u8Box,
+  int? i32Box,
+  PlatformInt64? i64Box,
+  double? f64Box,
+  bool? boolbox,
+  ExoticOptionalsTwinSync? structbox,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinSyncHandleOptionBoxArgumentsTwinSync(
+      i8Box: i8Box,
+      u8Box: u8Box,
+      i32Box: i32Box,
+      i64Box: i64Box,
+      f64Box: f64Box,
+      boolbox: boolbox,
+      structbox: structbox,
+    );
 
 class AttributeTwinSync {
   final String key;
   final String value;
 
-  const AttributeTwinSync({
-    required this.key,
-    required this.value,
-  });
+  const AttributeTwinSync({required this.key, required this.value});
 
   @override
   int get hashCode => key.hashCode ^ value.hashCode;
@@ -83,12 +89,7 @@ class ElementTwinSync {
   final List<AttributeTwinSync>? attributes;
   final List<ElementTwinSync>? children;
 
-  const ElementTwinSync({
-    this.tag,
-    this.text,
-    this.attributes,
-    this.children,
-  });
+  const ElementTwinSync({this.tag, this.text, this.attributes, this.children});
 
   static Future<ElementTwinSync> default_() => RustLib.instance.api
       .crateApiPseudoManualOptionalTwinSyncElementTwinSyncDefault();

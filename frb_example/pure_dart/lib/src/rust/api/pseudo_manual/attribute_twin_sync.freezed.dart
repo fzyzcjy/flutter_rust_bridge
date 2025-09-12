@@ -12,7 +12,8 @@ part of 'attribute_twin_sync.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$UserIdTwinSync {
@@ -28,8 +29,9 @@ mixin _$UserIdTwinSync {
 /// @nodoc
 abstract class $UserIdTwinSyncCopyWith<$Res> {
   factory $UserIdTwinSyncCopyWith(
-          UserIdTwinSync value, $Res Function(UserIdTwinSync) then) =
-      _$UserIdTwinSyncCopyWithImpl<$Res, UserIdTwinSync>;
+    UserIdTwinSync value,
+    $Res Function(UserIdTwinSync) then,
+  ) = _$UserIdTwinSyncCopyWithImpl<$Res, UserIdTwinSync>;
   @useResult
   $Res call({int value});
 }
@@ -48,24 +50,26 @@ class _$UserIdTwinSyncCopyWithImpl<$Res, $Val extends UserIdTwinSync>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? value = null,
-  }) {
-    return _then(_value.copyWith(
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+  $Res call({Object? value = null}) {
+    return _then(
+      _value.copyWith(
+            value: null == value
+                ? _value.value
+                : value // ignore: cast_nullable_to_non_nullable
+                      as int,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$UserIdTwinSyncImplCopyWith<$Res>
     implements $UserIdTwinSyncCopyWith<$Res> {
-  factory _$$UserIdTwinSyncImplCopyWith(_$UserIdTwinSyncImpl value,
-          $Res Function(_$UserIdTwinSyncImpl) then) =
-      __$$UserIdTwinSyncImplCopyWithImpl<$Res>;
+  factory _$$UserIdTwinSyncImplCopyWith(
+    _$UserIdTwinSyncImpl value,
+    $Res Function(_$UserIdTwinSyncImpl) then,
+  ) = __$$UserIdTwinSyncImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int value});
@@ -76,22 +80,23 @@ class __$$UserIdTwinSyncImplCopyWithImpl<$Res>
     extends _$UserIdTwinSyncCopyWithImpl<$Res, _$UserIdTwinSyncImpl>
     implements _$$UserIdTwinSyncImplCopyWith<$Res> {
   __$$UserIdTwinSyncImplCopyWithImpl(
-      _$UserIdTwinSyncImpl _value, $Res Function(_$UserIdTwinSyncImpl) _then)
-      : super(_value, _then);
+    _$UserIdTwinSyncImpl _value,
+    $Res Function(_$UserIdTwinSyncImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of UserIdTwinSync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? value = null,
-  }) {
-    return _then(_$UserIdTwinSyncImpl(
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+  $Res call({Object? value = null}) {
+    return _then(
+      _$UserIdTwinSyncImpl(
+        value: null == value
+            ? _value.value
+            : value // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
@@ -127,7 +132,9 @@ class _$UserIdTwinSyncImpl implements _UserIdTwinSync {
   @pragma('vm:prefer-inline')
   _$$UserIdTwinSyncImplCopyWith<_$UserIdTwinSyncImpl> get copyWith =>
       __$$UserIdTwinSyncImplCopyWithImpl<_$UserIdTwinSyncImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _UserIdTwinSync implements UserIdTwinSync {

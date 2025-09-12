@@ -10,108 +10,143 @@ import 'basic_twin_sse.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int?> exampleBasicOptionalTypeI8TwinSse({int? arg}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeI8TwinSse(
-        arg: arg);
+      arg: arg,
+    );
 
 Future<int?> exampleBasicOptionalTypeI16TwinSse({int? arg}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeI16TwinSse(
-        arg: arg);
+      arg: arg,
+    );
 
 Future<int?> exampleBasicOptionalTypeI32TwinSse({int? arg}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeI32TwinSse(
-        arg: arg);
+      arg: arg,
+    );
 
-Future<PlatformInt64?> exampleBasicOptionalTypeI64TwinSse(
-        {PlatformInt64? arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeI64TwinSse(
-            arg: arg);
+Future<PlatformInt64?> exampleBasicOptionalTypeI64TwinSse({
+  PlatformInt64? arg,
+}) => RustLib.instance.api
+    .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeI64TwinSse(
+      arg: arg,
+    );
 
 Future<BigInt?> exampleBasicOptionalTypeI128TwinSse({BigInt? arg}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeI128TwinSse(
-        arg: arg);
+      arg: arg,
+    );
 
 Future<int?> exampleBasicOptionalTypeU8TwinSse({int? arg}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeU8TwinSse(
-        arg: arg);
+      arg: arg,
+    );
 
 Future<int?> exampleBasicOptionalTypeU16TwinSse({int? arg}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeU16TwinSse(
-        arg: arg);
+      arg: arg,
+    );
 
 Future<int?> exampleBasicOptionalTypeU32TwinSse({int? arg}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeU32TwinSse(
-        arg: arg);
+      arg: arg,
+    );
 
 Future<BigInt?> exampleBasicOptionalTypeU64TwinSse({BigInt? arg}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeU64TwinSse(
-        arg: arg);
+      arg: arg,
+    );
 
 Future<BigInt?> exampleBasicOptionalTypeU128TwinSse({BigInt? arg}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeU128TwinSse(
-        arg: arg);
+      arg: arg,
+    );
 
-Future<PlatformInt64?> exampleBasicOptionalTypeIsizeTwinSse(
-        {PlatformInt64? arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeIsizeTwinSse(
-            arg: arg);
+Future<PlatformInt64?> exampleBasicOptionalTypeIsizeTwinSse({
+  PlatformInt64? arg,
+}) => RustLib.instance.api
+    .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeIsizeTwinSse(
+      arg: arg,
+    );
 
 Future<BigInt?> exampleBasicOptionalTypeUsizeTwinSse({BigInt? arg}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeUsizeTwinSse(
-        arg: arg);
+      arg: arg,
+    );
 
 Future<double?> exampleBasicOptionalTypeF32TwinSse({double? arg}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeF32TwinSse(
-        arg: arg);
+      arg: arg,
+    );
 
 Future<double?> exampleBasicOptionalTypeF64TwinSse({double? arg}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeF64TwinSse(
-        arg: arg);
+      arg: arg,
+    );
 
 Future<bool?> exampleBasicOptionalTypeBoolTwinSse({bool? arg}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeBoolTwinSse(
-        arg: arg);
+      arg: arg,
+    );
 
 Future<String?> exampleBasicOptionalTypeStringTwinSse({String? arg}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeStringTwinSse(
-        arg: arg);
+      arg: arg,
+    );
 
-Future<Uint8List?> exampleBasicOptionalTypeBytesTwinSse({Uint8List? arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeBytesTwinSse(
-            arg: arg);
+Future<Uint8List?> exampleBasicOptionalTypeBytesTwinSse({
+  Uint8List? arg,
+}) => RustLib.instance.api
+    .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeBytesTwinSse(
+      arg: arg,
+    );
 
 Future<BasicPrimitiveEnumTwinSse?>
-    exampleBasicOptionalTypeBasicPrimitiveEnumTwinSseTwinSse(
-            {BasicPrimitiveEnumTwinSse? arg}) =>
-        RustLib.instance.api
-            .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeBasicPrimitiveEnumTwinSseTwinSse(
-                arg: arg);
+exampleBasicOptionalTypeBasicPrimitiveEnumTwinSseTwinSse({
+  BasicPrimitiveEnumTwinSse? arg,
+}) => RustLib.instance.api
+    .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeBasicPrimitiveEnumTwinSseTwinSse(
+      arg: arg,
+    );
 
 Future<BasicGeneralEnumTwinSse?>
-    exampleBasicOptionalTypeBasicGeneralEnumTwinSseTwinSse(
-            {BasicGeneralEnumTwinSse? arg}) =>
-        RustLib.instance.api
-            .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeBasicGeneralEnumTwinSseTwinSse(
-                arg: arg);
+exampleBasicOptionalTypeBasicGeneralEnumTwinSseTwinSse({
+  BasicGeneralEnumTwinSse? arg,
+}) => RustLib.instance.api
+    .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeBasicGeneralEnumTwinSseTwinSse(
+      arg: arg,
+    );
 
-Future<BasicStructTwinSse?> exampleBasicOptionalTypeBasicStructTwinSseTwinSse(
-        {BasicStructTwinSse? arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeBasicStructTwinSseTwinSse(
-            arg: arg);
+Future<BasicStructTwinSse?> exampleBasicOptionalTypeBasicStructTwinSseTwinSse({
+  BasicStructTwinSse? arg,
+}) => RustLib.instance.api
+    .crateApiPseudoManualBasicOptionalTwinSseExampleBasicOptionalTypeBasicStructTwinSseTwinSse(
+      arg: arg,
+    );

@@ -41,8 +41,9 @@ abstract class MediaRecorder implements RustOpaqueInterface {
   ///
   /// Only supports WAV file format currently.
   static Future<MediaRecorder> newInstance({required MediaStream stream}) =>
-      RustLib.instance.api
-          .webAudioApiMediaRecorderMediaRecorderNew(stream: stream);
+      RustLib.instance.api.webAudioApiMediaRecorderMediaRecorderNew(
+        stream: stream,
+      );
 
   /// Begin recording media
   ///

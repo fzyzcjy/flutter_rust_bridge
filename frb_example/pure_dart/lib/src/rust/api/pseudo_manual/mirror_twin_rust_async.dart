@@ -10,124 +10,146 @@ import '../../frb_generated.dart';
 import '../mirror.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<ApplicationSettings> getAppSettingsTwinRustAsync() =>
-    RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinRustAsyncGetAppSettingsTwinRustAsync();
+Future<ApplicationSettings> getAppSettingsTwinRustAsync() => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualMirrorTwinRustAsyncGetAppSettingsTwinRustAsync();
 
 Future<ApplicationSettings> getFallibleAppSettingsTwinRustAsync() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualMirrorTwinRustAsyncGetFallibleAppSettingsTwinRustAsync();
 
-Future<bool> isAppEmbeddedTwinRustAsync(
-        {required ApplicationSettings appSettings}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinRustAsyncIsAppEmbeddedTwinRustAsync(
-            appSettings: appSettings);
+Future<bool> isAppEmbeddedTwinRustAsync({
+  required ApplicationSettings appSettings,
+}) => RustLib.instance.api
+    .crateApiPseudoManualMirrorTwinRustAsyncIsAppEmbeddedTwinRustAsync(
+      appSettings: appSettings,
+    );
 
 Stream<ApplicationSettings> appSettingsStreamTwinRustAsync() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualMirrorTwinRustAsyncAppSettingsStreamTwinRustAsync();
 
 Stream<List<ApplicationSettings>> appSettingsVecStreamTwinRustAsync() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualMirrorTwinRustAsyncAppSettingsVecStreamTwinRustAsync();
 
 Stream<MirrorStructTwinRustAsync> mirrorStructStreamTwinRustAsync() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualMirrorTwinRustAsyncMirrorStructStreamTwinRustAsync();
 
 Stream<(ApplicationSettings, RawStringEnumMirrored)>
-    mirrorTupleStreamTwinRustAsync() => RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinRustAsyncMirrorTupleStreamTwinRustAsync();
+mirrorTupleStreamTwinRustAsync() => RustLib.instance.api
+    .crateApiPseudoManualMirrorTwinRustAsyncMirrorTupleStreamTwinRustAsync();
 
 Future<ApplicationMessage> getMessageTwinRustAsync() => RustLib.instance.api
     .crateApiPseudoManualMirrorTwinRustAsyncGetMessageTwinRustAsync();
 
-Future<Numbers> repeatNumberTwinRustAsync(
-        {required int num, required BigInt times}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinRustAsyncRepeatNumberTwinRustAsync(
-            num: num, times: times);
+Future<Numbers> repeatNumberTwinRustAsync({
+  required int num,
+  required BigInt times,
+}) => RustLib.instance.api
+    .crateApiPseudoManualMirrorTwinRustAsyncRepeatNumberTwinRustAsync(
+      num: num,
+      times: times,
+    );
 
-Future<Sequences> repeatSequenceTwinRustAsync(
-        {required int seq, required BigInt times}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinRustAsyncRepeatSequenceTwinRustAsync(
-            seq: seq, times: times);
+Future<Sequences> repeatSequenceTwinRustAsync({
+  required int seq,
+  required BigInt times,
+}) => RustLib.instance.api
+    .crateApiPseudoManualMirrorTwinRustAsyncRepeatSequenceTwinRustAsync(
+      seq: seq,
+      times: times,
+    );
 
-Future<int?> firstNumberTwinRustAsync({required Numbers nums}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinRustAsyncFirstNumberTwinRustAsync(
-            nums: nums);
+Future<int?> firstNumberTwinRustAsync({required Numbers nums}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualMirrorTwinRustAsyncFirstNumberTwinRustAsync(
+      nums: nums,
+    );
 
-Future<int?> firstSequenceTwinRustAsync({required Sequences seqs}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinRustAsyncFirstSequenceTwinRustAsync(
-            seqs: seqs);
+Future<int?> firstSequenceTwinRustAsync({required Sequences seqs}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualMirrorTwinRustAsyncFirstSequenceTwinRustAsync(
+      seqs: seqs,
+    );
 
 Future<RawStringMirrored> testRawStringMirroredTwinRustAsync() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualMirrorTwinRustAsyncTestRawStringMirroredTwinRustAsync();
 
-Future<NestedRawStringMirrored> testNestedRawStringMirroredTwinRustAsync() =>
-    RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinRustAsyncTestNestedRawStringMirroredTwinRustAsync();
+Future<NestedRawStringMirrored>
+testNestedRawStringMirroredTwinRustAsync() => RustLib.instance.api
+    .crateApiPseudoManualMirrorTwinRustAsyncTestNestedRawStringMirroredTwinRustAsync();
 
-Future<RawStringEnumMirrored> testRawStringEnumMirroredTwinRustAsync(
-        {required bool nested}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinRustAsyncTestRawStringEnumMirroredTwinRustAsync(
-            nested: nested);
+Future<RawStringEnumMirrored> testRawStringEnumMirroredTwinRustAsync({
+  required bool nested,
+}) => RustLib.instance.api
+    .crateApiPseudoManualMirrorTwinRustAsyncTestRawStringEnumMirroredTwinRustAsync(
+      nested: nested,
+    );
 
 Future<ListOfNestedRawStringMirrored>
-    testListOfRawNestedStringMirroredTwinRustAsync() => RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinRustAsyncTestListOfRawNestedStringMirroredTwinRustAsync();
+testListOfRawNestedStringMirroredTwinRustAsync() => RustLib.instance.api
+    .crateApiPseudoManualMirrorTwinRustAsyncTestListOfRawNestedStringMirroredTwinRustAsync();
 
 Future<List<RawStringMirrored>>
-    testFallibleOfRawStringMirroredTwinRustAsync() => RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinRustAsyncTestFallibleOfRawStringMirroredTwinRustAsync();
+testFallibleOfRawStringMirroredTwinRustAsync() => RustLib.instance.api
+    .crateApiPseudoManualMirrorTwinRustAsyncTestFallibleOfRawStringMirroredTwinRustAsync();
 
 Future<List<RawStringEnumMirrored>>
-    testListOfNestedEnumsMirroredTwinRustAsync() => RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinRustAsyncTestListOfNestedEnumsMirroredTwinRustAsync();
+testListOfNestedEnumsMirroredTwinRustAsync() => RustLib.instance.api
+    .crateApiPseudoManualMirrorTwinRustAsyncTestListOfNestedEnumsMirroredTwinRustAsync();
 
 Future<ContainsMirroredSubStructTwinRustAsync>
-    testContainsMirroredSubStructTwinRustAsync() => RustLib.instance.api
-        .crateApiPseudoManualMirrorTwinRustAsyncTestContainsMirroredSubStructTwinRustAsync();
+testContainsMirroredSubStructTwinRustAsync() => RustLib.instance.api
+    .crateApiPseudoManualMirrorTwinRustAsyncTestContainsMirroredSubStructTwinRustAsync();
 
 Future<StructWithHashMap> testHashmapWithMirroredValueTwinRustAsync() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualMirrorTwinRustAsyncTestHashmapWithMirroredValueTwinRustAsync();
 
 Stream<ApplicationMode> mirrorEnumStreamTwinRustAsync() => RustLib.instance.api
     .crateApiPseudoManualMirrorTwinRustAsyncMirrorEnumStreamTwinRustAsync();
 
 Stream<ApplicationMode?> mirrorOptionEnumStreamTwinRustAsync() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualMirrorTwinRustAsyncMirrorOptionEnumStreamTwinRustAsync();
 
 Stream<List<ApplicationMode>> mirrorVecEnumStreamTwinRustAsync() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualMirrorTwinRustAsyncMirrorVecEnumStreamTwinRustAsync();
 
 Stream<Map<int, ApplicationMode>> mirrorMapEnumStreamTwinRustAsync() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualMirrorTwinRustAsyncMirrorMapEnumStreamTwinRustAsync();
 
 Stream<Set<ApplicationMode>> mirrorSetEnumStreamTwinRustAsync() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualMirrorTwinRustAsyncMirrorSetEnumStreamTwinRustAsync();
 
 Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinRustAsync() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualMirrorTwinRustAsyncMirrorArrayEnumStreamTwinRustAsync();
 
 class AnotherTwinRustAsync {
   final String a;
 
-  const AnotherTwinRustAsync({
-    required this.a,
-  });
+  const AnotherTwinRustAsync({required this.a});
 
   @override
   int get hashCode => a.hashCode;

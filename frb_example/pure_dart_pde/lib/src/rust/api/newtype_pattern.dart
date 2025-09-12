@@ -10,17 +10,16 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `fmt`
 
-Future<NewTypeIntTwinNormal> handleNewtypeTwinNormal(
-        {required NewTypeIntTwinNormal arg}) =>
-    RustLib.instance.api
-        .crateApiNewtypePatternHandleNewtypeTwinNormal(arg: arg);
+Future<NewTypeIntTwinNormal> handleNewtypeTwinNormal({
+  required NewTypeIntTwinNormal arg,
+}) => RustLib.instance.api.crateApiNewtypePatternHandleNewtypeTwinNormal(
+  arg: arg,
+);
 
 class NewTypeIntTwinNormal {
   final PlatformInt64 field0;
 
-  const NewTypeIntTwinNormal({
-    required this.field0,
-  });
+  const NewTypeIntTwinNormal({required this.field0});
 
   @override
   int get hashCode => field0.hashCode;

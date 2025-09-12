@@ -10,21 +10,17 @@ T _$badNumberFormat<T extends num>(
   String source,
   String type,
   String argName,
-) =>
-    throw FormatException(
-      'Cannot parse "$source" into `$type` for option "$argName".',
-    );
+) => throw FormatException(
+  'Cannot parse "$source" into `$type` for option "$argName".',
+);
 
 ServeWebConfig _$parseServeWebConfigResult(ArgResults result) => ServeWebConfig(
-      webRoot: result['web-root'] as String,
-      port: int.tryParse(result['port'] as String) ??
-          _$badNumberFormat(
-            result['port'] as String,
-            'int',
-            'port',
-          ),
-      open: result['open'] as bool,
-    );
+  webRoot: result['web-root'] as String,
+  port:
+      int.tryParse(result['port'] as String) ??
+      _$badNumberFormat(result['port'] as String, 'int', 'port'),
+  open: result['open'] as bool,
+);
 
 ArgParser _$populateServeWebConfigParser(ArgParser parser) => parser
   ..addOption(
@@ -40,11 +36,7 @@ ArgParser _$populateServeWebConfigParser(ArgParser parser) => parser
     valueHelp: 'PORT',
     defaultsTo: '8080',
   )
-  ..addFlag(
-    'open',
-    help: 'Open the webpage in a browser',
-    defaultsTo: true,
-  );
+  ..addFlag('open', help: 'Open the webpage in a browser', defaultsTo: true);
 
 final _$parserForServeWebConfig = _$populateServeWebConfigParser(ArgParser());
 

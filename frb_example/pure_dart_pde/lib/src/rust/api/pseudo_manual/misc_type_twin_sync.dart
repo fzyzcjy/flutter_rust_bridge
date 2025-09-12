@@ -14,17 +14,20 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 void funcReturnUnitTwinSync() => RustLib.instance.api
     .crateApiPseudoManualMiscTypeTwinSyncFuncReturnUnitTwinSync();
 
-List<MySize> handleListOfStructTwinSync({required List<MySize> l}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscTypeTwinSyncHandleListOfStructTwinSync(l: l);
+List<MySize> handleListOfStructTwinSync({required List<MySize> l}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualMiscTypeTwinSyncHandleListOfStructTwinSync(l: l);
 
 List<String> handleStringListTwinSync({required List<String> names}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualMiscTypeTwinSyncHandleStringListTwinSync(names: names);
 
-EmptyTwinSync emptyStructTwinSync({required EmptyTwinSync empty}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscTypeTwinSyncEmptyStructTwinSync(empty: empty);
+EmptyTwinSync emptyStructTwinSync({required EmptyTwinSync empty}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualMiscTypeTwinSyncEmptyStructTwinSync(empty: empty);
 
 class EmptyTwinSync {
   const EmptyTwinSync();

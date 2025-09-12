@@ -15,34 +15,35 @@ part 'misc_example_twin_sse.freezed.dart';
 // These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `MySizeFreezedTwinSse`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`
 
-Future<MyTreeNodeTwinSse> handleComplexStructTwinSse(
-        {required MyTreeNodeTwinSse s}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinSseHandleComplexStructTwinSse(s: s);
+Future<MyTreeNodeTwinSse> handleComplexStructTwinSse({
+  required MyTreeNodeTwinSse s,
+}) => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinSseHandleComplexStructTwinSse(s: s);
 
-Future<List<WeekdaysTwinSse>> listOfPrimitiveEnumsTwinSse(
-        {required List<WeekdaysTwinSse> weekdays}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinSseListOfPrimitiveEnumsTwinSse(
-            weekdays: weekdays);
+Future<List<WeekdaysTwinSse>> listOfPrimitiveEnumsTwinSse({
+  required List<WeekdaysTwinSse> weekdays,
+}) => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinSseListOfPrimitiveEnumsTwinSse(
+      weekdays: weekdays,
+    );
 
-Future<MyNestedStructTwinSse> handleNestedStructTwinSse(
-        {required MyNestedStructTwinSse s}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinSseHandleNestedStructTwinSse(s: s);
+Future<MyNestedStructTwinSse> handleNestedStructTwinSse({
+  required MyNestedStructTwinSse s,
+}) => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinSseHandleNestedStructTwinSse(s: s);
 
 Future<BigBuffersTwinSse> handleBigBuffersTwinSse() => RustLib.instance.api
     .crateApiPseudoManualMiscExampleTwinSseHandleBigBuffersTwinSse();
 
-Future<AbcTwinSse> testAbcEnumTwinSse({required AbcTwinSse abc}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinSseTestAbcEnumTwinSse(abc: abc);
+Future<AbcTwinSse> testAbcEnumTwinSse({required AbcTwinSse abc}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualMiscExampleTwinSseTestAbcEnumTwinSse(abc: abc);
 
-Future<StructWithEnumTwinSse> testStructWithEnumTwinSse(
-        {required StructWithEnumTwinSse se}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinSseTestStructWithEnumTwinSse(
-            se: se);
+Future<StructWithEnumTwinSse> testStructWithEnumTwinSse({
+  required StructWithEnumTwinSse se,
+}) => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinSseTestStructWithEnumTwinSse(se: se);
 
 Future<String> handleStringTwinSse({required String s}) => RustLib.instance.api
     .crateApiPseudoManualMiscExampleTwinSseHandleStringTwinSse(s: s);
@@ -50,26 +51,30 @@ Future<String> handleStringTwinSse({required String s}) => RustLib.instance.api
 Future<String> handleCharTwinSse({required String arg}) => RustLib.instance.api
     .crateApiPseudoManualMiscExampleTwinSseHandleCharTwinSse(arg: arg);
 
-Future<Uint8List> handleVecU8TwinSse({required List<int> v}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinSseHandleVecU8TwinSse(v: v);
+Future<Uint8List> handleVecU8TwinSse({required List<int> v}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualMiscExampleTwinSseHandleVecU8TwinSse(v: v);
 
-Future<MySize> handleStructTwinSse(
-        {required MySize arg, required MySize boxed}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinSseHandleStructTwinSse(
-            arg: arg, boxed: boxed);
+Future<MySize> handleStructTwinSse({
+  required MySize arg,
+  required MySize boxed,
+}) => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinSseHandleStructTwinSse(
+      arg: arg,
+      boxed: boxed,
+    );
 
 Future<int> positionalArgumentsTwinSse(int a, int b) => RustLib.instance.api
     .crateApiPseudoManualMiscExampleTwinSsePositionalArgumentsTwinSse(
-        a: a, b: b);
+      a: a,
+      b: b,
+    );
 
 class ATwinSse {
   final String a;
 
-  const ATwinSse({
-    required this.a,
-  });
+  const ATwinSse({required this.a});
 
   @override
   int get hashCode => a.hashCode;
@@ -84,26 +89,16 @@ class ATwinSse {
 sealed class AbcTwinSse with _$AbcTwinSse {
   const AbcTwinSse._();
 
-  const factory AbcTwinSse.a(
-    ATwinSse field0,
-  ) = AbcTwinSse_A;
-  const factory AbcTwinSse.b(
-    BTwinSse field0,
-  ) = AbcTwinSse_B;
-  const factory AbcTwinSse.c(
-    CTwinSse field0,
-  ) = AbcTwinSse_C;
-  const factory AbcTwinSse.justInt(
-    int field0,
-  ) = AbcTwinSse_JustInt;
+  const factory AbcTwinSse.a(ATwinSse field0) = AbcTwinSse_A;
+  const factory AbcTwinSse.b(BTwinSse field0) = AbcTwinSse_B;
+  const factory AbcTwinSse.c(CTwinSse field0) = AbcTwinSse_C;
+  const factory AbcTwinSse.justInt(int field0) = AbcTwinSse_JustInt;
 }
 
 class BTwinSse {
   final int b;
 
-  const BTwinSse({
-    required this.b,
-  });
+  const BTwinSse({required this.b});
 
   @override
   int get hashCode => b.hashCode;
@@ -118,10 +113,7 @@ class BigBuffersTwinSse {
   final Int64List int64;
   final Uint64List uint64;
 
-  const BigBuffersTwinSse({
-    required this.int64,
-    required this.uint64,
-  });
+  const BigBuffersTwinSse({required this.int64, required this.uint64});
 
   @override
   int get hashCode => int64.hashCode ^ uint64.hashCode;
@@ -138,9 +130,7 @@ class BigBuffersTwinSse {
 class CTwinSse {
   final bool c;
 
-  const CTwinSse({
-    required this.c,
-  });
+  const CTwinSse({required this.c});
 
   @override
   int get hashCode => c.hashCode;
@@ -155,10 +145,7 @@ class MyNestedStructTwinSse {
   final MyTreeNodeTwinSse treeNode;
   final WeekdaysTwinSse weekday;
 
-  const MyNestedStructTwinSse({
-    required this.treeNode,
-    required this.weekday,
-  });
+  const MyNestedStructTwinSse({required this.treeNode, required this.weekday});
 
   @override
   int get hashCode => treeNode.hashCode ^ weekday.hashCode;
@@ -207,10 +194,7 @@ class StructWithEnumTwinSse {
   final AbcTwinSse abc1;
   final AbcTwinSse abc2;
 
-  const StructWithEnumTwinSse({
-    required this.abc1,
-    required this.abc2,
-  });
+  const StructWithEnumTwinSse({required this.abc1, required this.abc2});
 
   @override
   int get hashCode => abc1.hashCode ^ abc2.hashCode;
@@ -232,5 +216,4 @@ enum WeekdaysTwinSse {
   friday,
   saturday,
   sunday,
-  ;
 }

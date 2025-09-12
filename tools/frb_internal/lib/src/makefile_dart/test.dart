@@ -462,8 +462,8 @@ Future<void> testDartValgrind(TestDartConfig config) async {
   await runPubGetIfNotRunYet(config.package);
 
   await exec(
-      'dart build '
-      'test/dart_valgrind_test_entrypoint.dart -o build/valgrind_test_output/',
+      'dart compile exe '
+      'test/dart_valgrind_test_entrypoint.dart -o build/valgrind_test_output/dart_valgrind_test_entrypoint',
       relativePwd: config.package);
 
   const valgrindCommand = 'valgrind '

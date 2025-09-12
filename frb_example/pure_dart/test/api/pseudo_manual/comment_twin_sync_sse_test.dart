@@ -15,15 +15,21 @@ Future<void> main({bool skipRustLibInit = false}) async {
   // considering the `code comments` feature here, instead of actual function execution logic.
   test('can call the functions', () async {
     await futurizeVoidTwinSyncSse(
-        functionWithCommentsSlashStarStarTwinSyncSse());
+      functionWithCommentsSlashStarStarTwinSyncSse(),
+    );
     await futurizeVoidTwinSyncSse(
-        functionWithCommentsTripleSlashMultiLineTwinSyncSse());
+      functionWithCommentsTripleSlashMultiLineTwinSyncSse(),
+    );
     await futurizeVoidTwinSyncSse(
-        functionWithCommentsTripleSlashSingleLineTwinSyncSse());
+      functionWithCommentsTripleSlashSingleLineTwinSyncSse(),
+    );
     await futurizeVoidTwinSyncSse(
-        StructWithCommentsTwinSyncSse(fieldWithComments: 42)
-            .instanceMethodTwinSyncSse());
+      StructWithCommentsTwinSyncSse(
+        fieldWithComments: 42,
+      ).instanceMethodTwinSyncSse(),
+    );
     await futurizeVoidTwinSyncSse(
-        StructWithCommentsTwinSyncSse.staticMethodTwinSyncSse());
+      StructWithCommentsTwinSyncSse.staticMethodTwinSyncSse(),
+    );
   });
 }

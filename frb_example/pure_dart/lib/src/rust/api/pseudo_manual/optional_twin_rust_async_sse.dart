@@ -12,62 +12,68 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `fmt`, `fmt`, `fmt`
 
-Future<double?> handleOptionalReturnTwinRustAsyncSse(
-        {required double left, required double right}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinRustAsyncSseHandleOptionalReturnTwinRustAsyncSse(
-            left: left, right: right);
+Future<double?> handleOptionalReturnTwinRustAsyncSse({
+  required double left,
+  required double right,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinRustAsyncSseHandleOptionalReturnTwinRustAsyncSse(
+      left: left,
+      right: right,
+    );
 
-Future<ElementTwinRustAsyncSse?> handleOptionalStructTwinRustAsyncSse(
-        {String? document}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinRustAsyncSseHandleOptionalStructTwinRustAsyncSse(
-            document: document);
+Future<ElementTwinRustAsyncSse?> handleOptionalStructTwinRustAsyncSse({
+  String? document,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinRustAsyncSseHandleOptionalStructTwinRustAsyncSse(
+      document: document,
+    );
 
-Future<
-    ExoticOptionalsTwinRustAsyncSse?> handleOptionalIncrementTwinRustAsyncSse(
-        {ExoticOptionalsTwinRustAsyncSse? opt}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinRustAsyncSseHandleOptionalIncrementTwinRustAsyncSse(
-            opt: opt);
+Future<ExoticOptionalsTwinRustAsyncSse?>
+handleOptionalIncrementTwinRustAsyncSse({
+  ExoticOptionalsTwinRustAsyncSse? opt,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinRustAsyncSseHandleOptionalIncrementTwinRustAsyncSse(
+      opt: opt,
+    );
 
-Future<double> handleIncrementBoxedOptionalTwinRustAsyncSse({double? opt}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinRustAsyncSseHandleIncrementBoxedOptionalTwinRustAsyncSse(
-            opt: opt);
+Future<double> handleIncrementBoxedOptionalTwinRustAsyncSse({
+  double? opt,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinRustAsyncSseHandleIncrementBoxedOptionalTwinRustAsyncSse(
+      opt: opt,
+    );
 
-Future<OptVecsTwinRustAsyncSse> handleVecOfOptsTwinRustAsyncSse(
-        {required OptVecsTwinRustAsyncSse opt}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinRustAsyncSseHandleVecOfOptsTwinRustAsyncSse(
-            opt: opt);
+Future<OptVecsTwinRustAsyncSse> handleVecOfOptsTwinRustAsyncSse({
+  required OptVecsTwinRustAsyncSse opt,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinRustAsyncSseHandleVecOfOptsTwinRustAsyncSse(
+      opt: opt,
+    );
 
-Future<String> handleOptionBoxArgumentsTwinRustAsyncSse(
-        {int? i8Box,
-        int? u8Box,
-        int? i32Box,
-        PlatformInt64? i64Box,
-        double? f64Box,
-        bool? boolbox,
-        ExoticOptionalsTwinRustAsyncSse? structbox}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinRustAsyncSseHandleOptionBoxArgumentsTwinRustAsyncSse(
-            i8Box: i8Box,
-            u8Box: u8Box,
-            i32Box: i32Box,
-            i64Box: i64Box,
-            f64Box: f64Box,
-            boolbox: boolbox,
-            structbox: structbox);
+Future<String> handleOptionBoxArgumentsTwinRustAsyncSse({
+  int? i8Box,
+  int? u8Box,
+  int? i32Box,
+  PlatformInt64? i64Box,
+  double? f64Box,
+  bool? boolbox,
+  ExoticOptionalsTwinRustAsyncSse? structbox,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinRustAsyncSseHandleOptionBoxArgumentsTwinRustAsyncSse(
+      i8Box: i8Box,
+      u8Box: u8Box,
+      i32Box: i32Box,
+      i64Box: i64Box,
+      f64Box: f64Box,
+      boolbox: boolbox,
+      structbox: structbox,
+    );
 
 class AttributeTwinRustAsyncSse {
   final String key;
   final String value;
 
-  const AttributeTwinRustAsyncSse({
-    required this.key,
-    required this.value,
-  });
+  const AttributeTwinRustAsyncSse({required this.key, required this.value});
 
   @override
   int get hashCode => key.hashCode ^ value.hashCode;

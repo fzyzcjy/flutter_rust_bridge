@@ -10,14 +10,19 @@ import '../../test_utils.dart';
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
-  addTestsIdentityFunctionCall(
-      funcStructWithZeroFieldTwinSse, [StructWithZeroFieldTwinSse()]);
-  addTestsIdentityFunctionCall(
-      funcStructWithOneFieldTwinSse, [StructWithOneFieldTwinSse(a: 42)]);
-  addTestsIdentityFunctionCall(
-      funcStructWithTwoFieldTwinSse, [StructWithTwoFieldTwinSse(a: 10, b: 20)]);
-  addTestsIdentityFunctionCall(funcTupleStructWithOneFieldTwinSse,
-      [TupleStructWithOneFieldTwinSse(field0: 42)]);
-  addTestsIdentityFunctionCall(funcTupleStructWithTwoFieldTwinSse,
-      [TupleStructWithTwoFieldTwinSse(field0: 10, field1: 20)]);
+  addTestsIdentityFunctionCall(funcStructWithZeroFieldTwinSse, [
+    StructWithZeroFieldTwinSse(),
+  ]);
+  addTestsIdentityFunctionCall(funcStructWithOneFieldTwinSse, [
+    StructWithOneFieldTwinSse(a: 42),
+  ]);
+  addTestsIdentityFunctionCall(funcStructWithTwoFieldTwinSse, [
+    StructWithTwoFieldTwinSse(a: 10, b: 20),
+  ]);
+  addTestsIdentityFunctionCall(funcTupleStructWithOneFieldTwinSse, [
+    TupleStructWithOneFieldTwinSse(field0: 42),
+  ]);
+  addTestsIdentityFunctionCall(funcTupleStructWithTwoFieldTwinSse, [
+    TupleStructWithTwoFieldTwinSse(field0: 10, field1: 20),
+  ]);
 }

@@ -12,14 +12,18 @@ import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 bool useImportedStructTwinSyncSse({required MyStruct myStruct}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualExternalTypeInCrateTwinSyncSseUseImportedStructTwinSyncSse(
-        myStruct: myStruct);
+      myStruct: myStruct,
+    );
 
 bool useImportedEnumTwinSyncSse({required MyEnum myEnum}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualExternalTypeInCrateTwinSyncSseUseImportedEnumTwinSyncSse(
-        myEnum: myEnum);
+      myEnum: myEnum,
+    );
 
 OldSimpleStruct callOldModuleSystemTwinSyncSse() => RustLib.instance.api
     .crateApiPseudoManualExternalTypeInCrateTwinSyncSseCallOldModuleSystemTwinSyncSse();

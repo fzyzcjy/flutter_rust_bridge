@@ -42,79 +42,111 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   group('example-based tests', () {
     test('dart call handleReturnEnum', () async {
-      expect(await handleReturnEnumTwinRustAsync(input: "Tuesday"),
-          WeekdaysTwinRustAsync.tuesday);
+      expect(
+        await handleReturnEnumTwinRustAsync(input: "Tuesday"),
+        WeekdaysTwinRustAsync.tuesday,
+      );
       expect(await handleReturnEnumTwinRustAsync(input: "Foreverday"), null);
     });
 
     test('dart call handleEnumParameter', () async {
       expect(
-          await handleEnumParameterTwinRustAsync(
-              weekday: WeekdaysTwinRustAsync.saturday),
-          WeekdaysTwinRustAsync.saturday);
+        await handleEnumParameterTwinRustAsync(
+          weekday: WeekdaysTwinRustAsync.saturday,
+        ),
+        WeekdaysTwinRustAsync.saturday,
+      );
     });
 
     test('dart call handleEnumStruct', () async {
       expect(
-          await handleEnumStructTwinRustAsync(
-              val: KitchenSinkTwinRustAsync_Empty()),
-          KitchenSinkTwinRustAsync_Empty());
-      expect(
         await handleEnumStructTwinRustAsync(
-          val: KitchenSinkTwinRustAsync_Primitives(
-              int32: 0, float64: 1, boolean: false),
+          val: KitchenSinkTwinRustAsync_Empty(),
         ),
-        KitchenSinkTwinRustAsync_Primitives(
-            int32: 1, float64: 2, boolean: true),
+        KitchenSinkTwinRustAsync_Empty(),
       );
       expect(
         await handleEnumStructTwinRustAsync(
-            val: KitchenSinkTwinRustAsync_Optional(null, 0)),
+          val: KitchenSinkTwinRustAsync_Primitives(
+            int32: 0,
+            float64: 1,
+            boolean: false,
+          ),
+        ),
+        KitchenSinkTwinRustAsync_Primitives(
+          int32: 1,
+          float64: 2,
+          boolean: true,
+        ),
+      );
+      expect(
+        await handleEnumStructTwinRustAsync(
+          val: KitchenSinkTwinRustAsync_Optional(null, 0),
+        ),
         KitchenSinkTwinRustAsync_Optional(null, 1),
       );
       expect(
         await handleEnumStructTwinRustAsync(
-            val: KitchenSinkTwinRustAsync_Buffer(Uint8List.fromList([]))),
+          val: KitchenSinkTwinRustAsync_Buffer(Uint8List.fromList([])),
+        ),
         KitchenSinkTwinRustAsync_Buffer(Uint8List.fromList([1])),
       );
       expect(
         await handleEnumStructTwinRustAsync(
-            val: KitchenSinkTwinRustAsync_Enums(WeekdaysTwinRustAsync.monday)),
+          val: KitchenSinkTwinRustAsync_Enums(WeekdaysTwinRustAsync.monday),
+        ),
         KitchenSinkTwinRustAsync_Enums(WeekdaysTwinRustAsync.tuesday),
       );
       expect(
         await handleEnumStructTwinRustAsync(
-            val: const KitchenSinkTwinRustAsync.nested(
-                0, KitchenSinkTwinRustAsync.empty())),
+          val: const KitchenSinkTwinRustAsync.nested(
+            0,
+            KitchenSinkTwinRustAsync.empty(),
+          ),
+        ),
         const KitchenSinkTwinRustAsync.nested(
-            1, KitchenSinkTwinRustAsync.empty()),
+          1,
+          KitchenSinkTwinRustAsync.empty(),
+        ),
       );
     });
 
     test('dart call multiplyByTen()', () async {
       expect(
         await multiplyByTenTwinRustAsync(
-            measure: MeasureTwinRustAsync.speed(SpeedTwinRustAsync_GPS(10.0))),
+          measure: MeasureTwinRustAsync.speed(SpeedTwinRustAsync_GPS(10.0)),
+        ),
         MeasureTwinRustAsync.speed(SpeedTwinRustAsync_GPS(100.0)),
       );
       expect(
         await multiplyByTenTwinRustAsync(
-            measure: MeasureTwinRustAsync.speed(SpeedTwinRustAsync_Unknown())),
+          measure: MeasureTwinRustAsync.speed(SpeedTwinRustAsync_Unknown()),
+        ),
         null,
       );
-      final skipMinified =
-          releaseMode ? skipWeb('Minified names cannot be compared.') : null;
+      final skipMinified = releaseMode
+          ? skipWeb('Minified names cannot be compared.')
+          : null;
       expect(
-          (SpeedTwinRustAsync_Unknown).toString(), 'SpeedTwinRustAsync_Unknown',
-          skip: skipMinified);
-      expect((SpeedTwinRustAsync_GPS).toString(), 'SpeedTwinRustAsync_GPS',
-          skip: skipMinified);
-      expect((DistanceTwinRustAsync_Unknown).toString(),
-          'DistanceTwinRustAsync_Unknown',
-          skip: skipMinified);
+        (SpeedTwinRustAsync_Unknown).toString(),
+        'SpeedTwinRustAsync_Unknown',
+        skip: skipMinified,
+      );
       expect(
-          (DistanceTwinRustAsync_Map).toString(), 'DistanceTwinRustAsync_Map',
-          skip: skipMinified);
+        (SpeedTwinRustAsync_GPS).toString(),
+        'SpeedTwinRustAsync_GPS',
+        skip: skipMinified,
+      );
+      expect(
+        (DistanceTwinRustAsync_Unknown).toString(),
+        'DistanceTwinRustAsync_Unknown',
+        skip: skipMinified,
+      );
+      expect(
+        (DistanceTwinRustAsync_Map).toString(),
+        'DistanceTwinRustAsync_Map',
+        skip: skipMinified,
+      );
     });
   });
 }

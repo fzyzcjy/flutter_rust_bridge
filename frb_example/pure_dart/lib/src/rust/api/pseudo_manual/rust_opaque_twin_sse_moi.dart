@@ -16,32 +16,37 @@ part 'rust_opaque_twin_sse_moi.freezed.dart';
 Future<HideDataTwinSseMoi> createOpaqueTwinSseMoi() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueTwinSseMoiCreateOpaqueTwinSseMoi();
 
-Future<HideDataTwinSseMoi?> createOptionOpaqueTwinSseMoi(
-        {HideDataTwinSseMoi? opaque}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSseMoiCreateOptionOpaqueTwinSseMoi(
-            opaque: opaque);
+Future<HideDataTwinSseMoi?> createOptionOpaqueTwinSseMoi({
+  HideDataTwinSseMoi? opaque,
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustOpaqueTwinSseMoiCreateOptionOpaqueTwinSseMoi(
+      opaque: opaque,
+    );
 
 Future<EnumOpaqueTwinSseMoiArray5> createArrayOpaqueEnumTwinSseMoi() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualRustOpaqueTwinSseMoiCreateArrayOpaqueEnumTwinSseMoi();
 
-Future<String> runEnumOpaqueTwinSseMoi(
-        {required EnumOpaqueTwinSseMoi opaque}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSseMoiRunEnumOpaqueTwinSseMoi(
-            opaque: opaque);
+Future<String> runEnumOpaqueTwinSseMoi({
+  required EnumOpaqueTwinSseMoi opaque,
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustOpaqueTwinSseMoiRunEnumOpaqueTwinSseMoi(
+      opaque: opaque,
+    );
 
 Future<String> runOpaqueTwinSseMoi({required HideDataTwinSseMoi opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinSseMoiRunOpaqueTwinSseMoi(
-            opaque: opaque);
+          opaque: opaque,
+        );
 
-Future<String> runOpaqueWithDelayTwinSseMoi(
-        {required HideDataTwinSseMoi opaque}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSseMoiRunOpaqueWithDelayTwinSseMoi(
-            opaque: opaque);
+Future<String> runOpaqueWithDelayTwinSseMoi({
+  required HideDataTwinSseMoi opaque,
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustOpaqueTwinSseMoiRunOpaqueWithDelayTwinSseMoi(
+      opaque: opaque,
+    );
 
 Future<HideDataTwinSseMoiArray2> opaqueArrayTwinSseMoi() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueTwinSseMoiOpaqueArrayTwinSseMoi();
@@ -49,13 +54,15 @@ Future<HideDataTwinSseMoiArray2> opaqueArrayTwinSseMoi() => RustLib.instance.api
 Future<String> runNonCloneTwinSseMoi({required NonCloneDataTwinSseMoi clone}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinSseMoiRunNonCloneTwinSseMoi(
-            clone: clone);
+          clone: clone,
+        );
 
-Future<void> opaqueArrayRunTwinSseMoi(
-        {required HideDataTwinSseMoiArray2 data}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSseMoiOpaqueArrayRunTwinSseMoi(
-            data: data);
+Future<void> opaqueArrayRunTwinSseMoi({
+  required HideDataTwinSseMoiArray2 data,
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustOpaqueTwinSseMoiOpaqueArrayRunTwinSseMoi(
+      data: data,
+    );
 
 Future<List<HideDataTwinSseMoi>> opaqueVecTwinSseMoi() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueTwinSseMoiOpaqueVecTwinSseMoi();
@@ -63,30 +70,35 @@ Future<List<HideDataTwinSseMoi>> opaqueVecTwinSseMoi() => RustLib.instance.api
 Future<void> opaqueVecRunTwinSseMoi({required List<HideDataTwinSseMoi> data}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinSseMoiOpaqueVecRunTwinSseMoi(
-            data: data);
+          data: data,
+        );
 
-Future<OpaqueNestedTwinSseMoi> createNestedOpaqueTwinSseMoi() =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSseMoiCreateNestedOpaqueTwinSseMoi();
+Future<OpaqueNestedTwinSseMoi> createNestedOpaqueTwinSseMoi() => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualRustOpaqueTwinSseMoiCreateNestedOpaqueTwinSseMoi();
 
-Future<void> runNestedOpaqueTwinSseMoi(
-        {required OpaqueNestedTwinSseMoi opaque}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSseMoiRunNestedOpaqueTwinSseMoi(
-            opaque: opaque);
+Future<void> runNestedOpaqueTwinSseMoi({
+  required OpaqueNestedTwinSseMoi opaque,
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustOpaqueTwinSseMoiRunNestedOpaqueTwinSseMoi(
+      opaque: opaque,
+    );
 
-Future<String> unwrapRustOpaqueTwinSseMoi(
-        {required HideDataTwinSseMoi opaque}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSseMoiUnwrapRustOpaqueTwinSseMoi(
-            opaque: opaque);
+Future<String> unwrapRustOpaqueTwinSseMoi({
+  required HideDataTwinSseMoi opaque,
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustOpaqueTwinSseMoiUnwrapRustOpaqueTwinSseMoi(
+      opaque: opaque,
+    );
 
 /// Function to check the code generator.
 /// FrbOpaqueReturn must be only return type.
 /// FrbOpaqueReturn must not be used as an argument.
-Future<FrbOpaqueReturnTwinSseMoi> frbGeneratorTestTwinSseMoi() =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSseMoiFrbGeneratorTestTwinSseMoi();
+Future<FrbOpaqueReturnTwinSseMoi> frbGeneratorTestTwinSseMoi() => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualRustOpaqueTwinSseMoiFrbGeneratorTestTwinSseMoi();
 
 // Rust type: RustOpaqueMoi<Box < dyn DartDebugTwinSseMoi >>
 abstract class BoxDartDebugTwinSseMoi implements RustOpaqueInterface {}
@@ -105,11 +117,11 @@ class HideDataTwinSseMoiArray2 extends NonGrowableListView<HideDataTwinSseMoi> {
   final List<HideDataTwinSseMoi> _inner;
 
   HideDataTwinSseMoiArray2(this._inner)
-      : assert(_inner.length == arraySize),
-        super(_inner);
+    : assert(_inner.length == arraySize),
+      super(_inner);
 
   HideDataTwinSseMoiArray2.init(HideDataTwinSseMoi fill)
-      : this(List<HideDataTwinSseMoi>.filled(arraySize, fill));
+    : this(List<HideDataTwinSseMoi>.filled(arraySize, fill));
 }
 
 // Rust type: RustOpaqueMoi<Mutex < HideDataTwinSseMoi >>
@@ -122,21 +134,16 @@ abstract class RwLockHideDataTwinSseMoi implements RustOpaqueInterface {}
 sealed class EnumOpaqueTwinSseMoi with _$EnumOpaqueTwinSseMoi {
   const EnumOpaqueTwinSseMoi._();
 
-  const factory EnumOpaqueTwinSseMoi.struct(
-    HideDataTwinSseMoi field0,
-  ) = EnumOpaqueTwinSseMoi_Struct;
-  const factory EnumOpaqueTwinSseMoi.primitive(
-    I16 field0,
-  ) = EnumOpaqueTwinSseMoi_Primitive;
-  const factory EnumOpaqueTwinSseMoi.traitObj(
-    BoxDartDebugTwinSseMoi field0,
-  ) = EnumOpaqueTwinSseMoi_TraitObj;
-  const factory EnumOpaqueTwinSseMoi.mutex(
-    MutexHideDataTwinSseMoi field0,
-  ) = EnumOpaqueTwinSseMoi_Mutex;
-  const factory EnumOpaqueTwinSseMoi.rwLock(
-    RwLockHideDataTwinSseMoi field0,
-  ) = EnumOpaqueTwinSseMoi_RwLock;
+  const factory EnumOpaqueTwinSseMoi.struct(HideDataTwinSseMoi field0) =
+      EnumOpaqueTwinSseMoi_Struct;
+  const factory EnumOpaqueTwinSseMoi.primitive(I16 field0) =
+      EnumOpaqueTwinSseMoi_Primitive;
+  const factory EnumOpaqueTwinSseMoi.traitObj(BoxDartDebugTwinSseMoi field0) =
+      EnumOpaqueTwinSseMoi_TraitObj;
+  const factory EnumOpaqueTwinSseMoi.mutex(MutexHideDataTwinSseMoi field0) =
+      EnumOpaqueTwinSseMoi_Mutex;
+  const factory EnumOpaqueTwinSseMoi.rwLock(RwLockHideDataTwinSseMoi field0) =
+      EnumOpaqueTwinSseMoi_RwLock;
   const factory EnumOpaqueTwinSseMoi.nothing() = EnumOpaqueTwinSseMoi_Nothing;
 }
 
@@ -149,11 +156,11 @@ class EnumOpaqueTwinSseMoiArray5
   final List<EnumOpaqueTwinSseMoi> _inner;
 
   EnumOpaqueTwinSseMoiArray5(this._inner)
-      : assert(_inner.length == arraySize),
-        super(_inner);
+    : assert(_inner.length == arraySize),
+      super(_inner);
 
   EnumOpaqueTwinSseMoiArray5.init(EnumOpaqueTwinSseMoi fill)
-      : this(List<EnumOpaqueTwinSseMoi>.filled(arraySize, fill));
+    : this(List<EnumOpaqueTwinSseMoi>.filled(arraySize, fill));
 }
 
 /// [`HideDataTwinSseMoi`] has private fields.
@@ -161,10 +168,7 @@ class OpaqueNestedTwinSseMoi {
   final HideDataTwinSseMoi first;
   final HideDataTwinSseMoi second;
 
-  const OpaqueNestedTwinSseMoi({
-    required this.first,
-    required this.second,
-  });
+  const OpaqueNestedTwinSseMoi({required this.first, required this.second});
 
   @override
   int get hashCode => first.hashCode ^ second.hashCode;

@@ -15,17 +15,20 @@ part 'misc_example.freezed.dart';
 // These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `MySizeFreezedTwinNormal`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`
 
-Future<MyTreeNodeTwinNormal> handleComplexStructTwinNormal(
-        {required MyTreeNodeTwinNormal s}) =>
+Future<MyTreeNodeTwinNormal> handleComplexStructTwinNormal({
+  required MyTreeNodeTwinNormal s,
+}) =>
     RustLib.instance.api.crateApiMiscExampleHandleComplexStructTwinNormal(s: s);
 
-Future<List<WeekdaysTwinNormal>> listOfPrimitiveEnumsTwinNormal(
-        {required List<WeekdaysTwinNormal> weekdays}) =>
-    RustLib.instance.api
-        .crateApiMiscExampleListOfPrimitiveEnumsTwinNormal(weekdays: weekdays);
+Future<List<WeekdaysTwinNormal>> listOfPrimitiveEnumsTwinNormal({
+  required List<WeekdaysTwinNormal> weekdays,
+}) => RustLib.instance.api.crateApiMiscExampleListOfPrimitiveEnumsTwinNormal(
+  weekdays: weekdays,
+);
 
-Future<MyNestedStructTwinNormal> handleNestedStructTwinNormal(
-        {required MyNestedStructTwinNormal s}) =>
+Future<MyNestedStructTwinNormal> handleNestedStructTwinNormal({
+  required MyNestedStructTwinNormal s,
+}) =>
     RustLib.instance.api.crateApiMiscExampleHandleNestedStructTwinNormal(s: s);
 
 Future<BigBuffersTwinNormal> handleBigBuffersTwinNormal() =>
@@ -34,10 +37,11 @@ Future<BigBuffersTwinNormal> handleBigBuffersTwinNormal() =>
 Future<AbcTwinNormal> testAbcEnumTwinNormal({required AbcTwinNormal abc}) =>
     RustLib.instance.api.crateApiMiscExampleTestAbcEnumTwinNormal(abc: abc);
 
-Future<StructWithEnumTwinNormal> testStructWithEnumTwinNormal(
-        {required StructWithEnumTwinNormal se}) =>
-    RustLib.instance.api
-        .crateApiMiscExampleTestStructWithEnumTwinNormal(se: se);
+Future<StructWithEnumTwinNormal> testStructWithEnumTwinNormal({
+  required StructWithEnumTwinNormal se,
+}) => RustLib.instance.api.crateApiMiscExampleTestStructWithEnumTwinNormal(
+  se: se,
+);
 
 Future<String> handleStringTwinNormal({required String s}) =>
     RustLib.instance.api.crateApiMiscExampleHandleStringTwinNormal(s: s);
@@ -48,10 +52,13 @@ Future<String> handleCharTwinNormal({required String arg}) =>
 Future<Uint8List> handleVecU8TwinNormal({required List<int> v}) =>
     RustLib.instance.api.crateApiMiscExampleHandleVecU8TwinNormal(v: v);
 
-Future<MySize> handleStructTwinNormal(
-        {required MySize arg, required MySize boxed}) =>
-    RustLib.instance.api
-        .crateApiMiscExampleHandleStructTwinNormal(arg: arg, boxed: boxed);
+Future<MySize> handleStructTwinNormal({
+  required MySize arg,
+  required MySize boxed,
+}) => RustLib.instance.api.crateApiMiscExampleHandleStructTwinNormal(
+  arg: arg,
+  boxed: boxed,
+);
 
 Future<int> positionalArgumentsTwinNormal(int a, int b) => RustLib.instance.api
     .crateApiMiscExamplePositionalArgumentsTwinNormal(a: a, b: b);
@@ -59,9 +66,7 @@ Future<int> positionalArgumentsTwinNormal(int a, int b) => RustLib.instance.api
 class ATwinNormal {
   final String a;
 
-  const ATwinNormal({
-    required this.a,
-  });
+  const ATwinNormal({required this.a});
 
   @override
   int get hashCode => a.hashCode;
@@ -76,26 +81,16 @@ class ATwinNormal {
 sealed class AbcTwinNormal with _$AbcTwinNormal {
   const AbcTwinNormal._();
 
-  const factory AbcTwinNormal.a(
-    ATwinNormal field0,
-  ) = AbcTwinNormal_A;
-  const factory AbcTwinNormal.b(
-    BTwinNormal field0,
-  ) = AbcTwinNormal_B;
-  const factory AbcTwinNormal.c(
-    CTwinNormal field0,
-  ) = AbcTwinNormal_C;
-  const factory AbcTwinNormal.justInt(
-    int field0,
-  ) = AbcTwinNormal_JustInt;
+  const factory AbcTwinNormal.a(ATwinNormal field0) = AbcTwinNormal_A;
+  const factory AbcTwinNormal.b(BTwinNormal field0) = AbcTwinNormal_B;
+  const factory AbcTwinNormal.c(CTwinNormal field0) = AbcTwinNormal_C;
+  const factory AbcTwinNormal.justInt(int field0) = AbcTwinNormal_JustInt;
 }
 
 class BTwinNormal {
   final int b;
 
-  const BTwinNormal({
-    required this.b,
-  });
+  const BTwinNormal({required this.b});
 
   @override
   int get hashCode => b.hashCode;
@@ -110,10 +105,7 @@ class BigBuffersTwinNormal {
   final Int64List int64;
   final Uint64List uint64;
 
-  const BigBuffersTwinNormal({
-    required this.int64,
-    required this.uint64,
-  });
+  const BigBuffersTwinNormal({required this.int64, required this.uint64});
 
   @override
   int get hashCode => int64.hashCode ^ uint64.hashCode;
@@ -130,9 +122,7 @@ class BigBuffersTwinNormal {
 class CTwinNormal {
   final bool c;
 
-  const CTwinNormal({
-    required this.c,
-  });
+  const CTwinNormal({required this.c});
 
   @override
   int get hashCode => c.hashCode;
@@ -199,10 +189,7 @@ class StructWithEnumTwinNormal {
   final AbcTwinNormal abc1;
   final AbcTwinNormal abc2;
 
-  const StructWithEnumTwinNormal({
-    required this.abc1,
-    required this.abc2,
-  });
+  const StructWithEnumTwinNormal({required this.abc1, required this.abc2});
 
   @override
   int get hashCode => abc1.hashCode ^ abc2.hashCode;
@@ -224,5 +211,4 @@ enum WeekdaysTwinNormal {
   friday,
   saturday,
   sunday,
-  ;
 }

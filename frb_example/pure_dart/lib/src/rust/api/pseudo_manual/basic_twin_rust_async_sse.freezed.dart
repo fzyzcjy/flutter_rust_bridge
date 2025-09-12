@@ -12,7 +12,8 @@ part of 'basic_twin_rust_async_sse.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$BasicGeneralEnumTwinRustAsyncSse {
@@ -20,56 +21,55 @@ mixin _$BasicGeneralEnumTwinRustAsyncSse {
   TResult when<TResult extends Object?>({
     required TResult Function(String field) apple,
     required TResult Function() orange,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String field)? apple,
     TResult? Function()? orange,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String field)? apple,
     TResult Function()? orange,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(BasicGeneralEnumTwinRustAsyncSse_Apple value)
-        apple,
+    apple,
     required TResult Function(BasicGeneralEnumTwinRustAsyncSse_Orange value)
-        orange,
-  }) =>
-      throw _privateConstructorUsedError;
+    orange,
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(BasicGeneralEnumTwinRustAsyncSse_Apple value)? apple,
     TResult? Function(BasicGeneralEnumTwinRustAsyncSse_Orange value)? orange,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(BasicGeneralEnumTwinRustAsyncSse_Apple value)? apple,
     TResult Function(BasicGeneralEnumTwinRustAsyncSse_Orange value)? orange,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BasicGeneralEnumTwinRustAsyncSseCopyWith<$Res> {
   factory $BasicGeneralEnumTwinRustAsyncSseCopyWith(
-          BasicGeneralEnumTwinRustAsyncSse value,
-          $Res Function(BasicGeneralEnumTwinRustAsyncSse) then) =
-      _$BasicGeneralEnumTwinRustAsyncSseCopyWithImpl<$Res,
-          BasicGeneralEnumTwinRustAsyncSse>;
+    BasicGeneralEnumTwinRustAsyncSse value,
+    $Res Function(BasicGeneralEnumTwinRustAsyncSse) then,
+  ) =
+      _$BasicGeneralEnumTwinRustAsyncSseCopyWithImpl<
+        $Res,
+        BasicGeneralEnumTwinRustAsyncSse
+      >;
 }
 
 /// @nodoc
-class _$BasicGeneralEnumTwinRustAsyncSseCopyWithImpl<$Res,
-        $Val extends BasicGeneralEnumTwinRustAsyncSse>
+class _$BasicGeneralEnumTwinRustAsyncSseCopyWithImpl<
+  $Res,
+  $Val extends BasicGeneralEnumTwinRustAsyncSse
+>
     implements $BasicGeneralEnumTwinRustAsyncSseCopyWith<$Res> {
   _$BasicGeneralEnumTwinRustAsyncSseCopyWithImpl(this._value, this._then);
 
@@ -85,36 +85,39 @@ class _$BasicGeneralEnumTwinRustAsyncSseCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$BasicGeneralEnumTwinRustAsyncSse_AppleImplCopyWith<$Res> {
   factory _$$BasicGeneralEnumTwinRustAsyncSse_AppleImplCopyWith(
-          _$BasicGeneralEnumTwinRustAsyncSse_AppleImpl value,
-          $Res Function(_$BasicGeneralEnumTwinRustAsyncSse_AppleImpl) then) =
-      __$$BasicGeneralEnumTwinRustAsyncSse_AppleImplCopyWithImpl<$Res>;
+    _$BasicGeneralEnumTwinRustAsyncSse_AppleImpl value,
+    $Res Function(_$BasicGeneralEnumTwinRustAsyncSse_AppleImpl) then,
+  ) = __$$BasicGeneralEnumTwinRustAsyncSse_AppleImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String field});
 }
 
 /// @nodoc
 class __$$BasicGeneralEnumTwinRustAsyncSse_AppleImplCopyWithImpl<$Res>
-    extends _$BasicGeneralEnumTwinRustAsyncSseCopyWithImpl<$Res,
-        _$BasicGeneralEnumTwinRustAsyncSse_AppleImpl>
+    extends
+        _$BasicGeneralEnumTwinRustAsyncSseCopyWithImpl<
+          $Res,
+          _$BasicGeneralEnumTwinRustAsyncSse_AppleImpl
+        >
     implements _$$BasicGeneralEnumTwinRustAsyncSse_AppleImplCopyWith<$Res> {
   __$$BasicGeneralEnumTwinRustAsyncSse_AppleImplCopyWithImpl(
-      _$BasicGeneralEnumTwinRustAsyncSse_AppleImpl _value,
-      $Res Function(_$BasicGeneralEnumTwinRustAsyncSse_AppleImpl) _then)
-      : super(_value, _then);
+    _$BasicGeneralEnumTwinRustAsyncSse_AppleImpl _value,
+    $Res Function(_$BasicGeneralEnumTwinRustAsyncSse_AppleImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of BasicGeneralEnumTwinRustAsyncSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field = null,
-  }) {
-    return _then(_$BasicGeneralEnumTwinRustAsyncSse_AppleImpl(
-      field: null == field
-          ? _value.field
-          : field // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? field = null}) {
+    return _then(
+      _$BasicGeneralEnumTwinRustAsyncSse_AppleImpl(
+        field: null == field
+            ? _value.field
+            : field // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -123,7 +126,7 @@ class __$$BasicGeneralEnumTwinRustAsyncSse_AppleImplCopyWithImpl<$Res>
 class _$BasicGeneralEnumTwinRustAsyncSse_AppleImpl
     extends BasicGeneralEnumTwinRustAsyncSse_Apple {
   const _$BasicGeneralEnumTwinRustAsyncSse_AppleImpl({required this.field})
-      : super._();
+    : super._();
 
   @override
   final String field;
@@ -150,10 +153,12 @@ class _$BasicGeneralEnumTwinRustAsyncSse_AppleImpl
   @override
   @pragma('vm:prefer-inline')
   _$$BasicGeneralEnumTwinRustAsyncSse_AppleImplCopyWith<
-          _$BasicGeneralEnumTwinRustAsyncSse_AppleImpl>
-      get copyWith =>
-          __$$BasicGeneralEnumTwinRustAsyncSse_AppleImplCopyWithImpl<
-              _$BasicGeneralEnumTwinRustAsyncSse_AppleImpl>(this, _$identity);
+    _$BasicGeneralEnumTwinRustAsyncSse_AppleImpl
+  >
+  get copyWith =>
+      __$$BasicGeneralEnumTwinRustAsyncSse_AppleImplCopyWithImpl<
+        _$BasicGeneralEnumTwinRustAsyncSse_AppleImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -190,9 +195,9 @@ class _$BasicGeneralEnumTwinRustAsyncSse_AppleImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(BasicGeneralEnumTwinRustAsyncSse_Apple value)
-        apple,
+    apple,
     required TResult Function(BasicGeneralEnumTwinRustAsyncSse_Orange value)
-        orange,
+    orange,
   }) {
     return apple(this);
   }
@@ -222,9 +227,9 @@ class _$BasicGeneralEnumTwinRustAsyncSse_AppleImpl
 
 abstract class BasicGeneralEnumTwinRustAsyncSse_Apple
     extends BasicGeneralEnumTwinRustAsyncSse {
-  const factory BasicGeneralEnumTwinRustAsyncSse_Apple(
-          {required final String field}) =
-      _$BasicGeneralEnumTwinRustAsyncSse_AppleImpl;
+  const factory BasicGeneralEnumTwinRustAsyncSse_Apple({
+    required final String field,
+  }) = _$BasicGeneralEnumTwinRustAsyncSse_AppleImpl;
   const BasicGeneralEnumTwinRustAsyncSse_Apple._() : super._();
 
   String get field;
@@ -233,27 +238,31 @@ abstract class BasicGeneralEnumTwinRustAsyncSse_Apple
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BasicGeneralEnumTwinRustAsyncSse_AppleImplCopyWith<
-          _$BasicGeneralEnumTwinRustAsyncSse_AppleImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$BasicGeneralEnumTwinRustAsyncSse_AppleImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$BasicGeneralEnumTwinRustAsyncSse_OrangeImplCopyWith<$Res> {
   factory _$$BasicGeneralEnumTwinRustAsyncSse_OrangeImplCopyWith(
-          _$BasicGeneralEnumTwinRustAsyncSse_OrangeImpl value,
-          $Res Function(_$BasicGeneralEnumTwinRustAsyncSse_OrangeImpl) then) =
-      __$$BasicGeneralEnumTwinRustAsyncSse_OrangeImplCopyWithImpl<$Res>;
+    _$BasicGeneralEnumTwinRustAsyncSse_OrangeImpl value,
+    $Res Function(_$BasicGeneralEnumTwinRustAsyncSse_OrangeImpl) then,
+  ) = __$$BasicGeneralEnumTwinRustAsyncSse_OrangeImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$BasicGeneralEnumTwinRustAsyncSse_OrangeImplCopyWithImpl<$Res>
-    extends _$BasicGeneralEnumTwinRustAsyncSseCopyWithImpl<$Res,
-        _$BasicGeneralEnumTwinRustAsyncSse_OrangeImpl>
+    extends
+        _$BasicGeneralEnumTwinRustAsyncSseCopyWithImpl<
+          $Res,
+          _$BasicGeneralEnumTwinRustAsyncSse_OrangeImpl
+        >
     implements _$$BasicGeneralEnumTwinRustAsyncSse_OrangeImplCopyWith<$Res> {
   __$$BasicGeneralEnumTwinRustAsyncSse_OrangeImplCopyWithImpl(
-      _$BasicGeneralEnumTwinRustAsyncSse_OrangeImpl _value,
-      $Res Function(_$BasicGeneralEnumTwinRustAsyncSse_OrangeImpl) _then)
-      : super(_value, _then);
+    _$BasicGeneralEnumTwinRustAsyncSse_OrangeImpl _value,
+    $Res Function(_$BasicGeneralEnumTwinRustAsyncSse_OrangeImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of BasicGeneralEnumTwinRustAsyncSse
   /// with the given fields replaced by the non-null parameter values.
@@ -315,9 +324,9 @@ class _$BasicGeneralEnumTwinRustAsyncSse_OrangeImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(BasicGeneralEnumTwinRustAsyncSse_Apple value)
-        apple,
+    apple,
     required TResult Function(BasicGeneralEnumTwinRustAsyncSse_Orange value)
-        orange,
+    orange,
   }) {
     return orange(this);
   }

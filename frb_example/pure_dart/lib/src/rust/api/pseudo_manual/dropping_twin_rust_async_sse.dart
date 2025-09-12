@@ -18,7 +18,8 @@ abstract class DroppableTwinRustAsyncSse implements RustOpaqueInterface {
       .crateApiPseudoManualDroppingTwinRustAsyncSseDroppableTwinRustAsyncSseGetDropCountTwinRustAsyncSse();
 
   static Future<DroppableTwinRustAsyncSse> newTwinRustAsyncSse() => RustLib
-      .instance.api
+      .instance
+      .api
       .crateApiPseudoManualDroppingTwinRustAsyncSseDroppableTwinRustAsyncSseNewTwinRustAsyncSse();
 
   Future<void> simpleMethodTwinRustAsyncSse();

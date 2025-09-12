@@ -12,7 +12,8 @@ part of 'dart_opaque_twin_sync_sse.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$EnumDartOpaqueTwinSyncSse {
@@ -21,53 +22,50 @@ mixin _$EnumDartOpaqueTwinSyncSse {
   TResult when<TResult extends Object?>({
     required TResult Function(int field0) primitive,
     required TResult Function(Object field0) opaque,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int field0)? primitive,
     TResult? Function(Object field0)? opaque,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int field0)? primitive,
     TResult Function(Object field0)? opaque,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(EnumDartOpaqueTwinSyncSse_Primitive value)
-        primitive,
+    primitive,
     required TResult Function(EnumDartOpaqueTwinSyncSse_Opaque value) opaque,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(EnumDartOpaqueTwinSyncSse_Primitive value)? primitive,
     TResult? Function(EnumDartOpaqueTwinSyncSse_Opaque value)? opaque,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EnumDartOpaqueTwinSyncSse_Primitive value)? primitive,
     TResult Function(EnumDartOpaqueTwinSyncSse_Opaque value)? opaque,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $EnumDartOpaqueTwinSyncSseCopyWith<$Res> {
-  factory $EnumDartOpaqueTwinSyncSseCopyWith(EnumDartOpaqueTwinSyncSse value,
-          $Res Function(EnumDartOpaqueTwinSyncSse) then) =
-      _$EnumDartOpaqueTwinSyncSseCopyWithImpl<$Res, EnumDartOpaqueTwinSyncSse>;
+  factory $EnumDartOpaqueTwinSyncSseCopyWith(
+    EnumDartOpaqueTwinSyncSse value,
+    $Res Function(EnumDartOpaqueTwinSyncSse) then,
+  ) = _$EnumDartOpaqueTwinSyncSseCopyWithImpl<$Res, EnumDartOpaqueTwinSyncSse>;
 }
 
 /// @nodoc
-class _$EnumDartOpaqueTwinSyncSseCopyWithImpl<$Res,
-        $Val extends EnumDartOpaqueTwinSyncSse>
+class _$EnumDartOpaqueTwinSyncSseCopyWithImpl<
+  $Res,
+  $Val extends EnumDartOpaqueTwinSyncSse
+>
     implements $EnumDartOpaqueTwinSyncSseCopyWith<$Res> {
   _$EnumDartOpaqueTwinSyncSseCopyWithImpl(this._value, this._then);
 
@@ -83,36 +81,39 @@ class _$EnumDartOpaqueTwinSyncSseCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$EnumDartOpaqueTwinSyncSse_PrimitiveImplCopyWith<$Res> {
   factory _$$EnumDartOpaqueTwinSyncSse_PrimitiveImplCopyWith(
-          _$EnumDartOpaqueTwinSyncSse_PrimitiveImpl value,
-          $Res Function(_$EnumDartOpaqueTwinSyncSse_PrimitiveImpl) then) =
-      __$$EnumDartOpaqueTwinSyncSse_PrimitiveImplCopyWithImpl<$Res>;
+    _$EnumDartOpaqueTwinSyncSse_PrimitiveImpl value,
+    $Res Function(_$EnumDartOpaqueTwinSyncSse_PrimitiveImpl) then,
+  ) = __$$EnumDartOpaqueTwinSyncSse_PrimitiveImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int field0});
 }
 
 /// @nodoc
 class __$$EnumDartOpaqueTwinSyncSse_PrimitiveImplCopyWithImpl<$Res>
-    extends _$EnumDartOpaqueTwinSyncSseCopyWithImpl<$Res,
-        _$EnumDartOpaqueTwinSyncSse_PrimitiveImpl>
+    extends
+        _$EnumDartOpaqueTwinSyncSseCopyWithImpl<
+          $Res,
+          _$EnumDartOpaqueTwinSyncSse_PrimitiveImpl
+        >
     implements _$$EnumDartOpaqueTwinSyncSse_PrimitiveImplCopyWith<$Res> {
   __$$EnumDartOpaqueTwinSyncSse_PrimitiveImplCopyWithImpl(
-      _$EnumDartOpaqueTwinSyncSse_PrimitiveImpl _value,
-      $Res Function(_$EnumDartOpaqueTwinSyncSse_PrimitiveImpl) _then)
-      : super(_value, _then);
+    _$EnumDartOpaqueTwinSyncSse_PrimitiveImpl _value,
+    $Res Function(_$EnumDartOpaqueTwinSyncSse_PrimitiveImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of EnumDartOpaqueTwinSyncSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$EnumDartOpaqueTwinSyncSse_PrimitiveImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$EnumDartOpaqueTwinSyncSse_PrimitiveImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
@@ -147,9 +148,12 @@ class _$EnumDartOpaqueTwinSyncSse_PrimitiveImpl
   @override
   @pragma('vm:prefer-inline')
   _$$EnumDartOpaqueTwinSyncSse_PrimitiveImplCopyWith<
-          _$EnumDartOpaqueTwinSyncSse_PrimitiveImpl>
-      get copyWith => __$$EnumDartOpaqueTwinSyncSse_PrimitiveImplCopyWithImpl<
-          _$EnumDartOpaqueTwinSyncSse_PrimitiveImpl>(this, _$identity);
+    _$EnumDartOpaqueTwinSyncSse_PrimitiveImpl
+  >
+  get copyWith =>
+      __$$EnumDartOpaqueTwinSyncSse_PrimitiveImplCopyWithImpl<
+        _$EnumDartOpaqueTwinSyncSse_PrimitiveImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -186,7 +190,7 @@ class _$EnumDartOpaqueTwinSyncSse_PrimitiveImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(EnumDartOpaqueTwinSyncSse_Primitive value)
-        primitive,
+    primitive,
     required TResult Function(EnumDartOpaqueTwinSyncSse_Opaque value) opaque,
   }) {
     return primitive(this);
@@ -228,40 +232,44 @@ abstract class EnumDartOpaqueTwinSyncSse_Primitive
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumDartOpaqueTwinSyncSse_PrimitiveImplCopyWith<
-          _$EnumDartOpaqueTwinSyncSse_PrimitiveImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$EnumDartOpaqueTwinSyncSse_PrimitiveImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$EnumDartOpaqueTwinSyncSse_OpaqueImplCopyWith<$Res> {
   factory _$$EnumDartOpaqueTwinSyncSse_OpaqueImplCopyWith(
-          _$EnumDartOpaqueTwinSyncSse_OpaqueImpl value,
-          $Res Function(_$EnumDartOpaqueTwinSyncSse_OpaqueImpl) then) =
-      __$$EnumDartOpaqueTwinSyncSse_OpaqueImplCopyWithImpl<$Res>;
+    _$EnumDartOpaqueTwinSyncSse_OpaqueImpl value,
+    $Res Function(_$EnumDartOpaqueTwinSyncSse_OpaqueImpl) then,
+  ) = __$$EnumDartOpaqueTwinSyncSse_OpaqueImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Object field0});
 }
 
 /// @nodoc
 class __$$EnumDartOpaqueTwinSyncSse_OpaqueImplCopyWithImpl<$Res>
-    extends _$EnumDartOpaqueTwinSyncSseCopyWithImpl<$Res,
-        _$EnumDartOpaqueTwinSyncSse_OpaqueImpl>
+    extends
+        _$EnumDartOpaqueTwinSyncSseCopyWithImpl<
+          $Res,
+          _$EnumDartOpaqueTwinSyncSse_OpaqueImpl
+        >
     implements _$$EnumDartOpaqueTwinSyncSse_OpaqueImplCopyWith<$Res> {
   __$$EnumDartOpaqueTwinSyncSse_OpaqueImplCopyWithImpl(
-      _$EnumDartOpaqueTwinSyncSse_OpaqueImpl _value,
-      $Res Function(_$EnumDartOpaqueTwinSyncSse_OpaqueImpl) _then)
-      : super(_value, _then);
+    _$EnumDartOpaqueTwinSyncSse_OpaqueImpl _value,
+    $Res Function(_$EnumDartOpaqueTwinSyncSse_OpaqueImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of EnumDartOpaqueTwinSyncSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$EnumDartOpaqueTwinSyncSse_OpaqueImpl(
-      null == field0 ? _value.field0 : field0,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$EnumDartOpaqueTwinSyncSse_OpaqueImpl(
+        null == field0 ? _value.field0 : field0,
+      ),
+    );
   }
 }
 
@@ -297,9 +305,12 @@ class _$EnumDartOpaqueTwinSyncSse_OpaqueImpl
   @override
   @pragma('vm:prefer-inline')
   _$$EnumDartOpaqueTwinSyncSse_OpaqueImplCopyWith<
-          _$EnumDartOpaqueTwinSyncSse_OpaqueImpl>
-      get copyWith => __$$EnumDartOpaqueTwinSyncSse_OpaqueImplCopyWithImpl<
-          _$EnumDartOpaqueTwinSyncSse_OpaqueImpl>(this, _$identity);
+    _$EnumDartOpaqueTwinSyncSse_OpaqueImpl
+  >
+  get copyWith =>
+      __$$EnumDartOpaqueTwinSyncSse_OpaqueImplCopyWithImpl<
+        _$EnumDartOpaqueTwinSyncSse_OpaqueImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -336,7 +347,7 @@ class _$EnumDartOpaqueTwinSyncSse_OpaqueImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(EnumDartOpaqueTwinSyncSse_Primitive value)
-        primitive,
+    primitive,
     required TResult Function(EnumDartOpaqueTwinSyncSse_Opaque value) opaque,
   }) {
     return opaque(this);
@@ -378,6 +389,7 @@ abstract class EnumDartOpaqueTwinSyncSse_Opaque
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumDartOpaqueTwinSyncSse_OpaqueImplCopyWith<
-          _$EnumDartOpaqueTwinSyncSse_OpaqueImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$EnumDartOpaqueTwinSyncSse_OpaqueImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }

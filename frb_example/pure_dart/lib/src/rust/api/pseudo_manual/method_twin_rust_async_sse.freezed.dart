@@ -12,7 +12,8 @@ part of 'method_twin_rust_async_sse.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$SimpleEnumTwinRustAsyncSse {
@@ -20,53 +21,53 @@ mixin _$SimpleEnumTwinRustAsyncSse {
   TResult when<TResult extends Object?>({
     required TResult Function() first,
     required TResult Function(String field0) second,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? first,
     TResult? Function(String field0)? second,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? first,
     TResult Function(String field0)? second,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SimpleEnumTwinRustAsyncSse_First value) first,
     required TResult Function(SimpleEnumTwinRustAsyncSse_Second value) second,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SimpleEnumTwinRustAsyncSse_First value)? first,
     TResult? Function(SimpleEnumTwinRustAsyncSse_Second value)? second,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SimpleEnumTwinRustAsyncSse_First value)? first,
     TResult Function(SimpleEnumTwinRustAsyncSse_Second value)? second,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SimpleEnumTwinRustAsyncSseCopyWith<$Res> {
-  factory $SimpleEnumTwinRustAsyncSseCopyWith(SimpleEnumTwinRustAsyncSse value,
-          $Res Function(SimpleEnumTwinRustAsyncSse) then) =
-      _$SimpleEnumTwinRustAsyncSseCopyWithImpl<$Res,
-          SimpleEnumTwinRustAsyncSse>;
+  factory $SimpleEnumTwinRustAsyncSseCopyWith(
+    SimpleEnumTwinRustAsyncSse value,
+    $Res Function(SimpleEnumTwinRustAsyncSse) then,
+  ) =
+      _$SimpleEnumTwinRustAsyncSseCopyWithImpl<
+        $Res,
+        SimpleEnumTwinRustAsyncSse
+      >;
 }
 
 /// @nodoc
-class _$SimpleEnumTwinRustAsyncSseCopyWithImpl<$Res,
-        $Val extends SimpleEnumTwinRustAsyncSse>
+class _$SimpleEnumTwinRustAsyncSseCopyWithImpl<
+  $Res,
+  $Val extends SimpleEnumTwinRustAsyncSse
+>
     implements $SimpleEnumTwinRustAsyncSseCopyWith<$Res> {
   _$SimpleEnumTwinRustAsyncSseCopyWithImpl(this._value, this._then);
 
@@ -82,20 +83,23 @@ class _$SimpleEnumTwinRustAsyncSseCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$SimpleEnumTwinRustAsyncSse_FirstImplCopyWith<$Res> {
   factory _$$SimpleEnumTwinRustAsyncSse_FirstImplCopyWith(
-          _$SimpleEnumTwinRustAsyncSse_FirstImpl value,
-          $Res Function(_$SimpleEnumTwinRustAsyncSse_FirstImpl) then) =
-      __$$SimpleEnumTwinRustAsyncSse_FirstImplCopyWithImpl<$Res>;
+    _$SimpleEnumTwinRustAsyncSse_FirstImpl value,
+    $Res Function(_$SimpleEnumTwinRustAsyncSse_FirstImpl) then,
+  ) = __$$SimpleEnumTwinRustAsyncSse_FirstImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$SimpleEnumTwinRustAsyncSse_FirstImplCopyWithImpl<$Res>
-    extends _$SimpleEnumTwinRustAsyncSseCopyWithImpl<$Res,
-        _$SimpleEnumTwinRustAsyncSse_FirstImpl>
+    extends
+        _$SimpleEnumTwinRustAsyncSseCopyWithImpl<
+          $Res,
+          _$SimpleEnumTwinRustAsyncSse_FirstImpl
+        >
     implements _$$SimpleEnumTwinRustAsyncSse_FirstImplCopyWith<$Res> {
   __$$SimpleEnumTwinRustAsyncSse_FirstImplCopyWithImpl(
-      _$SimpleEnumTwinRustAsyncSse_FirstImpl _value,
-      $Res Function(_$SimpleEnumTwinRustAsyncSse_FirstImpl) _then)
-      : super(_value, _then);
+    _$SimpleEnumTwinRustAsyncSse_FirstImpl _value,
+    $Res Function(_$SimpleEnumTwinRustAsyncSse_FirstImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SimpleEnumTwinRustAsyncSse
   /// with the given fields replaced by the non-null parameter values.
@@ -195,36 +199,39 @@ abstract class SimpleEnumTwinRustAsyncSse_First
 /// @nodoc
 abstract class _$$SimpleEnumTwinRustAsyncSse_SecondImplCopyWith<$Res> {
   factory _$$SimpleEnumTwinRustAsyncSse_SecondImplCopyWith(
-          _$SimpleEnumTwinRustAsyncSse_SecondImpl value,
-          $Res Function(_$SimpleEnumTwinRustAsyncSse_SecondImpl) then) =
-      __$$SimpleEnumTwinRustAsyncSse_SecondImplCopyWithImpl<$Res>;
+    _$SimpleEnumTwinRustAsyncSse_SecondImpl value,
+    $Res Function(_$SimpleEnumTwinRustAsyncSse_SecondImpl) then,
+  ) = __$$SimpleEnumTwinRustAsyncSse_SecondImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String field0});
 }
 
 /// @nodoc
 class __$$SimpleEnumTwinRustAsyncSse_SecondImplCopyWithImpl<$Res>
-    extends _$SimpleEnumTwinRustAsyncSseCopyWithImpl<$Res,
-        _$SimpleEnumTwinRustAsyncSse_SecondImpl>
+    extends
+        _$SimpleEnumTwinRustAsyncSseCopyWithImpl<
+          $Res,
+          _$SimpleEnumTwinRustAsyncSse_SecondImpl
+        >
     implements _$$SimpleEnumTwinRustAsyncSse_SecondImplCopyWith<$Res> {
   __$$SimpleEnumTwinRustAsyncSse_SecondImplCopyWithImpl(
-      _$SimpleEnumTwinRustAsyncSse_SecondImpl _value,
-      $Res Function(_$SimpleEnumTwinRustAsyncSse_SecondImpl) _then)
-      : super(_value, _then);
+    _$SimpleEnumTwinRustAsyncSse_SecondImpl _value,
+    $Res Function(_$SimpleEnumTwinRustAsyncSse_SecondImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SimpleEnumTwinRustAsyncSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$SimpleEnumTwinRustAsyncSse_SecondImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$SimpleEnumTwinRustAsyncSse_SecondImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -259,9 +266,12 @@ class _$SimpleEnumTwinRustAsyncSse_SecondImpl
   @override
   @pragma('vm:prefer-inline')
   _$$SimpleEnumTwinRustAsyncSse_SecondImplCopyWith<
-          _$SimpleEnumTwinRustAsyncSse_SecondImpl>
-      get copyWith => __$$SimpleEnumTwinRustAsyncSse_SecondImplCopyWithImpl<
-          _$SimpleEnumTwinRustAsyncSse_SecondImpl>(this, _$identity);
+    _$SimpleEnumTwinRustAsyncSse_SecondImpl
+  >
+  get copyWith =>
+      __$$SimpleEnumTwinRustAsyncSse_SecondImplCopyWithImpl<
+        _$SimpleEnumTwinRustAsyncSse_SecondImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -338,6 +348,7 @@ abstract class SimpleEnumTwinRustAsyncSse_Second
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SimpleEnumTwinRustAsyncSse_SecondImplCopyWith<
-          _$SimpleEnumTwinRustAsyncSse_SecondImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$SimpleEnumTwinRustAsyncSse_SecondImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }

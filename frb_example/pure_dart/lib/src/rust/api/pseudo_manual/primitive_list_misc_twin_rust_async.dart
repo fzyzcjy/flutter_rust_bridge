@@ -8,11 +8,12 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<VecOfPrimitivePackTwinRustAsync> handleVecOfPrimitiveTwinRustAsync(
-        {required int n}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualPrimitiveListMiscTwinRustAsyncHandleVecOfPrimitiveTwinRustAsync(
-            n: n);
+Future<VecOfPrimitivePackTwinRustAsync> handleVecOfPrimitiveTwinRustAsync({
+  required int n,
+}) => RustLib.instance.api
+    .crateApiPseudoManualPrimitiveListMiscTwinRustAsyncHandleVecOfPrimitiveTwinRustAsync(
+      n: n,
+    );
 
 class VecOfPrimitivePackTwinRustAsync {
   final Int8List int8List;

@@ -16,11 +16,16 @@ part 'method_twin_sync_sse.freezed.dart';
 SumWithTwinSyncSse getSumStructTwinSyncSse() => RustLib.instance.api
     .crateApiPseudoManualMethodTwinSyncSseGetSumStructTwinSyncSse();
 
-SumWithTwinSyncSseArray3 getSumArrayTwinSyncSse(
-        {required int a, required int b, required int c}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMethodTwinSyncSseGetSumArrayTwinSyncSse(
-            a: a, b: b, c: c);
+SumWithTwinSyncSseArray3 getSumArrayTwinSyncSse({
+  required int a,
+  required int b,
+  required int c,
+}) => RustLib.instance.api
+    .crateApiPseudoManualMethodTwinSyncSseGetSumArrayTwinSyncSse(
+      a: a,
+      b: b,
+      c: c,
+    );
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StaticGetterOnlyTwinSyncSse>>
 abstract class StaticGetterOnlyTwinSyncSse implements RustOpaqueInterface {
@@ -31,48 +36,61 @@ abstract class StaticGetterOnlyTwinSyncSse implements RustOpaqueInterface {
 class ConcatenateWithTwinSyncSse {
   final String a;
 
-  const ConcatenateWithTwinSyncSse({
-    required this.a,
-  });
+  const ConcatenateWithTwinSyncSse({required this.a});
 
-  static String concatenateStaticTwinSyncSse(
-          {required String a, required String b}) =>
-      RustLib.instance.api
-          .crateApiPseudoManualMethodTwinSyncSseConcatenateWithTwinSyncSseConcatenateStaticTwinSyncSse(
-              a: a, b: b);
+  static String concatenateStaticTwinSyncSse({
+    required String a,
+    required String b,
+  }) => RustLib.instance.api
+      .crateApiPseudoManualMethodTwinSyncSseConcatenateWithTwinSyncSseConcatenateStaticTwinSyncSse(
+        a: a,
+        b: b,
+      );
 
   String concatenateTwinSyncSse({required String b}) => RustLib.instance.api
       .crateApiPseudoManualMethodTwinSyncSseConcatenateWithTwinSyncSseConcatenateTwinSyncSse(
-          that: this, b: b);
+        that: this,
+        b: b,
+      );
 
   static Stream<int> handleSomeStaticStreamSinkSingleArgTwinSyncSse() => RustLib
-      .instance.api
+      .instance
+      .api
       .crateApiPseudoManualMethodTwinSyncSseConcatenateWithTwinSyncSseHandleSomeStaticStreamSinkSingleArgTwinSyncSse();
 
-  static Stream<Log2TwinSyncSse> handleSomeStaticStreamSinkTwinSyncSse(
-          {required int key, required int max}) =>
-      RustLib.instance.api
-          .crateApiPseudoManualMethodTwinSyncSseConcatenateWithTwinSyncSseHandleSomeStaticStreamSinkTwinSyncSse(
-              key: key, max: max);
+  static Stream<Log2TwinSyncSse> handleSomeStaticStreamSinkTwinSyncSse({
+    required int key,
+    required int max,
+  }) => RustLib.instance.api
+      .crateApiPseudoManualMethodTwinSyncSseConcatenateWithTwinSyncSseHandleSomeStaticStreamSinkTwinSyncSse(
+        key: key,
+        max: max,
+      );
 
   Stream<int> handleSomeStreamSinkAt1TwinSyncSse() => RustLib.instance.api
-          .crateApiPseudoManualMethodTwinSyncSseConcatenateWithTwinSyncSseHandleSomeStreamSinkAt1TwinSyncSse(
+      .crateApiPseudoManualMethodTwinSyncSseConcatenateWithTwinSyncSseHandleSomeStreamSinkAt1TwinSyncSse(
         that: this,
       );
 
-  Stream<Log2TwinSyncSse> handleSomeStreamSinkTwinSyncSse(
-          {required int key, required int max}) =>
-      RustLib.instance.api
-          .crateApiPseudoManualMethodTwinSyncSseConcatenateWithTwinSyncSseHandleSomeStreamSinkTwinSyncSse(
-              that: this, key: key, max: max);
+  Stream<Log2TwinSyncSse> handleSomeStreamSinkTwinSyncSse({
+    required int key,
+    required int max,
+  }) => RustLib.instance.api
+      .crateApiPseudoManualMethodTwinSyncSseConcatenateWithTwinSyncSseHandleSomeStreamSinkTwinSyncSse(
+        that: this,
+        key: key,
+        max: max,
+      );
 
-  static ConcatenateWithTwinSyncSse newTwinSyncSse({required String a}) => RustLib
-      .instance.api
+  static ConcatenateWithTwinSyncSse newTwinSyncSse({
+    required String a,
+  }) => RustLib.instance.api
       .crateApiPseudoManualMethodTwinSyncSseConcatenateWithTwinSyncSseNewTwinSyncSse(
-          a: a);
+        a: a,
+      );
 
   String get simpleGetterTwinSyncSse => RustLib.instance.api
-          .crateApiPseudoManualMethodTwinSyncSseConcatenateWithTwinSyncSseSimpleGetterTwinSyncSse(
+      .crateApiPseudoManualMethodTwinSyncSseConcatenateWithTwinSyncSseSimpleGetterTwinSyncSse(
         that: this,
       );
 
@@ -91,10 +109,7 @@ class Log2TwinSyncSse {
   final int key;
   final String value;
 
-  const Log2TwinSyncSse({
-    required this.key,
-    required this.value,
-  });
+  const Log2TwinSyncSse({required this.key, required this.value});
 
   @override
   int get hashCode => key.hashCode ^ value.hashCode;
@@ -111,13 +126,13 @@ class Log2TwinSyncSse {
 class MyCallableTwinSyncSse {
   final String one;
 
-  const MyCallableTwinSyncSse({
-    required this.one,
-  });
+  const MyCallableTwinSyncSse({required this.one});
 
   String call({required String two}) => RustLib.instance.api
       .crateApiPseudoManualMethodTwinSyncSseMyCallableTwinSyncSseCall(
-          that: this, two: two);
+        that: this,
+        two: two,
+      );
 
   @override
   int get hashCode => one.hashCode;
@@ -135,28 +150,28 @@ sealed class SimpleEnumTwinSyncSse with _$SimpleEnumTwinSyncSse {
   const SimpleEnumTwinSyncSse._();
 
   const factory SimpleEnumTwinSyncSse.first() = SimpleEnumTwinSyncSse_First;
-  const factory SimpleEnumTwinSyncSse.second(
-    String field0,
-  ) = SimpleEnumTwinSyncSse_Second;
+  const factory SimpleEnumTwinSyncSse.second(String field0) =
+      SimpleEnumTwinSyncSse_Second;
 
-  static SimpleEnumTwinSyncSse returnSelfTwinSyncSse({required String one}) =>
-      RustLib.instance.api
-          .crateApiPseudoManualMethodTwinSyncSseSimpleEnumTwinSyncSseReturnSelfTwinSyncSse(
-              one: one);
+  static SimpleEnumTwinSyncSse returnSelfTwinSyncSse({
+    required String one,
+  }) => RustLib.instance.api
+      .crateApiPseudoManualMethodTwinSyncSseSimpleEnumTwinSyncSseReturnSelfTwinSyncSse(
+        one: one,
+      );
 
   String simpleMethodTwinSyncSse() => RustLib.instance.api
-          .crateApiPseudoManualMethodTwinSyncSseSimpleEnumTwinSyncSseSimpleMethodTwinSyncSse(
+      .crateApiPseudoManualMethodTwinSyncSseSimpleEnumTwinSyncSseSimpleMethodTwinSyncSse(
         that: this,
       );
 }
 
 enum SimplePrimitiveEnumTwinSyncSse {
   first,
-  second,
-  ;
+  second;
 
   int simpleMethodTwinSyncSse() => RustLib.instance.api
-          .crateApiPseudoManualMethodTwinSyncSseSimplePrimitiveEnumTwinSyncSseSimpleMethodTwinSyncSse(
+      .crateApiPseudoManualMethodTwinSyncSseSimplePrimitiveEnumTwinSyncSseSimpleMethodTwinSyncSse(
         that: this,
       );
 }
@@ -164,37 +179,40 @@ enum SimplePrimitiveEnumTwinSyncSse {
 class SimpleStructTwinSyncSse {
   final String one;
 
-  const SimpleStructTwinSyncSse({
-    required this.one,
-  });
+  const SimpleStructTwinSyncSse({required this.one});
 
-  static String argSelfTwinSyncSse(
-          {required SimpleStructTwinSyncSse a,
-          required SimpleStructTwinSyncSse b}) =>
-      RustLib.instance.api
-          .crateApiPseudoManualMethodTwinSyncSseSimpleStructTwinSyncSseArgSelfTwinSyncSse(
-              a: a, b: b);
+  static String argSelfTwinSyncSse({
+    required SimpleStructTwinSyncSse a,
+    required SimpleStructTwinSyncSse b,
+  }) => RustLib.instance.api
+      .crateApiPseudoManualMethodTwinSyncSseSimpleStructTwinSyncSseArgSelfTwinSyncSse(
+        a: a,
+        b: b,
+      );
 
   String receiverBorrowTwinSyncSse() => RustLib.instance.api
-          .crateApiPseudoManualMethodTwinSyncSseSimpleStructTwinSyncSseReceiverBorrowTwinSyncSse(
+      .crateApiPseudoManualMethodTwinSyncSseSimpleStructTwinSyncSseReceiverBorrowTwinSyncSse(
         that: this,
       );
 
   String receiverOwnTwinSyncSse() => RustLib.instance.api
-          .crateApiPseudoManualMethodTwinSyncSseSimpleStructTwinSyncSseReceiverOwnTwinSyncSse(
+      .crateApiPseudoManualMethodTwinSyncSseSimpleStructTwinSyncSseReceiverOwnTwinSyncSse(
         that: this,
       );
 
-  static SimpleStructTwinSyncSse returnSelfTwinSyncSse({required String one}) =>
-      RustLib.instance.api
-          .crateApiPseudoManualMethodTwinSyncSseSimpleStructTwinSyncSseReturnSelfTwinSyncSse(
-              one: one);
+  static SimpleStructTwinSyncSse returnSelfTwinSyncSse({
+    required String one,
+  }) => RustLib.instance.api
+      .crateApiPseudoManualMethodTwinSyncSseSimpleStructTwinSyncSseReturnSelfTwinSyncSse(
+        one: one,
+      );
 
-  static List<String> vecSelfTwinSyncSse(
-          {required List<SimpleStructTwinSyncSse> arg}) =>
-      RustLib.instance.api
-          .crateApiPseudoManualMethodTwinSyncSseSimpleStructTwinSyncSseVecSelfTwinSyncSse(
-              arg: arg);
+  static List<String> vecSelfTwinSyncSse({
+    required List<SimpleStructTwinSyncSse> arg,
+  }) => RustLib.instance.api
+      .crateApiPseudoManualMethodTwinSyncSseSimpleStructTwinSyncSseVecSelfTwinSyncSse(
+        arg: arg,
+      );
 
   @override
   int get hashCode => one.hashCode;
@@ -210,13 +228,12 @@ class SimpleStructTwinSyncSse {
 class StaticOnlyTwinSyncSse {
   final String one;
 
-  const StaticOnlyTwinSyncSse({
-    required this.one,
-  });
+  const StaticOnlyTwinSyncSse({required this.one});
 
   static int staticMethodTwinSyncSse({required int a}) => RustLib.instance.api
       .crateApiPseudoManualMethodTwinSyncSseStaticOnlyTwinSyncSseStaticMethodTwinSyncSse(
-          a: a);
+        a: a,
+      );
 
   @override
   int get hashCode => one.hashCode;
@@ -232,13 +249,14 @@ class StaticOnlyTwinSyncSse {
 class SumWithTwinSyncSse {
   final int x;
 
-  const SumWithTwinSyncSse({
-    required this.x,
-  });
+  const SumWithTwinSyncSse({required this.x});
 
   int sumTwinSyncSse({required int y, required int z}) => RustLib.instance.api
       .crateApiPseudoManualMethodTwinSyncSseSumWithTwinSyncSseSumTwinSyncSse(
-          that: this, y: y, z: z);
+        that: this,
+        y: y,
+        z: z,
+      );
 
   @override
   int get hashCode => x.hashCode;
@@ -259,9 +277,9 @@ class SumWithTwinSyncSseArray3 extends NonGrowableListView<SumWithTwinSyncSse> {
   final List<SumWithTwinSyncSse> _inner;
 
   SumWithTwinSyncSseArray3(this._inner)
-      : assert(_inner.length == arraySize),
-        super(_inner);
+    : assert(_inner.length == arraySize),
+      super(_inner);
 
   SumWithTwinSyncSseArray3.init(SumWithTwinSyncSse fill)
-      : this(List<SumWithTwinSyncSse>.filled(arraySize, fill));
+    : this(List<SumWithTwinSyncSse>.filled(arraySize, fill));
 }

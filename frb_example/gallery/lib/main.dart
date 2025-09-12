@@ -19,9 +19,7 @@ class MyApp extends StatelessWidget {
           primary: Colors.blue,
         ),
       ),
-      home: const Scaffold(
-        body: MandelbrotPageBody(),
-      ),
+      home: const Scaffold(body: MandelbrotPageBody()),
     );
   }
 }

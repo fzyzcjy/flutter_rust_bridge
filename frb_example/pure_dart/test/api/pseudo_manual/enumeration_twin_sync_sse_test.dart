@@ -42,49 +42,62 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   group('example-based tests', () {
     test('dart call handleReturnEnum', () async {
-      expect(await handleReturnEnumTwinSyncSse(input: "Tuesday"),
-          WeekdaysTwinSyncSse.tuesday);
+      expect(
+        await handleReturnEnumTwinSyncSse(input: "Tuesday"),
+        WeekdaysTwinSyncSse.tuesday,
+      );
       expect(await handleReturnEnumTwinSyncSse(input: "Foreverday"), null);
     });
 
     test('dart call handleEnumParameter', () async {
       expect(
-          await handleEnumParameterTwinSyncSse(
-              weekday: WeekdaysTwinSyncSse.saturday),
-          WeekdaysTwinSyncSse.saturday);
+        await handleEnumParameterTwinSyncSse(
+          weekday: WeekdaysTwinSyncSse.saturday,
+        ),
+        WeekdaysTwinSyncSse.saturday,
+      );
     });
 
     test('dart call handleEnumStruct', () async {
       expect(
-          await handleEnumStructTwinSyncSse(
-              val: KitchenSinkTwinSyncSse_Empty()),
-          KitchenSinkTwinSyncSse_Empty());
+        await handleEnumStructTwinSyncSse(val: KitchenSinkTwinSyncSse_Empty()),
+        KitchenSinkTwinSyncSse_Empty(),
+      );
       expect(
         await handleEnumStructTwinSyncSse(
           val: KitchenSinkTwinSyncSse_Primitives(
-              int32: 0, float64: 1, boolean: false),
+            int32: 0,
+            float64: 1,
+            boolean: false,
+          ),
         ),
         KitchenSinkTwinSyncSse_Primitives(int32: 1, float64: 2, boolean: true),
       );
       expect(
         await handleEnumStructTwinSyncSse(
-            val: KitchenSinkTwinSyncSse_Optional(null, 0)),
+          val: KitchenSinkTwinSyncSse_Optional(null, 0),
+        ),
         KitchenSinkTwinSyncSse_Optional(null, 1),
       );
       expect(
         await handleEnumStructTwinSyncSse(
-            val: KitchenSinkTwinSyncSse_Buffer(Uint8List.fromList([]))),
+          val: KitchenSinkTwinSyncSse_Buffer(Uint8List.fromList([])),
+        ),
         KitchenSinkTwinSyncSse_Buffer(Uint8List.fromList([1])),
       );
       expect(
         await handleEnumStructTwinSyncSse(
-            val: KitchenSinkTwinSyncSse_Enums(WeekdaysTwinSyncSse.monday)),
+          val: KitchenSinkTwinSyncSse_Enums(WeekdaysTwinSyncSse.monday),
+        ),
         KitchenSinkTwinSyncSse_Enums(WeekdaysTwinSyncSse.tuesday),
       );
       expect(
         await handleEnumStructTwinSyncSse(
-            val: const KitchenSinkTwinSyncSse.nested(
-                0, KitchenSinkTwinSyncSse.empty())),
+          val: const KitchenSinkTwinSyncSse.nested(
+            0,
+            KitchenSinkTwinSyncSse.empty(),
+          ),
+        ),
         const KitchenSinkTwinSyncSse.nested(1, KitchenSinkTwinSyncSse.empty()),
       );
     });
@@ -92,25 +105,39 @@ Future<void> main({bool skipRustLibInit = false}) async {
     test('dart call multiplyByTen()', () async {
       expect(
         await multiplyByTenTwinSyncSse(
-            measure: MeasureTwinSyncSse.speed(SpeedTwinSyncSse_GPS(10.0))),
+          measure: MeasureTwinSyncSse.speed(SpeedTwinSyncSse_GPS(10.0)),
+        ),
         MeasureTwinSyncSse.speed(SpeedTwinSyncSse_GPS(100.0)),
       );
       expect(
         await multiplyByTenTwinSyncSse(
-            measure: MeasureTwinSyncSse.speed(SpeedTwinSyncSse_Unknown())),
+          measure: MeasureTwinSyncSse.speed(SpeedTwinSyncSse_Unknown()),
+        ),
         null,
       );
-      final skipMinified =
-          releaseMode ? skipWeb('Minified names cannot be compared.') : null;
-      expect((SpeedTwinSyncSse_Unknown).toString(), 'SpeedTwinSyncSse_Unknown',
-          skip: skipMinified);
-      expect((SpeedTwinSyncSse_GPS).toString(), 'SpeedTwinSyncSse_GPS',
-          skip: skipMinified);
-      expect((DistanceTwinSyncSse_Unknown).toString(),
-          'DistanceTwinSyncSse_Unknown',
-          skip: skipMinified);
-      expect((DistanceTwinSyncSse_Map).toString(), 'DistanceTwinSyncSse_Map',
-          skip: skipMinified);
+      final skipMinified = releaseMode
+          ? skipWeb('Minified names cannot be compared.')
+          : null;
+      expect(
+        (SpeedTwinSyncSse_Unknown).toString(),
+        'SpeedTwinSyncSse_Unknown',
+        skip: skipMinified,
+      );
+      expect(
+        (SpeedTwinSyncSse_GPS).toString(),
+        'SpeedTwinSyncSse_GPS',
+        skip: skipMinified,
+      );
+      expect(
+        (DistanceTwinSyncSse_Unknown).toString(),
+        'DistanceTwinSyncSse_Unknown',
+        skip: skipMinified,
+      );
+      expect(
+        (DistanceTwinSyncSse_Map).toString(),
+        'DistanceTwinSyncSse_Map',
+        skip: skipMinified,
+      );
     });
   });
 }

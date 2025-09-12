@@ -17,20 +17,20 @@ UuidValue handleUuidTwinSyncSse({required UuidValue id}) => RustLib.instance.api
 List<UuidValue> handleUuidsTwinSyncSse({required List<UuidValue> ids}) =>
     RustLib.instance.api
         .crateApiPseudoManualUuidTypeTwinSyncSseHandleUuidsTwinSyncSse(
-            ids: ids);
+          ids: ids,
+        );
 
-FeatureUuidTwinSyncSse handleNestedUuidsTwinSyncSse(
-        {required FeatureUuidTwinSyncSse ids}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualUuidTypeTwinSyncSseHandleNestedUuidsTwinSyncSse(
-            ids: ids);
+FeatureUuidTwinSyncSse handleNestedUuidsTwinSyncSse({
+  required FeatureUuidTwinSyncSse ids,
+}) => RustLib.instance.api
+    .crateApiPseudoManualUuidTypeTwinSyncSseHandleNestedUuidsTwinSyncSse(
+      ids: ids,
+    );
 
 class FeatureUuidTwinSyncSse {
   final UuidValue one;
 
-  const FeatureUuidTwinSyncSse({
-    required this.one,
-  });
+  const FeatureUuidTwinSyncSse({required this.one});
 
   @override
   int get hashCode => one.hashCode;

@@ -16,47 +16,53 @@ U8Array5 getArrayTwinSync() =>
 PointTwinSyncArray2 getComplexArrayTwinSync() => RustLib.instance.api
     .crateApiPseudoManualArrayTwinSyncGetComplexArrayTwinSync();
 
-MessageIdTwinSync newMsgidTwinSync({required U8Array32 id}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualArrayTwinSyncNewMsgidTwinSync(id: id);
+MessageIdTwinSync newMsgidTwinSync({required U8Array32 id}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualArrayTwinSyncNewMsgidTwinSync(id: id);
 
-U8Array32 useMsgidTwinSync({required MessageIdTwinSync id}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualArrayTwinSyncUseMsgidTwinSync(id: id);
+U8Array32 useMsgidTwinSync({required MessageIdTwinSync id}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualArrayTwinSyncUseMsgidTwinSync(id: id);
 
-BlobTwinSync boxedBlobTwinSync({required U8Array1600 blob}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualArrayTwinSyncBoxedBlobTwinSync(blob: blob);
+BlobTwinSync boxedBlobTwinSync({required U8Array1600 blob}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualArrayTwinSyncBoxedBlobTwinSync(blob: blob);
 
-U8Array1600 useBoxedBlobTwinSync({required BlobTwinSync blob}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualArrayTwinSyncUseBoxedBlobTwinSync(blob: blob);
+U8Array1600 useBoxedBlobTwinSync({required BlobTwinSync blob}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualArrayTwinSyncUseBoxedBlobTwinSync(blob: blob);
 
-FeedIdTwinSync returnBoxedFeedIdTwinSync({required U8Array8 id}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualArrayTwinSyncReturnBoxedFeedIdTwinSync(id: id);
+FeedIdTwinSync returnBoxedFeedIdTwinSync({required U8Array8 id}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualArrayTwinSyncReturnBoxedFeedIdTwinSync(id: id);
 
-U8Array8 returnBoxedRawFeedIdTwinSync({required FeedIdTwinSync id}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualArrayTwinSyncReturnBoxedRawFeedIdTwinSync(id: id);
+U8Array8 returnBoxedRawFeedIdTwinSync({required FeedIdTwinSync id}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualArrayTwinSyncReturnBoxedRawFeedIdTwinSync(id: id);
 
-TestIdTwinSync funcTestIdTwinSync({required TestIdTwinSync id}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualArrayTwinSyncFuncTestIdTwinSync(id: id);
+TestIdTwinSync funcTestIdTwinSync({required TestIdTwinSync id}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualArrayTwinSyncFuncTestIdTwinSync(id: id);
 
 double lastNumberTwinSync({required F64Array16 array}) => RustLib.instance.api
     .crateApiPseudoManualArrayTwinSyncLastNumberTwinSync(array: array);
 
 TestIdTwinSyncArray2 nestedIdTwinSync({required TestIdTwinSyncArray4 id}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualArrayTwinSyncNestedIdTwinSync(id: id);
+    RustLib.instance.api.crateApiPseudoManualArrayTwinSyncNestedIdTwinSync(
+      id: id,
+    );
 
 class BlobTwinSync {
   final U8Array1600 field0;
 
-  const BlobTwinSync({
-    required this.field0,
-  });
+  const BlobTwinSync({required this.field0});
 
   @override
   int get hashCode => field0.hashCode;
@@ -72,9 +78,7 @@ class BlobTwinSync {
 class FeedIdTwinSync {
   final U8Array8 field0;
 
-  const FeedIdTwinSync({
-    required this.field0,
-  });
+  const FeedIdTwinSync({required this.field0});
 
   @override
   int get hashCode => field0.hashCode;
@@ -90,9 +94,7 @@ class FeedIdTwinSync {
 class MessageIdTwinSync {
   final U8Array32 field0;
 
-  const MessageIdTwinSync({
-    required this.field0,
-  });
+  const MessageIdTwinSync({required this.field0});
 
   @override
   int get hashCode => field0.hashCode;
@@ -109,10 +111,7 @@ class PointTwinSync {
   final double x;
   final double y;
 
-  const PointTwinSync({
-    required this.x,
-    required this.y,
-  });
+  const PointTwinSync({required this.x, required this.y});
 
   @override
   int get hashCode => x.hashCode ^ y.hashCode;
@@ -134,19 +133,17 @@ class PointTwinSyncArray2 extends NonGrowableListView<PointTwinSync> {
   final List<PointTwinSync> _inner;
 
   PointTwinSyncArray2(this._inner)
-      : assert(_inner.length == arraySize),
-        super(_inner);
+    : assert(_inner.length == arraySize),
+      super(_inner);
 
   PointTwinSyncArray2.init(PointTwinSync fill)
-      : this(List<PointTwinSync>.filled(arraySize, fill));
+    : this(List<PointTwinSync>.filled(arraySize, fill));
 }
 
 class TestIdTwinSync {
   final I32Array2 field0;
 
-  const TestIdTwinSync({
-    required this.field0,
-  });
+  const TestIdTwinSync({required this.field0});
 
   @override
   int get hashCode => field0.hashCode;
@@ -167,11 +164,11 @@ class TestIdTwinSyncArray2 extends NonGrowableListView<TestIdTwinSync> {
   final List<TestIdTwinSync> _inner;
 
   TestIdTwinSyncArray2(this._inner)
-      : assert(_inner.length == arraySize),
-        super(_inner);
+    : assert(_inner.length == arraySize),
+      super(_inner);
 
   TestIdTwinSyncArray2.init(TestIdTwinSync fill)
-      : this(List<TestIdTwinSync>.filled(arraySize, fill));
+    : this(List<TestIdTwinSync>.filled(arraySize, fill));
 }
 
 class TestIdTwinSyncArray4 extends NonGrowableListView<TestIdTwinSync> {
@@ -182,9 +179,9 @@ class TestIdTwinSyncArray4 extends NonGrowableListView<TestIdTwinSync> {
   final List<TestIdTwinSync> _inner;
 
   TestIdTwinSyncArray4(this._inner)
-      : assert(_inner.length == arraySize),
-        super(_inner);
+    : assert(_inner.length == arraySize),
+      super(_inner);
 
   TestIdTwinSyncArray4.init(TestIdTwinSync fill)
-      : this(List<TestIdTwinSync>.filled(arraySize, fill));
+    : this(List<TestIdTwinSync>.filled(arraySize, fill));
 }

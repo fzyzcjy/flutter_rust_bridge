@@ -25,10 +25,10 @@ Future<void> sameFunctionNameInDifferentFiles() => RustLib.instance.api
 Future<void> renamedFunction() => RustLib.instance.api
     .crateApiMiscNoTwinExampleAFunctionWithCustomNameTwinNormal();
 
-Future<void> functionWithArgTypeNameOverride(
-        {required BoxAnyMyDartTypeRename a}) =>
-    RustLib.instance.api
-        .crateApiMiscNoTwinExampleAFunctionWithArgTypeNameOverride(a: a);
+Future<void> functionWithArgTypeNameOverride({
+  required BoxAnyMyDartTypeRename a,
+}) => RustLib.instance.api
+    .crateApiMiscNoTwinExampleAFunctionWithArgTypeNameOverride(a: a);
 
 Future<String> featureGatedFunction() =>
     RustLib.instance.api.crateApiMiscNoTwinExampleAFeatureGatedFunction();
@@ -83,8 +83,8 @@ abstract class ItemContainerSolutionOneTwinNormal
 
   set name(String name);
 
-  static Future<ItemContainerSolutionOneTwinNormal> createTwinNormal() => RustLib
-      .instance.api
+  static Future<ItemContainerSolutionOneTwinNormal>
+  createTwinNormal() => RustLib.instance.api
       .crateApiMiscNoTwinExampleAItemContainerSolutionOneTwinNormalCreateTwinNormal();
 
   Future<Int32List> getItemContentsTwinNormal();
@@ -92,11 +92,12 @@ abstract class ItemContainerSolutionOneTwinNormal
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyStructWithTryFromTwinNormal>>
 abstract class MyStructWithTryFromTwinNormal implements RustOpaqueInterface {
-  static Future<MyStructWithTryFromTwinNormal> tryFrom(
-          {required String value}) =>
-      RustLib.instance.api
-          .crateApiMiscNoTwinExampleAMyStructWithTryFromTwinNormalTryFrom(
-              value: value);
+  static Future<MyStructWithTryFromTwinNormal> tryFrom({
+    required String value,
+  }) => RustLib.instance.api
+      .crateApiMiscNoTwinExampleAMyStructWithTryFromTwinNormalTryFrom(
+        value: value,
+      );
 
   Future<String> valueTwinNormal();
 }
@@ -127,9 +128,9 @@ abstract class StructWithImplBlockInMultiFile implements RustOpaqueInterface {
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithRustAutoOpaqueFieldWithManyDeriveInner>>
 abstract class StructWithRustAutoOpaqueFieldWithManyDeriveInner
     implements RustOpaqueInterface {
-  static Future<StructWithRustAutoOpaqueFieldWithManyDeriveInner> default_() =>
-      RustLib.instance.api
-          .crateApiMiscNoTwinExampleAStructWithRustAutoOpaqueFieldWithManyDeriveInnerDefault();
+  static Future<StructWithRustAutoOpaqueFieldWithManyDeriveInner>
+  default_() => RustLib.instance.api
+      .crateApiMiscNoTwinExampleAStructWithRustAutoOpaqueFieldWithManyDeriveInnerDefault();
 }
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructWithSimpleSetterTwinNormal>>
@@ -185,9 +186,7 @@ class F32Array3 extends NonGrowableListView<double> {
   Float32List get inner => _inner;
   final Float32List _inner;
 
-  F32Array3(this._inner)
-      : assert(_inner.length == arraySize),
-        super(_inner);
+  F32Array3(this._inner) : assert(_inner.length == arraySize), super(_inner);
 
   F32Array3.init() : this(Float32List(arraySize));
 }
@@ -196,17 +195,14 @@ class ItemContainerSolutionTwoTwinNormal {
   String name;
   final List<OpaqueItemTwinNormal> items;
 
-  ItemContainerSolutionTwoTwinNormal({
-    required this.name,
-    required this.items,
-  });
+  ItemContainerSolutionTwoTwinNormal({required this.name, required this.items});
 
-  static Future<ItemContainerSolutionTwoTwinNormal> createTwinNormal() => RustLib
-      .instance.api
+  static Future<ItemContainerSolutionTwoTwinNormal>
+  createTwinNormal() => RustLib.instance.api
       .crateApiMiscNoTwinExampleAItemContainerSolutionTwoTwinNormalCreateTwinNormal();
 
   Future<Int32List> getItemContentsTwinNormal() => RustLib.instance.api
-          .crateApiMiscNoTwinExampleAItemContainerSolutionTwoTwinNormalGetItemContentsTwinNormal(
+      .crateApiMiscNoTwinExampleAItemContainerSolutionTwoTwinNormalGetItemContentsTwinNormal(
         that: this,
       );
 
@@ -227,19 +223,17 @@ sealed class MyEnumWithJsonSerializableTwinNormal
     with _$MyEnumWithJsonSerializableTwinNormal {
   const MyEnumWithJsonSerializableTwinNormal._();
 
-  const factory MyEnumWithJsonSerializableTwinNormal.apple(
-    String field0,
-  ) = MyEnumWithJsonSerializableTwinNormal_Apple;
-  const factory MyEnumWithJsonSerializableTwinNormal.orange({
-    required int a,
-  }) = MyEnumWithJsonSerializableTwinNormal_Orange;
+  const factory MyEnumWithJsonSerializableTwinNormal.apple(String field0) =
+      MyEnumWithJsonSerializableTwinNormal_Apple;
+  const factory MyEnumWithJsonSerializableTwinNormal.orange({required int a}) =
+      MyEnumWithJsonSerializableTwinNormal_Orange;
 
   factory MyEnumWithJsonSerializableTwinNormal.fromJson(
-          Map<String, dynamic> json) =>
-      _$MyEnumWithJsonSerializableTwinNormalFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$MyEnumWithJsonSerializableTwinNormalFromJson(json);
 
   Future<void> f() => RustLib.instance.api
-          .crateApiMiscNoTwinExampleAMyEnumWithJsonSerializableTwinNormalF(
+      .crateApiMiscNoTwinExampleAMyEnumWithJsonSerializableTwinNormalF(
         that: this,
       );
 }
@@ -249,9 +243,8 @@ sealed class MyEnumWithoutFnWithUnignoreTwinNormal
     with _$MyEnumWithoutFnWithUnignoreTwinNormal {
   const MyEnumWithoutFnWithUnignoreTwinNormal._();
 
-  const factory MyEnumWithoutFnWithUnignoreTwinNormal.one(
-    String field0,
-  ) = MyEnumWithoutFnWithUnignoreTwinNormal_One;
+  const factory MyEnumWithoutFnWithUnignoreTwinNormal.one(String field0) =
+      MyEnumWithoutFnWithUnignoreTwinNormal_One;
 }
 
 @freezed
@@ -262,22 +255,20 @@ sealed class MyStructWithJsonSerializableTwinNormal
     required String fieldOne,
   }) = _MyStructWithJsonSerializableTwinNormal;
   Future<void> f() => RustLib.instance.api
-          .crateApiMiscNoTwinExampleAMyStructWithJsonSerializableTwinNormalF(
+      .crateApiMiscNoTwinExampleAMyStructWithJsonSerializableTwinNormalF(
         that: this,
       );
 
   factory MyStructWithJsonSerializableTwinNormal.fromJson(
-          Map<String, dynamic> json) =>
-      _$MyStructWithJsonSerializableTwinNormalFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$MyStructWithJsonSerializableTwinNormalFromJson(json);
 }
 
 class MyStructWithSync {
   const MyStructWithSync();
 
-  Future<void> sync() =>
-      RustLib.instance.api.crateApiMiscNoTwinExampleAMyStructWithSyncSync(
-        that: this,
-      );
+  Future<void> sync() => RustLib.instance.api
+      .crateApiMiscNoTwinExampleAMyStructWithSyncSync(that: this);
 
   @override
   int get hashCode => 0;
@@ -291,9 +282,7 @@ class MyStructWithSync {
 class MyStructWithoutFnWithUnignoreTwinNormal {
   final String a;
 
-  const MyStructWithoutFnWithUnignoreTwinNormal({
-    required this.a,
-  });
+  const MyStructWithoutFnWithUnignoreTwinNormal({required this.a});
 
   @override
   int get hashCode => a.hashCode;
@@ -314,20 +303,19 @@ sealed class MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
   }) = _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal;
 
   factory MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal.fromJson(
-          Map<String, dynamic> json) =>
-      _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalFromJson(
-          json);
+    Map<String, dynamic> json,
+  ) => _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalFromJson(
+    json,
+  );
 }
 
 class StructWithCustomNameMethodTwinNormal {
   final int field0;
 
-  const StructWithCustomNameMethodTwinNormal({
-    required this.field0,
-  });
+  const StructWithCustomNameMethodTwinNormal({required this.field0});
 
   void renamedMethod() => RustLib.instance.api
-          .crateApiMiscNoTwinExampleAStructWithCustomNameMethodTwinNormalMethodWithCustomNameTwinNormal(
+      .crateApiMiscNoTwinExampleAStructWithCustomNameMethodTwinNormalMethodWithCustomNameTwinNormal(
         that: this,
       );
 
@@ -345,11 +333,10 @@ class StructWithCustomNameMethodTwinNormal {
 class StructWithImplBlockInAnotherFile {
   const StructWithImplBlockInAnotherFile();
 
-  static Future<void> f(
-          {required StructWithImplBlockInAnotherFileDependency arg}) =>
-      RustLib.instance.api
-          .crateApiMiscNoTwinExampleAStructWithImplBlockInAnotherFileF(
-              arg: arg);
+  static Future<void> f({
+    required StructWithImplBlockInAnotherFileDependency arg,
+  }) => RustLib.instance.api
+      .crateApiMiscNoTwinExampleAStructWithImplBlockInAnotherFileF(arg: arg);
 
   @override
   int get hashCode => 0;
@@ -364,9 +351,7 @@ class StructWithImplBlockInAnotherFile {
 class StructWithRawNameField {
   final String type;
 
-  const StructWithRawNameField({
-    required this.type,
-  });
+  const StructWithRawNameField({required this.type});
 
   static Future<void> dummyFunction() => RustLib.instance.api
       .crateApiMiscNoTwinExampleAStructWithRawNameFieldDummyFunction();
@@ -385,16 +370,14 @@ class StructWithRawNameField {
 class StructWithRustAutoOpaqueFieldWithManyDerive {
   final StructWithRustAutoOpaqueFieldWithManyDeriveInner content;
 
-  const StructWithRustAutoOpaqueFieldWithManyDerive({
-    required this.content,
-  });
+  const StructWithRustAutoOpaqueFieldWithManyDerive({required this.content});
 
-  static Future<StructWithRustAutoOpaqueFieldWithManyDerive> default_() => RustLib
-      .instance.api
+  static Future<StructWithRustAutoOpaqueFieldWithManyDerive>
+  default_() => RustLib.instance.api
       .crateApiMiscNoTwinExampleAStructWithRustAutoOpaqueFieldWithManyDeriveDefault();
 
   Future<void> f() => RustLib.instance.api
-          .crateApiMiscNoTwinExampleAStructWithRustAutoOpaqueFieldWithManyDeriveF(
+      .crateApiMiscNoTwinExampleAStructWithRustAutoOpaqueFieldWithManyDeriveF(
         that: this,
       );
 
@@ -412,12 +395,10 @@ class StructWithRustAutoOpaqueFieldWithManyDerive {
 class StructWithRustAutoOpaqueWithNonCloneData {
   final NonCloneDataRaw content;
 
-  const StructWithRustAutoOpaqueWithNonCloneData({
-    required this.content,
-  });
+  const StructWithRustAutoOpaqueWithNonCloneData({required this.content});
 
   Future<void> f() => RustLib.instance.api
-          .crateApiMiscNoTwinExampleAStructWithRustAutoOpaqueWithNonCloneDataF(
+      .crateApiMiscNoTwinExampleAStructWithRustAutoOpaqueWithNonCloneDataF(
         that: this,
       );
 

@@ -26,25 +26,27 @@ class _MandelbrotPageBodyState extends State<MandelbrotPageBody> {
 
   void start() {
     stop();
-    runner =
-        SimpleRunner(minDuration: const Duration(milliseconds: 33), () async {
-      final watch = Stopwatch()..start();
-      final effectiveSize = (size.round() ~/ numThreads) * numThreads;
-      final receivedImage = await drawMandelbrot(
-        imageSize: Size(width: effectiveSize, height: effectiveSize),
-        zoomPoint: examplePoint,
-        scale: generateScale(),
-        numThreads: numThreads,
-      );
-      watch.stop();
+    runner = SimpleRunner(
+      minDuration: const Duration(milliseconds: 33),
+      () async {
+        final watch = Stopwatch()..start();
+        final effectiveSize = (size.round() ~/ numThreads) * numThreads;
+        final receivedImage = await drawMandelbrot(
+          imageSize: Size(width: effectiveSize, height: effectiveSize),
+          zoomPoint: examplePoint,
+          scale: generateScale(),
+          numThreads: numThreads,
+        );
+        watch.stop();
 
-      if (mounted) {
-        setState(() {
-          image = receivedImage;
-          computeTime = watch.elapsed;
-        });
-      }
-    });
+        if (mounted) {
+          setState(() {
+            image = receivedImage;
+            computeTime = watch.elapsed;
+          });
+        }
+      },
+    );
   }
 
   void stop() {

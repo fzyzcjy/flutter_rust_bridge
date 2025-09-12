@@ -15,18 +15,21 @@ void funcReturnUnitTwinSyncSse() => RustLib.instance.api
     .crateApiPseudoManualMiscTypeTwinSyncSseFuncReturnUnitTwinSyncSse();
 
 List<MySize> handleListOfStructTwinSyncSse({required List<MySize> l}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualMiscTypeTwinSyncSseHandleListOfStructTwinSyncSse(l: l);
 
 List<String> handleStringListTwinSyncSse({required List<String> names}) =>
     RustLib.instance.api
         .crateApiPseudoManualMiscTypeTwinSyncSseHandleStringListTwinSyncSse(
-            names: names);
+          names: names,
+        );
 
 EmptyTwinSyncSse emptyStructTwinSyncSse({required EmptyTwinSyncSse empty}) =>
     RustLib.instance.api
         .crateApiPseudoManualMiscTypeTwinSyncSseEmptyStructTwinSyncSse(
-            empty: empty);
+          empty: empty,
+        );
 
 class EmptyTwinSyncSse {
   const EmptyTwinSyncSse();

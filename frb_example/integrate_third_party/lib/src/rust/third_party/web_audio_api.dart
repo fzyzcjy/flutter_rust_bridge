@@ -31,10 +31,13 @@ abstract class AudioBuffer implements RustOpaqueInterface {
   /// - the given number of channels defined by `samples.len()`is outside the
   ///   [1, 32] range, 32 being defined by the MAX_CHANNELS constant.
   /// - any of its items have different lengths
-  static Future<AudioBuffer> from(
-          {required List<Float32List> samples, required double sampleRate}) =>
-      RustLib.instance.api
-          .webAudioApiAudioBufferFrom(samples: samples, sampleRate: sampleRate);
+  static Future<AudioBuffer> from({
+    required List<Float32List> samples,
+    required double sampleRate,
+  }) => RustLib.instance.api.webAudioApiAudioBufferFrom(
+    samples: samples,
+    sampleRate: sampleRate,
+  );
 
   /// Return a read-only copy of the underlying data of the channel
   ///
@@ -64,9 +67,9 @@ abstract class AudioBuffer implements RustOpaqueInterface {
   /// - the given sample rate is zero
   /// - the given number of channels is outside the [1, 32] range,
   /// 32 being defined by the MAX_CHANNELS constant.
-  static Future<AudioBuffer> newInstance(
-          {required AudioBufferOptions options}) =>
-      RustLib.instance.api.webAudioApiAudioBufferNew(options: options);
+  static Future<AudioBuffer> newInstance({
+    required AudioBufferOptions options,
+  }) => RustLib.instance.api.webAudioApiAudioBufferNew(options: options);
 
   /// Number of channels in this `AudioBuffer`
   Future<int> numberOfChannels();
@@ -157,8 +160,10 @@ abstract class AudioParam
   /// Will panic if:
   /// - `value` is zero
   /// - `end_time` is negative
-  Future<void> exponentialRampToValueAtTime(
-      {required double value, required double endTime});
+  Future<void> exponentialRampToValueAtTime({
+    required double value,
+    required double endTime,
+  });
 
   Future<void> connect({required AudioNode dest});
 
@@ -168,8 +173,10 @@ abstract class AudioParam
   /// # Panics
   ///
   /// Will panic if `end_time` is negative
-  Future<void> linearRampToValueAtTime(
-      {required double value, required double endTime});
+  Future<void> linearRampToValueAtTime({
+    required double value,
+    required double endTime,
+  });
 
   Future<double> maxValue();
 
@@ -188,8 +195,9 @@ abstract class AudioParam
   /// Some nodes have automation rate constraints and may panic when updating the value.
   Future<void> setAutomationRate({required AutomationRate value});
 
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
+  Future<void> setOnProcessorError({
+    required FutureOr<void> Function(String) callback,
+  });
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -199,10 +207,11 @@ abstract class AudioParam
   /// Will panic if:
   /// - `start_time` is negative
   /// - `time_constant` is negative
-  Future<void> setTargetAtTime(
-      {required double value,
-      required double startTime,
-      required double timeConstant});
+  Future<void> setTargetAtTime({
+    required double value,
+    required double startTime,
+    required double timeConstant,
+  });
 
   /// Set the value of the `AudioParam`.
   ///
@@ -215,8 +224,10 @@ abstract class AudioParam
   /// # Panics
   ///
   /// Will panic if `start_time` is negative
-  Future<void> setValueAtTime(
-      {required double value, required double startTime});
+  Future<void> setValueAtTime({
+    required double value,
+    required double startTime,
+  });
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -227,10 +238,11 @@ abstract class AudioParam
   /// - `value` length is less than 2
   /// - `start_time` is negative
   /// - `duration` is negative or equal to zero
-  Future<void> setValueCurveAtTime(
-      {required List<double> values,
-      required double startTime,
-      required double duration});
+  Future<void> setValueCurveAtTime({
+    required List<double> values,
+    required double startTime,
+    required double duration,
+  });
 
   /// Retrieve the current value of the `AudioParam`.
   double get value;
@@ -380,9 +392,7 @@ class AudioRenderCapacityOptions {
   /// An update interval (in seconds) for dispatching [`AudioRenderCapacityEvent`]s
   final double updateInterval;
 
-  const AudioRenderCapacityOptions({
-    required this.updateInterval,
-  });
+  const AudioRenderCapacityOptions({required this.updateInterval});
 
   static Future<AudioRenderCapacityOptions> default_() =>
       RustLib.instance.api.webAudioApiAudioRenderCapacityOptionsDefault();
@@ -406,7 +416,6 @@ enum AutomationRate {
   /// Control Rate - sampled at the time of the very first sample-frame,
   /// then used for the entire block
   k,
-  ;
 }
 
 /// Options for constructing a [`PeriodicWave`]

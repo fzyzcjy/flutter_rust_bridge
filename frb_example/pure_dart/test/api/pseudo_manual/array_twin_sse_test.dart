@@ -77,8 +77,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
     id2.field0[1] = 30;
     final id3 = TestIdTwinSse(field0: I32Array2.init());
     id3.field0[1] = 40;
-    final x =
-        await nestedIdTwinSse(id: TestIdTwinSseArray4([id0, id1, id2, id3]));
+    final x = await nestedIdTwinSse(
+      id: TestIdTwinSseArray4([id0, id1, id2, id3]),
+    );
     expect(x[0].field0[1], 10);
     expect(x[1].field0[1], 40);
   });

@@ -21,8 +21,9 @@ import 'protobuf_for_benchmark/protobuf_for_benchmark.pb.dart';
 
 const _kBinaryTreeNodeName = 'HelloWorld';
 
-List<MaybeAsyncBenchmarkBase> createBenchmarks(
-    {required ScoreEmitter emitter}) {
+List<MaybeAsyncBenchmarkBase> createBenchmarks({
+  required ScoreEmitter emitter,
+}) {
   return [
     PrimeNumber_Na_Sync_Benchmark(number: 90000049, emitter: emitter),
     PrimeNumber_Na_Sync_Benchmark(number: 9000000001, emitter: emitter),
@@ -110,11 +111,10 @@ List<MaybeAsyncBenchmarkBase> createBenchmarks(
 class PrimeNumber_Na_Sync_Benchmark extends EnhancedBenchmarkBase {
   final int number;
 
-  PrimeNumber_Na_Sync_Benchmark({
-    required this.number,
-    super.emitter,
-  }) : super(
-            '{"area":"PureDart","task":"PrimeNumber","approach":"Na","direction":null,"asynchronous":false,"arg":"$number","platform":"$currentPlatformName"}');
+  PrimeNumber_Na_Sync_Benchmark({required this.number, super.emitter})
+    : super(
+        '{"area":"PureDart","task":"PrimeNumber","approach":"Na","direction":null,"asynchronous":false,"arg":"$number","platform":"$currentPlatformName"}',
+      );
 
   @override
   void setup() {}
@@ -137,11 +137,10 @@ class PrimeNumber_Na_Sync_Benchmark extends EnhancedBenchmarkBase {
 class IntParse_Na_Sync_Benchmark extends EnhancedBenchmarkBase {
   final String number;
 
-  IntParse_Na_Sync_Benchmark({
-    required this.number,
-    super.emitter,
-  }) : super(
-            '{"area":"PureDart","task":"IntParse","approach":"Na","direction":null,"asynchronous":false,"arg":"$number","platform":"$currentPlatformName"}');
+  IntParse_Na_Sync_Benchmark({required this.number, super.emitter})
+    : super(
+        '{"area":"PureDart","task":"IntParse","approach":"Na","direction":null,"asynchronous":false,"arg":"$number","platform":"$currentPlatformName"}',
+      );
 
   @override
   void setup() {}
@@ -157,11 +156,10 @@ class Base64Encode_Na_Sync_Benchmark extends EnhancedBenchmarkBase {
   late final String setupData;
   final int len;
 
-  Base64Encode_Na_Sync_Benchmark({
-    required this.len,
-    super.emitter,
-  }) : super(
-            '{"area":"PureDart","task":"Base64Encode","approach":"Na","direction":null,"asynchronous":false,"arg":"$len","platform":"$currentPlatformName"}');
+  Base64Encode_Na_Sync_Benchmark({required this.len, super.emitter})
+    : super(
+        '{"area":"PureDart","task":"Base64Encode","approach":"Na","direction":null,"asynchronous":false,"arg":"$len","platform":"$currentPlatformName"}',
+      );
 
   @override
   void setup() {
@@ -176,10 +174,10 @@ class Base64Encode_Na_Sync_Benchmark extends EnhancedBenchmarkBase {
 }
 
 class VoidFunction_Frb_Async_Benchmark extends EnhancedAsyncBenchmarkBase {
-  VoidFunction_Frb_Async_Benchmark({
-    super.emitter,
-  }) : super(
-            '{"area":"PureDart","task":"VoidFunction","approach":"Frb","direction":null,"asynchronous":true,"platform":"$currentPlatformName"}');
+  VoidFunction_Frb_Async_Benchmark({super.emitter})
+    : super(
+        '{"area":"PureDart","task":"VoidFunction","approach":"Frb","direction":null,"asynchronous":true,"platform":"$currentPlatformName"}',
+      );
 
   @override
   Future<void> setup() async {}
@@ -191,10 +189,10 @@ class VoidFunction_Frb_Async_Benchmark extends EnhancedAsyncBenchmarkBase {
 }
 
 class VoidFunction_Frb_Sync_Benchmark extends EnhancedBenchmarkBase {
-  VoidFunction_Frb_Sync_Benchmark({
-    super.emitter,
-  }) : super(
-            '{"area":"PureDart","task":"VoidFunction","approach":"Frb","direction":null,"asynchronous":false,"platform":"$currentPlatformName"}');
+  VoidFunction_Frb_Sync_Benchmark({super.emitter})
+    : super(
+        '{"area":"PureDart","task":"VoidFunction","approach":"Frb","direction":null,"asynchronous":false,"platform":"$currentPlatformName"}',
+      );
 
   @override
   void setup() {}
@@ -206,10 +204,10 @@ class VoidFunction_Frb_Sync_Benchmark extends EnhancedBenchmarkBase {
 }
 
 class VoidFunction_FrbSse_Sync_Benchmark extends EnhancedBenchmarkBase {
-  VoidFunction_FrbSse_Sync_Benchmark({
-    super.emitter,
-  }) : super(
-            '{"area":"PureDart","task":"VoidFunction","approach":"FrbSse","direction":null,"asynchronous":false,"platform":"$currentPlatformName"}');
+  VoidFunction_FrbSse_Sync_Benchmark({super.emitter})
+    : super(
+        '{"area":"PureDart","task":"VoidFunction","approach":"FrbSse","direction":null,"asynchronous":false,"platform":"$currentPlatformName"}',
+      );
 
   @override
   void setup() {}
@@ -221,10 +219,10 @@ class VoidFunction_FrbSse_Sync_Benchmark extends EnhancedBenchmarkBase {
 }
 
 class VoidFunction_FrbCstSse_Sync_Benchmark extends EnhancedBenchmarkBase {
-  VoidFunction_FrbCstSse_Sync_Benchmark({
-    super.emitter,
-  }) : super(
-            '{"area":"PureDart","task":"VoidFunction","approach":"FrbCstSse","direction":null,"asynchronous":false,"platform":"$currentPlatformName"}');
+  VoidFunction_FrbCstSse_Sync_Benchmark({super.emitter})
+    : super(
+        '{"area":"PureDart","task":"VoidFunction","approach":"FrbCstSse","direction":null,"asynchronous":false,"platform":"$currentPlatformName"}',
+      );
 
   @override
   void setup() {}
@@ -236,10 +234,10 @@ class VoidFunction_FrbCstSse_Sync_Benchmark extends EnhancedBenchmarkBase {
 }
 
 class VoidFunction_Raw_Sync_Benchmark extends EnhancedBenchmarkBase {
-  VoidFunction_Raw_Sync_Benchmark({
-    super.emitter,
-  }) : super(
-            '{"area":"PureDart","task":"VoidFunction","approach":"Raw","direction":null,"asynchronous":false,"platform":"$currentPlatformName"}');
+  VoidFunction_Raw_Sync_Benchmark({super.emitter})
+    : super(
+        '{"area":"PureDart","task":"VoidFunction","approach":"Raw","direction":null,"asynchronous":false,"platform":"$currentPlatformName"}',
+      );
 
   @override
   void setup() {}
@@ -251,10 +249,10 @@ class VoidFunction_Raw_Sync_Benchmark extends EnhancedBenchmarkBase {
 }
 
 class VoidFunction_Raw_Async_Benchmark extends EnhancedAsyncBenchmarkBase {
-  VoidFunction_Raw_Async_Benchmark({
-    super.emitter,
-  }) : super(
-            '{"area":"PureDart","task":"VoidFunction","approach":"Raw","direction":null,"asynchronous":true,"platform":"$currentPlatformName"}');
+  VoidFunction_Raw_Async_Benchmark({super.emitter})
+    : super(
+        '{"area":"PureDart","task":"VoidFunction","approach":"Raw","direction":null,"asynchronous":true,"platform":"$currentPlatformName"}',
+      );
 
   @override
   Future<void> setup() async {}
@@ -263,8 +261,9 @@ class VoidFunction_Raw_Async_Benchmark extends EnhancedAsyncBenchmarkBase {
   Future<void> run() async {
     await Isolate.run(() async {
       // This library loading may not be optimal, just a rough test
-      final wire = RustLibWire.fromExternalLibrary(await loadExternalLibrary(
-          RustLib.kDefaultExternalLibraryLoaderConfig));
+      final wire = RustLibWire.fromExternalLibrary(
+        await loadExternalLibrary(RustLib.kDefaultExternalLibraryLoaderConfig),
+      );
       wire.benchmark_raw_void_sync();
     });
   }
@@ -274,11 +273,10 @@ class Bytes_Frb_Input_Async_Benchmark extends EnhancedAsyncBenchmarkBase {
   late final Uint8List setupData;
   final int len;
 
-  Bytes_Frb_Input_Async_Benchmark({
-    required this.len,
-    super.emitter,
-  }) : super(
-            '{"area":"PureDart","task":"Bytes","approach":"Frb","direction":"Input","asynchronous":true,"arg":"$len","platform":"$currentPlatformName"}');
+  Bytes_Frb_Input_Async_Benchmark({required this.len, super.emitter})
+    : super(
+        '{"area":"PureDart","task":"Bytes","approach":"Frb","direction":"Input","asynchronous":true,"arg":"$len","platform":"$currentPlatformName"}',
+      );
 
   @override
   Future<void> setup() async {
@@ -295,11 +293,10 @@ class Bytes_Frb_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
   late final Uint8List setupData;
   final int len;
 
-  Bytes_Frb_Input_Sync_Benchmark({
-    required this.len,
-    super.emitter,
-  }) : super(
-            '{"area":"PureDart","task":"Bytes","approach":"Frb","direction":"Input","asynchronous":false,"arg":"$len","platform":"$currentPlatformName"}');
+  Bytes_Frb_Input_Sync_Benchmark({required this.len, super.emitter})
+    : super(
+        '{"area":"PureDart","task":"Bytes","approach":"Frb","direction":"Input","asynchronous":false,"arg":"$len","platform":"$currentPlatformName"}',
+      );
 
   @override
   void setup() {
@@ -316,11 +313,10 @@ class Bytes_Raw_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
   late final Uint8List setupData;
   final int len;
 
-  Bytes_Raw_Input_Sync_Benchmark({
-    required this.len,
-    super.emitter,
-  }) : super(
-            '{"area":"PureDart","task":"Bytes","approach":"Raw","direction":"Input","asynchronous":false,"arg":"$len","platform":"$currentPlatformName"}');
+  Bytes_Raw_Input_Sync_Benchmark({required this.len, super.emitter})
+    : super(
+        '{"area":"PureDart","task":"Bytes","approach":"Raw","direction":"Input","asynchronous":false,"arg":"$len","platform":"$currentPlatformName"}',
+      );
 
   @override
   void setup() {
@@ -339,11 +335,10 @@ class Bytes_Raw_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
 class Bytes_Frb_Output_Async_Benchmark extends EnhancedAsyncBenchmarkBase {
   final int len;
 
-  Bytes_Frb_Output_Async_Benchmark({
-    required this.len,
-    super.emitter,
-  }) : super(
-            '{"area":"PureDart","task":"Bytes","approach":"Frb","direction":"Output","asynchronous":true,"arg":"$len","platform":"$currentPlatformName"}');
+  Bytes_Frb_Output_Async_Benchmark({required this.len, super.emitter})
+    : super(
+        '{"area":"PureDart","task":"Bytes","approach":"Frb","direction":"Output","asynchronous":true,"arg":"$len","platform":"$currentPlatformName"}',
+      );
 
   @override
   Future<void> setup() async {}
@@ -357,11 +352,10 @@ class Bytes_Frb_Output_Async_Benchmark extends EnhancedAsyncBenchmarkBase {
 class Bytes_Frb_Output_Sync_Benchmark extends EnhancedBenchmarkBase {
   final int len;
 
-  Bytes_Frb_Output_Sync_Benchmark({
-    required this.len,
-    super.emitter,
-  }) : super(
-            '{"area":"PureDart","task":"Bytes","approach":"Frb","direction":"Output","asynchronous":false,"arg":"$len","platform":"$currentPlatformName"}');
+  Bytes_Frb_Output_Sync_Benchmark({required this.len, super.emitter})
+    : super(
+        '{"area":"PureDart","task":"Bytes","approach":"Frb","direction":"Output","asynchronous":false,"arg":"$len","platform":"$currentPlatformName"}',
+      );
 
   @override
   void setup() {}
@@ -380,8 +374,9 @@ class Bytes_Raw_Output_Async_Benchmark extends EnhancedAsyncBenchmarkBase {
   var nextId = 1;
 
   Bytes_Raw_Output_Async_Benchmark({required this.len, super.emitter})
-      : super(
-            '{"area":"PureDart","task":"Bytes","approach":"Raw","direction":"Output","asynchronous":true,"arg":"$len","platform":"$currentPlatformName"}') {
+    : super(
+        '{"area":"PureDart","task":"Bytes","approach":"Raw","direction":"Output","asynchronous":true,"arg":"$len","platform":"$currentPlatformName"}',
+      ) {
     receivePort.handler = (dynamic response) {
       final bytes = response as Uint8List;
       final messageId = ByteData.view(bytes.buffer).getInt32(0, Endian.big);
@@ -413,11 +408,10 @@ class BinaryTree_Frb_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
   late final BenchmarkBinaryTreeTwinSync setupData;
   final int depth;
 
-  BinaryTree_Frb_Input_Sync_Benchmark({
-    required this.depth,
-    super.emitter,
-  }) : super(
-            '{"area":"PureDart","task":"BinaryTree","approach":"Frb","direction":"Input","asynchronous":false,"arg":"$depth","platform":"$currentPlatformName"}');
+  BinaryTree_Frb_Input_Sync_Benchmark({required this.depth, super.emitter})
+    : super(
+        '{"area":"PureDart","task":"BinaryTree","approach":"Frb","direction":"Input","asynchronous":false,"arg":"$depth","platform":"$currentPlatformName"}',
+      );
 
   @override
   void setup() {
@@ -448,11 +442,10 @@ class BinaryTree_Frb_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
 class BinaryTree_Frb_Output_Sync_Benchmark extends EnhancedBenchmarkBase {
   final int depth;
 
-  BinaryTree_Frb_Output_Sync_Benchmark({
-    required this.depth,
-    super.emitter,
-  }) : super(
-            '{"area":"PureDart","task":"BinaryTree","approach":"Frb","direction":"Output","asynchronous":false,"arg":"$depth","platform":"$currentPlatformName"}');
+  BinaryTree_Frb_Output_Sync_Benchmark({required this.depth, super.emitter})
+    : super(
+        '{"area":"PureDart","task":"BinaryTree","approach":"Frb","direction":"Output","asynchronous":false,"arg":"$depth","platform":"$currentPlatformName"}',
+      );
 
   @override
   void setup() {}
@@ -467,11 +460,10 @@ class BinaryTree_FrbSse_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
   late final BenchmarkBinaryTreeTwinSyncSse setupData;
   final int depth;
 
-  BinaryTree_FrbSse_Input_Sync_Benchmark({
-    required this.depth,
-    super.emitter,
-  }) : super(
-            '{"area":"PureDart","task":"BinaryTree","approach":"FrbSse","direction":"Input","asynchronous":false,"arg":"$depth","platform":"$currentPlatformName"}');
+  BinaryTree_FrbSse_Input_Sync_Benchmark({required this.depth, super.emitter})
+    : super(
+        '{"area":"PureDart","task":"BinaryTree","approach":"FrbSse","direction":"Input","asynchronous":false,"arg":"$depth","platform":"$currentPlatformName"}',
+      );
 
   @override
   void setup() {
@@ -502,11 +494,10 @@ class BinaryTree_FrbSse_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
 class BinaryTree_FrbSse_Output_Sync_Benchmark extends EnhancedBenchmarkBase {
   final int depth;
 
-  BinaryTree_FrbSse_Output_Sync_Benchmark({
-    required this.depth,
-    super.emitter,
-  }) : super(
-            '{"area":"PureDart","task":"BinaryTree","approach":"FrbSse","direction":"Output","asynchronous":false,"arg":"$depth","platform":"$currentPlatformName"}');
+  BinaryTree_FrbSse_Output_Sync_Benchmark({required this.depth, super.emitter})
+    : super(
+        '{"area":"PureDart","task":"BinaryTree","approach":"FrbSse","direction":"Output","asynchronous":false,"arg":"$depth","platform":"$currentPlatformName"}',
+      );
 
   @override
   void setup() {}
@@ -521,11 +512,10 @@ class BinaryTree_Protobuf_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
   late final BinaryTreeProtobuf setupData;
   final int depth;
 
-  BinaryTree_Protobuf_Input_Sync_Benchmark({
-    required this.depth,
-    super.emitter,
-  }) : super(
-            '{"area":"PureDart","task":"BinaryTree","approach":"Protobuf","direction":"Input","asynchronous":false,"arg":"$depth","platform":"$currentPlatformName"}');
+  BinaryTree_Protobuf_Input_Sync_Benchmark({required this.depth, super.emitter})
+    : super(
+        '{"area":"PureDart","task":"BinaryTree","approach":"Protobuf","direction":"Input","asynchronous":false,"arg":"$depth","platform":"$currentPlatformName"}',
+      );
 
   @override
   void setup() {
@@ -556,11 +546,10 @@ class BinaryTree_Protobuf_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
 class BinaryTree_Protobuf_Output_Sync_Benchmark extends EnhancedBenchmarkBase {
   final int depth;
 
-  BinaryTree_Protobuf_Output_Sync_Benchmark({
-    required this.depth,
-    super.emitter,
-  }) : super(
-            '{"area":"PureDart","task":"BinaryTree","approach":"Protobuf","direction":"Output","asynchronous":false,"arg":"$depth","platform":"$currentPlatformName"}');
+  BinaryTree_Protobuf_Output_Sync_Benchmark({required this.depth, super.emitter})
+    : super(
+        '{"area":"PureDart","task":"BinaryTree","approach":"Protobuf","direction":"Output","asynchronous":false,"arg":"$depth","platform":"$currentPlatformName"}',
+      );
 
   @override
   void setup() {}
@@ -577,11 +566,10 @@ class BinaryTree_Json_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
   late final BenchmarkBinaryTreeTwinSync setupData;
   final int depth;
 
-  BinaryTree_Json_Input_Sync_Benchmark({
-    required this.depth,
-    super.emitter,
-  }) : super(
-            '{"area":"PureDart","task":"BinaryTree","approach":"Json","direction":"Input","asynchronous":false,"arg":"$depth","platform":"$currentPlatformName"}');
+  BinaryTree_Json_Input_Sync_Benchmark({required this.depth, super.emitter})
+    : super(
+        '{"area":"PureDart","task":"BinaryTree","approach":"Json","direction":"Input","asynchronous":false,"arg":"$depth","platform":"$currentPlatformName"}',
+      );
 
   @override
   void setup() {
@@ -591,25 +579,25 @@ class BinaryTree_Json_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
   @override
   void run() {
     benchmarkBinaryTreeInputJsonTwinSync(
-        raw: jsonEncode(setupData, toEncodable: _toJson));
+      raw: jsonEncode(setupData, toEncodable: _toJson),
+    );
   }
 
   // Normally use `json_serializable`, but we only use for benchmark so manually write
   static Map<String, dynamic> _toJson(dynamic tree) => {
-        'name': tree.name,
-        'left': tree.left,
-        'right': tree.right,
-      };
+    'name': tree.name,
+    'left': tree.left,
+    'right': tree.right,
+  };
 }
 
 class BinaryTree_Json_Output_Sync_Benchmark extends EnhancedBenchmarkBase {
   final int depth;
 
-  BinaryTree_Json_Output_Sync_Benchmark({
-    required this.depth,
-    super.emitter,
-  }) : super(
-            '{"area":"PureDart","task":"BinaryTree","approach":"Json","direction":"Output","asynchronous":false,"arg":"$depth","platform":"$currentPlatformName"}');
+  BinaryTree_Json_Output_Sync_Benchmark({required this.depth, super.emitter})
+    : super(
+        '{"area":"PureDart","task":"BinaryTree","approach":"Json","direction":"Output","asynchronous":false,"arg":"$depth","platform":"$currentPlatformName"}',
+      );
 
   @override
   void setup() {}
@@ -628,11 +616,10 @@ class Blob_Frb_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
   late final BenchmarkBlobTwinSync setupData;
   final int len;
 
-  Blob_Frb_Input_Sync_Benchmark({
-    required this.len,
-    super.emitter,
-  }) : super(
-            '{"area":"PureDart","task":"Blob","approach":"Frb","direction":"Input","asynchronous":false,"arg":"$len","platform":"$currentPlatformName"}');
+  Blob_Frb_Input_Sync_Benchmark({required this.len, super.emitter})
+    : super(
+        '{"area":"PureDart","task":"Blob","approach":"Frb","direction":"Input","asynchronous":false,"arg":"$len","platform":"$currentPlatformName"}',
+      );
 
   @override
   void setup() {
@@ -652,11 +639,10 @@ class Blob_Frb_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
 class Blob_Frb_Output_Sync_Benchmark extends EnhancedBenchmarkBase {
   final int len;
 
-  Blob_Frb_Output_Sync_Benchmark({
-    required this.len,
-    super.emitter,
-  }) : super(
-            '{"area":"PureDart","task":"Blob","approach":"Frb","direction":"Output","asynchronous":false,"arg":"$len","platform":"$currentPlatformName"}');
+  Blob_Frb_Output_Sync_Benchmark({required this.len, super.emitter})
+    : super(
+        '{"area":"PureDart","task":"Blob","approach":"Frb","direction":"Output","asynchronous":false,"arg":"$len","platform":"$currentPlatformName"}',
+      );
 
   @override
   void setup() {}
@@ -671,11 +657,10 @@ class Blob_FrbSse_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
   late final BenchmarkBlobTwinSyncSse setupData;
   final int len;
 
-  Blob_FrbSse_Input_Sync_Benchmark({
-    required this.len,
-    super.emitter,
-  }) : super(
-            '{"area":"PureDart","task":"Blob","approach":"FrbSse","direction":"Input","asynchronous":false,"arg":"$len","platform":"$currentPlatformName"}');
+  Blob_FrbSse_Input_Sync_Benchmark({required this.len, super.emitter})
+    : super(
+        '{"area":"PureDart","task":"Blob","approach":"FrbSse","direction":"Input","asynchronous":false,"arg":"$len","platform":"$currentPlatformName"}',
+      );
 
   @override
   void setup() {
@@ -695,11 +680,10 @@ class Blob_FrbSse_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
 class Blob_FrbSse_Output_Sync_Benchmark extends EnhancedBenchmarkBase {
   final int len;
 
-  Blob_FrbSse_Output_Sync_Benchmark({
-    required this.len,
-    super.emitter,
-  }) : super(
-            '{"area":"PureDart","task":"Blob","approach":"FrbSse","direction":"Output","asynchronous":false,"arg":"$len","platform":"$currentPlatformName"}');
+  Blob_FrbSse_Output_Sync_Benchmark({required this.len, super.emitter})
+    : super(
+        '{"area":"PureDart","task":"Blob","approach":"FrbSse","direction":"Output","asynchronous":false,"arg":"$len","platform":"$currentPlatformName"}',
+      );
 
   @override
   void setup() {}
@@ -714,11 +698,10 @@ class Blob_Protobuf_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
   late final BlobProtobuf setupData;
   final int len;
 
-  Blob_Protobuf_Input_Sync_Benchmark({
-    required this.len,
-    super.emitter,
-  }) : super(
-            '{"area":"PureDart","task":"Blob","approach":"Protobuf","direction":"Input","asynchronous":false,"arg":"$len","platform":"$currentPlatformName"}');
+  Blob_Protobuf_Input_Sync_Benchmark({required this.len, super.emitter})
+    : super(
+        '{"area":"PureDart","task":"Blob","approach":"Protobuf","direction":"Input","asynchronous":false,"arg":"$len","platform":"$currentPlatformName"}',
+      );
 
   @override
   void setup() {
@@ -738,11 +721,10 @@ class Blob_Protobuf_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
 class Blob_Protobuf_Output_Sync_Benchmark extends EnhancedBenchmarkBase {
   final int len;
 
-  Blob_Protobuf_Output_Sync_Benchmark({
-    required this.len,
-    super.emitter,
-  }) : super(
-            '{"area":"PureDart","task":"Blob","approach":"Protobuf","direction":"Output","asynchronous":false,"arg":"$len","platform":"$currentPlatformName"}');
+  Blob_Protobuf_Output_Sync_Benchmark({required this.len, super.emitter})
+    : super(
+        '{"area":"PureDart","task":"Blob","approach":"Protobuf","direction":"Output","asynchronous":false,"arg":"$len","platform":"$currentPlatformName"}',
+      );
 
   @override
   void setup() {}
@@ -759,11 +741,10 @@ class Blob_Json_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
   late final BenchmarkBlobTwinSyncSse setupData;
   final int len;
 
-  Blob_Json_Input_Sync_Benchmark({
-    required this.len,
-    super.emitter,
-  }) : super(
-            '{"area":"PureDart","task":"Blob","approach":"Json","direction":"Input","asynchronous":false,"arg":"$len","platform":"$currentPlatformName"}');
+  Blob_Json_Input_Sync_Benchmark({required this.len, super.emitter})
+    : super(
+        '{"area":"PureDart","task":"Blob","approach":"Json","direction":"Input","asynchronous":false,"arg":"$len","platform":"$currentPlatformName"}',
+      );
 
   @override
   void setup() {
@@ -777,25 +758,25 @@ class Blob_Json_Input_Sync_Benchmark extends EnhancedBenchmarkBase {
   @override
   void run() {
     benchmarkBlobInputJsonTwinSync(
-        raw: jsonEncode(setupData, toEncodable: _toJson));
+      raw: jsonEncode(setupData, toEncodable: _toJson),
+    );
   }
 
   // Normally use `json_serializable`, but we only use for benchmark so manually write
   static Map<String, dynamic> _toJson(dynamic blob) => {
-        'first': blob.first,
-        'second': blob.second,
-        'third': blob.third,
-      };
+    'first': blob.first,
+    'second': blob.second,
+    'third': blob.third,
+  };
 }
 
 class Blob_Json_Output_Sync_Benchmark extends EnhancedBenchmarkBase {
   final int len;
 
-  Blob_Json_Output_Sync_Benchmark({
-    required this.len,
-    super.emitter,
-  }) : super(
-            '{"area":"PureDart","task":"Blob","approach":"Json","direction":"Output","asynchronous":false,"arg":"$len","platform":"$currentPlatformName"}');
+  Blob_Json_Output_Sync_Benchmark({required this.len, super.emitter})
+    : super(
+        '{"area":"PureDart","task":"Blob","approach":"Json","direction":"Output","asynchronous":false,"arg":"$len","platform":"$currentPlatformName"}',
+      );
 
   @override
   void setup() {}
