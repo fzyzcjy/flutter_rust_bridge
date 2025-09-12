@@ -12,8 +12,11 @@ use std::path::{Path, PathBuf};
 
 /// represents a dart / flutter repository
 pub(crate) struct DartRepository {
+    /// Where the dart repository is located
     pub(crate) at: PathBuf,
     pub(crate) toolchain: DartToolchain,
+    /// If in a workspace, this is the root of the workspace.
+    /// Otherwise, None.
     pub(crate) workspace_root: Option<PathBuf>,
 }
 
@@ -93,14 +96,34 @@ impl DartRepository {
         manager: DartDependencyMode,
         requirement: &VersionReq,
     ) -> anyhow::Result<()> {
+        // The pubspec.lock modes are different than the pubspec.yaml dependency categories
+        let lock_manager: DartDependencyLockMode = manager.into();
+
+        // If we are a workspace, dev dependencies are commonly saved
+        // as transitive in the root pubspec.lock, since the root pubspec.yaml
+        // does not directly list the dependency, but the child package does.
+        // So we need to check for both direct dev and transitive if we are a
+        // workspace.
+        let workspace_lock_manager = if self.workspace_root.is_some() {
+            Some(DartDependencyLockMode::Transitive)
+        } else {
+            None
+        };
+
         let at = self.workspace_root.as_ref().unwrap_or(&self.at);
         let filename = DartToolchain::lock_filename();
-        debug!("Checking presence of {package} in {manager} at {at:?}");
+
+        let locked_as_string = if let Some(workspace_lock_manager) = workspace_lock_manager {
+            format!("'{lock_manager}' or '{workspace_lock_manager}'")
+        } else {
+            format!("'{lock_manager}'")
+        };
+        debug!("Checking presence of {package} locked as {locked_as_string} at {at:?}");
 
         // We do not care about this branch
         // frb-coverage:ignore-start
         if !at.join(filename).exists() {
-            log::warn!("Skip checking presence of {package} in {manager} at {at:?} since {filename} does not exist. Please check manually.");
+            log::warn!("Skip checking presence of {package} locked as {locked_as_string} at {at:?} since {filename} does not exist. Please check manually.");
             return Ok(());
         }
         // frb-coverage:ignore-end
@@ -110,7 +133,17 @@ impl DartRepository {
         let version = match dependency {
             Some(dependency) => {
                 let pm = dependency.installed_in();
-                if pm.as_ref() != Some(&manager) {
+
+                let satisfies_lock = if let Some(locked_mode) = pm {
+                    // We satisfy the lock mode if it matches the requested lock mode,
+                    // or if we are a workspace and the locked mode is transitive
+                    locked_mode == lock_manager
+                        || workspace_lock_manager.is_some_and(|m| m == locked_mode)
+                } else {
+                    false
+                };
+
+                if !satisfies_lock {
                     // This will stop the whole generator and tell the users, so we do not care about testing it
                     // frb-coverage:ignore-start
                     return Err(error_invalid_dep(package, manager, requirement));
@@ -190,6 +223,35 @@ impl Display for DartDependencyMode {
         match self {
             DartDependencyMode::Main => write!(f, "dependencies"),
             DartDependencyMode::Dev => write!(f, "dev_dependencies"),
+        }
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Copy)]
+pub enum DartDependencyLockMode {
+    /// Appear in `pubspec.lock` as `direct main`
+    Main,
+    /// Appear in `pubspec.lock` as `direct dev`
+    Dev,
+    /// Appear in `pubspec.lock` as `transitive`
+    Transitive,
+}
+
+impl Display for DartDependencyLockMode {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            DartDependencyLockMode::Main => write!(f, "direct main"),
+            DartDependencyLockMode::Dev => write!(f, "direct dev"),
+            DartDependencyLockMode::Transitive => write!(f, "transitive"),
+        }
+    }
+}
+
+impl From<DartDependencyMode> for DartDependencyLockMode {
+    fn from(mode: DartDependencyMode) -> Self {
+        match mode {
+            DartDependencyMode::Main => DartDependencyLockMode::Main,
+            DartDependencyMode::Dev => DartDependencyLockMode::Dev,
         }
     }
 }
@@ -296,10 +358,11 @@ fn option_hash_map_contains<K: Hash + Eq, V: Eq>(map: &Option<HashMap<K, V>>, ke
 }
 
 impl PubspecLockPackage {
-    pub(crate) fn installed_in(&self) -> Option<DartDependencyMode> {
+    pub(crate) fn installed_in(&self) -> Option<DartDependencyLockMode> {
         match self.dependency.as_str() {
-            "direct dev" => Some(DartDependencyMode::Dev),
-            "direct main" => Some(DartDependencyMode::Main),
+            "direct dev" => Some(DartDependencyLockMode::Dev),
+            "direct main" => Some(DartDependencyLockMode::Main),
+            "transitive" => Some(DartDependencyLockMode::Transitive),
             _ => None,
         }
     }
