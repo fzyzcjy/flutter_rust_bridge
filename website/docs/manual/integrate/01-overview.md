@@ -27,4 +27,4 @@ A (very brief) overview of the approaches are as follows:
 - [flutter_rust_bridge_template](template): Fine-grained control to compilation process.
 - [BrickHub brick](existing): Similar to the line above.
 - [Create libraries](library): Fine-grained control to compilation process, create CI and prebuilt binaries.
-- [Rust Workspace + Dart Workspace](https://github.com/AadamZ5/flutter_rust_bridge_workspace_example): High automation for multiple flutter_rust_bridge projects with multiple rust projects
+- [Rust Workspace + Dart Workspace](dart-workspace): High automation for multiple flutter_rust_bridge projects with multiple rust projects
