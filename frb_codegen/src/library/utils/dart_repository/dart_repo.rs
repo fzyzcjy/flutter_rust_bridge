@@ -15,9 +15,9 @@ pub(crate) struct DartRepository {
     /// Where the dart repository is located
     pub(crate) at: PathBuf,
     pub(crate) toolchain: DartToolchain,
-    /// If in a workspace, this is the root of the workspace.
-    /// Otherwise, None.
-    pub(crate) workspace_root: Option<PathBuf>,
+    /// This is the root of the workspace.
+    pub(crate) workspace_root: PathBuf,
+    pub(crate) is_workspace: bool,
 }
 
 impl DartRepository {
@@ -25,8 +25,8 @@ impl DartRepository {
         debug!("Guessing toolchain the runner is run into");
 
         let filename = DartToolchain::manifest_filename();
-        let manifest_file: PubspecYaml = read_file_and_parse_yaml(path, filename)?;
         let manifest_path = path.join(filename).to_owned();
+        let manifest_file: PubspecYaml = read_file_and_parse_yaml(path, filename)?;
 
         let toolchain = if option_hash_map_contains(
             &manifest_file.dependencies,
@@ -37,12 +37,29 @@ impl DartRepository {
             DartToolchain::Dart
         };
 
-        let workspace_root = determine_workspace_root(&manifest_file, manifest_path.as_path());
+        // If we don't find a workspace, assume we are the root
+        let workspace_root = determine_workspace_root(&manifest_file, manifest_path.as_path())
+            .unwrap_or(path.to_owned());
+
+        let is_workspace = if workspace_root != path {
+            true
+        } else {
+            // If we are already the root, perform a sanity check that at least have
+            // a workspace list (even if empty) meaning we have the `workspace:` field.
+            manifest_file.workspace.is_some()
+        };
+
+        if is_workspace {
+            debug!("{path:?} is in a workspace, with root at {workspace_root:?}");
+        } else {
+            debug!("{path:?} is not in a workspace");
+        }
 
         Ok(DartRepository {
             at: path.to_owned(),
             toolchain,
             workspace_root,
+            is_workspace,
         })
     }
 
@@ -104,13 +121,18 @@ impl DartRepository {
         // does not directly list the dependency, but the child package does.
         // So we need to check for both direct dev and transitive if we are a
         // workspace.
-        let workspace_lock_manager = if self.workspace_root.is_some() {
+        let workspace_lock_manager = if self.is_workspace {
             Some(DartDependencyLockMode::Transitive)
         } else {
             None
         };
 
-        let at = self.workspace_root.as_ref().unwrap_or(&self.at);
+        let at = if self.is_workspace {
+            &self.workspace_root
+        } else {
+            &self.at
+        };
+
         let filename = DartToolchain::lock_filename();
 
         let locked_as_string = if let Some(workspace_lock_manager) = workspace_lock_manager {
@@ -301,7 +323,7 @@ fn read_file_and_parse_yaml<T: DeserializeOwned>(at: &Path, filename: &str) -> a
 }
 
 fn determine_workspace_root(manifest_file: &PubspecYaml, manifest_path: &Path) -> Option<PathBuf> {
-    debug!("Checking if {manifest_path:?} is the root of a workspace...");
+    debug!("Checking if {manifest_path:?} is a workspace root pubspec...");
     match manifest_file.resolution.as_deref() {
         Some("workspace") => {
             // Should be able to assume this path points to the manifest's dir,
@@ -324,10 +346,7 @@ fn determine_workspace_root(manifest_file: &PubspecYaml, manifest_path: &Path) -
         Some(_) => None,
         // If the manifest we are currently reading has no `resolution: ...` then it
         // is considered the root, per: https://github.com/dart-lang/pub/blob/06e1960de9d54a6b6dce8d9a999892ef6257cda2/lib/src/entrypoint.dart#L61-L64
-        None => {
-            debug!("Seems like {manifest_path:?} is the workspace root pubspec");
-            manifest_path.parent().map(|parent| parent.to_path_buf())
-        }
+        None => Some(manifest_path.parent().unwrap().to_owned()),
     }
 }
 

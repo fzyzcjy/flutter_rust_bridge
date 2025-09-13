@@ -7,6 +7,7 @@ pub(crate) struct PubspecYaml {
     pub dependencies: Option<HashMap<String, Option<PubspecYamlDependencyVersion>>>,
     pub dev_dependencies: Option<HashMap<String, Option<PubspecYamlDependencyVersion>>>,
     pub resolution: Option<String>,
+    pub workspace: Option<Vec<String>>,
 }
 
 /// e.g.
