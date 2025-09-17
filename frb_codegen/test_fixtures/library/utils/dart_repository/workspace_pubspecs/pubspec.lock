@@ -1,0 +1,35 @@
+# Manually created test fixture
+
+packages:
+  test_dep:
+    dependency: transitive
+    description:
+      name: test_dep
+      sha256: 0000000000000000000000000000000000000000000000000000000000000000
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
+  test_dev_dep:
+    dependency: transitive
+    description:
+      name: test_dep
+      sha256: 0000000000000000000000000000000000000000000000000000000000000000
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
+  test_dep_root:
+    dependency: direct main
+    description:
+      name: test_dep
+      sha256: 0000000000000000000000000000000000000000000000000000000000000000
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
+  test_dev_dep_root:
+    dependency: direct dev
+    description:
+      name: test_dep
+      sha256: 0000000000000000000000000000000000000000000000000000000000000000
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
