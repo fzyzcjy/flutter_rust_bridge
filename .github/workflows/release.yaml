@@ -49,7 +49,7 @@ jobs:
             name: flutter_rust_bridge_codegen-x86_64-unknown-freebsd-${{ github.ref_name }}.tgz
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           submodules: recursive
       - name: Setup Rust toolchain
@@ -77,7 +77,7 @@ jobs:
           tar czvf ../../../${{ matrix.name }} flutter_rust_bridge_codegen
           cd -
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.name }}
           path: ${{ matrix.name }}
@@ -87,14 +87,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v5
       - name: Generate checksums
         run: |
           for file in flutter_rust_bridge_codegen-*/flutter_rust_bridge_codegen-*; do
             openssl dgst -sha256 -r "$file" | awk '{print $1}' > "${file}.sha256";
           done
       - name: Add Artifacts
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           files: flutter_rust_bridge_codegen-*/flutter_rust_bridge_codegen-*
           tag_name: ${{ github.ref_name }}
@@ -103,7 +103,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: upload-artifacts
     steps:
-      - uses: mislav/bump-homebrew-formula-action@v2
+      - uses: mislav/bump-homebrew-formula-action@v3
         with:
           formula-name: flutter_rust_bridge_codegen
           homebrew-tap: Desdaemon/homebrew-repo
