@@ -2,6 +2,11 @@ name: Release
 
 on:
   workflow_dispatch:
+    inputs:
+      publish_tag:
+        description: 'The tag of the release the artifacts will be published to'
+        required: false
+        type: string
   release:
     types: [published]
 
@@ -97,7 +102,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: flutter_rust_bridge_codegen-*/flutter_rust_bridge_codegen-*
-          tag_name: ${{ github.ref_name }}
+          tag_name: ${{ github.event_name == 'workflow_dispatch' && (inputs.publish_tag != '' && inputs.publish_tag) || github.ref_name }}
   refresh-homebrew:
     name: Refresh Homebrew formula
     runs-on: ubuntu-latest
