@@ -217,10 +217,10 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
-    stem: 'frb_example_pure_dart_pde',
-    ioDirectory: 'rust/target/release/',
-    webPrefix: 'pkg/',
-  );
+          stem: 'frb_example_pure_dart_pde',
+          ioDirectory: 'rust/target/release/',
+          webPrefix: 'pkg/',
+          wasmBindGenName: 'wasm_bingen');
 }
 
 abstract class RustLibApi extends BaseApi {

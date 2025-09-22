@@ -54,6 +54,7 @@
         "default_external_library_loader": {
           "io_directory": "target/release/",
           "stem": "UNKNOWN",
+          "wasm_bindgen_name": "wasm_bingen",
           "web_prefix": "pkg/"
         },
         "extra_headers": "",

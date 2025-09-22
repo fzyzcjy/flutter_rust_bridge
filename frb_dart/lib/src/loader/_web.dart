@@ -8,12 +8,22 @@ import 'package:flutter_rust_bridge/src/wasm_module/_web.dart';
 FutureOr<ExternalLibrary> loadExternalLibrary(
     ExternalLibraryLoaderConfig config) async {
   return loadExternalLibraryRaw(
-      moduleRoot: '${config.webPrefix}${config.stem}');
+    moduleRoot: '${config.webPrefix}${config.stem}',
+    wasmBindGenName: config.wasmBindGenName,
+  );
 }
 
 /// Please see `loadExternalLibrary` for details
-Future<ExternalLibrary> loadExternalLibraryRaw(
-    {required String moduleRoot}) async {
-  await initializeWasmModule(root: moduleRoot);
-  return ExternalLibrary(debugInfo: 'moduleRoot=$moduleRoot');
+Future<ExternalLibrary> loadExternalLibraryRaw({
+  required String moduleRoot,
+  required String wasmBindGenName,
+}) async {
+  await initializeWasmModule(
+    root: moduleRoot,
+    wasmBindGenName: wasmBindGenName,
+  );
+  return ExternalLibrary(
+    debugInfo: 'moduleRoot=$moduleRoot',
+    wasmBindGenName: wasmBindGenName,
+  );
 }

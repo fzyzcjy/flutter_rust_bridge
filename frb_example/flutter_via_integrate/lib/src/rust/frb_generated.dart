@@ -77,6 +77,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
     stem: 'rust_lib_flutter_via_integrate',
     ioDirectory: 'rust/target/release/',
     webPrefix: 'pkg/',
+    wasmBindGenName: 'wasm_bindgen',
   );
 }
 

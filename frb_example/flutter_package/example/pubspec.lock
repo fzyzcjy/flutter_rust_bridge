@@ -107,7 +107,7 @@ packages:
     source: path
     version: "0.0.1"
   flutter_rust_bridge:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
       path: "../../../frb_dart"
       relative: true

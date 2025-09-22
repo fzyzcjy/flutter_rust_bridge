@@ -201,12 +201,14 @@ fn generate_boilerplate(
                     stem: '{stem}',
                     ioDirectory: '{io_directory}',
                     webPrefix: '{web_prefix}',
+                    wasmBindGenName: '{wasm_bindgen_name}'
                   );
                 }}
                 "#,
                 stem = context.config.default_external_library_loader.stem,
                 io_directory = context.config.default_external_library_loader.io_directory,
                 web_prefix = context.config.default_external_library_loader.web_prefix,
+                wasm_bindgen_name = context.config.default_external_library_loader.wasm_bindgen_name
             ),
             body: "".to_owned(),
             ..Default::default()

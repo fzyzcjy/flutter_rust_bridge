@@ -93,10 +93,10 @@ Future<void> _sanityChecks(BuildWebArgs args) async {
     await _ensurePackageInstalled(
       binaryName: 'wasm-bindgen',
       install: () async =>
-          await runCommand('cargo', ['install', '-f', 'wasm-bindgen-cli']),
+          await runCommand('cargo', ['install', '-f', 'wasm-bindgen-cli', '--version', '0.2.92']),
       hint:
           'wasm-bindgen flags are enabled, but wasm-bindgen could not be found in the path.\n'
-          'Please install wasm-bindgen using `cargo install -f wasm-bindgen-cli`.',
+          'Please install wasm-bindgen using `cargo install -f wasm-bindgen-cli --version 0.2.92`.',
     );
   }
 

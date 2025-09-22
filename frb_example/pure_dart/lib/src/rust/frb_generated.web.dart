@@ -63568,7 +63568,7 @@ class RustLibWire implements BaseWire {
       wasmModule.rust_arc_decrement_strong_count_RustOpaque_i32(ptr);
 }
 
-@JS('wasm_bindgen')
+@JS('wasm_bingen')
 external RustLibWasmModule get wasmModule;
 
 @JS()

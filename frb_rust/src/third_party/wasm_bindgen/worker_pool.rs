@@ -20,6 +20,7 @@ use web_sys::{Event, Worker};
 pub struct WorkerPool {
     state: Rc<PoolState>,
     script_src: String,
+    wasm_bindgen_name: String,
     worker_js_preamble: String,
 }
 
@@ -33,11 +34,13 @@ impl WorkerPool {
     pub fn new(
         initial: Option<usize>,
         script_src: Option<String>,
+        wasm_bindgen_name: Option<String>,
         worker_js_preamble: Option<String>,
     ) -> Result<WorkerPool, JsValue> {
         Self::new_raw(
             initial.unwrap_or_else(get_wasm_hardware_concurrency),
             script_src.unwrap_or_else(|| script_path().expect("fail to get script path")),
+            wasm_bindgen_name.unwrap_or_else(|| "wasm_bindgen".to_owned()),
             worker_js_preamble.unwrap_or_default(),
         )
     }
@@ -56,10 +59,12 @@ impl WorkerPool {
     pub fn new_raw(
         initial: usize,
         script_src: String,
+        wasm_bindgen_name: String,
         worker_js_preamble: String,
     ) -> Result<WorkerPool, JsValue> {
         let pool = WorkerPool {
             script_src,
+            wasm_bindgen_name,
             state: Rc::new(PoolState {
                 workers: RefCell::new(Vec::with_capacity(initial)),
                 callback: Closure::new(|event: Event| {
@@ -92,12 +97,13 @@ impl WorkerPool {
     fn spawn(&self) -> Result<Worker, JsValue> {
         let worker_js_preamble = &self.worker_js_preamble;
         let script_src = &self.script_src;
+        let wasm_bindgen_name = &self.wasm_bindgen_name;
         let script = format!(
             "{worker_js_preamble}
             importScripts('{script_src}');
             const FRB_ACTION_PANIC = 3;
             onmessage = event => {{
-                let init = wasm_bindgen(...event.data).catch(err => {{
+                let init = {wasm_bindgen_name}(...event.data).catch(err => {{
                     setTimeout(() => {{ throw err }})
                     throw err
                 }})
@@ -105,7 +111,7 @@ impl WorkerPool {
                     await init
                     const [payload, ...transfer] = event.data
                     try {{
-                        wasm_bindgen.receive_transfer_closure(payload, transfer)
+                        {wasm_bindgen_name}.receive_transfer_closure(payload, transfer)
                     }} catch (err) {{
                         if (transfer[0] && typeof transfer[0].postMessage === 'function') {{
                             // panic
@@ -251,7 +257,7 @@ impl PoolState {
 
 impl Default for WorkerPool {
     fn default() -> Self {
-        Self::new(None, None, None).expect("fail to create WorkerPool")
+        Self::new(None, None, None, None).expect("fail to create WorkerPool")
     }
 }
 
