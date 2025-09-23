@@ -28,8 +28,12 @@ pub(crate) fn get_dart_package_name(dart_root: &Path) -> anyhow::Result<String> 
 mod tests {
     use super::dart_repo::DartRepository;
     use super::dart_toolchain::DartToolchain;
-    use crate::utils::dart_repository::pubspec::{
-        DartDependencyVersion, PubspecYaml, PubspecYamlDependencyVersion,
+    use crate::utils::{
+        dart_repository::{
+            dart_repo::DartDependencyMode,
+            pubspec::{DartDependencyVersion, PubspecYaml, PubspecYamlDependencyVersion},
+        },
+        test_utils::get_test_fixture_dir,
     };
     use cargo_metadata::VersionReq;
     use lazy_static::lazy_static;
@@ -115,5 +119,93 @@ mod tests {
         expected.insert("other_package".to_string(), None);
 
         assert_eq!(pubspec.dependencies, Some(expected));
+    }
+
+    #[test]
+    fn can_determine_workspace() {
+        let ws_dir = get_test_fixture_dir("library/utils/dart_repository/workspace_pubspecs");
+        let sub_project_dir = ws_dir.join("sub_project");
+        let sub_project_repo = DartRepository::from_path(&sub_project_dir)
+            .expect("Failed to load dart repository in workspace");
+        assert!(sub_project_repo.is_workspace);
+        assert_eq!(sub_project_repo.workspace_root, ws_dir);
+
+        let ws_repo = DartRepository::from_path(&ws_dir)
+            .expect("Failed to load dart repository at workspace root");
+        assert!(ws_repo.is_workspace);
+        assert_eq!(ws_repo.workspace_root, ws_dir);
+
+        let non_ws_dir = get_test_fixture_dir("library/utils/dart_repository/non_workspace");
+        let non_ws_repo = DartRepository::from_path(&non_ws_dir)
+            .expect("Failed to load dart repository in non-workspace");
+        assert!(!non_ws_repo.is_workspace);
+        assert_eq!(non_ws_repo.workspace_root, non_ws_dir);
+    }
+
+    #[test]
+    fn can_determine_workspace_dependencies() {
+        let gt_eq_ver_one = VersionReq::parse(">=1.0.0").expect("Failed to parse version");
+
+        let ws_dir = get_test_fixture_dir("library/utils/dart_repository/workspace_pubspecs");
+        let sub_project_dir = ws_dir.join("sub_project");
+        let sub_project_repo = DartRepository::from_path(&sub_project_dir)
+            .expect("Failed to load dart repository in workspace");
+        assert!(sub_project_repo
+            .has_specified_and_installed("test_dep", DartDependencyMode::Main, &gt_eq_ver_one)
+            .is_ok());
+        assert!(sub_project_repo
+            .has_specified_and_installed("test_dev_dep", DartDependencyMode::Dev, &gt_eq_ver_one)
+            .is_ok());
+
+        // The sub-project does not directly specify the "test_dep_root" and "test_dev_dep_root"
+        // dependencies, so it should not have it specified, but it should still have it installed
+        assert!(sub_project_repo
+            .has_specified_and_installed("test_dep_root", DartDependencyMode::Main, &gt_eq_ver_one)
+            .is_err());
+        assert!(sub_project_repo
+            .has_installed("test_dep_root", DartDependencyMode::Main, &gt_eq_ver_one)
+            .is_ok());
+        assert!(sub_project_repo
+            .has_specified_and_installed(
+                "test_dev_dep_root",
+                DartDependencyMode::Dev,
+                &gt_eq_ver_one
+            )
+            .is_err());
+        assert!(sub_project_repo
+            .has_installed("test_dev_dep_root", DartDependencyMode::Dev, &gt_eq_ver_one)
+            .is_ok());
+
+        let ws_repo = DartRepository::from_path(&ws_dir)
+            .expect("Failed to load dart repository at workspace root");
+        assert!(ws_repo.is_workspace);
+        assert_eq!(ws_repo.workspace_root, ws_dir);
+
+        // The workspace specifies the "test_dep_root" and "test_dev_dep_root" dependencies, so it should have it specified
+        assert!(ws_repo
+            .has_specified_and_installed("test_dep_root", DartDependencyMode::Main, &gt_eq_ver_one)
+            .is_ok());
+        assert!(ws_repo
+            .has_specified_and_installed(
+                "test_dev_dep_root",
+                DartDependencyMode::Dev,
+                &gt_eq_ver_one
+            )
+            .is_ok());
+
+        // The workspace root does not specify the "test_dep" and "test_dev_dep" dependencies,
+        // so it should not have it specified, but it should still have it installed
+        assert!(ws_repo
+            .has_specified_and_installed("test_dep", DartDependencyMode::Main, &gt_eq_ver_one)
+            .is_err());
+        assert!(ws_repo
+            .has_installed("test_dep", DartDependencyMode::Main, &gt_eq_ver_one)
+            .is_ok());
+        assert!(ws_repo
+            .has_specified_and_installed("test_dev_dep", DartDependencyMode::Dev, &gt_eq_ver_one)
+            .is_err());
+        assert!(ws_repo
+            .has_installed("test_dev_dep", DartDependencyMode::Dev, &gt_eq_ver_one)
+            .is_ok());
     }
 }

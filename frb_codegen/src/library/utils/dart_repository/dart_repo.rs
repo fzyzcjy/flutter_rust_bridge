@@ -2,7 +2,7 @@ use crate::utils::dart_repository::dart_toolchain::DartToolchain;
 use crate::utils::dart_repository::pubspec::*;
 use anyhow::{anyhow, bail, Context};
 use cargo_metadata::{Version, VersionReq};
-use log::debug;
+use log::{debug, warn};
 use serde::de::DeserializeOwned;
 use std::collections::HashMap;
 use std::convert::TryFrom;
@@ -12,16 +12,21 @@ use std::path::{Path, PathBuf};
 
 /// represents a dart / flutter repository
 pub(crate) struct DartRepository {
+    /// Where the dart repository is located
     pub(crate) at: PathBuf,
     pub(crate) toolchain: DartToolchain,
+    /// This is the root of the workspace.
+    pub(crate) workspace_root: PathBuf,
+    pub(crate) is_workspace: bool,
 }
 
 impl DartRepository {
     pub(crate) fn from_path(path: &Path) -> anyhow::Result<Self> {
         debug!("Guessing toolchain the runner is run into");
 
-        let manifest_file: PubspecYaml =
-            read_file_and_parse_yaml(path, DartToolchain::manifest_filename())?;
+        let filename = DartToolchain::manifest_filename();
+        let manifest_path = path.join(filename).to_owned();
+        let manifest_file: PubspecYaml = read_file_and_parse_yaml(path, filename)?;
 
         let toolchain = if option_hash_map_contains(
             &manifest_file.dependencies,
@@ -32,9 +37,29 @@ impl DartRepository {
             DartToolchain::Dart
         };
 
+        // If we don't find a workspace, assume we are the root
+        let workspace_root = determine_workspace_root(&manifest_file, manifest_path.as_path())
+            .unwrap_or(path.to_owned());
+
+        let is_workspace = if workspace_root != path {
+            true
+        } else {
+            // If we are already the root, perform a sanity check that at least have
+            // a workspace list (even if empty) meaning we have the `workspace:` field.
+            manifest_file.workspace.is_some()
+        };
+
+        if is_workspace {
+            debug!("{path:?} is in a workspace, with root at {workspace_root:?}");
+        } else {
+            debug!("{path:?} is not in a workspace");
+        }
+
         Ok(DartRepository {
             at: path.to_owned(),
             toolchain,
+            workspace_root,
+            is_workspace,
         })
     }
 
@@ -88,14 +113,39 @@ impl DartRepository {
         manager: DartDependencyMode,
         requirement: &VersionReq,
     ) -> anyhow::Result<()> {
-        let at = &self.at;
+        // The pubspec.lock modes are different than the pubspec.yaml dependency categories
+        let lock_manager: DartDependencyLockMode = manager.into();
+
+        // If we are a workspace, dev dependencies are commonly saved
+        // as transitive in the root pubspec.lock, since the root pubspec.yaml
+        // does not directly list the dependency, but the child package does.
+        // So we need to check for both direct dev and transitive if we are a
+        // workspace.
+        let workspace_lock_manager = if self.is_workspace {
+            Some(DartDependencyLockMode::Transitive)
+        } else {
+            None
+        };
+
+        let at = if self.is_workspace {
+            &self.workspace_root
+        } else {
+            &self.at
+        };
+
         let filename = DartToolchain::lock_filename();
-        debug!("Checking presence of {package} in {manager} at {at:?}");
+
+        let locked_as_string = if let Some(workspace_lock_manager) = workspace_lock_manager {
+            format!("'{lock_manager}' or '{workspace_lock_manager}'")
+        } else {
+            format!("'{lock_manager}'")
+        };
+        debug!("Checking presence of {package} locked as {locked_as_string} at {at:?}");
 
         // We do not care about this branch
         // frb-coverage:ignore-start
         if !at.join(filename).exists() {
-            log::warn!("Skip checking presence of {package} in {manager} at {at:?} since {filename} does not exist. Please check manually.");
+            log::warn!("Skip checking presence of {package} locked as {locked_as_string} at {at:?} since {filename} does not exist. Please check manually.");
             return Ok(());
         }
         // frb-coverage:ignore-end
@@ -105,7 +155,17 @@ impl DartRepository {
         let version = match dependency {
             Some(dependency) => {
                 let pm = dependency.installed_in();
-                if pm.as_ref() != Some(&manager) {
+
+                let satisfies_lock = if let Some(locked_mode) = pm {
+                    // We satisfy the lock mode if it matches the requested lock mode,
+                    // or if we are a workspace and the locked mode is transitive
+                    locked_mode == lock_manager
+                        || workspace_lock_manager.is_some_and(|m| m == locked_mode)
+                } else {
+                    false
+                };
+
+                if !satisfies_lock {
                     // This will stop the whole generator and tell the users, so we do not care about testing it
                     // frb-coverage:ignore-start
                     return Err(error_invalid_dep(package, manager, requirement));
@@ -189,6 +249,35 @@ impl Display for DartDependencyMode {
     }
 }
 
+#[derive(Debug, Clone, PartialEq, Eq, Copy)]
+pub enum DartDependencyLockMode {
+    /// Appear in `pubspec.lock` as `direct main`
+    Main,
+    /// Appear in `pubspec.lock` as `direct dev`
+    Dev,
+    /// Appear in `pubspec.lock` as `transitive`
+    Transitive,
+}
+
+impl Display for DartDependencyLockMode {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            DartDependencyLockMode::Main => write!(f, "direct main"),
+            DartDependencyLockMode::Dev => write!(f, "direct dev"),
+            DartDependencyLockMode::Transitive => write!(f, "transitive"),
+        }
+    }
+}
+
+impl From<DartDependencyMode> for DartDependencyLockMode {
+    fn from(mode: DartDependencyMode) -> Self {
+        match mode {
+            DartDependencyMode::Main => DartDependencyLockMode::Main,
+            DartDependencyMode::Dev => DartDependencyLockMode::Dev,
+        }
+    }
+}
+
 #[derive(Debug, PartialEq, Eq)]
 pub enum DartPackageVersion {
     /// exact dependency requirement
@@ -233,6 +322,52 @@ fn read_file_and_parse_yaml<T: DeserializeOwned>(at: &Path, filename: &str) -> a
     Ok(file)
 }
 
+fn determine_workspace_root(manifest_file: &PubspecYaml, manifest_path: &Path) -> Option<PathBuf> {
+    debug!("Checking if {manifest_path:?} is a workspace root pubspec...");
+    match manifest_file.resolution.as_deref() {
+        Some("workspace") => {
+            // Should be able to assume this path points to the manifest's dir,
+            // but make sure we are robust to different inputs
+            let parent_dir = if manifest_path.is_dir() {
+                manifest_path.parent()
+            } else {
+                manifest_path.parent().and_then(|parent| parent.parent())
+            };
+
+            let parent_pubspec = parent_dir.and_then(search_for_pubspec_starting_at);
+
+            if let Some((parent_yaml, parent_manifest_path)) = parent_pubspec {
+                determine_workspace_root(&parent_yaml, &parent_manifest_path)
+            } else {
+                warn!("The pubspec {manifest_path:?} had resolution: workspace but no workspace root pubspec was found!");
+                None
+            }
+        }
+        Some(_) => None,
+        // If the manifest we are currently reading has no `resolution: ...` then it
+        // is considered the root, per: https://github.com/dart-lang/pub/blob/06e1960de9d54a6b6dce8d9a999892ef6257cda2/lib/src/entrypoint.dart#L61-L64
+        None => Some(manifest_path.parent().unwrap().to_owned()),
+    }
+}
+
+fn search_for_pubspec_starting_at(in_dir: &Path) -> Option<(PubspecYaml, PathBuf)> {
+    let filename = DartToolchain::manifest_filename();
+    let pubspec_path = in_dir.join(filename);
+    debug!("Checking for pubspec at {pubspec_path:?}");
+    if pubspec_path.exists() {
+        match read_file_and_parse_yaml::<PubspecYaml>(in_dir, filename) {
+            Ok(pubspec_yaml) => Some((pubspec_yaml, pubspec_path)),
+            Err(e) => {
+                debug!("Couldn't load pubspec: {e}");
+                None
+            }
+        }
+    } else {
+        // Search all the way up recursively
+        in_dir.parent().and_then(search_for_pubspec_starting_at)
+    }
+}
+
 fn option_hash_map_contains<K: Hash + Eq, V: Eq>(map: &Option<HashMap<K, V>>, key: &K) -> bool {
     if let Some(map) = map.as_ref() {
         map.contains_key(key)
@@ -242,10 +377,11 @@ fn option_hash_map_contains<K: Hash + Eq, V: Eq>(map: &Option<HashMap<K, V>>, ke
 }
 
 impl PubspecLockPackage {
-    pub(crate) fn installed_in(&self) -> Option<DartDependencyMode> {
+    pub(crate) fn installed_in(&self) -> Option<DartDependencyLockMode> {
         match self.dependency.as_str() {
-            "direct dev" => Some(DartDependencyMode::Dev),
-            "direct main" => Some(DartDependencyMode::Main),
+            "direct dev" => Some(DartDependencyLockMode::Dev),
+            "direct main" => Some(DartDependencyLockMode::Main),
+            "transitive" => Some(DartDependencyLockMode::Transitive),
             _ => None,
         }
     }
