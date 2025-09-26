@@ -35,7 +35,7 @@ chrono = "0.4.23"
 lazy_static = "1.4.0"
 uuid = "1.1.2"
 thiserror = "1.0"
-backtrace = "0.3.68"
+backtrace = "0.3.76"
 
 flutter_rust_bridge_macros = { path = "frb_macros", version = "=2.11.1" }
 flutter_rust_bridge = { path = "frb_rust", default-features = false, version = "=2.11.1" }
