@@ -91,7 +91,7 @@ pub(crate) struct CommandInfo {
 pub(crate) fn call_shell_info(cmd: &[PathBuf]) -> CommandInfo {
 
     #[cfg(windows)]
-    let cmd = cmd.iter().map(|section| windows_escape_chain(&section.to_str().unwrap())).join(" ");
+    let cmd = cmd.iter().map(|section| windows_escape_for_powershell(&section.to_str().unwrap())).join(" ");
     return CommandInfo {
         program: "powershell".to_owned(),
         args: vec![
@@ -109,17 +109,6 @@ pub(crate) fn call_shell_info(cmd: &[PathBuf]) -> CommandInfo {
     };
 }
 
-pub fn windows_escape_for_process_spawn(section_in: &str) -> String {
-    let mut section_out = String::new(); 
-    for c in section_in.chars() {
-        match c {
-            '"' => section_out.push_str(r#"\""#), 
-            _ => section_out.push(c),       
-        }
-    }
-    section_out 
-}
-
 pub fn windows_escape_for_powershell(section_in: &str) -> String {
     let mut section_out = String::new(); 
     for c in section_in.chars() {
@@ -132,12 +121,6 @@ pub fn windows_escape_for_powershell(section_in: &str) -> String {
         }
     }
     section_out 
-}
-
-pub fn windows_escape_chain(section: &str) -> String {
-    let section = windows_escape_for_process_spawn(&section);
-    let section = windows_escape_for_powershell(&section);
-    section
 }
 
 #[derive(Default)]
