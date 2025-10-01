@@ -56,6 +56,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
         with:
+          ref: ${{ inputs.publish_tag || github.ref }}
           submodules: recursive
       - name: Setup Rust toolchain
         uses: dtolnay/rust-toolchain@stable
