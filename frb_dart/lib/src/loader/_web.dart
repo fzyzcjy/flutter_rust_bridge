@@ -9,21 +9,21 @@ FutureOr<ExternalLibrary> loadExternalLibrary(
     ExternalLibraryLoaderConfig config) async {
   return loadExternalLibraryRaw(
     moduleRoot: '${config.webPrefix}${config.stem}',
-    wasmBindGenName: config.wasmBindGenName,
+    wasmBindgenName: config.wasmBindgenName,
   );
 }
 
 /// Please see `loadExternalLibrary` for details
 Future<ExternalLibrary> loadExternalLibraryRaw({
   required String moduleRoot,
-  required String wasmBindGenName,
+  required String wasmBindgenName,
 }) async {
   await initializeWasmModule(
     root: moduleRoot,
-    wasmBindGenName: wasmBindGenName,
+    wasmBindgenName: wasmBindgenName,
   );
   return ExternalLibrary(
     debugInfo: 'moduleRoot=$moduleRoot',
-    wasmBindGenName: wasmBindGenName,
+    wasmBindgenName: wasmBindgenName,
   );
 }

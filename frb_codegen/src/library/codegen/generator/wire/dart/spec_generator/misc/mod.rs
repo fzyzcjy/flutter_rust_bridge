@@ -201,7 +201,7 @@ fn generate_boilerplate(
                     stem: '{stem}',
                     ioDirectory: '{io_directory}',
                     webPrefix: '{web_prefix}',
-                    wasmBindGenName: '{wasm_bindgen_name}'
+                    wasmBindgenName: '{wasm_bindgen_name}',
                   );
                 }}
                 "#,

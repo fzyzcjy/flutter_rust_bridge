@@ -10,13 +10,13 @@ class ExternalLibraryLoaderConfig {
   final String? webPrefix;
 
   /// The name of the wasm_bindgen module.
-  final String wasmBindGenName;
+  final String wasmBindgenName;
 
-  /// Arguments of `loadExternalLibary`
+  /// Arguments of `loadExternalLibrary`
   const ExternalLibraryLoaderConfig({
     required this.stem,
     required this.ioDirectory,
     required this.webPrefix,
-    required this.wasmBindGenName,
+    required this.wasmBindgenName,
   });
 }

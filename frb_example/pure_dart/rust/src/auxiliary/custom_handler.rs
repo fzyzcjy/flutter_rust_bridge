@@ -13,7 +13,6 @@ pub type MyUnmodifiedHandler = SimpleHandler<
 >;
 
 #[derive(Clone, Copy)]
-#[frb(opaque)]
 pub struct MyCustomErrorListener;
 
 impl ErrorListener for MyCustomErrorListener {
@@ -22,7 +21,6 @@ impl ErrorListener for MyCustomErrorListener {
     }
 }
 
-#[frb(opaque)]
 pub struct MyCustomThreadPool;
 
 impl BaseThreadPool for MyCustomThreadPool {
@@ -34,7 +32,6 @@ impl BaseThreadPool for MyCustomThreadPool {
     }
 }
 
-#[frb(opaque)]
 pub struct MyCustomAsyncRuntime;
 
 impl BaseAsyncRuntime for MyCustomAsyncRuntime {
@@ -52,7 +49,6 @@ pub type MyCustomSimpleHandler = SimpleHandler<
     MyCustomErrorListener,
 >;
 
-#[frb(opaque)]
 pub struct MyCustomExecutor;
 
 impl Executor for MyCustomExecutor {
@@ -91,7 +87,6 @@ impl Executor for MyCustomExecutor {
 
 pub type MyCustomHandlerWithCustomExecutor = SimpleHandler<MyCustomExecutor, MyCustomErrorListener>;
 
-#[frb(opaque)]
 pub struct MyFullyCustomHandler;
 
 impl Handler for MyFullyCustomHandler {

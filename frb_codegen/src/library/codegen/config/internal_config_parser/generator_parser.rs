@@ -154,7 +154,7 @@ fn compute_default_external_library_loader(
         wasm_bindgen_name: config
             .wasm_bindgen_name
             .as_deref()
-            .unwrap_or("wasm_bingen")
+            .unwrap_or("wasm_bindgen")
             .into(),
     }
 }

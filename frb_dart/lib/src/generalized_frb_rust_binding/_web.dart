@@ -9,11 +9,11 @@ import 'package:web/web.dart' as web;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 class GeneralizedFrbRustBinding {
-  final String _wasmBindGenName;
+  final String _wasmBindgenName;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   GeneralizedFrbRustBinding(ExternalLibrary externalLibrary)
-      : _wasmBindGenName = externalLibrary.wasmBindGenName;
+      : _wasmBindgenName = externalLibrary.wasmBindgenName;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void storeDartPostCObject() {}
@@ -32,7 +32,7 @@ class GeneralizedFrbRustBinding {
     required int rustVecLen,
     required int dataLen,
   }) {
-    _wasmBindGen.frb_pde_ffi_dispatcher_primary(
+    _wasmBindgen.frb_pde_ffi_dispatcher_primary(
         funcId, port, ptr, rustVecLen, dataLen);
   }
 
@@ -43,7 +43,7 @@ class GeneralizedFrbRustBinding {
     required int rustVecLen,
     required int dataLen,
   }) {
-    return _wasmBindGen.frb_pde_ffi_dispatcher_sync(
+    return _wasmBindgen.frb_pde_ffi_dispatcher_sync(
         funcId, ptr, rustVecLen, dataLen);
   }
 
@@ -54,26 +54,26 @@ class GeneralizedFrbRustBinding {
     required int rustVecLen,
     required int dataLen,
   }) {
-    return _wasmBindGen.frb_dart_fn_deliver_output(
+    return _wasmBindgen.frb_dart_fn_deliver_output(
         callId, ptr, rustVecLen, dataLen);
   }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  int getRustContentHash() => _wasmBindGen.frb_get_rust_content_hash();
+  int getRustContentHash() => _wasmBindgen.frb_get_rust_content_hash();
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   PlatformPointer dartOpaqueDart2RustEncode(
           Object object, NativePortType dartHandlerPort) =>
-      _wasmBindGen.frb_dart_opaque_dart2rust_encode(
+      _wasmBindgen.frb_dart_opaque_dart2rust_encode(
           object.jsify()!, dartHandlerPort);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   Object dartOpaqueRust2DartDecode(int ptr) =>
-      _wasmBindGen.frb_dart_opaque_rust2dart_decode(ptr).dartify()!;
+      _wasmBindgen.frb_dart_opaque_rust2dart_decode(ptr).dartify()!;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void dartOpaqueDropThreadBoxPersistentHandle(int ptr) =>
-      _wasmBindGen.frb_dart_opaque_drop_thread_box_persistent_handle(ptr);
+      _wasmBindgen.frb_dart_opaque_drop_thread_box_persistent_handle(ptr);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void freeWireSyncRust2DartDco(WireSyncRust2DartDco raw) {}
@@ -82,14 +82,14 @@ class GeneralizedFrbRustBinding {
   void freeWireSyncRust2DartSse(WireSyncRust2DartSse raw) {}
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  _JSWasmBindGen get _wasmBindGen {
-    final jsObject = web.window.getProperty(_wasmBindGenName.toJS) as JSObject;
-    return _JSWasmBindGen(jsObject);
+  _JSWasmBindgen get _wasmBindgen {
+    final jsObject = web.window.getProperty(_wasmBindgenName.toJS) as JSObject;
+    return _JSWasmBindgen(jsObject);
   }
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-extension type _JSWasmBindGen(JSObject _) implements JSObject {
+extension type _JSWasmBindgen(JSObject _) implements JSObject {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @JS("frb_pde_ffi_dispatcher_primary")
   external void frb_pde_ffi_dispatcher_primary(

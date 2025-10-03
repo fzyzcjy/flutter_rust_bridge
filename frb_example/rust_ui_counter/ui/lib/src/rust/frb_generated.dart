@@ -80,6 +80,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
     stem: 'rust_lib_frb_example_rust_ui_counter',
     ioDirectory: '../target/release/',
     webPrefix: 'pkg/',
+    wasmBindgenName: 'wasm_bindgen',
   );
 }
 

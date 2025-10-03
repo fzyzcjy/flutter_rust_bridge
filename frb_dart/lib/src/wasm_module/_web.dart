@@ -8,7 +8,7 @@ import 'package:web/web.dart' as web;
 /// {@macro flutter_rust_bridge.internal}
 Future<void> initializeWasmModule({
   required String root,
-  required String wasmBindGenName,
+  required String wasmBindgenName,
 }) async {
   _ensureCrossOriginIsolated();
 
@@ -17,11 +17,11 @@ Future<void> initializeWasmModule({
 
   await script.onLoad.first;
 
-  jsEval('window.$wasmBindGenName = $wasmBindGenName');
+  jsEval('window.$wasmBindgenName = $wasmBindgenName');
 
-  final jsObject = web.window.getProperty(wasmBindGenName.toJS) as JSObject;
-  final wasmBindGen = _JSWasmBindGen(jsObject);
-  await wasmBindGen({"module_or_path": '${root}_bg.wasm'}.jsify()).toDart;
+  final jsObject = web.window.getProperty(wasmBindgenName.toJS) as JSObject;
+  final wasmBindgen = _JSWasmBindgen(jsObject);
+  await wasmBindgen({"module_or_path": '${root}_bg.wasm'}.jsify()).toDart;
 }
 
 void _ensureCrossOriginIsolated() {
@@ -43,7 +43,7 @@ void _ensureCrossOriginIsolated() {
   }
 }
 
-extension type _JSWasmBindGen(JSObject _) implements JSObject {
+extension type _JSWasmBindgen(JSObject _) implements JSObject {
   @JS()
   external JSPromise call(JSAny? arg);
 }
