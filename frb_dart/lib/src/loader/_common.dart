@@ -17,6 +17,6 @@ class ExternalLibraryLoaderConfig {
     required this.stem,
     required this.ioDirectory,
     required this.webPrefix,
-    required this.wasmBindgenName,
+    this.wasmBindgenName = 'wasm_bindgen',
   });
 }

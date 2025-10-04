@@ -16,7 +16,7 @@ FutureOr<ExternalLibrary> loadExternalLibrary(
 /// Please see `loadExternalLibrary` for details
 Future<ExternalLibrary> loadExternalLibraryRaw({
   required String moduleRoot,
-  required String wasmBindgenName,
+  String wasmBindgenName = 'wasm_bindgen',
 }) async {
   await initializeWasmModule(
     root: moduleRoot,

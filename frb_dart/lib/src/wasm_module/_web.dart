@@ -8,7 +8,7 @@ import 'package:web/web.dart' as web;
 /// {@macro flutter_rust_bridge.internal}
 Future<void> initializeWasmModule({
   required String root,
-  required String wasmBindgenName,
+  String wasmBindgenName = 'wasm_bindgen',
 }) async {
   _ensureCrossOriginIsolated();
 

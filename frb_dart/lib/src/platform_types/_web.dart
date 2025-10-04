@@ -34,7 +34,7 @@ class ExternalLibrary extends BaseExternalLibrary {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   const ExternalLibrary({
     required super.debugInfo,
-    required this.wasmBindgenName,
+    this.wasmBindgenName = 'wasm_bindgen',
   });
 }
 
