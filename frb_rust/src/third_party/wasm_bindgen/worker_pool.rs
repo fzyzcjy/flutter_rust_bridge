@@ -64,7 +64,6 @@ impl WorkerPool {
     ) -> Result<WorkerPool, JsValue> {
         let pool = WorkerPool {
             script_src,
-            wasm_bindgen_name,
             state: Rc::new(PoolState {
                 workers: RefCell::new(Vec::with_capacity(initial)),
                 callback: Closure::new(|event: Event| {
@@ -76,6 +75,7 @@ impl WorkerPool {
                 }),
             }),
             worker_js_preamble,
+            wasm_bindgen_name,
         };
         for _ in 0..initial {
             let worker = pool.spawn()?;
