@@ -20,8 +20,8 @@ use web_sys::{Event, Worker};
 pub struct WorkerPool {
     state: Rc<PoolState>,
     script_src: String,
-    wasm_bindgen_name: String,
     worker_js_preamble: String,
+    wasm_bindgen_name: String,
 }
 
 struct PoolState {
@@ -34,14 +34,14 @@ impl WorkerPool {
     pub fn new(
         initial: Option<usize>,
         script_src: Option<String>,
-        wasm_bindgen_name: Option<String>,
         worker_js_preamble: Option<String>,
+        wasm_bindgen_name: Option<String>,
     ) -> Result<WorkerPool, JsValue> {
         Self::new_raw(
             initial.unwrap_or_else(get_wasm_hardware_concurrency),
             script_src.unwrap_or_else(|| script_path().expect("fail to get script path")),
-            wasm_bindgen_name.unwrap_or_else(|| "wasm_bindgen".to_owned()),
             worker_js_preamble.unwrap_or_default(),
+            wasm_bindgen_name.unwrap_or_else(|| "wasm_bindgen".to_owned()),
         )
     }
 
@@ -59,8 +59,8 @@ impl WorkerPool {
     pub fn new_raw(
         initial: usize,
         script_src: String,
-        wasm_bindgen_name: String,
         worker_js_preamble: String,
+        wasm_bindgen_name: String,
     ) -> Result<WorkerPool, JsValue> {
         let pool = WorkerPool {
             script_src,
