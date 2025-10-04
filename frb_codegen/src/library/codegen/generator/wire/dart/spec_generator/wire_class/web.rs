@@ -1,6 +1,7 @@
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::internal_config::{
-    DartOutputClassNamePack, GeneratorWireDartInternalConfig,
+    DartOutputClassNamePack, GeneratorWireDartDefaultExternalLibraryLoaderInternalConfig,
+    GeneratorWireDartInternalConfig,
 };
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
@@ -49,12 +50,16 @@ fn generate_wasm_module_class(
         wasm_module_name, ..
     } = &config.dart_output_class_name_pack;
 
+    let GeneratorWireDartDefaultExternalLibraryLoaderInternalConfig {
+        wasm_bindgen_name, ..
+    } = &config.default_external_library_loader;
+
     let body = (methods.iter())
         .map(|x| format!("external {};", x.declaration))
         .join("\n\n");
 
     format!(
-        "@JS('wasm_bindgen') external {wasm_module_name} get wasmModule;
+        "@JS('{wasm_bindgen_name}') external {wasm_module_name} get wasmModule;
 
         @JS() @anonymous extension type {wasm_module_name}._(JSObject _) implements JSObject {{
             {body}
