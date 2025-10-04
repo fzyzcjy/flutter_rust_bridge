@@ -1257,6 +1257,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  FutureOr<InternetAddress> Function(InternetAddress)
+      dco_decode_DartFn_Inputs_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr_Output_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr_AnyhowException(
+          dynamic raw);
+
+  @protected
   FutureOr<void> Function(Object)
       dco_decode_DartFn_Inputs_DartOpaque_Output_unit_AnyhowException(
           dynamic raw);
@@ -11039,6 +11044,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMessageWithCustomSerializerTwinNormal(
           int self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_DartFn_Inputs_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr_Output_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr_AnyhowException(
+          FutureOr<InternetAddress> Function(InternetAddress) self,
+          SseSerializer serializer);
 
   @protected
   void sse_encode_DartFn_Inputs_DartOpaque_Output_unit_AnyhowException(

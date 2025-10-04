@@ -4,6 +4,8 @@
 
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "sync sse"]}
 
+import 'dart:io' show InternetAddress;
+
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/dart_fn_twin_rust_async_sse.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
@@ -99,5 +101,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
           callback: (s) => throw Exception('dummy exception'),
           expectOutput: null);
     });
+  });
+
+  test('rustCallDartUsingIpv4AddrTwinRustAsyncSse', () async {
+    InternetAddress? addr;
+    await rustCallDartUsingIpv4AddrTwinRustAsyncSse(callback: (rustAddr) {
+      addr = rustAddr;
+      return InternetAddress("127.0.0.255");
+    });
+    expect(addr!.address, "127.0.0.1");
   });
 }

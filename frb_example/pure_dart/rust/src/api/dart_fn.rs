@@ -1,6 +1,7 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "sync sse"]}
 
 use flutter_rust_bridge::{DartFnFuture, DartOpaque};
+use std::net::Ipv4Addr;
 
 pub struct DemoStructForRustCallDartTwinNormal {
     pub name: String,
@@ -69,4 +70,13 @@ pub async fn rust_call_dart_return_result_twin_normal(
     expect_output: Option<String>,
 ) {
     assert_eq!(callback("hi".to_owned()).await.ok(), expect_output);
+}
+
+pub async fn rust_call_dart_using_ipv4_addr_twin_normal(
+    callback: impl Fn(Ipv4Addr) -> DartFnFuture<Ipv4Addr>,
+) {
+    assert_eq!(
+        callback(Ipv4Addr::new(127, 0, 0, 1)).await,
+        Ipv4Addr::new(127, 0, 0, 255)
+    );
 }
