@@ -83,6 +83,7 @@ pub(crate) fn call_shell(
     command_run!(program in pwd, options = options, *args)
 }
 
+#[derive(Debug, PartialEq)]
 pub(crate) struct CommandInfo {
     pub program: String,
     pub args: Vec<String>,
@@ -192,4 +193,35 @@ pub(crate) fn check_exit_code(res: &Output) -> anyhow::Result<()> {
         // frb-coverage:ignore-end
     }
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    #[cfg(windows)]
+    fn test_call_shell_info() {
+        let params = [
+            "fvm",
+            "dart",
+            "run",
+            "flutter_rust_bridge",
+            "build-web",
+            "--dart-root",
+            "D:\\coding\\project",
+            "'--wasm-pack-rustflags=--cfg getrandom_backend=\\\"wasm_js\\\"' -C target-feature=+atomics,+bulk-memory,+mutable-globals -C link-args=--shared-memory",
+        ];  
+        let actual = call_shell_info(&params.into_iter().map(PathBuf::from).collect::<Vec<_>>());
+        let cmd = "fvm dart run flutter_rust_bridge build-web --dart-root D:`\\coding`\\project `'--wasm-pack-rustflags=--cfg` getrandom_backend=`\\`\"wasm_js`\\`\"`'` -C` target-feature=+atomics,+bulk-memory,+mutable-globals` -C` link-args=--shared-memory";
+        let expect = CommandInfo {
+            program: "powershell".to_owned(),
+            args: vec![
+                "-noprofile".to_owned(),
+                "-command".to_owned(),
+                format!("& {}", cmd),
+            ],
+        };
+        assert_eq!(actual, expect);
+    }
 }
