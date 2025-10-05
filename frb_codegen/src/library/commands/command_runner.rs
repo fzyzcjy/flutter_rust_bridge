@@ -113,11 +113,11 @@ pub fn windows_escape_for_powershell(section_in: &str) -> String {
     let mut section_out = String::new(); 
     for c in section_in.chars() {
         match c {
-            '`' => section_out.push_str(r#"``"#), 
-            '"' => section_out.push_str(r#"`""#), 
-            '\\' => section_out.push_str(r#"`\"#), 
-            ' ' => section_out.push_str(r#"` "#), 
-            _ => section_out.push(c),       
+            '`' | '"' | '\\' | ' ' | '\'' => {
+                section_out.push('`');
+                section_out.push(c)
+            }
+            _ => section_out.push(c),      
         }
     }
     section_out 
