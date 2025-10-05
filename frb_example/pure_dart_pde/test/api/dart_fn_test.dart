@@ -8,6 +8,8 @@ import 'package:frb_example_pure_dart_pde/src/rust/api/dart_fn.dart';
 import 'package:frb_example_pure_dart_pde/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
+import '../test_utils.dart';
+
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
@@ -99,7 +101,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     });
   });
 
-  test('rustCallDartUsingIpv4AddrTwinNormal', () async {
+  // Dart Web does not support `InternetAddress`
+  test('rustCallDartUsingIpv4AddrTwinNormal', skip: kIsWeb, () async {
     InternetAddress? addr;
     await rustCallDartUsingIpv4AddrTwinNormal(
       callback: (rustAddr) {
