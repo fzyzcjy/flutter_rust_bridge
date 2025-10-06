@@ -92,12 +92,10 @@ pub(crate) struct CommandInfo {
 pub(crate) fn call_shell_info(cmd: &[PathBuf]) -> CommandInfo {
     #[cfg(windows)]
     {
-        println!("******11******** cmd={:?}", cmd); /////////////////////////// REMOVE ///////////////////////////
         let cmd = cmd
             .iter()
             .map(|section| windows_escape_for_powershell(&section.to_str().unwrap()))
             .join(" ");
-        println!("******22******** cmd={:?}", cmd); /////////////////////////// REMOVE ///////////////////////////
         return CommandInfo {
             program: "powershell".to_owned(),
             args: vec![
