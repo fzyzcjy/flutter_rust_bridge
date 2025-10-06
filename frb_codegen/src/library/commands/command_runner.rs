@@ -92,7 +92,12 @@ pub(crate) struct CommandInfo {
 pub(crate) fn call_shell_info(cmd: &[PathBuf]) -> CommandInfo {
     #[cfg(windows)]
     {
-        let cmd = cmd.iter().map(|section| windows_escape_for_powershell(&section.to_str().unwrap())).join(" ");
+        println!("******11******** cmd={:?}", cmd); /////////////////////////// REMOVE ///////////////////////////
+        let cmd = cmd
+            .iter()
+            .map(|section| windows_escape_for_powershell(&section.to_str().unwrap()))
+            .join(" ");
+        println!("******22******** cmd={:?}", cmd); /////////////////////////// REMOVE ///////////////////////////
         return CommandInfo {
             program: "powershell".to_owned(),
             args: vec![
@@ -113,11 +118,14 @@ pub(crate) fn call_shell_info(cmd: &[PathBuf]) -> CommandInfo {
     }
 }
 
-/// Selectively escapes a string in a PowerShell 5.1 command.
+/// Applies a minimal set of backtick escapes to convert a string into a PowerShell 5.1 argument token.
 ///
-/// PowerShell 5.1, which is the default `powershell.exe` on Windows, has particular string
+/// Note: The escapes are for PowerShell 5.1 or earlier (`powershell.exe`) which is invoked
+/// the by the calling call_shell_info() function, not PowerShell 7+ (`pwsh.exe`).
+///
+/// PowerShell 5.1 (i.e. `powershell.exe` on Windows), has particular string
 /// escaping requirements. This function handles escaping of special characters to ensure the
-/// string is passed as a single, intact argument. The PowerShell 5.1 argument-mode metacharacters
+/// string is passed as a single, intact argument token. The PowerShell 5.1 argument-mode metacharacters
 /// (characters with special syntactic meaning) are:
 ///
 ///   \: File path separator (e.g., C:\Users) and escape character in some contexts.
@@ -136,14 +144,12 @@ pub(crate) fn call_shell_info(cmd: &[PathBuf]) -> CommandInfo {
 ///   <space>: Token separator; divides command, parameters, and arguments. Required between cmdlets, parameters, and values.
 ///
 /// In the context of the flutter rust bridge Rust Powershell 5.1 caller use cases, only the \, ", and <space> metacharacters
-/// have been identified as critically requiring escaping to allow strings such as
+/// have been identified (so far) as critically requiring escaping to allow strings such as:
 ///     --wasm-pack-rustflags=--cfg getrandom_backend=\"wasm_js\" -C target-feature=+atomics,+bulk-memory,+mutable-globals -C link-args=--shared-memory
-/// to be escaped as single argument tokens as follows
+/// to be escaped as single argument token as follows:
 ///     --wasm-pack-rustflags=--cfg` getrandom_backend=`\`"wasm_js`\`"` -C` target-feature=+atomics,+bulk-memory,+mutable-globals` -C` link-args=--shared-memory
-/// This permits the execution of this command in the Windows Powershell CLI
+/// This minimal set of escapes permits the execution of this command in the Windows Powershell 7 CLI terminal:
 ///     flutter_rust_bridge_codegen build-web "--wasm-pack-rustflags=--cfg getrandom_backend=`\`"wasm_js`\`" -C target-feature=+atomics,+bulk-memory,+mutable-globals -C link-args=--shared-memory"
-///
-/// Note: This is for PowerShell 5.1 (`powershell.exe`), not PowerShell 7+ (`pwsh.exe`).
 pub fn windows_escape_for_powershell(section_in: &str) -> String {
     let mut token_out = String::new();
     for c in section_in.chars() {
