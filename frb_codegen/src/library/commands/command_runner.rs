@@ -90,6 +90,7 @@ pub(crate) struct CommandInfo {
 }
 
 pub(crate) fn call_shell_info(cmd: &[PathBuf]) -> CommandInfo {
+    
     #[cfg(windows)]
     let cmd = cmd.iter().map(|section| windows_escape_for_powershell(&section.to_str().unwrap())).join(" ");
     return CommandInfo {
