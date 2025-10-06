@@ -90,46 +90,72 @@ pub(crate) struct CommandInfo {
 }
 
 pub(crate) fn call_shell_info(cmd: &[PathBuf]) -> CommandInfo {
-    
     #[cfg(windows)]
-    let cmd = cmd.iter().map(|section| windows_escape_for_powershell(&section.to_str().unwrap())).join(" ");
-    return CommandInfo {
-        program: "powershell".to_owned(),
-        args: vec![
-            "-noprofile".to_owned(),
-            "-command".to_owned(),
-            format!("& {}", cmd),
-        ],
-    };
+    {
+        let cmd = cmd.iter().map(|section| windows_escape_for_powershell(&section.to_str().unwrap())).join(" ");
+        return CommandInfo {
+            program: "powershell".to_owned(),
+            args: vec![
+                "-noprofile".to_owned(),
+                "-command".to_owned(),
+                format!("& {}", cmd),
+            ],
+        };
+    }
 
     #[cfg(not(windows))]
-    let cmd = cmd.iter().map(|section| format!("{section:?}")).join(" ");
-    return CommandInfo {
-        program: "sh".to_owned(),
-        args: vec!["-c".to_owned(), cmd],
-    };
+    {
+        let cmd = cmd.iter().map(|section| format!("{section:?}")).join(" ");
+        return CommandInfo {
+            program: "sh".to_owned(),
+            args: vec!["-c".to_owned(), cmd],
+        };
+    }
 }
 
-/// Escapes a string for use as a single argument in a PowerShell command.
+/// Selectively escapes a string in a PowerShell 5.1 command.
 ///
-/// PowerShell 5.1, which is the default `powershell.exe` on Windows, has
-/// particular string escaping requirements. This function handles escaping
-/// of special characters to ensure the string is passed as a single,
-/// intact argument.
+/// PowerShell 5.1, which is the default `powershell.exe` on Windows, has particular string
+/// escaping requirements. This function handles escaping of special characters to ensure the
+/// string is passed as a single, intact argument. The PowerShell 5.1 argument-mode metacharacters
+/// (characters with special syntactic meaning) are:
+///
+///   \: File path separator (e.g., C:\Users) and escape character in some contexts.
+///   &: Begins argument mode and background execution.
+///   *: Wildcard for filename expansion (globbing), matches zero or more characters in file paths (e.g., *.txt).
+///   +: Used for string concatenation.
+///   ?: Wildcard matching a single character in paths (e.g., file?.txt matches file1.txt).
+///   |: Pipeline operator; sends output of one command as input to another (e.g., Get-Process | Where CPU).
+///   (, ): Subexpression operator; used to group expressions or invoke commands (e.g., (Get-Date).Year).
+///   <, >: Input and output redirection.
+///   $: Begins variable names (e.g., $name) and subexpressions (e.g., $($x + 1)).
+///   .: Current directory reference (e.g., .\script.ps1) or method/property access (e.g., $obj.ToString()).
+///   #: Begins a comment (only special at the start of a token, everything after is ignored by the parser).
+///   @: When passed to external programs (like cl.exe), @filename may denote a response file (context-specific).
+///   ': Used to create a literal string, meaning the content within the quotes is interpreted exactly as written, without variable expansion or command substitution.
+///   <space>: Token separator; divides command, parameters, and arguments. Required between cmdlets, parameters, and values.
+///
+/// In the context of the flutter rust bridge Rust Powershell 5.1 caller use cases, only the \, ", and <space> metacharacters
+/// have been identified as critically requiring escaping to allow strings such as
+///     --wasm-pack-rustflags=--cfg getrandom_backend=\"wasm_js\" -C target-feature=+atomics,+bulk-memory,+mutable-globals -C link-args=--shared-memory
+/// to be escaped as single argument tokens as follows
+///     --wasm-pack-rustflags=--cfg` getrandom_backend=`\`"wasm_js`\`"` -C` target-feature=+atomics,+bulk-memory,+mutable-globals` -C` link-args=--shared-memory
+/// This permits the execution of this command in the Windows Powershell CLI
+///     flutter_rust_bridge_codegen build-web "--wasm-pack-rustflags=--cfg getrandom_backend=`\`"wasm_js`\`" -C target-feature=+atomics,+bulk-memory,+mutable-globals -C link-args=--shared-memory"
 ///
 /// Note: This is for PowerShell 5.1 (`powershell.exe`), not PowerShell 7+ (`pwsh.exe`).
 pub fn windows_escape_for_powershell(section_in: &str) -> String {
-    let mut section_out = String::new();
+    let mut token_out = String::new();
     for c in section_in.chars() {
         match c {
-            '`' | '"' | '\\' | ' ' | '\'' | '$' | '(' | ')' | '|' | '#' => {
-                section_out.push('`');
-                section_out.push(c)
+            '"' | '\\' | ' ' => {
+                token_out.push('`');
+                token_out.push(c)
             }
-            _ => section_out.push(c),
+            _ => token_out.push(c),
         }
     }
-    section_out
+    token_out
 }
 
 #[derive(Default)]
@@ -235,9 +261,9 @@ mod tests {
     #[test]
     #[cfg(windows)]
     fn test_call_shell_info_all_escapes() {
-        let params = ["`\"\\ '$()|#"];
+        let params = ["abc\"def\\ghi jkl"];
         let actual = call_shell_info(&params.into_iter().map(PathBuf::from).collect::<Vec<_>>());
-        let cmd = "```\"`\\` `'`$`(`)`|`#";
+        let cmd = "abc`\"def`\\ghi` jkl";
         let expect = CommandInfo {
             program: "powershell".to_owned(),
             args: vec![
