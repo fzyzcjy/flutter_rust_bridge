@@ -154,10 +154,10 @@ pub fn windows_escape_for_powershell(section_in: &str) -> String {
         match c {
             '"' | '\\' | ' ' => {
                 token_out.push('`');
-                token_out.push(c)
             }
-            _ => token_out.push(c),
+            _ => (),
         }
+        token_out.push(c);
     }
     token_out
 }
