@@ -90,8 +90,8 @@ pub(crate) struct CommandInfo {
 }
 
 pub(crate) fn call_shell_info(cmd: &[PathBuf]) -> CommandInfo {
-
-    #[cfg(windows)]
+    
+    #[cfg(windows)]	
     let cmd = cmd.iter().map(|section| windows_escape_for_powershell(&section.to_str().unwrap())).join(" ");
     return CommandInfo {
         program: "powershell".to_owned(),
@@ -110,18 +110,26 @@ pub(crate) fn call_shell_info(cmd: &[PathBuf]) -> CommandInfo {
     };
 }
 
+/// Escapes a string for use as a single argument in a PowerShell command.
+///
+/// PowerShell 5.1, which is the default `powershell.exe` on Windows, has
+/// particular string escaping requirements. This function handles escaping
+/// of special characters to ensure the string is passed as a single,
+/// intact argument.
+///
+/// Note: This is for PowerShell 5.1 (`powershell.exe`), not PowerShell 7+ (`pwsh.exe`).
 pub fn windows_escape_for_powershell(section_in: &str) -> String {
-    let mut section_out = String::new(); 
+    let mut section_out = String::new();
     for c in section_in.chars() {
         match c {
-            '`' | '"' | '\\' | ' ' | '\'' => {
+            '`' | '"' | '\\' | ' ' | '\'' | '$' | '(' | ')' | '|' | '#' => {
                 section_out.push('`');
                 section_out.push(c)
             }
-            _ => section_out.push(c),      
+            _ => section_out.push(c),
         }
     }
-    section_out 
+    section_out
 }
 
 #[derive(Default)]
@@ -210,10 +218,26 @@ mod tests {
             "build-web",
             "--dart-root",
             "D:\\coding\\project",
-            "'--wasm-pack-rustflags=--cfg getrandom_backend=\\\"wasm_js\\\"' -C target-feature=+atomics,+bulk-memory,+mutable-globals -C link-args=--shared-memory",
-        ];  
+            "--wasm-pack-rustflags=--cfg getrandom_backend=\\\"wasm_js\\\" -C target-feature=+atomics,+bulk-memory,+mutable-globals -C link-args=--shared-memory",
+        ];
         let actual = call_shell_info(&params.into_iter().map(PathBuf::from).collect::<Vec<_>>());
-        let cmd = "fvm dart run flutter_rust_bridge build-web --dart-root D:`\\coding`\\project `'--wasm-pack-rustflags=--cfg` getrandom_backend=`\\`\"wasm_js`\\`\"`'` -C` target-feature=+atomics,+bulk-memory,+mutable-globals` -C` link-args=--shared-memory";
+        let cmd = "fvm dart run flutter_rust_bridge build-web --dart-root D:`\\coding`\\project --wasm-pack-rustflags=--cfg` getrandom_backend=`\\`\"wasm_js`\\`\"` -C` target-feature=+atomics,+bulk-memory,+mutable-globals` -C` link-args=--shared-memory";
+        let expect = CommandInfo {
+            program: "powershell".to_owned(),
+            args: vec![
+                "-noprofile".to_owned(),
+                "-command".to_owned(),
+                format!("& {}", cmd),
+            ],
+        };
+        assert_eq!(actual, expect);
+    }
+    #[test]
+    #[cfg(windows)]
+    fn test_call_shell_info_all_escapes() {
+        let params = ["`\"\\ '$()|#"];
+        let actual = call_shell_info(&params.into_iter().map(PathBuf::from).collect::<Vec<_>>());
+        let cmd = "```\"`\\` `'`$`(`)`|`#";
         let expect = CommandInfo {
             program: "powershell".to_owned(),
             args: vec![
