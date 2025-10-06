@@ -152,9 +152,7 @@ pub fn windows_escape_for_powershell(section_in: &str) -> String {
     let mut token_out = String::new();
     for c in section_in.chars() {
         match c {
-            '"' | '\\' | ' ' => {
-                token_out.push('`');
-            }
+            '"' | '\\' | ' ' => token_out.push('`'),
             _ => (),
         }
         token_out.push(c);
