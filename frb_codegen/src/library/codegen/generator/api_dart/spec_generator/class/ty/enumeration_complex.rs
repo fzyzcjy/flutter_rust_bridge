@@ -92,12 +92,13 @@ impl EnumRefApiDartGenerator<'_> {
             .iter()
             .map(|field| {
                 // If no split, default values are not valid.
-                let default = optional_boundary_index(&st.fields)
-                    .is_some()
-                    .then(|| {
+                let default = if optional_boundary_index(&st.fields).is_some() {
+                    {
                         generate_field_default(field, true, self.context.config.dart_enums_style)
-                    })
-                    .unwrap_or_default();
+                    }
+                } else {
+                    Default::default()
+                };
                 let comments = generate_dart_comments(&field.comments);
                 let type_str =
                     ApiDartGenerator::new(field.ty.clone(), self.context).dart_api_type();

@@ -24,38 +24,39 @@ jobs:
         include:
           - target: x86_64-unknown-linux-gnu
             os: ubuntu-latest
-            name: flutter_rust_bridge_codegen-x86_64-unknown-linux-gnu-${{ github.ref_name }}.tgz
+            name: flutter_rust_bridge_codegen-x86_64-unknown-linux-gnu-${{ inputs.publish_tag || github.ref_name }}.tgz
           - target: x86_64-unknown-linux-musl
             os: ubuntu-latest
-            name: flutter_rust_bridge_codegen-x86_64-unknown-linux-musl-${{ github.ref_name }}.tgz
+            name: flutter_rust_bridge_codegen-x86_64-unknown-linux-musl-${{ inputs.publish_tag || github.ref_name }}.tgz
           - target: i686-unknown-linux-musl
             os: ubuntu-latest
-            name: flutter_rust_bridge_codegen-i686-unknown-linux-musl-${{ github.ref_name }}.tgz
+            name: flutter_rust_bridge_codegen-i686-unknown-linux-musl-${{ inputs.publish_tag || github.ref_name }}.tgz
           - target: aarch64-unknown-linux-musl
             os: ubuntu-latest
-            name: flutter_rust_bridge_codegen-aarch64-unknown-linux-musl-${{ github.ref_name }}.tgz
+            name: flutter_rust_bridge_codegen-aarch64-unknown-linux-musl-${{ inputs.publish_tag || github.ref_name }}.tgz
           - target: arm-unknown-linux-musleabihf
             os: ubuntu-latest
-            name: flutter_rust_bridge_codegen-arm-unknown-linux-musleabihf-${{ github.ref_name }}.tgz
+            name: flutter_rust_bridge_codegen-arm-unknown-linux-musleabihf-${{ inputs.publish_tag || github.ref_name }}.tgz
           - target: x86_64-apple-darwin
             os: macos-latest
-            name: flutter_rust_bridge_codegen-x86_64-apple-darwin-${{ github.ref_name }}.tgz
+            name: flutter_rust_bridge_codegen-x86_64-apple-darwin-${{ inputs.publish_tag || github.ref_name }}.tgz
           - target: aarch64-apple-darwin
             os: macos-latest
-            name: flutter_rust_bridge_codegen-aarch64-apple-darwin-${{ github.ref_name }}.tgz
+            name: flutter_rust_bridge_codegen-aarch64-apple-darwin-${{ inputs.publish_tag || github.ref_name }}.tgz
           - target: x86_64-pc-windows-msvc
             os: windows-latest
-            name: flutter_rust_bridge_codegen-x86_64-pc-windows-msvc-${{ github.ref_name }}.zip
+            name: flutter_rust_bridge_codegen-x86_64-pc-windows-msvc-${{ inputs.publish_tag || github.ref_name }}.zip
           - target: i686-pc-windows-msvc
             os: windows-latest
-            name: flutter_rust_bridge_codegen-i686-pc-windows-msvc-${{ github.ref_name }}.zip
+            name: flutter_rust_bridge_codegen-i686-pc-windows-msvc-${{ inputs.publish_tag || github.ref_name }}.zip
           - target: x86_64-unknown-freebsd
             os: ubuntu-latest
-            name: flutter_rust_bridge_codegen-x86_64-unknown-freebsd-${{ github.ref_name }}.tgz
+            name: flutter_rust_bridge_codegen-x86_64-unknown-freebsd-${{ inputs.publish_tag || github.ref_name }}.tgz
     steps:
       - name: Checkout
         uses: actions/checkout@v5
         with:
+          ref: ${{ inputs.publish_tag || github.ref }}
           submodules: recursive
       - name: Setup Rust toolchain
         uses: dtolnay/rust-toolchain@stable
