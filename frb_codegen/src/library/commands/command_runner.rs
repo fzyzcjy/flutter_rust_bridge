@@ -262,7 +262,7 @@ mod tests {
     }
     #[test]
     #[cfg(windows)]
-    fn test_call_shell_info_all_escapes() {
+    fn test_call_shell_info_escapes() {
         let params = ["abc\"def\\ghi jkl"];
         let actual = call_shell_info(&params.into_iter().map(PathBuf::from).collect::<Vec<_>>());
         let cmd = "abc`\"def`\\ghi` jkl";
@@ -275,5 +275,12 @@ mod tests {
             ],
         };
         assert_eq!(actual, expect);
+    }
+    #[test]
+    fn test_windows_escape_for_powershell() {
+        let section_in = "detects regression \"errors\" when tests are run \\ on non_windows systems";
+        let actual_token_out = windows_escape_for_powershell(&section_in);
+        let expect_token_out = "detects` regression` `\"errors`\"` when` tests` are` run` `\\` on` non_windows` systems";
+        assert_eq!(actual_token_out, expect_token_out);
     }
 }
