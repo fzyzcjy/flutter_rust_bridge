@@ -104,12 +104,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
   // Dart Web does not support `InternetAddress`
   test('rustCallDartUsingIpv4AddrTwinNormal', skip: kIsWeb, () async {
     InternetAddress? addr;
-    await rustCallDartUsingIpv4AddrTwinNormal(
-      callback: (rustAddr) {
-        addr = rustAddr;
-        return InternetAddress("127.0.0.255");
-      },
-    );
+    await rustCallDartUsingIpv4AddrTwinNormal(callback: (rustAddr) {
+      addr = rustAddr;
+      return InternetAddress("127.0.0.255");
+    });
     expect(addr!.address, "127.0.0.1");
   });
 }
