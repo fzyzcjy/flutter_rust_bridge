@@ -2680,6 +2680,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  FutureOr<InternetAddress> Function(InternetAddress)
+      dco_decode_DartFn_Inputs_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr_Output_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr_AnyhowException(
+          dynamic raw);
+
+  @protected
   FutureOr<void> Function(Object)
       dco_decode_DartFn_Inputs_DartOpaque_Output_unit_AnyhowException(
           dynamic raw);
@@ -20588,6 +20593,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  String
+      cst_encode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr(
+          InternetAddress raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    throw UnimplementedError(
+        'Not implemented in this codec, please use the other one');
+  }
+
+  @protected
   JSAny cst_encode_DartOpaque_array_1(ObjectArray1 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_DartOpaque(raw);
@@ -29482,6 +29496,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   PlatformPointer
+      cst_encode_DartFn_Inputs_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr_Output_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr_AnyhowException(
+          FutureOr<InternetAddress> Function(InternetAddress) raw);
+
+  @protected
+  PlatformPointer
       cst_encode_DartFn_Inputs_DartOpaque_Output_unit_AnyhowException(
           FutureOr<void> Function(Object) raw);
 
@@ -31671,6 +31690,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMessageWithCustomSerializerTwinNormal(
           int self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_DartFn_Inputs_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr_Output_CustomSerializer_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIpv4Addr_AnyhowException(
+          FutureOr<InternetAddress> Function(InternetAddress) self,
+          SseSerializer serializer);
 
   @protected
   void sse_encode_DartFn_Inputs_DartOpaque_Output_unit_AnyhowException(
@@ -58472,6 +58497,36 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_two_args_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
+  void wire__crate__api__dart_fn__rust_call_dart_using_ipv4_addr_twin_normal(
+          NativePortType port_, PlatformPointer callback) =>
+      wasmModule
+          .wire__crate__api__dart_fn__rust_call_dart_using_ipv4_addr_twin_normal(
+              port_, callback);
+
+  void wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_using_ipv4_addr_twin_rust_async(
+          NativePortType port_, PlatformPointer callback) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_using_ipv4_addr_twin_rust_async(
+              port_, callback);
+
+  void wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_using_ipv4_addr_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_using_ipv4_addr_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_using_ipv4_addr_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_using_ipv4_addr_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
   void wire__crate__api__dart_fn__rust_call_dart_with_dart_opaque_arg_twin_normal(
           NativePortType port_,
           PlatformPointer input,
@@ -76459,6 +76514,28 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_two_args_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__dart_fn__rust_call_dart_using_ipv4_addr_twin_normal(
+          NativePortType port_, PlatformPointer callback);
+
+  external void
+      wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_using_ipv4_addr_twin_rust_async(
+          NativePortType port_, PlatformPointer callback);
+
+  external void
+      wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_using_ipv4_addr_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_using_ipv4_addr_twin_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
