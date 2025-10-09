@@ -151,7 +151,7 @@ pub(crate) fn call_shell_info(cmd: &[PathBuf]) -> CommandInfo {
 /// minimal set of escapes, then the alternative is to supply an new argument option to the `flutter_rust_bridge_codegen`
 /// CLI command that specifies the characters to be escaped for the argument tokens of the internal PowerShell 5.1 call, e.g.:
 ///     PS> flutter_rust_bridge_codegen build-web --ps51-escapes '"\ ' ...
-#[cfg(windows)]
+#[cfg(any(windows, test))]
 pub fn windows_escape_for_powershell(section_in: &str) -> String {
     let mut token_out = String::new();
     for c in section_in.chars() {
