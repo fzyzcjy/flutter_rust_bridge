@@ -96,23 +96,22 @@ pub(crate) fn call_shell_info(cmd: &[PathBuf]) -> CommandInfo {
             .iter()
             .map(|section| windows_escape_for_powershell(section.to_str().unwrap()))
             .join(" ");
-        return CommandInfo {
+        CommandInfo {
             program: "powershell".to_owned(),
             args: vec![
                 "-noprofile".to_owned(),
                 "-command".to_owned(),
                 format!("& {}", cmd),
             ],
-        };
+        }
     }
-
     #[cfg(not(windows))]
     {
         let cmd = cmd.iter().map(|section| format!("{section:?}")).join(" ");
-        return CommandInfo {
+        CommandInfo {
             program: "sh".to_owned(),
             args: vec!["-c".to_owned(), cmd],
-        };
+        }
     }
 }
 
