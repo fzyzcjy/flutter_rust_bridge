@@ -217,13 +217,11 @@ let wasm_bindgen;
     };
 
     /**
-     * @param {number} call_id
-     * @param {any} ptr_
-     * @param {number} rust_vec_len_
-     * @param {number} data_len_
+     * @returns {number}
      */
-    __exports.frb_dart_fn_deliver_output = function(call_id, ptr_, rust_vec_len_, data_len_) {
-        wasm.frb_dart_fn_deliver_output(call_id, ptr_, rust_vec_len_, data_len_);
+    __exports.frb_get_rust_content_hash = function() {
+        const ret = wasm.frb_get_rust_content_hash();
+        return ret;
     };
 
     /**
@@ -238,11 +236,13 @@ let wasm_bindgen;
     };
 
     /**
-     * @returns {number}
+     * @param {number} call_id
+     * @param {any} ptr_
+     * @param {number} rust_vec_len_
+     * @param {number} data_len_
      */
-    __exports.frb_get_rust_content_hash = function() {
-        const ret = wasm.frb_get_rust_content_hash();
-        return ret;
+    __exports.frb_dart_fn_deliver_output = function(call_id, ptr_, rust_vec_len_, data_len_) {
+        wasm.frb_dart_fn_deliver_output(call_id, ptr_, rust_vec_len_, data_len_);
     };
 
     /**
@@ -252,17 +252,8 @@ let wasm_bindgen;
         wasm.frb_dart_opaque_drop_thread_box_persistent_handle(ptr);
     };
 
-    /**
-     * # Safety
-     *
-     * This should never be called manually.
-     * @param {any} handle
-     * @param {any} dart_handler_port
-     * @returns {number}
-     */
-    __exports.frb_dart_opaque_dart2rust_encode = function(handle, dart_handler_port) {
-        const ret = wasm.frb_dart_opaque_dart2rust_encode(handle, dart_handler_port);
-        return ret >>> 0;
+    __exports.wasm_start_callback = function() {
+        wasm.wasm_start_callback();
     };
 
     /**
@@ -307,20 +298,29 @@ let wasm_bindgen;
         }
     };
 
-    __exports.wasm_start_callback = function() {
-        wasm.wasm_start_callback();
+    /**
+     * # Safety
+     *
+     * This should never be called manually.
+     * @param {any} handle
+     * @param {any} dart_handler_port
+     * @returns {number}
+     */
+    __exports.frb_dart_opaque_dart2rust_encode = function(handle, dart_handler_port) {
+        const ret = wasm.frb_dart_opaque_dart2rust_encode(handle, dart_handler_port);
+        return ret >>> 0;
     };
 
     function __wbg_adapter_36(arg0, arg1, arg2) {
-        wasm.closure144_externref_shim(arg0, arg1, arg2);
+        wasm.closure150_externref_shim(arg0, arg1, arg2);
     }
 
     function __wbg_adapter_39(arg0, arg1, arg2) {
-        wasm.closure175_externref_shim(arg0, arg1, arg2);
+        wasm.closure165_externref_shim(arg0, arg1, arg2);
     }
 
     function __wbg_adapter_135(arg0, arg1, arg2, arg3) {
-        wasm.closure209_externref_shim(arg0, arg1, arg2, arg3);
+        wasm.closure212_externref_shim(arg0, arg1, arg2, arg3);
     }
 
     const WorkerPoolFinalization = (typeof FinalizationRegistry === 'undefined')
@@ -687,16 +687,16 @@ let wasm_bindgen;
             const ret = false;
             return ret;
         };
-        imports.wbg.__wbindgen_closure_wrapper378 = function(arg0, arg1, arg2) {
-            const ret = makeMutClosure(arg0, arg1, 145, __wbg_adapter_36);
+        imports.wbg.__wbindgen_closure_wrapper383 = function(arg0, arg1, arg2) {
+            const ret = makeMutClosure(arg0, arg1, 151, __wbg_adapter_36);
             return ret;
         };
-        imports.wbg.__wbindgen_closure_wrapper440 = function(arg0, arg1, arg2) {
-            const ret = makeMutClosure(arg0, arg1, 176, __wbg_adapter_39);
+        imports.wbg.__wbindgen_closure_wrapper419 = function(arg0, arg1, arg2) {
+            const ret = makeMutClosure(arg0, arg1, 166, __wbg_adapter_39);
             return ret;
         };
-        imports.wbg.__wbindgen_closure_wrapper442 = function(arg0, arg1, arg2) {
-            const ret = makeMutClosure(arg0, arg1, 176, __wbg_adapter_39);
+        imports.wbg.__wbindgen_closure_wrapper421 = function(arg0, arg1, arg2) {
+            const ret = makeMutClosure(arg0, arg1, 166, __wbg_adapter_39);
             return ret;
         };
         imports.wbg.__wbindgen_debug_string = function(arg0, arg1) {
