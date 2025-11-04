@@ -39,7 +39,7 @@ fn main() {
             }
             t1.join().ok();
         }
-        s => panic!("Unknown mode: {}", s),
+        s => panic!("Unknown mode: {s}"),
     }
 }
 
