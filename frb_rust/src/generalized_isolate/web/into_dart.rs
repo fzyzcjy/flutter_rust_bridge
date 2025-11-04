@@ -349,6 +349,6 @@ impl IntoDart for ZeroCopyBuffer<Vec<u64>> {
 #[cfg(feature = "anyhow")]
 impl IntoDart for anyhow::Error {
     fn into_dart(self) -> DartAbi {
-        format!("{:?}", self).into_dart()
+        format!("{self:?}").into_dart()
     }
 }
