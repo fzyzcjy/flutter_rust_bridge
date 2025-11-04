@@ -283,7 +283,7 @@ mod tests {
     fn test_windows_escape_for_powershell() {
         let section_in =
             "detects regression \"errors\" when tests are run \\ on non_windows systems";
-        let actual_token_out = windows_escape_for_powershell(&section_in);
+        let actual_token_out = windows_escape_for_powershell(section_in);
         let expect_token_out = "detects` regression` `\"errors`\"` when` tests` are` run` `\\` on` non_windows` systems";
         assert_eq!(actual_token_out, expect_token_out);
     }

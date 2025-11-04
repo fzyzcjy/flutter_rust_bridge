@@ -33,7 +33,7 @@ impl Transfer for PortLike {
         } else if value.dyn_ref::<web_sys::MessagePort>().is_some() {
             value.unchecked_ref::<Self>().clone()
         } else {
-            panic!("Not a PortLike: {:?}", value)
+            panic!("Not a PortLike: {value:?}")
         }
     }
     fn serialize(self) -> JsValue {

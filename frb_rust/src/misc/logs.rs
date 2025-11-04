@@ -13,6 +13,6 @@ pub(crate) fn log_warn_or_println(message: &str) {
         unreachable!();
         // frb-coverage:ignore-end
     } else {
-        println!("{}", message);
+        println!("{message}");
     }
 }

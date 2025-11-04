@@ -37,7 +37,7 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
         .clone()
         .unwrap_or(match &config.template {
             Template::App => {
-                format!("rust_lib_{}", dart_package_name)
+                format!("rust_lib_{dart_package_name}")
             }
             Template::Plugin => dart_package_name.to_owned(),
         });

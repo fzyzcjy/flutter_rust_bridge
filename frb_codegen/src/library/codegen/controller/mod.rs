@@ -123,7 +123,7 @@ mod tests {
                 let mut run_inner_count = run_inner_count.lock().unwrap();
                 *run_inner_count += 1;
                 fs::write(
-                    (temp_dir.path().join("my_folder")).join(format!("{}.txt", run_inner_count)),
+                    (temp_dir.path().join("my_folder")).join(format!("{run_inner_count}.txt")),
                     "content",
                 )?;
                 Ok(())

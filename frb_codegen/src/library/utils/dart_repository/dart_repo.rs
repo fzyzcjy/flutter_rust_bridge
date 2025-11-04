@@ -175,8 +175,7 @@ impl DartRepository {
                     // This will stop the whole generator and tell the users, so we do not care about testing it
                     // frb-coverage:ignore-start
                     anyhow::Error::msg(format!(
-                        "unable to parse {} version in {}: {:#}",
-                        package, filename, e
+                        "unable to parse {package} version in {filename}: {e:#}"
                     ))
                     // frb-coverage:ignore-end
                 })?
@@ -294,7 +293,7 @@ impl Display for DartPackageVersion {
             DartPackageVersion::Exact(v) => v.to_string(),
             DartPackageVersion::Range(v) => v.to_string(),
         };
-        write!(f, "{}", str)
+        write!(f, "{str}")
     }
 }
 

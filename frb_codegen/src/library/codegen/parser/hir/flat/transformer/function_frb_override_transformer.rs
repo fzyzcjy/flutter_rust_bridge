@@ -12,7 +12,7 @@ pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
 
 fn transform_function(function: &mut HirFlatFunction) -> anyhow::Result<()> {
     if let Some(func_name_stripped) = function.item_fn.name().strip_prefix(FRB_OVERRIDE_PREFIX) {
-        let attr_extra_str = format!(r###"#[frb(name = "{}")]"###, func_name_stripped);
+        let attr_extra_str = format!(r###"#[frb(name = "{func_name_stripped}")]"###);
         let attr_extra = parse_attribute(&attr_extra_str)?;
 
         function.sources.push(HirGenerationSource::FromFrbOverride);
