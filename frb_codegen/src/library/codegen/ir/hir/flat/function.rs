@@ -62,6 +62,7 @@ impl HirFlatFunction {
     }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[derive(Debug, Clone, Serialize)]
 pub(crate) enum HirFlatFunctionOwner {
     Function,

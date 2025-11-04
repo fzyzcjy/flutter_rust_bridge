@@ -94,7 +94,7 @@ impl WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGenerator
                         inner.info.inner_type.safe_ident()
                     )
                 );
-                format!("return {};", body)
+                format!("return {body};")
             }
             MirTypeDelegate::ProxyVariant(_)
             | MirTypeDelegate::ProxyEnum(_)

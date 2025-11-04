@@ -70,6 +70,7 @@ pub enum MirFuncImplModeDartOnly {
     CreateProxyVariant(MirTypeDelegateProxyVariant),
 }
 
+#[allow(clippy::large_enum_variant)]
 pub enum MirFuncOwnerInfo {
     Function,
     Method(MirFuncOwnerInfoMethod),
