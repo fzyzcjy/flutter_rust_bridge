@@ -24,10 +24,10 @@ impl StructOrRecord {
                     if is_field_named {
                         field.name.rust_style(false).to_owned()
                     } else {
-                        format!("{}", index)
+                        format!("{index}")
                     }
                 }
-                StructOrRecord::Record => format!("{}", index),
+                StructOrRecord::Record => format!("{index}"),
             },
         }
     }
