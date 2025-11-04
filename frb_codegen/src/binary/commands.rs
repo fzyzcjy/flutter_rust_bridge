@@ -137,6 +137,10 @@ pub(crate) struct GenerateCommandArgsPrimary {
     #[arg(long)]
     pub default_external_library_loader_web_prefix: Option<String>,
 
+    /// The name of the wasm_bindgen module.
+    #[arg(long)]
+    pub wasm_bindgen_name: Option<String>,
+
     /// Disable language features introduced in Dart 3.
     #[arg(long)]
     pub no_dart3: bool,

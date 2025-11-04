@@ -4,9 +4,13 @@
 
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "sync sse"]}
 
+import 'dart:io' show InternetAddress;
+
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/dart_fn_twin_sse.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
+
+import '../../test_utils.dart';
 
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
@@ -95,5 +99,15 @@ Future<void> main({bool skipRustLibInit = false}) async {
           callback: (s) => throw Exception('dummy exception'),
           expectOutput: null);
     });
+  });
+
+  // Dart Web does not support `InternetAddress`
+  test('rustCallDartUsingIpv4AddrTwinSse', skip: kIsWeb, () async {
+    InternetAddress? addr;
+    await rustCallDartUsingIpv4AddrTwinSse(callback: (rustAddr) {
+      addr = rustAddr;
+      return InternetAddress("127.0.0.255");
+    });
+    expect(addr!.address, "127.0.0.1");
   });
 }

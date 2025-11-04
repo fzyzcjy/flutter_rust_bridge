@@ -62,6 +62,9 @@ Options:
       --default-external-library-loader-web-prefix <DEFAULT_EXTERNAL_LIBRARY_LOADER_WEB_PREFIX>
           The value for defaultExternalLibraryLoader.webPrefix
 
+      --wasm-bindgen-name <WASM_BINDGEN_NAME>
+          The name of the wasm_bindgen module
+
       --no-dart3
           Disable language features introduced in Dart 3
 
