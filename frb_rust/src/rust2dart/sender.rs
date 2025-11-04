@@ -53,7 +53,7 @@ mod tests {
 
     #[test]
     fn test_rust2dart_send_error() {
-        assert!(format!("{}", Rust2DartSendError).contains("post message"));
-        assert!(format!("{:?}", Rust2DartSendError).contains("post message"));
+        assert!(format!("{Rust2DartSendError}").contains("post message"));
+        assert!(format!("{Rust2DartSendError:?}").contains("post message"));
     }
 }
