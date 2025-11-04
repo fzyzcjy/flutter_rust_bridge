@@ -37,7 +37,7 @@ pub struct Rust2DartSendError;
 
 impl fmt::Debug for Rust2DartSendError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{}", self)
+        write!(f, "{self}")
     }
 }
 
