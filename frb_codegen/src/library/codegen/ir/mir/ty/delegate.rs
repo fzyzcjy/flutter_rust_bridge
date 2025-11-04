@@ -173,7 +173,7 @@ impl MirTypeTrait for MirTypeDelegate {
             //     "ZeroCopyBuffer_".to_owned() + &self.get_delegate().safe_ident()
             // }
             MirTypeDelegate::PrimitiveEnum(mir) => mir.mir.safe_ident(),
-            MirTypeDelegate::Time(mir) => format!("Chrono_{}", mir),
+            MirTypeDelegate::Time(mir) => format!("Chrono_{mir}"),
             // MirTypeDelegate::TimeList(mir) => format!("Chrono_{}List", mir),
             MirTypeDelegate::Uuid => "Uuid".to_owned(),
             // MirTypeDelegate::Uuids => "Uuids".to_owned(),
