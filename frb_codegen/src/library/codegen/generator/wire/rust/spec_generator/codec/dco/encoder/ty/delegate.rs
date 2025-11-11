@@ -47,8 +47,12 @@ impl WireRustCodecDcoGeneratorEncoderTrait for DelegateWireRustCodecDcoGenerator
             MirTypeDelegate::CustomSerDes(inner) => {
                 let name = inner.info.cleared_rust_api_type();
                 let wrapper_name = format!("FrbWrapper<{name}>");
+                let body = format!(
+                    "{}(self.0).into_dart()",
+                    inner.info.rust2dart.rust_function.rust_style()
+                );
                 Some(
-                    generate_impl_into_dart(&wrapper_name, "unimplemented!()")
+                    generate_impl_into_dart(&wrapper_name, &body)
                         + &generate_impl_into_into_dart(&name, &Some(wrapper_name.clone())),
                 )
             }

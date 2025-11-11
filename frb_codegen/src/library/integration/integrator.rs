@@ -15,7 +15,10 @@ use std::ffi::OsStr;
 use std::path::{Path, PathBuf};
 
 pub struct IntegrateConfig {
+    pub enable_write_lib: bool,
     pub enable_integration_test: bool,
+    pub enable_dart_fix: bool,
+    pub enable_dart_format: bool,
     pub enable_local_dependency: bool,
     pub rust_crate_name: Option<String>,
     pub rust_crate_dir: String,
@@ -32,7 +35,12 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     let rust_crate_name = config
         .rust_crate_name
         .clone()
-        .unwrap_or(format!("rust_lib_{dart_package_name}"));
+        .unwrap_or(match &config.template {
+            Template::App => {
+                format!("rust_lib_{dart_package_name}")
+            }
+            Template::Plugin => dart_package_name.to_owned(),
+        });
 
     info!("Overlay template onto project");
     let replacements = compute_replacements(&config, &dart_package_name, &rust_crate_name);
@@ -76,11 +84,19 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     info!("Setup cargokit dependencies");
     setup_cargokit_dependencies(&dart_root, &config.template)?;
 
-    info!("Apply Dart fixes");
-    dart_fix(&dart_root)?;
+    if config.enable_dart_fix {
+        info!("Apply Dart fixes");
+        dart_fix(&dart_root)?;
+    } else {
+        info!("Dart fix is disabled.")
+    }
 
-    info!("Format Dart code");
-    dart_format(&dart_root, 80)?;
+    if config.enable_dart_format {
+        info!("Format Dart code");
+        dart_format(&dart_root, 80)?;
+    } else {
+        info!("Dart format is disabled.");
+    }
 
     Ok(())
 }
@@ -106,7 +122,13 @@ fn execute_overlay_dir(
                 comment_out_files,
             )
         },
-        &|path| filter_file(path, config.enable_integration_test),
+        &|path| {
+            filter_file(
+                path,
+                config.enable_write_lib,
+                config.enable_integration_test,
+            )
+        },
     )
 }
 
@@ -117,14 +139,7 @@ fn compute_replacements<'a>(
 ) -> HashMap<&'static str, &'a str> {
     let mut replacements = HashMap::new();
     replacements.insert("REPLACE_ME_DART_PACKAGE_NAME", dart_package_name);
-    match &config.template {
-        Template::App => {
-            replacements.insert("REPLACE_ME_RUST_CRATE_NAME", rust_crate_name);
-        }
-        Template::Plugin => {
-            replacements.insert("REPLACE_ME_RUST_CRATE_NAME", dart_package_name);
-        }
-    }
+    replacements.insert("REPLACE_ME_RUST_CRATE_NAME", rust_crate_name);
     replacements.insert("REPLACE_ME_RUST_CRATE_DIR", config.rust_crate_dir.as_str());
     replacements.insert("REPLACE_ME_FRB_VERSION", env!("CARGO_PKG_VERSION"));
 
@@ -251,12 +266,36 @@ fn comment_out_existing_file_and_write_template(
     Some((path, [commented_existing_content.as_bytes(), src].concat()))
 }
 
-fn filter_file(path: &Path, enable_integration_test: bool) -> bool {
+fn filter_file(path: &Path, enable_write_lib: bool, enable_integration_test: bool) -> bool {
     if path.iter().contains(&OsStr::new("cargokit")) {
         return ![".git", ".github", "docs", "test"].contains(&file_name(path));
     }
 
-    if !enable_integration_test && path.iter().contains(&OsStr::new("integration_test")) {
+    if !enable_write_lib {
+        if path.iter().contains(&OsStr::new("rust_builder")) {
+            return true;
+        }
+        if path.iter().contains(&OsStr::new("android"))
+            || path.iter().contains(&OsStr::new("ios"))
+            || path.iter().contains(&OsStr::new("windows"))
+            || path.iter().contains(&OsStr::new("macos"))
+            || path.iter().contains(&OsStr::new("linux"))
+            || path.iter().contains(&OsStr::new("lib"))
+            || path
+                .iter()
+                .contains(&OsStr::new("REPLACE_ME_RUST_CRATE_DIR"))
+            || path
+                .iter()
+                .contains(&OsStr::new("flutter_rust_bridge.yaml"))
+        {
+            return false;
+        }
+    }
+
+    if !enable_integration_test
+        && (path.iter().contains(&OsStr::new("integration_test"))
+            || path.iter().contains(&OsStr::new("test_driver")))
+    {
         return false;
     }
 

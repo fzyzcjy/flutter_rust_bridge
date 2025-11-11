@@ -1,0 +1,10 @@
+name: test_fixure
+description: Description
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  test_dep: ^1.0.0
+
+dev_dependencies:
+  test_dev_dep: ^1.0.0

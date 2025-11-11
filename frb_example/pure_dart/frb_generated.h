@@ -12576,6 +12576,22 @@ void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dart_fn_twin_
                                                                                                                       int32_t rust_vec_len_,
                                                                                                                       int32_t data_len_);
 
+void frbgen_frb_example_pure_dart_wire__crate__api__dart_fn__rust_call_dart_using_ipv4_addr_twin_normal(int64_t port_,
+                                                                                                        const void *callback);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_using_ipv4_addr_twin_rust_async(int64_t port_,
+                                                                                                                                           const void *callback);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_using_ipv4_addr_twin_rust_async_sse(int64_t port_,
+                                                                                                                                                   uint8_t *ptr_,
+                                                                                                                                                   int32_t rust_vec_len_,
+                                                                                                                                                   int32_t data_len_);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_using_ipv4_addr_twin_sse(int64_t port_,
+                                                                                                                             uint8_t *ptr_,
+                                                                                                                             int32_t rust_vec_len_,
+                                                                                                                             int32_t data_len_);
+
 void frbgen_frb_example_pure_dart_wire__crate__api__dart_fn__rust_call_dart_with_dart_opaque_arg_twin_normal(int64_t port_,
                                                                                                              const void *input,
                                                                                                              const void *callback);
@@ -16449,6 +16465,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__dart_fn__rust_call_dart_return_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__dart_fn__rust_call_dart_simple_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__dart_fn__rust_call_dart_two_args_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__dart_fn__rust_call_dart_using_ipv4_addr_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__dart_fn__rust_call_dart_with_dart_opaque_arg_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__dart_fn__rust_call_dart_with_dart_opaque_result_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__dart_opaque__async_accept_dart_opaque_twin_normal);
@@ -17418,6 +17435,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_return_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_simple_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_two_args_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_using_ipv4_addr_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_with_dart_opaque_arg_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_with_dart_opaque_result_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_loopback_twin_rust_async_sse);
@@ -17427,6 +17445,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_return_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_simple_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_two_args_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_using_ipv4_addr_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_with_dart_opaque_arg_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_with_dart_opaque_result_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_loopback_twin_sse);
@@ -17436,6 +17455,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_return_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_simple_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_two_args_twin_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_using_ipv4_addr_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_with_dart_opaque_arg_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_with_dart_opaque_result_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dart_opaque_sync_twin_sse__sync_accept_dart_opaque_twin_sse);

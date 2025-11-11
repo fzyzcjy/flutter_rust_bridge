@@ -68,6 +68,13 @@ Future<void> rustCallDartReturnResultTwinSse(
         .crateApiPseudoManualDartFnTwinSseRustCallDartReturnResultTwinSse(
             callback: callback, expectOutput: expectOutput);
 
+Future<void> rustCallDartUsingIpv4AddrTwinSse(
+        {required FutureOr<InternetAddress> Function(InternetAddress)
+            callback}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualDartFnTwinSseRustCallDartUsingIpv4AddrTwinSse(
+            callback: callback);
+
 class DemoStructForRustCallDartTwinSse {
   final String name;
 

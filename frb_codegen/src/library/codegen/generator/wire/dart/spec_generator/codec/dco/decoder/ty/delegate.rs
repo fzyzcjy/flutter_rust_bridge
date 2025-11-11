@@ -86,10 +86,19 @@ impl WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGenerator
                 "return BigInt.parse(raw);".to_owned()
             }
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => format!(r"return dco_decode_{}(raw);", mir.inner.safe_ident()),
+            MirTypeDelegate::CustomSerDes(inner) => {
+                let body = inner.info.rust2dart.dart_code.replace(
+                    "{}", 
+                &format!(
+                        "dco_decode_{}(raw)", 
+                        inner.info.inner_type.safe_ident()
+                    )
+                );
+                format!("return {body};")
+            }
             MirTypeDelegate::ProxyVariant(_)
             | MirTypeDelegate::ProxyEnum(_)
             | MirTypeDelegate::CastedPrimitive(_)
-            | MirTypeDelegate::CustomSerDes(_)
             | MirTypeDelegate::Lifetimeable(_) =>
                 "throw UnimplementedError('Not implemented in this codec, please use the other one');".into(),
         }

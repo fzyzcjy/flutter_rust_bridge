@@ -60,6 +60,12 @@ Future<void> rustCallDartReturnResultTwinNormal(
     RustLib.instance.api.crateApiDartFnRustCallDartReturnResultTwinNormal(
         callback: callback, expectOutput: expectOutput);
 
+Future<void> rustCallDartUsingIpv4AddrTwinNormal(
+        {required FutureOr<InternetAddress> Function(InternetAddress)
+            callback}) =>
+    RustLib.instance.api
+        .crateApiDartFnRustCallDartUsingIpv4AddrTwinNormal(callback: callback);
+
 class DemoStructForRustCallDartTwinNormal {
   final String name;
 

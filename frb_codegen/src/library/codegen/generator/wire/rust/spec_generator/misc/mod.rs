@@ -78,25 +78,26 @@ pub(crate) fn generate(
 }
 
 const FILE_ATTRIBUTES: &str = r#"#![allow(
-non_camel_case_types,
-unused,
-non_snake_case,
-clippy::needless_return,
-clippy::redundant_closure_call,
-clippy::redundant_closure,
-clippy::useless_conversion,
-clippy::unit_arg,
-clippy::unused_unit,
-clippy::double_parens,
-clippy::let_and_return,
-clippy::too_many_arguments,
-clippy::match_single_binding,
-clippy::clone_on_copy,
-clippy::let_unit_value,
-clippy::deref_addrof,
-clippy::explicit_auto_deref,
-clippy::borrow_deref_ref,
-clippy::needless_borrow
+    non_camel_case_types,
+    unused,
+    non_snake_case,
+    clippy::needless_return,
+    clippy::redundant_closure_call,
+    clippy::redundant_closure,
+    clippy::useless_conversion,
+    clippy::unit_arg,
+    clippy::unused_unit,
+    clippy::double_parens,
+    clippy::let_and_return,
+    clippy::too_many_arguments,
+    clippy::match_single_binding,
+    clippy::clone_on_copy,
+    clippy::let_unit_value,
+    clippy::deref_addrof,
+    clippy::explicit_auto_deref,
+    clippy::borrow_deref_ref,
+    clippy::uninlined_format_args,
+    clippy::needless_borrow
 )]"#;
 
 fn generate_imports(

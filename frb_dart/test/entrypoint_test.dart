@@ -44,6 +44,7 @@ class _FakeBaseEntrypointWithCodegenVersion extends _FakeBaseEntrypoint {
         stem: 'fake_codegen_version',
         ioDirectory: 'fake_dir',
         webPrefix: 'fake',
+        wasmBindgenName: 'wasm_bindgen',
       );
 }
 
