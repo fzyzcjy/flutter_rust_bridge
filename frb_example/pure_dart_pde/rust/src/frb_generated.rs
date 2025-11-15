@@ -36996,7 +36996,7 @@ impl SseDecode for Vec<RustAutoOpaqueMoi<OpaqueItemTwinNormal>> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<RustAutoOpaqueMoi<OpaqueItemTwinNormal>>::sse_decode(
                 deserializer,
@@ -37010,7 +37010,7 @@ impl SseDecode for Vec<NonCloneSimpleTwinNormal> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<NonCloneSimpleTwinNormal>::sse_decode(deserializer));
         }
@@ -37022,7 +37022,7 @@ impl SseDecode for Vec<NonCloneSimpleTwinRustAsync> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<NonCloneSimpleTwinRustAsync>::sse_decode(deserializer));
         }
@@ -37034,7 +37034,7 @@ impl SseDecode for Vec<NonCloneSimpleTwinSync> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<NonCloneSimpleTwinSync>::sse_decode(deserializer));
         }
@@ -37046,7 +37046,7 @@ impl SseDecode for Vec<OpaqueItemTwinNormal> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<OpaqueItemTwinNormal>::sse_decode(deserializer));
         }
@@ -37058,7 +37058,7 @@ impl SseDecode for Vec<chrono::Duration> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<chrono::Duration>::sse_decode(deserializer));
         }
@@ -37070,7 +37070,7 @@ impl SseDecode for Vec<chrono::DateTime<chrono::Local>> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<chrono::DateTime<chrono::Local>>::sse_decode(deserializer));
         }
@@ -37082,7 +37082,7 @@ impl SseDecode for Vec<chrono::NaiveDateTime> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<chrono::NaiveDateTime>::sse_decode(deserializer));
         }
@@ -37094,7 +37094,7 @@ impl SseDecode for Vec<flutter_rust_bridge::DartOpaque> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<flutter_rust_bridge::DartOpaque>::sse_decode(deserializer));
         }
@@ -37106,7 +37106,7 @@ impl SseDecode for Vec<RustOpaqueMoi<HideDataTwinNormal>> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<RustOpaqueMoi<HideDataTwinNormal>>::sse_decode(
                 deserializer,
@@ -37120,7 +37120,7 @@ impl SseDecode for Vec<RustOpaqueMoi<HideDataTwinRustAsync>> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<RustOpaqueMoi<HideDataTwinRustAsync>>::sse_decode(
                 deserializer,
@@ -37134,7 +37134,7 @@ impl SseDecode for Vec<RustOpaqueMoi<HideDataTwinSync>> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<RustOpaqueMoi<HideDataTwinSync>>::sse_decode(deserializer));
         }
@@ -37146,7 +37146,7 @@ impl SseDecode for Vec<StreamSink<i32, flutter_rust_bridge::for_generated::SseCo
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<StreamSink<
                 i32,
@@ -37161,7 +37161,7 @@ impl SseDecode for Vec<String> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<String>::sse_decode(deserializer));
         }
@@ -37173,7 +37173,7 @@ impl SseDecode for Vec<uuid::Uuid> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<uuid::Uuid>::sse_decode(deserializer));
         }
@@ -37185,7 +37185,7 @@ impl SseDecode for Vec<crate::api::mirror::ApplicationEnvVar> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<crate::api::mirror::ApplicationEnvVar>::sse_decode(
                 deserializer,
@@ -37199,7 +37199,7 @@ impl SseDecode for Vec<crate::api::mirror::ApplicationMode> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<crate::api::mirror::ApplicationMode>::sse_decode(
                 deserializer,
@@ -37213,7 +37213,7 @@ impl SseDecode for Vec<crate::api::mirror::ApplicationSettings> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<crate::api::mirror::ApplicationSettings>::sse_decode(
                 deserializer,
@@ -37227,7 +37227,7 @@ impl SseDecode for Vec<crate::api::optional::AttributeTwinNormal> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<crate::api::optional::AttributeTwinNormal>::sse_decode(
                 deserializer,
@@ -37243,7 +37243,7 @@ impl SseDecode
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwinRustAsync>::sse_decode(deserializer));
         }
@@ -37255,7 +37255,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::optional_twin_sync::AttributeT
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync>::sse_decode(
@@ -37271,7 +37271,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::basic::BasicGeneralEnumTwinNor
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::basic::BasicGeneralEnumTwinNormal>::sse_decode(
@@ -37289,7 +37289,7 @@ impl SseDecode
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<crate::api::pseudo_manual::basic_twin_rust_async::BasicGeneralEnumTwinRustAsync>::sse_decode(deserializer));
         }
@@ -37301,7 +37301,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::basic_twin_sync::BasicGeneralE
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::basic_twin_sync::BasicGeneralEnumTwinSync>::sse_decode(
@@ -37317,7 +37317,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::basic::BasicPrimitiveEnumTwinN
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::basic::BasicPrimitiveEnumTwinNormal>::sse_decode(
@@ -37335,7 +37335,7 @@ impl SseDecode
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<crate::api::pseudo_manual::basic_twin_rust_async::BasicPrimitiveEnumTwinRustAsync>::sse_decode(deserializer));
         }
@@ -37347,7 +37347,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::basic_twin_sync::BasicPrimitiv
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<crate::api::pseudo_manual::basic_twin_sync::BasicPrimitiveEnumTwinSync>::sse_decode(deserializer));
         }
@@ -37359,7 +37359,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::basic::BasicStructTwinNormal> 
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::basic::BasicStructTwinNormal>::sse_decode(deserializer),
@@ -37373,7 +37373,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::basic_twin_rust_async::BasicSt
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<crate::api::pseudo_manual::basic_twin_rust_async::BasicStructTwinRustAsync>::sse_decode(deserializer));
         }
@@ -37385,7 +37385,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::basic_twin_sync::BasicStructTw
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::basic_twin_sync::BasicStructTwinSync>::sse_decode(
@@ -37401,7 +37401,7 @@ impl SseDecode for Vec<bool> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<bool>::sse_decode(deserializer));
         }
@@ -37413,7 +37413,7 @@ impl SseDecode for Vec<crate::api::optional::ElementTwinNormal> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<crate::api::optional::ElementTwinNormal>::sse_decode(
                 deserializer,
@@ -37427,7 +37427,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::optional_twin_rust_async::Elem
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<crate::api::pseudo_manual::optional_twin_rust_async::ElementTwinRustAsync>::sse_decode(deserializer));
         }
@@ -37439,7 +37439,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::optional_twin_sync::ElementTwi
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::optional_twin_sync::ElementTwinSync>::sse_decode(
@@ -37455,7 +37455,7 @@ impl SseDecode for Vec<crate::api::rust_opaque::EnumOpaqueTwinNormal> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<crate::api::rust_opaque::EnumOpaqueTwinNormal>::sse_decode(
                 deserializer,
@@ -37471,7 +37471,7 @@ impl SseDecode
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<crate::api::pseudo_manual::rust_opaque_twin_rust_async::EnumOpaqueTwinRustAsync>::sse_decode(deserializer));
         }
@@ -37483,7 +37483,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpa
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::rust_opaque_twin_sync::EnumOpaqueTwinSync>::sse_decode(
@@ -37499,7 +37499,7 @@ impl SseDecode for Vec<Vec<u8>> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<Vec<u8>>::sse_decode(deserializer));
         }
@@ -37511,7 +37511,7 @@ impl SseDecode for Vec<crate::auxiliary::sample_types::MyEnum> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<crate::auxiliary::sample_types::MyEnum>::sse_decode(
                 deserializer,
@@ -37525,7 +37525,7 @@ impl SseDecode for Vec<crate::auxiliary::sample_types::MySize> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<crate::auxiliary::sample_types::MySize>::sse_decode(
                 deserializer,
@@ -37539,7 +37539,7 @@ impl SseDecode for Vec<crate::api::misc_example::MyTreeNodeTwinNormal> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<crate::api::misc_example::MyTreeNodeTwinNormal>::sse_decode(deserializer));
         }
@@ -37553,7 +37553,7 @@ impl SseDecode
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<crate::api::pseudo_manual::misc_example_twin_rust_async::MyTreeNodeTwinRustAsync>::sse_decode(deserializer));
         }
@@ -37565,7 +37565,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::misc_example_twin_sync::MyTree
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::misc_example_twin_sync::MyTreeNodeTwinSync>::sse_decode(
@@ -37581,7 +37581,7 @@ impl SseDecode for Vec<crate::api::mirror::NestedRawStringMirrored> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<crate::api::mirror::NestedRawStringMirrored>::sse_decode(
                 deserializer,
@@ -37604,7 +37604,7 @@ impl SseDecode for Vec<Option<String>> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<Option<String>>::sse_decode(deserializer));
         }
@@ -37616,7 +37616,7 @@ impl SseDecode for Vec<Option<crate::api::optional::AttributeTwinNormal>> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(
                 <Option<crate::api::optional::AttributeTwinNormal>>::sse_decode(deserializer),
@@ -37632,7 +37632,7 @@ impl SseDecode
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<Option<
                 crate::api::pseudo_manual::optional_twin_rust_async::AttributeTwinRustAsync,
@@ -37646,7 +37646,7 @@ impl SseDecode for Vec<Option<crate::api::pseudo_manual::optional_twin_sync::Att
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<Option<
                 crate::api::pseudo_manual::optional_twin_sync::AttributeTwinSync,
@@ -37660,7 +37660,7 @@ impl SseDecode for Vec<Option<i32>> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<Option<i32>>::sse_decode(deserializer));
         }
@@ -37672,7 +37672,7 @@ impl SseDecode for Vec<Option<crate::api::misc_example::WeekdaysTwinNormal>> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(
                 <Option<crate::api::misc_example::WeekdaysTwinNormal>>::sse_decode(deserializer),
@@ -37688,7 +37688,7 @@ impl SseDecode
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<Option<
                 crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync,
@@ -37704,7 +37704,7 @@ impl SseDecode
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<Option<
                 crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync,
@@ -37718,7 +37718,7 @@ impl SseDecode for Vec<Option<Vec<i32>>> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<Option<Vec<i32>>>::sse_decode(deserializer));
         }
@@ -37730,7 +37730,7 @@ impl SseDecode for Vec<crate::api::array::PointTwinNormal> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<crate::api::array::PointTwinNormal>::sse_decode(
                 deserializer,
@@ -37744,7 +37744,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::array_twin_rust_async::PointTw
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::array_twin_rust_async::PointTwinRustAsync>::sse_decode(
@@ -37760,7 +37760,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::array_twin_sync::PointTwinSync
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::array_twin_sync::PointTwinSync>::sse_decode(
@@ -37776,7 +37776,7 @@ impl SseDecode for Vec<f32> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<f32>::sse_decode(deserializer));
         }
@@ -37788,7 +37788,7 @@ impl SseDecode for Vec<f64> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<f64>::sse_decode(deserializer));
         }
@@ -37800,7 +37800,7 @@ impl SseDecode for Vec<i16> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<i16>::sse_decode(deserializer));
         }
@@ -37812,7 +37812,7 @@ impl SseDecode for Vec<i32> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<i32>::sse_decode(deserializer));
         }
@@ -37824,7 +37824,7 @@ impl SseDecode for Vec<i64> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<i64>::sse_decode(deserializer));
         }
@@ -37836,7 +37836,7 @@ impl SseDecode for Vec<i8> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<i8>::sse_decode(deserializer));
         }
@@ -37848,7 +37848,7 @@ impl SseDecode for Vec<u16> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<u16>::sse_decode(deserializer));
         }
@@ -37860,7 +37860,7 @@ impl SseDecode for Vec<u32> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<u32>::sse_decode(deserializer));
         }
@@ -37872,7 +37872,7 @@ impl SseDecode for Vec<u64> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<u64>::sse_decode(deserializer));
         }
@@ -37884,7 +37884,7 @@ impl SseDecode for Vec<u8> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<u8>::sse_decode(deserializer));
         }
@@ -37896,7 +37896,7 @@ impl SseDecode for Vec<crate::api::mirror::RawStringEnumMirrored> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<crate::api::mirror::RawStringEnumMirrored>::sse_decode(
                 deserializer,
@@ -37910,7 +37910,7 @@ impl SseDecode for Vec<crate::api::mirror::RawStringMirrored> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<crate::api::mirror::RawStringMirrored>::sse_decode(
                 deserializer,
@@ -37929,7 +37929,7 @@ impl SseDecode
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(
                 i32,
@@ -37949,7 +37949,7 @@ impl SseDecode
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(
                 i32,
@@ -37969,7 +37969,7 @@ impl SseDecode
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(
                 i32,
@@ -37989,7 +37989,7 @@ impl SseDecode
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(
                 i32,
@@ -38009,7 +38009,7 @@ impl SseDecode
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(
                 i32,
@@ -38029,7 +38029,7 @@ impl SseDecode
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(
                 i32,
@@ -38044,7 +38044,7 @@ impl SseDecode for Vec<(i32, crate::api::pseudo_manual::basic::BasicStructTwinNo
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(
                 i32,
@@ -38064,7 +38064,7 @@ impl SseDecode
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(
                 i32,
@@ -38084,7 +38084,7 @@ impl SseDecode
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(
                 i32,
@@ -38099,7 +38099,7 @@ impl SseDecode for Vec<(i32, bool)> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(i32, bool)>::sse_decode(deserializer));
         }
@@ -38111,7 +38111,7 @@ impl SseDecode for Vec<(i32, f32)> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(i32, f32)>::sse_decode(deserializer));
         }
@@ -38123,7 +38123,7 @@ impl SseDecode for Vec<(i32, f64)> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(i32, f64)>::sse_decode(deserializer));
         }
@@ -38135,7 +38135,7 @@ impl SseDecode for Vec<(i32, i128)> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(i32, i128)>::sse_decode(deserializer));
         }
@@ -38147,7 +38147,7 @@ impl SseDecode for Vec<(i32, i16)> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(i32, i16)>::sse_decode(deserializer));
         }
@@ -38159,7 +38159,7 @@ impl SseDecode for Vec<(i32, i32)> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(i32, i32)>::sse_decode(deserializer));
         }
@@ -38171,7 +38171,7 @@ impl SseDecode for Vec<(i32, i64)> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(i32, i64)>::sse_decode(deserializer));
         }
@@ -38183,7 +38183,7 @@ impl SseDecode for Vec<(i32, i8)> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(i32, i8)>::sse_decode(deserializer));
         }
@@ -38195,7 +38195,7 @@ impl SseDecode for Vec<(i32, isize)> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(i32, isize)>::sse_decode(deserializer));
         }
@@ -38207,7 +38207,7 @@ impl SseDecode for Vec<(i32, Vec<u8>)> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(i32, Vec<u8>)>::sse_decode(deserializer));
         }
@@ -38219,7 +38219,7 @@ impl SseDecode for Vec<(i32, String)> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(i32, String)>::sse_decode(deserializer));
         }
@@ -38231,7 +38231,7 @@ impl SseDecode for Vec<(i32, u128)> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(i32, u128)>::sse_decode(deserializer));
         }
@@ -38243,7 +38243,7 @@ impl SseDecode for Vec<(i32, u16)> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(i32, u16)>::sse_decode(deserializer));
         }
@@ -38255,7 +38255,7 @@ impl SseDecode for Vec<(i32, u32)> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(i32, u32)>::sse_decode(deserializer));
         }
@@ -38267,7 +38267,7 @@ impl SseDecode for Vec<(i32, u64)> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(i32, u64)>::sse_decode(deserializer));
         }
@@ -38279,7 +38279,7 @@ impl SseDecode for Vec<(i32, u8)> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(i32, u8)>::sse_decode(deserializer));
         }
@@ -38291,7 +38291,7 @@ impl SseDecode for Vec<(i32, usize)> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(i32, usize)>::sse_decode(deserializer));
         }
@@ -38303,7 +38303,7 @@ impl SseDecode for Vec<(String, crate::api::enumeration::EnumSimpleTwinNormal)> 
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(
                 <(String, crate::api::enumeration::EnumSimpleTwinNormal)>::sse_decode(deserializer),
@@ -38322,7 +38322,7 @@ impl SseDecode
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(
                 String,
@@ -38342,7 +38342,7 @@ impl SseDecode
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(
                 String,
@@ -38357,7 +38357,7 @@ impl SseDecode for Vec<(String, crate::api::mirror::HashMapValue)> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(String, crate::api::mirror::HashMapValue)>::sse_decode(
                 deserializer,
@@ -38371,7 +38371,7 @@ impl SseDecode for Vec<(String, i32)> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(String, i32)>::sse_decode(deserializer));
         }
@@ -38383,7 +38383,7 @@ impl SseDecode for Vec<(String, crate::api::enumeration::KitchenSinkTwinNormal)>
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(
                 <(String, crate::api::enumeration::KitchenSinkTwinNormal)>::sse_decode(
@@ -38404,7 +38404,7 @@ impl SseDecode
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(
                 String,
@@ -38424,7 +38424,7 @@ impl SseDecode
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(
                 String,
@@ -38439,7 +38439,7 @@ impl SseDecode for Vec<(String, Vec<u8>)> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(String, Vec<u8>)>::sse_decode(deserializer));
         }
@@ -38451,7 +38451,7 @@ impl SseDecode for Vec<(String, crate::auxiliary::sample_types::MySize)> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(String, crate::auxiliary::sample_types::MySize)>::sse_decode(deserializer));
         }
@@ -38463,7 +38463,7 @@ impl SseDecode for Vec<(String, String)> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(String, String)>::sse_decode(deserializer));
         }
@@ -38475,7 +38475,7 @@ impl SseDecode for Vec<(u8, crate::api::mirror::ApplicationMode)> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<(u8, crate::api::mirror::ApplicationMode)>::sse_decode(
                 deserializer,
@@ -38489,7 +38489,7 @@ impl SseDecode for Vec<crate::api::method::SimpleStructTwinNormal> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<crate::api::method::SimpleStructTwinNormal>::sse_decode(
                 deserializer,
@@ -38505,7 +38505,7 @@ impl SseDecode
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<crate::api::pseudo_manual::method_twin_rust_async::SimpleStructTwinRustAsync>::sse_decode(deserializer));
         }
@@ -38517,7 +38517,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::method_twin_sync::SimpleStruct
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::method_twin_sync::SimpleStructTwinSync>::sse_decode(
@@ -38533,7 +38533,7 @@ impl SseDecode for Vec<crate::api::method::SumWithTwinNormal> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<crate::api::method::SumWithTwinNormal>::sse_decode(
                 deserializer,
@@ -38547,7 +38547,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::method_twin_rust_async::SumWit
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<crate::api::pseudo_manual::method_twin_rust_async::SumWithTwinRustAsync>::sse_decode(deserializer));
         }
@@ -38559,7 +38559,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::method_twin_sync::SumWithTwinS
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::method_twin_sync::SumWithTwinSync>::sse_decode(
@@ -38575,7 +38575,7 @@ impl SseDecode for Vec<crate::api::array::TestIdTwinNormal> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<crate::api::array::TestIdTwinNormal>::sse_decode(
                 deserializer,
@@ -38589,7 +38589,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::array_twin_rust_async::TestIdT
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::array_twin_rust_async::TestIdTwinRustAsync>::sse_decode(
@@ -38605,7 +38605,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::array_twin_sync::TestIdTwinSyn
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::array_twin_sync::TestIdTwinSync>::sse_decode(
@@ -38621,7 +38621,7 @@ impl SseDecode for Vec<crate::api::misc_example::WeekdaysTwinNormal> {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<crate::api::misc_example::WeekdaysTwinNormal>::sse_decode(
                 deserializer,
@@ -38637,7 +38637,7 @@ impl SseDecode
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(<crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync>::sse_decode(deserializer));
         }
@@ -38649,7 +38649,7 @@ impl SseDecode for Vec<crate::api::pseudo_manual::misc_example_twin_sync::Weekda
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut len_ = <i32>::sse_decode(deserializer);
-        let mut ans_ = vec![];
+        let mut ans_ = Vec::with_capacity(len_ as usize);
         for idx_ in 0..len_ {
             ans_.push(
                 <crate::api::pseudo_manual::misc_example_twin_sync::WeekdaysTwinSync>::sse_decode(
