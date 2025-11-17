@@ -21,7 +21,7 @@
         "@mdx-js/react": "^1.6.22",
         "autoprefixer": "^10.4.12",
         "clsx": "^1.2.1",
-        "glob": "^10.3.10",
+        "glob": "^11.1.0",
         "html2canvas": "^1.4.1",
         "plotly.js": "^2.27.1",
         "postcss": "^8.4.18",
