@@ -173,6 +173,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                 type_64bit_int,
                 forbid_type_self,
                 parse_mode,
+                current_generic_params: vec![],
+                is_within_type_alias: false,
             };
 
         let is_owner_trait_def = matches!(func.owner, HirFlatFunctionOwner::TraitDef { .. });
@@ -242,7 +244,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             return Ok(create_output_skip(func, ignore_func));
         }
 
-        Ok(IrValueOrSkip::Value(MirFunc {
+        let res = Ok(IrValueOrSkip::Value(MirFunc {
             namespace: namespace_refined,
             name: MirIdent::new(func_name, dart_name),
             id: None, // to be filled later
@@ -266,7 +268,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                 .then(|| UI_MUTATION_FUNCTION_RUST_AOP_AFTER.to_owned()),
             impl_mode,
             src_lineno_pseudo: src_lineno,
-        }))
+        }));
+        res
     }
 }
 

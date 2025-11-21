@@ -161,6 +161,14 @@ impl ApiDartGeneratorInfoTrait for GeneralListApiDartGenerator<'_> {
     }
 }
 
+impl ApiDartGeneratorInfoTrait for GenericApiDartGenerator<'_> {
+    fn dart_api_type(&self) -> String {
+        // Generic types should not appear in Dart code directly
+        // They are placeholders that get substituted during template instantiation
+        format!("Generic<{}>", self.mir.param_name)
+    }
+}
+
 impl ApiDartGeneratorInfoTrait for OptionalApiDartGenerator<'_> {
     fn dart_api_type(&self) -> String {
         let inner = ApiDartGenerator::new(self.mir.inner.clone(), self.context);

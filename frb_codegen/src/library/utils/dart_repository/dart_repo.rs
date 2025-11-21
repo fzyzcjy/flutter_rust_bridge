@@ -199,11 +199,23 @@ impl DartRepository {
     }
 
     pub(crate) fn command_extra_args(&self) -> Vec<String> {
+        // Only add --enable-experiment=native-assets for Dart < 3.2
+        // In Dart 3.2+, native assets are stable and the flag causes errors
+        // See: https://pub.dev/packages/ffigen and https://www.simonbinder.eu/posts/native_assets/
         if self.at.join("build.dart").exists() {
-            vec!["--enable-experiment=native-assets".to_owned()]
-        } else {
-            vec![]
+            if let Some(version) = self.toolchain.dart_sdk_version() {
+                // Check if version < 3.2.0
+                let dart_3_2 = Version::parse("3.2.0").unwrap();
+                if version < dart_3_2 {
+                    return vec!["--enable-experiment=native-assets".to_owned()];
+                }
+            } else {
+                // If we can't detect version, be conservative and don't add the flag
+                // (modern Dart will work without it, old Dart might need manual config)
+                log::warn!("Could not detect Dart SDK version, skipping --enable-experiment=native-assets flag");
+            }
         }
+        vec![]
     }
 }
 

@@ -5,6 +5,7 @@ pub(crate) mod delegate;
 mod dynamic;
 pub(crate) mod enumeration;
 mod general_list;
+mod generic;
 mod optional;
 mod primitive;
 mod primitive_list;

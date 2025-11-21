@@ -11,7 +11,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'enumeration_twin_sync.freezed.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
+// These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `ChangeTwinSync`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
 
 EnumSimpleTwinSync funcEnumSimpleTwinSync({required EnumSimpleTwinSync arg}) =>
     RustLib.instance.api
@@ -42,6 +43,10 @@ EnumWithDiscriminantTwinSync funcEnumWithDiscriminantTwinSync(
         .crateApiPseudoManualEnumerationTwinSyncFuncEnumWithDiscriminantTwinSync(
             arg: arg);
 
+ChangeStringTwinSync funcChangeTwinSync({required ChangeStringTwinSync arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSyncFuncChangeTwinSync(arg: arg);
+
 Uint8List printNoteTwinSync({required NoteTwinSync note}) =>
     RustLib.instance.api
         .crateApiPseudoManualEnumerationTwinSyncPrintNoteTwinSync(note: note);
@@ -67,6 +72,22 @@ KitchenSinkTwinSync handleEnumStructTwinSync(
     RustLib.instance.api
         .crateApiPseudoManualEnumerationTwinSyncHandleEnumStructTwinSync(
             val: val);
+
+@freezed
+sealed class ChangeStringTwinSync with _$ChangeStringTwinSync {
+  const ChangeStringTwinSync._();
+
+  const factory ChangeStringTwinSync.created({
+    required String data,
+  }) = ChangeStringTwinSync_Created;
+  const factory ChangeStringTwinSync.updated({
+    required String id,
+    required String data,
+  }) = ChangeStringTwinSync_Updated;
+  const factory ChangeStringTwinSync.deleted({
+    required String id,
+  }) = ChangeStringTwinSync_Deleted;
+}
 
 @freezed
 sealed class DistanceTwinSync with _$DistanceTwinSync {

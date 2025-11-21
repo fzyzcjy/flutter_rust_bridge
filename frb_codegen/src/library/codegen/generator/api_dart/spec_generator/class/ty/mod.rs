@@ -30,6 +30,7 @@ impl ApiDartGeneratorClassTrait for DartFnApiDartGenerator<'_> {}
 impl ApiDartGeneratorClassTrait for DartOpaqueApiDartGenerator<'_> {}
 impl ApiDartGeneratorClassTrait for DynamicApiDartGenerator<'_> {}
 impl ApiDartGeneratorClassTrait for GeneralListApiDartGenerator<'_> {}
+impl ApiDartGeneratorClassTrait for GenericApiDartGenerator<'_> {}
 impl ApiDartGeneratorClassTrait for OptionalApiDartGenerator<'_> {}
 impl ApiDartGeneratorClassTrait for PrimitiveApiDartGenerator<'_> {}
 impl ApiDartGeneratorClassTrait for PrimitiveListApiDartGenerator<'_> {}

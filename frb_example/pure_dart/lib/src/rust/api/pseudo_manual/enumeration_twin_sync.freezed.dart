@@ -15,6 +15,550 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
+mixin _$ChangeStringTwinSync {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String data) created,
+    required TResult Function(String id, String data) updated,
+    required TResult Function(String id) deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String data)? created,
+    TResult? Function(String id, String data)? updated,
+    TResult? Function(String id)? deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String data)? created,
+    TResult Function(String id, String data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangeStringTwinSync_Created value) created,
+    required TResult Function(ChangeStringTwinSync_Updated value) updated,
+    required TResult Function(ChangeStringTwinSync_Deleted value) deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangeStringTwinSync_Created value)? created,
+    TResult? Function(ChangeStringTwinSync_Updated value)? updated,
+    TResult? Function(ChangeStringTwinSync_Deleted value)? deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeStringTwinSync_Created value)? created,
+    TResult Function(ChangeStringTwinSync_Updated value)? updated,
+    TResult Function(ChangeStringTwinSync_Deleted value)? deleted,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ChangeStringTwinSyncCopyWith<$Res> {
+  factory $ChangeStringTwinSyncCopyWith(ChangeStringTwinSync value,
+          $Res Function(ChangeStringTwinSync) then) =
+      _$ChangeStringTwinSyncCopyWithImpl<$Res, ChangeStringTwinSync>;
+}
+
+/// @nodoc
+class _$ChangeStringTwinSyncCopyWithImpl<$Res,
+        $Val extends ChangeStringTwinSync>
+    implements $ChangeStringTwinSyncCopyWith<$Res> {
+  _$ChangeStringTwinSyncCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ChangeStringTwinSync
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$ChangeStringTwinSync_CreatedImplCopyWith<$Res> {
+  factory _$$ChangeStringTwinSync_CreatedImplCopyWith(
+          _$ChangeStringTwinSync_CreatedImpl value,
+          $Res Function(_$ChangeStringTwinSync_CreatedImpl) then) =
+      __$$ChangeStringTwinSync_CreatedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String data});
+}
+
+/// @nodoc
+class __$$ChangeStringTwinSync_CreatedImplCopyWithImpl<$Res>
+    extends _$ChangeStringTwinSyncCopyWithImpl<$Res,
+        _$ChangeStringTwinSync_CreatedImpl>
+    implements _$$ChangeStringTwinSync_CreatedImplCopyWith<$Res> {
+  __$$ChangeStringTwinSync_CreatedImplCopyWithImpl(
+      _$ChangeStringTwinSync_CreatedImpl _value,
+      $Res Function(_$ChangeStringTwinSync_CreatedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChangeStringTwinSync
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$ChangeStringTwinSync_CreatedImpl(
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeStringTwinSync_CreatedImpl extends ChangeStringTwinSync_Created {
+  const _$ChangeStringTwinSync_CreatedImpl({required this.data}) : super._();
+
+  @override
+  final String data;
+
+  @override
+  String toString() {
+    return 'ChangeStringTwinSync.created(data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeStringTwinSync_CreatedImpl &&
+            (identical(other.data, data) || other.data == data));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, data);
+
+  /// Create a copy of ChangeStringTwinSync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeStringTwinSync_CreatedImplCopyWith<
+          _$ChangeStringTwinSync_CreatedImpl>
+      get copyWith => __$$ChangeStringTwinSync_CreatedImplCopyWithImpl<
+          _$ChangeStringTwinSync_CreatedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String data) created,
+    required TResult Function(String id, String data) updated,
+    required TResult Function(String id) deleted,
+  }) {
+    return created(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String data)? created,
+    TResult? Function(String id, String data)? updated,
+    TResult? Function(String id)? deleted,
+  }) {
+    return created?.call(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String data)? created,
+    TResult Function(String id, String data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) {
+    if (created != null) {
+      return created(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangeStringTwinSync_Created value) created,
+    required TResult Function(ChangeStringTwinSync_Updated value) updated,
+    required TResult Function(ChangeStringTwinSync_Deleted value) deleted,
+  }) {
+    return created(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangeStringTwinSync_Created value)? created,
+    TResult? Function(ChangeStringTwinSync_Updated value)? updated,
+    TResult? Function(ChangeStringTwinSync_Deleted value)? deleted,
+  }) {
+    return created?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeStringTwinSync_Created value)? created,
+    TResult Function(ChangeStringTwinSync_Updated value)? updated,
+    TResult Function(ChangeStringTwinSync_Deleted value)? deleted,
+    required TResult orElse(),
+  }) {
+    if (created != null) {
+      return created(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeStringTwinSync_Created extends ChangeStringTwinSync {
+  const factory ChangeStringTwinSync_Created({required final String data}) =
+      _$ChangeStringTwinSync_CreatedImpl;
+  const ChangeStringTwinSync_Created._() : super._();
+
+  String get data;
+
+  /// Create a copy of ChangeStringTwinSync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChangeStringTwinSync_CreatedImplCopyWith<
+          _$ChangeStringTwinSync_CreatedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeStringTwinSync_UpdatedImplCopyWith<$Res> {
+  factory _$$ChangeStringTwinSync_UpdatedImplCopyWith(
+          _$ChangeStringTwinSync_UpdatedImpl value,
+          $Res Function(_$ChangeStringTwinSync_UpdatedImpl) then) =
+      __$$ChangeStringTwinSync_UpdatedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id, String data});
+}
+
+/// @nodoc
+class __$$ChangeStringTwinSync_UpdatedImplCopyWithImpl<$Res>
+    extends _$ChangeStringTwinSyncCopyWithImpl<$Res,
+        _$ChangeStringTwinSync_UpdatedImpl>
+    implements _$$ChangeStringTwinSync_UpdatedImplCopyWith<$Res> {
+  __$$ChangeStringTwinSync_UpdatedImplCopyWithImpl(
+      _$ChangeStringTwinSync_UpdatedImpl _value,
+      $Res Function(_$ChangeStringTwinSync_UpdatedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChangeStringTwinSync
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? data = null,
+  }) {
+    return _then(_$ChangeStringTwinSync_UpdatedImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeStringTwinSync_UpdatedImpl extends ChangeStringTwinSync_Updated {
+  const _$ChangeStringTwinSync_UpdatedImpl(
+      {required this.id, required this.data})
+      : super._();
+
+  @override
+  final String id;
+  @override
+  final String data;
+
+  @override
+  String toString() {
+    return 'ChangeStringTwinSync.updated(id: $id, data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeStringTwinSync_UpdatedImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.data, data) || other.data == data));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id, data);
+
+  /// Create a copy of ChangeStringTwinSync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeStringTwinSync_UpdatedImplCopyWith<
+          _$ChangeStringTwinSync_UpdatedImpl>
+      get copyWith => __$$ChangeStringTwinSync_UpdatedImplCopyWithImpl<
+          _$ChangeStringTwinSync_UpdatedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String data) created,
+    required TResult Function(String id, String data) updated,
+    required TResult Function(String id) deleted,
+  }) {
+    return updated(id, data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String data)? created,
+    TResult? Function(String id, String data)? updated,
+    TResult? Function(String id)? deleted,
+  }) {
+    return updated?.call(id, data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String data)? created,
+    TResult Function(String id, String data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) {
+    if (updated != null) {
+      return updated(id, data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangeStringTwinSync_Created value) created,
+    required TResult Function(ChangeStringTwinSync_Updated value) updated,
+    required TResult Function(ChangeStringTwinSync_Deleted value) deleted,
+  }) {
+    return updated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangeStringTwinSync_Created value)? created,
+    TResult? Function(ChangeStringTwinSync_Updated value)? updated,
+    TResult? Function(ChangeStringTwinSync_Deleted value)? deleted,
+  }) {
+    return updated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeStringTwinSync_Created value)? created,
+    TResult Function(ChangeStringTwinSync_Updated value)? updated,
+    TResult Function(ChangeStringTwinSync_Deleted value)? deleted,
+    required TResult orElse(),
+  }) {
+    if (updated != null) {
+      return updated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeStringTwinSync_Updated extends ChangeStringTwinSync {
+  const factory ChangeStringTwinSync_Updated(
+      {required final String id,
+      required final String data}) = _$ChangeStringTwinSync_UpdatedImpl;
+  const ChangeStringTwinSync_Updated._() : super._();
+
+  String get id;
+  String get data;
+
+  /// Create a copy of ChangeStringTwinSync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChangeStringTwinSync_UpdatedImplCopyWith<
+          _$ChangeStringTwinSync_UpdatedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeStringTwinSync_DeletedImplCopyWith<$Res> {
+  factory _$$ChangeStringTwinSync_DeletedImplCopyWith(
+          _$ChangeStringTwinSync_DeletedImpl value,
+          $Res Function(_$ChangeStringTwinSync_DeletedImpl) then) =
+      __$$ChangeStringTwinSync_DeletedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$ChangeStringTwinSync_DeletedImplCopyWithImpl<$Res>
+    extends _$ChangeStringTwinSyncCopyWithImpl<$Res,
+        _$ChangeStringTwinSync_DeletedImpl>
+    implements _$$ChangeStringTwinSync_DeletedImplCopyWith<$Res> {
+  __$$ChangeStringTwinSync_DeletedImplCopyWithImpl(
+      _$ChangeStringTwinSync_DeletedImpl _value,
+      $Res Function(_$ChangeStringTwinSync_DeletedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChangeStringTwinSync
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$ChangeStringTwinSync_DeletedImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeStringTwinSync_DeletedImpl extends ChangeStringTwinSync_Deleted {
+  const _$ChangeStringTwinSync_DeletedImpl({required this.id}) : super._();
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'ChangeStringTwinSync.deleted(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeStringTwinSync_DeletedImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  /// Create a copy of ChangeStringTwinSync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeStringTwinSync_DeletedImplCopyWith<
+          _$ChangeStringTwinSync_DeletedImpl>
+      get copyWith => __$$ChangeStringTwinSync_DeletedImplCopyWithImpl<
+          _$ChangeStringTwinSync_DeletedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String data) created,
+    required TResult Function(String id, String data) updated,
+    required TResult Function(String id) deleted,
+  }) {
+    return deleted(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String data)? created,
+    TResult? Function(String id, String data)? updated,
+    TResult? Function(String id)? deleted,
+  }) {
+    return deleted?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String data)? created,
+    TResult Function(String id, String data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) {
+    if (deleted != null) {
+      return deleted(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangeStringTwinSync_Created value) created,
+    required TResult Function(ChangeStringTwinSync_Updated value) updated,
+    required TResult Function(ChangeStringTwinSync_Deleted value) deleted,
+  }) {
+    return deleted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangeStringTwinSync_Created value)? created,
+    TResult? Function(ChangeStringTwinSync_Updated value)? updated,
+    TResult? Function(ChangeStringTwinSync_Deleted value)? deleted,
+  }) {
+    return deleted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeStringTwinSync_Created value)? created,
+    TResult Function(ChangeStringTwinSync_Updated value)? updated,
+    TResult Function(ChangeStringTwinSync_Deleted value)? deleted,
+    required TResult orElse(),
+  }) {
+    if (deleted != null) {
+      return deleted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeStringTwinSync_Deleted extends ChangeStringTwinSync {
+  const factory ChangeStringTwinSync_Deleted({required final String id}) =
+      _$ChangeStringTwinSync_DeletedImpl;
+  const ChangeStringTwinSync_Deleted._() : super._();
+
+  String get id;
+
+  /// Create a copy of ChangeStringTwinSync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChangeStringTwinSync_DeletedImplCopyWith<
+          _$ChangeStringTwinSync_DeletedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$DistanceTwinSync {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({

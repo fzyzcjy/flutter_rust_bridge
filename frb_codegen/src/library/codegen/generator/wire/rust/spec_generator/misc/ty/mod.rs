@@ -7,6 +7,7 @@ mod delegate;
 mod dynamic;
 mod enumeration;
 mod general_list;
+mod generic;
 mod optional;
 mod primitive;
 mod primitive_list;

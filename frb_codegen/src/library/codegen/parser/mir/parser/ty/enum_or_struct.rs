@@ -20,7 +20,7 @@ use syn::{Type, TypePath};
 
 pub(super) trait EnumOrStructParser<Id, Obj, Item: SynItemStructOrEnum>
 where
-    Id: From<NamespacedName> + Clone + PartialEq + Eq + Hash,
+    Id: From<NamespacedName> + Clone + PartialEq + Eq + Hash + Debug,
 {
     fn parse(
         &mut self,
@@ -75,7 +75,15 @@ where
                         );
                         e
                     })?;
-                (self.parser_info().object_pool).insert(ident.clone(), parsed_object);
+
+                // Check if this is a generic template and store accordingly
+                if Self::is_generic_template(&parsed_object) {
+                    log::info!("Storing generic template: {:?}", ident);
+                    (self.parser_info().generic_templates).insert(ident.clone(), parsed_object);
+                } else {
+                    log::info!("Storing concrete object: {:?}", ident);
+                    (self.parser_info().object_pool).insert(ident.clone(), parsed_object);
+                }
             }
 
             if attrs_opaque.is_none()
@@ -83,6 +91,19 @@ where
                     .is_some_and(|obj| Self::compute_default_opaque(obj))
             {
                 debug!("Treat {name} as opaque by compute_default_opaque");
+                return Ok(Some((
+                    self.parse_opaque(&namespaced_name, path, &src_object)?,
+                    attrs,
+                )));
+            }
+
+            // If the struct/enum is a generic template (stored in generic_templates, not object_pool),
+            // and it's being used without type arguments, we should treat it as opaque
+            // since we can't use a generic template directly without concrete type arguments.
+            if self.parser_info().generic_templates.contains_key(&ident)
+                && !self.parser_info().object_pool.contains_key(&ident)
+            {
+                debug!("Treat {name} as opaque because it's a generic template used without type arguments");
                 return Ok(Some((
                     self.parse_opaque(&namespaced_name, path, &src_object)?,
                     attrs,
@@ -169,12 +190,15 @@ where
     fn context(&self) -> &TypeParserParsingContext;
 
     fn compute_default_opaque(obj: &Obj) -> bool;
+
+    fn is_generic_template(obj: &Obj) -> bool;
 }
 
 #[derive(Clone, Debug, Default)]
 pub(super) struct EnumOrStructParserInfo<Id, Obj> {
     parsing_or_parsed_objects: HashSet<NamespacedName>,
     pub(super) object_pool: HashMap<Id, Obj>,
+    pub(super) generic_templates: HashMap<Id, Obj>,
 }
 
 impl<Id, Obj> EnumOrStructParserInfo<Id, Obj> {
@@ -182,8 +206,10 @@ impl<Id, Obj> EnumOrStructParserInfo<Id, Obj> {
         Self {
             parsing_or_parsed_objects: HashSet::new(),
             object_pool: HashMap::new(),
+            generic_templates: HashMap::new(),
         }
     }
+
 }
 
 fn compute_name_and_wrapper_name(

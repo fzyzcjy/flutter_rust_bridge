@@ -15,6 +15,2356 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
+mixin _$ChangeIgnoredTwinNormal_Map_String_String {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Map<String, String> data) created,
+    required TResult Function(String id, Map<String, String> data) updated,
+    required TResult Function(String id) deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Map<String, String> data)? created,
+    TResult? Function(String id, Map<String, String> data)? updated,
+    TResult? Function(String id)? deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Map<String, String> data)? created,
+    TResult Function(String id, Map<String, String> data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(
+            ChangeIgnoredTwinNormal_Map_String_String_Created value)
+        created,
+    required TResult Function(
+            ChangeIgnoredTwinNormal_Map_String_String_Updated value)
+        updated,
+    required TResult Function(
+            ChangeIgnoredTwinNormal_Map_String_String_Deleted value)
+        deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangeIgnoredTwinNormal_Map_String_String_Created value)?
+        created,
+    TResult? Function(ChangeIgnoredTwinNormal_Map_String_String_Updated value)?
+        updated,
+    TResult? Function(ChangeIgnoredTwinNormal_Map_String_String_Deleted value)?
+        deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeIgnoredTwinNormal_Map_String_String_Created value)?
+        created,
+    TResult Function(ChangeIgnoredTwinNormal_Map_String_String_Updated value)?
+        updated,
+    TResult Function(ChangeIgnoredTwinNormal_Map_String_String_Deleted value)?
+        deleted,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ChangeIgnoredTwinNormal_Map_String_StringCopyWith<$Res> {
+  factory $ChangeIgnoredTwinNormal_Map_String_StringCopyWith(
+          ChangeIgnoredTwinNormal_Map_String_String value,
+          $Res Function(ChangeIgnoredTwinNormal_Map_String_String) then) =
+      _$ChangeIgnoredTwinNormal_Map_String_StringCopyWithImpl<$Res,
+          ChangeIgnoredTwinNormal_Map_String_String>;
+}
+
+/// @nodoc
+class _$ChangeIgnoredTwinNormal_Map_String_StringCopyWithImpl<$Res,
+        $Val extends ChangeIgnoredTwinNormal_Map_String_String>
+    implements $ChangeIgnoredTwinNormal_Map_String_StringCopyWith<$Res> {
+  _$ChangeIgnoredTwinNormal_Map_String_StringCopyWithImpl(
+      this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ChangeIgnoredTwinNormal_Map_String_String
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$ChangeIgnoredTwinNormal_Map_String_String_CreatedImplCopyWith<
+    $Res> {
+  factory _$$ChangeIgnoredTwinNormal_Map_String_String_CreatedImplCopyWith(
+          _$ChangeIgnoredTwinNormal_Map_String_String_CreatedImpl value,
+          $Res Function(_$ChangeIgnoredTwinNormal_Map_String_String_CreatedImpl)
+              then) =
+      __$$ChangeIgnoredTwinNormal_Map_String_String_CreatedImplCopyWithImpl<
+          $Res>;
+  @useResult
+  $Res call({Map<String, String> data});
+}
+
+/// @nodoc
+class __$$ChangeIgnoredTwinNormal_Map_String_String_CreatedImplCopyWithImpl<
+        $Res>
+    extends _$ChangeIgnoredTwinNormal_Map_String_StringCopyWithImpl<$Res,
+        _$ChangeIgnoredTwinNormal_Map_String_String_CreatedImpl>
+    implements
+        _$$ChangeIgnoredTwinNormal_Map_String_String_CreatedImplCopyWith<$Res> {
+  __$$ChangeIgnoredTwinNormal_Map_String_String_CreatedImplCopyWithImpl(
+      _$ChangeIgnoredTwinNormal_Map_String_String_CreatedImpl _value,
+      $Res Function(_$ChangeIgnoredTwinNormal_Map_String_String_CreatedImpl)
+          _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChangeIgnoredTwinNormal_Map_String_String
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$ChangeIgnoredTwinNormal_Map_String_String_CreatedImpl(
+      data: null == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeIgnoredTwinNormal_Map_String_String_CreatedImpl
+    extends ChangeIgnoredTwinNormal_Map_String_String_Created {
+  const _$ChangeIgnoredTwinNormal_Map_String_String_CreatedImpl(
+      {required final Map<String, String> data})
+      : _data = data,
+        super._();
+
+  final Map<String, String> _data;
+  @override
+  Map<String, String> get data {
+    if (_data is EqualUnmodifiableMapView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_data);
+  }
+
+  @override
+  String toString() {
+    return 'ChangeIgnoredTwinNormal_Map_String_String.created(data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeIgnoredTwinNormal_Map_String_String_CreatedImpl &&
+            const DeepCollectionEquality().equals(other._data, _data));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+
+  /// Create a copy of ChangeIgnoredTwinNormal_Map_String_String
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeIgnoredTwinNormal_Map_String_String_CreatedImplCopyWith<
+          _$ChangeIgnoredTwinNormal_Map_String_String_CreatedImpl>
+      get copyWith =>
+          __$$ChangeIgnoredTwinNormal_Map_String_String_CreatedImplCopyWithImpl<
+                  _$ChangeIgnoredTwinNormal_Map_String_String_CreatedImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Map<String, String> data) created,
+    required TResult Function(String id, Map<String, String> data) updated,
+    required TResult Function(String id) deleted,
+  }) {
+    return created(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Map<String, String> data)? created,
+    TResult? Function(String id, Map<String, String> data)? updated,
+    TResult? Function(String id)? deleted,
+  }) {
+    return created?.call(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Map<String, String> data)? created,
+    TResult Function(String id, Map<String, String> data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) {
+    if (created != null) {
+      return created(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(
+            ChangeIgnoredTwinNormal_Map_String_String_Created value)
+        created,
+    required TResult Function(
+            ChangeIgnoredTwinNormal_Map_String_String_Updated value)
+        updated,
+    required TResult Function(
+            ChangeIgnoredTwinNormal_Map_String_String_Deleted value)
+        deleted,
+  }) {
+    return created(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangeIgnoredTwinNormal_Map_String_String_Created value)?
+        created,
+    TResult? Function(ChangeIgnoredTwinNormal_Map_String_String_Updated value)?
+        updated,
+    TResult? Function(ChangeIgnoredTwinNormal_Map_String_String_Deleted value)?
+        deleted,
+  }) {
+    return created?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeIgnoredTwinNormal_Map_String_String_Created value)?
+        created,
+    TResult Function(ChangeIgnoredTwinNormal_Map_String_String_Updated value)?
+        updated,
+    TResult Function(ChangeIgnoredTwinNormal_Map_String_String_Deleted value)?
+        deleted,
+    required TResult orElse(),
+  }) {
+    if (created != null) {
+      return created(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeIgnoredTwinNormal_Map_String_String_Created
+    extends ChangeIgnoredTwinNormal_Map_String_String {
+  const factory ChangeIgnoredTwinNormal_Map_String_String_Created(
+          {required final Map<String, String> data}) =
+      _$ChangeIgnoredTwinNormal_Map_String_String_CreatedImpl;
+  const ChangeIgnoredTwinNormal_Map_String_String_Created._() : super._();
+
+  Map<String, String> get data;
+
+  /// Create a copy of ChangeIgnoredTwinNormal_Map_String_String
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChangeIgnoredTwinNormal_Map_String_String_CreatedImplCopyWith<
+          _$ChangeIgnoredTwinNormal_Map_String_String_CreatedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeIgnoredTwinNormal_Map_String_String_UpdatedImplCopyWith<
+    $Res> {
+  factory _$$ChangeIgnoredTwinNormal_Map_String_String_UpdatedImplCopyWith(
+          _$ChangeIgnoredTwinNormal_Map_String_String_UpdatedImpl value,
+          $Res Function(_$ChangeIgnoredTwinNormal_Map_String_String_UpdatedImpl)
+              then) =
+      __$$ChangeIgnoredTwinNormal_Map_String_String_UpdatedImplCopyWithImpl<
+          $Res>;
+  @useResult
+  $Res call({String id, Map<String, String> data});
+}
+
+/// @nodoc
+class __$$ChangeIgnoredTwinNormal_Map_String_String_UpdatedImplCopyWithImpl<
+        $Res>
+    extends _$ChangeIgnoredTwinNormal_Map_String_StringCopyWithImpl<$Res,
+        _$ChangeIgnoredTwinNormal_Map_String_String_UpdatedImpl>
+    implements
+        _$$ChangeIgnoredTwinNormal_Map_String_String_UpdatedImplCopyWith<$Res> {
+  __$$ChangeIgnoredTwinNormal_Map_String_String_UpdatedImplCopyWithImpl(
+      _$ChangeIgnoredTwinNormal_Map_String_String_UpdatedImpl _value,
+      $Res Function(_$ChangeIgnoredTwinNormal_Map_String_String_UpdatedImpl)
+          _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChangeIgnoredTwinNormal_Map_String_String
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? data = null,
+  }) {
+    return _then(_$ChangeIgnoredTwinNormal_Map_String_String_UpdatedImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      data: null == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeIgnoredTwinNormal_Map_String_String_UpdatedImpl
+    extends ChangeIgnoredTwinNormal_Map_String_String_Updated {
+  const _$ChangeIgnoredTwinNormal_Map_String_String_UpdatedImpl(
+      {required this.id, required final Map<String, String> data})
+      : _data = data,
+        super._();
+
+  @override
+  final String id;
+  final Map<String, String> _data;
+  @override
+  Map<String, String> get data {
+    if (_data is EqualUnmodifiableMapView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_data);
+  }
+
+  @override
+  String toString() {
+    return 'ChangeIgnoredTwinNormal_Map_String_String.updated(id: $id, data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeIgnoredTwinNormal_Map_String_String_UpdatedImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            const DeepCollectionEquality().equals(other._data, _data));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, id, const DeepCollectionEquality().hash(_data));
+
+  /// Create a copy of ChangeIgnoredTwinNormal_Map_String_String
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeIgnoredTwinNormal_Map_String_String_UpdatedImplCopyWith<
+          _$ChangeIgnoredTwinNormal_Map_String_String_UpdatedImpl>
+      get copyWith =>
+          __$$ChangeIgnoredTwinNormal_Map_String_String_UpdatedImplCopyWithImpl<
+                  _$ChangeIgnoredTwinNormal_Map_String_String_UpdatedImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Map<String, String> data) created,
+    required TResult Function(String id, Map<String, String> data) updated,
+    required TResult Function(String id) deleted,
+  }) {
+    return updated(id, data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Map<String, String> data)? created,
+    TResult? Function(String id, Map<String, String> data)? updated,
+    TResult? Function(String id)? deleted,
+  }) {
+    return updated?.call(id, data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Map<String, String> data)? created,
+    TResult Function(String id, Map<String, String> data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) {
+    if (updated != null) {
+      return updated(id, data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(
+            ChangeIgnoredTwinNormal_Map_String_String_Created value)
+        created,
+    required TResult Function(
+            ChangeIgnoredTwinNormal_Map_String_String_Updated value)
+        updated,
+    required TResult Function(
+            ChangeIgnoredTwinNormal_Map_String_String_Deleted value)
+        deleted,
+  }) {
+    return updated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangeIgnoredTwinNormal_Map_String_String_Created value)?
+        created,
+    TResult? Function(ChangeIgnoredTwinNormal_Map_String_String_Updated value)?
+        updated,
+    TResult? Function(ChangeIgnoredTwinNormal_Map_String_String_Deleted value)?
+        deleted,
+  }) {
+    return updated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeIgnoredTwinNormal_Map_String_String_Created value)?
+        created,
+    TResult Function(ChangeIgnoredTwinNormal_Map_String_String_Updated value)?
+        updated,
+    TResult Function(ChangeIgnoredTwinNormal_Map_String_String_Deleted value)?
+        deleted,
+    required TResult orElse(),
+  }) {
+    if (updated != null) {
+      return updated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeIgnoredTwinNormal_Map_String_String_Updated
+    extends ChangeIgnoredTwinNormal_Map_String_String {
+  const factory ChangeIgnoredTwinNormal_Map_String_String_Updated(
+          {required final String id, required final Map<String, String> data}) =
+      _$ChangeIgnoredTwinNormal_Map_String_String_UpdatedImpl;
+  const ChangeIgnoredTwinNormal_Map_String_String_Updated._() : super._();
+
+  String get id;
+  Map<String, String> get data;
+
+  /// Create a copy of ChangeIgnoredTwinNormal_Map_String_String
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChangeIgnoredTwinNormal_Map_String_String_UpdatedImplCopyWith<
+          _$ChangeIgnoredTwinNormal_Map_String_String_UpdatedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeIgnoredTwinNormal_Map_String_String_DeletedImplCopyWith<
+    $Res> {
+  factory _$$ChangeIgnoredTwinNormal_Map_String_String_DeletedImplCopyWith(
+          _$ChangeIgnoredTwinNormal_Map_String_String_DeletedImpl value,
+          $Res Function(_$ChangeIgnoredTwinNormal_Map_String_String_DeletedImpl)
+              then) =
+      __$$ChangeIgnoredTwinNormal_Map_String_String_DeletedImplCopyWithImpl<
+          $Res>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$ChangeIgnoredTwinNormal_Map_String_String_DeletedImplCopyWithImpl<
+        $Res>
+    extends _$ChangeIgnoredTwinNormal_Map_String_StringCopyWithImpl<$Res,
+        _$ChangeIgnoredTwinNormal_Map_String_String_DeletedImpl>
+    implements
+        _$$ChangeIgnoredTwinNormal_Map_String_String_DeletedImplCopyWith<$Res> {
+  __$$ChangeIgnoredTwinNormal_Map_String_String_DeletedImplCopyWithImpl(
+      _$ChangeIgnoredTwinNormal_Map_String_String_DeletedImpl _value,
+      $Res Function(_$ChangeIgnoredTwinNormal_Map_String_String_DeletedImpl)
+          _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChangeIgnoredTwinNormal_Map_String_String
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$ChangeIgnoredTwinNormal_Map_String_String_DeletedImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeIgnoredTwinNormal_Map_String_String_DeletedImpl
+    extends ChangeIgnoredTwinNormal_Map_String_String_Deleted {
+  const _$ChangeIgnoredTwinNormal_Map_String_String_DeletedImpl(
+      {required this.id})
+      : super._();
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'ChangeIgnoredTwinNormal_Map_String_String.deleted(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeIgnoredTwinNormal_Map_String_String_DeletedImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  /// Create a copy of ChangeIgnoredTwinNormal_Map_String_String
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeIgnoredTwinNormal_Map_String_String_DeletedImplCopyWith<
+          _$ChangeIgnoredTwinNormal_Map_String_String_DeletedImpl>
+      get copyWith =>
+          __$$ChangeIgnoredTwinNormal_Map_String_String_DeletedImplCopyWithImpl<
+                  _$ChangeIgnoredTwinNormal_Map_String_String_DeletedImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Map<String, String> data) created,
+    required TResult Function(String id, Map<String, String> data) updated,
+    required TResult Function(String id) deleted,
+  }) {
+    return deleted(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Map<String, String> data)? created,
+    TResult? Function(String id, Map<String, String> data)? updated,
+    TResult? Function(String id)? deleted,
+  }) {
+    return deleted?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Map<String, String> data)? created,
+    TResult Function(String id, Map<String, String> data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) {
+    if (deleted != null) {
+      return deleted(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(
+            ChangeIgnoredTwinNormal_Map_String_String_Created value)
+        created,
+    required TResult Function(
+            ChangeIgnoredTwinNormal_Map_String_String_Updated value)
+        updated,
+    required TResult Function(
+            ChangeIgnoredTwinNormal_Map_String_String_Deleted value)
+        deleted,
+  }) {
+    return deleted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangeIgnoredTwinNormal_Map_String_String_Created value)?
+        created,
+    TResult? Function(ChangeIgnoredTwinNormal_Map_String_String_Updated value)?
+        updated,
+    TResult? Function(ChangeIgnoredTwinNormal_Map_String_String_Deleted value)?
+        deleted,
+  }) {
+    return deleted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeIgnoredTwinNormal_Map_String_String_Created value)?
+        created,
+    TResult Function(ChangeIgnoredTwinNormal_Map_String_String_Updated value)?
+        updated,
+    TResult Function(ChangeIgnoredTwinNormal_Map_String_String_Deleted value)?
+        deleted,
+    required TResult orElse(),
+  }) {
+    if (deleted != null) {
+      return deleted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeIgnoredTwinNormal_Map_String_String_Deleted
+    extends ChangeIgnoredTwinNormal_Map_String_String {
+  const factory ChangeIgnoredTwinNormal_Map_String_String_Deleted(
+          {required final String id}) =
+      _$ChangeIgnoredTwinNormal_Map_String_String_DeletedImpl;
+  const ChangeIgnoredTwinNormal_Map_String_String_Deleted._() : super._();
+
+  String get id;
+
+  /// Create a copy of ChangeIgnoredTwinNormal_Map_String_String
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChangeIgnoredTwinNormal_Map_String_String_DeletedImplCopyWith<
+          _$ChangeIgnoredTwinNormal_Map_String_String_DeletedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$ChangeMapTwinNormal {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Map<String, String> data) created,
+    required TResult Function(String id, Map<String, String> data) updated,
+    required TResult Function(String id) deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Map<String, String> data)? created,
+    TResult? Function(String id, Map<String, String> data)? updated,
+    TResult? Function(String id)? deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Map<String, String> data)? created,
+    TResult Function(String id, Map<String, String> data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangeMapTwinNormal_Created value) created,
+    required TResult Function(ChangeMapTwinNormal_Updated value) updated,
+    required TResult Function(ChangeMapTwinNormal_Deleted value) deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangeMapTwinNormal_Created value)? created,
+    TResult? Function(ChangeMapTwinNormal_Updated value)? updated,
+    TResult? Function(ChangeMapTwinNormal_Deleted value)? deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeMapTwinNormal_Created value)? created,
+    TResult Function(ChangeMapTwinNormal_Updated value)? updated,
+    TResult Function(ChangeMapTwinNormal_Deleted value)? deleted,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ChangeMapTwinNormalCopyWith<$Res> {
+  factory $ChangeMapTwinNormalCopyWith(
+          ChangeMapTwinNormal value, $Res Function(ChangeMapTwinNormal) then) =
+      _$ChangeMapTwinNormalCopyWithImpl<$Res, ChangeMapTwinNormal>;
+}
+
+/// @nodoc
+class _$ChangeMapTwinNormalCopyWithImpl<$Res, $Val extends ChangeMapTwinNormal>
+    implements $ChangeMapTwinNormalCopyWith<$Res> {
+  _$ChangeMapTwinNormalCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ChangeMapTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$ChangeMapTwinNormal_CreatedImplCopyWith<$Res> {
+  factory _$$ChangeMapTwinNormal_CreatedImplCopyWith(
+          _$ChangeMapTwinNormal_CreatedImpl value,
+          $Res Function(_$ChangeMapTwinNormal_CreatedImpl) then) =
+      __$$ChangeMapTwinNormal_CreatedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Map<String, String> data});
+}
+
+/// @nodoc
+class __$$ChangeMapTwinNormal_CreatedImplCopyWithImpl<$Res>
+    extends _$ChangeMapTwinNormalCopyWithImpl<$Res,
+        _$ChangeMapTwinNormal_CreatedImpl>
+    implements _$$ChangeMapTwinNormal_CreatedImplCopyWith<$Res> {
+  __$$ChangeMapTwinNormal_CreatedImplCopyWithImpl(
+      _$ChangeMapTwinNormal_CreatedImpl _value,
+      $Res Function(_$ChangeMapTwinNormal_CreatedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChangeMapTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$ChangeMapTwinNormal_CreatedImpl(
+      data: null == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeMapTwinNormal_CreatedImpl extends ChangeMapTwinNormal_Created {
+  const _$ChangeMapTwinNormal_CreatedImpl(
+      {required final Map<String, String> data})
+      : _data = data,
+        super._();
+
+  final Map<String, String> _data;
+  @override
+  Map<String, String> get data {
+    if (_data is EqualUnmodifiableMapView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_data);
+  }
+
+  @override
+  String toString() {
+    return 'ChangeMapTwinNormal.created(data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeMapTwinNormal_CreatedImpl &&
+            const DeepCollectionEquality().equals(other._data, _data));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+
+  /// Create a copy of ChangeMapTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeMapTwinNormal_CreatedImplCopyWith<_$ChangeMapTwinNormal_CreatedImpl>
+      get copyWith => __$$ChangeMapTwinNormal_CreatedImplCopyWithImpl<
+          _$ChangeMapTwinNormal_CreatedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Map<String, String> data) created,
+    required TResult Function(String id, Map<String, String> data) updated,
+    required TResult Function(String id) deleted,
+  }) {
+    return created(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Map<String, String> data)? created,
+    TResult? Function(String id, Map<String, String> data)? updated,
+    TResult? Function(String id)? deleted,
+  }) {
+    return created?.call(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Map<String, String> data)? created,
+    TResult Function(String id, Map<String, String> data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) {
+    if (created != null) {
+      return created(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangeMapTwinNormal_Created value) created,
+    required TResult Function(ChangeMapTwinNormal_Updated value) updated,
+    required TResult Function(ChangeMapTwinNormal_Deleted value) deleted,
+  }) {
+    return created(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangeMapTwinNormal_Created value)? created,
+    TResult? Function(ChangeMapTwinNormal_Updated value)? updated,
+    TResult? Function(ChangeMapTwinNormal_Deleted value)? deleted,
+  }) {
+    return created?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeMapTwinNormal_Created value)? created,
+    TResult Function(ChangeMapTwinNormal_Updated value)? updated,
+    TResult Function(ChangeMapTwinNormal_Deleted value)? deleted,
+    required TResult orElse(),
+  }) {
+    if (created != null) {
+      return created(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeMapTwinNormal_Created extends ChangeMapTwinNormal {
+  const factory ChangeMapTwinNormal_Created(
+          {required final Map<String, String> data}) =
+      _$ChangeMapTwinNormal_CreatedImpl;
+  const ChangeMapTwinNormal_Created._() : super._();
+
+  Map<String, String> get data;
+
+  /// Create a copy of ChangeMapTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChangeMapTwinNormal_CreatedImplCopyWith<_$ChangeMapTwinNormal_CreatedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeMapTwinNormal_UpdatedImplCopyWith<$Res> {
+  factory _$$ChangeMapTwinNormal_UpdatedImplCopyWith(
+          _$ChangeMapTwinNormal_UpdatedImpl value,
+          $Res Function(_$ChangeMapTwinNormal_UpdatedImpl) then) =
+      __$$ChangeMapTwinNormal_UpdatedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id, Map<String, String> data});
+}
+
+/// @nodoc
+class __$$ChangeMapTwinNormal_UpdatedImplCopyWithImpl<$Res>
+    extends _$ChangeMapTwinNormalCopyWithImpl<$Res,
+        _$ChangeMapTwinNormal_UpdatedImpl>
+    implements _$$ChangeMapTwinNormal_UpdatedImplCopyWith<$Res> {
+  __$$ChangeMapTwinNormal_UpdatedImplCopyWithImpl(
+      _$ChangeMapTwinNormal_UpdatedImpl _value,
+      $Res Function(_$ChangeMapTwinNormal_UpdatedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChangeMapTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? data = null,
+  }) {
+    return _then(_$ChangeMapTwinNormal_UpdatedImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      data: null == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeMapTwinNormal_UpdatedImpl extends ChangeMapTwinNormal_Updated {
+  const _$ChangeMapTwinNormal_UpdatedImpl(
+      {required this.id, required final Map<String, String> data})
+      : _data = data,
+        super._();
+
+  @override
+  final String id;
+  final Map<String, String> _data;
+  @override
+  Map<String, String> get data {
+    if (_data is EqualUnmodifiableMapView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_data);
+  }
+
+  @override
+  String toString() {
+    return 'ChangeMapTwinNormal.updated(id: $id, data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeMapTwinNormal_UpdatedImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            const DeepCollectionEquality().equals(other._data, _data));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, id, const DeepCollectionEquality().hash(_data));
+
+  /// Create a copy of ChangeMapTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeMapTwinNormal_UpdatedImplCopyWith<_$ChangeMapTwinNormal_UpdatedImpl>
+      get copyWith => __$$ChangeMapTwinNormal_UpdatedImplCopyWithImpl<
+          _$ChangeMapTwinNormal_UpdatedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Map<String, String> data) created,
+    required TResult Function(String id, Map<String, String> data) updated,
+    required TResult Function(String id) deleted,
+  }) {
+    return updated(id, data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Map<String, String> data)? created,
+    TResult? Function(String id, Map<String, String> data)? updated,
+    TResult? Function(String id)? deleted,
+  }) {
+    return updated?.call(id, data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Map<String, String> data)? created,
+    TResult Function(String id, Map<String, String> data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) {
+    if (updated != null) {
+      return updated(id, data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangeMapTwinNormal_Created value) created,
+    required TResult Function(ChangeMapTwinNormal_Updated value) updated,
+    required TResult Function(ChangeMapTwinNormal_Deleted value) deleted,
+  }) {
+    return updated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangeMapTwinNormal_Created value)? created,
+    TResult? Function(ChangeMapTwinNormal_Updated value)? updated,
+    TResult? Function(ChangeMapTwinNormal_Deleted value)? deleted,
+  }) {
+    return updated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeMapTwinNormal_Created value)? created,
+    TResult Function(ChangeMapTwinNormal_Updated value)? updated,
+    TResult Function(ChangeMapTwinNormal_Deleted value)? deleted,
+    required TResult orElse(),
+  }) {
+    if (updated != null) {
+      return updated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeMapTwinNormal_Updated extends ChangeMapTwinNormal {
+  const factory ChangeMapTwinNormal_Updated(
+          {required final String id, required final Map<String, String> data}) =
+      _$ChangeMapTwinNormal_UpdatedImpl;
+  const ChangeMapTwinNormal_Updated._() : super._();
+
+  String get id;
+  Map<String, String> get data;
+
+  /// Create a copy of ChangeMapTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChangeMapTwinNormal_UpdatedImplCopyWith<_$ChangeMapTwinNormal_UpdatedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeMapTwinNormal_DeletedImplCopyWith<$Res> {
+  factory _$$ChangeMapTwinNormal_DeletedImplCopyWith(
+          _$ChangeMapTwinNormal_DeletedImpl value,
+          $Res Function(_$ChangeMapTwinNormal_DeletedImpl) then) =
+      __$$ChangeMapTwinNormal_DeletedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$ChangeMapTwinNormal_DeletedImplCopyWithImpl<$Res>
+    extends _$ChangeMapTwinNormalCopyWithImpl<$Res,
+        _$ChangeMapTwinNormal_DeletedImpl>
+    implements _$$ChangeMapTwinNormal_DeletedImplCopyWith<$Res> {
+  __$$ChangeMapTwinNormal_DeletedImplCopyWithImpl(
+      _$ChangeMapTwinNormal_DeletedImpl _value,
+      $Res Function(_$ChangeMapTwinNormal_DeletedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChangeMapTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$ChangeMapTwinNormal_DeletedImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeMapTwinNormal_DeletedImpl extends ChangeMapTwinNormal_Deleted {
+  const _$ChangeMapTwinNormal_DeletedImpl({required this.id}) : super._();
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'ChangeMapTwinNormal.deleted(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeMapTwinNormal_DeletedImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  /// Create a copy of ChangeMapTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeMapTwinNormal_DeletedImplCopyWith<_$ChangeMapTwinNormal_DeletedImpl>
+      get copyWith => __$$ChangeMapTwinNormal_DeletedImplCopyWithImpl<
+          _$ChangeMapTwinNormal_DeletedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Map<String, String> data) created,
+    required TResult Function(String id, Map<String, String> data) updated,
+    required TResult Function(String id) deleted,
+  }) {
+    return deleted(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Map<String, String> data)? created,
+    TResult? Function(String id, Map<String, String> data)? updated,
+    TResult? Function(String id)? deleted,
+  }) {
+    return deleted?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Map<String, String> data)? created,
+    TResult Function(String id, Map<String, String> data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) {
+    if (deleted != null) {
+      return deleted(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangeMapTwinNormal_Created value) created,
+    required TResult Function(ChangeMapTwinNormal_Updated value) updated,
+    required TResult Function(ChangeMapTwinNormal_Deleted value) deleted,
+  }) {
+    return deleted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangeMapTwinNormal_Created value)? created,
+    TResult? Function(ChangeMapTwinNormal_Updated value)? updated,
+    TResult? Function(ChangeMapTwinNormal_Deleted value)? deleted,
+  }) {
+    return deleted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeMapTwinNormal_Created value)? created,
+    TResult Function(ChangeMapTwinNormal_Updated value)? updated,
+    TResult Function(ChangeMapTwinNormal_Deleted value)? deleted,
+    required TResult orElse(),
+  }) {
+    if (deleted != null) {
+      return deleted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeMapTwinNormal_Deleted extends ChangeMapTwinNormal {
+  const factory ChangeMapTwinNormal_Deleted({required final String id}) =
+      _$ChangeMapTwinNormal_DeletedImpl;
+  const ChangeMapTwinNormal_Deleted._() : super._();
+
+  String get id;
+
+  /// Create a copy of ChangeMapTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChangeMapTwinNormal_DeletedImplCopyWith<_$ChangeMapTwinNormal_DeletedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$ChangeStringTwinNormal {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String data) created,
+    required TResult Function(String id, String data) updated,
+    required TResult Function(String id) deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String data)? created,
+    TResult? Function(String id, String data)? updated,
+    TResult? Function(String id)? deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String data)? created,
+    TResult Function(String id, String data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangeStringTwinNormal_Created value) created,
+    required TResult Function(ChangeStringTwinNormal_Updated value) updated,
+    required TResult Function(ChangeStringTwinNormal_Deleted value) deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangeStringTwinNormal_Created value)? created,
+    TResult? Function(ChangeStringTwinNormal_Updated value)? updated,
+    TResult? Function(ChangeStringTwinNormal_Deleted value)? deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeStringTwinNormal_Created value)? created,
+    TResult Function(ChangeStringTwinNormal_Updated value)? updated,
+    TResult Function(ChangeStringTwinNormal_Deleted value)? deleted,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ChangeStringTwinNormalCopyWith<$Res> {
+  factory $ChangeStringTwinNormalCopyWith(ChangeStringTwinNormal value,
+          $Res Function(ChangeStringTwinNormal) then) =
+      _$ChangeStringTwinNormalCopyWithImpl<$Res, ChangeStringTwinNormal>;
+}
+
+/// @nodoc
+class _$ChangeStringTwinNormalCopyWithImpl<$Res,
+        $Val extends ChangeStringTwinNormal>
+    implements $ChangeStringTwinNormalCopyWith<$Res> {
+  _$ChangeStringTwinNormalCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ChangeStringTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$ChangeStringTwinNormal_CreatedImplCopyWith<$Res> {
+  factory _$$ChangeStringTwinNormal_CreatedImplCopyWith(
+          _$ChangeStringTwinNormal_CreatedImpl value,
+          $Res Function(_$ChangeStringTwinNormal_CreatedImpl) then) =
+      __$$ChangeStringTwinNormal_CreatedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String data});
+}
+
+/// @nodoc
+class __$$ChangeStringTwinNormal_CreatedImplCopyWithImpl<$Res>
+    extends _$ChangeStringTwinNormalCopyWithImpl<$Res,
+        _$ChangeStringTwinNormal_CreatedImpl>
+    implements _$$ChangeStringTwinNormal_CreatedImplCopyWith<$Res> {
+  __$$ChangeStringTwinNormal_CreatedImplCopyWithImpl(
+      _$ChangeStringTwinNormal_CreatedImpl _value,
+      $Res Function(_$ChangeStringTwinNormal_CreatedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChangeStringTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$ChangeStringTwinNormal_CreatedImpl(
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeStringTwinNormal_CreatedImpl
+    extends ChangeStringTwinNormal_Created {
+  const _$ChangeStringTwinNormal_CreatedImpl({required this.data}) : super._();
+
+  @override
+  final String data;
+
+  @override
+  String toString() {
+    return 'ChangeStringTwinNormal.created(data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeStringTwinNormal_CreatedImpl &&
+            (identical(other.data, data) || other.data == data));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, data);
+
+  /// Create a copy of ChangeStringTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeStringTwinNormal_CreatedImplCopyWith<
+          _$ChangeStringTwinNormal_CreatedImpl>
+      get copyWith => __$$ChangeStringTwinNormal_CreatedImplCopyWithImpl<
+          _$ChangeStringTwinNormal_CreatedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String data) created,
+    required TResult Function(String id, String data) updated,
+    required TResult Function(String id) deleted,
+  }) {
+    return created(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String data)? created,
+    TResult? Function(String id, String data)? updated,
+    TResult? Function(String id)? deleted,
+  }) {
+    return created?.call(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String data)? created,
+    TResult Function(String id, String data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) {
+    if (created != null) {
+      return created(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangeStringTwinNormal_Created value) created,
+    required TResult Function(ChangeStringTwinNormal_Updated value) updated,
+    required TResult Function(ChangeStringTwinNormal_Deleted value) deleted,
+  }) {
+    return created(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangeStringTwinNormal_Created value)? created,
+    TResult? Function(ChangeStringTwinNormal_Updated value)? updated,
+    TResult? Function(ChangeStringTwinNormal_Deleted value)? deleted,
+  }) {
+    return created?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeStringTwinNormal_Created value)? created,
+    TResult Function(ChangeStringTwinNormal_Updated value)? updated,
+    TResult Function(ChangeStringTwinNormal_Deleted value)? deleted,
+    required TResult orElse(),
+  }) {
+    if (created != null) {
+      return created(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeStringTwinNormal_Created extends ChangeStringTwinNormal {
+  const factory ChangeStringTwinNormal_Created({required final String data}) =
+      _$ChangeStringTwinNormal_CreatedImpl;
+  const ChangeStringTwinNormal_Created._() : super._();
+
+  String get data;
+
+  /// Create a copy of ChangeStringTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChangeStringTwinNormal_CreatedImplCopyWith<
+          _$ChangeStringTwinNormal_CreatedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeStringTwinNormal_UpdatedImplCopyWith<$Res> {
+  factory _$$ChangeStringTwinNormal_UpdatedImplCopyWith(
+          _$ChangeStringTwinNormal_UpdatedImpl value,
+          $Res Function(_$ChangeStringTwinNormal_UpdatedImpl) then) =
+      __$$ChangeStringTwinNormal_UpdatedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id, String data});
+}
+
+/// @nodoc
+class __$$ChangeStringTwinNormal_UpdatedImplCopyWithImpl<$Res>
+    extends _$ChangeStringTwinNormalCopyWithImpl<$Res,
+        _$ChangeStringTwinNormal_UpdatedImpl>
+    implements _$$ChangeStringTwinNormal_UpdatedImplCopyWith<$Res> {
+  __$$ChangeStringTwinNormal_UpdatedImplCopyWithImpl(
+      _$ChangeStringTwinNormal_UpdatedImpl _value,
+      $Res Function(_$ChangeStringTwinNormal_UpdatedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChangeStringTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? data = null,
+  }) {
+    return _then(_$ChangeStringTwinNormal_UpdatedImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeStringTwinNormal_UpdatedImpl
+    extends ChangeStringTwinNormal_Updated {
+  const _$ChangeStringTwinNormal_UpdatedImpl(
+      {required this.id, required this.data})
+      : super._();
+
+  @override
+  final String id;
+  @override
+  final String data;
+
+  @override
+  String toString() {
+    return 'ChangeStringTwinNormal.updated(id: $id, data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeStringTwinNormal_UpdatedImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.data, data) || other.data == data));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id, data);
+
+  /// Create a copy of ChangeStringTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeStringTwinNormal_UpdatedImplCopyWith<
+          _$ChangeStringTwinNormal_UpdatedImpl>
+      get copyWith => __$$ChangeStringTwinNormal_UpdatedImplCopyWithImpl<
+          _$ChangeStringTwinNormal_UpdatedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String data) created,
+    required TResult Function(String id, String data) updated,
+    required TResult Function(String id) deleted,
+  }) {
+    return updated(id, data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String data)? created,
+    TResult? Function(String id, String data)? updated,
+    TResult? Function(String id)? deleted,
+  }) {
+    return updated?.call(id, data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String data)? created,
+    TResult Function(String id, String data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) {
+    if (updated != null) {
+      return updated(id, data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangeStringTwinNormal_Created value) created,
+    required TResult Function(ChangeStringTwinNormal_Updated value) updated,
+    required TResult Function(ChangeStringTwinNormal_Deleted value) deleted,
+  }) {
+    return updated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangeStringTwinNormal_Created value)? created,
+    TResult? Function(ChangeStringTwinNormal_Updated value)? updated,
+    TResult? Function(ChangeStringTwinNormal_Deleted value)? deleted,
+  }) {
+    return updated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeStringTwinNormal_Created value)? created,
+    TResult Function(ChangeStringTwinNormal_Updated value)? updated,
+    TResult Function(ChangeStringTwinNormal_Deleted value)? deleted,
+    required TResult orElse(),
+  }) {
+    if (updated != null) {
+      return updated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeStringTwinNormal_Updated extends ChangeStringTwinNormal {
+  const factory ChangeStringTwinNormal_Updated(
+      {required final String id,
+      required final String data}) = _$ChangeStringTwinNormal_UpdatedImpl;
+  const ChangeStringTwinNormal_Updated._() : super._();
+
+  String get id;
+  String get data;
+
+  /// Create a copy of ChangeStringTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChangeStringTwinNormal_UpdatedImplCopyWith<
+          _$ChangeStringTwinNormal_UpdatedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeStringTwinNormal_DeletedImplCopyWith<$Res> {
+  factory _$$ChangeStringTwinNormal_DeletedImplCopyWith(
+          _$ChangeStringTwinNormal_DeletedImpl value,
+          $Res Function(_$ChangeStringTwinNormal_DeletedImpl) then) =
+      __$$ChangeStringTwinNormal_DeletedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$ChangeStringTwinNormal_DeletedImplCopyWithImpl<$Res>
+    extends _$ChangeStringTwinNormalCopyWithImpl<$Res,
+        _$ChangeStringTwinNormal_DeletedImpl>
+    implements _$$ChangeStringTwinNormal_DeletedImplCopyWith<$Res> {
+  __$$ChangeStringTwinNormal_DeletedImplCopyWithImpl(
+      _$ChangeStringTwinNormal_DeletedImpl _value,
+      $Res Function(_$ChangeStringTwinNormal_DeletedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChangeStringTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$ChangeStringTwinNormal_DeletedImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeStringTwinNormal_DeletedImpl
+    extends ChangeStringTwinNormal_Deleted {
+  const _$ChangeStringTwinNormal_DeletedImpl({required this.id}) : super._();
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'ChangeStringTwinNormal.deleted(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeStringTwinNormal_DeletedImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  /// Create a copy of ChangeStringTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeStringTwinNormal_DeletedImplCopyWith<
+          _$ChangeStringTwinNormal_DeletedImpl>
+      get copyWith => __$$ChangeStringTwinNormal_DeletedImplCopyWithImpl<
+          _$ChangeStringTwinNormal_DeletedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String data) created,
+    required TResult Function(String id, String data) updated,
+    required TResult Function(String id) deleted,
+  }) {
+    return deleted(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String data)? created,
+    TResult? Function(String id, String data)? updated,
+    TResult? Function(String id)? deleted,
+  }) {
+    return deleted?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String data)? created,
+    TResult Function(String id, String data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) {
+    if (deleted != null) {
+      return deleted(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangeStringTwinNormal_Created value) created,
+    required TResult Function(ChangeStringTwinNormal_Updated value) updated,
+    required TResult Function(ChangeStringTwinNormal_Deleted value) deleted,
+  }) {
+    return deleted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangeStringTwinNormal_Created value)? created,
+    TResult? Function(ChangeStringTwinNormal_Updated value)? updated,
+    TResult? Function(ChangeStringTwinNormal_Deleted value)? deleted,
+  }) {
+    return deleted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeStringTwinNormal_Created value)? created,
+    TResult Function(ChangeStringTwinNormal_Updated value)? updated,
+    TResult Function(ChangeStringTwinNormal_Deleted value)? deleted,
+    required TResult orElse(),
+  }) {
+    if (deleted != null) {
+      return deleted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeStringTwinNormal_Deleted extends ChangeStringTwinNormal {
+  const factory ChangeStringTwinNormal_Deleted({required final String id}) =
+      _$ChangeStringTwinNormal_DeletedImpl;
+  const ChangeStringTwinNormal_Deleted._() : super._();
+
+  String get id;
+
+  /// Create a copy of ChangeStringTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChangeStringTwinNormal_DeletedImplCopyWith<
+          _$ChangeStringTwinNormal_DeletedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$ChangeTwinNormal_Map_String_String {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Map<String, String> data) created,
+    required TResult Function(String id, Map<String, String> data) updated,
+    required TResult Function(String id) deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Map<String, String> data)? created,
+    TResult? Function(String id, Map<String, String> data)? updated,
+    TResult? Function(String id)? deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Map<String, String> data)? created,
+    TResult Function(String id, Map<String, String> data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangeTwinNormal_Map_String_String_Created value)
+        created,
+    required TResult Function(ChangeTwinNormal_Map_String_String_Updated value)
+        updated,
+    required TResult Function(ChangeTwinNormal_Map_String_String_Deleted value)
+        deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangeTwinNormal_Map_String_String_Created value)?
+        created,
+    TResult? Function(ChangeTwinNormal_Map_String_String_Updated value)?
+        updated,
+    TResult? Function(ChangeTwinNormal_Map_String_String_Deleted value)?
+        deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeTwinNormal_Map_String_String_Created value)? created,
+    TResult Function(ChangeTwinNormal_Map_String_String_Updated value)? updated,
+    TResult Function(ChangeTwinNormal_Map_String_String_Deleted value)? deleted,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ChangeTwinNormal_Map_String_StringCopyWith<$Res> {
+  factory $ChangeTwinNormal_Map_String_StringCopyWith(
+          ChangeTwinNormal_Map_String_String value,
+          $Res Function(ChangeTwinNormal_Map_String_String) then) =
+      _$ChangeTwinNormal_Map_String_StringCopyWithImpl<$Res,
+          ChangeTwinNormal_Map_String_String>;
+}
+
+/// @nodoc
+class _$ChangeTwinNormal_Map_String_StringCopyWithImpl<$Res,
+        $Val extends ChangeTwinNormal_Map_String_String>
+    implements $ChangeTwinNormal_Map_String_StringCopyWith<$Res> {
+  _$ChangeTwinNormal_Map_String_StringCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ChangeTwinNormal_Map_String_String
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$ChangeTwinNormal_Map_String_String_CreatedImplCopyWith<$Res> {
+  factory _$$ChangeTwinNormal_Map_String_String_CreatedImplCopyWith(
+          _$ChangeTwinNormal_Map_String_String_CreatedImpl value,
+          $Res Function(_$ChangeTwinNormal_Map_String_String_CreatedImpl)
+              then) =
+      __$$ChangeTwinNormal_Map_String_String_CreatedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Map<String, String> data});
+}
+
+/// @nodoc
+class __$$ChangeTwinNormal_Map_String_String_CreatedImplCopyWithImpl<$Res>
+    extends _$ChangeTwinNormal_Map_String_StringCopyWithImpl<$Res,
+        _$ChangeTwinNormal_Map_String_String_CreatedImpl>
+    implements _$$ChangeTwinNormal_Map_String_String_CreatedImplCopyWith<$Res> {
+  __$$ChangeTwinNormal_Map_String_String_CreatedImplCopyWithImpl(
+      _$ChangeTwinNormal_Map_String_String_CreatedImpl _value,
+      $Res Function(_$ChangeTwinNormal_Map_String_String_CreatedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChangeTwinNormal_Map_String_String
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$ChangeTwinNormal_Map_String_String_CreatedImpl(
+      data: null == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeTwinNormal_Map_String_String_CreatedImpl
+    extends ChangeTwinNormal_Map_String_String_Created {
+  const _$ChangeTwinNormal_Map_String_String_CreatedImpl(
+      {required final Map<String, String> data})
+      : _data = data,
+        super._();
+
+  final Map<String, String> _data;
+  @override
+  Map<String, String> get data {
+    if (_data is EqualUnmodifiableMapView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_data);
+  }
+
+  @override
+  String toString() {
+    return 'ChangeTwinNormal_Map_String_String.created(data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeTwinNormal_Map_String_String_CreatedImpl &&
+            const DeepCollectionEquality().equals(other._data, _data));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+
+  /// Create a copy of ChangeTwinNormal_Map_String_String
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeTwinNormal_Map_String_String_CreatedImplCopyWith<
+          _$ChangeTwinNormal_Map_String_String_CreatedImpl>
+      get copyWith =>
+          __$$ChangeTwinNormal_Map_String_String_CreatedImplCopyWithImpl<
+                  _$ChangeTwinNormal_Map_String_String_CreatedImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Map<String, String> data) created,
+    required TResult Function(String id, Map<String, String> data) updated,
+    required TResult Function(String id) deleted,
+  }) {
+    return created(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Map<String, String> data)? created,
+    TResult? Function(String id, Map<String, String> data)? updated,
+    TResult? Function(String id)? deleted,
+  }) {
+    return created?.call(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Map<String, String> data)? created,
+    TResult Function(String id, Map<String, String> data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) {
+    if (created != null) {
+      return created(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangeTwinNormal_Map_String_String_Created value)
+        created,
+    required TResult Function(ChangeTwinNormal_Map_String_String_Updated value)
+        updated,
+    required TResult Function(ChangeTwinNormal_Map_String_String_Deleted value)
+        deleted,
+  }) {
+    return created(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangeTwinNormal_Map_String_String_Created value)?
+        created,
+    TResult? Function(ChangeTwinNormal_Map_String_String_Updated value)?
+        updated,
+    TResult? Function(ChangeTwinNormal_Map_String_String_Deleted value)?
+        deleted,
+  }) {
+    return created?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeTwinNormal_Map_String_String_Created value)? created,
+    TResult Function(ChangeTwinNormal_Map_String_String_Updated value)? updated,
+    TResult Function(ChangeTwinNormal_Map_String_String_Deleted value)? deleted,
+    required TResult orElse(),
+  }) {
+    if (created != null) {
+      return created(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeTwinNormal_Map_String_String_Created
+    extends ChangeTwinNormal_Map_String_String {
+  const factory ChangeTwinNormal_Map_String_String_Created(
+          {required final Map<String, String> data}) =
+      _$ChangeTwinNormal_Map_String_String_CreatedImpl;
+  const ChangeTwinNormal_Map_String_String_Created._() : super._();
+
+  Map<String, String> get data;
+
+  /// Create a copy of ChangeTwinNormal_Map_String_String
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChangeTwinNormal_Map_String_String_CreatedImplCopyWith<
+          _$ChangeTwinNormal_Map_String_String_CreatedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeTwinNormal_Map_String_String_UpdatedImplCopyWith<$Res> {
+  factory _$$ChangeTwinNormal_Map_String_String_UpdatedImplCopyWith(
+          _$ChangeTwinNormal_Map_String_String_UpdatedImpl value,
+          $Res Function(_$ChangeTwinNormal_Map_String_String_UpdatedImpl)
+              then) =
+      __$$ChangeTwinNormal_Map_String_String_UpdatedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id, Map<String, String> data});
+}
+
+/// @nodoc
+class __$$ChangeTwinNormal_Map_String_String_UpdatedImplCopyWithImpl<$Res>
+    extends _$ChangeTwinNormal_Map_String_StringCopyWithImpl<$Res,
+        _$ChangeTwinNormal_Map_String_String_UpdatedImpl>
+    implements _$$ChangeTwinNormal_Map_String_String_UpdatedImplCopyWith<$Res> {
+  __$$ChangeTwinNormal_Map_String_String_UpdatedImplCopyWithImpl(
+      _$ChangeTwinNormal_Map_String_String_UpdatedImpl _value,
+      $Res Function(_$ChangeTwinNormal_Map_String_String_UpdatedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChangeTwinNormal_Map_String_String
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? data = null,
+  }) {
+    return _then(_$ChangeTwinNormal_Map_String_String_UpdatedImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      data: null == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeTwinNormal_Map_String_String_UpdatedImpl
+    extends ChangeTwinNormal_Map_String_String_Updated {
+  const _$ChangeTwinNormal_Map_String_String_UpdatedImpl(
+      {required this.id, required final Map<String, String> data})
+      : _data = data,
+        super._();
+
+  @override
+  final String id;
+  final Map<String, String> _data;
+  @override
+  Map<String, String> get data {
+    if (_data is EqualUnmodifiableMapView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_data);
+  }
+
+  @override
+  String toString() {
+    return 'ChangeTwinNormal_Map_String_String.updated(id: $id, data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeTwinNormal_Map_String_String_UpdatedImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            const DeepCollectionEquality().equals(other._data, _data));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, id, const DeepCollectionEquality().hash(_data));
+
+  /// Create a copy of ChangeTwinNormal_Map_String_String
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeTwinNormal_Map_String_String_UpdatedImplCopyWith<
+          _$ChangeTwinNormal_Map_String_String_UpdatedImpl>
+      get copyWith =>
+          __$$ChangeTwinNormal_Map_String_String_UpdatedImplCopyWithImpl<
+                  _$ChangeTwinNormal_Map_String_String_UpdatedImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Map<String, String> data) created,
+    required TResult Function(String id, Map<String, String> data) updated,
+    required TResult Function(String id) deleted,
+  }) {
+    return updated(id, data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Map<String, String> data)? created,
+    TResult? Function(String id, Map<String, String> data)? updated,
+    TResult? Function(String id)? deleted,
+  }) {
+    return updated?.call(id, data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Map<String, String> data)? created,
+    TResult Function(String id, Map<String, String> data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) {
+    if (updated != null) {
+      return updated(id, data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangeTwinNormal_Map_String_String_Created value)
+        created,
+    required TResult Function(ChangeTwinNormal_Map_String_String_Updated value)
+        updated,
+    required TResult Function(ChangeTwinNormal_Map_String_String_Deleted value)
+        deleted,
+  }) {
+    return updated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangeTwinNormal_Map_String_String_Created value)?
+        created,
+    TResult? Function(ChangeTwinNormal_Map_String_String_Updated value)?
+        updated,
+    TResult? Function(ChangeTwinNormal_Map_String_String_Deleted value)?
+        deleted,
+  }) {
+    return updated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeTwinNormal_Map_String_String_Created value)? created,
+    TResult Function(ChangeTwinNormal_Map_String_String_Updated value)? updated,
+    TResult Function(ChangeTwinNormal_Map_String_String_Deleted value)? deleted,
+    required TResult orElse(),
+  }) {
+    if (updated != null) {
+      return updated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeTwinNormal_Map_String_String_Updated
+    extends ChangeTwinNormal_Map_String_String {
+  const factory ChangeTwinNormal_Map_String_String_Updated(
+          {required final String id, required final Map<String, String> data}) =
+      _$ChangeTwinNormal_Map_String_String_UpdatedImpl;
+  const ChangeTwinNormal_Map_String_String_Updated._() : super._();
+
+  String get id;
+  Map<String, String> get data;
+
+  /// Create a copy of ChangeTwinNormal_Map_String_String
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChangeTwinNormal_Map_String_String_UpdatedImplCopyWith<
+          _$ChangeTwinNormal_Map_String_String_UpdatedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeTwinNormal_Map_String_String_DeletedImplCopyWith<$Res> {
+  factory _$$ChangeTwinNormal_Map_String_String_DeletedImplCopyWith(
+          _$ChangeTwinNormal_Map_String_String_DeletedImpl value,
+          $Res Function(_$ChangeTwinNormal_Map_String_String_DeletedImpl)
+              then) =
+      __$$ChangeTwinNormal_Map_String_String_DeletedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$ChangeTwinNormal_Map_String_String_DeletedImplCopyWithImpl<$Res>
+    extends _$ChangeTwinNormal_Map_String_StringCopyWithImpl<$Res,
+        _$ChangeTwinNormal_Map_String_String_DeletedImpl>
+    implements _$$ChangeTwinNormal_Map_String_String_DeletedImplCopyWith<$Res> {
+  __$$ChangeTwinNormal_Map_String_String_DeletedImplCopyWithImpl(
+      _$ChangeTwinNormal_Map_String_String_DeletedImpl _value,
+      $Res Function(_$ChangeTwinNormal_Map_String_String_DeletedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChangeTwinNormal_Map_String_String
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$ChangeTwinNormal_Map_String_String_DeletedImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeTwinNormal_Map_String_String_DeletedImpl
+    extends ChangeTwinNormal_Map_String_String_Deleted {
+  const _$ChangeTwinNormal_Map_String_String_DeletedImpl({required this.id})
+      : super._();
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'ChangeTwinNormal_Map_String_String.deleted(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeTwinNormal_Map_String_String_DeletedImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  /// Create a copy of ChangeTwinNormal_Map_String_String
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeTwinNormal_Map_String_String_DeletedImplCopyWith<
+          _$ChangeTwinNormal_Map_String_String_DeletedImpl>
+      get copyWith =>
+          __$$ChangeTwinNormal_Map_String_String_DeletedImplCopyWithImpl<
+                  _$ChangeTwinNormal_Map_String_String_DeletedImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Map<String, String> data) created,
+    required TResult Function(String id, Map<String, String> data) updated,
+    required TResult Function(String id) deleted,
+  }) {
+    return deleted(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Map<String, String> data)? created,
+    TResult? Function(String id, Map<String, String> data)? updated,
+    TResult? Function(String id)? deleted,
+  }) {
+    return deleted?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Map<String, String> data)? created,
+    TResult Function(String id, Map<String, String> data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) {
+    if (deleted != null) {
+      return deleted(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangeTwinNormal_Map_String_String_Created value)
+        created,
+    required TResult Function(ChangeTwinNormal_Map_String_String_Updated value)
+        updated,
+    required TResult Function(ChangeTwinNormal_Map_String_String_Deleted value)
+        deleted,
+  }) {
+    return deleted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangeTwinNormal_Map_String_String_Created value)?
+        created,
+    TResult? Function(ChangeTwinNormal_Map_String_String_Updated value)?
+        updated,
+    TResult? Function(ChangeTwinNormal_Map_String_String_Deleted value)?
+        deleted,
+  }) {
+    return deleted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeTwinNormal_Map_String_String_Created value)? created,
+    TResult Function(ChangeTwinNormal_Map_String_String_Updated value)? updated,
+    TResult Function(ChangeTwinNormal_Map_String_String_Deleted value)? deleted,
+    required TResult orElse(),
+  }) {
+    if (deleted != null) {
+      return deleted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeTwinNormal_Map_String_String_Deleted
+    extends ChangeTwinNormal_Map_String_String {
+  const factory ChangeTwinNormal_Map_String_String_Deleted(
+          {required final String id}) =
+      _$ChangeTwinNormal_Map_String_String_DeletedImpl;
+  const ChangeTwinNormal_Map_String_String_Deleted._() : super._();
+
+  String get id;
+
+  /// Create a copy of ChangeTwinNormal_Map_String_String
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChangeTwinNormal_Map_String_String_DeletedImplCopyWith<
+          _$ChangeTwinNormal_Map_String_String_DeletedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$DistanceTwinNormal {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -2742,6 +5092,560 @@ abstract class KitchenSinkTwinNormal_Enums extends KitchenSinkTwinNormal {
 }
 
 /// @nodoc
+mixin _$MapChangeTwinNormal {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Map<String, String> data) created,
+    required TResult Function(String id, Map<String, String> data) updated,
+    required TResult Function(String id) deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Map<String, String> data)? created,
+    TResult? Function(String id, Map<String, String> data)? updated,
+    TResult? Function(String id)? deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Map<String, String> data)? created,
+    TResult Function(String id, Map<String, String> data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(MapChangeTwinNormal_Created value) created,
+    required TResult Function(MapChangeTwinNormal_Updated value) updated,
+    required TResult Function(MapChangeTwinNormal_Deleted value) deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(MapChangeTwinNormal_Created value)? created,
+    TResult? Function(MapChangeTwinNormal_Updated value)? updated,
+    TResult? Function(MapChangeTwinNormal_Deleted value)? deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MapChangeTwinNormal_Created value)? created,
+    TResult Function(MapChangeTwinNormal_Updated value)? updated,
+    TResult Function(MapChangeTwinNormal_Deleted value)? deleted,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MapChangeTwinNormalCopyWith<$Res> {
+  factory $MapChangeTwinNormalCopyWith(
+          MapChangeTwinNormal value, $Res Function(MapChangeTwinNormal) then) =
+      _$MapChangeTwinNormalCopyWithImpl<$Res, MapChangeTwinNormal>;
+}
+
+/// @nodoc
+class _$MapChangeTwinNormalCopyWithImpl<$Res, $Val extends MapChangeTwinNormal>
+    implements $MapChangeTwinNormalCopyWith<$Res> {
+  _$MapChangeTwinNormalCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of MapChangeTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$MapChangeTwinNormal_CreatedImplCopyWith<$Res> {
+  factory _$$MapChangeTwinNormal_CreatedImplCopyWith(
+          _$MapChangeTwinNormal_CreatedImpl value,
+          $Res Function(_$MapChangeTwinNormal_CreatedImpl) then) =
+      __$$MapChangeTwinNormal_CreatedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Map<String, String> data});
+}
+
+/// @nodoc
+class __$$MapChangeTwinNormal_CreatedImplCopyWithImpl<$Res>
+    extends _$MapChangeTwinNormalCopyWithImpl<$Res,
+        _$MapChangeTwinNormal_CreatedImpl>
+    implements _$$MapChangeTwinNormal_CreatedImplCopyWith<$Res> {
+  __$$MapChangeTwinNormal_CreatedImplCopyWithImpl(
+      _$MapChangeTwinNormal_CreatedImpl _value,
+      $Res Function(_$MapChangeTwinNormal_CreatedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of MapChangeTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$MapChangeTwinNormal_CreatedImpl(
+      data: null == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$MapChangeTwinNormal_CreatedImpl extends MapChangeTwinNormal_Created {
+  const _$MapChangeTwinNormal_CreatedImpl(
+      {required final Map<String, String> data})
+      : _data = data,
+        super._();
+
+  final Map<String, String> _data;
+  @override
+  Map<String, String> get data {
+    if (_data is EqualUnmodifiableMapView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_data);
+  }
+
+  @override
+  String toString() {
+    return 'MapChangeTwinNormal.created(data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MapChangeTwinNormal_CreatedImpl &&
+            const DeepCollectionEquality().equals(other._data, _data));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+
+  /// Create a copy of MapChangeTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MapChangeTwinNormal_CreatedImplCopyWith<_$MapChangeTwinNormal_CreatedImpl>
+      get copyWith => __$$MapChangeTwinNormal_CreatedImplCopyWithImpl<
+          _$MapChangeTwinNormal_CreatedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Map<String, String> data) created,
+    required TResult Function(String id, Map<String, String> data) updated,
+    required TResult Function(String id) deleted,
+  }) {
+    return created(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Map<String, String> data)? created,
+    TResult? Function(String id, Map<String, String> data)? updated,
+    TResult? Function(String id)? deleted,
+  }) {
+    return created?.call(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Map<String, String> data)? created,
+    TResult Function(String id, Map<String, String> data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) {
+    if (created != null) {
+      return created(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(MapChangeTwinNormal_Created value) created,
+    required TResult Function(MapChangeTwinNormal_Updated value) updated,
+    required TResult Function(MapChangeTwinNormal_Deleted value) deleted,
+  }) {
+    return created(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(MapChangeTwinNormal_Created value)? created,
+    TResult? Function(MapChangeTwinNormal_Updated value)? updated,
+    TResult? Function(MapChangeTwinNormal_Deleted value)? deleted,
+  }) {
+    return created?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MapChangeTwinNormal_Created value)? created,
+    TResult Function(MapChangeTwinNormal_Updated value)? updated,
+    TResult Function(MapChangeTwinNormal_Deleted value)? deleted,
+    required TResult orElse(),
+  }) {
+    if (created != null) {
+      return created(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class MapChangeTwinNormal_Created extends MapChangeTwinNormal {
+  const factory MapChangeTwinNormal_Created(
+          {required final Map<String, String> data}) =
+      _$MapChangeTwinNormal_CreatedImpl;
+  const MapChangeTwinNormal_Created._() : super._();
+
+  Map<String, String> get data;
+
+  /// Create a copy of MapChangeTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$MapChangeTwinNormal_CreatedImplCopyWith<_$MapChangeTwinNormal_CreatedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$MapChangeTwinNormal_UpdatedImplCopyWith<$Res> {
+  factory _$$MapChangeTwinNormal_UpdatedImplCopyWith(
+          _$MapChangeTwinNormal_UpdatedImpl value,
+          $Res Function(_$MapChangeTwinNormal_UpdatedImpl) then) =
+      __$$MapChangeTwinNormal_UpdatedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id, Map<String, String> data});
+}
+
+/// @nodoc
+class __$$MapChangeTwinNormal_UpdatedImplCopyWithImpl<$Res>
+    extends _$MapChangeTwinNormalCopyWithImpl<$Res,
+        _$MapChangeTwinNormal_UpdatedImpl>
+    implements _$$MapChangeTwinNormal_UpdatedImplCopyWith<$Res> {
+  __$$MapChangeTwinNormal_UpdatedImplCopyWithImpl(
+      _$MapChangeTwinNormal_UpdatedImpl _value,
+      $Res Function(_$MapChangeTwinNormal_UpdatedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of MapChangeTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? data = null,
+  }) {
+    return _then(_$MapChangeTwinNormal_UpdatedImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      data: null == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$MapChangeTwinNormal_UpdatedImpl extends MapChangeTwinNormal_Updated {
+  const _$MapChangeTwinNormal_UpdatedImpl(
+      {required this.id, required final Map<String, String> data})
+      : _data = data,
+        super._();
+
+  @override
+  final String id;
+  final Map<String, String> _data;
+  @override
+  Map<String, String> get data {
+    if (_data is EqualUnmodifiableMapView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_data);
+  }
+
+  @override
+  String toString() {
+    return 'MapChangeTwinNormal.updated(id: $id, data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MapChangeTwinNormal_UpdatedImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            const DeepCollectionEquality().equals(other._data, _data));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, id, const DeepCollectionEquality().hash(_data));
+
+  /// Create a copy of MapChangeTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MapChangeTwinNormal_UpdatedImplCopyWith<_$MapChangeTwinNormal_UpdatedImpl>
+      get copyWith => __$$MapChangeTwinNormal_UpdatedImplCopyWithImpl<
+          _$MapChangeTwinNormal_UpdatedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Map<String, String> data) created,
+    required TResult Function(String id, Map<String, String> data) updated,
+    required TResult Function(String id) deleted,
+  }) {
+    return updated(id, data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Map<String, String> data)? created,
+    TResult? Function(String id, Map<String, String> data)? updated,
+    TResult? Function(String id)? deleted,
+  }) {
+    return updated?.call(id, data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Map<String, String> data)? created,
+    TResult Function(String id, Map<String, String> data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) {
+    if (updated != null) {
+      return updated(id, data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(MapChangeTwinNormal_Created value) created,
+    required TResult Function(MapChangeTwinNormal_Updated value) updated,
+    required TResult Function(MapChangeTwinNormal_Deleted value) deleted,
+  }) {
+    return updated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(MapChangeTwinNormal_Created value)? created,
+    TResult? Function(MapChangeTwinNormal_Updated value)? updated,
+    TResult? Function(MapChangeTwinNormal_Deleted value)? deleted,
+  }) {
+    return updated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MapChangeTwinNormal_Created value)? created,
+    TResult Function(MapChangeTwinNormal_Updated value)? updated,
+    TResult Function(MapChangeTwinNormal_Deleted value)? deleted,
+    required TResult orElse(),
+  }) {
+    if (updated != null) {
+      return updated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class MapChangeTwinNormal_Updated extends MapChangeTwinNormal {
+  const factory MapChangeTwinNormal_Updated(
+          {required final String id, required final Map<String, String> data}) =
+      _$MapChangeTwinNormal_UpdatedImpl;
+  const MapChangeTwinNormal_Updated._() : super._();
+
+  String get id;
+  Map<String, String> get data;
+
+  /// Create a copy of MapChangeTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$MapChangeTwinNormal_UpdatedImplCopyWith<_$MapChangeTwinNormal_UpdatedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$MapChangeTwinNormal_DeletedImplCopyWith<$Res> {
+  factory _$$MapChangeTwinNormal_DeletedImplCopyWith(
+          _$MapChangeTwinNormal_DeletedImpl value,
+          $Res Function(_$MapChangeTwinNormal_DeletedImpl) then) =
+      __$$MapChangeTwinNormal_DeletedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$MapChangeTwinNormal_DeletedImplCopyWithImpl<$Res>
+    extends _$MapChangeTwinNormalCopyWithImpl<$Res,
+        _$MapChangeTwinNormal_DeletedImpl>
+    implements _$$MapChangeTwinNormal_DeletedImplCopyWith<$Res> {
+  __$$MapChangeTwinNormal_DeletedImplCopyWithImpl(
+      _$MapChangeTwinNormal_DeletedImpl _value,
+      $Res Function(_$MapChangeTwinNormal_DeletedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of MapChangeTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$MapChangeTwinNormal_DeletedImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$MapChangeTwinNormal_DeletedImpl extends MapChangeTwinNormal_Deleted {
+  const _$MapChangeTwinNormal_DeletedImpl({required this.id}) : super._();
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'MapChangeTwinNormal.deleted(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MapChangeTwinNormal_DeletedImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  /// Create a copy of MapChangeTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MapChangeTwinNormal_DeletedImplCopyWith<_$MapChangeTwinNormal_DeletedImpl>
+      get copyWith => __$$MapChangeTwinNormal_DeletedImplCopyWithImpl<
+          _$MapChangeTwinNormal_DeletedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Map<String, String> data) created,
+    required TResult Function(String id, Map<String, String> data) updated,
+    required TResult Function(String id) deleted,
+  }) {
+    return deleted(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Map<String, String> data)? created,
+    TResult? Function(String id, Map<String, String> data)? updated,
+    TResult? Function(String id)? deleted,
+  }) {
+    return deleted?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Map<String, String> data)? created,
+    TResult Function(String id, Map<String, String> data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) {
+    if (deleted != null) {
+      return deleted(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(MapChangeTwinNormal_Created value) created,
+    required TResult Function(MapChangeTwinNormal_Updated value) updated,
+    required TResult Function(MapChangeTwinNormal_Deleted value) deleted,
+  }) {
+    return deleted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(MapChangeTwinNormal_Created value)? created,
+    TResult? Function(MapChangeTwinNormal_Updated value)? updated,
+    TResult? Function(MapChangeTwinNormal_Deleted value)? deleted,
+  }) {
+    return deleted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MapChangeTwinNormal_Created value)? created,
+    TResult Function(MapChangeTwinNormal_Updated value)? updated,
+    TResult Function(MapChangeTwinNormal_Deleted value)? deleted,
+    required TResult orElse(),
+  }) {
+    if (deleted != null) {
+      return deleted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class MapChangeTwinNormal_Deleted extends MapChangeTwinNormal {
+  const factory MapChangeTwinNormal_Deleted({required final String id}) =
+      _$MapChangeTwinNormal_DeletedImpl;
+  const MapChangeTwinNormal_Deleted._() : super._();
+
+  String get id;
+
+  /// Create a copy of MapChangeTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$MapChangeTwinNormal_DeletedImplCopyWith<_$MapChangeTwinNormal_DeletedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$MeasureTwinNormal {
   Object get field0 => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -3435,4 +6339,551 @@ abstract class SpeedTwinNormal_GPS extends SpeedTwinNormal {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SpeedTwinNormal_GPSImplCopyWith<_$SpeedTwinNormal_GPSImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$StringChangeTwinNormal {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String data) created,
+    required TResult Function(String id, String data) updated,
+    required TResult Function(String id) deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String data)? created,
+    TResult? Function(String id, String data)? updated,
+    TResult? Function(String id)? deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String data)? created,
+    TResult Function(String id, String data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(StringChangeTwinNormal_Created value) created,
+    required TResult Function(StringChangeTwinNormal_Updated value) updated,
+    required TResult Function(StringChangeTwinNormal_Deleted value) deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(StringChangeTwinNormal_Created value)? created,
+    TResult? Function(StringChangeTwinNormal_Updated value)? updated,
+    TResult? Function(StringChangeTwinNormal_Deleted value)? deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StringChangeTwinNormal_Created value)? created,
+    TResult Function(StringChangeTwinNormal_Updated value)? updated,
+    TResult Function(StringChangeTwinNormal_Deleted value)? deleted,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $StringChangeTwinNormalCopyWith<$Res> {
+  factory $StringChangeTwinNormalCopyWith(StringChangeTwinNormal value,
+          $Res Function(StringChangeTwinNormal) then) =
+      _$StringChangeTwinNormalCopyWithImpl<$Res, StringChangeTwinNormal>;
+}
+
+/// @nodoc
+class _$StringChangeTwinNormalCopyWithImpl<$Res,
+        $Val extends StringChangeTwinNormal>
+    implements $StringChangeTwinNormalCopyWith<$Res> {
+  _$StringChangeTwinNormalCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of StringChangeTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$StringChangeTwinNormal_CreatedImplCopyWith<$Res> {
+  factory _$$StringChangeTwinNormal_CreatedImplCopyWith(
+          _$StringChangeTwinNormal_CreatedImpl value,
+          $Res Function(_$StringChangeTwinNormal_CreatedImpl) then) =
+      __$$StringChangeTwinNormal_CreatedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String data});
+}
+
+/// @nodoc
+class __$$StringChangeTwinNormal_CreatedImplCopyWithImpl<$Res>
+    extends _$StringChangeTwinNormalCopyWithImpl<$Res,
+        _$StringChangeTwinNormal_CreatedImpl>
+    implements _$$StringChangeTwinNormal_CreatedImplCopyWith<$Res> {
+  __$$StringChangeTwinNormal_CreatedImplCopyWithImpl(
+      _$StringChangeTwinNormal_CreatedImpl _value,
+      $Res Function(_$StringChangeTwinNormal_CreatedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of StringChangeTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$StringChangeTwinNormal_CreatedImpl(
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$StringChangeTwinNormal_CreatedImpl
+    extends StringChangeTwinNormal_Created {
+  const _$StringChangeTwinNormal_CreatedImpl({required this.data}) : super._();
+
+  @override
+  final String data;
+
+  @override
+  String toString() {
+    return 'StringChangeTwinNormal.created(data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$StringChangeTwinNormal_CreatedImpl &&
+            (identical(other.data, data) || other.data == data));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, data);
+
+  /// Create a copy of StringChangeTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StringChangeTwinNormal_CreatedImplCopyWith<
+          _$StringChangeTwinNormal_CreatedImpl>
+      get copyWith => __$$StringChangeTwinNormal_CreatedImplCopyWithImpl<
+          _$StringChangeTwinNormal_CreatedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String data) created,
+    required TResult Function(String id, String data) updated,
+    required TResult Function(String id) deleted,
+  }) {
+    return created(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String data)? created,
+    TResult? Function(String id, String data)? updated,
+    TResult? Function(String id)? deleted,
+  }) {
+    return created?.call(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String data)? created,
+    TResult Function(String id, String data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) {
+    if (created != null) {
+      return created(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(StringChangeTwinNormal_Created value) created,
+    required TResult Function(StringChangeTwinNormal_Updated value) updated,
+    required TResult Function(StringChangeTwinNormal_Deleted value) deleted,
+  }) {
+    return created(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(StringChangeTwinNormal_Created value)? created,
+    TResult? Function(StringChangeTwinNormal_Updated value)? updated,
+    TResult? Function(StringChangeTwinNormal_Deleted value)? deleted,
+  }) {
+    return created?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StringChangeTwinNormal_Created value)? created,
+    TResult Function(StringChangeTwinNormal_Updated value)? updated,
+    TResult Function(StringChangeTwinNormal_Deleted value)? deleted,
+    required TResult orElse(),
+  }) {
+    if (created != null) {
+      return created(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class StringChangeTwinNormal_Created extends StringChangeTwinNormal {
+  const factory StringChangeTwinNormal_Created({required final String data}) =
+      _$StringChangeTwinNormal_CreatedImpl;
+  const StringChangeTwinNormal_Created._() : super._();
+
+  String get data;
+
+  /// Create a copy of StringChangeTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$StringChangeTwinNormal_CreatedImplCopyWith<
+          _$StringChangeTwinNormal_CreatedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$StringChangeTwinNormal_UpdatedImplCopyWith<$Res> {
+  factory _$$StringChangeTwinNormal_UpdatedImplCopyWith(
+          _$StringChangeTwinNormal_UpdatedImpl value,
+          $Res Function(_$StringChangeTwinNormal_UpdatedImpl) then) =
+      __$$StringChangeTwinNormal_UpdatedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id, String data});
+}
+
+/// @nodoc
+class __$$StringChangeTwinNormal_UpdatedImplCopyWithImpl<$Res>
+    extends _$StringChangeTwinNormalCopyWithImpl<$Res,
+        _$StringChangeTwinNormal_UpdatedImpl>
+    implements _$$StringChangeTwinNormal_UpdatedImplCopyWith<$Res> {
+  __$$StringChangeTwinNormal_UpdatedImplCopyWithImpl(
+      _$StringChangeTwinNormal_UpdatedImpl _value,
+      $Res Function(_$StringChangeTwinNormal_UpdatedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of StringChangeTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? data = null,
+  }) {
+    return _then(_$StringChangeTwinNormal_UpdatedImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$StringChangeTwinNormal_UpdatedImpl
+    extends StringChangeTwinNormal_Updated {
+  const _$StringChangeTwinNormal_UpdatedImpl(
+      {required this.id, required this.data})
+      : super._();
+
+  @override
+  final String id;
+  @override
+  final String data;
+
+  @override
+  String toString() {
+    return 'StringChangeTwinNormal.updated(id: $id, data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$StringChangeTwinNormal_UpdatedImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.data, data) || other.data == data));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id, data);
+
+  /// Create a copy of StringChangeTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StringChangeTwinNormal_UpdatedImplCopyWith<
+          _$StringChangeTwinNormal_UpdatedImpl>
+      get copyWith => __$$StringChangeTwinNormal_UpdatedImplCopyWithImpl<
+          _$StringChangeTwinNormal_UpdatedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String data) created,
+    required TResult Function(String id, String data) updated,
+    required TResult Function(String id) deleted,
+  }) {
+    return updated(id, data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String data)? created,
+    TResult? Function(String id, String data)? updated,
+    TResult? Function(String id)? deleted,
+  }) {
+    return updated?.call(id, data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String data)? created,
+    TResult Function(String id, String data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) {
+    if (updated != null) {
+      return updated(id, data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(StringChangeTwinNormal_Created value) created,
+    required TResult Function(StringChangeTwinNormal_Updated value) updated,
+    required TResult Function(StringChangeTwinNormal_Deleted value) deleted,
+  }) {
+    return updated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(StringChangeTwinNormal_Created value)? created,
+    TResult? Function(StringChangeTwinNormal_Updated value)? updated,
+    TResult? Function(StringChangeTwinNormal_Deleted value)? deleted,
+  }) {
+    return updated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StringChangeTwinNormal_Created value)? created,
+    TResult Function(StringChangeTwinNormal_Updated value)? updated,
+    TResult Function(StringChangeTwinNormal_Deleted value)? deleted,
+    required TResult orElse(),
+  }) {
+    if (updated != null) {
+      return updated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class StringChangeTwinNormal_Updated extends StringChangeTwinNormal {
+  const factory StringChangeTwinNormal_Updated(
+      {required final String id,
+      required final String data}) = _$StringChangeTwinNormal_UpdatedImpl;
+  const StringChangeTwinNormal_Updated._() : super._();
+
+  String get id;
+  String get data;
+
+  /// Create a copy of StringChangeTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$StringChangeTwinNormal_UpdatedImplCopyWith<
+          _$StringChangeTwinNormal_UpdatedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$StringChangeTwinNormal_DeletedImplCopyWith<$Res> {
+  factory _$$StringChangeTwinNormal_DeletedImplCopyWith(
+          _$StringChangeTwinNormal_DeletedImpl value,
+          $Res Function(_$StringChangeTwinNormal_DeletedImpl) then) =
+      __$$StringChangeTwinNormal_DeletedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$StringChangeTwinNormal_DeletedImplCopyWithImpl<$Res>
+    extends _$StringChangeTwinNormalCopyWithImpl<$Res,
+        _$StringChangeTwinNormal_DeletedImpl>
+    implements _$$StringChangeTwinNormal_DeletedImplCopyWith<$Res> {
+  __$$StringChangeTwinNormal_DeletedImplCopyWithImpl(
+      _$StringChangeTwinNormal_DeletedImpl _value,
+      $Res Function(_$StringChangeTwinNormal_DeletedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of StringChangeTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$StringChangeTwinNormal_DeletedImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$StringChangeTwinNormal_DeletedImpl
+    extends StringChangeTwinNormal_Deleted {
+  const _$StringChangeTwinNormal_DeletedImpl({required this.id}) : super._();
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'StringChangeTwinNormal.deleted(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$StringChangeTwinNormal_DeletedImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  /// Create a copy of StringChangeTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StringChangeTwinNormal_DeletedImplCopyWith<
+          _$StringChangeTwinNormal_DeletedImpl>
+      get copyWith => __$$StringChangeTwinNormal_DeletedImplCopyWithImpl<
+          _$StringChangeTwinNormal_DeletedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String data) created,
+    required TResult Function(String id, String data) updated,
+    required TResult Function(String id) deleted,
+  }) {
+    return deleted(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String data)? created,
+    TResult? Function(String id, String data)? updated,
+    TResult? Function(String id)? deleted,
+  }) {
+    return deleted?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String data)? created,
+    TResult Function(String id, String data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) {
+    if (deleted != null) {
+      return deleted(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(StringChangeTwinNormal_Created value) created,
+    required TResult Function(StringChangeTwinNormal_Updated value) updated,
+    required TResult Function(StringChangeTwinNormal_Deleted value) deleted,
+  }) {
+    return deleted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(StringChangeTwinNormal_Created value)? created,
+    TResult? Function(StringChangeTwinNormal_Updated value)? updated,
+    TResult? Function(StringChangeTwinNormal_Deleted value)? deleted,
+  }) {
+    return deleted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StringChangeTwinNormal_Created value)? created,
+    TResult Function(StringChangeTwinNormal_Updated value)? updated,
+    TResult Function(StringChangeTwinNormal_Deleted value)? deleted,
+    required TResult orElse(),
+  }) {
+    if (deleted != null) {
+      return deleted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class StringChangeTwinNormal_Deleted extends StringChangeTwinNormal {
+  const factory StringChangeTwinNormal_Deleted({required final String id}) =
+      _$StringChangeTwinNormal_DeletedImpl;
+  const StringChangeTwinNormal_Deleted._() : super._();
+
+  String get id;
+
+  /// Create a copy of StringChangeTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$StringChangeTwinNormal_DeletedImplCopyWith<
+          _$StringChangeTwinNormal_DeletedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

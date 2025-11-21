@@ -3,7 +3,9 @@
   "enum_pool": {
     "crate::another_file/EnumInAnotherFile": {
       "comments": [],
+      "generic_params": [],
       "ignore": false,
+      "is_generic_template": false,
       "mode": "Simple",
       "name": "crate::another_file/EnumInAnotherFile",
       "needs_json_serializable": false,
@@ -162,8 +164,10 @@
       ],
       "generate_eq": true,
       "generate_hash": true,
+      "generic_params": [],
       "ignore": false,
       "is_fields_named": true,
+      "is_generic_template": false,
       "name": "crate::another_file/StructInAnotherFile",
       "needs_json_serializable": false,
       "ui_state": false,

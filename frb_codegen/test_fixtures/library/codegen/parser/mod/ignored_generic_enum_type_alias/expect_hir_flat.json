@@ -1,0 +1,52 @@
+{
+  "constants": [],
+  "enums": [
+    {
+      "mirror": false,
+      "name": "crate::api/Change",
+      "sources": [
+        "Normal"
+      ],
+      "visibility": "Public"
+    }
+  ],
+  "existing_handler": null,
+  "extra_dart_output_code": {
+    "body": "",
+    "header": {
+      "file_top": "",
+      "import": "",
+      "part": ""
+    }
+  },
+  "extra_rust_output_code": "",
+  "functions": [
+    {
+      "item_fn": "GeneralizedItemFn(name=func_batch_change_map, vis=Some(Visibility::Public(Pub)), attrs=[])",
+      "namespace": "crate::api",
+      "owner": "Function",
+      "sources": [
+        "Normal"
+      ]
+    }
+  ],
+  "skips": [],
+  "structs": [
+    {
+      "mirror": false,
+      "name": "crate::api/BatchTwinNormal",
+      "sources": [
+        "Normal"
+      ],
+      "visibility": "Inherited"
+    }
+  ],
+  "trait_impls": [],
+  "traits": [],
+  "types": [
+    {
+      "ident": "BatchTwinNormalChangeMap",
+      "target": "BatchTwinNormal < Change < HashMap < String , String > > >"
+    }
+  ]
+}
