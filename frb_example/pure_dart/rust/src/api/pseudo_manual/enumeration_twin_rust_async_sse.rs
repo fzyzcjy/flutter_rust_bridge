@@ -5,6 +5,7 @@
 use crate::api::pseudo_manual::misc_example_twin_rust_async_sse::WeekdaysTwinRustAsyncSse;
 use flutter_rust_bridge::frb;
 use log::info;
+use serde::{Deserialize, Serialize};
 
 pub enum EnumSimpleTwinRustAsyncSse {
     A,
@@ -65,6 +66,22 @@ pub enum EnumWithDiscriminantTwinRustAsyncSse {
 pub async fn func_enum_with_discriminant_twin_rust_async_sse(
     arg: EnumWithDiscriminantTwinRustAsyncSse,
 ) -> EnumWithDiscriminantTwinRustAsyncSse {
+    arg
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub enum ChangeTwinRustAsyncSse<T> {
+    Created { data: T },
+    Updated { id: String, data: T },
+    Deleted { id: String },
+}
+
+pub type ChangeStringTwinRustAsyncSse = ChangeTwinRustAsyncSse<String>;
+
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn func_change_twin_rust_async_sse(
+    arg: ChangeStringTwinRustAsyncSse,
+) -> ChangeStringTwinRustAsyncSse {
     arg
 }
 

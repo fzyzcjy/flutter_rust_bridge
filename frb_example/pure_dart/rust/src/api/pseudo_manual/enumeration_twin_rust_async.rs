@@ -5,6 +5,7 @@
 use crate::api::pseudo_manual::misc_example_twin_rust_async::WeekdaysTwinRustAsync;
 use flutter_rust_bridge::frb;
 use log::info;
+use serde::{Deserialize, Serialize};
 
 pub enum EnumSimpleTwinRustAsync {
     A,
@@ -60,6 +61,21 @@ pub enum EnumWithDiscriminantTwinRustAsync {
 pub async fn func_enum_with_discriminant_twin_rust_async(
     arg: EnumWithDiscriminantTwinRustAsync,
 ) -> EnumWithDiscriminantTwinRustAsync {
+    arg
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub enum ChangeTwinRustAsync<T> {
+    Created { data: T },
+    Updated { id: String, data: T },
+    Deleted { id: String },
+}
+
+pub type ChangeStringTwinRustAsync = ChangeTwinRustAsync<String>;
+
+pub async fn func_change_twin_rust_async(
+    arg: ChangeStringTwinRustAsync,
+) -> ChangeStringTwinRustAsync {
     arg
 }
 

@@ -67,19 +67,21 @@ pub(crate) fn parse(
         parse_mode,
     )?;
 
+    // Parse extra_types (including generic templates) BEFORE functions
+    // This ensures templates are available when functions reference them
+    let extra_types_all = extra_type::parse(
+        config,
+        &structs_map,
+        &enums_map,
+        &mut type_parser,
+        parse_mode,
+    )?;
     let (funcs_all, funcs_skip) = function::parse(
         config,
         &hir_flat.functions,
         &hir_flat.constants,
         &mut type_parser,
         &structs_map,
-        parse_mode,
-    )?;
-    let extra_types_all = extra_type::parse(
-        config,
-        &structs_map,
-        &enums_map,
-        &mut type_parser,
         parse_mode,
     )?;
 

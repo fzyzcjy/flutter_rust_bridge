@@ -15,6 +15,557 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
+mixin _$ChangeStringTwinRustAsync {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String data) created,
+    required TResult Function(String id, String data) updated,
+    required TResult Function(String id) deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String data)? created,
+    TResult? Function(String id, String data)? updated,
+    TResult? Function(String id)? deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String data)? created,
+    TResult Function(String id, String data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangeStringTwinRustAsync_Created value) created,
+    required TResult Function(ChangeStringTwinRustAsync_Updated value) updated,
+    required TResult Function(ChangeStringTwinRustAsync_Deleted value) deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangeStringTwinRustAsync_Created value)? created,
+    TResult? Function(ChangeStringTwinRustAsync_Updated value)? updated,
+    TResult? Function(ChangeStringTwinRustAsync_Deleted value)? deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeStringTwinRustAsync_Created value)? created,
+    TResult Function(ChangeStringTwinRustAsync_Updated value)? updated,
+    TResult Function(ChangeStringTwinRustAsync_Deleted value)? deleted,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ChangeStringTwinRustAsyncCopyWith<$Res> {
+  factory $ChangeStringTwinRustAsyncCopyWith(ChangeStringTwinRustAsync value,
+          $Res Function(ChangeStringTwinRustAsync) then) =
+      _$ChangeStringTwinRustAsyncCopyWithImpl<$Res, ChangeStringTwinRustAsync>;
+}
+
+/// @nodoc
+class _$ChangeStringTwinRustAsyncCopyWithImpl<$Res,
+        $Val extends ChangeStringTwinRustAsync>
+    implements $ChangeStringTwinRustAsyncCopyWith<$Res> {
+  _$ChangeStringTwinRustAsyncCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ChangeStringTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$ChangeStringTwinRustAsync_CreatedImplCopyWith<$Res> {
+  factory _$$ChangeStringTwinRustAsync_CreatedImplCopyWith(
+          _$ChangeStringTwinRustAsync_CreatedImpl value,
+          $Res Function(_$ChangeStringTwinRustAsync_CreatedImpl) then) =
+      __$$ChangeStringTwinRustAsync_CreatedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String data});
+}
+
+/// @nodoc
+class __$$ChangeStringTwinRustAsync_CreatedImplCopyWithImpl<$Res>
+    extends _$ChangeStringTwinRustAsyncCopyWithImpl<$Res,
+        _$ChangeStringTwinRustAsync_CreatedImpl>
+    implements _$$ChangeStringTwinRustAsync_CreatedImplCopyWith<$Res> {
+  __$$ChangeStringTwinRustAsync_CreatedImplCopyWithImpl(
+      _$ChangeStringTwinRustAsync_CreatedImpl _value,
+      $Res Function(_$ChangeStringTwinRustAsync_CreatedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChangeStringTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$ChangeStringTwinRustAsync_CreatedImpl(
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeStringTwinRustAsync_CreatedImpl
+    extends ChangeStringTwinRustAsync_Created {
+  const _$ChangeStringTwinRustAsync_CreatedImpl({required this.data})
+      : super._();
+
+  @override
+  final String data;
+
+  @override
+  String toString() {
+    return 'ChangeStringTwinRustAsync.created(data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeStringTwinRustAsync_CreatedImpl &&
+            (identical(other.data, data) || other.data == data));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, data);
+
+  /// Create a copy of ChangeStringTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeStringTwinRustAsync_CreatedImplCopyWith<
+          _$ChangeStringTwinRustAsync_CreatedImpl>
+      get copyWith => __$$ChangeStringTwinRustAsync_CreatedImplCopyWithImpl<
+          _$ChangeStringTwinRustAsync_CreatedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String data) created,
+    required TResult Function(String id, String data) updated,
+    required TResult Function(String id) deleted,
+  }) {
+    return created(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String data)? created,
+    TResult? Function(String id, String data)? updated,
+    TResult? Function(String id)? deleted,
+  }) {
+    return created?.call(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String data)? created,
+    TResult Function(String id, String data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) {
+    if (created != null) {
+      return created(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangeStringTwinRustAsync_Created value) created,
+    required TResult Function(ChangeStringTwinRustAsync_Updated value) updated,
+    required TResult Function(ChangeStringTwinRustAsync_Deleted value) deleted,
+  }) {
+    return created(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangeStringTwinRustAsync_Created value)? created,
+    TResult? Function(ChangeStringTwinRustAsync_Updated value)? updated,
+    TResult? Function(ChangeStringTwinRustAsync_Deleted value)? deleted,
+  }) {
+    return created?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeStringTwinRustAsync_Created value)? created,
+    TResult Function(ChangeStringTwinRustAsync_Updated value)? updated,
+    TResult Function(ChangeStringTwinRustAsync_Deleted value)? deleted,
+    required TResult orElse(),
+  }) {
+    if (created != null) {
+      return created(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeStringTwinRustAsync_Created
+    extends ChangeStringTwinRustAsync {
+  const factory ChangeStringTwinRustAsync_Created(
+      {required final String data}) = _$ChangeStringTwinRustAsync_CreatedImpl;
+  const ChangeStringTwinRustAsync_Created._() : super._();
+
+  String get data;
+
+  /// Create a copy of ChangeStringTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChangeStringTwinRustAsync_CreatedImplCopyWith<
+          _$ChangeStringTwinRustAsync_CreatedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeStringTwinRustAsync_UpdatedImplCopyWith<$Res> {
+  factory _$$ChangeStringTwinRustAsync_UpdatedImplCopyWith(
+          _$ChangeStringTwinRustAsync_UpdatedImpl value,
+          $Res Function(_$ChangeStringTwinRustAsync_UpdatedImpl) then) =
+      __$$ChangeStringTwinRustAsync_UpdatedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id, String data});
+}
+
+/// @nodoc
+class __$$ChangeStringTwinRustAsync_UpdatedImplCopyWithImpl<$Res>
+    extends _$ChangeStringTwinRustAsyncCopyWithImpl<$Res,
+        _$ChangeStringTwinRustAsync_UpdatedImpl>
+    implements _$$ChangeStringTwinRustAsync_UpdatedImplCopyWith<$Res> {
+  __$$ChangeStringTwinRustAsync_UpdatedImplCopyWithImpl(
+      _$ChangeStringTwinRustAsync_UpdatedImpl _value,
+      $Res Function(_$ChangeStringTwinRustAsync_UpdatedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChangeStringTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? data = null,
+  }) {
+    return _then(_$ChangeStringTwinRustAsync_UpdatedImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeStringTwinRustAsync_UpdatedImpl
+    extends ChangeStringTwinRustAsync_Updated {
+  const _$ChangeStringTwinRustAsync_UpdatedImpl(
+      {required this.id, required this.data})
+      : super._();
+
+  @override
+  final String id;
+  @override
+  final String data;
+
+  @override
+  String toString() {
+    return 'ChangeStringTwinRustAsync.updated(id: $id, data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeStringTwinRustAsync_UpdatedImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.data, data) || other.data == data));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id, data);
+
+  /// Create a copy of ChangeStringTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeStringTwinRustAsync_UpdatedImplCopyWith<
+          _$ChangeStringTwinRustAsync_UpdatedImpl>
+      get copyWith => __$$ChangeStringTwinRustAsync_UpdatedImplCopyWithImpl<
+          _$ChangeStringTwinRustAsync_UpdatedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String data) created,
+    required TResult Function(String id, String data) updated,
+    required TResult Function(String id) deleted,
+  }) {
+    return updated(id, data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String data)? created,
+    TResult? Function(String id, String data)? updated,
+    TResult? Function(String id)? deleted,
+  }) {
+    return updated?.call(id, data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String data)? created,
+    TResult Function(String id, String data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) {
+    if (updated != null) {
+      return updated(id, data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangeStringTwinRustAsync_Created value) created,
+    required TResult Function(ChangeStringTwinRustAsync_Updated value) updated,
+    required TResult Function(ChangeStringTwinRustAsync_Deleted value) deleted,
+  }) {
+    return updated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangeStringTwinRustAsync_Created value)? created,
+    TResult? Function(ChangeStringTwinRustAsync_Updated value)? updated,
+    TResult? Function(ChangeStringTwinRustAsync_Deleted value)? deleted,
+  }) {
+    return updated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeStringTwinRustAsync_Created value)? created,
+    TResult Function(ChangeStringTwinRustAsync_Updated value)? updated,
+    TResult Function(ChangeStringTwinRustAsync_Deleted value)? deleted,
+    required TResult orElse(),
+  }) {
+    if (updated != null) {
+      return updated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeStringTwinRustAsync_Updated
+    extends ChangeStringTwinRustAsync {
+  const factory ChangeStringTwinRustAsync_Updated(
+      {required final String id,
+      required final String data}) = _$ChangeStringTwinRustAsync_UpdatedImpl;
+  const ChangeStringTwinRustAsync_Updated._() : super._();
+
+  String get id;
+  String get data;
+
+  /// Create a copy of ChangeStringTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChangeStringTwinRustAsync_UpdatedImplCopyWith<
+          _$ChangeStringTwinRustAsync_UpdatedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeStringTwinRustAsync_DeletedImplCopyWith<$Res> {
+  factory _$$ChangeStringTwinRustAsync_DeletedImplCopyWith(
+          _$ChangeStringTwinRustAsync_DeletedImpl value,
+          $Res Function(_$ChangeStringTwinRustAsync_DeletedImpl) then) =
+      __$$ChangeStringTwinRustAsync_DeletedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$ChangeStringTwinRustAsync_DeletedImplCopyWithImpl<$Res>
+    extends _$ChangeStringTwinRustAsyncCopyWithImpl<$Res,
+        _$ChangeStringTwinRustAsync_DeletedImpl>
+    implements _$$ChangeStringTwinRustAsync_DeletedImplCopyWith<$Res> {
+  __$$ChangeStringTwinRustAsync_DeletedImplCopyWithImpl(
+      _$ChangeStringTwinRustAsync_DeletedImpl _value,
+      $Res Function(_$ChangeStringTwinRustAsync_DeletedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChangeStringTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$ChangeStringTwinRustAsync_DeletedImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeStringTwinRustAsync_DeletedImpl
+    extends ChangeStringTwinRustAsync_Deleted {
+  const _$ChangeStringTwinRustAsync_DeletedImpl({required this.id}) : super._();
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'ChangeStringTwinRustAsync.deleted(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeStringTwinRustAsync_DeletedImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  /// Create a copy of ChangeStringTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeStringTwinRustAsync_DeletedImplCopyWith<
+          _$ChangeStringTwinRustAsync_DeletedImpl>
+      get copyWith => __$$ChangeStringTwinRustAsync_DeletedImplCopyWithImpl<
+          _$ChangeStringTwinRustAsync_DeletedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String data) created,
+    required TResult Function(String id, String data) updated,
+    required TResult Function(String id) deleted,
+  }) {
+    return deleted(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String data)? created,
+    TResult? Function(String id, String data)? updated,
+    TResult? Function(String id)? deleted,
+  }) {
+    return deleted?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String data)? created,
+    TResult Function(String id, String data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) {
+    if (deleted != null) {
+      return deleted(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangeStringTwinRustAsync_Created value) created,
+    required TResult Function(ChangeStringTwinRustAsync_Updated value) updated,
+    required TResult Function(ChangeStringTwinRustAsync_Deleted value) deleted,
+  }) {
+    return deleted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangeStringTwinRustAsync_Created value)? created,
+    TResult? Function(ChangeStringTwinRustAsync_Updated value)? updated,
+    TResult? Function(ChangeStringTwinRustAsync_Deleted value)? deleted,
+  }) {
+    return deleted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeStringTwinRustAsync_Created value)? created,
+    TResult Function(ChangeStringTwinRustAsync_Updated value)? updated,
+    TResult Function(ChangeStringTwinRustAsync_Deleted value)? deleted,
+    required TResult orElse(),
+  }) {
+    if (deleted != null) {
+      return deleted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeStringTwinRustAsync_Deleted
+    extends ChangeStringTwinRustAsync {
+  const factory ChangeStringTwinRustAsync_Deleted({required final String id}) =
+      _$ChangeStringTwinRustAsync_DeletedImpl;
+  const ChangeStringTwinRustAsync_Deleted._() : super._();
+
+  String get id;
+
+  /// Create a copy of ChangeStringTwinRustAsync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChangeStringTwinRustAsync_DeletedImplCopyWith<
+          _$ChangeStringTwinRustAsync_DeletedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$DistanceTwinRustAsync {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
