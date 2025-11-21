@@ -13,6 +13,12 @@ use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 impl ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'_> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
         let src = self.mir.get(self.context.mir_pack);
+
+        // Skip generic templates - they should not be code-generated
+        if src.is_generic_template {
+            return None;
+        }
+
         let comments = generate_dart_comments(&src.comments);
         let metadata = generate_dart_metadata(&src.effective_dart_metadata());
 

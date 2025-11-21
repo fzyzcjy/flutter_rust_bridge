@@ -1,0 +1,381 @@
+{
+  "dart_code_of_type": {},
+  "enum_pool": {
+    "crate::api/ChangeMap": {
+      "comments": [],
+      "generic_params": [],
+      "ignore": false,
+      "is_generic_template": false,
+      "mode": "Complex",
+      "name": "crate::api/ChangeMap",
+      "needs_json_serializable": false,
+      "variants": [
+        {
+          "comments": [],
+          "kind": {
+            "Struct": {
+              "comments": [],
+              "dart_metadata_raw": [],
+              "fields": [
+                {
+                  "comments": [],
+                  "default": null,
+                  "is_final": true,
+                  "is_rust_public": false,
+                  "name": {
+                    "dart_style": null,
+                    "rust_style": "data"
+                  },
+                  "settings": {
+                    "is_in_mirrored_enum": false,
+                    "skip_auto_accessors": false
+                  },
+                  "ty": {
+                    "data": {
+                      "Map": {
+                        "element_delegate": {
+                          "inner": {
+                            "ident": "crate::api/__record__String_String",
+                            "is_exception": false
+                          },
+                          "values": [
+                            {
+                              "data": "String",
+                              "safe_ident": "String",
+                              "type": "Delegate"
+                            },
+                            {
+                              "data": "String",
+                              "safe_ident": "String",
+                              "type": "Delegate"
+                            }
+                          ]
+                        },
+                        "hasher": null,
+                        "key": {
+                          "data": "String",
+                          "safe_ident": "String",
+                          "type": "Delegate"
+                        },
+                        "value": {
+                          "data": "String",
+                          "safe_ident": "String",
+                          "type": "Delegate"
+                        }
+                      }
+                    },
+                    "safe_ident": "Map_String_String_None",
+                    "type": "Delegate"
+                  }
+                }
+              ],
+              "generate_eq": true,
+              "generate_hash": true,
+              "ignore": false,
+              "is_fields_named": true,
+              "name": "crate::api::Change/Created",
+              "needs_json_serializable": false,
+              "ui_state": false,
+              "wrapper_name": null
+            }
+          },
+          "name": {
+            "dart_style": null,
+            "rust_style": "Created"
+          },
+          "wrapper_name": {
+            "dart_style": null,
+            "rust_style": "ChangeMap_Created"
+          }
+        },
+        {
+          "comments": [],
+          "kind": {
+            "Struct": {
+              "comments": [],
+              "dart_metadata_raw": [],
+              "fields": [
+                {
+                  "comments": [],
+                  "default": null,
+                  "is_final": true,
+                  "is_rust_public": false,
+                  "name": {
+                    "dart_style": null,
+                    "rust_style": "id"
+                  },
+                  "settings": {
+                    "is_in_mirrored_enum": false,
+                    "skip_auto_accessors": false
+                  },
+                  "ty": {
+                    "data": "String",
+                    "safe_ident": "String",
+                    "type": "Delegate"
+                  }
+                },
+                {
+                  "comments": [],
+                  "default": null,
+                  "is_final": true,
+                  "is_rust_public": false,
+                  "name": {
+                    "dart_style": null,
+                    "rust_style": "data"
+                  },
+                  "settings": {
+                    "is_in_mirrored_enum": false,
+                    "skip_auto_accessors": false
+                  },
+                  "ty": {
+                    "data": {
+                      "Map": {
+                        "element_delegate": {
+                          "inner": {
+                            "ident": "crate::api/__record__String_String",
+                            "is_exception": false
+                          },
+                          "values": [
+                            {
+                              "data": "String",
+                              "safe_ident": "String",
+                              "type": "Delegate"
+                            },
+                            {
+                              "data": "String",
+                              "safe_ident": "String",
+                              "type": "Delegate"
+                            }
+                          ]
+                        },
+                        "hasher": null,
+                        "key": {
+                          "data": "String",
+                          "safe_ident": "String",
+                          "type": "Delegate"
+                        },
+                        "value": {
+                          "data": "String",
+                          "safe_ident": "String",
+                          "type": "Delegate"
+                        }
+                      }
+                    },
+                    "safe_ident": "Map_String_String_None",
+                    "type": "Delegate"
+                  }
+                }
+              ],
+              "generate_eq": true,
+              "generate_hash": true,
+              "ignore": false,
+              "is_fields_named": true,
+              "name": "crate::api::Change/Updated",
+              "needs_json_serializable": false,
+              "ui_state": false,
+              "wrapper_name": null
+            }
+          },
+          "name": {
+            "dart_style": null,
+            "rust_style": "Updated"
+          },
+          "wrapper_name": {
+            "dart_style": null,
+            "rust_style": "ChangeMap_Updated"
+          }
+        },
+        {
+          "comments": [],
+          "kind": {
+            "Struct": {
+              "comments": [],
+              "dart_metadata_raw": [],
+              "fields": [
+                {
+                  "comments": [],
+                  "default": null,
+                  "is_final": true,
+                  "is_rust_public": false,
+                  "name": {
+                    "dart_style": null,
+                    "rust_style": "id"
+                  },
+                  "settings": {
+                    "is_in_mirrored_enum": false,
+                    "skip_auto_accessors": false
+                  },
+                  "ty": {
+                    "data": "String",
+                    "safe_ident": "String",
+                    "type": "Delegate"
+                  }
+                }
+              ],
+              "generate_eq": true,
+              "generate_hash": true,
+              "ignore": false,
+              "is_fields_named": true,
+              "name": "crate::api::Change/Deleted",
+              "needs_json_serializable": false,
+              "ui_state": false,
+              "wrapper_name": null
+            }
+          },
+          "name": {
+            "dart_style": null,
+            "rust_style": "Deleted"
+          },
+          "wrapper_name": {
+            "dart_style": null,
+            "rust_style": "ChangeMap_Deleted"
+          }
+        }
+      ],
+      "wrapper_name": null
+    }
+  },
+  "existing_handler": null,
+  "extra_dart_output_code": {
+    "body": "",
+    "header": {
+      "file_top": "",
+      "import": "",
+      "part": ""
+    }
+  },
+  "extra_rust_output_code": "",
+  "extra_types_all": [],
+  "funcs_all": [
+    {
+      "accessor": null,
+      "arg_mode": "Named",
+      "codec_mode_pack": {
+        "dart2rust": "Cst",
+        "rust2dart": "Dco"
+      },
+      "comments": [],
+      "id": 1,
+      "impl_mode": "Normal",
+      "initializer": false,
+      "inputs": [
+        {
+          "inner": {
+            "comments": [],
+            "default": null,
+            "is_final": true,
+            "is_rust_public": null,
+            "name": {
+              "dart_style": null,
+              "rust_style": "arg"
+            },
+            "settings": {
+              "is_in_mirrored_enum": false,
+              "skip_auto_accessors": false
+            },
+            "ty": {
+              "data": {
+                "exist_in_real_api": false,
+                "inner": {
+                  "data": {
+                    "ident": "crate::api/ChangeMap",
+                    "is_exception": false
+                  },
+                  "safe_ident": "change_map",
+                  "type": "EnumRef"
+                }
+              },
+              "safe_ident": "box_autoadd_change_map",
+              "type": "Boxed"
+            }
+          },
+          "needs_extend_lifetime": false,
+          "ownership_mode": "Owned"
+        }
+      ],
+      "mode": "Normal",
+      "name": {
+        "dart_style": null,
+        "rust_style": "func_change_map"
+      },
+      "namespace": "crate::api",
+      "output": {
+        "error": null,
+        "normal": {
+          "data": {
+            "ident": "crate::api/ChangeMap",
+            "is_exception": false
+          },
+          "safe_ident": "change_map",
+          "type": "EnumRef"
+        }
+      },
+      "owner": "Function",
+      "rust_aop_after": null,
+      "rust_async": false,
+      "rust_call_code": null,
+      "stream_dart_await": false
+    }
+  ],
+  "skips": [
+    {
+      "name": "crate::api/Change",
+      "reason": "IgnoreBecauseTypeNotUsedByPub"
+    }
+  ],
+  "struct_pool": {
+    "crate::api/__record__String_String": {
+      "comments": [],
+      "dart_metadata_raw": [],
+      "fields": [
+        {
+          "comments": [],
+          "default": null,
+          "is_final": true,
+          "is_rust_public": null,
+          "name": {
+            "dart_style": null,
+            "rust_style": "field0"
+          },
+          "settings": {
+            "is_in_mirrored_enum": false,
+            "skip_auto_accessors": false
+          },
+          "ty": {
+            "data": "String",
+            "safe_ident": "String",
+            "type": "Delegate"
+          }
+        },
+        {
+          "comments": [],
+          "default": null,
+          "is_final": true,
+          "is_rust_public": null,
+          "name": {
+            "dart_style": null,
+            "rust_style": "field1"
+          },
+          "settings": {
+            "is_in_mirrored_enum": false,
+            "skip_auto_accessors": false
+          },
+          "ty": {
+            "data": "String",
+            "safe_ident": "String",
+            "type": "Delegate"
+          }
+        }
+      ],
+      "generate_eq": true,
+      "generate_hash": true,
+      "ignore": false,
+      "is_fields_named": true,
+      "name": "crate::api/__record__String_String",
+      "needs_json_serializable": false,
+      "ui_state": false,
+      "wrapper_name": null
+    }
+  },
+  "trait_impls": []
+}

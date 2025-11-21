@@ -27,6 +27,8 @@ pub struct MirStruct {
     pub generate_eq: bool,
     pub ui_state: bool,
     pub comments: Vec<MirComment>,
+    pub generic_params: Vec<String>,
+    pub is_generic_template: bool,
 }
 }
 

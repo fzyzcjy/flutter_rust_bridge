@@ -40,6 +40,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
     EnumWithDiscriminantTwinRustAsync.fifty,
   ]);
 
+  addTestsIdentityFunctionCall(funcChangeTwinRustAsync, [
+    ChangeStringTwinRustAsync_Created(data: 'test'),
+    ChangeStringTwinRustAsync_Updated(id: 'id1', data: 'test'),
+    ChangeStringTwinRustAsync_Deleted(id: 'id2'),
+  ]);
+
   group('example-based tests', () {
     test('dart call handleReturnEnum', () async {
       expect(await handleReturnEnumTwinRustAsync(input: "Tuesday"),
