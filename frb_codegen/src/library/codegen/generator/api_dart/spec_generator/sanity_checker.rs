@@ -21,7 +21,7 @@ pub(crate) fn sanity_check_class_name_duplicates(
         );
 
         if std::env::var(SKIP_ENV_VAR).is_ok() {
-            warn!("{}", message);
+            warn!("{message}",);
         } else {
             bail!(
                 "{}Another way to debug is to temporarily set environment variable `{}=1` and check the generated code.",
