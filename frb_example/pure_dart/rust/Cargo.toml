@@ -14,7 +14,7 @@ backtrace = "0.3.68"
 chrono = "0.4.26"
 uuid = "1.4.1"
 frb_example_pure_dart_example_external_lib = { path = "./example_external_lib" }
-wasm-bindgen = "0.2.88" # TODO temp experiment
+wasm-bindgen = "0.2.106" # TODO temp experiment
 byteorder = "1.5.0"
 lazy_static = "1.4.0"
 tempfile = "3.8.1"
