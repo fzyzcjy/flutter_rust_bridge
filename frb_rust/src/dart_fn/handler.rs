@@ -59,9 +59,12 @@ impl DartFnHandler {
             let catch_unwind_result = panic::catch_unwind(move || {
                 if let Some(completer) = (self.completers.lock().unwrap()).remove(&call_id) {
                     if let Err(err) = completer.send(message) {
+                        // We do not care about details of this warning
+                        // frb-coverage:ignore-start
                         log_warn_or_println(&format!(
                             "Error in dart_fn_handle_output when sending message for call_id {call_id}: {err:?}"
                         ));
+                        // frb-coverage:ignore-end
                     }
                 }
             });
