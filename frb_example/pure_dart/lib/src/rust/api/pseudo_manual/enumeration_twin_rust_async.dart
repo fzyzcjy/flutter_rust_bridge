@@ -11,7 +11,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'enumeration_twin_rust_async.freezed.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
+// These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `ChangeTwinRustAsync`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
 
 Future<EnumSimpleTwinRustAsync> funcEnumSimpleTwinRustAsync(
         {required EnumSimpleTwinRustAsync arg}) =>
@@ -43,6 +44,12 @@ Future<EnumWithDiscriminantTwinRustAsync> funcEnumWithDiscriminantTwinRustAsync(
         .crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumWithDiscriminantTwinRustAsync(
             arg: arg);
 
+Future<ChangeStringTwinRustAsync> funcChangeTwinRustAsync(
+        {required ChangeStringTwinRustAsync arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinRustAsyncFuncChangeTwinRustAsync(
+            arg: arg);
+
 Future<Uint8List> printNoteTwinRustAsync({required NoteTwinRustAsync note}) =>
     RustLib.instance.api
         .crateApiPseudoManualEnumerationTwinRustAsyncPrintNoteTwinRustAsync(
@@ -71,6 +78,22 @@ Future<KitchenSinkTwinRustAsync> handleEnumStructTwinRustAsync(
     RustLib.instance.api
         .crateApiPseudoManualEnumerationTwinRustAsyncHandleEnumStructTwinRustAsync(
             val: val);
+
+@freezed
+sealed class ChangeStringTwinRustAsync with _$ChangeStringTwinRustAsync {
+  const ChangeStringTwinRustAsync._();
+
+  const factory ChangeStringTwinRustAsync.created({
+    required String data,
+  }) = ChangeStringTwinRustAsync_Created;
+  const factory ChangeStringTwinRustAsync.updated({
+    required String id,
+    required String data,
+  }) = ChangeStringTwinRustAsync_Updated;
+  const factory ChangeStringTwinRustAsync.deleted({
+    required String id,
+  }) = ChangeStringTwinRustAsync_Deleted;
+}
 
 @freezed
 sealed class DistanceTwinRustAsync with _$DistanceTwinRustAsync {

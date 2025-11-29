@@ -29,6 +29,7 @@ pub fn is_js_value(ty: &MirType) -> bool {
         MirType::Primitive(_) | MirType::PrimitiveList(_) => false,
         // frb-coverage:ignore-start
         MirType::Dynamic(_) | MirType::TraitDef(_) => unreachable!(),
+        MirType::Generic(_) => unreachable!("Generic types should not appear in final code generation"),
         // frb-coverage:ignore-end
     }
 }

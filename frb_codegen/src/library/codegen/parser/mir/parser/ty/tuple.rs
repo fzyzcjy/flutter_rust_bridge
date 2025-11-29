@@ -59,6 +59,8 @@ impl TypeParserWithContext<'_, '_, '_> {
                         settings: Default::default(),
                     })
                     .collect(),
+                generic_params: vec![],
+                is_generic_template: false,
             },
         );
 
