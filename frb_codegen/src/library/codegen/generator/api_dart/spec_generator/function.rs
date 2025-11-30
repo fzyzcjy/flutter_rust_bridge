@@ -258,6 +258,17 @@ fn generate_function_dart_return_type(
         );
     }
 
+    // If oxidized is enabled and the function is fallible, wrap in Result<T, E>
+    if context.config.use_oxidized && func.fallible() && return_stream.is_none() {
+        let error_type = func
+            .output
+            .error
+            .as_ref()
+            .map(|e| ApiDartGenerator::new(e.clone(), context).dart_api_type())
+            .unwrap_or_else(|| "Object".to_owned());
+        inner = format!("Result<{inner}, {error_type}>");
+    }
+
     let return_future = if return_stream.is_some() {
         func.stream_dart_await
     } else {

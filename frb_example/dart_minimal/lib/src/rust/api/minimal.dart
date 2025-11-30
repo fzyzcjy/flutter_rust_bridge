@@ -8,3 +8,27 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
+
+Future<Result<int, MyError>> fallibleDivide({required int a, required int b}) =>
+    RustLib.instance.api.crateApiMinimalFallibleDivide(a: a, b: b);
+
+Result<int, MyError> fallibleDivideSync({required int a, required int b}) =>
+    RustLib.instance.api.crateApiMinimalFallibleDivideSync(a: a, b: b);
+
+class MyError implements FrbException {
+  final String message;
+
+  const MyError({
+    required this.message,
+  });
+
+  @override
+  int get hashCode => message.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MyError &&
+          runtimeType == other.runtimeType &&
+          message == other.message;
+}
