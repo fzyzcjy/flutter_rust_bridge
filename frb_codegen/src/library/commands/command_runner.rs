@@ -191,8 +191,7 @@ pub(crate) fn execute_command<'a>(
     }
 
     debug!(
-        "execute command: bin={} args={:?} current_dir={:?} cmd={:?}",
-        bin, args_display, current_dir, cmd
+        "execute command: bin={bin} args={args_display:?} current_dir={current_dir:?} cmd={cmd:?}"
     );
 
     let result = cmd
@@ -210,7 +209,7 @@ pub(crate) fn execute_command<'a>(
         if stdout.contains("fatal error") {
             // We do not care about details of this message
             // frb-coverage:ignore-start
-            warn!("See keywords such as `error` in command output. Maybe there is a problem? command={:?} stdout={:?}", cmd, stdout);
+            warn!("See keywords such as `error` in command output. Maybe there is a problem? command={cmd:?} stdout={stdout:?}");
             // frb-coverage:ignore-end
         }
     } else if options.log_when_error.unwrap_or(true) {
