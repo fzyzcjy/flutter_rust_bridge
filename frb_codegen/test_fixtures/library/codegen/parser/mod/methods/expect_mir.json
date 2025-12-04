@@ -3,7 +3,9 @@
   "enum_pool": {
     "crate::api/MyEnum": {
       "comments": [],
+      "generic_params": [],
       "ignore": false,
+      "is_generic_template": false,
       "mode": "Simple",
       "name": "crate::api/MyEnum",
       "needs_json_serializable": false,

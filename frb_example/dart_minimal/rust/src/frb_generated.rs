@@ -20,7 +20,6 @@
     clippy::deref_addrof,
     clippy::explicit_auto_deref,
     clippy::borrow_deref_ref,
-    clippy::uninlined_format_args,
     clippy::needless_borrow
 )]
 

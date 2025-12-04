@@ -11,7 +11,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'enumeration_twin_sse.freezed.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
+// These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `ChangeTwinSse`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
 
 Future<EnumSimpleTwinSse> funcEnumSimpleTwinSse(
         {required EnumSimpleTwinSse arg}) =>
@@ -42,6 +43,11 @@ Future<EnumWithDiscriminantTwinSse> funcEnumWithDiscriminantTwinSse(
         .crateApiPseudoManualEnumerationTwinSseFuncEnumWithDiscriminantTwinSse(
             arg: arg);
 
+Future<ChangeStringTwinSse> funcChangeTwinSse(
+        {required ChangeStringTwinSse arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSseFuncChangeTwinSse(arg: arg);
+
 Future<Uint8List> printNoteTwinSse({required NoteTwinSse note}) =>
     RustLib.instance.api
         .crateApiPseudoManualEnumerationTwinSsePrintNoteTwinSse(note: note);
@@ -68,6 +74,22 @@ Future<KitchenSinkTwinSse> handleEnumStructTwinSse(
     RustLib.instance.api
         .crateApiPseudoManualEnumerationTwinSseHandleEnumStructTwinSse(
             val: val);
+
+@freezed
+sealed class ChangeStringTwinSse with _$ChangeStringTwinSse {
+  const ChangeStringTwinSse._();
+
+  const factory ChangeStringTwinSse.created({
+    required String data,
+  }) = ChangeStringTwinSse_Created;
+  const factory ChangeStringTwinSse.updated({
+    required String id,
+    required String data,
+  }) = ChangeStringTwinSse_Updated;
+  const factory ChangeStringTwinSse.deleted({
+    required String id,
+  }) = ChangeStringTwinSse_Deleted;
+}
 
 @freezed
 sealed class DistanceTwinSse with _$DistanceTwinSse {
