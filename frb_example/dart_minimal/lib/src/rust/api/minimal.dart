@@ -5,6 +5,7 @@
 
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:uuid/uuid.dart';
 
 Future<int> minimalAdder({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalMinimalAdder(a: a, b: b);
@@ -14,6 +15,40 @@ Future<Result<int, MyError>> fallibleDivide({required int a, required int b}) =>
 
 Result<int, MyError> fallibleDivideSync({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalFallibleDivideSync(a: a, b: b);
+
+/// Test basic WResult alias with primitive type
+Result<int, MyError> testWresultAlias({required int a, required int b}) =>
+    RustLib.instance.api.crateApiMinimalTestWresultAlias(a: a, b: b);
+
+/// Test WResult alias with UUID type
+Future<Result<UuidValue, MyError>> testWresultUuid() =>
+    RustLib.instance.api.crateApiMinimalTestWresultUuid();
+
+/// Test WResult alias with String type
+Result<String, MyError> testWresultString({required String name}) =>
+    RustLib.instance.api.crateApiMinimalTestWresultString(name: name);
+
+/// Test WResult alias with custom struct type
+Future<Result<UserInfo, MyError>> testWresultStruct(
+        {required int id, required String name}) =>
+    RustLib.instance.api.crateApiMinimalTestWresultStruct(id: id, name: name);
+
+/// Test WResult alias with Vec type
+Future<Result<Int32List, MyError>> testWresultVec({required int count}) =>
+    RustLib.instance.api.crateApiMinimalTestWresultVec(count: count);
+
+/// Test WResult alias with Option type
+Future<Result<String?, MyError>> testWresultOption({int? value}) =>
+    RustLib.instance.api.crateApiMinimalTestWresultOption(value: value);
+
+/// Test two-parameter generic alias
+(int, String) testPairAlias({required int a, required String b}) =>
+    RustLib.instance.api.crateApiMinimalTestPairAlias(a: a, b: b);
+
+/// Nested type alias: WResult containing a Vec
+Future<Result<List<String>, MyError>> testWresultNested(
+        {required List<String> items}) =>
+    RustLib.instance.api.crateApiMinimalTestWresultNested(items: items);
 
 class MyError implements FrbException {
   final String message;
@@ -31,4 +66,26 @@ class MyError implements FrbException {
       other is MyError &&
           runtimeType == other.runtimeType &&
           message == other.message;
+}
+
+/// Custom struct for testing
+class UserInfo {
+  final int id;
+  final String name;
+
+  const UserInfo({
+    required this.id,
+    required this.name,
+  });
+
+  @override
+  int get hashCode => id.hashCode ^ name.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is UserInfo &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          name == other.name;
 }
