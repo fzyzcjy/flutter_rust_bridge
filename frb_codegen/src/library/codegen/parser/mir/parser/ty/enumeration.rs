@@ -81,7 +81,7 @@ impl TypeParserWithContext<'_, '_, '_> {
         let variant_name = MirIdent::new(variant.ident.to_string(), None);
         Ok(MirEnumVariant {
             name: variant_name.clone(),
-            wrapper_name: MirIdent::new(format!("{}_{}", src_enum.name.name, variant.ident), None),
+            wrapper_name: MirIdent::new(format!("{}{}", src_enum.name.name, variant.ident), None),
             comments: parse_comments(&variant.attrs),
             kind: match variant.fields.iter().next() {
                 None => MirVariantKind::Value,
