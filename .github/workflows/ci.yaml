@@ -176,7 +176,7 @@ jobs:
       matrix:
         image:
           - windows-2025
-          - macos-15
+          - macos-15-intel
           - ubuntu-24.04
         package:
           - frb_example--dart_minimal
@@ -192,11 +192,11 @@ jobs:
           - frb_example--rust_ui_todo_list--ui
         exclude:
           - { image: windows-2025, package: frb_example--deliberate_bad }
-          - { image: macos-15, package: frb_example--deliberate_bad }
+          - { image: macos-15-intel, package: frb_example--deliberate_bad }
           - { image: windows-2025, package: frb_example--integrate_third_party }
-          - { image: macos-15, package: frb_example--integrate_third_party }
+          - { image: macos-15-intel, package: frb_example--integrate_third_party }
           - { image: windows-2025, package: frb_example--flutter_via_integrate }
-          - { image: macos-15, package: frb_example--flutter_via_integrate }
+          - { image: macos-15-intel, package: frb_example--flutter_via_integrate }
 
     steps:
       # setup
@@ -235,7 +235,7 @@ jobs:
       fail-fast: false
       matrix:
         image:
-          - macos-15
+          - macos-15-intel
           - windows-2025
           - ubuntu-24.04
         package:
@@ -313,7 +313,7 @@ jobs:
       matrix:
         image:
           - windows-2025
-          - macos-15
+          - macos-15-intel
           - ubuntu-24.04
 
     steps:
@@ -390,7 +390,7 @@ jobs:
         info:
           - image: windows-2025
             target: windows
-          - image: macos-15
+          - image: macos-15-intel
             target: macos
           - image: ubuntu-latest
             target: linux
@@ -398,7 +398,7 @@ jobs:
             target: android-aab
           - image: ubuntu-latest
             target: android-apk
-          - image: macos-15
+          - image: macos-15-intel
             target: ios
 
     steps:
@@ -437,7 +437,7 @@ jobs:
         image:
           - windows-2025
           # need macos-"13" because https://github.com/fzyzcjy/flutter_rust_bridge/issues/1225
-          - macos-15
+          - macos-15-intel
           - ubuntu-latest
 
     steps:
@@ -475,7 +475,7 @@ jobs:
   #       image:
   #         - windows-2025
   #         # need macos-"13" because https://github.com/fzyzcjy/flutter_rust_bridge/issues/1225
-  #         - macos-15
+  #         - macos-15-intel
   #         - ubuntu-latest
 
   #   steps:
@@ -518,7 +518,7 @@ jobs:
       matrix:
         info:
           # run on various platforms
-          - image: macos-15
+          - image: macos-15-intel
             version: ''
           - image: windows-2025
             version: ''
@@ -570,7 +570,7 @@ jobs:
       matrix:
         image:
           - windows-2025
-          - macos-15
+          - macos-15-intel
           - ubuntu-24.04
         package:
           - frb_dart
@@ -583,11 +583,11 @@ jobs:
           - frb_example--deliberate_bad
         exclude:
           - { image: windows-2025, package: frb_utils }
-          - { image: macos-15, package: frb_utils }
+          - { image: macos-15-intel, package: frb_utils }
           - { image: windows-2025, package: tools--frb_internal }
-          - { image: macos-15, package: tools--frb_internal }
+          - { image: macos-15-intel, package: tools--frb_internal }
           - { image: windows-2025, package: frb_example--deliberate_bad }
-          - { image: macos-15, package: frb_example--deliberate_bad }
+          - { image: macos-15-intel, package: frb_example--deliberate_bad }
 
     steps:
       # setup
@@ -866,7 +866,7 @@ jobs:
             platform: windows
             package: frb_example--flutter_via_create
           # need macos-"13" because https://github.com/fzyzcjy/flutter_rust_bridge/issues/1225
-          - image: macos-15
+          - image: macos-15-intel
             platform: macos
             package: frb_example--flutter_via_create
           - image: ubuntu-latest
@@ -876,7 +876,7 @@ jobs:
           - image: windows-2025
             platform: windows
             package: frb_example--flutter_package--example
-          - image: macos-15
+          - image: macos-15-intel
             platform: macos
             package: frb_example--flutter_package--example
           - image: ubuntu-latest
@@ -886,7 +886,7 @@ jobs:
           - image: windows-2025
             platform: windows
             package: frb_example--rust_ui_counter--ui
-          - image: macos-15
+          - image: macos-15-intel
             platform: macos
             package: frb_example--rust_ui_counter--ui
           - image: ubuntu-latest
@@ -896,7 +896,7 @@ jobs:
           - image: windows-2025
             platform: windows
             package: frb_example--rust_ui_todo_list--ui
-          - image: macos-15
+          - image: macos-15-intel
             platform: macos
             package: frb_example--rust_ui_todo_list--ui
           - image: ubuntu-latest
