@@ -104,19 +104,19 @@ fn generate_code_lockable_impl(
     format!(
         "
         impl {enum_name} {{
-            pub fn blocking_read(&self) -> {enum_name}RwLockReadGuard {{
+            pub fn blocking_read(&self) -> {enum_name}RwLockReadGuard<'_> {{
                 {blocking_read_body}
             }}
 
-            pub fn blocking_write(&self) -> {enum_name}RwLockWriteGuard {{
+            pub fn blocking_write(&self) -> {enum_name}RwLockWriteGuard<'_> {{
                 {blocking_write_body}
             }}
 
-            pub async fn read(&self) -> {enum_name}RwLockReadGuard {{
+            pub async fn read(&self) -> {enum_name}RwLockReadGuard<'_> {{
                 {read_body}
             }}
 
-            pub async fn write(&self) -> {enum_name}RwLockWriteGuard {{
+            pub async fn write(&self) -> {enum_name}RwLockWriteGuard<'_> {{
                 {write_body}
             }}
         }}

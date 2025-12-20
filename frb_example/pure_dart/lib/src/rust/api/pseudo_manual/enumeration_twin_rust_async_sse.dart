@@ -11,7 +11,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'enumeration_twin_rust_async_sse.freezed.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
+// These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `ChangeTwinRustAsyncSse`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
 
 Future<EnumSimpleTwinRustAsyncSse> funcEnumSimpleTwinRustAsyncSse(
         {required EnumSimpleTwinRustAsyncSse arg}) =>
@@ -45,6 +46,12 @@ Future<
         .crateApiPseudoManualEnumerationTwinRustAsyncSseFuncEnumWithDiscriminantTwinRustAsyncSse(
             arg: arg);
 
+Future<ChangeStringTwinRustAsyncSse> funcChangeTwinRustAsyncSse(
+        {required ChangeStringTwinRustAsyncSse arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinRustAsyncSseFuncChangeTwinRustAsyncSse(
+            arg: arg);
+
 Future<Uint8List> printNoteTwinRustAsyncSse(
         {required NoteTwinRustAsyncSse note}) =>
     RustLib.instance.api
@@ -74,6 +81,22 @@ Future<KitchenSinkTwinRustAsyncSse> handleEnumStructTwinRustAsyncSse(
     RustLib.instance.api
         .crateApiPseudoManualEnumerationTwinRustAsyncSseHandleEnumStructTwinRustAsyncSse(
             val: val);
+
+@freezed
+sealed class ChangeStringTwinRustAsyncSse with _$ChangeStringTwinRustAsyncSse {
+  const ChangeStringTwinRustAsyncSse._();
+
+  const factory ChangeStringTwinRustAsyncSse.created({
+    required String data,
+  }) = ChangeStringTwinRustAsyncSse_Created;
+  const factory ChangeStringTwinRustAsyncSse.updated({
+    required String id,
+    required String data,
+  }) = ChangeStringTwinRustAsyncSse_Updated;
+  const factory ChangeStringTwinRustAsyncSse.deleted({
+    required String id,
+  }) = ChangeStringTwinRustAsyncSse_Deleted;
+}
 
 @freezed
 sealed class DistanceTwinRustAsyncSse with _$DistanceTwinRustAsyncSse {

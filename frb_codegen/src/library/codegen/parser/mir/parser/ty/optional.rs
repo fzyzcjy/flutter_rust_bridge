@@ -50,6 +50,7 @@ impl TypeParserWithContext<'_, '_, '_> {
                     }
                     // frb-coverage:ignore-start
                     Optional(_) | MirType::TraitDef(_) => unreachable!(),
+                    MirType::Generic(_) => unreachable!("Generic types should be substituted before reaching Optional parsing"),
                     // frb-coverage:ignore-end
                 })
             }
