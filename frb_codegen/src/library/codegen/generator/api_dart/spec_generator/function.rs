@@ -259,7 +259,8 @@ fn generate_function_dart_return_type(
     }
 
     // If oxidized is enabled and the function is fallible, wrap in Result<T, E>
-    if context.config.use_oxidized && func.fallible() && return_stream.is_none() {
+    let use_oxidized = func.oxidized.unwrap_or(context.config.use_oxidized);
+    if use_oxidized && func.fallible() && return_stream.is_none() {
         let error_type = func
             .output
             .error

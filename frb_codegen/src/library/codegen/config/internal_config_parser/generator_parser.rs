@@ -58,7 +58,7 @@ pub(super) fn parse(args: Args) -> anyhow::Result<GeneratorInternalConfig> {
     let default_external_library_loader =
         compute_default_external_library_loader(rust_crate_dir, dart_root, config);
     let c_symbol_prefix = compute_c_symbol_prefix(dart_root)?;
-    let use_oxidized = detect_oxidized_dependency(dart_root);
+    let use_oxidized = config.use_oxidized.unwrap_or_else(|| detect_oxidized_dependency(dart_root));
 
     Ok(GeneratorInternalConfig {
         api_dart: GeneratorApiDartInternalConfig {

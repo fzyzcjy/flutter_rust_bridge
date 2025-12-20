@@ -109,7 +109,7 @@ pub(crate) fn generate_api_impl_normal_function(
 }
 
 fn generate_execute_func_name(func: &MirFunc, context: WireDartGeneratorContext) -> &'static str {
-    let use_oxidized = context.api_dart_config.use_oxidized && func.fallible();
+    let use_oxidized = func.oxidized.unwrap_or(context.api_dart_config.use_oxidized) && func.fallible();
     match (func.mode, use_oxidized) {
         (MirFuncMode::Normal, true) => "executeNormalAsResult",
         (MirFuncMode::Normal, false) => "executeNormal",

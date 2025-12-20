@@ -32,6 +32,7 @@ pub struct MirFunc {
     pub rust_call_code: Option<String>,
     pub rust_aop_after: Option<String>,
     pub impl_mode: MirFuncImplMode,
+    pub oxidized: Option<bool>,
     // Currently, we use serde only for tests. Since lineno can be unstable, we skip this field for comparison
     #[serde(skip_serializing)]
     pub src_lineno_pseudo: usize,
