@@ -41,5 +41,18 @@ Future<void> main() async {
     expect(result.isErr(), true);
     expect(result.unwrapErr().message, 'division by zero');
   });
+
+  // Test function WITHOUT #[frb(oxidized)] - should throw exception
+  test('throws - success returns value directly', () async {
+    final result = await fallibleDivideThrows(a: 10, b: 2);
+    expect(result, 5);
+  });
+
+  test('throws - error throws exception', () async {
+    expect(
+      () => fallibleDivideThrows(a: 10, b: 0),
+      throwsA(isA<MyError>()),
+    );
+  });
   print('Action: Configure tests (end)');
 }

@@ -13,6 +13,10 @@ Future<int> minimalAdder({required int a, required int b}) =>
 Future<Result<int, MyError>> fallibleDivide({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalFallibleDivide(a: a, b: b);
 
+/// This function throws an exception (no #[frb(oxidized)])
+Future<int> fallibleDivideThrows({required int a, required int b}) =>
+    RustLib.instance.api.crateApiMinimalFallibleDivideThrows(a: a, b: b);
+
 Result<int, MyError> fallibleDivideSync({required int a, required int b}) =>
     RustLib.instance.api.crateApiMinimalFallibleDivideSync(a: a, b: b);
 

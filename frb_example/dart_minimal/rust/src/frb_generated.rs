@@ -38,7 +38,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.11.1";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 663097904;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -103063723;
 
 // Section: executor
 
@@ -108,6 +108,40 @@ fn wire__crate__api__minimal__fallible_divide_sync_impl(
                 let output_ok = crate::api::minimal::fallible_divide_sync(api_a, api_b)?;
                 Ok(output_ok)
             })())
+        },
+    )
+}
+fn wire__crate__api__minimal__fallible_divide_throws_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "fallible_divide_throws",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_a = <i32>::sse_decode(&mut deserializer);
+            let api_b = <i32>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| {
+                transform_result_sse::<_, crate::api::minimal::MyError>((move || {
+                    let output_ok = crate::api::minimal::fallible_divide_throws(api_a, api_b)?;
+                    Ok(output_ok)
+                })())
+            }
         },
     )
 }
@@ -582,15 +616,21 @@ fn pde_ffi_dispatcher_primary_impl(
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
         1 => wire__crate__api__minimal__fallible_divide_impl(port, ptr, rust_vec_len, data_len),
-        3 => wire__crate__api__minimal__init_app_impl(port, ptr, rust_vec_len, data_len),
-        4 => wire__crate__api__minimal__minimal_adder_impl(port, ptr, rust_vec_len, data_len),
-        7 => wire__crate__api__minimal__test_wresult_nested_impl(port, ptr, rust_vec_len, data_len),
-        8 => wire__crate__api__minimal__test_wresult_option_impl(port, ptr, rust_vec_len, data_len),
-        10 => {
+        3 => wire__crate__api__minimal__fallible_divide_throws_impl(
+            port,
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        4 => wire__crate__api__minimal__init_app_impl(port, ptr, rust_vec_len, data_len),
+        5 => wire__crate__api__minimal__minimal_adder_impl(port, ptr, rust_vec_len, data_len),
+        8 => wire__crate__api__minimal__test_wresult_nested_impl(port, ptr, rust_vec_len, data_len),
+        9 => wire__crate__api__minimal__test_wresult_option_impl(port, ptr, rust_vec_len, data_len),
+        11 => {
             wire__crate__api__minimal__test_wresult_struct_impl(port, ptr, rust_vec_len, data_len)
         }
-        11 => wire__crate__api__minimal__test_wresult_uuid_impl(port, ptr, rust_vec_len, data_len),
-        12 => wire__crate__api__minimal__test_wresult_vec_impl(port, ptr, rust_vec_len, data_len),
+        12 => wire__crate__api__minimal__test_wresult_uuid_impl(port, ptr, rust_vec_len, data_len),
+        13 => wire__crate__api__minimal__test_wresult_vec_impl(port, ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
@@ -604,9 +644,9 @@ fn pde_ffi_dispatcher_sync_impl(
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
         2 => wire__crate__api__minimal__fallible_divide_sync_impl(ptr, rust_vec_len, data_len),
-        5 => wire__crate__api__minimal__test_pair_alias_impl(ptr, rust_vec_len, data_len),
-        6 => wire__crate__api__minimal__test_wresult_alias_impl(ptr, rust_vec_len, data_len),
-        9 => wire__crate__api__minimal__test_wresult_string_impl(ptr, rust_vec_len, data_len),
+        6 => wire__crate__api__minimal__test_pair_alias_impl(ptr, rust_vec_len, data_len),
+        7 => wire__crate__api__minimal__test_wresult_alias_impl(ptr, rust_vec_len, data_len),
+        10 => wire__crate__api__minimal__test_wresult_string_impl(ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
