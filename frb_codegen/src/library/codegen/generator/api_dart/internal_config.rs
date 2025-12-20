@@ -12,4 +12,7 @@ pub(crate) struct GeneratorApiDartInternalConfig {
     pub dart_entrypoint_class_name: String,
     pub dart_preamble: String,
     pub dart_type_rename: HashMap<String, String>,
+    /// Whether oxidized package is available (auto-detected from pubspec.yaml).
+    /// When true, fallible functions return Result<T, E> instead of throwing.
+    pub use_oxidized: bool,
 }

@@ -265,6 +265,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             rust_aop_after: (attributes.ui_mutation())
                 .then(|| UI_MUTATION_FUNCTION_RUST_AOP_AFTER.to_owned()),
             impl_mode,
+            oxidized: if attributes.oxidized() { Some(true) } else { None },
             src_lineno_pseudo: src_lineno,
         }))
     }

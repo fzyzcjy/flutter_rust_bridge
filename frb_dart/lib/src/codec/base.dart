@@ -1,5 +1,6 @@
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
 import 'package:meta/meta.dart';
+import 'package:oxidized/oxidized.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 abstract class BaseCodec<S, E extends Object, WireSyncType> {
@@ -10,7 +11,13 @@ abstract class BaseCodec<S, E extends Object, WireSyncType> {
   S decodeObject(dynamic raw);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
+  Result<S, E> decodeObjectAsResult(dynamic raw);
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
   S decodeWireSyncType(WireSyncType raw);
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  Result<S, E> decodeWireSyncTypeAsResult(WireSyncType raw);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void freeWireSyncRust2Dart(
@@ -30,6 +37,30 @@ abstract class SimpleDecoder<S, E extends Object> {
 
       case _Rust2DartAction.error:
         throw decodeError();
+
+      case _Rust2DartAction.panic:
+        throw decodePanic();
+
+      case _Rust2DartAction.closeStream:
+        throw CloseStreamException();
+
+      // coverage:ignore-start
+      default:
+        throw Exception('Unsupported message (action=$action)');
+      // coverage:ignore-end
+    }
+  }
+
+  /// {@macro flutter_rust_bridge.internal}
+  /// Decodes as oxidized Result instead of throwing on error.
+  /// Panics still throw since they represent bugs, not expected errors.
+  Result<S, E> decodeAsResult(int action) {
+    switch (action) {
+      case _Rust2DartAction.success:
+        return Ok(decodeSuccess());
+
+      case _Rust2DartAction.error:
+        return Err(decodeError());
 
       case _Rust2DartAction.panic:
         throw decodePanic();

@@ -15,5 +15,44 @@ Future<void> main() async {
     expect(await minimalAdder(a: 100, b: 200), 300);
     print('Action: Call rust (after)');
   });
+
+  // Oxidized Result tests - async
+  test('async Result - success', () async {
+    final result = await fallibleDivide(a: 10, b: 2);
+    expect(result.isOk(), true);
+    expect(result.unwrap(), 5);
+  });
+
+  test('async Result - error', () async {
+    final result = await fallibleDivide(a: 10, b: 0);
+    expect(result.isErr(), true);
+    expect(result.unwrapErr().message, 'division by zero');
+  });
+
+  // Oxidized Result tests - sync
+  test('sync Result - success', () {
+    final result = fallibleDivideSync(a: 10, b: 2);
+    expect(result.isOk(), true);
+    expect(result.unwrap(), 5);
+  });
+
+  test('sync Result - error', () {
+    final result = fallibleDivideSync(a: 10, b: 0);
+    expect(result.isErr(), true);
+    expect(result.unwrapErr().message, 'division by zero');
+  });
+
+  // Test function WITHOUT #[frb(oxidized)] - should throw exception
+  test('throws - success returns value directly', () async {
+    final result = await fallibleDivideThrows(a: 10, b: 2);
+    expect(result, 5);
+  });
+
+  test('throws - error throws exception', () async {
+    expect(
+      () => fallibleDivideThrows(a: 10, b: 0),
+      throwsA(isA<MyError>()),
+    );
+  });
   print('Action: Configure tests (end)');
 }
