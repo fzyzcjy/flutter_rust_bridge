@@ -1,5 +1,15 @@
 # Troubleshooting
 
+## Update Rust
+
+Several different issues are related to outdated libraries. The first suggested step is to update Rust. From the root of your project:
+
+```
+cd rust
+cargo update
+cd ..
+```
+
 ## Linker complains undefined symbols
 
 e.g. `ld: Undefined symbols: std::__1::basic_string ...`
