@@ -95,7 +95,10 @@ class ElementTwinSse {
 
   @override
   int get hashCode =>
-      tag.hashCode ^ text.hashCode ^ attributes.hashCode ^ children.hashCode;
+      tag.hashCode ^
+      text.hashCode ^
+      const DeepCollectionEquality().hash(attributes) ^
+      const DeepCollectionEquality().hash(children);
 
   @override
   bool operator ==(Object other) =>
@@ -104,8 +107,8 @@ class ElementTwinSse {
           runtimeType == other.runtimeType &&
           tag == other.tag &&
           text == other.text &&
-          attributes == other.attributes &&
-          children == other.children;
+          const DeepCollectionEquality().equals(attributes, other.attributes) &&
+          const DeepCollectionEquality().equals(children, other.children);
 }
 
 class ExoticOptionalsTwinSse {
@@ -153,9 +156,9 @@ class ExoticOptionalsTwinSse {
       int32List.hashCode ^
       float32List.hashCode ^
       float64List.hashCode ^
-      attributes.hashCode ^
-      attributesNullable.hashCode ^
-      nullableAttributes.hashCode ^
+      const DeepCollectionEquality().hash(attributes) ^
+      const DeepCollectionEquality().hash(attributesNullable) ^
+      const DeepCollectionEquality().hash(nullableAttributes) ^
       newtypeint.hashCode;
 
   @override
@@ -173,9 +176,11 @@ class ExoticOptionalsTwinSse {
           int32List == other.int32List &&
           float32List == other.float32List &&
           float64List == other.float64List &&
-          attributes == other.attributes &&
-          attributesNullable == other.attributesNullable &&
-          nullableAttributes == other.nullableAttributes &&
+          const DeepCollectionEquality().equals(attributes, other.attributes) &&
+          const DeepCollectionEquality()
+              .equals(attributesNullable, other.attributesNullable) &&
+          const DeepCollectionEquality()
+              .equals(nullableAttributes, other.nullableAttributes) &&
           newtypeint == other.newtypeint;
 }
 
@@ -194,15 +199,18 @@ class OptVecsTwinSse {
 
   @override
   int get hashCode =>
-      i32.hashCode ^ enums.hashCode ^ strings.hashCode ^ buffers.hashCode;
+      const DeepCollectionEquality().hash(i32) ^
+      const DeepCollectionEquality().hash(enums) ^
+      const DeepCollectionEquality().hash(strings) ^
+      const DeepCollectionEquality().hash(buffers);
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is OptVecsTwinSse &&
           runtimeType == other.runtimeType &&
-          i32 == other.i32 &&
-          enums == other.enums &&
-          strings == other.strings &&
-          buffers == other.buffers;
+          const DeepCollectionEquality().equals(i32, other.i32) &&
+          const DeepCollectionEquality().equals(enums, other.enums) &&
+          const DeepCollectionEquality().equals(strings, other.strings) &&
+          const DeepCollectionEquality().equals(buffers, other.buffers);
 }
