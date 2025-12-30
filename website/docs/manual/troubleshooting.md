@@ -1,13 +1,11 @@
 # Troubleshooting
 
-## Update Rust
+## Update Packages
 
-Several different issues are related to outdated libraries. The first suggested step is to update Rust. From the root of your project:
+Several different issues are related to outdated libraries (e.g. https://github.com/fzyzcjy/flutter_rust_bridge/discussions/2953). The first suggested step is to update them. For example, to update Rust, from the root of your project:
 
 ```
-cd rust
-cargo update
-cd ..
+cd rust && cargo update && cd ..
 ```
 
 ## Linker complains undefined symbols
