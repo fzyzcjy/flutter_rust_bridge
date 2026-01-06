@@ -217,7 +217,12 @@ class FRBDartLogger<MirLogRecord> {
     Logger(name);
     _currentLoggerName = name;
 
-    String? envLogLevel = Platform.environment['LOG_LEVEL'];
+    String? envLogLevel;
+    try {
+      envLogLevel = Platform.environment['LOG_LEVEL'];
+    } on UnsupportedError {
+      envLogLevel = null;
+    }
     if (envLogLevel != null) {
       print(
           'Taking log level from env: $envLogLevel instead of the one given by code: $maxLogLevel');
