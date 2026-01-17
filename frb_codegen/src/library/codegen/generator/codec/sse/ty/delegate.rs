@@ -205,10 +205,10 @@ impl CodecSseTyTrait for DelegateCodecSseTy<'_> {
                 MirTypeDelegate::Map(_) => "inner.into_iter().collect()".to_owned(),
                 MirTypeDelegate::Set(_) => "inner.into_iter().collect()".to_owned(),
                 MirTypeDelegate::Time(mir) => {
-                    let naive = "chrono::DateTime::from_timestamp_micros(inner).expect(\"invalid or out-of-range datetime\").naive_utc()";
-                    let utc = format!("chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset({naive}, chrono::Utc)");
+                    let naive_date_time = "chrono::DateTime::from_timestamp_micros(inner).expect(\"invalid or out-of-range datetime\").naive_utc()";
+                    let utc = format!("chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset({naive_date_time}, chrono::Utc)");
                     match mir {
-                        MirTypeDelegateTime::NaiveDateTime => naive.to_owned(),
+                        MirTypeDelegateTime::NaiveDateTime => naive_date_time.to_owned(),
                         MirTypeDelegateTime::Utc => utc,
                         MirTypeDelegateTime::Local => {
                             format!("chrono::DateTime::<chrono::Local>::from({utc})")
