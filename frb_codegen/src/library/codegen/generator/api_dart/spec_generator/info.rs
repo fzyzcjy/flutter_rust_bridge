@@ -61,6 +61,7 @@ impl ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'_> {
             MirTypeDelegate::Time(mir) => match mir {
                 MirTypeDelegateTime::Local
                 | MirTypeDelegateTime::Utc
+                | MirTypeDelegateTime::NaiveDate
                 | MirTypeDelegateTime::NaiveDateTime => "DateTime".to_string(),
                 MirTypeDelegateTime::Duration => "Duration".to_string(),
             },

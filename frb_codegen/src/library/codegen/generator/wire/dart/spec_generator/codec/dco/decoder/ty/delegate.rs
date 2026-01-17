@@ -58,7 +58,7 @@ impl WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGenerator
                 } else {
                     format!(
                         "return dcoDecodeTimestamp(ts: dco_decode_i_64(raw).toInt(), isUtc: {is_utc});",
-                        is_utc = matches!(mir, MirTypeDelegateTime::NaiveDateTime | MirTypeDelegateTime::Utc)
+                        is_utc = matches!(mir, MirTypeDelegateTime::NaiveDateTime | MirTypeDelegateTime::NaiveDate | MirTypeDelegateTime::Utc)
                     )
                 }
             }
