@@ -54,18 +54,21 @@ class FeatureChronoTwinSync {
   final DateTime utc;
   final DateTime local;
   final Duration duration;
-  final DateTime naive;
+  final DateTime naiveDateTime;
 
   const FeatureChronoTwinSync({
     required this.utc,
     required this.local,
     required this.duration,
-    required this.naive,
+    required this.naiveDateTime,
   });
 
   @override
   int get hashCode =>
-      utc.hashCode ^ local.hashCode ^ duration.hashCode ^ naive.hashCode;
+      utc.hashCode ^
+      local.hashCode ^
+      duration.hashCode ^
+      naiveDateTime.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -75,7 +78,7 @@ class FeatureChronoTwinSync {
           utc == other.utc &&
           local == other.local &&
           duration == other.duration &&
-          naive == other.naive;
+          naiveDateTime == other.naiveDateTime;
 }
 
 class TestChronoTwinSync {

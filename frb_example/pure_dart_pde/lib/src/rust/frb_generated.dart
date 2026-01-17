@@ -28847,8 +28847,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_Chrono_Naive(timestamps, serializer);
-        sse_encode_Chrono_Naive(epoch, serializer);
+        sse_encode_list_Chrono_NaiveDateTime(timestamps, serializer);
+        sse_encode_Chrono_NaiveDateTime(epoch, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 829, port: port_);
       },
@@ -28875,8 +28875,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_Chrono_Naive(timestamps, serializer);
-        sse_encode_Chrono_Naive(epoch, serializer);
+        sse_encode_list_Chrono_NaiveDateTime(timestamps, serializer);
+        sse_encode_Chrono_NaiveDateTime(epoch, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 830, port: port_);
       },
@@ -28904,8 +28904,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_list_Chrono_Naive(timestamps, serializer);
-        sse_encode_Chrono_Naive(epoch, serializer);
+        sse_encode_list_Chrono_NaiveDateTime(timestamps, serializer);
+        sse_encode_Chrono_NaiveDateTime(epoch, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 831)!;
       },
       codec: SseCodec(
@@ -31642,12 +31642,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Chrono_Naive(d, serializer);
+        sse_encode_Chrono_NaiveDateTime(d, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 929, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Chrono_Naive,
+        decodeSuccessData: sse_decode_Chrono_NaiveDateTime,
         decodeErrorData: null,
       ),
       constMeta: kCrateApiChronoTypeNaivedatetimeTwinNormalConstMeta,
@@ -31669,12 +31669,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Chrono_Naive(d, serializer);
+        sse_encode_Chrono_NaiveDateTime(d, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 930, port: port_);
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Chrono_Naive,
+        decodeSuccessData: sse_decode_Chrono_NaiveDateTime,
         decodeErrorData: null,
       ),
       constMeta:
@@ -31697,11 +31697,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Chrono_Naive(d, serializer);
+        sse_encode_Chrono_NaiveDateTime(d, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 931)!;
       },
       codec: SseCodec(
-        decodeSuccessData: sse_decode_Chrono_Naive,
+        decodeSuccessData: sse_decode_Chrono_NaiveDateTime,
         decodeErrorData: null,
       ),
       constMeta:
@@ -44517,7 +44517,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  DateTime dco_decode_Chrono_Naive(dynamic raw) {
+  DateTime dco_decode_Chrono_NaiveDateTime(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dcoDecodeTimestamp(ts: dco_decode_i_64(raw).toInt(), isUtc: true);
   }
@@ -46829,9 +46829,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  DateTime dco_decode_box_autoadd_Chrono_Naive(dynamic raw) {
+  DateTime dco_decode_box_autoadd_Chrono_NaiveDateTime(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return dco_decode_Chrono_Naive(raw);
+    return dco_decode_Chrono_NaiveDateTime(raw);
   }
 
   @protected
@@ -49964,7 +49964,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       utc: dco_decode_Chrono_Utc(arr[0]),
       local: dco_decode_Chrono_Local(arr[1]),
       duration: dco_decode_Chrono_Duration(arr[2]),
-      naive: dco_decode_Chrono_Naive(arr[3]),
+      naiveDateTime: dco_decode_Chrono_NaiveDateTime(arr[3]),
     );
   }
 
@@ -49979,7 +49979,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       utc: dco_decode_Chrono_Utc(arr[0]),
       local: dco_decode_Chrono_Local(arr[1]),
       duration: dco_decode_Chrono_Duration(arr[2]),
-      naive: dco_decode_Chrono_Naive(arr[3]),
+      naiveDateTime: dco_decode_Chrono_NaiveDateTime(arr[3]),
     );
   }
 
@@ -49993,7 +49993,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       utc: dco_decode_Chrono_Utc(arr[0]),
       local: dco_decode_Chrono_Local(arr[1]),
       duration: dco_decode_Chrono_Duration(arr[2]),
-      naive: dco_decode_Chrono_Naive(arr[3]),
+      naiveDateTime: dco_decode_Chrono_NaiveDateTime(arr[3]),
     );
   }
 
@@ -50300,9 +50300,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  List<DateTime> dco_decode_list_Chrono_Naive(dynamic raw) {
+  List<DateTime> dco_decode_list_Chrono_NaiveDateTime(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return (raw as List<dynamic>).map(dco_decode_Chrono_Naive).toList();
+    return (raw as List<dynamic>).map(dco_decode_Chrono_NaiveDateTime).toList();
   }
 
   @protected
@@ -51935,9 +51935,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  DateTime? dco_decode_opt_box_autoadd_Chrono_Naive(dynamic raw) {
+  DateTime? dco_decode_opt_box_autoadd_Chrono_NaiveDateTime(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw == null ? null : dco_decode_box_autoadd_Chrono_Naive(raw);
+    return raw == null
+        ? null
+        : dco_decode_box_autoadd_Chrono_NaiveDateTime(raw);
   }
 
   @protected
@@ -54138,7 +54140,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return TestChronoTwinNormal(
       dt: dco_decode_opt_box_autoadd_Chrono_Utc(arr[0]),
-      dt2: dco_decode_opt_box_autoadd_Chrono_Naive(arr[1]),
+      dt2: dco_decode_opt_box_autoadd_Chrono_NaiveDateTime(arr[1]),
       du: dco_decode_opt_box_autoadd_Chrono_Duration(arr[2]),
     );
   }
@@ -54151,7 +54153,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return TestChronoTwinRustAsync(
       dt: dco_decode_opt_box_autoadd_Chrono_Utc(arr[0]),
-      dt2: dco_decode_opt_box_autoadd_Chrono_Naive(arr[1]),
+      dt2: dco_decode_opt_box_autoadd_Chrono_NaiveDateTime(arr[1]),
       du: dco_decode_opt_box_autoadd_Chrono_Duration(arr[2]),
     );
   }
@@ -54164,7 +54166,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return TestChronoTwinSync(
       dt: dco_decode_opt_box_autoadd_Chrono_Utc(arr[0]),
-      dt2: dco_decode_opt_box_autoadd_Chrono_Naive(arr[1]),
+      dt2: dco_decode_opt_box_autoadd_Chrono_NaiveDateTime(arr[1]),
       du: dco_decode_opt_box_autoadd_Chrono_Duration(arr[2]),
     );
   }
@@ -55926,7 +55928,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  DateTime sse_decode_Chrono_Naive(SseDeserializer deserializer) {
+  DateTime sse_decode_Chrono_NaiveDateTime(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_i_64(deserializer);
     return DateTime.fromMicrosecondsSinceEpoch(inner.toInt(), isUtc: true);
@@ -58127,9 +58129,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  DateTime sse_decode_box_autoadd_Chrono_Naive(SseDeserializer deserializer) {
+  DateTime sse_decode_box_autoadd_Chrono_NaiveDateTime(
+      SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    return (sse_decode_Chrono_Naive(deserializer));
+    return (sse_decode_Chrono_NaiveDateTime(deserializer));
   }
 
   @protected
@@ -61382,12 +61385,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_utc = sse_decode_Chrono_Utc(deserializer);
     var var_local = sse_decode_Chrono_Local(deserializer);
     var var_duration = sse_decode_Chrono_Duration(deserializer);
-    var var_naive = sse_decode_Chrono_Naive(deserializer);
+    var var_naiveDateTime = sse_decode_Chrono_NaiveDateTime(deserializer);
     return FeatureChronoTwinNormal(
         utc: var_utc,
         local: var_local,
         duration: var_duration,
-        naive: var_naive);
+        naiveDateTime: var_naiveDateTime);
   }
 
   @protected
@@ -61397,12 +61400,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_utc = sse_decode_Chrono_Utc(deserializer);
     var var_local = sse_decode_Chrono_Local(deserializer);
     var var_duration = sse_decode_Chrono_Duration(deserializer);
-    var var_naive = sse_decode_Chrono_Naive(deserializer);
+    var var_naiveDateTime = sse_decode_Chrono_NaiveDateTime(deserializer);
     return FeatureChronoTwinRustAsync(
         utc: var_utc,
         local: var_local,
         duration: var_duration,
-        naive: var_naive);
+        naiveDateTime: var_naiveDateTime);
   }
 
   @protected
@@ -61412,12 +61415,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_utc = sse_decode_Chrono_Utc(deserializer);
     var var_local = sse_decode_Chrono_Local(deserializer);
     var var_duration = sse_decode_Chrono_Duration(deserializer);
-    var var_naive = sse_decode_Chrono_Naive(deserializer);
+    var var_naiveDateTime = sse_decode_Chrono_NaiveDateTime(deserializer);
     return FeatureChronoTwinSync(
         utc: var_utc,
         local: var_local,
         duration: var_duration,
-        naive: var_naive);
+        naiveDateTime: var_naiveDateTime);
   }
 
   @protected
@@ -61731,13 +61734,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  List<DateTime> sse_decode_list_Chrono_Naive(SseDeserializer deserializer) {
+  List<DateTime> sse_decode_list_Chrono_NaiveDateTime(
+      SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     var len_ = sse_decode_i_32(deserializer);
     var ans_ = <DateTime>[];
     for (var idx_ = 0; idx_ < len_; ++idx_) {
-      ans_.add(sse_decode_Chrono_Naive(deserializer));
+      ans_.add(sse_decode_Chrono_NaiveDateTime(deserializer));
     }
     return ans_;
   }
@@ -63842,12 +63846,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  DateTime? sse_decode_opt_box_autoadd_Chrono_Naive(
+  DateTime? sse_decode_opt_box_autoadd_Chrono_NaiveDateTime(
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     if (sse_decode_bool(deserializer)) {
-      return (sse_decode_box_autoadd_Chrono_Naive(deserializer));
+      return (sse_decode_box_autoadd_Chrono_NaiveDateTime(deserializer));
     } else {
       return null;
     }
@@ -66061,7 +66065,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_dt = sse_decode_opt_box_autoadd_Chrono_Utc(deserializer);
-    var var_dt2 = sse_decode_opt_box_autoadd_Chrono_Naive(deserializer);
+    var var_dt2 = sse_decode_opt_box_autoadd_Chrono_NaiveDateTime(deserializer);
     var var_du = sse_decode_opt_box_autoadd_Chrono_Duration(deserializer);
     return TestChronoTwinNormal(dt: var_dt, dt2: var_dt2, du: var_du);
   }
@@ -66071,7 +66075,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_dt = sse_decode_opt_box_autoadd_Chrono_Utc(deserializer);
-    var var_dt2 = sse_decode_opt_box_autoadd_Chrono_Naive(deserializer);
+    var var_dt2 = sse_decode_opt_box_autoadd_Chrono_NaiveDateTime(deserializer);
     var var_du = sse_decode_opt_box_autoadd_Chrono_Duration(deserializer);
     return TestChronoTwinRustAsync(dt: var_dt, dt2: var_dt2, du: var_du);
   }
@@ -66081,7 +66085,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_dt = sse_decode_opt_box_autoadd_Chrono_Utc(deserializer);
-    var var_dt2 = sse_decode_opt_box_autoadd_Chrono_Naive(deserializer);
+    var var_dt2 = sse_decode_opt_box_autoadd_Chrono_NaiveDateTime(deserializer);
     var var_du = sse_decode_opt_box_autoadd_Chrono_Duration(deserializer);
     return TestChronoTwinSync(dt: var_dt, dt2: var_dt2, du: var_du);
   }
@@ -68010,7 +68014,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_Chrono_Naive(DateTime self, SseSerializer serializer) {
+  void sse_encode_Chrono_NaiveDateTime(
+      DateTime self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_i_64(
         PlatformInt64Util.from(self.microsecondsSinceEpoch), serializer);
@@ -70523,10 +70528,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_box_autoadd_Chrono_Naive(
+  void sse_encode_box_autoadd_Chrono_NaiveDateTime(
       DateTime self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    sse_encode_Chrono_Naive(self, serializer);
+    sse_encode_Chrono_NaiveDateTime(self, serializer);
   }
 
   @protected
@@ -73413,7 +73418,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_Chrono_Utc(self.utc, serializer);
     sse_encode_Chrono_Local(self.local, serializer);
     sse_encode_Chrono_Duration(self.duration, serializer);
-    sse_encode_Chrono_Naive(self.naive, serializer);
+    sse_encode_Chrono_NaiveDateTime(self.naiveDateTime, serializer);
   }
 
   @protected
@@ -73423,7 +73428,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_Chrono_Utc(self.utc, serializer);
     sse_encode_Chrono_Local(self.local, serializer);
     sse_encode_Chrono_Duration(self.duration, serializer);
-    sse_encode_Chrono_Naive(self.naive, serializer);
+    sse_encode_Chrono_NaiveDateTime(self.naiveDateTime, serializer);
   }
 
   @protected
@@ -73433,7 +73438,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_Chrono_Utc(self.utc, serializer);
     sse_encode_Chrono_Local(self.local, serializer);
     sse_encode_Chrono_Duration(self.duration, serializer);
-    sse_encode_Chrono_Naive(self.naive, serializer);
+    sse_encode_Chrono_NaiveDateTime(self.naiveDateTime, serializer);
   }
 
   @protected
@@ -73727,12 +73732,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_list_Chrono_Naive(
+  void sse_encode_list_Chrono_NaiveDateTime(
       List<DateTime> self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_i_32(self.length, serializer);
     for (final item in self) {
-      sse_encode_Chrono_Naive(item, serializer);
+      sse_encode_Chrono_NaiveDateTime(item, serializer);
     }
   }
 
@@ -75426,13 +75431,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  void sse_encode_opt_box_autoadd_Chrono_Naive(
+  void sse_encode_opt_box_autoadd_Chrono_NaiveDateTime(
       DateTime? self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     sse_encode_bool(self != null, serializer);
     if (self != null) {
-      sse_encode_box_autoadd_Chrono_Naive(self, serializer);
+      sse_encode_box_autoadd_Chrono_NaiveDateTime(self, serializer);
     }
   }
 
@@ -77313,7 +77318,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       TestChronoTwinNormal self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_opt_box_autoadd_Chrono_Utc(self.dt, serializer);
-    sse_encode_opt_box_autoadd_Chrono_Naive(self.dt2, serializer);
+    sse_encode_opt_box_autoadd_Chrono_NaiveDateTime(self.dt2, serializer);
     sse_encode_opt_box_autoadd_Chrono_Duration(self.du, serializer);
   }
 
@@ -77322,7 +77327,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       TestChronoTwinRustAsync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_opt_box_autoadd_Chrono_Utc(self.dt, serializer);
-    sse_encode_opt_box_autoadd_Chrono_Naive(self.dt2, serializer);
+    sse_encode_opt_box_autoadd_Chrono_NaiveDateTime(self.dt2, serializer);
     sse_encode_opt_box_autoadd_Chrono_Duration(self.du, serializer);
   }
 
@@ -77331,7 +77336,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       TestChronoTwinSync self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_opt_box_autoadd_Chrono_Utc(self.dt, serializer);
-    sse_encode_opt_box_autoadd_Chrono_Naive(self.dt2, serializer);
+    sse_encode_opt_box_autoadd_Chrono_NaiveDateTime(self.dt2, serializer);
     sse_encode_opt_box_autoadd_Chrono_Duration(self.du, serializer);
   }
 

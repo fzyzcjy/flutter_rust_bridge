@@ -127,7 +127,7 @@ pub struct FeatureChronoTwinSync {
     pub utc: chrono::DateTime<chrono::Utc>,
     pub local: chrono::DateTime<chrono::Local>,
     pub duration: chrono::Duration,
-    pub naive: chrono::NaiveDateTime,
+    pub naive_date_time: chrono::NaiveDateTime,
 }
 
 #[flutter_rust_bridge::frb(sync)]
@@ -137,12 +137,12 @@ pub fn how_long_does_it_take_twin_sync(
     use chrono::{Datelike, Timelike};
     let difference: chrono::Duration = chrono::Utc::now() - mine.utc;
     assert_eq!(&mine.duration.num_hours(), &4);
-    assert_eq!(&mine.naive.year(), &2022);
-    assert_eq!(&mine.naive.month(), &9);
-    assert_eq!(&mine.naive.day(), &10);
-    assert_eq!(&mine.naive.hour(), &20);
-    assert_eq!(&mine.naive.minute(), &48);
-    assert_eq!(&mine.naive.second(), &53);
-    assert_eq!(&mine.naive.nanosecond(), &123_000_000);
+    assert_eq!(&mine.naive_date_time.year(), &2022);
+    assert_eq!(&mine.naive_date_time.month(), &9);
+    assert_eq!(&mine.naive_date_time.day(), &10);
+    assert_eq!(&mine.naive_date_time.hour(), &20);
+    assert_eq!(&mine.naive_date_time.minute(), &48);
+    assert_eq!(&mine.naive_date_time.second(), &53);
+    assert_eq!(&mine.naive_date_time.nanosecond(), &123_000_000);
     Ok(difference)
 }

@@ -24917,7 +24917,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_Chrono_Utc(raw.utc),
       cst_encode_Chrono_Local(raw.local),
       cst_encode_Chrono_Duration(raw.duration),
-      cst_encode_Chrono_NaiveDateTime(raw.naive)
+      cst_encode_Chrono_NaiveDateTime(raw.naiveDateTime)
     ].jsify()!;
   }
 
@@ -24929,7 +24929,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_Chrono_Utc(raw.utc),
       cst_encode_Chrono_Local(raw.local),
       cst_encode_Chrono_Duration(raw.duration),
-      cst_encode_Chrono_NaiveDateTime(raw.naive)
+      cst_encode_Chrono_NaiveDateTime(raw.naiveDateTime)
     ].jsify()!;
   }
 
@@ -24940,7 +24940,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_Chrono_Utc(raw.utc),
       cst_encode_Chrono_Local(raw.local),
       cst_encode_Chrono_Duration(raw.duration),
-      cst_encode_Chrono_NaiveDateTime(raw.naive)
+      cst_encode_Chrono_NaiveDateTime(raw.naiveDateTime)
     ].jsify()!;
   }
 

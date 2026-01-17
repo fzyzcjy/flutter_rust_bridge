@@ -113,12 +113,15 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('nested chrono types', () async {
     const duration = Duration(hours: 4);
-    final naive = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 0);
+    final naive_date_time = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 0);
     final local = DateTime.now();
     final utc = DateTime.now().toUtc();
     final difference = await howLongDoesItTakeTwinSse(
         mine: FeatureChronoTwinSse(
-            utc: utc, local: local, duration: duration, naive: naive));
+            utc: utc,
+            local: local,
+            duration: duration,
+            naiveDateTime: naive_date_time));
     debugPrint('$difference');
   });
 }
