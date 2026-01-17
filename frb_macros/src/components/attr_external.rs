@@ -59,7 +59,7 @@ fn compute_dummy_struct_ty(original_self_ty: &syn::Type, item_string: &str) -> s
 }
 
 fn convert_item(mut item_syn: syn::ItemImpl, dummy_struct_ty: syn::Type) -> TokenStream {
-    item_syn.self_ty = Box::new(dummy_struct_ty);
+    *item_syn.self_ty = dummy_struct_ty;
     for inner_item in &mut item_syn.items {
         if let ImplItem::Fn(inner_item) = inner_item {
             if inner_item.block.stmts.is_empty() {

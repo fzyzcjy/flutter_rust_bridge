@@ -16,7 +16,7 @@ impl CodecSseTyTrait for RecordCodecSseTy<'_> {
 }
 
 impl RecordCodecSseTy<'_> {
-    fn new_generalized_generator(&self) -> GeneralizedStructGenerator {
+    fn new_generalized_generator(&self) -> GeneralizedStructGenerator<'_> {
         GeneralizedStructGenerator::new(
             self.mir.inner.get(self.context.mir_pack).clone(),
             self.context,

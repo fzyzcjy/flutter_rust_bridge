@@ -45,7 +45,7 @@ impl WireRustCodecCstGeneratorDecoderTrait for RecordWireRustCodecCstGenerator<'
 }
 
 impl RecordWireRustCodecCstGenerator<'_> {
-    pub(crate) fn as_struct_generator(&self) -> StructRefWireRustCodecCstGenerator {
+    pub(crate) fn as_struct_generator(&self) -> StructRefWireRustCodecCstGenerator<'_> {
         StructRefWireRustCodecCstGenerator {
             mir: self.mir.inner.clone(),
             context: self.context,

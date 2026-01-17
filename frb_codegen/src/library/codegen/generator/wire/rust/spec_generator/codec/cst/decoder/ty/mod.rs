@@ -31,7 +31,7 @@ pub(crate) trait WireRustCodecCstGeneratorDecoderTrait {
         Default::default()
     }
 
-    fn generate_impl_decode_jsvalue_body(&self) -> Option<Cow<str>> {
+    fn generate_impl_decode_jsvalue_body(&self) -> Option<Cow<'_, str>> {
         None
     }
 
