@@ -51,7 +51,7 @@ impl WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator
                 let codegen_utc = format!("chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset({codegen_naive}, chrono::Utc)");
                 let codegen_local = format!("chrono::DateTime::<chrono::Local>::from({codegen_utc})");
                 let codegen_conversion = match mir {
-                    MirTypeDelegateTime::Naive => codegen_naive,
+                    MirTypeDelegateTime::NaiveDateTime => codegen_naive,
                     MirTypeDelegateTime::Utc => codegen_utc.as_str(),
                     MirTypeDelegateTime::Local => codegen_local.as_str(),
                     // frb-coverage:ignore-start
