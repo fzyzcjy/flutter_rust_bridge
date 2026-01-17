@@ -90,6 +90,7 @@ pub fn handle_durations_twin_sync(
 pub struct TestChronoTwinSync {
     pub dt: Option<chrono::DateTime<chrono::Utc>>,
     pub dt2: Option<chrono::NaiveDateTime>,
+    pub da: Option<chrono::NaiveDate>,
     pub du: Option<chrono::Duration>,
 }
 
@@ -106,6 +107,12 @@ pub fn test_chrono_twin_sync() -> TestChronoTwinSync {
             chrono::DateTime::from_timestamp(1631297333, 0)
                 .unwrap()
                 .naive_utc(),
+        ),
+        da: Some(
+            chrono::DateTime::from_timestamp(1631297333, 0)
+                .unwrap()
+                .naive_utc()
+                .date(),
         ),
         du: Some(chrono::Duration::hours(4)),
     }
@@ -124,6 +131,12 @@ pub fn test_precise_chrono_twin_sync() -> TestChronoTwinSync {
             chrono::DateTime::from_timestamp(-5362715015, 0)
                 .unwrap()
                 .naive_utc(),
+        ),
+        da: Some(
+            chrono::DateTime::from_timestamp(-5362715015, 0)
+                .unwrap()
+                .naive_utc()
+                .date(),
         ),
         du: Some(chrono::Duration::hours(4)),
     }

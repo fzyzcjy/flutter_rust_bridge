@@ -4875,6 +4875,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Duration dco_decode_box_autoadd_Chrono_Duration(dynamic raw);
 
   @protected
+  DateTime dco_decode_box_autoadd_Chrono_NaiveDate(dynamic raw);
+
+  @protected
   DateTime dco_decode_box_autoadd_Chrono_NaiveDateTime(dynamic raw);
 
   @protected
@@ -8818,6 +8821,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Duration? dco_decode_opt_box_autoadd_Chrono_Duration(dynamic raw);
+
+  @protected
+  DateTime? dco_decode_opt_box_autoadd_Chrono_NaiveDate(dynamic raw);
 
   @protected
   DateTime? dco_decode_opt_box_autoadd_Chrono_NaiveDateTime(dynamic raw);
@@ -14122,6 +14128,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Duration sse_decode_box_autoadd_Chrono_Duration(SseDeserializer deserializer);
 
   @protected
+  DateTime sse_decode_box_autoadd_Chrono_NaiveDate(
+      SseDeserializer deserializer);
+
+  @protected
   DateTime sse_decode_box_autoadd_Chrono_NaiveDateTime(
       SseDeserializer deserializer);
 
@@ -18614,6 +18624,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  DateTime? sse_decode_opt_box_autoadd_Chrono_NaiveDate(
+      SseDeserializer deserializer);
+
+  @protected
   DateTime? sse_decode_opt_box_autoadd_Chrono_NaiveDateTime(
       SseDeserializer deserializer);
 
@@ -21847,6 +21861,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   JSAny cst_encode_box_autoadd_Chrono_Duration(Duration raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_Chrono_Duration(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_Chrono_NaiveDate(DateTime raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_Chrono_NaiveDate(raw);
   }
 
   @protected
@@ -26737,6 +26757,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  JSAny? cst_encode_opt_box_autoadd_Chrono_NaiveDate(DateTime? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw == null ? null : cst_encode_box_autoadd_Chrono_NaiveDate(raw);
+  }
+
+  @protected
   JSAny? cst_encode_opt_box_autoadd_Chrono_NaiveDateTime(DateTime? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null
@@ -28507,6 +28533,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     return [
       cst_encode_opt_box_autoadd_Chrono_Utc(raw.dt),
       cst_encode_opt_box_autoadd_Chrono_NaiveDateTime(raw.dt2),
+      cst_encode_opt_box_autoadd_Chrono_NaiveDate(raw.da),
       cst_encode_opt_box_autoadd_Chrono_Duration(raw.du)
     ].jsify()!;
   }
@@ -28517,6 +28544,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     return [
       cst_encode_opt_box_autoadd_Chrono_Utc(raw.dt),
       cst_encode_opt_box_autoadd_Chrono_NaiveDateTime(raw.dt2),
+      cst_encode_opt_box_autoadd_Chrono_NaiveDate(raw.da),
       cst_encode_opt_box_autoadd_Chrono_Duration(raw.du)
     ].jsify()!;
   }
@@ -28527,6 +28555,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     return [
       cst_encode_opt_box_autoadd_Chrono_Utc(raw.dt),
       cst_encode_opt_box_autoadd_Chrono_NaiveDateTime(raw.dt2),
+      cst_encode_opt_box_autoadd_Chrono_NaiveDate(raw.da),
       cst_encode_opt_box_autoadd_Chrono_Duration(raw.du)
     ].jsify()!;
   }
@@ -33972,6 +34001,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       Duration self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_Chrono_NaiveDate(
+      DateTime self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_Chrono_NaiveDateTime(
       DateTime self, SseSerializer serializer);
 
@@ -38216,6 +38249,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_opt_box_autoadd_Chrono_Duration(
       Duration? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_Chrono_NaiveDate(
+      DateTime? self, SseSerializer serializer);
 
   @protected
   void sse_encode_opt_box_autoadd_Chrono_NaiveDateTime(

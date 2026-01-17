@@ -92,6 +92,7 @@ pub async fn handle_durations_twin_rust_async_sse(
 pub struct TestChronoTwinRustAsyncSse {
     pub dt: Option<chrono::DateTime<chrono::Utc>>,
     pub dt2: Option<chrono::NaiveDateTime>,
+    pub da: Option<chrono::NaiveDate>,
     pub du: Option<chrono::Duration>,
 }
 
@@ -108,6 +109,12 @@ pub async fn test_chrono_twin_rust_async_sse() -> TestChronoTwinRustAsyncSse {
             chrono::DateTime::from_timestamp(1631297333, 0)
                 .unwrap()
                 .naive_utc(),
+        ),
+        da: Some(
+            chrono::DateTime::from_timestamp(1631297333, 0)
+                .unwrap()
+                .naive_utc()
+                .date(),
         ),
         du: Some(chrono::Duration::hours(4)),
     }
@@ -126,6 +133,12 @@ pub async fn test_precise_chrono_twin_rust_async_sse() -> TestChronoTwinRustAsyn
             chrono::DateTime::from_timestamp(-5362715015, 0)
                 .unwrap()
                 .naive_utc(),
+        ),
+        da: Some(
+            chrono::DateTime::from_timestamp(-5362715015, 0)
+                .unwrap()
+                .naive_utc()
+                .date(),
         ),
         du: Some(chrono::Duration::hours(4)),
     }

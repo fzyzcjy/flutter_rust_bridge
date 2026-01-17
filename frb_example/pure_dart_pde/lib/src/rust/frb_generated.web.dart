@@ -2327,6 +2327,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Duration dco_decode_box_autoadd_Chrono_Duration(dynamic raw);
 
   @protected
+  DateTime dco_decode_box_autoadd_Chrono_NaiveDate(dynamic raw);
+
+  @protected
   DateTime dco_decode_box_autoadd_Chrono_NaiveDateTime(dynamic raw);
 
   @protected
@@ -4341,6 +4344,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Duration? dco_decode_opt_box_autoadd_Chrono_Duration(dynamic raw);
+
+  @protected
+  DateTime? dco_decode_opt_box_autoadd_Chrono_NaiveDate(dynamic raw);
 
   @protected
   DateTime? dco_decode_opt_box_autoadd_Chrono_NaiveDateTime(dynamic raw);
@@ -7006,6 +7012,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Duration sse_decode_box_autoadd_Chrono_Duration(SseDeserializer deserializer);
 
   @protected
+  DateTime sse_decode_box_autoadd_Chrono_NaiveDate(
+      SseDeserializer deserializer);
+
+  @protected
   DateTime sse_decode_box_autoadd_Chrono_NaiveDateTime(
       SseDeserializer deserializer);
 
@@ -9302,6 +9312,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   Duration? sse_decode_opt_box_autoadd_Chrono_Duration(
+      SseDeserializer deserializer);
+
+  @protected
+  DateTime? sse_decode_opt_box_autoadd_Chrono_NaiveDate(
       SseDeserializer deserializer);
 
   @protected
@@ -12169,6 +12183,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       Duration self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_Chrono_NaiveDate(
+      DateTime self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_Chrono_NaiveDateTime(
       DateTime self, SseSerializer serializer);
 
@@ -14374,6 +14392,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_opt_box_autoadd_Chrono_Duration(
       Duration? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_Chrono_NaiveDate(
+      DateTime? self, SseSerializer serializer);
 
   @protected
   void sse_encode_opt_box_autoadd_Chrono_NaiveDateTime(

@@ -87,16 +87,18 @@ class FeatureChronoTwinSync {
 class TestChronoTwinSync {
   final DateTime? dt;
   final DateTime? dt2;
+  final DateTime? da;
   final Duration? du;
 
   const TestChronoTwinSync({
     this.dt,
     this.dt2,
+    this.da,
     this.du,
   });
 
   @override
-  int get hashCode => dt.hashCode ^ dt2.hashCode ^ du.hashCode;
+  int get hashCode => dt.hashCode ^ dt2.hashCode ^ da.hashCode ^ du.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -105,5 +107,6 @@ class TestChronoTwinSync {
           runtimeType == other.runtimeType &&
           dt == other.dt &&
           dt2 == other.dt2 &&
+          da == other.da &&
           du == other.du;
 }

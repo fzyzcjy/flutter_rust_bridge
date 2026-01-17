@@ -3456,18 +3456,21 @@ typedef struct wire_cst_struct_with_impl_block_in_another_file {
 typedef struct wire_cst_test_chrono_twin_normal {
   int64_t *dt;
   int64_t *dt2;
+  int64_t *da;
   int64_t *du;
 } wire_cst_test_chrono_twin_normal;
 
 typedef struct wire_cst_test_chrono_twin_rust_async {
   int64_t *dt;
   int64_t *dt2;
+  int64_t *da;
   int64_t *du;
 } wire_cst_test_chrono_twin_rust_async;
 
 typedef struct wire_cst_test_chrono_twin_sync {
   int64_t *dt;
   int64_t *dt2;
+  int64_t *da;
   int64_t *du;
 } wire_cst_test_chrono_twin_sync;
 
@@ -14702,6 +14705,8 @@ uintptr_t *frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaqu
 
 int64_t *frbgen_frb_example_pure_dart_cst_new_box_autoadd_Chrono_Duration(int64_t value);
 
+int64_t *frbgen_frb_example_pure_dart_cst_new_box_autoadd_Chrono_NaiveDate(int64_t value);
+
 int64_t *frbgen_frb_example_pure_dart_cst_new_box_autoadd_Chrono_NaiveDateTime(int64_t value);
 
 int64_t *frbgen_frb_example_pure_dart_cst_new_box_autoadd_Chrono_Utc(int64_t value);
@@ -15545,6 +15550,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_Chrono_Duration);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_Chrono_NaiveDate);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_Chrono_NaiveDateTime);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_Chrono_Utc);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_DartOpaque);
