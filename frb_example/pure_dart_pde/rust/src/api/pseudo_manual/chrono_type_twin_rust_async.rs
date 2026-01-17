@@ -34,6 +34,14 @@ pub async fn datetime_local_twin_rust_async(
     d
 }
 
+pub async fn naivedate_twin_rust_async(d: chrono::NaiveDate) -> chrono::NaiveDate {
+    use chrono::Datelike;
+    assert_eq!(&d.year(), &2022);
+    assert_eq!(&d.month(), &9);
+    assert_eq!(&d.day(), &10);
+    d
+}
+
 pub async fn naivedatetime_twin_rust_async(d: chrono::NaiveDateTime) -> chrono::NaiveDateTime {
     use chrono::{Datelike, Timelike};
     assert_eq!(&d.year(), &2022);

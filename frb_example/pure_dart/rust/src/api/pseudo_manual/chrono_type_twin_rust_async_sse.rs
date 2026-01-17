@@ -35,6 +35,15 @@ pub async fn datetime_local_twin_rust_async_sse(
 }
 
 #[flutter_rust_bridge::frb(serialize)]
+pub async fn naivedate_twin_rust_async_sse(d: chrono::NaiveDate) -> chrono::NaiveDate {
+    use chrono::Datelike;
+    assert_eq!(&d.year(), &2022);
+    assert_eq!(&d.month(), &9);
+    assert_eq!(&d.day(), &10);
+    d
+}
+
+#[flutter_rust_bridge::frb(serialize)]
 pub async fn naivedatetime_twin_rust_async_sse(d: chrono::NaiveDateTime) -> chrono::NaiveDateTime {
     use chrono::{Datelike, Timelike};
     assert_eq!(&d.year(), &2022);

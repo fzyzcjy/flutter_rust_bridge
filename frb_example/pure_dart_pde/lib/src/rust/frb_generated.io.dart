@@ -1240,6 +1240,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   DateTime dco_decode_Chrono_Local(dynamic raw);
 
   @protected
+  DateTime dco_decode_Chrono_NaiveDate(dynamic raw);
+
+  @protected
   DateTime dco_decode_Chrono_NaiveDateTime(dynamic raw);
 
   @protected
@@ -5932,6 +5935,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   DateTime sse_decode_Chrono_Local(SseDeserializer deserializer);
+
+  @protected
+  DateTime sse_decode_Chrono_NaiveDate(SseDeserializer deserializer);
 
   @protected
   DateTime sse_decode_Chrono_NaiveDateTime(SseDeserializer deserializer);
@@ -11028,6 +11034,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_Chrono_Local(DateTime self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Chrono_NaiveDate(DateTime self, SseSerializer serializer);
 
   @protected
   void sse_encode_Chrono_NaiveDateTime(DateTime self, SseSerializer serializer);

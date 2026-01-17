@@ -16,6 +16,9 @@ DateTime datetimeUtcTwinSync({required DateTime d}) => RustLib.instance.api
 DateTime datetimeLocalTwinSync({required DateTime d}) => RustLib.instance.api
     .crateApiPseudoManualChronoTypeTwinSyncDatetimeLocalTwinSync(d: d);
 
+DateTime naivedateTwinSync({required DateTime d}) => RustLib.instance.api
+    .crateApiPseudoManualChronoTypeTwinSyncNaivedateTwinSync(d: d);
+
 DateTime naivedatetimeTwinSync({required DateTime d}) => RustLib.instance.api
     .crateApiPseudoManualChronoTypeTwinSyncNaivedatetimeTwinSync(d: d);
 

@@ -16,6 +16,9 @@ Future<DateTime> datetimeUtcTwinNormal({required DateTime d}) =>
 Future<DateTime> datetimeLocalTwinNormal({required DateTime d}) =>
     RustLib.instance.api.crateApiChronoTypeDatetimeLocalTwinNormal(d: d);
 
+Future<DateTime> naivedateTwinNormal({required DateTime d}) =>
+    RustLib.instance.api.crateApiChronoTypeNaivedateTwinNormal(d: d);
+
 Future<DateTime> naivedatetimeTwinNormal({required DateTime d}) =>
     RustLib.instance.api.crateApiChronoTypeNaivedatetimeTwinNormal(d: d);
 

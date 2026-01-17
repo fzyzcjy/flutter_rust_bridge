@@ -19,6 +19,10 @@ Future<DateTime> datetimeLocalTwinRustAsync({required DateTime d}) =>
         .crateApiPseudoManualChronoTypeTwinRustAsyncDatetimeLocalTwinRustAsync(
             d: d);
 
+Future<DateTime> naivedateTwinRustAsync({required DateTime d}) => RustLib
+    .instance.api
+    .crateApiPseudoManualChronoTypeTwinRustAsyncNaivedateTwinRustAsync(d: d);
+
 Future<DateTime> naivedatetimeTwinRustAsync({required DateTime d}) =>
     RustLib.instance.api
         .crateApiPseudoManualChronoTypeTwinRustAsyncNaivedatetimeTwinRustAsync(

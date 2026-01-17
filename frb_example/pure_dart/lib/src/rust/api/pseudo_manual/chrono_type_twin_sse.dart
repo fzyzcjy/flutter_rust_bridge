@@ -18,6 +18,9 @@ Future<DateTime> datetimeLocalTwinSse({required DateTime d}) =>
     RustLib.instance.api
         .crateApiPseudoManualChronoTypeTwinSseDatetimeLocalTwinSse(d: d);
 
+Future<DateTime> naivedateTwinSse({required DateTime d}) => RustLib.instance.api
+    .crateApiPseudoManualChronoTypeTwinSseNaivedateTwinSse(d: d);
+
 Future<DateTime> naivedatetimeTwinSse({required DateTime d}) =>
     RustLib.instance.api
         .crateApiPseudoManualChronoTypeTwinSseNaivedatetimeTwinSse(d: d);

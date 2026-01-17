@@ -35,6 +35,15 @@ pub fn datetime_local_twin_sync(
 }
 
 #[flutter_rust_bridge::frb(sync)]
+pub fn naivedate_twin_sync(d: chrono::NaiveDate) -> chrono::NaiveDate {
+    use chrono::Datelike;
+    assert_eq!(&d.year(), &2022);
+    assert_eq!(&d.month(), &9);
+    assert_eq!(&d.day(), &10);
+    d
+}
+
+#[flutter_rust_bridge::frb(sync)]
 pub fn naivedatetime_twin_sync(d: chrono::NaiveDateTime) -> chrono::NaiveDateTime {
     use chrono::{Datelike, Timelike};
     assert_eq!(&d.year(), &2022);
