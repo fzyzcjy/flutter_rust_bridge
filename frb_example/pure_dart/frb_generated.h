@@ -1506,6 +1506,7 @@ typedef struct wire_cst_feature_chrono_twin_normal {
   int64_t utc;
   int64_t local;
   int64_t duration;
+  int64_t naive_date;
   int64_t naive_date_time;
 } wire_cst_feature_chrono_twin_normal;
 
@@ -1513,6 +1514,7 @@ typedef struct wire_cst_feature_chrono_twin_rust_async {
   int64_t utc;
   int64_t local;
   int64_t duration;
+  int64_t naive_date;
   int64_t naive_date_time;
 } wire_cst_feature_chrono_twin_rust_async;
 
@@ -1520,6 +1522,7 @@ typedef struct wire_cst_feature_chrono_twin_sync {
   int64_t utc;
   int64_t local;
   int64_t duration;
+  int64_t naive_date;
   int64_t naive_date_time;
 } wire_cst_feature_chrono_twin_sync;
 

@@ -67,12 +67,14 @@ class FeatureChronoTwinRustAsync {
   final DateTime utc;
   final DateTime local;
   final Duration duration;
+  final DateTime naiveDate;
   final DateTime naiveDateTime;
 
   const FeatureChronoTwinRustAsync({
     required this.utc,
     required this.local,
     required this.duration,
+    required this.naiveDate,
     required this.naiveDateTime,
   });
 
@@ -81,6 +83,7 @@ class FeatureChronoTwinRustAsync {
       utc.hashCode ^
       local.hashCode ^
       duration.hashCode ^
+      naiveDate.hashCode ^
       naiveDateTime.hashCode;
 
   @override
@@ -91,6 +94,7 @@ class FeatureChronoTwinRustAsync {
           utc == other.utc &&
           local == other.local &&
           duration == other.duration &&
+          naiveDate == other.naiveDate &&
           naiveDateTime == other.naiveDateTime;
 }
 

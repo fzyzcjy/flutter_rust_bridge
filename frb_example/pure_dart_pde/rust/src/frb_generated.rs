@@ -36798,11 +36798,13 @@ impl SseDecode for crate::api::chrono_type::FeatureChronoTwinNormal {
         let mut var_utc = <chrono::DateTime<chrono::Utc>>::sse_decode(deserializer);
         let mut var_local = <chrono::DateTime<chrono::Local>>::sse_decode(deserializer);
         let mut var_duration = <chrono::Duration>::sse_decode(deserializer);
+        let mut var_naiveDate = <chrono::NaiveDate>::sse_decode(deserializer);
         let mut var_naiveDateTime = <chrono::NaiveDateTime>::sse_decode(deserializer);
         return crate::api::chrono_type::FeatureChronoTwinNormal {
             utc: var_utc,
             local: var_local,
             duration: var_duration,
+            naive_date: var_naiveDate,
             naive_date_time: var_naiveDateTime,
         };
     }
@@ -36816,8 +36818,9 @@ impl SseDecode
         let mut var_utc = <chrono::DateTime<chrono::Utc>>::sse_decode(deserializer);
         let mut var_local = <chrono::DateTime<chrono::Local>>::sse_decode(deserializer);
         let mut var_duration = <chrono::Duration>::sse_decode(deserializer);
+        let mut var_naiveDate = <chrono::NaiveDate>::sse_decode(deserializer);
         let mut var_naiveDateTime = <chrono::NaiveDateTime>::sse_decode(deserializer);
-        return crate::api::pseudo_manual::chrono_type_twin_rust_async::FeatureChronoTwinRustAsync{utc: var_utc, local: var_local, duration: var_duration, naive_date_time: var_naiveDateTime};
+        return crate::api::pseudo_manual::chrono_type_twin_rust_async::FeatureChronoTwinRustAsync{utc: var_utc, local: var_local, duration: var_duration, naive_date: var_naiveDate, naive_date_time: var_naiveDateTime};
     }
 }
 
@@ -36827,11 +36830,13 @@ impl SseDecode for crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChro
         let mut var_utc = <chrono::DateTime<chrono::Utc>>::sse_decode(deserializer);
         let mut var_local = <chrono::DateTime<chrono::Local>>::sse_decode(deserializer);
         let mut var_duration = <chrono::Duration>::sse_decode(deserializer);
+        let mut var_naiveDate = <chrono::NaiveDate>::sse_decode(deserializer);
         let mut var_naiveDateTime = <chrono::NaiveDateTime>::sse_decode(deserializer);
         return crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChronoTwinSync {
             utc: var_utc,
             local: var_local,
             duration: var_duration,
+            naive_date: var_naiveDate,
             naive_date_time: var_naiveDateTime,
         };
     }
@@ -48254,6 +48259,7 @@ impl flutter_rust_bridge::IntoDart for crate::api::chrono_type::FeatureChronoTwi
             self.utc.into_into_dart().into_dart(),
             self.local.into_into_dart().into_dart(),
             self.duration.into_into_dart().into_dart(),
+            self.naive_date.into_into_dart().into_dart(),
             self.naive_date_time.into_into_dart().into_dart(),
         ]
         .into_dart()
@@ -48279,6 +48285,7 @@ impl flutter_rust_bridge::IntoDart
             self.utc.into_into_dart().into_dart(),
             self.local.into_into_dart().into_dart(),
             self.duration.into_into_dart().into_dart(),
+            self.naive_date.into_into_dart().into_dart(),
             self.naive_date_time.into_into_dart().into_dart(),
         ]
         .into_dart()
@@ -48308,6 +48315,7 @@ impl flutter_rust_bridge::IntoDart
             self.utc.into_into_dart().into_dart(),
             self.local.into_into_dart().into_dart(),
             self.duration.into_into_dart().into_dart(),
+            self.naive_date.into_into_dart().into_dart(),
             self.naive_date_time.into_into_dart().into_dart(),
         ]
         .into_dart()
@@ -57278,6 +57286,7 @@ impl SseEncode for crate::api::chrono_type::FeatureChronoTwinNormal {
         <chrono::DateTime<chrono::Utc>>::sse_encode(self.utc, serializer);
         <chrono::DateTime<chrono::Local>>::sse_encode(self.local, serializer);
         <chrono::Duration>::sse_encode(self.duration, serializer);
+        <chrono::NaiveDate>::sse_encode(self.naive_date, serializer);
         <chrono::NaiveDateTime>::sse_encode(self.naive_date_time, serializer);
     }
 }
@@ -57290,6 +57299,7 @@ impl SseEncode
         <chrono::DateTime<chrono::Utc>>::sse_encode(self.utc, serializer);
         <chrono::DateTime<chrono::Local>>::sse_encode(self.local, serializer);
         <chrono::Duration>::sse_encode(self.duration, serializer);
+        <chrono::NaiveDate>::sse_encode(self.naive_date, serializer);
         <chrono::NaiveDateTime>::sse_encode(self.naive_date_time, serializer);
     }
 }
@@ -57300,6 +57310,7 @@ impl SseEncode for crate::api::pseudo_manual::chrono_type_twin_sync::FeatureChro
         <chrono::DateTime<chrono::Utc>>::sse_encode(self.utc, serializer);
         <chrono::DateTime<chrono::Local>>::sse_encode(self.local, serializer);
         <chrono::Duration>::sse_encode(self.duration, serializer);
+        <chrono::NaiveDate>::sse_encode(self.naive_date, serializer);
         <chrono::NaiveDateTime>::sse_encode(self.naive_date_time, serializer);
     }
 }

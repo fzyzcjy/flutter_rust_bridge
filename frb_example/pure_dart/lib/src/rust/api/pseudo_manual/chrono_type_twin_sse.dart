@@ -60,12 +60,14 @@ class FeatureChronoTwinSse {
   final DateTime utc;
   final DateTime local;
   final Duration duration;
+  final DateTime naiveDate;
   final DateTime naiveDateTime;
 
   const FeatureChronoTwinSse({
     required this.utc,
     required this.local,
     required this.duration,
+    required this.naiveDate,
     required this.naiveDateTime,
   });
 
@@ -74,6 +76,7 @@ class FeatureChronoTwinSse {
       utc.hashCode ^
       local.hashCode ^
       duration.hashCode ^
+      naiveDate.hashCode ^
       naiveDateTime.hashCode;
 
   @override
@@ -84,6 +87,7 @@ class FeatureChronoTwinSse {
           utc == other.utc &&
           local == other.local &&
           duration == other.duration &&
+          naiveDate == other.naiveDate &&
           naiveDateTime == other.naiveDateTime;
 }
 

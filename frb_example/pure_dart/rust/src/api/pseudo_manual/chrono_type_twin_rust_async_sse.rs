@@ -149,6 +149,7 @@ pub struct FeatureChronoTwinRustAsyncSse {
     pub utc: chrono::DateTime<chrono::Utc>,
     pub local: chrono::DateTime<chrono::Local>,
     pub duration: chrono::Duration,
+    pub naive_date: chrono::NaiveDate,
     pub naive_date_time: chrono::NaiveDateTime,
 }
 
@@ -159,6 +160,9 @@ pub async fn how_long_does_it_take_twin_rust_async_sse(
     use chrono::{Datelike, Timelike};
     let difference: chrono::Duration = chrono::Utc::now() - mine.utc;
     assert_eq!(&mine.duration.num_hours(), &4);
+    assert_eq!(&mine.naive_date.year(), &2022);
+    assert_eq!(&mine.naive_date.month(), &9);
+    assert_eq!(&mine.naive_date.day(), &10);
     assert_eq!(&mine.naive_date_time.year(), &2022);
     assert_eq!(&mine.naive_date_time.month(), &9);
     assert_eq!(&mine.naive_date_time.day(), &10);

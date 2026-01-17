@@ -50061,13 +50061,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   FeatureChronoTwinNormal dco_decode_feature_chrono_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
-    if (arr.length != 4)
-      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    if (arr.length != 5)
+      throw Exception('unexpected arr length: expect 5 but see ${arr.length}');
     return FeatureChronoTwinNormal(
       utc: dco_decode_Chrono_Utc(arr[0]),
       local: dco_decode_Chrono_Local(arr[1]),
       duration: dco_decode_Chrono_Duration(arr[2]),
-      naiveDateTime: dco_decode_Chrono_NaiveDateTime(arr[3]),
+      naiveDate: dco_decode_Chrono_NaiveDate(arr[3]),
+      naiveDateTime: dco_decode_Chrono_NaiveDateTime(arr[4]),
     );
   }
 
@@ -50076,13 +50077,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
-    if (arr.length != 4)
-      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    if (arr.length != 5)
+      throw Exception('unexpected arr length: expect 5 but see ${arr.length}');
     return FeatureChronoTwinRustAsync(
       utc: dco_decode_Chrono_Utc(arr[0]),
       local: dco_decode_Chrono_Local(arr[1]),
       duration: dco_decode_Chrono_Duration(arr[2]),
-      naiveDateTime: dco_decode_Chrono_NaiveDateTime(arr[3]),
+      naiveDate: dco_decode_Chrono_NaiveDate(arr[3]),
+      naiveDateTime: dco_decode_Chrono_NaiveDateTime(arr[4]),
     );
   }
 
@@ -50090,13 +50092,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   FeatureChronoTwinSync dco_decode_feature_chrono_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
-    if (arr.length != 4)
-      throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    if (arr.length != 5)
+      throw Exception('unexpected arr length: expect 5 but see ${arr.length}');
     return FeatureChronoTwinSync(
       utc: dco_decode_Chrono_Utc(arr[0]),
       local: dco_decode_Chrono_Local(arr[1]),
       duration: dco_decode_Chrono_Duration(arr[2]),
-      naiveDateTime: dco_decode_Chrono_NaiveDateTime(arr[3]),
+      naiveDate: dco_decode_Chrono_NaiveDate(arr[3]),
+      naiveDateTime: dco_decode_Chrono_NaiveDateTime(arr[4]),
     );
   }
 
@@ -61511,11 +61514,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_utc = sse_decode_Chrono_Utc(deserializer);
     var var_local = sse_decode_Chrono_Local(deserializer);
     var var_duration = sse_decode_Chrono_Duration(deserializer);
+    var var_naiveDate = sse_decode_Chrono_NaiveDate(deserializer);
     var var_naiveDateTime = sse_decode_Chrono_NaiveDateTime(deserializer);
     return FeatureChronoTwinNormal(
         utc: var_utc,
         local: var_local,
         duration: var_duration,
+        naiveDate: var_naiveDate,
         naiveDateTime: var_naiveDateTime);
   }
 
@@ -61526,11 +61531,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_utc = sse_decode_Chrono_Utc(deserializer);
     var var_local = sse_decode_Chrono_Local(deserializer);
     var var_duration = sse_decode_Chrono_Duration(deserializer);
+    var var_naiveDate = sse_decode_Chrono_NaiveDate(deserializer);
     var var_naiveDateTime = sse_decode_Chrono_NaiveDateTime(deserializer);
     return FeatureChronoTwinRustAsync(
         utc: var_utc,
         local: var_local,
         duration: var_duration,
+        naiveDate: var_naiveDate,
         naiveDateTime: var_naiveDateTime);
   }
 
@@ -61541,11 +61548,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_utc = sse_decode_Chrono_Utc(deserializer);
     var var_local = sse_decode_Chrono_Local(deserializer);
     var var_duration = sse_decode_Chrono_Duration(deserializer);
+    var var_naiveDate = sse_decode_Chrono_NaiveDate(deserializer);
     var var_naiveDateTime = sse_decode_Chrono_NaiveDateTime(deserializer);
     return FeatureChronoTwinSync(
         utc: var_utc,
         local: var_local,
         duration: var_duration,
+        naiveDate: var_naiveDate,
         naiveDateTime: var_naiveDateTime);
   }
 
@@ -73575,6 +73584,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_Chrono_Utc(self.utc, serializer);
     sse_encode_Chrono_Local(self.local, serializer);
     sse_encode_Chrono_Duration(self.duration, serializer);
+    sse_encode_Chrono_NaiveDate(self.naiveDate, serializer);
     sse_encode_Chrono_NaiveDateTime(self.naiveDateTime, serializer);
   }
 
@@ -73585,6 +73595,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_Chrono_Utc(self.utc, serializer);
     sse_encode_Chrono_Local(self.local, serializer);
     sse_encode_Chrono_Duration(self.duration, serializer);
+    sse_encode_Chrono_NaiveDate(self.naiveDate, serializer);
     sse_encode_Chrono_NaiveDateTime(self.naiveDateTime, serializer);
   }
 
@@ -73595,6 +73606,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_Chrono_Utc(self.utc, serializer);
     sse_encode_Chrono_Local(self.local, serializer);
     sse_encode_Chrono_Duration(self.duration, serializer);
+    sse_encode_Chrono_NaiveDate(self.naiveDate, serializer);
     sse_encode_Chrono_NaiveDateTime(self.naiveDateTime, serializer);
   }
 

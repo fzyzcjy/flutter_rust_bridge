@@ -57,12 +57,14 @@ class FeatureChronoTwinSync {
   final DateTime utc;
   final DateTime local;
   final Duration duration;
+  final DateTime naiveDate;
   final DateTime naiveDateTime;
 
   const FeatureChronoTwinSync({
     required this.utc,
     required this.local,
     required this.duration,
+    required this.naiveDate,
     required this.naiveDateTime,
   });
 
@@ -71,6 +73,7 @@ class FeatureChronoTwinSync {
       utc.hashCode ^
       local.hashCode ^
       duration.hashCode ^
+      naiveDate.hashCode ^
       naiveDateTime.hashCode;
 
   @override
@@ -81,6 +84,7 @@ class FeatureChronoTwinSync {
           utc == other.utc &&
           local == other.local &&
           duration == other.duration &&
+          naiveDate == other.naiveDate &&
           naiveDateTime == other.naiveDateTime;
 }
 
