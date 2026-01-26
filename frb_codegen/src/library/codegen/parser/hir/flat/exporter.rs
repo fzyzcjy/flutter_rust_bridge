@@ -2,6 +2,7 @@ use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::flat::struct_or_enum::{HirFlatEnum, HirFlatStruct};
 use crate::codegen::ir::hir::flat::traits::HirFlatTrait;
 use crate::codegen::ir::hir::flat::type_alias::HirFlatTypeAlias;
+use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use log::debug;
 use std::collections::HashMap;
 use std::fmt::{Debug, Display};
@@ -18,7 +19,17 @@ impl HirFlatPack {
     }
 
     pub(crate) fn traits_map(&self) -> HashMap<String, &HirFlatTrait> {
-        vec_to_map_with_warn(&self.traits, |x| (x.name.name.clone(), x))
+        // Filter out traits marked with #[frb(ignore)]
+        let non_ignored: Vec<_> = self
+            .traits
+            .iter()
+            .filter(|t| {
+                !FrbAttributes::parse(&t.attrs)
+                    .map(|a| a.ignore())
+                    .unwrap_or(false)
+            })
+            .collect();
+        vec_to_map_with_warn(&non_ignored, |x| (x.name.name.clone(), *x))
     }
 
     pub(crate) fn types_map(&self) -> HashMap<String, Type> {

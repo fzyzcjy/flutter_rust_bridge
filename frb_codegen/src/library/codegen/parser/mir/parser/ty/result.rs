@@ -30,11 +30,12 @@ pub(crate) fn parse_type_maybe_result(
                     };
 
                     let args_to_parse = resolved_args.as_deref().unwrap_or(args);
-                    return parse_type_result(
-                        &(args_to_parse.iter())
-                            .map(|arg| type_parser.parse_type(arg, context))
-                            .collect::<anyhow::Result<Vec<_>>>()?,
-                    );
+                    let parsed_args = (args_to_parse.iter())
+                        .map(|arg| {
+                            type_parser.parse_type(arg, context)
+                        })
+                        .collect::<anyhow::Result<Vec<_>>>()?;
+                    return parse_type_result(&parsed_args);
                 }
             }
             _ => {}
