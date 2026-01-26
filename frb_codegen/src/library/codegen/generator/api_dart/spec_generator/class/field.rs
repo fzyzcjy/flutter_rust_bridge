@@ -42,7 +42,7 @@ pub(crate) fn generate_field_default(
     }
 }
 
-fn default_value_maybe_to_dart_style(value: &str, enable: bool) -> Cow<str> {
+fn default_value_maybe_to_dart_style(value: &str, enable: bool) -> Cow<'_, str> {
     if enable {
         default_value_to_dart_style(value).into()
     } else {

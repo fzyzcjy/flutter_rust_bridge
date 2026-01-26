@@ -27998,7 +27998,7 @@ pub enum AudioNodeImplementor {
 pub fn frb_internal_no_impl_dummy_function_AudioNodeImplementor(a: AudioNodeImplementor) {}
 
 impl AudioNodeImplementor {
-    pub fn blocking_read(&self) -> AudioNodeImplementorRwLockReadGuard {
+    pub fn blocking_read(&self) -> AudioNodeImplementorRwLockReadGuard<'_> {
         match self {
             Self::Variant0(inner) => {
                 AudioNodeImplementorRwLockReadGuard::Variant0(inner.blocking_read())
@@ -28072,7 +28072,7 @@ impl AudioNodeImplementor {
         }
     }
 
-    pub fn blocking_write(&self) -> AudioNodeImplementorRwLockWriteGuard {
+    pub fn blocking_write(&self) -> AudioNodeImplementorRwLockWriteGuard<'_> {
         match self {
             Self::Variant0(inner) => {
                 AudioNodeImplementorRwLockWriteGuard::Variant0(inner.blocking_write())
@@ -28146,7 +28146,7 @@ impl AudioNodeImplementor {
         }
     }
 
-    pub async fn read(&self) -> AudioNodeImplementorRwLockReadGuard {
+    pub async fn read(&self) -> AudioNodeImplementorRwLockReadGuard<'_> {
         match self {
             Self::Variant0(inner) => {
                 AudioNodeImplementorRwLockReadGuard::Variant0(inner.read().await)
@@ -28220,7 +28220,7 @@ impl AudioNodeImplementor {
         }
     }
 
-    pub async fn write(&self) -> AudioNodeImplementorRwLockWriteGuard {
+    pub async fn write(&self) -> AudioNodeImplementorRwLockWriteGuard<'_> {
         match self {
             Self::Variant0(inner) => {
                 AudioNodeImplementorRwLockWriteGuard::Variant0(inner.write().await)
@@ -28667,7 +28667,7 @@ pub fn frb_internal_no_impl_dummy_function_Auto_Ref_RustOpaque_flutter_rust_brid
 }
 
 impl Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum {
-    pub fn blocking_read(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnumRwLockReadGuard{
+    pub fn blocking_read(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnumRwLockReadGuard<'_>{
         match self {
             Self::Variant0(inner) => Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnumRwLockReadGuard::Variant0(inner.blocking_read()),
 Self::Variant1(inner) => Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnumRwLockReadGuard::Variant1(inner.blocking_read()),
@@ -28705,11 +28705,11 @@ Self::Variant31(inner) => Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRu
         }
     }
 
-    pub fn blocking_write(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnumRwLockWriteGuard{
+    pub fn blocking_write(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnumRwLockWriteGuard<'_>{
         unreachable!()
     }
 
-    pub async fn read(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnumRwLockReadGuard{
+    pub async fn read(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnumRwLockReadGuard<'_>{
         match self {
             Self::Variant0(inner) => Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnumRwLockReadGuard::Variant0(inner.read().await),
 Self::Variant1(inner) => Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnumRwLockReadGuard::Variant1(inner.read().await),
@@ -28747,7 +28747,7 @@ Self::Variant31(inner) => Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRu
         }
     }
 
-    pub async fn write(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnumRwLockWriteGuard{
+    pub async fn write(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnumRwLockWriteGuard<'_>{
         unreachable!()
     }
 }
@@ -29128,25 +29128,25 @@ pub fn frb_internal_no_impl_dummy_function_Auto_Ref_RustOpaque_flutter_rust_brid
 }
 
 impl Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum {
-    pub fn blocking_read(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockReadGuard{
+    pub fn blocking_read(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockReadGuard<'_>{
         match self {
             Self::Variant0(inner) => Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockReadGuard::Variant0(inner.blocking_read()),
 
         }
     }
 
-    pub fn blocking_write(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockWriteGuard{
+    pub fn blocking_write(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockWriteGuard<'_>{
         unreachable!()
     }
 
-    pub async fn read(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockReadGuard{
+    pub async fn read(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockReadGuard<'_>{
         match self {
             Self::Variant0(inner) => Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockReadGuard::Variant0(inner.read().await),
 
         }
     }
 
-    pub async fn write(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockWriteGuard{
+    pub async fn write(&self) -> Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumRwLockWriteGuard<'_>{
         unreachable!()
     }
 }
