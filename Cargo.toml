@@ -30,7 +30,7 @@ categories = ["development-tools::ffi"]
 [workspace.dependencies]
 allo-isolate = { version = "0.1.26", features = ["anyhow"] }
 #allo-isolate = { git = "https://github.com/shekohex/allo-isolate", features = ["anyhow"] }
-anyhow = "1.0.64"
+anyhow = "1.0.101"
 chrono = "0.4.23"
 lazy_static = "1.4.0"
 uuid = "1.1.2"
