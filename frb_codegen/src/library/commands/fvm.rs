@@ -37,11 +37,8 @@ fn has_fvmrc(pwd: &Path) -> bool {
 
 #[allow(clippy::vec_init_then_push)]
 fn has_fvm_installation() -> bool {
-    let fvm_activation_succeeded = command_run!(call_shell[None, Some(ExecuteCommandOptions { log_when_error: Some(false), ..Default::default() })], "dart", "pub", "global", "activate", "fvm")
-        .map_or(false, |res| res.status.success());
-    let fvm_availability_succeeded = command_run!(call_shell[None, Some(ExecuteCommandOptions { log_when_error: Some(false), ..Default::default() })], "fvm", "--version")
-        .map_or(false, |res| res.status.success());
-    fvm_activation_succeeded && fvm_availability_succeeded
+    command_run!(call_shell[None, Some(ExecuteCommandOptions { log_when_error: Some(false), ..Default::default() })], "fvm", "--version")
+        .map_or(false, |res| res.status.success())
 }
 
 #[allow(clippy::vec_init_then_push)]
