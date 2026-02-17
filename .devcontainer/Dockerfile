@@ -7,6 +7,7 @@ ARG RUST_VERSION=1.88.0
 # Environment variables
 ENV DEBIAN_FRONTEND=noninteractive
 ENV CARGO_TERM_COLOR=always
+ENV PIP_BREAK_SYSTEM_PACKAGES=1
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -15,7 +16,12 @@ RUN apt-get update && apt-get install -y \
     ninja-build \
     pkg-config \
     libclang-dev \
+    python3-pip \
     && rm -rf /var/lib/apt/lists/*
+
+# Configure pip to allow system package installation (PEP 668)
+RUN mkdir -p /etc/pip && \
+    echo "[global]\nbreak-system-packages = true" > /etc/pip/pip.conf
 
 # Install Rust
 SHELL ["/bin/bash", "-c"]
