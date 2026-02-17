@@ -1,5 +1,5 @@
 ---
-name: frb-prepare-for-pr
+name: frb-prepare-pr
 description: Use when about to create a PR or push changes in flutter_rust_bridge to ensure code generation is up to date
 ---
 
