@@ -7,9 +7,9 @@ description: Use when adding tests or developing new features in flutter_rust_br
 
 ## Overview
 
-**TDD workflow for flutter_rust_bridge features: start in dart_minimal (fast compile), migrate to pure_dart (full coverage).**
+**Iterate in dart_minimal (fast compile), migrate to pure_dart (full coverage).**
 
-Core principle: Use dart_minimal for rapid iteration during RED-GREEN cycle, then move tests to pure_dart for comprehensive twin test generation.
+Core principle: Use dart_minimal for rapid development, then move tests to pure_dart for comprehensive twin test generation.
 
 ## When to Use
 
@@ -18,55 +18,42 @@ Core principle: Use dart_minimal for rapid iteration during RED-GREEN cycle, the
 - Compilation feels slow (use dart_minimal instead)
 - Need to debug code generation behavior
 
-## TDD Workflow
+## Workflow
 
 ```dot
-digraph tdd_workflow {
+digraph workflow {
     rankdir=TB;
     node [shape=box];
 
-    "Write test in dart_minimal" -> "Write minimal Rust impl" -> "Test passes?";
-    "Test passes?" -> "Move to pure_dart" [label="yes"];
-    "Test passes?" -> "Fix impl" [label="no"];
-    "Fix impl" -> "Test passes?";
-    "Move to pure_dart" -> "Add TwinNormal suffix" -> "Run code gen" -> "All twins pass?";
-    "All twins pass?" -> "Done" [label="yes"];
-    "All twins pass?" -> "Debug twins" [label="no"];
-    "Debug twins" -> "All twins pass?";
+    "Write test + impl in dart_minimal" -> "Run test";
+    "Run test" -> "Pass?" [shape=diamond];
+    "Pass?" -> "Move to pure_dart" [label="yes"];
+    "Pass?" -> "Fix" [label="no"];
+    "Fix" -> "Run test";
+    "Move to pure_dart" -> "Add TwinNormal suffix" -> "Run code gen" -> "All tests pass?";
+    "All tests pass?" -> "Done" [label="yes"];
+    "All tests pass?" -> "Debug" [label="no"];
+    "Debug" -> "All tests pass?";
 }
 ```
 
-### Phase 1: RED (in dart_minimal)
+### Phase 1: Iterate in dart_minimal
 
-1. **Add failing test to existing files:**
+1. **Add test and implementation to existing files:**
    - Rust: add function to `frb_example/dart_minimal/rust/src/api/minimal.rs`
    - Dart: add test to `frb_example/dart_minimal/test/minimal_test.dart`
 
    Don't create new files - keep it minimal.
 
-2. **Run test - expect failure:**
-   ```bash
-   cd frb_example/dart_minimal
-   ./gradlew assemble  # or flutter build
-   dart test
-   ```
-
-### Phase 2: GREEN (in dart_minimal)
-
-1. **Write minimal Rust implementation** to pass the test
-
-2. **Run code generation:**
-   ```bash
-   ./frb_internal precommit-generate
-   ```
-
-3. **Verify test passes:**
+2. **Run test:**
    ```bash
    cd frb_example/dart_minimal
    dart test
    ```
 
-### Phase 3: MIGRATE (to pure_dart)
+3. **Iterate until test passes**
+
+### Phase 2: MIGRATE (to pure_dart)
 
 1. **Copy code to pure_dart (create new files there):**
    - Rust: `pure_dart/rust/src/api/my_feature.rs`
@@ -98,9 +85,8 @@ digraph tdd_workflow {
 
 | Phase | Location | Why |
 |-------|----------|-----|
-| RED | dart_minimal | Fast compile = quick feedback on test design |
-| GREEN | dart_minimal | Minimal deps = faster iteration |
-| Final | pure_dart | Twin tests = automatic coverage of all codegen modes |
+| Iterate | dart_minimal | Fast compile = quick feedback |
+| Migrate | pure_dart + pure_dart_pde | Twin tests = automatic coverage of all codegen modes |
 
 **Write one test → get ~6 variants automatically** via twin naming convention.
 
