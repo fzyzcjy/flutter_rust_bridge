@@ -1,19 +1,13 @@
 # Misc Tips
 
-## How to add a test
+## AI Assistant Skills
 
-:::info
-This package has some scripts to automatically create more tests based on the test you write,
-so you write one test and get (usually) six tests ;)
+For common development workflows, see the skills in `.claude/skills/`:
 
-That's why adding a test seems slightly more complex than usual - but surely quicker than manually writing 6 tests.
-:::
-
-1. In `./frb_example/pure_dart`,
-add your test in (for example) `rust/src/api/whatever.rs` and `test/api/whatever_test.dart`.
-2. Remember to mimic existing tests and add `_twin_normal`/`TwinNormal`/etc as appropriate (this allows more "twin" tests to be generated).
-3. Run `./frb_internal precommit --mode slow`, or if that's too slow,
-run `./frb_internal generate-internal-frb-example-pure-dart && ./frb_internal generate-run-frb-codegen-command-generate --package frb_example/pure_dart`
+- `frb-code-generation` - What generation commands to run based on your changes
+- `frb-test` - How to run tests locally
+- `frb-prepare-pr` - Steps before creating a PR
+- `frb-develop-feature` - How to add tests and use dart_minimal as testing bed
 
 ## How to solve failed CI
 
@@ -45,13 +39,6 @@ many things are dumped into the `rust/target/frb_dump/` folder,
 which is often helpful for debugging the codegen.
 For example, you can check the effective configuration, the IR (intermediate representation),
 the generated spec, the generated code, etc.
-
-### Use `frb_example/dart_minimal` as testing bed
-
-A lot of tests reside in `frb_example/pure_dart`, thus it is a bit big and slow to compile and examine.
-Therefore, I (personally) often use `frb_example/dart_minimal` as a testing bed.
-
-For example, I will ad-hoc add one or two functions to dart_minimal when wanting to examine outputs and behavior.
 
 ## Draw a flamegraph for performance
 
