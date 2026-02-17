@@ -38,9 +38,11 @@ digraph tdd_workflow {
 
 ### Phase 1: RED (in dart_minimal)
 
-1. **Write failing test first:**
-   - Rust: `frb_example/dart_minimal/rust/src/api/my_feature.rs`
-   - Dart: `frb_example/dart_minimal/dart/lib/my_feature_test.dart`
+1. **Add failing test to existing files:**
+   - Rust: add function to `frb_example/dart_minimal/rust/src/api/minimal.rs`
+   - Dart: add test to `frb_example/dart_minimal/test/minimal_test.dart`
+
+   Don't create new files - keep it minimal.
 
 2. **Run test - expect failure:**
    ```bash
@@ -66,11 +68,11 @@ digraph tdd_workflow {
 
 ### Phase 3: MIGRATE (to pure_dart)
 
-1. **Move test files to pure_dart:**
-   - From: `dart_minimal/rust/src/api/my_feature.rs`
-   - To: `pure_dart/rust/src/api/my_feature.rs`
-   - From: `dart_minimal/dart/lib/my_feature_test.dart`
-   - To: `pure_dart/test/api/my_feature_test.dart`
+1. **Copy code to pure_dart (create new files there):**
+   - Rust: `pure_dart/rust/src/api/my_feature.rs`
+   - Dart: `pure_dart/test/api/my_feature_test.dart`
+
+   Then remove from dart_minimal files.
 
 2. **Add TwinNormal suffix** to all functions and types:
 
