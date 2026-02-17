@@ -69,9 +69,9 @@ Guide for developing features and adding tests in flutter_rust_bridge.
 
 When generated code looks wrong or you need to understand FRB internals:
 
-1. Enable dumping in config (e.g., `frb_example/dart_minimal/rust/src/lib.rs`):
-   ```rust
-   flutter_rust_bridge::frb_generated_boilerplate!(dump_all: true);
+1. Enable dumping in `flutter_rust_bridge.yaml`:
+   ```yaml
+   dump_all: true
    ```
 
 2. Run code generation
