@@ -42,7 +42,7 @@ digraph workflow {
    - Rust: add function to `frb_example/dart_minimal/rust/src/api/minimal.rs`
    - Dart: add test to `frb_example/dart_minimal/test/minimal_test.dart`
 
-   Don't create new files - keep it minimal.
+   There is usually no need to create any new files.
 
 2. **Run codegen and test:**
    ```bash
