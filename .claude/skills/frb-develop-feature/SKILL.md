@@ -46,8 +46,7 @@ digraph workflow {
 
 2. **Run test:**
    ```bash
-   cd frb_example/dart_minimal
-   dart test
+   ./frb_internal test-dart-native --package frb_example/dart_minimal
    ```
 
 3. **Iterate until test passes**
@@ -74,8 +73,8 @@ digraph workflow {
 
 4. **Run all tests in both pure_dart and pure_dart_pde:**
    ```bash
-   cd frb_example/pure_dart && dart test
-   cd ../pure_dart_pde && dart test
+   ./frb_internal test-dart-native --package frb_example/pure_dart
+   ./frb_internal test-dart-native --package frb_example/pure_dart_pde
    ```
 
    Both must pass - they test different codegen configurations.
@@ -101,13 +100,12 @@ The `TwinNormal` suffix triggers automatic test generation:
 
 ## Quick Reference
 
-| Task | Location | Command |
-|------|----------|---------|
-| Quick iteration | `frb_example/dart_minimal` | `dart test` |
-| Full test suite | `frb_example/pure_dart` | `dart test` |
-| PDE test suite | `frb_example/pure_dart_pde` | `dart test` |
-| Code generation | repo root | `./frb_internal precommit-generate` |
-| Debug dumps | `rust/target/frb_dump/` | Set `dump_all: true` |
+| Task | Command |
+|------|---------|
+| Test dart_minimal | `./frb_internal test-dart-native --package frb_example/dart_minimal` |
+| Test pure_dart | `./frb_internal test-dart-native --package frb_example/pure_dart` |
+| Test pure_dart_pde | `./frb_internal test-dart-native --package frb_example/pure_dart_pde` |
+| Code generation | `./frb_internal precommit-generate` |
 
 ## Common Mistakes
 
