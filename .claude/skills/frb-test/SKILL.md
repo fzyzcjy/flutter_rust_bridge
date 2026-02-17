@@ -15,9 +15,10 @@ This skill maps change types to the appropriate local test commands. Tests run o
 
 | Change Type | Command |
 |-------------|---------|
-| `frb_rust/` | `./frb_internal test-rust --package frb_rust` |
-| `frb_codegen/` | `./frb_internal test-rust --package frb_codegen` |
-| Specific Rust package | `./frb_internal test-rust --package <path>` |
+| All Rust packages | `./frb_internal test-rust` |
+| `frb_rust/` | `./frb_internal test-rust-package --package frb_rust` |
+| `frb_codegen/` | `./frb_internal test-rust-package --package frb_codegen` |
+| Specific Rust package | `./frb_internal test-rust-package --package <path>` |
 | `frb_dart/` | `./frb_internal test-dart-native --package frb_dart` |
 | Dart example | `./frb_internal test-dart-native --package frb_example/<name>` |
 | Flutter example | `./frb_internal test-flutter-native --package frb_example/flutter_<name>` |
@@ -47,8 +48,8 @@ This skill maps change types to the appropriate local test commands. Tests run o
 ./frb_internal test-rust
 
 # Specific package
-./frb_internal test-rust --package frb_codegen
-./frb_internal test-rust --package frb_example/pure_dart/rust
+./frb_internal test-rust-package --package frb_codegen
+./frb_internal test-rust-package --package frb_example/pure_dart/rust
 ```
 
 ### Dart Native Tests
@@ -79,7 +80,7 @@ This skill maps change types to the appropriate local test commands. Tests run o
 ### Modified frb_rust, want to verify
 
 ```bash
-./frb_internal test-rust --package frb_rust
+./frb_internal test-rust-package --package frb_rust
 ```
 
 ### Modified example API, want to verify Dart side
@@ -92,7 +93,7 @@ This skill maps change types to the appropriate local test commands. Tests run o
 
 ```bash
 # Reproduce locally with same package
-./frb_internal test-rust --package frb_example/pure_dart/rust
+./frb_internal test-rust-package --package frb_example/pure_dart/rust
 ```
 
 ## Note

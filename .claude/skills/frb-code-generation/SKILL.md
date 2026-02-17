@@ -15,7 +15,7 @@ flutter_rust_bridge requires code generation when Rust APIs change. This skill m
 
 | Change Type | Command |
 |-------------|---------|
-| Example Rust API (`frb_example/*/rust/src/api/*.rs`) | `./frb_internal precommit-generate` |
+| Example Rust API (`frb_example/**/rust/src/api/*.rs`) | `./frb_internal precommit-generate` |
 | Flutter integrate examples | `./frb_internal precommit-integrate` |
 | `frb_codegen/` generation logic | `./frb_internal precommit-generate` + `generate-internal-rust` |
 | `frb_rust/src/` core API | `./frb_internal generate-internal-rust` |
@@ -27,7 +27,7 @@ flutter_rust_bridge requires code generation when Rust APIs change. This skill m
 
 ### Always Run Generation
 
-- Modified `frb_example/*/rust/src/api/*.rs` (example API definitions)
+- Modified `frb_example/**/rust/src/api/*.rs` (example API definitions)
 - Modified `frb_codegen/src/` (codegen logic)
 - Modified `frb_rust/src/` (core runtime, affects generated bindings)
 
