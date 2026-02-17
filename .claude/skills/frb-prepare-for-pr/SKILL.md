@@ -13,43 +13,26 @@ Before creating a PR, ensure generated code is up to date. This skill checks wha
 
 ## Workflow
 
+**REQUIRED: Read `frb-code-generation` skill first.** It determines what needs to be generated.
+
 ```
-1. Check: Did you modify generated code or generation-related files?
+1. Read frb-code-generation skill
    |
-   +-- No --> Ready for PR
+   +-- No generation needed --> Ready for PR
    |
-   +-- Yes --> 2. Run frb-code-generation skill
-               |
-               +-- 3. Commit generated changes
-               |
-               +-- 4. Ready for PR
+   +-- Generation needed --> 2. Run commands from frb-code-generation
+                              |
+                              +-- 3. Commit generated changes
+                              |
+                              +-- 4. Ready for PR
 ```
-
-## When Generation is Needed
-
-Check your changes against the `frb-code-generation` skill:
-
-| If you modified... | Run this command |
-|-------------------|------------------|
-| Example Rust API | `./frb_internal precommit-generate` |
-| `frb_codegen/` | `./frb_internal precommit-generate` + `generate-internal-rust` |
-| `frb_rust/src/` | `./frb_internal generate-internal-rust` |
-| Flutter integrate examples | `./frb_internal precommit-integrate` |
-
-## When Generation is NOT Needed
-
-- Documentation only (`.md`, comments)
-- Test files only
-- CI/CD configuration
-- Non-API code
 
 ## Quick Checklist
 
-Before PR:
-
-1. [ ] Did you modify Rust API or codegen? → Run `frb-code-generation` skill
-2. [ ] Commit any generated file changes
-3. [ ] Push and create PR
+1. [ ] **REQUIRED:** Read `frb-code-generation` skill
+2. [ ] Run any required generation commands
+3. [ ] Commit generated changes
+4. [ ] Push and create PR
 
 ## What CI Will Do
 
