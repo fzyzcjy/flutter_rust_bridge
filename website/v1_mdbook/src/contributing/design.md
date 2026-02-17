@@ -1,5 +1,7 @@
 # Overall design
 
+{{#include ../v2_upgrade_notice.md}}
+
 > This doc is still WIP. Tracking issue: https://github.com/fzyzcjy/flutter_rust_bridge/issues/593
 
 ## Folder structure

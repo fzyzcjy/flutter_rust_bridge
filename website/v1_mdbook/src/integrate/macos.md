@@ -1,5 +1,7 @@
 # Integrating with MacOS
 
+{{#include ../v2_upgrade_notice.md}}
+
 The steps required to integrate with MacOS are identical to those of iOS, save for some minor details.
 
 ## Adding the dummy header

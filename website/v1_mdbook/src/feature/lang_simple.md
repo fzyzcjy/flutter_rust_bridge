@@ -1,5 +1,7 @@
 # Simple correspondence
 
+{{#include ../v2_upgrade_notice.md}}
+
 Here is a brief glance showing what the code generator can generate (non-exhaustive). Some rows have hyper-links pointing to more detailed explanations.
 
 | Rust                                                 | Dart                                                 |

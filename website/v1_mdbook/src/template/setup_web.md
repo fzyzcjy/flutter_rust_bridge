@@ -1,5 +1,7 @@
 # Web setup
 
+{{#include ../v2_upgrade_notice.md}}
+
 Building on web requires nightly Rust, the `wasm32-unknown-unknown` target
 and [wasm-pack], which can be installed using these commands:
 

@@ -1,5 +1,7 @@
 # Command line arguments
 
+{{#include v2_upgrade_notice.md}}
+
 Simply add `--help` to see full documentation. The following is a snapshot when running the command with `--help`:
 
 ```shell

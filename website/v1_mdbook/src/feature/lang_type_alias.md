@@ -1,5 +1,7 @@
 # Type alias
 
+{{#include ../v2_upgrade_notice.md}}
+
 Type alias is also supported. For example:
 
 ```rust,noplayground

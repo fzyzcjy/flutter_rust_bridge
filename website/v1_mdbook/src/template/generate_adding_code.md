@@ -1,5 +1,7 @@
 # Adding new code
 
+{{#include ../v2_upgrade_notice.md}}
+
 Let's say we need to change `Platform` such that we don't really care about whether it
 is running on Intel or Apple Silicon, but we would like to keep this information so
 downlevel code can act on it. We would like to merge `MacApple` and `MacIntel` into a

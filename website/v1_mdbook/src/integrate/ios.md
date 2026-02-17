@@ -1,5 +1,7 @@
 # Integrating with iOS/MacOS
 
+{{#include ../v2_upgrade_notice.md}}
+
 *Credit to [brotskydotcom/rust-on-ios](https://github.com/brotskydotcom/rust-on-ios)
 for the inspiration of this method.*
 

@@ -1,5 +1,7 @@
 # chrono
 
+{{#include ../v2_upgrade_notice.md}}
+
 Codegen optionally support [chrono crate](https://docs.rs/chrono) with feature `chrono`.
 
 | :crab: Rust       | :dart: Dart                   |

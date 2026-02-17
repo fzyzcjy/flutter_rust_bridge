@@ -1,5 +1,7 @@
 # Arbitrary Rust types (opaque)
 
+{{#include ../v2_upgrade_notice.md}}
+
 On one hand, any Rust type, even if it is not supported using features of this library, can be used in Dart. This is done by wrapping it with `RustOpaque`.
 
 The Rust opaque objects in Dart should be disposed *manually*, though it will also be disposed when it is GCed, that is discouraged, due to [suggestions by Dart team](https://github.com/fzyzcjy/flutter_rust_bridge/issues/775#issuecomment-1274635037). Think of it just like a lot of Flutter objects that we are familiar with, such as `ui.Image` - we have to manually dispose them as well.

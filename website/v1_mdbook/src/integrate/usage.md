@@ -1,5 +1,7 @@
 # Using the dynamic library
 
+{{#include ../v2_upgrade_notice.md}}
+
 If everything went well, running `flutter run` will now build your Rust library,
 the Flutter binary and link the two together. Now the only thing left to do is
 to actually use it!

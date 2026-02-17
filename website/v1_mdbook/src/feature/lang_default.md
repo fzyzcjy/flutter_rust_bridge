@@ -1,5 +1,7 @@
 # Parameter defaults
 
+{{#include ../v2_upgrade_notice.md}}
+
 Dart allows default values for function and constructor parameters, and you can achieve the same effect using `#[frb(default)]`. The syntax is as follows:
 
 - If the parameter is a `String` or any other primitive, `#[frb(default = ".." | 0 | true | ..)]` annotates its default value.

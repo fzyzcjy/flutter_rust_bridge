@@ -1,5 +1,7 @@
 # Multiple files
 
+{{#include ../v2_upgrade_notice.md}}
+
 When having a large project, it is often insufficient to put everything in a single `api.rs`, but instead we may want to separate it into `api_of_one_module.rs`, `api_of_another_module.rs`, etc. That is why we have this feature.
 
 Basically, just specify all input Rust files and all output locations and we are done. Here is an example:

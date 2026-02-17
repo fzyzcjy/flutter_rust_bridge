@@ -1,5 +1,7 @@
 # Integrating with Android
 
+{{#include ../v2_upgrade_notice.md}}
+
 The setup process is identical to [Android setup](../template/setup_android.md),
 so go ahead and follow the steps described there. Once you're done, we will discuss
 how to modify the existing toolchain to accommodate Rust.

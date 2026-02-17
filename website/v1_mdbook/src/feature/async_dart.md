@@ -1,5 +1,7 @@
 # Asynchronous in Dart
 
+{{#include ../v2_upgrade_notice.md}}
+
 This library generates functions that are *asynchronous* in Dart by default. So you will see `fn f(..) -> String` becomes `Future<String> f(..)` with that interesting `Future`.
 
 Why? Flutter UI is single-threaded. If you use the intuitive synchronous approach, just like what you will (have to) do with plain-old Flutter bindings, your UI will be *stuck* as long as your Rust code is executing. If your Rust code run for 100ms for a heavy computation, your UI will fully freeze for 100ms and the users will not be happy.

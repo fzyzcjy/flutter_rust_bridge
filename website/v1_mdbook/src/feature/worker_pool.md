@@ -1,5 +1,7 @@
 # Worker pool
 
+{{#include ../v2_upgrade_notice.md}}
+
 Note: You can customize [handlers](handler.md) and even completely get rid of the worker pool. The following doc only works for those who wants to use the default handler and thus pool.
 
 When you call a Rust function with generated code from Dart side, it is executed inside a separate worker pool handled by flutter_rust_bridge. Thanks to the pool, type of the return values in Dart is async `Future` which means heavy calculation in Rust does not block the user interface from responding.

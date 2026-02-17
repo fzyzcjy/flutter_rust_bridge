@@ -1,5 +1,7 @@
 # Wrapping up
 
+{{#include ../v2_upgrade_notice.md}}
+
 Congratulations! You have successfully added a Rust component to
 your Flutter app using `flutter_rust_bridge` and configured
 `flutter run` (more on web later) to build your Rust library and link it to the app.

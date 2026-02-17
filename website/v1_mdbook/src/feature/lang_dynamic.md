@@ -1,5 +1,7 @@
 # Dynamic Types
 
+{{#include ../v2_upgrade_notice.md}}
+
 Dart's `dynamic` is a special type that can hold any type of value. Although it is possible
 to return a `dynamic` to Dart in the form of [`DartAbi`], it is preferable to
 return an `enum` instead that has a variant for each type you want to support.

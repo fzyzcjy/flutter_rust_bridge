@@ -1,5 +1,7 @@
 # Quickstart
 
+{{#include v2_upgrade_notice.md}}
+
 Write down Rust functions and types normally.
 
 ```rust,ignore

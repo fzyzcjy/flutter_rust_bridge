@@ -1,5 +1,7 @@
 # `enum`s
 
+{{#include ../v2_upgrade_notice.md}}
+
 Rust's `enum` are known to be very expressive and powerful - it allows each enum variant to have different associated data. Dart does not have such things in built-in enums, but no worries - we will automatically translate it into the equivalent using the `freezed` Dart library. The syntax for `freezed` may look a bit strange at the first glance, but please look at [its doc](https://pub.dev/packages/freezed) and see its powerfulness.
 
 ## Example

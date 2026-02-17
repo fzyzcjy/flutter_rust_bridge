@@ -1,5 +1,7 @@
 # Template tour
 
+{{#include ../v2_upgrade_notice.md}}
+
 ![success-screen](success.png)
 
 Congratulations! 🎉 You should have a working Flutter app equipped with

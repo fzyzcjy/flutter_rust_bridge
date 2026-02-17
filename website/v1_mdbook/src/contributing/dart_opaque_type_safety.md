@@ -1,5 +1,7 @@
 # Dart opaque type safety
 
+{{#include ../v2_upgrade_notice.md}}
+
 
 ## Ownership and GC
 

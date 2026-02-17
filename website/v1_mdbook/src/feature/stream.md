@@ -1,5 +1,7 @@
 # `Stream` / `Iterator`
 
+{{#include ../v2_upgrade_notice.md}}
+
 What is `Stream`? In short: call once, return multiple times; like `Iterator`s.
 
 Flutter's [Stream](https://dart.dev/tutorials/language/streams) is a powerful abstraction. When using it as the return value of Rust function, we can allow the scenario that we call function once, and then return multiple times.

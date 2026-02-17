@@ -1,5 +1,7 @@
 # Overview
 
+{{#include ../v2_upgrade_notice.md}}
+
 ## Prelude
 
 Firstly, welcome, and thanks for your contributions!

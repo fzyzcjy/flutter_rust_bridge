@@ -1,5 +1,7 @@
 # Tutorial: Pure Dart
 
+{{#include v2_upgrade_notice.md}}
+
 **Remark**: The `valgrind_test` section of the [CI workflow](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/.github/workflows/test.yaml) can also be useful, if you want details of each command and want to see Valgrind configuration.
 
 Unlike the previous tutorial, this one integrates Rust with pure Dart instead of Flutter.

@@ -1,5 +1,7 @@
 # Integrating with Windows and Linux
 
+{{#include ../v2_upgrade_notice.md}}
+
 This guide groups together instructions for Windows and Linux desktop apps,
 as they use the same build system.
 

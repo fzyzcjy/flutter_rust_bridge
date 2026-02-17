@@ -1,5 +1,7 @@
 # Integrating with Web
 
+{{#include ../v2_upgrade_notice.md}}
+
 Refer to the [Web setup](../template/setup_web.md) page for required installables.
 
 Once you have installed the required dependencies, you will need to create a wrapper

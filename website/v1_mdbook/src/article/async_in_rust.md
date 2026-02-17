@@ -1,5 +1,7 @@
 # Async in Rust
 
+{{#include ../v2_upgrade_notice.md}}
+
 > Author: @AlienKevin
 
 This library does not yet support returning a Future type from Rust and this has to do with the difficulty of uniting the various approaches to async in Rust. The [Rust Book](https://rust-lang.github.io/async-book/01_getting_started/03_state_of_async_rust.html#language-and-library-support) summarized the current state of async support succinctly:

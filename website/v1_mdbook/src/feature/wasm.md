@@ -1,5 +1,7 @@
 # WASM
 
+{{#include ../v2_upgrade_notice.md}}
+
 `flutter_rust_bridge_codegen` can also generate code to run in browsers using
 `wasm_bindgen`. To generate a WASM-specific file, pass this option to your invocation:
 

@@ -1,5 +1,7 @@
 # Unit tests in dart
 
+{{#include v2_upgrade_notice.md}}
+
 To run `flutter` or `dart test` with the bridge you need to load the library on your own development machine (Windows/MacOS/Linux/CI). For that use `loadLibForFlutter` or `loadLibForDart`, for example:
 
 ```dart

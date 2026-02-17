@@ -1,5 +1,7 @@
 # Methods
 
+{{#include ../v2_upgrade_notice.md}}
+
 There is support for structs with methods. Both static methods, and non-static methods are supported.
 
 Related configuration: `--no-use-bridge-in-method` (see below for an example).

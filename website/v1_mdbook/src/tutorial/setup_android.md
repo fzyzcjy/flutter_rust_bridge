@@ -1,5 +1,7 @@
 # Android setup
 
+{{#include ../v2_upgrade_notice.md}}
+
 ## JDK 8
 
 Android Studio depends on the `javax` library being present in the Java runtime, and the only reliable way to ensure this is to install an older version of Java. On Unix-like systems, you can use [asdf](https://asdf-vm.com/) or similar tools to manage your Java versions, and the template defines a known working version of Java in the `.tool-versions` file.

@@ -1,5 +1,7 @@
 # CMake with Gradle
 
+{{#include ../v2_upgrade_notice.md}}
+
 If you have taken a look at either the `windows` or `linux` folder,
 you will see a file named `CMakeLists.txt`. This is the definition file
 for the CMake toolchain that Flutter uses to build Windows and Linux apps.

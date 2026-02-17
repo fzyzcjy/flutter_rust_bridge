@@ -1,5 +1,7 @@
 # Handler
 
+{{#include ../v2_upgrade_notice.md}}
+
 By default, the `DefaultHandler` is used for handling function calls. You can implement your own `Handler` with other custom behaviors you want. In order to do this, create a module variable named `FLUTTER_RUST_BRIDGE_HANDLER` in `api.rs`(probably using `lazy_static`) of your project. You may not need to create a brand new struct implementing `Handler`, but instead, use the `SimpleHandler` and customize its generic arguments such as its `Executor`.
 
 ## Examples
