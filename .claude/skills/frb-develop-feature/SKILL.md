@@ -50,10 +50,13 @@ Guide for developing features and adding tests in flutter_rust_bridge.
 
 2. Use twin test naming to enable automatic test generation:
 
-   | Side | File | Convention |
-   |------|------|------------|
-   | Rust | `rust/src/api/whatever.rs` | Function suffix `_twin_normal` |
-   | Dart | `test/api/whatever_test.dart` | Class suffix `TwinNormal` |
+   Add `TwinNormal` suffix to all functions and types (in both Rust and Dart):
+   - **snake_case context** (functions): `_twin_normal`
+   - **PascalCase context** (types/structs/classes): `TwinNormal`
+
+   Example:
+   - Rust: `fn my_func_twin_normal()`, `struct MyStructTwinNormal`
+   - Dart: `myFuncTwinNormal()`, `class MyStructTwinNormal`
 
    **Why:** Internal scripts create "twin" tests running the same logic under different codegen modes (with/without Dart snapshot, different crate types). Mimic existing tests for exact patterns.
 
