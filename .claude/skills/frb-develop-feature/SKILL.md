@@ -22,8 +22,7 @@ Guide for developing features and adding tests in flutter_rust_bridge.
 |------|-------|---------|
 | Quick testing | `frb_example/dart_minimal` | Faster compile |
 | Full test suite | `frb_example/pure_dart` | Comprehensive |
-| Code gen (fast) | - | `./frb_internal generate-internal-frb-example-pure-dart && ./frb_internal generate-run-frb-codegen-command-generate --package frb_example/pure_dart` |
-| Code gen (full) | - | `./frb_internal precommit --mode slow` |
+| Code gen | - | `./frb_internal precommit-generate` |
 | Debug dumps | `rust/target/frb_dump/` | Set `dump_all: true` |
 
 ## Testing Bed Selection
@@ -60,12 +59,7 @@ Guide for developing features and adding tests in flutter_rust_bridge.
 
 3. Run generation:
    ```bash
-   # Full (slow) - all precommit checks
-   ./frb_internal precommit --mode slow
-
-   # Fast - only pure_dart generation
-   ./frb_internal generate-internal-frb-example-pure-dart && \
-   ./frb_internal generate-run-frb-codegen-command-generate --package frb_example/pure_dart
+   ./frb_internal precommit-generate
    ```
 
 ## Debug Code Generation

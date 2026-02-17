@@ -9,7 +9,7 @@ description: Use when modifying Rust API, codegen, or example code in flutter_ru
 
 flutter_rust_bridge requires code generation when Rust APIs change. This skill maps change types to the minimal generation commands needed.
 
-**Core principle:** Run only the generation commands needed for your change type. Avoid `--mode slow` unless necessary.
+**Core principle:** Run only the generation commands needed for your change type.
 
 ## Quick Reference
 
@@ -119,13 +119,3 @@ Regenerates CLI help documentation for website.
 ```bash
 # No generation needed
 ```
-
-## Full Generation (Rare)
-
-For release preparation or when unsure what changed:
-
-```bash
-./frb_internal precommit --mode slow
-```
-
-**Warning:** This is slow. It runs all generation + tests + lint.
