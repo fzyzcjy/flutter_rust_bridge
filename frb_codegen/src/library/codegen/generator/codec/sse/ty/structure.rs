@@ -20,7 +20,7 @@ impl CodecSseTyTrait for StructRefCodecSseTy<'_> {
 }
 
 impl StructRefCodecSseTy<'_> {
-    fn new_generalized_generator(&self) -> GeneralizedStructGenerator {
+    fn new_generalized_generator(&self) -> GeneralizedStructGenerator<'_> {
         GeneralizedStructGenerator::new(
             self.mir.get(self.context.mir_pack).clone(),
             self.context,

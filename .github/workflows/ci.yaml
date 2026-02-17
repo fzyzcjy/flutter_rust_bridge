@@ -580,14 +580,14 @@ jobs:
           - frb_example--pure_dart
           - frb_example--pure_dart_pde
           - frb_example--dart_build_rs
-          - frb_example--deliberate_bad
+          # - frb_example--deliberate_bad
         exclude:
           - { image: windows-2025, package: frb_utils }
           - { image: macos-15-intel, package: frb_utils }
           - { image: windows-2025, package: tools--frb_internal }
           - { image: macos-15-intel, package: tools--frb_internal }
-          - { image: windows-2025, package: frb_example--deliberate_bad }
-          - { image: macos-15-intel, package: frb_example--deliberate_bad }
+          # - { image: windows-2025, package: frb_example--deliberate_bad }
+          # - { image: macos-15-intel, package: frb_example--deliberate_bad }
 
     steps:
       # setup

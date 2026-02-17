@@ -547,10 +547,13 @@ Future<void> testFlutterWeb(TestFlutterWebConfig config) async {
 
   final buildWebPackage =
       kBuildWebPackageReplacer[config.package] ?? config.package;
+  // Note: Rust coverage cannot work for web builds because `profiler_builtins`
+  // is not available for wasm32-unknown-unknown target with `-Z build-std=std,panic_abort`.
+  // The `--dart-coverage` flag handles Dart coverage collection separately.
   await executeFrbCodegen(
     'build-web --dart-coverage',
     relativePwd: buildWebPackage,
-    coverage: config.coverage,
+    coverage: false,
     coverageName: 'TestFlutterWeb',
   );
 
