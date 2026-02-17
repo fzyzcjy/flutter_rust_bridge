@@ -1,6 +1,6 @@
 ---
 name: frb-develop-feature
-description: Use when adding tests or developing new features in flutter_rust_bridge, when compilation is slow, when learning twin test naming conventions, or when debugging code generation
+description: Use when adding tests or developing new features in flutter_rust_bridge, when compilation is slow, or when learning twin test naming conventions
 ---
 
 # FRB Develop Feature
@@ -16,7 +16,6 @@ Core principle: Use dart_minimal for rapid development, then move tests to pure_
 - Adding a new function or feature
 - Writing tests for new or existing functionality
 - Compilation feels slow (use dart_minimal instead)
-- Need to debug code generation behavior
 
 ## Workflow
 
@@ -110,19 +109,6 @@ The `TwinNormal` suffix triggers automatic test generation:
 | Code generation | repo root | `./frb_internal precommit-generate` |
 | Debug dumps | `rust/target/frb_dump/` | Set `dump_all: true` |
 
-## Debug Code Generation
-
-When generated code looks wrong:
-
-1. Enable dumping in `flutter_rust_bridge.yaml`:
-   ```yaml
-   dump_all: true
-   ```
-
-2. Run code generation
-
-3. Inspect `rust/target/frb_dump/` for intermediate representations
-
 ## Common Mistakes
 
 | Mistake | Fix |
@@ -136,4 +122,5 @@ When generated code looks wrong:
 
 - `frb-code-generation` - Which generation commands to run
 - `frb-test` - How to run tests locally
+- `frb-debugging` - Debug code generation issues
 - `frb-prepare-pr` - Preparing a PR for review
