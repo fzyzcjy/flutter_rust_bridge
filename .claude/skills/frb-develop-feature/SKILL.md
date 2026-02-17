@@ -84,11 +84,13 @@ digraph tdd_workflow {
    ./frb_internal precommit-generate
    ```
 
-4. **Run all tests:**
+4. **Run all tests in both pure_dart and pure_dart_pde:**
    ```bash
-   cd frb_example/pure_dart
-   dart test
+   cd frb_example/pure_dart && dart test
+   cd ../pure_dart_pde && dart test
    ```
+
+   Both must pass - they test different codegen configurations.
 
 ## Why This Workflow?
 
@@ -116,6 +118,7 @@ The `TwinNormal` suffix triggers automatic test generation:
 |------|----------|---------|
 | Quick iteration | `frb_example/dart_minimal` | `dart test` |
 | Full test suite | `frb_example/pure_dart` | `dart test` |
+| PDE test suite | `frb_example/pure_dart_pde` | `dart test` |
 | Code generation | repo root | `./frb_internal precommit-generate` |
 | Debug dumps | `rust/target/frb_dump/` | Set `dump_all: true` |
 
