@@ -54,9 +54,11 @@ digraph workflow {
 
 ### Phase 2: MIGRATE (to pure_dart)
 
-1. **Copy code to pure_dart (create new files there):**
+1. **Move code to pure_dart:**
    - Rust: `pure_dart/rust/src/api/my_feature.rs`
    - Dart: `pure_dart/test/api/my_feature_test.dart`
+
+   Either add to existing files or create new files.
 
    Then remove from dart_minimal files.
 
@@ -64,8 +66,8 @@ digraph workflow {
 
    | Context | Suffix | Example |
    |---------|--------|---------|
-   | snake_case (functions) | `_twin_normal` | `my_func_twin_normal()` |
-   | PascalCase (types) | `TwinNormal` | `MyStructTwinNormal` |
+   | snake_case | `_twin_normal` | `my_func_twin_normal()` |
+   | PascalCase | `TwinNormal` | `MyStructTwinNormal` |
 
 3. **Run code generation:**
    ```bash
