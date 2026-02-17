@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Dart-only base
+
+<V1Notice />
 This page details how to set up the initial structure of our monorepo,
 including the crucial Dart-only base package.
 

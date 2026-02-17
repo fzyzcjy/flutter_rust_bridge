@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Wrapping up
+
+<V1Notice />
 
 With our new definition of `Platform` in place, we can rewrite the previous code to make use
 of it! Here is an example of what you can do with freezed enums.

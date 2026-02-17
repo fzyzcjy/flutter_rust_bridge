@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Creating the libraries
+
+<V1Notice />
 In this section, we will create our Dart-only base library and then
 a Flutter wrapper library built on top of the Dart-only base.
 

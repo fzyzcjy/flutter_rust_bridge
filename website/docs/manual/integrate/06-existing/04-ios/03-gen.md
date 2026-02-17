@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Generating bindings
+
+<V1Notice />
 
 Now that we've got most of the plumbing out of the way, let's compile our Rust
 application. If you just created your crate a few moments ago, go ahead and
