@@ -1,7 +1,5 @@
 # Generating bindings
 
-{{#include ../v2_upgrade_notice.md}}
-
 Now that we've got most of the plumbing out of the way, let's compile our Rust
 application. If you just created your crate a few moments ago, go ahead and
 add a new file at `$crate/src/api.rs` and replace its contents with this snippet or

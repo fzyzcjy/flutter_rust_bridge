@@ -1,7 +1,5 @@
 # Generating multiple files
 
-{{#include ../v2_upgrade_notice.md}}
-
 > Author: @dbsxdbsx
 
 This article describes some thoughts and implementations about the feature of generating multiple files.

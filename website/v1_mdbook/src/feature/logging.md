@@ -1,7 +1,5 @@
 # Logging
 
-{{#include ../v2_upgrade_notice.md}}
-
 Since I have seen some questions asking how logging can be implemented with a Flutter + Rust application, here are some examples.
 
 ## Logger in production

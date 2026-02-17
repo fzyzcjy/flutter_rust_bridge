@@ -1,6 +1,4 @@
 # Platform setup
-
-{{#include ../v2_upgrade_notice.md}}
 In this subsection, we will be exploring how to set up our Flutter wrapper package
 to bundle the platform-specific Rust binaries so users of the library will be able
 to actually use the library.

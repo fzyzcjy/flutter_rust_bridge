@@ -1,7 +1,5 @@
 # `struct`s
 
-{{#include ../v2_upgrade_notice.md}}
-
 Normal Rust structs are supported. You can even use recursive fields, such as `pub struct TreeNode { pub value: String, pub children: Vec<MyTreeNode>, pub parent: Box<MyTreeNode> }`.
 
 For versions older than v1.66.0 (no need for latest version), if a struct field has type being a struct or an enum, please add a `Box` on it, or it will lead to compile-time error. For example, `struct A {b: B}` should be `struct A {b: Box<B>}` instead.

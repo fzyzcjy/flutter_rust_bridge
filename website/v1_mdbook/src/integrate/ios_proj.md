@@ -1,7 +1,5 @@
 # Creating the Rust project
 
-{{#include ../v2_upgrade_notice.md}}
-
 First, follow the instructions on the [Usage](https://gitlab.com/kornelski/cargo-xcode#usage)
 section of `cargo-xcode`. The instructions that follow are quoted from there, but keep in mind
 that it might have become outdated.

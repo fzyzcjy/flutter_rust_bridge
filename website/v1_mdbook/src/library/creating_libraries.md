@@ -1,6 +1,4 @@
 # Creating the libraries
-
-{{#include ../v2_upgrade_notice.md}}
 In this section, we will create our Dart-only base library and then
 a Flutter wrapper library built on top of the Dart-only base.
 

@@ -1,7 +1,5 @@
 # `justfile`
 
-{{#include ../v2_upgrade_notice.md}}
-
 This file defines the recipes for the [just] command runner, in a similar vein to `make` and Makefile. [just] is built using Rust and improves upon the traditional Makefile syntax with better support for
 conditionals, arguments, cross-platform compatibility and more.
 

@@ -1,7 +1,5 @@
 # Linking the project
 
-{{#include ../v2_upgrade_notice.md}}
-
 Open `ios/Runner.xcodeproj` in Xcode, then add `$crate/$crate.xcodeproj` as a *subproject*
 of the Runner project. It should look like this:
 

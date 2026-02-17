@@ -1,7 +1,5 @@
 # Alternative NDK setup
 
-{{#include ../v2_upgrade_notice.md}}
-
 This is only needed if you wish to use a version of the Android NDK higher than version 22 with versions of Rust that are lower than version 1.68.
 This guide details how to prevent the [unable to find library -lgcc error].
 

@@ -1,7 +1,5 @@
 # External types
 
-{{#include ../v2_upgrade_notice.md}}
-
 ## Types in other files within the same crate
 
 Imported symbols can be used normally. For example, with `use crate::data::{MyEnum, MyStruct};`, you can use `MyEnum` or `MyStruct` in your code normally.

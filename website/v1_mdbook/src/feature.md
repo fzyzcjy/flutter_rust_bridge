@@ -1,7 +1,5 @@
 # Features
 
-{{#include v2_upgrade_notice.md}}
-
 In this chapter, we are going to demonstrate the features. Please use the menu bar at the left / left-top of the page to navigate.
 
 ## Prelogue

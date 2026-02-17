@@ -1,7 +1,5 @@
 # Using `build_runner`
 
-{{#include ../v2_upgrade_notice.md}}
-
 Inspect your `lib/bridge_generated.dart` and you will see that the definition of `Platform` has changed:
 
 ```dart

@@ -1,7 +1,5 @@
 # Continuous Integration & Deployment (CI/CD)
 
-{{#include ../v2_upgrade_notice.md}}
-
 The CI/CD detailed here, using GitHub Actions, automates a lot of the busy work
 that you would otherwise need to maintain your library. These workflows include:
 

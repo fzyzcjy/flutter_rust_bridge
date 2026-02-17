@@ -1,7 +1,5 @@
 # Creating a new crate
 
-{{#include ../v2_upgrade_notice.md}}
-
 First, if you haven't done so already, create a new crate within your project directory
 using `cargo new --lib`. It is recommended that the crate root is a sibling of the other native build
 folders for ease of config, e.g.:

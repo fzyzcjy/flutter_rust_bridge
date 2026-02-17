@@ -1,7 +1,5 @@
 # Integrating with existing projects
 
-{{#include v2_upgrade_notice.md}}
-
 This guide is an intermediate-level introduction to integrating Rust with
 an existing Flutter project. If you are new to Rust or configuring
 build processes in general, we suggest looking at [the template tour](template/tour.md)

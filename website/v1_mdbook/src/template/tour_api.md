@@ -1,7 +1,5 @@
 # `native/src/api.rs`
 
-{{#include ../v2_upgrade_notice.md}}
-
 This is the default entry point for your library. Only functions defined here will be eligible for codegen.
 Functions may use types not defined in this file as parameter or return types, but those types must have
 been imported through `pub use` so that they are visible from `native/src/bridge_generated.rs`.

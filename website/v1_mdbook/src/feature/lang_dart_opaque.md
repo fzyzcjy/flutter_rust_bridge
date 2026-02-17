@@ -1,7 +1,5 @@
 # Arbitrary Dart types (opaque)
 
-{{#include ../v2_upgrade_notice.md}}
-
 Any Dart type can be passed to Rust. This is done by wrapping it with `DartOpaque`.
 
 This library ensures that any Dart objects are always removed on the parent Dart thread.

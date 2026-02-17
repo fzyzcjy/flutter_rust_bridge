@@ -1,7 +1,5 @@
 # Android setup
 
-{{#include ../v2_upgrade_notice.md}}
-
 Before trying this, ensure you can [run the example project](../tutorial/setup_android.md)
 
 ## Rust targets

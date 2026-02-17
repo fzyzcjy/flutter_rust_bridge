@@ -1,7 +1,5 @@
 # Wrapping up
 
-{{#include ../v2_upgrade_notice.md}}
-
 With our new definition of `Platform` in place, we can rewrite the previous code to make use
 of it! Here is an example of what you can do with freezed enums.
 

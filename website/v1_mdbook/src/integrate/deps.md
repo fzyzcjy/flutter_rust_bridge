@@ -1,7 +1,5 @@
 # Installing dependencies
 
-{{#include ../v2_upgrade_notice.md}}
-
 Next, we need to install a few build-time and runtime dependencies.
 
 ## Build-time dependencies

@@ -1,6 +1,4 @@
 # Windows & Linux
-
-{{#include ../../v2_upgrade_notice.md}}
 Windows and Linux both use CMake for their build system,
 so this page will walk you through setting up CMake for Windows/Linux.
 

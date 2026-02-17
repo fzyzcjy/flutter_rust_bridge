@@ -1,7 +1,5 @@
 # Troubleshooting
 
-{{#include v2_upgrade_notice.md}}
-
 ## The generated store_dart_post_cobject() has the wrong signature / `'stdarg.h' file not found` in Linux / `stdbool.h` / ...
 
 Try to run code generator with working directory at `/`, or set the environment variable:

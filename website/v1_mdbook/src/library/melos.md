@@ -1,7 +1,5 @@
 # Monorepo with Melos
 
-{{#include ../v2_upgrade_notice.md}}
-
 This page covers the basics of how to setup and use [Melos](https://melos.invertase.dev),
 a Dart/Flutter focused monorepo tool, so you can use it to manage your own monorepo.
 

@@ -1,6 +1,4 @@
 # Dart-only base
-
-{{#include ../v2_upgrade_notice.md}}
 This page details how to set up the initial structure of our monorepo,
 including the crucial Dart-only base package.
 

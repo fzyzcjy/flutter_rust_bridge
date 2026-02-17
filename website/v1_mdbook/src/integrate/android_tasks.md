@@ -1,7 +1,5 @@
 # Hooking onto tasks
 
-{{#include ../v2_upgrade_notice.md}}
-
 This is the same method used by the app template and also the easier one.
 Go ahead and install `cargo-ndk` if you have not already done so:
 

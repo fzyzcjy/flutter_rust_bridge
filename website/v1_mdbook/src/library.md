@@ -1,6 +1,4 @@
 # Creating a Dart/Flutter library
-
-{{#include v2_upgrade_notice.md}}
 In this chapter, we discuss how to add `flutter_rust_bridge` (FRB)
 to an already existing application or create a new application from scratch;
 this section covers creating a Dart-only library with a Flutter wrapper library on top.

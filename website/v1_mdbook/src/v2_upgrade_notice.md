@@ -1,1 +1,0 @@
-> **Info:** This guide was written for flutter_rust_bridge v1, thus some content may be outdated. The quickest approach to integrate is to follow the one-click approach in flutter_rust_bridge's quickstart page.

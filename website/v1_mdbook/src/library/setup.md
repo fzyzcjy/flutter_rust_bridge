@@ -1,7 +1,5 @@
 # Setup
 
-{{#include ../v2_upgrade_notice.md}}
-
 ## Dependencies
 To start developing your Dart/Flutter library, you will need to download some dependencies locally.
 

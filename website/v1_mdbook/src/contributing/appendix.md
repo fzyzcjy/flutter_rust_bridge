@@ -1,7 +1,5 @@
 # Appendix
 
-{{#include ../v2_upgrade_notice.md}}
-
 > Remark: Some docs here seem to be outdated. Refer to ci.yaml, main doc, justfile, etc to see an up-to-date version. This appendix will be overhauled.
 
 ## Releasing a new version

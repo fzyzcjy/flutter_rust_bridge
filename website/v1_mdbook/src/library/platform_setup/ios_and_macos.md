@@ -1,6 +1,4 @@
 # iOS & macOS
-
-{{#include ../../v2_upgrade_notice.md}}
 Flutter libraries targeting iOS and macOS use cocoapods for dependencies,
 so this page will walk you through setting that up with FRB.
 

@@ -1,7 +1,5 @@
 # Result / Exceptions
 
-{{#include ../v2_upgrade_notice.md}}
-
 1. For Result/Error, the`anyhow::Result`/`anyhow::Error` is supported. It will be automatically converted to a Dart Exception.
 2. For `panic`s, it will also be automatically captured and converted to Dart exceptions.
 3. For error hierarchy, or arbitrary error types, it is also supported. For example, you can create your own `CustomError` (such as using `thiserror`), and it will automatically be converted to a new Dart class.

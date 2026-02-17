@@ -1,7 +1,5 @@
 # uuid
 
-{{#include ../v2_upgrade_notice.md}}
-
 Codegen optionally support [uuid crate](https://docs.rs/uuid) with feature `uuid`.
 
 | :crab: Rust       | :dart: Dart                       |

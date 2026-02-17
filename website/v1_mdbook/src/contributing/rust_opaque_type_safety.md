@@ -1,7 +1,5 @@
 # Rust opaque type safety
 
-{{#include ../v2_upgrade_notice.md}}
-
 
 ## Restrictions
 

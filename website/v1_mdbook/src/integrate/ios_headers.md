@@ -1,7 +1,5 @@
 # Using dummy headers
 
-{{#include ../v2_upgrade_notice.md}}
-
 `flutter_rust_bridge_codegen` created a C header which lists all the
 exported symbols from our library, then uses it so that Xcode won't strip
 the symbols.

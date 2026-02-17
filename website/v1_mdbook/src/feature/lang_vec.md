@@ -1,7 +1,5 @@
 # Vec and array
 
-{{#include ../v2_upgrade_notice.md}}
-
 ## `Vec<u8>`, `Vec<i8>`, ...
 
 In Dart, when you want to express a long byte array such as a big image or some binary blob, people normally use `Uint8List` instead of `List<int>` since the former is much performant. `flutter_rust_bridge` takes this into consideration for you. When you have `Vec<u8>` (or `Vec<i8>`, or `Vec<i32>`, etc), it will be translated into `Uint8List` or its friends.

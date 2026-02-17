@@ -1,7 +1,5 @@
 # iOS setup
 
-{{#include ../v2_upgrade_notice.md}}
-
 iOS requires some additional Rust targets for cross-compilation:
 
 ```bash

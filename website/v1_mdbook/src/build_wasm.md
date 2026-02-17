@@ -1,7 +1,5 @@
 # Building a WASM binary manually
 
-{{#include v2_upgrade_notice.md}}
-
 Here are the complete commands for building a WASM binary with this library:
 
 ```bash
