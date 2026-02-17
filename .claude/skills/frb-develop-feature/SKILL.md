@@ -44,8 +44,9 @@ digraph workflow {
 
    Don't create new files - keep it minimal.
 
-2. **Run test:**
+2. **Run codegen and test:**
    ```bash
+   (cd frb_example/dart_minimal && cargo run --manifest-path ../../frb_codegen/Cargo.toml -- generate)
    ./frb_internal test-dart-native --package frb_example/dart_minimal
    ```
 
