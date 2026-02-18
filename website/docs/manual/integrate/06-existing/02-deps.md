@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Installing dependencies
+
+<V1Notice />
 
 Next, we need to install a few build-time and runtime dependencies.
 

@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Windows & Linux
+
+<V1Notice />
 Windows and Linux both use CMake for their build system,
 so this page will walk you through setting up CMake for Windows/Linux.
 

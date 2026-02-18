@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # `justfile`
+
+<V1Notice />
 
 This file defines the recipes for the [just] command runner, in a similar vein to `make` and Makefile. [just] is built using Rust and improves upon the traditional Makefile syntax with better support for
 conditionals, arguments, cross-platform compatibility and more.

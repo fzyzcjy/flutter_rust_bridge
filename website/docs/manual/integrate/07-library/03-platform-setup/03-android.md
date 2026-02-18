@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Android
+
+<V1Notice />
 There are a few different ways to integrate with our Android binaries when building for Android. None are particularly outstanding:
 - An "Ivy Repository"
   - Works great, but impossible to test changes on an emulator locally or in CI :(

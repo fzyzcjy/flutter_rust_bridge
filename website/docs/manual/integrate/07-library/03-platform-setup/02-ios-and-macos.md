@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # iOS & macOS
+
+<V1Notice />
 Flutter libraries targeting iOS and macOS use cocoapods for dependencies,
 so this page will walk you through setting that up with FRB.
 
