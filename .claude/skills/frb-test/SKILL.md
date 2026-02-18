@@ -3,7 +3,7 @@ name: frb-test
 description: Use when needing to run tests locally in flutter_rust_bridge, or when debugging test failures before pushing
 ---
 
-# FRB Local Testing
+# FRB Testing
 
 ## Overview
 
