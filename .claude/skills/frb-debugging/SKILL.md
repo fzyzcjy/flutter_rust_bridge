@@ -16,15 +16,13 @@ description: Use when generated code looks wrong, code generation fails, or you 
 
 ### Dump Intermediate Representations
 
-1. Enable in `flutter_rust_bridge.yaml`:
-   ```yaml
-   dump_all: true
-   ```
-2. Run code generation
-3. Check `rust/target/frb_dump/` for:
-   - Effective configuration
-   - IR (intermediate representation)
-   - Generated spec and code
+The in-tree examples by default enable `dump_all: true` in  `flutter_rust_bridge.yaml` for debugability.
+
+Therefore, you can check `rust/target/frb_dump/` for:
+- Effective configuration
+- IR (intermediate representation)
+- Generated spec and code
+- ...
 
 ### Debug Logs
 
