@@ -9,7 +9,12 @@ description: Use when adding tests or developing new features in flutter_rust_br
 
 **Iterate in dart_minimal (fast compile), migrate to pure_dart (full coverage).**
 
-Core principle: Use dart_minimal for rapid development, then move tests to pure_dart for comprehensive twin test generation.
+| Phase | Location | Why |
+|-------|----------|-----|
+| Iterate | dart_minimal | Fast compile = quick feedback |
+| Migrate | pure_dart + pure_dart_pde | Twin tests = automatic coverage of all codegen modes |
+
+Write one test → get ~6 variants automatically via TwinNormal suffix.
 
 ## When to Use
 
@@ -17,7 +22,7 @@ Core principle: Use dart_minimal for rapid development, then move tests to pure_
 - Writing tests for new or existing functionality
 - Compilation feels slow (use dart_minimal instead)
 
-## Workflow
+## Implementation
 
 ```dot
 digraph workflow {
@@ -52,15 +57,13 @@ digraph workflow {
 
 3. **Iterate until test passes**
 
-### Phase 2: MIGRATE (to pure_dart)
+### Phase 2: Migrate to pure_dart
 
 1. **Move code to pure_dart:**
    - Rust: `pure_dart/rust/src/api/my_feature.rs`
    - Dart: `pure_dart/test/api/my_feature_test.dart`
 
-   Either add to existing files or create new files.
-
-   Then remove from dart_minimal files.
+   Either add to existing files or create new files. Then remove from dart_minimal files.
 
 2. **Add TwinNormal suffix** to all functions and types:
 
@@ -69,13 +72,14 @@ digraph workflow {
    | snake_case | `_twin_normal` | `my_func_twin_normal()` |
    | PascalCase | `TwinNormal` | `MyStructTwinNormal` |
 
+   This triggers automatic test generation (~6 variants) under different codegen modes. Always mimic existing pure_dart tests for exact patterns.
+
 3. **Run codegen and test:**
    ```bash
    # Codegen
    ./frb_internal precommit-generate
 
-   # Test
-   # NOTE: The two can be run *in parallel* to speed up.
+   # Test (can run in parallel)
    ./frb_internal test-dart-native --package frb_example/pure_dart
    ./frb_internal test-dart-native --package frb_example/pure_dart_pde
    ```
@@ -84,26 +88,7 @@ digraph workflow {
 
 4. **Iterate until test passes**
 
-   You may use `dart_minimal` again if there are bugs and need fast iteration.
-
-## Why This Workflow?
-
-| Phase | Location | Why |
-|-------|----------|-----|
-| Iterate | dart_minimal | Fast compile = quick feedback |
-| Migrate | pure_dart + pure_dart_pde | Twin tests = automatic coverage of all codegen modes |
-
-**Write one test → get ~6 variants automatically** via twin naming convention.
-
-## Twin Naming Convention
-
-The `TwinNormal` suffix triggers automatic test generation:
-
-- Internal scripts create "twin" tests
-- Same logic runs under different codegen modes
-- Covers: with/without Dart snapshot, different crate types
-
-**Always mimic existing pure_dart tests** for exact patterns.
+   You may use dart_minimal again if there are bugs and need fast iteration.
 
 ## Quick Reference
 
