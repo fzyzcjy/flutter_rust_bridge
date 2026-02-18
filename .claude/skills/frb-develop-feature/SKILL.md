@@ -96,12 +96,25 @@ digraph workflow {
 
 ## Quick Reference
 
+### Tasks and Commands
+
 | Task | Command |
 |------|---------|
 | Test dart_minimal | `./frb_internal test-dart-native --package frb_example/dart_minimal` |
 | Test pure_dart | `./frb_internal test-dart-native --package frb_example/pure_dart` |
 | Test pure_dart_pde | `./frb_internal test-dart-native --package frb_example/pure_dart_pde` |
 | Code generation | `./frb_internal precommit-generate` |
+
+### Architecture
+
+- **Doc:** `website/docs/guides/contributing/overview.md` - System architecture, codegen flow, directory structure
+- **Key directories:**
+  | Directory | Purpose |
+  |-----------|---------|
+  | `frb_codegen/` | Code generator (IR → Rust/Dart output) |
+  | `frb_dart/` | Dart runtime library |
+  | `frb_rust/` | Rust runtime library |
+  | `frb_example/` | Examples + tests (`pure_dart` has most coverage) |
 
 ## Common Mistakes
 
