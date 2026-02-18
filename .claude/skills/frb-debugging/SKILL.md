@@ -32,13 +32,6 @@ description: Use when generated code looks wrong, code generation fails, or you 
 RUST_LOG=debug flutter_rust_bridge_codegen ...
 ```
 
-### CI Failures
-
-- **Flaky tests**: Re-run CI first
-- **Git diff errors**: Copy CI diff output and `git apply`
-- **Local reproduction**: Use corresponding `./frb_internal` command from CI
-- **Auto-fix**: Many `./frb_internal` commands have `--fix` option
-
 ## Full Troubleshooting
 
 If above doesn't help, see:
