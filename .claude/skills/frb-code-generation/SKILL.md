@@ -22,5 +22,3 @@ flutter_rust_bridge requires code generation when Rust APIs change. This skill m
 | `frb_example/pure_dart` generator | `./frb_internal generate-internal-frb-example-pure-dart` |
 | CLI help documentation | `./frb_internal generate-internal-book-help` |
 | Non-generated (docs, comments, tests, `frb_dart/`) | No generation needed |
-
-**When unsure:** `./frb_internal precommit --mode slow`
