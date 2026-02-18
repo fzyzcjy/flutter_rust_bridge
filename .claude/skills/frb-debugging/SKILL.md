@@ -39,24 +39,12 @@ RUST_LOG=debug flutter_rust_bridge_codegen ...
 - **Local reproduction**: Use corresponding `./frb_internal` command from CI
 - **Auto-fix**: Many `./frb_internal` commands have `--fix` option
 
-## Common Errors
-
-| Error | Solution |
-|-------|----------|
-| `store_dart_post_cobject` undefined | Run `cargo build` again (generated rs not included) |
-| iOS TestFlight symbol error | Xcode: `Strip Linked Product` → `No` |
-| `ld: error: unable to find library -lgcc` | Downgrade Android NDK to v22 |
-| `__cxa_pure_virtual` on Android | Add `build.rs`: `println!("cargo:rustc-link-lib=c++_shared")` |
-| `frb_expand` cfg warning | Add to `Cargo.toml` lints: `check-cfg = ['cfg(frb_expand)']` |
-| `dlopen failed: library not found` | Cargokit version mismatch with Flutter - upgrade/downgrade to match |
-| Linker undefined symbols (iOS/macOS) | Add `-lc++` to podspec `OTHER_LDFLAGS` |
-
 ## Full Troubleshooting
 
 If above doesn't help, see:
 
-* `website/docs/manual/troubleshooting.md`
 * `website/docs/docs/guides/contributing/tip.md`
+* `website/docs/manual/troubleshooting.md`
 
 ## Related Skills
 
