@@ -18,14 +18,6 @@ For example, `./frb_internal precommit --mode fast` (or `--mode slow`) runs code
 To run the `flutter_rust_bridge_codegen`, but using the local code (instead of a released version),
 please replace it with `just codegen`.
 
-### Check the dumped data
-
-With `dump_all: true` in the config (which is already done for `frb_example/pure_dart`),
-many things are dumped into the `rust/target/frb_dump/` folder,
-which is often helpful for debugging the codegen.
-For example, you can check the effective configuration, the IR (intermediate representation),
-the generated spec, the generated code, etc.
-
 ## Draw a flamegraph for performance
 
 If you are not working on improving performance, please ignore this subsection.
