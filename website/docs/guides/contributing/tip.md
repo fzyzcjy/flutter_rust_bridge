@@ -2,12 +2,7 @@
 
 ## AI Assistant Skills
 
-For common development workflows, see the skills in `.claude/skills/`:
-
-- `frb-code-generation` - What generation commands to run based on your changes
-- `frb-test` - How to run tests locally
-- `frb-prepare-pr` - Steps before creating a PR
-- `frb-develop-feature` - How to add tests and use dart_minimal as testing bed
+For common development workflows, see the skills in `.claude/skills/`.
 
 ## How to solve failed CI
 
