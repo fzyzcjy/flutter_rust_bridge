@@ -18,7 +18,6 @@ flutter_rust_bridge requires code generation when Rust APIs change. This skill m
 | Example Rust API (`frb_example/**/rust/src/api/*.rs`) | `./frb_internal precommit-generate` |
 | Flutter integrate examples | `./frb_internal precommit-integrate` |
 | `frb_codegen/` generation logic | `./frb_internal precommit-generate` + `generate-internal-rust` |
-| `frb_rust/src/` core API | `./frb_internal generate-internal-rust` |
 | `frb_example/pure_dart` generator | `./frb_internal generate-internal-frb-example-pure-dart` |
 | CLI help documentation | `./frb_internal generate-internal-book-help` |
 | Non-generated files (docs, comments, tests, `frb_dart/`) | No generation needed |
