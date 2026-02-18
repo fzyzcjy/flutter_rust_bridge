@@ -4,15 +4,6 @@
 
 For common development workflows, see the skills in `.claude/skills/`.
 
-## How to solve failed CI
-
-* **When it is merely flaky**: Sometimes it is just flaky, not real bug. Thus, try to re-run the CI jobs
-(e.g. by pushing a commit that does no real work in order to trigger the CI) and see.
-* **Quickly solve git-diff errors**: If the CI is unhappy and provide you git diffs,
-you can either run code generator locally, or directly *copy-and-paste* and `git apply` those diffs to fix your code.
-* **How to reproduce locally**: Operations are usually reproducible using corresponding `./frb_internal something` commands shown in CI.
-* **Automatic fix commands**: For many `./frb_internal` commands, there is a `--fix` option which tries to automatically fix everything.
-
 ## Tips for development
 
 ### The `./frb_internal`
