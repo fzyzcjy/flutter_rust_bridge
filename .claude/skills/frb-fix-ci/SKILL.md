@@ -17,7 +17,7 @@ CI failures in flutter_rust_bridge often have simple fixes. Try the appropriate 
 |---------|-----|
 | Flaky test (passes sometimes) | `gh run rerun --failed` |
 | Git diff shown in CI | `git apply` OR regenerate |
-| `./frb_internal` command failing | Add `--fix` flag |
+| Lint/format errors | Add `--fix` flag |
 | Can't reproduce locally | Use same `./frb_internal` command from CI |
 
 ## Fixes by Scenario
@@ -53,14 +53,19 @@ pbpaste | git apply   # macOS
 
 Both are correct. Option A is faster; Option B is more thorough.
 
-### `./frb_internal` Command Failing
+### Lint/Format Errors
 
-Most commands support `--fix`:
+For clippy, dart analyze, or format errors, use `--fix`:
 
 ```bash
-./frb_internal precommit --fix
-./frb_internal test-dart --fix
+./frb_internal lint --fix
 ```
+
+This runs:
+- `cargo clippy --fix` - Rust lint fixes
+- `cargo fmt` - Rust format
+- `dart format` - Dart format
+- `dart fix --apply` - Dart auto fixes
 
 ### Can't Reproduce Locally
 
@@ -74,7 +79,6 @@ CI shows the command it ran. Run the same command:
 ## Common Mistakes
 
 - Investigating root cause when a simple re-run would work
-- Not using `--fix` flag when available
 - Not trying `git apply` first when CI provides a diff
 
 ## Related Skills
