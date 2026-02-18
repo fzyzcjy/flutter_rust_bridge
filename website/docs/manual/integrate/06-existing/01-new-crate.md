@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Creating a new crate
+
+<V1Notice />
 
 First, if you haven't done so already, create a new crate within your project directory
 using `cargo new --lib`. It is recommended that the crate root is a sibling of the other native build

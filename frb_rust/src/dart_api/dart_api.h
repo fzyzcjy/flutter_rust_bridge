@@ -1803,7 +1803,7 @@ DART_EXPORT void Dart_SetCurrentThreadOwnsIsolate(void);
  * The port can be the isolate's main port, or any other port owned by the
  * isolate.
  *
- * \param port_id The port to be checked.
+ * \param port The port to be checked.
  */
 DART_EXPORT bool Dart_GetCurrentThreadOwnsIsolate(Dart_Port port);
 
@@ -1891,6 +1891,17 @@ DART_EXPORT Dart_Handle Dart_EmptyString(void);
 DART_EXPORT Dart_Handle Dart_TypeDynamic(void);
 DART_EXPORT Dart_Handle Dart_TypeVoid(void);
 DART_EXPORT Dart_Handle Dart_TypeNever(void);
+
+/**
+ * Returns simple core types.
+ *
+ * \return A handle to type.
+ */
+DART_EXPORT Dart_Handle Dart_TypeString();
+DART_EXPORT Dart_Handle Dart_TypeDouble();
+DART_EXPORT Dart_Handle Dart_TypeInt();
+DART_EXPORT Dart_Handle Dart_TypeBoolean();
+DART_EXPORT Dart_Handle Dart_TypeObject();
 
 /**
  * Checks if the two objects are equal.
@@ -2591,6 +2602,26 @@ DART_EXPORT Dart_Handle Dart_MapContainsKey(Dart_Handle map, Dart_Handle key);
  *   error handle.
  */
 DART_EXPORT Dart_Handle Dart_MapKeys(Dart_Handle map);
+
+/**
+ * Returns a Map filled by key value pairs from the provided lists.
+ *
+ * \param keys_type Handle to a type of keys. E.g., from
+ *   Dart_Get<XXX>Type.
+ * \param keys_handle Handle to a list with keys. E.g., from
+ *   Dart_NewList<XXX>.
+ * \param values_type Handle to a type of values. E.g., from
+ *   Dart_Get<XXX>Type.
+ * \param values_handle Handle to a list with values. E.g., from
+ *   Dart_NewList<XXX>.
+ *
+ * \return The Map object if no error occurs. Otherwise returns
+ *   an error handle.
+ */
+DART_EXPORT Dart_Handle Dart_NewMap(Dart_Handle keys_type,
+                                    Dart_Handle keys_handle,
+                                    Dart_Handle values_type,
+                                    Dart_Handle values_handle);
 
 /*
  * ==========
@@ -3363,7 +3394,7 @@ typedef void* (*Dart_NativeAssetsDlopenCallbackNoPath)(char** error);
  *
  * If provided, takes prescedence over `Dart_NativeAssetsDlopenCallback`.
  *
- * \param path The asset id requested in the `@Native` external function.
+ * \param asset_id The asset id requested in the `@Native` external function.
  *
  * \param error Returns NULL if successful, an error message otherwise. The
  *   caller is responsible for calling free() on the error message.
@@ -3381,7 +3412,7 @@ typedef void* (*Dart_NativeAssetsDlopenAssetId)(const char* asset_id,
  * \return A malloced string containing all asset ids. The caller must free this
  *   string.
  */
-typedef char* (*Dart_NativeAssetsAvailableAssets)();
+typedef char* (*Dart_NativeAssetsAvailableAssets)(void);
 
 /**
  * Callback provided by the embedder that is used by the VM to lookup symbols
@@ -3574,6 +3605,18 @@ Dart_LoadScriptFromKernel(const uint8_t* kernel_buffer, intptr_t kernel_size);
  */
 DART_EXPORT DART_API_WARN_UNUSED_RESULT Dart_Handle
 Dart_LoadScriptFromBytecode(const uint8_t* kernel_buffer, intptr_t kernel_size);
+
+/**
+ * Loads a module snapshot.
+ *
+ * \param snapshot_data Buffer containing the module snapshot data.
+ *   Must remain valid until isolate group shutdown.
+ * \param snapshot_instructions Buffer containing the module snapshot
+ *   instructions. Must remain valid until isolate group shutdown.
+ */
+DART_EXPORT DART_API_WARN_UNUSED_RESULT Dart_Handle
+Dart_LoadModuleSnapshot(const uint8_t* snapshot_data,
+                        const uint8_t* snapshot_instructions);
 
 /**
  * Gets the library for the root script for the current isolate.
@@ -4143,6 +4186,58 @@ Dart_CreateAppAOTSnapshotAsBinary(Dart_AotBinaryFormat format,
                                   void* debug_callback_data,
                                   const char* identifier,
                                   const char* path);
+
+/**
+ *  Creates a precompiled snapshot along with a relocatable object file.
+ *   - A root library must have been loaded.
+ *   - Dart_Precompile must have been called.
+ *
+ *  Outputs both a snapshot and a relocatable object file in
+ *  the specified binary format defining the symbols
+ *   - _kDartVmSnapshotData
+ *   - _kDartVmSnapshotInstructions
+ *   - _kDartIsolateSnapshotData
+ *   - _kDartIsolateSnapshotInstructions
+ *  Whether or not the snapshot is stripped, the relocatable object file
+ *  contains all debugging information.
+ *
+ *  The shared library should be dynamically loaded by the embedder.
+ *  Running this snapshot requires a VM compiled with DART_PRECOMPILED_RUNTIME.
+ *  The kDartVmSnapshotData and kDartVmSnapshotInstructions should be passed to
+ *  Dart_Initialize. The kDartIsolateSnapshotData and
+ *  kDartIsolateSnapshotInstructions should be passed to Dart_CreateIsolate.
+ *
+ *  The callback will be invoked one or more times to provide the binary output.
+ *
+ *  If stripped is true, then the binary output will not include DWARF
+ *  debugging sections.
+ *
+ *  If debug_callback_data is provided, debug_callback_data will be used with
+ *  the callback to provide separate debugging information.
+ *
+ *  The identifier should be an appropriate string for identifying the resulting
+ *  dynamic library. For example, the identifier is used in ID_DYLIB and
+ *  CODE_SIGNATURE load commands for Mach-O dynamic libraries and for DW_AT_name
+ *  in the Dart progam's root DWARF compilation unit.
+ *
+ *  The path should be the full path of the resulting relocatable object file.
+ *  Currently, it is only used in Mach-O relocatable object files and snapshots
+ *  to create an appropriate N_OSO symbolic debugging variable
+ *  so dsymutil can be used. Note that an external strip utility is needed to
+ *  remove the N_OSO symbolic debugging variable after dsymutil usage.
+ *
+ * \return A valid handle if no error occurs during the operation.
+ */
+DART_EXPORT DART_API_WARN_UNUSED_RESULT Dart_Handle
+Dart_CreateAppAOTSnapshotAndRelocatableObject(
+    Dart_AotBinaryFormat format,
+    Dart_StreamingWriteCallback callback,
+    void* snapshot_callback_data,
+    void* object_callback_data,
+    bool stripped,
+    void* debug_callback_data,
+    const char* identifier,
+    const char* path);
 
 /**
  *  Like Dart_CreateAppAOTSnapshotAsAssembly, but only includes

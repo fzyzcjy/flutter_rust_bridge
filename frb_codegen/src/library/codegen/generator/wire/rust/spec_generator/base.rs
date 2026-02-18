@@ -25,7 +25,7 @@ pub(crate) struct WireRustGeneratorContext<'a> {
 }
 
 impl WireRustGeneratorContext<'_> {
-    pub(crate) fn as_wire_rust_codec_cst_context(&self) -> WireRustCodecCstGeneratorContext {
+    pub(crate) fn as_wire_rust_codec_cst_context(&self) -> WireRustCodecCstGeneratorContext<'_> {
         WireRustCodecCstGeneratorContext {
             mir_pack: self.mir_pack,
             config: self.config,
@@ -34,13 +34,13 @@ impl WireRustGeneratorContext<'_> {
         }
     }
 
-    pub(crate) fn as_wire_rust_codec_dco_context(&self) -> WireRustCodecDcoGeneratorContext {
+    pub(crate) fn as_wire_rust_codec_dco_context(&self) -> WireRustCodecDcoGeneratorContext<'_> {
         WireRustCodecDcoGeneratorContext {
             mir_pack: self.mir_pack,
         }
     }
 
-    pub(crate) fn as_wire_rust_codec_sse_context(&self) -> WireRustCodecSseGeneratorContext {
+    pub(crate) fn as_wire_rust_codec_sse_context(&self) -> WireRustCodecSseGeneratorContext<'_> {
         WireRustCodecSseGeneratorContext {
             mir_pack: self.mir_pack,
             api_dart_config: self.api_dart_config,

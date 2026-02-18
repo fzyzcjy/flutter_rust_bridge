@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Linking the project
+
+<V1Notice />
 
 Open `ios/Runner.xcodeproj` in Xcode, then add `$crate/$crate.xcodeproj` as a *subproject*
 of the Runner project. It should look like this:

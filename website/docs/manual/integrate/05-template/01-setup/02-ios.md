@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # iOS setup
+
+<V1Notice />
 
 iOS requires some additional Rust targets for cross-compilation:
 

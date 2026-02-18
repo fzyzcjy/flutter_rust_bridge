@@ -4,7 +4,7 @@ use syn::Type;
 pub(crate) type SplayedSegment<'a> = (&'a str, &'a [Type]);
 
 /// Spread and turn out the data of a fully qualified name for structural pattern matching.
-pub(crate) fn splay_segments(segments: &[NameComponent]) -> Vec<SplayedSegment> {
+pub(crate) fn splay_segments(segments: &[NameComponent]) -> Vec<SplayedSegment<'_>> {
     segments
         .iter()
         .map(|NameComponent { ident, args }| (&ident[..], &args[..]))

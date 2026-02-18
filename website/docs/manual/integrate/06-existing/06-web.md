@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Integrating with Web
+
+<V1Notice />
 
 Refer to the [Web setup](../template/setup/web) page for required installables.
 
