@@ -43,19 +43,23 @@ digraph workflow {
 
 ### Phase 1: Iterate in dart_minimal
 
-1. **Add test and implementation to existing files:**
+1. **Add tests:**
    - Rust: add function to `frb_example/dart_minimal/rust/src/api/minimal.rs`
    - Dart: add test to `frb_example/dart_minimal/test/minimal_test.dart`
 
    There is usually no need to create any new files.
 
-2. **Run codegen and test:**
+2. **Add implementations:**
+
+   Usually need to modify `frb_codegen`, `frb_dart`, and/or `frb_rust`.
+
+3. **Run codegen and test:**
    ```bash
    (cd frb_example/dart_minimal && cargo run --manifest-path ../../frb_codegen/Cargo.toml -- generate)
    ./frb_internal test-dart-native --package frb_example/dart_minimal
    ```
 
-3. **Iterate until test passes**
+4. **Iterate until test passes**
 
 ### Phase 2: Migrate to pure_dart
 
