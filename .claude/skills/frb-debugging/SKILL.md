@@ -26,13 +26,11 @@ description: Use when generated code looks wrong, code generation fails, or you 
    - IR (intermediate representation)
    - Generated spec and code
 
-### Codegen Stuck Forever
+### Debug Logs
 
 ```bash
 RUST_LOG=debug flutter_rust_bridge_codegen ...
 ```
-
-Look for where it hangs, then try running that stuck command directly.
 
 ### CI Failures
 
@@ -55,7 +53,10 @@ Look for where it hangs, then try running that stuck command directly.
 
 ## Full Troubleshooting
 
-If above doesn't help, see `website/docs/manual/troubleshooting.md`
+If above doesn't help, see:
+
+* `website/docs/manual/troubleshooting.md`
+* `website/docs/docs/guides/contributing/tip.md`
 
 ## Related Skills
 
