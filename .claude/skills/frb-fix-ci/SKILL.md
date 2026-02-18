@@ -15,7 +15,7 @@ CI failures in flutter_rust_bridge often have simple fixes. Try the appropriate 
 
 | Symptom | Fix |
 |---------|-----|
-| Flaky test (passes sometimes) | `gh run rerun` |
+| Flaky test (passes sometimes) | `gh run rerun --failed` |
 | Git diff shown in CI | `git apply` OR regenerate |
 | `./frb_internal` command failing | Add `--fix` flag |
 | Can't reproduce locally | Use same `./frb_internal` command from CI |
@@ -24,10 +24,10 @@ CI failures in flutter_rust_bridge often have simple fixes. Try the appropriate 
 
 ### Flaky Test
 
-Sometimes CI fails due to timing issues, not real bugs. Rerun the CI:
+Sometimes CI fails due to timing issues, not real bugs. Rerun only failed jobs:
 
 ```bash
-gh run rerun
+gh run rerun --failed
 ```
 
 If it passes on retry → flaky, not your bug.
