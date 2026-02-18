@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Integrating with iOS/MacOS
+
+<V1Notice />
 
 *Credit to [brotskydotcom/rust-on-ios](https://github.com/brotskydotcom/rust-on-ios)
 for the inspiration of this method.*

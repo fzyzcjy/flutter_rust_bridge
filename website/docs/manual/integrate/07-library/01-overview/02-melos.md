@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Monorepo with Melos
+
+<V1Notice />
 
 This page covers the basics of how to setup and use [Melos](https://melos.invertase.dev),
 a Dart/Flutter focused monorepo tool, so you can use it to manage your own monorepo.

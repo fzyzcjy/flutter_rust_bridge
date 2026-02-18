@@ -40,7 +40,7 @@ fn run_with_frb_aware(
 }
 
 /// Decode `#[doc = "frb_encoded(...)"]`, usually produced as a side-effect of cargo-expand.
-fn decode_macro_frb_encoded_comments(code: &str) -> Cow<str> {
+fn decode_macro_frb_encoded_comments(code: &str) -> Cow<'_, str> {
     lazy_static! {
         static ref PATTERN: Regex =
             Regex::new(r##"#\[doc =[\s\n]*"frb_encoded\(([\s\S]*?)\)"\]"##).unwrap();

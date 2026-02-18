@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Android setup
+
+<V1Notice />
 
 Before trying this, ensure you can run the example project.
 

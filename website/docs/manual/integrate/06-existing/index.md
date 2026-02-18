@@ -1,9 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Use BrickHub to add to existing projects
 
-:::info
-This guide was written for flutter_rust_bridge v1, thus some content may be outdated.
-The quickest approach to integrate is to follow the one-click approach in flutter_rust_bridge's quickstart page.
-:::
+<V1Notice />
 
 This guide is an intermediate-level introduction to integrating Rust with
 an existing Flutter project. If you are new to Rust or configuring

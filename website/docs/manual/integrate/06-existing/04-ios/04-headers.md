@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Using dummy headers
+
+<V1Notice />
 
 `flutter_rust_bridge_codegen` created a C header which lists all the
 exported symbols from our library, then uses it so that Xcode won't strip

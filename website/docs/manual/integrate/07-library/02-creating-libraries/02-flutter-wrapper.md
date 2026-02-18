@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Flutter wrapper
+
+<V1Notice />
 On this page, we will start creating the Flutter wrapper around our Dart-only library package.
 We start with the plugin_ffi Flutter template since it is somewhat similar to what we need,
 but we will need to modify it significantly in the coming steps.
