@@ -5,6 +5,14 @@ description: Use when modifying Rust API, codegen, or example code in flutter_ru
 
 # FRB Code Generation
 
+## Overview
+
+flutter_rust_bridge requires code generation when Rust APIs change. This skill maps change types to the minimal generation commands needed.
+
+**Core principle:** Run only the generation commands needed for your change type.
+
+## Quick Reference
+
 | Change Type | Command |
 |-------------|---------|
 | Example Rust API (`frb_example/**/rust/src/api/*.rs`) | `./frb_internal precommit-generate` |
