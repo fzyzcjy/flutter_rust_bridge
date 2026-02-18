@@ -69,18 +69,22 @@ digraph workflow {
    | snake_case | `_twin_normal` | `my_func_twin_normal()` |
    | PascalCase | `TwinNormal` | `MyStructTwinNormal` |
 
-3. **Run code generation:**
+3. **Run codegen and test:**
    ```bash
+   # Codegen
    ./frb_internal precommit-generate
-   ```
 
-4. **Run all tests in both pure_dart and pure_dart_pde:**
-   ```bash
+   # Test
+   # NOTE: The two can be run *in parallel* to speed up.
    ./frb_internal test-dart-native --package frb_example/pure_dart
    ./frb_internal test-dart-native --package frb_example/pure_dart_pde
    ```
 
    Both must pass - they test different codegen configurations.
+
+4. **Iterate until test passes**
+
+   You may use `dart_minimal` again if there are bugs and need fast iteration.
 
 ## Why This Workflow?
 
