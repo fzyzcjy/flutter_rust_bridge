@@ -7,12 +7,12 @@ description: Use when adding tests or developing new features in flutter_rust_br
 
 ## Overview
 
-**Iterate in dart_minimal (fast compile), migrate to pure_dart (full coverage).**
+**Iterate in frb_example/dart_minimal (fast compile), migrate to frb_example/pure_dart (full coverage).**
 
 | Phase | Location | Why |
 |-------|----------|-----|
-| Iterate | dart_minimal | Fast compile = quick feedback |
-| Migrate | pure_dart + pure_dart_pde | Twin tests = automatic coverage of all codegen modes |
+| Iterate | frb_example/dart_minimal | Fast compile = quick feedback |
+| Migrate | frb_example/pure_dart + pure_dart_pde | Twin tests = automatic coverage of all codegen modes |
 
 Write one test → get ~6 variants automatically via TwinNormal suffix.
 
@@ -20,7 +20,7 @@ Write one test → get ~6 variants automatically via TwinNormal suffix.
 
 - Adding a new function or feature
 - Writing tests for new or existing functionality
-- Compilation feels slow (use dart_minimal instead)
+- Compilation feels slow (use frb_example/dart_minimal instead)
 
 ## Implementation
 
@@ -41,7 +41,7 @@ digraph workflow {
 }
 ```
 
-### Phase 1: Iterate in dart_minimal
+### Phase 1: Iterate in frb_example/dart_minimal
 
 1. **Add tests:**
    - Rust: add function to `frb_example/dart_minimal/rust/src/api/minimal.rs`
@@ -61,13 +61,13 @@ digraph workflow {
 
 4. **Iterate until test passes**
 
-### Phase 2: Migrate to pure_dart
+### Phase 2: Migrate to frb_example/pure_dart
 
-1. **Move code to pure_dart:**
-   - Rust: `pure_dart/rust/src/api/my_feature.rs`
-   - Dart: `pure_dart/test/api/my_feature_test.dart`
+1. **Move code to frb_example/pure_dart:**
+   - Rust: `frb_example/pure_dart/rust/src/api/my_feature.rs`
+   - Dart: `frb_example/pure_dart/test/api/my_feature_test.dart`
 
-   Either add to existing files or create new files. Then remove from dart_minimal files.
+   Either add to existing files or create new files. Then remove from frb_example/dart_minimal files.
 
 2. **Add TwinNormal suffix** to all functions and types:
 
@@ -76,7 +76,7 @@ digraph workflow {
    | snake_case | `_twin_normal` | `my_func_twin_normal()` |
    | PascalCase | `TwinNormal` | `MyStructTwinNormal` |
 
-   This triggers automatic test generation (~6 variants) under different codegen modes. Always mimic existing pure_dart tests for exact patterns.
+   This triggers automatic test generation (~6 variants) under different codegen modes. Always mimic existing frb_example/pure_dart tests for exact patterns.
 
 3. **Run codegen and test:**
    ```bash
@@ -92,7 +92,7 @@ digraph workflow {
 
 4. **Iterate until test passes**
 
-   You may use dart_minimal again if there are bugs and need fast iteration.
+   You may use frb_example/dart_minimal again if there are bugs and need fast iteration.
 
 ## Quick Reference
 
@@ -107,8 +107,8 @@ digraph workflow {
 
 | Mistake | Fix |
 |---------|-----|
-| Skipping dart_minimal phase | Start there - saves time on compilation |
-| Forgetting TwinNormal suffix | Add before code gen in pure_dart |
+| Skipping frb_example/dart_minimal phase | Start there - saves time on compilation |
+| Forgetting TwinNormal suffix | Add before code gen in frb_example/pure_dart |
 | Moving test without updating imports | Check import paths after migration |
 | Not running code gen after move | Always run `./frb_internal precommit-generate` |
 
