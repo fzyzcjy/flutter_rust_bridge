@@ -5,10 +5,6 @@ description: Use when generated code looks wrong, code generation fails, or you 
 
 # FRB Debugging
 
-## Overview
-
-Debugging techniques for flutter_rust_bridge code generation and runtime issues.
-
 ## When to Use
 
 - Generated code looks wrong
@@ -16,24 +12,50 @@ Debugging techniques for flutter_rust_bridge code generation and runtime issues.
 - Need to understand FRB internals
 - Runtime errors in generated code
 
-## Debug Code Generation
+## Quick Diagnostics
 
-When generated code looks wrong:
+### Dump Intermediate Representations
 
-1. Enable dumping in `flutter_rust_bridge.yaml`:
+1. Enable in `flutter_rust_bridge.yaml`:
    ```yaml
    dump_all: true
    ```
-
 2. Run code generation
+3. Check `rust/target/frb_dump/` for:
+   - Effective configuration
+   - IR (intermediate representation)
+   - Generated spec and code
 
-3. Inspect `rust/target/frb_dump/` for intermediate representations
+### Codegen Stuck Forever
 
-## TODO
+```bash
+RUST_LOG=debug flutter_rust_bridge_codegen ...
+```
 
-- [ ] Add more debugging techniques
-- [ ] Add common error patterns and solutions
-- [ ] Add runtime debugging tips
+Look for where it hangs, then try running that stuck command directly.
+
+### CI Failures
+
+- **Flaky tests**: Re-run CI first
+- **Git diff errors**: Copy CI diff output and `git apply`
+- **Local reproduction**: Use corresponding `./frb_internal` command from CI
+- **Auto-fix**: Many `./frb_internal` commands have `--fix` option
+
+## Common Errors
+
+| Error | Solution |
+|-------|----------|
+| `store_dart_post_cobject` undefined | Run `cargo build` again (generated rs not included) |
+| iOS TestFlight symbol error | Xcode: `Strip Linked Product` → `No` |
+| `ld: error: unable to find library -lgcc` | Downgrade Android NDK to v22 |
+| `__cxa_pure_virtual` on Android | Add `build.rs`: `println!("cargo:rustc-link-lib=c++_shared")` |
+| `frb_expand` cfg warning | Add to `Cargo.toml` lints: `check-cfg = ['cfg(frb_expand)']` |
+| `dlopen failed: library not found` | Cargokit version mismatch with Flutter - upgrade/downgrade to match |
+| Linker undefined symbols (iOS/macOS) | Add `-lc++` to podspec `OTHER_LDFLAGS` |
+
+## Full Troubleshooting
+
+If above doesn't help, see `website/docs/manual/troubleshooting.md`
 
 ## Related Skills
 
