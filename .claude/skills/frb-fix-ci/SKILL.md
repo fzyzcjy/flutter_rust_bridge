@@ -1,6 +1,6 @@
 ---
 name: frb-fix-ci
-description: Use when CI fails in flutter_rust_bridge with test failures, git diff errors, or flaky tests - before deep investigation
+description: Use when CI fails in flutter_rust_bridge - before deep investigation
 ---
 
 # FRB Fix CI
