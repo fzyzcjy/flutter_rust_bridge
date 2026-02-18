@@ -13,3 +13,11 @@ description: Use when you need to run lint, format, or clippy checks in flutter_
 | `./frb_internal lint` | Run all lints |
 | `./frb_internal lint-dart` | Dart only |
 | `./frb_internal lint-rust` | Rust only |
+
+## What Lint Includes
+
+It contains:
+- `dart analyze`
+- `dart format`
+- `cargo clippy`
+- `cargo fmt`
