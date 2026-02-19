@@ -97,7 +97,6 @@ ArgParser _$populateTestDartNativeConfigParser(ArgParser parser) => parser
   )
   ..addFlag(
     'check-clean',
-    defaultsTo: true,
   );
 
 final _$parserForTestDartNativeConfig =

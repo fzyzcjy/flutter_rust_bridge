@@ -94,7 +94,7 @@ class TestDartNativeConfig {
   @CliOption(convert: convertConfigPackage)
   final String package;
   final bool coverage;
-  @CliOption(defaultsTo: true)
+  @CliOption(defaultsTo: false)
   final bool checkClean;
 
   const TestDartNativeConfig({
