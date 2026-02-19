@@ -136,22 +136,10 @@ digraph workflow {
 | Forgetting TwinNormal suffix | Add before code gen in frb_example/pure_dart |
 | Moving test without updating imports | Check import paths after migration |
 | Not running code gen after move | Always run `./frb_internal precommit-generate` |
-| Web tests failing with missing wasm-pack | Install: `curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf \| sh` |
-| Web tests failing with missing Chrome | Install Chrome/Chromium and set `CHROME_BIN` env var |
 
 ## Web Tests
 
-Web tests run the same Dart tests but compiled to WebAssembly (WASM). They require:
-
-- `wasm32-unknown-unknown` target: `rustup target add wasm32-unknown-unknown --toolchain nightly`
-- `rust-src` component: `rustup component add rust-src --toolchain nightly`
-- `wasm-pack`: `curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh`
-- Chrome/Chromium browser for headless testing
-
-Web tests are slower than native tests but provide coverage for the web platform. Run them when:
-- Adding new features that may have web-specific behavior
-- Before creating a PR for features that affect web platform
-- Debugging web-specific issues
+Web tests run Dart tests compiled to WebAssembly. For requirements and setup, see `frb-test` skill.
 
 ## Related Skills
 
