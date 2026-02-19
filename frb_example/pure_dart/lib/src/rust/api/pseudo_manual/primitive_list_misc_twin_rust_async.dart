@@ -53,7 +53,7 @@ class VecOfPrimitivePackTwinRustAsync {
       int64List.hashCode ^
       float32List.hashCode ^
       float64List.hashCode ^
-      boolList.hashCode;
+      const DeepCollectionEquality().hash(boolList);
 
   @override
   bool operator ==(Object other) =>
@@ -70,5 +70,5 @@ class VecOfPrimitivePackTwinRustAsync {
           int64List == other.int64List &&
           float32List == other.float32List &&
           float64List == other.float64List &&
-          boolList == other.boolList;
+          const DeepCollectionEquality().equals(boolList, other.boolList);
 }
