@@ -2,6 +2,7 @@
 
 Fixes #the-issue-number-here
 
-## Remarks
+## Optional tools
 
-* The `/frb-develop-feature` skill can be used to develop features, which contains detailed guidance for the agent to develop a feature.
+* It is recommended to use the `/frb-develop-feature` skill, which contains detailed guidance for the agent to develop a feature.
+* There is a devcontainer and Dockerfile at `.devcontainer`, which optionally helps creating a standardized development environment.
