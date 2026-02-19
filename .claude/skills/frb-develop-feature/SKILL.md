@@ -87,14 +87,18 @@ digraph workflow {
    # Codegen
    ./frb_internal precommit-generate
 
-   # Test (can run in parallel)
+   # Native tests (can run in parallel)
    ./frb_internal test-dart-native --package frb_example/pure_dart
    ./frb_internal test-dart-native --package frb_example/pure_dart_pde
+
+   # Web tests (optional, for web platform coverage)
+   ./frb_internal test-dart-web --package frb_example/pure_dart
+   ./frb_internal test-dart-web --package frb_example/pure_dart_pde
    ```
 
    > **After codegen:** Check your user-level `remote-testing` rules. If codegen was run remotely, pull changes back to local.
 
-   Both must pass - they test different codegen configurations.
+   Native tests must pass - they test different codegen configurations. Web tests are optional but recommended for web platform coverage.
 
 4. **Iterate until test passes**
 
@@ -109,6 +113,8 @@ digraph workflow {
 | Test dart_minimal | `./frb_internal test-dart-native --package frb_example/dart_minimal` |
 | Test pure_dart | `./frb_internal test-dart-native --package frb_example/pure_dart` |
 | Test pure_dart_pde | `./frb_internal test-dart-native --package frb_example/pure_dart_pde` |
+| Web test pure_dart | `./frb_internal test-dart-web --package frb_example/pure_dart` |
+| Web test pure_dart_pde | `./frb_internal test-dart-web --package frb_example/pure_dart_pde` |
 | Code generation | `./frb_internal precommit-generate` |
 
 ### Architecture
