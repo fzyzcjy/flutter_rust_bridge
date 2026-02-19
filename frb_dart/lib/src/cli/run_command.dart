@@ -30,6 +30,7 @@ Future<RunCommandOutput> runCommand(
   bool silent = false,
   bool? checkExitCode,
   bool printCommandInStderr = false,
+  bool includeParentEnvironment = true,
 }) async {
   // ignore: avoid_print
   (printCommandInStderr ? stderr : stdout).writeAndFlush(
@@ -41,7 +42,7 @@ Future<RunCommandOutput> runCommand(
     runInShell: shell,
     workingDirectory: pwd,
     environment: env,
-    includeParentEnvironment: true,
+    includeParentEnvironment: includeParentEnvironment,
   );
 
   final stdoutText = <String>[];

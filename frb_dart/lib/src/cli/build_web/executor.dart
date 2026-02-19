@@ -151,6 +151,22 @@ Future<String> _getRustCreateName({required String rustCrateDir}) async {
 
 Future<void> _executeWasmPack(BuildWebArgs args,
     {required String rustCrateName}) async {
+  // Build a clean environment for wasm-pack, excluding any coverage-related
+  // environment variables that may have been set by cargo-llvm-cov.
+  // This is necessary because profiler_builtins is not available for
+  // wasm32-unknown-unknown target, causing build failures.
+  final cleanEnv = Map<String, String>.from(Platform.environment)
+    ..remove('RUSTFLAGS')
+    ..remove('CARGO_ENCODED_RUSTFLAGS')
+    ..remove('LLVM_COV_FLAGS')
+    ..remove('LLVM_PROFDATA_FLAGS')
+    ..['RUSTUP_TOOLCHAIN'] = args.wasmPackRustupToolchain ?? 'nightly'
+    ..['RUSTFLAGS'] = _computeRustflags(argsOverride: args.wasmPackRustflags);
+
+  if (stdout.supportsAnsiEscapes) {
+    cleanEnv['CARGO_TERM_COLOR'] = 'always';
+  }
+
   await runCommand('wasm-pack', [
     'build',
     '-t',
@@ -170,14 +186,7 @@ Future<void> _executeWasmPack(BuildWebArgs args,
     // migrate to `cargoBuildArgs`
     // if (config.cliOpts.noDefaultFeatures) '--no-default-features',
     // if (config.cliOpts.features != null) '--features=${config.cliOpts.features}'
-  ], env: {
-    'RUSTUP_TOOLCHAIN': args.wasmPackRustupToolchain ?? 'nightly',
-    'RUSTFLAGS': _computeRustflags(argsOverride: args.wasmPackRustflags),
-    // Clear CARGO_ENCODED_RUSTFLAGS to prevent coverage flags from being inherited
-    // from cargo-llvm-cov environment (profiler_builtins is not available for wasm)
-    'CARGO_ENCODED_RUSTFLAGS': '',
-    if (stdout.supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',
-  });
+  ], env: cleanEnv, includeParentEnvironment: false);
 }
 
 String _computeRustflags({required String? argsOverride}) {
