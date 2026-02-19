@@ -22,7 +22,26 @@ Maps change types to local test commands. Tests run on CI by default, so local t
 | `frb_dart/` | `./frb_internal test-dart-native --package frb_dart` |
 | Dart example | `./frb_internal test-dart-native --package frb_example/<name>` |
 | Flutter example | `./frb_internal test-flutter-native --package frb_example/flutter_<name>` |
-| Web tests | `./frb_internal test-dart-web --package <name>` |
+| Web test | `./frb_internal test-dart-web --package frb_example/<name>` |
+
+## Web Tests
+
+Web tests compile Dart tests to WebAssembly and run in a headless browser.
+
+### Supported Packages
+- `frb_dart`
+- `frb_example/dart_minimal`
+- `frb_example/pure_dart`
+- `frb_example/pure_dart_pde`
+
+### Requirements
+- `wasm32-unknown-unknown` target: `rustup target add wasm32-unknown-unknown --toolchain nightly-2025-02-01`
+- `rust-src` component: `rustup component add rust-src --toolchain nightly-2025-02-01`
+- `wasm-pack`: `curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh`
+- Chrome/Chromium browser
+
+### Running in Docker
+When running web tests in Docker containers, puppeteer needs `--no-sandbox` flag. The test runner auto-detects Docker environment via `/.dockerenv`.
 
 ## When to Test Locally
 
