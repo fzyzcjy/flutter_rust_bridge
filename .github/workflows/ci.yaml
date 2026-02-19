@@ -9,9 +9,9 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
-  FRB_MAIN_RUST_VERSION: 1.88.0
+  FRB_MAIN_RUST_VERSION: 1.85.0
   FRB_MAIN_DART_VERSION: 3.6.2
-  FRB_MAIN_FLUTTER_VERSION: 3.27.4
+  FRB_MAIN_FLUTTER_VERSION: 3.29.0
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -531,8 +531,8 @@ jobs:
           # run on all rust packages, though only needed for frb_rust and frb_codegen
           - image: ubuntu-latest
             # update this, if a later MSRV is needed
-            # Need at least 1.88.0 for latest cargo-expand; if need older Rust version may pin a old cargo-expand
-            version: 1.88.0
+            # Need at least 1.85.0 for latest cargo-expand; if need older Rust version may pin a old cargo-expand
+            version: 1.85.0
 
     steps:
       # setup

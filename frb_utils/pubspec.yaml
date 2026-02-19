@@ -3,7 +3,7 @@ description: Utility for flutter_rust_bridge, may publish later
 version: 1.0.0
 repository: https://github.com/fzyzcjy/flutter_rust_bridge
 environment:
-  sdk: ">=3.0.0 <4.0.0"
+  sdk: ">=3.6.2 <4.0.0"
 publish_to: none
 
 dependencies:
