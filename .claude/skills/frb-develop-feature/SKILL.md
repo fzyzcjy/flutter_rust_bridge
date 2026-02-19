@@ -137,10 +137,6 @@ digraph workflow {
 | Moving test without updating imports | Check import paths after migration |
 | Not running code gen after move | Always run `./frb_internal precommit-generate` |
 
-## Web Tests
-
-Web tests run Dart tests compiled to WebAssembly. For requirements and setup, see `frb-test` skill.
-
 ## Related Skills
 
 - `frb-code-generation` - Which generation commands to run
