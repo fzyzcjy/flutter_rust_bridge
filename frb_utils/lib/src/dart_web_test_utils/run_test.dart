@@ -109,9 +109,7 @@ Future<Browser> _launchBrowser({
   final browser = await puppeteer.launch(
     headless: headless,
     timeout: const Duration(minutes: 5),
-    args: isInContainer
-        ? ['--no-sandbox', '--disable-setuid-sandbox']
-        : [],
+    args: isInContainer ? ['--no-sandbox', '--disable-setuid-sandbox'] : [],
   );
   final page = await browser.newPage();
   _configurePageLogging(page);
