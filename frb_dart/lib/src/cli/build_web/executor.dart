@@ -173,9 +173,6 @@ Future<void> _executeWasmPack(BuildWebArgs args,
   ], env: {
     'RUSTUP_TOOLCHAIN': args.wasmPackRustupToolchain ?? 'nightly',
     'RUSTFLAGS': _computeRustflags(argsOverride: args.wasmPackRustflags),
-    // Clear CARGO_ENCODED_RUSTFLAGS to prevent coverage flags from being inherited
-    // from cargo-llvm-cov environment (profiler_builtins is not available for wasm)
-    'CARGO_ENCODED_RUSTFLAGS': '',
     if (stdout.supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',
   });
 }
