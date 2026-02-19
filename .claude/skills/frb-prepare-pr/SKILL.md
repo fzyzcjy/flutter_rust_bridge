@@ -13,6 +13,8 @@ Before creating a PR, ensure generated code is up to date and lint passes.
 
 **Core principle:** Generate → Lint → Commit → PR.
 
+> **After codegen:** Check your user-level `remote-testing` rules. If codegen was run remotely, pull changes back to local.
+
 ## Workflow
 
 ```

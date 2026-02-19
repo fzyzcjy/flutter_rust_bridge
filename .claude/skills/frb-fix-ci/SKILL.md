@@ -53,6 +53,8 @@ pbpaste | git apply   # macOS
 ./frb_internal precommit-generate
 ```
 
+> **After codegen:** Check your user-level `remote-testing` rules. If codegen was run remotely, pull changes back to local.
+
 Both are correct. Option A is faster; Option B is more thorough.
 
 ### Lint/Format Errors
