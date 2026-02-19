@@ -87,14 +87,18 @@ digraph workflow {
    # Codegen
    ./frb_internal precommit-generate
 
-   # Test (can run in parallel)
+   # Native tests (can run in parallel)
    ./frb_internal test-dart-native --package frb_example/pure_dart
    ./frb_internal test-dart-native --package frb_example/pure_dart_pde
+
+   # Web tests (optional, for web platform coverage)
+   ./frb_internal test-dart-web --package frb_example/pure_dart
+   ./frb_internal test-dart-web --package frb_example/pure_dart_pde
    ```
 
    > **After codegen:** Check your user-level `remote-testing` rules. If codegen was run remotely, pull changes back to local.
 
-   Both must pass - they test different codegen configurations.
+   Native tests must pass - they test different codegen configurations. Web tests are optional but recommended for web platform coverage.
 
 4. **Iterate until test passes**
 
@@ -109,6 +113,8 @@ digraph workflow {
 | Test dart_minimal | `./frb_internal test-dart-native --package frb_example/dart_minimal` |
 | Test pure_dart | `./frb_internal test-dart-native --package frb_example/pure_dart` |
 | Test pure_dart_pde | `./frb_internal test-dart-native --package frb_example/pure_dart_pde` |
+| Web test pure_dart | `./frb_internal test-dart-web --package frb_example/pure_dart` |
+| Web test pure_dart_pde | `./frb_internal test-dart-web --package frb_example/pure_dart_pde` |
 | Code generation | `./frb_internal precommit-generate` |
 
 ### Architecture
@@ -130,6 +136,22 @@ digraph workflow {
 | Forgetting TwinNormal suffix | Add before code gen in frb_example/pure_dart |
 | Moving test without updating imports | Check import paths after migration |
 | Not running code gen after move | Always run `./frb_internal precommit-generate` |
+| Web tests failing with missing wasm-pack | Install: `curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf \| sh` |
+| Web tests failing with missing Chrome | Install Chrome/Chromium and set `CHROME_BIN` env var |
+
+## Web Tests
+
+Web tests run the same Dart tests but compiled to WebAssembly (WASM). They require:
+
+- `wasm32-unknown-unknown` target: `rustup target add wasm32-unknown-unknown --toolchain nightly`
+- `rust-src` component: `rustup component add rust-src --toolchain nightly`
+- `wasm-pack`: `curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh`
+- Chrome/Chromium browser for headless testing
+
+Web tests are slower than native tests but provide coverage for the web platform. Run them when:
+- Adding new features that may have web-specific behavior
+- Before creating a PR for features that affect web platform
+- Debugging web-specific issues
 
 ## Related Skills
 

@@ -103,9 +103,15 @@ Future<Browser> _launchBrowser({
         'There are more logs on the browser console, so you can disable headless mode to debug.');
   }
 
+  // Check if running in Docker/container environment (no sandbox needed)
+  final isInContainer = File('/.dockerenv').existsSync();
+
   final browser = await puppeteer.launch(
     headless: headless,
     timeout: const Duration(minutes: 5),
+    args: isInContainer
+        ? ['--no-sandbox', '--disable-setuid-sandbox']
+        : [],
   );
   final page = await browser.newPage();
   _configurePageLogging(page);
