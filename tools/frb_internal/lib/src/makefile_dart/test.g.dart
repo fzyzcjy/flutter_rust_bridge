@@ -85,6 +85,7 @@ TestDartNativeConfig _$parseTestDartNativeConfigResult(ArgResults result) =>
     TestDartNativeConfig(
       package: convertConfigPackage(result['package'] as String),
       coverage: result['coverage'] as bool,
+      checkClean: result['check-clean'] as bool,
     );
 
 ArgParser _$populateTestDartNativeConfigParser(ArgParser parser) => parser
@@ -93,6 +94,10 @@ ArgParser _$populateTestDartNativeConfigParser(ArgParser parser) => parser
   )
   ..addFlag(
     'coverage',
+  )
+  ..addFlag(
+    'check-clean',
+    defaultsTo: true,
   );
 
 final _$parserForTestDartNativeConfig =
