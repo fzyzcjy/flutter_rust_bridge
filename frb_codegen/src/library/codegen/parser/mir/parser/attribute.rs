@@ -94,6 +94,10 @@ impl FrbAttributes {
         self.any_eq(&FrbAttribute::Init)
     }
 
+    pub(crate) fn oxidized(&self) -> bool {
+        self.any_eq(&FrbAttribute::Oxidized)
+    }
+
     pub(crate) fn ignore(&self) -> bool {
         self.any_eq(&FrbAttribute::Ignore)
     }
@@ -307,6 +311,7 @@ mod frb_keyword {
     syn::custom_keyword!(dart_type);
     syn::custom_keyword!(ui_state);
     syn::custom_keyword!(ui_mutation);
+    syn::custom_keyword!(oxidized);
 }
 
 struct FrbAttributesInner(Vec<FrbAttribute>);
@@ -363,6 +368,7 @@ enum FrbAttribute {
     SemiSerialize,
     UiState,
     UiMutation,
+    Oxidized,
 }
 
 impl Parse for FrbAttribute {
@@ -430,7 +436,8 @@ impl Parse for FrbAttribute {
             .or_else(|| parse_keyword::<ui_state, _>(input, &lookahead, ui_state, UiState))
             .or_else(|| {
                 parse_keyword::<ui_mutation, _>(input, &lookahead, ui_mutation, UiMutation)
-            });
+            })
+            .or_else(|| parse_keyword::<oxidized, _>(input, &lookahead, oxidized, Oxidized));
         if let Some(keyword_output) = keyword_output {
             return keyword_output;
         }

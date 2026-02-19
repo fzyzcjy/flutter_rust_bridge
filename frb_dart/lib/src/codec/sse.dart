@@ -8,6 +8,7 @@ import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 import 'package:flutter_rust_bridge/src/platform_utils/platform_utils.dart';
 import 'package:flutter_rust_bridge/src/third_party/flutter_foundation_serialization/read_buffer.dart';
 import 'package:flutter_rust_bridge/src/third_party/flutter_foundation_serialization/write_buffer.dart';
+import 'package:oxidized/oxidized.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 class SseCodec<S, E extends Object>
@@ -36,13 +37,36 @@ class SseCodec<S, E extends Object>
   }
 
   @override
+  Result<S, E> decodeObjectAsResult(dynamic raw) {
+    raw = maybeDartify(raw);
+
+    if (raw is! Uint8List) {
+      return _decodeObjectOfOtherTypeAsResult(raw);
+    }
+
+    return _decodeAsResult(raw);
+  }
+
+  @override
   S decodeWireSyncType(WireSyncRust2DartSse raw) =>
       _decode(wireSyncRust2DartSseAsUint8ListView(raw));
+
+  @override
+  Result<S, E> decodeWireSyncTypeAsResult(WireSyncRust2DartSse raw) =>
+      _decodeAsResult(wireSyncRust2DartSseAsUint8ListView(raw));
 
   S _decode(Uint8List bytes) {
     final deserializer = SseDeserializer(bytes.buffer.asByteData());
     final action = deserializer.buffer.getUint8();
     final ans = _SseSimpleDecoder(this, deserializer).decode(action);
+    assert(!deserializer.buffer.hasRemaining);
+    return ans;
+  }
+
+  Result<S, E> _decodeAsResult(Uint8List bytes) {
+    final deserializer = SseDeserializer(bytes.buffer.asByteData());
+    final action = deserializer.buffer.getUint8();
+    final ans = _SseSimpleDecoder(this, deserializer).decodeAsResult(action);
     assert(!deserializer.buffer.hasRemaining);
     return ans;
   }
@@ -106,6 +130,13 @@ S _decodeObjectOfOtherType<S>(dynamic raw) {
   const decoder = DcoCodec(
       decodeSuccessData: _unimplementedFunction, decodeErrorData: null);
   return decoder.decodeObject(raw);
+}
+
+Result<S, E> _decodeObjectOfOtherTypeAsResult<S, E extends Object>(dynamic raw) {
+  const decoder = DcoCodec<dynamic, Object>(
+      decodeSuccessData: _unimplementedFunction, decodeErrorData: null);
+  final result = decoder.decodeObjectAsResult(raw);
+  return result.map((v) => v as S).mapErr((e) => e as E);
 }
 
 dynamic _unimplementedFunction(dynamic arg) => throw UnimplementedError();

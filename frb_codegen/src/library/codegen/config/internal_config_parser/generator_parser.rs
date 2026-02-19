@@ -13,7 +13,9 @@ use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInt
 use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::Config;
 use crate::library::commands::cargo_metadata::execute_cargo_metadata;
+use crate::utils::dart_repository::dart_repo::DartRepository;
 use crate::utils::dart_repository::get_dart_package_name;
+use log::debug;
 use crate::utils::path_utils::path_to_string;
 use crate::utils::syn_utils::canonicalize_rust_type;
 use anyhow::Context;
@@ -56,6 +58,7 @@ pub(super) fn parse(args: Args) -> anyhow::Result<GeneratorInternalConfig> {
     let default_external_library_loader =
         compute_default_external_library_loader(rust_crate_dir, dart_root, config);
     let c_symbol_prefix = compute_c_symbol_prefix(dart_root)?;
+    let use_oxidized = config.use_oxidized.unwrap_or_else(|| detect_oxidized_dependency(dart_root));
 
     Ok(GeneratorInternalConfig {
         api_dart: GeneratorApiDartInternalConfig {
@@ -66,6 +69,7 @@ pub(super) fn parse(args: Args) -> anyhow::Result<GeneratorInternalConfig> {
             dart_entrypoint_class_name: dart_output_class_name_pack.entrypoint_class_name.clone(),
             dart_preamble: config.dart_preamble.clone().unwrap_or_default(),
             dart_type_rename: compute_dart_type_rename(config)?,
+            use_oxidized,
         },
         wire: GeneratorWireInternalConfig {
             dart: GeneratorWireDartInternalConfig {
@@ -203,4 +207,19 @@ fn compute_dart_type_rename(config: &Config) -> anyhow::Result<HashMap<String, S
         .into_iter()
         .flatten()
         .collect())
+}
+
+/// Detect if the oxidized package is in the project's dependencies.
+/// When detected, fallible functions will return Result<T, E> instead of throwing.
+fn detect_oxidized_dependency(dart_root: &Path) -> bool {
+    match DartRepository::from_path(dart_root) {
+        Ok(repo) => {
+            let has_oxidized = repo.has_dependency("oxidized");
+            if has_oxidized {
+                debug!("Detected oxidized package in dependencies - will generate Result return types");
+            }
+            has_oxidized
+        }
+        Err(_) => false,
+    }
 }

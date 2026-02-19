@@ -5,6 +5,7 @@ use crate::codegen::ir::early_generator::trait_def_info::IrEarlyGeneratorTraitDe
 use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatEnum;
 use crate::codegen::ir::hir::flat::struct_or_enum::HirFlatStruct;
 use crate::codegen::ir::hir::flat::traits::HirFlatTrait;
+use crate::codegen::ir::hir::flat::type_alias::HirFlatTypeAlias;
 use crate::codegen::ir::mir::custom_ser_des::MirCustomSerDes;
 use crate::codegen::ir::mir::func::MirFuncOwnerInfo;
 use crate::codegen::ir::mir::pack::{MirEnumPool, MirStructPool};
@@ -58,6 +59,7 @@ pub(crate) struct TypeParser<'a> {
     src_enums: HashMap<String, &'a HirFlatEnum>,
     pub(super) src_traits: HashMap<String, &'a HirFlatTrait>,
     src_types: HashMap<String, Type>,
+    pub(crate) src_generic_types: HashMap<String, &'a HirFlatTypeAlias>,
     pub(super) proxied_types: Vec<IrEarlyGeneratorProxiedType>,
     pub(super) trait_def_infos: Vec<IrEarlyGeneratorTraitDefInfo>,
     pub(super) custom_ser_des_infos: Vec<MirCustomSerDes>,
@@ -77,6 +79,7 @@ impl<'a> TypeParser<'a> {
             ir_pack.hir_flat_pack.enums_map(),
             ir_pack.hir_flat_pack.traits_map(),
             ir_pack.hir_flat_pack.types_map(),
+            ir_pack.hir_flat_pack.generic_types_map(),
             ir_pack.proxied_types.clone(),
             ir_pack.trait_def_infos.clone(),
         )
@@ -87,6 +90,7 @@ impl<'a> TypeParser<'a> {
         src_enums: HashMap<String, &'a HirFlatEnum>,
         src_traits: HashMap<String, &'a HirFlatTrait>,
         src_types: HashMap<String, Type>,
+        src_generic_types: HashMap<String, &'a HirFlatTypeAlias>,
         proxied_types: Vec<IrEarlyGeneratorProxiedType>,
         trait_def_infos: Vec<IrEarlyGeneratorTraitDefInfo>,
     ) -> Self {
@@ -95,6 +99,7 @@ impl<'a> TypeParser<'a> {
             src_enums,
             src_traits,
             src_types,
+            src_generic_types,
             proxied_types,
             trait_def_infos,
             custom_ser_des_infos: Default::default(),

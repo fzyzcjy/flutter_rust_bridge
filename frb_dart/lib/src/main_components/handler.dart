@@ -6,6 +6,7 @@ import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized
 import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart';
 import 'package:flutter_rust_bridge/src/task.dart';
 import 'package:flutter_rust_bridge/src/utils/single_complete_port.dart';
+import 'package:oxidized/oxidized.dart';
 
 /// Generically handles a Dart-Rust call.
 class BaseHandler {
@@ -15,6 +16,16 @@ class BaseHandler {
     final SendPort sendPort = singleCompletePort(completer);
     task.callFfi(sendPort.nativePort);
     return completer.future.then(task.codec.decodeObject);
+  }
+
+  /// Similar to [executeNormal], but returns an oxidized Result instead of throwing on error.
+  /// Panics still throw PanicException since they represent bugs, not expected errors.
+  Future<Result<S, E>> executeNormalAsResult<S, E extends Object>(
+      NormalTask<S, E> task) {
+    final completer = Completer<dynamic>();
+    final SendPort sendPort = singleCompletePort(completer);
+    task.callFfi(sendPort.nativePort);
+    return completer.future.then(task.codec.decodeObjectAsResult);
   }
 
   /// Similar to [executeNormal], except that this will return synchronously
@@ -32,6 +43,25 @@ class BaseHandler {
     }
     try {
       return task.codec.decodeWireSyncType(syncReturn);
+    } finally {
+      task.codec.freeWireSyncRust2Dart(
+          syncReturn, task.apiImpl.generalizedFrbRustBinding);
+    }
+  }
+
+  /// Similar to [executeSync], but returns an oxidized Result instead of throwing on error.
+  /// Panics still throw PanicException since they represent bugs, not expected errors.
+  Result<S, E> executeSyncAsResult<S, E extends Object, WireSyncType>(
+      SyncTask<S, E, WireSyncType> task) {
+    final WireSyncType syncReturn;
+    try {
+      syncReturn = task.callFfi();
+    } catch (e, s) {
+      if (e is FrbException) rethrow;
+      throw PanicException('EXECUTE_SYNC_ABORT $e $s');
+    }
+    try {
+      return task.codec.decodeWireSyncTypeAsResult(syncReturn);
     } finally {
       task.codec.freeWireSyncRust2Dart(
           syncReturn, task.apiImpl.generalizedFrbRustBinding);

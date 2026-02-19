@@ -1,6 +1,7 @@
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::flat::struct_or_enum::{HirFlatEnum, HirFlatStruct};
 use crate::codegen::ir::hir::flat::traits::HirFlatTrait;
+use crate::codegen::ir::hir::flat::type_alias::HirFlatTypeAlias;
 use log::debug;
 use std::collections::HashMap;
 use std::fmt::{Debug, Display};
@@ -21,7 +22,20 @@ impl HirFlatPack {
     }
 
     pub(crate) fn types_map(&self) -> HashMap<String, Type> {
-        vec_to_map_with_warn(&self.types, |x| (x.ident.clone(), x.target.clone()))
+        // Only include non-generic type aliases here.
+        // Generic type aliases are handled separately via generic_types_map()
+        // to support proper generic parameter substitution.
+        vec_to_map_with_warn(
+            &self.types.iter().filter(|x| x.generics.is_none()).collect::<Vec<_>>(),
+            |x| (x.ident.clone(), x.target.clone()),
+        )
+    }
+
+    pub(crate) fn generic_types_map(&self) -> HashMap<String, &HirFlatTypeAlias> {
+        vec_to_map_with_warn(
+            &self.types.iter().filter(|x| x.generics.is_some()).collect::<Vec<_>>(),
+            |x| (x.ident.clone(), *x),
+        )
     }
 }
 

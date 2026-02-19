@@ -2,6 +2,7 @@ import 'package:flutter_rust_bridge/src/codec/base.dart';
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
 import 'package:flutter_rust_bridge/src/manual_impl/manual_impl.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
+import 'package:oxidized/oxidized.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 class DcoCodec<S, E extends Object>
@@ -26,8 +27,18 @@ class DcoCodec<S, E extends Object>
   }
 
   @override
+  Result<S, E> decodeObjectAsResult(dynamic raw) {
+    final rawList = raw as List<dynamic>;
+    return _DcoSimpleDecoder(this, rawList).decodeAsResult(rawList[0]);
+  }
+
+  @override
   S decodeWireSyncType(WireSyncRust2DartDco raw) =>
       decodeObject(wireSyncRust2DartDcoIntoDart(raw));
+
+  @override
+  Result<S, E> decodeWireSyncTypeAsResult(WireSyncRust2DartDco raw) =>
+      decodeObjectAsResult(wireSyncRust2DartDcoIntoDart(raw));
 
   @override
   void freeWireSyncRust2Dart(WireSyncRust2DartDco raw,
