@@ -15,6 +15,573 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
+mixin _$ChangeStringTwinRustAsyncSse {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String data) created,
+    required TResult Function(String id, String data) updated,
+    required TResult Function(String id) deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String data)? created,
+    TResult? Function(String id, String data)? updated,
+    TResult? Function(String id)? deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String data)? created,
+    TResult Function(String id, String data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangeStringTwinRustAsyncSse_Created value)
+        created,
+    required TResult Function(ChangeStringTwinRustAsyncSse_Updated value)
+        updated,
+    required TResult Function(ChangeStringTwinRustAsyncSse_Deleted value)
+        deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangeStringTwinRustAsyncSse_Created value)? created,
+    TResult? Function(ChangeStringTwinRustAsyncSse_Updated value)? updated,
+    TResult? Function(ChangeStringTwinRustAsyncSse_Deleted value)? deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeStringTwinRustAsyncSse_Created value)? created,
+    TResult Function(ChangeStringTwinRustAsyncSse_Updated value)? updated,
+    TResult Function(ChangeStringTwinRustAsyncSse_Deleted value)? deleted,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ChangeStringTwinRustAsyncSseCopyWith<$Res> {
+  factory $ChangeStringTwinRustAsyncSseCopyWith(
+          ChangeStringTwinRustAsyncSse value,
+          $Res Function(ChangeStringTwinRustAsyncSse) then) =
+      _$ChangeStringTwinRustAsyncSseCopyWithImpl<$Res,
+          ChangeStringTwinRustAsyncSse>;
+}
+
+/// @nodoc
+class _$ChangeStringTwinRustAsyncSseCopyWithImpl<$Res,
+        $Val extends ChangeStringTwinRustAsyncSse>
+    implements $ChangeStringTwinRustAsyncSseCopyWith<$Res> {
+  _$ChangeStringTwinRustAsyncSseCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ChangeStringTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$ChangeStringTwinRustAsyncSse_CreatedImplCopyWith<$Res> {
+  factory _$$ChangeStringTwinRustAsyncSse_CreatedImplCopyWith(
+          _$ChangeStringTwinRustAsyncSse_CreatedImpl value,
+          $Res Function(_$ChangeStringTwinRustAsyncSse_CreatedImpl) then) =
+      __$$ChangeStringTwinRustAsyncSse_CreatedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String data});
+}
+
+/// @nodoc
+class __$$ChangeStringTwinRustAsyncSse_CreatedImplCopyWithImpl<$Res>
+    extends _$ChangeStringTwinRustAsyncSseCopyWithImpl<$Res,
+        _$ChangeStringTwinRustAsyncSse_CreatedImpl>
+    implements _$$ChangeStringTwinRustAsyncSse_CreatedImplCopyWith<$Res> {
+  __$$ChangeStringTwinRustAsyncSse_CreatedImplCopyWithImpl(
+      _$ChangeStringTwinRustAsyncSse_CreatedImpl _value,
+      $Res Function(_$ChangeStringTwinRustAsyncSse_CreatedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChangeStringTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$ChangeStringTwinRustAsyncSse_CreatedImpl(
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeStringTwinRustAsyncSse_CreatedImpl
+    extends ChangeStringTwinRustAsyncSse_Created {
+  const _$ChangeStringTwinRustAsyncSse_CreatedImpl({required this.data})
+      : super._();
+
+  @override
+  final String data;
+
+  @override
+  String toString() {
+    return 'ChangeStringTwinRustAsyncSse.created(data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeStringTwinRustAsyncSse_CreatedImpl &&
+            (identical(other.data, data) || other.data == data));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, data);
+
+  /// Create a copy of ChangeStringTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeStringTwinRustAsyncSse_CreatedImplCopyWith<
+          _$ChangeStringTwinRustAsyncSse_CreatedImpl>
+      get copyWith => __$$ChangeStringTwinRustAsyncSse_CreatedImplCopyWithImpl<
+          _$ChangeStringTwinRustAsyncSse_CreatedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String data) created,
+    required TResult Function(String id, String data) updated,
+    required TResult Function(String id) deleted,
+  }) {
+    return created(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String data)? created,
+    TResult? Function(String id, String data)? updated,
+    TResult? Function(String id)? deleted,
+  }) {
+    return created?.call(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String data)? created,
+    TResult Function(String id, String data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) {
+    if (created != null) {
+      return created(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangeStringTwinRustAsyncSse_Created value)
+        created,
+    required TResult Function(ChangeStringTwinRustAsyncSse_Updated value)
+        updated,
+    required TResult Function(ChangeStringTwinRustAsyncSse_Deleted value)
+        deleted,
+  }) {
+    return created(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangeStringTwinRustAsyncSse_Created value)? created,
+    TResult? Function(ChangeStringTwinRustAsyncSse_Updated value)? updated,
+    TResult? Function(ChangeStringTwinRustAsyncSse_Deleted value)? deleted,
+  }) {
+    return created?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeStringTwinRustAsyncSse_Created value)? created,
+    TResult Function(ChangeStringTwinRustAsyncSse_Updated value)? updated,
+    TResult Function(ChangeStringTwinRustAsyncSse_Deleted value)? deleted,
+    required TResult orElse(),
+  }) {
+    if (created != null) {
+      return created(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeStringTwinRustAsyncSse_Created
+    extends ChangeStringTwinRustAsyncSse {
+  const factory ChangeStringTwinRustAsyncSse_Created(
+          {required final String data}) =
+      _$ChangeStringTwinRustAsyncSse_CreatedImpl;
+  const ChangeStringTwinRustAsyncSse_Created._() : super._();
+
+  String get data;
+
+  /// Create a copy of ChangeStringTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChangeStringTwinRustAsyncSse_CreatedImplCopyWith<
+          _$ChangeStringTwinRustAsyncSse_CreatedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeStringTwinRustAsyncSse_UpdatedImplCopyWith<$Res> {
+  factory _$$ChangeStringTwinRustAsyncSse_UpdatedImplCopyWith(
+          _$ChangeStringTwinRustAsyncSse_UpdatedImpl value,
+          $Res Function(_$ChangeStringTwinRustAsyncSse_UpdatedImpl) then) =
+      __$$ChangeStringTwinRustAsyncSse_UpdatedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id, String data});
+}
+
+/// @nodoc
+class __$$ChangeStringTwinRustAsyncSse_UpdatedImplCopyWithImpl<$Res>
+    extends _$ChangeStringTwinRustAsyncSseCopyWithImpl<$Res,
+        _$ChangeStringTwinRustAsyncSse_UpdatedImpl>
+    implements _$$ChangeStringTwinRustAsyncSse_UpdatedImplCopyWith<$Res> {
+  __$$ChangeStringTwinRustAsyncSse_UpdatedImplCopyWithImpl(
+      _$ChangeStringTwinRustAsyncSse_UpdatedImpl _value,
+      $Res Function(_$ChangeStringTwinRustAsyncSse_UpdatedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChangeStringTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? data = null,
+  }) {
+    return _then(_$ChangeStringTwinRustAsyncSse_UpdatedImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeStringTwinRustAsyncSse_UpdatedImpl
+    extends ChangeStringTwinRustAsyncSse_Updated {
+  const _$ChangeStringTwinRustAsyncSse_UpdatedImpl(
+      {required this.id, required this.data})
+      : super._();
+
+  @override
+  final String id;
+  @override
+  final String data;
+
+  @override
+  String toString() {
+    return 'ChangeStringTwinRustAsyncSse.updated(id: $id, data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeStringTwinRustAsyncSse_UpdatedImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.data, data) || other.data == data));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id, data);
+
+  /// Create a copy of ChangeStringTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeStringTwinRustAsyncSse_UpdatedImplCopyWith<
+          _$ChangeStringTwinRustAsyncSse_UpdatedImpl>
+      get copyWith => __$$ChangeStringTwinRustAsyncSse_UpdatedImplCopyWithImpl<
+          _$ChangeStringTwinRustAsyncSse_UpdatedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String data) created,
+    required TResult Function(String id, String data) updated,
+    required TResult Function(String id) deleted,
+  }) {
+    return updated(id, data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String data)? created,
+    TResult? Function(String id, String data)? updated,
+    TResult? Function(String id)? deleted,
+  }) {
+    return updated?.call(id, data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String data)? created,
+    TResult Function(String id, String data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) {
+    if (updated != null) {
+      return updated(id, data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangeStringTwinRustAsyncSse_Created value)
+        created,
+    required TResult Function(ChangeStringTwinRustAsyncSse_Updated value)
+        updated,
+    required TResult Function(ChangeStringTwinRustAsyncSse_Deleted value)
+        deleted,
+  }) {
+    return updated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangeStringTwinRustAsyncSse_Created value)? created,
+    TResult? Function(ChangeStringTwinRustAsyncSse_Updated value)? updated,
+    TResult? Function(ChangeStringTwinRustAsyncSse_Deleted value)? deleted,
+  }) {
+    return updated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeStringTwinRustAsyncSse_Created value)? created,
+    TResult Function(ChangeStringTwinRustAsyncSse_Updated value)? updated,
+    TResult Function(ChangeStringTwinRustAsyncSse_Deleted value)? deleted,
+    required TResult orElse(),
+  }) {
+    if (updated != null) {
+      return updated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeStringTwinRustAsyncSse_Updated
+    extends ChangeStringTwinRustAsyncSse {
+  const factory ChangeStringTwinRustAsyncSse_Updated(
+      {required final String id,
+      required final String data}) = _$ChangeStringTwinRustAsyncSse_UpdatedImpl;
+  const ChangeStringTwinRustAsyncSse_Updated._() : super._();
+
+  String get id;
+  String get data;
+
+  /// Create a copy of ChangeStringTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChangeStringTwinRustAsyncSse_UpdatedImplCopyWith<
+          _$ChangeStringTwinRustAsyncSse_UpdatedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeStringTwinRustAsyncSse_DeletedImplCopyWith<$Res> {
+  factory _$$ChangeStringTwinRustAsyncSse_DeletedImplCopyWith(
+          _$ChangeStringTwinRustAsyncSse_DeletedImpl value,
+          $Res Function(_$ChangeStringTwinRustAsyncSse_DeletedImpl) then) =
+      __$$ChangeStringTwinRustAsyncSse_DeletedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$ChangeStringTwinRustAsyncSse_DeletedImplCopyWithImpl<$Res>
+    extends _$ChangeStringTwinRustAsyncSseCopyWithImpl<$Res,
+        _$ChangeStringTwinRustAsyncSse_DeletedImpl>
+    implements _$$ChangeStringTwinRustAsyncSse_DeletedImplCopyWith<$Res> {
+  __$$ChangeStringTwinRustAsyncSse_DeletedImplCopyWithImpl(
+      _$ChangeStringTwinRustAsyncSse_DeletedImpl _value,
+      $Res Function(_$ChangeStringTwinRustAsyncSse_DeletedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChangeStringTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$ChangeStringTwinRustAsyncSse_DeletedImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeStringTwinRustAsyncSse_DeletedImpl
+    extends ChangeStringTwinRustAsyncSse_Deleted {
+  const _$ChangeStringTwinRustAsyncSse_DeletedImpl({required this.id})
+      : super._();
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'ChangeStringTwinRustAsyncSse.deleted(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeStringTwinRustAsyncSse_DeletedImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  /// Create a copy of ChangeStringTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeStringTwinRustAsyncSse_DeletedImplCopyWith<
+          _$ChangeStringTwinRustAsyncSse_DeletedImpl>
+      get copyWith => __$$ChangeStringTwinRustAsyncSse_DeletedImplCopyWithImpl<
+          _$ChangeStringTwinRustAsyncSse_DeletedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String data) created,
+    required TResult Function(String id, String data) updated,
+    required TResult Function(String id) deleted,
+  }) {
+    return deleted(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String data)? created,
+    TResult? Function(String id, String data)? updated,
+    TResult? Function(String id)? deleted,
+  }) {
+    return deleted?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String data)? created,
+    TResult Function(String id, String data)? updated,
+    TResult Function(String id)? deleted,
+    required TResult orElse(),
+  }) {
+    if (deleted != null) {
+      return deleted(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangeStringTwinRustAsyncSse_Created value)
+        created,
+    required TResult Function(ChangeStringTwinRustAsyncSse_Updated value)
+        updated,
+    required TResult Function(ChangeStringTwinRustAsyncSse_Deleted value)
+        deleted,
+  }) {
+    return deleted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangeStringTwinRustAsyncSse_Created value)? created,
+    TResult? Function(ChangeStringTwinRustAsyncSse_Updated value)? updated,
+    TResult? Function(ChangeStringTwinRustAsyncSse_Deleted value)? deleted,
+  }) {
+    return deleted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangeStringTwinRustAsyncSse_Created value)? created,
+    TResult Function(ChangeStringTwinRustAsyncSse_Updated value)? updated,
+    TResult Function(ChangeStringTwinRustAsyncSse_Deleted value)? deleted,
+    required TResult orElse(),
+  }) {
+    if (deleted != null) {
+      return deleted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeStringTwinRustAsyncSse_Deleted
+    extends ChangeStringTwinRustAsyncSse {
+  const factory ChangeStringTwinRustAsyncSse_Deleted(
+      {required final String id}) = _$ChangeStringTwinRustAsyncSse_DeletedImpl;
+  const ChangeStringTwinRustAsyncSse_Deleted._() : super._();
+
+  String get id;
+
+  /// Create a copy of ChangeStringTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChangeStringTwinRustAsyncSse_DeletedImplCopyWith<
+          _$ChangeStringTwinRustAsyncSse_DeletedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$DistanceTwinRustAsyncSse {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({

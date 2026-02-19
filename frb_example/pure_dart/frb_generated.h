@@ -684,6 +684,173 @@ typedef struct wire_cst_sequences {
   struct wire_cst_list_prim_i_32_strict *field0;
 } wire_cst_sequences;
 
+typedef struct wire_cst_record_string_string {
+  struct wire_cst_list_prim_u_8_strict *field0;
+  struct wire_cst_list_prim_u_8_strict *field1;
+} wire_cst_record_string_string;
+
+typedef struct wire_cst_list_record_string_string {
+  struct wire_cst_record_string_string *ptr;
+  int32_t len;
+} wire_cst_list_record_string_string;
+
+typedef struct wire_cst_ChangeIgnoredTwinNormal_Map_String_String_Created {
+  struct wire_cst_list_record_string_string *data;
+} wire_cst_ChangeIgnoredTwinNormal_Map_String_String_Created;
+
+typedef struct wire_cst_ChangeIgnoredTwinNormal_Map_String_String_Updated {
+  struct wire_cst_list_prim_u_8_strict *id;
+  struct wire_cst_list_record_string_string *data;
+} wire_cst_ChangeIgnoredTwinNormal_Map_String_String_Updated;
+
+typedef struct wire_cst_ChangeIgnoredTwinNormal_Map_String_String_Deleted {
+  struct wire_cst_list_prim_u_8_strict *id;
+} wire_cst_ChangeIgnoredTwinNormal_Map_String_String_Deleted;
+
+typedef union ChangeIgnoredTwinNormal_Map_String_StringKind {
+  struct wire_cst_ChangeIgnoredTwinNormal_Map_String_String_Created Created;
+  struct wire_cst_ChangeIgnoredTwinNormal_Map_String_String_Updated Updated;
+  struct wire_cst_ChangeIgnoredTwinNormal_Map_String_String_Deleted Deleted;
+} ChangeIgnoredTwinNormal_Map_String_StringKind;
+
+typedef struct wire_cst_change_ignored_twin_normal_map_string_string {
+  int32_t tag;
+  union ChangeIgnoredTwinNormal_Map_String_StringKind kind;
+} wire_cst_change_ignored_twin_normal_map_string_string;
+
+typedef struct wire_cst_another_batch_twin_normal_change_map_twin_normal {
+  struct wire_cst_change_ignored_twin_normal_map_string_string items;
+} wire_cst_another_batch_twin_normal_change_map_twin_normal;
+
+typedef struct wire_cst_list_change_ignored_twin_normal_map_string_string {
+  struct wire_cst_change_ignored_twin_normal_map_string_string *ptr;
+  int32_t len;
+} wire_cst_list_change_ignored_twin_normal_map_string_string;
+
+typedef struct wire_cst_batch_twin_normal_change_map_twin_normal {
+  struct wire_cst_list_change_ignored_twin_normal_map_string_string *items;
+} wire_cst_batch_twin_normal_change_map_twin_normal;
+
+typedef struct wire_cst_StringChangeTwinNormal_Created {
+  struct wire_cst_list_prim_u_8_strict *data;
+} wire_cst_StringChangeTwinNormal_Created;
+
+typedef struct wire_cst_StringChangeTwinNormal_Updated {
+  struct wire_cst_list_prim_u_8_strict *id;
+  struct wire_cst_list_prim_u_8_strict *data;
+} wire_cst_StringChangeTwinNormal_Updated;
+
+typedef struct wire_cst_StringChangeTwinNormal_Deleted {
+  struct wire_cst_list_prim_u_8_strict *id;
+} wire_cst_StringChangeTwinNormal_Deleted;
+
+typedef union StringChangeTwinNormalKind {
+  struct wire_cst_StringChangeTwinNormal_Created Created;
+  struct wire_cst_StringChangeTwinNormal_Updated Updated;
+  struct wire_cst_StringChangeTwinNormal_Deleted Deleted;
+} StringChangeTwinNormalKind;
+
+typedef struct wire_cst_string_change_twin_normal {
+  int32_t tag;
+  union StringChangeTwinNormalKind kind;
+} wire_cst_string_change_twin_normal;
+
+typedef struct wire_cst_ChangeMapTwinNormal_Created {
+  struct wire_cst_list_record_string_string *data;
+} wire_cst_ChangeMapTwinNormal_Created;
+
+typedef struct wire_cst_ChangeMapTwinNormal_Updated {
+  struct wire_cst_list_prim_u_8_strict *id;
+  struct wire_cst_list_record_string_string *data;
+} wire_cst_ChangeMapTwinNormal_Updated;
+
+typedef struct wire_cst_ChangeMapTwinNormal_Deleted {
+  struct wire_cst_list_prim_u_8_strict *id;
+} wire_cst_ChangeMapTwinNormal_Deleted;
+
+typedef union ChangeMapTwinNormalKind {
+  struct wire_cst_ChangeMapTwinNormal_Created Created;
+  struct wire_cst_ChangeMapTwinNormal_Updated Updated;
+  struct wire_cst_ChangeMapTwinNormal_Deleted Deleted;
+} ChangeMapTwinNormalKind;
+
+typedef struct wire_cst_change_map_twin_normal {
+  int32_t tag;
+  union ChangeMapTwinNormalKind kind;
+} wire_cst_change_map_twin_normal;
+
+typedef struct wire_cst_ChangeStringTwinNormal_Created {
+  struct wire_cst_list_prim_u_8_strict *data;
+} wire_cst_ChangeStringTwinNormal_Created;
+
+typedef struct wire_cst_ChangeStringTwinNormal_Updated {
+  struct wire_cst_list_prim_u_8_strict *id;
+  struct wire_cst_list_prim_u_8_strict *data;
+} wire_cst_ChangeStringTwinNormal_Updated;
+
+typedef struct wire_cst_ChangeStringTwinNormal_Deleted {
+  struct wire_cst_list_prim_u_8_strict *id;
+} wire_cst_ChangeStringTwinNormal_Deleted;
+
+typedef union ChangeStringTwinNormalKind {
+  struct wire_cst_ChangeStringTwinNormal_Created Created;
+  struct wire_cst_ChangeStringTwinNormal_Updated Updated;
+  struct wire_cst_ChangeStringTwinNormal_Deleted Deleted;
+} ChangeStringTwinNormalKind;
+
+typedef struct wire_cst_change_string_twin_normal {
+  int32_t tag;
+  union ChangeStringTwinNormalKind kind;
+} wire_cst_change_string_twin_normal;
+
+typedef struct wire_cst_ChangeStringTwinRustAsync_Created {
+  struct wire_cst_list_prim_u_8_strict *data;
+} wire_cst_ChangeStringTwinRustAsync_Created;
+
+typedef struct wire_cst_ChangeStringTwinRustAsync_Updated {
+  struct wire_cst_list_prim_u_8_strict *id;
+  struct wire_cst_list_prim_u_8_strict *data;
+} wire_cst_ChangeStringTwinRustAsync_Updated;
+
+typedef struct wire_cst_ChangeStringTwinRustAsync_Deleted {
+  struct wire_cst_list_prim_u_8_strict *id;
+} wire_cst_ChangeStringTwinRustAsync_Deleted;
+
+typedef union ChangeStringTwinRustAsyncKind {
+  struct wire_cst_ChangeStringTwinRustAsync_Created Created;
+  struct wire_cst_ChangeStringTwinRustAsync_Updated Updated;
+  struct wire_cst_ChangeStringTwinRustAsync_Deleted Deleted;
+} ChangeStringTwinRustAsyncKind;
+
+typedef struct wire_cst_change_string_twin_rust_async {
+  int32_t tag;
+  union ChangeStringTwinRustAsyncKind kind;
+} wire_cst_change_string_twin_rust_async;
+
+typedef struct wire_cst_ChangeStringTwinSync_Created {
+  struct wire_cst_list_prim_u_8_strict *data;
+} wire_cst_ChangeStringTwinSync_Created;
+
+typedef struct wire_cst_ChangeStringTwinSync_Updated {
+  struct wire_cst_list_prim_u_8_strict *id;
+  struct wire_cst_list_prim_u_8_strict *data;
+} wire_cst_ChangeStringTwinSync_Updated;
+
+typedef struct wire_cst_ChangeStringTwinSync_Deleted {
+  struct wire_cst_list_prim_u_8_strict *id;
+} wire_cst_ChangeStringTwinSync_Deleted;
+
+typedef union ChangeStringTwinSyncKind {
+  struct wire_cst_ChangeStringTwinSync_Created Created;
+  struct wire_cst_ChangeStringTwinSync_Updated Updated;
+  struct wire_cst_ChangeStringTwinSync_Deleted Deleted;
+} ChangeStringTwinSyncKind;
+
+typedef struct wire_cst_change_string_twin_sync {
+  int32_t tag;
+  union ChangeStringTwinSyncKind kind;
+} wire_cst_change_string_twin_sync;
+
 typedef struct wire_cst_EnumWithItemMixedTwinNormal_B {
   struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_EnumWithItemMixedTwinNormal_B;
@@ -1054,16 +1221,6 @@ typedef struct wire_cst_list_record_string_enum_simple_twin_sync {
   int32_t len;
 } wire_cst_list_record_string_enum_simple_twin_sync;
 
-typedef struct wire_cst_record_string_string {
-  struct wire_cst_list_prim_u_8_strict *field0;
-  struct wire_cst_list_prim_u_8_strict *field1;
-} wire_cst_record_string_string;
-
-typedef struct wire_cst_list_record_string_string {
-  struct wire_cst_record_string_string *ptr;
-  int32_t len;
-} wire_cst_list_record_string_string;
-
 typedef struct wire_cst_my_size {
   int32_t width;
   int32_t height;
@@ -1082,6 +1239,30 @@ typedef struct wire_cst_list_record_string_my_size {
 typedef struct wire_cst_macro_struct {
   int32_t data;
 } wire_cst_macro_struct;
+
+typedef struct wire_cst_MapChangeTwinNormal_Created {
+  struct wire_cst_list_record_string_string *data;
+} wire_cst_MapChangeTwinNormal_Created;
+
+typedef struct wire_cst_MapChangeTwinNormal_Updated {
+  struct wire_cst_list_prim_u_8_strict *id;
+  struct wire_cst_list_record_string_string *data;
+} wire_cst_MapChangeTwinNormal_Updated;
+
+typedef struct wire_cst_MapChangeTwinNormal_Deleted {
+  struct wire_cst_list_prim_u_8_strict *id;
+} wire_cst_MapChangeTwinNormal_Deleted;
+
+typedef union MapChangeTwinNormalKind {
+  struct wire_cst_MapChangeTwinNormal_Created Created;
+  struct wire_cst_MapChangeTwinNormal_Updated Updated;
+  struct wire_cst_MapChangeTwinNormal_Deleted Deleted;
+} MapChangeTwinNormalKind;
+
+typedef struct wire_cst_map_change_twin_normal {
+  int32_t tag;
+  union MapChangeTwinNormalKind kind;
+} wire_cst_map_change_twin_normal;
 
 typedef struct wire_cst_struct_with_one_field_twin_normal {
   int32_t a;
@@ -3010,6 +3191,30 @@ typedef struct wire_cst_big_buffers_twin_sync {
   struct wire_cst_list_prim_i_64_strict *int64;
   struct wire_cst_list_prim_u_64_strict *uint64;
 } wire_cst_big_buffers_twin_sync;
+
+typedef struct wire_cst_ChangeTwinNormal_Map_String_String_Created {
+  struct wire_cst_list_record_string_string *data;
+} wire_cst_ChangeTwinNormal_Map_String_String_Created;
+
+typedef struct wire_cst_ChangeTwinNormal_Map_String_String_Updated {
+  struct wire_cst_list_prim_u_8_strict *id;
+  struct wire_cst_list_record_string_string *data;
+} wire_cst_ChangeTwinNormal_Map_String_String_Updated;
+
+typedef struct wire_cst_ChangeTwinNormal_Map_String_String_Deleted {
+  struct wire_cst_list_prim_u_8_strict *id;
+} wire_cst_ChangeTwinNormal_Map_String_String_Deleted;
+
+typedef union ChangeTwinNormal_Map_String_StringKind {
+  struct wire_cst_ChangeTwinNormal_Map_String_String_Created Created;
+  struct wire_cst_ChangeTwinNormal_Map_String_String_Updated Updated;
+  struct wire_cst_ChangeTwinNormal_Map_String_String_Deleted Deleted;
+} ChangeTwinNormal_Map_String_StringKind;
+
+typedef struct wire_cst_change_twin_normal_map_string_string {
+  int32_t tag;
+  union ChangeTwinNormal_Map_String_StringKind kind;
+} wire_cst_change_twin_normal_map_string_string;
 
 typedef struct wire_cst_constructor_translatable_struct_twin_normal {
   struct wire_cst_list_prim_u_8_strict *one;
@@ -7920,6 +8125,9 @@ WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manua
                                                                                                                                                        int32_t rust_vec_len_,
                                                                                                                                                        int32_t data_len_);
 
+void frbgen_frb_example_pure_dart_wire__crate__api__enumeration__func_another_batch_twin_normal_change_map_twin_normal(int64_t port_,
+                                                                                                                       struct wire_cst_another_batch_twin_normal_change_map_twin_normal *arg);
+
 void frbgen_frb_example_pure_dart_wire__crate__api__dyn_trait__func_arg_dyn_trait_twin_normal(int64_t port_,
                                                                                               uint8_t *ptr_,
                                                                                               int32_t rust_vec_len_,
@@ -7940,6 +8148,40 @@ void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__async_misc_tw
                                                                                                                  uint8_t *ptr_,
                                                                                                                  int32_t rust_vec_len_,
                                                                                                                  int32_t data_len_);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__enumeration__func_batch_change_map_twin_normal(int64_t port_,
+                                                                                                   struct wire_cst_batch_twin_normal_change_map_twin_normal *arg);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__enumeration__func_block_change_twin_normal(int64_t port_,
+                                                                                               struct wire_cst_string_change_twin_normal *arg);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__enumeration__func_change_map_sink_twin_normal(int64_t port_,
+                                                                                                  struct wire_cst_list_prim_u_8_strict *arg);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__enumeration__func_change_map_twin_normal(int64_t port_,
+                                                                                             struct wire_cst_change_map_twin_normal *arg);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__enumeration__func_change_twin_normal(int64_t port_,
+                                                                                         struct wire_cst_change_string_twin_normal *arg);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_change_twin_rust_async(int64_t port_,
+                                                                                                                            struct wire_cst_change_string_twin_rust_async *arg);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__func_change_twin_rust_async_sse(int64_t port_,
+                                                                                                                                    uint8_t *ptr_,
+                                                                                                                                    int32_t rust_vec_len_,
+                                                                                                                                    int32_t data_len_);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sse__func_change_twin_sse(int64_t port_,
+                                                                                                              uint8_t *ptr_,
+                                                                                                              int32_t rust_vec_len_,
+                                                                                                              int32_t data_len_);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sync__func_change_twin_sync(struct wire_cst_change_string_twin_sync *arg);
+
+WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_change_twin_sync_sse(uint8_t *ptr_,
+                                                                                                                                        int32_t rust_vec_len_,
+                                                                                                                                        int32_t data_len_);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__enumeration__func_enum_simple_twin_normal(int64_t port_,
                                                                                               int32_t arg);
@@ -8317,6 +8559,9 @@ WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manua
 
 void frbgen_frb_example_pure_dart_wire__crate__api__inside_macro__func_macro_struct_twin_normal(int64_t port_,
                                                                                                 struct wire_cst_macro_struct *arg);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__enumeration__func_map_change_twin_normal(int64_t port_,
+                                                                                             struct wire_cst_map_change_twin_normal *arg);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__exception__func_return_error_twin_normal(int64_t port_);
 
@@ -14714,6 +14959,8 @@ struct wire_cst_abc_twin_rust_async *frbgen_frb_example_pure_dart_cst_new_box_au
 
 struct wire_cst_abc_twin_sync *frbgen_frb_example_pure_dart_cst_new_box_autoadd_abc_twin_sync(void);
 
+struct wire_cst_another_batch_twin_normal_change_map_twin_normal *frbgen_frb_example_pure_dart_cst_new_box_autoadd_another_batch_twin_normal_change_map_twin_normal(void);
+
 struct wire_cst_application_env *frbgen_frb_example_pure_dart_cst_new_box_autoadd_application_env(void);
 
 int32_t *frbgen_frb_example_pure_dart_cst_new_box_autoadd_application_mode(int32_t value);
@@ -14752,6 +14999,8 @@ struct wire_cst_basic_struct_twin_rust_async *frbgen_frb_example_pure_dart_cst_n
 
 struct wire_cst_basic_struct_twin_sync *frbgen_frb_example_pure_dart_cst_new_box_autoadd_basic_struct_twin_sync(void);
 
+struct wire_cst_batch_twin_normal_change_map_twin_normal *frbgen_frb_example_pure_dart_cst_new_box_autoadd_batch_twin_normal_change_map_twin_normal(void);
+
 struct wire_cst_benchmark_binary_tree_twin_normal *frbgen_frb_example_pure_dart_cst_new_box_autoadd_benchmark_binary_tree_twin_normal(void);
 
 struct wire_cst_benchmark_binary_tree_twin_rust_async *frbgen_frb_example_pure_dart_cst_new_box_autoadd_benchmark_binary_tree_twin_rust_async(void);
@@ -14771,6 +15020,14 @@ struct wire_cst_c_twin_normal *frbgen_frb_example_pure_dart_cst_new_box_autoadd_
 struct wire_cst_c_twin_rust_async *frbgen_frb_example_pure_dart_cst_new_box_autoadd_c_twin_rust_async(void);
 
 struct wire_cst_c_twin_sync *frbgen_frb_example_pure_dart_cst_new_box_autoadd_c_twin_sync(void);
+
+struct wire_cst_change_map_twin_normal *frbgen_frb_example_pure_dart_cst_new_box_autoadd_change_map_twin_normal(void);
+
+struct wire_cst_change_string_twin_normal *frbgen_frb_example_pure_dart_cst_new_box_autoadd_change_string_twin_normal(void);
+
+struct wire_cst_change_string_twin_rust_async *frbgen_frb_example_pure_dart_cst_new_box_autoadd_change_string_twin_rust_async(void);
+
+struct wire_cst_change_string_twin_sync *frbgen_frb_example_pure_dart_cst_new_box_autoadd_change_string_twin_sync(void);
 
 struct wire_cst_concatenate_with_twin_normal *frbgen_frb_example_pure_dart_cst_new_box_autoadd_concatenate_with_twin_normal(void);
 
@@ -14934,6 +15191,8 @@ struct wire_cst_list_of_nested_raw_string_mirrored *frbgen_frb_example_pure_dart
 
 struct wire_cst_macro_struct *frbgen_frb_example_pure_dart_cst_new_box_autoadd_macro_struct(void);
 
+struct wire_cst_map_change_twin_normal *frbgen_frb_example_pure_dart_cst_new_box_autoadd_map_change_twin_normal(void);
+
 struct wire_cst_measure_twin_normal *frbgen_frb_example_pure_dart_cst_new_box_autoadd_measure_twin_normal(void);
 
 struct wire_cst_measure_twin_rust_async *frbgen_frb_example_pure_dart_cst_new_box_autoadd_measure_twin_rust_async(void);
@@ -15045,6 +15304,8 @@ struct wire_cst_some_struct_twin_normal *frbgen_frb_example_pure_dart_cst_new_bo
 struct wire_cst_some_struct_twin_rust_async *frbgen_frb_example_pure_dart_cst_new_box_autoadd_some_struct_twin_rust_async(void);
 
 struct wire_cst_some_struct_twin_sync *frbgen_frb_example_pure_dart_cst_new_box_autoadd_some_struct_twin_sync(void);
+
+struct wire_cst_string_change_twin_normal *frbgen_frb_example_pure_dart_cst_new_box_autoadd_string_change_twin_normal(void);
 
 struct wire_cst_struct_in_lower_level *frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_in_lower_level(void);
 
@@ -15312,6 +15573,8 @@ struct wire_cst_list_basic_struct_twin_sync *frbgen_frb_example_pure_dart_cst_ne
 
 struct wire_cst_list_bool *frbgen_frb_example_pure_dart_cst_new_list_bool(int32_t len);
 
+struct wire_cst_list_change_ignored_twin_normal_map_string_string *frbgen_frb_example_pure_dart_cst_new_list_change_ignored_twin_normal_map_string_string(int32_t len);
+
 struct wire_cst_list_element_twin_normal *frbgen_frb_example_pure_dart_cst_new_list_element_twin_normal(int32_t len);
 
 struct wire_cst_list_element_twin_rust_async *frbgen_frb_example_pure_dart_cst_new_list_element_twin_rust_async(int32_t len);
@@ -15540,6 +15803,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_abc_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_abc_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_abc_twin_sync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_another_batch_twin_normal_change_map_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_application_env);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_application_mode);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_application_settings);
@@ -15559,6 +15823,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_basic_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_basic_struct_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_basic_struct_twin_sync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_batch_twin_normal_change_map_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_benchmark_binary_tree_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_benchmark_binary_tree_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_benchmark_binary_tree_twin_sync);
@@ -15569,6 +15834,10 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_c_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_c_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_c_twin_sync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_change_map_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_change_string_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_change_string_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_change_string_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_concatenate_with_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_concatenate_with_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_concatenate_with_twin_sync);
@@ -15650,6 +15919,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_kitchen_sink_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_list_of_nested_raw_string_mirrored);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_macro_struct);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_map_change_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_measure_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_measure_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_measure_twin_sync);
@@ -15706,6 +15976,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_some_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_some_struct_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_some_struct_twin_sync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_string_change_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_in_lower_level);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_comments_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_comments_twin_rust_async);
@@ -15839,6 +16110,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_basic_struct_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_basic_struct_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_bool);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_change_ignored_twin_normal_map_string_string);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_element_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_element_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_element_twin_rust_async_sse);
@@ -16503,11 +16775,18 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_create_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__dyn_trait__StructTwoWithTraitForDynTwinNormal_simple_method_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__dyn_trait__func_arg_dyn_trait_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__enumeration__func_another_batch_twin_normal_change_map_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__enumeration__func_batch_change_map_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__enumeration__func_block_change_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__enumeration__func_change_map_sink_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__enumeration__func_change_map_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__enumeration__func_change_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__enumeration__func_enum_simple_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__enumeration__func_enum_with_discriminant_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__enumeration__func_enum_with_item_mixed_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__enumeration__func_enum_with_item_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__enumeration__func_enum_with_item_tuple_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__enumeration__func_map_change_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__enumeration__handle_enum_parameter_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__enumeration__handle_enum_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__enumeration__handle_return_enum_twin_normal);
@@ -17563,6 +17842,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dropping_twin_sync_sse__DroppableTwinSyncSse_get_drop_count_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dropping_twin_sync_sse__DroppableTwinSyncSse_new_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dropping_twin_sync_sse__DroppableTwinSyncSse_simple_method_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_change_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_simple_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_discriminant_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_item_mixed_twin_rust_async);
@@ -17573,6 +17853,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async__handle_return_enum_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async__multiply_by_ten_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async__print_note_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__func_change_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__func_enum_simple_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__func_enum_with_discriminant_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__func_enum_with_item_mixed_twin_rust_async_sse);
@@ -17583,6 +17864,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__handle_return_enum_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__multiply_by_ten_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__print_note_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sse__func_change_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sse__func_enum_simple_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sse__func_enum_with_discriminant_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sse__func_enum_with_item_mixed_twin_sse);
@@ -17593,6 +17875,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sse__handle_return_enum_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sse__multiply_by_ten_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sse__print_note_twin_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sync__func_change_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_simple_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_discriminant_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_item_mixed_twin_sync);
@@ -17603,6 +17886,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sync__handle_return_enum_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sync__multiply_by_ten_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sync__print_note_twin_sync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_change_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_enum_simple_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_enum_with_discriminant_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_enum_with_item_mixed_twin_sync_sse);

@@ -95,6 +95,8 @@ fn parse_function_inner(
         type_64bit_int: partial_context.type_64bit_int,
         forbid_type_self: false,
         parse_mode: partial_context.parse_mode,
+        current_generic_params: vec![],
+        is_within_type_alias: false,
     };
 
     let input_ty = Box::new(type_parser.parse_type(&input_ty, &context)?);

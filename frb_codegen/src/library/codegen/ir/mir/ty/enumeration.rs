@@ -24,6 +24,8 @@ pub struct MirEnum {
     pub mode: MirEnumMode,
     pub ignore: bool,
     pub needs_json_serializable: bool,
+    pub generic_params: Vec<String>,
+    pub is_generic_template: bool,
 }
 
 #[derive(Copy)]

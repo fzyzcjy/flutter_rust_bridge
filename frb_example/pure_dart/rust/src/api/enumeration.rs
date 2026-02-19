@@ -1,6 +1,8 @@
 use crate::api::misc_example::WeekdaysTwinNormal;
+use crate::frb_generated::StreamSink;
 use flutter_rust_bridge::frb;
 use log::info;
+use serde::{Deserialize, Serialize};
 
 pub enum EnumSimpleTwinNormal {
     A,
@@ -54,6 +56,80 @@ pub enum EnumWithDiscriminantTwinNormal {
 pub fn func_enum_with_discriminant_twin_normal(
     arg: EnumWithDiscriminantTwinNormal,
 ) -> EnumWithDiscriminantTwinNormal {
+    arg
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub enum ChangeTwinNormal<T> {
+    Created { data: T },
+    Updated { id: String, data: T },
+    Deleted { id: String },
+}
+
+pub type ChangeStringTwinNormal = ChangeTwinNormal<String>;
+
+pub fn func_change_twin_normal(arg: ChangeStringTwinNormal) -> ChangeStringTwinNormal {
+    arg
+}
+
+pub type ChangeMapTwinNormal = ChangeTwinNormal<std::collections::HashMap<String, String>>;
+
+pub fn func_change_map_twin_normal(arg: ChangeMapTwinNormal) -> ChangeMapTwinNormal {
+    arg
+}
+
+// Test nested generic enum inside StreamSink - this tests auto-naming for nested generics
+pub type ChangeMapSinkTwinNormal = StreamSink<ChangeTwinNormal<std::collections::HashMap<String, String>>>;
+
+pub fn func_change_map_sink_twin_normal(arg: ChangeMapSinkTwinNormal) -> ChangeMapSinkTwinNormal {
+    arg
+}
+
+// Test case for bug: generic enum with #[frb(ignore)] and concrete type aliases with #[frb(non_opaque)]
+// The template enum is ignored, but concrete instances through type aliases should generate Dart code
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[flutter_rust_bridge::frb(ignore)]
+pub enum ChangeIgnoredTwinNormal<T> {
+    Created { data: T },
+    Updated { id: String, data: T },
+    Deleted { id: String },
+}
+
+#[frb(non_opaque)]
+pub type StringChangeTwinNormal = ChangeIgnoredTwinNormal<String>;
+
+#[frb(non_opaque)]
+pub type MapChangeTwinNormal = ChangeIgnoredTwinNormal<std::collections::HashMap<String, String>>;
+
+pub fn func_block_change_twin_normal(arg: StringChangeTwinNormal) -> StringChangeTwinNormal {
+    arg
+}
+
+pub fn func_map_change_twin_normal(arg: MapChangeTwinNormal) -> MapChangeTwinNormal {
+    arg
+}
+
+pub struct BatchTwinNormal<T> {
+    items: Vec<T>,
+}
+
+#[frb(non_opaque)]
+pub type BatchTwinNormalChangeMapTwinNormal = BatchTwinNormal<ChangeIgnoredTwinNormal<std::collections::HashMap<String, String>>>;
+
+pub fn func_batch_change_map_twin_normal(arg: BatchTwinNormalChangeMapTwinNormal) -> BatchTwinNormalChangeMapTwinNormal {
+    arg
+}
+
+#[frb(non_opaque)]
+pub struct AnotherBatchTwinNormal<T> {
+    items: T,
+}
+
+
+#[frb(non_opaque)]
+pub type AnotherBatchTwinNormalChangeMapTwinNormal = AnotherBatchTwinNormal<ChangeIgnoredTwinNormal<std::collections::HashMap<String, String>>>;
+
+pub fn func_another_batch_twin_normal_change_map_twin_normal(arg: AnotherBatchTwinNormalChangeMapTwinNormal) -> AnotherBatchTwinNormalChangeMapTwinNormal {
     arg
 }
 

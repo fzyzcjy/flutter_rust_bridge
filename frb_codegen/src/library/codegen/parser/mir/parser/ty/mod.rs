@@ -41,6 +41,7 @@ pub(crate) mod path;
 pub(crate) mod path_data;
 pub(crate) mod primitive;
 pub(crate) mod result;
+pub(crate) mod type_substitution;
 pub(crate) mod rust_auto_opaque_explicit;
 pub(crate) mod rust_auto_opaque_implicit;
 mod rust_opaque;
@@ -160,12 +161,31 @@ pub(crate) struct TypeParserParsingContext {
     pub(crate) type_64bit_int: bool,
     pub(crate) forbid_type_self: bool,
     pub(crate) parse_mode: ParseMode,
+    pub(crate) current_generic_params: Vec<String>,
+    /// Whether we're currently parsing types that are part of a type alias.
+    /// This is used to ensure nested generic enum instantiations are not ignored
+    /// even if their template is ignored.
+    pub(crate) is_within_type_alias: bool,
 }
 
 impl TypeParserParsingContext {
     pub(crate) fn with_struct_or_enum_attributes(&self, x: FrbAttributes) -> Self {
         Self {
             struct_or_enum_attributes: Some(x),
+            ..self.clone()
+        }
+    }
+
+    pub(crate) fn with_generic_params(&self, params: Vec<String>) -> Self {
+        Self {
+            current_generic_params: params,
+            ..self.clone()
+        }
+    }
+
+    pub(crate) fn with_type_alias(&self, is_within_type_alias: bool) -> Self {
+        Self {
+            is_within_type_alias,
             ..self.clone()
         }
     }

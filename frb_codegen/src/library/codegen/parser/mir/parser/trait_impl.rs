@@ -35,6 +35,8 @@ pub(crate) fn parse(
         type_64bit_int,
         forbid_type_self: false,
         parse_mode,
+        current_generic_params: vec![],
+        is_within_type_alias: false,
     };
 
     Ok((hir_trait_impls.iter())

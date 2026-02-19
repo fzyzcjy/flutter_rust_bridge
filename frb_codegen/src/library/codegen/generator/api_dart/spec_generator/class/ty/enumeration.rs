@@ -11,6 +11,11 @@ use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 impl ApiDartGeneratorClassTrait for EnumRefApiDartGenerator<'_> {
     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
         let src = self.mir.get(self.context.mir_pack);
+        
+        // Skip generic templates - they should not be code-generated
+        if src.is_generic_template {
+            return None;
+        }
 
         let methods = generate_api_methods(
             &MirType::EnumRef(self.mir.clone()),
