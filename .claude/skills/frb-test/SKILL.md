@@ -5,6 +5,8 @@ description: Use when needing to run tests locally in flutter_rust_bridge, or wh
 
 # FRB Testing
 
+> **Note:** Check your user-level `remote-testing` rules before running commands. Tests may require remote execution.
+
 ## Overview
 
 Maps change types to local test commands. Tests run on CI by default, so local testing is optional but useful for debugging.

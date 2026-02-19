@@ -5,6 +5,8 @@ description: Use when generated code looks wrong, code generation fails, or you 
 
 # FRB Debugging
 
+> **Note:** Check your user-level `remote-testing` rules before running commands. Codegen and debugging may require remote execution.
+
 ## When to Use
 
 - Generated code looks wrong

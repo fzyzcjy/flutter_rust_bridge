@@ -5,6 +5,8 @@ description: Use when adding tests or developing new features in flutter_rust_br
 
 # FRB Develop Feature
 
+> **Note:** Check your user-level `remote-testing` rules before running commands. Tests and codegen may require remote execution.
+
 ## Overview
 
 **Iterate in frb_example/dart_minimal (fast compile), migrate to frb_example/pure_dart (full coverage).**

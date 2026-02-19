@@ -5,6 +5,8 @@ description: Use when CI fails in flutter_rust_bridge - before deep investigatio
 
 # FRB Fix CI
 
+> **Note:** Check your user-level `remote-testing` rules before running commands. Tests and codegen may require remote execution.
+
 ## Overview
 
 CI failures in flutter_rust_bridge often have simple fixes. Try the appropriate approach below before deep investigation.

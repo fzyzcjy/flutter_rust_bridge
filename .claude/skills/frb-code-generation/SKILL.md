@@ -5,6 +5,8 @@ description: Use when modifying Rust API, codegen, or example code in flutter_ru
 
 # FRB Code Generation
 
+> **Note:** Check your user-level `remote-testing` rules before running commands. Codegen may require remote execution.
+
 ## Overview
 
 flutter_rust_bridge requires code generation when Rust APIs change. This skill maps change types to the minimal generation commands needed.

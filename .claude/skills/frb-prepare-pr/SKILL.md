@@ -5,6 +5,8 @@ description: Use when about to create a PR or push changes in flutter_rust_bridg
 
 # FRB Prepare for PR
 
+> **Note:** Check your user-level `remote-testing` rules before running commands. Codegen, lint, and tests may require remote execution.
+
 ## Overview
 
 Before creating a PR, ensure generated code is up to date and lint passes.
