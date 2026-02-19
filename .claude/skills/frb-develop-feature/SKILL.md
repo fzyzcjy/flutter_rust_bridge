@@ -61,6 +61,8 @@ digraph workflow {
    ./frb_internal test-dart-native --package frb_example/dart_minimal
    ```
 
+   > **After codegen:** Check your user-level `remote-testing` rules. If codegen was run remotely, pull changes back to local.
+
 4. **Iterate until test passes**
 
 ### Phase 2: Migrate to frb_example/pure_dart
@@ -89,6 +91,8 @@ digraph workflow {
    ./frb_internal test-dart-native --package frb_example/pure_dart
    ./frb_internal test-dart-native --package frb_example/pure_dart_pde
    ```
+
+   > **After codegen:** Check your user-level `remote-testing` rules. If codegen was run remotely, pull changes back to local.
 
    Both must pass - they test different codegen configurations.
 
