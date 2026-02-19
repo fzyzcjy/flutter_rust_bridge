@@ -89,19 +89,10 @@ fn dart_run(
         cmd_args.extend(args.into_iter().map_into());
 
         let info = call_shell_info(&cmd_args);
-
-        // Clear coverage-related environment variables that may have been set by
-        // cargo-llvm-cov. These variables cause wasm builds to fail because
-        // profiler_builtins is not available for wasm32-unknown-unknown target.
-        let mut cmd = Command::new(info.program);
-        cmd.args(info.args).current_dir(current_dir);
-
-        // Remove RUSTFLAGS and CARGO_ENCODED_RUSTFLAGS from the environment
-        // to prevent coverage instrumentation flags from being inherited by wasm-pack
-        cmd.env_remove("RUSTFLAGS");
-        cmd.env_remove("CARGO_ENCODED_RUSTFLAGS");
-
-        cmd.spawn()?
+        Command::new(info.program)
+            .args(info.args)
+            .current_dir(current_dir)
+            .spawn()?
     };
 
     if dart_coverage {
