@@ -174,6 +174,21 @@ Future<void> _executeWasmPack(BuildWebArgs args,
     'RUSTUP_TOOLCHAIN': args.wasmPackRustupToolchain ?? 'nightly',
     'RUSTFLAGS': _computeRustflags(argsOverride: args.wasmPackRustflags),
     if (stdout.supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',
+    // Clear coverage-related environment variables to prevent coverage flags
+    // from being inherited when running under cargo llvm-cov.
+    // The WASM target doesn't support -C instrument-coverage because
+    // profiler_builtins is not available for wasm32-unknown-unknown.
+    'CARGO_ENCODED_RUSTFLAGS': '',
+    // RUSTC_WRAPPER is set by cargo-llvm-cov to intercept rustc calls.
+    // We need to clear it to prevent coverage instrumentation for wasm builds.
+    'RUSTC_WRAPPER': '',
+    // These internal variables may be set by cargo-llvm-cov
+    // and need to be cleared for wasm builds
+    'LLVM_PROFILE_FILE': '',
+    '__CARGO_LLVM_COV': '',
+    '__CARGO_LLVM_COV_TARGET_DIR': '',
+    '__CARGO_LLVM_COV_RUSTC_WRAPPER': '',
+    '__CARGO_LLVM_COV_RUSTC_WRAPPER_RUSTFLAGS': '',
   });
 }
 
