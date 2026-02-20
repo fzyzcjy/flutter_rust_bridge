@@ -32,6 +32,14 @@ pub async fn datetime_local_twin_rust_async(
     d
 }
 
+pub async fn naivedate_twin_rust_async(d: chrono::NaiveDate) -> chrono::NaiveDate {
+    use chrono::Datelike;
+    assert_eq!(&d.year(), &2022);
+    assert_eq!(&d.month(), &9);
+    assert_eq!(&d.day(), &10);
+    d
+}
+
 pub async fn naivedatetime_twin_rust_async(d: chrono::NaiveDateTime) -> chrono::NaiveDateTime {
     use chrono::{Datelike, Timelike};
     assert_eq!(&d.year(), &2022);
@@ -76,6 +84,7 @@ pub async fn handle_durations_twin_rust_async(
 pub struct TestChronoTwinRustAsync {
     pub dt: Option<chrono::DateTime<chrono::Utc>>,
     pub dt2: Option<chrono::NaiveDateTime>,
+    pub da: Option<chrono::NaiveDate>,
     pub du: Option<chrono::Duration>,
 }
 
@@ -91,6 +100,12 @@ pub async fn test_chrono_twin_rust_async() -> TestChronoTwinRustAsync {
             chrono::DateTime::from_timestamp(1631297333, 0)
                 .unwrap()
                 .naive_utc(),
+        ),
+        da: Some(
+            chrono::DateTime::from_timestamp(1631297333, 0)
+                .unwrap()
+                .naive_utc()
+                .date(),
         ),
         du: Some(chrono::Duration::hours(4)),
     }
@@ -109,6 +124,12 @@ pub async fn test_precise_chrono_twin_rust_async() -> TestChronoTwinRustAsync {
                 .unwrap()
                 .naive_utc(),
         ),
+        da: Some(
+            chrono::DateTime::from_timestamp(-5362715015, 0)
+                .unwrap()
+                .naive_utc()
+                .date(),
+        ),
         du: Some(chrono::Duration::hours(4)),
     }
 }
@@ -118,7 +139,8 @@ pub struct FeatureChronoTwinRustAsync {
     pub utc: chrono::DateTime<chrono::Utc>,
     pub local: chrono::DateTime<chrono::Local>,
     pub duration: chrono::Duration,
-    pub naive: chrono::NaiveDateTime,
+    pub naive_date: chrono::NaiveDate,
+    pub naive_date_time: chrono::NaiveDateTime,
 }
 
 pub async fn how_long_does_it_take_twin_rust_async(
@@ -127,12 +149,15 @@ pub async fn how_long_does_it_take_twin_rust_async(
     use chrono::{Datelike, Timelike};
     let difference: chrono::Duration = chrono::Utc::now() - mine.utc;
     assert_eq!(&mine.duration.num_hours(), &4);
-    assert_eq!(&mine.naive.year(), &2022);
-    assert_eq!(&mine.naive.month(), &9);
-    assert_eq!(&mine.naive.day(), &10);
-    assert_eq!(&mine.naive.hour(), &20);
-    assert_eq!(&mine.naive.minute(), &48);
-    assert_eq!(&mine.naive.second(), &53);
-    assert_eq!(&mine.naive.nanosecond(), &123_000_000);
+    assert_eq!(&mine.naive_date.year(), &2022);
+    assert_eq!(&mine.naive_date.month(), &9);
+    assert_eq!(&mine.naive_date.day(), &10);
+    assert_eq!(&mine.naive_date_time.year(), &2022);
+    assert_eq!(&mine.naive_date_time.month(), &9);
+    assert_eq!(&mine.naive_date_time.day(), &10);
+    assert_eq!(&mine.naive_date_time.hour(), &20);
+    assert_eq!(&mine.naive_date_time.minute(), &48);
+    assert_eq!(&mine.naive_date_time.second(), &53);
+    assert_eq!(&mine.naive_date_time.nanosecond(), &123_000_000);
     Ok(difference)
 }

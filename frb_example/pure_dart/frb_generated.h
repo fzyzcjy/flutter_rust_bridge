@@ -1441,10 +1441,10 @@ typedef struct wire_cst_exotic_optionals_twin_sync {
   struct wire_cst_new_type_int_twin_sync *newtypeint;
 } wire_cst_exotic_optionals_twin_sync;
 
-typedef struct wire_cst_list_Chrono_Naive {
+typedef struct wire_cst_list_Chrono_NaiveDateTime {
   int64_t *ptr;
   int32_t len;
-} wire_cst_list_Chrono_Naive;
+} wire_cst_list_Chrono_NaiveDateTime;
 
 typedef struct wire_cst_list_Uuid {
   struct wire_cst_list_prim_u_8_strict **ptr;
@@ -1506,21 +1506,24 @@ typedef struct wire_cst_feature_chrono_twin_normal {
   int64_t utc;
   int64_t local;
   int64_t duration;
-  int64_t naive;
+  int64_t naive_date;
+  int64_t naive_date_time;
 } wire_cst_feature_chrono_twin_normal;
 
 typedef struct wire_cst_feature_chrono_twin_rust_async {
   int64_t utc;
   int64_t local;
   int64_t duration;
-  int64_t naive;
+  int64_t naive_date;
+  int64_t naive_date_time;
 } wire_cst_feature_chrono_twin_rust_async;
 
 typedef struct wire_cst_feature_chrono_twin_sync {
   int64_t utc;
   int64_t local;
   int64_t duration;
-  int64_t naive;
+  int64_t naive_date;
+  int64_t naive_date_time;
 } wire_cst_feature_chrono_twin_sync;
 
 typedef struct wire_cst_application_env_var {
@@ -3456,18 +3459,21 @@ typedef struct wire_cst_struct_with_impl_block_in_another_file {
 typedef struct wire_cst_test_chrono_twin_normal {
   int64_t *dt;
   int64_t *dt2;
+  int64_t *da;
   int64_t *du;
 } wire_cst_test_chrono_twin_normal;
 
 typedef struct wire_cst_test_chrono_twin_rust_async {
   int64_t *dt;
   int64_t *dt2;
+  int64_t *da;
   int64_t *du;
 } wire_cst_test_chrono_twin_rust_async;
 
 typedef struct wire_cst_test_chrono_twin_sync {
   int64_t *dt;
   int64_t *dt2;
+  int64_t *da;
   int64_t *du;
 } wire_cst_test_chrono_twin_sync;
 
@@ -9428,11 +9434,11 @@ WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manua
                                                                                                                                            int32_t data_len_);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__chrono_type__handle_timestamps_twin_normal(int64_t port_,
-                                                                                               struct wire_cst_list_Chrono_Naive *timestamps,
+                                                                                               struct wire_cst_list_Chrono_NaiveDateTime *timestamps,
                                                                                                int64_t epoch);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__handle_timestamps_twin_rust_async(int64_t port_,
-                                                                                                                                  struct wire_cst_list_Chrono_Naive *timestamps,
+                                                                                                                                  struct wire_cst_list_Chrono_NaiveDateTime *timestamps,
                                                                                                                                   int64_t epoch);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__handle_timestamps_twin_rust_async_sse(int64_t port_,
@@ -9445,7 +9451,7 @@ void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_t
                                                                                                                     int32_t rust_vec_len_,
                                                                                                                     int32_t data_len_);
 
-WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_sync__handle_timestamps_twin_sync(struct wire_cst_list_Chrono_Naive *timestamps,
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_sync__handle_timestamps_twin_sync(struct wire_cst_list_Chrono_NaiveDateTime *timestamps,
                                                                                                                                       int64_t epoch);
 
 WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__handle_timestamps_twin_sync_sse(uint8_t *ptr_,
@@ -10122,6 +10128,28 @@ void frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__my_s
 
 void frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__my_struct_with_sync_sync(int64_t port_,
                                                                                                      struct wire_cst_my_struct_with_sync *that);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__chrono_type__naivedate_twin_normal(int64_t port_,
+                                                                                       int64_t d);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__naivedate_twin_rust_async(int64_t port_,
+                                                                                                                          int64_t d);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__naivedate_twin_rust_async_sse(int64_t port_,
+                                                                                                                                  uint8_t *ptr_,
+                                                                                                                                  int32_t rust_vec_len_,
+                                                                                                                                  int32_t data_len_);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_sse__naivedate_twin_sse(int64_t port_,
+                                                                                                            uint8_t *ptr_,
+                                                                                                            int32_t rust_vec_len_,
+                                                                                                            int32_t data_len_);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_sync__naivedate_twin_sync(int64_t d);
+
+WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__naivedate_twin_sync_sse(uint8_t *ptr_,
+                                                                                                                                      int32_t rust_vec_len_,
+                                                                                                                                      int32_t data_len_);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__chrono_type__naivedatetime_twin_normal(int64_t port_,
                                                                                            int64_t d);
@@ -14680,7 +14708,9 @@ uintptr_t *frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaqu
 
 int64_t *frbgen_frb_example_pure_dart_cst_new_box_autoadd_Chrono_Duration(int64_t value);
 
-int64_t *frbgen_frb_example_pure_dart_cst_new_box_autoadd_Chrono_Naive(int64_t value);
+int64_t *frbgen_frb_example_pure_dart_cst_new_box_autoadd_Chrono_NaiveDate(int64_t value);
+
+int64_t *frbgen_frb_example_pure_dart_cst_new_box_autoadd_Chrono_NaiveDateTime(int64_t value);
 
 int64_t *frbgen_frb_example_pure_dart_cst_new_box_autoadd_Chrono_Utc(int64_t value);
 
@@ -15252,7 +15282,7 @@ struct wire_cst_list_Chrono_Duration *frbgen_frb_example_pure_dart_cst_new_list_
 
 struct wire_cst_list_Chrono_Local *frbgen_frb_example_pure_dart_cst_new_list_Chrono_Local(int32_t len);
 
-struct wire_cst_list_Chrono_Naive *frbgen_frb_example_pure_dart_cst_new_list_Chrono_Naive(int32_t len);
+struct wire_cst_list_Chrono_NaiveDateTime *frbgen_frb_example_pure_dart_cst_new_list_Chrono_NaiveDateTime(int32_t len);
 
 struct wire_cst_list_DartOpaque *frbgen_frb_example_pure_dart_cst_new_list_DartOpaque(int32_t len);
 
@@ -15523,7 +15553,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneSimpleTwinSyncMoi);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_Chrono_Duration);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_Chrono_Naive);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_Chrono_NaiveDate);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_Chrono_NaiveDateTime);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_Chrono_Utc);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_DartOpaque);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_RustOpaque_HideDataAnotherTwinMoi);
@@ -15809,7 +15840,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueItemTwinNormal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_Chrono_Duration);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_Chrono_Local);
-    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_Chrono_Naive);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_Chrono_NaiveDateTime);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_DartOpaque);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_RustOpaque_HideDataTwinMoi);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_list_RustOpaque_HideDataTwinNormal);
@@ -16429,6 +16460,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__chrono_type__handle_durations_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__chrono_type__handle_timestamps_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__chrono_type__how_long_does_it_take_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__chrono_type__naivedate_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__chrono_type__naivedatetime_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__chrono_type__optional_empty_datetime_utc_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__chrono_type__test_chrono_twin_normal);
@@ -17357,6 +17389,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__handle_durations_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__handle_timestamps_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__how_long_does_it_take_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__naivedate_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__naivedatetime_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__optional_empty_datetime_utc_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__test_chrono_twin_rust_async);
@@ -17367,6 +17400,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__handle_durations_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__handle_timestamps_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__how_long_does_it_take_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__naivedate_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__naivedatetime_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__optional_empty_datetime_utc_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__test_chrono_twin_rust_async_sse);
@@ -17377,6 +17411,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_sse__handle_durations_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_sse__handle_timestamps_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_sse__how_long_does_it_take_twin_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_sse__naivedate_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_sse__naivedatetime_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_sse__optional_empty_datetime_utc_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_sse__test_chrono_twin_sse);
@@ -17387,6 +17422,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_sync__handle_durations_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_sync__handle_timestamps_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_sync__how_long_does_it_take_twin_sync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_sync__naivedate_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_sync__naivedatetime_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_sync__optional_empty_datetime_utc_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_sync__test_chrono_twin_sync);
@@ -17397,6 +17433,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__handle_durations_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__handle_timestamps_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__how_long_does_it_take_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__naivedate_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__naivedatetime_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__optional_empty_datetime_utc_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__test_chrono_twin_sync_sse);

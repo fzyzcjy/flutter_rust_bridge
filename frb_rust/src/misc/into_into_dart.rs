@@ -216,6 +216,7 @@ mod chrono_impls {
     use super::IntoIntoDart;
     use chrono::{Local, Utc};
     impl_into_into_dart_by_self!(chrono::Duration);
+    impl_into_into_dart_by_self!(chrono::NaiveDate);
     impl_into_into_dart_by_self!(chrono::NaiveDateTime);
     impl_into_into_dart_by_self!(chrono::DateTime<Local>);
     impl_into_into_dart_by_self!(chrono::DateTime<Utc>);

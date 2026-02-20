@@ -61,7 +61,8 @@ pub struct MirTypeDelegatePrimitiveEnum {
 pub enum MirTypeDelegateTime {
     Local,
     Utc,
-    Naive,
+    NaiveDate,
+    NaiveDateTime,
     Duration,
 }
 
@@ -248,7 +249,8 @@ impl MirTypeTrait for MirTypeDelegate {
                 mir.rust_api_type()
             }
             MirTypeDelegate::Time(mir) => match mir {
-                MirTypeDelegateTime::Naive => "chrono::NaiveDateTime",
+                MirTypeDelegateTime::NaiveDate => "chrono::NaiveDate",
+                MirTypeDelegateTime::NaiveDateTime => "chrono::NaiveDateTime",
                 MirTypeDelegateTime::Local => "chrono::DateTime::<chrono::Local>",
                 MirTypeDelegateTime::Utc => "chrono::DateTime::<chrono::Utc>",
                 MirTypeDelegateTime::Duration => "chrono::Duration",

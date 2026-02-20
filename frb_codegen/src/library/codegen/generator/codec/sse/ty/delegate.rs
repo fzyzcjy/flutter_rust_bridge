@@ -32,7 +32,8 @@ impl CodecSseTyTrait for DelegateCodecSseTy<'_> {
                 MirTypeDelegate::Time(mir) => match mir {
                     MirTypeDelegateTime::Utc
                     | MirTypeDelegateTime::Local
-                    | MirTypeDelegateTime::Naive => {
+                    | MirTypeDelegateTime::NaiveDate
+                    | MirTypeDelegateTime::NaiveDateTime => {
                         "PlatformInt64Util.from(self.microsecondsSinceEpoch)".to_owned()
                     }
                     MirTypeDelegateTime::Duration => {
@@ -96,7 +97,12 @@ impl CodecSseTyTrait for DelegateCodecSseTy<'_> {
                     MirTypeDelegateTime::Utc | MirTypeDelegateTime::Local => {
                         "self.timestamp_micros()".to_owned()
                     }
-                    MirTypeDelegateTime::Naive => "self.and_utc().timestamp_micros()".to_owned(),
+                    MirTypeDelegateTime::NaiveDate => {
+                        "self.and_hms_opt(0, 0, 0).expect(\"Out of range time\").and_utc().timestamp_micros()".to_owned()
+                    }
+                    MirTypeDelegateTime::NaiveDateTime => {
+                        "self.and_utc().timestamp_micros()".to_owned()
+                    }
                     MirTypeDelegateTime::Duration => {
                         r#"self.num_microseconds().expect("cannot get microseconds from time")"#
                             .to_owned()
@@ -156,11 +162,12 @@ impl CodecSseTyTrait for DelegateCodecSseTy<'_> {
                     MirTypeDelegate::Time(mir) => match mir {
                         MirTypeDelegateTime::Utc
                         | MirTypeDelegateTime::Local
-                        | MirTypeDelegateTime::Naive => {
+                        | MirTypeDelegateTime::NaiveDate
+                        | MirTypeDelegateTime::NaiveDateTime => {
                             format!(
                             "DateTime.fromMicrosecondsSinceEpoch(inner.toInt(), isUtc: {is_utc})",
                             is_utc =
-                                matches!(mir, MirTypeDelegateTime::Naive | MirTypeDelegateTime::Utc),
+                                matches!(mir, MirTypeDelegateTime::NaiveDateTime | MirTypeDelegateTime::NaiveDate | MirTypeDelegateTime::Utc),
                         )
                         }
                         MirTypeDelegateTime::Duration => {
@@ -203,10 +210,12 @@ impl CodecSseTyTrait for DelegateCodecSseTy<'_> {
                 MirTypeDelegate::Map(_) => "inner.into_iter().collect()".to_owned(),
                 MirTypeDelegate::Set(_) => "inner.into_iter().collect()".to_owned(),
                 MirTypeDelegate::Time(mir) => {
-                    let naive = "chrono::DateTime::from_timestamp_micros(inner).expect(\"invalid or out-of-range datetime\").naive_utc()";
-                    let utc = format!("chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset({naive}, chrono::Utc)");
+                    let naive_date_time = "chrono::DateTime::from_timestamp_micros(inner).expect(\"invalid or out-of-range datetime\").naive_utc()";
+                    let naive_date = format!("{naive_date_time}.date()");
+                    let utc = format!("chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset({naive_date_time}, chrono::Utc)");
                     match mir {
-                        MirTypeDelegateTime::Naive => naive.to_owned(),
+                        MirTypeDelegateTime::NaiveDate => naive_date.to_owned(),
+                        MirTypeDelegateTime::NaiveDateTime => naive_date_time.to_owned(),
                         MirTypeDelegateTime::Utc => utc,
                         MirTypeDelegateTime::Local => {
                             format!("chrono::DateTime::<chrono::Local>::from({utc})")
