@@ -1,1 +1,0 @@
-./frb_internal generate-internal-frb-example-pure-dart && ./frb_internal generate-run-frb-codegen-command-generate --package frb_example/pure_dart && ./frb_internal generate-run-frb-codegen-command-generate --package frb_example/pure_dart_pde && ./frb_internal precommit --mode fast
