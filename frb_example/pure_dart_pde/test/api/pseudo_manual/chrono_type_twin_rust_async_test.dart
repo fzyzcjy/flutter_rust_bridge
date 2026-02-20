@@ -123,6 +123,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
             utc: utc,
             local: local,
             duration: duration,
+            naiveDate: naive_date_time,
             naiveDateTime: naive_date_time));
     debugPrint('$difference');
   });
