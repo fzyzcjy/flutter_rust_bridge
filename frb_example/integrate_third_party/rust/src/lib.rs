@@ -1,3 +1,7 @@
+// AUTO INJECTED BY flutter_rust_bridge.
+// The following lines may not be accurate; change them according to your needs.
+mod frb_generated;
+// END of AUTO INJECTED code
+
 pub mod api;
-mod frb_generated; /* AUTO INJECTED BY flutter_rust_bridge. This line may not be accurate, and you can change it according to your needs. */
 pub mod third_party;

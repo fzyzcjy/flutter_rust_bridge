@@ -96,7 +96,7 @@ pub(crate) fn ffigen_raw(config: &FfigenCommandConfig, dart_root: &Path) -> anyh
         &String::from_utf8_lossy(&res.stdout),
         &String::from_utf8_lossy(&res.stderr),
     )? {
-        warn!("{}", warning);
+        warn!("{warning}");
     }
 
     Ok(())

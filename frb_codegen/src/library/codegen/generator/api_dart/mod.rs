@@ -50,7 +50,6 @@ mod tests {
     use crate::codegen::generator::api_dart::generate;
     use crate::codegen::misc::GeneratorProgressBarPack;
     use crate::codegen::Config;
-    use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::test_utils::{get_test_fixture_dir, text_golden_test};
     use serial_test::serial;
     use std::collections::HashMap;
@@ -82,7 +81,6 @@ mod tests {
     }
 
     fn body(fixture_name: &str, expect_outputs: HashMap<&str, &str>) -> anyhow::Result<()> {
-        configure_opinionated_test_logging();
         let test_fixture_dir = get_test_fixture_dir(fixture_name);
         env::set_current_dir(&test_fixture_dir)?;
 
