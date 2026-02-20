@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Web setup
+
+<V1Notice />
 
 Building on web requires nightly Rust, the `wasm32-unknown-unknown` target
 and [wasm-pack], which can be installed using these commands:

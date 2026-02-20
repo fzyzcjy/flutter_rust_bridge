@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Template tour
+
+<V1Notice />
 
 ![success-screen](success.png)
 

@@ -94,8 +94,14 @@ class TestDartNativeConfig {
   @CliOption(convert: convertConfigPackage)
   final String package;
   final bool coverage;
+  @CliOption(defaultsTo: false)
+  final bool checkClean;
 
-  const TestDartNativeConfig({required this.package, required this.coverage});
+  const TestDartNativeConfig({
+    required this.package,
+    required this.coverage,
+    required this.checkClean,
+  });
 }
 
 enum Sanitizer {
@@ -357,7 +363,7 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
       }
 
       // extra check for e.g. #1807
-      await wrapMaybeSetExitIfChangedRaw(true, () async {
+      await wrapMaybeSetExitIfChangedRaw(config.checkClean, () async {
         await exec(
           '${dartMode.name} $extraFlags test ${config.coverage ? ' --coverage="coverage"' : ""}',
           relativePwd: config.package,

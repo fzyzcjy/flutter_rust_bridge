@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Adding new code
+
+<V1Notice />
 
 Let's say we need to change `Platform` such that we don't really care about whether it
 is running on Intel or Apple Silicon, but we would like to keep this information so
