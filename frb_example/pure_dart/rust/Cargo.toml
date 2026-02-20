@@ -7,7 +7,7 @@ edition = "2021"
 crate-type = ["cdylib"]
 
 [dependencies]
-anyhow = { version = "1.0.64", features = ["backtrace"] }
+anyhow = { version = "1.0.102", features = ["backtrace"] }
 flutter_rust_bridge = { path = "../../../frb_rust", features = ["chrono", "uuid", "backtrace"] }
 log = "0.4.19"
 backtrace = "0.3.68"
