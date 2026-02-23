@@ -1,8 +1,8 @@
-ARG FLUTTER_VERSION=3.27.4
+ARG FLUTTER_VERSION=3.41.2
 FROM instrumentisto/flutter:${FLUTTER_VERSION}
 
 # Configurable version parameters
-ARG RUST_VERSION=1.88.0
+ARG RUST_VERSION=1.93.1
 
 # Environment variables
 ENV DEBIAN_FRONTEND=noninteractive
