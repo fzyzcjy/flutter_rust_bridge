@@ -33,8 +33,8 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --de
     rustup target add wasm32-unknown-unknown --toolchain nightly-2025-02-01
 ENV PATH="/root/.cargo/bin:${PATH}"
 
-# Install wasm-pack for web tests
-RUN curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+# Install wasm-pack for web tests (using cargo for better reliability)
+RUN cargo install wasm-pack
 
 # Install Chrome for web tests (headless testing)
 RUN apt-get update && apt-get install -y \
