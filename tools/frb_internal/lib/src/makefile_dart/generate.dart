@@ -437,12 +437,10 @@ Future<void> generateWebsiteBuild(GenerateWebsiteConfig config) async {
   await exec('yarn install --frozen-lockfile', relativePwd: 'website');
   await exec('yarn build', relativePwd: 'website');
 
-  // Note: Rust coverage cannot work for web builds because `profiler_builtins`
-  // is not available for wasm32-unknown-unknown target with `-Z build-std=std,panic_abort`.
   await executeFrbCodegen(
     'build-web --release',
     relativePwd: 'frb_example/gallery',
-    coverage: false,
+    coverage: config.coverage,
     coverageName: 'GenerateWebsiteBuild',
   );
   await exec(
