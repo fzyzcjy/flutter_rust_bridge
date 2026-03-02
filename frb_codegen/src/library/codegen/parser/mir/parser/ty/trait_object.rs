@@ -19,12 +19,18 @@ impl TypeParserWithContext<'_, '_, '_> {
             return Ok(out);
         }
 
-        // fallback
+        // Check if the trait is in the ignored list
+        let is_ignored = extract_trait_name_path(type_trait_object)
+            .and_then(|path| path.segments.last().map(|s| ty_to_string(s)))
+            .map(|name| self.inner.ignored_trait_names.contains(&name))
+            .unwrap_or(false);
+
+        // fallback - pass override_ignore if the trait was explicitly marked with #[frb(ignore)]
         self.parse_type_rust_auto_opaque_implicit(
             None,
             &syn::Type::TraitObject(type_trait_object.clone()),
             None,
-            None,
+            if is_ignored { Some(true) } else { None },
         )
     }
 
