@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "REPLACE_ME_RUST_CRATE_NAME",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet",
+    ]
+  }
+}

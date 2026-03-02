@@ -1,0 +1,9 @@
+{
+  "name": "REPLACE_ME_RUST_CRATE_NAME",
+  "version": "1.0.0",
+  "description": "Please describe the basic information.",
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+  }
+}

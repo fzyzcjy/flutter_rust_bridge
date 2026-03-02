@@ -1,0 +1,12 @@
+/node_modules
+/oh_modules
+/.preview
+/.idea
+/build
+/.cxx
+/.test
+*.har
+**/BuildProfile.ets
+**/oh-package-lock.json5
+libs/arm64-v8a/*
+libs/armeabi-v7a/*
