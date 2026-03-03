@@ -1,6 +1,6 @@
 #!/bin/sh
-exec D:\ProgramFiles\DeveloperToolKit\Jetbrains\Huawei\DevEco Studio\sdk\default\openharmony/native/llvm/bin/clang++ \
+exec ${TOOL_HOME}/sdk/default/openharmony/native/llvm/bin/clang++ \
   -target aarch64-linux-ohos \
-  --sysroot=D:\ProgramFiles\DeveloperToolKit\Jetbrains\Huawei\DevEco Studio\sdk\default\openharmony/native/sysroot \
+  --sysroot=${TOOL_HOME}/sdk/default/openharmony/native/sysroot \
   -D__MUSL__ \
   "$@"
