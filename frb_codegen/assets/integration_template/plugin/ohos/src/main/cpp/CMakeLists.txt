@@ -1,0 +1,22 @@
+# the minimum version of CMake.
+cmake_minimum_required(VERSION 3.10)
+
+# Project-level configuration.
+set(PROJECT_NAME "REPLACE_ME_RUST_CRATE_NAME")
+set(TARGET_LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../../libs/${OHOS_ARCH})
+project(${PROJECT_NAME} LANGUAGES CXX)
+if (NOT DEFINED FLUTTER_TARGET_PLATFORM)
+    if (OHOS_ARCH STREQUAL "arm64-v8a")
+        set(FLUTTER_TARGET_PLATFORM "ohos-arm64")
+    elseif(OHOS_ARCH STREQUAL "armeabi-v7a")
+        set(FLUTTER_TARGET_PLATFORM "ohos-arm")
+    elseif(OHOS_ARCH STREQUAL "x86_64")
+        set(FLUTTER_TARGET_PLATFORM "ohos-x64")
+    else()
+        message(WARNING "Unknown OHOS_ARCH: ${OHOS_ARCH}, defaulting to ohos-arm64")
+        set(FLUTTER_TARGET_PLATFORM "ohos-arm64")
+    endif()
+        message(STATUS "Detected OpenHarmony platform: ${FLUTTER_TARGET_PLATFORM}")
+endif()
+include("../../../../cargokit/cmake/cargokit.cmake")
+apply_cargokit(${PROJECT_NAME} ../../../rust REPLACE_ME_RUST_CRATE_NAME "")
