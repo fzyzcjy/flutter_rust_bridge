@@ -1,7 +1,7 @@
 [submodule "frb_codegen/assets/integration_template/plugin/cargokit"]
 	path = frb_codegen/assets/integration_template/plugin/cargokit
-	url = https://github.com/star4277/cargokit.git
+	url = https://github.com/star4277/cargokit
 [submodule "frb_codegen/assets/integration_template/app/rust_builder/cargokit"]
 	path = frb_codegen/assets/integration_template/app/rust_builder/cargokit
-	url = https://github.com/star4277/cargokit.git
+	url = https://github.com/star4277/cargokit
 
