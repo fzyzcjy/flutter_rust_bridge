@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:flutter_platform_utils/flutter_platform_utils.dart';
 import 'package:flutter_rust_bridge/src/loader/_common.dart';
 import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
 
@@ -52,7 +53,7 @@ ExternalLibrary loadExternalLibraryRaw({
     return ExternalLibrary.open(filePath);
   }
 
-  if (Platform.isAndroid || Platform.isOhos) {
+  if (Platform.isAndroid || PlatformUtils.isOhos) {
     return ExternalLibrary.open('lib$stem.so');
   }
 
