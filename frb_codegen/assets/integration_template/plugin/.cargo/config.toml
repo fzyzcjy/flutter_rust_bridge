@@ -1,8 +1,0 @@
-[target.x86_64-unknown-linux-ohos]
-ar = "${TOOL_HOME}/sdk/default/openharmony/native/llvm/bin/llvm-ar.exe"
-linker = "./script/x86_64-unknown-linux-ohos-clang.cmd"
-
-
-[target.aarch64-unknown-linux-ohos]
-ar = "${TOOL_HOME}/sdk/default/openharmony/native/llvm/bin/llvm-ar.exe"
-linker = "./script/aarch64-unknown-linux-ohos-clang.cmd"
