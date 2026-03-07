@@ -31,10 +31,10 @@ abstract class BaseApiImpl<W extends BaseWire> implements BaseApi {
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-typedef ApiImplConstructor<A extends BaseApiImpl, W extends BaseWire> = A
-    Function({
-  required BaseHandler handler,
-  required W wire,
-  required GeneralizedFrbRustBinding generalizedFrbRustBinding,
-  required PortManager portManager,
-});
+typedef ApiImplConstructor<A extends BaseApiImpl, W extends BaseWire> =
+    A Function({
+      required BaseHandler handler,
+      required W wire,
+      required GeneralizedFrbRustBinding generalizedFrbRustBinding,
+      required PortManager portManager,
+    });

@@ -19,7 +19,8 @@ class BaseHandler {
 
   /// Similar to [executeNormal], except that this will return synchronously
   S executeSync<S, E extends Object, WireSyncType>(
-      SyncTask<S, E, WireSyncType> task) {
+    SyncTask<S, E, WireSyncType> task,
+  ) {
     final WireSyncType syncReturn;
     try {
       syncReturn = task.callFfi();
@@ -34,13 +35,17 @@ class BaseHandler {
       return task.codec.decodeWireSyncType(syncReturn);
     } finally {
       task.codec.freeWireSyncRust2Dart(
-          syncReturn, task.apiImpl.generalizedFrbRustBinding);
+        syncReturn,
+        task.apiImpl.generalizedFrbRustBinding,
+      );
     }
   }
 
   /// When Rust invokes a Dart function
-  void dartFnInvoke(List<dynamic> message,
-      GeneralizedFrbRustBinding generalizedFrbRustBinding) {
+  void dartFnInvoke(
+    List<dynamic> message,
+    GeneralizedFrbRustBinding generalizedFrbRustBinding,
+  ) {
     final [closureDartOpaque, ...args] = message;
     final closureDartObject =
         decodeDartOpaque(closureDartOpaque, generalizedFrbRustBinding)

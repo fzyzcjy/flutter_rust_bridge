@@ -12,12 +12,14 @@ String serializeNativePort(NativePortType port) {
     return (port as web.BroadcastChannel).name;
   }
   throw UnimplementedError(
-      "serializeNativePort see unknown port=$port (type=${port.runtimeType})");
+    "serializeNativePort see unknown port=$port (type=${port.runtimeType})",
+  );
 }
 
 /// {@macro flutter_rust_bridge.internal}
 ReceivePort broadcastPort(String channelName) => ReceivePort._raw(
-    RawReceivePort._raw(_WebChannel.broadcastChannel(channelName)));
+  RawReceivePort._raw(_WebChannel.broadcastChannel(channelName)),
+);
 
 /// {@template flutter_rust_bridge.same_as_native}
 /// Web implementation of the one with same name in native.
@@ -29,7 +31,7 @@ class ReceivePort extends Stream<dynamic> {
   factory ReceivePort() => ReceivePort._raw();
 
   ReceivePort._raw([RawReceivePort? rawReceivePort])
-      : _rawReceivePort = rawReceivePort ?? RawReceivePort();
+    : _rawReceivePort = rawReceivePort ?? RawReceivePort();
 
   @override
   StreamSubscription listen(
@@ -38,13 +40,14 @@ class ReceivePort extends Stream<dynamic> {
     void Function()? onDone,
     bool? cancelOnError,
   }) {
-    final subscription =
-        _rawReceivePort._webReceivePort._onMessage.map(_extractData).listen(
-              onData,
-              onError: onError,
-              onDone: onDone,
-              cancelOnError: cancelOnError,
-            );
+    final subscription = _rawReceivePort._webReceivePort._onMessage
+        .map(_extractData)
+        .listen(
+          onData,
+          onError: onError,
+          onDone: onDone,
+          cancelOnError: cancelOnError,
+        );
     _rawReceivePort._webReceivePort._start();
     return subscription;
   }
@@ -66,7 +69,7 @@ class RawReceivePort {
   factory RawReceivePort() => RawReceivePort._raw();
 
   RawReceivePort._raw([_WebChannel? channel])
-      : _webChannel = channel ?? _WebChannel.messageChannel();
+    : _webChannel = channel ?? _WebChannel.messageChannel();
 
   /// {@macro flutter_rust_bridge.same_as_native}
   set handler(Function(dynamic) handler) {
@@ -117,11 +120,11 @@ class _WebBroadcastChannel implements _WebChannel {
   final web.BroadcastChannel _receiveChannel;
 
   _WebBroadcastChannel(String channelName)
-      // Note: It is *wrong* to reuse the same HTML BroadcastChannel object,
-      // because HTML BroadcastChannel spec says that, the event will not be fired
-      // at the object which sends it. Therefore, we need two different objects.
-      : _sendChannel = web.BroadcastChannel(channelName),
-        _receiveChannel = web.BroadcastChannel(channelName);
+    // Note: It is *wrong* to reuse the same HTML BroadcastChannel object,
+    // because HTML BroadcastChannel spec says that, the event will not be fired
+    // at the object which sends it. Therefore, we need two different objects.
+    : _sendChannel = web.BroadcastChannel(channelName),
+      _receiveChannel = web.BroadcastChannel(channelName);
 
   @override
   SendPort get _sendPort => SendPort._(_sendChannel);
@@ -149,8 +152,9 @@ abstract class _WebPortLike {
 
   Stream<web.MessageEvent> get _onMessage =>
       _kMessageEvent.forTarget(_nativePort);
-  static const _kMessageEvent =
-      web.EventStreamProvider<web.MessageEvent>('message');
+  static const _kMessageEvent = web.EventStreamProvider<web.MessageEvent>(
+    'message',
+  );
 }
 
 class _WebMessagePort extends _WebPortLike {
