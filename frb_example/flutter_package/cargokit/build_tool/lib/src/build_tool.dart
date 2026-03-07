@@ -110,12 +110,10 @@ class PrecompileBinariesCommand extends Command {
         mandatory: true,
         help: 'Directory containing Cargo.toml',
       )
-      ..addMultiOption(
-        'target',
-        help: 'Rust target triple of artifact to build.\n'
-            'Can be specified multiple times or omitted in which case\n'
-            'all targets for current platform will be built.',
-      )
+      ..addMultiOption('target',
+          help: 'Rust target triple of artifact to build.\n'
+              'Can be specified multiple times or omitted in which case\n'
+              'all targets for current platform will be built.')
       ..addOption(
         'android-sdk-location',
         help: 'Location of Android SDK (if available)',
@@ -179,8 +177,7 @@ class PrecompileBinariesCommand extends Command {
       androidMinSdkVersion = int.tryParse(androidMinSdkVersionString);
       if (androidMinSdkVersion == null) {
         throw ArgumentError(
-          'Invalid android-min-sdk-version: $androidMinSdkVersionString',
-        );
+            'Invalid android-min-sdk-version: $androidMinSdkVersionString');
       }
     }
     final targetStrigns = argResults!['target'] as List<String>;
@@ -227,7 +224,9 @@ class VerifyBinariesCommand extends Command {
   @override
   Future<void> run() async {
     final manifestDir = argResults!['manifest-dir'] as String;
-    final verifyBinaries = VerifyBinaries(manifestDir: manifestDir);
+    final verifyBinaries = VerifyBinaries(
+      manifestDir: manifestDir,
+    );
     await verifyBinaries.run();
   }
 }

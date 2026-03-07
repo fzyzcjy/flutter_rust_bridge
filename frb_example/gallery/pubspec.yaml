@@ -3,7 +3,7 @@ description: flutter rust bridge example
 version: 1.0.0
 publish_to: none
 environment:
-  sdk: ">=3.6.2 <4.0.0"
+  sdk: ">=3.3.0 <4.0.0"
 dependencies:
   flutter:
     sdk: flutter
@@ -18,7 +18,7 @@ dev_dependencies:
   test: ^1.21.4
   freezed: ^3.0.6
   build_runner: ^2.4.4
-  ffigen: ^20.1.1
+  ffigen: ^16.1.0
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0

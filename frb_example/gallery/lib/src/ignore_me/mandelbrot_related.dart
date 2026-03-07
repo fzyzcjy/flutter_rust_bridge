@@ -35,21 +35,20 @@ class AnimatedReplaceableImageState extends State<AnimatedReplaceableImage> {
     return Image(
       image: widget.image,
       fit: BoxFit.fill,
-      frameBuilder:
-          (
-            BuildContext context,
-            Widget child,
-            int? frame,
-            bool wasSynchronouslyLoaded,
-          ) => (frame == null && previousImage != null)
-          ? Stack(
-              fit: StackFit.passthrough,
-              children: [
-                Image(image: previousImage!, fit: BoxFit.fill),
-                child,
-              ],
-            )
-          : child,
+      frameBuilder: (BuildContext context, Widget child, int? frame,
+              bool wasSynchronouslyLoaded) =>
+          (frame == null && previousImage != null)
+              ? Stack(
+                  fit: StackFit.passthrough,
+                  children: [
+                    Image(
+                      image: previousImage!,
+                      fit: BoxFit.fill,
+                    ),
+                    child,
+                  ],
+                )
+              : child,
     );
   }
 }
@@ -190,7 +189,9 @@ class MandelbrotPageUI extends StatelessWidget {
         SizedBox.square(
           dimension: size,
           child: image != null
-              ? AnimatedReplaceableImage(image: MemoryImage(image!))
+              ? AnimatedReplaceableImage(
+                  image: MemoryImage(image!),
+                )
               : Material(
                   color: Colors.grey.shade100,
                   child: InkWell(
@@ -224,7 +225,10 @@ class MandelbrotPageUI extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         const SizedBox(width: 32),
-        SizedBox(width: 100, child: Text(label)),
+        SizedBox(
+          width: 100,
+          child: Text(label),
+        ),
         SizedBox(
           width: 200,
           child: Slider(
