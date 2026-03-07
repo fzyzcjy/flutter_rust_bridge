@@ -199,11 +199,9 @@ impl DartRepository {
     }
 
     pub(crate) fn command_extra_args(&self) -> Vec<String> {
-        if self.at.join("build.dart").exists() {
-            vec!["--enable-experiment=native-assets".to_owned()]
-        } else {
-            vec![]
-        }
+        // native-assets experiment was stabilized in Dart 3.10, so we no longer need
+        // the --enable-experiment flag. For Dart < 3.10, users would need to upgrade.
+        vec![]
     }
 }
 
