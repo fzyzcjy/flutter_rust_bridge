@@ -95,14 +95,21 @@ Future<void> lintDartFfigen() async {
     return text.substring(start + 1, findMatchingBracket(text, start));
   }
 
+  // Normalize whitespace for comparison: collapse multiple spaces/newlines into single space
+  String normalizeWhitespace(String text) {
+    return text.replaceAll(RegExp(r'\s+'), ' ').trim();
+  }
+
   final textMatcher = readInterestText('pure_dart');
+  final textMatcherNormalized = normalizeWhitespace(textMatcher);
   final textActual = readInterestText('pure_dart_pde');
 
   final actualChunks = textActual.split('\n\n');
   for (final actualChunk in actualChunks) {
     final modifiedActualChunk = actualChunk.replaceAll(
         'frbgen_frb_example_pure_dart_pde', 'frbgen_frb_example_pure_dart');
-    if (!textMatcher.contains(modifiedActualChunk)) {
+    final normalizedChunk = normalizeWhitespace(modifiedActualChunk);
+    if (!textMatcherNormalized.contains(normalizedChunk)) {
       throw Exception('Fail to find chunk (`$modifiedActualChunk`)');
     }
   }
