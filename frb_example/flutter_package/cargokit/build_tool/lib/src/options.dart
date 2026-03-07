@@ -131,26 +131,27 @@ class PrecompiledBinaries {
 
   static PrecompiledBinaries parse(YamlNode node) {
     if (node case YamlMap(valueMap: Map<dynamic, YamlNode> map)) {
-      if (map case {
-        'url_prefix': YamlNode urlPrefixNode,
-        'public_key': YamlNode publicKeyNode,
-      }) {
+      if (map
+          case {
+            'url_prefix': YamlNode urlPrefixNode,
+            'public_key': YamlNode publicKeyNode,
+          }) {
         final urlPrefix = switch (urlPrefixNode) {
           YamlScalar(value: String urlPrefix) => urlPrefix,
           _ => throw SourceSpanException(
-            'Invalid URL prefix value.',
-            urlPrefixNode.span,
-          ),
+              'Invalid URL prefix value.',
+              urlPrefixNode.span,
+            ),
         };
         final publicKey = switch (publicKeyNode) {
           YamlScalar(value: String publicKey) => _publicKeyFromHex(
-            publicKey,
-            publicKeyNode.span,
-          ),
+              publicKey,
+              publicKeyNode.span,
+            ),
           _ => throw SourceSpanException(
-            'Invalid public key value.',
-            publicKeyNode.span,
-          ),
+              'Invalid public key value.',
+              publicKeyNode.span,
+            ),
         };
         return PrecompiledBinaries(uriPrefix: urlPrefix, publicKey: publicKey);
       }
@@ -178,10 +179,11 @@ class CargokitCrateOptions {
     PrecompiledBinaries? precompiledBinaries;
 
     for (final entry in node.nodes.entries) {
-      if (entry case MapEntry(
-        key: YamlScalar(value: 'cargo'),
-        value: YamlNode node,
-      )) {
+      if (entry
+          case MapEntry(
+            key: YamlScalar(value: 'cargo'),
+            value: YamlNode node,
+          )) {
         if (node is! YamlMap) {
           throw SourceSpanException('Cargo options must be a map', node.span);
         }
@@ -240,8 +242,8 @@ class CargokitUserOptions {
   });
 
   CargokitUserOptions._()
-    : usePrecompiledBinaries = defaultUsePrecompiledBinaries(),
-      verboseLogging = false;
+      : usePrecompiledBinaries = defaultUsePrecompiledBinaries(),
+        verboseLogging = false;
 
   static CargokitUserOptions parse(YamlNode node) {
     if (node is! YamlMap) {
