@@ -384,9 +384,7 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
       final dartMode = kDartModeOfPackage[config.package]!;
 
       var extraFlags = '';
-      if (dartMode == DartMode.dart) {
-        extraFlags += '--enable-experiment=native-assets ';
-      }
+      // native-assets experiment was stabilized in Dart 3.10, so we no longer need the flag
       if (const {
         'frb_example/pure_dart',
         'frb_example/pure_dart_pde',
@@ -509,7 +507,7 @@ Future<void> testDartValgrind(TestDartConfig config) async {
   await runPubGetIfNotRunYet(config.package);
 
   await exec(
-    'dart --enable-experiment=native-assets build '
+    'dart build '
     'test/dart_valgrind_test_entrypoint.dart -o build/valgrind_test_output/',
     relativePwd: config.package,
   );
