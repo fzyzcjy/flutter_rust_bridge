@@ -96,8 +96,12 @@ Future<void> lintDartFfigen() async {
   }
 
   // Normalize whitespace for comparison: collapse multiple spaces/newlines into single space
+  // Also remove trailing commas inside parentheses to handle ffigen vs FRB codegen differences
   String normalizeWhitespace(String text) {
-    return text.replaceAll(RegExp(r'\s+'), ' ').trim();
+    var result = text.replaceAll(RegExp(r'\s+'), ' ').trim();
+    // Remove trailing commas before closing parens/brackets/braces
+    result = result.replaceAll(RegExp(r',\s*([)\]\}])'), r'$1');
+    return result;
   }
 
   final textMatcher = readInterestText('pure_dart');
