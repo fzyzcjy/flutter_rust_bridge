@@ -25,20 +25,22 @@ Future<void> main({bool skipRustLibInit = false}) async {
       test('can be called', () async {
         final obj = await rustAutoOpaqueReturnOwnTwinRustAsyncSse(initial: 100);
         await futurizeVoidTwinRustAsyncSse(
-            rustAutoOpaqueArgOwnTwinRustAsyncSse(arg: obj, expect: 100));
+          rustAutoOpaqueArgOwnTwinRustAsyncSse(arg: obj, expect: 100),
+        );
       });
 
       test('after call, the object cannot be used again', () async {
         final obj = await rustAutoOpaqueReturnOwnTwinRustAsyncSse(initial: 100);
         await futurizeVoidTwinRustAsyncSse(
-            rustAutoOpaqueArgOwnTwinRustAsyncSse(arg: obj, expect: 100));
+          rustAutoOpaqueArgOwnTwinRustAsyncSse(arg: obj, expect: 100),
+        );
 
         expect(obj.isDisposed, true);
 
         await expectLater(
-            () =>
-                rustAutoOpaqueArgBorrowTwinRustAsyncSse(arg: obj, expect: 100),
-            throwsA(isA<DroppableDisposedException>()));
+          () => rustAutoOpaqueArgBorrowTwinRustAsyncSse(arg: obj, expect: 100),
+          throwsA(isA<DroppableDisposedException>()),
+        );
       });
     });
 
@@ -46,19 +48,22 @@ Future<void> main({bool skipRustLibInit = false}) async {
       test('can be called', () async {
         final obj = await rustAutoOpaqueReturnOwnTwinRustAsyncSse(initial: 100);
         await futurizeVoidTwinRustAsyncSse(
-            rustAutoOpaqueArgBorrowTwinRustAsyncSse(arg: obj, expect: 100));
+          rustAutoOpaqueArgBorrowTwinRustAsyncSse(arg: obj, expect: 100),
+        );
         expect(obj.isDisposed, false);
       });
 
       test('after call, the object can still be used again', () async {
         final obj = await rustAutoOpaqueReturnOwnTwinRustAsyncSse(initial: 100);
         await futurizeVoidTwinRustAsyncSse(
-            rustAutoOpaqueArgBorrowTwinRustAsyncSse(arg: obj, expect: 100));
+          rustAutoOpaqueArgBorrowTwinRustAsyncSse(arg: obj, expect: 100),
+        );
 
         expect(obj.isDisposed, false);
 
         await futurizeVoidTwinRustAsyncSse(
-            rustAutoOpaqueArgBorrowTwinRustAsyncSse(arg: obj, expect: 100));
+          rustAutoOpaqueArgBorrowTwinRustAsyncSse(arg: obj, expect: 100),
+        );
       });
     });
 
@@ -66,42 +71,61 @@ Future<void> main({bool skipRustLibInit = false}) async {
       test('can be called', () async {
         final obj = await rustAutoOpaqueReturnOwnTwinRustAsyncSse(initial: 100);
         await futurizeVoidTwinRustAsyncSse(
-            rustAutoOpaqueArgMutBorrowTwinRustAsyncSse(
-                arg: obj, expect: 100, adder: 1));
+          rustAutoOpaqueArgMutBorrowTwinRustAsyncSse(
+            arg: obj,
+            expect: 100,
+            adder: 1,
+          ),
+        );
         expect(obj.isDisposed, false);
       });
 
       test('after call, the object can still be used again', () async {
         final obj = await rustAutoOpaqueReturnOwnTwinRustAsyncSse(initial: 100);
         await futurizeVoidTwinRustAsyncSse(
-            rustAutoOpaqueArgMutBorrowTwinRustAsyncSse(
-                arg: obj, expect: 100, adder: 1));
+          rustAutoOpaqueArgMutBorrowTwinRustAsyncSse(
+            arg: obj,
+            expect: 100,
+            adder: 1,
+          ),
+        );
 
         expect(obj.isDisposed, false);
 
         await futurizeVoidTwinRustAsyncSse(
-            rustAutoOpaqueArgMutBorrowTwinRustAsyncSse(
-                arg: obj, expect: 101, adder: 10));
+          rustAutoOpaqueArgMutBorrowTwinRustAsyncSse(
+            arg: obj,
+            expect: 101,
+            adder: 10,
+          ),
+        );
 
         expect(obj.isDisposed, false);
 
         await futurizeVoidTwinRustAsyncSse(
-            rustAutoOpaqueArgBorrowTwinRustAsyncSse(arg: obj, expect: 111));
+          rustAutoOpaqueArgBorrowTwinRustAsyncSse(arg: obj, expect: 111),
+        );
       });
 
       test('does change the internal data', () async {
         final obj = await rustAutoOpaqueReturnOwnTwinRustAsyncSse(initial: 100);
 
         await futurizeVoidTwinRustAsyncSse(
-            rustAutoOpaqueArgBorrowTwinRustAsyncSse(arg: obj, expect: 100));
+          rustAutoOpaqueArgBorrowTwinRustAsyncSse(arg: obj, expect: 100),
+        );
 
         await futurizeVoidTwinRustAsyncSse(
-            rustAutoOpaqueArgMutBorrowTwinRustAsyncSse(
-                arg: obj, expect: 100, adder: 1));
+          rustAutoOpaqueArgMutBorrowTwinRustAsyncSse(
+            arg: obj,
+            expect: 100,
+            adder: 1,
+          ),
+        );
 
         // expect internal data to change
         await futurizeVoidTwinRustAsyncSse(
-            rustAutoOpaqueArgBorrowTwinRustAsyncSse(arg: obj, expect: 100 + 1));
+          rustAutoOpaqueArgBorrowTwinRustAsyncSse(arg: obj, expect: 100 + 1),
+        );
       });
     });
 
@@ -110,9 +134,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
         final obj = await rustAutoOpaqueReturnOwnTwinRustAsyncSse(initial: 100);
         await Future.wait([
           futurizeVoidTwinRustAsyncSse(
-              rustAutoOpaqueArgBorrowTwinRustAsyncSse(arg: obj, expect: 100)),
+            rustAutoOpaqueArgBorrowTwinRustAsyncSse(arg: obj, expect: 100),
+          ),
           futurizeVoidTwinRustAsyncSse(
-              rustAutoOpaqueArgBorrowTwinRustAsyncSse(arg: obj, expect: 100)),
+            rustAutoOpaqueArgBorrowTwinRustAsyncSse(arg: obj, expect: 100),
+          ),
         ]);
       });
 
@@ -164,7 +190,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final b = await rustAutoOpaqueArgOwnAndReturnOwnTwinRustAsyncSse(arg: a);
 
       await futurizeVoidTwinRustAsyncSse(
-          rustAutoOpaqueArgOwnTwinRustAsyncSse(arg: b, expect: 42));
+        rustAutoOpaqueArgOwnTwinRustAsyncSse(arg: b, expect: 42),
+      );
     });
 
     test('call rustAutoOpaqueTwoArgsTwinRustAsyncSse', () async {
@@ -172,14 +199,16 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final b = await rustAutoOpaqueReturnOwnTwinRustAsyncSse(initial: 20);
 
       await futurizeVoidTwinRustAsyncSse(
-          rustAutoOpaqueTwoArgsTwinRustAsyncSse(a: a, b: b));
+        rustAutoOpaqueTwoArgsTwinRustAsyncSse(a: a, b: b),
+      );
     });
 
     test('call rustAutoOpaqueNormalAndOpaqueArgTwinRustAsyncSse', () async {
       final a = await rustAutoOpaqueReturnOwnTwinRustAsyncSse(initial: 42);
 
       await futurizeVoidTwinRustAsyncSse(
-          rustAutoOpaqueNormalAndOpaqueArgTwinRustAsyncSse(a: a, b: 'hello'));
+        rustAutoOpaqueNormalAndOpaqueArgTwinRustAsyncSse(a: a, b: 'hello'),
+      );
     });
   });
 
@@ -187,13 +216,15 @@ Future<void> main({bool skipRustLibInit = false}) async {
     test('plus sign', () async {
       final obj = await rustAutoOpaquePlusSignReturnTwinRustAsyncSse();
       await futurizeVoidTwinRustAsyncSse(
-          rustAutoOpaquePlusSignArgTwinRustAsyncSse(arg: obj));
+        rustAutoOpaquePlusSignArgTwinRustAsyncSse(arg: obj),
+      );
     });
 
     test('callable', () async {
       final obj = await rustAutoOpaqueCallableReturnTwinRustAsyncSse();
       await futurizeVoidTwinRustAsyncSse(
-          rustAutoOpaqueCallableArgTwinRustAsyncSse(arg: obj));
+        rustAutoOpaqueCallableArgTwinRustAsyncSse(arg: obj),
+      );
     });
   });
 
@@ -219,35 +250,46 @@ Future<void> main({bool skipRustLibInit = false}) async {
   // });
 
   test('static method', () async {
-    final obj = await NonCloneSimpleTwinRustAsyncSse
-        .staticMethodReturnOwnTwinRustAsyncSse();
+    final obj =
+        await NonCloneSimpleTwinRustAsyncSse.staticMethodReturnOwnTwinRustAsyncSse();
     await futurizeVoidTwinRustAsyncSse(
-        NonCloneSimpleTwinRustAsyncSse.staticMethodArgBorrowTwinRustAsyncSse(
-            arg: obj));
+      NonCloneSimpleTwinRustAsyncSse.staticMethodArgBorrowTwinRustAsyncSse(
+        arg: obj,
+      ),
+    );
     await futurizeVoidTwinRustAsyncSse(
-        NonCloneSimpleTwinRustAsyncSse.staticMethodArgMutBorrowTwinRustAsyncSse(
-            arg: obj));
+      NonCloneSimpleTwinRustAsyncSse.staticMethodArgMutBorrowTwinRustAsyncSse(
+        arg: obj,
+      ),
+    );
     await futurizeVoidTwinRustAsyncSse(
-        NonCloneSimpleTwinRustAsyncSse.staticMethodArgOwnTwinRustAsyncSse(
-            arg: obj));
+      NonCloneSimpleTwinRustAsyncSse.staticMethodArgOwnTwinRustAsyncSse(
+        arg: obj,
+      ),
+    );
   });
 
   test('instance method', () async {
     final obj = await NonCloneSimpleTwinRustAsyncSse.newTwinRustAsyncSse();
     await futurizeVoidTwinRustAsyncSse(
-        obj.instanceMethodArgBorrowTwinRustAsyncSse());
+      obj.instanceMethodArgBorrowTwinRustAsyncSse(),
+    );
     await futurizeVoidTwinRustAsyncSse(
-        obj.instanceMethodArgMutBorrowTwinRustAsyncSse());
+      obj.instanceMethodArgMutBorrowTwinRustAsyncSse(),
+    );
     await futurizeVoidTwinRustAsyncSse(
-        obj.instanceMethodReturnOwnTwinRustAsyncSse());
+      obj.instanceMethodReturnOwnTwinRustAsyncSse(),
+    );
     await futurizeVoidTwinRustAsyncSse(
-        obj.instanceMethodArgOwnTwinRustAsyncSse());
+      obj.instanceMethodArgOwnTwinRustAsyncSse(),
+    );
   });
   test('instance newWithResult', () async {
     final obj =
         await NonCloneSimpleTwinRustAsyncSse.newWithResultTwinRustAsyncSse();
     await futurizeVoidTwinRustAsyncSse(
-        obj.instanceMethodArgBorrowTwinRustAsyncSse());
+      obj.instanceMethodArgBorrowTwinRustAsyncSse(),
+    );
   });
 
   test('getter', () async {
@@ -260,10 +302,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
         await rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsyncSse();
     expect(obj.good, 'hello');
     await futurizeVoidTwinRustAsyncSse(
-        rustAutoOpaqueArgBorrowTwinRustAsyncSse(arg: obj.opaque, expect: 42));
+      rustAutoOpaqueArgBorrowTwinRustAsyncSse(arg: obj.opaque, expect: 42),
+    );
     await futurizeVoidTwinRustAsyncSse(
-        rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsyncSse(
-            arg: obj));
+      rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsyncSse(
+        arg: obj,
+      ),
+    );
   });
 
   test('enums with both encodable and opaque', () async {
@@ -273,26 +318,32 @@ Future<void> main({bool skipRustLibInit = false}) async {
         (await rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinRustAsyncSse());
 
     await futurizeVoidTwinRustAsyncSse(
-        rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinRustAsyncSse(arg: good));
+      rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinRustAsyncSse(arg: good),
+    );
     await futurizeVoidTwinRustAsyncSse(
-        rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinRustAsyncSse(arg: opaque));
+      rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinRustAsyncSse(arg: opaque),
+    );
 
     await futurizeVoidTwinRustAsyncSse(
-        rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinRustAsyncSse(
-            arg: EnumWithGoodAndOpaqueTwinRustAsyncSse.good('hello')));
+      rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinRustAsyncSse(
+        arg: EnumWithGoodAndOpaqueTwinRustAsyncSse.good('hello'),
+      ),
+    );
   });
 
   test('enum opaque type', () async {
     final obj = await rustAutoOpaqueEnumReturnOwnTwinRustAsyncSse();
     await futurizeVoidTwinRustAsyncSse(
-        rustAutoOpaqueEnumArgBorrowTwinRustAsyncSse(arg: obj));
+      rustAutoOpaqueEnumArgBorrowTwinRustAsyncSse(arg: obj),
+    );
   });
 
   test('stream sink', () async {
     final stream = rustAutoOpaqueStreamSinkTwinRustAsyncSse();
     final obj = (await stream.toList()).single;
     await futurizeVoidTwinRustAsyncSse(
-        rustAutoOpaqueArgBorrowTwinRustAsyncSse(arg: obj, expect: 42));
+      rustAutoOpaqueArgBorrowTwinRustAsyncSse(arg: obj, expect: 42),
+    );
   });
 
   test('vec of opaque', () async {
@@ -300,49 +351,63 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     expect(vec.length, 2);
     await futurizeVoidTwinRustAsyncSse(
-        rustAutoOpaqueArgBorrowTwinRustAsyncSse(arg: vec[0], expect: 10));
+      rustAutoOpaqueArgBorrowTwinRustAsyncSse(arg: vec[0], expect: 10),
+    );
     await futurizeVoidTwinRustAsyncSse(
-        rustAutoOpaqueArgBorrowTwinRustAsyncSse(arg: vec[1], expect: 20));
+      rustAutoOpaqueArgBorrowTwinRustAsyncSse(arg: vec[1], expect: 20),
+    );
 
     await futurizeVoidTwinRustAsyncSse(
-        rustAutoOpaqueArgVecOwnTwinRustAsyncSse(arg: vec, expect: [10, 20]));
+      rustAutoOpaqueArgVecOwnTwinRustAsyncSse(arg: vec, expect: [10, 20]),
+    );
   });
 
   group('Explicit rust-auto-opaque types', () {
     test('it can be created and used', () async {
-      final obj =
-          await rustAutoOpaqueExplicitReturnTwinRustAsyncSse(initial: 100);
+      final obj = await rustAutoOpaqueExplicitReturnTwinRustAsyncSse(
+        initial: 100,
+      );
       await futurizeVoidTwinRustAsyncSse(
-          rustAutoOpaqueExplicitArgTwinRustAsyncSse(arg: obj, expect: 100));
+        rustAutoOpaqueExplicitArgTwinRustAsyncSse(arg: obj, expect: 100),
+      );
     });
 
     test('it can be inside a struct used as argument', () async {
-      final obj =
-          await rustAutoOpaqueExplicitReturnTwinRustAsyncSse(initial: 100);
+      final obj = await rustAutoOpaqueExplicitReturnTwinRustAsyncSse(
+        initial: 100,
+      );
       await futurizeVoidTwinRustAsyncSse(
-          rustAutoOpaqueExplicitStructTwinRustAsyncSse(
-              arg: StructWithExplicitAutoOpaqueFieldTwinRustAsyncSse(
-                  autoOpaque: obj, normal: 100)));
+        rustAutoOpaqueExplicitStructTwinRustAsyncSse(
+          arg: StructWithExplicitAutoOpaqueFieldTwinRustAsyncSse(
+            autoOpaque: obj,
+            normal: 100,
+          ),
+        ),
+      );
     });
 
     test('it can be inside a struct used as return type', () async {
       final obj = await rustAutoOpaqueExplicitReturnStructTwinRustAsyncSse();
       await futurizeVoidTwinRustAsyncSse(
-          rustAutoOpaqueExplicitStructTwinRustAsyncSse(arg: obj));
+        rustAutoOpaqueExplicitStructTwinRustAsyncSse(arg: obj),
+      );
     });
 
     group('it can be used with automatic (implicit) ones', () {
       test('create by explicit, use by implicit', () async {
-        final obj =
-            await rustAutoOpaqueExplicitReturnTwinRustAsyncSse(initial: 100);
+        final obj = await rustAutoOpaqueExplicitReturnTwinRustAsyncSse(
+          initial: 100,
+        );
         await futurizeVoidTwinRustAsyncSse(
-            rustAutoOpaqueArgOwnTwinRustAsyncSse(arg: obj, expect: 100));
+          rustAutoOpaqueArgOwnTwinRustAsyncSse(arg: obj, expect: 100),
+        );
       });
 
       test('create by implicit, use by explicit', () async {
         final obj = await rustAutoOpaqueReturnOwnTwinRustAsyncSse(initial: 100);
         await futurizeVoidTwinRustAsyncSse(
-            rustAutoOpaqueExplicitArgTwinRustAsyncSse(arg: obj, expect: 100));
+          rustAutoOpaqueExplicitArgTwinRustAsyncSse(arg: obj, expect: 100),
+        );
       });
     });
   });
@@ -352,7 +417,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final obj = await rustAutoOpaqueReturnOwnTwinRustAsyncSse(initial: 100);
       await expectRustPanic(
         () async => rustAutoOpaqueBorrowAndMutBorrowTwinRustAsyncSse(
-            borrow: obj, mutBorrow: obj),
+          borrow: obj,
+          mutBorrow: obj,
+        ),
         'TwinRustAsyncSse',
         messageMatcherOnNative: matches(RegExp('Cannot.*borrow.*object')),
       );
@@ -362,9 +429,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final a = await rustAutoOpaqueReturnOwnTwinRustAsyncSse(initial: 100);
       final b = await rustAutoOpaqueReturnOwnTwinRustAsyncSse(initial: 200);
       expect(
-          await rustAutoOpaqueBorrowAndMutBorrowTwinRustAsyncSse(
-              borrow: a, mutBorrow: b),
-          300);
+        await rustAutoOpaqueBorrowAndMutBorrowTwinRustAsyncSse(
+          borrow: a,
+          mutBorrow: b,
+        ),
+        300,
+      );
     });
   });
 
@@ -372,15 +442,18 @@ Future<void> main({bool skipRustLibInit = false}) async {
     test('when same object', () async {
       final obj = await rustAutoOpaqueReturnOwnTwinRustAsyncSse(initial: 100);
       expect(
-          await rustAutoOpaqueBorrowAndBorrowTwinRustAsyncSse(a: obj, b: obj),
-          200);
+        await rustAutoOpaqueBorrowAndBorrowTwinRustAsyncSse(a: obj, b: obj),
+        200,
+      );
     });
 
     test('when different object', () async {
       final a = await rustAutoOpaqueReturnOwnTwinRustAsyncSse(initial: 100);
       final b = await rustAutoOpaqueReturnOwnTwinRustAsyncSse(initial: 200);
       expect(
-          await rustAutoOpaqueBorrowAndBorrowTwinRustAsyncSse(a: a, b: b), 300);
+        await rustAutoOpaqueBorrowAndBorrowTwinRustAsyncSse(a: a, b: b),
+        300,
+      );
     });
   });
 
@@ -389,7 +462,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final a = await rustAutoOpaqueReturnOwnTwinRustAsyncSse(initial: 100);
       final b = await rustAutoOpaqueReturnOwnTwinRustAsyncSse(initial: 200);
       expect(
-          await rustAutoOpaqueSleepTwinRustAsyncSse(apple: a, orange: b), 300);
+        await rustAutoOpaqueSleepTwinRustAsyncSse(apple: a, orange: b),
+        300,
+      );
     });
 
     test('call both with same order', () async {

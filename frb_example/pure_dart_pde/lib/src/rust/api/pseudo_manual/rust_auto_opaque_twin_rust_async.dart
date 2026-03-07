@@ -12,182 +12,222 @@ part 'rust_auto_opaque_twin_rust_async.freezed.dart';
 
 // These functions are ignored (category: IgnoreBecauseNotAllowedOwner): `f`
 
-Future<void> rustAutoOpaqueArgOwnTwinRustAsync(
-        {required NonCloneSimpleTwinRustAsync arg, required int expect}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueArgOwnTwinRustAsync(
-            arg: arg, expect: expect);
+Future<void> rustAutoOpaqueArgOwnTwinRustAsync({
+  required NonCloneSimpleTwinRustAsync arg,
+  required int expect,
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueArgOwnTwinRustAsync(
+      arg: arg,
+      expect: expect,
+    );
 
-Future<void> rustAutoOpaqueArgBorrowTwinRustAsync(
-        {required NonCloneSimpleTwinRustAsync arg, required int expect}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueArgBorrowTwinRustAsync(
-            arg: arg, expect: expect);
+Future<void> rustAutoOpaqueArgBorrowTwinRustAsync({
+  required NonCloneSimpleTwinRustAsync arg,
+  required int expect,
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueArgBorrowTwinRustAsync(
+      arg: arg,
+      expect: expect,
+    );
 
-Future<void> rustAutoOpaqueArgMutBorrowTwinRustAsync(
-        {required NonCloneSimpleTwinRustAsync arg,
-        required int expect,
-        required int adder}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueArgMutBorrowTwinRustAsync(
-            arg: arg, expect: expect, adder: adder);
+Future<void> rustAutoOpaqueArgMutBorrowTwinRustAsync({
+  required NonCloneSimpleTwinRustAsync arg,
+  required int expect,
+  required int adder,
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueArgMutBorrowTwinRustAsync(
+      arg: arg,
+      expect: expect,
+      adder: adder,
+    );
 
-Future<NonCloneSimpleTwinRustAsync> rustAutoOpaqueReturnOwnTwinRustAsync(
-        {required int initial}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueReturnOwnTwinRustAsync(
-            initial: initial);
+Future<NonCloneSimpleTwinRustAsync> rustAutoOpaqueReturnOwnTwinRustAsync({
+  required int initial,
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueReturnOwnTwinRustAsync(
+      initial: initial,
+    );
 
-Future<
-    NonCloneSimpleTwinRustAsync> rustAutoOpaqueArgOwnAndReturnOwnTwinRustAsync(
-        {required NonCloneSimpleTwinRustAsync arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueArgOwnAndReturnOwnTwinRustAsync(
-            arg: arg);
+Future<NonCloneSimpleTwinRustAsync>
+rustAutoOpaqueArgOwnAndReturnOwnTwinRustAsync({
+  required NonCloneSimpleTwinRustAsync arg,
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueArgOwnAndReturnOwnTwinRustAsync(
+      arg: arg,
+    );
 
-Future<void> rustAutoOpaqueTwoArgsTwinRustAsync(
-        {required NonCloneSimpleTwinRustAsync a,
-        required NonCloneSimpleTwinRustAsync b}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueTwoArgsTwinRustAsync(
-            a: a, b: b);
+Future<void> rustAutoOpaqueTwoArgsTwinRustAsync({
+  required NonCloneSimpleTwinRustAsync a,
+  required NonCloneSimpleTwinRustAsync b,
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueTwoArgsTwinRustAsync(
+      a: a,
+      b: b,
+    );
 
-Future<void> rustAutoOpaqueNormalAndOpaqueArgTwinRustAsync(
-        {required NonCloneSimpleTwinRustAsync a, required String b}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueNormalAndOpaqueArgTwinRustAsync(
-            a: a, b: b);
+Future<void> rustAutoOpaqueNormalAndOpaqueArgTwinRustAsync({
+  required NonCloneSimpleTwinRustAsync a,
+  required String b,
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueNormalAndOpaqueArgTwinRustAsync(
+      a: a,
+      b: b,
+    );
 
 /// "+" inside the type signature
-Future<void> rustAutoOpaquePlusSignArgTwinRustAsync(
-        {required BoxMyTraitTwinRustAsync arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaquePlusSignArgTwinRustAsync(
-            arg: arg);
+Future<void> rustAutoOpaquePlusSignArgTwinRustAsync({
+  required BoxMyTraitTwinRustAsync arg,
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaquePlusSignArgTwinRustAsync(
+      arg: arg,
+    );
 
-Future<BoxMyTraitTwinRustAsync> rustAutoOpaquePlusSignReturnTwinRustAsync() =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaquePlusSignReturnTwinRustAsync();
+Future<BoxMyTraitTwinRustAsync>
+rustAutoOpaquePlusSignReturnTwinRustAsync() => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaquePlusSignReturnTwinRustAsync();
 
-Future<void> rustAutoOpaqueCallableArgTwinRustAsync(
-        {required BoxFnStringString arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueCallableArgTwinRustAsync(
-            arg: arg);
+Future<void> rustAutoOpaqueCallableArgTwinRustAsync({
+  required BoxFnStringString arg,
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueCallableArgTwinRustAsync(
+      arg: arg,
+    );
 
 Future<BoxFnStringString> rustAutoOpaqueCallableReturnTwinRustAsync() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueCallableReturnTwinRustAsync();
 
-Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsync(
-        {required StructWithGoodAndOpaqueFieldTwinRustAsync arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsync(
-            arg: arg);
+Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsync({
+  required StructWithGoodAndOpaqueFieldTwinRustAsync arg,
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsync(
+      arg: arg,
+    );
 
 Future<StructWithGoodAndOpaqueFieldTwinRustAsync>
-    rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsync() => RustLib
-        .instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsync();
+rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsync() => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsync();
 
-Future<void> rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinRustAsync(
-        {required EnumWithGoodAndOpaqueTwinRustAsync arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinRustAsync(
-            arg: arg);
-
-Future<EnumWithGoodAndOpaqueTwinRustAsync>
-    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinRustAsync() => RustLib
-        .instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinRustAsync();
+Future<void> rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinRustAsync({
+  required EnumWithGoodAndOpaqueTwinRustAsync arg,
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinRustAsync(
+      arg: arg,
+    );
 
 Future<EnumWithGoodAndOpaqueTwinRustAsync>
-    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinRustAsync() => RustLib
-        .instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinRustAsync();
+rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinRustAsync() => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinRustAsync();
 
-Future<void> rustAutoOpaqueDummyTwinRustAsync(
-        {required StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync a,
-        required EnumWithGoodAndOpaqueWithoutOptionTwinRustAsync b}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueDummyTwinRustAsync(
-            a: a, b: b);
+Future<EnumWithGoodAndOpaqueTwinRustAsync>
+rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinRustAsync() => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinRustAsync();
 
-Future<void> rustAutoOpaqueEnumArgBorrowTwinRustAsync(
-        {required NonCloneSimpleEnumTwinRustAsync arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueEnumArgBorrowTwinRustAsync(
-            arg: arg);
+Future<void> rustAutoOpaqueDummyTwinRustAsync({
+  required StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsync a,
+  required EnumWithGoodAndOpaqueWithoutOptionTwinRustAsync b,
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueDummyTwinRustAsync(
+      a: a,
+      b: b,
+    );
+
+Future<void> rustAutoOpaqueEnumArgBorrowTwinRustAsync({
+  required NonCloneSimpleEnumTwinRustAsync arg,
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueEnumArgBorrowTwinRustAsync(
+      arg: arg,
+    );
 
 Future<NonCloneSimpleEnumTwinRustAsync>
-    rustAutoOpaqueEnumReturnOwnTwinRustAsync() => RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueEnumReturnOwnTwinRustAsync();
+rustAutoOpaqueEnumReturnOwnTwinRustAsync() => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueEnumReturnOwnTwinRustAsync();
 
-Stream<NonCloneSimpleTwinRustAsync> rustAutoOpaqueStreamSinkTwinRustAsync() =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueStreamSinkTwinRustAsync();
+Stream<NonCloneSimpleTwinRustAsync>
+rustAutoOpaqueStreamSinkTwinRustAsync() => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueStreamSinkTwinRustAsync();
 
-Future<void> rustAutoOpaqueArgVecOwnTwinRustAsync(
-        {required List<NonCloneSimpleTwinRustAsync> arg,
-        required List<int> expect}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueArgVecOwnTwinRustAsync(
-            arg: arg, expect: expect);
+Future<void> rustAutoOpaqueArgVecOwnTwinRustAsync({
+  required List<NonCloneSimpleTwinRustAsync> arg,
+  required List<int> expect,
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueArgVecOwnTwinRustAsync(
+      arg: arg,
+      expect: expect,
+    );
 
 Future<List<NonCloneSimpleTwinRustAsync>>
-    rustAutoOpaqueReturnVecOwnTwinRustAsync() => RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueReturnVecOwnTwinRustAsync();
+rustAutoOpaqueReturnVecOwnTwinRustAsync() => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueReturnVecOwnTwinRustAsync();
 
-Future<void> rustAutoOpaqueExplicitArgTwinRustAsync(
-        {required NonCloneSimpleTwinRustAsync arg, required int expect}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueExplicitArgTwinRustAsync(
-            arg: arg, expect: expect);
+Future<void> rustAutoOpaqueExplicitArgTwinRustAsync({
+  required NonCloneSimpleTwinRustAsync arg,
+  required int expect,
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueExplicitArgTwinRustAsync(
+      arg: arg,
+      expect: expect,
+    );
 
-Future<void> rustAutoOpaqueExplicitStructTwinRustAsync(
-        {required StructWithExplicitAutoOpaqueFieldTwinRustAsync arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueExplicitStructTwinRustAsync(
-            arg: arg);
+Future<void> rustAutoOpaqueExplicitStructTwinRustAsync({
+  required StructWithExplicitAutoOpaqueFieldTwinRustAsync arg,
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueExplicitStructTwinRustAsync(
+      arg: arg,
+    );
 
 Future<StructWithExplicitAutoOpaqueFieldTwinRustAsync>
-    rustAutoOpaqueExplicitReturnStructTwinRustAsync() => RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueExplicitReturnStructTwinRustAsync();
+rustAutoOpaqueExplicitReturnStructTwinRustAsync() => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueExplicitReturnStructTwinRustAsync();
 
-Future<NonCloneSimpleTwinRustAsync> rustAutoOpaqueExplicitReturnTwinRustAsync(
-        {required int initial}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueExplicitReturnTwinRustAsync(
-            initial: initial);
+Future<NonCloneSimpleTwinRustAsync> rustAutoOpaqueExplicitReturnTwinRustAsync({
+  required int initial,
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueExplicitReturnTwinRustAsync(
+      initial: initial,
+    );
 
-Future<int> rustAutoOpaqueSleepTwinRustAsync(
-        {required NonCloneSimpleTwinRustAsync apple,
-        required NonCloneSimpleTwinRustAsync orange}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueSleepTwinRustAsync(
-            apple: apple, orange: orange);
+Future<int> rustAutoOpaqueSleepTwinRustAsync({
+  required NonCloneSimpleTwinRustAsync apple,
+  required NonCloneSimpleTwinRustAsync orange,
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueSleepTwinRustAsync(
+      apple: apple,
+      orange: orange,
+    );
 
 Future<(OpaqueOneTwinRustAsync, OpaqueTwoTwinRustAsync)>
-    rustAutoOpaqueReturnOpaqueOneAndTwoTwinRustAsync() => RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueReturnOpaqueOneAndTwoTwinRustAsync();
+rustAutoOpaqueReturnOpaqueOneAndTwoTwinRustAsync() => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueReturnOpaqueOneAndTwoTwinRustAsync();
 
-Future<OpaqueTwoTwinRustAsync> rustAutoOpaqueReturnOpaqueTwoTwinRustAsync() =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueReturnOpaqueTwoTwinRustAsync();
+Future<OpaqueTwoTwinRustAsync>
+rustAutoOpaqueReturnOpaqueTwoTwinRustAsync() => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueReturnOpaqueTwoTwinRustAsync();
 
-Future<int> rustAutoOpaqueBorrowAndMutBorrowTwinRustAsync(
-        {required NonCloneSimpleTwinRustAsync borrow,
-        required NonCloneSimpleTwinRustAsync mutBorrow}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueBorrowAndMutBorrowTwinRustAsync(
-            borrow: borrow, mutBorrow: mutBorrow);
+Future<int> rustAutoOpaqueBorrowAndMutBorrowTwinRustAsync({
+  required NonCloneSimpleTwinRustAsync borrow,
+  required NonCloneSimpleTwinRustAsync mutBorrow,
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueBorrowAndMutBorrowTwinRustAsync(
+      borrow: borrow,
+      mutBorrow: mutBorrow,
+    );
 
-Future<int> rustAutoOpaqueBorrowAndBorrowTwinRustAsync(
-        {required NonCloneSimpleTwinRustAsync a,
-        required NonCloneSimpleTwinRustAsync b}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueBorrowAndBorrowTwinRustAsync(
-            a: a, b: b);
+Future<int> rustAutoOpaqueBorrowAndBorrowTwinRustAsync({
+  required NonCloneSimpleTwinRustAsync a,
+  required NonCloneSimpleTwinRustAsync b,
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncRustAutoOpaqueBorrowAndBorrowTwinRustAsync(
+      a: a,
+      b: b,
+    );
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn Fn (String) -> String + Send + Sync >>>
 abstract class BoxFnStringString implements RustOpaqueInterface {}
@@ -215,41 +255,45 @@ abstract class NonCloneSimpleTwinRustAsync implements RustOpaqueInterface {
   Future<NonCloneSimpleTwinRustAsync> instanceMethodReturnOwnTwinRustAsync();
 
   /// named constructor
-  static Future<NonCloneSimpleTwinRustAsync> newCustomNameTwinRustAsync() =>
-      RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncNonCloneSimpleTwinRustAsyncNewCustomNameTwinRustAsync();
+  static Future<NonCloneSimpleTwinRustAsync>
+  newCustomNameTwinRustAsync() => RustLib.instance.api
+      .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncNonCloneSimpleTwinRustAsyncNewCustomNameTwinRustAsync();
 
   /// unnamed constructor
   static Future<NonCloneSimpleTwinRustAsync> newTwinRustAsync() => RustLib
-      .instance.api
+      .instance
+      .api
       .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncNonCloneSimpleTwinRustAsyncNewTwinRustAsync();
 
   /// constructor with Result
-  static Future<NonCloneSimpleTwinRustAsync> newWithResultTwinRustAsync() =>
-      RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncNonCloneSimpleTwinRustAsyncNewWithResultTwinRustAsync();
+  static Future<NonCloneSimpleTwinRustAsync>
+  newWithResultTwinRustAsync() => RustLib.instance.api
+      .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncNonCloneSimpleTwinRustAsyncNewWithResultTwinRustAsync();
 
-  static Future<void> staticMethodArgBorrowTwinRustAsync(
-          {required NonCloneSimpleTwinRustAsync arg}) =>
-      RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncNonCloneSimpleTwinRustAsyncStaticMethodArgBorrowTwinRustAsync(
-              arg: arg);
+  static Future<void> staticMethodArgBorrowTwinRustAsync({
+    required NonCloneSimpleTwinRustAsync arg,
+  }) => RustLib.instance.api
+      .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncNonCloneSimpleTwinRustAsyncStaticMethodArgBorrowTwinRustAsync(
+        arg: arg,
+      );
 
-  static Future<void> staticMethodArgMutBorrowTwinRustAsync(
-          {required NonCloneSimpleTwinRustAsync arg}) =>
-      RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncNonCloneSimpleTwinRustAsyncStaticMethodArgMutBorrowTwinRustAsync(
-              arg: arg);
+  static Future<void> staticMethodArgMutBorrowTwinRustAsync({
+    required NonCloneSimpleTwinRustAsync arg,
+  }) => RustLib.instance.api
+      .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncNonCloneSimpleTwinRustAsyncStaticMethodArgMutBorrowTwinRustAsync(
+        arg: arg,
+      );
 
-  static Future<void> staticMethodArgOwnTwinRustAsync(
-          {required NonCloneSimpleTwinRustAsync arg}) =>
-      RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncNonCloneSimpleTwinRustAsyncStaticMethodArgOwnTwinRustAsync(
-              arg: arg);
+  static Future<void> staticMethodArgOwnTwinRustAsync({
+    required NonCloneSimpleTwinRustAsync arg,
+  }) => RustLib.instance.api
+      .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncNonCloneSimpleTwinRustAsyncStaticMethodArgOwnTwinRustAsync(
+        arg: arg,
+      );
 
   static Future<NonCloneSimpleTwinRustAsync>
-      staticMethodReturnOwnTwinRustAsync() => RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncNonCloneSimpleTwinRustAsyncStaticMethodReturnOwnTwinRustAsync();
+  staticMethodReturnOwnTwinRustAsync() => RustLib.instance.api
+      .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncNonCloneSimpleTwinRustAsyncStaticMethodReturnOwnTwinRustAsync();
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OpaqueOneTwinRustAsync>>
@@ -275,9 +319,8 @@ sealed class EnumWithGoodAndOpaqueTwinRustAsync
     with _$EnumWithGoodAndOpaqueTwinRustAsync {
   const EnumWithGoodAndOpaqueTwinRustAsync._();
 
-  const factory EnumWithGoodAndOpaqueTwinRustAsync.good(
-    String field0,
-  ) = EnumWithGoodAndOpaqueTwinRustAsync_Good;
+  const factory EnumWithGoodAndOpaqueTwinRustAsync.good(String field0) =
+      EnumWithGoodAndOpaqueTwinRustAsync_Good;
   const factory EnumWithGoodAndOpaqueTwinRustAsync.opaque(
     NonCloneSimpleTwinRustAsync field0,
   ) = EnumWithGoodAndOpaqueTwinRustAsync_Opaque;

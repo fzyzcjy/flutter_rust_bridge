@@ -24,34 +24,54 @@ List<Command<void>> createCommands() {
   return [
     SimpleCommand('test-mimic-quickstart', testMimicQuickstart),
     SimpleCommand('test-upgrade', testUpgrade),
-    SimpleConfigCommand('test-rust', testRust, _$populateTestRustConfigParser,
-        _$parseTestRustConfigResult),
     SimpleConfigCommand(
-        'test-rust-package',
-        testRustPackage,
-        _$populateTestRustPackageConfigParser,
-        _$parseTestRustPackageConfigResult),
+      'test-rust',
+      testRust,
+      _$populateTestRustConfigParser,
+      _$parseTestRustConfigResult,
+    ),
     SimpleConfigCommand(
-        'test-dart-native',
-        testDartNative,
-        _$populateTestDartNativeConfigParser,
-        _$parseTestDartNativeConfigResult),
-    SimpleConfigCommand('test-dart-web', testDartWeb,
-        _$populateTestDartConfigParser, _$parseTestDartConfigResult),
-    SimpleConfigCommand('test-dart-valgrind', testDartValgrind,
-        _$populateTestDartConfigParser, _$parseTestDartConfigResult),
+      'test-rust-package',
+      testRustPackage,
+      _$populateTestRustPackageConfigParser,
+      _$parseTestRustPackageConfigResult,
+    ),
     SimpleConfigCommand(
-        'test-dart-sanitizer',
-        testDartSanitizer,
-        _$populateTestDartSanitizerConfigParser,
-        _$parseTestDartSanitizerConfigResult),
-    SimpleConfigCommand('test-flutter-native', testFlutterNative,
-        _$populateTestFlutterConfigParser, _$parseTestFlutterConfigResult),
+      'test-dart-native',
+      testDartNative,
+      _$populateTestDartNativeConfigParser,
+      _$parseTestDartNativeConfigResult,
+    ),
     SimpleConfigCommand(
-        'test-flutter-web',
-        testFlutterWeb,
-        _$populateTestFlutterWebConfigParser,
-        _$parseTestFlutterWebConfigResult),
+      'test-dart-web',
+      testDartWeb,
+      _$populateTestDartConfigParser,
+      _$parseTestDartConfigResult,
+    ),
+    SimpleConfigCommand(
+      'test-dart-valgrind',
+      testDartValgrind,
+      _$populateTestDartConfigParser,
+      _$parseTestDartConfigResult,
+    ),
+    SimpleConfigCommand(
+      'test-dart-sanitizer',
+      testDartSanitizer,
+      _$populateTestDartSanitizerConfigParser,
+      _$parseTestDartSanitizerConfigResult,
+    ),
+    SimpleConfigCommand(
+      'test-flutter-native',
+      testFlutterNative,
+      _$populateTestFlutterConfigParser,
+      _$parseTestFlutterConfigResult,
+    ),
+    SimpleConfigCommand(
+      'test-flutter-web',
+      testFlutterWeb,
+      _$populateTestFlutterWebConfigParser,
+      _$parseTestFlutterWebConfigResult,
+    ),
   ];
 }
 
@@ -104,12 +124,7 @@ class TestDartNativeConfig {
   });
 }
 
-enum Sanitizer {
-  asan,
-  msan,
-  lsan,
-  tsan,
-}
+enum Sanitizer { asan, msan, lsan, tsan }
 
 @CliOptions()
 class TestDartSanitizerConfig {
@@ -220,7 +235,8 @@ class MimicQuickstartTester {
   Future<void> _quickstartStepModify() async {
     const kExtraRustSrc =
         '''pub fn hello(a: String) -> String { a.repeat(2) }''';
-    const kExtraDartTestPrelude = '''
+    const kExtraDartTestPrelude =
+        '''
     import 'package:$_kMimicQuickstartPackageName/src/rust/api/simple.dart';
     ''';
     const kExtraDartTestBody = '''
@@ -238,7 +254,10 @@ class MimicQuickstartTester {
     simpleActFile(pathRustSrc, (x) => x + kExtraRustSrc);
     simpleActFile(pathDartTest, (x) => kExtraDartTestPrelude + x);
     simpleReplaceFile(
-        pathDartTest, 'testWidgets(', '$kExtraDartTestBody\ntestWidgets(');
+      pathDartTest,
+      'testWidgets(',
+      '$kExtraDartTestBody\ntestWidgets(',
+    );
 
     for (final path in [pathRustSrc, pathDartTest]) {
       print('path=$path content=${File(path).readAsStringSync()}');
@@ -262,17 +281,19 @@ Future<void> testUpgrade() async {
 
     final baseDir = MimicQuickstartTester._baseDir;
 
-    final pubspecYaml =
-        loadYaml(File('${baseDir}pubspec.yaml').readAsStringSync());
+    final pubspecYaml = loadYaml(
+      File('${baseDir}pubspec.yaml').readAsStringSync(),
+    );
     final dartVersion = pubspecYaml['dependencies']['flutter_rust_bridge'];
     if (dartVersion != expectVersion) {
       throw Exception(
-          'checkVersion failed. dartVersion=$dartVersion expectVersion=$expectVersion');
+        'checkVersion failed. dartVersion=$dartVersion expectVersion=$expectVersion',
+      );
     }
 
-    final cargoToml =
-        TomlDocument.parse(File('${baseDir}rust/Cargo.toml').readAsStringSync())
-            .toMap();
+    final cargoToml = TomlDocument.parse(
+      File('${baseDir}rust/Cargo.toml').readAsStringSync(),
+    ).toMap();
     final rustVersion = cargoToml['dependencies']['flutter_rust_bridge'];
     if (rustVersion != '=$expectVersion') {
       throw Exception('rustVersion=$rustVersion expectVersion=$expectVersion');
@@ -286,26 +307,32 @@ Future<void> testUpgrade() async {
     throw Exception('This test requires oldVersion!=newVersion');
   }
 
-  await quickstartStepInstall(CodegenInstallMode.cargoInstall,
-      versionConstraint: oldVersion);
+  await quickstartStepInstall(
+    CodegenInstallMode.cargoInstall,
+    versionConstraint: oldVersion,
+  );
 
   MimicQuickstartTester._prepareDir();
 
   await const MimicQuickstartTester(postRelease: true)._quickstartStepCreate();
   checkVersion(expectVersion: oldVersion);
 
-  await const MimicQuickstartTester(postRelease: false, coverage: true)
-      ._quickstartStepGenerate();
+  await const MimicQuickstartTester(
+    postRelease: false,
+    coverage: true,
+  )._quickstartStepGenerate();
   checkVersion(expectVersion: newVersion);
 }
 
 Future<void> testRust(TestRustConfig config) async {
   for (final package in kRustPackages) {
-    await testRustPackage(TestRustPackageConfig(
-      package: package,
-      updateGoldens: config.updateGoldens,
-      coverage: config.coverage,
-    ));
+    await testRustPackage(
+      TestRustPackageConfig(
+        package: package,
+        updateGoldens: config.updateGoldens,
+        coverage: config.coverage,
+      ),
+    );
   }
 }
 
@@ -314,28 +341,33 @@ Future<void> testRustPackage(TestRustPackageConfig config) async {
   await runPubGetIfNotRunYet('frb_example/pure_dart');
   print("testRustPackage ${config.package}");
   final feature = getRustFeaturesOfPackage(config.package);
-  await exec('cargo build ${feature != null ? "--features $feature" : ""}',
-      relativePwd: config.package);
+  await exec(
+    'cargo build ${feature != null ? "--features $feature" : ""}',
+    relativePwd: config.package,
+  );
 
-  final effectiveEnableCoverage = config.coverage &&
+  final effectiveEnableCoverage =
+      config.coverage &&
       const ['frb_codegen', 'frb_rust'].contains(config.package);
 
   final outputCodecovPath =
       '${getCoverageDir('test_rust_package_${config.package.replaceAll("/", "_")}')}/codecov.json';
   await exec(
-      'cargo ${effectiveEnableCoverage ? "llvm-cov --codecov --output-path $outputCodecovPath" : "test"} ${feature != null ? "--features $feature" : ""}',
-      relativePwd: config.package,
-      extraEnv: {
-        'FRB_SKIP_GENERATE_FRB_EXAMPLE_TEST': '1',
-        if (config.updateGoldens) 'UPDATE_GOLDENS': '1',
-        ...kEnvEnableRustBacktrace,
-      });
+    'cargo ${effectiveEnableCoverage ? "llvm-cov --codecov --output-path $outputCodecovPath" : "test"} ${feature != null ? "--features $feature" : ""}',
+    relativePwd: config.package,
+    extraEnv: {
+      'FRB_SKIP_GENERATE_FRB_EXAMPLE_TEST': '1',
+      if (config.updateGoldens) 'UPDATE_GOLDENS': '1',
+      ...kEnvEnableRustBacktrace,
+    },
+  );
 
   if (effectiveEnableCoverage) transformCodecovReport(outputCodecovPath);
 }
 
 Future<void> testDartNative(TestDartNativeConfig config) async {
-  final enableRustCoverage = config.coverage &&
+  final enableRustCoverage =
+      config.coverage &&
       !const [
         'frb_dart',
         'frb_utils',
@@ -396,27 +428,34 @@ Future<T> withLlvmCovReport<T>(
   // `--release`, since our dart tests by default build rust release libs
   const cargoLlvmCovCommonArgs = '--release';
 
-  final rawEnvs = (await exec('cargo llvm-cov show-env $cargoLlvmCovCommonArgs',
-          relativePwd: relativeRustPwd))
-      .stdout;
-  final envMap = Map.fromEntries(rawEnvs.trim().split('\n').map((line) {
-    final m = RegExp(r"""^(\w+)=['"]?(.+?)['"]?$""").firstMatch(line)!;
-    return MapEntry(m.group(1)!, m.group(2)!);
-  }));
+  final rawEnvs = (await exec(
+    'cargo llvm-cov show-env $cargoLlvmCovCommonArgs',
+    relativePwd: relativeRustPwd,
+  )).stdout;
+  final envMap = Map.fromEntries(
+    rawEnvs.trim().split('\n').map((line) {
+      final m = RegExp(r"""^(\w+)=['"]?(.+?)['"]?$""").firstMatch(line)!;
+      return MapEntry(m.group(1)!, m.group(2)!);
+    }),
+  );
   print('envMap=$envMap');
 
-  await exec('cargo llvm-cov clean --workspace $cargoLlvmCovCommonArgs',
-      relativePwd: relativeRustPwd, extraEnv: envMap);
+  await exec(
+    'cargo llvm-cov clean --workspace $cargoLlvmCovCommonArgs',
+    relativePwd: relativeRustPwd,
+    extraEnv: envMap,
+  );
 
   final ans = await inner(envMap);
 
   await exec(
-      'cargo llvm-cov report --codecov '
-      '--output-path $reportPath '
-      "--ignore-filename-regex '.*/frb_example/.*' "
-      '$cargoLlvmCovCommonArgs',
-      relativePwd: relativeRustPwd,
-      extraEnv: envMap);
+    'cargo llvm-cov report --codecov '
+    '--output-path $reportPath '
+    "--ignore-filename-regex '.*/frb_example/.*' "
+    '$cargoLlvmCovCommonArgs',
+    relativePwd: relativeRustPwd,
+    extraEnv: envMap,
+  );
   transformCodecovReport(reportPath);
 
   return ans;
@@ -470,11 +509,13 @@ Future<void> testDartValgrind(TestDartConfig config) async {
   await runPubGetIfNotRunYet(config.package);
 
   await exec(
-      'dart --enable-experiment=native-assets build '
-      'test/dart_valgrind_test_entrypoint.dart -o build/valgrind_test_output/',
-      relativePwd: config.package);
+    'dart --enable-experiment=native-assets build '
+    'test/dart_valgrind_test_entrypoint.dart -o build/valgrind_test_output/',
+    relativePwd: config.package,
+  );
 
-  const valgrindCommand = 'valgrind '
+  const valgrindCommand =
+      'valgrind '
       '--error-exitcode=1 '
       '--leak-check=full '
       '--trace-children=yes '
@@ -498,7 +539,8 @@ void checkValgrindOutput(String output) {
   const kDartAllTestsPassedStr = 'All tests passed!';
   if (!output.contains(kDartAllTestsPassedStr)) {
     throw Exception(
-        'valgrind_util does not find "$kDartAllTestsPassedStr", thus dart test seems failed');
+      'valgrind_util does not find "$kDartAllTestsPassedStr", thus dart test seems failed',
+    );
   }
 
   const re = r'(?:definitely|indirectly) lost: (\d+) bytes';
@@ -528,8 +570,9 @@ Future<void> testFlutterNative(TestFlutterConfig config) async {
   await runPubGetIfNotRunYet(config.package);
 
   await flutterIntegrationTestRaw(
-      relativePwd: config.package,
-      flutterTestArgs: config.flutterTestArgs ?? '');
+    relativePwd: config.package,
+    flutterTestArgs: config.flutterTestArgs ?? '',
+  );
 }
 
 Future<void> flutterIntegrationTestRaw({
@@ -538,11 +581,13 @@ Future<void> flutterIntegrationTestRaw({
 }) async {
   await retry(
     () async => await exec(
-        'flutter test integration_test/simple_test.dart --verbose --reporter=expanded $flutterTestArgs',
-        relativePwd: relativePwd),
+      'flutter test integration_test/simple_test.dart --verbose --reporter=expanded $flutterTestArgs',
+      relativePwd: relativePwd,
+    ),
     maxAttempts: 3,
     onRetry: (e) => print(
-        'ERROR when executing flutterIntegrationTestRaw, thus retry (exception=$e)'),
+      'ERROR when executing flutterIntegrationTestRaw, thus retry (exception=$e)',
+    ),
   );
 }
 
@@ -561,12 +606,13 @@ Future<void> testFlutterWeb(TestFlutterWebConfig config) async {
   );
 
   await exec(
-      'flutter drive '
-      '--driver=test_driver/integration_test.dart '
-      '--target=integration_test/simple_test.dart '
-      '-d web-server '
-      '--verbose',
-      relativePwd: config.package);
+    'flutter drive '
+    '--driver=test_driver/integration_test.dart '
+    '--target=integration_test/simple_test.dart '
+    '-d web-server '
+    '--verbose',
+    relativePwd: config.package,
+  );
 
   if (config.coverage) {
     await _formatDartCoverage(package: config.package);

@@ -7,80 +7,95 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:path/path.dart';
 
-Future<void> generatePureDartPde(
-    {required Uri dirPureDart, required Uri dirPureDartPde}) async {
-  copyRecursive(Directory(dirPureDart.toFilePath()),
-      Directory(dirPureDartPde.toFilePath()), filter: (entity) {
-    final relativePath = relative(entity.path, from: dirPureDart.toFilePath());
+Future<void> generatePureDartPde({
+  required Uri dirPureDart,
+  required Uri dirPureDartPde,
+}) async {
+  copyRecursive(
+    Directory(dirPureDart.toFilePath()),
+    Directory(dirPureDartPde.toFilePath()),
+    filter: (entity) {
+      final relativePath = relative(
+        entity.path,
+        from: dirPureDart.toFilePath(),
+      );
 
-    if (const [
-          '.DS_Store',
-        ].contains(basename(relativePath)) ||
-        const [
-          // gitignore them
-          '.dart_tool',
-          '.idea',
-          'benchmark',
-          'build',
-          'coverage',
-          'rust/target',
-          'web',
+      if (const ['.DS_Store'].contains(basename(relativePath)) ||
+          const [
+            // gitignore them
+            '.dart_tool',
+            '.idea',
+            'benchmark',
+            'build',
+            'coverage',
+            'rust/target',
+            'web',
 
-          // will generate separately
-          'frb_generated.h',
-          'lib/src/rust',
-          'test/api/pseudo_manual',
-          'rust/src/api/pseudo_manual',
-          'rust/src/frb_generated.rs',
-          'rust/src/frb_generated.io.rs',
-          'rust/src/frb_generated.web.rs',
-        ].contains(relativePath)) {
-      return false;
-    }
+            // will generate separately
+            'frb_generated.h',
+            'lib/src/rust',
+            'test/api/pseudo_manual',
+            'rust/src/api/pseudo_manual',
+            'rust/src/frb_generated.rs',
+            'rust/src/frb_generated.io.rs',
+            'rust/src/frb_generated.web.rs',
+          ].contains(relativePath)) {
+        return false;
+      }
 
-    if (entity is File) {
-      final annotation = Annotation.parse(entity.readAsStringSync());
-      if (annotation.skipPde) return false;
-    }
+      if (entity is File) {
+        final annotation = Annotation.parse(entity.readAsStringSync());
+        if (annotation.skipPde) return false;
+      }
 
-    return true;
-  }, map: (file, text) {
-    final relativePath = relative(file.path, from: dirPureDart.toFilePath());
+      return true;
+    },
+    map: (file, text) {
+      final relativePath = relative(file.path, from: dirPureDart.toFilePath());
 
-    switch (relativePath) {
-      case 'pubspec.yaml':
-        return simpleReplaceString(text, 'name: frb_example_pure_dart',
-            'name: frb_example_pure_dart_pde');
+      switch (relativePath) {
+        case 'pubspec.yaml':
+          return simpleReplaceString(
+            text,
+            'name: frb_example_pure_dart',
+            'name: frb_example_pure_dart_pde',
+          );
 
-      case 'rust/Cargo.toml':
-        return simpleReplaceString(text, 'name = "frb_example_pure_dart"',
-            'name = "frb_example_pure_dart_pde"');
-      case 'rust/Cargo.lock':
-        return simpleReplaceString(
-            text, '"frb_example_pure_dart"', '"frb_example_pure_dart_pde"');
+        case 'rust/Cargo.toml':
+          return simpleReplaceString(
+            text,
+            'name = "frb_example_pure_dart"',
+            'name = "frb_example_pure_dart_pde"',
+          );
+        case 'rust/Cargo.lock':
+          return simpleReplaceString(
+            text,
+            '"frb_example_pure_dart"',
+            '"frb_example_pure_dart_pde"',
+          );
 
-      case 'flutter_rust_bridge.yaml':
-        return simpleReplaceString(text, '\nfull_dep: true', '');
+        case 'flutter_rust_bridge.yaml':
+          return simpleReplaceString(text, '\nfull_dep: true', '');
 
-      default:
-        final prelude = switch (extension(file.path)) {
-          '.rs' ||
-          '.dart' =>
-            '// AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT\n\n',
-          _ => '',
-        };
-        return prelude +
-            text
-                .replaceAll(
-                  'package:frb_example_pure_dart',
-                  'package:frb_example_pure_dart_pde',
-                )
-                .replaceAll('RustOpaqueNom<', 'RustOpaqueMoi<')
-                // hack (not a problem, since this script merely generates test code for bridge,
-                // but not generate anything related to real users)
-                .replaceAll('mirror_twin_sync_sse', 'mirror_twin_sync');
-    }
-  });
+        default:
+          final prelude = switch (extension(file.path)) {
+            '.rs' || '.dart' =>
+              '// AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT\n\n',
+            _ => '',
+          };
+          return prelude +
+              text
+                  .replaceAll(
+                    'package:frb_example_pure_dart',
+                    'package:frb_example_pure_dart_pde',
+                  )
+                  .replaceAll('RustOpaqueNom<', 'RustOpaqueMoi<')
+                  // hack (not a problem, since this script merely generates test code for bridge,
+                  // but not generate anything related to real users)
+                  .replaceAll('mirror_twin_sync_sse', 'mirror_twin_sync');
+      }
+    },
+  );
 
   // To refresh Cargo.lock's ordering
   await exec('cargo fetch', relativePwd: 'frb_example/pure_dart_pde/rust');

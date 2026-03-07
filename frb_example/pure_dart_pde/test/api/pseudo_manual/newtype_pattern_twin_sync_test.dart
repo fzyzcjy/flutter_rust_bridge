@@ -14,7 +14,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('dart call handleNewtype', () async {
     final newtypeResp = await handleNewtypeTwinSync(
-        arg: NewTypeIntTwinSync(field0: PlatformInt64Util.from(42)));
+      arg: NewTypeIntTwinSync(field0: PlatformInt64Util.from(42)),
+    );
     expect(newtypeResp.field0.toInt(), 84);
   });
 }

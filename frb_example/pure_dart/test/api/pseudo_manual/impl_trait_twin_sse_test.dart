@@ -23,8 +23,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('trait default impl', () async {
     expect(
-        await StructOneWithTraitTwinSse.simpleTraitFnWithDefaultImplTwinSse(),
-        42);
+      await StructOneWithTraitTwinSse.simpleTraitFnWithDefaultImplTwinSse(),
+      42,
+    );
   });
 
   // test('use generated implementor', () async {

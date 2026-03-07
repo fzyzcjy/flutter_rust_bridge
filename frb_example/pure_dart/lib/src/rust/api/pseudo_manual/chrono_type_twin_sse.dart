@@ -10,36 +10,46 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 
-Future<DateTime> datetimeUtcTwinSse({required DateTime d}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualChronoTypeTwinSseDatetimeUtcTwinSse(d: d);
+Future<DateTime> datetimeUtcTwinSse({required DateTime d}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualChronoTypeTwinSseDatetimeUtcTwinSse(d: d);
 
-Future<DateTime> datetimeLocalTwinSse({required DateTime d}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualChronoTypeTwinSseDatetimeLocalTwinSse(d: d);
+Future<DateTime> datetimeLocalTwinSse({required DateTime d}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualChronoTypeTwinSseDatetimeLocalTwinSse(d: d);
 
-Future<DateTime> naivedatetimeTwinSse({required DateTime d}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualChronoTypeTwinSseNaivedatetimeTwinSse(d: d);
+Future<DateTime> naivedatetimeTwinSse({required DateTime d}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualChronoTypeTwinSseNaivedatetimeTwinSse(d: d);
 
 Future<DateTime?> optionalEmptyDatetimeUtcTwinSse({DateTime? d}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualChronoTypeTwinSseOptionalEmptyDatetimeUtcTwinSse(d: d);
 
 Future<Duration> durationTwinSse({required Duration d}) => RustLib.instance.api
     .crateApiPseudoManualChronoTypeTwinSseDurationTwinSse(d: d);
 
-Future<List<Duration>> handleTimestampsTwinSse(
-        {required List<DateTime> timestamps, required DateTime epoch}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualChronoTypeTwinSseHandleTimestampsTwinSse(
-            timestamps: timestamps, epoch: epoch);
+Future<List<Duration>> handleTimestampsTwinSse({
+  required List<DateTime> timestamps,
+  required DateTime epoch,
+}) => RustLib.instance.api
+    .crateApiPseudoManualChronoTypeTwinSseHandleTimestampsTwinSse(
+      timestamps: timestamps,
+      epoch: epoch,
+    );
 
-Future<List<DateTime>> handleDurationsTwinSse(
-        {required List<Duration> durations, required DateTime since}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualChronoTypeTwinSseHandleDurationsTwinSse(
-            durations: durations, since: since);
+Future<List<DateTime>> handleDurationsTwinSse({
+  required List<Duration> durations,
+  required DateTime since,
+}) => RustLib.instance.api
+    .crateApiPseudoManualChronoTypeTwinSseHandleDurationsTwinSse(
+      durations: durations,
+      since: since,
+    );
 
 Future<TestChronoTwinSse> testChronoTwinSse() => RustLib.instance.api
     .crateApiPseudoManualChronoTypeTwinSseTestChronoTwinSse();
@@ -47,11 +57,10 @@ Future<TestChronoTwinSse> testChronoTwinSse() => RustLib.instance.api
 Future<TestChronoTwinSse> testPreciseChronoTwinSse() => RustLib.instance.api
     .crateApiPseudoManualChronoTypeTwinSseTestPreciseChronoTwinSse();
 
-Future<Duration> howLongDoesItTakeTwinSse(
-        {required FeatureChronoTwinSse mine}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualChronoTypeTwinSseHowLongDoesItTakeTwinSse(
-            mine: mine);
+Future<Duration> howLongDoesItTakeTwinSse({
+  required FeatureChronoTwinSse mine,
+}) => RustLib.instance.api
+    .crateApiPseudoManualChronoTypeTwinSseHowLongDoesItTakeTwinSse(mine: mine);
 
 class FeatureChronoTwinSse {
   final DateTime utc;
@@ -86,11 +95,7 @@ class TestChronoTwinSse {
   final DateTime? dt2;
   final Duration? du;
 
-  const TestChronoTwinSse({
-    this.dt,
-    this.dt2,
-    this.du,
-  });
+  const TestChronoTwinSse({this.dt, this.dt2, this.du});
 
   @override
   int get hashCode => dt.hashCode ^ dt2.hashCode ^ du.hashCode;

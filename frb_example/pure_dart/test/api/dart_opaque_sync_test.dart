@@ -15,27 +15,37 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('loopback', () {
     var syncBack = syncLoopbackTwinNormal(opaque: f);
-    expect((syncOptionLoopbackTwinNormal(opaque: syncBack) as dynamic)(),
-        'Test_String');
+    expect(
+      (syncOptionLoopbackTwinNormal(opaque: syncBack) as dynamic)(),
+      'Test_String',
+    );
     expect(syncOptionLoopbackTwinNormal(opaque: null), isNull);
   });
 
   test('sync option', () {
-    var data4 = syncOptionDartOpaqueTwinNormal(opaque: () => () => 'magic');
+    var data4 = syncOptionDartOpaqueTwinNormal(
+      opaque: () =>
+          () => 'magic',
+    );
     expect(data4, isNotNull);
   });
 
   test('drop', () async {
-    expect(syncAcceptDartOpaqueTwinNormal(opaque: createLargeList(mb: 200)),
-        'test');
+    expect(
+      syncAcceptDartOpaqueTwinNormal(opaque: createLargeList(mb: 200)),
+      'test',
+    );
   });
 
   test('unwrap', () async {
     expect(
-        unwrapDartOpaqueTwinNormal(opaque: createLargeList(mb: 200)), 'Test');
+      unwrapDartOpaqueTwinNormal(opaque: createLargeList(mb: 200)),
+      'Test',
+    );
     await expectLater(
-        () => panicUnwrapDartOpaqueTwinNormal(opaque: createLargeList(mb: 200)),
-        throwsA(isA<PanicException>()));
+      () => panicUnwrapDartOpaqueTwinNormal(opaque: createLargeList(mb: 200)),
+      throwsA(isA<PanicException>()),
+    );
   });
 
   // `returnNonDroppableDartOpaqueTwinNormal` is removed

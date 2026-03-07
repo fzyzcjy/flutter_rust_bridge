@@ -54,11 +54,14 @@ class RustGenerator extends BaseGenerator {
         .replaceAll('TwinNormal', ReCase(mode.postfix).pascalCase)
         .replaceAll('_twin_normal', mode.postfix)
         .replaceAllMapped(
-            RegExp(r'use crate::api::([a-zA-Z0-9_]+)::'),
-            (m) =>
-                'use crate::api::pseudo_manual::${m.group(1)}${mode.postfix}::')
+          RegExp(r'use crate::api::([a-zA-Z0-9_]+)::'),
+          (m) =>
+              'use crate::api::pseudo_manual::${m.group(1)}${mode.postfix}::',
+        )
         .replaceAll(
-            'super::rust_opaque::', 'super::rust_opaque${mode.postfix}::')
+          'super::rust_opaque::',
+          'super::rust_opaque${mode.postfix}::',
+        )
         .replaceAll('super::basic::', 'super::basic${mode.postfix}::');
 
     if (mode.components.any((e) => e == DuplicatorComponentMode.sse)) {
@@ -73,12 +76,15 @@ class RustGenerator extends BaseGenerator {
     if (mode.components.any((e) => e == DuplicatorComponentMode.moi)) {
       // hack, otherwise `i32` is considered as Nom, and will ignore requests of using Moi codec
       // anyway this hack only affects how tests are auto generated, so no problem
-      ans = ans.replaceAll(RegExp(r'RustOpaque<i32>'),
-          'crate::frb_generated::RustOpaqueMoi<i16>');
+      ans = ans.replaceAll(
+        RegExp(r'RustOpaque<i32>'),
+        'crate::frb_generated::RustOpaqueMoi<i16>',
+      );
       ans = ans.replaceAllMapped(
-          RegExp(r'Rust(Auto)?Opaque(Nom)?(<|::)'),
-          (m) =>
-              'crate::frb_generated::Rust${m.group(1) ?? ""}OpaqueMoi${m.group(3)}');
+        RegExp(r'Rust(Auto)?Opaque(Nom)?(<|::)'),
+        (m) =>
+            'crate::frb_generated::Rust${m.group(1) ?? ""}OpaqueMoi${m.group(3)}',
+      );
     }
 
     return ans;

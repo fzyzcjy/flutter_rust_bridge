@@ -9,15 +9,20 @@ import 'package:glob/glob.dart';
 import 'package:glob/list_local_fs.dart';
 import 'package:path/path.dart' as path;
 
-Future<void> generateDartTestEntrypoints(Package package,
-    {required Uri dartRoot}) async {
+Future<void> generateDartTestEntrypoints(
+  Package package, {
+  required Uri dartRoot,
+}) async {
   await _generateDartValgrindTestEntrypoint(package, dartRoot: dartRoot);
   await _generateDartWebTestEntrypoint(package, dartRoot: dartRoot);
 }
 
-Future<void> _generateDartWebTestEntrypoint(Package package,
-    {required Uri dartRoot}) async {
-  final code = '''
+Future<void> _generateDartWebTestEntrypoint(
+  Package package, {
+  required Uri dartRoot,
+}) async {
+  final code =
+      '''
 $_kPrelude
 
 import 'package:flutter_rust_bridge_utils/flutter_rust_bridge_utils_web.dart';
@@ -36,25 +41,28 @@ Future<void> main() async {
   await _writeToFile(dartRoot, 'test/dart_web_test_entrypoint.dart', code);
 }
 
-Future<void> _generateDartValgrindTestEntrypoint(Package package,
-    {required Uri dartRoot}) async {
+Future<void> _generateDartValgrindTestEntrypoint(
+  Package package, {
+  required Uri dartRoot,
+}) async {
   final dirTest = dartRoot.resolve('test/');
   final dirInterest = dirTest.resolve('api/');
   final files = [
     for (final file in Glob('${dirInterest.toFilePath()}**.dart').listSync())
-      file.path
+      file.path,
   ].sorted();
 
   final imports = [
     for (final file in files) //
-      "import '${path.relative(file, from: dirTest.toFilePath())}' as ${path.basenameWithoutExtension(file)};\n"
+      "import '${path.relative(file, from: dirTest.toFilePath())}' as ${path.basenameWithoutExtension(file)};\n",
   ];
   final calls = [
     for (final file in files) //
-      "await ${path.basenameWithoutExtension(file)}.main(skipRustLibInit: true);\n"
+      "await ${path.basenameWithoutExtension(file)}.main(skipRustLibInit: true);\n",
   ];
 
-  final code = '''
+  final code =
+      '''
 $_kPrelude
 
 import 'dart:io';
@@ -92,7 +100,10 @@ Future<void> callFileEntrypoints() async {
 }
 
 Future<void> _writeToFile(
-    Uri dartRoot, String relativePath, String code) async {
+  Uri dartRoot,
+  String relativePath,
+  String code,
+) async {
   final pathOutput = dartRoot.resolve(relativePath).toFilePath();
   File(pathOutput).writeAsStringSync(code);
   await runCommand('dart', ['format', pathOutput]);

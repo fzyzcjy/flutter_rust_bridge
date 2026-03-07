@@ -15,8 +15,12 @@ part 'misc.g.dart';
 List<Command<void>> createCommands() {
   return [
     SimpleCommand('misc-normalize-pubspec', miscNormalizePubspec),
-    SimpleConfigCommand('precommit', precommit, _$populatePrecommitConfigParser,
-        _$parsePrecommitConfigResult),
+    SimpleConfigCommand(
+      'precommit',
+      precommit,
+      _$populatePrecommitConfigParser,
+      _$parsePrecommitConfigResult,
+    ),
     SimpleCommand('precommit-generate', precommitGenerate),
     SimpleCommand('precommit-integrate', precommitIntegrate),
     SimpleCommand('pub-get-all', pubGetAll),
@@ -41,9 +45,7 @@ enum PrecommitMode { fast, slow }
 class PrecommitConfig {
   final PrecommitMode mode;
 
-  const PrecommitConfig({
-    required this.mode,
-  });
+  const PrecommitConfig({required this.mode});
 }
 
 Future<void> precommit(PrecommitConfig config) async {
@@ -67,8 +69,9 @@ Future<void> precommit(PrecommitConfig config) async {
 
   if (config.mode == PrecommitMode.slow) {
     await generateInternal(
-        const GenerateConfig(setExitIfChanged: false, coverage: false),
-        canSkipAllContributor: true);
+      const GenerateConfig(setExitIfChanged: false, coverage: false),
+      canSkipAllContributor: true,
+    );
     await testRust(const TestRustConfig(updateGoldens: true, coverage: false));
     await pubGetAll();
     await cargoFetchAll();
@@ -80,23 +83,35 @@ Future<void> precommit(PrecommitConfig config) async {
 Future<void> precommitGenerate() async {
   await Future.wait([
     for (final package in kDartExamplePackages)
-      generateRunFrbCodegenCommandGenerate(GeneratePackageConfig(
-          setExitIfChanged: false, package: package, coverage: false)),
+      generateRunFrbCodegenCommandGenerate(
+        GeneratePackageConfig(
+          setExitIfChanged: false,
+          package: package,
+          coverage: false,
+        ),
+      ),
   ]);
 }
 
 Future<void> precommitIntegrate() async {
   await Future.wait([
     for (final package in kDartExampleIntegratePackages)
-      generateRunFrbCodegenCommandIntegrate(GeneratePackageConfig(
-          setExitIfChanged: false, package: package, coverage: false)),
+      generateRunFrbCodegenCommandIntegrate(
+        GeneratePackageConfig(
+          setExitIfChanged: false,
+          package: package,
+          coverage: false,
+        ),
+      ),
   ]);
 }
 
 Future<void> pubGetAll() async {
   for (final package in kDartPackages) {
-    await exec('${kDartModeOfPackage[package]!.name} pub get',
-        relativePwd: package);
+    await exec(
+      '${kDartModeOfPackage[package]!.name} pub get',
+      relativePwd: package,
+    );
   }
 }
 

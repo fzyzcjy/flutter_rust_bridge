@@ -16,14 +16,16 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('dart call handle_type_nest_alias_id', () async {
-    final id =
-        await handleTypeNestAliasIdTwinRustAsyncSse(input: BigInt.from(42));
+    final id = await handleTypeNestAliasIdTwinRustAsyncSse(
+      input: BigInt.from(42),
+    );
     expect(id.toInt(), 42);
   });
 
   test('dart call handle_type_model', () async {
-    final testModel =
-        await handleTypeAliasModelTwinRustAsyncSse(input: BigInt.from(42));
+    final testModel = await handleTypeAliasModelTwinRustAsyncSse(
+      input: BigInt.from(42),
+    );
     expect(testModel.id.toInt(), 42);
     expect(testModel.name, "TestModel");
     expect(testModel.aliasEnum, MyEnum.false_);

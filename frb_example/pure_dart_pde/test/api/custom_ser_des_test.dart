@@ -15,7 +15,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('custom serializer', () async {
     expect(
-        await functionUsingTypeWithCustomSerializer(arg: 123456789), 123456789);
+      await functionUsingTypeWithCustomSerializer(arg: 123456789),
+      123456789,
+    );
   });
 
   // Dart Web does not support `InternetAddress.tryParse`

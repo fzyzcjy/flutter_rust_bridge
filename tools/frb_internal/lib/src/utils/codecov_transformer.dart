@@ -9,19 +9,24 @@ import 'package:meta/meta.dart';
 void transformCodecovReport(String path) {
   print('transformCodecovReport act on $path');
   simpleActFile(
-      path, (raw) => jsonEncode(_transformCodecovReportInner(jsonDecode(raw))));
+    path,
+    (raw) => jsonEncode(_transformCodecovReportInner(jsonDecode(raw))),
+  );
 }
 
 // format: https://docs.codecov.com/docs/codecov-custom-coverage-format
 Map<String, dynamic> _transformCodecovReportInner(Map<String, dynamic> raw) {
   return {
     'coverage': (raw['coverage'] as Map<String, dynamic>).map(
-        (filename, data) => MapEntry(filename, _transformFile(filename, data))),
+      (filename, data) => MapEntry(filename, _transformFile(filename, data)),
+    ),
   };
 }
 
 Map<String, dynamic> _transformFile(
-    String filename, Map<String, dynamic> srcData) {
+  String filename,
+  Map<String, dynamic> srcData,
+) {
   final fileLines = File(filename).readAsStringSync().split('\n');
 
   var ans = srcData;
@@ -43,7 +48,9 @@ Map<String, dynamic> _transformByMimickingLcovInfo(Map<String, dynamic> raw) {
 }
 
 Map<String, dynamic> _transformByCodeComments(
-    List<String> fileLines, Map<String, dynamic> raw) {
+  List<String> fileLines,
+  Map<String, dynamic> raw,
+) {
   final ans = {...raw};
 
   var ignoring = false;
@@ -76,20 +83,22 @@ Map<String, dynamic> _transformByCodeComments(
 }
 
 // see the test file for details of this regex
-final _kIgnoreLineRegex =
-    RegExp(r'^\s*(#\[derive\(.*\)\]|[)}]\?.*|//.*|\};?)\s*$');
+final _kIgnoreLineRegex = RegExp(
+  r'^\s*(#\[derive\(.*\)\]|[)}]\?.*|//.*|\};?)\s*$',
+);
 
 @visibleForTesting
 bool shouldKeepLine(String line) => !_kIgnoreLineRegex.hasMatch(line);
 
 Map<String, dynamic> _transformByPatterns(
-    List<String> fileLines, Map<String, dynamic> raw) {
+  List<String> fileLines,
+  Map<String, dynamic> raw,
+) {
   return raw.map((key, value) {
     final fileLine = fileLines[int.parse(key) - 1];
     return MapEntry(
-        key,
-        ((value is int && value > 0) || shouldKeepLine(fileLine))
-            ? value
-            : null);
+      key,
+      ((value is int && value > 0) || shouldKeepLine(fileLine)) ? value : null,
+    );
   });
 }

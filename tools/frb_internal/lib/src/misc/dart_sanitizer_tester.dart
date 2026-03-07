@@ -19,8 +19,9 @@ Future<void> run(TestDartSanitizerConfig config) async {
 
   // Otherwise it seems the sanitized dart binary does not compile native assets
   await exec(
-      'dart --enable-experiment=native-assets run test/empty_entrypoint.dart',
-      relativePwd: config.package);
+    'dart --enable-experiment=native-assets run test/empty_entrypoint.dart',
+    relativePwd: config.package,
+  );
 
   if (config.package == 'frb_example/deliberate_bad') {
     await _runPackageDeliberateBad(config);
@@ -55,7 +56,10 @@ Future<void> _runEntrypoint(TestDartSanitizerConfig config) async {
   await _execAndCheckWithSanitizerEnvVar(
     '$sanitizedDart --enable-experiment=native-assets run test/dart_valgrind_test_entrypoint.dart',
     const _Info(
-        name: 'entrypoint', expectSucceed: true, expectStderrContains: ''),
+      name: 'entrypoint',
+      expectSucceed: true,
+      expectStderrContains: '',
+    ),
     config.sanitizer,
     relativePwd: config.package,
   );
@@ -67,7 +71,8 @@ Future<void> _runPackageDeliberateBad(TestDartSanitizerConfig config) async {
 }
 
 Future<void> _runPackageDeliberateBadRustOnly(
-    TestDartSanitizerConfig config) async {
+  TestDartSanitizerConfig config,
+) async {
   final kInfos = [
     const _Info(
       name: 'RustOnly_Good',
@@ -76,41 +81,40 @@ Future<void> _runPackageDeliberateBadRustOnly(
     ),
     ...switch (config.sanitizer) {
       Sanitizer.asan => [
-          const _Info(
-            name: 'RustOnly_StackBufferOverflow',
-            expectSucceed: false,
-            expectStderrContains:
-                'ERROR: AddressSanitizer: stack-buffer-overflow',
-          ),
-          const _Info(
-            name: 'RustOnly_HeapUseAfterFree',
-            expectSucceed: false,
-            expectStderrContains:
-                'ERROR: AddressSanitizer: heap-use-after-free',
-          ),
-        ],
+        const _Info(
+          name: 'RustOnly_StackBufferOverflow',
+          expectSucceed: false,
+          expectStderrContains:
+              'ERROR: AddressSanitizer: stack-buffer-overflow',
+        ),
+        const _Info(
+          name: 'RustOnly_HeapUseAfterFree',
+          expectSucceed: false,
+          expectStderrContains: 'ERROR: AddressSanitizer: heap-use-after-free',
+        ),
+      ],
       Sanitizer.msan => [
-          const _Info(
-            name: 'RustOnly_UseOfUninitializedValue',
-            expectSucceed: false,
-            expectStderrContains:
-                'WARNING: MemorySanitizer: use-of-uninitialized-value',
-          ),
-        ],
+        const _Info(
+          name: 'RustOnly_UseOfUninitializedValue',
+          expectSucceed: false,
+          expectStderrContains:
+              'WARNING: MemorySanitizer: use-of-uninitialized-value',
+        ),
+      ],
       Sanitizer.lsan => [
-          const _Info(
-            name: 'RustOnly_MemoryLeak',
-            expectSucceed: false,
-            expectStderrContains: 'ERROR: LeakSanitizer: detected memory leaks',
-          ),
-        ],
+        const _Info(
+          name: 'RustOnly_MemoryLeak',
+          expectSucceed: false,
+          expectStderrContains: 'ERROR: LeakSanitizer: detected memory leaks',
+        ),
+      ],
       Sanitizer.tsan => [
-          const _Info(
-            name: 'RustOnly_DataRace',
-            expectSucceed: false,
-            expectStderrContains: 'WARNING: ThreadSanitizer: data race',
-          ),
-        ],
+        const _Info(
+          name: 'RustOnly_DataRace',
+          expectSucceed: false,
+          expectStderrContains: 'WARNING: ThreadSanitizer: data race',
+        ),
+      ],
     },
   ];
 
@@ -125,7 +129,8 @@ Future<void> _runPackageDeliberateBadRustOnly(
 }
 
 Future<void> _runPackageDeliberateBadWithDart(
-    TestDartSanitizerConfig config) async {
+  TestDartSanitizerConfig config,
+) async {
   final kDartOnlyInfos = [
     const _Info(
       name: 'DartOnly_Good',
@@ -134,68 +139,67 @@ Future<void> _runPackageDeliberateBadWithDart(
     ),
     ...switch (config.sanitizer) {
       Sanitizer.asan => [
-          // NOTE ASAN does not report this as buggy...
-          const _Info(
-            name: 'DartOnly_HeapUseAfterFree',
-            expectSucceed: true,
-            expectStderrContains: '',
-          ),
-        ],
+        // NOTE ASAN does not report this as buggy...
+        const _Info(
+          name: 'DartOnly_HeapUseAfterFree',
+          expectSucceed: true,
+          expectStderrContains: '',
+        ),
+      ],
       Sanitizer.msan => [
-          // Pure dart almost cannot have this problem
-        ],
+        // Pure dart almost cannot have this problem
+      ],
       Sanitizer.lsan => [
-          const _Info(
-            name: 'DartOnly_MemoryLeak',
-            expectSucceed: false,
-            expectStderrContains: 'ERROR: LeakSanitizer: detected memory leaks',
-          ),
-        ],
+        const _Info(
+          name: 'DartOnly_MemoryLeak',
+          expectSucceed: false,
+          expectStderrContains: 'ERROR: LeakSanitizer: detected memory leaks',
+        ),
+      ],
       Sanitizer.tsan => [
-          // Pure-dart almost cannot have data race
-        ],
+        // Pure-dart almost cannot have data race
+      ],
     },
   ];
 
   final kDartCallRustInfos = [
     ...switch (config.sanitizer) {
       Sanitizer.asan => [
-          // NOTE It should fail, but ASAN did not realize this case...
-          const _Info(
-            name: 'DartCallRust_StackBufferOverflow',
-            expectSucceed: true,
-            expectStderrContains: '',
-          ),
-          // ASAN successfully understand this case
-          const _Info(
-            name: 'DartCallRust_HeapUseAfterFree',
-            expectSucceed: false,
-            expectStderrContains:
-                'ERROR: AddressSanitizer: heap-use-after-free',
-          ),
-        ],
+        // NOTE It should fail, but ASAN did not realize this case...
+        const _Info(
+          name: 'DartCallRust_StackBufferOverflow',
+          expectSucceed: true,
+          expectStderrContains: '',
+        ),
+        // ASAN successfully understand this case
+        const _Info(
+          name: 'DartCallRust_HeapUseAfterFree',
+          expectSucceed: false,
+          expectStderrContains: 'ERROR: AddressSanitizer: heap-use-after-free',
+        ),
+      ],
       Sanitizer.msan => [
-          const _Info(
-            name: 'DartCallRust_UseOfUninitializedValue',
-            expectSucceed: false,
-            expectStderrContains:
-                'WARNING: MemorySanitizer: use-of-uninitialized-value',
-          ),
-        ],
+        const _Info(
+          name: 'DartCallRust_UseOfUninitializedValue',
+          expectSucceed: false,
+          expectStderrContains:
+              'WARNING: MemorySanitizer: use-of-uninitialized-value',
+        ),
+      ],
       Sanitizer.lsan => [
-          const _Info(
-            name: 'DartCallRust_MemoryLeak',
-            expectSucceed: false,
-            expectStderrContains: 'ERROR: LeakSanitizer: detected memory leaks',
-          ),
-        ],
+        const _Info(
+          name: 'DartCallRust_MemoryLeak',
+          expectSucceed: false,
+          expectStderrContains: 'ERROR: LeakSanitizer: detected memory leaks',
+        ),
+      ],
       Sanitizer.tsan => [
-          const _Info(
-            name: 'DartCallRust_DataRace',
-            expectSucceed: false,
-            expectStderrContains: 'WARNING: ThreadSanitizer: data race',
-          ),
-        ],
+        const _Info(
+          name: 'DartCallRust_DataRace',
+          expectSucceed: false,
+          expectStderrContains: 'WARNING: ThreadSanitizer: data race',
+        ),
+      ],
     },
   ];
 
@@ -247,12 +251,14 @@ Future<void> _execAndCheckWithSanitizerEnvVar(
 
   if ((output.exitCode == 0) != info.expectSucceed) {
     throw Exception(
-        'Bad exitCode=${output.exitCode}, while expectSucceed=${info.expectSucceed}');
+      'Bad exitCode=${output.exitCode}, while expectSucceed=${info.expectSucceed}',
+    );
   }
 
   if (!output.stderr.contains(info.expectStderrContains)) {
     throw Exception(
-        'Bad stderr which does not contain `${info.expectStderrContains}`');
+      'Bad stderr which does not contain `${info.expectStderrContains}`',
+    );
   }
 
   print('Pass check for ${info.name}');
@@ -270,8 +276,10 @@ Future<String> _getSanitizedDartBinary(TestDartSanitizerConfig config) async {
 
   final pathTarGz = path.join(Directory.systemTemp.path, fileNameTarGz);
   final pathUnzippedDir = path.join(Directory.systemTemp.path, baseName);
-  final pathBin = path.join(pathUnzippedDir,
-      'dart-sdk/sdk/out/${config.sanitizer.dartSdkBuildOutDir}/dart-sdk/bin/dart');
+  final pathBin = path.join(
+    pathUnzippedDir,
+    'dart-sdk/sdk/out/${config.sanitizer.dartSdkBuildOutDir}/dart-sdk/bin/dart',
+  );
 
   if (!await File(pathTarGz).exists()) {
     final url =

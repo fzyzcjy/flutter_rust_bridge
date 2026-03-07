@@ -20,7 +20,8 @@ void main() {
 
     test('some dart tests failed', () {
       // no "All tests passed!" line
-      expect(() => checkValgrindOutput('''
+      expect(
+        () => checkValgrindOutput('''
 ==3667== LEAK SUMMARY:
 ==3667==    definitely lost: 0 bytes in 0 blocks
 ==3667==    indirectly lost: 0 bytes in 0 blocks
@@ -29,11 +30,14 @@ void main() {
 ==3667==         suppressed: 0 bytes in 0 blocks
 ==3667== Reachable blocks (those to which a pointer was found) are not shown.
 ==3667== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-    '''), throwsA(isA<Exception>()));
+    '''),
+        throwsA(isA<Exception>()),
+      );
     });
 
     test('has definitely lost bytes', () {
-      expect(() => checkValgrindOutput('''
+      expect(
+        () => checkValgrindOutput('''
 00:00 +1: All tests passed!
 
 ==3667== LEAK SUMMARY:
@@ -44,11 +48,14 @@ void main() {
 ==3667==         suppressed: 0 bytes in 0 blocks
 ==3667== Reachable blocks (those to which a pointer was found) are not shown.
 ==3667== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-    '''), throwsA(isA<Exception>()));
+    '''),
+        throwsA(isA<Exception>()),
+      );
     });
 
     test('has indirectly lost bytes', () {
-      expect(() => checkValgrindOutput('''
+      expect(
+        () => checkValgrindOutput('''
 00:00 +1: All tests passed!
 
 ==3667== LEAK SUMMARY:
@@ -59,7 +66,9 @@ void main() {
 ==3667==         suppressed: 0 bytes in 0 blocks
 ==3667== Reachable blocks (those to which a pointer was found) are not shown.
 ==3667== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-    '''), throwsA(isA<Exception>()));
+    '''),
+        throwsA(isA<Exception>()),
+      );
     });
   });
 }

@@ -12,7 +12,8 @@ part of 'basic_twin_sse.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$BasicGeneralEnumTwinSse {
@@ -20,52 +21,49 @@ mixin _$BasicGeneralEnumTwinSse {
   TResult when<TResult extends Object?>({
     required TResult Function(String field) apple,
     required TResult Function() orange,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String field)? apple,
     TResult? Function()? orange,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String field)? apple,
     TResult Function()? orange,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(BasicGeneralEnumTwinSse_Apple value) apple,
     required TResult Function(BasicGeneralEnumTwinSse_Orange value) orange,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(BasicGeneralEnumTwinSse_Apple value)? apple,
     TResult? Function(BasicGeneralEnumTwinSse_Orange value)? orange,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(BasicGeneralEnumTwinSse_Apple value)? apple,
     TResult Function(BasicGeneralEnumTwinSse_Orange value)? orange,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BasicGeneralEnumTwinSseCopyWith<$Res> {
-  factory $BasicGeneralEnumTwinSseCopyWith(BasicGeneralEnumTwinSse value,
-          $Res Function(BasicGeneralEnumTwinSse) then) =
-      _$BasicGeneralEnumTwinSseCopyWithImpl<$Res, BasicGeneralEnumTwinSse>;
+  factory $BasicGeneralEnumTwinSseCopyWith(
+    BasicGeneralEnumTwinSse value,
+    $Res Function(BasicGeneralEnumTwinSse) then,
+  ) = _$BasicGeneralEnumTwinSseCopyWithImpl<$Res, BasicGeneralEnumTwinSse>;
 }
 
 /// @nodoc
-class _$BasicGeneralEnumTwinSseCopyWithImpl<$Res,
-        $Val extends BasicGeneralEnumTwinSse>
+class _$BasicGeneralEnumTwinSseCopyWithImpl<
+  $Res,
+  $Val extends BasicGeneralEnumTwinSse
+>
     implements $BasicGeneralEnumTwinSseCopyWith<$Res> {
   _$BasicGeneralEnumTwinSseCopyWithImpl(this._value, this._then);
 
@@ -81,36 +79,39 @@ class _$BasicGeneralEnumTwinSseCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$BasicGeneralEnumTwinSse_AppleImplCopyWith<$Res> {
   factory _$$BasicGeneralEnumTwinSse_AppleImplCopyWith(
-          _$BasicGeneralEnumTwinSse_AppleImpl value,
-          $Res Function(_$BasicGeneralEnumTwinSse_AppleImpl) then) =
-      __$$BasicGeneralEnumTwinSse_AppleImplCopyWithImpl<$Res>;
+    _$BasicGeneralEnumTwinSse_AppleImpl value,
+    $Res Function(_$BasicGeneralEnumTwinSse_AppleImpl) then,
+  ) = __$$BasicGeneralEnumTwinSse_AppleImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String field});
 }
 
 /// @nodoc
 class __$$BasicGeneralEnumTwinSse_AppleImplCopyWithImpl<$Res>
-    extends _$BasicGeneralEnumTwinSseCopyWithImpl<$Res,
-        _$BasicGeneralEnumTwinSse_AppleImpl>
+    extends
+        _$BasicGeneralEnumTwinSseCopyWithImpl<
+          $Res,
+          _$BasicGeneralEnumTwinSse_AppleImpl
+        >
     implements _$$BasicGeneralEnumTwinSse_AppleImplCopyWith<$Res> {
   __$$BasicGeneralEnumTwinSse_AppleImplCopyWithImpl(
-      _$BasicGeneralEnumTwinSse_AppleImpl _value,
-      $Res Function(_$BasicGeneralEnumTwinSse_AppleImpl) _then)
-      : super(_value, _then);
+    _$BasicGeneralEnumTwinSse_AppleImpl _value,
+    $Res Function(_$BasicGeneralEnumTwinSse_AppleImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of BasicGeneralEnumTwinSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field = null,
-  }) {
-    return _then(_$BasicGeneralEnumTwinSse_AppleImpl(
-      field: null == field
-          ? _value.field
-          : field // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? field = null}) {
+    return _then(
+      _$BasicGeneralEnumTwinSse_AppleImpl(
+        field: null == field
+            ? _value.field
+            : field // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -145,9 +146,12 @@ class _$BasicGeneralEnumTwinSse_AppleImpl
   @override
   @pragma('vm:prefer-inline')
   _$$BasicGeneralEnumTwinSse_AppleImplCopyWith<
-          _$BasicGeneralEnumTwinSse_AppleImpl>
-      get copyWith => __$$BasicGeneralEnumTwinSse_AppleImplCopyWithImpl<
-          _$BasicGeneralEnumTwinSse_AppleImpl>(this, _$identity);
+    _$BasicGeneralEnumTwinSse_AppleImpl
+  >
+  get copyWith =>
+      __$$BasicGeneralEnumTwinSse_AppleImplCopyWithImpl<
+        _$BasicGeneralEnumTwinSse_AppleImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -223,27 +227,31 @@ abstract class BasicGeneralEnumTwinSse_Apple extends BasicGeneralEnumTwinSse {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BasicGeneralEnumTwinSse_AppleImplCopyWith<
-          _$BasicGeneralEnumTwinSse_AppleImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$BasicGeneralEnumTwinSse_AppleImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$BasicGeneralEnumTwinSse_OrangeImplCopyWith<$Res> {
   factory _$$BasicGeneralEnumTwinSse_OrangeImplCopyWith(
-          _$BasicGeneralEnumTwinSse_OrangeImpl value,
-          $Res Function(_$BasicGeneralEnumTwinSse_OrangeImpl) then) =
-      __$$BasicGeneralEnumTwinSse_OrangeImplCopyWithImpl<$Res>;
+    _$BasicGeneralEnumTwinSse_OrangeImpl value,
+    $Res Function(_$BasicGeneralEnumTwinSse_OrangeImpl) then,
+  ) = __$$BasicGeneralEnumTwinSse_OrangeImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$BasicGeneralEnumTwinSse_OrangeImplCopyWithImpl<$Res>
-    extends _$BasicGeneralEnumTwinSseCopyWithImpl<$Res,
-        _$BasicGeneralEnumTwinSse_OrangeImpl>
+    extends
+        _$BasicGeneralEnumTwinSseCopyWithImpl<
+          $Res,
+          _$BasicGeneralEnumTwinSse_OrangeImpl
+        >
     implements _$$BasicGeneralEnumTwinSse_OrangeImplCopyWith<$Res> {
   __$$BasicGeneralEnumTwinSse_OrangeImplCopyWithImpl(
-      _$BasicGeneralEnumTwinSse_OrangeImpl _value,
-      $Res Function(_$BasicGeneralEnumTwinSse_OrangeImpl) _then)
-      : super(_value, _then);
+    _$BasicGeneralEnumTwinSse_OrangeImpl _value,
+    $Res Function(_$BasicGeneralEnumTwinSse_OrangeImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of BasicGeneralEnumTwinSse
   /// with the given fields replaced by the non-null parameter values.

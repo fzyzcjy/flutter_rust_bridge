@@ -11,10 +11,11 @@ part 'post_release.g.dart';
 List<Command<void>> createCommands() {
   return [
     SimpleConfigCommand(
-        'post-release-mimic-quickstart',
-        postReleaseMimicQuickstart,
-        _$populatePostReleaseConfigParser,
-        _$parsePostReleaseConfigResult),
+      'post-release-mimic-quickstart',
+      postReleaseMimicQuickstart,
+      _$populatePostReleaseConfigParser,
+      _$parsePostReleaseConfigResult,
+    ),
   ];
 }
 
@@ -26,30 +27,32 @@ class PostReleaseConfig {
 }
 
 Future<void> postReleaseMimicQuickstart(PostReleaseConfig config) async {
-  await quickstartStepInstall(config.codegenInstallMode,
-      versionConstraint: '^2.0.0-dev.0');
+  await quickstartStepInstall(
+    config.codegenInstallMode,
+    versionConstraint: '^2.0.0-dev.0',
+  );
   await const MimicQuickstartTester(postRelease: true).test();
 }
 
-enum CodegenInstallMode {
-  cargoInstall,
-  cargoBinstall,
-  scoop,
-  homebrew,
-}
+enum CodegenInstallMode { cargoInstall, cargoBinstall, scoop, homebrew }
 
-Future<void> quickstartStepInstall(CodegenInstallMode mode,
-    {required String versionConstraint}) async {
+Future<void> quickstartStepInstall(
+  CodegenInstallMode mode, {
+  required String versionConstraint,
+}) async {
   switch (mode) {
     case CodegenInstallMode.cargoInstall:
       await exec(
-          "cargo install 'flutter_rust_bridge_codegen@$versionConstraint'");
+        "cargo install 'flutter_rust_bridge_codegen@$versionConstraint'",
+      );
     case CodegenInstallMode.cargoBinstall:
       await exec(
-          "cargo binstall -y 'flutter_rust_bridge_codegen@$versionConstraint'");
+        "cargo binstall -y 'flutter_rust_bridge_codegen@$versionConstraint'",
+      );
     case CodegenInstallMode.scoop:
       await exec(
-          'scoop bucket add frb https://github.com/Desdaemon/scoop-repo');
+        'scoop bucket add frb https://github.com/Desdaemon/scoop-repo',
+      );
       await exec('scoop install flutter_rust_bridge_codegen');
     case CodegenInstallMode.homebrew:
       await exec('brew install desdaemon/repo/flutter_rust_bridge_codegen');

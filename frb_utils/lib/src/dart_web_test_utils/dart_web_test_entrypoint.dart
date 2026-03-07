@@ -16,8 +16,13 @@ external void _jsClose();
 Future<void> dartWebTestEntrypoint(FutureOr<void> Function() testMain) async {
   final result = await directRunTests(
     testMain,
-    reporterFactory: (engine) => ExpandedReporter.watch(engine, PrintSink(),
-        color: true, printPlatform: false, printPath: false),
+    reporterFactory: (engine) => ExpandedReporter.watch(
+      engine,
+      PrintSink(),
+      color: true,
+      printPlatform: false,
+      printPath: false,
+    ),
   );
 
   // print('hack: sleep forever...');
