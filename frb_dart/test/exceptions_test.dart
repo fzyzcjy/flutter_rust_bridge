@@ -11,12 +11,16 @@ void main() {
   });
 
   test('PlatformMismatchException', () {
-    expect(const PlatformMismatchException().toString(),
-        contains('Not implemented on'));
+    expect(
+      const PlatformMismatchException().toString(),
+      contains('Not implemented on'),
+    );
   });
 
   test('UnmodifiableTypedListException', () {
-    expect(const UnmodifiableTypedListException().toString(),
-        contains('Cannot modify'));
+    expect(
+      const UnmodifiableTypedListException().toString(),
+      contains('Cannot modify'),
+    );
   });
 }
