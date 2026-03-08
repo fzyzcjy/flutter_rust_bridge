@@ -34,6 +34,7 @@ pointing to more detailed explanations.
 
 Types from `chrono` crate are supported as a feature, see [here](detailed/chrono).
 Types from `uuid` crate are supported as a feature, see [here](detailed/uuid).
+Types from `serde_json` crate are supported as a feature, see [here](detailed/serde_json).
 
 Raw strings are supported for struct field names. For example, you can have `struct S { r#type: i32 }`. In dart,
 the `r#` prefix will be correctly removed. They are not yet supported for function arguments.
