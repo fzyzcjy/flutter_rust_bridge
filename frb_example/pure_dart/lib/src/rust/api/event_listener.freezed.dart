@@ -54,16 +54,15 @@ class _$EventTwinNormalCopyWithImpl<$Res, $Val extends EventTwinNormal>
   $Res call({Object? address = null, Object? payload = null}) {
     return _then(
       _value.copyWith(
-            address: null == address
-                ? _value.address
-                : address // ignore: cast_nullable_to_non_nullable
-                      as String,
-            payload: null == payload
-                ? _value.payload
-                : payload // ignore: cast_nullable_to_non_nullable
-                      as String,
-          )
-          as $Val,
+        address: null == address
+            ? _value.address
+            : address // ignore: cast_nullable_to_non_nullable
+                as String,
+        payload: null == payload
+            ? _value.payload
+            : payload // ignore: cast_nullable_to_non_nullable
+                as String,
+      ) as $Val,
     );
   }
 }
@@ -99,11 +98,11 @@ class __$$EventTwinNormalImplCopyWithImpl<$Res>
         address: null == address
             ? _value.address
             : address // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         payload: null == payload
             ? _value.payload
             : payload // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
       ),
     );
   }
@@ -113,7 +112,7 @@ class __$$EventTwinNormalImplCopyWithImpl<$Res>
 
 class _$EventTwinNormalImpl extends _EventTwinNormal {
   const _$EventTwinNormalImpl({required this.address, required this.payload})
-    : super._();
+      : super._();
 
   @override
   final String address;

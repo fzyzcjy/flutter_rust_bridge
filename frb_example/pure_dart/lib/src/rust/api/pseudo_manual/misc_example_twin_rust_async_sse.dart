@@ -15,88 +15,72 @@ part 'misc_example_twin_rust_async_sse.freezed.dart';
 // These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `MySizeFreezedTwinRustAsyncSse`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`
 
-Future<MyTreeNodeTwinRustAsyncSse> handleComplexStructTwinRustAsyncSse({
-  required MyTreeNodeTwinRustAsyncSse s,
-}) => RustLib.instance.api
-    .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleComplexStructTwinRustAsyncSse(
-      s: s,
-    );
+Future<MyTreeNodeTwinRustAsyncSse> handleComplexStructTwinRustAsyncSse(
+        {required MyTreeNodeTwinRustAsyncSse s}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleComplexStructTwinRustAsyncSse(
+            s: s);
 
-Future<List<WeekdaysTwinRustAsyncSse>> listOfPrimitiveEnumsTwinRustAsyncSse({
-  required List<WeekdaysTwinRustAsyncSse> weekdays,
-}) => RustLib.instance.api
-    .crateApiPseudoManualMiscExampleTwinRustAsyncSseListOfPrimitiveEnumsTwinRustAsyncSse(
-      weekdays: weekdays,
-    );
+Future<List<WeekdaysTwinRustAsyncSse>> listOfPrimitiveEnumsTwinRustAsyncSse(
+        {required List<WeekdaysTwinRustAsyncSse> weekdays}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinRustAsyncSseListOfPrimitiveEnumsTwinRustAsyncSse(
+            weekdays: weekdays);
 
-Future<MyNestedStructTwinRustAsyncSse> handleNestedStructTwinRustAsyncSse({
-  required MyNestedStructTwinRustAsyncSse s,
-}) => RustLib.instance.api
-    .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleNestedStructTwinRustAsyncSse(
-      s: s,
-    );
+Future<MyNestedStructTwinRustAsyncSse> handleNestedStructTwinRustAsyncSse(
+        {required MyNestedStructTwinRustAsyncSse s}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleNestedStructTwinRustAsyncSse(
+            s: s);
 
 Future<BigBuffersTwinRustAsyncSse> handleBigBuffersTwinRustAsyncSse() => RustLib
-    .instance
-    .api
+    .instance.api
     .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleBigBuffersTwinRustAsyncSse();
 
-Future<AbcTwinRustAsyncSse> testAbcEnumTwinRustAsyncSse({
-  required AbcTwinRustAsyncSse abc,
-}) => RustLib.instance.api
-    .crateApiPseudoManualMiscExampleTwinRustAsyncSseTestAbcEnumTwinRustAsyncSse(
-      abc: abc,
-    );
+Future<AbcTwinRustAsyncSse> testAbcEnumTwinRustAsyncSse(
+        {required AbcTwinRustAsyncSse abc}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinRustAsyncSseTestAbcEnumTwinRustAsyncSse(
+            abc: abc);
 
-Future<StructWithEnumTwinRustAsyncSse> testStructWithEnumTwinRustAsyncSse({
-  required StructWithEnumTwinRustAsyncSse se,
-}) => RustLib.instance.api
-    .crateApiPseudoManualMiscExampleTwinRustAsyncSseTestStructWithEnumTwinRustAsyncSse(
-      se: se,
-    );
+Future<StructWithEnumTwinRustAsyncSse> testStructWithEnumTwinRustAsyncSse(
+        {required StructWithEnumTwinRustAsyncSse se}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinRustAsyncSseTestStructWithEnumTwinRustAsyncSse(
+            se: se);
 
 Future<String> handleStringTwinRustAsyncSse({required String s}) => RustLib
-    .instance
-    .api
+    .instance.api
     .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleStringTwinRustAsyncSse(
-      s: s,
-    );
+        s: s);
 
 Future<String> handleCharTwinRustAsyncSse({required String arg}) => RustLib
-    .instance
-    .api
+    .instance.api
     .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleCharTwinRustAsyncSse(
-      arg: arg,
-    );
+        arg: arg);
 
 Future<Uint8List> handleVecU8TwinRustAsyncSse({required List<int> v}) => RustLib
-    .instance
-    .api
+    .instance.api
     .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleVecU8TwinRustAsyncSse(
-      v: v,
-    );
+        v: v);
 
-Future<MySize> handleStructTwinRustAsyncSse({
-  required MySize arg,
-  required MySize boxed,
-}) => RustLib.instance.api
-    .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleStructTwinRustAsyncSse(
-      arg: arg,
-      boxed: boxed,
-    );
+Future<MySize> handleStructTwinRustAsyncSse(
+        {required MySize arg, required MySize boxed}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleStructTwinRustAsyncSse(
+            arg: arg, boxed: boxed);
 
 Future<int> positionalArgumentsTwinRustAsyncSse(int a, int b) => RustLib
-    .instance
-    .api
+    .instance.api
     .crateApiPseudoManualMiscExampleTwinRustAsyncSsePositionalArgumentsTwinRustAsyncSse(
-      a: a,
-      b: b,
-    );
+        a: a, b: b);
 
 class ATwinRustAsyncSse {
   final String a;
 
-  const ATwinRustAsyncSse({required this.a});
+  const ATwinRustAsyncSse({
+    required this.a,
+  });
 
   @override
   int get hashCode => a.hashCode;
@@ -113,20 +97,26 @@ class ATwinRustAsyncSse {
 sealed class AbcTwinRustAsyncSse with _$AbcTwinRustAsyncSse {
   const AbcTwinRustAsyncSse._();
 
-  const factory AbcTwinRustAsyncSse.a(ATwinRustAsyncSse field0) =
-      AbcTwinRustAsyncSse_A;
-  const factory AbcTwinRustAsyncSse.b(BTwinRustAsyncSse field0) =
-      AbcTwinRustAsyncSse_B;
-  const factory AbcTwinRustAsyncSse.c(CTwinRustAsyncSse field0) =
-      AbcTwinRustAsyncSse_C;
-  const factory AbcTwinRustAsyncSse.justInt(int field0) =
-      AbcTwinRustAsyncSse_JustInt;
+  const factory AbcTwinRustAsyncSse.a(
+    ATwinRustAsyncSse field0,
+  ) = AbcTwinRustAsyncSse_A;
+  const factory AbcTwinRustAsyncSse.b(
+    BTwinRustAsyncSse field0,
+  ) = AbcTwinRustAsyncSse_B;
+  const factory AbcTwinRustAsyncSse.c(
+    CTwinRustAsyncSse field0,
+  ) = AbcTwinRustAsyncSse_C;
+  const factory AbcTwinRustAsyncSse.justInt(
+    int field0,
+  ) = AbcTwinRustAsyncSse_JustInt;
 }
 
 class BTwinRustAsyncSse {
   final int b;
 
-  const BTwinRustAsyncSse({required this.b});
+  const BTwinRustAsyncSse({
+    required this.b,
+  });
 
   @override
   int get hashCode => b.hashCode;
@@ -143,7 +133,10 @@ class BigBuffersTwinRustAsyncSse {
   final Int64List int64;
   final Uint64List uint64;
 
-  const BigBuffersTwinRustAsyncSse({required this.int64, required this.uint64});
+  const BigBuffersTwinRustAsyncSse({
+    required this.int64,
+    required this.uint64,
+  });
 
   @override
   int get hashCode => int64.hashCode ^ uint64.hashCode;
@@ -160,7 +153,9 @@ class BigBuffersTwinRustAsyncSse {
 class CTwinRustAsyncSse {
   final bool c;
 
-  const CTwinRustAsyncSse({required this.c});
+  const CTwinRustAsyncSse({
+    required this.c,
+  });
 
   @override
   int get hashCode => c.hashCode;
@@ -254,4 +249,5 @@ enum WeekdaysTwinRustAsyncSse {
   friday,
   saturday,
   sunday,
+  ;
 }

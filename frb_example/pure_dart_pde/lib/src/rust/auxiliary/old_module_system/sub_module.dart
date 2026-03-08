@@ -11,7 +11,9 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 class OldSimpleStruct {
   final int field;
 
-  const OldSimpleStruct({required this.field});
+  const OldSimpleStruct({
+    required this.field,
+  });
 
   @override
   int get hashCode => field.hashCode;

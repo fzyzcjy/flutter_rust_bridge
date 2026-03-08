@@ -21,34 +21,40 @@ mixin _$SimpleEnumTwinSync {
   TResult when<TResult extends Object?>({
     required TResult Function() first,
     required TResult Function(String field0) second,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? first,
     TResult? Function(String field0)? second,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? first,
     TResult Function(String field0)? second,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SimpleEnumTwinSync_First value) first,
     required TResult Function(SimpleEnumTwinSync_Second value) second,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SimpleEnumTwinSync_First value)? first,
     TResult? Function(SimpleEnumTwinSync_Second value)? second,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SimpleEnumTwinSync_First value)? first,
     TResult Function(SimpleEnumTwinSync_Second value)? second,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -83,8 +89,8 @@ abstract class _$$SimpleEnumTwinSync_FirstImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$SimpleEnumTwinSync_FirstImplCopyWithImpl<$Res>
-    extends
-        _$SimpleEnumTwinSyncCopyWithImpl<$Res, _$SimpleEnumTwinSync_FirstImpl>
+    extends _$SimpleEnumTwinSyncCopyWithImpl<$Res,
+        _$SimpleEnumTwinSync_FirstImpl>
     implements _$$SimpleEnumTwinSync_FirstImplCopyWith<$Res> {
   __$$SimpleEnumTwinSync_FirstImplCopyWithImpl(
     _$SimpleEnumTwinSync_FirstImpl _value,
@@ -195,8 +201,8 @@ abstract class _$$SimpleEnumTwinSync_SecondImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$SimpleEnumTwinSync_SecondImplCopyWithImpl<$Res>
-    extends
-        _$SimpleEnumTwinSyncCopyWithImpl<$Res, _$SimpleEnumTwinSync_SecondImpl>
+    extends _$SimpleEnumTwinSyncCopyWithImpl<$Res,
+        _$SimpleEnumTwinSync_SecondImpl>
     implements _$$SimpleEnumTwinSync_SecondImplCopyWith<$Res> {
   __$$SimpleEnumTwinSync_SecondImplCopyWithImpl(
     _$SimpleEnumTwinSync_SecondImpl _value,
@@ -213,7 +219,7 @@ class __$$SimpleEnumTwinSync_SecondImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
       ),
     );
   }
@@ -249,10 +255,8 @@ class _$SimpleEnumTwinSync_SecondImpl extends SimpleEnumTwinSync_Second {
   @override
   @pragma('vm:prefer-inline')
   _$$SimpleEnumTwinSync_SecondImplCopyWith<_$SimpleEnumTwinSync_SecondImpl>
-  get copyWith =>
-      __$$SimpleEnumTwinSync_SecondImplCopyWithImpl<
-        _$SimpleEnumTwinSync_SecondImpl
-      >(this, _$identity);
+      get copyWith => __$$SimpleEnumTwinSync_SecondImplCopyWithImpl<
+          _$SimpleEnumTwinSync_SecondImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -328,5 +332,5 @@ abstract class SimpleEnumTwinSync_Second extends SimpleEnumTwinSync {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SimpleEnumTwinSync_SecondImplCopyWith<_$SimpleEnumTwinSync_SecondImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }

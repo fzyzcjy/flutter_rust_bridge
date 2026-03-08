@@ -11,18 +11,16 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'raw_string_twin_sync_sse.freezed.dart';
 
 RawStringItemStructTwinSyncSse testRawStringItemStructTwinSyncSse() => RustLib
-    .instance
-    .api
+    .instance.api
     .crateApiPseudoManualRawStringTwinSyncSseTestRawStringItemStructTwinSyncSse();
 
 RawStringItemEnumTwinSyncSse testRawStringItemEnumTwinSyncSse() => RustLib
-    .instance
-    .api
+    .instance.api
     .crateApiPseudoManualRawStringTwinSyncSseTestRawStringItemEnumTwinSyncSse();
 
 MoreThanJustOneRawStringStructTwinSyncSse
-testMoreThanJustOneRawStringStructTwinSyncSse() => RustLib.instance.api
-    .crateApiPseudoManualRawStringTwinSyncSseTestMoreThanJustOneRawStringStructTwinSyncSse();
+    testMoreThanJustOneRawStringStructTwinSyncSse() => RustLib.instance.api
+        .crateApiPseudoManualRawStringTwinSyncSseTestMoreThanJustOneRawStringStructTwinSyncSse();
 
 class MoreThanJustOneRawStringStructTwinSyncSse {
   final String regular;
@@ -59,14 +57,17 @@ sealed class RawStringItemEnumTwinSyncSse with _$RawStringItemEnumTwinSyncSse {
   const factory RawStringItemEnumTwinSyncSse.regular({
     required String regular,
   }) = RawStringItemEnumTwinSyncSse_Regular;
-  const factory RawStringItemEnumTwinSyncSse.raw({required String type}) =
-      RawStringItemEnumTwinSyncSse_Raw;
+  const factory RawStringItemEnumTwinSyncSse.raw({
+    required String type,
+  }) = RawStringItemEnumTwinSyncSse_Raw;
 }
 
 class RawStringItemStructTwinSyncSse {
   final String type;
 
-  const RawStringItemStructTwinSyncSse({required this.type});
+  const RawStringItemStructTwinSyncSse({
+    required this.type,
+  });
 
   @override
   int get hashCode => type.hashCode;
