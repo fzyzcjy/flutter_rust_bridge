@@ -74,9 +74,8 @@ Future<void> benchMerge() async {
 const _kPackage = 'frb_example/pure_dart';
 
 Future<void> _dartBuild() async {
-  await exec('mkdir -p build/simple_benchmark', relativePwd: _kPackage);
   await exec(
-    'dart compile exe benchmark/simple_benchmark.dart -o build/simple_benchmark/simple_benchmark.exe',
+    'dart build cli -o build/simple_benchmark',
     relativePwd: _kPackage,
   );
 }
@@ -84,14 +83,9 @@ Future<void> _dartBuild() async {
 Future<void> benchDartNative(BenchConfig config) async {
   await runPubGetIfNotRunYet(_kPackage);
 
-  await exec(
-    'cargo build --release --features internal_feature_for_testing',
-    relativePwd: '$_kPackage/rust',
-  );
-
   await _dartBuild();
   await exec(
-    'build/simple_benchmark/simple_benchmark.exe benchmark build/simple_benchmark/benchmark_result.json ${config.filter ?? ""}',
+    'build/simple_benchmark/bundle/bin/simple_benchmark benchmark build/simple_benchmark/benchmark_result.json ${config.filter ?? ""}',
     relativePwd: _kPackage,
   );
 }

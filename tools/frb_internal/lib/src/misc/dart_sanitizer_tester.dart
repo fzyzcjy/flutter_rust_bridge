@@ -239,9 +239,9 @@ Future<void> _execAndCheckWithSanitizerEnvVar(
     cmd,
     relativePwd: relativePwd,
     extraEnv: {
-      'RUSTFLAGS': '-Zsanitizer=${sanitizer.rustflagValue}',
-      'FRB_SIMPLE_BUILD_CARGO_NIGHTLY': '1',
-      'FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS': _cargoBuildExtraArgs,
+      'NIX_FRB_RUSTFLAGS': '-Zsanitizer=${sanitizer.rustflagValue}',
+      'NIX_FRB_SIMPLE_BUILD_CARGO_NIGHTLY': '1',
+      'NIX_FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS': _cargoBuildExtraArgs,
       // because we unconventionally specified the `--target` in cargo build
       'FRB_DART_LOAD_EXTERNAL_LIBRARY_NATIVE_LIB_DIR': 'rust/target/release/',
       ...kEnvEnableRustBacktrace,
