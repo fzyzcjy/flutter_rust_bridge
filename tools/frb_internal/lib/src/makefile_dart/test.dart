@@ -385,12 +385,7 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
 
       var extraFlags = '';
       // native-assets experiment was stabilized in Dart 3.10, so we no longer need the flag
-      if (const {
-        'frb_example/pure_dart',
-        'frb_example/pure_dart_pde',
-      }.contains(config.package)) {
-        extraFlags += '--enable-vm-service ';
-      }
+      // VM service is automatically enabled in Dart 3.10+ when running tests
 
       // extra check for e.g. #1807
       await wrapMaybeSetExitIfChangedRaw(config.checkClean, () async {
