@@ -436,6 +436,11 @@ Future<T> withLlvmCovReport<T>(
       return MapEntry(m.group(1)!, m.group(2)!);
     }),
   );
+  // For Dart 3.10+ native-assets hooks, pass RUSTFLAGS via NIX_FRB_RUSTFLAGS
+  // because hooks run in a semi-hermetic environment
+  if (envMap.containsKey('RUSTFLAGS')) {
+    envMap['NIX_FRB_RUSTFLAGS'] = envMap['RUSTFLAGS']!;
+  }
   print('envMap=$envMap');
 
   await exec(
