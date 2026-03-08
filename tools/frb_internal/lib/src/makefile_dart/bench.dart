@@ -84,7 +84,10 @@ Future<void> _dartBuild() async {
 Future<void> benchDartNative(BenchConfig config) async {
   await runPubGetIfNotRunYet(_kPackage);
 
-  await exec('cargo build --release', relativePwd: '$_kPackage/rust');
+  await exec(
+    'cargo build --release --features internal_feature_for_testing',
+    relativePwd: '$_kPackage/rust',
+  );
 
   await _dartBuild();
   await exec(
