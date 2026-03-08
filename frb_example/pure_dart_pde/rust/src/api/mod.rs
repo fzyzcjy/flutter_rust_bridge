@@ -49,6 +49,7 @@ pub mod raw_string;
 pub mod rust_auto_opaque;
 pub mod rust_opaque;
 pub mod rust_opaque_sync;
+pub mod serde_json_type;
 pub mod simple;
 pub mod stream;
 pub mod stream_misc;

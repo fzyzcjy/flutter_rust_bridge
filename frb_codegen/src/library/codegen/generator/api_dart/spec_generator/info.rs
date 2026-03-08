@@ -70,6 +70,7 @@ impl ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'_> {
             // MirTypeDelegate::TimeList(MirTypeDelegateTime::Duration) => "List<Duration>".to_string(),
             MirTypeDelegate::Uuid => "UuidValue".to_owned(),
             // MirTypeDelegate::Uuids => "List<UuidValue>".to_owned(),
+            MirTypeDelegate::SerdeJsonValue => "Object?".to_owned(),
             MirTypeDelegate::Backtrace => "String".to_string(),
             MirTypeDelegate::AnyhowException => "AnyhowException".to_string(),
             MirTypeDelegate::Map(mir) => format!(
@@ -116,6 +117,9 @@ impl ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'_> {
         match &self.mir {
             MirTypeDelegate::Uuid /*| MirTypeDelegate::Uuids*/ => {
                 Some("import 'package:uuid/uuid.dart';".to_owned())
+            }
+            MirTypeDelegate::SerdeJsonValue => {
+                Some("import 'dart:convert';".to_owned())
             }
             _ => None,
         }
