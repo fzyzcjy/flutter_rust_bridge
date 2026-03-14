@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `benchmark_api.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -11,7 +11,7 @@ use std::collections::HashMap;
 use std::hint::black_box;
 
 pub async fn benchmark_void_twin_rust_async() {}
-  
+
 pub async fn benchmark_input_bytes_twin_rust_async(bytes: Vec<u8>) -> i32 {
     bytes.into_iter().map(|x| x as i32).sum()
 }
@@ -19,7 +19,7 @@ pub async fn benchmark_input_bytes_twin_rust_async(bytes: Vec<u8>) -> i32 {
 pub async fn benchmark_output_bytes_twin_rust_async(size: i32) -> Vec<u8> {
     vec![0; size as usize]
 }
-  
+
 // The `serde` is only used for comparison test
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub struct BenchmarkBinaryTreeTwinRustAsync {
@@ -81,7 +81,9 @@ pub async fn benchmark_binary_tree_input_twin_rust_async(tree: BenchmarkBinaryTr
     black_box(tree);
 }
 
-pub async fn benchmark_binary_tree_output_twin_rust_async(depth: i32) -> BenchmarkBinaryTreeTwinRustAsync {
+pub async fn benchmark_binary_tree_output_twin_rust_async(
+    depth: i32,
+) -> BenchmarkBinaryTreeTwinRustAsync {
     BINARY_TREES.get(&depth).unwrap().to_owned()
 }
 
@@ -106,7 +108,7 @@ pub async fn benchmark_binary_tree_input_json_twin_rust_async(raw: String) {
 pub async fn benchmark_binary_tree_output_json_twin_rust_async(depth: i32) -> String {
     serde_json::to_string(BINARY_TREES.get(&depth).unwrap()).unwrap()
 }
-  
+
 // The `serde` is only used for comparison test
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub struct BenchmarkBlobTwinRustAsync {
@@ -156,5 +158,3 @@ pub async fn benchmark_blob_input_json_twin_rust_async(raw: String) {
 pub async fn benchmark_blob_output_json_twin_rust_async(size: i32) -> String {
     serde_json::to_string(&create_blob(size)).unwrap()
 }
-  
-  

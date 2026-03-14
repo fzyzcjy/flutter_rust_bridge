@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `newtype_pattern.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -7,7 +7,10 @@ use log::info;
 #[derive(Debug)]
 pub struct NewTypeIntTwinRustAsyncSse(pub i64);
 
-#[flutter_rust_bridge::frb(serialize)] pub async fn handle_newtype_twin_rust_async_sse(arg: NewTypeIntTwinRustAsyncSse) -> NewTypeIntTwinRustAsyncSse {
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn handle_newtype_twin_rust_async_sse(
+    arg: NewTypeIntTwinRustAsyncSse,
+) -> NewTypeIntTwinRustAsyncSse {
     info!("handle_newtype({:?})", &arg);
     NewTypeIntTwinRustAsyncSse(arg.0 * 2)
 }

@@ -1,8 +1,10 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `map_and_set.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
-use crate::api::pseudo_manual::enumeration_twin_rust_async::{EnumSimpleTwinRustAsync, KitchenSinkTwinRustAsync};
+use crate::api::pseudo_manual::enumeration_twin_rust_async::{
+    EnumSimpleTwinRustAsync, KitchenSinkTwinRustAsync,
+};
 use crate::auxiliary::sample_types::MySize;
 use std::collections::{HashMap, HashSet};
 

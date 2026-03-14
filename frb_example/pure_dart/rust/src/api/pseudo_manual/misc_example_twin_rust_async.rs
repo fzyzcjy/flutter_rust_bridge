@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `misc_example.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -14,7 +14,9 @@ pub struct MyTreeNodeTwinRustAsync {
     pub children: Vec<MyTreeNodeTwinRustAsync>,
 }
 
-pub async fn handle_complex_struct_twin_rust_async(s: MyTreeNodeTwinRustAsync) -> MyTreeNodeTwinRustAsync {
+pub async fn handle_complex_struct_twin_rust_async(
+    s: MyTreeNodeTwinRustAsync,
+) -> MyTreeNodeTwinRustAsync {
     // info!("handle_complex_struct({:?})", &s);
     let _s_cloned = s.clone();
     s
@@ -48,7 +50,9 @@ pub struct MyNestedStructTwinRustAsync {
     pub weekday: WeekdaysTwinRustAsync,
 }
 
-pub async fn handle_nested_struct_twin_rust_async(s: MyNestedStructTwinRustAsync) -> MyNestedStructTwinRustAsync {
+pub async fn handle_nested_struct_twin_rust_async(
+    s: MyNestedStructTwinRustAsync,
+) -> MyNestedStructTwinRustAsync {
     println!("handle_nested_struct({s:?})");
     let _s_cloned = s.clone();
     s
@@ -94,7 +98,9 @@ pub struct StructWithEnumTwinRustAsync {
     pub abc2: AbcTwinRustAsync,
 }
 
-pub async fn test_struct_with_enum_twin_rust_async(se: StructWithEnumTwinRustAsync) -> StructWithEnumTwinRustAsync {
+pub async fn test_struct_with_enum_twin_rust_async(
+    se: StructWithEnumTwinRustAsync,
+) -> StructWithEnumTwinRustAsync {
     StructWithEnumTwinRustAsync {
         abc1: se.abc2,
         abc2: se.abc1,

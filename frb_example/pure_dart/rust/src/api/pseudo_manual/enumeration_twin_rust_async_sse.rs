@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `enumeration.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -11,7 +11,10 @@ pub enum EnumSimpleTwinRustAsyncSse {
     B,
 }
 
-#[flutter_rust_bridge::frb(serialize)] pub async fn func_enum_simple_twin_rust_async_sse(arg: EnumSimpleTwinRustAsyncSse) -> EnumSimpleTwinRustAsyncSse {
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn func_enum_simple_twin_rust_async_sse(
+    arg: EnumSimpleTwinRustAsyncSse,
+) -> EnumSimpleTwinRustAsyncSse {
     arg
 }
 
@@ -21,7 +24,8 @@ pub enum EnumWithItemMixedTwinRustAsyncSse {
     C { c_field: String },
 }
 
-#[flutter_rust_bridge::frb(serialize)] pub async fn func_enum_with_item_mixed_twin_rust_async_sse(
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn func_enum_with_item_mixed_twin_rust_async_sse(
     arg: EnumWithItemMixedTwinRustAsyncSse,
 ) -> EnumWithItemMixedTwinRustAsyncSse {
     arg
@@ -32,7 +36,8 @@ pub enum EnumWithItemTupleTwinRustAsyncSse {
     B(i32),
 }
 
-#[flutter_rust_bridge::frb(serialize)] pub async fn func_enum_with_item_tuple_twin_rust_async_sse(
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn func_enum_with_item_tuple_twin_rust_async_sse(
     arg: EnumWithItemTupleTwinRustAsyncSse,
 ) -> EnumWithItemTupleTwinRustAsyncSse {
     arg
@@ -43,7 +48,8 @@ pub enum EnumWithItemStructTwinRustAsyncSse {
     B { b_field: Vec<i32> },
 }
 
-#[flutter_rust_bridge::frb(serialize)] pub async fn func_enum_with_item_struct_twin_rust_async_sse(
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn func_enum_with_item_struct_twin_rust_async_sse(
     arg: EnumWithItemStructTwinRustAsyncSse,
 ) -> EnumWithItemStructTwinRustAsyncSse {
     arg
@@ -55,7 +61,8 @@ pub enum EnumWithDiscriminantTwinRustAsyncSse {
     Fifty = 50,
 }
 
-#[flutter_rust_bridge::frb(serialize)] pub async fn func_enum_with_discriminant_twin_rust_async_sse(
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn func_enum_with_discriminant_twin_rust_async_sse(
     arg: EnumWithDiscriminantTwinRustAsyncSse,
 ) -> EnumWithDiscriminantTwinRustAsyncSse {
     arg
@@ -69,12 +76,16 @@ pub struct NoteTwinRustAsyncSse {
     pub body: String,
 }
 
-#[flutter_rust_bridge::frb(serialize)] pub async fn print_note_twin_rust_async_sse(note: NoteTwinRustAsyncSse) -> Vec<u8> {
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn print_note_twin_rust_async_sse(note: NoteTwinRustAsyncSse) -> Vec<u8> {
     info!("{:#?}", note);
     vec![1, 2, 3]
 }
 
-#[flutter_rust_bridge::frb(serialize)] pub async fn handle_return_enum_twin_rust_async_sse(input: String) -> Option<WeekdaysTwinRustAsyncSse> {
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn handle_return_enum_twin_rust_async_sse(
+    input: String,
+) -> Option<WeekdaysTwinRustAsyncSse> {
     match input.as_str() {
         "Monday" => Some(WeekdaysTwinRustAsyncSse::Monday),
         "Tuesday" => Some(WeekdaysTwinRustAsyncSse::Tuesday),
@@ -87,7 +98,10 @@ pub struct NoteTwinRustAsyncSse {
     }
 }
 
-#[flutter_rust_bridge::frb(serialize)] pub async fn handle_enum_parameter_twin_rust_async_sse(weekday: WeekdaysTwinRustAsyncSse) -> WeekdaysTwinRustAsyncSse {
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn handle_enum_parameter_twin_rust_async_sse(
+    weekday: WeekdaysTwinRustAsyncSse,
+) -> WeekdaysTwinRustAsyncSse {
     info!("The weekday is {:?}", weekday);
     weekday
 }
@@ -110,7 +124,10 @@ pub enum MeasureTwinRustAsyncSse {
     Distance(Box<DistanceTwinRustAsyncSse>),
 }
 
-#[flutter_rust_bridge::frb(serialize)] pub async fn multiply_by_ten_twin_rust_async_sse(measure: MeasureTwinRustAsyncSse) -> Option<MeasureTwinRustAsyncSse> {
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn multiply_by_ten_twin_rust_async_sse(
+    measure: MeasureTwinRustAsyncSse,
+) -> Option<MeasureTwinRustAsyncSse> {
     match measure {
         MeasureTwinRustAsyncSse::Speed(b) => match *b {
             SpeedTwinRustAsyncSse::GPS(v) => Some(MeasureTwinRustAsyncSse::Speed(Box::new(
@@ -154,7 +171,10 @@ pub enum KitchenSinkTwinRustAsyncSse {
     Enums(#[frb(default = "WeekdaysTwinRustAsyncSse.Sunday")] WeekdaysTwinRustAsyncSse),
 }
 
-#[flutter_rust_bridge::frb(serialize)] pub async fn handle_enum_struct_twin_rust_async_sse(val: KitchenSinkTwinRustAsyncSse) -> KitchenSinkTwinRustAsyncSse {
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn handle_enum_struct_twin_rust_async_sse(
+    val: KitchenSinkTwinRustAsyncSse,
+) -> KitchenSinkTwinRustAsyncSse {
     use KitchenSinkTwinRustAsyncSse::*;
     use WeekdaysTwinRustAsyncSse::*;
     let inc = |x| x + 1;

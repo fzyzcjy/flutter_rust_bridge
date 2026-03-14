@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `rust_auto_opaque.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -26,15 +26,21 @@ pub enum NonCloneSimpleEnumTwinSyncMoi {
 
 // ==================================== simple =======================================
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_arg_own_twin_sync_moi(arg: NonCloneSimpleTwinSyncMoi, expect: i32) {
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_arg_own_twin_sync_moi(arg: NonCloneSimpleTwinSyncMoi, expect: i32) {
     assert_eq!(arg.inner, expect);
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_arg_borrow_twin_sync_moi(arg: &NonCloneSimpleTwinSyncMoi, expect: i32) {
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_arg_borrow_twin_sync_moi(arg: &NonCloneSimpleTwinSyncMoi, expect: i32) {
     assert_eq!(arg.inner, expect);
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_arg_mut_borrow_twin_sync_moi(
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_arg_mut_borrow_twin_sync_moi(
     arg: &mut NonCloneSimpleTwinSyncMoi,
     expect: i32,
     adder: i32,
@@ -43,20 +49,26 @@ pub enum NonCloneSimpleEnumTwinSyncMoi {
     arg.inner += adder;
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_return_own_twin_sync_moi(initial: i32) -> NonCloneSimpleTwinSyncMoi {
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_return_own_twin_sync_moi(initial: i32) -> NonCloneSimpleTwinSyncMoi {
     NonCloneSimpleTwinSyncMoi { inner: initial }
 }
 
 // ==================================== with other args =======================================
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_arg_own_and_return_own_twin_sync_moi(
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_arg_own_and_return_own_twin_sync_moi(
     arg: NonCloneSimpleTwinSyncMoi,
 ) -> NonCloneSimpleTwinSyncMoi {
     assert_eq!(arg.inner, 42);
     arg
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_two_args_twin_sync_moi(
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_two_args_twin_sync_moi(
     a: NonCloneSimpleTwinSyncMoi,
     b: NonCloneSimpleTwinSyncMoi,
 ) {
@@ -64,7 +76,12 @@ pub enum NonCloneSimpleEnumTwinSyncMoi {
     assert_eq!(b.inner, 20);
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_normal_and_opaque_arg_twin_sync_moi(a: NonCloneSimpleTwinSyncMoi, b: String) {
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_normal_and_opaque_arg_twin_sync_moi(
+    a: NonCloneSimpleTwinSyncMoi,
+    b: String,
+) {
     assert_eq!(a.inner, 42);
     assert_eq!(b, "hello");
 }
@@ -81,20 +98,33 @@ impl MyTraitTwinSyncMoi for String {
 }
 
 /// "+" inside the type signature
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_plus_sign_arg_twin_sync_moi(arg: Box<dyn MyTraitTwinSyncMoi + Send + Sync>) {
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_plus_sign_arg_twin_sync_moi(
+    arg: Box<dyn MyTraitTwinSyncMoi + Send + Sync>,
+) {
     assert_eq!(arg.f(), "hello");
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_plus_sign_return_twin_sync_moi() -> Box<dyn MyTraitTwinSyncMoi + Send + Sync> {
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_plus_sign_return_twin_sync_moi() -> Box<dyn MyTraitTwinSyncMoi + Send + Sync>
+{
     Box::new("hello".to_owned())
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_callable_arg_twin_sync_moi(arg: Box<dyn Fn(String) -> String + Send + Sync>) {
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_callable_arg_twin_sync_moi(
+    arg: Box<dyn Fn(String) -> String + Send + Sync>,
+) {
     assert_eq!(&arg("hello".into()), "hellohello");
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_callable_return_twin_sync_moi() -> Box<dyn Fn(String) -> String + Send + Sync>
-{
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_callable_return_twin_sync_moi(
+) -> Box<dyn Fn(String) -> String + Send + Sync> {
     Box::new(|x: String| x.repeat(2))
 }
 
@@ -165,19 +195,27 @@ impl MyTraitTwinSyncMoi for String {
 // ==================================== static method =======================================
 
 impl NonCloneSimpleTwinSyncMoi {
-    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn static_method_arg_own_twin_sync_moi(arg: NonCloneSimpleTwinSyncMoi) {
+    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn static_method_arg_own_twin_sync_moi(arg: NonCloneSimpleTwinSyncMoi) {
         assert_eq!(arg.inner, 42);
     }
 
-    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn static_method_arg_borrow_twin_sync_moi(arg: &NonCloneSimpleTwinSyncMoi) {
+    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn static_method_arg_borrow_twin_sync_moi(arg: &NonCloneSimpleTwinSyncMoi) {
         assert_eq!(arg.inner, 42);
     }
 
-    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn static_method_arg_mut_borrow_twin_sync_moi(arg: &mut NonCloneSimpleTwinSyncMoi) {
+    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn static_method_arg_mut_borrow_twin_sync_moi(arg: &mut NonCloneSimpleTwinSyncMoi) {
         assert_eq!(arg.inner, 42);
     }
 
-    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn static_method_return_own_twin_sync_moi() -> NonCloneSimpleTwinSyncMoi {
+    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn static_method_return_own_twin_sync_moi() -> NonCloneSimpleTwinSyncMoi {
         NonCloneSimpleTwinSyncMoi { inner: 42 }
     }
 }
@@ -186,38 +224,54 @@ impl NonCloneSimpleTwinSyncMoi {
 
 impl NonCloneSimpleTwinSyncMoi {
     /// unnamed constructor
-    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn new_twin_sync_moi() -> NonCloneSimpleTwinSyncMoi {
+    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn new_twin_sync_moi() -> NonCloneSimpleTwinSyncMoi {
         Self { inner: 42 }
     }
 
     /// named constructor
-    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn new_custom_name_twin_sync_moi() -> NonCloneSimpleTwinSyncMoi {
+    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn new_custom_name_twin_sync_moi() -> NonCloneSimpleTwinSyncMoi {
         Self { inner: 42 }
     }
 
     /// constructor with Result
-    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn new_with_result_twin_sync_moi() -> anyhow::Result<NonCloneSimpleTwinSyncMoi> {
+    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn new_with_result_twin_sync_moi() -> anyhow::Result<NonCloneSimpleTwinSyncMoi> {
         Ok(Self { inner: 42 })
     }
 
-    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn instance_method_arg_own_twin_sync_moi(self) {
+    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn instance_method_arg_own_twin_sync_moi(self) {
         assert_eq!(self.inner, 42);
     }
 
-    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn instance_method_arg_borrow_twin_sync_moi(&self) {
+    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn instance_method_arg_borrow_twin_sync_moi(&self) {
         assert_eq!(self.inner, 42);
     }
 
-    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn instance_method_arg_mut_borrow_twin_sync_moi(&mut self) {
+    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn instance_method_arg_mut_borrow_twin_sync_moi(&mut self) {
         assert_eq!(self.inner, 42);
     }
 
-    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn instance_method_return_own_twin_sync_moi(&self) -> NonCloneSimpleTwinSyncMoi {
+    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn instance_method_return_own_twin_sync_moi(&self) -> NonCloneSimpleTwinSyncMoi {
         Self { inner: 42 }
     }
 
     #[frb(getter)]
-    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn instance_method_getter_twin_sync_moi(&self) -> i32 {
+    #[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn instance_method_getter_twin_sync_moi(&self) -> i32 {
         self.inner
     }
 }
@@ -232,7 +286,9 @@ pub struct StructWithGoodAndOpaqueFieldTwinSyncMoi {
     pub option_opaque: Option<NonCloneSimpleTwinSyncMoi>,
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_moi(
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sync_moi(
     arg: StructWithGoodAndOpaqueFieldTwinSyncMoi,
 ) {
     assert_eq!(&arg.good, "hello");
@@ -240,7 +296,9 @@ pub struct StructWithGoodAndOpaqueFieldTwinSyncMoi {
     assert_eq!(arg.option_opaque.unwrap().inner, 42);
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_moi(
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sync_moi(
 ) -> StructWithGoodAndOpaqueFieldTwinSyncMoi {
     StructWithGoodAndOpaqueFieldTwinSyncMoi {
         good: "hello".to_string(),
@@ -257,7 +315,9 @@ pub enum EnumWithGoodAndOpaqueTwinSyncMoi {
     Opaque(NonCloneSimpleTwinSyncMoi),
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_moi(
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sync_moi(
     arg: EnumWithGoodAndOpaqueTwinSyncMoi,
 ) {
     match arg {
@@ -266,12 +326,16 @@ pub enum EnumWithGoodAndOpaqueTwinSyncMoi {
     }
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_moi(
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sync_moi(
 ) -> EnumWithGoodAndOpaqueTwinSyncMoi {
     EnumWithGoodAndOpaqueTwinSyncMoi::Good("hello".to_owned())
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_moi(
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sync_moi(
 ) -> EnumWithGoodAndOpaqueTwinSyncMoi {
     EnumWithGoodAndOpaqueTwinSyncMoi::Opaque(NonCloneSimpleTwinSyncMoi { inner: 42 })
 }
@@ -290,7 +354,9 @@ pub enum EnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi {
 }
 
 #[allow(unused_variables)]
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_dummy_twin_sync_moi(
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_dummy_twin_sync_moi(
     a: StructWithGoodAndOpaqueFieldWithoutOptionTwinSyncMoi,
     b: EnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi,
 ) {
@@ -298,23 +364,31 @@ pub enum EnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi {
 
 // ================ enum opaque type ===================
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_enum_arg_borrow_twin_sync_moi(arg: &NonCloneSimpleEnumTwinSyncMoi) {
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_enum_arg_borrow_twin_sync_moi(arg: &NonCloneSimpleEnumTwinSyncMoi) {
     assert!(matches!(arg, NonCloneSimpleEnumTwinSyncMoi::Orange));
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_enum_return_own_twin_sync_moi() -> NonCloneSimpleEnumTwinSyncMoi {
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_enum_return_own_twin_sync_moi() -> NonCloneSimpleEnumTwinSyncMoi {
     NonCloneSimpleEnumTwinSyncMoi::Orange
 }
 
 // ================ stream sink ===================
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_stream_sink_twin_sync_moi(sink: StreamSink<NonCloneSimpleTwinSyncMoi>) {
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_stream_sink_twin_sync_moi(sink: StreamSink<NonCloneSimpleTwinSyncMoi>) {
     sink.add(NonCloneSimpleTwinSyncMoi { inner: 42 }).unwrap();
 }
 
 // ================ vec of opaque ===================
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_arg_vec_own_twin_sync_moi(
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_arg_vec_own_twin_sync_moi(
     arg: Vec<NonCloneSimpleTwinSyncMoi>,
     expect: Vec<i32>,
 ) {
@@ -323,7 +397,9 @@ pub enum EnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi {
     }
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_return_vec_own_twin_sync_moi() -> Vec<NonCloneSimpleTwinSyncMoi> {
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_return_vec_own_twin_sync_moi() -> Vec<NonCloneSimpleTwinSyncMoi> {
     vec![
         NonCloneSimpleTwinSyncMoi { inner: 10 },
         NonCloneSimpleTwinSyncMoi { inner: 20 },
@@ -332,7 +408,9 @@ pub enum EnumWithGoodAndOpaqueWithoutOptionTwinSyncMoi {
 
 // ================ use explicit type ===================
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_explicit_arg_twin_sync_moi(
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_explicit_arg_twin_sync_moi(
     arg: crate::frb_generated::RustAutoOpaqueMoi<NonCloneSimpleTwinSyncMoi>,
     expect: i32,
 ) {
@@ -344,21 +422,29 @@ pub struct StructWithExplicitAutoOpaqueFieldTwinSyncMoi {
     pub normal: i32,
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_explicit_struct_twin_sync_moi(
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_explicit_struct_twin_sync_moi(
     arg: StructWithExplicitAutoOpaqueFieldTwinSyncMoi,
 ) {
     assert_eq!(arg.auto_opaque.try_read().unwrap().inner, arg.normal);
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_explicit_return_struct_twin_sync_moi(
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_explicit_return_struct_twin_sync_moi(
 ) -> StructWithExplicitAutoOpaqueFieldTwinSyncMoi {
     StructWithExplicitAutoOpaqueFieldTwinSyncMoi {
         normal: 100,
-        auto_opaque: crate::frb_generated::RustAutoOpaqueMoi::new(NonCloneSimpleTwinSyncMoi { inner: 100 }),
+        auto_opaque: crate::frb_generated::RustAutoOpaqueMoi::new(NonCloneSimpleTwinSyncMoi {
+            inner: 100,
+        }),
     }
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_explicit_return_twin_sync_moi(
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_explicit_return_twin_sync_moi(
     initial: i32,
 ) -> crate::frb_generated::RustAutoOpaqueMoi<NonCloneSimpleTwinSyncMoi> {
     crate::frb_generated::RustAutoOpaqueMoi::new(NonCloneSimpleTwinSyncMoi { inner: initial })
@@ -366,7 +452,9 @@ pub struct StructWithExplicitAutoOpaqueFieldTwinSyncMoi {
 
 // ================ deadlock detection ===================
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_sleep_twin_sync_moi(
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_sleep_twin_sync_moi(
     apple: &mut NonCloneSimpleTwinSyncMoi,
     orange: &mut NonCloneSimpleTwinSyncMoi,
 ) -> i32 {
@@ -388,22 +476,30 @@ pub struct OpaqueOneTwinSyncMoi(PathBuf);
 #[frb(opaque)]
 pub struct OpaqueTwoTwinSyncMoi(PathBuf);
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_return_opaque_one_and_two_twin_sync_moi(
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_return_opaque_one_and_two_twin_sync_moi(
 ) -> (OpaqueOneTwinSyncMoi, OpaqueTwoTwinSyncMoi) {
     unimplemented!()
 }
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_return_opaque_two_twin_sync_moi() -> OpaqueTwoTwinSyncMoi {
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_return_opaque_two_twin_sync_moi() -> OpaqueTwoTwinSyncMoi {
     unimplemented!()
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_borrow_and_mut_borrow_twin_sync_moi(
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_borrow_and_mut_borrow_twin_sync_moi(
     borrow: &NonCloneSimpleTwinSyncMoi,
     mut_borrow: &mut NonCloneSimpleTwinSyncMoi,
 ) -> i32 {
     borrow.inner + mut_borrow.inner
 }
 
-#[flutter_rust_bridge::frb(rust_opaque_codec_moi)] #[flutter_rust_bridge::frb(sync)] pub fn rust_auto_opaque_borrow_and_borrow_twin_sync_moi(
+#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn rust_auto_opaque_borrow_and_borrow_twin_sync_moi(
     a: &NonCloneSimpleTwinSyncMoi,
     b: &NonCloneSimpleTwinSyncMoi,
 ) -> i32 {

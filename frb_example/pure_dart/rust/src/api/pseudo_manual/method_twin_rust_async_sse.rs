@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `method.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -18,24 +18,29 @@ pub struct ConcatenateWithTwinRustAsyncSse {
 }
 
 impl ConcatenateWithTwinRustAsyncSse {
-    #[flutter_rust_bridge::frb(serialize)] pub async fn new_twin_rust_async_sse(a: String) -> ConcatenateWithTwinRustAsyncSse {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn new_twin_rust_async_sse(a: String) -> ConcatenateWithTwinRustAsyncSse {
         ConcatenateWithTwinRustAsyncSse { a }
     }
 
-    #[flutter_rust_bridge::frb(serialize)] pub async fn concatenate_twin_rust_async_sse(&self, b: String) -> String {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn concatenate_twin_rust_async_sse(&self, b: String) -> String {
         format!("{}{b}", self.a)
     }
 
-    #[flutter_rust_bridge::frb(serialize)] pub async fn concatenate_static_twin_rust_async_sse(a: String, b: String) -> String {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn concatenate_static_twin_rust_async_sse(a: String, b: String) -> String {
         format!("{a}{b}")
     }
 
     #[frb(getter)]
-    #[flutter_rust_bridge::frb(serialize)] pub async fn simple_getter_twin_rust_async_sse(&self) -> String {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn simple_getter_twin_rust_async_sse(&self) -> String {
         self.a.clone()
     }
 
-    #[flutter_rust_bridge::frb(serialize)] pub async fn handle_some_stream_sink_twin_rust_async_sse(
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn handle_some_stream_sink_twin_rust_async_sse(
         &self,
         key: u32,
         max: u32,
@@ -53,7 +58,11 @@ impl ConcatenateWithTwinRustAsyncSse {
         }));
     }
 
-    #[flutter_rust_bridge::frb(serialize)] pub async fn handle_some_stream_sink_at_1_twin_rust_async_sse(&self, sink: StreamSink<u32, flutter_rust_bridge::SseCodec>) {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn handle_some_stream_sink_at_1_twin_rust_async_sse(
+        &self,
+        sink: StreamSink<u32, flutter_rust_bridge::SseCodec>,
+    ) {
         (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
             for i in 0..5 {
                 sink.add(i).unwrap();
@@ -61,7 +70,8 @@ impl ConcatenateWithTwinRustAsyncSse {
         }));
     }
 
-    #[flutter_rust_bridge::frb(serialize)] pub async fn handle_some_static_stream_sink_twin_rust_async_sse(
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn handle_some_static_stream_sink_twin_rust_async_sse(
         key: u32,
         max: u32,
         sink: StreamSink<Log2TwinRustAsyncSse, flutter_rust_bridge::SseCodec>,
@@ -77,7 +87,10 @@ impl ConcatenateWithTwinRustAsyncSse {
         }));
     }
 
-    #[flutter_rust_bridge::frb(serialize)] pub async fn handle_some_static_stream_sink_single_arg_twin_rust_async_sse(sink: StreamSink<u32, flutter_rust_bridge::SseCodec>) {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn handle_some_static_stream_sink_single_arg_twin_rust_async_sse(
+        sink: StreamSink<u32, flutter_rust_bridge::SseCodec>,
+    ) {
         (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
             for i in 0..5 {
                 sink.add(i).unwrap();
@@ -91,16 +104,23 @@ pub struct SumWithTwinRustAsyncSse {
 }
 
 impl SumWithTwinRustAsyncSse {
-    #[flutter_rust_bridge::frb(serialize)] pub async fn sum_twin_rust_async_sse(&self, y: u32, z: u32) -> u32 {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn sum_twin_rust_async_sse(&self, y: u32, z: u32) -> u32 {
         self.x + y + z
     }
 }
 
-#[flutter_rust_bridge::frb(serialize)] pub async fn get_sum_struct_twin_rust_async_sse() -> SumWithTwinRustAsyncSse {
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn get_sum_struct_twin_rust_async_sse() -> SumWithTwinRustAsyncSse {
     SumWithTwinRustAsyncSse { x: 21 }
 }
 
-#[flutter_rust_bridge::frb(serialize)] pub async fn get_sum_array_twin_rust_async_sse(a: u32, b: u32, c: u32) -> [SumWithTwinRustAsyncSse; 3] {
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn get_sum_array_twin_rust_async_sse(
+    a: u32,
+    b: u32,
+    c: u32,
+) -> [SumWithTwinRustAsyncSse; 3] {
     [
         SumWithTwinRustAsyncSse { x: a },
         SumWithTwinRustAsyncSse { x: b },
@@ -113,7 +133,8 @@ pub struct MyCallableTwinRustAsyncSse {
 }
 
 impl MyCallableTwinRustAsyncSse {
-    #[flutter_rust_bridge::frb(serialize)] pub async fn call(&self, two: String) -> String {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn call(&self, two: String) -> String {
         self.one.clone() + &two
     }
 }
@@ -123,23 +144,28 @@ pub struct SimpleStructTwinRustAsyncSse {
 }
 
 impl SimpleStructTwinRustAsyncSse {
-    #[flutter_rust_bridge::frb(serialize)] pub async fn return_self_twin_rust_async_sse(one: String) -> Self {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn return_self_twin_rust_async_sse(one: String) -> Self {
         Self { one }
     }
 
-    #[flutter_rust_bridge::frb(serialize)] pub async fn receiver_borrow_twin_rust_async_sse(&self) -> String {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn receiver_borrow_twin_rust_async_sse(&self) -> String {
         self.one.to_owned()
     }
 
-    #[flutter_rust_bridge::frb(serialize)] pub async fn receiver_own_twin_rust_async_sse(self) -> String {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn receiver_own_twin_rust_async_sse(self) -> String {
         self.one.to_owned()
     }
 
-    #[flutter_rust_bridge::frb(serialize)] pub async fn arg_self_twin_rust_async_sse(a: Self, b: Self) -> String {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn arg_self_twin_rust_async_sse(a: Self, b: Self) -> String {
         a.one + &b.one
     }
 
-    #[flutter_rust_bridge::frb(serialize)] pub async fn vec_self_twin_rust_async_sse(arg: Vec<Self>) -> Vec<String> {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn vec_self_twin_rust_async_sse(arg: Vec<Self>) -> Vec<String> {
         arg.into_iter().map(|x| x.one).collect()
     }
 }
@@ -151,11 +177,13 @@ pub enum SimpleEnumTwinRustAsyncSse {
 }
 
 impl SimpleEnumTwinRustAsyncSse {
-    #[flutter_rust_bridge::frb(serialize)] pub async fn return_self_twin_rust_async_sse(one: String) -> Self {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn return_self_twin_rust_async_sse(one: String) -> Self {
         Self::Second(one)
     }
 
-    #[flutter_rust_bridge::frb(serialize)] pub async fn simple_method_twin_rust_async_sse(&self) -> String {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn simple_method_twin_rust_async_sse(&self) -> String {
         match self {
             SimpleEnumTwinRustAsyncSse::First => "".to_owned(),
             SimpleEnumTwinRustAsyncSse::Second(inner) => inner.to_owned(),
@@ -170,7 +198,8 @@ pub enum SimplePrimitiveEnumTwinRustAsyncSse {
 }
 
 impl SimplePrimitiveEnumTwinRustAsyncSse {
-    #[flutter_rust_bridge::frb(serialize)] pub async fn simple_method_twin_rust_async_sse(&self) -> i32 {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn simple_method_twin_rust_async_sse(&self) -> i32 {
         match self {
             SimplePrimitiveEnumTwinRustAsyncSse::First => 100,
             SimplePrimitiveEnumTwinRustAsyncSse::Second => 200,
@@ -184,7 +213,8 @@ pub struct StaticOnlyTwinRustAsyncSse {
 }
 
 impl StaticOnlyTwinRustAsyncSse {
-    #[flutter_rust_bridge::frb(serialize)] pub async fn static_method_twin_rust_async_sse(a: i32) -> i32 {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn static_method_twin_rust_async_sse(a: i32) -> i32 {
         a
     }
 }
@@ -195,7 +225,8 @@ pub struct StaticGetterOnlyTwinRustAsyncSse {}
 
 impl StaticGetterOnlyTwinRustAsyncSse {
     #[frb(getter)]
-    #[flutter_rust_bridge::frb(serialize)] pub async fn static_getter_twin_rust_async_sse() -> i32 {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub async fn static_getter_twin_rust_async_sse() -> i32 {
         42
     }
 }

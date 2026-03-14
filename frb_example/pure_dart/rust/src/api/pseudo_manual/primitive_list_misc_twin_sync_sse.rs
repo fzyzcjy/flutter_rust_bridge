@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `primitive_list_misc.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -16,7 +16,9 @@ pub struct VecOfPrimitivePackTwinSyncSse {
     pub bool_list: Vec<bool>,
 }
 
-#[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn handle_vec_of_primitive_twin_sync_sse(n: i32) -> VecOfPrimitivePackTwinSyncSse {
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn handle_vec_of_primitive_twin_sync_sse(n: i32) -> VecOfPrimitivePackTwinSyncSse {
     VecOfPrimitivePackTwinSyncSse {
         int8list: vec![42i8; n as usize],
         uint8list: vec![42u8; n as usize],

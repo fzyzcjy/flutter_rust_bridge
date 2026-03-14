@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `mirror.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -202,7 +202,8 @@ pub async fn test_raw_string_enum_mirrored_twin_rust_async(nested: bool) -> RawS
     }
 }
 
-pub async fn test_list_of_raw_nested_string_mirrored_twin_rust_async() -> ListOfNestedRawStringMirrored {
+pub async fn test_list_of_raw_nested_string_mirrored_twin_rust_async(
+) -> ListOfNestedRawStringMirrored {
     ListOfNestedRawStringMirrored {
         raw: vec![NestedRawStringMirrored {
             raw: RawStringMirrored {
@@ -213,8 +214,8 @@ pub async fn test_list_of_raw_nested_string_mirrored_twin_rust_async() -> ListOf
     }
 }
 
-pub async fn test_fallible_of_raw_string_mirrored_twin_rust_async() -> anyhow::Result<Vec<RawStringMirrored>>
-{
+pub async fn test_fallible_of_raw_string_mirrored_twin_rust_async(
+) -> anyhow::Result<Vec<RawStringMirrored>> {
     Ok(vec![RawStringMirrored {
         r#value: "test".to_owned(),
         r#type: "".to_string(),
@@ -250,7 +251,8 @@ pub struct ContainsMirroredSubStructTwinRustAsync {
     pub test2: AnotherTwinRustAsync,
 }
 
-pub async fn test_contains_mirrored_sub_struct_twin_rust_async() -> ContainsMirroredSubStructTwinRustAsync {
+pub async fn test_contains_mirrored_sub_struct_twin_rust_async(
+) -> ContainsMirroredSubStructTwinRustAsync {
     ContainsMirroredSubStructTwinRustAsync {
         test: RawStringMirrored {
             r#value: "test".to_owned(),
@@ -292,7 +294,9 @@ pub async fn mirror_vec_enum_stream_twin_rust_async(sink: StreamSink<Vec<Applica
     sink.add(vec![ApplicationMode::Standalone]).unwrap();
 }
 
-pub async fn mirror_map_enum_stream_twin_rust_async(sink: StreamSink<HashMap<u8, ApplicationMode>>) {
+pub async fn mirror_map_enum_stream_twin_rust_async(
+    sink: StreamSink<HashMap<u8, ApplicationMode>>,
+) {
     sink.add(HashMap::from([
         (0, ApplicationMode::Embedded),
         (1, ApplicationMode::Standalone),

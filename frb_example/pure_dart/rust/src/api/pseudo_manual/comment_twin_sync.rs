@@ -1,20 +1,23 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `comment.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
 /// This is single line comment
-#[flutter_rust_bridge::frb(sync)] pub fn function_with_comments_triple_slash_single_line_twin_sync() {}
+#[flutter_rust_bridge::frb(sync)]
+pub fn function_with_comments_triple_slash_single_line_twin_sync() {}
 
 /// This is first line
 /// This is second line
-#[flutter_rust_bridge::frb(sync)] pub fn function_with_comments_triple_slash_multi_line_twin_sync() {}
+#[flutter_rust_bridge::frb(sync)]
+pub fn function_with_comments_triple_slash_multi_line_twin_sync() {}
 
 /**
  Multiline comments are fine,
  but they are not preferred in Rust nor in Dart.
  Newlines are preserved.
 */
-#[flutter_rust_bridge::frb(sync)] pub fn function_with_comments_slash_star_star_twin_sync() {}
+#[flutter_rust_bridge::frb(sync)]
+pub fn function_with_comments_slash_star_star_twin_sync() {}
 
 /// Comments on simple enums
 pub enum SimpleEnumWithCommentsTwinSync {
@@ -44,8 +47,10 @@ pub struct StructWithCommentsTwinSync {
 
 impl StructWithCommentsTwinSync {
     /// Documentation on a static method
-    #[flutter_rust_bridge::frb(sync)] pub fn static_method_twin_sync() {}
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn static_method_twin_sync() {}
 
     /// Documentation on an instance method
-    #[flutter_rust_bridge::frb(sync)] pub fn instance_method_twin_sync(&self) {}
+    #[flutter_rust_bridge::frb(sync)]
+    pub fn instance_method_twin_sync(&self) {}
 }

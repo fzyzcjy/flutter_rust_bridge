@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `rust_opaque.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -90,7 +90,9 @@ pub async fn run_opaque_twin_rust_async(opaque: RustOpaque<HideDataTwinRustAsync
     opaque.0.hide_data()
 }
 
-pub async fn run_opaque_with_delay_twin_rust_async(opaque: RustOpaque<HideDataTwinRustAsync>) -> String {
+pub async fn run_opaque_with_delay_twin_rust_async(
+    opaque: RustOpaque<HideDataTwinRustAsync>,
+) -> String {
     // If WASM + main thread (i.e. "sync"), the `sleep` cannot be used, which is a Rust / WASM limit.
     // (But if on native, or on WASM + async mode, it is OK)
     #[cfg(not(target_family = "wasm"))]
@@ -149,7 +151,9 @@ pub async fn run_nested_opaque_twin_rust_async(opaque: OpaqueNestedTwinRustAsync
     opaque.second.0.hide_data();
 }
 
-pub async fn unwrap_rust_opaque_twin_rust_async(opaque: RustOpaque<HideDataTwinRustAsync>) -> Result<String> {
+pub async fn unwrap_rust_opaque_twin_rust_async(
+    opaque: RustOpaque<HideDataTwinRustAsync>,
+) -> Result<String> {
     let data: HideDataTwinRustAsync = opaque
         .try_unwrap()
         .map_err(|_| anyhow::anyhow!("opaque type is shared"))?;

@@ -1,8 +1,10 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `chrono_type.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
-pub async fn datetime_utc_twin_rust_async(d: chrono::DateTime<chrono::Utc>) -> chrono::DateTime<chrono::Utc> {
+pub async fn datetime_utc_twin_rust_async(
+    d: chrono::DateTime<chrono::Utc>,
+) -> chrono::DateTime<chrono::Utc> {
     use chrono::Datelike;
     use chrono::Timelike;
     assert_eq!(&d.year(), &2022);

@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `method.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -18,24 +18,29 @@ pub struct ConcatenateWithTwinSse {
 }
 
 impl ConcatenateWithTwinSse {
-    #[flutter_rust_bridge::frb(serialize)] pub fn new_twin_sse(a: String) -> ConcatenateWithTwinSse {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn new_twin_sse(a: String) -> ConcatenateWithTwinSse {
         ConcatenateWithTwinSse { a }
     }
 
-    #[flutter_rust_bridge::frb(serialize)] pub fn concatenate_twin_sse(&self, b: String) -> String {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn concatenate_twin_sse(&self, b: String) -> String {
         format!("{}{b}", self.a)
     }
 
-    #[flutter_rust_bridge::frb(serialize)] pub fn concatenate_static_twin_sse(a: String, b: String) -> String {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn concatenate_static_twin_sse(a: String, b: String) -> String {
         format!("{a}{b}")
     }
 
     #[frb(getter)]
-    #[flutter_rust_bridge::frb(serialize)] pub fn simple_getter_twin_sse(&self) -> String {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn simple_getter_twin_sse(&self) -> String {
         self.a.clone()
     }
 
-    #[flutter_rust_bridge::frb(serialize)] pub fn handle_some_stream_sink_twin_sse(
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn handle_some_stream_sink_twin_sse(
         &self,
         key: u32,
         max: u32,
@@ -53,7 +58,11 @@ impl ConcatenateWithTwinSse {
         }));
     }
 
-    #[flutter_rust_bridge::frb(serialize)] pub fn handle_some_stream_sink_at_1_twin_sse(&self, sink: StreamSink<u32, flutter_rust_bridge::SseCodec>) {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn handle_some_stream_sink_at_1_twin_sse(
+        &self,
+        sink: StreamSink<u32, flutter_rust_bridge::SseCodec>,
+    ) {
         (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
             for i in 0..5 {
                 sink.add(i).unwrap();
@@ -61,7 +70,8 @@ impl ConcatenateWithTwinSse {
         }));
     }
 
-    #[flutter_rust_bridge::frb(serialize)] pub fn handle_some_static_stream_sink_twin_sse(
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn handle_some_static_stream_sink_twin_sse(
         key: u32,
         max: u32,
         sink: StreamSink<Log2TwinSse, flutter_rust_bridge::SseCodec>,
@@ -77,7 +87,10 @@ impl ConcatenateWithTwinSse {
         }));
     }
 
-    #[flutter_rust_bridge::frb(serialize)] pub fn handle_some_static_stream_sink_single_arg_twin_sse(sink: StreamSink<u32, flutter_rust_bridge::SseCodec>) {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn handle_some_static_stream_sink_single_arg_twin_sse(
+        sink: StreamSink<u32, flutter_rust_bridge::SseCodec>,
+    ) {
         (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
             for i in 0..5 {
                 sink.add(i).unwrap();
@@ -91,16 +104,19 @@ pub struct SumWithTwinSse {
 }
 
 impl SumWithTwinSse {
-    #[flutter_rust_bridge::frb(serialize)] pub fn sum_twin_sse(&self, y: u32, z: u32) -> u32 {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn sum_twin_sse(&self, y: u32, z: u32) -> u32 {
         self.x + y + z
     }
 }
 
-#[flutter_rust_bridge::frb(serialize)] pub fn get_sum_struct_twin_sse() -> SumWithTwinSse {
+#[flutter_rust_bridge::frb(serialize)]
+pub fn get_sum_struct_twin_sse() -> SumWithTwinSse {
     SumWithTwinSse { x: 21 }
 }
 
-#[flutter_rust_bridge::frb(serialize)] pub fn get_sum_array_twin_sse(a: u32, b: u32, c: u32) -> [SumWithTwinSse; 3] {
+#[flutter_rust_bridge::frb(serialize)]
+pub fn get_sum_array_twin_sse(a: u32, b: u32, c: u32) -> [SumWithTwinSse; 3] {
     [
         SumWithTwinSse { x: a },
         SumWithTwinSse { x: b },
@@ -113,7 +129,8 @@ pub struct MyCallableTwinSse {
 }
 
 impl MyCallableTwinSse {
-    #[flutter_rust_bridge::frb(serialize)] pub fn call(&self, two: String) -> String {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn call(&self, two: String) -> String {
         self.one.clone() + &two
     }
 }
@@ -123,23 +140,28 @@ pub struct SimpleStructTwinSse {
 }
 
 impl SimpleStructTwinSse {
-    #[flutter_rust_bridge::frb(serialize)] pub fn return_self_twin_sse(one: String) -> Self {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn return_self_twin_sse(one: String) -> Self {
         Self { one }
     }
 
-    #[flutter_rust_bridge::frb(serialize)] pub fn receiver_borrow_twin_sse(&self) -> String {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn receiver_borrow_twin_sse(&self) -> String {
         self.one.to_owned()
     }
 
-    #[flutter_rust_bridge::frb(serialize)] pub fn receiver_own_twin_sse(self) -> String {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn receiver_own_twin_sse(self) -> String {
         self.one.to_owned()
     }
 
-    #[flutter_rust_bridge::frb(serialize)] pub fn arg_self_twin_sse(a: Self, b: Self) -> String {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn arg_self_twin_sse(a: Self, b: Self) -> String {
         a.one + &b.one
     }
 
-    #[flutter_rust_bridge::frb(serialize)] pub fn vec_self_twin_sse(arg: Vec<Self>) -> Vec<String> {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn vec_self_twin_sse(arg: Vec<Self>) -> Vec<String> {
         arg.into_iter().map(|x| x.one).collect()
     }
 }
@@ -151,11 +173,13 @@ pub enum SimpleEnumTwinSse {
 }
 
 impl SimpleEnumTwinSse {
-    #[flutter_rust_bridge::frb(serialize)] pub fn return_self_twin_sse(one: String) -> Self {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn return_self_twin_sse(one: String) -> Self {
         Self::Second(one)
     }
 
-    #[flutter_rust_bridge::frb(serialize)] pub fn simple_method_twin_sse(&self) -> String {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn simple_method_twin_sse(&self) -> String {
         match self {
             SimpleEnumTwinSse::First => "".to_owned(),
             SimpleEnumTwinSse::Second(inner) => inner.to_owned(),
@@ -170,7 +194,8 @@ pub enum SimplePrimitiveEnumTwinSse {
 }
 
 impl SimplePrimitiveEnumTwinSse {
-    #[flutter_rust_bridge::frb(serialize)] pub fn simple_method_twin_sse(&self) -> i32 {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn simple_method_twin_sse(&self) -> i32 {
         match self {
             SimplePrimitiveEnumTwinSse::First => 100,
             SimplePrimitiveEnumTwinSse::Second => 200,
@@ -184,7 +209,8 @@ pub struct StaticOnlyTwinSse {
 }
 
 impl StaticOnlyTwinSse {
-    #[flutter_rust_bridge::frb(serialize)] pub fn static_method_twin_sse(a: i32) -> i32 {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn static_method_twin_sse(a: i32) -> i32 {
         a
     }
 }
@@ -195,7 +221,8 @@ pub struct StaticGetterOnlyTwinSse {}
 
 impl StaticGetterOnlyTwinSse {
     #[frb(getter)]
-    #[flutter_rust_bridge::frb(serialize)] pub fn static_getter_twin_sse() -> i32 {
+    #[flutter_rust_bridge::frb(serialize)]
+    pub fn static_getter_twin_sse() -> i32 {
         42
     }
 }
