@@ -12,8 +12,6 @@ dependencies:
     path: ../../frb_dart
   flutter_rust_bridge_utils:
     path: ../../frb_utils
-  hooks: ^1.0.2
-  code_assets: ^1.0.0
   mocktail: ^1.0.1
   vm_service: ^13.0.0
   freezed_annotation: ^2.2.0
