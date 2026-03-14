@@ -49,8 +49,9 @@ Future<PlatformInt64> exampleBasicTypeI64TwinNormal({
 Future<BigInt> exampleBasicTypeI128TwinNormal({
   required BigInt arg,
   required String expect,
-}) => RustLib.instance.api
-    .crateApiPseudoManualBasicExampleBasicTypeI128TwinNormal(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicExampleBasicTypeI128TwinNormal(
       arg: arg,
       expect: expect,
     );
@@ -94,8 +95,9 @@ Future<BigInt> exampleBasicTypeU64TwinNormal({
 Future<BigInt> exampleBasicTypeU128TwinNormal({
   required BigInt arg,
   required String expect,
-}) => RustLib.instance.api
-    .crateApiPseudoManualBasicExampleBasicTypeU128TwinNormal(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicExampleBasicTypeU128TwinNormal(
       arg: arg,
       expect: expect,
     );
@@ -103,8 +105,9 @@ Future<BigInt> exampleBasicTypeU128TwinNormal({
 Future<PlatformInt64> exampleBasicTypeIsizeTwinNormal({
   required PlatformInt64 arg,
   required String expect,
-}) => RustLib.instance.api
-    .crateApiPseudoManualBasicExampleBasicTypeIsizeTwinNormal(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicExampleBasicTypeIsizeTwinNormal(
       arg: arg,
       expect: expect,
     );
@@ -112,26 +115,24 @@ Future<PlatformInt64> exampleBasicTypeIsizeTwinNormal({
 Future<BigInt> exampleBasicTypeUsizeTwinNormal({
   required BigInt arg,
   required String expect,
-}) => RustLib.instance.api
-    .crateApiPseudoManualBasicExampleBasicTypeUsizeTwinNormal(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicExampleBasicTypeUsizeTwinNormal(
       arg: arg,
       expect: expect,
     );
 
-Future<double> exampleBasicTypeF32TwinNormal({required double arg}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualBasicExampleBasicTypeF32TwinNormal(arg: arg);
+Future<double> exampleBasicTypeF32TwinNormal({required double arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicExampleBasicTypeF32TwinNormal(arg: arg);
 
-Future<double> exampleBasicTypeF64TwinNormal({required double arg}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualBasicExampleBasicTypeF64TwinNormal(arg: arg);
+Future<double> exampleBasicTypeF64TwinNormal({required double arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicExampleBasicTypeF64TwinNormal(arg: arg);
 
-Future<bool> exampleBasicTypeBoolTwinNormal({required bool arg}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualBasicExampleBasicTypeBoolTwinNormal(arg: arg);
+Future<bool> exampleBasicTypeBoolTwinNormal({required bool arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicExampleBasicTypeBoolTwinNormal(arg: arg);
 
 Future<String> exampleBasicTypeStringTwinNormal({required String arg}) =>
     RustLib.instance.api
@@ -142,25 +143,28 @@ Future<Uint8List> exampleBasicTypeBytesTwinNormal({required List<int> arg}) =>
         .crateApiPseudoManualBasicExampleBasicTypeBytesTwinNormal(arg: arg);
 
 Future<BasicPrimitiveEnumTwinNormal>
-exampleBasicTypeBasicPrimitiveEnumTwinNormalTwinNormal({
+    exampleBasicTypeBasicPrimitiveEnumTwinNormalTwinNormal({
   required BasicPrimitiveEnumTwinNormal arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualBasicExampleBasicTypeBasicPrimitiveEnumTwinNormalTwinNormal(
-      arg: arg,
-    );
+}) =>
+        RustLib.instance.api
+            .crateApiPseudoManualBasicExampleBasicTypeBasicPrimitiveEnumTwinNormalTwinNormal(
+          arg: arg,
+        );
 
 Future<BasicGeneralEnumTwinNormal>
-exampleBasicTypeBasicGeneralEnumTwinNormalTwinNormal({
+    exampleBasicTypeBasicGeneralEnumTwinNormalTwinNormal({
   required BasicGeneralEnumTwinNormal arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualBasicExampleBasicTypeBasicGeneralEnumTwinNormalTwinNormal(
-      arg: arg,
-    );
+}) =>
+        RustLib.instance.api
+            .crateApiPseudoManualBasicExampleBasicTypeBasicGeneralEnumTwinNormalTwinNormal(
+          arg: arg,
+        );
 
 Future<BasicStructTwinNormal> exampleBasicTypeBasicStructTwinNormalTwinNormal({
   required BasicStructTwinNormal arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualBasicExampleBasicTypeBasicStructTwinNormalTwinNormal(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicExampleBasicTypeBasicStructTwinNormalTwinNormal(
       arg: arg,
     );
 

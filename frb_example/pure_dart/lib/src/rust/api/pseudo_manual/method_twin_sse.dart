@@ -20,11 +20,12 @@ Future<SumWithTwinSseArray3> getSumArrayTwinSse({
   required int a,
   required int b,
   required int c,
-}) => RustLib.instance.api.crateApiPseudoManualMethodTwinSseGetSumArrayTwinSse(
-  a: a,
-  b: b,
-  c: c,
-);
+}) =>
+    RustLib.instance.api.crateApiPseudoManualMethodTwinSseGetSumArrayTwinSse(
+      a: a,
+      b: b,
+      c: c,
+    );
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StaticGetterOnlyTwinSse>>
 abstract class StaticGetterOnlyTwinSse implements RustOpaqueInterface {
@@ -40,42 +41,44 @@ class ConcatenateWithTwinSse {
   static Future<String> concatenateStaticTwinSse({
     required String a,
     required String b,
-  }) => RustLib.instance.api
-      .crateApiPseudoManualMethodTwinSseConcatenateWithTwinSseConcatenateStaticTwinSse(
+  }) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinSseConcatenateWithTwinSseConcatenateStaticTwinSse(
         a: a,
         b: b,
       );
 
   Future<String> concatenateTwinSse({required String b}) => RustLib.instance.api
-      .crateApiPseudoManualMethodTwinSseConcatenateWithTwinSseConcatenateTwinSse(
+          .crateApiPseudoManualMethodTwinSseConcatenateWithTwinSseConcatenateTwinSse(
         that: this,
         b: b,
       );
 
   static Stream<int> handleSomeStaticStreamSinkSingleArgTwinSse() => RustLib
-      .instance
-      .api
+      .instance.api
       .crateApiPseudoManualMethodTwinSseConcatenateWithTwinSseHandleSomeStaticStreamSinkSingleArgTwinSse();
 
   static Stream<Log2TwinSse> handleSomeStaticStreamSinkTwinSse({
     required int key,
     required int max,
-  }) => RustLib.instance.api
-      .crateApiPseudoManualMethodTwinSseConcatenateWithTwinSseHandleSomeStaticStreamSinkTwinSse(
+  }) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinSseConcatenateWithTwinSseHandleSomeStaticStreamSinkTwinSse(
         key: key,
         max: max,
       );
 
   Stream<int> handleSomeStreamSinkAt1TwinSse() => RustLib.instance.api
-      .crateApiPseudoManualMethodTwinSseConcatenateWithTwinSseHandleSomeStreamSinkAt1TwinSse(
+          .crateApiPseudoManualMethodTwinSseConcatenateWithTwinSseHandleSomeStreamSinkAt1TwinSse(
         that: this,
       );
 
   Stream<Log2TwinSse> handleSomeStreamSinkTwinSse({
     required int key,
     required int max,
-  }) => RustLib.instance.api
-      .crateApiPseudoManualMethodTwinSseConcatenateWithTwinSseHandleSomeStreamSinkTwinSse(
+  }) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinSseConcatenateWithTwinSseHandleSomeStreamSinkTwinSse(
         that: this,
         key: key,
         max: max,
@@ -84,11 +87,11 @@ class ConcatenateWithTwinSse {
   static Future<ConcatenateWithTwinSse> newTwinSse({required String a}) =>
       RustLib.instance.api
           .crateApiPseudoManualMethodTwinSseConcatenateWithTwinSseNewTwinSse(
-            a: a,
-          );
+        a: a,
+      );
 
   Future<String> get simpleGetterTwinSse => RustLib.instance.api
-      .crateApiPseudoManualMethodTwinSseConcatenateWithTwinSseSimpleGetterTwinSse(
+          .crateApiPseudoManualMethodTwinSseConcatenateWithTwinSseSimpleGetterTwinSse(
         that: this,
       );
 
@@ -127,7 +130,7 @@ class MyCallableTwinSse {
   const MyCallableTwinSse({required this.one});
 
   Future<String> call({required String two}) => RustLib.instance.api
-      .crateApiPseudoManualMethodTwinSseMyCallableTwinSseCall(
+          .crateApiPseudoManualMethodTwinSseMyCallableTwinSseCall(
         that: this,
         two: two,
       );
@@ -154,11 +157,11 @@ sealed class SimpleEnumTwinSse with _$SimpleEnumTwinSse {
   static Future<SimpleEnumTwinSse> returnSelfTwinSse({required String one}) =>
       RustLib.instance.api
           .crateApiPseudoManualMethodTwinSseSimpleEnumTwinSseReturnSelfTwinSse(
-            one: one,
-          );
+        one: one,
+      );
 
   Future<String> simpleMethodTwinSse() => RustLib.instance.api
-      .crateApiPseudoManualMethodTwinSseSimpleEnumTwinSseSimpleMethodTwinSse(
+          .crateApiPseudoManualMethodTwinSseSimpleEnumTwinSseSimpleMethodTwinSse(
         that: this,
       );
 }
@@ -168,7 +171,7 @@ enum SimplePrimitiveEnumTwinSse {
   second;
 
   Future<int> simpleMethodTwinSse() => RustLib.instance.api
-      .crateApiPseudoManualMethodTwinSseSimplePrimitiveEnumTwinSseSimpleMethodTwinSse(
+          .crateApiPseudoManualMethodTwinSseSimplePrimitiveEnumTwinSseSimpleMethodTwinSse(
         that: this,
       );
 }
@@ -181,33 +184,36 @@ class SimpleStructTwinSse {
   static Future<String> argSelfTwinSse({
     required SimpleStructTwinSse a,
     required SimpleStructTwinSse b,
-  }) => RustLib.instance.api
-      .crateApiPseudoManualMethodTwinSseSimpleStructTwinSseArgSelfTwinSse(
+  }) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinSseSimpleStructTwinSseArgSelfTwinSse(
         a: a,
         b: b,
       );
 
   Future<String> receiverBorrowTwinSse() => RustLib.instance.api
-      .crateApiPseudoManualMethodTwinSseSimpleStructTwinSseReceiverBorrowTwinSse(
+          .crateApiPseudoManualMethodTwinSseSimpleStructTwinSseReceiverBorrowTwinSse(
         that: this,
       );
 
   Future<String> receiverOwnTwinSse() => RustLib.instance.api
-      .crateApiPseudoManualMethodTwinSseSimpleStructTwinSseReceiverOwnTwinSse(
+          .crateApiPseudoManualMethodTwinSseSimpleStructTwinSseReceiverOwnTwinSse(
         that: this,
       );
 
   static Future<SimpleStructTwinSse> returnSelfTwinSse({
     required String one,
-  }) => RustLib.instance.api
-      .crateApiPseudoManualMethodTwinSseSimpleStructTwinSseReturnSelfTwinSse(
+  }) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinSseSimpleStructTwinSseReturnSelfTwinSse(
         one: one,
       );
 
   static Future<List<String>> vecSelfTwinSse({
     required List<SimpleStructTwinSse> arg,
-  }) => RustLib.instance.api
-      .crateApiPseudoManualMethodTwinSseSimpleStructTwinSseVecSelfTwinSse(
+  }) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinSseSimpleStructTwinSseVecSelfTwinSse(
         arg: arg,
       );
 
@@ -227,10 +233,9 @@ class StaticOnlyTwinSse {
 
   const StaticOnlyTwinSse({required this.one});
 
-  static Future<int> staticMethodTwinSse({required int a}) => RustLib
-      .instance
-      .api
-      .crateApiPseudoManualMethodTwinSseStaticOnlyTwinSseStaticMethodTwinSse(
+  static Future<int> staticMethodTwinSse({required int a}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinSseStaticOnlyTwinSseStaticMethodTwinSse(
         a: a,
       );
 
@@ -250,10 +255,9 @@ class SumWithTwinSse {
 
   const SumWithTwinSse({required this.x});
 
-  Future<int> sumTwinSse({required int y, required int z}) => RustLib
-      .instance
-      .api
-      .crateApiPseudoManualMethodTwinSseSumWithTwinSseSumTwinSse(
+  Future<int> sumTwinSse({required int y, required int z}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinSseSumWithTwinSseSumTwinSse(
         that: this,
         y: y,
         z: z,
@@ -278,9 +282,9 @@ class SumWithTwinSseArray3 extends NonGrowableListView<SumWithTwinSse> {
   final List<SumWithTwinSse> _inner;
 
   SumWithTwinSseArray3(this._inner)
-    : assert(_inner.length == arraySize),
-      super(_inner);
+      : assert(_inner.length == arraySize),
+        super(_inner);
 
   SumWithTwinSseArray3.init(SumWithTwinSse fill)
-    : this(List<SumWithTwinSse>.filled(arraySize, fill));
+      : this(List<SumWithTwinSse>.filled(arraySize, fill));
 }

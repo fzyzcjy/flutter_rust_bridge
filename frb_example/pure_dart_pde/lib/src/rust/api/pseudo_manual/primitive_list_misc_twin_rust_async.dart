@@ -10,8 +10,9 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<VecOfPrimitivePackTwinRustAsync> handleVecOfPrimitiveTwinRustAsync({
   required int n,
-}) => RustLib.instance.api
-    .crateApiPseudoManualPrimitiveListMiscTwinRustAsyncHandleVecOfPrimitiveTwinRustAsync(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualPrimitiveListMiscTwinRustAsyncHandleVecOfPrimitiveTwinRustAsync(
       n: n,
     );
 

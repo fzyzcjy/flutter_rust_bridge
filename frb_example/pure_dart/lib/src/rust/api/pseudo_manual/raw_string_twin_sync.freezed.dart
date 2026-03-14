@@ -21,34 +21,40 @@ mixin _$RawStringItemEnumTwinSync {
   TResult when<TResult extends Object?>({
     required TResult Function(String regular) regular,
     required TResult Function(String type) raw,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String regular)? regular,
     TResult? Function(String type)? raw,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String regular)? regular,
     TResult Function(String type)? raw,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(RawStringItemEnumTwinSync_Regular value) regular,
     required TResult Function(RawStringItemEnumTwinSync_Raw value) raw,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(RawStringItemEnumTwinSync_Regular value)? regular,
     TResult? Function(RawStringItemEnumTwinSync_Raw value)? raw,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(RawStringItemEnumTwinSync_Regular value)? regular,
     TResult Function(RawStringItemEnumTwinSync_Raw value)? raw,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -60,10 +66,8 @@ abstract class $RawStringItemEnumTwinSyncCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$RawStringItemEnumTwinSyncCopyWithImpl<
-  $Res,
-  $Val extends RawStringItemEnumTwinSync
->
+class _$RawStringItemEnumTwinSyncCopyWithImpl<$Res,
+        $Val extends RawStringItemEnumTwinSync>
     implements $RawStringItemEnumTwinSyncCopyWith<$Res> {
   _$RawStringItemEnumTwinSyncCopyWithImpl(this._value, this._then);
 
@@ -88,11 +92,8 @@ abstract class _$$RawStringItemEnumTwinSync_RegularImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$RawStringItemEnumTwinSync_RegularImplCopyWithImpl<$Res>
-    extends
-        _$RawStringItemEnumTwinSyncCopyWithImpl<
-          $Res,
-          _$RawStringItemEnumTwinSync_RegularImpl
-        >
+    extends _$RawStringItemEnumTwinSyncCopyWithImpl<$Res,
+        _$RawStringItemEnumTwinSync_RegularImpl>
     implements _$$RawStringItemEnumTwinSync_RegularImplCopyWith<$Res> {
   __$$RawStringItemEnumTwinSync_RegularImplCopyWithImpl(
     _$RawStringItemEnumTwinSync_RegularImpl _value,
@@ -109,7 +110,7 @@ class __$$RawStringItemEnumTwinSync_RegularImplCopyWithImpl<$Res>
         regular: null == regular
             ? _value.regular
             : regular // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
       ),
     );
   }
@@ -120,7 +121,7 @@ class __$$RawStringItemEnumTwinSync_RegularImplCopyWithImpl<$Res>
 class _$RawStringItemEnumTwinSync_RegularImpl
     extends RawStringItemEnumTwinSync_Regular {
   const _$RawStringItemEnumTwinSync_RegularImpl({required this.regular})
-    : super._();
+      : super._();
 
   @override
   final String regular;
@@ -147,12 +148,9 @@ class _$RawStringItemEnumTwinSync_RegularImpl
   @override
   @pragma('vm:prefer-inline')
   _$$RawStringItemEnumTwinSync_RegularImplCopyWith<
-    _$RawStringItemEnumTwinSync_RegularImpl
-  >
-  get copyWith =>
-      __$$RawStringItemEnumTwinSync_RegularImplCopyWithImpl<
-        _$RawStringItemEnumTwinSync_RegularImpl
-      >(this, _$identity);
+          _$RawStringItemEnumTwinSync_RegularImpl>
+      get copyWith => __$$RawStringItemEnumTwinSync_RegularImplCopyWithImpl<
+          _$RawStringItemEnumTwinSync_RegularImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -230,9 +228,8 @@ abstract class RawStringItemEnumTwinSync_Regular
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RawStringItemEnumTwinSync_RegularImplCopyWith<
-    _$RawStringItemEnumTwinSync_RegularImpl
-  >
-  get copyWith => throw _privateConstructorUsedError;
+          _$RawStringItemEnumTwinSync_RegularImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -247,11 +244,8 @@ abstract class _$$RawStringItemEnumTwinSync_RawImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$RawStringItemEnumTwinSync_RawImplCopyWithImpl<$Res>
-    extends
-        _$RawStringItemEnumTwinSyncCopyWithImpl<
-          $Res,
-          _$RawStringItemEnumTwinSync_RawImpl
-        >
+    extends _$RawStringItemEnumTwinSyncCopyWithImpl<$Res,
+        _$RawStringItemEnumTwinSync_RawImpl>
     implements _$$RawStringItemEnumTwinSync_RawImplCopyWith<$Res> {
   __$$RawStringItemEnumTwinSync_RawImplCopyWithImpl(
     _$RawStringItemEnumTwinSync_RawImpl _value,
@@ -268,7 +262,7 @@ class __$$RawStringItemEnumTwinSync_RawImplCopyWithImpl<$Res>
         type: null == type
             ? _value.type
             : type // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
       ),
     );
   }
@@ -305,12 +299,9 @@ class _$RawStringItemEnumTwinSync_RawImpl
   @override
   @pragma('vm:prefer-inline')
   _$$RawStringItemEnumTwinSync_RawImplCopyWith<
-    _$RawStringItemEnumTwinSync_RawImpl
-  >
-  get copyWith =>
-      __$$RawStringItemEnumTwinSync_RawImplCopyWithImpl<
-        _$RawStringItemEnumTwinSync_RawImpl
-      >(this, _$identity);
+          _$RawStringItemEnumTwinSync_RawImpl>
+      get copyWith => __$$RawStringItemEnumTwinSync_RawImplCopyWithImpl<
+          _$RawStringItemEnumTwinSync_RawImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -386,7 +377,6 @@ abstract class RawStringItemEnumTwinSync_Raw extends RawStringItemEnumTwinSync {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RawStringItemEnumTwinSync_RawImplCopyWith<
-    _$RawStringItemEnumTwinSync_RawImpl
-  >
-  get copyWith => throw _privateConstructorUsedError;
+          _$RawStringItemEnumTwinSync_RawImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

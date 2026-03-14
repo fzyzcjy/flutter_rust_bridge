@@ -18,10 +18,9 @@ abstract class ConstructorOpaqueStructTwinNormal
   void check();
 
   // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
-  static Future<ConstructorOpaqueStructTwinNormal> newInstance() => RustLib
-      .instance
-      .api
-      .crateApiConstructorConstructorOpaqueStructTwinNormalNew();
+  static Future<ConstructorOpaqueStructTwinNormal> newInstance() =>
+      RustLib.instance.api
+          .crateApiConstructorConstructorOpaqueStructTwinNormalNew();
 }
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConstructorOpaqueSyncStructTwinNormal>>

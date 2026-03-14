@@ -10,8 +10,9 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<VecOfPrimitivePackTwinNormal> handleVecOfPrimitiveTwinNormal({
   required int n,
-}) => RustLib.instance.api
-    .crateApiPrimitiveListMiscHandleVecOfPrimitiveTwinNormal(n: n);
+}) =>
+    RustLib.instance.api
+        .crateApiPrimitiveListMiscHandleVecOfPrimitiveTwinNormal(n: n);
 
 class VecOfPrimitivePackTwinNormal {
   final Int8List int8List;

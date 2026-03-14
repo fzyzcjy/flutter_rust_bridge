@@ -16,100 +16,113 @@ Future<void> benchmarkVoidTwinRustAsyncSse() => RustLib.instance.api
 
 Future<int> benchmarkInputBytesTwinRustAsyncSse({
   required List<int> bytes,
-}) => RustLib.instance.api
-    .crateApiPseudoManualBenchmarkApiTwinRustAsyncSseBenchmarkInputBytesTwinRustAsyncSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBenchmarkApiTwinRustAsyncSseBenchmarkInputBytesTwinRustAsyncSse(
       bytes: bytes,
     );
 
 Future<Uint8List> benchmarkOutputBytesTwinRustAsyncSse({
   required int size,
-}) => RustLib.instance.api
-    .crateApiPseudoManualBenchmarkApiTwinRustAsyncSseBenchmarkOutputBytesTwinRustAsyncSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBenchmarkApiTwinRustAsyncSseBenchmarkOutputBytesTwinRustAsyncSse(
       size: size,
     );
 
 Future<void> benchmarkBinaryTreeInputTwinRustAsyncSse({
   required BenchmarkBinaryTreeTwinRustAsyncSse tree,
-}) => RustLib.instance.api
-    .crateApiPseudoManualBenchmarkApiTwinRustAsyncSseBenchmarkBinaryTreeInputTwinRustAsyncSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBenchmarkApiTwinRustAsyncSseBenchmarkBinaryTreeInputTwinRustAsyncSse(
       tree: tree,
     );
 
-Future<BenchmarkBinaryTreeTwinRustAsyncSse>
-benchmarkBinaryTreeOutputTwinRustAsyncSse({required int depth}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualBenchmarkApiTwinRustAsyncSseBenchmarkBinaryTreeOutputTwinRustAsyncSse(
+Future<
+    BenchmarkBinaryTreeTwinRustAsyncSse> benchmarkBinaryTreeOutputTwinRustAsyncSse(
+        {required int depth}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBenchmarkApiTwinRustAsyncSseBenchmarkBinaryTreeOutputTwinRustAsyncSse(
       depth: depth,
     );
 
 Future<void> benchmarkBinaryTreeInputProtobufTwinRustAsyncSse({
   required List<int> raw,
-}) => RustLib.instance.api
-    .crateApiPseudoManualBenchmarkApiTwinRustAsyncSseBenchmarkBinaryTreeInputProtobufTwinRustAsyncSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBenchmarkApiTwinRustAsyncSseBenchmarkBinaryTreeInputProtobufTwinRustAsyncSse(
       raw: raw,
     );
 
 Future<Uint8List> benchmarkBinaryTreeOutputProtobufTwinRustAsyncSse({
   required int depth,
-}) => RustLib.instance.api
-    .crateApiPseudoManualBenchmarkApiTwinRustAsyncSseBenchmarkBinaryTreeOutputProtobufTwinRustAsyncSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBenchmarkApiTwinRustAsyncSseBenchmarkBinaryTreeOutputProtobufTwinRustAsyncSse(
       depth: depth,
     );
 
 Future<void> benchmarkBinaryTreeInputJsonTwinRustAsyncSse({
   required String raw,
-}) => RustLib.instance.api
-    .crateApiPseudoManualBenchmarkApiTwinRustAsyncSseBenchmarkBinaryTreeInputJsonTwinRustAsyncSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBenchmarkApiTwinRustAsyncSseBenchmarkBinaryTreeInputJsonTwinRustAsyncSse(
       raw: raw,
     );
 
 Future<String> benchmarkBinaryTreeOutputJsonTwinRustAsyncSse({
   required int depth,
-}) => RustLib.instance.api
-    .crateApiPseudoManualBenchmarkApiTwinRustAsyncSseBenchmarkBinaryTreeOutputJsonTwinRustAsyncSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBenchmarkApiTwinRustAsyncSseBenchmarkBinaryTreeOutputJsonTwinRustAsyncSse(
       depth: depth,
     );
 
 Future<void> benchmarkBlobInputTwinRustAsyncSse({
   required BenchmarkBlobTwinRustAsyncSse blob,
-}) => RustLib.instance.api
-    .crateApiPseudoManualBenchmarkApiTwinRustAsyncSseBenchmarkBlobInputTwinRustAsyncSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBenchmarkApiTwinRustAsyncSseBenchmarkBlobInputTwinRustAsyncSse(
       blob: blob,
     );
 
 Future<BenchmarkBlobTwinRustAsyncSse> benchmarkBlobOutputTwinRustAsyncSse({
   required int size,
-}) => RustLib.instance.api
-    .crateApiPseudoManualBenchmarkApiTwinRustAsyncSseBenchmarkBlobOutputTwinRustAsyncSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBenchmarkApiTwinRustAsyncSseBenchmarkBlobOutputTwinRustAsyncSse(
       size: size,
     );
 
 Future<void> benchmarkBlobInputProtobufTwinRustAsyncSse({
   required List<int> raw,
-}) => RustLib.instance.api
-    .crateApiPseudoManualBenchmarkApiTwinRustAsyncSseBenchmarkBlobInputProtobufTwinRustAsyncSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBenchmarkApiTwinRustAsyncSseBenchmarkBlobInputProtobufTwinRustAsyncSse(
       raw: raw,
     );
 
 Future<Uint8List> benchmarkBlobOutputProtobufTwinRustAsyncSse({
   required int size,
-}) => RustLib.instance.api
-    .crateApiPseudoManualBenchmarkApiTwinRustAsyncSseBenchmarkBlobOutputProtobufTwinRustAsyncSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBenchmarkApiTwinRustAsyncSseBenchmarkBlobOutputProtobufTwinRustAsyncSse(
       size: size,
     );
 
 Future<void> benchmarkBlobInputJsonTwinRustAsyncSse({
   required String raw,
-}) => RustLib.instance.api
-    .crateApiPseudoManualBenchmarkApiTwinRustAsyncSseBenchmarkBlobInputJsonTwinRustAsyncSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBenchmarkApiTwinRustAsyncSseBenchmarkBlobInputJsonTwinRustAsyncSse(
       raw: raw,
     );
 
 Future<String> benchmarkBlobOutputJsonTwinRustAsyncSse({
   required int size,
-}) => RustLib.instance.api
-    .crateApiPseudoManualBenchmarkApiTwinRustAsyncSseBenchmarkBlobOutputJsonTwinRustAsyncSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBenchmarkApiTwinRustAsyncSseBenchmarkBlobOutputJsonTwinRustAsyncSse(
       size: size,
     );
 

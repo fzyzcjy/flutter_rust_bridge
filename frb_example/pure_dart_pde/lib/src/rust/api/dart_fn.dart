@@ -10,37 +10,41 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<void> rustCallDartSimpleTwinNormal({
   required FutureOr<void> Function() callback,
-}) => RustLib.instance.api.crateApiDartFnRustCallDartSimpleTwinNormal(
-  callback: callback,
-);
+}) =>
+    RustLib.instance.api.crateApiDartFnRustCallDartSimpleTwinNormal(
+      callback: callback,
+    );
 
 Future<void> rustCallDartOneArgTwinNormal({
   required FutureOr<void> Function(String) callback,
-}) => RustLib.instance.api.crateApiDartFnRustCallDartOneArgTwinNormal(
-  callback: callback,
-);
+}) =>
+    RustLib.instance.api.crateApiDartFnRustCallDartOneArgTwinNormal(
+      callback: callback,
+    );
 
 Future<void> rustCallDartTwoArgsTwinNormal({
   required FutureOr<void> Function(String, DemoStructForRustCallDartTwinNormal)
-  callback,
-}) => RustLib.instance.api.crateApiDartFnRustCallDartTwoArgsTwinNormal(
-  callback: callback,
-);
+      callback,
+}) =>
+    RustLib.instance.api.crateApiDartFnRustCallDartTwoArgsTwinNormal(
+      callback: callback,
+    );
 
 Future<void> rustCallDartReturnTwinNormal({
   required FutureOr<String> Function() callback,
-}) => RustLib.instance.api.crateApiDartFnRustCallDartReturnTwinNormal(
-  callback: callback,
-);
+}) =>
+    RustLib.instance.api.crateApiDartFnRustCallDartReturnTwinNormal(
+      callback: callback,
+    );
 
 Future<void> rustCallDartLoopbackTwinNormal({
   required FutureOr<DemoStructForRustCallDartTwinNormal> Function(
     DemoStructForRustCallDartTwinNormal,
-  )
-  callback,
-}) => RustLib.instance.api.crateApiDartFnRustCallDartLoopbackTwinNormal(
-  callback: callback,
-);
+  ) callback,
+}) =>
+    RustLib.instance.api.crateApiDartFnRustCallDartLoopbackTwinNormal(
+      callback: callback,
+    );
 
 Future<void> rustCallDartWithDartOpaqueArgTwinNormal({
   required Object input,
@@ -53,32 +57,36 @@ Future<void> rustCallDartWithDartOpaqueArgTwinNormal({
 
 Future<Object> rustCallDartWithDartOpaqueResultTwinNormal({
   required FutureOr<Object> Function() callback,
-}) => RustLib.instance.api
-    .crateApiDartFnRustCallDartWithDartOpaqueResultTwinNormal(
+}) =>
+    RustLib.instance.api
+        .crateApiDartFnRustCallDartWithDartOpaqueResultTwinNormal(
       callback: callback,
     );
 
 Future<void> rustCallDartMultiTimesTwinNormal({
   required FutureOr<void> Function() callback,
   required int numTimes,
-}) => RustLib.instance.api.crateApiDartFnRustCallDartMultiTimesTwinNormal(
-  callback: callback,
-  numTimes: numTimes,
-);
+}) =>
+    RustLib.instance.api.crateApiDartFnRustCallDartMultiTimesTwinNormal(
+      callback: callback,
+      numTimes: numTimes,
+    );
 
 Future<void> rustCallDartReturnResultTwinNormal({
   required FutureOr<String> Function(String) callback,
   String? expectOutput,
-}) => RustLib.instance.api.crateApiDartFnRustCallDartReturnResultTwinNormal(
-  callback: callback,
-  expectOutput: expectOutput,
-);
+}) =>
+    RustLib.instance.api.crateApiDartFnRustCallDartReturnResultTwinNormal(
+      callback: callback,
+      expectOutput: expectOutput,
+    );
 
 Future<void> rustCallDartUsingIpv4AddrTwinNormal({
   required FutureOr<InternetAddress> Function(InternetAddress) callback,
-}) => RustLib.instance.api.crateApiDartFnRustCallDartUsingIpv4AddrTwinNormal(
-  callback: callback,
-);
+}) =>
+    RustLib.instance.api.crateApiDartFnRustCallDartUsingIpv4AddrTwinNormal(
+      callback: callback,
+    );
 
 class DemoStructForRustCallDartTwinNormal {
   final String name;

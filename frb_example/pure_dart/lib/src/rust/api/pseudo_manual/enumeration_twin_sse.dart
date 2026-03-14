@@ -15,66 +15,74 @@ part 'enumeration_twin_sse.freezed.dart';
 
 Future<EnumSimpleTwinSse> funcEnumSimpleTwinSse({
   required EnumSimpleTwinSse arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualEnumerationTwinSseFuncEnumSimpleTwinSse(arg: arg);
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSseFuncEnumSimpleTwinSse(arg: arg);
 
 Future<EnumWithItemMixedTwinSse> funcEnumWithItemMixedTwinSse({
   required EnumWithItemMixedTwinSse arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualEnumerationTwinSseFuncEnumWithItemMixedTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSseFuncEnumWithItemMixedTwinSse(
       arg: arg,
     );
 
 Future<EnumWithItemTupleTwinSse> funcEnumWithItemTupleTwinSse({
   required EnumWithItemTupleTwinSse arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualEnumerationTwinSseFuncEnumWithItemTupleTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSseFuncEnumWithItemTupleTwinSse(
       arg: arg,
     );
 
 Future<EnumWithItemStructTwinSse> funcEnumWithItemStructTwinSse({
   required EnumWithItemStructTwinSse arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualEnumerationTwinSseFuncEnumWithItemStructTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSseFuncEnumWithItemStructTwinSse(
       arg: arg,
     );
 
 Future<EnumWithDiscriminantTwinSse> funcEnumWithDiscriminantTwinSse({
   required EnumWithDiscriminantTwinSse arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualEnumerationTwinSseFuncEnumWithDiscriminantTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSseFuncEnumWithDiscriminantTwinSse(
       arg: arg,
     );
 
-Future<Uint8List> printNoteTwinSse({required NoteTwinSse note}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualEnumerationTwinSsePrintNoteTwinSse(note: note);
+Future<Uint8List> printNoteTwinSse({required NoteTwinSse note}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSsePrintNoteTwinSse(note: note);
 
 Future<WeekdaysTwinSse?> handleReturnEnumTwinSse({required String input}) =>
     RustLib.instance.api
         .crateApiPseudoManualEnumerationTwinSseHandleReturnEnumTwinSse(
-          input: input,
-        );
+      input: input,
+    );
 
 Future<WeekdaysTwinSse> handleEnumParameterTwinSse({
   required WeekdaysTwinSse weekday,
-}) => RustLib.instance.api
-    .crateApiPseudoManualEnumerationTwinSseHandleEnumParameterTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSseHandleEnumParameterTwinSse(
       weekday: weekday,
     );
 
 Future<MeasureTwinSse?> multiplyByTenTwinSse({
   required MeasureTwinSse measure,
-}) => RustLib.instance.api
-    .crateApiPseudoManualEnumerationTwinSseMultiplyByTenTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSseMultiplyByTenTwinSse(
       measure: measure,
     );
 
 Future<KitchenSinkTwinSse> handleEnumStructTwinSse({
   required KitchenSinkTwinSse val,
-}) => RustLib.instance.api
-    .crateApiPseudoManualEnumerationTwinSseHandleEnumStructTwinSse(val: val);
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSseHandleEnumStructTwinSse(
+            val: val);
 
 @freezed
 sealed class DistanceTwinSse with _$DistanceTwinSse {

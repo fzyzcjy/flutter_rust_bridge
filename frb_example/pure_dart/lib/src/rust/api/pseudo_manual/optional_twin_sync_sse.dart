@@ -15,8 +15,9 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 double? handleOptionalReturnTwinSyncSse({
   required double left,
   required double right,
-}) => RustLib.instance.api
-    .crateApiPseudoManualOptionalTwinSyncSseHandleOptionalReturnTwinSyncSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualOptionalTwinSyncSseHandleOptionalReturnTwinSyncSse(
       left: left,
       right: right,
     );
@@ -24,27 +25,28 @@ double? handleOptionalReturnTwinSyncSse({
 ElementTwinSyncSse? handleOptionalStructTwinSyncSse({String? document}) =>
     RustLib.instance.api
         .crateApiPseudoManualOptionalTwinSyncSseHandleOptionalStructTwinSyncSse(
-          document: document,
-        );
+      document: document,
+    );
 
 ExoticOptionalsTwinSyncSse? handleOptionalIncrementTwinSyncSse({
   ExoticOptionalsTwinSyncSse? opt,
-}) => RustLib.instance.api
-    .crateApiPseudoManualOptionalTwinSyncSseHandleOptionalIncrementTwinSyncSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualOptionalTwinSyncSseHandleOptionalIncrementTwinSyncSse(
       opt: opt,
     );
 
-double handleIncrementBoxedOptionalTwinSyncSse({double? opt}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualOptionalTwinSyncSseHandleIncrementBoxedOptionalTwinSyncSse(
+double handleIncrementBoxedOptionalTwinSyncSse({double? opt}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualOptionalTwinSyncSseHandleIncrementBoxedOptionalTwinSyncSse(
       opt: opt,
     );
 
 OptVecsTwinSyncSse handleVecOfOptsTwinSyncSse({
   required OptVecsTwinSyncSse opt,
-}) => RustLib.instance.api
-    .crateApiPseudoManualOptionalTwinSyncSseHandleVecOfOptsTwinSyncSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualOptionalTwinSyncSseHandleVecOfOptsTwinSyncSse(
       opt: opt,
     );
 
@@ -56,8 +58,9 @@ String handleOptionBoxArgumentsTwinSyncSse({
   double? f64Box,
   bool? boolbox,
   ExoticOptionalsTwinSyncSse? structbox,
-}) => RustLib.instance.api
-    .crateApiPseudoManualOptionalTwinSyncSseHandleOptionBoxArgumentsTwinSyncSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualOptionalTwinSyncSseHandleOptionBoxArgumentsTwinSyncSse(
       i8Box: i8Box,
       u8Box: u8Box,
       i32Box: i32Box,

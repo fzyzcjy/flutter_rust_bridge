@@ -18,30 +18,28 @@ Future<HideDataTwinMoi> createOpaqueTwinMoi() => RustLib.instance.api
 Future<HideDataTwinMoi?> createOptionOpaqueTwinMoi({HideDataTwinMoi? opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinMoiCreateOptionOpaqueTwinMoi(
-          opaque: opaque,
-        );
+      opaque: opaque,
+    );
 
-Future<EnumOpaqueTwinMoiArray5> createArrayOpaqueEnumTwinMoi() => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualRustOpaqueTwinMoiCreateArrayOpaqueEnumTwinMoi();
+Future<EnumOpaqueTwinMoiArray5> createArrayOpaqueEnumTwinMoi() =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinMoiCreateArrayOpaqueEnumTwinMoi();
 
 Future<String> runEnumOpaqueTwinMoi({required EnumOpaqueTwinMoi opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinMoiRunEnumOpaqueTwinMoi(
-          opaque: opaque,
-        );
+      opaque: opaque,
+    );
 
-Future<String> runOpaqueTwinMoi({required HideDataTwinMoi opaque}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualRustOpaqueTwinMoiRunOpaqueTwinMoi(opaque: opaque);
+Future<String> runOpaqueTwinMoi({required HideDataTwinMoi opaque}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinMoiRunOpaqueTwinMoi(opaque: opaque);
 
 Future<String> runOpaqueWithDelayTwinMoi({required HideDataTwinMoi opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinMoiRunOpaqueWithDelayTwinMoi(
-          opaque: opaque,
-        );
+      opaque: opaque,
+    );
 
 Future<HideDataTwinMoiArray2> opaqueArrayTwinMoi() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueTwinMoiOpaqueArrayTwinMoi();
@@ -67,14 +65,14 @@ Future<OpaqueNestedTwinMoi> createNestedOpaqueTwinMoi() => RustLib.instance.api
 Future<void> runNestedOpaqueTwinMoi({required OpaqueNestedTwinMoi opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinMoiRunNestedOpaqueTwinMoi(
-          opaque: opaque,
-        );
+      opaque: opaque,
+    );
 
 Future<String> unwrapRustOpaqueTwinMoi({required HideDataTwinMoi opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinMoiUnwrapRustOpaqueTwinMoi(
-          opaque: opaque,
-        );
+      opaque: opaque,
+    );
 
 /// Function to check the code generator.
 /// FrbOpaqueReturn must be only return type.
@@ -99,11 +97,11 @@ class HideDataTwinMoiArray2 extends NonGrowableListView<HideDataTwinMoi> {
   final List<HideDataTwinMoi> _inner;
 
   HideDataTwinMoiArray2(this._inner)
-    : assert(_inner.length == arraySize),
-      super(_inner);
+      : assert(_inner.length == arraySize),
+        super(_inner);
 
   HideDataTwinMoiArray2.init(HideDataTwinMoi fill)
-    : this(List<HideDataTwinMoi>.filled(arraySize, fill));
+      : this(List<HideDataTwinMoi>.filled(arraySize, fill));
 }
 
 // Rust type: RustOpaqueMoi<Mutex < HideDataTwinMoi >>
@@ -140,11 +138,11 @@ class EnumOpaqueTwinMoiArray5 extends NonGrowableListView<EnumOpaqueTwinMoi> {
   final List<EnumOpaqueTwinMoi> _inner;
 
   EnumOpaqueTwinMoiArray5(this._inner)
-    : assert(_inner.length == arraySize),
-      super(_inner);
+      : assert(_inner.length == arraySize),
+        super(_inner);
 
   EnumOpaqueTwinMoiArray5.init(EnumOpaqueTwinMoi fill)
-    : this(List<EnumOpaqueTwinMoi>.filled(arraySize, fill));
+      : this(List<EnumOpaqueTwinMoi>.filled(arraySize, fill));
 }
 
 /// [`HideDataTwinMoi`] has private fields.

@@ -17,33 +17,37 @@ part 'misc_example_twin_sse.freezed.dart';
 
 Future<MyTreeNodeTwinSse> handleComplexStructTwinSse({
   required MyTreeNodeTwinSse s,
-}) => RustLib.instance.api
-    .crateApiPseudoManualMiscExampleTwinSseHandleComplexStructTwinSse(s: s);
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinSseHandleComplexStructTwinSse(s: s);
 
 Future<List<WeekdaysTwinSse>> listOfPrimitiveEnumsTwinSse({
   required List<WeekdaysTwinSse> weekdays,
-}) => RustLib.instance.api
-    .crateApiPseudoManualMiscExampleTwinSseListOfPrimitiveEnumsTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinSseListOfPrimitiveEnumsTwinSse(
       weekdays: weekdays,
     );
 
 Future<MyNestedStructTwinSse> handleNestedStructTwinSse({
   required MyNestedStructTwinSse s,
-}) => RustLib.instance.api
-    .crateApiPseudoManualMiscExampleTwinSseHandleNestedStructTwinSse(s: s);
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinSseHandleNestedStructTwinSse(s: s);
 
 Future<BigBuffersTwinSse> handleBigBuffersTwinSse() => RustLib.instance.api
     .crateApiPseudoManualMiscExampleTwinSseHandleBigBuffersTwinSse();
 
-Future<AbcTwinSse> testAbcEnumTwinSse({required AbcTwinSse abc}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualMiscExampleTwinSseTestAbcEnumTwinSse(abc: abc);
+Future<AbcTwinSse> testAbcEnumTwinSse({required AbcTwinSse abc}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinSseTestAbcEnumTwinSse(abc: abc);
 
 Future<StructWithEnumTwinSse> testStructWithEnumTwinSse({
   required StructWithEnumTwinSse se,
-}) => RustLib.instance.api
-    .crateApiPseudoManualMiscExampleTwinSseTestStructWithEnumTwinSse(se: se);
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinSseTestStructWithEnumTwinSse(
+            se: se);
 
 Future<String> handleStringTwinSse({required String s}) => RustLib.instance.api
     .crateApiPseudoManualMiscExampleTwinSseHandleStringTwinSse(s: s);
@@ -51,22 +55,22 @@ Future<String> handleStringTwinSse({required String s}) => RustLib.instance.api
 Future<String> handleCharTwinSse({required String arg}) => RustLib.instance.api
     .crateApiPseudoManualMiscExampleTwinSseHandleCharTwinSse(arg: arg);
 
-Future<Uint8List> handleVecU8TwinSse({required List<int> v}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualMiscExampleTwinSseHandleVecU8TwinSse(v: v);
+Future<Uint8List> handleVecU8TwinSse({required List<int> v}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinSseHandleVecU8TwinSse(v: v);
 
 Future<MySize> handleStructTwinSse({
   required MySize arg,
   required MySize boxed,
-}) => RustLib.instance.api
-    .crateApiPseudoManualMiscExampleTwinSseHandleStructTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMiscExampleTwinSseHandleStructTwinSse(
       arg: arg,
       boxed: boxed,
     );
 
 Future<int> positionalArgumentsTwinSse(int a, int b) => RustLib.instance.api
-    .crateApiPseudoManualMiscExampleTwinSsePositionalArgumentsTwinSse(
+        .crateApiPseudoManualMiscExampleTwinSsePositionalArgumentsTwinSse(
       a: a,
       b: b,
     );

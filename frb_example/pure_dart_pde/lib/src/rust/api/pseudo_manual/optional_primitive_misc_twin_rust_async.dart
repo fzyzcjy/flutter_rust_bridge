@@ -13,8 +13,9 @@ Future<int?> primitiveOptionalTypesTwinRustAsync({
   PlatformInt64? myI64,
   double? myF64,
   bool? myBool,
-}) => RustLib.instance.api
-    .crateApiPseudoManualOptionalPrimitiveMiscTwinRustAsyncPrimitiveOptionalTypesTwinRustAsync(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualOptionalPrimitiveMiscTwinRustAsyncPrimitiveOptionalTypesTwinRustAsync(
       myI32: myI32,
       myI64: myI64,
       myF64: myF64,

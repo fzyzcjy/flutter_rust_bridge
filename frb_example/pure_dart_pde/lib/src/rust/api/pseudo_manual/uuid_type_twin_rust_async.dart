@@ -12,21 +12,22 @@ import 'package:uuid/uuid.dart';
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 
 Future<UuidValue> handleUuidTwinRustAsync({required UuidValue id}) => RustLib
-    .instance
-    .api
+    .instance.api
     .crateApiPseudoManualUuidTypeTwinRustAsyncHandleUuidTwinRustAsync(id: id);
 
 Future<List<UuidValue>> handleUuidsTwinRustAsync({
   required List<UuidValue> ids,
-}) => RustLib.instance.api
-    .crateApiPseudoManualUuidTypeTwinRustAsyncHandleUuidsTwinRustAsync(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualUuidTypeTwinRustAsyncHandleUuidsTwinRustAsync(
       ids: ids,
     );
 
 Future<FeatureUuidTwinRustAsync> handleNestedUuidsTwinRustAsync({
   required FeatureUuidTwinRustAsync ids,
-}) => RustLib.instance.api
-    .crateApiPseudoManualUuidTypeTwinRustAsyncHandleNestedUuidsTwinRustAsync(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualUuidTypeTwinRustAsyncHandleNestedUuidsTwinRustAsync(
       ids: ids,
     );
 

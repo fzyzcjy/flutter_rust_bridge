@@ -25,7 +25,8 @@ mixin _$EnumOpaqueTwinSyncSseMoi {
     required TResult Function(MutexHideDataTwinSyncSseMoi field0) mutex,
     required TResult Function(RwLockHideDataTwinSyncSseMoi field0) rwLock,
     required TResult Function() nothing,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(HideDataTwinSyncSseMoi field0)? struct,
@@ -34,7 +35,8 @@ mixin _$EnumOpaqueTwinSyncSseMoi {
     TResult? Function(MutexHideDataTwinSyncSseMoi field0)? mutex,
     TResult? Function(RwLockHideDataTwinSyncSseMoi field0)? rwLock,
     TResult? Function()? nothing,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(HideDataTwinSyncSseMoi field0)? struct,
@@ -44,17 +46,19 @@ mixin _$EnumOpaqueTwinSyncSseMoi {
     TResult Function(RwLockHideDataTwinSyncSseMoi field0)? rwLock,
     TResult Function()? nothing,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(EnumOpaqueTwinSyncSseMoi_Struct value) struct,
     required TResult Function(EnumOpaqueTwinSyncSseMoi_Primitive value)
-    primitive,
+        primitive,
     required TResult Function(EnumOpaqueTwinSyncSseMoi_TraitObj value) traitObj,
     required TResult Function(EnumOpaqueTwinSyncSseMoi_Mutex value) mutex,
     required TResult Function(EnumOpaqueTwinSyncSseMoi_RwLock value) rwLock,
     required TResult Function(EnumOpaqueTwinSyncSseMoi_Nothing value) nothing,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(EnumOpaqueTwinSyncSseMoi_Struct value)? struct,
@@ -63,7 +67,8 @@ mixin _$EnumOpaqueTwinSyncSseMoi {
     TResult? Function(EnumOpaqueTwinSyncSseMoi_Mutex value)? mutex,
     TResult? Function(EnumOpaqueTwinSyncSseMoi_RwLock value)? rwLock,
     TResult? Function(EnumOpaqueTwinSyncSseMoi_Nothing value)? nothing,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EnumOpaqueTwinSyncSseMoi_Struct value)? struct,
@@ -73,7 +78,8 @@ mixin _$EnumOpaqueTwinSyncSseMoi {
     TResult Function(EnumOpaqueTwinSyncSseMoi_RwLock value)? rwLock,
     TResult Function(EnumOpaqueTwinSyncSseMoi_Nothing value)? nothing,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -85,10 +91,8 @@ abstract class $EnumOpaqueTwinSyncSseMoiCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$EnumOpaqueTwinSyncSseMoiCopyWithImpl<
-  $Res,
-  $Val extends EnumOpaqueTwinSyncSseMoi
->
+class _$EnumOpaqueTwinSyncSseMoiCopyWithImpl<$Res,
+        $Val extends EnumOpaqueTwinSyncSseMoi>
     implements $EnumOpaqueTwinSyncSseMoiCopyWith<$Res> {
   _$EnumOpaqueTwinSyncSseMoiCopyWithImpl(this._value, this._then);
 
@@ -113,11 +117,8 @@ abstract class _$$EnumOpaqueTwinSyncSseMoi_StructImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$EnumOpaqueTwinSyncSseMoi_StructImplCopyWithImpl<$Res>
-    extends
-        _$EnumOpaqueTwinSyncSseMoiCopyWithImpl<
-          $Res,
-          _$EnumOpaqueTwinSyncSseMoi_StructImpl
-        >
+    extends _$EnumOpaqueTwinSyncSseMoiCopyWithImpl<$Res,
+        _$EnumOpaqueTwinSyncSseMoi_StructImpl>
     implements _$$EnumOpaqueTwinSyncSseMoi_StructImplCopyWith<$Res> {
   __$$EnumOpaqueTwinSyncSseMoi_StructImplCopyWithImpl(
     _$EnumOpaqueTwinSyncSseMoi_StructImpl _value,
@@ -134,7 +135,7 @@ class __$$EnumOpaqueTwinSyncSseMoi_StructImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                  as HideDataTwinSyncSseMoi,
+                as HideDataTwinSyncSseMoi,
       ),
     );
   }
@@ -171,12 +172,9 @@ class _$EnumOpaqueTwinSyncSseMoi_StructImpl
   @override
   @pragma('vm:prefer-inline')
   _$$EnumOpaqueTwinSyncSseMoi_StructImplCopyWith<
-    _$EnumOpaqueTwinSyncSseMoi_StructImpl
-  >
-  get copyWith =>
-      __$$EnumOpaqueTwinSyncSseMoi_StructImplCopyWithImpl<
-        _$EnumOpaqueTwinSyncSseMoi_StructImpl
-      >(this, _$identity);
+          _$EnumOpaqueTwinSyncSseMoi_StructImpl>
+      get copyWith => __$$EnumOpaqueTwinSyncSseMoi_StructImplCopyWithImpl<
+          _$EnumOpaqueTwinSyncSseMoi_StructImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -226,7 +224,7 @@ class _$EnumOpaqueTwinSyncSseMoi_StructImpl
   TResult map<TResult extends Object?>({
     required TResult Function(EnumOpaqueTwinSyncSseMoi_Struct value) struct,
     required TResult Function(EnumOpaqueTwinSyncSseMoi_Primitive value)
-    primitive,
+        primitive,
     required TResult Function(EnumOpaqueTwinSyncSseMoi_TraitObj value) traitObj,
     required TResult Function(EnumOpaqueTwinSyncSseMoi_Mutex value) mutex,
     required TResult Function(EnumOpaqueTwinSyncSseMoi_RwLock value) rwLock,
@@ -279,9 +277,8 @@ abstract class EnumOpaqueTwinSyncSseMoi_Struct
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumOpaqueTwinSyncSseMoi_StructImplCopyWith<
-    _$EnumOpaqueTwinSyncSseMoi_StructImpl
-  >
-  get copyWith => throw _privateConstructorUsedError;
+          _$EnumOpaqueTwinSyncSseMoi_StructImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -296,11 +293,8 @@ abstract class _$$EnumOpaqueTwinSyncSseMoi_PrimitiveImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$EnumOpaqueTwinSyncSseMoi_PrimitiveImplCopyWithImpl<$Res>
-    extends
-        _$EnumOpaqueTwinSyncSseMoiCopyWithImpl<
-          $Res,
-          _$EnumOpaqueTwinSyncSseMoi_PrimitiveImpl
-        >
+    extends _$EnumOpaqueTwinSyncSseMoiCopyWithImpl<$Res,
+        _$EnumOpaqueTwinSyncSseMoi_PrimitiveImpl>
     implements _$$EnumOpaqueTwinSyncSseMoi_PrimitiveImplCopyWith<$Res> {
   __$$EnumOpaqueTwinSyncSseMoi_PrimitiveImplCopyWithImpl(
     _$EnumOpaqueTwinSyncSseMoi_PrimitiveImpl _value,
@@ -317,7 +311,7 @@ class __$$EnumOpaqueTwinSyncSseMoi_PrimitiveImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                  as I16,
+                as I16,
       ),
     );
   }
@@ -354,12 +348,9 @@ class _$EnumOpaqueTwinSyncSseMoi_PrimitiveImpl
   @override
   @pragma('vm:prefer-inline')
   _$$EnumOpaqueTwinSyncSseMoi_PrimitiveImplCopyWith<
-    _$EnumOpaqueTwinSyncSseMoi_PrimitiveImpl
-  >
-  get copyWith =>
-      __$$EnumOpaqueTwinSyncSseMoi_PrimitiveImplCopyWithImpl<
-        _$EnumOpaqueTwinSyncSseMoi_PrimitiveImpl
-      >(this, _$identity);
+          _$EnumOpaqueTwinSyncSseMoi_PrimitiveImpl>
+      get copyWith => __$$EnumOpaqueTwinSyncSseMoi_PrimitiveImplCopyWithImpl<
+          _$EnumOpaqueTwinSyncSseMoi_PrimitiveImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -409,7 +400,7 @@ class _$EnumOpaqueTwinSyncSseMoi_PrimitiveImpl
   TResult map<TResult extends Object?>({
     required TResult Function(EnumOpaqueTwinSyncSseMoi_Struct value) struct,
     required TResult Function(EnumOpaqueTwinSyncSseMoi_Primitive value)
-    primitive,
+        primitive,
     required TResult Function(EnumOpaqueTwinSyncSseMoi_TraitObj value) traitObj,
     required TResult Function(EnumOpaqueTwinSyncSseMoi_Mutex value) mutex,
     required TResult Function(EnumOpaqueTwinSyncSseMoi_RwLock value) rwLock,
@@ -461,9 +452,8 @@ abstract class EnumOpaqueTwinSyncSseMoi_Primitive
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumOpaqueTwinSyncSseMoi_PrimitiveImplCopyWith<
-    _$EnumOpaqueTwinSyncSseMoi_PrimitiveImpl
-  >
-  get copyWith => throw _privateConstructorUsedError;
+          _$EnumOpaqueTwinSyncSseMoi_PrimitiveImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -478,11 +468,8 @@ abstract class _$$EnumOpaqueTwinSyncSseMoi_TraitObjImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$EnumOpaqueTwinSyncSseMoi_TraitObjImplCopyWithImpl<$Res>
-    extends
-        _$EnumOpaqueTwinSyncSseMoiCopyWithImpl<
-          $Res,
-          _$EnumOpaqueTwinSyncSseMoi_TraitObjImpl
-        >
+    extends _$EnumOpaqueTwinSyncSseMoiCopyWithImpl<$Res,
+        _$EnumOpaqueTwinSyncSseMoi_TraitObjImpl>
     implements _$$EnumOpaqueTwinSyncSseMoi_TraitObjImplCopyWith<$Res> {
   __$$EnumOpaqueTwinSyncSseMoi_TraitObjImplCopyWithImpl(
     _$EnumOpaqueTwinSyncSseMoi_TraitObjImpl _value,
@@ -499,7 +486,7 @@ class __$$EnumOpaqueTwinSyncSseMoi_TraitObjImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                  as BoxDartDebugTwinSyncSseMoi,
+                as BoxDartDebugTwinSyncSseMoi,
       ),
     );
   }
@@ -536,12 +523,9 @@ class _$EnumOpaqueTwinSyncSseMoi_TraitObjImpl
   @override
   @pragma('vm:prefer-inline')
   _$$EnumOpaqueTwinSyncSseMoi_TraitObjImplCopyWith<
-    _$EnumOpaqueTwinSyncSseMoi_TraitObjImpl
-  >
-  get copyWith =>
-      __$$EnumOpaqueTwinSyncSseMoi_TraitObjImplCopyWithImpl<
-        _$EnumOpaqueTwinSyncSseMoi_TraitObjImpl
-      >(this, _$identity);
+          _$EnumOpaqueTwinSyncSseMoi_TraitObjImpl>
+      get copyWith => __$$EnumOpaqueTwinSyncSseMoi_TraitObjImplCopyWithImpl<
+          _$EnumOpaqueTwinSyncSseMoi_TraitObjImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -591,7 +575,7 @@ class _$EnumOpaqueTwinSyncSseMoi_TraitObjImpl
   TResult map<TResult extends Object?>({
     required TResult Function(EnumOpaqueTwinSyncSseMoi_Struct value) struct,
     required TResult Function(EnumOpaqueTwinSyncSseMoi_Primitive value)
-    primitive,
+        primitive,
     required TResult Function(EnumOpaqueTwinSyncSseMoi_TraitObj value) traitObj,
     required TResult Function(EnumOpaqueTwinSyncSseMoi_Mutex value) mutex,
     required TResult Function(EnumOpaqueTwinSyncSseMoi_RwLock value) rwLock,
@@ -644,9 +628,8 @@ abstract class EnumOpaqueTwinSyncSseMoi_TraitObj
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumOpaqueTwinSyncSseMoi_TraitObjImplCopyWith<
-    _$EnumOpaqueTwinSyncSseMoi_TraitObjImpl
-  >
-  get copyWith => throw _privateConstructorUsedError;
+          _$EnumOpaqueTwinSyncSseMoi_TraitObjImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -661,11 +644,8 @@ abstract class _$$EnumOpaqueTwinSyncSseMoi_MutexImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$EnumOpaqueTwinSyncSseMoi_MutexImplCopyWithImpl<$Res>
-    extends
-        _$EnumOpaqueTwinSyncSseMoiCopyWithImpl<
-          $Res,
-          _$EnumOpaqueTwinSyncSseMoi_MutexImpl
-        >
+    extends _$EnumOpaqueTwinSyncSseMoiCopyWithImpl<$Res,
+        _$EnumOpaqueTwinSyncSseMoi_MutexImpl>
     implements _$$EnumOpaqueTwinSyncSseMoi_MutexImplCopyWith<$Res> {
   __$$EnumOpaqueTwinSyncSseMoi_MutexImplCopyWithImpl(
     _$EnumOpaqueTwinSyncSseMoi_MutexImpl _value,
@@ -682,7 +662,7 @@ class __$$EnumOpaqueTwinSyncSseMoi_MutexImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                  as MutexHideDataTwinSyncSseMoi,
+                as MutexHideDataTwinSyncSseMoi,
       ),
     );
   }
@@ -719,12 +699,9 @@ class _$EnumOpaqueTwinSyncSseMoi_MutexImpl
   @override
   @pragma('vm:prefer-inline')
   _$$EnumOpaqueTwinSyncSseMoi_MutexImplCopyWith<
-    _$EnumOpaqueTwinSyncSseMoi_MutexImpl
-  >
-  get copyWith =>
-      __$$EnumOpaqueTwinSyncSseMoi_MutexImplCopyWithImpl<
-        _$EnumOpaqueTwinSyncSseMoi_MutexImpl
-      >(this, _$identity);
+          _$EnumOpaqueTwinSyncSseMoi_MutexImpl>
+      get copyWith => __$$EnumOpaqueTwinSyncSseMoi_MutexImplCopyWithImpl<
+          _$EnumOpaqueTwinSyncSseMoi_MutexImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -774,7 +751,7 @@ class _$EnumOpaqueTwinSyncSseMoi_MutexImpl
   TResult map<TResult extends Object?>({
     required TResult Function(EnumOpaqueTwinSyncSseMoi_Struct value) struct,
     required TResult Function(EnumOpaqueTwinSyncSseMoi_Primitive value)
-    primitive,
+        primitive,
     required TResult Function(EnumOpaqueTwinSyncSseMoi_TraitObj value) traitObj,
     required TResult Function(EnumOpaqueTwinSyncSseMoi_Mutex value) mutex,
     required TResult Function(EnumOpaqueTwinSyncSseMoi_RwLock value) rwLock,
@@ -826,9 +803,8 @@ abstract class EnumOpaqueTwinSyncSseMoi_Mutex extends EnumOpaqueTwinSyncSseMoi {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumOpaqueTwinSyncSseMoi_MutexImplCopyWith<
-    _$EnumOpaqueTwinSyncSseMoi_MutexImpl
-  >
-  get copyWith => throw _privateConstructorUsedError;
+          _$EnumOpaqueTwinSyncSseMoi_MutexImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -843,11 +819,8 @@ abstract class _$$EnumOpaqueTwinSyncSseMoi_RwLockImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$EnumOpaqueTwinSyncSseMoi_RwLockImplCopyWithImpl<$Res>
-    extends
-        _$EnumOpaqueTwinSyncSseMoiCopyWithImpl<
-          $Res,
-          _$EnumOpaqueTwinSyncSseMoi_RwLockImpl
-        >
+    extends _$EnumOpaqueTwinSyncSseMoiCopyWithImpl<$Res,
+        _$EnumOpaqueTwinSyncSseMoi_RwLockImpl>
     implements _$$EnumOpaqueTwinSyncSseMoi_RwLockImplCopyWith<$Res> {
   __$$EnumOpaqueTwinSyncSseMoi_RwLockImplCopyWithImpl(
     _$EnumOpaqueTwinSyncSseMoi_RwLockImpl _value,
@@ -864,7 +837,7 @@ class __$$EnumOpaqueTwinSyncSseMoi_RwLockImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                  as RwLockHideDataTwinSyncSseMoi,
+                as RwLockHideDataTwinSyncSseMoi,
       ),
     );
   }
@@ -901,12 +874,9 @@ class _$EnumOpaqueTwinSyncSseMoi_RwLockImpl
   @override
   @pragma('vm:prefer-inline')
   _$$EnumOpaqueTwinSyncSseMoi_RwLockImplCopyWith<
-    _$EnumOpaqueTwinSyncSseMoi_RwLockImpl
-  >
-  get copyWith =>
-      __$$EnumOpaqueTwinSyncSseMoi_RwLockImplCopyWithImpl<
-        _$EnumOpaqueTwinSyncSseMoi_RwLockImpl
-      >(this, _$identity);
+          _$EnumOpaqueTwinSyncSseMoi_RwLockImpl>
+      get copyWith => __$$EnumOpaqueTwinSyncSseMoi_RwLockImplCopyWithImpl<
+          _$EnumOpaqueTwinSyncSseMoi_RwLockImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -956,7 +926,7 @@ class _$EnumOpaqueTwinSyncSseMoi_RwLockImpl
   TResult map<TResult extends Object?>({
     required TResult Function(EnumOpaqueTwinSyncSseMoi_Struct value) struct,
     required TResult Function(EnumOpaqueTwinSyncSseMoi_Primitive value)
-    primitive,
+        primitive,
     required TResult Function(EnumOpaqueTwinSyncSseMoi_TraitObj value) traitObj,
     required TResult Function(EnumOpaqueTwinSyncSseMoi_Mutex value) mutex,
     required TResult Function(EnumOpaqueTwinSyncSseMoi_RwLock value) rwLock,
@@ -1009,9 +979,8 @@ abstract class EnumOpaqueTwinSyncSseMoi_RwLock
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumOpaqueTwinSyncSseMoi_RwLockImplCopyWith<
-    _$EnumOpaqueTwinSyncSseMoi_RwLockImpl
-  >
-  get copyWith => throw _privateConstructorUsedError;
+          _$EnumOpaqueTwinSyncSseMoi_RwLockImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1024,11 +993,8 @@ abstract class _$$EnumOpaqueTwinSyncSseMoi_NothingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$EnumOpaqueTwinSyncSseMoi_NothingImplCopyWithImpl<$Res>
-    extends
-        _$EnumOpaqueTwinSyncSseMoiCopyWithImpl<
-          $Res,
-          _$EnumOpaqueTwinSyncSseMoi_NothingImpl
-        >
+    extends _$EnumOpaqueTwinSyncSseMoiCopyWithImpl<$Res,
+        _$EnumOpaqueTwinSyncSseMoi_NothingImpl>
     implements _$$EnumOpaqueTwinSyncSseMoi_NothingImplCopyWith<$Res> {
   __$$EnumOpaqueTwinSyncSseMoi_NothingImplCopyWithImpl(
     _$EnumOpaqueTwinSyncSseMoi_NothingImpl _value,
@@ -1108,7 +1074,7 @@ class _$EnumOpaqueTwinSyncSseMoi_NothingImpl
   TResult map<TResult extends Object?>({
     required TResult Function(EnumOpaqueTwinSyncSseMoi_Struct value) struct,
     required TResult Function(EnumOpaqueTwinSyncSseMoi_Primitive value)
-    primitive,
+        primitive,
     required TResult Function(EnumOpaqueTwinSyncSseMoi_TraitObj value) traitObj,
     required TResult Function(EnumOpaqueTwinSyncSseMoi_Mutex value) mutex,
     required TResult Function(EnumOpaqueTwinSyncSseMoi_RwLock value) rwLock,

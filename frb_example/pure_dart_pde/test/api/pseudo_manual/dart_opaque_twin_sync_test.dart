@@ -17,7 +17,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('loopback', () async {
     await futurizeVoidTwinSync(
-      loopBackArrayGetTwinSync(opaque: await loopBackArrayTwinSync(opaque: f)),
+      loopBackArrayGetTwinSync(
+        opaque: await loopBackArrayTwinSync(opaque: f),
+      ),
     );
     await futurizeVoidTwinSync(
       loopBackVecGetTwinSync(opaque: await loopBackVecTwinSync(opaque: f)),

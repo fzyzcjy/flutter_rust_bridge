@@ -17,69 +17,74 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Map<int, int> funcHashMapI32I32TwinSyncSse({required Map<int, int> arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualMapAndSetTwinSyncSseFuncHashMapI32I32TwinSyncSse(
-          arg: arg,
-        );
+      arg: arg,
+    );
 
-Set<int> funcHashSetI32TwinSyncSse({required Set<int> arg}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualMapAndSetTwinSyncSseFuncHashSetI32TwinSyncSse(
+Set<int> funcHashSetI32TwinSyncSse({required Set<int> arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMapAndSetTwinSyncSseFuncHashSetI32TwinSyncSse(
       arg: arg,
     );
 
 Map<String, String> funcHashMapStringStringTwinSyncSse({
   required Map<String, String> arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualMapAndSetTwinSyncSseFuncHashMapStringStringTwinSyncSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMapAndSetTwinSyncSseFuncHashMapStringStringTwinSyncSse(
       arg: arg,
     );
 
 Map<String, String> funcHashMapStringStringHasherTwinSyncSse({
   required Map<String, String> arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualMapAndSetTwinSyncSseFuncHashMapStringStringHasherTwinSyncSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMapAndSetTwinSyncSseFuncHashMapStringStringHasherTwinSyncSse(
       arg: arg,
     );
 
-Set<String> funcHashSetStringTwinSyncSse({required Set<String> arg}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualMapAndSetTwinSyncSseFuncHashSetStringTwinSyncSse(
+Set<String> funcHashSetStringTwinSyncSse({required Set<String> arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMapAndSetTwinSyncSseFuncHashSetStringTwinSyncSse(
       arg: arg,
     );
 
 Set<String> funcHashSetStringHasherTwinSyncSse({
   required Set<String> arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualMapAndSetTwinSyncSseFuncHashSetStringHasherTwinSyncSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMapAndSetTwinSyncSseFuncHashSetStringHasherTwinSyncSse(
       arg: arg,
     );
 
 Map<String, Uint8List> funcHashMapStringBytesTwinSyncSse({
   required Map<String, Uint8List> arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualMapAndSetTwinSyncSseFuncHashMapStringBytesTwinSyncSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMapAndSetTwinSyncSseFuncHashMapStringBytesTwinSyncSse(
       arg: arg,
     );
 
 Map<String, MySize> funcHashMapStringStructTwinSyncSse({
   required Map<String, MySize> arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualMapAndSetTwinSyncSseFuncHashMapStringStructTwinSyncSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMapAndSetTwinSyncSseFuncHashMapStringStructTwinSyncSse(
       arg: arg,
     );
 
 Map<String, EnumSimpleTwinSyncSse> funcHashMapStringSimpleEnumTwinSyncSse({
   required Map<String, EnumSimpleTwinSyncSse> arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualMapAndSetTwinSyncSseFuncHashMapStringSimpleEnumTwinSyncSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMapAndSetTwinSyncSseFuncHashMapStringSimpleEnumTwinSyncSse(
       arg: arg,
     );
 
 Map<String, KitchenSinkTwinSyncSse> funcHashMapStringComplexEnumTwinSyncSse({
   required Map<String, KitchenSinkTwinSyncSse> arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualMapAndSetTwinSyncSseFuncHashMapStringComplexEnumTwinSyncSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMapAndSetTwinSyncSseFuncHashMapStringComplexEnumTwinSyncSse(
       arg: arg,
     );
 

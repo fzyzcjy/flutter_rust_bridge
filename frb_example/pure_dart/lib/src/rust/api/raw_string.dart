@@ -17,8 +17,8 @@ Future<RawStringItemEnumTwinNormal> testRawStringItemEnumTwinNormal() =>
     RustLib.instance.api.crateApiRawStringTestRawStringItemEnumTwinNormal();
 
 Future<MoreThanJustOneRawStringStructTwinNormal>
-testMoreThanJustOneRawStringStructTwinNormal() => RustLib.instance.api
-    .crateApiRawStringTestMoreThanJustOneRawStringStructTwinNormal();
+    testMoreThanJustOneRawStringStructTwinNormal() => RustLib.instance.api
+        .crateApiRawStringTestMoreThanJustOneRawStringStructTwinNormal();
 
 class MoreThanJustOneRawStringStructTwinNormal {
   final String regular;
