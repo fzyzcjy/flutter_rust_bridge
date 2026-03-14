@@ -2,6 +2,13 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:test/test.dart';
 
 void main() {
+  test('dart valgrind compile command uses dart compile exe', () {
+    expect(
+      _dartValgrindCompileCommand(),
+      'dart compile exe test/dart_valgrind_test_entrypoint.dart -o build/valgrind_test_output/dart_valgrind_test_entrypoint.exe',
+    );
+  });
+
   group('test checkValgrindOutput', () {
     test('good', () {
       checkValgrindOutput('''
