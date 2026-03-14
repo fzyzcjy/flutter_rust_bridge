@@ -1,7 +1,9 @@
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ConfigDumpContent;
 use crate::command_args;
-use crate::library::commands::command_runner::{execute_command, ExecuteCommandOptions};
+use crate::library::commands::command_runner::{
+    check_exit_code, execute_command, ExecuteCommandOptions,
+};
 use crate::utils::crate_name::CrateName;
 use anyhow::{bail, Context, Result};
 use itertools::Itertools;
@@ -12,6 +14,8 @@ use std::borrow::Cow;
 use std::env;
 use std::path::{Path, PathBuf};
 use std::str::FromStr;
+
+const CARGO_EXPAND_FALLBACK_VERSION: &str = "1.0.118";
 
 pub(super) fn run(
     rust_crate_dir: &Path,
@@ -128,13 +132,61 @@ fn run_raw(
 }
 
 fn install_cargo_expand() -> Result<()> {
-    execute_command(
+    let latest = execute_command(
         "cargo",
         &vec!["install".into(), "cargo-expand".into()],
         None,
         None,
     )?;
+    if latest.status.success() {
+        return Ok(());
+    }
+
+    let latest_stderr = String::from_utf8_lossy(&latest.stderr);
+    if let Some(version) = cargo_expand_fallback_version(&latest_stderr) {
+        info!(
+            "Latest cargo-expand is incompatible with the active Rust toolchain. Falling back to cargo-expand {version}."
+        );
+        let fallback = execute_command(
+            "cargo",
+            &vec![
+                "install".into(),
+                "cargo-expand".into(),
+                "--version".into(),
+                version.into(),
+            ],
+            None,
+            None,
+        )?;
+        check_exit_code(&fallback)?;
+        return Ok(());
+    }
+
+    check_exit_code(&latest)?;
     Ok(())
+}
+
+fn cargo_expand_fallback_version(stderr: &str) -> Option<&'static str> {
+    stderr
+        .contains("requires rustc")
+        .then_some(CARGO_EXPAND_FALLBACK_VERSION)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::cargo_expand_fallback_version;
+
+    #[test]
+    fn test_cargo_expand_fallback_version_when_latest_requires_newer_rustc() {
+        let stderr =
+            "error: cannot install package `cargo-expand 1.0.121`, it requires rustc 1.88 or newer";
+        assert_eq!(cargo_expand_fallback_version(stderr), Some("1.0.118"));
+    }
+
+    #[test]
+    fn test_cargo_expand_fallback_version_when_error_is_unrelated() {
+        assert_eq!(cargo_expand_fallback_version("network timeout"), None);
+    }
 }
 
 // fn extract_module(raw_expanded: &str, module: Option<String>) -> Result<String> {
