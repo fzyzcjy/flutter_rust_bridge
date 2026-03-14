@@ -365,6 +365,7 @@ Secondly, thanks goes to these wonderful contributors ([emoji key](https://allco
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/dt-iohk"><img src="https://avatars.githubusercontent.com/u/166132265?v=4?s=100" width="100px;" alt="Dominik Toton"/><br /><sub><b>Dominik Toton</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=dt-iohk" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/NathanKolbas"><img src="https://avatars.githubusercontent.com/u/24755493?v=4?s=100" width="100px;" alt="Nathan Kolbas"/><br /><sub><b>Nathan Kolbas</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=NathanKolbas" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Shadowcat650"><img src="https://avatars.githubusercontent.com/u/64231061?v=4?s=100" width="100px;" alt="Shadowcat650"/><br /><sub><b>Shadowcat650</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Shadowcat650" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://azocolo.dev/"><img src="https://avatars.githubusercontent.com/u/15809427?v=4?s=100" width="100px;" alt="Aadam Zocolo"/><br /><sub><b>Aadam Zocolo</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=AadamZ5" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
