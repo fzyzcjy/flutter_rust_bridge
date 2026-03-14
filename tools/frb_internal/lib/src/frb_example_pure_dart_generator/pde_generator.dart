@@ -11,6 +11,8 @@ Future<void> generatePureDartPde({
   required Uri dirPureDart,
   required Uri dirPureDartPde,
 }) async {
+  final skippedPdeFileStems = _computeSkippedPdeFileStems(dirPureDart);
+
   copyRecursive(
     Directory(dirPureDart.toFilePath()),
     Directory(dirPureDartPde.toFilePath()),
@@ -77,6 +79,18 @@ Future<void> generatePureDartPde({
         case 'flutter_rust_bridge.yaml':
           return simpleReplaceString(text, '\nfull_dep: true', '');
 
+        case 'rust/src/api/mod.rs':
+          return _removeSkippedPdeModuleDeclarations(
+            text: text,
+            skippedPdeFileStems: skippedPdeFileStems,
+          );
+
+        case 'test/dart_valgrind_test_entrypoint.dart':
+          return _removeSkippedPdeTestEntrypointReferences(
+            text: text,
+            skippedPdeFileStems: skippedPdeFileStems,
+          );
+
         default:
           final prelude = switch (extension(file.path)) {
             '.rs' || '.dart' =>
@@ -99,6 +113,76 @@ Future<void> generatePureDartPde({
 
   // To refresh Cargo.lock's ordering
   await exec('cargo fetch', relativePwd: 'frb_example/pure_dart_pde/rust');
+}
+
+Set<String> _computeSkippedPdeFileStems(Uri dirPureDart) {
+  final root = Directory(dirPureDart.toFilePath());
+  final stems = <String>{};
+
+  for (final entity in root.listSync(recursive: true)) {
+    if (entity is! File) continue;
+    if (!const {'.dart', '.rs'}.contains(extension(entity.path))) continue;
+
+    final annotation = Annotation.parse(entity.readAsStringSync());
+    if (!annotation.skipPde) continue;
+
+    stems.add(basenameWithoutExtension(entity.path));
+  }
+
+  return stems;
+}
+
+String _removeSkippedPdeModuleDeclarations({
+  required String text,
+  required Set<String> skippedPdeFileStems,
+}) {
+  var output = text;
+
+  for (final stem in skippedPdeFileStems) {
+    output = output.replaceAll('pub mod $stem;\n', '');
+  }
+
+  return output;
+}
+
+String _removeSkippedPdeTestEntrypointReferences({
+  required String text,
+  required Set<String> skippedPdeFileStems,
+}) {
+  var output = text;
+
+  for (final stem in skippedPdeFileStems) {
+    output = output.replaceAll(
+      RegExp(
+        "^import 'api(?:/pseudo_manual)?/$stem\\.dart' as ${stem};\\n",
+        multiLine: true,
+      ),
+      '',
+    );
+    output = output.replaceAll(
+      RegExp(
+        "^import 'api(?:/pseudo_manual)?/${stem}_test\\.dart' as ${stem}_test;\\n",
+        multiLine: true,
+      ),
+      '',
+    );
+    output = output.replaceAll(
+      RegExp(
+        '^\\s*await ${stem}\\.main\\(skipRustLibInit: true\\);\\n',
+        multiLine: true,
+      ),
+      '',
+    );
+    output = output.replaceAll(
+      RegExp(
+        '^\\s*await ${stem}_test\\.main\\(skipRustLibInit: true\\);\\n',
+        multiLine: true,
+      ),
+      '',
+    );
+  }
+
+  return output;
 }
 
 // copied and modified from https://stackoverflow.com/questions/27204728
