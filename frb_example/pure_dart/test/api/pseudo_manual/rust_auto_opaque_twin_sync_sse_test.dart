@@ -72,10 +72,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         final obj = await rustAutoOpaqueReturnOwnTwinSyncSse(initial: 100);
         await futurizeVoidTwinSyncSse(
           rustAutoOpaqueArgMutBorrowTwinSyncSse(
-            arg: obj,
-            expect: 100,
-            adder: 1,
-          ),
+              arg: obj, expect: 100, adder: 1),
         );
         expect(obj.isDisposed, false);
       });
@@ -84,10 +81,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         final obj = await rustAutoOpaqueReturnOwnTwinSyncSse(initial: 100);
         await futurizeVoidTwinSyncSse(
           rustAutoOpaqueArgMutBorrowTwinSyncSse(
-            arg: obj,
-            expect: 100,
-            adder: 1,
-          ),
+              arg: obj, expect: 100, adder: 1),
         );
 
         expect(obj.isDisposed, false);
@@ -116,10 +110,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
         await futurizeVoidTwinSyncSse(
           rustAutoOpaqueArgMutBorrowTwinSyncSse(
-            arg: obj,
-            expect: 100,
-            adder: 1,
-          ),
+              arg: obj, expect: 100, adder: 1),
         );
 
         // expect internal data to change
@@ -199,8 +190,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final b = await rustAutoOpaqueReturnOwnTwinSyncSse(initial: 20);
 
       await futurizeVoidTwinSyncSse(
-        rustAutoOpaqueTwoArgsTwinSyncSse(a: a, b: b),
-      );
+          rustAutoOpaqueTwoArgsTwinSyncSse(a: a, b: b));
     });
 
     test('call rustAutoOpaqueNormalAndOpaqueArgTwinSyncSse', () async {

@@ -21,8 +21,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     );
     await futurizeVoidTwinRustAsync(
       loopBackVecGetTwinRustAsync(
-        opaque: await loopBackVecTwinRustAsync(opaque: f),
-      ),
+          opaque: await loopBackVecTwinRustAsync(opaque: f)),
     );
     await futurizeVoidTwinRustAsync(
       loopBackOptionGetTwinRustAsync(
@@ -40,8 +39,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('drop', () async {
     expect(
       await asyncAcceptDartOpaqueTwinRustAsync(
-        opaque: createLargeList(mb: 200),
-      ),
+          opaque: createLargeList(mb: 200)),
       'async test',
     );
   });
@@ -49,8 +47,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('nested', () async {
     var str = await createNestedDartOpaqueTwinRustAsync(opaque1: f, opaque2: f);
     await futurizeVoidTwinRustAsync(
-      getNestedDartOpaqueTwinRustAsync(opaque: str),
-    );
+        getNestedDartOpaqueTwinRustAsync(opaque: str));
   });
 
   test('enum', () async {
@@ -61,8 +58,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('nested', () async {
     var str = await createNestedDartOpaqueTwinRustAsync(opaque1: f, opaque2: f);
     await futurizeVoidTwinRustAsync(
-      getNestedDartOpaqueTwinRustAsync(opaque: str),
-    );
+        getNestedDartOpaqueTwinRustAsync(opaque: str));
   });
 
   test('enum', () async {
