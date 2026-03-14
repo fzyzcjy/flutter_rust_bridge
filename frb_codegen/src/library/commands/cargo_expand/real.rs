@@ -162,6 +162,7 @@ fn cargo_expand_fallback_version(stderr: &str) -> Option<&'static str> {
         .then_some(CARGO_EXPAND_FALLBACK_VERSION)
 }
 
+#[allow(clippy::vec_init_then_push)]
 fn cargo_expand_install_args(version: Option<&str>) -> Vec<PathBuf> {
     let mut args = command_args!("install", "cargo-expand");
     if let Some(version) = version {
