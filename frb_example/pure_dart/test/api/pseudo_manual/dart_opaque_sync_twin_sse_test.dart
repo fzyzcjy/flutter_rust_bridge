@@ -28,8 +28,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('sync option', () {
     var data4 = syncOptionDartOpaqueTwinSse(
-      opaque: () =>
-          () => 'magic',
+      opaque: () => () => 'magic',
     );
     expect(data4, isNotNull);
   });
@@ -42,7 +41,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('unwrap', () async {
-    expect(unwrapDartOpaqueTwinSse(opaque: createLargeList(mb: 200)), 'Test');
+    expect(
+      unwrapDartOpaqueTwinSse(opaque: createLargeList(mb: 200)),
+      'Test',
+    );
     await expectLater(
       () => panicUnwrapDartOpaqueTwinSse(opaque: createLargeList(mb: 200)),
       throwsA(isA<PanicException>()),

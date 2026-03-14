@@ -22,40 +22,45 @@ mixin _$EnumWithGoodAndOpaqueTwinRustAsyncMoi {
   TResult when<TResult extends Object?>({
     required TResult Function(String field0) good,
     required TResult Function(NonCloneSimpleTwinRustAsyncMoi field0) opaque,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String field0)? good,
     TResult? Function(NonCloneSimpleTwinRustAsyncMoi field0)? opaque,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String field0)? good,
     TResult Function(NonCloneSimpleTwinRustAsyncMoi field0)? opaque,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(EnumWithGoodAndOpaqueTwinRustAsyncMoi_Good value)
-    good,
+        good,
     required TResult Function(
       EnumWithGoodAndOpaqueTwinRustAsyncMoi_Opaque value,
-    )
-    opaque,
-  }) => throw _privateConstructorUsedError;
+    ) opaque,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(EnumWithGoodAndOpaqueTwinRustAsyncMoi_Good value)? good,
     TResult? Function(EnumWithGoodAndOpaqueTwinRustAsyncMoi_Opaque value)?
-    opaque,
-  }) => throw _privateConstructorUsedError;
+        opaque,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EnumWithGoodAndOpaqueTwinRustAsyncMoi_Good value)? good,
     TResult Function(EnumWithGoodAndOpaqueTwinRustAsyncMoi_Opaque value)?
-    opaque,
+        opaque,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -63,18 +68,13 @@ abstract class $EnumWithGoodAndOpaqueTwinRustAsyncMoiCopyWith<$Res> {
   factory $EnumWithGoodAndOpaqueTwinRustAsyncMoiCopyWith(
     EnumWithGoodAndOpaqueTwinRustAsyncMoi value,
     $Res Function(EnumWithGoodAndOpaqueTwinRustAsyncMoi) then,
-  ) =
-      _$EnumWithGoodAndOpaqueTwinRustAsyncMoiCopyWithImpl<
-        $Res,
-        EnumWithGoodAndOpaqueTwinRustAsyncMoi
-      >;
+  ) = _$EnumWithGoodAndOpaqueTwinRustAsyncMoiCopyWithImpl<$Res,
+      EnumWithGoodAndOpaqueTwinRustAsyncMoi>;
 }
 
 /// @nodoc
-class _$EnumWithGoodAndOpaqueTwinRustAsyncMoiCopyWithImpl<
-  $Res,
-  $Val extends EnumWithGoodAndOpaqueTwinRustAsyncMoi
->
+class _$EnumWithGoodAndOpaqueTwinRustAsyncMoiCopyWithImpl<$Res,
+        $Val extends EnumWithGoodAndOpaqueTwinRustAsyncMoi>
     implements $EnumWithGoodAndOpaqueTwinRustAsyncMoiCopyWith<$Res> {
   _$EnumWithGoodAndOpaqueTwinRustAsyncMoiCopyWithImpl(this._value, this._then);
 
@@ -99,11 +99,8 @@ abstract class _$$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImplCopyWithImpl<$Res>
-    extends
-        _$EnumWithGoodAndOpaqueTwinRustAsyncMoiCopyWithImpl<
-          $Res,
-          _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImpl
-        >
+    extends _$EnumWithGoodAndOpaqueTwinRustAsyncMoiCopyWithImpl<$Res,
+        _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImpl>
     implements _$$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImplCopyWith<$Res> {
   __$$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImplCopyWithImpl(
     _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImpl _value,
@@ -120,7 +117,7 @@ class __$$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
       ),
     );
   }
@@ -131,7 +128,7 @@ class __$$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImplCopyWithImpl<$Res>
 class _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImpl
     extends EnumWithGoodAndOpaqueTwinRustAsyncMoi_Good {
   const _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImpl(this.field0)
-    : super._();
+      : super._();
 
   @override
   final String field0;
@@ -158,12 +155,11 @@ class _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImpl
   @override
   @pragma('vm:prefer-inline')
   _$$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImplCopyWith<
-    _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImpl
-  >
-  get copyWith =>
-      __$$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImplCopyWithImpl<
-        _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImpl
-      >(this, _$identity);
+          _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImpl>
+      get copyWith =>
+          __$$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImplCopyWithImpl<
+                  _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -200,11 +196,10 @@ class _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(EnumWithGoodAndOpaqueTwinRustAsyncMoi_Good value)
-    good,
+        good,
     required TResult Function(
       EnumWithGoodAndOpaqueTwinRustAsyncMoi_Opaque value,
-    )
-    opaque,
+    ) opaque,
   }) {
     return good(this);
   }
@@ -214,7 +209,7 @@ class _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(EnumWithGoodAndOpaqueTwinRustAsyncMoi_Good value)? good,
     TResult? Function(EnumWithGoodAndOpaqueTwinRustAsyncMoi_Opaque value)?
-    opaque,
+        opaque,
   }) {
     return good?.call(this);
   }
@@ -224,7 +219,7 @@ class _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EnumWithGoodAndOpaqueTwinRustAsyncMoi_Good value)? good,
     TResult Function(EnumWithGoodAndOpaqueTwinRustAsyncMoi_Opaque value)?
-    opaque,
+        opaque,
     required TResult orElse(),
   }) {
     if (good != null) {
@@ -248,15 +243,13 @@ abstract class EnumWithGoodAndOpaqueTwinRustAsyncMoi_Good
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImplCopyWith<
-    _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImpl
-  >
-  get copyWith => throw _privateConstructorUsedError;
+          _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_GoodImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImplCopyWith<
-  $Res
-> {
+    $Res> {
   factory _$$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImplCopyWith(
     _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImpl value,
     $Res Function(_$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImpl) then,
@@ -267,11 +260,8 @@ abstract class _$$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImplCopyWith<
 
 /// @nodoc
 class __$$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImplCopyWithImpl<$Res>
-    extends
-        _$EnumWithGoodAndOpaqueTwinRustAsyncMoiCopyWithImpl<
-          $Res,
-          _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImpl
-        >
+    extends _$EnumWithGoodAndOpaqueTwinRustAsyncMoiCopyWithImpl<$Res,
+        _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImpl>
     implements
         _$$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImplCopyWith<$Res> {
   __$$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImplCopyWithImpl(
@@ -289,7 +279,7 @@ class __$$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                  as NonCloneSimpleTwinRustAsyncMoi,
+                as NonCloneSimpleTwinRustAsyncMoi,
       ),
     );
   }
@@ -300,7 +290,7 @@ class __$$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImplCopyWithImpl<$Res>
 class _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImpl
     extends EnumWithGoodAndOpaqueTwinRustAsyncMoi_Opaque {
   const _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImpl(this.field0)
-    : super._();
+      : super._();
 
   @override
   final NonCloneSimpleTwinRustAsyncMoi field0;
@@ -327,12 +317,11 @@ class _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImpl
   @override
   @pragma('vm:prefer-inline')
   _$$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImplCopyWith<
-    _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImpl
-  >
-  get copyWith =>
-      __$$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImplCopyWithImpl<
-        _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImpl
-      >(this, _$identity);
+          _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImpl>
+      get copyWith =>
+          __$$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImplCopyWithImpl<
+                  _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -369,11 +358,10 @@ class _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(EnumWithGoodAndOpaqueTwinRustAsyncMoi_Good value)
-    good,
+        good,
     required TResult Function(
       EnumWithGoodAndOpaqueTwinRustAsyncMoi_Opaque value,
-    )
-    opaque,
+    ) opaque,
   }) {
     return opaque(this);
   }
@@ -383,7 +371,7 @@ class _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(EnumWithGoodAndOpaqueTwinRustAsyncMoi_Good value)? good,
     TResult? Function(EnumWithGoodAndOpaqueTwinRustAsyncMoi_Opaque value)?
-    opaque,
+        opaque,
   }) {
     return opaque?.call(this);
   }
@@ -393,7 +381,7 @@ class _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EnumWithGoodAndOpaqueTwinRustAsyncMoi_Good value)? good,
     TResult Function(EnumWithGoodAndOpaqueTwinRustAsyncMoi_Opaque value)?
-    opaque,
+        opaque,
     required TResult orElse(),
   }) {
     if (opaque != null) {
@@ -417,7 +405,6 @@ abstract class EnumWithGoodAndOpaqueTwinRustAsyncMoi_Opaque
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImplCopyWith<
-    _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImpl
-  >
-  get copyWith => throw _privateConstructorUsedError;
+          _$EnumWithGoodAndOpaqueTwinRustAsyncMoi_OpaqueImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

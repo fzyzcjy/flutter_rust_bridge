@@ -21,34 +21,40 @@ mixin _$SimpleEnumTwinNormal {
   TResult when<TResult extends Object?>({
     required TResult Function() first,
     required TResult Function(String field0) second,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? first,
     TResult? Function(String field0)? second,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? first,
     TResult Function(String field0)? second,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SimpleEnumTwinNormal_First value) first,
     required TResult Function(SimpleEnumTwinNormal_Second value) second,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SimpleEnumTwinNormal_First value)? first,
     TResult? Function(SimpleEnumTwinNormal_Second value)? second,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SimpleEnumTwinNormal_First value)? first,
     TResult Function(SimpleEnumTwinNormal_Second value)? second,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -60,10 +66,8 @@ abstract class $SimpleEnumTwinNormalCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SimpleEnumTwinNormalCopyWithImpl<
-  $Res,
-  $Val extends SimpleEnumTwinNormal
->
+class _$SimpleEnumTwinNormalCopyWithImpl<$Res,
+        $Val extends SimpleEnumTwinNormal>
     implements $SimpleEnumTwinNormalCopyWith<$Res> {
   _$SimpleEnumTwinNormalCopyWithImpl(this._value, this._then);
 
@@ -86,11 +90,8 @@ abstract class _$$SimpleEnumTwinNormal_FirstImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$SimpleEnumTwinNormal_FirstImplCopyWithImpl<$Res>
-    extends
-        _$SimpleEnumTwinNormalCopyWithImpl<
-          $Res,
-          _$SimpleEnumTwinNormal_FirstImpl
-        >
+    extends _$SimpleEnumTwinNormalCopyWithImpl<$Res,
+        _$SimpleEnumTwinNormal_FirstImpl>
     implements _$$SimpleEnumTwinNormal_FirstImplCopyWith<$Res> {
   __$$SimpleEnumTwinNormal_FirstImplCopyWithImpl(
     _$SimpleEnumTwinNormal_FirstImpl _value,
@@ -201,11 +202,8 @@ abstract class _$$SimpleEnumTwinNormal_SecondImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$SimpleEnumTwinNormal_SecondImplCopyWithImpl<$Res>
-    extends
-        _$SimpleEnumTwinNormalCopyWithImpl<
-          $Res,
-          _$SimpleEnumTwinNormal_SecondImpl
-        >
+    extends _$SimpleEnumTwinNormalCopyWithImpl<$Res,
+        _$SimpleEnumTwinNormal_SecondImpl>
     implements _$$SimpleEnumTwinNormal_SecondImplCopyWith<$Res> {
   __$$SimpleEnumTwinNormal_SecondImplCopyWithImpl(
     _$SimpleEnumTwinNormal_SecondImpl _value,
@@ -222,7 +220,7 @@ class __$$SimpleEnumTwinNormal_SecondImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
       ),
     );
   }
@@ -258,10 +256,8 @@ class _$SimpleEnumTwinNormal_SecondImpl extends SimpleEnumTwinNormal_Second {
   @override
   @pragma('vm:prefer-inline')
   _$$SimpleEnumTwinNormal_SecondImplCopyWith<_$SimpleEnumTwinNormal_SecondImpl>
-  get copyWith =>
-      __$$SimpleEnumTwinNormal_SecondImplCopyWithImpl<
-        _$SimpleEnumTwinNormal_SecondImpl
-      >(this, _$identity);
+      get copyWith => __$$SimpleEnumTwinNormal_SecondImplCopyWithImpl<
+          _$SimpleEnumTwinNormal_SecondImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -337,5 +333,5 @@ abstract class SimpleEnumTwinNormal_Second extends SimpleEnumTwinNormal {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SimpleEnumTwinNormal_SecondImplCopyWith<_$SimpleEnumTwinNormal_SecondImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }
