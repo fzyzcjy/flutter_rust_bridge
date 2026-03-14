@@ -509,9 +509,9 @@ Future<void> testDartValgrind(TestDartConfig config) async {
     _dartValgrindCargoBuildCommand(config.package),
     relativePwd: _dartValgrindRustPackageDirectory(config.package),
   );
-  Directory(
-    _dartValgrindOutputDirectory(config.package),
-  ).createSync(recursive: true);
+  Directory(_dartValgrindOutputDirectory(config.package)).createSync(
+    recursive: true,
+  );
 
   await exec(_dartValgrindCompileCommand(), relativePwd: config.package);
 
