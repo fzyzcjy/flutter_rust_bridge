@@ -76,3 +76,11 @@ Launch a separate subagent after finishing the changelog draft.
 - Ask the subagent to compare that list against `CHANGELOG.md`.
 - Ask the subagent to report missing PRs, suspicious duplicates, and formatting inconsistencies.
 - Apply any confirmed fixes, then re-check the final diff.
+
+## Step 8: Ask the user to review ordering
+
+Tell the user the changelog draft is complete and ask for a manual review.
+
+- Ask the user to review the wording.
+- Ask the user to review the ordering of entries.
+- Adjust the ordering if the user wants a different presentation from the mechanically collected order.
