@@ -3,9 +3,10 @@ use crate::misc::panic_backtrace::PanicBacktrace;
 /// Setup defaults that is usually useful for a new project.
 /// Surely, you are free to customize everything.
 pub fn setup_default_user_utils() {
-    // setup log before others, such that we can see logs in other setup functions
     #[cfg(feature = "log")]
-    setup_log_to_console(log::LevelFilter::Trace);
+    setup_default_user_utils_with_log_level(log::LevelFilter::Trace);
+
+    #[cfg(not(feature = "log"))]
     setup_backtrace();
 }
 
