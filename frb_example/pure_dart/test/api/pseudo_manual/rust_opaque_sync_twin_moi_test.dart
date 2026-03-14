@@ -7,9 +7,11 @@
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/rust_opaque_twin_moi.dart';
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/rust_opaque_sync_twin_moi.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
+import 'package:flutter_rust_bridge/src/consts.dart' show kIsWeb;
 import 'package:test/test.dart';
 
 Future<void> main({bool skipRustLibInit = false}) async {
+  if (kIsWeb) return;
   if (!skipRustLibInit) await RustLib.init();
 
   test('create', () {

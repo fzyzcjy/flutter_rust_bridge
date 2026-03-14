@@ -26,7 +26,7 @@ class DartGenerator extends BaseGenerator {
 
   @override
   String generateDuplicateCode(String inputText, DuplicatorMode mode) {
-    return inputText
+    var ans = inputText
         // imports
         .replaceAllMapped(
           RegExp(r'src/rust/api/(pseudo_manual/)?(\w+)\.dart'),
@@ -35,6 +35,21 @@ class DartGenerator extends BaseGenerator {
         .replaceAll("'../test_utils.dart'", "'../../test_utils.dart'")
         // function call, struct name, etc
         .replaceAll('TwinNormal', ReCase(mode.postfix).pascalCase);
+
+    if (mode.components.contains(DuplicatorComponentMode.moi)) {
+      ans = ans.replaceFirst(
+        "import 'package:test/test.dart';\n",
+        "import 'package:flutter_rust_bridge/src/consts.dart' show kIsWeb;\n"
+        "import 'package:test/test.dart';\n",
+      );
+      ans = ans.replaceFirst(
+        'Future<void> main({bool skipRustLibInit = false}) async {\n',
+        'Future<void> main({bool skipRustLibInit = false}) async {\n'
+        "  if (kIsWeb) return;\n",
+      );
+    }
+
+    return ans;
   }
 
   @override
