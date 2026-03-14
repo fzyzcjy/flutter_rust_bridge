@@ -42,7 +42,14 @@ When asking for human input, provide enough context for each contributor:
 
 The point of this pause is to let a human decide the custom message text that will appear in `README.md`.
 
-Do not continue to regeneration until the `TODO` entries have been replaced by human-written descriptions.
+This stop is mandatory.
+
+- Do not continue to Step 3 or any later step in this skill until the human has replaced every `TODO`.
+- Do not run contributor generation.
+- Do not post all-contributors comments.
+- Do not resolve or merge contributor PRs.
+
+Only resume after the human-written descriptions are present in `.all-contributors-custom.yaml`.
 
 ## Step 3: Trigger all-contributors
 
