@@ -65,25 +65,19 @@ Future<void> main({bool skipRustLibInit = false}) async {
       );
     });
 
-    addTestsErrorFunctionCall(
-        customNestedErrorReturnErrorTwinSync,
-        [
-          const CustomNestedErrorOuterTwinSync.one('hello'),
-          const CustomNestedErrorOuterTwinSync.two(
-            CustomNestedErrorInnerTwinSync.three('hello'),
-          ),
-          const CustomNestedErrorOuterTwinSync.two(
-            CustomNestedErrorInnerTwinSync.four(42),
-          ),
-        ],
-        equals);
+    addTestsErrorFunctionCall(customNestedErrorReturnErrorTwinSync, [
+      const CustomNestedErrorOuterTwinSync.one('hello'),
+      const CustomNestedErrorOuterTwinSync.two(
+        CustomNestedErrorInnerTwinSync.three('hello'),
+      ),
+      const CustomNestedErrorOuterTwinSync.two(
+        CustomNestedErrorInnerTwinSync.four(42),
+      ),
+    ], equals);
 
-    addTestsErrorFunctionCall(
-        customStructErrorReturnErrorTwinSync,
-        [
-          const CustomStructErrorTwinSync(a: 'hello'),
-        ],
-        equals);
+    addTestsErrorFunctionCall(customStructErrorReturnErrorTwinSync, [
+      const CustomStructErrorTwinSync(a: 'hello'),
+    ], equals);
   });
 
   group('example-based tests', () {
