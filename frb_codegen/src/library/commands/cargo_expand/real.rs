@@ -195,13 +195,7 @@ mod tests {
             .collect::<Vec<_>>();
         assert_eq!(
             args,
-            vec![
-                "install",
-                "cargo-expand",
-                "--version",
-                "1.0.112",
-                "--locked",
-            ]
+            vec!["install", "cargo-expand", "--version", "1.0.112", "--locked"]
         );
     }
 }
