@@ -505,6 +505,9 @@ Future<void> testDartWeb(TestDartConfig config) async {
 Future<void> testDartValgrind(TestDartConfig config) async {
   await exec('sudo apt install -y valgrind');
   await runPubGetIfNotRunYet(config.package);
+  Directory(_dartValgrindOutputDirectory(config.package)).createSync(
+    recursive: true,
+  );
 
   await exec(_dartValgrindCompileCommand(), relativePwd: config.package);
 
@@ -532,7 +535,16 @@ Future<void> testDartValgrind(TestDartConfig config) async {
 String _dartValgrindCompileCommand() {
   return 'dart compile exe '
       'test/dart_valgrind_test_entrypoint.dart '
-      '-o build/valgrind_test_output/dart_valgrind_test_entrypoint.exe';
+      '-o ${_dartValgrindOutputExecutablePath()}';
+}
+
+@visibleForTesting
+String _dartValgrindOutputDirectory(String package) {
+  return '${exec.pwd}$package/build/valgrind_test_output';
+}
+
+String _dartValgrindOutputExecutablePath() {
+  return 'build/valgrind_test_output/dart_valgrind_test_entrypoint.exe';
 }
 
 @visibleForTesting

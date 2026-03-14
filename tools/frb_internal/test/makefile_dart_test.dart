@@ -9,6 +9,13 @@ void main() {
     );
   });
 
+  test('dart valgrind output directory matches package build directory', () {
+    expect(
+      _dartValgrindOutputDirectory('frb_example/pure_dart'),
+      '${exec.pwd}frb_example/pure_dart/build/valgrind_test_output',
+    );
+  });
+
   group('test checkValgrindOutput', () {
     test('good', () {
       checkValgrindOutput('''
