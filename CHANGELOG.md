@@ -12,6 +12,7 @@
 * Add upgrade notice to V1 documentation pages #2984
 * Add DevContainer and Dockerfile #2981
 * Regenerate tests (continued) #2982
+* Regenerate tests #2973 (thanks @TrackerSB)
 * Added suggestion to update cargo in troubleshooting.md #2955 (thanks @dgasparri)
 * Bump CI GitHub runner images #2951
 * Fix unhandled error in dart_fn_handle_output when sending message #2941 (thanks @khangah)
