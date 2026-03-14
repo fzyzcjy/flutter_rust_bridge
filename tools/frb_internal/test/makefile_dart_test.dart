@@ -16,6 +16,20 @@ void main() {
     );
   });
 
+  test('dart valgrind builds release rust library for pure dart package', () {
+    expect(
+      _dartValgrindCargoBuildCommand('frb_example/pure_dart'),
+      'cargo build --release --features internal_feature_for_testing',
+    );
+  });
+
+  test('dart valgrind native lib directory points to rust target release', () {
+    expect(
+      _dartValgrindRustNativeLibDirectory('frb_example/dart_minimal'),
+      '${exec.pwd}frb_example/dart_minimal/rust/target/release',
+    );
+  });
+
   group('test checkValgrindOutput', () {
     test('good', () {
       checkValgrindOutput('''

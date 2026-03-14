@@ -132,12 +132,7 @@ fn run_raw(
 }
 
 fn install_cargo_expand() -> Result<()> {
-    let latest = execute_command(
-        "cargo",
-        &vec!["install".into(), "cargo-expand".into()],
-        None,
-        None,
-    )?;
+    let latest = execute_command("cargo", &cargo_expand_install_args(None), None, None)?;
     if latest.status.success() {
         return Ok(());
     }
@@ -149,12 +144,7 @@ fn install_cargo_expand() -> Result<()> {
         );
         let fallback = execute_command(
             "cargo",
-            &vec![
-                "install".into(),
-                "cargo-expand".into(),
-                "--version".into(),
-                version.into(),
-            ],
+            &cargo_expand_install_args(Some(version)),
             None,
             None,
         )?;
@@ -172,9 +162,17 @@ fn cargo_expand_fallback_version(stderr: &str) -> Option<&'static str> {
         .then_some(CARGO_EXPAND_FALLBACK_VERSION)
 }
 
+fn cargo_expand_install_args(version: Option<&str>) -> Vec<PathBuf> {
+    let mut args = command_args!("install", "cargo-expand");
+    if let Some(version) = version {
+        args.extend(command_args!("--version", version, "--locked"));
+    }
+    args
+}
+
 #[cfg(test)]
 mod tests {
-    use super::cargo_expand_fallback_version;
+    use super::{cargo_expand_fallback_version, cargo_expand_install_args};
 
     #[test]
     fn test_cargo_expand_fallback_version_when_latest_requires_newer_rustc() {
@@ -186,6 +184,19 @@ mod tests {
     #[test]
     fn test_cargo_expand_fallback_version_when_error_is_unrelated() {
         assert_eq!(cargo_expand_fallback_version("network timeout"), None);
+    }
+
+    #[test]
+    fn test_cargo_expand_install_args_for_fallback_uses_locked() {
+        let args = cargo_expand_install_args(Some("1.0.118"));
+        let args = args
+            .into_iter()
+            .map(|item| item.into_os_string().into_string().unwrap())
+            .collect::<Vec<_>>();
+        assert_eq!(
+            args,
+            vec!["install", "cargo-expand", "--version", "1.0.118", "--locked"]
+        );
     }
 }
 

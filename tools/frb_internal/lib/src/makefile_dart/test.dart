@@ -505,6 +505,10 @@ Future<void> testDartWeb(TestDartConfig config) async {
 Future<void> testDartValgrind(TestDartConfig config) async {
   await exec('sudo apt install -y valgrind');
   await runPubGetIfNotRunYet(config.package);
+  await exec(
+    _dartValgrindCargoBuildCommand(config.package),
+    relativePwd: _dartValgrindRustPackageDirectory(config.package),
+  );
   Directory(_dartValgrindOutputDirectory(config.package)).createSync(
     recursive: true,
   );
@@ -525,7 +529,11 @@ Future<void> testDartValgrind(TestDartConfig config) async {
     '$valgrindCommand build/valgrind_test_output/dart_valgrind_test_entrypoint.exe',
     relativePwd: config.package,
     checkExitCode: false,
-    extraEnv: kEnvEnableRustBacktrace,
+    extraEnv: {
+      ...kEnvEnableRustBacktrace,
+      'FRB_DART_LOAD_EXTERNAL_LIBRARY_NATIVE_LIB_DIR':
+          _dartValgrindRustNativeLibDirectory(config.package),
+    },
   );
 
   checkValgrindOutput(output.stdout);
@@ -541,6 +549,22 @@ String _dartValgrindCompileCommand() {
 @visibleForTesting
 String _dartValgrindOutputDirectory(String package) {
   return '${exec.pwd}$package/build/valgrind_test_output';
+}
+
+@visibleForTesting
+String _dartValgrindCargoBuildCommand(String package) {
+  final feature = getRustFeaturesOfPackage(package);
+  return 'cargo build --release ${feature != null ? "--features $feature" : ""}'
+      .trim();
+}
+
+String _dartValgrindRustPackageDirectory(String package) {
+  return '$package/rust';
+}
+
+@visibleForTesting
+String _dartValgrindRustNativeLibDirectory(String package) {
+  return '${exec.pwd}${_dartValgrindRustPackageDirectory(package)}/target/release';
 }
 
 String _dartValgrindOutputExecutablePath() {
