@@ -5,7 +5,7 @@
 
 version:
   revision: "d8a9f9a52e5af486f80d932e838ee93861ffd863"
-  channel: "[user-branch]"
+  channel: "stable"
 
 project_type: app
 
@@ -16,6 +16,9 @@ migration:
       create_revision: d8a9f9a52e5af486f80d932e838ee93861ffd863
       base_revision: d8a9f9a52e5af486f80d932e838ee93861ffd863
     - platform: android
+      create_revision: d8a9f9a52e5af486f80d932e838ee93861ffd863
+      base_revision: d8a9f9a52e5af486f80d932e838ee93861ffd863
+    - platform: ios
       create_revision: d8a9f9a52e5af486f80d932e838ee93861ffd863
       base_revision: d8a9f9a52e5af486f80d932e838ee93861ffd863
     - platform: linux
