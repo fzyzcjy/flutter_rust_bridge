@@ -84,6 +84,18 @@ CI shows the command it ran. Run the same command:
 
 - Investigating root cause when a simple re-run would work
 - Not trying `git apply` first when CI provides a diff
+- Fixing many new downstream test/build failures one by one after accepting generated changes, when CI previously failed mainly in `Generate`
+
+## Special Diagnosis Rule
+
+If CI previously failed mainly in `Generate` while other jobs passed, and after accepting generated changes additional non-`Generate` jobs start failing, treat this as strong evidence that the accepted generated outputs are incorrect or incomplete.
+
+In that situation:
+
+- Do not continue fixing downstream failures one by one first
+- First validate the generation logic or generation workflow
+- Re-generate from a clean environment
+- Only accept generated outputs after confirming they do not introduce new non-`Generate` regressions
 
 ## Related Skills
 

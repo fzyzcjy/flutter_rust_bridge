@@ -13,6 +13,8 @@ flutter_rust_bridge requires code generation when Rust APIs change. This skill m
 
 **Core principle:** Run only the generation commands needed for your change type.
 
+**Validation rule:** If regenerated outputs cause previously green non-`Generate` jobs to fail, treat the generated outputs as suspect until they are validated from a clean environment.
+
 > **After codegen:** Check your user-level `remote-testing` rules. If codegen was run remotely, pull changes back to local.
 
 ## Quick Reference
