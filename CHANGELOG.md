@@ -28,6 +28,7 @@
 * Add upgrade notice to V1 documentation pages #2984
 * Upgrade versions and CI #2951 #2934 #2810 #2918 #2932 #2811
 * Update troubleshooting.md #2806
+* Create docker image for development #3025
 
 ## 2.11.1
 
