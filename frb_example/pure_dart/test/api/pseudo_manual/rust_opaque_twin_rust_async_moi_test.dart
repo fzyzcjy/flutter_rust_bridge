@@ -176,8 +176,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('opaque field', () async {
     var data = await createNestedOpaqueTwinRustAsyncMoi();
     await futurizeVoidTwinRustAsyncMoi(
-      runNestedOpaqueTwinRustAsyncMoi(opaque: data),
-    );
+        runNestedOpaqueTwinRustAsyncMoi(opaque: data));
 
     expect(
       await runOpaqueTwinRustAsyncMoi(opaque: data.first),
@@ -224,8 +223,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('array', () async {
     var data = await opaqueArrayTwinRustAsyncMoi();
     await futurizeVoidTwinRustAsyncMoi(
-      opaqueArrayRunTwinRustAsyncMoi(data: data),
-    );
+        opaqueArrayRunTwinRustAsyncMoi(data: data));
     data[0].dispose();
 
     expect(
@@ -249,8 +247,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('vec', () async {
     var data = await opaqueVecTwinRustAsyncMoi();
     await futurizeVoidTwinRustAsyncMoi(
-      opaqueVecRunTwinRustAsyncMoi(data: data),
-    );
+        opaqueVecRunTwinRustAsyncMoi(data: data));
     data[0].dispose();
 
     expect(
