@@ -21,7 +21,30 @@ Important:
 - If the task is about `new contributor PR`s, use the contributor's first PR only.
 - If the contributor already exists in `.all-contributorsrc` or `README.md`, do not expect a new all-contributors PR to be created.
 
-## Step 2: Trigger all-contributors
+## Step 2: Prepare `.all-contributors-custom.yaml` and stop for human input
+
+Before regenerating contributor artifacts, append each new contributor to the end of `.all-contributors-custom.yaml`:
+
+```yaml
+- <username>: TODO
+```
+
+Do this only for contributors who are not already present in `.all-contributors-custom.yaml`.
+
+Then stop and hand the task to a human. The human must replace each `TODO` with a concise contribution summary.
+
+When asking for human input, provide enough context for each contributor:
+
+- GitHub username
+- Chosen source PR URL
+- Chosen source PR title
+- Whether this is the contributor's first PR or one of several PRs
+
+The point of this pause is to let a human decide the custom message text that will appear in `README.md`.
+
+Do not continue to regeneration until the `TODO` entries have been replaced by human-written descriptions.
+
+## Step 3: Trigger all-contributors
 
 Post the comment on the chosen source PR:
 
@@ -34,7 +57,7 @@ Then inspect the bot response on that PR.
 - If the bot says the user already contributed before, stop there for that user.
 - Otherwise, wait for the bot to open a PR named `docs: add <username> as a contributor for code`.
 
-## Step 3: Validate contributor metadata
+## Step 4: Validate contributor metadata
 
 When a contributor PR exists, check the generated contributor data before merging.
 
@@ -49,9 +72,9 @@ Required validation:
 - If the generated homepage is `http://`, change it to `https://` if the site supports it.
 - If the personal site does not support `https://`, prefer the contributor's GitHub profile URL instead of keeping `http://`.
 
-## Step 4: Regenerate contributor output
+## Step 5: Regenerate contributor output
 
-If you manually edit contributor metadata, regenerate the contributor artifacts instead of hand-editing `README.md`.
+After the human has replaced all `TODO` messages, regenerate the contributor artifacts instead of hand-editing `README.md`.
 
 Use:
 
@@ -71,7 +94,7 @@ If you only need to refresh the website copy of the README, use:
 ./frb_internal generate-internal-readme
 ```
 
-## Step 5: Resolve merge conflicts in contributor PRs
+## Step 6: Resolve merge conflicts in contributor PRs
 
 These PRs usually conflict only in:
 
@@ -91,13 +114,13 @@ If the merge conflicts:
 1. Keep the latest `origin/master` content.
 2. Re-apply the contributor entry from the bot branch.
 3. Ensure the contributor card remains present in `README.md`.
-4. Re-run `./frb_internal generate-internal-contributor` if you edited contributor metadata.
+4. Re-run `./frb_internal generate-internal-contributor` if you edited contributor metadata or finished filling in `.all-contributors-custom.yaml`.
 5. `git add` the resolved files and commit the merge.
 6. Push the contributor branch back to origin.
 
 Do not revert unrelated contributor entries that were merged by other PRs.
 
-## Step 6: Merge the contributor PRs
+## Step 7: Merge the contributor PRs
 
 After the branch is updated and GitHub reports it mergeable:
 
@@ -111,7 +134,7 @@ Notes:
 - If that happens, wait briefly, re-check the PR state, and retry the merge.
 - After merging one contributor PR, fetch `origin/master` again before resolving the next one.
 
-## Step 7: Final verification
+## Step 8: Final verification
 
 At the end, verify there are no remaining open all-contributors PRs:
 
