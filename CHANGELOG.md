@@ -1,5 +1,42 @@
 # Changelog
 
+## 2.12.0
+
+* Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
+* Fix web build with latest wasm-bindgen/js-sys versions #3010
+* Revise troubleshooting steps for Cargokit and Flutter #2994 (thanks @liruohrh)
+* Add back web platform codecov #2988
+* Update PR template and tips #2989
+* Add web test support to skills and Dockerfile #2986
+* Add Claude skills and enhance development guidance #2983
+* Add upgrade notice to V1 documentation pages #2984
+* Add DevContainer and Dockerfile #2981
+* Regenerate tests (continued) #2982
+* Added suggestion to update cargo in troubleshooting.md #2955 (thanks @dgasparri)
+* Bump CI GitHub runner images #2951
+* Fix unhandled error in dart_fn_handle_output when sending message #2941 (thanks @khangah)
+* Use `Vec::with_capacity` instead of `vec![]` in SSE vector decode #2926 (thanks @Shadowcat650)
+* Fix CI #2934
+* Remove lock bot #2932
+* Bump Rust version in CI #2918
+* Fix Windows 10 `flutter_rust_bridge_codegen build-web` failure #2906 (thanks @marcmcd)
+* Add encoded types DCO support #2905 (thanks @SilverMira)
+* Support multiple flutter_rust_bridge packages on web #2903 (thanks @dt-iohk)
+* Add support for optional publish tag in release workflow #2877 (thanks @h3x4d3c1m4l)
+* Add resolution in yaml struct and workspace root resolution logic #2872 (thanks @AadamZ5)
+* Update actions versions of all workflows #2876 (thanks @h3x4d3c1m4l)
+* Support having a different crate name than the Flutter plugin #2859 (thanks @NathanKolbas)
+* Update GitHub CI workflow to use new iOS simulators #2866 (thanks @NathanKolbas)
+* docs: add ethicnology as a contributor for code #2842
+* Use `fvm install` to prevent `flutter_rust_bridge_codegen generate` from hanging #2834 (thanks @ethicnology)
+* Run scheduled CIs only when the repo owner is correct #2817 (thanks @AlexV525)
+* Bump tokio from 1.34.0 to 1.46.1 in `/frb_example/rust_ui_counter` #2811
+* Bump CI Rust version #2810
+* Check for target dependencies when auto upgrading in codegen #2805 (thanks @turtletongue)
+* Update troubleshooting.md #2806
+* docs: add xuxiaocheng0201 as a contributor for code #2800
+* Add `no_dart_fix`, `no_dart_format` and `no_write_lib` to `flutter_rust_bridge_codegen integrate` #2790 (thanks @xuxiaocheng0201)
+
 ## 2.11.1
 
 * Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/guides/miscellaneous/whats-new for what's changed in V2.
