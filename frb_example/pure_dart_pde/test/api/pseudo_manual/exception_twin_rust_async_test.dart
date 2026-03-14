@@ -193,14 +193,16 @@ Future<void> main({bool skipRustLibInit = false}) async {
         );
       });
 
-      test('Throw CustomError static method, verifies implements Frb',
-          () async {
-        await expectLater(
-          () async =>
-              SomeStructTwinRustAsync.staticReturnErrCustomErrorTwinRustAsync(),
-          throwsA(isA<FrbException>()),
-        );
-      });
+      test(
+        'Throw CustomError static method, verifies implements Frb',
+        () async {
+          await expectLater(
+            () async => SomeStructTwinRustAsync
+                .staticReturnErrCustomErrorTwinRustAsync(),
+            throwsA(isA<FrbException>()),
+          );
+        },
+      );
 
       test('Do not throw CustomError static method', () async {
         expect(

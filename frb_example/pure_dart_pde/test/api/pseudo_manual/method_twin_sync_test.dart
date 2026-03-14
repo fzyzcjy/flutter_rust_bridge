@@ -27,9 +27,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     );
     expect(staticConcatenated, equals("hello world"));
 
-    final concatenatedConstructor = await ConcatenateWithTwinSync.newTwinSync(
-      a: "hello ",
-    );
+    final concatenatedConstructor =
+        await ConcatenateWithTwinSync.newTwinSync(a: "hello ");
     final String concatenated2 =
         await concatenatedConstructor.concatenateTwinSync(b: "world");
     expect(concatenated2, equals("hello world"));

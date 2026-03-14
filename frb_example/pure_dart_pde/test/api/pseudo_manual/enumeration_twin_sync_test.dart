@@ -53,7 +53,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     test('dart call handleEnumParameter', () async {
       expect(
-        await handleEnumParameterTwinSync(weekday: WeekdaysTwinSync.saturday),
+        await handleEnumParameterTwinSync(
+          weekday: WeekdaysTwinSync.saturday,
+        ),
         WeekdaysTwinSync.saturday,
       );
     });
@@ -93,7 +95,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
       );
       expect(
         await handleEnumStructTwinSync(
-          val: const KitchenSinkTwinSync.nested(0, KitchenSinkTwinSync.empty()),
+          val: const KitchenSinkTwinSync.nested(
+            0,
+            KitchenSinkTwinSync.empty(),
+          ),
         ),
         const KitchenSinkTwinSync.nested(1, KitchenSinkTwinSync.empty()),
       );
