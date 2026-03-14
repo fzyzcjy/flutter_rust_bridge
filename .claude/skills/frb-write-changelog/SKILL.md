@@ -85,3 +85,12 @@ Tell the user the changelog draft is complete and ask for a manual review.
 - Ask the user to review the wording.
 - Ask the user to review the ordering of entries.
 - Adjust the ordering if the user wants a different presentation from the mechanically collected order.
+
+## Step 9: Re-verify after human edits
+
+Launch a separate subagent after the user finishes manual edits.
+
+- Ask the subagent to independently inspect the final `CHANGELOG.md`.
+- Ask the subagent to compare the final text against the merged PR list for the same release range.
+- Ask the subagent to specifically report any missing PR numbers.
+- Apply any confirmed fixes, then do one final diff check.
