@@ -7,6 +7,7 @@ import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
+import 'package:flutter_rust_bridge_internal/src/utils/execute_process.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/misc_utils.dart';
 import 'package:yaml/yaml.dart';
@@ -59,7 +60,7 @@ Future<void> lintRust(LintConfig config) async {
 Future<void> lintRustFormat(LintConfig config) async {
   for (final package in kRustPackages) {
     await exec(
-      'cargo +nightly fmt ${config.fix ? "" : "--check"}',
+      'cargo +$kPinnedRustfmtNightly fmt ${config.fix ? "" : "--check"}',
       relativePwd: package,
     );
   }
