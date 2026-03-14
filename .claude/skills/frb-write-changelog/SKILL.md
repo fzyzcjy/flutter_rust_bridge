@@ -26,29 +26,23 @@ Use that tag as the lower bound for the new changelog entry.
 
 ## Step 3: Collect merged PRs
 
-Use Git history as the source of truth.
-
-```bash
-git log --merges --first-parent --format='%s' vX.Y.Z..HEAD
-```
-
-Resolve PR metadata with GitHub CLI.
+Use GitHub CLI to collect merged PRs after the previous version.
 
 ```bash
 gh pr list --state merged --limit 200 --json number,title,author,mergedAt,baseRefName,url
 gh pr view <number> --json number,title,author,url
 ```
 
-Do not use `gh pr list` alone to define the release range.
+Use the previous version as the lower bound when deciding which merged PRs belong to the target release.
 
 ## Step 4: Filter and normalize
 
-Keep only PRs that were merged into `master` in the release range.
+Keep all PRs in merged status that belong to the release range.
 
 - Exclude unmerged PRs.
 - Exclude PRs outside the release range.
-- Exclude branch-only PRs that did not land on `master`.
-- Keep docs, CI, and chore PRs if they landed in the range.
+- Do not filter by target branch.
+- Keep docs, CI, and chore PRs if they are merged in the range.
 
 Normalize titles before writing.
 
