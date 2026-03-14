@@ -26,12 +26,7 @@
 * Add web test support to skills and Dockerfile #2986
 * Add Claude skills and enhance development guidance #2983
 * Add upgrade notice to V1 documentation pages #2984
-* Bump CI GitHub runner images #2951
-* Fix CI #2934
-* Remove lock bot #2932
-* Bump Rust version in CI #2918
-* Bump tokio from 1.34.0 to 1.46.1 in `/frb_example/rust_ui_counter` #2811
-* Bump CI Rust version #2810
+* Upgrade versions and CI #2951 #2934 #2810 #2918 #2932 #2811
 * Update troubleshooting.md #2806
 
 ## 2.11.1
