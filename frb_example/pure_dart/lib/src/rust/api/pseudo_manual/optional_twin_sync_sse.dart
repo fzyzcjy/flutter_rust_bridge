@@ -12,60 +12,66 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `fmt`, `fmt`, `fmt`
 
-double? handleOptionalReturnTwinSyncSse(
-        {required double left, required double right}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSyncSseHandleOptionalReturnTwinSyncSse(
-            left: left, right: right);
+double? handleOptionalReturnTwinSyncSse({
+  required double left,
+  required double right,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinSyncSseHandleOptionalReturnTwinSyncSse(
+      left: left,
+      right: right,
+    );
 
 ElementTwinSyncSse? handleOptionalStructTwinSyncSse({String? document}) =>
     RustLib.instance.api
         .crateApiPseudoManualOptionalTwinSyncSseHandleOptionalStructTwinSyncSse(
-            document: document);
+          document: document,
+        );
 
-ExoticOptionalsTwinSyncSse? handleOptionalIncrementTwinSyncSse(
-        {ExoticOptionalsTwinSyncSse? opt}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSyncSseHandleOptionalIncrementTwinSyncSse(
-            opt: opt);
+ExoticOptionalsTwinSyncSse? handleOptionalIncrementTwinSyncSse({
+  ExoticOptionalsTwinSyncSse? opt,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinSyncSseHandleOptionalIncrementTwinSyncSse(
+      opt: opt,
+    );
 
 double handleIncrementBoxedOptionalTwinSyncSse({double? opt}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualOptionalTwinSyncSseHandleIncrementBoxedOptionalTwinSyncSse(
-        opt: opt);
+      opt: opt,
+    );
 
-OptVecsTwinSyncSse handleVecOfOptsTwinSyncSse(
-        {required OptVecsTwinSyncSse opt}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSyncSseHandleVecOfOptsTwinSyncSse(
-            opt: opt);
+OptVecsTwinSyncSse handleVecOfOptsTwinSyncSse({
+  required OptVecsTwinSyncSse opt,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinSyncSseHandleVecOfOptsTwinSyncSse(
+      opt: opt,
+    );
 
-String handleOptionBoxArgumentsTwinSyncSse(
-        {int? i8Box,
-        int? u8Box,
-        int? i32Box,
-        PlatformInt64? i64Box,
-        double? f64Box,
-        bool? boolbox,
-        ExoticOptionalsTwinSyncSse? structbox}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSyncSseHandleOptionBoxArgumentsTwinSyncSse(
-            i8Box: i8Box,
-            u8Box: u8Box,
-            i32Box: i32Box,
-            i64Box: i64Box,
-            f64Box: f64Box,
-            boolbox: boolbox,
-            structbox: structbox);
+String handleOptionBoxArgumentsTwinSyncSse({
+  int? i8Box,
+  int? u8Box,
+  int? i32Box,
+  PlatformInt64? i64Box,
+  double? f64Box,
+  bool? boolbox,
+  ExoticOptionalsTwinSyncSse? structbox,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinSyncSseHandleOptionBoxArgumentsTwinSyncSse(
+      i8Box: i8Box,
+      u8Box: u8Box,
+      i32Box: i32Box,
+      i64Box: i64Box,
+      f64Box: f64Box,
+      boolbox: boolbox,
+      structbox: structbox,
+    );
 
 class AttributeTwinSyncSse {
   final String key;
   final String value;
 
-  const AttributeTwinSyncSse({
-    required this.key,
-    required this.value,
-  });
+  const AttributeTwinSyncSse({required this.key, required this.value});
 
   @override
   int get hashCode => key.hashCode ^ value.hashCode;

@@ -24,16 +24,14 @@ mixin _$AbcTwinSyncSse {
     required TResult Function(BTwinSyncSse field0) b,
     required TResult Function(CTwinSyncSse field0) c,
     required TResult Function(int field0) justInt,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ATwinSyncSse field0)? a,
     TResult? Function(BTwinSyncSse field0)? b,
     TResult? Function(CTwinSyncSse field0)? c,
     TResult? Function(int field0)? justInt,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ATwinSyncSse field0)? a,
@@ -41,24 +39,21 @@ mixin _$AbcTwinSyncSse {
     TResult Function(CTwinSyncSse field0)? c,
     TResult Function(int field0)? justInt,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AbcTwinSyncSse_A value) a,
     required TResult Function(AbcTwinSyncSse_B value) b,
     required TResult Function(AbcTwinSyncSse_C value) c,
     required TResult Function(AbcTwinSyncSse_JustInt value) justInt,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AbcTwinSyncSse_A value)? a,
     TResult? Function(AbcTwinSyncSse_B value)? b,
     TResult? Function(AbcTwinSyncSse_C value)? c,
     TResult? Function(AbcTwinSyncSse_JustInt value)? justInt,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AbcTwinSyncSse_A value)? a,
@@ -66,8 +61,7 @@ mixin _$AbcTwinSyncSse {
     TResult Function(AbcTwinSyncSse_C value)? c,
     TResult Function(AbcTwinSyncSse_JustInt value)? justInt,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -121,7 +115,7 @@ class __$$AbcTwinSyncSse_AImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                as ATwinSyncSse,
+                  as ATwinSyncSse,
       ),
     );
   }
@@ -281,7 +275,7 @@ class __$$AbcTwinSyncSse_BImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                as BTwinSyncSse,
+                  as BTwinSyncSse,
       ),
     );
   }
@@ -441,7 +435,7 @@ class __$$AbcTwinSyncSse_CImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                as CTwinSyncSse,
+                  as CTwinSyncSse,
       ),
     );
   }
@@ -601,7 +595,7 @@ class __$$AbcTwinSyncSse_JustIntImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                as int,
+                  as int,
       ),
     );
   }
@@ -637,11 +631,11 @@ class _$AbcTwinSyncSse_JustIntImpl extends AbcTwinSyncSse_JustInt {
   @override
   @pragma('vm:prefer-inline')
   _$$AbcTwinSyncSse_JustIntImplCopyWith<_$AbcTwinSyncSse_JustIntImpl>
-      get copyWith => __$$AbcTwinSyncSse_JustIntImplCopyWithImpl<
-              _$AbcTwinSyncSse_JustIntImpl>(
-            this,
-            _$identity,
-          );
+  get copyWith =>
+      __$$AbcTwinSyncSse_JustIntImplCopyWithImpl<_$AbcTwinSyncSse_JustIntImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -730,5 +724,5 @@ abstract class AbcTwinSyncSse_JustInt extends AbcTwinSyncSse {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AbcTwinSyncSse_JustIntImplCopyWith<_$AbcTwinSyncSse_JustIntImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }

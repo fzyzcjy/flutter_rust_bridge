@@ -9,18 +9,21 @@ import '../auxiliary/sample_types.dart';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<BigInt> handleTypeAliasIdTwinNormal({required BigInt input}) =>
-    RustLib.instance.api
-        .crateApiTypeAliasHandleTypeAliasIdTwinNormal(input: input);
+Future<BigInt> handleTypeAliasIdTwinNormal({required BigInt input}) => RustLib
+    .instance
+    .api
+    .crateApiTypeAliasHandleTypeAliasIdTwinNormal(input: input);
 
 Future<BigInt> handleTypeNestAliasIdTwinNormal({required BigInt input}) =>
-    RustLib.instance.api
-        .crateApiTypeAliasHandleTypeNestAliasIdTwinNormal(input: input);
+    RustLib.instance.api.crateApiTypeAliasHandleTypeNestAliasIdTwinNormal(
+      input: input,
+    );
 
-Future<TestModelTwinNormal> handleTypeAliasModelTwinNormal(
-        {required BigInt input}) =>
-    RustLib.instance.api
-        .crateApiTypeAliasHandleTypeAliasModelTwinNormal(input: input);
+Future<TestModelTwinNormal> handleTypeAliasModelTwinNormal({
+  required BigInt input,
+}) => RustLib.instance.api.crateApiTypeAliasHandleTypeAliasModelTwinNormal(
+  input: input,
+);
 
 class TestModelTwinNormal {
   final BigInt id;

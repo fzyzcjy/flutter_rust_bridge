@@ -73,9 +73,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     );
     expect((output1 as AbcTwinSse_A).field0.a, "test");
 
-    final output2 = await testAbcEnumTwinSse(
-      abc: AbcTwinSse.b(BTwinSse(b: 1)),
-    );
+    final output2 = await testAbcEnumTwinSse(abc: AbcTwinSse.b(BTwinSse(b: 1)));
     expect((output2 as AbcTwinSse_B).field0.b, 1);
 
     final output3 = await testAbcEnumTwinSse(
