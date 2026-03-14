@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `attribute.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -14,19 +14,16 @@ pub struct CustomizedTwinSync {
 }
 
 #[frb(ignore)]
-#[flutter_rust_bridge::frb(sync)]
-pub fn func_should_not_exist_in_dart_twin_sync() {}
+#[flutter_rust_bridge::frb(sync)] pub fn func_should_not_exist_in_dart_twin_sync() {}
 
 pub struct StructWithOnlyIgnoredMethodTwinSync {}
 
 impl StructWithOnlyIgnoredMethodTwinSync {
     #[frb(ignore)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn method_should_not_exist_in_dart_twin_sync(&self) {}
+    #[flutter_rust_bridge::frb(sync)] pub fn method_should_not_exist_in_dart_twin_sync(&self) {}
 }
 
-#[flutter_rust_bridge::frb(sync)]
-pub fn handle_customized_struct_twin_sync(val: CustomizedTwinSync) {
+#[flutter_rust_bridge::frb(sync)] pub fn handle_customized_struct_twin_sync(val: CustomizedTwinSync) {
     info!("{:#?}", val);
 }
 
@@ -38,8 +35,7 @@ pub struct UserIdTwinSync {
 }
 
 #[frb]
-#[flutter_rust_bridge::frb(sync)]
-pub fn next_user_id_twin_sync(
+#[flutter_rust_bridge::frb(sync)] pub fn next_user_id_twin_sync(
     #[frb(default = "const UserIdTwinSync()")] user_id: UserIdTwinSync,
 ) -> UserIdTwinSync {
     UserIdTwinSync {
@@ -56,6 +52,5 @@ pub struct IgnoredStructTwinSync {
 }
 
 impl IgnoredStructTwinSync {
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn method_should_not_exist_in_dart_twin_sync(&self) {}
+    #[flutter_rust_bridge::frb(sync)] pub fn method_should_not_exist_in_dart_twin_sync(&self) {}
 }

@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `attribute.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -14,19 +14,16 @@ pub struct CustomizedTwinRustAsyncSse {
 }
 
 #[frb(ignore)]
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn func_should_not_exist_in_dart_twin_rust_async_sse() {}
+#[flutter_rust_bridge::frb(serialize)] pub async fn func_should_not_exist_in_dart_twin_rust_async_sse() {}
 
 pub struct StructWithOnlyIgnoredMethodTwinRustAsyncSse {}
 
 impl StructWithOnlyIgnoredMethodTwinRustAsyncSse {
     #[frb(ignore)]
-    #[flutter_rust_bridge::frb(serialize)]
-    pub async fn method_should_not_exist_in_dart_twin_rust_async_sse(&self) {}
+    #[flutter_rust_bridge::frb(serialize)] pub async fn method_should_not_exist_in_dart_twin_rust_async_sse(&self) {}
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn handle_customized_struct_twin_rust_async_sse(val: CustomizedTwinRustAsyncSse) {
+#[flutter_rust_bridge::frb(serialize)] pub async fn handle_customized_struct_twin_rust_async_sse(val: CustomizedTwinRustAsyncSse) {
     info!("{:#?}", val);
 }
 
@@ -38,8 +35,7 @@ pub struct UserIdTwinRustAsyncSse {
 }
 
 #[frb]
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn next_user_id_twin_rust_async_sse(
+#[flutter_rust_bridge::frb(serialize)] pub async fn next_user_id_twin_rust_async_sse(
     #[frb(default = "const UserIdTwinRustAsyncSse()")] user_id: UserIdTwinRustAsyncSse,
 ) -> UserIdTwinRustAsyncSse {
     UserIdTwinRustAsyncSse {
@@ -56,6 +52,5 @@ pub struct IgnoredStructTwinRustAsyncSse {
 }
 
 impl IgnoredStructTwinRustAsyncSse {
-    #[flutter_rust_bridge::frb(serialize)]
-    pub async fn method_should_not_exist_in_dart_twin_rust_async_sse(&self) {}
+    #[flutter_rust_bridge::frb(serialize)] pub async fn method_should_not_exist_in_dart_twin_rust_async_sse(&self) {}
 }

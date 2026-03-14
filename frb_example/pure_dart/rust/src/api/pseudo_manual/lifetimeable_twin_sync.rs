@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `lifetimeable.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -73,8 +73,7 @@ impl Drop for LtNestedTypeWithLifetimeTwinSync<'_> {
 
 impl LtOwnedStructTwinSync {
     #[frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn create_twin_sync(value: String) -> Self {
+    #[flutter_rust_bridge::frb(sync)] pub fn create_twin_sync(value: String) -> Self {
         Self {
             sub: LtSubStructTwinSync {
                 value,
@@ -84,8 +83,7 @@ impl LtOwnedStructTwinSync {
     }
 
     #[frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn create_with_logger_twin_sync(value: String, logger: &SimpleLogger) -> Self {
+    #[flutter_rust_bridge::frb(sync)] pub fn create_with_logger_twin_sync(value: String, logger: &SimpleLogger) -> Self {
         Self {
             sub: LtSubStructTwinSync {
                 value,
@@ -96,7 +94,9 @@ impl LtOwnedStructTwinSync {
 
     /// `fn f(x: &'a T) -> S<'a>`
     #[frb(serialize)]
-    pub fn compute_type_with_lifetime_twin_sync<'a>(&'a self) -> LtTypeWithLifetimeTwinSync<'a> {
+    pub fn compute_type_with_lifetime_twin_sync<'a>(
+        &'a self,
+    ) -> LtTypeWithLifetimeTwinSync<'a> {
         LtTypeWithLifetimeTwinSync { field: self }
     }
 
@@ -128,14 +128,12 @@ pub fn lt_compute_with_lifetime_function_twin_sync<'a>(
 
 impl LtSubStructTwinSync {
     #[frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn greet_borrow_self_twin_sync(&self) -> String {
+    #[flutter_rust_bridge::frb(sync)] pub fn greet_borrow_self_twin_sync(&self) -> String {
         self.value.clone()
     }
 
     #[frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn greet_borrow_mut_self_twin_sync(&mut self) -> String {
+    #[flutter_rust_bridge::frb(sync)] pub fn greet_borrow_mut_self_twin_sync(&mut self) -> String {
         self.value.clone()
     }
 }
@@ -143,15 +141,13 @@ impl LtSubStructTwinSync {
 impl LtTypeWithLifetimeTwinSync<'_> {
     /// `&T` where T is lifetimeable
     #[frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn greet_borrow_self_twin_sync(&self) -> String {
+    #[flutter_rust_bridge::frb(sync)] pub fn greet_borrow_self_twin_sync(&self) -> String {
         self.field.sub.value.clone()
     }
 
     /// `&mut T` where T is lifetimeable
     #[frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn greet_borrow_mut_self_twin_sync(&mut self) -> String {
+    #[flutter_rust_bridge::frb(sync)] pub fn greet_borrow_mut_self_twin_sync(&mut self) -> String {
         self.field.sub.value.clone()
     }
 
@@ -174,14 +170,12 @@ impl LtTypeWithLifetimeTwinSync<'_> {
 
 impl LtNestedTypeWithLifetimeTwinSync<'_> {
     #[frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn greet_borrow_self_twin_sync(&self) -> String {
+    #[flutter_rust_bridge::frb(sync)] pub fn greet_borrow_self_twin_sync(&self) -> String {
         self.field.field.sub.value.clone()
     }
 
     #[frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn greet_borrow_mut_self_twin_sync(&mut self) -> String {
+    #[flutter_rust_bridge::frb(sync)] pub fn greet_borrow_mut_self_twin_sync(&mut self) -> String {
         self.field.field.sub.value.clone()
     }
 }
@@ -201,14 +195,12 @@ impl LtTypeWithMultiDepTwinSync<'_> {
     }
 
     #[frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn greet_borrow_self_twin_sync(&self) -> Vec<String> {
+    #[flutter_rust_bridge::frb(sync)] pub fn greet_borrow_self_twin_sync(&self) -> Vec<String> {
         self.fields.iter().map(|x| x.sub.value.clone()).collect()
     }
 
     #[frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn greet_borrow_mut_self_twin_sync(&mut self) -> Vec<String> {
+    #[flutter_rust_bridge::frb(sync)] pub fn greet_borrow_mut_self_twin_sync(&mut self) -> Vec<String> {
         self.fields.iter().map(|x| x.sub.value.clone()).collect()
     }
 }

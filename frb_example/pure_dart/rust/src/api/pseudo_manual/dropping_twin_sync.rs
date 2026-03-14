@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `dropping.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -25,22 +25,18 @@ impl Drop for DroppableTwinSync {
 }
 
 impl DroppableTwinSync {
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn new_twin_sync() -> DroppableTwinSync {
+    #[flutter_rust_bridge::frb(sync)] pub fn new_twin_sync() -> DroppableTwinSync {
         Self { sink: None }
     }
 
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn simple_method_twin_sync(&self) {}
+    #[flutter_rust_bridge::frb(sync)] pub fn simple_method_twin_sync(&self) {}
 
     // #1723
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn create_stream_twin_sync(&mut self, sink: StreamSink<i32>) {
+    #[flutter_rust_bridge::frb(sync)] pub fn create_stream_twin_sync(&mut self, sink: StreamSink<i32>) {
         self.sink = Some(sink);
     }
 
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn get_drop_count_twin_sync() -> i32 {
+    #[flutter_rust_bridge::frb(sync)] pub fn get_drop_count_twin_sync() -> i32 {
         DROP_COUNT.load(Ordering::SeqCst)
     }
 }

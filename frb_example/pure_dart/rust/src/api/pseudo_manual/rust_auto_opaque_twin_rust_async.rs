@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `rust_auto_opaque.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -26,17 +26,11 @@ pub enum NonCloneSimpleEnumTwinRustAsync {
 
 // ==================================== simple =======================================
 
-pub async fn rust_auto_opaque_arg_own_twin_rust_async(
-    arg: NonCloneSimpleTwinRustAsync,
-    expect: i32,
-) {
+pub async fn rust_auto_opaque_arg_own_twin_rust_async(arg: NonCloneSimpleTwinRustAsync, expect: i32) {
     assert_eq!(arg.inner, expect);
 }
 
-pub async fn rust_auto_opaque_arg_borrow_twin_rust_async(
-    arg: &NonCloneSimpleTwinRustAsync,
-    expect: i32,
-) {
+pub async fn rust_auto_opaque_arg_borrow_twin_rust_async(arg: &NonCloneSimpleTwinRustAsync, expect: i32) {
     assert_eq!(arg.inner, expect);
 }
 
@@ -49,9 +43,7 @@ pub async fn rust_auto_opaque_arg_mut_borrow_twin_rust_async(
     arg.inner += adder;
 }
 
-pub async fn rust_auto_opaque_return_own_twin_rust_async(
-    initial: i32,
-) -> NonCloneSimpleTwinRustAsync {
+pub async fn rust_auto_opaque_return_own_twin_rust_async(initial: i32) -> NonCloneSimpleTwinRustAsync {
     NonCloneSimpleTwinRustAsync { inner: initial }
 }
 
@@ -72,10 +64,7 @@ pub async fn rust_auto_opaque_two_args_twin_rust_async(
     assert_eq!(b.inner, 20);
 }
 
-pub async fn rust_auto_opaque_normal_and_opaque_arg_twin_rust_async(
-    a: NonCloneSimpleTwinRustAsync,
-    b: String,
-) {
+pub async fn rust_auto_opaque_normal_and_opaque_arg_twin_rust_async(a: NonCloneSimpleTwinRustAsync, b: String) {
     assert_eq!(a.inner, 42);
     assert_eq!(b, "hello");
 }
@@ -92,25 +81,20 @@ impl MyTraitTwinRustAsync for String {
 }
 
 /// "+" inside the type signature
-pub async fn rust_auto_opaque_plus_sign_arg_twin_rust_async(
-    arg: Box<dyn MyTraitTwinRustAsync + Send + Sync>,
-) {
+pub async fn rust_auto_opaque_plus_sign_arg_twin_rust_async(arg: Box<dyn MyTraitTwinRustAsync + Send + Sync>) {
     assert_eq!(arg.f(), "hello");
 }
 
-pub async fn rust_auto_opaque_plus_sign_return_twin_rust_async(
-) -> Box<dyn MyTraitTwinRustAsync + Send + Sync> {
+pub async fn rust_auto_opaque_plus_sign_return_twin_rust_async() -> Box<dyn MyTraitTwinRustAsync + Send + Sync> {
     Box::new("hello".to_owned())
 }
 
-pub async fn rust_auto_opaque_callable_arg_twin_rust_async(
-    arg: Box<dyn Fn(String) -> String + Send + Sync>,
-) {
+pub async fn rust_auto_opaque_callable_arg_twin_rust_async(arg: Box<dyn Fn(String) -> String + Send + Sync>) {
     assert_eq!(&arg("hello".into()), "hellohello");
 }
 
-pub async fn rust_auto_opaque_callable_return_twin_rust_async(
-) -> Box<dyn Fn(String) -> String + Send + Sync> {
+pub async fn rust_auto_opaque_callable_return_twin_rust_async() -> Box<dyn Fn(String) -> String + Send + Sync>
+{
     Box::new(|x: String| x.repeat(2))
 }
 
@@ -189,9 +173,7 @@ impl NonCloneSimpleTwinRustAsync {
         assert_eq!(arg.inner, 42);
     }
 
-    pub async fn static_method_arg_mut_borrow_twin_rust_async(
-        arg: &mut NonCloneSimpleTwinRustAsync,
-    ) {
+    pub async fn static_method_arg_mut_borrow_twin_rust_async(arg: &mut NonCloneSimpleTwinRustAsync) {
         assert_eq!(arg.inner, 42);
     }
 
@@ -316,9 +298,7 @@ pub async fn rust_auto_opaque_dummy_twin_rust_async(
 
 // ================ enum opaque type ===================
 
-pub async fn rust_auto_opaque_enum_arg_borrow_twin_rust_async(
-    arg: &NonCloneSimpleEnumTwinRustAsync,
-) {
+pub async fn rust_auto_opaque_enum_arg_borrow_twin_rust_async(arg: &NonCloneSimpleEnumTwinRustAsync) {
     assert!(matches!(arg, NonCloneSimpleEnumTwinRustAsync::Orange));
 }
 
@@ -328,9 +308,7 @@ pub async fn rust_auto_opaque_enum_return_own_twin_rust_async() -> NonCloneSimpl
 
 // ================ stream sink ===================
 
-pub async fn rust_auto_opaque_stream_sink_twin_rust_async(
-    sink: StreamSink<NonCloneSimpleTwinRustAsync>,
-) {
+pub async fn rust_auto_opaque_stream_sink_twin_rust_async(sink: StreamSink<NonCloneSimpleTwinRustAsync>) {
     sink.add(NonCloneSimpleTwinRustAsync { inner: 42 }).unwrap();
 }
 

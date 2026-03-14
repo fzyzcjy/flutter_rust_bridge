@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `rust_auto_opaque.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -26,18 +26,15 @@ pub enum NonCloneSimpleEnumTwinSse {
 
 // ==================================== simple =======================================
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_arg_own_twin_sse(arg: NonCloneSimpleTwinSse, expect: i32) {
+#[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_arg_own_twin_sse(arg: NonCloneSimpleTwinSse, expect: i32) {
     assert_eq!(arg.inner, expect);
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_arg_borrow_twin_sse(arg: &NonCloneSimpleTwinSse, expect: i32) {
+#[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_arg_borrow_twin_sse(arg: &NonCloneSimpleTwinSse, expect: i32) {
     assert_eq!(arg.inner, expect);
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_arg_mut_borrow_twin_sse(
+#[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_arg_mut_borrow_twin_sse(
     arg: &mut NonCloneSimpleTwinSse,
     expect: i32,
     adder: i32,
@@ -46,29 +43,28 @@ pub fn rust_auto_opaque_arg_mut_borrow_twin_sse(
     arg.inner += adder;
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_return_own_twin_sse(initial: i32) -> NonCloneSimpleTwinSse {
+#[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_return_own_twin_sse(initial: i32) -> NonCloneSimpleTwinSse {
     NonCloneSimpleTwinSse { inner: initial }
 }
 
 // ==================================== with other args =======================================
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_arg_own_and_return_own_twin_sse(
+#[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_arg_own_and_return_own_twin_sse(
     arg: NonCloneSimpleTwinSse,
 ) -> NonCloneSimpleTwinSse {
     assert_eq!(arg.inner, 42);
     arg
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_two_args_twin_sse(a: NonCloneSimpleTwinSse, b: NonCloneSimpleTwinSse) {
+#[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_two_args_twin_sse(
+    a: NonCloneSimpleTwinSse,
+    b: NonCloneSimpleTwinSse,
+) {
     assert_eq!(a.inner, 10);
     assert_eq!(b.inner, 20);
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_normal_and_opaque_arg_twin_sse(a: NonCloneSimpleTwinSse, b: String) {
+#[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_normal_and_opaque_arg_twin_sse(a: NonCloneSimpleTwinSse, b: String) {
     assert_eq!(a.inner, 42);
     assert_eq!(b, "hello");
 }
@@ -85,23 +81,20 @@ impl MyTraitTwinSse for String {
 }
 
 /// "+" inside the type signature
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_plus_sign_arg_twin_sse(arg: Box<dyn MyTraitTwinSse + Send + Sync>) {
+#[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_plus_sign_arg_twin_sse(arg: Box<dyn MyTraitTwinSse + Send + Sync>) {
     assert_eq!(arg.f(), "hello");
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_plus_sign_return_twin_sse() -> Box<dyn MyTraitTwinSse + Send + Sync> {
+#[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_plus_sign_return_twin_sse() -> Box<dyn MyTraitTwinSse + Send + Sync> {
     Box::new("hello".to_owned())
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_callable_arg_twin_sse(arg: Box<dyn Fn(String) -> String + Send + Sync>) {
+#[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_callable_arg_twin_sse(arg: Box<dyn Fn(String) -> String + Send + Sync>) {
     assert_eq!(&arg("hello".into()), "hellohello");
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_callable_return_twin_sse() -> Box<dyn Fn(String) -> String + Send + Sync> {
+#[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_callable_return_twin_sse() -> Box<dyn Fn(String) -> String + Send + Sync>
+{
     Box::new(|x: String| x.repeat(2))
 }
 
@@ -172,23 +165,19 @@ pub fn rust_auto_opaque_callable_return_twin_sse() -> Box<dyn Fn(String) -> Stri
 // ==================================== static method =======================================
 
 impl NonCloneSimpleTwinSse {
-    #[flutter_rust_bridge::frb(serialize)]
-    pub fn static_method_arg_own_twin_sse(arg: NonCloneSimpleTwinSse) {
+    #[flutter_rust_bridge::frb(serialize)] pub fn static_method_arg_own_twin_sse(arg: NonCloneSimpleTwinSse) {
         assert_eq!(arg.inner, 42);
     }
 
-    #[flutter_rust_bridge::frb(serialize)]
-    pub fn static_method_arg_borrow_twin_sse(arg: &NonCloneSimpleTwinSse) {
+    #[flutter_rust_bridge::frb(serialize)] pub fn static_method_arg_borrow_twin_sse(arg: &NonCloneSimpleTwinSse) {
         assert_eq!(arg.inner, 42);
     }
 
-    #[flutter_rust_bridge::frb(serialize)]
-    pub fn static_method_arg_mut_borrow_twin_sse(arg: &mut NonCloneSimpleTwinSse) {
+    #[flutter_rust_bridge::frb(serialize)] pub fn static_method_arg_mut_borrow_twin_sse(arg: &mut NonCloneSimpleTwinSse) {
         assert_eq!(arg.inner, 42);
     }
 
-    #[flutter_rust_bridge::frb(serialize)]
-    pub fn static_method_return_own_twin_sse() -> NonCloneSimpleTwinSse {
+    #[flutter_rust_bridge::frb(serialize)] pub fn static_method_return_own_twin_sse() -> NonCloneSimpleTwinSse {
         NonCloneSimpleTwinSse { inner: 42 }
     }
 }
@@ -197,46 +186,38 @@ impl NonCloneSimpleTwinSse {
 
 impl NonCloneSimpleTwinSse {
     /// unnamed constructor
-    #[flutter_rust_bridge::frb(serialize)]
-    pub fn new_twin_sse() -> NonCloneSimpleTwinSse {
+    #[flutter_rust_bridge::frb(serialize)] pub fn new_twin_sse() -> NonCloneSimpleTwinSse {
         Self { inner: 42 }
     }
 
     /// named constructor
-    #[flutter_rust_bridge::frb(serialize)]
-    pub fn new_custom_name_twin_sse() -> NonCloneSimpleTwinSse {
+    #[flutter_rust_bridge::frb(serialize)] pub fn new_custom_name_twin_sse() -> NonCloneSimpleTwinSse {
         Self { inner: 42 }
     }
 
     /// constructor with Result
-    #[flutter_rust_bridge::frb(serialize)]
-    pub fn new_with_result_twin_sse() -> anyhow::Result<NonCloneSimpleTwinSse> {
+    #[flutter_rust_bridge::frb(serialize)] pub fn new_with_result_twin_sse() -> anyhow::Result<NonCloneSimpleTwinSse> {
         Ok(Self { inner: 42 })
     }
 
-    #[flutter_rust_bridge::frb(serialize)]
-    pub fn instance_method_arg_own_twin_sse(self) {
+    #[flutter_rust_bridge::frb(serialize)] pub fn instance_method_arg_own_twin_sse(self) {
         assert_eq!(self.inner, 42);
     }
 
-    #[flutter_rust_bridge::frb(serialize)]
-    pub fn instance_method_arg_borrow_twin_sse(&self) {
+    #[flutter_rust_bridge::frb(serialize)] pub fn instance_method_arg_borrow_twin_sse(&self) {
         assert_eq!(self.inner, 42);
     }
 
-    #[flutter_rust_bridge::frb(serialize)]
-    pub fn instance_method_arg_mut_borrow_twin_sse(&mut self) {
+    #[flutter_rust_bridge::frb(serialize)] pub fn instance_method_arg_mut_borrow_twin_sse(&mut self) {
         assert_eq!(self.inner, 42);
     }
 
-    #[flutter_rust_bridge::frb(serialize)]
-    pub fn instance_method_return_own_twin_sse(&self) -> NonCloneSimpleTwinSse {
+    #[flutter_rust_bridge::frb(serialize)] pub fn instance_method_return_own_twin_sse(&self) -> NonCloneSimpleTwinSse {
         Self { inner: 42 }
     }
 
     #[frb(getter)]
-    #[flutter_rust_bridge::frb(serialize)]
-    pub fn instance_method_getter_twin_sse(&self) -> i32 {
+    #[flutter_rust_bridge::frb(serialize)] pub fn instance_method_getter_twin_sse(&self) -> i32 {
         self.inner
     }
 }
@@ -251,8 +232,7 @@ pub struct StructWithGoodAndOpaqueFieldTwinSse {
     pub option_opaque: Option<NonCloneSimpleTwinSse>,
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sse(
+#[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sse(
     arg: StructWithGoodAndOpaqueFieldTwinSse,
 ) {
     assert_eq!(&arg.good, "hello");
@@ -260,8 +240,7 @@ pub fn rust_auto_opaque_struct_with_good_and_opaque_field_arg_own_twin_sse(
     assert_eq!(arg.option_opaque.unwrap().inner, 42);
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sse(
+#[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_struct_with_good_and_opaque_field_return_own_twin_sse(
 ) -> StructWithGoodAndOpaqueFieldTwinSse {
     StructWithGoodAndOpaqueFieldTwinSse {
         good: "hello".to_string(),
@@ -278,8 +257,7 @@ pub enum EnumWithGoodAndOpaqueTwinSse {
     Opaque(NonCloneSimpleTwinSse),
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sse(
+#[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sse(
     arg: EnumWithGoodAndOpaqueTwinSse,
 ) {
     match arg {
@@ -288,14 +266,12 @@ pub fn rust_auto_opaque_enum_with_good_and_opaque_arg_own_twin_sse(
     }
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sse(
+#[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_good_twin_sse(
 ) -> EnumWithGoodAndOpaqueTwinSse {
     EnumWithGoodAndOpaqueTwinSse::Good("hello".to_owned())
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sse(
+#[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_enum_with_good_and_opaque_return_own_opaque_twin_sse(
 ) -> EnumWithGoodAndOpaqueTwinSse {
     EnumWithGoodAndOpaqueTwinSse::Opaque(NonCloneSimpleTwinSse { inner: 42 })
 }
@@ -314,8 +290,7 @@ pub enum EnumWithGoodAndOpaqueWithoutOptionTwinSse {
 }
 
 #[allow(unused_variables)]
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_dummy_twin_sse(
+#[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_dummy_twin_sse(
     a: StructWithGoodAndOpaqueFieldWithoutOptionTwinSse,
     b: EnumWithGoodAndOpaqueWithoutOptionTwinSse,
 ) {
@@ -323,36 +298,32 @@ pub fn rust_auto_opaque_dummy_twin_sse(
 
 // ================ enum opaque type ===================
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_enum_arg_borrow_twin_sse(arg: &NonCloneSimpleEnumTwinSse) {
+#[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_enum_arg_borrow_twin_sse(arg: &NonCloneSimpleEnumTwinSse) {
     assert!(matches!(arg, NonCloneSimpleEnumTwinSse::Orange));
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_enum_return_own_twin_sse() -> NonCloneSimpleEnumTwinSse {
+#[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_enum_return_own_twin_sse() -> NonCloneSimpleEnumTwinSse {
     NonCloneSimpleEnumTwinSse::Orange
 }
 
 // ================ stream sink ===================
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_stream_sink_twin_sse(
-    sink: StreamSink<NonCloneSimpleTwinSse, flutter_rust_bridge::SseCodec>,
-) {
+#[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_stream_sink_twin_sse(sink: StreamSink<NonCloneSimpleTwinSse, flutter_rust_bridge::SseCodec>) {
     sink.add(NonCloneSimpleTwinSse { inner: 42 }).unwrap();
 }
 
 // ================ vec of opaque ===================
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_arg_vec_own_twin_sse(arg: Vec<NonCloneSimpleTwinSse>, expect: Vec<i32>) {
+#[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_arg_vec_own_twin_sse(
+    arg: Vec<NonCloneSimpleTwinSse>,
+    expect: Vec<i32>,
+) {
     for i in 0..expect.len() {
         assert_eq!(arg[i].inner, expect[i]);
     }
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_return_vec_own_twin_sse() -> Vec<NonCloneSimpleTwinSse> {
+#[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_return_vec_own_twin_sse() -> Vec<NonCloneSimpleTwinSse> {
     vec![
         NonCloneSimpleTwinSse { inner: 10 },
         NonCloneSimpleTwinSse { inner: 20 },
@@ -361,8 +332,7 @@ pub fn rust_auto_opaque_return_vec_own_twin_sse() -> Vec<NonCloneSimpleTwinSse> 
 
 // ================ use explicit type ===================
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_explicit_arg_twin_sse(
+#[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_explicit_arg_twin_sse(
     arg: RustAutoOpaque<NonCloneSimpleTwinSse>,
     expect: i32,
 ) {
@@ -374,22 +344,21 @@ pub struct StructWithExplicitAutoOpaqueFieldTwinSse {
     pub normal: i32,
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_explicit_struct_twin_sse(arg: StructWithExplicitAutoOpaqueFieldTwinSse) {
+#[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_explicit_struct_twin_sse(
+    arg: StructWithExplicitAutoOpaqueFieldTwinSse,
+) {
     assert_eq!(arg.auto_opaque.try_read().unwrap().inner, arg.normal);
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_explicit_return_struct_twin_sse() -> StructWithExplicitAutoOpaqueFieldTwinSse
-{
+#[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_explicit_return_struct_twin_sse(
+) -> StructWithExplicitAutoOpaqueFieldTwinSse {
     StructWithExplicitAutoOpaqueFieldTwinSse {
         normal: 100,
         auto_opaque: RustAutoOpaque::new(NonCloneSimpleTwinSse { inner: 100 }),
     }
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_explicit_return_twin_sse(
+#[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_explicit_return_twin_sse(
     initial: i32,
 ) -> RustAutoOpaque<NonCloneSimpleTwinSse> {
     RustAutoOpaque::new(NonCloneSimpleTwinSse { inner: initial })
@@ -397,8 +366,7 @@ pub fn rust_auto_opaque_explicit_return_twin_sse(
 
 // ================ deadlock detection ===================
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_sleep_twin_sse(
+#[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_sleep_twin_sse(
     apple: &mut NonCloneSimpleTwinSse,
     orange: &mut NonCloneSimpleTwinSse,
 ) -> i32 {
@@ -420,26 +388,22 @@ pub struct OpaqueOneTwinSse(PathBuf);
 #[frb(opaque)]
 pub struct OpaqueTwoTwinSse(PathBuf);
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_return_opaque_one_and_two_twin_sse() -> (OpaqueOneTwinSse, OpaqueTwoTwinSse)
-{
+#[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_return_opaque_one_and_two_twin_sse(
+) -> (OpaqueOneTwinSse, OpaqueTwoTwinSse) {
     unimplemented!()
 }
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_return_opaque_two_twin_sse() -> OpaqueTwoTwinSse {
+#[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_return_opaque_two_twin_sse() -> OpaqueTwoTwinSse {
     unimplemented!()
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_borrow_and_mut_borrow_twin_sse(
+#[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_borrow_and_mut_borrow_twin_sse(
     borrow: &NonCloneSimpleTwinSse,
     mut_borrow: &mut NonCloneSimpleTwinSse,
 ) -> i32 {
     borrow.inner + mut_borrow.inner
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn rust_auto_opaque_borrow_and_borrow_twin_sse(
+#[flutter_rust_bridge::frb(serialize)] pub fn rust_auto_opaque_borrow_and_borrow_twin_sse(
     a: &NonCloneSimpleTwinSse,
     b: &NonCloneSimpleTwinSse,
 ) -> i32 {

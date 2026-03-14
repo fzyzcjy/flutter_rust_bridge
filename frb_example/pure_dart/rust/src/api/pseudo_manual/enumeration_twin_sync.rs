@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `enumeration.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -11,8 +11,7 @@ pub enum EnumSimpleTwinSync {
     B,
 }
 
-#[flutter_rust_bridge::frb(sync)]
-pub fn func_enum_simple_twin_sync(arg: EnumSimpleTwinSync) -> EnumSimpleTwinSync {
+#[flutter_rust_bridge::frb(sync)] pub fn func_enum_simple_twin_sync(arg: EnumSimpleTwinSync) -> EnumSimpleTwinSync {
     arg
 }
 
@@ -22,8 +21,7 @@ pub enum EnumWithItemMixedTwinSync {
     C { c_field: String },
 }
 
-#[flutter_rust_bridge::frb(sync)]
-pub fn func_enum_with_item_mixed_twin_sync(
+#[flutter_rust_bridge::frb(sync)] pub fn func_enum_with_item_mixed_twin_sync(
     arg: EnumWithItemMixedTwinSync,
 ) -> EnumWithItemMixedTwinSync {
     arg
@@ -34,8 +32,7 @@ pub enum EnumWithItemTupleTwinSync {
     B(i32),
 }
 
-#[flutter_rust_bridge::frb(sync)]
-pub fn func_enum_with_item_tuple_twin_sync(
+#[flutter_rust_bridge::frb(sync)] pub fn func_enum_with_item_tuple_twin_sync(
     arg: EnumWithItemTupleTwinSync,
 ) -> EnumWithItemTupleTwinSync {
     arg
@@ -46,8 +43,7 @@ pub enum EnumWithItemStructTwinSync {
     B { b_field: Vec<i32> },
 }
 
-#[flutter_rust_bridge::frb(sync)]
-pub fn func_enum_with_item_struct_twin_sync(
+#[flutter_rust_bridge::frb(sync)] pub fn func_enum_with_item_struct_twin_sync(
     arg: EnumWithItemStructTwinSync,
 ) -> EnumWithItemStructTwinSync {
     arg
@@ -59,8 +55,7 @@ pub enum EnumWithDiscriminantTwinSync {
     Fifty = 50,
 }
 
-#[flutter_rust_bridge::frb(sync)]
-pub fn func_enum_with_discriminant_twin_sync(
+#[flutter_rust_bridge::frb(sync)] pub fn func_enum_with_discriminant_twin_sync(
     arg: EnumWithDiscriminantTwinSync,
 ) -> EnumWithDiscriminantTwinSync {
     arg
@@ -74,14 +69,12 @@ pub struct NoteTwinSync {
     pub body: String,
 }
 
-#[flutter_rust_bridge::frb(sync)]
-pub fn print_note_twin_sync(note: NoteTwinSync) -> Vec<u8> {
+#[flutter_rust_bridge::frb(sync)] pub fn print_note_twin_sync(note: NoteTwinSync) -> Vec<u8> {
     info!("{:#?}", note);
     vec![1, 2, 3]
 }
 
-#[flutter_rust_bridge::frb(sync)]
-pub fn handle_return_enum_twin_sync(input: String) -> Option<WeekdaysTwinSync> {
+#[flutter_rust_bridge::frb(sync)] pub fn handle_return_enum_twin_sync(input: String) -> Option<WeekdaysTwinSync> {
     match input.as_str() {
         "Monday" => Some(WeekdaysTwinSync::Monday),
         "Tuesday" => Some(WeekdaysTwinSync::Tuesday),
@@ -94,8 +87,7 @@ pub fn handle_return_enum_twin_sync(input: String) -> Option<WeekdaysTwinSync> {
     }
 }
 
-#[flutter_rust_bridge::frb(sync)]
-pub fn handle_enum_parameter_twin_sync(weekday: WeekdaysTwinSync) -> WeekdaysTwinSync {
+#[flutter_rust_bridge::frb(sync)] pub fn handle_enum_parameter_twin_sync(weekday: WeekdaysTwinSync) -> WeekdaysTwinSync {
     info!("The weekday is {:?}", weekday);
     weekday
 }
@@ -118,13 +110,12 @@ pub enum MeasureTwinSync {
     Distance(Box<DistanceTwinSync>),
 }
 
-#[flutter_rust_bridge::frb(sync)]
-pub fn multiply_by_ten_twin_sync(measure: MeasureTwinSync) -> Option<MeasureTwinSync> {
+#[flutter_rust_bridge::frb(sync)] pub fn multiply_by_ten_twin_sync(measure: MeasureTwinSync) -> Option<MeasureTwinSync> {
     match measure {
         MeasureTwinSync::Speed(b) => match *b {
-            SpeedTwinSync::GPS(v) => Some(MeasureTwinSync::Speed(Box::new(SpeedTwinSync::GPS(
-                v * 10.,
-            )))),
+            SpeedTwinSync::GPS(v) => Some(MeasureTwinSync::Speed(Box::new(
+                SpeedTwinSync::GPS(v * 10.),
+            ))),
             SpeedTwinSync::Unknown => None,
         },
         MeasureTwinSync::Distance(b) => match *b {
@@ -163,8 +154,7 @@ pub enum KitchenSinkTwinSync {
     Enums(#[frb(default = "WeekdaysTwinSync.Sunday")] WeekdaysTwinSync),
 }
 
-#[flutter_rust_bridge::frb(sync)]
-pub fn handle_enum_struct_twin_sync(val: KitchenSinkTwinSync) -> KitchenSinkTwinSync {
+#[flutter_rust_bridge::frb(sync)] pub fn handle_enum_struct_twin_sync(val: KitchenSinkTwinSync) -> KitchenSinkTwinSync {
     use KitchenSinkTwinSync::*;
     use WeekdaysTwinSync::*;
     let inc = |x| x + 1;

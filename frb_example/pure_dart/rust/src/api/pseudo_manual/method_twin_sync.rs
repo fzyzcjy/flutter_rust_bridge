@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `method.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -18,29 +18,24 @@ pub struct ConcatenateWithTwinSync {
 }
 
 impl ConcatenateWithTwinSync {
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn new_twin_sync(a: String) -> ConcatenateWithTwinSync {
+    #[flutter_rust_bridge::frb(sync)] pub fn new_twin_sync(a: String) -> ConcatenateWithTwinSync {
         ConcatenateWithTwinSync { a }
     }
 
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn concatenate_twin_sync(&self, b: String) -> String {
+    #[flutter_rust_bridge::frb(sync)] pub fn concatenate_twin_sync(&self, b: String) -> String {
         format!("{}{b}", self.a)
     }
 
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn concatenate_static_twin_sync(a: String, b: String) -> String {
+    #[flutter_rust_bridge::frb(sync)] pub fn concatenate_static_twin_sync(a: String, b: String) -> String {
         format!("{a}{b}")
     }
 
     #[frb(getter)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn simple_getter_twin_sync(&self) -> String {
+    #[flutter_rust_bridge::frb(sync)] pub fn simple_getter_twin_sync(&self) -> String {
         self.a.clone()
     }
 
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn handle_some_stream_sink_twin_sync(
+    #[flutter_rust_bridge::frb(sync)] pub fn handle_some_stream_sink_twin_sync(
         &self,
         key: u32,
         max: u32,
@@ -58,8 +53,7 @@ impl ConcatenateWithTwinSync {
         }));
     }
 
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn handle_some_stream_sink_at_1_twin_sync(&self, sink: StreamSink<u32>) {
+    #[flutter_rust_bridge::frb(sync)] pub fn handle_some_stream_sink_at_1_twin_sync(&self, sink: StreamSink<u32>) {
         (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
             for i in 0..5 {
                 sink.add(i).unwrap();
@@ -67,8 +61,7 @@ impl ConcatenateWithTwinSync {
         }));
     }
 
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn handle_some_static_stream_sink_twin_sync(
+    #[flutter_rust_bridge::frb(sync)] pub fn handle_some_static_stream_sink_twin_sync(
         key: u32,
         max: u32,
         sink: StreamSink<Log2TwinSync>,
@@ -84,8 +77,7 @@ impl ConcatenateWithTwinSync {
         }));
     }
 
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn handle_some_static_stream_sink_single_arg_twin_sync(sink: StreamSink<u32>) {
+    #[flutter_rust_bridge::frb(sync)] pub fn handle_some_static_stream_sink_single_arg_twin_sync(sink: StreamSink<u32>) {
         (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
             for i in 0..5 {
                 sink.add(i).unwrap();
@@ -99,19 +91,16 @@ pub struct SumWithTwinSync {
 }
 
 impl SumWithTwinSync {
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn sum_twin_sync(&self, y: u32, z: u32) -> u32 {
+    #[flutter_rust_bridge::frb(sync)] pub fn sum_twin_sync(&self, y: u32, z: u32) -> u32 {
         self.x + y + z
     }
 }
 
-#[flutter_rust_bridge::frb(sync)]
-pub fn get_sum_struct_twin_sync() -> SumWithTwinSync {
+#[flutter_rust_bridge::frb(sync)] pub fn get_sum_struct_twin_sync() -> SumWithTwinSync {
     SumWithTwinSync { x: 21 }
 }
 
-#[flutter_rust_bridge::frb(sync)]
-pub fn get_sum_array_twin_sync(a: u32, b: u32, c: u32) -> [SumWithTwinSync; 3] {
+#[flutter_rust_bridge::frb(sync)] pub fn get_sum_array_twin_sync(a: u32, b: u32, c: u32) -> [SumWithTwinSync; 3] {
     [
         SumWithTwinSync { x: a },
         SumWithTwinSync { x: b },
@@ -124,8 +113,7 @@ pub struct MyCallableTwinSync {
 }
 
 impl MyCallableTwinSync {
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn call(&self, two: String) -> String {
+    #[flutter_rust_bridge::frb(sync)] pub fn call(&self, two: String) -> String {
         self.one.clone() + &two
     }
 }
@@ -135,28 +123,23 @@ pub struct SimpleStructTwinSync {
 }
 
 impl SimpleStructTwinSync {
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn return_self_twin_sync(one: String) -> Self {
+    #[flutter_rust_bridge::frb(sync)] pub fn return_self_twin_sync(one: String) -> Self {
         Self { one }
     }
 
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn receiver_borrow_twin_sync(&self) -> String {
+    #[flutter_rust_bridge::frb(sync)] pub fn receiver_borrow_twin_sync(&self) -> String {
         self.one.to_owned()
     }
 
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn receiver_own_twin_sync(self) -> String {
+    #[flutter_rust_bridge::frb(sync)] pub fn receiver_own_twin_sync(self) -> String {
         self.one.to_owned()
     }
 
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn arg_self_twin_sync(a: Self, b: Self) -> String {
+    #[flutter_rust_bridge::frb(sync)] pub fn arg_self_twin_sync(a: Self, b: Self) -> String {
         a.one + &b.one
     }
 
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn vec_self_twin_sync(arg: Vec<Self>) -> Vec<String> {
+    #[flutter_rust_bridge::frb(sync)] pub fn vec_self_twin_sync(arg: Vec<Self>) -> Vec<String> {
         arg.into_iter().map(|x| x.one).collect()
     }
 }
@@ -168,13 +151,11 @@ pub enum SimpleEnumTwinSync {
 }
 
 impl SimpleEnumTwinSync {
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn return_self_twin_sync(one: String) -> Self {
+    #[flutter_rust_bridge::frb(sync)] pub fn return_self_twin_sync(one: String) -> Self {
         Self::Second(one)
     }
 
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn simple_method_twin_sync(&self) -> String {
+    #[flutter_rust_bridge::frb(sync)] pub fn simple_method_twin_sync(&self) -> String {
         match self {
             SimpleEnumTwinSync::First => "".to_owned(),
             SimpleEnumTwinSync::Second(inner) => inner.to_owned(),
@@ -189,8 +170,7 @@ pub enum SimplePrimitiveEnumTwinSync {
 }
 
 impl SimplePrimitiveEnumTwinSync {
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn simple_method_twin_sync(&self) -> i32 {
+    #[flutter_rust_bridge::frb(sync)] pub fn simple_method_twin_sync(&self) -> i32 {
         match self {
             SimplePrimitiveEnumTwinSync::First => 100,
             SimplePrimitiveEnumTwinSync::Second => 200,
@@ -204,8 +184,7 @@ pub struct StaticOnlyTwinSync {
 }
 
 impl StaticOnlyTwinSync {
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn static_method_twin_sync(a: i32) -> i32 {
+    #[flutter_rust_bridge::frb(sync)] pub fn static_method_twin_sync(a: i32) -> i32 {
         a
     }
 }
@@ -216,8 +195,7 @@ pub struct StaticGetterOnlyTwinSync {}
 
 impl StaticGetterOnlyTwinSync {
     #[frb(getter)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn static_getter_twin_sync() -> i32 {
+    #[flutter_rust_bridge::frb(sync)] pub fn static_getter_twin_sync() -> i32 {
         42
     }
 }

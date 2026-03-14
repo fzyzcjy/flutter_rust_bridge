@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `attribute.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -14,22 +14,16 @@ pub struct CustomizedTwinSyncSse {
 }
 
 #[frb(ignore)]
-#[flutter_rust_bridge::frb(serialize)]
-#[flutter_rust_bridge::frb(sync)]
-pub fn func_should_not_exist_in_dart_twin_sync_sse() {}
+#[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn func_should_not_exist_in_dart_twin_sync_sse() {}
 
 pub struct StructWithOnlyIgnoredMethodTwinSyncSse {}
 
 impl StructWithOnlyIgnoredMethodTwinSyncSse {
     #[frb(ignore)]
-    #[flutter_rust_bridge::frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn method_should_not_exist_in_dart_twin_sync_sse(&self) {}
+    #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn method_should_not_exist_in_dart_twin_sync_sse(&self) {}
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-#[flutter_rust_bridge::frb(sync)]
-pub fn handle_customized_struct_twin_sync_sse(val: CustomizedTwinSyncSse) {
+#[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn handle_customized_struct_twin_sync_sse(val: CustomizedTwinSyncSse) {
     info!("{:#?}", val);
 }
 
@@ -41,9 +35,7 @@ pub struct UserIdTwinSyncSse {
 }
 
 #[frb]
-#[flutter_rust_bridge::frb(serialize)]
-#[flutter_rust_bridge::frb(sync)]
-pub fn next_user_id_twin_sync_sse(
+#[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn next_user_id_twin_sync_sse(
     #[frb(default = "const UserIdTwinSyncSse()")] user_id: UserIdTwinSyncSse,
 ) -> UserIdTwinSyncSse {
     UserIdTwinSyncSse {
@@ -60,7 +52,5 @@ pub struct IgnoredStructTwinSyncSse {
 }
 
 impl IgnoredStructTwinSyncSse {
-    #[flutter_rust_bridge::frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn method_should_not_exist_in_dart_twin_sync_sse(&self) {}
+    #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn method_should_not_exist_in_dart_twin_sync_sse(&self) {}
 }

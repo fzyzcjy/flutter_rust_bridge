@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `enumeration.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -11,8 +11,7 @@ pub enum EnumSimpleTwinSse {
     B,
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn func_enum_simple_twin_sse(arg: EnumSimpleTwinSse) -> EnumSimpleTwinSse {
+#[flutter_rust_bridge::frb(serialize)] pub fn func_enum_simple_twin_sse(arg: EnumSimpleTwinSse) -> EnumSimpleTwinSse {
     arg
 }
 
@@ -22,8 +21,7 @@ pub enum EnumWithItemMixedTwinSse {
     C { c_field: String },
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn func_enum_with_item_mixed_twin_sse(
+#[flutter_rust_bridge::frb(serialize)] pub fn func_enum_with_item_mixed_twin_sse(
     arg: EnumWithItemMixedTwinSse,
 ) -> EnumWithItemMixedTwinSse {
     arg
@@ -34,8 +32,7 @@ pub enum EnumWithItemTupleTwinSse {
     B(i32),
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn func_enum_with_item_tuple_twin_sse(
+#[flutter_rust_bridge::frb(serialize)] pub fn func_enum_with_item_tuple_twin_sse(
     arg: EnumWithItemTupleTwinSse,
 ) -> EnumWithItemTupleTwinSse {
     arg
@@ -46,8 +43,7 @@ pub enum EnumWithItemStructTwinSse {
     B { b_field: Vec<i32> },
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn func_enum_with_item_struct_twin_sse(
+#[flutter_rust_bridge::frb(serialize)] pub fn func_enum_with_item_struct_twin_sse(
     arg: EnumWithItemStructTwinSse,
 ) -> EnumWithItemStructTwinSse {
     arg
@@ -59,8 +55,7 @@ pub enum EnumWithDiscriminantTwinSse {
     Fifty = 50,
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn func_enum_with_discriminant_twin_sse(
+#[flutter_rust_bridge::frb(serialize)] pub fn func_enum_with_discriminant_twin_sse(
     arg: EnumWithDiscriminantTwinSse,
 ) -> EnumWithDiscriminantTwinSse {
     arg
@@ -74,14 +69,12 @@ pub struct NoteTwinSse {
     pub body: String,
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn print_note_twin_sse(note: NoteTwinSse) -> Vec<u8> {
+#[flutter_rust_bridge::frb(serialize)] pub fn print_note_twin_sse(note: NoteTwinSse) -> Vec<u8> {
     info!("{:#?}", note);
     vec![1, 2, 3]
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn handle_return_enum_twin_sse(input: String) -> Option<WeekdaysTwinSse> {
+#[flutter_rust_bridge::frb(serialize)] pub fn handle_return_enum_twin_sse(input: String) -> Option<WeekdaysTwinSse> {
     match input.as_str() {
         "Monday" => Some(WeekdaysTwinSse::Monday),
         "Tuesday" => Some(WeekdaysTwinSse::Tuesday),
@@ -94,8 +87,7 @@ pub fn handle_return_enum_twin_sse(input: String) -> Option<WeekdaysTwinSse> {
     }
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn handle_enum_parameter_twin_sse(weekday: WeekdaysTwinSse) -> WeekdaysTwinSse {
+#[flutter_rust_bridge::frb(serialize)] pub fn handle_enum_parameter_twin_sse(weekday: WeekdaysTwinSse) -> WeekdaysTwinSse {
     info!("The weekday is {:?}", weekday);
     weekday
 }
@@ -118,13 +110,12 @@ pub enum MeasureTwinSse {
     Distance(Box<DistanceTwinSse>),
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn multiply_by_ten_twin_sse(measure: MeasureTwinSse) -> Option<MeasureTwinSse> {
+#[flutter_rust_bridge::frb(serialize)] pub fn multiply_by_ten_twin_sse(measure: MeasureTwinSse) -> Option<MeasureTwinSse> {
     match measure {
         MeasureTwinSse::Speed(b) => match *b {
-            SpeedTwinSse::GPS(v) => {
-                Some(MeasureTwinSse::Speed(Box::new(SpeedTwinSse::GPS(v * 10.))))
-            }
+            SpeedTwinSse::GPS(v) => Some(MeasureTwinSse::Speed(Box::new(
+                SpeedTwinSse::GPS(v * 10.),
+            ))),
             SpeedTwinSse::Unknown => None,
         },
         MeasureTwinSse::Distance(b) => match *b {
@@ -163,8 +154,7 @@ pub enum KitchenSinkTwinSse {
     Enums(#[frb(default = "WeekdaysTwinSse.Sunday")] WeekdaysTwinSse),
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn handle_enum_struct_twin_sse(val: KitchenSinkTwinSse) -> KitchenSinkTwinSse {
+#[flutter_rust_bridge::frb(serialize)] pub fn handle_enum_struct_twin_sse(val: KitchenSinkTwinSse) -> KitchenSinkTwinSse {
     use KitchenSinkTwinSse::*;
     use WeekdaysTwinSse::*;
     let inc = |x| x + 1;

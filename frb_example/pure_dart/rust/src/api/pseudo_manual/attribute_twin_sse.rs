@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `attribute.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -14,19 +14,16 @@ pub struct CustomizedTwinSse {
 }
 
 #[frb(ignore)]
-#[flutter_rust_bridge::frb(serialize)]
-pub fn func_should_not_exist_in_dart_twin_sse() {}
+#[flutter_rust_bridge::frb(serialize)] pub fn func_should_not_exist_in_dart_twin_sse() {}
 
 pub struct StructWithOnlyIgnoredMethodTwinSse {}
 
 impl StructWithOnlyIgnoredMethodTwinSse {
     #[frb(ignore)]
-    #[flutter_rust_bridge::frb(serialize)]
-    pub fn method_should_not_exist_in_dart_twin_sse(&self) {}
+    #[flutter_rust_bridge::frb(serialize)] pub fn method_should_not_exist_in_dart_twin_sse(&self) {}
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn handle_customized_struct_twin_sse(val: CustomizedTwinSse) {
+#[flutter_rust_bridge::frb(serialize)] pub fn handle_customized_struct_twin_sse(val: CustomizedTwinSse) {
     info!("{:#?}", val);
 }
 
@@ -38,8 +35,7 @@ pub struct UserIdTwinSse {
 }
 
 #[frb]
-#[flutter_rust_bridge::frb(serialize)]
-pub fn next_user_id_twin_sse(
+#[flutter_rust_bridge::frb(serialize)] pub fn next_user_id_twin_sse(
     #[frb(default = "const UserIdTwinSse()")] user_id: UserIdTwinSse,
 ) -> UserIdTwinSse {
     UserIdTwinSse {
@@ -56,6 +52,5 @@ pub struct IgnoredStructTwinSse {
 }
 
 impl IgnoredStructTwinSse {
-    #[flutter_rust_bridge::frb(serialize)]
-    pub fn method_should_not_exist_in_dart_twin_sse(&self) {}
+    #[flutter_rust_bridge::frb(serialize)] pub fn method_should_not_exist_in_dart_twin_sse(&self) {}
 }

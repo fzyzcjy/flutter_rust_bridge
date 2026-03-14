@@ -1,12 +1,11 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `optional.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
 use crate::api::pseudo_manual::misc_example_twin_rust_async_sse::WeekdaysTwinRustAsyncSse;
 use crate::api::pseudo_manual::newtype_pattern_twin_rust_async_sse::NewTypeIntTwinRustAsyncSse;
 
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn handle_optional_return_twin_rust_async_sse(left: f64, right: f64) -> Option<f64> {
+#[flutter_rust_bridge::frb(serialize)] pub async fn handle_optional_return_twin_rust_async_sse(left: f64, right: f64) -> Option<f64> {
     if right == 0. {
         None
     } else {
@@ -28,10 +27,7 @@ pub struct AttributeTwinRustAsyncSse {
     pub value: String,
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn handle_optional_struct_twin_rust_async_sse(
-    document: Option<String>,
-) -> Option<ElementTwinRustAsyncSse> {
+#[flutter_rust_bridge::frb(serialize)] pub async fn handle_optional_struct_twin_rust_async_sse(document: Option<String>) -> Option<ElementTwinRustAsyncSse> {
     document.map(|inner| ElementTwinRustAsyncSse {
         tag: Some("div".to_owned()),
         attributes: Some(vec![AttributeTwinRustAsyncSse {
@@ -68,8 +64,7 @@ pub struct ExoticOptionalsTwinRustAsyncSse {
     pub newtypeint: Option<NewTypeIntTwinRustAsyncSse>,
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn handle_optional_increment_twin_rust_async_sse(
+#[flutter_rust_bridge::frb(serialize)] pub async fn handle_optional_increment_twin_rust_async_sse(
     opt: Option<ExoticOptionalsTwinRustAsyncSse>,
 ) -> Option<ExoticOptionalsTwinRustAsyncSse> {
     fn manipulate_list<T>(src: Option<Vec<T>>, push_value: T) -> Option<Vec<T>> {
@@ -118,8 +113,7 @@ pub async fn handle_optional_increment_twin_rust_async_sse(
     })
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn handle_increment_boxed_optional_twin_rust_async_sse(opt: Option<Box<f64>>) -> f64 {
+#[flutter_rust_bridge::frb(serialize)] pub async fn handle_increment_boxed_optional_twin_rust_async_sse(opt: Option<Box<f64>>) -> f64 {
     match opt {
         Some(e) => *e + 1.,
         None => 42.,
@@ -133,10 +127,7 @@ pub struct OptVecsTwinRustAsyncSse {
     pub buffers: Vec<Option<Vec<i32>>>,
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn handle_vec_of_opts_twin_rust_async_sse(
-    opt: OptVecsTwinRustAsyncSse,
-) -> OptVecsTwinRustAsyncSse {
+#[flutter_rust_bridge::frb(serialize)] pub async fn handle_vec_of_opts_twin_rust_async_sse(opt: OptVecsTwinRustAsyncSse) -> OptVecsTwinRustAsyncSse {
     fn handle<T>(mut opts: Vec<Option<T>>) -> Vec<Option<T>> {
         opts.push(None);
         opts
@@ -151,8 +142,7 @@ pub async fn handle_vec_of_opts_twin_rust_async_sse(
 
 // Option<Box<T>> can't be sent to Dart,
 // but instead can be received by Rust.
-#[flutter_rust_bridge::frb(serialize)]
-pub async fn handle_option_box_arguments_twin_rust_async_sse(
+#[flutter_rust_bridge::frb(serialize)] pub async fn handle_option_box_arguments_twin_rust_async_sse(
     i8box: Option<Box<i8>>,
     u8box: Option<Box<u8>>,
     i32box: Option<Box<i32>>,

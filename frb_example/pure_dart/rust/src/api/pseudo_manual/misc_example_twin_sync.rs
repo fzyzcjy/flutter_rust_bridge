@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `misc_example.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -14,8 +14,7 @@ pub struct MyTreeNodeTwinSync {
     pub children: Vec<MyTreeNodeTwinSync>,
 }
 
-#[flutter_rust_bridge::frb(sync)]
-pub fn handle_complex_struct_twin_sync(s: MyTreeNodeTwinSync) -> MyTreeNodeTwinSync {
+#[flutter_rust_bridge::frb(sync)] pub fn handle_complex_struct_twin_sync(s: MyTreeNodeTwinSync) -> MyTreeNodeTwinSync {
     // info!("handle_complex_struct({:?})", &s);
     let _s_cloned = s.clone();
     s
@@ -37,8 +36,9 @@ pub enum WeekdaysTwinSync {
 //     RawStringItemStruct { r#type }
 // }
 
-#[flutter_rust_bridge::frb(sync)]
-pub fn list_of_primitive_enums_twin_sync(weekdays: Vec<WeekdaysTwinSync>) -> Vec<WeekdaysTwinSync> {
+#[flutter_rust_bridge::frb(sync)] pub fn list_of_primitive_enums_twin_sync(
+    weekdays: Vec<WeekdaysTwinSync>,
+) -> Vec<WeekdaysTwinSync> {
     weekdays
 }
 
@@ -48,8 +48,7 @@ pub struct MyNestedStructTwinSync {
     pub weekday: WeekdaysTwinSync,
 }
 
-#[flutter_rust_bridge::frb(sync)]
-pub fn handle_nested_struct_twin_sync(s: MyNestedStructTwinSync) -> MyNestedStructTwinSync {
+#[flutter_rust_bridge::frb(sync)] pub fn handle_nested_struct_twin_sync(s: MyNestedStructTwinSync) -> MyNestedStructTwinSync {
     println!("handle_nested_struct({s:?})");
     let _s_cloned = s.clone();
     s
@@ -60,8 +59,7 @@ pub struct BigBuffersTwinSync {
     pub uint64: Vec<u64>,
 }
 
-#[flutter_rust_bridge::frb(sync)]
-pub fn handle_big_buffers_twin_sync() -> BigBuffersTwinSync {
+#[flutter_rust_bridge::frb(sync)] pub fn handle_big_buffers_twin_sync() -> BigBuffersTwinSync {
     BigBuffersTwinSync {
         int64: vec![i64::MIN, i64::MAX],
         uint64: vec![u64::MAX],
@@ -87,8 +85,7 @@ pub enum AbcTwinSync {
     JustInt(i32),
 }
 
-#[flutter_rust_bridge::frb(sync)]
-pub fn test_abc_enum_twin_sync(abc: AbcTwinSync) -> AbcTwinSync {
+#[flutter_rust_bridge::frb(sync)] pub fn test_abc_enum_twin_sync(abc: AbcTwinSync) -> AbcTwinSync {
     abc
 }
 
@@ -97,35 +94,30 @@ pub struct StructWithEnumTwinSync {
     pub abc2: AbcTwinSync,
 }
 
-#[flutter_rust_bridge::frb(sync)]
-pub fn test_struct_with_enum_twin_sync(se: StructWithEnumTwinSync) -> StructWithEnumTwinSync {
+#[flutter_rust_bridge::frb(sync)] pub fn test_struct_with_enum_twin_sync(se: StructWithEnumTwinSync) -> StructWithEnumTwinSync {
     StructWithEnumTwinSync {
         abc1: se.abc2,
         abc2: se.abc1,
     }
 }
 
-#[flutter_rust_bridge::frb(sync)]
-pub fn handle_string_twin_sync(s: String) -> String {
+#[flutter_rust_bridge::frb(sync)] pub fn handle_string_twin_sync(s: String) -> String {
     info!("handle_string({})", &s);
     let s2 = s.clone();
     s + &s2
 }
 
-#[flutter_rust_bridge::frb(sync)]
-pub fn handle_char_twin_sync(arg: char) -> char {
+#[flutter_rust_bridge::frb(sync)] pub fn handle_char_twin_sync(arg: char) -> char {
     arg
 }
 
 // to check that `Vec<u8>` can be used as return type
-#[flutter_rust_bridge::frb(sync)]
-pub fn handle_vec_u8_twin_sync(v: Vec<u8>) -> Vec<u8> {
+#[flutter_rust_bridge::frb(sync)] pub fn handle_vec_u8_twin_sync(v: Vec<u8>) -> Vec<u8> {
     info!("handle_vec_u8(first few elements: {:?})", &v[..5]);
     v.repeat(2)
 }
 
-#[flutter_rust_bridge::frb(sync)]
-pub fn handle_struct_twin_sync(arg: MySize, boxed: Box<MySize>) -> MySize {
+#[flutter_rust_bridge::frb(sync)] pub fn handle_struct_twin_sync(arg: MySize, boxed: Box<MySize>) -> MySize {
     info!("handle_struct({:?}, {:?})", &arg, &boxed);
     MySize {
         width: arg.width + boxed.width,
@@ -158,7 +150,6 @@ pub struct MySizeFreezedTwinSync {
 pub(super) fn visibility_restricted_func_twin_sync() {}
 
 #[frb(positional)]
-#[flutter_rust_bridge::frb(sync)]
-pub fn positional_arguments_twin_sync(a: i32, b: i32) -> i32 {
+#[flutter_rust_bridge::frb(sync)] pub fn positional_arguments_twin_sync(a: i32, b: i32) -> i32 {
     a + b
 }

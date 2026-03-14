@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `stream_misc.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -15,11 +15,7 @@ use std::thread::sleep;
 use std::time::Duration;
 
 // Do not test this on web+async, since atomic is not allowed there
-#[flutter_rust_bridge::frb(serialize)]
-pub fn func_stream_realistic_twin_sse(
-    sink: StreamSink<String, flutter_rust_bridge::SseCodec>,
-    arg: String,
-) {
+#[flutter_rust_bridge::frb(serialize)] pub fn func_stream_realistic_twin_sse(sink: StreamSink<String, flutter_rust_bridge::SseCodec>, arg: String) {
     info!("handle_stream_realistic arg={}", arg);
 
     let cnt = Arc::new(AtomicI32::new(0));
@@ -47,7 +43,6 @@ pub fn func_stream_realistic_twin_sse(
 }
 
 #[frb(stream_dart_await)]
-#[flutter_rust_bridge::frb(serialize)]
-pub fn stream_sink_dart_async_twin_sse(sink: StreamSink<i32, flutter_rust_bridge::SseCodec>) {
+#[flutter_rust_bridge::frb(serialize)] pub fn stream_sink_dart_async_twin_sse(sink: StreamSink<i32, flutter_rust_bridge::SseCodec>) {
     sink.add(100).unwrap()
 }

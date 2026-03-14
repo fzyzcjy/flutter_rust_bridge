@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `method.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -18,34 +18,24 @@ pub struct ConcatenateWithTwinSyncSse {
 }
 
 impl ConcatenateWithTwinSyncSse {
-    #[flutter_rust_bridge::frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn new_twin_sync_sse(a: String) -> ConcatenateWithTwinSyncSse {
+    #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn new_twin_sync_sse(a: String) -> ConcatenateWithTwinSyncSse {
         ConcatenateWithTwinSyncSse { a }
     }
 
-    #[flutter_rust_bridge::frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn concatenate_twin_sync_sse(&self, b: String) -> String {
+    #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn concatenate_twin_sync_sse(&self, b: String) -> String {
         format!("{}{b}", self.a)
     }
 
-    #[flutter_rust_bridge::frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn concatenate_static_twin_sync_sse(a: String, b: String) -> String {
+    #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn concatenate_static_twin_sync_sse(a: String, b: String) -> String {
         format!("{a}{b}")
     }
 
     #[frb(getter)]
-    #[flutter_rust_bridge::frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn simple_getter_twin_sync_sse(&self) -> String {
+    #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn simple_getter_twin_sync_sse(&self) -> String {
         self.a.clone()
     }
 
-    #[flutter_rust_bridge::frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn handle_some_stream_sink_twin_sync_sse(
+    #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn handle_some_stream_sink_twin_sync_sse(
         &self,
         key: u32,
         max: u32,
@@ -63,12 +53,7 @@ impl ConcatenateWithTwinSyncSse {
         }));
     }
 
-    #[flutter_rust_bridge::frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn handle_some_stream_sink_at_1_twin_sync_sse(
-        &self,
-        sink: StreamSink<u32, flutter_rust_bridge::SseCodec>,
-    ) {
+    #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn handle_some_stream_sink_at_1_twin_sync_sse(&self, sink: StreamSink<u32, flutter_rust_bridge::SseCodec>) {
         (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
             for i in 0..5 {
                 sink.add(i).unwrap();
@@ -76,9 +61,7 @@ impl ConcatenateWithTwinSyncSse {
         }));
     }
 
-    #[flutter_rust_bridge::frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn handle_some_static_stream_sink_twin_sync_sse(
+    #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn handle_some_static_stream_sink_twin_sync_sse(
         key: u32,
         max: u32,
         sink: StreamSink<Log2TwinSyncSse, flutter_rust_bridge::SseCodec>,
@@ -94,11 +77,7 @@ impl ConcatenateWithTwinSyncSse {
         }));
     }
 
-    #[flutter_rust_bridge::frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn handle_some_static_stream_sink_single_arg_twin_sync_sse(
-        sink: StreamSink<u32, flutter_rust_bridge::SseCodec>,
-    ) {
+    #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn handle_some_static_stream_sink_single_arg_twin_sync_sse(sink: StreamSink<u32, flutter_rust_bridge::SseCodec>) {
         (FLUTTER_RUST_BRIDGE_HANDLER.thread_pool()).execute(transfer!(|| {
             for i in 0..5 {
                 sink.add(i).unwrap();
@@ -112,22 +91,16 @@ pub struct SumWithTwinSyncSse {
 }
 
 impl SumWithTwinSyncSse {
-    #[flutter_rust_bridge::frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn sum_twin_sync_sse(&self, y: u32, z: u32) -> u32 {
+    #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn sum_twin_sync_sse(&self, y: u32, z: u32) -> u32 {
         self.x + y + z
     }
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-#[flutter_rust_bridge::frb(sync)]
-pub fn get_sum_struct_twin_sync_sse() -> SumWithTwinSyncSse {
+#[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn get_sum_struct_twin_sync_sse() -> SumWithTwinSyncSse {
     SumWithTwinSyncSse { x: 21 }
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-#[flutter_rust_bridge::frb(sync)]
-pub fn get_sum_array_twin_sync_sse(a: u32, b: u32, c: u32) -> [SumWithTwinSyncSse; 3] {
+#[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn get_sum_array_twin_sync_sse(a: u32, b: u32, c: u32) -> [SumWithTwinSyncSse; 3] {
     [
         SumWithTwinSyncSse { x: a },
         SumWithTwinSyncSse { x: b },
@@ -140,9 +113,7 @@ pub struct MyCallableTwinSyncSse {
 }
 
 impl MyCallableTwinSyncSse {
-    #[flutter_rust_bridge::frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn call(&self, two: String) -> String {
+    #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn call(&self, two: String) -> String {
         self.one.clone() + &two
     }
 }
@@ -152,33 +123,23 @@ pub struct SimpleStructTwinSyncSse {
 }
 
 impl SimpleStructTwinSyncSse {
-    #[flutter_rust_bridge::frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn return_self_twin_sync_sse(one: String) -> Self {
+    #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn return_self_twin_sync_sse(one: String) -> Self {
         Self { one }
     }
 
-    #[flutter_rust_bridge::frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn receiver_borrow_twin_sync_sse(&self) -> String {
+    #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn receiver_borrow_twin_sync_sse(&self) -> String {
         self.one.to_owned()
     }
 
-    #[flutter_rust_bridge::frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn receiver_own_twin_sync_sse(self) -> String {
+    #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn receiver_own_twin_sync_sse(self) -> String {
         self.one.to_owned()
     }
 
-    #[flutter_rust_bridge::frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn arg_self_twin_sync_sse(a: Self, b: Self) -> String {
+    #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn arg_self_twin_sync_sse(a: Self, b: Self) -> String {
         a.one + &b.one
     }
 
-    #[flutter_rust_bridge::frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn vec_self_twin_sync_sse(arg: Vec<Self>) -> Vec<String> {
+    #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn vec_self_twin_sync_sse(arg: Vec<Self>) -> Vec<String> {
         arg.into_iter().map(|x| x.one).collect()
     }
 }
@@ -190,15 +151,11 @@ pub enum SimpleEnumTwinSyncSse {
 }
 
 impl SimpleEnumTwinSyncSse {
-    #[flutter_rust_bridge::frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn return_self_twin_sync_sse(one: String) -> Self {
+    #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn return_self_twin_sync_sse(one: String) -> Self {
         Self::Second(one)
     }
 
-    #[flutter_rust_bridge::frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn simple_method_twin_sync_sse(&self) -> String {
+    #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn simple_method_twin_sync_sse(&self) -> String {
         match self {
             SimpleEnumTwinSyncSse::First => "".to_owned(),
             SimpleEnumTwinSyncSse::Second(inner) => inner.to_owned(),
@@ -213,9 +170,7 @@ pub enum SimplePrimitiveEnumTwinSyncSse {
 }
 
 impl SimplePrimitiveEnumTwinSyncSse {
-    #[flutter_rust_bridge::frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn simple_method_twin_sync_sse(&self) -> i32 {
+    #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn simple_method_twin_sync_sse(&self) -> i32 {
         match self {
             SimplePrimitiveEnumTwinSyncSse::First => 100,
             SimplePrimitiveEnumTwinSyncSse::Second => 200,
@@ -229,9 +184,7 @@ pub struct StaticOnlyTwinSyncSse {
 }
 
 impl StaticOnlyTwinSyncSse {
-    #[flutter_rust_bridge::frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn static_method_twin_sync_sse(a: i32) -> i32 {
+    #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn static_method_twin_sync_sse(a: i32) -> i32 {
         a
     }
 }
@@ -242,9 +195,7 @@ pub struct StaticGetterOnlyTwinSyncSse {}
 
 impl StaticGetterOnlyTwinSyncSse {
     #[frb(getter)]
-    #[flutter_rust_bridge::frb(serialize)]
-    #[flutter_rust_bridge::frb(sync)]
-    pub fn static_getter_twin_sync_sse() -> i32 {
+    #[flutter_rust_bridge::frb(serialize)] #[flutter_rust_bridge::frb(sync)] pub fn static_getter_twin_sync_sse() -> i32 {
         42
     }
 }

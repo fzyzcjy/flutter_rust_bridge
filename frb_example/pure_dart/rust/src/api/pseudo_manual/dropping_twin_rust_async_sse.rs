@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `dropping.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -25,25 +25,18 @@ impl Drop for DroppableTwinRustAsyncSse {
 }
 
 impl DroppableTwinRustAsyncSse {
-    #[flutter_rust_bridge::frb(serialize)]
-    pub async fn new_twin_rust_async_sse() -> DroppableTwinRustAsyncSse {
+    #[flutter_rust_bridge::frb(serialize)] pub async fn new_twin_rust_async_sse() -> DroppableTwinRustAsyncSse {
         Self { sink: None }
     }
 
-    #[flutter_rust_bridge::frb(serialize)]
-    pub async fn simple_method_twin_rust_async_sse(&self) {}
+    #[flutter_rust_bridge::frb(serialize)] pub async fn simple_method_twin_rust_async_sse(&self) {}
 
     // #1723
-    #[flutter_rust_bridge::frb(serialize)]
-    pub async fn create_stream_twin_rust_async_sse(
-        &mut self,
-        sink: StreamSink<i32, flutter_rust_bridge::SseCodec>,
-    ) {
+    #[flutter_rust_bridge::frb(serialize)] pub async fn create_stream_twin_rust_async_sse(&mut self, sink: StreamSink<i32, flutter_rust_bridge::SseCodec>) {
         self.sink = Some(sink);
     }
 
-    #[flutter_rust_bridge::frb(serialize)]
-    pub async fn get_drop_count_twin_rust_async_sse() -> i32 {
+    #[flutter_rust_bridge::frb(serialize)] pub async fn get_drop_count_twin_rust_async_sse() -> i32 {
         DROP_COUNT.load(Ordering::SeqCst)
     }
 }

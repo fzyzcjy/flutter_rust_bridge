@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests,
+// NOTE: This file is mimicking how a human developer writes tests, 
 // and is auto-generated from `event_listener.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -13,8 +13,7 @@ use lazy_static::lazy_static;
 use std::sync::Mutex;
 
 lazy_static! {
-    static ref EVENTS: Mutex<Option<StreamSink<EventTwinSse, flutter_rust_bridge::SseCodec>>> =
-        Default::default();
+    static ref EVENTS: Mutex<Option<StreamSink<EventTwinSse, flutter_rust_bridge::SseCodec>>> = Default::default();
 }
 
 #[frb(dart_metadata = ("freezed"))]
@@ -25,17 +24,13 @@ pub struct EventTwinSse {
 }
 
 impl EventTwinSse {
-    #[flutter_rust_bridge::frb(serialize)]
-    pub fn as_string_twin_sse(&self) -> String {
+    #[flutter_rust_bridge::frb(serialize)] pub fn as_string_twin_sse(&self) -> String {
         format!("{}: {}", self.address, self.payload)
     }
 }
 
 #[frb(stream_dart_await)]
-#[flutter_rust_bridge::frb(serialize)]
-pub fn register_event_listener_twin_sse(
-    listener: StreamSink<EventTwinSse, flutter_rust_bridge::SseCodec>,
-) -> Result<()> {
+#[flutter_rust_bridge::frb(serialize)] pub fn register_event_listener_twin_sse(listener: StreamSink<EventTwinSse, flutter_rust_bridge::SseCodec>) -> Result<()> {
     match EVENTS.lock() {
         Ok(mut guard) => {
             *guard = Some(listener);
@@ -45,16 +40,16 @@ pub fn register_event_listener_twin_sse(
     }
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn close_event_listener_twin_sse() {
+#[flutter_rust_bridge::frb(serialize)] pub fn close_event_listener_twin_sse() {
     let _ = EVENTS.lock().map(|mut guard| guard.take());
 }
 
-#[flutter_rust_bridge::frb(serialize)]
-pub fn create_event_twin_sse(address: String, payload: String) {
+#[flutter_rust_bridge::frb(serialize)] pub fn create_event_twin_sse(address: String, payload: String) {
     if let Ok(mut guard) = EVENTS.lock() {
         if let Some(sink) = guard.as_mut() {
             sink.add(EventTwinSse { address, payload }).unwrap();
         }
     }
 }
+
+
