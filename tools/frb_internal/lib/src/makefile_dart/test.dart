@@ -547,9 +547,16 @@ String _dartValgrindCompileCommand() {
 }
 
 @visibleForTesting
+String dartValgrindCompileCommandForTesting() => _dartValgrindCompileCommand();
+
+@visibleForTesting
 String _dartValgrindOutputDirectory(String package) {
   return '${exec.pwd}$package/build/valgrind_test_output';
 }
+
+@visibleForTesting
+String dartValgrindOutputDirectoryForTesting(String package) =>
+    _dartValgrindOutputDirectory(package);
 
 @visibleForTesting
 String _dartValgrindCargoBuildCommand(String package) {
@@ -557,6 +564,10 @@ String _dartValgrindCargoBuildCommand(String package) {
   return 'cargo build --release ${feature != null ? "--features $feature" : ""}'
       .trim();
 }
+
+@visibleForTesting
+String dartValgrindCargoBuildCommandForTesting(String package) =>
+    _dartValgrindCargoBuildCommand(package);
 
 String _dartValgrindRustPackageDirectory(String package) {
   return '$package/rust';
@@ -566,6 +577,10 @@ String _dartValgrindRustPackageDirectory(String package) {
 String _dartValgrindRustNativeLibDirectory(String package) {
   return '${exec.pwd}${_dartValgrindRustPackageDirectory(package)}/target/release';
 }
+
+@visibleForTesting
+String dartValgrindRustNativeLibDirectoryForTesting(String package) =>
+    _dartValgrindRustNativeLibDirectory(package);
 
 String _dartValgrindOutputExecutablePath() {
   return 'build/valgrind_test_output/dart_valgrind_test_entrypoint.exe';
