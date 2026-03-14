@@ -39,14 +39,10 @@ fn setup_backtrace() {
 #[cfg(feature = "log")]
 fn setup_log_to_console(#[allow(unused)] level: log::LevelFilter) {
     #[cfg(target_os = "android")]
-    let _ = android_logger::init_once(
-        android_logger::Config::default().with_max_level(level),
-    );
+    let _ = android_logger::init_once(android_logger::Config::default().with_max_level(level));
 
     #[cfg(any(target_os = "ios", target_os = "macos"))]
-    let _ = oslog::OsLogger::new("frb_user")
-        .level_filter(level)
-        .init();
+    let _ = oslog::OsLogger::new("frb_user").level_filter(level).init();
 
     #[cfg(target_family = "wasm")]
     let _ = crate::misc::web_utils::WebConsoleLogger::init(level);
