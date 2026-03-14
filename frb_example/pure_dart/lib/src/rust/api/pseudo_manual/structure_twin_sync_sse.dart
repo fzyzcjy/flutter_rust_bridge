@@ -10,60 +10,53 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 StructWithZeroFieldTwinSyncSse funcStructWithZeroFieldTwinSyncSse({
   required StructWithZeroFieldTwinSyncSse arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualStructureTwinSyncSseFuncStructWithZeroFieldTwinSyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualStructureTwinSyncSseFuncStructWithZeroFieldTwinSyncSse(
       arg: arg,
     );
 
 StructWithOneFieldTwinSyncSse funcStructWithOneFieldTwinSyncSse({
   required StructWithOneFieldTwinSyncSse arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualStructureTwinSyncSseFuncStructWithOneFieldTwinSyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualStructureTwinSyncSseFuncStructWithOneFieldTwinSyncSse(
       arg: arg,
     );
 
 StructWithTwoFieldTwinSyncSse funcStructWithTwoFieldTwinSyncSse({
   required StructWithTwoFieldTwinSyncSse arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualStructureTwinSyncSseFuncStructWithTwoFieldTwinSyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualStructureTwinSyncSseFuncStructWithTwoFieldTwinSyncSse(
       arg: arg,
     );
 
 TupleStructWithOneFieldTwinSyncSse funcTupleStructWithOneFieldTwinSyncSse({
   required TupleStructWithOneFieldTwinSyncSse arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualStructureTwinSyncSseFuncTupleStructWithOneFieldTwinSyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualStructureTwinSyncSseFuncTupleStructWithOneFieldTwinSyncSse(
       arg: arg,
     );
 
 TupleStructWithTwoFieldTwinSyncSse funcTupleStructWithTwoFieldTwinSyncSse({
   required TupleStructWithTwoFieldTwinSyncSse arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualStructureTwinSyncSseFuncTupleStructWithTwoFieldTwinSyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualStructureTwinSyncSseFuncTupleStructWithTwoFieldTwinSyncSse(
       arg: arg,
     );
 
 StructWithFieldRenameTwinSyncSse funcForStructWithFieldRenameTwinSyncSse({
   required StructWithFieldRenameTwinSyncSse arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualStructureTwinSyncSseFuncForStructWithFieldRenameTwinSyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualStructureTwinSyncSseFuncForStructWithFieldRenameTwinSyncSse(
       arg: arg,
     );
 
 StructWithDartKeywordFieldTwinSyncSse
-    funcForStructWithDartKeywordFieldTwinSyncSse({
+funcForStructWithDartKeywordFieldTwinSyncSse({
   required StructWithDartKeywordFieldTwinSyncSse arg,
-}) =>
-        RustLib.instance.api
-            .crateApiPseudoManualStructureTwinSyncSseFuncForStructWithDartKeywordFieldTwinSyncSse(
-          arg: arg,
-        );
+}) => RustLib.instance.api
+    .crateApiPseudoManualStructureTwinSyncSseFuncForStructWithDartKeywordFieldTwinSyncSse(
+      arg: arg,
+    );
 
 class StructWithDartKeywordFieldTwinSyncSse {
   final int class_;

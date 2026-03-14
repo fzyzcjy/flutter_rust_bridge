@@ -9,141 +9,145 @@ import '../../frb_generated.dart';
 import 'basic.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<int?> exampleBasicOptionalTypeI8TwinNormal({int? arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeI8TwinNormal(
+Future<int?> exampleBasicOptionalTypeI8TwinNormal({int? arg}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeI8TwinNormal(
       arg: arg,
     );
 
-Future<int?> exampleBasicOptionalTypeI16TwinNormal({int? arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeI16TwinNormal(
+Future<int?> exampleBasicOptionalTypeI16TwinNormal({int? arg}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeI16TwinNormal(
       arg: arg,
     );
 
-Future<int?> exampleBasicOptionalTypeI32TwinNormal({int? arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeI32TwinNormal(
+Future<int?> exampleBasicOptionalTypeI32TwinNormal({int? arg}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeI32TwinNormal(
       arg: arg,
     );
 
 Future<PlatformInt64?> exampleBasicOptionalTypeI64TwinNormal({
   PlatformInt64? arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeI64TwinNormal(
+}) => RustLib.instance.api
+    .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeI64TwinNormal(
       arg: arg,
     );
 
-Future<BigInt?> exampleBasicOptionalTypeI128TwinNormal({BigInt? arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeI128TwinNormal(
+Future<BigInt?> exampleBasicOptionalTypeI128TwinNormal({BigInt? arg}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeI128TwinNormal(
       arg: arg,
     );
 
-Future<int?> exampleBasicOptionalTypeU8TwinNormal({int? arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeU8TwinNormal(
+Future<int?> exampleBasicOptionalTypeU8TwinNormal({int? arg}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeU8TwinNormal(
       arg: arg,
     );
 
-Future<int?> exampleBasicOptionalTypeU16TwinNormal({int? arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeU16TwinNormal(
+Future<int?> exampleBasicOptionalTypeU16TwinNormal({int? arg}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeU16TwinNormal(
       arg: arg,
     );
 
-Future<int?> exampleBasicOptionalTypeU32TwinNormal({int? arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeU32TwinNormal(
+Future<int?> exampleBasicOptionalTypeU32TwinNormal({int? arg}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeU32TwinNormal(
       arg: arg,
     );
 
-Future<BigInt?> exampleBasicOptionalTypeU64TwinNormal({BigInt? arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeU64TwinNormal(
+Future<BigInt?> exampleBasicOptionalTypeU64TwinNormal({BigInt? arg}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeU64TwinNormal(
       arg: arg,
     );
 
-Future<BigInt?> exampleBasicOptionalTypeU128TwinNormal({BigInt? arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeU128TwinNormal(
+Future<BigInt?> exampleBasicOptionalTypeU128TwinNormal({BigInt? arg}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeU128TwinNormal(
       arg: arg,
     );
 
 Future<PlatformInt64?> exampleBasicOptionalTypeIsizeTwinNormal({
   PlatformInt64? arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeIsizeTwinNormal(
+}) => RustLib.instance.api
+    .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeIsizeTwinNormal(
       arg: arg,
     );
 
 Future<BigInt?> exampleBasicOptionalTypeUsizeTwinNormal({
   BigInt? arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeUsizeTwinNormal(
+}) => RustLib.instance.api
+    .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeUsizeTwinNormal(
       arg: arg,
     );
 
-Future<double?> exampleBasicOptionalTypeF32TwinNormal({double? arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeF32TwinNormal(
+Future<double?> exampleBasicOptionalTypeF32TwinNormal({double? arg}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeF32TwinNormal(
       arg: arg,
     );
 
-Future<double?> exampleBasicOptionalTypeF64TwinNormal({double? arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeF64TwinNormal(
+Future<double?> exampleBasicOptionalTypeF64TwinNormal({double? arg}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeF64TwinNormal(
       arg: arg,
     );
 
-Future<bool?> exampleBasicOptionalTypeBoolTwinNormal({bool? arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeBoolTwinNormal(
+Future<bool?> exampleBasicOptionalTypeBoolTwinNormal({bool? arg}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeBoolTwinNormal(
       arg: arg,
     );
 
 Future<String?> exampleBasicOptionalTypeStringTwinNormal({
   String? arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeStringTwinNormal(
+}) => RustLib.instance.api
+    .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeStringTwinNormal(
       arg: arg,
     );
 
 Future<Uint8List?> exampleBasicOptionalTypeBytesTwinNormal({
   Uint8List? arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeBytesTwinNormal(
+}) => RustLib.instance.api
+    .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeBytesTwinNormal(
       arg: arg,
     );
 
 Future<BasicPrimitiveEnumTwinNormal?>
-    exampleBasicOptionalTypeBasicPrimitiveEnumTwinNormalTwinNormal({
+exampleBasicOptionalTypeBasicPrimitiveEnumTwinNormalTwinNormal({
   BasicPrimitiveEnumTwinNormal? arg,
-}) =>
-        RustLib.instance.api
-            .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeBasicPrimitiveEnumTwinNormalTwinNormal(
-          arg: arg,
-        );
+}) => RustLib.instance.api
+    .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeBasicPrimitiveEnumTwinNormalTwinNormal(
+      arg: arg,
+    );
 
 Future<BasicGeneralEnumTwinNormal?>
-    exampleBasicOptionalTypeBasicGeneralEnumTwinNormalTwinNormal({
+exampleBasicOptionalTypeBasicGeneralEnumTwinNormalTwinNormal({
   BasicGeneralEnumTwinNormal? arg,
-}) =>
-        RustLib.instance.api
-            .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeBasicGeneralEnumTwinNormalTwinNormal(
-          arg: arg,
-        );
+}) => RustLib.instance.api
+    .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeBasicGeneralEnumTwinNormalTwinNormal(
+      arg: arg,
+    );
 
 Future<BasicStructTwinNormal?>
-    exampleBasicOptionalTypeBasicStructTwinNormalTwinNormal({
+exampleBasicOptionalTypeBasicStructTwinNormalTwinNormal({
   BasicStructTwinNormal? arg,
-}) =>
-        RustLib.instance.api
-            .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeBasicStructTwinNormalTwinNormal(
-          arg: arg,
-        );
+}) => RustLib.instance.api
+    .crateApiPseudoManualBasicOptionalExampleBasicOptionalTypeBasicStructTwinNormalTwinNormal(
+      arg: arg,
+    );

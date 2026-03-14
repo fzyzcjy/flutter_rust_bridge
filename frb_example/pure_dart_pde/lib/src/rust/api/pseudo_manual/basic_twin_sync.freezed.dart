@@ -21,40 +21,34 @@ mixin _$BasicGeneralEnumTwinSync {
   TResult when<TResult extends Object?>({
     required TResult Function(String field) apple,
     required TResult Function() orange,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String field)? apple,
     TResult? Function()? orange,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String field)? apple,
     TResult Function()? orange,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(BasicGeneralEnumTwinSync_Apple value) apple,
     required TResult Function(BasicGeneralEnumTwinSync_Orange value) orange,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(BasicGeneralEnumTwinSync_Apple value)? apple,
     TResult? Function(BasicGeneralEnumTwinSync_Orange value)? orange,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(BasicGeneralEnumTwinSync_Apple value)? apple,
     TResult Function(BasicGeneralEnumTwinSync_Orange value)? orange,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -66,8 +60,10 @@ abstract class $BasicGeneralEnumTwinSyncCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$BasicGeneralEnumTwinSyncCopyWithImpl<$Res,
-        $Val extends BasicGeneralEnumTwinSync>
+class _$BasicGeneralEnumTwinSyncCopyWithImpl<
+  $Res,
+  $Val extends BasicGeneralEnumTwinSync
+>
     implements $BasicGeneralEnumTwinSyncCopyWith<$Res> {
   _$BasicGeneralEnumTwinSyncCopyWithImpl(this._value, this._then);
 
@@ -92,8 +88,11 @@ abstract class _$$BasicGeneralEnumTwinSync_AppleImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$BasicGeneralEnumTwinSync_AppleImplCopyWithImpl<$Res>
-    extends _$BasicGeneralEnumTwinSyncCopyWithImpl<$Res,
-        _$BasicGeneralEnumTwinSync_AppleImpl>
+    extends
+        _$BasicGeneralEnumTwinSyncCopyWithImpl<
+          $Res,
+          _$BasicGeneralEnumTwinSync_AppleImpl
+        >
     implements _$$BasicGeneralEnumTwinSync_AppleImplCopyWith<$Res> {
   __$$BasicGeneralEnumTwinSync_AppleImplCopyWithImpl(
     _$BasicGeneralEnumTwinSync_AppleImpl _value,
@@ -110,7 +109,7 @@ class __$$BasicGeneralEnumTwinSync_AppleImplCopyWithImpl<$Res>
         field: null == field
             ? _value.field
             : field // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -147,9 +146,12 @@ class _$BasicGeneralEnumTwinSync_AppleImpl
   @override
   @pragma('vm:prefer-inline')
   _$$BasicGeneralEnumTwinSync_AppleImplCopyWith<
-          _$BasicGeneralEnumTwinSync_AppleImpl>
-      get copyWith => __$$BasicGeneralEnumTwinSync_AppleImplCopyWithImpl<
-          _$BasicGeneralEnumTwinSync_AppleImpl>(this, _$identity);
+    _$BasicGeneralEnumTwinSync_AppleImpl
+  >
+  get copyWith =>
+      __$$BasicGeneralEnumTwinSync_AppleImplCopyWithImpl<
+        _$BasicGeneralEnumTwinSync_AppleImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -225,8 +227,9 @@ abstract class BasicGeneralEnumTwinSync_Apple extends BasicGeneralEnumTwinSync {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BasicGeneralEnumTwinSync_AppleImplCopyWith<
-          _$BasicGeneralEnumTwinSync_AppleImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$BasicGeneralEnumTwinSync_AppleImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -239,8 +242,11 @@ abstract class _$$BasicGeneralEnumTwinSync_OrangeImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$BasicGeneralEnumTwinSync_OrangeImplCopyWithImpl<$Res>
-    extends _$BasicGeneralEnumTwinSyncCopyWithImpl<$Res,
-        _$BasicGeneralEnumTwinSync_OrangeImpl>
+    extends
+        _$BasicGeneralEnumTwinSyncCopyWithImpl<
+          $Res,
+          _$BasicGeneralEnumTwinSync_OrangeImpl
+        >
     implements _$$BasicGeneralEnumTwinSync_OrangeImplCopyWith<$Res> {
   __$$BasicGeneralEnumTwinSync_OrangeImplCopyWithImpl(
     _$BasicGeneralEnumTwinSync_OrangeImpl _value,

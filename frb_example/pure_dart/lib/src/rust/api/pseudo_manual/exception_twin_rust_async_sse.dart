@@ -21,9 +21,8 @@ Future<int> funcTypeInfalliblePanicTwinRustAsyncSse() => RustLib.instance.api
 
 Future<int> customEnumErrorReturnOkTwinRustAsyncSse({
   required int arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualExceptionTwinRustAsyncSseCustomEnumErrorReturnOkTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualExceptionTwinRustAsyncSseCustomEnumErrorReturnOkTwinRustAsyncSse(
       arg: arg,
     );
 
@@ -35,17 +34,15 @@ Future<int> customEnumErrorReturnErrorTwinRustAsyncSse() => RustLib.instance.api
 
 Future<void> customNestedErrorReturnErrorTwinRustAsyncSse({
   required CustomNestedErrorOuterTwinRustAsyncSse arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualExceptionTwinRustAsyncSseCustomNestedErrorReturnErrorTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualExceptionTwinRustAsyncSseCustomNestedErrorReturnErrorTwinRustAsyncSse(
       arg: arg,
     );
 
 Future<void> customStructErrorReturnErrorTwinRustAsyncSse({
   required CustomStructErrorTwinRustAsyncSse arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualExceptionTwinRustAsyncSseCustomStructErrorReturnErrorTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualExceptionTwinRustAsyncSseCustomStructErrorReturnErrorTwinRustAsyncSse(
       arg: arg,
     );
 
@@ -57,9 +54,8 @@ Future<int> returnOkCustomErrorTwinRustAsyncSse() => RustLib.instance.api
 
 Future<int> returnErrorVariantTwinRustAsyncSse({
   required int variant,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualExceptionTwinRustAsyncSseReturnErrorVariantTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualExceptionTwinRustAsyncSseReturnErrorVariantTwinRustAsyncSse(
       variant: variant,
     );
 
@@ -67,7 +63,8 @@ Future<void> returnCustomNestedError1TwinRustAsyncSse() => RustLib.instance.api
     .crateApiPseudoManualExceptionTwinRustAsyncSseReturnCustomNestedError1TwinRustAsyncSse();
 
 Future<void> returnCustomNestedError1Variant1TwinRustAsyncSse() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualExceptionTwinRustAsyncSseReturnCustomNestedError1Variant1TwinRustAsyncSse();
 
 Future<void> returnCustomNestedError2TwinRustAsyncSse() => RustLib.instance.api
@@ -86,7 +83,8 @@ Future<void> panicWithCustomResultTwinRustAsyncSse() => RustLib.instance.api
     .crateApiPseudoManualExceptionTwinRustAsyncSsePanicWithCustomResultTwinRustAsyncSse();
 
 Future<Stream<String>> streamSinkThrowAnyhowTwinRustAsyncSse() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualExceptionTwinRustAsyncSseStreamSinkThrowAnyhowTwinRustAsyncSse();
 
 @freezed
@@ -214,30 +212,33 @@ class CustomStructTwinRustAsyncSse {
 
   static Future<CustomStructTwinRustAsyncSse> newTwinRustAsyncSse({
     required String message,
-  }) =>
-      RustLib.instance.api
-          .crateApiPseudoManualExceptionTwinRustAsyncSseCustomStructTwinRustAsyncSseNewTwinRustAsyncSse(
+  }) => RustLib.instance.api
+      .crateApiPseudoManualExceptionTwinRustAsyncSseCustomStructTwinRustAsyncSseNewTwinRustAsyncSse(
         message: message,
       );
 
-  Future<void> nonstaticReturnCustomStructErrorTwinRustAsyncSse() =>
-      RustLib.instance.api
-          .crateApiPseudoManualExceptionTwinRustAsyncSseCustomStructTwinRustAsyncSseNonstaticReturnCustomStructErrorTwinRustAsyncSse(
+  Future<void> nonstaticReturnCustomStructErrorTwinRustAsyncSse() => RustLib
+      .instance
+      .api
+      .crateApiPseudoManualExceptionTwinRustAsyncSseCustomStructTwinRustAsyncSseNonstaticReturnCustomStructErrorTwinRustAsyncSse(
         that: this,
       );
 
-  Future<int> nonstaticReturnCustomStructOkTwinRustAsyncSse() =>
-      RustLib.instance.api
-          .crateApiPseudoManualExceptionTwinRustAsyncSseCustomStructTwinRustAsyncSseNonstaticReturnCustomStructOkTwinRustAsyncSse(
+  Future<int> nonstaticReturnCustomStructOkTwinRustAsyncSse() => RustLib
+      .instance
+      .api
+      .crateApiPseudoManualExceptionTwinRustAsyncSseCustomStructTwinRustAsyncSseNonstaticReturnCustomStructOkTwinRustAsyncSse(
         that: this,
       );
 
   static Future<void> staticReturnCustomStructErrorTwinRustAsyncSse() => RustLib
-      .instance.api
+      .instance
+      .api
       .crateApiPseudoManualExceptionTwinRustAsyncSseCustomStructTwinRustAsyncSseStaticReturnCustomStructErrorTwinRustAsyncSse();
 
   static Future<int> staticReturnCustomStructOkTwinRustAsyncSse() => RustLib
-      .instance.api
+      .instance
+      .api
       .crateApiPseudoManualExceptionTwinRustAsyncSseCustomStructTwinRustAsyncSseStaticReturnCustomStructOkTwinRustAsyncSse();
 
   @override
@@ -258,30 +259,33 @@ class SomeStructTwinRustAsyncSse {
 
   static Future<SomeStructTwinRustAsyncSse> newTwinRustAsyncSse({
     required int value,
-  }) =>
-      RustLib.instance.api
-          .crateApiPseudoManualExceptionTwinRustAsyncSseSomeStructTwinRustAsyncSseNewTwinRustAsyncSse(
+  }) => RustLib.instance.api
+      .crateApiPseudoManualExceptionTwinRustAsyncSseSomeStructTwinRustAsyncSseNewTwinRustAsyncSse(
         value: value,
       );
 
-  Future<int> nonStaticReturnErrCustomErrorTwinRustAsyncSse() =>
-      RustLib.instance.api
-          .crateApiPseudoManualExceptionTwinRustAsyncSseSomeStructTwinRustAsyncSseNonStaticReturnErrCustomErrorTwinRustAsyncSse(
+  Future<int> nonStaticReturnErrCustomErrorTwinRustAsyncSse() => RustLib
+      .instance
+      .api
+      .crateApiPseudoManualExceptionTwinRustAsyncSseSomeStructTwinRustAsyncSseNonStaticReturnErrCustomErrorTwinRustAsyncSse(
         that: this,
       );
 
-  Future<int> nonStaticReturnOkCustomErrorTwinRustAsyncSse() =>
-      RustLib.instance.api
-          .crateApiPseudoManualExceptionTwinRustAsyncSseSomeStructTwinRustAsyncSseNonStaticReturnOkCustomErrorTwinRustAsyncSse(
+  Future<int> nonStaticReturnOkCustomErrorTwinRustAsyncSse() => RustLib
+      .instance
+      .api
+      .crateApiPseudoManualExceptionTwinRustAsyncSseSomeStructTwinRustAsyncSseNonStaticReturnOkCustomErrorTwinRustAsyncSse(
         that: this,
       );
 
   static Future<int> staticReturnErrCustomErrorTwinRustAsyncSse() => RustLib
-      .instance.api
+      .instance
+      .api
       .crateApiPseudoManualExceptionTwinRustAsyncSseSomeStructTwinRustAsyncSseStaticReturnErrCustomErrorTwinRustAsyncSse();
 
   static Future<int> staticReturnOkCustomErrorTwinRustAsyncSse() => RustLib
-      .instance.api
+      .instance
+      .api
       .crateApiPseudoManualExceptionTwinRustAsyncSseSomeStructTwinRustAsyncSseStaticReturnOkCustomErrorTwinRustAsyncSse();
 
   @override

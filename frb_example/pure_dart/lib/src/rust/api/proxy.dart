@@ -12,9 +12,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 abstract class MyAudioParamTwinNormal implements RustOpaqueInterface {
   static Future<MyAudioParamTwinNormal> createTwinNormal({
     required String value,
-  }) =>
-      RustLib.instance.api
-          .crateApiProxyMyAudioParamTwinNormalCreateTwinNormal(value: value);
+  }) => RustLib.instance.api
+      .crateApiProxyMyAudioParamTwinNormalCreateTwinNormal(value: value);
 
   Future<String> myMethodTwinNormal();
 }

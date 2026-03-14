@@ -17,35 +17,33 @@ HideDataTwinSyncSseMoi createOpaqueTwinSyncSseMoi() => RustLib.instance.api
 
 HideDataTwinSyncSseMoi? createOptionOpaqueTwinSyncSseMoi({
   HideDataTwinSyncSseMoi? opaque,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSyncSseMoiCreateOptionOpaqueTwinSyncSseMoi(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustOpaqueTwinSyncSseMoiCreateOptionOpaqueTwinSyncSseMoi(
       opaque: opaque,
     );
 
 EnumOpaqueTwinSyncSseMoiArray5 createArrayOpaqueEnumTwinSyncSseMoi() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualRustOpaqueTwinSyncSseMoiCreateArrayOpaqueEnumTwinSyncSseMoi();
 
 String runEnumOpaqueTwinSyncSseMoi({
   required EnumOpaqueTwinSyncSseMoi opaque,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSyncSseMoiRunEnumOpaqueTwinSyncSseMoi(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustOpaqueTwinSyncSseMoiRunEnumOpaqueTwinSyncSseMoi(
       opaque: opaque,
     );
 
 String runOpaqueTwinSyncSseMoi({required HideDataTwinSyncSseMoi opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinSyncSseMoiRunOpaqueTwinSyncSseMoi(
-      opaque: opaque,
-    );
+          opaque: opaque,
+        );
 
 String runOpaqueWithDelayTwinSyncSseMoi({
   required HideDataTwinSyncSseMoi opaque,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSyncSseMoiRunOpaqueWithDelayTwinSyncSseMoi(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustOpaqueTwinSyncSseMoiRunOpaqueWithDelayTwinSyncSseMoi(
       opaque: opaque,
     );
 
@@ -55,14 +53,13 @@ HideDataTwinSyncSseMoiArray2 opaqueArrayTwinSyncSseMoi() => RustLib.instance.api
 String runNonCloneTwinSyncSseMoi({required NonCloneDataTwinSyncSseMoi clone}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinSyncSseMoiRunNonCloneTwinSyncSseMoi(
-      clone: clone,
-    );
+          clone: clone,
+        );
 
 void opaqueArrayRunTwinSyncSseMoi({
   required HideDataTwinSyncSseMoiArray2 data,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSyncSseMoiOpaqueArrayRunTwinSyncSseMoi(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustOpaqueTwinSyncSseMoiOpaqueArrayRunTwinSyncSseMoi(
       data: data,
     );
 
@@ -72,26 +69,25 @@ List<HideDataTwinSyncSseMoi> opaqueVecTwinSyncSseMoi() => RustLib.instance.api
 void opaqueVecRunTwinSyncSseMoi({required List<HideDataTwinSyncSseMoi> data}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinSyncSseMoiOpaqueVecRunTwinSyncSseMoi(
-      data: data,
-    );
+          data: data,
+        );
 
 OpaqueNestedTwinSyncSseMoi createNestedOpaqueTwinSyncSseMoi() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualRustOpaqueTwinSyncSseMoiCreateNestedOpaqueTwinSyncSseMoi();
 
 void runNestedOpaqueTwinSyncSseMoi({
   required OpaqueNestedTwinSyncSseMoi opaque,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSyncSseMoiRunNestedOpaqueTwinSyncSseMoi(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustOpaqueTwinSyncSseMoiRunNestedOpaqueTwinSyncSseMoi(
       opaque: opaque,
     );
 
 String unwrapRustOpaqueTwinSyncSseMoi({
   required HideDataTwinSyncSseMoi opaque,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSyncSseMoiUnwrapRustOpaqueTwinSyncSseMoi(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustOpaqueTwinSyncSseMoiUnwrapRustOpaqueTwinSyncSseMoi(
       opaque: opaque,
     );
 
@@ -99,7 +95,8 @@ String unwrapRustOpaqueTwinSyncSseMoi({
 /// FrbOpaqueReturn must be only return type.
 /// FrbOpaqueReturn must not be used as an argument.
 FrbOpaqueReturnTwinSyncSseMoi frbGeneratorTestTwinSyncSseMoi() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualRustOpaqueTwinSyncSseMoiFrbGeneratorTestTwinSyncSseMoi();
 
 // Rust type: RustOpaqueMoi<Box < dyn DartDebugTwinSyncSseMoi >>
@@ -120,11 +117,11 @@ class HideDataTwinSyncSseMoiArray2
   final List<HideDataTwinSyncSseMoi> _inner;
 
   HideDataTwinSyncSseMoiArray2(this._inner)
-      : assert(_inner.length == arraySize),
-        super(_inner);
+    : assert(_inner.length == arraySize),
+      super(_inner);
 
   HideDataTwinSyncSseMoiArray2.init(HideDataTwinSyncSseMoi fill)
-      : this(List<HideDataTwinSyncSseMoi>.filled(arraySize, fill));
+    : this(List<HideDataTwinSyncSseMoi>.filled(arraySize, fill));
 }
 
 // Rust type: RustOpaqueMoi<Mutex < HideDataTwinSyncSseMoi >>
@@ -166,11 +163,11 @@ class EnumOpaqueTwinSyncSseMoiArray5
   final List<EnumOpaqueTwinSyncSseMoi> _inner;
 
   EnumOpaqueTwinSyncSseMoiArray5(this._inner)
-      : assert(_inner.length == arraySize),
-        super(_inner);
+    : assert(_inner.length == arraySize),
+      super(_inner);
 
   EnumOpaqueTwinSyncSseMoiArray5.init(EnumOpaqueTwinSyncSseMoi fill)
-      : this(List<EnumOpaqueTwinSyncSseMoi>.filled(arraySize, fill));
+    : this(List<EnumOpaqueTwinSyncSseMoi>.filled(arraySize, fill));
 }
 
 /// [`HideDataTwinSyncSseMoi`] has private fields.

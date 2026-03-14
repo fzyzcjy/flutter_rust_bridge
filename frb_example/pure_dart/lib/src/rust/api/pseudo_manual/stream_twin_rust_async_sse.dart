@@ -13,33 +13,33 @@ import 'stream_twin_rust_async.dart';
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 
 Future<Stream<String>> funcStreamReturnErrorTwinRustAsyncSse() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualStreamTwinRustAsyncSseFuncStreamReturnErrorTwinRustAsyncSse();
 
 Future<Stream<String>> funcStreamReturnPanicTwinRustAsyncSse() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualStreamTwinRustAsyncSseFuncStreamReturnPanicTwinRustAsyncSse();
 
 Stream<int> funcStreamSinkArgPositionTwinRustAsyncSse({
   required int a,
   required int b,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualStreamTwinRustAsyncSseFuncStreamSinkArgPositionTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualStreamTwinRustAsyncSseFuncStreamSinkArgPositionTwinRustAsyncSse(
       a: a,
       b: b,
     );
 
-Stream<MyStreamEntryTwinRustAsyncSse> handleStreamOfStructTwinRustAsyncSse() =>
-    RustLib.instance.api
-        .crateApiPseudoManualStreamTwinRustAsyncSseHandleStreamOfStructTwinRustAsyncSse();
+Stream<MyStreamEntryTwinRustAsyncSse>
+handleStreamOfStructTwinRustAsyncSse() => RustLib.instance.api
+    .crateApiPseudoManualStreamTwinRustAsyncSseHandleStreamOfStructTwinRustAsyncSse();
 
 Stream<LogTwinRustAsyncSse> handleStreamSinkAt1TwinRustAsyncSse({
   required int key,
   required int max,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualStreamTwinRustAsyncSseHandleStreamSinkAt1TwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualStreamTwinRustAsyncSseHandleStreamSinkAt1TwinRustAsyncSse(
       key: key,
       max: max,
     );
@@ -47,9 +47,8 @@ Stream<LogTwinRustAsyncSse> handleStreamSinkAt1TwinRustAsyncSse({
 Stream<LogTwinRustAsyncSse> handleStreamSinkAt2TwinRustAsyncSse({
   required int key,
   required int max,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualStreamTwinRustAsyncSseHandleStreamSinkAt2TwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualStreamTwinRustAsyncSseHandleStreamSinkAt2TwinRustAsyncSse(
       key: key,
       max: max,
     );
@@ -57,30 +56,28 @@ Stream<LogTwinRustAsyncSse> handleStreamSinkAt2TwinRustAsyncSse({
 Stream<LogTwinRustAsyncSse> handleStreamSinkAt3TwinRustAsyncSse({
   required int key,
   required int max,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualStreamTwinRustAsyncSseHandleStreamSinkAt3TwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualStreamTwinRustAsyncSseHandleStreamSinkAt3TwinRustAsyncSse(
       key: key,
       max: max,
     );
 
 Stream<U8Array2> streamSinkFixedSizedPrimitiveArrayTwinRustAsyncSse() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualStreamTwinRustAsyncSseStreamSinkFixedSizedPrimitiveArrayTwinRustAsyncSse();
 
 Future<void> streamSinkInsideVecTwinRustAsyncSse({
   required List<RustStreamSink<int>> arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualStreamTwinRustAsyncSseStreamSinkInsideVecTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualStreamTwinRustAsyncSseStreamSinkInsideVecTwinRustAsyncSse(
       arg: arg,
     );
 
 Future<void> streamSinkInsideStructTwinRustAsyncSse({
   required MyStructContainingStreamSinkTwinRustAsyncSse arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualStreamTwinRustAsyncSseStreamSinkInsideStructTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualStreamTwinRustAsyncSseStreamSinkInsideStructTwinRustAsyncSse(
       arg: arg,
     );
 

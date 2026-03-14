@@ -12,9 +12,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 NewTypeIntTwinSyncSse handleNewtypeTwinSyncSse({
   required NewTypeIntTwinSyncSse arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualNewtypePatternTwinSyncSseHandleNewtypeTwinSyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualNewtypePatternTwinSyncSseHandleNewtypeTwinSyncSse(
       arg: arg,
     );
 

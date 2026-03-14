@@ -18,25 +18,28 @@ HideDataTwinSync createOpaqueTwinSync() => RustLib.instance.api
 HideDataTwinSync? createOptionOpaqueTwinSync({HideDataTwinSync? opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinSyncCreateOptionOpaqueTwinSync(
-      opaque: opaque,
-    );
+          opaque: opaque,
+        );
 
 EnumOpaqueTwinSyncArray5 createArrayOpaqueEnumTwinSync() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueTwinSyncCreateArrayOpaqueEnumTwinSync();
 
-String runEnumOpaqueTwinSync({required EnumOpaqueTwinSync opaque}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSyncRunEnumOpaqueTwinSync(
+String runEnumOpaqueTwinSync({required EnumOpaqueTwinSync opaque}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualRustOpaqueTwinSyncRunEnumOpaqueTwinSync(
       opaque: opaque,
     );
 
 String runOpaqueTwinSync({required HideDataTwinSync opaque}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualRustOpaqueTwinSyncRunOpaqueTwinSync(opaque: opaque);
 
-String runOpaqueWithDelayTwinSync({required HideDataTwinSync opaque}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSyncRunOpaqueWithDelayTwinSync(
+String runOpaqueWithDelayTwinSync({required HideDataTwinSync opaque}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualRustOpaqueTwinSyncRunOpaqueWithDelayTwinSync(
       opaque: opaque,
     );
 
@@ -44,32 +47,37 @@ HideDataTwinSyncArray2 opaqueArrayTwinSync() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueTwinSyncOpaqueArrayTwinSync();
 
 String runNonCloneTwinSync({required NonCloneDataTwinSync clone}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualRustOpaqueTwinSyncRunNonCloneTwinSync(clone: clone);
 
 void opaqueArrayRunTwinSync({required HideDataTwinSyncArray2 data}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualRustOpaqueTwinSyncOpaqueArrayRunTwinSync(data: data);
 
 List<HideDataTwinSync> opaqueVecTwinSync() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueTwinSyncOpaqueVecTwinSync();
 
-void opaqueVecRunTwinSync({required List<HideDataTwinSync> data}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSyncOpaqueVecRunTwinSync(data: data);
+void opaqueVecRunTwinSync({required List<HideDataTwinSync> data}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualRustOpaqueTwinSyncOpaqueVecRunTwinSync(data: data);
 
 OpaqueNestedTwinSync createNestedOpaqueTwinSync() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueTwinSyncCreateNestedOpaqueTwinSync();
 
-void runNestedOpaqueTwinSync({required OpaqueNestedTwinSync opaque}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSyncRunNestedOpaqueTwinSync(
+void runNestedOpaqueTwinSync({required OpaqueNestedTwinSync opaque}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualRustOpaqueTwinSyncRunNestedOpaqueTwinSync(
       opaque: opaque,
     );
 
-String unwrapRustOpaqueTwinSync({required HideDataTwinSync opaque}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSyncUnwrapRustOpaqueTwinSync(
+String unwrapRustOpaqueTwinSync({required HideDataTwinSync opaque}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualRustOpaqueTwinSyncUnwrapRustOpaqueTwinSync(
       opaque: opaque,
     );
 
@@ -96,11 +104,11 @@ class HideDataTwinSyncArray2 extends NonGrowableListView<HideDataTwinSync> {
   final List<HideDataTwinSync> _inner;
 
   HideDataTwinSyncArray2(this._inner)
-      : assert(_inner.length == arraySize),
-        super(_inner);
+    : assert(_inner.length == arraySize),
+      super(_inner);
 
   HideDataTwinSyncArray2.init(HideDataTwinSync fill)
-      : this(List<HideDataTwinSync>.filled(arraySize, fill));
+    : this(List<HideDataTwinSync>.filled(arraySize, fill));
 }
 
 // Rust type: RustOpaqueMoi<Mutex < HideDataTwinSync >>
@@ -137,11 +145,11 @@ class EnumOpaqueTwinSyncArray5 extends NonGrowableListView<EnumOpaqueTwinSync> {
   final List<EnumOpaqueTwinSync> _inner;
 
   EnumOpaqueTwinSyncArray5(this._inner)
-      : assert(_inner.length == arraySize),
-        super(_inner);
+    : assert(_inner.length == arraySize),
+      super(_inner);
 
   EnumOpaqueTwinSyncArray5.init(EnumOpaqueTwinSync fill)
-      : this(List<EnumOpaqueTwinSync>.filled(arraySize, fill));
+    : this(List<EnumOpaqueTwinSync>.filled(arraySize, fill));
 }
 
 /// [`HideDataTwinSync`] has private fields.

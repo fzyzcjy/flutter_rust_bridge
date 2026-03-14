@@ -19,9 +19,10 @@ DateTime datetimeLocalTwinSyncSse({required DateTime d}) => RustLib.instance.api
 DateTime naivedatetimeTwinSyncSse({required DateTime d}) => RustLib.instance.api
     .crateApiPseudoManualChronoTypeTwinSyncSseNaivedatetimeTwinSyncSse(d: d);
 
-DateTime? optionalEmptyDatetimeUtcTwinSyncSse({DateTime? d}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualChronoTypeTwinSyncSseOptionalEmptyDatetimeUtcTwinSyncSse(
+DateTime? optionalEmptyDatetimeUtcTwinSyncSse({DateTime? d}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualChronoTypeTwinSyncSseOptionalEmptyDatetimeUtcTwinSyncSse(
       d: d,
     );
 
@@ -31,9 +32,8 @@ Duration durationTwinSyncSse({required Duration d}) => RustLib.instance.api
 List<Duration> handleTimestampsTwinSyncSse({
   required List<DateTime> timestamps,
   required DateTime epoch,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualChronoTypeTwinSyncSseHandleTimestampsTwinSyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualChronoTypeTwinSyncSseHandleTimestampsTwinSyncSse(
       timestamps: timestamps,
       epoch: epoch,
     );
@@ -41,9 +41,8 @@ List<Duration> handleTimestampsTwinSyncSse({
 List<DateTime> handleDurationsTwinSyncSse({
   required List<Duration> durations,
   required DateTime since,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualChronoTypeTwinSyncSseHandleDurationsTwinSyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualChronoTypeTwinSyncSseHandleDurationsTwinSyncSse(
       durations: durations,
       since: since,
     );
@@ -56,9 +55,8 @@ TestChronoTwinSyncSse testPreciseChronoTwinSyncSse() => RustLib.instance.api
 
 Duration howLongDoesItTakeTwinSyncSse({
   required FeatureChronoTwinSyncSse mine,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualChronoTypeTwinSyncSseHowLongDoesItTakeTwinSyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualChronoTypeTwinSyncSseHowLongDoesItTakeTwinSyncSse(
       mine: mine,
     );
 

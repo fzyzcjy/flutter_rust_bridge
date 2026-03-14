@@ -63,25 +63,19 @@ Future<void> main({bool skipRustLibInit = false}) async {
       );
     });
 
-    addTestsErrorFunctionCall(
-        customNestedErrorReturnErrorTwinSync,
-        [
-          const CustomNestedErrorOuterTwinSync.one('hello'),
-          const CustomNestedErrorOuterTwinSync.two(
-            CustomNestedErrorInnerTwinSync.three('hello'),
-          ),
-          const CustomNestedErrorOuterTwinSync.two(
-            CustomNestedErrorInnerTwinSync.four(42),
-          ),
-        ],
-        equals);
+    addTestsErrorFunctionCall(customNestedErrorReturnErrorTwinSync, [
+      const CustomNestedErrorOuterTwinSync.one('hello'),
+      const CustomNestedErrorOuterTwinSync.two(
+        CustomNestedErrorInnerTwinSync.three('hello'),
+      ),
+      const CustomNestedErrorOuterTwinSync.two(
+        CustomNestedErrorInnerTwinSync.four(42),
+      ),
+    ], equals);
 
-    addTestsErrorFunctionCall(
-        customStructErrorReturnErrorTwinSync,
-        [
-          const CustomStructErrorTwinSync(a: 'hello'),
-        ],
-        equals);
+    addTestsErrorFunctionCall(customStructErrorReturnErrorTwinSync, [
+      const CustomStructErrorTwinSync(a: 'hello'),
+    ], equals);
   });
 
   group('example-based tests', () {
@@ -200,10 +194,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       );
 
       test('Do not throw CustomError static method', () async {
-        expect(
-          await SomeStructTwinSync.staticReturnOkCustomErrorTwinSync(),
-          3,
-        );
+        expect(await SomeStructTwinSync.staticReturnOkCustomErrorTwinSync(), 3);
       });
 
       test('Do not throw CustomError', () async {

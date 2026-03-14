@@ -11,16 +11,16 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'raw_string_twin_rust_async.freezed.dart';
 
 Future<RawStringItemStructTwinRustAsync>
-    testRawStringItemStructTwinRustAsync() => RustLib.instance.api
-        .crateApiPseudoManualRawStringTwinRustAsyncTestRawStringItemStructTwinRustAsync();
+testRawStringItemStructTwinRustAsync() => RustLib.instance.api
+    .crateApiPseudoManualRawStringTwinRustAsyncTestRawStringItemStructTwinRustAsync();
 
-Future<RawStringItemEnumTwinRustAsync> testRawStringItemEnumTwinRustAsync() =>
-    RustLib.instance.api
-        .crateApiPseudoManualRawStringTwinRustAsyncTestRawStringItemEnumTwinRustAsync();
+Future<RawStringItemEnumTwinRustAsync>
+testRawStringItemEnumTwinRustAsync() => RustLib.instance.api
+    .crateApiPseudoManualRawStringTwinRustAsyncTestRawStringItemEnumTwinRustAsync();
 
 Future<MoreThanJustOneRawStringStructTwinRustAsync>
-    testMoreThanJustOneRawStringStructTwinRustAsync() => RustLib.instance.api
-        .crateApiPseudoManualRawStringTwinRustAsyncTestMoreThanJustOneRawStringStructTwinRustAsync();
+testMoreThanJustOneRawStringStructTwinRustAsync() => RustLib.instance.api
+    .crateApiPseudoManualRawStringTwinRustAsyncTestMoreThanJustOneRawStringStructTwinRustAsync();
 
 class MoreThanJustOneRawStringStructTwinRustAsync {
   final String regular;

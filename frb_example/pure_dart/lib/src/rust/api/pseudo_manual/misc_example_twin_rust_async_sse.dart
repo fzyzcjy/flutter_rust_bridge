@@ -17,79 +17,78 @@ part 'misc_example_twin_rust_async_sse.freezed.dart';
 
 Future<MyTreeNodeTwinRustAsyncSse> handleComplexStructTwinRustAsyncSse({
   required MyTreeNodeTwinRustAsyncSse s,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleComplexStructTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleComplexStructTwinRustAsyncSse(
       s: s,
     );
 
 Future<List<WeekdaysTwinRustAsyncSse>> listOfPrimitiveEnumsTwinRustAsyncSse({
   required List<WeekdaysTwinRustAsyncSse> weekdays,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinRustAsyncSseListOfPrimitiveEnumsTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinRustAsyncSseListOfPrimitiveEnumsTwinRustAsyncSse(
       weekdays: weekdays,
     );
 
 Future<MyNestedStructTwinRustAsyncSse> handleNestedStructTwinRustAsyncSse({
   required MyNestedStructTwinRustAsyncSse s,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleNestedStructTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleNestedStructTwinRustAsyncSse(
       s: s,
     );
 
 Future<BigBuffersTwinRustAsyncSse> handleBigBuffersTwinRustAsyncSse() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleBigBuffersTwinRustAsyncSse();
 
 Future<AbcTwinRustAsyncSse> testAbcEnumTwinRustAsyncSse({
   required AbcTwinRustAsyncSse abc,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinRustAsyncSseTestAbcEnumTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinRustAsyncSseTestAbcEnumTwinRustAsyncSse(
       abc: abc,
     );
 
 Future<StructWithEnumTwinRustAsyncSse> testStructWithEnumTwinRustAsyncSse({
   required StructWithEnumTwinRustAsyncSse se,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinRustAsyncSseTestStructWithEnumTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinRustAsyncSseTestStructWithEnumTwinRustAsyncSse(
       se: se,
     );
 
-Future<String> handleStringTwinRustAsyncSse({required String s}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleStringTwinRustAsyncSse(
+Future<String> handleStringTwinRustAsyncSse({required String s}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleStringTwinRustAsyncSse(
       s: s,
     );
 
-Future<String> handleCharTwinRustAsyncSse({required String arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleCharTwinRustAsyncSse(
+Future<String> handleCharTwinRustAsyncSse({required String arg}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleCharTwinRustAsyncSse(
       arg: arg,
     );
 
-Future<Uint8List> handleVecU8TwinRustAsyncSse({required List<int> v}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleVecU8TwinRustAsyncSse(
+Future<Uint8List> handleVecU8TwinRustAsyncSse({required List<int> v}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleVecU8TwinRustAsyncSse(
       v: v,
     );
 
 Future<MySize> handleStructTwinRustAsyncSse({
   required MySize arg,
   required MySize boxed,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleStructTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinRustAsyncSseHandleStructTwinRustAsyncSse(
       arg: arg,
       boxed: boxed,
     );
 
-Future<int> positionalArgumentsTwinRustAsyncSse(int a, int b) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinRustAsyncSsePositionalArgumentsTwinRustAsyncSse(
+Future<int> positionalArgumentsTwinRustAsyncSse(int a, int b) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualMiscExampleTwinRustAsyncSsePositionalArgumentsTwinRustAsyncSse(
       a: a,
       b: b,
     );

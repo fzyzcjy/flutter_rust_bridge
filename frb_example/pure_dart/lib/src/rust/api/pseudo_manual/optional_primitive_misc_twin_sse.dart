@@ -13,9 +13,8 @@ Future<int?> primitiveOptionalTypesTwinSse({
   PlatformInt64? myI64,
   double? myF64,
   bool? myBool,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalPrimitiveMiscTwinSsePrimitiveOptionalTypesTwinSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalPrimitiveMiscTwinSsePrimitiveOptionalTypesTwinSse(
       myI32: myI32,
       myI64: myI64,
       myF64: myF64,

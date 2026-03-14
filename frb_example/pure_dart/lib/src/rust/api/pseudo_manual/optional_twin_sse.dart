@@ -15,9 +15,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<double?> handleOptionalReturnTwinSse({
   required double left,
   required double right,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSseHandleOptionalReturnTwinSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinSseHandleOptionalReturnTwinSse(
       left: left,
       right: right,
     );
@@ -25,20 +24,20 @@ Future<double?> handleOptionalReturnTwinSse({
 Future<ElementTwinSse?> handleOptionalStructTwinSse({String? document}) =>
     RustLib.instance.api
         .crateApiPseudoManualOptionalTwinSseHandleOptionalStructTwinSse(
-      document: document,
-    );
+          document: document,
+        );
 
 Future<ExoticOptionalsTwinSse?> handleOptionalIncrementTwinSse({
   ExoticOptionalsTwinSse? opt,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSseHandleOptionalIncrementTwinSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinSseHandleOptionalIncrementTwinSse(
       opt: opt,
     );
 
-Future<double> handleIncrementBoxedOptionalTwinSse({double? opt}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSseHandleIncrementBoxedOptionalTwinSse(
+Future<double> handleIncrementBoxedOptionalTwinSse({double? opt}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualOptionalTwinSseHandleIncrementBoxedOptionalTwinSse(
       opt: opt,
     );
 
@@ -54,9 +53,8 @@ Future<String> handleOptionBoxArgumentsTwinSse({
   double? f64Box,
   bool? boolbox,
   ExoticOptionalsTwinSse? structbox,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSseHandleOptionBoxArgumentsTwinSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinSseHandleOptionBoxArgumentsTwinSse(
       i8Box: i8Box,
       u8Box: u8Box,
       i32Box: i32Box,

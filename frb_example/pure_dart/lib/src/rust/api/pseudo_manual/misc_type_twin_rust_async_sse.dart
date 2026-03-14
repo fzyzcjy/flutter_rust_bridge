@@ -16,25 +16,22 @@ Future<void> funcReturnUnitTwinRustAsyncSse() => RustLib.instance.api
 
 Future<List<MySize>> handleListOfStructTwinRustAsyncSse({
   required List<MySize> l,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscTypeTwinRustAsyncSseHandleListOfStructTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualMiscTypeTwinRustAsyncSseHandleListOfStructTwinRustAsyncSse(
       l: l,
     );
 
 Future<List<String>> handleStringListTwinRustAsyncSse({
   required List<String> names,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscTypeTwinRustAsyncSseHandleStringListTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualMiscTypeTwinRustAsyncSseHandleStringListTwinRustAsyncSse(
       names: names,
     );
 
 Future<EmptyTwinRustAsyncSse> emptyStructTwinRustAsyncSse({
   required EmptyTwinRustAsyncSse empty,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscTypeTwinRustAsyncSseEmptyStructTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualMiscTypeTwinRustAsyncSseEmptyStructTwinRustAsyncSse(
       empty: empty,
     );
 

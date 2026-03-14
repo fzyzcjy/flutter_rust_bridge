@@ -51,7 +51,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   Future<void> testHandleStream(
     Stream<LogTwinSse> Function({required int key, required int max})
-        handleStreamFunction,
+    handleStreamFunction,
   ) async {
     final max = 5;
     final key = 8;

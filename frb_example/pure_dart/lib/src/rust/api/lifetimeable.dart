@@ -14,9 +14,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 /// Functions (other tests are mainly methods)
 Future<LtTypeWithLifetimeTwinNormal> ltComputeWithLifetimeFunctionTwinNormal({
   required LtOwnedStructTwinNormal arg,
-}) =>
-    RustLib.instance.api
-        .crateApiLifetimeableLtComputeWithLifetimeFunctionTwinNormal(arg: arg);
+}) => RustLib.instance.api
+    .crateApiLifetimeableLtComputeWithLifetimeFunctionTwinNormal(arg: arg);
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Lifetimeable < LtNestedTypeWithLifetimeTwinNormal < 'static > >>>
 abstract class LtNestedTypeWithLifetimeTwinNormal
@@ -29,18 +28,17 @@ abstract class LtNestedTypeWithLifetimeTwinNormal
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Lifetimeable < LtTypeWithLifetimeTwinNormal < 'static > >>>
 abstract class LtTypeWithLifetimeTwinNormal implements RustOpaqueInterface {
   /// Input argument has type `T<'a>` (other tests mainly are `&'a T`)
-  static Future<
-      LtTypeWithLifetimeTwinNormal> computeArgGenericLifetimeTwinNormal({
+  static Future<LtTypeWithLifetimeTwinNormal>
+  computeArgGenericLifetimeTwinNormal({
     required LtTypeWithLifetimeTwinNormal arg,
-  }) =>
-      RustLib.instance.api
-          .crateApiLifetimeableLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstaticComputeArgGenericLifetimeTwinNormal(
+  }) => RustLib.instance.api
+      .crateApiLifetimeableLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithLifetimeTwinNormalstaticComputeArgGenericLifetimeTwinNormal(
         arg: arg,
       );
 
   /// Input lifetimeable and output another lifetimeable
   Future<LtNestedTypeWithLifetimeTwinNormal>
-      computeNestedTypeWithLifetimeTwinNormal();
+  computeNestedTypeWithLifetimeTwinNormal();
 
   /// `&mut T` where T is lifetimeable
   Future<String> greetBorrowMutSelfTwinNormal();
@@ -53,19 +51,18 @@ abstract class LtTypeWithLifetimeTwinNormal implements RustOpaqueInterface {
 abstract class LtTypeWithMultiDepTwinNormal implements RustOpaqueInterface {
   /// Multiple input args have lifetime
   static Future<LtTypeWithMultiDepTwinNormal>
-      computeWithMultiArgHavingLifetimeTwinNormal({
+  computeWithMultiArgHavingLifetimeTwinNormal({
     required LtOwnedStructTwinNormal a,
     required LtOwnedStructTwinNormal b,
     required LtOwnedStructTwinNormal unrelatedBorrowed,
     required LtOwnedStructTwinNormal unrelatedOwned,
-  }) =>
-          RustLib.instance.api
-              .crateApiLifetimeableLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstaticComputeWithMultiArgHavingLifetimeTwinNormal(
-            a: a,
-            b: b,
-            unrelatedBorrowed: unrelatedBorrowed,
-            unrelatedOwned: unrelatedOwned,
-          );
+  }) => RustLib.instance.api
+      .crateApiLifetimeableLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithMultiDepTwinNormalstaticComputeWithMultiArgHavingLifetimeTwinNormal(
+        a: a,
+        b: b,
+        unrelatedBorrowed: unrelatedBorrowed,
+        unrelatedOwned: unrelatedOwned,
+      );
 
   Future<List<String>> greetBorrowMutSelfTwinNormal();
 
@@ -79,25 +76,23 @@ abstract class LtOwnedStructTwinNormal implements RustOpaqueInterface {
 
   /// The unrelated arg should not affect results
   Future<LtTypeWithLifetimeTwinNormal>
-      computeWithUnrelatedBorrowedArgTwinNormal({
+  computeWithUnrelatedBorrowedArgTwinNormal({
     required LtOwnedStructTwinNormal unrelatedBorrowed,
     required LtOwnedStructTwinNormal unrelatedOwned,
   });
 
   static Future<LtOwnedStructTwinNormal> createTwinNormal({
     required String value,
-  }) =>
-      RustLib.instance.api
-          .crateApiLifetimeableLtOwnedStructTwinNormalCreateTwinNormal(
+  }) => RustLib.instance.api
+      .crateApiLifetimeableLtOwnedStructTwinNormalCreateTwinNormal(
         value: value,
       );
 
   static Future<LtOwnedStructTwinNormal> createWithLoggerTwinNormal({
     required String value,
     required SimpleLogger logger,
-  }) =>
-      RustLib.instance.api
-          .crateApiLifetimeableLtOwnedStructTwinNormalCreateWithLoggerTwinNormal(
+  }) => RustLib.instance.api
+      .crateApiLifetimeableLtOwnedStructTwinNormalCreateWithLoggerTwinNormal(
         value: value,
         logger: logger,
       );

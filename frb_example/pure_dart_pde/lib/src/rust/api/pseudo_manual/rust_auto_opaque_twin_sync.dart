@@ -14,9 +14,8 @@ part 'rust_auto_opaque_twin_sync.freezed.dart';
 void rustAutoOpaqueArgOwnTwinSync({
   required NonCloneSimpleTwinSync arg,
   required int expect,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueArgOwnTwinSync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueArgOwnTwinSync(
       arg: arg,
       expect: expect,
     );
@@ -24,9 +23,8 @@ void rustAutoOpaqueArgOwnTwinSync({
 void rustAutoOpaqueArgBorrowTwinSync({
   required NonCloneSimpleTwinSync arg,
   required int expect,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueArgBorrowTwinSync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueArgBorrowTwinSync(
       arg: arg,
       expect: expect,
     );
@@ -35,9 +33,8 @@ void rustAutoOpaqueArgMutBorrowTwinSync({
   required NonCloneSimpleTwinSync arg,
   required int expect,
   required int adder,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueArgMutBorrowTwinSync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueArgMutBorrowTwinSync(
       arg: arg,
       expect: expect,
       adder: adder,
@@ -45,26 +42,23 @@ void rustAutoOpaqueArgMutBorrowTwinSync({
 
 NonCloneSimpleTwinSync rustAutoOpaqueReturnOwnTwinSync({
   required int initial,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueReturnOwnTwinSync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueReturnOwnTwinSync(
       initial: initial,
     );
 
 NonCloneSimpleTwinSync rustAutoOpaqueArgOwnAndReturnOwnTwinSync({
   required NonCloneSimpleTwinSync arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueArgOwnAndReturnOwnTwinSync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueArgOwnAndReturnOwnTwinSync(
       arg: arg,
     );
 
 void rustAutoOpaqueTwoArgsTwinSync({
   required NonCloneSimpleTwinSync a,
   required NonCloneSimpleTwinSync b,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueTwoArgsTwinSync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueTwoArgsTwinSync(
       a: a,
       b: b,
     );
@@ -72,9 +66,8 @@ void rustAutoOpaqueTwoArgsTwinSync({
 void rustAutoOpaqueNormalAndOpaqueArgTwinSync({
   required NonCloneSimpleTwinSync a,
   required String b,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueNormalAndOpaqueArgTwinSync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueNormalAndOpaqueArgTwinSync(
       a: a,
       b: b,
     );
@@ -82,21 +75,20 @@ void rustAutoOpaqueNormalAndOpaqueArgTwinSync({
 /// "+" inside the type signature
 void rustAutoOpaquePlusSignArgTwinSync({
   required BoxMyTraitTwinSync arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaquePlusSignArgTwinSync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaquePlusSignArgTwinSync(
       arg: arg,
     );
 
 BoxMyTraitTwinSync rustAutoOpaquePlusSignReturnTwinSync() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaquePlusSignReturnTwinSync();
 
 void rustAutoOpaqueCallableArgTwinSync({
   required BoxFnStringString arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueCallableArgTwinSync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueCallableArgTwinSync(
       arg: arg,
     );
 
@@ -105,131 +97,126 @@ BoxFnStringString rustAutoOpaqueCallableReturnTwinSync() => RustLib.instance.api
 
 void rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSync({
   required StructWithGoodAndOpaqueFieldTwinSync arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSync(
       arg: arg,
     );
 
 StructWithGoodAndOpaqueFieldTwinSync
-    rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSync() => RustLib
-        .instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSync();
+rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSync() => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSync();
 
 void rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSync({
   required EnumWithGoodAndOpaqueTwinSync arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSync(
       arg: arg,
     );
 
 EnumWithGoodAndOpaqueTwinSync
-    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinSync() => RustLib
-        .instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinSync();
+rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinSync() => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinSync();
 
 EnumWithGoodAndOpaqueTwinSync
-    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinSync() => RustLib
-        .instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinSync();
+rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinSync() => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinSync();
 
 void rustAutoOpaqueDummyTwinSync({
   required StructWithGoodAndOpaqueFieldWithoutOptionTwinSync a,
   required EnumWithGoodAndOpaqueWithoutOptionTwinSync b,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueDummyTwinSync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueDummyTwinSync(
       a: a,
       b: b,
     );
 
 void rustAutoOpaqueEnumArgBorrowTwinSync({
   required NonCloneSimpleEnumTwinSync arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueEnumArgBorrowTwinSync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueEnumArgBorrowTwinSync(
       arg: arg,
     );
 
 NonCloneSimpleEnumTwinSync rustAutoOpaqueEnumReturnOwnTwinSync() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueEnumReturnOwnTwinSync();
 
 Stream<NonCloneSimpleTwinSync> rustAutoOpaqueStreamSinkTwinSync() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueStreamSinkTwinSync();
 
 void rustAutoOpaqueArgVecOwnTwinSync({
   required List<NonCloneSimpleTwinSync> arg,
   required List<int> expect,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueArgVecOwnTwinSync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueArgVecOwnTwinSync(
       arg: arg,
       expect: expect,
     );
 
 List<NonCloneSimpleTwinSync> rustAutoOpaqueReturnVecOwnTwinSync() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueReturnVecOwnTwinSync();
 
 void rustAutoOpaqueExplicitArgTwinSync({
   required NonCloneSimpleTwinSync arg,
   required int expect,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueExplicitArgTwinSync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueExplicitArgTwinSync(
       arg: arg,
       expect: expect,
     );
 
 void rustAutoOpaqueExplicitStructTwinSync({
   required StructWithExplicitAutoOpaqueFieldTwinSync arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueExplicitStructTwinSync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueExplicitStructTwinSync(
       arg: arg,
     );
 
 StructWithExplicitAutoOpaqueFieldTwinSync
-    rustAutoOpaqueExplicitReturnStructTwinSync() => RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueExplicitReturnStructTwinSync();
+rustAutoOpaqueExplicitReturnStructTwinSync() => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueExplicitReturnStructTwinSync();
 
 NonCloneSimpleTwinSync rustAutoOpaqueExplicitReturnTwinSync({
   required int initial,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueExplicitReturnTwinSync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueExplicitReturnTwinSync(
       initial: initial,
     );
 
 int rustAutoOpaqueSleepTwinSync({
   required NonCloneSimpleTwinSync apple,
   required NonCloneSimpleTwinSync orange,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueSleepTwinSync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueSleepTwinSync(
       apple: apple,
       orange: orange,
     );
 
-(
-  OpaqueOneTwinSync,
-  OpaqueTwoTwinSync
-) rustAutoOpaqueReturnOpaqueOneAndTwoTwinSync() => RustLib.instance.api
+(OpaqueOneTwinSync, OpaqueTwoTwinSync)
+rustAutoOpaqueReturnOpaqueOneAndTwoTwinSync() => RustLib.instance.api
     .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueReturnOpaqueOneAndTwoTwinSync();
 
 OpaqueTwoTwinSync rustAutoOpaqueReturnOpaqueTwoTwinSync() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueReturnOpaqueTwoTwinSync();
 
 int rustAutoOpaqueBorrowAndMutBorrowTwinSync({
   required NonCloneSimpleTwinSync borrow,
   required NonCloneSimpleTwinSync mutBorrow,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueBorrowAndMutBorrowTwinSync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueBorrowAndMutBorrowTwinSync(
       borrow: borrow,
       mutBorrow: mutBorrow,
     );
@@ -237,9 +224,8 @@ int rustAutoOpaqueBorrowAndMutBorrowTwinSync({
 int rustAutoOpaqueBorrowAndBorrowTwinSync({
   required NonCloneSimpleTwinSync a,
   required NonCloneSimpleTwinSync b,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueBorrowAndBorrowTwinSync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinSyncRustAutoOpaqueBorrowAndBorrowTwinSync(
       a: a,
       b: b,
     );
@@ -280,30 +266,28 @@ abstract class NonCloneSimpleTwinSync implements RustOpaqueInterface {
 
   static void staticMethodArgBorrowTwinSync({
     required NonCloneSimpleTwinSync arg,
-  }) =>
-      RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncStaticMethodArgBorrowTwinSync(
+  }) => RustLib.instance.api
+      .crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncStaticMethodArgBorrowTwinSync(
         arg: arg,
       );
 
   static void staticMethodArgMutBorrowTwinSync({
     required NonCloneSimpleTwinSync arg,
-  }) =>
-      RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncStaticMethodArgMutBorrowTwinSync(
+  }) => RustLib.instance.api
+      .crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncStaticMethodArgMutBorrowTwinSync(
         arg: arg,
       );
 
   static void staticMethodArgOwnTwinSync({
     required NonCloneSimpleTwinSync arg,
-  }) =>
-      RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncStaticMethodArgOwnTwinSync(
+  }) => RustLib.instance.api
+      .crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncStaticMethodArgOwnTwinSync(
         arg: arg,
       );
 
   static NonCloneSimpleTwinSync staticMethodReturnOwnTwinSync() => RustLib
-      .instance.api
+      .instance
+      .api
       .crateApiPseudoManualRustAutoOpaqueTwinSyncNonCloneSimpleTwinSyncStaticMethodReturnOwnTwinSync();
 }
 

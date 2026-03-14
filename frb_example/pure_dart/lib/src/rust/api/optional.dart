@@ -15,11 +15,10 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<double?> handleOptionalReturnTwinNormal({
   required double left,
   required double right,
-}) =>
-    RustLib.instance.api.crateApiOptionalHandleOptionalReturnTwinNormal(
-      left: left,
-      right: right,
-    );
+}) => RustLib.instance.api.crateApiOptionalHandleOptionalReturnTwinNormal(
+  left: left,
+  right: right,
+);
 
 Future<ElementTwinNormal?> handleOptionalStructTwinNormal({String? document}) =>
     RustLib.instance.api.crateApiOptionalHandleOptionalStructTwinNormal(
@@ -28,19 +27,18 @@ Future<ElementTwinNormal?> handleOptionalStructTwinNormal({String? document}) =>
 
 Future<ExoticOptionalsTwinNormal?> handleOptionalIncrementTwinNormal({
   ExoticOptionalsTwinNormal? opt,
-}) =>
-    RustLib.instance.api.crateApiOptionalHandleOptionalIncrementTwinNormal(
-      opt: opt,
-    );
+}) => RustLib.instance.api.crateApiOptionalHandleOptionalIncrementTwinNormal(
+  opt: opt,
+);
 
-Future<double> handleIncrementBoxedOptionalTwinNormal({double? opt}) =>
-    RustLib.instance.api
-        .crateApiOptionalHandleIncrementBoxedOptionalTwinNormal(opt: opt);
+Future<double> handleIncrementBoxedOptionalTwinNormal({double? opt}) => RustLib
+    .instance
+    .api
+    .crateApiOptionalHandleIncrementBoxedOptionalTwinNormal(opt: opt);
 
 Future<OptVecsTwinNormal> handleVecOfOptsTwinNormal({
   required OptVecsTwinNormal opt,
-}) =>
-    RustLib.instance.api.crateApiOptionalHandleVecOfOptsTwinNormal(opt: opt);
+}) => RustLib.instance.api.crateApiOptionalHandleVecOfOptsTwinNormal(opt: opt);
 
 Future<String> handleOptionBoxArgumentsTwinNormal({
   int? i8Box,
@@ -50,16 +48,15 @@ Future<String> handleOptionBoxArgumentsTwinNormal({
   double? f64Box,
   bool? boolbox,
   ExoticOptionalsTwinNormal? structbox,
-}) =>
-    RustLib.instance.api.crateApiOptionalHandleOptionBoxArgumentsTwinNormal(
-      i8Box: i8Box,
-      u8Box: u8Box,
-      i32Box: i32Box,
-      i64Box: i64Box,
-      f64Box: f64Box,
-      boolbox: boolbox,
-      structbox: structbox,
-    );
+}) => RustLib.instance.api.crateApiOptionalHandleOptionBoxArgumentsTwinNormal(
+  i8Box: i8Box,
+  u8Box: u8Box,
+  i32Box: i32Box,
+  i64Box: i64Box,
+  f64Box: f64Box,
+  boolbox: boolbox,
+  structbox: structbox,
+);
 
 class AttributeTwinNormal {
   final String key;

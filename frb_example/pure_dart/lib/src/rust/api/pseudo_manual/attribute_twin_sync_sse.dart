@@ -18,17 +18,15 @@ part 'attribute_twin_sync_sse.freezed.dart';
 
 void handleCustomizedStructTwinSyncSse({
   required CustomizedTwinSyncSse val,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualAttributeTwinSyncSseHandleCustomizedStructTwinSyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualAttributeTwinSyncSseHandleCustomizedStructTwinSyncSse(
       val: val,
     );
 
 UserIdTwinSyncSse nextUserIdTwinSyncSse({
   UserIdTwinSyncSse userId = const UserIdTwinSyncSse(),
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualAttributeTwinSyncSseNextUserIdTwinSyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualAttributeTwinSyncSseNextUserIdTwinSyncSse(
       userId: userId,
     );
 

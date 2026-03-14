@@ -18,17 +18,15 @@ part 'attribute_twin_rust_async_sse.freezed.dart';
 
 Future<void> handleCustomizedStructTwinRustAsyncSse({
   required CustomizedTwinRustAsyncSse val,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualAttributeTwinRustAsyncSseHandleCustomizedStructTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualAttributeTwinRustAsyncSseHandleCustomizedStructTwinRustAsyncSse(
       val: val,
     );
 
 Future<UserIdTwinRustAsyncSse> nextUserIdTwinRustAsyncSse({
   UserIdTwinRustAsyncSse userId = const UserIdTwinRustAsyncSse(),
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualAttributeTwinRustAsyncSseNextUserIdTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualAttributeTwinRustAsyncSseNextUserIdTwinRustAsyncSse(
       userId: userId,
     );
 

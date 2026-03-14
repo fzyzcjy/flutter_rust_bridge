@@ -10,17 +10,19 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'raw_string_twin_sse.freezed.dart';
 
-Future<RawStringItemStructTwinSse> testRawStringItemStructTwinSse() =>
-    RustLib.instance.api
-        .crateApiPseudoManualRawStringTwinSseTestRawStringItemStructTwinSse();
+Future<RawStringItemStructTwinSse> testRawStringItemStructTwinSse() => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualRawStringTwinSseTestRawStringItemStructTwinSse();
 
-Future<RawStringItemEnumTwinSse> testRawStringItemEnumTwinSse() =>
-    RustLib.instance.api
-        .crateApiPseudoManualRawStringTwinSseTestRawStringItemEnumTwinSse();
+Future<RawStringItemEnumTwinSse> testRawStringItemEnumTwinSse() => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualRawStringTwinSseTestRawStringItemEnumTwinSse();
 
 Future<MoreThanJustOneRawStringStructTwinSse>
-    testMoreThanJustOneRawStringStructTwinSse() => RustLib.instance.api
-        .crateApiPseudoManualRawStringTwinSseTestMoreThanJustOneRawStringStructTwinSse();
+testMoreThanJustOneRawStringStructTwinSse() => RustLib.instance.api
+    .crateApiPseudoManualRawStringTwinSseTestMoreThanJustOneRawStringStructTwinSse();
 
 class MoreThanJustOneRawStringStructTwinSse {
   final String regular;

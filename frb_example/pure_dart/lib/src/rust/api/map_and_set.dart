@@ -24,54 +24,47 @@ Future<Set<int>> funcHashSetI32TwinNormal({required Set<int> arg}) =>
 
 Future<Map<String, String>> funcHashMapStringStringTwinNormal({
   required Map<String, String> arg,
-}) =>
-    RustLib.instance.api.crateApiMapAndSetFuncHashMapStringStringTwinNormal(
-      arg: arg,
-    );
+}) => RustLib.instance.api.crateApiMapAndSetFuncHashMapStringStringTwinNormal(
+  arg: arg,
+);
 
 Future<Map<String, String>> funcHashMapStringStringHasherTwinNormal({
   required Map<String, String> arg,
-}) =>
-    RustLib.instance.api
-        .crateApiMapAndSetFuncHashMapStringStringHasherTwinNormal(arg: arg);
+}) => RustLib.instance.api
+    .crateApiMapAndSetFuncHashMapStringStringHasherTwinNormal(arg: arg);
 
 Future<Set<String>> funcHashSetStringTwinNormal({required Set<String> arg}) =>
     RustLib.instance.api.crateApiMapAndSetFuncHashSetStringTwinNormal(arg: arg);
 
 Future<Set<String>> funcHashSetStringHasherTwinNormal({
   required Set<String> arg,
-}) =>
-    RustLib.instance.api.crateApiMapAndSetFuncHashSetStringHasherTwinNormal(
-      arg: arg,
-    );
+}) => RustLib.instance.api.crateApiMapAndSetFuncHashSetStringHasherTwinNormal(
+  arg: arg,
+);
 
 Future<Map<String, Uint8List>> funcHashMapStringBytesTwinNormal({
   required Map<String, Uint8List> arg,
-}) =>
-    RustLib.instance.api.crateApiMapAndSetFuncHashMapStringBytesTwinNormal(
-      arg: arg,
-    );
+}) => RustLib.instance.api.crateApiMapAndSetFuncHashMapStringBytesTwinNormal(
+  arg: arg,
+);
 
 Future<Map<String, MySize>> funcHashMapStringStructTwinNormal({
   required Map<String, MySize> arg,
-}) =>
-    RustLib.instance.api.crateApiMapAndSetFuncHashMapStringStructTwinNormal(
-      arg: arg,
-    );
+}) => RustLib.instance.api.crateApiMapAndSetFuncHashMapStringStructTwinNormal(
+  arg: arg,
+);
 
 Future<Map<String, EnumSimpleTwinNormal>>
-    funcHashMapStringSimpleEnumTwinNormal({
+funcHashMapStringSimpleEnumTwinNormal({
   required Map<String, EnumSimpleTwinNormal> arg,
-}) =>
-        RustLib.instance.api
-            .crateApiMapAndSetFuncHashMapStringSimpleEnumTwinNormal(arg: arg);
+}) => RustLib.instance.api
+    .crateApiMapAndSetFuncHashMapStringSimpleEnumTwinNormal(arg: arg);
 
 Future<Map<String, KitchenSinkTwinNormal>>
-    funcHashMapStringComplexEnumTwinNormal({
+funcHashMapStringComplexEnumTwinNormal({
   required Map<String, KitchenSinkTwinNormal> arg,
-}) =>
-        RustLib.instance.api
-            .crateApiMapAndSetFuncHashMapStringComplexEnumTwinNormal(arg: arg);
+}) => RustLib.instance.api
+    .crateApiMapAndSetFuncHashMapStringComplexEnumTwinNormal(arg: arg);
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<CustomHasherTwinNormal>>
 abstract class CustomHasherTwinNormal implements RustOpaqueInterface {}

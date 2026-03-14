@@ -15,80 +15,71 @@ part 'enumeration_twin_rust_async.freezed.dart';
 
 Future<EnumSimpleTwinRustAsync> funcEnumSimpleTwinRustAsync({
   required EnumSimpleTwinRustAsync arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumSimpleTwinRustAsync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumSimpleTwinRustAsync(
       arg: arg,
     );
 
 Future<EnumWithItemMixedTwinRustAsync> funcEnumWithItemMixedTwinRustAsync({
   required EnumWithItemMixedTwinRustAsync arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumWithItemMixedTwinRustAsync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumWithItemMixedTwinRustAsync(
       arg: arg,
     );
 
 Future<EnumWithItemTupleTwinRustAsync> funcEnumWithItemTupleTwinRustAsync({
   required EnumWithItemTupleTwinRustAsync arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumWithItemTupleTwinRustAsync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumWithItemTupleTwinRustAsync(
       arg: arg,
     );
 
 Future<EnumWithItemStructTwinRustAsync> funcEnumWithItemStructTwinRustAsync({
   required EnumWithItemStructTwinRustAsync arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumWithItemStructTwinRustAsync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumWithItemStructTwinRustAsync(
       arg: arg,
     );
 
-Future<
-    EnumWithDiscriminantTwinRustAsync> funcEnumWithDiscriminantTwinRustAsync({
+Future<EnumWithDiscriminantTwinRustAsync>
+funcEnumWithDiscriminantTwinRustAsync({
   required EnumWithDiscriminantTwinRustAsync arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumWithDiscriminantTwinRustAsync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumWithDiscriminantTwinRustAsync(
       arg: arg,
     );
 
 Future<Uint8List> printNoteTwinRustAsync({required NoteTwinRustAsync note}) =>
     RustLib.instance.api
         .crateApiPseudoManualEnumerationTwinRustAsyncPrintNoteTwinRustAsync(
-      note: note,
-    );
+          note: note,
+        );
 
 Future<WeekdaysTwinRustAsync?> handleReturnEnumTwinRustAsync({
   required String input,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncHandleReturnEnumTwinRustAsync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualEnumerationTwinRustAsyncHandleReturnEnumTwinRustAsync(
       input: input,
     );
 
 Future<WeekdaysTwinRustAsync> handleEnumParameterTwinRustAsync({
   required WeekdaysTwinRustAsync weekday,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncHandleEnumParameterTwinRustAsync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualEnumerationTwinRustAsyncHandleEnumParameterTwinRustAsync(
       weekday: weekday,
     );
 
 Future<MeasureTwinRustAsync?> multiplyByTenTwinRustAsync({
   required MeasureTwinRustAsync measure,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncMultiplyByTenTwinRustAsync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualEnumerationTwinRustAsyncMultiplyByTenTwinRustAsync(
       measure: measure,
     );
 
 Future<KitchenSinkTwinRustAsync> handleEnumStructTwinRustAsync({
   required KitchenSinkTwinRustAsync val,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncHandleEnumStructTwinRustAsync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualEnumerationTwinRustAsyncHandleEnumStructTwinRustAsync(
       val: val,
     );
 

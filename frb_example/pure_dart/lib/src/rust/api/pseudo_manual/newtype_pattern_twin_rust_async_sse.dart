@@ -12,9 +12,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<NewTypeIntTwinRustAsyncSse> handleNewtypeTwinRustAsyncSse({
   required NewTypeIntTwinRustAsyncSse arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualNewtypePatternTwinRustAsyncSseHandleNewtypeTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualNewtypePatternTwinRustAsyncSseHandleNewtypeTwinRustAsyncSse(
       arg: arg,
     );
 

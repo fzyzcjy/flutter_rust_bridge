@@ -31,14 +31,14 @@ abstract class StructOneWithTraitTwinSyncSse
 
   static Future<StructOneWithTraitTwinSyncSse> simpleTraitFnTwinSyncSse({
     required int value,
-  }) =>
-      RustLib.instance.api
-          .crateApiPseudoManualImplTraitTwinSyncSseStructOneWithTraitTwinSyncSseSimpleTraitFnTwinSyncSse(
+  }) => RustLib.instance.api
+      .crateApiPseudoManualImplTraitTwinSyncSseStructOneWithTraitTwinSyncSseSimpleTraitFnTwinSyncSse(
         value: value,
       );
 
   static Future<int> simpleTraitFnWithDefaultImplTwinSyncSse() => RustLib
-      .instance.api
+      .instance
+      .api
       .crateApiPseudoManualImplTraitTwinSyncSseStructOneWithTraitTwinSyncSseSimpleTraitFnWithDefaultImplTwinSyncSse();
 }
 
@@ -53,14 +53,14 @@ abstract class StructTwoWithTraitTwinSyncSse
 
   static Future<StructTwoWithTraitTwinSyncSse> simpleTraitFnTwinSyncSse({
     required int value,
-  }) =>
-      RustLib.instance.api
-          .crateApiPseudoManualImplTraitTwinSyncSseStructTwoWithTraitTwinSyncSseSimpleTraitFnTwinSyncSse(
+  }) => RustLib.instance.api
+      .crateApiPseudoManualImplTraitTwinSyncSseStructTwoWithTraitTwinSyncSseSimpleTraitFnTwinSyncSse(
         value: value,
       );
 
   static Future<int> simpleTraitFnWithDefaultImplTwinSyncSse() => RustLib
-      .instance.api
+      .instance
+      .api
       .crateApiPseudoManualImplTraitTwinSyncSseStructTwoWithTraitTwinSyncSseSimpleTraitFnWithDefaultImplTwinSyncSse();
 }
 

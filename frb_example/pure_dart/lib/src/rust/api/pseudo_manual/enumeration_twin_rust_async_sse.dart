@@ -15,85 +15,75 @@ part 'enumeration_twin_rust_async_sse.freezed.dart';
 
 Future<EnumSimpleTwinRustAsyncSse> funcEnumSimpleTwinRustAsyncSse({
   required EnumSimpleTwinRustAsyncSse arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncSseFuncEnumSimpleTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualEnumerationTwinRustAsyncSseFuncEnumSimpleTwinRustAsyncSse(
       arg: arg,
     );
 
-Future<
-    EnumWithItemMixedTwinRustAsyncSse> funcEnumWithItemMixedTwinRustAsyncSse({
+Future<EnumWithItemMixedTwinRustAsyncSse>
+funcEnumWithItemMixedTwinRustAsyncSse({
   required EnumWithItemMixedTwinRustAsyncSse arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncSseFuncEnumWithItemMixedTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualEnumerationTwinRustAsyncSseFuncEnumWithItemMixedTwinRustAsyncSse(
       arg: arg,
     );
 
-Future<
-    EnumWithItemTupleTwinRustAsyncSse> funcEnumWithItemTupleTwinRustAsyncSse({
+Future<EnumWithItemTupleTwinRustAsyncSse>
+funcEnumWithItemTupleTwinRustAsyncSse({
   required EnumWithItemTupleTwinRustAsyncSse arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncSseFuncEnumWithItemTupleTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualEnumerationTwinRustAsyncSseFuncEnumWithItemTupleTwinRustAsyncSse(
       arg: arg,
     );
 
-Future<
-    EnumWithItemStructTwinRustAsyncSse> funcEnumWithItemStructTwinRustAsyncSse({
+Future<EnumWithItemStructTwinRustAsyncSse>
+funcEnumWithItemStructTwinRustAsyncSse({
   required EnumWithItemStructTwinRustAsyncSse arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncSseFuncEnumWithItemStructTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualEnumerationTwinRustAsyncSseFuncEnumWithItemStructTwinRustAsyncSse(
       arg: arg,
     );
 
 Future<EnumWithDiscriminantTwinRustAsyncSse>
-    funcEnumWithDiscriminantTwinRustAsyncSse({
+funcEnumWithDiscriminantTwinRustAsyncSse({
   required EnumWithDiscriminantTwinRustAsyncSse arg,
-}) =>
-        RustLib.instance.api
-            .crateApiPseudoManualEnumerationTwinRustAsyncSseFuncEnumWithDiscriminantTwinRustAsyncSse(
-          arg: arg,
-        );
+}) => RustLib.instance.api
+    .crateApiPseudoManualEnumerationTwinRustAsyncSseFuncEnumWithDiscriminantTwinRustAsyncSse(
+      arg: arg,
+    );
 
 Future<Uint8List> printNoteTwinRustAsyncSse({
   required NoteTwinRustAsyncSse note,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncSsePrintNoteTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualEnumerationTwinRustAsyncSsePrintNoteTwinRustAsyncSse(
       note: note,
     );
 
 Future<WeekdaysTwinRustAsyncSse?> handleReturnEnumTwinRustAsyncSse({
   required String input,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncSseHandleReturnEnumTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualEnumerationTwinRustAsyncSseHandleReturnEnumTwinRustAsyncSse(
       input: input,
     );
 
 Future<WeekdaysTwinRustAsyncSse> handleEnumParameterTwinRustAsyncSse({
   required WeekdaysTwinRustAsyncSse weekday,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncSseHandleEnumParameterTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualEnumerationTwinRustAsyncSseHandleEnumParameterTwinRustAsyncSse(
       weekday: weekday,
     );
 
 Future<MeasureTwinRustAsyncSse?> multiplyByTenTwinRustAsyncSse({
   required MeasureTwinRustAsyncSse measure,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncSseMultiplyByTenTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualEnumerationTwinRustAsyncSseMultiplyByTenTwinRustAsyncSse(
       measure: measure,
     );
 
 Future<KitchenSinkTwinRustAsyncSse> handleEnumStructTwinRustAsyncSse({
   required KitchenSinkTwinRustAsyncSse val,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncSseHandleEnumStructTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualEnumerationTwinRustAsyncSseHandleEnumStructTwinRustAsyncSse(
       val: val,
     );
 

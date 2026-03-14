@@ -15,61 +15,57 @@ part 'dart_opaque_twin_rust_async_sse.freezed.dart';
 
 Future<String> asyncAcceptDartOpaqueTwinRustAsyncSse({
   required Object opaque,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartOpaqueTwinRustAsyncSseAsyncAcceptDartOpaqueTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualDartOpaqueTwinRustAsyncSseAsyncAcceptDartOpaqueTwinRustAsyncSse(
       opaque: opaque,
     );
 
-Future<Object> loopBackTwinRustAsyncSse({required Object opaque}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartOpaqueTwinRustAsyncSseLoopBackTwinRustAsyncSse(
+Future<Object> loopBackTwinRustAsyncSse({required Object opaque}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualDartOpaqueTwinRustAsyncSseLoopBackTwinRustAsyncSse(
       opaque: opaque,
     );
 
 Future<Object?> loopBackOptionTwinRustAsyncSse({
   required Object opaque,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartOpaqueTwinRustAsyncSseLoopBackOptionTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualDartOpaqueTwinRustAsyncSseLoopBackOptionTwinRustAsyncSse(
       opaque: opaque,
     );
 
 Future<ObjectArray1> loopBackArrayTwinRustAsyncSse({
   required Object opaque,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartOpaqueTwinRustAsyncSseLoopBackArrayTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualDartOpaqueTwinRustAsyncSseLoopBackArrayTwinRustAsyncSse(
       opaque: opaque,
     );
 
 Future<List<Object>> loopBackVecTwinRustAsyncSse({
   required Object opaque,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartOpaqueTwinRustAsyncSseLoopBackVecTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualDartOpaqueTwinRustAsyncSseLoopBackVecTwinRustAsyncSse(
       opaque: opaque,
     );
 
-Future<void> loopBackOptionGetTwinRustAsyncSse({Object? opaque}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartOpaqueTwinRustAsyncSseLoopBackOptionGetTwinRustAsyncSse(
+Future<void> loopBackOptionGetTwinRustAsyncSse({Object? opaque}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualDartOpaqueTwinRustAsyncSseLoopBackOptionGetTwinRustAsyncSse(
       opaque: opaque,
     );
 
 Future<void> loopBackArrayGetTwinRustAsyncSse({
   required ObjectArray1 opaque,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartOpaqueTwinRustAsyncSseLoopBackArrayGetTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualDartOpaqueTwinRustAsyncSseLoopBackArrayGetTwinRustAsyncSse(
       opaque: opaque,
     );
 
 Future<void> loopBackVecGetTwinRustAsyncSse({
   required List<Object> opaque,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartOpaqueTwinRustAsyncSseLoopBackVecGetTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualDartOpaqueTwinRustAsyncSseLoopBackVecGetTwinRustAsyncSse(
       opaque: opaque,
     );
 
@@ -77,68 +73,62 @@ Future<void> loopBackVecGetTwinRustAsyncSse({
 /// on a thread other than the thread it was created on.
 Future<void> panicUnwrapDartOpaqueTwinRustAsyncSse({
   required Object opaque,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartOpaqueTwinRustAsyncSsePanicUnwrapDartOpaqueTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualDartOpaqueTwinRustAsyncSsePanicUnwrapDartOpaqueTwinRustAsyncSse(
       opaque: opaque,
     );
 
-Future<
-    DartOpaqueNestedTwinRustAsyncSse> createNestedDartOpaqueTwinRustAsyncSse({
+Future<DartOpaqueNestedTwinRustAsyncSse>
+createNestedDartOpaqueTwinRustAsyncSse({
   required Object opaque1,
   required Object opaque2,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartOpaqueTwinRustAsyncSseCreateNestedDartOpaqueTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualDartOpaqueTwinRustAsyncSseCreateNestedDartOpaqueTwinRustAsyncSse(
       opaque1: opaque1,
       opaque2: opaque2,
     );
 
 Future<void> getNestedDartOpaqueTwinRustAsyncSse({
   required DartOpaqueNestedTwinRustAsyncSse opaque,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartOpaqueTwinRustAsyncSseGetNestedDartOpaqueTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualDartOpaqueTwinRustAsyncSseGetNestedDartOpaqueTwinRustAsyncSse(
       opaque: opaque,
     );
 
 Future<EnumDartOpaqueTwinRustAsyncSse> createEnumDartOpaqueTwinRustAsyncSse({
   required Object opaque,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartOpaqueTwinRustAsyncSseCreateEnumDartOpaqueTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualDartOpaqueTwinRustAsyncSseCreateEnumDartOpaqueTwinRustAsyncSse(
       opaque: opaque,
     );
 
 Future<void> getEnumDartOpaqueTwinRustAsyncSse({
   required EnumDartOpaqueTwinRustAsyncSse opaque,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartOpaqueTwinRustAsyncSseGetEnumDartOpaqueTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualDartOpaqueTwinRustAsyncSseGetEnumDartOpaqueTwinRustAsyncSse(
       opaque: opaque,
     );
 
 Future<void> setStaticDartOpaqueTwinRustAsyncSse({
   required int id,
   required Object opaque,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartOpaqueTwinRustAsyncSseSetStaticDartOpaqueTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualDartOpaqueTwinRustAsyncSseSetStaticDartOpaqueTwinRustAsyncSse(
       id: id,
       opaque: opaque,
     );
 
-Future<void> dropStaticDartOpaqueTwinRustAsyncSse({required int id}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartOpaqueTwinRustAsyncSseDropStaticDartOpaqueTwinRustAsyncSse(
+Future<void> dropStaticDartOpaqueTwinRustAsyncSse({required int id}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualDartOpaqueTwinRustAsyncSseDropStaticDartOpaqueTwinRustAsyncSse(
       id: id,
     );
 
 Future<List<Object>> cloneDartOpaqueTwinRustAsyncSse({
   required Object opaque,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartOpaqueTwinRustAsyncSseCloneDartOpaqueTwinRustAsyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualDartOpaqueTwinRustAsyncSseCloneDartOpaqueTwinRustAsyncSse(
       opaque: opaque,
     );
 

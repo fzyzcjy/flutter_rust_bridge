@@ -15,9 +15,8 @@ part 'rust_auto_opaque_twin_moi.freezed.dart';
 Future<void> rustAutoOpaqueArgOwnTwinMoi({
   required NonCloneSimpleTwinMoi arg,
   required int expect,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueArgOwnTwinMoi(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueArgOwnTwinMoi(
       arg: arg,
       expect: expect,
     );
@@ -25,9 +24,8 @@ Future<void> rustAutoOpaqueArgOwnTwinMoi({
 Future<void> rustAutoOpaqueArgBorrowTwinMoi({
   required NonCloneSimpleTwinMoi arg,
   required int expect,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueArgBorrowTwinMoi(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueArgBorrowTwinMoi(
       arg: arg,
       expect: expect,
     );
@@ -36,9 +34,8 @@ Future<void> rustAutoOpaqueArgMutBorrowTwinMoi({
   required NonCloneSimpleTwinMoi arg,
   required int expect,
   required int adder,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueArgMutBorrowTwinMoi(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueArgMutBorrowTwinMoi(
       arg: arg,
       expect: expect,
       adder: adder,
@@ -46,26 +43,23 @@ Future<void> rustAutoOpaqueArgMutBorrowTwinMoi({
 
 Future<NonCloneSimpleTwinMoi> rustAutoOpaqueReturnOwnTwinMoi({
   required int initial,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueReturnOwnTwinMoi(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueReturnOwnTwinMoi(
       initial: initial,
     );
 
 Future<NonCloneSimpleTwinMoi> rustAutoOpaqueArgOwnAndReturnOwnTwinMoi({
   required NonCloneSimpleTwinMoi arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueArgOwnAndReturnOwnTwinMoi(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueArgOwnAndReturnOwnTwinMoi(
       arg: arg,
     );
 
 Future<void> rustAutoOpaqueTwoArgsTwinMoi({
   required NonCloneSimpleTwinMoi a,
   required NonCloneSimpleTwinMoi b,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueTwoArgsTwinMoi(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueTwoArgsTwinMoi(
       a: a,
       b: b,
     );
@@ -73,9 +67,8 @@ Future<void> rustAutoOpaqueTwoArgsTwinMoi({
 Future<void> rustAutoOpaqueNormalAndOpaqueArgTwinMoi({
   required NonCloneSimpleTwinMoi a,
   required String b,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueNormalAndOpaqueArgTwinMoi(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueNormalAndOpaqueArgTwinMoi(
       a: a,
       b: b,
     );
@@ -83,155 +76,148 @@ Future<void> rustAutoOpaqueNormalAndOpaqueArgTwinMoi({
 /// "+" inside the type signature
 Future<void> rustAutoOpaquePlusSignArgTwinMoi({
   required BoxMyTraitTwinMoi arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaquePlusSignArgTwinMoi(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaquePlusSignArgTwinMoi(
       arg: arg,
     );
 
 Future<BoxMyTraitTwinMoi> rustAutoOpaquePlusSignReturnTwinMoi() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaquePlusSignReturnTwinMoi();
 
 Future<void> rustAutoOpaqueCallableArgTwinMoi({
   required BoxFnStringString arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueCallableArgTwinMoi(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueCallableArgTwinMoi(
       arg: arg,
     );
 
 Future<BoxFnStringString> rustAutoOpaqueCallableReturnTwinMoi() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueCallableReturnTwinMoi();
 
 Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinMoi({
   required StructWithGoodAndOpaqueFieldTwinMoi arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinMoi(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinMoi(
       arg: arg,
     );
 
 Future<StructWithGoodAndOpaqueFieldTwinMoi>
-    rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinMoi() => RustLib
-        .instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinMoi();
+rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinMoi() => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinMoi();
 
 Future<void> rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinMoi({
   required EnumWithGoodAndOpaqueTwinMoi arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinMoi(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinMoi(
       arg: arg,
     );
 
 Future<EnumWithGoodAndOpaqueTwinMoi>
-    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinMoi() => RustLib
-        .instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinMoi();
+rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinMoi() => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinMoi();
 
 Future<EnumWithGoodAndOpaqueTwinMoi>
-    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinMoi() => RustLib
-        .instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinMoi();
+rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinMoi() => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinMoi();
 
 Future<void> rustAutoOpaqueDummyTwinMoi({
   required StructWithGoodAndOpaqueFieldWithoutOptionTwinMoi a,
   required EnumWithGoodAndOpaqueWithoutOptionTwinMoi b,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueDummyTwinMoi(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueDummyTwinMoi(
       a: a,
       b: b,
     );
 
 Future<void> rustAutoOpaqueEnumArgBorrowTwinMoi({
   required NonCloneSimpleEnumTwinMoi arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueEnumArgBorrowTwinMoi(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueEnumArgBorrowTwinMoi(
       arg: arg,
     );
 
-Future<NonCloneSimpleEnumTwinMoi> rustAutoOpaqueEnumReturnOwnTwinMoi() => RustLib
-    .instance.api
+Future<NonCloneSimpleEnumTwinMoi>
+rustAutoOpaqueEnumReturnOwnTwinMoi() => RustLib.instance.api
     .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueEnumReturnOwnTwinMoi();
 
 Stream<NonCloneSimpleTwinMoi> rustAutoOpaqueStreamSinkTwinMoi() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueStreamSinkTwinMoi();
 
 Future<void> rustAutoOpaqueArgVecOwnTwinMoi({
   required List<NonCloneSimpleTwinMoi> arg,
   required List<int> expect,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueArgVecOwnTwinMoi(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueArgVecOwnTwinMoi(
       arg: arg,
       expect: expect,
     );
 
-Future<
-    List<
-        NonCloneSimpleTwinMoi>> rustAutoOpaqueReturnVecOwnTwinMoi() => RustLib
-    .instance.api
+Future<List<NonCloneSimpleTwinMoi>>
+rustAutoOpaqueReturnVecOwnTwinMoi() => RustLib.instance.api
     .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueReturnVecOwnTwinMoi();
 
 Future<void> rustAutoOpaqueExplicitArgTwinMoi({
   required NonCloneSimpleTwinMoi arg,
   required int expect,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueExplicitArgTwinMoi(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueExplicitArgTwinMoi(
       arg: arg,
       expect: expect,
     );
 
 Future<void> rustAutoOpaqueExplicitStructTwinMoi({
   required StructWithExplicitAutoOpaqueFieldTwinMoi arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueExplicitStructTwinMoi(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueExplicitStructTwinMoi(
       arg: arg,
     );
 
 Future<StructWithExplicitAutoOpaqueFieldTwinMoi>
-    rustAutoOpaqueExplicitReturnStructTwinMoi() => RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueExplicitReturnStructTwinMoi();
+rustAutoOpaqueExplicitReturnStructTwinMoi() => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueExplicitReturnStructTwinMoi();
 
 Future<NonCloneSimpleTwinMoi> rustAutoOpaqueExplicitReturnTwinMoi({
   required int initial,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueExplicitReturnTwinMoi(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueExplicitReturnTwinMoi(
       initial: initial,
     );
 
 Future<int> rustAutoOpaqueSleepTwinMoi({
   required NonCloneSimpleTwinMoi apple,
   required NonCloneSimpleTwinMoi orange,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueSleepTwinMoi(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueSleepTwinMoi(
       apple: apple,
       orange: orange,
     );
 
 Future<(OpaqueOneTwinMoi, OpaqueTwoTwinMoi)>
-    rustAutoOpaqueReturnOpaqueOneAndTwoTwinMoi() => RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueReturnOpaqueOneAndTwoTwinMoi();
+rustAutoOpaqueReturnOpaqueOneAndTwoTwinMoi() => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueReturnOpaqueOneAndTwoTwinMoi();
 
 Future<OpaqueTwoTwinMoi> rustAutoOpaqueReturnOpaqueTwoTwinMoi() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueReturnOpaqueTwoTwinMoi();
 
 Future<int> rustAutoOpaqueBorrowAndMutBorrowTwinMoi({
   required NonCloneSimpleTwinMoi borrow,
   required NonCloneSimpleTwinMoi mutBorrow,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueBorrowAndMutBorrowTwinMoi(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueBorrowAndMutBorrowTwinMoi(
       borrow: borrow,
       mutBorrow: mutBorrow,
     );
@@ -239,9 +225,8 @@ Future<int> rustAutoOpaqueBorrowAndMutBorrowTwinMoi({
 Future<int> rustAutoOpaqueBorrowAndBorrowTwinMoi({
   required NonCloneSimpleTwinMoi a,
   required NonCloneSimpleTwinMoi b,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueBorrowAndBorrowTwinMoi(
+}) => RustLib.instance.api
+    .crateApiPseudoManualRustAutoOpaqueTwinMoiRustAutoOpaqueBorrowAndBorrowTwinMoi(
       a: a,
       b: b,
     );
@@ -273,7 +258,8 @@ abstract class NonCloneSimpleTwinMoi implements RustOpaqueInterface {
 
   /// named constructor
   static Future<NonCloneSimpleTwinMoi> newCustomNameTwinMoi() => RustLib
-      .instance.api
+      .instance
+      .api
       .crateApiPseudoManualRustAutoOpaqueTwinMoiNonCloneSimpleTwinMoiNewCustomNameTwinMoi();
 
   /// unnamed constructor
@@ -282,35 +268,34 @@ abstract class NonCloneSimpleTwinMoi implements RustOpaqueInterface {
 
   /// constructor with Result
   static Future<NonCloneSimpleTwinMoi> newWithResultTwinMoi() => RustLib
-      .instance.api
+      .instance
+      .api
       .crateApiPseudoManualRustAutoOpaqueTwinMoiNonCloneSimpleTwinMoiNewWithResultTwinMoi();
 
   static Future<void> staticMethodArgBorrowTwinMoi({
     required NonCloneSimpleTwinMoi arg,
-  }) =>
-      RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinMoiNonCloneSimpleTwinMoiStaticMethodArgBorrowTwinMoi(
+  }) => RustLib.instance.api
+      .crateApiPseudoManualRustAutoOpaqueTwinMoiNonCloneSimpleTwinMoiStaticMethodArgBorrowTwinMoi(
         arg: arg,
       );
 
   static Future<void> staticMethodArgMutBorrowTwinMoi({
     required NonCloneSimpleTwinMoi arg,
-  }) =>
-      RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinMoiNonCloneSimpleTwinMoiStaticMethodArgMutBorrowTwinMoi(
+  }) => RustLib.instance.api
+      .crateApiPseudoManualRustAutoOpaqueTwinMoiNonCloneSimpleTwinMoiStaticMethodArgMutBorrowTwinMoi(
         arg: arg,
       );
 
   static Future<void> staticMethodArgOwnTwinMoi({
     required NonCloneSimpleTwinMoi arg,
-  }) =>
-      RustLib.instance.api
-          .crateApiPseudoManualRustAutoOpaqueTwinMoiNonCloneSimpleTwinMoiStaticMethodArgOwnTwinMoi(
+  }) => RustLib.instance.api
+      .crateApiPseudoManualRustAutoOpaqueTwinMoiNonCloneSimpleTwinMoiStaticMethodArgOwnTwinMoi(
         arg: arg,
       );
 
   static Future<NonCloneSimpleTwinMoi> staticMethodReturnOwnTwinMoi() => RustLib
-      .instance.api
+      .instance
+      .api
       .crateApiPseudoManualRustAutoOpaqueTwinMoiNonCloneSimpleTwinMoiStaticMethodReturnOwnTwinMoi();
 }
 

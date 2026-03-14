@@ -13,9 +13,8 @@ int? primitiveOptionalTypesTwinSyncSse({
   PlatformInt64? myI64,
   double? myF64,
   bool? myBool,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalPrimitiveMiscTwinSyncSsePrimitiveOptionalTypesTwinSyncSse(
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalPrimitiveMiscTwinSyncSsePrimitiveOptionalTypesTwinSyncSse(
       myI32: myI32,
       myI64: myI64,
       myF64: myF64,

@@ -22,46 +22,40 @@ mixin _$ApplicationMessage {
     required TResult Function(String field0) displayMessage,
     required TResult Function(int x, int y) renderPixel,
     required TResult Function() exit,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String field0)? displayMessage,
     TResult? Function(int x, int y)? renderPixel,
     TResult? Function()? exit,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String field0)? displayMessage,
     TResult Function(int x, int y)? renderPixel,
     TResult Function()? exit,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ApplicationMessage_DisplayMessage value)
-        displayMessage,
+    displayMessage,
     required TResult Function(ApplicationMessage_RenderPixel value) renderPixel,
     required TResult Function(ApplicationMessage_Exit value) exit,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ApplicationMessage_DisplayMessage value)? displayMessage,
     TResult? Function(ApplicationMessage_RenderPixel value)? renderPixel,
     TResult? Function(ApplicationMessage_Exit value)? exit,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ApplicationMessage_DisplayMessage value)? displayMessage,
     TResult Function(ApplicationMessage_RenderPixel value)? renderPixel,
     TResult Function(ApplicationMessage_Exit value)? exit,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -98,8 +92,11 @@ abstract class _$$ApplicationMessage_DisplayMessageImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ApplicationMessage_DisplayMessageImplCopyWithImpl<$Res>
-    extends _$ApplicationMessageCopyWithImpl<$Res,
-        _$ApplicationMessage_DisplayMessageImpl>
+    extends
+        _$ApplicationMessageCopyWithImpl<
+          $Res,
+          _$ApplicationMessage_DisplayMessageImpl
+        >
     implements _$$ApplicationMessage_DisplayMessageImplCopyWith<$Res> {
   __$$ApplicationMessage_DisplayMessageImplCopyWithImpl(
     _$ApplicationMessage_DisplayMessageImpl _value,
@@ -116,7 +113,7 @@ class __$$ApplicationMessage_DisplayMessageImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -153,9 +150,12 @@ class _$ApplicationMessage_DisplayMessageImpl
   @override
   @pragma('vm:prefer-inline')
   _$$ApplicationMessage_DisplayMessageImplCopyWith<
-          _$ApplicationMessage_DisplayMessageImpl>
-      get copyWith => __$$ApplicationMessage_DisplayMessageImplCopyWithImpl<
-          _$ApplicationMessage_DisplayMessageImpl>(this, _$identity);
+    _$ApplicationMessage_DisplayMessageImpl
+  >
+  get copyWith =>
+      __$$ApplicationMessage_DisplayMessageImplCopyWithImpl<
+        _$ApplicationMessage_DisplayMessageImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -195,7 +195,7 @@ class _$ApplicationMessage_DisplayMessageImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ApplicationMessage_DisplayMessage value)
-        displayMessage,
+    displayMessage,
     required TResult Function(ApplicationMessage_RenderPixel value) renderPixel,
     required TResult Function(ApplicationMessage_Exit value) exit,
   }) {
@@ -238,8 +238,9 @@ abstract class ApplicationMessage_DisplayMessage extends ApplicationMessage {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApplicationMessage_DisplayMessageImplCopyWith<
-          _$ApplicationMessage_DisplayMessageImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$ApplicationMessage_DisplayMessageImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -254,8 +255,11 @@ abstract class _$$ApplicationMessage_RenderPixelImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ApplicationMessage_RenderPixelImplCopyWithImpl<$Res>
-    extends _$ApplicationMessageCopyWithImpl<$Res,
-        _$ApplicationMessage_RenderPixelImpl>
+    extends
+        _$ApplicationMessageCopyWithImpl<
+          $Res,
+          _$ApplicationMessage_RenderPixelImpl
+        >
     implements _$$ApplicationMessage_RenderPixelImplCopyWith<$Res> {
   __$$ApplicationMessage_RenderPixelImplCopyWithImpl(
     _$ApplicationMessage_RenderPixelImpl _value,
@@ -272,11 +276,11 @@ class __$$ApplicationMessage_RenderPixelImplCopyWithImpl<$Res>
         x: null == x
             ? _value.x
             : x // ignore: cast_nullable_to_non_nullable
-                as int,
+                  as int,
         y: null == y
             ? _value.y
             : y // ignore: cast_nullable_to_non_nullable
-                as int,
+                  as int,
       ),
     );
   }
@@ -287,7 +291,7 @@ class __$$ApplicationMessage_RenderPixelImplCopyWithImpl<$Res>
 class _$ApplicationMessage_RenderPixelImpl
     extends ApplicationMessage_RenderPixel {
   const _$ApplicationMessage_RenderPixelImpl({required this.x, required this.y})
-      : super._();
+    : super._();
 
   @override
   final int x;
@@ -317,9 +321,12 @@ class _$ApplicationMessage_RenderPixelImpl
   @override
   @pragma('vm:prefer-inline')
   _$$ApplicationMessage_RenderPixelImplCopyWith<
-          _$ApplicationMessage_RenderPixelImpl>
-      get copyWith => __$$ApplicationMessage_RenderPixelImplCopyWithImpl<
-          _$ApplicationMessage_RenderPixelImpl>(this, _$identity);
+    _$ApplicationMessage_RenderPixelImpl
+  >
+  get copyWith =>
+      __$$ApplicationMessage_RenderPixelImplCopyWithImpl<
+        _$ApplicationMessage_RenderPixelImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -359,7 +366,7 @@ class _$ApplicationMessage_RenderPixelImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ApplicationMessage_DisplayMessage value)
-        displayMessage,
+    displayMessage,
     required TResult Function(ApplicationMessage_RenderPixel value) renderPixel,
     required TResult Function(ApplicationMessage_Exit value) exit,
   }) {
@@ -405,8 +412,9 @@ abstract class ApplicationMessage_RenderPixel extends ApplicationMessage {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApplicationMessage_RenderPixelImplCopyWith<
-          _$ApplicationMessage_RenderPixelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$ApplicationMessage_RenderPixelImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -419,8 +427,8 @@ abstract class _$$ApplicationMessage_ExitImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ApplicationMessage_ExitImplCopyWithImpl<$Res>
-    extends _$ApplicationMessageCopyWithImpl<$Res,
-        _$ApplicationMessage_ExitImpl>
+    extends
+        _$ApplicationMessageCopyWithImpl<$Res, _$ApplicationMessage_ExitImpl>
     implements _$$ApplicationMessage_ExitImplCopyWith<$Res> {
   __$$ApplicationMessage_ExitImplCopyWithImpl(
     _$ApplicationMessage_ExitImpl _value,
@@ -489,7 +497,7 @@ class _$ApplicationMessage_ExitImpl extends ApplicationMessage_Exit {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ApplicationMessage_DisplayMessage value)
-        displayMessage,
+    displayMessage,
     required TResult Function(ApplicationMessage_RenderPixel value) renderPixel,
     required TResult Function(ApplicationMessage_Exit value) exit,
   }) {
@@ -534,47 +542,41 @@ mixin _$RawStringEnumMirrored {
     required TResult Function(RawStringMirrored field0) raw,
     required TResult Function(NestedRawStringMirrored field0) nested,
     required TResult Function(ListOfNestedRawStringMirrored field0)
-        listOfNested,
-  }) =>
-      throw _privateConstructorUsedError;
+    listOfNested,
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(RawStringMirrored field0)? raw,
     TResult? Function(NestedRawStringMirrored field0)? nested,
     TResult? Function(ListOfNestedRawStringMirrored field0)? listOfNested,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(RawStringMirrored field0)? raw,
     TResult Function(NestedRawStringMirrored field0)? nested,
     TResult Function(ListOfNestedRawStringMirrored field0)? listOfNested,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(RawStringEnumMirrored_Raw value) raw,
     required TResult Function(RawStringEnumMirrored_Nested value) nested,
     required TResult Function(RawStringEnumMirrored_ListOfNested value)
-        listOfNested,
-  }) =>
-      throw _privateConstructorUsedError;
+    listOfNested,
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(RawStringEnumMirrored_Raw value)? raw,
     TResult? Function(RawStringEnumMirrored_Nested value)? nested,
     TResult? Function(RawStringEnumMirrored_ListOfNested value)? listOfNested,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(RawStringEnumMirrored_Raw value)? raw,
     TResult Function(RawStringEnumMirrored_Nested value)? nested,
     TResult Function(RawStringEnumMirrored_ListOfNested value)? listOfNested,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -586,8 +588,10 @@ abstract class $RawStringEnumMirroredCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$RawStringEnumMirroredCopyWithImpl<$Res,
-        $Val extends RawStringEnumMirrored>
+class _$RawStringEnumMirroredCopyWithImpl<
+  $Res,
+  $Val extends RawStringEnumMirrored
+>
     implements $RawStringEnumMirroredCopyWith<$Res> {
   _$RawStringEnumMirroredCopyWithImpl(this._value, this._then);
 
@@ -612,8 +616,11 @@ abstract class _$$RawStringEnumMirrored_RawImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$RawStringEnumMirrored_RawImplCopyWithImpl<$Res>
-    extends _$RawStringEnumMirroredCopyWithImpl<$Res,
-        _$RawStringEnumMirrored_RawImpl>
+    extends
+        _$RawStringEnumMirroredCopyWithImpl<
+          $Res,
+          _$RawStringEnumMirrored_RawImpl
+        >
     implements _$$RawStringEnumMirrored_RawImplCopyWith<$Res> {
   __$$RawStringEnumMirrored_RawImplCopyWithImpl(
     _$RawStringEnumMirrored_RawImpl _value,
@@ -630,7 +637,7 @@ class __$$RawStringEnumMirrored_RawImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                as RawStringMirrored,
+                  as RawStringMirrored,
       ),
     );
   }
@@ -666,8 +673,10 @@ class _$RawStringEnumMirrored_RawImpl extends RawStringEnumMirrored_Raw {
   @override
   @pragma('vm:prefer-inline')
   _$$RawStringEnumMirrored_RawImplCopyWith<_$RawStringEnumMirrored_RawImpl>
-      get copyWith => __$$RawStringEnumMirrored_RawImplCopyWithImpl<
-          _$RawStringEnumMirrored_RawImpl>(this, _$identity);
+  get copyWith =>
+      __$$RawStringEnumMirrored_RawImplCopyWithImpl<
+        _$RawStringEnumMirrored_RawImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -675,7 +684,7 @@ class _$RawStringEnumMirrored_RawImpl extends RawStringEnumMirrored_Raw {
     required TResult Function(RawStringMirrored field0) raw,
     required TResult Function(NestedRawStringMirrored field0) nested,
     required TResult Function(ListOfNestedRawStringMirrored field0)
-        listOfNested,
+    listOfNested,
   }) {
     return raw(field0);
   }
@@ -710,7 +719,7 @@ class _$RawStringEnumMirrored_RawImpl extends RawStringEnumMirrored_Raw {
     required TResult Function(RawStringEnumMirrored_Raw value) raw,
     required TResult Function(RawStringEnumMirrored_Nested value) nested,
     required TResult Function(RawStringEnumMirrored_ListOfNested value)
-        listOfNested,
+    listOfNested,
   }) {
     return raw(this);
   }
@@ -752,7 +761,7 @@ abstract class RawStringEnumMirrored_Raw extends RawStringEnumMirrored {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RawStringEnumMirrored_RawImplCopyWith<_$RawStringEnumMirrored_RawImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -767,8 +776,11 @@ abstract class _$$RawStringEnumMirrored_NestedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$RawStringEnumMirrored_NestedImplCopyWithImpl<$Res>
-    extends _$RawStringEnumMirroredCopyWithImpl<$Res,
-        _$RawStringEnumMirrored_NestedImpl>
+    extends
+        _$RawStringEnumMirroredCopyWithImpl<
+          $Res,
+          _$RawStringEnumMirrored_NestedImpl
+        >
     implements _$$RawStringEnumMirrored_NestedImplCopyWith<$Res> {
   __$$RawStringEnumMirrored_NestedImplCopyWithImpl(
     _$RawStringEnumMirrored_NestedImpl _value,
@@ -785,7 +797,7 @@ class __$$RawStringEnumMirrored_NestedImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                as NestedRawStringMirrored,
+                  as NestedRawStringMirrored,
       ),
     );
   }
@@ -821,9 +833,12 @@ class _$RawStringEnumMirrored_NestedImpl extends RawStringEnumMirrored_Nested {
   @override
   @pragma('vm:prefer-inline')
   _$$RawStringEnumMirrored_NestedImplCopyWith<
-          _$RawStringEnumMirrored_NestedImpl>
-      get copyWith => __$$RawStringEnumMirrored_NestedImplCopyWithImpl<
-          _$RawStringEnumMirrored_NestedImpl>(this, _$identity);
+    _$RawStringEnumMirrored_NestedImpl
+  >
+  get copyWith =>
+      __$$RawStringEnumMirrored_NestedImplCopyWithImpl<
+        _$RawStringEnumMirrored_NestedImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -831,7 +846,7 @@ class _$RawStringEnumMirrored_NestedImpl extends RawStringEnumMirrored_Nested {
     required TResult Function(RawStringMirrored field0) raw,
     required TResult Function(NestedRawStringMirrored field0) nested,
     required TResult Function(ListOfNestedRawStringMirrored field0)
-        listOfNested,
+    listOfNested,
   }) {
     return nested(field0);
   }
@@ -866,7 +881,7 @@ class _$RawStringEnumMirrored_NestedImpl extends RawStringEnumMirrored_Nested {
     required TResult Function(RawStringEnumMirrored_Raw value) raw,
     required TResult Function(RawStringEnumMirrored_Nested value) nested,
     required TResult Function(RawStringEnumMirrored_ListOfNested value)
-        listOfNested,
+    listOfNested,
   }) {
     return nested(this);
   }
@@ -909,8 +924,9 @@ abstract class RawStringEnumMirrored_Nested extends RawStringEnumMirrored {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RawStringEnumMirrored_NestedImplCopyWith<
-          _$RawStringEnumMirrored_NestedImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$RawStringEnumMirrored_NestedImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -925,8 +941,11 @@ abstract class _$$RawStringEnumMirrored_ListOfNestedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$RawStringEnumMirrored_ListOfNestedImplCopyWithImpl<$Res>
-    extends _$RawStringEnumMirroredCopyWithImpl<$Res,
-        _$RawStringEnumMirrored_ListOfNestedImpl>
+    extends
+        _$RawStringEnumMirroredCopyWithImpl<
+          $Res,
+          _$RawStringEnumMirrored_ListOfNestedImpl
+        >
     implements _$$RawStringEnumMirrored_ListOfNestedImplCopyWith<$Res> {
   __$$RawStringEnumMirrored_ListOfNestedImplCopyWithImpl(
     _$RawStringEnumMirrored_ListOfNestedImpl _value,
@@ -943,7 +962,7 @@ class __$$RawStringEnumMirrored_ListOfNestedImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                as ListOfNestedRawStringMirrored,
+                  as ListOfNestedRawStringMirrored,
       ),
     );
   }
@@ -980,9 +999,12 @@ class _$RawStringEnumMirrored_ListOfNestedImpl
   @override
   @pragma('vm:prefer-inline')
   _$$RawStringEnumMirrored_ListOfNestedImplCopyWith<
-          _$RawStringEnumMirrored_ListOfNestedImpl>
-      get copyWith => __$$RawStringEnumMirrored_ListOfNestedImplCopyWithImpl<
-          _$RawStringEnumMirrored_ListOfNestedImpl>(this, _$identity);
+    _$RawStringEnumMirrored_ListOfNestedImpl
+  >
+  get copyWith =>
+      __$$RawStringEnumMirrored_ListOfNestedImplCopyWithImpl<
+        _$RawStringEnumMirrored_ListOfNestedImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -990,7 +1012,7 @@ class _$RawStringEnumMirrored_ListOfNestedImpl
     required TResult Function(RawStringMirrored field0) raw,
     required TResult Function(NestedRawStringMirrored field0) nested,
     required TResult Function(ListOfNestedRawStringMirrored field0)
-        listOfNested,
+    listOfNested,
   }) {
     return listOfNested(field0);
   }
@@ -1025,7 +1047,7 @@ class _$RawStringEnumMirrored_ListOfNestedImpl
     required TResult Function(RawStringEnumMirrored_Raw value) raw,
     required TResult Function(RawStringEnumMirrored_Nested value) nested,
     required TResult Function(RawStringEnumMirrored_ListOfNested value)
-        listOfNested,
+    listOfNested,
   }) {
     return listOfNested(this);
   }
@@ -1069,6 +1091,7 @@ abstract class RawStringEnumMirrored_ListOfNested
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RawStringEnumMirrored_ListOfNestedImplCopyWith<
-          _$RawStringEnumMirrored_ListOfNestedImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$RawStringEnumMirrored_ListOfNestedImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }

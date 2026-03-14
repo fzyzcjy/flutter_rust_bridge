@@ -31,14 +31,14 @@ abstract class StructOneWithTraitTwinSync
 
   static Future<StructOneWithTraitTwinSync> simpleTraitFnTwinSync({
     required int value,
-  }) =>
-      RustLib.instance.api
-          .crateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncSimpleTraitFnTwinSync(
+  }) => RustLib.instance.api
+      .crateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncSimpleTraitFnTwinSync(
         value: value,
       );
 
   static Future<int> simpleTraitFnWithDefaultImplTwinSync() => RustLib
-      .instance.api
+      .instance
+      .api
       .crateApiPseudoManualImplTraitTwinSyncStructOneWithTraitTwinSyncSimpleTraitFnWithDefaultImplTwinSync();
 }
 
@@ -53,14 +53,14 @@ abstract class StructTwoWithTraitTwinSync
 
   static Future<StructTwoWithTraitTwinSync> simpleTraitFnTwinSync({
     required int value,
-  }) =>
-      RustLib.instance.api
-          .crateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncSimpleTraitFnTwinSync(
+  }) => RustLib.instance.api
+      .crateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncSimpleTraitFnTwinSync(
         value: value,
       );
 
   static Future<int> simpleTraitFnWithDefaultImplTwinSync() => RustLib
-      .instance.api
+      .instance
+      .api
       .crateApiPseudoManualImplTraitTwinSyncStructTwoWithTraitTwinSyncSimpleTraitFnWithDefaultImplTwinSync();
 }
 

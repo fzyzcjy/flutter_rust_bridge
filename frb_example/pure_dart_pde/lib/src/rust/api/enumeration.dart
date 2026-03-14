@@ -20,61 +20,53 @@ Future<EnumSimpleTwinNormal> funcEnumSimpleTwinNormal({
 
 Future<EnumWithItemMixedTwinNormal> funcEnumWithItemMixedTwinNormal({
   required EnumWithItemMixedTwinNormal arg,
-}) =>
-    RustLib.instance.api.crateApiEnumerationFuncEnumWithItemMixedTwinNormal(
-      arg: arg,
-    );
+}) => RustLib.instance.api.crateApiEnumerationFuncEnumWithItemMixedTwinNormal(
+  arg: arg,
+);
 
 Future<EnumWithItemTupleTwinNormal> funcEnumWithItemTupleTwinNormal({
   required EnumWithItemTupleTwinNormal arg,
-}) =>
-    RustLib.instance.api.crateApiEnumerationFuncEnumWithItemTupleTwinNormal(
-      arg: arg,
-    );
+}) => RustLib.instance.api.crateApiEnumerationFuncEnumWithItemTupleTwinNormal(
+  arg: arg,
+);
 
 Future<EnumWithItemStructTwinNormal> funcEnumWithItemStructTwinNormal({
   required EnumWithItemStructTwinNormal arg,
-}) =>
-    RustLib.instance.api.crateApiEnumerationFuncEnumWithItemStructTwinNormal(
-      arg: arg,
-    );
+}) => RustLib.instance.api.crateApiEnumerationFuncEnumWithItemStructTwinNormal(
+  arg: arg,
+);
 
 Future<EnumWithDiscriminantTwinNormal> funcEnumWithDiscriminantTwinNormal({
   required EnumWithDiscriminantTwinNormal arg,
-}) =>
-    RustLib.instance.api
-        .crateApiEnumerationFuncEnumWithDiscriminantTwinNormal(arg: arg);
+}) => RustLib.instance.api
+    .crateApiEnumerationFuncEnumWithDiscriminantTwinNormal(arg: arg);
 
 Future<Uint8List> printNoteTwinNormal({required NoteTwinNormal note}) =>
     RustLib.instance.api.crateApiEnumerationPrintNoteTwinNormal(note: note);
 
 Future<WeekdaysTwinNormal?> handleReturnEnumTwinNormal({
   required String input,
-}) =>
-    RustLib.instance.api.crateApiEnumerationHandleReturnEnumTwinNormal(
-      input: input,
-    );
+}) => RustLib.instance.api.crateApiEnumerationHandleReturnEnumTwinNormal(
+  input: input,
+);
 
 Future<WeekdaysTwinNormal> handleEnumParameterTwinNormal({
   required WeekdaysTwinNormal weekday,
-}) =>
-    RustLib.instance.api.crateApiEnumerationHandleEnumParameterTwinNormal(
-      weekday: weekday,
-    );
+}) => RustLib.instance.api.crateApiEnumerationHandleEnumParameterTwinNormal(
+  weekday: weekday,
+);
 
 Future<MeasureTwinNormal?> multiplyByTenTwinNormal({
   required MeasureTwinNormal measure,
-}) =>
-    RustLib.instance.api.crateApiEnumerationMultiplyByTenTwinNormal(
-      measure: measure,
-    );
+}) => RustLib.instance.api.crateApiEnumerationMultiplyByTenTwinNormal(
+  measure: measure,
+);
 
 Future<KitchenSinkTwinNormal> handleEnumStructTwinNormal({
   required KitchenSinkTwinNormal val,
-}) =>
-    RustLib.instance.api.crateApiEnumerationHandleEnumStructTwinNormal(
-      val: val,
-    );
+}) => RustLib.instance.api.crateApiEnumerationHandleEnumStructTwinNormal(
+  val: val,
+);
 
 @freezed
 sealed class DistanceTwinNormal with _$DistanceTwinNormal {
