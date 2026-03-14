@@ -29,9 +29,9 @@ SHELL ["/bin/bash", "-c"]
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain ${RUST_VERSION} && \
     export PATH="$HOME/.cargo/bin:$PATH" && \
     rustup component add rustfmt clippy && \
-    rustup toolchain install nightly-${RUST_NIGHTLY_VERSION} && \
-    rustup component add rust-src --toolchain nightly-${RUST_NIGHTLY_VERSION} && \
-    rustup target add wasm32-unknown-unknown --toolchain nightly-${RUST_NIGHTLY_VERSION}
+    rustup toolchain install "nightly-${RUST_NIGHTLY_VERSION}" && \
+    rustup component add rust-src --toolchain "nightly-${RUST_NIGHTLY_VERSION}" && \
+    rustup target add wasm32-unknown-unknown --toolchain "nightly-${RUST_NIGHTLY_VERSION}"
 ENV PATH="/root/.cargo/bin:${PATH}"
 
 # Install wasm-pack for web tests
@@ -50,8 +50,8 @@ WORKDIR /workspace
 RUN flutter --version && \
     dart --version && \
     cargo --version && \
-    rustup toolchain list | grep nightly-${RUST_NIGHTLY_VERSION} && \
-    rustup target list --toolchain nightly-${RUST_NIGHTLY_VERSION} --installed | grep wasm32-unknown-unknown && \
+    rustup toolchain list | grep "nightly-${RUST_NIGHTLY_VERSION}" && \
+    rustup target list --toolchain "nightly-${RUST_NIGHTLY_VERSION}" --installed | grep wasm32-unknown-unknown && \
     wasm-pack --version && \
     chromium --version
 
