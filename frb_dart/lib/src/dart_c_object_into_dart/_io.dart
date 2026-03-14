@@ -110,7 +110,7 @@ dynamic dartCObjectIntoDart(Dart_CObject object) {
 }
 
 _TypedData _typedDataIntoDart({
-  required int ty,
+  required Dart_TypedData_Type ty,
   required ffi.Pointer<ffi.Uint8> typedValues,
   required int nValues,
 }) {
