@@ -15,7 +15,7 @@ use std::env;
 use std::path::{Path, PathBuf};
 use std::str::FromStr;
 
-const CARGO_EXPAND_FALLBACK_VERSION: &str = "1.0.118";
+const CARGO_EXPAND_FALLBACK_VERSION: &str = "1.0.112";
 
 pub(super) fn run(
     rust_crate_dir: &Path,
@@ -178,7 +178,7 @@ mod tests {
     fn test_cargo_expand_fallback_version_when_latest_requires_newer_rustc() {
         let stderr =
             "error: cannot install package `cargo-expand 1.0.121`, it requires rustc 1.88 or newer";
-        assert_eq!(cargo_expand_fallback_version(stderr), Some("1.0.118"));
+        assert_eq!(cargo_expand_fallback_version(stderr), Some("1.0.112"));
     }
 
     #[test]
@@ -188,14 +188,14 @@ mod tests {
 
     #[test]
     fn test_cargo_expand_install_args_for_fallback_uses_locked() {
-        let args = cargo_expand_install_args(Some("1.0.118"));
+        let args = cargo_expand_install_args(Some("1.0.112"));
         let args = args
             .into_iter()
             .map(|item| item.into_os_string().into_string().unwrap())
             .collect::<Vec<_>>();
         assert_eq!(
             args,
-            vec!["install", "cargo-expand", "--version", "1.0.118", "--locked"]
+            vec!["install", "cargo-expand", "--version", "1.0.112", "--locked"]
         );
     }
 }
