@@ -43,6 +43,7 @@ Keep all PRs in merged status that belong to the release range.
 - Exclude PRs outside the release range.
 - Do not filter by target branch.
 - Keep docs, CI, and chore PRs if they are merged in the range.
+- Exclude all-contributors PRs such as `docs: add <name> as a contributor for code/doc`.
 
 Normalize titles before writing.
 
