@@ -1,0 +1,4 @@
+interface:
+  display_name: "FRB Write Changelog"
+  short_description: "Write FRB release changelog sections"
+  default_prompt: "Use $frb-write-changelog to update CHANGELOG.md for the next flutter_rust_bridge release."
