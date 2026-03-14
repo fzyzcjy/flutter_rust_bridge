@@ -18,7 +18,7 @@
 - Cupnfish: Support arrays as function parameters. Allow multi mirror.
 - alanlzhang: Add generation for Dart metadata. Enhance and fix module parser. Fix enum in struct. Fix linter. Improve hints.
 - erikas-taroza: Support list of primitive enums. Make enum camelCase. Warn wrong path. Fix cargo expand.
-- AlexV525: Add version check skipper. Add Dart fix. Fix folder. Update CI. Use Melos.
+- AlexV525: Add version check skipper. Add Dart fix. Fix folder. Update CI. Use Melos. Limit scheduled CI.
 - alexthe2: Add Option Datetime. Add empty structs. Improve doc. Add `r#`. Fix mirror enum bug. Bump version.
 - patmuk: Set MSRV. Fail fast. Improve message. Support relative config. Improve multiple docs. Fix warning. Fix CI.
 - SiongSng: Finish implementing exception hierarchy. Fix SyncReturn bug.
@@ -34,8 +34,13 @@
 - banool: Fix pubspec parsing. Fix symbol-stripping doc.
 - alexlapa: Fix Dart_PostCObject. Fix DartOpaque.
 - kyrias: Use portable atomic. Ignore accessor fields. Update doc.
+- SilverMira: Fix StreamSink. Encoded types in DCO.
 - Integral-Tech: Use concat. Fix lint.
+- h3x4d3c1m4l: Fix when outside folder. Support publish tag.
 - Tienisto: Remove default enum case. Add mock init.
+- AadamZ5: Workspace root resolution logic.
+- dt-iohk: Support multi packages on web.
+- NathanKolbas: Crate name different from plugin. Update CI.
 - satvikpendem: 'Add json_serializable. Update CI. Little co-work #989.'
 - anlumo: Fix freezed + methods. Non-clone RustOpaque. Update syn. Support custom hasher.
 - temeddix: Fix broken CI. Custom num workers. Fix MacOS doc steps. Update doc. Make zero-copy defaultable.
@@ -44,6 +49,11 @@
 - ethicnology: Fix fvm install.
 - xuxiaocheng0201: Support skipping in integrate.
 - ski0090: Fix folder creation.
+- khangah: Dart fn output extra handling.
+- marcmcd: Windows 10 build-web.
+- turtletongue: Check deps when upgrading.
+- Shadowcat650: Vec optimization.
+- TrackerSB: Bump allo-isolate. Update CI.
 - borgoat: Upgrade freezed.
 - xuwaters: Support edition 2024.
 - SirKrlos: Fix fvm calls.
@@ -69,8 +79,6 @@
 - codercengiz: Fix mirroring bug.
 - Michael-F-Bryan: Detect broken bindings.
 - phlip9: Fix no-serde compilation.
-- SilverMira: Fix StreamSink.
-- h3x4d3c1m4l: Fix when outside folder.
 - HalidOdat: Improve config method. Hint build.rs.
 - Berrysoft: Fix missing symbols.
 - bus710: Add a case in troubleshooting.
@@ -91,7 +99,8 @@
 - vincent-herlemont: Loosen version.
 - canxin121: Fix permission.
 - pixelshot91: Update cargokit. Fix doc link.
-- TrackerSB: Bump allo-isolate.
+- dgasparri: Improve doc.
+- liruohrh: Improve doc.
 - bubnov: Improve doc.
 - Dampfwalze: Improve doc.
 - samuel-cavalcanti: Improve doc.
@@ -120,12 +129,3 @@
 - escwxyz: Fix a typo.
 - eltociear: Fix a typo.
 - thesimplekid: Fix a typo.
-- turtletongue: TODO
-- dt-iohk: TODO
-- AadamZ5: TODO
-- NathanKolbas: TODO
-- Shadowcat650: TODO
-- khangah: TODO
-- marcmcd: TODO
-- liruohrh: TODO
-- dgasparri: TODO
