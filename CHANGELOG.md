@@ -18,6 +18,7 @@
 * Fix unhandled error in dart_fn_handle_output when sending message #2941 (thanks @khangah)
 * Fix Windows 10 `flutter_rust_bridge_codegen build-web` failure #2906 (thanks @marcmcd)
 * Revise troubleshooting steps for Cargokit and Flutter #2994 (thanks @liruohrh)
+* Add back web platform codecov #2988
 * Add DevContainer and Dockerfile #2981
 * Added suggestion to update cargo in troubleshooting.md #2955 (thanks @dgasparri)
 * Regenerate tests #2973 #2982 (thanks @TrackerSB)
