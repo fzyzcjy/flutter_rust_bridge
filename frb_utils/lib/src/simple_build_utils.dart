@@ -27,9 +27,9 @@ Future<void> simpleBuild(
         Platform.environment['NIX_FRB_SIMPLE_BUILD_CARGO_NIGHTLY'] == '1';
     final cargoExtraArgs =
         Platform.environment['NIX_FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS']?.split(
-              ' ',
-            ) ??
-            const <String>[];
+          ' ',
+        ) ??
+        const <String>[];
     final skip = Platform.environment['NIX_FRB_SIMPLE_BUILD_SKIP'] == '1';
     final rustflags = Platform.environment['NIX_FRB_RUSTFLAGS'];
 
