@@ -31,16 +31,7 @@ Before regenerating contributor artifacts, append each new contributor to the en
 
 Do this only for contributors who are not already present in `.all-contributors-custom.yaml`.
 
-Then stop and hand the task to a human. The human must replace each `TODO` with a concise contribution summary.
-
-When asking for human input, provide enough context for each contributor:
-
-- GitHub username
-- Chosen source PR URL
-- Chosen source PR title
-- Whether this is the contributor's first PR or one of several PRs
-
-The point of this pause is to let a human decide the custom message text that will appear in `README.md`.
+Then stop and ask a human to replace each `TODO` with a concise contribution summary.
 
 This stop is mandatory.
 
