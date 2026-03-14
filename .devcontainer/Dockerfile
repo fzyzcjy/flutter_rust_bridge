@@ -42,7 +42,7 @@ RUN apt-get update && apt-get install -y \
     chromium \
     chromium-driver \
     && rm -rf /var/lib/apt/lists/*
-ENV CHROME_BIN=/usr/bin/chromium
+ENV CHROME_BIN=/usr/bin/chromium-browser
 
 # Working directory
 WORKDIR /workspace
@@ -53,7 +53,7 @@ RUN flutter --version && \
     rustup toolchain list | grep "nightly-${RUST_NIGHTLY_VERSION}" && \
     rustup target list --toolchain "nightly-${RUST_NIGHTLY_VERSION}" --installed | grep wasm32-unknown-unknown && \
     wasm-pack --version && \
-    chromium --version
+    "${CHROME_BIN}" --version
 
 # Default command
 CMD ["bash"]
