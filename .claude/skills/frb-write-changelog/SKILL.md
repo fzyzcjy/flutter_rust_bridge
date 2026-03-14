@@ -67,3 +67,12 @@ Review the final diff.
 - Confirm the change is limited to the target release section.
 - Confirm wording and ordering match nearby release sections.
 - Create a small atomic commit after finishing the edit.
+
+## Step 7: Verify with a subagent
+
+Launch a separate subagent after finishing the changelog draft.
+
+- Ask the subagent to independently collect the merged PR list for the same release range.
+- Ask the subagent to compare that list against `CHANGELOG.md`.
+- Ask the subagent to report missing PRs, suspicious duplicates, and formatting inconsistencies.
+- Apply any confirmed fixes, then re-check the final diff.
