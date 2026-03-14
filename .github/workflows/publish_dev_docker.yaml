@@ -86,7 +86,7 @@ jobs:
             wasm-pack --version
             chromium --version
             rustup target list --installed | grep wasm32-unknown-unknown
-            rustup show | grep "${{ steps.metadata.outputs.rust_nightly_version }}"
+            rustup show | grep "nightly-${{ steps.metadata.outputs.rust_nightly_version }}"
           '
 
       - name: Push image to Docker Hub
