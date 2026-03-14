@@ -7,7 +7,6 @@
 import 'package:flutter_rust_bridge/src/droppable/droppable.dart';
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/rust_opaque_twin_sync_sse_moi.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
-import 'package:flutter_rust_bridge/src/consts.dart' show kIsWeb;
 import 'package:test/test.dart';
 
 import '../../test_utils.dart';

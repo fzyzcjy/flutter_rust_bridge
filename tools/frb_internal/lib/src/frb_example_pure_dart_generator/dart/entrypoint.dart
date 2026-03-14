@@ -38,11 +38,6 @@ class DartGenerator extends BaseGenerator {
 
     if (mode.components.contains(DuplicatorComponentMode.moi)) {
       ans = ans.replaceFirst(
-        "import 'package:test/test.dart';\n",
-        "import 'package:flutter_rust_bridge/src/consts.dart' show kIsWeb;\n"
-        "import 'package:test/test.dart';\n",
-      );
-      ans = ans.replaceFirst(
         'Future<void> main({bool skipRustLibInit = false}) async {\n',
         'Future<void> main({bool skipRustLibInit = false}) async {\n'
         "  if (kIsWeb) return;\n",
