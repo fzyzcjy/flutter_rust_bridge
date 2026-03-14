@@ -50,10 +50,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     }
     final nulls = List.filled(loops, null);
     expect(opt.i32, nulls);
-    expect(opt.enums, [
-      WeekdaysTwinSync.monday,
-      for (final val in nulls) val,
-    ]);
+    expect(opt.enums, [WeekdaysTwinSync.monday, for (final val in nulls) val]);
     expect(opt.strings, ['foo', for (final val in nulls) val]);
     expect(opt.buffers, nulls);
   });

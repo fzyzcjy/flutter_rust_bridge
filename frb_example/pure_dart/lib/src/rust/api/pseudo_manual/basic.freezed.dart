@@ -21,40 +21,34 @@ mixin _$BasicGeneralEnumTwinNormal {
   TResult when<TResult extends Object?>({
     required TResult Function(String field) apple,
     required TResult Function() orange,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String field)? apple,
     TResult? Function()? orange,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String field)? apple,
     TResult Function()? orange,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(BasicGeneralEnumTwinNormal_Apple value) apple,
     required TResult Function(BasicGeneralEnumTwinNormal_Orange value) orange,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(BasicGeneralEnumTwinNormal_Apple value)? apple,
     TResult? Function(BasicGeneralEnumTwinNormal_Orange value)? orange,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(BasicGeneralEnumTwinNormal_Apple value)? apple,
     TResult Function(BasicGeneralEnumTwinNormal_Orange value)? orange,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -62,13 +56,18 @@ abstract class $BasicGeneralEnumTwinNormalCopyWith<$Res> {
   factory $BasicGeneralEnumTwinNormalCopyWith(
     BasicGeneralEnumTwinNormal value,
     $Res Function(BasicGeneralEnumTwinNormal) then,
-  ) = _$BasicGeneralEnumTwinNormalCopyWithImpl<$Res,
-      BasicGeneralEnumTwinNormal>;
+  ) =
+      _$BasicGeneralEnumTwinNormalCopyWithImpl<
+        $Res,
+        BasicGeneralEnumTwinNormal
+      >;
 }
 
 /// @nodoc
-class _$BasicGeneralEnumTwinNormalCopyWithImpl<$Res,
-        $Val extends BasicGeneralEnumTwinNormal>
+class _$BasicGeneralEnumTwinNormalCopyWithImpl<
+  $Res,
+  $Val extends BasicGeneralEnumTwinNormal
+>
     implements $BasicGeneralEnumTwinNormalCopyWith<$Res> {
   _$BasicGeneralEnumTwinNormalCopyWithImpl(this._value, this._then);
 
@@ -93,8 +92,11 @@ abstract class _$$BasicGeneralEnumTwinNormal_AppleImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$BasicGeneralEnumTwinNormal_AppleImplCopyWithImpl<$Res>
-    extends _$BasicGeneralEnumTwinNormalCopyWithImpl<$Res,
-        _$BasicGeneralEnumTwinNormal_AppleImpl>
+    extends
+        _$BasicGeneralEnumTwinNormalCopyWithImpl<
+          $Res,
+          _$BasicGeneralEnumTwinNormal_AppleImpl
+        >
     implements _$$BasicGeneralEnumTwinNormal_AppleImplCopyWith<$Res> {
   __$$BasicGeneralEnumTwinNormal_AppleImplCopyWithImpl(
     _$BasicGeneralEnumTwinNormal_AppleImpl _value,
@@ -111,7 +113,7 @@ class __$$BasicGeneralEnumTwinNormal_AppleImplCopyWithImpl<$Res>
         field: null == field
             ? _value.field
             : field // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -122,7 +124,7 @@ class __$$BasicGeneralEnumTwinNormal_AppleImplCopyWithImpl<$Res>
 class _$BasicGeneralEnumTwinNormal_AppleImpl
     extends BasicGeneralEnumTwinNormal_Apple {
   const _$BasicGeneralEnumTwinNormal_AppleImpl({required this.field})
-      : super._();
+    : super._();
 
   @override
   final String field;
@@ -149,9 +151,12 @@ class _$BasicGeneralEnumTwinNormal_AppleImpl
   @override
   @pragma('vm:prefer-inline')
   _$$BasicGeneralEnumTwinNormal_AppleImplCopyWith<
-          _$BasicGeneralEnumTwinNormal_AppleImpl>
-      get copyWith => __$$BasicGeneralEnumTwinNormal_AppleImplCopyWithImpl<
-          _$BasicGeneralEnumTwinNormal_AppleImpl>(this, _$identity);
+    _$BasicGeneralEnumTwinNormal_AppleImpl
+  >
+  get copyWith =>
+      __$$BasicGeneralEnumTwinNormal_AppleImplCopyWithImpl<
+        _$BasicGeneralEnumTwinNormal_AppleImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -229,8 +234,9 @@ abstract class BasicGeneralEnumTwinNormal_Apple
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BasicGeneralEnumTwinNormal_AppleImplCopyWith<
-          _$BasicGeneralEnumTwinNormal_AppleImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$BasicGeneralEnumTwinNormal_AppleImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -243,8 +249,11 @@ abstract class _$$BasicGeneralEnumTwinNormal_OrangeImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$BasicGeneralEnumTwinNormal_OrangeImplCopyWithImpl<$Res>
-    extends _$BasicGeneralEnumTwinNormalCopyWithImpl<$Res,
-        _$BasicGeneralEnumTwinNormal_OrangeImpl>
+    extends
+        _$BasicGeneralEnumTwinNormalCopyWithImpl<
+          $Res,
+          _$BasicGeneralEnumTwinNormal_OrangeImpl
+        >
     implements _$$BasicGeneralEnumTwinNormal_OrangeImplCopyWith<$Res> {
   __$$BasicGeneralEnumTwinNormal_OrangeImplCopyWithImpl(
     _$BasicGeneralEnumTwinNormal_OrangeImpl _value,

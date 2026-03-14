@@ -11,21 +11,26 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `ComplexEnumWithCommentsTwinRustAsyncSse`, `SimpleEnumWithCommentsTwinRustAsyncSse`
 
 /// This is single line comment
-Future<void> functionWithCommentsTripleSlashSingleLineTwinRustAsyncSse() => RustLib
-    .instance.api
+Future<void>
+functionWithCommentsTripleSlashSingleLineTwinRustAsyncSse() => RustLib
+    .instance
+    .api
     .crateApiPseudoManualCommentTwinRustAsyncSseFunctionWithCommentsTripleSlashSingleLineTwinRustAsyncSse();
 
 /// This is first line
 /// This is second line
-Future<void> functionWithCommentsTripleSlashMultiLineTwinRustAsyncSse() => RustLib
-    .instance.api
+Future<void>
+functionWithCommentsTripleSlashMultiLineTwinRustAsyncSse() => RustLib
+    .instance
+    .api
     .crateApiPseudoManualCommentTwinRustAsyncSseFunctionWithCommentsTripleSlashMultiLineTwinRustAsyncSse();
 
 /// Multiline comments are fine,
 /// but they are not preferred in Rust nor in Dart.
 /// Newlines are preserved.
 Future<void> functionWithCommentsSlashStarStarTwinRustAsyncSse() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualCommentTwinRustAsyncSseFunctionWithCommentsSlashStarStarTwinRustAsyncSse();
 
 /// Comments on structs
@@ -33,13 +38,11 @@ class StructWithCommentsTwinRustAsyncSse {
   /// Documentation on a struct field
   final int fieldWithComments;
 
-  const StructWithCommentsTwinRustAsyncSse({
-    required this.fieldWithComments,
-  });
+  const StructWithCommentsTwinRustAsyncSse({required this.fieldWithComments});
 
   /// Documentation on an instance method
   Future<void> instanceMethodTwinRustAsyncSse() => RustLib.instance.api
-          .crateApiPseudoManualCommentTwinRustAsyncSseStructWithCommentsTwinRustAsyncSseInstanceMethodTwinRustAsyncSse(
+      .crateApiPseudoManualCommentTwinRustAsyncSseStructWithCommentsTwinRustAsyncSseInstanceMethodTwinRustAsyncSse(
         that: this,
       );
 

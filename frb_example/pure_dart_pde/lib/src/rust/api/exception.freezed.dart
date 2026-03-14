@@ -23,40 +23,34 @@ mixin _$CustomEnumErrorTwinNormal {
   TResult when<TResult extends Object?>({
     required TResult Function(String message, String backtrace) one,
     required TResult Function(int message, String backtrace) two,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String message, String backtrace)? one,
     TResult? Function(int message, String backtrace)? two,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String message, String backtrace)? one,
     TResult Function(int message, String backtrace)? two,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CustomEnumErrorTwinNormal_One value) one,
     required TResult Function(CustomEnumErrorTwinNormal_Two value) two,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CustomEnumErrorTwinNormal_One value)? one,
     TResult? Function(CustomEnumErrorTwinNormal_Two value)? two,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CustomEnumErrorTwinNormal_One value)? one,
     TResult Function(CustomEnumErrorTwinNormal_Two value)? two,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 
   /// Create a copy of CustomEnumErrorTwinNormal
   /// with the given fields replaced by the non-null parameter values.
@@ -76,8 +70,10 @@ abstract class $CustomEnumErrorTwinNormalCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CustomEnumErrorTwinNormalCopyWithImpl<$Res,
-        $Val extends CustomEnumErrorTwinNormal>
+class _$CustomEnumErrorTwinNormalCopyWithImpl<
+  $Res,
+  $Val extends CustomEnumErrorTwinNormal
+>
     implements $CustomEnumErrorTwinNormalCopyWith<$Res> {
   _$CustomEnumErrorTwinNormalCopyWithImpl(this._value, this._then);
 
@@ -93,11 +89,12 @@ class _$CustomEnumErrorTwinNormalCopyWithImpl<$Res,
   $Res call({Object? backtrace = null}) {
     return _then(
       _value.copyWith(
-        backtrace: null == backtrace
-            ? _value.backtrace
-            : backtrace // ignore: cast_nullable_to_non_nullable
-                as String,
-      ) as $Val,
+            backtrace: null == backtrace
+                ? _value.backtrace
+                : backtrace // ignore: cast_nullable_to_non_nullable
+                      as String,
+          )
+          as $Val,
     );
   }
 }
@@ -116,8 +113,11 @@ abstract class _$$CustomEnumErrorTwinNormal_OneImplCopyWith<$Res>
 
 /// @nodoc
 class __$$CustomEnumErrorTwinNormal_OneImplCopyWithImpl<$Res>
-    extends _$CustomEnumErrorTwinNormalCopyWithImpl<$Res,
-        _$CustomEnumErrorTwinNormal_OneImpl>
+    extends
+        _$CustomEnumErrorTwinNormalCopyWithImpl<
+          $Res,
+          _$CustomEnumErrorTwinNormal_OneImpl
+        >
     implements _$$CustomEnumErrorTwinNormal_OneImplCopyWith<$Res> {
   __$$CustomEnumErrorTwinNormal_OneImplCopyWithImpl(
     _$CustomEnumErrorTwinNormal_OneImpl _value,
@@ -134,11 +134,11 @@ class __$$CustomEnumErrorTwinNormal_OneImplCopyWithImpl<$Res>
         message: null == message
             ? _value.message
             : message // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
         backtrace: null == backtrace
             ? _value.backtrace
             : backtrace // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -182,9 +182,12 @@ class _$CustomEnumErrorTwinNormal_OneImpl
   @override
   @pragma('vm:prefer-inline')
   _$$CustomEnumErrorTwinNormal_OneImplCopyWith<
-          _$CustomEnumErrorTwinNormal_OneImpl>
-      get copyWith => __$$CustomEnumErrorTwinNormal_OneImplCopyWithImpl<
-          _$CustomEnumErrorTwinNormal_OneImpl>(this, _$identity);
+    _$CustomEnumErrorTwinNormal_OneImpl
+  >
+  get copyWith =>
+      __$$CustomEnumErrorTwinNormal_OneImplCopyWithImpl<
+        _$CustomEnumErrorTwinNormal_OneImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -267,8 +270,9 @@ abstract class CustomEnumErrorTwinNormal_One extends CustomEnumErrorTwinNormal
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomEnumErrorTwinNormal_OneImplCopyWith<
-          _$CustomEnumErrorTwinNormal_OneImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$CustomEnumErrorTwinNormal_OneImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -285,8 +289,11 @@ abstract class _$$CustomEnumErrorTwinNormal_TwoImplCopyWith<$Res>
 
 /// @nodoc
 class __$$CustomEnumErrorTwinNormal_TwoImplCopyWithImpl<$Res>
-    extends _$CustomEnumErrorTwinNormalCopyWithImpl<$Res,
-        _$CustomEnumErrorTwinNormal_TwoImpl>
+    extends
+        _$CustomEnumErrorTwinNormalCopyWithImpl<
+          $Res,
+          _$CustomEnumErrorTwinNormal_TwoImpl
+        >
     implements _$$CustomEnumErrorTwinNormal_TwoImplCopyWith<$Res> {
   __$$CustomEnumErrorTwinNormal_TwoImplCopyWithImpl(
     _$CustomEnumErrorTwinNormal_TwoImpl _value,
@@ -303,11 +310,11 @@ class __$$CustomEnumErrorTwinNormal_TwoImplCopyWithImpl<$Res>
         message: null == message
             ? _value.message
             : message // ignore: cast_nullable_to_non_nullable
-                as int,
+                  as int,
         backtrace: null == backtrace
             ? _value.backtrace
             : backtrace // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -351,9 +358,12 @@ class _$CustomEnumErrorTwinNormal_TwoImpl
   @override
   @pragma('vm:prefer-inline')
   _$$CustomEnumErrorTwinNormal_TwoImplCopyWith<
-          _$CustomEnumErrorTwinNormal_TwoImpl>
-      get copyWith => __$$CustomEnumErrorTwinNormal_TwoImplCopyWithImpl<
-          _$CustomEnumErrorTwinNormal_TwoImpl>(this, _$identity);
+    _$CustomEnumErrorTwinNormal_TwoImpl
+  >
+  get copyWith =>
+      __$$CustomEnumErrorTwinNormal_TwoImplCopyWithImpl<
+        _$CustomEnumErrorTwinNormal_TwoImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -436,8 +446,9 @@ abstract class CustomEnumErrorTwinNormal_Two extends CustomEnumErrorTwinNormal
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomEnumErrorTwinNormal_TwoImplCopyWith<
-          _$CustomEnumErrorTwinNormal_TwoImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$CustomEnumErrorTwinNormal_TwoImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -448,40 +459,34 @@ mixin _$CustomErrorTwinNormal {
   TResult when<TResult extends Object?>({
     required TResult Function(String e, String backtrace) error0,
     required TResult Function(int e, String backtrace) error1,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String e, String backtrace)? error0,
     TResult? Function(int e, String backtrace)? error1,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String e, String backtrace)? error0,
     TResult Function(int e, String backtrace)? error1,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CustomErrorTwinNormal_Error0 value) error0,
     required TResult Function(CustomErrorTwinNormal_Error1 value) error1,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CustomErrorTwinNormal_Error0 value)? error0,
     TResult? Function(CustomErrorTwinNormal_Error1 value)? error1,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CustomErrorTwinNormal_Error0 value)? error0,
     TResult Function(CustomErrorTwinNormal_Error1 value)? error1,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 
   /// Create a copy of CustomErrorTwinNormal
   /// with the given fields replaced by the non-null parameter values.
@@ -501,8 +506,10 @@ abstract class $CustomErrorTwinNormalCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CustomErrorTwinNormalCopyWithImpl<$Res,
-        $Val extends CustomErrorTwinNormal>
+class _$CustomErrorTwinNormalCopyWithImpl<
+  $Res,
+  $Val extends CustomErrorTwinNormal
+>
     implements $CustomErrorTwinNormalCopyWith<$Res> {
   _$CustomErrorTwinNormalCopyWithImpl(this._value, this._then);
 
@@ -518,11 +525,12 @@ class _$CustomErrorTwinNormalCopyWithImpl<$Res,
   $Res call({Object? backtrace = null}) {
     return _then(
       _value.copyWith(
-        backtrace: null == backtrace
-            ? _value.backtrace
-            : backtrace // ignore: cast_nullable_to_non_nullable
-                as String,
-      ) as $Val,
+            backtrace: null == backtrace
+                ? _value.backtrace
+                : backtrace // ignore: cast_nullable_to_non_nullable
+                      as String,
+          )
+          as $Val,
     );
   }
 }
@@ -541,8 +549,11 @@ abstract class _$$CustomErrorTwinNormal_Error0ImplCopyWith<$Res>
 
 /// @nodoc
 class __$$CustomErrorTwinNormal_Error0ImplCopyWithImpl<$Res>
-    extends _$CustomErrorTwinNormalCopyWithImpl<$Res,
-        _$CustomErrorTwinNormal_Error0Impl>
+    extends
+        _$CustomErrorTwinNormalCopyWithImpl<
+          $Res,
+          _$CustomErrorTwinNormal_Error0Impl
+        >
     implements _$$CustomErrorTwinNormal_Error0ImplCopyWith<$Res> {
   __$$CustomErrorTwinNormal_Error0ImplCopyWithImpl(
     _$CustomErrorTwinNormal_Error0Impl _value,
@@ -559,11 +570,11 @@ class __$$CustomErrorTwinNormal_Error0ImplCopyWithImpl<$Res>
         e: null == e
             ? _value.e
             : e // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
         backtrace: null == backtrace
             ? _value.backtrace
             : backtrace // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -606,9 +617,12 @@ class _$CustomErrorTwinNormal_Error0Impl extends CustomErrorTwinNormal_Error0 {
   @override
   @pragma('vm:prefer-inline')
   _$$CustomErrorTwinNormal_Error0ImplCopyWith<
-          _$CustomErrorTwinNormal_Error0Impl>
-      get copyWith => __$$CustomErrorTwinNormal_Error0ImplCopyWithImpl<
-          _$CustomErrorTwinNormal_Error0Impl>(this, _$identity);
+    _$CustomErrorTwinNormal_Error0Impl
+  >
+  get copyWith =>
+      __$$CustomErrorTwinNormal_Error0ImplCopyWithImpl<
+        _$CustomErrorTwinNormal_Error0Impl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -691,8 +705,9 @@ abstract class CustomErrorTwinNormal_Error0 extends CustomErrorTwinNormal
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomErrorTwinNormal_Error0ImplCopyWith<
-          _$CustomErrorTwinNormal_Error0Impl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$CustomErrorTwinNormal_Error0Impl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -709,8 +724,11 @@ abstract class _$$CustomErrorTwinNormal_Error1ImplCopyWith<$Res>
 
 /// @nodoc
 class __$$CustomErrorTwinNormal_Error1ImplCopyWithImpl<$Res>
-    extends _$CustomErrorTwinNormalCopyWithImpl<$Res,
-        _$CustomErrorTwinNormal_Error1Impl>
+    extends
+        _$CustomErrorTwinNormalCopyWithImpl<
+          $Res,
+          _$CustomErrorTwinNormal_Error1Impl
+        >
     implements _$$CustomErrorTwinNormal_Error1ImplCopyWith<$Res> {
   __$$CustomErrorTwinNormal_Error1ImplCopyWithImpl(
     _$CustomErrorTwinNormal_Error1Impl _value,
@@ -727,11 +745,11 @@ class __$$CustomErrorTwinNormal_Error1ImplCopyWithImpl<$Res>
         e: null == e
             ? _value.e
             : e // ignore: cast_nullable_to_non_nullable
-                as int,
+                  as int,
         backtrace: null == backtrace
             ? _value.backtrace
             : backtrace // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -774,9 +792,12 @@ class _$CustomErrorTwinNormal_Error1Impl extends CustomErrorTwinNormal_Error1 {
   @override
   @pragma('vm:prefer-inline')
   _$$CustomErrorTwinNormal_Error1ImplCopyWith<
-          _$CustomErrorTwinNormal_Error1Impl>
-      get copyWith => __$$CustomErrorTwinNormal_Error1ImplCopyWithImpl<
-          _$CustomErrorTwinNormal_Error1Impl>(this, _$identity);
+    _$CustomErrorTwinNormal_Error1Impl
+  >
+  get copyWith =>
+      __$$CustomErrorTwinNormal_Error1ImplCopyWithImpl<
+        _$CustomErrorTwinNormal_Error1Impl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -859,8 +880,9 @@ abstract class CustomErrorTwinNormal_Error1 extends CustomErrorTwinNormal
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomErrorTwinNormal_Error1ImplCopyWith<
-          _$CustomErrorTwinNormal_Error1Impl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$CustomErrorTwinNormal_Error1Impl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -870,46 +892,40 @@ mixin _$CustomNestedError1TwinNormal {
   TResult when<TResult extends Object?>({
     required TResult Function(String field0) customNested1,
     required TResult Function(CustomNestedError2TwinNormal field0) errorNested,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String field0)? customNested1,
     TResult? Function(CustomNestedError2TwinNormal field0)? errorNested,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String field0)? customNested1,
     TResult Function(CustomNestedError2TwinNormal field0)? errorNested,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CustomNestedError1TwinNormal_CustomNested1 value)
-        customNested1,
+    customNested1,
     required TResult Function(CustomNestedError1TwinNormal_ErrorNested value)
-        errorNested,
-  }) =>
-      throw _privateConstructorUsedError;
+    errorNested,
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CustomNestedError1TwinNormal_CustomNested1 value)?
-        customNested1,
+    customNested1,
     TResult? Function(CustomNestedError1TwinNormal_ErrorNested value)?
-        errorNested,
-  }) =>
-      throw _privateConstructorUsedError;
+    errorNested,
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CustomNestedError1TwinNormal_CustomNested1 value)?
-        customNested1,
+    customNested1,
     TResult Function(CustomNestedError1TwinNormal_ErrorNested value)?
-        errorNested,
+    errorNested,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -917,13 +933,18 @@ abstract class $CustomNestedError1TwinNormalCopyWith<$Res> {
   factory $CustomNestedError1TwinNormalCopyWith(
     CustomNestedError1TwinNormal value,
     $Res Function(CustomNestedError1TwinNormal) then,
-  ) = _$CustomNestedError1TwinNormalCopyWithImpl<$Res,
-      CustomNestedError1TwinNormal>;
+  ) =
+      _$CustomNestedError1TwinNormalCopyWithImpl<
+        $Res,
+        CustomNestedError1TwinNormal
+      >;
 }
 
 /// @nodoc
-class _$CustomNestedError1TwinNormalCopyWithImpl<$Res,
-        $Val extends CustomNestedError1TwinNormal>
+class _$CustomNestedError1TwinNormalCopyWithImpl<
+  $Res,
+  $Val extends CustomNestedError1TwinNormal
+>
     implements $CustomNestedError1TwinNormalCopyWith<$Res> {
   _$CustomNestedError1TwinNormalCopyWithImpl(this._value, this._then);
 
@@ -948,8 +969,11 @@ abstract class _$$CustomNestedError1TwinNormal_CustomNested1ImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$CustomNestedError1TwinNormal_CustomNested1ImplCopyWithImpl<$Res>
-    extends _$CustomNestedError1TwinNormalCopyWithImpl<$Res,
-        _$CustomNestedError1TwinNormal_CustomNested1Impl>
+    extends
+        _$CustomNestedError1TwinNormalCopyWithImpl<
+          $Res,
+          _$CustomNestedError1TwinNormal_CustomNested1Impl
+        >
     implements _$$CustomNestedError1TwinNormal_CustomNested1ImplCopyWith<$Res> {
   __$$CustomNestedError1TwinNormal_CustomNested1ImplCopyWithImpl(
     _$CustomNestedError1TwinNormal_CustomNested1Impl _value,
@@ -966,7 +990,7 @@ class __$$CustomNestedError1TwinNormal_CustomNested1ImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -977,7 +1001,7 @@ class __$$CustomNestedError1TwinNormal_CustomNested1ImplCopyWithImpl<$Res>
 class _$CustomNestedError1TwinNormal_CustomNested1Impl
     extends CustomNestedError1TwinNormal_CustomNested1 {
   const _$CustomNestedError1TwinNormal_CustomNested1Impl(this.field0)
-      : super._();
+    : super._();
 
   @override
   final String field0;
@@ -1004,11 +1028,12 @@ class _$CustomNestedError1TwinNormal_CustomNested1Impl
   @override
   @pragma('vm:prefer-inline')
   _$$CustomNestedError1TwinNormal_CustomNested1ImplCopyWith<
-          _$CustomNestedError1TwinNormal_CustomNested1Impl>
-      get copyWith =>
-          __$$CustomNestedError1TwinNormal_CustomNested1ImplCopyWithImpl<
-                  _$CustomNestedError1TwinNormal_CustomNested1Impl>(
-              this, _$identity);
+    _$CustomNestedError1TwinNormal_CustomNested1Impl
+  >
+  get copyWith =>
+      __$$CustomNestedError1TwinNormal_CustomNested1ImplCopyWithImpl<
+        _$CustomNestedError1TwinNormal_CustomNested1Impl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1045,9 +1070,9 @@ class _$CustomNestedError1TwinNormal_CustomNested1Impl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CustomNestedError1TwinNormal_CustomNested1 value)
-        customNested1,
+    customNested1,
     required TResult Function(CustomNestedError1TwinNormal_ErrorNested value)
-        errorNested,
+    errorNested,
   }) {
     return customNested1(this);
   }
@@ -1056,9 +1081,9 @@ class _$CustomNestedError1TwinNormal_CustomNested1Impl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CustomNestedError1TwinNormal_CustomNested1 value)?
-        customNested1,
+    customNested1,
     TResult? Function(CustomNestedError1TwinNormal_ErrorNested value)?
-        errorNested,
+    errorNested,
   }) {
     return customNested1?.call(this);
   }
@@ -1067,9 +1092,9 @@ class _$CustomNestedError1TwinNormal_CustomNested1Impl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CustomNestedError1TwinNormal_CustomNested1 value)?
-        customNested1,
+    customNested1,
     TResult Function(CustomNestedError1TwinNormal_ErrorNested value)?
-        errorNested,
+    errorNested,
     required TResult orElse(),
   }) {
     if (customNested1 != null) {
@@ -1093,8 +1118,9 @@ abstract class CustomNestedError1TwinNormal_CustomNested1
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomNestedError1TwinNormal_CustomNested1ImplCopyWith<
-          _$CustomNestedError1TwinNormal_CustomNested1Impl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$CustomNestedError1TwinNormal_CustomNested1Impl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1111,8 +1137,11 @@ abstract class _$$CustomNestedError1TwinNormal_ErrorNestedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$CustomNestedError1TwinNormal_ErrorNestedImplCopyWithImpl<$Res>
-    extends _$CustomNestedError1TwinNormalCopyWithImpl<$Res,
-        _$CustomNestedError1TwinNormal_ErrorNestedImpl>
+    extends
+        _$CustomNestedError1TwinNormalCopyWithImpl<
+          $Res,
+          _$CustomNestedError1TwinNormal_ErrorNestedImpl
+        >
     implements _$$CustomNestedError1TwinNormal_ErrorNestedImplCopyWith<$Res> {
   __$$CustomNestedError1TwinNormal_ErrorNestedImplCopyWithImpl(
     _$CustomNestedError1TwinNormal_ErrorNestedImpl _value,
@@ -1129,7 +1158,7 @@ class __$$CustomNestedError1TwinNormal_ErrorNestedImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                as CustomNestedError2TwinNormal,
+                  as CustomNestedError2TwinNormal,
       ),
     );
   }
@@ -1176,10 +1205,12 @@ class _$CustomNestedError1TwinNormal_ErrorNestedImpl
   @override
   @pragma('vm:prefer-inline')
   _$$CustomNestedError1TwinNormal_ErrorNestedImplCopyWith<
-          _$CustomNestedError1TwinNormal_ErrorNestedImpl>
-      get copyWith =>
-          __$$CustomNestedError1TwinNormal_ErrorNestedImplCopyWithImpl<
-              _$CustomNestedError1TwinNormal_ErrorNestedImpl>(this, _$identity);
+    _$CustomNestedError1TwinNormal_ErrorNestedImpl
+  >
+  get copyWith =>
+      __$$CustomNestedError1TwinNormal_ErrorNestedImplCopyWithImpl<
+        _$CustomNestedError1TwinNormal_ErrorNestedImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1216,9 +1247,9 @@ class _$CustomNestedError1TwinNormal_ErrorNestedImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CustomNestedError1TwinNormal_CustomNested1 value)
-        customNested1,
+    customNested1,
     required TResult Function(CustomNestedError1TwinNormal_ErrorNested value)
-        errorNested,
+    errorNested,
   }) {
     return errorNested(this);
   }
@@ -1227,9 +1258,9 @@ class _$CustomNestedError1TwinNormal_ErrorNestedImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CustomNestedError1TwinNormal_CustomNested1 value)?
-        customNested1,
+    customNested1,
     TResult? Function(CustomNestedError1TwinNormal_ErrorNested value)?
-        errorNested,
+    errorNested,
   }) {
     return errorNested?.call(this);
   }
@@ -1238,9 +1269,9 @@ class _$CustomNestedError1TwinNormal_ErrorNestedImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CustomNestedError1TwinNormal_CustomNested1 value)?
-        customNested1,
+    customNested1,
     TResult Function(CustomNestedError1TwinNormal_ErrorNested value)?
-        errorNested,
+    errorNested,
     required TResult orElse(),
   }) {
     if (errorNested != null) {
@@ -1264,8 +1295,9 @@ abstract class CustomNestedError1TwinNormal_ErrorNested
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomNestedError1TwinNormal_ErrorNestedImplCopyWith<
-          _$CustomNestedError1TwinNormal_ErrorNestedImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$CustomNestedError1TwinNormal_ErrorNestedImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1275,47 +1307,42 @@ mixin _$CustomNestedError2TwinNormal {
   TResult when<TResult extends Object?>({
     required TResult Function(String field0) customNested2,
     required TResult Function(int field0) customNested2Number,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String field0)? customNested2,
     TResult? Function(int field0)? customNested2Number,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String field0)? customNested2,
     TResult Function(int field0)? customNested2Number,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CustomNestedError2TwinNormal_CustomNested2 value)
-        customNested2,
+    customNested2,
     required TResult Function(
       CustomNestedError2TwinNormal_CustomNested2Number value,
-    ) customNested2Number,
-  }) =>
-      throw _privateConstructorUsedError;
+    )
+    customNested2Number,
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CustomNestedError2TwinNormal_CustomNested2 value)?
-        customNested2,
+    customNested2,
     TResult? Function(CustomNestedError2TwinNormal_CustomNested2Number value)?
-        customNested2Number,
-  }) =>
-      throw _privateConstructorUsedError;
+    customNested2Number,
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CustomNestedError2TwinNormal_CustomNested2 value)?
-        customNested2,
+    customNested2,
     TResult Function(CustomNestedError2TwinNormal_CustomNested2Number value)?
-        customNested2Number,
+    customNested2Number,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1323,13 +1350,18 @@ abstract class $CustomNestedError2TwinNormalCopyWith<$Res> {
   factory $CustomNestedError2TwinNormalCopyWith(
     CustomNestedError2TwinNormal value,
     $Res Function(CustomNestedError2TwinNormal) then,
-  ) = _$CustomNestedError2TwinNormalCopyWithImpl<$Res,
-      CustomNestedError2TwinNormal>;
+  ) =
+      _$CustomNestedError2TwinNormalCopyWithImpl<
+        $Res,
+        CustomNestedError2TwinNormal
+      >;
 }
 
 /// @nodoc
-class _$CustomNestedError2TwinNormalCopyWithImpl<$Res,
-        $Val extends CustomNestedError2TwinNormal>
+class _$CustomNestedError2TwinNormalCopyWithImpl<
+  $Res,
+  $Val extends CustomNestedError2TwinNormal
+>
     implements $CustomNestedError2TwinNormalCopyWith<$Res> {
   _$CustomNestedError2TwinNormalCopyWithImpl(this._value, this._then);
 
@@ -1354,8 +1386,11 @@ abstract class _$$CustomNestedError2TwinNormal_CustomNested2ImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$CustomNestedError2TwinNormal_CustomNested2ImplCopyWithImpl<$Res>
-    extends _$CustomNestedError2TwinNormalCopyWithImpl<$Res,
-        _$CustomNestedError2TwinNormal_CustomNested2Impl>
+    extends
+        _$CustomNestedError2TwinNormalCopyWithImpl<
+          $Res,
+          _$CustomNestedError2TwinNormal_CustomNested2Impl
+        >
     implements _$$CustomNestedError2TwinNormal_CustomNested2ImplCopyWith<$Res> {
   __$$CustomNestedError2TwinNormal_CustomNested2ImplCopyWithImpl(
     _$CustomNestedError2TwinNormal_CustomNested2Impl _value,
@@ -1372,7 +1407,7 @@ class __$$CustomNestedError2TwinNormal_CustomNested2ImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -1383,7 +1418,7 @@ class __$$CustomNestedError2TwinNormal_CustomNested2ImplCopyWithImpl<$Res>
 class _$CustomNestedError2TwinNormal_CustomNested2Impl
     extends CustomNestedError2TwinNormal_CustomNested2 {
   const _$CustomNestedError2TwinNormal_CustomNested2Impl(this.field0)
-      : super._();
+    : super._();
 
   @override
   final String field0;
@@ -1410,11 +1445,12 @@ class _$CustomNestedError2TwinNormal_CustomNested2Impl
   @override
   @pragma('vm:prefer-inline')
   _$$CustomNestedError2TwinNormal_CustomNested2ImplCopyWith<
-          _$CustomNestedError2TwinNormal_CustomNested2Impl>
-      get copyWith =>
-          __$$CustomNestedError2TwinNormal_CustomNested2ImplCopyWithImpl<
-                  _$CustomNestedError2TwinNormal_CustomNested2Impl>(
-              this, _$identity);
+    _$CustomNestedError2TwinNormal_CustomNested2Impl
+  >
+  get copyWith =>
+      __$$CustomNestedError2TwinNormal_CustomNested2ImplCopyWithImpl<
+        _$CustomNestedError2TwinNormal_CustomNested2Impl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1451,10 +1487,11 @@ class _$CustomNestedError2TwinNormal_CustomNested2Impl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CustomNestedError2TwinNormal_CustomNested2 value)
-        customNested2,
+    customNested2,
     required TResult Function(
       CustomNestedError2TwinNormal_CustomNested2Number value,
-    ) customNested2Number,
+    )
+    customNested2Number,
   }) {
     return customNested2(this);
   }
@@ -1463,9 +1500,9 @@ class _$CustomNestedError2TwinNormal_CustomNested2Impl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CustomNestedError2TwinNormal_CustomNested2 value)?
-        customNested2,
+    customNested2,
     TResult? Function(CustomNestedError2TwinNormal_CustomNested2Number value)?
-        customNested2Number,
+    customNested2Number,
   }) {
     return customNested2?.call(this);
   }
@@ -1474,9 +1511,9 @@ class _$CustomNestedError2TwinNormal_CustomNested2Impl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CustomNestedError2TwinNormal_CustomNested2 value)?
-        customNested2,
+    customNested2,
     TResult Function(CustomNestedError2TwinNormal_CustomNested2Number value)?
-        customNested2Number,
+    customNested2Number,
     required TResult orElse(),
   }) {
     if (customNested2 != null) {
@@ -1500,26 +1537,33 @@ abstract class CustomNestedError2TwinNormal_CustomNested2
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomNestedError2TwinNormal_CustomNested2ImplCopyWith<
-          _$CustomNestedError2TwinNormal_CustomNested2Impl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$CustomNestedError2TwinNormal_CustomNested2Impl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$CustomNestedError2TwinNormal_CustomNested2NumberImplCopyWith<
-    $Res> {
+  $Res
+> {
   factory _$$CustomNestedError2TwinNormal_CustomNested2NumberImplCopyWith(
     _$CustomNestedError2TwinNormal_CustomNested2NumberImpl value,
     $Res Function(_$CustomNestedError2TwinNormal_CustomNested2NumberImpl) then,
-  ) = __$$CustomNestedError2TwinNormal_CustomNested2NumberImplCopyWithImpl<
-      $Res>;
+  ) =
+      __$$CustomNestedError2TwinNormal_CustomNested2NumberImplCopyWithImpl<
+        $Res
+      >;
   @useResult
   $Res call({int field0});
 }
 
 /// @nodoc
 class __$$CustomNestedError2TwinNormal_CustomNested2NumberImplCopyWithImpl<$Res>
-    extends _$CustomNestedError2TwinNormalCopyWithImpl<$Res,
-        _$CustomNestedError2TwinNormal_CustomNested2NumberImpl>
+    extends
+        _$CustomNestedError2TwinNormalCopyWithImpl<
+          $Res,
+          _$CustomNestedError2TwinNormal_CustomNested2NumberImpl
+        >
     implements
         _$$CustomNestedError2TwinNormal_CustomNested2NumberImplCopyWith<$Res> {
   __$$CustomNestedError2TwinNormal_CustomNested2NumberImplCopyWithImpl(
@@ -1537,7 +1581,7 @@ class __$$CustomNestedError2TwinNormal_CustomNested2NumberImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                as int,
+                  as int,
       ),
     );
   }
@@ -1548,7 +1592,7 @@ class __$$CustomNestedError2TwinNormal_CustomNested2NumberImplCopyWithImpl<$Res>
 class _$CustomNestedError2TwinNormal_CustomNested2NumberImpl
     extends CustomNestedError2TwinNormal_CustomNested2Number {
   const _$CustomNestedError2TwinNormal_CustomNested2NumberImpl(this.field0)
-      : super._();
+    : super._();
 
   @override
   final int field0;
@@ -1575,11 +1619,12 @@ class _$CustomNestedError2TwinNormal_CustomNested2NumberImpl
   @override
   @pragma('vm:prefer-inline')
   _$$CustomNestedError2TwinNormal_CustomNested2NumberImplCopyWith<
-          _$CustomNestedError2TwinNormal_CustomNested2NumberImpl>
-      get copyWith =>
-          __$$CustomNestedError2TwinNormal_CustomNested2NumberImplCopyWithImpl<
-                  _$CustomNestedError2TwinNormal_CustomNested2NumberImpl>(
-              this, _$identity);
+    _$CustomNestedError2TwinNormal_CustomNested2NumberImpl
+  >
+  get copyWith =>
+      __$$CustomNestedError2TwinNormal_CustomNested2NumberImplCopyWithImpl<
+        _$CustomNestedError2TwinNormal_CustomNested2NumberImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1616,10 +1661,11 @@ class _$CustomNestedError2TwinNormal_CustomNested2NumberImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CustomNestedError2TwinNormal_CustomNested2 value)
-        customNested2,
+    customNested2,
     required TResult Function(
       CustomNestedError2TwinNormal_CustomNested2Number value,
-    ) customNested2Number,
+    )
+    customNested2Number,
   }) {
     return customNested2Number(this);
   }
@@ -1628,9 +1674,9 @@ class _$CustomNestedError2TwinNormal_CustomNested2NumberImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CustomNestedError2TwinNormal_CustomNested2 value)?
-        customNested2,
+    customNested2,
     TResult? Function(CustomNestedError2TwinNormal_CustomNested2Number value)?
-        customNested2Number,
+    customNested2Number,
   }) {
     return customNested2Number?.call(this);
   }
@@ -1639,9 +1685,9 @@ class _$CustomNestedError2TwinNormal_CustomNested2NumberImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CustomNestedError2TwinNormal_CustomNested2 value)?
-        customNested2,
+    customNested2,
     TResult Function(CustomNestedError2TwinNormal_CustomNested2Number value)?
-        customNested2Number,
+    customNested2Number,
     required TResult orElse(),
   }) {
     if (customNested2Number != null) {
@@ -1665,8 +1711,9 @@ abstract class CustomNestedError2TwinNormal_CustomNested2Number
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomNestedError2TwinNormal_CustomNested2NumberImplCopyWith<
-          _$CustomNestedError2TwinNormal_CustomNested2NumberImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$CustomNestedError2TwinNormal_CustomNested2NumberImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1676,41 +1723,35 @@ mixin _$CustomNestedErrorInnerTwinNormal {
   TResult when<TResult extends Object?>({
     required TResult Function(String field0) three,
     required TResult Function(int field0) four,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String field0)? three,
     TResult? Function(int field0)? four,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String field0)? three,
     TResult Function(int field0)? four,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CustomNestedErrorInnerTwinNormal_Three value)
-        three,
+    three,
     required TResult Function(CustomNestedErrorInnerTwinNormal_Four value) four,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CustomNestedErrorInnerTwinNormal_Three value)? three,
     TResult? Function(CustomNestedErrorInnerTwinNormal_Four value)? four,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CustomNestedErrorInnerTwinNormal_Three value)? three,
     TResult Function(CustomNestedErrorInnerTwinNormal_Four value)? four,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1718,13 +1759,18 @@ abstract class $CustomNestedErrorInnerTwinNormalCopyWith<$Res> {
   factory $CustomNestedErrorInnerTwinNormalCopyWith(
     CustomNestedErrorInnerTwinNormal value,
     $Res Function(CustomNestedErrorInnerTwinNormal) then,
-  ) = _$CustomNestedErrorInnerTwinNormalCopyWithImpl<$Res,
-      CustomNestedErrorInnerTwinNormal>;
+  ) =
+      _$CustomNestedErrorInnerTwinNormalCopyWithImpl<
+        $Res,
+        CustomNestedErrorInnerTwinNormal
+      >;
 }
 
 /// @nodoc
-class _$CustomNestedErrorInnerTwinNormalCopyWithImpl<$Res,
-        $Val extends CustomNestedErrorInnerTwinNormal>
+class _$CustomNestedErrorInnerTwinNormalCopyWithImpl<
+  $Res,
+  $Val extends CustomNestedErrorInnerTwinNormal
+>
     implements $CustomNestedErrorInnerTwinNormalCopyWith<$Res> {
   _$CustomNestedErrorInnerTwinNormalCopyWithImpl(this._value, this._then);
 
@@ -1749,8 +1795,11 @@ abstract class _$$CustomNestedErrorInnerTwinNormal_ThreeImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$CustomNestedErrorInnerTwinNormal_ThreeImplCopyWithImpl<$Res>
-    extends _$CustomNestedErrorInnerTwinNormalCopyWithImpl<$Res,
-        _$CustomNestedErrorInnerTwinNormal_ThreeImpl>
+    extends
+        _$CustomNestedErrorInnerTwinNormalCopyWithImpl<
+          $Res,
+          _$CustomNestedErrorInnerTwinNormal_ThreeImpl
+        >
     implements _$$CustomNestedErrorInnerTwinNormal_ThreeImplCopyWith<$Res> {
   __$$CustomNestedErrorInnerTwinNormal_ThreeImplCopyWithImpl(
     _$CustomNestedErrorInnerTwinNormal_ThreeImpl _value,
@@ -1767,7 +1816,7 @@ class __$$CustomNestedErrorInnerTwinNormal_ThreeImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -1804,10 +1853,12 @@ class _$CustomNestedErrorInnerTwinNormal_ThreeImpl
   @override
   @pragma('vm:prefer-inline')
   _$$CustomNestedErrorInnerTwinNormal_ThreeImplCopyWith<
-          _$CustomNestedErrorInnerTwinNormal_ThreeImpl>
-      get copyWith =>
-          __$$CustomNestedErrorInnerTwinNormal_ThreeImplCopyWithImpl<
-              _$CustomNestedErrorInnerTwinNormal_ThreeImpl>(this, _$identity);
+    _$CustomNestedErrorInnerTwinNormal_ThreeImpl
+  >
+  get copyWith =>
+      __$$CustomNestedErrorInnerTwinNormal_ThreeImplCopyWithImpl<
+        _$CustomNestedErrorInnerTwinNormal_ThreeImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1844,7 +1895,7 @@ class _$CustomNestedErrorInnerTwinNormal_ThreeImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CustomNestedErrorInnerTwinNormal_Three value)
-        three,
+    three,
     required TResult Function(CustomNestedErrorInnerTwinNormal_Four value) four,
   }) {
     return three(this);
@@ -1886,8 +1937,9 @@ abstract class CustomNestedErrorInnerTwinNormal_Three
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomNestedErrorInnerTwinNormal_ThreeImplCopyWith<
-          _$CustomNestedErrorInnerTwinNormal_ThreeImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$CustomNestedErrorInnerTwinNormal_ThreeImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1902,8 +1954,11 @@ abstract class _$$CustomNestedErrorInnerTwinNormal_FourImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$CustomNestedErrorInnerTwinNormal_FourImplCopyWithImpl<$Res>
-    extends _$CustomNestedErrorInnerTwinNormalCopyWithImpl<$Res,
-        _$CustomNestedErrorInnerTwinNormal_FourImpl>
+    extends
+        _$CustomNestedErrorInnerTwinNormalCopyWithImpl<
+          $Res,
+          _$CustomNestedErrorInnerTwinNormal_FourImpl
+        >
     implements _$$CustomNestedErrorInnerTwinNormal_FourImplCopyWith<$Res> {
   __$$CustomNestedErrorInnerTwinNormal_FourImplCopyWithImpl(
     _$CustomNestedErrorInnerTwinNormal_FourImpl _value,
@@ -1920,7 +1975,7 @@ class __$$CustomNestedErrorInnerTwinNormal_FourImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                as int,
+                  as int,
       ),
     );
   }
@@ -1957,9 +2012,12 @@ class _$CustomNestedErrorInnerTwinNormal_FourImpl
   @override
   @pragma('vm:prefer-inline')
   _$$CustomNestedErrorInnerTwinNormal_FourImplCopyWith<
-          _$CustomNestedErrorInnerTwinNormal_FourImpl>
-      get copyWith => __$$CustomNestedErrorInnerTwinNormal_FourImplCopyWithImpl<
-          _$CustomNestedErrorInnerTwinNormal_FourImpl>(this, _$identity);
+    _$CustomNestedErrorInnerTwinNormal_FourImpl
+  >
+  get copyWith =>
+      __$$CustomNestedErrorInnerTwinNormal_FourImplCopyWithImpl<
+        _$CustomNestedErrorInnerTwinNormal_FourImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1996,7 +2054,7 @@ class _$CustomNestedErrorInnerTwinNormal_FourImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CustomNestedErrorInnerTwinNormal_Three value)
-        three,
+    three,
     required TResult Function(CustomNestedErrorInnerTwinNormal_Four value) four,
   }) {
     return four(this);
@@ -2038,8 +2096,9 @@ abstract class CustomNestedErrorInnerTwinNormal_Four
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomNestedErrorInnerTwinNormal_FourImplCopyWith<
-          _$CustomNestedErrorInnerTwinNormal_FourImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$CustomNestedErrorInnerTwinNormal_FourImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2049,40 +2108,34 @@ mixin _$CustomNestedErrorOuterTwinNormal {
   TResult when<TResult extends Object?>({
     required TResult Function(String field0) one,
     required TResult Function(CustomNestedErrorInnerTwinNormal field0) two,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String field0)? one,
     TResult? Function(CustomNestedErrorInnerTwinNormal field0)? two,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String field0)? one,
     TResult Function(CustomNestedErrorInnerTwinNormal field0)? two,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CustomNestedErrorOuterTwinNormal_One value) one,
     required TResult Function(CustomNestedErrorOuterTwinNormal_Two value) two,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CustomNestedErrorOuterTwinNormal_One value)? one,
     TResult? Function(CustomNestedErrorOuterTwinNormal_Two value)? two,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CustomNestedErrorOuterTwinNormal_One value)? one,
     TResult Function(CustomNestedErrorOuterTwinNormal_Two value)? two,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2090,13 +2143,18 @@ abstract class $CustomNestedErrorOuterTwinNormalCopyWith<$Res> {
   factory $CustomNestedErrorOuterTwinNormalCopyWith(
     CustomNestedErrorOuterTwinNormal value,
     $Res Function(CustomNestedErrorOuterTwinNormal) then,
-  ) = _$CustomNestedErrorOuterTwinNormalCopyWithImpl<$Res,
-      CustomNestedErrorOuterTwinNormal>;
+  ) =
+      _$CustomNestedErrorOuterTwinNormalCopyWithImpl<
+        $Res,
+        CustomNestedErrorOuterTwinNormal
+      >;
 }
 
 /// @nodoc
-class _$CustomNestedErrorOuterTwinNormalCopyWithImpl<$Res,
-        $Val extends CustomNestedErrorOuterTwinNormal>
+class _$CustomNestedErrorOuterTwinNormalCopyWithImpl<
+  $Res,
+  $Val extends CustomNestedErrorOuterTwinNormal
+>
     implements $CustomNestedErrorOuterTwinNormalCopyWith<$Res> {
   _$CustomNestedErrorOuterTwinNormalCopyWithImpl(this._value, this._then);
 
@@ -2121,8 +2179,11 @@ abstract class _$$CustomNestedErrorOuterTwinNormal_OneImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$CustomNestedErrorOuterTwinNormal_OneImplCopyWithImpl<$Res>
-    extends _$CustomNestedErrorOuterTwinNormalCopyWithImpl<$Res,
-        _$CustomNestedErrorOuterTwinNormal_OneImpl>
+    extends
+        _$CustomNestedErrorOuterTwinNormalCopyWithImpl<
+          $Res,
+          _$CustomNestedErrorOuterTwinNormal_OneImpl
+        >
     implements _$$CustomNestedErrorOuterTwinNormal_OneImplCopyWith<$Res> {
   __$$CustomNestedErrorOuterTwinNormal_OneImplCopyWithImpl(
     _$CustomNestedErrorOuterTwinNormal_OneImpl _value,
@@ -2139,7 +2200,7 @@ class __$$CustomNestedErrorOuterTwinNormal_OneImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -2176,9 +2237,12 @@ class _$CustomNestedErrorOuterTwinNormal_OneImpl
   @override
   @pragma('vm:prefer-inline')
   _$$CustomNestedErrorOuterTwinNormal_OneImplCopyWith<
-          _$CustomNestedErrorOuterTwinNormal_OneImpl>
-      get copyWith => __$$CustomNestedErrorOuterTwinNormal_OneImplCopyWithImpl<
-          _$CustomNestedErrorOuterTwinNormal_OneImpl>(this, _$identity);
+    _$CustomNestedErrorOuterTwinNormal_OneImpl
+  >
+  get copyWith =>
+      __$$CustomNestedErrorOuterTwinNormal_OneImplCopyWithImpl<
+        _$CustomNestedErrorOuterTwinNormal_OneImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2256,8 +2320,9 @@ abstract class CustomNestedErrorOuterTwinNormal_One
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomNestedErrorOuterTwinNormal_OneImplCopyWith<
-          _$CustomNestedErrorOuterTwinNormal_OneImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$CustomNestedErrorOuterTwinNormal_OneImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2274,8 +2339,11 @@ abstract class _$$CustomNestedErrorOuterTwinNormal_TwoImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$CustomNestedErrorOuterTwinNormal_TwoImplCopyWithImpl<$Res>
-    extends _$CustomNestedErrorOuterTwinNormalCopyWithImpl<$Res,
-        _$CustomNestedErrorOuterTwinNormal_TwoImpl>
+    extends
+        _$CustomNestedErrorOuterTwinNormalCopyWithImpl<
+          $Res,
+          _$CustomNestedErrorOuterTwinNormal_TwoImpl
+        >
     implements _$$CustomNestedErrorOuterTwinNormal_TwoImplCopyWith<$Res> {
   __$$CustomNestedErrorOuterTwinNormal_TwoImplCopyWithImpl(
     _$CustomNestedErrorOuterTwinNormal_TwoImpl _value,
@@ -2292,7 +2360,7 @@ class __$$CustomNestedErrorOuterTwinNormal_TwoImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                as CustomNestedErrorInnerTwinNormal,
+                  as CustomNestedErrorInnerTwinNormal,
       ),
     );
   }
@@ -2341,9 +2409,12 @@ class _$CustomNestedErrorOuterTwinNormal_TwoImpl
   @override
   @pragma('vm:prefer-inline')
   _$$CustomNestedErrorOuterTwinNormal_TwoImplCopyWith<
-          _$CustomNestedErrorOuterTwinNormal_TwoImpl>
-      get copyWith => __$$CustomNestedErrorOuterTwinNormal_TwoImplCopyWithImpl<
-          _$CustomNestedErrorOuterTwinNormal_TwoImpl>(this, _$identity);
+    _$CustomNestedErrorOuterTwinNormal_TwoImpl
+  >
+  get copyWith =>
+      __$$CustomNestedErrorOuterTwinNormal_TwoImplCopyWithImpl<
+        _$CustomNestedErrorOuterTwinNormal_TwoImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2422,6 +2493,7 @@ abstract class CustomNestedErrorOuterTwinNormal_Two
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomNestedErrorOuterTwinNormal_TwoImplCopyWith<
-          _$CustomNestedErrorOuterTwinNormal_TwoImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$CustomNestedErrorOuterTwinNormal_TwoImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }

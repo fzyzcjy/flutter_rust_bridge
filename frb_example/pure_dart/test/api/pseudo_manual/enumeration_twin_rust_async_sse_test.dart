@@ -61,7 +61,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     test('dart call handleEnumStruct', () async {
       expect(
         await handleEnumStructTwinRustAsyncSse(
-            val: KitchenSinkTwinRustAsyncSse_Empty()),
+          val: KitchenSinkTwinRustAsyncSse_Empty(),
+        ),
         KitchenSinkTwinRustAsyncSse_Empty(),
       );
       expect(
@@ -73,7 +74,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
           ),
         ),
         KitchenSinkTwinRustAsyncSse_Primitives(
-            int32: 1, float64: 2, boolean: true),
+          int32: 1,
+          float64: 2,
+          boolean: true,
+        ),
       );
       expect(
         await handleEnumStructTwinRustAsyncSse(
@@ -90,7 +94,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
       expect(
         await handleEnumStructTwinRustAsyncSse(
           val: KitchenSinkTwinRustAsyncSse_Enums(
-              WeekdaysTwinRustAsyncSse.monday),
+            WeekdaysTwinRustAsyncSse.monday,
+          ),
         ),
         KitchenSinkTwinRustAsyncSse_Enums(WeekdaysTwinRustAsyncSse.tuesday),
       );
@@ -102,27 +107,32 @@ Future<void> main({bool skipRustLibInit = false}) async {
           ),
         ),
         const KitchenSinkTwinRustAsyncSse.nested(
-            1, KitchenSinkTwinRustAsyncSse.empty()),
+          1,
+          KitchenSinkTwinRustAsyncSse.empty(),
+        ),
       );
     });
 
     test('dart call multiplyByTen()', () async {
       expect(
         await multiplyByTenTwinRustAsyncSse(
-          measure:
-              MeasureTwinRustAsyncSse.speed(SpeedTwinRustAsyncSse_GPS(10.0)),
+          measure: MeasureTwinRustAsyncSse.speed(
+            SpeedTwinRustAsyncSse_GPS(10.0),
+          ),
         ),
         MeasureTwinRustAsyncSse.speed(SpeedTwinRustAsyncSse_GPS(100.0)),
       );
       expect(
         await multiplyByTenTwinRustAsyncSse(
-          measure:
-              MeasureTwinRustAsyncSse.speed(SpeedTwinRustAsyncSse_Unknown()),
+          measure: MeasureTwinRustAsyncSse.speed(
+            SpeedTwinRustAsyncSse_Unknown(),
+          ),
         ),
         null,
       );
-      final skipMinified =
-          releaseMode ? skipWeb('Minified names cannot be compared.') : null;
+      final skipMinified = releaseMode
+          ? skipWeb('Minified names cannot be compared.')
+          : null;
       expect(
         (SpeedTwinRustAsyncSse_Unknown).toString(),
         'SpeedTwinRustAsyncSse_Unknown',

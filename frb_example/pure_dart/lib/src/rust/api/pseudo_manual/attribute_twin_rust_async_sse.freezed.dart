@@ -37,8 +37,10 @@ abstract class $UserIdTwinRustAsyncSseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UserIdTwinRustAsyncSseCopyWithImpl<$Res,
-        $Val extends UserIdTwinRustAsyncSse>
+class _$UserIdTwinRustAsyncSseCopyWithImpl<
+  $Res,
+  $Val extends UserIdTwinRustAsyncSse
+>
     implements $UserIdTwinRustAsyncSseCopyWith<$Res> {
   _$UserIdTwinRustAsyncSseCopyWithImpl(this._value, this._then);
 
@@ -54,11 +56,12 @@ class _$UserIdTwinRustAsyncSseCopyWithImpl<$Res,
   $Res call({Object? value = null}) {
     return _then(
       _value.copyWith(
-        value: null == value
-            ? _value.value
-            : value // ignore: cast_nullable_to_non_nullable
-                as int,
-      ) as $Val,
+            value: null == value
+                ? _value.value
+                : value // ignore: cast_nullable_to_non_nullable
+                      as int,
+          )
+          as $Val,
     );
   }
 }
@@ -77,8 +80,8 @@ abstract class _$$UserIdTwinRustAsyncSseImplCopyWith<$Res>
 
 /// @nodoc
 class __$$UserIdTwinRustAsyncSseImplCopyWithImpl<$Res>
-    extends _$UserIdTwinRustAsyncSseCopyWithImpl<$Res,
-        _$UserIdTwinRustAsyncSseImpl>
+    extends
+        _$UserIdTwinRustAsyncSseCopyWithImpl<$Res, _$UserIdTwinRustAsyncSseImpl>
     implements _$$UserIdTwinRustAsyncSseImplCopyWith<$Res> {
   __$$UserIdTwinRustAsyncSseImplCopyWithImpl(
     _$UserIdTwinRustAsyncSseImpl _value,
@@ -95,7 +98,7 @@ class __$$UserIdTwinRustAsyncSseImplCopyWithImpl<$Res>
         value: null == value
             ? _value.value
             : value // ignore: cast_nullable_to_non_nullable
-                as int,
+                  as int,
       ),
     );
   }
@@ -132,11 +135,11 @@ class _$UserIdTwinRustAsyncSseImpl implements _UserIdTwinRustAsyncSse {
   @override
   @pragma('vm:prefer-inline')
   _$$UserIdTwinRustAsyncSseImplCopyWith<_$UserIdTwinRustAsyncSseImpl>
-      get copyWith => __$$UserIdTwinRustAsyncSseImplCopyWithImpl<
-              _$UserIdTwinRustAsyncSseImpl>(
-            this,
-            _$identity,
-          );
+  get copyWith =>
+      __$$UserIdTwinRustAsyncSseImplCopyWithImpl<_$UserIdTwinRustAsyncSseImpl>(
+        this,
+        _$identity,
+      );
 }
 
 abstract class _UserIdTwinRustAsyncSse implements UserIdTwinRustAsyncSse {
@@ -151,5 +154,5 @@ abstract class _UserIdTwinRustAsyncSse implements UserIdTwinRustAsyncSse {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UserIdTwinRustAsyncSseImplCopyWith<_$UserIdTwinRustAsyncSseImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
