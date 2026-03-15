@@ -114,6 +114,8 @@ In that situation:
 - Re-generate from a clean environment
 - Only accept generated outputs after confirming they do not introduce new non-`Generate` regressions
 
+### `pure_dart_pde` Related Failures
+
 When the failing path involves `frb_example/pure_dart_pde`, remember that `pure_dart_pde` is derived from `frb_example/pure_dart`.
 
 In that situation:
