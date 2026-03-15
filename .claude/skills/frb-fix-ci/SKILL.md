@@ -57,6 +57,10 @@ pbpaste | git apply   # macOS
 
 Both are correct. Option A is faster; Option B is more thorough.
 
+Do not hand-edit generated files as the final fix.
+
+You may use CI diffs only as a diagnosis aid to understand what changed, but the final accepted output should come from re-running the appropriate generation workflow in a clean matching environment.
+
 ### Lint/Format Errors
 
 For clippy, dart analyze, or format errors, use `--fix`:
@@ -109,6 +113,15 @@ In that situation:
 - First validate the generation logic or generation workflow
 - Re-generate from a clean environment
 - Only accept generated outputs after confirming they do not introduce new non-`Generate` regressions
+
+When the failing path involves `frb_example/pure_dart_pde`, remember that `pure_dart_pde` is derived from `frb_example/pure_dart`.
+
+In that situation:
+
+- Do not only refresh `pure_dart_pde`
+- First check whether `./frb_internal generate-internal --set-exit-if-changed ...` is still changing `frb_example/pure_dart`
+- Treat `frb_example/pure_dart` as the upstream source and `frb_example/pure_dart_pde` as the downstream copy
+- If `pure_dart` still changes, sync that upstream output first, then re-check `pure_dart_pde`
 
 ## Common Mistakes
 
