@@ -14,20 +14,22 @@ import 'package:uuid/uuid.dart';
 UuidValue handleUuidTwinSync({required UuidValue id}) => RustLib.instance.api
     .crateApiPseudoManualUuidTypeTwinSyncHandleUuidTwinSync(id: id);
 
-List<UuidValue> handleUuidsTwinSync({required List<UuidValue> ids}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualUuidTypeTwinSyncHandleUuidsTwinSync(ids: ids);
+List<UuidValue> handleUuidsTwinSync({required List<UuidValue> ids}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualUuidTypeTwinSyncHandleUuidsTwinSync(ids: ids);
 
-FeatureUuidTwinSync handleNestedUuidsTwinSync({
-  required FeatureUuidTwinSync ids,
-}) => RustLib.instance.api
-    .crateApiPseudoManualUuidTypeTwinSyncHandleNestedUuidsTwinSync(ids: ids);
+FeatureUuidTwinSync handleNestedUuidsTwinSync(
+        {required FeatureUuidTwinSync ids}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualUuidTypeTwinSyncHandleNestedUuidsTwinSync(
+            ids: ids);
 
 class FeatureUuidTwinSync {
   final UuidValue one;
 
-  const FeatureUuidTwinSync({required this.one});
+  const FeatureUuidTwinSync({
+    required this.one,
+  });
 
   @override
   int get hashCode => one.hashCode;

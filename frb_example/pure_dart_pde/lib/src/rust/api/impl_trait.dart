@@ -13,9 +13,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyImplTraitWithSelfTwinNormal>>
 abstract class MyImplTraitWithSelfTwinNormal
     implements RustOpaqueInterface, MyTraitWithSelfTwinNormal {
-  Future<void> methodWithBadSelfTwinNormal({
-    required MyImplTraitWithSelfTwinNormal another,
-  });
+  Future<void> methodWithBadSelfTwinNormal(
+      {required MyImplTraitWithSelfTwinNormal another});
 
   Future<MyImplTraitWithSelfTwinNormal> methodWithGoodSelfTwinNormal();
 }
@@ -29,16 +28,14 @@ abstract class StructOneWithTraitTwinNormal
 
   Future<int> simpleTraitFnReceiverBorrowTwinNormal();
 
-  static Future<StructOneWithTraitTwinNormal> simpleTraitFnTwinNormal({
-    required int value,
-  }) => RustLib.instance.api
-      .crateApiImplTraitStructOneWithTraitTwinNormalSimpleTraitFnTwinNormal(
-        value: value,
-      );
+  static Future<StructOneWithTraitTwinNormal> simpleTraitFnTwinNormal(
+          {required int value}) =>
+      RustLib.instance.api
+          .crateApiImplTraitStructOneWithTraitTwinNormalSimpleTraitFnTwinNormal(
+              value: value);
 
   static Future<int> simpleTraitFnWithDefaultImplTwinNormal() => RustLib
-      .instance
-      .api
+      .instance.api
       .crateApiImplTraitStructOneWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal();
 }
 
@@ -51,16 +48,14 @@ abstract class StructTwoWithTraitTwinNormal
 
   Future<int> simpleTraitFnReceiverBorrowTwinNormal();
 
-  static Future<StructTwoWithTraitTwinNormal> simpleTraitFnTwinNormal({
-    required int value,
-  }) => RustLib.instance.api
-      .crateApiImplTraitStructTwoWithTraitTwinNormalSimpleTraitFnTwinNormal(
-        value: value,
-      );
+  static Future<StructTwoWithTraitTwinNormal> simpleTraitFnTwinNormal(
+          {required int value}) =>
+      RustLib.instance.api
+          .crateApiImplTraitStructTwoWithTraitTwinNormalSimpleTraitFnTwinNormal(
+              value: value);
 
   static Future<int> simpleTraitFnWithDefaultImplTwinNormal() => RustLib
-      .instance
-      .api
+      .instance.api
       .crateApiImplTraitStructTwoWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal();
 }
 
