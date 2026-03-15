@@ -6,81 +6,59 @@
 import 'frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-
-            // These functions are ignored because they are not marked as `pub`: `check`
+// These functions are ignored because they are not marked as `pub`: `check`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `assert_receiver_is_total_eq`, `clone`, `clone`, `eq`, `fmt`
 
+// Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustState>>
+abstract class RustState implements RustOpaqueInterface {
+  void add();
 
-            
+  Filter get filter;
 
-            
-                // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<RustState>>
-                abstract class RustState implements RustOpaqueInterface {
-                     void  add();
-
-
- Filter get filter;
-
-
- String get inputText;
-
+  String get inputText;
 
   set filter(Filter filter);
 
-
   set inputText(String inputText);
 
+  List<Item> filteredItems();
 
- List<Item>  filteredItems();
+  factory RustState() => RustLib.instance.api.crateAppRustStateNew();
 
+  void remove({required int id});
 
-factory RustState()=>RustLib.instance.api.crateAppRustStateNew();
+  void setBaseState({required BaseRustState baseState});
 
-
- void  remove({required int id });
-
-
- void  setBaseState({required BaseRustState baseState });
-
-
- void  toggle({required int id });
-
-
-
-                    
-                }
-                
+  void toggle({required int id});
+}
 
 enum Filter {
-                    all,
-active,
-completed,
-                    ;
-                    
-                }
+  all,
+  active,
+  completed,
+  ;
+}
 
-class Item  {
-                final int id;
-final String content;
-final bool completed;
+class Item {
+  final int id;
+  final String content;
+  final bool completed;
 
-                const Item({required this.id ,required this.content ,required this.completed ,});
+  const Item({
+    required this.id,
+    required this.content,
+    required this.completed,
+  });
 
-                
-                
+  @override
+  int get hashCode => id.hashCode ^ content.hashCode ^ completed.hashCode;
 
-                
-        @override
-        int get hashCode => id.hashCode^content.hashCode^completed.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is Item &&
-                runtimeType == other.runtimeType
-                && id == other.id&& content == other.content&& completed == other.completed;
-        
-            }
-            
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Item &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          content == other.content &&
+          completed == other.completed;
+}

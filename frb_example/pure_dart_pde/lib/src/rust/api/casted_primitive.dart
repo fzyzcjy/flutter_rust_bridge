@@ -8,46 +8,34 @@ import 'dart:io';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<int> castedPrimitiveI64TwinNormal({required int arg}) => RustLib
-    .instance
-    .api
-    .crateApiCastedPrimitiveCastedPrimitiveI64TwinNormal(arg: arg);
+Future<int> castedPrimitiveI64TwinNormal({required int arg}) =>
+    RustLib.instance.api
+        .crateApiCastedPrimitiveCastedPrimitiveI64TwinNormal(arg: arg);
 
-Future<int> castedPrimitiveU64TwinNormal({required int arg}) => RustLib
-    .instance
-    .api
-    .crateApiCastedPrimitiveCastedPrimitiveU64TwinNormal(arg: arg);
+Future<int> castedPrimitiveU64TwinNormal({required int arg}) =>
+    RustLib.instance.api
+        .crateApiCastedPrimitiveCastedPrimitiveU64TwinNormal(arg: arg);
 
-Future<int> castedPrimitiveIsizeTwinNormal({required int arg}) => RustLib
-    .instance
-    .api
-    .crateApiCastedPrimitiveCastedPrimitiveIsizeTwinNormal(arg: arg);
+Future<int> castedPrimitiveIsizeTwinNormal({required int arg}) =>
+    RustLib.instance.api
+        .crateApiCastedPrimitiveCastedPrimitiveIsizeTwinNormal(arg: arg);
 
-Future<int> castedPrimitiveUsizeTwinNormal({required int arg}) => RustLib
-    .instance
-    .api
-    .crateApiCastedPrimitiveCastedPrimitiveUsizeTwinNormal(arg: arg);
+Future<int> castedPrimitiveUsizeTwinNormal({required int arg}) =>
+    RustLib.instance.api
+        .crateApiCastedPrimitiveCastedPrimitiveUsizeTwinNormal(arg: arg);
 
-Future<void> castedPrimitiveMultiArgTwinNormal({
-  required int a,
-  required int b,
-  required int c,
-  required BigInt d,
-}) => RustLib.instance.api
-    .crateApiCastedPrimitiveCastedPrimitiveMultiArgTwinNormal(
-      a: a,
-      b: b,
-      c: c,
-      d: d,
-    );
+Future<void> castedPrimitiveMultiArgTwinNormal(
+        {required int a, required int b, required int c, required BigInt d}) =>
+    RustLib.instance.api
+        .crateApiCastedPrimitiveCastedPrimitiveMultiArgTwinNormal(
+            a: a, b: b, c: c, d: d);
 
 Future<StructWithCastedPrimitiveTwinNormal>
-functionForStructWithCastedPrimitiveTwinNormal({
-  required StructWithCastedPrimitiveTwinNormal arg,
-}) => RustLib.instance.api
-    .crateApiCastedPrimitiveFunctionForStructWithCastedPrimitiveTwinNormal(
-      arg: arg,
-    );
+    functionForStructWithCastedPrimitiveTwinNormal(
+            {required StructWithCastedPrimitiveTwinNormal arg}) =>
+        RustLib.instance.api
+            .crateApiCastedPrimitiveFunctionForStructWithCastedPrimitiveTwinNormal(
+                arg: arg);
 
 class StructWithCastedPrimitiveTwinNormal {
   final int fieldI64;
