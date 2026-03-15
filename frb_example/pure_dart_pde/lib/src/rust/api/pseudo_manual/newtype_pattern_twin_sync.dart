@@ -13,8 +13,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 NewTypeIntTwinSync handleNewtypeTwinSync({required NewTypeIntTwinSync arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualNewtypePatternTwinSyncHandleNewtypeTwinSync(
-      arg: arg,
-    );
+          arg: arg,
+        );
 
 class NewTypeIntTwinSync {
   final PlatformInt64 field0;

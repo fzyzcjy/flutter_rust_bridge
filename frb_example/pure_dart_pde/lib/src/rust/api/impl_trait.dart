@@ -31,14 +31,14 @@ abstract class StructOneWithTraitTwinNormal
 
   static Future<StructOneWithTraitTwinNormal> simpleTraitFnTwinNormal({
     required int value,
-  }) =>
-      RustLib.instance.api
-          .crateApiImplTraitStructOneWithTraitTwinNormalSimpleTraitFnTwinNormal(
+  }) => RustLib.instance.api
+      .crateApiImplTraitStructOneWithTraitTwinNormalSimpleTraitFnTwinNormal(
         value: value,
       );
 
   static Future<int> simpleTraitFnWithDefaultImplTwinNormal() => RustLib
-      .instance.api
+      .instance
+      .api
       .crateApiImplTraitStructOneWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal();
 }
 
@@ -53,14 +53,14 @@ abstract class StructTwoWithTraitTwinNormal
 
   static Future<StructTwoWithTraitTwinNormal> simpleTraitFnTwinNormal({
     required int value,
-  }) =>
-      RustLib.instance.api
-          .crateApiImplTraitStructTwoWithTraitTwinNormalSimpleTraitFnTwinNormal(
+  }) => RustLib.instance.api
+      .crateApiImplTraitStructTwoWithTraitTwinNormalSimpleTraitFnTwinNormal(
         value: value,
       );
 
   static Future<int> simpleTraitFnWithDefaultImplTwinNormal() => RustLib
-      .instance.api
+      .instance
+      .api
       .crateApiImplTraitStructTwoWithTraitTwinNormalSimpleTraitFnWithDefaultImplTwinNormal();
 }
 

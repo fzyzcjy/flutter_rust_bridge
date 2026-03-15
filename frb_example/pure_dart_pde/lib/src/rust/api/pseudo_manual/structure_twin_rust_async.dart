@@ -10,63 +10,56 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<StructWithZeroFieldTwinRustAsync> funcStructWithZeroFieldTwinRustAsync({
   required StructWithZeroFieldTwinRustAsync arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualStructureTwinRustAsyncFuncStructWithZeroFieldTwinRustAsync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualStructureTwinRustAsyncFuncStructWithZeroFieldTwinRustAsync(
       arg: arg,
     );
 
 Future<StructWithOneFieldTwinRustAsync> funcStructWithOneFieldTwinRustAsync({
   required StructWithOneFieldTwinRustAsync arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualStructureTwinRustAsyncFuncStructWithOneFieldTwinRustAsync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualStructureTwinRustAsyncFuncStructWithOneFieldTwinRustAsync(
       arg: arg,
     );
 
 Future<StructWithTwoFieldTwinRustAsync> funcStructWithTwoFieldTwinRustAsync({
   required StructWithTwoFieldTwinRustAsync arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualStructureTwinRustAsyncFuncStructWithTwoFieldTwinRustAsync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualStructureTwinRustAsyncFuncStructWithTwoFieldTwinRustAsync(
       arg: arg,
     );
 
 Future<TupleStructWithOneFieldTwinRustAsync>
-    funcTupleStructWithOneFieldTwinRustAsync({
+funcTupleStructWithOneFieldTwinRustAsync({
   required TupleStructWithOneFieldTwinRustAsync arg,
-}) =>
-        RustLib.instance.api
-            .crateApiPseudoManualStructureTwinRustAsyncFuncTupleStructWithOneFieldTwinRustAsync(
-          arg: arg,
-        );
+}) => RustLib.instance.api
+    .crateApiPseudoManualStructureTwinRustAsyncFuncTupleStructWithOneFieldTwinRustAsync(
+      arg: arg,
+    );
 
 Future<TupleStructWithTwoFieldTwinRustAsync>
-    funcTupleStructWithTwoFieldTwinRustAsync({
+funcTupleStructWithTwoFieldTwinRustAsync({
   required TupleStructWithTwoFieldTwinRustAsync arg,
-}) =>
-        RustLib.instance.api
-            .crateApiPseudoManualStructureTwinRustAsyncFuncTupleStructWithTwoFieldTwinRustAsync(
-          arg: arg,
-        );
+}) => RustLib.instance.api
+    .crateApiPseudoManualStructureTwinRustAsyncFuncTupleStructWithTwoFieldTwinRustAsync(
+      arg: arg,
+    );
 
 Future<StructWithFieldRenameTwinRustAsync>
-    funcForStructWithFieldRenameTwinRustAsync({
+funcForStructWithFieldRenameTwinRustAsync({
   required StructWithFieldRenameTwinRustAsync arg,
-}) =>
-        RustLib.instance.api
-            .crateApiPseudoManualStructureTwinRustAsyncFuncForStructWithFieldRenameTwinRustAsync(
-          arg: arg,
-        );
+}) => RustLib.instance.api
+    .crateApiPseudoManualStructureTwinRustAsyncFuncForStructWithFieldRenameTwinRustAsync(
+      arg: arg,
+    );
 
 Future<StructWithDartKeywordFieldTwinRustAsync>
-    funcForStructWithDartKeywordFieldTwinRustAsync({
+funcForStructWithDartKeywordFieldTwinRustAsync({
   required StructWithDartKeywordFieldTwinRustAsync arg,
-}) =>
-        RustLib.instance.api
-            .crateApiPseudoManualStructureTwinRustAsyncFuncForStructWithDartKeywordFieldTwinRustAsync(
-          arg: arg,
-        );
+}) => RustLib.instance.api
+    .crateApiPseudoManualStructureTwinRustAsyncFuncForStructWithDartKeywordFieldTwinRustAsync(
+      arg: arg,
+    );
 
 class StructWithDartKeywordFieldTwinRustAsync {
   final int class_;

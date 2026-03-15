@@ -8,42 +8,46 @@ import 'dart:io';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<StructWithZeroFieldTwinNormal> funcStructWithZeroFieldTwinNormal(
-        {required StructWithZeroFieldTwinNormal arg}) =>
-    RustLib.instance.api
-        .crateApiStructureFuncStructWithZeroFieldTwinNormal(arg: arg);
+Future<StructWithZeroFieldTwinNormal> funcStructWithZeroFieldTwinNormal({
+  required StructWithZeroFieldTwinNormal arg,
+}) => RustLib.instance.api.crateApiStructureFuncStructWithZeroFieldTwinNormal(
+  arg: arg,
+);
 
-Future<StructWithOneFieldTwinNormal> funcStructWithOneFieldTwinNormal(
-        {required StructWithOneFieldTwinNormal arg}) =>
-    RustLib.instance.api
-        .crateApiStructureFuncStructWithOneFieldTwinNormal(arg: arg);
+Future<StructWithOneFieldTwinNormal> funcStructWithOneFieldTwinNormal({
+  required StructWithOneFieldTwinNormal arg,
+}) => RustLib.instance.api.crateApiStructureFuncStructWithOneFieldTwinNormal(
+  arg: arg,
+);
 
-Future<StructWithTwoFieldTwinNormal> funcStructWithTwoFieldTwinNormal(
-        {required StructWithTwoFieldTwinNormal arg}) =>
-    RustLib.instance.api
-        .crateApiStructureFuncStructWithTwoFieldTwinNormal(arg: arg);
+Future<StructWithTwoFieldTwinNormal> funcStructWithTwoFieldTwinNormal({
+  required StructWithTwoFieldTwinNormal arg,
+}) => RustLib.instance.api.crateApiStructureFuncStructWithTwoFieldTwinNormal(
+  arg: arg,
+);
 
-Future<TupleStructWithOneFieldTwinNormal> funcTupleStructWithOneFieldTwinNormal(
-        {required TupleStructWithOneFieldTwinNormal arg}) =>
-    RustLib.instance.api
-        .crateApiStructureFuncTupleStructWithOneFieldTwinNormal(arg: arg);
+Future<TupleStructWithOneFieldTwinNormal>
+funcTupleStructWithOneFieldTwinNormal({
+  required TupleStructWithOneFieldTwinNormal arg,
+}) => RustLib.instance.api
+    .crateApiStructureFuncTupleStructWithOneFieldTwinNormal(arg: arg);
 
-Future<TupleStructWithTwoFieldTwinNormal> funcTupleStructWithTwoFieldTwinNormal(
-        {required TupleStructWithTwoFieldTwinNormal arg}) =>
-    RustLib.instance.api
-        .crateApiStructureFuncTupleStructWithTwoFieldTwinNormal(arg: arg);
+Future<TupleStructWithTwoFieldTwinNormal>
+funcTupleStructWithTwoFieldTwinNormal({
+  required TupleStructWithTwoFieldTwinNormal arg,
+}) => RustLib.instance.api
+    .crateApiStructureFuncTupleStructWithTwoFieldTwinNormal(arg: arg);
 
-Future<StructWithFieldRenameTwinNormal> funcForStructWithFieldRenameTwinNormal(
-        {required StructWithFieldRenameTwinNormal arg}) =>
-    RustLib.instance.api
-        .crateApiStructureFuncForStructWithFieldRenameTwinNormal(arg: arg);
+Future<StructWithFieldRenameTwinNormal> funcForStructWithFieldRenameTwinNormal({
+  required StructWithFieldRenameTwinNormal arg,
+}) => RustLib.instance.api
+    .crateApiStructureFuncForStructWithFieldRenameTwinNormal(arg: arg);
 
 Future<StructWithDartKeywordFieldTwinNormal>
-    funcForStructWithDartKeywordFieldTwinNormal(
-            {required StructWithDartKeywordFieldTwinNormal arg}) =>
-        RustLib.instance.api
-            .crateApiStructureFuncForStructWithDartKeywordFieldTwinNormal(
-                arg: arg);
+funcForStructWithDartKeywordFieldTwinNormal({
+  required StructWithDartKeywordFieldTwinNormal arg,
+}) => RustLib.instance.api
+    .crateApiStructureFuncForStructWithDartKeywordFieldTwinNormal(arg: arg);
 
 class StructWithDartKeywordFieldTwinNormal {
   final int class_;
@@ -69,9 +73,7 @@ class StructWithDartKeywordFieldTwinNormal {
 class StructWithFieldRenameTwinNormal {
   final int renamed_field;
 
-  const StructWithFieldRenameTwinNormal({
-    required this.renamed_field,
-  });
+  const StructWithFieldRenameTwinNormal({required this.renamed_field});
 
   @override
   int get hashCode => renamed_field.hashCode;
@@ -87,9 +89,7 @@ class StructWithFieldRenameTwinNormal {
 class StructWithOneFieldTwinNormal {
   final int a;
 
-  const StructWithOneFieldTwinNormal({
-    required this.a,
-  });
+  const StructWithOneFieldTwinNormal({required this.a});
 
   @override
   int get hashCode => a.hashCode;
@@ -106,10 +106,7 @@ class StructWithTwoFieldTwinNormal {
   final int a;
   final int b;
 
-  const StructWithTwoFieldTwinNormal({
-    required this.a,
-    required this.b,
-  });
+  const StructWithTwoFieldTwinNormal({required this.a, required this.b});
 
   @override
   int get hashCode => a.hashCode ^ b.hashCode;
@@ -139,9 +136,7 @@ class StructWithZeroFieldTwinNormal {
 class TupleStructWithOneFieldTwinNormal {
   final int field0;
 
-  const TupleStructWithOneFieldTwinNormal({
-    required this.field0,
-  });
+  const TupleStructWithOneFieldTwinNormal({required this.field0});
 
   @override
   int get hashCode => field0.hashCode;

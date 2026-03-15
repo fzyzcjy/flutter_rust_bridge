@@ -15,30 +15,30 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 double? handleOptionalReturnTwinSync({
   required double left,
   required double right,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSyncHandleOptionalReturnTwinSync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinSyncHandleOptionalReturnTwinSync(
       left: left,
       right: right,
     );
 
-ElementTwinSync? handleOptionalStructTwinSync({String? document}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSyncHandleOptionalStructTwinSync(
+ElementTwinSync? handleOptionalStructTwinSync({String? document}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualOptionalTwinSyncHandleOptionalStructTwinSync(
       document: document,
     );
 
 ExoticOptionalsTwinSync? handleOptionalIncrementTwinSync({
   ExoticOptionalsTwinSync? opt,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSyncHandleOptionalIncrementTwinSync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinSyncHandleOptionalIncrementTwinSync(
       opt: opt,
     );
 
-double handleIncrementBoxedOptionalTwinSync({double? opt}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSyncHandleIncrementBoxedOptionalTwinSync(
+double handleIncrementBoxedOptionalTwinSync({double? opt}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualOptionalTwinSyncHandleIncrementBoxedOptionalTwinSync(
       opt: opt,
     );
 
@@ -54,9 +54,8 @@ String handleOptionBoxArgumentsTwinSync({
   double? f64Box,
   bool? boolbox,
   ExoticOptionalsTwinSync? structbox,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSyncHandleOptionBoxArgumentsTwinSync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinSyncHandleOptionBoxArgumentsTwinSync(
       i8Box: i8Box,
       u8Box: u8Box,
       i32Box: i32Box,

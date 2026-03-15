@@ -20,10 +20,9 @@ Future<ApplicationSettings> getFallibleAppSettingsTwinNormal() =>
 
 Future<bool> isAppEmbeddedTwinNormal({
   required ApplicationSettings appSettings,
-}) =>
-    RustLib.instance.api.crateApiMirrorIsAppEmbeddedTwinNormal(
-      appSettings: appSettings,
-    );
+}) => RustLib.instance.api.crateApiMirrorIsAppEmbeddedTwinNormal(
+  appSettings: appSettings,
+);
 
 Stream<ApplicationSettings> appSettingsStreamTwinNormal() =>
     RustLib.instance.api.crateApiMirrorAppSettingsStreamTwinNormal();
@@ -35,8 +34,8 @@ Stream<MirrorStructTwinNormal> mirrorStructStreamTwinNormal() =>
     RustLib.instance.api.crateApiMirrorMirrorStructStreamTwinNormal();
 
 Stream<(ApplicationSettings, RawStringEnumMirrored)>
-    mirrorTupleStreamTwinNormal() =>
-        RustLib.instance.api.crateApiMirrorMirrorTupleStreamTwinNormal();
+mirrorTupleStreamTwinNormal() =>
+    RustLib.instance.api.crateApiMirrorMirrorTupleStreamTwinNormal();
 
 Future<ApplicationMessage> getMessageTwinNormal() =>
     RustLib.instance.api.crateApiMirrorGetMessageTwinNormal();
@@ -44,20 +43,18 @@ Future<ApplicationMessage> getMessageTwinNormal() =>
 Future<Numbers> repeatNumberTwinNormal({
   required int num,
   required BigInt times,
-}) =>
-    RustLib.instance.api.crateApiMirrorRepeatNumberTwinNormal(
-      num: num,
-      times: times,
-    );
+}) => RustLib.instance.api.crateApiMirrorRepeatNumberTwinNormal(
+  num: num,
+  times: times,
+);
 
 Future<Sequences> repeatSequenceTwinNormal({
   required int seq,
   required BigInt times,
-}) =>
-    RustLib.instance.api.crateApiMirrorRepeatSequenceTwinNormal(
-      seq: seq,
-      times: times,
-    );
+}) => RustLib.instance.api.crateApiMirrorRepeatSequenceTwinNormal(
+  seq: seq,
+  times: times,
+);
 
 Future<int?> firstNumberTwinNormal({required Numbers nums}) =>
     RustLib.instance.api.crateApiMirrorFirstNumberTwinNormal(nums: nums);
@@ -73,14 +70,13 @@ Future<NestedRawStringMirrored> testNestedRawStringMirroredTwinNormal() =>
 
 Future<RawStringEnumMirrored> testRawStringEnumMirroredTwinNormal({
   required bool nested,
-}) =>
-    RustLib.instance.api.crateApiMirrorTestRawStringEnumMirroredTwinNormal(
-      nested: nested,
-    );
+}) => RustLib.instance.api.crateApiMirrorTestRawStringEnumMirroredTwinNormal(
+  nested: nested,
+);
 
 Future<ListOfNestedRawStringMirrored>
-    testListOfRawNestedStringMirroredTwinNormal() => RustLib.instance.api
-        .crateApiMirrorTestListOfRawNestedStringMirroredTwinNormal();
+testListOfRawNestedStringMirroredTwinNormal() => RustLib.instance.api
+    .crateApiMirrorTestListOfRawNestedStringMirroredTwinNormal();
 
 Future<List<RawStringMirrored>> testFallibleOfRawStringMirroredTwinNormal() =>
     RustLib.instance.api
@@ -91,8 +87,8 @@ Future<List<RawStringEnumMirrored>> testListOfNestedEnumsMirroredTwinNormal() =>
         .crateApiMirrorTestListOfNestedEnumsMirroredTwinNormal();
 
 Future<ContainsMirroredSubStructTwinNormal>
-    testContainsMirroredSubStructTwinNormal() => RustLib.instance.api
-        .crateApiMirrorTestContainsMirroredSubStructTwinNormal();
+testContainsMirroredSubStructTwinNormal() => RustLib.instance.api
+    .crateApiMirrorTestContainsMirroredSubStructTwinNormal();
 
 Future<StructWithHashMap> testHashmapWithMirroredValueTwinNormal() =>
     RustLib.instance.api.crateApiMirrorTestHashmapWithMirroredValueTwinNormal();
@@ -188,11 +184,11 @@ class ApplicationModeArray2 extends NonGrowableListView<ApplicationMode> {
   final List<ApplicationMode> _inner;
 
   ApplicationModeArray2(this._inner)
-      : assert(_inner.length == arraySize),
-        super(_inner);
+    : assert(_inner.length == arraySize),
+      super(_inner);
 
   ApplicationModeArray2.init(ApplicationMode fill)
-      : this(List<ApplicationMode>.filled(arraySize, fill));
+    : this(List<ApplicationMode>.filled(arraySize, fill));
 }
 
 class ApplicationSettings {

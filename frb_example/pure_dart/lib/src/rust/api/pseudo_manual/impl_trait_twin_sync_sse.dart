@@ -13,8 +13,9 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MyImplTraitWithSelfTwinSyncSse>>
 abstract class MyImplTraitWithSelfTwinSyncSse
     implements RustOpaqueInterface, MyTraitWithSelfTwinSyncSse {
-  Future<void> methodWithBadSelfTwinSyncSse(
-      {required MyImplTraitWithSelfTwinSyncSse another});
+  Future<void> methodWithBadSelfTwinSyncSse({
+    required MyImplTraitWithSelfTwinSyncSse another,
+  });
 
   Future<MyImplTraitWithSelfTwinSyncSse> methodWithGoodSelfTwinSyncSse();
 }
@@ -28,14 +29,16 @@ abstract class StructOneWithTraitTwinSyncSse
 
   Future<int> simpleTraitFnReceiverBorrowTwinSyncSse();
 
-  static Future<StructOneWithTraitTwinSyncSse> simpleTraitFnTwinSyncSse(
-          {required int value}) =>
-      RustLib.instance.api
-          .crateApiPseudoManualImplTraitTwinSyncSseStructOneWithTraitTwinSyncSseSimpleTraitFnTwinSyncSse(
-              value: value);
+  static Future<StructOneWithTraitTwinSyncSse> simpleTraitFnTwinSyncSse({
+    required int value,
+  }) => RustLib.instance.api
+      .crateApiPseudoManualImplTraitTwinSyncSseStructOneWithTraitTwinSyncSseSimpleTraitFnTwinSyncSse(
+        value: value,
+      );
 
   static Future<int> simpleTraitFnWithDefaultImplTwinSyncSse() => RustLib
-      .instance.api
+      .instance
+      .api
       .crateApiPseudoManualImplTraitTwinSyncSseStructOneWithTraitTwinSyncSseSimpleTraitFnWithDefaultImplTwinSyncSse();
 }
 
@@ -48,14 +51,16 @@ abstract class StructTwoWithTraitTwinSyncSse
 
   Future<int> simpleTraitFnReceiverBorrowTwinSyncSse();
 
-  static Future<StructTwoWithTraitTwinSyncSse> simpleTraitFnTwinSyncSse(
-          {required int value}) =>
-      RustLib.instance.api
-          .crateApiPseudoManualImplTraitTwinSyncSseStructTwoWithTraitTwinSyncSseSimpleTraitFnTwinSyncSse(
-              value: value);
+  static Future<StructTwoWithTraitTwinSyncSse> simpleTraitFnTwinSyncSse({
+    required int value,
+  }) => RustLib.instance.api
+      .crateApiPseudoManualImplTraitTwinSyncSseStructTwoWithTraitTwinSyncSseSimpleTraitFnTwinSyncSse(
+        value: value,
+      );
 
   static Future<int> simpleTraitFnWithDefaultImplTwinSyncSse() => RustLib
-      .instance.api
+      .instance
+      .api
       .crateApiPseudoManualImplTraitTwinSyncSseStructTwoWithTraitTwinSyncSseSimpleTraitFnWithDefaultImplTwinSyncSse();
 }
 

@@ -13,9 +13,10 @@ part 'dart_opaque_twin_sync.freezed.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `deref`, `initialize`
 
-String asyncAcceptDartOpaqueTwinSync({required Object opaque}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartOpaqueTwinSyncAsyncAcceptDartOpaqueTwinSync(
+String asyncAcceptDartOpaqueTwinSync({required Object opaque}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualDartOpaqueTwinSyncAsyncAcceptDartOpaqueTwinSync(
       opaque: opaque,
     );
 
@@ -23,51 +24,55 @@ Object loopBackTwinSync({required Object opaque}) => RustLib.instance.api
     .crateApiPseudoManualDartOpaqueTwinSyncLoopBackTwinSync(opaque: opaque);
 
 Object? loopBackOptionTwinSync({required Object opaque}) => RustLib.instance.api
-        .crateApiPseudoManualDartOpaqueTwinSyncLoopBackOptionTwinSync(
+    .crateApiPseudoManualDartOpaqueTwinSyncLoopBackOptionTwinSync(
       opaque: opaque,
     );
 
-ObjectArray1 loopBackArrayTwinSync({required Object opaque}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartOpaqueTwinSyncLoopBackArrayTwinSync(
+ObjectArray1 loopBackArrayTwinSync({required Object opaque}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualDartOpaqueTwinSyncLoopBackArrayTwinSync(
       opaque: opaque,
     );
 
 List<Object> loopBackVecTwinSync({required Object opaque}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualDartOpaqueTwinSyncLoopBackVecTwinSync(opaque: opaque);
 
 void loopBackOptionGetTwinSync({Object? opaque}) => RustLib.instance.api
-        .crateApiPseudoManualDartOpaqueTwinSyncLoopBackOptionGetTwinSync(
+    .crateApiPseudoManualDartOpaqueTwinSyncLoopBackOptionGetTwinSync(
       opaque: opaque,
     );
 
-void loopBackArrayGetTwinSync({required ObjectArray1 opaque}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartOpaqueTwinSyncLoopBackArrayGetTwinSync(
+void loopBackArrayGetTwinSync({required ObjectArray1 opaque}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualDartOpaqueTwinSyncLoopBackArrayGetTwinSync(
       opaque: opaque,
     );
 
-void loopBackVecGetTwinSync({required List<Object> opaque}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartOpaqueTwinSyncLoopBackVecGetTwinSync(
+void loopBackVecGetTwinSync({required List<Object> opaque}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualDartOpaqueTwinSyncLoopBackVecGetTwinSync(
       opaque: opaque,
     );
 
 /// [DartWrapObject] cannot be obtained
 /// on a thread other than the thread it was created on.
-void panicUnwrapDartOpaqueTwinSync({required Object opaque}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartOpaqueTwinSyncPanicUnwrapDartOpaqueTwinSync(
+void panicUnwrapDartOpaqueTwinSync({required Object opaque}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualDartOpaqueTwinSyncPanicUnwrapDartOpaqueTwinSync(
       opaque: opaque,
     );
 
 DartOpaqueNestedTwinSync createNestedDartOpaqueTwinSync({
   required Object opaque1,
   required Object opaque2,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartOpaqueTwinSyncCreateNestedDartOpaqueTwinSync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualDartOpaqueTwinSyncCreateNestedDartOpaqueTwinSync(
       opaque1: opaque1,
       opaque2: opaque2,
     );
@@ -75,34 +80,35 @@ DartOpaqueNestedTwinSync createNestedDartOpaqueTwinSync({
 void getNestedDartOpaqueTwinSync({required DartOpaqueNestedTwinSync opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualDartOpaqueTwinSyncGetNestedDartOpaqueTwinSync(
-      opaque: opaque,
-    );
+          opaque: opaque,
+        );
 
 EnumDartOpaqueTwinSync createEnumDartOpaqueTwinSync({required Object opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualDartOpaqueTwinSyncCreateEnumDartOpaqueTwinSync(
-      opaque: opaque,
-    );
+          opaque: opaque,
+        );
 
 void getEnumDartOpaqueTwinSync({required EnumDartOpaqueTwinSync opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualDartOpaqueTwinSyncGetEnumDartOpaqueTwinSync(
-      opaque: opaque,
-    );
+          opaque: opaque,
+        );
 
 void setStaticDartOpaqueTwinSync({required int id, required Object opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualDartOpaqueTwinSyncSetStaticDartOpaqueTwinSync(
-      id: id,
-      opaque: opaque,
-    );
+          id: id,
+          opaque: opaque,
+        );
 
 void dropStaticDartOpaqueTwinSync({required int id}) => RustLib.instance.api
     .crateApiPseudoManualDartOpaqueTwinSyncDropStaticDartOpaqueTwinSync(id: id);
 
-List<Object> cloneDartOpaqueTwinSync({required Object opaque}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualDartOpaqueTwinSyncCloneDartOpaqueTwinSync(
+List<Object> cloneDartOpaqueTwinSync({required Object opaque}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualDartOpaqueTwinSyncCloneDartOpaqueTwinSync(
       opaque: opaque,
     );
 

@@ -15,42 +15,37 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<double?> handleOptionalReturnTwinRustAsync({
   required double left,
   required double right,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinRustAsyncHandleOptionalReturnTwinRustAsync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinRustAsyncHandleOptionalReturnTwinRustAsync(
       left: left,
       right: right,
     );
 
 Future<ElementTwinRustAsync?> handleOptionalStructTwinRustAsync({
   String? document,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinRustAsyncHandleOptionalStructTwinRustAsync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinRustAsyncHandleOptionalStructTwinRustAsync(
       document: document,
     );
 
 Future<ExoticOptionalsTwinRustAsync?> handleOptionalIncrementTwinRustAsync({
   ExoticOptionalsTwinRustAsync? opt,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinRustAsyncHandleOptionalIncrementTwinRustAsync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinRustAsyncHandleOptionalIncrementTwinRustAsync(
       opt: opt,
     );
 
 Future<double> handleIncrementBoxedOptionalTwinRustAsync({
   double? opt,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinRustAsyncHandleIncrementBoxedOptionalTwinRustAsync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinRustAsyncHandleIncrementBoxedOptionalTwinRustAsync(
       opt: opt,
     );
 
 Future<OptVecsTwinRustAsync> handleVecOfOptsTwinRustAsync({
   required OptVecsTwinRustAsync opt,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinRustAsyncHandleVecOfOptsTwinRustAsync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinRustAsyncHandleVecOfOptsTwinRustAsync(
       opt: opt,
     );
 
@@ -62,9 +57,8 @@ Future<String> handleOptionBoxArgumentsTwinRustAsync({
   double? f64Box,
   bool? boolbox,
   ExoticOptionalsTwinRustAsync? structbox,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinRustAsyncHandleOptionBoxArgumentsTwinRustAsync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinRustAsyncHandleOptionBoxArgumentsTwinRustAsync(
       i8Box: i8Box,
       u8Box: u8Box,
       i32Box: i32Box,

@@ -21,40 +21,34 @@ mixin _$DistanceTwinSync {
   TResult when<TResult extends Object?>({
     required TResult Function() unknown,
     required TResult Function(double field0) map,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? unknown,
     TResult? Function(double field0)? map,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unknown,
     TResult Function(double field0)? map,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(DistanceTwinSync_Unknown value) unknown,
     required TResult Function(DistanceTwinSync_Map value) map,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(DistanceTwinSync_Unknown value)? unknown,
     TResult? Function(DistanceTwinSync_Map value)? map,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(DistanceTwinSync_Unknown value)? unknown,
     TResult Function(DistanceTwinSync_Map value)? map,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -217,7 +211,7 @@ class __$$DistanceTwinSync_MapImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                as double,
+                  as double,
       ),
     );
   }
@@ -253,11 +247,11 @@ class _$DistanceTwinSync_MapImpl extends DistanceTwinSync_Map {
   @override
   @pragma('vm:prefer-inline')
   _$$DistanceTwinSync_MapImplCopyWith<_$DistanceTwinSync_MapImpl>
-      get copyWith =>
-          __$$DistanceTwinSync_MapImplCopyWithImpl<_$DistanceTwinSync_MapImpl>(
-            this,
-            _$identity,
-          );
+  get copyWith =>
+      __$$DistanceTwinSync_MapImplCopyWithImpl<_$DistanceTwinSync_MapImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -333,7 +327,7 @@ abstract class DistanceTwinSync_Map extends DistanceTwinSync {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DistanceTwinSync_MapImplCopyWith<_$DistanceTwinSync_MapImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -343,45 +337,39 @@ mixin _$EnumWithItemMixedTwinSync {
     required TResult Function() a,
     required TResult Function(Uint8List field0) b,
     required TResult Function(String cField) c,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? a,
     TResult? Function(Uint8List field0)? b,
     TResult? Function(String cField)? c,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? a,
     TResult Function(Uint8List field0)? b,
     TResult Function(String cField)? c,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(EnumWithItemMixedTwinSync_A value) a,
     required TResult Function(EnumWithItemMixedTwinSync_B value) b,
     required TResult Function(EnumWithItemMixedTwinSync_C value) c,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(EnumWithItemMixedTwinSync_A value)? a,
     TResult? Function(EnumWithItemMixedTwinSync_B value)? b,
     TResult? Function(EnumWithItemMixedTwinSync_C value)? c,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EnumWithItemMixedTwinSync_A value)? a,
     TResult Function(EnumWithItemMixedTwinSync_B value)? b,
     TResult Function(EnumWithItemMixedTwinSync_C value)? c,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -393,8 +381,10 @@ abstract class $EnumWithItemMixedTwinSyncCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$EnumWithItemMixedTwinSyncCopyWithImpl<$Res,
-        $Val extends EnumWithItemMixedTwinSync>
+class _$EnumWithItemMixedTwinSyncCopyWithImpl<
+  $Res,
+  $Val extends EnumWithItemMixedTwinSync
+>
     implements $EnumWithItemMixedTwinSyncCopyWith<$Res> {
   _$EnumWithItemMixedTwinSyncCopyWithImpl(this._value, this._then);
 
@@ -417,8 +407,11 @@ abstract class _$$EnumWithItemMixedTwinSync_AImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$EnumWithItemMixedTwinSync_AImplCopyWithImpl<$Res>
-    extends _$EnumWithItemMixedTwinSyncCopyWithImpl<$Res,
-        _$EnumWithItemMixedTwinSync_AImpl>
+    extends
+        _$EnumWithItemMixedTwinSyncCopyWithImpl<
+          $Res,
+          _$EnumWithItemMixedTwinSync_AImpl
+        >
     implements _$$EnumWithItemMixedTwinSync_AImplCopyWith<$Res> {
   __$$EnumWithItemMixedTwinSync_AImplCopyWithImpl(
     _$EnumWithItemMixedTwinSync_AImpl _value,
@@ -536,8 +529,11 @@ abstract class _$$EnumWithItemMixedTwinSync_BImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$EnumWithItemMixedTwinSync_BImplCopyWithImpl<$Res>
-    extends _$EnumWithItemMixedTwinSyncCopyWithImpl<$Res,
-        _$EnumWithItemMixedTwinSync_BImpl>
+    extends
+        _$EnumWithItemMixedTwinSyncCopyWithImpl<
+          $Res,
+          _$EnumWithItemMixedTwinSync_BImpl
+        >
     implements _$$EnumWithItemMixedTwinSync_BImplCopyWith<$Res> {
   __$$EnumWithItemMixedTwinSync_BImplCopyWithImpl(
     _$EnumWithItemMixedTwinSync_BImpl _value,
@@ -554,7 +550,7 @@ class __$$EnumWithItemMixedTwinSync_BImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                as Uint8List,
+                  as Uint8List,
       ),
     );
   }
@@ -591,8 +587,10 @@ class _$EnumWithItemMixedTwinSync_BImpl extends EnumWithItemMixedTwinSync_B {
   @override
   @pragma('vm:prefer-inline')
   _$$EnumWithItemMixedTwinSync_BImplCopyWith<_$EnumWithItemMixedTwinSync_BImpl>
-      get copyWith => __$$EnumWithItemMixedTwinSync_BImplCopyWithImpl<
-          _$EnumWithItemMixedTwinSync_BImpl>(this, _$identity);
+  get copyWith =>
+      __$$EnumWithItemMixedTwinSync_BImplCopyWithImpl<
+        _$EnumWithItemMixedTwinSync_BImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -674,7 +672,7 @@ abstract class EnumWithItemMixedTwinSync_B extends EnumWithItemMixedTwinSync {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumWithItemMixedTwinSync_BImplCopyWith<_$EnumWithItemMixedTwinSync_BImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -689,8 +687,11 @@ abstract class _$$EnumWithItemMixedTwinSync_CImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$EnumWithItemMixedTwinSync_CImplCopyWithImpl<$Res>
-    extends _$EnumWithItemMixedTwinSyncCopyWithImpl<$Res,
-        _$EnumWithItemMixedTwinSync_CImpl>
+    extends
+        _$EnumWithItemMixedTwinSyncCopyWithImpl<
+          $Res,
+          _$EnumWithItemMixedTwinSync_CImpl
+        >
     implements _$$EnumWithItemMixedTwinSync_CImplCopyWith<$Res> {
   __$$EnumWithItemMixedTwinSync_CImplCopyWithImpl(
     _$EnumWithItemMixedTwinSync_CImpl _value,
@@ -707,7 +708,7 @@ class __$$EnumWithItemMixedTwinSync_CImplCopyWithImpl<$Res>
         cField: null == cField
             ? _value.cField
             : cField // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -743,8 +744,10 @@ class _$EnumWithItemMixedTwinSync_CImpl extends EnumWithItemMixedTwinSync_C {
   @override
   @pragma('vm:prefer-inline')
   _$$EnumWithItemMixedTwinSync_CImplCopyWith<_$EnumWithItemMixedTwinSync_CImpl>
-      get copyWith => __$$EnumWithItemMixedTwinSync_CImplCopyWithImpl<
-          _$EnumWithItemMixedTwinSync_CImpl>(this, _$identity);
+  get copyWith =>
+      __$$EnumWithItemMixedTwinSync_CImplCopyWithImpl<
+        _$EnumWithItemMixedTwinSync_CImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -826,7 +829,7 @@ abstract class EnumWithItemMixedTwinSync_C extends EnumWithItemMixedTwinSync {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumWithItemMixedTwinSync_CImplCopyWith<_$EnumWithItemMixedTwinSync_CImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -835,40 +838,34 @@ mixin _$EnumWithItemStructTwinSync {
   TResult when<TResult extends Object?>({
     required TResult Function(Uint8List aField) a,
     required TResult Function(Int32List bField) b,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Uint8List aField)? a,
     TResult? Function(Int32List bField)? b,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Uint8List aField)? a,
     TResult Function(Int32List bField)? b,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(EnumWithItemStructTwinSync_A value) a,
     required TResult Function(EnumWithItemStructTwinSync_B value) b,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(EnumWithItemStructTwinSync_A value)? a,
     TResult? Function(EnumWithItemStructTwinSync_B value)? b,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EnumWithItemStructTwinSync_A value)? a,
     TResult Function(EnumWithItemStructTwinSync_B value)? b,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -876,13 +873,18 @@ abstract class $EnumWithItemStructTwinSyncCopyWith<$Res> {
   factory $EnumWithItemStructTwinSyncCopyWith(
     EnumWithItemStructTwinSync value,
     $Res Function(EnumWithItemStructTwinSync) then,
-  ) = _$EnumWithItemStructTwinSyncCopyWithImpl<$Res,
-      EnumWithItemStructTwinSync>;
+  ) =
+      _$EnumWithItemStructTwinSyncCopyWithImpl<
+        $Res,
+        EnumWithItemStructTwinSync
+      >;
 }
 
 /// @nodoc
-class _$EnumWithItemStructTwinSyncCopyWithImpl<$Res,
-        $Val extends EnumWithItemStructTwinSync>
+class _$EnumWithItemStructTwinSyncCopyWithImpl<
+  $Res,
+  $Val extends EnumWithItemStructTwinSync
+>
     implements $EnumWithItemStructTwinSyncCopyWith<$Res> {
   _$EnumWithItemStructTwinSyncCopyWithImpl(this._value, this._then);
 
@@ -907,8 +909,11 @@ abstract class _$$EnumWithItemStructTwinSync_AImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$EnumWithItemStructTwinSync_AImplCopyWithImpl<$Res>
-    extends _$EnumWithItemStructTwinSyncCopyWithImpl<$Res,
-        _$EnumWithItemStructTwinSync_AImpl>
+    extends
+        _$EnumWithItemStructTwinSyncCopyWithImpl<
+          $Res,
+          _$EnumWithItemStructTwinSync_AImpl
+        >
     implements _$$EnumWithItemStructTwinSync_AImplCopyWith<$Res> {
   __$$EnumWithItemStructTwinSync_AImplCopyWithImpl(
     _$EnumWithItemStructTwinSync_AImpl _value,
@@ -925,7 +930,7 @@ class __$$EnumWithItemStructTwinSync_AImplCopyWithImpl<$Res>
         aField: null == aField
             ? _value.aField
             : aField // ignore: cast_nullable_to_non_nullable
-                as Uint8List,
+                  as Uint8List,
       ),
     );
   }
@@ -962,9 +967,12 @@ class _$EnumWithItemStructTwinSync_AImpl extends EnumWithItemStructTwinSync_A {
   @override
   @pragma('vm:prefer-inline')
   _$$EnumWithItemStructTwinSync_AImplCopyWith<
-          _$EnumWithItemStructTwinSync_AImpl>
-      get copyWith => __$$EnumWithItemStructTwinSync_AImplCopyWithImpl<
-          _$EnumWithItemStructTwinSync_AImpl>(this, _$identity);
+    _$EnumWithItemStructTwinSync_AImpl
+  >
+  get copyWith =>
+      __$$EnumWithItemStructTwinSync_AImplCopyWithImpl<
+        _$EnumWithItemStructTwinSync_AImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1041,8 +1049,9 @@ abstract class EnumWithItemStructTwinSync_A extends EnumWithItemStructTwinSync {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumWithItemStructTwinSync_AImplCopyWith<
-          _$EnumWithItemStructTwinSync_AImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$EnumWithItemStructTwinSync_AImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1057,8 +1066,11 @@ abstract class _$$EnumWithItemStructTwinSync_BImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$EnumWithItemStructTwinSync_BImplCopyWithImpl<$Res>
-    extends _$EnumWithItemStructTwinSyncCopyWithImpl<$Res,
-        _$EnumWithItemStructTwinSync_BImpl>
+    extends
+        _$EnumWithItemStructTwinSyncCopyWithImpl<
+          $Res,
+          _$EnumWithItemStructTwinSync_BImpl
+        >
     implements _$$EnumWithItemStructTwinSync_BImplCopyWith<$Res> {
   __$$EnumWithItemStructTwinSync_BImplCopyWithImpl(
     _$EnumWithItemStructTwinSync_BImpl _value,
@@ -1075,7 +1087,7 @@ class __$$EnumWithItemStructTwinSync_BImplCopyWithImpl<$Res>
         bField: null == bField
             ? _value.bField
             : bField // ignore: cast_nullable_to_non_nullable
-                as Int32List,
+                  as Int32List,
       ),
     );
   }
@@ -1112,9 +1124,12 @@ class _$EnumWithItemStructTwinSync_BImpl extends EnumWithItemStructTwinSync_B {
   @override
   @pragma('vm:prefer-inline')
   _$$EnumWithItemStructTwinSync_BImplCopyWith<
-          _$EnumWithItemStructTwinSync_BImpl>
-      get copyWith => __$$EnumWithItemStructTwinSync_BImplCopyWithImpl<
-          _$EnumWithItemStructTwinSync_BImpl>(this, _$identity);
+    _$EnumWithItemStructTwinSync_BImpl
+  >
+  get copyWith =>
+      __$$EnumWithItemStructTwinSync_BImplCopyWithImpl<
+        _$EnumWithItemStructTwinSync_BImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1191,8 +1206,9 @@ abstract class EnumWithItemStructTwinSync_B extends EnumWithItemStructTwinSync {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumWithItemStructTwinSync_BImplCopyWith<
-          _$EnumWithItemStructTwinSync_BImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$EnumWithItemStructTwinSync_BImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1202,40 +1218,34 @@ mixin _$EnumWithItemTupleTwinSync {
   TResult when<TResult extends Object?>({
     required TResult Function(Uint8List field0) a,
     required TResult Function(int field0) b,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Uint8List field0)? a,
     TResult? Function(int field0)? b,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Uint8List field0)? a,
     TResult Function(int field0)? b,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(EnumWithItemTupleTwinSync_A value) a,
     required TResult Function(EnumWithItemTupleTwinSync_B value) b,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(EnumWithItemTupleTwinSync_A value)? a,
     TResult? Function(EnumWithItemTupleTwinSync_B value)? b,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EnumWithItemTupleTwinSync_A value)? a,
     TResult Function(EnumWithItemTupleTwinSync_B value)? b,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1247,8 +1257,10 @@ abstract class $EnumWithItemTupleTwinSyncCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$EnumWithItemTupleTwinSyncCopyWithImpl<$Res,
-        $Val extends EnumWithItemTupleTwinSync>
+class _$EnumWithItemTupleTwinSyncCopyWithImpl<
+  $Res,
+  $Val extends EnumWithItemTupleTwinSync
+>
     implements $EnumWithItemTupleTwinSyncCopyWith<$Res> {
   _$EnumWithItemTupleTwinSyncCopyWithImpl(this._value, this._then);
 
@@ -1273,8 +1285,11 @@ abstract class _$$EnumWithItemTupleTwinSync_AImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$EnumWithItemTupleTwinSync_AImplCopyWithImpl<$Res>
-    extends _$EnumWithItemTupleTwinSyncCopyWithImpl<$Res,
-        _$EnumWithItemTupleTwinSync_AImpl>
+    extends
+        _$EnumWithItemTupleTwinSyncCopyWithImpl<
+          $Res,
+          _$EnumWithItemTupleTwinSync_AImpl
+        >
     implements _$$EnumWithItemTupleTwinSync_AImplCopyWith<$Res> {
   __$$EnumWithItemTupleTwinSync_AImplCopyWithImpl(
     _$EnumWithItemTupleTwinSync_AImpl _value,
@@ -1291,7 +1306,7 @@ class __$$EnumWithItemTupleTwinSync_AImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                as Uint8List,
+                  as Uint8List,
       ),
     );
   }
@@ -1328,8 +1343,10 @@ class _$EnumWithItemTupleTwinSync_AImpl extends EnumWithItemTupleTwinSync_A {
   @override
   @pragma('vm:prefer-inline')
   _$$EnumWithItemTupleTwinSync_AImplCopyWith<_$EnumWithItemTupleTwinSync_AImpl>
-      get copyWith => __$$EnumWithItemTupleTwinSync_AImplCopyWithImpl<
-          _$EnumWithItemTupleTwinSync_AImpl>(this, _$identity);
+  get copyWith =>
+      __$$EnumWithItemTupleTwinSync_AImplCopyWithImpl<
+        _$EnumWithItemTupleTwinSync_AImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1406,7 +1423,7 @@ abstract class EnumWithItemTupleTwinSync_A extends EnumWithItemTupleTwinSync {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumWithItemTupleTwinSync_AImplCopyWith<_$EnumWithItemTupleTwinSync_AImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1421,8 +1438,11 @@ abstract class _$$EnumWithItemTupleTwinSync_BImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$EnumWithItemTupleTwinSync_BImplCopyWithImpl<$Res>
-    extends _$EnumWithItemTupleTwinSyncCopyWithImpl<$Res,
-        _$EnumWithItemTupleTwinSync_BImpl>
+    extends
+        _$EnumWithItemTupleTwinSyncCopyWithImpl<
+          $Res,
+          _$EnumWithItemTupleTwinSync_BImpl
+        >
     implements _$$EnumWithItemTupleTwinSync_BImplCopyWith<$Res> {
   __$$EnumWithItemTupleTwinSync_BImplCopyWithImpl(
     _$EnumWithItemTupleTwinSync_BImpl _value,
@@ -1439,7 +1459,7 @@ class __$$EnumWithItemTupleTwinSync_BImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                as int,
+                  as int,
       ),
     );
   }
@@ -1475,8 +1495,10 @@ class _$EnumWithItemTupleTwinSync_BImpl extends EnumWithItemTupleTwinSync_B {
   @override
   @pragma('vm:prefer-inline')
   _$$EnumWithItemTupleTwinSync_BImplCopyWith<_$EnumWithItemTupleTwinSync_BImpl>
-      get copyWith => __$$EnumWithItemTupleTwinSync_BImplCopyWithImpl<
-          _$EnumWithItemTupleTwinSync_BImpl>(this, _$identity);
+  get copyWith =>
+      __$$EnumWithItemTupleTwinSync_BImplCopyWithImpl<
+        _$EnumWithItemTupleTwinSync_BImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1553,7 +1575,7 @@ abstract class EnumWithItemTupleTwinSync_B extends EnumWithItemTupleTwinSync {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumWithItemTupleTwinSync_BImplCopyWith<_$EnumWithItemTupleTwinSync_BImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1562,13 +1584,12 @@ mixin _$KitchenSinkTwinSync {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function(int int32, double float64, bool boolean)
-        primitives,
+    primitives,
     required TResult Function(int field0, KitchenSinkTwinSync field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
     required TResult Function(WeekdaysTwinSync field0) enums,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? empty,
@@ -1577,8 +1598,7 @@ mixin _$KitchenSinkTwinSync {
     TResult? Function(int? field0, int? field1)? optional,
     TResult? Function(Uint8List field0)? buffer,
     TResult? Function(WeekdaysTwinSync field0)? enums,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
@@ -1588,8 +1608,7 @@ mixin _$KitchenSinkTwinSync {
     TResult Function(Uint8List field0)? buffer,
     TResult Function(WeekdaysTwinSync field0)? enums,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(KitchenSinkTwinSync_Empty value) empty,
@@ -1598,8 +1617,7 @@ mixin _$KitchenSinkTwinSync {
     required TResult Function(KitchenSinkTwinSync_Optional value) optional,
     required TResult Function(KitchenSinkTwinSync_Buffer value) buffer,
     required TResult Function(KitchenSinkTwinSync_Enums value) enums,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(KitchenSinkTwinSync_Empty value)? empty,
@@ -1608,8 +1626,7 @@ mixin _$KitchenSinkTwinSync {
     TResult? Function(KitchenSinkTwinSync_Optional value)? optional,
     TResult? Function(KitchenSinkTwinSync_Buffer value)? buffer,
     TResult? Function(KitchenSinkTwinSync_Enums value)? enums,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(KitchenSinkTwinSync_Empty value)? empty,
@@ -1619,8 +1636,7 @@ mixin _$KitchenSinkTwinSync {
     TResult Function(KitchenSinkTwinSync_Buffer value)? buffer,
     TResult Function(KitchenSinkTwinSync_Enums value)? enums,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1655,8 +1671,8 @@ abstract class _$$KitchenSinkTwinSync_EmptyImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$KitchenSinkTwinSync_EmptyImplCopyWithImpl<$Res>
-    extends _$KitchenSinkTwinSyncCopyWithImpl<$Res,
-        _$KitchenSinkTwinSync_EmptyImpl>
+    extends
+        _$KitchenSinkTwinSyncCopyWithImpl<$Res, _$KitchenSinkTwinSync_EmptyImpl>
     implements _$$KitchenSinkTwinSync_EmptyImplCopyWith<$Res> {
   __$$KitchenSinkTwinSync_EmptyImplCopyWithImpl(
     _$KitchenSinkTwinSync_EmptyImpl _value,
@@ -1692,7 +1708,7 @@ class _$KitchenSinkTwinSync_EmptyImpl extends KitchenSinkTwinSync_Empty {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function(int int32, double float64, bool boolean)
-        primitives,
+    primitives,
     required TResult Function(int field0, KitchenSinkTwinSync field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
@@ -1792,8 +1808,11 @@ abstract class _$$KitchenSinkTwinSync_PrimitivesImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$KitchenSinkTwinSync_PrimitivesImplCopyWithImpl<$Res>
-    extends _$KitchenSinkTwinSyncCopyWithImpl<$Res,
-        _$KitchenSinkTwinSync_PrimitivesImpl>
+    extends
+        _$KitchenSinkTwinSyncCopyWithImpl<
+          $Res,
+          _$KitchenSinkTwinSync_PrimitivesImpl
+        >
     implements _$$KitchenSinkTwinSync_PrimitivesImplCopyWith<$Res> {
   __$$KitchenSinkTwinSync_PrimitivesImplCopyWithImpl(
     _$KitchenSinkTwinSync_PrimitivesImpl _value,
@@ -1814,15 +1833,15 @@ class __$$KitchenSinkTwinSync_PrimitivesImplCopyWithImpl<$Res>
         int32: null == int32
             ? _value.int32
             : int32 // ignore: cast_nullable_to_non_nullable
-                as int,
+                  as int,
         float64: null == float64
             ? _value.float64
             : float64 // ignore: cast_nullable_to_non_nullable
-                as double,
+                  as double,
         boolean: null == boolean
             ? _value.boolean
             : boolean // ignore: cast_nullable_to_non_nullable
-                as bool,
+                  as bool,
       ),
     );
   }
@@ -1871,16 +1890,19 @@ class _$KitchenSinkTwinSync_PrimitivesImpl
   @override
   @pragma('vm:prefer-inline')
   _$$KitchenSinkTwinSync_PrimitivesImplCopyWith<
-          _$KitchenSinkTwinSync_PrimitivesImpl>
-      get copyWith => __$$KitchenSinkTwinSync_PrimitivesImplCopyWithImpl<
-          _$KitchenSinkTwinSync_PrimitivesImpl>(this, _$identity);
+    _$KitchenSinkTwinSync_PrimitivesImpl
+  >
+  get copyWith =>
+      __$$KitchenSinkTwinSync_PrimitivesImplCopyWithImpl<
+        _$KitchenSinkTwinSync_PrimitivesImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function(int int32, double float64, bool boolean)
-        primitives,
+    primitives,
     required TResult Function(int field0, KitchenSinkTwinSync field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
@@ -1980,8 +2002,9 @@ abstract class KitchenSinkTwinSync_Primitives extends KitchenSinkTwinSync {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KitchenSinkTwinSync_PrimitivesImplCopyWith<
-          _$KitchenSinkTwinSync_PrimitivesImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$KitchenSinkTwinSync_PrimitivesImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1998,8 +2021,11 @@ abstract class _$$KitchenSinkTwinSync_NestedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$KitchenSinkTwinSync_NestedImplCopyWithImpl<$Res>
-    extends _$KitchenSinkTwinSyncCopyWithImpl<$Res,
-        _$KitchenSinkTwinSync_NestedImpl>
+    extends
+        _$KitchenSinkTwinSyncCopyWithImpl<
+          $Res,
+          _$KitchenSinkTwinSync_NestedImpl
+        >
     implements _$$KitchenSinkTwinSync_NestedImplCopyWith<$Res> {
   __$$KitchenSinkTwinSync_NestedImplCopyWithImpl(
     _$KitchenSinkTwinSync_NestedImpl _value,
@@ -2016,11 +2042,11 @@ class __$$KitchenSinkTwinSync_NestedImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                as int,
+                  as int,
         null == field1
             ? _value.field1
             : field1 // ignore: cast_nullable_to_non_nullable
-                as KitchenSinkTwinSync,
+                  as KitchenSinkTwinSync,
       ),
     );
   }
@@ -2073,15 +2099,17 @@ class _$KitchenSinkTwinSync_NestedImpl extends KitchenSinkTwinSync_Nested {
   @override
   @pragma('vm:prefer-inline')
   _$$KitchenSinkTwinSync_NestedImplCopyWith<_$KitchenSinkTwinSync_NestedImpl>
-      get copyWith => __$$KitchenSinkTwinSync_NestedImplCopyWithImpl<
-          _$KitchenSinkTwinSync_NestedImpl>(this, _$identity);
+  get copyWith =>
+      __$$KitchenSinkTwinSync_NestedImplCopyWithImpl<
+        _$KitchenSinkTwinSync_NestedImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function(int int32, double float64, bool boolean)
-        primitives,
+    primitives,
     required TResult Function(int field0, KitchenSinkTwinSync field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
@@ -2178,7 +2206,7 @@ abstract class KitchenSinkTwinSync_Nested extends KitchenSinkTwinSync {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KitchenSinkTwinSync_NestedImplCopyWith<_$KitchenSinkTwinSync_NestedImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2193,8 +2221,11 @@ abstract class _$$KitchenSinkTwinSync_OptionalImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$KitchenSinkTwinSync_OptionalImplCopyWithImpl<$Res>
-    extends _$KitchenSinkTwinSyncCopyWithImpl<$Res,
-        _$KitchenSinkTwinSync_OptionalImpl>
+    extends
+        _$KitchenSinkTwinSyncCopyWithImpl<
+          $Res,
+          _$KitchenSinkTwinSync_OptionalImpl
+        >
     implements _$$KitchenSinkTwinSync_OptionalImplCopyWith<$Res> {
   __$$KitchenSinkTwinSync_OptionalImplCopyWithImpl(
     _$KitchenSinkTwinSync_OptionalImpl _value,
@@ -2211,11 +2242,11 @@ class __$$KitchenSinkTwinSync_OptionalImplCopyWithImpl<$Res>
         freezed == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                as int?,
+                  as int?,
         freezed == field1
             ? _value.field1
             : field1 // ignore: cast_nullable_to_non_nullable
-                as int?,
+                  as int?,
       ),
     );
   }
@@ -2225,7 +2256,7 @@ class __$$KitchenSinkTwinSync_OptionalImplCopyWithImpl<$Res>
 
 class _$KitchenSinkTwinSync_OptionalImpl extends KitchenSinkTwinSync_Optional {
   const _$KitchenSinkTwinSync_OptionalImpl([this.field0 = -1, this.field1])
-      : super._();
+    : super._();
 
   /// Comment on anonymous field
   @override
@@ -2257,16 +2288,19 @@ class _$KitchenSinkTwinSync_OptionalImpl extends KitchenSinkTwinSync_Optional {
   @override
   @pragma('vm:prefer-inline')
   _$$KitchenSinkTwinSync_OptionalImplCopyWith<
-          _$KitchenSinkTwinSync_OptionalImpl>
-      get copyWith => __$$KitchenSinkTwinSync_OptionalImplCopyWithImpl<
-          _$KitchenSinkTwinSync_OptionalImpl>(this, _$identity);
+    _$KitchenSinkTwinSync_OptionalImpl
+  >
+  get copyWith =>
+      __$$KitchenSinkTwinSync_OptionalImplCopyWithImpl<
+        _$KitchenSinkTwinSync_OptionalImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function(int int32, double float64, bool boolean)
-        primitives,
+    primitives,
     required TResult Function(int field0, KitchenSinkTwinSync field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
@@ -2364,8 +2398,9 @@ abstract class KitchenSinkTwinSync_Optional extends KitchenSinkTwinSync {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KitchenSinkTwinSync_OptionalImplCopyWith<
-          _$KitchenSinkTwinSync_OptionalImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$KitchenSinkTwinSync_OptionalImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2380,8 +2415,11 @@ abstract class _$$KitchenSinkTwinSync_BufferImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$KitchenSinkTwinSync_BufferImplCopyWithImpl<$Res>
-    extends _$KitchenSinkTwinSyncCopyWithImpl<$Res,
-        _$KitchenSinkTwinSync_BufferImpl>
+    extends
+        _$KitchenSinkTwinSyncCopyWithImpl<
+          $Res,
+          _$KitchenSinkTwinSync_BufferImpl
+        >
     implements _$$KitchenSinkTwinSync_BufferImplCopyWith<$Res> {
   __$$KitchenSinkTwinSync_BufferImplCopyWithImpl(
     _$KitchenSinkTwinSync_BufferImpl _value,
@@ -2398,7 +2436,7 @@ class __$$KitchenSinkTwinSync_BufferImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                as Uint8List,
+                  as Uint8List,
       ),
     );
   }
@@ -2435,15 +2473,17 @@ class _$KitchenSinkTwinSync_BufferImpl extends KitchenSinkTwinSync_Buffer {
   @override
   @pragma('vm:prefer-inline')
   _$$KitchenSinkTwinSync_BufferImplCopyWith<_$KitchenSinkTwinSync_BufferImpl>
-      get copyWith => __$$KitchenSinkTwinSync_BufferImplCopyWithImpl<
-          _$KitchenSinkTwinSync_BufferImpl>(this, _$identity);
+  get copyWith =>
+      __$$KitchenSinkTwinSync_BufferImplCopyWithImpl<
+        _$KitchenSinkTwinSync_BufferImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function(int int32, double float64, bool boolean)
-        primitives,
+    primitives,
     required TResult Function(int field0, KitchenSinkTwinSync field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
@@ -2537,7 +2577,7 @@ abstract class KitchenSinkTwinSync_Buffer extends KitchenSinkTwinSync {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KitchenSinkTwinSync_BufferImplCopyWith<_$KitchenSinkTwinSync_BufferImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2552,8 +2592,8 @@ abstract class _$$KitchenSinkTwinSync_EnumsImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$KitchenSinkTwinSync_EnumsImplCopyWithImpl<$Res>
-    extends _$KitchenSinkTwinSyncCopyWithImpl<$Res,
-        _$KitchenSinkTwinSync_EnumsImpl>
+    extends
+        _$KitchenSinkTwinSyncCopyWithImpl<$Res, _$KitchenSinkTwinSync_EnumsImpl>
     implements _$$KitchenSinkTwinSync_EnumsImplCopyWith<$Res> {
   __$$KitchenSinkTwinSync_EnumsImplCopyWithImpl(
     _$KitchenSinkTwinSync_EnumsImpl _value,
@@ -2570,7 +2610,7 @@ class __$$KitchenSinkTwinSync_EnumsImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                as WeekdaysTwinSync,
+                  as WeekdaysTwinSync,
       ),
     );
   }
@@ -2580,7 +2620,7 @@ class __$$KitchenSinkTwinSync_EnumsImplCopyWithImpl<$Res>
 
 class _$KitchenSinkTwinSync_EnumsImpl extends KitchenSinkTwinSync_Enums {
   const _$KitchenSinkTwinSync_EnumsImpl([this.field0 = WeekdaysTwinSync.sunday])
-      : super._();
+    : super._();
 
   @override
   @JsonKey()
@@ -2608,15 +2648,17 @@ class _$KitchenSinkTwinSync_EnumsImpl extends KitchenSinkTwinSync_Enums {
   @override
   @pragma('vm:prefer-inline')
   _$$KitchenSinkTwinSync_EnumsImplCopyWith<_$KitchenSinkTwinSync_EnumsImpl>
-      get copyWith => __$$KitchenSinkTwinSync_EnumsImplCopyWithImpl<
-          _$KitchenSinkTwinSync_EnumsImpl>(this, _$identity);
+  get copyWith =>
+      __$$KitchenSinkTwinSync_EnumsImplCopyWithImpl<
+        _$KitchenSinkTwinSync_EnumsImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function(int int32, double float64, bool boolean)
-        primitives,
+    primitives,
     required TResult Function(int field0, KitchenSinkTwinSync field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
@@ -2710,7 +2752,7 @@ abstract class KitchenSinkTwinSync_Enums extends KitchenSinkTwinSync {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KitchenSinkTwinSync_EnumsImplCopyWith<_$KitchenSinkTwinSync_EnumsImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2720,40 +2762,34 @@ mixin _$MeasureTwinSync {
   TResult when<TResult extends Object?>({
     required TResult Function(SpeedTwinSync field0) speed,
     required TResult Function(DistanceTwinSync field0) distance,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(SpeedTwinSync field0)? speed,
     TResult? Function(DistanceTwinSync field0)? distance,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(SpeedTwinSync field0)? speed,
     TResult Function(DistanceTwinSync field0)? distance,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(MeasureTwinSync_Speed value) speed,
     required TResult Function(MeasureTwinSync_Distance value) distance,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(MeasureTwinSync_Speed value)? speed,
     TResult? Function(MeasureTwinSync_Distance value)? distance,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MeasureTwinSync_Speed value)? speed,
     TResult Function(MeasureTwinSync_Distance value)? distance,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2809,7 +2845,7 @@ class __$$MeasureTwinSync_SpeedImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                as SpeedTwinSync,
+                  as SpeedTwinSync,
       ),
     );
   }
@@ -2855,11 +2891,11 @@ class _$MeasureTwinSync_SpeedImpl extends MeasureTwinSync_Speed {
   @override
   @pragma('vm:prefer-inline')
   _$$MeasureTwinSync_SpeedImplCopyWith<_$MeasureTwinSync_SpeedImpl>
-      get copyWith => __$$MeasureTwinSync_SpeedImplCopyWithImpl<
-              _$MeasureTwinSync_SpeedImpl>(
-            this,
-            _$identity,
-          );
+  get copyWith =>
+      __$$MeasureTwinSync_SpeedImplCopyWithImpl<_$MeasureTwinSync_SpeedImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -2936,7 +2972,7 @@ abstract class MeasureTwinSync_Speed extends MeasureTwinSync {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MeasureTwinSync_SpeedImplCopyWith<_$MeasureTwinSync_SpeedImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2970,7 +3006,7 @@ class __$$MeasureTwinSync_DistanceImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                as DistanceTwinSync,
+                  as DistanceTwinSync,
       ),
     );
   }
@@ -3016,8 +3052,10 @@ class _$MeasureTwinSync_DistanceImpl extends MeasureTwinSync_Distance {
   @override
   @pragma('vm:prefer-inline')
   _$$MeasureTwinSync_DistanceImplCopyWith<_$MeasureTwinSync_DistanceImpl>
-      get copyWith => __$$MeasureTwinSync_DistanceImplCopyWithImpl<
-          _$MeasureTwinSync_DistanceImpl>(this, _$identity);
+  get copyWith =>
+      __$$MeasureTwinSync_DistanceImplCopyWithImpl<
+        _$MeasureTwinSync_DistanceImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -3094,7 +3132,7 @@ abstract class MeasureTwinSync_Distance extends MeasureTwinSync {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MeasureTwinSync_DistanceImplCopyWith<_$MeasureTwinSync_DistanceImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -3103,40 +3141,34 @@ mixin _$SpeedTwinSync {
   TResult when<TResult extends Object?>({
     required TResult Function() unknown,
     required TResult Function(double field0) gps,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? unknown,
     TResult? Function(double field0)? gps,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unknown,
     TResult Function(double field0)? gps,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SpeedTwinSync_Unknown value) unknown,
     required TResult Function(SpeedTwinSync_GPS value) gps,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SpeedTwinSync_Unknown value)? unknown,
     TResult? Function(SpeedTwinSync_GPS value)? gps,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SpeedTwinSync_Unknown value)? unknown,
     TResult Function(SpeedTwinSync_GPS value)? gps,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -3299,7 +3331,7 @@ class __$$SpeedTwinSync_GPSImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                as double,
+                  as double,
       ),
     );
   }

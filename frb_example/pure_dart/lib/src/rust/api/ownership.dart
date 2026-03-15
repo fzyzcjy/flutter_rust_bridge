@@ -25,16 +25,14 @@ Future<Uint8List> borrowSliceU8TwinNormal({required List<int> arg}) =>
 Future<List<String>> borrowSliceStringTwinNormal({required List<String> arg}) =>
     RustLib.instance.api.crateApiOwnershipBorrowSliceStringTwinNormal(arg: arg);
 
-Future<SimpleStructForBorrowTwinNormal> borrowStructTwinNormal(
-        {required SimpleStructForBorrowTwinNormal arg}) =>
-    RustLib.instance.api.crateApiOwnershipBorrowStructTwinNormal(arg: arg);
+Future<SimpleStructForBorrowTwinNormal> borrowStructTwinNormal({
+  required SimpleStructForBorrowTwinNormal arg,
+}) => RustLib.instance.api.crateApiOwnershipBorrowStructTwinNormal(arg: arg);
 
 class SimpleStructForBorrowTwinNormal {
   final String one;
 
-  const SimpleStructForBorrowTwinNormal({
-    required this.one,
-  });
+  const SimpleStructForBorrowTwinNormal({required this.one});
 
   @override
   int get hashCode => one.hashCode;

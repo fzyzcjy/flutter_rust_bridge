@@ -20,7 +20,7 @@ int funcTypeInfalliblePanicTwinSync() => RustLib.instance.api
     .crateApiPseudoManualExceptionTwinSyncFuncTypeInfalliblePanicTwinSync();
 
 int customEnumErrorReturnOkTwinSync({required int arg}) => RustLib.instance.api
-        .crateApiPseudoManualExceptionTwinSyncCustomEnumErrorReturnOkTwinSync(
+    .crateApiPseudoManualExceptionTwinSyncCustomEnumErrorReturnOkTwinSync(
       arg: arg,
     );
 
@@ -32,17 +32,15 @@ int customEnumErrorReturnErrorTwinSync() => RustLib.instance.api
 
 void customNestedErrorReturnErrorTwinSync({
   required CustomNestedErrorOuterTwinSync arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualExceptionTwinSyncCustomNestedErrorReturnErrorTwinSync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualExceptionTwinSyncCustomNestedErrorReturnErrorTwinSync(
       arg: arg,
     );
 
 void customStructErrorReturnErrorTwinSync({
   required CustomStructErrorTwinSync arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualExceptionTwinSyncCustomStructErrorReturnErrorTwinSync(
+}) => RustLib.instance.api
+    .crateApiPseudoManualExceptionTwinSyncCustomStructErrorReturnErrorTwinSync(
       arg: arg,
     );
 
@@ -53,7 +51,7 @@ int returnOkCustomErrorTwinSync() => RustLib.instance.api
     .crateApiPseudoManualExceptionTwinSyncReturnOkCustomErrorTwinSync();
 
 int returnErrorVariantTwinSync({required int variant}) => RustLib.instance.api
-        .crateApiPseudoManualExceptionTwinSyncReturnErrorVariantTwinSync(
+    .crateApiPseudoManualExceptionTwinSyncReturnErrorVariantTwinSync(
       variant: variant,
     );
 
@@ -200,19 +198,20 @@ class CustomStructTwinSync {
 
   const CustomStructTwinSync({required this.message});
 
-  static CustomStructTwinSync newTwinSync({required String message}) =>
-      RustLib.instance.api
-          .crateApiPseudoManualExceptionTwinSyncCustomStructTwinSyncNewTwinSync(
+  static CustomStructTwinSync newTwinSync({required String message}) => RustLib
+      .instance
+      .api
+      .crateApiPseudoManualExceptionTwinSyncCustomStructTwinSyncNewTwinSync(
         message: message,
       );
 
   void nonstaticReturnCustomStructErrorTwinSync() => RustLib.instance.api
-          .crateApiPseudoManualExceptionTwinSyncCustomStructTwinSyncNonstaticReturnCustomStructErrorTwinSync(
+      .crateApiPseudoManualExceptionTwinSyncCustomStructTwinSyncNonstaticReturnCustomStructErrorTwinSync(
         that: this,
       );
 
   int nonstaticReturnCustomStructOkTwinSync() => RustLib.instance.api
-          .crateApiPseudoManualExceptionTwinSyncCustomStructTwinSyncNonstaticReturnCustomStructOkTwinSync(
+      .crateApiPseudoManualExceptionTwinSyncCustomStructTwinSyncNonstaticReturnCustomStructOkTwinSync(
         that: this,
       );
 
@@ -238,19 +237,20 @@ class SomeStructTwinSync {
 
   const SomeStructTwinSync({required this.value});
 
-  static SomeStructTwinSync newTwinSync({required int value}) =>
-      RustLib.instance.api
-          .crateApiPseudoManualExceptionTwinSyncSomeStructTwinSyncNewTwinSync(
+  static SomeStructTwinSync newTwinSync({required int value}) => RustLib
+      .instance
+      .api
+      .crateApiPseudoManualExceptionTwinSyncSomeStructTwinSyncNewTwinSync(
         value: value,
       );
 
   int nonStaticReturnErrCustomErrorTwinSync() => RustLib.instance.api
-          .crateApiPseudoManualExceptionTwinSyncSomeStructTwinSyncNonStaticReturnErrCustomErrorTwinSync(
+      .crateApiPseudoManualExceptionTwinSyncSomeStructTwinSyncNonStaticReturnErrCustomErrorTwinSync(
         that: this,
       );
 
   int nonStaticReturnOkCustomErrorTwinSync() => RustLib.instance.api
-          .crateApiPseudoManualExceptionTwinSyncSomeStructTwinSyncNonStaticReturnOkCustomErrorTwinSync(
+      .crateApiPseudoManualExceptionTwinSyncSomeStructTwinSyncNonStaticReturnOkCustomErrorTwinSync(
         that: this,
       );
 
