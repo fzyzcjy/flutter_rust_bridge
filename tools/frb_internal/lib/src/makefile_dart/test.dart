@@ -539,7 +539,6 @@ Future<void> testDartValgrind(TestDartConfig config) async {
   checkValgrindOutput(output.stdout);
 }
 
-@visibleForTesting
 String _dartValgrindCompileCommand() {
   return 'dart compile exe '
       'test/dart_valgrind_test_entrypoint.dart '
@@ -549,7 +548,6 @@ String _dartValgrindCompileCommand() {
 @visibleForTesting
 String dartValgrindCompileCommandForTesting() => _dartValgrindCompileCommand();
 
-@visibleForTesting
 String _dartValgrindOutputDirectory(String package) {
   return '${exec.pwd}$package/build/valgrind_test_output';
 }
@@ -558,7 +556,6 @@ String _dartValgrindOutputDirectory(String package) {
 String dartValgrindOutputDirectoryForTesting(String package) =>
     _dartValgrindOutputDirectory(package);
 
-@visibleForTesting
 String _dartValgrindCargoBuildCommand(String package) {
   final feature = getRustFeaturesOfPackage(package);
   return 'cargo build --release ${feature != null ? "--features $feature" : ""}'
@@ -573,7 +570,6 @@ String _dartValgrindRustPackageDirectory(String package) {
   return '$package/rust';
 }
 
-@visibleForTesting
 String _dartValgrindRustNativeLibDirectory(String package) {
   return '${exec.pwd}${_dartValgrindRustPackageDirectory(package)}/target/release';
 }

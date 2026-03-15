@@ -154,7 +154,7 @@ String _removeSkippedPdeTestEntrypointReferences({
   for (final stem in skippedPdeFileStems) {
     output = output.replaceAll(
       RegExp(
-        "^import 'api(?:/pseudo_manual)?/$stem\\.dart' as ${stem};\\n",
+        "^import 'api(?:/pseudo_manual)?/$stem\\.dart' as $stem;\\n",
         multiLine: true,
       ),
       '',
@@ -168,7 +168,7 @@ String _removeSkippedPdeTestEntrypointReferences({
     );
     output = output.replaceAll(
       RegExp(
-        '^\\s*await ${stem}\\.main\\(skipRustLibInit: true\\);\\n',
+        '^\\s*await $stem\\.main\\(skipRustLibInit: true\\);\\n',
         multiLine: true,
       ),
       '',
