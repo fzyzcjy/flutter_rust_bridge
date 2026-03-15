@@ -97,9 +97,10 @@ CI shows the command it ran. Run the same command:
 
 ### Checking the Right Run
 
-When discussing CI status, always inspect the exact run, job, or commit SHA currently under discussion.
+When discussing CI status, always inspect the latest relevant run first, then inspect any specific run, job, or commit SHA under discussion if needed.
 
 In particular:
+- Always check the newest relevant run before answering about current CI state
 - If the user points to a specific run URL, job URL, or commit SHA, inspect that exact object first
 - Do not answer based on an older run or a stale `gh run list` snapshot
 - If the latest run is still moving, say which run ID and commit SHA you checked
@@ -111,7 +112,7 @@ In particular:
 - Fixing many new downstream test/build failures one by one after accepting generated changes, when CI previously failed mainly in `Generate`
 - Hand-editing generated files to chase CI formatter output before checking whether CI, merge ref, and remote environments are formatting the same input
 - Hand-editing integrate-generated example outputs instead of fixing `frb_codegen/assets/integration_template/`
-- Answering with stale CI state instead of checking the exact run, job, or commit SHA being discussed
+- Answering with stale CI state instead of checking the latest relevant run first
 
 ## Special Diagnosis Rule
 
