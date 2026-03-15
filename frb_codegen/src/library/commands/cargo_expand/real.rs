@@ -163,9 +163,13 @@ fn cargo_expand_fallback_version(stderr: &str) -> Option<&'static str> {
 }
 
 fn cargo_expand_install_args(version: Option<&str>) -> Vec<PathBuf> {
-    let mut args = command_args!("install", "cargo-expand");
+    let mut args = vec![PathBuf::from("install"), PathBuf::from("cargo-expand")];
     if let Some(version) = version {
-        args.extend(command_args!("--version", version, "--locked"));
+        args.extend([
+            PathBuf::from("--version"),
+            PathBuf::from(version),
+            PathBuf::from("--locked"),
+        ]);
     }
     args
 }
