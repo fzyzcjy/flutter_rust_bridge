@@ -71,6 +71,13 @@ This runs:
 - `dart format` - Dart format
 - `dart fix --apply` - Dart auto fixes
 
+When lint/format failures happen on generated files, do not default to hand-editing those files just to match formatter output.
+
+Instead:
+- Compare the formatter inputs across branch head, PR merge ref, and remote workspace
+- Check whether generation order, hidden generation steps, or toolchain/environment drift changed the generated file before formatter ran
+- Only accept formatter output after confirming the pre-format generated input is actually the correct one
+
 ### Can't Reproduce Locally
 
 CI shows the command it ran. Run the same command:
@@ -85,6 +92,7 @@ CI shows the command it ran. Run the same command:
 - Investigating root cause when a simple re-run would work
 - Not trying `git apply` first when CI provides a diff
 - Fixing many new downstream test/build failures one by one after accepting generated changes, when CI previously failed mainly in `Generate`
+- Hand-editing generated files to chase CI formatter output before checking whether CI, merge ref, and remote environments are formatting the same input
 
 ## Special Diagnosis Rule
 
