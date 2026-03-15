@@ -12,8 +12,7 @@ part of 'rust_opaque_twin_sync.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$EnumOpaqueTwinSync {
@@ -84,9 +83,8 @@ mixin _$EnumOpaqueTwinSync {
 /// @nodoc
 abstract class $EnumOpaqueTwinSyncCopyWith<$Res> {
   factory $EnumOpaqueTwinSyncCopyWith(
-    EnumOpaqueTwinSync value,
-    $Res Function(EnumOpaqueTwinSync) then,
-  ) = _$EnumOpaqueTwinSyncCopyWithImpl<$Res, EnumOpaqueTwinSync>;
+          EnumOpaqueTwinSync value, $Res Function(EnumOpaqueTwinSync) then) =
+      _$EnumOpaqueTwinSyncCopyWithImpl<$Res, EnumOpaqueTwinSync>;
 }
 
 /// @nodoc
@@ -106,9 +104,9 @@ class _$EnumOpaqueTwinSyncCopyWithImpl<$Res, $Val extends EnumOpaqueTwinSync>
 /// @nodoc
 abstract class _$$EnumOpaqueTwinSync_StructImplCopyWith<$Res> {
   factory _$$EnumOpaqueTwinSync_StructImplCopyWith(
-    _$EnumOpaqueTwinSync_StructImpl value,
-    $Res Function(_$EnumOpaqueTwinSync_StructImpl) then,
-  ) = __$$EnumOpaqueTwinSync_StructImplCopyWithImpl<$Res>;
+          _$EnumOpaqueTwinSync_StructImpl value,
+          $Res Function(_$EnumOpaqueTwinSync_StructImpl) then) =
+      __$$EnumOpaqueTwinSync_StructImplCopyWithImpl<$Res>;
   @useResult
   $Res call({HideDataTwinSync field0});
 }
@@ -119,23 +117,23 @@ class __$$EnumOpaqueTwinSync_StructImplCopyWithImpl<$Res>
         _$EnumOpaqueTwinSync_StructImpl>
     implements _$$EnumOpaqueTwinSync_StructImplCopyWith<$Res> {
   __$$EnumOpaqueTwinSync_StructImplCopyWithImpl(
-    _$EnumOpaqueTwinSync_StructImpl _value,
-    $Res Function(_$EnumOpaqueTwinSync_StructImpl) _then,
-  ) : super(_value, _then);
+      _$EnumOpaqueTwinSync_StructImpl _value,
+      $Res Function(_$EnumOpaqueTwinSync_StructImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumOpaqueTwinSync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$EnumOpaqueTwinSync_StructImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as HideDataTwinSync,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$EnumOpaqueTwinSync_StructImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as HideDataTwinSync,
+    ));
   }
 }
 
@@ -276,9 +274,9 @@ abstract class EnumOpaqueTwinSync_Struct extends EnumOpaqueTwinSync {
 /// @nodoc
 abstract class _$$EnumOpaqueTwinSync_PrimitiveImplCopyWith<$Res> {
   factory _$$EnumOpaqueTwinSync_PrimitiveImplCopyWith(
-    _$EnumOpaqueTwinSync_PrimitiveImpl value,
-    $Res Function(_$EnumOpaqueTwinSync_PrimitiveImpl) then,
-  ) = __$$EnumOpaqueTwinSync_PrimitiveImplCopyWithImpl<$Res>;
+          _$EnumOpaqueTwinSync_PrimitiveImpl value,
+          $Res Function(_$EnumOpaqueTwinSync_PrimitiveImpl) then) =
+      __$$EnumOpaqueTwinSync_PrimitiveImplCopyWithImpl<$Res>;
   @useResult
   $Res call({I32 field0});
 }
@@ -289,23 +287,23 @@ class __$$EnumOpaqueTwinSync_PrimitiveImplCopyWithImpl<$Res>
         _$EnumOpaqueTwinSync_PrimitiveImpl>
     implements _$$EnumOpaqueTwinSync_PrimitiveImplCopyWith<$Res> {
   __$$EnumOpaqueTwinSync_PrimitiveImplCopyWithImpl(
-    _$EnumOpaqueTwinSync_PrimitiveImpl _value,
-    $Res Function(_$EnumOpaqueTwinSync_PrimitiveImpl) _then,
-  ) : super(_value, _then);
+      _$EnumOpaqueTwinSync_PrimitiveImpl _value,
+      $Res Function(_$EnumOpaqueTwinSync_PrimitiveImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumOpaqueTwinSync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$EnumOpaqueTwinSync_PrimitiveImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as I32,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$EnumOpaqueTwinSync_PrimitiveImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as I32,
+    ));
   }
 }
 
@@ -448,9 +446,9 @@ abstract class EnumOpaqueTwinSync_Primitive extends EnumOpaqueTwinSync {
 /// @nodoc
 abstract class _$$EnumOpaqueTwinSync_TraitObjImplCopyWith<$Res> {
   factory _$$EnumOpaqueTwinSync_TraitObjImplCopyWith(
-    _$EnumOpaqueTwinSync_TraitObjImpl value,
-    $Res Function(_$EnumOpaqueTwinSync_TraitObjImpl) then,
-  ) = __$$EnumOpaqueTwinSync_TraitObjImplCopyWithImpl<$Res>;
+          _$EnumOpaqueTwinSync_TraitObjImpl value,
+          $Res Function(_$EnumOpaqueTwinSync_TraitObjImpl) then) =
+      __$$EnumOpaqueTwinSync_TraitObjImplCopyWithImpl<$Res>;
   @useResult
   $Res call({BoxDartDebugTwinSync field0});
 }
@@ -461,23 +459,23 @@ class __$$EnumOpaqueTwinSync_TraitObjImplCopyWithImpl<$Res>
         _$EnumOpaqueTwinSync_TraitObjImpl>
     implements _$$EnumOpaqueTwinSync_TraitObjImplCopyWith<$Res> {
   __$$EnumOpaqueTwinSync_TraitObjImplCopyWithImpl(
-    _$EnumOpaqueTwinSync_TraitObjImpl _value,
-    $Res Function(_$EnumOpaqueTwinSync_TraitObjImpl) _then,
-  ) : super(_value, _then);
+      _$EnumOpaqueTwinSync_TraitObjImpl _value,
+      $Res Function(_$EnumOpaqueTwinSync_TraitObjImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumOpaqueTwinSync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$EnumOpaqueTwinSync_TraitObjImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as BoxDartDebugTwinSync,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$EnumOpaqueTwinSync_TraitObjImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as BoxDartDebugTwinSync,
+    ));
   }
 }
 
@@ -618,9 +616,9 @@ abstract class EnumOpaqueTwinSync_TraitObj extends EnumOpaqueTwinSync {
 /// @nodoc
 abstract class _$$EnumOpaqueTwinSync_MutexImplCopyWith<$Res> {
   factory _$$EnumOpaqueTwinSync_MutexImplCopyWith(
-    _$EnumOpaqueTwinSync_MutexImpl value,
-    $Res Function(_$EnumOpaqueTwinSync_MutexImpl) then,
-  ) = __$$EnumOpaqueTwinSync_MutexImplCopyWithImpl<$Res>;
+          _$EnumOpaqueTwinSync_MutexImpl value,
+          $Res Function(_$EnumOpaqueTwinSync_MutexImpl) then) =
+      __$$EnumOpaqueTwinSync_MutexImplCopyWithImpl<$Res>;
   @useResult
   $Res call({MutexHideDataTwinSync field0});
 }
@@ -631,23 +629,23 @@ class __$$EnumOpaqueTwinSync_MutexImplCopyWithImpl<$Res>
         _$EnumOpaqueTwinSync_MutexImpl>
     implements _$$EnumOpaqueTwinSync_MutexImplCopyWith<$Res> {
   __$$EnumOpaqueTwinSync_MutexImplCopyWithImpl(
-    _$EnumOpaqueTwinSync_MutexImpl _value,
-    $Res Function(_$EnumOpaqueTwinSync_MutexImpl) _then,
-  ) : super(_value, _then);
+      _$EnumOpaqueTwinSync_MutexImpl _value,
+      $Res Function(_$EnumOpaqueTwinSync_MutexImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumOpaqueTwinSync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$EnumOpaqueTwinSync_MutexImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as MutexHideDataTwinSync,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$EnumOpaqueTwinSync_MutexImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as MutexHideDataTwinSync,
+    ));
   }
 }
 
@@ -788,9 +786,9 @@ abstract class EnumOpaqueTwinSync_Mutex extends EnumOpaqueTwinSync {
 /// @nodoc
 abstract class _$$EnumOpaqueTwinSync_RwLockImplCopyWith<$Res> {
   factory _$$EnumOpaqueTwinSync_RwLockImplCopyWith(
-    _$EnumOpaqueTwinSync_RwLockImpl value,
-    $Res Function(_$EnumOpaqueTwinSync_RwLockImpl) then,
-  ) = __$$EnumOpaqueTwinSync_RwLockImplCopyWithImpl<$Res>;
+          _$EnumOpaqueTwinSync_RwLockImpl value,
+          $Res Function(_$EnumOpaqueTwinSync_RwLockImpl) then) =
+      __$$EnumOpaqueTwinSync_RwLockImplCopyWithImpl<$Res>;
   @useResult
   $Res call({RwLockHideDataTwinSync field0});
 }
@@ -801,23 +799,23 @@ class __$$EnumOpaqueTwinSync_RwLockImplCopyWithImpl<$Res>
         _$EnumOpaqueTwinSync_RwLockImpl>
     implements _$$EnumOpaqueTwinSync_RwLockImplCopyWith<$Res> {
   __$$EnumOpaqueTwinSync_RwLockImplCopyWithImpl(
-    _$EnumOpaqueTwinSync_RwLockImpl _value,
-    $Res Function(_$EnumOpaqueTwinSync_RwLockImpl) _then,
-  ) : super(_value, _then);
+      _$EnumOpaqueTwinSync_RwLockImpl _value,
+      $Res Function(_$EnumOpaqueTwinSync_RwLockImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumOpaqueTwinSync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$EnumOpaqueTwinSync_RwLockImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as RwLockHideDataTwinSync,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$EnumOpaqueTwinSync_RwLockImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as RwLockHideDataTwinSync,
+    ));
   }
 }
 
@@ -958,9 +956,9 @@ abstract class EnumOpaqueTwinSync_RwLock extends EnumOpaqueTwinSync {
 /// @nodoc
 abstract class _$$EnumOpaqueTwinSync_NothingImplCopyWith<$Res> {
   factory _$$EnumOpaqueTwinSync_NothingImplCopyWith(
-    _$EnumOpaqueTwinSync_NothingImpl value,
-    $Res Function(_$EnumOpaqueTwinSync_NothingImpl) then,
-  ) = __$$EnumOpaqueTwinSync_NothingImplCopyWithImpl<$Res>;
+          _$EnumOpaqueTwinSync_NothingImpl value,
+          $Res Function(_$EnumOpaqueTwinSync_NothingImpl) then) =
+      __$$EnumOpaqueTwinSync_NothingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -969,9 +967,9 @@ class __$$EnumOpaqueTwinSync_NothingImplCopyWithImpl<$Res>
         _$EnumOpaqueTwinSync_NothingImpl>
     implements _$$EnumOpaqueTwinSync_NothingImplCopyWith<$Res> {
   __$$EnumOpaqueTwinSync_NothingImplCopyWithImpl(
-    _$EnumOpaqueTwinSync_NothingImpl _value,
-    $Res Function(_$EnumOpaqueTwinSync_NothingImpl) _then,
-  ) : super(_value, _then);
+      _$EnumOpaqueTwinSync_NothingImpl _value,
+      $Res Function(_$EnumOpaqueTwinSync_NothingImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumOpaqueTwinSync
   /// with the given fields replaced by the non-null parameter values.

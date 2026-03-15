@@ -12,8 +12,7 @@ part of 'method_twin_rust_async.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SimpleEnumTwinRustAsync {
@@ -59,10 +58,9 @@ mixin _$SimpleEnumTwinRustAsync {
 
 /// @nodoc
 abstract class $SimpleEnumTwinRustAsyncCopyWith<$Res> {
-  factory $SimpleEnumTwinRustAsyncCopyWith(
-    SimpleEnumTwinRustAsync value,
-    $Res Function(SimpleEnumTwinRustAsync) then,
-  ) = _$SimpleEnumTwinRustAsyncCopyWithImpl<$Res, SimpleEnumTwinRustAsync>;
+  factory $SimpleEnumTwinRustAsyncCopyWith(SimpleEnumTwinRustAsync value,
+          $Res Function(SimpleEnumTwinRustAsync) then) =
+      _$SimpleEnumTwinRustAsyncCopyWithImpl<$Res, SimpleEnumTwinRustAsync>;
 }
 
 /// @nodoc
@@ -83,9 +81,9 @@ class _$SimpleEnumTwinRustAsyncCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$SimpleEnumTwinRustAsync_FirstImplCopyWith<$Res> {
   factory _$$SimpleEnumTwinRustAsync_FirstImplCopyWith(
-    _$SimpleEnumTwinRustAsync_FirstImpl value,
-    $Res Function(_$SimpleEnumTwinRustAsync_FirstImpl) then,
-  ) = __$$SimpleEnumTwinRustAsync_FirstImplCopyWithImpl<$Res>;
+          _$SimpleEnumTwinRustAsync_FirstImpl value,
+          $Res Function(_$SimpleEnumTwinRustAsync_FirstImpl) then) =
+      __$$SimpleEnumTwinRustAsync_FirstImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -94,9 +92,9 @@ class __$$SimpleEnumTwinRustAsync_FirstImplCopyWithImpl<$Res>
         _$SimpleEnumTwinRustAsync_FirstImpl>
     implements _$$SimpleEnumTwinRustAsync_FirstImplCopyWith<$Res> {
   __$$SimpleEnumTwinRustAsync_FirstImplCopyWithImpl(
-    _$SimpleEnumTwinRustAsync_FirstImpl _value,
-    $Res Function(_$SimpleEnumTwinRustAsync_FirstImpl) _then,
-  ) : super(_value, _then);
+      _$SimpleEnumTwinRustAsync_FirstImpl _value,
+      $Res Function(_$SimpleEnumTwinRustAsync_FirstImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of SimpleEnumTwinRustAsync
   /// with the given fields replaced by the non-null parameter values.
@@ -195,9 +193,9 @@ abstract class SimpleEnumTwinRustAsync_First extends SimpleEnumTwinRustAsync {
 /// @nodoc
 abstract class _$$SimpleEnumTwinRustAsync_SecondImplCopyWith<$Res> {
   factory _$$SimpleEnumTwinRustAsync_SecondImplCopyWith(
-    _$SimpleEnumTwinRustAsync_SecondImpl value,
-    $Res Function(_$SimpleEnumTwinRustAsync_SecondImpl) then,
-  ) = __$$SimpleEnumTwinRustAsync_SecondImplCopyWithImpl<$Res>;
+          _$SimpleEnumTwinRustAsync_SecondImpl value,
+          $Res Function(_$SimpleEnumTwinRustAsync_SecondImpl) then) =
+      __$$SimpleEnumTwinRustAsync_SecondImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String field0});
 }
@@ -208,23 +206,23 @@ class __$$SimpleEnumTwinRustAsync_SecondImplCopyWithImpl<$Res>
         _$SimpleEnumTwinRustAsync_SecondImpl>
     implements _$$SimpleEnumTwinRustAsync_SecondImplCopyWith<$Res> {
   __$$SimpleEnumTwinRustAsync_SecondImplCopyWithImpl(
-    _$SimpleEnumTwinRustAsync_SecondImpl _value,
-    $Res Function(_$SimpleEnumTwinRustAsync_SecondImpl) _then,
-  ) : super(_value, _then);
+      _$SimpleEnumTwinRustAsync_SecondImpl _value,
+      $Res Function(_$SimpleEnumTwinRustAsync_SecondImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of SimpleEnumTwinRustAsync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$SimpleEnumTwinRustAsync_SecondImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as String,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$SimpleEnumTwinRustAsync_SecondImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 

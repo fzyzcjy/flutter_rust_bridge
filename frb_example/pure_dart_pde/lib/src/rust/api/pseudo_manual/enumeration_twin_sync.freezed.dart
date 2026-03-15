@@ -12,8 +12,7 @@ part of 'enumeration_twin_sync.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$DistanceTwinSync {
@@ -60,9 +59,8 @@ mixin _$DistanceTwinSync {
 /// @nodoc
 abstract class $DistanceTwinSyncCopyWith<$Res> {
   factory $DistanceTwinSyncCopyWith(
-    DistanceTwinSync value,
-    $Res Function(DistanceTwinSync) then,
-  ) = _$DistanceTwinSyncCopyWithImpl<$Res, DistanceTwinSync>;
+          DistanceTwinSync value, $Res Function(DistanceTwinSync) then) =
+      _$DistanceTwinSyncCopyWithImpl<$Res, DistanceTwinSync>;
 }
 
 /// @nodoc
@@ -82,9 +80,9 @@ class _$DistanceTwinSyncCopyWithImpl<$Res, $Val extends DistanceTwinSync>
 /// @nodoc
 abstract class _$$DistanceTwinSync_UnknownImplCopyWith<$Res> {
   factory _$$DistanceTwinSync_UnknownImplCopyWith(
-    _$DistanceTwinSync_UnknownImpl value,
-    $Res Function(_$DistanceTwinSync_UnknownImpl) then,
-  ) = __$$DistanceTwinSync_UnknownImplCopyWithImpl<$Res>;
+          _$DistanceTwinSync_UnknownImpl value,
+          $Res Function(_$DistanceTwinSync_UnknownImpl) then) =
+      __$$DistanceTwinSync_UnknownImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -92,9 +90,9 @@ class __$$DistanceTwinSync_UnknownImplCopyWithImpl<$Res>
     extends _$DistanceTwinSyncCopyWithImpl<$Res, _$DistanceTwinSync_UnknownImpl>
     implements _$$DistanceTwinSync_UnknownImplCopyWith<$Res> {
   __$$DistanceTwinSync_UnknownImplCopyWithImpl(
-    _$DistanceTwinSync_UnknownImpl _value,
-    $Res Function(_$DistanceTwinSync_UnknownImpl) _then,
-  ) : super(_value, _then);
+      _$DistanceTwinSync_UnknownImpl _value,
+      $Res Function(_$DistanceTwinSync_UnknownImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of DistanceTwinSync
   /// with the given fields replaced by the non-null parameter values.
@@ -190,10 +188,9 @@ abstract class DistanceTwinSync_Unknown extends DistanceTwinSync {
 
 /// @nodoc
 abstract class _$$DistanceTwinSync_MapImplCopyWith<$Res> {
-  factory _$$DistanceTwinSync_MapImplCopyWith(
-    _$DistanceTwinSync_MapImpl value,
-    $Res Function(_$DistanceTwinSync_MapImpl) then,
-  ) = __$$DistanceTwinSync_MapImplCopyWithImpl<$Res>;
+  factory _$$DistanceTwinSync_MapImplCopyWith(_$DistanceTwinSync_MapImpl value,
+          $Res Function(_$DistanceTwinSync_MapImpl) then) =
+      __$$DistanceTwinSync_MapImplCopyWithImpl<$Res>;
   @useResult
   $Res call({double field0});
 }
@@ -202,24 +199,23 @@ abstract class _$$DistanceTwinSync_MapImplCopyWith<$Res> {
 class __$$DistanceTwinSync_MapImplCopyWithImpl<$Res>
     extends _$DistanceTwinSyncCopyWithImpl<$Res, _$DistanceTwinSync_MapImpl>
     implements _$$DistanceTwinSync_MapImplCopyWith<$Res> {
-  __$$DistanceTwinSync_MapImplCopyWithImpl(
-    _$DistanceTwinSync_MapImpl _value,
-    $Res Function(_$DistanceTwinSync_MapImpl) _then,
-  ) : super(_value, _then);
+  __$$DistanceTwinSync_MapImplCopyWithImpl(_$DistanceTwinSync_MapImpl _value,
+      $Res Function(_$DistanceTwinSync_MapImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of DistanceTwinSync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$DistanceTwinSync_MapImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as double,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$DistanceTwinSync_MapImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
   }
 }
 
@@ -255,9 +251,7 @@ class _$DistanceTwinSync_MapImpl extends DistanceTwinSync_Map {
   _$$DistanceTwinSync_MapImplCopyWith<_$DistanceTwinSync_MapImpl>
       get copyWith =>
           __$$DistanceTwinSync_MapImplCopyWithImpl<_$DistanceTwinSync_MapImpl>(
-            this,
-            _$identity,
-          );
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -386,10 +380,9 @@ mixin _$EnumWithItemMixedTwinSync {
 
 /// @nodoc
 abstract class $EnumWithItemMixedTwinSyncCopyWith<$Res> {
-  factory $EnumWithItemMixedTwinSyncCopyWith(
-    EnumWithItemMixedTwinSync value,
-    $Res Function(EnumWithItemMixedTwinSync) then,
-  ) = _$EnumWithItemMixedTwinSyncCopyWithImpl<$Res, EnumWithItemMixedTwinSync>;
+  factory $EnumWithItemMixedTwinSyncCopyWith(EnumWithItemMixedTwinSync value,
+          $Res Function(EnumWithItemMixedTwinSync) then) =
+      _$EnumWithItemMixedTwinSyncCopyWithImpl<$Res, EnumWithItemMixedTwinSync>;
 }
 
 /// @nodoc
@@ -410,9 +403,9 @@ class _$EnumWithItemMixedTwinSyncCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$EnumWithItemMixedTwinSync_AImplCopyWith<$Res> {
   factory _$$EnumWithItemMixedTwinSync_AImplCopyWith(
-    _$EnumWithItemMixedTwinSync_AImpl value,
-    $Res Function(_$EnumWithItemMixedTwinSync_AImpl) then,
-  ) = __$$EnumWithItemMixedTwinSync_AImplCopyWithImpl<$Res>;
+          _$EnumWithItemMixedTwinSync_AImpl value,
+          $Res Function(_$EnumWithItemMixedTwinSync_AImpl) then) =
+      __$$EnumWithItemMixedTwinSync_AImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -421,9 +414,9 @@ class __$$EnumWithItemMixedTwinSync_AImplCopyWithImpl<$Res>
         _$EnumWithItemMixedTwinSync_AImpl>
     implements _$$EnumWithItemMixedTwinSync_AImplCopyWith<$Res> {
   __$$EnumWithItemMixedTwinSync_AImplCopyWithImpl(
-    _$EnumWithItemMixedTwinSync_AImpl _value,
-    $Res Function(_$EnumWithItemMixedTwinSync_AImpl) _then,
-  ) : super(_value, _then);
+      _$EnumWithItemMixedTwinSync_AImpl _value,
+      $Res Function(_$EnumWithItemMixedTwinSync_AImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumWithItemMixedTwinSync
   /// with the given fields replaced by the non-null parameter values.
@@ -527,9 +520,9 @@ abstract class EnumWithItemMixedTwinSync_A extends EnumWithItemMixedTwinSync {
 /// @nodoc
 abstract class _$$EnumWithItemMixedTwinSync_BImplCopyWith<$Res> {
   factory _$$EnumWithItemMixedTwinSync_BImplCopyWith(
-    _$EnumWithItemMixedTwinSync_BImpl value,
-    $Res Function(_$EnumWithItemMixedTwinSync_BImpl) then,
-  ) = __$$EnumWithItemMixedTwinSync_BImplCopyWithImpl<$Res>;
+          _$EnumWithItemMixedTwinSync_BImpl value,
+          $Res Function(_$EnumWithItemMixedTwinSync_BImpl) then) =
+      __$$EnumWithItemMixedTwinSync_BImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Uint8List field0});
 }
@@ -540,23 +533,23 @@ class __$$EnumWithItemMixedTwinSync_BImplCopyWithImpl<$Res>
         _$EnumWithItemMixedTwinSync_BImpl>
     implements _$$EnumWithItemMixedTwinSync_BImplCopyWith<$Res> {
   __$$EnumWithItemMixedTwinSync_BImplCopyWithImpl(
-    _$EnumWithItemMixedTwinSync_BImpl _value,
-    $Res Function(_$EnumWithItemMixedTwinSync_BImpl) _then,
-  ) : super(_value, _then);
+      _$EnumWithItemMixedTwinSync_BImpl _value,
+      $Res Function(_$EnumWithItemMixedTwinSync_BImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumWithItemMixedTwinSync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$EnumWithItemMixedTwinSync_BImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as Uint8List,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$EnumWithItemMixedTwinSync_BImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
+    ));
   }
 }
 
@@ -680,9 +673,9 @@ abstract class EnumWithItemMixedTwinSync_B extends EnumWithItemMixedTwinSync {
 /// @nodoc
 abstract class _$$EnumWithItemMixedTwinSync_CImplCopyWith<$Res> {
   factory _$$EnumWithItemMixedTwinSync_CImplCopyWith(
-    _$EnumWithItemMixedTwinSync_CImpl value,
-    $Res Function(_$EnumWithItemMixedTwinSync_CImpl) then,
-  ) = __$$EnumWithItemMixedTwinSync_CImplCopyWithImpl<$Res>;
+          _$EnumWithItemMixedTwinSync_CImpl value,
+          $Res Function(_$EnumWithItemMixedTwinSync_CImpl) then) =
+      __$$EnumWithItemMixedTwinSync_CImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String cField});
 }
@@ -693,23 +686,23 @@ class __$$EnumWithItemMixedTwinSync_CImplCopyWithImpl<$Res>
         _$EnumWithItemMixedTwinSync_CImpl>
     implements _$$EnumWithItemMixedTwinSync_CImplCopyWith<$Res> {
   __$$EnumWithItemMixedTwinSync_CImplCopyWithImpl(
-    _$EnumWithItemMixedTwinSync_CImpl _value,
-    $Res Function(_$EnumWithItemMixedTwinSync_CImpl) _then,
-  ) : super(_value, _then);
+      _$EnumWithItemMixedTwinSync_CImpl _value,
+      $Res Function(_$EnumWithItemMixedTwinSync_CImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumWithItemMixedTwinSync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? cField = null}) {
-    return _then(
-      _$EnumWithItemMixedTwinSync_CImpl(
-        cField: null == cField
-            ? _value.cField
-            : cField // ignore: cast_nullable_to_non_nullable
-                as String,
-      ),
-    );
+  $Res call({
+    Object? cField = null,
+  }) {
+    return _then(_$EnumWithItemMixedTwinSync_CImpl(
+      cField: null == cField
+          ? _value.cField
+          : cField // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -873,11 +866,10 @@ mixin _$EnumWithItemStructTwinSync {
 
 /// @nodoc
 abstract class $EnumWithItemStructTwinSyncCopyWith<$Res> {
-  factory $EnumWithItemStructTwinSyncCopyWith(
-    EnumWithItemStructTwinSync value,
-    $Res Function(EnumWithItemStructTwinSync) then,
-  ) = _$EnumWithItemStructTwinSyncCopyWithImpl<$Res,
-      EnumWithItemStructTwinSync>;
+  factory $EnumWithItemStructTwinSyncCopyWith(EnumWithItemStructTwinSync value,
+          $Res Function(EnumWithItemStructTwinSync) then) =
+      _$EnumWithItemStructTwinSyncCopyWithImpl<$Res,
+          EnumWithItemStructTwinSync>;
 }
 
 /// @nodoc
@@ -898,9 +890,9 @@ class _$EnumWithItemStructTwinSyncCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$EnumWithItemStructTwinSync_AImplCopyWith<$Res> {
   factory _$$EnumWithItemStructTwinSync_AImplCopyWith(
-    _$EnumWithItemStructTwinSync_AImpl value,
-    $Res Function(_$EnumWithItemStructTwinSync_AImpl) then,
-  ) = __$$EnumWithItemStructTwinSync_AImplCopyWithImpl<$Res>;
+          _$EnumWithItemStructTwinSync_AImpl value,
+          $Res Function(_$EnumWithItemStructTwinSync_AImpl) then) =
+      __$$EnumWithItemStructTwinSync_AImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Uint8List aField});
 }
@@ -911,23 +903,23 @@ class __$$EnumWithItemStructTwinSync_AImplCopyWithImpl<$Res>
         _$EnumWithItemStructTwinSync_AImpl>
     implements _$$EnumWithItemStructTwinSync_AImplCopyWith<$Res> {
   __$$EnumWithItemStructTwinSync_AImplCopyWithImpl(
-    _$EnumWithItemStructTwinSync_AImpl _value,
-    $Res Function(_$EnumWithItemStructTwinSync_AImpl) _then,
-  ) : super(_value, _then);
+      _$EnumWithItemStructTwinSync_AImpl _value,
+      $Res Function(_$EnumWithItemStructTwinSync_AImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumWithItemStructTwinSync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? aField = null}) {
-    return _then(
-      _$EnumWithItemStructTwinSync_AImpl(
-        aField: null == aField
-            ? _value.aField
-            : aField // ignore: cast_nullable_to_non_nullable
-                as Uint8List,
-      ),
-    );
+  $Res call({
+    Object? aField = null,
+  }) {
+    return _then(_$EnumWithItemStructTwinSync_AImpl(
+      aField: null == aField
+          ? _value.aField
+          : aField // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
+    ));
   }
 }
 
@@ -1030,9 +1022,8 @@ class _$EnumWithItemStructTwinSync_AImpl extends EnumWithItemStructTwinSync_A {
 }
 
 abstract class EnumWithItemStructTwinSync_A extends EnumWithItemStructTwinSync {
-  const factory EnumWithItemStructTwinSync_A({
-    required final Uint8List aField,
-  }) = _$EnumWithItemStructTwinSync_AImpl;
+  const factory EnumWithItemStructTwinSync_A(
+      {required final Uint8List aField}) = _$EnumWithItemStructTwinSync_AImpl;
   const EnumWithItemStructTwinSync_A._() : super._();
 
   Uint8List get aField;
@@ -1048,9 +1039,9 @@ abstract class EnumWithItemStructTwinSync_A extends EnumWithItemStructTwinSync {
 /// @nodoc
 abstract class _$$EnumWithItemStructTwinSync_BImplCopyWith<$Res> {
   factory _$$EnumWithItemStructTwinSync_BImplCopyWith(
-    _$EnumWithItemStructTwinSync_BImpl value,
-    $Res Function(_$EnumWithItemStructTwinSync_BImpl) then,
-  ) = __$$EnumWithItemStructTwinSync_BImplCopyWithImpl<$Res>;
+          _$EnumWithItemStructTwinSync_BImpl value,
+          $Res Function(_$EnumWithItemStructTwinSync_BImpl) then) =
+      __$$EnumWithItemStructTwinSync_BImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Int32List bField});
 }
@@ -1061,23 +1052,23 @@ class __$$EnumWithItemStructTwinSync_BImplCopyWithImpl<$Res>
         _$EnumWithItemStructTwinSync_BImpl>
     implements _$$EnumWithItemStructTwinSync_BImplCopyWith<$Res> {
   __$$EnumWithItemStructTwinSync_BImplCopyWithImpl(
-    _$EnumWithItemStructTwinSync_BImpl _value,
-    $Res Function(_$EnumWithItemStructTwinSync_BImpl) _then,
-  ) : super(_value, _then);
+      _$EnumWithItemStructTwinSync_BImpl _value,
+      $Res Function(_$EnumWithItemStructTwinSync_BImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumWithItemStructTwinSync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? bField = null}) {
-    return _then(
-      _$EnumWithItemStructTwinSync_BImpl(
-        bField: null == bField
-            ? _value.bField
-            : bField // ignore: cast_nullable_to_non_nullable
-                as Int32List,
-      ),
-    );
+  $Res call({
+    Object? bField = null,
+  }) {
+    return _then(_$EnumWithItemStructTwinSync_BImpl(
+      bField: null == bField
+          ? _value.bField
+          : bField // ignore: cast_nullable_to_non_nullable
+              as Int32List,
+    ));
   }
 }
 
@@ -1180,9 +1171,8 @@ class _$EnumWithItemStructTwinSync_BImpl extends EnumWithItemStructTwinSync_B {
 }
 
 abstract class EnumWithItemStructTwinSync_B extends EnumWithItemStructTwinSync {
-  const factory EnumWithItemStructTwinSync_B({
-    required final Int32List bField,
-  }) = _$EnumWithItemStructTwinSync_BImpl;
+  const factory EnumWithItemStructTwinSync_B(
+      {required final Int32List bField}) = _$EnumWithItemStructTwinSync_BImpl;
   const EnumWithItemStructTwinSync_B._() : super._();
 
   Int32List get bField;
@@ -1240,10 +1230,9 @@ mixin _$EnumWithItemTupleTwinSync {
 
 /// @nodoc
 abstract class $EnumWithItemTupleTwinSyncCopyWith<$Res> {
-  factory $EnumWithItemTupleTwinSyncCopyWith(
-    EnumWithItemTupleTwinSync value,
-    $Res Function(EnumWithItemTupleTwinSync) then,
-  ) = _$EnumWithItemTupleTwinSyncCopyWithImpl<$Res, EnumWithItemTupleTwinSync>;
+  factory $EnumWithItemTupleTwinSyncCopyWith(EnumWithItemTupleTwinSync value,
+          $Res Function(EnumWithItemTupleTwinSync) then) =
+      _$EnumWithItemTupleTwinSyncCopyWithImpl<$Res, EnumWithItemTupleTwinSync>;
 }
 
 /// @nodoc
@@ -1264,9 +1253,9 @@ class _$EnumWithItemTupleTwinSyncCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$EnumWithItemTupleTwinSync_AImplCopyWith<$Res> {
   factory _$$EnumWithItemTupleTwinSync_AImplCopyWith(
-    _$EnumWithItemTupleTwinSync_AImpl value,
-    $Res Function(_$EnumWithItemTupleTwinSync_AImpl) then,
-  ) = __$$EnumWithItemTupleTwinSync_AImplCopyWithImpl<$Res>;
+          _$EnumWithItemTupleTwinSync_AImpl value,
+          $Res Function(_$EnumWithItemTupleTwinSync_AImpl) then) =
+      __$$EnumWithItemTupleTwinSync_AImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Uint8List field0});
 }
@@ -1277,23 +1266,23 @@ class __$$EnumWithItemTupleTwinSync_AImplCopyWithImpl<$Res>
         _$EnumWithItemTupleTwinSync_AImpl>
     implements _$$EnumWithItemTupleTwinSync_AImplCopyWith<$Res> {
   __$$EnumWithItemTupleTwinSync_AImplCopyWithImpl(
-    _$EnumWithItemTupleTwinSync_AImpl _value,
-    $Res Function(_$EnumWithItemTupleTwinSync_AImpl) _then,
-  ) : super(_value, _then);
+      _$EnumWithItemTupleTwinSync_AImpl _value,
+      $Res Function(_$EnumWithItemTupleTwinSync_AImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumWithItemTupleTwinSync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$EnumWithItemTupleTwinSync_AImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as Uint8List,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$EnumWithItemTupleTwinSync_AImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
+    ));
   }
 }
 
@@ -1412,9 +1401,9 @@ abstract class EnumWithItemTupleTwinSync_A extends EnumWithItemTupleTwinSync {
 /// @nodoc
 abstract class _$$EnumWithItemTupleTwinSync_BImplCopyWith<$Res> {
   factory _$$EnumWithItemTupleTwinSync_BImplCopyWith(
-    _$EnumWithItemTupleTwinSync_BImpl value,
-    $Res Function(_$EnumWithItemTupleTwinSync_BImpl) then,
-  ) = __$$EnumWithItemTupleTwinSync_BImplCopyWithImpl<$Res>;
+          _$EnumWithItemTupleTwinSync_BImpl value,
+          $Res Function(_$EnumWithItemTupleTwinSync_BImpl) then) =
+      __$$EnumWithItemTupleTwinSync_BImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int field0});
 }
@@ -1425,23 +1414,23 @@ class __$$EnumWithItemTupleTwinSync_BImplCopyWithImpl<$Res>
         _$EnumWithItemTupleTwinSync_BImpl>
     implements _$$EnumWithItemTupleTwinSync_BImplCopyWith<$Res> {
   __$$EnumWithItemTupleTwinSync_BImplCopyWithImpl(
-    _$EnumWithItemTupleTwinSync_BImpl _value,
-    $Res Function(_$EnumWithItemTupleTwinSync_BImpl) _then,
-  ) : super(_value, _then);
+      _$EnumWithItemTupleTwinSync_BImpl _value,
+      $Res Function(_$EnumWithItemTupleTwinSync_BImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumWithItemTupleTwinSync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$EnumWithItemTupleTwinSync_BImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as int,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$EnumWithItemTupleTwinSync_BImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
@@ -1626,9 +1615,8 @@ mixin _$KitchenSinkTwinSync {
 /// @nodoc
 abstract class $KitchenSinkTwinSyncCopyWith<$Res> {
   factory $KitchenSinkTwinSyncCopyWith(
-    KitchenSinkTwinSync value,
-    $Res Function(KitchenSinkTwinSync) then,
-  ) = _$KitchenSinkTwinSyncCopyWithImpl<$Res, KitchenSinkTwinSync>;
+          KitchenSinkTwinSync value, $Res Function(KitchenSinkTwinSync) then) =
+      _$KitchenSinkTwinSyncCopyWithImpl<$Res, KitchenSinkTwinSync>;
 }
 
 /// @nodoc
@@ -1648,9 +1636,9 @@ class _$KitchenSinkTwinSyncCopyWithImpl<$Res, $Val extends KitchenSinkTwinSync>
 /// @nodoc
 abstract class _$$KitchenSinkTwinSync_EmptyImplCopyWith<$Res> {
   factory _$$KitchenSinkTwinSync_EmptyImplCopyWith(
-    _$KitchenSinkTwinSync_EmptyImpl value,
-    $Res Function(_$KitchenSinkTwinSync_EmptyImpl) then,
-  ) = __$$KitchenSinkTwinSync_EmptyImplCopyWithImpl<$Res>;
+          _$KitchenSinkTwinSync_EmptyImpl value,
+          $Res Function(_$KitchenSinkTwinSync_EmptyImpl) then) =
+      __$$KitchenSinkTwinSync_EmptyImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -1659,9 +1647,9 @@ class __$$KitchenSinkTwinSync_EmptyImplCopyWithImpl<$Res>
         _$KitchenSinkTwinSync_EmptyImpl>
     implements _$$KitchenSinkTwinSync_EmptyImplCopyWith<$Res> {
   __$$KitchenSinkTwinSync_EmptyImplCopyWithImpl(
-    _$KitchenSinkTwinSync_EmptyImpl _value,
-    $Res Function(_$KitchenSinkTwinSync_EmptyImpl) _then,
-  ) : super(_value, _then);
+      _$KitchenSinkTwinSync_EmptyImpl _value,
+      $Res Function(_$KitchenSinkTwinSync_EmptyImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of KitchenSinkTwinSync
   /// with the given fields replaced by the non-null parameter values.
@@ -1783,9 +1771,9 @@ abstract class KitchenSinkTwinSync_Empty extends KitchenSinkTwinSync {
 /// @nodoc
 abstract class _$$KitchenSinkTwinSync_PrimitivesImplCopyWith<$Res> {
   factory _$$KitchenSinkTwinSync_PrimitivesImplCopyWith(
-    _$KitchenSinkTwinSync_PrimitivesImpl value,
-    $Res Function(_$KitchenSinkTwinSync_PrimitivesImpl) then,
-  ) = __$$KitchenSinkTwinSync_PrimitivesImplCopyWithImpl<$Res>;
+          _$KitchenSinkTwinSync_PrimitivesImpl value,
+          $Res Function(_$KitchenSinkTwinSync_PrimitivesImpl) then) =
+      __$$KitchenSinkTwinSync_PrimitivesImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int int32, double float64, bool boolean});
 }
@@ -1796,9 +1784,9 @@ class __$$KitchenSinkTwinSync_PrimitivesImplCopyWithImpl<$Res>
         _$KitchenSinkTwinSync_PrimitivesImpl>
     implements _$$KitchenSinkTwinSync_PrimitivesImplCopyWith<$Res> {
   __$$KitchenSinkTwinSync_PrimitivesImplCopyWithImpl(
-    _$KitchenSinkTwinSync_PrimitivesImpl _value,
-    $Res Function(_$KitchenSinkTwinSync_PrimitivesImpl) _then,
-  ) : super(_value, _then);
+      _$KitchenSinkTwinSync_PrimitivesImpl _value,
+      $Res Function(_$KitchenSinkTwinSync_PrimitivesImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of KitchenSinkTwinSync
   /// with the given fields replaced by the non-null parameter values.
@@ -1809,22 +1797,20 @@ class __$$KitchenSinkTwinSync_PrimitivesImplCopyWithImpl<$Res>
     Object? float64 = null,
     Object? boolean = null,
   }) {
-    return _then(
-      _$KitchenSinkTwinSync_PrimitivesImpl(
-        int32: null == int32
-            ? _value.int32
-            : int32 // ignore: cast_nullable_to_non_nullable
-                as int,
-        float64: null == float64
-            ? _value.float64
-            : float64 // ignore: cast_nullable_to_non_nullable
-                as double,
-        boolean: null == boolean
-            ? _value.boolean
-            : boolean // ignore: cast_nullable_to_non_nullable
-                as bool,
-      ),
-    );
+    return _then(_$KitchenSinkTwinSync_PrimitivesImpl(
+      int32: null == int32
+          ? _value.int32
+          : int32 // ignore: cast_nullable_to_non_nullable
+              as int,
+      float64: null == float64
+          ? _value.float64
+          : float64 // ignore: cast_nullable_to_non_nullable
+              as double,
+      boolean: null == boolean
+          ? _value.boolean
+          : boolean // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
@@ -1832,11 +1818,9 @@ class __$$KitchenSinkTwinSync_PrimitivesImplCopyWithImpl<$Res>
 
 class _$KitchenSinkTwinSync_PrimitivesImpl
     extends KitchenSinkTwinSync_Primitives {
-  const _$KitchenSinkTwinSync_PrimitivesImpl({
-    this.int32 = -1,
-    required this.float64,
-    required this.boolean,
-  }) : super._();
+  const _$KitchenSinkTwinSync_PrimitivesImpl(
+      {this.int32 = -1, required this.float64, required this.boolean})
+      : super._();
 
   /// Dart field comment
   @override
@@ -1964,11 +1948,10 @@ class _$KitchenSinkTwinSync_PrimitivesImpl
 }
 
 abstract class KitchenSinkTwinSync_Primitives extends KitchenSinkTwinSync {
-  const factory KitchenSinkTwinSync_Primitives({
-    final int int32,
-    required final double float64,
-    required final bool boolean,
-  }) = _$KitchenSinkTwinSync_PrimitivesImpl;
+  const factory KitchenSinkTwinSync_Primitives(
+      {final int int32,
+      required final double float64,
+      required final bool boolean}) = _$KitchenSinkTwinSync_PrimitivesImpl;
   const KitchenSinkTwinSync_Primitives._() : super._();
 
   /// Dart field comment
@@ -1987,9 +1970,9 @@ abstract class KitchenSinkTwinSync_Primitives extends KitchenSinkTwinSync {
 /// @nodoc
 abstract class _$$KitchenSinkTwinSync_NestedImplCopyWith<$Res> {
   factory _$$KitchenSinkTwinSync_NestedImplCopyWith(
-    _$KitchenSinkTwinSync_NestedImpl value,
-    $Res Function(_$KitchenSinkTwinSync_NestedImpl) then,
-  ) = __$$KitchenSinkTwinSync_NestedImplCopyWithImpl<$Res>;
+          _$KitchenSinkTwinSync_NestedImpl value,
+          $Res Function(_$KitchenSinkTwinSync_NestedImpl) then) =
+      __$$KitchenSinkTwinSync_NestedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int field0, KitchenSinkTwinSync field1});
 
@@ -2002,27 +1985,28 @@ class __$$KitchenSinkTwinSync_NestedImplCopyWithImpl<$Res>
         _$KitchenSinkTwinSync_NestedImpl>
     implements _$$KitchenSinkTwinSync_NestedImplCopyWith<$Res> {
   __$$KitchenSinkTwinSync_NestedImplCopyWithImpl(
-    _$KitchenSinkTwinSync_NestedImpl _value,
-    $Res Function(_$KitchenSinkTwinSync_NestedImpl) _then,
-  ) : super(_value, _then);
+      _$KitchenSinkTwinSync_NestedImpl _value,
+      $Res Function(_$KitchenSinkTwinSync_NestedImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of KitchenSinkTwinSync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null, Object? field1 = null}) {
-    return _then(
-      _$KitchenSinkTwinSync_NestedImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as int,
-        null == field1
-            ? _value.field1
-            : field1 // ignore: cast_nullable_to_non_nullable
-                as KitchenSinkTwinSync,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+    Object? field1 = null,
+  }) {
+    return _then(_$KitchenSinkTwinSync_NestedImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as int,
+      null == field1
+          ? _value.field1
+          : field1 // ignore: cast_nullable_to_non_nullable
+              as KitchenSinkTwinSync,
+    ));
   }
 
   /// Create a copy of KitchenSinkTwinSync
@@ -2039,10 +2023,9 @@ class __$$KitchenSinkTwinSync_NestedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$KitchenSinkTwinSync_NestedImpl extends KitchenSinkTwinSync_Nested {
-  const _$KitchenSinkTwinSync_NestedImpl(
-    this.field0, [
-    this.field1 = const KitchenSinkTwinSync.empty(),
-  ]) : super._();
+  const _$KitchenSinkTwinSync_NestedImpl(this.field0,
+      [this.field1 = const KitchenSinkTwinSync.empty()])
+      : super._();
 
   @override
   final int field0;
@@ -2165,10 +2148,8 @@ class _$KitchenSinkTwinSync_NestedImpl extends KitchenSinkTwinSync_Nested {
 }
 
 abstract class KitchenSinkTwinSync_Nested extends KitchenSinkTwinSync {
-  const factory KitchenSinkTwinSync_Nested(
-    final int field0, [
-    final KitchenSinkTwinSync field1,
-  ]) = _$KitchenSinkTwinSync_NestedImpl;
+  const factory KitchenSinkTwinSync_Nested(final int field0,
+      [final KitchenSinkTwinSync field1]) = _$KitchenSinkTwinSync_NestedImpl;
   const KitchenSinkTwinSync_Nested._() : super._();
 
   int get field0;
@@ -2184,9 +2165,9 @@ abstract class KitchenSinkTwinSync_Nested extends KitchenSinkTwinSync {
 /// @nodoc
 abstract class _$$KitchenSinkTwinSync_OptionalImplCopyWith<$Res> {
   factory _$$KitchenSinkTwinSync_OptionalImplCopyWith(
-    _$KitchenSinkTwinSync_OptionalImpl value,
-    $Res Function(_$KitchenSinkTwinSync_OptionalImpl) then,
-  ) = __$$KitchenSinkTwinSync_OptionalImplCopyWithImpl<$Res>;
+          _$KitchenSinkTwinSync_OptionalImpl value,
+          $Res Function(_$KitchenSinkTwinSync_OptionalImpl) then) =
+      __$$KitchenSinkTwinSync_OptionalImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int? field0, int? field1});
 }
@@ -2197,27 +2178,28 @@ class __$$KitchenSinkTwinSync_OptionalImplCopyWithImpl<$Res>
         _$KitchenSinkTwinSync_OptionalImpl>
     implements _$$KitchenSinkTwinSync_OptionalImplCopyWith<$Res> {
   __$$KitchenSinkTwinSync_OptionalImplCopyWithImpl(
-    _$KitchenSinkTwinSync_OptionalImpl _value,
-    $Res Function(_$KitchenSinkTwinSync_OptionalImpl) _then,
-  ) : super(_value, _then);
+      _$KitchenSinkTwinSync_OptionalImpl _value,
+      $Res Function(_$KitchenSinkTwinSync_OptionalImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of KitchenSinkTwinSync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = freezed, Object? field1 = freezed}) {
-    return _then(
-      _$KitchenSinkTwinSync_OptionalImpl(
-        freezed == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as int?,
-        freezed == field1
-            ? _value.field1
-            : field1 // ignore: cast_nullable_to_non_nullable
-                as int?,
-      ),
-    );
+  $Res call({
+    Object? field0 = freezed,
+    Object? field1 = freezed,
+  }) {
+    return _then(_$KitchenSinkTwinSync_OptionalImpl(
+      freezed == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as int?,
+      freezed == field1
+          ? _value.field1
+          : field1 // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
   }
 }
 
@@ -2350,10 +2332,9 @@ class _$KitchenSinkTwinSync_OptionalImpl extends KitchenSinkTwinSync_Optional {
 }
 
 abstract class KitchenSinkTwinSync_Optional extends KitchenSinkTwinSync {
-  const factory KitchenSinkTwinSync_Optional([
-    final int? field0,
-    final int? field1,
-  ]) = _$KitchenSinkTwinSync_OptionalImpl;
+  const factory KitchenSinkTwinSync_Optional(
+      [final int? field0,
+      final int? field1]) = _$KitchenSinkTwinSync_OptionalImpl;
   const KitchenSinkTwinSync_Optional._() : super._();
 
   /// Comment on anonymous field
@@ -2371,9 +2352,9 @@ abstract class KitchenSinkTwinSync_Optional extends KitchenSinkTwinSync {
 /// @nodoc
 abstract class _$$KitchenSinkTwinSync_BufferImplCopyWith<$Res> {
   factory _$$KitchenSinkTwinSync_BufferImplCopyWith(
-    _$KitchenSinkTwinSync_BufferImpl value,
-    $Res Function(_$KitchenSinkTwinSync_BufferImpl) then,
-  ) = __$$KitchenSinkTwinSync_BufferImplCopyWithImpl<$Res>;
+          _$KitchenSinkTwinSync_BufferImpl value,
+          $Res Function(_$KitchenSinkTwinSync_BufferImpl) then) =
+      __$$KitchenSinkTwinSync_BufferImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Uint8List field0});
 }
@@ -2384,23 +2365,23 @@ class __$$KitchenSinkTwinSync_BufferImplCopyWithImpl<$Res>
         _$KitchenSinkTwinSync_BufferImpl>
     implements _$$KitchenSinkTwinSync_BufferImplCopyWith<$Res> {
   __$$KitchenSinkTwinSync_BufferImplCopyWithImpl(
-    _$KitchenSinkTwinSync_BufferImpl _value,
-    $Res Function(_$KitchenSinkTwinSync_BufferImpl) _then,
-  ) : super(_value, _then);
+      _$KitchenSinkTwinSync_BufferImpl _value,
+      $Res Function(_$KitchenSinkTwinSync_BufferImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of KitchenSinkTwinSync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$KitchenSinkTwinSync_BufferImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as Uint8List,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$KitchenSinkTwinSync_BufferImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
+    ));
   }
 }
 
@@ -2543,9 +2524,9 @@ abstract class KitchenSinkTwinSync_Buffer extends KitchenSinkTwinSync {
 /// @nodoc
 abstract class _$$KitchenSinkTwinSync_EnumsImplCopyWith<$Res> {
   factory _$$KitchenSinkTwinSync_EnumsImplCopyWith(
-    _$KitchenSinkTwinSync_EnumsImpl value,
-    $Res Function(_$KitchenSinkTwinSync_EnumsImpl) then,
-  ) = __$$KitchenSinkTwinSync_EnumsImplCopyWithImpl<$Res>;
+          _$KitchenSinkTwinSync_EnumsImpl value,
+          $Res Function(_$KitchenSinkTwinSync_EnumsImpl) then) =
+      __$$KitchenSinkTwinSync_EnumsImplCopyWithImpl<$Res>;
   @useResult
   $Res call({WeekdaysTwinSync field0});
 }
@@ -2556,23 +2537,23 @@ class __$$KitchenSinkTwinSync_EnumsImplCopyWithImpl<$Res>
         _$KitchenSinkTwinSync_EnumsImpl>
     implements _$$KitchenSinkTwinSync_EnumsImplCopyWith<$Res> {
   __$$KitchenSinkTwinSync_EnumsImplCopyWithImpl(
-    _$KitchenSinkTwinSync_EnumsImpl _value,
-    $Res Function(_$KitchenSinkTwinSync_EnumsImpl) _then,
-  ) : super(_value, _then);
+      _$KitchenSinkTwinSync_EnumsImpl _value,
+      $Res Function(_$KitchenSinkTwinSync_EnumsImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of KitchenSinkTwinSync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$KitchenSinkTwinSync_EnumsImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as WeekdaysTwinSync,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$KitchenSinkTwinSync_EnumsImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as WeekdaysTwinSync,
+    ));
   }
 }
 
@@ -2759,9 +2740,8 @@ mixin _$MeasureTwinSync {
 /// @nodoc
 abstract class $MeasureTwinSyncCopyWith<$Res> {
   factory $MeasureTwinSyncCopyWith(
-    MeasureTwinSync value,
-    $Res Function(MeasureTwinSync) then,
-  ) = _$MeasureTwinSyncCopyWithImpl<$Res, MeasureTwinSync>;
+          MeasureTwinSync value, $Res Function(MeasureTwinSync) then) =
+      _$MeasureTwinSyncCopyWithImpl<$Res, MeasureTwinSync>;
 }
 
 /// @nodoc
@@ -2781,9 +2761,9 @@ class _$MeasureTwinSyncCopyWithImpl<$Res, $Val extends MeasureTwinSync>
 /// @nodoc
 abstract class _$$MeasureTwinSync_SpeedImplCopyWith<$Res> {
   factory _$$MeasureTwinSync_SpeedImplCopyWith(
-    _$MeasureTwinSync_SpeedImpl value,
-    $Res Function(_$MeasureTwinSync_SpeedImpl) then,
-  ) = __$$MeasureTwinSync_SpeedImplCopyWithImpl<$Res>;
+          _$MeasureTwinSync_SpeedImpl value,
+          $Res Function(_$MeasureTwinSync_SpeedImpl) then) =
+      __$$MeasureTwinSync_SpeedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({SpeedTwinSync field0});
 
@@ -2794,24 +2774,23 @@ abstract class _$$MeasureTwinSync_SpeedImplCopyWith<$Res> {
 class __$$MeasureTwinSync_SpeedImplCopyWithImpl<$Res>
     extends _$MeasureTwinSyncCopyWithImpl<$Res, _$MeasureTwinSync_SpeedImpl>
     implements _$$MeasureTwinSync_SpeedImplCopyWith<$Res> {
-  __$$MeasureTwinSync_SpeedImplCopyWithImpl(
-    _$MeasureTwinSync_SpeedImpl _value,
-    $Res Function(_$MeasureTwinSync_SpeedImpl) _then,
-  ) : super(_value, _then);
+  __$$MeasureTwinSync_SpeedImplCopyWithImpl(_$MeasureTwinSync_SpeedImpl _value,
+      $Res Function(_$MeasureTwinSync_SpeedImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of MeasureTwinSync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$MeasureTwinSync_SpeedImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as SpeedTwinSync,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$MeasureTwinSync_SpeedImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as SpeedTwinSync,
+    ));
   }
 
   /// Create a copy of MeasureTwinSync
@@ -2856,10 +2835,7 @@ class _$MeasureTwinSync_SpeedImpl extends MeasureTwinSync_Speed {
   @pragma('vm:prefer-inline')
   _$$MeasureTwinSync_SpeedImplCopyWith<_$MeasureTwinSync_SpeedImpl>
       get copyWith => __$$MeasureTwinSync_SpeedImplCopyWithImpl<
-              _$MeasureTwinSync_SpeedImpl>(
-            this,
-            _$identity,
-          );
+          _$MeasureTwinSync_SpeedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2942,9 +2918,9 @@ abstract class MeasureTwinSync_Speed extends MeasureTwinSync {
 /// @nodoc
 abstract class _$$MeasureTwinSync_DistanceImplCopyWith<$Res> {
   factory _$$MeasureTwinSync_DistanceImplCopyWith(
-    _$MeasureTwinSync_DistanceImpl value,
-    $Res Function(_$MeasureTwinSync_DistanceImpl) then,
-  ) = __$$MeasureTwinSync_DistanceImplCopyWithImpl<$Res>;
+          _$MeasureTwinSync_DistanceImpl value,
+          $Res Function(_$MeasureTwinSync_DistanceImpl) then) =
+      __$$MeasureTwinSync_DistanceImplCopyWithImpl<$Res>;
   @useResult
   $Res call({DistanceTwinSync field0});
 
@@ -2956,23 +2932,23 @@ class __$$MeasureTwinSync_DistanceImplCopyWithImpl<$Res>
     extends _$MeasureTwinSyncCopyWithImpl<$Res, _$MeasureTwinSync_DistanceImpl>
     implements _$$MeasureTwinSync_DistanceImplCopyWith<$Res> {
   __$$MeasureTwinSync_DistanceImplCopyWithImpl(
-    _$MeasureTwinSync_DistanceImpl _value,
-    $Res Function(_$MeasureTwinSync_DistanceImpl) _then,
-  ) : super(_value, _then);
+      _$MeasureTwinSync_DistanceImpl _value,
+      $Res Function(_$MeasureTwinSync_DistanceImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of MeasureTwinSync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$MeasureTwinSync_DistanceImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as DistanceTwinSync,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$MeasureTwinSync_DistanceImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as DistanceTwinSync,
+    ));
   }
 
   /// Create a copy of MeasureTwinSync
@@ -3142,9 +3118,8 @@ mixin _$SpeedTwinSync {
 /// @nodoc
 abstract class $SpeedTwinSyncCopyWith<$Res> {
   factory $SpeedTwinSyncCopyWith(
-    SpeedTwinSync value,
-    $Res Function(SpeedTwinSync) then,
-  ) = _$SpeedTwinSyncCopyWithImpl<$Res, SpeedTwinSync>;
+          SpeedTwinSync value, $Res Function(SpeedTwinSync) then) =
+      _$SpeedTwinSyncCopyWithImpl<$Res, SpeedTwinSync>;
 }
 
 /// @nodoc
@@ -3164,19 +3139,18 @@ class _$SpeedTwinSyncCopyWithImpl<$Res, $Val extends SpeedTwinSync>
 /// @nodoc
 abstract class _$$SpeedTwinSync_UnknownImplCopyWith<$Res> {
   factory _$$SpeedTwinSync_UnknownImplCopyWith(
-    _$SpeedTwinSync_UnknownImpl value,
-    $Res Function(_$SpeedTwinSync_UnknownImpl) then,
-  ) = __$$SpeedTwinSync_UnknownImplCopyWithImpl<$Res>;
+          _$SpeedTwinSync_UnknownImpl value,
+          $Res Function(_$SpeedTwinSync_UnknownImpl) then) =
+      __$$SpeedTwinSync_UnknownImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$SpeedTwinSync_UnknownImplCopyWithImpl<$Res>
     extends _$SpeedTwinSyncCopyWithImpl<$Res, _$SpeedTwinSync_UnknownImpl>
     implements _$$SpeedTwinSync_UnknownImplCopyWith<$Res> {
-  __$$SpeedTwinSync_UnknownImplCopyWithImpl(
-    _$SpeedTwinSync_UnknownImpl _value,
-    $Res Function(_$SpeedTwinSync_UnknownImpl) _then,
-  ) : super(_value, _then);
+  __$$SpeedTwinSync_UnknownImplCopyWithImpl(_$SpeedTwinSync_UnknownImpl _value,
+      $Res Function(_$SpeedTwinSync_UnknownImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of SpeedTwinSync
   /// with the given fields replaced by the non-null parameter values.
@@ -3272,10 +3246,9 @@ abstract class SpeedTwinSync_Unknown extends SpeedTwinSync {
 
 /// @nodoc
 abstract class _$$SpeedTwinSync_GPSImplCopyWith<$Res> {
-  factory _$$SpeedTwinSync_GPSImplCopyWith(
-    _$SpeedTwinSync_GPSImpl value,
-    $Res Function(_$SpeedTwinSync_GPSImpl) then,
-  ) = __$$SpeedTwinSync_GPSImplCopyWithImpl<$Res>;
+  factory _$$SpeedTwinSync_GPSImplCopyWith(_$SpeedTwinSync_GPSImpl value,
+          $Res Function(_$SpeedTwinSync_GPSImpl) then) =
+      __$$SpeedTwinSync_GPSImplCopyWithImpl<$Res>;
   @useResult
   $Res call({double field0});
 }
@@ -3284,24 +3257,23 @@ abstract class _$$SpeedTwinSync_GPSImplCopyWith<$Res> {
 class __$$SpeedTwinSync_GPSImplCopyWithImpl<$Res>
     extends _$SpeedTwinSyncCopyWithImpl<$Res, _$SpeedTwinSync_GPSImpl>
     implements _$$SpeedTwinSync_GPSImplCopyWith<$Res> {
-  __$$SpeedTwinSync_GPSImplCopyWithImpl(
-    _$SpeedTwinSync_GPSImpl _value,
-    $Res Function(_$SpeedTwinSync_GPSImpl) _then,
-  ) : super(_value, _then);
+  __$$SpeedTwinSync_GPSImplCopyWithImpl(_$SpeedTwinSync_GPSImpl _value,
+      $Res Function(_$SpeedTwinSync_GPSImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of SpeedTwinSync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$SpeedTwinSync_GPSImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as double,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$SpeedTwinSync_GPSImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
   }
 }
 
@@ -3336,9 +3308,7 @@ class _$SpeedTwinSync_GPSImpl extends SpeedTwinSync_GPS {
   @pragma('vm:prefer-inline')
   _$$SpeedTwinSync_GPSImplCopyWith<_$SpeedTwinSync_GPSImpl> get copyWith =>
       __$$SpeedTwinSync_GPSImplCopyWithImpl<_$SpeedTwinSync_GPSImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   @optionalTypeArgs
