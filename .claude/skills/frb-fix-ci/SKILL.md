@@ -95,6 +95,15 @@ CI shows the command it ran. Run the same command:
 ./frb_internal test-dart --package frb_example/pure_dart
 ```
 
+### Checking the Right Run
+
+When discussing CI status, always inspect the exact run, job, or commit SHA currently under discussion.
+
+In particular:
+- If the user points to a specific run URL, job URL, or commit SHA, inspect that exact object first
+- Do not answer based on an older run or a stale `gh run list` snapshot
+- If the latest run is still moving, say which run ID and commit SHA you checked
+
 ## Common Mistakes
 
 - Investigating root cause when a simple re-run would work
@@ -102,6 +111,7 @@ CI shows the command it ran. Run the same command:
 - Fixing many new downstream test/build failures one by one after accepting generated changes, when CI previously failed mainly in `Generate`
 - Hand-editing generated files to chase CI formatter output before checking whether CI, merge ref, and remote environments are formatting the same input
 - Hand-editing integrate-generated example outputs instead of fixing `frb_codegen/assets/integration_template/`
+- Answering with stale CI state instead of checking the exact run, job, or commit SHA being discussed
 
 ## Special Diagnosis Rule
 
