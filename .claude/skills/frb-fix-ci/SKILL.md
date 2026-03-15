@@ -79,6 +79,7 @@ Instead:
 - Only accept formatter output after confirming the pre-format generated input is actually the correct one
 
 ### `Command Integrate` Failures
+
 When `Generate :: FRB Codegen :: Command Integrate` fails because integrated output is wrong, do not hand-edit the generated integrate example outputs.
 
 Instead:
