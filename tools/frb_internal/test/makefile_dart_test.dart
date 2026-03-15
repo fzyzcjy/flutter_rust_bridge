@@ -31,13 +31,17 @@ void main() {
     );
   });
 
-  test('pure dart generator resolves package from repo root instead of cwd', () {
-    expect(
-      pureDartUriForTesting(repoRootPath: '/workspace/flutter_rust_bridge/')
-          .toFilePath(),
-      '/workspace/flutter_rust_bridge/frb_example/pure_dart/',
-    );
-  });
+  test(
+    'pure dart generator resolves package from repo root instead of cwd',
+    () {
+      expect(
+        pureDartUriForTesting(
+          repoRootPath: '/workspace/flutter_rust_bridge/',
+        ).toFilePath(),
+        '/workspace/flutter_rust_bridge/frb_example/pure_dart/',
+      );
+    },
+  );
 
   group('test checkValgrindOutput', () {
     test('good', () {
