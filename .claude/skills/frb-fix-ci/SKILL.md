@@ -78,6 +78,12 @@ Instead:
 - Check whether generation order, hidden generation steps, or toolchain/environment drift changed the generated file before formatter ran
 - Only accept formatter output after confirming the pre-format generated input is actually the correct one
 
+When `Generate :: FRB Codegen :: Command Integrate` fails because integrated output is wrong, do not hand-edit the generated integrate example outputs.
+
+Instead:
+- Fix the source templates under `frb_codegen/assets/integration_template/`
+- Re-run integrate generation after updating the templates
+
 ### Can't Reproduce Locally
 
 CI shows the command it ran. Run the same command:
@@ -93,6 +99,7 @@ CI shows the command it ran. Run the same command:
 - Not trying `git apply` first when CI provides a diff
 - Fixing many new downstream test/build failures one by one after accepting generated changes, when CI previously failed mainly in `Generate`
 - Hand-editing generated files to chase CI formatter output before checking whether CI, merge ref, and remote environments are formatting the same input
+- Hand-editing integrate-generated example outputs instead of fixing `frb_codegen/assets/integration_template/`
 
 ## Special Diagnosis Rule
 

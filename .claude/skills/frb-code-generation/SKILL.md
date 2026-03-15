@@ -31,6 +31,4 @@ flutter_rust_bridge requires code generation when Rust APIs change. This skill m
 
 ## Important Rules
 
-Do not manually edit generated outputs just to satisfy formatter/lint failures. If generated files fail format/lint in CI, first verify that branch head, PR merge ref, and remote generation are producing the same pre-format input. If they differ, fix the generation workflow or environment drift first.
-
-When `Generate :: FRB Codegen :: Command Integrate` fails because the integrated output is wrong, fix the source templates under `frb_codegen/assets/integration_template/` instead of hand-editing the generated integrate example outputs. Re-run integrate generation after updating the templates.
+For CI diagnosis rules about generated-file format/lint failures or `Generate :: FRB Codegen :: Command Integrate` failures, see `frb-fix-ci` first. Keep generated-output fixes rooted in generation logic, templates, or workflow rather than hand-editing generated files.
