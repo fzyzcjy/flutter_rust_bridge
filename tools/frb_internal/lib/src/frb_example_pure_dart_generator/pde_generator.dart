@@ -13,6 +13,11 @@ Future<void> generatePureDartPde({
 }) async {
   final skippedPdeFileStems = _computeSkippedPdeFileStems(dirPureDart);
 
+  _removeIfExists(
+    File(dirPureDartPde.resolve('bin/simple_benchmark.dart').toFilePath()),
+  );
+  _removeIfExists(Directory(dirPureDartPde.resolve('benchmark').toFilePath()));
+
   copyRecursive(
     Directory(dirPureDart.toFilePath()),
     Directory(dirPureDartPde.toFilePath()),
@@ -28,6 +33,7 @@ Future<void> generatePureDartPde({
             '.dart_tool',
             '.idea',
             'benchmark',
+            'bin/simple_benchmark.dart',
             'build',
             'coverage',
             'rust/target',
@@ -206,5 +212,11 @@ void copyRecursive(
     } else if (entity is Directory) {
       copyRecursive(entity, Directory(newPath), filter: filter, map: map);
     }
+  }
+}
+
+void _removeIfExists(FileSystemEntity entity) {
+  if (entity.existsSync()) {
+    entity.deleteSync(recursive: true);
   }
 }
