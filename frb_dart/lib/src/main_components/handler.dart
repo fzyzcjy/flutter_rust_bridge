@@ -1,9 +1,11 @@
 import 'dart:async';
 
+import 'package:flutter_rust_bridge/src/consts.dart';
 import 'package:flutter_rust_bridge/src/dart_opaque/dart_opaque.dart';
 import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
 import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart';
+import 'package:flutter_rust_bridge/src/stream/stream_sink.dart';
 import 'package:flutter_rust_bridge/src/task.dart';
 import 'package:flutter_rust_bridge/src/utils/single_complete_port.dart';
 
@@ -13,8 +15,20 @@ class BaseHandler {
   Future<S> executeNormal<S, E extends Object>(NormalTask<S, E> task) {
     final completer = Completer<dynamic>();
     final SendPort sendPort = singleCompletePort(completer);
-    task.callFfi(sendPort.nativePort);
+    _callNormalFfi(task: task, sendPort: sendPort);
     return completer.future.then(task.codec.decodeObject);
+  }
+
+  void _callNormalFfi<S, E extends Object>({
+    required NormalTask<S, E> task,
+    required SendPort sendPort,
+  }) {
+    if (kIsWeb && task.argValues.any((value) => value is RustStreamSink)) {
+      Timer.run(() => task.callFfi(sendPort.nativePort));
+      return;
+    }
+
+    task.callFfi(sendPort.nativePort);
   }
 
   /// Similar to [executeNormal], except that this will return synchronously
