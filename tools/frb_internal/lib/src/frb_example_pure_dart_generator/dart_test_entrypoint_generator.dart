@@ -58,7 +58,11 @@ Future<void> _generateDartValgrindTestEntrypoint(
   ];
   final calls = [
     for (final file in files) //
-      "await ${path.basenameWithoutExtension(file)}.main(skipRustLibInit: true);\n",
+      '''
+await ${path.basenameWithoutExtension(file)}.main(
+  skipRustLibInit: true,
+);
+''',
   ];
 
   final code =
