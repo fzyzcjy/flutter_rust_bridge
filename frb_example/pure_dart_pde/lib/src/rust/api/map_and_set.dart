@@ -14,51 +14,57 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `build_hasher`, `clone`, `fmt`, `hash_one`
 // These functions are ignored (category: IgnoreBecauseOwnerTyShouldIgnore): `default`
 
-Future<Map<int, int>> funcHashMapI32I32TwinNormal(
-        {required Map<int, int> arg}) =>
+Future<Map<int, int>> funcHashMapI32I32TwinNormal({
+  required Map<int, int> arg,
+}) =>
     RustLib.instance.api.crateApiMapAndSetFuncHashMapI32I32TwinNormal(arg: arg);
 
 Future<Set<int>> funcHashSetI32TwinNormal({required Set<int> arg}) =>
     RustLib.instance.api.crateApiMapAndSetFuncHashSetI32TwinNormal(arg: arg);
 
-Future<Map<String, String>> funcHashMapStringStringTwinNormal(
-        {required Map<String, String> arg}) =>
-    RustLib.instance.api
-        .crateApiMapAndSetFuncHashMapStringStringTwinNormal(arg: arg);
+Future<Map<String, String>> funcHashMapStringStringTwinNormal({
+  required Map<String, String> arg,
+}) => RustLib.instance.api.crateApiMapAndSetFuncHashMapStringStringTwinNormal(
+  arg: arg,
+);
 
-Future<Map<String, String>> funcHashMapStringStringHasherTwinNormal(
-        {required Map<String, String> arg}) =>
-    RustLib.instance.api
-        .crateApiMapAndSetFuncHashMapStringStringHasherTwinNormal(arg: arg);
+Future<Map<String, String>> funcHashMapStringStringHasherTwinNormal({
+  required Map<String, String> arg,
+}) => RustLib.instance.api
+    .crateApiMapAndSetFuncHashMapStringStringHasherTwinNormal(arg: arg);
 
 Future<Set<String>> funcHashSetStringTwinNormal({required Set<String> arg}) =>
     RustLib.instance.api.crateApiMapAndSetFuncHashSetStringTwinNormal(arg: arg);
 
-Future<Set<String>> funcHashSetStringHasherTwinNormal(
-        {required Set<String> arg}) =>
-    RustLib.instance.api
-        .crateApiMapAndSetFuncHashSetStringHasherTwinNormal(arg: arg);
+Future<Set<String>> funcHashSetStringHasherTwinNormal({
+  required Set<String> arg,
+}) => RustLib.instance.api.crateApiMapAndSetFuncHashSetStringHasherTwinNormal(
+  arg: arg,
+);
 
-Future<Map<String, Uint8List>> funcHashMapStringBytesTwinNormal(
-        {required Map<String, Uint8List> arg}) =>
-    RustLib.instance.api
-        .crateApiMapAndSetFuncHashMapStringBytesTwinNormal(arg: arg);
+Future<Map<String, Uint8List>> funcHashMapStringBytesTwinNormal({
+  required Map<String, Uint8List> arg,
+}) => RustLib.instance.api.crateApiMapAndSetFuncHashMapStringBytesTwinNormal(
+  arg: arg,
+);
 
-Future<Map<String, MySize>> funcHashMapStringStructTwinNormal(
-        {required Map<String, MySize> arg}) =>
-    RustLib.instance.api
-        .crateApiMapAndSetFuncHashMapStringStructTwinNormal(arg: arg);
+Future<Map<String, MySize>> funcHashMapStringStructTwinNormal({
+  required Map<String, MySize> arg,
+}) => RustLib.instance.api.crateApiMapAndSetFuncHashMapStringStructTwinNormal(
+  arg: arg,
+);
 
-Future<Map<String, EnumSimpleTwinNormal>> funcHashMapStringSimpleEnumTwinNormal(
-        {required Map<String, EnumSimpleTwinNormal> arg}) =>
-    RustLib.instance.api
-        .crateApiMapAndSetFuncHashMapStringSimpleEnumTwinNormal(arg: arg);
+Future<Map<String, EnumSimpleTwinNormal>>
+funcHashMapStringSimpleEnumTwinNormal({
+  required Map<String, EnumSimpleTwinNormal> arg,
+}) => RustLib.instance.api
+    .crateApiMapAndSetFuncHashMapStringSimpleEnumTwinNormal(arg: arg);
 
 Future<Map<String, KitchenSinkTwinNormal>>
-    funcHashMapStringComplexEnumTwinNormal(
-            {required Map<String, KitchenSinkTwinNormal> arg}) =>
-        RustLib.instance.api
-            .crateApiMapAndSetFuncHashMapStringComplexEnumTwinNormal(arg: arg);
+funcHashMapStringComplexEnumTwinNormal({
+  required Map<String, KitchenSinkTwinNormal> arg,
+}) => RustLib.instance.api
+    .crateApiMapAndSetFuncHashMapStringComplexEnumTwinNormal(arg: arg);
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<CustomHasherTwinNormal>>
 abstract class CustomHasherTwinNormal implements RustOpaqueInterface {}
