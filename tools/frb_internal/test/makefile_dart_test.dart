@@ -1,3 +1,4 @@
+import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/generator.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:test/test.dart';
 
@@ -27,6 +28,14 @@ void main() {
     expect(
       dartValgrindRustNativeLibDirectoryForTesting('frb_example/dart_minimal'),
       endsWith('frb_example/dart_minimal/rust/target/release'),
+    );
+  });
+
+  test('pure dart generator resolves package from repo root instead of cwd', () {
+    expect(
+      pureDartUriForTesting(repoRootPath: '/workspace/flutter_rust_bridge/')
+          .toFilePath(),
+      '/workspace/flutter_rust_bridge/frb_example/pure_dart/',
     );
   });
 

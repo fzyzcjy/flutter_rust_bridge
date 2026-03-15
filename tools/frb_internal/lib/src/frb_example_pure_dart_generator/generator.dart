@@ -6,11 +6,10 @@ import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/pde_generator.dart';
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/rust/entrypoint.dart';
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/utils/generator_utils.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 
 Future<void> generate() async {
-  final dirPureDart = Directory.current.uri.resolve(
-    '../../frb_example/pure_dart/',
-  );
+  final dirPureDart = pureDartUriForTesting();
   final dirPureDartPde = dirPureDart.resolve('../pure_dart_pde/');
 
   await generateForPackage(dartRoot: dirPureDart, package: Package.pureDart);
@@ -51,4 +50,9 @@ Future<void> generateForPackage({
 
   await rust.executeFormat();
   await dart.executeFormat();
+}
+
+Uri pureDartUriForTesting({String? repoRootPath}) {
+  final repoRoot = Directory(repoRootPath ?? exec.pwd!).uri;
+  return repoRoot.resolve('frb_example/pure_dart/');
 }
