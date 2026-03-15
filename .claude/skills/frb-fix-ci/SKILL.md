@@ -34,6 +34,23 @@ gh run rerun --failed
 
 If it passes on retry → flaky, not your bug.
 
+### Dart Web Browser Startup Flakes
+
+When `Test :: Dart :: Web (...)` fails after the web build and server startup already succeeded, and the failure is:
+
+```text
+Exception: Websocket url not found.
+```
+
+treat it as a likely browser / puppeteer startup flake first, not an immediate code regression.
+
+In that situation:
+
+- Do not assume the generated code or test logic is broken just from this error
+- Check whether wasm build, `dart compile js`, and local web server startup already succeeded
+- Prefer rerunning only the failed job first
+- Only start code investigation if the same job keeps failing with the same error repeatedly
+
 ### Git Diff Errors
 
 When CI shows a diff, you have two options:
