@@ -1,7 +1,5 @@
 // ignore_for_file: avoid_print
 
-import 'dart:io';
-
 import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
@@ -185,10 +183,9 @@ Future<void> lintDartAnalyze(LintConfig config) async {
 }
 
 Future<void> lintDartPana(LintConfig config) async {
-  final pana = Platform.isWindows ? 'pana.bat' : 'pana';
   await exec('flutter pub global activate pana');
   await exec(
-    '$pana --no-warning --line-length 80 --exit-code-threshold 0',
+    'dart pub global run pana --no-warning --line-length 80 --exit-code-threshold 0',
     relativePwd: 'frb_dart',
   );
 }
