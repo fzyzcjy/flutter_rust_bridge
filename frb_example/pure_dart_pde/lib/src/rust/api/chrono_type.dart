@@ -19,10 +19,9 @@ Future<DateTime> datetimeLocalTwinNormal({required DateTime d}) =>
 Future<DateTime> naivedatetimeTwinNormal({required DateTime d}) =>
     RustLib.instance.api.crateApiChronoTypeNaivedatetimeTwinNormal(d: d);
 
-Future<DateTime?> optionalEmptyDatetimeUtcTwinNormal({DateTime? d}) => RustLib
-    .instance
-    .api
-    .crateApiChronoTypeOptionalEmptyDatetimeUtcTwinNormal(d: d);
+Future<DateTime?> optionalEmptyDatetimeUtcTwinNormal({DateTime? d}) =>
+    RustLib.instance.api
+        .crateApiChronoTypeOptionalEmptyDatetimeUtcTwinNormal(d: d);
 
 Future<Duration> durationTwinNormal({required Duration d}) =>
     RustLib.instance.api.crateApiChronoTypeDurationTwinNormal(d: d);
@@ -30,18 +29,20 @@ Future<Duration> durationTwinNormal({required Duration d}) =>
 Future<List<Duration>> handleTimestampsTwinNormal({
   required List<DateTime> timestamps,
   required DateTime epoch,
-}) => RustLib.instance.api.crateApiChronoTypeHandleTimestampsTwinNormal(
-  timestamps: timestamps,
-  epoch: epoch,
-);
+}) =>
+    RustLib.instance.api.crateApiChronoTypeHandleTimestampsTwinNormal(
+      timestamps: timestamps,
+      epoch: epoch,
+    );
 
 Future<List<DateTime>> handleDurationsTwinNormal({
   required List<Duration> durations,
   required DateTime since,
-}) => RustLib.instance.api.crateApiChronoTypeHandleDurationsTwinNormal(
-  durations: durations,
-  since: since,
-);
+}) =>
+    RustLib.instance.api.crateApiChronoTypeHandleDurationsTwinNormal(
+      durations: durations,
+      since: since,
+    );
 
 Future<TestChronoTwinNormal> testChronoTwinNormal() =>
     RustLib.instance.api.crateApiChronoTypeTestChronoTwinNormal();
@@ -51,9 +52,10 @@ Future<TestChronoTwinNormal> testPreciseChronoTwinNormal() =>
 
 Future<Duration> howLongDoesItTakeTwinNormal({
   required FeatureChronoTwinNormal mine,
-}) => RustLib.instance.api.crateApiChronoTypeHowLongDoesItTakeTwinNormal(
-  mine: mine,
-);
+}) =>
+    RustLib.instance.api.crateApiChronoTypeHowLongDoesItTakeTwinNormal(
+      mine: mine,
+    );
 
 class FeatureChronoTwinNormal {
   final DateTime utc;

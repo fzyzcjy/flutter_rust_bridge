@@ -13,12 +13,13 @@ Future<int> primitiveTypesTwinNormal({
   required PlatformInt64 myI64,
   required double myF64,
   required bool myBool,
-}) => RustLib.instance.api.crateApiPrimitiveMiscPrimitiveTypesTwinNormal(
-  myI32: myI32,
-  myI64: myI64,
-  myF64: myF64,
-  myBool: myBool,
-);
+}) =>
+    RustLib.instance.api.crateApiPrimitiveMiscPrimitiveTypesTwinNormal(
+      myI32: myI32,
+      myI64: myI64,
+      myF64: myF64,
+      myBool: myBool,
+    );
 
 Future<int> primitiveU32TwinNormal({required int myU32}) => RustLib.instance.api
     .crateApiPrimitiveMiscPrimitiveU32TwinNormal(myU32: myU32);

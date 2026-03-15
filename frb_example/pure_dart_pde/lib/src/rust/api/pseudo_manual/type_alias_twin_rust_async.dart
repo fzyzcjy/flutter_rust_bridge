@@ -11,22 +11,25 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<BigInt> handleTypeAliasIdTwinRustAsync({
   required BigInt input,
-}) => RustLib.instance.api
-    .crateApiPseudoManualTypeAliasTwinRustAsyncHandleTypeAliasIdTwinRustAsync(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualTypeAliasTwinRustAsyncHandleTypeAliasIdTwinRustAsync(
       input: input,
     );
 
 Future<BigInt> handleTypeNestAliasIdTwinRustAsync({
   required BigInt input,
-}) => RustLib.instance.api
-    .crateApiPseudoManualTypeAliasTwinRustAsyncHandleTypeNestAliasIdTwinRustAsync(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualTypeAliasTwinRustAsyncHandleTypeNestAliasIdTwinRustAsync(
       input: input,
     );
 
 Future<TestModelTwinRustAsync> handleTypeAliasModelTwinRustAsync({
   required BigInt input,
-}) => RustLib.instance.api
-    .crateApiPseudoManualTypeAliasTwinRustAsyncHandleTypeAliasModelTwinRustAsync(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualTypeAliasTwinRustAsyncHandleTypeAliasModelTwinRustAsync(
       input: input,
     );
 

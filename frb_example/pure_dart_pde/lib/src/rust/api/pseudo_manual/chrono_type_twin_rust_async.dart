@@ -11,41 +11,39 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 
 Future<DateTime> datetimeUtcTwinRustAsync({required DateTime d}) => RustLib
-    .instance
-    .api
+    .instance.api
     .crateApiPseudoManualChronoTypeTwinRustAsyncDatetimeUtcTwinRustAsync(d: d);
 
-Future<DateTime> datetimeLocalTwinRustAsync({required DateTime d}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualChronoTypeTwinRustAsyncDatetimeLocalTwinRustAsync(
+Future<DateTime> datetimeLocalTwinRustAsync({required DateTime d}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinRustAsyncDatetimeLocalTwinRustAsync(
       d: d,
     );
 
-Future<DateTime> naivedatetimeTwinRustAsync({required DateTime d}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualChronoTypeTwinRustAsyncNaivedatetimeTwinRustAsync(
+Future<DateTime> naivedatetimeTwinRustAsync({required DateTime d}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinRustAsyncNaivedatetimeTwinRustAsync(
       d: d,
     );
 
 Future<DateTime?> optionalEmptyDatetimeUtcTwinRustAsync({
   DateTime? d,
-}) => RustLib.instance.api
-    .crateApiPseudoManualChronoTypeTwinRustAsyncOptionalEmptyDatetimeUtcTwinRustAsync(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinRustAsyncOptionalEmptyDatetimeUtcTwinRustAsync(
       d: d,
     );
 
-Future<Duration> durationTwinRustAsync({required Duration d}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualChronoTypeTwinRustAsyncDurationTwinRustAsync(d: d);
+Future<Duration> durationTwinRustAsync({required Duration d}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinRustAsyncDurationTwinRustAsync(d: d);
 
 Future<List<Duration>> handleTimestampsTwinRustAsync({
   required List<DateTime> timestamps,
   required DateTime epoch,
-}) => RustLib.instance.api
-    .crateApiPseudoManualChronoTypeTwinRustAsyncHandleTimestampsTwinRustAsync(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinRustAsyncHandleTimestampsTwinRustAsync(
       timestamps: timestamps,
       epoch: epoch,
     );
@@ -53,26 +51,26 @@ Future<List<Duration>> handleTimestampsTwinRustAsync({
 Future<List<DateTime>> handleDurationsTwinRustAsync({
   required List<Duration> durations,
   required DateTime since,
-}) => RustLib.instance.api
-    .crateApiPseudoManualChronoTypeTwinRustAsyncHandleDurationsTwinRustAsync(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinRustAsyncHandleDurationsTwinRustAsync(
       durations: durations,
       since: since,
     );
 
-Future<TestChronoTwinRustAsync> testChronoTwinRustAsync() => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualChronoTypeTwinRustAsyncTestChronoTwinRustAsync();
+Future<TestChronoTwinRustAsync> testChronoTwinRustAsync() =>
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinRustAsyncTestChronoTwinRustAsync();
 
 Future<TestChronoTwinRustAsync> testPreciseChronoTwinRustAsync() => RustLib
-    .instance
-    .api
+    .instance.api
     .crateApiPseudoManualChronoTypeTwinRustAsyncTestPreciseChronoTwinRustAsync();
 
 Future<Duration> howLongDoesItTakeTwinRustAsync({
   required FeatureChronoTwinRustAsync mine,
-}) => RustLib.instance.api
-    .crateApiPseudoManualChronoTypeTwinRustAsyncHowLongDoesItTakeTwinRustAsync(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinRustAsyncHowLongDoesItTakeTwinRustAsync(
       mine: mine,
     );
 

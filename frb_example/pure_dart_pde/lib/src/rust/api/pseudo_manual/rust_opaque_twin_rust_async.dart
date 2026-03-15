@@ -11,90 +11,95 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'rust_opaque_twin_rust_async.freezed.dart';
 
-Future<HideDataTwinRustAsync> createOpaqueTwinRustAsync() => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualRustOpaqueTwinRustAsyncCreateOpaqueTwinRustAsync();
+Future<HideDataTwinRustAsync> createOpaqueTwinRustAsync() =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinRustAsyncCreateOpaqueTwinRustAsync();
 
 Future<HideDataTwinRustAsync?> createOptionOpaqueTwinRustAsync({
   HideDataTwinRustAsync? opaque,
-}) => RustLib.instance.api
-    .crateApiPseudoManualRustOpaqueTwinRustAsyncCreateOptionOpaqueTwinRustAsync(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinRustAsyncCreateOptionOpaqueTwinRustAsync(
       opaque: opaque,
     );
 
-Future<EnumOpaqueTwinRustAsyncArray5>
-createArrayOpaqueEnumTwinRustAsync() => RustLib.instance.api
-    .crateApiPseudoManualRustOpaqueTwinRustAsyncCreateArrayOpaqueEnumTwinRustAsync();
+Future<EnumOpaqueTwinRustAsyncArray5> createArrayOpaqueEnumTwinRustAsync() =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinRustAsyncCreateArrayOpaqueEnumTwinRustAsync();
 
 Future<String> runEnumOpaqueTwinRustAsync({
   required EnumOpaqueTwinRustAsync opaque,
-}) => RustLib.instance.api
-    .crateApiPseudoManualRustOpaqueTwinRustAsyncRunEnumOpaqueTwinRustAsync(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinRustAsyncRunEnumOpaqueTwinRustAsync(
       opaque: opaque,
     );
 
 Future<String> runOpaqueTwinRustAsync({
   required HideDataTwinRustAsync opaque,
-}) => RustLib.instance.api
-    .crateApiPseudoManualRustOpaqueTwinRustAsyncRunOpaqueTwinRustAsync(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinRustAsyncRunOpaqueTwinRustAsync(
       opaque: opaque,
     );
 
 Future<String> runOpaqueWithDelayTwinRustAsync({
   required HideDataTwinRustAsync opaque,
-}) => RustLib.instance.api
-    .crateApiPseudoManualRustOpaqueTwinRustAsyncRunOpaqueWithDelayTwinRustAsync(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinRustAsyncRunOpaqueWithDelayTwinRustAsync(
       opaque: opaque,
     );
 
-Future<HideDataTwinRustAsyncArray2> opaqueArrayTwinRustAsync() => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualRustOpaqueTwinRustAsyncOpaqueArrayTwinRustAsync();
+Future<HideDataTwinRustAsyncArray2> opaqueArrayTwinRustAsync() =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinRustAsyncOpaqueArrayTwinRustAsync();
 
 Future<String> runNonCloneTwinRustAsync({
   required NonCloneDataTwinRustAsync clone,
-}) => RustLib.instance.api
-    .crateApiPseudoManualRustOpaqueTwinRustAsyncRunNonCloneTwinRustAsync(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinRustAsyncRunNonCloneTwinRustAsync(
       clone: clone,
     );
 
 Future<void> opaqueArrayRunTwinRustAsync({
   required HideDataTwinRustAsyncArray2 data,
-}) => RustLib.instance.api
-    .crateApiPseudoManualRustOpaqueTwinRustAsyncOpaqueArrayRunTwinRustAsync(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinRustAsyncOpaqueArrayRunTwinRustAsync(
       data: data,
     );
 
-Future<List<HideDataTwinRustAsync>> opaqueVecTwinRustAsync() => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualRustOpaqueTwinRustAsyncOpaqueVecTwinRustAsync();
+Future<List<HideDataTwinRustAsync>> opaqueVecTwinRustAsync() =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinRustAsyncOpaqueVecTwinRustAsync();
 
 Future<void> opaqueVecRunTwinRustAsync({
   required List<HideDataTwinRustAsync> data,
-}) => RustLib.instance.api
-    .crateApiPseudoManualRustOpaqueTwinRustAsyncOpaqueVecRunTwinRustAsync(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinRustAsyncOpaqueVecRunTwinRustAsync(
       data: data,
     );
 
 Future<OpaqueNestedTwinRustAsync> createNestedOpaqueTwinRustAsync() => RustLib
-    .instance
-    .api
+    .instance.api
     .crateApiPseudoManualRustOpaqueTwinRustAsyncCreateNestedOpaqueTwinRustAsync();
 
 Future<void> runNestedOpaqueTwinRustAsync({
   required OpaqueNestedTwinRustAsync opaque,
-}) => RustLib.instance.api
-    .crateApiPseudoManualRustOpaqueTwinRustAsyncRunNestedOpaqueTwinRustAsync(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinRustAsyncRunNestedOpaqueTwinRustAsync(
       opaque: opaque,
     );
 
 Future<String> unwrapRustOpaqueTwinRustAsync({
   required HideDataTwinRustAsync opaque,
-}) => RustLib.instance.api
-    .crateApiPseudoManualRustOpaqueTwinRustAsyncUnwrapRustOpaqueTwinRustAsync(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustOpaqueTwinRustAsyncUnwrapRustOpaqueTwinRustAsync(
       opaque: opaque,
     );
 
@@ -102,8 +107,7 @@ Future<String> unwrapRustOpaqueTwinRustAsync({
 /// FrbOpaqueReturn must be only return type.
 /// FrbOpaqueReturn must not be used as an argument.
 Future<FrbOpaqueReturnTwinRustAsync> frbGeneratorTestTwinRustAsync() => RustLib
-    .instance
-    .api
+    .instance.api
     .crateApiPseudoManualRustOpaqueTwinRustAsyncFrbGeneratorTestTwinRustAsync();
 
 // Rust type: RustOpaqueMoi<Box < dyn DartDebugTwinRustAsync >>
@@ -124,11 +128,11 @@ class HideDataTwinRustAsyncArray2
   final List<HideDataTwinRustAsync> _inner;
 
   HideDataTwinRustAsyncArray2(this._inner)
-    : assert(_inner.length == arraySize),
-      super(_inner);
+      : assert(_inner.length == arraySize),
+        super(_inner);
 
   HideDataTwinRustAsyncArray2.init(HideDataTwinRustAsync fill)
-    : this(List<HideDataTwinRustAsync>.filled(arraySize, fill));
+      : this(List<HideDataTwinRustAsync>.filled(arraySize, fill));
 }
 
 // Rust type: RustOpaqueMoi<Mutex < HideDataTwinRustAsync >>
@@ -173,11 +177,11 @@ class EnumOpaqueTwinRustAsyncArray5
   final List<EnumOpaqueTwinRustAsync> _inner;
 
   EnumOpaqueTwinRustAsyncArray5(this._inner)
-    : assert(_inner.length == arraySize),
-      super(_inner);
+      : assert(_inner.length == arraySize),
+        super(_inner);
 
   EnumOpaqueTwinRustAsyncArray5.init(EnumOpaqueTwinRustAsync fill)
-    : this(List<EnumOpaqueTwinRustAsync>.filled(arraySize, fill));
+      : this(List<EnumOpaqueTwinRustAsync>.filled(arraySize, fill));
 }
 
 /// [`HideDataTwinRustAsync`] has private fields.

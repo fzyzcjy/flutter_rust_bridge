@@ -14,8 +14,9 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 /// Functions (other tests are mainly methods)
 Future<LtTypeWithLifetimeTwinSync> ltComputeWithLifetimeFunctionTwinSync({
   required LtOwnedStructTwinSync arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualLifetimeableTwinSyncLtComputeWithLifetimeFunctionTwinSync(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualLifetimeableTwinSyncLtComputeWithLifetimeFunctionTwinSync(
       arg: arg,
     );
 
@@ -31,14 +32,15 @@ abstract class LtTypeWithLifetimeTwinSync implements RustOpaqueInterface {
   /// Input argument has type `T<'a>` (other tests mainly are `&'a T`)
   static Future<LtTypeWithLifetimeTwinSync> computeArgGenericLifetimeTwinSync({
     required LtTypeWithLifetimeTwinSync arg,
-  }) => RustLib.instance.api
-      .crateApiPseudoManualLifetimeableTwinSyncLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithLifetimeTwinSyncstaticComputeArgGenericLifetimeTwinSync(
+  }) =>
+      RustLib.instance.api
+          .crateApiPseudoManualLifetimeableTwinSyncLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithLifetimeTwinSyncstaticComputeArgGenericLifetimeTwinSync(
         arg: arg,
       );
 
   /// Input lifetimeable and output another lifetimeable
   Future<LtNestedTypeWithLifetimeTwinSync>
-  computeNestedTypeWithLifetimeTwinSync();
+      computeNestedTypeWithLifetimeTwinSync();
 
   /// `&mut T` where T is lifetimeable
   String greetBorrowMutSelfTwinSync();
@@ -50,14 +52,15 @@ abstract class LtTypeWithLifetimeTwinSync implements RustOpaqueInterface {
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Lifetimeable < LtTypeWithMultiDepTwinSync < 'static > >>>
 abstract class LtTypeWithMultiDepTwinSync implements RustOpaqueInterface {
   /// Multiple input args have lifetime
-  static Future<LtTypeWithMultiDepTwinSync>
-  computeWithMultiArgHavingLifetimeTwinSync({
+  static Future<
+      LtTypeWithMultiDepTwinSync> computeWithMultiArgHavingLifetimeTwinSync({
     required LtOwnedStructTwinSync a,
     required LtOwnedStructTwinSync b,
     required LtOwnedStructTwinSync unrelatedBorrowed,
     required LtOwnedStructTwinSync unrelatedOwned,
-  }) => RustLib.instance.api
-      .crateApiPseudoManualLifetimeableTwinSyncLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithMultiDepTwinSyncstaticComputeWithMultiArgHavingLifetimeTwinSync(
+  }) =>
+      RustLib.instance.api
+          .crateApiPseudoManualLifetimeableTwinSyncLifetimeableAutoOwnedRustOpaqueFlutterRustBridgeforGeneratedRustAutoOpaqueInnerLtTypeWithMultiDepTwinSyncstaticComputeWithMultiArgHavingLifetimeTwinSync(
         a: a,
         b: b,
         unrelatedBorrowed: unrelatedBorrowed,
@@ -82,16 +85,18 @@ abstract class LtOwnedStructTwinSync implements RustOpaqueInterface {
 
   static LtOwnedStructTwinSync createTwinSync({
     required String value,
-  }) => RustLib.instance.api
-      .crateApiPseudoManualLifetimeableTwinSyncLtOwnedStructTwinSyncCreateTwinSync(
+  }) =>
+      RustLib.instance.api
+          .crateApiPseudoManualLifetimeableTwinSyncLtOwnedStructTwinSyncCreateTwinSync(
         value: value,
       );
 
   static LtOwnedStructTwinSync createWithLoggerTwinSync({
     required String value,
     required SimpleLogger logger,
-  }) => RustLib.instance.api
-      .crateApiPseudoManualLifetimeableTwinSyncLtOwnedStructTwinSyncCreateWithLoggerTwinSync(
+  }) =>
+      RustLib.instance.api
+          .crateApiPseudoManualLifetimeableTwinSyncLtOwnedStructTwinSyncCreateWithLoggerTwinSync(
         value: value,
         logger: logger,
       );

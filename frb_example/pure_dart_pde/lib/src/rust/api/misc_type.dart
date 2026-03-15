@@ -19,13 +19,15 @@ Future<List<MySize>> handleListOfStructTwinNormal({required List<MySize> l}) =>
 
 Future<List<String>> handleStringListTwinNormal({
   required List<String> names,
-}) => RustLib.instance.api.crateApiMiscTypeHandleStringListTwinNormal(
-  names: names,
-);
+}) =>
+    RustLib.instance.api.crateApiMiscTypeHandleStringListTwinNormal(
+      names: names,
+    );
 
 Future<EmptyTwinNormal> emptyStructTwinNormal({
   required EmptyTwinNormal empty,
-}) => RustLib.instance.api.crateApiMiscTypeEmptyStructTwinNormal(empty: empty);
+}) =>
+    RustLib.instance.api.crateApiMiscTypeEmptyStructTwinNormal(empty: empty);
 
 class EmptyTwinNormal {
   const EmptyTwinNormal();
