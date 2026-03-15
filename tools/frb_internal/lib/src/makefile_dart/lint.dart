@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_print
 
+import 'dart:io' show File;
+
 import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
