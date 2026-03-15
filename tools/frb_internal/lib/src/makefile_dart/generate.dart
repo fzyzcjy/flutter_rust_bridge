@@ -351,7 +351,9 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
   await _wrapMaybeSetExitIfChanged(
     config,
     extraArgs:
-        "':(exclude)*Podfile' ':(exclude)*.xcconfig' ':(exclude)pubspec.lock' ':(exclude)*Cargo.lock'",
+        "':(exclude)*Podfile' ':(exclude)*.xcconfig' ':(exclude)pubspec.lock' ':(exclude)*Cargo.lock' "
+        "':(exclude)frb_example/flutter_via_create/ios/**' "
+        "':(exclude)frb_example/flutter_package/example/ios/**'",
     () async {
       final dirPackage = path.join(exec.pwd!, config.package);
 

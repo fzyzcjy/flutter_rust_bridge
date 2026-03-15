@@ -31,9 +31,9 @@ SHELL ["/bin/bash", "-c"]
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain ${RUST_VERSION} && \
     export PATH="$HOME/.cargo/bin:$PATH" && \
     rustup component add rustfmt clippy && \
-    rustup toolchain install nightly-${RUST_NIGHTLY_VERSION} && \
-    rustup component add rust-src --toolchain nightly-${RUST_NIGHTLY_VERSION} && \
-    rustup target add wasm32-unknown-unknown --toolchain nightly-${RUST_NIGHTLY_VERSION}
+    rustup toolchain install "nightly-${RUST_NIGHTLY_VERSION}" && \
+    rustup component add rust-src --toolchain "nightly-${RUST_NIGHTLY_VERSION}" && \
+    rustup target add wasm32-unknown-unknown --toolchain "nightly-${RUST_NIGHTLY_VERSION}"
 ENV PATH="/root/.cargo/bin:${PATH}"
 
 # Install wasm-pack for web tests (using cargo for better reliability)
@@ -45,10 +45,14 @@ RUN cargo install cargo-llvm-cov && \
 
 # Install Chrome for web tests (headless testing)
 RUN apt-get update && apt-get install -y \
-    chromium \
-    chromium-driver \
+    wget \
+    gnupg \
+    && wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /usr/share/keyrings/google-chrome.gpg && \
+    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list && \
+    apt-get update && apt-get install -y \
+    google-chrome-stable \
     && rm -rf /var/lib/apt/lists/*
-ENV CHROME_BIN=/usr/bin/chromium
+ENV CHROME_BIN=/usr/bin/google-chrome
 
 # Working directory
 WORKDIR /workspace
@@ -56,12 +60,12 @@ WORKDIR /workspace
 RUN flutter --version && \
     dart --version && \
     cargo --version && \
-    rustup toolchain list | grep nightly-${RUST_NIGHTLY_VERSION} && \
-    rustup target list --installed | grep wasm32-unknown-unknown && \
+    rustup toolchain list | grep "nightly-${RUST_NIGHTLY_VERSION}" && \
+    rustup target list --toolchain "nightly-${RUST_NIGHTLY_VERSION}" --installed | grep wasm32-unknown-unknown && \
     cargo llvm-cov --version && \
     wasm-pack --version && \
     all-contributors --version && \
-    chromium --version
+    "${CHROME_BIN}" --version
 
 # Default command
 CMD ["bash"]
