@@ -20,8 +20,9 @@ Future<SumWithTwinRustAsyncArray3> getSumArrayTwinRustAsync({
   required int a,
   required int b,
   required int c,
-}) => RustLib.instance.api
-    .crateApiPseudoManualMethodTwinRustAsyncGetSumArrayTwinRustAsync(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMethodTwinRustAsyncGetSumArrayTwinRustAsync(
       a: a,
       b: b,
       c: c,
@@ -41,43 +42,45 @@ class ConcatenateWithTwinRustAsync {
   static Future<String> concatenateStaticTwinRustAsync({
     required String a,
     required String b,
-  }) => RustLib.instance.api
-      .crateApiPseudoManualMethodTwinRustAsyncConcatenateWithTwinRustAsyncConcatenateStaticTwinRustAsync(
+  }) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinRustAsyncConcatenateWithTwinRustAsyncConcatenateStaticTwinRustAsync(
         a: a,
         b: b,
       );
 
-  Future<String> concatenateTwinRustAsync({required String b}) => RustLib
-      .instance
-      .api
-      .crateApiPseudoManualMethodTwinRustAsyncConcatenateWithTwinRustAsyncConcatenateTwinRustAsync(
+  Future<String> concatenateTwinRustAsync({required String b}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinRustAsyncConcatenateWithTwinRustAsyncConcatenateTwinRustAsync(
         that: this,
         b: b,
       );
 
-  static Stream<int>
-  handleSomeStaticStreamSinkSingleArgTwinRustAsync() => RustLib.instance.api
+  static Stream<int> handleSomeStaticStreamSinkSingleArgTwinRustAsync() => RustLib
+      .instance.api
       .crateApiPseudoManualMethodTwinRustAsyncConcatenateWithTwinRustAsyncHandleSomeStaticStreamSinkSingleArgTwinRustAsync();
 
   static Stream<Log2TwinRustAsync> handleSomeStaticStreamSinkTwinRustAsync({
     required int key,
     required int max,
-  }) => RustLib.instance.api
-      .crateApiPseudoManualMethodTwinRustAsyncConcatenateWithTwinRustAsyncHandleSomeStaticStreamSinkTwinRustAsync(
+  }) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinRustAsyncConcatenateWithTwinRustAsyncHandleSomeStaticStreamSinkTwinRustAsync(
         key: key,
         max: max,
       );
 
   Stream<int> handleSomeStreamSinkAt1TwinRustAsync() => RustLib.instance.api
-      .crateApiPseudoManualMethodTwinRustAsyncConcatenateWithTwinRustAsyncHandleSomeStreamSinkAt1TwinRustAsync(
+          .crateApiPseudoManualMethodTwinRustAsyncConcatenateWithTwinRustAsyncHandleSomeStreamSinkAt1TwinRustAsync(
         that: this,
       );
 
   Stream<Log2TwinRustAsync> handleSomeStreamSinkTwinRustAsync({
     required int key,
     required int max,
-  }) => RustLib.instance.api
-      .crateApiPseudoManualMethodTwinRustAsyncConcatenateWithTwinRustAsyncHandleSomeStreamSinkTwinRustAsync(
+  }) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinRustAsyncConcatenateWithTwinRustAsyncHandleSomeStreamSinkTwinRustAsync(
         that: this,
         key: key,
         max: max,
@@ -85,13 +88,14 @@ class ConcatenateWithTwinRustAsync {
 
   static Future<ConcatenateWithTwinRustAsync> newTwinRustAsync({
     required String a,
-  }) => RustLib.instance.api
-      .crateApiPseudoManualMethodTwinRustAsyncConcatenateWithTwinRustAsyncNewTwinRustAsync(
+  }) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinRustAsyncConcatenateWithTwinRustAsyncNewTwinRustAsync(
         a: a,
       );
 
   Future<String> get simpleGetterTwinRustAsync => RustLib.instance.api
-      .crateApiPseudoManualMethodTwinRustAsyncConcatenateWithTwinRustAsyncSimpleGetterTwinRustAsync(
+          .crateApiPseudoManualMethodTwinRustAsyncConcatenateWithTwinRustAsyncSimpleGetterTwinRustAsync(
         that: this,
       );
 
@@ -130,7 +134,7 @@ class MyCallableTwinRustAsync {
   const MyCallableTwinRustAsync({required this.one});
 
   Future<String> call({required String two}) => RustLib.instance.api
-      .crateApiPseudoManualMethodTwinRustAsyncMyCallableTwinRustAsyncCall(
+          .crateApiPseudoManualMethodTwinRustAsyncMyCallableTwinRustAsyncCall(
         that: this,
         two: two,
       );
@@ -156,13 +160,14 @@ sealed class SimpleEnumTwinRustAsync with _$SimpleEnumTwinRustAsync {
 
   static Future<SimpleEnumTwinRustAsync> returnSelfTwinRustAsync({
     required String one,
-  }) => RustLib.instance.api
-      .crateApiPseudoManualMethodTwinRustAsyncSimpleEnumTwinRustAsyncReturnSelfTwinRustAsync(
+  }) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinRustAsyncSimpleEnumTwinRustAsyncReturnSelfTwinRustAsync(
         one: one,
       );
 
   Future<String> simpleMethodTwinRustAsync() => RustLib.instance.api
-      .crateApiPseudoManualMethodTwinRustAsyncSimpleEnumTwinRustAsyncSimpleMethodTwinRustAsync(
+          .crateApiPseudoManualMethodTwinRustAsyncSimpleEnumTwinRustAsyncSimpleMethodTwinRustAsync(
         that: this,
       );
 }
@@ -172,7 +177,7 @@ enum SimplePrimitiveEnumTwinRustAsync {
   second;
 
   Future<int> simpleMethodTwinRustAsync() => RustLib.instance.api
-      .crateApiPseudoManualMethodTwinRustAsyncSimplePrimitiveEnumTwinRustAsyncSimpleMethodTwinRustAsync(
+          .crateApiPseudoManualMethodTwinRustAsyncSimplePrimitiveEnumTwinRustAsyncSimpleMethodTwinRustAsync(
         that: this,
       );
 }
@@ -185,33 +190,36 @@ class SimpleStructTwinRustAsync {
   static Future<String> argSelfTwinRustAsync({
     required SimpleStructTwinRustAsync a,
     required SimpleStructTwinRustAsync b,
-  }) => RustLib.instance.api
-      .crateApiPseudoManualMethodTwinRustAsyncSimpleStructTwinRustAsyncArgSelfTwinRustAsync(
+  }) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinRustAsyncSimpleStructTwinRustAsyncArgSelfTwinRustAsync(
         a: a,
         b: b,
       );
 
   Future<String> receiverBorrowTwinRustAsync() => RustLib.instance.api
-      .crateApiPseudoManualMethodTwinRustAsyncSimpleStructTwinRustAsyncReceiverBorrowTwinRustAsync(
+          .crateApiPseudoManualMethodTwinRustAsyncSimpleStructTwinRustAsyncReceiverBorrowTwinRustAsync(
         that: this,
       );
 
   Future<String> receiverOwnTwinRustAsync() => RustLib.instance.api
-      .crateApiPseudoManualMethodTwinRustAsyncSimpleStructTwinRustAsyncReceiverOwnTwinRustAsync(
+          .crateApiPseudoManualMethodTwinRustAsyncSimpleStructTwinRustAsyncReceiverOwnTwinRustAsync(
         that: this,
       );
 
   static Future<SimpleStructTwinRustAsync> returnSelfTwinRustAsync({
     required String one,
-  }) => RustLib.instance.api
-      .crateApiPseudoManualMethodTwinRustAsyncSimpleStructTwinRustAsyncReturnSelfTwinRustAsync(
+  }) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinRustAsyncSimpleStructTwinRustAsyncReturnSelfTwinRustAsync(
         one: one,
       );
 
   static Future<List<String>> vecSelfTwinRustAsync({
     required List<SimpleStructTwinRustAsync> arg,
-  }) => RustLib.instance.api
-      .crateApiPseudoManualMethodTwinRustAsyncSimpleStructTwinRustAsyncVecSelfTwinRustAsync(
+  }) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinRustAsyncSimpleStructTwinRustAsyncVecSelfTwinRustAsync(
         arg: arg,
       );
 
@@ -231,10 +239,9 @@ class StaticOnlyTwinRustAsync {
 
   const StaticOnlyTwinRustAsync({required this.one});
 
-  static Future<int> staticMethodTwinRustAsync({required int a}) => RustLib
-      .instance
-      .api
-      .crateApiPseudoManualMethodTwinRustAsyncStaticOnlyTwinRustAsyncStaticMethodTwinRustAsync(
+  static Future<int> staticMethodTwinRustAsync({required int a}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinRustAsyncStaticOnlyTwinRustAsyncStaticMethodTwinRustAsync(
         a: a,
       );
 
@@ -254,10 +261,9 @@ class SumWithTwinRustAsync {
 
   const SumWithTwinRustAsync({required this.x});
 
-  Future<int> sumTwinRustAsync({required int y, required int z}) => RustLib
-      .instance
-      .api
-      .crateApiPseudoManualMethodTwinRustAsyncSumWithTwinRustAsyncSumTwinRustAsync(
+  Future<int> sumTwinRustAsync({required int y, required int z}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualMethodTwinRustAsyncSumWithTwinRustAsyncSumTwinRustAsync(
         that: this,
         y: y,
         z: z,
@@ -283,9 +289,9 @@ class SumWithTwinRustAsyncArray3
   final List<SumWithTwinRustAsync> _inner;
 
   SumWithTwinRustAsyncArray3(this._inner)
-    : assert(_inner.length == arraySize),
-      super(_inner);
+      : assert(_inner.length == arraySize),
+        super(_inner);
 
   SumWithTwinRustAsyncArray3.init(SumWithTwinRustAsync fill)
-    : this(List<SumWithTwinRustAsync>.filled(arraySize, fill));
+      : this(List<SumWithTwinRustAsync>.filled(arraySize, fill));
 }

@@ -22,18 +22,20 @@ Future<void> closeEventListenerTwinNormal() =>
 Future<void> createEventTwinNormal({
   required String address,
   required String payload,
-}) => RustLib.instance.api.crateApiEventListenerCreateEventTwinNormal(
-  address: address,
-  payload: payload,
-);
+}) =>
+    RustLib.instance.api.crateApiEventListenerCreateEventTwinNormal(
+      address: address,
+      payload: payload,
+    );
 
 void createEventSyncTwinNormal({
   required String address,
   required String payload,
-}) => RustLib.instance.api.crateApiEventListenerCreateEventSyncTwinNormal(
-  address: address,
-  payload: payload,
-);
+}) =>
+    RustLib.instance.api.crateApiEventListenerCreateEventSyncTwinNormal(
+      address: address,
+      payload: payload,
+    );
 
 @freezed
 sealed class EventTwinNormal with _$EventTwinNormal {

@@ -18,214 +18,177 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   group('basic_map', () {
     addTestsIdentityFunctionCall(
-      exampleBasicMapTypeI8TwinRustAsync,
-      <Map<int, int>>[
-        {},
-        {42: 0},
-        {42: -128},
-        {42: 127},
-        {42: 79},
-        {42: -79},
-      ],
-    );
+        exampleBasicMapTypeI8TwinRustAsync, <Map<int, int>>[
+      {},
+      {42: 0},
+      {42: -128},
+      {42: 127},
+      {42: 79},
+      {42: -79}
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicMapTypeI16TwinRustAsync,
-      <Map<int, int>>[
-        {},
-        {42: 0},
-        {42: -32768},
-        {42: 32767},
-        {42: 12345},
-        {42: -12345},
-      ],
-    );
+        exampleBasicMapTypeI16TwinRustAsync, <Map<int, int>>[
+      {},
+      {42: 0},
+      {42: -32768},
+      {42: 32767},
+      {42: 12345},
+      {42: -12345}
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicMapTypeI32TwinRustAsync,
-      <Map<int, int>>[
-        {},
-        {42: 0},
-        {42: -2147483648},
-        {42: 2147483647},
-        {42: 1234567890},
-        {42: -1234567890},
-      ],
-    );
+        exampleBasicMapTypeI32TwinRustAsync, <Map<int, int>>[
+      {},
+      {42: 0},
+      {42: -2147483648},
+      {42: 2147483647},
+      {42: 1234567890},
+      {42: -1234567890}
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicMapTypeI64TwinRustAsync,
-      <Map<int, PlatformInt64>>[
-        {},
-        {42: PlatformInt64.parse("0")},
-        {42: PlatformInt64.parse("-9007199254740992")},
-        {42: PlatformInt64.parse("9007199254740992")},
-        {42: PlatformInt64.parse("-9223372036854775808")},
-        {42: PlatformInt64.parse("9223372036854775807")},
-        {42: PlatformInt64.parse("1234567890123456789")},
-        {42: PlatformInt64.parse("-1234567890123456789")},
-      ],
-    );
+        exampleBasicMapTypeI64TwinRustAsync, <Map<int, PlatformInt64>>[
+      {},
+      {42: PlatformInt64.parse("0")},
+      {42: PlatformInt64.parse("-9007199254740992")},
+      {42: PlatformInt64.parse("9007199254740992")},
+      {42: PlatformInt64.parse("-9223372036854775808")},
+      {42: PlatformInt64.parse("9223372036854775807")},
+      {42: PlatformInt64.parse("1234567890123456789")},
+      {42: PlatformInt64.parse("-1234567890123456789")}
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicMapTypeI128TwinRustAsync,
-      <Map<int, BigInt>>[
-        {},
-        {42: BigInt.parse("0")},
-        {42: BigInt.parse("-9007199254740992")},
-        {42: BigInt.parse("9007199254740992")},
-        {42: BigInt.parse("-9223372036854775808")},
-        {42: BigInt.parse("9223372036854775807")},
-        {42: BigInt.parse("-170141183460469231731687303715884105728")},
-        {42: BigInt.parse("170141183460469231731687303715884105727")},
-      ],
-    );
+        exampleBasicMapTypeI128TwinRustAsync, <Map<int, BigInt>>[
+      {},
+      {42: BigInt.parse("0")},
+      {42: BigInt.parse("-9007199254740992")},
+      {42: BigInt.parse("9007199254740992")},
+      {42: BigInt.parse("-9223372036854775808")},
+      {42: BigInt.parse("9223372036854775807")},
+      {42: BigInt.parse("-170141183460469231731687303715884105728")},
+      {42: BigInt.parse("170141183460469231731687303715884105727")}
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicMapTypeU8TwinRustAsync,
-      <Map<int, int>>[
-        {},
-        {42: 0},
-        {42: 255},
-        {42: 123},
-      ],
-    );
+        exampleBasicMapTypeU8TwinRustAsync, <Map<int, int>>[
+      {},
+      {42: 0},
+      {42: 255},
+      {42: 123}
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicMapTypeU16TwinRustAsync,
-      <Map<int, int>>[
-        {},
-        {42: 0},
-        {42: 65535},
-        {42: 12345},
-      ],
-    );
+        exampleBasicMapTypeU16TwinRustAsync, <Map<int, int>>[
+      {},
+      {42: 0},
+      {42: 65535},
+      {42: 12345}
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicMapTypeU32TwinRustAsync,
-      <Map<int, int>>[
-        {},
-        {42: 0},
-        {42: 4294967295},
-        {42: 2468013579},
-      ],
-    );
+        exampleBasicMapTypeU32TwinRustAsync, <Map<int, int>>[
+      {},
+      {42: 0},
+      {42: 4294967295},
+      {42: 2468013579}
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicMapTypeU64TwinRustAsync,
-      <Map<int, BigInt>>[
-        {},
-        {42: BigInt.parse("0")},
-        {42: BigInt.parse("9007199254740992")},
-        {42: BigInt.parse("9223372036854775807")},
-        {42: BigInt.parse("9223372036854775808")},
-        {42: BigInt.parse("18446744073709551615")},
-        {42: BigInt.parse("12345678912345678913")},
-      ],
-    );
+        exampleBasicMapTypeU64TwinRustAsync, <Map<int, BigInt>>[
+      {},
+      {42: BigInt.parse("0")},
+      {42: BigInt.parse("9007199254740992")},
+      {42: BigInt.parse("9223372036854775807")},
+      {42: BigInt.parse("9223372036854775808")},
+      {42: BigInt.parse("18446744073709551615")},
+      {42: BigInt.parse("12345678912345678913")}
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicMapTypeU128TwinRustAsync,
-      <Map<int, BigInt>>[
-        {},
-        {42: BigInt.parse("0")},
-        {42: BigInt.parse("9007199254740992")},
-        {42: BigInt.parse("9223372036854775807")},
-        {42: BigInt.parse("9223372036854775808")},
-        {42: BigInt.parse("18446744073709551615")},
-        {42: BigInt.parse("340282366920938463463374607431768211455")},
-      ],
-    );
+        exampleBasicMapTypeU128TwinRustAsync, <Map<int, BigInt>>[
+      {},
+      {42: BigInt.parse("0")},
+      {42: BigInt.parse("9007199254740992")},
+      {42: BigInt.parse("9223372036854775807")},
+      {42: BigInt.parse("9223372036854775808")},
+      {42: BigInt.parse("18446744073709551615")},
+      {42: BigInt.parse("340282366920938463463374607431768211455")}
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicMapTypeIsizeTwinRustAsync,
-      <Map<int, PlatformInt64>>[
-        {},
-        {42: PlatformInt64.parse("0")},
-        {42: PlatformInt64.parse("-2147483648")},
-        {42: PlatformInt64.parse("2147483647")},
-        {42: PlatformInt64.parse("-1234234567")},
-        {42: PlatformInt64.parse("1234234567")},
-        if (!kIsWeb) {42: PlatformInt64.parse("-9007199254740992")},
-        if (!kIsWeb) {42: PlatformInt64.parse("9007199254740992")},
-        if (!kIsWeb) {42: PlatformInt64.parse("-9223372036854775808")},
-        if (!kIsWeb) {42: PlatformInt64.parse("9223372036854775807")},
-      ],
-    );
+        exampleBasicMapTypeIsizeTwinRustAsync, <Map<int, PlatformInt64>>[
+      {},
+      {42: PlatformInt64.parse("0")},
+      {42: PlatformInt64.parse("-2147483648")},
+      {42: PlatformInt64.parse("2147483647")},
+      {42: PlatformInt64.parse("-1234234567")},
+      {42: PlatformInt64.parse("1234234567")},
+      if (!kIsWeb) {42: PlatformInt64.parse("-9007199254740992")},
+      if (!kIsWeb) {42: PlatformInt64.parse("9007199254740992")},
+      if (!kIsWeb) {42: PlatformInt64.parse("-9223372036854775808")},
+      if (!kIsWeb) {42: PlatformInt64.parse("9223372036854775807")}
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicMapTypeUsizeTwinRustAsync,
-      <Map<int, BigInt>>[
-        {},
-        {42: BigInt.parse("0")},
-        {42: BigInt.parse("4294967295")},
-        {42: BigInt.parse("1234234567")},
-        if (!kIsWeb) {42: BigInt.parse("9007199254740992")},
-        if (!kIsWeb) {42: BigInt.parse("9223372036854775807")},
-        if (!kIsWeb) {42: BigInt.parse("18446744073709551615")},
-        if (!kIsWeb) {42: BigInt.parse("12345678912345678913")},
-      ],
-    );
+        exampleBasicMapTypeUsizeTwinRustAsync, <Map<int, BigInt>>[
+      {},
+      {42: BigInt.parse("0")},
+      {42: BigInt.parse("4294967295")},
+      {42: BigInt.parse("1234234567")},
+      if (!kIsWeb) {42: BigInt.parse("9007199254740992")},
+      if (!kIsWeb) {42: BigInt.parse("9223372036854775807")},
+      if (!kIsWeb) {42: BigInt.parse("18446744073709551615")},
+      if (!kIsWeb) {42: BigInt.parse("12345678912345678913")}
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicMapTypeF32TwinRustAsync,
-      <Map<int, double>>[
-        {},
-        {42: 0},
-        {42: -42.5},
-        {42: 123456},
-      ],
-    );
+        exampleBasicMapTypeF32TwinRustAsync, <Map<int, double>>[
+      {},
+      {42: 0},
+      {42: -42.5},
+      {42: 123456}
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicMapTypeF64TwinRustAsync,
-      <Map<int, double>>[
-        {},
-        {42: 0},
-        {42: -42.5},
-        {42: 123456},
-      ],
-    );
+        exampleBasicMapTypeF64TwinRustAsync, <Map<int, double>>[
+      {},
+      {42: 0},
+      {42: -42.5},
+      {42: 123456}
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicMapTypeBoolTwinRustAsync,
-      <Map<int, bool>>[
-        {},
-        {42: false},
-        {42: true},
-      ],
-    );
+        exampleBasicMapTypeBoolTwinRustAsync, <Map<int, bool>>[
+      {},
+      {42: false},
+      {42: true}
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicMapTypeStringTwinRustAsync,
-      <Map<int, String>>[
-        {},
-        {42: ""},
-        {42: "hello"},
-        {42: "😂"},
-      ],
-    );
+        exampleBasicMapTypeStringTwinRustAsync, <Map<int, String>>[
+      {},
+      {42: ""},
+      {42: "hello"},
+      {42: "😂"}
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicMapTypeBytesTwinRustAsync,
-      <Map<int, Uint8List>>[
-        {},
-        {42: Uint8List.fromList([])},
-        {
-          42: Uint8List.fromList([255, 0]),
-        },
-        {
-          42: Uint8List.fromList([10, 20, 30, 40]),
-        },
-      ],
-    );
+        exampleBasicMapTypeBytesTwinRustAsync, <Map<int, Uint8List>>[
+      {},
+      {42: Uint8List.fromList([])},
+      {
+        42: Uint8List.fromList([255, 0])
+      },
+      {
+        42: Uint8List.fromList([10, 20, 30, 40])
+      }
+    ]);
     addTestsIdentityFunctionCall(
-      exampleBasicMapTypeBasicPrimitiveEnumTwinRustAsyncTwinRustAsync,
-      <Map<int, BasicPrimitiveEnumTwinRustAsync>>[
-        {},
-        {42: BasicPrimitiveEnumTwinRustAsync.apple},
-        {42: BasicPrimitiveEnumTwinRustAsync.orange},
-      ],
-    );
+        exampleBasicMapTypeBasicPrimitiveEnumTwinRustAsyncTwinRustAsync,
+        <Map<int, BasicPrimitiveEnumTwinRustAsync>>[
+          {},
+          {42: BasicPrimitiveEnumTwinRustAsync.apple},
+          {42: BasicPrimitiveEnumTwinRustAsync.orange}
+        ]);
     addTestsIdentityFunctionCall(
-      exampleBasicMapTypeBasicGeneralEnumTwinRustAsyncTwinRustAsync,
-      <Map<int, BasicGeneralEnumTwinRustAsync>>[
-        {},
-        {42: BasicGeneralEnumTwinRustAsync.apple(field: "one")},
-        {42: BasicGeneralEnumTwinRustAsync.orange()},
-      ],
-    );
+        exampleBasicMapTypeBasicGeneralEnumTwinRustAsyncTwinRustAsync,
+        <Map<int, BasicGeneralEnumTwinRustAsync>>[
+          {},
+          {42: BasicGeneralEnumTwinRustAsync.apple(field: "one")},
+          {42: BasicGeneralEnumTwinRustAsync.orange()}
+        ]);
     addTestsIdentityFunctionCall(
-      exampleBasicMapTypeBasicStructTwinRustAsyncTwinRustAsync,
-      <Map<int, BasicStructTwinRustAsync>>[
-        {},
-        {42: BasicStructTwinRustAsync(apple: null, orange: null)},
-        {42: BasicStructTwinRustAsync(apple: "one", orange: 42)},
-      ],
-    );
+        exampleBasicMapTypeBasicStructTwinRustAsyncTwinRustAsync,
+        <Map<int, BasicStructTwinRustAsync>>[
+          {},
+          {42: BasicStructTwinRustAsync(apple: null, orange: null)},
+          {42: BasicStructTwinRustAsync(apple: "one", orange: 42)}
+        ]);
   });
 }

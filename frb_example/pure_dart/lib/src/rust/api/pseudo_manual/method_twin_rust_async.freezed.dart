@@ -21,34 +21,40 @@ mixin _$SimpleEnumTwinRustAsync {
   TResult when<TResult extends Object?>({
     required TResult Function() first,
     required TResult Function(String field0) second,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? first,
     TResult? Function(String field0)? second,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? first,
     TResult Function(String field0)? second,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SimpleEnumTwinRustAsync_First value) first,
     required TResult Function(SimpleEnumTwinRustAsync_Second value) second,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SimpleEnumTwinRustAsync_First value)? first,
     TResult? Function(SimpleEnumTwinRustAsync_Second value)? second,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SimpleEnumTwinRustAsync_First value)? first,
     TResult Function(SimpleEnumTwinRustAsync_Second value)? second,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -60,10 +66,8 @@ abstract class $SimpleEnumTwinRustAsyncCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SimpleEnumTwinRustAsyncCopyWithImpl<
-  $Res,
-  $Val extends SimpleEnumTwinRustAsync
->
+class _$SimpleEnumTwinRustAsyncCopyWithImpl<$Res,
+        $Val extends SimpleEnumTwinRustAsync>
     implements $SimpleEnumTwinRustAsyncCopyWith<$Res> {
   _$SimpleEnumTwinRustAsyncCopyWithImpl(this._value, this._then);
 
@@ -86,11 +90,8 @@ abstract class _$$SimpleEnumTwinRustAsync_FirstImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$SimpleEnumTwinRustAsync_FirstImplCopyWithImpl<$Res>
-    extends
-        _$SimpleEnumTwinRustAsyncCopyWithImpl<
-          $Res,
-          _$SimpleEnumTwinRustAsync_FirstImpl
-        >
+    extends _$SimpleEnumTwinRustAsyncCopyWithImpl<$Res,
+        _$SimpleEnumTwinRustAsync_FirstImpl>
     implements _$$SimpleEnumTwinRustAsync_FirstImplCopyWith<$Res> {
   __$$SimpleEnumTwinRustAsync_FirstImplCopyWithImpl(
     _$SimpleEnumTwinRustAsync_FirstImpl _value,
@@ -203,11 +204,8 @@ abstract class _$$SimpleEnumTwinRustAsync_SecondImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$SimpleEnumTwinRustAsync_SecondImplCopyWithImpl<$Res>
-    extends
-        _$SimpleEnumTwinRustAsyncCopyWithImpl<
-          $Res,
-          _$SimpleEnumTwinRustAsync_SecondImpl
-        >
+    extends _$SimpleEnumTwinRustAsyncCopyWithImpl<$Res,
+        _$SimpleEnumTwinRustAsync_SecondImpl>
     implements _$$SimpleEnumTwinRustAsync_SecondImplCopyWith<$Res> {
   __$$SimpleEnumTwinRustAsync_SecondImplCopyWithImpl(
     _$SimpleEnumTwinRustAsync_SecondImpl _value,
@@ -224,7 +222,7 @@ class __$$SimpleEnumTwinRustAsync_SecondImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
       ),
     );
   }
@@ -261,12 +259,9 @@ class _$SimpleEnumTwinRustAsync_SecondImpl
   @override
   @pragma('vm:prefer-inline')
   _$$SimpleEnumTwinRustAsync_SecondImplCopyWith<
-    _$SimpleEnumTwinRustAsync_SecondImpl
-  >
-  get copyWith =>
-      __$$SimpleEnumTwinRustAsync_SecondImplCopyWithImpl<
-        _$SimpleEnumTwinRustAsync_SecondImpl
-      >(this, _$identity);
+          _$SimpleEnumTwinRustAsync_SecondImpl>
+      get copyWith => __$$SimpleEnumTwinRustAsync_SecondImplCopyWithImpl<
+          _$SimpleEnumTwinRustAsync_SecondImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -342,7 +337,6 @@ abstract class SimpleEnumTwinRustAsync_Second extends SimpleEnumTwinRustAsync {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SimpleEnumTwinRustAsync_SecondImplCopyWith<
-    _$SimpleEnumTwinRustAsync_SecondImpl
-  >
-  get copyWith => throw _privateConstructorUsedError;
+          _$SimpleEnumTwinRustAsync_SecondImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

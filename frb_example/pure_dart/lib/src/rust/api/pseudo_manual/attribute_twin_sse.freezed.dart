@@ -53,12 +53,11 @@ class _$UserIdTwinSseCopyWithImpl<$Res, $Val extends UserIdTwinSse>
   $Res call({Object? value = null}) {
     return _then(
       _value.copyWith(
-            value: null == value
-                ? _value.value
-                : value // ignore: cast_nullable_to_non_nullable
-                      as int,
-          )
-          as $Val,
+        value: null == value
+            ? _value.value
+            : value // ignore: cast_nullable_to_non_nullable
+                as int,
+      ) as $Val,
     );
   }
 }
@@ -94,7 +93,7 @@ class __$$UserIdTwinSseImplCopyWithImpl<$Res>
         value: null == value
             ? _value.value
             : value // ignore: cast_nullable_to_non_nullable
-                  as int,
+                as int,
       ),
     );
   }

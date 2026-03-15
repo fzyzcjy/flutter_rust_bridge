@@ -14,8 +14,9 @@ part 'rust_auto_opaque_twin_sse.freezed.dart';
 Future<void> rustAutoOpaqueArgOwnTwinSse({
   required NonCloneSimpleTwinSse arg,
   required int expect,
-}) => RustLib.instance.api
-    .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueArgOwnTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueArgOwnTwinSse(
       arg: arg,
       expect: expect,
     );
@@ -23,8 +24,9 @@ Future<void> rustAutoOpaqueArgOwnTwinSse({
 Future<void> rustAutoOpaqueArgBorrowTwinSse({
   required NonCloneSimpleTwinSse arg,
   required int expect,
-}) => RustLib.instance.api
-    .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueArgBorrowTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueArgBorrowTwinSse(
       arg: arg,
       expect: expect,
     );
@@ -33,8 +35,9 @@ Future<void> rustAutoOpaqueArgMutBorrowTwinSse({
   required NonCloneSimpleTwinSse arg,
   required int expect,
   required int adder,
-}) => RustLib.instance.api
-    .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueArgMutBorrowTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueArgMutBorrowTwinSse(
       arg: arg,
       expect: expect,
       adder: adder,
@@ -42,23 +45,26 @@ Future<void> rustAutoOpaqueArgMutBorrowTwinSse({
 
 Future<NonCloneSimpleTwinSse> rustAutoOpaqueReturnOwnTwinSse({
   required int initial,
-}) => RustLib.instance.api
-    .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueReturnOwnTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueReturnOwnTwinSse(
       initial: initial,
     );
 
 Future<NonCloneSimpleTwinSse> rustAutoOpaqueArgOwnAndReturnOwnTwinSse({
   required NonCloneSimpleTwinSse arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueArgOwnAndReturnOwnTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueArgOwnAndReturnOwnTwinSse(
       arg: arg,
     );
 
 Future<void> rustAutoOpaqueTwoArgsTwinSse({
   required NonCloneSimpleTwinSse a,
   required NonCloneSimpleTwinSse b,
-}) => RustLib.instance.api
-    .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueTwoArgsTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueTwoArgsTwinSse(
       a: a,
       b: b,
     );
@@ -66,8 +72,9 @@ Future<void> rustAutoOpaqueTwoArgsTwinSse({
 Future<void> rustAutoOpaqueNormalAndOpaqueArgTwinSse({
   required NonCloneSimpleTwinSse a,
   required String b,
-}) => RustLib.instance.api
-    .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueNormalAndOpaqueArgTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueNormalAndOpaqueArgTwinSse(
       a: a,
       b: b,
     );
@@ -75,148 +82,155 @@ Future<void> rustAutoOpaqueNormalAndOpaqueArgTwinSse({
 /// "+" inside the type signature
 Future<void> rustAutoOpaquePlusSignArgTwinSse({
   required BoxMyTraitTwinSse arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaquePlusSignArgTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaquePlusSignArgTwinSse(
       arg: arg,
     );
 
 Future<BoxMyTraitTwinSse> rustAutoOpaquePlusSignReturnTwinSse() => RustLib
-    .instance
-    .api
+    .instance.api
     .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaquePlusSignReturnTwinSse();
 
 Future<void> rustAutoOpaqueCallableArgTwinSse({
   required BoxFnStringString arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueCallableArgTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueCallableArgTwinSse(
       arg: arg,
     );
 
 Future<BoxFnStringString> rustAutoOpaqueCallableReturnTwinSse() => RustLib
-    .instance
-    .api
+    .instance.api
     .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueCallableReturnTwinSse();
 
 Future<void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSse({
   required StructWithGoodAndOpaqueFieldTwinSse arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinSse(
       arg: arg,
     );
 
 Future<StructWithGoodAndOpaqueFieldTwinSse>
-rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSse() => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSse();
+    rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSse() => RustLib
+        .instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinSse();
 
 Future<void> rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSse({
   required EnumWithGoodAndOpaqueTwinSse arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinSse(
       arg: arg,
     );
 
 Future<EnumWithGoodAndOpaqueTwinSse>
-rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinSse() => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinSse();
+    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinSse() => RustLib
+        .instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinSse();
 
 Future<EnumWithGoodAndOpaqueTwinSse>
-rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinSse() => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinSse();
+    rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinSse() => RustLib
+        .instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinSse();
 
 Future<void> rustAutoOpaqueDummyTwinSse({
   required StructWithGoodAndOpaqueFieldWithoutOptionTwinSse a,
   required EnumWithGoodAndOpaqueWithoutOptionTwinSse b,
-}) => RustLib.instance.api
-    .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueDummyTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueDummyTwinSse(
       a: a,
       b: b,
     );
 
 Future<void> rustAutoOpaqueEnumArgBorrowTwinSse({
   required NonCloneSimpleEnumTwinSse arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueEnumArgBorrowTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueEnumArgBorrowTwinSse(
       arg: arg,
     );
 
-Future<NonCloneSimpleEnumTwinSse>
-rustAutoOpaqueEnumReturnOwnTwinSse() => RustLib.instance.api
+Future<NonCloneSimpleEnumTwinSse> rustAutoOpaqueEnumReturnOwnTwinSse() => RustLib
+    .instance.api
     .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueEnumReturnOwnTwinSse();
 
 Stream<NonCloneSimpleTwinSse> rustAutoOpaqueStreamSinkTwinSse() => RustLib
-    .instance
-    .api
+    .instance.api
     .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueStreamSinkTwinSse();
 
 Future<void> rustAutoOpaqueArgVecOwnTwinSse({
   required List<NonCloneSimpleTwinSse> arg,
   required List<int> expect,
-}) => RustLib.instance.api
-    .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueArgVecOwnTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueArgVecOwnTwinSse(
       arg: arg,
       expect: expect,
     );
 
-Future<List<NonCloneSimpleTwinSse>>
-rustAutoOpaqueReturnVecOwnTwinSse() => RustLib.instance.api
+Future<
+    List<
+        NonCloneSimpleTwinSse>> rustAutoOpaqueReturnVecOwnTwinSse() => RustLib
+    .instance.api
     .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueReturnVecOwnTwinSse();
 
 Future<void> rustAutoOpaqueExplicitArgTwinSse({
   required NonCloneSimpleTwinSse arg,
   required int expect,
-}) => RustLib.instance.api
-    .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueExplicitArgTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueExplicitArgTwinSse(
       arg: arg,
       expect: expect,
     );
 
 Future<void> rustAutoOpaqueExplicitStructTwinSse({
   required StructWithExplicitAutoOpaqueFieldTwinSse arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueExplicitStructTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueExplicitStructTwinSse(
       arg: arg,
     );
 
 Future<StructWithExplicitAutoOpaqueFieldTwinSse>
-rustAutoOpaqueExplicitReturnStructTwinSse() => RustLib.instance.api
-    .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueExplicitReturnStructTwinSse();
+    rustAutoOpaqueExplicitReturnStructTwinSse() => RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueExplicitReturnStructTwinSse();
 
 Future<NonCloneSimpleTwinSse> rustAutoOpaqueExplicitReturnTwinSse({
   required int initial,
-}) => RustLib.instance.api
-    .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueExplicitReturnTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueExplicitReturnTwinSse(
       initial: initial,
     );
 
 Future<int> rustAutoOpaqueSleepTwinSse({
   required NonCloneSimpleTwinSse apple,
   required NonCloneSimpleTwinSse orange,
-}) => RustLib.instance.api
-    .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueSleepTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueSleepTwinSse(
       apple: apple,
       orange: orange,
     );
 
 Future<(OpaqueOneTwinSse, OpaqueTwoTwinSse)>
-rustAutoOpaqueReturnOpaqueOneAndTwoTwinSse() => RustLib.instance.api
-    .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueReturnOpaqueOneAndTwoTwinSse();
+    rustAutoOpaqueReturnOpaqueOneAndTwoTwinSse() => RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueReturnOpaqueOneAndTwoTwinSse();
 
 Future<OpaqueTwoTwinSse> rustAutoOpaqueReturnOpaqueTwoTwinSse() => RustLib
-    .instance
-    .api
+    .instance.api
     .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueReturnOpaqueTwoTwinSse();
 
 Future<int> rustAutoOpaqueBorrowAndMutBorrowTwinSse({
   required NonCloneSimpleTwinSse borrow,
   required NonCloneSimpleTwinSse mutBorrow,
-}) => RustLib.instance.api
-    .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueBorrowAndMutBorrowTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueBorrowAndMutBorrowTwinSse(
       borrow: borrow,
       mutBorrow: mutBorrow,
     );
@@ -224,8 +238,9 @@ Future<int> rustAutoOpaqueBorrowAndMutBorrowTwinSse({
 Future<int> rustAutoOpaqueBorrowAndBorrowTwinSse({
   required NonCloneSimpleTwinSse a,
   required NonCloneSimpleTwinSse b,
-}) => RustLib.instance.api
-    .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueBorrowAndBorrowTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinSseRustAutoOpaqueBorrowAndBorrowTwinSse(
       a: a,
       b: b,
     );
@@ -254,8 +269,7 @@ abstract class NonCloneSimpleTwinSse implements RustOpaqueInterface {
 
   /// named constructor
   static Future<NonCloneSimpleTwinSse> newCustomNameTwinSse() => RustLib
-      .instance
-      .api
+      .instance.api
       .crateApiPseudoManualRustAutoOpaqueTwinSseNonCloneSimpleTwinSseNewCustomNameTwinSse();
 
   /// unnamed constructor
@@ -264,34 +278,35 @@ abstract class NonCloneSimpleTwinSse implements RustOpaqueInterface {
 
   /// constructor with Result
   static Future<NonCloneSimpleTwinSse> newWithResultTwinSse() => RustLib
-      .instance
-      .api
+      .instance.api
       .crateApiPseudoManualRustAutoOpaqueTwinSseNonCloneSimpleTwinSseNewWithResultTwinSse();
 
   static Future<void> staticMethodArgBorrowTwinSse({
     required NonCloneSimpleTwinSse arg,
-  }) => RustLib.instance.api
-      .crateApiPseudoManualRustAutoOpaqueTwinSseNonCloneSimpleTwinSseStaticMethodArgBorrowTwinSse(
+  }) =>
+      RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSseNonCloneSimpleTwinSseStaticMethodArgBorrowTwinSse(
         arg: arg,
       );
 
   static Future<void> staticMethodArgMutBorrowTwinSse({
     required NonCloneSimpleTwinSse arg,
-  }) => RustLib.instance.api
-      .crateApiPseudoManualRustAutoOpaqueTwinSseNonCloneSimpleTwinSseStaticMethodArgMutBorrowTwinSse(
+  }) =>
+      RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSseNonCloneSimpleTwinSseStaticMethodArgMutBorrowTwinSse(
         arg: arg,
       );
 
   static Future<void> staticMethodArgOwnTwinSse({
     required NonCloneSimpleTwinSse arg,
-  }) => RustLib.instance.api
-      .crateApiPseudoManualRustAutoOpaqueTwinSseNonCloneSimpleTwinSseStaticMethodArgOwnTwinSse(
+  }) =>
+      RustLib.instance.api
+          .crateApiPseudoManualRustAutoOpaqueTwinSseNonCloneSimpleTwinSseStaticMethodArgOwnTwinSse(
         arg: arg,
       );
 
   static Future<NonCloneSimpleTwinSse> staticMethodReturnOwnTwinSse() => RustLib
-      .instance
-      .api
+      .instance.api
       .crateApiPseudoManualRustAutoOpaqueTwinSseNonCloneSimpleTwinSseStaticMethodReturnOwnTwinSse();
 }
 

@@ -13,8 +13,9 @@ Future<int?> primitiveOptionalTypesTwinRustAsyncSse({
   PlatformInt64? myI64,
   double? myF64,
   bool? myBool,
-}) => RustLib.instance.api
-    .crateApiPseudoManualOptionalPrimitiveMiscTwinRustAsyncSsePrimitiveOptionalTypesTwinRustAsyncSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualOptionalPrimitiveMiscTwinRustAsyncSsePrimitiveOptionalTypesTwinRustAsyncSse(
       myI32: myI32,
       myI64: myI64,
       myF64: myF64,

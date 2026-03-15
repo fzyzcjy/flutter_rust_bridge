@@ -10,53 +10,60 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<StructWithZeroFieldTwinSse> funcStructWithZeroFieldTwinSse({
   required StructWithZeroFieldTwinSse arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualStructureTwinSseFuncStructWithZeroFieldTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualStructureTwinSseFuncStructWithZeroFieldTwinSse(
       arg: arg,
     );
 
 Future<StructWithOneFieldTwinSse> funcStructWithOneFieldTwinSse({
   required StructWithOneFieldTwinSse arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualStructureTwinSseFuncStructWithOneFieldTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualStructureTwinSseFuncStructWithOneFieldTwinSse(
       arg: arg,
     );
 
 Future<StructWithTwoFieldTwinSse> funcStructWithTwoFieldTwinSse({
   required StructWithTwoFieldTwinSse arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualStructureTwinSseFuncStructWithTwoFieldTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualStructureTwinSseFuncStructWithTwoFieldTwinSse(
       arg: arg,
     );
 
 Future<TupleStructWithOneFieldTwinSse> funcTupleStructWithOneFieldTwinSse({
   required TupleStructWithOneFieldTwinSse arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualStructureTwinSseFuncTupleStructWithOneFieldTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualStructureTwinSseFuncTupleStructWithOneFieldTwinSse(
       arg: arg,
     );
 
 Future<TupleStructWithTwoFieldTwinSse> funcTupleStructWithTwoFieldTwinSse({
   required TupleStructWithTwoFieldTwinSse arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualStructureTwinSseFuncTupleStructWithTwoFieldTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualStructureTwinSseFuncTupleStructWithTwoFieldTwinSse(
       arg: arg,
     );
 
 Future<StructWithFieldRenameTwinSse> funcForStructWithFieldRenameTwinSse({
   required StructWithFieldRenameTwinSse arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualStructureTwinSseFuncForStructWithFieldRenameTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualStructureTwinSseFuncForStructWithFieldRenameTwinSse(
       arg: arg,
     );
 
 Future<StructWithDartKeywordFieldTwinSse>
-funcForStructWithDartKeywordFieldTwinSse({
+    funcForStructWithDartKeywordFieldTwinSse({
   required StructWithDartKeywordFieldTwinSse arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualStructureTwinSseFuncForStructWithDartKeywordFieldTwinSse(
-      arg: arg,
-    );
+}) =>
+        RustLib.instance.api
+            .crateApiPseudoManualStructureTwinSseFuncForStructWithDartKeywordFieldTwinSse(
+          arg: arg,
+        );
 
 class StructWithDartKeywordFieldTwinSse {
   final int class_;

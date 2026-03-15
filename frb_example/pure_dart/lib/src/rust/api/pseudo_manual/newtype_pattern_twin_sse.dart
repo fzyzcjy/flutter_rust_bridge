@@ -12,8 +12,10 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<NewTypeIntTwinSse> handleNewtypeTwinSse({
   required NewTypeIntTwinSse arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualNewtypePatternTwinSseHandleNewtypeTwinSse(arg: arg);
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualNewtypePatternTwinSseHandleNewtypeTwinSse(
+            arg: arg);
 
 class NewTypeIntTwinSse {
   final PlatformInt64 field0;

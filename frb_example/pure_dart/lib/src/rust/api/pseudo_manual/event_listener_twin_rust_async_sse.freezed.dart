@@ -38,10 +38,8 @@ abstract class $EventTwinRustAsyncSseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$EventTwinRustAsyncSseCopyWithImpl<
-  $Res,
-  $Val extends EventTwinRustAsyncSse
->
+class _$EventTwinRustAsyncSseCopyWithImpl<$Res,
+        $Val extends EventTwinRustAsyncSse>
     implements $EventTwinRustAsyncSseCopyWith<$Res> {
   _$EventTwinRustAsyncSseCopyWithImpl(this._value, this._then);
 
@@ -57,16 +55,15 @@ class _$EventTwinRustAsyncSseCopyWithImpl<
   $Res call({Object? address = null, Object? payload = null}) {
     return _then(
       _value.copyWith(
-            address: null == address
-                ? _value.address
-                : address // ignore: cast_nullable_to_non_nullable
-                      as String,
-            payload: null == payload
-                ? _value.payload
-                : payload // ignore: cast_nullable_to_non_nullable
-                      as String,
-          )
-          as $Val,
+        address: null == address
+            ? _value.address
+            : address // ignore: cast_nullable_to_non_nullable
+                as String,
+        payload: null == payload
+            ? _value.payload
+            : payload // ignore: cast_nullable_to_non_nullable
+                as String,
+      ) as $Val,
     );
   }
 }
@@ -85,8 +82,8 @@ abstract class _$$EventTwinRustAsyncSseImplCopyWith<$Res>
 
 /// @nodoc
 class __$$EventTwinRustAsyncSseImplCopyWithImpl<$Res>
-    extends
-        _$EventTwinRustAsyncSseCopyWithImpl<$Res, _$EventTwinRustAsyncSseImpl>
+    extends _$EventTwinRustAsyncSseCopyWithImpl<$Res,
+        _$EventTwinRustAsyncSseImpl>
     implements _$$EventTwinRustAsyncSseImplCopyWith<$Res> {
   __$$EventTwinRustAsyncSseImplCopyWithImpl(
     _$EventTwinRustAsyncSseImpl _value,
@@ -103,11 +100,11 @@ class __$$EventTwinRustAsyncSseImplCopyWithImpl<$Res>
         address: null == address
             ? _value.address
             : address // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         payload: null == payload
             ? _value.payload
             : payload // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
       ),
     );
   }
@@ -149,11 +146,11 @@ class _$EventTwinRustAsyncSseImpl extends _EventTwinRustAsyncSse {
   @override
   @pragma('vm:prefer-inline')
   _$$EventTwinRustAsyncSseImplCopyWith<_$EventTwinRustAsyncSseImpl>
-  get copyWith =>
-      __$$EventTwinRustAsyncSseImplCopyWithImpl<_$EventTwinRustAsyncSseImpl>(
-        this,
-        _$identity,
-      );
+      get copyWith => __$$EventTwinRustAsyncSseImplCopyWithImpl<
+              _$EventTwinRustAsyncSseImpl>(
+            this,
+            _$identity,
+          );
 }
 
 abstract class _EventTwinRustAsyncSse extends EventTwinRustAsyncSse {
@@ -173,5 +170,5 @@ abstract class _EventTwinRustAsyncSse extends EventTwinRustAsyncSse {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EventTwinRustAsyncSseImplCopyWith<_$EventTwinRustAsyncSseImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }

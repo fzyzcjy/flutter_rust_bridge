@@ -24,14 +24,16 @@ mixin _$AbcTwinRustAsyncSse {
     required TResult Function(BTwinRustAsyncSse field0) b,
     required TResult Function(CTwinRustAsyncSse field0) c,
     required TResult Function(int field0) justInt,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ATwinRustAsyncSse field0)? a,
     TResult? Function(BTwinRustAsyncSse field0)? b,
     TResult? Function(CTwinRustAsyncSse field0)? c,
     TResult? Function(int field0)? justInt,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ATwinRustAsyncSse field0)? a,
@@ -39,21 +41,24 @@ mixin _$AbcTwinRustAsyncSse {
     TResult Function(CTwinRustAsyncSse field0)? c,
     TResult Function(int field0)? justInt,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AbcTwinRustAsyncSse_A value) a,
     required TResult Function(AbcTwinRustAsyncSse_B value) b,
     required TResult Function(AbcTwinRustAsyncSse_C value) c,
     required TResult Function(AbcTwinRustAsyncSse_JustInt value) justInt,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AbcTwinRustAsyncSse_A value)? a,
     TResult? Function(AbcTwinRustAsyncSse_B value)? b,
     TResult? Function(AbcTwinRustAsyncSse_C value)? c,
     TResult? Function(AbcTwinRustAsyncSse_JustInt value)? justInt,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AbcTwinRustAsyncSse_A value)? a,
@@ -61,7 +66,8 @@ mixin _$AbcTwinRustAsyncSse {
     TResult Function(AbcTwinRustAsyncSse_C value)? c,
     TResult Function(AbcTwinRustAsyncSse_JustInt value)? justInt,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -115,7 +121,7 @@ class __$$AbcTwinRustAsyncSse_AImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                  as ATwinRustAsyncSse,
+                as ATwinRustAsyncSse,
       ),
     );
   }
@@ -151,11 +157,11 @@ class _$AbcTwinRustAsyncSse_AImpl extends AbcTwinRustAsyncSse_A {
   @override
   @pragma('vm:prefer-inline')
   _$$AbcTwinRustAsyncSse_AImplCopyWith<_$AbcTwinRustAsyncSse_AImpl>
-  get copyWith =>
-      __$$AbcTwinRustAsyncSse_AImplCopyWithImpl<_$AbcTwinRustAsyncSse_AImpl>(
-        this,
-        _$identity,
-      );
+      get copyWith => __$$AbcTwinRustAsyncSse_AImplCopyWithImpl<
+              _$AbcTwinRustAsyncSse_AImpl>(
+            this,
+            _$identity,
+          );
 
   @override
   @optionalTypeArgs
@@ -244,7 +250,7 @@ abstract class AbcTwinRustAsyncSse_A extends AbcTwinRustAsyncSse {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AbcTwinRustAsyncSse_AImplCopyWith<_$AbcTwinRustAsyncSse_AImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -276,7 +282,7 @@ class __$$AbcTwinRustAsyncSse_BImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                  as BTwinRustAsyncSse,
+                as BTwinRustAsyncSse,
       ),
     );
   }
@@ -312,11 +318,11 @@ class _$AbcTwinRustAsyncSse_BImpl extends AbcTwinRustAsyncSse_B {
   @override
   @pragma('vm:prefer-inline')
   _$$AbcTwinRustAsyncSse_BImplCopyWith<_$AbcTwinRustAsyncSse_BImpl>
-  get copyWith =>
-      __$$AbcTwinRustAsyncSse_BImplCopyWithImpl<_$AbcTwinRustAsyncSse_BImpl>(
-        this,
-        _$identity,
-      );
+      get copyWith => __$$AbcTwinRustAsyncSse_BImplCopyWithImpl<
+              _$AbcTwinRustAsyncSse_BImpl>(
+            this,
+            _$identity,
+          );
 
   @override
   @optionalTypeArgs
@@ -405,7 +411,7 @@ abstract class AbcTwinRustAsyncSse_B extends AbcTwinRustAsyncSse {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AbcTwinRustAsyncSse_BImplCopyWith<_$AbcTwinRustAsyncSse_BImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -437,7 +443,7 @@ class __$$AbcTwinRustAsyncSse_CImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                  as CTwinRustAsyncSse,
+                as CTwinRustAsyncSse,
       ),
     );
   }
@@ -473,11 +479,11 @@ class _$AbcTwinRustAsyncSse_CImpl extends AbcTwinRustAsyncSse_C {
   @override
   @pragma('vm:prefer-inline')
   _$$AbcTwinRustAsyncSse_CImplCopyWith<_$AbcTwinRustAsyncSse_CImpl>
-  get copyWith =>
-      __$$AbcTwinRustAsyncSse_CImplCopyWithImpl<_$AbcTwinRustAsyncSse_CImpl>(
-        this,
-        _$identity,
-      );
+      get copyWith => __$$AbcTwinRustAsyncSse_CImplCopyWithImpl<
+              _$AbcTwinRustAsyncSse_CImpl>(
+            this,
+            _$identity,
+          );
 
   @override
   @optionalTypeArgs
@@ -566,7 +572,7 @@ abstract class AbcTwinRustAsyncSse_C extends AbcTwinRustAsyncSse {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AbcTwinRustAsyncSse_CImplCopyWith<_$AbcTwinRustAsyncSse_CImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -581,11 +587,8 @@ abstract class _$$AbcTwinRustAsyncSse_JustIntImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$AbcTwinRustAsyncSse_JustIntImplCopyWithImpl<$Res>
-    extends
-        _$AbcTwinRustAsyncSseCopyWithImpl<
-          $Res,
-          _$AbcTwinRustAsyncSse_JustIntImpl
-        >
+    extends _$AbcTwinRustAsyncSseCopyWithImpl<$Res,
+        _$AbcTwinRustAsyncSse_JustIntImpl>
     implements _$$AbcTwinRustAsyncSse_JustIntImplCopyWith<$Res> {
   __$$AbcTwinRustAsyncSse_JustIntImplCopyWithImpl(
     _$AbcTwinRustAsyncSse_JustIntImpl _value,
@@ -602,7 +605,7 @@ class __$$AbcTwinRustAsyncSse_JustIntImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                  as int,
+                as int,
       ),
     );
   }
@@ -638,10 +641,8 @@ class _$AbcTwinRustAsyncSse_JustIntImpl extends AbcTwinRustAsyncSse_JustInt {
   @override
   @pragma('vm:prefer-inline')
   _$$AbcTwinRustAsyncSse_JustIntImplCopyWith<_$AbcTwinRustAsyncSse_JustIntImpl>
-  get copyWith =>
-      __$$AbcTwinRustAsyncSse_JustIntImplCopyWithImpl<
-        _$AbcTwinRustAsyncSse_JustIntImpl
-      >(this, _$identity);
+      get copyWith => __$$AbcTwinRustAsyncSse_JustIntImplCopyWithImpl<
+          _$AbcTwinRustAsyncSse_JustIntImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -730,5 +731,5 @@ abstract class AbcTwinRustAsyncSse_JustInt extends AbcTwinRustAsyncSse {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AbcTwinRustAsyncSse_JustIntImplCopyWith<_$AbcTwinRustAsyncSse_JustIntImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }

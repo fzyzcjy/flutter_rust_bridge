@@ -19,10 +19,9 @@ Future<int> funcTypeFalliblePanicTwinSse() => RustLib.instance.api
 Future<int> funcTypeInfalliblePanicTwinSse() => RustLib.instance.api
     .crateApiPseudoManualExceptionTwinSseFuncTypeInfalliblePanicTwinSse();
 
-Future<int> customEnumErrorReturnOkTwinSse({required int arg}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualExceptionTwinSseCustomEnumErrorReturnOkTwinSse(
+Future<int> customEnumErrorReturnOkTwinSse({required int arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualExceptionTwinSseCustomEnumErrorReturnOkTwinSse(
       arg: arg,
     );
 
@@ -34,15 +33,17 @@ Future<int> customEnumErrorReturnErrorTwinSse() => RustLib.instance.api
 
 Future<void> customNestedErrorReturnErrorTwinSse({
   required CustomNestedErrorOuterTwinSse arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualExceptionTwinSseCustomNestedErrorReturnErrorTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualExceptionTwinSseCustomNestedErrorReturnErrorTwinSse(
       arg: arg,
     );
 
 Future<void> customStructErrorReturnErrorTwinSse({
   required CustomStructErrorTwinSse arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualExceptionTwinSseCustomStructErrorReturnErrorTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualExceptionTwinSseCustomStructErrorReturnErrorTwinSse(
       arg: arg,
     );
 
@@ -52,10 +53,9 @@ Future<int> returnErrCustomErrorTwinSse() => RustLib.instance.api
 Future<int> returnOkCustomErrorTwinSse() => RustLib.instance.api
     .crateApiPseudoManualExceptionTwinSseReturnOkCustomErrorTwinSse();
 
-Future<int> returnErrorVariantTwinSse({required int variant}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualExceptionTwinSseReturnErrorVariantTwinSse(
+Future<int> returnErrorVariantTwinSse({required int variant}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualExceptionTwinSseReturnErrorVariantTwinSse(
       variant: variant,
     );
 
@@ -205,22 +205,21 @@ class CustomStructTwinSse {
   static Future<CustomStructTwinSse> newTwinSse({required String message}) =>
       RustLib.instance.api
           .crateApiPseudoManualExceptionTwinSseCustomStructTwinSseNewTwinSse(
-            message: message,
-          );
+        message: message,
+      );
 
   Future<void> nonstaticReturnCustomStructErrorTwinSse() => RustLib.instance.api
-      .crateApiPseudoManualExceptionTwinSseCustomStructTwinSseNonstaticReturnCustomStructErrorTwinSse(
+          .crateApiPseudoManualExceptionTwinSseCustomStructTwinSseNonstaticReturnCustomStructErrorTwinSse(
         that: this,
       );
 
   Future<int> nonstaticReturnCustomStructOkTwinSse() => RustLib.instance.api
-      .crateApiPseudoManualExceptionTwinSseCustomStructTwinSseNonstaticReturnCustomStructOkTwinSse(
+          .crateApiPseudoManualExceptionTwinSseCustomStructTwinSseNonstaticReturnCustomStructOkTwinSse(
         that: this,
       );
 
   static Future<void> staticReturnCustomStructErrorTwinSse() => RustLib
-      .instance
-      .api
+      .instance.api
       .crateApiPseudoManualExceptionTwinSseCustomStructTwinSseStaticReturnCustomStructErrorTwinSse();
 
   static Future<int> staticReturnCustomStructOkTwinSse() => RustLib.instance.api
@@ -242,20 +241,19 @@ class SomeStructTwinSse {
 
   const SomeStructTwinSse({required this.value});
 
-  static Future<SomeStructTwinSse> newTwinSse({required int value}) => RustLib
-      .instance
-      .api
-      .crateApiPseudoManualExceptionTwinSseSomeStructTwinSseNewTwinSse(
+  static Future<SomeStructTwinSse> newTwinSse({required int value}) =>
+      RustLib.instance.api
+          .crateApiPseudoManualExceptionTwinSseSomeStructTwinSseNewTwinSse(
         value: value,
       );
 
   Future<int> nonStaticReturnErrCustomErrorTwinSse() => RustLib.instance.api
-      .crateApiPseudoManualExceptionTwinSseSomeStructTwinSseNonStaticReturnErrCustomErrorTwinSse(
+          .crateApiPseudoManualExceptionTwinSseSomeStructTwinSseNonStaticReturnErrCustomErrorTwinSse(
         that: this,
       );
 
   Future<int> nonStaticReturnOkCustomErrorTwinSse() => RustLib.instance.api
-      .crateApiPseudoManualExceptionTwinSseSomeStructTwinSseNonStaticReturnOkCustomErrorTwinSse(
+          .crateApiPseudoManualExceptionTwinSseSomeStructTwinSseNonStaticReturnOkCustomErrorTwinSse(
         that: this,
       );
 

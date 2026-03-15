@@ -16,10 +16,9 @@ Future<bool> useImportedStructTwinNormal({required MyStruct myStruct}) =>
       myStruct: myStruct,
     );
 
-Future<bool> useImportedEnumTwinNormal({required MyEnum myEnum}) => RustLib
-    .instance
-    .api
-    .crateApiExternalTypeInCrateUseImportedEnumTwinNormal(myEnum: myEnum);
+Future<bool> useImportedEnumTwinNormal({required MyEnum myEnum}) =>
+    RustLib.instance.api
+        .crateApiExternalTypeInCrateUseImportedEnumTwinNormal(myEnum: myEnum);
 
 Future<OldSimpleStruct> callOldModuleSystemTwinNormal() => RustLib.instance.api
     .crateApiExternalTypeInCrateCallOldModuleSystemTwinNormal();
