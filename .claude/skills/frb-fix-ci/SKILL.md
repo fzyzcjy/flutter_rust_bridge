@@ -99,16 +99,7 @@ CI shows the command it ran. Run the same command:
 
 Do not answer from stale CI state. Read the latest relevant run or job information first.
 
-## Common Mistakes
-
-- Investigating root cause when a simple re-run would work
-- Not trying `git apply` first when CI provides a diff
-- Fixing many new downstream test/build failures one by one after accepting generated changes, when CI previously failed mainly in `Generate`
-- Hand-editing generated files to chase CI formatter output before checking whether CI, merge ref, and remote environments are formatting the same input
-- Hand-editing integrate-generated example outputs instead of fixing `frb_codegen/assets/integration_template/`
-- Answering from stale CI state instead of reading the latest relevant run or job information first
-
-## Special Diagnosis Rule
+### Generate-caused Failures
 
 If CI previously failed mainly in `Generate` while other jobs passed, and after accepting generated changes additional non-`Generate` jobs start failing, treat this as strong evidence that the accepted generated outputs are incorrect or incomplete.
 
@@ -118,6 +109,15 @@ In that situation:
 - First validate the generation logic or generation workflow
 - Re-generate from a clean environment
 - Only accept generated outputs after confirming they do not introduce new non-`Generate` regressions
+
+## Common Mistakes
+
+- Investigating root cause when a simple re-run would work
+- Not trying `git apply` first when CI provides a diff
+- Fixing many new downstream test/build failures one by one after accepting generated changes, when CI previously failed mainly in `Generate`
+- Hand-editing generated files to chase CI formatter output before checking whether CI, merge ref, and remote environments are formatting the same input
+- Hand-editing integrate-generated example outputs instead of fixing `frb_codegen/assets/integration_template/`
+- Answering from stale CI state instead of reading the latest relevant run or job information first
 
 ## Related Skills
 
