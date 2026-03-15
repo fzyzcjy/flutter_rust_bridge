@@ -187,7 +187,7 @@ Future<void> lintDartAnalyze(LintConfig config) async {
 Future<void> lintDartPana(LintConfig config) async {
   await exec('flutter pub global activate pana');
   await exec(
-    'dart pub global run pana --no-warning --line-length 80 --exit-code-threshold 0',
+    'dart pub global run pana --no-warning --exit-code-threshold 0',
     relativePwd: 'frb_dart',
   );
 }
