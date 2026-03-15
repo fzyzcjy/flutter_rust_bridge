@@ -16,8 +16,7 @@ part 'dart_opaque_twin_sse.freezed.dart';
 Future<String> asyncAcceptDartOpaqueTwinSse({required Object opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualDartOpaqueTwinSseAsyncAcceptDartOpaqueTwinSse(
-      opaque: opaque,
-    );
+            opaque: opaque);
 
 Future<Object> loopBackTwinSse({required Object opaque}) => RustLib.instance.api
     .crateApiPseudoManualDartOpaqueTwinSseLoopBackTwinSse(opaque: opaque);
@@ -35,15 +34,13 @@ Future<List<Object>> loopBackVecTwinSse({required Object opaque}) => RustLib
     .crateApiPseudoManualDartOpaqueTwinSseLoopBackVecTwinSse(opaque: opaque);
 
 Future<void> loopBackOptionGetTwinSse({Object? opaque}) => RustLib.instance.api
-        .crateApiPseudoManualDartOpaqueTwinSseLoopBackOptionGetTwinSse(
-      opaque: opaque,
-    );
+    .crateApiPseudoManualDartOpaqueTwinSseLoopBackOptionGetTwinSse(
+        opaque: opaque);
 
 Future<void> loopBackArrayGetTwinSse({required ObjectArray1 opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualDartOpaqueTwinSseLoopBackArrayGetTwinSse(
-      opaque: opaque,
-    );
+            opaque: opaque);
 
 Future<void> loopBackVecGetTwinSse({required List<Object> opaque}) => RustLib
     .instance.api
@@ -54,52 +51,37 @@ Future<void> loopBackVecGetTwinSse({required List<Object> opaque}) => RustLib
 Future<void> panicUnwrapDartOpaqueTwinSse({required Object opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualDartOpaqueTwinSsePanicUnwrapDartOpaqueTwinSse(
-      opaque: opaque,
-    );
+            opaque: opaque);
 
-Future<DartOpaqueNestedTwinSse> createNestedDartOpaqueTwinSse({
-  required Object opaque1,
-  required Object opaque2,
-}) =>
+Future<DartOpaqueNestedTwinSse> createNestedDartOpaqueTwinSse(
+        {required Object opaque1, required Object opaque2}) =>
     RustLib.instance.api
         .crateApiPseudoManualDartOpaqueTwinSseCreateNestedDartOpaqueTwinSse(
-      opaque1: opaque1,
-      opaque2: opaque2,
-    );
+            opaque1: opaque1, opaque2: opaque2);
 
-Future<void> getNestedDartOpaqueTwinSse({
-  required DartOpaqueNestedTwinSse opaque,
-}) =>
+Future<void> getNestedDartOpaqueTwinSse(
+        {required DartOpaqueNestedTwinSse opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualDartOpaqueTwinSseGetNestedDartOpaqueTwinSse(
-      opaque: opaque,
-    );
+            opaque: opaque);
 
-Future<EnumDartOpaqueTwinSse> createEnumDartOpaqueTwinSse({
-  required Object opaque,
-}) =>
+Future<EnumDartOpaqueTwinSse> createEnumDartOpaqueTwinSse(
+        {required Object opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualDartOpaqueTwinSseCreateEnumDartOpaqueTwinSse(
-      opaque: opaque,
-    );
+            opaque: opaque);
 
-Future<void> getEnumDartOpaqueTwinSse({
-  required EnumDartOpaqueTwinSse opaque,
-}) =>
+Future<void> getEnumDartOpaqueTwinSse(
+        {required EnumDartOpaqueTwinSse opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualDartOpaqueTwinSseGetEnumDartOpaqueTwinSse(
-      opaque: opaque,
-    );
+            opaque: opaque);
 
-Future<void> setStaticDartOpaqueTwinSse({
-  required int id,
-  required Object opaque,
-}) =>
+Future<void> setStaticDartOpaqueTwinSse(
+        {required int id, required Object opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualDartOpaqueTwinSseSetStaticDartOpaqueTwinSse(
-      id: id,
-      opaque: opaque,
-    );
+            id: id, opaque: opaque);
 
 Future<void> dropStaticDartOpaqueTwinSse({required int id}) => RustLib
     .instance.api
@@ -108,14 +90,16 @@ Future<void> dropStaticDartOpaqueTwinSse({required int id}) => RustLib
 Future<List<Object>> cloneDartOpaqueTwinSse({required Object opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualDartOpaqueTwinSseCloneDartOpaqueTwinSse(
-      opaque: opaque,
-    );
+            opaque: opaque);
 
 class DartOpaqueNestedTwinSse {
   final Object first;
   final Object second;
 
-  const DartOpaqueNestedTwinSse({required this.first, required this.second});
+  const DartOpaqueNestedTwinSse({
+    required this.first,
+    required this.second,
+  });
 
   @override
   int get hashCode => first.hashCode ^ second.hashCode;
@@ -133,8 +117,10 @@ class DartOpaqueNestedTwinSse {
 sealed class EnumDartOpaqueTwinSse with _$EnumDartOpaqueTwinSse {
   const EnumDartOpaqueTwinSse._();
 
-  const factory EnumDartOpaqueTwinSse.primitive(int field0) =
-      EnumDartOpaqueTwinSse_Primitive;
-  const factory EnumDartOpaqueTwinSse.opaque(Object field0) =
-      EnumDartOpaqueTwinSse_Opaque;
+  const factory EnumDartOpaqueTwinSse.primitive(
+    int field0,
+  ) = EnumDartOpaqueTwinSse_Primitive;
+  const factory EnumDartOpaqueTwinSse.opaque(
+    Object field0,
+  ) = EnumDartOpaqueTwinSse_Opaque;
 }

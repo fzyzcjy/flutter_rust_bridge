@@ -14,29 +14,26 @@ import 'package:uuid/uuid.dart';
 Future<UuidValue> handleUuidTwinRustAsyncSse({required UuidValue id}) =>
     RustLib.instance.api
         .crateApiPseudoManualUuidTypeTwinRustAsyncSseHandleUuidTwinRustAsyncSse(
-      id: id,
-    );
+            id: id);
 
-Future<List<UuidValue>> handleUuidsTwinRustAsyncSse({
-  required List<UuidValue> ids,
-}) =>
+Future<List<UuidValue>> handleUuidsTwinRustAsyncSse(
+        {required List<UuidValue> ids}) =>
     RustLib.instance.api
         .crateApiPseudoManualUuidTypeTwinRustAsyncSseHandleUuidsTwinRustAsyncSse(
-      ids: ids,
-    );
+            ids: ids);
 
-Future<FeatureUuidTwinRustAsyncSse> handleNestedUuidsTwinRustAsyncSse({
-  required FeatureUuidTwinRustAsyncSse ids,
-}) =>
+Future<FeatureUuidTwinRustAsyncSse> handleNestedUuidsTwinRustAsyncSse(
+        {required FeatureUuidTwinRustAsyncSse ids}) =>
     RustLib.instance.api
         .crateApiPseudoManualUuidTypeTwinRustAsyncSseHandleNestedUuidsTwinRustAsyncSse(
-      ids: ids,
-    );
+            ids: ids);
 
 class FeatureUuidTwinRustAsyncSse {
   final UuidValue one;
 
-  const FeatureUuidTwinRustAsyncSse({required this.one});
+  const FeatureUuidTwinRustAsyncSse({
+    required this.one,
+  });
 
   @override
   int get hashCode => one.hashCode;

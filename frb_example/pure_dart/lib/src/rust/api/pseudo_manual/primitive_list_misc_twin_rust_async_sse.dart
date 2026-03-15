@@ -12,8 +12,7 @@ Future<VecOfPrimitivePackTwinRustAsyncSse> handleVecOfPrimitiveTwinRustAsyncSse(
         {required int n}) =>
     RustLib.instance.api
         .crateApiPseudoManualPrimitiveListMiscTwinRustAsyncSseHandleVecOfPrimitiveTwinRustAsyncSse(
-      n: n,
-    );
+            n: n);
 
 class VecOfPrimitivePackTwinRustAsyncSse {
   final Int8List int8List;

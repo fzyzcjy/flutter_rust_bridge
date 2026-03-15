@@ -12,8 +12,7 @@ part of 'dart_opaque_twin_rust_async_sse.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$EnumDartOpaqueTwinRustAsyncSse {
@@ -64,10 +63,10 @@ mixin _$EnumDartOpaqueTwinRustAsyncSse {
 /// @nodoc
 abstract class $EnumDartOpaqueTwinRustAsyncSseCopyWith<$Res> {
   factory $EnumDartOpaqueTwinRustAsyncSseCopyWith(
-    EnumDartOpaqueTwinRustAsyncSse value,
-    $Res Function(EnumDartOpaqueTwinRustAsyncSse) then,
-  ) = _$EnumDartOpaqueTwinRustAsyncSseCopyWithImpl<$Res,
-      EnumDartOpaqueTwinRustAsyncSse>;
+          EnumDartOpaqueTwinRustAsyncSse value,
+          $Res Function(EnumDartOpaqueTwinRustAsyncSse) then) =
+      _$EnumDartOpaqueTwinRustAsyncSseCopyWithImpl<$Res,
+          EnumDartOpaqueTwinRustAsyncSse>;
 }
 
 /// @nodoc
@@ -88,9 +87,9 @@ class _$EnumDartOpaqueTwinRustAsyncSseCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$EnumDartOpaqueTwinRustAsyncSse_PrimitiveImplCopyWith<$Res> {
   factory _$$EnumDartOpaqueTwinRustAsyncSse_PrimitiveImplCopyWith(
-    _$EnumDartOpaqueTwinRustAsyncSse_PrimitiveImpl value,
-    $Res Function(_$EnumDartOpaqueTwinRustAsyncSse_PrimitiveImpl) then,
-  ) = __$$EnumDartOpaqueTwinRustAsyncSse_PrimitiveImplCopyWithImpl<$Res>;
+          _$EnumDartOpaqueTwinRustAsyncSse_PrimitiveImpl value,
+          $Res Function(_$EnumDartOpaqueTwinRustAsyncSse_PrimitiveImpl) then) =
+      __$$EnumDartOpaqueTwinRustAsyncSse_PrimitiveImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int field0});
 }
@@ -101,23 +100,23 @@ class __$$EnumDartOpaqueTwinRustAsyncSse_PrimitiveImplCopyWithImpl<$Res>
         _$EnumDartOpaqueTwinRustAsyncSse_PrimitiveImpl>
     implements _$$EnumDartOpaqueTwinRustAsyncSse_PrimitiveImplCopyWith<$Res> {
   __$$EnumDartOpaqueTwinRustAsyncSse_PrimitiveImplCopyWithImpl(
-    _$EnumDartOpaqueTwinRustAsyncSse_PrimitiveImpl _value,
-    $Res Function(_$EnumDartOpaqueTwinRustAsyncSse_PrimitiveImpl) _then,
-  ) : super(_value, _then);
+      _$EnumDartOpaqueTwinRustAsyncSse_PrimitiveImpl _value,
+      $Res Function(_$EnumDartOpaqueTwinRustAsyncSse_PrimitiveImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumDartOpaqueTwinRustAsyncSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$EnumDartOpaqueTwinRustAsyncSse_PrimitiveImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as int,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$EnumDartOpaqueTwinRustAsyncSse_PrimitiveImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
@@ -243,9 +242,9 @@ abstract class EnumDartOpaqueTwinRustAsyncSse_Primitive
 /// @nodoc
 abstract class _$$EnumDartOpaqueTwinRustAsyncSse_OpaqueImplCopyWith<$Res> {
   factory _$$EnumDartOpaqueTwinRustAsyncSse_OpaqueImplCopyWith(
-    _$EnumDartOpaqueTwinRustAsyncSse_OpaqueImpl value,
-    $Res Function(_$EnumDartOpaqueTwinRustAsyncSse_OpaqueImpl) then,
-  ) = __$$EnumDartOpaqueTwinRustAsyncSse_OpaqueImplCopyWithImpl<$Res>;
+          _$EnumDartOpaqueTwinRustAsyncSse_OpaqueImpl value,
+          $Res Function(_$EnumDartOpaqueTwinRustAsyncSse_OpaqueImpl) then) =
+      __$$EnumDartOpaqueTwinRustAsyncSse_OpaqueImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Object field0});
 }
@@ -256,20 +255,20 @@ class __$$EnumDartOpaqueTwinRustAsyncSse_OpaqueImplCopyWithImpl<$Res>
         _$EnumDartOpaqueTwinRustAsyncSse_OpaqueImpl>
     implements _$$EnumDartOpaqueTwinRustAsyncSse_OpaqueImplCopyWith<$Res> {
   __$$EnumDartOpaqueTwinRustAsyncSse_OpaqueImplCopyWithImpl(
-    _$EnumDartOpaqueTwinRustAsyncSse_OpaqueImpl _value,
-    $Res Function(_$EnumDartOpaqueTwinRustAsyncSse_OpaqueImpl) _then,
-  ) : super(_value, _then);
+      _$EnumDartOpaqueTwinRustAsyncSse_OpaqueImpl _value,
+      $Res Function(_$EnumDartOpaqueTwinRustAsyncSse_OpaqueImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumDartOpaqueTwinRustAsyncSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$EnumDartOpaqueTwinRustAsyncSse_OpaqueImpl(
-        null == field0 ? _value.field0 : field0,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$EnumDartOpaqueTwinRustAsyncSse_OpaqueImpl(
+      null == field0 ? _value.field0 : field0,
+    ));
   }
 }
 

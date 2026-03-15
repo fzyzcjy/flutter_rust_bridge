@@ -14,16 +14,13 @@ Future<BigInt> handleTypeAliasIdTwinNormal({required BigInt input}) =>
         .crateApiTypeAliasHandleTypeAliasIdTwinNormal(input: input);
 
 Future<BigInt> handleTypeNestAliasIdTwinNormal({required BigInt input}) =>
-    RustLib.instance.api.crateApiTypeAliasHandleTypeNestAliasIdTwinNormal(
-      input: input,
-    );
+    RustLib.instance.api
+        .crateApiTypeAliasHandleTypeNestAliasIdTwinNormal(input: input);
 
-Future<TestModelTwinNormal> handleTypeAliasModelTwinNormal({
-  required BigInt input,
-}) =>
-    RustLib.instance.api.crateApiTypeAliasHandleTypeAliasModelTwinNormal(
-      input: input,
-    );
+Future<TestModelTwinNormal> handleTypeAliasModelTwinNormal(
+        {required BigInt input}) =>
+    RustLib.instance.api
+        .crateApiTypeAliasHandleTypeAliasModelTwinNormal(input: input);
 
 class TestModelTwinNormal {
   final BigInt id;

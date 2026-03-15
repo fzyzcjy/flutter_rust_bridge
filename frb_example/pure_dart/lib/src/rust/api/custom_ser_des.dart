@@ -19,9 +19,8 @@ Future<InternetAddress> funcUsingIpv4Addr({required InternetAddress arg}) =>
     RustLib.instance.api.crateApiCustomSerDesFuncUsingIpv4Addr(arg: arg);
 
 Future<NonOpaqueStructContainingIpv4Addr>
-    funcUsingNonOpaqueStructContainingIpv4Addr({
-  required NonOpaqueStructContainingIpv4Addr arg,
-}) =>
+    funcUsingNonOpaqueStructContainingIpv4Addr(
+            {required NonOpaqueStructContainingIpv4Addr arg}) =>
         RustLib.instance.api
             .crateApiCustomSerDesFuncUsingNonOpaqueStructContainingIpv4Addr(
                 arg: arg);
@@ -29,7 +28,9 @@ Future<NonOpaqueStructContainingIpv4Addr>
 class NonOpaqueStructContainingIpv4Addr {
   final InternetAddress inner;
 
-  const NonOpaqueStructContainingIpv4Addr({required this.inner});
+  const NonOpaqueStructContainingIpv4Addr({
+    required this.inner,
+  });
 
   @override
   int get hashCode => inner.hashCode;

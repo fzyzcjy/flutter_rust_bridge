@@ -12,8 +12,7 @@ part of 'method_twin_sync_sse.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SimpleEnumTwinSyncSse {
@@ -59,10 +58,9 @@ mixin _$SimpleEnumTwinSyncSse {
 
 /// @nodoc
 abstract class $SimpleEnumTwinSyncSseCopyWith<$Res> {
-  factory $SimpleEnumTwinSyncSseCopyWith(
-    SimpleEnumTwinSyncSse value,
-    $Res Function(SimpleEnumTwinSyncSse) then,
-  ) = _$SimpleEnumTwinSyncSseCopyWithImpl<$Res, SimpleEnumTwinSyncSse>;
+  factory $SimpleEnumTwinSyncSseCopyWith(SimpleEnumTwinSyncSse value,
+          $Res Function(SimpleEnumTwinSyncSse) then) =
+      _$SimpleEnumTwinSyncSseCopyWithImpl<$Res, SimpleEnumTwinSyncSse>;
 }
 
 /// @nodoc
@@ -83,9 +81,9 @@ class _$SimpleEnumTwinSyncSseCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$SimpleEnumTwinSyncSse_FirstImplCopyWith<$Res> {
   factory _$$SimpleEnumTwinSyncSse_FirstImplCopyWith(
-    _$SimpleEnumTwinSyncSse_FirstImpl value,
-    $Res Function(_$SimpleEnumTwinSyncSse_FirstImpl) then,
-  ) = __$$SimpleEnumTwinSyncSse_FirstImplCopyWithImpl<$Res>;
+          _$SimpleEnumTwinSyncSse_FirstImpl value,
+          $Res Function(_$SimpleEnumTwinSyncSse_FirstImpl) then) =
+      __$$SimpleEnumTwinSyncSse_FirstImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -94,9 +92,9 @@ class __$$SimpleEnumTwinSyncSse_FirstImplCopyWithImpl<$Res>
         _$SimpleEnumTwinSyncSse_FirstImpl>
     implements _$$SimpleEnumTwinSyncSse_FirstImplCopyWith<$Res> {
   __$$SimpleEnumTwinSyncSse_FirstImplCopyWithImpl(
-    _$SimpleEnumTwinSyncSse_FirstImpl _value,
-    $Res Function(_$SimpleEnumTwinSyncSse_FirstImpl) _then,
-  ) : super(_value, _then);
+      _$SimpleEnumTwinSyncSse_FirstImpl _value,
+      $Res Function(_$SimpleEnumTwinSyncSse_FirstImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of SimpleEnumTwinSyncSse
   /// with the given fields replaced by the non-null parameter values.
@@ -194,9 +192,9 @@ abstract class SimpleEnumTwinSyncSse_First extends SimpleEnumTwinSyncSse {
 /// @nodoc
 abstract class _$$SimpleEnumTwinSyncSse_SecondImplCopyWith<$Res> {
   factory _$$SimpleEnumTwinSyncSse_SecondImplCopyWith(
-    _$SimpleEnumTwinSyncSse_SecondImpl value,
-    $Res Function(_$SimpleEnumTwinSyncSse_SecondImpl) then,
-  ) = __$$SimpleEnumTwinSyncSse_SecondImplCopyWithImpl<$Res>;
+          _$SimpleEnumTwinSyncSse_SecondImpl value,
+          $Res Function(_$SimpleEnumTwinSyncSse_SecondImpl) then) =
+      __$$SimpleEnumTwinSyncSse_SecondImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String field0});
 }
@@ -207,23 +205,23 @@ class __$$SimpleEnumTwinSyncSse_SecondImplCopyWithImpl<$Res>
         _$SimpleEnumTwinSyncSse_SecondImpl>
     implements _$$SimpleEnumTwinSyncSse_SecondImplCopyWith<$Res> {
   __$$SimpleEnumTwinSyncSse_SecondImplCopyWithImpl(
-    _$SimpleEnumTwinSyncSse_SecondImpl _value,
-    $Res Function(_$SimpleEnumTwinSyncSse_SecondImpl) _then,
-  ) : super(_value, _then);
+      _$SimpleEnumTwinSyncSse_SecondImpl _value,
+      $Res Function(_$SimpleEnumTwinSyncSse_SecondImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of SimpleEnumTwinSyncSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$SimpleEnumTwinSyncSse_SecondImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as String,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$SimpleEnumTwinSyncSse_SecondImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 

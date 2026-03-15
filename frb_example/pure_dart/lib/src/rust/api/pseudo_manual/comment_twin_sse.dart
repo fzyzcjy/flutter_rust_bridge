@@ -32,7 +32,9 @@ class StructWithCommentsTwinSse {
   /// Documentation on a struct field
   final int fieldWithComments;
 
-  const StructWithCommentsTwinSse({required this.fieldWithComments});
+  const StructWithCommentsTwinSse({
+    required this.fieldWithComments,
+  });
 
   /// Documentation on an instance method
   Future<void> instanceMethodTwinSse() => RustLib.instance.api

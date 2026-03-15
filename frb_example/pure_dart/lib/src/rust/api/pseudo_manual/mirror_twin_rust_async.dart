@@ -18,13 +18,11 @@ Future<ApplicationSettings> getFallibleAppSettingsTwinRustAsync() => RustLib
     .instance.api
     .crateApiPseudoManualMirrorTwinRustAsyncGetFallibleAppSettingsTwinRustAsync();
 
-Future<bool> isAppEmbeddedTwinRustAsync({
-  required ApplicationSettings appSettings,
-}) =>
+Future<bool> isAppEmbeddedTwinRustAsync(
+        {required ApplicationSettings appSettings}) =>
     RustLib.instance.api
         .crateApiPseudoManualMirrorTwinRustAsyncIsAppEmbeddedTwinRustAsync(
-      appSettings: appSettings,
-    );
+            appSettings: appSettings);
 
 Stream<ApplicationSettings> appSettingsStreamTwinRustAsync() => RustLib
     .instance.api
@@ -45,37 +43,27 @@ Stream<(ApplicationSettings, RawStringEnumMirrored)>
 Future<ApplicationMessage> getMessageTwinRustAsync() => RustLib.instance.api
     .crateApiPseudoManualMirrorTwinRustAsyncGetMessageTwinRustAsync();
 
-Future<Numbers> repeatNumberTwinRustAsync({
-  required int num,
-  required BigInt times,
-}) =>
+Future<Numbers> repeatNumberTwinRustAsync(
+        {required int num, required BigInt times}) =>
     RustLib.instance.api
         .crateApiPseudoManualMirrorTwinRustAsyncRepeatNumberTwinRustAsync(
-      num: num,
-      times: times,
-    );
+            num: num, times: times);
 
-Future<Sequences> repeatSequenceTwinRustAsync({
-  required int seq,
-  required BigInt times,
-}) =>
+Future<Sequences> repeatSequenceTwinRustAsync(
+        {required int seq, required BigInt times}) =>
     RustLib.instance.api
         .crateApiPseudoManualMirrorTwinRustAsyncRepeatSequenceTwinRustAsync(
-      seq: seq,
-      times: times,
-    );
+            seq: seq, times: times);
 
 Future<int?> firstNumberTwinRustAsync({required Numbers nums}) =>
     RustLib.instance.api
         .crateApiPseudoManualMirrorTwinRustAsyncFirstNumberTwinRustAsync(
-      nums: nums,
-    );
+            nums: nums);
 
 Future<int?> firstSequenceTwinRustAsync({required Sequences seqs}) =>
     RustLib.instance.api
         .crateApiPseudoManualMirrorTwinRustAsyncFirstSequenceTwinRustAsync(
-      seqs: seqs,
-    );
+            seqs: seqs);
 
 Future<RawStringMirrored> testRawStringMirroredTwinRustAsync() => RustLib
     .instance.api
@@ -85,13 +73,11 @@ Future<NestedRawStringMirrored> testNestedRawStringMirroredTwinRustAsync() =>
     RustLib.instance.api
         .crateApiPseudoManualMirrorTwinRustAsyncTestNestedRawStringMirroredTwinRustAsync();
 
-Future<RawStringEnumMirrored> testRawStringEnumMirroredTwinRustAsync({
-  required bool nested,
-}) =>
+Future<RawStringEnumMirrored> testRawStringEnumMirroredTwinRustAsync(
+        {required bool nested}) =>
     RustLib.instance.api
         .crateApiPseudoManualMirrorTwinRustAsyncTestRawStringEnumMirroredTwinRustAsync(
-      nested: nested,
-    );
+            nested: nested);
 
 Future<ListOfNestedRawStringMirrored>
     testListOfRawNestedStringMirroredTwinRustAsync() => RustLib.instance.api
@@ -139,7 +125,9 @@ Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinRustAsync() => RustLib
 class AnotherTwinRustAsync {
   final String a;
 
-  const AnotherTwinRustAsync({required this.a});
+  const AnotherTwinRustAsync({
+    required this.a,
+  });
 
   @override
   int get hashCode => a.hashCode;

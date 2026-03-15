@@ -17,109 +17,87 @@ Future<void> benchmarkVoidTwinSse() => RustLib.instance.api
 Future<int> benchmarkInputBytesTwinSse({required List<int> bytes}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiTwinSseBenchmarkInputBytesTwinSse(
-      bytes: bytes,
-    );
+            bytes: bytes);
 
 Future<Uint8List> benchmarkOutputBytesTwinSse({required int size}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiTwinSseBenchmarkOutputBytesTwinSse(
-      size: size,
-    );
+            size: size);
 
-Future<void> benchmarkBinaryTreeInputTwinSse({
-  required BenchmarkBinaryTreeTwinSse tree,
-}) =>
+Future<void> benchmarkBinaryTreeInputTwinSse(
+        {required BenchmarkBinaryTreeTwinSse tree}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiTwinSseBenchmarkBinaryTreeInputTwinSse(
-      tree: tree,
-    );
+            tree: tree);
 
-Future<BenchmarkBinaryTreeTwinSse> benchmarkBinaryTreeOutputTwinSse({
-  required int depth,
-}) =>
+Future<BenchmarkBinaryTreeTwinSse> benchmarkBinaryTreeOutputTwinSse(
+        {required int depth}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiTwinSseBenchmarkBinaryTreeOutputTwinSse(
-      depth: depth,
-    );
+            depth: depth);
 
-Future<void> benchmarkBinaryTreeInputProtobufTwinSse({
-  required List<int> raw,
-}) =>
+Future<void> benchmarkBinaryTreeInputProtobufTwinSse(
+        {required List<int> raw}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiTwinSseBenchmarkBinaryTreeInputProtobufTwinSse(
-      raw: raw,
-    );
+            raw: raw);
 
-Future<Uint8List> benchmarkBinaryTreeOutputProtobufTwinSse({
-  required int depth,
-}) =>
+Future<Uint8List> benchmarkBinaryTreeOutputProtobufTwinSse(
+        {required int depth}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiTwinSseBenchmarkBinaryTreeOutputProtobufTwinSse(
-      depth: depth,
-    );
+            depth: depth);
 
-Future<void> benchmarkBinaryTreeInputJsonTwinSse({
-  required String raw,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBenchmarkApiTwinSseBenchmarkBinaryTreeInputJsonTwinSse(
-      raw: raw,
-    );
+Future<void> benchmarkBinaryTreeInputJsonTwinSse({required String raw}) => RustLib
+    .instance.api
+    .crateApiPseudoManualBenchmarkApiTwinSseBenchmarkBinaryTreeInputJsonTwinSse(
+        raw: raw);
 
-Future<String> benchmarkBinaryTreeOutputJsonTwinSse({
-  required int depth,
-}) =>
+Future<String> benchmarkBinaryTreeOutputJsonTwinSse({required int depth}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiTwinSseBenchmarkBinaryTreeOutputJsonTwinSse(
-      depth: depth,
-    );
+            depth: depth);
 
 Future<void> benchmarkBlobInputTwinSse({required BenchmarkBlobTwinSse blob}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiTwinSseBenchmarkBlobInputTwinSse(
-      blob: blob,
-    );
+            blob: blob);
 
 Future<BenchmarkBlobTwinSse> benchmarkBlobOutputTwinSse({required int size}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiTwinSseBenchmarkBlobOutputTwinSse(
-      size: size,
-    );
+            size: size);
 
-Future<void> benchmarkBlobInputProtobufTwinSse({
-  required List<int> raw,
-}) =>
+Future<void> benchmarkBlobInputProtobufTwinSse({required List<int> raw}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiTwinSseBenchmarkBlobInputProtobufTwinSse(
-      raw: raw,
-    );
+            raw: raw);
 
-Future<Uint8List> benchmarkBlobOutputProtobufTwinSse({
-  required int size,
-}) =>
+Future<Uint8List> benchmarkBlobOutputProtobufTwinSse({required int size}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiTwinSseBenchmarkBlobOutputProtobufTwinSse(
-      size: size,
-    );
+            size: size);
 
 Future<void> benchmarkBlobInputJsonTwinSse({required String raw}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiTwinSseBenchmarkBlobInputJsonTwinSse(
-      raw: raw,
-    );
+            raw: raw);
 
 Future<String> benchmarkBlobOutputJsonTwinSse({required int size}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiTwinSseBenchmarkBlobOutputJsonTwinSse(
-      size: size,
-    );
+            size: size);
 
 class BenchmarkBinaryTreeTwinSse {
   final String name;
   final BenchmarkBinaryTreeTwinSse? left;
   final BenchmarkBinaryTreeTwinSse? right;
 
-  const BenchmarkBinaryTreeTwinSse({required this.name, this.left, this.right});
+  const BenchmarkBinaryTreeTwinSse({
+    required this.name,
+    this.left,
+    this.right,
+  });
 
   @override
   int get hashCode => name.hashCode ^ left.hashCode ^ right.hashCode;

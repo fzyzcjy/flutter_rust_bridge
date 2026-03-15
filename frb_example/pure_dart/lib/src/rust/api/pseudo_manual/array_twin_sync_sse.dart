@@ -35,14 +35,12 @@ U8Array1600 useBoxedBlobTwinSyncSse({required BlobTwinSyncSse blob}) => RustLib
 FeedIdTwinSyncSse returnBoxedFeedIdTwinSyncSse({required U8Array8 id}) =>
     RustLib.instance.api
         .crateApiPseudoManualArrayTwinSyncSseReturnBoxedFeedIdTwinSyncSse(
-      id: id,
-    );
+            id: id);
 
 U8Array8 returnBoxedRawFeedIdTwinSyncSse({required FeedIdTwinSyncSse id}) =>
     RustLib.instance.api
         .crateApiPseudoManualArrayTwinSyncSseReturnBoxedRawFeedIdTwinSyncSse(
-      id: id,
-    );
+            id: id);
 
 TestIdTwinSyncSse funcTestIdTwinSyncSse({required TestIdTwinSyncSse id}) =>
     RustLib.instance.api
@@ -52,16 +50,17 @@ double lastNumberTwinSyncSse({required F64Array16 array}) => RustLib
     .instance.api
     .crateApiPseudoManualArrayTwinSyncSseLastNumberTwinSyncSse(array: array);
 
-TestIdTwinSyncSseArray2 nestedIdTwinSyncSse({
-  required TestIdTwinSyncSseArray4 id,
-}) =>
+TestIdTwinSyncSseArray2 nestedIdTwinSyncSse(
+        {required TestIdTwinSyncSseArray4 id}) =>
     RustLib.instance.api
         .crateApiPseudoManualArrayTwinSyncSseNestedIdTwinSyncSse(id: id);
 
 class BlobTwinSyncSse {
   final U8Array1600 field0;
 
-  const BlobTwinSyncSse({required this.field0});
+  const BlobTwinSyncSse({
+    required this.field0,
+  });
 
   @override
   int get hashCode => field0.hashCode;
@@ -77,7 +76,9 @@ class BlobTwinSyncSse {
 class FeedIdTwinSyncSse {
   final U8Array8 field0;
 
-  const FeedIdTwinSyncSse({required this.field0});
+  const FeedIdTwinSyncSse({
+    required this.field0,
+  });
 
   @override
   int get hashCode => field0.hashCode;
@@ -93,7 +94,9 @@ class FeedIdTwinSyncSse {
 class MessageIdTwinSyncSse {
   final U8Array32 field0;
 
-  const MessageIdTwinSyncSse({required this.field0});
+  const MessageIdTwinSyncSse({
+    required this.field0,
+  });
 
   @override
   int get hashCode => field0.hashCode;
@@ -110,7 +113,10 @@ class PointTwinSyncSse {
   final double x;
   final double y;
 
-  const PointTwinSyncSse({required this.x, required this.y});
+  const PointTwinSyncSse({
+    required this.x,
+    required this.y,
+  });
 
   @override
   int get hashCode => x.hashCode ^ y.hashCode;
@@ -142,7 +148,9 @@ class PointTwinSyncSseArray2 extends NonGrowableListView<PointTwinSyncSse> {
 class TestIdTwinSyncSse {
   final I32Array2 field0;
 
-  const TestIdTwinSyncSse({required this.field0});
+  const TestIdTwinSyncSse({
+    required this.field0,
+  });
 
   @override
   int get hashCode => field0.hashCode;

@@ -21,15 +21,11 @@ Future<
 Future<void> closeEventListenerTwinRustAsync() => RustLib.instance.api
     .crateApiPseudoManualEventListenerTwinRustAsyncCloseEventListenerTwinRustAsync();
 
-Future<void> createEventTwinRustAsync({
-  required String address,
-  required String payload,
-}) =>
+Future<void> createEventTwinRustAsync(
+        {required String address, required String payload}) =>
     RustLib.instance.api
         .crateApiPseudoManualEventListenerTwinRustAsyncCreateEventTwinRustAsync(
-      address: address,
-      payload: payload,
-    );
+            address: address, payload: payload);
 
 @freezed
 sealed class EventTwinRustAsync with _$EventTwinRustAsync {

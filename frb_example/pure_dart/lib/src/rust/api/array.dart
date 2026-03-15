@@ -30,9 +30,8 @@ Future<U8Array1600> useBoxedBlobTwinNormal({required BlobTwinNormal blob}) =>
 Future<FeedIdTwinNormal> returnBoxedFeedIdTwinNormal({required U8Array8 id}) =>
     RustLib.instance.api.crateApiArrayReturnBoxedFeedIdTwinNormal(id: id);
 
-Future<U8Array8> returnBoxedRawFeedIdTwinNormal({
-  required FeedIdTwinNormal id,
-}) =>
+Future<U8Array8> returnBoxedRawFeedIdTwinNormal(
+        {required FeedIdTwinNormal id}) =>
     RustLib.instance.api.crateApiArrayReturnBoxedRawFeedIdTwinNormal(id: id);
 
 Future<TestIdTwinNormal> funcTestIdTwinNormal({required TestIdTwinNormal id}) =>
@@ -41,15 +40,16 @@ Future<TestIdTwinNormal> funcTestIdTwinNormal({required TestIdTwinNormal id}) =>
 Future<double> lastNumberTwinNormal({required F64Array16 array}) =>
     RustLib.instance.api.crateApiArrayLastNumberTwinNormal(array: array);
 
-Future<TestIdTwinNormalArray2> nestedIdTwinNormal({
-  required TestIdTwinNormalArray4 id,
-}) =>
+Future<TestIdTwinNormalArray2> nestedIdTwinNormal(
+        {required TestIdTwinNormalArray4 id}) =>
     RustLib.instance.api.crateApiArrayNestedIdTwinNormal(id: id);
 
 class BlobTwinNormal {
   final U8Array1600 field0;
 
-  const BlobTwinNormal({required this.field0});
+  const BlobTwinNormal({
+    required this.field0,
+  });
 
   @override
   int get hashCode => field0.hashCode;
@@ -79,7 +79,9 @@ class F64Array16 extends NonGrowableListView<double> {
 class FeedIdTwinNormal {
   final U8Array8 field0;
 
-  const FeedIdTwinNormal({required this.field0});
+  const FeedIdTwinNormal({
+    required this.field0,
+  });
 
   @override
   int get hashCode => field0.hashCode;
@@ -109,7 +111,9 @@ class I32Array2 extends NonGrowableListView<int> {
 class MessageIdTwinNormal {
   final U8Array32 field0;
 
-  const MessageIdTwinNormal({required this.field0});
+  const MessageIdTwinNormal({
+    required this.field0,
+  });
 
   @override
   int get hashCode => field0.hashCode;
@@ -126,7 +130,10 @@ class PointTwinNormal {
   final double x;
   final double y;
 
-  const PointTwinNormal({required this.x, required this.y});
+  const PointTwinNormal({
+    required this.x,
+    required this.y,
+  });
 
   @override
   int get hashCode => x.hashCode ^ y.hashCode;
@@ -158,7 +165,9 @@ class PointTwinNormalArray2 extends NonGrowableListView<PointTwinNormal> {
 class TestIdTwinNormal {
   final I32Array2 field0;
 
-  const TestIdTwinNormal({required this.field0});
+  const TestIdTwinNormal({
+    required this.field0,
+  });
 
   @override
   int get hashCode => field0.hashCode;

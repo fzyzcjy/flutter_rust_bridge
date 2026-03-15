@@ -58,14 +58,17 @@ sealed class RawStringItemEnumTwinRustAsyncSse
   const factory RawStringItemEnumTwinRustAsyncSse.regular({
     required String regular,
   }) = RawStringItemEnumTwinRustAsyncSse_Regular;
-  const factory RawStringItemEnumTwinRustAsyncSse.raw({required String type}) =
-      RawStringItemEnumTwinRustAsyncSse_Raw;
+  const factory RawStringItemEnumTwinRustAsyncSse.raw({
+    required String type,
+  }) = RawStringItemEnumTwinRustAsyncSse_Raw;
 }
 
 class RawStringItemStructTwinRustAsyncSse {
   final String type;
 
-  const RawStringItemStructTwinRustAsyncSse({required this.type});
+  const RawStringItemStructTwinRustAsyncSse({
+    required this.type,
+  });
 
   @override
   int get hashCode => type.hashCode;

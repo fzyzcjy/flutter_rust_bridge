@@ -48,14 +48,15 @@ double lastNumberTwinSync({required F64Array16 array}) => RustLib.instance.api
     .crateApiPseudoManualArrayTwinSyncLastNumberTwinSync(array: array);
 
 TestIdTwinSyncArray2 nestedIdTwinSync({required TestIdTwinSyncArray4 id}) =>
-    RustLib.instance.api.crateApiPseudoManualArrayTwinSyncNestedIdTwinSync(
-      id: id,
-    );
+    RustLib.instance.api
+        .crateApiPseudoManualArrayTwinSyncNestedIdTwinSync(id: id);
 
 class BlobTwinSync {
   final U8Array1600 field0;
 
-  const BlobTwinSync({required this.field0});
+  const BlobTwinSync({
+    required this.field0,
+  });
 
   @override
   int get hashCode => field0.hashCode;
@@ -71,7 +72,9 @@ class BlobTwinSync {
 class FeedIdTwinSync {
   final U8Array8 field0;
 
-  const FeedIdTwinSync({required this.field0});
+  const FeedIdTwinSync({
+    required this.field0,
+  });
 
   @override
   int get hashCode => field0.hashCode;
@@ -87,7 +90,9 @@ class FeedIdTwinSync {
 class MessageIdTwinSync {
   final U8Array32 field0;
 
-  const MessageIdTwinSync({required this.field0});
+  const MessageIdTwinSync({
+    required this.field0,
+  });
 
   @override
   int get hashCode => field0.hashCode;
@@ -104,7 +109,10 @@ class PointTwinSync {
   final double x;
   final double y;
 
-  const PointTwinSync({required this.x, required this.y});
+  const PointTwinSync({
+    required this.x,
+    required this.y,
+  });
 
   @override
   int get hashCode => x.hashCode ^ y.hashCode;
@@ -136,7 +144,9 @@ class PointTwinSyncArray2 extends NonGrowableListView<PointTwinSync> {
 class TestIdTwinSync {
   final I32Array2 field0;
 
-  const TestIdTwinSync({required this.field0});
+  const TestIdTwinSync({
+    required this.field0,
+  });
 
   @override
   int get hashCode => field0.hashCode;

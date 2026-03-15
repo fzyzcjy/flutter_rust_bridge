@@ -20,69 +20,49 @@ Future<Stream<String>> funcStreamReturnPanicTwinRustAsync() => RustLib
     .instance.api
     .crateApiPseudoManualStreamTwinRustAsyncFuncStreamReturnPanicTwinRustAsync();
 
-Stream<int> funcStreamSinkArgPositionTwinRustAsync({
-  required int a,
-  required int b,
-}) =>
+Stream<int> funcStreamSinkArgPositionTwinRustAsync(
+        {required int a, required int b}) =>
     RustLib.instance.api
         .crateApiPseudoManualStreamTwinRustAsyncFuncStreamSinkArgPositionTwinRustAsync(
-      a: a,
-      b: b,
-    );
+            a: a, b: b);
 
 Stream<MyStreamEntryTwinRustAsync> handleStreamOfStructTwinRustAsync() => RustLib
     .instance.api
     .crateApiPseudoManualStreamTwinRustAsyncHandleStreamOfStructTwinRustAsync();
 
-Stream<LogTwinRustAsync> handleStreamSinkAt1TwinRustAsync({
-  required int key,
-  required int max,
-}) =>
+Stream<LogTwinRustAsync> handleStreamSinkAt1TwinRustAsync(
+        {required int key, required int max}) =>
     RustLib.instance.api
         .crateApiPseudoManualStreamTwinRustAsyncHandleStreamSinkAt1TwinRustAsync(
-      key: key,
-      max: max,
-    );
+            key: key, max: max);
 
-Stream<LogTwinRustAsync> handleStreamSinkAt2TwinRustAsync({
-  required int key,
-  required int max,
-}) =>
+Stream<LogTwinRustAsync> handleStreamSinkAt2TwinRustAsync(
+        {required int key, required int max}) =>
     RustLib.instance.api
         .crateApiPseudoManualStreamTwinRustAsyncHandleStreamSinkAt2TwinRustAsync(
-      key: key,
-      max: max,
-    );
+            key: key, max: max);
 
-Stream<LogTwinRustAsync> handleStreamSinkAt3TwinRustAsync({
-  required int key,
-  required int max,
-}) =>
+Stream<LogTwinRustAsync> handleStreamSinkAt3TwinRustAsync(
+        {required int key, required int max}) =>
     RustLib.instance.api
         .crateApiPseudoManualStreamTwinRustAsyncHandleStreamSinkAt3TwinRustAsync(
-      key: key,
-      max: max,
-    );
+            key: key, max: max);
 
 Stream<U8Array2> streamSinkFixedSizedPrimitiveArrayTwinRustAsync() => RustLib
     .instance.api
     .crateApiPseudoManualStreamTwinRustAsyncStreamSinkFixedSizedPrimitiveArrayTwinRustAsync();
 
-Future<void> streamSinkInsideVecTwinRustAsync({
-  required List<RustStreamSink<int>> arg,
-}) =>
+Future<void> streamSinkInsideVecTwinRustAsync(
+        {required List<RustStreamSink<int>> arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualStreamTwinRustAsyncStreamSinkInsideVecTwinRustAsync(
-      arg: arg,
-    );
+            arg: arg);
 
-Future<void> streamSinkInsideStructTwinRustAsync({
-  required MyStructContainingStreamSinkTwinRustAsync arg,
-}) =>
+Future<void> streamSinkInsideStructTwinRustAsync(
+        {required MyStructContainingStreamSinkTwinRustAsync arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualStreamTwinRustAsyncStreamSinkInsideStructTwinRustAsync(
-      arg: arg,
-    );
+            arg: arg);
 
 Stream<int> funcStreamAddValueAndErrorTwinRustAsync() => RustLib.instance.api
     .crateApiPseudoManualStreamTwinRustAsyncFuncStreamAddValueAndErrorTwinRustAsync();
@@ -91,7 +71,10 @@ class LogTwinRustAsync {
   final int key;
   final int value;
 
-  const LogTwinRustAsync({required this.key, required this.value});
+  const LogTwinRustAsync({
+    required this.key,
+    required this.value,
+  });
 
   @override
   int get hashCode => key.hashCode ^ value.hashCode;
@@ -108,7 +91,9 @@ class LogTwinRustAsync {
 class MyStreamEntryTwinRustAsync {
   final String hello;
 
-  const MyStreamEntryTwinRustAsync({required this.hello});
+  const MyStreamEntryTwinRustAsync({
+    required this.hello,
+  });
 
   @override
   int get hashCode => hello.hashCode;

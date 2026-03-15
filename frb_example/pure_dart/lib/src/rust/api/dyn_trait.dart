@@ -8,9 +8,8 @@ import 'dart:io';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<int> funcArgDynTraitTwinNormal({
-  required SimpleTraitForDynTwinNormal arg,
-}) =>
+Future<int> funcArgDynTraitTwinNormal(
+        {required SimpleTraitForDynTwinNormal arg}) =>
     RustLib.instance.api.crateApiDynTraitFuncArgDynTraitTwinNormal(arg: arg);
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StructOneWithTraitForDynTwinNormal>>
@@ -20,13 +19,11 @@ abstract class StructOneWithTraitForDynTwinNormal
 
   set one(int one);
 
-  static Future<StructOneWithTraitForDynTwinNormal> createTwinNormal({
-    required int one,
-  }) =>
+  static Future<StructOneWithTraitForDynTwinNormal> createTwinNormal(
+          {required int one}) =>
       RustLib.instance.api
           .crateApiDynTraitStructOneWithTraitForDynTwinNormalCreateTwinNormal(
-        one: one,
-      );
+              one: one);
 
   Future<int> simpleMethodTwinNormal();
 }
@@ -38,13 +35,11 @@ abstract class StructTwoWithTraitForDynTwinNormal
 
   set two(int two);
 
-  static Future<StructTwoWithTraitForDynTwinNormal> createTwinNormal({
-    required int two,
-  }) =>
+  static Future<StructTwoWithTraitForDynTwinNormal> createTwinNormal(
+          {required int two}) =>
       RustLib.instance.api
           .crateApiDynTraitStructTwoWithTraitForDynTwinNormalCreateTwinNormal(
-        two: two,
-      );
+              two: two);
 
   Future<int> simpleMethodTwinNormal();
 }

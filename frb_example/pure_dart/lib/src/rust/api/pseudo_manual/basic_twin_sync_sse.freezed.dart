@@ -12,8 +12,7 @@ part of 'basic_twin_sync_sse.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$BasicGeneralEnumTwinSyncSse {
@@ -60,10 +59,10 @@ mixin _$BasicGeneralEnumTwinSyncSse {
 /// @nodoc
 abstract class $BasicGeneralEnumTwinSyncSseCopyWith<$Res> {
   factory $BasicGeneralEnumTwinSyncSseCopyWith(
-    BasicGeneralEnumTwinSyncSse value,
-    $Res Function(BasicGeneralEnumTwinSyncSse) then,
-  ) = _$BasicGeneralEnumTwinSyncSseCopyWithImpl<$Res,
-      BasicGeneralEnumTwinSyncSse>;
+          BasicGeneralEnumTwinSyncSse value,
+          $Res Function(BasicGeneralEnumTwinSyncSse) then) =
+      _$BasicGeneralEnumTwinSyncSseCopyWithImpl<$Res,
+          BasicGeneralEnumTwinSyncSse>;
 }
 
 /// @nodoc
@@ -84,9 +83,9 @@ class _$BasicGeneralEnumTwinSyncSseCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$BasicGeneralEnumTwinSyncSse_AppleImplCopyWith<$Res> {
   factory _$$BasicGeneralEnumTwinSyncSse_AppleImplCopyWith(
-    _$BasicGeneralEnumTwinSyncSse_AppleImpl value,
-    $Res Function(_$BasicGeneralEnumTwinSyncSse_AppleImpl) then,
-  ) = __$$BasicGeneralEnumTwinSyncSse_AppleImplCopyWithImpl<$Res>;
+          _$BasicGeneralEnumTwinSyncSse_AppleImpl value,
+          $Res Function(_$BasicGeneralEnumTwinSyncSse_AppleImpl) then) =
+      __$$BasicGeneralEnumTwinSyncSse_AppleImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String field});
 }
@@ -97,23 +96,23 @@ class __$$BasicGeneralEnumTwinSyncSse_AppleImplCopyWithImpl<$Res>
         _$BasicGeneralEnumTwinSyncSse_AppleImpl>
     implements _$$BasicGeneralEnumTwinSyncSse_AppleImplCopyWith<$Res> {
   __$$BasicGeneralEnumTwinSyncSse_AppleImplCopyWithImpl(
-    _$BasicGeneralEnumTwinSyncSse_AppleImpl _value,
-    $Res Function(_$BasicGeneralEnumTwinSyncSse_AppleImpl) _then,
-  ) : super(_value, _then);
+      _$BasicGeneralEnumTwinSyncSse_AppleImpl _value,
+      $Res Function(_$BasicGeneralEnumTwinSyncSse_AppleImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of BasicGeneralEnumTwinSyncSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field = null}) {
-    return _then(
-      _$BasicGeneralEnumTwinSyncSse_AppleImpl(
-        field: null == field
-            ? _value.field
-            : field // ignore: cast_nullable_to_non_nullable
-                as String,
-      ),
-    );
+  $Res call({
+    Object? field = null,
+  }) {
+    return _then(_$BasicGeneralEnumTwinSyncSse_AppleImpl(
+      field: null == field
+          ? _value.field
+          : field // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -218,9 +217,8 @@ class _$BasicGeneralEnumTwinSyncSse_AppleImpl
 
 abstract class BasicGeneralEnumTwinSyncSse_Apple
     extends BasicGeneralEnumTwinSyncSse {
-  const factory BasicGeneralEnumTwinSyncSse_Apple({
-    required final String field,
-  }) = _$BasicGeneralEnumTwinSyncSse_AppleImpl;
+  const factory BasicGeneralEnumTwinSyncSse_Apple(
+      {required final String field}) = _$BasicGeneralEnumTwinSyncSse_AppleImpl;
   const BasicGeneralEnumTwinSyncSse_Apple._() : super._();
 
   String get field;
@@ -236,9 +234,9 @@ abstract class BasicGeneralEnumTwinSyncSse_Apple
 /// @nodoc
 abstract class _$$BasicGeneralEnumTwinSyncSse_OrangeImplCopyWith<$Res> {
   factory _$$BasicGeneralEnumTwinSyncSse_OrangeImplCopyWith(
-    _$BasicGeneralEnumTwinSyncSse_OrangeImpl value,
-    $Res Function(_$BasicGeneralEnumTwinSyncSse_OrangeImpl) then,
-  ) = __$$BasicGeneralEnumTwinSyncSse_OrangeImplCopyWithImpl<$Res>;
+          _$BasicGeneralEnumTwinSyncSse_OrangeImpl value,
+          $Res Function(_$BasicGeneralEnumTwinSyncSse_OrangeImpl) then) =
+      __$$BasicGeneralEnumTwinSyncSse_OrangeImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -247,9 +245,9 @@ class __$$BasicGeneralEnumTwinSyncSse_OrangeImplCopyWithImpl<$Res>
         _$BasicGeneralEnumTwinSyncSse_OrangeImpl>
     implements _$$BasicGeneralEnumTwinSyncSse_OrangeImplCopyWith<$Res> {
   __$$BasicGeneralEnumTwinSyncSse_OrangeImplCopyWithImpl(
-    _$BasicGeneralEnumTwinSyncSse_OrangeImpl _value,
-    $Res Function(_$BasicGeneralEnumTwinSyncSse_OrangeImpl) _then,
-  ) : super(_value, _then);
+      _$BasicGeneralEnumTwinSyncSse_OrangeImpl _value,
+      $Res Function(_$BasicGeneralEnumTwinSyncSse_OrangeImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of BasicGeneralEnumTwinSyncSse
   /// with the given fields replaced by the non-null parameter values.

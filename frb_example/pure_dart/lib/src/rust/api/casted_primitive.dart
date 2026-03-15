@@ -24,28 +24,18 @@ Future<int> castedPrimitiveUsizeTwinNormal({required int arg}) =>
     RustLib.instance.api
         .crateApiCastedPrimitiveCastedPrimitiveUsizeTwinNormal(arg: arg);
 
-Future<void> castedPrimitiveMultiArgTwinNormal({
-  required int a,
-  required int b,
-  required int c,
-  required BigInt d,
-}) =>
+Future<void> castedPrimitiveMultiArgTwinNormal(
+        {required int a, required int b, required int c, required BigInt d}) =>
     RustLib.instance.api
         .crateApiCastedPrimitiveCastedPrimitiveMultiArgTwinNormal(
-      a: a,
-      b: b,
-      c: c,
-      d: d,
-    );
+            a: a, b: b, c: c, d: d);
 
 Future<StructWithCastedPrimitiveTwinNormal>
-    functionForStructWithCastedPrimitiveTwinNormal({
-  required StructWithCastedPrimitiveTwinNormal arg,
-}) =>
+    functionForStructWithCastedPrimitiveTwinNormal(
+            {required StructWithCastedPrimitiveTwinNormal arg}) =>
         RustLib.instance.api
             .crateApiCastedPrimitiveFunctionForStructWithCastedPrimitiveTwinNormal(
-          arg: arg,
-        );
+                arg: arg);
 
 class StructWithCastedPrimitiveTwinNormal {
   final int fieldI64;

@@ -13,8 +13,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<bool> useImportedStructTwinNormal({required MyStruct myStruct}) =>
     RustLib.instance.api.crateApiExternalTypeInCrateUseImportedStructTwinNormal(
-      myStruct: myStruct,
-    );
+        myStruct: myStruct);
 
 Future<bool> useImportedEnumTwinNormal({required MyEnum myEnum}) =>
     RustLib.instance.api

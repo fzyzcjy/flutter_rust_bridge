@@ -12,8 +12,7 @@ part of 'enumeration_twin_sse.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$DistanceTwinSse {
@@ -60,9 +59,8 @@ mixin _$DistanceTwinSse {
 /// @nodoc
 abstract class $DistanceTwinSseCopyWith<$Res> {
   factory $DistanceTwinSseCopyWith(
-    DistanceTwinSse value,
-    $Res Function(DistanceTwinSse) then,
-  ) = _$DistanceTwinSseCopyWithImpl<$Res, DistanceTwinSse>;
+          DistanceTwinSse value, $Res Function(DistanceTwinSse) then) =
+      _$DistanceTwinSseCopyWithImpl<$Res, DistanceTwinSse>;
 }
 
 /// @nodoc
@@ -82,9 +80,9 @@ class _$DistanceTwinSseCopyWithImpl<$Res, $Val extends DistanceTwinSse>
 /// @nodoc
 abstract class _$$DistanceTwinSse_UnknownImplCopyWith<$Res> {
   factory _$$DistanceTwinSse_UnknownImplCopyWith(
-    _$DistanceTwinSse_UnknownImpl value,
-    $Res Function(_$DistanceTwinSse_UnknownImpl) then,
-  ) = __$$DistanceTwinSse_UnknownImplCopyWithImpl<$Res>;
+          _$DistanceTwinSse_UnknownImpl value,
+          $Res Function(_$DistanceTwinSse_UnknownImpl) then) =
+      __$$DistanceTwinSse_UnknownImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -92,9 +90,9 @@ class __$$DistanceTwinSse_UnknownImplCopyWithImpl<$Res>
     extends _$DistanceTwinSseCopyWithImpl<$Res, _$DistanceTwinSse_UnknownImpl>
     implements _$$DistanceTwinSse_UnknownImplCopyWith<$Res> {
   __$$DistanceTwinSse_UnknownImplCopyWithImpl(
-    _$DistanceTwinSse_UnknownImpl _value,
-    $Res Function(_$DistanceTwinSse_UnknownImpl) _then,
-  ) : super(_value, _then);
+      _$DistanceTwinSse_UnknownImpl _value,
+      $Res Function(_$DistanceTwinSse_UnknownImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of DistanceTwinSse
   /// with the given fields replaced by the non-null parameter values.
@@ -190,10 +188,9 @@ abstract class DistanceTwinSse_Unknown extends DistanceTwinSse {
 
 /// @nodoc
 abstract class _$$DistanceTwinSse_MapImplCopyWith<$Res> {
-  factory _$$DistanceTwinSse_MapImplCopyWith(
-    _$DistanceTwinSse_MapImpl value,
-    $Res Function(_$DistanceTwinSse_MapImpl) then,
-  ) = __$$DistanceTwinSse_MapImplCopyWithImpl<$Res>;
+  factory _$$DistanceTwinSse_MapImplCopyWith(_$DistanceTwinSse_MapImpl value,
+          $Res Function(_$DistanceTwinSse_MapImpl) then) =
+      __$$DistanceTwinSse_MapImplCopyWithImpl<$Res>;
   @useResult
   $Res call({double field0});
 }
@@ -202,24 +199,23 @@ abstract class _$$DistanceTwinSse_MapImplCopyWith<$Res> {
 class __$$DistanceTwinSse_MapImplCopyWithImpl<$Res>
     extends _$DistanceTwinSseCopyWithImpl<$Res, _$DistanceTwinSse_MapImpl>
     implements _$$DistanceTwinSse_MapImplCopyWith<$Res> {
-  __$$DistanceTwinSse_MapImplCopyWithImpl(
-    _$DistanceTwinSse_MapImpl _value,
-    $Res Function(_$DistanceTwinSse_MapImpl) _then,
-  ) : super(_value, _then);
+  __$$DistanceTwinSse_MapImplCopyWithImpl(_$DistanceTwinSse_MapImpl _value,
+      $Res Function(_$DistanceTwinSse_MapImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of DistanceTwinSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$DistanceTwinSse_MapImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as double,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$DistanceTwinSse_MapImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
   }
 }
 
@@ -254,9 +250,7 @@ class _$DistanceTwinSse_MapImpl extends DistanceTwinSse_Map {
   @pragma('vm:prefer-inline')
   _$$DistanceTwinSse_MapImplCopyWith<_$DistanceTwinSse_MapImpl> get copyWith =>
       __$$DistanceTwinSse_MapImplCopyWithImpl<_$DistanceTwinSse_MapImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -385,10 +379,9 @@ mixin _$EnumWithItemMixedTwinSse {
 
 /// @nodoc
 abstract class $EnumWithItemMixedTwinSseCopyWith<$Res> {
-  factory $EnumWithItemMixedTwinSseCopyWith(
-    EnumWithItemMixedTwinSse value,
-    $Res Function(EnumWithItemMixedTwinSse) then,
-  ) = _$EnumWithItemMixedTwinSseCopyWithImpl<$Res, EnumWithItemMixedTwinSse>;
+  factory $EnumWithItemMixedTwinSseCopyWith(EnumWithItemMixedTwinSse value,
+          $Res Function(EnumWithItemMixedTwinSse) then) =
+      _$EnumWithItemMixedTwinSseCopyWithImpl<$Res, EnumWithItemMixedTwinSse>;
 }
 
 /// @nodoc
@@ -409,9 +402,9 @@ class _$EnumWithItemMixedTwinSseCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$EnumWithItemMixedTwinSse_AImplCopyWith<$Res> {
   factory _$$EnumWithItemMixedTwinSse_AImplCopyWith(
-    _$EnumWithItemMixedTwinSse_AImpl value,
-    $Res Function(_$EnumWithItemMixedTwinSse_AImpl) then,
-  ) = __$$EnumWithItemMixedTwinSse_AImplCopyWithImpl<$Res>;
+          _$EnumWithItemMixedTwinSse_AImpl value,
+          $Res Function(_$EnumWithItemMixedTwinSse_AImpl) then) =
+      __$$EnumWithItemMixedTwinSse_AImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -420,9 +413,9 @@ class __$$EnumWithItemMixedTwinSse_AImplCopyWithImpl<$Res>
         _$EnumWithItemMixedTwinSse_AImpl>
     implements _$$EnumWithItemMixedTwinSse_AImplCopyWith<$Res> {
   __$$EnumWithItemMixedTwinSse_AImplCopyWithImpl(
-    _$EnumWithItemMixedTwinSse_AImpl _value,
-    $Res Function(_$EnumWithItemMixedTwinSse_AImpl) _then,
-  ) : super(_value, _then);
+      _$EnumWithItemMixedTwinSse_AImpl _value,
+      $Res Function(_$EnumWithItemMixedTwinSse_AImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumWithItemMixedTwinSse
   /// with the given fields replaced by the non-null parameter values.
@@ -525,9 +518,9 @@ abstract class EnumWithItemMixedTwinSse_A extends EnumWithItemMixedTwinSse {
 /// @nodoc
 abstract class _$$EnumWithItemMixedTwinSse_BImplCopyWith<$Res> {
   factory _$$EnumWithItemMixedTwinSse_BImplCopyWith(
-    _$EnumWithItemMixedTwinSse_BImpl value,
-    $Res Function(_$EnumWithItemMixedTwinSse_BImpl) then,
-  ) = __$$EnumWithItemMixedTwinSse_BImplCopyWithImpl<$Res>;
+          _$EnumWithItemMixedTwinSse_BImpl value,
+          $Res Function(_$EnumWithItemMixedTwinSse_BImpl) then) =
+      __$$EnumWithItemMixedTwinSse_BImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Uint8List field0});
 }
@@ -538,23 +531,23 @@ class __$$EnumWithItemMixedTwinSse_BImplCopyWithImpl<$Res>
         _$EnumWithItemMixedTwinSse_BImpl>
     implements _$$EnumWithItemMixedTwinSse_BImplCopyWith<$Res> {
   __$$EnumWithItemMixedTwinSse_BImplCopyWithImpl(
-    _$EnumWithItemMixedTwinSse_BImpl _value,
-    $Res Function(_$EnumWithItemMixedTwinSse_BImpl) _then,
-  ) : super(_value, _then);
+      _$EnumWithItemMixedTwinSse_BImpl _value,
+      $Res Function(_$EnumWithItemMixedTwinSse_BImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumWithItemMixedTwinSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$EnumWithItemMixedTwinSse_BImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as Uint8List,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$EnumWithItemMixedTwinSse_BImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
+    ));
   }
 }
 
@@ -678,9 +671,9 @@ abstract class EnumWithItemMixedTwinSse_B extends EnumWithItemMixedTwinSse {
 /// @nodoc
 abstract class _$$EnumWithItemMixedTwinSse_CImplCopyWith<$Res> {
   factory _$$EnumWithItemMixedTwinSse_CImplCopyWith(
-    _$EnumWithItemMixedTwinSse_CImpl value,
-    $Res Function(_$EnumWithItemMixedTwinSse_CImpl) then,
-  ) = __$$EnumWithItemMixedTwinSse_CImplCopyWithImpl<$Res>;
+          _$EnumWithItemMixedTwinSse_CImpl value,
+          $Res Function(_$EnumWithItemMixedTwinSse_CImpl) then) =
+      __$$EnumWithItemMixedTwinSse_CImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String cField});
 }
@@ -691,23 +684,23 @@ class __$$EnumWithItemMixedTwinSse_CImplCopyWithImpl<$Res>
         _$EnumWithItemMixedTwinSse_CImpl>
     implements _$$EnumWithItemMixedTwinSse_CImplCopyWith<$Res> {
   __$$EnumWithItemMixedTwinSse_CImplCopyWithImpl(
-    _$EnumWithItemMixedTwinSse_CImpl _value,
-    $Res Function(_$EnumWithItemMixedTwinSse_CImpl) _then,
-  ) : super(_value, _then);
+      _$EnumWithItemMixedTwinSse_CImpl _value,
+      $Res Function(_$EnumWithItemMixedTwinSse_CImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumWithItemMixedTwinSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? cField = null}) {
-    return _then(
-      _$EnumWithItemMixedTwinSse_CImpl(
-        cField: null == cField
-            ? _value.cField
-            : cField // ignore: cast_nullable_to_non_nullable
-                as String,
-      ),
-    );
+  $Res call({
+    Object? cField = null,
+  }) {
+    return _then(_$EnumWithItemMixedTwinSse_CImpl(
+      cField: null == cField
+          ? _value.cField
+          : cField // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -871,10 +864,9 @@ mixin _$EnumWithItemStructTwinSse {
 
 /// @nodoc
 abstract class $EnumWithItemStructTwinSseCopyWith<$Res> {
-  factory $EnumWithItemStructTwinSseCopyWith(
-    EnumWithItemStructTwinSse value,
-    $Res Function(EnumWithItemStructTwinSse) then,
-  ) = _$EnumWithItemStructTwinSseCopyWithImpl<$Res, EnumWithItemStructTwinSse>;
+  factory $EnumWithItemStructTwinSseCopyWith(EnumWithItemStructTwinSse value,
+          $Res Function(EnumWithItemStructTwinSse) then) =
+      _$EnumWithItemStructTwinSseCopyWithImpl<$Res, EnumWithItemStructTwinSse>;
 }
 
 /// @nodoc
@@ -895,9 +887,9 @@ class _$EnumWithItemStructTwinSseCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$EnumWithItemStructTwinSse_AImplCopyWith<$Res> {
   factory _$$EnumWithItemStructTwinSse_AImplCopyWith(
-    _$EnumWithItemStructTwinSse_AImpl value,
-    $Res Function(_$EnumWithItemStructTwinSse_AImpl) then,
-  ) = __$$EnumWithItemStructTwinSse_AImplCopyWithImpl<$Res>;
+          _$EnumWithItemStructTwinSse_AImpl value,
+          $Res Function(_$EnumWithItemStructTwinSse_AImpl) then) =
+      __$$EnumWithItemStructTwinSse_AImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Uint8List aField});
 }
@@ -908,23 +900,23 @@ class __$$EnumWithItemStructTwinSse_AImplCopyWithImpl<$Res>
         _$EnumWithItemStructTwinSse_AImpl>
     implements _$$EnumWithItemStructTwinSse_AImplCopyWith<$Res> {
   __$$EnumWithItemStructTwinSse_AImplCopyWithImpl(
-    _$EnumWithItemStructTwinSse_AImpl _value,
-    $Res Function(_$EnumWithItemStructTwinSse_AImpl) _then,
-  ) : super(_value, _then);
+      _$EnumWithItemStructTwinSse_AImpl _value,
+      $Res Function(_$EnumWithItemStructTwinSse_AImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumWithItemStructTwinSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? aField = null}) {
-    return _then(
-      _$EnumWithItemStructTwinSse_AImpl(
-        aField: null == aField
-            ? _value.aField
-            : aField // ignore: cast_nullable_to_non_nullable
-                as Uint8List,
-      ),
-    );
+  $Res call({
+    Object? aField = null,
+  }) {
+    return _then(_$EnumWithItemStructTwinSse_AImpl(
+      aField: null == aField
+          ? _value.aField
+          : aField // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
+    ));
   }
 }
 
@@ -1042,9 +1034,9 @@ abstract class EnumWithItemStructTwinSse_A extends EnumWithItemStructTwinSse {
 /// @nodoc
 abstract class _$$EnumWithItemStructTwinSse_BImplCopyWith<$Res> {
   factory _$$EnumWithItemStructTwinSse_BImplCopyWith(
-    _$EnumWithItemStructTwinSse_BImpl value,
-    $Res Function(_$EnumWithItemStructTwinSse_BImpl) then,
-  ) = __$$EnumWithItemStructTwinSse_BImplCopyWithImpl<$Res>;
+          _$EnumWithItemStructTwinSse_BImpl value,
+          $Res Function(_$EnumWithItemStructTwinSse_BImpl) then) =
+      __$$EnumWithItemStructTwinSse_BImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Int32List bField});
 }
@@ -1055,23 +1047,23 @@ class __$$EnumWithItemStructTwinSse_BImplCopyWithImpl<$Res>
         _$EnumWithItemStructTwinSse_BImpl>
     implements _$$EnumWithItemStructTwinSse_BImplCopyWith<$Res> {
   __$$EnumWithItemStructTwinSse_BImplCopyWithImpl(
-    _$EnumWithItemStructTwinSse_BImpl _value,
-    $Res Function(_$EnumWithItemStructTwinSse_BImpl) _then,
-  ) : super(_value, _then);
+      _$EnumWithItemStructTwinSse_BImpl _value,
+      $Res Function(_$EnumWithItemStructTwinSse_BImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumWithItemStructTwinSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? bField = null}) {
-    return _then(
-      _$EnumWithItemStructTwinSse_BImpl(
-        bField: null == bField
-            ? _value.bField
-            : bField // ignore: cast_nullable_to_non_nullable
-                as Int32List,
-      ),
-    );
+  $Res call({
+    Object? bField = null,
+  }) {
+    return _then(_$EnumWithItemStructTwinSse_BImpl(
+      bField: null == bField
+          ? _value.bField
+          : bField // ignore: cast_nullable_to_non_nullable
+              as Int32List,
+    ));
   }
 }
 
@@ -1231,10 +1223,9 @@ mixin _$EnumWithItemTupleTwinSse {
 
 /// @nodoc
 abstract class $EnumWithItemTupleTwinSseCopyWith<$Res> {
-  factory $EnumWithItemTupleTwinSseCopyWith(
-    EnumWithItemTupleTwinSse value,
-    $Res Function(EnumWithItemTupleTwinSse) then,
-  ) = _$EnumWithItemTupleTwinSseCopyWithImpl<$Res, EnumWithItemTupleTwinSse>;
+  factory $EnumWithItemTupleTwinSseCopyWith(EnumWithItemTupleTwinSse value,
+          $Res Function(EnumWithItemTupleTwinSse) then) =
+      _$EnumWithItemTupleTwinSseCopyWithImpl<$Res, EnumWithItemTupleTwinSse>;
 }
 
 /// @nodoc
@@ -1255,9 +1246,9 @@ class _$EnumWithItemTupleTwinSseCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$EnumWithItemTupleTwinSse_AImplCopyWith<$Res> {
   factory _$$EnumWithItemTupleTwinSse_AImplCopyWith(
-    _$EnumWithItemTupleTwinSse_AImpl value,
-    $Res Function(_$EnumWithItemTupleTwinSse_AImpl) then,
-  ) = __$$EnumWithItemTupleTwinSse_AImplCopyWithImpl<$Res>;
+          _$EnumWithItemTupleTwinSse_AImpl value,
+          $Res Function(_$EnumWithItemTupleTwinSse_AImpl) then) =
+      __$$EnumWithItemTupleTwinSse_AImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Uint8List field0});
 }
@@ -1268,23 +1259,23 @@ class __$$EnumWithItemTupleTwinSse_AImplCopyWithImpl<$Res>
         _$EnumWithItemTupleTwinSse_AImpl>
     implements _$$EnumWithItemTupleTwinSse_AImplCopyWith<$Res> {
   __$$EnumWithItemTupleTwinSse_AImplCopyWithImpl(
-    _$EnumWithItemTupleTwinSse_AImpl _value,
-    $Res Function(_$EnumWithItemTupleTwinSse_AImpl) _then,
-  ) : super(_value, _then);
+      _$EnumWithItemTupleTwinSse_AImpl _value,
+      $Res Function(_$EnumWithItemTupleTwinSse_AImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumWithItemTupleTwinSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$EnumWithItemTupleTwinSse_AImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as Uint8List,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$EnumWithItemTupleTwinSse_AImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
+    ));
   }
 }
 
@@ -1403,9 +1394,9 @@ abstract class EnumWithItemTupleTwinSse_A extends EnumWithItemTupleTwinSse {
 /// @nodoc
 abstract class _$$EnumWithItemTupleTwinSse_BImplCopyWith<$Res> {
   factory _$$EnumWithItemTupleTwinSse_BImplCopyWith(
-    _$EnumWithItemTupleTwinSse_BImpl value,
-    $Res Function(_$EnumWithItemTupleTwinSse_BImpl) then,
-  ) = __$$EnumWithItemTupleTwinSse_BImplCopyWithImpl<$Res>;
+          _$EnumWithItemTupleTwinSse_BImpl value,
+          $Res Function(_$EnumWithItemTupleTwinSse_BImpl) then) =
+      __$$EnumWithItemTupleTwinSse_BImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int field0});
 }
@@ -1416,23 +1407,23 @@ class __$$EnumWithItemTupleTwinSse_BImplCopyWithImpl<$Res>
         _$EnumWithItemTupleTwinSse_BImpl>
     implements _$$EnumWithItemTupleTwinSse_BImplCopyWith<$Res> {
   __$$EnumWithItemTupleTwinSse_BImplCopyWithImpl(
-    _$EnumWithItemTupleTwinSse_BImpl _value,
-    $Res Function(_$EnumWithItemTupleTwinSse_BImpl) _then,
-  ) : super(_value, _then);
+      _$EnumWithItemTupleTwinSse_BImpl _value,
+      $Res Function(_$EnumWithItemTupleTwinSse_BImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumWithItemTupleTwinSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$EnumWithItemTupleTwinSse_BImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as int,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$EnumWithItemTupleTwinSse_BImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
@@ -1617,9 +1608,8 @@ mixin _$KitchenSinkTwinSse {
 /// @nodoc
 abstract class $KitchenSinkTwinSseCopyWith<$Res> {
   factory $KitchenSinkTwinSseCopyWith(
-    KitchenSinkTwinSse value,
-    $Res Function(KitchenSinkTwinSse) then,
-  ) = _$KitchenSinkTwinSseCopyWithImpl<$Res, KitchenSinkTwinSse>;
+          KitchenSinkTwinSse value, $Res Function(KitchenSinkTwinSse) then) =
+      _$KitchenSinkTwinSseCopyWithImpl<$Res, KitchenSinkTwinSse>;
 }
 
 /// @nodoc
@@ -1639,9 +1629,9 @@ class _$KitchenSinkTwinSseCopyWithImpl<$Res, $Val extends KitchenSinkTwinSse>
 /// @nodoc
 abstract class _$$KitchenSinkTwinSse_EmptyImplCopyWith<$Res> {
   factory _$$KitchenSinkTwinSse_EmptyImplCopyWith(
-    _$KitchenSinkTwinSse_EmptyImpl value,
-    $Res Function(_$KitchenSinkTwinSse_EmptyImpl) then,
-  ) = __$$KitchenSinkTwinSse_EmptyImplCopyWithImpl<$Res>;
+          _$KitchenSinkTwinSse_EmptyImpl value,
+          $Res Function(_$KitchenSinkTwinSse_EmptyImpl) then) =
+      __$$KitchenSinkTwinSse_EmptyImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -1650,9 +1640,9 @@ class __$$KitchenSinkTwinSse_EmptyImplCopyWithImpl<$Res>
         _$KitchenSinkTwinSse_EmptyImpl>
     implements _$$KitchenSinkTwinSse_EmptyImplCopyWith<$Res> {
   __$$KitchenSinkTwinSse_EmptyImplCopyWithImpl(
-    _$KitchenSinkTwinSse_EmptyImpl _value,
-    $Res Function(_$KitchenSinkTwinSse_EmptyImpl) _then,
-  ) : super(_value, _then);
+      _$KitchenSinkTwinSse_EmptyImpl _value,
+      $Res Function(_$KitchenSinkTwinSse_EmptyImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of KitchenSinkTwinSse
   /// with the given fields replaced by the non-null parameter values.
@@ -1774,9 +1764,9 @@ abstract class KitchenSinkTwinSse_Empty extends KitchenSinkTwinSse {
 /// @nodoc
 abstract class _$$KitchenSinkTwinSse_PrimitivesImplCopyWith<$Res> {
   factory _$$KitchenSinkTwinSse_PrimitivesImplCopyWith(
-    _$KitchenSinkTwinSse_PrimitivesImpl value,
-    $Res Function(_$KitchenSinkTwinSse_PrimitivesImpl) then,
-  ) = __$$KitchenSinkTwinSse_PrimitivesImplCopyWithImpl<$Res>;
+          _$KitchenSinkTwinSse_PrimitivesImpl value,
+          $Res Function(_$KitchenSinkTwinSse_PrimitivesImpl) then) =
+      __$$KitchenSinkTwinSse_PrimitivesImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int int32, double float64, bool boolean});
 }
@@ -1787,9 +1777,9 @@ class __$$KitchenSinkTwinSse_PrimitivesImplCopyWithImpl<$Res>
         _$KitchenSinkTwinSse_PrimitivesImpl>
     implements _$$KitchenSinkTwinSse_PrimitivesImplCopyWith<$Res> {
   __$$KitchenSinkTwinSse_PrimitivesImplCopyWithImpl(
-    _$KitchenSinkTwinSse_PrimitivesImpl _value,
-    $Res Function(_$KitchenSinkTwinSse_PrimitivesImpl) _then,
-  ) : super(_value, _then);
+      _$KitchenSinkTwinSse_PrimitivesImpl _value,
+      $Res Function(_$KitchenSinkTwinSse_PrimitivesImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of KitchenSinkTwinSse
   /// with the given fields replaced by the non-null parameter values.
@@ -1800,22 +1790,20 @@ class __$$KitchenSinkTwinSse_PrimitivesImplCopyWithImpl<$Res>
     Object? float64 = null,
     Object? boolean = null,
   }) {
-    return _then(
-      _$KitchenSinkTwinSse_PrimitivesImpl(
-        int32: null == int32
-            ? _value.int32
-            : int32 // ignore: cast_nullable_to_non_nullable
-                as int,
-        float64: null == float64
-            ? _value.float64
-            : float64 // ignore: cast_nullable_to_non_nullable
-                as double,
-        boolean: null == boolean
-            ? _value.boolean
-            : boolean // ignore: cast_nullable_to_non_nullable
-                as bool,
-      ),
-    );
+    return _then(_$KitchenSinkTwinSse_PrimitivesImpl(
+      int32: null == int32
+          ? _value.int32
+          : int32 // ignore: cast_nullable_to_non_nullable
+              as int,
+      float64: null == float64
+          ? _value.float64
+          : float64 // ignore: cast_nullable_to_non_nullable
+              as double,
+      boolean: null == boolean
+          ? _value.boolean
+          : boolean // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
@@ -1823,11 +1811,9 @@ class __$$KitchenSinkTwinSse_PrimitivesImplCopyWithImpl<$Res>
 
 class _$KitchenSinkTwinSse_PrimitivesImpl
     extends KitchenSinkTwinSse_Primitives {
-  const _$KitchenSinkTwinSse_PrimitivesImpl({
-    this.int32 = -1,
-    required this.float64,
-    required this.boolean,
-  }) : super._();
+  const _$KitchenSinkTwinSse_PrimitivesImpl(
+      {this.int32 = -1, required this.float64, required this.boolean})
+      : super._();
 
   /// Dart field comment
   @override
@@ -1955,11 +1941,10 @@ class _$KitchenSinkTwinSse_PrimitivesImpl
 }
 
 abstract class KitchenSinkTwinSse_Primitives extends KitchenSinkTwinSse {
-  const factory KitchenSinkTwinSse_Primitives({
-    final int int32,
-    required final double float64,
-    required final bool boolean,
-  }) = _$KitchenSinkTwinSse_PrimitivesImpl;
+  const factory KitchenSinkTwinSse_Primitives(
+      {final int int32,
+      required final double float64,
+      required final bool boolean}) = _$KitchenSinkTwinSse_PrimitivesImpl;
   const KitchenSinkTwinSse_Primitives._() : super._();
 
   /// Dart field comment
@@ -1978,9 +1963,9 @@ abstract class KitchenSinkTwinSse_Primitives extends KitchenSinkTwinSse {
 /// @nodoc
 abstract class _$$KitchenSinkTwinSse_NestedImplCopyWith<$Res> {
   factory _$$KitchenSinkTwinSse_NestedImplCopyWith(
-    _$KitchenSinkTwinSse_NestedImpl value,
-    $Res Function(_$KitchenSinkTwinSse_NestedImpl) then,
-  ) = __$$KitchenSinkTwinSse_NestedImplCopyWithImpl<$Res>;
+          _$KitchenSinkTwinSse_NestedImpl value,
+          $Res Function(_$KitchenSinkTwinSse_NestedImpl) then) =
+      __$$KitchenSinkTwinSse_NestedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int field0, KitchenSinkTwinSse field1});
 
@@ -1993,27 +1978,28 @@ class __$$KitchenSinkTwinSse_NestedImplCopyWithImpl<$Res>
         _$KitchenSinkTwinSse_NestedImpl>
     implements _$$KitchenSinkTwinSse_NestedImplCopyWith<$Res> {
   __$$KitchenSinkTwinSse_NestedImplCopyWithImpl(
-    _$KitchenSinkTwinSse_NestedImpl _value,
-    $Res Function(_$KitchenSinkTwinSse_NestedImpl) _then,
-  ) : super(_value, _then);
+      _$KitchenSinkTwinSse_NestedImpl _value,
+      $Res Function(_$KitchenSinkTwinSse_NestedImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of KitchenSinkTwinSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null, Object? field1 = null}) {
-    return _then(
-      _$KitchenSinkTwinSse_NestedImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as int,
-        null == field1
-            ? _value.field1
-            : field1 // ignore: cast_nullable_to_non_nullable
-                as KitchenSinkTwinSse,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+    Object? field1 = null,
+  }) {
+    return _then(_$KitchenSinkTwinSse_NestedImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as int,
+      null == field1
+          ? _value.field1
+          : field1 // ignore: cast_nullable_to_non_nullable
+              as KitchenSinkTwinSse,
+    ));
   }
 
   /// Create a copy of KitchenSinkTwinSse
@@ -2030,10 +2016,9 @@ class __$$KitchenSinkTwinSse_NestedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$KitchenSinkTwinSse_NestedImpl extends KitchenSinkTwinSse_Nested {
-  const _$KitchenSinkTwinSse_NestedImpl(
-    this.field0, [
-    this.field1 = const KitchenSinkTwinSse.empty(),
-  ]) : super._();
+  const _$KitchenSinkTwinSse_NestedImpl(this.field0,
+      [this.field1 = const KitchenSinkTwinSse.empty()])
+      : super._();
 
   @override
   final int field0;
@@ -2156,10 +2141,8 @@ class _$KitchenSinkTwinSse_NestedImpl extends KitchenSinkTwinSse_Nested {
 }
 
 abstract class KitchenSinkTwinSse_Nested extends KitchenSinkTwinSse {
-  const factory KitchenSinkTwinSse_Nested(
-    final int field0, [
-    final KitchenSinkTwinSse field1,
-  ]) = _$KitchenSinkTwinSse_NestedImpl;
+  const factory KitchenSinkTwinSse_Nested(final int field0,
+      [final KitchenSinkTwinSse field1]) = _$KitchenSinkTwinSse_NestedImpl;
   const KitchenSinkTwinSse_Nested._() : super._();
 
   int get field0;
@@ -2175,9 +2158,9 @@ abstract class KitchenSinkTwinSse_Nested extends KitchenSinkTwinSse {
 /// @nodoc
 abstract class _$$KitchenSinkTwinSse_OptionalImplCopyWith<$Res> {
   factory _$$KitchenSinkTwinSse_OptionalImplCopyWith(
-    _$KitchenSinkTwinSse_OptionalImpl value,
-    $Res Function(_$KitchenSinkTwinSse_OptionalImpl) then,
-  ) = __$$KitchenSinkTwinSse_OptionalImplCopyWithImpl<$Res>;
+          _$KitchenSinkTwinSse_OptionalImpl value,
+          $Res Function(_$KitchenSinkTwinSse_OptionalImpl) then) =
+      __$$KitchenSinkTwinSse_OptionalImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int? field0, int? field1});
 }
@@ -2188,27 +2171,28 @@ class __$$KitchenSinkTwinSse_OptionalImplCopyWithImpl<$Res>
         _$KitchenSinkTwinSse_OptionalImpl>
     implements _$$KitchenSinkTwinSse_OptionalImplCopyWith<$Res> {
   __$$KitchenSinkTwinSse_OptionalImplCopyWithImpl(
-    _$KitchenSinkTwinSse_OptionalImpl _value,
-    $Res Function(_$KitchenSinkTwinSse_OptionalImpl) _then,
-  ) : super(_value, _then);
+      _$KitchenSinkTwinSse_OptionalImpl _value,
+      $Res Function(_$KitchenSinkTwinSse_OptionalImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of KitchenSinkTwinSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = freezed, Object? field1 = freezed}) {
-    return _then(
-      _$KitchenSinkTwinSse_OptionalImpl(
-        freezed == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as int?,
-        freezed == field1
-            ? _value.field1
-            : field1 // ignore: cast_nullable_to_non_nullable
-                as int?,
-      ),
-    );
+  $Res call({
+    Object? field0 = freezed,
+    Object? field1 = freezed,
+  }) {
+    return _then(_$KitchenSinkTwinSse_OptionalImpl(
+      freezed == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as int?,
+      freezed == field1
+          ? _value.field1
+          : field1 // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
   }
 }
 
@@ -2340,10 +2324,9 @@ class _$KitchenSinkTwinSse_OptionalImpl extends KitchenSinkTwinSse_Optional {
 }
 
 abstract class KitchenSinkTwinSse_Optional extends KitchenSinkTwinSse {
-  const factory KitchenSinkTwinSse_Optional([
-    final int? field0,
-    final int? field1,
-  ]) = _$KitchenSinkTwinSse_OptionalImpl;
+  const factory KitchenSinkTwinSse_Optional(
+      [final int? field0,
+      final int? field1]) = _$KitchenSinkTwinSse_OptionalImpl;
   const KitchenSinkTwinSse_Optional._() : super._();
 
   /// Comment on anonymous field
@@ -2360,9 +2343,9 @@ abstract class KitchenSinkTwinSse_Optional extends KitchenSinkTwinSse {
 /// @nodoc
 abstract class _$$KitchenSinkTwinSse_BufferImplCopyWith<$Res> {
   factory _$$KitchenSinkTwinSse_BufferImplCopyWith(
-    _$KitchenSinkTwinSse_BufferImpl value,
-    $Res Function(_$KitchenSinkTwinSse_BufferImpl) then,
-  ) = __$$KitchenSinkTwinSse_BufferImplCopyWithImpl<$Res>;
+          _$KitchenSinkTwinSse_BufferImpl value,
+          $Res Function(_$KitchenSinkTwinSse_BufferImpl) then) =
+      __$$KitchenSinkTwinSse_BufferImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Uint8List field0});
 }
@@ -2373,23 +2356,23 @@ class __$$KitchenSinkTwinSse_BufferImplCopyWithImpl<$Res>
         _$KitchenSinkTwinSse_BufferImpl>
     implements _$$KitchenSinkTwinSse_BufferImplCopyWith<$Res> {
   __$$KitchenSinkTwinSse_BufferImplCopyWithImpl(
-    _$KitchenSinkTwinSse_BufferImpl _value,
-    $Res Function(_$KitchenSinkTwinSse_BufferImpl) _then,
-  ) : super(_value, _then);
+      _$KitchenSinkTwinSse_BufferImpl _value,
+      $Res Function(_$KitchenSinkTwinSse_BufferImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of KitchenSinkTwinSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$KitchenSinkTwinSse_BufferImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as Uint8List,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$KitchenSinkTwinSse_BufferImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
+    ));
   }
 }
 
@@ -2532,9 +2515,9 @@ abstract class KitchenSinkTwinSse_Buffer extends KitchenSinkTwinSse {
 /// @nodoc
 abstract class _$$KitchenSinkTwinSse_EnumsImplCopyWith<$Res> {
   factory _$$KitchenSinkTwinSse_EnumsImplCopyWith(
-    _$KitchenSinkTwinSse_EnumsImpl value,
-    $Res Function(_$KitchenSinkTwinSse_EnumsImpl) then,
-  ) = __$$KitchenSinkTwinSse_EnumsImplCopyWithImpl<$Res>;
+          _$KitchenSinkTwinSse_EnumsImpl value,
+          $Res Function(_$KitchenSinkTwinSse_EnumsImpl) then) =
+      __$$KitchenSinkTwinSse_EnumsImplCopyWithImpl<$Res>;
   @useResult
   $Res call({WeekdaysTwinSse field0});
 }
@@ -2545,23 +2528,23 @@ class __$$KitchenSinkTwinSse_EnumsImplCopyWithImpl<$Res>
         _$KitchenSinkTwinSse_EnumsImpl>
     implements _$$KitchenSinkTwinSse_EnumsImplCopyWith<$Res> {
   __$$KitchenSinkTwinSse_EnumsImplCopyWithImpl(
-    _$KitchenSinkTwinSse_EnumsImpl _value,
-    $Res Function(_$KitchenSinkTwinSse_EnumsImpl) _then,
-  ) : super(_value, _then);
+      _$KitchenSinkTwinSse_EnumsImpl _value,
+      $Res Function(_$KitchenSinkTwinSse_EnumsImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of KitchenSinkTwinSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$KitchenSinkTwinSse_EnumsImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as WeekdaysTwinSse,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$KitchenSinkTwinSse_EnumsImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as WeekdaysTwinSse,
+    ));
   }
 }
 
@@ -2748,9 +2731,8 @@ mixin _$MeasureTwinSse {
 /// @nodoc
 abstract class $MeasureTwinSseCopyWith<$Res> {
   factory $MeasureTwinSseCopyWith(
-    MeasureTwinSse value,
-    $Res Function(MeasureTwinSse) then,
-  ) = _$MeasureTwinSseCopyWithImpl<$Res, MeasureTwinSse>;
+          MeasureTwinSse value, $Res Function(MeasureTwinSse) then) =
+      _$MeasureTwinSseCopyWithImpl<$Res, MeasureTwinSse>;
 }
 
 /// @nodoc
@@ -2769,10 +2751,9 @@ class _$MeasureTwinSseCopyWithImpl<$Res, $Val extends MeasureTwinSse>
 
 /// @nodoc
 abstract class _$$MeasureTwinSse_SpeedImplCopyWith<$Res> {
-  factory _$$MeasureTwinSse_SpeedImplCopyWith(
-    _$MeasureTwinSse_SpeedImpl value,
-    $Res Function(_$MeasureTwinSse_SpeedImpl) then,
-  ) = __$$MeasureTwinSse_SpeedImplCopyWithImpl<$Res>;
+  factory _$$MeasureTwinSse_SpeedImplCopyWith(_$MeasureTwinSse_SpeedImpl value,
+          $Res Function(_$MeasureTwinSse_SpeedImpl) then) =
+      __$$MeasureTwinSse_SpeedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({SpeedTwinSse field0});
 
@@ -2783,24 +2764,23 @@ abstract class _$$MeasureTwinSse_SpeedImplCopyWith<$Res> {
 class __$$MeasureTwinSse_SpeedImplCopyWithImpl<$Res>
     extends _$MeasureTwinSseCopyWithImpl<$Res, _$MeasureTwinSse_SpeedImpl>
     implements _$$MeasureTwinSse_SpeedImplCopyWith<$Res> {
-  __$$MeasureTwinSse_SpeedImplCopyWithImpl(
-    _$MeasureTwinSse_SpeedImpl _value,
-    $Res Function(_$MeasureTwinSse_SpeedImpl) _then,
-  ) : super(_value, _then);
+  __$$MeasureTwinSse_SpeedImplCopyWithImpl(_$MeasureTwinSse_SpeedImpl _value,
+      $Res Function(_$MeasureTwinSse_SpeedImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of MeasureTwinSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$MeasureTwinSse_SpeedImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as SpeedTwinSse,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$MeasureTwinSse_SpeedImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as SpeedTwinSse,
+    ));
   }
 
   /// Create a copy of MeasureTwinSse
@@ -2846,9 +2826,7 @@ class _$MeasureTwinSse_SpeedImpl extends MeasureTwinSse_Speed {
   _$$MeasureTwinSse_SpeedImplCopyWith<_$MeasureTwinSse_SpeedImpl>
       get copyWith =>
           __$$MeasureTwinSse_SpeedImplCopyWithImpl<_$MeasureTwinSse_SpeedImpl>(
-            this,
-            _$identity,
-          );
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2931,9 +2909,9 @@ abstract class MeasureTwinSse_Speed extends MeasureTwinSse {
 /// @nodoc
 abstract class _$$MeasureTwinSse_DistanceImplCopyWith<$Res> {
   factory _$$MeasureTwinSse_DistanceImplCopyWith(
-    _$MeasureTwinSse_DistanceImpl value,
-    $Res Function(_$MeasureTwinSse_DistanceImpl) then,
-  ) = __$$MeasureTwinSse_DistanceImplCopyWithImpl<$Res>;
+          _$MeasureTwinSse_DistanceImpl value,
+          $Res Function(_$MeasureTwinSse_DistanceImpl) then) =
+      __$$MeasureTwinSse_DistanceImplCopyWithImpl<$Res>;
   @useResult
   $Res call({DistanceTwinSse field0});
 
@@ -2945,23 +2923,23 @@ class __$$MeasureTwinSse_DistanceImplCopyWithImpl<$Res>
     extends _$MeasureTwinSseCopyWithImpl<$Res, _$MeasureTwinSse_DistanceImpl>
     implements _$$MeasureTwinSse_DistanceImplCopyWith<$Res> {
   __$$MeasureTwinSse_DistanceImplCopyWithImpl(
-    _$MeasureTwinSse_DistanceImpl _value,
-    $Res Function(_$MeasureTwinSse_DistanceImpl) _then,
-  ) : super(_value, _then);
+      _$MeasureTwinSse_DistanceImpl _value,
+      $Res Function(_$MeasureTwinSse_DistanceImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of MeasureTwinSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$MeasureTwinSse_DistanceImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as DistanceTwinSse,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$MeasureTwinSse_DistanceImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as DistanceTwinSse,
+    ));
   }
 
   /// Create a copy of MeasureTwinSse
@@ -3131,9 +3109,8 @@ mixin _$SpeedTwinSse {
 /// @nodoc
 abstract class $SpeedTwinSseCopyWith<$Res> {
   factory $SpeedTwinSseCopyWith(
-    SpeedTwinSse value,
-    $Res Function(SpeedTwinSse) then,
-  ) = _$SpeedTwinSseCopyWithImpl<$Res, SpeedTwinSse>;
+          SpeedTwinSse value, $Res Function(SpeedTwinSse) then) =
+      _$SpeedTwinSseCopyWithImpl<$Res, SpeedTwinSse>;
 }
 
 /// @nodoc
@@ -3152,20 +3129,18 @@ class _$SpeedTwinSseCopyWithImpl<$Res, $Val extends SpeedTwinSse>
 
 /// @nodoc
 abstract class _$$SpeedTwinSse_UnknownImplCopyWith<$Res> {
-  factory _$$SpeedTwinSse_UnknownImplCopyWith(
-    _$SpeedTwinSse_UnknownImpl value,
-    $Res Function(_$SpeedTwinSse_UnknownImpl) then,
-  ) = __$$SpeedTwinSse_UnknownImplCopyWithImpl<$Res>;
+  factory _$$SpeedTwinSse_UnknownImplCopyWith(_$SpeedTwinSse_UnknownImpl value,
+          $Res Function(_$SpeedTwinSse_UnknownImpl) then) =
+      __$$SpeedTwinSse_UnknownImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$SpeedTwinSse_UnknownImplCopyWithImpl<$Res>
     extends _$SpeedTwinSseCopyWithImpl<$Res, _$SpeedTwinSse_UnknownImpl>
     implements _$$SpeedTwinSse_UnknownImplCopyWith<$Res> {
-  __$$SpeedTwinSse_UnknownImplCopyWithImpl(
-    _$SpeedTwinSse_UnknownImpl _value,
-    $Res Function(_$SpeedTwinSse_UnknownImpl) _then,
-  ) : super(_value, _then);
+  __$$SpeedTwinSse_UnknownImplCopyWithImpl(_$SpeedTwinSse_UnknownImpl _value,
+      $Res Function(_$SpeedTwinSse_UnknownImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of SpeedTwinSse
   /// with the given fields replaced by the non-null parameter values.
@@ -3261,10 +3236,9 @@ abstract class SpeedTwinSse_Unknown extends SpeedTwinSse {
 
 /// @nodoc
 abstract class _$$SpeedTwinSse_GPSImplCopyWith<$Res> {
-  factory _$$SpeedTwinSse_GPSImplCopyWith(
-    _$SpeedTwinSse_GPSImpl value,
-    $Res Function(_$SpeedTwinSse_GPSImpl) then,
-  ) = __$$SpeedTwinSse_GPSImplCopyWithImpl<$Res>;
+  factory _$$SpeedTwinSse_GPSImplCopyWith(_$SpeedTwinSse_GPSImpl value,
+          $Res Function(_$SpeedTwinSse_GPSImpl) then) =
+      __$$SpeedTwinSse_GPSImplCopyWithImpl<$Res>;
   @useResult
   $Res call({double field0});
 }
@@ -3273,24 +3247,23 @@ abstract class _$$SpeedTwinSse_GPSImplCopyWith<$Res> {
 class __$$SpeedTwinSse_GPSImplCopyWithImpl<$Res>
     extends _$SpeedTwinSseCopyWithImpl<$Res, _$SpeedTwinSse_GPSImpl>
     implements _$$SpeedTwinSse_GPSImplCopyWith<$Res> {
-  __$$SpeedTwinSse_GPSImplCopyWithImpl(
-    _$SpeedTwinSse_GPSImpl _value,
-    $Res Function(_$SpeedTwinSse_GPSImpl) _then,
-  ) : super(_value, _then);
+  __$$SpeedTwinSse_GPSImplCopyWithImpl(_$SpeedTwinSse_GPSImpl _value,
+      $Res Function(_$SpeedTwinSse_GPSImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of SpeedTwinSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$SpeedTwinSse_GPSImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as double,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$SpeedTwinSse_GPSImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
   }
 }
 
@@ -3325,9 +3298,7 @@ class _$SpeedTwinSse_GPSImpl extends SpeedTwinSse_GPS {
   @pragma('vm:prefer-inline')
   _$$SpeedTwinSse_GPSImplCopyWith<_$SpeedTwinSse_GPSImpl> get copyWith =>
       __$$SpeedTwinSse_GPSImplCopyWithImpl<_$SpeedTwinSse_GPSImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   @optionalTypeArgs

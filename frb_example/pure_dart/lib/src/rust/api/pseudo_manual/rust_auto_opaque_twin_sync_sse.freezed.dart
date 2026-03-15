@@ -12,8 +12,7 @@ part of 'rust_auto_opaque_twin_sync_sse.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$EnumWithGoodAndOpaqueTwinSyncSse {
@@ -62,10 +61,10 @@ mixin _$EnumWithGoodAndOpaqueTwinSyncSse {
 /// @nodoc
 abstract class $EnumWithGoodAndOpaqueTwinSyncSseCopyWith<$Res> {
   factory $EnumWithGoodAndOpaqueTwinSyncSseCopyWith(
-    EnumWithGoodAndOpaqueTwinSyncSse value,
-    $Res Function(EnumWithGoodAndOpaqueTwinSyncSse) then,
-  ) = _$EnumWithGoodAndOpaqueTwinSyncSseCopyWithImpl<$Res,
-      EnumWithGoodAndOpaqueTwinSyncSse>;
+          EnumWithGoodAndOpaqueTwinSyncSse value,
+          $Res Function(EnumWithGoodAndOpaqueTwinSyncSse) then) =
+      _$EnumWithGoodAndOpaqueTwinSyncSseCopyWithImpl<$Res,
+          EnumWithGoodAndOpaqueTwinSyncSse>;
 }
 
 /// @nodoc
@@ -86,9 +85,9 @@ class _$EnumWithGoodAndOpaqueTwinSyncSseCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$EnumWithGoodAndOpaqueTwinSyncSse_GoodImplCopyWith<$Res> {
   factory _$$EnumWithGoodAndOpaqueTwinSyncSse_GoodImplCopyWith(
-    _$EnumWithGoodAndOpaqueTwinSyncSse_GoodImpl value,
-    $Res Function(_$EnumWithGoodAndOpaqueTwinSyncSse_GoodImpl) then,
-  ) = __$$EnumWithGoodAndOpaqueTwinSyncSse_GoodImplCopyWithImpl<$Res>;
+          _$EnumWithGoodAndOpaqueTwinSyncSse_GoodImpl value,
+          $Res Function(_$EnumWithGoodAndOpaqueTwinSyncSse_GoodImpl) then) =
+      __$$EnumWithGoodAndOpaqueTwinSyncSse_GoodImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String field0});
 }
@@ -99,23 +98,23 @@ class __$$EnumWithGoodAndOpaqueTwinSyncSse_GoodImplCopyWithImpl<$Res>
         _$EnumWithGoodAndOpaqueTwinSyncSse_GoodImpl>
     implements _$$EnumWithGoodAndOpaqueTwinSyncSse_GoodImplCopyWith<$Res> {
   __$$EnumWithGoodAndOpaqueTwinSyncSse_GoodImplCopyWithImpl(
-    _$EnumWithGoodAndOpaqueTwinSyncSse_GoodImpl _value,
-    $Res Function(_$EnumWithGoodAndOpaqueTwinSyncSse_GoodImpl) _then,
-  ) : super(_value, _then);
+      _$EnumWithGoodAndOpaqueTwinSyncSse_GoodImpl _value,
+      $Res Function(_$EnumWithGoodAndOpaqueTwinSyncSse_GoodImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumWithGoodAndOpaqueTwinSyncSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$EnumWithGoodAndOpaqueTwinSyncSse_GoodImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as String,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$EnumWithGoodAndOpaqueTwinSyncSse_GoodImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -238,9 +237,9 @@ abstract class EnumWithGoodAndOpaqueTwinSyncSse_Good
 /// @nodoc
 abstract class _$$EnumWithGoodAndOpaqueTwinSyncSse_OpaqueImplCopyWith<$Res> {
   factory _$$EnumWithGoodAndOpaqueTwinSyncSse_OpaqueImplCopyWith(
-    _$EnumWithGoodAndOpaqueTwinSyncSse_OpaqueImpl value,
-    $Res Function(_$EnumWithGoodAndOpaqueTwinSyncSse_OpaqueImpl) then,
-  ) = __$$EnumWithGoodAndOpaqueTwinSyncSse_OpaqueImplCopyWithImpl<$Res>;
+          _$EnumWithGoodAndOpaqueTwinSyncSse_OpaqueImpl value,
+          $Res Function(_$EnumWithGoodAndOpaqueTwinSyncSse_OpaqueImpl) then) =
+      __$$EnumWithGoodAndOpaqueTwinSyncSse_OpaqueImplCopyWithImpl<$Res>;
   @useResult
   $Res call({NonCloneSimpleTwinSyncSse field0});
 }
@@ -251,23 +250,23 @@ class __$$EnumWithGoodAndOpaqueTwinSyncSse_OpaqueImplCopyWithImpl<$Res>
         _$EnumWithGoodAndOpaqueTwinSyncSse_OpaqueImpl>
     implements _$$EnumWithGoodAndOpaqueTwinSyncSse_OpaqueImplCopyWith<$Res> {
   __$$EnumWithGoodAndOpaqueTwinSyncSse_OpaqueImplCopyWithImpl(
-    _$EnumWithGoodAndOpaqueTwinSyncSse_OpaqueImpl _value,
-    $Res Function(_$EnumWithGoodAndOpaqueTwinSyncSse_OpaqueImpl) _then,
-  ) : super(_value, _then);
+      _$EnumWithGoodAndOpaqueTwinSyncSse_OpaqueImpl _value,
+      $Res Function(_$EnumWithGoodAndOpaqueTwinSyncSse_OpaqueImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumWithGoodAndOpaqueTwinSyncSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$EnumWithGoodAndOpaqueTwinSyncSse_OpaqueImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as NonCloneSimpleTwinSyncSse,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$EnumWithGoodAndOpaqueTwinSyncSse_OpaqueImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as NonCloneSimpleTwinSyncSse,
+    ));
   }
 }
 
@@ -374,8 +373,8 @@ class _$EnumWithGoodAndOpaqueTwinSyncSse_OpaqueImpl
 abstract class EnumWithGoodAndOpaqueTwinSyncSse_Opaque
     extends EnumWithGoodAndOpaqueTwinSyncSse {
   const factory EnumWithGoodAndOpaqueTwinSyncSse_Opaque(
-    final NonCloneSimpleTwinSyncSse field0,
-  ) = _$EnumWithGoodAndOpaqueTwinSyncSse_OpaqueImpl;
+          final NonCloneSimpleTwinSyncSse field0) =
+      _$EnumWithGoodAndOpaqueTwinSyncSse_OpaqueImpl;
   const EnumWithGoodAndOpaqueTwinSyncSse_Opaque._() : super._();
 
   @override
