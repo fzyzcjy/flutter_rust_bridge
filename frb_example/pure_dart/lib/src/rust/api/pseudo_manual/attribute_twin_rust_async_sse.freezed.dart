@@ -12,7 +12,8 @@ part of 'attribute_twin_rust_async_sse.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$UserIdTwinRustAsyncSse {
@@ -27,16 +28,19 @@ mixin _$UserIdTwinRustAsyncSse {
 
 /// @nodoc
 abstract class $UserIdTwinRustAsyncSseCopyWith<$Res> {
-  factory $UserIdTwinRustAsyncSseCopyWith(UserIdTwinRustAsyncSse value,
-          $Res Function(UserIdTwinRustAsyncSse) then) =
-      _$UserIdTwinRustAsyncSseCopyWithImpl<$Res, UserIdTwinRustAsyncSse>;
+  factory $UserIdTwinRustAsyncSseCopyWith(
+    UserIdTwinRustAsyncSse value,
+    $Res Function(UserIdTwinRustAsyncSse) then,
+  ) = _$UserIdTwinRustAsyncSseCopyWithImpl<$Res, UserIdTwinRustAsyncSse>;
   @useResult
   $Res call({int value});
 }
 
 /// @nodoc
-class _$UserIdTwinRustAsyncSseCopyWithImpl<$Res,
-        $Val extends UserIdTwinRustAsyncSse>
+class _$UserIdTwinRustAsyncSseCopyWithImpl<
+  $Res,
+  $Val extends UserIdTwinRustAsyncSse
+>
     implements $UserIdTwinRustAsyncSseCopyWith<$Res> {
   _$UserIdTwinRustAsyncSseCopyWithImpl(this._value, this._then);
 
@@ -49,15 +53,16 @@ class _$UserIdTwinRustAsyncSseCopyWithImpl<$Res,
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? value = null,
-  }) {
-    return _then(_value.copyWith(
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+  $Res call({Object? value = null}) {
+    return _then(
+      _value.copyWith(
+            value: null == value
+                ? _value.value
+                : value // ignore: cast_nullable_to_non_nullable
+                      as int,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -65,9 +70,9 @@ class _$UserIdTwinRustAsyncSseCopyWithImpl<$Res,
 abstract class _$$UserIdTwinRustAsyncSseImplCopyWith<$Res>
     implements $UserIdTwinRustAsyncSseCopyWith<$Res> {
   factory _$$UserIdTwinRustAsyncSseImplCopyWith(
-          _$UserIdTwinRustAsyncSseImpl value,
-          $Res Function(_$UserIdTwinRustAsyncSseImpl) then) =
-      __$$UserIdTwinRustAsyncSseImplCopyWithImpl<$Res>;
+    _$UserIdTwinRustAsyncSseImpl value,
+    $Res Function(_$UserIdTwinRustAsyncSseImpl) then,
+  ) = __$$UserIdTwinRustAsyncSseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int value});
@@ -75,27 +80,27 @@ abstract class _$$UserIdTwinRustAsyncSseImplCopyWith<$Res>
 
 /// @nodoc
 class __$$UserIdTwinRustAsyncSseImplCopyWithImpl<$Res>
-    extends _$UserIdTwinRustAsyncSseCopyWithImpl<$Res,
-        _$UserIdTwinRustAsyncSseImpl>
+    extends
+        _$UserIdTwinRustAsyncSseCopyWithImpl<$Res, _$UserIdTwinRustAsyncSseImpl>
     implements _$$UserIdTwinRustAsyncSseImplCopyWith<$Res> {
   __$$UserIdTwinRustAsyncSseImplCopyWithImpl(
-      _$UserIdTwinRustAsyncSseImpl _value,
-      $Res Function(_$UserIdTwinRustAsyncSseImpl) _then)
-      : super(_value, _then);
+    _$UserIdTwinRustAsyncSseImpl _value,
+    $Res Function(_$UserIdTwinRustAsyncSseImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of UserIdTwinRustAsyncSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? value = null,
-  }) {
-    return _then(_$UserIdTwinRustAsyncSseImpl(
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+  $Res call({Object? value = null}) {
+    return _then(
+      _$UserIdTwinRustAsyncSseImpl(
+        value: null == value
+            ? _value.value
+            : value // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
@@ -130,8 +135,11 @@ class _$UserIdTwinRustAsyncSseImpl implements _UserIdTwinRustAsyncSse {
   @override
   @pragma('vm:prefer-inline')
   _$$UserIdTwinRustAsyncSseImplCopyWith<_$UserIdTwinRustAsyncSseImpl>
-      get copyWith => __$$UserIdTwinRustAsyncSseImplCopyWithImpl<
-          _$UserIdTwinRustAsyncSseImpl>(this, _$identity);
+  get copyWith =>
+      __$$UserIdTwinRustAsyncSseImplCopyWithImpl<_$UserIdTwinRustAsyncSseImpl>(
+        this,
+        _$identity,
+      );
 }
 
 abstract class _UserIdTwinRustAsyncSse implements UserIdTwinRustAsyncSse {
@@ -146,5 +154,5 @@ abstract class _UserIdTwinRustAsyncSse implements UserIdTwinRustAsyncSse {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UserIdTwinRustAsyncSseImplCopyWith<_$UserIdTwinRustAsyncSseImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }

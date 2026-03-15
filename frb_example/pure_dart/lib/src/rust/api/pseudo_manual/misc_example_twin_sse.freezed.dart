@@ -12,7 +12,8 @@ part of 'misc_example_twin_sse.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$AbcTwinSse {
@@ -23,16 +24,14 @@ mixin _$AbcTwinSse {
     required TResult Function(BTwinSse field0) b,
     required TResult Function(CTwinSse field0) c,
     required TResult Function(int field0) justInt,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ATwinSse field0)? a,
     TResult? Function(BTwinSse field0)? b,
     TResult? Function(CTwinSse field0)? c,
     TResult? Function(int field0)? justInt,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ATwinSse field0)? a,
@@ -40,24 +39,21 @@ mixin _$AbcTwinSse {
     TResult Function(CTwinSse field0)? c,
     TResult Function(int field0)? justInt,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AbcTwinSse_A value) a,
     required TResult Function(AbcTwinSse_B value) b,
     required TResult Function(AbcTwinSse_C value) c,
     required TResult Function(AbcTwinSse_JustInt value) justInt,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AbcTwinSse_A value)? a,
     TResult? Function(AbcTwinSse_B value)? b,
     TResult? Function(AbcTwinSse_C value)? c,
     TResult? Function(AbcTwinSse_JustInt value)? justInt,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AbcTwinSse_A value)? a,
@@ -65,15 +61,15 @@ mixin _$AbcTwinSse {
     TResult Function(AbcTwinSse_C value)? c,
     TResult Function(AbcTwinSse_JustInt value)? justInt,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $AbcTwinSseCopyWith<$Res> {
   factory $AbcTwinSseCopyWith(
-          AbcTwinSse value, $Res Function(AbcTwinSse) then) =
-      _$AbcTwinSseCopyWithImpl<$Res, AbcTwinSse>;
+    AbcTwinSse value,
+    $Res Function(AbcTwinSse) then,
+  ) = _$AbcTwinSseCopyWithImpl<$Res, AbcTwinSse>;
 }
 
 /// @nodoc
@@ -93,8 +89,9 @@ class _$AbcTwinSseCopyWithImpl<$Res, $Val extends AbcTwinSse>
 /// @nodoc
 abstract class _$$AbcTwinSse_AImplCopyWith<$Res> {
   factory _$$AbcTwinSse_AImplCopyWith(
-          _$AbcTwinSse_AImpl value, $Res Function(_$AbcTwinSse_AImpl) then) =
-      __$$AbcTwinSse_AImplCopyWithImpl<$Res>;
+    _$AbcTwinSse_AImpl value,
+    $Res Function(_$AbcTwinSse_AImpl) then,
+  ) = __$$AbcTwinSse_AImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ATwinSse field0});
 }
@@ -104,22 +101,23 @@ class __$$AbcTwinSse_AImplCopyWithImpl<$Res>
     extends _$AbcTwinSseCopyWithImpl<$Res, _$AbcTwinSse_AImpl>
     implements _$$AbcTwinSse_AImplCopyWith<$Res> {
   __$$AbcTwinSse_AImplCopyWithImpl(
-      _$AbcTwinSse_AImpl _value, $Res Function(_$AbcTwinSse_AImpl) _then)
-      : super(_value, _then);
+    _$AbcTwinSse_AImpl _value,
+    $Res Function(_$AbcTwinSse_AImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AbcTwinSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$AbcTwinSse_AImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as ATwinSse,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$AbcTwinSse_AImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                  as ATwinSse,
+      ),
+    );
   }
 }
 
@@ -247,8 +245,9 @@ abstract class AbcTwinSse_A extends AbcTwinSse {
 /// @nodoc
 abstract class _$$AbcTwinSse_BImplCopyWith<$Res> {
   factory _$$AbcTwinSse_BImplCopyWith(
-          _$AbcTwinSse_BImpl value, $Res Function(_$AbcTwinSse_BImpl) then) =
-      __$$AbcTwinSse_BImplCopyWithImpl<$Res>;
+    _$AbcTwinSse_BImpl value,
+    $Res Function(_$AbcTwinSse_BImpl) then,
+  ) = __$$AbcTwinSse_BImplCopyWithImpl<$Res>;
   @useResult
   $Res call({BTwinSse field0});
 }
@@ -258,22 +257,23 @@ class __$$AbcTwinSse_BImplCopyWithImpl<$Res>
     extends _$AbcTwinSseCopyWithImpl<$Res, _$AbcTwinSse_BImpl>
     implements _$$AbcTwinSse_BImplCopyWith<$Res> {
   __$$AbcTwinSse_BImplCopyWithImpl(
-      _$AbcTwinSse_BImpl _value, $Res Function(_$AbcTwinSse_BImpl) _then)
-      : super(_value, _then);
+    _$AbcTwinSse_BImpl _value,
+    $Res Function(_$AbcTwinSse_BImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AbcTwinSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$AbcTwinSse_BImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as BTwinSse,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$AbcTwinSse_BImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                  as BTwinSse,
+      ),
+    );
   }
 }
 
@@ -401,8 +401,9 @@ abstract class AbcTwinSse_B extends AbcTwinSse {
 /// @nodoc
 abstract class _$$AbcTwinSse_CImplCopyWith<$Res> {
   factory _$$AbcTwinSse_CImplCopyWith(
-          _$AbcTwinSse_CImpl value, $Res Function(_$AbcTwinSse_CImpl) then) =
-      __$$AbcTwinSse_CImplCopyWithImpl<$Res>;
+    _$AbcTwinSse_CImpl value,
+    $Res Function(_$AbcTwinSse_CImpl) then,
+  ) = __$$AbcTwinSse_CImplCopyWithImpl<$Res>;
   @useResult
   $Res call({CTwinSse field0});
 }
@@ -412,22 +413,23 @@ class __$$AbcTwinSse_CImplCopyWithImpl<$Res>
     extends _$AbcTwinSseCopyWithImpl<$Res, _$AbcTwinSse_CImpl>
     implements _$$AbcTwinSse_CImplCopyWith<$Res> {
   __$$AbcTwinSse_CImplCopyWithImpl(
-      _$AbcTwinSse_CImpl _value, $Res Function(_$AbcTwinSse_CImpl) _then)
-      : super(_value, _then);
+    _$AbcTwinSse_CImpl _value,
+    $Res Function(_$AbcTwinSse_CImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AbcTwinSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$AbcTwinSse_CImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as CTwinSse,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$AbcTwinSse_CImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                  as CTwinSse,
+      ),
+    );
   }
 }
 
@@ -554,9 +556,10 @@ abstract class AbcTwinSse_C extends AbcTwinSse {
 
 /// @nodoc
 abstract class _$$AbcTwinSse_JustIntImplCopyWith<$Res> {
-  factory _$$AbcTwinSse_JustIntImplCopyWith(_$AbcTwinSse_JustIntImpl value,
-          $Res Function(_$AbcTwinSse_JustIntImpl) then) =
-      __$$AbcTwinSse_JustIntImplCopyWithImpl<$Res>;
+  factory _$$AbcTwinSse_JustIntImplCopyWith(
+    _$AbcTwinSse_JustIntImpl value,
+    $Res Function(_$AbcTwinSse_JustIntImpl) then,
+  ) = __$$AbcTwinSse_JustIntImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int field0});
 }
@@ -565,23 +568,24 @@ abstract class _$$AbcTwinSse_JustIntImplCopyWith<$Res> {
 class __$$AbcTwinSse_JustIntImplCopyWithImpl<$Res>
     extends _$AbcTwinSseCopyWithImpl<$Res, _$AbcTwinSse_JustIntImpl>
     implements _$$AbcTwinSse_JustIntImplCopyWith<$Res> {
-  __$$AbcTwinSse_JustIntImplCopyWithImpl(_$AbcTwinSse_JustIntImpl _value,
-      $Res Function(_$AbcTwinSse_JustIntImpl) _then)
-      : super(_value, _then);
+  __$$AbcTwinSse_JustIntImplCopyWithImpl(
+    _$AbcTwinSse_JustIntImpl _value,
+    $Res Function(_$AbcTwinSse_JustIntImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AbcTwinSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$AbcTwinSse_JustIntImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$AbcTwinSse_JustIntImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
@@ -616,7 +620,9 @@ class _$AbcTwinSse_JustIntImpl extends AbcTwinSse_JustInt {
   @pragma('vm:prefer-inline')
   _$$AbcTwinSse_JustIntImplCopyWith<_$AbcTwinSse_JustIntImpl> get copyWith =>
       __$$AbcTwinSse_JustIntImplCopyWithImpl<_$AbcTwinSse_JustIntImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs

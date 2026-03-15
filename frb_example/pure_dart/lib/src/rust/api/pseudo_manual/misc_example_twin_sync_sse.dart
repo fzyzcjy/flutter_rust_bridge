@@ -15,36 +15,41 @@ part 'misc_example_twin_sync_sse.freezed.dart';
 // These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `MySizeFreezedTwinSyncSse`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`
 
-MyTreeNodeTwinSyncSse handleComplexStructTwinSyncSse(
-        {required MyTreeNodeTwinSyncSse s}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinSyncSseHandleComplexStructTwinSyncSse(
-            s: s);
+MyTreeNodeTwinSyncSse handleComplexStructTwinSyncSse({
+  required MyTreeNodeTwinSyncSse s,
+}) => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinSyncSseHandleComplexStructTwinSyncSse(
+      s: s,
+    );
 
-List<WeekdaysTwinSyncSse> listOfPrimitiveEnumsTwinSyncSse(
-        {required List<WeekdaysTwinSyncSse> weekdays}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinSyncSseListOfPrimitiveEnumsTwinSyncSse(
-            weekdays: weekdays);
+List<WeekdaysTwinSyncSse> listOfPrimitiveEnumsTwinSyncSse({
+  required List<WeekdaysTwinSyncSse> weekdays,
+}) => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinSyncSseListOfPrimitiveEnumsTwinSyncSse(
+      weekdays: weekdays,
+    );
 
-MyNestedStructTwinSyncSse handleNestedStructTwinSyncSse(
-        {required MyNestedStructTwinSyncSse s}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinSyncSseHandleNestedStructTwinSyncSse(
-            s: s);
+MyNestedStructTwinSyncSse handleNestedStructTwinSyncSse({
+  required MyNestedStructTwinSyncSse s,
+}) => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinSyncSseHandleNestedStructTwinSyncSse(
+      s: s,
+    );
 
 BigBuffersTwinSyncSse handleBigBuffersTwinSyncSse() => RustLib.instance.api
     .crateApiPseudoManualMiscExampleTwinSyncSseHandleBigBuffersTwinSyncSse();
 
 AbcTwinSyncSse testAbcEnumTwinSyncSse({required AbcTwinSyncSse abc}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualMiscExampleTwinSyncSseTestAbcEnumTwinSyncSse(abc: abc);
 
-StructWithEnumTwinSyncSse testStructWithEnumTwinSyncSse(
-        {required StructWithEnumTwinSyncSse se}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscExampleTwinSyncSseTestStructWithEnumTwinSyncSse(
-            se: se);
+StructWithEnumTwinSyncSse testStructWithEnumTwinSyncSse({
+  required StructWithEnumTwinSyncSse se,
+}) => RustLib.instance.api
+    .crateApiPseudoManualMiscExampleTwinSyncSseTestStructWithEnumTwinSyncSse(
+      se: se,
+    );
 
 String handleStringTwinSyncSse({required String s}) => RustLib.instance.api
     .crateApiPseudoManualMiscExampleTwinSyncSseHandleStringTwinSyncSse(s: s);
@@ -58,18 +63,20 @@ Uint8List handleVecU8TwinSyncSse({required List<int> v}) => RustLib.instance.api
 MySize handleStructTwinSyncSse({required MySize arg, required MySize boxed}) =>
     RustLib.instance.api
         .crateApiPseudoManualMiscExampleTwinSyncSseHandleStructTwinSyncSse(
-            arg: arg, boxed: boxed);
+          arg: arg,
+          boxed: boxed,
+        );
 
 int positionalArgumentsTwinSyncSse(int a, int b) => RustLib.instance.api
     .crateApiPseudoManualMiscExampleTwinSyncSsePositionalArgumentsTwinSyncSse(
-        a: a, b: b);
+      a: a,
+      b: b,
+    );
 
 class ATwinSyncSse {
   final String a;
 
-  const ATwinSyncSse({
-    required this.a,
-  });
+  const ATwinSyncSse({required this.a});
 
   @override
   int get hashCode => a.hashCode;
@@ -84,26 +91,16 @@ class ATwinSyncSse {
 sealed class AbcTwinSyncSse with _$AbcTwinSyncSse {
   const AbcTwinSyncSse._();
 
-  const factory AbcTwinSyncSse.a(
-    ATwinSyncSse field0,
-  ) = AbcTwinSyncSse_A;
-  const factory AbcTwinSyncSse.b(
-    BTwinSyncSse field0,
-  ) = AbcTwinSyncSse_B;
-  const factory AbcTwinSyncSse.c(
-    CTwinSyncSse field0,
-  ) = AbcTwinSyncSse_C;
-  const factory AbcTwinSyncSse.justInt(
-    int field0,
-  ) = AbcTwinSyncSse_JustInt;
+  const factory AbcTwinSyncSse.a(ATwinSyncSse field0) = AbcTwinSyncSse_A;
+  const factory AbcTwinSyncSse.b(BTwinSyncSse field0) = AbcTwinSyncSse_B;
+  const factory AbcTwinSyncSse.c(CTwinSyncSse field0) = AbcTwinSyncSse_C;
+  const factory AbcTwinSyncSse.justInt(int field0) = AbcTwinSyncSse_JustInt;
 }
 
 class BTwinSyncSse {
   final int b;
 
-  const BTwinSyncSse({
-    required this.b,
-  });
+  const BTwinSyncSse({required this.b});
 
   @override
   int get hashCode => b.hashCode;
@@ -118,10 +115,7 @@ class BigBuffersTwinSyncSse {
   final Int64List int64;
   final Uint64List uint64;
 
-  const BigBuffersTwinSyncSse({
-    required this.int64,
-    required this.uint64,
-  });
+  const BigBuffersTwinSyncSse({required this.int64, required this.uint64});
 
   @override
   int get hashCode => int64.hashCode ^ uint64.hashCode;
@@ -138,9 +132,7 @@ class BigBuffersTwinSyncSse {
 class CTwinSyncSse {
   final bool c;
 
-  const CTwinSyncSse({
-    required this.c,
-  });
+  const CTwinSyncSse({required this.c});
 
   @override
   int get hashCode => c.hashCode;
@@ -207,10 +199,7 @@ class StructWithEnumTwinSyncSse {
   final AbcTwinSyncSse abc1;
   final AbcTwinSyncSse abc2;
 
-  const StructWithEnumTwinSyncSse({
-    required this.abc1,
-    required this.abc2,
-  });
+  const StructWithEnumTwinSyncSse({required this.abc1, required this.abc2});
 
   @override
   int get hashCode => abc1.hashCode ^ abc2.hashCode;
@@ -232,5 +221,4 @@ enum WeekdaysTwinSyncSse {
   friday,
   saturday,
   sunday,
-  ;
 }
