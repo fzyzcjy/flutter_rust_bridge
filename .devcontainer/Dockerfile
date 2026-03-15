@@ -17,6 +17,8 @@ RUN apt-get update && apt-get install -y \
     ninja-build \
     pkg-config \
     libclang-dev \
+    nodejs \
+    npm \
     python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
@@ -37,6 +39,10 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 # Install wasm-pack for web tests (using cargo for better reliability)
 RUN cargo install wasm-pack
 
+# Install extra CLI tools used by internal generation and coverage workflows
+RUN cargo install cargo-llvm-cov && \
+    npm install -g all-contributors-cli
+
 # Install Chrome for web tests (headless testing)
 RUN apt-get update && apt-get install -y \
     chromium \
@@ -52,7 +58,9 @@ RUN flutter --version && \
     cargo --version && \
     rustup toolchain list | grep nightly-${RUST_NIGHTLY_VERSION} && \
     rustup target list --installed | grep wasm32-unknown-unknown && \
+    cargo llvm-cov --version && \
     wasm-pack --version && \
+    all-contributors --version && \
     chromium --version
 
 # Default command
