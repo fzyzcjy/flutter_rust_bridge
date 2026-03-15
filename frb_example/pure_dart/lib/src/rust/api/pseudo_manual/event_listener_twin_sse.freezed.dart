@@ -54,16 +54,15 @@ class _$EventTwinSseCopyWithImpl<$Res, $Val extends EventTwinSse>
   $Res call({Object? address = null, Object? payload = null}) {
     return _then(
       _value.copyWith(
-            address: null == address
-                ? _value.address
-                : address // ignore: cast_nullable_to_non_nullable
-                      as String,
-            payload: null == payload
-                ? _value.payload
-                : payload // ignore: cast_nullable_to_non_nullable
-                      as String,
-          )
-          as $Val,
+        address: null == address
+            ? _value.address
+            : address // ignore: cast_nullable_to_non_nullable
+                as String,
+        payload: null == payload
+            ? _value.payload
+            : payload // ignore: cast_nullable_to_non_nullable
+                as String,
+      ) as $Val,
     );
   }
 }
@@ -99,11 +98,11 @@ class __$$EventTwinSseImplCopyWithImpl<$Res>
         address: null == address
             ? _value.address
             : address // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         payload: null == payload
             ? _value.payload
             : payload // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
       ),
     );
   }
@@ -113,7 +112,7 @@ class __$$EventTwinSseImplCopyWithImpl<$Res>
 
 class _$EventTwinSseImpl extends _EventTwinSse {
   const _$EventTwinSseImpl({required this.address, required this.payload})
-    : super._();
+      : super._();
 
   @override
   final String address;
