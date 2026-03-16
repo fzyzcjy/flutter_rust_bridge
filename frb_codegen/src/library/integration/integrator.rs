@@ -378,8 +378,13 @@ pub(crate) fn pub_add_dependency_frb(
     if enable_local_dependency {
         flutter_pub_add(&["flutter_rust_bridge", "--path=../../frb_dart"], pwd)?;
     } else {
+        // flutter pub add flutter_rust_bridge --git-url https://github.com/star4277/flutter_rust_bridge_ohos.git --git-path frb_dart
         flutter_pub_add(
-            &[concat!("flutter_rust_bridge:", env!("CARGO_PKG_VERSION"))],
+            &[concat!(
+                "flutter_rust_bridge",
+                "--git-url https://github.com/star4277/flutter_rust_bridge_ohos.git",
+                "--git-path frb_dart"
+            )],
             pwd,
         )?;
     };
