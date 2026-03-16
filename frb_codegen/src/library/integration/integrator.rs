@@ -380,11 +380,11 @@ pub(crate) fn pub_add_dependency_frb(
     } else {
         // flutter pub add flutter_rust_bridge --git-url https://github.com/star4277/flutter_rust_bridge_ohos.git --git-path frb_dart
         flutter_pub_add(
-            &[concat!(
+            &[
                 "flutter_rust_bridge",
                 "--git-url https://github.com/star4277/flutter_rust_bridge_ohos.git",
-                "--git-path frb_dart"
-            )],
+                "--git-path frb_dart",
+            ],
             pwd,
         )?;
     };
