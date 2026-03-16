@@ -1,7 +1,7 @@
 use crate::utils::dart_repository::dart_toolchain::DartToolchain;
 use crate::utils::dart_repository::pubspec::*;
 use anyhow::{anyhow, bail, Context};
-use cargo_metadata::{Version, VersionReq};
+use cargo_metadata::semver::{Version, VersionReq};
 use log::{debug, warn};
 use serde::de::DeserializeOwned;
 use std::collections::HashMap;

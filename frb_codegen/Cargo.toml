@@ -19,46 +19,46 @@ path = "src/main.rs"
 
 [dependencies]
 anyhow = { workspace = true }
-cargo_metadata = "0.14.1"
-convert_case = "0.5.0"
-enum_dispatch = "0.3.8"
-itertools = "0.10.3"
+cargo_metadata = "0.23.1"
+convert_case = "0.11.0"
+enum_dispatch = "0.3.13"
+itertools = "0.14.0"
 lazy_static = { workspace = true }
 log = "0.4"
-fern = { version = "0.6.0", features = ["date-based", "colored"] }
+fern = { version = "0.7.1", features = ["date-based", "colored"] }
 chrono = "0.4"
-pathdiff = "0.2.1"
+pathdiff = "0.2.3"
 quote = "1.0"
-regex = "1.5.4"
+regex = "1.12.3"
 serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0.107"
+serde_json = "1.0.149"
 serde_yaml = "0.9"
-strum = "0.26.3"
-strum_macros = "0.26.4"
-syn = { version = "2.0.26", features = ["full", "extra-traits", "visit-mut"] }
-tempfile = "3.2.0"
-toml = "0.5.8"
+strum = "0.28.0"
+strum_macros = "0.28.0"
+syn = { version = "2.0.117", features = ["full", "extra-traits", "visit-mut"] }
+tempfile = "3.27.0"
+toml = "0.9.6"
 topological-sort = "0.2.2"
-enum-iterator = "1.4.0"
-clap = { version = "4.4.8", features = ["derive"] }
-cbindgen = { version = "0.28.0", default-features = false }
-serial_test = "2.0.0"
-glob = "0.3.1"
+enum-iterator = "2.3.0"
+clap = { version = "4.5.61", features = ["derive"] }
+cbindgen = { version = "0.29.2", default-features = false }
+serial_test = "3.4.0"
+glob = "0.3.3"
 derivative = "2.2.0"
-paste = "1.0.14"
-proc-macro2 = { version = "1.0.66", features = ["span-locations"] }
-include_dir = "0.7.3"
-indicatif = "0.18.0"
+paste = "1.0.15"
+proc-macro2 = { version = "1.0.106", features = ["span-locations"] }
+include_dir = "0.7.4"
+indicatif = "0.18.4"
 indicatif-log-bridge = "0.2.3"
-notify = "6.1.1"
-notify-debouncer-mini = "0.4.1"
-cargo_toml = "0.21.0"
+notify = "8.2.0"
+notify-debouncer-mini = "0.7.0"
+cargo_toml = "0.22.3"
 hex = "0.4.3"
 sha1 = "0.10.6"
 
 [dev-dependencies]
-pretty_assertions = "1.4.0"
-semver = "1.0.12"
+pretty_assertions = "1.4.1"
+semver = "1.0.27"
 
 [package.metadata.binstall]
 bin-dir = "{bin}{binary-ext}"

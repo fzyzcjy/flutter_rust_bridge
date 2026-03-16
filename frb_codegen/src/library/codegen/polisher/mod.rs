@@ -7,12 +7,12 @@ use crate::library::commands::dart_fix::dart_fix;
 use crate::library::commands::dart_format::dart_format;
 use crate::utils::dart_repository::dart_repo::{DartDependencyMode, DartRepository};
 use anyhow::Context;
-use cargo_metadata::VersionReq;
 use itertools::Itertools;
 use lazy_static::lazy_static;
 use log::warn;
 use std::fs;
 use std::path::{Path, PathBuf};
+use cargo_metadata::semver::VersionReq;
 
 pub(crate) mod add_mod_to_lib;
 mod auto_upgrade;

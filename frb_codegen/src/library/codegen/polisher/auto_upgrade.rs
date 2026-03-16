@@ -3,7 +3,7 @@ use crate::integration::integrator::pub_add_dependency_frb;
 use crate::library::commands::cargo::cargo_add;
 use crate::utils::dart_repository::dart_repo::{DartDependencyMode, DartRepository};
 use anyhow::{anyhow, Result};
-use cargo_metadata::VersionReq;
+use cargo_metadata::semver::VersionReq;
 use cargo_toml::{Dependency, Manifest};
 use std::path::Path;
 use std::str::FromStr;

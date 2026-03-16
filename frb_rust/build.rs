@@ -1,7 +1,9 @@
 use build_target::Family;
 
 fn main() {
-    if let Ok(Family::Wasm) = build_target::target_family() {
-        println!("cargo:rustc-cfg=wasm");
+    for family in build_target::target_family() {
+        if family == Family::Wasm {
+            println!("cargo:rustc-cfg=wasm");
+        }
     }
 }

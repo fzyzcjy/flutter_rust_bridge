@@ -17,6 +17,7 @@ use crate::utils::dart_repository::get_dart_package_name;
 use crate::utils::path_utils::path_to_string;
 use crate::utils::syn_utils::canonicalize_rust_type;
 use anyhow::Context;
+use cargo_metadata::TargetKind;
 use itertools::Itertools;
 use pathdiff::diff_paths;
 use std::collections::HashMap;
@@ -165,7 +166,19 @@ fn compute_default_external_library_stem(rust_crate_dir: &Path) -> anyhow::Resul
         .root_package()
         .context("cannot find root package")?;
     let target = (package.targets.iter())
-        .find(|target| target.kind.iter().any(|kind| kind.contains("lib")))
+        .find(|target| {
+            target.kind.iter().any(|kind| {
+                matches!(
+                    *kind,
+                    TargetKind::Lib
+                        | TargetKind::CDyLib
+                        | TargetKind::DyLib
+                        | TargetKind::RLib
+                        | TargetKind::StaticLib
+                )
+            })
+        })
+        // .find(|target| target.kind.iter().any(|kind| kind.contains("lib")))
         .context("cannot find target")?;
     Ok(target.name.replace('-', "_"))
 }
