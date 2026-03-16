@@ -68,23 +68,7 @@ myapp/
 └── ...
 ```
 
-### 4. 修改 pubspec.yaml - 强制使用鸿蒙适配的 flutter_rust_bridge
-   打开项目根目录下的 pubspec.yaml，在文件末尾（或 dependencies 后）添加以下内容：
-```yaml
-dependency_overrides:
-   flutter_rust_bridge:
-      git:
-         url: https://github.com/star4277/flutter_rust_bridge_ohos.git
-         path: frb_dart
-```
-
-然后执行：
-```bash
-flutter pub get
-```
-
-
-### 5. 在 DevEco Studio 中打开鸿蒙模块并签名
+### 4. 在 DevEco Studio 中打开鸿蒙模块并签名
 
 用 DevEco Studio 打开项目根目录（或 ohos 目录，如果有独立模块）
 选择鸿蒙模块（通常名为 entry 或 ohos）
@@ -93,7 +77,7 @@ flutter pub get
 创建或使用已有签名证书
 建议使用默认的调试签名（Debug Profile）
 
-### 6. 运行与调试
+### 5. 运行与调试
 
 在 DevEco Studio 中选择 x86 架构的模拟器
 点击运行（绿色三角）
