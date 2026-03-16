@@ -9,8 +9,7 @@
 - Windows 10 / 11（推荐 64 位专业版或以上）
 - 已安装 [DevEco Studio](https://developer.huawei.com/consumer/cn/deveco-studio/)（建议 Release 稳定版，非 Beta）
 - 已安装 Rust（通过 rustup 安装最新稳定版）
-- 已安装 Flutter（使用鸿蒙适配版本， dependency_overrides 方式）
-- 具备科学上网环境（部分 git clone 需要访问 GitHub）
+- 已安装 [Flutter（使用鸿蒙适配版本， dependency_overrides 方式）](https://gitcode.com/openharmony-tpc/flutter_flutter)
 
 注意：**如果你希望适配安卓等其他平台，Flutter请使用3.35.7版本**，貌似是gradle版本问题，用低版本编译安卓平台会报错，当然你也可以试试用3.27等版本手动升级gradle试试水，毕竟我也没试过。
 ## 快速开始 - 环境配置步骤
