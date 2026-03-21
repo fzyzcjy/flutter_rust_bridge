@@ -40,6 +40,8 @@ Do not answer from stale CI state. Read the latest relevant run or job informati
 
 When several related jobs are failing, use this dependency graph instead of treating all failures as peers:
 
+Legend: rectangles are files or directories. Ovals are CI operations. In each oval, the first line is the CI job name and the second line in parentheses is the corresponding `./frb_internal ...` command when there is one.
+
 ```mermaid
 flowchart LR
     CodegenSources["frb_codegen/src/** + codegen config"]
@@ -48,14 +50,29 @@ flowchart LR
     Cargokit["cargokit"]
     PureDart["frb_example/pure_dart/**"]
     GeneratedOutputs["frb_example/**/frb_generated.*"]
+    InternalRustOutputs["internal Rust generated outputs under frb_codegen/** and frb_rust/**"]
+    BookHelpOutputs["website/docs/generated/_frb-codegen-command-*.mdx"]
+    DartApiOutputs["frb_rust/src/dart_api/**"]
+    BuildRunnerOutputs["build_runner outputs like *.g.dart in non-example Dart packages"]
+    ContributorOutputs[".all-contributorsrc + README.md"]
+    ReadmeOutputs["website/docs/index.md"]
     ExampleOutputs["integrate outputs under frb_example/**"]
     PureDartPde["frb_example/pure_dart_pde/**"]
-    NativeTests["native Flutter tests"]
+    NativeTests["Test :: Flutter :: Native::*\n(./frb_internal test-flutter-native ...)"]
 
     Generate(["Generate :: FRB Codegen :: Command Generate\n(./frb_internal generate-run-frb-codegen-command-generate)"])
-    GenerateInternalPureDart(["Generate Internal :: frb_example pure_dart chain\n(./frb_internal generate-internal-frb-example-pure-dart)"])
     Integrate(["Generate :: FRB Codegen :: Command Integrate\n(./frb_internal generate-run-frb-codegen-command-integrate)"])
-    Build([Build :: Flutter])
+    Build(["Build :: Flutter\n(./frb_internal build-flutter ...)"])
+
+    subgraph GenerateInternal["Generate Internal stages"]
+        GenerateInternalPureDart(["Generate Internal :: frb_example pure_dart chain\n(./frb_internal generate-internal-frb-example-pure-dart)"])
+        GenerateInternalRust(["Generate Internal :: Rust\n(./frb_internal generate-internal-rust)"])
+        GenerateInternalBookHelp(["Generate Internal :: Book Help\n(./frb_internal generate-internal-book-help)"])
+        GenerateInternalDartSource(["Generate Internal :: Dart Source\n(./frb_internal generate-internal-dart-source)"])
+        GenerateInternalBuildRunner(["Generate Internal :: Build Runner\n(./frb_internal generate-internal-build-runner)"])
+        GenerateInternalContributor(["Generate Internal :: Contributor\n(./frb_internal generate-internal-contributor)"])
+        GenerateInternalReadme(["Generate Internal :: Readme\n(./frb_internal generate-internal-readme)"])
+    end
 
     CodegenSources -->|used by| Generate
     Versions -->|used by| Generate
@@ -68,6 +85,24 @@ flowchart LR
     GenerateInternalPureDart -->|derives| PureDartPde
     GenerateInternalPureDart -->|writes| GeneratedOutputs
 
+    CodegenSources -->|used by| GenerateInternalRust
+    Versions -->|used by| GenerateInternalRust
+    GenerateInternalRust -->|writes| InternalRustOutputs
+
+    CodegenSources -->|used by| GenerateInternalBookHelp
+    Versions -->|used by| GenerateInternalBookHelp
+    GenerateInternalBookHelp -->|writes| BookHelpOutputs
+
+    Versions -->|used by| GenerateInternalDartSource
+    GenerateInternalDartSource -->|writes| DartApiOutputs
+
+    Versions -->|used by| GenerateInternalBuildRunner
+    GenerateInternalBuildRunner -->|writes| BuildRunnerOutputs
+
+    GenerateInternalContributor -->|writes| ContributorOutputs
+    GenerateInternalContributor -->|triggers| GenerateInternalReadme
+    GenerateInternalReadme -->|writes| ReadmeOutputs
+
     CodegenSources -->|used by| Integrate
     Versions -->|used by| Integrate
     Templates -->|used by| Integrate
@@ -75,6 +110,7 @@ flowchart LR
     Integrate -->|writes| ExampleOutputs
 
     GeneratedOutputs -->|consumed by| Build
+    InternalRustOutputs -->|consumed by| Build
     ExampleOutputs -->|consumed by| Build
     Build -->|required by| NativeTests
 ```
@@ -92,7 +128,7 @@ Read the graph as artifact and input dependencies, not as a literal GitHub Actio
 
 #### When to Consult
 
-Use this graph when several nearby categories start failing together in the same run, especially when earlier nodes such as `Generate`, `Integrate`, or the `generate-internal-frb-example-pure-dart` chain are already red and later failures look consistent with missing, stale, or mismatched generated files or platform files.
+Use this graph when several nearby categories start failing together in the same run, especially when earlier nodes such as `Generate`, `Integrate`, `generate-internal-frb-example-pure-dart`, or `generate-internal-rust` are already red and later failures look consistent with missing, stale, or mismatched generated files or platform files.
 
 #### Rule
 
