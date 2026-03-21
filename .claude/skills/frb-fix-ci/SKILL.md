@@ -40,54 +40,42 @@ Do not answer from stale CI state. Read the latest relevant run or job informati
 
 When several related jobs are failing, use this dependency graph instead of treating all failures as peers:
 
-```text
-+----------------------------------------+
-| generation logic / templates / toolchain |
-+----------------------------------------+
-          |                               |
-          v                               v
-+-------------------------------------+   +---------------------------------------------+
-| Generate / Integrate / Generate     |   | frb_codegen/assets/integration_template/    |
-| Internal                            |   | + cargokit                                  |
-+-------------------------------------+   +---------------------------------------------+
-          |                               |
-          v                               v
-+-------------------------------------+   +-------------------------------------+
-| generated outputs / example         |   | integrate example outputs /         |
-| platform files                      |   | platform files                      |
-+-------------------------------------+   +-------------------------------------+
-          \                               /
-           \                             /
-            v                           v
-             +----------------------+
-             | Build :: Flutter     |
-             +----------------------+
-                        |
-                        v
-             +----------------------+
-             | native Flutter tests |
-             +----------------------+
+```mermaid
+flowchart LR
+    subgraph StrictDependencies
+        Tooling["generation logic / templates / toolchain"]
+        Generate["Generate / Integrate / Generate Internal"]
+        Outputs["generated outputs / example platform files"]
+        Template["frb_codegen/assets/integration_template/ + cargokit"]
+        ExampleOutputs["integrate example outputs / platform files"]
+        Build["Build :: Flutter"]
+        NativeTests["native Flutter tests"]
+        PureDart["frb_example/pure_dart"]
+        PureDartPde["frb_example/pure_dart_pde"]
 
-+---------------------------+
-| frb_example/pure_dart     |
-+---------------------------+
-             |
-             v
-+---------------------------+
-| frb_example/pure_dart_pde |
-+---------------------------+
+        Tooling --> Generate
+        Generate --> Outputs
+        Template --> ExampleOutputs
+        Outputs --> Build
+        ExampleOutputs --> Build
+        Build --> NativeTests
+        PureDart --> PureDartPde
+    end
 ```
 
-- `generation logic / templates / toolchain` -> generated outputs
+Read the graph as artifact and input dependencies, not as a literal GitHub Actions job graph.
+
+- `generation logic / templates / toolchain` -> `Generate` / `Integrate` / `Generate Internal`
+- `Generate` / `Integrate` / `Generate Internal` -> generated outputs and example platform files
 - `frb_codegen/assets/integration_template/` and `cargokit` -> integrate example outputs and platform files
+- generated outputs and example platform files often determine whether `Build :: Flutter` passes
+- `Build :: Flutter` often determines whether native Flutter tests pass
 - `frb_example/pure_dart` -> `frb_example/pure_dart_pde`
-- `Generate` / `Integrate` / `Generate Internal` -> `Build :: Flutter`
-- `Build :: Flutter` -> native Flutter tests
 
 Practical rule:
 
-- Prefer fixing the left side of the chain before the right side
-- If the left side is still unstable, treat failures on the right side as potentially downstream symptoms rather than independent root causes
+- Prefer fixing prerequisite nodes before symptom nodes
+- If a prerequisite node is still unstable, treat later failures as potentially propagated symptoms rather than independent root causes
 
 ## Fixes by Failure Type
 
