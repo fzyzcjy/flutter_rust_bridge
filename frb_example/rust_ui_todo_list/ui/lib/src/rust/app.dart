@@ -32,7 +32,12 @@ abstract class RustState implements RustOpaqueInterface {
   void toggle({required int id});
 }
 
-enum Filter { all, active, completed }
+enum Filter {
+  all,
+  active,
+  completed,
+  ;
+}
 
 class Item {
   final int id;

@@ -31,44 +31,37 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   BaseRustState
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustState(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   RustState
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   BaseRustState
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustState(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   RustState
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   RustState
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   BaseRustState
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustState(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   RustState
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   RustStreamSink<void> dco_decode_StreamSink_unit_Sse(dynamic raw);
@@ -109,49 +102,41 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   BaseRustState
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustState(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   RustState
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   BaseRustState
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustState(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   RustState
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   RustState
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   BaseRustState
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustState(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   RustState
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   RustStreamSink<void> sse_decode_StreamSink_unit_Sse(
-    SseDeserializer deserializer,
-  );
+      SseDeserializer deserializer);
 
   @protected
   String sse_decode_String(SseDeserializer deserializer);
@@ -185,64 +170,46 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_AnyhowException(
-    AnyhowException self,
-    SseSerializer serializer,
-  );
+      AnyhowException self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustState(
-    BaseRustState self,
-    SseSerializer serializer,
-  );
+          BaseRustState self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
-    RustState self,
-    SseSerializer serializer,
-  );
+          RustState self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustState(
-    BaseRustState self,
-    SseSerializer serializer,
-  );
+          BaseRustState self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
-    RustState self,
-    SseSerializer serializer,
-  );
+          RustState self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
-    RustState self,
-    SseSerializer serializer,
-  );
+          RustState self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustState(
-    BaseRustState self,
-    SseSerializer serializer,
-  );
+          BaseRustState self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState(
-    RustState self,
-    SseSerializer serializer,
-  );
+          RustState self, SseSerializer serializer);
 
   @protected
   void sse_encode_StreamSink_unit_Sse(
-    RustStreamSink<void> self,
-    SseSerializer serializer,
-  );
+      RustStreamSink<void> self, SseSerializer serializer);
 
   @protected
   void sse_encode_String(String self, SseSerializer serializer);
@@ -264,9 +231,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_list_prim_u_8_strict(
-    Uint8List self,
-    SseSerializer serializer,
-  );
+      Uint8List self, SseSerializer serializer);
 
   @protected
   void sse_encode_u_8(int self, SseSerializer serializer);
@@ -303,8 +268,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustStatePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_rust_ui_todo_list_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustState',
-  );
+          'frbgen_frb_example_rust_ui_todo_list_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustState');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustState =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustStatePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -320,8 +284,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustStatePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_rust_ui_todo_list_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustState',
-  );
+          'frbgen_frb_example_rust_ui_todo_list_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustState');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustState =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBaseRustStatePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -337,8 +300,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustStatePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_rust_ui_todo_list_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState',
-  );
+          'frbgen_frb_example_rust_ui_todo_list_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustStatePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -354,8 +316,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustStatePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_rust_ui_todo_list_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState',
-  );
+          'frbgen_frb_example_rust_ui_todo_list_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustState =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerRustStatePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
