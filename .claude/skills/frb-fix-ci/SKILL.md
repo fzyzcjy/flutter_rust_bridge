@@ -53,13 +53,13 @@ flowchart LR
         PureDart["frb_example/pure_dart"]
         PureDartPde["frb_example/pure_dart_pde"]
 
-        Tooling --> Generate
-        Generate --> Outputs
-        Template --> ExampleOutputs
-        Outputs --> Build
-        ExampleOutputs --> Build
-        Build --> NativeTests
-        PureDart --> PureDartPde
+        Tooling -->|runs with| Generate
+        Generate -->|produces| Outputs
+        Template -->|produces| ExampleOutputs
+        Outputs -->|feeds| Build
+        ExampleOutputs -->|feeds| Build
+        Build -->|unblocks| NativeTests
+        PureDart -->|derived into| PureDartPde
     end
 ```
 
