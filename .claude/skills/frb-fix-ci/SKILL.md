@@ -43,12 +43,12 @@ When several related jobs are failing, use this dependency graph instead of trea
 ```mermaid
 flowchart LR
     subgraph StrictDependencies
-        Tooling["generation logic / templates / toolchain"]
+        Tooling["frb_codegen/src/** + codegen config + pinned Flutter/Dart/Rust versions"]
         Codegen["Generate / Generate Internal"]
-        Outputs["generated outputs"]
+        Outputs["generated outputs like frb_example/**/frb_generated.*"]
         Template["frb_codegen/assets/integration_template/ + cargokit"]
         Integrate["Integrate"]
-        ExampleOutputs["integrate example outputs / platform files"]
+        ExampleOutputs["integrate outputs like example platform files under frb_example/**"]
         Build["Build :: Flutter"]
         NativeTests["native Flutter tests"]
         PureDart["frb_example/pure_dart"]
@@ -68,10 +68,10 @@ flowchart LR
 
 Read the graph as artifact and input dependencies, not as a literal GitHub Actions job graph.
 
-- `generation logic / templates / toolchain` -> `Generate` / `Generate Internal`
-- `generation logic / templates / toolchain` and `frb_codegen/assets/integration_template/` / `cargokit` -> `Integrate`
-- `Generate` / `Generate Internal` -> generated outputs
-- `Integrate` -> integrate example outputs and platform files
+- `frb_codegen/src/**`, codegen config, and pinned Flutter/Dart/Rust versions -> `Generate` / `Generate Internal`
+- `frb_codegen/src/**`, codegen config, `frb_codegen/assets/integration_template/`, and `cargokit` -> `Integrate`
+- `Generate` / `Generate Internal` -> generated outputs such as `frb_example/**/frb_generated.*`
+- `Integrate` -> integrate outputs and platform files under `frb_example/**`
 - generated outputs and example platform files often determine whether `Build :: Flutter` passes
 - `Build :: Flutter` often determines whether native Flutter tests pass
 - `frb_example/pure_dart` -> `frb_example/pure_dart_pde`
