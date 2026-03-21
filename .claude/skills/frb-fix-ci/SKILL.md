@@ -152,6 +152,21 @@ In that situation:
 - If generated or integrated outputs are still unstable, do not spend most of your effort fixing `Build :: Flutter` or native tests one by one yet
 - First stabilize the upstream generation or template inputs, then re-check the downstream jobs
 
+### Dependency Order
+
+When several related jobs are failing, use this dependency order instead of treating all failures as peers:
+
+- `generation logic / templates / toolchain` -> generated outputs
+- `frb_codegen/assets/integration_template/` and `cargokit` -> integrate example outputs and platform files
+- `frb_example/pure_dart` -> `frb_example/pure_dart_pde`
+- `Generate` / `Integrate` / `Generate Internal` -> `Build :: Flutter`
+- `Build :: Flutter` -> native Flutter tests
+
+Practical rule:
+
+- Prefer fixing the left side of the chain before the right side
+- If the left side is still unstable, treat failures on the right side as potentially downstream symptoms rather than independent root causes
+
 ### Whack-a-Mole Prevention
 
 When the same path or package repeatedly shows commits like `refresh`, `regenerate`, `sync`, and `revert`, treat that as a sign you may be chasing outputs instead of fixing inputs.
