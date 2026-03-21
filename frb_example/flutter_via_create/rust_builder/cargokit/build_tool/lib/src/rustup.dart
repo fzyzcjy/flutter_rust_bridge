@@ -1,6 +1,3 @@
-/// This is copied from Cargokit (which is the official way to use it currently)
-/// Details: https://fzyzcjy.github.io/flutter_rust_bridge/manual/integrate/builtin
-
 import 'dart:io';
 
 import 'package:collection/collection.dart';
@@ -23,6 +20,17 @@ class Rustup {
     final targets = _installedTargets(toolchain);
     return targets != null ? List.unmodifiable(targets) : null;
   }
+
+  String resolveToolchain(String toolchain) =>
+      _installedToolchains
+          .firstWhereOrNull(
+            (e) => _matchesRequestedToolchain(
+              installedName: e.name,
+              requestedToolchain: toolchain,
+            ),
+          )
+          ?.name ??
+      toolchain;
 
   void installToolchain(String toolchain) {
     log.info("Installing Rust toolchain: $toolchain");
@@ -63,9 +71,22 @@ class Rustup {
 
   Rustup() : _installedToolchains = _getInstalledToolchains();
 
+  bool _matchesRequestedToolchain({
+    required String installedName,
+    required String requestedToolchain,
+  }) =>
+      installedName == requestedToolchain ||
+      installedName.startsWith('$requestedToolchain-') ||
+      (requestedToolchain == 'stable' &&
+          RegExp(r'^\d+\.\d+\.\d+(-|$)').hasMatch(installedName));
+
   List<String>? _installedTargets(String toolchain) => _installedToolchains
       .firstWhereOrNull(
-          (e) => e.name == toolchain || e.name.startsWith('$toolchain-'))
+        (e) => _matchesRequestedToolchain(
+          installedName: e.name,
+          requestedToolchain: toolchain,
+        ),
+      )
       ?.targets;
 
   static List<_Toolchain> _getInstalledToolchains() {
@@ -79,11 +100,11 @@ class Rustup {
 
     // To list all non-custom toolchains, we need to filter out lines that
     // don't start with "stable", "beta", or "nightly".
-    Pattern nonCustom = RegExp(r"^(stable|beta|nightly)");
+    final nonCustom = RegExp(r'^((stable|beta|nightly)(-|$)|\d+\.\d+\.\d+(-|$))');
     final lines = res.stdout
         .toString()
         .split('\n')
-        .where((e) => e.isNotEmpty && e.startsWith(nonCustom))
+        .where((e) => e.isNotEmpty && nonCustom.hasMatch(e))
         .map(extractToolchainName)
         .toList(growable: true);
 
@@ -115,14 +136,14 @@ class Rustup {
 
   bool _didInstallRustSrcForNightly = false;
 
-  void installRustSrcForNightly() {
+  void installRustSrcForNightly({String toolchain = 'nightly'}) {
     if (_didInstallRustSrcForNightly) {
       return;
     }
     // Useful for -Z build-std
     runCommand(
       "rustup",
-      ['component', 'add', 'rust-src', '--toolchain', 'nightly'],
+      ['component', 'add', 'rust-src', '--toolchain', toolchain],
     );
     _didInstallRustSrcForNightly = true;
   }
