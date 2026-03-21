@@ -9,8 +9,7 @@ import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 HideDataAnotherTwinSseMoi? syncOptionRustOpaqueTwinSseMoi() => RustLib
-    .instance
-    .api
+    .instance.api
     .crateApiPseudoManualRustOpaqueSyncTwinSseMoiSyncOptionRustOpaqueTwinSseMoi();
 
 HideDataAnotherTwinSseMoi syncCreateOpaqueTwinSseMoi() => RustLib.instance.api
@@ -23,8 +22,7 @@ NonCloneDataTwinSseMoi syncCreateNonCloneTwinSseMoi() => RustLib.instance.api
 /// FrbOpaqueSyncReturn must be only return type.
 /// FrbOpaqueSyncReturn must be without wrapper like Option<> Vec<> etc.
 FrbOpaqueSyncReturnTwinSseMoi frbSyncGeneratorTestTwinSseMoi() => RustLib
-    .instance
-    .api
+    .instance.api
     .crateApiPseudoManualRustOpaqueSyncTwinSseMoiFrbSyncGeneratorTestTwinSseMoi();
 
 // Rust type: RustOpaqueMoi<FrbOpaqueSyncReturnTwinSseMoi>
