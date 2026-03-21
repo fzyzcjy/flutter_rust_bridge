@@ -41,7 +41,7 @@ Do not answer from stale CI state. Read the latest relevant run or job informati
 When several related jobs are failing, use this dependency graph instead of treating all failures as peers:
 
 ```mermaid
-flowchart LR
+flowchart TD
     CodegenSources["frb_codegen/src/** + codegen config"]
     Versions["pinned Flutter / Dart / Rust versions"]
     Templates["frb_codegen/assets/integration_template/**"]
