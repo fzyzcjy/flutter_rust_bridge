@@ -142,6 +142,8 @@ Common FRB patterns:
   suspect `frb_codegen/assets/integration_template/` and `cargokit`; do not hand-edit generated example outputs. If the real fix belongs in `cargokit`, patch the submodule and update its ref instead of only patching copied outputs.
 - `pure_dart` and `pure_dart_pde`:
   if both are moving, stabilize `frb_example/pure_dart` first and treat `pure_dart_pde` as a dependent output
+- Repeated `Generate` failures across different example packages:
+  if the same `Generate :: FRB Codegen :: Command Generate` symptom keeps rotating across packages with similar generated Dart diffs, stop fixing one package at a time. Re-run clean remote `./frb_internal precommit-generate` and treat that full run as the source of truth for the whole `Generate` chain. Only after that full run stabilizes should you accept any remaining per-package tail diff.
 
 ## Fixes by Failure Type
 
@@ -241,6 +243,8 @@ In that situation:
 - First validate the generation logic or generation workflow
 - Re-generate from a clean environment
 - Only accept generated outputs after confirming they do not introduce new non-`Generate` regressions
+
+If the symptom is not one package but a sequence of packages failing with very similar generated Dart drift, prefer validating clean remote `./frb_internal precommit-generate` before accepting more package-by-package sync commits.
 
 ### Dart Web Browser Startup Flakes
 

@@ -45,6 +45,7 @@ In particular:
 
 - If `Generate` / `Integrate` failures appear together with Flutter build or native test failures, use `frb-fix-ci` first
 - If the same package keeps getting regenerated or reverted without stabilizing CI, use `frb-fix-ci` first
+- If similar generated Dart diffs keep appearing across different example packages, use `frb-fix-ci` first and validate clean remote `./frb_internal precommit-generate` before debugging FRB internals package by package
 - If `pure_dart_pde` is failing, confirm whether `pure_dart` is still changing before debugging the downstream copy
 - If Flutter integrate examples regress because of embedded `cargokit` behavior, debug and fix the real `cargokit` submodule, push to `fzyzcjy/cargokit`, and then update the submodule ref instead of only patching copied example outputs
 
