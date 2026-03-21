@@ -13,14 +13,13 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 NewTypeIntTwinSync handleNewtypeTwinSync({required NewTypeIntTwinSync arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualNewtypePatternTwinSyncHandleNewtypeTwinSync(
-            arg: arg);
+          arg: arg,
+        );
 
 class NewTypeIntTwinSync {
   final PlatformInt64 field0;
 
-  const NewTypeIntTwinSync({
-    required this.field0,
-  });
+  const NewTypeIntTwinSync({required this.field0});
 
   @override
   int get hashCode => field0.hashCode;

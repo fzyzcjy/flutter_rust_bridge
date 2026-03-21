@@ -18,9 +18,10 @@ abstract class ConstructorOpaqueStructTwinNormal
   void check();
 
   // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
-  static Future<ConstructorOpaqueStructTwinNormal> newInstance() =>
-      RustLib.instance.api
-          .crateApiConstructorConstructorOpaqueStructTwinNormalNew();
+  static Future<ConstructorOpaqueStructTwinNormal> newInstance() => RustLib
+      .instance
+      .api
+      .crateApiConstructorConstructorOpaqueStructTwinNormalNew();
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConstructorOpaqueSyncStructTwinNormal>>
@@ -39,9 +40,7 @@ abstract class ConstructorOpaqueSyncStructTwinNormal
 class ConstructorTranslatableStructTwinNormal {
   final String one;
 
-  const ConstructorTranslatableStructTwinNormal({
-    required this.one,
-  });
+  const ConstructorTranslatableStructTwinNormal({required this.one});
 
   // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
   static Future<ConstructorTranslatableStructTwinNormal> newInstance() =>
@@ -62,9 +61,7 @@ class ConstructorTranslatableStructTwinNormal {
 class ConstructorTranslatableSyncStructTwinNormal {
   final String one;
 
-  const ConstructorTranslatableSyncStructTwinNormal.raw({
-    required this.one,
-  });
+  const ConstructorTranslatableSyncStructTwinNormal.raw({required this.one});
 
   factory ConstructorTranslatableSyncStructTwinNormal() => RustLib.instance.api
       .crateApiConstructorConstructorTranslatableSyncStructTwinNormalNew();

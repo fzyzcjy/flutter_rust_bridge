@@ -9,17 +9,15 @@ import '../deliberate_name_conflict.dart';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<StructInUpperLevel> testDuplicatedModuleNames(
-        {required StructInLowerLevel s}) =>
-    RustLib.instance.api
-        .crateApiDeliberateNameConflictTestDuplicatedModuleNames(s: s);
+Future<StructInUpperLevel> testDuplicatedModuleNames({
+  required StructInLowerLevel s,
+}) => RustLib.instance.api
+    .crateApiDeliberateNameConflictTestDuplicatedModuleNames(s: s);
 
 class StructInLowerLevel {
   final StructInUpperLevel inner;
 
-  const StructInLowerLevel({
-    required this.inner,
-  });
+  const StructInLowerLevel({required this.inner});
 
   @override
   int get hashCode => inner.hashCode;
