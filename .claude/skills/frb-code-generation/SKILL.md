@@ -31,10 +31,10 @@ flutter_rust_bridge requires code generation when Rust APIs change. This skill m
 
 ## Important Rules
 
-For CI diagnosis rules about generated-file format/lint failures, repeated package-level `Generate` drift, or `Generate :: FRB Codegen :: Command Integrate` failures, see `frb-fix-ci` first. This skill is for command selection, not CI failure-propagation diagnosis.
+For CI diagnosis rules about generated-file format/lint failures, repeated package-level `Generate` drift, or `Generate :: FRB Codegen :: Command Integrate` failures, you MUST read `frb-fix-ci` first. This skill is for command selection, not CI failure-propagation diagnosis.
 
 For `pure_dart` / `pure_dart_pde` generation issues, treat `frb_example/pure_dart` as the upstream source and `frb_example/pure_dart_pde` as the derived copy. See `frb-fix-ci` for the CI diagnosis workflow.
 
-If CI repair has already entered repeated package-level drift, stop choosing narrower commands and switch to `frb-fix-ci`.
+If CI repair has already entered repeated package-level drift, you MUST stop choosing narrower commands and switch to `frb-fix-ci`.
 
 Do not manually patch generated files as the final fix. The final accepted result should be produced by the corresponding generation command in a clean matching environment.

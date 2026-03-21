@@ -43,8 +43,8 @@ Before going deep into FRB internals, first check whether you are actually seein
 
 In particular:
 
-- If CI failures may be explained by failure propagation, repeated package-level drift, or unstable generated outputs, use `frb-fix-ci` first
-- Only stay in `frb-debugging` after `frb-fix-ci` has ruled out those simpler explanations
+- If CI failures may be explained by failure propagation, repeated package-level drift, or unstable generated outputs, you MUST use `frb-fix-ci` first
+- You MUST only stay in `frb-debugging` after `frb-fix-ci` has ruled out those simpler explanations
 
 ## Related Skills
 
