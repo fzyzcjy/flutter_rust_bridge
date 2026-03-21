@@ -12,8 +12,7 @@ part of 'basic.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$BasicGeneralEnumTwinNormal {
@@ -59,11 +58,10 @@ mixin _$BasicGeneralEnumTwinNormal {
 
 /// @nodoc
 abstract class $BasicGeneralEnumTwinNormalCopyWith<$Res> {
-  factory $BasicGeneralEnumTwinNormalCopyWith(
-    BasicGeneralEnumTwinNormal value,
-    $Res Function(BasicGeneralEnumTwinNormal) then,
-  ) = _$BasicGeneralEnumTwinNormalCopyWithImpl<$Res,
-      BasicGeneralEnumTwinNormal>;
+  factory $BasicGeneralEnumTwinNormalCopyWith(BasicGeneralEnumTwinNormal value,
+          $Res Function(BasicGeneralEnumTwinNormal) then) =
+      _$BasicGeneralEnumTwinNormalCopyWithImpl<$Res,
+          BasicGeneralEnumTwinNormal>;
 }
 
 /// @nodoc
@@ -84,9 +82,9 @@ class _$BasicGeneralEnumTwinNormalCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$BasicGeneralEnumTwinNormal_AppleImplCopyWith<$Res> {
   factory _$$BasicGeneralEnumTwinNormal_AppleImplCopyWith(
-    _$BasicGeneralEnumTwinNormal_AppleImpl value,
-    $Res Function(_$BasicGeneralEnumTwinNormal_AppleImpl) then,
-  ) = __$$BasicGeneralEnumTwinNormal_AppleImplCopyWithImpl<$Res>;
+          _$BasicGeneralEnumTwinNormal_AppleImpl value,
+          $Res Function(_$BasicGeneralEnumTwinNormal_AppleImpl) then) =
+      __$$BasicGeneralEnumTwinNormal_AppleImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String field});
 }
@@ -97,23 +95,23 @@ class __$$BasicGeneralEnumTwinNormal_AppleImplCopyWithImpl<$Res>
         _$BasicGeneralEnumTwinNormal_AppleImpl>
     implements _$$BasicGeneralEnumTwinNormal_AppleImplCopyWith<$Res> {
   __$$BasicGeneralEnumTwinNormal_AppleImplCopyWithImpl(
-    _$BasicGeneralEnumTwinNormal_AppleImpl _value,
-    $Res Function(_$BasicGeneralEnumTwinNormal_AppleImpl) _then,
-  ) : super(_value, _then);
+      _$BasicGeneralEnumTwinNormal_AppleImpl _value,
+      $Res Function(_$BasicGeneralEnumTwinNormal_AppleImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of BasicGeneralEnumTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field = null}) {
-    return _then(
-      _$BasicGeneralEnumTwinNormal_AppleImpl(
-        field: null == field
-            ? _value.field
-            : field // ignore: cast_nullable_to_non_nullable
-                as String,
-      ),
-    );
+  $Res call({
+    Object? field = null,
+  }) {
+    return _then(_$BasicGeneralEnumTwinNormal_AppleImpl(
+      field: null == field
+          ? _value.field
+          : field // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -218,9 +216,8 @@ class _$BasicGeneralEnumTwinNormal_AppleImpl
 
 abstract class BasicGeneralEnumTwinNormal_Apple
     extends BasicGeneralEnumTwinNormal {
-  const factory BasicGeneralEnumTwinNormal_Apple({
-    required final String field,
-  }) = _$BasicGeneralEnumTwinNormal_AppleImpl;
+  const factory BasicGeneralEnumTwinNormal_Apple(
+      {required final String field}) = _$BasicGeneralEnumTwinNormal_AppleImpl;
   const BasicGeneralEnumTwinNormal_Apple._() : super._();
 
   String get field;
@@ -236,9 +233,9 @@ abstract class BasicGeneralEnumTwinNormal_Apple
 /// @nodoc
 abstract class _$$BasicGeneralEnumTwinNormal_OrangeImplCopyWith<$Res> {
   factory _$$BasicGeneralEnumTwinNormal_OrangeImplCopyWith(
-    _$BasicGeneralEnumTwinNormal_OrangeImpl value,
-    $Res Function(_$BasicGeneralEnumTwinNormal_OrangeImpl) then,
-  ) = __$$BasicGeneralEnumTwinNormal_OrangeImplCopyWithImpl<$Res>;
+          _$BasicGeneralEnumTwinNormal_OrangeImpl value,
+          $Res Function(_$BasicGeneralEnumTwinNormal_OrangeImpl) then) =
+      __$$BasicGeneralEnumTwinNormal_OrangeImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -247,9 +244,9 @@ class __$$BasicGeneralEnumTwinNormal_OrangeImplCopyWithImpl<$Res>
         _$BasicGeneralEnumTwinNormal_OrangeImpl>
     implements _$$BasicGeneralEnumTwinNormal_OrangeImplCopyWith<$Res> {
   __$$BasicGeneralEnumTwinNormal_OrangeImplCopyWithImpl(
-    _$BasicGeneralEnumTwinNormal_OrangeImpl _value,
-    $Res Function(_$BasicGeneralEnumTwinNormal_OrangeImpl) _then,
-  ) : super(_value, _then);
+      _$BasicGeneralEnumTwinNormal_OrangeImpl _value,
+      $Res Function(_$BasicGeneralEnumTwinNormal_OrangeImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of BasicGeneralEnumTwinNormal
   /// with the given fields replaced by the non-null parameter values.

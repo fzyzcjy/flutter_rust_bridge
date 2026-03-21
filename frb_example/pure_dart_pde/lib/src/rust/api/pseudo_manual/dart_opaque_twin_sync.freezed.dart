@@ -12,8 +12,7 @@ part of 'dart_opaque_twin_sync.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$EnumDartOpaqueTwinSync {
@@ -60,10 +59,9 @@ mixin _$EnumDartOpaqueTwinSync {
 
 /// @nodoc
 abstract class $EnumDartOpaqueTwinSyncCopyWith<$Res> {
-  factory $EnumDartOpaqueTwinSyncCopyWith(
-    EnumDartOpaqueTwinSync value,
-    $Res Function(EnumDartOpaqueTwinSync) then,
-  ) = _$EnumDartOpaqueTwinSyncCopyWithImpl<$Res, EnumDartOpaqueTwinSync>;
+  factory $EnumDartOpaqueTwinSyncCopyWith(EnumDartOpaqueTwinSync value,
+          $Res Function(EnumDartOpaqueTwinSync) then) =
+      _$EnumDartOpaqueTwinSyncCopyWithImpl<$Res, EnumDartOpaqueTwinSync>;
 }
 
 /// @nodoc
@@ -84,9 +82,9 @@ class _$EnumDartOpaqueTwinSyncCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$EnumDartOpaqueTwinSync_PrimitiveImplCopyWith<$Res> {
   factory _$$EnumDartOpaqueTwinSync_PrimitiveImplCopyWith(
-    _$EnumDartOpaqueTwinSync_PrimitiveImpl value,
-    $Res Function(_$EnumDartOpaqueTwinSync_PrimitiveImpl) then,
-  ) = __$$EnumDartOpaqueTwinSync_PrimitiveImplCopyWithImpl<$Res>;
+          _$EnumDartOpaqueTwinSync_PrimitiveImpl value,
+          $Res Function(_$EnumDartOpaqueTwinSync_PrimitiveImpl) then) =
+      __$$EnumDartOpaqueTwinSync_PrimitiveImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int field0});
 }
@@ -97,23 +95,23 @@ class __$$EnumDartOpaqueTwinSync_PrimitiveImplCopyWithImpl<$Res>
         _$EnumDartOpaqueTwinSync_PrimitiveImpl>
     implements _$$EnumDartOpaqueTwinSync_PrimitiveImplCopyWith<$Res> {
   __$$EnumDartOpaqueTwinSync_PrimitiveImplCopyWithImpl(
-    _$EnumDartOpaqueTwinSync_PrimitiveImpl _value,
-    $Res Function(_$EnumDartOpaqueTwinSync_PrimitiveImpl) _then,
-  ) : super(_value, _then);
+      _$EnumDartOpaqueTwinSync_PrimitiveImpl _value,
+      $Res Function(_$EnumDartOpaqueTwinSync_PrimitiveImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumDartOpaqueTwinSync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$EnumDartOpaqueTwinSync_PrimitiveImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as int,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$EnumDartOpaqueTwinSync_PrimitiveImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
@@ -234,9 +232,9 @@ abstract class EnumDartOpaqueTwinSync_Primitive extends EnumDartOpaqueTwinSync {
 /// @nodoc
 abstract class _$$EnumDartOpaqueTwinSync_OpaqueImplCopyWith<$Res> {
   factory _$$EnumDartOpaqueTwinSync_OpaqueImplCopyWith(
-    _$EnumDartOpaqueTwinSync_OpaqueImpl value,
-    $Res Function(_$EnumDartOpaqueTwinSync_OpaqueImpl) then,
-  ) = __$$EnumDartOpaqueTwinSync_OpaqueImplCopyWithImpl<$Res>;
+          _$EnumDartOpaqueTwinSync_OpaqueImpl value,
+          $Res Function(_$EnumDartOpaqueTwinSync_OpaqueImpl) then) =
+      __$$EnumDartOpaqueTwinSync_OpaqueImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Object field0});
 }
@@ -247,20 +245,20 @@ class __$$EnumDartOpaqueTwinSync_OpaqueImplCopyWithImpl<$Res>
         _$EnumDartOpaqueTwinSync_OpaqueImpl>
     implements _$$EnumDartOpaqueTwinSync_OpaqueImplCopyWith<$Res> {
   __$$EnumDartOpaqueTwinSync_OpaqueImplCopyWithImpl(
-    _$EnumDartOpaqueTwinSync_OpaqueImpl _value,
-    $Res Function(_$EnumDartOpaqueTwinSync_OpaqueImpl) _then,
-  ) : super(_value, _then);
+      _$EnumDartOpaqueTwinSync_OpaqueImpl _value,
+      $Res Function(_$EnumDartOpaqueTwinSync_OpaqueImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumDartOpaqueTwinSync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$EnumDartOpaqueTwinSync_OpaqueImpl(
-        null == field0 ? _value.field0 : field0,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$EnumDartOpaqueTwinSync_OpaqueImpl(
+      null == field0 ? _value.field0 : field0,
+    ));
   }
 }
 
