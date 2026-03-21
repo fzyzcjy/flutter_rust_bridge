@@ -42,35 +42,40 @@ When several related jobs are failing, use this dependency graph instead of trea
 
 ```mermaid
 flowchart LR
-    subgraph StrictDependencies
-        Tooling["frb_codegen/src/** + codegen config"]
+    subgraph Inputs
+        CodegenSources["frb_codegen/src/** + codegen config"]
         Versions["pinned Flutter / Dart / Rust versions"]
+        Templates["frb_codegen/assets/integration_template/**"]
+        Cargokit["cargokit"]
+    end
+
+    subgraph Operations
         Generate["Generate"]
         GenerateInternal["Generate Internal"]
-        Outputs["generated outputs like frb_example/**/frb_generated.*"]
-        Template["frb_codegen/assets/integration_template/ + cargokit"]
         Integrate["Integrate"]
-        ExampleOutputs["integrate outputs like example platform files under frb_example/**"]
         Build["Build :: Flutter"]
-        NativeTests["native Flutter tests"]
-        PureDart["frb_example/pure_dart"]
-        PureDartPde["frb_example/pure_dart_pde"]
-
-        Tooling -->|used by| Generate
-        Versions -->|used by| Generate
-        Tooling -->|used by| GenerateInternal
-        Versions -->|used by| GenerateInternal
-        Tooling -->|used by| Integrate
-        Versions -->|used by| Integrate
-        Generate -->|produces| Outputs
-        GenerateInternal -->|produces| Outputs
-        Template -->|used by| Integrate
-        Integrate -->|produces| ExampleOutputs
-        Outputs -->|consumed by| Build
-        ExampleOutputs -->|consumed by| Build
-        Build -->|required by| NativeTests
-        PureDart -->|source for| PureDartPde
     end
+
+    subgraph OutputsAndConsumers
+        GeneratedOutputs["generated outputs like frb_example/**/frb_generated.*"]
+        ExampleOutputs["integrate outputs like example platform files under frb_example/**"]
+        NativeTests["native Flutter tests"]
+    end
+
+    CodegenSources -->|used by| Generate
+    Versions -->|used by| Generate
+    CodegenSources -->|used by| GenerateInternal
+    Versions -->|used by| GenerateInternal
+    CodegenSources -->|used by| Integrate
+    Versions -->|used by| Integrate
+    Templates -->|used by| Integrate
+    Cargokit -->|used by| Integrate
+    Generate -->|produces| GeneratedOutputs
+    GenerateInternal -->|produces| GeneratedOutputs
+    Integrate -->|produces| ExampleOutputs
+    GeneratedOutputs -->|consumed by| Build
+    ExampleOutputs -->|consumed by| Build
+    Build -->|required by| NativeTests
 ```
 
 #### How to Read
