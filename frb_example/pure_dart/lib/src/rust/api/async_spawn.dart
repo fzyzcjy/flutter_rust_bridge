@@ -11,9 +11,10 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<String> simpleUseAsyncSpawn({required String arg}) =>
     RustLib.instance.api.crateApiAsyncSpawnSimpleUseAsyncSpawn(arg: arg);
 
-Future<String> simpleUseAsyncSpawnBlocking({required String arg}) =>
-    RustLib.instance.api
-        .crateApiAsyncSpawnSimpleUseAsyncSpawnBlocking(arg: arg);
+Future<String> simpleUseAsyncSpawnBlocking({required String arg}) => RustLib
+    .instance
+    .api
+    .crateApiAsyncSpawnSimpleUseAsyncSpawnBlocking(arg: arg);
 
 Stream<String> simpleUseAsyncSpawnLocal({required String arg}) =>
     RustLib.instance.api.crateApiAsyncSpawnSimpleUseAsyncSpawnLocal(arg: arg);

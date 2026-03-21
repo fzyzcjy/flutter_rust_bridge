@@ -21,11 +21,13 @@ Future<List<MySize>> handleListOfStructTwinSse({required List<MySize> l}) =>
 Future<List<String>> handleStringListTwinSse({required List<String> names}) =>
     RustLib.instance.api
         .crateApiPseudoManualMiscTypeTwinSseHandleStringListTwinSse(
-            names: names);
+          names: names,
+        );
 
 Future<EmptyTwinSse> emptyStructTwinSse({required EmptyTwinSse empty}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscTypeTwinSseEmptyStructTwinSse(empty: empty);
+    RustLib.instance.api.crateApiPseudoManualMiscTypeTwinSseEmptyStructTwinSse(
+      empty: empty,
+    );
 
 class EmptyTwinSse {
   const EmptyTwinSse();

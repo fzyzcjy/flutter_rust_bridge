@@ -12,7 +12,8 @@ part of 'enumeration.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$DistanceTwinNormal {
@@ -20,47 +21,42 @@ mixin _$DistanceTwinNormal {
   TResult when<TResult extends Object?>({
     required TResult Function() unknown,
     required TResult Function(double field0) map,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? unknown,
     TResult? Function(double field0)? map,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unknown,
     TResult Function(double field0)? map,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(DistanceTwinNormal_Unknown value) unknown,
     required TResult Function(DistanceTwinNormal_Map value) map,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(DistanceTwinNormal_Unknown value)? unknown,
     TResult? Function(DistanceTwinNormal_Map value)? map,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(DistanceTwinNormal_Unknown value)? unknown,
     TResult Function(DistanceTwinNormal_Map value)? map,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $DistanceTwinNormalCopyWith<$Res> {
   factory $DistanceTwinNormalCopyWith(
-          DistanceTwinNormal value, $Res Function(DistanceTwinNormal) then) =
-      _$DistanceTwinNormalCopyWithImpl<$Res, DistanceTwinNormal>;
+    DistanceTwinNormal value,
+    $Res Function(DistanceTwinNormal) then,
+  ) = _$DistanceTwinNormalCopyWithImpl<$Res, DistanceTwinNormal>;
 }
 
 /// @nodoc
@@ -80,20 +76,20 @@ class _$DistanceTwinNormalCopyWithImpl<$Res, $Val extends DistanceTwinNormal>
 /// @nodoc
 abstract class _$$DistanceTwinNormal_UnknownImplCopyWith<$Res> {
   factory _$$DistanceTwinNormal_UnknownImplCopyWith(
-          _$DistanceTwinNormal_UnknownImpl value,
-          $Res Function(_$DistanceTwinNormal_UnknownImpl) then) =
-      __$$DistanceTwinNormal_UnknownImplCopyWithImpl<$Res>;
+    _$DistanceTwinNormal_UnknownImpl value,
+    $Res Function(_$DistanceTwinNormal_UnknownImpl) then,
+  ) = __$$DistanceTwinNormal_UnknownImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$DistanceTwinNormal_UnknownImplCopyWithImpl<$Res>
-    extends _$DistanceTwinNormalCopyWithImpl<$Res,
-        _$DistanceTwinNormal_UnknownImpl>
+    extends
+        _$DistanceTwinNormalCopyWithImpl<$Res, _$DistanceTwinNormal_UnknownImpl>
     implements _$$DistanceTwinNormal_UnknownImplCopyWith<$Res> {
   __$$DistanceTwinNormal_UnknownImplCopyWithImpl(
-      _$DistanceTwinNormal_UnknownImpl _value,
-      $Res Function(_$DistanceTwinNormal_UnknownImpl) _then)
-      : super(_value, _then);
+    _$DistanceTwinNormal_UnknownImpl _value,
+    $Res Function(_$DistanceTwinNormal_UnknownImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DistanceTwinNormal
   /// with the given fields replaced by the non-null parameter values.
@@ -190,9 +186,9 @@ abstract class DistanceTwinNormal_Unknown extends DistanceTwinNormal {
 /// @nodoc
 abstract class _$$DistanceTwinNormal_MapImplCopyWith<$Res> {
   factory _$$DistanceTwinNormal_MapImplCopyWith(
-          _$DistanceTwinNormal_MapImpl value,
-          $Res Function(_$DistanceTwinNormal_MapImpl) then) =
-      __$$DistanceTwinNormal_MapImplCopyWithImpl<$Res>;
+    _$DistanceTwinNormal_MapImpl value,
+    $Res Function(_$DistanceTwinNormal_MapImpl) then,
+  ) = __$$DistanceTwinNormal_MapImplCopyWithImpl<$Res>;
   @useResult
   $Res call({double field0});
 }
@@ -202,23 +198,23 @@ class __$$DistanceTwinNormal_MapImplCopyWithImpl<$Res>
     extends _$DistanceTwinNormalCopyWithImpl<$Res, _$DistanceTwinNormal_MapImpl>
     implements _$$DistanceTwinNormal_MapImplCopyWith<$Res> {
   __$$DistanceTwinNormal_MapImplCopyWithImpl(
-      _$DistanceTwinNormal_MapImpl _value,
-      $Res Function(_$DistanceTwinNormal_MapImpl) _then)
-      : super(_value, _then);
+    _$DistanceTwinNormal_MapImpl _value,
+    $Res Function(_$DistanceTwinNormal_MapImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DistanceTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$DistanceTwinNormal_MapImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as double,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$DistanceTwinNormal_MapImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                  as double,
+      ),
+    );
   }
 }
 
@@ -252,8 +248,11 @@ class _$DistanceTwinNormal_MapImpl extends DistanceTwinNormal_Map {
   @override
   @pragma('vm:prefer-inline')
   _$$DistanceTwinNormal_MapImplCopyWith<_$DistanceTwinNormal_MapImpl>
-      get copyWith => __$$DistanceTwinNormal_MapImplCopyWithImpl<
-          _$DistanceTwinNormal_MapImpl>(this, _$identity);
+  get copyWith =>
+      __$$DistanceTwinNormal_MapImplCopyWithImpl<_$DistanceTwinNormal_MapImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -329,7 +328,7 @@ abstract class DistanceTwinNormal_Map extends DistanceTwinNormal {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DistanceTwinNormal_MapImplCopyWith<_$DistanceTwinNormal_MapImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -339,59 +338,58 @@ mixin _$EnumWithItemMixedTwinNormal {
     required TResult Function() a,
     required TResult Function(Uint8List field0) b,
     required TResult Function(String cField) c,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? a,
     TResult? Function(Uint8List field0)? b,
     TResult? Function(String cField)? c,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? a,
     TResult Function(Uint8List field0)? b,
     TResult Function(String cField)? c,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(EnumWithItemMixedTwinNormal_A value) a,
     required TResult Function(EnumWithItemMixedTwinNormal_B value) b,
     required TResult Function(EnumWithItemMixedTwinNormal_C value) c,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(EnumWithItemMixedTwinNormal_A value)? a,
     TResult? Function(EnumWithItemMixedTwinNormal_B value)? b,
     TResult? Function(EnumWithItemMixedTwinNormal_C value)? c,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EnumWithItemMixedTwinNormal_A value)? a,
     TResult Function(EnumWithItemMixedTwinNormal_B value)? b,
     TResult Function(EnumWithItemMixedTwinNormal_C value)? c,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $EnumWithItemMixedTwinNormalCopyWith<$Res> {
   factory $EnumWithItemMixedTwinNormalCopyWith(
-          EnumWithItemMixedTwinNormal value,
-          $Res Function(EnumWithItemMixedTwinNormal) then) =
-      _$EnumWithItemMixedTwinNormalCopyWithImpl<$Res,
-          EnumWithItemMixedTwinNormal>;
+    EnumWithItemMixedTwinNormal value,
+    $Res Function(EnumWithItemMixedTwinNormal) then,
+  ) =
+      _$EnumWithItemMixedTwinNormalCopyWithImpl<
+        $Res,
+        EnumWithItemMixedTwinNormal
+      >;
 }
 
 /// @nodoc
-class _$EnumWithItemMixedTwinNormalCopyWithImpl<$Res,
-        $Val extends EnumWithItemMixedTwinNormal>
+class _$EnumWithItemMixedTwinNormalCopyWithImpl<
+  $Res,
+  $Val extends EnumWithItemMixedTwinNormal
+>
     implements $EnumWithItemMixedTwinNormalCopyWith<$Res> {
   _$EnumWithItemMixedTwinNormalCopyWithImpl(this._value, this._then);
 
@@ -407,20 +405,23 @@ class _$EnumWithItemMixedTwinNormalCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$EnumWithItemMixedTwinNormal_AImplCopyWith<$Res> {
   factory _$$EnumWithItemMixedTwinNormal_AImplCopyWith(
-          _$EnumWithItemMixedTwinNormal_AImpl value,
-          $Res Function(_$EnumWithItemMixedTwinNormal_AImpl) then) =
-      __$$EnumWithItemMixedTwinNormal_AImplCopyWithImpl<$Res>;
+    _$EnumWithItemMixedTwinNormal_AImpl value,
+    $Res Function(_$EnumWithItemMixedTwinNormal_AImpl) then,
+  ) = __$$EnumWithItemMixedTwinNormal_AImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$EnumWithItemMixedTwinNormal_AImplCopyWithImpl<$Res>
-    extends _$EnumWithItemMixedTwinNormalCopyWithImpl<$Res,
-        _$EnumWithItemMixedTwinNormal_AImpl>
+    extends
+        _$EnumWithItemMixedTwinNormalCopyWithImpl<
+          $Res,
+          _$EnumWithItemMixedTwinNormal_AImpl
+        >
     implements _$$EnumWithItemMixedTwinNormal_AImplCopyWith<$Res> {
   __$$EnumWithItemMixedTwinNormal_AImplCopyWithImpl(
-      _$EnumWithItemMixedTwinNormal_AImpl _value,
-      $Res Function(_$EnumWithItemMixedTwinNormal_AImpl) _then)
-      : super(_value, _then);
+    _$EnumWithItemMixedTwinNormal_AImpl _value,
+    $Res Function(_$EnumWithItemMixedTwinNormal_AImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of EnumWithItemMixedTwinNormal
   /// with the given fields replaced by the non-null parameter values.
@@ -526,36 +527,39 @@ abstract class EnumWithItemMixedTwinNormal_A
 /// @nodoc
 abstract class _$$EnumWithItemMixedTwinNormal_BImplCopyWith<$Res> {
   factory _$$EnumWithItemMixedTwinNormal_BImplCopyWith(
-          _$EnumWithItemMixedTwinNormal_BImpl value,
-          $Res Function(_$EnumWithItemMixedTwinNormal_BImpl) then) =
-      __$$EnumWithItemMixedTwinNormal_BImplCopyWithImpl<$Res>;
+    _$EnumWithItemMixedTwinNormal_BImpl value,
+    $Res Function(_$EnumWithItemMixedTwinNormal_BImpl) then,
+  ) = __$$EnumWithItemMixedTwinNormal_BImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Uint8List field0});
 }
 
 /// @nodoc
 class __$$EnumWithItemMixedTwinNormal_BImplCopyWithImpl<$Res>
-    extends _$EnumWithItemMixedTwinNormalCopyWithImpl<$Res,
-        _$EnumWithItemMixedTwinNormal_BImpl>
+    extends
+        _$EnumWithItemMixedTwinNormalCopyWithImpl<
+          $Res,
+          _$EnumWithItemMixedTwinNormal_BImpl
+        >
     implements _$$EnumWithItemMixedTwinNormal_BImplCopyWith<$Res> {
   __$$EnumWithItemMixedTwinNormal_BImplCopyWithImpl(
-      _$EnumWithItemMixedTwinNormal_BImpl _value,
-      $Res Function(_$EnumWithItemMixedTwinNormal_BImpl) _then)
-      : super(_value, _then);
+    _$EnumWithItemMixedTwinNormal_BImpl _value,
+    $Res Function(_$EnumWithItemMixedTwinNormal_BImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of EnumWithItemMixedTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$EnumWithItemMixedTwinNormal_BImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as Uint8List,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$EnumWithItemMixedTwinNormal_BImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                  as Uint8List,
+      ),
+    );
   }
 }
 
@@ -591,9 +595,12 @@ class _$EnumWithItemMixedTwinNormal_BImpl
   @override
   @pragma('vm:prefer-inline')
   _$$EnumWithItemMixedTwinNormal_BImplCopyWith<
-          _$EnumWithItemMixedTwinNormal_BImpl>
-      get copyWith => __$$EnumWithItemMixedTwinNormal_BImplCopyWithImpl<
-          _$EnumWithItemMixedTwinNormal_BImpl>(this, _$identity);
+    _$EnumWithItemMixedTwinNormal_BImpl
+  >
+  get copyWith =>
+      __$$EnumWithItemMixedTwinNormal_BImplCopyWithImpl<
+        _$EnumWithItemMixedTwinNormal_BImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -676,43 +683,47 @@ abstract class EnumWithItemMixedTwinNormal_B
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumWithItemMixedTwinNormal_BImplCopyWith<
-          _$EnumWithItemMixedTwinNormal_BImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$EnumWithItemMixedTwinNormal_BImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$EnumWithItemMixedTwinNormal_CImplCopyWith<$Res> {
   factory _$$EnumWithItemMixedTwinNormal_CImplCopyWith(
-          _$EnumWithItemMixedTwinNormal_CImpl value,
-          $Res Function(_$EnumWithItemMixedTwinNormal_CImpl) then) =
-      __$$EnumWithItemMixedTwinNormal_CImplCopyWithImpl<$Res>;
+    _$EnumWithItemMixedTwinNormal_CImpl value,
+    $Res Function(_$EnumWithItemMixedTwinNormal_CImpl) then,
+  ) = __$$EnumWithItemMixedTwinNormal_CImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String cField});
 }
 
 /// @nodoc
 class __$$EnumWithItemMixedTwinNormal_CImplCopyWithImpl<$Res>
-    extends _$EnumWithItemMixedTwinNormalCopyWithImpl<$Res,
-        _$EnumWithItemMixedTwinNormal_CImpl>
+    extends
+        _$EnumWithItemMixedTwinNormalCopyWithImpl<
+          $Res,
+          _$EnumWithItemMixedTwinNormal_CImpl
+        >
     implements _$$EnumWithItemMixedTwinNormal_CImplCopyWith<$Res> {
   __$$EnumWithItemMixedTwinNormal_CImplCopyWithImpl(
-      _$EnumWithItemMixedTwinNormal_CImpl _value,
-      $Res Function(_$EnumWithItemMixedTwinNormal_CImpl) _then)
-      : super(_value, _then);
+    _$EnumWithItemMixedTwinNormal_CImpl _value,
+    $Res Function(_$EnumWithItemMixedTwinNormal_CImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of EnumWithItemMixedTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? cField = null,
-  }) {
-    return _then(_$EnumWithItemMixedTwinNormal_CImpl(
-      cField: null == cField
-          ? _value.cField
-          : cField // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? cField = null}) {
+    return _then(
+      _$EnumWithItemMixedTwinNormal_CImpl(
+        cField: null == cField
+            ? _value.cField
+            : cField // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -747,9 +758,12 @@ class _$EnumWithItemMixedTwinNormal_CImpl
   @override
   @pragma('vm:prefer-inline')
   _$$EnumWithItemMixedTwinNormal_CImplCopyWith<
-          _$EnumWithItemMixedTwinNormal_CImpl>
-      get copyWith => __$$EnumWithItemMixedTwinNormal_CImplCopyWithImpl<
-          _$EnumWithItemMixedTwinNormal_CImpl>(this, _$identity);
+    _$EnumWithItemMixedTwinNormal_CImpl
+  >
+  get copyWith =>
+      __$$EnumWithItemMixedTwinNormal_CImplCopyWithImpl<
+        _$EnumWithItemMixedTwinNormal_CImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -832,8 +846,9 @@ abstract class EnumWithItemMixedTwinNormal_C
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumWithItemMixedTwinNormal_CImplCopyWith<
-          _$EnumWithItemMixedTwinNormal_CImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$EnumWithItemMixedTwinNormal_CImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -842,54 +857,53 @@ mixin _$EnumWithItemStructTwinNormal {
   TResult when<TResult extends Object?>({
     required TResult Function(Uint8List aField) a,
     required TResult Function(Int32List bField) b,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Uint8List aField)? a,
     TResult? Function(Int32List bField)? b,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Uint8List aField)? a,
     TResult Function(Int32List bField)? b,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(EnumWithItemStructTwinNormal_A value) a,
     required TResult Function(EnumWithItemStructTwinNormal_B value) b,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(EnumWithItemStructTwinNormal_A value)? a,
     TResult? Function(EnumWithItemStructTwinNormal_B value)? b,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EnumWithItemStructTwinNormal_A value)? a,
     TResult Function(EnumWithItemStructTwinNormal_B value)? b,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $EnumWithItemStructTwinNormalCopyWith<$Res> {
   factory $EnumWithItemStructTwinNormalCopyWith(
-          EnumWithItemStructTwinNormal value,
-          $Res Function(EnumWithItemStructTwinNormal) then) =
-      _$EnumWithItemStructTwinNormalCopyWithImpl<$Res,
-          EnumWithItemStructTwinNormal>;
+    EnumWithItemStructTwinNormal value,
+    $Res Function(EnumWithItemStructTwinNormal) then,
+  ) =
+      _$EnumWithItemStructTwinNormalCopyWithImpl<
+        $Res,
+        EnumWithItemStructTwinNormal
+      >;
 }
 
 /// @nodoc
-class _$EnumWithItemStructTwinNormalCopyWithImpl<$Res,
-        $Val extends EnumWithItemStructTwinNormal>
+class _$EnumWithItemStructTwinNormalCopyWithImpl<
+  $Res,
+  $Val extends EnumWithItemStructTwinNormal
+>
     implements $EnumWithItemStructTwinNormalCopyWith<$Res> {
   _$EnumWithItemStructTwinNormalCopyWithImpl(this._value, this._then);
 
@@ -905,36 +919,39 @@ class _$EnumWithItemStructTwinNormalCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$EnumWithItemStructTwinNormal_AImplCopyWith<$Res> {
   factory _$$EnumWithItemStructTwinNormal_AImplCopyWith(
-          _$EnumWithItemStructTwinNormal_AImpl value,
-          $Res Function(_$EnumWithItemStructTwinNormal_AImpl) then) =
-      __$$EnumWithItemStructTwinNormal_AImplCopyWithImpl<$Res>;
+    _$EnumWithItemStructTwinNormal_AImpl value,
+    $Res Function(_$EnumWithItemStructTwinNormal_AImpl) then,
+  ) = __$$EnumWithItemStructTwinNormal_AImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Uint8List aField});
 }
 
 /// @nodoc
 class __$$EnumWithItemStructTwinNormal_AImplCopyWithImpl<$Res>
-    extends _$EnumWithItemStructTwinNormalCopyWithImpl<$Res,
-        _$EnumWithItemStructTwinNormal_AImpl>
+    extends
+        _$EnumWithItemStructTwinNormalCopyWithImpl<
+          $Res,
+          _$EnumWithItemStructTwinNormal_AImpl
+        >
     implements _$$EnumWithItemStructTwinNormal_AImplCopyWith<$Res> {
   __$$EnumWithItemStructTwinNormal_AImplCopyWithImpl(
-      _$EnumWithItemStructTwinNormal_AImpl _value,
-      $Res Function(_$EnumWithItemStructTwinNormal_AImpl) _then)
-      : super(_value, _then);
+    _$EnumWithItemStructTwinNormal_AImpl _value,
+    $Res Function(_$EnumWithItemStructTwinNormal_AImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of EnumWithItemStructTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? aField = null,
-  }) {
-    return _then(_$EnumWithItemStructTwinNormal_AImpl(
-      aField: null == aField
-          ? _value.aField
-          : aField // ignore: cast_nullable_to_non_nullable
-              as Uint8List,
-    ));
+  $Res call({Object? aField = null}) {
+    return _then(
+      _$EnumWithItemStructTwinNormal_AImpl(
+        aField: null == aField
+            ? _value.aField
+            : aField // ignore: cast_nullable_to_non_nullable
+                  as Uint8List,
+      ),
+    );
   }
 }
 
@@ -943,7 +960,7 @@ class __$$EnumWithItemStructTwinNormal_AImplCopyWithImpl<$Res>
 class _$EnumWithItemStructTwinNormal_AImpl
     extends EnumWithItemStructTwinNormal_A {
   const _$EnumWithItemStructTwinNormal_AImpl({required this.aField})
-      : super._();
+    : super._();
 
   @override
   final Uint8List aField;
@@ -971,9 +988,12 @@ class _$EnumWithItemStructTwinNormal_AImpl
   @override
   @pragma('vm:prefer-inline')
   _$$EnumWithItemStructTwinNormal_AImplCopyWith<
-          _$EnumWithItemStructTwinNormal_AImpl>
-      get copyWith => __$$EnumWithItemStructTwinNormal_AImplCopyWithImpl<
-          _$EnumWithItemStructTwinNormal_AImpl>(this, _$identity);
+    _$EnumWithItemStructTwinNormal_AImpl
+  >
+  get copyWith =>
+      __$$EnumWithItemStructTwinNormal_AImplCopyWithImpl<
+        _$EnumWithItemStructTwinNormal_AImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1040,8 +1060,9 @@ class _$EnumWithItemStructTwinNormal_AImpl
 
 abstract class EnumWithItemStructTwinNormal_A
     extends EnumWithItemStructTwinNormal {
-  const factory EnumWithItemStructTwinNormal_A(
-      {required final Uint8List aField}) = _$EnumWithItemStructTwinNormal_AImpl;
+  const factory EnumWithItemStructTwinNormal_A({
+    required final Uint8List aField,
+  }) = _$EnumWithItemStructTwinNormal_AImpl;
   const EnumWithItemStructTwinNormal_A._() : super._();
 
   Uint8List get aField;
@@ -1050,43 +1071,47 @@ abstract class EnumWithItemStructTwinNormal_A
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumWithItemStructTwinNormal_AImplCopyWith<
-          _$EnumWithItemStructTwinNormal_AImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$EnumWithItemStructTwinNormal_AImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$EnumWithItemStructTwinNormal_BImplCopyWith<$Res> {
   factory _$$EnumWithItemStructTwinNormal_BImplCopyWith(
-          _$EnumWithItemStructTwinNormal_BImpl value,
-          $Res Function(_$EnumWithItemStructTwinNormal_BImpl) then) =
-      __$$EnumWithItemStructTwinNormal_BImplCopyWithImpl<$Res>;
+    _$EnumWithItemStructTwinNormal_BImpl value,
+    $Res Function(_$EnumWithItemStructTwinNormal_BImpl) then,
+  ) = __$$EnumWithItemStructTwinNormal_BImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Int32List bField});
 }
 
 /// @nodoc
 class __$$EnumWithItemStructTwinNormal_BImplCopyWithImpl<$Res>
-    extends _$EnumWithItemStructTwinNormalCopyWithImpl<$Res,
-        _$EnumWithItemStructTwinNormal_BImpl>
+    extends
+        _$EnumWithItemStructTwinNormalCopyWithImpl<
+          $Res,
+          _$EnumWithItemStructTwinNormal_BImpl
+        >
     implements _$$EnumWithItemStructTwinNormal_BImplCopyWith<$Res> {
   __$$EnumWithItemStructTwinNormal_BImplCopyWithImpl(
-      _$EnumWithItemStructTwinNormal_BImpl _value,
-      $Res Function(_$EnumWithItemStructTwinNormal_BImpl) _then)
-      : super(_value, _then);
+    _$EnumWithItemStructTwinNormal_BImpl _value,
+    $Res Function(_$EnumWithItemStructTwinNormal_BImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of EnumWithItemStructTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? bField = null,
-  }) {
-    return _then(_$EnumWithItemStructTwinNormal_BImpl(
-      bField: null == bField
-          ? _value.bField
-          : bField // ignore: cast_nullable_to_non_nullable
-              as Int32List,
-    ));
+  $Res call({Object? bField = null}) {
+    return _then(
+      _$EnumWithItemStructTwinNormal_BImpl(
+        bField: null == bField
+            ? _value.bField
+            : bField // ignore: cast_nullable_to_non_nullable
+                  as Int32List,
+      ),
+    );
   }
 }
 
@@ -1095,7 +1120,7 @@ class __$$EnumWithItemStructTwinNormal_BImplCopyWithImpl<$Res>
 class _$EnumWithItemStructTwinNormal_BImpl
     extends EnumWithItemStructTwinNormal_B {
   const _$EnumWithItemStructTwinNormal_BImpl({required this.bField})
-      : super._();
+    : super._();
 
   @override
   final Int32List bField;
@@ -1123,9 +1148,12 @@ class _$EnumWithItemStructTwinNormal_BImpl
   @override
   @pragma('vm:prefer-inline')
   _$$EnumWithItemStructTwinNormal_BImplCopyWith<
-          _$EnumWithItemStructTwinNormal_BImpl>
-      get copyWith => __$$EnumWithItemStructTwinNormal_BImplCopyWithImpl<
-          _$EnumWithItemStructTwinNormal_BImpl>(this, _$identity);
+    _$EnumWithItemStructTwinNormal_BImpl
+  >
+  get copyWith =>
+      __$$EnumWithItemStructTwinNormal_BImplCopyWithImpl<
+        _$EnumWithItemStructTwinNormal_BImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1192,8 +1220,9 @@ class _$EnumWithItemStructTwinNormal_BImpl
 
 abstract class EnumWithItemStructTwinNormal_B
     extends EnumWithItemStructTwinNormal {
-  const factory EnumWithItemStructTwinNormal_B(
-      {required final Int32List bField}) = _$EnumWithItemStructTwinNormal_BImpl;
+  const factory EnumWithItemStructTwinNormal_B({
+    required final Int32List bField,
+  }) = _$EnumWithItemStructTwinNormal_BImpl;
   const EnumWithItemStructTwinNormal_B._() : super._();
 
   Int32List get bField;
@@ -1202,8 +1231,9 @@ abstract class EnumWithItemStructTwinNormal_B
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumWithItemStructTwinNormal_BImplCopyWith<
-          _$EnumWithItemStructTwinNormal_BImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$EnumWithItemStructTwinNormal_BImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1213,54 +1243,53 @@ mixin _$EnumWithItemTupleTwinNormal {
   TResult when<TResult extends Object?>({
     required TResult Function(Uint8List field0) a,
     required TResult Function(int field0) b,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Uint8List field0)? a,
     TResult? Function(int field0)? b,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Uint8List field0)? a,
     TResult Function(int field0)? b,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(EnumWithItemTupleTwinNormal_A value) a,
     required TResult Function(EnumWithItemTupleTwinNormal_B value) b,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(EnumWithItemTupleTwinNormal_A value)? a,
     TResult? Function(EnumWithItemTupleTwinNormal_B value)? b,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EnumWithItemTupleTwinNormal_A value)? a,
     TResult Function(EnumWithItemTupleTwinNormal_B value)? b,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $EnumWithItemTupleTwinNormalCopyWith<$Res> {
   factory $EnumWithItemTupleTwinNormalCopyWith(
-          EnumWithItemTupleTwinNormal value,
-          $Res Function(EnumWithItemTupleTwinNormal) then) =
-      _$EnumWithItemTupleTwinNormalCopyWithImpl<$Res,
-          EnumWithItemTupleTwinNormal>;
+    EnumWithItemTupleTwinNormal value,
+    $Res Function(EnumWithItemTupleTwinNormal) then,
+  ) =
+      _$EnumWithItemTupleTwinNormalCopyWithImpl<
+        $Res,
+        EnumWithItemTupleTwinNormal
+      >;
 }
 
 /// @nodoc
-class _$EnumWithItemTupleTwinNormalCopyWithImpl<$Res,
-        $Val extends EnumWithItemTupleTwinNormal>
+class _$EnumWithItemTupleTwinNormalCopyWithImpl<
+  $Res,
+  $Val extends EnumWithItemTupleTwinNormal
+>
     implements $EnumWithItemTupleTwinNormalCopyWith<$Res> {
   _$EnumWithItemTupleTwinNormalCopyWithImpl(this._value, this._then);
 
@@ -1276,36 +1305,39 @@ class _$EnumWithItemTupleTwinNormalCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$EnumWithItemTupleTwinNormal_AImplCopyWith<$Res> {
   factory _$$EnumWithItemTupleTwinNormal_AImplCopyWith(
-          _$EnumWithItemTupleTwinNormal_AImpl value,
-          $Res Function(_$EnumWithItemTupleTwinNormal_AImpl) then) =
-      __$$EnumWithItemTupleTwinNormal_AImplCopyWithImpl<$Res>;
+    _$EnumWithItemTupleTwinNormal_AImpl value,
+    $Res Function(_$EnumWithItemTupleTwinNormal_AImpl) then,
+  ) = __$$EnumWithItemTupleTwinNormal_AImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Uint8List field0});
 }
 
 /// @nodoc
 class __$$EnumWithItemTupleTwinNormal_AImplCopyWithImpl<$Res>
-    extends _$EnumWithItemTupleTwinNormalCopyWithImpl<$Res,
-        _$EnumWithItemTupleTwinNormal_AImpl>
+    extends
+        _$EnumWithItemTupleTwinNormalCopyWithImpl<
+          $Res,
+          _$EnumWithItemTupleTwinNormal_AImpl
+        >
     implements _$$EnumWithItemTupleTwinNormal_AImplCopyWith<$Res> {
   __$$EnumWithItemTupleTwinNormal_AImplCopyWithImpl(
-      _$EnumWithItemTupleTwinNormal_AImpl _value,
-      $Res Function(_$EnumWithItemTupleTwinNormal_AImpl) _then)
-      : super(_value, _then);
+    _$EnumWithItemTupleTwinNormal_AImpl _value,
+    $Res Function(_$EnumWithItemTupleTwinNormal_AImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of EnumWithItemTupleTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$EnumWithItemTupleTwinNormal_AImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as Uint8List,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$EnumWithItemTupleTwinNormal_AImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                  as Uint8List,
+      ),
+    );
   }
 }
 
@@ -1341,9 +1373,12 @@ class _$EnumWithItemTupleTwinNormal_AImpl
   @override
   @pragma('vm:prefer-inline')
   _$$EnumWithItemTupleTwinNormal_AImplCopyWith<
-          _$EnumWithItemTupleTwinNormal_AImpl>
-      get copyWith => __$$EnumWithItemTupleTwinNormal_AImplCopyWithImpl<
-          _$EnumWithItemTupleTwinNormal_AImpl>(this, _$identity);
+    _$EnumWithItemTupleTwinNormal_AImpl
+  >
+  get copyWith =>
+      __$$EnumWithItemTupleTwinNormal_AImplCopyWithImpl<
+        _$EnumWithItemTupleTwinNormal_AImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1421,43 +1456,47 @@ abstract class EnumWithItemTupleTwinNormal_A
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumWithItemTupleTwinNormal_AImplCopyWith<
-          _$EnumWithItemTupleTwinNormal_AImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$EnumWithItemTupleTwinNormal_AImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$EnumWithItemTupleTwinNormal_BImplCopyWith<$Res> {
   factory _$$EnumWithItemTupleTwinNormal_BImplCopyWith(
-          _$EnumWithItemTupleTwinNormal_BImpl value,
-          $Res Function(_$EnumWithItemTupleTwinNormal_BImpl) then) =
-      __$$EnumWithItemTupleTwinNormal_BImplCopyWithImpl<$Res>;
+    _$EnumWithItemTupleTwinNormal_BImpl value,
+    $Res Function(_$EnumWithItemTupleTwinNormal_BImpl) then,
+  ) = __$$EnumWithItemTupleTwinNormal_BImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int field0});
 }
 
 /// @nodoc
 class __$$EnumWithItemTupleTwinNormal_BImplCopyWithImpl<$Res>
-    extends _$EnumWithItemTupleTwinNormalCopyWithImpl<$Res,
-        _$EnumWithItemTupleTwinNormal_BImpl>
+    extends
+        _$EnumWithItemTupleTwinNormalCopyWithImpl<
+          $Res,
+          _$EnumWithItemTupleTwinNormal_BImpl
+        >
     implements _$$EnumWithItemTupleTwinNormal_BImplCopyWith<$Res> {
   __$$EnumWithItemTupleTwinNormal_BImplCopyWithImpl(
-      _$EnumWithItemTupleTwinNormal_BImpl _value,
-      $Res Function(_$EnumWithItemTupleTwinNormal_BImpl) _then)
-      : super(_value, _then);
+    _$EnumWithItemTupleTwinNormal_BImpl _value,
+    $Res Function(_$EnumWithItemTupleTwinNormal_BImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of EnumWithItemTupleTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$EnumWithItemTupleTwinNormal_BImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$EnumWithItemTupleTwinNormal_BImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
@@ -1492,9 +1531,12 @@ class _$EnumWithItemTupleTwinNormal_BImpl
   @override
   @pragma('vm:prefer-inline')
   _$$EnumWithItemTupleTwinNormal_BImplCopyWith<
-          _$EnumWithItemTupleTwinNormal_BImpl>
-      get copyWith => __$$EnumWithItemTupleTwinNormal_BImplCopyWithImpl<
-          _$EnumWithItemTupleTwinNormal_BImpl>(this, _$identity);
+    _$EnumWithItemTupleTwinNormal_BImpl
+  >
+  get copyWith =>
+      __$$EnumWithItemTupleTwinNormal_BImplCopyWithImpl<
+        _$EnumWithItemTupleTwinNormal_BImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1572,8 +1614,9 @@ abstract class EnumWithItemTupleTwinNormal_B
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EnumWithItemTupleTwinNormal_BImplCopyWith<
-          _$EnumWithItemTupleTwinNormal_BImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$EnumWithItemTupleTwinNormal_BImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1582,13 +1625,12 @@ mixin _$KitchenSinkTwinNormal {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function(int int32, double float64, bool boolean)
-        primitives,
+    primitives,
     required TResult Function(int field0, KitchenSinkTwinNormal field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
     required TResult Function(WeekdaysTwinNormal field0) enums,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? empty,
@@ -1597,8 +1639,7 @@ mixin _$KitchenSinkTwinNormal {
     TResult? Function(int? field0, int? field1)? optional,
     TResult? Function(Uint8List field0)? buffer,
     TResult? Function(WeekdaysTwinNormal field0)? enums,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
@@ -1608,19 +1649,17 @@ mixin _$KitchenSinkTwinNormal {
     TResult Function(Uint8List field0)? buffer,
     TResult Function(WeekdaysTwinNormal field0)? enums,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(KitchenSinkTwinNormal_Empty value) empty,
     required TResult Function(KitchenSinkTwinNormal_Primitives value)
-        primitives,
+    primitives,
     required TResult Function(KitchenSinkTwinNormal_Nested value) nested,
     required TResult Function(KitchenSinkTwinNormal_Optional value) optional,
     required TResult Function(KitchenSinkTwinNormal_Buffer value) buffer,
     required TResult Function(KitchenSinkTwinNormal_Enums value) enums,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(KitchenSinkTwinNormal_Empty value)? empty,
@@ -1629,8 +1668,7 @@ mixin _$KitchenSinkTwinNormal {
     TResult? Function(KitchenSinkTwinNormal_Optional value)? optional,
     TResult? Function(KitchenSinkTwinNormal_Buffer value)? buffer,
     TResult? Function(KitchenSinkTwinNormal_Enums value)? enums,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(KitchenSinkTwinNormal_Empty value)? empty,
@@ -1640,20 +1678,22 @@ mixin _$KitchenSinkTwinNormal {
     TResult Function(KitchenSinkTwinNormal_Buffer value)? buffer,
     TResult Function(KitchenSinkTwinNormal_Enums value)? enums,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $KitchenSinkTwinNormalCopyWith<$Res> {
-  factory $KitchenSinkTwinNormalCopyWith(KitchenSinkTwinNormal value,
-          $Res Function(KitchenSinkTwinNormal) then) =
-      _$KitchenSinkTwinNormalCopyWithImpl<$Res, KitchenSinkTwinNormal>;
+  factory $KitchenSinkTwinNormalCopyWith(
+    KitchenSinkTwinNormal value,
+    $Res Function(KitchenSinkTwinNormal) then,
+  ) = _$KitchenSinkTwinNormalCopyWithImpl<$Res, KitchenSinkTwinNormal>;
 }
 
 /// @nodoc
-class _$KitchenSinkTwinNormalCopyWithImpl<$Res,
-        $Val extends KitchenSinkTwinNormal>
+class _$KitchenSinkTwinNormalCopyWithImpl<
+  $Res,
+  $Val extends KitchenSinkTwinNormal
+>
     implements $KitchenSinkTwinNormalCopyWith<$Res> {
   _$KitchenSinkTwinNormalCopyWithImpl(this._value, this._then);
 
@@ -1669,20 +1709,23 @@ class _$KitchenSinkTwinNormalCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$KitchenSinkTwinNormal_EmptyImplCopyWith<$Res> {
   factory _$$KitchenSinkTwinNormal_EmptyImplCopyWith(
-          _$KitchenSinkTwinNormal_EmptyImpl value,
-          $Res Function(_$KitchenSinkTwinNormal_EmptyImpl) then) =
-      __$$KitchenSinkTwinNormal_EmptyImplCopyWithImpl<$Res>;
+    _$KitchenSinkTwinNormal_EmptyImpl value,
+    $Res Function(_$KitchenSinkTwinNormal_EmptyImpl) then,
+  ) = __$$KitchenSinkTwinNormal_EmptyImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$KitchenSinkTwinNormal_EmptyImplCopyWithImpl<$Res>
-    extends _$KitchenSinkTwinNormalCopyWithImpl<$Res,
-        _$KitchenSinkTwinNormal_EmptyImpl>
+    extends
+        _$KitchenSinkTwinNormalCopyWithImpl<
+          $Res,
+          _$KitchenSinkTwinNormal_EmptyImpl
+        >
     implements _$$KitchenSinkTwinNormal_EmptyImplCopyWith<$Res> {
   __$$KitchenSinkTwinNormal_EmptyImplCopyWithImpl(
-      _$KitchenSinkTwinNormal_EmptyImpl _value,
-      $Res Function(_$KitchenSinkTwinNormal_EmptyImpl) _then)
-      : super(_value, _then);
+    _$KitchenSinkTwinNormal_EmptyImpl _value,
+    $Res Function(_$KitchenSinkTwinNormal_EmptyImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of KitchenSinkTwinNormal
   /// with the given fields replaced by the non-null parameter values.
@@ -1713,7 +1756,7 @@ class _$KitchenSinkTwinNormal_EmptyImpl extends KitchenSinkTwinNormal_Empty {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function(int int32, double float64, bool boolean)
-        primitives,
+    primitives,
     required TResult Function(int field0, KitchenSinkTwinNormal field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
@@ -1757,7 +1800,7 @@ class _$KitchenSinkTwinNormal_EmptyImpl extends KitchenSinkTwinNormal_Empty {
   TResult map<TResult extends Object?>({
     required TResult Function(KitchenSinkTwinNormal_Empty value) empty,
     required TResult Function(KitchenSinkTwinNormal_Primitives value)
-        primitives,
+    primitives,
     required TResult Function(KitchenSinkTwinNormal_Nested value) nested,
     required TResult Function(KitchenSinkTwinNormal_Optional value) optional,
     required TResult Function(KitchenSinkTwinNormal_Buffer value) buffer,
@@ -1806,22 +1849,25 @@ abstract class KitchenSinkTwinNormal_Empty extends KitchenSinkTwinNormal {
 /// @nodoc
 abstract class _$$KitchenSinkTwinNormal_PrimitivesImplCopyWith<$Res> {
   factory _$$KitchenSinkTwinNormal_PrimitivesImplCopyWith(
-          _$KitchenSinkTwinNormal_PrimitivesImpl value,
-          $Res Function(_$KitchenSinkTwinNormal_PrimitivesImpl) then) =
-      __$$KitchenSinkTwinNormal_PrimitivesImplCopyWithImpl<$Res>;
+    _$KitchenSinkTwinNormal_PrimitivesImpl value,
+    $Res Function(_$KitchenSinkTwinNormal_PrimitivesImpl) then,
+  ) = __$$KitchenSinkTwinNormal_PrimitivesImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int int32, double float64, bool boolean});
 }
 
 /// @nodoc
 class __$$KitchenSinkTwinNormal_PrimitivesImplCopyWithImpl<$Res>
-    extends _$KitchenSinkTwinNormalCopyWithImpl<$Res,
-        _$KitchenSinkTwinNormal_PrimitivesImpl>
+    extends
+        _$KitchenSinkTwinNormalCopyWithImpl<
+          $Res,
+          _$KitchenSinkTwinNormal_PrimitivesImpl
+        >
     implements _$$KitchenSinkTwinNormal_PrimitivesImplCopyWith<$Res> {
   __$$KitchenSinkTwinNormal_PrimitivesImplCopyWithImpl(
-      _$KitchenSinkTwinNormal_PrimitivesImpl _value,
-      $Res Function(_$KitchenSinkTwinNormal_PrimitivesImpl) _then)
-      : super(_value, _then);
+    _$KitchenSinkTwinNormal_PrimitivesImpl _value,
+    $Res Function(_$KitchenSinkTwinNormal_PrimitivesImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of KitchenSinkTwinNormal
   /// with the given fields replaced by the non-null parameter values.
@@ -1832,20 +1878,22 @@ class __$$KitchenSinkTwinNormal_PrimitivesImplCopyWithImpl<$Res>
     Object? float64 = null,
     Object? boolean = null,
   }) {
-    return _then(_$KitchenSinkTwinNormal_PrimitivesImpl(
-      int32: null == int32
-          ? _value.int32
-          : int32 // ignore: cast_nullable_to_non_nullable
-              as int,
-      float64: null == float64
-          ? _value.float64
-          : float64 // ignore: cast_nullable_to_non_nullable
-              as double,
-      boolean: null == boolean
-          ? _value.boolean
-          : boolean // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$KitchenSinkTwinNormal_PrimitivesImpl(
+        int32: null == int32
+            ? _value.int32
+            : int32 // ignore: cast_nullable_to_non_nullable
+                  as int,
+        float64: null == float64
+            ? _value.float64
+            : float64 // ignore: cast_nullable_to_non_nullable
+                  as double,
+        boolean: null == boolean
+            ? _value.boolean
+            : boolean // ignore: cast_nullable_to_non_nullable
+                  as bool,
+      ),
+    );
   }
 }
 
@@ -1853,9 +1901,11 @@ class __$$KitchenSinkTwinNormal_PrimitivesImplCopyWithImpl<$Res>
 
 class _$KitchenSinkTwinNormal_PrimitivesImpl
     extends KitchenSinkTwinNormal_Primitives {
-  const _$KitchenSinkTwinNormal_PrimitivesImpl(
-      {this.int32 = -1, required this.float64, required this.boolean})
-      : super._();
+  const _$KitchenSinkTwinNormal_PrimitivesImpl({
+    this.int32 = -1,
+    required this.float64,
+    required this.boolean,
+  }) : super._();
 
   /// Dart field comment
   @override
@@ -1890,16 +1940,19 @@ class _$KitchenSinkTwinNormal_PrimitivesImpl
   @override
   @pragma('vm:prefer-inline')
   _$$KitchenSinkTwinNormal_PrimitivesImplCopyWith<
-          _$KitchenSinkTwinNormal_PrimitivesImpl>
-      get copyWith => __$$KitchenSinkTwinNormal_PrimitivesImplCopyWithImpl<
-          _$KitchenSinkTwinNormal_PrimitivesImpl>(this, _$identity);
+    _$KitchenSinkTwinNormal_PrimitivesImpl
+  >
+  get copyWith =>
+      __$$KitchenSinkTwinNormal_PrimitivesImplCopyWithImpl<
+        _$KitchenSinkTwinNormal_PrimitivesImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function(int int32, double float64, bool boolean)
-        primitives,
+    primitives,
     required TResult Function(int field0, KitchenSinkTwinNormal field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
@@ -1943,7 +1996,7 @@ class _$KitchenSinkTwinNormal_PrimitivesImpl
   TResult map<TResult extends Object?>({
     required TResult Function(KitchenSinkTwinNormal_Empty value) empty,
     required TResult Function(KitchenSinkTwinNormal_Primitives value)
-        primitives,
+    primitives,
     required TResult Function(KitchenSinkTwinNormal_Nested value) nested,
     required TResult Function(KitchenSinkTwinNormal_Optional value) optional,
     required TResult Function(KitchenSinkTwinNormal_Buffer value) buffer,
@@ -1984,10 +2037,11 @@ class _$KitchenSinkTwinNormal_PrimitivesImpl
 }
 
 abstract class KitchenSinkTwinNormal_Primitives extends KitchenSinkTwinNormal {
-  const factory KitchenSinkTwinNormal_Primitives(
-      {final int int32,
-      required final double float64,
-      required final bool boolean}) = _$KitchenSinkTwinNormal_PrimitivesImpl;
+  const factory KitchenSinkTwinNormal_Primitives({
+    final int int32,
+    required final double float64,
+    required final bool boolean,
+  }) = _$KitchenSinkTwinNormal_PrimitivesImpl;
   const KitchenSinkTwinNormal_Primitives._() : super._();
 
   /// Dart field comment
@@ -1999,16 +2053,17 @@ abstract class KitchenSinkTwinNormal_Primitives extends KitchenSinkTwinNormal {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KitchenSinkTwinNormal_PrimitivesImplCopyWith<
-          _$KitchenSinkTwinNormal_PrimitivesImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$KitchenSinkTwinNormal_PrimitivesImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$KitchenSinkTwinNormal_NestedImplCopyWith<$Res> {
   factory _$$KitchenSinkTwinNormal_NestedImplCopyWith(
-          _$KitchenSinkTwinNormal_NestedImpl value,
-          $Res Function(_$KitchenSinkTwinNormal_NestedImpl) then) =
-      __$$KitchenSinkTwinNormal_NestedImplCopyWithImpl<$Res>;
+    _$KitchenSinkTwinNormal_NestedImpl value,
+    $Res Function(_$KitchenSinkTwinNormal_NestedImpl) then,
+  ) = __$$KitchenSinkTwinNormal_NestedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int field0, KitchenSinkTwinNormal field1});
 
@@ -2017,32 +2072,34 @@ abstract class _$$KitchenSinkTwinNormal_NestedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$KitchenSinkTwinNormal_NestedImplCopyWithImpl<$Res>
-    extends _$KitchenSinkTwinNormalCopyWithImpl<$Res,
-        _$KitchenSinkTwinNormal_NestedImpl>
+    extends
+        _$KitchenSinkTwinNormalCopyWithImpl<
+          $Res,
+          _$KitchenSinkTwinNormal_NestedImpl
+        >
     implements _$$KitchenSinkTwinNormal_NestedImplCopyWith<$Res> {
   __$$KitchenSinkTwinNormal_NestedImplCopyWithImpl(
-      _$KitchenSinkTwinNormal_NestedImpl _value,
-      $Res Function(_$KitchenSinkTwinNormal_NestedImpl) _then)
-      : super(_value, _then);
+    _$KitchenSinkTwinNormal_NestedImpl _value,
+    $Res Function(_$KitchenSinkTwinNormal_NestedImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of KitchenSinkTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-    Object? field1 = null,
-  }) {
-    return _then(_$KitchenSinkTwinNormal_NestedImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as int,
-      null == field1
-          ? _value.field1
-          : field1 // ignore: cast_nullable_to_non_nullable
-              as KitchenSinkTwinNormal,
-    ));
+  $Res call({Object? field0 = null, Object? field1 = null}) {
+    return _then(
+      _$KitchenSinkTwinNormal_NestedImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                  as int,
+        null == field1
+            ? _value.field1
+            : field1 // ignore: cast_nullable_to_non_nullable
+                  as KitchenSinkTwinNormal,
+      ),
+    );
   }
 
   /// Create a copy of KitchenSinkTwinNormal
@@ -2059,9 +2116,10 @@ class __$$KitchenSinkTwinNormal_NestedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$KitchenSinkTwinNormal_NestedImpl extends KitchenSinkTwinNormal_Nested {
-  const _$KitchenSinkTwinNormal_NestedImpl(this.field0,
-      [this.field1 = const KitchenSinkTwinNormal.empty()])
-      : super._();
+  const _$KitchenSinkTwinNormal_NestedImpl(
+    this.field0, [
+    this.field1 = const KitchenSinkTwinNormal.empty(),
+  ]) : super._();
 
   @override
   final int field0;
@@ -2092,16 +2150,19 @@ class _$KitchenSinkTwinNormal_NestedImpl extends KitchenSinkTwinNormal_Nested {
   @override
   @pragma('vm:prefer-inline')
   _$$KitchenSinkTwinNormal_NestedImplCopyWith<
-          _$KitchenSinkTwinNormal_NestedImpl>
-      get copyWith => __$$KitchenSinkTwinNormal_NestedImplCopyWithImpl<
-          _$KitchenSinkTwinNormal_NestedImpl>(this, _$identity);
+    _$KitchenSinkTwinNormal_NestedImpl
+  >
+  get copyWith =>
+      __$$KitchenSinkTwinNormal_NestedImplCopyWithImpl<
+        _$KitchenSinkTwinNormal_NestedImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function(int int32, double float64, bool boolean)
-        primitives,
+    primitives,
     required TResult Function(int field0, KitchenSinkTwinNormal field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
@@ -2145,7 +2206,7 @@ class _$KitchenSinkTwinNormal_NestedImpl extends KitchenSinkTwinNormal_Nested {
   TResult map<TResult extends Object?>({
     required TResult Function(KitchenSinkTwinNormal_Empty value) empty,
     required TResult Function(KitchenSinkTwinNormal_Primitives value)
-        primitives,
+    primitives,
     required TResult Function(KitchenSinkTwinNormal_Nested value) nested,
     required TResult Function(KitchenSinkTwinNormal_Optional value) optional,
     required TResult Function(KitchenSinkTwinNormal_Buffer value) buffer,
@@ -2186,9 +2247,10 @@ class _$KitchenSinkTwinNormal_NestedImpl extends KitchenSinkTwinNormal_Nested {
 }
 
 abstract class KitchenSinkTwinNormal_Nested extends KitchenSinkTwinNormal {
-  const factory KitchenSinkTwinNormal_Nested(final int field0,
-          [final KitchenSinkTwinNormal field1]) =
-      _$KitchenSinkTwinNormal_NestedImpl;
+  const factory KitchenSinkTwinNormal_Nested(
+    final int field0, [
+    final KitchenSinkTwinNormal field1,
+  ]) = _$KitchenSinkTwinNormal_NestedImpl;
   const KitchenSinkTwinNormal_Nested._() : super._();
 
   int get field0;
@@ -2198,48 +2260,51 @@ abstract class KitchenSinkTwinNormal_Nested extends KitchenSinkTwinNormal {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KitchenSinkTwinNormal_NestedImplCopyWith<
-          _$KitchenSinkTwinNormal_NestedImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$KitchenSinkTwinNormal_NestedImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$KitchenSinkTwinNormal_OptionalImplCopyWith<$Res> {
   factory _$$KitchenSinkTwinNormal_OptionalImplCopyWith(
-          _$KitchenSinkTwinNormal_OptionalImpl value,
-          $Res Function(_$KitchenSinkTwinNormal_OptionalImpl) then) =
-      __$$KitchenSinkTwinNormal_OptionalImplCopyWithImpl<$Res>;
+    _$KitchenSinkTwinNormal_OptionalImpl value,
+    $Res Function(_$KitchenSinkTwinNormal_OptionalImpl) then,
+  ) = __$$KitchenSinkTwinNormal_OptionalImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int? field0, int? field1});
 }
 
 /// @nodoc
 class __$$KitchenSinkTwinNormal_OptionalImplCopyWithImpl<$Res>
-    extends _$KitchenSinkTwinNormalCopyWithImpl<$Res,
-        _$KitchenSinkTwinNormal_OptionalImpl>
+    extends
+        _$KitchenSinkTwinNormalCopyWithImpl<
+          $Res,
+          _$KitchenSinkTwinNormal_OptionalImpl
+        >
     implements _$$KitchenSinkTwinNormal_OptionalImplCopyWith<$Res> {
   __$$KitchenSinkTwinNormal_OptionalImplCopyWithImpl(
-      _$KitchenSinkTwinNormal_OptionalImpl _value,
-      $Res Function(_$KitchenSinkTwinNormal_OptionalImpl) _then)
-      : super(_value, _then);
+    _$KitchenSinkTwinNormal_OptionalImpl _value,
+    $Res Function(_$KitchenSinkTwinNormal_OptionalImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of KitchenSinkTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = freezed,
-    Object? field1 = freezed,
-  }) {
-    return _then(_$KitchenSinkTwinNormal_OptionalImpl(
-      freezed == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as int?,
-      freezed == field1
-          ? _value.field1
-          : field1 // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
+  $Res call({Object? field0 = freezed, Object? field1 = freezed}) {
+    return _then(
+      _$KitchenSinkTwinNormal_OptionalImpl(
+        freezed == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        freezed == field1
+            ? _value.field1
+            : field1 // ignore: cast_nullable_to_non_nullable
+                  as int?,
+      ),
+    );
   }
 }
 
@@ -2248,7 +2313,7 @@ class __$$KitchenSinkTwinNormal_OptionalImplCopyWithImpl<$Res>
 class _$KitchenSinkTwinNormal_OptionalImpl
     extends KitchenSinkTwinNormal_Optional {
   const _$KitchenSinkTwinNormal_OptionalImpl([this.field0 = -1, this.field1])
-      : super._();
+    : super._();
 
   /// Comment on anonymous field
   @override
@@ -2280,16 +2345,19 @@ class _$KitchenSinkTwinNormal_OptionalImpl
   @override
   @pragma('vm:prefer-inline')
   _$$KitchenSinkTwinNormal_OptionalImplCopyWith<
-          _$KitchenSinkTwinNormal_OptionalImpl>
-      get copyWith => __$$KitchenSinkTwinNormal_OptionalImplCopyWithImpl<
-          _$KitchenSinkTwinNormal_OptionalImpl>(this, _$identity);
+    _$KitchenSinkTwinNormal_OptionalImpl
+  >
+  get copyWith =>
+      __$$KitchenSinkTwinNormal_OptionalImplCopyWithImpl<
+        _$KitchenSinkTwinNormal_OptionalImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function(int int32, double float64, bool boolean)
-        primitives,
+    primitives,
     required TResult Function(int field0, KitchenSinkTwinNormal field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
@@ -2333,7 +2401,7 @@ class _$KitchenSinkTwinNormal_OptionalImpl
   TResult map<TResult extends Object?>({
     required TResult Function(KitchenSinkTwinNormal_Empty value) empty,
     required TResult Function(KitchenSinkTwinNormal_Primitives value)
-        primitives,
+    primitives,
     required TResult Function(KitchenSinkTwinNormal_Nested value) nested,
     required TResult Function(KitchenSinkTwinNormal_Optional value) optional,
     required TResult Function(KitchenSinkTwinNormal_Buffer value) buffer,
@@ -2374,9 +2442,10 @@ class _$KitchenSinkTwinNormal_OptionalImpl
 }
 
 abstract class KitchenSinkTwinNormal_Optional extends KitchenSinkTwinNormal {
-  const factory KitchenSinkTwinNormal_Optional(
-      [final int? field0,
-      final int? field1]) = _$KitchenSinkTwinNormal_OptionalImpl;
+  const factory KitchenSinkTwinNormal_Optional([
+    final int? field0,
+    final int? field1,
+  ]) = _$KitchenSinkTwinNormal_OptionalImpl;
   const KitchenSinkTwinNormal_Optional._() : super._();
 
   /// Comment on anonymous field
@@ -2387,43 +2456,47 @@ abstract class KitchenSinkTwinNormal_Optional extends KitchenSinkTwinNormal {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KitchenSinkTwinNormal_OptionalImplCopyWith<
-          _$KitchenSinkTwinNormal_OptionalImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$KitchenSinkTwinNormal_OptionalImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$KitchenSinkTwinNormal_BufferImplCopyWith<$Res> {
   factory _$$KitchenSinkTwinNormal_BufferImplCopyWith(
-          _$KitchenSinkTwinNormal_BufferImpl value,
-          $Res Function(_$KitchenSinkTwinNormal_BufferImpl) then) =
-      __$$KitchenSinkTwinNormal_BufferImplCopyWithImpl<$Res>;
+    _$KitchenSinkTwinNormal_BufferImpl value,
+    $Res Function(_$KitchenSinkTwinNormal_BufferImpl) then,
+  ) = __$$KitchenSinkTwinNormal_BufferImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Uint8List field0});
 }
 
 /// @nodoc
 class __$$KitchenSinkTwinNormal_BufferImplCopyWithImpl<$Res>
-    extends _$KitchenSinkTwinNormalCopyWithImpl<$Res,
-        _$KitchenSinkTwinNormal_BufferImpl>
+    extends
+        _$KitchenSinkTwinNormalCopyWithImpl<
+          $Res,
+          _$KitchenSinkTwinNormal_BufferImpl
+        >
     implements _$$KitchenSinkTwinNormal_BufferImplCopyWith<$Res> {
   __$$KitchenSinkTwinNormal_BufferImplCopyWithImpl(
-      _$KitchenSinkTwinNormal_BufferImpl _value,
-      $Res Function(_$KitchenSinkTwinNormal_BufferImpl) _then)
-      : super(_value, _then);
+    _$KitchenSinkTwinNormal_BufferImpl _value,
+    $Res Function(_$KitchenSinkTwinNormal_BufferImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of KitchenSinkTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$KitchenSinkTwinNormal_BufferImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as Uint8List,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$KitchenSinkTwinNormal_BufferImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                  as Uint8List,
+      ),
+    );
   }
 }
 
@@ -2458,16 +2531,19 @@ class _$KitchenSinkTwinNormal_BufferImpl extends KitchenSinkTwinNormal_Buffer {
   @override
   @pragma('vm:prefer-inline')
   _$$KitchenSinkTwinNormal_BufferImplCopyWith<
-          _$KitchenSinkTwinNormal_BufferImpl>
-      get copyWith => __$$KitchenSinkTwinNormal_BufferImplCopyWithImpl<
-          _$KitchenSinkTwinNormal_BufferImpl>(this, _$identity);
+    _$KitchenSinkTwinNormal_BufferImpl
+  >
+  get copyWith =>
+      __$$KitchenSinkTwinNormal_BufferImplCopyWithImpl<
+        _$KitchenSinkTwinNormal_BufferImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function(int int32, double float64, bool boolean)
-        primitives,
+    primitives,
     required TResult Function(int field0, KitchenSinkTwinNormal field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
@@ -2511,7 +2587,7 @@ class _$KitchenSinkTwinNormal_BufferImpl extends KitchenSinkTwinNormal_Buffer {
   TResult map<TResult extends Object?>({
     required TResult Function(KitchenSinkTwinNormal_Empty value) empty,
     required TResult Function(KitchenSinkTwinNormal_Primitives value)
-        primitives,
+    primitives,
     required TResult Function(KitchenSinkTwinNormal_Nested value) nested,
     required TResult Function(KitchenSinkTwinNormal_Optional value) optional,
     required TResult Function(KitchenSinkTwinNormal_Buffer value) buffer,
@@ -2562,52 +2638,56 @@ abstract class KitchenSinkTwinNormal_Buffer extends KitchenSinkTwinNormal {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KitchenSinkTwinNormal_BufferImplCopyWith<
-          _$KitchenSinkTwinNormal_BufferImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$KitchenSinkTwinNormal_BufferImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$KitchenSinkTwinNormal_EnumsImplCopyWith<$Res> {
   factory _$$KitchenSinkTwinNormal_EnumsImplCopyWith(
-          _$KitchenSinkTwinNormal_EnumsImpl value,
-          $Res Function(_$KitchenSinkTwinNormal_EnumsImpl) then) =
-      __$$KitchenSinkTwinNormal_EnumsImplCopyWithImpl<$Res>;
+    _$KitchenSinkTwinNormal_EnumsImpl value,
+    $Res Function(_$KitchenSinkTwinNormal_EnumsImpl) then,
+  ) = __$$KitchenSinkTwinNormal_EnumsImplCopyWithImpl<$Res>;
   @useResult
   $Res call({WeekdaysTwinNormal field0});
 }
 
 /// @nodoc
 class __$$KitchenSinkTwinNormal_EnumsImplCopyWithImpl<$Res>
-    extends _$KitchenSinkTwinNormalCopyWithImpl<$Res,
-        _$KitchenSinkTwinNormal_EnumsImpl>
+    extends
+        _$KitchenSinkTwinNormalCopyWithImpl<
+          $Res,
+          _$KitchenSinkTwinNormal_EnumsImpl
+        >
     implements _$$KitchenSinkTwinNormal_EnumsImplCopyWith<$Res> {
   __$$KitchenSinkTwinNormal_EnumsImplCopyWithImpl(
-      _$KitchenSinkTwinNormal_EnumsImpl _value,
-      $Res Function(_$KitchenSinkTwinNormal_EnumsImpl) _then)
-      : super(_value, _then);
+    _$KitchenSinkTwinNormal_EnumsImpl _value,
+    $Res Function(_$KitchenSinkTwinNormal_EnumsImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of KitchenSinkTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$KitchenSinkTwinNormal_EnumsImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as WeekdaysTwinNormal,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$KitchenSinkTwinNormal_EnumsImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                  as WeekdaysTwinNormal,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$KitchenSinkTwinNormal_EnumsImpl extends KitchenSinkTwinNormal_Enums {
-  const _$KitchenSinkTwinNormal_EnumsImpl(
-      [this.field0 = WeekdaysTwinNormal.sunday])
-      : super._();
+  const _$KitchenSinkTwinNormal_EnumsImpl([
+    this.field0 = WeekdaysTwinNormal.sunday,
+  ]) : super._();
 
   @override
   @JsonKey()
@@ -2635,15 +2715,17 @@ class _$KitchenSinkTwinNormal_EnumsImpl extends KitchenSinkTwinNormal_Enums {
   @override
   @pragma('vm:prefer-inline')
   _$$KitchenSinkTwinNormal_EnumsImplCopyWith<_$KitchenSinkTwinNormal_EnumsImpl>
-      get copyWith => __$$KitchenSinkTwinNormal_EnumsImplCopyWithImpl<
-          _$KitchenSinkTwinNormal_EnumsImpl>(this, _$identity);
+  get copyWith =>
+      __$$KitchenSinkTwinNormal_EnumsImplCopyWithImpl<
+        _$KitchenSinkTwinNormal_EnumsImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function(int int32, double float64, bool boolean)
-        primitives,
+    primitives,
     required TResult Function(int field0, KitchenSinkTwinNormal field1) nested,
     required TResult Function(int? field0, int? field1) optional,
     required TResult Function(Uint8List field0) buffer,
@@ -2687,7 +2769,7 @@ class _$KitchenSinkTwinNormal_EnumsImpl extends KitchenSinkTwinNormal_Enums {
   TResult map<TResult extends Object?>({
     required TResult Function(KitchenSinkTwinNormal_Empty value) empty,
     required TResult Function(KitchenSinkTwinNormal_Primitives value)
-        primitives,
+    primitives,
     required TResult Function(KitchenSinkTwinNormal_Nested value) nested,
     required TResult Function(KitchenSinkTwinNormal_Optional value) optional,
     required TResult Function(KitchenSinkTwinNormal_Buffer value) buffer,
@@ -2738,7 +2820,7 @@ abstract class KitchenSinkTwinNormal_Enums extends KitchenSinkTwinNormal {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KitchenSinkTwinNormal_EnumsImplCopyWith<_$KitchenSinkTwinNormal_EnumsImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2748,47 +2830,42 @@ mixin _$MeasureTwinNormal {
   TResult when<TResult extends Object?>({
     required TResult Function(SpeedTwinNormal field0) speed,
     required TResult Function(DistanceTwinNormal field0) distance,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(SpeedTwinNormal field0)? speed,
     TResult? Function(DistanceTwinNormal field0)? distance,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(SpeedTwinNormal field0)? speed,
     TResult Function(DistanceTwinNormal field0)? distance,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(MeasureTwinNormal_Speed value) speed,
     required TResult Function(MeasureTwinNormal_Distance value) distance,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(MeasureTwinNormal_Speed value)? speed,
     TResult? Function(MeasureTwinNormal_Distance value)? distance,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MeasureTwinNormal_Speed value)? speed,
     TResult Function(MeasureTwinNormal_Distance value)? distance,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $MeasureTwinNormalCopyWith<$Res> {
   factory $MeasureTwinNormalCopyWith(
-          MeasureTwinNormal value, $Res Function(MeasureTwinNormal) then) =
-      _$MeasureTwinNormalCopyWithImpl<$Res, MeasureTwinNormal>;
+    MeasureTwinNormal value,
+    $Res Function(MeasureTwinNormal) then,
+  ) = _$MeasureTwinNormalCopyWithImpl<$Res, MeasureTwinNormal>;
 }
 
 /// @nodoc
@@ -2808,9 +2885,9 @@ class _$MeasureTwinNormalCopyWithImpl<$Res, $Val extends MeasureTwinNormal>
 /// @nodoc
 abstract class _$$MeasureTwinNormal_SpeedImplCopyWith<$Res> {
   factory _$$MeasureTwinNormal_SpeedImplCopyWith(
-          _$MeasureTwinNormal_SpeedImpl value,
-          $Res Function(_$MeasureTwinNormal_SpeedImpl) then) =
-      __$$MeasureTwinNormal_SpeedImplCopyWithImpl<$Res>;
+    _$MeasureTwinNormal_SpeedImpl value,
+    $Res Function(_$MeasureTwinNormal_SpeedImpl) then,
+  ) = __$$MeasureTwinNormal_SpeedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({SpeedTwinNormal field0});
 
@@ -2822,23 +2899,23 @@ class __$$MeasureTwinNormal_SpeedImplCopyWithImpl<$Res>
     extends _$MeasureTwinNormalCopyWithImpl<$Res, _$MeasureTwinNormal_SpeedImpl>
     implements _$$MeasureTwinNormal_SpeedImplCopyWith<$Res> {
   __$$MeasureTwinNormal_SpeedImplCopyWithImpl(
-      _$MeasureTwinNormal_SpeedImpl _value,
-      $Res Function(_$MeasureTwinNormal_SpeedImpl) _then)
-      : super(_value, _then);
+    _$MeasureTwinNormal_SpeedImpl _value,
+    $Res Function(_$MeasureTwinNormal_SpeedImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of MeasureTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$MeasureTwinNormal_SpeedImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as SpeedTwinNormal,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$MeasureTwinNormal_SpeedImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                  as SpeedTwinNormal,
+      ),
+    );
   }
 
   /// Create a copy of MeasureTwinNormal
@@ -2882,8 +2959,10 @@ class _$MeasureTwinNormal_SpeedImpl extends MeasureTwinNormal_Speed {
   @override
   @pragma('vm:prefer-inline')
   _$$MeasureTwinNormal_SpeedImplCopyWith<_$MeasureTwinNormal_SpeedImpl>
-      get copyWith => __$$MeasureTwinNormal_SpeedImplCopyWithImpl<
-          _$MeasureTwinNormal_SpeedImpl>(this, _$identity);
+  get copyWith =>
+      __$$MeasureTwinNormal_SpeedImplCopyWithImpl<
+        _$MeasureTwinNormal_SpeedImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2960,15 +3039,15 @@ abstract class MeasureTwinNormal_Speed extends MeasureTwinNormal {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MeasureTwinNormal_SpeedImplCopyWith<_$MeasureTwinNormal_SpeedImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$MeasureTwinNormal_DistanceImplCopyWith<$Res> {
   factory _$$MeasureTwinNormal_DistanceImplCopyWith(
-          _$MeasureTwinNormal_DistanceImpl value,
-          $Res Function(_$MeasureTwinNormal_DistanceImpl) then) =
-      __$$MeasureTwinNormal_DistanceImplCopyWithImpl<$Res>;
+    _$MeasureTwinNormal_DistanceImpl value,
+    $Res Function(_$MeasureTwinNormal_DistanceImpl) then,
+  ) = __$$MeasureTwinNormal_DistanceImplCopyWithImpl<$Res>;
   @useResult
   $Res call({DistanceTwinNormal field0});
 
@@ -2977,27 +3056,27 @@ abstract class _$$MeasureTwinNormal_DistanceImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$MeasureTwinNormal_DistanceImplCopyWithImpl<$Res>
-    extends _$MeasureTwinNormalCopyWithImpl<$Res,
-        _$MeasureTwinNormal_DistanceImpl>
+    extends
+        _$MeasureTwinNormalCopyWithImpl<$Res, _$MeasureTwinNormal_DistanceImpl>
     implements _$$MeasureTwinNormal_DistanceImplCopyWith<$Res> {
   __$$MeasureTwinNormal_DistanceImplCopyWithImpl(
-      _$MeasureTwinNormal_DistanceImpl _value,
-      $Res Function(_$MeasureTwinNormal_DistanceImpl) _then)
-      : super(_value, _then);
+    _$MeasureTwinNormal_DistanceImpl _value,
+    $Res Function(_$MeasureTwinNormal_DistanceImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of MeasureTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$MeasureTwinNormal_DistanceImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as DistanceTwinNormal,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$MeasureTwinNormal_DistanceImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                  as DistanceTwinNormal,
+      ),
+    );
   }
 
   /// Create a copy of MeasureTwinNormal
@@ -3041,8 +3120,10 @@ class _$MeasureTwinNormal_DistanceImpl extends MeasureTwinNormal_Distance {
   @override
   @pragma('vm:prefer-inline')
   _$$MeasureTwinNormal_DistanceImplCopyWith<_$MeasureTwinNormal_DistanceImpl>
-      get copyWith => __$$MeasureTwinNormal_DistanceImplCopyWithImpl<
-          _$MeasureTwinNormal_DistanceImpl>(this, _$identity);
+  get copyWith =>
+      __$$MeasureTwinNormal_DistanceImplCopyWithImpl<
+        _$MeasureTwinNormal_DistanceImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -3119,7 +3200,7 @@ abstract class MeasureTwinNormal_Distance extends MeasureTwinNormal {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MeasureTwinNormal_DistanceImplCopyWith<_$MeasureTwinNormal_DistanceImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -3128,47 +3209,42 @@ mixin _$SpeedTwinNormal {
   TResult when<TResult extends Object?>({
     required TResult Function() unknown,
     required TResult Function(double field0) gps,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? unknown,
     TResult? Function(double field0)? gps,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unknown,
     TResult Function(double field0)? gps,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SpeedTwinNormal_Unknown value) unknown,
     required TResult Function(SpeedTwinNormal_GPS value) gps,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SpeedTwinNormal_Unknown value)? unknown,
     TResult? Function(SpeedTwinNormal_GPS value)? gps,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SpeedTwinNormal_Unknown value)? unknown,
     TResult Function(SpeedTwinNormal_GPS value)? gps,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SpeedTwinNormalCopyWith<$Res> {
   factory $SpeedTwinNormalCopyWith(
-          SpeedTwinNormal value, $Res Function(SpeedTwinNormal) then) =
-      _$SpeedTwinNormalCopyWithImpl<$Res, SpeedTwinNormal>;
+    SpeedTwinNormal value,
+    $Res Function(SpeedTwinNormal) then,
+  ) = _$SpeedTwinNormalCopyWithImpl<$Res, SpeedTwinNormal>;
 }
 
 /// @nodoc
@@ -3188,9 +3264,9 @@ class _$SpeedTwinNormalCopyWithImpl<$Res, $Val extends SpeedTwinNormal>
 /// @nodoc
 abstract class _$$SpeedTwinNormal_UnknownImplCopyWith<$Res> {
   factory _$$SpeedTwinNormal_UnknownImplCopyWith(
-          _$SpeedTwinNormal_UnknownImpl value,
-          $Res Function(_$SpeedTwinNormal_UnknownImpl) then) =
-      __$$SpeedTwinNormal_UnknownImplCopyWithImpl<$Res>;
+    _$SpeedTwinNormal_UnknownImpl value,
+    $Res Function(_$SpeedTwinNormal_UnknownImpl) then,
+  ) = __$$SpeedTwinNormal_UnknownImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -3198,9 +3274,9 @@ class __$$SpeedTwinNormal_UnknownImplCopyWithImpl<$Res>
     extends _$SpeedTwinNormalCopyWithImpl<$Res, _$SpeedTwinNormal_UnknownImpl>
     implements _$$SpeedTwinNormal_UnknownImplCopyWith<$Res> {
   __$$SpeedTwinNormal_UnknownImplCopyWithImpl(
-      _$SpeedTwinNormal_UnknownImpl _value,
-      $Res Function(_$SpeedTwinNormal_UnknownImpl) _then)
-      : super(_value, _then);
+    _$SpeedTwinNormal_UnknownImpl _value,
+    $Res Function(_$SpeedTwinNormal_UnknownImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SpeedTwinNormal
   /// with the given fields replaced by the non-null parameter values.
@@ -3296,9 +3372,10 @@ abstract class SpeedTwinNormal_Unknown extends SpeedTwinNormal {
 
 /// @nodoc
 abstract class _$$SpeedTwinNormal_GPSImplCopyWith<$Res> {
-  factory _$$SpeedTwinNormal_GPSImplCopyWith(_$SpeedTwinNormal_GPSImpl value,
-          $Res Function(_$SpeedTwinNormal_GPSImpl) then) =
-      __$$SpeedTwinNormal_GPSImplCopyWithImpl<$Res>;
+  factory _$$SpeedTwinNormal_GPSImplCopyWith(
+    _$SpeedTwinNormal_GPSImpl value,
+    $Res Function(_$SpeedTwinNormal_GPSImpl) then,
+  ) = __$$SpeedTwinNormal_GPSImplCopyWithImpl<$Res>;
   @useResult
   $Res call({double field0});
 }
@@ -3307,23 +3384,24 @@ abstract class _$$SpeedTwinNormal_GPSImplCopyWith<$Res> {
 class __$$SpeedTwinNormal_GPSImplCopyWithImpl<$Res>
     extends _$SpeedTwinNormalCopyWithImpl<$Res, _$SpeedTwinNormal_GPSImpl>
     implements _$$SpeedTwinNormal_GPSImplCopyWith<$Res> {
-  __$$SpeedTwinNormal_GPSImplCopyWithImpl(_$SpeedTwinNormal_GPSImpl _value,
-      $Res Function(_$SpeedTwinNormal_GPSImpl) _then)
-      : super(_value, _then);
+  __$$SpeedTwinNormal_GPSImplCopyWithImpl(
+    _$SpeedTwinNormal_GPSImpl _value,
+    $Res Function(_$SpeedTwinNormal_GPSImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SpeedTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$SpeedTwinNormal_GPSImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as double,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$SpeedTwinNormal_GPSImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                  as double,
+      ),
+    );
   }
 }
 
@@ -3358,7 +3436,9 @@ class _$SpeedTwinNormal_GPSImpl extends SpeedTwinNormal_GPS {
   @pragma('vm:prefer-inline')
   _$$SpeedTwinNormal_GPSImplCopyWith<_$SpeedTwinNormal_GPSImpl> get copyWith =>
       __$$SpeedTwinNormal_GPSImplCopyWithImpl<_$SpeedTwinNormal_GPSImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs

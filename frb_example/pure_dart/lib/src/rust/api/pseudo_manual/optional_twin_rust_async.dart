@@ -12,61 +12,67 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `fmt`, `fmt`, `fmt`
 
-Future<double?> handleOptionalReturnTwinRustAsync(
-        {required double left, required double right}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinRustAsyncHandleOptionalReturnTwinRustAsync(
-            left: left, right: right);
+Future<double?> handleOptionalReturnTwinRustAsync({
+  required double left,
+  required double right,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinRustAsyncHandleOptionalReturnTwinRustAsync(
+      left: left,
+      right: right,
+    );
 
-Future<ElementTwinRustAsync?> handleOptionalStructTwinRustAsync(
-        {String? document}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinRustAsyncHandleOptionalStructTwinRustAsync(
-            document: document);
+Future<ElementTwinRustAsync?> handleOptionalStructTwinRustAsync({
+  String? document,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinRustAsyncHandleOptionalStructTwinRustAsync(
+      document: document,
+    );
 
-Future<ExoticOptionalsTwinRustAsync?> handleOptionalIncrementTwinRustAsync(
-        {ExoticOptionalsTwinRustAsync? opt}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinRustAsyncHandleOptionalIncrementTwinRustAsync(
-            opt: opt);
+Future<ExoticOptionalsTwinRustAsync?> handleOptionalIncrementTwinRustAsync({
+  ExoticOptionalsTwinRustAsync? opt,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinRustAsyncHandleOptionalIncrementTwinRustAsync(
+      opt: opt,
+    );
 
-Future<double> handleIncrementBoxedOptionalTwinRustAsync({double? opt}) => RustLib
-    .instance.api
+Future<double> handleIncrementBoxedOptionalTwinRustAsync({
+  double? opt,
+}) => RustLib.instance.api
     .crateApiPseudoManualOptionalTwinRustAsyncHandleIncrementBoxedOptionalTwinRustAsync(
-        opt: opt);
+      opt: opt,
+    );
 
-Future<OptVecsTwinRustAsync> handleVecOfOptsTwinRustAsync(
-        {required OptVecsTwinRustAsync opt}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinRustAsyncHandleVecOfOptsTwinRustAsync(
-            opt: opt);
+Future<OptVecsTwinRustAsync> handleVecOfOptsTwinRustAsync({
+  required OptVecsTwinRustAsync opt,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinRustAsyncHandleVecOfOptsTwinRustAsync(
+      opt: opt,
+    );
 
-Future<String> handleOptionBoxArgumentsTwinRustAsync(
-        {int? i8Box,
-        int? u8Box,
-        int? i32Box,
-        PlatformInt64? i64Box,
-        double? f64Box,
-        bool? boolbox,
-        ExoticOptionalsTwinRustAsync? structbox}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinRustAsyncHandleOptionBoxArgumentsTwinRustAsync(
-            i8Box: i8Box,
-            u8Box: u8Box,
-            i32Box: i32Box,
-            i64Box: i64Box,
-            f64Box: f64Box,
-            boolbox: boolbox,
-            structbox: structbox);
+Future<String> handleOptionBoxArgumentsTwinRustAsync({
+  int? i8Box,
+  int? u8Box,
+  int? i32Box,
+  PlatformInt64? i64Box,
+  double? f64Box,
+  bool? boolbox,
+  ExoticOptionalsTwinRustAsync? structbox,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinRustAsyncHandleOptionBoxArgumentsTwinRustAsync(
+      i8Box: i8Box,
+      u8Box: u8Box,
+      i32Box: i32Box,
+      i64Box: i64Box,
+      f64Box: f64Box,
+      boolbox: boolbox,
+      structbox: structbox,
+    );
 
 class AttributeTwinRustAsync {
   final String key;
   final String value;
 
-  const AttributeTwinRustAsync({
-    required this.key,
-    required this.value,
-  });
+  const AttributeTwinRustAsync({required this.key, required this.value});
 
   @override
   int get hashCode => key.hashCode ^ value.hashCode;

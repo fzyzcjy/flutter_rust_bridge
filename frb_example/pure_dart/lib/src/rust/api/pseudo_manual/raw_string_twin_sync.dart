@@ -10,17 +10,19 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'raw_string_twin_sync.freezed.dart';
 
-RawStringItemStructTwinSync testRawStringItemStructTwinSync() =>
-    RustLib.instance.api
-        .crateApiPseudoManualRawStringTwinSyncTestRawStringItemStructTwinSync();
+RawStringItemStructTwinSync testRawStringItemStructTwinSync() => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualRawStringTwinSyncTestRawStringItemStructTwinSync();
 
-RawStringItemEnumTwinSync testRawStringItemEnumTwinSync() =>
-    RustLib.instance.api
-        .crateApiPseudoManualRawStringTwinSyncTestRawStringItemEnumTwinSync();
+RawStringItemEnumTwinSync testRawStringItemEnumTwinSync() => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualRawStringTwinSyncTestRawStringItemEnumTwinSync();
 
 MoreThanJustOneRawStringStructTwinSync
-    testMoreThanJustOneRawStringStructTwinSync() => RustLib.instance.api
-        .crateApiPseudoManualRawStringTwinSyncTestMoreThanJustOneRawStringStructTwinSync();
+testMoreThanJustOneRawStringStructTwinSync() => RustLib.instance.api
+    .crateApiPseudoManualRawStringTwinSyncTestMoreThanJustOneRawStringStructTwinSync();
 
 class MoreThanJustOneRawStringStructTwinSync {
   final String regular;
@@ -54,20 +56,16 @@ class MoreThanJustOneRawStringStructTwinSync {
 sealed class RawStringItemEnumTwinSync with _$RawStringItemEnumTwinSync {
   const RawStringItemEnumTwinSync._();
 
-  const factory RawStringItemEnumTwinSync.regular({
-    required String regular,
-  }) = RawStringItemEnumTwinSync_Regular;
-  const factory RawStringItemEnumTwinSync.raw({
-    required String type,
-  }) = RawStringItemEnumTwinSync_Raw;
+  const factory RawStringItemEnumTwinSync.regular({required String regular}) =
+      RawStringItemEnumTwinSync_Regular;
+  const factory RawStringItemEnumTwinSync.raw({required String type}) =
+      RawStringItemEnumTwinSync_Raw;
 }
 
 class RawStringItemStructTwinSync {
   final String type;
 
-  const RawStringItemStructTwinSync({
-    required this.type,
-  });
+  const RawStringItemStructTwinSync({required this.type});
 
   @override
   int get hashCode => type.hashCode;
