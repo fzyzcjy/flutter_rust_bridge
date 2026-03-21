@@ -250,8 +250,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   // });
 
   test('static method', () async {
-    final obj = await NonCloneSimpleTwinRustAsyncSse
-        .staticMethodReturnOwnTwinRustAsyncSse();
+    final obj =
+        await NonCloneSimpleTwinRustAsyncSse.staticMethodReturnOwnTwinRustAsyncSse();
     await futurizeVoidTwinRustAsyncSse(
       NonCloneSimpleTwinRustAsyncSse.staticMethodArgBorrowTwinRustAsyncSse(
         arg: obj,

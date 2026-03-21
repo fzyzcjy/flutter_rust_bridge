@@ -19,15 +19,15 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     final staticConcatenated =
         await ConcatenateWithTwinSyncSse.concatenateStaticTwinSyncSse(
-      a: "hello ",
-      b: "world",
-    );
+          a: "hello ",
+          b: "world",
+        );
     expect(staticConcatenated, equals("hello world"));
 
     final concatenatedConstructor =
         await ConcatenateWithTwinSyncSse.newTwinSyncSse(a: "hello ");
-    final String concatenated2 =
-        await concatenatedConstructor.concatenateTwinSyncSse(b: "world");
+    final String concatenated2 = await concatenatedConstructor
+        .concatenateTwinSyncSse(b: "world");
     expect(concatenated2, equals("hello world"));
   });
 
@@ -77,9 +77,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final int max = 5;
     final stream =
         ConcatenateWithTwinSyncSse.handleSomeStaticStreamSinkTwinSyncSse(
-      key: key,
-      max: max,
-    );
+          key: key,
+          max: max,
+        );
     int cnt = 0;
     await for (final value in stream) {
       print("output from ConcatenateWith's static stream: $value");
@@ -90,8 +90,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('ConcatenateWith static stream sink at 1 test', () async {
-    final stream = ConcatenateWithTwinSyncSse
-        .handleSomeStaticStreamSinkSingleArgTwinSyncSse();
+    final stream =
+        ConcatenateWithTwinSyncSse.handleSomeStaticStreamSinkSingleArgTwinSyncSse();
     expect(stream.toList(), completion([0, 1, 2, 3, 4]));
   });
 

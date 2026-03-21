@@ -28,7 +28,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('sync option', () {
     var data4 = syncOptionDartOpaqueTwinSse(
-      opaque: () => () => 'magic',
+      opaque: () =>
+          () => 'magic',
     );
     expect(data4, isNotNull);
   });

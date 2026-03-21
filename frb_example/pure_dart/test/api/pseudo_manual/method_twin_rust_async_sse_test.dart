@@ -12,21 +12,21 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('ConcatenateWith test', () async {
     final ConcatenateWithTwinRustAsyncSse concatenateWith =
         ConcatenateWithTwinRustAsyncSse(a: "hello ");
-    final String concatenated =
-        await concatenateWith.concatenateTwinRustAsyncSse(b: "world");
+    final String concatenated = await concatenateWith
+        .concatenateTwinRustAsyncSse(b: "world");
     expect(concatenated, equals("hello world"));
 
     final staticConcatenated =
         await ConcatenateWithTwinRustAsyncSse.concatenateStaticTwinRustAsyncSse(
-      a: "hello ",
-      b: "world",
-    );
+          a: "hello ",
+          b: "world",
+        );
     expect(staticConcatenated, equals("hello world"));
 
     final concatenatedConstructor =
         await ConcatenateWithTwinRustAsyncSse.newTwinRustAsyncSse(a: "hello ");
-    final String concatenated2 =
-        await concatenatedConstructor.concatenateTwinRustAsyncSse(b: "world");
+    final String concatenated2 = await concatenatedConstructor
+        .concatenateTwinRustAsyncSse(b: "world");
     expect(concatenated2, equals("hello world"));
   });
 
@@ -81,11 +81,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('ConcatenateWith static stream sink test', () async {
     final int key = 10;
     final int max = 5;
-    final stream = ConcatenateWithTwinRustAsyncSse
-        .handleSomeStaticStreamSinkTwinRustAsyncSse(
-      key: key,
-      max: max,
-    );
+    final stream =
+        ConcatenateWithTwinRustAsyncSse.handleSomeStaticStreamSinkTwinRustAsyncSse(
+          key: key,
+          max: max,
+        );
     int cnt = 0;
     await for (final value in stream) {
       print("output from ConcatenateWith's static stream: $value");
@@ -96,8 +96,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('ConcatenateWith static stream sink at 1 test', () async {
-    final stream = ConcatenateWithTwinRustAsyncSse
-        .handleSomeStaticStreamSinkSingleArgTwinRustAsyncSse();
+    final stream =
+        ConcatenateWithTwinRustAsyncSse.handleSomeStaticStreamSinkSingleArgTwinRustAsyncSse();
     expect(stream.toList(), completion([0, 1, 2, 3, 4]));
   });
 
@@ -116,8 +116,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       expect(
         (await SimpleStructTwinRustAsyncSse.returnSelfTwinRustAsyncSse(
           one: 'One',
-        ))
-            .one,
+        )).one,
         'One',
       );
     });

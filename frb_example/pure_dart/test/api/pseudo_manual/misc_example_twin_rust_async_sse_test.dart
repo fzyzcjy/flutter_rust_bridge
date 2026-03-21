@@ -46,8 +46,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test("dart call list_of_primitive_enums", () async {
     List<WeekdaysTwinRustAsyncSse> days =
         await listOfPrimitiveEnumsTwinRustAsyncSse(
-      weekdays: WeekdaysTwinRustAsyncSse.values,
-    );
+          weekdays: WeekdaysTwinRustAsyncSse.values,
+        );
     expect(days, WeekdaysTwinRustAsyncSse.values);
   });
 

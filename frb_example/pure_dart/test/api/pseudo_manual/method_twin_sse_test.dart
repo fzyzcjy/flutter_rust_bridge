@@ -20,16 +20,16 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     final staticConcatenated =
         await ConcatenateWithTwinSse.concatenateStaticTwinSse(
-      a: "hello ",
-      b: "world",
-    );
+          a: "hello ",
+          b: "world",
+        );
     expect(staticConcatenated, equals("hello world"));
 
     final concatenatedConstructor = await ConcatenateWithTwinSse.newTwinSse(
       a: "hello ",
     );
-    final String concatenated2 =
-        await concatenatedConstructor.concatenateTwinSse(b: "world");
+    final String concatenated2 = await concatenatedConstructor
+        .concatenateTwinSse(b: "world");
     expect(concatenated2, equals("hello world"));
   });
 
