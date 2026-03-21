@@ -148,6 +148,27 @@ Common FRB patterns:
   Practical cutoff:
   after two similar package-level sync fixes, the burden of proof switches. Do not add a third similar package sync until you have checked whether clean remote `precommit-generate` collapses the whole diff surface.
 
+### Escalation Protocol for Repeated Generate Drift
+
+Trigger this protocol if both are true:
+
+- Two or more example packages fail in the same `Generate :: FRB Codegen :: Command Generate` family across the current session or adjacent CI runs
+- The diffs are mostly generated Dart outputs such as `frb_generated.dart`, `frb_generated.io.dart`, `frb_generated.web.dart`, generated API wrapper files, or nearby formatting/layout churn, with no evidence yet of a package-specific semantic bug or hand-written file change
+
+Then do this, in order:
+
+1. Stop accepting more package-by-package sync commits
+2. Run clean remote `./frb_internal precommit-generate`
+3. Pull back the remote workspace
+4. Inspect the full diff surface
+5. If the full diff surface collapses to one small tail package, accept that tail from this same clean run
+6. If the diff surface is still broad, treat `precommit-generate` as the authoritative `Generate` source and debug the shared generation workflow before touching more package-level symptoms
+7. Do not resume package-by-package syncs unless a clearly different failure class appears
+
+Example:
+
+- If `dart_minimal`, then `rust_ui_counter--ui`, then `gallery` fail in separate `Generate` jobs with similar generated Dart drift, stop after the second one and escalate to clean remote `precommit-generate`
+
 ## Fixes by Failure Type
 
 ### Flaky Test

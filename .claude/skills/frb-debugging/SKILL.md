@@ -47,6 +47,7 @@ In particular:
 - If the same package keeps getting regenerated or reverted without stabilizing CI, use `frb-fix-ci` first
 - If similar generated Dart diffs keep appearing across different example packages, use `frb-fix-ci` first and validate clean remote `./frb_internal precommit-generate` before debugging FRB internals package by package
 - If you have already accepted two similar package-level `Generate` sync fixes, do not debug a third package in isolation until you have checked whether clean remote `precommit-generate` collapses the whole diff surface
+- Do not inspect FRB internals package by package once repeated package-level generated drift is observed. First prove that clean remote `precommit-generate` does not collapse the diff surface
 - If `pure_dart_pde` is failing, confirm whether `pure_dart` is still changing before debugging the downstream copy
 - If Flutter integrate examples regress because of embedded `cargokit` behavior, debug and fix the real `cargokit` submodule, push to `fzyzcjy/cargokit`, and then update the submodule ref instead of only patching copied example outputs
 

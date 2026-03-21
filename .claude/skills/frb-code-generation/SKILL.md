@@ -42,6 +42,8 @@ If the same `Generate :: FRB Codegen :: Command Generate` symptom starts rotatin
 Practical cutoff:
 after two similar package-level generated-output syncs, stop and re-check clean remote `./frb_internal precommit-generate` before accepting a third one.
 
+When CI repair has already entered repeated package-level `Generate` drift, this is no longer a command-minimization problem. Stop choosing narrower package commands and switch to `frb-fix-ci` escalation via clean remote `./frb_internal precommit-generate`.
+
 If Flutter integrate examples, example platform files, and downstream Flutter build/test jobs regress together, assume the issue may be in `frb_codegen/assets/integration_template/` or `cargokit` rather than in the generated outputs themselves. If the real fix belongs in the embedded `cargokit` submodule, edit it directly, push to `fzyzcjy/cargokit`, and then update the submodule ref. Use `frb-fix-ci` for that workflow.
 
 Do not manually patch generated files as the final fix. The final accepted result should be produced by the corresponding generation command in a clean matching environment.
