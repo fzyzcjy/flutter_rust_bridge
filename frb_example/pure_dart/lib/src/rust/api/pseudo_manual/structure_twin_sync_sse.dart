@@ -8,47 +8,55 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-StructWithZeroFieldTwinSyncSse funcStructWithZeroFieldTwinSyncSse(
-        {required StructWithZeroFieldTwinSyncSse arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualStructureTwinSyncSseFuncStructWithZeroFieldTwinSyncSse(
-            arg: arg);
+StructWithZeroFieldTwinSyncSse funcStructWithZeroFieldTwinSyncSse({
+  required StructWithZeroFieldTwinSyncSse arg,
+}) => RustLib.instance.api
+    .crateApiPseudoManualStructureTwinSyncSseFuncStructWithZeroFieldTwinSyncSse(
+      arg: arg,
+    );
 
-StructWithOneFieldTwinSyncSse funcStructWithOneFieldTwinSyncSse(
-        {required StructWithOneFieldTwinSyncSse arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualStructureTwinSyncSseFuncStructWithOneFieldTwinSyncSse(
-            arg: arg);
+StructWithOneFieldTwinSyncSse funcStructWithOneFieldTwinSyncSse({
+  required StructWithOneFieldTwinSyncSse arg,
+}) => RustLib.instance.api
+    .crateApiPseudoManualStructureTwinSyncSseFuncStructWithOneFieldTwinSyncSse(
+      arg: arg,
+    );
 
-StructWithTwoFieldTwinSyncSse funcStructWithTwoFieldTwinSyncSse(
-        {required StructWithTwoFieldTwinSyncSse arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualStructureTwinSyncSseFuncStructWithTwoFieldTwinSyncSse(
-            arg: arg);
+StructWithTwoFieldTwinSyncSse funcStructWithTwoFieldTwinSyncSse({
+  required StructWithTwoFieldTwinSyncSse arg,
+}) => RustLib.instance.api
+    .crateApiPseudoManualStructureTwinSyncSseFuncStructWithTwoFieldTwinSyncSse(
+      arg: arg,
+    );
 
-TupleStructWithOneFieldTwinSyncSse funcTupleStructWithOneFieldTwinSyncSse(
-        {required TupleStructWithOneFieldTwinSyncSse arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualStructureTwinSyncSseFuncTupleStructWithOneFieldTwinSyncSse(
-            arg: arg);
+TupleStructWithOneFieldTwinSyncSse funcTupleStructWithOneFieldTwinSyncSse({
+  required TupleStructWithOneFieldTwinSyncSse arg,
+}) => RustLib.instance.api
+    .crateApiPseudoManualStructureTwinSyncSseFuncTupleStructWithOneFieldTwinSyncSse(
+      arg: arg,
+    );
 
-TupleStructWithTwoFieldTwinSyncSse funcTupleStructWithTwoFieldTwinSyncSse(
-        {required TupleStructWithTwoFieldTwinSyncSse arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualStructureTwinSyncSseFuncTupleStructWithTwoFieldTwinSyncSse(
-            arg: arg);
+TupleStructWithTwoFieldTwinSyncSse funcTupleStructWithTwoFieldTwinSyncSse({
+  required TupleStructWithTwoFieldTwinSyncSse arg,
+}) => RustLib.instance.api
+    .crateApiPseudoManualStructureTwinSyncSseFuncTupleStructWithTwoFieldTwinSyncSse(
+      arg: arg,
+    );
 
-StructWithFieldRenameTwinSyncSse funcForStructWithFieldRenameTwinSyncSse(
-        {required StructWithFieldRenameTwinSyncSse arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualStructureTwinSyncSseFuncForStructWithFieldRenameTwinSyncSse(
-            arg: arg);
+StructWithFieldRenameTwinSyncSse funcForStructWithFieldRenameTwinSyncSse({
+  required StructWithFieldRenameTwinSyncSse arg,
+}) => RustLib.instance.api
+    .crateApiPseudoManualStructureTwinSyncSseFuncForStructWithFieldRenameTwinSyncSse(
+      arg: arg,
+    );
 
-StructWithDartKeywordFieldTwinSyncSse funcForStructWithDartKeywordFieldTwinSyncSse(
-        {required StructWithDartKeywordFieldTwinSyncSse arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualStructureTwinSyncSseFuncForStructWithDartKeywordFieldTwinSyncSse(
-            arg: arg);
+StructWithDartKeywordFieldTwinSyncSse
+funcForStructWithDartKeywordFieldTwinSyncSse({
+  required StructWithDartKeywordFieldTwinSyncSse arg,
+}) => RustLib.instance.api
+    .crateApiPseudoManualStructureTwinSyncSseFuncForStructWithDartKeywordFieldTwinSyncSse(
+      arg: arg,
+    );
 
 class StructWithDartKeywordFieldTwinSyncSse {
   final int class_;
@@ -74,9 +82,7 @@ class StructWithDartKeywordFieldTwinSyncSse {
 class StructWithFieldRenameTwinSyncSse {
   final int renamed_field;
 
-  const StructWithFieldRenameTwinSyncSse({
-    required this.renamed_field,
-  });
+  const StructWithFieldRenameTwinSyncSse({required this.renamed_field});
 
   @override
   int get hashCode => renamed_field.hashCode;
@@ -92,9 +98,7 @@ class StructWithFieldRenameTwinSyncSse {
 class StructWithOneFieldTwinSyncSse {
   final int a;
 
-  const StructWithOneFieldTwinSyncSse({
-    required this.a,
-  });
+  const StructWithOneFieldTwinSyncSse({required this.a});
 
   @override
   int get hashCode => a.hashCode;
@@ -111,10 +115,7 @@ class StructWithTwoFieldTwinSyncSse {
   final int a;
   final int b;
 
-  const StructWithTwoFieldTwinSyncSse({
-    required this.a,
-    required this.b,
-  });
+  const StructWithTwoFieldTwinSyncSse({required this.a, required this.b});
 
   @override
   int get hashCode => a.hashCode ^ b.hashCode;
@@ -144,9 +145,7 @@ class StructWithZeroFieldTwinSyncSse {
 class TupleStructWithOneFieldTwinSyncSse {
   final int field0;
 
-  const TupleStructWithOneFieldTwinSyncSse({
-    required this.field0,
-  });
+  const TupleStructWithOneFieldTwinSyncSse({required this.field0});
 
   @override
   int get hashCode => field0.hashCode;

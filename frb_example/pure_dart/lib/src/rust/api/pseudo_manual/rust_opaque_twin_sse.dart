@@ -19,25 +19,30 @@ Future<HideDataTwinSse> createOpaqueTwinSse() => RustLib.instance.api
 Future<HideDataTwinSse?> createOptionOpaqueTwinSse({HideDataTwinSse? opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinSseCreateOptionOpaqueTwinSse(
-            opaque: opaque);
+          opaque: opaque,
+        );
 
-Future<EnumOpaqueTwinSseArray5> createArrayOpaqueEnumTwinSse() =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSseCreateArrayOpaqueEnumTwinSse();
+Future<EnumOpaqueTwinSseArray5> createArrayOpaqueEnumTwinSse() => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualRustOpaqueTwinSseCreateArrayOpaqueEnumTwinSse();
 
 Future<String> runEnumOpaqueTwinSse({required EnumOpaqueTwinSse opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinSseRunEnumOpaqueTwinSse(
-            opaque: opaque);
+          opaque: opaque,
+        );
 
-Future<String> runOpaqueTwinSse({required HideDataTwinSse opaque}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustOpaqueTwinSseRunOpaqueTwinSse(opaque: opaque);
+Future<String> runOpaqueTwinSse({required HideDataTwinSse opaque}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualRustOpaqueTwinSseRunOpaqueTwinSse(opaque: opaque);
 
 Future<String> runOpaqueWithDelayTwinSse({required HideDataTwinSse opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinSseRunOpaqueWithDelayTwinSse(
-            opaque: opaque);
+          opaque: opaque,
+        );
 
 Future<HideDataTwinSseArray2> opaqueArrayTwinSse() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueTwinSseOpaqueArrayTwinSse();
@@ -63,12 +68,14 @@ Future<OpaqueNestedTwinSse> createNestedOpaqueTwinSse() => RustLib.instance.api
 Future<void> runNestedOpaqueTwinSse({required OpaqueNestedTwinSse opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinSseRunNestedOpaqueTwinSse(
-            opaque: opaque);
+          opaque: opaque,
+        );
 
 Future<String> unwrapRustOpaqueTwinSse({required HideDataTwinSse opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinSseUnwrapRustOpaqueTwinSse(
-            opaque: opaque);
+          opaque: opaque,
+        );
 
 /// Function to check the code generator.
 /// FrbOpaqueReturn must be only return type.
@@ -93,11 +100,11 @@ class HideDataTwinSseArray2 extends NonGrowableListView<HideDataTwinSse> {
   final List<HideDataTwinSse> _inner;
 
   HideDataTwinSseArray2(this._inner)
-      : assert(_inner.length == arraySize),
-        super(_inner);
+    : assert(_inner.length == arraySize),
+      super(_inner);
 
   HideDataTwinSseArray2.init(HideDataTwinSse fill)
-      : this(List<HideDataTwinSse>.filled(arraySize, fill));
+    : this(List<HideDataTwinSse>.filled(arraySize, fill));
 }
 
 // Rust type: RustOpaqueNom<Mutex < HideDataTwinSse >>
@@ -110,21 +117,16 @@ abstract class RwLockHideDataTwinSse implements RustOpaqueInterface {}
 sealed class EnumOpaqueTwinSse with _$EnumOpaqueTwinSse {
   const EnumOpaqueTwinSse._();
 
-  const factory EnumOpaqueTwinSse.struct(
-    HideDataTwinSse field0,
-  ) = EnumOpaqueTwinSse_Struct;
-  const factory EnumOpaqueTwinSse.primitive(
-    I32 field0,
-  ) = EnumOpaqueTwinSse_Primitive;
-  const factory EnumOpaqueTwinSse.traitObj(
-    BoxDartDebugTwinSse field0,
-  ) = EnumOpaqueTwinSse_TraitObj;
-  const factory EnumOpaqueTwinSse.mutex(
-    MutexHideDataTwinSse field0,
-  ) = EnumOpaqueTwinSse_Mutex;
-  const factory EnumOpaqueTwinSse.rwLock(
-    RwLockHideDataTwinSse field0,
-  ) = EnumOpaqueTwinSse_RwLock;
+  const factory EnumOpaqueTwinSse.struct(HideDataTwinSse field0) =
+      EnumOpaqueTwinSse_Struct;
+  const factory EnumOpaqueTwinSse.primitive(I32 field0) =
+      EnumOpaqueTwinSse_Primitive;
+  const factory EnumOpaqueTwinSse.traitObj(BoxDartDebugTwinSse field0) =
+      EnumOpaqueTwinSse_TraitObj;
+  const factory EnumOpaqueTwinSse.mutex(MutexHideDataTwinSse field0) =
+      EnumOpaqueTwinSse_Mutex;
+  const factory EnumOpaqueTwinSse.rwLock(RwLockHideDataTwinSse field0) =
+      EnumOpaqueTwinSse_RwLock;
   const factory EnumOpaqueTwinSse.nothing() = EnumOpaqueTwinSse_Nothing;
 }
 
@@ -136,11 +138,11 @@ class EnumOpaqueTwinSseArray5 extends NonGrowableListView<EnumOpaqueTwinSse> {
   final List<EnumOpaqueTwinSse> _inner;
 
   EnumOpaqueTwinSseArray5(this._inner)
-      : assert(_inner.length == arraySize),
-        super(_inner);
+    : assert(_inner.length == arraySize),
+      super(_inner);
 
   EnumOpaqueTwinSseArray5.init(EnumOpaqueTwinSse fill)
-      : this(List<EnumOpaqueTwinSse>.filled(arraySize, fill));
+    : this(List<EnumOpaqueTwinSse>.filled(arraySize, fill));
 }
 
 /// [`HideDataTwinSse`] has private fields.
@@ -148,10 +150,7 @@ class OpaqueNestedTwinSse {
   final HideDataTwinSse first;
   final HideDataTwinSse second;
 
-  const OpaqueNestedTwinSse({
-    required this.first,
-    required this.second,
-  });
+  const OpaqueNestedTwinSse({required this.first, required this.second});
 
   @override
   int get hashCode => first.hashCode ^ second.hashCode;

@@ -10,19 +10,25 @@ import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 BigInt handleTypeAliasIdTwinSyncSse({required BigInt input}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualTypeAliasTwinSyncSseHandleTypeAliasIdTwinSyncSse(
-        input: input);
+      input: input,
+    );
 
 BigInt handleTypeNestAliasIdTwinSyncSse({required BigInt input}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualTypeAliasTwinSyncSseHandleTypeNestAliasIdTwinSyncSse(
-        input: input);
+      input: input,
+    );
 
-TestModelTwinSyncSse handleTypeAliasModelTwinSyncSse({required BigInt input}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualTypeAliasTwinSyncSseHandleTypeAliasModelTwinSyncSse(
-            input: input);
+TestModelTwinSyncSse handleTypeAliasModelTwinSyncSse({
+  required BigInt input,
+}) => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinSyncSseHandleTypeAliasModelTwinSyncSse(
+      input: input,
+    );
 
 class TestModelTwinSyncSse {
   final BigInt id;

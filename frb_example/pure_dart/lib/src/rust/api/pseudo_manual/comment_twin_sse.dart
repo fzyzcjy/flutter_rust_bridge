@@ -12,13 +12,15 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 /// This is single line comment
 Future<void> functionWithCommentsTripleSlashSingleLineTwinSse() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualCommentTwinSseFunctionWithCommentsTripleSlashSingleLineTwinSse();
 
 /// This is first line
 /// This is second line
 Future<void> functionWithCommentsTripleSlashMultiLineTwinSse() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualCommentTwinSseFunctionWithCommentsTripleSlashMultiLineTwinSse();
 
 /// Multiline comments are fine,
@@ -32,13 +34,11 @@ class StructWithCommentsTwinSse {
   /// Documentation on a struct field
   final int fieldWithComments;
 
-  const StructWithCommentsTwinSse({
-    required this.fieldWithComments,
-  });
+  const StructWithCommentsTwinSse({required this.fieldWithComments});
 
   /// Documentation on an instance method
   Future<void> instanceMethodTwinSse() => RustLib.instance.api
-          .crateApiPseudoManualCommentTwinSseStructWithCommentsTwinSseInstanceMethodTwinSse(
+      .crateApiPseudoManualCommentTwinSseStructWithCommentsTwinSseInstanceMethodTwinSse(
         that: this,
       );
 
