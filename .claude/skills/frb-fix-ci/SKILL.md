@@ -52,21 +52,21 @@ flowchart LR
     PureDartPde["frb_example/pure_dart_pde/**"]
     NativeTests["native Flutter tests"]
 
-    Generate(["Generate :: FRB Codegen :: Command Generate\n./frb_internal generate-run-frb-codegen-command-generate"])
-    GenerateInternal(["Generate Internal\n./frb_internal generate-internal"])
-    Integrate(["Generate :: FRB Codegen :: Command Integrate\n./frb_internal generate-run-frb-codegen-command-integrate"])
+    Generate(["Generate :: FRB Codegen :: Command Generate\n(./frb_internal generate-run-frb-codegen-command-generate)"])
+    GenerateInternalPureDart(["Generate Internal :: frb_example pure_dart chain\n(./frb_internal generate-internal-frb-example-pure-dart)"])
+    Integrate(["Generate :: FRB Codegen :: Command Integrate\n(./frb_internal generate-run-frb-codegen-command-integrate)"])
     Build([Build :: Flutter])
 
     CodegenSources -->|used by| Generate
     Versions -->|used by| Generate
     Generate -->|writes| GeneratedOutputs
 
-    CodegenSources -->|used by| GenerateInternal
-    Versions -->|used by| GenerateInternal
-    PureDart -->|read by| GenerateInternal
-    GenerateInternal -->|rewrites| PureDart
-    GenerateInternal -->|derives| PureDartPde
-    GenerateInternal -->|writes| GeneratedOutputs
+    CodegenSources -->|used by| GenerateInternalPureDart
+    Versions -->|used by| GenerateInternalPureDart
+    PureDart -->|read by| GenerateInternalPureDart
+    GenerateInternalPureDart -->|rewrites| PureDart
+    GenerateInternalPureDart -->|derives| PureDartPde
+    GenerateInternalPureDart -->|writes| GeneratedOutputs
 
     CodegenSources -->|used by| Integrate
     Versions -->|used by| Integrate
@@ -92,7 +92,7 @@ Read the graph as artifact and input dependencies, not as a literal GitHub Actio
 
 #### When to Consult
 
-Use this graph when several nearby categories start failing together in the same run, especially when earlier nodes such as `Generate`, `Integrate`, or `Generate Internal` are already red and later failures look consistent with missing, stale, or mismatched generated files or platform files.
+Use this graph when several nearby categories start failing together in the same run, especially when earlier nodes such as `Generate`, `Integrate`, or the `generate-internal-frb-example-pure-dart` chain are already red and later failures look consistent with missing, stale, or mismatched generated files or platform files.
 
 #### Rule
 
