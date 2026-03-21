@@ -52,10 +52,10 @@ flowchart LR
     PureDartPde["frb_example/pure_dart_pde/**"]
     NativeTests["native Flutter tests"]
 
-    Generate((Generate))
-    GenerateInternal((Generate Internal))
-    Integrate((Integrate))
-    Build(("Build :: Flutter"))
+    Generate([Generate])
+    GenerateInternal([Generate Internal])
+    Integrate([Integrate])
+    Build([Build :: Flutter])
 
     CodegenSources -->|used by| Generate
     Versions -->|used by| Generate
