@@ -408,8 +408,6 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
           );
       }
 
-      await _formatIntegratedCargokitBuildTool(config.package);
-
       // move back compilation cache to speed up future usage
       // for (final subPath in ['build', 'rust/target']) {
       //   await _renameDirIfExists(
@@ -417,23 +415,6 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
       // }
     },
   );
-}
-
-Future<void> _formatIntegratedCargokitBuildTool(String package) async {
-  final buildToolRelativePwd = switch (package) {
-    'frb_example/flutter_package' => path.join(package, 'cargokit', 'build_tool'),
-    'frb_example/flutter_via_create' ||
-    'frb_example/flutter_via_integrate' => path.join(
-      package,
-      'rust_builder',
-      'cargokit',
-      'build_tool',
-    ),
-    _ => null,
-  };
-  if (buildToolRelativePwd == null) return;
-
-  await exec('dart format .', relativePwd: buildToolRelativePwd);
 }
 
 Future<RunCommandOutput> executeFrbCodegen(
