@@ -35,14 +35,9 @@ For CI diagnosis rules about generated-file format/lint failures or `Generate ::
 
 For `pure_dart` / `pure_dart_pde` generation issues, treat `frb_example/pure_dart` as the upstream source and `frb_example/pure_dart_pde` as the derived copy. See `frb-fix-ci` for the CI diagnosis workflow.
 
-If the same package or path keeps getting `refresh` / `regenerate` / `sync` style commits, or if accepting regenerated outputs causes previously green non-`Generate` jobs to fail, stop treating this as a pure codegen-command selection problem. Switch to `frb-fix-ci` and diagnose failure propagation before regenerating again.
+If the same package or path keeps getting `refresh` / `regenerate` / `sync` style commits, or if accepting regenerated outputs causes previously green non-`Generate` jobs to fail, stop treating this as a pure codegen-command selection problem. Switch to `frb-fix-ci`.
 
-If the same `Generate :: FRB Codegen :: Command Generate` symptom starts rotating across different example packages with very similar generated Dart diffs, do not keep selecting per-package generate commands one by one. Switch to `frb-fix-ci` and validate clean remote `./frb_internal precommit-generate` as the source of truth for the whole `Generate` chain.
-
-Practical cutoff:
-after two similar package-level generated-output syncs, stop and re-check clean remote `./frb_internal precommit-generate` before accepting a third one.
-
-When CI repair has already entered repeated package-level `Generate` drift, this is no longer a command-minimization problem. Stop choosing narrower package commands and switch to `frb-fix-ci` escalation via clean remote `./frb_internal precommit-generate`.
+If repeated package-level `Generate` drift appears during CI repair, stop choosing narrower package commands and follow `frb-fix-ci`'s repeated-`Generate` escalation workflow instead.
 
 If Flutter integrate examples, example platform files, and downstream Flutter build/test jobs regress together, assume the issue may be in `frb_codegen/assets/integration_template/` or `cargokit` rather than in the generated outputs themselves. If the real fix belongs in the embedded `cargokit` submodule, edit it directly, push to `fzyzcjy/cargokit`, and then update the submodule ref. Use `frb-fix-ci` for that workflow.
 
