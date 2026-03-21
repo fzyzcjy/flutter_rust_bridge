@@ -41,27 +41,41 @@ Do not answer from stale CI state. Read the latest relevant run or job informati
 When several related jobs are failing, use this dependency graph instead of treating all failures as peers:
 
 ```text
-generation logic / templates / toolchain
-    |
-    +--> Generate / Integrate / Generate Internal
-    |         |
-    |         +--> generated outputs / example platform files
-    |                    |
-    |                    +--> Build :: Flutter
-    |                               |
-    |                               +--> native Flutter tests
-    |
-    +--> frb_codegen/assets/integration_template/ + cargokit
-    |         |
-    |         +--> integrate example outputs / platform files
-    |                    |
-    |                    +--> Build :: Flutter
-    |                               |
-    |                               +--> native Flutter tests
-    |
-    +--> frb_example/pure_dart
-              |
-              +--> frb_example/pure_dart_pde
++----------------------------------------+
+| generation logic / templates / toolchain |
++----------------------------------------+
+          |                               |
+          v                               v
++-------------------------------------+   +---------------------------------------------+
+| Generate / Integrate / Generate     |   | frb_codegen/assets/integration_template/    |
+| Internal                            |   | + cargokit                                  |
++-------------------------------------+   +---------------------------------------------+
+          |                               |
+          v                               v
++-------------------------------------+   +-------------------------------------+
+| generated outputs / example         |   | integrate example outputs /         |
+| platform files                      |   | platform files                      |
++-------------------------------------+   +-------------------------------------+
+          \                               /
+           \                             /
+            v                           v
+             +----------------------+
+             | Build :: Flutter     |
+             +----------------------+
+                        |
+                        v
+             +----------------------+
+             | native Flutter tests |
+             +----------------------+
+
++---------------------------+
+| frb_example/pure_dart     |
++---------------------------+
+             |
+             v
++---------------------------+
+| frb_example/pure_dart_pde |
++---------------------------+
 ```
 
 - `generation logic / templates / toolchain` -> generated outputs
