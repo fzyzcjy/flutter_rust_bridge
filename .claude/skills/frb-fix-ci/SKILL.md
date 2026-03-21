@@ -72,10 +72,21 @@ Read the graph as artifact and input dependencies, not as a literal GitHub Actio
 - `Build :: Flutter` often determines whether native Flutter tests pass
 - `frb_example/pure_dart` -> `frb_example/pure_dart_pde`
 
+Important chains on this graph:
+
+- If the failing path involves `frb_example/pure_dart_pde`, do not only refresh `pure_dart_pde`. First check whether `./frb_internal generate-internal --set-exit-if-changed ...` is still changing `frb_example/pure_dart`. If `pure_dart` still changes, stabilize that node first, then re-check `pure_dart_pde`.
+- If Flutter integrate examples, example platform files, `Build :: Flutter`, and native Flutter tests regress together, suspect `frb_codegen/assets/integration_template/` and `cargokit` before assuming the generated example outputs are independently wrong.
+
+When to use this graph:
+
+- Several nearby categories start failing together in the same run
+- The earlier graph nodes are already red, for example `Generate`, `Integrate`, or `Generate Internal`
+- The later failures look consistent with missing, stale, or mismatched generated files or platform files
+
 Practical rule:
 
 - Prefer fixing prerequisite nodes before symptom nodes
-- If a prerequisite node is still unstable, treat later failures as potentially propagated symptoms rather than independent root causes
+- If a prerequisite node is still unstable, treat later failures as propagated symptoms until proven otherwise
 
 ## Fixes by Failure Type
 
@@ -169,16 +180,6 @@ In that situation:
 - Re-generate from a clean environment
 - Only accept generated outputs after confirming they do not introduce new non-`Generate` regressions
 
-### Failure Propagation
-
-When CI starts failing in several adjacent categories at once, do not assume they are independent.
-
-In that situation:
-
-- Treat `Generate` / `Integrate` / `Generate Internal` as earlier nodes in the dependency graph than `Build :: Flutter` and native tests
-- If earlier nodes are still unstable, do not spend most of your effort fixing later nodes one by one yet
-- First stabilize the earlier generation or template inputs, then re-check the later jobs
-
 ### Dart Web Browser Startup Flakes
 
 When `Test :: Dart :: Web (...)` fails after the web build and server startup already succeeded, and the failure is:
@@ -195,27 +196,6 @@ In that situation:
 - Check whether wasm build, `dart compile js`, and local web server startup already succeeded
 - Prefer rerunning only the failed job first
 - Only start code investigation if the same job keeps failing with the same error repeatedly
-
-## Special Chains
-
-### `pure_dart_pde` Related Failures
-
-When the failing path involves `frb_example/pure_dart_pde`, remember that `pure_dart_pde` is derived from `frb_example/pure_dart`.
-
-In that situation:
-
-- Do not only refresh `pure_dart_pde`
-- First check whether `./frb_internal generate-internal --set-exit-if-changed ...` is still changing `frb_example/pure_dart`
-- Treat `frb_example/pure_dart` as the upstream source and `frb_example/pure_dart_pde` as the downstream copy
-- If `pure_dart` still changes, sync that upstream output first, then re-check `pure_dart_pde`
-
-### Flutter Integrate Template Chain
-
-When Flutter integrate examples, example platform files, `Build :: Flutter`, and native Flutter tests regress together:
-
-- Treat `frb_codegen/assets/integration_template/` and `cargokit` as upstream of generated example platform files
-- Suspect the template chain before assuming the generated outputs are independently wrong
-- Prefer fixing template inputs over hand-editing generated example outputs
 
 ## Whack-a-Mole Prevention
 
