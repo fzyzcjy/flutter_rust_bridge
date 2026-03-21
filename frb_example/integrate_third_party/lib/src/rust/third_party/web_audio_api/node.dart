@@ -116,8 +116,9 @@ abstract class AnalyserNode
   /// to max decibels.
   Future<void> setMinDecibels({required double value});
 
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
+  Future<void> setOnProcessorError({
+    required FutureOr<void> Function(String) callback,
+  });
 
   /// Set smoothing time constant
   ///
@@ -225,8 +226,9 @@ abstract class AudioBufferSourceNode
 
   Future<void> setOnEnded({required FutureOr<void> Function(Event) callback});
 
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
+  Future<void> setOnProcessorError({
+    required FutureOr<void> Function(String) callback,
+  });
 
   Future<void> start();
 
@@ -237,18 +239,21 @@ abstract class AudioBufferSourceNode
   /// # Panics
   ///
   /// Panics if the source was already started
-  Future<void> startAtWithOffset(
-      {required double start, required double offset});
+  Future<void> startAtWithOffset({
+    required double start,
+    required double offset,
+  });
 
   /// Start the playback at the given time, with a given offset, for a given duration
   ///
   /// # Panics
   ///
   /// Panics if the source was already started
-  Future<void> startAtWithOffsetAndDuration(
-      {required double start,
-      required double offset,
-      required double duration});
+  Future<void> startAtWithOffsetAndDuration({
+    required double start,
+    required double offset,
+    required double duration,
+  });
 
   Future<void> stop();
 
@@ -299,8 +304,9 @@ abstract class AudioDestinationNode
 
   Future<void> registration();
 
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
+  Future<void> setOnProcessorError({
+    required FutureOr<void> Function(String) callback,
+  });
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<BiquadFilterNode>>
@@ -354,8 +360,9 @@ abstract class BiquadFilterNode
 
   Future<void> registration();
 
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
+  Future<void> setOnProcessorError({
+    required FutureOr<void> Function(String) callback,
+  });
 
   /// biquad filter type setter
   ///
@@ -413,8 +420,9 @@ abstract class ChannelMergerNode
 
   Future<void> registration();
 
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
+  Future<void> setOnProcessorError({
+    required FutureOr<void> Function(String) callback,
+  });
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ChannelSplitterNode>>
@@ -456,8 +464,9 @@ abstract class ChannelSplitterNode
 
   Future<void> registration();
 
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
+  Future<void> setOnProcessorError({
+    required FutureOr<void> Function(String) callback,
+  });
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<ConstantSourceNode>>
@@ -511,8 +520,9 @@ abstract class ConstantSourceNode
 
   Future<void> setOnEnded({required FutureOr<void> Function(Event) callback});
 
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
+  Future<void> setOnProcessorError({
+    required FutureOr<void> Function(String) callback,
+  });
 
   Future<void> start();
 
@@ -576,8 +586,9 @@ abstract class ConvolverNode
   /// Update the `normalize` setting. This will only have an effect when `set_buffer` is called.
   Future<void> setNormalize({required bool value});
 
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
+  Future<void> setOnProcessorError({
+    required FutureOr<void> Function(String) callback,
+  });
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DelayNode>>
@@ -622,8 +633,9 @@ abstract class DelayNode
 
   Future<void> registration();
 
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
+  Future<void> setOnProcessorError({
+    required FutureOr<void> Function(String) callback,
+  });
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<DynamicsCompressorNode>>
@@ -675,8 +687,9 @@ abstract class DynamicsCompressorNode
 
   AudioParam get release;
 
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
+  Future<void> setOnProcessorError({
+    required FutureOr<void> Function(String) callback,
+  });
 
   AudioParam get threshold;
 }
@@ -721,8 +734,9 @@ abstract class GainNode implements RustOpaqueInterface, AudioNode, GainNodeExt {
 
   Future<void> registration();
 
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
+  Future<void> setOnProcessorError({
+    required FutureOr<void> Function(String) callback,
+  });
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<IIRFilterNode>>
@@ -764,8 +778,9 @@ abstract class IirFilterNode
 
   Future<void> registration();
 
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
+  Future<void> setOnProcessorError({
+    required FutureOr<void> Function(String) callback,
+  });
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaElementAudioSourceNode>>
@@ -807,8 +822,9 @@ abstract class MediaElementAudioSourceNode
 
   Future<void> registration();
 
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
+  Future<void> setOnProcessorError({
+    required FutureOr<void> Function(String) callback,
+  });
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamAudioDestinationNode>>
@@ -853,8 +869,9 @@ abstract class MediaStreamAudioDestinationNode
 
   Future<void> registration();
 
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
+  Future<void> setOnProcessorError({
+    required FutureOr<void> Function(String) callback,
+  });
 
   /// A [`MediaStream`] producing audio buffers with the same number of channels as the node
   /// itself
@@ -900,8 +917,9 @@ abstract class MediaStreamAudioSourceNode
 
   Future<void> registration();
 
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
+  Future<void> setOnProcessorError({
+    required FutureOr<void> Function(String) callback,
+  });
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamTrackAudioSourceNode>>
@@ -946,8 +964,9 @@ abstract class MediaStreamTrackAudioSourceNode
 
   Future<void> registration();
 
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
+  Future<void> setOnProcessorError({
+    required FutureOr<void> Function(String) callback,
+  });
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<OscillatorNode>>
@@ -1015,8 +1034,9 @@ abstract class OscillatorNode
 
   Future<void> setOnEnded({required FutureOr<void> Function(Event) callback});
 
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
+  Future<void> setOnProcessorError({
+    required FutureOr<void> Function(String) callback,
+  });
 
   /// Sets a `PeriodicWave` which describes a waveform to be used by the oscillator.
   ///
@@ -1134,16 +1154,23 @@ abstract class PannerNode
   /// Panics if the provided value is negative.
   Future<void> setMaxDistance({required double value});
 
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
+  Future<void> setOnProcessorError({
+    required FutureOr<void> Function(String) callback,
+  });
 
-  Future<void> setOrientation(
-      {required double x, required double y, required double z});
+  Future<void> setOrientation({
+    required double x,
+    required double y,
+    required double z,
+  });
 
   Future<void> setPanningModel({required PanningModelType value});
 
-  Future<void> setPosition(
-      {required double x, required double y, required double z});
+  Future<void> setPosition({
+    required double x,
+    required double y,
+    required double z,
+  });
 
   /// Set the refDistance attribute
   ///
@@ -1202,8 +1229,9 @@ abstract class ScriptProcessorNode
 
   Future<void> connect({required AudioNode dest});
 
-  Future<void> setOnaudioprocess(
-      {required FutureOr<void> Function(AudioProcessingEvent) callback});
+  Future<void> setOnaudioprocess({
+    required FutureOr<void> Function(AudioProcessingEvent) callback,
+  });
 
   Future<int> numberOfInputs();
 
@@ -1211,8 +1239,9 @@ abstract class ScriptProcessorNode
 
   Future<void> registration();
 
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
+  Future<void> setOnProcessorError({
+    required FutureOr<void> Function(String) callback,
+  });
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StereoPannerNode>>
@@ -1257,8 +1286,9 @@ abstract class StereoPannerNode
 
   Future<void> registration();
 
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
+  Future<void> setOnProcessorError({
+    required FutureOr<void> Function(String) callback,
+  });
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<WaveShaperNode>>
@@ -1321,8 +1351,9 @@ abstract class WaveShaperNode
   /// `set_curve`)
   Future<void> setCurve({required List<double> curve});
 
-  Future<void> setOnProcessorError(
-      {required FutureOr<void> Function(String) callback});
+  Future<void> setOnProcessorError({
+    required FutureOr<void> Function(String) callback,
+  });
 
   /// set the `oversample` factor of this node
   ///
@@ -1601,8 +1632,7 @@ enum BiquadFilterType {
 
   /// Allows all frequencies through, but adds a boost (or attenuation) to
   /// the higher frequencies.
-  highshelf,
-  ;
+  highshelf;
 
   static Future<BiquadFilterType> default_() =>
       RustLib.instance.api.webAudioApiNodeBiquadFilterTypeDefault();
@@ -1620,15 +1650,10 @@ enum ChannelCountMode {
 
   /// `computedNumberOfChannels` is the exact value as specified by the channelCount.
   explicit,
-  ;
 }
 
 /// The meaning of the channels, defining how audio up-mixing and down-mixing will happen.
-enum ChannelInterpretation {
-  speakers,
-  discrete,
-  ;
-}
+enum ChannelInterpretation { speakers, discrete }
 
 /// Options for constructing a [`ChannelMergerNode`]
 class ChannelMergerOptions {
@@ -1685,9 +1710,7 @@ class ConstantSourceOptions {
   /// Initial parameter value of the constant signal
   final double offset;
 
-  const ConstantSourceOptions({
-    required this.offset,
-  });
+  const ConstantSourceOptions({required this.offset});
 
   static Future<ConstantSourceOptions> default_() =>
       RustLib.instance.api.webAudioApiNodeConstantSourceOptionsDefault();
@@ -1772,8 +1795,7 @@ class DelayOptions {
 enum DistanceModelType {
   linear,
   inverse,
-  exponential,
-  ;
+  exponential;
 
   static Future<DistanceModelType> default_() =>
       RustLib.instance.api.webAudioApiNodeDistanceModelTypeDefault();
@@ -1827,10 +1849,7 @@ class GainOptions {
   final double gain;
   final AudioNodeOptions audioNodeOptions;
 
-  const GainOptions({
-    required this.gain,
-    required this.audioNodeOptions,
-  });
+  const GainOptions({required this.gain, required this.audioNodeOptions});
 
   static Future<GainOptions> default_() =>
       RustLib.instance.api.webAudioApiNodeGainOptionsDefault();
@@ -1910,8 +1929,7 @@ enum OscillatorType {
   triangle,
 
   /// type used when periodic_wave is specified
-  custom,
-  ;
+  custom;
 
   static Future<OscillatorType> default_() =>
       RustLib.instance.api.webAudioApiNodeOscillatorTypeDefault();
@@ -1926,8 +1944,7 @@ enum OverSampleType {
   x2,
 
   /// Oversampled by a factor of 4
-  x4,
-  ;
+  x4;
 
   static Future<OverSampleType> default_() =>
       RustLib.instance.api.webAudioApiNodeOverSampleTypeDefault();
@@ -2015,8 +2032,7 @@ class PannerOptions {
 /// Spatialization algorithm used to position the audio in 3D space
 enum PanningModelType {
   equalPower,
-  hrtf,
-  ;
+  hrtf;
 
   static Future<PanningModelType> default_() =>
       RustLib.instance.api.webAudioApiNodePanningModelTypeDefault();

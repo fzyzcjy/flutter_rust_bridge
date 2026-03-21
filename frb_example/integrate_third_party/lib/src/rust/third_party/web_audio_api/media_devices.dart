@@ -45,10 +45,11 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 /// // enjoy listening
 /// std::thread::sleep(std::time::Duration::from_secs(4));
 /// ```
-Future<MediaStream> getUserMediaSync(
-        {required MediaStreamConstraints constraints}) =>
-    RustLib.instance.api
-        .webAudioApiMediaDevicesGetUserMediaSync(constraints: constraints);
+Future<MediaStream> getUserMediaSync({
+  required MediaStreamConstraints constraints,
+}) => RustLib.instance.api.webAudioApiMediaDevicesGetUserMediaSync(
+  constraints: constraints,
+);
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<MediaStreamConstraints>>
 abstract class MediaStreamConstraints implements RustOpaqueInterface {}
