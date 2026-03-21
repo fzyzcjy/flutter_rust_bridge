@@ -33,7 +33,9 @@ class StructWithCommentsTwinRustAsyncSse {
   /// Documentation on a struct field
   final int fieldWithComments;
 
-  const StructWithCommentsTwinRustAsyncSse({required this.fieldWithComments});
+  const StructWithCommentsTwinRustAsyncSse({
+    required this.fieldWithComments,
+  });
 
   /// Documentation on an instance method
   Future<void> instanceMethodTwinRustAsyncSse() => RustLib.instance.api

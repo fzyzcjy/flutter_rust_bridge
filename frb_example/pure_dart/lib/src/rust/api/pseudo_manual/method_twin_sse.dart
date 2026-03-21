@@ -16,16 +16,10 @@ part 'method_twin_sse.freezed.dart';
 Future<SumWithTwinSse> getSumStructTwinSse() =>
     RustLib.instance.api.crateApiPseudoManualMethodTwinSseGetSumStructTwinSse();
 
-Future<SumWithTwinSseArray3> getSumArrayTwinSse({
-  required int a,
-  required int b,
-  required int c,
-}) =>
-    RustLib.instance.api.crateApiPseudoManualMethodTwinSseGetSumArrayTwinSse(
-      a: a,
-      b: b,
-      c: c,
-    );
+Future<SumWithTwinSseArray3> getSumArrayTwinSse(
+        {required int a, required int b, required int c}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualMethodTwinSseGetSumArrayTwinSse(a: a, b: b, c: c);
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StaticGetterOnlyTwinSse>>
 abstract class StaticGetterOnlyTwinSse implements RustOpaqueInterface {
@@ -36,59 +30,45 @@ abstract class StaticGetterOnlyTwinSse implements RustOpaqueInterface {
 class ConcatenateWithTwinSse {
   final String a;
 
-  const ConcatenateWithTwinSse({required this.a});
+  const ConcatenateWithTwinSse({
+    required this.a,
+  });
 
-  static Future<String> concatenateStaticTwinSse({
-    required String a,
-    required String b,
-  }) =>
+  static Future<String> concatenateStaticTwinSse(
+          {required String a, required String b}) =>
       RustLib.instance.api
           .crateApiPseudoManualMethodTwinSseConcatenateWithTwinSseConcatenateStaticTwinSse(
-        a: a,
-        b: b,
-      );
+              a: a, b: b);
 
   Future<String> concatenateTwinSse({required String b}) => RustLib.instance.api
-          .crateApiPseudoManualMethodTwinSseConcatenateWithTwinSseConcatenateTwinSse(
-        that: this,
-        b: b,
-      );
+      .crateApiPseudoManualMethodTwinSseConcatenateWithTwinSseConcatenateTwinSse(
+          that: this, b: b);
 
   static Stream<int> handleSomeStaticStreamSinkSingleArgTwinSse() => RustLib
       .instance.api
       .crateApiPseudoManualMethodTwinSseConcatenateWithTwinSseHandleSomeStaticStreamSinkSingleArgTwinSse();
 
-  static Stream<Log2TwinSse> handleSomeStaticStreamSinkTwinSse({
-    required int key,
-    required int max,
-  }) =>
+  static Stream<Log2TwinSse> handleSomeStaticStreamSinkTwinSse(
+          {required int key, required int max}) =>
       RustLib.instance.api
           .crateApiPseudoManualMethodTwinSseConcatenateWithTwinSseHandleSomeStaticStreamSinkTwinSse(
-        key: key,
-        max: max,
-      );
+              key: key, max: max);
 
   Stream<int> handleSomeStreamSinkAt1TwinSse() => RustLib.instance.api
           .crateApiPseudoManualMethodTwinSseConcatenateWithTwinSseHandleSomeStreamSinkAt1TwinSse(
         that: this,
       );
 
-  Stream<Log2TwinSse> handleSomeStreamSinkTwinSse({
-    required int key,
-    required int max,
-  }) =>
+  Stream<Log2TwinSse> handleSomeStreamSinkTwinSse(
+          {required int key, required int max}) =>
       RustLib.instance.api
           .crateApiPseudoManualMethodTwinSseConcatenateWithTwinSseHandleSomeStreamSinkTwinSse(
-        that: this,
-        key: key,
-        max: max,
-      );
+              that: this, key: key, max: max);
 
   static Future<ConcatenateWithTwinSse> newTwinSse({required String a}) =>
       RustLib.instance.api
           .crateApiPseudoManualMethodTwinSseConcatenateWithTwinSseNewTwinSse(
-        a: a,
-      );
+              a: a);
 
   Future<String> get simpleGetterTwinSse => RustLib.instance.api
           .crateApiPseudoManualMethodTwinSseConcatenateWithTwinSseSimpleGetterTwinSse(
@@ -110,7 +90,10 @@ class Log2TwinSse {
   final int key;
   final String value;
 
-  const Log2TwinSse({required this.key, required this.value});
+  const Log2TwinSse({
+    required this.key,
+    required this.value,
+  });
 
   @override
   int get hashCode => key.hashCode ^ value.hashCode;
@@ -127,13 +110,13 @@ class Log2TwinSse {
 class MyCallableTwinSse {
   final String one;
 
-  const MyCallableTwinSse({required this.one});
+  const MyCallableTwinSse({
+    required this.one,
+  });
 
   Future<String> call({required String two}) => RustLib.instance.api
-          .crateApiPseudoManualMethodTwinSseMyCallableTwinSseCall(
-        that: this,
-        two: two,
-      );
+      .crateApiPseudoManualMethodTwinSseMyCallableTwinSseCall(
+          that: this, two: two);
 
   @override
   int get hashCode => one.hashCode;
@@ -151,14 +134,14 @@ sealed class SimpleEnumTwinSse with _$SimpleEnumTwinSse {
   const SimpleEnumTwinSse._();
 
   const factory SimpleEnumTwinSse.first() = SimpleEnumTwinSse_First;
-  const factory SimpleEnumTwinSse.second(String field0) =
-      SimpleEnumTwinSse_Second;
+  const factory SimpleEnumTwinSse.second(
+    String field0,
+  ) = SimpleEnumTwinSse_Second;
 
   static Future<SimpleEnumTwinSse> returnSelfTwinSse({required String one}) =>
       RustLib.instance.api
           .crateApiPseudoManualMethodTwinSseSimpleEnumTwinSseReturnSelfTwinSse(
-        one: one,
-      );
+              one: one);
 
   Future<String> simpleMethodTwinSse() => RustLib.instance.api
           .crateApiPseudoManualMethodTwinSseSimpleEnumTwinSseSimpleMethodTwinSse(
@@ -168,7 +151,8 @@ sealed class SimpleEnumTwinSse with _$SimpleEnumTwinSse {
 
 enum SimplePrimitiveEnumTwinSse {
   first,
-  second;
+  second,
+  ;
 
   Future<int> simpleMethodTwinSse() => RustLib.instance.api
           .crateApiPseudoManualMethodTwinSseSimplePrimitiveEnumTwinSseSimpleMethodTwinSse(
@@ -179,17 +163,15 @@ enum SimplePrimitiveEnumTwinSse {
 class SimpleStructTwinSse {
   final String one;
 
-  const SimpleStructTwinSse({required this.one});
+  const SimpleStructTwinSse({
+    required this.one,
+  });
 
-  static Future<String> argSelfTwinSse({
-    required SimpleStructTwinSse a,
-    required SimpleStructTwinSse b,
-  }) =>
+  static Future<String> argSelfTwinSse(
+          {required SimpleStructTwinSse a, required SimpleStructTwinSse b}) =>
       RustLib.instance.api
           .crateApiPseudoManualMethodTwinSseSimpleStructTwinSseArgSelfTwinSse(
-        a: a,
-        b: b,
-      );
+              a: a, b: b);
 
   Future<String> receiverBorrowTwinSse() => RustLib.instance.api
           .crateApiPseudoManualMethodTwinSseSimpleStructTwinSseReceiverBorrowTwinSse(
@@ -201,21 +183,16 @@ class SimpleStructTwinSse {
         that: this,
       );
 
-  static Future<SimpleStructTwinSse> returnSelfTwinSse({
-    required String one,
-  }) =>
+  static Future<SimpleStructTwinSse> returnSelfTwinSse({required String one}) =>
       RustLib.instance.api
           .crateApiPseudoManualMethodTwinSseSimpleStructTwinSseReturnSelfTwinSse(
-        one: one,
-      );
+              one: one);
 
-  static Future<List<String>> vecSelfTwinSse({
-    required List<SimpleStructTwinSse> arg,
-  }) =>
+  static Future<List<String>> vecSelfTwinSse(
+          {required List<SimpleStructTwinSse> arg}) =>
       RustLib.instance.api
           .crateApiPseudoManualMethodTwinSseSimpleStructTwinSseVecSelfTwinSse(
-        arg: arg,
-      );
+              arg: arg);
 
   @override
   int get hashCode => one.hashCode;
@@ -231,13 +208,14 @@ class SimpleStructTwinSse {
 class StaticOnlyTwinSse {
   final String one;
 
-  const StaticOnlyTwinSse({required this.one});
+  const StaticOnlyTwinSse({
+    required this.one,
+  });
 
-  static Future<int> staticMethodTwinSse({required int a}) =>
-      RustLib.instance.api
-          .crateApiPseudoManualMethodTwinSseStaticOnlyTwinSseStaticMethodTwinSse(
-        a: a,
-      );
+  static Future<int> staticMethodTwinSse({required int a}) => RustLib
+      .instance.api
+      .crateApiPseudoManualMethodTwinSseStaticOnlyTwinSseStaticMethodTwinSse(
+          a: a);
 
   @override
   int get hashCode => one.hashCode;
@@ -253,15 +231,14 @@ class StaticOnlyTwinSse {
 class SumWithTwinSse {
   final int x;
 
-  const SumWithTwinSse({required this.x});
+  const SumWithTwinSse({
+    required this.x,
+  });
 
   Future<int> sumTwinSse({required int y, required int z}) =>
       RustLib.instance.api
           .crateApiPseudoManualMethodTwinSseSumWithTwinSseSumTwinSse(
-        that: this,
-        y: y,
-        z: z,
-      );
+              that: this, y: y, z: z);
 
   @override
   int get hashCode => x.hashCode;

@@ -21,14 +21,12 @@ List<MySize> handleListOfStructTwinSyncSse({required List<MySize> l}) => RustLib
 List<String> handleStringListTwinSyncSse({required List<String> names}) =>
     RustLib.instance.api
         .crateApiPseudoManualMiscTypeTwinSyncSseHandleStringListTwinSyncSse(
-      names: names,
-    );
+            names: names);
 
 EmptyTwinSyncSse emptyStructTwinSyncSse({required EmptyTwinSyncSse empty}) =>
     RustLib.instance.api
         .crateApiPseudoManualMiscTypeTwinSyncSseEmptyStructTwinSyncSse(
-      empty: empty,
-    );
+            empty: empty);
 
 class EmptyTwinSyncSse {
   const EmptyTwinSyncSse();

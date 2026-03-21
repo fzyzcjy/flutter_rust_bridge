@@ -12,8 +12,7 @@ part of 'method_twin_sse.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SimpleEnumTwinSse {
@@ -60,9 +59,8 @@ mixin _$SimpleEnumTwinSse {
 /// @nodoc
 abstract class $SimpleEnumTwinSseCopyWith<$Res> {
   factory $SimpleEnumTwinSseCopyWith(
-    SimpleEnumTwinSse value,
-    $Res Function(SimpleEnumTwinSse) then,
-  ) = _$SimpleEnumTwinSseCopyWithImpl<$Res, SimpleEnumTwinSse>;
+          SimpleEnumTwinSse value, $Res Function(SimpleEnumTwinSse) then) =
+      _$SimpleEnumTwinSseCopyWithImpl<$Res, SimpleEnumTwinSse>;
 }
 
 /// @nodoc
@@ -82,9 +80,9 @@ class _$SimpleEnumTwinSseCopyWithImpl<$Res, $Val extends SimpleEnumTwinSse>
 /// @nodoc
 abstract class _$$SimpleEnumTwinSse_FirstImplCopyWith<$Res> {
   factory _$$SimpleEnumTwinSse_FirstImplCopyWith(
-    _$SimpleEnumTwinSse_FirstImpl value,
-    $Res Function(_$SimpleEnumTwinSse_FirstImpl) then,
-  ) = __$$SimpleEnumTwinSse_FirstImplCopyWithImpl<$Res>;
+          _$SimpleEnumTwinSse_FirstImpl value,
+          $Res Function(_$SimpleEnumTwinSse_FirstImpl) then) =
+      __$$SimpleEnumTwinSse_FirstImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -92,9 +90,9 @@ class __$$SimpleEnumTwinSse_FirstImplCopyWithImpl<$Res>
     extends _$SimpleEnumTwinSseCopyWithImpl<$Res, _$SimpleEnumTwinSse_FirstImpl>
     implements _$$SimpleEnumTwinSse_FirstImplCopyWith<$Res> {
   __$$SimpleEnumTwinSse_FirstImplCopyWithImpl(
-    _$SimpleEnumTwinSse_FirstImpl _value,
-    $Res Function(_$SimpleEnumTwinSse_FirstImpl) _then,
-  ) : super(_value, _then);
+      _$SimpleEnumTwinSse_FirstImpl _value,
+      $Res Function(_$SimpleEnumTwinSse_FirstImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of SimpleEnumTwinSse
   /// with the given fields replaced by the non-null parameter values.
@@ -191,9 +189,9 @@ abstract class SimpleEnumTwinSse_First extends SimpleEnumTwinSse {
 /// @nodoc
 abstract class _$$SimpleEnumTwinSse_SecondImplCopyWith<$Res> {
   factory _$$SimpleEnumTwinSse_SecondImplCopyWith(
-    _$SimpleEnumTwinSse_SecondImpl value,
-    $Res Function(_$SimpleEnumTwinSse_SecondImpl) then,
-  ) = __$$SimpleEnumTwinSse_SecondImplCopyWithImpl<$Res>;
+          _$SimpleEnumTwinSse_SecondImpl value,
+          $Res Function(_$SimpleEnumTwinSse_SecondImpl) then) =
+      __$$SimpleEnumTwinSse_SecondImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String field0});
 }
@@ -204,23 +202,23 @@ class __$$SimpleEnumTwinSse_SecondImplCopyWithImpl<$Res>
         _$SimpleEnumTwinSse_SecondImpl>
     implements _$$SimpleEnumTwinSse_SecondImplCopyWith<$Res> {
   __$$SimpleEnumTwinSse_SecondImplCopyWithImpl(
-    _$SimpleEnumTwinSse_SecondImpl _value,
-    $Res Function(_$SimpleEnumTwinSse_SecondImpl) _then,
-  ) : super(_value, _then);
+      _$SimpleEnumTwinSse_SecondImpl _value,
+      $Res Function(_$SimpleEnumTwinSse_SecondImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of SimpleEnumTwinSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$SimpleEnumTwinSse_SecondImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as String,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$SimpleEnumTwinSse_SecondImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 

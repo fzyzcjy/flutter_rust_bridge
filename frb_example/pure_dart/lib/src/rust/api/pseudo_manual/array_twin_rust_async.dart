@@ -28,55 +28,47 @@ Future<U8Array32> useMsgidTwinRustAsync({required MessageIdTwinRustAsync id}) =>
 Future<BlobTwinRustAsync> boxedBlobTwinRustAsync({required U8Array1600 blob}) =>
     RustLib.instance.api
         .crateApiPseudoManualArrayTwinRustAsyncBoxedBlobTwinRustAsync(
-      blob: blob,
-    );
+            blob: blob);
 
-Future<U8Array1600> useBoxedBlobTwinRustAsync({
-  required BlobTwinRustAsync blob,
-}) =>
+Future<U8Array1600> useBoxedBlobTwinRustAsync(
+        {required BlobTwinRustAsync blob}) =>
     RustLib.instance.api
         .crateApiPseudoManualArrayTwinRustAsyncUseBoxedBlobTwinRustAsync(
-      blob: blob,
-    );
+            blob: blob);
 
-Future<FeedIdTwinRustAsync> returnBoxedFeedIdTwinRustAsync({
-  required U8Array8 id,
-}) =>
+Future<FeedIdTwinRustAsync> returnBoxedFeedIdTwinRustAsync(
+        {required U8Array8 id}) =>
     RustLib.instance.api
         .crateApiPseudoManualArrayTwinRustAsyncReturnBoxedFeedIdTwinRustAsync(
-      id: id,
-    );
+            id: id);
 
-Future<U8Array8> returnBoxedRawFeedIdTwinRustAsync({
-  required FeedIdTwinRustAsync id,
-}) =>
+Future<U8Array8> returnBoxedRawFeedIdTwinRustAsync(
+        {required FeedIdTwinRustAsync id}) =>
     RustLib.instance.api
         .crateApiPseudoManualArrayTwinRustAsyncReturnBoxedRawFeedIdTwinRustAsync(
-      id: id,
-    );
+            id: id);
 
-Future<TestIdTwinRustAsync> funcTestIdTwinRustAsync({
-  required TestIdTwinRustAsync id,
-}) =>
+Future<TestIdTwinRustAsync> funcTestIdTwinRustAsync(
+        {required TestIdTwinRustAsync id}) =>
     RustLib.instance.api
         .crateApiPseudoManualArrayTwinRustAsyncFuncTestIdTwinRustAsync(id: id);
 
 Future<double> lastNumberTwinRustAsync({required F64Array16 array}) =>
     RustLib.instance.api
         .crateApiPseudoManualArrayTwinRustAsyncLastNumberTwinRustAsync(
-      array: array,
-    );
+            array: array);
 
-Future<TestIdTwinRustAsyncArray2> nestedIdTwinRustAsync({
-  required TestIdTwinRustAsyncArray4 id,
-}) =>
+Future<TestIdTwinRustAsyncArray2> nestedIdTwinRustAsync(
+        {required TestIdTwinRustAsyncArray4 id}) =>
     RustLib.instance.api
         .crateApiPseudoManualArrayTwinRustAsyncNestedIdTwinRustAsync(id: id);
 
 class BlobTwinRustAsync {
   final U8Array1600 field0;
 
-  const BlobTwinRustAsync({required this.field0});
+  const BlobTwinRustAsync({
+    required this.field0,
+  });
 
   @override
   int get hashCode => field0.hashCode;
@@ -92,7 +84,9 @@ class BlobTwinRustAsync {
 class FeedIdTwinRustAsync {
   final U8Array8 field0;
 
-  const FeedIdTwinRustAsync({required this.field0});
+  const FeedIdTwinRustAsync({
+    required this.field0,
+  });
 
   @override
   int get hashCode => field0.hashCode;
@@ -108,7 +102,9 @@ class FeedIdTwinRustAsync {
 class MessageIdTwinRustAsync {
   final U8Array32 field0;
 
-  const MessageIdTwinRustAsync({required this.field0});
+  const MessageIdTwinRustAsync({
+    required this.field0,
+  });
 
   @override
   int get hashCode => field0.hashCode;
@@ -125,7 +121,10 @@ class PointTwinRustAsync {
   final double x;
   final double y;
 
-  const PointTwinRustAsync({required this.x, required this.y});
+  const PointTwinRustAsync({
+    required this.x,
+    required this.y,
+  });
 
   @override
   int get hashCode => x.hashCode ^ y.hashCode;
@@ -157,7 +156,9 @@ class PointTwinRustAsyncArray2 extends NonGrowableListView<PointTwinRustAsync> {
 class TestIdTwinRustAsync {
   final I32Array2 field0;
 
-  const TestIdTwinRustAsync({required this.field0});
+  const TestIdTwinRustAsync({
+    required this.field0,
+  });
 
   @override
   int get hashCode => field0.hashCode;

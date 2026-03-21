@@ -12,8 +12,7 @@ part of 'raw_string_twin_sync_sse.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$RawStringItemEnumTwinSyncSse {
@@ -61,10 +60,10 @@ mixin _$RawStringItemEnumTwinSyncSse {
 /// @nodoc
 abstract class $RawStringItemEnumTwinSyncSseCopyWith<$Res> {
   factory $RawStringItemEnumTwinSyncSseCopyWith(
-    RawStringItemEnumTwinSyncSse value,
-    $Res Function(RawStringItemEnumTwinSyncSse) then,
-  ) = _$RawStringItemEnumTwinSyncSseCopyWithImpl<$Res,
-      RawStringItemEnumTwinSyncSse>;
+          RawStringItemEnumTwinSyncSse value,
+          $Res Function(RawStringItemEnumTwinSyncSse) then) =
+      _$RawStringItemEnumTwinSyncSseCopyWithImpl<$Res,
+          RawStringItemEnumTwinSyncSse>;
 }
 
 /// @nodoc
@@ -85,9 +84,9 @@ class _$RawStringItemEnumTwinSyncSseCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$RawStringItemEnumTwinSyncSse_RegularImplCopyWith<$Res> {
   factory _$$RawStringItemEnumTwinSyncSse_RegularImplCopyWith(
-    _$RawStringItemEnumTwinSyncSse_RegularImpl value,
-    $Res Function(_$RawStringItemEnumTwinSyncSse_RegularImpl) then,
-  ) = __$$RawStringItemEnumTwinSyncSse_RegularImplCopyWithImpl<$Res>;
+          _$RawStringItemEnumTwinSyncSse_RegularImpl value,
+          $Res Function(_$RawStringItemEnumTwinSyncSse_RegularImpl) then) =
+      __$$RawStringItemEnumTwinSyncSse_RegularImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String regular});
 }
@@ -98,23 +97,23 @@ class __$$RawStringItemEnumTwinSyncSse_RegularImplCopyWithImpl<$Res>
         _$RawStringItemEnumTwinSyncSse_RegularImpl>
     implements _$$RawStringItemEnumTwinSyncSse_RegularImplCopyWith<$Res> {
   __$$RawStringItemEnumTwinSyncSse_RegularImplCopyWithImpl(
-    _$RawStringItemEnumTwinSyncSse_RegularImpl _value,
-    $Res Function(_$RawStringItemEnumTwinSyncSse_RegularImpl) _then,
-  ) : super(_value, _then);
+      _$RawStringItemEnumTwinSyncSse_RegularImpl _value,
+      $Res Function(_$RawStringItemEnumTwinSyncSse_RegularImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of RawStringItemEnumTwinSyncSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? regular = null}) {
-    return _then(
-      _$RawStringItemEnumTwinSyncSse_RegularImpl(
-        regular: null == regular
-            ? _value.regular
-            : regular // ignore: cast_nullable_to_non_nullable
-                as String,
-      ),
-    );
+  $Res call({
+    Object? regular = null,
+  }) {
+    return _then(_$RawStringItemEnumTwinSyncSse_RegularImpl(
+      regular: null == regular
+          ? _value.regular
+          : regular // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -220,9 +219,9 @@ class _$RawStringItemEnumTwinSyncSse_RegularImpl
 
 abstract class RawStringItemEnumTwinSyncSse_Regular
     extends RawStringItemEnumTwinSyncSse {
-  const factory RawStringItemEnumTwinSyncSse_Regular({
-    required final String regular,
-  }) = _$RawStringItemEnumTwinSyncSse_RegularImpl;
+  const factory RawStringItemEnumTwinSyncSse_Regular(
+          {required final String regular}) =
+      _$RawStringItemEnumTwinSyncSse_RegularImpl;
   const RawStringItemEnumTwinSyncSse_Regular._() : super._();
 
   String get regular;
@@ -238,9 +237,9 @@ abstract class RawStringItemEnumTwinSyncSse_Regular
 /// @nodoc
 abstract class _$$RawStringItemEnumTwinSyncSse_RawImplCopyWith<$Res> {
   factory _$$RawStringItemEnumTwinSyncSse_RawImplCopyWith(
-    _$RawStringItemEnumTwinSyncSse_RawImpl value,
-    $Res Function(_$RawStringItemEnumTwinSyncSse_RawImpl) then,
-  ) = __$$RawStringItemEnumTwinSyncSse_RawImplCopyWithImpl<$Res>;
+          _$RawStringItemEnumTwinSyncSse_RawImpl value,
+          $Res Function(_$RawStringItemEnumTwinSyncSse_RawImpl) then) =
+      __$$RawStringItemEnumTwinSyncSse_RawImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String type});
 }
@@ -251,23 +250,23 @@ class __$$RawStringItemEnumTwinSyncSse_RawImplCopyWithImpl<$Res>
         _$RawStringItemEnumTwinSyncSse_RawImpl>
     implements _$$RawStringItemEnumTwinSyncSse_RawImplCopyWith<$Res> {
   __$$RawStringItemEnumTwinSyncSse_RawImplCopyWithImpl(
-    _$RawStringItemEnumTwinSyncSse_RawImpl _value,
-    $Res Function(_$RawStringItemEnumTwinSyncSse_RawImpl) _then,
-  ) : super(_value, _then);
+      _$RawStringItemEnumTwinSyncSse_RawImpl _value,
+      $Res Function(_$RawStringItemEnumTwinSyncSse_RawImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of RawStringItemEnumTwinSyncSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? type = null}) {
-    return _then(
-      _$RawStringItemEnumTwinSyncSse_RawImpl(
-        type: null == type
-            ? _value.type
-            : type // ignore: cast_nullable_to_non_nullable
-                as String,
-      ),
-    );
+  $Res call({
+    Object? type = null,
+  }) {
+    return _then(_$RawStringItemEnumTwinSyncSse_RawImpl(
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 

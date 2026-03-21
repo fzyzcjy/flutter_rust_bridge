@@ -9,29 +9,21 @@ import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<BigInt> handleTypeAliasIdTwinRustAsyncSse({
-  required BigInt input,
-}) =>
+Future<BigInt> handleTypeAliasIdTwinRustAsyncSse({required BigInt input}) =>
     RustLib.instance.api
         .crateApiPseudoManualTypeAliasTwinRustAsyncSseHandleTypeAliasIdTwinRustAsyncSse(
-      input: input,
-    );
+            input: input);
 
-Future<BigInt> handleTypeNestAliasIdTwinRustAsyncSse({
-  required BigInt input,
-}) =>
+Future<BigInt> handleTypeNestAliasIdTwinRustAsyncSse({required BigInt input}) =>
     RustLib.instance.api
         .crateApiPseudoManualTypeAliasTwinRustAsyncSseHandleTypeNestAliasIdTwinRustAsyncSse(
-      input: input,
-    );
+            input: input);
 
-Future<TestModelTwinRustAsyncSse> handleTypeAliasModelTwinRustAsyncSse({
-  required BigInt input,
-}) =>
+Future<TestModelTwinRustAsyncSse> handleTypeAliasModelTwinRustAsyncSse(
+        {required BigInt input}) =>
     RustLib.instance.api
         .crateApiPseudoManualTypeAliasTwinRustAsyncSseHandleTypeAliasModelTwinRustAsyncSse(
-      input: input,
-    );
+            input: input);
 
 class TestModelTwinRustAsyncSse {
   final BigInt id;

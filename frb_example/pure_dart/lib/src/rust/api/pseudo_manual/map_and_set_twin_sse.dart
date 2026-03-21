@@ -22,65 +22,51 @@ Future<Set<int>> funcHashSetI32TwinSse({required Set<int> arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualMapAndSetTwinSseFuncHashSetI32TwinSse(arg: arg);
 
-Future<Map<String, String>> funcHashMapStringStringTwinSse({
-  required Map<String, String> arg,
-}) =>
+Future<Map<String, String>> funcHashMapStringStringTwinSse(
+        {required Map<String, String> arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualMapAndSetTwinSseFuncHashMapStringStringTwinSse(
-      arg: arg,
-    );
+            arg: arg);
 
-Future<Map<String, String>> funcHashMapStringStringHasherTwinSse({
-  required Map<String, String> arg,
-}) =>
+Future<Map<String, String>> funcHashMapStringStringHasherTwinSse(
+        {required Map<String, String> arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualMapAndSetTwinSseFuncHashMapStringStringHasherTwinSse(
-      arg: arg,
-    );
+            arg: arg);
 
 Future<Set<String>> funcHashSetStringTwinSse({required Set<String> arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualMapAndSetTwinSseFuncHashSetStringTwinSse(arg: arg);
 
-Future<Set<String>> funcHashSetStringHasherTwinSse({
-  required Set<String> arg,
-}) =>
+Future<Set<String>> funcHashSetStringHasherTwinSse(
+        {required Set<String> arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualMapAndSetTwinSseFuncHashSetStringHasherTwinSse(
-      arg: arg,
-    );
+            arg: arg);
 
-Future<Map<String, Uint8List>> funcHashMapStringBytesTwinSse({
-  required Map<String, Uint8List> arg,
-}) =>
+Future<Map<String, Uint8List>> funcHashMapStringBytesTwinSse(
+        {required Map<String, Uint8List> arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualMapAndSetTwinSseFuncHashMapStringBytesTwinSse(
-      arg: arg,
-    );
+            arg: arg);
 
-Future<Map<String, MySize>> funcHashMapStringStructTwinSse({
-  required Map<String, MySize> arg,
-}) =>
+Future<Map<String, MySize>> funcHashMapStringStructTwinSse(
+        {required Map<String, MySize> arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualMapAndSetTwinSseFuncHashMapStringStructTwinSse(
-      arg: arg,
-    );
+            arg: arg);
 
-Future<Map<String, EnumSimpleTwinSse>> funcHashMapStringSimpleEnumTwinSse({
-  required Map<String, EnumSimpleTwinSse> arg,
-}) =>
+Future<Map<String, EnumSimpleTwinSse>> funcHashMapStringSimpleEnumTwinSse(
+        {required Map<String, EnumSimpleTwinSse> arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualMapAndSetTwinSseFuncHashMapStringSimpleEnumTwinSse(
-      arg: arg,
-    );
+            arg: arg);
 
-Future<Map<String, KitchenSinkTwinSse>> funcHashMapStringComplexEnumTwinSse({
-  required Map<String, KitchenSinkTwinSse> arg,
-}) =>
+Future<Map<String, KitchenSinkTwinSse>> funcHashMapStringComplexEnumTwinSse(
+        {required Map<String, KitchenSinkTwinSse> arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualMapAndSetTwinSseFuncHashMapStringComplexEnumTwinSse(
-      arg: arg,
-    );
+            arg: arg);
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<CustomHasherTwinSse>>
 abstract class CustomHasherTwinSse implements RustOpaqueInterface {}

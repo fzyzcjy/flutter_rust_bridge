@@ -12,8 +12,7 @@ part of 'basic_twin_rust_async.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$BasicGeneralEnumTwinRustAsync {
@@ -61,10 +60,10 @@ mixin _$BasicGeneralEnumTwinRustAsync {
 /// @nodoc
 abstract class $BasicGeneralEnumTwinRustAsyncCopyWith<$Res> {
   factory $BasicGeneralEnumTwinRustAsyncCopyWith(
-    BasicGeneralEnumTwinRustAsync value,
-    $Res Function(BasicGeneralEnumTwinRustAsync) then,
-  ) = _$BasicGeneralEnumTwinRustAsyncCopyWithImpl<$Res,
-      BasicGeneralEnumTwinRustAsync>;
+          BasicGeneralEnumTwinRustAsync value,
+          $Res Function(BasicGeneralEnumTwinRustAsync) then) =
+      _$BasicGeneralEnumTwinRustAsyncCopyWithImpl<$Res,
+          BasicGeneralEnumTwinRustAsync>;
 }
 
 /// @nodoc
@@ -85,9 +84,9 @@ class _$BasicGeneralEnumTwinRustAsyncCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$BasicGeneralEnumTwinRustAsync_AppleImplCopyWith<$Res> {
   factory _$$BasicGeneralEnumTwinRustAsync_AppleImplCopyWith(
-    _$BasicGeneralEnumTwinRustAsync_AppleImpl value,
-    $Res Function(_$BasicGeneralEnumTwinRustAsync_AppleImpl) then,
-  ) = __$$BasicGeneralEnumTwinRustAsync_AppleImplCopyWithImpl<$Res>;
+          _$BasicGeneralEnumTwinRustAsync_AppleImpl value,
+          $Res Function(_$BasicGeneralEnumTwinRustAsync_AppleImpl) then) =
+      __$$BasicGeneralEnumTwinRustAsync_AppleImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String field});
 }
@@ -98,23 +97,23 @@ class __$$BasicGeneralEnumTwinRustAsync_AppleImplCopyWithImpl<$Res>
         _$BasicGeneralEnumTwinRustAsync_AppleImpl>
     implements _$$BasicGeneralEnumTwinRustAsync_AppleImplCopyWith<$Res> {
   __$$BasicGeneralEnumTwinRustAsync_AppleImplCopyWithImpl(
-    _$BasicGeneralEnumTwinRustAsync_AppleImpl _value,
-    $Res Function(_$BasicGeneralEnumTwinRustAsync_AppleImpl) _then,
-  ) : super(_value, _then);
+      _$BasicGeneralEnumTwinRustAsync_AppleImpl _value,
+      $Res Function(_$BasicGeneralEnumTwinRustAsync_AppleImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of BasicGeneralEnumTwinRustAsync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field = null}) {
-    return _then(
-      _$BasicGeneralEnumTwinRustAsync_AppleImpl(
-        field: null == field
-            ? _value.field
-            : field // ignore: cast_nullable_to_non_nullable
-                as String,
-      ),
-    );
+  $Res call({
+    Object? field = null,
+  }) {
+    return _then(_$BasicGeneralEnumTwinRustAsync_AppleImpl(
+      field: null == field
+          ? _value.field
+          : field // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -220,9 +219,9 @@ class _$BasicGeneralEnumTwinRustAsync_AppleImpl
 
 abstract class BasicGeneralEnumTwinRustAsync_Apple
     extends BasicGeneralEnumTwinRustAsync {
-  const factory BasicGeneralEnumTwinRustAsync_Apple({
-    required final String field,
-  }) = _$BasicGeneralEnumTwinRustAsync_AppleImpl;
+  const factory BasicGeneralEnumTwinRustAsync_Apple(
+          {required final String field}) =
+      _$BasicGeneralEnumTwinRustAsync_AppleImpl;
   const BasicGeneralEnumTwinRustAsync_Apple._() : super._();
 
   String get field;
@@ -238,9 +237,9 @@ abstract class BasicGeneralEnumTwinRustAsync_Apple
 /// @nodoc
 abstract class _$$BasicGeneralEnumTwinRustAsync_OrangeImplCopyWith<$Res> {
   factory _$$BasicGeneralEnumTwinRustAsync_OrangeImplCopyWith(
-    _$BasicGeneralEnumTwinRustAsync_OrangeImpl value,
-    $Res Function(_$BasicGeneralEnumTwinRustAsync_OrangeImpl) then,
-  ) = __$$BasicGeneralEnumTwinRustAsync_OrangeImplCopyWithImpl<$Res>;
+          _$BasicGeneralEnumTwinRustAsync_OrangeImpl value,
+          $Res Function(_$BasicGeneralEnumTwinRustAsync_OrangeImpl) then) =
+      __$$BasicGeneralEnumTwinRustAsync_OrangeImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -249,9 +248,9 @@ class __$$BasicGeneralEnumTwinRustAsync_OrangeImplCopyWithImpl<$Res>
         _$BasicGeneralEnumTwinRustAsync_OrangeImpl>
     implements _$$BasicGeneralEnumTwinRustAsync_OrangeImplCopyWith<$Res> {
   __$$BasicGeneralEnumTwinRustAsync_OrangeImplCopyWithImpl(
-    _$BasicGeneralEnumTwinRustAsync_OrangeImpl _value,
-    $Res Function(_$BasicGeneralEnumTwinRustAsync_OrangeImpl) _then,
-  ) : super(_value, _then);
+      _$BasicGeneralEnumTwinRustAsync_OrangeImpl _value,
+      $Res Function(_$BasicGeneralEnumTwinRustAsync_OrangeImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of BasicGeneralEnumTwinRustAsync
   /// with the given fields replaced by the non-null parameter values.

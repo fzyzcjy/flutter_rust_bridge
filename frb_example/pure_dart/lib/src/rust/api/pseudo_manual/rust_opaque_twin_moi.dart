@@ -18,8 +18,7 @@ Future<HideDataTwinMoi> createOpaqueTwinMoi() => RustLib.instance.api
 Future<HideDataTwinMoi?> createOptionOpaqueTwinMoi({HideDataTwinMoi? opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinMoiCreateOptionOpaqueTwinMoi(
-      opaque: opaque,
-    );
+            opaque: opaque);
 
 Future<EnumOpaqueTwinMoiArray5> createArrayOpaqueEnumTwinMoi() =>
     RustLib.instance.api
@@ -28,8 +27,7 @@ Future<EnumOpaqueTwinMoiArray5> createArrayOpaqueEnumTwinMoi() =>
 Future<String> runEnumOpaqueTwinMoi({required EnumOpaqueTwinMoi opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinMoiRunEnumOpaqueTwinMoi(
-      opaque: opaque,
-    );
+            opaque: opaque);
 
 Future<String> runOpaqueTwinMoi({required HideDataTwinMoi opaque}) =>
     RustLib.instance.api
@@ -38,8 +36,7 @@ Future<String> runOpaqueTwinMoi({required HideDataTwinMoi opaque}) =>
 Future<String> runOpaqueWithDelayTwinMoi({required HideDataTwinMoi opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinMoiRunOpaqueWithDelayTwinMoi(
-      opaque: opaque,
-    );
+            opaque: opaque);
 
 Future<HideDataTwinMoiArray2> opaqueArrayTwinMoi() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueTwinMoiOpaqueArrayTwinMoi();
@@ -65,14 +62,12 @@ Future<OpaqueNestedTwinMoi> createNestedOpaqueTwinMoi() => RustLib.instance.api
 Future<void> runNestedOpaqueTwinMoi({required OpaqueNestedTwinMoi opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinMoiRunNestedOpaqueTwinMoi(
-      opaque: opaque,
-    );
+            opaque: opaque);
 
 Future<String> unwrapRustOpaqueTwinMoi({required HideDataTwinMoi opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinMoiUnwrapRustOpaqueTwinMoi(
-      opaque: opaque,
-    );
+            opaque: opaque);
 
 /// Function to check the code generator.
 /// FrbOpaqueReturn must be only return type.
@@ -117,16 +112,21 @@ abstract class I16 implements RustOpaqueInterface {}
 sealed class EnumOpaqueTwinMoi with _$EnumOpaqueTwinMoi {
   const EnumOpaqueTwinMoi._();
 
-  const factory EnumOpaqueTwinMoi.struct(HideDataTwinMoi field0) =
-      EnumOpaqueTwinMoi_Struct;
-  const factory EnumOpaqueTwinMoi.primitive(I16 field0) =
-      EnumOpaqueTwinMoi_Primitive;
-  const factory EnumOpaqueTwinMoi.traitObj(BoxDartDebugTwinMoi field0) =
-      EnumOpaqueTwinMoi_TraitObj;
-  const factory EnumOpaqueTwinMoi.mutex(MutexHideDataTwinMoi field0) =
-      EnumOpaqueTwinMoi_Mutex;
-  const factory EnumOpaqueTwinMoi.rwLock(RwLockHideDataTwinMoi field0) =
-      EnumOpaqueTwinMoi_RwLock;
+  const factory EnumOpaqueTwinMoi.struct(
+    HideDataTwinMoi field0,
+  ) = EnumOpaqueTwinMoi_Struct;
+  const factory EnumOpaqueTwinMoi.primitive(
+    I16 field0,
+  ) = EnumOpaqueTwinMoi_Primitive;
+  const factory EnumOpaqueTwinMoi.traitObj(
+    BoxDartDebugTwinMoi field0,
+  ) = EnumOpaqueTwinMoi_TraitObj;
+  const factory EnumOpaqueTwinMoi.mutex(
+    MutexHideDataTwinMoi field0,
+  ) = EnumOpaqueTwinMoi_Mutex;
+  const factory EnumOpaqueTwinMoi.rwLock(
+    RwLockHideDataTwinMoi field0,
+  ) = EnumOpaqueTwinMoi_RwLock;
   const factory EnumOpaqueTwinMoi.nothing() = EnumOpaqueTwinMoi_Nothing;
 }
 
@@ -150,7 +150,10 @@ class OpaqueNestedTwinMoi {
   final HideDataTwinMoi first;
   final HideDataTwinMoi second;
 
-  const OpaqueNestedTwinMoi({required this.first, required this.second});
+  const OpaqueNestedTwinMoi({
+    required this.first,
+    required this.second,
+  });
 
   @override
   int get hashCode => first.hashCode ^ second.hashCode;

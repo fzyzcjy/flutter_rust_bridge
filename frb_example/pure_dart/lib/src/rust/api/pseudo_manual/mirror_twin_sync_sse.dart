@@ -19,8 +19,7 @@ ApplicationSettings getFallibleAppSettingsTwinSyncSse() => RustLib.instance.api
 bool isAppEmbeddedTwinSyncSse({required ApplicationSettings appSettings}) =>
     RustLib.instance.api
         .crateApiPseudoManualMirrorTwinSyncSseIsAppEmbeddedTwinSyncSse(
-      appSettings: appSettings,
-    );
+            appSettings: appSettings);
 
 Stream<ApplicationSettings> appSettingsStreamTwinSyncSse() =>
     RustLib.instance.api
@@ -44,19 +43,13 @@ ApplicationMessage getMessageTwinSyncSse() => RustLib.instance.api
 Numbers repeatNumberTwinSyncSse({required int num, required BigInt times}) =>
     RustLib.instance.api
         .crateApiPseudoManualMirrorTwinSyncSseRepeatNumberTwinSyncSse(
-      num: num,
-      times: times,
-    );
+            num: num, times: times);
 
-Sequences repeatSequenceTwinSyncSse({
-  required int seq,
-  required BigInt times,
-}) =>
+Sequences repeatSequenceTwinSyncSse(
+        {required int seq, required BigInt times}) =>
     RustLib.instance.api
         .crateApiPseudoManualMirrorTwinSyncSseRepeatSequenceTwinSyncSse(
-      seq: seq,
-      times: times,
-    );
+            seq: seq, times: times);
 
 int? firstNumberTwinSyncSse({required Numbers nums}) => RustLib.instance.api
     .crateApiPseudoManualMirrorTwinSyncSseFirstNumberTwinSyncSse(nums: nums);
@@ -71,13 +64,11 @@ NestedRawStringMirrored testNestedRawStringMirroredTwinSyncSse() => RustLib
     .instance.api
     .crateApiPseudoManualMirrorTwinSyncSseTestNestedRawStringMirroredTwinSyncSse();
 
-RawStringEnumMirrored testRawStringEnumMirroredTwinSyncSse({
-  required bool nested,
-}) =>
+RawStringEnumMirrored testRawStringEnumMirroredTwinSyncSse(
+        {required bool nested}) =>
     RustLib.instance.api
         .crateApiPseudoManualMirrorTwinSyncSseTestRawStringEnumMirroredTwinSyncSse(
-      nested: nested,
-    );
+            nested: nested);
 
 ListOfNestedRawStringMirrored testListOfRawNestedStringMirroredTwinSyncSse() =>
     RustLib.instance.api
@@ -125,7 +116,9 @@ Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinSyncSse() => RustLib
 class AnotherTwinSyncSse {
   final String a;
 
-  const AnotherTwinSyncSse({required this.a});
+  const AnotherTwinSyncSse({
+    required this.a,
+  });
 
   @override
   int get hashCode => a.hashCode;

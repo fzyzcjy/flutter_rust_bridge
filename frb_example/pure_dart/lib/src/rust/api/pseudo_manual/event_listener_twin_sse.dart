@@ -19,15 +19,11 @@ Future<Stream<EventTwinSse>> registerEventListenerTwinSse() =>
 Future<void> closeEventListenerTwinSse() => RustLib.instance.api
     .crateApiPseudoManualEventListenerTwinSseCloseEventListenerTwinSse();
 
-Future<void> createEventTwinSse({
-  required String address,
-  required String payload,
-}) =>
+Future<void> createEventTwinSse(
+        {required String address, required String payload}) =>
     RustLib.instance.api
         .crateApiPseudoManualEventListenerTwinSseCreateEventTwinSse(
-      address: address,
-      payload: payload,
-    );
+            address: address, payload: payload);
 
 @freezed
 sealed class EventTwinSse with _$EventTwinSse {

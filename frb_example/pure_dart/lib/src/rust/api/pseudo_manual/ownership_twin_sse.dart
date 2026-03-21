@@ -28,16 +28,17 @@ Future<List<String>> borrowSliceStringTwinSse({required List<String> arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualOwnershipTwinSseBorrowSliceStringTwinSse(arg: arg);
 
-Future<SimpleStructForBorrowTwinSse> borrowStructTwinSse({
-  required SimpleStructForBorrowTwinSse arg,
-}) =>
+Future<SimpleStructForBorrowTwinSse> borrowStructTwinSse(
+        {required SimpleStructForBorrowTwinSse arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualOwnershipTwinSseBorrowStructTwinSse(arg: arg);
 
 class SimpleStructForBorrowTwinSse {
   final String one;
 
-  const SimpleStructForBorrowTwinSse({required this.one});
+  const SimpleStructForBorrowTwinSse({
+    required this.one,
+  });
 
   @override
   int get hashCode => one.hashCode;

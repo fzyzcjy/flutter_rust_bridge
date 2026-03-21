@@ -26,23 +26,15 @@ Future<DateTime?> optionalEmptyDatetimeUtcTwinNormal({DateTime? d}) =>
 Future<Duration> durationTwinNormal({required Duration d}) =>
     RustLib.instance.api.crateApiChronoTypeDurationTwinNormal(d: d);
 
-Future<List<Duration>> handleTimestampsTwinNormal({
-  required List<DateTime> timestamps,
-  required DateTime epoch,
-}) =>
+Future<List<Duration>> handleTimestampsTwinNormal(
+        {required List<DateTime> timestamps, required DateTime epoch}) =>
     RustLib.instance.api.crateApiChronoTypeHandleTimestampsTwinNormal(
-      timestamps: timestamps,
-      epoch: epoch,
-    );
+        timestamps: timestamps, epoch: epoch);
 
-Future<List<DateTime>> handleDurationsTwinNormal({
-  required List<Duration> durations,
-  required DateTime since,
-}) =>
+Future<List<DateTime>> handleDurationsTwinNormal(
+        {required List<Duration> durations, required DateTime since}) =>
     RustLib.instance.api.crateApiChronoTypeHandleDurationsTwinNormal(
-      durations: durations,
-      since: since,
-    );
+        durations: durations, since: since);
 
 Future<TestChronoTwinNormal> testChronoTwinNormal() =>
     RustLib.instance.api.crateApiChronoTypeTestChronoTwinNormal();
@@ -50,12 +42,10 @@ Future<TestChronoTwinNormal> testChronoTwinNormal() =>
 Future<TestChronoTwinNormal> testPreciseChronoTwinNormal() =>
     RustLib.instance.api.crateApiChronoTypeTestPreciseChronoTwinNormal();
 
-Future<Duration> howLongDoesItTakeTwinNormal({
-  required FeatureChronoTwinNormal mine,
-}) =>
-    RustLib.instance.api.crateApiChronoTypeHowLongDoesItTakeTwinNormal(
-      mine: mine,
-    );
+Future<Duration> howLongDoesItTakeTwinNormal(
+        {required FeatureChronoTwinNormal mine}) =>
+    RustLib.instance.api
+        .crateApiChronoTypeHowLongDoesItTakeTwinNormal(mine: mine);
 
 class FeatureChronoTwinNormal {
   final DateTime utc;
@@ -90,7 +80,11 @@ class TestChronoTwinNormal {
   final DateTime? dt2;
   final Duration? du;
 
-  const TestChronoTwinNormal({this.dt, this.dt2, this.du});
+  const TestChronoTwinNormal({
+    this.dt,
+    this.dt2,
+    this.du,
+  });
 
   @override
   int get hashCode => dt.hashCode ^ dt2.hashCode ^ du.hashCode;

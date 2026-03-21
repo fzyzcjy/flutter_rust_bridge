@@ -12,8 +12,7 @@ part of 'rust_auto_opaque_twin_rust_async.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$EnumWithGoodAndOpaqueTwinRustAsync {
@@ -63,10 +62,10 @@ mixin _$EnumWithGoodAndOpaqueTwinRustAsync {
 /// @nodoc
 abstract class $EnumWithGoodAndOpaqueTwinRustAsyncCopyWith<$Res> {
   factory $EnumWithGoodAndOpaqueTwinRustAsyncCopyWith(
-    EnumWithGoodAndOpaqueTwinRustAsync value,
-    $Res Function(EnumWithGoodAndOpaqueTwinRustAsync) then,
-  ) = _$EnumWithGoodAndOpaqueTwinRustAsyncCopyWithImpl<$Res,
-      EnumWithGoodAndOpaqueTwinRustAsync>;
+          EnumWithGoodAndOpaqueTwinRustAsync value,
+          $Res Function(EnumWithGoodAndOpaqueTwinRustAsync) then) =
+      _$EnumWithGoodAndOpaqueTwinRustAsyncCopyWithImpl<$Res,
+          EnumWithGoodAndOpaqueTwinRustAsync>;
 }
 
 /// @nodoc
@@ -87,9 +86,9 @@ class _$EnumWithGoodAndOpaqueTwinRustAsyncCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$EnumWithGoodAndOpaqueTwinRustAsync_GoodImplCopyWith<$Res> {
   factory _$$EnumWithGoodAndOpaqueTwinRustAsync_GoodImplCopyWith(
-    _$EnumWithGoodAndOpaqueTwinRustAsync_GoodImpl value,
-    $Res Function(_$EnumWithGoodAndOpaqueTwinRustAsync_GoodImpl) then,
-  ) = __$$EnumWithGoodAndOpaqueTwinRustAsync_GoodImplCopyWithImpl<$Res>;
+          _$EnumWithGoodAndOpaqueTwinRustAsync_GoodImpl value,
+          $Res Function(_$EnumWithGoodAndOpaqueTwinRustAsync_GoodImpl) then) =
+      __$$EnumWithGoodAndOpaqueTwinRustAsync_GoodImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String field0});
 }
@@ -100,23 +99,23 @@ class __$$EnumWithGoodAndOpaqueTwinRustAsync_GoodImplCopyWithImpl<$Res>
         _$EnumWithGoodAndOpaqueTwinRustAsync_GoodImpl>
     implements _$$EnumWithGoodAndOpaqueTwinRustAsync_GoodImplCopyWith<$Res> {
   __$$EnumWithGoodAndOpaqueTwinRustAsync_GoodImplCopyWithImpl(
-    _$EnumWithGoodAndOpaqueTwinRustAsync_GoodImpl _value,
-    $Res Function(_$EnumWithGoodAndOpaqueTwinRustAsync_GoodImpl) _then,
-  ) : super(_value, _then);
+      _$EnumWithGoodAndOpaqueTwinRustAsync_GoodImpl _value,
+      $Res Function(_$EnumWithGoodAndOpaqueTwinRustAsync_GoodImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumWithGoodAndOpaqueTwinRustAsync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$EnumWithGoodAndOpaqueTwinRustAsync_GoodImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as String,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$EnumWithGoodAndOpaqueTwinRustAsync_GoodImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -241,9 +240,9 @@ abstract class EnumWithGoodAndOpaqueTwinRustAsync_Good
 /// @nodoc
 abstract class _$$EnumWithGoodAndOpaqueTwinRustAsync_OpaqueImplCopyWith<$Res> {
   factory _$$EnumWithGoodAndOpaqueTwinRustAsync_OpaqueImplCopyWith(
-    _$EnumWithGoodAndOpaqueTwinRustAsync_OpaqueImpl value,
-    $Res Function(_$EnumWithGoodAndOpaqueTwinRustAsync_OpaqueImpl) then,
-  ) = __$$EnumWithGoodAndOpaqueTwinRustAsync_OpaqueImplCopyWithImpl<$Res>;
+          _$EnumWithGoodAndOpaqueTwinRustAsync_OpaqueImpl value,
+          $Res Function(_$EnumWithGoodAndOpaqueTwinRustAsync_OpaqueImpl) then) =
+      __$$EnumWithGoodAndOpaqueTwinRustAsync_OpaqueImplCopyWithImpl<$Res>;
   @useResult
   $Res call({NonCloneSimpleTwinRustAsync field0});
 }
@@ -254,23 +253,23 @@ class __$$EnumWithGoodAndOpaqueTwinRustAsync_OpaqueImplCopyWithImpl<$Res>
         _$EnumWithGoodAndOpaqueTwinRustAsync_OpaqueImpl>
     implements _$$EnumWithGoodAndOpaqueTwinRustAsync_OpaqueImplCopyWith<$Res> {
   __$$EnumWithGoodAndOpaqueTwinRustAsync_OpaqueImplCopyWithImpl(
-    _$EnumWithGoodAndOpaqueTwinRustAsync_OpaqueImpl _value,
-    $Res Function(_$EnumWithGoodAndOpaqueTwinRustAsync_OpaqueImpl) _then,
-  ) : super(_value, _then);
+      _$EnumWithGoodAndOpaqueTwinRustAsync_OpaqueImpl _value,
+      $Res Function(_$EnumWithGoodAndOpaqueTwinRustAsync_OpaqueImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumWithGoodAndOpaqueTwinRustAsync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$EnumWithGoodAndOpaqueTwinRustAsync_OpaqueImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as NonCloneSimpleTwinRustAsync,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$EnumWithGoodAndOpaqueTwinRustAsync_OpaqueImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as NonCloneSimpleTwinRustAsync,
+    ));
   }
 }
 
@@ -380,8 +379,8 @@ class _$EnumWithGoodAndOpaqueTwinRustAsync_OpaqueImpl
 abstract class EnumWithGoodAndOpaqueTwinRustAsync_Opaque
     extends EnumWithGoodAndOpaqueTwinRustAsync {
   const factory EnumWithGoodAndOpaqueTwinRustAsync_Opaque(
-    final NonCloneSimpleTwinRustAsync field0,
-  ) = _$EnumWithGoodAndOpaqueTwinRustAsync_OpaqueImpl;
+          final NonCloneSimpleTwinRustAsync field0) =
+      _$EnumWithGoodAndOpaqueTwinRustAsync_OpaqueImpl;
   const EnumWithGoodAndOpaqueTwinRustAsync_Opaque._() : super._();
 
   @override

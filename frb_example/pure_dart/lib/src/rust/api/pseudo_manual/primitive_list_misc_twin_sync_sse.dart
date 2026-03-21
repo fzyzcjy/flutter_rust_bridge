@@ -8,13 +8,11 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-VecOfPrimitivePackTwinSyncSse handleVecOfPrimitiveTwinSyncSse({
-  required int n,
-}) =>
+VecOfPrimitivePackTwinSyncSse handleVecOfPrimitiveTwinSyncSse(
+        {required int n}) =>
     RustLib.instance.api
         .crateApiPseudoManualPrimitiveListMiscTwinSyncSseHandleVecOfPrimitiveTwinSyncSse(
-      n: n,
-    );
+            n: n);
 
 class VecOfPrimitivePackTwinSyncSse {
   final Int8List int8List;

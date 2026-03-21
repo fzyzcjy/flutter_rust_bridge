@@ -12,8 +12,7 @@ part of 'rust_auto_opaque_twin_moi.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$EnumWithGoodAndOpaqueTwinMoi {
@@ -61,10 +60,10 @@ mixin _$EnumWithGoodAndOpaqueTwinMoi {
 /// @nodoc
 abstract class $EnumWithGoodAndOpaqueTwinMoiCopyWith<$Res> {
   factory $EnumWithGoodAndOpaqueTwinMoiCopyWith(
-    EnumWithGoodAndOpaqueTwinMoi value,
-    $Res Function(EnumWithGoodAndOpaqueTwinMoi) then,
-  ) = _$EnumWithGoodAndOpaqueTwinMoiCopyWithImpl<$Res,
-      EnumWithGoodAndOpaqueTwinMoi>;
+          EnumWithGoodAndOpaqueTwinMoi value,
+          $Res Function(EnumWithGoodAndOpaqueTwinMoi) then) =
+      _$EnumWithGoodAndOpaqueTwinMoiCopyWithImpl<$Res,
+          EnumWithGoodAndOpaqueTwinMoi>;
 }
 
 /// @nodoc
@@ -85,9 +84,9 @@ class _$EnumWithGoodAndOpaqueTwinMoiCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$EnumWithGoodAndOpaqueTwinMoi_GoodImplCopyWith<$Res> {
   factory _$$EnumWithGoodAndOpaqueTwinMoi_GoodImplCopyWith(
-    _$EnumWithGoodAndOpaqueTwinMoi_GoodImpl value,
-    $Res Function(_$EnumWithGoodAndOpaqueTwinMoi_GoodImpl) then,
-  ) = __$$EnumWithGoodAndOpaqueTwinMoi_GoodImplCopyWithImpl<$Res>;
+          _$EnumWithGoodAndOpaqueTwinMoi_GoodImpl value,
+          $Res Function(_$EnumWithGoodAndOpaqueTwinMoi_GoodImpl) then) =
+      __$$EnumWithGoodAndOpaqueTwinMoi_GoodImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String field0});
 }
@@ -98,23 +97,23 @@ class __$$EnumWithGoodAndOpaqueTwinMoi_GoodImplCopyWithImpl<$Res>
         _$EnumWithGoodAndOpaqueTwinMoi_GoodImpl>
     implements _$$EnumWithGoodAndOpaqueTwinMoi_GoodImplCopyWith<$Res> {
   __$$EnumWithGoodAndOpaqueTwinMoi_GoodImplCopyWithImpl(
-    _$EnumWithGoodAndOpaqueTwinMoi_GoodImpl _value,
-    $Res Function(_$EnumWithGoodAndOpaqueTwinMoi_GoodImpl) _then,
-  ) : super(_value, _then);
+      _$EnumWithGoodAndOpaqueTwinMoi_GoodImpl _value,
+      $Res Function(_$EnumWithGoodAndOpaqueTwinMoi_GoodImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumWithGoodAndOpaqueTwinMoi
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$EnumWithGoodAndOpaqueTwinMoi_GoodImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as String,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$EnumWithGoodAndOpaqueTwinMoi_GoodImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -236,9 +235,9 @@ abstract class EnumWithGoodAndOpaqueTwinMoi_Good
 /// @nodoc
 abstract class _$$EnumWithGoodAndOpaqueTwinMoi_OpaqueImplCopyWith<$Res> {
   factory _$$EnumWithGoodAndOpaqueTwinMoi_OpaqueImplCopyWith(
-    _$EnumWithGoodAndOpaqueTwinMoi_OpaqueImpl value,
-    $Res Function(_$EnumWithGoodAndOpaqueTwinMoi_OpaqueImpl) then,
-  ) = __$$EnumWithGoodAndOpaqueTwinMoi_OpaqueImplCopyWithImpl<$Res>;
+          _$EnumWithGoodAndOpaqueTwinMoi_OpaqueImpl value,
+          $Res Function(_$EnumWithGoodAndOpaqueTwinMoi_OpaqueImpl) then) =
+      __$$EnumWithGoodAndOpaqueTwinMoi_OpaqueImplCopyWithImpl<$Res>;
   @useResult
   $Res call({NonCloneSimpleTwinMoi field0});
 }
@@ -249,23 +248,23 @@ class __$$EnumWithGoodAndOpaqueTwinMoi_OpaqueImplCopyWithImpl<$Res>
         _$EnumWithGoodAndOpaqueTwinMoi_OpaqueImpl>
     implements _$$EnumWithGoodAndOpaqueTwinMoi_OpaqueImplCopyWith<$Res> {
   __$$EnumWithGoodAndOpaqueTwinMoi_OpaqueImplCopyWithImpl(
-    _$EnumWithGoodAndOpaqueTwinMoi_OpaqueImpl _value,
-    $Res Function(_$EnumWithGoodAndOpaqueTwinMoi_OpaqueImpl) _then,
-  ) : super(_value, _then);
+      _$EnumWithGoodAndOpaqueTwinMoi_OpaqueImpl _value,
+      $Res Function(_$EnumWithGoodAndOpaqueTwinMoi_OpaqueImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumWithGoodAndOpaqueTwinMoi
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$EnumWithGoodAndOpaqueTwinMoi_OpaqueImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as NonCloneSimpleTwinMoi,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$EnumWithGoodAndOpaqueTwinMoi_OpaqueImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as NonCloneSimpleTwinMoi,
+    ));
   }
 }
 
@@ -370,8 +369,8 @@ class _$EnumWithGoodAndOpaqueTwinMoi_OpaqueImpl
 abstract class EnumWithGoodAndOpaqueTwinMoi_Opaque
     extends EnumWithGoodAndOpaqueTwinMoi {
   const factory EnumWithGoodAndOpaqueTwinMoi_Opaque(
-    final NonCloneSimpleTwinMoi field0,
-  ) = _$EnumWithGoodAndOpaqueTwinMoi_OpaqueImpl;
+          final NonCloneSimpleTwinMoi field0) =
+      _$EnumWithGoodAndOpaqueTwinMoi_OpaqueImpl;
   const EnumWithGoodAndOpaqueTwinMoi_Opaque._() : super._();
 
   @override

@@ -14,87 +14,68 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `build_hasher`, `clone`, `fmt`, `hash_one`
 // These functions are ignored (category: IgnoreBecauseOwnerTyShouldIgnore): `default`
 
-Future<Map<int, int>> funcHashMapI32I32TwinRustAsyncSse({
-  required Map<int, int> arg,
-}) =>
+Future<Map<int, int>> funcHashMapI32I32TwinRustAsyncSse(
+        {required Map<int, int> arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualMapAndSetTwinRustAsyncSseFuncHashMapI32I32TwinRustAsyncSse(
-      arg: arg,
-    );
+            arg: arg);
 
-Future<Set<int>> funcHashSetI32TwinRustAsyncSse({
-  required Set<int> arg,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMapAndSetTwinRustAsyncSseFuncHashSetI32TwinRustAsyncSse(
-      arg: arg,
-    );
+Future<
+    Set<
+        int>> funcHashSetI32TwinRustAsyncSse({required Set<int> arg}) => RustLib
+    .instance.api
+    .crateApiPseudoManualMapAndSetTwinRustAsyncSseFuncHashSetI32TwinRustAsyncSse(
+        arg: arg);
 
-Future<Map<String, String>> funcHashMapStringStringTwinRustAsyncSse({
-  required Map<String, String> arg,
-}) =>
+Future<Map<String, String>> funcHashMapStringStringTwinRustAsyncSse(
+        {required Map<String, String> arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualMapAndSetTwinRustAsyncSseFuncHashMapStringStringTwinRustAsyncSse(
-      arg: arg,
-    );
+            arg: arg);
 
-Future<Map<String, String>> funcHashMapStringStringHasherTwinRustAsyncSse({
-  required Map<String, String> arg,
-}) =>
+Future<Map<String, String>> funcHashMapStringStringHasherTwinRustAsyncSse(
+        {required Map<String, String> arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualMapAndSetTwinRustAsyncSseFuncHashMapStringStringHasherTwinRustAsyncSse(
-      arg: arg,
-    );
+            arg: arg);
 
-Future<Set<String>> funcHashSetStringTwinRustAsyncSse({
-  required Set<String> arg,
-}) =>
+Future<Set<String>> funcHashSetStringTwinRustAsyncSse(
+        {required Set<String> arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualMapAndSetTwinRustAsyncSseFuncHashSetStringTwinRustAsyncSse(
-      arg: arg,
-    );
+            arg: arg);
 
-Future<Set<String>> funcHashSetStringHasherTwinRustAsyncSse({
-  required Set<String> arg,
-}) =>
+Future<Set<String>> funcHashSetStringHasherTwinRustAsyncSse(
+        {required Set<String> arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualMapAndSetTwinRustAsyncSseFuncHashSetStringHasherTwinRustAsyncSse(
-      arg: arg,
-    );
+            arg: arg);
 
-Future<Map<String, Uint8List>> funcHashMapStringBytesTwinRustAsyncSse({
-  required Map<String, Uint8List> arg,
-}) =>
+Future<Map<String, Uint8List>> funcHashMapStringBytesTwinRustAsyncSse(
+        {required Map<String, Uint8List> arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualMapAndSetTwinRustAsyncSseFuncHashMapStringBytesTwinRustAsyncSse(
-      arg: arg,
-    );
+            arg: arg);
 
-Future<Map<String, MySize>> funcHashMapStringStructTwinRustAsyncSse({
-  required Map<String, MySize> arg,
-}) =>
+Future<Map<String, MySize>> funcHashMapStringStructTwinRustAsyncSse(
+        {required Map<String, MySize> arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualMapAndSetTwinRustAsyncSseFuncHashMapStringStructTwinRustAsyncSse(
-      arg: arg,
-    );
+            arg: arg);
 
 Future<Map<String, EnumSimpleTwinRustAsyncSse>>
-    funcHashMapStringSimpleEnumTwinRustAsyncSse({
-  required Map<String, EnumSimpleTwinRustAsyncSse> arg,
-}) =>
+    funcHashMapStringSimpleEnumTwinRustAsyncSse(
+            {required Map<String, EnumSimpleTwinRustAsyncSse> arg}) =>
         RustLib.instance.api
             .crateApiPseudoManualMapAndSetTwinRustAsyncSseFuncHashMapStringSimpleEnumTwinRustAsyncSse(
-          arg: arg,
-        );
+                arg: arg);
 
 Future<Map<String, KitchenSinkTwinRustAsyncSse>>
-    funcHashMapStringComplexEnumTwinRustAsyncSse({
-  required Map<String, KitchenSinkTwinRustAsyncSse> arg,
-}) =>
+    funcHashMapStringComplexEnumTwinRustAsyncSse(
+            {required Map<String, KitchenSinkTwinRustAsyncSse> arg}) =>
         RustLib.instance.api
             .crateApiPseudoManualMapAndSetTwinRustAsyncSseFuncHashMapStringComplexEnumTwinRustAsyncSse(
-          arg: arg,
-        );
+                arg: arg);
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<CustomHasherTwinRustAsyncSse>>
 abstract class CustomHasherTwinRustAsyncSse implements RustOpaqueInterface {}

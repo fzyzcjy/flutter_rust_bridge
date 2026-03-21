@@ -13,8 +13,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<String> borrowStringTwinRustAsync({required String arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualOwnershipTwinRustAsyncBorrowStringTwinRustAsync(
-      arg: arg,
-    );
+            arg: arg);
 
 Future<String> borrowStrTwinRustAsync({required String arg}) => RustLib
     .instance.api
@@ -26,29 +25,26 @@ Future<int> borrowI32TwinRustAsync({required int arg}) => RustLib.instance.api
 Future<Uint8List> borrowSliceU8TwinRustAsync({required List<int> arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualOwnershipTwinRustAsyncBorrowSliceU8TwinRustAsync(
-      arg: arg,
-    );
+            arg: arg);
 
-Future<List<String>> borrowSliceStringTwinRustAsync({
-  required List<String> arg,
-}) =>
+Future<List<String>> borrowSliceStringTwinRustAsync(
+        {required List<String> arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualOwnershipTwinRustAsyncBorrowSliceStringTwinRustAsync(
-      arg: arg,
-    );
+            arg: arg);
 
-Future<SimpleStructForBorrowTwinRustAsync> borrowStructTwinRustAsync({
-  required SimpleStructForBorrowTwinRustAsync arg,
-}) =>
+Future<SimpleStructForBorrowTwinRustAsync> borrowStructTwinRustAsync(
+        {required SimpleStructForBorrowTwinRustAsync arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualOwnershipTwinRustAsyncBorrowStructTwinRustAsync(
-      arg: arg,
-    );
+            arg: arg);
 
 class SimpleStructForBorrowTwinRustAsync {
   final String one;
 
-  const SimpleStructForBorrowTwinRustAsync({required this.one});
+  const SimpleStructForBorrowTwinRustAsync({
+    required this.one,
+  });
 
   @override
   int get hashCode => one.hashCode;

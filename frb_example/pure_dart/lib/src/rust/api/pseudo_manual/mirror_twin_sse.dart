@@ -19,8 +19,7 @@ Future<ApplicationSettings> getFallibleAppSettingsTwinSse() =>
 
 Future<bool> isAppEmbeddedTwinSse({required ApplicationSettings appSettings}) =>
     RustLib.instance.api.crateApiPseudoManualMirrorTwinSseIsAppEmbeddedTwinSse(
-      appSettings: appSettings,
-    );
+        appSettings: appSettings);
 
 Stream<ApplicationSettings> appSettingsStreamTwinSse() => RustLib.instance.api
     .crateApiPseudoManualMirrorTwinSseAppSettingsStreamTwinSse();
@@ -39,23 +38,15 @@ Stream<(ApplicationSettings, RawStringEnumMirrored)>
 Future<ApplicationMessage> getMessageTwinSse() =>
     RustLib.instance.api.crateApiPseudoManualMirrorTwinSseGetMessageTwinSse();
 
-Future<Numbers> repeatNumberTwinSse({
-  required int num,
-  required BigInt times,
-}) =>
+Future<Numbers> repeatNumberTwinSse(
+        {required int num, required BigInt times}) =>
     RustLib.instance.api.crateApiPseudoManualMirrorTwinSseRepeatNumberTwinSse(
-      num: num,
-      times: times,
-    );
+        num: num, times: times);
 
-Future<Sequences> repeatSequenceTwinSse({
-  required int seq,
-  required BigInt times,
-}) =>
+Future<Sequences> repeatSequenceTwinSse(
+        {required int seq, required BigInt times}) =>
     RustLib.instance.api.crateApiPseudoManualMirrorTwinSseRepeatSequenceTwinSse(
-      seq: seq,
-      times: times,
-    );
+        seq: seq, times: times);
 
 Future<int?> firstNumberTwinSse({required Numbers nums}) => RustLib.instance.api
     .crateApiPseudoManualMirrorTwinSseFirstNumberTwinSse(nums: nums);
@@ -71,13 +62,11 @@ Future<NestedRawStringMirrored> testNestedRawStringMirroredTwinSse() =>
     RustLib.instance.api
         .crateApiPseudoManualMirrorTwinSseTestNestedRawStringMirroredTwinSse();
 
-Future<RawStringEnumMirrored> testRawStringEnumMirroredTwinSse({
-  required bool nested,
-}) =>
+Future<RawStringEnumMirrored> testRawStringEnumMirroredTwinSse(
+        {required bool nested}) =>
     RustLib.instance.api
         .crateApiPseudoManualMirrorTwinSseTestRawStringEnumMirroredTwinSse(
-      nested: nested,
-    );
+            nested: nested);
 
 Future<ListOfNestedRawStringMirrored>
     testListOfRawNestedStringMirroredTwinSse() => RustLib.instance.api
@@ -126,7 +115,9 @@ Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinSse() =>
 class AnotherTwinSse {
   final String a;
 
-  const AnotherTwinSse({required this.a});
+  const AnotherTwinSse({
+    required this.a,
+  });
 
   @override
   int get hashCode => a.hashCode;

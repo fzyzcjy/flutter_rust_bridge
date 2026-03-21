@@ -12,8 +12,7 @@ part of 'enumeration_twin_rust_async_sse.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$DistanceTwinRustAsyncSse {
@@ -59,10 +58,9 @@ mixin _$DistanceTwinRustAsyncSse {
 
 /// @nodoc
 abstract class $DistanceTwinRustAsyncSseCopyWith<$Res> {
-  factory $DistanceTwinRustAsyncSseCopyWith(
-    DistanceTwinRustAsyncSse value,
-    $Res Function(DistanceTwinRustAsyncSse) then,
-  ) = _$DistanceTwinRustAsyncSseCopyWithImpl<$Res, DistanceTwinRustAsyncSse>;
+  factory $DistanceTwinRustAsyncSseCopyWith(DistanceTwinRustAsyncSse value,
+          $Res Function(DistanceTwinRustAsyncSse) then) =
+      _$DistanceTwinRustAsyncSseCopyWithImpl<$Res, DistanceTwinRustAsyncSse>;
 }
 
 /// @nodoc
@@ -83,9 +81,9 @@ class _$DistanceTwinRustAsyncSseCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$DistanceTwinRustAsyncSse_UnknownImplCopyWith<$Res> {
   factory _$$DistanceTwinRustAsyncSse_UnknownImplCopyWith(
-    _$DistanceTwinRustAsyncSse_UnknownImpl value,
-    $Res Function(_$DistanceTwinRustAsyncSse_UnknownImpl) then,
-  ) = __$$DistanceTwinRustAsyncSse_UnknownImplCopyWithImpl<$Res>;
+          _$DistanceTwinRustAsyncSse_UnknownImpl value,
+          $Res Function(_$DistanceTwinRustAsyncSse_UnknownImpl) then) =
+      __$$DistanceTwinRustAsyncSse_UnknownImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -94,9 +92,9 @@ class __$$DistanceTwinRustAsyncSse_UnknownImplCopyWithImpl<$Res>
         _$DistanceTwinRustAsyncSse_UnknownImpl>
     implements _$$DistanceTwinRustAsyncSse_UnknownImplCopyWith<$Res> {
   __$$DistanceTwinRustAsyncSse_UnknownImplCopyWithImpl(
-    _$DistanceTwinRustAsyncSse_UnknownImpl _value,
-    $Res Function(_$DistanceTwinRustAsyncSse_UnknownImpl) _then,
-  ) : super(_value, _then);
+      _$DistanceTwinRustAsyncSse_UnknownImpl _value,
+      $Res Function(_$DistanceTwinRustAsyncSse_UnknownImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of DistanceTwinRustAsyncSse
   /// with the given fields replaced by the non-null parameter values.
@@ -196,9 +194,9 @@ abstract class DistanceTwinRustAsyncSse_Unknown
 /// @nodoc
 abstract class _$$DistanceTwinRustAsyncSse_MapImplCopyWith<$Res> {
   factory _$$DistanceTwinRustAsyncSse_MapImplCopyWith(
-    _$DistanceTwinRustAsyncSse_MapImpl value,
-    $Res Function(_$DistanceTwinRustAsyncSse_MapImpl) then,
-  ) = __$$DistanceTwinRustAsyncSse_MapImplCopyWithImpl<$Res>;
+          _$DistanceTwinRustAsyncSse_MapImpl value,
+          $Res Function(_$DistanceTwinRustAsyncSse_MapImpl) then) =
+      __$$DistanceTwinRustAsyncSse_MapImplCopyWithImpl<$Res>;
   @useResult
   $Res call({double field0});
 }
@@ -209,23 +207,23 @@ class __$$DistanceTwinRustAsyncSse_MapImplCopyWithImpl<$Res>
         _$DistanceTwinRustAsyncSse_MapImpl>
     implements _$$DistanceTwinRustAsyncSse_MapImplCopyWith<$Res> {
   __$$DistanceTwinRustAsyncSse_MapImplCopyWithImpl(
-    _$DistanceTwinRustAsyncSse_MapImpl _value,
-    $Res Function(_$DistanceTwinRustAsyncSse_MapImpl) _then,
-  ) : super(_value, _then);
+      _$DistanceTwinRustAsyncSse_MapImpl _value,
+      $Res Function(_$DistanceTwinRustAsyncSse_MapImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of DistanceTwinRustAsyncSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$DistanceTwinRustAsyncSse_MapImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as double,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$DistanceTwinRustAsyncSse_MapImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
   }
 }
 
@@ -392,10 +390,10 @@ mixin _$EnumWithItemMixedTwinRustAsyncSse {
 /// @nodoc
 abstract class $EnumWithItemMixedTwinRustAsyncSseCopyWith<$Res> {
   factory $EnumWithItemMixedTwinRustAsyncSseCopyWith(
-    EnumWithItemMixedTwinRustAsyncSse value,
-    $Res Function(EnumWithItemMixedTwinRustAsyncSse) then,
-  ) = _$EnumWithItemMixedTwinRustAsyncSseCopyWithImpl<$Res,
-      EnumWithItemMixedTwinRustAsyncSse>;
+          EnumWithItemMixedTwinRustAsyncSse value,
+          $Res Function(EnumWithItemMixedTwinRustAsyncSse) then) =
+      _$EnumWithItemMixedTwinRustAsyncSseCopyWithImpl<$Res,
+          EnumWithItemMixedTwinRustAsyncSse>;
 }
 
 /// @nodoc
@@ -416,9 +414,9 @@ class _$EnumWithItemMixedTwinRustAsyncSseCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$EnumWithItemMixedTwinRustAsyncSse_AImplCopyWith<$Res> {
   factory _$$EnumWithItemMixedTwinRustAsyncSse_AImplCopyWith(
-    _$EnumWithItemMixedTwinRustAsyncSse_AImpl value,
-    $Res Function(_$EnumWithItemMixedTwinRustAsyncSse_AImpl) then,
-  ) = __$$EnumWithItemMixedTwinRustAsyncSse_AImplCopyWithImpl<$Res>;
+          _$EnumWithItemMixedTwinRustAsyncSse_AImpl value,
+          $Res Function(_$EnumWithItemMixedTwinRustAsyncSse_AImpl) then) =
+      __$$EnumWithItemMixedTwinRustAsyncSse_AImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -427,9 +425,9 @@ class __$$EnumWithItemMixedTwinRustAsyncSse_AImplCopyWithImpl<$Res>
         _$EnumWithItemMixedTwinRustAsyncSse_AImpl>
     implements _$$EnumWithItemMixedTwinRustAsyncSse_AImplCopyWith<$Res> {
   __$$EnumWithItemMixedTwinRustAsyncSse_AImplCopyWithImpl(
-    _$EnumWithItemMixedTwinRustAsyncSse_AImpl _value,
-    $Res Function(_$EnumWithItemMixedTwinRustAsyncSse_AImpl) _then,
-  ) : super(_value, _then);
+      _$EnumWithItemMixedTwinRustAsyncSse_AImpl _value,
+      $Res Function(_$EnumWithItemMixedTwinRustAsyncSse_AImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumWithItemMixedTwinRustAsyncSse
   /// with the given fields replaced by the non-null parameter values.
@@ -535,9 +533,9 @@ abstract class EnumWithItemMixedTwinRustAsyncSse_A
 /// @nodoc
 abstract class _$$EnumWithItemMixedTwinRustAsyncSse_BImplCopyWith<$Res> {
   factory _$$EnumWithItemMixedTwinRustAsyncSse_BImplCopyWith(
-    _$EnumWithItemMixedTwinRustAsyncSse_BImpl value,
-    $Res Function(_$EnumWithItemMixedTwinRustAsyncSse_BImpl) then,
-  ) = __$$EnumWithItemMixedTwinRustAsyncSse_BImplCopyWithImpl<$Res>;
+          _$EnumWithItemMixedTwinRustAsyncSse_BImpl value,
+          $Res Function(_$EnumWithItemMixedTwinRustAsyncSse_BImpl) then) =
+      __$$EnumWithItemMixedTwinRustAsyncSse_BImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Uint8List field0});
 }
@@ -548,23 +546,23 @@ class __$$EnumWithItemMixedTwinRustAsyncSse_BImplCopyWithImpl<$Res>
         _$EnumWithItemMixedTwinRustAsyncSse_BImpl>
     implements _$$EnumWithItemMixedTwinRustAsyncSse_BImplCopyWith<$Res> {
   __$$EnumWithItemMixedTwinRustAsyncSse_BImplCopyWithImpl(
-    _$EnumWithItemMixedTwinRustAsyncSse_BImpl _value,
-    $Res Function(_$EnumWithItemMixedTwinRustAsyncSse_BImpl) _then,
-  ) : super(_value, _then);
+      _$EnumWithItemMixedTwinRustAsyncSse_BImpl _value,
+      $Res Function(_$EnumWithItemMixedTwinRustAsyncSse_BImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumWithItemMixedTwinRustAsyncSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$EnumWithItemMixedTwinRustAsyncSse_BImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as Uint8List,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$EnumWithItemMixedTwinRustAsyncSse_BImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
+    ));
   }
 }
 
@@ -692,9 +690,9 @@ abstract class EnumWithItemMixedTwinRustAsyncSse_B
 /// @nodoc
 abstract class _$$EnumWithItemMixedTwinRustAsyncSse_CImplCopyWith<$Res> {
   factory _$$EnumWithItemMixedTwinRustAsyncSse_CImplCopyWith(
-    _$EnumWithItemMixedTwinRustAsyncSse_CImpl value,
-    $Res Function(_$EnumWithItemMixedTwinRustAsyncSse_CImpl) then,
-  ) = __$$EnumWithItemMixedTwinRustAsyncSse_CImplCopyWithImpl<$Res>;
+          _$EnumWithItemMixedTwinRustAsyncSse_CImpl value,
+          $Res Function(_$EnumWithItemMixedTwinRustAsyncSse_CImpl) then) =
+      __$$EnumWithItemMixedTwinRustAsyncSse_CImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String cField});
 }
@@ -705,23 +703,23 @@ class __$$EnumWithItemMixedTwinRustAsyncSse_CImplCopyWithImpl<$Res>
         _$EnumWithItemMixedTwinRustAsyncSse_CImpl>
     implements _$$EnumWithItemMixedTwinRustAsyncSse_CImplCopyWith<$Res> {
   __$$EnumWithItemMixedTwinRustAsyncSse_CImplCopyWithImpl(
-    _$EnumWithItemMixedTwinRustAsyncSse_CImpl _value,
-    $Res Function(_$EnumWithItemMixedTwinRustAsyncSse_CImpl) _then,
-  ) : super(_value, _then);
+      _$EnumWithItemMixedTwinRustAsyncSse_CImpl _value,
+      $Res Function(_$EnumWithItemMixedTwinRustAsyncSse_CImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumWithItemMixedTwinRustAsyncSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? cField = null}) {
-    return _then(
-      _$EnumWithItemMixedTwinRustAsyncSse_CImpl(
-        cField: null == cField
-            ? _value.cField
-            : cField // ignore: cast_nullable_to_non_nullable
-                as String,
-      ),
-    );
+  $Res call({
+    Object? cField = null,
+  }) {
+    return _then(_$EnumWithItemMixedTwinRustAsyncSse_CImpl(
+      cField: null == cField
+          ? _value.cField
+          : cField // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -832,9 +830,9 @@ class _$EnumWithItemMixedTwinRustAsyncSse_CImpl
 
 abstract class EnumWithItemMixedTwinRustAsyncSse_C
     extends EnumWithItemMixedTwinRustAsyncSse {
-  const factory EnumWithItemMixedTwinRustAsyncSse_C({
-    required final String cField,
-  }) = _$EnumWithItemMixedTwinRustAsyncSse_CImpl;
+  const factory EnumWithItemMixedTwinRustAsyncSse_C(
+          {required final String cField}) =
+      _$EnumWithItemMixedTwinRustAsyncSse_CImpl;
   const EnumWithItemMixedTwinRustAsyncSse_C._() : super._();
 
   String get cField;
@@ -892,10 +890,10 @@ mixin _$EnumWithItemStructTwinRustAsyncSse {
 /// @nodoc
 abstract class $EnumWithItemStructTwinRustAsyncSseCopyWith<$Res> {
   factory $EnumWithItemStructTwinRustAsyncSseCopyWith(
-    EnumWithItemStructTwinRustAsyncSse value,
-    $Res Function(EnumWithItemStructTwinRustAsyncSse) then,
-  ) = _$EnumWithItemStructTwinRustAsyncSseCopyWithImpl<$Res,
-      EnumWithItemStructTwinRustAsyncSse>;
+          EnumWithItemStructTwinRustAsyncSse value,
+          $Res Function(EnumWithItemStructTwinRustAsyncSse) then) =
+      _$EnumWithItemStructTwinRustAsyncSseCopyWithImpl<$Res,
+          EnumWithItemStructTwinRustAsyncSse>;
 }
 
 /// @nodoc
@@ -916,9 +914,9 @@ class _$EnumWithItemStructTwinRustAsyncSseCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$EnumWithItemStructTwinRustAsyncSse_AImplCopyWith<$Res> {
   factory _$$EnumWithItemStructTwinRustAsyncSse_AImplCopyWith(
-    _$EnumWithItemStructTwinRustAsyncSse_AImpl value,
-    $Res Function(_$EnumWithItemStructTwinRustAsyncSse_AImpl) then,
-  ) = __$$EnumWithItemStructTwinRustAsyncSse_AImplCopyWithImpl<$Res>;
+          _$EnumWithItemStructTwinRustAsyncSse_AImpl value,
+          $Res Function(_$EnumWithItemStructTwinRustAsyncSse_AImpl) then) =
+      __$$EnumWithItemStructTwinRustAsyncSse_AImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Uint8List aField});
 }
@@ -929,23 +927,23 @@ class __$$EnumWithItemStructTwinRustAsyncSse_AImplCopyWithImpl<$Res>
         _$EnumWithItemStructTwinRustAsyncSse_AImpl>
     implements _$$EnumWithItemStructTwinRustAsyncSse_AImplCopyWith<$Res> {
   __$$EnumWithItemStructTwinRustAsyncSse_AImplCopyWithImpl(
-    _$EnumWithItemStructTwinRustAsyncSse_AImpl _value,
-    $Res Function(_$EnumWithItemStructTwinRustAsyncSse_AImpl) _then,
-  ) : super(_value, _then);
+      _$EnumWithItemStructTwinRustAsyncSse_AImpl _value,
+      $Res Function(_$EnumWithItemStructTwinRustAsyncSse_AImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumWithItemStructTwinRustAsyncSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? aField = null}) {
-    return _then(
-      _$EnumWithItemStructTwinRustAsyncSse_AImpl(
-        aField: null == aField
-            ? _value.aField
-            : aField // ignore: cast_nullable_to_non_nullable
-                as Uint8List,
-      ),
-    );
+  $Res call({
+    Object? aField = null,
+  }) {
+    return _then(_$EnumWithItemStructTwinRustAsyncSse_AImpl(
+      aField: null == aField
+          ? _value.aField
+          : aField // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
+    ));
   }
 }
 
@@ -1051,9 +1049,9 @@ class _$EnumWithItemStructTwinRustAsyncSse_AImpl
 
 abstract class EnumWithItemStructTwinRustAsyncSse_A
     extends EnumWithItemStructTwinRustAsyncSse {
-  const factory EnumWithItemStructTwinRustAsyncSse_A({
-    required final Uint8List aField,
-  }) = _$EnumWithItemStructTwinRustAsyncSse_AImpl;
+  const factory EnumWithItemStructTwinRustAsyncSse_A(
+          {required final Uint8List aField}) =
+      _$EnumWithItemStructTwinRustAsyncSse_AImpl;
   const EnumWithItemStructTwinRustAsyncSse_A._() : super._();
 
   Uint8List get aField;
@@ -1069,9 +1067,9 @@ abstract class EnumWithItemStructTwinRustAsyncSse_A
 /// @nodoc
 abstract class _$$EnumWithItemStructTwinRustAsyncSse_BImplCopyWith<$Res> {
   factory _$$EnumWithItemStructTwinRustAsyncSse_BImplCopyWith(
-    _$EnumWithItemStructTwinRustAsyncSse_BImpl value,
-    $Res Function(_$EnumWithItemStructTwinRustAsyncSse_BImpl) then,
-  ) = __$$EnumWithItemStructTwinRustAsyncSse_BImplCopyWithImpl<$Res>;
+          _$EnumWithItemStructTwinRustAsyncSse_BImpl value,
+          $Res Function(_$EnumWithItemStructTwinRustAsyncSse_BImpl) then) =
+      __$$EnumWithItemStructTwinRustAsyncSse_BImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Int32List bField});
 }
@@ -1082,23 +1080,23 @@ class __$$EnumWithItemStructTwinRustAsyncSse_BImplCopyWithImpl<$Res>
         _$EnumWithItemStructTwinRustAsyncSse_BImpl>
     implements _$$EnumWithItemStructTwinRustAsyncSse_BImplCopyWith<$Res> {
   __$$EnumWithItemStructTwinRustAsyncSse_BImplCopyWithImpl(
-    _$EnumWithItemStructTwinRustAsyncSse_BImpl _value,
-    $Res Function(_$EnumWithItemStructTwinRustAsyncSse_BImpl) _then,
-  ) : super(_value, _then);
+      _$EnumWithItemStructTwinRustAsyncSse_BImpl _value,
+      $Res Function(_$EnumWithItemStructTwinRustAsyncSse_BImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumWithItemStructTwinRustAsyncSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? bField = null}) {
-    return _then(
-      _$EnumWithItemStructTwinRustAsyncSse_BImpl(
-        bField: null == bField
-            ? _value.bField
-            : bField // ignore: cast_nullable_to_non_nullable
-                as Int32List,
-      ),
-    );
+  $Res call({
+    Object? bField = null,
+  }) {
+    return _then(_$EnumWithItemStructTwinRustAsyncSse_BImpl(
+      bField: null == bField
+          ? _value.bField
+          : bField // ignore: cast_nullable_to_non_nullable
+              as Int32List,
+    ));
   }
 }
 
@@ -1204,9 +1202,9 @@ class _$EnumWithItemStructTwinRustAsyncSse_BImpl
 
 abstract class EnumWithItemStructTwinRustAsyncSse_B
     extends EnumWithItemStructTwinRustAsyncSse {
-  const factory EnumWithItemStructTwinRustAsyncSse_B({
-    required final Int32List bField,
-  }) = _$EnumWithItemStructTwinRustAsyncSse_BImpl;
+  const factory EnumWithItemStructTwinRustAsyncSse_B(
+          {required final Int32List bField}) =
+      _$EnumWithItemStructTwinRustAsyncSse_BImpl;
   const EnumWithItemStructTwinRustAsyncSse_B._() : super._();
 
   Int32List get bField;
@@ -1265,10 +1263,10 @@ mixin _$EnumWithItemTupleTwinRustAsyncSse {
 /// @nodoc
 abstract class $EnumWithItemTupleTwinRustAsyncSseCopyWith<$Res> {
   factory $EnumWithItemTupleTwinRustAsyncSseCopyWith(
-    EnumWithItemTupleTwinRustAsyncSse value,
-    $Res Function(EnumWithItemTupleTwinRustAsyncSse) then,
-  ) = _$EnumWithItemTupleTwinRustAsyncSseCopyWithImpl<$Res,
-      EnumWithItemTupleTwinRustAsyncSse>;
+          EnumWithItemTupleTwinRustAsyncSse value,
+          $Res Function(EnumWithItemTupleTwinRustAsyncSse) then) =
+      _$EnumWithItemTupleTwinRustAsyncSseCopyWithImpl<$Res,
+          EnumWithItemTupleTwinRustAsyncSse>;
 }
 
 /// @nodoc
@@ -1289,9 +1287,9 @@ class _$EnumWithItemTupleTwinRustAsyncSseCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$EnumWithItemTupleTwinRustAsyncSse_AImplCopyWith<$Res> {
   factory _$$EnumWithItemTupleTwinRustAsyncSse_AImplCopyWith(
-    _$EnumWithItemTupleTwinRustAsyncSse_AImpl value,
-    $Res Function(_$EnumWithItemTupleTwinRustAsyncSse_AImpl) then,
-  ) = __$$EnumWithItemTupleTwinRustAsyncSse_AImplCopyWithImpl<$Res>;
+          _$EnumWithItemTupleTwinRustAsyncSse_AImpl value,
+          $Res Function(_$EnumWithItemTupleTwinRustAsyncSse_AImpl) then) =
+      __$$EnumWithItemTupleTwinRustAsyncSse_AImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Uint8List field0});
 }
@@ -1302,23 +1300,23 @@ class __$$EnumWithItemTupleTwinRustAsyncSse_AImplCopyWithImpl<$Res>
         _$EnumWithItemTupleTwinRustAsyncSse_AImpl>
     implements _$$EnumWithItemTupleTwinRustAsyncSse_AImplCopyWith<$Res> {
   __$$EnumWithItemTupleTwinRustAsyncSse_AImplCopyWithImpl(
-    _$EnumWithItemTupleTwinRustAsyncSse_AImpl _value,
-    $Res Function(_$EnumWithItemTupleTwinRustAsyncSse_AImpl) _then,
-  ) : super(_value, _then);
+      _$EnumWithItemTupleTwinRustAsyncSse_AImpl _value,
+      $Res Function(_$EnumWithItemTupleTwinRustAsyncSse_AImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumWithItemTupleTwinRustAsyncSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$EnumWithItemTupleTwinRustAsyncSse_AImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as Uint8List,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$EnumWithItemTupleTwinRustAsyncSse_AImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
+    ));
   }
 }
 
@@ -1441,9 +1439,9 @@ abstract class EnumWithItemTupleTwinRustAsyncSse_A
 /// @nodoc
 abstract class _$$EnumWithItemTupleTwinRustAsyncSse_BImplCopyWith<$Res> {
   factory _$$EnumWithItemTupleTwinRustAsyncSse_BImplCopyWith(
-    _$EnumWithItemTupleTwinRustAsyncSse_BImpl value,
-    $Res Function(_$EnumWithItemTupleTwinRustAsyncSse_BImpl) then,
-  ) = __$$EnumWithItemTupleTwinRustAsyncSse_BImplCopyWithImpl<$Res>;
+          _$EnumWithItemTupleTwinRustAsyncSse_BImpl value,
+          $Res Function(_$EnumWithItemTupleTwinRustAsyncSse_BImpl) then) =
+      __$$EnumWithItemTupleTwinRustAsyncSse_BImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int field0});
 }
@@ -1454,23 +1452,23 @@ class __$$EnumWithItemTupleTwinRustAsyncSse_BImplCopyWithImpl<$Res>
         _$EnumWithItemTupleTwinRustAsyncSse_BImpl>
     implements _$$EnumWithItemTupleTwinRustAsyncSse_BImplCopyWith<$Res> {
   __$$EnumWithItemTupleTwinRustAsyncSse_BImplCopyWithImpl(
-    _$EnumWithItemTupleTwinRustAsyncSse_BImpl _value,
-    $Res Function(_$EnumWithItemTupleTwinRustAsyncSse_BImpl) _then,
-  ) : super(_value, _then);
+      _$EnumWithItemTupleTwinRustAsyncSse_BImpl _value,
+      $Res Function(_$EnumWithItemTupleTwinRustAsyncSse_BImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EnumWithItemTupleTwinRustAsyncSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$EnumWithItemTupleTwinRustAsyncSse_BImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as int,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$EnumWithItemTupleTwinRustAsyncSse_BImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
@@ -1662,10 +1660,10 @@ mixin _$KitchenSinkTwinRustAsyncSse {
 /// @nodoc
 abstract class $KitchenSinkTwinRustAsyncSseCopyWith<$Res> {
   factory $KitchenSinkTwinRustAsyncSseCopyWith(
-    KitchenSinkTwinRustAsyncSse value,
-    $Res Function(KitchenSinkTwinRustAsyncSse) then,
-  ) = _$KitchenSinkTwinRustAsyncSseCopyWithImpl<$Res,
-      KitchenSinkTwinRustAsyncSse>;
+          KitchenSinkTwinRustAsyncSse value,
+          $Res Function(KitchenSinkTwinRustAsyncSse) then) =
+      _$KitchenSinkTwinRustAsyncSseCopyWithImpl<$Res,
+          KitchenSinkTwinRustAsyncSse>;
 }
 
 /// @nodoc
@@ -1686,9 +1684,9 @@ class _$KitchenSinkTwinRustAsyncSseCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$KitchenSinkTwinRustAsyncSse_EmptyImplCopyWith<$Res> {
   factory _$$KitchenSinkTwinRustAsyncSse_EmptyImplCopyWith(
-    _$KitchenSinkTwinRustAsyncSse_EmptyImpl value,
-    $Res Function(_$KitchenSinkTwinRustAsyncSse_EmptyImpl) then,
-  ) = __$$KitchenSinkTwinRustAsyncSse_EmptyImplCopyWithImpl<$Res>;
+          _$KitchenSinkTwinRustAsyncSse_EmptyImpl value,
+          $Res Function(_$KitchenSinkTwinRustAsyncSse_EmptyImpl) then) =
+      __$$KitchenSinkTwinRustAsyncSse_EmptyImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -1697,9 +1695,9 @@ class __$$KitchenSinkTwinRustAsyncSse_EmptyImplCopyWithImpl<$Res>
         _$KitchenSinkTwinRustAsyncSse_EmptyImpl>
     implements _$$KitchenSinkTwinRustAsyncSse_EmptyImplCopyWith<$Res> {
   __$$KitchenSinkTwinRustAsyncSse_EmptyImplCopyWithImpl(
-    _$KitchenSinkTwinRustAsyncSse_EmptyImpl _value,
-    $Res Function(_$KitchenSinkTwinRustAsyncSse_EmptyImpl) _then,
-  ) : super(_value, _then);
+      _$KitchenSinkTwinRustAsyncSse_EmptyImpl _value,
+      $Res Function(_$KitchenSinkTwinRustAsyncSse_EmptyImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of KitchenSinkTwinRustAsyncSse
   /// with the given fields replaced by the non-null parameter values.
@@ -1827,9 +1825,9 @@ abstract class KitchenSinkTwinRustAsyncSse_Empty
 /// @nodoc
 abstract class _$$KitchenSinkTwinRustAsyncSse_PrimitivesImplCopyWith<$Res> {
   factory _$$KitchenSinkTwinRustAsyncSse_PrimitivesImplCopyWith(
-    _$KitchenSinkTwinRustAsyncSse_PrimitivesImpl value,
-    $Res Function(_$KitchenSinkTwinRustAsyncSse_PrimitivesImpl) then,
-  ) = __$$KitchenSinkTwinRustAsyncSse_PrimitivesImplCopyWithImpl<$Res>;
+          _$KitchenSinkTwinRustAsyncSse_PrimitivesImpl value,
+          $Res Function(_$KitchenSinkTwinRustAsyncSse_PrimitivesImpl) then) =
+      __$$KitchenSinkTwinRustAsyncSse_PrimitivesImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int int32, double float64, bool boolean});
 }
@@ -1840,9 +1838,9 @@ class __$$KitchenSinkTwinRustAsyncSse_PrimitivesImplCopyWithImpl<$Res>
         _$KitchenSinkTwinRustAsyncSse_PrimitivesImpl>
     implements _$$KitchenSinkTwinRustAsyncSse_PrimitivesImplCopyWith<$Res> {
   __$$KitchenSinkTwinRustAsyncSse_PrimitivesImplCopyWithImpl(
-    _$KitchenSinkTwinRustAsyncSse_PrimitivesImpl _value,
-    $Res Function(_$KitchenSinkTwinRustAsyncSse_PrimitivesImpl) _then,
-  ) : super(_value, _then);
+      _$KitchenSinkTwinRustAsyncSse_PrimitivesImpl _value,
+      $Res Function(_$KitchenSinkTwinRustAsyncSse_PrimitivesImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of KitchenSinkTwinRustAsyncSse
   /// with the given fields replaced by the non-null parameter values.
@@ -1853,22 +1851,20 @@ class __$$KitchenSinkTwinRustAsyncSse_PrimitivesImplCopyWithImpl<$Res>
     Object? float64 = null,
     Object? boolean = null,
   }) {
-    return _then(
-      _$KitchenSinkTwinRustAsyncSse_PrimitivesImpl(
-        int32: null == int32
-            ? _value.int32
-            : int32 // ignore: cast_nullable_to_non_nullable
-                as int,
-        float64: null == float64
-            ? _value.float64
-            : float64 // ignore: cast_nullable_to_non_nullable
-                as double,
-        boolean: null == boolean
-            ? _value.boolean
-            : boolean // ignore: cast_nullable_to_non_nullable
-                as bool,
-      ),
-    );
+    return _then(_$KitchenSinkTwinRustAsyncSse_PrimitivesImpl(
+      int32: null == int32
+          ? _value.int32
+          : int32 // ignore: cast_nullable_to_non_nullable
+              as int,
+      float64: null == float64
+          ? _value.float64
+          : float64 // ignore: cast_nullable_to_non_nullable
+              as double,
+      boolean: null == boolean
+          ? _value.boolean
+          : boolean // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
@@ -1876,11 +1872,9 @@ class __$$KitchenSinkTwinRustAsyncSse_PrimitivesImplCopyWithImpl<$Res>
 
 class _$KitchenSinkTwinRustAsyncSse_PrimitivesImpl
     extends KitchenSinkTwinRustAsyncSse_Primitives {
-  const _$KitchenSinkTwinRustAsyncSse_PrimitivesImpl({
-    this.int32 = -1,
-    required this.float64,
-    required this.boolean,
-  }) : super._();
+  const _$KitchenSinkTwinRustAsyncSse_PrimitivesImpl(
+      {this.int32 = -1, required this.float64, required this.boolean})
+      : super._();
 
   /// Dart field comment
   @override
@@ -2013,11 +2007,11 @@ class _$KitchenSinkTwinRustAsyncSse_PrimitivesImpl
 
 abstract class KitchenSinkTwinRustAsyncSse_Primitives
     extends KitchenSinkTwinRustAsyncSse {
-  const factory KitchenSinkTwinRustAsyncSse_Primitives({
-    final int int32,
-    required final double float64,
-    required final bool boolean,
-  }) = _$KitchenSinkTwinRustAsyncSse_PrimitivesImpl;
+  const factory KitchenSinkTwinRustAsyncSse_Primitives(
+          {final int int32,
+          required final double float64,
+          required final bool boolean}) =
+      _$KitchenSinkTwinRustAsyncSse_PrimitivesImpl;
   const KitchenSinkTwinRustAsyncSse_Primitives._() : super._();
 
   /// Dart field comment
@@ -2036,9 +2030,9 @@ abstract class KitchenSinkTwinRustAsyncSse_Primitives
 /// @nodoc
 abstract class _$$KitchenSinkTwinRustAsyncSse_NestedImplCopyWith<$Res> {
   factory _$$KitchenSinkTwinRustAsyncSse_NestedImplCopyWith(
-    _$KitchenSinkTwinRustAsyncSse_NestedImpl value,
-    $Res Function(_$KitchenSinkTwinRustAsyncSse_NestedImpl) then,
-  ) = __$$KitchenSinkTwinRustAsyncSse_NestedImplCopyWithImpl<$Res>;
+          _$KitchenSinkTwinRustAsyncSse_NestedImpl value,
+          $Res Function(_$KitchenSinkTwinRustAsyncSse_NestedImpl) then) =
+      __$$KitchenSinkTwinRustAsyncSse_NestedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int field0, KitchenSinkTwinRustAsyncSse field1});
 
@@ -2051,27 +2045,28 @@ class __$$KitchenSinkTwinRustAsyncSse_NestedImplCopyWithImpl<$Res>
         _$KitchenSinkTwinRustAsyncSse_NestedImpl>
     implements _$$KitchenSinkTwinRustAsyncSse_NestedImplCopyWith<$Res> {
   __$$KitchenSinkTwinRustAsyncSse_NestedImplCopyWithImpl(
-    _$KitchenSinkTwinRustAsyncSse_NestedImpl _value,
-    $Res Function(_$KitchenSinkTwinRustAsyncSse_NestedImpl) _then,
-  ) : super(_value, _then);
+      _$KitchenSinkTwinRustAsyncSse_NestedImpl _value,
+      $Res Function(_$KitchenSinkTwinRustAsyncSse_NestedImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of KitchenSinkTwinRustAsyncSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null, Object? field1 = null}) {
-    return _then(
-      _$KitchenSinkTwinRustAsyncSse_NestedImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as int,
-        null == field1
-            ? _value.field1
-            : field1 // ignore: cast_nullable_to_non_nullable
-                as KitchenSinkTwinRustAsyncSse,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+    Object? field1 = null,
+  }) {
+    return _then(_$KitchenSinkTwinRustAsyncSse_NestedImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as int,
+      null == field1
+          ? _value.field1
+          : field1 // ignore: cast_nullable_to_non_nullable
+              as KitchenSinkTwinRustAsyncSse,
+    ));
   }
 
   /// Create a copy of KitchenSinkTwinRustAsyncSse
@@ -2089,10 +2084,9 @@ class __$$KitchenSinkTwinRustAsyncSse_NestedImplCopyWithImpl<$Res>
 
 class _$KitchenSinkTwinRustAsyncSse_NestedImpl
     extends KitchenSinkTwinRustAsyncSse_Nested {
-  const _$KitchenSinkTwinRustAsyncSse_NestedImpl(
-    this.field0, [
-    this.field1 = const KitchenSinkTwinRustAsyncSse.empty(),
-  ]) : super._();
+  const _$KitchenSinkTwinRustAsyncSse_NestedImpl(this.field0,
+      [this.field1 = const KitchenSinkTwinRustAsyncSse.empty()])
+      : super._();
 
   @override
   final int field0;
@@ -2220,10 +2214,9 @@ class _$KitchenSinkTwinRustAsyncSse_NestedImpl
 
 abstract class KitchenSinkTwinRustAsyncSse_Nested
     extends KitchenSinkTwinRustAsyncSse {
-  const factory KitchenSinkTwinRustAsyncSse_Nested(
-    final int field0, [
-    final KitchenSinkTwinRustAsyncSse field1,
-  ]) = _$KitchenSinkTwinRustAsyncSse_NestedImpl;
+  const factory KitchenSinkTwinRustAsyncSse_Nested(final int field0,
+          [final KitchenSinkTwinRustAsyncSse field1]) =
+      _$KitchenSinkTwinRustAsyncSse_NestedImpl;
   const KitchenSinkTwinRustAsyncSse_Nested._() : super._();
 
   int get field0;
@@ -2240,9 +2233,9 @@ abstract class KitchenSinkTwinRustAsyncSse_Nested
 /// @nodoc
 abstract class _$$KitchenSinkTwinRustAsyncSse_OptionalImplCopyWith<$Res> {
   factory _$$KitchenSinkTwinRustAsyncSse_OptionalImplCopyWith(
-    _$KitchenSinkTwinRustAsyncSse_OptionalImpl value,
-    $Res Function(_$KitchenSinkTwinRustAsyncSse_OptionalImpl) then,
-  ) = __$$KitchenSinkTwinRustAsyncSse_OptionalImplCopyWithImpl<$Res>;
+          _$KitchenSinkTwinRustAsyncSse_OptionalImpl value,
+          $Res Function(_$KitchenSinkTwinRustAsyncSse_OptionalImpl) then) =
+      __$$KitchenSinkTwinRustAsyncSse_OptionalImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int? field0, int? field1});
 }
@@ -2253,27 +2246,28 @@ class __$$KitchenSinkTwinRustAsyncSse_OptionalImplCopyWithImpl<$Res>
         _$KitchenSinkTwinRustAsyncSse_OptionalImpl>
     implements _$$KitchenSinkTwinRustAsyncSse_OptionalImplCopyWith<$Res> {
   __$$KitchenSinkTwinRustAsyncSse_OptionalImplCopyWithImpl(
-    _$KitchenSinkTwinRustAsyncSse_OptionalImpl _value,
-    $Res Function(_$KitchenSinkTwinRustAsyncSse_OptionalImpl) _then,
-  ) : super(_value, _then);
+      _$KitchenSinkTwinRustAsyncSse_OptionalImpl _value,
+      $Res Function(_$KitchenSinkTwinRustAsyncSse_OptionalImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of KitchenSinkTwinRustAsyncSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = freezed, Object? field1 = freezed}) {
-    return _then(
-      _$KitchenSinkTwinRustAsyncSse_OptionalImpl(
-        freezed == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as int?,
-        freezed == field1
-            ? _value.field1
-            : field1 // ignore: cast_nullable_to_non_nullable
-                as int?,
-      ),
-    );
+  $Res call({
+    Object? field0 = freezed,
+    Object? field1 = freezed,
+  }) {
+    return _then(_$KitchenSinkTwinRustAsyncSse_OptionalImpl(
+      freezed == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as int?,
+      freezed == field1
+          ? _value.field1
+          : field1 // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
   }
 }
 
@@ -2281,10 +2275,9 @@ class __$$KitchenSinkTwinRustAsyncSse_OptionalImplCopyWithImpl<$Res>
 
 class _$KitchenSinkTwinRustAsyncSse_OptionalImpl
     extends KitchenSinkTwinRustAsyncSse_Optional {
-  const _$KitchenSinkTwinRustAsyncSse_OptionalImpl([
-    this.field0 = -1,
-    this.field1,
-  ]) : super._();
+  const _$KitchenSinkTwinRustAsyncSse_OptionalImpl(
+      [this.field0 = -1, this.field1])
+      : super._();
 
   /// Comment on anonymous field
   @override
@@ -2413,10 +2406,9 @@ class _$KitchenSinkTwinRustAsyncSse_OptionalImpl
 
 abstract class KitchenSinkTwinRustAsyncSse_Optional
     extends KitchenSinkTwinRustAsyncSse {
-  const factory KitchenSinkTwinRustAsyncSse_Optional([
-    final int? field0,
-    final int? field1,
-  ]) = _$KitchenSinkTwinRustAsyncSse_OptionalImpl;
+  const factory KitchenSinkTwinRustAsyncSse_Optional(
+      [final int? field0,
+      final int? field1]) = _$KitchenSinkTwinRustAsyncSse_OptionalImpl;
   const KitchenSinkTwinRustAsyncSse_Optional._() : super._();
 
   /// Comment on anonymous field
@@ -2434,9 +2426,9 @@ abstract class KitchenSinkTwinRustAsyncSse_Optional
 /// @nodoc
 abstract class _$$KitchenSinkTwinRustAsyncSse_BufferImplCopyWith<$Res> {
   factory _$$KitchenSinkTwinRustAsyncSse_BufferImplCopyWith(
-    _$KitchenSinkTwinRustAsyncSse_BufferImpl value,
-    $Res Function(_$KitchenSinkTwinRustAsyncSse_BufferImpl) then,
-  ) = __$$KitchenSinkTwinRustAsyncSse_BufferImplCopyWithImpl<$Res>;
+          _$KitchenSinkTwinRustAsyncSse_BufferImpl value,
+          $Res Function(_$KitchenSinkTwinRustAsyncSse_BufferImpl) then) =
+      __$$KitchenSinkTwinRustAsyncSse_BufferImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Uint8List field0});
 }
@@ -2447,23 +2439,23 @@ class __$$KitchenSinkTwinRustAsyncSse_BufferImplCopyWithImpl<$Res>
         _$KitchenSinkTwinRustAsyncSse_BufferImpl>
     implements _$$KitchenSinkTwinRustAsyncSse_BufferImplCopyWith<$Res> {
   __$$KitchenSinkTwinRustAsyncSse_BufferImplCopyWithImpl(
-    _$KitchenSinkTwinRustAsyncSse_BufferImpl _value,
-    $Res Function(_$KitchenSinkTwinRustAsyncSse_BufferImpl) _then,
-  ) : super(_value, _then);
+      _$KitchenSinkTwinRustAsyncSse_BufferImpl _value,
+      $Res Function(_$KitchenSinkTwinRustAsyncSse_BufferImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of KitchenSinkTwinRustAsyncSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$KitchenSinkTwinRustAsyncSse_BufferImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as Uint8List,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$KitchenSinkTwinRustAsyncSse_BufferImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
+    ));
   }
 }
 
@@ -2613,9 +2605,9 @@ abstract class KitchenSinkTwinRustAsyncSse_Buffer
 /// @nodoc
 abstract class _$$KitchenSinkTwinRustAsyncSse_EnumsImplCopyWith<$Res> {
   factory _$$KitchenSinkTwinRustAsyncSse_EnumsImplCopyWith(
-    _$KitchenSinkTwinRustAsyncSse_EnumsImpl value,
-    $Res Function(_$KitchenSinkTwinRustAsyncSse_EnumsImpl) then,
-  ) = __$$KitchenSinkTwinRustAsyncSse_EnumsImplCopyWithImpl<$Res>;
+          _$KitchenSinkTwinRustAsyncSse_EnumsImpl value,
+          $Res Function(_$KitchenSinkTwinRustAsyncSse_EnumsImpl) then) =
+      __$$KitchenSinkTwinRustAsyncSse_EnumsImplCopyWithImpl<$Res>;
   @useResult
   $Res call({WeekdaysTwinRustAsyncSse field0});
 }
@@ -2626,23 +2618,23 @@ class __$$KitchenSinkTwinRustAsyncSse_EnumsImplCopyWithImpl<$Res>
         _$KitchenSinkTwinRustAsyncSse_EnumsImpl>
     implements _$$KitchenSinkTwinRustAsyncSse_EnumsImplCopyWith<$Res> {
   __$$KitchenSinkTwinRustAsyncSse_EnumsImplCopyWithImpl(
-    _$KitchenSinkTwinRustAsyncSse_EnumsImpl _value,
-    $Res Function(_$KitchenSinkTwinRustAsyncSse_EnumsImpl) _then,
-  ) : super(_value, _then);
+      _$KitchenSinkTwinRustAsyncSse_EnumsImpl _value,
+      $Res Function(_$KitchenSinkTwinRustAsyncSse_EnumsImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of KitchenSinkTwinRustAsyncSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$KitchenSinkTwinRustAsyncSse_EnumsImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as WeekdaysTwinRustAsyncSse,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$KitchenSinkTwinRustAsyncSse_EnumsImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as WeekdaysTwinRustAsyncSse,
+    ));
   }
 }
 
@@ -2650,9 +2642,9 @@ class __$$KitchenSinkTwinRustAsyncSse_EnumsImplCopyWithImpl<$Res>
 
 class _$KitchenSinkTwinRustAsyncSse_EnumsImpl
     extends KitchenSinkTwinRustAsyncSse_Enums {
-  const _$KitchenSinkTwinRustAsyncSse_EnumsImpl([
-    this.field0 = WeekdaysTwinRustAsyncSse.sunday,
-  ]) : super._();
+  const _$KitchenSinkTwinRustAsyncSse_EnumsImpl(
+      [this.field0 = WeekdaysTwinRustAsyncSse.sunday])
+      : super._();
 
   @override
   @JsonKey()
@@ -2777,9 +2769,9 @@ class _$KitchenSinkTwinRustAsyncSse_EnumsImpl
 
 abstract class KitchenSinkTwinRustAsyncSse_Enums
     extends KitchenSinkTwinRustAsyncSse {
-  const factory KitchenSinkTwinRustAsyncSse_Enums([
-    final WeekdaysTwinRustAsyncSse field0,
-  ]) = _$KitchenSinkTwinRustAsyncSse_EnumsImpl;
+  const factory KitchenSinkTwinRustAsyncSse_Enums(
+          [final WeekdaysTwinRustAsyncSse field0]) =
+      _$KitchenSinkTwinRustAsyncSse_EnumsImpl;
   const KitchenSinkTwinRustAsyncSse_Enums._() : super._();
 
   WeekdaysTwinRustAsyncSse get field0;
@@ -2837,10 +2829,9 @@ mixin _$MeasureTwinRustAsyncSse {
 
 /// @nodoc
 abstract class $MeasureTwinRustAsyncSseCopyWith<$Res> {
-  factory $MeasureTwinRustAsyncSseCopyWith(
-    MeasureTwinRustAsyncSse value,
-    $Res Function(MeasureTwinRustAsyncSse) then,
-  ) = _$MeasureTwinRustAsyncSseCopyWithImpl<$Res, MeasureTwinRustAsyncSse>;
+  factory $MeasureTwinRustAsyncSseCopyWith(MeasureTwinRustAsyncSse value,
+          $Res Function(MeasureTwinRustAsyncSse) then) =
+      _$MeasureTwinRustAsyncSseCopyWithImpl<$Res, MeasureTwinRustAsyncSse>;
 }
 
 /// @nodoc
@@ -2861,9 +2852,9 @@ class _$MeasureTwinRustAsyncSseCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$MeasureTwinRustAsyncSse_SpeedImplCopyWith<$Res> {
   factory _$$MeasureTwinRustAsyncSse_SpeedImplCopyWith(
-    _$MeasureTwinRustAsyncSse_SpeedImpl value,
-    $Res Function(_$MeasureTwinRustAsyncSse_SpeedImpl) then,
-  ) = __$$MeasureTwinRustAsyncSse_SpeedImplCopyWithImpl<$Res>;
+          _$MeasureTwinRustAsyncSse_SpeedImpl value,
+          $Res Function(_$MeasureTwinRustAsyncSse_SpeedImpl) then) =
+      __$$MeasureTwinRustAsyncSse_SpeedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({SpeedTwinRustAsyncSse field0});
 
@@ -2876,23 +2867,23 @@ class __$$MeasureTwinRustAsyncSse_SpeedImplCopyWithImpl<$Res>
         _$MeasureTwinRustAsyncSse_SpeedImpl>
     implements _$$MeasureTwinRustAsyncSse_SpeedImplCopyWith<$Res> {
   __$$MeasureTwinRustAsyncSse_SpeedImplCopyWithImpl(
-    _$MeasureTwinRustAsyncSse_SpeedImpl _value,
-    $Res Function(_$MeasureTwinRustAsyncSse_SpeedImpl) _then,
-  ) : super(_value, _then);
+      _$MeasureTwinRustAsyncSse_SpeedImpl _value,
+      $Res Function(_$MeasureTwinRustAsyncSse_SpeedImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of MeasureTwinRustAsyncSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$MeasureTwinRustAsyncSse_SpeedImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as SpeedTwinRustAsyncSse,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$MeasureTwinRustAsyncSse_SpeedImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as SpeedTwinRustAsyncSse,
+    ));
   }
 
   /// Create a copy of MeasureTwinRustAsyncSse
@@ -3006,8 +2997,7 @@ class _$MeasureTwinRustAsyncSse_SpeedImpl
 
 abstract class MeasureTwinRustAsyncSse_Speed extends MeasureTwinRustAsyncSse {
   const factory MeasureTwinRustAsyncSse_Speed(
-    final SpeedTwinRustAsyncSse field0,
-  ) = _$MeasureTwinRustAsyncSse_SpeedImpl;
+      final SpeedTwinRustAsyncSse field0) = _$MeasureTwinRustAsyncSse_SpeedImpl;
   const MeasureTwinRustAsyncSse_Speed._() : super._();
 
   @override
@@ -3024,9 +3014,9 @@ abstract class MeasureTwinRustAsyncSse_Speed extends MeasureTwinRustAsyncSse {
 /// @nodoc
 abstract class _$$MeasureTwinRustAsyncSse_DistanceImplCopyWith<$Res> {
   factory _$$MeasureTwinRustAsyncSse_DistanceImplCopyWith(
-    _$MeasureTwinRustAsyncSse_DistanceImpl value,
-    $Res Function(_$MeasureTwinRustAsyncSse_DistanceImpl) then,
-  ) = __$$MeasureTwinRustAsyncSse_DistanceImplCopyWithImpl<$Res>;
+          _$MeasureTwinRustAsyncSse_DistanceImpl value,
+          $Res Function(_$MeasureTwinRustAsyncSse_DistanceImpl) then) =
+      __$$MeasureTwinRustAsyncSse_DistanceImplCopyWithImpl<$Res>;
   @useResult
   $Res call({DistanceTwinRustAsyncSse field0});
 
@@ -3039,23 +3029,23 @@ class __$$MeasureTwinRustAsyncSse_DistanceImplCopyWithImpl<$Res>
         _$MeasureTwinRustAsyncSse_DistanceImpl>
     implements _$$MeasureTwinRustAsyncSse_DistanceImplCopyWith<$Res> {
   __$$MeasureTwinRustAsyncSse_DistanceImplCopyWithImpl(
-    _$MeasureTwinRustAsyncSse_DistanceImpl _value,
-    $Res Function(_$MeasureTwinRustAsyncSse_DistanceImpl) _then,
-  ) : super(_value, _then);
+      _$MeasureTwinRustAsyncSse_DistanceImpl _value,
+      $Res Function(_$MeasureTwinRustAsyncSse_DistanceImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of MeasureTwinRustAsyncSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$MeasureTwinRustAsyncSse_DistanceImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as DistanceTwinRustAsyncSse,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$MeasureTwinRustAsyncSse_DistanceImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as DistanceTwinRustAsyncSse,
+    ));
   }
 
   /// Create a copy of MeasureTwinRustAsyncSse
@@ -3170,8 +3160,8 @@ class _$MeasureTwinRustAsyncSse_DistanceImpl
 abstract class MeasureTwinRustAsyncSse_Distance
     extends MeasureTwinRustAsyncSse {
   const factory MeasureTwinRustAsyncSse_Distance(
-    final DistanceTwinRustAsyncSse field0,
-  ) = _$MeasureTwinRustAsyncSse_DistanceImpl;
+          final DistanceTwinRustAsyncSse field0) =
+      _$MeasureTwinRustAsyncSse_DistanceImpl;
   const MeasureTwinRustAsyncSse_Distance._() : super._();
 
   @override
@@ -3229,10 +3219,9 @@ mixin _$SpeedTwinRustAsyncSse {
 
 /// @nodoc
 abstract class $SpeedTwinRustAsyncSseCopyWith<$Res> {
-  factory $SpeedTwinRustAsyncSseCopyWith(
-    SpeedTwinRustAsyncSse value,
-    $Res Function(SpeedTwinRustAsyncSse) then,
-  ) = _$SpeedTwinRustAsyncSseCopyWithImpl<$Res, SpeedTwinRustAsyncSse>;
+  factory $SpeedTwinRustAsyncSseCopyWith(SpeedTwinRustAsyncSse value,
+          $Res Function(SpeedTwinRustAsyncSse) then) =
+      _$SpeedTwinRustAsyncSseCopyWithImpl<$Res, SpeedTwinRustAsyncSse>;
 }
 
 /// @nodoc
@@ -3253,9 +3242,9 @@ class _$SpeedTwinRustAsyncSseCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$SpeedTwinRustAsyncSse_UnknownImplCopyWith<$Res> {
   factory _$$SpeedTwinRustAsyncSse_UnknownImplCopyWith(
-    _$SpeedTwinRustAsyncSse_UnknownImpl value,
-    $Res Function(_$SpeedTwinRustAsyncSse_UnknownImpl) then,
-  ) = __$$SpeedTwinRustAsyncSse_UnknownImplCopyWithImpl<$Res>;
+          _$SpeedTwinRustAsyncSse_UnknownImpl value,
+          $Res Function(_$SpeedTwinRustAsyncSse_UnknownImpl) then) =
+      __$$SpeedTwinRustAsyncSse_UnknownImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -3264,9 +3253,9 @@ class __$$SpeedTwinRustAsyncSse_UnknownImplCopyWithImpl<$Res>
         _$SpeedTwinRustAsyncSse_UnknownImpl>
     implements _$$SpeedTwinRustAsyncSse_UnknownImplCopyWith<$Res> {
   __$$SpeedTwinRustAsyncSse_UnknownImplCopyWithImpl(
-    _$SpeedTwinRustAsyncSse_UnknownImpl _value,
-    $Res Function(_$SpeedTwinRustAsyncSse_UnknownImpl) _then,
-  ) : super(_value, _then);
+      _$SpeedTwinRustAsyncSse_UnknownImpl _value,
+      $Res Function(_$SpeedTwinRustAsyncSse_UnknownImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of SpeedTwinRustAsyncSse
   /// with the given fields replaced by the non-null parameter values.
@@ -3365,9 +3354,9 @@ abstract class SpeedTwinRustAsyncSse_Unknown extends SpeedTwinRustAsyncSse {
 /// @nodoc
 abstract class _$$SpeedTwinRustAsyncSse_GPSImplCopyWith<$Res> {
   factory _$$SpeedTwinRustAsyncSse_GPSImplCopyWith(
-    _$SpeedTwinRustAsyncSse_GPSImpl value,
-    $Res Function(_$SpeedTwinRustAsyncSse_GPSImpl) then,
-  ) = __$$SpeedTwinRustAsyncSse_GPSImplCopyWithImpl<$Res>;
+          _$SpeedTwinRustAsyncSse_GPSImpl value,
+          $Res Function(_$SpeedTwinRustAsyncSse_GPSImpl) then) =
+      __$$SpeedTwinRustAsyncSse_GPSImplCopyWithImpl<$Res>;
   @useResult
   $Res call({double field0});
 }
@@ -3378,23 +3367,23 @@ class __$$SpeedTwinRustAsyncSse_GPSImplCopyWithImpl<$Res>
         _$SpeedTwinRustAsyncSse_GPSImpl>
     implements _$$SpeedTwinRustAsyncSse_GPSImplCopyWith<$Res> {
   __$$SpeedTwinRustAsyncSse_GPSImplCopyWithImpl(
-    _$SpeedTwinRustAsyncSse_GPSImpl _value,
-    $Res Function(_$SpeedTwinRustAsyncSse_GPSImpl) _then,
-  ) : super(_value, _then);
+      _$SpeedTwinRustAsyncSse_GPSImpl _value,
+      $Res Function(_$SpeedTwinRustAsyncSse_GPSImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of SpeedTwinRustAsyncSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$SpeedTwinRustAsyncSse_GPSImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as double,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$SpeedTwinRustAsyncSse_GPSImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
   }
 }
 

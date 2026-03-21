@@ -12,8 +12,7 @@ part of 'misc_example_twin_rust_async_sse.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AbcTwinRustAsyncSse {
@@ -73,9 +72,8 @@ mixin _$AbcTwinRustAsyncSse {
 /// @nodoc
 abstract class $AbcTwinRustAsyncSseCopyWith<$Res> {
   factory $AbcTwinRustAsyncSseCopyWith(
-    AbcTwinRustAsyncSse value,
-    $Res Function(AbcTwinRustAsyncSse) then,
-  ) = _$AbcTwinRustAsyncSseCopyWithImpl<$Res, AbcTwinRustAsyncSse>;
+          AbcTwinRustAsyncSse value, $Res Function(AbcTwinRustAsyncSse) then) =
+      _$AbcTwinRustAsyncSseCopyWithImpl<$Res, AbcTwinRustAsyncSse>;
 }
 
 /// @nodoc
@@ -95,9 +93,9 @@ class _$AbcTwinRustAsyncSseCopyWithImpl<$Res, $Val extends AbcTwinRustAsyncSse>
 /// @nodoc
 abstract class _$$AbcTwinRustAsyncSse_AImplCopyWith<$Res> {
   factory _$$AbcTwinRustAsyncSse_AImplCopyWith(
-    _$AbcTwinRustAsyncSse_AImpl value,
-    $Res Function(_$AbcTwinRustAsyncSse_AImpl) then,
-  ) = __$$AbcTwinRustAsyncSse_AImplCopyWithImpl<$Res>;
+          _$AbcTwinRustAsyncSse_AImpl value,
+          $Res Function(_$AbcTwinRustAsyncSse_AImpl) then) =
+      __$$AbcTwinRustAsyncSse_AImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ATwinRustAsyncSse field0});
 }
@@ -106,24 +104,23 @@ abstract class _$$AbcTwinRustAsyncSse_AImplCopyWith<$Res> {
 class __$$AbcTwinRustAsyncSse_AImplCopyWithImpl<$Res>
     extends _$AbcTwinRustAsyncSseCopyWithImpl<$Res, _$AbcTwinRustAsyncSse_AImpl>
     implements _$$AbcTwinRustAsyncSse_AImplCopyWith<$Res> {
-  __$$AbcTwinRustAsyncSse_AImplCopyWithImpl(
-    _$AbcTwinRustAsyncSse_AImpl _value,
-    $Res Function(_$AbcTwinRustAsyncSse_AImpl) _then,
-  ) : super(_value, _then);
+  __$$AbcTwinRustAsyncSse_AImplCopyWithImpl(_$AbcTwinRustAsyncSse_AImpl _value,
+      $Res Function(_$AbcTwinRustAsyncSse_AImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AbcTwinRustAsyncSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$AbcTwinRustAsyncSse_AImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as ATwinRustAsyncSse,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$AbcTwinRustAsyncSse_AImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as ATwinRustAsyncSse,
+    ));
   }
 }
 
@@ -158,10 +155,7 @@ class _$AbcTwinRustAsyncSse_AImpl extends AbcTwinRustAsyncSse_A {
   @pragma('vm:prefer-inline')
   _$$AbcTwinRustAsyncSse_AImplCopyWith<_$AbcTwinRustAsyncSse_AImpl>
       get copyWith => __$$AbcTwinRustAsyncSse_AImplCopyWithImpl<
-              _$AbcTwinRustAsyncSse_AImpl>(
-            this,
-            _$identity,
-          );
+          _$AbcTwinRustAsyncSse_AImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -256,9 +250,9 @@ abstract class AbcTwinRustAsyncSse_A extends AbcTwinRustAsyncSse {
 /// @nodoc
 abstract class _$$AbcTwinRustAsyncSse_BImplCopyWith<$Res> {
   factory _$$AbcTwinRustAsyncSse_BImplCopyWith(
-    _$AbcTwinRustAsyncSse_BImpl value,
-    $Res Function(_$AbcTwinRustAsyncSse_BImpl) then,
-  ) = __$$AbcTwinRustAsyncSse_BImplCopyWithImpl<$Res>;
+          _$AbcTwinRustAsyncSse_BImpl value,
+          $Res Function(_$AbcTwinRustAsyncSse_BImpl) then) =
+      __$$AbcTwinRustAsyncSse_BImplCopyWithImpl<$Res>;
   @useResult
   $Res call({BTwinRustAsyncSse field0});
 }
@@ -267,24 +261,23 @@ abstract class _$$AbcTwinRustAsyncSse_BImplCopyWith<$Res> {
 class __$$AbcTwinRustAsyncSse_BImplCopyWithImpl<$Res>
     extends _$AbcTwinRustAsyncSseCopyWithImpl<$Res, _$AbcTwinRustAsyncSse_BImpl>
     implements _$$AbcTwinRustAsyncSse_BImplCopyWith<$Res> {
-  __$$AbcTwinRustAsyncSse_BImplCopyWithImpl(
-    _$AbcTwinRustAsyncSse_BImpl _value,
-    $Res Function(_$AbcTwinRustAsyncSse_BImpl) _then,
-  ) : super(_value, _then);
+  __$$AbcTwinRustAsyncSse_BImplCopyWithImpl(_$AbcTwinRustAsyncSse_BImpl _value,
+      $Res Function(_$AbcTwinRustAsyncSse_BImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AbcTwinRustAsyncSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$AbcTwinRustAsyncSse_BImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as BTwinRustAsyncSse,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$AbcTwinRustAsyncSse_BImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as BTwinRustAsyncSse,
+    ));
   }
 }
 
@@ -319,10 +312,7 @@ class _$AbcTwinRustAsyncSse_BImpl extends AbcTwinRustAsyncSse_B {
   @pragma('vm:prefer-inline')
   _$$AbcTwinRustAsyncSse_BImplCopyWith<_$AbcTwinRustAsyncSse_BImpl>
       get copyWith => __$$AbcTwinRustAsyncSse_BImplCopyWithImpl<
-              _$AbcTwinRustAsyncSse_BImpl>(
-            this,
-            _$identity,
-          );
+          _$AbcTwinRustAsyncSse_BImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -417,9 +407,9 @@ abstract class AbcTwinRustAsyncSse_B extends AbcTwinRustAsyncSse {
 /// @nodoc
 abstract class _$$AbcTwinRustAsyncSse_CImplCopyWith<$Res> {
   factory _$$AbcTwinRustAsyncSse_CImplCopyWith(
-    _$AbcTwinRustAsyncSse_CImpl value,
-    $Res Function(_$AbcTwinRustAsyncSse_CImpl) then,
-  ) = __$$AbcTwinRustAsyncSse_CImplCopyWithImpl<$Res>;
+          _$AbcTwinRustAsyncSse_CImpl value,
+          $Res Function(_$AbcTwinRustAsyncSse_CImpl) then) =
+      __$$AbcTwinRustAsyncSse_CImplCopyWithImpl<$Res>;
   @useResult
   $Res call({CTwinRustAsyncSse field0});
 }
@@ -428,24 +418,23 @@ abstract class _$$AbcTwinRustAsyncSse_CImplCopyWith<$Res> {
 class __$$AbcTwinRustAsyncSse_CImplCopyWithImpl<$Res>
     extends _$AbcTwinRustAsyncSseCopyWithImpl<$Res, _$AbcTwinRustAsyncSse_CImpl>
     implements _$$AbcTwinRustAsyncSse_CImplCopyWith<$Res> {
-  __$$AbcTwinRustAsyncSse_CImplCopyWithImpl(
-    _$AbcTwinRustAsyncSse_CImpl _value,
-    $Res Function(_$AbcTwinRustAsyncSse_CImpl) _then,
-  ) : super(_value, _then);
+  __$$AbcTwinRustAsyncSse_CImplCopyWithImpl(_$AbcTwinRustAsyncSse_CImpl _value,
+      $Res Function(_$AbcTwinRustAsyncSse_CImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AbcTwinRustAsyncSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$AbcTwinRustAsyncSse_CImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as CTwinRustAsyncSse,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$AbcTwinRustAsyncSse_CImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as CTwinRustAsyncSse,
+    ));
   }
 }
 
@@ -480,10 +469,7 @@ class _$AbcTwinRustAsyncSse_CImpl extends AbcTwinRustAsyncSse_C {
   @pragma('vm:prefer-inline')
   _$$AbcTwinRustAsyncSse_CImplCopyWith<_$AbcTwinRustAsyncSse_CImpl>
       get copyWith => __$$AbcTwinRustAsyncSse_CImplCopyWithImpl<
-              _$AbcTwinRustAsyncSse_CImpl>(
-            this,
-            _$identity,
-          );
+          _$AbcTwinRustAsyncSse_CImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -578,9 +564,9 @@ abstract class AbcTwinRustAsyncSse_C extends AbcTwinRustAsyncSse {
 /// @nodoc
 abstract class _$$AbcTwinRustAsyncSse_JustIntImplCopyWith<$Res> {
   factory _$$AbcTwinRustAsyncSse_JustIntImplCopyWith(
-    _$AbcTwinRustAsyncSse_JustIntImpl value,
-    $Res Function(_$AbcTwinRustAsyncSse_JustIntImpl) then,
-  ) = __$$AbcTwinRustAsyncSse_JustIntImplCopyWithImpl<$Res>;
+          _$AbcTwinRustAsyncSse_JustIntImpl value,
+          $Res Function(_$AbcTwinRustAsyncSse_JustIntImpl) then) =
+      __$$AbcTwinRustAsyncSse_JustIntImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int field0});
 }
@@ -591,23 +577,23 @@ class __$$AbcTwinRustAsyncSse_JustIntImplCopyWithImpl<$Res>
         _$AbcTwinRustAsyncSse_JustIntImpl>
     implements _$$AbcTwinRustAsyncSse_JustIntImplCopyWith<$Res> {
   __$$AbcTwinRustAsyncSse_JustIntImplCopyWithImpl(
-    _$AbcTwinRustAsyncSse_JustIntImpl _value,
-    $Res Function(_$AbcTwinRustAsyncSse_JustIntImpl) _then,
-  ) : super(_value, _then);
+      _$AbcTwinRustAsyncSse_JustIntImpl _value,
+      $Res Function(_$AbcTwinRustAsyncSse_JustIntImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of AbcTwinRustAsyncSse
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$AbcTwinRustAsyncSse_JustIntImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as int,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$AbcTwinRustAsyncSse_JustIntImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 

@@ -26,12 +26,10 @@ Uint8List borrowSliceU8TwinSyncSse({required List<int> arg}) => RustLib
 List<String> borrowSliceStringTwinSyncSse({required List<String> arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualOwnershipTwinSyncSseBorrowSliceStringTwinSyncSse(
-      arg: arg,
-    );
+            arg: arg);
 
-SimpleStructForBorrowTwinSyncSse borrowStructTwinSyncSse({
-  required SimpleStructForBorrowTwinSyncSse arg,
-}) =>
+SimpleStructForBorrowTwinSyncSse borrowStructTwinSyncSse(
+        {required SimpleStructForBorrowTwinSyncSse arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualOwnershipTwinSyncSseBorrowStructTwinSyncSse(
             arg: arg);
@@ -39,7 +37,9 @@ SimpleStructForBorrowTwinSyncSse borrowStructTwinSyncSse({
 class SimpleStructForBorrowTwinSyncSse {
   final String one;
 
-  const SimpleStructForBorrowTwinSyncSse({required this.one});
+  const SimpleStructForBorrowTwinSyncSse({
+    required this.one,
+  });
 
   @override
   int get hashCode => one.hashCode;

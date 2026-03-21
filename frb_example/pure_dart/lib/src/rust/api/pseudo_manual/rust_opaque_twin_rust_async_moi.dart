@@ -16,93 +16,75 @@ Future<HideDataTwinRustAsyncMoi> createOpaqueTwinRustAsyncMoi() => RustLib
     .instance.api
     .crateApiPseudoManualRustOpaqueTwinRustAsyncMoiCreateOpaqueTwinRustAsyncMoi();
 
-Future<HideDataTwinRustAsyncMoi?> createOptionOpaqueTwinRustAsyncMoi({
-  HideDataTwinRustAsyncMoi? opaque,
-}) =>
+Future<HideDataTwinRustAsyncMoi?> createOptionOpaqueTwinRustAsyncMoi(
+        {HideDataTwinRustAsyncMoi? opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinRustAsyncMoiCreateOptionOpaqueTwinRustAsyncMoi(
-      opaque: opaque,
-    );
+            opaque: opaque);
 
 Future<EnumOpaqueTwinRustAsyncMoiArray5>
     createArrayOpaqueEnumTwinRustAsyncMoi() => RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinRustAsyncMoiCreateArrayOpaqueEnumTwinRustAsyncMoi();
 
-Future<String> runEnumOpaqueTwinRustAsyncMoi({
-  required EnumOpaqueTwinRustAsyncMoi opaque,
-}) =>
+Future<String> runEnumOpaqueTwinRustAsyncMoi(
+        {required EnumOpaqueTwinRustAsyncMoi opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinRustAsyncMoiRunEnumOpaqueTwinRustAsyncMoi(
-      opaque: opaque,
-    );
+            opaque: opaque);
 
-Future<String> runOpaqueTwinRustAsyncMoi({
-  required HideDataTwinRustAsyncMoi opaque,
-}) =>
+Future<String> runOpaqueTwinRustAsyncMoi(
+        {required HideDataTwinRustAsyncMoi opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinRustAsyncMoiRunOpaqueTwinRustAsyncMoi(
-      opaque: opaque,
-    );
+            opaque: opaque);
 
-Future<String> runOpaqueWithDelayTwinRustAsyncMoi({
-  required HideDataTwinRustAsyncMoi opaque,
-}) =>
+Future<String> runOpaqueWithDelayTwinRustAsyncMoi(
+        {required HideDataTwinRustAsyncMoi opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinRustAsyncMoiRunOpaqueWithDelayTwinRustAsyncMoi(
-      opaque: opaque,
-    );
+            opaque: opaque);
 
 Future<HideDataTwinRustAsyncMoiArray2> opaqueArrayTwinRustAsyncMoi() => RustLib
     .instance.api
     .crateApiPseudoManualRustOpaqueTwinRustAsyncMoiOpaqueArrayTwinRustAsyncMoi();
 
-Future<String> runNonCloneTwinRustAsyncMoi({
-  required NonCloneDataTwinRustAsyncMoi clone,
-}) =>
+Future<String> runNonCloneTwinRustAsyncMoi(
+        {required NonCloneDataTwinRustAsyncMoi clone}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinRustAsyncMoiRunNonCloneTwinRustAsyncMoi(
-      clone: clone,
-    );
+            clone: clone);
 
-Future<void> opaqueArrayRunTwinRustAsyncMoi({
-  required HideDataTwinRustAsyncMoiArray2 data,
-}) =>
+Future<void> opaqueArrayRunTwinRustAsyncMoi(
+        {required HideDataTwinRustAsyncMoiArray2 data}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinRustAsyncMoiOpaqueArrayRunTwinRustAsyncMoi(
-      data: data,
-    );
+            data: data);
 
 Future<List<HideDataTwinRustAsyncMoi>> opaqueVecTwinRustAsyncMoi() => RustLib
     .instance.api
     .crateApiPseudoManualRustOpaqueTwinRustAsyncMoiOpaqueVecTwinRustAsyncMoi();
 
-Future<void> opaqueVecRunTwinRustAsyncMoi({
-  required List<HideDataTwinRustAsyncMoi> data,
-}) =>
+Future<void> opaqueVecRunTwinRustAsyncMoi(
+        {required List<HideDataTwinRustAsyncMoi> data}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinRustAsyncMoiOpaqueVecRunTwinRustAsyncMoi(
-      data: data,
-    );
+            data: data);
 
 Future<OpaqueNestedTwinRustAsyncMoi> createNestedOpaqueTwinRustAsyncMoi() =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinRustAsyncMoiCreateNestedOpaqueTwinRustAsyncMoi();
 
-Future<void> runNestedOpaqueTwinRustAsyncMoi({
-  required OpaqueNestedTwinRustAsyncMoi opaque,
-}) =>
+Future<void> runNestedOpaqueTwinRustAsyncMoi(
+        {required OpaqueNestedTwinRustAsyncMoi opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinRustAsyncMoiRunNestedOpaqueTwinRustAsyncMoi(
-      opaque: opaque,
-    );
+            opaque: opaque);
 
-Future<String> unwrapRustOpaqueTwinRustAsyncMoi({
-  required HideDataTwinRustAsyncMoi opaque,
-}) =>
+Future<String> unwrapRustOpaqueTwinRustAsyncMoi(
+        {required HideDataTwinRustAsyncMoi opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinRustAsyncMoiUnwrapRustOpaqueTwinRustAsyncMoi(
-      opaque: opaque,
-    );
+            opaque: opaque);
 
 /// Function to check the code generator.
 /// FrbOpaqueReturn must be only return type.
@@ -152,8 +134,9 @@ sealed class EnumOpaqueTwinRustAsyncMoi with _$EnumOpaqueTwinRustAsyncMoi {
   const factory EnumOpaqueTwinRustAsyncMoi.struct(
     HideDataTwinRustAsyncMoi field0,
   ) = EnumOpaqueTwinRustAsyncMoi_Struct;
-  const factory EnumOpaqueTwinRustAsyncMoi.primitive(I16 field0) =
-      EnumOpaqueTwinRustAsyncMoi_Primitive;
+  const factory EnumOpaqueTwinRustAsyncMoi.primitive(
+    I16 field0,
+  ) = EnumOpaqueTwinRustAsyncMoi_Primitive;
   const factory EnumOpaqueTwinRustAsyncMoi.traitObj(
     BoxDartDebugTwinRustAsyncMoi field0,
   ) = EnumOpaqueTwinRustAsyncMoi_TraitObj;

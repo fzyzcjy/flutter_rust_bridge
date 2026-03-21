@@ -16,11 +16,8 @@ part 'method.freezed.dart';
 Future<SumWithTwinNormal> getSumStructTwinNormal() =>
     RustLib.instance.api.crateApiMethodGetSumStructTwinNormal();
 
-Future<SumWithTwinNormalArray3> getSumArrayTwinNormal({
-  required int a,
-  required int b,
-  required int c,
-}) =>
+Future<SumWithTwinNormalArray3> getSumArrayTwinNormal(
+        {required int a, required int b, required int c}) =>
     RustLib.instance.api.crateApiMethodGetSumArrayTwinNormal(a: a, b: b, c: c);
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<StaticGetterOnlyTwinNormal>>
@@ -32,59 +29,45 @@ abstract class StaticGetterOnlyTwinNormal implements RustOpaqueInterface {
 class ConcatenateWithTwinNormal {
   final String a;
 
-  const ConcatenateWithTwinNormal({required this.a});
+  const ConcatenateWithTwinNormal({
+    required this.a,
+  });
 
-  static Future<String> concatenateStaticTwinNormal({
-    required String a,
-    required String b,
-  }) =>
+  static Future<String> concatenateStaticTwinNormal(
+          {required String a, required String b}) =>
       RustLib.instance.api
           .crateApiMethodConcatenateWithTwinNormalConcatenateStaticTwinNormal(
-        a: a,
-        b: b,
-      );
+              a: a, b: b);
 
   Future<String> concatenateTwinNormal({required String b}) =>
       RustLib.instance.api
           .crateApiMethodConcatenateWithTwinNormalConcatenateTwinNormal(
-        that: this,
-        b: b,
-      );
+              that: this, b: b);
 
   static Stream<int> handleSomeStaticStreamSinkSingleArgTwinNormal() => RustLib
       .instance.api
       .crateApiMethodConcatenateWithTwinNormalHandleSomeStaticStreamSinkSingleArgTwinNormal();
 
-  static Stream<Log2TwinNormal> handleSomeStaticStreamSinkTwinNormal({
-    required int key,
-    required int max,
-  }) =>
+  static Stream<Log2TwinNormal> handleSomeStaticStreamSinkTwinNormal(
+          {required int key, required int max}) =>
       RustLib.instance.api
           .crateApiMethodConcatenateWithTwinNormalHandleSomeStaticStreamSinkTwinNormal(
-        key: key,
-        max: max,
-      );
+              key: key, max: max);
 
   Stream<int> handleSomeStreamSinkAt1TwinNormal() => RustLib.instance.api
           .crateApiMethodConcatenateWithTwinNormalHandleSomeStreamSinkAt1TwinNormal(
         that: this,
       );
 
-  Stream<Log2TwinNormal> handleSomeStreamSinkTwinNormal({
-    required int key,
-    required int max,
-  }) =>
+  Stream<Log2TwinNormal> handleSomeStreamSinkTwinNormal(
+          {required int key, required int max}) =>
       RustLib.instance.api
           .crateApiMethodConcatenateWithTwinNormalHandleSomeStreamSinkTwinNormal(
-        that: this,
-        key: key,
-        max: max,
-      );
+              that: this, key: key, max: max);
 
   static Future<ConcatenateWithTwinNormal> newTwinNormal({required String a}) =>
-      RustLib.instance.api.crateApiMethodConcatenateWithTwinNormalNewTwinNormal(
-        a: a,
-      );
+      RustLib.instance.api
+          .crateApiMethodConcatenateWithTwinNormalNewTwinNormal(a: a);
 
   Future<String> get simpleGetterTwinNormal => RustLib.instance.api
           .crateApiMethodConcatenateWithTwinNormalSimpleGetterTwinNormal(
@@ -106,7 +89,10 @@ class Log2TwinNormal {
   final int key;
   final String value;
 
-  const Log2TwinNormal({required this.key, required this.value});
+  const Log2TwinNormal({
+    required this.key,
+    required this.value,
+  });
 
   @override
   int get hashCode => key.hashCode ^ value.hashCode;
@@ -123,7 +109,9 @@ class Log2TwinNormal {
 class MyCallableTwinNormal {
   final String one;
 
-  const MyCallableTwinNormal({required this.one});
+  const MyCallableTwinNormal({
+    required this.one,
+  });
 
   Future<String> call({required String two}) => RustLib.instance.api
       .crateApiMethodMyCallableTwinNormalCall(that: this, two: two);
@@ -144,22 +132,25 @@ sealed class SimpleEnumTwinNormal with _$SimpleEnumTwinNormal {
   const SimpleEnumTwinNormal._();
 
   const factory SimpleEnumTwinNormal.first() = SimpleEnumTwinNormal_First;
-  const factory SimpleEnumTwinNormal.second(String field0) =
-      SimpleEnumTwinNormal_Second;
+  const factory SimpleEnumTwinNormal.second(
+    String field0,
+  ) = SimpleEnumTwinNormal_Second;
 
-  static Future<SimpleEnumTwinNormal> returnSelfTwinNormal({
-    required String one,
-  }) =>
+  static Future<SimpleEnumTwinNormal> returnSelfTwinNormal(
+          {required String one}) =>
       RustLib.instance.api
           .crateApiMethodSimpleEnumTwinNormalReturnSelfTwinNormal(one: one);
 
   Future<String> simpleMethodTwinNormal() => RustLib.instance.api
-      .crateApiMethodSimpleEnumTwinNormalSimpleMethodTwinNormal(that: this);
+          .crateApiMethodSimpleEnumTwinNormalSimpleMethodTwinNormal(
+        that: this,
+      );
 }
 
 enum SimplePrimitiveEnumTwinNormal {
   first,
-  second;
+  second,
+  ;
 
   Future<int> simpleMethodTwinNormal() => RustLib.instance.api
           .crateApiMethodSimplePrimitiveEnumTwinNormalSimpleMethodTwinNormal(
@@ -170,30 +161,33 @@ enum SimplePrimitiveEnumTwinNormal {
 class SimpleStructTwinNormal {
   final String one;
 
-  const SimpleStructTwinNormal({required this.one});
+  const SimpleStructTwinNormal({
+    required this.one,
+  });
 
-  static Future<String> argSelfTwinNormal({
-    required SimpleStructTwinNormal a,
-    required SimpleStructTwinNormal b,
-  }) =>
+  static Future<String> argSelfTwinNormal(
+          {required SimpleStructTwinNormal a,
+          required SimpleStructTwinNormal b}) =>
       RustLib.instance.api
           .crateApiMethodSimpleStructTwinNormalArgSelfTwinNormal(a: a, b: b);
 
   Future<String> receiverBorrowTwinNormal() => RustLib.instance.api
-      .crateApiMethodSimpleStructTwinNormalReceiverBorrowTwinNormal(that: this);
+          .crateApiMethodSimpleStructTwinNormalReceiverBorrowTwinNormal(
+        that: this,
+      );
 
   Future<String> receiverOwnTwinNormal() => RustLib.instance.api
-      .crateApiMethodSimpleStructTwinNormalReceiverOwnTwinNormal(that: this);
+          .crateApiMethodSimpleStructTwinNormalReceiverOwnTwinNormal(
+        that: this,
+      );
 
-  static Future<SimpleStructTwinNormal> returnSelfTwinNormal({
-    required String one,
-  }) =>
+  static Future<SimpleStructTwinNormal> returnSelfTwinNormal(
+          {required String one}) =>
       RustLib.instance.api
           .crateApiMethodSimpleStructTwinNormalReturnSelfTwinNormal(one: one);
 
-  static Future<List<String>> vecSelfTwinNormal({
-    required List<SimpleStructTwinNormal> arg,
-  }) =>
+  static Future<List<String>> vecSelfTwinNormal(
+          {required List<SimpleStructTwinNormal> arg}) =>
       RustLib.instance.api
           .crateApiMethodSimpleStructTwinNormalVecSelfTwinNormal(arg: arg);
 
@@ -211,7 +205,9 @@ class SimpleStructTwinNormal {
 class StaticOnlyTwinNormal {
   final String one;
 
-  const StaticOnlyTwinNormal({required this.one});
+  const StaticOnlyTwinNormal({
+    required this.one,
+  });
 
   static Future<int> staticMethodTwinNormal({required int a}) =>
       RustLib.instance.api
@@ -231,7 +227,9 @@ class StaticOnlyTwinNormal {
 class SumWithTwinNormal {
   final int x;
 
-  const SumWithTwinNormal({required this.x});
+  const SumWithTwinNormal({
+    required this.x,
+  });
 
   Future<int> sumTwinNormal({required int y, required int z}) =>
       RustLib.instance.api

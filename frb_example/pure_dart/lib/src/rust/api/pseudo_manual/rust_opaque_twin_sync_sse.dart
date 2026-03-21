@@ -15,13 +15,11 @@ part 'rust_opaque_twin_sync_sse.freezed.dart';
 HideDataTwinSyncSse createOpaqueTwinSyncSse() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueTwinSyncSseCreateOpaqueTwinSyncSse();
 
-HideDataTwinSyncSse? createOptionOpaqueTwinSyncSse({
-  HideDataTwinSyncSse? opaque,
-}) =>
+HideDataTwinSyncSse? createOptionOpaqueTwinSyncSse(
+        {HideDataTwinSyncSse? opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinSyncSseCreateOptionOpaqueTwinSyncSse(
-      opaque: opaque,
-    );
+            opaque: opaque);
 
 EnumOpaqueTwinSyncSseArray5 createArrayOpaqueEnumTwinSyncSse() => RustLib
     .instance.api
@@ -30,20 +28,17 @@ EnumOpaqueTwinSyncSseArray5 createArrayOpaqueEnumTwinSyncSse() => RustLib
 String runEnumOpaqueTwinSyncSse({required EnumOpaqueTwinSyncSse opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinSyncSseRunEnumOpaqueTwinSyncSse(
-      opaque: opaque,
-    );
+            opaque: opaque);
 
 String runOpaqueTwinSyncSse({required HideDataTwinSyncSse opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinSyncSseRunOpaqueTwinSyncSse(
-      opaque: opaque,
-    );
+            opaque: opaque);
 
 String runOpaqueWithDelayTwinSyncSse({required HideDataTwinSyncSse opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinSyncSseRunOpaqueWithDelayTwinSyncSse(
-      opaque: opaque,
-    );
+            opaque: opaque);
 
 HideDataTwinSyncSseArray2 opaqueArrayTwinSyncSse() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueTwinSyncSseOpaqueArrayTwinSyncSse();
@@ -51,14 +46,12 @@ HideDataTwinSyncSseArray2 opaqueArrayTwinSyncSse() => RustLib.instance.api
 String runNonCloneTwinSyncSse({required NonCloneDataTwinSyncSse clone}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinSyncSseRunNonCloneTwinSyncSse(
-      clone: clone,
-    );
+            clone: clone);
 
 void opaqueArrayRunTwinSyncSse({required HideDataTwinSyncSseArray2 data}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinSyncSseOpaqueArrayRunTwinSyncSse(
-      data: data,
-    );
+            data: data);
 
 List<HideDataTwinSyncSse> opaqueVecTwinSyncSse() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueTwinSyncSseOpaqueVecTwinSyncSse();
@@ -66,8 +59,7 @@ List<HideDataTwinSyncSse> opaqueVecTwinSyncSse() => RustLib.instance.api
 void opaqueVecRunTwinSyncSse({required List<HideDataTwinSyncSse> data}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinSyncSseOpaqueVecRunTwinSyncSse(
-      data: data,
-    );
+            data: data);
 
 OpaqueNestedTwinSyncSse createNestedOpaqueTwinSyncSse() => RustLib.instance.api
     .crateApiPseudoManualRustOpaqueTwinSyncSseCreateNestedOpaqueTwinSyncSse();
@@ -75,14 +67,12 @@ OpaqueNestedTwinSyncSse createNestedOpaqueTwinSyncSse() => RustLib.instance.api
 void runNestedOpaqueTwinSyncSse({required OpaqueNestedTwinSyncSse opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinSyncSseRunNestedOpaqueTwinSyncSse(
-      opaque: opaque,
-    );
+            opaque: opaque);
 
 String unwrapRustOpaqueTwinSyncSse({required HideDataTwinSyncSse opaque}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustOpaqueTwinSyncSseUnwrapRustOpaqueTwinSyncSse(
-      opaque: opaque,
-    );
+            opaque: opaque);
 
 /// Function to check the code generator.
 /// FrbOpaqueReturn must be only return type.
@@ -128,16 +118,21 @@ abstract class RwLockHideDataTwinSyncSse implements RustOpaqueInterface {}
 sealed class EnumOpaqueTwinSyncSse with _$EnumOpaqueTwinSyncSse {
   const EnumOpaqueTwinSyncSse._();
 
-  const factory EnumOpaqueTwinSyncSse.struct(HideDataTwinSyncSse field0) =
-      EnumOpaqueTwinSyncSse_Struct;
-  const factory EnumOpaqueTwinSyncSse.primitive(I32 field0) =
-      EnumOpaqueTwinSyncSse_Primitive;
-  const factory EnumOpaqueTwinSyncSse.traitObj(BoxDartDebugTwinSyncSse field0) =
-      EnumOpaqueTwinSyncSse_TraitObj;
-  const factory EnumOpaqueTwinSyncSse.mutex(MutexHideDataTwinSyncSse field0) =
-      EnumOpaqueTwinSyncSse_Mutex;
-  const factory EnumOpaqueTwinSyncSse.rwLock(RwLockHideDataTwinSyncSse field0) =
-      EnumOpaqueTwinSyncSse_RwLock;
+  const factory EnumOpaqueTwinSyncSse.struct(
+    HideDataTwinSyncSse field0,
+  ) = EnumOpaqueTwinSyncSse_Struct;
+  const factory EnumOpaqueTwinSyncSse.primitive(
+    I32 field0,
+  ) = EnumOpaqueTwinSyncSse_Primitive;
+  const factory EnumOpaqueTwinSyncSse.traitObj(
+    BoxDartDebugTwinSyncSse field0,
+  ) = EnumOpaqueTwinSyncSse_TraitObj;
+  const factory EnumOpaqueTwinSyncSse.mutex(
+    MutexHideDataTwinSyncSse field0,
+  ) = EnumOpaqueTwinSyncSse_Mutex;
+  const factory EnumOpaqueTwinSyncSse.rwLock(
+    RwLockHideDataTwinSyncSse field0,
+  ) = EnumOpaqueTwinSyncSse_RwLock;
   const factory EnumOpaqueTwinSyncSse.nothing() = EnumOpaqueTwinSyncSse_Nothing;
 }
 
@@ -162,7 +157,10 @@ class OpaqueNestedTwinSyncSse {
   final HideDataTwinSyncSse first;
   final HideDataTwinSyncSse second;
 
-  const OpaqueNestedTwinSyncSse({required this.first, required this.second});
+  const OpaqueNestedTwinSyncSse({
+    required this.first,
+    required this.second,
+  });
 
   @override
   int get hashCode => first.hashCode ^ second.hashCode;

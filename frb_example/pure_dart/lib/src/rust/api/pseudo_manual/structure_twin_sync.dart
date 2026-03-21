@@ -8,61 +8,47 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-StructWithZeroFieldTwinSync funcStructWithZeroFieldTwinSync({
-  required StructWithZeroFieldTwinSync arg,
-}) =>
+StructWithZeroFieldTwinSync funcStructWithZeroFieldTwinSync(
+        {required StructWithZeroFieldTwinSync arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualStructureTwinSyncFuncStructWithZeroFieldTwinSync(
-      arg: arg,
-    );
+            arg: arg);
 
-StructWithOneFieldTwinSync funcStructWithOneFieldTwinSync({
-  required StructWithOneFieldTwinSync arg,
-}) =>
+StructWithOneFieldTwinSync funcStructWithOneFieldTwinSync(
+        {required StructWithOneFieldTwinSync arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualStructureTwinSyncFuncStructWithOneFieldTwinSync(
-      arg: arg,
-    );
+            arg: arg);
 
-StructWithTwoFieldTwinSync funcStructWithTwoFieldTwinSync({
-  required StructWithTwoFieldTwinSync arg,
-}) =>
+StructWithTwoFieldTwinSync funcStructWithTwoFieldTwinSync(
+        {required StructWithTwoFieldTwinSync arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualStructureTwinSyncFuncStructWithTwoFieldTwinSync(
-      arg: arg,
-    );
+            arg: arg);
 
-TupleStructWithOneFieldTwinSync funcTupleStructWithOneFieldTwinSync({
-  required TupleStructWithOneFieldTwinSync arg,
-}) =>
+TupleStructWithOneFieldTwinSync funcTupleStructWithOneFieldTwinSync(
+        {required TupleStructWithOneFieldTwinSync arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualStructureTwinSyncFuncTupleStructWithOneFieldTwinSync(
-      arg: arg,
-    );
+            arg: arg);
 
-TupleStructWithTwoFieldTwinSync funcTupleStructWithTwoFieldTwinSync({
-  required TupleStructWithTwoFieldTwinSync arg,
-}) =>
+TupleStructWithTwoFieldTwinSync funcTupleStructWithTwoFieldTwinSync(
+        {required TupleStructWithTwoFieldTwinSync arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualStructureTwinSyncFuncTupleStructWithTwoFieldTwinSync(
-      arg: arg,
-    );
+            arg: arg);
 
-StructWithFieldRenameTwinSync funcForStructWithFieldRenameTwinSync({
-  required StructWithFieldRenameTwinSync arg,
-}) =>
+StructWithFieldRenameTwinSync funcForStructWithFieldRenameTwinSync(
+        {required StructWithFieldRenameTwinSync arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualStructureTwinSyncFuncForStructWithFieldRenameTwinSync(
-      arg: arg,
-    );
+            arg: arg);
 
-StructWithDartKeywordFieldTwinSync funcForStructWithDartKeywordFieldTwinSync({
-  required StructWithDartKeywordFieldTwinSync arg,
-}) =>
+StructWithDartKeywordFieldTwinSync funcForStructWithDartKeywordFieldTwinSync(
+        {required StructWithDartKeywordFieldTwinSync arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualStructureTwinSyncFuncForStructWithDartKeywordFieldTwinSync(
-      arg: arg,
-    );
+            arg: arg);
 
 class StructWithDartKeywordFieldTwinSync {
   final int class_;
@@ -88,7 +74,9 @@ class StructWithDartKeywordFieldTwinSync {
 class StructWithFieldRenameTwinSync {
   final int renamed_field;
 
-  const StructWithFieldRenameTwinSync({required this.renamed_field});
+  const StructWithFieldRenameTwinSync({
+    required this.renamed_field,
+  });
 
   @override
   int get hashCode => renamed_field.hashCode;
@@ -104,7 +92,9 @@ class StructWithFieldRenameTwinSync {
 class StructWithOneFieldTwinSync {
   final int a;
 
-  const StructWithOneFieldTwinSync({required this.a});
+  const StructWithOneFieldTwinSync({
+    required this.a,
+  });
 
   @override
   int get hashCode => a.hashCode;
@@ -121,7 +111,10 @@ class StructWithTwoFieldTwinSync {
   final int a;
   final int b;
 
-  const StructWithTwoFieldTwinSync({required this.a, required this.b});
+  const StructWithTwoFieldTwinSync({
+    required this.a,
+    required this.b,
+  });
 
   @override
   int get hashCode => a.hashCode ^ b.hashCode;
@@ -150,7 +143,9 @@ class StructWithZeroFieldTwinSync {
 class TupleStructWithOneFieldTwinSync {
   final int field0;
 
-  const TupleStructWithOneFieldTwinSync({required this.field0});
+  const TupleStructWithOneFieldTwinSync({
+    required this.field0,
+  });
 
   @override
   int get hashCode => field0.hashCode;

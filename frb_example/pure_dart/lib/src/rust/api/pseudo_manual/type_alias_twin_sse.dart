@@ -16,14 +16,12 @@ Future<BigInt> handleTypeAliasIdTwinSse({required BigInt input}) => RustLib
 Future<BigInt> handleTypeNestAliasIdTwinSse({required BigInt input}) =>
     RustLib.instance.api
         .crateApiPseudoManualTypeAliasTwinSseHandleTypeNestAliasIdTwinSse(
-      input: input,
-    );
+            input: input);
 
 Future<TestModelTwinSse> handleTypeAliasModelTwinSse({required BigInt input}) =>
     RustLib.instance.api
         .crateApiPseudoManualTypeAliasTwinSseHandleTypeAliasModelTwinSse(
-      input: input,
-    );
+            input: input);
 
 class TestModelTwinSse {
   final BigInt id;

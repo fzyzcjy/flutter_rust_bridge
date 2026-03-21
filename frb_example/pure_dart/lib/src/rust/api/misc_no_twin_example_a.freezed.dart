@@ -12,8 +12,7 @@ part of 'misc_no_twin_example_a.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 MyEnumWithJsonSerializableTwinNormal
     _$MyEnumWithJsonSerializableTwinNormalFromJson(Map<String, dynamic> json) {
@@ -25,11 +24,10 @@ MyEnumWithJsonSerializableTwinNormal
 
     default:
       throw CheckedFromJsonException(
-        json,
-        'runtimeType',
-        'MyEnumWithJsonSerializableTwinNormal',
-        'Invalid union type "${json['runtimeType']}"!',
-      );
+          json,
+          'runtimeType',
+          'MyEnumWithJsonSerializableTwinNormal',
+          'Invalid union type "${json['runtimeType']}"!');
   }
 }
 
@@ -84,10 +82,10 @@ mixin _$MyEnumWithJsonSerializableTwinNormal {
 /// @nodoc
 abstract class $MyEnumWithJsonSerializableTwinNormalCopyWith<$Res> {
   factory $MyEnumWithJsonSerializableTwinNormalCopyWith(
-    MyEnumWithJsonSerializableTwinNormal value,
-    $Res Function(MyEnumWithJsonSerializableTwinNormal) then,
-  ) = _$MyEnumWithJsonSerializableTwinNormalCopyWithImpl<$Res,
-      MyEnumWithJsonSerializableTwinNormal>;
+          MyEnumWithJsonSerializableTwinNormal value,
+          $Res Function(MyEnumWithJsonSerializableTwinNormal) then) =
+      _$MyEnumWithJsonSerializableTwinNormalCopyWithImpl<$Res,
+          MyEnumWithJsonSerializableTwinNormal>;
 }
 
 /// @nodoc
@@ -108,9 +106,10 @@ class _$MyEnumWithJsonSerializableTwinNormalCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$MyEnumWithJsonSerializableTwinNormal_AppleImplCopyWith<$Res> {
   factory _$$MyEnumWithJsonSerializableTwinNormal_AppleImplCopyWith(
-    _$MyEnumWithJsonSerializableTwinNormal_AppleImpl value,
-    $Res Function(_$MyEnumWithJsonSerializableTwinNormal_AppleImpl) then,
-  ) = __$$MyEnumWithJsonSerializableTwinNormal_AppleImplCopyWithImpl<$Res>;
+          _$MyEnumWithJsonSerializableTwinNormal_AppleImpl value,
+          $Res Function(_$MyEnumWithJsonSerializableTwinNormal_AppleImpl)
+              then) =
+      __$$MyEnumWithJsonSerializableTwinNormal_AppleImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String field0});
 }
@@ -121,23 +120,23 @@ class __$$MyEnumWithJsonSerializableTwinNormal_AppleImplCopyWithImpl<$Res>
         _$MyEnumWithJsonSerializableTwinNormal_AppleImpl>
     implements _$$MyEnumWithJsonSerializableTwinNormal_AppleImplCopyWith<$Res> {
   __$$MyEnumWithJsonSerializableTwinNormal_AppleImplCopyWithImpl(
-    _$MyEnumWithJsonSerializableTwinNormal_AppleImpl _value,
-    $Res Function(_$MyEnumWithJsonSerializableTwinNormal_AppleImpl) _then,
-  ) : super(_value, _then);
+      _$MyEnumWithJsonSerializableTwinNormal_AppleImpl _value,
+      $Res Function(_$MyEnumWithJsonSerializableTwinNormal_AppleImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of MyEnumWithJsonSerializableTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$MyEnumWithJsonSerializableTwinNormal_AppleImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as String,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$MyEnumWithJsonSerializableTwinNormal_AppleImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -145,15 +144,13 @@ class __$$MyEnumWithJsonSerializableTwinNormal_AppleImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$MyEnumWithJsonSerializableTwinNormal_AppleImpl
     extends MyEnumWithJsonSerializableTwinNormal_Apple {
-  const _$MyEnumWithJsonSerializableTwinNormal_AppleImpl(
-    this.field0, {
-    final String? $type,
-  })  : $type = $type ?? 'apple',
+  const _$MyEnumWithJsonSerializableTwinNormal_AppleImpl(this.field0,
+      {final String? $type})
+      : $type = $type ?? 'apple',
         super._();
 
   factory _$MyEnumWithJsonSerializableTwinNormal_AppleImpl.fromJson(
-    Map<String, dynamic> json,
-  ) =>
+          Map<String, dynamic> json) =>
       _$$MyEnumWithJsonSerializableTwinNormal_AppleImplFromJson(json);
 
   @override
@@ -258,20 +255,21 @@ class _$MyEnumWithJsonSerializableTwinNormal_AppleImpl
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$MyEnumWithJsonSerializableTwinNormal_AppleImplToJson(this);
+    return _$$MyEnumWithJsonSerializableTwinNormal_AppleImplToJson(
+      this,
+    );
   }
 }
 
 abstract class MyEnumWithJsonSerializableTwinNormal_Apple
     extends MyEnumWithJsonSerializableTwinNormal {
   const factory MyEnumWithJsonSerializableTwinNormal_Apple(
-    final String field0,
-  ) = _$MyEnumWithJsonSerializableTwinNormal_AppleImpl;
+      final String field0) = _$MyEnumWithJsonSerializableTwinNormal_AppleImpl;
   const MyEnumWithJsonSerializableTwinNormal_Apple._() : super._();
 
   factory MyEnumWithJsonSerializableTwinNormal_Apple.fromJson(
-    Map<String, dynamic> json,
-  ) = _$MyEnumWithJsonSerializableTwinNormal_AppleImpl.fromJson;
+          Map<String, dynamic> json) =
+      _$MyEnumWithJsonSerializableTwinNormal_AppleImpl.fromJson;
 
   String get field0;
 
@@ -287,9 +285,10 @@ abstract class MyEnumWithJsonSerializableTwinNormal_Apple
 abstract class _$$MyEnumWithJsonSerializableTwinNormal_OrangeImplCopyWith<
     $Res> {
   factory _$$MyEnumWithJsonSerializableTwinNormal_OrangeImplCopyWith(
-    _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl value,
-    $Res Function(_$MyEnumWithJsonSerializableTwinNormal_OrangeImpl) then,
-  ) = __$$MyEnumWithJsonSerializableTwinNormal_OrangeImplCopyWithImpl<$Res>;
+          _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl value,
+          $Res Function(_$MyEnumWithJsonSerializableTwinNormal_OrangeImpl)
+              then) =
+      __$$MyEnumWithJsonSerializableTwinNormal_OrangeImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int a});
 }
@@ -301,23 +300,23 @@ class __$$MyEnumWithJsonSerializableTwinNormal_OrangeImplCopyWithImpl<$Res>
     implements
         _$$MyEnumWithJsonSerializableTwinNormal_OrangeImplCopyWith<$Res> {
   __$$MyEnumWithJsonSerializableTwinNormal_OrangeImplCopyWithImpl(
-    _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl _value,
-    $Res Function(_$MyEnumWithJsonSerializableTwinNormal_OrangeImpl) _then,
-  ) : super(_value, _then);
+      _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl _value,
+      $Res Function(_$MyEnumWithJsonSerializableTwinNormal_OrangeImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of MyEnumWithJsonSerializableTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? a = null}) {
-    return _then(
-      _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl(
-        a: null == a
-            ? _value.a
-            : a // ignore: cast_nullable_to_non_nullable
-                as int,
-      ),
-    );
+  $Res call({
+    Object? a = null,
+  }) {
+    return _then(_$MyEnumWithJsonSerializableTwinNormal_OrangeImpl(
+      a: null == a
+          ? _value.a
+          : a // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
@@ -325,15 +324,13 @@ class __$$MyEnumWithJsonSerializableTwinNormal_OrangeImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl
     extends MyEnumWithJsonSerializableTwinNormal_Orange {
-  const _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl({
-    required this.a,
-    final String? $type,
-  })  : $type = $type ?? 'orange',
+  const _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl(
+      {required this.a, final String? $type})
+      : $type = $type ?? 'orange',
         super._();
 
   factory _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl.fromJson(
-    Map<String, dynamic> json,
-  ) =>
+          Map<String, dynamic> json) =>
       _$$MyEnumWithJsonSerializableTwinNormal_OrangeImplFromJson(json);
 
   @override
@@ -438,20 +435,22 @@ class _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$MyEnumWithJsonSerializableTwinNormal_OrangeImplToJson(this);
+    return _$$MyEnumWithJsonSerializableTwinNormal_OrangeImplToJson(
+      this,
+    );
   }
 }
 
 abstract class MyEnumWithJsonSerializableTwinNormal_Orange
     extends MyEnumWithJsonSerializableTwinNormal {
-  const factory MyEnumWithJsonSerializableTwinNormal_Orange({
-    required final int a,
-  }) = _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl;
+  const factory MyEnumWithJsonSerializableTwinNormal_Orange(
+          {required final int a}) =
+      _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl;
   const MyEnumWithJsonSerializableTwinNormal_Orange._() : super._();
 
   factory MyEnumWithJsonSerializableTwinNormal_Orange.fromJson(
-    Map<String, dynamic> json,
-  ) = _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl.fromJson;
+          Map<String, dynamic> json) =
+      _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl.fromJson;
 
   int get a;
 
@@ -511,10 +510,10 @@ mixin _$MyEnumWithoutFnWithUnignoreTwinNormal {
 /// @nodoc
 abstract class $MyEnumWithoutFnWithUnignoreTwinNormalCopyWith<$Res> {
   factory $MyEnumWithoutFnWithUnignoreTwinNormalCopyWith(
-    MyEnumWithoutFnWithUnignoreTwinNormal value,
-    $Res Function(MyEnumWithoutFnWithUnignoreTwinNormal) then,
-  ) = _$MyEnumWithoutFnWithUnignoreTwinNormalCopyWithImpl<$Res,
-      MyEnumWithoutFnWithUnignoreTwinNormal>;
+          MyEnumWithoutFnWithUnignoreTwinNormal value,
+          $Res Function(MyEnumWithoutFnWithUnignoreTwinNormal) then) =
+      _$MyEnumWithoutFnWithUnignoreTwinNormalCopyWithImpl<$Res,
+          MyEnumWithoutFnWithUnignoreTwinNormal>;
   @useResult
   $Res call({String field0});
 }
@@ -534,15 +533,15 @@ class _$MyEnumWithoutFnWithUnignoreTwinNormalCopyWithImpl<$Res,
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _value.copyWith(
-        field0: null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as String,
-      ) as $Val,
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_value.copyWith(
+      field0: null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
@@ -550,9 +549,9 @@ class _$MyEnumWithoutFnWithUnignoreTwinNormalCopyWithImpl<$Res,
 abstract class _$$MyEnumWithoutFnWithUnignoreTwinNormal_OneImplCopyWith<$Res>
     implements $MyEnumWithoutFnWithUnignoreTwinNormalCopyWith<$Res> {
   factory _$$MyEnumWithoutFnWithUnignoreTwinNormal_OneImplCopyWith(
-    _$MyEnumWithoutFnWithUnignoreTwinNormal_OneImpl value,
-    $Res Function(_$MyEnumWithoutFnWithUnignoreTwinNormal_OneImpl) then,
-  ) = __$$MyEnumWithoutFnWithUnignoreTwinNormal_OneImplCopyWithImpl<$Res>;
+          _$MyEnumWithoutFnWithUnignoreTwinNormal_OneImpl value,
+          $Res Function(_$MyEnumWithoutFnWithUnignoreTwinNormal_OneImpl) then) =
+      __$$MyEnumWithoutFnWithUnignoreTwinNormal_OneImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String field0});
@@ -564,23 +563,23 @@ class __$$MyEnumWithoutFnWithUnignoreTwinNormal_OneImplCopyWithImpl<$Res>
         _$MyEnumWithoutFnWithUnignoreTwinNormal_OneImpl>
     implements _$$MyEnumWithoutFnWithUnignoreTwinNormal_OneImplCopyWith<$Res> {
   __$$MyEnumWithoutFnWithUnignoreTwinNormal_OneImplCopyWithImpl(
-    _$MyEnumWithoutFnWithUnignoreTwinNormal_OneImpl _value,
-    $Res Function(_$MyEnumWithoutFnWithUnignoreTwinNormal_OneImpl) _then,
-  ) : super(_value, _then);
+      _$MyEnumWithoutFnWithUnignoreTwinNormal_OneImpl _value,
+      $Res Function(_$MyEnumWithoutFnWithUnignoreTwinNormal_OneImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of MyEnumWithoutFnWithUnignoreTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? field0 = null}) {
-    return _then(
-      _$MyEnumWithoutFnWithUnignoreTwinNormal_OneImpl(
-        null == field0
-            ? _value.field0
-            : field0 // ignore: cast_nullable_to_non_nullable
-                as String,
-      ),
-    );
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$MyEnumWithoutFnWithUnignoreTwinNormal_OneImpl(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -722,10 +721,10 @@ mixin _$MyStructWithJsonSerializableTwinNormal {
 /// @nodoc
 abstract class $MyStructWithJsonSerializableTwinNormalCopyWith<$Res> {
   factory $MyStructWithJsonSerializableTwinNormalCopyWith(
-    MyStructWithJsonSerializableTwinNormal value,
-    $Res Function(MyStructWithJsonSerializableTwinNormal) then,
-  ) = _$MyStructWithJsonSerializableTwinNormalCopyWithImpl<$Res,
-      MyStructWithJsonSerializableTwinNormal>;
+          MyStructWithJsonSerializableTwinNormal value,
+          $Res Function(MyStructWithJsonSerializableTwinNormal) then) =
+      _$MyStructWithJsonSerializableTwinNormalCopyWithImpl<$Res,
+          MyStructWithJsonSerializableTwinNormal>;
   @useResult
   $Res call({String fieldOne});
 }
@@ -745,15 +744,15 @@ class _$MyStructWithJsonSerializableTwinNormalCopyWithImpl<$Res,
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? fieldOne = null}) {
-    return _then(
-      _value.copyWith(
-        fieldOne: null == fieldOne
-            ? _value.fieldOne
-            : fieldOne // ignore: cast_nullable_to_non_nullable
-                as String,
-      ) as $Val,
-    );
+  $Res call({
+    Object? fieldOne = null,
+  }) {
+    return _then(_value.copyWith(
+      fieldOne: null == fieldOne
+          ? _value.fieldOne
+          : fieldOne // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
@@ -761,9 +760,9 @@ class _$MyStructWithJsonSerializableTwinNormalCopyWithImpl<$Res,
 abstract class _$$MyStructWithJsonSerializableTwinNormalImplCopyWith<$Res>
     implements $MyStructWithJsonSerializableTwinNormalCopyWith<$Res> {
   factory _$$MyStructWithJsonSerializableTwinNormalImplCopyWith(
-    _$MyStructWithJsonSerializableTwinNormalImpl value,
-    $Res Function(_$MyStructWithJsonSerializableTwinNormalImpl) then,
-  ) = __$$MyStructWithJsonSerializableTwinNormalImplCopyWithImpl<$Res>;
+          _$MyStructWithJsonSerializableTwinNormalImpl value,
+          $Res Function(_$MyStructWithJsonSerializableTwinNormalImpl) then) =
+      __$$MyStructWithJsonSerializableTwinNormalImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String fieldOne});
@@ -775,23 +774,23 @@ class __$$MyStructWithJsonSerializableTwinNormalImplCopyWithImpl<$Res>
         _$MyStructWithJsonSerializableTwinNormalImpl>
     implements _$$MyStructWithJsonSerializableTwinNormalImplCopyWith<$Res> {
   __$$MyStructWithJsonSerializableTwinNormalImplCopyWithImpl(
-    _$MyStructWithJsonSerializableTwinNormalImpl _value,
-    $Res Function(_$MyStructWithJsonSerializableTwinNormalImpl) _then,
-  ) : super(_value, _then);
+      _$MyStructWithJsonSerializableTwinNormalImpl _value,
+      $Res Function(_$MyStructWithJsonSerializableTwinNormalImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of MyStructWithJsonSerializableTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? fieldOne = null}) {
-    return _then(
-      _$MyStructWithJsonSerializableTwinNormalImpl(
-        fieldOne: null == fieldOne
-            ? _value.fieldOne
-            : fieldOne // ignore: cast_nullable_to_non_nullable
-                as String,
-      ),
-    );
+  $Res call({
+    Object? fieldOne = null,
+  }) {
+    return _then(_$MyStructWithJsonSerializableTwinNormalImpl(
+      fieldOne: null == fieldOne
+          ? _value.fieldOne
+          : fieldOne // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -803,8 +802,7 @@ class _$MyStructWithJsonSerializableTwinNormalImpl
       : super._();
 
   factory _$MyStructWithJsonSerializableTwinNormalImpl.fromJson(
-    Map<String, dynamic> json,
-  ) =>
+          Map<String, dynamic> json) =>
       _$$MyStructWithJsonSerializableTwinNormalImplFromJson(json);
 
   @override
@@ -841,20 +839,22 @@ class _$MyStructWithJsonSerializableTwinNormalImpl
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$MyStructWithJsonSerializableTwinNormalImplToJson(this);
+    return _$$MyStructWithJsonSerializableTwinNormalImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _MyStructWithJsonSerializableTwinNormal
     extends MyStructWithJsonSerializableTwinNormal {
-  const factory _MyStructWithJsonSerializableTwinNormal({
-    required final String fieldOne,
-  }) = _$MyStructWithJsonSerializableTwinNormalImpl;
+  const factory _MyStructWithJsonSerializableTwinNormal(
+          {required final String fieldOne}) =
+      _$MyStructWithJsonSerializableTwinNormalImpl;
   const _MyStructWithJsonSerializableTwinNormal._() : super._();
 
   factory _MyStructWithJsonSerializableTwinNormal.fromJson(
-    Map<String, dynamic> json,
-  ) = _$MyStructWithJsonSerializableTwinNormalImpl.fromJson;
+          Map<String, dynamic> json) =
+      _$MyStructWithJsonSerializableTwinNormalImpl.fromJson;
 
   @override
   String get fieldOne;
@@ -870,11 +870,9 @@ abstract class _MyStructWithJsonSerializableTwinNormal
 
 MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
     _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalFromJson(
-  Map<String, dynamic> json,
-) {
+        Map<String, dynamic> json) {
   return _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal.fromJson(
-    json,
-  );
+      json);
 }
 
 /// @nodoc
@@ -896,11 +894,12 @@ mixin _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal {
 abstract class $MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWith<
     $Res> {
   factory $MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWith(
-    MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal value,
-    $Res Function(MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal)
-        then,
-  ) = _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWithImpl<
-      $Res, MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal>;
+          MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal value,
+          $Res Function(
+                  MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal)
+              then) =
+      _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWithImpl<
+          $Res, MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal>;
   @useResult
   $Res call({String a});
 }
@@ -913,9 +912,7 @@ class _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWithImpl<
         $MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWith<
             $Res> {
   _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWithImpl(
-    this._value,
-    this._then,
-  );
+      this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -926,15 +923,15 @@ class _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWithImpl<
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? a = null}) {
-    return _then(
-      _value.copyWith(
-        a: null == a
-            ? _value.a
-            : a // ignore: cast_nullable_to_non_nullable
-                as String,
-      ) as $Val,
-    );
+  $Res call({
+    Object? a = null,
+  }) {
+    return _then(_value.copyWith(
+      a: null == a
+          ? _value.a
+          : a // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
@@ -945,12 +942,12 @@ abstract class _$$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImp
         $MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWith<
             $Res> {
   factory _$$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImplCopyWith(
-    _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl value,
-    $Res Function(
-      _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl,
-    ) then,
-  ) = __$$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImplCopyWithImpl<
-      $Res>;
+          _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl value,
+          $Res Function(
+                  _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl)
+              then) =
+      __$$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImplCopyWithImpl<
+          $Res>;
   @override
   @useResult
   $Res call({String a});
@@ -965,25 +962,26 @@ class __$$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImplCopyWit
         _$$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImplCopyWith<
             $Res> {
   __$$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImplCopyWithImpl(
-    _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl _value,
-    $Res Function(
-      _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl,
-    ) _then,
-  ) : super(_value, _then);
+      _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl _value,
+      $Res Function(
+              _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl)
+          _then)
+      : super(_value, _then);
 
   /// Create a copy of MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? a = null}) {
+  $Res call({
+    Object? a = null,
+  }) {
     return _then(
-      _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl(
-        a: null == a
-            ? _value.a
-            : a // ignore: cast_nullable_to_non_nullable
-                as String,
-      ),
-    );
+        _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl(
+      a: null == a
+          ? _value.a
+          : a // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -991,16 +989,13 @@ class __$$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImplCopyWit
 @JsonSerializable()
 class _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl
     implements _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal {
-  const _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl({
-    required this.a,
-  });
+  const _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl(
+      {required this.a});
 
   factory _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl.fromJson(
-    Map<String, dynamic> json,
-  ) =>
+          Map<String, dynamic> json) =>
       _$$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImplFromJson(
-        json,
-      );
+          json);
 
   @override
   final String a;
@@ -1045,13 +1040,13 @@ class _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl
 
 abstract class _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
     implements MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal {
-  const factory _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal({
-    required final String a,
-  }) = _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl;
+  const factory _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal(
+          {required final String a}) =
+      _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl;
 
   factory _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal.fromJson(
-    Map<String, dynamic> json,
-  ) = _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl
+          Map<String, dynamic> json) =
+      _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl
       .fromJson;
 
   @override

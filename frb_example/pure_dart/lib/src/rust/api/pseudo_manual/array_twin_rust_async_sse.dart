@@ -17,69 +17,55 @@ Future<PointTwinRustAsyncSseArray2> getComplexArrayTwinRustAsyncSse() => RustLib
     .instance.api
     .crateApiPseudoManualArrayTwinRustAsyncSseGetComplexArrayTwinRustAsyncSse();
 
-Future<MessageIdTwinRustAsyncSse> newMsgidTwinRustAsyncSse({
-  required U8Array32 id,
-}) =>
+Future<MessageIdTwinRustAsyncSse> newMsgidTwinRustAsyncSse(
+        {required U8Array32 id}) =>
     RustLib.instance.api
         .crateApiPseudoManualArrayTwinRustAsyncSseNewMsgidTwinRustAsyncSse(
             id: id);
 
-Future<U8Array32> useMsgidTwinRustAsyncSse({
-  required MessageIdTwinRustAsyncSse id,
-}) =>
+Future<U8Array32> useMsgidTwinRustAsyncSse(
+        {required MessageIdTwinRustAsyncSse id}) =>
     RustLib.instance.api
         .crateApiPseudoManualArrayTwinRustAsyncSseUseMsgidTwinRustAsyncSse(
             id: id);
 
-Future<BlobTwinRustAsyncSse> boxedBlobTwinRustAsyncSse({
-  required U8Array1600 blob,
-}) =>
+Future<BlobTwinRustAsyncSse> boxedBlobTwinRustAsyncSse(
+        {required U8Array1600 blob}) =>
     RustLib.instance.api
         .crateApiPseudoManualArrayTwinRustAsyncSseBoxedBlobTwinRustAsyncSse(
-      blob: blob,
-    );
+            blob: blob);
 
-Future<U8Array1600> useBoxedBlobTwinRustAsyncSse({
-  required BlobTwinRustAsyncSse blob,
-}) =>
+Future<U8Array1600> useBoxedBlobTwinRustAsyncSse(
+        {required BlobTwinRustAsyncSse blob}) =>
     RustLib.instance.api
         .crateApiPseudoManualArrayTwinRustAsyncSseUseBoxedBlobTwinRustAsyncSse(
-      blob: blob,
-    );
+            blob: blob);
 
-Future<FeedIdTwinRustAsyncSse> returnBoxedFeedIdTwinRustAsyncSse({
-  required U8Array8 id,
-}) =>
+Future<FeedIdTwinRustAsyncSse> returnBoxedFeedIdTwinRustAsyncSse(
+        {required U8Array8 id}) =>
     RustLib.instance.api
         .crateApiPseudoManualArrayTwinRustAsyncSseReturnBoxedFeedIdTwinRustAsyncSse(
-      id: id,
-    );
+            id: id);
 
-Future<U8Array8> returnBoxedRawFeedIdTwinRustAsyncSse({
-  required FeedIdTwinRustAsyncSse id,
-}) =>
+Future<U8Array8> returnBoxedRawFeedIdTwinRustAsyncSse(
+        {required FeedIdTwinRustAsyncSse id}) =>
     RustLib.instance.api
         .crateApiPseudoManualArrayTwinRustAsyncSseReturnBoxedRawFeedIdTwinRustAsyncSse(
-      id: id,
-    );
+            id: id);
 
-Future<TestIdTwinRustAsyncSse> funcTestIdTwinRustAsyncSse({
-  required TestIdTwinRustAsyncSse id,
-}) =>
+Future<TestIdTwinRustAsyncSse> funcTestIdTwinRustAsyncSse(
+        {required TestIdTwinRustAsyncSse id}) =>
     RustLib.instance.api
         .crateApiPseudoManualArrayTwinRustAsyncSseFuncTestIdTwinRustAsyncSse(
-      id: id,
-    );
+            id: id);
 
 Future<double> lastNumberTwinRustAsyncSse({required F64Array16 array}) =>
     RustLib.instance.api
         .crateApiPseudoManualArrayTwinRustAsyncSseLastNumberTwinRustAsyncSse(
-      array: array,
-    );
+            array: array);
 
-Future<TestIdTwinRustAsyncSseArray2> nestedIdTwinRustAsyncSse({
-  required TestIdTwinRustAsyncSseArray4 id,
-}) =>
+Future<TestIdTwinRustAsyncSseArray2> nestedIdTwinRustAsyncSse(
+        {required TestIdTwinRustAsyncSseArray4 id}) =>
     RustLib.instance.api
         .crateApiPseudoManualArrayTwinRustAsyncSseNestedIdTwinRustAsyncSse(
             id: id);
@@ -87,7 +73,9 @@ Future<TestIdTwinRustAsyncSseArray2> nestedIdTwinRustAsyncSse({
 class BlobTwinRustAsyncSse {
   final U8Array1600 field0;
 
-  const BlobTwinRustAsyncSse({required this.field0});
+  const BlobTwinRustAsyncSse({
+    required this.field0,
+  });
 
   @override
   int get hashCode => field0.hashCode;
@@ -103,7 +91,9 @@ class BlobTwinRustAsyncSse {
 class FeedIdTwinRustAsyncSse {
   final U8Array8 field0;
 
-  const FeedIdTwinRustAsyncSse({required this.field0});
+  const FeedIdTwinRustAsyncSse({
+    required this.field0,
+  });
 
   @override
   int get hashCode => field0.hashCode;
@@ -119,7 +109,9 @@ class FeedIdTwinRustAsyncSse {
 class MessageIdTwinRustAsyncSse {
   final U8Array32 field0;
 
-  const MessageIdTwinRustAsyncSse({required this.field0});
+  const MessageIdTwinRustAsyncSse({
+    required this.field0,
+  });
 
   @override
   int get hashCode => field0.hashCode;
@@ -136,7 +128,10 @@ class PointTwinRustAsyncSse {
   final double x;
   final double y;
 
-  const PointTwinRustAsyncSse({required this.x, required this.y});
+  const PointTwinRustAsyncSse({
+    required this.x,
+    required this.y,
+  });
 
   @override
   int get hashCode => x.hashCode ^ y.hashCode;
@@ -169,7 +164,9 @@ class PointTwinRustAsyncSseArray2
 class TestIdTwinRustAsyncSse {
   final I32Array2 field0;
 
-  const TestIdTwinRustAsyncSse({required this.field0});
+  const TestIdTwinRustAsyncSse({
+    required this.field0,
+  });
 
   @override
   int get hashCode => field0.hashCode;

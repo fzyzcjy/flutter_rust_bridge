@@ -29,25 +29,17 @@ Future<DateTime?> optionalEmptyDatetimeUtcTwinSse({DateTime? d}) => RustLib
 Future<Duration> durationTwinSse({required Duration d}) => RustLib.instance.api
     .crateApiPseudoManualChronoTypeTwinSseDurationTwinSse(d: d);
 
-Future<List<Duration>> handleTimestampsTwinSse({
-  required List<DateTime> timestamps,
-  required DateTime epoch,
-}) =>
+Future<List<Duration>> handleTimestampsTwinSse(
+        {required List<DateTime> timestamps, required DateTime epoch}) =>
     RustLib.instance.api
         .crateApiPseudoManualChronoTypeTwinSseHandleTimestampsTwinSse(
-      timestamps: timestamps,
-      epoch: epoch,
-    );
+            timestamps: timestamps, epoch: epoch);
 
-Future<List<DateTime>> handleDurationsTwinSse({
-  required List<Duration> durations,
-  required DateTime since,
-}) =>
+Future<List<DateTime>> handleDurationsTwinSse(
+        {required List<Duration> durations, required DateTime since}) =>
     RustLib.instance.api
         .crateApiPseudoManualChronoTypeTwinSseHandleDurationsTwinSse(
-      durations: durations,
-      since: since,
-    );
+            durations: durations, since: since);
 
 Future<TestChronoTwinSse> testChronoTwinSse() => RustLib.instance.api
     .crateApiPseudoManualChronoTypeTwinSseTestChronoTwinSse();
@@ -55,9 +47,8 @@ Future<TestChronoTwinSse> testChronoTwinSse() => RustLib.instance.api
 Future<TestChronoTwinSse> testPreciseChronoTwinSse() => RustLib.instance.api
     .crateApiPseudoManualChronoTypeTwinSseTestPreciseChronoTwinSse();
 
-Future<Duration> howLongDoesItTakeTwinSse({
-  required FeatureChronoTwinSse mine,
-}) =>
+Future<Duration> howLongDoesItTakeTwinSse(
+        {required FeatureChronoTwinSse mine}) =>
     RustLib.instance.api
         .crateApiPseudoManualChronoTypeTwinSseHowLongDoesItTakeTwinSse(
             mine: mine);
@@ -95,7 +86,11 @@ class TestChronoTwinSse {
   final DateTime? dt2;
   final Duration? du;
 
-  const TestChronoTwinSse({this.dt, this.dt2, this.du});
+  const TestChronoTwinSse({
+    this.dt,
+    this.dt2,
+    this.du,
+  });
 
   @override
   int get hashCode => dt.hashCode ^ dt2.hashCode ^ du.hashCode;

@@ -11,121 +11,92 @@ import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_auto_opaque_twin_moi.dart';
 part 'rust_auto_opaque_twin_rust_async_sse_moi.freezed.dart';
 
-Future<void> rustAutoOpaqueArgOwnTwinRustAsyncSseMoi({
-  required NonCloneSimpleTwinRustAsyncSseMoi arg,
-  required int expect,
-}) =>
+Future<void> rustAutoOpaqueArgOwnTwinRustAsyncSseMoi(
+        {required NonCloneSimpleTwinRustAsyncSseMoi arg,
+        required int expect}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueArgOwnTwinRustAsyncSseMoi(
-      arg: arg,
-      expect: expect,
-    );
+            arg: arg, expect: expect);
 
-Future<void> rustAutoOpaqueArgBorrowTwinRustAsyncSseMoi({
-  required NonCloneSimpleTwinRustAsyncSseMoi arg,
-  required int expect,
-}) =>
+Future<void> rustAutoOpaqueArgBorrowTwinRustAsyncSseMoi(
+        {required NonCloneSimpleTwinRustAsyncSseMoi arg,
+        required int expect}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueArgBorrowTwinRustAsyncSseMoi(
-      arg: arg,
-      expect: expect,
-    );
+            arg: arg, expect: expect);
 
-Future<void> rustAutoOpaqueArgMutBorrowTwinRustAsyncSseMoi({
-  required NonCloneSimpleTwinRustAsyncSseMoi arg,
-  required int expect,
-  required int adder,
-}) =>
+Future<void> rustAutoOpaqueArgMutBorrowTwinRustAsyncSseMoi(
+        {required NonCloneSimpleTwinRustAsyncSseMoi arg,
+        required int expect,
+        required int adder}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueArgMutBorrowTwinRustAsyncSseMoi(
-      arg: arg,
-      expect: expect,
-      adder: adder,
-    );
-
-Future<
-    NonCloneSimpleTwinRustAsyncSseMoi> rustAutoOpaqueReturnOwnTwinRustAsyncSseMoi(
-        {required int initial}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueReturnOwnTwinRustAsyncSseMoi(
-      initial: initial,
-    );
+            arg: arg, expect: expect, adder: adder);
 
 Future<NonCloneSimpleTwinRustAsyncSseMoi>
-    rustAutoOpaqueArgOwnAndReturnOwnTwinRustAsyncSseMoi({
-  required NonCloneSimpleTwinRustAsyncSseMoi arg,
-}) =>
+    rustAutoOpaqueReturnOwnTwinRustAsyncSseMoi({required int initial}) => RustLib
+        .instance.api
+        .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueReturnOwnTwinRustAsyncSseMoi(
+            initial: initial);
+
+Future<NonCloneSimpleTwinRustAsyncSseMoi>
+    rustAutoOpaqueArgOwnAndReturnOwnTwinRustAsyncSseMoi(
+            {required NonCloneSimpleTwinRustAsyncSseMoi arg}) =>
         RustLib.instance.api
             .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueArgOwnAndReturnOwnTwinRustAsyncSseMoi(
-          arg: arg,
-        );
+                arg: arg);
 
-Future<void> rustAutoOpaqueTwoArgsTwinRustAsyncSseMoi({
-  required NonCloneSimpleTwinRustAsyncSseMoi a,
-  required NonCloneSimpleTwinRustAsyncSseMoi b,
-}) =>
+Future<void> rustAutoOpaqueTwoArgsTwinRustAsyncSseMoi(
+        {required NonCloneSimpleTwinRustAsyncSseMoi a,
+        required NonCloneSimpleTwinRustAsyncSseMoi b}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueTwoArgsTwinRustAsyncSseMoi(
-      a: a,
-      b: b,
-    );
+            a: a, b: b);
 
-Future<void> rustAutoOpaqueNormalAndOpaqueArgTwinRustAsyncSseMoi({
-  required NonCloneSimpleTwinRustAsyncSseMoi a,
-  required String b,
-}) =>
+Future<void> rustAutoOpaqueNormalAndOpaqueArgTwinRustAsyncSseMoi(
+        {required NonCloneSimpleTwinRustAsyncSseMoi a, required String b}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueNormalAndOpaqueArgTwinRustAsyncSseMoi(
-      a: a,
-      b: b,
-    );
+            a: a, b: b);
 
 /// "+" inside the type signature
-Future<void> rustAutoOpaquePlusSignArgTwinRustAsyncSseMoi({
-  required BoxMyTraitTwinRustAsyncSseMoi arg,
-}) =>
+Future<void> rustAutoOpaquePlusSignArgTwinRustAsyncSseMoi(
+        {required BoxMyTraitTwinRustAsyncSseMoi arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaquePlusSignArgTwinRustAsyncSseMoi(
-      arg: arg,
-    );
+            arg: arg);
 
 Future<BoxMyTraitTwinRustAsyncSseMoi>
     rustAutoOpaquePlusSignReturnTwinRustAsyncSseMoi() => RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaquePlusSignReturnTwinRustAsyncSseMoi();
 
-Future<void> rustAutoOpaqueCallableArgTwinRustAsyncSseMoi({
-  required BoxFnStringString arg,
-}) =>
+Future<void> rustAutoOpaqueCallableArgTwinRustAsyncSseMoi(
+        {required BoxFnStringString arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueCallableArgTwinRustAsyncSseMoi(
-      arg: arg,
-    );
+            arg: arg);
 
 Future<BoxFnStringString> rustAutoOpaqueCallableReturnTwinRustAsyncSseMoi() =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueCallableReturnTwinRustAsyncSseMoi();
 
 Future<
-    void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsyncSseMoi({
-  required StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi arg,
-}) =>
+    void> rustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsyncSseMoi(
+        {required StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueStructWithGoodAndOpaqueFieldArgOwnTwinRustAsyncSseMoi(
-      arg: arg,
-    );
+            arg: arg);
 
 Future<StructWithGoodAndOpaqueFieldTwinRustAsyncSseMoi>
     rustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsyncSseMoi() =>
         RustLib.instance.api
             .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueStructWithGoodAndOpaqueFieldReturnOwnTwinRustAsyncSseMoi();
 
-Future<void> rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinRustAsyncSseMoi({
-  required EnumWithGoodAndOpaqueTwinRustAsyncSseMoi arg,
-}) =>
+Future<void> rustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinRustAsyncSseMoi(
+        {required EnumWithGoodAndOpaqueTwinRustAsyncSseMoi arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueEnumWithGoodAndOpaqueArgOwnTwinRustAsyncSseMoi(
-      arg: arg,
-    );
+            arg: arg);
 
 Future<EnumWithGoodAndOpaqueTwinRustAsyncSseMoi>
     rustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnGoodTwinRustAsyncSseMoi() =>
@@ -137,23 +108,19 @@ Future<EnumWithGoodAndOpaqueTwinRustAsyncSseMoi>
         RustLib.instance.api
             .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueEnumWithGoodAndOpaqueReturnOwnOpaqueTwinRustAsyncSseMoi();
 
-Future<void> rustAutoOpaqueDummyTwinRustAsyncSseMoi({
-  required StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi a,
-  required EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSseMoi b,
-}) =>
+Future<void> rustAutoOpaqueDummyTwinRustAsyncSseMoi(
+        {required StructWithGoodAndOpaqueFieldWithoutOptionTwinRustAsyncSseMoi
+            a,
+        required EnumWithGoodAndOpaqueWithoutOptionTwinRustAsyncSseMoi b}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueDummyTwinRustAsyncSseMoi(
-      a: a,
-      b: b,
-    );
+            a: a, b: b);
 
-Future<void> rustAutoOpaqueEnumArgBorrowTwinRustAsyncSseMoi({
-  required NonCloneSimpleEnumTwinRustAsyncSseMoi arg,
-}) =>
+Future<void> rustAutoOpaqueEnumArgBorrowTwinRustAsyncSseMoi(
+        {required NonCloneSimpleEnumTwinRustAsyncSseMoi arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueEnumArgBorrowTwinRustAsyncSseMoi(
-      arg: arg,
-    );
+            arg: arg);
 
 Future<NonCloneSimpleEnumTwinRustAsyncSseMoi>
     rustAutoOpaqueEnumReturnOwnTwinRustAsyncSseMoi() => RustLib.instance.api
@@ -163,37 +130,29 @@ Stream<NonCloneSimpleTwinRustAsyncSseMoi>
     rustAutoOpaqueStreamSinkTwinRustAsyncSseMoi() => RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueStreamSinkTwinRustAsyncSseMoi();
 
-Future<void> rustAutoOpaqueArgVecOwnTwinRustAsyncSseMoi({
-  required List<NonCloneSimpleTwinRustAsyncSseMoi> arg,
-  required List<int> expect,
-}) =>
+Future<void> rustAutoOpaqueArgVecOwnTwinRustAsyncSseMoi(
+        {required List<NonCloneSimpleTwinRustAsyncSseMoi> arg,
+        required List<int> expect}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueArgVecOwnTwinRustAsyncSseMoi(
-      arg: arg,
-      expect: expect,
-    );
+            arg: arg, expect: expect);
 
 Future<List<NonCloneSimpleTwinRustAsyncSseMoi>>
     rustAutoOpaqueReturnVecOwnTwinRustAsyncSseMoi() => RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueReturnVecOwnTwinRustAsyncSseMoi();
 
-Future<void> rustAutoOpaqueExplicitArgTwinRustAsyncSseMoi({
-  required NonCloneSimpleTwinRustAsyncSseMoi arg,
-  required int expect,
-}) =>
+Future<void> rustAutoOpaqueExplicitArgTwinRustAsyncSseMoi(
+        {required NonCloneSimpleTwinRustAsyncSseMoi arg,
+        required int expect}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueExplicitArgTwinRustAsyncSseMoi(
-      arg: arg,
-      expect: expect,
-    );
+            arg: arg, expect: expect);
 
-Future<void> rustAutoOpaqueExplicitStructTwinRustAsyncSseMoi({
-  required StructWithExplicitAutoOpaqueFieldTwinRustAsyncSseMoi arg,
-}) =>
+Future<void> rustAutoOpaqueExplicitStructTwinRustAsyncSseMoi(
+        {required StructWithExplicitAutoOpaqueFieldTwinRustAsyncSseMoi arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueExplicitStructTwinRustAsyncSseMoi(
-      arg: arg,
-    );
+            arg: arg);
 
 Future<StructWithExplicitAutoOpaqueFieldTwinRustAsyncSseMoi>
     rustAutoOpaqueExplicitReturnStructTwinRustAsyncSseMoi() => RustLib
@@ -201,23 +160,17 @@ Future<StructWithExplicitAutoOpaqueFieldTwinRustAsyncSseMoi>
         .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueExplicitReturnStructTwinRustAsyncSseMoi();
 
 Future<NonCloneSimpleTwinRustAsyncSseMoi>
-    rustAutoOpaqueExplicitReturnTwinRustAsyncSseMoi({
-  required int initial,
-}) =>
+    rustAutoOpaqueExplicitReturnTwinRustAsyncSseMoi({required int initial}) =>
         RustLib.instance.api
             .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueExplicitReturnTwinRustAsyncSseMoi(
-          initial: initial,
-        );
+                initial: initial);
 
-Future<int> rustAutoOpaqueSleepTwinRustAsyncSseMoi({
-  required NonCloneSimpleTwinRustAsyncSseMoi apple,
-  required NonCloneSimpleTwinRustAsyncSseMoi orange,
-}) =>
+Future<int> rustAutoOpaqueSleepTwinRustAsyncSseMoi(
+        {required NonCloneSimpleTwinRustAsyncSseMoi apple,
+        required NonCloneSimpleTwinRustAsyncSseMoi orange}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueSleepTwinRustAsyncSseMoi(
-      apple: apple,
-      orange: orange,
-    );
+            apple: apple, orange: orange);
 
 Future<(OpaqueOneTwinRustAsyncSseMoi, OpaqueTwoTwinRustAsyncSseMoi)>
     rustAutoOpaqueReturnOpaqueOneAndTwoTwinRustAsyncSseMoi() => RustLib
@@ -228,25 +181,19 @@ Future<OpaqueTwoTwinRustAsyncSseMoi>
     rustAutoOpaqueReturnOpaqueTwoTwinRustAsyncSseMoi() => RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueReturnOpaqueTwoTwinRustAsyncSseMoi();
 
-Future<int> rustAutoOpaqueBorrowAndMutBorrowTwinRustAsyncSseMoi({
-  required NonCloneSimpleTwinRustAsyncSseMoi borrow,
-  required NonCloneSimpleTwinRustAsyncSseMoi mutBorrow,
-}) =>
+Future<int> rustAutoOpaqueBorrowAndMutBorrowTwinRustAsyncSseMoi(
+        {required NonCloneSimpleTwinRustAsyncSseMoi borrow,
+        required NonCloneSimpleTwinRustAsyncSseMoi mutBorrow}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueBorrowAndMutBorrowTwinRustAsyncSseMoi(
-      borrow: borrow,
-      mutBorrow: mutBorrow,
-    );
+            borrow: borrow, mutBorrow: mutBorrow);
 
-Future<int> rustAutoOpaqueBorrowAndBorrowTwinRustAsyncSseMoi({
-  required NonCloneSimpleTwinRustAsyncSseMoi a,
-  required NonCloneSimpleTwinRustAsyncSseMoi b,
-}) =>
+Future<int> rustAutoOpaqueBorrowAndBorrowTwinRustAsyncSseMoi(
+        {required NonCloneSimpleTwinRustAsyncSseMoi a,
+        required NonCloneSimpleTwinRustAsyncSseMoi b}) =>
     RustLib.instance.api
         .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiRustAutoOpaqueBorrowAndBorrowTwinRustAsyncSseMoi(
-      a: a,
-      b: b,
-    );
+            a: a, b: b);
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Box < dyn MyTraitTwinRustAsyncSseMoi + Send + Sync >>>
 abstract class BoxMyTraitTwinRustAsyncSseMoi implements RustOpaqueInterface {}
@@ -288,29 +235,23 @@ abstract class NonCloneSimpleTwinRustAsyncSseMoi
       newWithResultTwinRustAsyncSseMoi() => RustLib.instance.api
           .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiNonCloneSimpleTwinRustAsyncSseMoiNewWithResultTwinRustAsyncSseMoi();
 
-  static Future<void> staticMethodArgBorrowTwinRustAsyncSseMoi({
-    required NonCloneSimpleTwinRustAsyncSseMoi arg,
-  }) =>
+  static Future<void> staticMethodArgBorrowTwinRustAsyncSseMoi(
+          {required NonCloneSimpleTwinRustAsyncSseMoi arg}) =>
       RustLib.instance.api
           .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiNonCloneSimpleTwinRustAsyncSseMoiStaticMethodArgBorrowTwinRustAsyncSseMoi(
-        arg: arg,
-      );
+              arg: arg);
 
-  static Future<void> staticMethodArgMutBorrowTwinRustAsyncSseMoi({
-    required NonCloneSimpleTwinRustAsyncSseMoi arg,
-  }) =>
+  static Future<void> staticMethodArgMutBorrowTwinRustAsyncSseMoi(
+          {required NonCloneSimpleTwinRustAsyncSseMoi arg}) =>
       RustLib.instance.api
           .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiNonCloneSimpleTwinRustAsyncSseMoiStaticMethodArgMutBorrowTwinRustAsyncSseMoi(
-        arg: arg,
-      );
+              arg: arg);
 
-  static Future<void> staticMethodArgOwnTwinRustAsyncSseMoi({
-    required NonCloneSimpleTwinRustAsyncSseMoi arg,
-  }) =>
+  static Future<void> staticMethodArgOwnTwinRustAsyncSseMoi(
+          {required NonCloneSimpleTwinRustAsyncSseMoi arg}) =>
       RustLib.instance.api
           .crateApiPseudoManualRustAutoOpaqueTwinRustAsyncSseMoiNonCloneSimpleTwinRustAsyncSseMoiStaticMethodArgOwnTwinRustAsyncSseMoi(
-        arg: arg,
-      );
+              arg: arg);
 
   static Future<NonCloneSimpleTwinRustAsyncSseMoi>
       staticMethodReturnOwnTwinRustAsyncSseMoi() => RustLib.instance.api
@@ -340,8 +281,9 @@ sealed class EnumWithGoodAndOpaqueTwinRustAsyncSseMoi
     with _$EnumWithGoodAndOpaqueTwinRustAsyncSseMoi {
   const EnumWithGoodAndOpaqueTwinRustAsyncSseMoi._();
 
-  const factory EnumWithGoodAndOpaqueTwinRustAsyncSseMoi.good(String field0) =
-      EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_Good;
+  const factory EnumWithGoodAndOpaqueTwinRustAsyncSseMoi.good(
+    String field0,
+  ) = EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_Good;
   const factory EnumWithGoodAndOpaqueTwinRustAsyncSseMoi.opaque(
     NonCloneSimpleTwinRustAsyncSseMoi field0,
   ) = EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_Opaque;

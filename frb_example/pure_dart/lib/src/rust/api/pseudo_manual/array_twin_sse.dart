@@ -48,17 +48,17 @@ Future<double> lastNumberTwinSse({required F64Array16 array}) =>
     RustLib.instance.api
         .crateApiPseudoManualArrayTwinSseLastNumberTwinSse(array: array);
 
-Future<TestIdTwinSseArray2> nestedIdTwinSse({
-  required TestIdTwinSseArray4 id,
-}) =>
-    RustLib.instance.api.crateApiPseudoManualArrayTwinSseNestedIdTwinSse(
-      id: id,
-    );
+Future<TestIdTwinSseArray2> nestedIdTwinSse(
+        {required TestIdTwinSseArray4 id}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualArrayTwinSseNestedIdTwinSse(id: id);
 
 class BlobTwinSse {
   final U8Array1600 field0;
 
-  const BlobTwinSse({required this.field0});
+  const BlobTwinSse({
+    required this.field0,
+  });
 
   @override
   int get hashCode => field0.hashCode;
@@ -74,7 +74,9 @@ class BlobTwinSse {
 class FeedIdTwinSse {
   final U8Array8 field0;
 
-  const FeedIdTwinSse({required this.field0});
+  const FeedIdTwinSse({
+    required this.field0,
+  });
 
   @override
   int get hashCode => field0.hashCode;
@@ -90,7 +92,9 @@ class FeedIdTwinSse {
 class MessageIdTwinSse {
   final U8Array32 field0;
 
-  const MessageIdTwinSse({required this.field0});
+  const MessageIdTwinSse({
+    required this.field0,
+  });
 
   @override
   int get hashCode => field0.hashCode;
@@ -107,7 +111,10 @@ class PointTwinSse {
   final double x;
   final double y;
 
-  const PointTwinSse({required this.x, required this.y});
+  const PointTwinSse({
+    required this.x,
+    required this.y,
+  });
 
   @override
   int get hashCode => x.hashCode ^ y.hashCode;
@@ -139,7 +146,9 @@ class PointTwinSseArray2 extends NonGrowableListView<PointTwinSse> {
 class TestIdTwinSse {
   final I32Array2 field0;
 
-  const TestIdTwinSse({required this.field0});
+  const TestIdTwinSse({
+    required this.field0,
+  });
 
   @override
   int get hashCode => field0.hashCode;
