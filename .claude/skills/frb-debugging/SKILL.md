@@ -39,7 +39,16 @@ If above doesn't help, see:
 * `website/docs/docs/guides/contributing/tip.md`
 * `website/docs/manual/troubleshooting.md`
 
+Before going deep into FRB internals, first check whether you are actually seeing failure propagation from unstable generated outputs or integrate templates.
+
+In particular:
+
+- If `Generate` / `Integrate` failures appear together with Flutter build or native test failures, use `frb-fix-ci` first
+- If the same package keeps getting regenerated or reverted without stabilizing CI, use `frb-fix-ci` first
+- If `pure_dart_pde` is failing, confirm whether `pure_dart` is still changing before debugging the downstream copy
+
 ## Related Skills
 
 - `frb-code-generation` - Which generation commands to run
+- `frb-fix-ci` - Diagnose CI failure propagation before deep debugging
 - `frb-develop-feature` - Development workflow

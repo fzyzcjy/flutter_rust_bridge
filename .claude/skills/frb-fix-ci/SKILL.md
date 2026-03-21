@@ -142,6 +142,38 @@ In that situation:
 - Treat `frb_example/pure_dart` as the upstream source and `frb_example/pure_dart_pde` as the downstream copy
 - If `pure_dart` still changes, sync that upstream output first, then re-check `pure_dart_pde`
 
+### Failure Propagation
+
+When CI starts failing in several adjacent categories at once, do not assume they are independent.
+
+In that situation:
+
+- Treat `Generate` / `Integrate` / `Generate Internal` as upstream of `Build :: Flutter` and native tests
+- If generated or integrated outputs are still unstable, do not spend most of your effort fixing `Build :: Flutter` or native tests one by one yet
+- First stabilize the upstream generation or template inputs, then re-check the downstream jobs
+
+### Whack-a-Mole Prevention
+
+When the same path or package repeatedly shows commits like `refresh`, `regenerate`, `sync`, and `revert`, treat that as a sign you may be chasing outputs instead of fixing inputs.
+
+In that situation:
+
+- Stop adding more generated-output-only sync commits by default
+- Identify the upstream source of truth first: generation logic, templates, toolchain version, generation order, or package relationship
+- Only accept regenerated outputs after the upstream source is stable in a clean matching environment
+
+For Flutter integrate examples specifically:
+
+- Treat `frb_codegen/assets/integration_template/` and `cargokit` as upstream of generated example platform files
+- If `Generate :: FRB Codegen :: Command Integrate`, `Build :: Flutter`, and native Flutter tests all regress together, suspect the template chain first
+- Prefer fixing template inputs over hand-editing generated example outputs
+
+For `pure_dart` specifically:
+
+- Treat `frb_example/pure_dart` as upstream and `frb_example/pure_dart_pde` as downstream
+- If both are moving, stabilize `pure_dart` first
+- Do not conclude the problem is fixed just because one downstream regeneration temporarily makes CI greener once
+
 ## Common Mistakes
 
 - Investigating root cause when a simple re-run would work
@@ -149,6 +181,8 @@ In that situation:
 - Fixing many new downstream test/build failures one by one after accepting generated changes, when CI previously failed mainly in `Generate`
 - Hand-editing generated files to chase CI formatter output before checking whether CI, merge ref, and remote environments are formatting the same input
 - Hand-editing integrate-generated example outputs instead of fixing `frb_codegen/assets/integration_template/`
+- Chasing repeated `refresh/regenerate/sync` diffs without re-checking the upstream generation inputs
+- Fixing downstream build/test jobs before upstream generate/integrate jobs are stable
 - Answering from stale CI state instead of reading the latest relevant run or job information first
 
 ## Related Skills
