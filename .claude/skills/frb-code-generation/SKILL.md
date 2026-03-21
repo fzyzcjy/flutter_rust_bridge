@@ -39,6 +39,9 @@ If the same package or path keeps getting `refresh` / `regenerate` / `sync` styl
 
 If the same `Generate :: FRB Codegen :: Command Generate` symptom starts rotating across different example packages with very similar generated Dart diffs, do not keep selecting per-package generate commands one by one. Switch to `frb-fix-ci` and validate clean remote `./frb_internal precommit-generate` as the source of truth for the whole `Generate` chain.
 
+Practical cutoff:
+after two similar package-level generated-output syncs, stop and re-check clean remote `./frb_internal precommit-generate` before accepting a third one.
+
 If Flutter integrate examples, example platform files, and downstream Flutter build/test jobs regress together, assume the issue may be in `frb_codegen/assets/integration_template/` or `cargokit` rather than in the generated outputs themselves. If the real fix belongs in the embedded `cargokit` submodule, edit it directly, push to `fzyzcjy/cargokit`, and then update the submodule ref. Use `frb-fix-ci` for that workflow.
 
 Do not manually patch generated files as the final fix. The final accepted result should be produced by the corresponding generation command in a clean matching environment.

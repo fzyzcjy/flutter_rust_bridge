@@ -135,6 +135,7 @@ What to do:
 - Stop adding more generated-output-only sync commits by default
 - Go back to the dependency graph and identify the unstable source of truth first: `frb_codegen/src/**`, `frb_codegen/assets/integration_template/**`, pinned Flutter/Dart/Rust versions, generation order, or package relationship
 - Only accept regenerated outputs after that source node is stable in a clean matching environment
+- If you have already accepted two package-level `Generate` sync commits with very similar generated Dart drift in one session or across adjacent CI runs, stop the package-by-package loop and escalate to a clean remote `./frb_internal precommit-generate`
 
 Common FRB patterns:
 
@@ -144,6 +145,8 @@ Common FRB patterns:
   if both are moving, stabilize `frb_example/pure_dart` first and treat `pure_dart_pde` as a dependent output
 - Repeated `Generate` failures across different example packages:
   if the same `Generate :: FRB Codegen :: Command Generate` symptom keeps rotating across packages with similar generated Dart diffs, stop fixing one package at a time. Re-run clean remote `./frb_internal precommit-generate` and treat that full run as the source of truth for the whole `Generate` chain. Only after that full run stabilizes should you accept any remaining per-package tail diff.
+  Practical cutoff:
+  after two similar package-level sync fixes, the burden of proof switches. Do not add a third similar package sync until you have checked whether clean remote `precommit-generate` collapses the whole diff surface.
 
 ## Fixes by Failure Type
 
@@ -246,6 +249,8 @@ In that situation:
 
 If the symptom is not one package but a sequence of packages failing with very similar generated Dart drift, prefer validating clean remote `./frb_internal precommit-generate` before accepting more package-by-package sync commits.
 
+If clean remote `precommit-generate` reduces the remaining diff surface to one small tail package, accept that tail from the same clean run and rerun CI. Do not go back into a long per-package loop unless a new failure class appears.
+
 ### Dart Web Browser Startup Flakes
 
 When `Test :: Dart :: Web (...)` fails after the web build and server startup already succeeded, and the failure is:
@@ -272,6 +277,7 @@ In that situation:
 - Hand-editing integrate-generated example outputs instead of fixing `frb_codegen/assets/integration_template/`
 - Assuming `cargokit` submodule changes are off-limits when the real bug is there
 - Chasing repeated `refresh/regenerate/sync` diffs without re-checking the upstream generation inputs
+- Continuing package-by-package `Generate` sync commits after two similar generated Dart drifts, instead of escalating to clean remote `precommit-generate`
 - Fixing downstream build/test jobs before upstream generate/integrate/high-relevance generate-internal stages are stable
 - Answering from stale CI state instead of reading the latest relevant run or job information first
 
