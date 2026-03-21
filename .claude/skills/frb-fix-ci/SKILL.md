@@ -44,30 +44,34 @@ When several related jobs are failing, use this dependency graph instead of trea
 flowchart LR
     subgraph StrictDependencies
         Tooling["generation logic / templates / toolchain"]
-        Generate["Generate / Integrate / Generate Internal"]
-        Outputs["generated outputs / example platform files"]
+        Codegen["Generate / Generate Internal"]
+        Outputs["generated outputs"]
         Template["frb_codegen/assets/integration_template/ + cargokit"]
+        Integrate["Integrate"]
         ExampleOutputs["integrate example outputs / platform files"]
         Build["Build :: Flutter"]
         NativeTests["native Flutter tests"]
         PureDart["frb_example/pure_dart"]
         PureDartPde["frb_example/pure_dart_pde"]
 
-        Tooling -->|runs with| Generate
-        Generate -->|produces| Outputs
-        Template -->|produces| ExampleOutputs
-        Outputs -->|feeds| Build
-        ExampleOutputs -->|feeds| Build
-        Build -->|unblocks| NativeTests
-        PureDart -->|derived into| PureDartPde
+        Tooling -->|used by| Codegen
+        Tooling -->|used by| Integrate
+        Codegen -->|produces| Outputs
+        Template -->|used by| Integrate
+        Integrate -->|produces| ExampleOutputs
+        Outputs -->|consumed by| Build
+        ExampleOutputs -->|consumed by| Build
+        Build -->|required by| NativeTests
+        PureDart -->|source for| PureDartPde
     end
 ```
 
 Read the graph as artifact and input dependencies, not as a literal GitHub Actions job graph.
 
-- `generation logic / templates / toolchain` -> `Generate` / `Integrate` / `Generate Internal`
-- `Generate` / `Integrate` / `Generate Internal` -> generated outputs and example platform files
-- `frb_codegen/assets/integration_template/` and `cargokit` -> integrate example outputs and platform files
+- `generation logic / templates / toolchain` -> `Generate` / `Generate Internal`
+- `generation logic / templates / toolchain` and `frb_codegen/assets/integration_template/` / `cargokit` -> `Integrate`
+- `Generate` / `Generate Internal` -> generated outputs
+- `Integrate` -> integrate example outputs and platform files
 - generated outputs and example platform files often determine whether `Build :: Flutter` passes
 - `Build :: Flutter` often determines whether native Flutter tests pass
 - `frb_example/pure_dart` -> `frb_example/pure_dart_pde`
