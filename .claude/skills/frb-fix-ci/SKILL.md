@@ -13,6 +13,20 @@ CI failures in flutter_rust_bridge often have simple fixes. Try the appropriate 
 
 **Core principle:** Start with lazy fixes (re-run, copy diff, --fix) before expensive investigation.
 
+## Triage Order
+
+Use this order before diving into individual failure types:
+
+1. Check the latest relevant run or job first. Do not reason from stale CI state.
+2. If the failure looks flaky, rerun only the failed jobs.
+3. Reproduce the exact failing `./frb_internal ...` command from CI.
+4. Decide whether the failure is upstream (`Generate` / `Integrate` / `Generate Internal`) or downstream (`Build :: Flutter`, native tests).
+5. Only do deeper debugging after you have ruled out flakes, stale runs, and failure propagation.
+
+### Checking the Right Run
+
+Do not answer from stale CI state. Read the latest relevant run or job information first.
+
 ## Quick Reference
 
 | Symptom | Fix |
@@ -22,7 +36,22 @@ CI failures in flutter_rust_bridge often have simple fixes. Try the appropriate 
 | Lint/format errors | Add `--fix` flag |
 | Can't reproduce locally | Use same `./frb_internal` command from CI |
 
-## Fixes by Scenario
+## Dependency Order
+
+When several related jobs are failing, use this dependency order instead of treating all failures as peers:
+
+- `generation logic / templates / toolchain` -> generated outputs
+- `frb_codegen/assets/integration_template/` and `cargokit` -> integrate example outputs and platform files
+- `frb_example/pure_dart` -> `frb_example/pure_dart_pde`
+- `Generate` / `Integrate` / `Generate Internal` -> `Build :: Flutter`
+- `Build :: Flutter` -> native Flutter tests
+
+Practical rule:
+
+- Prefer fixing the left side of the chain before the right side
+- If the left side is still unstable, treat failures on the right side as potentially downstream symptoms rather than independent root causes
+
+## Fixes by Failure Type
 
 ### Flaky Test
 
@@ -32,24 +61,7 @@ Sometimes CI fails due to timing issues, not real bugs. Rerun only failed jobs:
 gh run rerun --failed
 ```
 
-If it passes on retry → flaky, not your bug.
-
-### Dart Web Browser Startup Flakes
-
-When `Test :: Dart :: Web (...)` fails after the web build and server startup already succeeded, and the failure is:
-
-```text
-Exception: Websocket url not found.
-```
-
-treat it as a likely browser / puppeteer startup flake first, not an immediate code regression.
-
-In that situation:
-
-- Do not assume the generated code or test logic is broken just from this error
-- Check whether wasm build, `dart compile js`, and local web server startup already succeeded
-- Prefer rerunning only the failed job first
-- Only start code investigation if the same job keeps failing with the same error repeatedly
+If it passes on retry -> flaky, not your bug.
 
 ### Git Diff Errors
 
@@ -77,6 +89,15 @@ Both are correct. Option A is faster; Option B is more thorough.
 Do not hand-edit generated files as the final fix.
 
 You may use CI diffs only as a diagnosis aid to understand what changed, but the final accepted output should come from re-running the appropriate generation workflow in a clean matching environment.
+
+### Can't Reproduce Locally
+
+CI shows the command it ran. Run the same command:
+
+```bash
+# CI shows: ./frb_internal test-dart --package frb_example/pure_dart
+./frb_internal test-dart --package frb_example/pure_dart
+```
 
 ### Lint/Format Errors
 
@@ -107,19 +128,6 @@ Instead:
 - Fix the source templates under `frb_codegen/assets/integration_template/`
 - Re-run integrate generation after updating the templates
 
-### Can't Reproduce Locally
-
-CI shows the command it ran. Run the same command:
-
-```bash
-# CI shows: ./frb_internal test-dart --package frb_example/pure_dart
-./frb_internal test-dart --package frb_example/pure_dart
-```
-
-### Checking the Right Run
-
-Do not answer from stale CI state. Read the latest relevant run or job information first.
-
 ### Generate-caused Failures
 
 If CI previously failed mainly in `Generate` while other jobs passed, and after accepting generated changes additional non-`Generate` jobs start failing, treat this as strong evidence that the accepted generated outputs are incorrect or incomplete.
@@ -130,6 +138,35 @@ In that situation:
 - First validate the generation logic or generation workflow
 - Re-generate from a clean environment
 - Only accept generated outputs after confirming they do not introduce new non-`Generate` regressions
+
+### Failure Propagation
+
+When CI starts failing in several adjacent categories at once, do not assume they are independent.
+
+In that situation:
+
+- Treat `Generate` / `Integrate` / `Generate Internal` as upstream of `Build :: Flutter` and native tests
+- If generated or integrated outputs are still unstable, do not spend most of your effort fixing `Build :: Flutter` or native tests one by one yet
+- First stabilize the upstream generation or template inputs, then re-check the downstream jobs
+
+### Dart Web Browser Startup Flakes
+
+When `Test :: Dart :: Web (...)` fails after the web build and server startup already succeeded, and the failure is:
+
+```text
+Exception: Websocket url not found.
+```
+
+treat it as a likely browser / puppeteer startup flake first, not an immediate code regression.
+
+In that situation:
+
+- Do not assume the generated code or test logic is broken just from this error
+- Check whether wasm build, `dart compile js`, and local web server startup already succeeded
+- Prefer rerunning only the failed job first
+- Only start code investigation if the same job keeps failing with the same error repeatedly
+
+## Special Chains
 
 ### `pure_dart_pde` Related Failures
 
@@ -142,32 +179,15 @@ In that situation:
 - Treat `frb_example/pure_dart` as the upstream source and `frb_example/pure_dart_pde` as the downstream copy
 - If `pure_dart` still changes, sync that upstream output first, then re-check `pure_dart_pde`
 
-### Failure Propagation
+### Flutter Integrate Template Chain
 
-When CI starts failing in several adjacent categories at once, do not assume they are independent.
+When Flutter integrate examples, example platform files, `Build :: Flutter`, and native Flutter tests regress together:
 
-In that situation:
+- Treat `frb_codegen/assets/integration_template/` and `cargokit` as upstream of generated example platform files
+- Suspect the template chain before assuming the generated outputs are independently wrong
+- Prefer fixing template inputs over hand-editing generated example outputs
 
-- Treat `Generate` / `Integrate` / `Generate Internal` as upstream of `Build :: Flutter` and native tests
-- If generated or integrated outputs are still unstable, do not spend most of your effort fixing `Build :: Flutter` or native tests one by one yet
-- First stabilize the upstream generation or template inputs, then re-check the downstream jobs
-
-### Dependency Order
-
-When several related jobs are failing, use this dependency order instead of treating all failures as peers:
-
-- `generation logic / templates / toolchain` -> generated outputs
-- `frb_codegen/assets/integration_template/` and `cargokit` -> integrate example outputs and platform files
-- `frb_example/pure_dart` -> `frb_example/pure_dart_pde`
-- `Generate` / `Integrate` / `Generate Internal` -> `Build :: Flutter`
-- `Build :: Flutter` -> native Flutter tests
-
-Practical rule:
-
-- Prefer fixing the left side of the chain before the right side
-- If the left side is still unstable, treat failures on the right side as potentially downstream symptoms rather than independent root causes
-
-### Whack-a-Mole Prevention
+## Whack-a-Mole Prevention
 
 When the same path or package repeatedly shows commits like `refresh`, `regenerate`, `sync`, and `revert`, treat that as a sign you may be chasing outputs instead of fixing inputs.
 
