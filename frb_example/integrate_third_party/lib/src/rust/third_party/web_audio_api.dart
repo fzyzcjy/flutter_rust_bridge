@@ -34,10 +34,11 @@ abstract class AudioBuffer implements RustOpaqueInterface {
   static Future<AudioBuffer> from({
     required List<Float32List> samples,
     required double sampleRate,
-  }) => RustLib.instance.api.webAudioApiAudioBufferFrom(
-    samples: samples,
-    sampleRate: sampleRate,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioBufferFrom(
+        samples: samples,
+        sampleRate: sampleRate,
+      );
 
   /// Return a read-only copy of the underlying data of the channel
   ///
@@ -69,7 +70,8 @@ abstract class AudioBuffer implements RustOpaqueInterface {
   /// 32 being defined by the MAX_CHANNELS constant.
   static Future<AudioBuffer> newInstance({
     required AudioBufferOptions options,
-  }) => RustLib.instance.api.webAudioApiAudioBufferNew(options: options);
+  }) =>
+      RustLib.instance.api.webAudioApiAudioBufferNew(options: options);
 
   /// Number of channels in this `AudioBuffer`
   Future<int> numberOfChannels();

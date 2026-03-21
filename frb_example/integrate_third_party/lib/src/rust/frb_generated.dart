@@ -85,11 +85,11 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
-        stem: 'rust_lib_frb_example_integrate_third_party',
-        ioDirectory: 'rust/target/release/',
-        webPrefix: 'pkg/',
-        wasmBindgenName: 'wasm_bindgen',
-      );
+    stem: 'rust_lib_frb_example_integrate_third_party',
+    ioDirectory: 'rust/target/release/',
+    webPrefix: 'pkg/',
+    wasmBindgenName: 'wasm_bindgen',
+  );
 }
 
 abstract class RustLibApi extends BaseApi {
@@ -106,7 +106,7 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<ChannelInterpretation>
-  webAudioApiNodeAnalyserNodeChannelInterpretation({
+      webAudioApiNodeAnalyserNodeChannelInterpretation({
     required AnalyserNode that,
   });
 
@@ -131,13 +131,13 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<Uint8List>
-  webAudioApiNodeAnalyserNodeFrbOverrideGetByteTimeDomainData({
+      webAudioApiNodeAnalyserNodeFrbOverrideGetByteTimeDomainData({
     required AnalyserNode that,
     required int len,
   });
 
   Future<Float32List>
-  webAudioApiNodeAnalyserNodeFrbOverrideGetFloatTimeDomainData({
+      webAudioApiNodeAnalyserNodeFrbOverrideGetFloatTimeDomainData({
     required AnalyserNode that,
     required int len,
   });
@@ -204,12 +204,12 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<ChannelCountMode>
-  webAudioApiNodeAudioBufferSourceNodeChannelCountMode({
+      webAudioApiNodeAudioBufferSourceNodeChannelCountMode({
     required AudioBufferSourceNode that,
   });
 
   Future<ChannelInterpretation>
-  webAudioApiNodeAudioBufferSourceNodeChannelInterpretation({
+      webAudioApiNodeAudioBufferSourceNodeChannelInterpretation({
     required AudioBufferSourceNode that,
   });
 
@@ -309,7 +309,7 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<void>
-  webAudioApiNodeAudioBufferSourceNodeStartAtWithOffsetAndDuration({
+      webAudioApiNodeAudioBufferSourceNodeStartAtWithOffsetAndDuration({
     required AudioBufferSourceNode that,
     required double start,
     required double offset,
@@ -379,7 +379,7 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<(AudioParam, AudioParamId)>
-  webAudioApiContextAudioContextCreateAudioParam({
+      webAudioApiContextAudioContextCreateAudioParam({
     required AudioContext that,
     required AudioParamDescriptor opts,
     required AudioContextRegistration dest,
@@ -397,7 +397,7 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<AudioBufferSourceNode>
-  webAudioApiContextAudioContextCreateBufferSource({
+      webAudioApiContextAudioContextCreateBufferSource({
     required AudioContext that,
   });
 
@@ -407,13 +407,13 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<ChannelSplitterNode>
-  webAudioApiContextAudioContextCreateChannelSplitter({
+      webAudioApiContextAudioContextCreateChannelSplitter({
     required AudioContext that,
     required int numberOfOutputs,
   });
 
   Future<ConstantSourceNode>
-  webAudioApiContextAudioContextCreateConstantSource({
+      webAudioApiContextAudioContextCreateConstantSource({
     required AudioContext that,
   });
 
@@ -427,7 +427,7 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<DynamicsCompressorNode>
-  webAudioApiContextAudioContextCreateDynamicsCompressor({
+      webAudioApiContextAudioContextCreateDynamicsCompressor({
     required AudioContext that,
   });
 
@@ -442,18 +442,18 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<MediaStreamAudioDestinationNode>
-  webAudioApiContextAudioContextCreateMediaStreamDestination({
+      webAudioApiContextAudioContextCreateMediaStreamDestination({
     required AudioContext that,
   });
 
   Future<MediaStreamAudioSourceNode>
-  webAudioApiContextAudioContextCreateMediaStreamSource({
+      webAudioApiContextAudioContextCreateMediaStreamSource({
     required AudioContext that,
     required MediaStream media,
   });
 
   Future<MediaStreamTrackAudioSourceNode>
-  webAudioApiContextAudioContextCreateMediaStreamTrackSource({
+      webAudioApiContextAudioContextCreateMediaStreamTrackSource({
     required AudioContext that,
     required MediaStreamTrack media,
   });
@@ -472,7 +472,7 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<ScriptProcessorNode>
-  webAudioApiContextAudioContextCreateScriptProcessor({
+      webAudioApiContextAudioContextCreateScriptProcessor({
     required AudioContext that,
     required int bufferSize,
     required int numberOfInputChannels,
@@ -498,13 +498,13 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<MediaElementAudioSourceNode>
-  webAudioApiContextAudioContextFrbOverrideCreateMediaElementSource({
+      webAudioApiContextAudioContextFrbOverrideCreateMediaElementSource({
     required AudioContext that,
     required MediaElement mediaElement,
   });
 
   Future<AudioBuffer>
-  webAudioApiContextAudioContextFrbOverrideDecodeAudioDataSync({
+      webAudioApiContextAudioContextFrbOverrideDecodeAudioDataSync({
     required AudioContext that,
     required String inputPath,
   });
@@ -572,7 +572,7 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<ChannelInterpretation>
-  webAudioApiNodeAudioDestinationNodeChannelInterpretation({
+      webAudioApiNodeAudioDestinationNodeChannelInterpretation({
     required AudioDestinationNode that,
   });
 
@@ -816,7 +816,7 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<ChannelInterpretation>
-  webAudioApiWorkletAudioWorkletNodeChannelInterpretation({
+      webAudioApiWorkletAudioWorkletNodeChannelInterpretation({
     required AudioWorkletNode that,
   });
 
@@ -862,7 +862,7 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<ChannelInterpretation>
-  webAudioApiNodeBiquadFilterNodeChannelInterpretation({
+      webAudioApiNodeBiquadFilterNodeChannelInterpretation({
     required BiquadFilterNode that,
   });
 
@@ -952,7 +952,7 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<ChannelInterpretation>
-  webAudioApiNodeChannelMergerNodeChannelInterpretation({
+      webAudioApiNodeChannelMergerNodeChannelInterpretation({
     required ChannelMergerNode that,
   });
 
@@ -1004,7 +1004,7 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<ChannelInterpretation>
-  webAudioApiNodeChannelSplitterNodeChannelInterpretation({
+      webAudioApiNodeChannelSplitterNodeChannelInterpretation({
     required ChannelSplitterNode that,
   });
 
@@ -1048,19 +1048,19 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<AnalyserNode>
-  webAudioApiContextConcreteBaseAudioContextCreateAnalyser({
+      webAudioApiContextConcreteBaseAudioContextCreateAnalyser({
     required ConcreteBaseAudioContext that,
   });
 
   Future<(AudioParam, AudioParamId)>
-  webAudioApiContextConcreteBaseAudioContextCreateAudioParam({
+      webAudioApiContextConcreteBaseAudioContextCreateAudioParam({
     required ConcreteBaseAudioContext that,
     required AudioParamDescriptor opts,
     required AudioContextRegistration dest,
   });
 
   Future<BiquadFilterNode>
-  webAudioApiContextConcreteBaseAudioContextCreateBiquadFilter({
+      webAudioApiContextConcreteBaseAudioContextCreateBiquadFilter({
     required ConcreteBaseAudioContext that,
   });
 
@@ -1072,29 +1072,29 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<AudioBufferSourceNode>
-  webAudioApiContextConcreteBaseAudioContextCreateBufferSource({
+      webAudioApiContextConcreteBaseAudioContextCreateBufferSource({
     required ConcreteBaseAudioContext that,
   });
 
   Future<ChannelMergerNode>
-  webAudioApiContextConcreteBaseAudioContextCreateChannelMerger({
+      webAudioApiContextConcreteBaseAudioContextCreateChannelMerger({
     required ConcreteBaseAudioContext that,
     required int numberOfInputs,
   });
 
   Future<ChannelSplitterNode>
-  webAudioApiContextConcreteBaseAudioContextCreateChannelSplitter({
+      webAudioApiContextConcreteBaseAudioContextCreateChannelSplitter({
     required ConcreteBaseAudioContext that,
     required int numberOfOutputs,
   });
 
   Future<ConstantSourceNode>
-  webAudioApiContextConcreteBaseAudioContextCreateConstantSource({
+      webAudioApiContextConcreteBaseAudioContextCreateConstantSource({
     required ConcreteBaseAudioContext that,
   });
 
   Future<ConvolverNode>
-  webAudioApiContextConcreteBaseAudioContextCreateConvolver({
+      webAudioApiContextConcreteBaseAudioContextCreateConvolver({
     required ConcreteBaseAudioContext that,
   });
 
@@ -1104,7 +1104,7 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<DynamicsCompressorNode>
-  webAudioApiContextConcreteBaseAudioContextCreateDynamicsCompressor({
+      webAudioApiContextConcreteBaseAudioContextCreateDynamicsCompressor({
     required ConcreteBaseAudioContext that,
   });
 
@@ -1113,14 +1113,14 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<IirFilterNode>
-  webAudioApiContextConcreteBaseAudioContextCreateIirFilter({
+      webAudioApiContextConcreteBaseAudioContextCreateIirFilter({
     required ConcreteBaseAudioContext that,
     required List<double> feedforward,
     required List<double> feedback,
   });
 
   Future<OscillatorNode>
-  webAudioApiContextConcreteBaseAudioContextCreateOscillator({
+      webAudioApiContextConcreteBaseAudioContextCreateOscillator({
     required ConcreteBaseAudioContext that,
   });
 
@@ -1129,13 +1129,13 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<PeriodicWave>
-  webAudioApiContextConcreteBaseAudioContextCreatePeriodicWave({
+      webAudioApiContextConcreteBaseAudioContextCreatePeriodicWave({
     required ConcreteBaseAudioContext that,
     required PeriodicWaveOptions options,
   });
 
   Future<ScriptProcessorNode>
-  webAudioApiContextConcreteBaseAudioContextCreateScriptProcessor({
+      webAudioApiContextConcreteBaseAudioContextCreateScriptProcessor({
     required ConcreteBaseAudioContext that,
     required int bufferSize,
     required int numberOfInputChannels,
@@ -1143,12 +1143,12 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<StereoPannerNode>
-  webAudioApiContextConcreteBaseAudioContextCreateStereoPanner({
+      webAudioApiContextConcreteBaseAudioContextCreateStereoPanner({
     required ConcreteBaseAudioContext that,
   });
 
   Future<WaveShaperNode>
-  webAudioApiContextConcreteBaseAudioContextCreateWaveShaper({
+      webAudioApiContextConcreteBaseAudioContextCreateWaveShaper({
     required ConcreteBaseAudioContext that,
   });
 
@@ -1157,7 +1157,7 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<AudioDestinationNode>
-  webAudioApiContextConcreteBaseAudioContextDestination({
+      webAudioApiContextConcreteBaseAudioContextDestination({
     required ConcreteBaseAudioContext that,
   });
 
@@ -1191,7 +1191,7 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<ChannelInterpretation>
-  webAudioApiNodeConstantSourceNodeChannelInterpretation({
+      webAudioApiNodeConstantSourceNodeChannelInterpretation({
     required ConstantSourceNode that,
   });
 
@@ -1270,7 +1270,7 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<ChannelInterpretation>
-  webAudioApiNodeConvolverNodeChannelInterpretation({
+      webAudioApiNodeConvolverNodeChannelInterpretation({
     required ConvolverNode that,
   });
 
@@ -1373,12 +1373,12 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<ChannelCountMode>
-  webAudioApiNodeDynamicsCompressorNodeChannelCountMode({
+      webAudioApiNodeDynamicsCompressorNodeChannelCountMode({
     required DynamicsCompressorNode that,
   });
 
   Future<ChannelInterpretation>
-  webAudioApiNodeDynamicsCompressorNodeChannelInterpretation({
+      webAudioApiNodeDynamicsCompressorNodeChannelInterpretation({
     required DynamicsCompressorNode that,
   });
 
@@ -1475,7 +1475,7 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<ChannelInterpretation>
-  webAudioApiNodeIirFilterNodeChannelInterpretation({
+      webAudioApiNodeIirFilterNodeChannelInterpretation({
     required IirFilterNode that,
   });
 
@@ -1525,12 +1525,12 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<ChannelCountMode>
-  webAudioApiNodeMediaElementAudioSourceNodeChannelCountMode({
+      webAudioApiNodeMediaElementAudioSourceNodeChannelCountMode({
     required MediaElementAudioSourceNode that,
   });
 
   Future<ChannelInterpretation>
-  webAudioApiNodeMediaElementAudioSourceNodeChannelInterpretation({
+      webAudioApiNodeMediaElementAudioSourceNodeChannelInterpretation({
     required MediaElementAudioSourceNode that,
   });
 
@@ -1602,17 +1602,17 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<ChannelCountMode>
-  webAudioApiNodeMediaStreamAudioDestinationNodeChannelCountMode({
+      webAudioApiNodeMediaStreamAudioDestinationNodeChannelCountMode({
     required MediaStreamAudioDestinationNode that,
   });
 
   Future<ChannelInterpretation>
-  webAudioApiNodeMediaStreamAudioDestinationNodeChannelInterpretation({
+      webAudioApiNodeMediaStreamAudioDestinationNodeChannelInterpretation({
     required MediaStreamAudioDestinationNode that,
   });
 
   Future<void>
-  webAudioApiNodeMediaStreamAudioDestinationNodeClearOnprocessorerror({
+      webAudioApiNodeMediaStreamAudioDestinationNodeClearOnprocessorerror({
     required MediaStreamAudioDestinationNode that,
   });
 
@@ -1626,7 +1626,7 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<void>
-  webAudioApiNodeMediaStreamAudioDestinationNodeFrbOverrideConnect({
+      webAudioApiNodeMediaStreamAudioDestinationNodeFrbOverrideConnect({
     required MediaStreamAudioDestinationNode that,
     required AudioNode dest,
   });
@@ -1644,7 +1644,7 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<void>
-  webAudioApiNodeMediaStreamAudioDestinationNodeSetOnProcessorError({
+      webAudioApiNodeMediaStreamAudioDestinationNodeSetOnProcessorError({
     required MediaStreamAudioDestinationNode that,
     required FutureOr<void> Function(String) callback,
   });
@@ -1658,12 +1658,12 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<ChannelCountMode>
-  webAudioApiNodeMediaStreamAudioSourceNodeChannelCountMode({
+      webAudioApiNodeMediaStreamAudioSourceNodeChannelCountMode({
     required MediaStreamAudioSourceNode that,
   });
 
   Future<ChannelInterpretation>
-  webAudioApiNodeMediaStreamAudioSourceNodeChannelInterpretation({
+      webAudioApiNodeMediaStreamAudioSourceNodeChannelInterpretation({
     required MediaStreamAudioSourceNode that,
   });
 
@@ -1711,17 +1711,17 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<ChannelCountMode>
-  webAudioApiNodeMediaStreamTrackAudioSourceNodeChannelCountMode({
+      webAudioApiNodeMediaStreamTrackAudioSourceNodeChannelCountMode({
     required MediaStreamTrackAudioSourceNode that,
   });
 
   Future<ChannelInterpretation>
-  webAudioApiNodeMediaStreamTrackAudioSourceNodeChannelInterpretation({
+      webAudioApiNodeMediaStreamTrackAudioSourceNodeChannelInterpretation({
     required MediaStreamTrackAudioSourceNode that,
   });
 
   Future<void>
-  webAudioApiNodeMediaStreamTrackAudioSourceNodeClearOnprocessorerror({
+      webAudioApiNodeMediaStreamTrackAudioSourceNodeClearOnprocessorerror({
     required MediaStreamTrackAudioSourceNode that,
   });
 
@@ -1735,7 +1735,7 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<void>
-  webAudioApiNodeMediaStreamTrackAudioSourceNodeFrbOverrideConnect({
+      webAudioApiNodeMediaStreamTrackAudioSourceNodeFrbOverrideConnect({
     required MediaStreamTrackAudioSourceNode that,
     required AudioNode dest,
   });
@@ -1753,7 +1753,7 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<void>
-  webAudioApiNodeMediaStreamTrackAudioSourceNodeSetOnProcessorError({
+      webAudioApiNodeMediaStreamTrackAudioSourceNodeSetOnProcessorError({
     required MediaStreamTrackAudioSourceNode that,
     required FutureOr<void> Function(String) callback,
   });
@@ -1763,12 +1763,12 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<MediaStreamTrackState>
-  webAudioApiMediaStreamsMediaStreamTrackReadyState({
+      webAudioApiMediaStreamsMediaStreamTrackReadyState({
     required MediaStreamTrack that,
   });
 
   Future<List<MediaStreamTrack>>
-  webAudioApiMediaStreamsMediaStreamFrbOverrideGetTracks({
+      webAudioApiMediaStreamsMediaStreamFrbOverrideGetTracks({
     required MediaStream that,
   });
 
@@ -1822,7 +1822,7 @@ abstract class RustLibApi extends BaseApi {
   });
 
   AudioBuffer
-  webAudioApiOfflineAudioCompletionEventAutoAccessorGetRenderedBuffer({
+      webAudioApiOfflineAudioCompletionEventAutoAccessorGetRenderedBuffer({
     required OfflineAudioCompletionEvent that,
   });
 
@@ -1849,14 +1849,14 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<(AudioParam, AudioParamId)>
-  webAudioApiContextOfflineAudioContextCreateAudioParam({
+      webAudioApiContextOfflineAudioContextCreateAudioParam({
     required OfflineAudioContext that,
     required AudioParamDescriptor opts,
     required AudioContextRegistration dest,
   });
 
   Future<BiquadFilterNode>
-  webAudioApiContextOfflineAudioContextCreateBiquadFilter({
+      webAudioApiContextOfflineAudioContextCreateBiquadFilter({
     required OfflineAudioContext that,
   });
 
@@ -1868,24 +1868,24 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<AudioBufferSourceNode>
-  webAudioApiContextOfflineAudioContextCreateBufferSource({
+      webAudioApiContextOfflineAudioContextCreateBufferSource({
     required OfflineAudioContext that,
   });
 
   Future<ChannelMergerNode>
-  webAudioApiContextOfflineAudioContextCreateChannelMerger({
+      webAudioApiContextOfflineAudioContextCreateChannelMerger({
     required OfflineAudioContext that,
     required int numberOfInputs,
   });
 
   Future<ChannelSplitterNode>
-  webAudioApiContextOfflineAudioContextCreateChannelSplitter({
+      webAudioApiContextOfflineAudioContextCreateChannelSplitter({
     required OfflineAudioContext that,
     required int numberOfOutputs,
   });
 
   Future<ConstantSourceNode>
-  webAudioApiContextOfflineAudioContextCreateConstantSource({
+      webAudioApiContextOfflineAudioContextCreateConstantSource({
     required OfflineAudioContext that,
   });
 
@@ -1899,7 +1899,7 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<DynamicsCompressorNode>
-  webAudioApiContextOfflineAudioContextCreateDynamicsCompressor({
+      webAudioApiContextOfflineAudioContextCreateDynamicsCompressor({
     required OfflineAudioContext that,
   });
 
@@ -1927,7 +1927,7 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<ScriptProcessorNode>
-  webAudioApiContextOfflineAudioContextCreateScriptProcessor({
+      webAudioApiContextOfflineAudioContextCreateScriptProcessor({
     required OfflineAudioContext that,
     required int bufferSize,
     required int numberOfInputChannels,
@@ -1935,7 +1935,7 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<StereoPannerNode>
-  webAudioApiContextOfflineAudioContextCreateStereoPanner({
+      webAudioApiContextOfflineAudioContextCreateStereoPanner({
     required OfflineAudioContext that,
   });
 
@@ -1948,7 +1948,7 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<AudioDestinationNode>
-  webAudioApiContextOfflineAudioContextDestination({
+      webAudioApiContextOfflineAudioContextDestination({
     required OfflineAudioContext that,
   });
 
@@ -2009,7 +2009,7 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<ChannelInterpretation>
-  webAudioApiNodeOscillatorNodeChannelInterpretation({
+      webAudioApiNodeOscillatorNodeChannelInterpretation({
     required OscillatorNode that,
   });
 
@@ -2241,7 +2241,7 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<ChannelInterpretation>
-  webAudioApiNodeScriptProcessorNodeChannelInterpretation({
+      webAudioApiNodeScriptProcessorNodeChannelInterpretation({
     required ScriptProcessorNode that,
   });
 
@@ -2302,7 +2302,7 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<ChannelInterpretation>
-  webAudioApiNodeStereoPannerNodeChannelInterpretation({
+      webAudioApiNodeStereoPannerNodeChannelInterpretation({
     required StereoPannerNode that,
   });
 
@@ -2354,7 +2354,7 @@ abstract class RustLibApi extends BaseApi {
   });
 
   Future<ChannelInterpretation>
-  webAudioApiNodeWaveShaperNodeChannelInterpretation({
+      webAudioApiNodeWaveShaperNodeChannelInterpretation({
     required WaveShaperNode that,
   });
 
@@ -2414,17 +2414,17 @@ abstract class RustLibApi extends BaseApi {
   Future<AnalyserOptions> webAudioApiNodeAnalyserOptionsDefault();
 
   Future<AudioBufferSourceOptions>
-  webAudioApiNodeAudioBufferSourceOptionsDefault();
+      webAudioApiNodeAudioBufferSourceOptionsDefault();
 
   Future<AudioContextLatencyCategory>
-  webAudioApiContextAudioContextLatencyCategoryDefault();
+      webAudioApiContextAudioContextLatencyCategoryDefault();
 
   Future<AudioContextOptions> webAudioApiContextAudioContextOptionsDefault();
 
   Future<AudioNodeOptions> webAudioApiNodeAudioNodeOptionsDefault();
 
   Future<AudioRenderCapacityOptions>
-  webAudioApiAudioRenderCapacityOptionsDefault();
+      webAudioApiAudioRenderCapacityOptionsDefault();
 
   Future<BiquadFilterOptions> webAudioApiNodeBiquadFilterOptionsDefault();
 
@@ -2443,7 +2443,7 @@ abstract class RustLibApi extends BaseApi {
   Future<DistanceModelType> webAudioApiNodeDistanceModelTypeDefault();
 
   Future<DynamicsCompressorOptions>
-  webAudioApiNodeDynamicsCompressorOptionsDefault();
+      webAudioApiNodeDynamicsCompressorOptionsDefault();
 
   Future<void> crateApiSimpleF({required DummyStruct a});
 
@@ -2472,212 +2472,212 @@ abstract class RustLibApi extends BaseApi {
   Future<WaveShaperOptions> webAudioApiNodeWaveShaperOptionsDefault();
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AnalyserNode;
+      get rust_arc_increment_strong_count_AnalyserNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AnalyserNode;
+      get rust_arc_decrement_strong_count_AnalyserNode;
 
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_AnalyserNodePtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AudioBuffer;
+      get rust_arc_increment_strong_count_AudioBuffer;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AudioBuffer;
+      get rust_arc_decrement_strong_count_AudioBuffer;
 
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_AudioBufferPtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AudioBufferSourceNode;
+      get rust_arc_increment_strong_count_AudioBufferSourceNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AudioBufferSourceNode;
+      get rust_arc_decrement_strong_count_AudioBufferSourceNode;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_AudioBufferSourceNodePtr;
+      get rust_arc_decrement_strong_count_AudioBufferSourceNodePtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AudioContext;
+      get rust_arc_increment_strong_count_AudioContext;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AudioContext;
+      get rust_arc_decrement_strong_count_AudioContext;
 
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_AudioContextPtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AudioContextRegistration;
+      get rust_arc_increment_strong_count_AudioContextRegistration;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AudioContextRegistration;
+      get rust_arc_decrement_strong_count_AudioContextRegistration;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_AudioContextRegistrationPtr;
+      get rust_arc_decrement_strong_count_AudioContextRegistrationPtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AudioDestinationNode;
+      get rust_arc_increment_strong_count_AudioDestinationNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AudioDestinationNode;
+      get rust_arc_decrement_strong_count_AudioDestinationNode;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_AudioDestinationNodePtr;
+      get rust_arc_decrement_strong_count_AudioDestinationNodePtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AudioListener;
+      get rust_arc_increment_strong_count_AudioListener;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AudioListener;
+      get rust_arc_decrement_strong_count_AudioListener;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_AudioListenerPtr;
+      get rust_arc_decrement_strong_count_AudioListenerPtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AudioParam;
+      get rust_arc_increment_strong_count_AudioParam;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AudioParam;
+      get rust_arc_decrement_strong_count_AudioParam;
 
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_AudioParamPtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AudioParamId;
+      get rust_arc_increment_strong_count_AudioParamId;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AudioParamId;
+      get rust_arc_decrement_strong_count_AudioParamId;
 
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_AudioParamIdPtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AudioProcessingEvent;
+      get rust_arc_increment_strong_count_AudioProcessingEvent;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AudioProcessingEvent;
+      get rust_arc_decrement_strong_count_AudioProcessingEvent;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_AudioProcessingEventPtr;
+      get rust_arc_decrement_strong_count_AudioProcessingEventPtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AudioRenderCapacity;
+      get rust_arc_increment_strong_count_AudioRenderCapacity;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AudioRenderCapacity;
+      get rust_arc_decrement_strong_count_AudioRenderCapacity;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_AudioRenderCapacityPtr;
+      get rust_arc_decrement_strong_count_AudioRenderCapacityPtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AudioRenderCapacityEvent;
+      get rust_arc_increment_strong_count_AudioRenderCapacityEvent;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AudioRenderCapacityEvent;
+      get rust_arc_decrement_strong_count_AudioRenderCapacityEvent;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_AudioRenderCapacityEventPtr;
+      get rust_arc_decrement_strong_count_AudioRenderCapacityEventPtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AudioWorkletNode;
+      get rust_arc_increment_strong_count_AudioWorkletNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AudioWorkletNode;
+      get rust_arc_decrement_strong_count_AudioWorkletNode;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_AudioWorkletNodePtr;
+      get rust_arc_decrement_strong_count_AudioWorkletNodePtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_BiquadFilterNode;
+      get rust_arc_increment_strong_count_BiquadFilterNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_BiquadFilterNode;
+      get rust_arc_decrement_strong_count_BiquadFilterNode;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_BiquadFilterNodePtr;
+      get rust_arc_decrement_strong_count_BiquadFilterNodePtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_BlobEvent;
+      get rust_arc_increment_strong_count_BlobEvent;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_BlobEvent;
+      get rust_arc_decrement_strong_count_BlobEvent;
 
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_BlobEventPtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_ChannelConfig;
+      get rust_arc_increment_strong_count_ChannelConfig;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_ChannelConfig;
+      get rust_arc_decrement_strong_count_ChannelConfig;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_ChannelConfigPtr;
+      get rust_arc_decrement_strong_count_ChannelConfigPtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_ChannelMergerNode;
+      get rust_arc_increment_strong_count_ChannelMergerNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_ChannelMergerNode;
+      get rust_arc_decrement_strong_count_ChannelMergerNode;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_ChannelMergerNodePtr;
+      get rust_arc_decrement_strong_count_ChannelMergerNodePtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_ChannelSplitterNode;
+      get rust_arc_increment_strong_count_ChannelSplitterNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_ChannelSplitterNode;
+      get rust_arc_decrement_strong_count_ChannelSplitterNode;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_ChannelSplitterNodePtr;
+      get rust_arc_decrement_strong_count_ChannelSplitterNodePtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_ConcreteBaseAudioContext;
+      get rust_arc_increment_strong_count_ConcreteBaseAudioContext;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_ConcreteBaseAudioContext;
+      get rust_arc_decrement_strong_count_ConcreteBaseAudioContext;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_ConcreteBaseAudioContextPtr;
+      get rust_arc_decrement_strong_count_ConcreteBaseAudioContextPtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_ConstantSourceNode;
+      get rust_arc_increment_strong_count_ConstantSourceNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_ConstantSourceNode;
+      get rust_arc_decrement_strong_count_ConstantSourceNode;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_ConstantSourceNodePtr;
+      get rust_arc_decrement_strong_count_ConstantSourceNodePtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_ConvolverNode;
+      get rust_arc_increment_strong_count_ConvolverNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_ConvolverNode;
+      get rust_arc_decrement_strong_count_ConvolverNode;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_ConvolverNodePtr;
+      get rust_arc_decrement_strong_count_ConvolverNodePtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_DelayNode;
+      get rust_arc_increment_strong_count_DelayNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_DelayNode;
+      get rust_arc_decrement_strong_count_DelayNode;
 
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_DelayNodePtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_DummyStruct;
+      get rust_arc_increment_strong_count_DummyStruct;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_DummyStruct;
+      get rust_arc_decrement_strong_count_DummyStruct;
 
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_DummyStructPtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_DynamicsCompressorNode;
+      get rust_arc_increment_strong_count_DynamicsCompressorNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_DynamicsCompressorNode;
+      get rust_arc_decrement_strong_count_DynamicsCompressorNode;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_DynamicsCompressorNodePtr;
+      get rust_arc_decrement_strong_count_DynamicsCompressorNodePtr;
 
   RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_Event;
 
@@ -2686,170 +2686,170 @@ abstract class RustLibApi extends BaseApi {
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_EventPtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_GainNode;
+      get rust_arc_increment_strong_count_GainNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_GainNode;
+      get rust_arc_decrement_strong_count_GainNode;
 
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_GainNodePtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_IirFilterNode;
+      get rust_arc_increment_strong_count_IirFilterNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_IirFilterNode;
+      get rust_arc_decrement_strong_count_IirFilterNode;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_IirFilterNodePtr;
+      get rust_arc_decrement_strong_count_IirFilterNodePtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_MediaElementAudioSourceNode;
+      get rust_arc_increment_strong_count_MediaElementAudioSourceNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_MediaElementAudioSourceNode;
+      get rust_arc_decrement_strong_count_MediaElementAudioSourceNode;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_MediaElementAudioSourceNodePtr;
+      get rust_arc_decrement_strong_count_MediaElementAudioSourceNodePtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_MediaRecorder;
+      get rust_arc_increment_strong_count_MediaRecorder;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_MediaRecorder;
+      get rust_arc_decrement_strong_count_MediaRecorder;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_MediaRecorderPtr;
+      get rust_arc_decrement_strong_count_MediaRecorderPtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_MediaStream;
+      get rust_arc_increment_strong_count_MediaStream;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_MediaStream;
+      get rust_arc_decrement_strong_count_MediaStream;
 
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_MediaStreamPtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_MediaStreamAudioDestinationNode;
+      get rust_arc_increment_strong_count_MediaStreamAudioDestinationNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_MediaStreamAudioDestinationNode;
+      get rust_arc_decrement_strong_count_MediaStreamAudioDestinationNode;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_MediaStreamAudioDestinationNodePtr;
+      get rust_arc_decrement_strong_count_MediaStreamAudioDestinationNodePtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_MediaStreamAudioSourceNode;
+      get rust_arc_increment_strong_count_MediaStreamAudioSourceNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_MediaStreamAudioSourceNode;
+      get rust_arc_decrement_strong_count_MediaStreamAudioSourceNode;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_MediaStreamAudioSourceNodePtr;
+      get rust_arc_decrement_strong_count_MediaStreamAudioSourceNodePtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_MediaStreamConstraints;
+      get rust_arc_increment_strong_count_MediaStreamConstraints;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_MediaStreamConstraints;
+      get rust_arc_decrement_strong_count_MediaStreamConstraints;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_MediaStreamConstraintsPtr;
+      get rust_arc_decrement_strong_count_MediaStreamConstraintsPtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_MediaStreamTrack;
+      get rust_arc_increment_strong_count_MediaStreamTrack;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_MediaStreamTrack;
+      get rust_arc_decrement_strong_count_MediaStreamTrack;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_MediaStreamTrackPtr;
+      get rust_arc_decrement_strong_count_MediaStreamTrackPtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_MediaStreamTrackAudioSourceNode;
+      get rust_arc_increment_strong_count_MediaStreamTrackAudioSourceNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_MediaStreamTrackAudioSourceNode;
+      get rust_arc_decrement_strong_count_MediaStreamTrackAudioSourceNode;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_MediaStreamTrackAudioSourceNodePtr;
+      get rust_arc_decrement_strong_count_MediaStreamTrackAudioSourceNodePtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_MediaElement;
+      get rust_arc_increment_strong_count_MediaElement;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_MediaElement;
+      get rust_arc_decrement_strong_count_MediaElement;
 
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_MediaElementPtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_OfflineAudioCompletionEvent;
+      get rust_arc_increment_strong_count_OfflineAudioCompletionEvent;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_OfflineAudioCompletionEvent;
+      get rust_arc_decrement_strong_count_OfflineAudioCompletionEvent;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_OfflineAudioCompletionEventPtr;
+      get rust_arc_decrement_strong_count_OfflineAudioCompletionEventPtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_OfflineAudioContext;
+      get rust_arc_increment_strong_count_OfflineAudioContext;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_OfflineAudioContext;
+      get rust_arc_decrement_strong_count_OfflineAudioContext;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_OfflineAudioContextPtr;
+      get rust_arc_decrement_strong_count_OfflineAudioContextPtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_OscillatorNode;
+      get rust_arc_increment_strong_count_OscillatorNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_OscillatorNode;
+      get rust_arc_decrement_strong_count_OscillatorNode;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_OscillatorNodePtr;
+      get rust_arc_decrement_strong_count_OscillatorNodePtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_PannerNode;
+      get rust_arc_increment_strong_count_PannerNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_PannerNode;
+      get rust_arc_decrement_strong_count_PannerNode;
 
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_PannerNodePtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_PeriodicWave;
+      get rust_arc_increment_strong_count_PeriodicWave;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_PeriodicWave;
+      get rust_arc_decrement_strong_count_PeriodicWave;
 
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_PeriodicWavePtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_ScriptProcessorNode;
+      get rust_arc_increment_strong_count_ScriptProcessorNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_ScriptProcessorNode;
+      get rust_arc_decrement_strong_count_ScriptProcessorNode;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_ScriptProcessorNodePtr;
+      get rust_arc_decrement_strong_count_ScriptProcessorNodePtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_StereoPannerNode;
+      get rust_arc_increment_strong_count_StereoPannerNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_StereoPannerNode;
+      get rust_arc_decrement_strong_count_StereoPannerNode;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_StereoPannerNodePtr;
+      get rust_arc_decrement_strong_count_StereoPannerNodePtr;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_WaveShaperNode;
+      get rust_arc_increment_strong_count_WaveShaperNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_WaveShaperNode;
+      get rust_arc_decrement_strong_count_WaveShaperNode;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_WaveShaperNodePtr;
+      get rust_arc_decrement_strong_count_WaveShaperNodePtr;
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -2970,7 +2970,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<ChannelInterpretation>
-  webAudioApiNodeAnalyserNodeChannelInterpretation({
+      webAudioApiNodeAnalyserNodeChannelInterpretation({
     required AnalyserNode that,
   }) {
     return handler.executeNormal(
@@ -3000,11 +3000,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAnalyserNodeChannelInterpretationConstMeta =>
-      const TaskConstMeta(
-        debugName: "AnalyserNode_channel_interpretation",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeAnalyserNodeChannelInterpretationConstMeta =>
+          const TaskConstMeta(
+            debugName: "AnalyserNode_channel_interpretation",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeAnalyserNodeClearOnprocessorerror({
@@ -3037,11 +3037,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAnalyserNodeClearOnprocessorerrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "AnalyserNode_clear_onprocessorerror",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeAnalyserNodeClearOnprocessorerrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "AnalyserNode_clear_onprocessorerror",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeAnalyserNodeDisconnect({
@@ -3191,7 +3191,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<Uint8List>
-  webAudioApiNodeAnalyserNodeFrbOverrideGetByteTimeDomainData({
+      webAudioApiNodeAnalyserNodeFrbOverrideGetByteTimeDomainData({
     required AnalyserNode that,
     required int len,
   }) {
@@ -3224,16 +3224,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAnalyserNodeFrbOverrideGetByteTimeDomainDataConstMeta =>
-      const TaskConstMeta(
-        debugName:
-            "AnalyserNode_frb_override_get_byte_time_domain_data(dart_style=get_byte_time_domain_data)",
-        argNames: ["that", "len"],
-      );
+      get kWebAudioApiNodeAnalyserNodeFrbOverrideGetByteTimeDomainDataConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "AnalyserNode_frb_override_get_byte_time_domain_data(dart_style=get_byte_time_domain_data)",
+            argNames: ["that", "len"],
+          );
 
   @override
   Future<Float32List>
-  webAudioApiNodeAnalyserNodeFrbOverrideGetFloatTimeDomainData({
+      webAudioApiNodeAnalyserNodeFrbOverrideGetFloatTimeDomainData({
     required AnalyserNode that,
     required int len,
   }) {
@@ -3266,12 +3266,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAnalyserNodeFrbOverrideGetFloatTimeDomainDataConstMeta =>
-      const TaskConstMeta(
-        debugName:
-            "AnalyserNode_frb_override_get_float_time_domain_data(dart_style=get_float_time_domain_data)",
-        argNames: ["that", "len"],
-      );
+      get kWebAudioApiNodeAnalyserNodeFrbOverrideGetFloatTimeDomainDataConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "AnalyserNode_frb_override_get_float_time_domain_data(dart_style=get_float_time_domain_data)",
+            argNames: ["that", "len"],
+          );
 
   @override
   Future<int> webAudioApiNodeAnalyserNodeFrequencyBinCount({
@@ -3678,11 +3678,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAnalyserNodeSetSmoothingTimeConstantConstMeta =>
-      const TaskConstMeta(
-        debugName: "AnalyserNode_set_smoothing_time_constant",
-        argNames: ["that", "value"],
-      );
+      get kWebAudioApiNodeAnalyserNodeSetSmoothingTimeConstantConstMeta =>
+          const TaskConstMeta(
+            debugName: "AnalyserNode_set_smoothing_time_constant",
+            argNames: ["that", "value"],
+          );
 
   @override
   Future<double> webAudioApiNodeAnalyserNodeSmoothingTimeConstant({
@@ -3715,11 +3715,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAnalyserNodeSmoothingTimeConstantConstMeta =>
-      const TaskConstMeta(
-        debugName: "AnalyserNode_smoothing_time_constant",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeAnalyserNodeSmoothingTimeConstantConstMeta =>
+          const TaskConstMeta(
+            debugName: "AnalyserNode_smoothing_time_constant",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeAudioBufferSourceNodeChannelConfig({
@@ -3752,11 +3752,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAudioBufferSourceNodeChannelConfigConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioBufferSourceNode_channel_config",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeAudioBufferSourceNodeChannelConfigConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioBufferSourceNode_channel_config",
+            argNames: ["that"],
+          );
 
   @override
   Future<int> webAudioApiNodeAudioBufferSourceNodeChannelCount({
@@ -3789,15 +3789,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAudioBufferSourceNodeChannelCountConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioBufferSourceNode_channel_count",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeAudioBufferSourceNodeChannelCountConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioBufferSourceNode_channel_count",
+            argNames: ["that"],
+          );
 
   @override
   Future<ChannelCountMode>
-  webAudioApiNodeAudioBufferSourceNodeChannelCountMode({
+      webAudioApiNodeAudioBufferSourceNodeChannelCountMode({
     required AudioBufferSourceNode that,
   }) {
     return handler.executeNormal(
@@ -3828,15 +3828,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAudioBufferSourceNodeChannelCountModeConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioBufferSourceNode_channel_count_mode",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeAudioBufferSourceNodeChannelCountModeConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioBufferSourceNode_channel_count_mode",
+            argNames: ["that"],
+          );
 
   @override
   Future<ChannelInterpretation>
-  webAudioApiNodeAudioBufferSourceNodeChannelInterpretation({
+      webAudioApiNodeAudioBufferSourceNodeChannelInterpretation({
     required AudioBufferSourceNode that,
   }) {
     return handler.executeNormal(
@@ -3867,11 +3867,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAudioBufferSourceNodeChannelInterpretationConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioBufferSourceNode_channel_interpretation",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeAudioBufferSourceNodeChannelInterpretationConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioBufferSourceNode_channel_interpretation",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeAudioBufferSourceNodeClearOnended({
@@ -3904,11 +3904,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAudioBufferSourceNodeClearOnendedConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioBufferSourceNode_clear_onended",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeAudioBufferSourceNodeClearOnendedConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioBufferSourceNode_clear_onended",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeAudioBufferSourceNodeClearOnprocessorerror({
@@ -3942,11 +3942,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAudioBufferSourceNodeClearOnprocessorerrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioBufferSourceNode_clear_onprocessorerror",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeAudioBufferSourceNodeClearOnprocessorerrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioBufferSourceNode_clear_onprocessorerror",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeAudioBufferSourceNodeDisconnect({
@@ -4018,11 +4018,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAudioBufferSourceNodeDisconnectOutputConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioBufferSourceNode_disconnect_output",
-        argNames: ["that", "output"],
-      );
+      get kWebAudioApiNodeAudioBufferSourceNodeDisconnectOutputConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioBufferSourceNode_disconnect_output",
+            argNames: ["that", "output"],
+          );
 
   @override
   Future<void> webAudioApiNodeAudioBufferSourceNodeFrbOverrideConnect({
@@ -4058,12 +4058,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAudioBufferSourceNodeFrbOverrideConnectConstMeta =>
-      const TaskConstMeta(
-        debugName:
-            "AudioBufferSourceNode_frb_override_connect(dart_style=connect)",
-        argNames: ["that", "dest"],
-      );
+      get kWebAudioApiNodeAudioBufferSourceNodeFrbOverrideConnectConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "AudioBufferSourceNode_frb_override_connect(dart_style=connect)",
+            argNames: ["that", "dest"],
+          );
 
   @override
   Future<void> webAudioApiNodeAudioBufferSourceNodeFrbOverrideSetBuffer({
@@ -4102,12 +4102,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAudioBufferSourceNodeFrbOverrideSetBufferConstMeta =>
-      const TaskConstMeta(
-        debugName:
-            "AudioBufferSourceNode_frb_override_set_buffer(dart_style=set_buffer)",
-        argNames: ["that", "audioBuffer"],
-      );
+      get kWebAudioApiNodeAudioBufferSourceNodeFrbOverrideSetBufferConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "AudioBufferSourceNode_frb_override_set_buffer(dart_style=set_buffer)",
+            argNames: ["that", "audioBuffer"],
+          );
 
   @override
   Future<bool> webAudioApiNodeAudioBufferSourceNodeLoop({
@@ -4248,11 +4248,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAudioBufferSourceNodeNumberOfInputsConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioBufferSourceNode_number_of_inputs",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeAudioBufferSourceNodeNumberOfInputsConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioBufferSourceNode_number_of_inputs",
+            argNames: ["that"],
+          );
 
   @override
   Future<int> webAudioApiNodeAudioBufferSourceNodeNumberOfOutputs({
@@ -4286,11 +4286,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAudioBufferSourceNodeNumberOfOutputsConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioBufferSourceNode_number_of_outputs",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeAudioBufferSourceNodeNumberOfOutputsConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioBufferSourceNode_number_of_outputs",
+            argNames: ["that"],
+          );
 
   @override
   Future<double> webAudioApiNodeAudioBufferSourceNodePosition({
@@ -4359,11 +4359,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAudioBufferSourceNodeRegistrationConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioBufferSourceNode_registration",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeAudioBufferSourceNodeRegistrationConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioBufferSourceNode_registration",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeAudioBufferSourceNodeSetLoop({
@@ -4474,11 +4474,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAudioBufferSourceNodeSetLoopStartConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioBufferSourceNode_set_loop_start",
-        argNames: ["that", "value"],
-      );
+      get kWebAudioApiNodeAudioBufferSourceNodeSetLoopStartConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioBufferSourceNode_set_loop_start",
+            argNames: ["that", "value"],
+          );
 
   @override
   Future<void> webAudioApiNodeAudioBufferSourceNodeSetOnEnded({
@@ -4558,11 +4558,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAudioBufferSourceNodeSetOnProcessorErrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioBufferSourceNode_set_on_processor_error",
-        argNames: ["that", "callback"],
-      );
+      get kWebAudioApiNodeAudioBufferSourceNodeSetOnProcessorErrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioBufferSourceNode_set_on_processor_error",
+            argNames: ["that", "callback"],
+          );
 
   @override
   Future<void> webAudioApiNodeAudioBufferSourceNodeStart({
@@ -4674,15 +4674,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAudioBufferSourceNodeStartAtWithOffsetConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioBufferSourceNode_start_at_with_offset",
-        argNames: ["that", "start", "offset"],
-      );
+      get kWebAudioApiNodeAudioBufferSourceNodeStartAtWithOffsetConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioBufferSourceNode_start_at_with_offset",
+            argNames: ["that", "start", "offset"],
+          );
 
   @override
   Future<void>
-  webAudioApiNodeAudioBufferSourceNodeStartAtWithOffsetAndDuration({
+      webAudioApiNodeAudioBufferSourceNodeStartAtWithOffsetAndDuration({
     required AudioBufferSourceNode that,
     required double start,
     required double offset,
@@ -4719,11 +4719,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAudioBufferSourceNodeStartAtWithOffsetAndDurationConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioBufferSourceNode_start_at_with_offset_and_duration",
-        argNames: ["that", "start", "offset", "duration"],
-      );
+      get kWebAudioApiNodeAudioBufferSourceNodeStartAtWithOffsetAndDurationConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "AudioBufferSourceNode_start_at_with_offset_and_duration",
+            argNames: ["that", "start", "offset", "duration"],
+          );
 
   @override
   Future<void> webAudioApiNodeAudioBufferSourceNodeStop({
@@ -4864,9 +4865,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta get kWebAudioApiAudioBufferFromConstMeta => const TaskConstMeta(
-    debugName: "AudioBuffer_from",
-    argNames: ["samples", "sampleRate"],
-  );
+        debugName: "AudioBuffer_from",
+        argNames: ["samples", "sampleRate"],
+      );
 
   @override
   Future<void> webAudioApiAudioBufferGetChannelData({
@@ -5179,11 +5180,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextAudioContextClearOnstatechangeConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioContext_clear_onstatechange",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextAudioContextClearOnstatechangeConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioContext_clear_onstatechange",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiContextAudioContextClose({
@@ -5293,7 +5294,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<(AudioParam, AudioParamId)>
-  webAudioApiContextAudioContextCreateAudioParam({
+      webAudioApiContextAudioContextCreateAudioParam({
     required AudioContext that,
     required AudioParamDescriptor opts,
     required AudioContextRegistration dest,
@@ -5368,11 +5369,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextAudioContextCreateBiquadFilterConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioContext_create_biquad_filter",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextAudioContextCreateBiquadFilterConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioContext_create_biquad_filter",
+            argNames: ["that"],
+          );
 
   @override
   Future<AudioBuffer> webAudioApiContextAudioContextCreateBuffer({
@@ -5419,7 +5420,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<AudioBufferSourceNode>
-  webAudioApiContextAudioContextCreateBufferSource({
+      webAudioApiContextAudioContextCreateBufferSource({
     required AudioContext that,
   }) {
     return handler.executeNormal(
@@ -5450,11 +5451,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextAudioContextCreateBufferSourceConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioContext_create_buffer_source",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextAudioContextCreateBufferSourceConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioContext_create_buffer_source",
+            argNames: ["that"],
+          );
 
   @override
   Future<ChannelMergerNode> webAudioApiContextAudioContextCreateChannelMerger({
@@ -5490,15 +5491,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextAudioContextCreateChannelMergerConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioContext_create_channel_merger",
-        argNames: ["that", "numberOfInputs"],
-      );
+      get kWebAudioApiContextAudioContextCreateChannelMergerConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioContext_create_channel_merger",
+            argNames: ["that", "numberOfInputs"],
+          );
 
   @override
   Future<ChannelSplitterNode>
-  webAudioApiContextAudioContextCreateChannelSplitter({
+      webAudioApiContextAudioContextCreateChannelSplitter({
     required AudioContext that,
     required int numberOfOutputs,
   }) {
@@ -5532,15 +5533,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextAudioContextCreateChannelSplitterConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioContext_create_channel_splitter",
-        argNames: ["that", "numberOfOutputs"],
-      );
+      get kWebAudioApiContextAudioContextCreateChannelSplitterConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioContext_create_channel_splitter",
+            argNames: ["that", "numberOfOutputs"],
+          );
 
   @override
   Future<ConstantSourceNode>
-  webAudioApiContextAudioContextCreateConstantSource({
+      webAudioApiContextAudioContextCreateConstantSource({
     required AudioContext that,
   }) {
     return handler.executeNormal(
@@ -5571,11 +5572,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextAudioContextCreateConstantSourceConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioContext_create_constant_source",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextAudioContextCreateConstantSourceConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioContext_create_constant_source",
+            argNames: ["that"],
+          );
 
   @override
   Future<ConvolverNode> webAudioApiContextAudioContextCreateConvolver({
@@ -5655,7 +5656,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<DynamicsCompressorNode>
-  webAudioApiContextAudioContextCreateDynamicsCompressor({
+      webAudioApiContextAudioContextCreateDynamicsCompressor({
     required AudioContext that,
   }) {
     return handler.executeNormal(
@@ -5687,11 +5688,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextAudioContextCreateDynamicsCompressorConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioContext_create_dynamics_compressor",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextAudioContextCreateDynamicsCompressorConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioContext_create_dynamics_compressor",
+            argNames: ["that"],
+          );
 
   @override
   Future<GainNode> webAudioApiContextAudioContextCreateGain({
@@ -5773,7 +5774,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<MediaStreamAudioDestinationNode>
-  webAudioApiContextAudioContextCreateMediaStreamDestination({
+      webAudioApiContextAudioContextCreateMediaStreamDestination({
     required AudioContext that,
   }) {
     return handler.executeNormal(
@@ -5805,15 +5806,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextAudioContextCreateMediaStreamDestinationConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioContext_create_media_stream_destination",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextAudioContextCreateMediaStreamDestinationConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioContext_create_media_stream_destination",
+            argNames: ["that"],
+          );
 
   @override
   Future<MediaStreamAudioSourceNode>
-  webAudioApiContextAudioContextCreateMediaStreamSource({
+      webAudioApiContextAudioContextCreateMediaStreamSource({
     required AudioContext that,
     required MediaStream media,
   }) {
@@ -5850,15 +5851,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextAudioContextCreateMediaStreamSourceConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioContext_create_media_stream_source",
-        argNames: ["that", "media"],
-      );
+      get kWebAudioApiContextAudioContextCreateMediaStreamSourceConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioContext_create_media_stream_source",
+            argNames: ["that", "media"],
+          );
 
   @override
   Future<MediaStreamTrackAudioSourceNode>
-  webAudioApiContextAudioContextCreateMediaStreamTrackSource({
+      webAudioApiContextAudioContextCreateMediaStreamTrackSource({
     required AudioContext that,
     required MediaStreamTrack media,
   }) {
@@ -5895,11 +5896,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextAudioContextCreateMediaStreamTrackSourceConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioContext_create_media_stream_track_source",
-        argNames: ["that", "media"],
-      );
+      get kWebAudioApiContextAudioContextCreateMediaStreamTrackSourceConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioContext_create_media_stream_track_source",
+            argNames: ["that", "media"],
+          );
 
   @override
   Future<OscillatorNode> webAudioApiContextAudioContextCreateOscillator({
@@ -6009,15 +6010,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextAudioContextCreatePeriodicWaveConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioContext_create_periodic_wave",
-        argNames: ["that", "options"],
-      );
+      get kWebAudioApiContextAudioContextCreatePeriodicWaveConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioContext_create_periodic_wave",
+            argNames: ["that", "options"],
+          );
 
   @override
   Future<ScriptProcessorNode>
-  webAudioApiContextAudioContextCreateScriptProcessor({
+      webAudioApiContextAudioContextCreateScriptProcessor({
     required AudioContext that,
     required int bufferSize,
     required int numberOfInputChannels,
@@ -6060,16 +6061,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextAudioContextCreateScriptProcessorConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioContext_create_script_processor",
-        argNames: [
-          "that",
-          "bufferSize",
-          "numberOfInputChannels",
-          "numberOfOutputChannels",
-        ],
-      );
+      get kWebAudioApiContextAudioContextCreateScriptProcessorConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioContext_create_script_processor",
+            argNames: [
+              "that",
+              "bufferSize",
+              "numberOfInputChannels",
+              "numberOfOutputChannels",
+            ],
+          );
 
   @override
   Future<StereoPannerNode> webAudioApiContextAudioContextCreateStereoPanner({
@@ -6103,11 +6104,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextAudioContextCreateStereoPannerConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioContext_create_stereo_panner",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextAudioContextCreateStereoPannerConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioContext_create_stereo_panner",
+            argNames: ["that"],
+          );
 
   @override
   Future<WaveShaperNode> webAudioApiContextAudioContextCreateWaveShaper({
@@ -6249,7 +6250,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<MediaElementAudioSourceNode>
-  webAudioApiContextAudioContextFrbOverrideCreateMediaElementSource({
+      webAudioApiContextAudioContextFrbOverrideCreateMediaElementSource({
     required AudioContext that,
     required MediaElement mediaElement,
   }) {
@@ -6286,16 +6287,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextAudioContextFrbOverrideCreateMediaElementSourceConstMeta =>
-      const TaskConstMeta(
-        debugName:
-            "AudioContext_frb_override_create_media_element_source(dart_style=create_media_element_source)",
-        argNames: ["that", "mediaElement"],
-      );
+      get kWebAudioApiContextAudioContextFrbOverrideCreateMediaElementSourceConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "AudioContext_frb_override_create_media_element_source(dart_style=create_media_element_source)",
+            argNames: ["that", "mediaElement"],
+          );
 
   @override
   Future<AudioBuffer>
-  webAudioApiContextAudioContextFrbOverrideDecodeAudioDataSync({
+      webAudioApiContextAudioContextFrbOverrideDecodeAudioDataSync({
     required AudioContext that,
     required String inputPath,
   }) {
@@ -6329,12 +6330,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextAudioContextFrbOverrideDecodeAudioDataSyncConstMeta =>
-      const TaskConstMeta(
-        debugName:
-            "AudioContext_frb_override_decode_audio_data_sync(dart_style=decode_audio_data_sync)",
-        argNames: ["that", "inputPath"],
-      );
+      get kWebAudioApiContextAudioContextFrbOverrideDecodeAudioDataSyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "AudioContext_frb_override_decode_audio_data_sync(dart_style=decode_audio_data_sync)",
+            argNames: ["that", "inputPath"],
+          );
 
   @override
   Future<AudioListener> webAudioApiContextAudioContextListener({
@@ -6794,11 +6795,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAudioDestinationNodeChannelConfigConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioDestinationNode_channel_config",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeAudioDestinationNodeChannelConfigConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioDestinationNode_channel_config",
+            argNames: ["that"],
+          );
 
   @override
   Future<int> webAudioApiNodeAudioDestinationNodeChannelCount({
@@ -6868,15 +6869,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAudioDestinationNodeChannelCountModeConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioDestinationNode_channel_count_mode",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeAudioDestinationNodeChannelCountModeConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioDestinationNode_channel_count_mode",
+            argNames: ["that"],
+          );
 
   @override
   Future<ChannelInterpretation>
-  webAudioApiNodeAudioDestinationNodeChannelInterpretation({
+      webAudioApiNodeAudioDestinationNodeChannelInterpretation({
     required AudioDestinationNode that,
   }) {
     return handler.executeNormal(
@@ -6907,11 +6908,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAudioDestinationNodeChannelInterpretationConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioDestinationNode_channel_interpretation",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeAudioDestinationNodeChannelInterpretationConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioDestinationNode_channel_interpretation",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeAudioDestinationNodeClearOnprocessorerror({
@@ -6945,11 +6946,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAudioDestinationNodeClearOnprocessorerrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioDestinationNode_clear_onprocessorerror",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeAudioDestinationNodeClearOnprocessorerrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioDestinationNode_clear_onprocessorerror",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeAudioDestinationNodeDisconnect({
@@ -7021,11 +7022,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAudioDestinationNodeDisconnectOutputConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioDestinationNode_disconnect_output",
-        argNames: ["that", "output"],
-      );
+      get kWebAudioApiNodeAudioDestinationNodeDisconnectOutputConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioDestinationNode_disconnect_output",
+            argNames: ["that", "output"],
+          );
 
   @override
   Future<void> webAudioApiNodeAudioDestinationNodeFrbOverrideConnect({
@@ -7061,12 +7062,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAudioDestinationNodeFrbOverrideConnectConstMeta =>
-      const TaskConstMeta(
-        debugName:
-            "AudioDestinationNode_frb_override_connect(dart_style=connect)",
-        argNames: ["that", "dest"],
-      );
+      get kWebAudioApiNodeAudioDestinationNodeFrbOverrideConnectConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "AudioDestinationNode_frb_override_connect(dart_style=connect)",
+            argNames: ["that", "dest"],
+          );
 
   @override
   Future<int> webAudioApiNodeAudioDestinationNodeMaxChannelCount({
@@ -7099,11 +7100,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAudioDestinationNodeMaxChannelCountConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioDestinationNode_max_channel_count",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeAudioDestinationNodeMaxChannelCountConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioDestinationNode_max_channel_count",
+            argNames: ["that"],
+          );
 
   @override
   Future<int> webAudioApiNodeAudioDestinationNodeNumberOfInputs({
@@ -7136,11 +7137,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAudioDestinationNodeNumberOfInputsConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioDestinationNode_number_of_inputs",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeAudioDestinationNodeNumberOfInputsConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioDestinationNode_number_of_inputs",
+            argNames: ["that"],
+          );
 
   @override
   Future<int> webAudioApiNodeAudioDestinationNodeNumberOfOutputs({
@@ -7173,11 +7174,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAudioDestinationNodeNumberOfOutputsConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioDestinationNode_number_of_outputs",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeAudioDestinationNodeNumberOfOutputsConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioDestinationNode_number_of_outputs",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeAudioDestinationNodeRegistration({
@@ -7252,11 +7253,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeAudioDestinationNodeSetOnProcessorErrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioDestinationNode_set_on_processor_error",
-        argNames: ["that", "callback"],
-      );
+      get kWebAudioApiNodeAudioDestinationNodeSetOnProcessorErrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioDestinationNode_set_on_processor_error",
+            argNames: ["that", "callback"],
+          );
 
   @override
   Future<AutomationRate> webAudioApiAudioParamAutomationRate({
@@ -7687,11 +7688,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiAudioParamExponentialRampToValueAtTimeConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioParam_exponential_ramp_to_value_at_time",
-        argNames: ["that", "value", "endTime"],
-      );
+      get kWebAudioApiAudioParamExponentialRampToValueAtTimeConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioParam_exponential_ramp_to_value_at_time",
+            argNames: ["that", "value", "endTime"],
+          );
 
   @override
   Future<void> webAudioApiAudioParamFrbOverrideConnect({
@@ -8243,11 +8244,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiAudioProcessingEventAutoAccessorGetInputBufferConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioProcessingEvent_auto_accessor_get_input_buffer",
-        argNames: ["that"],
-      );
+      get kWebAudioApiAudioProcessingEventAutoAccessorGetInputBufferConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioProcessingEvent_auto_accessor_get_input_buffer",
+            argNames: ["that"],
+          );
 
   @override
   AudioBuffer webAudioApiAudioProcessingEventAutoAccessorGetOutputBuffer({
@@ -8281,11 +8282,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiAudioProcessingEventAutoAccessorGetOutputBufferConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioProcessingEvent_auto_accessor_get_output_buffer",
-        argNames: ["that"],
-      );
+      get kWebAudioApiAudioProcessingEventAutoAccessorGetOutputBufferConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioProcessingEvent_auto_accessor_get_output_buffer",
+            argNames: ["that"],
+          );
 
   @override
   double webAudioApiAudioProcessingEventAutoAccessorGetPlaybackTime({
@@ -8318,11 +8319,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiAudioProcessingEventAutoAccessorGetPlaybackTimeConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioProcessingEvent_auto_accessor_get_playback_time",
-        argNames: ["that"],
-      );
+      get kWebAudioApiAudioProcessingEventAutoAccessorGetPlaybackTimeConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioProcessingEvent_auto_accessor_get_playback_time",
+            argNames: ["that"],
+          );
 
   @override
   void webAudioApiAudioProcessingEventAutoAccessorSetInputBuffer({
@@ -8360,11 +8361,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiAudioProcessingEventAutoAccessorSetInputBufferConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioProcessingEvent_auto_accessor_set_input_buffer",
-        argNames: ["that", "inputBuffer"],
-      );
+      get kWebAudioApiAudioProcessingEventAutoAccessorSetInputBufferConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioProcessingEvent_auto_accessor_set_input_buffer",
+            argNames: ["that", "inputBuffer"],
+          );
 
   @override
   void webAudioApiAudioProcessingEventAutoAccessorSetOutputBuffer({
@@ -8402,11 +8403,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiAudioProcessingEventAutoAccessorSetOutputBufferConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioProcessingEvent_auto_accessor_set_output_buffer",
-        argNames: ["that", "outputBuffer"],
-      );
+      get kWebAudioApiAudioProcessingEventAutoAccessorSetOutputBufferConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioProcessingEvent_auto_accessor_set_output_buffer",
+            argNames: ["that", "outputBuffer"],
+          );
 
   @override
   void webAudioApiAudioProcessingEventAutoAccessorSetPlaybackTime({
@@ -8441,11 +8442,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiAudioProcessingEventAutoAccessorSetPlaybackTimeConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioProcessingEvent_auto_accessor_set_playback_time",
-        argNames: ["that", "playbackTime"],
-      );
+      get kWebAudioApiAudioProcessingEventAutoAccessorSetPlaybackTimeConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioProcessingEvent_auto_accessor_set_playback_time",
+            argNames: ["that", "playbackTime"],
+          );
 
   @override
   double webAudioApiAudioRenderCapacityEventAutoAccessorGetAverageLoad({
@@ -8478,11 +8479,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiAudioRenderCapacityEventAutoAccessorGetAverageLoadConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioRenderCapacityEvent_auto_accessor_get_average_load",
-        argNames: ["that"],
-      );
+      get kWebAudioApiAudioRenderCapacityEventAutoAccessorGetAverageLoadConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "AudioRenderCapacityEvent_auto_accessor_get_average_load",
+            argNames: ["that"],
+          );
 
   @override
   Event webAudioApiAudioRenderCapacityEventAutoAccessorGetEvent({
@@ -8516,11 +8518,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiAudioRenderCapacityEventAutoAccessorGetEventConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioRenderCapacityEvent_auto_accessor_get_event",
-        argNames: ["that"],
-      );
+      get kWebAudioApiAudioRenderCapacityEventAutoAccessorGetEventConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioRenderCapacityEvent_auto_accessor_get_event",
+            argNames: ["that"],
+          );
 
   @override
   double webAudioApiAudioRenderCapacityEventAutoAccessorGetPeakLoad({
@@ -8553,11 +8555,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiAudioRenderCapacityEventAutoAccessorGetPeakLoadConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioRenderCapacityEvent_auto_accessor_get_peak_load",
-        argNames: ["that"],
-      );
+      get kWebAudioApiAudioRenderCapacityEventAutoAccessorGetPeakLoadConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioRenderCapacityEvent_auto_accessor_get_peak_load",
+            argNames: ["that"],
+          );
 
   @override
   double webAudioApiAudioRenderCapacityEventAutoAccessorGetTimestamp({
@@ -8590,11 +8592,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiAudioRenderCapacityEventAutoAccessorGetTimestampConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioRenderCapacityEvent_auto_accessor_get_timestamp",
-        argNames: ["that"],
-      );
+      get kWebAudioApiAudioRenderCapacityEventAutoAccessorGetTimestampConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioRenderCapacityEvent_auto_accessor_get_timestamp",
+            argNames: ["that"],
+          );
 
   @override
   double webAudioApiAudioRenderCapacityEventAutoAccessorGetUnderrunRatio({
@@ -8627,11 +8629,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiAudioRenderCapacityEventAutoAccessorGetUnderrunRatioConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioRenderCapacityEvent_auto_accessor_get_underrun_ratio",
-        argNames: ["that"],
-      );
+      get kWebAudioApiAudioRenderCapacityEventAutoAccessorGetUnderrunRatioConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "AudioRenderCapacityEvent_auto_accessor_get_underrun_ratio",
+            argNames: ["that"],
+          );
 
   @override
   void webAudioApiAudioRenderCapacityEventAutoAccessorSetAverageLoad({
@@ -8666,11 +8669,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiAudioRenderCapacityEventAutoAccessorSetAverageLoadConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioRenderCapacityEvent_auto_accessor_set_average_load",
-        argNames: ["that", "averageLoad"],
-      );
+      get kWebAudioApiAudioRenderCapacityEventAutoAccessorSetAverageLoadConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "AudioRenderCapacityEvent_auto_accessor_set_average_load",
+            argNames: ["that", "averageLoad"],
+          );
 
   @override
   void webAudioApiAudioRenderCapacityEventAutoAccessorSetEvent({
@@ -8708,11 +8712,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiAudioRenderCapacityEventAutoAccessorSetEventConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioRenderCapacityEvent_auto_accessor_set_event",
-        argNames: ["that", "event"],
-      );
+      get kWebAudioApiAudioRenderCapacityEventAutoAccessorSetEventConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioRenderCapacityEvent_auto_accessor_set_event",
+            argNames: ["that", "event"],
+          );
 
   @override
   void webAudioApiAudioRenderCapacityEventAutoAccessorSetPeakLoad({
@@ -8747,11 +8751,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiAudioRenderCapacityEventAutoAccessorSetPeakLoadConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioRenderCapacityEvent_auto_accessor_set_peak_load",
-        argNames: ["that", "peakLoad"],
-      );
+      get kWebAudioApiAudioRenderCapacityEventAutoAccessorSetPeakLoadConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioRenderCapacityEvent_auto_accessor_set_peak_load",
+            argNames: ["that", "peakLoad"],
+          );
 
   @override
   void webAudioApiAudioRenderCapacityEventAutoAccessorSetTimestamp({
@@ -8786,11 +8790,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiAudioRenderCapacityEventAutoAccessorSetTimestampConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioRenderCapacityEvent_auto_accessor_set_timestamp",
-        argNames: ["that", "timestamp"],
-      );
+      get kWebAudioApiAudioRenderCapacityEventAutoAccessorSetTimestampConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioRenderCapacityEvent_auto_accessor_set_timestamp",
+            argNames: ["that", "timestamp"],
+          );
 
   @override
   void webAudioApiAudioRenderCapacityEventAutoAccessorSetUnderrunRatio({
@@ -8825,11 +8829,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiAudioRenderCapacityEventAutoAccessorSetUnderrunRatioConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioRenderCapacityEvent_auto_accessor_set_underrun_ratio",
-        argNames: ["that", "underrunRatio"],
-      );
+      get kWebAudioApiAudioRenderCapacityEventAutoAccessorSetUnderrunRatioConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "AudioRenderCapacityEvent_auto_accessor_set_underrun_ratio",
+            argNames: ["that", "underrunRatio"],
+          );
 
   @override
   Future<void> webAudioApiAudioRenderCapacityClearOnupdate({
@@ -9047,15 +9052,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiWorkletAudioWorkletNodeChannelCountModeConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioWorkletNode_channel_count_mode",
-        argNames: ["that"],
-      );
+      get kWebAudioApiWorkletAudioWorkletNodeChannelCountModeConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioWorkletNode_channel_count_mode",
+            argNames: ["that"],
+          );
 
   @override
   Future<ChannelInterpretation>
-  webAudioApiWorkletAudioWorkletNodeChannelInterpretation({
+      webAudioApiWorkletAudioWorkletNodeChannelInterpretation({
     required AudioWorkletNode that,
   }) {
     return handler.executeNormal(
@@ -9086,11 +9091,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiWorkletAudioWorkletNodeChannelInterpretationConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioWorkletNode_channel_interpretation",
-        argNames: ["that"],
-      );
+      get kWebAudioApiWorkletAudioWorkletNodeChannelInterpretationConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioWorkletNode_channel_interpretation",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiWorkletAudioWorkletNodeClearOnprocessorerror({
@@ -9124,11 +9129,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiWorkletAudioWorkletNodeClearOnprocessorerrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioWorkletNode_clear_onprocessorerror",
-        argNames: ["that"],
-      );
+      get kWebAudioApiWorkletAudioWorkletNodeClearOnprocessorerrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioWorkletNode_clear_onprocessorerror",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiWorkletAudioWorkletNodeDisconnect({
@@ -9199,11 +9204,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiWorkletAudioWorkletNodeDisconnectOutputConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioWorkletNode_disconnect_output",
-        argNames: ["that", "output"],
-      );
+      get kWebAudioApiWorkletAudioWorkletNodeDisconnectOutputConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioWorkletNode_disconnect_output",
+            argNames: ["that", "output"],
+          );
 
   @override
   Future<int> webAudioApiWorkletAudioWorkletNodeNumberOfInputs({
@@ -9236,11 +9241,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiWorkletAudioWorkletNodeNumberOfInputsConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioWorkletNode_number_of_inputs",
-        argNames: ["that"],
-      );
+      get kWebAudioApiWorkletAudioWorkletNodeNumberOfInputsConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioWorkletNode_number_of_inputs",
+            argNames: ["that"],
+          );
 
   @override
   Future<int> webAudioApiWorkletAudioWorkletNodeNumberOfOutputs({
@@ -9273,11 +9278,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiWorkletAudioWorkletNodeNumberOfOutputsConstMeta =>
-      const TaskConstMeta(
-        debugName: "AudioWorkletNode_number_of_outputs",
-        argNames: ["that"],
-      );
+      get kWebAudioApiWorkletAudioWorkletNodeNumberOfOutputsConstMeta =>
+          const TaskConstMeta(
+            debugName: "AudioWorkletNode_number_of_outputs",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiWorkletAudioWorkletNodeParameters({
@@ -9461,7 +9466,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<ChannelInterpretation>
-  webAudioApiNodeBiquadFilterNodeChannelInterpretation({
+      webAudioApiNodeBiquadFilterNodeChannelInterpretation({
     required BiquadFilterNode that,
   }) {
     return handler.executeNormal(
@@ -9492,11 +9497,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeBiquadFilterNodeChannelInterpretationConstMeta =>
-      const TaskConstMeta(
-        debugName: "BiquadFilterNode_channel_interpretation",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeBiquadFilterNodeChannelInterpretationConstMeta =>
+          const TaskConstMeta(
+            debugName: "BiquadFilterNode_channel_interpretation",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeBiquadFilterNodeClearOnprocessorerror({
@@ -9530,11 +9535,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeBiquadFilterNodeClearOnprocessorerrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "BiquadFilterNode_clear_onprocessorerror",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeBiquadFilterNodeClearOnprocessorerrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "BiquadFilterNode_clear_onprocessorerror",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeBiquadFilterNodeDisconnect({
@@ -9643,11 +9648,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeBiquadFilterNodeFrbOverrideConnectConstMeta =>
-      const TaskConstMeta(
-        debugName: "BiquadFilterNode_frb_override_connect(dart_style=connect)",
-        argNames: ["that", "dest"],
-      );
+      get kWebAudioApiNodeBiquadFilterNodeFrbOverrideConnectConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "BiquadFilterNode_frb_override_connect(dart_style=connect)",
+            argNames: ["that", "dest"],
+          );
 
   @override
   Future<int> webAudioApiNodeBiquadFilterNodeNumberOfInputs({
@@ -9793,11 +9799,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeBiquadFilterNodeSetOnProcessorErrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "BiquadFilterNode_set_on_processor_error",
-        argNames: ["that", "callback"],
-      );
+      get kWebAudioApiNodeBiquadFilterNodeSetOnProcessorErrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "BiquadFilterNode_set_on_processor_error",
+            argNames: ["that", "callback"],
+          );
 
   @override
   Future<void> webAudioApiNodeBiquadFilterNodeSetType({
@@ -9904,11 +9910,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiMediaRecorderBlobEventAutoAccessorGetBlobConstMeta =>
-      const TaskConstMeta(
-        debugName: "BlobEvent_auto_accessor_get_blob",
-        argNames: ["that"],
-      );
+      get kWebAudioApiMediaRecorderBlobEventAutoAccessorGetBlobConstMeta =>
+          const TaskConstMeta(
+            debugName: "BlobEvent_auto_accessor_get_blob",
+            argNames: ["that"],
+          );
 
   @override
   Event webAudioApiMediaRecorderBlobEventAutoAccessorGetEvent({
@@ -9942,11 +9948,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiMediaRecorderBlobEventAutoAccessorGetEventConstMeta =>
-      const TaskConstMeta(
-        debugName: "BlobEvent_auto_accessor_get_event",
-        argNames: ["that"],
-      );
+      get kWebAudioApiMediaRecorderBlobEventAutoAccessorGetEventConstMeta =>
+          const TaskConstMeta(
+            debugName: "BlobEvent_auto_accessor_get_event",
+            argNames: ["that"],
+          );
 
   @override
   double webAudioApiMediaRecorderBlobEventAutoAccessorGetTimecode({
@@ -9979,11 +9985,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiMediaRecorderBlobEventAutoAccessorGetTimecodeConstMeta =>
-      const TaskConstMeta(
-        debugName: "BlobEvent_auto_accessor_get_timecode",
-        argNames: ["that"],
-      );
+      get kWebAudioApiMediaRecorderBlobEventAutoAccessorGetTimecodeConstMeta =>
+          const TaskConstMeta(
+            debugName: "BlobEvent_auto_accessor_get_timecode",
+            argNames: ["that"],
+          );
 
   @override
   void webAudioApiMediaRecorderBlobEventAutoAccessorSetBlob({
@@ -10018,11 +10024,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiMediaRecorderBlobEventAutoAccessorSetBlobConstMeta =>
-      const TaskConstMeta(
-        debugName: "BlobEvent_auto_accessor_set_blob",
-        argNames: ["that", "blob"],
-      );
+      get kWebAudioApiMediaRecorderBlobEventAutoAccessorSetBlobConstMeta =>
+          const TaskConstMeta(
+            debugName: "BlobEvent_auto_accessor_set_blob",
+            argNames: ["that", "blob"],
+          );
 
   @override
   void webAudioApiMediaRecorderBlobEventAutoAccessorSetEvent({
@@ -10060,11 +10066,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiMediaRecorderBlobEventAutoAccessorSetEventConstMeta =>
-      const TaskConstMeta(
-        debugName: "BlobEvent_auto_accessor_set_event",
-        argNames: ["that", "event"],
-      );
+      get kWebAudioApiMediaRecorderBlobEventAutoAccessorSetEventConstMeta =>
+          const TaskConstMeta(
+            debugName: "BlobEvent_auto_accessor_set_event",
+            argNames: ["that", "event"],
+          );
 
   @override
   void webAudioApiMediaRecorderBlobEventAutoAccessorSetTimecode({
@@ -10099,11 +10105,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiMediaRecorderBlobEventAutoAccessorSetTimecodeConstMeta =>
-      const TaskConstMeta(
-        debugName: "BlobEvent_auto_accessor_set_timecode",
-        argNames: ["that", "timecode"],
-      );
+      get kWebAudioApiMediaRecorderBlobEventAutoAccessorSetTimecodeConstMeta =>
+          const TaskConstMeta(
+            debugName: "BlobEvent_auto_accessor_set_timecode",
+            argNames: ["that", "timecode"],
+          );
 
   @override
   Future<ChannelConfig> webAudioApiNodeChannelConfigDefault() {
@@ -10236,15 +10242,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeChannelMergerNodeChannelCountModeConstMeta =>
-      const TaskConstMeta(
-        debugName: "ChannelMergerNode_channel_count_mode",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeChannelMergerNodeChannelCountModeConstMeta =>
+          const TaskConstMeta(
+            debugName: "ChannelMergerNode_channel_count_mode",
+            argNames: ["that"],
+          );
 
   @override
   Future<ChannelInterpretation>
-  webAudioApiNodeChannelMergerNodeChannelInterpretation({
+      webAudioApiNodeChannelMergerNodeChannelInterpretation({
     required ChannelMergerNode that,
   }) {
     return handler.executeNormal(
@@ -10275,11 +10281,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeChannelMergerNodeChannelInterpretationConstMeta =>
-      const TaskConstMeta(
-        debugName: "ChannelMergerNode_channel_interpretation",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeChannelMergerNodeChannelInterpretationConstMeta =>
+          const TaskConstMeta(
+            debugName: "ChannelMergerNode_channel_interpretation",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeChannelMergerNodeClearOnprocessorerror({
@@ -10313,11 +10319,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeChannelMergerNodeClearOnprocessorerrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "ChannelMergerNode_clear_onprocessorerror",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeChannelMergerNodeClearOnprocessorerrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "ChannelMergerNode_clear_onprocessorerror",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeChannelMergerNodeDisconnect({
@@ -10388,11 +10394,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeChannelMergerNodeDisconnectOutputConstMeta =>
-      const TaskConstMeta(
-        debugName: "ChannelMergerNode_disconnect_output",
-        argNames: ["that", "output"],
-      );
+      get kWebAudioApiNodeChannelMergerNodeDisconnectOutputConstMeta =>
+          const TaskConstMeta(
+            debugName: "ChannelMergerNode_disconnect_output",
+            argNames: ["that", "output"],
+          );
 
   @override
   Future<void> webAudioApiNodeChannelMergerNodeFrbOverrideConnect({
@@ -10427,11 +10433,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeChannelMergerNodeFrbOverrideConnectConstMeta =>
-      const TaskConstMeta(
-        debugName: "ChannelMergerNode_frb_override_connect(dart_style=connect)",
-        argNames: ["that", "dest"],
-      );
+      get kWebAudioApiNodeChannelMergerNodeFrbOverrideConnectConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "ChannelMergerNode_frb_override_connect(dart_style=connect)",
+            argNames: ["that", "dest"],
+          );
 
   @override
   Future<int> webAudioApiNodeChannelMergerNodeNumberOfInputs({
@@ -10578,11 +10585,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeChannelMergerNodeSetOnProcessorErrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "ChannelMergerNode_set_on_processor_error",
-        argNames: ["that", "callback"],
-      );
+      get kWebAudioApiNodeChannelMergerNodeSetOnProcessorErrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "ChannelMergerNode_set_on_processor_error",
+            argNames: ["that", "callback"],
+          );
 
   @override
   Future<void> webAudioApiNodeChannelSplitterNodeChannelConfig({
@@ -10687,15 +10694,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeChannelSplitterNodeChannelCountModeConstMeta =>
-      const TaskConstMeta(
-        debugName: "ChannelSplitterNode_channel_count_mode",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeChannelSplitterNodeChannelCountModeConstMeta =>
+          const TaskConstMeta(
+            debugName: "ChannelSplitterNode_channel_count_mode",
+            argNames: ["that"],
+          );
 
   @override
   Future<ChannelInterpretation>
-  webAudioApiNodeChannelSplitterNodeChannelInterpretation({
+      webAudioApiNodeChannelSplitterNodeChannelInterpretation({
     required ChannelSplitterNode that,
   }) {
     return handler.executeNormal(
@@ -10726,11 +10733,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeChannelSplitterNodeChannelInterpretationConstMeta =>
-      const TaskConstMeta(
-        debugName: "ChannelSplitterNode_channel_interpretation",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeChannelSplitterNodeChannelInterpretationConstMeta =>
+          const TaskConstMeta(
+            debugName: "ChannelSplitterNode_channel_interpretation",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeChannelSplitterNodeClearOnprocessorerror({
@@ -10764,11 +10771,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeChannelSplitterNodeClearOnprocessorerrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "ChannelSplitterNode_clear_onprocessorerror",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeChannelSplitterNodeClearOnprocessorerrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "ChannelSplitterNode_clear_onprocessorerror",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeChannelSplitterNodeDisconnect({
@@ -10839,11 +10846,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeChannelSplitterNodeDisconnectOutputConstMeta =>
-      const TaskConstMeta(
-        debugName: "ChannelSplitterNode_disconnect_output",
-        argNames: ["that", "output"],
-      );
+      get kWebAudioApiNodeChannelSplitterNodeDisconnectOutputConstMeta =>
+          const TaskConstMeta(
+            debugName: "ChannelSplitterNode_disconnect_output",
+            argNames: ["that", "output"],
+          );
 
   @override
   Future<void> webAudioApiNodeChannelSplitterNodeFrbOverrideConnect({
@@ -10879,12 +10886,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeChannelSplitterNodeFrbOverrideConnectConstMeta =>
-      const TaskConstMeta(
-        debugName:
-            "ChannelSplitterNode_frb_override_connect(dart_style=connect)",
-        argNames: ["that", "dest"],
-      );
+      get kWebAudioApiNodeChannelSplitterNodeFrbOverrideConnectConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "ChannelSplitterNode_frb_override_connect(dart_style=connect)",
+            argNames: ["that", "dest"],
+          );
 
   @override
   Future<int> webAudioApiNodeChannelSplitterNodeNumberOfInputs({
@@ -10917,11 +10924,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeChannelSplitterNodeNumberOfInputsConstMeta =>
-      const TaskConstMeta(
-        debugName: "ChannelSplitterNode_number_of_inputs",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeChannelSplitterNodeNumberOfInputsConstMeta =>
+          const TaskConstMeta(
+            debugName: "ChannelSplitterNode_number_of_inputs",
+            argNames: ["that"],
+          );
 
   @override
   Future<int> webAudioApiNodeChannelSplitterNodeNumberOfOutputs({
@@ -10954,11 +10961,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeChannelSplitterNodeNumberOfOutputsConstMeta =>
-      const TaskConstMeta(
-        debugName: "ChannelSplitterNode_number_of_outputs",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeChannelSplitterNodeNumberOfOutputsConstMeta =>
+          const TaskConstMeta(
+            debugName: "ChannelSplitterNode_number_of_outputs",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeChannelSplitterNodeRegistration({
@@ -11033,11 +11040,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeChannelSplitterNodeSetOnProcessorErrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "ChannelSplitterNode_set_on_processor_error",
-        argNames: ["that", "callback"],
-      );
+      get kWebAudioApiNodeChannelSplitterNodeSetOnProcessorErrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "ChannelSplitterNode_set_on_processor_error",
+            argNames: ["that", "callback"],
+          );
 
   @override
   Future<void> webAudioApiContextConcreteBaseAudioContextClearOnstatechange({
@@ -11071,15 +11078,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextConcreteBaseAudioContextClearOnstatechangeConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConcreteBaseAudioContext_clear_onstatechange",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextConcreteBaseAudioContextClearOnstatechangeConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConcreteBaseAudioContext_clear_onstatechange",
+            argNames: ["that"],
+          );
 
   @override
   Future<AnalyserNode>
-  webAudioApiContextConcreteBaseAudioContextCreateAnalyser({
+      webAudioApiContextConcreteBaseAudioContextCreateAnalyser({
     required ConcreteBaseAudioContext that,
   }) {
     return handler.executeNormal(
@@ -11111,15 +11118,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextConcreteBaseAudioContextCreateAnalyserConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConcreteBaseAudioContext_create_analyser",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextConcreteBaseAudioContextCreateAnalyserConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConcreteBaseAudioContext_create_analyser",
+            argNames: ["that"],
+          );
 
   @override
   Future<(AudioParam, AudioParamId)>
-  webAudioApiContextConcreteBaseAudioContextCreateAudioParam({
+      webAudioApiContextConcreteBaseAudioContextCreateAudioParam({
     required ConcreteBaseAudioContext that,
     required AudioParamDescriptor opts,
     required AudioContextRegistration dest,
@@ -11158,15 +11165,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextConcreteBaseAudioContextCreateAudioParamConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConcreteBaseAudioContext_create_audio_param",
-        argNames: ["that", "opts", "dest"],
-      );
+      get kWebAudioApiContextConcreteBaseAudioContextCreateAudioParamConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConcreteBaseAudioContext_create_audio_param",
+            argNames: ["that", "opts", "dest"],
+          );
 
   @override
   Future<BiquadFilterNode>
-  webAudioApiContextConcreteBaseAudioContextCreateBiquadFilter({
+      webAudioApiContextConcreteBaseAudioContextCreateBiquadFilter({
     required ConcreteBaseAudioContext that,
   }) {
     return handler.executeNormal(
@@ -11198,11 +11205,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextConcreteBaseAudioContextCreateBiquadFilterConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConcreteBaseAudioContext_create_biquad_filter",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextConcreteBaseAudioContextCreateBiquadFilterConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConcreteBaseAudioContext_create_biquad_filter",
+            argNames: ["that"],
+          );
 
   @override
   Future<AudioBuffer> webAudioApiContextConcreteBaseAudioContextCreateBuffer({
@@ -11243,15 +11250,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextConcreteBaseAudioContextCreateBufferConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConcreteBaseAudioContext_create_buffer",
-        argNames: ["that", "numberOfChannels", "length", "sampleRate"],
-      );
+      get kWebAudioApiContextConcreteBaseAudioContextCreateBufferConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConcreteBaseAudioContext_create_buffer",
+            argNames: ["that", "numberOfChannels", "length", "sampleRate"],
+          );
 
   @override
   Future<AudioBufferSourceNode>
-  webAudioApiContextConcreteBaseAudioContextCreateBufferSource({
+      webAudioApiContextConcreteBaseAudioContextCreateBufferSource({
     required ConcreteBaseAudioContext that,
   }) {
     return handler.executeNormal(
@@ -11283,15 +11290,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextConcreteBaseAudioContextCreateBufferSourceConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConcreteBaseAudioContext_create_buffer_source",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextConcreteBaseAudioContextCreateBufferSourceConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConcreteBaseAudioContext_create_buffer_source",
+            argNames: ["that"],
+          );
 
   @override
   Future<ChannelMergerNode>
-  webAudioApiContextConcreteBaseAudioContextCreateChannelMerger({
+      webAudioApiContextConcreteBaseAudioContextCreateChannelMerger({
     required ConcreteBaseAudioContext that,
     required int numberOfInputs,
   }) {
@@ -11325,15 +11332,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextConcreteBaseAudioContextCreateChannelMergerConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConcreteBaseAudioContext_create_channel_merger",
-        argNames: ["that", "numberOfInputs"],
-      );
+      get kWebAudioApiContextConcreteBaseAudioContextCreateChannelMergerConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConcreteBaseAudioContext_create_channel_merger",
+            argNames: ["that", "numberOfInputs"],
+          );
 
   @override
   Future<ChannelSplitterNode>
-  webAudioApiContextConcreteBaseAudioContextCreateChannelSplitter({
+      webAudioApiContextConcreteBaseAudioContextCreateChannelSplitter({
     required ConcreteBaseAudioContext that,
     required int numberOfOutputs,
   }) {
@@ -11367,15 +11374,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextConcreteBaseAudioContextCreateChannelSplitterConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConcreteBaseAudioContext_create_channel_splitter",
-        argNames: ["that", "numberOfOutputs"],
-      );
+      get kWebAudioApiContextConcreteBaseAudioContextCreateChannelSplitterConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConcreteBaseAudioContext_create_channel_splitter",
+            argNames: ["that", "numberOfOutputs"],
+          );
 
   @override
   Future<ConstantSourceNode>
-  webAudioApiContextConcreteBaseAudioContextCreateConstantSource({
+      webAudioApiContextConcreteBaseAudioContextCreateConstantSource({
     required ConcreteBaseAudioContext that,
   }) {
     return handler.executeNormal(
@@ -11407,15 +11414,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextConcreteBaseAudioContextCreateConstantSourceConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConcreteBaseAudioContext_create_constant_source",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextConcreteBaseAudioContextCreateConstantSourceConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConcreteBaseAudioContext_create_constant_source",
+            argNames: ["that"],
+          );
 
   @override
   Future<ConvolverNode>
-  webAudioApiContextConcreteBaseAudioContextCreateConvolver({
+      webAudioApiContextConcreteBaseAudioContextCreateConvolver({
     required ConcreteBaseAudioContext that,
   }) {
     return handler.executeNormal(
@@ -11447,11 +11454,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextConcreteBaseAudioContextCreateConvolverConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConcreteBaseAudioContext_create_convolver",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextConcreteBaseAudioContextCreateConvolverConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConcreteBaseAudioContext_create_convolver",
+            argNames: ["that"],
+          );
 
   @override
   Future<DelayNode> webAudioApiContextConcreteBaseAudioContextCreateDelay({
@@ -11488,15 +11495,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextConcreteBaseAudioContextCreateDelayConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConcreteBaseAudioContext_create_delay",
-        argNames: ["that", "maxDelayTime"],
-      );
+      get kWebAudioApiContextConcreteBaseAudioContextCreateDelayConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConcreteBaseAudioContext_create_delay",
+            argNames: ["that", "maxDelayTime"],
+          );
 
   @override
   Future<DynamicsCompressorNode>
-  webAudioApiContextConcreteBaseAudioContextCreateDynamicsCompressor({
+      webAudioApiContextConcreteBaseAudioContextCreateDynamicsCompressor({
     required ConcreteBaseAudioContext that,
   }) {
     return handler.executeNormal(
@@ -11528,11 +11535,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextConcreteBaseAudioContextCreateDynamicsCompressorConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConcreteBaseAudioContext_create_dynamics_compressor",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextConcreteBaseAudioContextCreateDynamicsCompressorConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConcreteBaseAudioContext_create_dynamics_compressor",
+            argNames: ["that"],
+          );
 
   @override
   Future<GainNode> webAudioApiContextConcreteBaseAudioContextCreateGain({
@@ -11567,15 +11574,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextConcreteBaseAudioContextCreateGainConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConcreteBaseAudioContext_create_gain",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextConcreteBaseAudioContextCreateGainConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConcreteBaseAudioContext_create_gain",
+            argNames: ["that"],
+          );
 
   @override
   Future<IirFilterNode>
-  webAudioApiContextConcreteBaseAudioContextCreateIirFilter({
+      webAudioApiContextConcreteBaseAudioContextCreateIirFilter({
     required ConcreteBaseAudioContext that,
     required List<double> feedforward,
     required List<double> feedback,
@@ -11611,15 +11618,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextConcreteBaseAudioContextCreateIirFilterConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConcreteBaseAudioContext_create_iir_filter",
-        argNames: ["that", "feedforward", "feedback"],
-      );
+      get kWebAudioApiContextConcreteBaseAudioContextCreateIirFilterConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConcreteBaseAudioContext_create_iir_filter",
+            argNames: ["that", "feedforward", "feedback"],
+          );
 
   @override
   Future<OscillatorNode>
-  webAudioApiContextConcreteBaseAudioContextCreateOscillator({
+      webAudioApiContextConcreteBaseAudioContextCreateOscillator({
     required ConcreteBaseAudioContext that,
   }) {
     return handler.executeNormal(
@@ -11651,11 +11658,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextConcreteBaseAudioContextCreateOscillatorConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConcreteBaseAudioContext_create_oscillator",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextConcreteBaseAudioContextCreateOscillatorConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConcreteBaseAudioContext_create_oscillator",
+            argNames: ["that"],
+          );
 
   @override
   Future<PannerNode> webAudioApiContextConcreteBaseAudioContextCreatePanner({
@@ -11690,15 +11697,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextConcreteBaseAudioContextCreatePannerConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConcreteBaseAudioContext_create_panner",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextConcreteBaseAudioContextCreatePannerConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConcreteBaseAudioContext_create_panner",
+            argNames: ["that"],
+          );
 
   @override
   Future<PeriodicWave>
-  webAudioApiContextConcreteBaseAudioContextCreatePeriodicWave({
+      webAudioApiContextConcreteBaseAudioContextCreatePeriodicWave({
     required ConcreteBaseAudioContext that,
     required PeriodicWaveOptions options,
   }) {
@@ -11732,15 +11739,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextConcreteBaseAudioContextCreatePeriodicWaveConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConcreteBaseAudioContext_create_periodic_wave",
-        argNames: ["that", "options"],
-      );
+      get kWebAudioApiContextConcreteBaseAudioContextCreatePeriodicWaveConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConcreteBaseAudioContext_create_periodic_wave",
+            argNames: ["that", "options"],
+          );
 
   @override
   Future<ScriptProcessorNode>
-  webAudioApiContextConcreteBaseAudioContextCreateScriptProcessor({
+      webAudioApiContextConcreteBaseAudioContextCreateScriptProcessor({
     required ConcreteBaseAudioContext that,
     required int bufferSize,
     required int numberOfInputChannels,
@@ -11783,20 +11790,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextConcreteBaseAudioContextCreateScriptProcessorConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConcreteBaseAudioContext_create_script_processor",
-        argNames: [
-          "that",
-          "bufferSize",
-          "numberOfInputChannels",
-          "numberOfOutputChannels",
-        ],
-      );
+      get kWebAudioApiContextConcreteBaseAudioContextCreateScriptProcessorConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConcreteBaseAudioContext_create_script_processor",
+            argNames: [
+              "that",
+              "bufferSize",
+              "numberOfInputChannels",
+              "numberOfOutputChannels",
+            ],
+          );
 
   @override
   Future<StereoPannerNode>
-  webAudioApiContextConcreteBaseAudioContextCreateStereoPanner({
+      webAudioApiContextConcreteBaseAudioContextCreateStereoPanner({
     required ConcreteBaseAudioContext that,
   }) {
     return handler.executeNormal(
@@ -11828,15 +11835,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextConcreteBaseAudioContextCreateStereoPannerConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConcreteBaseAudioContext_create_stereo_panner",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextConcreteBaseAudioContextCreateStereoPannerConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConcreteBaseAudioContext_create_stereo_panner",
+            argNames: ["that"],
+          );
 
   @override
   Future<WaveShaperNode>
-  webAudioApiContextConcreteBaseAudioContextCreateWaveShaper({
+      webAudioApiContextConcreteBaseAudioContextCreateWaveShaper({
     required ConcreteBaseAudioContext that,
   }) {
     return handler.executeNormal(
@@ -11868,11 +11875,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextConcreteBaseAudioContextCreateWaveShaperConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConcreteBaseAudioContext_create_wave_shaper",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextConcreteBaseAudioContextCreateWaveShaperConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConcreteBaseAudioContext_create_wave_shaper",
+            argNames: ["that"],
+          );
 
   @override
   Future<double> webAudioApiContextConcreteBaseAudioContextCurrentTime({
@@ -11906,15 +11913,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextConcreteBaseAudioContextCurrentTimeConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConcreteBaseAudioContext_current_time",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextConcreteBaseAudioContextCurrentTimeConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConcreteBaseAudioContext_current_time",
+            argNames: ["that"],
+          );
 
   @override
   Future<AudioDestinationNode>
-  webAudioApiContextConcreteBaseAudioContextDestination({
+      webAudioApiContextConcreteBaseAudioContextDestination({
     required ConcreteBaseAudioContext that,
   }) {
     return handler.executeNormal(
@@ -11946,11 +11953,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextConcreteBaseAudioContextDestinationConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConcreteBaseAudioContext_destination",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextConcreteBaseAudioContextDestinationConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConcreteBaseAudioContext_destination",
+            argNames: ["that"],
+          );
 
   @override
   Future<AudioListener> webAudioApiContextConcreteBaseAudioContextListener({
@@ -11984,11 +11991,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextConcreteBaseAudioContextListenerConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConcreteBaseAudioContext_listener",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextConcreteBaseAudioContextListenerConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConcreteBaseAudioContext_listener",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiContextConcreteBaseAudioContextMarkCycleBreaker({
@@ -12027,11 +12034,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextConcreteBaseAudioContextMarkCycleBreakerConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConcreteBaseAudioContext_mark_cycle_breaker",
-        argNames: ["that", "reg"],
-      );
+      get kWebAudioApiContextConcreteBaseAudioContextMarkCycleBreakerConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConcreteBaseAudioContext_mark_cycle_breaker",
+            argNames: ["that", "reg"],
+          );
 
   @override
   Future<double> webAudioApiContextConcreteBaseAudioContextSampleRate({
@@ -12065,11 +12072,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextConcreteBaseAudioContextSampleRateConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConcreteBaseAudioContext_sample_rate",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextConcreteBaseAudioContextSampleRateConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConcreteBaseAudioContext_sample_rate",
+            argNames: ["that"],
+          );
 
   @override
   Future<AudioContextState> webAudioApiContextConcreteBaseAudioContextState({
@@ -12210,15 +12217,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeConstantSourceNodeChannelCountModeConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConstantSourceNode_channel_count_mode",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeConstantSourceNodeChannelCountModeConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConstantSourceNode_channel_count_mode",
+            argNames: ["that"],
+          );
 
   @override
   Future<ChannelInterpretation>
-  webAudioApiNodeConstantSourceNodeChannelInterpretation({
+      webAudioApiNodeConstantSourceNodeChannelInterpretation({
     required ConstantSourceNode that,
   }) {
     return handler.executeNormal(
@@ -12249,11 +12256,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeConstantSourceNodeChannelInterpretationConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConstantSourceNode_channel_interpretation",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeConstantSourceNodeChannelInterpretationConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConstantSourceNode_channel_interpretation",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeConstantSourceNodeClearOnended({
@@ -12323,11 +12330,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeConstantSourceNodeClearOnprocessorerrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConstantSourceNode_clear_onprocessorerror",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeConstantSourceNodeClearOnprocessorerrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConstantSourceNode_clear_onprocessorerror",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeConstantSourceNodeDisconnect({
@@ -12398,11 +12405,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeConstantSourceNodeDisconnectOutputConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConstantSourceNode_disconnect_output",
-        argNames: ["that", "output"],
-      );
+      get kWebAudioApiNodeConstantSourceNodeDisconnectOutputConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConstantSourceNode_disconnect_output",
+            argNames: ["that", "output"],
+          );
 
   @override
   Future<void> webAudioApiNodeConstantSourceNodeFrbOverrideConnect({
@@ -12438,12 +12445,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeConstantSourceNodeFrbOverrideConnectConstMeta =>
-      const TaskConstMeta(
-        debugName:
-            "ConstantSourceNode_frb_override_connect(dart_style=connect)",
-        argNames: ["that", "dest"],
-      );
+      get kWebAudioApiNodeConstantSourceNodeFrbOverrideConnectConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "ConstantSourceNode_frb_override_connect(dart_style=connect)",
+            argNames: ["that", "dest"],
+          );
 
   @override
   Future<int> webAudioApiNodeConstantSourceNodeNumberOfInputs({
@@ -12512,11 +12519,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeConstantSourceNodeNumberOfOutputsConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConstantSourceNode_number_of_outputs",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeConstantSourceNodeNumberOfOutputsConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConstantSourceNode_number_of_outputs",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeConstantSourceNodeRegistration({
@@ -12632,11 +12639,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeConstantSourceNodeSetOnProcessorErrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConstantSourceNode_set_on_processor_error",
-        argNames: ["that", "callback"],
-      );
+      get kWebAudioApiNodeConstantSourceNodeSetOnProcessorErrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConstantSourceNode_set_on_processor_error",
+            argNames: ["that", "callback"],
+          );
 
   @override
   Future<void> webAudioApiNodeConstantSourceNodeStart({
@@ -12896,7 +12903,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<ChannelInterpretation>
-  webAudioApiNodeConvolverNodeChannelInterpretation({
+      webAudioApiNodeConvolverNodeChannelInterpretation({
     required ConvolverNode that,
   }) {
     return handler.executeNormal(
@@ -12926,11 +12933,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeConvolverNodeChannelInterpretationConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConvolverNode_channel_interpretation",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeConvolverNodeChannelInterpretationConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConvolverNode_channel_interpretation",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeConvolverNodeClearOnprocessorerror({
@@ -12963,11 +12970,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeConvolverNodeClearOnprocessorerrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "ConvolverNode_clear_onprocessorerror",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeConvolverNodeClearOnprocessorerrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "ConvolverNode_clear_onprocessorerror",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeConvolverNodeDisconnect({
@@ -13811,11 +13818,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeDynamicsCompressorNodeChannelConfigConstMeta =>
-      const TaskConstMeta(
-        debugName: "DynamicsCompressorNode_channel_config",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeDynamicsCompressorNodeChannelConfigConstMeta =>
+          const TaskConstMeta(
+            debugName: "DynamicsCompressorNode_channel_config",
+            argNames: ["that"],
+          );
 
   @override
   Future<int> webAudioApiNodeDynamicsCompressorNodeChannelCount({
@@ -13848,15 +13855,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeDynamicsCompressorNodeChannelCountConstMeta =>
-      const TaskConstMeta(
-        debugName: "DynamicsCompressorNode_channel_count",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeDynamicsCompressorNodeChannelCountConstMeta =>
+          const TaskConstMeta(
+            debugName: "DynamicsCompressorNode_channel_count",
+            argNames: ["that"],
+          );
 
   @override
   Future<ChannelCountMode>
-  webAudioApiNodeDynamicsCompressorNodeChannelCountMode({
+      webAudioApiNodeDynamicsCompressorNodeChannelCountMode({
     required DynamicsCompressorNode that,
   }) {
     return handler.executeNormal(
@@ -13887,15 +13894,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeDynamicsCompressorNodeChannelCountModeConstMeta =>
-      const TaskConstMeta(
-        debugName: "DynamicsCompressorNode_channel_count_mode",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeDynamicsCompressorNodeChannelCountModeConstMeta =>
+          const TaskConstMeta(
+            debugName: "DynamicsCompressorNode_channel_count_mode",
+            argNames: ["that"],
+          );
 
   @override
   Future<ChannelInterpretation>
-  webAudioApiNodeDynamicsCompressorNodeChannelInterpretation({
+      webAudioApiNodeDynamicsCompressorNodeChannelInterpretation({
     required DynamicsCompressorNode that,
   }) {
     return handler.executeNormal(
@@ -13926,11 +13933,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeDynamicsCompressorNodeChannelInterpretationConstMeta =>
-      const TaskConstMeta(
-        debugName: "DynamicsCompressorNode_channel_interpretation",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeDynamicsCompressorNodeChannelInterpretationConstMeta =>
+          const TaskConstMeta(
+            debugName: "DynamicsCompressorNode_channel_interpretation",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeDynamicsCompressorNodeClearOnprocessorerror({
@@ -13964,11 +13971,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeDynamicsCompressorNodeClearOnprocessorerrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "DynamicsCompressorNode_clear_onprocessorerror",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeDynamicsCompressorNodeClearOnprocessorerrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "DynamicsCompressorNode_clear_onprocessorerror",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeDynamicsCompressorNodeDisconnect({
@@ -14040,11 +14047,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeDynamicsCompressorNodeDisconnectOutputConstMeta =>
-      const TaskConstMeta(
-        debugName: "DynamicsCompressorNode_disconnect_output",
-        argNames: ["that", "output"],
-      );
+      get kWebAudioApiNodeDynamicsCompressorNodeDisconnectOutputConstMeta =>
+          const TaskConstMeta(
+            debugName: "DynamicsCompressorNode_disconnect_output",
+            argNames: ["that", "output"],
+          );
 
   @override
   Future<void> webAudioApiNodeDynamicsCompressorNodeFrbOverrideConnect({
@@ -14080,12 +14087,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeDynamicsCompressorNodeFrbOverrideConnectConstMeta =>
-      const TaskConstMeta(
-        debugName:
-            "DynamicsCompressorNode_frb_override_connect(dart_style=connect)",
-        argNames: ["that", "dest"],
-      );
+      get kWebAudioApiNodeDynamicsCompressorNodeFrbOverrideConnectConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "DynamicsCompressorNode_frb_override_connect(dart_style=connect)",
+            argNames: ["that", "dest"],
+          );
 
   @override
   Future<int> webAudioApiNodeDynamicsCompressorNodeNumberOfInputs({
@@ -14119,11 +14126,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeDynamicsCompressorNodeNumberOfInputsConstMeta =>
-      const TaskConstMeta(
-        debugName: "DynamicsCompressorNode_number_of_inputs",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeDynamicsCompressorNodeNumberOfInputsConstMeta =>
+          const TaskConstMeta(
+            debugName: "DynamicsCompressorNode_number_of_inputs",
+            argNames: ["that"],
+          );
 
   @override
   Future<int> webAudioApiNodeDynamicsCompressorNodeNumberOfOutputs({
@@ -14157,11 +14164,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeDynamicsCompressorNodeNumberOfOutputsConstMeta =>
-      const TaskConstMeta(
-        debugName: "DynamicsCompressorNode_number_of_outputs",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeDynamicsCompressorNodeNumberOfOutputsConstMeta =>
+          const TaskConstMeta(
+            debugName: "DynamicsCompressorNode_number_of_outputs",
+            argNames: ["that"],
+          );
 
   @override
   Future<double> webAudioApiNodeDynamicsCompressorNodeReduction({
@@ -14230,11 +14237,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeDynamicsCompressorNodeRegistrationConstMeta =>
-      const TaskConstMeta(
-        debugName: "DynamicsCompressorNode_registration",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeDynamicsCompressorNodeRegistrationConstMeta =>
+          const TaskConstMeta(
+            debugName: "DynamicsCompressorNode_registration",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeDynamicsCompressorNodeSetOnProcessorError({
@@ -14273,11 +14280,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeDynamicsCompressorNodeSetOnProcessorErrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "DynamicsCompressorNode_set_on_processor_error",
-        argNames: ["that", "callback"],
-      );
+      get kWebAudioApiNodeDynamicsCompressorNodeSetOnProcessorErrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "DynamicsCompressorNode_set_on_processor_error",
+            argNames: ["that", "callback"],
+          );
 
   @override
   String webAudioApiEventType({required Event that}) {
@@ -14845,7 +14852,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<ChannelInterpretation>
-  webAudioApiNodeIirFilterNodeChannelInterpretation({
+      webAudioApiNodeIirFilterNodeChannelInterpretation({
     required IirFilterNode that,
   }) {
     return handler.executeNormal(
@@ -14875,11 +14882,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeIirFilterNodeChannelInterpretationConstMeta =>
-      const TaskConstMeta(
-        debugName: "IirFilterNode_channel_interpretation",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeIirFilterNodeChannelInterpretationConstMeta =>
+          const TaskConstMeta(
+            debugName: "IirFilterNode_channel_interpretation",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeIirFilterNodeClearOnprocessorerror({
@@ -14912,11 +14919,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeIirFilterNodeClearOnprocessorerrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "IirFilterNode_clear_onprocessorerror",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeIirFilterNodeClearOnprocessorerrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "IirFilterNode_clear_onprocessorerror",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeIirFilterNodeDisconnect({
@@ -15237,11 +15244,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaElementAudioSourceNodeChannelConfigConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaElementAudioSourceNode_channel_config",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaElementAudioSourceNodeChannelConfigConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaElementAudioSourceNode_channel_config",
+            argNames: ["that"],
+          );
 
   @override
   Future<int> webAudioApiNodeMediaElementAudioSourceNodeChannelCount({
@@ -15275,15 +15282,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaElementAudioSourceNodeChannelCountConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaElementAudioSourceNode_channel_count",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaElementAudioSourceNodeChannelCountConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaElementAudioSourceNode_channel_count",
+            argNames: ["that"],
+          );
 
   @override
   Future<ChannelCountMode>
-  webAudioApiNodeMediaElementAudioSourceNodeChannelCountMode({
+      webAudioApiNodeMediaElementAudioSourceNodeChannelCountMode({
     required MediaElementAudioSourceNode that,
   }) {
     return handler.executeNormal(
@@ -15314,15 +15321,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaElementAudioSourceNodeChannelCountModeConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaElementAudioSourceNode_channel_count_mode",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaElementAudioSourceNodeChannelCountModeConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaElementAudioSourceNode_channel_count_mode",
+            argNames: ["that"],
+          );
 
   @override
   Future<ChannelInterpretation>
-  webAudioApiNodeMediaElementAudioSourceNodeChannelInterpretation({
+      webAudioApiNodeMediaElementAudioSourceNodeChannelInterpretation({
     required MediaElementAudioSourceNode that,
   }) {
     return handler.executeNormal(
@@ -15353,11 +15360,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaElementAudioSourceNodeChannelInterpretationConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaElementAudioSourceNode_channel_interpretation",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaElementAudioSourceNodeChannelInterpretationConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaElementAudioSourceNode_channel_interpretation",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeMediaElementAudioSourceNodeClearOnprocessorerror({
@@ -15391,11 +15398,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaElementAudioSourceNodeClearOnprocessorerrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaElementAudioSourceNode_clear_onprocessorerror",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaElementAudioSourceNodeClearOnprocessorerrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaElementAudioSourceNode_clear_onprocessorerror",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeMediaElementAudioSourceNodeDisconnect({
@@ -15429,11 +15436,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaElementAudioSourceNodeDisconnectConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaElementAudioSourceNode_disconnect",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaElementAudioSourceNodeDisconnectConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaElementAudioSourceNode_disconnect",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeMediaElementAudioSourceNodeDisconnectOutput({
@@ -15469,11 +15476,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaElementAudioSourceNodeDisconnectOutputConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaElementAudioSourceNode_disconnect_output",
-        argNames: ["that", "output"],
-      );
+      get kWebAudioApiNodeMediaElementAudioSourceNodeDisconnectOutputConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaElementAudioSourceNode_disconnect_output",
+            argNames: ["that", "output"],
+          );
 
   @override
   Future<void> webAudioApiNodeMediaElementAudioSourceNodeFrbOverrideConnect({
@@ -15509,12 +15516,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaElementAudioSourceNodeFrbOverrideConnectConstMeta =>
-      const TaskConstMeta(
-        debugName:
-            "MediaElementAudioSourceNode_frb_override_connect(dart_style=connect)",
-        argNames: ["that", "dest"],
-      );
+      get kWebAudioApiNodeMediaElementAudioSourceNodeFrbOverrideConnectConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "MediaElementAudioSourceNode_frb_override_connect(dart_style=connect)",
+            argNames: ["that", "dest"],
+          );
 
   @override
   Future<int> webAudioApiNodeMediaElementAudioSourceNodeNumberOfInputs({
@@ -15548,11 +15555,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaElementAudioSourceNodeNumberOfInputsConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaElementAudioSourceNode_number_of_inputs",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaElementAudioSourceNodeNumberOfInputsConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaElementAudioSourceNode_number_of_inputs",
+            argNames: ["that"],
+          );
 
   @override
   Future<int> webAudioApiNodeMediaElementAudioSourceNodeNumberOfOutputs({
@@ -15586,11 +15593,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaElementAudioSourceNodeNumberOfOutputsConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaElementAudioSourceNode_number_of_outputs",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaElementAudioSourceNodeNumberOfOutputsConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaElementAudioSourceNode_number_of_outputs",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeMediaElementAudioSourceNodeRegistration({
@@ -15624,11 +15631,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaElementAudioSourceNodeRegistrationConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaElementAudioSourceNode_registration",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaElementAudioSourceNodeRegistrationConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaElementAudioSourceNode_registration",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeMediaElementAudioSourceNodeSetOnProcessorError({
@@ -15667,11 +15674,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaElementAudioSourceNodeSetOnProcessorErrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaElementAudioSourceNode_set_on_processor_error",
-        argNames: ["that", "callback"],
-      );
+      get kWebAudioApiNodeMediaElementAudioSourceNodeSetOnProcessorErrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaElementAudioSourceNode_set_on_processor_error",
+            argNames: ["that", "callback"],
+          );
 
   @override
   Future<void> webAudioApiMediaRecorderMediaRecorderClearOndataavailable({
@@ -15705,11 +15712,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiMediaRecorderMediaRecorderClearOndataavailableConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaRecorder_clear_ondataavailable",
-        argNames: ["that"],
-      );
+      get kWebAudioApiMediaRecorderMediaRecorderClearOndataavailableConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaRecorder_clear_ondataavailable",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiMediaRecorderMediaRecorderClearOnerror({
@@ -15742,11 +15749,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiMediaRecorderMediaRecorderClearOnerrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaRecorder_clear_onerror",
-        argNames: ["that"],
-      );
+      get kWebAudioApiMediaRecorderMediaRecorderClearOnerrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaRecorder_clear_onerror",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiMediaRecorderMediaRecorderClearOnstop({
@@ -15779,11 +15786,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiMediaRecorderMediaRecorderClearOnstopConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaRecorder_clear_onstop",
-        argNames: ["that"],
-      );
+      get kWebAudioApiMediaRecorderMediaRecorderClearOnstopConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaRecorder_clear_onstop",
+            argNames: ["that"],
+          );
 
   @override
   Future<MediaRecorder> webAudioApiMediaRecorderMediaRecorderNew({
@@ -15917,11 +15924,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamAudioDestinationNodeChannelConfigConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamAudioDestinationNode_channel_config",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaStreamAudioDestinationNodeChannelConfigConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamAudioDestinationNode_channel_config",
+            argNames: ["that"],
+          );
 
   @override
   Future<int> webAudioApiNodeMediaStreamAudioDestinationNodeChannelCount({
@@ -15955,15 +15962,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamAudioDestinationNodeChannelCountConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamAudioDestinationNode_channel_count",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaStreamAudioDestinationNodeChannelCountConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamAudioDestinationNode_channel_count",
+            argNames: ["that"],
+          );
 
   @override
   Future<ChannelCountMode>
-  webAudioApiNodeMediaStreamAudioDestinationNodeChannelCountMode({
+      webAudioApiNodeMediaStreamAudioDestinationNodeChannelCountMode({
     required MediaStreamAudioDestinationNode that,
   }) {
     return handler.executeNormal(
@@ -15994,15 +16001,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamAudioDestinationNodeChannelCountModeConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamAudioDestinationNode_channel_count_mode",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaStreamAudioDestinationNodeChannelCountModeConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamAudioDestinationNode_channel_count_mode",
+            argNames: ["that"],
+          );
 
   @override
   Future<ChannelInterpretation>
-  webAudioApiNodeMediaStreamAudioDestinationNodeChannelInterpretation({
+      webAudioApiNodeMediaStreamAudioDestinationNodeChannelInterpretation({
     required MediaStreamAudioDestinationNode that,
   }) {
     return handler.executeNormal(
@@ -16033,15 +16040,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamAudioDestinationNodeChannelInterpretationConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamAudioDestinationNode_channel_interpretation",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaStreamAudioDestinationNodeChannelInterpretationConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamAudioDestinationNode_channel_interpretation",
+            argNames: ["that"],
+          );
 
   @override
   Future<void>
-  webAudioApiNodeMediaStreamAudioDestinationNodeClearOnprocessorerror({
+      webAudioApiNodeMediaStreamAudioDestinationNodeClearOnprocessorerror({
     required MediaStreamAudioDestinationNode that,
   }) {
     return handler.executeNormal(
@@ -16072,11 +16079,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamAudioDestinationNodeClearOnprocessorerrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamAudioDestinationNode_clear_onprocessorerror",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaStreamAudioDestinationNodeClearOnprocessorerrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamAudioDestinationNode_clear_onprocessorerror",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeMediaStreamAudioDestinationNodeDisconnect({
@@ -16110,11 +16117,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamAudioDestinationNodeDisconnectConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamAudioDestinationNode_disconnect",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaStreamAudioDestinationNodeDisconnectConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamAudioDestinationNode_disconnect",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeMediaStreamAudioDestinationNodeDisconnectOutput({
@@ -16150,15 +16157,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamAudioDestinationNodeDisconnectOutputConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamAudioDestinationNode_disconnect_output",
-        argNames: ["that", "output"],
-      );
+      get kWebAudioApiNodeMediaStreamAudioDestinationNodeDisconnectOutputConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamAudioDestinationNode_disconnect_output",
+            argNames: ["that", "output"],
+          );
 
   @override
   Future<void>
-  webAudioApiNodeMediaStreamAudioDestinationNodeFrbOverrideConnect({
+      webAudioApiNodeMediaStreamAudioDestinationNodeFrbOverrideConnect({
     required MediaStreamAudioDestinationNode that,
     required AudioNode dest,
   }) {
@@ -16191,12 +16198,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamAudioDestinationNodeFrbOverrideConnectConstMeta =>
-      const TaskConstMeta(
-        debugName:
-            "MediaStreamAudioDestinationNode_frb_override_connect(dart_style=connect)",
-        argNames: ["that", "dest"],
-      );
+      get kWebAudioApiNodeMediaStreamAudioDestinationNodeFrbOverrideConnectConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "MediaStreamAudioDestinationNode_frb_override_connect(dart_style=connect)",
+            argNames: ["that", "dest"],
+          );
 
   @override
   Future<int> webAudioApiNodeMediaStreamAudioDestinationNodeNumberOfInputs({
@@ -16230,11 +16237,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamAudioDestinationNodeNumberOfInputsConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamAudioDestinationNode_number_of_inputs",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaStreamAudioDestinationNodeNumberOfInputsConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamAudioDestinationNode_number_of_inputs",
+            argNames: ["that"],
+          );
 
   @override
   Future<int> webAudioApiNodeMediaStreamAudioDestinationNodeNumberOfOutputs({
@@ -16268,11 +16275,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamAudioDestinationNodeNumberOfOutputsConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamAudioDestinationNode_number_of_outputs",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaStreamAudioDestinationNodeNumberOfOutputsConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamAudioDestinationNode_number_of_outputs",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeMediaStreamAudioDestinationNodeRegistration({
@@ -16306,15 +16313,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamAudioDestinationNodeRegistrationConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamAudioDestinationNode_registration",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaStreamAudioDestinationNodeRegistrationConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamAudioDestinationNode_registration",
+            argNames: ["that"],
+          );
 
   @override
   Future<void>
-  webAudioApiNodeMediaStreamAudioDestinationNodeSetOnProcessorError({
+      webAudioApiNodeMediaStreamAudioDestinationNodeSetOnProcessorError({
     required MediaStreamAudioDestinationNode that,
     required FutureOr<void> Function(String) callback,
   }) {
@@ -16350,11 +16357,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamAudioDestinationNodeSetOnProcessorErrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamAudioDestinationNode_set_on_processor_error",
-        argNames: ["that", "callback"],
-      );
+      get kWebAudioApiNodeMediaStreamAudioDestinationNodeSetOnProcessorErrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamAudioDestinationNode_set_on_processor_error",
+            argNames: ["that", "callback"],
+          );
 
   @override
   Future<void> webAudioApiNodeMediaStreamAudioSourceNodeChannelConfig({
@@ -16388,11 +16395,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamAudioSourceNodeChannelConfigConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamAudioSourceNode_channel_config",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaStreamAudioSourceNodeChannelConfigConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamAudioSourceNode_channel_config",
+            argNames: ["that"],
+          );
 
   @override
   Future<int> webAudioApiNodeMediaStreamAudioSourceNodeChannelCount({
@@ -16426,15 +16433,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamAudioSourceNodeChannelCountConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamAudioSourceNode_channel_count",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaStreamAudioSourceNodeChannelCountConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamAudioSourceNode_channel_count",
+            argNames: ["that"],
+          );
 
   @override
   Future<ChannelCountMode>
-  webAudioApiNodeMediaStreamAudioSourceNodeChannelCountMode({
+      webAudioApiNodeMediaStreamAudioSourceNodeChannelCountMode({
     required MediaStreamAudioSourceNode that,
   }) {
     return handler.executeNormal(
@@ -16465,15 +16472,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamAudioSourceNodeChannelCountModeConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamAudioSourceNode_channel_count_mode",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaStreamAudioSourceNodeChannelCountModeConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamAudioSourceNode_channel_count_mode",
+            argNames: ["that"],
+          );
 
   @override
   Future<ChannelInterpretation>
-  webAudioApiNodeMediaStreamAudioSourceNodeChannelInterpretation({
+      webAudioApiNodeMediaStreamAudioSourceNodeChannelInterpretation({
     required MediaStreamAudioSourceNode that,
   }) {
     return handler.executeNormal(
@@ -16504,11 +16511,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamAudioSourceNodeChannelInterpretationConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamAudioSourceNode_channel_interpretation",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaStreamAudioSourceNodeChannelInterpretationConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamAudioSourceNode_channel_interpretation",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeMediaStreamAudioSourceNodeClearOnprocessorerror({
@@ -16542,11 +16549,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamAudioSourceNodeClearOnprocessorerrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamAudioSourceNode_clear_onprocessorerror",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaStreamAudioSourceNodeClearOnprocessorerrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamAudioSourceNode_clear_onprocessorerror",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeMediaStreamAudioSourceNodeDisconnect({
@@ -16580,11 +16587,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamAudioSourceNodeDisconnectConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamAudioSourceNode_disconnect",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaStreamAudioSourceNodeDisconnectConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamAudioSourceNode_disconnect",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeMediaStreamAudioSourceNodeDisconnectOutput({
@@ -16620,11 +16627,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamAudioSourceNodeDisconnectOutputConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamAudioSourceNode_disconnect_output",
-        argNames: ["that", "output"],
-      );
+      get kWebAudioApiNodeMediaStreamAudioSourceNodeDisconnectOutputConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamAudioSourceNode_disconnect_output",
+            argNames: ["that", "output"],
+          );
 
   @override
   Future<void> webAudioApiNodeMediaStreamAudioSourceNodeFrbOverrideConnect({
@@ -16660,12 +16667,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamAudioSourceNodeFrbOverrideConnectConstMeta =>
-      const TaskConstMeta(
-        debugName:
-            "MediaStreamAudioSourceNode_frb_override_connect(dart_style=connect)",
-        argNames: ["that", "dest"],
-      );
+      get kWebAudioApiNodeMediaStreamAudioSourceNodeFrbOverrideConnectConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "MediaStreamAudioSourceNode_frb_override_connect(dart_style=connect)",
+            argNames: ["that", "dest"],
+          );
 
   @override
   Future<int> webAudioApiNodeMediaStreamAudioSourceNodeNumberOfInputs({
@@ -16699,11 +16706,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamAudioSourceNodeNumberOfInputsConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamAudioSourceNode_number_of_inputs",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaStreamAudioSourceNodeNumberOfInputsConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamAudioSourceNode_number_of_inputs",
+            argNames: ["that"],
+          );
 
   @override
   Future<int> webAudioApiNodeMediaStreamAudioSourceNodeNumberOfOutputs({
@@ -16737,11 +16744,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamAudioSourceNodeNumberOfOutputsConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamAudioSourceNode_number_of_outputs",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaStreamAudioSourceNodeNumberOfOutputsConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamAudioSourceNode_number_of_outputs",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeMediaStreamAudioSourceNodeRegistration({
@@ -16775,11 +16782,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamAudioSourceNodeRegistrationConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamAudioSourceNode_registration",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaStreamAudioSourceNodeRegistrationConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamAudioSourceNode_registration",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeMediaStreamAudioSourceNodeSetOnProcessorError({
@@ -16818,11 +16825,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamAudioSourceNodeSetOnProcessorErrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamAudioSourceNode_set_on_processor_error",
-        argNames: ["that", "callback"],
-      );
+      get kWebAudioApiNodeMediaStreamAudioSourceNodeSetOnProcessorErrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamAudioSourceNode_set_on_processor_error",
+            argNames: ["that", "callback"],
+          );
 
   @override
   Future<void> webAudioApiNodeMediaStreamTrackAudioSourceNodeChannelConfig({
@@ -16856,11 +16863,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamTrackAudioSourceNodeChannelConfigConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamTrackAudioSourceNode_channel_config",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaStreamTrackAudioSourceNodeChannelConfigConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamTrackAudioSourceNode_channel_config",
+            argNames: ["that"],
+          );
 
   @override
   Future<int> webAudioApiNodeMediaStreamTrackAudioSourceNodeChannelCount({
@@ -16894,15 +16901,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamTrackAudioSourceNodeChannelCountConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamTrackAudioSourceNode_channel_count",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaStreamTrackAudioSourceNodeChannelCountConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamTrackAudioSourceNode_channel_count",
+            argNames: ["that"],
+          );
 
   @override
   Future<ChannelCountMode>
-  webAudioApiNodeMediaStreamTrackAudioSourceNodeChannelCountMode({
+      webAudioApiNodeMediaStreamTrackAudioSourceNodeChannelCountMode({
     required MediaStreamTrackAudioSourceNode that,
   }) {
     return handler.executeNormal(
@@ -16933,15 +16940,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamTrackAudioSourceNodeChannelCountModeConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamTrackAudioSourceNode_channel_count_mode",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaStreamTrackAudioSourceNodeChannelCountModeConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamTrackAudioSourceNode_channel_count_mode",
+            argNames: ["that"],
+          );
 
   @override
   Future<ChannelInterpretation>
-  webAudioApiNodeMediaStreamTrackAudioSourceNodeChannelInterpretation({
+      webAudioApiNodeMediaStreamTrackAudioSourceNodeChannelInterpretation({
     required MediaStreamTrackAudioSourceNode that,
   }) {
     return handler.executeNormal(
@@ -16972,15 +16979,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamTrackAudioSourceNodeChannelInterpretationConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamTrackAudioSourceNode_channel_interpretation",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaStreamTrackAudioSourceNodeChannelInterpretationConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamTrackAudioSourceNode_channel_interpretation",
+            argNames: ["that"],
+          );
 
   @override
   Future<void>
-  webAudioApiNodeMediaStreamTrackAudioSourceNodeClearOnprocessorerror({
+      webAudioApiNodeMediaStreamTrackAudioSourceNodeClearOnprocessorerror({
     required MediaStreamTrackAudioSourceNode that,
   }) {
     return handler.executeNormal(
@@ -17011,11 +17018,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamTrackAudioSourceNodeClearOnprocessorerrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamTrackAudioSourceNode_clear_onprocessorerror",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaStreamTrackAudioSourceNodeClearOnprocessorerrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamTrackAudioSourceNode_clear_onprocessorerror",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeMediaStreamTrackAudioSourceNodeDisconnect({
@@ -17049,11 +17056,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamTrackAudioSourceNodeDisconnectConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamTrackAudioSourceNode_disconnect",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaStreamTrackAudioSourceNodeDisconnectConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamTrackAudioSourceNode_disconnect",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeMediaStreamTrackAudioSourceNodeDisconnectOutput({
@@ -17089,15 +17096,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamTrackAudioSourceNodeDisconnectOutputConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamTrackAudioSourceNode_disconnect_output",
-        argNames: ["that", "output"],
-      );
+      get kWebAudioApiNodeMediaStreamTrackAudioSourceNodeDisconnectOutputConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamTrackAudioSourceNode_disconnect_output",
+            argNames: ["that", "output"],
+          );
 
   @override
   Future<void>
-  webAudioApiNodeMediaStreamTrackAudioSourceNodeFrbOverrideConnect({
+      webAudioApiNodeMediaStreamTrackAudioSourceNodeFrbOverrideConnect({
     required MediaStreamTrackAudioSourceNode that,
     required AudioNode dest,
   }) {
@@ -17130,12 +17137,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamTrackAudioSourceNodeFrbOverrideConnectConstMeta =>
-      const TaskConstMeta(
-        debugName:
-            "MediaStreamTrackAudioSourceNode_frb_override_connect(dart_style=connect)",
-        argNames: ["that", "dest"],
-      );
+      get kWebAudioApiNodeMediaStreamTrackAudioSourceNodeFrbOverrideConnectConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "MediaStreamTrackAudioSourceNode_frb_override_connect(dart_style=connect)",
+            argNames: ["that", "dest"],
+          );
 
   @override
   Future<int> webAudioApiNodeMediaStreamTrackAudioSourceNodeNumberOfInputs({
@@ -17169,11 +17176,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamTrackAudioSourceNodeNumberOfInputsConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamTrackAudioSourceNode_number_of_inputs",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaStreamTrackAudioSourceNodeNumberOfInputsConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamTrackAudioSourceNode_number_of_inputs",
+            argNames: ["that"],
+          );
 
   @override
   Future<int> webAudioApiNodeMediaStreamTrackAudioSourceNodeNumberOfOutputs({
@@ -17207,11 +17214,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamTrackAudioSourceNodeNumberOfOutputsConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamTrackAudioSourceNode_number_of_outputs",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaStreamTrackAudioSourceNodeNumberOfOutputsConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamTrackAudioSourceNode_number_of_outputs",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeMediaStreamTrackAudioSourceNodeRegistration({
@@ -17245,15 +17252,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamTrackAudioSourceNodeRegistrationConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamTrackAudioSourceNode_registration",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeMediaStreamTrackAudioSourceNodeRegistrationConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamTrackAudioSourceNode_registration",
+            argNames: ["that"],
+          );
 
   @override
   Future<void>
-  webAudioApiNodeMediaStreamTrackAudioSourceNodeSetOnProcessorError({
+      webAudioApiNodeMediaStreamTrackAudioSourceNodeSetOnProcessorError({
     required MediaStreamTrackAudioSourceNode that,
     required FutureOr<void> Function(String) callback,
   }) {
@@ -17289,11 +17296,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeMediaStreamTrackAudioSourceNodeSetOnProcessorErrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamTrackAudioSourceNode_set_on_processor_error",
-        argNames: ["that", "callback"],
-      );
+      get kWebAudioApiNodeMediaStreamTrackAudioSourceNodeSetOnProcessorErrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamTrackAudioSourceNode_set_on_processor_error",
+            argNames: ["that", "callback"],
+          );
 
   @override
   Future<void> webAudioApiMediaStreamsMediaStreamTrackClose({
@@ -17333,7 +17340,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<MediaStreamTrackState>
-  webAudioApiMediaStreamsMediaStreamTrackReadyState({
+      webAudioApiMediaStreamsMediaStreamTrackReadyState({
     required MediaStreamTrack that,
   }) {
     return handler.executeNormal(
@@ -17363,15 +17370,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiMediaStreamsMediaStreamTrackReadyStateConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStreamTrack_ready_state",
-        argNames: ["that"],
-      );
+      get kWebAudioApiMediaStreamsMediaStreamTrackReadyStateConstMeta =>
+          const TaskConstMeta(
+            debugName: "MediaStreamTrack_ready_state",
+            argNames: ["that"],
+          );
 
   @override
   Future<List<MediaStreamTrack>>
-  webAudioApiMediaStreamsMediaStreamFrbOverrideGetTracks({
+      webAudioApiMediaStreamsMediaStreamFrbOverrideGetTracks({
     required MediaStream that,
   }) {
     return handler.executeNormal(
@@ -17403,11 +17410,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiMediaStreamsMediaStreamFrbOverrideGetTracksConstMeta =>
-      const TaskConstMeta(
-        debugName: "MediaStream_frb_override_get_tracks(dart_style=get_tracks)",
-        argNames: ["that"],
-      );
+      get kWebAudioApiMediaStreamsMediaStreamFrbOverrideGetTracksConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "MediaStream_frb_override_get_tracks(dart_style=get_tracks)",
+            argNames: ["that"],
+          );
 
   @override
   Future<MediaStream> webAudioApiMediaStreamsMediaStreamFromTracks({
@@ -17720,11 +17728,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kCrateApiMediaElementMyMediaElementSetCurrentTimeConstMeta =>
-      const TaskConstMeta(
-        debugName: "MyMediaElement_set_current_time",
-        argNames: ["that", "value"],
-      );
+      get kCrateApiMediaElementMyMediaElementSetCurrentTimeConstMeta =>
+          const TaskConstMeta(
+            debugName: "MyMediaElement_set_current_time",
+            argNames: ["that", "value"],
+          );
 
   @override
   Future<void> crateApiMediaElementMyMediaElementSetLoop({
@@ -17797,11 +17805,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kCrateApiMediaElementMyMediaElementSetPlaybackRateConstMeta =>
-      const TaskConstMeta(
-        debugName: "MyMediaElement_set_playback_rate",
-        argNames: ["that", "value"],
-      );
+      get kCrateApiMediaElementMyMediaElementSetPlaybackRateConstMeta =>
+          const TaskConstMeta(
+            debugName: "MyMediaElement_set_playback_rate",
+            argNames: ["that", "value"],
+          );
 
   @override
   Event webAudioApiOfflineAudioCompletionEventAutoAccessorGetEvent({
@@ -17835,15 +17843,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiOfflineAudioCompletionEventAutoAccessorGetEventConstMeta =>
-      const TaskConstMeta(
-        debugName: "OfflineAudioCompletionEvent_auto_accessor_get_event",
-        argNames: ["that"],
-      );
+      get kWebAudioApiOfflineAudioCompletionEventAutoAccessorGetEventConstMeta =>
+          const TaskConstMeta(
+            debugName: "OfflineAudioCompletionEvent_auto_accessor_get_event",
+            argNames: ["that"],
+          );
 
   @override
   AudioBuffer
-  webAudioApiOfflineAudioCompletionEventAutoAccessorGetRenderedBuffer({
+      webAudioApiOfflineAudioCompletionEventAutoAccessorGetRenderedBuffer({
     required OfflineAudioCompletionEvent that,
   }) {
     return handler.executeSync(
@@ -17874,12 +17882,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiOfflineAudioCompletionEventAutoAccessorGetRenderedBufferConstMeta =>
-      const TaskConstMeta(
-        debugName:
-            "OfflineAudioCompletionEvent_auto_accessor_get_rendered_buffer",
-        argNames: ["that"],
-      );
+      get kWebAudioApiOfflineAudioCompletionEventAutoAccessorGetRenderedBufferConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "OfflineAudioCompletionEvent_auto_accessor_get_rendered_buffer",
+            argNames: ["that"],
+          );
 
   @override
   void webAudioApiOfflineAudioCompletionEventAutoAccessorSetEvent({
@@ -17917,11 +17925,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiOfflineAudioCompletionEventAutoAccessorSetEventConstMeta =>
-      const TaskConstMeta(
-        debugName: "OfflineAudioCompletionEvent_auto_accessor_set_event",
-        argNames: ["that", "event"],
-      );
+      get kWebAudioApiOfflineAudioCompletionEventAutoAccessorSetEventConstMeta =>
+          const TaskConstMeta(
+            debugName: "OfflineAudioCompletionEvent_auto_accessor_set_event",
+            argNames: ["that", "event"],
+          );
 
   @override
   void webAudioApiOfflineAudioCompletionEventAutoAccessorSetRenderedBuffer({
@@ -17959,12 +17967,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiOfflineAudioCompletionEventAutoAccessorSetRenderedBufferConstMeta =>
-      const TaskConstMeta(
-        debugName:
-            "OfflineAudioCompletionEvent_auto_accessor_set_rendered_buffer",
-        argNames: ["that", "renderedBuffer"],
-      );
+      get kWebAudioApiOfflineAudioCompletionEventAutoAccessorSetRenderedBufferConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "OfflineAudioCompletionEvent_auto_accessor_set_rendered_buffer",
+            argNames: ["that", "renderedBuffer"],
+          );
 
   @override
   Future<void> webAudioApiContextOfflineAudioContextClearOncomplete({
@@ -17998,11 +18006,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextOfflineAudioContextClearOncompleteConstMeta =>
-      const TaskConstMeta(
-        debugName: "OfflineAudioContext_clear_oncomplete",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextOfflineAudioContextClearOncompleteConstMeta =>
+          const TaskConstMeta(
+            debugName: "OfflineAudioContext_clear_oncomplete",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiContextOfflineAudioContextClearOnstatechange({
@@ -18036,11 +18044,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextOfflineAudioContextClearOnstatechangeConstMeta =>
-      const TaskConstMeta(
-        debugName: "OfflineAudioContext_clear_onstatechange",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextOfflineAudioContextClearOnstatechangeConstMeta =>
+          const TaskConstMeta(
+            debugName: "OfflineAudioContext_clear_onstatechange",
+            argNames: ["that"],
+          );
 
   @override
   Future<AnalyserNode> webAudioApiContextOfflineAudioContextCreateAnalyser({
@@ -18075,15 +18083,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextOfflineAudioContextCreateAnalyserConstMeta =>
-      const TaskConstMeta(
-        debugName: "OfflineAudioContext_create_analyser",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextOfflineAudioContextCreateAnalyserConstMeta =>
+          const TaskConstMeta(
+            debugName: "OfflineAudioContext_create_analyser",
+            argNames: ["that"],
+          );
 
   @override
   Future<(AudioParam, AudioParamId)>
-  webAudioApiContextOfflineAudioContextCreateAudioParam({
+      webAudioApiContextOfflineAudioContextCreateAudioParam({
     required OfflineAudioContext that,
     required AudioParamDescriptor opts,
     required AudioContextRegistration dest,
@@ -18122,15 +18130,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextOfflineAudioContextCreateAudioParamConstMeta =>
-      const TaskConstMeta(
-        debugName: "OfflineAudioContext_create_audio_param",
-        argNames: ["that", "opts", "dest"],
-      );
+      get kWebAudioApiContextOfflineAudioContextCreateAudioParamConstMeta =>
+          const TaskConstMeta(
+            debugName: "OfflineAudioContext_create_audio_param",
+            argNames: ["that", "opts", "dest"],
+          );
 
   @override
   Future<BiquadFilterNode>
-  webAudioApiContextOfflineAudioContextCreateBiquadFilter({
+      webAudioApiContextOfflineAudioContextCreateBiquadFilter({
     required OfflineAudioContext that,
   }) {
     return handler.executeNormal(
@@ -18162,11 +18170,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextOfflineAudioContextCreateBiquadFilterConstMeta =>
-      const TaskConstMeta(
-        debugName: "OfflineAudioContext_create_biquad_filter",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextOfflineAudioContextCreateBiquadFilterConstMeta =>
+          const TaskConstMeta(
+            debugName: "OfflineAudioContext_create_biquad_filter",
+            argNames: ["that"],
+          );
 
   @override
   Future<AudioBuffer> webAudioApiContextOfflineAudioContextCreateBuffer({
@@ -18206,15 +18214,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextOfflineAudioContextCreateBufferConstMeta =>
-      const TaskConstMeta(
-        debugName: "OfflineAudioContext_create_buffer",
-        argNames: ["that", "numberOfChannels", "length", "sampleRate"],
-      );
+      get kWebAudioApiContextOfflineAudioContextCreateBufferConstMeta =>
+          const TaskConstMeta(
+            debugName: "OfflineAudioContext_create_buffer",
+            argNames: ["that", "numberOfChannels", "length", "sampleRate"],
+          );
 
   @override
   Future<AudioBufferSourceNode>
-  webAudioApiContextOfflineAudioContextCreateBufferSource({
+      webAudioApiContextOfflineAudioContextCreateBufferSource({
     required OfflineAudioContext that,
   }) {
     return handler.executeNormal(
@@ -18246,15 +18254,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextOfflineAudioContextCreateBufferSourceConstMeta =>
-      const TaskConstMeta(
-        debugName: "OfflineAudioContext_create_buffer_source",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextOfflineAudioContextCreateBufferSourceConstMeta =>
+          const TaskConstMeta(
+            debugName: "OfflineAudioContext_create_buffer_source",
+            argNames: ["that"],
+          );
 
   @override
   Future<ChannelMergerNode>
-  webAudioApiContextOfflineAudioContextCreateChannelMerger({
+      webAudioApiContextOfflineAudioContextCreateChannelMerger({
     required OfflineAudioContext that,
     required int numberOfInputs,
   }) {
@@ -18288,15 +18296,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextOfflineAudioContextCreateChannelMergerConstMeta =>
-      const TaskConstMeta(
-        debugName: "OfflineAudioContext_create_channel_merger",
-        argNames: ["that", "numberOfInputs"],
-      );
+      get kWebAudioApiContextOfflineAudioContextCreateChannelMergerConstMeta =>
+          const TaskConstMeta(
+            debugName: "OfflineAudioContext_create_channel_merger",
+            argNames: ["that", "numberOfInputs"],
+          );
 
   @override
   Future<ChannelSplitterNode>
-  webAudioApiContextOfflineAudioContextCreateChannelSplitter({
+      webAudioApiContextOfflineAudioContextCreateChannelSplitter({
     required OfflineAudioContext that,
     required int numberOfOutputs,
   }) {
@@ -18330,15 +18338,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextOfflineAudioContextCreateChannelSplitterConstMeta =>
-      const TaskConstMeta(
-        debugName: "OfflineAudioContext_create_channel_splitter",
-        argNames: ["that", "numberOfOutputs"],
-      );
+      get kWebAudioApiContextOfflineAudioContextCreateChannelSplitterConstMeta =>
+          const TaskConstMeta(
+            debugName: "OfflineAudioContext_create_channel_splitter",
+            argNames: ["that", "numberOfOutputs"],
+          );
 
   @override
   Future<ConstantSourceNode>
-  webAudioApiContextOfflineAudioContextCreateConstantSource({
+      webAudioApiContextOfflineAudioContextCreateConstantSource({
     required OfflineAudioContext that,
   }) {
     return handler.executeNormal(
@@ -18370,11 +18378,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextOfflineAudioContextCreateConstantSourceConstMeta =>
-      const TaskConstMeta(
-        debugName: "OfflineAudioContext_create_constant_source",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextOfflineAudioContextCreateConstantSourceConstMeta =>
+          const TaskConstMeta(
+            debugName: "OfflineAudioContext_create_constant_source",
+            argNames: ["that"],
+          );
 
   @override
   Future<ConvolverNode> webAudioApiContextOfflineAudioContextCreateConvolver({
@@ -18409,11 +18417,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextOfflineAudioContextCreateConvolverConstMeta =>
-      const TaskConstMeta(
-        debugName: "OfflineAudioContext_create_convolver",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextOfflineAudioContextCreateConvolverConstMeta =>
+          const TaskConstMeta(
+            debugName: "OfflineAudioContext_create_convolver",
+            argNames: ["that"],
+          );
 
   @override
   Future<DelayNode> webAudioApiContextOfflineAudioContextCreateDelay({
@@ -18449,15 +18457,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextOfflineAudioContextCreateDelayConstMeta =>
-      const TaskConstMeta(
-        debugName: "OfflineAudioContext_create_delay",
-        argNames: ["that", "maxDelayTime"],
-      );
+      get kWebAudioApiContextOfflineAudioContextCreateDelayConstMeta =>
+          const TaskConstMeta(
+            debugName: "OfflineAudioContext_create_delay",
+            argNames: ["that", "maxDelayTime"],
+          );
 
   @override
   Future<DynamicsCompressorNode>
-  webAudioApiContextOfflineAudioContextCreateDynamicsCompressor({
+      webAudioApiContextOfflineAudioContextCreateDynamicsCompressor({
     required OfflineAudioContext that,
   }) {
     return handler.executeNormal(
@@ -18489,11 +18497,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextOfflineAudioContextCreateDynamicsCompressorConstMeta =>
-      const TaskConstMeta(
-        debugName: "OfflineAudioContext_create_dynamics_compressor",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextOfflineAudioContextCreateDynamicsCompressorConstMeta =>
+          const TaskConstMeta(
+            debugName: "OfflineAudioContext_create_dynamics_compressor",
+            argNames: ["that"],
+          );
 
   @override
   Future<GainNode> webAudioApiContextOfflineAudioContextCreateGain({
@@ -18569,11 +18577,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextOfflineAudioContextCreateIirFilterConstMeta =>
-      const TaskConstMeta(
-        debugName: "OfflineAudioContext_create_iir_filter",
-        argNames: ["that", "feedforward", "feedback"],
-      );
+      get kWebAudioApiContextOfflineAudioContextCreateIirFilterConstMeta =>
+          const TaskConstMeta(
+            debugName: "OfflineAudioContext_create_iir_filter",
+            argNames: ["that", "feedforward", "feedback"],
+          );
 
   @override
   Future<OscillatorNode> webAudioApiContextOfflineAudioContextCreateOscillator({
@@ -18608,11 +18616,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextOfflineAudioContextCreateOscillatorConstMeta =>
-      const TaskConstMeta(
-        debugName: "OfflineAudioContext_create_oscillator",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextOfflineAudioContextCreateOscillatorConstMeta =>
+          const TaskConstMeta(
+            debugName: "OfflineAudioContext_create_oscillator",
+            argNames: ["that"],
+          );
 
   @override
   Future<PannerNode> webAudioApiContextOfflineAudioContextCreatePanner({
@@ -18646,11 +18654,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextOfflineAudioContextCreatePannerConstMeta =>
-      const TaskConstMeta(
-        debugName: "OfflineAudioContext_create_panner",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextOfflineAudioContextCreatePannerConstMeta =>
+          const TaskConstMeta(
+            debugName: "OfflineAudioContext_create_panner",
+            argNames: ["that"],
+          );
 
   @override
   Future<PeriodicWave> webAudioApiContextOfflineAudioContextCreatePeriodicWave({
@@ -18687,15 +18695,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextOfflineAudioContextCreatePeriodicWaveConstMeta =>
-      const TaskConstMeta(
-        debugName: "OfflineAudioContext_create_periodic_wave",
-        argNames: ["that", "options"],
-      );
+      get kWebAudioApiContextOfflineAudioContextCreatePeriodicWaveConstMeta =>
+          const TaskConstMeta(
+            debugName: "OfflineAudioContext_create_periodic_wave",
+            argNames: ["that", "options"],
+          );
 
   @override
   Future<ScriptProcessorNode>
-  webAudioApiContextOfflineAudioContextCreateScriptProcessor({
+      webAudioApiContextOfflineAudioContextCreateScriptProcessor({
     required OfflineAudioContext that,
     required int bufferSize,
     required int numberOfInputChannels,
@@ -18738,20 +18746,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextOfflineAudioContextCreateScriptProcessorConstMeta =>
-      const TaskConstMeta(
-        debugName: "OfflineAudioContext_create_script_processor",
-        argNames: [
-          "that",
-          "bufferSize",
-          "numberOfInputChannels",
-          "numberOfOutputChannels",
-        ],
-      );
+      get kWebAudioApiContextOfflineAudioContextCreateScriptProcessorConstMeta =>
+          const TaskConstMeta(
+            debugName: "OfflineAudioContext_create_script_processor",
+            argNames: [
+              "that",
+              "bufferSize",
+              "numberOfInputChannels",
+              "numberOfOutputChannels",
+            ],
+          );
 
   @override
   Future<StereoPannerNode>
-  webAudioApiContextOfflineAudioContextCreateStereoPanner({
+      webAudioApiContextOfflineAudioContextCreateStereoPanner({
     required OfflineAudioContext that,
   }) {
     return handler.executeNormal(
@@ -18783,11 +18791,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextOfflineAudioContextCreateStereoPannerConstMeta =>
-      const TaskConstMeta(
-        debugName: "OfflineAudioContext_create_stereo_panner",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextOfflineAudioContextCreateStereoPannerConstMeta =>
+          const TaskConstMeta(
+            debugName: "OfflineAudioContext_create_stereo_panner",
+            argNames: ["that"],
+          );
 
   @override
   Future<WaveShaperNode> webAudioApiContextOfflineAudioContextCreateWaveShaper({
@@ -18822,11 +18830,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextOfflineAudioContextCreateWaveShaperConstMeta =>
-      const TaskConstMeta(
-        debugName: "OfflineAudioContext_create_wave_shaper",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextOfflineAudioContextCreateWaveShaperConstMeta =>
+          const TaskConstMeta(
+            debugName: "OfflineAudioContext_create_wave_shaper",
+            argNames: ["that"],
+          );
 
   @override
   Future<double> webAudioApiContextOfflineAudioContextCurrentTime({
@@ -18859,15 +18867,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextOfflineAudioContextCurrentTimeConstMeta =>
-      const TaskConstMeta(
-        debugName: "OfflineAudioContext_current_time",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextOfflineAudioContextCurrentTimeConstMeta =>
+          const TaskConstMeta(
+            debugName: "OfflineAudioContext_current_time",
+            argNames: ["that"],
+          );
 
   @override
   Future<AudioDestinationNode>
-  webAudioApiContextOfflineAudioContextDestination({
+      webAudioApiContextOfflineAudioContextDestination({
     required OfflineAudioContext that,
   }) {
     return handler.executeNormal(
@@ -18898,11 +18906,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextOfflineAudioContextDestinationConstMeta =>
-      const TaskConstMeta(
-        debugName: "OfflineAudioContext_destination",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextOfflineAudioContextDestinationConstMeta =>
+          const TaskConstMeta(
+            debugName: "OfflineAudioContext_destination",
+            argNames: ["that"],
+          );
 
   @override
   Future<int> webAudioApiContextOfflineAudioContextLength({
@@ -19123,11 +19131,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextOfflineAudioContextSetOnCompleteConstMeta =>
-      const TaskConstMeta(
-        debugName: "OfflineAudioContext_set_on_complete",
-        argNames: ["that", "callback"],
-      );
+      get kWebAudioApiContextOfflineAudioContextSetOnCompleteConstMeta =>
+          const TaskConstMeta(
+            debugName: "OfflineAudioContext_set_on_complete",
+            argNames: ["that", "callback"],
+          );
 
   @override
   Future<AudioBuffer> webAudioApiContextOfflineAudioContextStartRendering({
@@ -19162,11 +19170,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextOfflineAudioContextStartRenderingConstMeta =>
-      const TaskConstMeta(
-        debugName: "OfflineAudioContext_start_rendering",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextOfflineAudioContextStartRenderingConstMeta =>
+          const TaskConstMeta(
+            debugName: "OfflineAudioContext_start_rendering",
+            argNames: ["that"],
+          );
 
   @override
   Future<AudioBuffer> webAudioApiContextOfflineAudioContextStartRenderingSync({
@@ -19201,11 +19209,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextOfflineAudioContextStartRenderingSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "OfflineAudioContext_start_rendering_sync",
-        argNames: ["that"],
-      );
+      get kWebAudioApiContextOfflineAudioContextStartRenderingSyncConstMeta =>
+          const TaskConstMeta(
+            debugName: "OfflineAudioContext_start_rendering_sync",
+            argNames: ["that"],
+          );
 
   @override
   Future<AudioContextState> webAudioApiContextOfflineAudioContextState({
@@ -19391,7 +19399,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<ChannelInterpretation>
-  webAudioApiNodeOscillatorNodeChannelInterpretation({
+      webAudioApiNodeOscillatorNodeChannelInterpretation({
     required OscillatorNode that,
   }) {
     return handler.executeNormal(
@@ -19421,11 +19429,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeOscillatorNodeChannelInterpretationConstMeta =>
-      const TaskConstMeta(
-        debugName: "OscillatorNode_channel_interpretation",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeOscillatorNodeChannelInterpretationConstMeta =>
+          const TaskConstMeta(
+            debugName: "OscillatorNode_channel_interpretation",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeOscillatorNodeClearOnended({
@@ -19494,11 +19502,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeOscillatorNodeClearOnprocessorerrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "OscillatorNode_clear_onprocessorerror",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeOscillatorNodeClearOnprocessorerrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "OscillatorNode_clear_onprocessorerror",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeOscillatorNodeDisconnect({
@@ -19797,11 +19805,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeOscillatorNodeSetOnProcessorErrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "OscillatorNode_set_on_processor_error",
-        argNames: ["that", "callback"],
-      );
+      get kWebAudioApiNodeOscillatorNodeSetOnProcessorErrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "OscillatorNode_set_on_processor_error",
+            argNames: ["that", "callback"],
+          );
 
   @override
   Future<void> webAudioApiNodeOscillatorNodeSetPeriodicWave({
@@ -21345,15 +21353,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeScriptProcessorNodeChannelCountModeConstMeta =>
-      const TaskConstMeta(
-        debugName: "ScriptProcessorNode_channel_count_mode",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeScriptProcessorNodeChannelCountModeConstMeta =>
+          const TaskConstMeta(
+            debugName: "ScriptProcessorNode_channel_count_mode",
+            argNames: ["that"],
+          );
 
   @override
   Future<ChannelInterpretation>
-  webAudioApiNodeScriptProcessorNodeChannelInterpretation({
+      webAudioApiNodeScriptProcessorNodeChannelInterpretation({
     required ScriptProcessorNode that,
   }) {
     return handler.executeNormal(
@@ -21384,11 +21392,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeScriptProcessorNodeChannelInterpretationConstMeta =>
-      const TaskConstMeta(
-        debugName: "ScriptProcessorNode_channel_interpretation",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeScriptProcessorNodeChannelInterpretationConstMeta =>
+          const TaskConstMeta(
+            debugName: "ScriptProcessorNode_channel_interpretation",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeScriptProcessorNodeClearOnaudioprocess({
@@ -21422,11 +21430,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeScriptProcessorNodeClearOnaudioprocessConstMeta =>
-      const TaskConstMeta(
-        debugName: "ScriptProcessorNode_clear_onaudioprocess",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeScriptProcessorNodeClearOnaudioprocessConstMeta =>
+          const TaskConstMeta(
+            debugName: "ScriptProcessorNode_clear_onaudioprocess",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeScriptProcessorNodeClearOnprocessorerror({
@@ -21460,11 +21468,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeScriptProcessorNodeClearOnprocessorerrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "ScriptProcessorNode_clear_onprocessorerror",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeScriptProcessorNodeClearOnprocessorerrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "ScriptProcessorNode_clear_onprocessorerror",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeScriptProcessorNodeDisconnect({
@@ -21535,11 +21543,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeScriptProcessorNodeDisconnectOutputConstMeta =>
-      const TaskConstMeta(
-        debugName: "ScriptProcessorNode_disconnect_output",
-        argNames: ["that", "output"],
-      );
+      get kWebAudioApiNodeScriptProcessorNodeDisconnectOutputConstMeta =>
+          const TaskConstMeta(
+            debugName: "ScriptProcessorNode_disconnect_output",
+            argNames: ["that", "output"],
+          );
 
   @override
   Future<void> webAudioApiNodeScriptProcessorNodeFrbOverrideConnect({
@@ -21575,12 +21583,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeScriptProcessorNodeFrbOverrideConnectConstMeta =>
-      const TaskConstMeta(
-        debugName:
-            "ScriptProcessorNode_frb_override_connect(dart_style=connect)",
-        argNames: ["that", "dest"],
-      );
+      get kWebAudioApiNodeScriptProcessorNodeFrbOverrideConnectConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "ScriptProcessorNode_frb_override_connect(dart_style=connect)",
+            argNames: ["that", "dest"],
+          );
 
   @override
   Future<void> webAudioApiNodeScriptProcessorNodeFrbOverrideSetOnaudioprocess({
@@ -21619,12 +21627,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeScriptProcessorNodeFrbOverrideSetOnaudioprocessConstMeta =>
-      const TaskConstMeta(
-        debugName:
-            "ScriptProcessorNode_frb_override_set_onaudioprocess(dart_style=set_onaudioprocess)",
-        argNames: ["that", "callback"],
-      );
+      get kWebAudioApiNodeScriptProcessorNodeFrbOverrideSetOnaudioprocessConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "ScriptProcessorNode_frb_override_set_onaudioprocess(dart_style=set_onaudioprocess)",
+            argNames: ["that", "callback"],
+          );
 
   @override
   Future<int> webAudioApiNodeScriptProcessorNodeNumberOfInputs({
@@ -21657,11 +21665,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeScriptProcessorNodeNumberOfInputsConstMeta =>
-      const TaskConstMeta(
-        debugName: "ScriptProcessorNode_number_of_inputs",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeScriptProcessorNodeNumberOfInputsConstMeta =>
+          const TaskConstMeta(
+            debugName: "ScriptProcessorNode_number_of_inputs",
+            argNames: ["that"],
+          );
 
   @override
   Future<int> webAudioApiNodeScriptProcessorNodeNumberOfOutputs({
@@ -21694,11 +21702,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeScriptProcessorNodeNumberOfOutputsConstMeta =>
-      const TaskConstMeta(
-        debugName: "ScriptProcessorNode_number_of_outputs",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeScriptProcessorNodeNumberOfOutputsConstMeta =>
+          const TaskConstMeta(
+            debugName: "ScriptProcessorNode_number_of_outputs",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeScriptProcessorNodeRegistration({
@@ -21773,11 +21781,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeScriptProcessorNodeSetOnProcessorErrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "ScriptProcessorNode_set_on_processor_error",
-        argNames: ["that", "callback"],
-      );
+      get kWebAudioApiNodeScriptProcessorNodeSetOnProcessorErrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "ScriptProcessorNode_set_on_processor_error",
+            argNames: ["that", "callback"],
+          );
 
   @override
   Future<void> webAudioApiNodeStereoPannerNodeChannelConfig({
@@ -21889,7 +21897,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<ChannelInterpretation>
-  webAudioApiNodeStereoPannerNodeChannelInterpretation({
+      webAudioApiNodeStereoPannerNodeChannelInterpretation({
     required StereoPannerNode that,
   }) {
     return handler.executeNormal(
@@ -21920,11 +21928,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeStereoPannerNodeChannelInterpretationConstMeta =>
-      const TaskConstMeta(
-        debugName: "StereoPannerNode_channel_interpretation",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeStereoPannerNodeChannelInterpretationConstMeta =>
+          const TaskConstMeta(
+            debugName: "StereoPannerNode_channel_interpretation",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeStereoPannerNodeClearOnprocessorerror({
@@ -21958,11 +21966,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeStereoPannerNodeClearOnprocessorerrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "StereoPannerNode_clear_onprocessorerror",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeStereoPannerNodeClearOnprocessorerrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "StereoPannerNode_clear_onprocessorerror",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeStereoPannerNodeDisconnect({
@@ -22071,11 +22079,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeStereoPannerNodeFrbOverrideConnectConstMeta =>
-      const TaskConstMeta(
-        debugName: "StereoPannerNode_frb_override_connect(dart_style=connect)",
-        argNames: ["that", "dest"],
-      );
+      get kWebAudioApiNodeStereoPannerNodeFrbOverrideConnectConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "StereoPannerNode_frb_override_connect(dart_style=connect)",
+            argNames: ["that", "dest"],
+          );
 
   @override
   Future<int> webAudioApiNodeStereoPannerNodeNumberOfInputs({
@@ -22221,11 +22230,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeStereoPannerNodeSetOnProcessorErrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "StereoPannerNode_set_on_processor_error",
-        argNames: ["that", "callback"],
-      );
+      get kWebAudioApiNodeStereoPannerNodeSetOnProcessorErrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "StereoPannerNode_set_on_processor_error",
+            argNames: ["that", "callback"],
+          );
 
   @override
   Future<void> webAudioApiNodeWaveShaperNodeChannelConfig({
@@ -22337,7 +22346,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<ChannelInterpretation>
-  webAudioApiNodeWaveShaperNodeChannelInterpretation({
+      webAudioApiNodeWaveShaperNodeChannelInterpretation({
     required WaveShaperNode that,
   }) {
     return handler.executeNormal(
@@ -22367,11 +22376,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeWaveShaperNodeChannelInterpretationConstMeta =>
-      const TaskConstMeta(
-        debugName: "WaveShaperNode_channel_interpretation",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeWaveShaperNodeChannelInterpretationConstMeta =>
+          const TaskConstMeta(
+            debugName: "WaveShaperNode_channel_interpretation",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeWaveShaperNodeClearOnprocessorerror({
@@ -22404,11 +22413,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeWaveShaperNodeClearOnprocessorerrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "WaveShaperNode_clear_onprocessorerror",
-        argNames: ["that"],
-      );
+      get kWebAudioApiNodeWaveShaperNodeClearOnprocessorerrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "WaveShaperNode_clear_onprocessorerror",
+            argNames: ["that"],
+          );
 
   @override
   Future<void> webAudioApiNodeWaveShaperNodeDisconnect({
@@ -22776,11 +22785,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiNodeWaveShaperNodeSetOnProcessorErrorConstMeta =>
-      const TaskConstMeta(
-        debugName: "WaveShaperNode_set_on_processor_error",
-        argNames: ["that", "callback"],
-      );
+      get kWebAudioApiNodeWaveShaperNodeSetOnProcessorErrorConstMeta =>
+          const TaskConstMeta(
+            debugName: "WaveShaperNode_set_on_processor_error",
+            argNames: ["that", "callback"],
+          );
 
   @override
   Future<void> webAudioApiNodeWaveShaperNodeSetOversample({
@@ -22849,7 +22858,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<AudioBufferSourceOptions>
-  webAudioApiNodeAudioBufferSourceOptionsDefault() {
+      webAudioApiNodeAudioBufferSourceOptionsDefault() {
     return handler.executeNormal(
       NormalTask(
         callFfi: (port_) {
@@ -22880,7 +22889,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<AudioContextLatencyCategory>
-  webAudioApiContextAudioContextLatencyCategoryDefault() {
+      webAudioApiContextAudioContextLatencyCategoryDefault() {
     return handler.executeNormal(
       NormalTask(
         callFfi: (port_) {
@@ -22905,11 +22914,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   TaskConstMeta
-  get kWebAudioApiContextAudioContextLatencyCategoryDefaultConstMeta =>
-      const TaskConstMeta(
-        debugName: "audio_context_latency_category_default",
-        argNames: [],
-      );
+      get kWebAudioApiContextAudioContextLatencyCategoryDefaultConstMeta =>
+          const TaskConstMeta(
+            debugName: "audio_context_latency_category_default",
+            argNames: [],
+          );
 
   @override
   Future<AudioContextOptions> webAudioApiContextAudioContextOptionsDefault() {
@@ -22973,7 +22982,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<AudioRenderCapacityOptions>
-  webAudioApiAudioRenderCapacityOptionsDefault() {
+      webAudioApiAudioRenderCapacityOptionsDefault() {
     return handler.executeNormal(
       NormalTask(
         callFfi: (port_) {
@@ -23094,7 +23103,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<ChannelSplitterOptions>
-  webAudioApiNodeChannelSplitterOptionsDefault() {
+      webAudioApiNodeChannelSplitterOptionsDefault() {
     return handler.executeNormal(
       NormalTask(
         callFfi: (port_) {
@@ -23239,7 +23248,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<DynamicsCompressorOptions>
-  webAudioApiNodeDynamicsCompressorOptionsDefault() {
+      webAudioApiNodeDynamicsCompressorOptionsDefault() {
     return handler.executeNormal(
       NormalTask(
         callFfi: (port_) {
@@ -23622,14 +23631,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   Future<void> Function(int, dynamic)
-  encode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent_Output_unit_AnyhowException(
+      encode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent_Output_unit_AnyhowException(
     FutureOr<void> Function(AudioProcessingEvent) raw,
   ) {
     return (callId, rawArg0) async {
       final arg0 =
           dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
-            rawArg0,
-          );
+        rawArg0,
+      );
 
       Box<void>? rawOutput;
       Box<AnyhowException>? rawError;
@@ -23660,14 +23669,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   Future<void> Function(int, dynamic)
-  encode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent_Output_unit_AnyhowException(
+      encode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent_Output_unit_AnyhowException(
     FutureOr<void> Function(Event) raw,
   ) {
     return (callId, rawArg0) async {
       final arg0 =
           dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
-            rawArg0,
-          );
+        rawArg0,
+      );
 
       Box<void>? rawOutput;
       Box<AnyhowException>? rawError;
@@ -23698,14 +23707,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   Future<void> Function(int, dynamic)
-  encode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent_Output_unit_AnyhowException(
+      encode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent_Output_unit_AnyhowException(
     FutureOr<void> Function(OfflineAudioCompletionEvent) raw,
   ) {
     return (callId, rawArg0) async {
       final arg0 =
           dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
-            rawArg0,
-          );
+        rawArg0,
+      );
 
       Box<void>? rawOutput;
       Box<AnyhowException>? rawError;
@@ -23736,7 +23745,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   Future<void> Function(int, dynamic)
-  encode_DartFn_Inputs_String_Output_unit_AnyhowException(
+      encode_DartFn_Inputs_String_Output_unit_AnyhowException(
     FutureOr<void> Function(String) raw,
   ) {
     return (callId, rawArg0) async {
@@ -23771,356 +23780,354 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AnalyserNode => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode;
+      get rust_arc_increment_strong_count_AnalyserNode => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AnalyserNode => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode;
+      get rust_arc_decrement_strong_count_AnalyserNode => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AudioBuffer => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer;
+      get rust_arc_increment_strong_count_AudioBuffer => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AudioBuffer => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer;
+      get rust_arc_decrement_strong_count_AudioBuffer => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AudioBufferSourceNode => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode;
+      get rust_arc_increment_strong_count_AudioBufferSourceNode => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AudioBufferSourceNode => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode;
+      get rust_arc_decrement_strong_count_AudioBufferSourceNode => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AudioContext => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext;
+      get rust_arc_increment_strong_count_AudioContext => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AudioContext => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext;
+      get rust_arc_decrement_strong_count_AudioContext => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AudioContextRegistration => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistration;
+      get rust_arc_increment_strong_count_AudioContextRegistration => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistration;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AudioContextRegistration => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistration;
+      get rust_arc_decrement_strong_count_AudioContextRegistration => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistration;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AudioDestinationNode => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode;
+      get rust_arc_increment_strong_count_AudioDestinationNode => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AudioDestinationNode => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode;
+      get rust_arc_decrement_strong_count_AudioDestinationNode => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AudioListener => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener;
+      get rust_arc_increment_strong_count_AudioListener => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AudioListener => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener;
+      get rust_arc_decrement_strong_count_AudioListener => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AudioParam => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam;
+      get rust_arc_increment_strong_count_AudioParam => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AudioParam => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam;
+      get rust_arc_decrement_strong_count_AudioParam => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AudioParamId => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamId;
+      get rust_arc_increment_strong_count_AudioParamId => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamId;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AudioParamId => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamId;
+      get rust_arc_decrement_strong_count_AudioParamId => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamId;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AudioProcessingEvent => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent;
+      get rust_arc_increment_strong_count_AudioProcessingEvent => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AudioProcessingEvent => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent;
+      get rust_arc_decrement_strong_count_AudioProcessingEvent => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AudioRenderCapacity => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity;
+      get rust_arc_increment_strong_count_AudioRenderCapacity => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AudioRenderCapacity => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity;
+      get rust_arc_decrement_strong_count_AudioRenderCapacity => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AudioRenderCapacityEvent => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent;
+      get rust_arc_increment_strong_count_AudioRenderCapacityEvent => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AudioRenderCapacityEvent => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent;
+      get rust_arc_decrement_strong_count_AudioRenderCapacityEvent => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AudioWorkletNode => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode;
+      get rust_arc_increment_strong_count_AudioWorkletNode => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AudioWorkletNode => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode;
+      get rust_arc_decrement_strong_count_AudioWorkletNode => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_BiquadFilterNode => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode;
+      get rust_arc_increment_strong_count_BiquadFilterNode => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_BiquadFilterNode => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode;
+      get rust_arc_decrement_strong_count_BiquadFilterNode => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_BlobEvent => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent;
+      get rust_arc_increment_strong_count_BlobEvent => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_BlobEvent => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent;
+      get rust_arc_decrement_strong_count_BlobEvent => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_ChannelConfig => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfig;
+      get rust_arc_increment_strong_count_ChannelConfig => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfig;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_ChannelConfig => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfig;
+      get rust_arc_decrement_strong_count_ChannelConfig => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfig;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_ChannelMergerNode => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode;
+      get rust_arc_increment_strong_count_ChannelMergerNode => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_ChannelMergerNode => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode;
+      get rust_arc_decrement_strong_count_ChannelMergerNode => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_ChannelSplitterNode => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode;
+      get rust_arc_increment_strong_count_ChannelSplitterNode => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_ChannelSplitterNode => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode;
+      get rust_arc_decrement_strong_count_ChannelSplitterNode => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_ConcreteBaseAudioContext => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext;
+      get rust_arc_increment_strong_count_ConcreteBaseAudioContext => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_ConcreteBaseAudioContext => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext;
+      get rust_arc_decrement_strong_count_ConcreteBaseAudioContext => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_ConstantSourceNode => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode;
+      get rust_arc_increment_strong_count_ConstantSourceNode => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_ConstantSourceNode => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode;
+      get rust_arc_decrement_strong_count_ConstantSourceNode => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_ConvolverNode => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode;
+      get rust_arc_increment_strong_count_ConvolverNode => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_ConvolverNode => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode;
+      get rust_arc_decrement_strong_count_ConvolverNode => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_DelayNode => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode;
+      get rust_arc_increment_strong_count_DelayNode => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_DelayNode => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode;
+      get rust_arc_decrement_strong_count_DelayNode => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_DummyStruct => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStruct;
+      get rust_arc_increment_strong_count_DummyStruct => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStruct;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_DummyStruct => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStruct;
+      get rust_arc_decrement_strong_count_DummyStruct => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStruct;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_DynamicsCompressorNode => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode;
+      get rust_arc_increment_strong_count_DynamicsCompressorNode => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_DynamicsCompressorNode => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode;
+      get rust_arc_decrement_strong_count_DynamicsCompressorNode => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode;
+
+  RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_Event =>
+      wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent;
+
+  RustArcDecrementStrongCountFnType get rust_arc_decrement_strong_count_Event =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_Event => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent;
+      get rust_arc_increment_strong_count_GainNode => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_Event => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent;
+      get rust_arc_decrement_strong_count_GainNode => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_GainNode => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode;
+      get rust_arc_increment_strong_count_IirFilterNode => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_GainNode => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode;
+      get rust_arc_decrement_strong_count_IirFilterNode => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_IirFilterNode => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode;
+      get rust_arc_increment_strong_count_MediaElementAudioSourceNode => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_IirFilterNode => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode;
+      get rust_arc_decrement_strong_count_MediaElementAudioSourceNode => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_MediaElementAudioSourceNode => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode;
+      get rust_arc_increment_strong_count_MediaRecorder => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_MediaElementAudioSourceNode => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode;
+      get rust_arc_decrement_strong_count_MediaRecorder => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_MediaRecorder => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder;
+      get rust_arc_increment_strong_count_MediaStream => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_MediaRecorder => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder;
+      get rust_arc_decrement_strong_count_MediaStream => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_MediaStream => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream;
+      get rust_arc_increment_strong_count_MediaStreamAudioDestinationNode => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_MediaStream => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream;
+      get rust_arc_decrement_strong_count_MediaStreamAudioDestinationNode => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_MediaStreamAudioDestinationNode => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode;
+      get rust_arc_increment_strong_count_MediaStreamAudioSourceNode => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_MediaStreamAudioDestinationNode => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode;
+      get rust_arc_decrement_strong_count_MediaStreamAudioSourceNode => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_MediaStreamAudioSourceNode => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode;
+      get rust_arc_increment_strong_count_MediaStreamConstraints => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_MediaStreamAudioSourceNode => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode;
+      get rust_arc_decrement_strong_count_MediaStreamConstraints => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_MediaStreamConstraints => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints;
+      get rust_arc_increment_strong_count_MediaStreamTrack => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_MediaStreamConstraints => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints;
+      get rust_arc_decrement_strong_count_MediaStreamTrack => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_MediaStreamTrack => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack;
+      get rust_arc_increment_strong_count_MediaStreamTrackAudioSourceNode => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_MediaStreamTrack => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack;
+      get rust_arc_decrement_strong_count_MediaStreamTrackAudioSourceNode => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_MediaStreamTrackAudioSourceNode => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode;
+      get rust_arc_increment_strong_count_MediaElement => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_MediaStreamTrackAudioSourceNode => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode;
+      get rust_arc_decrement_strong_count_MediaElement => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_MediaElement => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement;
+      get rust_arc_increment_strong_count_OfflineAudioCompletionEvent => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_MediaElement => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement;
+      get rust_arc_decrement_strong_count_OfflineAudioCompletionEvent => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_OfflineAudioCompletionEvent => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent;
+      get rust_arc_increment_strong_count_OfflineAudioContext => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_OfflineAudioCompletionEvent => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent;
+      get rust_arc_decrement_strong_count_OfflineAudioContext => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_OfflineAudioContext => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext;
+      get rust_arc_increment_strong_count_OscillatorNode => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_OfflineAudioContext => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext;
+      get rust_arc_decrement_strong_count_OscillatorNode => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_OscillatorNode => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode;
+      get rust_arc_increment_strong_count_PannerNode => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_OscillatorNode => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode;
+      get rust_arc_decrement_strong_count_PannerNode => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_PannerNode => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode;
+      get rust_arc_increment_strong_count_PeriodicWave => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_PannerNode => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode;
+      get rust_arc_decrement_strong_count_PeriodicWave => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_PeriodicWave => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave;
+      get rust_arc_increment_strong_count_ScriptProcessorNode => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_PeriodicWave => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave;
+      get rust_arc_decrement_strong_count_ScriptProcessorNode => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_ScriptProcessorNode => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode;
+      get rust_arc_increment_strong_count_StereoPannerNode => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_ScriptProcessorNode => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode;
+      get rust_arc_decrement_strong_count_StereoPannerNode => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_StereoPannerNode => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode;
+      get rust_arc_increment_strong_count_WaveShaperNode => wire
+          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_StereoPannerNode => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode;
-
-  RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_WaveShaperNode => wire
-      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode;
-
-  RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_WaveShaperNode => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode;
+      get rust_arc_decrement_strong_count_WaveShaperNode => wire
+          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode;
 
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw) {
@@ -24130,7 +24137,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AnalyserNode
-  dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24141,7 +24148,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioBufferSourceNode
-  dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24152,7 +24159,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioDestinationNode
-  dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24163,7 +24170,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioListener
-  dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24174,7 +24181,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24185,7 +24192,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioWorkletNode
-  dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24196,7 +24203,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   BiquadFilterNode
-  dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24207,7 +24214,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ChannelMergerNode
-  dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24218,7 +24225,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ChannelSplitterNode
-  dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24229,7 +24236,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ConstantSourceNode
-  dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24240,7 +24247,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ConvolverNode
-  dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24251,7 +24258,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   DelayNode
-  dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24262,7 +24269,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   DynamicsCompressorNode
-  dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24273,7 +24280,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   GainNode
-  dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24284,7 +24291,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   IirFilterNode
-  dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24295,7 +24302,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaElementAudioSourceNode
-  dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24306,7 +24313,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamAudioDestinationNode
-  dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24317,7 +24324,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamAudioSourceNode
-  dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24328,7 +24335,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamTrackAudioSourceNode
-  dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24339,7 +24346,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   OscillatorNode
-  dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24350,7 +24357,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PannerNode
-  dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24361,7 +24368,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ScriptProcessorNode
-  dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24372,7 +24379,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   StereoPannerNode
-  dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24383,7 +24390,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   WaveShaperNode
-  dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
+      dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24394,7 +24401,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AnalyserNode
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24403,7 +24410,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioBuffer
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24412,7 +24419,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioBufferSourceNode
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24421,7 +24428,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioContext
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24430,7 +24437,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioDestinationNode
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24439,7 +24446,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioListener
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24448,7 +24455,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24457,7 +24464,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParamId
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamId(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamId(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24466,7 +24473,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioProcessingEvent
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24475,7 +24482,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioRenderCapacity
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24484,7 +24491,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioRenderCapacityEvent
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24495,7 +24502,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioWorkletNode
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24504,7 +24511,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   BiquadFilterNode
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24513,7 +24520,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   BlobEvent
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24522,7 +24529,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ChannelConfig
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfig(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfig(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24531,7 +24538,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ChannelMergerNode
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24540,7 +24547,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ChannelSplitterNode
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24549,7 +24556,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ConcreteBaseAudioContext
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24560,7 +24567,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ConstantSourceNode
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24569,7 +24576,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ConvolverNode
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24578,7 +24585,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   DelayNode
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24587,7 +24594,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   DummyStruct
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStruct(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStruct(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24596,7 +24603,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   DynamicsCompressorNode
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24607,7 +24614,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Event
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24616,7 +24623,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   GainNode
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24625,7 +24632,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   IirFilterNode
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24634,7 +24641,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaElementAudioSourceNode
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24645,7 +24652,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaRecorder
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24654,7 +24661,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStream
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24663,7 +24670,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamAudioDestinationNode
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24674,7 +24681,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamAudioSourceNode
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24685,7 +24692,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamConstraints
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24696,7 +24703,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamTrack
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24705,7 +24712,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamTrackAudioSourceNode
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24716,7 +24723,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaElement
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24725,7 +24732,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   OfflineAudioCompletionEvent
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24736,7 +24743,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   OfflineAudioContext
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24745,7 +24752,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   OscillatorNode
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24754,7 +24761,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PannerNode
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24763,7 +24770,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PeriodicWave
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24772,7 +24779,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ScriptProcessorNode
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24781,7 +24788,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   StereoPannerNode
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24790,7 +24797,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   WaveShaperNode
-  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
+      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24799,7 +24806,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AnalyserNode
-  dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24808,7 +24815,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioBuffer
-  dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24817,7 +24824,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioBufferSourceNode
-  dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24826,7 +24833,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioProcessingEvent
-  dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24835,7 +24842,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioRenderCapacityEvent
-  dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24846,7 +24853,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   BiquadFilterNode
-  dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24855,7 +24862,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   BlobEvent
-  dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24864,7 +24871,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ConstantSourceNode
-  dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24873,7 +24880,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ConvolverNode
-  dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24882,7 +24889,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaElement
-  dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24891,7 +24898,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   OfflineAudioCompletionEvent
-  dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24902,7 +24909,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   OfflineAudioContext
-  dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24911,7 +24918,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   OscillatorNode
-  dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24920,7 +24927,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PannerNode
-  dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24929,7 +24936,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   WaveShaperNode
-  dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
+      dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24938,7 +24945,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AnalyserNode
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24947,7 +24954,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioBuffer
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24956,7 +24963,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioBufferSourceNode
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24965,7 +24972,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioContext
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24974,7 +24981,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioContextRegistration
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistration(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistration(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24985,7 +24992,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioDestinationNode
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -24994,7 +25001,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioListener
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25003,7 +25010,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25012,7 +25019,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioProcessingEvent
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25021,7 +25028,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioRenderCapacity
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25030,7 +25037,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioRenderCapacityEvent
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25041,7 +25048,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioWorkletNode
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25050,7 +25057,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   BiquadFilterNode
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25059,7 +25066,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   BlobEvent
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25068,7 +25075,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ChannelMergerNode
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25077,7 +25084,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ChannelSplitterNode
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25086,7 +25093,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ConcreteBaseAudioContext
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25097,7 +25104,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ConstantSourceNode
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25106,7 +25113,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ConvolverNode
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25115,7 +25122,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   DelayNode
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25124,7 +25131,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   DynamicsCompressorNode
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25135,7 +25142,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Event
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25144,7 +25151,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   GainNode
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25153,7 +25160,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   IirFilterNode
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25162,7 +25169,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaElementAudioSourceNode
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25173,7 +25180,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaRecorder
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25182,7 +25189,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStream
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25191,7 +25198,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamAudioDestinationNode
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25202,7 +25209,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamAudioSourceNode
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25213,7 +25220,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamTrack
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25222,7 +25229,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamTrackAudioSourceNode
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25233,7 +25240,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaElement
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25242,7 +25249,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   OfflineAudioCompletionEvent
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25253,7 +25260,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   OfflineAudioContext
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25262,7 +25269,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   OscillatorNode
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25271,7 +25278,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PannerNode
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25280,7 +25287,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ScriptProcessorNode
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25289,7 +25296,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   StereoPannerNode
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25298,7 +25305,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   WaveShaperNode
-  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
+      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25315,7 +25322,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   FutureOr<void> Function(AudioProcessingEvent)
-  dco_decode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent_Output_unit_AnyhowException(
+      dco_decode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent_Output_unit_AnyhowException(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25324,7 +25331,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   FutureOr<void> Function(Event)
-  dco_decode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent_Output_unit_AnyhowException(
+      dco_decode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent_Output_unit_AnyhowException(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25333,7 +25340,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   FutureOr<void> Function(OfflineAudioCompletionEvent)
-  dco_decode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent_Output_unit_AnyhowException(
+      dco_decode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent_Output_unit_AnyhowException(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25342,7 +25349,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   FutureOr<void> Function(String)
-  dco_decode_DartFn_Inputs_String_Output_unit_AnyhowException(dynamic raw) {
+      dco_decode_DartFn_Inputs_String_Output_unit_AnyhowException(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError('');
   }
@@ -25361,7 +25368,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyEnum_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
+      dco_decode_ProxyEnum_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25372,7 +25379,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStream
-  dco_decode_ProxyEnum_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_media_stream_proxy_enum(
+      dco_decode_ProxyEnum_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_media_stream_proxy_enum(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25383,7 +25390,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode_detune(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode_detune(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25394,7 +25401,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode_playback_rate(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode_playback_rate(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25405,7 +25412,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_forward_x(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_forward_x(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25416,7 +25423,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_forward_y(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_forward_y(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25427,7 +25434,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_forward_z(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_forward_z(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25438,7 +25445,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_position_x(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_position_x(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25449,7 +25456,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_position_y(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_position_y(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25460,7 +25467,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_position_z(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_position_z(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25471,7 +25478,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_up_x(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_up_x(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25482,7 +25489,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_up_y(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_up_y(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25493,7 +25500,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_up_z(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_up_z(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25504,7 +25511,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_detune(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_detune(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25515,7 +25522,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_frequency(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_frequency(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25526,7 +25533,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_gain(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_gain(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25537,7 +25544,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_q(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_q(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25548,7 +25555,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode_offset(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode_offset(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25559,7 +25566,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode_delay_time(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode_delay_time(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25570,7 +25577,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_attack(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_attack(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25581,7 +25588,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_knee(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_knee(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25592,7 +25599,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_ratio(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_ratio(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25603,7 +25610,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_release(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_release(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25614,7 +25621,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_threshold(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_threshold(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25625,7 +25632,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode_gain(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode_gain(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25636,7 +25643,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStream
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode_stream(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode_stream(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25647,7 +25654,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode_detune(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode_detune(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25658,7 +25665,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode_frequency(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode_frequency(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25669,7 +25676,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_orientation_x(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_orientation_x(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25680,7 +25687,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_orientation_y(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_orientation_y(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25691,7 +25698,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_orientation_z(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_orientation_z(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25702,7 +25709,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_position_x(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_position_x(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25713,7 +25720,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_position_y(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_position_y(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25724,7 +25731,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_position_z(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_position_z(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25735,7 +25742,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode_pan(
+      dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode_pan(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25746,7 +25753,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AnalyserNode
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25755,7 +25762,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioBuffer
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25764,7 +25771,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioBufferSourceNode
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25773,7 +25780,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioContext
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25782,7 +25789,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioContextRegistration
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistration(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistration(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25793,7 +25800,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioDestinationNode
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25802,7 +25809,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioListener
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25811,7 +25818,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25820,7 +25827,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParamId
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamId(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamId(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25829,7 +25836,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioProcessingEvent
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25838,7 +25845,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioRenderCapacity
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25847,7 +25854,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioRenderCapacityEvent
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25858,7 +25865,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioWorkletNode
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25867,7 +25874,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   BiquadFilterNode
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25876,7 +25883,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   BlobEvent
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25885,7 +25892,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ChannelConfig
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfig(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfig(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25894,7 +25901,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ChannelMergerNode
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25903,7 +25910,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ChannelSplitterNode
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25912,7 +25919,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ConcreteBaseAudioContext
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25923,7 +25930,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ConstantSourceNode
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25932,7 +25939,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ConvolverNode
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25941,7 +25948,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   DelayNode
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25950,7 +25957,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   DummyStruct
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStruct(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStruct(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25959,7 +25966,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   DynamicsCompressorNode
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25970,7 +25977,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Event
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25979,7 +25986,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   GainNode
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25988,7 +25995,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   IirFilterNode
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -25997,7 +26004,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaElementAudioSourceNode
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -26008,7 +26015,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaRecorder
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -26017,7 +26024,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStream
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -26026,7 +26033,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamAudioDestinationNode
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -26037,7 +26044,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamAudioSourceNode
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -26048,7 +26055,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamConstraints
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -26059,7 +26066,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamTrack
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -26068,7 +26075,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamTrackAudioSourceNode
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -26079,7 +26086,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaElement
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -26088,7 +26095,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   OfflineAudioCompletionEvent
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -26099,7 +26106,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   OfflineAudioContext
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -26108,7 +26115,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   OscillatorNode
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -26117,7 +26124,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PannerNode
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -26126,7 +26133,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PeriodicWave
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -26135,7 +26142,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ScriptProcessorNode
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -26144,7 +26151,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   StereoPannerNode
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -26153,7 +26160,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   WaveShaperNode
-  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
+      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -26196,7 +26203,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioBufferSourceNodeScheduledSourceNodeMiscExt
-  dco_decode_TraitDef_AudioBufferSourceNodeScheduledSourceNodeMiscExt(
+      dco_decode_TraitDef_AudioBufferSourceNodeScheduledSourceNodeMiscExt(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -26277,7 +26284,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ConstantSourceNodeScheduledSourceNodeMiscExt
-  dco_decode_TraitDef_ConstantSourceNodeScheduledSourceNodeMiscExt(
+      dco_decode_TraitDef_ConstantSourceNodeScheduledSourceNodeMiscExt(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -26324,21 +26331,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaElementAudioSourceNodeExt
-  dco_decode_TraitDef_MediaElementAudioSourceNodeExt(dynamic raw) {
+      dco_decode_TraitDef_MediaElementAudioSourceNodeExt(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
 
   @protected
   MediaStreamAudioDestinationNodeExt
-  dco_decode_TraitDef_MediaStreamAudioDestinationNodeExt(dynamic raw) {
+      dco_decode_TraitDef_MediaStreamAudioDestinationNodeExt(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
 
   @protected
   MediaStreamAudioSourceNodeExt
-  dco_decode_TraitDef_MediaStreamAudioSourceNodeExt(dynamic raw) {
+      dco_decode_TraitDef_MediaStreamAudioSourceNodeExt(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
@@ -26351,7 +26358,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamTrackAudioSourceNodeExt
-  dco_decode_TraitDef_MediaStreamTrackAudioSourceNodeExt(dynamic raw) {
+      dco_decode_TraitDef_MediaStreamTrackAudioSourceNodeExt(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
@@ -26372,7 +26379,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   OscillatorNodeScheduledSourceNodeMiscExt
-  dco_decode_TraitDef_OscillatorNodeScheduledSourceNodeMiscExt(dynamic raw) {
+      dco_decode_TraitDef_OscillatorNodeScheduledSourceNodeMiscExt(
+          dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError();
   }
@@ -26454,8 +26462,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return AudioBufferSourceOptions(
       buffer:
           dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
-            arr[0],
-          ),
+        arr[0],
+      ),
       detune: dco_decode_f_32(arr[1]),
       loop: dco_decode_bool(arr[2]),
       loopStart: dco_decode_f_64(arr[3]),
@@ -26699,7 +26707,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
-  dco_decode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
+      dco_decode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -26903,7 +26911,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum
-  dco_decode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_media_stream_proxy_enum(
+      dco_decode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_media_stream_proxy_enum(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -26955,7 +26963,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioBuffer
-  dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
+      dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -26966,7 +26974,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PeriodicWave
-  dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
+      dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -27007,14 +27015,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioRenderCapacityOptions
-  dco_decode_box_autoadd_audio_render_capacity_options(dynamic raw) {
+      dco_decode_box_autoadd_audio_render_capacity_options(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_audio_render_capacity_options(raw);
   }
 
   @protected
   Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
-  dco_decode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
+      dco_decode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -27025,7 +27033,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum
-  dco_decode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_media_stream_proxy_enum(
+      dco_decode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_media_stream_proxy_enum(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -27102,8 +27110,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return ConvolverOptions(
       buffer:
           dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
-            arr[0],
-          ),
+        arr[0],
+      ),
       disableNormalization: dco_decode_bool(arr[1]),
       audioNodeOptions: dco_decode_audio_node_options(arr[2]),
     );
@@ -27184,7 +27192,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   List<MediaStreamTrack>
-  dco_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
+      dco_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -27251,7 +27259,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioBuffer?
-  dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
+      dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -27264,7 +27272,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PeriodicWave?
-  dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
+      dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -27299,8 +27307,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       detune: dco_decode_f_32(arr[2]),
       periodicWave:
           dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
-            arr[3],
-          ),
+        arr[3],
+      ),
       audioNodeOptions: dco_decode_audio_node_options(arr[4]),
     );
   }
@@ -27362,8 +27370,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  (AudioParam, AudioParamId)
-  dco_decode_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_id(
+  (
+    AudioParam,
+    AudioParamId
+  ) dco_decode_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_id(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -27433,319 +27443,319 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AnalyserNode
-  sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
         sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
-          deserializer,
-        );
+      deserializer,
+    );
     return inner;
   }
 
   @protected
   AudioBufferSourceNode
-  sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
         sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
-          deserializer,
-        );
+      deserializer,
+    );
     return inner;
   }
 
   @protected
   AudioDestinationNode
-  sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
         sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
-          deserializer,
-        );
+      deserializer,
+    );
     return inner;
   }
 
   @protected
   AudioListener
-  sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
         sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-          deserializer,
-        );
+      deserializer,
+    );
     return inner;
   }
 
   @protected
   AudioParam
-  sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
         sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
-          deserializer,
-        );
+      deserializer,
+    );
     return inner;
   }
 
   @protected
   AudioWorkletNode
-  sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
         sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
-          deserializer,
-        );
+      deserializer,
+    );
     return inner;
   }
 
   @protected
   BiquadFilterNode
-  sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
         sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
-          deserializer,
-        );
+      deserializer,
+    );
     return inner;
   }
 
   @protected
   ChannelMergerNode
-  sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
         sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
-          deserializer,
-        );
+      deserializer,
+    );
     return inner;
   }
 
   @protected
   ChannelSplitterNode
-  sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
         sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
-          deserializer,
-        );
+      deserializer,
+    );
     return inner;
   }
 
   @protected
   ConstantSourceNode
-  sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
         sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
-          deserializer,
-        );
+      deserializer,
+    );
     return inner;
   }
 
   @protected
   ConvolverNode
-  sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
         sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
-          deserializer,
-        );
+      deserializer,
+    );
     return inner;
   }
 
   @protected
   DelayNode
-  sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
         sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
-          deserializer,
-        );
+      deserializer,
+    );
     return inner;
   }
 
   @protected
   DynamicsCompressorNode
-  sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
         sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
-          deserializer,
-        );
+      deserializer,
+    );
     return inner;
   }
 
   @protected
   GainNode
-  sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
         sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
-          deserializer,
-        );
+      deserializer,
+    );
     return inner;
   }
 
   @protected
   IirFilterNode
-  sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
         sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
-          deserializer,
-        );
+      deserializer,
+    );
     return inner;
   }
 
   @protected
   MediaElementAudioSourceNode
-  sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
         sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
-          deserializer,
-        );
+      deserializer,
+    );
     return inner;
   }
 
   @protected
   MediaStreamAudioDestinationNode
-  sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
         sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
-          deserializer,
-        );
+      deserializer,
+    );
     return inner;
   }
 
   @protected
   MediaStreamAudioSourceNode
-  sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
         sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
-          deserializer,
-        );
+      deserializer,
+    );
     return inner;
   }
 
   @protected
   MediaStreamTrackAudioSourceNode
-  sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
         sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
-          deserializer,
-        );
+      deserializer,
+    );
     return inner;
   }
 
   @protected
   OscillatorNode
-  sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
         sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
-          deserializer,
-        );
+      deserializer,
+    );
     return inner;
   }
 
   @protected
   PannerNode
-  sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
         sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
-          deserializer,
-        );
+      deserializer,
+    );
     return inner;
   }
 
   @protected
   ScriptProcessorNode
-  sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
         sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
-          deserializer,
-        );
+      deserializer,
+    );
     return inner;
   }
 
   @protected
   StereoPannerNode
-  sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
         sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
-          deserializer,
-        );
+      deserializer,
+    );
     return inner;
   }
 
   @protected
   WaveShaperNode
-  sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
+      sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner =
         sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
-          deserializer,
-        );
+      deserializer,
+    );
     return inner;
   }
 
   @protected
   AnalyserNode
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -27757,7 +27767,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioBuffer
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -27769,7 +27779,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioBufferSourceNode
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -27781,7 +27791,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioContext
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -27793,7 +27803,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioDestinationNode
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -27805,7 +27815,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioListener
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -27817,7 +27827,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -27829,7 +27839,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParamId
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamId(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamId(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -27841,7 +27851,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioProcessingEvent
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -27853,7 +27863,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioRenderCapacity
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -27865,7 +27875,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioRenderCapacityEvent
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -27877,7 +27887,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioWorkletNode
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -27889,7 +27899,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   BiquadFilterNode
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -27901,7 +27911,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   BlobEvent
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -27913,7 +27923,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ChannelConfig
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfig(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfig(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -27925,7 +27935,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ChannelMergerNode
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -27937,7 +27947,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ChannelSplitterNode
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -27949,7 +27959,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ConcreteBaseAudioContext
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -27961,7 +27971,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ConstantSourceNode
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -27973,7 +27983,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ConvolverNode
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -27985,7 +27995,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   DelayNode
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -27997,7 +28007,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   DummyStruct
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStruct(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStruct(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28009,7 +28019,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   DynamicsCompressorNode
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28021,7 +28031,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Event
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28033,7 +28043,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   GainNode
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28045,7 +28055,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   IirFilterNode
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28057,7 +28067,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaElementAudioSourceNode
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28069,7 +28079,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaRecorder
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28081,7 +28091,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStream
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28093,7 +28103,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamAudioDestinationNode
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28105,7 +28115,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamAudioSourceNode
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28117,7 +28127,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamConstraints
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28129,7 +28139,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamTrack
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28141,7 +28151,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamTrackAudioSourceNode
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28153,7 +28163,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaElement
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28165,7 +28175,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   OfflineAudioCompletionEvent
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28177,7 +28187,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   OfflineAudioContext
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28189,7 +28199,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   OscillatorNode
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28201,7 +28211,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PannerNode
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28213,7 +28223,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PeriodicWave
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28225,7 +28235,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ScriptProcessorNode
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28237,7 +28247,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   StereoPannerNode
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28249,7 +28259,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   WaveShaperNode
-  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
+      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28261,7 +28271,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AnalyserNode
-  sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28273,7 +28283,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioBuffer
-  sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28285,7 +28295,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioBufferSourceNode
-  sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28297,7 +28307,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioProcessingEvent
-  sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28309,7 +28319,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioRenderCapacityEvent
-  sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28321,7 +28331,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   BiquadFilterNode
-  sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28333,7 +28343,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   BlobEvent
-  sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28345,7 +28355,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ConstantSourceNode
-  sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28357,7 +28367,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ConvolverNode
-  sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28369,7 +28379,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaElement
-  sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28381,7 +28391,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   OfflineAudioCompletionEvent
-  sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28393,7 +28403,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   OfflineAudioContext
-  sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28405,7 +28415,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   OscillatorNode
-  sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28417,7 +28427,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PannerNode
-  sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28429,7 +28439,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   WaveShaperNode
-  sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
+      sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28441,7 +28451,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AnalyserNode
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28453,7 +28463,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioBuffer
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28465,7 +28475,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioBufferSourceNode
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28477,7 +28487,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioContext
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28489,7 +28499,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioContextRegistration
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistration(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistration(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28501,7 +28511,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioDestinationNode
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28513,7 +28523,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioListener
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28525,7 +28535,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28537,7 +28547,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioProcessingEvent
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28549,7 +28559,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioRenderCapacity
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28561,7 +28571,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioRenderCapacityEvent
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28573,7 +28583,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioWorkletNode
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28585,7 +28595,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   BiquadFilterNode
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28597,7 +28607,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   BlobEvent
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28609,7 +28619,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ChannelMergerNode
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28621,7 +28631,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ChannelSplitterNode
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28633,7 +28643,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ConcreteBaseAudioContext
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28645,7 +28655,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ConstantSourceNode
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28657,7 +28667,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ConvolverNode
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28669,7 +28679,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   DelayNode
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28681,7 +28691,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   DynamicsCompressorNode
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28693,7 +28703,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Event
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28705,7 +28715,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   GainNode
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28717,7 +28727,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   IirFilterNode
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28729,7 +28739,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaElementAudioSourceNode
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28741,7 +28751,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaRecorder
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28753,7 +28763,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStream
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28765,7 +28775,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamAudioDestinationNode
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28777,7 +28787,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamAudioSourceNode
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28789,7 +28799,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamTrack
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28801,7 +28811,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamTrackAudioSourceNode
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28813,7 +28823,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaElement
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28825,7 +28835,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   OfflineAudioCompletionEvent
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28837,7 +28847,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   OfflineAudioContext
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28849,7 +28859,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   OscillatorNode
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28861,7 +28871,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PannerNode
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28873,7 +28883,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ScriptProcessorNode
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28885,7 +28895,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   StereoPannerNode
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28897,7 +28907,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   WaveShaperNode
-  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
+      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28929,7 +28939,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyEnum_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
+      sse_decode_ProxyEnum_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28938,7 +28948,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStream
-  sse_decode_ProxyEnum_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_media_stream_proxy_enum(
+      sse_decode_ProxyEnum_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_media_stream_proxy_enum(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28947,7 +28957,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode_detune(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode_detune(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28956,7 +28966,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode_playback_rate(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode_playback_rate(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28965,7 +28975,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_forward_x(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_forward_x(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28974,7 +28984,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_forward_y(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_forward_y(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28983,7 +28993,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_forward_z(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_forward_z(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -28992,7 +29002,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_position_x(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_position_x(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29001,7 +29011,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_position_y(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_position_y(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29010,7 +29020,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_position_z(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_position_z(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29019,7 +29029,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_up_x(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_up_x(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29028,7 +29038,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_up_y(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_up_y(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29037,7 +29047,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_up_z(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_up_z(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29046,7 +29056,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_detune(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_detune(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29055,7 +29065,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_frequency(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_frequency(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29064,7 +29074,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_gain(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_gain(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29073,7 +29083,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_q(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_q(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29082,7 +29092,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode_offset(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode_offset(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29091,7 +29101,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode_delay_time(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode_delay_time(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29100,7 +29110,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_attack(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_attack(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29109,7 +29119,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_knee(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_knee(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29118,7 +29128,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_ratio(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_ratio(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29127,7 +29137,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_release(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_release(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29136,7 +29146,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_threshold(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_threshold(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29145,7 +29155,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode_gain(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode_gain(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29154,7 +29164,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStream
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode_stream(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode_stream(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29163,7 +29173,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode_detune(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode_detune(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29172,7 +29182,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode_frequency(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode_frequency(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29181,7 +29191,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_orientation_x(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_orientation_x(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29190,7 +29200,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_orientation_y(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_orientation_y(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29199,7 +29209,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_orientation_z(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_orientation_z(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29208,7 +29218,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_position_x(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_position_x(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29217,7 +29227,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_position_y(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_position_y(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29226,7 +29236,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_position_z(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_position_z(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29235,7 +29245,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode_pan(
+      sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode_pan(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29244,7 +29254,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AnalyserNode
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29256,7 +29266,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioBuffer
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29268,7 +29278,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioBufferSourceNode
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29280,7 +29290,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioContext
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29292,7 +29302,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioContextRegistration
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistration(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistration(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29304,7 +29314,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioDestinationNode
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29316,7 +29326,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioListener
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29328,7 +29338,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParam
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29340,7 +29350,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioParamId
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamId(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamId(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29352,7 +29362,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioProcessingEvent
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29364,7 +29374,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioRenderCapacity
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29376,7 +29386,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioRenderCapacityEvent
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29388,7 +29398,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioWorkletNode
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29400,7 +29410,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   BiquadFilterNode
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29412,7 +29422,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   BlobEvent
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29424,7 +29434,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ChannelConfig
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfig(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfig(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29436,7 +29446,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ChannelMergerNode
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29448,7 +29458,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ChannelSplitterNode
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29460,7 +29470,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ConcreteBaseAudioContext
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29472,7 +29482,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ConstantSourceNode
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29484,7 +29494,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ConvolverNode
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29496,7 +29506,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   DelayNode
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29508,7 +29518,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   DummyStruct
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStruct(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStruct(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29520,7 +29530,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   DynamicsCompressorNode
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29532,7 +29542,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Event
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29544,7 +29554,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   GainNode
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29556,7 +29566,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   IirFilterNode
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29568,7 +29578,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaElementAudioSourceNode
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29580,7 +29590,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaRecorder
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29592,7 +29602,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStream
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29604,7 +29614,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamAudioDestinationNode
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29616,7 +29626,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamAudioSourceNode
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29628,7 +29638,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamConstraints
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29640,7 +29650,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamTrack
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29652,7 +29662,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaStreamTrackAudioSourceNode
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29664,7 +29674,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   MediaElement
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29676,7 +29686,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   OfflineAudioCompletionEvent
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29688,7 +29698,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   OfflineAudioContext
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29700,7 +29710,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   OscillatorNode
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29712,7 +29722,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PannerNode
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29724,7 +29734,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PeriodicWave
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29736,7 +29746,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   ScriptProcessorNode
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29748,7 +29758,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   StereoPannerNode
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29760,7 +29770,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   WaveShaperNode
-  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
+      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -29816,8 +29826,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_buffer =
         sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
-          deserializer,
-        );
+      deserializer,
+    );
     var var_detune = sse_decode_f_32(deserializer);
     var var_loop = sse_decode_bool(deserializer);
     var var_loopStart = sse_decode_f_64(deserializer);
@@ -29905,140 +29915,140 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return AudioNodeImplementor_Variant0(var_field0);
       case 1:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return AudioNodeImplementor_Variant1(var_field0);
       case 2:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return AudioNodeImplementor_Variant2(var_field0);
       case 3:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
-              deserializer,
-            );
+          deserializer,
+        );
         return AudioNodeImplementor_Variant3(var_field0);
       case 4:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return AudioNodeImplementor_Variant4(var_field0);
       case 5:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return AudioNodeImplementor_Variant5(var_field0);
       case 6:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return AudioNodeImplementor_Variant6(var_field0);
       case 7:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return AudioNodeImplementor_Variant7(var_field0);
       case 8:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return AudioNodeImplementor_Variant8(var_field0);
       case 9:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return AudioNodeImplementor_Variant9(var_field0);
       case 10:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return AudioNodeImplementor_Variant10(var_field0);
       case 11:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return AudioNodeImplementor_Variant11(var_field0);
       case 12:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return AudioNodeImplementor_Variant12(var_field0);
       case 13:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return AudioNodeImplementor_Variant13(var_field0);
       case 14:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return AudioNodeImplementor_Variant14(var_field0);
       case 15:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return AudioNodeImplementor_Variant15(var_field0);
       case 16:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return AudioNodeImplementor_Variant16(var_field0);
       case 17:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return AudioNodeImplementor_Variant17(var_field0);
       case 18:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return AudioNodeImplementor_Variant18(var_field0);
       case 19:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return AudioNodeImplementor_Variant19(var_field0);
       case 20:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return AudioNodeImplementor_Variant20(var_field0);
       case 21:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return AudioNodeImplementor_Variant21(var_field0);
       case 22:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return AudioNodeImplementor_Variant22(var_field0);
       default:
         throw UnimplementedError('');
@@ -30090,7 +30100,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
-  sse_decode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
+      sse_decode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -30100,256 +30110,256 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant0(
           var_field0,
         );
       case 1:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant1(
           var_field0,
         );
       case 2:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant2(
           var_field0,
         );
       case 3:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant3(
           var_field0,
         );
       case 4:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant4(
           var_field0,
         );
       case 5:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant5(
           var_field0,
         );
       case 6:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant6(
           var_field0,
         );
       case 7:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant7(
           var_field0,
         );
       case 8:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant8(
           var_field0,
         );
       case 9:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant9(
           var_field0,
         );
       case 10:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant10(
           var_field0,
         );
       case 11:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant11(
           var_field0,
         );
       case 12:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant12(
           var_field0,
         );
       case 13:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant13(
           var_field0,
         );
       case 14:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant14(
           var_field0,
         );
       case 15:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant15(
           var_field0,
         );
       case 16:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant16(
           var_field0,
         );
       case 17:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant17(
           var_field0,
         );
       case 18:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant18(
           var_field0,
         );
       case 19:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant19(
           var_field0,
         );
       case 20:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant20(
           var_field0,
         );
       case 21:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant21(
           var_field0,
         );
       case 22:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant22(
           var_field0,
         );
       case 23:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant23(
           var_field0,
         );
       case 24:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant24(
           var_field0,
         );
       case 25:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant25(
           var_field0,
         );
       case 26:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant26(
           var_field0,
         );
       case 27:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant27(
           var_field0,
         );
       case 28:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant28(
           var_field0,
         );
       case 29:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant29(
           var_field0,
         );
       case 30:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant30(
           var_field0,
         );
       case 31:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant31(
           var_field0,
         );
@@ -30360,7 +30370,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum
-  sse_decode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_media_stream_proxy_enum(
+      sse_decode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_media_stream_proxy_enum(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -30370,8 +30380,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       case 0:
         var var_field0 =
             sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
-              deserializer,
-            );
+          deserializer,
+        );
         return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum_Variant0(
           var_field0,
         );
@@ -30423,7 +30433,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioBuffer
-  sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
+      sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -30434,7 +30444,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PeriodicWave
-  sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
+      sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -30477,7 +30487,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioRenderCapacityOptions
-  sse_decode_box_autoadd_audio_render_capacity_options(
+      sse_decode_box_autoadd_audio_render_capacity_options(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -30486,7 +30496,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
-  sse_decode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
+      sse_decode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -30497,7 +30507,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum
-  sse_decode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_media_stream_proxy_enum(
+      sse_decode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_media_stream_proxy_enum(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -30576,8 +30586,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_buffer =
         sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
-          deserializer,
-        );
+      deserializer,
+    );
     var var_disableNormalization = sse_decode_bool(deserializer);
     var var_audioNodeOptions = sse_decode_audio_node_options(deserializer);
     return ConvolverOptions(
@@ -30664,7 +30674,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   List<MediaStreamTrack>
-  sse_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
+      sse_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -30755,7 +30765,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AudioBuffer?
-  sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
+      sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -30771,7 +30781,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PeriodicWave?
-  sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
+      sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -30819,8 +30829,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_detune = sse_decode_f_32(deserializer);
     var var_periodicWave =
         sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
-          deserializer,
-        );
+      deserializer,
+    );
     var var_audioNodeOptions = sse_decode_audio_node_options(deserializer);
     return OscillatorOptions(
       type: var_type,
@@ -30905,19 +30915,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  (AudioParam, AudioParamId)
-  sse_decode_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_id(
+  (
+    AudioParam,
+    AudioParamId
+  ) sse_decode_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_id(
     SseDeserializer deserializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_field0 =
         sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
-          deserializer,
-        );
+      deserializer,
+    );
     var var_field1 =
         sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamId(
-          deserializer,
-        );
+      deserializer,
+    );
     return (var_field0, var_field1);
   }
 
@@ -30977,7 +30989,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
     AnalyserNode self,
     SseSerializer serializer,
   ) {
@@ -30990,7 +31002,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
     AudioBufferSourceNode self,
     SseSerializer serializer,
   ) {
@@ -31003,7 +31015,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
     AudioDestinationNode self,
     SseSerializer serializer,
   ) {
@@ -31016,7 +31028,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
     AudioListener self,
     SseSerializer serializer,
   ) {
@@ -31029,7 +31041,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -31042,7 +31054,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
     AudioWorkletNode self,
     SseSerializer serializer,
   ) {
@@ -31055,7 +31067,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
     BiquadFilterNode self,
     SseSerializer serializer,
   ) {
@@ -31068,7 +31080,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
     ChannelMergerNode self,
     SseSerializer serializer,
   ) {
@@ -31081,7 +31093,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
     ChannelSplitterNode self,
     SseSerializer serializer,
   ) {
@@ -31094,7 +31106,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
     ConstantSourceNode self,
     SseSerializer serializer,
   ) {
@@ -31107,7 +31119,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
     ConvolverNode self,
     SseSerializer serializer,
   ) {
@@ -31120,7 +31132,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
     DelayNode self,
     SseSerializer serializer,
   ) {
@@ -31133,7 +31145,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
     DynamicsCompressorNode self,
     SseSerializer serializer,
   ) {
@@ -31146,7 +31158,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
     GainNode self,
     SseSerializer serializer,
   ) {
@@ -31159,7 +31171,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
     IirFilterNode self,
     SseSerializer serializer,
   ) {
@@ -31172,7 +31184,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
     MediaElementAudioSourceNode self,
     SseSerializer serializer,
   ) {
@@ -31185,7 +31197,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
     MediaStreamAudioDestinationNode self,
     SseSerializer serializer,
   ) {
@@ -31198,7 +31210,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
     MediaStreamAudioSourceNode self,
     SseSerializer serializer,
   ) {
@@ -31211,7 +31223,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
     MediaStreamTrackAudioSourceNode self,
     SseSerializer serializer,
   ) {
@@ -31224,7 +31236,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
     OscillatorNode self,
     SseSerializer serializer,
   ) {
@@ -31237,7 +31249,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
     PannerNode self,
     SseSerializer serializer,
   ) {
@@ -31250,7 +31262,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
     ScriptProcessorNode self,
     SseSerializer serializer,
   ) {
@@ -31263,7 +31275,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
     StereoPannerNode self,
     SseSerializer serializer,
   ) {
@@ -31276,7 +31288,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
+      sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
     WaveShaperNode self,
     SseSerializer serializer,
   ) {
@@ -31289,7 +31301,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
     AnalyserNode self,
     SseSerializer serializer,
   ) {
@@ -31302,7 +31314,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
     AudioBuffer self,
     SseSerializer serializer,
   ) {
@@ -31315,7 +31327,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
     AudioBufferSourceNode self,
     SseSerializer serializer,
   ) {
@@ -31328,7 +31340,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext(
     AudioContext self,
     SseSerializer serializer,
   ) {
@@ -31341,7 +31353,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
     AudioDestinationNode self,
     SseSerializer serializer,
   ) {
@@ -31354,7 +31366,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
     AudioListener self,
     SseSerializer serializer,
   ) {
@@ -31367,7 +31379,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -31380,7 +31392,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamId(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamId(
     AudioParamId self,
     SseSerializer serializer,
   ) {
@@ -31393,7 +31405,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
     AudioProcessingEvent self,
     SseSerializer serializer,
   ) {
@@ -31406,7 +31418,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity(
     AudioRenderCapacity self,
     SseSerializer serializer,
   ) {
@@ -31419,7 +31431,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
     AudioRenderCapacityEvent self,
     SseSerializer serializer,
   ) {
@@ -31432,7 +31444,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
     AudioWorkletNode self,
     SseSerializer serializer,
   ) {
@@ -31445,7 +31457,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
     BiquadFilterNode self,
     SseSerializer serializer,
   ) {
@@ -31458,7 +31470,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
     BlobEvent self,
     SseSerializer serializer,
   ) {
@@ -31471,7 +31483,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfig(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfig(
     ChannelConfig self,
     SseSerializer serializer,
   ) {
@@ -31484,7 +31496,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
     ChannelMergerNode self,
     SseSerializer serializer,
   ) {
@@ -31497,7 +31509,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
     ChannelSplitterNode self,
     SseSerializer serializer,
   ) {
@@ -31510,7 +31522,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext(
     ConcreteBaseAudioContext self,
     SseSerializer serializer,
   ) {
@@ -31523,7 +31535,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
     ConstantSourceNode self,
     SseSerializer serializer,
   ) {
@@ -31536,7 +31548,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
     ConvolverNode self,
     SseSerializer serializer,
   ) {
@@ -31549,7 +31561,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
     DelayNode self,
     SseSerializer serializer,
   ) {
@@ -31562,7 +31574,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStruct(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStruct(
     DummyStruct self,
     SseSerializer serializer,
   ) {
@@ -31575,7 +31587,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
     DynamicsCompressorNode self,
     SseSerializer serializer,
   ) {
@@ -31588,7 +31600,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
     Event self,
     SseSerializer serializer,
   ) {
@@ -31601,7 +31613,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
     GainNode self,
     SseSerializer serializer,
   ) {
@@ -31614,7 +31626,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
     IirFilterNode self,
     SseSerializer serializer,
   ) {
@@ -31627,7 +31639,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
     MediaElementAudioSourceNode self,
     SseSerializer serializer,
   ) {
@@ -31642,7 +31654,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder(
     MediaRecorder self,
     SseSerializer serializer,
   ) {
@@ -31655,7 +31667,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream(
     MediaStream self,
     SseSerializer serializer,
   ) {
@@ -31668,7 +31680,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
     MediaStreamAudioDestinationNode self,
     SseSerializer serializer,
   ) {
@@ -31683,7 +31695,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
     MediaStreamAudioSourceNode self,
     SseSerializer serializer,
   ) {
@@ -31696,7 +31708,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints(
     MediaStreamConstraints self,
     SseSerializer serializer,
   ) {
@@ -31709,7 +31721,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
     MediaStreamTrack self,
     SseSerializer serializer,
   ) {
@@ -31722,7 +31734,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
     MediaStreamTrackAudioSourceNode self,
     SseSerializer serializer,
   ) {
@@ -31737,7 +31749,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
     MediaElement self,
     SseSerializer serializer,
   ) {
@@ -31750,7 +31762,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
     OfflineAudioCompletionEvent self,
     SseSerializer serializer,
   ) {
@@ -31765,7 +31777,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
     OfflineAudioContext self,
     SseSerializer serializer,
   ) {
@@ -31778,7 +31790,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
     OscillatorNode self,
     SseSerializer serializer,
   ) {
@@ -31791,7 +31803,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
     PannerNode self,
     SseSerializer serializer,
   ) {
@@ -31804,7 +31816,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
     PeriodicWave self,
     SseSerializer serializer,
   ) {
@@ -31817,7 +31829,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
     ScriptProcessorNode self,
     SseSerializer serializer,
   ) {
@@ -31830,7 +31842,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
     StereoPannerNode self,
     SseSerializer serializer,
   ) {
@@ -31843,7 +31855,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
+      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
     WaveShaperNode self,
     SseSerializer serializer,
   ) {
@@ -31856,7 +31868,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
     AnalyserNode self,
     SseSerializer serializer,
   ) {
@@ -31869,7 +31881,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
     AudioBuffer self,
     SseSerializer serializer,
   ) {
@@ -31882,7 +31894,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
     AudioBufferSourceNode self,
     SseSerializer serializer,
   ) {
@@ -31895,7 +31907,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
     AudioProcessingEvent self,
     SseSerializer serializer,
   ) {
@@ -31908,7 +31920,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
     AudioRenderCapacityEvent self,
     SseSerializer serializer,
   ) {
@@ -31921,7 +31933,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
     BiquadFilterNode self,
     SseSerializer serializer,
   ) {
@@ -31934,7 +31946,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
     BlobEvent self,
     SseSerializer serializer,
   ) {
@@ -31947,7 +31959,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
     ConstantSourceNode self,
     SseSerializer serializer,
   ) {
@@ -31960,7 +31972,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
     ConvolverNode self,
     SseSerializer serializer,
   ) {
@@ -31973,7 +31985,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
     MediaElement self,
     SseSerializer serializer,
   ) {
@@ -31986,7 +31998,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
     OfflineAudioCompletionEvent self,
     SseSerializer serializer,
   ) {
@@ -32001,7 +32013,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
     OfflineAudioContext self,
     SseSerializer serializer,
   ) {
@@ -32014,7 +32026,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
     OscillatorNode self,
     SseSerializer serializer,
   ) {
@@ -32027,7 +32039,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
     PannerNode self,
     SseSerializer serializer,
   ) {
@@ -32040,7 +32052,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
+      sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
     WaveShaperNode self,
     SseSerializer serializer,
   ) {
@@ -32053,7 +32065,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
     AnalyserNode self,
     SseSerializer serializer,
   ) {
@@ -32066,7 +32078,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
     AudioBuffer self,
     SseSerializer serializer,
   ) {
@@ -32079,7 +32091,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
     AudioBufferSourceNode self,
     SseSerializer serializer,
   ) {
@@ -32092,7 +32104,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext(
     AudioContext self,
     SseSerializer serializer,
   ) {
@@ -32105,7 +32117,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistration(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistration(
     AudioContextRegistration self,
     SseSerializer serializer,
   ) {
@@ -32118,7 +32130,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
     AudioDestinationNode self,
     SseSerializer serializer,
   ) {
@@ -32131,7 +32143,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
     AudioListener self,
     SseSerializer serializer,
   ) {
@@ -32144,7 +32156,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -32157,7 +32169,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
     AudioProcessingEvent self,
     SseSerializer serializer,
   ) {
@@ -32170,7 +32182,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity(
     AudioRenderCapacity self,
     SseSerializer serializer,
   ) {
@@ -32183,7 +32195,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
     AudioRenderCapacityEvent self,
     SseSerializer serializer,
   ) {
@@ -32196,7 +32208,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
     AudioWorkletNode self,
     SseSerializer serializer,
   ) {
@@ -32209,7 +32221,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
     BiquadFilterNode self,
     SseSerializer serializer,
   ) {
@@ -32222,7 +32234,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
     BlobEvent self,
     SseSerializer serializer,
   ) {
@@ -32235,7 +32247,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
     ChannelMergerNode self,
     SseSerializer serializer,
   ) {
@@ -32248,7 +32260,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
     ChannelSplitterNode self,
     SseSerializer serializer,
   ) {
@@ -32261,7 +32273,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext(
     ConcreteBaseAudioContext self,
     SseSerializer serializer,
   ) {
@@ -32274,7 +32286,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
     ConstantSourceNode self,
     SseSerializer serializer,
   ) {
@@ -32287,7 +32299,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
     ConvolverNode self,
     SseSerializer serializer,
   ) {
@@ -32300,7 +32312,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
     DelayNode self,
     SseSerializer serializer,
   ) {
@@ -32313,7 +32325,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
     DynamicsCompressorNode self,
     SseSerializer serializer,
   ) {
@@ -32326,7 +32338,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
     Event self,
     SseSerializer serializer,
   ) {
@@ -32339,7 +32351,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
     GainNode self,
     SseSerializer serializer,
   ) {
@@ -32352,7 +32364,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
     IirFilterNode self,
     SseSerializer serializer,
   ) {
@@ -32365,7 +32377,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
     MediaElementAudioSourceNode self,
     SseSerializer serializer,
   ) {
@@ -32380,7 +32392,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder(
     MediaRecorder self,
     SseSerializer serializer,
   ) {
@@ -32393,7 +32405,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream(
     MediaStream self,
     SseSerializer serializer,
   ) {
@@ -32406,7 +32418,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
     MediaStreamAudioDestinationNode self,
     SseSerializer serializer,
   ) {
@@ -32421,7 +32433,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
     MediaStreamAudioSourceNode self,
     SseSerializer serializer,
   ) {
@@ -32436,7 +32448,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
     MediaStreamTrack self,
     SseSerializer serializer,
   ) {
@@ -32449,7 +32461,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
     MediaStreamTrackAudioSourceNode self,
     SseSerializer serializer,
   ) {
@@ -32464,7 +32476,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
     MediaElement self,
     SseSerializer serializer,
   ) {
@@ -32477,7 +32489,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
     OfflineAudioCompletionEvent self,
     SseSerializer serializer,
   ) {
@@ -32492,7 +32504,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
     OfflineAudioContext self,
     SseSerializer serializer,
   ) {
@@ -32505,7 +32517,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
     OscillatorNode self,
     SseSerializer serializer,
   ) {
@@ -32518,7 +32530,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
     PannerNode self,
     SseSerializer serializer,
   ) {
@@ -32531,7 +32543,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
     ScriptProcessorNode self,
     SseSerializer serializer,
   ) {
@@ -32544,7 +32556,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
     StereoPannerNode self,
     SseSerializer serializer,
   ) {
@@ -32557,7 +32569,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
+      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
     WaveShaperNode self,
     SseSerializer serializer,
   ) {
@@ -32576,7 +32588,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent_Output_unit_AnyhowException(
+      sse_encode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent_Output_unit_AnyhowException(
     FutureOr<void> Function(AudioProcessingEvent) self,
     SseSerializer serializer,
   ) {
@@ -32591,7 +32603,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent_Output_unit_AnyhowException(
+      sse_encode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent_Output_unit_AnyhowException(
     FutureOr<void> Function(Event) self,
     SseSerializer serializer,
   ) {
@@ -32606,7 +32618,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent_Output_unit_AnyhowException(
+      sse_encode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent_Output_unit_AnyhowException(
     FutureOr<void> Function(OfflineAudioCompletionEvent) self,
     SseSerializer serializer,
   ) {
@@ -32729,7 +32741,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyEnum_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
+      sse_encode_ProxyEnum_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -32737,162 +32749,194 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
       (() {
         if (self is AudioParamProxyVariantAudioBufferSourceNodeDetune) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant0(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant0(
             self._upstream,
           );
         }
         if (self is AudioParamProxyVariantAudioBufferSourceNodePlaybackRate) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant1(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant1(
             self._upstream,
           );
         }
         if (self is AudioParamProxyVariantAudioListenerForwardX) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant2(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant2(
             self._upstream,
           );
         }
         if (self is AudioParamProxyVariantAudioListenerForwardY) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant3(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant3(
             self._upstream,
           );
         }
         if (self is AudioParamProxyVariantAudioListenerForwardZ) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant4(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant4(
             self._upstream,
           );
         }
         if (self is AudioParamProxyVariantAudioListenerPositionX) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant5(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant5(
             self._upstream,
           );
         }
         if (self is AudioParamProxyVariantAudioListenerPositionY) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant6(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant6(
             self._upstream,
           );
         }
         if (self is AudioParamProxyVariantAudioListenerPositionZ) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant7(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant7(
             self._upstream,
           );
         }
         if (self is AudioParamProxyVariantAudioListenerUpX) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant8(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant8(
             self._upstream,
           );
         }
         if (self is AudioParamProxyVariantAudioListenerUpY) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant9(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant9(
             self._upstream,
           );
         }
         if (self is AudioParamProxyVariantAudioListenerUpZ) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant10(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant10(
             self._upstream,
           );
         }
         if (self is AudioParamProxyVariantBiquadFilterNodeDetune) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant11(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant11(
             self._upstream,
           );
         }
         if (self is AudioParamProxyVariantBiquadFilterNodeFrequency) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant12(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant12(
             self._upstream,
           );
         }
         if (self is AudioParamProxyVariantBiquadFilterNodeGain) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant13(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant13(
             self._upstream,
           );
         }
         if (self is AudioParamProxyVariantBiquadFilterNodeQ) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant14(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant14(
             self._upstream,
           );
         }
         if (self is AudioParamProxyVariantConstantSourceNodeOffset) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant15(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant15(
             self._upstream,
           );
         }
         if (self is AudioParamProxyVariantDelayNodeDelayTime) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant16(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant16(
             self._upstream,
           );
         }
         if (self is AudioParamProxyVariantDynamicsCompressorNodeAttack) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant17(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant17(
             self._upstream,
           );
         }
         if (self is AudioParamProxyVariantDynamicsCompressorNodeKnee) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant18(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant18(
             self._upstream,
           );
         }
         if (self is AudioParamProxyVariantDynamicsCompressorNodeRatio) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant19(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant19(
             self._upstream,
           );
         }
         if (self is AudioParamProxyVariantDynamicsCompressorNodeRelease) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant20(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant20(
             self._upstream,
           );
         }
         if (self is AudioParamProxyVariantDynamicsCompressorNodeThreshold) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant21(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant21(
             self._upstream,
           );
         }
         if (self is AudioParamProxyVariantGainNodeGain) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant22(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant22(
             self._upstream,
           );
         }
         if (self is AudioParamProxyVariantOscillatorNodeDetune) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant23(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant23(
             self._upstream,
           );
         }
         if (self is AudioParamProxyVariantOscillatorNodeFrequency) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant24(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant24(
             self._upstream,
           );
         }
         if (self is AudioParamProxyVariantPannerNodeOrientationX) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant25(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant25(
             self._upstream,
           );
         }
         if (self is AudioParamProxyVariantPannerNodeOrientationY) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant26(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant26(
             self._upstream,
           );
         }
         if (self is AudioParamProxyVariantPannerNodeOrientationZ) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant27(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant27(
             self._upstream,
           );
         }
         if (self is AudioParamProxyVariantPannerNodePositionX) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant28(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant28(
             self._upstream,
           );
         }
         if (self is AudioParamProxyVariantPannerNodePositionY) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant29(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant29(
             self._upstream,
           );
         }
         if (self is AudioParamProxyVariantPannerNodePositionZ) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant30(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant30(
             self._upstream,
           );
         }
         if (self is AudioParamProxyVariantStereoPannerNodePan) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum.variant31(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+              .variant31(
             self._upstream,
           );
         }
@@ -32905,7 +32949,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyEnum_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_media_stream_proxy_enum(
+      sse_encode_ProxyEnum_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_media_stream_proxy_enum(
     MediaStream self,
     SseSerializer serializer,
   ) {
@@ -32914,7 +32958,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       (() {
         if (self
             is MediaStreamProxyVariantMediaStreamAudioDestinationNodeStream) {
-          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum.variant0(
+          return Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum
+              .variant0(
             self._upstream,
           );
         }
@@ -32927,7 +32972,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode_detune(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode_detune(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -32937,7 +32982,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode_playback_rate(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode_playback_rate(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -32947,7 +32992,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_forward_x(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_forward_x(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -32957,7 +33002,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_forward_y(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_forward_y(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -32967,7 +33012,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_forward_z(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_forward_z(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -32977,7 +33022,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_position_x(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_position_x(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -32987,7 +33032,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_position_y(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_position_y(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -32997,7 +33042,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_position_z(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_position_z(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -33007,7 +33052,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_up_x(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_up_x(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -33017,7 +33062,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_up_y(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_up_y(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -33027,7 +33072,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_up_z(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_up_z(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -33037,7 +33082,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_detune(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_detune(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -33047,7 +33092,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_frequency(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_frequency(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -33057,7 +33102,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_gain(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_gain(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -33067,7 +33112,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_q(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_q(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -33077,7 +33122,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode_offset(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode_offset(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -33087,7 +33132,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode_delay_time(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode_delay_time(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -33097,7 +33142,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_attack(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_attack(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -33107,7 +33152,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_knee(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_knee(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -33117,7 +33162,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_ratio(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_ratio(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -33127,7 +33172,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_release(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_release(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -33137,7 +33182,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_threshold(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_threshold(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -33147,7 +33192,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode_gain(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode_gain(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -33157,7 +33202,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode_stream(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode_stream(
     MediaStream self,
     SseSerializer serializer,
   ) {
@@ -33167,7 +33212,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode_detune(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode_detune(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -33177,7 +33222,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode_frequency(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode_frequency(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -33187,7 +33232,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_orientation_x(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_orientation_x(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -33197,7 +33242,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_orientation_y(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_orientation_y(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -33207,7 +33252,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_orientation_z(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_orientation_z(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -33217,7 +33262,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_position_x(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_position_x(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -33227,7 +33272,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_position_y(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_position_y(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -33237,7 +33282,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_position_z(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_position_z(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -33247,7 +33292,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode_pan(
+      sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode_pan(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -33257,7 +33302,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
     AnalyserNode self,
     SseSerializer serializer,
   ) {
@@ -33270,7 +33315,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
     AudioBuffer self,
     SseSerializer serializer,
   ) {
@@ -33283,7 +33328,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
     AudioBufferSourceNode self,
     SseSerializer serializer,
   ) {
@@ -33296,7 +33341,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext(
     AudioContext self,
     SseSerializer serializer,
   ) {
@@ -33309,7 +33354,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistration(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistration(
     AudioContextRegistration self,
     SseSerializer serializer,
   ) {
@@ -33322,7 +33367,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
     AudioDestinationNode self,
     SseSerializer serializer,
   ) {
@@ -33335,7 +33380,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
     AudioListener self,
     SseSerializer serializer,
   ) {
@@ -33348,7 +33393,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
     AudioParam self,
     SseSerializer serializer,
   ) {
@@ -33361,7 +33406,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamId(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamId(
     AudioParamId self,
     SseSerializer serializer,
   ) {
@@ -33374,7 +33419,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
     AudioProcessingEvent self,
     SseSerializer serializer,
   ) {
@@ -33387,7 +33432,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity(
     AudioRenderCapacity self,
     SseSerializer serializer,
   ) {
@@ -33400,7 +33445,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
     AudioRenderCapacityEvent self,
     SseSerializer serializer,
   ) {
@@ -33413,7 +33458,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
     AudioWorkletNode self,
     SseSerializer serializer,
   ) {
@@ -33426,7 +33471,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
     BiquadFilterNode self,
     SseSerializer serializer,
   ) {
@@ -33439,7 +33484,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
     BlobEvent self,
     SseSerializer serializer,
   ) {
@@ -33452,7 +33497,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfig(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfig(
     ChannelConfig self,
     SseSerializer serializer,
   ) {
@@ -33465,7 +33510,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
     ChannelMergerNode self,
     SseSerializer serializer,
   ) {
@@ -33478,7 +33523,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
     ChannelSplitterNode self,
     SseSerializer serializer,
   ) {
@@ -33491,7 +33536,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext(
     ConcreteBaseAudioContext self,
     SseSerializer serializer,
   ) {
@@ -33504,7 +33549,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
     ConstantSourceNode self,
     SseSerializer serializer,
   ) {
@@ -33517,7 +33562,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
     ConvolverNode self,
     SseSerializer serializer,
   ) {
@@ -33530,7 +33575,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
     DelayNode self,
     SseSerializer serializer,
   ) {
@@ -33543,7 +33588,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStruct(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStruct(
     DummyStruct self,
     SseSerializer serializer,
   ) {
@@ -33556,7 +33601,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
     DynamicsCompressorNode self,
     SseSerializer serializer,
   ) {
@@ -33569,7 +33614,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
     Event self,
     SseSerializer serializer,
   ) {
@@ -33582,7 +33627,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
     GainNode self,
     SseSerializer serializer,
   ) {
@@ -33595,7 +33640,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
     IirFilterNode self,
     SseSerializer serializer,
   ) {
@@ -33608,7 +33653,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
     MediaElementAudioSourceNode self,
     SseSerializer serializer,
   ) {
@@ -33623,7 +33668,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder(
     MediaRecorder self,
     SseSerializer serializer,
   ) {
@@ -33636,7 +33681,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream(
     MediaStream self,
     SseSerializer serializer,
   ) {
@@ -33649,7 +33694,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
     MediaStreamAudioDestinationNode self,
     SseSerializer serializer,
   ) {
@@ -33664,7 +33709,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
     MediaStreamAudioSourceNode self,
     SseSerializer serializer,
   ) {
@@ -33677,7 +33722,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints(
     MediaStreamConstraints self,
     SseSerializer serializer,
   ) {
@@ -33690,7 +33735,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
     MediaStreamTrack self,
     SseSerializer serializer,
   ) {
@@ -33703,7 +33748,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
     MediaStreamTrackAudioSourceNode self,
     SseSerializer serializer,
   ) {
@@ -33718,7 +33763,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
     MediaElement self,
     SseSerializer serializer,
   ) {
@@ -33731,7 +33776,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
     OfflineAudioCompletionEvent self,
     SseSerializer serializer,
   ) {
@@ -33746,7 +33791,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
     OfflineAudioContext self,
     SseSerializer serializer,
   ) {
@@ -33759,7 +33804,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
     OscillatorNode self,
     SseSerializer serializer,
   ) {
@@ -33772,7 +33817,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
     PannerNode self,
     SseSerializer serializer,
   ) {
@@ -33785,7 +33830,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
     PeriodicWave self,
     SseSerializer serializer,
   ) {
@@ -33798,7 +33843,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
     ScriptProcessorNode self,
     SseSerializer serializer,
   ) {
@@ -33811,7 +33856,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
     StereoPannerNode self,
     SseSerializer serializer,
   ) {
@@ -33824,7 +33869,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
+      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
     WaveShaperNode self,
     SseSerializer serializer,
   ) {
@@ -34117,264 +34162,264 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
+      sse_encode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
     Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
-    self,
+        self,
     SseSerializer serializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     switch (self) {
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant0(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(0, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
           field0,
           serializer,
         );
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant1(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(1, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
           field0,
           serializer,
         );
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant2(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(2, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
           field0,
           serializer,
         );
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant3(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(3, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
           field0,
           serializer,
         );
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant4(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(4, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
           field0,
           serializer,
         );
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant5(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(5, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
           field0,
           serializer,
         );
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant6(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(6, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
           field0,
           serializer,
         );
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant7(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(7, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
           field0,
           serializer,
         );
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant8(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(8, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
           field0,
           serializer,
         );
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant9(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(9, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
           field0,
           serializer,
         );
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant10(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(10, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
           field0,
           serializer,
         );
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant11(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(11, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
           field0,
           serializer,
         );
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant12(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(12, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
           field0,
           serializer,
         );
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant13(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(13, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
           field0,
           serializer,
         );
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant14(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(14, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
           field0,
           serializer,
         );
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant15(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(15, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
           field0,
           serializer,
         );
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant16(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(16, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
           field0,
           serializer,
         );
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant17(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(17, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
           field0,
           serializer,
         );
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant18(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(18, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
           field0,
           serializer,
         );
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant19(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(19, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
           field0,
           serializer,
         );
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant20(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(20, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
           field0,
           serializer,
         );
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant21(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(21, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
           field0,
           serializer,
         );
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant22(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(22, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
           field0,
           serializer,
         );
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant23(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(23, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
           field0,
           serializer,
         );
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant24(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(24, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
           field0,
           serializer,
         );
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant25(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(25, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
           field0,
           serializer,
         );
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant26(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(26, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
           field0,
           serializer,
         );
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant27(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(27, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
           field0,
           serializer,
         );
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant28(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(28, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
           field0,
           serializer,
         );
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant29(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(29, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
           field0,
           serializer,
         );
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant30(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(30, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
           field0,
           serializer,
         );
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant31(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(31, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
           field0,
@@ -34385,16 +34430,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_media_stream_proxy_enum(
+      sse_encode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_media_stream_proxy_enum(
     Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum
-    self,
+        self,
     SseSerializer serializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     switch (self) {
       case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum_Variant0(
-        field0: final field0,
-      ):
+          field0: final field0,
+        ):
         sse_encode_i_32(0, serializer);
         sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
           field0,
@@ -34443,7 +34488,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
+      sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
     AudioBuffer self,
     SseSerializer serializer,
   ) {
@@ -34456,7 +34501,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
+      sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
     PeriodicWave self,
     SseSerializer serializer,
   ) {
@@ -34514,9 +34559,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
+      sse_encode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
     Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
-    self,
+        self,
     SseSerializer serializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -34528,9 +34573,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_media_stream_proxy_enum(
+      sse_encode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_media_stream_proxy_enum(
     Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum
-    self,
+        self,
     SseSerializer serializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
@@ -34680,7 +34725,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
+      sse_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
     List<MediaStreamTrack> self,
     SseSerializer serializer,
   ) {
@@ -34783,7 +34828,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
+      sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
     AudioBuffer? self,
     SseSerializer serializer,
   ) {
@@ -34800,7 +34845,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
+      sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
     PeriodicWave? self,
     SseSerializer serializer,
   ) {
@@ -34914,7 +34959,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_id(
+      sse_encode_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_id(
     (AudioParam, AudioParamId) self,
     SseSerializer serializer,
   ) {
@@ -35143,11 +35188,11 @@ sealed class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueI
 class AnalyserNodeImpl extends RustOpaque implements AnalyserNode {
   // Not to be used by end users
   AnalyserNodeImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   AnalyserNodeImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-    : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
@@ -35204,18 +35249,16 @@ class AnalyserNodeImpl extends RustOpaque implements AnalyserNode {
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiNodeAnalyserNodeFrbOverrideConnect(that: this, dest: dest);
 
-  Future<Uint8List> getByteTimeDomainData({required int len}) => RustLib
-      .instance
-      .api
-      .webAudioApiNodeAnalyserNodeFrbOverrideGetByteTimeDomainData(
+  Future<Uint8List> getByteTimeDomainData({required int len}) =>
+      RustLib.instance.api
+          .webAudioApiNodeAnalyserNodeFrbOverrideGetByteTimeDomainData(
         that: this,
         len: len,
       );
 
-  Future<Float32List> getFloatTimeDomainData({required int len}) => RustLib
-      .instance
-      .api
-      .webAudioApiNodeAnalyserNodeFrbOverrideGetFloatTimeDomainData(
+  Future<Float32List> getFloatTimeDomainData({required int len}) =>
+      RustLib.instance.api
+          .webAudioApiNodeAnalyserNodeFrbOverrideGetFloatTimeDomainData(
         that: this,
         len: len,
       );
@@ -35283,10 +35326,11 @@ class AnalyserNodeImpl extends RustOpaque implements AnalyserNode {
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiNodeAnalyserNodeSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiNodeAnalyserNodeSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Set smoothing time constant
   ///
@@ -35314,11 +35358,11 @@ class AnalyserNodeImpl extends RustOpaque implements AnalyserNode {
 class AudioBufferImpl extends RustOpaque implements AudioBuffer {
   // Not to be used by end users
   AudioBufferImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   AudioBufferImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-    : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
@@ -35375,7 +35419,7 @@ class AudioBufferSourceNodeImpl extends RustOpaque
     implements AudioBufferSourceNode {
   // Not to be used by end users
   AudioBufferSourceNodeImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   AudioBufferSourceNodeImpl.frbInternalSseDecode(
@@ -35385,17 +35429,11 @@ class AudioBufferSourceNodeImpl extends RustOpaque
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib
-        .instance
-        .api
-        .rust_arc_increment_strong_count_AudioBufferSourceNode,
+        .instance.api.rust_arc_increment_strong_count_AudioBufferSourceNode,
     rustArcDecrementStrongCount: RustLib
-        .instance
-        .api
-        .rust_arc_decrement_strong_count_AudioBufferSourceNode,
+        .instance.api.rust_arc_decrement_strong_count_AudioBufferSourceNode,
     rustArcDecrementStrongCountPtr: RustLib
-        .instance
-        .api
-        .rust_arc_decrement_strong_count_AudioBufferSourceNodePtr,
+        .instance.api.rust_arc_decrement_strong_count_AudioBufferSourceNodePtr,
   );
 
   Future<void> channelConfig() => RustLib.instance.api
@@ -35448,15 +35486,14 @@ class AudioBufferSourceNodeImpl extends RustOpaque
       );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
-      .webAudioApiNodeAudioBufferSourceNodeFrbOverrideConnect(
+          .webAudioApiNodeAudioBufferSourceNodeFrbOverrideConnect(
         that: this,
         dest: dest,
       );
 
-  Future<void> setBuffer({required AudioBuffer audioBuffer}) => RustLib
-      .instance
-      .api
-      .webAudioApiNodeAudioBufferSourceNodeFrbOverrideSetBuffer(
+  Future<void> setBuffer({required AudioBuffer audioBuffer}) =>
+      RustLib.instance.api
+          .webAudioApiNodeAudioBufferSourceNodeFrbOverrideSetBuffer(
         that: this,
         audioBuffer: audioBuffer,
       );
@@ -35520,8 +35557,9 @@ class AudioBufferSourceNodeImpl extends RustOpaque
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api
-      .webAudioApiNodeAudioBufferSourceNodeSetOnProcessorError(
+  }) =>
+      RustLib.instance.api
+          .webAudioApiNodeAudioBufferSourceNodeSetOnProcessorError(
         that: this,
         callback: callback,
       );
@@ -35540,8 +35578,9 @@ class AudioBufferSourceNodeImpl extends RustOpaque
   Future<void> startAtWithOffset({
     required double start,
     required double offset,
-  }) => RustLib.instance.api
-      .webAudioApiNodeAudioBufferSourceNodeStartAtWithOffset(
+  }) =>
+      RustLib.instance.api
+          .webAudioApiNodeAudioBufferSourceNodeStartAtWithOffset(
         that: this,
         start: start,
         offset: offset,
@@ -35556,8 +35595,9 @@ class AudioBufferSourceNodeImpl extends RustOpaque
     required double start,
     required double offset,
     required double duration,
-  }) => RustLib.instance.api
-      .webAudioApiNodeAudioBufferSourceNodeStartAtWithOffsetAndDuration(
+  }) =>
+      RustLib.instance.api
+          .webAudioApiNodeAudioBufferSourceNodeStartAtWithOffsetAndDuration(
         that: this,
         start: start,
         offset: offset,
@@ -35575,11 +35615,11 @@ class AudioBufferSourceNodeImpl extends RustOpaque
 class AudioContextImpl extends RustOpaque implements AudioContext {
   // Not to be used by end users
   AudioContextImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   AudioContextImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-    : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
@@ -35639,11 +35679,12 @@ class AudioContextImpl extends RustOpaque implements AudioContext {
   Future<(AudioParam, AudioParamId)> createAudioParam({
     required AudioParamDescriptor opts,
     required AudioContextRegistration dest,
-  }) => RustLib.instance.api.webAudioApiContextAudioContextCreateAudioParam(
-    that: this,
-    opts: opts,
-    dest: dest,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiContextAudioContextCreateAudioParam(
+        that: this,
+        opts: opts,
+        dest: dest,
+      );
 
   /// Creates an `BiquadFilterNode` which implements a second order filter
   Future<BiquadFilterNode> createBiquadFilter() => RustLib.instance.api
@@ -35658,12 +35699,13 @@ class AudioContextImpl extends RustOpaque implements AudioContext {
     required int numberOfChannels,
     required int length,
     required double sampleRate,
-  }) => RustLib.instance.api.webAudioApiContextAudioContextCreateBuffer(
-    that: this,
-    numberOfChannels: numberOfChannels,
-    length: length,
-    sampleRate: sampleRate,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiContextAudioContextCreateBuffer(
+        that: this,
+        numberOfChannels: numberOfChannels,
+        length: length,
+        sampleRate: sampleRate,
+      );
 
   /// Creates an `AudioBufferSourceNode`
   Future<AudioBufferSourceNode> createBufferSource() => RustLib.instance.api
@@ -35672,10 +35714,11 @@ class AudioContextImpl extends RustOpaque implements AudioContext {
   /// Creates a `ChannelMergerNode`
   Future<ChannelMergerNode> createChannelMerger({
     required int numberOfInputs,
-  }) => RustLib.instance.api.webAudioApiContextAudioContextCreateChannelMerger(
-    that: this,
-    numberOfInputs: numberOfInputs,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiContextAudioContextCreateChannelMerger(
+        that: this,
+        numberOfInputs: numberOfInputs,
+      );
 
   /// Creates a `ChannelSplitterNode`
   Future<ChannelSplitterNode> createChannelSplitter({
@@ -35702,10 +35745,9 @@ class AudioContextImpl extends RustOpaque implements AudioContext {
       );
 
   /// Creates a `DynamicsCompressorNode`, compressing the audio signal
-  Future<DynamicsCompressorNode> createDynamicsCompressor() => RustLib
-      .instance
-      .api
-      .webAudioApiContextAudioContextCreateDynamicsCompressor(that: this);
+  Future<DynamicsCompressorNode> createDynamicsCompressor() =>
+      RustLib.instance.api
+          .webAudioApiContextAudioContextCreateDynamicsCompressor(that: this);
 
   /// Creates an `GainNode`, to control audio volume
   Future<GainNode> createGain() =>
@@ -35722,25 +35764,27 @@ class AudioContextImpl extends RustOpaque implements AudioContext {
   Future<IirFilterNode> createIirFilter({
     required List<double> feedforward,
     required List<double> feedback,
-  }) => RustLib.instance.api.webAudioApiContextAudioContextCreateIirFilter(
-    that: this,
-    feedforward: feedforward,
-    feedback: feedback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiContextAudioContextCreateIirFilter(
+        that: this,
+        feedforward: feedforward,
+        feedback: feedback,
+      );
 
   /// Creates a [`MediaStreamAudioDestinationNode`](node::MediaStreamAudioDestinationNode)
   Future<MediaStreamAudioDestinationNode> createMediaStreamDestination() =>
       RustLib.instance.api
           .webAudioApiContextAudioContextCreateMediaStreamDestination(
-            that: this,
-          );
+        that: this,
+      );
 
   /// Creates a [`MediaStreamAudioSourceNode`](node::MediaStreamAudioSourceNode) from a
   /// [`MediaStream`]
   Future<MediaStreamAudioSourceNode> createMediaStreamSource({
     required MediaStream media,
-  }) => RustLib.instance.api
-      .webAudioApiContextAudioContextCreateMediaStreamSource(
+  }) =>
+      RustLib.instance.api
+          .webAudioApiContextAudioContextCreateMediaStreamSource(
         that: this,
         media: media,
       );
@@ -35749,8 +35793,9 @@ class AudioContextImpl extends RustOpaque implements AudioContext {
   /// [`MediaStreamTrack`]
   Future<MediaStreamTrackAudioSourceNode> createMediaStreamTrackSource({
     required MediaStreamTrack media,
-  }) => RustLib.instance.api
-      .webAudioApiContextAudioContextCreateMediaStreamTrackSource(
+  }) =>
+      RustLib.instance.api
+          .webAudioApiContextAudioContextCreateMediaStreamTrackSource(
         that: this,
         media: media,
       );
@@ -35769,10 +35814,11 @@ class AudioContextImpl extends RustOpaque implements AudioContext {
   /// argument with the periodic wave options.
   Future<PeriodicWave> createPeriodicWave({
     required PeriodicWaveOptions options,
-  }) => RustLib.instance.api.webAudioApiContextAudioContextCreatePeriodicWave(
-    that: this,
-    options: options,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiContextAudioContextCreatePeriodicWave(
+        that: this,
+        options: options,
+      );
 
   /// Creates an `ScriptProcessorNode` for custom audio processing (deprecated);
   ///
@@ -35814,8 +35860,9 @@ class AudioContextImpl extends RustOpaque implements AudioContext {
 
   Future<MediaElementAudioSourceNode> createMediaElementSource({
     required MediaElement mediaElement,
-  }) => RustLib.instance.api
-      .webAudioApiContextAudioContextFrbOverrideCreateMediaElementSource(
+  }) =>
+      RustLib.instance.api
+          .webAudioApiContextAudioContextFrbOverrideCreateMediaElementSource(
         that: this,
         mediaElement: mediaElement,
       );
@@ -35823,9 +35870,9 @@ class AudioContextImpl extends RustOpaque implements AudioContext {
   Future<AudioBuffer> decodeAudioDataSync({required String inputPath}) =>
       RustLib.instance.api
           .webAudioApiContextAudioContextFrbOverrideDecodeAudioDataSync(
-            that: this,
-            inputPath: inputPath,
-          );
+        that: this,
+        inputPath: inputPath,
+      );
 
   /// Returns the `AudioListener` which is used for 3D spatialization
   Future<AudioListener> listener() =>
@@ -35863,10 +35910,11 @@ class AudioContextImpl extends RustOpaque implements AudioContext {
 
   Future<void> setOnStateChange({
     required FutureOr<void> Function(Event) callback,
-  }) => RustLib.instance.api.webAudioApiContextAudioContextSetOnStateChange(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiContextAudioContextSetOnStateChange(
+        that: this,
+        callback: callback,
+      );
 
   Future<void> setSinkId({required String sinkId}) => RustLib.instance.api
       .webAudioApiContextAudioContextSetSinkId(that: this, sinkId: sinkId);
@@ -35918,7 +35966,7 @@ class AudioContextRegistrationImpl extends RustOpaque
     implements AudioContextRegistration {
   // Not to be used by end users
   AudioContextRegistrationImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   AudioContextRegistrationImpl.frbInternalSseDecode(
@@ -35928,16 +35976,10 @@ class AudioContextRegistrationImpl extends RustOpaque
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib
-        .instance
-        .api
-        .rust_arc_increment_strong_count_AudioContextRegistration,
+        .instance.api.rust_arc_increment_strong_count_AudioContextRegistration,
     rustArcDecrementStrongCount: RustLib
-        .instance
-        .api
-        .rust_arc_decrement_strong_count_AudioContextRegistration,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance
-        .api
+        .instance.api.rust_arc_decrement_strong_count_AudioContextRegistration,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_AudioContextRegistrationPtr,
   );
 }
@@ -35947,7 +35989,7 @@ class AudioDestinationNodeImpl extends RustOpaque
     implements AudioDestinationNode {
   // Not to be used by end users
   AudioDestinationNodeImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   AudioDestinationNodeImpl.frbInternalSseDecode(
@@ -35957,17 +35999,11 @@ class AudioDestinationNodeImpl extends RustOpaque
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib
-        .instance
-        .api
-        .rust_arc_increment_strong_count_AudioDestinationNode,
+        .instance.api.rust_arc_increment_strong_count_AudioDestinationNode,
     rustArcDecrementStrongCount: RustLib
-        .instance
-        .api
-        .rust_arc_decrement_strong_count_AudioDestinationNode,
+        .instance.api.rust_arc_decrement_strong_count_AudioDestinationNode,
     rustArcDecrementStrongCountPtr: RustLib
-        .instance
-        .api
-        .rust_arc_decrement_strong_count_AudioDestinationNodePtr,
+        .instance.api.rust_arc_decrement_strong_count_AudioDestinationNodePtr,
   );
 
   Future<void> channelConfig() => RustLib.instance.api
@@ -36009,7 +36045,7 @@ class AudioDestinationNodeImpl extends RustOpaque
       );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
-      .webAudioApiNodeAudioDestinationNodeFrbOverrideConnect(
+          .webAudioApiNodeAudioDestinationNodeFrbOverrideConnect(
         that: this,
         dest: dest,
       );
@@ -36031,8 +36067,9 @@ class AudioDestinationNodeImpl extends RustOpaque
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api
-      .webAudioApiNodeAudioDestinationNodeSetOnProcessorError(
+  }) =>
+      RustLib.instance.api
+          .webAudioApiNodeAudioDestinationNodeSetOnProcessorError(
         that: this,
         callback: callback,
       );
@@ -36042,11 +36079,11 @@ class AudioDestinationNodeImpl extends RustOpaque
 class AudioListenerImpl extends RustOpaque implements AudioListener {
   // Not to be used by end users
   AudioListenerImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   AudioListenerImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-    : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
@@ -36083,11 +36120,11 @@ class AudioListenerImpl extends RustOpaque implements AudioListener {
 class AudioParamIdImpl extends RustOpaque implements AudioParamId {
   // Not to be used by end users
   AudioParamIdImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   AudioParamIdImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-    : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
@@ -36103,11 +36140,11 @@ class AudioParamIdImpl extends RustOpaque implements AudioParamId {
 class AudioParamImpl extends RustOpaque implements AudioParam {
   // Not to be used by end users
   AudioParamImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   AudioParamImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-    : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
@@ -36196,11 +36233,12 @@ class AudioParamImpl extends RustOpaque implements AudioParam {
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -36214,11 +36252,12 @@ class AudioParamImpl extends RustOpaque implements AudioParam {
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -36240,17 +36279,17 @@ class AudioParamImpl extends RustOpaque implements AudioParam {
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -36264,21 +36303,22 @@ class AudioParamImpl extends RustOpaque implements AudioParam {
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -36288,11 +36328,12 @@ class AudioParamImpl extends RustOpaque implements AudioParam {
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -36307,12 +36348,13 @@ class AudioParamImpl extends RustOpaque implements AudioParam {
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -36324,7 +36366,7 @@ class AudioProcessingEventImpl extends RustOpaque
     implements AudioProcessingEvent {
   // Not to be used by end users
   AudioProcessingEventImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   AudioProcessingEventImpl.frbInternalSseDecode(
@@ -36334,17 +36376,11 @@ class AudioProcessingEventImpl extends RustOpaque
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib
-        .instance
-        .api
-        .rust_arc_increment_strong_count_AudioProcessingEvent,
+        .instance.api.rust_arc_increment_strong_count_AudioProcessingEvent,
     rustArcDecrementStrongCount: RustLib
-        .instance
-        .api
-        .rust_arc_decrement_strong_count_AudioProcessingEvent,
+        .instance.api.rust_arc_decrement_strong_count_AudioProcessingEvent,
     rustArcDecrementStrongCountPtr: RustLib
-        .instance
-        .api
-        .rust_arc_decrement_strong_count_AudioProcessingEventPtr,
+        .instance.api.rust_arc_decrement_strong_count_AudioProcessingEventPtr,
   );
 
   AudioBuffer get inputBuffer => RustLib.instance.api
@@ -36357,19 +36393,19 @@ class AudioProcessingEventImpl extends RustOpaque
       .webAudioApiAudioProcessingEventAutoAccessorGetPlaybackTime(that: this);
 
   set inputBuffer(AudioBuffer inputBuffer) => RustLib.instance.api
-      .webAudioApiAudioProcessingEventAutoAccessorSetInputBuffer(
+          .webAudioApiAudioProcessingEventAutoAccessorSetInputBuffer(
         that: this,
         inputBuffer: inputBuffer,
       );
 
   set outputBuffer(AudioBuffer outputBuffer) => RustLib.instance.api
-      .webAudioApiAudioProcessingEventAutoAccessorSetOutputBuffer(
+          .webAudioApiAudioProcessingEventAutoAccessorSetOutputBuffer(
         that: this,
         outputBuffer: outputBuffer,
       );
 
   set playbackTime(double playbackTime) => RustLib.instance.api
-      .webAudioApiAudioProcessingEventAutoAccessorSetPlaybackTime(
+          .webAudioApiAudioProcessingEventAutoAccessorSetPlaybackTime(
         that: this,
         playbackTime: playbackTime,
       );
@@ -36380,7 +36416,7 @@ class AudioRenderCapacityEventImpl extends RustOpaque
     implements AudioRenderCapacityEvent {
   // Not to be used by end users
   AudioRenderCapacityEventImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   AudioRenderCapacityEventImpl.frbInternalSseDecode(
@@ -36390,21 +36426,15 @@ class AudioRenderCapacityEventImpl extends RustOpaque
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib
-        .instance
-        .api
-        .rust_arc_increment_strong_count_AudioRenderCapacityEvent,
+        .instance.api.rust_arc_increment_strong_count_AudioRenderCapacityEvent,
     rustArcDecrementStrongCount: RustLib
-        .instance
-        .api
-        .rust_arc_decrement_strong_count_AudioRenderCapacityEvent,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance
-        .api
+        .instance.api.rust_arc_decrement_strong_count_AudioRenderCapacityEvent,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_AudioRenderCapacityEventPtr,
   );
 
   double get averageLoad => RustLib.instance.api
-      .webAudioApiAudioRenderCapacityEventAutoAccessorGetAverageLoad(
+          .webAudioApiAudioRenderCapacityEventAutoAccessorGetAverageLoad(
         that: this,
       );
 
@@ -36418,36 +36448,36 @@ class AudioRenderCapacityEventImpl extends RustOpaque
       .webAudioApiAudioRenderCapacityEventAutoAccessorGetTimestamp(that: this);
 
   double get underrunRatio => RustLib.instance.api
-      .webAudioApiAudioRenderCapacityEventAutoAccessorGetUnderrunRatio(
+          .webAudioApiAudioRenderCapacityEventAutoAccessorGetUnderrunRatio(
         that: this,
       );
 
   set averageLoad(double averageLoad) => RustLib.instance.api
-      .webAudioApiAudioRenderCapacityEventAutoAccessorSetAverageLoad(
+          .webAudioApiAudioRenderCapacityEventAutoAccessorSetAverageLoad(
         that: this,
         averageLoad: averageLoad,
       );
 
   set event(Event event) => RustLib.instance.api
-      .webAudioApiAudioRenderCapacityEventAutoAccessorSetEvent(
+          .webAudioApiAudioRenderCapacityEventAutoAccessorSetEvent(
         that: this,
         event: event,
       );
 
   set peakLoad(double peakLoad) => RustLib.instance.api
-      .webAudioApiAudioRenderCapacityEventAutoAccessorSetPeakLoad(
+          .webAudioApiAudioRenderCapacityEventAutoAccessorSetPeakLoad(
         that: this,
         peakLoad: peakLoad,
       );
 
   set timestamp(double timestamp) => RustLib.instance.api
-      .webAudioApiAudioRenderCapacityEventAutoAccessorSetTimestamp(
+          .webAudioApiAudioRenderCapacityEventAutoAccessorSetTimestamp(
         that: this,
         timestamp: timestamp,
       );
 
   set underrunRatio(double underrunRatio) => RustLib.instance.api
-      .webAudioApiAudioRenderCapacityEventAutoAccessorSetUnderrunRatio(
+          .webAudioApiAudioRenderCapacityEventAutoAccessorSetUnderrunRatio(
         that: this,
         underrunRatio: underrunRatio,
       );
@@ -36458,7 +36488,7 @@ class AudioRenderCapacityImpl extends RustOpaque
     implements AudioRenderCapacity {
   // Not to be used by end users
   AudioRenderCapacityImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   AudioRenderCapacityImpl.frbInternalSseDecode(
@@ -36468,17 +36498,11 @@ class AudioRenderCapacityImpl extends RustOpaque
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib
-        .instance
-        .api
-        .rust_arc_increment_strong_count_AudioRenderCapacity,
+        .instance.api.rust_arc_increment_strong_count_AudioRenderCapacity,
     rustArcDecrementStrongCount: RustLib
-        .instance
-        .api
-        .rust_arc_decrement_strong_count_AudioRenderCapacity,
+        .instance.api.rust_arc_decrement_strong_count_AudioRenderCapacity,
     rustArcDecrementStrongCountPtr: RustLib
-        .instance
-        .api
-        .rust_arc_decrement_strong_count_AudioRenderCapacityPtr,
+        .instance.api.rust_arc_decrement_strong_count_AudioRenderCapacityPtr,
   );
 
   /// Unset the EventHandler for [`AudioRenderCapacityEvent`].
@@ -36486,10 +36510,9 @@ class AudioRenderCapacityImpl extends RustOpaque
       .webAudioApiAudioRenderCapacityClearOnupdate(that: this);
 
   /// Start metric collection and analysis
-  Future<void> start({required AudioRenderCapacityOptions options}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioRenderCapacityStart(that: this, options: options);
+  Future<void> start({required AudioRenderCapacityOptions options}) =>
+      RustLib.instance.api
+          .webAudioApiAudioRenderCapacityStart(that: this, options: options);
 
   /// Stop metric collection and analysis
   Future<void> stop() =>
@@ -36500,7 +36523,7 @@ class AudioRenderCapacityImpl extends RustOpaque
 class AudioWorkletNodeImpl extends RustOpaque implements AudioWorkletNode {
   // Not to be used by end users
   AudioWorkletNodeImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   AudioWorkletNodeImpl.frbInternalSseDecode(
@@ -36514,9 +36537,7 @@ class AudioWorkletNodeImpl extends RustOpaque implements AudioWorkletNode {
     rustArcDecrementStrongCount:
         RustLib.instance.api.rust_arc_decrement_strong_count_AudioWorkletNode,
     rustArcDecrementStrongCountPtr: RustLib
-        .instance
-        .api
-        .rust_arc_decrement_strong_count_AudioWorkletNodePtr,
+        .instance.api.rust_arc_decrement_strong_count_AudioWorkletNodePtr,
   );
 
   Future<void> channelConfig() => RustLib.instance.api
@@ -36578,7 +36599,7 @@ class AudioWorkletNodeImpl extends RustOpaque implements AudioWorkletNode {
 class BiquadFilterNodeImpl extends RustOpaque implements BiquadFilterNode {
   // Not to be used by end users
   BiquadFilterNodeImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   BiquadFilterNodeImpl.frbInternalSseDecode(
@@ -36592,9 +36613,7 @@ class BiquadFilterNodeImpl extends RustOpaque implements BiquadFilterNode {
     rustArcDecrementStrongCount:
         RustLib.instance.api.rust_arc_decrement_strong_count_BiquadFilterNode,
     rustArcDecrementStrongCountPtr: RustLib
-        .instance
-        .api
-        .rust_arc_decrement_strong_count_BiquadFilterNodePtr,
+        .instance.api.rust_arc_decrement_strong_count_BiquadFilterNodePtr,
   );
 
   Future<void> channelConfig() => RustLib.instance.api
@@ -36665,10 +36684,11 @@ class BiquadFilterNodeImpl extends RustOpaque implements BiquadFilterNode {
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiNodeBiquadFilterNodeSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiNodeBiquadFilterNodeSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// biquad filter type setter
   ///
@@ -36687,11 +36707,11 @@ class BiquadFilterNodeImpl extends RustOpaque implements BiquadFilterNode {
 class BlobEventImpl extends RustOpaque implements BlobEvent {
   // Not to be used by end users
   BlobEventImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   BlobEventImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-    : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
@@ -36718,13 +36738,13 @@ class BlobEventImpl extends RustOpaque implements BlobEvent {
       );
 
   set event(Event event) => RustLib.instance.api
-      .webAudioApiMediaRecorderBlobEventAutoAccessorSetEvent(
+          .webAudioApiMediaRecorderBlobEventAutoAccessorSetEvent(
         that: this,
         event: event,
       );
 
   set timecode(double timecode) => RustLib.instance.api
-      .webAudioApiMediaRecorderBlobEventAutoAccessorSetTimecode(
+          .webAudioApiMediaRecorderBlobEventAutoAccessorSetTimecode(
         that: this,
         timecode: timecode,
       );
@@ -36734,11 +36754,11 @@ class BlobEventImpl extends RustOpaque implements BlobEvent {
 class ChannelConfigImpl extends RustOpaque implements ChannelConfig {
   // Not to be used by end users
   ChannelConfigImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   ChannelConfigImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-    : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
@@ -36754,7 +36774,7 @@ class ChannelConfigImpl extends RustOpaque implements ChannelConfig {
 class ChannelMergerNodeImpl extends RustOpaque implements ChannelMergerNode {
   // Not to be used by end users
   ChannelMergerNodeImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   ChannelMergerNodeImpl.frbInternalSseDecode(
@@ -36768,9 +36788,7 @@ class ChannelMergerNodeImpl extends RustOpaque implements ChannelMergerNode {
     rustArcDecrementStrongCount:
         RustLib.instance.api.rust_arc_decrement_strong_count_ChannelMergerNode,
     rustArcDecrementStrongCountPtr: RustLib
-        .instance
-        .api
-        .rust_arc_decrement_strong_count_ChannelMergerNodePtr,
+        .instance.api.rust_arc_decrement_strong_count_ChannelMergerNodePtr,
   );
 
   Future<void> channelConfig() => RustLib.instance.api
@@ -36840,7 +36858,7 @@ class ChannelSplitterNodeImpl extends RustOpaque
     implements ChannelSplitterNode {
   // Not to be used by end users
   ChannelSplitterNodeImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   ChannelSplitterNodeImpl.frbInternalSseDecode(
@@ -36850,17 +36868,11 @@ class ChannelSplitterNodeImpl extends RustOpaque
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib
-        .instance
-        .api
-        .rust_arc_increment_strong_count_ChannelSplitterNode,
+        .instance.api.rust_arc_increment_strong_count_ChannelSplitterNode,
     rustArcDecrementStrongCount: RustLib
-        .instance
-        .api
-        .rust_arc_decrement_strong_count_ChannelSplitterNode,
+        .instance.api.rust_arc_decrement_strong_count_ChannelSplitterNode,
     rustArcDecrementStrongCountPtr: RustLib
-        .instance
-        .api
-        .rust_arc_decrement_strong_count_ChannelSplitterNodePtr,
+        .instance.api.rust_arc_decrement_strong_count_ChannelSplitterNodePtr,
   );
 
   Future<void> channelConfig() => RustLib.instance.api
@@ -36918,8 +36930,9 @@ class ChannelSplitterNodeImpl extends RustOpaque
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api
-      .webAudioApiNodeChannelSplitterNodeSetOnProcessorError(
+  }) =>
+      RustLib.instance.api
+          .webAudioApiNodeChannelSplitterNodeSetOnProcessorError(
         that: this,
         callback: callback,
       );
@@ -36930,7 +36943,7 @@ class ConcreteBaseAudioContextImpl extends RustOpaque
     implements ConcreteBaseAudioContext {
   // Not to be used by end users
   ConcreteBaseAudioContextImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   ConcreteBaseAudioContextImpl.frbInternalSseDecode(
@@ -36940,16 +36953,10 @@ class ConcreteBaseAudioContextImpl extends RustOpaque
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib
-        .instance
-        .api
-        .rust_arc_increment_strong_count_ConcreteBaseAudioContext,
+        .instance.api.rust_arc_increment_strong_count_ConcreteBaseAudioContext,
     rustArcDecrementStrongCount: RustLib
-        .instance
-        .api
-        .rust_arc_decrement_strong_count_ConcreteBaseAudioContext,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance
-        .api
+        .instance.api.rust_arc_decrement_strong_count_ConcreteBaseAudioContext,
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_ConcreteBaseAudioContextPtr,
   );
 
@@ -36967,8 +36974,9 @@ class ConcreteBaseAudioContextImpl extends RustOpaque
   Future<(AudioParam, AudioParamId)> createAudioParam({
     required AudioParamDescriptor opts,
     required AudioContextRegistration dest,
-  }) => RustLib.instance.api
-      .webAudioApiContextConcreteBaseAudioContextCreateAudioParam(
+  }) =>
+      RustLib.instance.api
+          .webAudioApiContextConcreteBaseAudioContextCreateAudioParam(
         that: this,
         opts: opts,
         dest: dest,
@@ -36987,8 +36995,9 @@ class ConcreteBaseAudioContextImpl extends RustOpaque
     required int numberOfChannels,
     required int length,
     required double sampleRate,
-  }) => RustLib.instance.api
-      .webAudioApiContextConcreteBaseAudioContextCreateBuffer(
+  }) =>
+      RustLib.instance.api
+          .webAudioApiContextConcreteBaseAudioContextCreateBuffer(
         that: this,
         numberOfChannels: numberOfChannels,
         length: length,
@@ -37002,8 +37011,9 @@ class ConcreteBaseAudioContextImpl extends RustOpaque
   /// Creates a `ChannelMergerNode`
   Future<ChannelMergerNode> createChannelMerger({
     required int numberOfInputs,
-  }) => RustLib.instance.api
-      .webAudioApiContextConcreteBaseAudioContextCreateChannelMerger(
+  }) =>
+      RustLib.instance.api
+          .webAudioApiContextConcreteBaseAudioContextCreateChannelMerger(
         that: this,
         numberOfInputs: numberOfInputs,
       );
@@ -37011,15 +37021,16 @@ class ConcreteBaseAudioContextImpl extends RustOpaque
   /// Creates a `ChannelSplitterNode`
   Future<ChannelSplitterNode> createChannelSplitter({
     required int numberOfOutputs,
-  }) => RustLib.instance.api
-      .webAudioApiContextConcreteBaseAudioContextCreateChannelSplitter(
+  }) =>
+      RustLib.instance.api
+          .webAudioApiContextConcreteBaseAudioContextCreateChannelSplitter(
         that: this,
         numberOfOutputs: numberOfOutputs,
       );
 
   /// Creates an `ConstantSourceNode`, a source representing a constant value
   Future<ConstantSourceNode> createConstantSource() => RustLib.instance.api
-      .webAudioApiContextConcreteBaseAudioContextCreateConstantSource(
+          .webAudioApiContextConcreteBaseAudioContextCreateConstantSource(
         that: this,
       );
 
@@ -37028,19 +37039,17 @@ class ConcreteBaseAudioContextImpl extends RustOpaque
       .webAudioApiContextConcreteBaseAudioContextCreateConvolver(that: this);
 
   /// Creates a `DelayNode`, delaying the audio signal
-  Future<DelayNode> createDelay({required double maxDelayTime}) => RustLib
-      .instance
-      .api
-      .webAudioApiContextConcreteBaseAudioContextCreateDelay(
+  Future<DelayNode> createDelay({required double maxDelayTime}) =>
+      RustLib.instance.api
+          .webAudioApiContextConcreteBaseAudioContextCreateDelay(
         that: this,
         maxDelayTime: maxDelayTime,
       );
 
   /// Creates a `DynamicsCompressorNode`, compressing the audio signal
-  Future<DynamicsCompressorNode> createDynamicsCompressor() => RustLib
-      .instance
-      .api
-      .webAudioApiContextConcreteBaseAudioContextCreateDynamicsCompressor(
+  Future<DynamicsCompressorNode> createDynamicsCompressor() =>
+      RustLib.instance.api
+          .webAudioApiContextConcreteBaseAudioContextCreateDynamicsCompressor(
         that: this,
       );
 
@@ -37059,8 +37068,9 @@ class ConcreteBaseAudioContextImpl extends RustOpaque
   Future<IirFilterNode> createIirFilter({
     required List<double> feedforward,
     required List<double> feedback,
-  }) => RustLib.instance.api
-      .webAudioApiContextConcreteBaseAudioContextCreateIirFilter(
+  }) =>
+      RustLib.instance.api
+          .webAudioApiContextConcreteBaseAudioContextCreateIirFilter(
         that: this,
         feedforward: feedforward,
         feedback: feedback,
@@ -37080,8 +37090,9 @@ class ConcreteBaseAudioContextImpl extends RustOpaque
   /// argument with the periodic wave options.
   Future<PeriodicWave> createPeriodicWave({
     required PeriodicWaveOptions options,
-  }) => RustLib.instance.api
-      .webAudioApiContextConcreteBaseAudioContextCreatePeriodicWave(
+  }) =>
+      RustLib.instance.api
+          .webAudioApiContextConcreteBaseAudioContextCreatePeriodicWave(
         that: this,
         options: options,
       );
@@ -37098,8 +37109,9 @@ class ConcreteBaseAudioContextImpl extends RustOpaque
     required int bufferSize,
     required int numberOfInputChannels,
     required int numberOfOutputChannels,
-  }) => RustLib.instance.api
-      .webAudioApiContextConcreteBaseAudioContextCreateScriptProcessor(
+  }) =>
+      RustLib.instance.api
+          .webAudioApiContextConcreteBaseAudioContextCreateScriptProcessor(
         that: this,
         bufferSize: bufferSize,
         numberOfInputChannels: numberOfInputChannels,
@@ -37132,9 +37144,9 @@ class ConcreteBaseAudioContextImpl extends RustOpaque
   Future<void> markCycleBreaker({required AudioContextRegistration reg}) =>
       RustLib.instance.api
           .webAudioApiContextConcreteBaseAudioContextMarkCycleBreaker(
-            that: this,
-            reg: reg,
-          );
+        that: this,
+        reg: reg,
+      );
 
   /// The sample rate (in sample-frames per second) at which the `AudioContext` handles audio.
   Future<double> sampleRate() => RustLib.instance.api
@@ -37149,7 +37161,7 @@ class ConcreteBaseAudioContextImpl extends RustOpaque
 class ConstantSourceNodeImpl extends RustOpaque implements ConstantSourceNode {
   // Not to be used by end users
   ConstantSourceNodeImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   ConstantSourceNodeImpl.frbInternalSseDecode(
@@ -37163,9 +37175,7 @@ class ConstantSourceNodeImpl extends RustOpaque implements ConstantSourceNode {
     rustArcDecrementStrongCount:
         RustLib.instance.api.rust_arc_decrement_strong_count_ConstantSourceNode,
     rustArcDecrementStrongCountPtr: RustLib
-        .instance
-        .api
-        .rust_arc_decrement_strong_count_ConstantSourceNodePtr,
+        .instance.api.rust_arc_decrement_strong_count_ConstantSourceNodePtr,
   );
 
   Future<void> channelConfig() => RustLib.instance.api
@@ -37258,11 +37268,11 @@ class ConstantSourceNodeImpl extends RustOpaque implements ConstantSourceNode {
 class ConvolverNodeImpl extends RustOpaque implements ConvolverNode {
   // Not to be used by end users
   ConvolverNodeImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   ConvolverNodeImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-    : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
@@ -37339,21 +37349,22 @@ class ConvolverNodeImpl extends RustOpaque implements ConvolverNode {
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiNodeConvolverNodeSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiNodeConvolverNodeSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 }
 
 @sealed
 class DelayNodeImpl extends RustOpaque implements DelayNode {
   // Not to be used by end users
   DelayNodeImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   DelayNodeImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-    : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
@@ -37416,21 +37427,22 @@ class DelayNodeImpl extends RustOpaque implements DelayNode {
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiNodeDelayNodeSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiNodeDelayNodeSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 }
 
 @sealed
 class DummyStructImpl extends RustOpaque implements DummyStruct {
   // Not to be used by end users
   DummyStructImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   DummyStructImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-    : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
@@ -37447,7 +37459,7 @@ class DynamicsCompressorNodeImpl extends RustOpaque
     implements DynamicsCompressorNode {
   // Not to be used by end users
   DynamicsCompressorNodeImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   DynamicsCompressorNodeImpl.frbInternalSseDecode(
@@ -37457,17 +37469,11 @@ class DynamicsCompressorNodeImpl extends RustOpaque
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib
-        .instance
-        .api
-        .rust_arc_increment_strong_count_DynamicsCompressorNode,
+        .instance.api.rust_arc_increment_strong_count_DynamicsCompressorNode,
     rustArcDecrementStrongCount: RustLib
-        .instance
-        .api
-        .rust_arc_decrement_strong_count_DynamicsCompressorNode,
+        .instance.api.rust_arc_decrement_strong_count_DynamicsCompressorNode,
     rustArcDecrementStrongCountPtr: RustLib
-        .instance
-        .api
-        .rust_arc_decrement_strong_count_DynamicsCompressorNodePtr,
+        .instance.api.rust_arc_decrement_strong_count_DynamicsCompressorNodePtr,
   );
 
   AudioParam get attack =>
@@ -37506,13 +37512,13 @@ class DynamicsCompressorNodeImpl extends RustOpaque
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required int output}) => RustLib.instance.api
-      .webAudioApiNodeDynamicsCompressorNodeDisconnectOutput(
+          .webAudioApiNodeDynamicsCompressorNodeDisconnectOutput(
         that: this,
         output: output,
       );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
-      .webAudioApiNodeDynamicsCompressorNodeFrbOverrideConnect(
+          .webAudioApiNodeDynamicsCompressorNodeFrbOverrideConnect(
         that: this,
         dest: dest,
       );
@@ -37539,8 +37545,9 @@ class DynamicsCompressorNodeImpl extends RustOpaque
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api
-      .webAudioApiNodeDynamicsCompressorNodeSetOnProcessorError(
+  }) =>
+      RustLib.instance.api
+          .webAudioApiNodeDynamicsCompressorNodeSetOnProcessorError(
         that: this,
         callback: callback,
       );
@@ -37553,11 +37560,11 @@ class DynamicsCompressorNodeImpl extends RustOpaque
 class EventImpl extends RustOpaque implements Event {
   // Not to be used by end users
   EventImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   EventImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-    : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
@@ -37575,11 +37582,11 @@ class EventImpl extends RustOpaque implements Event {
 class GainNodeImpl extends RustOpaque implements GainNode {
   // Not to be used by end users
   GainNodeImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   GainNodeImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-    : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
@@ -37641,21 +37648,22 @@ class GainNodeImpl extends RustOpaque implements GainNode {
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiNodeGainNodeSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiNodeGainNodeSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 }
 
 @sealed
 class IirFilterNodeImpl extends RustOpaque implements IirFilterNode {
   // Not to be used by end users
   IirFilterNodeImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   IirFilterNodeImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-    : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
@@ -37715,10 +37723,11 @@ class IirFilterNodeImpl extends RustOpaque implements IirFilterNode {
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiNodeIirFilterNodeSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiNodeIirFilterNodeSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 }
 
 @sealed
@@ -37726,7 +37735,7 @@ class MediaElementAudioSourceNodeImpl extends RustOpaque
     implements MediaElementAudioSourceNode {
   // Not to be used by end users
   MediaElementAudioSourceNodeImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   MediaElementAudioSourceNodeImpl.frbInternalSseDecode(
@@ -37735,17 +37744,11 @@ class MediaElementAudioSourceNodeImpl extends RustOpaque
   ) : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance
-        .api
+    rustArcIncrementStrongCount: RustLib.instance.api
         .rust_arc_increment_strong_count_MediaElementAudioSourceNode,
-    rustArcDecrementStrongCount: RustLib
-        .instance
-        .api
+    rustArcDecrementStrongCount: RustLib.instance.api
         .rust_arc_decrement_strong_count_MediaElementAudioSourceNode,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance
-        .api
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_MediaElementAudioSourceNodePtr,
   );
 
@@ -37765,13 +37768,13 @@ class MediaElementAudioSourceNodeImpl extends RustOpaque
   /// Represents an enumerated value describing the meaning of the channels. This interpretation
   /// will define how audio up-mixing and down-mixing will happen.
   Future<ChannelInterpretation> channelInterpretation() => RustLib.instance.api
-      .webAudioApiNodeMediaElementAudioSourceNodeChannelInterpretation(
+          .webAudioApiNodeMediaElementAudioSourceNodeChannelInterpretation(
         that: this,
       );
 
   /// Unset the callback to run when an unhandled exception occurs in the audio processor.
   Future<void> clearOnprocessorerror() => RustLib.instance.api
-      .webAudioApiNodeMediaElementAudioSourceNodeClearOnprocessorerror(
+          .webAudioApiNodeMediaElementAudioSourceNodeClearOnprocessorerror(
         that: this,
       );
 
@@ -37786,13 +37789,13 @@ class MediaElementAudioSourceNodeImpl extends RustOpaque
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required int output}) => RustLib.instance.api
-      .webAudioApiNodeMediaElementAudioSourceNodeDisconnectOutput(
+          .webAudioApiNodeMediaElementAudioSourceNodeDisconnectOutput(
         that: this,
         output: output,
       );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
-      .webAudioApiNodeMediaElementAudioSourceNodeFrbOverrideConnect(
+          .webAudioApiNodeMediaElementAudioSourceNodeFrbOverrideConnect(
         that: this,
         dest: dest,
       );
@@ -37808,8 +37811,9 @@ class MediaElementAudioSourceNodeImpl extends RustOpaque
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api
-      .webAudioApiNodeMediaElementAudioSourceNodeSetOnProcessorError(
+  }) =>
+      RustLib.instance.api
+          .webAudioApiNodeMediaElementAudioSourceNodeSetOnProcessorError(
         that: this,
         callback: callback,
       );
@@ -37819,11 +37823,11 @@ class MediaElementAudioSourceNodeImpl extends RustOpaque
 class MediaElementImpl extends RustOpaque implements MediaElement {
   // Not to be used by end users
   MediaElementImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   MediaElementImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-    : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
@@ -37872,11 +37876,11 @@ class MediaElementImpl extends RustOpaque implements MediaElement {
 class MediaRecorderImpl extends RustOpaque implements MediaRecorder {
   // Not to be used by end users
   MediaRecorderImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   MediaRecorderImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-    : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
@@ -37913,7 +37917,7 @@ class MediaStreamAudioDestinationNodeImpl extends RustOpaque
     implements MediaStreamAudioDestinationNode {
   // Not to be used by end users
   MediaStreamAudioDestinationNodeImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   MediaStreamAudioDestinationNodeImpl.frbInternalSseDecode(
@@ -37922,17 +37926,11 @@ class MediaStreamAudioDestinationNodeImpl extends RustOpaque
   ) : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance
-        .api
+    rustArcIncrementStrongCount: RustLib.instance.api
         .rust_arc_increment_strong_count_MediaStreamAudioDestinationNode,
-    rustArcDecrementStrongCount: RustLib
-        .instance
-        .api
+    rustArcDecrementStrongCount: RustLib.instance.api
         .rust_arc_decrement_strong_count_MediaStreamAudioDestinationNode,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance
-        .api
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_MediaStreamAudioDestinationNodePtr,
   );
 
@@ -37947,20 +37945,20 @@ class MediaStreamAudioDestinationNodeImpl extends RustOpaque
   /// Represents an enumerated value describing the way channels must be matched between the
   /// node's inputs and outputs.
   Future<ChannelCountMode> channelCountMode() => RustLib.instance.api
-      .webAudioApiNodeMediaStreamAudioDestinationNodeChannelCountMode(
+          .webAudioApiNodeMediaStreamAudioDestinationNodeChannelCountMode(
         that: this,
       );
 
   /// Represents an enumerated value describing the meaning of the channels. This interpretation
   /// will define how audio up-mixing and down-mixing will happen.
   Future<ChannelInterpretation> channelInterpretation() => RustLib.instance.api
-      .webAudioApiNodeMediaStreamAudioDestinationNodeChannelInterpretation(
+          .webAudioApiNodeMediaStreamAudioDestinationNodeChannelInterpretation(
         that: this,
       );
 
   /// Unset the callback to run when an unhandled exception occurs in the audio processor.
   Future<void> clearOnprocessorerror() => RustLib.instance.api
-      .webAudioApiNodeMediaStreamAudioDestinationNodeClearOnprocessorerror(
+          .webAudioApiNodeMediaStreamAudioDestinationNodeClearOnprocessorerror(
         that: this,
       );
 
@@ -37975,13 +37973,13 @@ class MediaStreamAudioDestinationNodeImpl extends RustOpaque
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required int output}) => RustLib.instance.api
-      .webAudioApiNodeMediaStreamAudioDestinationNodeDisconnectOutput(
+          .webAudioApiNodeMediaStreamAudioDestinationNodeDisconnectOutput(
         that: this,
         output: output,
       );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
-      .webAudioApiNodeMediaStreamAudioDestinationNodeFrbOverrideConnect(
+          .webAudioApiNodeMediaStreamAudioDestinationNodeFrbOverrideConnect(
         that: this,
         dest: dest,
       );
@@ -37990,7 +37988,7 @@ class MediaStreamAudioDestinationNodeImpl extends RustOpaque
       .webAudioApiNodeMediaStreamAudioDestinationNodeNumberOfInputs(that: this);
 
   Future<int> numberOfOutputs() => RustLib.instance.api
-      .webAudioApiNodeMediaStreamAudioDestinationNodeNumberOfOutputs(
+          .webAudioApiNodeMediaStreamAudioDestinationNodeNumberOfOutputs(
         that: this,
       );
 
@@ -37999,8 +37997,9 @@ class MediaStreamAudioDestinationNodeImpl extends RustOpaque
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api
-      .webAudioApiNodeMediaStreamAudioDestinationNodeSetOnProcessorError(
+  }) =>
+      RustLib.instance.api
+          .webAudioApiNodeMediaStreamAudioDestinationNodeSetOnProcessorError(
         that: this,
         callback: callback,
       );
@@ -38008,8 +38007,8 @@ class MediaStreamAudioDestinationNodeImpl extends RustOpaque
   /// A [`MediaStream`] producing audio buffers with the same number of channels as the node
   /// itself
   Future<MediaStream> stream() => Future.value(
-    MediaStreamProxyVariantMediaStreamAudioDestinationNodeStream(this),
-  );
+        MediaStreamProxyVariantMediaStreamAudioDestinationNodeStream(this),
+      );
 }
 
 @sealed
@@ -38017,7 +38016,7 @@ class MediaStreamAudioSourceNodeImpl extends RustOpaque
     implements MediaStreamAudioSourceNode {
   // Not to be used by end users
   MediaStreamAudioSourceNodeImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   MediaStreamAudioSourceNodeImpl.frbInternalSseDecode(
@@ -38026,17 +38025,11 @@ class MediaStreamAudioSourceNodeImpl extends RustOpaque
   ) : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance
-        .api
+    rustArcIncrementStrongCount: RustLib.instance.api
         .rust_arc_increment_strong_count_MediaStreamAudioSourceNode,
-    rustArcDecrementStrongCount: RustLib
-        .instance
-        .api
+    rustArcDecrementStrongCount: RustLib.instance.api
         .rust_arc_decrement_strong_count_MediaStreamAudioSourceNode,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance
-        .api
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_MediaStreamAudioSourceNodePtr,
   );
 
@@ -38056,13 +38049,13 @@ class MediaStreamAudioSourceNodeImpl extends RustOpaque
   /// Represents an enumerated value describing the meaning of the channels. This interpretation
   /// will define how audio up-mixing and down-mixing will happen.
   Future<ChannelInterpretation> channelInterpretation() => RustLib.instance.api
-      .webAudioApiNodeMediaStreamAudioSourceNodeChannelInterpretation(
+          .webAudioApiNodeMediaStreamAudioSourceNodeChannelInterpretation(
         that: this,
       );
 
   /// Unset the callback to run when an unhandled exception occurs in the audio processor.
   Future<void> clearOnprocessorerror() => RustLib.instance.api
-      .webAudioApiNodeMediaStreamAudioSourceNodeClearOnprocessorerror(
+          .webAudioApiNodeMediaStreamAudioSourceNodeClearOnprocessorerror(
         that: this,
       );
 
@@ -38077,13 +38070,13 @@ class MediaStreamAudioSourceNodeImpl extends RustOpaque
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required int output}) => RustLib.instance.api
-      .webAudioApiNodeMediaStreamAudioSourceNodeDisconnectOutput(
+          .webAudioApiNodeMediaStreamAudioSourceNodeDisconnectOutput(
         that: this,
         output: output,
       );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
-      .webAudioApiNodeMediaStreamAudioSourceNodeFrbOverrideConnect(
+          .webAudioApiNodeMediaStreamAudioSourceNodeFrbOverrideConnect(
         that: this,
         dest: dest,
       );
@@ -38099,8 +38092,9 @@ class MediaStreamAudioSourceNodeImpl extends RustOpaque
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api
-      .webAudioApiNodeMediaStreamAudioSourceNodeSetOnProcessorError(
+  }) =>
+      RustLib.instance.api
+          .webAudioApiNodeMediaStreamAudioSourceNodeSetOnProcessorError(
         that: this,
         callback: callback,
       );
@@ -38111,7 +38105,7 @@ class MediaStreamConstraintsImpl extends RustOpaque
     implements MediaStreamConstraints {
   // Not to be used by end users
   MediaStreamConstraintsImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   MediaStreamConstraintsImpl.frbInternalSseDecode(
@@ -38121,17 +38115,11 @@ class MediaStreamConstraintsImpl extends RustOpaque
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib
-        .instance
-        .api
-        .rust_arc_increment_strong_count_MediaStreamConstraints,
+        .instance.api.rust_arc_increment_strong_count_MediaStreamConstraints,
     rustArcDecrementStrongCount: RustLib
-        .instance
-        .api
-        .rust_arc_decrement_strong_count_MediaStreamConstraints,
+        .instance.api.rust_arc_decrement_strong_count_MediaStreamConstraints,
     rustArcDecrementStrongCountPtr: RustLib
-        .instance
-        .api
-        .rust_arc_decrement_strong_count_MediaStreamConstraintsPtr,
+        .instance.api.rust_arc_decrement_strong_count_MediaStreamConstraintsPtr,
   );
 }
 
@@ -38139,11 +38127,11 @@ class MediaStreamConstraintsImpl extends RustOpaque
 class MediaStreamImpl extends RustOpaque implements MediaStream {
   // Not to be used by end users
   MediaStreamImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   MediaStreamImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-    : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
@@ -38163,7 +38151,7 @@ class MediaStreamTrackAudioSourceNodeImpl extends RustOpaque
     implements MediaStreamTrackAudioSourceNode {
   // Not to be used by end users
   MediaStreamTrackAudioSourceNodeImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   MediaStreamTrackAudioSourceNodeImpl.frbInternalSseDecode(
@@ -38172,17 +38160,11 @@ class MediaStreamTrackAudioSourceNodeImpl extends RustOpaque
   ) : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance
-        .api
+    rustArcIncrementStrongCount: RustLib.instance.api
         .rust_arc_increment_strong_count_MediaStreamTrackAudioSourceNode,
-    rustArcDecrementStrongCount: RustLib
-        .instance
-        .api
+    rustArcDecrementStrongCount: RustLib.instance.api
         .rust_arc_decrement_strong_count_MediaStreamTrackAudioSourceNode,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance
-        .api
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_MediaStreamTrackAudioSourceNodePtr,
   );
 
@@ -38197,20 +38179,20 @@ class MediaStreamTrackAudioSourceNodeImpl extends RustOpaque
   /// Represents an enumerated value describing the way channels must be matched between the
   /// node's inputs and outputs.
   Future<ChannelCountMode> channelCountMode() => RustLib.instance.api
-      .webAudioApiNodeMediaStreamTrackAudioSourceNodeChannelCountMode(
+          .webAudioApiNodeMediaStreamTrackAudioSourceNodeChannelCountMode(
         that: this,
       );
 
   /// Represents an enumerated value describing the meaning of the channels. This interpretation
   /// will define how audio up-mixing and down-mixing will happen.
   Future<ChannelInterpretation> channelInterpretation() => RustLib.instance.api
-      .webAudioApiNodeMediaStreamTrackAudioSourceNodeChannelInterpretation(
+          .webAudioApiNodeMediaStreamTrackAudioSourceNodeChannelInterpretation(
         that: this,
       );
 
   /// Unset the callback to run when an unhandled exception occurs in the audio processor.
   Future<void> clearOnprocessorerror() => RustLib.instance.api
-      .webAudioApiNodeMediaStreamTrackAudioSourceNodeClearOnprocessorerror(
+          .webAudioApiNodeMediaStreamTrackAudioSourceNodeClearOnprocessorerror(
         that: this,
       );
 
@@ -38225,13 +38207,13 @@ class MediaStreamTrackAudioSourceNodeImpl extends RustOpaque
   /// This function will panic when
   /// - if the output port is out of bounds for this node
   Future<void> disconnectOutput({required int output}) => RustLib.instance.api
-      .webAudioApiNodeMediaStreamTrackAudioSourceNodeDisconnectOutput(
+          .webAudioApiNodeMediaStreamTrackAudioSourceNodeDisconnectOutput(
         that: this,
         output: output,
       );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
-      .webAudioApiNodeMediaStreamTrackAudioSourceNodeFrbOverrideConnect(
+          .webAudioApiNodeMediaStreamTrackAudioSourceNodeFrbOverrideConnect(
         that: this,
         dest: dest,
       );
@@ -38240,7 +38222,7 @@ class MediaStreamTrackAudioSourceNodeImpl extends RustOpaque
       .webAudioApiNodeMediaStreamTrackAudioSourceNodeNumberOfInputs(that: this);
 
   Future<int> numberOfOutputs() => RustLib.instance.api
-      .webAudioApiNodeMediaStreamTrackAudioSourceNodeNumberOfOutputs(
+          .webAudioApiNodeMediaStreamTrackAudioSourceNodeNumberOfOutputs(
         that: this,
       );
 
@@ -38249,8 +38231,9 @@ class MediaStreamTrackAudioSourceNodeImpl extends RustOpaque
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api
-      .webAudioApiNodeMediaStreamTrackAudioSourceNodeSetOnProcessorError(
+  }) =>
+      RustLib.instance.api
+          .webAudioApiNodeMediaStreamTrackAudioSourceNodeSetOnProcessorError(
         that: this,
         callback: callback,
       );
@@ -38260,7 +38243,7 @@ class MediaStreamTrackAudioSourceNodeImpl extends RustOpaque
 class MediaStreamTrackImpl extends RustOpaque implements MediaStreamTrack {
   // Not to be used by end users
   MediaStreamTrackImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   MediaStreamTrackImpl.frbInternalSseDecode(
@@ -38274,9 +38257,7 @@ class MediaStreamTrackImpl extends RustOpaque implements MediaStreamTrack {
     rustArcDecrementStrongCount:
         RustLib.instance.api.rust_arc_decrement_strong_count_MediaStreamTrack,
     rustArcDecrementStrongCountPtr: RustLib
-        .instance
-        .api
-        .rust_arc_decrement_strong_count_MediaStreamTrackPtr,
+        .instance.api.rust_arc_decrement_strong_count_MediaStreamTrackPtr,
   );
 
   Future<void> close() => RustLib.instance.api
@@ -38291,7 +38272,7 @@ class OfflineAudioCompletionEventImpl extends RustOpaque
     implements OfflineAudioCompletionEvent {
   // Not to be used by end users
   OfflineAudioCompletionEventImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   OfflineAudioCompletionEventImpl.frbInternalSseDecode(
@@ -38300,17 +38281,11 @@ class OfflineAudioCompletionEventImpl extends RustOpaque
   ) : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance
-        .api
+    rustArcIncrementStrongCount: RustLib.instance.api
         .rust_arc_increment_strong_count_OfflineAudioCompletionEvent,
-    rustArcDecrementStrongCount: RustLib
-        .instance
-        .api
+    rustArcDecrementStrongCount: RustLib.instance.api
         .rust_arc_decrement_strong_count_OfflineAudioCompletionEvent,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance
-        .api
+    rustArcDecrementStrongCountPtr: RustLib.instance.api
         .rust_arc_decrement_strong_count_OfflineAudioCompletionEventPtr,
   );
 
@@ -38318,18 +38293,18 @@ class OfflineAudioCompletionEventImpl extends RustOpaque
       .webAudioApiOfflineAudioCompletionEventAutoAccessorGetEvent(that: this);
 
   AudioBuffer get renderedBuffer => RustLib.instance.api
-      .webAudioApiOfflineAudioCompletionEventAutoAccessorGetRenderedBuffer(
+          .webAudioApiOfflineAudioCompletionEventAutoAccessorGetRenderedBuffer(
         that: this,
       );
 
   set event(Event event) => RustLib.instance.api
-      .webAudioApiOfflineAudioCompletionEventAutoAccessorSetEvent(
+          .webAudioApiOfflineAudioCompletionEventAutoAccessorSetEvent(
         that: this,
         event: event,
       );
 
   set renderedBuffer(AudioBuffer renderedBuffer) => RustLib.instance.api
-      .webAudioApiOfflineAudioCompletionEventAutoAccessorSetRenderedBuffer(
+          .webAudioApiOfflineAudioCompletionEventAutoAccessorSetRenderedBuffer(
         that: this,
         renderedBuffer: renderedBuffer,
       );
@@ -38340,7 +38315,7 @@ class OfflineAudioContextImpl extends RustOpaque
     implements OfflineAudioContext {
   // Not to be used by end users
   OfflineAudioContextImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   OfflineAudioContextImpl.frbInternalSseDecode(
@@ -38350,17 +38325,11 @@ class OfflineAudioContextImpl extends RustOpaque
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib
-        .instance
-        .api
-        .rust_arc_increment_strong_count_OfflineAudioContext,
+        .instance.api.rust_arc_increment_strong_count_OfflineAudioContext,
     rustArcDecrementStrongCount: RustLib
-        .instance
-        .api
-        .rust_arc_decrement_strong_count_OfflineAudioContext,
+        .instance.api.rust_arc_decrement_strong_count_OfflineAudioContext,
     rustArcDecrementStrongCountPtr: RustLib
-        .instance
-        .api
-        .rust_arc_decrement_strong_count_OfflineAudioContextPtr,
+        .instance.api.rust_arc_decrement_strong_count_OfflineAudioContextPtr,
   );
 
   /// Unset the callback to run when the rendering has completed
@@ -38381,8 +38350,9 @@ class OfflineAudioContextImpl extends RustOpaque
   Future<(AudioParam, AudioParamId)> createAudioParam({
     required AudioParamDescriptor opts,
     required AudioContextRegistration dest,
-  }) => RustLib.instance.api
-      .webAudioApiContextOfflineAudioContextCreateAudioParam(
+  }) =>
+      RustLib.instance.api
+          .webAudioApiContextOfflineAudioContextCreateAudioParam(
         that: this,
         opts: opts,
         dest: dest,
@@ -38401,12 +38371,13 @@ class OfflineAudioContextImpl extends RustOpaque
     required int numberOfChannels,
     required int length,
     required double sampleRate,
-  }) => RustLib.instance.api.webAudioApiContextOfflineAudioContextCreateBuffer(
-    that: this,
-    numberOfChannels: numberOfChannels,
-    length: length,
-    sampleRate: sampleRate,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiContextOfflineAudioContextCreateBuffer(
+        that: this,
+        numberOfChannels: numberOfChannels,
+        length: length,
+        sampleRate: sampleRate,
+      );
 
   /// Creates an `AudioBufferSourceNode`
   Future<AudioBufferSourceNode> createBufferSource() => RustLib.instance.api
@@ -38415,8 +38386,9 @@ class OfflineAudioContextImpl extends RustOpaque
   /// Creates a `ChannelMergerNode`
   Future<ChannelMergerNode> createChannelMerger({
     required int numberOfInputs,
-  }) => RustLib.instance.api
-      .webAudioApiContextOfflineAudioContextCreateChannelMerger(
+  }) =>
+      RustLib.instance.api
+          .webAudioApiContextOfflineAudioContextCreateChannelMerger(
         that: this,
         numberOfInputs: numberOfInputs,
       );
@@ -38424,8 +38396,9 @@ class OfflineAudioContextImpl extends RustOpaque
   /// Creates a `ChannelSplitterNode`
   Future<ChannelSplitterNode> createChannelSplitter({
     required int numberOfOutputs,
-  }) => RustLib.instance.api
-      .webAudioApiContextOfflineAudioContextCreateChannelSplitter(
+  }) =>
+      RustLib.instance.api
+          .webAudioApiContextOfflineAudioContextCreateChannelSplitter(
         that: this,
         numberOfOutputs: numberOfOutputs,
       );
@@ -38446,10 +38419,9 @@ class OfflineAudioContextImpl extends RustOpaque
       );
 
   /// Creates a `DynamicsCompressorNode`, compressing the audio signal
-  Future<DynamicsCompressorNode> createDynamicsCompressor() => RustLib
-      .instance
-      .api
-      .webAudioApiContextOfflineAudioContextCreateDynamicsCompressor(
+  Future<DynamicsCompressorNode> createDynamicsCompressor() =>
+      RustLib.instance.api
+          .webAudioApiContextOfflineAudioContextCreateDynamicsCompressor(
         that: this,
       );
 
@@ -38489,8 +38461,9 @@ class OfflineAudioContextImpl extends RustOpaque
   /// argument with the periodic wave options.
   Future<PeriodicWave> createPeriodicWave({
     required PeriodicWaveOptions options,
-  }) => RustLib.instance.api
-      .webAudioApiContextOfflineAudioContextCreatePeriodicWave(
+  }) =>
+      RustLib.instance.api
+          .webAudioApiContextOfflineAudioContextCreatePeriodicWave(
         that: this,
         options: options,
       );
@@ -38507,8 +38480,9 @@ class OfflineAudioContextImpl extends RustOpaque
     required int bufferSize,
     required int numberOfInputChannels,
     required int numberOfOutputChannels,
-  }) => RustLib.instance.api
-      .webAudioApiContextOfflineAudioContextCreateScriptProcessor(
+  }) =>
+      RustLib.instance.api
+          .webAudioApiContextOfflineAudioContextCreateScriptProcessor(
         that: this,
         bufferSize: bufferSize,
         numberOfInputChannels: numberOfInputChannels,
@@ -38555,10 +38529,11 @@ class OfflineAudioContextImpl extends RustOpaque
 
   Future<void> setOnComplete({
     required FutureOr<void> Function(OfflineAudioCompletionEvent) callback,
-  }) => RustLib.instance.api.webAudioApiContextOfflineAudioContextSetOnComplete(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiContextOfflineAudioContextSetOnComplete(
+        that: this,
+        callback: callback,
+      );
 
   /// Given the current connections and scheduled changes, starts rendering audio.
   ///
@@ -38644,11 +38619,11 @@ class OfflineAudioContextImpl extends RustOpaque
 class OscillatorNodeImpl extends RustOpaque implements OscillatorNode {
   // Not to be used by end users
   OscillatorNodeImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   OscillatorNodeImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-    : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
@@ -38738,10 +38713,11 @@ class OscillatorNodeImpl extends RustOpaque implements OscillatorNode {
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiNodeOscillatorNodeSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiNodeOscillatorNodeSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Sets a `PeriodicWave` which describes a waveform to be used by the oscillator.
   ///
@@ -38786,11 +38762,11 @@ class OscillatorNodeImpl extends RustOpaque implements OscillatorNode {
 class PannerNodeImpl extends RustOpaque implements PannerNode {
   // Not to be used by end users
   PannerNodeImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   PannerNodeImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-    : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
@@ -38887,15 +38863,13 @@ class PannerNodeImpl extends RustOpaque implements PannerNode {
   Future<double> rolloffFactor() =>
       RustLib.instance.api.webAudioApiNodePannerNodeRolloffFactor(that: this);
 
-  Future<void> setConeInnerAngle({required double value}) => RustLib
-      .instance
-      .api
-      .webAudioApiNodePannerNodeSetConeInnerAngle(that: this, value: value);
+  Future<void> setConeInnerAngle({required double value}) =>
+      RustLib.instance.api
+          .webAudioApiNodePannerNodeSetConeInnerAngle(that: this, value: value);
 
-  Future<void> setConeOuterAngle({required double value}) => RustLib
-      .instance
-      .api
-      .webAudioApiNodePannerNodeSetConeOuterAngle(that: this, value: value);
+  Future<void> setConeOuterAngle({required double value}) =>
+      RustLib.instance.api
+          .webAudioApiNodePannerNodeSetConeOuterAngle(that: this, value: value);
 
   /// Set the coneOuterGain attribute
   ///
@@ -38905,10 +38879,9 @@ class PannerNodeImpl extends RustOpaque implements PannerNode {
   Future<void> setConeOuterGain({required double value}) => RustLib.instance.api
       .webAudioApiNodePannerNodeSetConeOuterGain(that: this, value: value);
 
-  Future<void> setDistanceModel({required DistanceModelType value}) => RustLib
-      .instance
-      .api
-      .webAudioApiNodePannerNodeSetDistanceModel(that: this, value: value);
+  Future<void> setDistanceModel({required DistanceModelType value}) =>
+      RustLib.instance.api
+          .webAudioApiNodePannerNodeSetDistanceModel(that: this, value: value);
 
   /// Set the maxDistance attribute
   ///
@@ -38920,37 +38893,39 @@ class PannerNodeImpl extends RustOpaque implements PannerNode {
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiNodePannerNodeSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiNodePannerNodeSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   Future<void> setOrientation({
     required double x,
     required double y,
     required double z,
-  }) => RustLib.instance.api.webAudioApiNodePannerNodeSetOrientation(
-    that: this,
-    x: x,
-    y: y,
-    z: z,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiNodePannerNodeSetOrientation(
+        that: this,
+        x: x,
+        y: y,
+        z: z,
+      );
 
-  Future<void> setPanningModel({required PanningModelType value}) => RustLib
-      .instance
-      .api
-      .webAudioApiNodePannerNodeSetPanningModel(that: this, value: value);
+  Future<void> setPanningModel({required PanningModelType value}) =>
+      RustLib.instance.api
+          .webAudioApiNodePannerNodeSetPanningModel(that: this, value: value);
 
   Future<void> setPosition({
     required double x,
     required double y,
     required double z,
-  }) => RustLib.instance.api.webAudioApiNodePannerNodeSetPosition(
-    that: this,
-    x: x,
-    y: y,
-    z: z,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiNodePannerNodeSetPosition(
+        that: this,
+        x: x,
+        y: y,
+        z: z,
+      );
 
   /// Set the refDistance attribute
   ///
@@ -38973,11 +38948,11 @@ class PannerNodeImpl extends RustOpaque implements PannerNode {
 class PeriodicWaveImpl extends RustOpaque implements PeriodicWave {
   // Not to be used by end users
   PeriodicWaveImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   PeriodicWaveImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-    : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
@@ -38994,7 +38969,7 @@ class ScriptProcessorNodeImpl extends RustOpaque
     implements ScriptProcessorNode {
   // Not to be used by end users
   ScriptProcessorNodeImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   ScriptProcessorNodeImpl.frbInternalSseDecode(
@@ -39004,17 +38979,11 @@ class ScriptProcessorNodeImpl extends RustOpaque
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount: RustLib
-        .instance
-        .api
-        .rust_arc_increment_strong_count_ScriptProcessorNode,
+        .instance.api.rust_arc_increment_strong_count_ScriptProcessorNode,
     rustArcDecrementStrongCount: RustLib
-        .instance
-        .api
-        .rust_arc_decrement_strong_count_ScriptProcessorNode,
+        .instance.api.rust_arc_decrement_strong_count_ScriptProcessorNode,
     rustArcDecrementStrongCountPtr: RustLib
-        .instance
-        .api
-        .rust_arc_decrement_strong_count_ScriptProcessorNodePtr,
+        .instance.api.rust_arc_decrement_strong_count_ScriptProcessorNodePtr,
   );
 
   Future<int> bufferSize() => RustLib.instance.api
@@ -39070,8 +39039,9 @@ class ScriptProcessorNodeImpl extends RustOpaque
 
   Future<void> setOnaudioprocess({
     required FutureOr<void> Function(AudioProcessingEvent) callback,
-  }) => RustLib.instance.api
-      .webAudioApiNodeScriptProcessorNodeFrbOverrideSetOnaudioprocess(
+  }) =>
+      RustLib.instance.api
+          .webAudioApiNodeScriptProcessorNodeFrbOverrideSetOnaudioprocess(
         that: this,
         callback: callback,
       );
@@ -39087,8 +39057,9 @@ class ScriptProcessorNodeImpl extends RustOpaque
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api
-      .webAudioApiNodeScriptProcessorNodeSetOnProcessorError(
+  }) =>
+      RustLib.instance.api
+          .webAudioApiNodeScriptProcessorNodeSetOnProcessorError(
         that: this,
         callback: callback,
       );
@@ -39098,7 +39069,7 @@ class ScriptProcessorNodeImpl extends RustOpaque
 class StereoPannerNodeImpl extends RustOpaque implements StereoPannerNode {
   // Not to be used by end users
   StereoPannerNodeImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   StereoPannerNodeImpl.frbInternalSseDecode(
@@ -39112,9 +39083,7 @@ class StereoPannerNodeImpl extends RustOpaque implements StereoPannerNode {
     rustArcDecrementStrongCount:
         RustLib.instance.api.rust_arc_decrement_strong_count_StereoPannerNode,
     rustArcDecrementStrongCountPtr: RustLib
-        .instance
-        .api
-        .rust_arc_decrement_strong_count_StereoPannerNodePtr,
+        .instance.api.rust_arc_decrement_strong_count_StereoPannerNodePtr,
   );
 
   Future<void> channelConfig() => RustLib.instance.api
@@ -39175,21 +39144,22 @@ class StereoPannerNodeImpl extends RustOpaque implements StereoPannerNode {
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiNodeStereoPannerNodeSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiNodeStereoPannerNodeSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 }
 
 @sealed
 class WaveShaperNodeImpl extends RustOpaque implements WaveShaperNode {
   // Not to be used by end users
   WaveShaperNodeImpl.frbInternalDcoDecode(List<dynamic> wire)
-    : super.frbInternalDcoDecode(wire, _kStaticData);
+      : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   WaveShaperNodeImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-    : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
@@ -39272,10 +39242,11 @@ class WaveShaperNodeImpl extends RustOpaque implements WaveShaperNode {
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiNodeWaveShaperNodeSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiNodeWaveShaperNodeSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// set the `oversample` factor of this node
   ///
@@ -39374,11 +39345,12 @@ class AudioParamProxyVariantAudioBufferSourceNodeDetune
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -39392,11 +39364,12 @@ class AudioParamProxyVariantAudioBufferSourceNodeDetune
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -39418,17 +39391,17 @@ class AudioParamProxyVariantAudioBufferSourceNodeDetune
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -39442,21 +39415,22 @@ class AudioParamProxyVariantAudioBufferSourceNodeDetune
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -39466,11 +39440,12 @@ class AudioParamProxyVariantAudioBufferSourceNodeDetune
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -39485,12 +39460,13 @@ class AudioParamProxyVariantAudioBufferSourceNodeDetune
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -39582,11 +39558,12 @@ class AudioParamProxyVariantAudioBufferSourceNodePlaybackRate
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -39600,11 +39577,12 @@ class AudioParamProxyVariantAudioBufferSourceNodePlaybackRate
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -39626,17 +39604,17 @@ class AudioParamProxyVariantAudioBufferSourceNodePlaybackRate
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -39650,21 +39628,22 @@ class AudioParamProxyVariantAudioBufferSourceNodePlaybackRate
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -39674,11 +39653,12 @@ class AudioParamProxyVariantAudioBufferSourceNodePlaybackRate
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -39693,12 +39673,13 @@ class AudioParamProxyVariantAudioBufferSourceNodePlaybackRate
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -39790,11 +39771,12 @@ class AudioParamProxyVariantAudioListenerForwardX
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -39808,11 +39790,12 @@ class AudioParamProxyVariantAudioListenerForwardX
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -39834,17 +39817,17 @@ class AudioParamProxyVariantAudioListenerForwardX
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -39858,21 +39841,22 @@ class AudioParamProxyVariantAudioListenerForwardX
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -39882,11 +39866,12 @@ class AudioParamProxyVariantAudioListenerForwardX
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -39901,12 +39886,13 @@ class AudioParamProxyVariantAudioListenerForwardX
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -39998,11 +39984,12 @@ class AudioParamProxyVariantAudioListenerForwardY
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -40016,11 +40003,12 @@ class AudioParamProxyVariantAudioListenerForwardY
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -40042,17 +40030,17 @@ class AudioParamProxyVariantAudioListenerForwardY
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -40066,21 +40054,22 @@ class AudioParamProxyVariantAudioListenerForwardY
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -40090,11 +40079,12 @@ class AudioParamProxyVariantAudioListenerForwardY
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -40109,12 +40099,13 @@ class AudioParamProxyVariantAudioListenerForwardY
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -40206,11 +40197,12 @@ class AudioParamProxyVariantAudioListenerForwardZ
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -40224,11 +40216,12 @@ class AudioParamProxyVariantAudioListenerForwardZ
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -40250,17 +40243,17 @@ class AudioParamProxyVariantAudioListenerForwardZ
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -40274,21 +40267,22 @@ class AudioParamProxyVariantAudioListenerForwardZ
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -40298,11 +40292,12 @@ class AudioParamProxyVariantAudioListenerForwardZ
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -40317,12 +40312,13 @@ class AudioParamProxyVariantAudioListenerForwardZ
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -40414,11 +40410,12 @@ class AudioParamProxyVariantAudioListenerPositionX
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -40432,11 +40429,12 @@ class AudioParamProxyVariantAudioListenerPositionX
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -40458,17 +40456,17 @@ class AudioParamProxyVariantAudioListenerPositionX
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -40482,21 +40480,22 @@ class AudioParamProxyVariantAudioListenerPositionX
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -40506,11 +40505,12 @@ class AudioParamProxyVariantAudioListenerPositionX
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -40525,12 +40525,13 @@ class AudioParamProxyVariantAudioListenerPositionX
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -40622,11 +40623,12 @@ class AudioParamProxyVariantAudioListenerPositionY
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -40640,11 +40642,12 @@ class AudioParamProxyVariantAudioListenerPositionY
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -40666,17 +40669,17 @@ class AudioParamProxyVariantAudioListenerPositionY
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -40690,21 +40693,22 @@ class AudioParamProxyVariantAudioListenerPositionY
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -40714,11 +40718,12 @@ class AudioParamProxyVariantAudioListenerPositionY
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -40733,12 +40738,13 @@ class AudioParamProxyVariantAudioListenerPositionY
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -40830,11 +40836,12 @@ class AudioParamProxyVariantAudioListenerPositionZ
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -40848,11 +40855,12 @@ class AudioParamProxyVariantAudioListenerPositionZ
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -40874,17 +40882,17 @@ class AudioParamProxyVariantAudioListenerPositionZ
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -40898,21 +40906,22 @@ class AudioParamProxyVariantAudioListenerPositionZ
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -40922,11 +40931,12 @@ class AudioParamProxyVariantAudioListenerPositionZ
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -40941,12 +40951,13 @@ class AudioParamProxyVariantAudioListenerPositionZ
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -41038,11 +41049,12 @@ class AudioParamProxyVariantAudioListenerUpX
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -41056,11 +41068,12 @@ class AudioParamProxyVariantAudioListenerUpX
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -41082,17 +41095,17 @@ class AudioParamProxyVariantAudioListenerUpX
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -41106,21 +41119,22 @@ class AudioParamProxyVariantAudioListenerUpX
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -41130,11 +41144,12 @@ class AudioParamProxyVariantAudioListenerUpX
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -41149,12 +41164,13 @@ class AudioParamProxyVariantAudioListenerUpX
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -41246,11 +41262,12 @@ class AudioParamProxyVariantAudioListenerUpY
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -41264,11 +41281,12 @@ class AudioParamProxyVariantAudioListenerUpY
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -41290,17 +41308,17 @@ class AudioParamProxyVariantAudioListenerUpY
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -41314,21 +41332,22 @@ class AudioParamProxyVariantAudioListenerUpY
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -41338,11 +41357,12 @@ class AudioParamProxyVariantAudioListenerUpY
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -41357,12 +41377,13 @@ class AudioParamProxyVariantAudioListenerUpY
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -41454,11 +41475,12 @@ class AudioParamProxyVariantAudioListenerUpZ
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -41472,11 +41494,12 @@ class AudioParamProxyVariantAudioListenerUpZ
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -41498,17 +41521,17 @@ class AudioParamProxyVariantAudioListenerUpZ
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -41522,21 +41545,22 @@ class AudioParamProxyVariantAudioListenerUpZ
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -41546,11 +41570,12 @@ class AudioParamProxyVariantAudioListenerUpZ
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -41565,12 +41590,13 @@ class AudioParamProxyVariantAudioListenerUpZ
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -41662,11 +41688,12 @@ class AudioParamProxyVariantBiquadFilterNodeDetune
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -41680,11 +41707,12 @@ class AudioParamProxyVariantBiquadFilterNodeDetune
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -41706,17 +41734,17 @@ class AudioParamProxyVariantBiquadFilterNodeDetune
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -41730,21 +41758,22 @@ class AudioParamProxyVariantBiquadFilterNodeDetune
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -41754,11 +41783,12 @@ class AudioParamProxyVariantBiquadFilterNodeDetune
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -41773,12 +41803,13 @@ class AudioParamProxyVariantBiquadFilterNodeDetune
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -41870,11 +41901,12 @@ class AudioParamProxyVariantBiquadFilterNodeFrequency
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -41888,11 +41920,12 @@ class AudioParamProxyVariantBiquadFilterNodeFrequency
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -41914,17 +41947,17 @@ class AudioParamProxyVariantBiquadFilterNodeFrequency
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -41938,21 +41971,22 @@ class AudioParamProxyVariantBiquadFilterNodeFrequency
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -41962,11 +41996,12 @@ class AudioParamProxyVariantBiquadFilterNodeFrequency
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -41981,12 +42016,13 @@ class AudioParamProxyVariantBiquadFilterNodeFrequency
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -42078,11 +42114,12 @@ class AudioParamProxyVariantBiquadFilterNodeGain
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -42096,11 +42133,12 @@ class AudioParamProxyVariantBiquadFilterNodeGain
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -42122,17 +42160,17 @@ class AudioParamProxyVariantBiquadFilterNodeGain
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -42146,21 +42184,22 @@ class AudioParamProxyVariantBiquadFilterNodeGain
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -42170,11 +42209,12 @@ class AudioParamProxyVariantBiquadFilterNodeGain
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -42189,12 +42229,13 @@ class AudioParamProxyVariantBiquadFilterNodeGain
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -42286,11 +42327,12 @@ class AudioParamProxyVariantBiquadFilterNodeQ
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -42304,11 +42346,12 @@ class AudioParamProxyVariantBiquadFilterNodeQ
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -42330,17 +42373,17 @@ class AudioParamProxyVariantBiquadFilterNodeQ
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -42354,21 +42397,22 @@ class AudioParamProxyVariantBiquadFilterNodeQ
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -42378,11 +42422,12 @@ class AudioParamProxyVariantBiquadFilterNodeQ
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -42397,12 +42442,13 @@ class AudioParamProxyVariantBiquadFilterNodeQ
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -42494,11 +42540,12 @@ class AudioParamProxyVariantConstantSourceNodeOffset
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -42512,11 +42559,12 @@ class AudioParamProxyVariantConstantSourceNodeOffset
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -42538,17 +42586,17 @@ class AudioParamProxyVariantConstantSourceNodeOffset
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -42562,21 +42610,22 @@ class AudioParamProxyVariantConstantSourceNodeOffset
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -42586,11 +42635,12 @@ class AudioParamProxyVariantConstantSourceNodeOffset
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -42605,12 +42655,13 @@ class AudioParamProxyVariantConstantSourceNodeOffset
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -42702,11 +42753,12 @@ class AudioParamProxyVariantDelayNodeDelayTime
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -42720,11 +42772,12 @@ class AudioParamProxyVariantDelayNodeDelayTime
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -42746,17 +42799,17 @@ class AudioParamProxyVariantDelayNodeDelayTime
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -42770,21 +42823,22 @@ class AudioParamProxyVariantDelayNodeDelayTime
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -42794,11 +42848,12 @@ class AudioParamProxyVariantDelayNodeDelayTime
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -42813,12 +42868,13 @@ class AudioParamProxyVariantDelayNodeDelayTime
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -42910,11 +42966,12 @@ class AudioParamProxyVariantDynamicsCompressorNodeAttack
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -42928,11 +42985,12 @@ class AudioParamProxyVariantDynamicsCompressorNodeAttack
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -42954,17 +43012,17 @@ class AudioParamProxyVariantDynamicsCompressorNodeAttack
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -42978,21 +43036,22 @@ class AudioParamProxyVariantDynamicsCompressorNodeAttack
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -43002,11 +43061,12 @@ class AudioParamProxyVariantDynamicsCompressorNodeAttack
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -43021,12 +43081,13 @@ class AudioParamProxyVariantDynamicsCompressorNodeAttack
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -43118,11 +43179,12 @@ class AudioParamProxyVariantDynamicsCompressorNodeKnee
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -43136,11 +43198,12 @@ class AudioParamProxyVariantDynamicsCompressorNodeKnee
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -43162,17 +43225,17 @@ class AudioParamProxyVariantDynamicsCompressorNodeKnee
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -43186,21 +43249,22 @@ class AudioParamProxyVariantDynamicsCompressorNodeKnee
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -43210,11 +43274,12 @@ class AudioParamProxyVariantDynamicsCompressorNodeKnee
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -43229,12 +43294,13 @@ class AudioParamProxyVariantDynamicsCompressorNodeKnee
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -43326,11 +43392,12 @@ class AudioParamProxyVariantDynamicsCompressorNodeRatio
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -43344,11 +43411,12 @@ class AudioParamProxyVariantDynamicsCompressorNodeRatio
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -43370,17 +43438,17 @@ class AudioParamProxyVariantDynamicsCompressorNodeRatio
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -43394,21 +43462,22 @@ class AudioParamProxyVariantDynamicsCompressorNodeRatio
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -43418,11 +43487,12 @@ class AudioParamProxyVariantDynamicsCompressorNodeRatio
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -43437,12 +43507,13 @@ class AudioParamProxyVariantDynamicsCompressorNodeRatio
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -43534,11 +43605,12 @@ class AudioParamProxyVariantDynamicsCompressorNodeRelease
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -43552,11 +43624,12 @@ class AudioParamProxyVariantDynamicsCompressorNodeRelease
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -43578,17 +43651,17 @@ class AudioParamProxyVariantDynamicsCompressorNodeRelease
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -43602,21 +43675,22 @@ class AudioParamProxyVariantDynamicsCompressorNodeRelease
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -43626,11 +43700,12 @@ class AudioParamProxyVariantDynamicsCompressorNodeRelease
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -43645,12 +43720,13 @@ class AudioParamProxyVariantDynamicsCompressorNodeRelease
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -43742,11 +43818,12 @@ class AudioParamProxyVariantDynamicsCompressorNodeThreshold
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -43760,11 +43837,12 @@ class AudioParamProxyVariantDynamicsCompressorNodeThreshold
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -43786,17 +43864,17 @@ class AudioParamProxyVariantDynamicsCompressorNodeThreshold
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -43810,21 +43888,22 @@ class AudioParamProxyVariantDynamicsCompressorNodeThreshold
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -43834,11 +43913,12 @@ class AudioParamProxyVariantDynamicsCompressorNodeThreshold
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -43853,12 +43933,13 @@ class AudioParamProxyVariantDynamicsCompressorNodeThreshold
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -43950,11 +44031,12 @@ class AudioParamProxyVariantGainNodeGain
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -43968,11 +44050,12 @@ class AudioParamProxyVariantGainNodeGain
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -43994,17 +44077,17 @@ class AudioParamProxyVariantGainNodeGain
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -44018,21 +44101,22 @@ class AudioParamProxyVariantGainNodeGain
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -44042,11 +44126,12 @@ class AudioParamProxyVariantGainNodeGain
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -44061,12 +44146,13 @@ class AudioParamProxyVariantGainNodeGain
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -44158,11 +44244,12 @@ class AudioParamProxyVariantOscillatorNodeDetune
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -44176,11 +44263,12 @@ class AudioParamProxyVariantOscillatorNodeDetune
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -44202,17 +44290,17 @@ class AudioParamProxyVariantOscillatorNodeDetune
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -44226,21 +44314,22 @@ class AudioParamProxyVariantOscillatorNodeDetune
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -44250,11 +44339,12 @@ class AudioParamProxyVariantOscillatorNodeDetune
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -44269,12 +44359,13 @@ class AudioParamProxyVariantOscillatorNodeDetune
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -44366,11 +44457,12 @@ class AudioParamProxyVariantOscillatorNodeFrequency
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -44384,11 +44476,12 @@ class AudioParamProxyVariantOscillatorNodeFrequency
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -44410,17 +44503,17 @@ class AudioParamProxyVariantOscillatorNodeFrequency
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -44434,21 +44527,22 @@ class AudioParamProxyVariantOscillatorNodeFrequency
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -44458,11 +44552,12 @@ class AudioParamProxyVariantOscillatorNodeFrequency
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -44477,12 +44572,13 @@ class AudioParamProxyVariantOscillatorNodeFrequency
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -44574,11 +44670,12 @@ class AudioParamProxyVariantPannerNodeOrientationX
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -44592,11 +44689,12 @@ class AudioParamProxyVariantPannerNodeOrientationX
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -44618,17 +44716,17 @@ class AudioParamProxyVariantPannerNodeOrientationX
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -44642,21 +44740,22 @@ class AudioParamProxyVariantPannerNodeOrientationX
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -44666,11 +44765,12 @@ class AudioParamProxyVariantPannerNodeOrientationX
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -44685,12 +44785,13 @@ class AudioParamProxyVariantPannerNodeOrientationX
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -44782,11 +44883,12 @@ class AudioParamProxyVariantPannerNodeOrientationY
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -44800,11 +44902,12 @@ class AudioParamProxyVariantPannerNodeOrientationY
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -44826,17 +44929,17 @@ class AudioParamProxyVariantPannerNodeOrientationY
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -44850,21 +44953,22 @@ class AudioParamProxyVariantPannerNodeOrientationY
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -44874,11 +44978,12 @@ class AudioParamProxyVariantPannerNodeOrientationY
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -44893,12 +44998,13 @@ class AudioParamProxyVariantPannerNodeOrientationY
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -44990,11 +45096,12 @@ class AudioParamProxyVariantPannerNodeOrientationZ
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -45008,11 +45115,12 @@ class AudioParamProxyVariantPannerNodeOrientationZ
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -45034,17 +45142,17 @@ class AudioParamProxyVariantPannerNodeOrientationZ
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -45058,21 +45166,22 @@ class AudioParamProxyVariantPannerNodeOrientationZ
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -45082,11 +45191,12 @@ class AudioParamProxyVariantPannerNodeOrientationZ
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -45101,12 +45211,13 @@ class AudioParamProxyVariantPannerNodeOrientationZ
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -45198,11 +45309,12 @@ class AudioParamProxyVariantPannerNodePositionX
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -45216,11 +45328,12 @@ class AudioParamProxyVariantPannerNodePositionX
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -45242,17 +45355,17 @@ class AudioParamProxyVariantPannerNodePositionX
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -45266,21 +45379,22 @@ class AudioParamProxyVariantPannerNodePositionX
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -45290,11 +45404,12 @@ class AudioParamProxyVariantPannerNodePositionX
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -45309,12 +45424,13 @@ class AudioParamProxyVariantPannerNodePositionX
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -45406,11 +45522,12 @@ class AudioParamProxyVariantPannerNodePositionY
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -45424,11 +45541,12 @@ class AudioParamProxyVariantPannerNodePositionY
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -45450,17 +45568,17 @@ class AudioParamProxyVariantPannerNodePositionY
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -45474,21 +45592,22 @@ class AudioParamProxyVariantPannerNodePositionY
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -45498,11 +45617,12 @@ class AudioParamProxyVariantPannerNodePositionY
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -45517,12 +45637,13 @@ class AudioParamProxyVariantPannerNodePositionY
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -45614,11 +45735,12 @@ class AudioParamProxyVariantPannerNodePositionZ
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -45632,11 +45754,12 @@ class AudioParamProxyVariantPannerNodePositionZ
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -45658,17 +45781,17 @@ class AudioParamProxyVariantPannerNodePositionZ
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -45682,21 +45805,22 @@ class AudioParamProxyVariantPannerNodePositionZ
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -45706,11 +45830,12 @@ class AudioParamProxyVariantPannerNodePositionZ
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -45725,12 +45850,13 @@ class AudioParamProxyVariantPannerNodePositionZ
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>
@@ -45822,11 +45948,12 @@ class AudioParamProxyVariantStereoPannerNodePan
   Future<void> exponentialRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamExponentialRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<void> connect({required AudioNode dest}) => RustLib.instance.api
       .webAudioApiAudioParamFrbOverrideConnect(that: this, dest: dest);
@@ -45840,11 +45967,12 @@ class AudioParamProxyVariantStereoPannerNodePan
   Future<void> linearRampToValueAtTime({
     required double value,
     required double endTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
-    that: this,
-    value: value,
-    endTime: endTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamLinearRampToValueAtTime(
+        that: this,
+        value: value,
+        endTime: endTime,
+      );
 
   Future<double> maxValue() =>
       RustLib.instance.api.webAudioApiAudioParamMaxValue(that: this);
@@ -45866,17 +45994,17 @@ class AudioParamProxyVariantStereoPannerNodePan
   /// # Panics
   ///
   /// Some nodes have automation rate constraints and may panic when updating the value.
-  Future<void> setAutomationRate({required AutomationRate value}) => RustLib
-      .instance
-      .api
-      .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
+  Future<void> setAutomationRate({required AutomationRate value}) =>
+      RustLib.instance.api
+          .webAudioApiAudioParamSetAutomationRate(that: this, value: value);
 
   Future<void> setOnProcessorError({
     required FutureOr<void> Function(String) callback,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
-    that: this,
-    callback: callback,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetOnProcessorError(
+        that: this,
+        callback: callback,
+      );
 
   /// Start exponentially approaching the target value at the given time with
   /// a rate having the given time constant.
@@ -45890,21 +46018,22 @@ class AudioParamProxyVariantStereoPannerNodePan
     required double value,
     required double startTime,
     required double timeConstant,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-    timeConstant: timeConstant,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetTargetAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+        timeConstant: timeConstant,
+      );
 
   /// Set the value of the `AudioParam`.
   ///
   /// Is equivalent to calling the `set_value_at_time` method with the current
   /// AudioContext's currentTime
   set value(double value) => RustLib.instance.api.webAudioApiAudioParamSetValue(
-    that: this,
-    value: value,
-  );
+        that: this,
+        value: value,
+      );
 
   /// Schedules a parameter value change at the given time.
   ///
@@ -45914,11 +46043,12 @@ class AudioParamProxyVariantStereoPannerNodePan
   Future<void> setValueAtTime({
     required double value,
     required double startTime,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
-    that: this,
-    value: value,
-    startTime: startTime,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueAtTime(
+        that: this,
+        value: value,
+        startTime: startTime,
+      );
 
   /// Sets an array of arbitrary parameter values starting at the given time
   /// for the given duration.
@@ -45933,12 +46063,13 @@ class AudioParamProxyVariantStereoPannerNodePan
     required List<double> values,
     required double startTime,
     required double duration,
-  }) => RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
-    that: this,
-    values: values,
-    startTime: startTime,
-    duration: duration,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiAudioParamSetValueCurveAtTime(
+        that: this,
+        values: values,
+        startTime: startTime,
+        duration: duration,
+      );
 
   /// Retrieve the current value of the `AudioParam`.
   double get value =>

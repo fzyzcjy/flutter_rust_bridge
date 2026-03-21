@@ -550,11 +550,12 @@ abstract class OfflineAudioContext
     required int numberOfChannels,
     required int length,
     required double sampleRate,
-  }) => RustLib.instance.api.webAudioApiContextOfflineAudioContextNew(
-    numberOfChannels: numberOfChannels,
-    length: length,
-    sampleRate: sampleRate,
-  );
+  }) =>
+      RustLib.instance.api.webAudioApiContextOfflineAudioContextNew(
+        numberOfChannels: numberOfChannels,
+        length: length,
+        sampleRate: sampleRate,
+      );
 
   /// Resumes the progression of the OfflineAudioContext's currentTime when it has been suspended
   ///

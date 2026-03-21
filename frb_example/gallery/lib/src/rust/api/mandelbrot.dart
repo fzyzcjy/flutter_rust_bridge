@@ -13,12 +13,13 @@ Future<Uint8List> drawMandelbrot({
   required Point zoomPoint,
   required double scale,
   required int numThreads,
-}) => RustLib.instance.api.crateApiMandelbrotDrawMandelbrot(
-  imageSize: imageSize,
-  zoomPoint: zoomPoint,
-  scale: scale,
-  numThreads: numThreads,
-);
+}) =>
+    RustLib.instance.api.crateApiMandelbrotDrawMandelbrot(
+      imageSize: imageSize,
+      zoomPoint: zoomPoint,
+      scale: scale,
+      numThreads: numThreads,
+    );
 
 class Point {
   final double x;

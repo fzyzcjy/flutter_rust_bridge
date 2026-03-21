@@ -109,16 +109,14 @@ class Target {
         return [Target.forRustTriple('x86_64-unknown-linux-gnu')!];
       }
     }
-    return all
-        .where((target) {
-          if (Platform.isWindows) {
-            return target.rust.contains('-windows-');
-          } else if (Platform.isMacOS) {
-            return target.darwinPlatform != null;
-          }
-          return false;
-        })
-        .toList(growable: false);
+    return all.where((target) {
+      if (Platform.isWindows) {
+        return target.rust.contains('-windows-');
+      } else if (Platform.isMacOS) {
+        return target.darwinPlatform != null;
+      }
+      return false;
+    }).toList(growable: false);
   }
 
   @override
