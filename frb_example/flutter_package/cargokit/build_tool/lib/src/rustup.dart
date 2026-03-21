@@ -1,3 +1,6 @@
+/// This is copied from Cargokit (which is the official way to use it currently)
+/// Details: https://fzyzcjy.github.io/flutter_rust_bridge/manual/integrate/builtin
+
 import 'dart:io';
 
 import 'package:collection/collection.dart';
@@ -100,7 +103,8 @@ class Rustup {
 
     // To list all non-custom toolchains, we need to filter out lines that
     // don't start with "stable", "beta", or "nightly".
-    final nonCustom = RegExp(r'^((stable|beta|nightly)(-|$)|\d+\.\d+\.\d+(-|$))');
+    final nonCustom =
+        RegExp(r'^((stable|beta|nightly)(-|$)|\d+\.\d+\.\d+(-|$))');
     final lines = res.stdout
         .toString()
         .split('\n')
