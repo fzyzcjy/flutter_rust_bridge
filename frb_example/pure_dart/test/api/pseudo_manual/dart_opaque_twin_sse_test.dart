@@ -15,13 +15,17 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('loopback', () async {
     await futurizeVoidTwinSse(
-      loopBackArrayGetTwinSse(opaque: await loopBackArrayTwinSse(opaque: f)),
+      loopBackArrayGetTwinSse(
+        opaque: await loopBackArrayTwinSse(opaque: f),
+      ),
     );
     await futurizeVoidTwinSse(
       loopBackVecGetTwinSse(opaque: await loopBackVecTwinSse(opaque: f)),
     );
     await futurizeVoidTwinSse(
-      loopBackOptionGetTwinSse(opaque: await loopBackOptionTwinSse(opaque: f)),
+      loopBackOptionGetTwinSse(
+        opaque: await loopBackOptionTwinSse(opaque: f),
+      ),
     );
 
     var back1 = await loopBackTwinSse(opaque: f) as String Function();

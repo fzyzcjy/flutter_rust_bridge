@@ -22,8 +22,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
       functionWithCommentsTripleSlashSingleLineTwinSse(),
     );
     await futurizeVoidTwinSse(
-      StructWithCommentsTwinSse(fieldWithComments: 42).instanceMethodTwinSse(),
+      StructWithCommentsTwinSse(
+        fieldWithComments: 42,
+      ).instanceMethodTwinSse(),
     );
-    await futurizeVoidTwinSse(StructWithCommentsTwinSse.staticMethodTwinSse());
+    await futurizeVoidTwinSse(
+      StructWithCommentsTwinSse.staticMethodTwinSse(),
+    );
   });
 }
