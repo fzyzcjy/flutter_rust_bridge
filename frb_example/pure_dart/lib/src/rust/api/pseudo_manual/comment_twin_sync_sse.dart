@@ -12,15 +12,13 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 /// This is single line comment
 void functionWithCommentsTripleSlashSingleLineTwinSyncSse() => RustLib
-    .instance
-    .api
+    .instance.api
     .crateApiPseudoManualCommentTwinSyncSseFunctionWithCommentsTripleSlashSingleLineTwinSyncSse();
 
 /// This is first line
 /// This is second line
 void functionWithCommentsTripleSlashMultiLineTwinSyncSse() => RustLib
-    .instance
-    .api
+    .instance.api
     .crateApiPseudoManualCommentTwinSyncSseFunctionWithCommentsTripleSlashMultiLineTwinSyncSse();
 
 /// Multiline comments are fine,
@@ -34,11 +32,13 @@ class StructWithCommentsTwinSyncSse {
   /// Documentation on a struct field
   final int fieldWithComments;
 
-  const StructWithCommentsTwinSyncSse({required this.fieldWithComments});
+  const StructWithCommentsTwinSyncSse({
+    required this.fieldWithComments,
+  });
 
   /// Documentation on an instance method
   void instanceMethodTwinSyncSse() => RustLib.instance.api
-      .crateApiPseudoManualCommentTwinSyncSseStructWithCommentsTwinSyncSseInstanceMethodTwinSyncSse(
+          .crateApiPseudoManualCommentTwinSyncSseStructWithCommentsTwinSyncSseInstanceMethodTwinSyncSse(
         that: this,
       );
 
