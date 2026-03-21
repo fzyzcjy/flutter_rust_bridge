@@ -42,10 +42,22 @@ class Target {
       android: 'x86_64',
       androidMinSdkVersion: 21,
     ),
-    Target(rust: 'x86_64-pc-windows-msvc', flutter: 'windows-x64'),
-    Target(rust: 'aarch64-pc-windows-msvc', flutter: 'windows-arm64'),
-    Target(rust: 'x86_64-unknown-linux-gnu', flutter: 'linux-x64'),
-    Target(rust: 'aarch64-unknown-linux-gnu', flutter: 'linux-arm64'),
+    Target(
+      rust: 'x86_64-pc-windows-msvc',
+      flutter: 'windows-x64',
+    ),
+    Target(
+      rust: 'aarch64-pc-windows-msvc',
+      flutter: 'windows-arm64',
+    ),
+    Target(
+      rust: 'x86_64-unknown-linux-gnu',
+      flutter: 'linux-x64',
+    ),
+    Target(
+      rust: 'aarch64-unknown-linux-gnu',
+      flutter: 'linux-arm64',
+    ),
     Target(rust: 'riscv64gc-unknown-linux-gnu', flutter: 'linux-riscv64'),
     Target(
       rust: 'x86_64-apple-darwin',
@@ -82,11 +94,9 @@ class Target {
     required String platformName,
     required String darwinAarch,
   }) {
-    return all.firstWhereOrNull(
-      (element) => //
-          element.darwinPlatform == platformName &&
-          element.darwinArch == darwinAarch,
-    );
+    return all.firstWhereOrNull((element) => //
+        element.darwinPlatform == platformName &&
+        element.darwinArch == darwinAarch);
   }
 
   static Target? forRustTriple(String triple) {
@@ -113,16 +123,14 @@ class Target {
         return [Target.forRustTriple('x86_64-unknown-linux-gnu')!];
       }
     }
-    return all
-        .where((target) {
-          if (Platform.isWindows) {
-            return target.rust.contains('-windows-');
-          } else if (Platform.isMacOS) {
-            return target.darwinPlatform != null;
-          }
-          return false;
-        })
-        .toList(growable: false);
+    return all.where((target) {
+      if (Platform.isWindows) {
+        return target.rust.contains('-windows-');
+      } else if (Platform.isMacOS) {
+        return target.darwinPlatform != null;
+      }
+      return false;
+    }).toList(growable: false);
   }
 
   @override
