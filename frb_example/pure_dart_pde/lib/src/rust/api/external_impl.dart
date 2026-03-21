@@ -21,7 +21,9 @@ abstract class SimpleOpaqueExternalStructWithMethod
 class SimpleTranslatableExternalStructWithMethod {
   final String a;
 
-  const SimpleTranslatableExternalStructWithMethod({required this.a});
+  const SimpleTranslatableExternalStructWithMethod({
+    required this.a,
+  });
 
   Future<String> simpleExternalMethod() => RustLib.instance.api
           .crateApiExternalImplSimpleTranslatableExternalStructWithMethodSimpleExternalMethod(

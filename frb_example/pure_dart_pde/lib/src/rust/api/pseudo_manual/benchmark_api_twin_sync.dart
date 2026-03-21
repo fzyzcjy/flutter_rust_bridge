@@ -17,94 +17,74 @@ void benchmarkVoidTwinSync() => RustLib.instance.api
 int benchmarkInputBytesTwinSync({required List<int> bytes}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiTwinSyncBenchmarkInputBytesTwinSync(
-      bytes: bytes,
-    );
+            bytes: bytes);
 
 Uint8List benchmarkOutputBytesTwinSync({required int size}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiTwinSyncBenchmarkOutputBytesTwinSync(
-      size: size,
-    );
+            size: size);
 
-void benchmarkBinaryTreeInputTwinSync({
-  required BenchmarkBinaryTreeTwinSync tree,
-}) =>
+void benchmarkBinaryTreeInputTwinSync(
+        {required BenchmarkBinaryTreeTwinSync tree}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiTwinSyncBenchmarkBinaryTreeInputTwinSync(
-      tree: tree,
-    );
+            tree: tree);
 
-BenchmarkBinaryTreeTwinSync benchmarkBinaryTreeOutputTwinSync({
-  required int depth,
-}) =>
+BenchmarkBinaryTreeTwinSync benchmarkBinaryTreeOutputTwinSync(
+        {required int depth}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiTwinSyncBenchmarkBinaryTreeOutputTwinSync(
-      depth: depth,
-    );
+            depth: depth);
 
-void benchmarkBinaryTreeInputProtobufTwinSync({
-  required List<int> raw,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBenchmarkApiTwinSyncBenchmarkBinaryTreeInputProtobufTwinSync(
-      raw: raw,
-    );
+void benchmarkBinaryTreeInputProtobufTwinSync({required List<int> raw}) => RustLib
+    .instance.api
+    .crateApiPseudoManualBenchmarkApiTwinSyncBenchmarkBinaryTreeInputProtobufTwinSync(
+        raw: raw);
 
-Uint8List benchmarkBinaryTreeOutputProtobufTwinSync({
-  required int depth,
-}) =>
+Uint8List benchmarkBinaryTreeOutputProtobufTwinSync({required int depth}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiTwinSyncBenchmarkBinaryTreeOutputProtobufTwinSync(
-      depth: depth,
-    );
+            depth: depth);
 
-void benchmarkBinaryTreeInputJsonTwinSync({required String raw}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBenchmarkApiTwinSyncBenchmarkBinaryTreeInputJsonTwinSync(
-      raw: raw,
-    );
+void benchmarkBinaryTreeInputJsonTwinSync({required String raw}) => RustLib
+    .instance.api
+    .crateApiPseudoManualBenchmarkApiTwinSyncBenchmarkBinaryTreeInputJsonTwinSync(
+        raw: raw);
 
-String benchmarkBinaryTreeOutputJsonTwinSync({required int depth}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBenchmarkApiTwinSyncBenchmarkBinaryTreeOutputJsonTwinSync(
-      depth: depth,
-    );
+String benchmarkBinaryTreeOutputJsonTwinSync({required int depth}) => RustLib
+    .instance.api
+    .crateApiPseudoManualBenchmarkApiTwinSyncBenchmarkBinaryTreeOutputJsonTwinSync(
+        depth: depth);
 
 void benchmarkBlobInputTwinSync({required BenchmarkBlobTwinSync blob}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiTwinSyncBenchmarkBlobInputTwinSync(
-      blob: blob,
-    );
+            blob: blob);
 
 BenchmarkBlobTwinSync benchmarkBlobOutputTwinSync({required int size}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiTwinSyncBenchmarkBlobOutputTwinSync(
-      size: size,
-    );
+            size: size);
 
-void benchmarkBlobInputProtobufTwinSync({required List<int> raw}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBenchmarkApiTwinSyncBenchmarkBlobInputProtobufTwinSync(
-      raw: raw,
-    );
+void benchmarkBlobInputProtobufTwinSync({required List<int> raw}) => RustLib
+    .instance.api
+    .crateApiPseudoManualBenchmarkApiTwinSyncBenchmarkBlobInputProtobufTwinSync(
+        raw: raw);
 
-Uint8List benchmarkBlobOutputProtobufTwinSync({required int size}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBenchmarkApiTwinSyncBenchmarkBlobOutputProtobufTwinSync(
-      size: size,
-    );
+Uint8List benchmarkBlobOutputProtobufTwinSync({required int size}) => RustLib
+    .instance.api
+    .crateApiPseudoManualBenchmarkApiTwinSyncBenchmarkBlobOutputProtobufTwinSync(
+        size: size);
 
 void benchmarkBlobInputJsonTwinSync({required String raw}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiTwinSyncBenchmarkBlobInputJsonTwinSync(
-      raw: raw,
-    );
+            raw: raw);
 
-String benchmarkBlobOutputJsonTwinSync({required int size}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBenchmarkApiTwinSyncBenchmarkBlobOutputJsonTwinSync(
-      size: size,
-    );
+String benchmarkBlobOutputJsonTwinSync({required int size}) => RustLib
+    .instance.api
+    .crateApiPseudoManualBenchmarkApiTwinSyncBenchmarkBlobOutputJsonTwinSync(
+        size: size);
 
 class BenchmarkBinaryTreeTwinSync {
   final String name;

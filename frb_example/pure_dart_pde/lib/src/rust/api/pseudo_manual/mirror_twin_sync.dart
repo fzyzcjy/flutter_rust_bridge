@@ -19,8 +19,7 @@ ApplicationSettings getFallibleAppSettingsTwinSync() => RustLib.instance.api
 bool isAppEmbeddedTwinSync({required ApplicationSettings appSettings}) =>
     RustLib.instance.api
         .crateApiPseudoManualMirrorTwinSyncIsAppEmbeddedTwinSync(
-      appSettings: appSettings,
-    );
+            appSettings: appSettings);
 
 Stream<ApplicationSettings> appSettingsStreamTwinSync() => RustLib.instance.api
     .crateApiPseudoManualMirrorTwinSyncAppSettingsStreamTwinSync();
@@ -42,16 +41,12 @@ ApplicationMessage getMessageTwinSync() =>
 
 Numbers repeatNumberTwinSync({required int num, required BigInt times}) =>
     RustLib.instance.api.crateApiPseudoManualMirrorTwinSyncRepeatNumberTwinSync(
-      num: num,
-      times: times,
-    );
+        num: num, times: times);
 
 Sequences repeatSequenceTwinSync({required int seq, required BigInt times}) =>
     RustLib.instance.api
         .crateApiPseudoManualMirrorTwinSyncRepeatSequenceTwinSync(
-      seq: seq,
-      times: times,
-    );
+            seq: seq, times: times);
 
 int? firstNumberTwinSync({required Numbers nums}) => RustLib.instance.api
     .crateApiPseudoManualMirrorTwinSyncFirstNumberTwinSync(nums: nums);
@@ -66,13 +61,11 @@ NestedRawStringMirrored testNestedRawStringMirroredTwinSync() => RustLib
     .instance.api
     .crateApiPseudoManualMirrorTwinSyncTestNestedRawStringMirroredTwinSync();
 
-RawStringEnumMirrored testRawStringEnumMirroredTwinSync({
-  required bool nested,
-}) =>
+RawStringEnumMirrored testRawStringEnumMirroredTwinSync(
+        {required bool nested}) =>
     RustLib.instance.api
         .crateApiPseudoManualMirrorTwinSyncTestRawStringEnumMirroredTwinSync(
-      nested: nested,
-    );
+            nested: nested);
 
 ListOfNestedRawStringMirrored testListOfRawNestedStringMirroredTwinSync() =>
     RustLib.instance.api
@@ -119,7 +112,9 @@ Stream<ApplicationModeArray2> mirrorArrayEnumStreamTwinSync() =>
 class AnotherTwinSync {
   final String a;
 
-  const AnotherTwinSync({required this.a});
+  const AnotherTwinSync({
+    required this.a,
+  });
 
   @override
   int get hashCode => a.hashCode;

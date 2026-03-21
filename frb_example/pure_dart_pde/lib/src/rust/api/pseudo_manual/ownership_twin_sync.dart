@@ -27,16 +27,17 @@ List<String> borrowSliceStringTwinSync({required List<String> arg}) => RustLib
     .instance.api
     .crateApiPseudoManualOwnershipTwinSyncBorrowSliceStringTwinSync(arg: arg);
 
-SimpleStructForBorrowTwinSync borrowStructTwinSync({
-  required SimpleStructForBorrowTwinSync arg,
-}) =>
+SimpleStructForBorrowTwinSync borrowStructTwinSync(
+        {required SimpleStructForBorrowTwinSync arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualOwnershipTwinSyncBorrowStructTwinSync(arg: arg);
 
 class SimpleStructForBorrowTwinSync {
   final String one;
 
-  const SimpleStructForBorrowTwinSync({required this.one});
+  const SimpleStructForBorrowTwinSync({
+    required this.one,
+  });
 
   @override
   int get hashCode => one.hashCode;

@@ -15,5 +15,4 @@ Future<(String, int)> testTupleTwinRustAsync({(String, int)? value}) => RustLib
 Future<void> testTuple2TwinRustAsync({required List<(String, int)> value}) =>
     RustLib.instance.api
         .crateApiPseudoManualTupleTwinRustAsyncTestTuple2TwinRustAsync(
-      value: value,
-    );
+            value: value);

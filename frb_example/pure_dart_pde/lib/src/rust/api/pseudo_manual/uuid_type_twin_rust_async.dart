@@ -15,26 +15,24 @@ Future<UuidValue> handleUuidTwinRustAsync({required UuidValue id}) => RustLib
     .instance.api
     .crateApiPseudoManualUuidTypeTwinRustAsyncHandleUuidTwinRustAsync(id: id);
 
-Future<List<UuidValue>> handleUuidsTwinRustAsync({
-  required List<UuidValue> ids,
-}) =>
+Future<List<UuidValue>> handleUuidsTwinRustAsync(
+        {required List<UuidValue> ids}) =>
     RustLib.instance.api
         .crateApiPseudoManualUuidTypeTwinRustAsyncHandleUuidsTwinRustAsync(
-      ids: ids,
-    );
+            ids: ids);
 
-Future<FeatureUuidTwinRustAsync> handleNestedUuidsTwinRustAsync({
-  required FeatureUuidTwinRustAsync ids,
-}) =>
+Future<FeatureUuidTwinRustAsync> handleNestedUuidsTwinRustAsync(
+        {required FeatureUuidTwinRustAsync ids}) =>
     RustLib.instance.api
         .crateApiPseudoManualUuidTypeTwinRustAsyncHandleNestedUuidsTwinRustAsync(
-      ids: ids,
-    );
+            ids: ids);
 
 class FeatureUuidTwinRustAsync {
   final UuidValue one;
 
-  const FeatureUuidTwinRustAsync({required this.one});
+  const FeatureUuidTwinRustAsync({
+    required this.one,
+  });
 
   @override
   int get hashCode => one.hashCode;

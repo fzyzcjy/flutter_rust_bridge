@@ -17,46 +17,33 @@ Future<DateTime> datetimeUtcTwinRustAsync({required DateTime d}) => RustLib
 Future<DateTime> datetimeLocalTwinRustAsync({required DateTime d}) =>
     RustLib.instance.api
         .crateApiPseudoManualChronoTypeTwinRustAsyncDatetimeLocalTwinRustAsync(
-      d: d,
-    );
+            d: d);
 
 Future<DateTime> naivedatetimeTwinRustAsync({required DateTime d}) =>
     RustLib.instance.api
         .crateApiPseudoManualChronoTypeTwinRustAsyncNaivedatetimeTwinRustAsync(
-      d: d,
-    );
+            d: d);
 
-Future<DateTime?> optionalEmptyDatetimeUtcTwinRustAsync({
-  DateTime? d,
-}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualChronoTypeTwinRustAsyncOptionalEmptyDatetimeUtcTwinRustAsync(
-      d: d,
-    );
+Future<DateTime?> optionalEmptyDatetimeUtcTwinRustAsync({DateTime? d}) => RustLib
+    .instance.api
+    .crateApiPseudoManualChronoTypeTwinRustAsyncOptionalEmptyDatetimeUtcTwinRustAsync(
+        d: d);
 
 Future<Duration> durationTwinRustAsync({required Duration d}) =>
     RustLib.instance.api
         .crateApiPseudoManualChronoTypeTwinRustAsyncDurationTwinRustAsync(d: d);
 
-Future<List<Duration>> handleTimestampsTwinRustAsync({
-  required List<DateTime> timestamps,
-  required DateTime epoch,
-}) =>
+Future<List<Duration>> handleTimestampsTwinRustAsync(
+        {required List<DateTime> timestamps, required DateTime epoch}) =>
     RustLib.instance.api
         .crateApiPseudoManualChronoTypeTwinRustAsyncHandleTimestampsTwinRustAsync(
-      timestamps: timestamps,
-      epoch: epoch,
-    );
+            timestamps: timestamps, epoch: epoch);
 
-Future<List<DateTime>> handleDurationsTwinRustAsync({
-  required List<Duration> durations,
-  required DateTime since,
-}) =>
+Future<List<DateTime>> handleDurationsTwinRustAsync(
+        {required List<Duration> durations, required DateTime since}) =>
     RustLib.instance.api
         .crateApiPseudoManualChronoTypeTwinRustAsyncHandleDurationsTwinRustAsync(
-      durations: durations,
-      since: since,
-    );
+            durations: durations, since: since);
 
 Future<TestChronoTwinRustAsync> testChronoTwinRustAsync() =>
     RustLib.instance.api
@@ -66,13 +53,11 @@ Future<TestChronoTwinRustAsync> testPreciseChronoTwinRustAsync() => RustLib
     .instance.api
     .crateApiPseudoManualChronoTypeTwinRustAsyncTestPreciseChronoTwinRustAsync();
 
-Future<Duration> howLongDoesItTakeTwinRustAsync({
-  required FeatureChronoTwinRustAsync mine,
-}) =>
+Future<Duration> howLongDoesItTakeTwinRustAsync(
+        {required FeatureChronoTwinRustAsync mine}) =>
     RustLib.instance.api
         .crateApiPseudoManualChronoTypeTwinRustAsyncHowLongDoesItTakeTwinRustAsync(
-      mine: mine,
-    );
+            mine: mine);
 
 class FeatureChronoTwinRustAsync {
   final DateTime utc;
@@ -107,7 +92,11 @@ class TestChronoTwinRustAsync {
   final DateTime? dt2;
   final Duration? du;
 
-  const TestChronoTwinRustAsync({this.dt, this.dt2, this.du});
+  const TestChronoTwinRustAsync({
+    this.dt,
+    this.dt2,
+    this.du,
+  });
 
   @override
   int get hashCode => dt.hashCode ^ dt2.hashCode ^ du.hashCode;

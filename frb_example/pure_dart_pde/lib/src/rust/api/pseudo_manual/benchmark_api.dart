@@ -18,69 +18,54 @@ Future<void> benchmarkVoidTwinNormal() => RustLib.instance.api
 Future<int> benchmarkInputBytesTwinNormal({required List<int> bytes}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiBenchmarkInputBytesTwinNormal(
-      bytes: bytes,
-    );
+            bytes: bytes);
 
 Future<Uint8List> benchmarkOutputBytesTwinNormal({required int size}) => RustLib
     .instance.api
     .crateApiPseudoManualBenchmarkApiBenchmarkOutputBytesTwinNormal(size: size);
 
-Future<void> benchmarkBinaryTreeInputTwinNormal({
-  required BenchmarkBinaryTreeTwinNormal tree,
-}) =>
+Future<void> benchmarkBinaryTreeInputTwinNormal(
+        {required BenchmarkBinaryTreeTwinNormal tree}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiBenchmarkBinaryTreeInputTwinNormal(
-      tree: tree,
-    );
+            tree: tree);
 
-Future<BenchmarkBinaryTreeTwinNormal> benchmarkBinaryTreeOutputTwinNormal({
-  required int depth,
-}) =>
+Future<BenchmarkBinaryTreeTwinNormal> benchmarkBinaryTreeOutputTwinNormal(
+        {required int depth}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiBenchmarkBinaryTreeOutputTwinNormal(
-      depth: depth,
-    );
+            depth: depth);
 
-Future<void> benchmarkBinaryTreeInputProtobufTwinNormal({
-  required List<int> raw,
-}) =>
+Future<void> benchmarkBinaryTreeInputProtobufTwinNormal(
+        {required List<int> raw}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiBenchmarkBinaryTreeInputProtobufTwinNormal(
-      raw: raw,
-    );
+            raw: raw);
 
-Future<Uint8List> benchmarkBinaryTreeOutputProtobufTwinNormal({
-  required int depth,
-}) =>
+Future<Uint8List> benchmarkBinaryTreeOutputProtobufTwinNormal(
+        {required int depth}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiBenchmarkBinaryTreeOutputProtobufTwinNormal(
-      depth: depth,
-    );
+            depth: depth);
 
 Future<void> benchmarkBinaryTreeInputJsonTwinNormal({required String raw}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiBenchmarkBinaryTreeInputJsonTwinNormal(
-      raw: raw,
-    );
+            raw: raw);
 
-Future<String> benchmarkBinaryTreeOutputJsonTwinNormal({
-  required int depth,
-}) =>
+Future<String> benchmarkBinaryTreeOutputJsonTwinNormal({required int depth}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiBenchmarkBinaryTreeOutputJsonTwinNormal(
-      depth: depth,
-    );
+            depth: depth);
 
-Future<void> benchmarkBlobInputTwinNormal({
-  required BenchmarkBlobTwinNormal blob,
-}) =>
+Future<void> benchmarkBlobInputTwinNormal(
+        {required BenchmarkBlobTwinNormal blob}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiBenchmarkBlobInputTwinNormal(
             blob: blob);
 
-Future<BenchmarkBlobTwinNormal> benchmarkBlobOutputTwinNormal({
-  required int size,
-}) =>
+Future<BenchmarkBlobTwinNormal> benchmarkBlobOutputTwinNormal(
+        {required int size}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiBenchmarkBlobOutputTwinNormal(
             size: size);
@@ -88,14 +73,12 @@ Future<BenchmarkBlobTwinNormal> benchmarkBlobOutputTwinNormal({
 Future<void> benchmarkBlobInputProtobufTwinNormal({required List<int> raw}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiBenchmarkBlobInputProtobufTwinNormal(
-      raw: raw,
-    );
+            raw: raw);
 
 Future<Uint8List> benchmarkBlobOutputProtobufTwinNormal({required int size}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiBenchmarkBlobOutputProtobufTwinNormal(
-      size: size,
-    );
+            size: size);
 
 Future<void> benchmarkBlobInputJsonTwinNormal({required String raw}) => RustLib
     .instance.api
@@ -104,8 +87,7 @@ Future<void> benchmarkBlobInputJsonTwinNormal({required String raw}) => RustLib
 Future<String> benchmarkBlobOutputJsonTwinNormal({required int size}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiBenchmarkBlobOutputJsonTwinNormal(
-      size: size,
-    );
+            size: size);
 
 class BenchmarkBinaryTreeTwinNormal {
   final String name;

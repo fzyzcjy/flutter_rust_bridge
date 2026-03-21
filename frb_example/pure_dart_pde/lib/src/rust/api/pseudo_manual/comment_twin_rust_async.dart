@@ -33,7 +33,9 @@ class StructWithCommentsTwinRustAsync {
   /// Documentation on a struct field
   final int fieldWithComments;
 
-  const StructWithCommentsTwinRustAsync({required this.fieldWithComments});
+  const StructWithCommentsTwinRustAsync({
+    required this.fieldWithComments,
+  });
 
   /// Documentation on an instance method
   Future<void> instanceMethodTwinRustAsync() => RustLib.instance.api

@@ -54,16 +54,20 @@ class MoreThanJustOneRawStringStructTwinSync {
 sealed class RawStringItemEnumTwinSync with _$RawStringItemEnumTwinSync {
   const RawStringItemEnumTwinSync._();
 
-  const factory RawStringItemEnumTwinSync.regular({required String regular}) =
-      RawStringItemEnumTwinSync_Regular;
-  const factory RawStringItemEnumTwinSync.raw({required String type}) =
-      RawStringItemEnumTwinSync_Raw;
+  const factory RawStringItemEnumTwinSync.regular({
+    required String regular,
+  }) = RawStringItemEnumTwinSync_Regular;
+  const factory RawStringItemEnumTwinSync.raw({
+    required String type,
+  }) = RawStringItemEnumTwinSync_Raw;
 }
 
 class RawStringItemStructTwinSync {
   final String type;
 
-  const RawStringItemStructTwinSync({required this.type});
+  const RawStringItemStructTwinSync({
+    required this.type,
+  });
 
   @override
   int get hashCode => type.hashCode;

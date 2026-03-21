@@ -16,40 +16,31 @@ part 'enumeration_twin_sync.freezed.dart';
 EnumSimpleTwinSync funcEnumSimpleTwinSync({required EnumSimpleTwinSync arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualEnumerationTwinSyncFuncEnumSimpleTwinSync(
-      arg: arg,
-    );
+            arg: arg);
 
-EnumWithItemMixedTwinSync funcEnumWithItemMixedTwinSync({
-  required EnumWithItemMixedTwinSync arg,
-}) =>
+EnumWithItemMixedTwinSync funcEnumWithItemMixedTwinSync(
+        {required EnumWithItemMixedTwinSync arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualEnumerationTwinSyncFuncEnumWithItemMixedTwinSync(
-      arg: arg,
-    );
+            arg: arg);
 
-EnumWithItemTupleTwinSync funcEnumWithItemTupleTwinSync({
-  required EnumWithItemTupleTwinSync arg,
-}) =>
+EnumWithItemTupleTwinSync funcEnumWithItemTupleTwinSync(
+        {required EnumWithItemTupleTwinSync arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualEnumerationTwinSyncFuncEnumWithItemTupleTwinSync(
-      arg: arg,
-    );
+            arg: arg);
 
-EnumWithItemStructTwinSync funcEnumWithItemStructTwinSync({
-  required EnumWithItemStructTwinSync arg,
-}) =>
+EnumWithItemStructTwinSync funcEnumWithItemStructTwinSync(
+        {required EnumWithItemStructTwinSync arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualEnumerationTwinSyncFuncEnumWithItemStructTwinSync(
-      arg: arg,
-    );
+            arg: arg);
 
-EnumWithDiscriminantTwinSync funcEnumWithDiscriminantTwinSync({
-  required EnumWithDiscriminantTwinSync arg,
-}) =>
+EnumWithDiscriminantTwinSync funcEnumWithDiscriminantTwinSync(
+        {required EnumWithDiscriminantTwinSync arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualEnumerationTwinSyncFuncEnumWithDiscriminantTwinSync(
-      arg: arg,
-    );
+            arg: arg);
 
 Uint8List printNoteTwinSync({required NoteTwinSync note}) =>
     RustLib.instance.api
@@ -58,26 +49,21 @@ Uint8List printNoteTwinSync({required NoteTwinSync note}) =>
 WeekdaysTwinSync? handleReturnEnumTwinSync({required String input}) =>
     RustLib.instance.api
         .crateApiPseudoManualEnumerationTwinSyncHandleReturnEnumTwinSync(
-      input: input,
-    );
+            input: input);
 
-WeekdaysTwinSync handleEnumParameterTwinSync({
-  required WeekdaysTwinSync weekday,
-}) =>
+WeekdaysTwinSync handleEnumParameterTwinSync(
+        {required WeekdaysTwinSync weekday}) =>
     RustLib.instance.api
         .crateApiPseudoManualEnumerationTwinSyncHandleEnumParameterTwinSync(
-      weekday: weekday,
-    );
+            weekday: weekday);
 
 MeasureTwinSync? multiplyByTenTwinSync({required MeasureTwinSync measure}) =>
     RustLib.instance.api
         .crateApiPseudoManualEnumerationTwinSyncMultiplyByTenTwinSync(
-      measure: measure,
-    );
+            measure: measure);
 
-KitchenSinkTwinSync handleEnumStructTwinSync({
-  required KitchenSinkTwinSync val,
-}) =>
+KitchenSinkTwinSync handleEnumStructTwinSync(
+        {required KitchenSinkTwinSync val}) =>
     RustLib.instance.api
         .crateApiPseudoManualEnumerationTwinSyncHandleEnumStructTwinSync(
             val: val);
@@ -87,42 +73,58 @@ sealed class DistanceTwinSync with _$DistanceTwinSync {
   const DistanceTwinSync._();
 
   const factory DistanceTwinSync.unknown() = DistanceTwinSync_Unknown;
-  const factory DistanceTwinSync.map(double field0) = DistanceTwinSync_Map;
+  const factory DistanceTwinSync.map(
+    double field0,
+  ) = DistanceTwinSync_Map;
 }
 
-enum EnumSimpleTwinSync { a, b }
+enum EnumSimpleTwinSync {
+  a,
+  b,
+  ;
+}
 
-enum EnumWithDiscriminantTwinSync { oneHundred, fifty }
+enum EnumWithDiscriminantTwinSync {
+  oneHundred,
+  fifty,
+  ;
+}
 
 @freezed
 sealed class EnumWithItemMixedTwinSync with _$EnumWithItemMixedTwinSync {
   const EnumWithItemMixedTwinSync._();
 
   const factory EnumWithItemMixedTwinSync.a() = EnumWithItemMixedTwinSync_A;
-  const factory EnumWithItemMixedTwinSync.b(Uint8List field0) =
-      EnumWithItemMixedTwinSync_B;
-  const factory EnumWithItemMixedTwinSync.c({required String cField}) =
-      EnumWithItemMixedTwinSync_C;
+  const factory EnumWithItemMixedTwinSync.b(
+    Uint8List field0,
+  ) = EnumWithItemMixedTwinSync_B;
+  const factory EnumWithItemMixedTwinSync.c({
+    required String cField,
+  }) = EnumWithItemMixedTwinSync_C;
 }
 
 @freezed
 sealed class EnumWithItemStructTwinSync with _$EnumWithItemStructTwinSync {
   const EnumWithItemStructTwinSync._();
 
-  const factory EnumWithItemStructTwinSync.a({required Uint8List aField}) =
-      EnumWithItemStructTwinSync_A;
-  const factory EnumWithItemStructTwinSync.b({required Int32List bField}) =
-      EnumWithItemStructTwinSync_B;
+  const factory EnumWithItemStructTwinSync.a({
+    required Uint8List aField,
+  }) = EnumWithItemStructTwinSync_A;
+  const factory EnumWithItemStructTwinSync.b({
+    required Int32List bField,
+  }) = EnumWithItemStructTwinSync_B;
 }
 
 @freezed
 sealed class EnumWithItemTupleTwinSync with _$EnumWithItemTupleTwinSync {
   const EnumWithItemTupleTwinSync._();
 
-  const factory EnumWithItemTupleTwinSync.a(Uint8List field0) =
-      EnumWithItemTupleTwinSync_A;
-  const factory EnumWithItemTupleTwinSync.b(int field0) =
-      EnumWithItemTupleTwinSync_B;
+  const factory EnumWithItemTupleTwinSync.a(
+    Uint8List field0,
+  ) = EnumWithItemTupleTwinSync_A;
+  const factory EnumWithItemTupleTwinSync.b(
+    int field0,
+  ) = EnumWithItemTupleTwinSync_B;
 }
 
 @freezed
@@ -146,8 +148,9 @@ sealed class KitchenSinkTwinSync with _$KitchenSinkTwinSync {
     @Default(-1) int? field0,
     int? field1,
   ]) = KitchenSinkTwinSync_Optional;
-  const factory KitchenSinkTwinSync.buffer(Uint8List field0) =
-      KitchenSinkTwinSync_Buffer;
+  const factory KitchenSinkTwinSync.buffer(
+    Uint8List field0,
+  ) = KitchenSinkTwinSync_Buffer;
   const factory KitchenSinkTwinSync.enums([
     @Default(WeekdaysTwinSync.sunday) WeekdaysTwinSync field0,
   ]) = KitchenSinkTwinSync_Enums;
@@ -157,17 +160,22 @@ sealed class KitchenSinkTwinSync with _$KitchenSinkTwinSync {
 sealed class MeasureTwinSync with _$MeasureTwinSync {
   const MeasureTwinSync._();
 
-  const factory MeasureTwinSync.speed(SpeedTwinSync field0) =
-      MeasureTwinSync_Speed;
-  const factory MeasureTwinSync.distance(DistanceTwinSync field0) =
-      MeasureTwinSync_Distance;
+  const factory MeasureTwinSync.speed(
+    SpeedTwinSync field0,
+  ) = MeasureTwinSync_Speed;
+  const factory MeasureTwinSync.distance(
+    DistanceTwinSync field0,
+  ) = MeasureTwinSync_Distance;
 }
 
 class NoteTwinSync {
   final WeekdaysTwinSync day;
   final String body;
 
-  const NoteTwinSync({this.day = WeekdaysTwinSync.sunday, required this.body});
+  const NoteTwinSync({
+    this.day = WeekdaysTwinSync.sunday,
+    required this.body,
+  });
 
   @override
   int get hashCode => day.hashCode ^ body.hashCode;
@@ -186,5 +194,7 @@ sealed class SpeedTwinSync with _$SpeedTwinSync {
   const SpeedTwinSync._();
 
   const factory SpeedTwinSync.unknown() = SpeedTwinSync_Unknown;
-  const factory SpeedTwinSync.gps(double field0) = SpeedTwinSync_GPS;
+  const factory SpeedTwinSync.gps(
+    double field0,
+  ) = SpeedTwinSync_GPS;
 }

@@ -15,32 +15,26 @@ part 'rust_opaque.freezed.dart';
 Future<HideDataTwinNormal> createOpaqueTwinNormal() =>
     RustLib.instance.api.crateApiRustOpaqueCreateOpaqueTwinNormal();
 
-Future<HideDataTwinNormal?> createOptionOpaqueTwinNormal({
-  HideDataTwinNormal? opaque,
-}) =>
-    RustLib.instance.api.crateApiRustOpaqueCreateOptionOpaqueTwinNormal(
-      opaque: opaque,
-    );
+Future<HideDataTwinNormal?> createOptionOpaqueTwinNormal(
+        {HideDataTwinNormal? opaque}) =>
+    RustLib.instance.api
+        .crateApiRustOpaqueCreateOptionOpaqueTwinNormal(opaque: opaque);
 
 Future<EnumOpaqueTwinNormalArray5> createArrayOpaqueEnumTwinNormal() =>
     RustLib.instance.api.crateApiRustOpaqueCreateArrayOpaqueEnumTwinNormal();
 
-Future<String> runEnumOpaqueTwinNormal({
-  required EnumOpaqueTwinNormal opaque,
-}) =>
-    RustLib.instance.api.crateApiRustOpaqueRunEnumOpaqueTwinNormal(
-      opaque: opaque,
-    );
+Future<String> runEnumOpaqueTwinNormal(
+        {required EnumOpaqueTwinNormal opaque}) =>
+    RustLib.instance.api
+        .crateApiRustOpaqueRunEnumOpaqueTwinNormal(opaque: opaque);
 
 Future<String> runOpaqueTwinNormal({required HideDataTwinNormal opaque}) =>
     RustLib.instance.api.crateApiRustOpaqueRunOpaqueTwinNormal(opaque: opaque);
 
-Future<String> runOpaqueWithDelayTwinNormal({
-  required HideDataTwinNormal opaque,
-}) =>
-    RustLib.instance.api.crateApiRustOpaqueRunOpaqueWithDelayTwinNormal(
-      opaque: opaque,
-    );
+Future<String> runOpaqueWithDelayTwinNormal(
+        {required HideDataTwinNormal opaque}) =>
+    RustLib.instance.api
+        .crateApiRustOpaqueRunOpaqueWithDelayTwinNormal(opaque: opaque);
 
 Future<HideDataTwinNormalArray2> opaqueArrayTwinNormal() =>
     RustLib.instance.api.crateApiRustOpaqueOpaqueArrayTwinNormal();
@@ -48,9 +42,8 @@ Future<HideDataTwinNormalArray2> opaqueArrayTwinNormal() =>
 Future<String> runNonCloneTwinNormal({required NonCloneDataTwinNormal clone}) =>
     RustLib.instance.api.crateApiRustOpaqueRunNonCloneTwinNormal(clone: clone);
 
-Future<void> opaqueArrayRunTwinNormal({
-  required HideDataTwinNormalArray2 data,
-}) =>
+Future<void> opaqueArrayRunTwinNormal(
+        {required HideDataTwinNormalArray2 data}) =>
     RustLib.instance.api.crateApiRustOpaqueOpaqueArrayRunTwinNormal(data: data);
 
 Future<List<HideDataTwinNormal>> opaqueVecTwinNormal() =>
@@ -62,19 +55,15 @@ Future<void> opaqueVecRunTwinNormal({required List<HideDataTwinNormal> data}) =>
 Future<OpaqueNestedTwinNormal> createNestedOpaqueTwinNormal() =>
     RustLib.instance.api.crateApiRustOpaqueCreateNestedOpaqueTwinNormal();
 
-Future<void> runNestedOpaqueTwinNormal({
-  required OpaqueNestedTwinNormal opaque,
-}) =>
-    RustLib.instance.api.crateApiRustOpaqueRunNestedOpaqueTwinNormal(
-      opaque: opaque,
-    );
+Future<void> runNestedOpaqueTwinNormal(
+        {required OpaqueNestedTwinNormal opaque}) =>
+    RustLib.instance.api
+        .crateApiRustOpaqueRunNestedOpaqueTwinNormal(opaque: opaque);
 
-Future<String> unwrapRustOpaqueTwinNormal({
-  required HideDataTwinNormal opaque,
-}) =>
-    RustLib.instance.api.crateApiRustOpaqueUnwrapRustOpaqueTwinNormal(
-      opaque: opaque,
-    );
+Future<String> unwrapRustOpaqueTwinNormal(
+        {required HideDataTwinNormal opaque}) =>
+    RustLib.instance.api
+        .crateApiRustOpaqueUnwrapRustOpaqueTwinNormal(opaque: opaque);
 
 /// Function to check the code generator.
 /// FrbOpaqueReturn must be only return type.
@@ -119,16 +108,21 @@ abstract class RwLockHideDataTwinNormal implements RustOpaqueInterface {}
 sealed class EnumOpaqueTwinNormal with _$EnumOpaqueTwinNormal {
   const EnumOpaqueTwinNormal._();
 
-  const factory EnumOpaqueTwinNormal.struct(HideDataTwinNormal field0) =
-      EnumOpaqueTwinNormal_Struct;
-  const factory EnumOpaqueTwinNormal.primitive(I32 field0) =
-      EnumOpaqueTwinNormal_Primitive;
-  const factory EnumOpaqueTwinNormal.traitObj(BoxDartDebugTwinNormal field0) =
-      EnumOpaqueTwinNormal_TraitObj;
-  const factory EnumOpaqueTwinNormal.mutex(MutexHideDataTwinNormal field0) =
-      EnumOpaqueTwinNormal_Mutex;
-  const factory EnumOpaqueTwinNormal.rwLock(RwLockHideDataTwinNormal field0) =
-      EnumOpaqueTwinNormal_RwLock;
+  const factory EnumOpaqueTwinNormal.struct(
+    HideDataTwinNormal field0,
+  ) = EnumOpaqueTwinNormal_Struct;
+  const factory EnumOpaqueTwinNormal.primitive(
+    I32 field0,
+  ) = EnumOpaqueTwinNormal_Primitive;
+  const factory EnumOpaqueTwinNormal.traitObj(
+    BoxDartDebugTwinNormal field0,
+  ) = EnumOpaqueTwinNormal_TraitObj;
+  const factory EnumOpaqueTwinNormal.mutex(
+    MutexHideDataTwinNormal field0,
+  ) = EnumOpaqueTwinNormal_Mutex;
+  const factory EnumOpaqueTwinNormal.rwLock(
+    RwLockHideDataTwinNormal field0,
+  ) = EnumOpaqueTwinNormal_RwLock;
   const factory EnumOpaqueTwinNormal.nothing() = EnumOpaqueTwinNormal_Nothing;
 }
 
@@ -153,7 +147,10 @@ class OpaqueNestedTwinNormal {
   final HideDataTwinNormal first;
   final HideDataTwinNormal second;
 
-  const OpaqueNestedTwinNormal({required this.first, required this.second});
+  const OpaqueNestedTwinNormal({
+    required this.first,
+    required this.second,
+  });
 
   @override
   int get hashCode => first.hashCode ^ second.hashCode;

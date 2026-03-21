@@ -8,9 +8,8 @@ import 'dart:io';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<VecOfPrimitivePackTwinNormal> handleVecOfPrimitiveTwinNormal({
-  required int n,
-}) =>
+Future<VecOfPrimitivePackTwinNormal> handleVecOfPrimitiveTwinNormal(
+        {required int n}) =>
     RustLib.instance.api
         .crateApiPrimitiveListMiscHandleVecOfPrimitiveTwinNormal(n: n);
 

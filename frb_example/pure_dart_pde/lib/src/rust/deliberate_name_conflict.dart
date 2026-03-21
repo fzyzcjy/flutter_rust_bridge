@@ -11,7 +11,9 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 class StructInUpperLevel {
   final BigInt upper;
 
-  const StructInUpperLevel({required this.upper});
+  const StructInUpperLevel({
+    required this.upper,
+  });
 
   @override
   int get hashCode => upper.hashCode;
