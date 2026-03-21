@@ -68,30 +68,19 @@ flowchart LR
 
 Read the graph as artifact and input dependencies, not as a literal GitHub Actions job graph.
 
-- `frb_codegen/src/**`, codegen config, and pinned Flutter/Dart/Rust versions -> `Generate` / `Generate Internal`
-- `frb_codegen/src/**`, codegen config, `frb_codegen/assets/integration_template/`, and `cargokit` -> `Integrate`
-- `Generate` / `Generate Internal` -> generated outputs such as `frb_example/**/frb_generated.*`
-- `Integrate` -> integrate outputs and platform files under `frb_example/**`
-- generated outputs and example platform files often determine whether `Build :: Flutter` passes
-- `Build :: Flutter` often determines whether native Flutter tests pass
-- `frb_example/pure_dart` -> `frb_example/pure_dart_pde`
-
 Important chains on this graph:
 
-- If the failing path involves `frb_example/pure_dart_pde`, do not only refresh `pure_dart_pde`. First check whether `./frb_internal generate-internal --set-exit-if-changed ...` is still changing `frb_example/pure_dart`. If `pure_dart` still changes, stabilize that node first, then re-check `pure_dart_pde`.
-- If Flutter integrate examples, example platform files, `Build :: Flutter`, and native Flutter tests regress together, suspect `frb_codegen/assets/integration_template/` and `cargokit`. Do not hand-edit generated example outputs.
+If the failing path involves `frb_example/pure_dart_pde`, do not only refresh `pure_dart_pde`. First check whether `./frb_internal generate-internal --set-exit-if-changed ...` is still changing `frb_example/pure_dart`. If `pure_dart` still changes, stabilize that node first, then re-check `pure_dart_pde`.
+
+If Flutter integrate examples, example platform files, `Build :: Flutter`, and native Flutter tests regress together, suspect `frb_codegen/assets/integration_template/` and `cargokit`. Do not hand-edit generated example outputs.
 
 When to use this graph:
 
-- Several nearby categories start failing together in the same run
-- The earlier graph nodes are already red, for example `Generate`, `Integrate`, or `Generate Internal`
-- The later failures look consistent with missing, stale, or mismatched generated files or platform files
+Use this graph when several nearby categories start failing together in the same run, especially when earlier nodes such as `Generate`, `Integrate`, or `Generate Internal` are already red and later failures look consistent with missing, stale, or mismatched generated files or platform files.
 
 Practical rule:
 
-- Prefer fixing prerequisite nodes before symptom nodes
-- If a prerequisite node is still unstable, treat later failures as propagated symptoms until proven otherwise
-- If this pattern keeps repeating across multiple commits or CI runs, jump to `Whack-a-Mole Prevention`
+Prefer fixing prerequisite nodes before symptom nodes. If a prerequisite node is still unstable, treat later failures as propagated symptoms until proven otherwise. If this pattern keeps repeating across multiple commits or CI runs, jump to `Whack-a-Mole Prevention`.
 
 ## Whack-a-Mole Prevention
 
