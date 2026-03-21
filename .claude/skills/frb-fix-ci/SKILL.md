@@ -44,35 +44,34 @@ Legend: rectangles are files or directories. Ovals are CI operations. In each ov
 
 ```mermaid
 flowchart LR
-    CodegenSources["frb_codegen/src/**<br/>+ codegen config"]
-    Versions["pinned Flutter / Dart / Rust<br/>versions"]
+    CodegenSources["frb_codegen/src/** + codegen config"]
+    Versions["pinned Flutter / Dart / Rust versions"]
     Templates["frb_codegen/assets/integration_template/**"]
     Cargokit["cargokit"]
     PureDart["frb_example/pure_dart/**"]
-    GeneratedOutputs["frb_example/**/<br/>frb_generated.*"]
-    InternalRustOutputs["internal Rust generated outputs<br/>under frb_codegen/** and frb_rust/**"]
-    BookHelpOutputs["website/docs/generated/<br/>_frb-codegen-command-*.mdx"]
+    GeneratedOutputs["frb_example/**/frb_generated.*"]
+    InternalRustOutputs["internal Rust generated outputs under frb_codegen/** and frb_rust/**"]
+    BookHelpOutputs["website/docs/generated/_frb-codegen-command-*.mdx"]
     DartApiOutputs["frb_rust/src/dart_api/**"]
-    BuildRunnerOutputs["build_runner outputs like *.g.dart<br/>in non-example Dart packages"]
-    ContributorOutputs[".all-contributorsrc<br/>+ README.md"]
+    BuildRunnerOutputs["build_runner outputs like *.g.dart in non-example Dart packages"]
+    ContributorOutputs[".all-contributorsrc + README.md"]
     ReadmeOutputs["website/docs/index.md"]
-    ExampleOutputs["integrate outputs<br/>under frb_example/**"]
+    ExampleOutputs["integrate outputs under frb_example/**"]
     PureDartPde["frb_example/pure_dart_pde/**"]
-    NativeTests["Test :: Flutter :: Native::*<br/>(./frb_internal test-flutter-native ...)"]
+    NativeTests["Test :: Flutter :: Native::*\n(./frb_internal test-flutter-native ...)"]
 
-    Generate(["Generate :: FRB Codegen :: Command Generate<br/>(./frb_internal generate-run-frb-codegen-command-generate)"])
-    Integrate(["Generate :: FRB Codegen :: Command Integrate<br/>(./frb_internal generate-run-frb-codegen-command-integrate)"])
-    Build(["Build :: Flutter<br/>(./frb_internal build-flutter ...)"])
+    Generate(["Generate :: FRB Codegen :: Command Generate\n(./frb_internal generate-run-frb-codegen-command-generate)"])
+    Integrate(["Generate :: FRB Codegen :: Command Integrate\n(./frb_internal generate-run-frb-codegen-command-integrate)"])
+    Build(["Build :: Flutter\n(./frb_internal build-flutter ...)"])
 
     subgraph GenerateInternal["Generate Internal stages"]
-        direction TB
-        GenerateInternalPureDart(["Generate Internal :: pure_dart chain<br/>(./frb_internal generate-internal-frb-example-pure-dart)"])
-        GenerateInternalRust(["Generate Internal :: Rust<br/>(./frb_internal generate-internal-rust)"])
-        GenerateInternalBookHelp(["Generate Internal :: Book Help<br/>(./frb_internal generate-internal-book-help)"])
-        GenerateInternalDartSource(["Generate Internal :: Dart Source<br/>(./frb_internal generate-internal-dart-source)"])
-        GenerateInternalBuildRunner(["Generate Internal :: Build Runner<br/>(./frb_internal generate-internal-build-runner)"])
-        GenerateInternalContributor(["Generate Internal :: Contributor<br/>(./frb_internal generate-internal-contributor)"])
-        GenerateInternalReadme(["Generate Internal :: Readme<br/>(./frb_internal generate-internal-readme)"])
+        GenerateInternalPureDart(["Generate Internal :: frb_example pure_dart chain\n(./frb_internal generate-internal-frb-example-pure-dart)"])
+        GenerateInternalRust(["Generate Internal :: Rust\n(./frb_internal generate-internal-rust)"])
+        GenerateInternalBookHelp(["Generate Internal :: Book Help\n(./frb_internal generate-internal-book-help)"])
+        GenerateInternalDartSource(["Generate Internal :: Dart Source\n(./frb_internal generate-internal-dart-source)"])
+        GenerateInternalBuildRunner(["Generate Internal :: Build Runner\n(./frb_internal generate-internal-build-runner)"])
+        GenerateInternalContributor(["Generate Internal :: Contributor\n(./frb_internal generate-internal-contributor)"])
+        GenerateInternalReadme(["Generate Internal :: Readme\n(./frb_internal generate-internal-readme)"])
     end
 
     CodegenSources -->|used by| Generate
