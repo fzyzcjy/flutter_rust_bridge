@@ -89,6 +89,31 @@ Practical rule:
 - If a prerequisite node is still unstable, treat later failures as propagated symptoms until proven otherwise
 - If this pattern keeps repeating across multiple commits or CI runs, jump to `Whack-a-Mole Prevention`
 
+## Whack-a-Mole Prevention
+
+This section is about history across multiple commits or CI runs, not a single failing job.
+
+Use it when the same area keeps becoming green and then red again, especially with commits like `refresh`, `regenerate`, `sync`, and `revert`.
+
+What this usually means:
+
+- You may be chasing generated outputs instead of fixing their source inputs
+- A prerequisite node on the dependency graph is still unstable
+- A temporary green run may only mean one symptom was suppressed, not that the root cause was fixed
+
+What to do:
+
+- Stop adding more generated-output-only sync commits by default
+- Go back to the dependency graph and identify the unstable source of truth first: generation logic, templates, toolchain version, generation order, or package relationship
+- Only accept regenerated outputs after that source node is stable in a clean matching environment
+
+Common FRB patterns:
+
+- Flutter integrate examples:
+  suspect `frb_codegen/assets/integration_template/` and `cargokit` before hand-editing generated example outputs
+- `pure_dart` and `pure_dart_pde`:
+  if both are moving, stabilize `frb_example/pure_dart` first and treat `pure_dart_pde` as a dependent output
+
 ## Fixes by Failure Type
 
 ### Flaky Test
@@ -197,31 +222,6 @@ In that situation:
 - Check whether wasm build, `dart compile js`, and local web server startup already succeeded
 - Prefer rerunning only the failed job first
 - Only start code investigation if the same job keeps failing with the same error repeatedly
-
-## Whack-a-Mole Prevention
-
-This section is about history across multiple commits or CI runs, not a single failing job.
-
-Use it when the same area keeps becoming green and then red again, especially with commits like `refresh`, `regenerate`, `sync`, and `revert`.
-
-What this usually means:
-
-- You may be chasing generated outputs instead of fixing their source inputs
-- A prerequisite node on the dependency graph is still unstable
-- A temporary green run may only mean one symptom was suppressed, not that the root cause was fixed
-
-What to do:
-
-- Stop adding more generated-output-only sync commits by default
-- Go back to the dependency graph and identify the unstable source of truth first: generation logic, templates, toolchain version, generation order, or package relationship
-- Only accept regenerated outputs after that source node is stable in a clean matching environment
-
-Common FRB patterns:
-
-- Flutter integrate examples:
-  suspect `frb_codegen/assets/integration_template/` and `cargokit` before hand-editing generated example outputs
-- `pure_dart` and `pure_dart_pde`:
-  if both are moving, stabilize `frb_example/pure_dart` first and treat `pure_dart_pde` as a dependent output
 
 ## Common Mistakes
 
