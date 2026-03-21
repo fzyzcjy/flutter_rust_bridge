@@ -69,19 +69,22 @@ flowchart LR
     end
 ```
 
+`How to read`
+
 Read the graph as artifact and input dependencies, not as a literal GitHub Actions job graph.
 
-Important chains on this graph:
+`Key chains`
 
-If the failing path involves `frb_example/pure_dart_pde`, do not only refresh `pure_dart_pde`. First check whether `./frb_internal generate-internal --set-exit-if-changed ...` is still changing `frb_example/pure_dart`. If `pure_dart` still changes, stabilize that node first, then re-check `pure_dart_pde`.
+- `frb_example/pure_dart` -> `frb_example/pure_dart_pde`
+  If `pure_dart_pde` is failing, do not only refresh `pure_dart_pde`. First check whether `./frb_internal generate-internal --set-exit-if-changed ...` is still changing `frb_example/pure_dart`.
+- `frb_codegen/assets/integration_template/` + `cargokit` -> integrate outputs under `frb_example/**`
+  If Flutter integrate examples, example platform files, `Build :: Flutter`, and native Flutter tests regress together, suspect these template inputs first. Do not hand-edit generated example outputs.
 
-If Flutter integrate examples, example platform files, `Build :: Flutter`, and native Flutter tests regress together, suspect `frb_codegen/assets/integration_template/` and `cargokit`. Do not hand-edit generated example outputs.
-
-When to use this graph:
+`When to consult`
 
 Use this graph when several nearby categories start failing together in the same run, especially when earlier nodes such as `Generate`, `Integrate`, or `Generate Internal` are already red and later failures look consistent with missing, stale, or mismatched generated files or platform files.
 
-Practical rule:
+`Rule`
 
 Prefer fixing prerequisite nodes before symptom nodes. If a prerequisite node is still unstable, treat later failures as propagated symptoms until proven otherwise. If this pattern keeps repeating across multiple commits or CI runs, jump to `Whack-a-Mole Prevention`.
 
