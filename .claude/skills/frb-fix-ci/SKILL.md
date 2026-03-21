@@ -87,6 +87,7 @@ Practical rule:
 
 - Prefer fixing prerequisite nodes before symptom nodes
 - If a prerequisite node is still unstable, treat later failures as propagated symptoms until proven otherwise
+- If this pattern keeps repeating across multiple commits or CI runs, jump to `Whack-a-Mole Prevention`
 
 ## Fixes by Failure Type
 
@@ -199,25 +200,28 @@ In that situation:
 
 ## Whack-a-Mole Prevention
 
-When the same path or package repeatedly shows commits like `refresh`, `regenerate`, `sync`, and `revert`, treat that as a sign you may be chasing outputs instead of fixing inputs.
+This section is about history across multiple commits or CI runs, not a single failing job.
 
-In that situation:
+Use it when the same area keeps becoming green and then red again, especially with commits like `refresh`, `regenerate`, `sync`, and `revert`.
+
+What this usually means:
+
+- You may be chasing generated outputs instead of fixing their source inputs
+- A prerequisite node on the dependency graph is still unstable
+- A temporary green run may only mean one symptom was suppressed, not that the root cause was fixed
+
+What to do:
 
 - Stop adding more generated-output-only sync commits by default
-- Identify the upstream source of truth first: generation logic, templates, toolchain version, generation order, or package relationship
-- Only accept regenerated outputs after the upstream source is stable in a clean matching environment
+- Go back to the dependency graph and identify the unstable source of truth first: generation logic, templates, toolchain version, generation order, or package relationship
+- Only accept regenerated outputs after that source node is stable in a clean matching environment
 
-For Flutter integrate examples specifically:
+Common FRB patterns:
 
-- Treat `frb_codegen/assets/integration_template/` and `cargokit` as prerequisite nodes for generated example platform files
-- If `Generate :: FRB Codegen :: Command Integrate`, `Build :: Flutter`, and native Flutter tests all regress together, suspect the template chain first
-- Prefer fixing template inputs over hand-editing generated example outputs
-
-For `pure_dart` specifically:
-
-- Treat `frb_example/pure_dart` as a prerequisite node for `frb_example/pure_dart_pde`
-- If both are moving, stabilize `pure_dart` first
-- Do not conclude the problem is fixed just because one downstream regeneration temporarily makes CI greener once
+- Flutter integrate examples:
+  suspect `frb_codegen/assets/integration_template/` and `cargokit` before hand-editing generated example outputs
+- `pure_dart` and `pure_dart_pde`:
+  if both are moving, stabilize `frb_example/pure_dart` first and treat `pure_dart_pde` as a dependent output
 
 ## Common Mistakes
 
