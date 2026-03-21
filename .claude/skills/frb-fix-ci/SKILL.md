@@ -75,7 +75,7 @@ Read the graph as artifact and input dependencies, not as a literal GitHub Actio
 Important chains on this graph:
 
 - If the failing path involves `frb_example/pure_dart_pde`, do not only refresh `pure_dart_pde`. First check whether `./frb_internal generate-internal --set-exit-if-changed ...` is still changing `frb_example/pure_dart`. If `pure_dart` still changes, stabilize that node first, then re-check `pure_dart_pde`.
-- If Flutter integrate examples, example platform files, `Build :: Flutter`, and native Flutter tests regress together, suspect `frb_codegen/assets/integration_template/` and `cargokit` before assuming the generated example outputs are independently wrong.
+- If Flutter integrate examples, example platform files, `Build :: Flutter`, and native Flutter tests regress together, suspect `frb_codegen/assets/integration_template/` and `cargokit`. Do not hand-edit generated example outputs.
 
 When to use this graph:
 
@@ -110,7 +110,7 @@ What to do:
 Common FRB patterns:
 
 - Flutter integrate examples:
-  suspect `frb_codegen/assets/integration_template/` and `cargokit` before hand-editing generated example outputs
+  suspect `frb_codegen/assets/integration_template/` and `cargokit`; do not hand-edit generated example outputs
 - `pure_dart` and `pure_dart_pde`:
   if both are moving, stabilize `frb_example/pure_dart` first and treat `pure_dart_pde` as a dependent output
 
