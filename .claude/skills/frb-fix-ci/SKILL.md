@@ -6,6 +6,7 @@ description: Use when CI fails in flutter_rust_bridge - before deep investigatio
 # FRB Fix CI
 
 > **Note:** Check your user-level `remote-testing` rules before running commands. Tests and codegen may require remote execution.
+> **Note:** When reproducing FRB failures remotely, do not run multiple `msc exec` commands in parallel against the same workspace/container. Serialize them unless you have isolated workspaces.
 
 ## Overview
 
@@ -20,6 +21,7 @@ Use this order before diving into individual failure types:
 1. Check the latest relevant run or job first. Do not reason from stale CI state.
 2. If the failure looks flaky, rerun only the failed jobs.
 3. Reproduce the exact failing `./frb_internal ...` command from CI, but first check your user-level `remote-testing` rules instead of assuming local execution is correct.
+   If reproducing remotely, keep one remote workspace single-writer: do not run multiple FRB `msc exec` reproduction commands in parallel against that same workspace.
 4. Decide where the failure sits in the dependency graph: is it more likely a prerequisite cause (`Generate`, `Integrate`, or a high-relevance `Generate Internal` stage) or a downstream symptom (`Build :: Flutter`, native tests)?
 5. Only do deeper debugging after you have ruled out flakes, stale runs, and failure propagation.
 
