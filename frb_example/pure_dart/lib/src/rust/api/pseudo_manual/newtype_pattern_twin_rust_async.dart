@@ -10,17 +10,18 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `fmt`
 
-Future<NewTypeIntTwinRustAsync> handleNewtypeTwinRustAsync({
-  required NewTypeIntTwinRustAsync arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualNewtypePatternTwinRustAsyncHandleNewtypeTwinRustAsync(
-      arg: arg,
-    );
+Future<NewTypeIntTwinRustAsync> handleNewtypeTwinRustAsync(
+        {required NewTypeIntTwinRustAsync arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualNewtypePatternTwinRustAsyncHandleNewtypeTwinRustAsync(
+            arg: arg);
 
 class NewTypeIntTwinRustAsync {
   final PlatformInt64 field0;
 
-  const NewTypeIntTwinRustAsync({required this.field0});
+  const NewTypeIntTwinRustAsync({
+    required this.field0,
+  });
 
   @override
   int get hashCode => field0.hashCode;
