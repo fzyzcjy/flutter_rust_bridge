@@ -43,7 +43,8 @@ When several related jobs are failing, use this dependency graph instead of trea
 ```mermaid
 flowchart LR
     subgraph StrictDependencies
-        Tooling["frb_codegen/src/** + codegen config + pinned Flutter/Dart/Rust versions"]
+        Tooling["frb_codegen/src/** + codegen config"]
+        Versions["pinned Flutter / Dart / Rust versions"]
         Codegen["Generate / Generate Internal"]
         Outputs["generated outputs like frb_example/**/frb_generated.*"]
         Template["frb_codegen/assets/integration_template/ + cargokit"]
@@ -55,7 +56,9 @@ flowchart LR
         PureDartPde["frb_example/pure_dart_pde"]
 
         Tooling -->|used by| Codegen
+        Versions -->|used by| Codegen
         Tooling -->|used by| Integrate
+        Versions -->|used by| Integrate
         Codegen -->|produces| Outputs
         Template -->|used by| Integrate
         Integrate -->|produces| ExampleOutputs
