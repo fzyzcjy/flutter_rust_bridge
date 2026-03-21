@@ -106,7 +106,7 @@ Read the graph as artifact and input dependencies, not as a literal GitHub Actio
 #### Key Chains
 
 - `frb_codegen/assets/integration_template/` + `cargokit` -> integrate outputs under `frb_example/**`
-  If Flutter integrate examples, example platform files, `Build :: Flutter`, and native Flutter tests regress together, suspect these template inputs first. Do not hand-edit generated example outputs.
+  If Flutter integrate examples, example platform files, `Build :: Flutter`, and native Flutter tests regress together, suspect these template inputs first. Do not hand-edit generated example outputs. If the bug is actually inside the embedded `cargokit` submodule, it is acceptable to edit that submodule directly and push to `fzyzcjy/cargokit`, then update the submodule ref.
 - `Generate Internal` + `frb_example/pure_dart/**` -> `frb_example/pure_dart_pde/**`
   If `pure_dart_pde` is failing, do not only refresh `pure_dart_pde`. First check whether `./frb_internal generate-internal-frb-example-pure-dart --set-exit-if-changed ...` is still changing `frb_example/pure_dart`.
 
@@ -139,7 +139,7 @@ What to do:
 Common FRB patterns:
 
 - Flutter integrate examples:
-  suspect `frb_codegen/assets/integration_template/` and `cargokit`; do not hand-edit generated example outputs
+  suspect `frb_codegen/assets/integration_template/` and `cargokit`; do not hand-edit generated example outputs. If the real fix belongs in `cargokit`, patch the submodule and update its ref instead of only patching copied outputs.
 - `pure_dart` and `pure_dart_pde`:
   if both are moving, stabilize `frb_example/pure_dart` first and treat `pure_dart_pde` as a dependent output
 
@@ -228,6 +228,7 @@ When `Generate :: FRB Codegen :: Command Integrate` fails because integrated out
 
 Instead:
 - Fix the source templates under `frb_codegen/assets/integration_template/`
+- If the bad logic is inside the embedded `cargokit` submodule, fix and push `fzyzcjy/cargokit`, then update the submodule ref
 - Re-run integrate generation after updating the templates
 
 ### Generate-caused Failures
@@ -265,6 +266,7 @@ In that situation:
 - Fixing many new downstream test/build failures one by one after accepting generated changes, when CI previously failed mainly in `Generate`
 - Hand-editing generated files to chase CI formatter output before checking whether CI, merge ref, and remote environments are formatting the same input
 - Hand-editing integrate-generated example outputs instead of fixing `frb_codegen/assets/integration_template/`
+- Assuming `cargokit` submodule changes are off-limits when the real bug is there
 - Chasing repeated `refresh/regenerate/sync` diffs without re-checking the upstream generation inputs
 - Fixing downstream build/test jobs before upstream generate/integrate/high-relevance generate-internal stages are stable
 - Answering from stale CI state instead of reading the latest relevant run or job information first

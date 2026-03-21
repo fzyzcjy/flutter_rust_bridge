@@ -37,6 +37,6 @@ For `pure_dart` / `pure_dart_pde` generation issues, treat `frb_example/pure_dar
 
 If the same package or path keeps getting `refresh` / `regenerate` / `sync` style commits, or if accepting regenerated outputs causes previously green non-`Generate` jobs to fail, stop treating this as a pure codegen-command selection problem. Switch to `frb-fix-ci` and diagnose failure propagation before regenerating again.
 
-If Flutter integrate examples, example platform files, and downstream Flutter build/test jobs regress together, assume the issue may be in `frb_codegen/assets/integration_template/` or `cargokit` rather than in the generated outputs themselves. Use `frb-fix-ci` for that workflow.
+If Flutter integrate examples, example platform files, and downstream Flutter build/test jobs regress together, assume the issue may be in `frb_codegen/assets/integration_template/` or `cargokit` rather than in the generated outputs themselves. If the real fix belongs in the embedded `cargokit` submodule, edit it directly, push to `fzyzcjy/cargokit`, and then update the submodule ref. Use `frb-fix-ci` for that workflow.
 
 Do not manually patch generated files as the final fix. The final accepted result should be produced by the corresponding generation command in a clean matching environment.
