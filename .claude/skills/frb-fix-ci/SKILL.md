@@ -19,7 +19,7 @@ Use this order before diving into individual failure types:
 
 1. Check the latest relevant run or job first. Do not reason from stale CI state.
 2. If the failure looks flaky, rerun only the failed jobs.
-3. Reproduce the exact failing `./frb_internal ...` command from CI.
+3. Reproduce the exact failing `./frb_internal ...` command from CI, but first check your user-level `remote-testing` rules instead of assuming local execution is correct.
 4. Decide whether the failure is upstream (`Generate` / `Integrate` / `Generate Internal`) or downstream (`Build :: Flutter`, native tests).
 5. Only do deeper debugging after you have ruled out flakes, stale runs, and failure propagation.
 
@@ -34,7 +34,7 @@ Do not answer from stale CI state. Read the latest relevant run or job informati
 | Flaky test (passes sometimes) | `gh run rerun --failed` |
 | Git diff shown in CI | `git apply` OR regenerate |
 | Lint/format errors | Add `--fix` flag |
-| Can't reproduce locally | Use same `./frb_internal` command from CI |
+| Can't reproduce locally | Use same `./frb_internal` command from CI, following `remote-testing` rules |
 
 ## Dependency Order
 
@@ -92,7 +92,7 @@ You may use CI diffs only as a diagnosis aid to understand what changed, but the
 
 ### Can't Reproduce Locally
 
-CI shows the command it ran. Run the same command:
+CI shows the command it ran. Before running it, check your user-level `remote-testing` rules to determine whether this repo requires remote execution. Then run the same command:
 
 ```bash
 # CI shows: ./frb_internal test-dart --package frb_example/pure_dart
