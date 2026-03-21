@@ -63,6 +63,17 @@ void fn(int value) {
     );
   });
 
+  test('lint ffigen normalization canonicalizes ffi void function syntax', () {
+    expect(
+      normalizeFfigenLintText('''
+late final ptr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>();
+      '''),
+      normalizeFfigenLintText('''
+late final ptr = _lookup<ffi.NativeFunction<ffi.VoidFunction(ffi.Pointer<ffi.Void>)>>();
+      '''),
+    );
+  });
+
   group('test checkValgrindOutput', () {
     test('good', () {
       checkValgrindOutput('''
