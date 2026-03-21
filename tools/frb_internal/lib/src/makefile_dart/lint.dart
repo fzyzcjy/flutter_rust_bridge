@@ -167,6 +167,7 @@ Future<void> lintDartVersion() async {
 
 Future<void> lintDartFormat(LintConfig config) async {
   for (final package in kDartPackages) {
+    await runPubGetIfNotRunYet(package);
     await exec(
       'dart format ${config.fix ? "" : "--set-exit-if-changed"} .',
       relativePwd: package,
