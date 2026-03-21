@@ -111,14 +111,16 @@ Future<void> lintDartFfigen() async {
     return text.substring(start + 1, findMatchingBracket(text, start));
   }
 
-  final textMatcher = readInterestText('pure_dart');
+  final textMatcher = normalizeFfigenLintText(readInterestText('pure_dart'));
   final textActual = readInterestText('pure_dart_pde');
 
   final actualChunks = textActual.split('\n\n');
   for (final actualChunk in actualChunks) {
-    final modifiedActualChunk = actualChunk.replaceAll(
-      'frbgen_frb_example_pure_dart_pde',
-      'frbgen_frb_example_pure_dart',
+    final modifiedActualChunk = normalizeFfigenLintText(
+      actualChunk.replaceAll(
+        'frbgen_frb_example_pure_dart_pde',
+        'frbgen_frb_example_pure_dart',
+      ),
     );
     if (!textMatcher.contains(modifiedActualChunk)) {
       throw Exception('Fail to find chunk (`$modifiedActualChunk`)');
@@ -126,6 +128,14 @@ Future<void> lintDartFfigen() async {
   }
 
   print('lintDartFfigen find all chunks and succeed');
+}
+
+String normalizeFfigenLintText(String text) {
+  final withoutTrailingCommas = text.replaceAll(
+    RegExp(r',\s*([)\]\}])'),
+    r'$1',
+  );
+  return withoutTrailingCommas.replaceAll(RegExp(r'\s+'), '');
 }
 
 Future<void> lintDartVersion() async {

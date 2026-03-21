@@ -1,4 +1,5 @@
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/generator.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:test/test.dart';
 
@@ -42,6 +43,25 @@ void main() {
       );
     },
   );
+
+  test('lint ffigen normalization ignores formatting-only differences', () {
+    expect(
+      normalizeFfigenLintText('''
+void fn(
+  int value,
+) {
+  return inner(
+    value,
+  );
+}
+      '''),
+      normalizeFfigenLintText('''
+void fn(int value) {
+  return inner(value);
+}
+      '''),
+    );
+  });
 
   group('test checkValgrindOutput', () {
     test('good', () {
