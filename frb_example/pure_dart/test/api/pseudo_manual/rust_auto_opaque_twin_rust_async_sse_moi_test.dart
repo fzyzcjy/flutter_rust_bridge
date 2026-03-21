@@ -272,15 +272,17 @@ Future<void> main({bool skipRustLibInit = false}) async {
   // });
 
   test('static method', () async {
-    final obj =
-        await NonCloneSimpleTwinRustAsyncSseMoi.staticMethodReturnOwnTwinRustAsyncSseMoi();
+    final obj = await NonCloneSimpleTwinRustAsyncSseMoi
+        .staticMethodReturnOwnTwinRustAsyncSseMoi();
     await futurizeVoidTwinRustAsyncSseMoi(
-      NonCloneSimpleTwinRustAsyncSseMoi.staticMethodArgBorrowTwinRustAsyncSseMoi(
+      NonCloneSimpleTwinRustAsyncSseMoi
+          .staticMethodArgBorrowTwinRustAsyncSseMoi(
         arg: obj,
       ),
     );
     await futurizeVoidTwinRustAsyncSseMoi(
-      NonCloneSimpleTwinRustAsyncSseMoi.staticMethodArgMutBorrowTwinRustAsyncSseMoi(
+      NonCloneSimpleTwinRustAsyncSseMoi
+          .staticMethodArgMutBorrowTwinRustAsyncSseMoi(
         arg: obj,
       ),
     );
@@ -308,8 +310,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     );
   });
   test('instance newWithResult', () async {
-    final obj =
-        await NonCloneSimpleTwinRustAsyncSseMoi.newWithResultTwinRustAsyncSseMoi();
+    final obj = await NonCloneSimpleTwinRustAsyncSseMoi
+        .newWithResultTwinRustAsyncSseMoi();
     await futurizeVoidTwinRustAsyncSseMoi(
       obj.instanceMethodArgBorrowTwinRustAsyncSseMoi(),
     );

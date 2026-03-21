@@ -90,11 +90,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
     var callCount = 0;
     final dynamic output =
         await rustCallDartWithDartOpaqueResultTwinRustAsyncSse(
-          callback: () {
-            callCount++;
-            return opaque;
-          },
-        );
+      callback: () {
+        callCount++;
+        return opaque;
+      },
+    );
     expect(callCount, 1);
     expect(output('hello'), 42);
   });
