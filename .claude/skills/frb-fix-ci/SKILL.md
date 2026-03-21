@@ -20,7 +20,7 @@ Use this order before diving into individual failure types:
 1. Check the latest relevant run or job first. Do not reason from stale CI state.
 2. If the failure looks flaky, rerun only the failed jobs.
 3. Reproduce the exact failing `./frb_internal ...` command from CI, but first check your user-level `remote-testing` rules instead of assuming local execution is correct.
-4. Decide whether the failure is upstream (`Generate` / `Integrate` / `Generate Internal`) or downstream (`Build :: Flutter`, native tests).
+4. Decide where the failure sits in the dependency graph: is it more likely a prerequisite cause (`Generate` / `Integrate` / `Generate Internal`) or a downstream symptom (`Build :: Flutter`, native tests)?
 5. Only do deeper debugging after you have ruled out flakes, stale runs, and failure propagation.
 
 ### Checking the Right Run
@@ -38,7 +38,31 @@ Do not answer from stale CI state. Read the latest relevant run or job informati
 
 ## Dependency Order
 
-When several related jobs are failing, use this dependency order instead of treating all failures as peers:
+When several related jobs are failing, use this dependency graph instead of treating all failures as peers:
+
+```text
+generation logic / templates / toolchain
+    |
+    +--> Generate / Integrate / Generate Internal
+    |         |
+    |         +--> generated outputs / example platform files
+    |                    |
+    |                    +--> Build :: Flutter
+    |                               |
+    |                               +--> native Flutter tests
+    |
+    +--> frb_codegen/assets/integration_template/ + cargokit
+    |         |
+    |         +--> integrate example outputs / platform files
+    |                    |
+    |                    +--> Build :: Flutter
+    |                               |
+    |                               +--> native Flutter tests
+    |
+    +--> frb_example/pure_dart
+              |
+              +--> frb_example/pure_dart_pde
+```
 
 - `generation logic / templates / toolchain` -> generated outputs
 - `frb_codegen/assets/integration_template/` and `cargokit` -> integrate example outputs and platform files
@@ -145,9 +169,9 @@ When CI starts failing in several adjacent categories at once, do not assume the
 
 In that situation:
 
-- Treat `Generate` / `Integrate` / `Generate Internal` as upstream of `Build :: Flutter` and native tests
-- If generated or integrated outputs are still unstable, do not spend most of your effort fixing `Build :: Flutter` or native tests one by one yet
-- First stabilize the upstream generation or template inputs, then re-check the downstream jobs
+- Treat `Generate` / `Integrate` / `Generate Internal` as earlier nodes in the dependency graph than `Build :: Flutter` and native tests
+- If earlier nodes are still unstable, do not spend most of your effort fixing later nodes one by one yet
+- First stabilize the earlier generation or template inputs, then re-check the later jobs
 
 ### Dart Web Browser Startup Flakes
 
@@ -199,13 +223,13 @@ In that situation:
 
 For Flutter integrate examples specifically:
 
-- Treat `frb_codegen/assets/integration_template/` and `cargokit` as upstream of generated example platform files
+- Treat `frb_codegen/assets/integration_template/` and `cargokit` as prerequisite nodes for generated example platform files
 - If `Generate :: FRB Codegen :: Command Integrate`, `Build :: Flutter`, and native Flutter tests all regress together, suspect the template chain first
 - Prefer fixing template inputs over hand-editing generated example outputs
 
 For `pure_dart` specifically:
 
-- Treat `frb_example/pure_dart` as upstream and `frb_example/pure_dart_pde` as downstream
+- Treat `frb_example/pure_dart` as a prerequisite node for `frb_example/pure_dart_pde`
 - If both are moving, stabilize `pure_dart` first
 - Do not conclude the problem is fixed just because one downstream regeneration temporarily makes CI greener once
 
