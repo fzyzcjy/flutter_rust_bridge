@@ -20,7 +20,7 @@ Use this order before diving into individual failure types:
 1. Check the latest relevant run or job first. Do not reason from stale CI state.
 2. If the failure looks flaky, rerun only the failed jobs.
 3. Reproduce the exact failing `./frb_internal ...` command from CI, but first check your user-level `remote-testing` rules instead of assuming local execution is correct.
-4. Decide where the failure sits in the dependency graph: is it more likely a prerequisite cause (`Generate` / `Integrate` / `Generate Internal`) or a downstream symptom (`Build :: Flutter`, native tests)?
+4. Decide where the failure sits in the dependency graph: is it more likely a prerequisite cause (`Generate`, `Integrate`, or a high-relevance `Generate Internal` stage) or a downstream symptom (`Build :: Flutter`, native tests)?
 5. Only do deeper debugging after you have ruled out flakes, stale runs, and failure propagation.
 
 ### Checking the Right Run
@@ -105,7 +105,7 @@ Read the graph as artifact and input dependencies, not as a literal GitHub Actio
 - `frb_codegen/assets/integration_template/` + `cargokit` -> integrate outputs under `frb_example/**`
   If Flutter integrate examples, example platform files, `Build :: Flutter`, and native Flutter tests regress together, suspect these template inputs first. Do not hand-edit generated example outputs.
 - `Generate Internal` + `frb_example/pure_dart/**` -> `frb_example/pure_dart_pde/**`
-  If `pure_dart_pde` is failing, do not only refresh `pure_dart_pde`. First check whether `./frb_internal generate-internal --set-exit-if-changed ...` is still changing `frb_example/pure_dart`.
+  If `pure_dart_pde` is failing, do not only refresh `pure_dart_pde`. First check whether `./frb_internal generate-internal-frb-example-pure-dart --set-exit-if-changed ...` is still changing `frb_example/pure_dart`.
 
 #### When to Consult
 
@@ -130,7 +130,7 @@ What this usually means:
 What to do:
 
 - Stop adding more generated-output-only sync commits by default
-- Go back to the dependency graph and identify the unstable source of truth first: generation logic, templates, toolchain version, generation order, or package relationship
+- Go back to the dependency graph and identify the unstable source of truth first: `frb_codegen/src/**`, `frb_codegen/assets/integration_template/**`, pinned Flutter/Dart/Rust versions, generation order, or package relationship
 - Only accept regenerated outputs after that source node is stable in a clean matching environment
 
 Common FRB patterns:
@@ -257,7 +257,7 @@ In that situation:
 - Hand-editing generated files to chase CI formatter output before checking whether CI, merge ref, and remote environments are formatting the same input
 - Hand-editing integrate-generated example outputs instead of fixing `frb_codegen/assets/integration_template/`
 - Chasing repeated `refresh/regenerate/sync` diffs without re-checking the upstream generation inputs
-- Fixing downstream build/test jobs before upstream generate/integrate jobs are stable
+- Fixing downstream build/test jobs before upstream generate/integrate/high-relevance generate-internal stages are stable
 - Answering from stale CI state instead of reading the latest relevant run or job information first
 
 ## Related Skills
