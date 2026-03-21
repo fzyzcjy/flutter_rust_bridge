@@ -12,7 +12,13 @@ Future<void> executeDartFormat({required String pwd}) async {
     'benchmark',
     'lib',
     'test',
-  ].where((entry) => File('$pwd/$entry').existsSync() || Directory('$pwd/$entry').existsSync()).toList();
+  ]
+      .where(
+        (entry) =>
+            File('$pwd/$entry').existsSync() ||
+            Directory('$pwd/$entry').existsSync(),
+      )
+      .toList();
   if (entries.isEmpty) return;
   if (File('$pwd/pubspec.yaml').existsSync()) {
     await runCommand('dart', ['pub', 'get'], pwd: pwd);
