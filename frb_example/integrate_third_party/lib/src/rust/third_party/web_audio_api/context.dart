@@ -61,10 +61,9 @@ abstract class AudioContext
   /// Create an `AudioParam`.
   ///
   /// Call this inside the `register` closure when setting up your `AudioNode`
-  Future<(AudioParam, AudioParamId)> createAudioParam({
-    required AudioParamDescriptor opts,
-    required AudioContextRegistration dest,
-  });
+  Future<(AudioParam, AudioParamId)> createAudioParam(
+      {required AudioParamDescriptor opts,
+      required AudioContextRegistration dest});
 
   /// Creates an `BiquadFilterNode` which implements a second order filter
   Future<BiquadFilterNode> createBiquadFilter();
@@ -74,11 +73,10 @@ abstract class AudioContext
   ///
   /// Note: In most cases you will want the sample rate to match the current
   /// audio context sample rate.
-  Future<AudioBuffer> createBuffer({
-    required int numberOfChannels,
-    required int length,
-    required double sampleRate,
-  });
+  Future<AudioBuffer> createBuffer(
+      {required int numberOfChannels,
+      required int length,
+      required double sampleRate});
 
   /// Creates an `AudioBufferSourceNode`
   Future<AudioBufferSourceNode> createBufferSource();
@@ -87,9 +85,8 @@ abstract class AudioContext
   Future<ChannelMergerNode> createChannelMerger({required int numberOfInputs});
 
   /// Creates a `ChannelSplitterNode`
-  Future<ChannelSplitterNode> createChannelSplitter({
-    required int numberOfOutputs,
-  });
+  Future<ChannelSplitterNode> createChannelSplitter(
+      {required int numberOfOutputs});
 
   /// Creates an `ConstantSourceNode`, a source representing a constant value
   Future<ConstantSourceNode> createConstantSource();
@@ -114,25 +111,21 @@ abstract class AudioContext
   /// The maximum length of this array is 20
   /// * `feedback` - An array of the feedback (denominator) coefficients for the transfer function of the IIR filter.
   /// The maximum length of this array is 20
-  Future<IirFilterNode> createIirFilter({
-    required List<double> feedforward,
-    required List<double> feedback,
-  });
+  Future<IirFilterNode> createIirFilter(
+      {required List<double> feedforward, required List<double> feedback});
 
   /// Creates a [`MediaStreamAudioDestinationNode`](node::MediaStreamAudioDestinationNode)
   Future<MediaStreamAudioDestinationNode> createMediaStreamDestination();
 
   /// Creates a [`MediaStreamAudioSourceNode`](node::MediaStreamAudioSourceNode) from a
   /// [`MediaStream`]
-  Future<MediaStreamAudioSourceNode> createMediaStreamSource({
-    required MediaStream media,
-  });
+  Future<MediaStreamAudioSourceNode> createMediaStreamSource(
+      {required MediaStream media});
 
   /// Creates a [`MediaStreamTrackAudioSourceNode`](node::MediaStreamTrackAudioSourceNode) from a
   /// [`MediaStreamTrack`]
-  Future<MediaStreamTrackAudioSourceNode> createMediaStreamTrackSource({
-    required MediaStreamTrack media,
-  });
+  Future<MediaStreamTrackAudioSourceNode> createMediaStreamTrackSource(
+      {required MediaStreamTrack media});
 
   /// Creates an `OscillatorNode`, a source representing a periodic waveform.
   Future<OscillatorNode> createOscillator();
@@ -144,9 +137,8 @@ abstract class AudioContext
   ///
   /// Please note that this constructor deviates slightly from the spec by requiring a single
   /// argument with the periodic wave options.
-  Future<PeriodicWave> createPeriodicWave({
-    required PeriodicWaveOptions options,
-  });
+  Future<PeriodicWave> createPeriodicWave(
+      {required PeriodicWaveOptions options});
 
   /// Creates an `ScriptProcessorNode` for custom audio processing (deprecated);
   ///
@@ -156,11 +148,10 @@ abstract class AudioContext
   /// - `buffer_size` is not 256, 512, 1024, 2048, 4096, 8192, or 16384
   /// - the number of input and output channels are both zero
   /// - either of the channel counts exceed [`crate::MAX_CHANNELS`]
-  Future<ScriptProcessorNode> createScriptProcessor({
-    required int bufferSize,
-    required int numberOfInputChannels,
-    required int numberOfOutputChannels,
-  });
+  Future<ScriptProcessorNode> createScriptProcessor(
+      {required int bufferSize,
+      required int numberOfInputChannels,
+      required int numberOfOutputChannels});
 
   /// Creates an `StereoPannerNode` to pan a stereo output
   Future<StereoPannerNode> createStereoPanner();
@@ -179,9 +170,8 @@ abstract class AudioContext
   /// context. It can be thought of as the audio-rendering device.
   Future<AudioDestinationNode> destination();
 
-  Future<MediaElementAudioSourceNode> createMediaElementSource({
-    required MediaElement mediaElement,
-  });
+  Future<MediaElementAudioSourceNode> createMediaElementSource(
+      {required MediaElement mediaElement});
 
   Future<AudioBuffer> decodeAudioDataSync({required String inputPath});
 
@@ -242,9 +232,8 @@ abstract class AudioContext
   /// The sample rate (in sample-frames per second) at which the `AudioContext` handles audio.
   Future<double> sampleRate();
 
-  Future<void> setOnStateChange({
-    required FutureOr<void> Function(Event) callback,
-  });
+  Future<void> setOnStateChange(
+      {required FutureOr<void> Function(Event) callback});
 
   Future<void> setSinkId({required String sinkId});
 
@@ -304,10 +293,9 @@ abstract class ConcreteBaseAudioContext
   /// Create an `AudioParam`.
   ///
   /// Call this inside the `register` closure when setting up your `AudioNode`
-  Future<(AudioParam, AudioParamId)> createAudioParam({
-    required AudioParamDescriptor opts,
-    required AudioContextRegistration dest,
-  });
+  Future<(AudioParam, AudioParamId)> createAudioParam(
+      {required AudioParamDescriptor opts,
+      required AudioContextRegistration dest});
 
   /// Creates an `BiquadFilterNode` which implements a second order filter
   Future<BiquadFilterNode> createBiquadFilter();
@@ -317,11 +305,10 @@ abstract class ConcreteBaseAudioContext
   ///
   /// Note: In most cases you will want the sample rate to match the current
   /// audio context sample rate.
-  Future<AudioBuffer> createBuffer({
-    required int numberOfChannels,
-    required int length,
-    required double sampleRate,
-  });
+  Future<AudioBuffer> createBuffer(
+      {required int numberOfChannels,
+      required int length,
+      required double sampleRate});
 
   /// Creates an `AudioBufferSourceNode`
   Future<AudioBufferSourceNode> createBufferSource();
@@ -330,9 +317,8 @@ abstract class ConcreteBaseAudioContext
   Future<ChannelMergerNode> createChannelMerger({required int numberOfInputs});
 
   /// Creates a `ChannelSplitterNode`
-  Future<ChannelSplitterNode> createChannelSplitter({
-    required int numberOfOutputs,
-  });
+  Future<ChannelSplitterNode> createChannelSplitter(
+      {required int numberOfOutputs});
 
   /// Creates an `ConstantSourceNode`, a source representing a constant value
   Future<ConstantSourceNode> createConstantSource();
@@ -357,10 +343,8 @@ abstract class ConcreteBaseAudioContext
   /// The maximum length of this array is 20
   /// * `feedback` - An array of the feedback (denominator) coefficients for the transfer function of the IIR filter.
   /// The maximum length of this array is 20
-  Future<IirFilterNode> createIirFilter({
-    required List<double> feedforward,
-    required List<double> feedback,
-  });
+  Future<IirFilterNode> createIirFilter(
+      {required List<double> feedforward, required List<double> feedback});
 
   /// Creates an `OscillatorNode`, a source representing a periodic waveform.
   Future<OscillatorNode> createOscillator();
@@ -372,9 +356,8 @@ abstract class ConcreteBaseAudioContext
   ///
   /// Please note that this constructor deviates slightly from the spec by requiring a single
   /// argument with the periodic wave options.
-  Future<PeriodicWave> createPeriodicWave({
-    required PeriodicWaveOptions options,
-  });
+  Future<PeriodicWave> createPeriodicWave(
+      {required PeriodicWaveOptions options});
 
   /// Creates an `ScriptProcessorNode` for custom audio processing (deprecated);
   ///
@@ -384,11 +367,10 @@ abstract class ConcreteBaseAudioContext
   /// - `buffer_size` is not 256, 512, 1024, 2048, 4096, 8192, or 16384
   /// - the number of input and output channels are both zero
   /// - either of the channel counts exceed [`crate::MAX_CHANNELS`]
-  Future<ScriptProcessorNode> createScriptProcessor({
-    required int bufferSize,
-    required int numberOfInputChannels,
-    required int numberOfOutputChannels,
-  });
+  Future<ScriptProcessorNode> createScriptProcessor(
+      {required int bufferSize,
+      required int numberOfInputChannels,
+      required int numberOfOutputChannels});
 
   /// Creates an `StereoPannerNode` to pan a stereo output
   Future<StereoPannerNode> createStereoPanner();
@@ -432,10 +414,9 @@ abstract class OfflineAudioContext
   /// Create an `AudioParam`.
   ///
   /// Call this inside the `register` closure when setting up your `AudioNode`
-  Future<(AudioParam, AudioParamId)> createAudioParam({
-    required AudioParamDescriptor opts,
-    required AudioContextRegistration dest,
-  });
+  Future<(AudioParam, AudioParamId)> createAudioParam(
+      {required AudioParamDescriptor opts,
+      required AudioContextRegistration dest});
 
   /// Creates an `BiquadFilterNode` which implements a second order filter
   Future<BiquadFilterNode> createBiquadFilter();
@@ -445,11 +426,10 @@ abstract class OfflineAudioContext
   ///
   /// Note: In most cases you will want the sample rate to match the current
   /// audio context sample rate.
-  Future<AudioBuffer> createBuffer({
-    required int numberOfChannels,
-    required int length,
-    required double sampleRate,
-  });
+  Future<AudioBuffer> createBuffer(
+      {required int numberOfChannels,
+      required int length,
+      required double sampleRate});
 
   /// Creates an `AudioBufferSourceNode`
   Future<AudioBufferSourceNode> createBufferSource();
@@ -458,9 +438,8 @@ abstract class OfflineAudioContext
   Future<ChannelMergerNode> createChannelMerger({required int numberOfInputs});
 
   /// Creates a `ChannelSplitterNode`
-  Future<ChannelSplitterNode> createChannelSplitter({
-    required int numberOfOutputs,
-  });
+  Future<ChannelSplitterNode> createChannelSplitter(
+      {required int numberOfOutputs});
 
   /// Creates an `ConstantSourceNode`, a source representing a constant value
   Future<ConstantSourceNode> createConstantSource();
@@ -485,10 +464,8 @@ abstract class OfflineAudioContext
   /// The maximum length of this array is 20
   /// * `feedback` - An array of the feedback (denominator) coefficients for the transfer function of the IIR filter.
   /// The maximum length of this array is 20
-  Future<IirFilterNode> createIirFilter({
-    required List<double> feedforward,
-    required List<double> feedback,
-  });
+  Future<IirFilterNode> createIirFilter(
+      {required List<double> feedforward, required List<double> feedback});
 
   /// Creates an `OscillatorNode`, a source representing a periodic waveform.
   Future<OscillatorNode> createOscillator();
@@ -500,9 +477,8 @@ abstract class OfflineAudioContext
   ///
   /// Please note that this constructor deviates slightly from the spec by requiring a single
   /// argument with the periodic wave options.
-  Future<PeriodicWave> createPeriodicWave({
-    required PeriodicWaveOptions options,
-  });
+  Future<PeriodicWave> createPeriodicWave(
+      {required PeriodicWaveOptions options});
 
   /// Creates an `ScriptProcessorNode` for custom audio processing (deprecated);
   ///
@@ -512,11 +488,10 @@ abstract class OfflineAudioContext
   /// - `buffer_size` is not 256, 512, 1024, 2048, 4096, 8192, or 16384
   /// - the number of input and output channels are both zero
   /// - either of the channel counts exceed [`crate::MAX_CHANNELS`]
-  Future<ScriptProcessorNode> createScriptProcessor({
-    required int bufferSize,
-    required int numberOfInputChannels,
-    required int numberOfOutputChannels,
-  });
+  Future<ScriptProcessorNode> createScriptProcessor(
+      {required int bufferSize,
+      required int numberOfInputChannels,
+      required int numberOfOutputChannels});
 
   /// Creates an `StereoPannerNode` to pan a stereo output
   Future<StereoPannerNode> createStereoPanner();
@@ -546,16 +521,14 @@ abstract class OfflineAudioContext
   /// * `channels` - number of output channels to render
   /// * `length` - length of the rendering audio buffer
   /// * `sample_rate` - output sample rate
-  static Future<OfflineAudioContext> newInstance({
-    required int numberOfChannels,
-    required int length,
-    required double sampleRate,
-  }) =>
+  static Future<OfflineAudioContext> newInstance(
+          {required int numberOfChannels,
+          required int length,
+          required double sampleRate}) =>
       RustLib.instance.api.webAudioApiContextOfflineAudioContextNew(
-        numberOfChannels: numberOfChannels,
-        length: length,
-        sampleRate: sampleRate,
-      );
+          numberOfChannels: numberOfChannels,
+          length: length,
+          sampleRate: sampleRate);
 
   /// Resumes the progression of the OfflineAudioContext's currentTime when it has been suspended
   ///
@@ -567,9 +540,8 @@ abstract class OfflineAudioContext
   /// The sample rate (in sample-frames per second) at which the `AudioContext` handles audio.
   Future<double> sampleRate();
 
-  Future<void> setOnComplete({
-    required FutureOr<void> Function(OfflineAudioCompletionEvent) callback,
-  });
+  Future<void> setOnComplete(
+      {required FutureOr<void> Function(OfflineAudioCompletionEvent) callback});
 
   /// Given the current connections and scheduled changes, starts rendering audio.
   ///
@@ -654,10 +626,9 @@ abstract class BaseAudioContext {
   /// Create an `AudioParam`.
   ///
   /// Call this inside the `register` closure when setting up your `AudioNode`
-  Future<(AudioParam, AudioParamId)> createAudioParam({
-    required AudioParamDescriptor opts,
-    required AudioContextRegistration dest,
-  });
+  Future<(AudioParam, AudioParamId)> createAudioParam(
+      {required AudioParamDescriptor opts,
+      required AudioContextRegistration dest});
 
   /// Creates an `BiquadFilterNode` which implements a second order filter
   Future<BiquadFilterNode> createBiquadFilter();
@@ -667,11 +638,10 @@ abstract class BaseAudioContext {
   ///
   /// Note: In most cases you will want the sample rate to match the current
   /// audio context sample rate.
-  Future<AudioBuffer> createBuffer({
-    required int numberOfChannels,
-    required int length,
-    required double sampleRate,
-  });
+  Future<AudioBuffer> createBuffer(
+      {required int numberOfChannels,
+      required int length,
+      required double sampleRate});
 
   /// Creates an `AudioBufferSourceNode`
   Future<AudioBufferSourceNode> createBufferSource();
@@ -680,9 +650,8 @@ abstract class BaseAudioContext {
   Future<ChannelMergerNode> createChannelMerger({required int numberOfInputs});
 
   /// Creates a `ChannelSplitterNode`
-  Future<ChannelSplitterNode> createChannelSplitter({
-    required int numberOfOutputs,
-  });
+  Future<ChannelSplitterNode> createChannelSplitter(
+      {required int numberOfOutputs});
 
   /// Creates an `ConstantSourceNode`, a source representing a constant value
   Future<ConstantSourceNode> createConstantSource();
@@ -707,10 +676,8 @@ abstract class BaseAudioContext {
   /// The maximum length of this array is 20
   /// * `feedback` - An array of the feedback (denominator) coefficients for the transfer function of the IIR filter.
   /// The maximum length of this array is 20
-  Future<IirFilterNode> createIirFilter({
-    required List<double> feedforward,
-    required List<double> feedback,
-  });
+  Future<IirFilterNode> createIirFilter(
+      {required List<double> feedforward, required List<double> feedback});
 
   /// Creates an `OscillatorNode`, a source representing a periodic waveform.
   Future<OscillatorNode> createOscillator();
@@ -722,9 +689,8 @@ abstract class BaseAudioContext {
   ///
   /// Please note that this constructor deviates slightly from the spec by requiring a single
   /// argument with the periodic wave options.
-  Future<PeriodicWave> createPeriodicWave({
-    required PeriodicWaveOptions options,
-  });
+  Future<PeriodicWave> createPeriodicWave(
+      {required PeriodicWaveOptions options});
 
   /// Creates an `ScriptProcessorNode` for custom audio processing (deprecated);
   ///
@@ -734,11 +700,10 @@ abstract class BaseAudioContext {
   /// - `buffer_size` is not 256, 512, 1024, 2048, 4096, 8192, or 16384
   /// - the number of input and output channels are both zero
   /// - either of the channel counts exceed [`crate::MAX_CHANNELS`]
-  Future<ScriptProcessorNode> createScriptProcessor({
-    required int bufferSize,
-    required int numberOfInputChannels,
-    required int numberOfOutputChannels,
-  });
+  Future<ScriptProcessorNode> createScriptProcessor(
+      {required int bufferSize,
+      required int numberOfInputChannels,
+      required int numberOfOutputChannels});
 
   /// Creates an `StereoPannerNode` to pan a stereo output
   Future<StereoPannerNode> createStereoPanner();
@@ -785,8 +750,9 @@ sealed class AudioContextLatencyCategory with _$AudioContextLatencyCategory {
   /// Specify the number of seconds of latency
   ///
   /// This latency is not guaranteed to be applied, it depends on the audio hardware capabilities
-  const factory AudioContextLatencyCategory.custom(double field0) =
-      AudioContextLatencyCategory_Custom;
+  const factory AudioContextLatencyCategory.custom(
+    double field0,
+  ) = AudioContextLatencyCategory_Custom;
 
   static Future<AudioContextLatencyCategory> default_() => RustLib.instance.api
       .webAudioApiContextAudioContextLatencyCategoryDefault();
@@ -858,6 +824,7 @@ class AudioContextOptions {
 enum AudioContextRenderSizeCategory {
   /// The default value of 128 frames
   default_,
+  ;
 }
 
 /// Describes the current state of the `AudioContext`
@@ -872,4 +839,5 @@ enum AudioContextState {
   /// This context has been released, and can no longer be used to process audio.
   /// All system audio resources have been released.
   closed,
+  ;
 }

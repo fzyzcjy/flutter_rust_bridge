@@ -203,728 +203,607 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   AnalyserNode
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioBufferSourceNode
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioDestinationNode
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioListener
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioWorkletNode
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   BiquadFilterNode
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   ChannelMergerNode
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   ChannelSplitterNode
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   ConstantSourceNode
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   ConvolverNode
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   DelayNode
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   DynamicsCompressorNode
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   GainNode
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   IirFilterNode
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaElementAudioSourceNode
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaStreamAudioDestinationNode
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaStreamAudioSourceNode
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaStreamTrackAudioSourceNode
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   OscillatorNode
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   PannerNode
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   ScriptProcessorNode
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   StereoPannerNode
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   WaveShaperNode
       dco_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AnalyserNode
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioBuffer
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioBufferSourceNode
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioContext
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioDestinationNode
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioListener
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParamId
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamId(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioProcessingEvent
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioRenderCapacity
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioRenderCapacityEvent
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioWorkletNode
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   BiquadFilterNode
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   BlobEvent
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   ChannelConfig
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfig(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   ChannelMergerNode
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   ChannelSplitterNode
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   ConcreteBaseAudioContext
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   ConstantSourceNode
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   ConvolverNode
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   DelayNode
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   DummyStruct
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStruct(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   DynamicsCompressorNode
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   Event
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   GainNode
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   IirFilterNode
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaElementAudioSourceNode
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaRecorder
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaStream
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaStreamAudioDestinationNode
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaStreamAudioSourceNode
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaStreamConstraints
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaStreamTrack
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaStreamTrackAudioSourceNode
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaElement
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   OfflineAudioCompletionEvent
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   OfflineAudioContext
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   OscillatorNode
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   PannerNode
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   PeriodicWave
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   ScriptProcessorNode
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   StereoPannerNode
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   WaveShaperNode
       dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AnalyserNode
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioBuffer
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioBufferSourceNode
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioProcessingEvent
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioRenderCapacityEvent
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   BiquadFilterNode
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   BlobEvent
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   ConstantSourceNode
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   ConvolverNode
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaElement
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   OfflineAudioCompletionEvent
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   OfflineAudioContext
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   OscillatorNode
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   PannerNode
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   WaveShaperNode
       dco_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AnalyserNode
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioBuffer
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioBufferSourceNode
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioContext
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioContextRegistration
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistration(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioDestinationNode
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioListener
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioProcessingEvent
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioRenderCapacity
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioRenderCapacityEvent
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioWorkletNode
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   BiquadFilterNode
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   BlobEvent
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   ChannelMergerNode
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   ChannelSplitterNode
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   ConcreteBaseAudioContext
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   ConstantSourceNode
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   ConvolverNode
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   DelayNode
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   DynamicsCompressorNode
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   Event
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   GainNode
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   IirFilterNode
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaElementAudioSourceNode
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaRecorder
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaStream
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaStreamAudioDestinationNode
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaStreamAudioSourceNode
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaStreamTrack
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaStreamTrackAudioSourceNode
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaElement
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   OfflineAudioCompletionEvent
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   OfflineAudioContext
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   OscillatorNode
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   PannerNode
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   ScriptProcessorNode
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   StereoPannerNode
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   WaveShaperNode
       dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   int dco_decode_CastedPrimitive_usize(dynamic raw);
@@ -932,20 +811,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   FutureOr<void> Function(AudioProcessingEvent)
       dco_decode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent_Output_unit_AnyhowException(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   FutureOr<void> Function(Event)
       dco_decode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent_Output_unit_AnyhowException(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   FutureOr<void> Function(OfflineAudioCompletionEvent)
       dco_decode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent_Output_unit_AnyhowException(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   FutureOr<void> Function(String)
@@ -960,476 +836,397 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   AudioParam
       dco_decode_ProxyEnum_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaStream
       dco_decode_ProxyEnum_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_media_stream_proxy_enum(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode_detune(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode_playback_rate(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_forward_x(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_forward_y(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_forward_z(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_position_x(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_position_y(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_position_z(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_up_x(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_up_y(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_up_z(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_detune(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_frequency(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_gain(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_q(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode_offset(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode_delay_time(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_attack(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_knee(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_ratio(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_release(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_threshold(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode_gain(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaStream
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode_stream(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode_detune(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode_frequency(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_orientation_x(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_orientation_y(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_orientation_z(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_position_x(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_position_y(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_position_z(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode_pan(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AnalyserNode
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioBuffer
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioBufferSourceNode
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioContext
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioContextRegistration
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistration(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioDestinationNode
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioListener
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParam
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioParamId
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamId(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioProcessingEvent
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioRenderCapacity
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioRenderCapacityEvent
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioWorkletNode
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   BiquadFilterNode
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   BlobEvent
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   ChannelConfig
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfig(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   ChannelMergerNode
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   ChannelSplitterNode
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   ConcreteBaseAudioContext
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   ConstantSourceNode
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   ConvolverNode
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   DelayNode
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   DummyStruct
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStruct(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   DynamicsCompressorNode
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   Event
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   GainNode
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   IirFilterNode
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaElementAudioSourceNode
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaRecorder
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaStream
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaStreamAudioDestinationNode
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaStreamAudioSourceNode
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaStreamConstraints
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaStreamTrack
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaStreamTrackAudioSourceNode
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   MediaElement
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   OfflineAudioCompletionEvent
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   OfflineAudioContext
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   OscillatorNode
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   PannerNode
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   PeriodicWave
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   ScriptProcessorNode
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   StereoPannerNode
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   WaveShaperNode
       dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   String dco_decode_String(dynamic raw);
@@ -1442,27 +1239,23 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   AudioBufferSourceNodeExt dco_decode_TraitDef_AudioBufferSourceNodeExt(
-    dynamic raw,
-  );
+      dynamic raw);
 
   @protected
   AudioBufferSourceNodeMiscExt dco_decode_TraitDef_AudioBufferSourceNodeMiscExt(
-    dynamic raw,
-  );
+      dynamic raw);
 
   @protected
   AudioBufferSourceNodeScheduledSourceNodeMiscExt
       dco_decode_TraitDef_AudioBufferSourceNodeScheduledSourceNodeMiscExt(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioContextExt dco_decode_TraitDef_AudioContextExt(dynamic raw);
 
   @protected
   AudioDestinationNodeExt dco_decode_TraitDef_AudioDestinationNodeExt(
-    dynamic raw,
-  );
+      dynamic raw);
 
   @protected
   AudioNode dco_decode_TraitDef_AudioNode(dynamic raw);
@@ -1472,8 +1265,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   AudioScheduledSourceNode dco_decode_TraitDef_AudioScheduledSourceNode(
-    dynamic raw,
-  );
+      dynamic raw);
 
   @protected
   AudioWorkletProcessor dco_decode_TraitDef_AudioWorkletProcessor(dynamic raw);
@@ -1489,8 +1281,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   ChannelSplitterNodeExt dco_decode_TraitDef_ChannelSplitterNodeExt(
-    dynamic raw,
-  );
+      dynamic raw);
 
   @protected
   ConstantSourceNodeExt dco_decode_TraitDef_ConstantSourceNodeExt(dynamic raw);
@@ -1508,8 +1299,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   DynamicsCompressorNodeExt dco_decode_TraitDef_DynamicsCompressorNodeExt(
-    dynamic raw,
-  );
+      dynamic raw);
 
   @protected
   EventExt dco_decode_TraitDef_EventExt(dynamic raw);
@@ -1541,8 +1331,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   OfflineAudioContextExt dco_decode_TraitDef_OfflineAudioContextExt(
-    dynamic raw,
-  );
+      dynamic raw);
 
   @protected
   OscillatorNodeExt dco_decode_TraitDef_OscillatorNodeExt(dynamic raw);
@@ -1556,13 +1345,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   ScriptProcessorNodeExt dco_decode_TraitDef_ScriptProcessorNodeExt(
-    dynamic raw,
-  );
+      dynamic raw);
 
   @protected
   ScriptProcessorNodeMiscExt dco_decode_TraitDef_ScriptProcessorNodeMiscExt(
-    dynamic raw,
-  );
+      dynamic raw);
 
   @protected
   StereoPannerNodeExt dco_decode_TraitDef_StereoPannerNodeExt(dynamic raw);
@@ -1584,16 +1371,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   AudioContextLatencyCategory dco_decode_audio_context_latency_category(
-    dynamic raw,
-  );
+      dynamic raw);
 
   @protected
   AudioContextOptions dco_decode_audio_context_options(dynamic raw);
 
   @protected
   AudioContextRenderSizeCategory dco_decode_audio_context_render_size_category(
-    dynamic raw,
-  );
+      dynamic raw);
 
   @protected
   AudioContextState dco_decode_audio_context_state(dynamic raw);
@@ -1609,20 +1394,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   AudioRenderCapacityOptions dco_decode_audio_render_capacity_options(
-    dynamic raw,
-  );
+      dynamic raw);
 
   @protected
   Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
       dco_decode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum
       dco_decode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_media_stream_proxy_enum(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AutomationRate dco_decode_automation_rate(dynamic raw);
@@ -1639,14 +1421,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   AudioBuffer
       dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   PeriodicWave
       dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   AudioBufferOptions dco_decode_box_autoadd_audio_buffer_options(dynamic raw);
@@ -1656,13 +1436,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   AudioNodeImplementor dco_decode_box_autoadd_audio_node_implementor(
-    dynamic raw,
-  );
+      dynamic raw);
 
   @protected
   AudioParamDescriptor dco_decode_box_autoadd_audio_param_descriptor(
-    dynamic raw,
-  );
+      dynamic raw);
 
   @protected
   AudioRenderCapacityOptions
@@ -1671,14 +1449,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
       dco_decode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum
       dco_decode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_media_stream_proxy_enum(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   double dco_decode_box_autoadd_f_32(dynamic raw);
@@ -1731,13 +1507,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<MediaStreamTrack>
       dco_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   List<AudioParamDescriptor> dco_decode_list_audio_param_descriptor(
-    dynamic raw,
-  );
+      dynamic raw);
 
   @protected
   List<Float32List> dco_decode_list_list_prim_f_32_strict(dynamic raw);
@@ -1763,14 +1537,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   AudioBuffer?
       dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   PeriodicWave?
       dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
-    dynamic raw,
-  );
+          dynamic raw);
 
   @protected
   double? dco_decode_opt_box_autoadd_f_32(dynamic raw);
@@ -1801,8 +1573,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     AudioParam,
     AudioParamId
   ) dco_decode_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_id(
-    dynamic raw,
-  );
+      dynamic raw);
 
   @protected
   StereoPannerOptions dco_decode_stereo_panner_options(dynamic raw);
@@ -1825,728 +1596,607 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   AnalyserNode
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioBufferSourceNode
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioDestinationNode
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioListener
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioWorkletNode
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   BiquadFilterNode
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   ChannelMergerNode
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   ChannelSplitterNode
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   ConstantSourceNode
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   ConvolverNode
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   DelayNode
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   DynamicsCompressorNode
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   GainNode
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   IirFilterNode
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaElementAudioSourceNode
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaStreamAudioDestinationNode
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaStreamAudioSourceNode
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaStreamTrackAudioSourceNode
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   OscillatorNode
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   PannerNode
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   ScriptProcessorNode
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   StereoPannerNode
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   WaveShaperNode
       sse_decode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AnalyserNode
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioBuffer
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioBufferSourceNode
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioContext
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioDestinationNode
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioListener
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParamId
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamId(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioProcessingEvent
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioRenderCapacity
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioRenderCapacityEvent
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioWorkletNode
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   BiquadFilterNode
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   BlobEvent
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   ChannelConfig
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfig(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   ChannelMergerNode
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   ChannelSplitterNode
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   ConcreteBaseAudioContext
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   ConstantSourceNode
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   ConvolverNode
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   DelayNode
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   DummyStruct
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStruct(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   DynamicsCompressorNode
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   Event
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   GainNode
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   IirFilterNode
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaElementAudioSourceNode
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaRecorder
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaStream
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaStreamAudioDestinationNode
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaStreamAudioSourceNode
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaStreamConstraints
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaStreamTrack
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaStreamTrackAudioSourceNode
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaElement
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   OfflineAudioCompletionEvent
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   OfflineAudioContext
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   OscillatorNode
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   PannerNode
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   PeriodicWave
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   ScriptProcessorNode
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   StereoPannerNode
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   WaveShaperNode
       sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AnalyserNode
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioBuffer
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioBufferSourceNode
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioProcessingEvent
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioRenderCapacityEvent
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   BiquadFilterNode
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   BlobEvent
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   ConstantSourceNode
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   ConvolverNode
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaElement
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   OfflineAudioCompletionEvent
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   OfflineAudioContext
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   OscillatorNode
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   PannerNode
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   WaveShaperNode
       sse_decode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AnalyserNode
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioBuffer
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioBufferSourceNode
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioContext
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioContextRegistration
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistration(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioDestinationNode
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioListener
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioProcessingEvent
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioRenderCapacity
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioRenderCapacityEvent
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioWorkletNode
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   BiquadFilterNode
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   BlobEvent
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   ChannelMergerNode
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   ChannelSplitterNode
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   ConcreteBaseAudioContext
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   ConstantSourceNode
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   ConvolverNode
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   DelayNode
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   DynamicsCompressorNode
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   Event
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   GainNode
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   IirFilterNode
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaElementAudioSourceNode
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaRecorder
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaStream
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaStreamAudioDestinationNode
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaStreamAudioSourceNode
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaStreamTrack
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaStreamTrackAudioSourceNode
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaElement
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   OfflineAudioCompletionEvent
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   OfflineAudioContext
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   OscillatorNode
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   PannerNode
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   ScriptProcessorNode
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   StereoPannerNode
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   WaveShaperNode
       sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   int sse_decode_CastedPrimitive_usize(SseDeserializer deserializer);
@@ -2560,476 +2210,397 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   AudioParam
       sse_decode_ProxyEnum_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaStream
       sse_decode_ProxyEnum_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_media_stream_proxy_enum(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode_detune(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode_playback_rate(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_forward_x(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_forward_y(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_forward_z(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_position_x(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_position_y(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_position_z(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_up_x(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_up_y(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_up_z(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_detune(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_frequency(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_gain(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_q(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode_offset(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode_delay_time(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_attack(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_knee(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_ratio(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_release(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_threshold(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode_gain(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaStream
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode_stream(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode_detune(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode_frequency(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_orientation_x(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_orientation_y(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_orientation_z(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_position_x(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_position_y(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_position_z(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode_pan(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AnalyserNode
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioBuffer
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioBufferSourceNode
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioContext
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioContextRegistration
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistration(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioDestinationNode
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioListener
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParam
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioParamId
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamId(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioProcessingEvent
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioRenderCapacity
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioRenderCapacityEvent
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioWorkletNode
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   BiquadFilterNode
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   BlobEvent
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   ChannelConfig
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfig(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   ChannelMergerNode
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   ChannelSplitterNode
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   ConcreteBaseAudioContext
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   ConstantSourceNode
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   ConvolverNode
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   DelayNode
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   DummyStruct
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStruct(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   DynamicsCompressorNode
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   Event
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   GainNode
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   IirFilterNode
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaElementAudioSourceNode
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaRecorder
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaStream
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaStreamAudioDestinationNode
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaStreamAudioSourceNode
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaStreamConstraints
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaStreamTrack
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaStreamTrackAudioSourceNode
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   MediaElement
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   OfflineAudioCompletionEvent
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   OfflineAudioContext
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   OscillatorNode
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   PannerNode
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   PeriodicWave
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   ScriptProcessorNode
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   StereoPannerNode
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   WaveShaperNode
       sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   String sse_decode_String(SseDeserializer deserializer);
@@ -3039,71 +2610,59 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   AudioBufferOptions sse_decode_audio_buffer_options(
-    SseDeserializer deserializer,
-  );
+      SseDeserializer deserializer);
 
   @protected
   AudioBufferSourceOptions sse_decode_audio_buffer_source_options(
-    SseDeserializer deserializer,
-  );
+      SseDeserializer deserializer);
 
   @protected
   AudioContextLatencyCategory sse_decode_audio_context_latency_category(
-    SseDeserializer deserializer,
-  );
+      SseDeserializer deserializer);
 
   @protected
   AudioContextOptions sse_decode_audio_context_options(
-    SseDeserializer deserializer,
-  );
+      SseDeserializer deserializer);
 
   @protected
   AudioContextRenderSizeCategory sse_decode_audio_context_render_size_category(
-    SseDeserializer deserializer,
-  );
+      SseDeserializer deserializer);
 
   @protected
   AudioContextState sse_decode_audio_context_state(
-    SseDeserializer deserializer,
-  );
+      SseDeserializer deserializer);
 
   @protected
   AudioNodeImplementor sse_decode_audio_node_implementor(
-    SseDeserializer deserializer,
-  );
+      SseDeserializer deserializer);
 
   @protected
   AudioNodeOptions sse_decode_audio_node_options(SseDeserializer deserializer);
 
   @protected
   AudioParamDescriptor sse_decode_audio_param_descriptor(
-    SseDeserializer deserializer,
-  );
+      SseDeserializer deserializer);
 
   @protected
   AudioRenderCapacityOptions sse_decode_audio_render_capacity_options(
-    SseDeserializer deserializer,
-  );
+      SseDeserializer deserializer);
 
   @protected
   Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
       sse_decode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum
       sse_decode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_media_stream_proxy_enum(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AutomationRate sse_decode_automation_rate(SseDeserializer deserializer);
 
   @protected
   BiquadFilterOptions sse_decode_biquad_filter_options(
-    SseDeserializer deserializer,
-  );
+      SseDeserializer deserializer);
 
   @protected
   BiquadFilterType sse_decode_biquad_filter_type(SseDeserializer deserializer);
@@ -3114,83 +2673,69 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   AudioBuffer
       sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   PeriodicWave
       sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   AudioBufferOptions sse_decode_box_autoadd_audio_buffer_options(
-    SseDeserializer deserializer,
-  );
+      SseDeserializer deserializer);
 
   @protected
   AudioContextOptions sse_decode_box_autoadd_audio_context_options(
-    SseDeserializer deserializer,
-  );
+      SseDeserializer deserializer);
 
   @protected
   AudioNodeImplementor sse_decode_box_autoadd_audio_node_implementor(
-    SseDeserializer deserializer,
-  );
+      SseDeserializer deserializer);
 
   @protected
   AudioParamDescriptor sse_decode_box_autoadd_audio_param_descriptor(
-    SseDeserializer deserializer,
-  );
+      SseDeserializer deserializer);
 
   @protected
   AudioRenderCapacityOptions
       sse_decode_box_autoadd_audio_render_capacity_options(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
       sse_decode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum
       sse_decode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_media_stream_proxy_enum(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   double sse_decode_box_autoadd_f_32(SseDeserializer deserializer);
 
   @protected
   PeriodicWaveOptions sse_decode_box_autoadd_periodic_wave_options(
-    SseDeserializer deserializer,
-  );
+      SseDeserializer deserializer);
 
   @protected
   ChannelCountMode sse_decode_channel_count_mode(SseDeserializer deserializer);
 
   @protected
   ChannelInterpretation sse_decode_channel_interpretation(
-    SseDeserializer deserializer,
-  );
+      SseDeserializer deserializer);
 
   @protected
   ChannelMergerOptions sse_decode_channel_merger_options(
-    SseDeserializer deserializer,
-  );
+      SseDeserializer deserializer);
 
   @protected
   ChannelSplitterOptions sse_decode_channel_splitter_options(
-    SseDeserializer deserializer,
-  );
+      SseDeserializer deserializer);
 
   @protected
   ConstantSourceOptions sse_decode_constant_source_options(
-    SseDeserializer deserializer,
-  );
+      SseDeserializer deserializer);
 
   @protected
   ConvolverOptions sse_decode_convolver_options(SseDeserializer deserializer);
@@ -3200,13 +2745,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   DistanceModelType sse_decode_distance_model_type(
-    SseDeserializer deserializer,
-  );
+      SseDeserializer deserializer);
 
   @protected
   DynamicsCompressorOptions sse_decode_dynamics_compressor_options(
-    SseDeserializer deserializer,
-  );
+      SseDeserializer deserializer);
 
   @protected
   double sse_decode_f_32(SseDeserializer deserializer);
@@ -3226,18 +2769,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<MediaStreamTrack>
       sse_decode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   List<AudioParamDescriptor> sse_decode_list_audio_param_descriptor(
-    SseDeserializer deserializer,
-  );
+      SseDeserializer deserializer);
 
   @protected
   List<Float32List> sse_decode_list_list_prim_f_32_strict(
-    SseDeserializer deserializer,
-  );
+      SseDeserializer deserializer);
 
   @protected
   List<double> sse_decode_list_prim_f_32_loose(SseDeserializer deserializer);
@@ -3256,28 +2796,24 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MediaStreamTrackState sse_decode_media_stream_track_state(
-    SseDeserializer deserializer,
-  );
+      SseDeserializer deserializer);
 
   @protected
   AudioBuffer?
       sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   PeriodicWave?
       sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
-    SseDeserializer deserializer,
-  );
+          SseDeserializer deserializer);
 
   @protected
   double? sse_decode_opt_box_autoadd_f_32(SseDeserializer deserializer);
 
   @protected
   Float32List? sse_decode_opt_list_prim_f_32_strict(
-    SseDeserializer deserializer,
-  );
+      SseDeserializer deserializer);
 
   @protected
   OscillatorOptions sse_decode_oscillator_options(SseDeserializer deserializer);
@@ -3296,21 +2832,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   PeriodicWaveOptions sse_decode_periodic_wave_options(
-    SseDeserializer deserializer,
-  );
+      SseDeserializer deserializer);
 
   @protected
   (
     AudioParam,
     AudioParamId
   ) sse_decode_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_id(
-    SseDeserializer deserializer,
-  );
+      SseDeserializer deserializer);
 
   @protected
   StereoPannerOptions sse_decode_stereo_panner_options(
-    SseDeserializer deserializer,
-  );
+      SseDeserializer deserializer);
 
   @protected
   int sse_decode_u_8(SseDeserializer deserializer);
@@ -3323,861 +2856,616 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   WaveShaperOptions sse_decode_wave_shaper_options(
-    SseDeserializer deserializer,
-  );
+      SseDeserializer deserializer);
 
   @protected
   void sse_encode_AnyhowException(
-    AnyhowException self,
-    SseSerializer serializer,
-  );
+      AnyhowException self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
-    AnalyserNode self,
-    SseSerializer serializer,
-  );
+          AnalyserNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
-    AudioBufferSourceNode self,
-    SseSerializer serializer,
-  );
+          AudioBufferSourceNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
-    AudioDestinationNode self,
-    SseSerializer serializer,
-  );
+          AudioDestinationNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-    AudioListener self,
-    SseSerializer serializer,
-  );
+          AudioListener self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
-    AudioWorkletNode self,
-    SseSerializer serializer,
-  );
+          AudioWorkletNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
-    BiquadFilterNode self,
-    SseSerializer serializer,
-  );
+          BiquadFilterNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
-    ChannelMergerNode self,
-    SseSerializer serializer,
-  );
+          ChannelMergerNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
-    ChannelSplitterNode self,
-    SseSerializer serializer,
-  );
+          ChannelSplitterNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
-    ConstantSourceNode self,
-    SseSerializer serializer,
-  );
+          ConstantSourceNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
-    ConvolverNode self,
-    SseSerializer serializer,
-  );
+          ConvolverNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
-    DelayNode self,
-    SseSerializer serializer,
-  );
+          DelayNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
-    DynamicsCompressorNode self,
-    SseSerializer serializer,
-  );
+          DynamicsCompressorNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
-    GainNode self,
-    SseSerializer serializer,
-  );
+          GainNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
-    IirFilterNode self,
-    SseSerializer serializer,
-  );
+          IirFilterNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
-    MediaElementAudioSourceNode self,
-    SseSerializer serializer,
-  );
+          MediaElementAudioSourceNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
-    MediaStreamAudioDestinationNode self,
-    SseSerializer serializer,
-  );
+          MediaStreamAudioDestinationNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
-    MediaStreamAudioSourceNode self,
-    SseSerializer serializer,
-  );
+          MediaStreamAudioSourceNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
-    MediaStreamTrackAudioSourceNode self,
-    SseSerializer serializer,
-  );
+          MediaStreamTrackAudioSourceNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
-    OscillatorNode self,
-    SseSerializer serializer,
-  );
+          OscillatorNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
-    PannerNode self,
-    SseSerializer serializer,
-  );
+          PannerNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
-    ScriptProcessorNode self,
-    SseSerializer serializer,
-  );
+          ScriptProcessorNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
-    StereoPannerNode self,
-    SseSerializer serializer,
-  );
+          StereoPannerNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
-    WaveShaperNode self,
-    SseSerializer serializer,
-  );
+          WaveShaperNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
-    AnalyserNode self,
-    SseSerializer serializer,
-  );
+          AnalyserNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
-    AudioBuffer self,
-    SseSerializer serializer,
-  );
+          AudioBuffer self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
-    AudioBufferSourceNode self,
-    SseSerializer serializer,
-  );
+          AudioBufferSourceNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext(
-    AudioContext self,
-    SseSerializer serializer,
-  );
+          AudioContext self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
-    AudioDestinationNode self,
-    SseSerializer serializer,
-  );
+          AudioDestinationNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-    AudioListener self,
-    SseSerializer serializer,
-  );
+          AudioListener self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamId(
-    AudioParamId self,
-    SseSerializer serializer,
-  );
+          AudioParamId self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
-    AudioProcessingEvent self,
-    SseSerializer serializer,
-  );
+          AudioProcessingEvent self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity(
-    AudioRenderCapacity self,
-    SseSerializer serializer,
-  );
+          AudioRenderCapacity self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
-    AudioRenderCapacityEvent self,
-    SseSerializer serializer,
-  );
+          AudioRenderCapacityEvent self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
-    AudioWorkletNode self,
-    SseSerializer serializer,
-  );
+          AudioWorkletNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
-    BiquadFilterNode self,
-    SseSerializer serializer,
-  );
+          BiquadFilterNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
-    BlobEvent self,
-    SseSerializer serializer,
-  );
+          BlobEvent self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfig(
-    ChannelConfig self,
-    SseSerializer serializer,
-  );
+          ChannelConfig self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
-    ChannelMergerNode self,
-    SseSerializer serializer,
-  );
+          ChannelMergerNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
-    ChannelSplitterNode self,
-    SseSerializer serializer,
-  );
+          ChannelSplitterNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext(
-    ConcreteBaseAudioContext self,
-    SseSerializer serializer,
-  );
+          ConcreteBaseAudioContext self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
-    ConstantSourceNode self,
-    SseSerializer serializer,
-  );
+          ConstantSourceNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
-    ConvolverNode self,
-    SseSerializer serializer,
-  );
+          ConvolverNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
-    DelayNode self,
-    SseSerializer serializer,
-  );
+          DelayNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStruct(
-    DummyStruct self,
-    SseSerializer serializer,
-  );
+          DummyStruct self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
-    DynamicsCompressorNode self,
-    SseSerializer serializer,
-  );
+          DynamicsCompressorNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
-    Event self,
-    SseSerializer serializer,
-  );
+          Event self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
-    GainNode self,
-    SseSerializer serializer,
-  );
+          GainNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
-    IirFilterNode self,
-    SseSerializer serializer,
-  );
+          IirFilterNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
-    MediaElementAudioSourceNode self,
-    SseSerializer serializer,
-  );
+          MediaElementAudioSourceNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder(
-    MediaRecorder self,
-    SseSerializer serializer,
-  );
+          MediaRecorder self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream(
-    MediaStream self,
-    SseSerializer serializer,
-  );
+          MediaStream self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
-    MediaStreamAudioDestinationNode self,
-    SseSerializer serializer,
-  );
+          MediaStreamAudioDestinationNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
-    MediaStreamAudioSourceNode self,
-    SseSerializer serializer,
-  );
+          MediaStreamAudioSourceNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints(
-    MediaStreamConstraints self,
-    SseSerializer serializer,
-  );
+          MediaStreamConstraints self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
-    MediaStreamTrack self,
-    SseSerializer serializer,
-  );
+          MediaStreamTrack self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
-    MediaStreamTrackAudioSourceNode self,
-    SseSerializer serializer,
-  );
+          MediaStreamTrackAudioSourceNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
-    MediaElement self,
-    SseSerializer serializer,
-  );
+          MediaElement self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
-    OfflineAudioCompletionEvent self,
-    SseSerializer serializer,
-  );
+          OfflineAudioCompletionEvent self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
-    OfflineAudioContext self,
-    SseSerializer serializer,
-  );
+          OfflineAudioContext self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
-    OscillatorNode self,
-    SseSerializer serializer,
-  );
+          OscillatorNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
-    PannerNode self,
-    SseSerializer serializer,
-  );
+          PannerNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
-    PeriodicWave self,
-    SseSerializer serializer,
-  );
+          PeriodicWave self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
-    ScriptProcessorNode self,
-    SseSerializer serializer,
-  );
+          ScriptProcessorNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
-    StereoPannerNode self,
-    SseSerializer serializer,
-  );
+          StereoPannerNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
-    WaveShaperNode self,
-    SseSerializer serializer,
-  );
+          WaveShaperNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
-    AnalyserNode self,
-    SseSerializer serializer,
-  );
+          AnalyserNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
-    AudioBuffer self,
-    SseSerializer serializer,
-  );
+          AudioBuffer self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
-    AudioBufferSourceNode self,
-    SseSerializer serializer,
-  );
+          AudioBufferSourceNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
-    AudioProcessingEvent self,
-    SseSerializer serializer,
-  );
+          AudioProcessingEvent self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
-    AudioRenderCapacityEvent self,
-    SseSerializer serializer,
-  );
+          AudioRenderCapacityEvent self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
-    BiquadFilterNode self,
-    SseSerializer serializer,
-  );
+          BiquadFilterNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
-    BlobEvent self,
-    SseSerializer serializer,
-  );
+          BlobEvent self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
-    ConstantSourceNode self,
-    SseSerializer serializer,
-  );
+          ConstantSourceNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
-    ConvolverNode self,
-    SseSerializer serializer,
-  );
+          ConvolverNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
-    MediaElement self,
-    SseSerializer serializer,
-  );
+          MediaElement self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
-    OfflineAudioCompletionEvent self,
-    SseSerializer serializer,
-  );
+          OfflineAudioCompletionEvent self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
-    OfflineAudioContext self,
-    SseSerializer serializer,
-  );
+          OfflineAudioContext self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
-    OscillatorNode self,
-    SseSerializer serializer,
-  );
+          OscillatorNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
-    PannerNode self,
-    SseSerializer serializer,
-  );
+          PannerNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_RefMut_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
-    WaveShaperNode self,
-    SseSerializer serializer,
-  );
+          WaveShaperNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
-    AnalyserNode self,
-    SseSerializer serializer,
-  );
+          AnalyserNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
-    AudioBuffer self,
-    SseSerializer serializer,
-  );
+          AudioBuffer self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
-    AudioBufferSourceNode self,
-    SseSerializer serializer,
-  );
+          AudioBufferSourceNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext(
-    AudioContext self,
-    SseSerializer serializer,
-  );
+          AudioContext self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistration(
-    AudioContextRegistration self,
-    SseSerializer serializer,
-  );
+          AudioContextRegistration self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
-    AudioDestinationNode self,
-    SseSerializer serializer,
-  );
+          AudioDestinationNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-    AudioListener self,
-    SseSerializer serializer,
-  );
+          AudioListener self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
-    AudioProcessingEvent self,
-    SseSerializer serializer,
-  );
+          AudioProcessingEvent self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity(
-    AudioRenderCapacity self,
-    SseSerializer serializer,
-  );
+          AudioRenderCapacity self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
-    AudioRenderCapacityEvent self,
-    SseSerializer serializer,
-  );
+          AudioRenderCapacityEvent self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
-    AudioWorkletNode self,
-    SseSerializer serializer,
-  );
+          AudioWorkletNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
-    BiquadFilterNode self,
-    SseSerializer serializer,
-  );
+          BiquadFilterNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
-    BlobEvent self,
-    SseSerializer serializer,
-  );
+          BlobEvent self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
-    ChannelMergerNode self,
-    SseSerializer serializer,
-  );
+          ChannelMergerNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
-    ChannelSplitterNode self,
-    SseSerializer serializer,
-  );
+          ChannelSplitterNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext(
-    ConcreteBaseAudioContext self,
-    SseSerializer serializer,
-  );
+          ConcreteBaseAudioContext self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
-    ConstantSourceNode self,
-    SseSerializer serializer,
-  );
+          ConstantSourceNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
-    ConvolverNode self,
-    SseSerializer serializer,
-  );
+          ConvolverNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
-    DelayNode self,
-    SseSerializer serializer,
-  );
+          DelayNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
-    DynamicsCompressorNode self,
-    SseSerializer serializer,
-  );
+          DynamicsCompressorNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
-    Event self,
-    SseSerializer serializer,
-  );
+          Event self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
-    GainNode self,
-    SseSerializer serializer,
-  );
+          GainNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
-    IirFilterNode self,
-    SseSerializer serializer,
-  );
+          IirFilterNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
-    MediaElementAudioSourceNode self,
-    SseSerializer serializer,
-  );
+          MediaElementAudioSourceNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder(
-    MediaRecorder self,
-    SseSerializer serializer,
-  );
+          MediaRecorder self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream(
-    MediaStream self,
-    SseSerializer serializer,
-  );
+          MediaStream self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
-    MediaStreamAudioDestinationNode self,
-    SseSerializer serializer,
-  );
+          MediaStreamAudioDestinationNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
-    MediaStreamAudioSourceNode self,
-    SseSerializer serializer,
-  );
+          MediaStreamAudioSourceNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
-    MediaStreamTrack self,
-    SseSerializer serializer,
-  );
+          MediaStreamTrack self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
-    MediaStreamTrackAudioSourceNode self,
-    SseSerializer serializer,
-  );
+          MediaStreamTrackAudioSourceNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
-    MediaElement self,
-    SseSerializer serializer,
-  );
+          MediaElement self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
-    OfflineAudioCompletionEvent self,
-    SseSerializer serializer,
-  );
+          OfflineAudioCompletionEvent self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
-    OfflineAudioContext self,
-    SseSerializer serializer,
-  );
+          OfflineAudioContext self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
-    OscillatorNode self,
-    SseSerializer serializer,
-  );
+          OscillatorNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
-    PannerNode self,
-    SseSerializer serializer,
-  );
+          PannerNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
-    ScriptProcessorNode self,
-    SseSerializer serializer,
-  );
+          ScriptProcessorNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
-    StereoPannerNode self,
-    SseSerializer serializer,
-  );
+          StereoPannerNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
-    WaveShaperNode self,
-    SseSerializer serializer,
-  );
+          WaveShaperNode self, SseSerializer serializer);
 
   @protected
   void sse_encode_CastedPrimitive_usize(int self, SseSerializer serializer);
@@ -4185,29 +3473,23 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void
       sse_encode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent_Output_unit_AnyhowException(
-    FutureOr<void> Function(AudioProcessingEvent) self,
-    SseSerializer serializer,
-  );
+          FutureOr<void> Function(AudioProcessingEvent) self,
+          SseSerializer serializer);
 
   @protected
   void
       sse_encode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent_Output_unit_AnyhowException(
-    FutureOr<void> Function(Event) self,
-    SseSerializer serializer,
-  );
+          FutureOr<void> Function(Event) self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_DartFn_Inputs_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent_Output_unit_AnyhowException(
-    FutureOr<void> Function(OfflineAudioCompletionEvent) self,
-    SseSerializer serializer,
-  );
+          FutureOr<void> Function(OfflineAudioCompletionEvent) self,
+          SseSerializer serializer);
 
   @protected
   void sse_encode_DartFn_Inputs_String_Output_unit_AnyhowException(
-    FutureOr<void> Function(String) self,
-    SseSerializer serializer,
-  );
+      FutureOr<void> Function(String) self, SseSerializer serializer);
 
   @protected
   void sse_encode_DartOpaque(Object self, SseSerializer serializer);
@@ -4218,658 +3500,468 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void
       sse_encode_ProxyEnum_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyEnum_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_media_stream_proxy_enum(
-    MediaStream self,
-    SseSerializer serializer,
-  );
+          MediaStream self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode_detune(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode_playback_rate(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_forward_x(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_forward_y(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_forward_z(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_position_x(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_position_y(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_position_z(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_up_x(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_up_y(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener_up_z(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_detune(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_frequency(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_gain(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode_q(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode_offset(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode_delay_time(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_attack(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_knee(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_ratio(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_release(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode_threshold(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode_gain(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode_stream(
-    MediaStream self,
-    SseSerializer serializer,
-  );
+          MediaStream self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode_detune(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode_frequency(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_orientation_x(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_orientation_y(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_orientation_z(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_position_x(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_position_y(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode_position_z(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode_pan(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode(
-    AnalyserNode self,
-    SseSerializer serializer,
-  );
+          AnalyserNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
-    AudioBuffer self,
-    SseSerializer serializer,
-  );
+          AudioBuffer self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode(
-    AudioBufferSourceNode self,
-    SseSerializer serializer,
-  );
+          AudioBufferSourceNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext(
-    AudioContext self,
-    SseSerializer serializer,
-  );
+          AudioContext self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistration(
-    AudioContextRegistration self,
-    SseSerializer serializer,
-  );
+          AudioContextRegistration self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode(
-    AudioDestinationNode self,
-    SseSerializer serializer,
-  );
+          AudioDestinationNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener(
-    AudioListener self,
-    SseSerializer serializer,
-  );
+          AudioListener self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam(
-    AudioParam self,
-    SseSerializer serializer,
-  );
+          AudioParam self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamId(
-    AudioParamId self,
-    SseSerializer serializer,
-  );
+          AudioParamId self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent(
-    AudioProcessingEvent self,
-    SseSerializer serializer,
-  );
+          AudioProcessingEvent self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity(
-    AudioRenderCapacity self,
-    SseSerializer serializer,
-  );
+          AudioRenderCapacity self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent(
-    AudioRenderCapacityEvent self,
-    SseSerializer serializer,
-  );
+          AudioRenderCapacityEvent self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode(
-    AudioWorkletNode self,
-    SseSerializer serializer,
-  );
+          AudioWorkletNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode(
-    BiquadFilterNode self,
-    SseSerializer serializer,
-  );
+          BiquadFilterNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent(
-    BlobEvent self,
-    SseSerializer serializer,
-  );
+          BlobEvent self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfig(
-    ChannelConfig self,
-    SseSerializer serializer,
-  );
+          ChannelConfig self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode(
-    ChannelMergerNode self,
-    SseSerializer serializer,
-  );
+          ChannelMergerNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode(
-    ChannelSplitterNode self,
-    SseSerializer serializer,
-  );
+          ChannelSplitterNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext(
-    ConcreteBaseAudioContext self,
-    SseSerializer serializer,
-  );
+          ConcreteBaseAudioContext self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode(
-    ConstantSourceNode self,
-    SseSerializer serializer,
-  );
+          ConstantSourceNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode(
-    ConvolverNode self,
-    SseSerializer serializer,
-  );
+          ConvolverNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode(
-    DelayNode self,
-    SseSerializer serializer,
-  );
+          DelayNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStruct(
-    DummyStruct self,
-    SseSerializer serializer,
-  );
+          DummyStruct self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode(
-    DynamicsCompressorNode self,
-    SseSerializer serializer,
-  );
+          DynamicsCompressorNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent(
-    Event self,
-    SseSerializer serializer,
-  );
+          Event self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode(
-    GainNode self,
-    SseSerializer serializer,
-  );
+          GainNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode(
-    IirFilterNode self,
-    SseSerializer serializer,
-  );
+          IirFilterNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode(
-    MediaElementAudioSourceNode self,
-    SseSerializer serializer,
-  );
+          MediaElementAudioSourceNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder(
-    MediaRecorder self,
-    SseSerializer serializer,
-  );
+          MediaRecorder self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream(
-    MediaStream self,
-    SseSerializer serializer,
-  );
+          MediaStream self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode(
-    MediaStreamAudioDestinationNode self,
-    SseSerializer serializer,
-  );
+          MediaStreamAudioDestinationNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode(
-    MediaStreamAudioSourceNode self,
-    SseSerializer serializer,
-  );
+          MediaStreamAudioSourceNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints(
-    MediaStreamConstraints self,
-    SseSerializer serializer,
-  );
+          MediaStreamConstraints self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
-    MediaStreamTrack self,
-    SseSerializer serializer,
-  );
+          MediaStreamTrack self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode(
-    MediaStreamTrackAudioSourceNode self,
-    SseSerializer serializer,
-  );
+          MediaStreamTrackAudioSourceNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement(
-    MediaElement self,
-    SseSerializer serializer,
-  );
+          MediaElement self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent(
-    OfflineAudioCompletionEvent self,
-    SseSerializer serializer,
-  );
+          OfflineAudioCompletionEvent self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext(
-    OfflineAudioContext self,
-    SseSerializer serializer,
-  );
+          OfflineAudioContext self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode(
-    OscillatorNode self,
-    SseSerializer serializer,
-  );
+          OscillatorNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode(
-    PannerNode self,
-    SseSerializer serializer,
-  );
+          PannerNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
-    PeriodicWave self,
-    SseSerializer serializer,
-  );
+          PeriodicWave self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode(
-    ScriptProcessorNode self,
-    SseSerializer serializer,
-  );
+          ScriptProcessorNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode(
-    StereoPannerNode self,
-    SseSerializer serializer,
-  );
+          StereoPannerNode self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode(
-    WaveShaperNode self,
-    SseSerializer serializer,
-  );
+          WaveShaperNode self, SseSerializer serializer);
 
   @protected
   void sse_encode_String(String self, SseSerializer serializer);
 
   @protected
   void sse_encode_analyser_options(
-    AnalyserOptions self,
-    SseSerializer serializer,
-  );
+      AnalyserOptions self, SseSerializer serializer);
 
   @protected
   void sse_encode_audio_buffer_options(
-    AudioBufferOptions self,
-    SseSerializer serializer,
-  );
+      AudioBufferOptions self, SseSerializer serializer);
 
   @protected
   void sse_encode_audio_buffer_source_options(
-    AudioBufferSourceOptions self,
-    SseSerializer serializer,
-  );
+      AudioBufferSourceOptions self, SseSerializer serializer);
 
   @protected
   void sse_encode_audio_context_latency_category(
-    AudioContextLatencyCategory self,
-    SseSerializer serializer,
-  );
+      AudioContextLatencyCategory self, SseSerializer serializer);
 
   @protected
   void sse_encode_audio_context_options(
-    AudioContextOptions self,
-    SseSerializer serializer,
-  );
+      AudioContextOptions self, SseSerializer serializer);
 
   @protected
   void sse_encode_audio_context_render_size_category(
-    AudioContextRenderSizeCategory self,
-    SseSerializer serializer,
-  );
+      AudioContextRenderSizeCategory self, SseSerializer serializer);
 
   @protected
   void sse_encode_audio_context_state(
-    AudioContextState self,
-    SseSerializer serializer,
-  );
+      AudioContextState self, SseSerializer serializer);
 
   @protected
   void sse_encode_audio_node_implementor(
-    AudioNodeImplementor self,
-    SseSerializer serializer,
-  );
+      AudioNodeImplementor self, SseSerializer serializer);
 
   @protected
   void sse_encode_audio_node_options(
-    AudioNodeOptions self,
-    SseSerializer serializer,
-  );
+      AudioNodeOptions self, SseSerializer serializer);
 
   @protected
   void sse_encode_audio_param_descriptor(
-    AudioParamDescriptor self,
-    SseSerializer serializer,
-  );
+      AudioParamDescriptor self, SseSerializer serializer);
 
   @protected
   void sse_encode_audio_render_capacity_options(
-    AudioRenderCapacityOptions self,
-    SseSerializer serializer,
-  );
+      AudioRenderCapacityOptions self, SseSerializer serializer);
 
   @protected
-  void
-      sse_encode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
-    Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
-        self,
-    SseSerializer serializer,
-  );
+  void sse_encode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
+      Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+          self,
+      SseSerializer serializer);
 
   @protected
-  void
-      sse_encode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_media_stream_proxy_enum(
-    Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum
-        self,
-    SseSerializer serializer,
-  );
+  void sse_encode_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_media_stream_proxy_enum(
+      Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum
+          self,
+      SseSerializer serializer);
 
   @protected
   void sse_encode_automation_rate(
-    AutomationRate self,
-    SseSerializer serializer,
-  );
+      AutomationRate self, SseSerializer serializer);
 
   @protected
   void sse_encode_biquad_filter_options(
-    BiquadFilterOptions self,
-    SseSerializer serializer,
-  );
+      BiquadFilterOptions self, SseSerializer serializer);
 
   @protected
   void sse_encode_biquad_filter_type(
-    BiquadFilterType self,
-    SseSerializer serializer,
-  );
+      BiquadFilterType self, SseSerializer serializer);
 
   @protected
   void sse_encode_bool(bool self, SseSerializer serializer);
@@ -4877,122 +3969,86 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void
       sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
-    AudioBuffer self,
-    SseSerializer serializer,
-  );
+          AudioBuffer self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
-    PeriodicWave self,
-    SseSerializer serializer,
-  );
+          PeriodicWave self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_audio_buffer_options(
-    AudioBufferOptions self,
-    SseSerializer serializer,
-  );
+      AudioBufferOptions self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_audio_context_options(
-    AudioContextOptions self,
-    SseSerializer serializer,
-  );
+      AudioContextOptions self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_audio_node_implementor(
-    AudioNodeImplementor self,
-    SseSerializer serializer,
-  );
+      AudioNodeImplementor self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_audio_param_descriptor(
-    AudioParamDescriptor self,
-    SseSerializer serializer,
-  );
+      AudioParamDescriptor self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_audio_render_capacity_options(
-    AudioRenderCapacityOptions self,
-    SseSerializer serializer,
-  );
+      AudioRenderCapacityOptions self, SseSerializer serializer);
 
   @protected
-  void
-      sse_encode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
-    Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
-        self,
-    SseSerializer serializer,
-  );
+  void sse_encode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_proxy_enum(
+      Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum
+          self,
+      SseSerializer serializer);
 
   @protected
-  void
-      sse_encode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_media_stream_proxy_enum(
-    Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum
-        self,
-    SseSerializer serializer,
-  );
+  void sse_encode_box_autoadd_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_media_stream_proxy_enum(
+      Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum
+          self,
+      SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_f_32(double self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_periodic_wave_options(
-    PeriodicWaveOptions self,
-    SseSerializer serializer,
-  );
+      PeriodicWaveOptions self, SseSerializer serializer);
 
   @protected
   void sse_encode_channel_count_mode(
-    ChannelCountMode self,
-    SseSerializer serializer,
-  );
+      ChannelCountMode self, SseSerializer serializer);
 
   @protected
   void sse_encode_channel_interpretation(
-    ChannelInterpretation self,
-    SseSerializer serializer,
-  );
+      ChannelInterpretation self, SseSerializer serializer);
 
   @protected
   void sse_encode_channel_merger_options(
-    ChannelMergerOptions self,
-    SseSerializer serializer,
-  );
+      ChannelMergerOptions self, SseSerializer serializer);
 
   @protected
   void sse_encode_channel_splitter_options(
-    ChannelSplitterOptions self,
-    SseSerializer serializer,
-  );
+      ChannelSplitterOptions self, SseSerializer serializer);
 
   @protected
   void sse_encode_constant_source_options(
-    ConstantSourceOptions self,
-    SseSerializer serializer,
-  );
+      ConstantSourceOptions self, SseSerializer serializer);
 
   @protected
   void sse_encode_convolver_options(
-    ConvolverOptions self,
-    SseSerializer serializer,
-  );
+      ConvolverOptions self, SseSerializer serializer);
 
   @protected
   void sse_encode_delay_options(DelayOptions self, SseSerializer serializer);
 
   @protected
   void sse_encode_distance_model_type(
-    DistanceModelType self,
-    SseSerializer serializer,
-  );
+      DistanceModelType self, SseSerializer serializer);
 
   @protected
   void sse_encode_dynamics_compressor_options(
-    DynamicsCompressorOptions self,
-    SseSerializer serializer,
-  );
+      DynamicsCompressorOptions self, SseSerializer serializer);
 
   @protected
   void sse_encode_f_32(double self, SseSerializer serializer);
@@ -5012,126 +4068,88 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void
       sse_encode_list_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack(
-    List<MediaStreamTrack> self,
-    SseSerializer serializer,
-  );
+          List<MediaStreamTrack> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_audio_param_descriptor(
-    List<AudioParamDescriptor> self,
-    SseSerializer serializer,
-  );
+      List<AudioParamDescriptor> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_list_prim_f_32_strict(
-    List<Float32List> self,
-    SseSerializer serializer,
-  );
+      List<Float32List> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_prim_f_32_loose(
-    List<double> self,
-    SseSerializer serializer,
-  );
+      List<double> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_prim_f_32_strict(
-    Float32List self,
-    SseSerializer serializer,
-  );
+      Float32List self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_prim_f_64_loose(
-    List<double> self,
-    SseSerializer serializer,
-  );
+      List<double> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_prim_f_64_strict(
-    Float64List self,
-    SseSerializer serializer,
-  );
+      Float64List self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_prim_u_8_strict(
-    Uint8List self,
-    SseSerializer serializer,
-  );
+      Uint8List self, SseSerializer serializer);
 
   @protected
   void sse_encode_media_stream_track_state(
-    MediaStreamTrackState self,
-    SseSerializer serializer,
-  );
+      MediaStreamTrackState self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer(
-    AudioBuffer? self,
-    SseSerializer serializer,
-  );
+          AudioBuffer? self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave(
-    PeriodicWave? self,
-    SseSerializer serializer,
-  );
+          PeriodicWave? self, SseSerializer serializer);
 
   @protected
   void sse_encode_opt_box_autoadd_f_32(double? self, SseSerializer serializer);
 
   @protected
   void sse_encode_opt_list_prim_f_32_strict(
-    Float32List? self,
-    SseSerializer serializer,
-  );
+      Float32List? self, SseSerializer serializer);
 
   @protected
   void sse_encode_oscillator_options(
-    OscillatorOptions self,
-    SseSerializer serializer,
-  );
+      OscillatorOptions self, SseSerializer serializer);
 
   @protected
   void sse_encode_oscillator_type(
-    OscillatorType self,
-    SseSerializer serializer,
-  );
+      OscillatorType self, SseSerializer serializer);
 
   @protected
   void sse_encode_over_sample_type(
-    OverSampleType self,
-    SseSerializer serializer,
-  );
+      OverSampleType self, SseSerializer serializer);
 
   @protected
   void sse_encode_panner_options(PannerOptions self, SseSerializer serializer);
 
   @protected
   void sse_encode_panning_model_type(
-    PanningModelType self,
-    SseSerializer serializer,
-  );
+      PanningModelType self, SseSerializer serializer);
 
   @protected
   void sse_encode_periodic_wave_options(
-    PeriodicWaveOptions self,
-    SseSerializer serializer,
-  );
+      PeriodicWaveOptions self, SseSerializer serializer);
 
   @protected
   void
       sse_encode_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_audio_param_id(
-    (AudioParam, AudioParamId) self,
-    SseSerializer serializer,
-  );
+          (AudioParam, AudioParamId) self, SseSerializer serializer);
 
   @protected
   void sse_encode_stereo_panner_options(
-    StereoPannerOptions self,
-    SseSerializer serializer,
-  );
+      StereoPannerOptions self, SseSerializer serializer);
 
   @protected
   void sse_encode_u_8(int self, SseSerializer serializer);
@@ -5144,9 +4162,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_wave_shaper_options(
-    WaveShaperOptions self,
-    SseSerializer serializer,
-  );
+      WaveShaperOptions self, SseSerializer serializer);
 }
 
 // Section: wire_class
@@ -5174,8 +4190,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5191,8 +4206,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNode =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAnalyserNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5208,8 +4222,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5225,8 +4238,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBuffer =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5242,8 +4254,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5259,8 +4270,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNode =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioBufferSourceNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5276,8 +4286,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5293,8 +4302,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContext =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5310,8 +4318,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistrationPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistration',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistration');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistration =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistrationPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5327,8 +4334,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistrationPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistration',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistration');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistration =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioContextRegistrationPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5344,8 +4350,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5361,8 +4366,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNode =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioDestinationNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5378,8 +4382,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListenerPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListenerPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5395,8 +4398,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListenerPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListener =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioListenerPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5412,8 +4414,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5429,8 +4430,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParam =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5446,8 +4446,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamIdPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamId',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamId');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamId =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamIdPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5463,8 +4462,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamIdPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamId',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamId');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamId =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamIdPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5480,8 +4478,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEventPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEventPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5497,8 +4494,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEventPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEvent =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioProcessingEventPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5514,8 +4510,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5531,8 +4526,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacity =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5548,8 +4542,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEventPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEventPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5565,8 +4558,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEventPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEvent =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioRenderCapacityEventPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5582,8 +4574,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5599,8 +4590,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNode =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioWorkletNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5616,8 +4606,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5633,8 +4622,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNode =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBiquadFilterNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5650,8 +4638,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEventPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEventPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5667,8 +4654,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEventPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEvent =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerBlobEventPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5684,8 +4670,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfigPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfig',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfig');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfig =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfigPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5701,8 +4686,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfigPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfig',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfig');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfig =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelConfigPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5718,8 +4702,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5735,8 +4718,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNode =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelMergerNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5752,8 +4734,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5769,8 +4750,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNode =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerChannelSplitterNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5786,8 +4766,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContextPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContextPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5803,8 +4782,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContextPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContext =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConcreteBaseAudioContextPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5820,8 +4798,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5837,8 +4814,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNode =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConstantSourceNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5854,8 +4830,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5871,8 +4846,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNode =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerConvolverNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5888,8 +4862,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5905,8 +4878,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNode =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDelayNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5922,8 +4894,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStructPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStruct',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStruct');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStruct =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStructPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5939,8 +4910,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStructPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStruct',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStruct');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStruct =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDummyStructPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5956,8 +4926,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5973,8 +4942,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNode =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDynamicsCompressorNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -5990,8 +4958,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEventPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEventPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6007,8 +4974,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEventPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEvent =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerEventPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6024,8 +4990,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6041,8 +5006,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNode =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerGainNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6058,8 +5022,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6075,8 +5038,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNode =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerIIRFilterNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6092,8 +5054,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6109,8 +5070,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNode =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaElementAudioSourceNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6126,8 +5086,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorderPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorderPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6143,8 +5102,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorderPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorder =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaRecorderPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6160,8 +5118,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6177,8 +5134,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStream =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6194,8 +5150,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6211,8 +5166,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNode =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioDestinationNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6228,8 +5182,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6245,8 +5198,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNode =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamAudioSourceNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6262,8 +5214,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraintsPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraintsPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6279,8 +5230,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraintsPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraints =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamConstraintsPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6296,8 +5246,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6313,8 +5262,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrack =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6330,8 +5278,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6347,8 +5294,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNode =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamTrackAudioSourceNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6364,8 +5310,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElementPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElementPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6381,8 +5326,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElementPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElement =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyMediaElementPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6398,8 +5342,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEventPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEventPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6415,8 +5358,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEventPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEvent =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioCompletionEventPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6432,8 +5374,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContextPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContextPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6449,8 +5390,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContextPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContext =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOfflineAudioContextPtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6466,8 +5406,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6483,8 +5422,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNode =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOscillatorNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6500,8 +5438,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6517,8 +5454,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNode =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPannerNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6534,8 +5470,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWavePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWavePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6551,8 +5486,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWavePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWave =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerPeriodicWavePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6568,8 +5502,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6585,8 +5518,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNode =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerScriptProcessorNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6602,8 +5534,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6619,8 +5550,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNode =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerStereoPannerNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6636,8 +5566,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode');
   late final _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode =
       _rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
@@ -6653,8 +5582,7 @@ class RustLibWire implements BaseWire {
 
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNodePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
-    'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode',
-  );
+          'frbgen_frb_example_integrate_third_party_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode');
   late final _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNode =
       _rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerWaveShaperNodePtr
           .asFunction<void Function(ffi.Pointer<ffi.Void>)>();
