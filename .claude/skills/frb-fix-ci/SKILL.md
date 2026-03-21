@@ -118,7 +118,11 @@ You may use CI diffs only as a diagnosis aid to understand what changed, but the
 
 ### Can't Reproduce Locally
 
-CI shows the command it ran. Before running it, check your user-level `remote-testing` rules to determine whether this repo requires remote execution. Then run the same command:
+CI shows the command it ran. Before running it, check your user-level `remote-testing` rules to determine whether this repo requires remote execution.
+
+Before reproducing, make sure the toolchain versions match CI closely enough to be meaningful. In practice this usually means Flutter, Dart, Rust, cargo subcommands, and any pinned template or helper dependency should match the versions used by CI.
+
+Then run the same command:
 
 ```bash
 # CI shows: ./frb_internal test-dart --package frb_example/pure_dart
