@@ -12,9 +12,10 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<NewTypeIntTwinNormal> handleNewtypeTwinNormal({
   required NewTypeIntTwinNormal arg,
-}) => RustLib.instance.api.crateApiNewtypePatternHandleNewtypeTwinNormal(
-  arg: arg,
-);
+}) =>
+    RustLib.instance.api.crateApiNewtypePatternHandleNewtypeTwinNormal(
+      arg: arg,
+    );
 
 class NewTypeIntTwinNormal {
   final PlatformInt64 field0;

@@ -17,27 +17,30 @@ Future<HideDataTwinNormal> createOpaqueTwinNormal() =>
 
 Future<HideDataTwinNormal?> createOptionOpaqueTwinNormal({
   HideDataTwinNormal? opaque,
-}) => RustLib.instance.api.crateApiRustOpaqueCreateOptionOpaqueTwinNormal(
-  opaque: opaque,
-);
+}) =>
+    RustLib.instance.api.crateApiRustOpaqueCreateOptionOpaqueTwinNormal(
+      opaque: opaque,
+    );
 
 Future<EnumOpaqueTwinNormalArray5> createArrayOpaqueEnumTwinNormal() =>
     RustLib.instance.api.crateApiRustOpaqueCreateArrayOpaqueEnumTwinNormal();
 
 Future<String> runEnumOpaqueTwinNormal({
   required EnumOpaqueTwinNormal opaque,
-}) => RustLib.instance.api.crateApiRustOpaqueRunEnumOpaqueTwinNormal(
-  opaque: opaque,
-);
+}) =>
+    RustLib.instance.api.crateApiRustOpaqueRunEnumOpaqueTwinNormal(
+      opaque: opaque,
+    );
 
 Future<String> runOpaqueTwinNormal({required HideDataTwinNormal opaque}) =>
     RustLib.instance.api.crateApiRustOpaqueRunOpaqueTwinNormal(opaque: opaque);
 
 Future<String> runOpaqueWithDelayTwinNormal({
   required HideDataTwinNormal opaque,
-}) => RustLib.instance.api.crateApiRustOpaqueRunOpaqueWithDelayTwinNormal(
-  opaque: opaque,
-);
+}) =>
+    RustLib.instance.api.crateApiRustOpaqueRunOpaqueWithDelayTwinNormal(
+      opaque: opaque,
+    );
 
 Future<HideDataTwinNormalArray2> opaqueArrayTwinNormal() =>
     RustLib.instance.api.crateApiRustOpaqueOpaqueArrayTwinNormal();
@@ -61,15 +64,17 @@ Future<OpaqueNestedTwinNormal> createNestedOpaqueTwinNormal() =>
 
 Future<void> runNestedOpaqueTwinNormal({
   required OpaqueNestedTwinNormal opaque,
-}) => RustLib.instance.api.crateApiRustOpaqueRunNestedOpaqueTwinNormal(
-  opaque: opaque,
-);
+}) =>
+    RustLib.instance.api.crateApiRustOpaqueRunNestedOpaqueTwinNormal(
+      opaque: opaque,
+    );
 
 Future<String> unwrapRustOpaqueTwinNormal({
   required HideDataTwinNormal opaque,
-}) => RustLib.instance.api.crateApiRustOpaqueUnwrapRustOpaqueTwinNormal(
-  opaque: opaque,
-);
+}) =>
+    RustLib.instance.api.crateApiRustOpaqueUnwrapRustOpaqueTwinNormal(
+      opaque: opaque,
+    );
 
 /// Function to check the code generator.
 /// FrbOpaqueReturn must be only return type.
@@ -94,11 +99,11 @@ class HideDataTwinNormalArray2 extends NonGrowableListView<HideDataTwinNormal> {
   final List<HideDataTwinNormal> _inner;
 
   HideDataTwinNormalArray2(this._inner)
-    : assert(_inner.length == arraySize),
-      super(_inner);
+      : assert(_inner.length == arraySize),
+        super(_inner);
 
   HideDataTwinNormalArray2.init(HideDataTwinNormal fill)
-    : this(List<HideDataTwinNormal>.filled(arraySize, fill));
+      : this(List<HideDataTwinNormal>.filled(arraySize, fill));
 }
 
 // Rust type: RustOpaqueNom<Mutex < HideDataTwinNormal >>
@@ -136,11 +141,11 @@ class EnumOpaqueTwinNormalArray5
   final List<EnumOpaqueTwinNormal> _inner;
 
   EnumOpaqueTwinNormalArray5(this._inner)
-    : assert(_inner.length == arraySize),
-      super(_inner);
+      : assert(_inner.length == arraySize),
+        super(_inner);
 
   EnumOpaqueTwinNormalArray5.init(EnumOpaqueTwinNormal fill)
-    : this(List<EnumOpaqueTwinNormal>.filled(arraySize, fill));
+      : this(List<EnumOpaqueTwinNormal>.filled(arraySize, fill));
 }
 
 /// [`HideDataTwinNormal`] has private fields.

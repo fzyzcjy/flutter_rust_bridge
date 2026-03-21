@@ -11,24 +11,25 @@ import 'package:uuid/uuid.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 
-Future<UuidValue> handleUuidTwinRustAsyncSse({required UuidValue id}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualUuidTypeTwinRustAsyncSseHandleUuidTwinRustAsyncSse(
+Future<UuidValue> handleUuidTwinRustAsyncSse({required UuidValue id}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualUuidTypeTwinRustAsyncSseHandleUuidTwinRustAsyncSse(
       id: id,
     );
 
 Future<List<UuidValue>> handleUuidsTwinRustAsyncSse({
   required List<UuidValue> ids,
-}) => RustLib.instance.api
-    .crateApiPseudoManualUuidTypeTwinRustAsyncSseHandleUuidsTwinRustAsyncSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualUuidTypeTwinRustAsyncSseHandleUuidsTwinRustAsyncSse(
       ids: ids,
     );
 
 Future<FeatureUuidTwinRustAsyncSse> handleNestedUuidsTwinRustAsyncSse({
   required FeatureUuidTwinRustAsyncSse ids,
-}) => RustLib.instance.api
-    .crateApiPseudoManualUuidTypeTwinRustAsyncSseHandleNestedUuidsTwinRustAsyncSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualUuidTypeTwinRustAsyncSseHandleNestedUuidsTwinRustAsyncSse(
       ids: ids,
     );
 

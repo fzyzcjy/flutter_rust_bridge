@@ -27,7 +27,8 @@ Future<List<String>> borrowSliceStringTwinNormal({required List<String> arg}) =>
 
 Future<SimpleStructForBorrowTwinNormal> borrowStructTwinNormal({
   required SimpleStructForBorrowTwinNormal arg,
-}) => RustLib.instance.api.crateApiOwnershipBorrowStructTwinNormal(arg: arg);
+}) =>
+    RustLib.instance.api.crateApiOwnershipBorrowStructTwinNormal(arg: arg);
 
 class SimpleStructForBorrowTwinNormal {
   final String one;

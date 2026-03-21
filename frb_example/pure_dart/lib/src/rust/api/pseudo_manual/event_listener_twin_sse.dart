@@ -12,10 +12,9 @@ part 'event_listener_twin_sse.freezed.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `deref`, `initialize`
 
-Future<Stream<EventTwinSse>> registerEventListenerTwinSse() => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualEventListenerTwinSseRegisterEventListenerTwinSse();
+Future<Stream<EventTwinSse>> registerEventListenerTwinSse() =>
+    RustLib.instance.api
+        .crateApiPseudoManualEventListenerTwinSseRegisterEventListenerTwinSse();
 
 Future<void> closeEventListenerTwinSse() => RustLib.instance.api
     .crateApiPseudoManualEventListenerTwinSseCloseEventListenerTwinSse();
@@ -23,8 +22,9 @@ Future<void> closeEventListenerTwinSse() => RustLib.instance.api
 Future<void> createEventTwinSse({
   required String address,
   required String payload,
-}) => RustLib.instance.api
-    .crateApiPseudoManualEventListenerTwinSseCreateEventTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualEventListenerTwinSseCreateEventTwinSse(
       address: address,
       payload: payload,
     );
@@ -37,7 +37,7 @@ sealed class EventTwinSse with _$EventTwinSse {
     required String payload,
   }) = _EventTwinSse;
   Future<String> asStringTwinSse() => RustLib.instance.api
-      .crateApiPseudoManualEventListenerTwinSseEventTwinSseAsStringTwinSse(
+          .crateApiPseudoManualEventListenerTwinSseEventTwinSseAsStringTwinSse(
         that: this,
       );
 }

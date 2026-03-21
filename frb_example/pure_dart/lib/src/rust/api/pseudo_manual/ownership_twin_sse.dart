@@ -10,10 +10,9 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`
 
-Future<String> borrowStringTwinSse({required String arg}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualOwnershipTwinSseBorrowStringTwinSse(arg: arg);
+Future<String> borrowStringTwinSse({required String arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualOwnershipTwinSseBorrowStringTwinSse(arg: arg);
 
 Future<String> borrowStrTwinSse({required String arg}) => RustLib.instance.api
     .crateApiPseudoManualOwnershipTwinSseBorrowStrTwinSse(arg: arg);
@@ -21,10 +20,9 @@ Future<String> borrowStrTwinSse({required String arg}) => RustLib.instance.api
 Future<int> borrowI32TwinSse({required int arg}) => RustLib.instance.api
     .crateApiPseudoManualOwnershipTwinSseBorrowI32TwinSse(arg: arg);
 
-Future<Uint8List> borrowSliceU8TwinSse({required List<int> arg}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualOwnershipTwinSseBorrowSliceU8TwinSse(arg: arg);
+Future<Uint8List> borrowSliceU8TwinSse({required List<int> arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualOwnershipTwinSseBorrowSliceU8TwinSse(arg: arg);
 
 Future<List<String>> borrowSliceStringTwinSse({required List<String> arg}) =>
     RustLib.instance.api
@@ -32,8 +30,9 @@ Future<List<String>> borrowSliceStringTwinSse({required List<String> arg}) =>
 
 Future<SimpleStructForBorrowTwinSse> borrowStructTwinSse({
   required SimpleStructForBorrowTwinSse arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualOwnershipTwinSseBorrowStructTwinSse(arg: arg);
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualOwnershipTwinSseBorrowStructTwinSse(arg: arg);
 
 class SimpleStructForBorrowTwinSse {
   final String one;

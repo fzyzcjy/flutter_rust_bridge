@@ -10,132 +10,128 @@ import 'basic_twin_sync_sse.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 int? exampleBasicOptionalTypeI8TwinSyncSse({int? arg}) => RustLib.instance.api
-    .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeI8TwinSyncSse(
+        .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeI8TwinSyncSse(
       arg: arg,
     );
 
 int? exampleBasicOptionalTypeI16TwinSyncSse({int? arg}) => RustLib.instance.api
-    .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeI16TwinSyncSse(
+        .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeI16TwinSyncSse(
       arg: arg,
     );
 
 int? exampleBasicOptionalTypeI32TwinSyncSse({int? arg}) => RustLib.instance.api
-    .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeI32TwinSyncSse(
+        .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeI32TwinSyncSse(
       arg: arg,
     );
 
 PlatformInt64? exampleBasicOptionalTypeI64TwinSyncSse({
   PlatformInt64? arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeI64TwinSyncSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeI64TwinSyncSse(
       arg: arg,
     );
 
-BigInt? exampleBasicOptionalTypeI128TwinSyncSse({BigInt? arg}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeI128TwinSyncSse(
+BigInt? exampleBasicOptionalTypeI128TwinSyncSse({BigInt? arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeI128TwinSyncSse(
       arg: arg,
     );
 
 int? exampleBasicOptionalTypeU8TwinSyncSse({int? arg}) => RustLib.instance.api
-    .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeU8TwinSyncSse(
+        .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeU8TwinSyncSse(
       arg: arg,
     );
 
 int? exampleBasicOptionalTypeU16TwinSyncSse({int? arg}) => RustLib.instance.api
-    .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeU16TwinSyncSse(
+        .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeU16TwinSyncSse(
       arg: arg,
     );
 
 int? exampleBasicOptionalTypeU32TwinSyncSse({int? arg}) => RustLib.instance.api
-    .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeU32TwinSyncSse(
+        .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeU32TwinSyncSse(
       arg: arg,
     );
 
-BigInt? exampleBasicOptionalTypeU64TwinSyncSse({BigInt? arg}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeU64TwinSyncSse(
+BigInt? exampleBasicOptionalTypeU64TwinSyncSse({BigInt? arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeU64TwinSyncSse(
       arg: arg,
     );
 
-BigInt? exampleBasicOptionalTypeU128TwinSyncSse({BigInt? arg}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeU128TwinSyncSse(
+BigInt? exampleBasicOptionalTypeU128TwinSyncSse({BigInt? arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeU128TwinSyncSse(
       arg: arg,
     );
 
 PlatformInt64? exampleBasicOptionalTypeIsizeTwinSyncSse({
   PlatformInt64? arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeIsizeTwinSyncSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeIsizeTwinSyncSse(
       arg: arg,
     );
 
-BigInt? exampleBasicOptionalTypeUsizeTwinSyncSse({BigInt? arg}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeUsizeTwinSyncSse(
+BigInt? exampleBasicOptionalTypeUsizeTwinSyncSse({BigInt? arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeUsizeTwinSyncSse(
       arg: arg,
     );
 
-double? exampleBasicOptionalTypeF32TwinSyncSse({double? arg}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeF32TwinSyncSse(
+double? exampleBasicOptionalTypeF32TwinSyncSse({double? arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeF32TwinSyncSse(
       arg: arg,
     );
 
-double? exampleBasicOptionalTypeF64TwinSyncSse({double? arg}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeF64TwinSyncSse(
+double? exampleBasicOptionalTypeF64TwinSyncSse({double? arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeF64TwinSyncSse(
       arg: arg,
     );
 
-bool? exampleBasicOptionalTypeBoolTwinSyncSse({bool? arg}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeBoolTwinSyncSse(
+bool? exampleBasicOptionalTypeBoolTwinSyncSse({bool? arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeBoolTwinSyncSse(
       arg: arg,
     );
 
-String? exampleBasicOptionalTypeStringTwinSyncSse({String? arg}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeStringTwinSyncSse(
+String? exampleBasicOptionalTypeStringTwinSyncSse({String? arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeStringTwinSyncSse(
       arg: arg,
     );
 
-Uint8List? exampleBasicOptionalTypeBytesTwinSyncSse({Uint8List? arg}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeBytesTwinSyncSse(
+Uint8List? exampleBasicOptionalTypeBytesTwinSyncSse({Uint8List? arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeBytesTwinSyncSse(
       arg: arg,
     );
 
 BasicPrimitiveEnumTwinSyncSse?
-exampleBasicOptionalTypeBasicPrimitiveEnumTwinSyncSseTwinSyncSse({
+    exampleBasicOptionalTypeBasicPrimitiveEnumTwinSyncSseTwinSyncSse({
   BasicPrimitiveEnumTwinSyncSse? arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeBasicPrimitiveEnumTwinSyncSseTwinSyncSse(
-      arg: arg,
-    );
+}) =>
+        RustLib.instance.api
+            .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeBasicPrimitiveEnumTwinSyncSseTwinSyncSse(
+          arg: arg,
+        );
 
 BasicGeneralEnumTwinSyncSse?
-exampleBasicOptionalTypeBasicGeneralEnumTwinSyncSseTwinSyncSse({
+    exampleBasicOptionalTypeBasicGeneralEnumTwinSyncSseTwinSyncSse({
   BasicGeneralEnumTwinSyncSse? arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeBasicGeneralEnumTwinSyncSseTwinSyncSse(
-      arg: arg,
-    );
+}) =>
+        RustLib.instance.api
+            .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeBasicGeneralEnumTwinSyncSseTwinSyncSse(
+          arg: arg,
+        );
 
 BasicStructTwinSyncSse?
-exampleBasicOptionalTypeBasicStructTwinSyncSseTwinSyncSse({
+    exampleBasicOptionalTypeBasicStructTwinSyncSseTwinSyncSse({
   BasicStructTwinSyncSse? arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeBasicStructTwinSyncSseTwinSyncSse(
-      arg: arg,
-    );
+}) =>
+        RustLib.instance.api
+            .crateApiPseudoManualBasicOptionalTwinSyncSseExampleBasicOptionalTypeBasicStructTwinSyncSseTwinSyncSse(
+          arg: arg,
+        );

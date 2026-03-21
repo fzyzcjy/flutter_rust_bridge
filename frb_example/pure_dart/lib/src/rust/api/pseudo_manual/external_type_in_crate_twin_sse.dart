@@ -11,17 +11,15 @@ import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<bool> useImportedStructTwinSse({required MyStruct myStruct}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualExternalTypeInCrateTwinSseUseImportedStructTwinSse(
+Future<bool> useImportedStructTwinSse({required MyStruct myStruct}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualExternalTypeInCrateTwinSseUseImportedStructTwinSse(
       myStruct: myStruct,
     );
 
-Future<bool> useImportedEnumTwinSse({required MyEnum myEnum}) => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualExternalTypeInCrateTwinSseUseImportedEnumTwinSse(
+Future<bool> useImportedEnumTwinSse({required MyEnum myEnum}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualExternalTypeInCrateTwinSseUseImportedEnumTwinSse(
       myEnum: myEnum,
     );
 

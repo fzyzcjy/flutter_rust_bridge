@@ -24,14 +24,16 @@ mixin _$AbcTwinRustAsync {
     required TResult Function(BTwinRustAsync field0) b,
     required TResult Function(CTwinRustAsync field0) c,
     required TResult Function(int field0) justInt,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ATwinRustAsync field0)? a,
     TResult? Function(BTwinRustAsync field0)? b,
     TResult? Function(CTwinRustAsync field0)? c,
     TResult? Function(int field0)? justInt,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ATwinRustAsync field0)? a,
@@ -39,21 +41,24 @@ mixin _$AbcTwinRustAsync {
     TResult Function(CTwinRustAsync field0)? c,
     TResult Function(int field0)? justInt,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AbcTwinRustAsync_A value) a,
     required TResult Function(AbcTwinRustAsync_B value) b,
     required TResult Function(AbcTwinRustAsync_C value) c,
     required TResult Function(AbcTwinRustAsync_JustInt value) justInt,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AbcTwinRustAsync_A value)? a,
     TResult? Function(AbcTwinRustAsync_B value)? b,
     TResult? Function(AbcTwinRustAsync_C value)? c,
     TResult? Function(AbcTwinRustAsync_JustInt value)? justInt,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AbcTwinRustAsync_A value)? a,
@@ -61,7 +66,8 @@ mixin _$AbcTwinRustAsync {
     TResult Function(AbcTwinRustAsync_C value)? c,
     TResult Function(AbcTwinRustAsync_JustInt value)? justInt,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -115,7 +121,7 @@ class __$$AbcTwinRustAsync_AImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                  as ATwinRustAsync,
+                as ATwinRustAsync,
       ),
     );
   }
@@ -275,7 +281,7 @@ class __$$AbcTwinRustAsync_BImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                  as BTwinRustAsync,
+                as BTwinRustAsync,
       ),
     );
   }
@@ -435,7 +441,7 @@ class __$$AbcTwinRustAsync_CImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                  as CTwinRustAsync,
+                as CTwinRustAsync,
       ),
     );
   }
@@ -595,7 +601,7 @@ class __$$AbcTwinRustAsync_JustIntImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                  as int,
+                as int,
       ),
     );
   }
@@ -631,10 +637,8 @@ class _$AbcTwinRustAsync_JustIntImpl extends AbcTwinRustAsync_JustInt {
   @override
   @pragma('vm:prefer-inline')
   _$$AbcTwinRustAsync_JustIntImplCopyWith<_$AbcTwinRustAsync_JustIntImpl>
-  get copyWith =>
-      __$$AbcTwinRustAsync_JustIntImplCopyWithImpl<
-        _$AbcTwinRustAsync_JustIntImpl
-      >(this, _$identity);
+      get copyWith => __$$AbcTwinRustAsync_JustIntImplCopyWithImpl<
+          _$AbcTwinRustAsync_JustIntImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -723,5 +727,5 @@ abstract class AbcTwinRustAsync_JustInt extends AbcTwinRustAsync {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AbcTwinRustAsync_JustIntImplCopyWith<_$AbcTwinRustAsync_JustIntImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }

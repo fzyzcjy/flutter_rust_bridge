@@ -51,7 +51,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     test('dart call handleEnumParameter', () async {
       expect(
-        await handleEnumParameterTwinSync(weekday: WeekdaysTwinSync.saturday),
+        await handleEnumParameterTwinSync(
+          weekday: WeekdaysTwinSync.saturday,
+        ),
         WeekdaysTwinSync.saturday,
       );
     });
@@ -91,7 +93,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
       );
       expect(
         await handleEnumStructTwinSync(
-          val: const KitchenSinkTwinSync.nested(0, KitchenSinkTwinSync.empty()),
+          val: const KitchenSinkTwinSync.nested(
+            0,
+            KitchenSinkTwinSync.empty(),
+          ),
         ),
         const KitchenSinkTwinSync.nested(1, KitchenSinkTwinSync.empty()),
       );
@@ -110,9 +115,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         ),
         null,
       );
-      final skipMinified = releaseMode
-          ? skipWeb('Minified names cannot be compared.')
-          : null;
+      final skipMinified =
+          releaseMode ? skipWeb('Minified names cannot be compared.') : null;
       expect(
         (SpeedTwinSync_Unknown).toString(),
         'SpeedTwinSync_Unknown',

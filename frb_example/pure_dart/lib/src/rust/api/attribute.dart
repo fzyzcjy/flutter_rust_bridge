@@ -18,9 +18,10 @@ part 'attribute.freezed.dart';
 
 Future<void> handleCustomizedStructTwinNormal({
   required CustomizedTwinNormal val,
-}) => RustLib.instance.api.crateApiAttributeHandleCustomizedStructTwinNormal(
-  val: val,
-);
+}) =>
+    RustLib.instance.api.crateApiAttributeHandleCustomizedStructTwinNormal(
+      val: val,
+    );
 
 Future<UserIdTwinNormal> nextUserIdTwinNormal({
   UserIdTwinNormal userId = const UserIdTwinNormal(),

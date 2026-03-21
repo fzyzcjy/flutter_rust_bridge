@@ -10,19 +10,17 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'raw_string_twin_sync.freezed.dart';
 
-RawStringItemStructTwinSync testRawStringItemStructTwinSync() => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualRawStringTwinSyncTestRawStringItemStructTwinSync();
+RawStringItemStructTwinSync testRawStringItemStructTwinSync() =>
+    RustLib.instance.api
+        .crateApiPseudoManualRawStringTwinSyncTestRawStringItemStructTwinSync();
 
-RawStringItemEnumTwinSync testRawStringItemEnumTwinSync() => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualRawStringTwinSyncTestRawStringItemEnumTwinSync();
+RawStringItemEnumTwinSync testRawStringItemEnumTwinSync() =>
+    RustLib.instance.api
+        .crateApiPseudoManualRawStringTwinSyncTestRawStringItemEnumTwinSync();
 
 MoreThanJustOneRawStringStructTwinSync
-testMoreThanJustOneRawStringStructTwinSync() => RustLib.instance.api
-    .crateApiPseudoManualRawStringTwinSyncTestMoreThanJustOneRawStringStructTwinSync();
+    testMoreThanJustOneRawStringStructTwinSync() => RustLib.instance.api
+        .crateApiPseudoManualRawStringTwinSyncTestMoreThanJustOneRawStringStructTwinSync();
 
 class MoreThanJustOneRawStringStructTwinSync {
   final String regular;

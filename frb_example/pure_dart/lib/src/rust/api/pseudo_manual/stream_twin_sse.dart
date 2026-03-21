@@ -21,22 +21,23 @@ Future<Stream<String>> funcStreamReturnPanicTwinSse() => RustLib.instance.api
 Stream<int> funcStreamSinkArgPositionTwinSse({
   required int a,
   required int b,
-}) => RustLib.instance.api
-    .crateApiPseudoManualStreamTwinSseFuncStreamSinkArgPositionTwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualStreamTwinSseFuncStreamSinkArgPositionTwinSse(
       a: a,
       b: b,
     );
 
-Stream<MyStreamEntryTwinSse> handleStreamOfStructTwinSse() => RustLib
-    .instance
-    .api
-    .crateApiPseudoManualStreamTwinSseHandleStreamOfStructTwinSse();
+Stream<MyStreamEntryTwinSse> handleStreamOfStructTwinSse() =>
+    RustLib.instance.api
+        .crateApiPseudoManualStreamTwinSseHandleStreamOfStructTwinSse();
 
 Stream<LogTwinSse> handleStreamSinkAt1TwinSse({
   required int key,
   required int max,
-}) => RustLib.instance.api
-    .crateApiPseudoManualStreamTwinSseHandleStreamSinkAt1TwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualStreamTwinSseHandleStreamSinkAt1TwinSse(
       key: key,
       max: max,
     );
@@ -44,8 +45,9 @@ Stream<LogTwinSse> handleStreamSinkAt1TwinSse({
 Stream<LogTwinSse> handleStreamSinkAt2TwinSse({
   required int key,
   required int max,
-}) => RustLib.instance.api
-    .crateApiPseudoManualStreamTwinSseHandleStreamSinkAt2TwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualStreamTwinSseHandleStreamSinkAt2TwinSse(
       key: key,
       max: max,
     );
@@ -53,26 +55,29 @@ Stream<LogTwinSse> handleStreamSinkAt2TwinSse({
 Stream<LogTwinSse> handleStreamSinkAt3TwinSse({
   required int key,
   required int max,
-}) => RustLib.instance.api
-    .crateApiPseudoManualStreamTwinSseHandleStreamSinkAt3TwinSse(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualStreamTwinSseHandleStreamSinkAt3TwinSse(
       key: key,
       max: max,
     );
 
 Stream<U8Array2> streamSinkFixedSizedPrimitiveArrayTwinSse() => RustLib
-    .instance
-    .api
+    .instance.api
     .crateApiPseudoManualStreamTwinSseStreamSinkFixedSizedPrimitiveArrayTwinSse();
 
 Future<void> streamSinkInsideVecTwinSse({
   required List<RustStreamSink<int>> arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualStreamTwinSseStreamSinkInsideVecTwinSse(arg: arg);
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualStreamTwinSseStreamSinkInsideVecTwinSse(arg: arg);
 
 Future<void> streamSinkInsideStructTwinSse({
   required MyStructContainingStreamSinkTwinSse arg,
-}) => RustLib.instance.api
-    .crateApiPseudoManualStreamTwinSseStreamSinkInsideStructTwinSse(arg: arg);
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualStreamTwinSseStreamSinkInsideStructTwinSse(
+            arg: arg);
 
 Stream<int> funcStreamAddValueAndErrorTwinSse() => RustLib.instance.api
     .crateApiPseudoManualStreamTwinSseFuncStreamAddValueAndErrorTwinSse();

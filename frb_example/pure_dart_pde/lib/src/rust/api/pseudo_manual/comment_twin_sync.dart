@@ -34,7 +34,7 @@ class StructWithCommentsTwinSync {
 
   /// Documentation on an instance method
   void instanceMethodTwinSync() => RustLib.instance.api
-      .crateApiPseudoManualCommentTwinSyncStructWithCommentsTwinSyncInstanceMethodTwinSync(
+          .crateApiPseudoManualCommentTwinSyncStructWithCommentsTwinSyncInstanceMethodTwinSync(
         that: this,
       );
 

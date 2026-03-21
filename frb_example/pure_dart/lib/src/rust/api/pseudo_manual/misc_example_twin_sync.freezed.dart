@@ -24,14 +24,16 @@ mixin _$AbcTwinSync {
     required TResult Function(BTwinSync field0) b,
     required TResult Function(CTwinSync field0) c,
     required TResult Function(int field0) justInt,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ATwinSync field0)? a,
     TResult? Function(BTwinSync field0)? b,
     TResult? Function(CTwinSync field0)? c,
     TResult? Function(int field0)? justInt,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ATwinSync field0)? a,
@@ -39,21 +41,24 @@ mixin _$AbcTwinSync {
     TResult Function(CTwinSync field0)? c,
     TResult Function(int field0)? justInt,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AbcTwinSync_A value) a,
     required TResult Function(AbcTwinSync_B value) b,
     required TResult Function(AbcTwinSync_C value) c,
     required TResult Function(AbcTwinSync_JustInt value) justInt,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AbcTwinSync_A value)? a,
     TResult? Function(AbcTwinSync_B value)? b,
     TResult? Function(AbcTwinSync_C value)? c,
     TResult? Function(AbcTwinSync_JustInt value)? justInt,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AbcTwinSync_A value)? a,
@@ -61,7 +66,8 @@ mixin _$AbcTwinSync {
     TResult Function(AbcTwinSync_C value)? c,
     TResult Function(AbcTwinSync_JustInt value)? justInt,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -115,7 +121,7 @@ class __$$AbcTwinSync_AImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                  as ATwinSync,
+                as ATwinSync,
       ),
     );
   }
@@ -271,7 +277,7 @@ class __$$AbcTwinSync_BImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                  as BTwinSync,
+                as BTwinSync,
       ),
     );
   }
@@ -427,7 +433,7 @@ class __$$AbcTwinSync_CImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                  as CTwinSync,
+                as CTwinSync,
       ),
     );
   }
@@ -583,7 +589,7 @@ class __$$AbcTwinSync_JustIntImplCopyWithImpl<$Res>
         null == field0
             ? _value.field0
             : field0 // ignore: cast_nullable_to_non_nullable
-                  as int,
+                as int,
       ),
     );
   }

@@ -10,15 +10,17 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<void> rustCallDartSimpleTwinRustAsync({
   required FutureOr<void> Function() callback,
-}) => RustLib.instance.api
-    .crateApiPseudoManualDartFnTwinRustAsyncRustCallDartSimpleTwinRustAsync(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualDartFnTwinRustAsyncRustCallDartSimpleTwinRustAsync(
       callback: callback,
     );
 
 Future<void> rustCallDartOneArgTwinRustAsync({
   required FutureOr<void> Function(String) callback,
-}) => RustLib.instance.api
-    .crateApiPseudoManualDartFnTwinRustAsyncRustCallDartOneArgTwinRustAsync(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualDartFnTwinRustAsyncRustCallDartOneArgTwinRustAsync(
       callback: callback,
     );
 
@@ -26,51 +28,55 @@ Future<void> rustCallDartTwoArgsTwinRustAsync({
   required FutureOr<void> Function(
     String,
     DemoStructForRustCallDartTwinRustAsync,
-  )
-  callback,
-}) => RustLib.instance.api
-    .crateApiPseudoManualDartFnTwinRustAsyncRustCallDartTwoArgsTwinRustAsync(
+  ) callback,
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualDartFnTwinRustAsyncRustCallDartTwoArgsTwinRustAsync(
       callback: callback,
     );
 
 Future<void> rustCallDartReturnTwinRustAsync({
   required FutureOr<String> Function() callback,
-}) => RustLib.instance.api
-    .crateApiPseudoManualDartFnTwinRustAsyncRustCallDartReturnTwinRustAsync(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualDartFnTwinRustAsyncRustCallDartReturnTwinRustAsync(
       callback: callback,
     );
 
 Future<void> rustCallDartLoopbackTwinRustAsync({
   required FutureOr<DemoStructForRustCallDartTwinRustAsync> Function(
     DemoStructForRustCallDartTwinRustAsync,
-  )
-  callback,
-}) => RustLib.instance.api
-    .crateApiPseudoManualDartFnTwinRustAsyncRustCallDartLoopbackTwinRustAsync(
+  ) callback,
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualDartFnTwinRustAsyncRustCallDartLoopbackTwinRustAsync(
       callback: callback,
     );
 
 Future<void> rustCallDartWithDartOpaqueArgTwinRustAsync({
   required Object input,
   required FutureOr<void> Function(Object) callback,
-}) => RustLib.instance.api
-    .crateApiPseudoManualDartFnTwinRustAsyncRustCallDartWithDartOpaqueArgTwinRustAsync(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualDartFnTwinRustAsyncRustCallDartWithDartOpaqueArgTwinRustAsync(
       input: input,
       callback: callback,
     );
 
 Future<Object> rustCallDartWithDartOpaqueResultTwinRustAsync({
   required FutureOr<Object> Function() callback,
-}) => RustLib.instance.api
-    .crateApiPseudoManualDartFnTwinRustAsyncRustCallDartWithDartOpaqueResultTwinRustAsync(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualDartFnTwinRustAsyncRustCallDartWithDartOpaqueResultTwinRustAsync(
       callback: callback,
     );
 
 Future<void> rustCallDartMultiTimesTwinRustAsync({
   required FutureOr<void> Function() callback,
   required int numTimes,
-}) => RustLib.instance.api
-    .crateApiPseudoManualDartFnTwinRustAsyncRustCallDartMultiTimesTwinRustAsync(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualDartFnTwinRustAsyncRustCallDartMultiTimesTwinRustAsync(
       callback: callback,
       numTimes: numTimes,
     );
@@ -78,16 +84,18 @@ Future<void> rustCallDartMultiTimesTwinRustAsync({
 Future<void> rustCallDartReturnResultTwinRustAsync({
   required FutureOr<String> Function(String) callback,
   String? expectOutput,
-}) => RustLib.instance.api
-    .crateApiPseudoManualDartFnTwinRustAsyncRustCallDartReturnResultTwinRustAsync(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualDartFnTwinRustAsyncRustCallDartReturnResultTwinRustAsync(
       callback: callback,
       expectOutput: expectOutput,
     );
 
 Future<void> rustCallDartUsingIpv4AddrTwinRustAsync({
   required FutureOr<InternetAddress> Function(InternetAddress) callback,
-}) => RustLib.instance.api
-    .crateApiPseudoManualDartFnTwinRustAsyncRustCallDartUsingIpv4AddrTwinRustAsync(
+}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualDartFnTwinRustAsyncRustCallDartUsingIpv4AddrTwinRustAsync(
       callback: callback,
     );
 

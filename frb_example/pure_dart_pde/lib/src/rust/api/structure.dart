@@ -10,44 +10,52 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<StructWithZeroFieldTwinNormal> funcStructWithZeroFieldTwinNormal({
   required StructWithZeroFieldTwinNormal arg,
-}) => RustLib.instance.api.crateApiStructureFuncStructWithZeroFieldTwinNormal(
-  arg: arg,
-);
+}) =>
+    RustLib.instance.api.crateApiStructureFuncStructWithZeroFieldTwinNormal(
+      arg: arg,
+    );
 
 Future<StructWithOneFieldTwinNormal> funcStructWithOneFieldTwinNormal({
   required StructWithOneFieldTwinNormal arg,
-}) => RustLib.instance.api.crateApiStructureFuncStructWithOneFieldTwinNormal(
-  arg: arg,
-);
+}) =>
+    RustLib.instance.api.crateApiStructureFuncStructWithOneFieldTwinNormal(
+      arg: arg,
+    );
 
 Future<StructWithTwoFieldTwinNormal> funcStructWithTwoFieldTwinNormal({
   required StructWithTwoFieldTwinNormal arg,
-}) => RustLib.instance.api.crateApiStructureFuncStructWithTwoFieldTwinNormal(
-  arg: arg,
-);
+}) =>
+    RustLib.instance.api.crateApiStructureFuncStructWithTwoFieldTwinNormal(
+      arg: arg,
+    );
 
 Future<TupleStructWithOneFieldTwinNormal>
-funcTupleStructWithOneFieldTwinNormal({
+    funcTupleStructWithOneFieldTwinNormal({
   required TupleStructWithOneFieldTwinNormal arg,
-}) => RustLib.instance.api
-    .crateApiStructureFuncTupleStructWithOneFieldTwinNormal(arg: arg);
+}) =>
+        RustLib.instance.api
+            .crateApiStructureFuncTupleStructWithOneFieldTwinNormal(arg: arg);
 
 Future<TupleStructWithTwoFieldTwinNormal>
-funcTupleStructWithTwoFieldTwinNormal({
+    funcTupleStructWithTwoFieldTwinNormal({
   required TupleStructWithTwoFieldTwinNormal arg,
-}) => RustLib.instance.api
-    .crateApiStructureFuncTupleStructWithTwoFieldTwinNormal(arg: arg);
+}) =>
+        RustLib.instance.api
+            .crateApiStructureFuncTupleStructWithTwoFieldTwinNormal(arg: arg);
 
 Future<StructWithFieldRenameTwinNormal> funcForStructWithFieldRenameTwinNormal({
   required StructWithFieldRenameTwinNormal arg,
-}) => RustLib.instance.api
-    .crateApiStructureFuncForStructWithFieldRenameTwinNormal(arg: arg);
+}) =>
+    RustLib.instance.api
+        .crateApiStructureFuncForStructWithFieldRenameTwinNormal(arg: arg);
 
 Future<StructWithDartKeywordFieldTwinNormal>
-funcForStructWithDartKeywordFieldTwinNormal({
+    funcForStructWithDartKeywordFieldTwinNormal({
   required StructWithDartKeywordFieldTwinNormal arg,
-}) => RustLib.instance.api
-    .crateApiStructureFuncForStructWithDartKeywordFieldTwinNormal(arg: arg);
+}) =>
+        RustLib.instance.api
+            .crateApiStructureFuncForStructWithDartKeywordFieldTwinNormal(
+                arg: arg);
 
 class StructWithDartKeywordFieldTwinNormal {
   final int class_;

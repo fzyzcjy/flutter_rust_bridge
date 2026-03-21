@@ -22,9 +22,10 @@ Future<MyTreeNodeTwinNormal> handleComplexStructTwinNormal({
 
 Future<List<WeekdaysTwinNormal>> listOfPrimitiveEnumsTwinNormal({
   required List<WeekdaysTwinNormal> weekdays,
-}) => RustLib.instance.api.crateApiMiscExampleListOfPrimitiveEnumsTwinNormal(
-  weekdays: weekdays,
-);
+}) =>
+    RustLib.instance.api.crateApiMiscExampleListOfPrimitiveEnumsTwinNormal(
+      weekdays: weekdays,
+    );
 
 Future<MyNestedStructTwinNormal> handleNestedStructTwinNormal({
   required MyNestedStructTwinNormal s,
@@ -39,9 +40,10 @@ Future<AbcTwinNormal> testAbcEnumTwinNormal({required AbcTwinNormal abc}) =>
 
 Future<StructWithEnumTwinNormal> testStructWithEnumTwinNormal({
   required StructWithEnumTwinNormal se,
-}) => RustLib.instance.api.crateApiMiscExampleTestStructWithEnumTwinNormal(
-  se: se,
-);
+}) =>
+    RustLib.instance.api.crateApiMiscExampleTestStructWithEnumTwinNormal(
+      se: se,
+    );
 
 Future<String> handleStringTwinNormal({required String s}) =>
     RustLib.instance.api.crateApiMiscExampleHandleStringTwinNormal(s: s);
@@ -55,10 +57,11 @@ Future<Uint8List> handleVecU8TwinNormal({required List<int> v}) =>
 Future<MySize> handleStructTwinNormal({
   required MySize arg,
   required MySize boxed,
-}) => RustLib.instance.api.crateApiMiscExampleHandleStructTwinNormal(
-  arg: arg,
-  boxed: boxed,
-);
+}) =>
+    RustLib.instance.api.crateApiMiscExampleHandleStructTwinNormal(
+      arg: arg,
+      boxed: boxed,
+    );
 
 Future<int> positionalArgumentsTwinNormal(int a, int b) => RustLib.instance.api
     .crateApiMiscExamplePositionalArgumentsTwinNormal(a: a, b: b);

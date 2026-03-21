@@ -15,8 +15,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   // considering the `code comments` feature here, instead of actual function execution logic.
   test('can call the functions', () async {
     await futurizeVoidTwinRustAsyncSse(
-      functionWithCommentsSlashStarStarTwinRustAsyncSse(),
-    );
+        functionWithCommentsSlashStarStarTwinRustAsyncSse());
     await futurizeVoidTwinRustAsyncSse(
       functionWithCommentsTripleSlashMultiLineTwinRustAsyncSse(),
     );
