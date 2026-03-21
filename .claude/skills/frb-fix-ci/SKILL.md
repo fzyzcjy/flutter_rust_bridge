@@ -22,6 +22,7 @@ Use this order before diving into individual failure types:
 2. If the failure looks flaky, rerun only the failed jobs.
 3. Reproduce the exact failing `./frb_internal ...` command from CI, but first check your user-level `remote-testing` rules instead of assuming local execution is correct.
    If reproducing remotely, keep one remote workspace single-writer: do not run multiple FRB `msc exec` reproduction commands in parallel against that same workspace.
+   Also do not trust a dirty remote workspace by default: FRB remote runs often leave stray generated or untracked files behind, so prefer `git reset --hard HEAD && git clean -fdx` before a meaningful reproduction.
 4. Decide where the failure sits in the dependency graph: is it more likely a prerequisite cause (`Generate`, `Integrate`, or a high-relevance `Generate Internal` stage) or a downstream symptom (`Build :: Flutter`, native tests)?
 5. Only do deeper debugging after you have ruled out flakes, stale runs, and failure propagation.
 
@@ -186,6 +187,12 @@ You may use CI diffs only as a diagnosis aid to understand what changed, but the
 CI shows the command it ran. Before running it, check your user-level `remote-testing` rules to determine whether this repo requires remote execution.
 
 Before reproducing, make sure the toolchain versions match CI closely enough to be meaningful. In practice this usually means Flutter, Dart, Rust, cargo subcommands, and any pinned template or helper dependency should match the versions used by CI.
+
+If reproducing remotely, clean the remote workspace first unless you have a specific reason not to. In FRB this often matters because old generated files and untracked outputs can survive earlier runs and create fake diffs:
+
+```bash
+msc exec --flavor frb 'git reset --hard HEAD && git clean -fdx && ./frb_internal ...'
+```
 
 Then run the same command:
 
