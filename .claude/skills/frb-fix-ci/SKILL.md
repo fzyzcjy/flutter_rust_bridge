@@ -42,37 +42,38 @@ When several related jobs are failing, use this dependency graph instead of trea
 
 ```mermaid
 flowchart LR
-    subgraph Inputs
-        CodegenSources["frb_codegen/src/** + codegen config"]
-        Versions["pinned Flutter / Dart / Rust versions"]
-        Templates["frb_codegen/assets/integration_template/**"]
-        Cargokit["cargokit"]
-    end
+    CodegenSources["frb_codegen/src/** + codegen config"]
+    Versions["pinned Flutter / Dart / Rust versions"]
+    Templates["frb_codegen/assets/integration_template/**"]
+    Cargokit["cargokit"]
+    PureDart["frb_example/pure_dart/**"]
+    GeneratedOutputs["frb_example/**/frb_generated.*"]
+    ExampleOutputs["integrate outputs under frb_example/**"]
+    PureDartPde["frb_example/pure_dart_pde/**"]
+    NativeTests["native Flutter tests"]
 
-    subgraph Operations
-        Generate["Generate"]
-        GenerateInternal["Generate Internal"]
-        Integrate["Integrate"]
-        Build["Build :: Flutter"]
-    end
-
-    subgraph OutputsAndConsumers
-        GeneratedOutputs["generated outputs like frb_example/**/frb_generated.*"]
-        ExampleOutputs["integrate outputs like example platform files under frb_example/**"]
-        NativeTests["native Flutter tests"]
-    end
+    Generate("Generate")
+    GenerateInternal("Generate Internal")
+    Integrate("Integrate")
+    Build("Build :: Flutter")
 
     CodegenSources -->|used by| Generate
     Versions -->|used by| Generate
+    Generate -->|writes| GeneratedOutputs
+
     CodegenSources -->|used by| GenerateInternal
     Versions -->|used by| GenerateInternal
+    PureDart -->|read by| GenerateInternal
+    GenerateInternal -->|rewrites| PureDart
+    GenerateInternal -->|derives| PureDartPde
+    GenerateInternal -->|writes| GeneratedOutputs
+
     CodegenSources -->|used by| Integrate
     Versions -->|used by| Integrate
     Templates -->|used by| Integrate
     Cargokit -->|used by| Integrate
-    Generate -->|produces| GeneratedOutputs
-    GenerateInternal -->|produces| GeneratedOutputs
-    Integrate -->|produces| ExampleOutputs
+    Integrate -->|writes| ExampleOutputs
+
     GeneratedOutputs -->|consumed by| Build
     ExampleOutputs -->|consumed by| Build
     Build -->|required by| NativeTests
@@ -84,10 +85,10 @@ Read the graph as artifact and input dependencies, not as a literal GitHub Actio
 
 #### Key Chains
 
-- `frb_example/pure_dart` -> `frb_example/pure_dart_pde`
-  If `pure_dart_pde` is failing, do not only refresh `pure_dart_pde`. First check whether `./frb_internal generate-internal --set-exit-if-changed ...` is still changing `frb_example/pure_dart`.
 - `frb_codegen/assets/integration_template/` + `cargokit` -> integrate outputs under `frb_example/**`
   If Flutter integrate examples, example platform files, `Build :: Flutter`, and native Flutter tests regress together, suspect these template inputs first. Do not hand-edit generated example outputs.
+- `Generate Internal` + `frb_example/pure_dart/**` -> `frb_example/pure_dart_pde/**`
+  If `pure_dart_pde` is failing, do not only refresh `pure_dart_pde`. First check whether `./frb_internal generate-internal --set-exit-if-changed ...` is still changing `frb_example/pure_dart`.
 
 #### When to Consult
 
