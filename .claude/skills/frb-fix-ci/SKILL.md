@@ -54,7 +54,7 @@ flowchart LR
     ExampleOutputs["integrate outputs under frb_example/**"]
     PureDartPde["frb_example/pure_dart_pde/**"]
     PureDartPdeGenerated["frb_example/pure_dart_pde/**/frb_generated.*"]
-    NativeTests["Test :: Flutter :: Native::*\n(./frb_internal test-flutter-native ...)"]
+    NativeTests(["Test :: Flutter :: Native::*\n(./frb_internal test-flutter-native ...)"])
 
     Generate(["Generate :: FRB Codegen :: Command Generate\n(./frb_internal generate-run-frb-codegen-command-generate)"])
     Integrate(["Generate :: FRB Codegen :: Command Integrate\n(./frb_internal generate-run-frb-codegen-command-integrate)"])
