@@ -342,7 +342,17 @@ Future<void> generateRunFrbCodegenCommandGenerate(
       coverage: config.coverage,
       coverageName: 'GenerateRunFrbCodegenCommandGenerate',
     );
+    await _formatPackageAfterGenerate(config.package);
   });
+}
+
+Future<void> _formatPackageAfterGenerate(String package) async {
+  switch (package) {
+    case 'frb_example/pure_dart':
+      await exec('dart format .', relativePwd: package);
+    default:
+      return;
+  }
 }
 
 Future<void> generateRunFrbCodegenCommandIntegrate(
