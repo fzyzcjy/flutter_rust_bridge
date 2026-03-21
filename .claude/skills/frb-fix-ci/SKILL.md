@@ -45,7 +45,8 @@ flowchart LR
     subgraph StrictDependencies
         Tooling["frb_codegen/src/** + codegen config"]
         Versions["pinned Flutter / Dart / Rust versions"]
-        Codegen["Generate / Generate Internal"]
+        Generate["Generate"]
+        GenerateInternal["Generate Internal"]
         Outputs["generated outputs like frb_example/**/frb_generated.*"]
         Template["frb_codegen/assets/integration_template/ + cargokit"]
         Integrate["Integrate"]
@@ -55,11 +56,14 @@ flowchart LR
         PureDart["frb_example/pure_dart"]
         PureDartPde["frb_example/pure_dart_pde"]
 
-        Tooling -->|used by| Codegen
-        Versions -->|used by| Codegen
+        Tooling -->|used by| Generate
+        Versions -->|used by| Generate
+        Tooling -->|used by| GenerateInternal
+        Versions -->|used by| GenerateInternal
         Tooling -->|used by| Integrate
         Versions -->|used by| Integrate
-        Codegen -->|produces| Outputs
+        Generate -->|produces| Outputs
+        GenerateInternal -->|produces| Outputs
         Template -->|used by| Integrate
         Integrate -->|produces| ExampleOutputs
         Outputs -->|consumed by| Build
@@ -69,22 +73,22 @@ flowchart LR
     end
 ```
 
-`How to read`
+#### How to Read
 
 Read the graph as artifact and input dependencies, not as a literal GitHub Actions job graph.
 
-`Key chains`
+#### Key Chains
 
 - `frb_example/pure_dart` -> `frb_example/pure_dart_pde`
   If `pure_dart_pde` is failing, do not only refresh `pure_dart_pde`. First check whether `./frb_internal generate-internal --set-exit-if-changed ...` is still changing `frb_example/pure_dart`.
 - `frb_codegen/assets/integration_template/` + `cargokit` -> integrate outputs under `frb_example/**`
   If Flutter integrate examples, example platform files, `Build :: Flutter`, and native Flutter tests regress together, suspect these template inputs first. Do not hand-edit generated example outputs.
 
-`When to consult`
+#### When to Consult
 
 Use this graph when several nearby categories start failing together in the same run, especially when earlier nodes such as `Generate`, `Integrate`, or `Generate Internal` are already red and later failures look consistent with missing, stale, or mismatched generated files or platform files.
 
-`Rule`
+#### Rule
 
 Prefer fixing prerequisite nodes before symptom nodes. If a prerequisite node is still unstable, treat later failures as propagated symptoms until proven otherwise. If this pattern keeps repeating across multiple commits or CI runs, jump to `Whack-a-Mole Prevention`.
 
