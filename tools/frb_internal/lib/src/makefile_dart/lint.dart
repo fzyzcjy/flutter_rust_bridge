@@ -135,11 +135,11 @@ String normalizeFfigenLintText(String text) {
     RegExp(r',\s*([)\]\}])'),
     r'$1',
   );
-  final normalizedFfiVoidFunction = withoutTrailingCommas.replaceAll(
-    RegExp(r'ffi\.Void\s*Function'),
-    'ffi.VoidFunction',
+  final normalizedFunctionTypes = withoutTrailingCommas.replaceAll(
+    RegExp(r'\s+Function(?=\()'),
+    'Function',
   );
-  return normalizedFfiVoidFunction.replaceAll(RegExp(r'\s+'), '');
+  return normalizedFunctionTypes.replaceAll(RegExp(r'\s+'), '');
 }
 
 Future<void> lintDartVersion() async {

@@ -74,6 +74,17 @@ late final ptr = _lookup<ffi.NativeFunction<ffi.VoidFunction(ffi.Pointer<ffi.Voi
     );
   });
 
+  test('lint ffigen normalization canonicalizes callback function spacing', () {
+    expect(
+      normalizeFfigenLintText('''
+late final callback = ptr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+      '''),
+      normalizeFfigenLintText('''
+late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
+      '''),
+    );
+  });
+
   group('test checkValgrindOutput', () {
     test('good', () {
       checkValgrindOutput('''
