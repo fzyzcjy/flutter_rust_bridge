@@ -31,14 +31,10 @@ flutter_rust_bridge requires code generation when Rust APIs change. This skill m
 
 ## Important Rules
 
-For CI diagnosis rules about generated-file format/lint failures or `Generate :: FRB Codegen :: Command Integrate` failures, see `frb-fix-ci` first. Keep generated-output fixes rooted in generation logic, templates, or workflow rather than hand-editing generated files.
+For CI diagnosis rules about generated-file format/lint failures, repeated package-level `Generate` drift, or `Generate :: FRB Codegen :: Command Integrate` failures, see `frb-fix-ci` first. This skill is for command selection, not CI failure-propagation diagnosis.
 
 For `pure_dart` / `pure_dart_pde` generation issues, treat `frb_example/pure_dart` as the upstream source and `frb_example/pure_dart_pde` as the derived copy. See `frb-fix-ci` for the CI diagnosis workflow.
 
-If the same package or path keeps getting `refresh` / `regenerate` / `sync` style commits, or if accepting regenerated outputs causes previously green non-`Generate` jobs to fail, stop treating this as a pure codegen-command selection problem. Switch to `frb-fix-ci`.
-
-If repeated package-level `Generate` drift appears during CI repair, stop choosing narrower package commands and follow `frb-fix-ci`'s repeated-`Generate` escalation workflow instead.
-
-If Flutter integrate examples, example platform files, and downstream Flutter build/test jobs regress together, assume the issue may be in `frb_codegen/assets/integration_template/` or `cargokit` rather than in the generated outputs themselves. If the real fix belongs in the embedded `cargokit` submodule, edit it directly, push to `fzyzcjy/cargokit`, and then update the submodule ref. Use `frb-fix-ci` for that workflow.
+If CI repair has already entered repeated package-level drift, stop choosing narrower commands and switch to `frb-fix-ci`.
 
 Do not manually patch generated files as the final fix. The final accepted result should be produced by the corresponding generation command in a clean matching environment.
