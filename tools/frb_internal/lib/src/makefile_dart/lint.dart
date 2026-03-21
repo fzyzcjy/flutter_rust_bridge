@@ -111,18 +111,23 @@ Future<void> lintDartFfigen() async {
     return text.substring(start + 1, findMatchingBracket(text, start));
   }
 
-  final textMatcher = normalizeFfigenLintText(readInterestText('pure_dart'));
+  final textMatcherChunks = readInterestText(
+    'pure_dart',
+  ).split('\n\n').where((chunk) => chunk.trim().isNotEmpty).map(
+        normalizeFfigenLintText,
+      ).toSet();
   final textActual = readInterestText('pure_dart_pde');
 
   final actualChunks = textActual.split('\n\n');
   for (final actualChunk in actualChunks) {
+    if (actualChunk.trim().isEmpty) continue;
     final modifiedActualChunk = normalizeFfigenLintText(
       actualChunk.replaceAll(
         'frbgen_frb_example_pure_dart_pde',
         'frbgen_frb_example_pure_dart',
       ),
     );
-    if (!textMatcher.contains(modifiedActualChunk)) {
+    if (!textMatcherChunks.contains(modifiedActualChunk)) {
       throw Exception('Fail to find chunk (`$modifiedActualChunk`)');
     }
   }
