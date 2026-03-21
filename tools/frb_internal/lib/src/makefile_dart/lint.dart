@@ -111,44 +111,21 @@ Future<void> lintDartFfigen() async {
     return text.substring(start + 1, findMatchingBracket(text, start));
   }
 
-  // Normalize whitespace for comparison: collapse multiple spaces/newlines into single space
-  // Also remove trailing commas inside parentheses to handle ffigen vs FRB codegen differences
-  String normalizeWhitespace(String text) {
-    var result = text.replaceAll(RegExp(r'\s+'), ' ').trim();
-    // Remove trailing commas before closing parens/brackets/braces
-    result = result.replaceAll(RegExp(r',\s*([)\]\}])'), r'$1');
-    return result;
-  }
-
   final textMatcher = readInterestText('pure_dart');
-  final textMatcherNormalized = normalizeWhitespace(textMatcher);
   final textActual = readInterestText('pure_dart_pde');
 
   final actualChunks = textActual.split('\n\n');
-  var checkedCount = 0;
-  var skippedCount = 0;
   for (final actualChunk in actualChunks) {
-    if (actualChunk.trim().isEmpty) continue;
-
     final modifiedActualChunk = actualChunk.replaceAll(
       'frbgen_frb_example_pure_dart_pde',
       'frbgen_frb_example_pure_dart',
     );
-    final normalizedChunk = normalizeWhitespace(modifiedActualChunk);
-
-    // Skip chunks that don't exist in matcher (e.g., types only in pure_dart_pde)
-    // This allows the lint to pass when pure_dart_pde has more types than pure_dart
-    if (!textMatcherNormalized.contains(normalizedChunk)) {
-      skippedCount++;
-      continue;
+    if (!textMatcher.contains(modifiedActualChunk)) {
+      throw Exception('Fail to find chunk (`$modifiedActualChunk`)');
     }
-
-    checkedCount++;
   }
 
-  print(
-    'lintDartFfigen checked $checkedCount chunks, skipped $skippedCount chunks (types not in pure_dart)',
-  );
+  print('lintDartFfigen find all chunks and succeed');
 }
 
 Future<void> lintDartVersion() async {
