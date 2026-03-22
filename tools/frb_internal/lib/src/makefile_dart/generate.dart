@@ -17,6 +17,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/codecov_transformer.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/execute_process.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
+import 'package:meta/meta.dart';
 import 'package:path/path.dart' as path;
 import 'package:yaml/yaml.dart';
 
@@ -360,8 +361,7 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
 ) async {
   await _wrapMaybeSetExitIfChanged(
     config,
-    extraArgs:
-        "':(exclude)*Podfile' ':(exclude)*.xcconfig' ':(exclude)pubspec.lock' ':(exclude)*Cargo.lock'",
+    extraArgs: _kIntegrateSetExitIfChangedExtraArgs,
     () async {
       final dirPackage = path.join(exec.pwd!, config.package);
 
@@ -436,35 +436,39 @@ Future<void> _restoreIntegratePlatformScaffolds({
   required String originalPackageDir,
   required String generatedPackageDir,
 }) async {
-  switch (package) {
-    case 'frb_example/flutter_via_create':
-      _restorePathIfExists(
-        source: path.join(originalPackageDir, '.metadata'),
-        destination: path.join(generatedPackageDir, '.metadata'),
-      );
-      _restorePathIfExists(
-        source: path.join(originalPackageDir, 'ios'),
-        destination: path.join(generatedPackageDir, 'ios'),
-      );
-
-    case 'frb_example/flutter_package':
-      _restorePathIfExists(
-        source: path.join(originalPackageDir, '.metadata'),
-        destination: path.join(generatedPackageDir, '.metadata'),
-      );
-      _restorePathIfExists(
-        source: path.join(originalPackageDir, 'pubspec.yaml'),
-        destination: path.join(generatedPackageDir, 'pubspec.yaml'),
-      );
-      _restorePathIfExists(
-        source: path.join(originalPackageDir, 'example', 'ios'),
-        destination: path.join(generatedPackageDir, 'example', 'ios'),
-      );
-
-    default:
-      return;
+  for (final relativePath in _integratePreservedRelativePaths(package)) {
+    _restorePathIfExists(
+      source: path.join(originalPackageDir, relativePath),
+      destination: path.join(generatedPackageDir, relativePath),
+    );
   }
 }
+
+const _kIntegrateSetExitIfChangedExtraArgs =
+    "':(exclude)*Podfile' ':(exclude)*.xcconfig' ':(exclude)pubspec.lock' ':(exclude)*Cargo.lock'";
+
+const _kIntegratePreservedRelativePaths = <String, List<String>>{
+  'frb_example/flutter_via_create': ['.metadata', 'ios', 'macos/Podfile'],
+  'frb_example/flutter_via_integrate': ['.metadata', 'ios', 'macos/Podfile'],
+  'frb_example/flutter_package': [
+    '.metadata',
+    'pubspec.yaml',
+    'example/ios',
+    'example/macos/Podfile',
+  ],
+};
+
+List<String> _integratePreservedRelativePaths(String package) {
+  return _kIntegratePreservedRelativePaths[package] ?? const [];
+}
+
+@visibleForTesting
+String integrateSetExitIfChangedExtraArgsForTesting() =>
+    _kIntegrateSetExitIfChangedExtraArgs;
+
+@visibleForTesting
+List<String> integratePreservedRelativePathsForTesting(String package) =>
+    List.unmodifiable(_integratePreservedRelativePaths(package));
 
 void _restorePathIfExists({
   required String source,
@@ -535,6 +539,14 @@ void _copyDirectoryRecursive({
       );
     }
   }
+}
+
+@visibleForTesting
+void copyDirectoryRecursiveForTesting({
+  required Directory source,
+  required Directory destination,
+}) {
+  _copyDirectoryRecursive(source: source, destination: destination);
 }
 
 Future<RunCommandOutput> executeFrbCodegen(

@@ -1,4 +1,5 @@
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/generator.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:test/test.dart';
@@ -75,6 +76,68 @@ late final callback = ptr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
       normalizeFfigenLintText('''
 late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
       '''),
+    );
+  });
+
+  test('integrate preserve policy is explicit for flutter_via_create', () {
+    expect(
+      integratePreservedRelativePathsForTesting('frb_example/flutter_via_create'),
+      ['.metadata', 'ios', 'macos/Podfile'],
+    );
+  });
+
+  test('integrate preserve policy is explicit for flutter_via_integrate', () {
+    expect(
+      integratePreservedRelativePathsForTesting(
+        'frb_example/flutter_via_integrate',
+      ),
+      ['.metadata', 'ios', 'macos/Podfile'],
+    );
+  });
+
+  test('integrate preserve policy is explicit for flutter_package', () {
+    expect(
+      integratePreservedRelativePathsForTesting('frb_example/flutter_package'),
+      ['.metadata', 'pubspec.yaml', 'example/ios', 'example/macos/Podfile'],
+    );
+  });
+
+  test('integrate preserve policy is empty for unrelated package', () {
+    expect(
+      integratePreservedRelativePathsForTesting('frb_example/gallery'),
+      isEmpty,
+    );
+  });
+
+  test('integrate extra args do not exclude ios directories', () {
+    final actual = integrateSetExitIfChangedExtraArgsForTesting();
+    expect(actual, isNot(contains('flutter_via_create/ios')));
+    expect(actual, isNot(contains('flutter_package/example/ios')));
+    expect(actual, contains("':(exclude)*Podfile'"));
+    expect(actual, contains("':(exclude)*.xcconfig'"));
+  });
+
+  test('copyDirectoryRecursive preserves dotfiles and nested workspace files', () {
+    final tempDir = Directory.systemTemp.createTempSync('frb-copy-recursive-');
+    addTearDown(() => tempDir.deleteSync(recursive: true));
+
+    final source = Directory('${tempDir.path}/source');
+    final destination = Directory('${tempDir.path}/destination');
+    Directory('${source.path}/.xcodeproj/project.xcworkspace/xcshareddata')
+        .createSync(recursive: true);
+    File('${source.path}/.gitignore').writeAsStringSync('DerivedData\n');
+    File(
+      '${source.path}/.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings',
+    ).writeAsStringSync('<plist/>');
+
+    copyDirectoryRecursiveForTesting(source: source, destination: destination);
+
+    expect(File('${destination.path}/.gitignore').readAsStringSync(), 'DerivedData\n');
+    expect(
+      File(
+        '${destination.path}/.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings',
+      ).readAsStringSync(),
+      '<plist/>',
     );
   });
 
