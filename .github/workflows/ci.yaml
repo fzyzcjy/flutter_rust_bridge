@@ -552,7 +552,7 @@ jobs:
         with:
           sdk: ${{ env.FRB_MAIN_DART_VERSION }}
           architecture: x64
-      - run: cargo install cargo-llvm-cov --version 0.6.24 --locked
+      - run: cargo install cargo-llvm-cov --version ${{ matrix.info.version == '1.85.0' && '0.6.21' || '0.6.24' }} --locked
 
       # execute
       - run: ./frb_internal test-rust --coverage
