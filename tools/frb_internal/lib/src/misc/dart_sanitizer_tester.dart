@@ -313,7 +313,7 @@ Future<void> _downloadSanitizedDartBinaryArtifact({
   try {
     await Dio().download(publicUrl, pathTarGz);
     return;
-  } on DioException catch (err) {
+  } on DioException {
     final token =
         Platform.environment['GITHUB_TOKEN'] ??
         Platform.environment['GH_TOKEN'];
