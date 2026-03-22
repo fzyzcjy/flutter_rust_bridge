@@ -482,6 +482,11 @@ void _restorePathIfExists({
       Directory(destination).deleteSync(recursive: true);
     case FileSystemEntityType.link:
       Link(destination).deleteSync();
+    case FileSystemEntityType.pipe:
+    case FileSystemEntityType.unixDomainSock:
+      throw UnimplementedError(
+        'Do not expect special filesystem entity here: $destination',
+      );
     case FileSystemEntityType.notFound:
       break;
   }
@@ -493,6 +498,11 @@ void _restorePathIfExists({
       copyPath(source, destination);
     case FileSystemEntityType.link:
       throw UnimplementedError('Do not expect symlink here: $source');
+    case FileSystemEntityType.pipe:
+    case FileSystemEntityType.unixDomainSock:
+      throw UnimplementedError(
+        'Do not expect special filesystem entity here: $source',
+      );
     case FileSystemEntityType.notFound:
       break;
   }
