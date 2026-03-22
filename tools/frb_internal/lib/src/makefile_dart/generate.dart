@@ -464,7 +464,6 @@ const _kIntegratePreservedRelativePaths = <String, List<String>>{
   'frb_example/flutter_via_integrate': ['.metadata', 'ios', 'macos/Podfile'],
   'frb_example/flutter_package': [
     '.metadata',
-    'pubspec.yaml',
     'example/ios',
     'example/macos/Podfile',
   ],
