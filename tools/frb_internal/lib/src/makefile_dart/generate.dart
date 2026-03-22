@@ -478,7 +478,16 @@ void _restorePathIfExists({
       break;
   }
 
-  copyPath(source, destination);
+  switch (sourceEntity) {
+    case FileSystemEntityType.file:
+      File(source).copySync(destination);
+    case FileSystemEntityType.directory:
+      copyPath(source, destination);
+    case FileSystemEntityType.link:
+      throw UnimplementedError('Do not expect symlink here: $source');
+    case FileSystemEntityType.notFound:
+      break;
+  }
 }
 
 Future<RunCommandOutput> executeFrbCodegen(
