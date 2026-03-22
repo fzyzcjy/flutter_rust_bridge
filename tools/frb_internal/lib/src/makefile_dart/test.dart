@@ -528,8 +528,8 @@ Future<void> testDartValgrind(TestDartConfig config) async {
 }
 
 String _dartValgrindCompileCommand() {
-  return 'dart build '
-      'test/dart_valgrind_test_entrypoint.dart '
+  return 'dart build cli '
+      '-t test/dart_valgrind_test_entrypoint.dart '
       '-o ${_dartValgrindOutputDirectory()}';
 }
 
@@ -542,7 +542,7 @@ String _dartValgrindOutputDirectory() => 'build/valgrind_test_output/';
 String dartValgrindOutputDirectoryForTesting() => _dartValgrindOutputDirectory();
 
 String _dartValgrindOutputExecutablePath() {
-  return 'build/valgrind_test_output/dart_valgrind_test_entrypoint.exe';
+  return 'build/valgrind_test_output/bundle/bin/dart_valgrind_test_entrypoint';
 }
 
 @visibleForTesting

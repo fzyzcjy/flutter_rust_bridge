@@ -7,7 +7,7 @@ void main() {
   test('dart valgrind compile command uses dart build output directory', () {
     expect(
       dartValgrindCompileCommandForTesting(),
-      'dart build test/dart_valgrind_test_entrypoint.dart -o build/valgrind_test_output/',
+      'dart build cli -t test/dart_valgrind_test_entrypoint.dart -o build/valgrind_test_output/',
     );
   });
 
