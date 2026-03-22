@@ -1,6 +1,3 @@
-import 'dart:async';
-
-import 'package:flutter_rust_bridge/src/consts.dart';
 import 'package:flutter_rust_bridge/src/codec/sse.dart';
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
@@ -15,25 +12,13 @@ WireSyncRust2DartSse? pdeCallFfi(
   final raw = serializer.intoRaw();
 
   if (port != null) {
-    if (kIsWeb) {
-      Timer.run(
-        () => generalizedFrbRustBinding.pdeFfiDispatcherPrimary(
-          funcId: funcId,
-          port: port,
-          ptr: raw.ptr,
-          rustVecLen: raw.rustVecLen,
-          dataLen: raw.dataLen,
-        ),
-      );
-    } else {
-      generalizedFrbRustBinding.pdeFfiDispatcherPrimary(
-        funcId: funcId,
-        port: port,
-        ptr: raw.ptr,
-        rustVecLen: raw.rustVecLen,
-        dataLen: raw.dataLen,
-      );
-    }
+    generalizedFrbRustBinding.pdeFfiDispatcherPrimary(
+      funcId: funcId,
+      port: port,
+      ptr: raw.ptr,
+      rustVecLen: raw.rustVecLen,
+      dataLen: raw.dataLen,
+    );
     return null;
   } else {
     return generalizedFrbRustBinding.pdeFfiDispatcherSync(
