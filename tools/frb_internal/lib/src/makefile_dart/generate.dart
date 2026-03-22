@@ -378,9 +378,8 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
       await Directory(dirTemp).create(recursive: true);
 
       // We move instead of delete folder for extra safety of this script
-      final dirTempOriginal = path.join(dirTemp, 'original');
       if (await Directory(dirPackage).exists()) {
-        await Directory(dirPackage).rename(dirTempOriginal);
+        await Directory(dirPackage).rename(path.join(dirTemp, 'original'));
       }
 
       switch (config.package) {
@@ -418,7 +417,6 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
 
       await _applyCheckedInAppleScaffoldSourceOfTruth(
         package: config.package,
-        originalPackageDir: dirTempOriginal,
         generatedPackageDir: dirPackage,
       );
 
@@ -433,14 +431,16 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
 
 Future<void> _applyCheckedInAppleScaffoldSourceOfTruth({
   required String package,
-  required String originalPackageDir,
   required String generatedPackageDir,
 }) async {
   for (final relativePath in _integrateAppleScaffoldSourceOfTruthPaths(
     package,
   )) {
     _restorePathIfExists(
-      source: path.join(originalPackageDir, relativePath),
+      source: _integrateAppleScaffoldSourceOfTruthAssetPath(
+        package: package,
+        relativePath: relativePath,
+      ),
       destination: path.join(generatedPackageDir, relativePath),
     );
   }
@@ -482,6 +482,33 @@ List<String> _integrateAppleScaffoldSourceOfTruthPaths(String package) {
   return _kIntegrateAppleScaffoldSourceOfTruthPaths[package] ?? const [];
 }
 
+String _integrateAppleScaffoldSourceOfTruthAssetPath({
+  required String package,
+  required String relativePath,
+}) {
+  return _integrateAppleScaffoldSourceOfTruthAssetPathFromRepoRoot(
+    repoRootPath: exec.pwd!,
+    package: package,
+    relativePath: relativePath,
+  );
+}
+
+String _integrateAppleScaffoldSourceOfTruthAssetPathFromRepoRoot({
+  required String repoRootPath,
+  required String package,
+  required String relativePath,
+}) {
+  return path.join(
+    repoRootPath,
+    'tools',
+    'frb_internal',
+    'assets',
+    'apple_scaffold',
+    package,
+    relativePath,
+  );
+}
+
 String _integrateSetExitIfChangedExtraArgs(String package) {
   return _kIntegrateSetExitIfChangedExtraArgsByPackage[package] ?? '';
 }
@@ -494,6 +521,22 @@ String integrateSetExitIfChangedExtraArgsForTesting(String package) =>
 List<String> integrateAppleScaffoldSourceOfTruthPathsForTesting(
   String package,
 ) => List.unmodifiable(_integrateAppleScaffoldSourceOfTruthPaths(package));
+
+@visibleForTesting
+List<String> integrateAppleScaffoldSourceOfTruthAssetPathsForTesting({
+  required String repoRootPath,
+  required String package,
+}) => List.unmodifiable(
+  _integrateAppleScaffoldSourceOfTruthPaths(
+    package,
+  ).map(
+    (relativePath) => _integrateAppleScaffoldSourceOfTruthAssetPathFromRepoRoot(
+      repoRootPath: repoRootPath,
+      package: package,
+      relativePath: relativePath,
+    ),
+  ),
+);
 
 void _restorePathIfExists({
   required String source,
