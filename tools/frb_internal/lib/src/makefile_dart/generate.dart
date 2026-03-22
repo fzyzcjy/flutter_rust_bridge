@@ -17,7 +17,6 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/codecov_transformer.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/execute_process.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
-import 'package:io/io.dart';
 import 'package:path/path.dart' as path;
 import 'package:yaml/yaml.dart';
 
@@ -495,7 +494,10 @@ void _restorePathIfExists({
     case FileSystemEntityType.file:
       File(source).copySync(destination);
     case FileSystemEntityType.directory:
-      copyPath(source, destination);
+      _copyDirectoryRecursive(
+        source: Directory(source),
+        destination: Directory(destination),
+      );
     case FileSystemEntityType.link:
       throw UnimplementedError('Do not expect symlink here: $source');
     case FileSystemEntityType.pipe:
@@ -505,6 +507,33 @@ void _restorePathIfExists({
       );
     case FileSystemEntityType.notFound:
       break;
+  }
+}
+
+void _copyDirectoryRecursive({
+  required Directory source,
+  required Directory destination,
+}) {
+  destination.createSync(recursive: true);
+
+  for (final entity in source.listSync(recursive: false, followLinks: false)) {
+    final basename = path.basename(entity.path);
+    final destinationPath = path.join(destination.path, basename);
+
+    if (entity is File) {
+      entity.copySync(destinationPath);
+    } else if (entity is Directory) {
+      _copyDirectoryRecursive(
+        source: entity,
+        destination: Directory(destinationPath),
+      );
+    } else if (entity is Link) {
+      throw UnimplementedError('Do not expect symlink here: ${entity.path}');
+    } else {
+      throw UnimplementedError(
+        'Do not expect special filesystem entity here: ${entity.path}',
+      );
+    }
   }
 }
 
