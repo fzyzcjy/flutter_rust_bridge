@@ -83,7 +83,9 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
 
   test('integrate preserve policy is explicit for flutter_via_create', () {
     expect(
-      integratePreservedRelativePathsForTesting('frb_example/flutter_via_create'),
+      integratePreservedRelativePathsForTesting(
+        'frb_example/flutter_via_create',
+      ),
       ['.metadata', 'ios', 'macos/Podfile'],
     );
   });
@@ -125,8 +127,9 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
 
     final source = Directory('${tempDir.path}/source');
     final destination = Directory('${tempDir.path}/destination');
-    Directory('${source.path}/.xcodeproj/project.xcworkspace/xcshareddata')
-        .createSync(recursive: true);
+    Directory(
+      '${source.path}/.xcodeproj/project.xcworkspace/xcshareddata',
+    ).createSync(recursive: true);
     File('${source.path}/.gitignore').writeAsStringSync('DerivedData\n');
     File(
       '${source.path}/.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings',
@@ -134,7 +137,10 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
 
     copyDirectoryRecursiveForTesting(source: source, destination: destination);
 
-    expect(File('${destination.path}/.gitignore').readAsStringSync(), 'DerivedData\n');
+    expect(
+      File('${destination.path}/.gitignore').readAsStringSync(),
+      'DerivedData\n',
+    );
     expect(
       File(
         '${destination.path}/.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings',
