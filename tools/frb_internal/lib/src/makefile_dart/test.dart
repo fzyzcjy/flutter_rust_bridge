@@ -539,7 +539,8 @@ String dartValgrindCompileCommandForTesting() => _dartValgrindCompileCommand();
 String _dartValgrindOutputDirectory() => 'build/valgrind_test_output/';
 
 @visibleForTesting
-String dartValgrindOutputDirectoryForTesting() => _dartValgrindOutputDirectory();
+String dartValgrindOutputDirectoryForTesting() =>
+    _dartValgrindOutputDirectory();
 
 String _dartValgrindOutputExecutablePath() {
   return 'build/valgrind_test_output/bundle/bin/dart_valgrind_test_entrypoint';

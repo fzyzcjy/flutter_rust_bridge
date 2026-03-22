@@ -111,11 +111,11 @@ Future<void> lintDartFfigen() async {
     return text.substring(start + 1, findMatchingBracket(text, start));
   }
 
-  final textMatcherChunks = readInterestText(
-    'pure_dart',
-  ).split('\n\n').where((chunk) => chunk.trim().isNotEmpty).map(
-        normalizeFfigenLintText,
-      ).toSet();
+  final textMatcherChunks = readInterestText('pure_dart')
+      .split('\n\n')
+      .where((chunk) => chunk.trim().isNotEmpty)
+      .map(normalizeFfigenLintText)
+      .toSet();
   final textActual = readInterestText('pure_dart_pde');
 
   final actualChunks = textActual.split('\n\n');
