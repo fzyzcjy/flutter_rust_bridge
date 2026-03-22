@@ -460,8 +460,8 @@ const _kIntegrateSetExitIfChangedExtraArgsByPackage = <String, String>{
 };
 
 const _kIntegratePreservedRelativePaths = <String, List<String>>{
-  'frb_example/flutter_via_create': ['.metadata', 'ios', 'macos/Podfile'],
-  'frb_example/flutter_via_integrate': ['.metadata', 'ios', 'macos/Podfile'],
+  'frb_example/flutter_via_create': ['ios', 'macos/Podfile'],
+  'frb_example/flutter_via_integrate': ['ios', 'macos/Podfile'],
   'frb_example/flutter_package': [
     '.metadata',
     'example/ios',
