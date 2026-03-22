@@ -459,6 +459,11 @@ const _kIntegrateSetExitIfChangedExtraArgsByPackage = <String, String>{
       "':(exclude)frb_example/flutter_package/rust/Cargo.lock'",
 };
 
+// Linux-side raw create/integrate does not preserve the checked-in Apple scaffold.
+// In exact remote reproductions it drops the iOS stanza from .metadata, removes
+// iOS plugin declarations from flutter_package/pubspec.yaml, and leaves ios/*
+// or example/ios/* plus macOS Podfiles absent. Preserve those checked-in files
+// until Apple scaffold becomes an explicit stable output of integrate/create.
 const _kIntegratePreservedRelativePaths = <String, List<String>>{
   'frb_example/flutter_via_create': ['.metadata', 'ios', 'macos/Podfile'],
   'frb_example/flutter_via_integrate': ['.metadata', 'ios', 'macos/Podfile'],
