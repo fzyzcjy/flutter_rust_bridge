@@ -18,6 +18,13 @@ void main() {
     );
   });
 
+  test('dart valgrind executable path points to cli bundle binary', () {
+    expect(
+      dartValgrindOutputExecutablePathForTesting(),
+      'build/valgrind_test_output/bundle/bin/dart_valgrind_test_entrypoint',
+    );
+  });
+
   test(
     'pure dart generator resolves package from repo root instead of cwd',
     () {

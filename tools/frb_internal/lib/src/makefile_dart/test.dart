@@ -518,7 +518,7 @@ Future<void> testDartValgrind(TestDartConfig config) async {
       '--vex-iropt-level=1';
 
   final output = await exec(
-    '$valgrindCommand build/valgrind_test_output/dart_valgrind_test_entrypoint.exe',
+    '$valgrindCommand ${_dartValgrindOutputExecutablePath()}',
     relativePwd: config.package,
     checkExitCode: false,
     extraEnv: kEnvEnableRustBacktrace,
@@ -544,6 +544,10 @@ String dartValgrindOutputDirectoryForTesting() => _dartValgrindOutputDirectory()
 String _dartValgrindOutputExecutablePath() {
   return 'build/valgrind_test_output/bundle/bin/dart_valgrind_test_entrypoint';
 }
+
+@visibleForTesting
+String dartValgrindOutputExecutablePathForTesting() =>
+    _dartValgrindOutputExecutablePath();
 
 @visibleForTesting
 void checkValgrindOutput(String output) {
