@@ -217,7 +217,7 @@ jobs:
           version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
       - uses: taiki-e/install-action@v2
         with:
-          tool: ${{ runner.os == 'macOS' && 'cargo-llvm-cov@0.8.5' || 'cargo-llvm-cov@0.6.24' }}
+          tool: cargo-llvm-cov@0.7.1
 
       # execute
       - run: ./frb_internal generate-run-frb-codegen-command-generate --set-exit-if-changed --package ${{ matrix.package }} --coverage
@@ -264,7 +264,7 @@ jobs:
           version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
       - uses: taiki-e/install-action@v2
         with:
-          tool: ${{ runner.os == 'macOS' && 'cargo-llvm-cov@0.8.5' || 'cargo-llvm-cov@0.6.24' }}
+          tool: cargo-llvm-cov@0.7.1
 
       # execute
       - run: ./frb_internal generate-run-frb-codegen-command-integrate --set-exit-if-changed --package ${{ matrix.package }} --coverage
@@ -299,7 +299,7 @@ jobs:
           version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
       - uses: taiki-e/install-action@v2
         with:
-          tool: ${{ runner.os == 'macOS' && 'cargo-llvm-cov@0.8.5' || 'cargo-llvm-cov@0.6.24' }}
+          tool: cargo-llvm-cov@0.7.1
 
       # execute
       - run: ./frb_internal generate-internal --set-exit-if-changed --coverage
@@ -560,7 +560,7 @@ jobs:
           architecture: x64
       - uses: taiki-e/install-action@v2
         with:
-          tool: ${{ runner.os == 'macOS' && 'cargo-llvm-cov@0.8.5' || 'cargo-llvm-cov@0.6.24' }}
+          tool: cargo-llvm-cov@0.7.1
 
       # execute
       - run: ./frb_internal test-rust --coverage
@@ -616,7 +616,7 @@ jobs:
           architecture: x64
       - uses: taiki-e/install-action@v2
         with:
-          tool: ${{ runner.os == 'macOS' && 'cargo-llvm-cov@0.8.5' || 'cargo-llvm-cov@0.6.24' }}
+          tool: cargo-llvm-cov@0.7.1
 
       # execute
       - run: ./frb_internal test-dart-native --package ${{ matrix.package }} --coverage
@@ -979,7 +979,7 @@ jobs:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
       - uses: taiki-e/install-action@v2
         with:
-          tool: ${{ runner.os == 'macOS' && 'cargo-llvm-cov@0.8.5' || 'cargo-llvm-cov@0.6.24' }}
+          tool: cargo-llvm-cov@0.7.1
       - run: |-
           rustup toolchain install nightly
           rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
