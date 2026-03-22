@@ -17,6 +17,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/codecov_transformer.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/execute_process.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
+import 'package:io/io.dart';
 import 'package:path/path.dart' as path;
 import 'package:yaml/yaml.dart';
 
@@ -361,9 +362,7 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
   await _wrapMaybeSetExitIfChanged(
     config,
     extraArgs:
-        "':(exclude)*Podfile' ':(exclude)*.xcconfig' ':(exclude)pubspec.lock' ':(exclude)*Cargo.lock' "
-        "':(exclude)frb_example/flutter_via_create/ios/**' "
-        "':(exclude)frb_example/flutter_package/example/ios/**'",
+        "':(exclude)*Podfile' ':(exclude)*.xcconfig' ':(exclude)pubspec.lock' ':(exclude)*Cargo.lock'",
     () async {
       final dirPackage = path.join(exec.pwd!, config.package);
 
@@ -418,6 +417,12 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
           );
       }
 
+      await _restoreIntegratePlatformScaffolds(
+        package: config.package,
+        originalPackageDir: dirTempOriginal,
+        generatedPackageDir: dirPackage,
+      );
+
       // move back compilation cache to speed up future usage
       // for (final subPath in ['build', 'rust/target']) {
       //   await _renameDirIfExists(
@@ -425,6 +430,55 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
       // }
     },
   );
+}
+
+Future<void> _restoreIntegratePlatformScaffolds({
+  required String package,
+  required String originalPackageDir,
+  required String generatedPackageDir,
+}) async {
+  switch (package) {
+    case 'frb_example/flutter_via_create':
+      _restorePathIfExists(
+        source: path.join(originalPackageDir, '.metadata'),
+        destination: path.join(generatedPackageDir, '.metadata'),
+      );
+      _restorePathIfExists(
+        source: path.join(originalPackageDir, 'ios'),
+        destination: path.join(generatedPackageDir, 'ios'),
+      );
+
+    case 'frb_example/flutter_package':
+      _restorePathIfExists(
+        source: path.join(originalPackageDir, 'example', 'ios'),
+        destination: path.join(generatedPackageDir, 'example', 'ios'),
+      );
+
+    default:
+      return;
+  }
+}
+
+void _restorePathIfExists({
+  required String source,
+  required String destination,
+}) {
+  final sourceEntity = FileSystemEntity.typeSync(source);
+  if (sourceEntity == FileSystemEntityType.notFound) return;
+
+  final destinationEntity = FileSystemEntity.typeSync(destination);
+  switch (destinationEntity) {
+    case FileSystemEntityType.file:
+      File(destination).deleteSync();
+    case FileSystemEntityType.directory:
+      Directory(destination).deleteSync(recursive: true);
+    case FileSystemEntityType.link:
+      Link(destination).deleteSync();
+    case FileSystemEntityType.notFound:
+      break;
+  }
+
+  copyPath(source, destination);
 }
 
 Future<RunCommandOutput> executeFrbCodegen(
