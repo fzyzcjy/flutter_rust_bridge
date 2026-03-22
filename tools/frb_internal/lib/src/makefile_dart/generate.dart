@@ -361,7 +361,7 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
 ) async {
   await _wrapMaybeSetExitIfChanged(
     config,
-    extraArgs: _kIntegrateSetExitIfChangedExtraArgs,
+    extraArgs: _integrateSetExitIfChangedExtraArgs(config.package),
     () async {
       final dirPackage = path.join(exec.pwd!, config.package);
 
@@ -444,8 +444,20 @@ Future<void> _restoreIntegratePlatformScaffolds({
   }
 }
 
-const _kIntegrateSetExitIfChangedExtraArgs =
-    "':(exclude)*Podfile' ':(exclude)*.xcconfig' ':(exclude)pubspec.lock' ':(exclude)*Cargo.lock'";
+const _kIntegrateSetExitIfChangedExtraArgsByPackage = <String, String>{
+  'frb_example/flutter_via_create':
+      "':(exclude)frb_example/flutter_via_create/macos/Flutter/Flutter-Debug.xcconfig' "
+      "':(exclude)frb_example/flutter_via_create/macos/Flutter/Flutter-Release.xcconfig' "
+      "':(exclude)frb_example/flutter_via_create/rust/Cargo.lock'",
+  'frb_example/flutter_via_integrate':
+      "':(exclude)frb_example/flutter_via_integrate/macos/Flutter/Flutter-Debug.xcconfig' "
+      "':(exclude)frb_example/flutter_via_integrate/macos/Flutter/Flutter-Release.xcconfig' "
+      "':(exclude)frb_example/flutter_via_integrate/rust/Cargo.lock'",
+  'frb_example/flutter_package':
+      "':(exclude)frb_example/flutter_package/example/macos/Flutter/Flutter-Debug.xcconfig' "
+      "':(exclude)frb_example/flutter_package/example/macos/Flutter/Flutter-Release.xcconfig' "
+      "':(exclude)frb_example/flutter_package/rust/Cargo.lock'",
+};
 
 const _kIntegratePreservedRelativePaths = <String, List<String>>{
   'frb_example/flutter_via_create': ['.metadata', 'ios', 'macos/Podfile'],
@@ -462,9 +474,13 @@ List<String> _integratePreservedRelativePaths(String package) {
   return _kIntegratePreservedRelativePaths[package] ?? const [];
 }
 
+String _integrateSetExitIfChangedExtraArgs(String package) {
+  return _kIntegrateSetExitIfChangedExtraArgsByPackage[package] ?? '';
+}
+
 @visibleForTesting
-String integrateSetExitIfChangedExtraArgsForTesting() =>
-    _kIntegrateSetExitIfChangedExtraArgs;
+String integrateSetExitIfChangedExtraArgsForTesting(String package) =>
+    _integrateSetExitIfChangedExtraArgs(package);
 
 @visibleForTesting
 List<String> integratePreservedRelativePathsForTesting(String package) =>

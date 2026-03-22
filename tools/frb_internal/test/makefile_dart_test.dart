@@ -113,12 +113,44 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
     );
   });
 
-  test('integrate extra args do not exclude ios directories', () {
-    final actual = integrateSetExitIfChangedExtraArgsForTesting();
-    expect(actual, isNot(contains('flutter_via_create/ios')));
-    expect(actual, isNot(contains('flutter_package/example/ios')));
-    expect(actual, contains("':(exclude)*Podfile'"));
-    expect(actual, contains("':(exclude)*.xcconfig'"));
+  test('integrate extra args are explicit for flutter_via_create', () {
+    expect(
+      integrateSetExitIfChangedExtraArgsForTesting(
+        'frb_example/flutter_via_create',
+      ),
+      "':(exclude)frb_example/flutter_via_create/macos/Flutter/Flutter-Debug.xcconfig' "
+      "':(exclude)frb_example/flutter_via_create/macos/Flutter/Flutter-Release.xcconfig' "
+      "':(exclude)frb_example/flutter_via_create/rust/Cargo.lock'",
+    );
+  });
+
+  test('integrate extra args are explicit for flutter_via_integrate', () {
+    expect(
+      integrateSetExitIfChangedExtraArgsForTesting(
+        'frb_example/flutter_via_integrate',
+      ),
+      "':(exclude)frb_example/flutter_via_integrate/macos/Flutter/Flutter-Debug.xcconfig' "
+      "':(exclude)frb_example/flutter_via_integrate/macos/Flutter/Flutter-Release.xcconfig' "
+      "':(exclude)frb_example/flutter_via_integrate/rust/Cargo.lock'",
+    );
+  });
+
+  test('integrate extra args are explicit for flutter_package', () {
+    expect(
+      integrateSetExitIfChangedExtraArgsForTesting(
+        'frb_example/flutter_package',
+      ),
+      "':(exclude)frb_example/flutter_package/example/macos/Flutter/Flutter-Debug.xcconfig' "
+      "':(exclude)frb_example/flutter_package/example/macos/Flutter/Flutter-Release.xcconfig' "
+      "':(exclude)frb_example/flutter_package/rust/Cargo.lock'",
+    );
+  });
+
+  test('integrate extra args are empty for unrelated package', () {
+    expect(
+      integrateSetExitIfChangedExtraArgsForTesting('frb_example/gallery'),
+      isEmpty,
+    );
   });
 
   test('copyDirectoryRecursive preserves dotfiles and nested workspace files', () {
