@@ -282,10 +282,11 @@ Future<String> _getSanitizedDartBinary(TestDartSanitizerConfig config) async {
   );
 
   if (!await File(pathTarGz).exists()) {
-    final url =
-        'https://github.com/fzyzcjy/dart_lang_ci/releases/download/$releaseName/$fileNameTarGz';
-    print('Download artifact from $url to $pathTarGz...');
-    await Dio().download(url, pathTarGz);
+    await _downloadSanitizedDartBinaryArtifact(
+      releaseName: releaseName,
+      fileNameTarGz: fileNameTarGz,
+      pathTarGz: pathTarGz,
+    );
   }
 
   if (!await File(pathBin).exists()) {
@@ -298,6 +299,71 @@ Future<String> _getSanitizedDartBinary(TestDartSanitizerConfig config) async {
   }
 
   return pathBin;
+}
+
+Future<void> _downloadSanitizedDartBinaryArtifact({
+  required String releaseName,
+  required String fileNameTarGz,
+  required String pathTarGz,
+}) async {
+  final publicUrl =
+      'https://github.com/fzyzcjy/dart_lang_ci/releases/download/$releaseName/$fileNameTarGz';
+  print('Download artifact from $publicUrl to $pathTarGz...');
+
+  try {
+    await Dio().download(publicUrl, pathTarGz);
+    return;
+  } on DioException catch (err) {
+    final token =
+        Platform.environment['GITHUB_TOKEN'] ?? Platform.environment['GH_TOKEN'];
+    if (token == null || token.isEmpty) rethrow;
+
+    print('Public artifact download failed; retry via GitHub API asset download');
+
+    final assetId = await _findGitHubReleaseAssetId(
+      releaseName: releaseName,
+      fileNameTarGz: fileNameTarGz,
+      token: token,
+    );
+    final response = await Dio().get<List<int>>(
+      'https://api.github.com/repos/fzyzcjy/dart_lang_ci/releases/assets/$assetId',
+      options: Options(
+        responseType: ResponseType.bytes,
+        headers: {
+          HttpHeaders.authorizationHeader: 'Bearer $token',
+          HttpHeaders.acceptHeader: 'application/octet-stream',
+          HttpHeaders.userAgentHeader: 'flutter-rust-bridge-ci',
+        },
+      ),
+    );
+    await File(pathTarGz).writeAsBytes(response.data!);
+  }
+}
+
+Future<int> _findGitHubReleaseAssetId({
+  required String releaseName,
+  required String fileNameTarGz,
+  required String token,
+}) async {
+  final response = await Dio().get<Map<String, dynamic>>(
+    'https://api.github.com/repos/fzyzcjy/dart_lang_ci/releases/tags/$releaseName',
+    options: Options(
+      headers: {
+        HttpHeaders.authorizationHeader: 'Bearer $token',
+        HttpHeaders.acceptHeader: 'application/vnd.github+json',
+        HttpHeaders.userAgentHeader: 'flutter-rust-bridge-ci',
+      },
+    ),
+  );
+
+  final assets = response.data!['assets'] as List<dynamic>;
+  final asset = assets.cast<Map<String, dynamic>>().firstWhere(
+    (element) => element['name'] == fileNameTarGz,
+    orElse: () => throw Exception(
+      'Cannot find GitHub release asset `$fileNameTarGz` in `$releaseName`',
+    ),
+  );
+  return asset['id'] as int;
 }
 
 const _cargoBuildExtraArgs = '-Zbuild-std --target x86_64-unknown-linux-gnu';

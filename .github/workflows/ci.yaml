@@ -746,6 +746,8 @@ jobs:
 
       # execute
       - run: ./frb_internal test-dart-sanitizer --package ${{ matrix.package }} --sanitizer ${{ matrix.sanitizer }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
 
   # TODO re-enable when upgrading CI flutter version
   #  # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
