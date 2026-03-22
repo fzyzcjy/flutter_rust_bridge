@@ -102,7 +102,7 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
   test('integrate preserve policy is explicit for flutter_package', () {
     expect(
       integratePreservedRelativePathsForTesting('frb_example/flutter_package'),
-      ['.metadata', 'example/ios', 'example/macos/Podfile'],
+      ['.metadata', 'pubspec.yaml', 'example/ios', 'example/macos/Podfile'],
     );
   });
 
