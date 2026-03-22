@@ -450,6 +450,14 @@ Future<void> _restoreIntegratePlatformScaffolds({
 
     case 'frb_example/flutter_package':
       _restorePathIfExists(
+        source: path.join(originalPackageDir, '.metadata'),
+        destination: path.join(generatedPackageDir, '.metadata'),
+      );
+      _restorePathIfExists(
+        source: path.join(originalPackageDir, 'pubspec.yaml'),
+        destination: path.join(generatedPackageDir, 'pubspec.yaml'),
+      );
+      _restorePathIfExists(
         source: path.join(originalPackageDir, 'example', 'ios'),
         destination: path.join(generatedPackageDir, 'example', 'ios'),
       );
