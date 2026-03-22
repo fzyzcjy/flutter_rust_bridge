@@ -107,6 +107,8 @@ Read the graph as artifact and input dependencies, not as a literal GitHub Actio
 
 - `frb_codegen/assets/integration_template/` + `cargokit` -> integrate outputs under `frb_example/**`
   If Flutter integrate examples, example platform files, `Build :: Flutter`, and native Flutter tests regress together, suspect these template inputs first. Do not hand-edit generated example outputs. If the bug is actually inside the embedded `cargokit` submodule, it is acceptable to edit that submodule directly and push to `fzyzcjy/cargokit`, then update the submodule ref.
+- Apple scaffold under integrate examples:
+  when Linux-side raw `create/integrate` does not reproduce checked-in Apple files such as `.metadata` iOS stanzas, `ios/**`, `example/ios/**`, `macos/Podfile`, or Apple-specific `pubspec.yaml` fragments, do not treat that as proof the checked-in files are wrong. In this repo, checked-in mac-generated Apple scaffold may be the source of truth, and Linux integrate may explicitly apply it before diff comparison.
 - `Generate Internal` + `frb_example/pure_dart/**` -> `frb_example/pure_dart_pde/**`
   If `pure_dart_pde` is failing, do not only refresh `pure_dart_pde`. First check whether `./frb_internal generate-internal-frb-example-pure-dart --set-exit-if-changed ...` is still changing `frb_example/pure_dart`.
 
@@ -256,6 +258,12 @@ Instead:
 - Fix the source templates under `frb_codegen/assets/integration_template/`
 - If the bad logic is inside the embedded `cargokit` submodule, fix and push `fzyzcjy/cargokit`, then update the submodule ref
 - Re-run integrate generation after updating the templates
+
+Special case: Apple scaffold
+
+- If Linux-side raw `create/integrate` drops checked-in Apple files, do not describe the current fix as "restoring old scaffold" unless it really is an accidental workaround.
+- First check whether the repo intentionally treats checked-in mac-generated Apple scaffold as source of truth.
+- If that is the contract, prefer names and comments like "apply checked-in Apple scaffold source of truth" over vague restore/preserve wording.
 
 ### Generate-caused Failures
 
