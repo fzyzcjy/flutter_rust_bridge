@@ -4,31 +4,17 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:test/test.dart';
 
 void main() {
-  test('dart valgrind compile command uses dart compile exe', () {
+  test('dart valgrind compile command uses dart build output directory', () {
     expect(
       dartValgrindCompileCommandForTesting(),
-      'dart compile exe test/dart_valgrind_test_entrypoint.dart -o build/valgrind_test_output/dart_valgrind_test_entrypoint.exe',
+      'dart build test/dart_valgrind_test_entrypoint.dart -o build/valgrind_test_output/',
     );
   });
 
-  test('dart valgrind output directory matches package build directory', () {
+  test('dart valgrind output directory matches build output directory', () {
     expect(
-      dartValgrindOutputDirectoryForTesting('frb_example/pure_dart'),
-      endsWith('frb_example/pure_dart/build/valgrind_test_output'),
-    );
-  });
-
-  test('dart valgrind builds release rust library for pure dart package', () {
-    expect(
-      dartValgrindCargoBuildCommandForTesting('frb_example/pure_dart'),
-      'cargo build --release --features internal_feature_for_testing',
-    );
-  });
-
-  test('dart valgrind native lib directory points to rust target release', () {
-    expect(
-      dartValgrindRustNativeLibDirectoryForTesting('frb_example/dart_minimal'),
-      endsWith('frb_example/dart_minimal/rust/target/release'),
+      dartValgrindOutputDirectoryForTesting(),
+      'build/valgrind_test_output/',
     );
   });
 
