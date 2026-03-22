@@ -19,7 +19,12 @@ pub fn flutter_create(name: &str, org: &Option<String>, template: Template) -> a
         full_args.extend(["--org".to_owned(), o.to_owned()]);
     }
     match template {
-        Template::App => full_args.extend(["--template".to_owned(), "app".to_owned()]),
+        Template::App => full_args.extend([
+            "--template".to_owned(),
+            "app".to_owned(),
+            "--platforms".to_owned(),
+            "android,ios,linux,macos,web,windows".to_owned(),
+        ]),
         Template::Plugin => full_args.extend([
             "--template".to_owned(),
             "plugin_ffi".to_owned(),
