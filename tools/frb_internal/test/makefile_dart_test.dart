@@ -86,7 +86,7 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
       integratePreservedRelativePathsForTesting(
         'frb_example/flutter_via_create',
       ),
-      ['ios', 'macos/Podfile'],
+      ['.metadata', 'ios', 'macos/Podfile'],
     );
   });
 
@@ -95,7 +95,7 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
       integratePreservedRelativePathsForTesting(
         'frb_example/flutter_via_integrate',
       ),
-      ['ios', 'macos/Podfile'],
+      ['.metadata', 'ios', 'macos/Podfile'],
     );
   });
 
