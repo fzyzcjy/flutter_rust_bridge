@@ -416,7 +416,7 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
           );
       }
 
-      await _restoreIntegratePlatformScaffolds(
+      await _applyCheckedInAppleScaffoldSourceOfTruth(
         package: config.package,
         originalPackageDir: dirTempOriginal,
         generatedPackageDir: dirPackage,
@@ -431,12 +431,14 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
   );
 }
 
-Future<void> _restoreIntegratePlatformScaffolds({
+Future<void> _applyCheckedInAppleScaffoldSourceOfTruth({
   required String package,
   required String originalPackageDir,
   required String generatedPackageDir,
 }) async {
-  for (final relativePath in _integratePreservedRelativePaths(package)) {
+  for (final relativePath in _integrateAppleScaffoldSourceOfTruthPaths(
+    package,
+  )) {
     _restorePathIfExists(
       source: path.join(originalPackageDir, relativePath),
       destination: path.join(generatedPackageDir, relativePath),
@@ -462,9 +464,10 @@ const _kIntegrateSetExitIfChangedExtraArgsByPackage = <String, String>{
 // Linux-side raw create/integrate does not preserve the checked-in Apple scaffold.
 // In exact remote reproductions it drops the iOS stanza from .metadata, removes
 // iOS plugin declarations from flutter_package/pubspec.yaml, and leaves ios/*
-// or example/ios/* plus macOS Podfiles absent. Preserve those checked-in files
-// until Apple scaffold becomes an explicit stable output of integrate/create.
-const _kIntegratePreservedRelativePaths = <String, List<String>>{
+// or example/ios/* plus macOS Podfiles absent. Treat the checked-in mac-generated
+// Apple scaffold as source-of-truth, and explicitly apply it before diff
+// comparison until integrate/create can produce the same result directly.
+const _kIntegrateAppleScaffoldSourceOfTruthPaths = <String, List<String>>{
   'frb_example/flutter_via_create': ['.metadata', 'ios', 'macos/Podfile'],
   'frb_example/flutter_via_integrate': ['.metadata', 'ios', 'macos/Podfile'],
   'frb_example/flutter_package': [
@@ -475,8 +478,8 @@ const _kIntegratePreservedRelativePaths = <String, List<String>>{
   ],
 };
 
-List<String> _integratePreservedRelativePaths(String package) {
-  return _kIntegratePreservedRelativePaths[package] ?? const [];
+List<String> _integrateAppleScaffoldSourceOfTruthPaths(String package) {
+  return _kIntegrateAppleScaffoldSourceOfTruthPaths[package] ?? const [];
 }
 
 String _integrateSetExitIfChangedExtraArgs(String package) {
@@ -488,8 +491,9 @@ String integrateSetExitIfChangedExtraArgsForTesting(String package) =>
     _integrateSetExitIfChangedExtraArgs(package);
 
 @visibleForTesting
-List<String> integratePreservedRelativePathsForTesting(String package) =>
-    List.unmodifiable(_integratePreservedRelativePaths(package));
+List<String> integrateAppleScaffoldSourceOfTruthPathsForTesting(
+  String package,
+) => List.unmodifiable(_integrateAppleScaffoldSourceOfTruthPaths(package));
 
 void _restorePathIfExists({
   required String source,

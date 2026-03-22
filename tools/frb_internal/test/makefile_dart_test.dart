@@ -81,37 +81,51 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
     );
   });
 
-  test('integrate preserve policy is explicit for flutter_via_create', () {
+  test(
+    'integrate apple scaffold source of truth is explicit for flutter_via_create',
+    () {
     expect(
-      integratePreservedRelativePathsForTesting(
+      integrateAppleScaffoldSourceOfTruthPathsForTesting(
         'frb_example/flutter_via_create',
       ),
       ['.metadata', 'ios', 'macos/Podfile'],
     );
-  });
+    },
+  );
 
-  test('integrate preserve policy is explicit for flutter_via_integrate', () {
+  test(
+    'integrate apple scaffold source of truth is explicit for flutter_via_integrate',
+    () {
     expect(
-      integratePreservedRelativePathsForTesting(
+      integrateAppleScaffoldSourceOfTruthPathsForTesting(
         'frb_example/flutter_via_integrate',
       ),
       ['.metadata', 'ios', 'macos/Podfile'],
     );
-  });
+    },
+  );
 
-  test('integrate preserve policy is explicit for flutter_package', () {
+  test(
+    'integrate apple scaffold source of truth is explicit for flutter_package',
+    () {
     expect(
-      integratePreservedRelativePathsForTesting('frb_example/flutter_package'),
+      integrateAppleScaffoldSourceOfTruthPathsForTesting(
+        'frb_example/flutter_package',
+      ),
       ['.metadata', 'pubspec.yaml', 'example/ios', 'example/macos/Podfile'],
     );
-  });
+    },
+  );
 
-  test('integrate preserve policy is empty for unrelated package', () {
+  test(
+    'integrate apple scaffold source of truth is empty for unrelated package',
+    () {
     expect(
-      integratePreservedRelativePathsForTesting('frb_example/gallery'),
+      integrateAppleScaffoldSourceOfTruthPathsForTesting('frb_example/gallery'),
       isEmpty,
     );
-  });
+    },
+  );
 
   test('integrate extra args are explicit for flutter_via_create', () {
     expect(
