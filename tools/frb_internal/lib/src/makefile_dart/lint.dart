@@ -136,9 +136,9 @@ Future<void> lintDartFfigen() async {
 }
 
 String normalizeFfigenLintText(String text) {
-  final withoutTrailingCommas = text.replaceAll(
+  final withoutTrailingCommas = text.replaceAllMapped(
     RegExp(r',\s*([)\]\}])'),
-    r'$1',
+    (match) => match.group(1)!,
   );
   final normalizedFunctionTypes = withoutTrailingCommas.replaceAll(
     RegExp(r'\s+Function(?=\()'),
