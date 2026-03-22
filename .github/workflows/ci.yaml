@@ -260,7 +260,7 @@ jobs:
         with:
           cache: true
           version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
-      - run: cargo install cargo-llvm-cov --version 0.6.24 --locked
+      - run: cargo install cargo-llvm-cov --version ${{ matrix.info.version == '1.85.0' && '0.6.21' || '0.6.24' }} --locked
 
       # execute
       - run: ./frb_internal generate-run-frb-codegen-command-integrate --set-exit-if-changed --package ${{ matrix.package }} --coverage

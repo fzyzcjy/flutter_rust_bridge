@@ -315,10 +315,13 @@ Future<void> _downloadSanitizedDartBinaryArtifact({
     return;
   } on DioException catch (err) {
     final token =
-        Platform.environment['GITHUB_TOKEN'] ?? Platform.environment['GH_TOKEN'];
+        Platform.environment['GITHUB_TOKEN'] ??
+        Platform.environment['GH_TOKEN'];
     if (token == null || token.isEmpty) rethrow;
 
-    print('Public artifact download failed; retry via GitHub API asset download');
+    print(
+      'Public artifact download failed; retry via GitHub API asset download',
+    );
 
     final assetId = await _findGitHubReleaseAssetId(
       releaseName: releaseName,
