@@ -3,9 +3,7 @@ use crate::library::commands::dart_fix::dart_fix;
 use crate::library::commands::dart_format::dart_format;
 use crate::library::commands::flutter::{flutter_pub_add, flutter_pub_get};
 use crate::misc::Template;
-use crate::utils::dart_repository::{
-    get_dart_package_name, get_dart_package_name_and_rust_crate_name,
-};
+use crate::utils::dart_repository::get_dart_package_name_and_rust_crate_name;
 use crate::utils::path_utils::find_dart_package_dir;
 use anyhow::Result;
 use include_dir::{include_dir, Dir};
