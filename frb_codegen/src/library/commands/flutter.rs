@@ -24,7 +24,7 @@ pub fn flutter_create(name: &str, org: &Option<String>, template: Template) -> a
             "--template".to_owned(),
             "plugin_ffi".to_owned(),
             "--platforms".to_owned(),
-            "android,ios,linux,macos,windows".to_owned(),
+            "android,ios,linux,macos,windows,ohos".to_owned(),
         ]),
     }
 

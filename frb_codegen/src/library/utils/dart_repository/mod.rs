@@ -4,6 +4,7 @@
 //! and beware that Cargo and Dart interpret semantic versioning differently:
 //! see this [discussion](https://github.com/fzyzcjy/flutter_rust_bridge/pull/605#discussion_r935180160) for more information.
 
+use crate::misc::Template;
 use anyhow::Context;
 use serde_json::Value;
 use std::fs;
@@ -22,6 +23,31 @@ pub(crate) fn get_dart_package_name(dart_root: &Path) -> anyhow::Result<String> 
         .as_str()
         .context("cannot be str")?
         .to_owned())
+}
+
+pub(crate) fn get_rust_crate_name(
+    dart_root: &Path,
+    rust_crate_name: &Option<String>,
+    template: &Template,
+) -> anyhow::Result<String> {
+    let (_, rust_crate_name) =
+        get_dart_package_name_and_rust_crate_name(dart_root, rust_crate_name, template)?;
+    Ok(rust_crate_name)
+}
+
+pub(crate) fn get_dart_package_name_and_rust_crate_name(
+    dart_root: &Path,
+    rust_crate_name: &Option<String>,
+    template: &Template,
+) -> anyhow::Result<(String, String)> {
+    let dart_package_name = get_dart_package_name(&dart_root)?;
+    let rust_crate_name = rust_crate_name.clone().unwrap_or(match template {
+        Template::App => {
+            format!("rust_lib_{dart_package_name}")
+        }
+        Template::Plugin => dart_package_name.to_owned(),
+    });
+    Ok((dart_package_name, rust_crate_name))
 }
 
 #[cfg(test)]
