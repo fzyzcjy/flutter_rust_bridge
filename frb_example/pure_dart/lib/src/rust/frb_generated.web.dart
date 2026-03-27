@@ -4306,6 +4306,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_StreamSink_application_settings_Sse(dynamic raw);
 
   @protected
+  RustStreamSink<ChangeTwinNormal_Map_String_String>
+      dco_decode_StreamSink_change_twin_normal_map_string_string_Dco(
+          dynamic raw);
+
+  @protected
   RustStreamSink<EventTwinNormal> dco_decode_StreamSink_event_twin_normal_Dco(
       dynamic raw);
 
@@ -4575,6 +4580,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   AbcTwinSyncSse dco_decode_abc_twin_sync_sse(dynamic raw);
 
   @protected
+  AnotherBatchTwinNormalChangeMapTwinNormal
+      dco_decode_another_batch_twin_normal_change_map_twin_normal(dynamic raw);
+
+  @protected
   AnotherMacroStructTwinNormal dco_decode_another_macro_struct_twin_normal(
       dynamic raw);
 
@@ -4720,6 +4729,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   BasicStructTwinSyncSse dco_decode_basic_struct_twin_sync_sse(dynamic raw);
+
+  @protected
+  BatchTwinNormalChangeMapTwinNormal
+      dco_decode_batch_twin_normal_change_map_twin_normal(dynamic raw);
 
   @protected
   BenchmarkBinaryTreeTwinNormal dco_decode_benchmark_binary_tree_twin_normal(
@@ -4983,6 +4996,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   AbcTwinSyncSse dco_decode_box_autoadd_abc_twin_sync_sse(dynamic raw);
 
   @protected
+  AnotherBatchTwinNormalChangeMapTwinNormal
+      dco_decode_box_autoadd_another_batch_twin_normal_change_map_twin_normal(
+          dynamic raw);
+
+  @protected
   ApplicationEnv dco_decode_box_autoadd_application_env(dynamic raw);
 
   @protected
@@ -5109,6 +5127,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  BatchTwinNormalChangeMapTwinNormal
+      dco_decode_box_autoadd_batch_twin_normal_change_map_twin_normal(
+          dynamic raw);
+
+  @protected
   BenchmarkBinaryTreeTwinNormal
       dco_decode_box_autoadd_benchmark_binary_tree_twin_normal(dynamic raw);
 
@@ -5177,6 +5200,34 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   CTwinSyncSse dco_decode_box_autoadd_c_twin_sync_sse(dynamic raw);
+
+  @protected
+  ChangeMapTwinNormal dco_decode_box_autoadd_change_map_twin_normal(
+      dynamic raw);
+
+  @protected
+  ChangeStringTwinNormal dco_decode_box_autoadd_change_string_twin_normal(
+      dynamic raw);
+
+  @protected
+  ChangeStringTwinRustAsync
+      dco_decode_box_autoadd_change_string_twin_rust_async(dynamic raw);
+
+  @protected
+  ChangeStringTwinRustAsyncSse
+      dco_decode_box_autoadd_change_string_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  ChangeStringTwinSse dco_decode_box_autoadd_change_string_twin_sse(
+      dynamic raw);
+
+  @protected
+  ChangeStringTwinSync dco_decode_box_autoadd_change_string_twin_sync(
+      dynamic raw);
+
+  @protected
+  ChangeStringTwinSyncSse dco_decode_box_autoadd_change_string_twin_sync_sse(
+      dynamic raw);
 
   @protected
   ConcatenateWithTwinNormal dco_decode_box_autoadd_concatenate_with_twin_normal(
@@ -5777,6 +5828,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   MacroStruct dco_decode_box_autoadd_macro_struct(dynamic raw);
 
   @protected
+  MapChangeTwinNormal dco_decode_box_autoadd_map_change_twin_normal(
+      dynamic raw);
+
+  @protected
   MeasureTwinNormal dco_decode_box_autoadd_measure_twin_normal(dynamic raw);
 
   @protected
@@ -6158,6 +6213,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   SomeStructTwinSyncSse dco_decode_box_autoadd_some_struct_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  StringChangeTwinNormal dco_decode_box_autoadd_string_change_twin_normal(
       dynamic raw);
 
   @protected
@@ -6851,6 +6910,37 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   CTwinSyncSse dco_decode_c_twin_sync_sse(dynamic raw);
+
+  @protected
+  ChangeIgnoredTwinNormal_Map_String_String
+      dco_decode_change_ignored_twin_normal_map_string_string(dynamic raw);
+
+  @protected
+  ChangeMapTwinNormal dco_decode_change_map_twin_normal(dynamic raw);
+
+  @protected
+  ChangeStringTwinNormal dco_decode_change_string_twin_normal(dynamic raw);
+
+  @protected
+  ChangeStringTwinRustAsync dco_decode_change_string_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  ChangeStringTwinRustAsyncSse dco_decode_change_string_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  ChangeStringTwinSse dco_decode_change_string_twin_sse(dynamic raw);
+
+  @protected
+  ChangeStringTwinSync dco_decode_change_string_twin_sync(dynamic raw);
+
+  @protected
+  ChangeStringTwinSyncSse dco_decode_change_string_twin_sync_sse(dynamic raw);
+
+  @protected
+  ChangeTwinNormal_Map_String_String
+      dco_decode_change_twin_normal_map_string_string(dynamic raw);
 
   @protected
   ConcatenateWithTwinNormal dco_decode_concatenate_with_twin_normal(
@@ -7886,6 +7976,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<bool> dco_decode_list_bool(dynamic raw);
 
   @protected
+  List<ChangeIgnoredTwinNormal_Map_String_String>
+      dco_decode_list_change_ignored_twin_normal_map_string_string(dynamic raw);
+
+  @protected
   List<ElementTwinNormal> dco_decode_list_element_twin_normal(dynamic raw);
 
   @protected
@@ -8442,6 +8536,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MacroStruct dco_decode_macro_struct(dynamic raw);
+
+  @protected
+  MapChangeTwinNormal dco_decode_map_change_twin_normal(dynamic raw);
 
   @protected
   MeasureTwinNormal dco_decode_measure_twin_normal(dynamic raw);
@@ -9852,6 +9949,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   StaticOnlyTwinSyncSse dco_decode_static_only_twin_sync_sse(dynamic raw);
+
+  @protected
+  StringChangeTwinNormal dco_decode_string_change_twin_normal(dynamic raw);
 
   @protected
   StructInLowerLevel dco_decode_struct_in_lower_level(dynamic raw);
@@ -13560,6 +13660,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  RustStreamSink<ChangeTwinNormal_Map_String_String>
+      sse_decode_StreamSink_change_twin_normal_map_string_string_Dco(
+          SseDeserializer deserializer);
+
+  @protected
   RustStreamSink<EventTwinNormal> sse_decode_StreamSink_event_twin_normal_Dco(
       SseDeserializer deserializer);
 
@@ -13783,6 +13888,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   AbcTwinSyncSse sse_decode_abc_twin_sync_sse(SseDeserializer deserializer);
 
   @protected
+  AnotherBatchTwinNormalChangeMapTwinNormal
+      sse_decode_another_batch_twin_normal_change_map_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
   AnotherMacroStructTwinNormal sse_decode_another_macro_struct_twin_normal(
       SseDeserializer deserializer);
 
@@ -13951,6 +14061,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   BasicStructTwinSyncSse sse_decode_basic_struct_twin_sync_sse(
       SseDeserializer deserializer);
+
+  @protected
+  BatchTwinNormalChangeMapTwinNormal
+      sse_decode_batch_twin_normal_change_map_twin_normal(
+          SseDeserializer deserializer);
 
   @protected
   BenchmarkBinaryTreeTwinNormal sse_decode_benchmark_binary_tree_twin_normal(
@@ -14242,6 +14357,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  AnotherBatchTwinNormalChangeMapTwinNormal
+      sse_decode_box_autoadd_another_batch_twin_normal_change_map_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
   ApplicationEnv sse_decode_box_autoadd_application_env(
       SseDeserializer deserializer);
 
@@ -14389,6 +14509,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  BatchTwinNormalChangeMapTwinNormal
+      sse_decode_box_autoadd_batch_twin_normal_change_map_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
   BenchmarkBinaryTreeTwinNormal
       sse_decode_box_autoadd_benchmark_binary_tree_twin_normal(
           SseDeserializer deserializer);
@@ -14467,6 +14592,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   CTwinSyncSse sse_decode_box_autoadd_c_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  ChangeMapTwinNormal sse_decode_box_autoadd_change_map_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  ChangeStringTwinNormal sse_decode_box_autoadd_change_string_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  ChangeStringTwinRustAsync
+      sse_decode_box_autoadd_change_string_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  ChangeStringTwinRustAsyncSse
+      sse_decode_box_autoadd_change_string_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  ChangeStringTwinSse sse_decode_box_autoadd_change_string_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  ChangeStringTwinSync sse_decode_box_autoadd_change_string_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  ChangeStringTwinSyncSse sse_decode_box_autoadd_change_string_twin_sync_sse(
       SseDeserializer deserializer);
 
   @protected
@@ -15146,6 +15301,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   MacroStruct sse_decode_box_autoadd_macro_struct(SseDeserializer deserializer);
 
   @protected
+  MapChangeTwinNormal sse_decode_box_autoadd_map_change_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
   MeasureTwinNormal sse_decode_box_autoadd_measure_twin_normal(
       SseDeserializer deserializer);
 
@@ -15574,6 +15733,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   SomeStructTwinSyncSse sse_decode_box_autoadd_some_struct_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  StringChangeTwinNormal sse_decode_box_autoadd_string_change_twin_normal(
       SseDeserializer deserializer);
 
   @protected
@@ -16343,6 +16506,44 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   CTwinSyncSse sse_decode_c_twin_sync_sse(SseDeserializer deserializer);
+
+  @protected
+  ChangeIgnoredTwinNormal_Map_String_String
+      sse_decode_change_ignored_twin_normal_map_string_string(
+          SseDeserializer deserializer);
+
+  @protected
+  ChangeMapTwinNormal sse_decode_change_map_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  ChangeStringTwinNormal sse_decode_change_string_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  ChangeStringTwinRustAsync sse_decode_change_string_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  ChangeStringTwinRustAsyncSse sse_decode_change_string_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  ChangeStringTwinSse sse_decode_change_string_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  ChangeStringTwinSync sse_decode_change_string_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  ChangeStringTwinSyncSse sse_decode_change_string_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  ChangeTwinNormal_Map_String_String
+      sse_decode_change_twin_normal_map_string_string(
+          SseDeserializer deserializer);
 
   @protected
   ConcatenateWithTwinNormal sse_decode_concatenate_with_twin_normal(
@@ -17532,6 +17733,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<bool> sse_decode_list_bool(SseDeserializer deserializer);
 
   @protected
+  List<ChangeIgnoredTwinNormal_Map_String_String>
+      sse_decode_list_change_ignored_twin_normal_map_string_string(
+          SseDeserializer deserializer);
+
+  @protected
   List<ElementTwinNormal> sse_decode_list_element_twin_normal(
       SseDeserializer deserializer);
 
@@ -18175,6 +18381,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   MacroStruct sse_decode_macro_struct(SseDeserializer deserializer);
+
+  @protected
+  MapChangeTwinNormal sse_decode_map_change_twin_normal(
+      SseDeserializer deserializer);
 
   @protected
   MeasureTwinNormal sse_decode_measure_twin_normal(
@@ -19772,6 +19982,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  StringChangeTwinNormal sse_decode_string_change_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
   StructInLowerLevel sse_decode_struct_in_lower_level(
       SseDeserializer deserializer);
 
@@ -21145,6 +21359,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  String cst_encode_StreamSink_change_twin_normal_map_string_string_Dco(
+      RustStreamSink<ChangeTwinNormal_Map_String_String> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+      decodeSuccessData: dco_decode_change_twin_normal_map_string_string,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
+  }
+
+  @protected
   String cst_encode_StreamSink_event_twin_normal_Dco(
       RustStreamSink<EventTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -21446,6 +21671,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  JSAny cst_encode_another_batch_twin_normal_change_map_twin_normal(
+      AnotherBatchTwinNormalChangeMapTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_change_ignored_twin_normal_map_string_string(raw.items)]
+        .jsify()!;
+  }
+
+  @protected
   JSAny cst_encode_another_macro_struct_twin_normal(
       AnotherMacroStructTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -21663,6 +21896,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     return [
       cst_encode_opt_String(raw.apple),
       cst_encode_opt_box_autoadd_i_32(raw.orange)
+    ].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_batch_twin_normal_change_map_twin_normal(
+      BatchTwinNormalChangeMapTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [
+      cst_encode_list_change_ignored_twin_normal_map_string_string(raw.items)
     ].jsify()!;
   }
 
@@ -21944,6 +22186,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  JSAny cst_encode_box_autoadd_another_batch_twin_normal_change_map_twin_normal(
+      AnotherBatchTwinNormalChangeMapTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_another_batch_twin_normal_change_map_twin_normal(raw);
+  }
+
+  @protected
   JSAny cst_encode_box_autoadd_application_env(ApplicationEnv raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_application_env(raw);
@@ -22070,6 +22319,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  JSAny cst_encode_box_autoadd_batch_twin_normal_change_map_twin_normal(
+      BatchTwinNormalChangeMapTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_batch_twin_normal_change_map_twin_normal(raw);
+  }
+
+  @protected
   JSAny cst_encode_box_autoadd_benchmark_binary_tree_twin_normal(
       BenchmarkBinaryTreeTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -22133,6 +22389,33 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   JSAny cst_encode_box_autoadd_c_twin_sync(CTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_c_twin_sync(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_change_map_twin_normal(ChangeMapTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_change_map_twin_normal(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_change_string_twin_normal(
+      ChangeStringTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_change_string_twin_normal(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_change_string_twin_rust_async(
+      ChangeStringTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_change_string_twin_rust_async(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_change_string_twin_sync(
+      ChangeStringTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_change_string_twin_sync(raw);
   }
 
   @protected
@@ -22681,6 +22964,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  JSAny cst_encode_box_autoadd_map_change_twin_normal(MapChangeTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_map_change_twin_normal(raw);
+  }
+
+  @protected
   JSAny cst_encode_box_autoadd_measure_twin_normal(MeasureTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_measure_twin_normal(raw);
@@ -23048,6 +23337,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   JSAny cst_encode_box_autoadd_some_struct_twin_sync(SomeStructTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_some_struct_twin_sync(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_string_change_twin_normal(
+      StringChangeTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_string_change_twin_normal(raw);
   }
 
   @protected
@@ -23701,6 +23997,120 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   JSAny cst_encode_c_twin_sync(CTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_bool(raw.c)].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_change_ignored_twin_normal_map_string_string(
+      ChangeIgnoredTwinNormal_Map_String_String raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    if (raw is ChangeIgnoredTwinNormal_Map_String_String_Created) {
+      return [0, cst_encode_Map_String_String_None(raw.data)].jsify()!;
+    }
+    if (raw is ChangeIgnoredTwinNormal_Map_String_String_Updated) {
+      return [
+        1,
+        cst_encode_String(raw.id),
+        cst_encode_Map_String_String_None(raw.data)
+      ].jsify()!;
+    }
+    if (raw is ChangeIgnoredTwinNormal_Map_String_String_Deleted) {
+      return [2, cst_encode_String(raw.id)].jsify()!;
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  JSAny cst_encode_change_map_twin_normal(ChangeMapTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    if (raw is ChangeMapTwinNormal_Created) {
+      return [0, cst_encode_Map_String_String_None(raw.data)].jsify()!;
+    }
+    if (raw is ChangeMapTwinNormal_Updated) {
+      return [
+        1,
+        cst_encode_String(raw.id),
+        cst_encode_Map_String_String_None(raw.data)
+      ].jsify()!;
+    }
+    if (raw is ChangeMapTwinNormal_Deleted) {
+      return [2, cst_encode_String(raw.id)].jsify()!;
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  JSAny cst_encode_change_string_twin_normal(ChangeStringTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    if (raw is ChangeStringTwinNormal_Created) {
+      return [0, cst_encode_String(raw.data)].jsify()!;
+    }
+    if (raw is ChangeStringTwinNormal_Updated) {
+      return [1, cst_encode_String(raw.id), cst_encode_String(raw.data)]
+          .jsify()!;
+    }
+    if (raw is ChangeStringTwinNormal_Deleted) {
+      return [2, cst_encode_String(raw.id)].jsify()!;
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  JSAny cst_encode_change_string_twin_rust_async(
+      ChangeStringTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    if (raw is ChangeStringTwinRustAsync_Created) {
+      return [0, cst_encode_String(raw.data)].jsify()!;
+    }
+    if (raw is ChangeStringTwinRustAsync_Updated) {
+      return [1, cst_encode_String(raw.id), cst_encode_String(raw.data)]
+          .jsify()!;
+    }
+    if (raw is ChangeStringTwinRustAsync_Deleted) {
+      return [2, cst_encode_String(raw.id)].jsify()!;
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  JSAny cst_encode_change_string_twin_sync(ChangeStringTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    if (raw is ChangeStringTwinSync_Created) {
+      return [0, cst_encode_String(raw.data)].jsify()!;
+    }
+    if (raw is ChangeStringTwinSync_Updated) {
+      return [1, cst_encode_String(raw.id), cst_encode_String(raw.data)]
+          .jsify()!;
+    }
+    if (raw is ChangeStringTwinSync_Deleted) {
+      return [2, cst_encode_String(raw.id)].jsify()!;
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  JSAny cst_encode_change_twin_normal_map_string_string(
+      ChangeTwinNormal_Map_String_String raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    if (raw is ChangeTwinNormal_Map_String_String_Created) {
+      return [0, cst_encode_Map_String_String_None(raw.data)].jsify()!;
+    }
+    if (raw is ChangeTwinNormal_Map_String_String_Updated) {
+      return [
+        1,
+        cst_encode_String(raw.id),
+        cst_encode_Map_String_String_None(raw.data)
+      ].jsify()!;
+    }
+    if (raw is ChangeTwinNormal_Map_String_String_Deleted) {
+      return [2, cst_encode_String(raw.id)].jsify()!;
+    }
+
+    throw Exception('unreachable');
   }
 
   @protected
@@ -25447,6 +25857,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  JSAny cst_encode_list_change_ignored_twin_normal_map_string_string(
+      List<ChangeIgnoredTwinNormal_Map_String_String> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw
+        .map(cst_encode_change_ignored_twin_normal_map_string_string)
+        .toList()
+        .jsify()!;
+  }
+
+  @protected
   JSAny cst_encode_list_element_twin_normal(List<ElementTwinNormal> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_element_twin_normal).toList().jsify()!;
@@ -26205,6 +26625,26 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   JSAny cst_encode_macro_struct(MacroStruct raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_i_32(raw.data)].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_map_change_twin_normal(MapChangeTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    if (raw is MapChangeTwinNormal_Created) {
+      return [0, cst_encode_Map_String_String_None(raw.data)].jsify()!;
+    }
+    if (raw is MapChangeTwinNormal_Updated) {
+      return [
+        1,
+        cst_encode_String(raw.id),
+        cst_encode_Map_String_String_None(raw.data)
+      ].jsify()!;
+    }
+    if (raw is MapChangeTwinNormal_Deleted) {
+      return [2, cst_encode_String(raw.id)].jsify()!;
+    }
+
+    throw Exception('unreachable');
   }
 
   @protected
@@ -28086,6 +28526,23 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   JSAny cst_encode_static_only_twin_sync(StaticOnlyTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_String(raw.one)].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_string_change_twin_normal(StringChangeTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    if (raw is StringChangeTwinNormal_Created) {
+      return [0, cst_encode_String(raw.data)].jsify()!;
+    }
+    if (raw is StringChangeTwinNormal_Updated) {
+      return [1, cst_encode_String(raw.id), cst_encode_String(raw.data)]
+          .jsify()!;
+    }
+    if (raw is StringChangeTwinNormal_Deleted) {
+      return [2, cst_encode_String(raw.id)].jsify()!;
+    }
+
+    throw Exception('unreachable');
   }
 
   @protected
@@ -33405,6 +33862,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       RustStreamSink<ApplicationSettings> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_StreamSink_change_twin_normal_map_string_string_Dco(
+      RustStreamSink<ChangeTwinNormal_Map_String_String> self,
+      SseSerializer serializer);
+
+  @protected
   void sse_encode_StreamSink_event_twin_normal_Dco(
       RustStreamSink<EventTwinNormal> self, SseSerializer serializer);
 
@@ -33614,6 +34076,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       AbcTwinSyncSse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_another_batch_twin_normal_change_map_twin_normal(
+      AnotherBatchTwinNormalChangeMapTwinNormal self, SseSerializer serializer);
+
+  @protected
   void sse_encode_another_macro_struct_twin_normal(
       AnotherMacroStructTwinNormal self, SseSerializer serializer);
 
@@ -33786,6 +34252,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_basic_struct_twin_sync_sse(
       BasicStructTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_batch_twin_normal_change_map_twin_normal(
+      BatchTwinNormalChangeMapTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_benchmark_binary_tree_twin_normal(
@@ -34076,6 +34546,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       AbcTwinSyncSse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_another_batch_twin_normal_change_map_twin_normal(
+      AnotherBatchTwinNormalChangeMapTwinNormal self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_application_env(
       ApplicationEnv self, SseSerializer serializer);
 
@@ -34214,6 +34688,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       BasicStructTwinSyncSse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_batch_twin_normal_change_map_twin_normal(
+      BatchTwinNormalChangeMapTwinNormal self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_benchmark_binary_tree_twin_normal(
       BenchmarkBinaryTreeTwinNormal self, SseSerializer serializer);
 
@@ -34287,6 +34765,34 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_box_autoadd_c_twin_sync_sse(
       CTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_change_map_twin_normal(
+      ChangeMapTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_change_string_twin_normal(
+      ChangeStringTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_change_string_twin_rust_async(
+      ChangeStringTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_change_string_twin_rust_async_sse(
+      ChangeStringTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_change_string_twin_sse(
+      ChangeStringTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_change_string_twin_sync(
+      ChangeStringTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_change_string_twin_sync_sse(
+      ChangeStringTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_concatenate_with_twin_normal(
@@ -34892,6 +35398,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       MacroStruct self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_map_change_twin_normal(
+      MapChangeTwinNormal self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_measure_twin_normal(
       MeasureTwinNormal self, SseSerializer serializer);
 
@@ -35295,6 +35805,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_box_autoadd_some_struct_twin_sync_sse(
       SomeStructTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_string_change_twin_normal(
+      StringChangeTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_struct_in_lower_level(
@@ -36016,6 +36530,42 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_c_twin_sync_sse(CTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_change_ignored_twin_normal_map_string_string(
+      ChangeIgnoredTwinNormal_Map_String_String self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_change_map_twin_normal(
+      ChangeMapTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_change_string_twin_normal(
+      ChangeStringTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_change_string_twin_rust_async(
+      ChangeStringTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_change_string_twin_rust_async_sse(
+      ChangeStringTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_change_string_twin_sse(
+      ChangeStringTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_change_string_twin_sync(
+      ChangeStringTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_change_string_twin_sync_sse(
+      ChangeStringTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_change_twin_normal_map_string_string(
+      ChangeTwinNormal_Map_String_String self, SseSerializer serializer);
 
   @protected
   void sse_encode_concatenate_with_twin_normal(
@@ -37147,6 +37697,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_list_bool(List<bool> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_list_change_ignored_twin_normal_map_string_string(
+      List<ChangeIgnoredTwinNormal_Map_String_String> self,
+      SseSerializer serializer);
+
+  @protected
   void sse_encode_list_element_twin_normal(
       List<ElementTwinNormal> self, SseSerializer serializer);
 
@@ -37773,6 +38328,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_macro_struct(MacroStruct self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_map_change_twin_normal(
+      MapChangeTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_measure_twin_normal(
@@ -39284,6 +39843,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_static_only_twin_sync_sse(
       StaticOnlyTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_string_change_twin_normal(
+      StringChangeTwinNormal self, SseSerializer serializer);
 
   @protected
   void sse_encode_struct_in_lower_level(
@@ -49100,6 +49663,12 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_sync_twin_sse_moi__frb_sync_generator_test_twin_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
+  void wire__crate__api__enumeration__func_another_batch_twin_normal_change_map_twin_normal(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__enumeration__func_another_batch_twin_normal_change_map_twin_normal(
+              port_, arg);
+
   void wire__crate__api__dyn_trait__func_arg_dyn_trait_twin_normal(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
@@ -49136,6 +49705,73 @@ class RustLibWire implements BaseWire {
       wasmModule
           .wire__crate__api__pseudo_manual__async_misc_twin_sse__func_async_void_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__enumeration__func_batch_change_map_twin_normal(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__enumeration__func_batch_change_map_twin_normal(
+              port_, arg);
+
+  void wire__crate__api__enumeration__func_block_change_twin_normal(
+          NativePortType port_, JSAny arg) =>
+      wasmModule.wire__crate__api__enumeration__func_block_change_twin_normal(
+          port_, arg);
+
+  void wire__crate__api__enumeration__func_change_map_sink_twin_normal(
+          NativePortType port_, String arg) =>
+      wasmModule
+          .wire__crate__api__enumeration__func_change_map_sink_twin_normal(
+              port_, arg);
+
+  void wire__crate__api__enumeration__func_change_map_twin_normal(
+          NativePortType port_, JSAny arg) =>
+      wasmModule.wire__crate__api__enumeration__func_change_map_twin_normal(
+          port_, arg);
+
+  void wire__crate__api__enumeration__func_change_twin_normal(
+          NativePortType port_, JSAny arg) =>
+      wasmModule.wire__crate__api__enumeration__func_change_twin_normal(
+          port_, arg);
+
+  void wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_change_twin_rust_async(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_change_twin_rust_async(
+              port_, arg);
+
+  void wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__func_change_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__func_change_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__enumeration_twin_sse__func_change_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__enumeration_twin_sse__func_change_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__enumeration_twin_sync__func_change_twin_sync(
+              JSAny arg) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__enumeration_twin_sync__func_change_twin_sync(
+                  arg);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_change_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_change_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__enumeration__func_enum_simple_twin_normal(
           NativePortType port_, int arg) =>
@@ -49920,6 +50556,11 @@ class RustLibWire implements BaseWire {
   void wire__crate__api__inside_macro__func_macro_struct_twin_normal(
           NativePortType port_, JSAny arg) =>
       wasmModule.wire__crate__api__inside_macro__func_macro_struct_twin_normal(
+          port_, arg);
+
+  void wire__crate__api__enumeration__func_map_change_twin_normal(
+          NativePortType port_, JSAny arg) =>
+      wasmModule.wire__crate__api__enumeration__func_map_change_twin_normal(
           port_, arg);
 
   void wire__crate__api__exception__func_return_error_twin_normal(
@@ -69952,6 +70593,10 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
+  external void
+      wire__crate__api__enumeration__func_another_batch_twin_normal_change_map_twin_normal(
+          NativePortType port_, JSAny arg);
+
   external void wire__crate__api__dyn_trait__func_arg_dyn_trait_twin_normal(
       NativePortType port_,
       PlatformGeneralizedUint8ListPtr ptr_,
@@ -69974,6 +70619,50 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external void
       wire__crate__api__pseudo_manual__async_misc_twin_sse__func_async_void_twin_sse(
           NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__enumeration__func_batch_change_map_twin_normal(
+          NativePortType port_, JSAny arg);
+
+  external void wire__crate__api__enumeration__func_block_change_twin_normal(
+      NativePortType port_, JSAny arg);
+
+  external void wire__crate__api__enumeration__func_change_map_sink_twin_normal(
+      NativePortType port_, String arg);
+
+  external void wire__crate__api__enumeration__func_change_map_twin_normal(
+      NativePortType port_, JSAny arg);
+
+  external void wire__crate__api__enumeration__func_change_twin_normal(
+      NativePortType port_, JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_change_twin_rust_async(
+          NativePortType port_, JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__func_change_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__enumeration_twin_sse__func_change_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__enumeration_twin_sync__func_change_twin_sync(
+          JSAny arg);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_change_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
@@ -70520,6 +71209,9 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int data_len_);
 
   external void wire__crate__api__inside_macro__func_macro_struct_twin_normal(
+      NativePortType port_, JSAny arg);
+
+  external void wire__crate__api__enumeration__func_map_change_twin_normal(
       NativePortType port_, JSAny arg);
 
   external void wire__crate__api__exception__func_return_error_twin_normal(

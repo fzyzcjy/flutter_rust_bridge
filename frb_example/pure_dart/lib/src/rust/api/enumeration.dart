@@ -11,7 +11,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'enumeration.freezed.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
+// These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `AnotherBatchTwinNormal`, `BatchTwinNormal`, `ChangeIgnoredTwinNormal`, `ChangeTwinNormal`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
 
 Future<EnumSimpleTwinNormal> funcEnumSimpleTwinNormal(
         {required EnumSimpleTwinNormal arg}) =>
@@ -37,6 +38,37 @@ Future<EnumWithDiscriminantTwinNormal> funcEnumWithDiscriminantTwinNormal(
     RustLib.instance.api
         .crateApiEnumerationFuncEnumWithDiscriminantTwinNormal(arg: arg);
 
+Future<ChangeStringTwinNormal> funcChangeTwinNormal(
+        {required ChangeStringTwinNormal arg}) =>
+    RustLib.instance.api.crateApiEnumerationFuncChangeTwinNormal(arg: arg);
+
+Future<ChangeMapTwinNormal> funcChangeMapTwinNormal(
+        {required ChangeMapTwinNormal arg}) =>
+    RustLib.instance.api.crateApiEnumerationFuncChangeMapTwinNormal(arg: arg);
+
+Stream<ChangeTwinNormal_Map_String_String> funcChangeMapSinkTwinNormal() =>
+    RustLib.instance.api.crateApiEnumerationFuncChangeMapSinkTwinNormal();
+
+Future<StringChangeTwinNormal> funcBlockChangeTwinNormal(
+        {required StringChangeTwinNormal arg}) =>
+    RustLib.instance.api.crateApiEnumerationFuncBlockChangeTwinNormal(arg: arg);
+
+Future<MapChangeTwinNormal> funcMapChangeTwinNormal(
+        {required MapChangeTwinNormal arg}) =>
+    RustLib.instance.api.crateApiEnumerationFuncMapChangeTwinNormal(arg: arg);
+
+Future<BatchTwinNormalChangeMapTwinNormal> funcBatchChangeMapTwinNormal(
+        {required BatchTwinNormalChangeMapTwinNormal arg}) =>
+    RustLib.instance.api
+        .crateApiEnumerationFuncBatchChangeMapTwinNormal(arg: arg);
+
+Future<AnotherBatchTwinNormalChangeMapTwinNormal>
+    funcAnotherBatchTwinNormalChangeMapTwinNormal(
+            {required AnotherBatchTwinNormalChangeMapTwinNormal arg}) =>
+        RustLib.instance.api
+            .crateApiEnumerationFuncAnotherBatchTwinNormalChangeMapTwinNormal(
+                arg: arg);
+
 Future<Uint8List> printNoteTwinNormal({required NoteTwinNormal note}) =>
     RustLib.instance.api.crateApiEnumerationPrintNoteTwinNormal(note: note);
 
@@ -59,6 +91,108 @@ Future<KitchenSinkTwinNormal> handleEnumStructTwinNormal(
         {required KitchenSinkTwinNormal val}) =>
     RustLib.instance.api
         .crateApiEnumerationHandleEnumStructTwinNormal(val: val);
+
+class AnotherBatchTwinNormalChangeMapTwinNormal {
+  final ChangeIgnoredTwinNormal_Map_String_String items;
+
+  const AnotherBatchTwinNormalChangeMapTwinNormal({
+    required this.items,
+  });
+
+  @override
+  int get hashCode => items.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AnotherBatchTwinNormalChangeMapTwinNormal &&
+          runtimeType == other.runtimeType &&
+          items == other.items;
+}
+
+class BatchTwinNormalChangeMapTwinNormal {
+  final List<ChangeIgnoredTwinNormal_Map_String_String> items;
+
+  const BatchTwinNormalChangeMapTwinNormal({
+    required this.items,
+  });
+
+  @override
+  int get hashCode => items.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BatchTwinNormalChangeMapTwinNormal &&
+          runtimeType == other.runtimeType &&
+          items == other.items;
+}
+
+@freezed
+sealed class ChangeIgnoredTwinNormal_Map_String_String
+    with _$ChangeIgnoredTwinNormal_Map_String_String {
+  const ChangeIgnoredTwinNormal_Map_String_String._();
+
+  const factory ChangeIgnoredTwinNormal_Map_String_String.created({
+    required Map<String, String> data,
+  }) = ChangeIgnoredTwinNormal_Map_String_String_Created;
+  const factory ChangeIgnoredTwinNormal_Map_String_String.updated({
+    required String id,
+    required Map<String, String> data,
+  }) = ChangeIgnoredTwinNormal_Map_String_String_Updated;
+  const factory ChangeIgnoredTwinNormal_Map_String_String.deleted({
+    required String id,
+  }) = ChangeIgnoredTwinNormal_Map_String_String_Deleted;
+}
+
+@freezed
+sealed class ChangeMapTwinNormal with _$ChangeMapTwinNormal {
+  const ChangeMapTwinNormal._();
+
+  const factory ChangeMapTwinNormal.created({
+    required Map<String, String> data,
+  }) = ChangeMapTwinNormal_Created;
+  const factory ChangeMapTwinNormal.updated({
+    required String id,
+    required Map<String, String> data,
+  }) = ChangeMapTwinNormal_Updated;
+  const factory ChangeMapTwinNormal.deleted({
+    required String id,
+  }) = ChangeMapTwinNormal_Deleted;
+}
+
+@freezed
+sealed class ChangeStringTwinNormal with _$ChangeStringTwinNormal {
+  const ChangeStringTwinNormal._();
+
+  const factory ChangeStringTwinNormal.created({
+    required String data,
+  }) = ChangeStringTwinNormal_Created;
+  const factory ChangeStringTwinNormal.updated({
+    required String id,
+    required String data,
+  }) = ChangeStringTwinNormal_Updated;
+  const factory ChangeStringTwinNormal.deleted({
+    required String id,
+  }) = ChangeStringTwinNormal_Deleted;
+}
+
+@freezed
+sealed class ChangeTwinNormal_Map_String_String
+    with _$ChangeTwinNormal_Map_String_String {
+  const ChangeTwinNormal_Map_String_String._();
+
+  const factory ChangeTwinNormal_Map_String_String.created({
+    required Map<String, String> data,
+  }) = ChangeTwinNormal_Map_String_String_Created;
+  const factory ChangeTwinNormal_Map_String_String.updated({
+    required String id,
+    required Map<String, String> data,
+  }) = ChangeTwinNormal_Map_String_String_Updated;
+  const factory ChangeTwinNormal_Map_String_String.deleted({
+    required String id,
+  }) = ChangeTwinNormal_Map_String_String_Deleted;
+}
 
 @freezed
 sealed class DistanceTwinNormal with _$DistanceTwinNormal {
@@ -149,6 +283,22 @@ sealed class KitchenSinkTwinNormal with _$KitchenSinkTwinNormal {
 }
 
 @freezed
+sealed class MapChangeTwinNormal with _$MapChangeTwinNormal {
+  const MapChangeTwinNormal._();
+
+  const factory MapChangeTwinNormal.created({
+    required Map<String, String> data,
+  }) = MapChangeTwinNormal_Created;
+  const factory MapChangeTwinNormal.updated({
+    required String id,
+    required Map<String, String> data,
+  }) = MapChangeTwinNormal_Updated;
+  const factory MapChangeTwinNormal.deleted({
+    required String id,
+  }) = MapChangeTwinNormal_Deleted;
+}
+
+@freezed
 sealed class MeasureTwinNormal with _$MeasureTwinNormal {
   const MeasureTwinNormal._();
 
@@ -189,4 +339,20 @@ sealed class SpeedTwinNormal with _$SpeedTwinNormal {
   const factory SpeedTwinNormal.gps(
     double field0,
   ) = SpeedTwinNormal_GPS;
+}
+
+@freezed
+sealed class StringChangeTwinNormal with _$StringChangeTwinNormal {
+  const StringChangeTwinNormal._();
+
+  const factory StringChangeTwinNormal.created({
+    required String data,
+  }) = StringChangeTwinNormal_Created;
+  const factory StringChangeTwinNormal.updated({
+    required String id,
+    required String data,
+  }) = StringChangeTwinNormal_Updated;
+  const factory StringChangeTwinNormal.deleted({
+    required String id,
+  }) = StringChangeTwinNormal_Deleted;
 }
