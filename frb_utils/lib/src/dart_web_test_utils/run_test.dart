@@ -136,7 +136,7 @@ String _findProxyFromEnvironment(Uri uri, Map<String, String>? environment) {
     return 'DIRECT';
   }
 
-  return HttpClient.findProxyFromEnvironment(uri, environment);
+  return HttpClient.findProxyFromEnvironment(uri, environment: environment);
 }
 
 Map<String, String> _browserEnvironment() {
