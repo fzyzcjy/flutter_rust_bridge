@@ -6,6 +6,7 @@ import 'dart:io';
 import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:glob/glob.dart';
 import 'package:glob/list_local_fs.dart';
@@ -71,7 +72,10 @@ Future<void> benchMerge() async {
 const _kPackage = 'frb_example/pure_dart';
 
 Future<void> _dartBuild() async {
-  await exec('cargo build --release', relativePwd: '$_kPackage/rust');
+  final rustFeatures = getRustFeaturesOfPackage(_kPackage);
+  await exec(
+      'cargo build --release ${rustFeatures != null ? "--features $rustFeatures" : ""}',
+      relativePwd: '$_kPackage/rust');
   await exec('mkdir -p build/simple_benchmark', relativePwd: _kPackage);
   await exec(
       'dart compile exe benchmark/simple_benchmark.dart -o build/simple_benchmark/simple_benchmark.exe',
