@@ -88,10 +88,8 @@ final _kIgnoreLineRegex = RegExp(
 );
 
 @visibleForTesting
-bool shouldKeepLine(
-  String line, {
-  bool isFormatCallNoise = false,
-}) => !isFormatCallNoise && !_kIgnoreLineRegex.hasMatch(line);
+bool shouldKeepLine(String line, {bool isFormatCallNoise = false}) =>
+    !isFormatCallNoise && !_kIgnoreLineRegex.hasMatch(line);
 
 @visibleForTesting
 Set<int> computeFormatCallNoiseLines(List<String> fileLines) {

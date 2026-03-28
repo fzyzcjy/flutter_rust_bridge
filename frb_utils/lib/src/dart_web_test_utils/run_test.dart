@@ -25,9 +25,8 @@ Future<void> executeTestWeb(TestWebConfig config) async {
   final webRoot = '$dartRoot/web';
   print('executeTestWeb: Pick dartRoot=$dartRoot');
 
-  List<String> cargoArgs = config.rustFeatures
-      .expand((x) => ['--features', x])
-      .toList();
+  List<String> cargoArgs =
+      config.rustFeatures.expand((x) => ['--features', x]).toList();
 
   print('executeTestWeb: compile');
   await executeBuildWeb(
@@ -94,14 +93,14 @@ Handler _createWebSocketHandler({
 const _kTestEntrypointHttpName = 'test_entrypoint.html';
 
 Handler _createIndexFileHandler() => (request) {
-  if (request.url.path == _kTestEntrypointHttpName) {
-    return Response.ok(
-      kTestEntrypointHtmlContent,
-      headers: {HttpHeaders.contentTypeHeader: 'text/html'},
-    );
-  }
-  return Response.notFound(null);
-};
+      if (request.url.path == _kTestEntrypointHttpName) {
+        return Response.ok(
+          kTestEntrypointHtmlContent,
+          headers: {HttpHeaders.contentTypeHeader: 'text/html'},
+        );
+      }
+      return Response.notFound(null);
+    };
 
 Future<Browser> _launchBrowser({
   required String baseAddr,

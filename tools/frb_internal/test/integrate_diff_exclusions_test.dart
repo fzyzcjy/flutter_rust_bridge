@@ -13,9 +13,7 @@ void main() {
 
   test('integrate extra args are explicit for flutter_via_integrate', () {
     expect(
-      integrateDiffExclusionArgsForTesting(
-        'frb_example/flutter_via_integrate',
-      ),
+      integrateDiffExclusionArgsForTesting('frb_example/flutter_via_integrate'),
       "':(exclude)frb_example/flutter_via_integrate/macos/Flutter/Flutter-Debug.xcconfig' "
       "':(exclude)frb_example/flutter_via_integrate/macos/Flutter/Flutter-Release.xcconfig' "
       "':(exclude)frb_example/flutter_via_integrate/rust/Cargo.lock'",
@@ -32,6 +30,9 @@ void main() {
   });
 
   test('integrate extra args are empty for unrelated package', () {
-    expect(integrateDiffExclusionArgsForTesting('frb_example/gallery'), isEmpty);
+    expect(
+      integrateDiffExclusionArgsForTesting('frb_example/gallery'),
+      isEmpty,
+    );
   });
 }

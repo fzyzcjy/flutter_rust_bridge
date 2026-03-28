@@ -27,243 +27,290 @@ void main() {
     expect(shouldKeepLine('   };'), false);
   });
 
-  test('computeFormatCallNoiseLines detects format call body by matching parentheses', () {
-    final fileLines = [
-      'let maybe_deref_mut_code = if rw == ReadWrite::Write {',
-      '    format!(',
-      '        "',
-      "        impl std::ops::DerefMut for {enum_name}<'_> {{",
-      '            fn deref_mut(&mut self) -> &mut Self::Target {',
-      '                {body}',
-      '            }',
-      '        }',
-      '        "',
-      '    )',
-      '} else {',
-      '    "".to_owned()',
-      '};',
-    ];
+  test(
+    'computeFormatCallNoiseLines detects format call body by matching parentheses',
+    () {
+      final fileLines = [
+        'let maybe_deref_mut_code = if rw == ReadWrite::Write {',
+        '    format!(',
+        '        "',
+        "        impl std::ops::DerefMut for {enum_name}<'_> {{",
+        '            fn deref_mut(&mut self) -> &mut Self::Target {',
+        '                {body}',
+        '            }',
+        '        }',
+        '        "',
+        '    )',
+        '} else {',
+        '    "".to_owned()',
+        '};',
+      ];
 
-    expect(computeFormatCallNoiseLines(fileLines), {2, 3, 4, 5, 6, 7, 8, 9, 10});
-  });
+      expect(computeFormatCallNoiseLines(fileLines), {
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+      });
+    },
+  );
 
-  test('transformCodecovFileCoverageForTest ignores uncovered format call body', () {
-    final fileLines = [
-      'let maybe_deref_mut_code = if rw == ReadWrite::Write {',
-      '    format!(',
-      '        "',
-      "        impl std::ops::DerefMut for {enum_name}<'_> {{",
-      '            fn deref_mut(&mut self) -> &mut Self::Target {',
-      '                {body}',
-      '            }',
-      '        }',
-      '        "',
-      '    )',
-      '} else {',
-      '    "".to_owned()',
-      '};',
-    ];
-    final transformed = transformCodecovFileCoverageForTest(fileLines, {
-      '1': 0,
-      '2': 0,
-      '3': 0,
-      '4': 0,
-      '5': 0,
-      '6': 0,
-      '7': 0,
-      '8': 0,
-      '9': 0,
-      '10': 0,
-      '11': 0,
-      '12': 0,
-      '13': 0,
-    });
+  test(
+    'transformCodecovFileCoverageForTest ignores uncovered format call body',
+    () {
+      final fileLines = [
+        'let maybe_deref_mut_code = if rw == ReadWrite::Write {',
+        '    format!(',
+        '        "',
+        "        impl std::ops::DerefMut for {enum_name}<'_> {{",
+        '            fn deref_mut(&mut self) -> &mut Self::Target {',
+        '                {body}',
+        '            }',
+        '        }',
+        '        "',
+        '    )',
+        '} else {',
+        '    "".to_owned()',
+        '};',
+      ];
+      final transformed = transformCodecovFileCoverageForTest(fileLines, {
+        '1': 0,
+        '2': 0,
+        '3': 0,
+        '4': 0,
+        '5': 0,
+        '6': 0,
+        '7': 0,
+        '8': 0,
+        '9': 0,
+        '10': 0,
+        '11': 0,
+        '12': 0,
+        '13': 0,
+      });
 
-    expect(transformed['1'], 0);
-    expect(transformed['2'], null);
-    expect(transformed['3'], null);
-    expect(transformed['4'], null);
-    expect(transformed['5'], null);
-    expect(transformed['6'], null);
-    expect(transformed['7'], null);
-    expect(transformed['8'], null);
-    expect(transformed['9'], null);
-    expect(transformed['10'], null);
-    expect(transformed['11'], 0);
-    expect(transformed['12'], 0);
-    expect(transformed['13'], null);
-  });
+      expect(transformed['1'], 0);
+      expect(transformed['2'], null);
+      expect(transformed['3'], null);
+      expect(transformed['4'], null);
+      expect(transformed['5'], null);
+      expect(transformed['6'], null);
+      expect(transformed['7'], null);
+      expect(transformed['8'], null);
+      expect(transformed['9'], null);
+      expect(transformed['10'], null);
+      expect(transformed['11'], 0);
+      expect(transformed['12'], 0);
+      expect(transformed['13'], null);
+    },
+  );
 
-  test('computeFormatCallNoiseLines does not ignore ordinary multiline strings', () {
-    final fileLines = [
-      'let sql = "',
-      'SELECT *',
-      'FROM demo',
-      '";',
-    ];
+  test(
+    'computeFormatCallNoiseLines does not ignore ordinary multiline strings',
+    () {
+      final fileLines = ['let sql = "', 'SELECT *', 'FROM demo', '";'];
 
-    expect(computeFormatCallNoiseLines(fileLines), isEmpty);
-  });
+      expect(computeFormatCallNoiseLines(fileLines), isEmpty);
+    },
+  );
 
-  test('computeFormatCallNoiseLines handles nested parentheses inside format call', () {
-    final fileLines = [
-      'let content = format!(',
-      '    "{} {}",',
-      '    compute_name(foo(bar)),',
-      '    other_call(),',
-      ');',
-    ];
+  test(
+    'computeFormatCallNoiseLines handles nested parentheses inside format call',
+    () {
+      final fileLines = [
+        'let content = format!(',
+        '    "{} {}",',
+        '    compute_name(foo(bar)),',
+        '    other_call(),',
+        ');',
+      ];
 
-    expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4, 5});
-  });
+      expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4, 5});
+    },
+  );
 
-  test('computeFormatCallNoiseLines ignores single-line format call on one line', () {
-    final fileLines = [
-      'let content = format!("hello {}", name);',
-      'let untouched = 1;',
-    ];
+  test(
+    'computeFormatCallNoiseLines ignores single-line format call on one line',
+    () {
+      final fileLines = [
+        'let content = format!("hello {}", name);',
+        'let untouched = 1;',
+      ];
 
-    expect(computeFormatCallNoiseLines(fileLines), {1});
-  });
+      expect(computeFormatCallNoiseLines(fileLines), {1});
+    },
+  );
 
-  test('computeFormatCallNoiseLines ignores multiple format calls in one file', () {
-    final fileLines = [
-      'let first = format!(',
-      '    "{} {}",',
-      '    one,',
-      '    two,',
-      ');',
-      'let keep = do_work();',
-      'let second = format!("value={}", three);',
-    ];
+  test(
+    'computeFormatCallNoiseLines ignores multiple format calls in one file',
+    () {
+      final fileLines = [
+        'let first = format!(',
+        '    "{} {}",',
+        '    one,',
+        '    two,',
+        ');',
+        'let keep = do_work();',
+        'let second = format!("value={}", three);',
+      ];
 
-    expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4, 5, 7});
-  });
+      expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4, 5, 7});
+    },
+  );
 
-  test('computeFormatCallNoiseLines ignores format call with escaped quotes in strings', () {
-    final fileLines = [
-      'let content = format!(',
-      r'    "say \"hello\" to {}",',
-      '    name,',
-      ');',
-    ];
+  test(
+    'computeFormatCallNoiseLines ignores format call with escaped quotes in strings',
+    () {
+      final fileLines = [
+        'let content = format!(',
+        r'    "say \"hello\" to {}",',
+        '    name,',
+        ');',
+      ];
 
-    expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4});
-  });
+      expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4});
+    },
+  );
 
-  test('computeFormatCallNoiseLines ignores nested format call inside format arguments', () {
-    final fileLines = [
-      'let content = format!(',
-      '    "{} {}",',
-      '    format!("inner {}", value),',
-      '    other,',
-      ');',
-    ];
+  test(
+    'computeFormatCallNoiseLines ignores nested format call inside format arguments',
+    () {
+      final fileLines = [
+        'let content = format!(',
+        '    "{} {}",',
+        '    format!("inner {}", value),',
+        '    other,',
+        ');',
+      ];
 
-    expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4, 5});
-  });
+      expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4, 5});
+    },
+  );
 
-  test('computeFormatCallNoiseLines ignores format call when opening parenthesis is on next line', () {
-    final fileLines = [
-      'let content = format!',
-      '(',
-      '    "{} {}",',
-      '    one,',
-      '    two,',
-      ');',
-    ];
+  test(
+    'computeFormatCallNoiseLines ignores format call when opening parenthesis is on next line',
+    () {
+      final fileLines = [
+        'let content = format!',
+        '(',
+        '    "{} {}",',
+        '    one,',
+        '    two,',
+        ');',
+      ];
 
-    expect(computeFormatCallNoiseLines(fileLines), {2, 3, 4, 5, 6});
-  });
+      expect(computeFormatCallNoiseLines(fileLines), {2, 3, 4, 5, 6});
+    },
+  );
 
   test('computeFormatCallNoiseLines does not match format inside comments', () {
-    final fileLines = [
-      '// format!("hello {}", name)',
-      'let untouched = 1;',
-    ];
+    final fileLines = ['// format!("hello {}", name)', 'let untouched = 1;'];
 
     expect(computeFormatCallNoiseLines(fileLines), isEmpty);
   });
 
-  test('computeFormatCallNoiseLines does not match format inside ordinary strings', () {
-    final fileLines = [
-      'let text = "call format!(\\"hello {}\\", name) later";',
-      'let untouched = 1;',
-    ];
+  test(
+    'computeFormatCallNoiseLines does not match format inside ordinary strings',
+    () {
+      final fileLines = [
+        'let text = "call format!(\\"hello {}\\", name) later";',
+        'let untouched = 1;',
+      ];
 
-    expect(computeFormatCallNoiseLines(fileLines), isEmpty);
-  });
+      expect(computeFormatCallNoiseLines(fileLines), isEmpty);
+    },
+  );
 
-  test('computeFormatCallNoiseLines ignores misleading format text and unmatched parentheses inside format strings', () {
-    final fileLines = [
-      'let content = format!(',
-      r'    "literal format!( not a call, stray ) ( braces {} and text",',
-      '    value,',
-      ');',
-      'let untouched = 1;',
-    ];
+  test(
+    'computeFormatCallNoiseLines ignores misleading format text and unmatched parentheses inside format strings',
+    () {
+      final fileLines = [
+        'let content = format!(',
+        r'    "literal format!( not a call, stray ) ( braces {} and text",',
+        '    value,',
+        ');',
+        'let untouched = 1;',
+      ];
 
-    expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4});
-  });
+      expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4});
+    },
+  );
 
-  test('computeFormatCallNoiseLines ignores multiline template text containing format markers and stray parentheses', () {
-    final fileLines = [
-      'let content = format!(',
-      '    "',
-      '    here is text: format!( definitely not real',
-      '    and unmatched ) ( inside generated code text',
-      '    still same template block',
-      '    ",',
-      '    value,',
-      ');',
-    ];
+  test(
+    'computeFormatCallNoiseLines ignores multiline template text containing format markers and stray parentheses',
+    () {
+      final fileLines = [
+        'let content = format!(',
+        '    "',
+        '    here is text: format!( definitely not real',
+        '    and unmatched ) ( inside generated code text',
+        '    still same template block',
+        '    ",',
+        '    value,',
+        ');',
+      ];
 
-    expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4, 5, 6, 7, 8});
-  });
+      expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4, 5, 6, 7, 8});
+    },
+  );
 
-  test('computeFormatCallNoiseLines ignores line comments that mention format and unmatched parentheses inside string args', () {
-    final fileLines = [
-      'let content = format!(',
-      r'    "value // format!( not code ) ( {}",',
-      '    value, // comment says format!( )(',
-      ');',
-    ];
+  test(
+    'computeFormatCallNoiseLines ignores line comments that mention format and unmatched parentheses inside string args',
+    () {
+      final fileLines = [
+        'let content = format!(',
+        r'    "value // format!( not code ) ( {}",',
+        '    value, // comment says format!( )(',
+        ');',
+      ];
 
-    expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4});
-  });
+      expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4});
+    },
+  );
 
-  test('computeFormatCallNoiseLines stops at line comments inside format call', () {
-    final fileLines = [
-      'let content = format!(',
-      '    "{} {}", // comment with ) and format!(',
-      '    one,',
-      '    two,',
-      ');',
-    ];
+  test(
+    'computeFormatCallNoiseLines stops at line comments inside format call',
+    () {
+      final fileLines = [
+        'let content = format!(',
+        '    "{} {}", // comment with ) and format!(',
+        '    one,',
+        '    two,',
+        ');',
+      ];
 
-    expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4, 5});
-  });
+      expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4, 5});
+    },
+  );
 
-  test('transformCodecovFileCoverageForTest preserves hit lines even inside format call', () {
-    final fileLines = [
-      'let content = format!(',
-      '    "{} {}",',
-      '    one,',
-      '    two,',
-      ');',
-    ];
-    final transformed = transformCodecovFileCoverageForTest(fileLines, {
-      '1': 0,
-      '2': 3,
-      '3': 0,
-      '4': 0,
-      '5': 0,
-    });
+  test(
+    'transformCodecovFileCoverageForTest preserves hit lines even inside format call',
+    () {
+      final fileLines = [
+        'let content = format!(',
+        '    "{} {}",',
+        '    one,',
+        '    two,',
+        ');',
+      ];
+      final transformed = transformCodecovFileCoverageForTest(fileLines, {
+        '1': 0,
+        '2': 3,
+        '3': 0,
+        '4': 0,
+        '5': 0,
+      });
 
-    expect(transformed['1'], null);
-    expect(transformed['2'], 3);
-    expect(transformed['3'], null);
-    expect(transformed['4'], null);
-    expect(transformed['5'], null);
-  });
+      expect(transformed['1'], null);
+      expect(transformed['2'], 3);
+      expect(transformed['3'], null);
+      expect(transformed['4'], null);
+      expect(transformed['5'], null);
+    },
+  );
 }
