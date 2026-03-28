@@ -287,7 +287,9 @@ Future<void> callFileEntrypoints() async {
   await misc_type_twin_sync_test.main(skipRustLibInit: true);
   await newtype_pattern_twin_rust_async_test.main(skipRustLibInit: true);
   await newtype_pattern_twin_sync_test.main(skipRustLibInit: true);
-  await optional_primitive_misc_twin_rust_async_test.main(skipRustLibInit: true);
+  await optional_primitive_misc_twin_rust_async_test.main(
+    skipRustLibInit: true,
+  );
   await optional_primitive_misc_twin_sync_test.main(skipRustLibInit: true);
   await optional_twin_rust_async_test.main(skipRustLibInit: true);
   await optional_twin_sync_test.main(skipRustLibInit: true);
