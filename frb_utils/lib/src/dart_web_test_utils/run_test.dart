@@ -93,14 +93,14 @@ Handler _createWebSocketHandler({
 const _kTestEntrypointHttpName = 'test_entrypoint.html';
 
 Handler _createIndexFileHandler() => (request) {
-      if (request.url.path == _kTestEntrypointHttpName) {
-        return Response.ok(
-          kTestEntrypointHtmlContent,
-          headers: {HttpHeaders.contentTypeHeader: 'text/html'},
-        );
-      }
-      return Response.notFound(null);
-    };
+  if (request.url.path == _kTestEntrypointHttpName) {
+    return Response.ok(
+      kTestEntrypointHtmlContent,
+      headers: {HttpHeaders.contentTypeHeader: 'text/html'},
+    );
+  }
+  return Response.notFound(null);
+};
 
 Future<Browser> _launchBrowser({
   required String baseAddr,
@@ -116,18 +116,21 @@ Future<Browser> _launchBrowser({
   // Check if running in Docker/container environment (no sandbox needed)
   final isInContainer = File('/.dockerenv').existsSync();
 
-  return await HttpOverrides.runZoned(() async {
-    final browser = await puppeteer.launch(
-      headless: headless,
-      timeout: const Duration(minutes: 5),
-      args: isInContainer ? ['--no-sandbox', '--disable-setuid-sandbox'] : [],
-      environment: _browserEnvironment(),
-    );
-    final page = await browser.newPage();
-    _configurePageLogging(page);
-    await page.goto('$baseAddr/$_kTestEntrypointHttpName');
-    return browser;
-  }, findProxyFromEnvironment: _findProxyFromEnvironment);
+  return await HttpOverrides.runZoned(
+    () async {
+      final browser = await puppeteer.launch(
+        headless: headless,
+        timeout: const Duration(minutes: 5),
+        args: isInContainer ? ['--no-sandbox', '--disable-setuid-sandbox'] : [],
+        environment: _browserEnvironment(),
+      );
+      final page = await browser.newPage();
+      _configurePageLogging(page);
+      await page.goto('$baseAddr/$_kTestEntrypointHttpName');
+      return browser;
+    },
+    findProxyFromEnvironment: _findProxyFromEnvironment,
+  );
 }
 
 String _findProxyFromEnvironment(Uri uri, Map<String, String>? environment) {
@@ -226,7 +229,9 @@ String _proxyDirectiveFromValue(String value) {
   final uri = Uri.tryParse(value);
   if (uri != null && uri.host.isNotEmpty) {
     final port = uri.hasPort ? ':${uri.port}' : '';
-    final directive = uri.scheme.toLowerCase().startsWith('socks') ? 'SOCKS' : 'PROXY';
+    final directive = uri.scheme.toLowerCase().startsWith('socks')
+        ? 'SOCKS'
+        : 'PROXY';
     return '$directive ${uri.host}$port';
   }
 
