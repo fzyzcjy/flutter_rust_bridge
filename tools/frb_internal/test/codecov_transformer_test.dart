@@ -194,6 +194,44 @@ void main() {
     expect(computeFormatCallNoiseLines(fileLines), isEmpty);
   });
 
+  test('computeFormatCallNoiseLines ignores misleading format text and unmatched parentheses inside format strings', () {
+    final fileLines = [
+      'let content = format!(',
+      r'    "literal format!( not a call, stray ) ( braces {} and text",',
+      '    value,',
+      ');',
+      'let untouched = 1;',
+    ];
+
+    expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4});
+  });
+
+  test('computeFormatCallNoiseLines ignores multiline template text containing format markers and stray parentheses', () {
+    final fileLines = [
+      'let content = format!(',
+      '    "',
+      '    here is text: format!( definitely not real',
+      '    and unmatched ) ( inside generated code text',
+      '    still same template block',
+      '    ",',
+      '    value,',
+      ');',
+    ];
+
+    expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4, 5, 6, 7, 8});
+  });
+
+  test('computeFormatCallNoiseLines ignores line comments that mention format and unmatched parentheses inside string args', () {
+    final fileLines = [
+      'let content = format!(',
+      r'    "value // format!( not code ) ( {}",',
+      '    value, // comment says format!( )(',
+      ');',
+    ];
+
+    expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4});
+  });
+
   test('computeFormatCallNoiseLines stops at line comments inside format call', () {
     final fileLines = [
       'let content = format!(',
