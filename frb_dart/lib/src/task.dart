@@ -33,9 +33,9 @@ abstract class BaseTask<S, E extends Object, WireSyncType> {
 
   /// Arguments to be passed into the function call, provided in the format of a [Map]
   Map<String, dynamic> get argMap => Map.fromEntries([
-        for (var i = 0; i < constMeta.argNames.length; ++i)
-          MapEntry(constMeta.argNames[i], argValues[i]),
-      ]);
+    for (var i = 0; i < constMeta.argNames.length; ++i)
+      MapEntry(constMeta.argNames[i], argValues[i]),
+  ]);
 }
 
 /// A task to call FFI function.

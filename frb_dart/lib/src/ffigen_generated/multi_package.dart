@@ -12,11 +12,11 @@ import 'dart:ffi' as ffi;
 class MultiPackageCBinding {
   /// Holds the symbol lookup function.
   final ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName)
-      _lookup;
+  _lookup;
 
   /// The symbols are looked up in [dynamicLibrary].
   MultiPackageCBinding(ffi.DynamicLibrary dynamicLibrary)
-      : _lookup = dynamicLibrary.lookup;
+    : _lookup = dynamicLibrary.lookup;
 
   /// The symbols are looked up with [lookup].
   MultiPackageCBinding.fromLookup(
@@ -48,12 +48,16 @@ class MultiPackageCBinding {
     return _Dart_PostCObject(port_id, message);
   }
 
-  late final _Dart_PostCObjectPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Bool Function(
-              Dart_Port, ffi.Pointer<Dart_CObject>)>>('Dart_PostCObject');
-  late final _Dart_PostCObject = _Dart_PostCObjectPtr.asFunction<
-      bool Function(int, ffi.Pointer<Dart_CObject>)>();
+  late final _Dart_PostCObjectPtr =
+      _lookup<
+        ffi.NativeFunction<
+          ffi.Bool Function(Dart_Port, ffi.Pointer<Dart_CObject>)
+        >
+      >('Dart_PostCObject');
+  late final _Dart_PostCObject =
+      _Dart_PostCObjectPtr.asFunction<
+        bool Function(int, ffi.Pointer<Dart_CObject>)
+      >();
 
   /// Posts a message on some port. The message will contain the integer 'message'.
   ///
@@ -67,8 +71,8 @@ class MultiPackageCBinding {
 
   late final _Dart_PostIntegerPtr =
       _lookup<ffi.NativeFunction<ffi.Bool Function(Dart_Port, ffi.Int64)>>(
-    'Dart_PostInteger',
-  );
+        'Dart_PostInteger',
+      );
   late final _Dart_PostInteger =
       _Dart_PostIntegerPtr.asFunction<bool Function(int, int)>();
 
@@ -91,15 +95,20 @@ class MultiPackageCBinding {
     return _Dart_NewNativePort(name, handler, handle_concurrently);
   }
 
-  late final _Dart_NewNativePortPtr = _lookup<
-      ffi.NativeFunction<
+  late final _Dart_NewNativePortPtr =
+      _lookup<
+        ffi.NativeFunction<
           Dart_Port Function(
             ffi.Pointer<ffi.Char>,
             Dart_NativeMessageHandler,
             ffi.Bool,
-          )>>('Dart_NewNativePort');
-  late final _Dart_NewNativePort = _Dart_NewNativePortPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Char>, Dart_NativeMessageHandler, bool)>();
+          )
+        >
+      >('Dart_NewNativePort');
+  late final _Dart_NewNativePort =
+      _Dart_NewNativePortPtr.asFunction<
+        int Function(ffi.Pointer<ffi.Char>, Dart_NativeMessageHandler, bool)
+      >();
 
   /// Creates a new native port.  When messages are received on this
   /// native port, then they will be dispatched to the provided native
@@ -119,17 +128,20 @@ class MultiPackageCBinding {
     return _Dart_NewConcurrentNativePort(name, handler, max_concurrency);
   }
 
-  late final _Dart_NewConcurrentNativePortPtr = _lookup<
-      ffi.NativeFunction<
+  late final _Dart_NewConcurrentNativePortPtr =
+      _lookup<
+        ffi.NativeFunction<
           Dart_Port Function(
             ffi.Pointer<ffi.Char>,
             Dart_NativeMessageHandler,
             ffi.IntPtr,
-          )>>('Dart_NewConcurrentNativePort');
+          )
+        >
+      >('Dart_NewConcurrentNativePort');
   late final _Dart_NewConcurrentNativePort =
       _Dart_NewConcurrentNativePortPtr.asFunction<
-          int Function(
-              ffi.Pointer<ffi.Char>, Dart_NativeMessageHandler, int)>();
+        int Function(ffi.Pointer<ffi.Char>, Dart_NativeMessageHandler, int)
+      >();
 
   /// Closes the native port with the given id.
   ///
@@ -144,8 +156,8 @@ class MultiPackageCBinding {
 
   late final _Dart_CloseNativePortPtr =
       _lookup<ffi.NativeFunction<ffi.Bool Function(Dart_Port)>>(
-    'Dart_CloseNativePort',
-  );
+        'Dart_CloseNativePort',
+      );
   late final _Dart_CloseNativePort =
       _Dart_CloseNativePortPtr.asFunction<bool Function(int)>();
 
@@ -169,8 +181,8 @@ class MultiPackageCBinding {
 
   late final _Dart_FinalizeAllClassesPtr =
       _lookup<ffi.NativeFunction<ffi.Handle Function()>>(
-    'Dart_FinalizeAllClasses',
-  );
+        'Dart_FinalizeAllClasses',
+      );
   late final _Dart_FinalizeAllClasses =
       _Dart_FinalizeAllClassesPtr.asFunction<Object Function()>();
 
@@ -181,18 +193,22 @@ class MultiPackageCBinding {
     return _Dart_ExecuteInternalCommand(command, arg);
   }
 
-  late final _Dart_ExecuteInternalCommandPtr = _lookup<
-      ffi.NativeFunction<
+  late final _Dart_ExecuteInternalCommandPtr =
+      _lookup<
+        ffi.NativeFunction<
           ffi.Pointer<ffi.Void> Function(
             ffi.Pointer<ffi.Char>,
             ffi.Pointer<ffi.Void>,
-          )>>('Dart_ExecuteInternalCommand');
+          )
+        >
+      >('Dart_ExecuteInternalCommand');
   late final _Dart_ExecuteInternalCommand =
       _Dart_ExecuteInternalCommandPtr.asFunction<
-          ffi.Pointer<ffi.Void> Function(
-            ffi.Pointer<ffi.Char>,
-            ffi.Pointer<ffi.Void>,
-          )>();
+        ffi.Pointer<ffi.Void> Function(
+          ffi.Pointer<ffi.Char>,
+          ffi.Pointer<ffi.Void>,
+        )
+      >();
 
   /// Stores the function pointer of `Dart_PostCObject`, this only should be
   /// called once at the start up of the Dart/Flutter Application. it is exported
@@ -228,8 +244,8 @@ class MultiPackageCBinding {
 
   late final _store_dart_post_cobjectPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(DartPostCObjectFnType)>>(
-    'store_dart_post_cobject',
-  );
+        'store_dart_post_cobject',
+      );
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr
       .asFunction<void Function(DartPostCObjectFnType)>();
 
@@ -249,18 +265,23 @@ class MultiPackageCBinding {
     );
   }
 
-  late final _frb_pde_ffi_dispatcher_primaryPtr = _lookup<
-      ffi.NativeFunction<
+  late final _frb_pde_ffi_dispatcher_primaryPtr =
+      _lookup<
+        ffi.NativeFunction<
           ffi.Void Function(
             ffi.Int32,
             ffi.Int64,
             ffi.Pointer<ffi.Uint8>,
             ffi.Int32,
             ffi.Int32,
-          )>>('frb_pde_ffi_dispatcher_primary');
+          )
+        >
+      >('frb_pde_ffi_dispatcher_primary');
   late final _frb_pde_ffi_dispatcher_primary =
-      _frb_pde_ffi_dispatcher_primaryPtr.asFunction<
-          void Function(int, int, ffi.Pointer<ffi.Uint8>, int, int)>();
+      _frb_pde_ffi_dispatcher_primaryPtr
+          .asFunction<
+            void Function(int, int, ffi.Pointer<ffi.Uint8>, int, int)
+          >();
 
   WireSyncRust2DartSse frb_pde_ffi_dispatcher_sync(
     int func_id,
@@ -276,18 +297,21 @@ class MultiPackageCBinding {
     );
   }
 
-  late final _frb_pde_ffi_dispatcher_syncPtr = _lookup<
-      ffi.NativeFunction<
+  late final _frb_pde_ffi_dispatcher_syncPtr =
+      _lookup<
+        ffi.NativeFunction<
           WireSyncRust2DartSse Function(
             ffi.Int32,
             ffi.Pointer<ffi.Uint8>,
             ffi.Int32,
             ffi.Int32,
-          )>>('frb_pde_ffi_dispatcher_sync');
-  late final _frb_pde_ffi_dispatcher_sync =
-      _frb_pde_ffi_dispatcher_syncPtr.asFunction<
-          WireSyncRust2DartSse Function(
-              int, ffi.Pointer<ffi.Uint8>, int, int)>();
+          )
+        >
+      >('frb_pde_ffi_dispatcher_sync');
+  late final _frb_pde_ffi_dispatcher_sync = _frb_pde_ffi_dispatcher_syncPtr
+      .asFunction<
+        WireSyncRust2DartSse Function(int, ffi.Pointer<ffi.Uint8>, int, int)
+      >();
 
   void frb_dart_fn_deliver_output(
     int call_id,
@@ -298,14 +322,17 @@ class MultiPackageCBinding {
     return _frb_dart_fn_deliver_output(call_id, ptr_, rust_vec_len_, data_len_);
   }
 
-  late final _frb_dart_fn_deliver_outputPtr = _lookup<
-      ffi.NativeFunction<
+  late final _frb_dart_fn_deliver_outputPtr =
+      _lookup<
+        ffi.NativeFunction<
           ffi.Void Function(
             ffi.Int32,
             ffi.Pointer<ffi.Uint8>,
             ffi.Int32,
             ffi.Int32,
-          )>>('frb_dart_fn_deliver_output');
+          )
+        >
+      >('frb_dart_fn_deliver_output');
   late final _frb_dart_fn_deliver_output = _frb_dart_fn_deliver_outputPtr
       .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>, int, int)>();
 
@@ -315,10 +342,10 @@ class MultiPackageCBinding {
 
   late final _frb_get_rust_content_hashPtr =
       _lookup<ffi.NativeFunction<ffi.Int32 Function()>>(
-    'frb_get_rust_content_hash',
-  );
-  late final _frb_get_rust_content_hash =
-      _frb_get_rust_content_hashPtr.asFunction<int Function()>();
+        'frb_get_rust_content_hash',
+      );
+  late final _frb_get_rust_content_hash = _frb_get_rust_content_hashPtr
+      .asFunction<int Function()>();
 
   /// # Safety
   ///
@@ -330,10 +357,12 @@ class MultiPackageCBinding {
     return _frb_dart_opaque_dart2rust_encode(handle, dart_handler_port);
   }
 
-  late final _frb_dart_opaque_dart2rust_encodePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.Void> Function(
-              ffi.Handle, MessagePort)>>('frb_dart_opaque_dart2rust_encode');
+  late final _frb_dart_opaque_dart2rust_encodePtr =
+      _lookup<
+        ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(ffi.Handle, MessagePort)
+        >
+      >('frb_dart_opaque_dart2rust_encode');
   late final _frb_dart_opaque_dart2rust_encode =
       _frb_dart_opaque_dart2rust_encodePtr
           .asFunction<ffi.Pointer<ffi.Void> Function(Object, int)>();
@@ -344,8 +373,8 @@ class MultiPackageCBinding {
 
   late final _frb_dart_opaque_drop_thread_box_persistent_handlePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.UintPtr)>>(
-    'frb_dart_opaque_drop_thread_box_persistent_handle',
-  );
+        'frb_dart_opaque_drop_thread_box_persistent_handle',
+      );
   late final _frb_dart_opaque_drop_thread_box_persistent_handle =
       _frb_dart_opaque_drop_thread_box_persistent_handlePtr
           .asFunction<void Function(int)>();
@@ -356,8 +385,8 @@ class MultiPackageCBinding {
 
   late final _frb_dart_opaque_rust2dart_decodePtr =
       _lookup<ffi.NativeFunction<ffi.Handle Function(ffi.UintPtr)>>(
-    'frb_dart_opaque_rust2dart_decode',
-  );
+        'frb_dart_opaque_rust2dart_decode',
+      );
   late final _frb_dart_opaque_rust2dart_decode =
       _frb_dart_opaque_rust2dart_decodePtr.asFunction<Object Function(int)>();
 
@@ -367,8 +396,8 @@ class MultiPackageCBinding {
 
   late final _frb_rust_vec_u8_newPtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Uint8> Function(ffi.Int32)>>(
-    'frb_rust_vec_u8_new',
-  );
+        'frb_rust_vec_u8_new',
+      );
   late final _frb_rust_vec_u8_new = _frb_rust_vec_u8_newPtr
       .asFunction<ffi.Pointer<ffi.Uint8> Function(int)>();
 
@@ -380,24 +409,29 @@ class MultiPackageCBinding {
     return _frb_rust_vec_u8_resize(ptr, old_len, new_len);
   }
 
-  late final _frb_rust_vec_u8_resizePtr = _lookup<
-      ffi.NativeFunction<
+  late final _frb_rust_vec_u8_resizePtr =
+      _lookup<
+        ffi.NativeFunction<
           ffi.Pointer<ffi.Uint8> Function(
             ffi.Pointer<ffi.Uint8>,
             ffi.Int32,
             ffi.Int32,
-          )>>('frb_rust_vec_u8_resize');
-  late final _frb_rust_vec_u8_resize = _frb_rust_vec_u8_resizePtr.asFunction<
-      ffi.Pointer<ffi.Uint8> Function(ffi.Pointer<ffi.Uint8>, int, int)>();
+          )
+        >
+      >('frb_rust_vec_u8_resize');
+  late final _frb_rust_vec_u8_resize = _frb_rust_vec_u8_resizePtr
+      .asFunction<
+        ffi.Pointer<ffi.Uint8> Function(ffi.Pointer<ffi.Uint8>, int, int)
+      >();
 
   void frb_rust_vec_u8_free(ffi.Pointer<ffi.Uint8> ptr, int len) {
     return _frb_rust_vec_u8_free(ptr, len);
   }
 
-  late final _frb_rust_vec_u8_freePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(
-              ffi.Pointer<ffi.Uint8>, ffi.Int32)>>('frb_rust_vec_u8_free');
+  late final _frb_rust_vec_u8_freePtr =
+      _lookup<
+        ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Uint8>, ffi.Int32)>
+      >('frb_rust_vec_u8_free');
   late final _frb_rust_vec_u8_free = _frb_rust_vec_u8_freePtr
       .asFunction<void Function(ffi.Pointer<ffi.Uint8>, int)>();
 
@@ -410,8 +444,8 @@ class MultiPackageCBinding {
 
   late final _frb_init_frb_dart_api_dlPtr =
       _lookup<ffi.NativeFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>)>>(
-    'frb_init_frb_dart_api_dl',
-  );
+        'frb_init_frb_dart_api_dl',
+      );
   late final _frb_init_frb_dart_api_dl = _frb_init_frb_dart_api_dlPtr
       .asFunction<int Function(ffi.Pointer<ffi.Void>)>();
 
@@ -424,8 +458,8 @@ class MultiPackageCBinding {
 
   late final _frb_free_wire_sync_rust2dart_dcoPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncRust2DartDco)>>(
-    'frb_free_wire_sync_rust2dart_dco',
-  );
+        'frb_free_wire_sync_rust2dart_dco',
+      );
   late final _frb_free_wire_sync_rust2dart_dco =
       _frb_free_wire_sync_rust2dart_dcoPtr
           .asFunction<void Function(WireSyncRust2DartDco)>();
@@ -439,8 +473,8 @@ class MultiPackageCBinding {
 
   late final _frb_free_wire_sync_rust2dart_ssePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncRust2DartSse)>>(
-    'frb_free_wire_sync_rust2dart_sse',
-  );
+        'frb_free_wire_sync_rust2dart_sse',
+      );
   late final _frb_free_wire_sync_rust2dart_sse =
       _frb_free_wire_sync_rust2dart_ssePtr
           .asFunction<void Function(WireSyncRust2DartSse)>();
@@ -449,20 +483,26 @@ class MultiPackageCBinding {
   ///
   /// This function should never be called manually.
   ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>
-      frb_create_shutdown_callback() {
+  frb_create_shutdown_callback() {
     return _frb_create_shutdown_callback();
   }
 
-  late final _frb_create_shutdown_callbackPtr = _lookup<
-      ffi.NativeFunction<
+  late final _frb_create_shutdown_callbackPtr =
+      _lookup<
+        ffi.NativeFunction<
           ffi.Pointer<
-                  ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>
-              Function()>>('frb_create_shutdown_callback');
-  late final _frb_create_shutdown_callback =
-      _frb_create_shutdown_callbackPtr.asFunction<
-          ffi.Pointer<
-                  ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>
-              Function()>();
+            ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>
+          >
+          Function()
+        >
+      >('frb_create_shutdown_callback');
+  late final _frb_create_shutdown_callback = _frb_create_shutdown_callbackPtr
+      .asFunction<
+        ffi.Pointer<
+          ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>
+        >
+        Function()
+      >();
 }
 
 /// A Dart_CObject is used for representing Dart objects as native C
@@ -608,16 +648,18 @@ final class UnnamedStruct5 extends ffi.Struct {
   external Dart_HandleFinalizer callback;
 }
 
-typedef Dart_HandleFinalizer
-    = ffi.Pointer<ffi.NativeFunction<Dart_HandleFinalizerFunction>>;
-typedef Dart_HandleFinalizerFunction = ffi.Void Function(
-  ffi.Pointer<ffi.Void> isolate_callback_data,
-  ffi.Pointer<ffi.Void> peer,
-);
-typedef DartDart_HandleFinalizerFunction = void Function(
-  ffi.Pointer<ffi.Void> isolate_callback_data,
-  ffi.Pointer<ffi.Void> peer,
-);
+typedef Dart_HandleFinalizer =
+    ffi.Pointer<ffi.NativeFunction<Dart_HandleFinalizerFunction>>;
+typedef Dart_HandleFinalizerFunction =
+    ffi.Void Function(
+      ffi.Pointer<ffi.Void> isolate_callback_data,
+      ffi.Pointer<ffi.Void> peer,
+    );
+typedef DartDart_HandleFinalizerFunction =
+    void Function(
+      ffi.Pointer<ffi.Void> isolate_callback_data,
+      ffi.Pointer<ffi.Void> peer,
+    );
 
 final class UnnamedStruct6 extends ffi.Struct {
   @ffi.IntPtr()
@@ -640,16 +682,18 @@ typedef Dart_CObject = _Dart_CObject;
 /// lifetime of the message data is controlled by the caller. All the
 /// data references from the message are allocated by the caller and
 /// will be reclaimed when returning to it.
-typedef Dart_NativeMessageHandler
-    = ffi.Pointer<ffi.NativeFunction<Dart_NativeMessageHandlerFunction>>;
-typedef Dart_NativeMessageHandlerFunction = ffi.Void Function(
-  Dart_Port dest_port_id,
-  ffi.Pointer<Dart_CObject> message,
-);
-typedef DartDart_NativeMessageHandlerFunction = void Function(
-  DartDart_Port dest_port_id,
-  ffi.Pointer<Dart_CObject> message,
-);
+typedef Dart_NativeMessageHandler =
+    ffi.Pointer<ffi.NativeFunction<Dart_NativeMessageHandlerFunction>>;
+typedef Dart_NativeMessageHandlerFunction =
+    ffi.Void Function(
+      Dart_Port dest_port_id,
+      ffi.Pointer<Dart_CObject> message,
+    );
+typedef DartDart_NativeMessageHandlerFunction =
+    void Function(
+      DartDart_Port dest_port_id,
+      ffi.Pointer<Dart_CObject> message,
+    );
 
 final class _Dart_Handle extends ffi.Opaque {}
 
@@ -668,12 +712,12 @@ final class DartCObject extends ffi.Opaque {}
 /// `message` The message to send.
 ///
 /// return true if the message was posted.
-typedef DartPostCObjectFnType
-    = ffi.Pointer<ffi.NativeFunction<DartPostCObjectFnTypeFunction>>;
-typedef DartPostCObjectFnTypeFunction = ffi.Bool Function(
-    DartPort port_id, ffi.Pointer<DartCObject> message);
-typedef DartDartPostCObjectFnTypeFunction = bool Function(
-    DartDartPort port_id, ffi.Pointer<DartCObject> message);
+typedef DartPostCObjectFnType =
+    ffi.Pointer<ffi.NativeFunction<DartPostCObjectFnTypeFunction>>;
+typedef DartPostCObjectFnTypeFunction =
+    ffi.Bool Function(DartPort port_id, ffi.Pointer<DartCObject> message);
+typedef DartDartPostCObjectFnTypeFunction =
+    bool Function(DartDartPort port_id, ffi.Pointer<DartCObject> message);
 
 /// A port is used to send or receive inter-isolate messages
 typedef DartPort = ffi.Int64;

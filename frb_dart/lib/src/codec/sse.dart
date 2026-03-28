@@ -51,8 +51,7 @@ class SseCodec<S, E extends Object>
   void freeWireSyncRust2Dart(
     WireSyncRust2DartSse raw,
     GeneralizedFrbRustBinding generalizedFrbRustBinding,
-  ) =>
-      generalizedFrbRustBinding.freeWireSyncRust2DartSse(raw);
+  ) => generalizedFrbRustBinding.freeWireSyncRust2DartSse(raw);
 }
 
 class _SseSimpleDecoder<S, E extends Object> extends SimpleDecoder<S, E> {
@@ -87,7 +86,7 @@ class SseSerializer {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   SseSerializer(GeneralizedFrbRustBinding binding)
-      : buffer = WriteBuffer(binding: binding);
+    : buffer = WriteBuffer(binding: binding);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   WriteBufferRaw intoRaw() => buffer.intoRaw();

@@ -86,7 +86,8 @@ Future<void> _sanityChecks(BuildWebArgs args) async {
   await _ensurePackageInstalled(
     binaryName: 'wasm-pack',
     install: () async => await runCommand('cargo', ['install', 'wasm-pack']),
-    hint: 'wasm-pack is required, but not found in the path.\n'
+    hint:
+        'wasm-pack is required, but not found in the path.\n'
         'Please install wasm-pack by following the instructions at https://rustwasm.github.io/wasm-pack/\n'
         'or running `cargo install wasm-pack`.',
   );
@@ -142,8 +143,7 @@ Future<String> _getRustCreateName({required String rustCrateDir}) async {
       ['read-manifest'],
       pwd: rustCrateDir,
       silent: true,
-    ))
-        .stdout,
+    )).stdout,
   );
 
   final rustCrateName = (manifest['targets'] as List).firstWhere(
