@@ -15,6 +15,8 @@ import 'package:shelf/shelf.dart';
 import 'package:shelf_web_socket/shelf_web_socket.dart';
 
 const kTestResultKey = '__result__';
+const _kLoopbackNoProxyValue = '127.0.0.1,localhost,::1';
+const _kLoopbackHosts = {'127.0.0.1', 'localhost', '::1'};
 
 Future<void> executeTestWeb(TestWebConfig config) async {
   final dartRoot = await findDartPackageDirectory(
@@ -23,8 +25,9 @@ Future<void> executeTestWeb(TestWebConfig config) async {
   final webRoot = '$dartRoot/web';
   print('executeTestWeb: Pick dartRoot=$dartRoot');
 
-  List<String> cargoArgs =
-      config.rustFeatures.expand((x) => ['--features', x]).toList();
+  List<String> cargoArgs = config.rustFeatures
+      .expand((x) => ['--features', x])
+      .toList();
 
   print('executeTestWeb: compile');
   await executeBuildWeb(
@@ -91,14 +94,14 @@ Handler _createWebSocketHandler({
 const _kTestEntrypointHttpName = 'test_entrypoint.html';
 
 Handler _createIndexFileHandler() => (request) {
-      if (request.url.path == _kTestEntrypointHttpName) {
-        return Response.ok(
-          kTestEntrypointHtmlContent,
-          headers: {HttpHeaders.contentTypeHeader: 'text/html'},
-        );
-      }
-      return Response.notFound(null);
-    };
+  if (request.url.path == _kTestEntrypointHttpName) {
+    return Response.ok(
+      kTestEntrypointHtmlContent,
+      headers: {HttpHeaders.contentTypeHeader: 'text/html'},
+    );
+  }
+  return Response.notFound(null);
+};
 
 Future<Browser> _launchBrowser({
   required String baseAddr,
@@ -114,15 +117,56 @@ Future<Browser> _launchBrowser({
   // Check if running in Docker/container environment (no sandbox needed)
   final isInContainer = File('/.dockerenv').existsSync();
 
-  final browser = await puppeteer.launch(
-    headless: headless,
-    timeout: const Duration(minutes: 5),
-    args: isInContainer ? ['--no-sandbox', '--disable-setuid-sandbox'] : [],
-  );
-  final page = await browser.newPage();
-  _configurePageLogging(page);
-  await page.goto('$baseAddr/$_kTestEntrypointHttpName');
-  return browser;
+  return await HttpOverrides.runZoned(() async {
+    final browser = await puppeteer.launch(
+      headless: headless,
+      timeout: const Duration(minutes: 5),
+      args: isInContainer ? ['--no-sandbox', '--disable-setuid-sandbox'] : [],
+      environment: _browserEnvironment(),
+    );
+    final page = await browser.newPage();
+    _configurePageLogging(page);
+    await page.goto('$baseAddr/$_kTestEntrypointHttpName');
+    return browser;
+  }, findProxyFromEnvironment: _findProxyFromEnvironment);
+}
+
+String _findProxyFromEnvironment(Uri uri, Map<String, String>? environment) {
+  if (_kLoopbackHosts.contains(uri.host)) {
+    return 'DIRECT';
+  }
+
+  return HttpClient.findProxyFromEnvironment(uri, environment);
+}
+
+Map<String, String> _browserEnvironment() {
+  final result = Map<String, String>.from(Platform.environment);
+  final noProxy = _mergeNoProxyValue(result['NO_PROXY'], result['no_proxy']);
+  result['NO_PROXY'] = noProxy;
+  result['no_proxy'] = noProxy;
+  return result;
+}
+
+String _mergeNoProxyValue(String? upperValue, String? lowerValue) {
+  final values = <String>{
+    ..._splitNoProxyValue(upperValue),
+    ..._splitNoProxyValue(lowerValue),
+    ..._splitNoProxyValue(_kLoopbackNoProxyValue),
+  };
+  return values.join(',');
+}
+
+Iterable<String> _splitNoProxyValue(String? value) sync* {
+  if (value == null) {
+    return;
+  }
+
+  for (final item in value.split(',')) {
+    final trimmed = item.trim();
+    if (trimmed.isNotEmpty) {
+      yield trimmed;
+    }
+  }
 }
 
 void _configurePageLogging(Page page) {

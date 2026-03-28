@@ -20,5 +20,9 @@ RUN dart pub global activate ffigen --version 8.0.0 && \
     apt-get install -y google-chrome-stable && \
     rm -rf /var/lib/apt/lists/*
 
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome \
+    NO_PROXY=127.0.0.1,localhost,::1 \
+    no_proxy=127.0.0.1,localhost,::1
+
 COPY --from=builder /usr/local/cargo/bin/flutter_rust_bridge_codegen /usr/local/bin/flutter_rust_bridge_codegen
 CMD ["flutter_rust_bridge_codegen"]
