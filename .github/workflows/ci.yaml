@@ -287,7 +287,7 @@ jobs:
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
           components: rustfmt, clippy
-      - run: rustup toolchain install ${{ env.FRB_RUSTFMT_NIGHTLY_VERSION }} && rustup component add rustfmt --toolchain ${{ env.FRB_RUSTFMT_NIGHTLY_VERSION }}-x86_64-unknown-linux-gnu
+      - run: rustup toolchain install ${{ env.FRB_RUSTFMT_NIGHTLY_VERSION }} && rustup component add rustfmt llvm-tools-preview --toolchain ${{ env.FRB_RUSTFMT_NIGHTLY_VERSION }}-x86_64-unknown-linux-gnu
       - run: yarn global add all-contributors-cli
       - uses: flutter-actions/setup-flutter@v4
         with:
