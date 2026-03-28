@@ -25,8 +25,9 @@ Future<void> executeTestWeb(TestWebConfig config) async {
   final webRoot = '$dartRoot/web';
   print('executeTestWeb: Pick dartRoot=$dartRoot');
 
-  List<String> cargoArgs =
-      config.rustFeatures.expand((x) => ['--features', x]).toList();
+  List<String> cargoArgs = config.rustFeatures
+      .expand((x) => ['--features', x])
+      .toList();
 
   print('executeTestWeb: compile');
   await executeBuildWeb(
@@ -116,21 +117,18 @@ Future<Browser> _launchBrowser({
   // Check if running in Docker/container environment (no sandbox needed)
   final isInContainer = File('/.dockerenv').existsSync();
 
-  return await HttpOverrides.runZoned(
-    () async {
-      final browser = await puppeteer.launch(
-        headless: headless,
-        timeout: const Duration(minutes: 5),
-        args: isInContainer ? ['--no-sandbox', '--disable-setuid-sandbox'] : [],
-        environment: _browserEnvironment(),
-      );
-      final page = await browser.newPage();
-      _configurePageLogging(page);
-      await page.goto('$baseAddr/$_kTestEntrypointHttpName');
-      return browser;
-    },
-    findProxyFromEnvironment: _findProxyFromEnvironment,
-  );
+  return await HttpOverrides.runZoned(() async {
+    final browser = await puppeteer.launch(
+      headless: headless,
+      timeout: const Duration(minutes: 5),
+      args: isInContainer ? ['--no-sandbox', '--disable-setuid-sandbox'] : [],
+      environment: _browserEnvironment(),
+    );
+    final page = await browser.newPage();
+    _configurePageLogging(page);
+    await page.goto('$baseAddr/$_kTestEntrypointHttpName');
+    return browser;
+  }, findProxyFromEnvironment: _findProxyFromEnvironment);
 }
 
 String _findProxyFromEnvironment(Uri uri, Map<String, String>? environment) {
