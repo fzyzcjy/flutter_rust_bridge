@@ -124,7 +124,16 @@ Future<void> lintDartVersion() async {
 
 Future<void> lintDartFormat(LintConfig config) async {
   for (final package in kDartPackages) {
-    await exec('dart format ${config.fix ? "" : "--set-exit-if-changed"} .',
+    final packageAbsolutePath = '${exec.pwd}$package';
+    final targets = Directory(packageAbsolutePath)
+        .listSync(recursive: true)
+        .whereType<File>()
+        .where((file) => file.path.endsWith('.dart'))
+        .where((file) => !file.path.endsWith('frb_generated.web.dart'))
+        .map((file) => file.path.substring(packageAbsolutePath.length + 1))
+        .toList();
+    await exec(
+        'dart format ${config.fix ? "" : "--set-exit-if-changed"} ${targets.join(' ')}',
         relativePwd: package);
   }
 }
