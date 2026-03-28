@@ -12,7 +12,6 @@ import 'package:test/test.dart';
 import '../../test_utils.dart';
 
 Future<void> main({bool skipRustLibInit = false}) async {
-  if (kIsWeb) return;
   if (!skipRustLibInit) await RustLib.init();
 
   test('create and dispose', () async {
