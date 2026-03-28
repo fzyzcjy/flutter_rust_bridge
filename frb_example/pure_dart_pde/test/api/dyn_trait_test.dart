@@ -10,10 +10,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   test('support &dyn TraitType', () async {
-    final one =
-        await StructOneWithTraitForDynTwinNormal.createTwinNormal(one: 10);
-    final two =
-        await StructTwoWithTraitForDynTwinNormal.createTwinNormal(two: 100);
+    final one = await StructOneWithTraitForDynTwinNormal.createTwinNormal(
+      one: 10,
+    );
+    final two = await StructTwoWithTraitForDynTwinNormal.createTwinNormal(
+      two: 100,
+    );
     expect(await funcArgDynTraitTwinNormal(arg: one), 10);
     expect(await funcArgDynTraitTwinNormal(arg: two), 200);
   });

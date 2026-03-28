@@ -12,11 +12,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
   addTestsIdentityFunctionCall(borrowStrTwinNormal, ['a']);
   addTestsIdentityFunctionCall(borrowI32TwinNormal, [100]);
   addTestsIdentityFunctionCall(borrowSliceU8TwinNormal, [
-    [10, 20, 30]
+    [10, 20, 30],
   ]);
   addTestsIdentityFunctionCall(borrowSliceStringTwinNormal, [
-    ['a', 'b']
+    ['a', 'b'],
   ]);
-  addTestsIdentityFunctionCall(
-      borrowStructTwinNormal, [SimpleStructForBorrowTwinNormal(one: 'a')]);
+  addTestsIdentityFunctionCall(borrowStructTwinNormal, [
+    SimpleStructForBorrowTwinNormal(one: 'a'),
+  ]);
 }

@@ -18,41 +18,56 @@ Future<Stream<String>> funcStreamReturnErrorTwinNormal() =>
 Future<Stream<String>> funcStreamReturnPanicTwinNormal() =>
     RustLib.instance.api.crateApiStreamFuncStreamReturnPanicTwinNormal();
 
-Stream<int> funcStreamSinkArgPositionTwinNormal(
-        {required int a, required int b}) =>
-    RustLib.instance.api
-        .crateApiStreamFuncStreamSinkArgPositionTwinNormal(a: a, b: b);
+Stream<int> funcStreamSinkArgPositionTwinNormal({
+  required int a,
+  required int b,
+}) => RustLib.instance.api.crateApiStreamFuncStreamSinkArgPositionTwinNormal(
+  a: a,
+  b: b,
+);
 
 Stream<MyStreamEntryTwinNormal> handleStreamOfStructTwinNormal() =>
     RustLib.instance.api.crateApiStreamHandleStreamOfStructTwinNormal();
 
-Stream<LogTwinNormal> handleStreamSinkAt1TwinNormal(
-        {required int key, required int max}) =>
-    RustLib.instance.api
-        .crateApiStreamHandleStreamSinkAt1TwinNormal(key: key, max: max);
+Stream<LogTwinNormal> handleStreamSinkAt1TwinNormal({
+  required int key,
+  required int max,
+}) => RustLib.instance.api.crateApiStreamHandleStreamSinkAt1TwinNormal(
+  key: key,
+  max: max,
+);
 
-Stream<LogTwinNormal> handleStreamSinkAt2TwinNormal(
-        {required int key, required int max}) =>
-    RustLib.instance.api
-        .crateApiStreamHandleStreamSinkAt2TwinNormal(key: key, max: max);
+Stream<LogTwinNormal> handleStreamSinkAt2TwinNormal({
+  required int key,
+  required int max,
+}) => RustLib.instance.api.crateApiStreamHandleStreamSinkAt2TwinNormal(
+  key: key,
+  max: max,
+);
 
-Stream<LogTwinNormal> handleStreamSinkAt3TwinNormal(
-        {required int key, required int max}) =>
-    RustLib.instance.api
-        .crateApiStreamHandleStreamSinkAt3TwinNormal(key: key, max: max);
+Stream<LogTwinNormal> handleStreamSinkAt3TwinNormal({
+  required int key,
+  required int max,
+}) => RustLib.instance.api.crateApiStreamHandleStreamSinkAt3TwinNormal(
+  key: key,
+  max: max,
+);
 
-Stream<U8Array2> streamSinkFixedSizedPrimitiveArrayTwinNormal() =>
-    RustLib.instance.api
-        .crateApiStreamStreamSinkFixedSizedPrimitiveArrayTwinNormal();
+Stream<U8Array2> streamSinkFixedSizedPrimitiveArrayTwinNormal() => RustLib
+    .instance
+    .api
+    .crateApiStreamStreamSinkFixedSizedPrimitiveArrayTwinNormal();
 
-Future<void> streamSinkInsideVecTwinNormal(
-        {required List<RustStreamSink<int>> arg}) =>
+Future<void> streamSinkInsideVecTwinNormal({
+  required List<RustStreamSink<int>> arg,
+}) =>
     RustLib.instance.api.crateApiStreamStreamSinkInsideVecTwinNormal(arg: arg);
 
-Future<void> streamSinkInsideStructTwinNormal(
-        {required MyStructContainingStreamSinkTwinNormal arg}) =>
-    RustLib.instance.api
-        .crateApiStreamStreamSinkInsideStructTwinNormal(arg: arg);
+Future<void> streamSinkInsideStructTwinNormal({
+  required MyStructContainingStreamSinkTwinNormal arg,
+}) => RustLib.instance.api.crateApiStreamStreamSinkInsideStructTwinNormal(
+  arg: arg,
+);
 
 Stream<int> funcStreamAddValueAndErrorTwinNormal() =>
     RustLib.instance.api.crateApiStreamFuncStreamAddValueAndErrorTwinNormal();
@@ -61,10 +76,7 @@ class LogTwinNormal {
   final int key;
   final int value;
 
-  const LogTwinNormal({
-    required this.key,
-    required this.value,
-  });
+  const LogTwinNormal({required this.key, required this.value});
 
   @override
   int get hashCode => key.hashCode ^ value.hashCode;
@@ -81,9 +93,7 @@ class LogTwinNormal {
 class MyStreamEntryTwinNormal {
   final String hello;
 
-  const MyStreamEntryTwinNormal({
-    required this.hello,
-  });
+  const MyStreamEntryTwinNormal({required this.hello});
 
   @override
   int get hashCode => hello.hashCode;
