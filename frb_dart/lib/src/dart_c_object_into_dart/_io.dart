@@ -198,7 +198,7 @@ class _TypedData<T> {
 //   });
 // }
 
-typedef _NativeExternalTypedDataFinalizer =
-    ffi.Void Function(ffi.IntPtr, ffi.Pointer<ffi.Void>);
-typedef _DartExternalTypedDataFinalizer =
-    void Function(int, ffi.Pointer<ffi.Void>);
+typedef _NativeExternalTypedDataFinalizer = ffi.Void Function(
+    ffi.IntPtr, ffi.Pointer<ffi.Void>);
+typedef _DartExternalTypedDataFinalizer = void Function(
+    int, ffi.Pointer<ffi.Void>);

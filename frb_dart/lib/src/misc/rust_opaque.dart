@@ -27,10 +27,10 @@ abstract class RustOpaque implements RustOpaqueInterface {
     List<dynamic> wire,
     RustArcStaticData staticData,
   ) : this._fromRaw(
-        ptr: wire[0],
-        externalSizeOnNative: wire[1],
-        staticData: staticData,
-      );
+          ptr: wire[0],
+          externalSizeOnNative: wire[1],
+          staticData: staticData,
+        );
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @internal
@@ -39,20 +39,20 @@ abstract class RustOpaque implements RustOpaqueInterface {
     int externalSizeOnNative,
     RustArcStaticData staticData,
   ) : this._fromRaw(
-        ptr: ptr.toSigned(64).toInt(),
-        externalSizeOnNative: externalSizeOnNative,
-        staticData: staticData,
-      );
+          ptr: ptr.toSigned(64).toInt(),
+          externalSizeOnNative: externalSizeOnNative,
+          staticData: staticData,
+        );
 
   RustOpaque._fromRaw({
     required int ptr,
     required int externalSizeOnNative,
     required RustArcStaticData staticData,
   }) : _arc = RustArc.fromRaw(
-         ptr: ptr,
-         externalSizeOnNative: externalSizeOnNative,
-         staticData: staticData,
-       );
+          ptr: ptr,
+          externalSizeOnNative: externalSizeOnNative,
+          staticData: staticData,
+        );
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @internal

@@ -17,9 +17,9 @@ class PortManager {
     GeneralizedFrbRustBinding generalizedFrbRustBinding,
     BaseHandler handler,
   ) : _dartHandlerPortManager = DartHandlerPortManager(
-        generalizedFrbRustBinding,
-        handler,
-      );
+          generalizedFrbRustBinding,
+          handler,
+        );
 
   /// {@macro flutter_rust_bridge.internal}
   void dispose() {
