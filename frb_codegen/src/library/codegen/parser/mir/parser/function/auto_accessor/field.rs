@@ -97,6 +97,7 @@ pub(super) fn parse_auto_accessor_of_field(
         rust_aop_after: (ty_struct.ui_state && accessor_mode == MirFuncAccessorMode::Setter)
             .then(|| UI_MUTATION_FUNCTION_RUST_AOP_AFTER.to_owned()),
         impl_mode: MirFuncImplMode::Normal,
+        oxidized: None,
         src_lineno_pseudo: compute_src_lineno_pseudo(struct_name, field),
     };
 

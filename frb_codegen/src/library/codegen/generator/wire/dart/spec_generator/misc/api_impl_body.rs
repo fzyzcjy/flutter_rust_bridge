@@ -27,7 +27,7 @@ pub(crate) fn generate_api_impl_normal_function(
 
     let wire_func_name = wire_func_name(func);
     let inner_func_stmt = dart2rust_codec.generate_dart2rust_inner_func_stmt(func, &wire_func_name);
-    let execute_func_name = generate_execute_func_name(func);
+    let execute_func_name = generate_execute_func_name(func, context);
 
     let codec = generate_rust2dart_codec_object(func);
     let call_ffi_args = generate_call_ffi_args(func);
@@ -108,10 +108,13 @@ pub(crate) fn generate_api_impl_normal_function(
     })
 }
 
-fn generate_execute_func_name(func: &MirFunc) -> &str {
-    match func.mode {
-        MirFuncMode::Normal => "executeNormal",
-        MirFuncMode::Sync => "executeSync",
+fn generate_execute_func_name(func: &MirFunc, context: WireDartGeneratorContext) -> &'static str {
+    let use_oxidized = func.oxidized.unwrap_or(context.api_dart_config.use_oxidized) && func.fallible();
+    match (func.mode, use_oxidized) {
+        (MirFuncMode::Normal, true) => "executeNormalAsResult",
+        (MirFuncMode::Normal, false) => "executeNormal",
+        (MirFuncMode::Sync, true) => "executeSyncAsResult",
+        (MirFuncMode::Sync, false) => "executeSync",
     }
 }
 

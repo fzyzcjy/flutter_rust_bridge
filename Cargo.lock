@@ -622,6 +622,7 @@ dependencies = [
  "log",
  "oslog",
  "portable-atomic",
+ "serde_json",
  "threadpool",
  "tokio",
  "uuid",

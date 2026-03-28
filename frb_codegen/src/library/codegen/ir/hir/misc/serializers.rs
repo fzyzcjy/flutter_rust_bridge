@@ -22,6 +22,16 @@ pub(crate) fn serialize_vec_syn<T: ToTokens, S: Serializer>(
     values.serialize(s)
 }
 
+pub(crate) fn serialize_option_syn<T: ToTokens, S: Serializer>(
+    value: &Option<T>,
+    s: S,
+) -> Result<S::Ok, S::Error> {
+    match value {
+        Some(v) => quote::quote!(#v).to_string().serialize(s),
+        None => s.serialize_none(),
+    }
+}
+
 // pub(crate) fn serialize_item_trait<S: Serializer>(x: &ItemTrait, s: S) -> Result<S::Ok, S::Error> {
 //     s.serialize_str(&format!("ItemTrait(ident={})", x.ident))
 // }

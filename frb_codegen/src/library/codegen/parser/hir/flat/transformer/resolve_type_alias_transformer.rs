@@ -7,15 +7,28 @@ use syn::Type;
 use topological_sort::TopologicalSort;
 
 pub(crate) fn transform(mut pack: HirFlatPack) -> anyhow::Result<HirFlatPack> {
-    let map_raw = (pack.types.iter())
+    // Separate generic and non-generic type aliases
+    // Generic type aliases (e.g., `type Result<T> = std::result::Result<T, MyError>`)
+    // are kept as-is since resolve_type_aliases doesn't handle generic substitution yet.
+    // TODO: Enhance resolve_type_aliases to handle generic type alias substitution
+    let (generic_aliases, non_generic_aliases): (Vec<_>, Vec<_>) =
+        pack.types.into_iter().partition(|x| x.generics.is_some());
+
+    let map_raw = non_generic_aliases
+        .iter()
         .map(|x| (x.ident.clone(), x.target.clone()))
         .collect();
     let map_transformed = resolve_type_aliases(map_raw);
     let vec_transformed = (map_transformed.into_iter())
-        .map(|(ident, target)| HirFlatTypeAlias { ident, target })
+        .map(|(ident, target)| HirFlatTypeAlias {
+            ident,
+            target,
+            generics: None,
+        })
         .collect_vec();
 
-    pack.types = vec_transformed;
+    // Combine resolved non-generic aliases with the original generic aliases
+    pack.types = vec_transformed.into_iter().chain(generic_aliases).collect();
 
     Ok(pack)
 }

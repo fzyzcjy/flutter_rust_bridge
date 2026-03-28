@@ -40,6 +40,7 @@ impl CodecSseTyTrait for DelegateCodecSseTy<'_> {
                     }
                 },
                 MirTypeDelegate::Uuid => "self.toBytes()".to_owned(),
+                MirTypeDelegate::SerdeJsonValue => "jsonEncode(self)".to_owned(),
                 MirTypeDelegate::StreamSink(mir) => {
                     generate_stream_sink_setup_and_serialize(mir, "self")
                 }
@@ -103,6 +104,7 @@ impl CodecSseTyTrait for DelegateCodecSseTy<'_> {
                     }
                 },
                 MirTypeDelegate::Uuid => "self.as_bytes().to_vec()".to_owned(),
+                MirTypeDelegate::SerdeJsonValue => "serde_json::to_string(&self).expect(\"Failed to serialize serde_json::Value\")".to_owned(),
                 MirTypeDelegate::StreamSink(_) => return Some(lang.throw_unimplemented("")),
                 MirTypeDelegate::BigPrimitive(_) => "self.to_string()".to_owned(),
                 MirTypeDelegate::RustAutoOpaqueExplicit(_ir) => {
@@ -168,6 +170,7 @@ impl CodecSseTyTrait for DelegateCodecSseTy<'_> {
                         }
                     },
                     MirTypeDelegate::Uuid => "UuidValue.fromByteList(inner)".to_owned(),
+                    MirTypeDelegate::SerdeJsonValue => "jsonDecode(inner)".to_owned(),
                     MirTypeDelegate::StreamSink(_)
                     | MirTypeDelegate::ProxyVariant(_)
                     | MirTypeDelegate::ProxyEnum(_) => {
@@ -218,6 +221,9 @@ impl CodecSseTyTrait for DelegateCodecSseTy<'_> {
                 }
                 MirTypeDelegate::Uuid => {
                     r#"uuid::Uuid::from_slice(&inner).expect("fail to decode uuid")"#.to_owned()
+                }
+                MirTypeDelegate::SerdeJsonValue => {
+                    r#"serde_json::from_str(&inner).expect("Failed to deserialize serde_json::Value")"#.to_owned()
                 }
                 MirTypeDelegate::StreamSink(_) => "StreamSink::deserialize(inner)".to_owned(),
                 MirTypeDelegate::BigPrimitive(_) => "inner.parse().unwrap()".to_owned(),
