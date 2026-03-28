@@ -96,7 +96,7 @@ Future<void> lintDartFfigen() async {
   }
 
   String normalizeChunk(String text) =>
-      text.replaceAll(RegExp(r'\s+'), ' ').trim();
+      text.replaceAll(RegExp(r'[\s,]+'), ' ').trim();
 
   final textMatcher = readInterestText('pure_dart');
   final normalizedTextMatcher = normalizeChunk(textMatcher);
