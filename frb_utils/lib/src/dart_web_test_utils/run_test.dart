@@ -113,11 +113,8 @@ Future<Browser> _launchBrowser({
 
   // Check if running in Docker/container environment (no sandbox needed)
   final isInContainer = File('/.dockerenv').existsSync();
-  final executablePath = await _resolveBrowserExecutablePath();
-  print('executeTestWeb: browserExecutable=$executablePath');
 
   final browser = await puppeteer.launch(
-    executablePath: executablePath,
     headless: headless,
     timeout: const Duration(minutes: 5),
     args: isInContainer ? ['--no-sandbox', '--disable-setuid-sandbox'] : [],
@@ -126,35 +123,6 @@ Future<Browser> _launchBrowser({
   _configurePageLogging(page);
   await page.goto('$baseAddr/$_kTestEntrypointHttpName');
   return browser;
-}
-
-Future<String> _resolveBrowserExecutablePath() async {
-  for (final candidate in const [
-    '/usr/bin/google-chrome',
-    '/usr/bin/google-chrome-stable',
-    '/opt/google/chrome/chrome',
-    '/usr/bin/chromium',
-    '/usr/bin/chromium-browser',
-  ]) {
-    final file = File(candidate);
-    if (!file.existsSync()) continue;
-    if (_isSnapChromiumWrapper(file)) continue;
-    return candidate;
-  }
-
-  final downloadedChrome = await downloadChrome();
-  return downloadedChrome.executablePath;
-}
-
-bool _isSnapChromiumWrapper(File file) {
-  if (path.basename(file.path) != 'chromium-browser') return false;
-
-  try {
-    final content = file.readAsStringSync();
-    return content.contains('/snap/bin/chromium');
-  } catch (_) {
-    return false;
-  }
 }
 
 void _configurePageLogging(Page page) {
