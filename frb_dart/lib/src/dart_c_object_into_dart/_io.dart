@@ -34,14 +34,18 @@ dynamic dartCObjectIntoDart(Dart_CObject object) {
       while (object.value.as_string.elementAt(len).value != 0) {
         len++;
       }
-      return utf8
-          .decode(object.value.as_string.cast<ffi.Uint8>().asTypedList(len));
+      return utf8.decode(
+        object.value.as_string.cast<ffi.Uint8>().asTypedList(len),
+      );
 
     case Dart_CObject_Type.Dart_CObject_kArray:
       return List.generate(
-          object.value.as_array.length, (i) => dartCObjectIntoDart(
-              // ignore: deprecated_member_use
-              object.value.as_array.values.elementAt(i).value.ref));
+        object.value.as_array.length,
+        (i) => dartCObjectIntoDart(
+          // ignore: deprecated_member_use
+          object.value.as_array.values.elementAt(i).value.ref,
+        ),
+      );
 
     case Dart_CObject_Type.Dart_CObject_kTypedData:
       return _typedDataIntoDart(
@@ -116,9 +120,8 @@ _TypedData _typedDataIntoDart({
         ByteData.view(
           typedValues.cast<ffi.Uint8>().asTypedList(nValues).buffer,
         ),
-        (view) => ByteData.view(
-          Uint8List.fromList(view.buffer.asUint8List()).buffer,
-        ),
+        (view) =>
+            ByteData.view(Uint8List.fromList(view.buffer.asUint8List()).buffer),
       );
     case Dart_TypedData_Type.Dart_TypedData_kInt8:
       final view = typedValues.cast<ffi.Int8>().asTypedList(nValues);
@@ -195,7 +198,7 @@ class _TypedData<T> {
 //   });
 // }
 
-typedef _NativeExternalTypedDataFinalizer = ffi.Void Function(
-    ffi.IntPtr, ffi.Pointer<ffi.Void>);
-typedef _DartExternalTypedDataFinalizer = void Function(
-    int, ffi.Pointer<ffi.Void>);
+typedef _NativeExternalTypedDataFinalizer =
+    ffi.Void Function(ffi.IntPtr, ffi.Pointer<ffi.Void>);
+typedef _DartExternalTypedDataFinalizer =
+    void Function(int, ffi.Pointer<ffi.Void>);

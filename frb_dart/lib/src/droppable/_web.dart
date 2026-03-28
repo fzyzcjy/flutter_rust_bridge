@@ -18,6 +18,5 @@ extension ExtFinalizer on Finalizer<PlatformPointer> {
     Object? detach,
     // ignore: unused_element
     int? externalSizeOnNative,
-  }) =>
-      attach(value, finalizationToken, detach: detach);
+  }) => attach(value, finalizationToken, detach: detach);
 }

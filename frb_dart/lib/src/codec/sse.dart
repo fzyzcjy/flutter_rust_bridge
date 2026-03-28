@@ -48,9 +48,10 @@ class SseCodec<S, E extends Object>
   }
 
   @override
-  void freeWireSyncRust2Dart(WireSyncRust2DartSse raw,
-          GeneralizedFrbRustBinding generalizedFrbRustBinding) =>
-      generalizedFrbRustBinding.freeWireSyncRust2DartSse(raw);
+  void freeWireSyncRust2Dart(
+    WireSyncRust2DartSse raw,
+    GeneralizedFrbRustBinding generalizedFrbRustBinding,
+  ) => generalizedFrbRustBinding.freeWireSyncRust2DartSse(raw);
 }
 
 class _SseSimpleDecoder<S, E extends Object> extends SimpleDecoder<S, E> {
@@ -67,8 +68,9 @@ class _SseSimpleDecoder<S, E extends Object> extends SimpleDecoder<S, E> {
     final decodeErrorData = codec.decodeErrorData;
     if (decodeErrorData == null) {
       throw Exception(
-          'transformRust2DartMessage received error message, but no decodeErrorData to parse it. '
-          'Raw data: ${deserializer.buffer.data.buffer.asUint8List()}');
+        'transformRust2DartMessage received error message, but no decodeErrorData to parse it. '
+        'Raw data: ${deserializer.buffer.data.buffer.asUint8List()}',
+      );
     }
     return decodeErrorData(deserializer);
   }
@@ -84,7 +86,7 @@ class SseSerializer {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   SseSerializer(GeneralizedFrbRustBinding binding)
-      : buffer = WriteBuffer(binding: binding);
+    : buffer = WriteBuffer(binding: binding);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   WriteBufferRaw intoRaw() => buffer.intoRaw();
@@ -104,7 +106,9 @@ S _decodeObjectOfOtherType<S>(dynamic raw) {
   // Then, when panic happens, the Rust side WorkerPool will use JavaScript
   // to inform the error. Thus we have to use a simple JS implementable protocol.
   const decoder = DcoCodec(
-      decodeSuccessData: _unimplementedFunction, decodeErrorData: null);
+    decodeSuccessData: _unimplementedFunction,
+    decodeErrorData: null,
+  );
   return decoder.decodeObject(raw);
 }
 

@@ -10,8 +10,9 @@ class CstCodec<S, E extends Object> extends BaseCodec<S, E, dynamic> {
 
   @override
   void freeWireSyncRust2Dart(
-          dynamic raw, GeneralizedFrbRustBinding generalizedFrbRustBinding) =>
-      throw UnimplementedError('unreachable');
+    dynamic raw,
+    GeneralizedFrbRustBinding generalizedFrbRustBinding,
+  ) => throw UnimplementedError('unreachable');
 
   @override
   S decodeObject(dynamic raw) => throw UnimplementedError('unreachable');
@@ -19,4 +20,5 @@ class CstCodec<S, E extends Object> extends BaseCodec<S, E, dynamic> {
   @override
   S decodeWireSyncType(dynamic raw) => throw UnimplementedError('unreachable');
 }
+
 // coverage:ignore-end

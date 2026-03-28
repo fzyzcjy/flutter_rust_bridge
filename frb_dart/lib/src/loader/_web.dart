@@ -6,7 +6,8 @@ import 'package:flutter_rust_bridge/src/wasm_module/_web.dart';
 
 /// See `loadExternalLibrary` in the counterpart `_io.dart` for doc
 FutureOr<ExternalLibrary> loadExternalLibrary(
-    ExternalLibraryLoaderConfig config) async {
+  ExternalLibraryLoaderConfig config,
+) async {
   return loadExternalLibraryRaw(
     moduleRoot: '${config.webPrefix}${config.stem}',
     wasmBindgenName: config.wasmBindgenName,
