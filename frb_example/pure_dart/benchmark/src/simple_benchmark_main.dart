@@ -9,7 +9,7 @@ import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'benchmark_utils.dart';
 import 'generated.dart';
 
-Future<void> main(List<String> args) async {
+Future<void> runSimpleBenchmark(List<String> args) async {
   await RustLib.init();
 
   final [modeStr, pathOutput, ...] = args;
