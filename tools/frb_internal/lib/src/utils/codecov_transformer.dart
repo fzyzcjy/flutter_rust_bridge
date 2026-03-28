@@ -90,46 +90,90 @@ final _kIgnoreLineRegex = RegExp(
 @visibleForTesting
 bool shouldKeepLine(
   String line, {
-  bool isFormatMultilineStringNoise = false,
-}) => !isFormatMultilineStringNoise && !_kIgnoreLineRegex.hasMatch(line);
+  bool isFormatCallNoise = false,
+}) => !isFormatCallNoise && !_kIgnoreLineRegex.hasMatch(line);
 
 @visibleForTesting
-Set<int> computeFormatMultilineStringNoiseLines(List<String> fileLines) {
+Set<int> computeFormatCallNoiseLines(List<String> fileLines) {
   final ans = <int>{};
 
-  var pendingFormatMultilineString = false;
-  var insideFormatMultilineString = false;
+  var pendingFormatCall = false;
+  var insideFormatCall = false;
+  var formatCallDepth = 0;
+  var insideString = false;
+  var escaping = false;
 
   for (var i = 0; i < fileLines.length; i++) {
     final line = fileLines[i];
-    final trimmedLine = line.trim();
     final lineNumber = i + 1;
-    var startedFormatMultilineStringThisLine = false;
+    var lineContainsFormatCallBody = false;
+    var index = 0;
 
-    if (!insideFormatMultilineString && line.contains('format!(')) {
-      pendingFormatMultilineString = true;
-      continue;
-    }
+    while (index < line.length) {
+      final char = line[index];
 
-    if (!insideFormatMultilineString &&
-        pendingFormatMultilineString &&
-        _startsFormatMultilineString(trimmedLine)) {
-      insideFormatMultilineString = true;
-      startedFormatMultilineStringThisLine = true;
-    }
-
-    if (insideFormatMultilineString) {
-      ans.add(lineNumber);
-      if (!startedFormatMultilineStringThisLine &&
-          _hasOddUnescapedDoubleQuotes(line)) {
-        insideFormatMultilineString = false;
-        pendingFormatMultilineString = false;
+      if (insideFormatCall) {
+        lineContainsFormatCallBody = true;
       }
-      continue;
+
+      if (escaping) {
+        escaping = false;
+        index++;
+        continue;
+      }
+
+      if (insideString) {
+        if (char == r'\') {
+          escaping = true;
+        } else if (char == '"') {
+          insideString = false;
+        }
+        index++;
+        continue;
+      }
+
+      if (char == '/' && index + 1 < line.length && line[index + 1] == '/') {
+        break;
+      }
+
+      if (!insideFormatCall &&
+          !pendingFormatCall &&
+          line.startsWith('format!', index)) {
+        pendingFormatCall = true;
+        index += 'format!'.length;
+        continue;
+      }
+
+      if (char == '"') {
+        insideString = true;
+        index++;
+        continue;
+      }
+
+      if (pendingFormatCall && char == '(') {
+        pendingFormatCall = false;
+        insideFormatCall = true;
+        formatCallDepth = 1;
+        lineContainsFormatCallBody = true;
+        index++;
+        continue;
+      }
+      if (insideFormatCall) {
+        if (char == '(') {
+          formatCallDepth++;
+        } else if (char == ')') {
+          formatCallDepth--;
+          if (formatCallDepth == 0) {
+            insideFormatCall = false;
+          }
+        }
+      }
+
+      index++;
     }
 
-    if (pendingFormatMultilineString && _endsFormatCall(trimmedLine)) {
-      pendingFormatMultilineString = false;
+    if (lineContainsFormatCallBody) {
+      ans.add(lineNumber);
     }
   }
 
@@ -151,9 +195,7 @@ Map<String, dynamic> _transformByPatterns(
   List<String> fileLines,
   Map<String, dynamic> raw,
 ) {
-  final formatMultilineStringNoiseLines = computeFormatMultilineStringNoiseLines(
-    fileLines,
-  );
+  final formatCallNoiseLines = computeFormatCallNoiseLines(fileLines);
 
   return raw.map((key, value) {
     final lineNumber = int.parse(key);
@@ -163,49 +205,10 @@ Map<String, dynamic> _transformByPatterns(
       ((value is int && value > 0) ||
               shouldKeepLine(
                 fileLine,
-                isFormatMultilineStringNoise:
-                    formatMultilineStringNoiseLines.contains(lineNumber),
+                isFormatCallNoise: formatCallNoiseLines.contains(lineNumber),
               ))
           ? value
           : null,
     );
   });
-}
-
-bool _startsFormatMultilineString(String trimmedLine) {
-  return trimmedLine == '"' ||
-      (trimmedLine.endsWith('"') &&
-          _hasOddUnescapedDoubleQuotes(trimmedLine) &&
-          !trimmedLine.startsWith('//'));
-}
-
-bool _hasOddUnescapedDoubleQuotes(String line) {
-  var quoteCount = 0;
-  var escaped = false;
-
-  for (final rune in line.runes) {
-    final char = String.fromCharCode(rune);
-    if (escaped) {
-      escaped = false;
-      continue;
-    }
-
-    if (char == r'\') {
-      escaped = true;
-      continue;
-    }
-
-    if (char == '"') {
-      quoteCount++;
-    }
-  }
-
-  return quoteCount.isOdd;
-}
-
-bool _endsFormatCall(String trimmedLine) {
-  return trimmedLine == ')' ||
-      trimmedLine == '),' ||
-      trimmedLine.endsWith(');') ||
-      trimmedLine.endsWith('),');
 }

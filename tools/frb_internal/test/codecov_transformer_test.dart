@@ -27,7 +27,7 @@ void main() {
     expect(shouldKeepLine('   };'), false);
   });
 
-  test('computeFormatMultilineStringNoiseLines detects multiline template body', () {
+  test('computeFormatCallNoiseLines detects format call body by matching parentheses', () {
     final fileLines = [
       'let maybe_deref_mut_code = if rw == ReadWrite::Write {',
       '    format!(',
@@ -44,10 +44,10 @@ void main() {
       '};',
     ];
 
-    expect(computeFormatMultilineStringNoiseLines(fileLines), {3, 4, 5, 6, 7, 8, 9});
+    expect(computeFormatCallNoiseLines(fileLines), {2, 3, 4, 5, 6, 7, 8, 9, 10});
   });
 
-  test('transformCodecovFileCoverageForTest ignores uncovered multiline template body', () {
+  test('transformCodecovFileCoverageForTest ignores uncovered format call body', () {
     final fileLines = [
       'let maybe_deref_mut_code = if rw == ReadWrite::Write {',
       '    format!(',
@@ -80,7 +80,7 @@ void main() {
     });
 
     expect(transformed['1'], 0);
-    expect(transformed['2'], 0);
+    expect(transformed['2'], null);
     expect(transformed['3'], null);
     expect(transformed['4'], null);
     expect(transformed['5'], null);
@@ -88,13 +88,13 @@ void main() {
     expect(transformed['7'], null);
     expect(transformed['8'], null);
     expect(transformed['9'], null);
-    expect(transformed['10'], 0);
+    expect(transformed['10'], null);
     expect(transformed['11'], 0);
     expect(transformed['12'], 0);
     expect(transformed['13'], null);
   });
 
-  test('computeFormatMultilineStringNoiseLines does not ignore ordinary multiline strings', () {
+  test('computeFormatCallNoiseLines does not ignore ordinary multiline strings', () {
     final fileLines = [
       'let sql = "',
       'SELECT *',
@@ -102,6 +102,18 @@ void main() {
       '";',
     ];
 
-    expect(computeFormatMultilineStringNoiseLines(fileLines), isEmpty);
+    expect(computeFormatCallNoiseLines(fileLines), isEmpty);
+  });
+
+  test('computeFormatCallNoiseLines handles nested parentheses inside format call', () {
+    final fileLines = [
+      'let content = format!(',
+      '    "{} {}",',
+      '    compute_name(foo(bar)),',
+      '    other_call(),',
+      ');',
+    ];
+
+    expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4, 5});
   });
 }
