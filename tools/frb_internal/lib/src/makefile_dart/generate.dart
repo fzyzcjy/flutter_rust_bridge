@@ -268,7 +268,7 @@ Future<void> generateInternalContributor(GenerateConfig config) async {
       'https://img.shields.io/badge/all_contributors-$numContributors-orange.svg',
     );
 
-    await exec('all-contributors generate');
+    await exec('npx all-contributors-cli generate');
   });
 
   await generateInternalReadme(config);
