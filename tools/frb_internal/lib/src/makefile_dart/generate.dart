@@ -362,7 +362,7 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
 ) async {
   await _wrapMaybeSetExitIfChanged(
     config,
-    extraArgs: integrateSetExitIfChangedExtraArgs(config.package),
+    extraArgs: integrateDiffExclusionArgs(config.package),
     () async {
       final dirPackage = path.join(exec.pwd!, config.package);
 

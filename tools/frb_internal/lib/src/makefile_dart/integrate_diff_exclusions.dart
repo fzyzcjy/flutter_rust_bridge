@@ -15,10 +15,10 @@ const _kIntegrateSetExitIfChangedExtraArgsByPackage = <String, String>{
       "':(exclude)frb_example/flutter_package/rust/Cargo.lock'",
 };
 
-String integrateSetExitIfChangedExtraArgs(String package) {
+String integrateDiffExclusionArgs(String package) {
   return _kIntegrateSetExitIfChangedExtraArgsByPackage[package] ?? '';
 }
 
 @visibleForTesting
-String integrateSetExitIfChangedExtraArgsForTesting(String package) =>
-    integrateSetExitIfChangedExtraArgs(package);
+String integrateDiffExclusionArgsForTesting(String package) =>
+    integrateDiffExclusionArgs(package);
