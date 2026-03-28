@@ -19,13 +19,14 @@ void simpleBuild(List<String> args, {List<String> features = const []}) async {
       Platform.environment['FRB_SIMPLE_BUILD_CARGO_NIGHTLY'] == '1';
   final cargoExtraArgs =
       Platform.environment['FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS']?.split(' ') ??
-          const <String>[];
+      const <String>[];
   final skip = Platform.environment['FRB_SIMPLE_BUILD_SKIP'] == '1';
   final rustflags = Platform.environment['RUSTFLAGS'];
 
   if (skip) {
     print(
-        'frb_utils::simpleBuild SKIP BUILD since environment variable requires this');
+      'frb_utils::simpleBuild SKIP BUILD since environment variable requires this',
+    );
   } else {
     final featureArgs = features.expand((x) => ['--features', x]).toList();
     await runCommand(
