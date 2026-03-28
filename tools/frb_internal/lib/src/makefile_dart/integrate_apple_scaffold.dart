@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:meta/meta.dart';
 import 'package:path/path.dart' as path;
 
