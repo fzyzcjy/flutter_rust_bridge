@@ -88,17 +88,121 @@ final _kIgnoreLineRegex = RegExp(
 );
 
 @visibleForTesting
-bool shouldKeepLine(String line) => !_kIgnoreLineRegex.hasMatch(line);
+bool shouldKeepLine(
+  String line, {
+  bool isFormatMultilineStringNoise = false,
+}) => !isFormatMultilineStringNoise && !_kIgnoreLineRegex.hasMatch(line);
+
+@visibleForTesting
+Set<int> computeFormatMultilineStringNoiseLines(List<String> fileLines) {
+  final ans = <int>{};
+
+  var pendingFormatMultilineString = false;
+  var insideFormatMultilineString = false;
+
+  for (var i = 0; i < fileLines.length; i++) {
+    final line = fileLines[i];
+    final trimmedLine = line.trim();
+    final lineNumber = i + 1;
+
+    if (!insideFormatMultilineString && line.contains('format!(')) {
+      pendingFormatMultilineString = true;
+      continue;
+    }
+
+    if (!insideFormatMultilineString &&
+        pendingFormatMultilineString &&
+        _startsFormatMultilineString(trimmedLine)) {
+      insideFormatMultilineString = true;
+    }
+
+    if (insideFormatMultilineString) {
+      ans.add(lineNumber);
+      if (_hasOddUnescapedDoubleQuotes(line)) {
+        insideFormatMultilineString = false;
+        pendingFormatMultilineString = false;
+      }
+      continue;
+    }
+
+    if (pendingFormatMultilineString && _endsFormatCall(trimmedLine)) {
+      pendingFormatMultilineString = false;
+    }
+  }
+
+  return ans;
+}
+
+@visibleForTesting
+Map<String, dynamic> transformCodecovFileCoverageForTest(
+  List<String> fileLines,
+  Map<String, dynamic> raw,
+) {
+  var ans = raw;
+  ans = _transformByCodeComments(fileLines, ans);
+  ans = _transformByPatterns(fileLines, ans);
+  return ans;
+}
 
 Map<String, dynamic> _transformByPatterns(
   List<String> fileLines,
   Map<String, dynamic> raw,
 ) {
+  final formatMultilineStringNoiseLines = computeFormatMultilineStringNoiseLines(
+    fileLines,
+  );
+
   return raw.map((key, value) {
-    final fileLine = fileLines[int.parse(key) - 1];
+    final lineNumber = int.parse(key);
+    final fileLine = fileLines[lineNumber - 1];
     return MapEntry(
       key,
-      ((value is int && value > 0) || shouldKeepLine(fileLine)) ? value : null,
+      ((value is int && value > 0) ||
+              shouldKeepLine(
+                fileLine,
+                isFormatMultilineStringNoise:
+                    formatMultilineStringNoiseLines.contains(lineNumber),
+              ))
+          ? value
+          : null,
     );
   });
+}
+
+bool _startsFormatMultilineString(String trimmedLine) {
+  return trimmedLine == '"' ||
+      (trimmedLine.endsWith('"') &&
+          _hasOddUnescapedDoubleQuotes(trimmedLine) &&
+          !trimmedLine.startsWith('//'));
+}
+
+bool _hasOddUnescapedDoubleQuotes(String line) {
+  var quoteCount = 0;
+  var escaped = false;
+
+  for (final rune in line.runes) {
+    final char = String.fromCharCode(rune);
+    if (escaped) {
+      escaped = false;
+      continue;
+    }
+
+    if (char == r'\') {
+      escaped = true;
+      continue;
+    }
+
+    if (char == '"') {
+      quoteCount++;
+    }
+  }
+
+  return quoteCount.isOdd;
+}
+
+bool _endsFormatCall(String trimmedLine) {
+  return trimmedLine == ')' ||
+      trimmedLine == '),' ||
+      trimmedLine.endsWith(');') ||
+      trimmedLine.endsWith('),');
 }
