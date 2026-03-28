@@ -189,7 +189,10 @@ bool _shouldBypassProxy({
   required Uri uri,
   required Map<String, String> environment,
 }) {
-  final noProxy = _mergeNoProxyValue(environment['NO_PROXY'], environment['no_proxy']);
+  final noProxy = _mergeNoProxyValue(
+    environment['NO_PROXY'],
+    environment['no_proxy'],
+  );
   for (final item in _splitNoProxyValue(noProxy)) {
     if (_matchesNoProxyRule(host: uri.host, rule: item)) {
       return true;
