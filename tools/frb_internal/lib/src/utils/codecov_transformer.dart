@@ -104,6 +104,7 @@ Set<int> computeFormatMultilineStringNoiseLines(List<String> fileLines) {
     final line = fileLines[i];
     final trimmedLine = line.trim();
     final lineNumber = i + 1;
+    var startedFormatMultilineStringThisLine = false;
 
     if (!insideFormatMultilineString && line.contains('format!(')) {
       pendingFormatMultilineString = true;
@@ -114,11 +115,13 @@ Set<int> computeFormatMultilineStringNoiseLines(List<String> fileLines) {
         pendingFormatMultilineString &&
         _startsFormatMultilineString(trimmedLine)) {
       insideFormatMultilineString = true;
+      startedFormatMultilineStringThisLine = true;
     }
 
     if (insideFormatMultilineString) {
       ans.add(lineNumber);
-      if (_hasOddUnescapedDoubleQuotes(line)) {
+      if (!startedFormatMultilineStringThisLine &&
+          _hasOddUnescapedDoubleQuotes(line)) {
         insideFormatMultilineString = false;
         pendingFormatMultilineString = false;
       }
