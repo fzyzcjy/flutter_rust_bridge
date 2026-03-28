@@ -1,5 +1,9 @@
 include: package:flutter_lints/flutter.yaml
 
+analyzer:
+  exclude:
+    - assets/apple_scaffold/**
+
 linter:
   rules:
     - unawaited_futures
