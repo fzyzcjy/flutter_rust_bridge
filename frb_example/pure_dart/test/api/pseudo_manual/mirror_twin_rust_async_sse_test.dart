@@ -25,15 +25,18 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('dart call isAppEmbedded()', () async {
     expect(
-        await isAppEmbeddedTwinRustAsyncSse(
-            appSettings: ApplicationSettings(
-                name: "from dart",
-                version: "XX",
-                mode: ApplicationMode.embedded,
-                env: ApplicationEnv(vars: [
-                  ApplicationEnvVar(field0: "sendback", field1: true)
-                ]))),
-        true);
+      await isAppEmbeddedTwinRustAsyncSse(
+        appSettings: ApplicationSettings(
+          name: "from dart",
+          version: "XX",
+          mode: ApplicationMode.embedded,
+          env: ApplicationEnv(
+            vars: [ApplicationEnvVar(field0: "sendback", field1: true)],
+          ),
+        ),
+      ),
+      true,
+    );
   });
 
   test('dart call app_settings_stream', () async {
@@ -79,17 +82,25 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('dart call repeatNumber()', () async {
-    var numbers =
-        await repeatNumberTwinRustAsyncSse(num: 1, times: BigInt.from(10));
-    expect(numbers.field0.toList(),
-        Int32List.fromList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]));
+    var numbers = await repeatNumberTwinRustAsyncSse(
+      num: 1,
+      times: BigInt.from(10),
+    );
+    expect(
+      numbers.field0.toList(),
+      Int32List.fromList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
+    );
   });
 
   test('dart call repeatSequence()', () async {
-    var sequences =
-        await repeatSequenceTwinRustAsyncSse(seq: 1, times: BigInt.from(10));
-    expect(sequences.field0.toList(),
-        Int32List.fromList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]));
+    var sequences = await repeatSequenceTwinRustAsyncSse(
+      seq: 1,
+      times: BigInt.from(10),
+    );
+    expect(
+      sequences.field0.toList(),
+      Int32List.fromList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
+    );
   });
 
   test('dart call firstNumber()', () async {
@@ -118,13 +129,15 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('test raw string enum', () async {
-    final output1 =
-        await testRawStringEnumMirroredTwinRustAsyncSse(nested: true);
+    final output1 = await testRawStringEnumMirroredTwinRustAsyncSse(
+      nested: true,
+    );
     expect(output1 is RawStringEnumMirrored_Nested, true);
     expect((output1 as RawStringEnumMirrored_Nested).field0.raw.value, "test");
 
-    final output2 =
-        await testRawStringEnumMirroredTwinRustAsyncSse(nested: false);
+    final output2 = await testRawStringEnumMirroredTwinRustAsyncSse(
+      nested: false,
+    );
     expect(output2 is RawStringEnumMirrored_Raw, true);
     expect((output2 as RawStringEnumMirrored_Raw).field0.value, "test");
   });
@@ -158,10 +171,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final output = await mirrorEnumStreamTwinRustAsyncSse().toList();
     expect(
       output,
-      orderedEquals([
-        ApplicationMode.embedded,
-        ApplicationMode.standalone,
-      ]),
+      orderedEquals([ApplicationMode.embedded, ApplicationMode.standalone]),
     );
   });
 
@@ -191,27 +201,21 @@ Future<void> main({bool skipRustLibInit = false}) async {
       allOf(
         containsPair(0, ApplicationMode.embedded),
         containsPair(1, ApplicationMode.standalone),
-      )
+      ),
     ]);
   });
 
   test('mirror_set_enum_stream_twin_normal', () async {
     final output = await mirrorSetEnumStreamTwinRustAsyncSse().toList();
     expect(output, [
-      unorderedEquals([
-        ApplicationMode.embedded,
-        ApplicationMode.standalone,
-      ])
+      unorderedEquals([ApplicationMode.embedded, ApplicationMode.standalone]),
     ]);
   });
 
   test('mirror_array_enum_stream_twin_normal', () async {
     final output = await mirrorArrayEnumStreamTwinRustAsyncSse().toList();
     expect(output, [
-      orderedEquals([
-        ApplicationMode.embedded,
-        ApplicationMode.standalone,
-      ])
+      orderedEquals([ApplicationMode.embedded, ApplicationMode.standalone]),
     ]);
   });
 }

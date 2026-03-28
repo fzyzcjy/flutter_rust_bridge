@@ -13,25 +13,21 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('dart call useImportedStruct()', () async {
     expect(
       await useImportedStructTwinRustAsyncSse(
-          myStruct: MyStruct(content: false)),
+        myStruct: MyStruct(content: false),
+      ),
       false,
     );
     expect(
       await useImportedStructTwinRustAsyncSse(
-          myStruct: MyStruct(content: true)),
+        myStruct: MyStruct(content: true),
+      ),
       true,
     );
   });
 
   test('dart call useImportedEnum()', () async {
-    expect(
-      await useImportedEnumTwinRustAsyncSse(myEnum: MyEnum.false_),
-      false,
-    );
-    expect(
-      await useImportedEnumTwinRustAsyncSse(myEnum: MyEnum.true_),
-      true,
-    );
+    expect(await useImportedEnumTwinRustAsyncSse(myEnum: MyEnum.false_), false);
+    expect(await useImportedEnumTwinRustAsyncSse(myEnum: MyEnum.true_), true);
   });
 
   test('resolve module for old module system', () async {

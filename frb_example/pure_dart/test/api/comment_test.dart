@@ -12,13 +12,18 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('can call the functions', () async {
     await futurizeVoidTwinNormal(functionWithCommentsSlashStarStarTwinNormal());
     await futurizeVoidTwinNormal(
-        functionWithCommentsTripleSlashMultiLineTwinNormal());
+      functionWithCommentsTripleSlashMultiLineTwinNormal(),
+    );
     await futurizeVoidTwinNormal(
-        functionWithCommentsTripleSlashSingleLineTwinNormal());
+      functionWithCommentsTripleSlashSingleLineTwinNormal(),
+    );
     await futurizeVoidTwinNormal(
-        StructWithCommentsTwinNormal(fieldWithComments: 42)
-            .instanceMethodTwinNormal());
+      StructWithCommentsTwinNormal(
+        fieldWithComments: 42,
+      ).instanceMethodTwinNormal(),
+    );
     await futurizeVoidTwinNormal(
-        StructWithCommentsTwinNormal.staticMethodTwinNormal());
+      StructWithCommentsTwinNormal.staticMethodTwinNormal(),
+    );
   });
 }

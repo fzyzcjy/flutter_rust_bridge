@@ -9,21 +9,26 @@ import '../../auxiliary/sample_types.dart';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<BigInt> handleTypeAliasIdTwinRustAsyncSse({required BigInt input}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualTypeAliasTwinRustAsyncSseHandleTypeAliasIdTwinRustAsyncSse(
-            input: input);
+Future<BigInt> handleTypeAliasIdTwinRustAsyncSse({
+  required BigInt input,
+}) => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinRustAsyncSseHandleTypeAliasIdTwinRustAsyncSse(
+      input: input,
+    );
 
-Future<BigInt> handleTypeNestAliasIdTwinRustAsyncSse({required BigInt input}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualTypeAliasTwinRustAsyncSseHandleTypeNestAliasIdTwinRustAsyncSse(
-            input: input);
+Future<BigInt> handleTypeNestAliasIdTwinRustAsyncSse({
+  required BigInt input,
+}) => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinRustAsyncSseHandleTypeNestAliasIdTwinRustAsyncSse(
+      input: input,
+    );
 
-Future<TestModelTwinRustAsyncSse> handleTypeAliasModelTwinRustAsyncSse(
-        {required BigInt input}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualTypeAliasTwinRustAsyncSseHandleTypeAliasModelTwinRustAsyncSse(
-            input: input);
+Future<TestModelTwinRustAsyncSse> handleTypeAliasModelTwinRustAsyncSse({
+  required BigInt input,
+}) => RustLib.instance.api
+    .crateApiPseudoManualTypeAliasTwinRustAsyncSseHandleTypeAliasModelTwinRustAsyncSse(
+      input: input,
+    );
 
 class TestModelTwinRustAsyncSse {
   final BigInt id;

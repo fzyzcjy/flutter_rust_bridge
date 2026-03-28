@@ -14,8 +14,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   test('dart register event listener & create event with delay', () async {
-    unawaited(expectLater(await registerEventListenerTwinRustAsyncSse(),
-        emits(EventTwinRustAsyncSse(address: 'foo', payload: 'bar'))));
+    unawaited(
+      expectLater(
+        await registerEventListenerTwinRustAsyncSse(),
+        emits(EventTwinRustAsyncSse(address: 'foo', payload: 'bar')),
+      ),
+    );
     await Future.delayed(const Duration(milliseconds: 20));
     await createEventTwinRustAsyncSse(address: 'foo', payload: 'bar');
     await closeEventListenerTwinRustAsyncSse();
