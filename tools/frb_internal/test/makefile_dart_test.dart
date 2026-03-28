@@ -129,30 +129,27 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
     },
   );
 
-  test(
-    'integrate apple scaffold source of truth is explicit for flutter_package',
-    () {
-      expect(
-        integrateAppleScaffoldSourceOfTruthPathsForTesting(
-          'frb_example/flutter_package',
-        ),
-        ['.metadata', 'pubspec.yaml', 'example/ios', 'example/macos/Podfile'],
-      );
+  test('integrate apple scaffold source of truth is explicit for flutter_package', () {
+    expect(
+      integrateAppleScaffoldSourceOfTruthPathsForTesting(
+        'frb_example/flutter_package',
+      ),
+      ['.metadata', 'pubspec.yaml', 'example/ios', 'example/macos/Podfile'],
+    );
 
-      expect(
-        integrateAppleScaffoldSourceOfTruthAssetPathsForTesting(
-          repoRootPath: '/workspace/flutter_rust_bridge/',
-          package: 'frb_example/flutter_package',
-        ),
-        [
-          '/workspace/flutter_rust_bridge/tools/frb_internal/assets/apple_scaffold/frb_example/flutter_package/.metadata',
-          '/workspace/flutter_rust_bridge/tools/frb_internal/assets/apple_scaffold/frb_example/flutter_package/pubspec.yaml',
-          '/workspace/flutter_rust_bridge/tools/frb_internal/assets/apple_scaffold/frb_example/flutter_package/example/ios',
-          '/workspace/flutter_rust_bridge/tools/frb_internal/assets/apple_scaffold/frb_example/flutter_package/example/macos/Podfile',
-        ],
-      );
-    },
-  );
+    expect(
+      integrateAppleScaffoldSourceOfTruthAssetPathsForTesting(
+        repoRootPath: '/workspace/flutter_rust_bridge/',
+        package: 'frb_example/flutter_package',
+      ),
+      [
+        '/workspace/flutter_rust_bridge/tools/frb_internal/assets/apple_scaffold/frb_example/flutter_package/.metadata',
+        '/workspace/flutter_rust_bridge/tools/frb_internal/assets/apple_scaffold/frb_example/flutter_package/pubspec.yaml',
+        '/workspace/flutter_rust_bridge/tools/frb_internal/assets/apple_scaffold/frb_example/flutter_package/example/ios',
+        '/workspace/flutter_rust_bridge/tools/frb_internal/assets/apple_scaffold/frb_example/flutter_package/example/macos/Podfile',
+      ],
+    );
+  });
 
   test(
     'integrate apple scaffold source of truth is empty for unrelated package',

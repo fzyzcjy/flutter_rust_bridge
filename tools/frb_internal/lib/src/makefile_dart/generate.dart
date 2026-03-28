@@ -527,9 +527,7 @@ List<String> integrateAppleScaffoldSourceOfTruthAssetPathsForTesting({
   required String repoRootPath,
   required String package,
 }) => List.unmodifiable(
-  _integrateAppleScaffoldSourceOfTruthPaths(
-    package,
-  ).map(
+  _integrateAppleScaffoldSourceOfTruthPaths(package).map(
     (relativePath) => _integrateAppleScaffoldSourceOfTruthAssetPathFromRepoRoot(
       repoRootPath: repoRootPath,
       package: package,
