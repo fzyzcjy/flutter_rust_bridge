@@ -98,10 +98,11 @@ Future<void> lintDartFfigen() async {
   final textMatcher = readInterestText('pure_dart');
   final textActual = readInterestText('pure_dart_pde');
 
-  final actualSymbols = RegExp(r'frbgen_frb_example_pure_dart_pde_[A-Za-z0-9_]+')
-      .allMatches(textActual)
-      .map((match) => match.group(0)!)
-      .toSet();
+  final actualSymbols =
+      RegExp(r'frbgen_frb_example_pure_dart_pde_[A-Za-z0-9_]+')
+          .allMatches(textActual)
+          .map((match) => match.group(0)!)
+          .toSet();
   for (final actualSymbol in actualSymbols) {
     final matcherSymbol = actualSymbol.replaceAll(
       'frbgen_frb_example_pure_dart_pde',
