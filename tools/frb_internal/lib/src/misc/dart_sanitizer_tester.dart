@@ -18,7 +18,8 @@ Future<void> run(TestDartSanitizerConfig config) async {
   await runPubGet(config.package, kDartModeOfPackage[config.package]!);
 
   // Otherwise it seems the sanitized dart binary does not compile native assets
-  await exec('dart run test/empty_entrypoint.dart', relativePwd: config.package);
+  await exec('dart run test/empty_entrypoint.dart',
+      relativePwd: config.package);
 
   if (config.package == 'frb_example/deliberate_bad') {
     await _runPackageDeliberateBad(config);
