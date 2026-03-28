@@ -116,4 +116,116 @@ void main() {
 
     expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4, 5});
   });
+
+  test('computeFormatCallNoiseLines ignores single-line format call on one line', () {
+    final fileLines = [
+      'let content = format!("hello {}", name);',
+      'let untouched = 1;',
+    ];
+
+    expect(computeFormatCallNoiseLines(fileLines), {1});
+  });
+
+  test('computeFormatCallNoiseLines ignores multiple format calls in one file', () {
+    final fileLines = [
+      'let first = format!(',
+      '    "{} {}",',
+      '    one,',
+      '    two,',
+      ');',
+      'let keep = do_work();',
+      'let second = format!("value={}", three);',
+    ];
+
+    expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4, 5, 7});
+  });
+
+  test('computeFormatCallNoiseLines ignores format call with escaped quotes in strings', () {
+    final fileLines = [
+      'let content = format!(',
+      r'    "say \"hello\" to {}",',
+      '    name,',
+      ');',
+    ];
+
+    expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4});
+  });
+
+  test('computeFormatCallNoiseLines ignores nested format call inside format arguments', () {
+    final fileLines = [
+      'let content = format!(',
+      '    "{} {}",',
+      '    format!("inner {}", value),',
+      '    other,',
+      ');',
+    ];
+
+    expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4, 5});
+  });
+
+  test('computeFormatCallNoiseLines ignores format call when opening parenthesis is on next line', () {
+    final fileLines = [
+      'let content = format!',
+      '(',
+      '    "{} {}",',
+      '    one,',
+      '    two,',
+      ');',
+    ];
+
+    expect(computeFormatCallNoiseLines(fileLines), {2, 3, 4, 5, 6});
+  });
+
+  test('computeFormatCallNoiseLines does not match format inside comments', () {
+    final fileLines = [
+      '// format!("hello {}", name)',
+      'let untouched = 1;',
+    ];
+
+    expect(computeFormatCallNoiseLines(fileLines), isEmpty);
+  });
+
+  test('computeFormatCallNoiseLines does not match format inside ordinary strings', () {
+    final fileLines = [
+      'let text = "call format!(\\"hello {}\\", name) later";',
+      'let untouched = 1;',
+    ];
+
+    expect(computeFormatCallNoiseLines(fileLines), isEmpty);
+  });
+
+  test('computeFormatCallNoiseLines stops at line comments inside format call', () {
+    final fileLines = [
+      'let content = format!(',
+      '    "{} {}", // comment with ) and format!(',
+      '    one,',
+      '    two,',
+      ');',
+    ];
+
+    expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4, 5});
+  });
+
+  test('transformCodecovFileCoverageForTest preserves hit lines even inside format call', () {
+    final fileLines = [
+      'let content = format!(',
+      '    "{} {}",',
+      '    one,',
+      '    two,',
+      ');',
+    ];
+    final transformed = transformCodecovFileCoverageForTest(fileLines, {
+      '1': 0,
+      '2': 3,
+      '3': 0,
+      '4': 0,
+      '5': 0,
+    });
+
+    expect(transformed['1'], null);
+    expect(transformed['2'], 3);
+    expect(transformed['3'], null);
+    expect(transformed['4'], null);
+    expect(transformed['5'], null);
+  });
 }
