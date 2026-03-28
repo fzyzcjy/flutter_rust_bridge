@@ -16,7 +16,8 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(title: const Text('flutter_rust_bridge quickstart')),
         body: Center(
           child: Text(
-              'Action: Call Rust `greet("Tom")`\nResult: `${greet(name: "Tom")}`'),
+            'Action: Call Rust `greet("Tom")`\nResult: `${greet(name: "Tom")}`',
+          ),
         ),
       ),
     );
