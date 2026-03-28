@@ -92,14 +92,14 @@ Handler _createWebSocketHandler({
 const _kTestEntrypointHttpName = 'test_entrypoint.html';
 
 Handler _createIndexFileHandler() => (request) {
-  if (request.url.path == _kTestEntrypointHttpName) {
-    return Response.ok(
-      kTestEntrypointHtmlContent,
-      headers: {HttpHeaders.contentTypeHeader: 'text/html'},
-    );
-  }
-  return Response.notFound(null);
-};
+      if (request.url.path == _kTestEntrypointHttpName) {
+        return Response.ok(
+          kTestEntrypointHtmlContent,
+          headers: {HttpHeaders.contentTypeHeader: 'text/html'},
+        );
+      }
+      return Response.notFound(null);
+    };
 
 Future<Browser> _launchBrowser({
   required String baseAddr,
