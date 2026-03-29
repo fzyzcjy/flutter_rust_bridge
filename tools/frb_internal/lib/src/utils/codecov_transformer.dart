@@ -84,7 +84,7 @@ Map<String, dynamic> _transformByCodeComments(
 
 // see the test file for details of this regex
 final _kIgnoreLineRegex = RegExp(
-  r'^\s*(|#\[derive\(.*\)\]|[)}]\?.*|//.*|\};?)\s*$',
+  r'^\s*(|#\[derive\(.*\)\]|#\[[^\]]*\]|[\[({]|[)}]\?.*|//.*|[\])}]+(?:\.into\(\))?[,;]?|\$\(|\)\*)\s*$',
 );
 
 final _kStructFieldDeclarationRegex = RegExp(
@@ -108,6 +108,22 @@ final _kVariantDestructureStartRegex = RegExp(
 );
 
 final _kDestructureEndRegex = RegExp(r'}\s*(=|if .*=>|=>)');
+
+final _kConstructorStartRegex = RegExp(
+  r'^\s*(?:Self|Some|Ok|Err|Acc|vec!|[A-Z][A-Za-z0-9_]*(?:::[A-Z][A-Za-z0-9_]*)*)\s*(?:\(|\{)\s*$',
+);
+
+final _kFieldConstructorStartRegex = RegExp(
+  r'^\s*[a-z_][A-Za-z0-9_]*:\s*(?:Some|Ok|Err|Self|Acc|[A-Z][A-Za-z0-9_]*(?:::[A-Z][A-Za-z0-9_]*)*)\s*(?:\(|\{)\s*$',
+);
+
+final _kWrappedConstructorStartRegex = RegExp(
+  r'^\s*(?:Some|Ok|Err)\([^)]*(?:[A-Z][A-Za-z0-9_]*(?:::[A-Z][A-Za-z0-9_]*)*)\s*(?:\(|\{)\s*$',
+);
+
+final _kChainContinuationRegex = RegExp(
+  r'^\s*\.[A-Za-z_][A-Za-z0-9_]*(?:\([^)]*\))?\s*$',
+);
 
 @visibleForTesting
 bool shouldKeepLine(String line, {bool isFormatCallNoise = false}) =>
@@ -249,6 +265,9 @@ Set<int> computeStructuralNoiseLines(List<String> fileLines) {
   final ans = <int>{};
   ans.addAll(_computeMultilineStructFieldLines(fileLines));
   ans.addAll(_computeMultilineDestructureLines(fileLines));
+  ans.addAll(_computeMultilineDeriveLines(fileLines));
+  ans.addAll(_computeMultilineStaticRefLines(fileLines));
+  ans.addAll(_computeInlineStructuralNoiseLines(fileLines));
   return ans;
 }
 
@@ -319,6 +338,74 @@ Set<int> _computeMultilineDestructureLines(List<String> fileLines) {
     if (_kDestructureEndRegex.hasMatch(trimmed)) {
       ans.add(lineNumber);
       insideDestructure = false;
+    }
+  }
+
+  return ans;
+}
+
+Set<int> _computeMultilineDeriveLines(List<String> fileLines) {
+  final ans = <int>{};
+
+  var insideDerive = false;
+  for (var i = 0; i < fileLines.length; i++) {
+    final trimmed = fileLines[i].trim();
+    final lineNumber = i + 1;
+
+    if (!insideDerive && trimmed.startsWith('#[derive(') && !trimmed.endsWith(')]')) {
+      insideDerive = true;
+      continue;
+    }
+
+    if (!insideDerive) continue;
+
+    ans.add(lineNumber);
+    if (trimmed.endsWith(')]')) {
+      insideDerive = false;
+    }
+  }
+
+  return ans;
+}
+
+Set<int> _computeMultilineStaticRefLines(List<String> fileLines) {
+  final ans = <int>{};
+
+  var insideStaticRef = false;
+  for (var i = 0; i < fileLines.length; i++) {
+    final trimmed = fileLines[i].trim();
+    final lineNumber = i + 1;
+
+    if (!insideStaticRef &&
+        RegExp(r'^\s*(?:pub\([^)]*\)\s+)?static ref [A-Za-z_][A-Za-z0-9_]*: .*=+\s*$')
+            .hasMatch(fileLines[i])) {
+      insideStaticRef = true;
+      continue;
+    }
+
+    if (!insideStaticRef) continue;
+
+    ans.add(lineNumber);
+    if (trimmed.endsWith(';')) {
+      insideStaticRef = false;
+    }
+  }
+
+  return ans;
+}
+
+Set<int> _computeInlineStructuralNoiseLines(List<String> fileLines) {
+  final ans = <int>{};
+
+  for (var i = 0; i < fileLines.length; i++) {
+    final line = fileLines[i];
+    final lineNumber = i + 1;
+
+    if (_kConstructorStartRegex.hasMatch(line) ||
+        _kFieldConstructorStartRegex.hasMatch(line) ||
+        _kWrappedConstructorStartRegex.hasMatch(line) ||
+        _kChainContinuationRegex.hasMatch(line)) {
+      ans.add(lineNumber);
     }
   }
 

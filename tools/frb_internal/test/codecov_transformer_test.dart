@@ -25,6 +25,9 @@ void main() {
     // thus ignore it by default.
     expect(shouldKeepLine('}'), false);
     expect(shouldKeepLine('   };'), false);
+    expect(shouldKeepLine('{'), false);
+    expect(shouldKeepLine('    )*'), false);
+    expect(shouldKeepLine('#[enum_dispatch]'), false);
   });
 
   test(
@@ -209,6 +212,80 @@ void main() {
       expect(transformed['5'], null);
       expect(transformed['6'], 1);
       expect(transformed['12'], 2);
+    },
+  );
+
+  test(
+    'transformCodecovFileCoverageForTest ignores uncovered constructor scaffolding and call continuations',
+    () {
+      final fileLines = [
+        'fn demo() {',
+        '    let value = Some(',
+        '        DemoStruct {',
+        '            field: Some(',
+        '                other.call()',
+        '                    .status',
+        '            ),',
+        '        },',
+        '    );',
+        '}',
+      ];
+
+      final transformed = transformCodecovFileCoverageForTest(fileLines, {
+        '2': 0,
+        '3': 0,
+        '4': 0,
+        '5': 1,
+        '6': 0,
+        '7': 0,
+        '8': 0,
+        '9': 0,
+      });
+
+      expect(transformed['2'], null);
+      expect(transformed['3'], null);
+      expect(transformed['4'], null);
+      expect(transformed['5'], 1);
+      expect(transformed['6'], null);
+      expect(transformed['7'], null);
+      expect(transformed['8'], null);
+      expect(transformed['9'], null);
+    },
+  );
+
+  test(
+    'transformCodecovFileCoverageForTest ignores uncovered multiline derive and static ref noise',
+    () {
+      final fileLines = [
+        '#[derive(',
+        '    Debug, Clone, Copy,',
+        ')]',
+        'lazy_static! {',
+        '    static ref FILTER: Regex =',
+        '        Regex::new("abc")',
+        '            .unwrap();',
+        '}',
+      ];
+
+      final transformed = transformCodecovFileCoverageForTest(fileLines, {
+        '1': 0,
+        '2': 0,
+        '3': 0,
+        '4': 0,
+        '5': 0,
+        '6': 0,
+        '7': 0,
+        '8': 0,
+      });
+
+      expect(transformed['1'], null);
+      expect(transformed['2'], null);
+      expect(transformed['3'], null);
+      expect(transformed['4'], null);
+      expect(transformed['5'], null);
+      expect(transformed['6'], null);
+      expect(transformed['7'], null);
+      expect(transformed['8'], null);
     },
   );
 
