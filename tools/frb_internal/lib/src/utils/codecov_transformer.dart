@@ -84,12 +84,36 @@ Map<String, dynamic> _transformByCodeComments(
 
 // see the test file for details of this regex
 final _kIgnoreLineRegex = RegExp(
-  r'^\s*(#\[derive\(.*\)\]|[)}]\?.*|//.*|\};?)\s*$',
+  r'^\s*(|#\[derive\(.*\)\]|[)}]\?.*|//.*|\};?)\s*$',
 );
+
+final _kStructFieldDeclarationRegex = RegExp(
+  r'^\s*(pub(?:\([^)]*\))?\s+)?[A-Za-z_][A-Za-z0-9_]*\s*:\s*[^=].*,\s*$',
+);
+
+final _kSimpleDestructuredFieldRegex = RegExp(
+  r'^\s*[A-Za-z_][A-Za-z0-9_]*,\s*$',
+);
+
+final _kNamedDestructuredFieldPrefixRegex = RegExp(
+  r'^\s*[A-Za-z_][A-Za-z0-9_]*:\s*$',
+);
+
+final _kDotDotPatternRegex = RegExp(r'^\s*\.\.,?\s*$');
+
+final _kLetDestructureStartRegex = RegExp(r'^\s*let\b(?!.*=).*\{\s*$');
+
+final _kVariantDestructureStartRegex = RegExp(
+  r'^\s*[A-Za-z_][A-Za-z0-9_:<>]*\([^)]*\{\s*$',
+);
+
+final _kDestructureEndRegex = RegExp(r'}\s*(=|if .*=>|=>)');
 
 @visibleForTesting
 bool shouldKeepLine(String line, {bool isFormatCallNoise = false}) =>
-    !isFormatCallNoise && !_kIgnoreLineRegex.hasMatch(line);
+    !isFormatCallNoise &&
+    !_kIgnoreLineRegex.hasMatch(line) &&
+    !_kStructFieldDeclarationRegex.hasMatch(line);
 
 @visibleForTesting
 Set<int> computeFormatCallNoiseLines(List<String> fileLines) {
@@ -183,6 +207,13 @@ Map<String, dynamic> transformCodecovFileCoverageForTest(
   List<String> fileLines,
   Map<String, dynamic> raw,
 ) {
+  return postprocessCodecovFileCoverage(fileLines, raw);
+}
+
+Map<String, dynamic> postprocessCodecovFileCoverage(
+  List<String> fileLines,
+  Map<String, dynamic> raw,
+) {
   var ans = raw;
   ans = _transformByCodeComments(fileLines, ans);
   ans = _transformByPatterns(fileLines, ans);
@@ -194,6 +225,7 @@ Map<String, dynamic> _transformByPatterns(
   Map<String, dynamic> raw,
 ) {
   final formatCallNoiseLines = computeFormatCallNoiseLines(fileLines);
+  final structuralNoiseLines = computeStructuralNoiseLines(fileLines);
 
   return raw.map((key, value) {
     final lineNumber = int.parse(key);
@@ -201,6 +233,7 @@ Map<String, dynamic> _transformByPatterns(
     return MapEntry(
       key,
       ((value is int && value > 0) ||
+              !structuralNoiseLines.contains(lineNumber) &&
               shouldKeepLine(
                 fileLine,
                 isFormatCallNoise: formatCallNoiseLines.contains(lineNumber),
@@ -209,4 +242,94 @@ Map<String, dynamic> _transformByPatterns(
           : null,
     );
   });
+}
+
+@visibleForTesting
+Set<int> computeStructuralNoiseLines(List<String> fileLines) {
+  final ans = <int>{};
+  ans.addAll(_computeMultilineStructFieldLines(fileLines));
+  ans.addAll(_computeMultilineDestructureLines(fileLines));
+  return ans;
+}
+
+Set<int> _computeMultilineStructFieldLines(List<String> fileLines) {
+  final ans = <int>{};
+
+  var insideStruct = false;
+  var braceDepth = 0;
+  for (var i = 0; i < fileLines.length; i++) {
+    final line = fileLines[i];
+    final trimmed = line.trim();
+    final lineNumber = i + 1;
+
+    if (!insideStruct &&
+        RegExp(r'^\s*(pub(?:\([^)]*\))?\s+)?struct\b.*\{\s*$').hasMatch(line)) {
+      insideStruct = true;
+      braceDepth = _computeBraceDelta(line);
+      continue;
+    }
+
+    if (!insideStruct) continue;
+
+    if (_kStructFieldDeclarationRegex.hasMatch(line)) {
+      ans.add(lineNumber);
+    }
+
+    braceDepth += _computeBraceDelta(line);
+    if (braceDepth <= 0 || trimmed == '}') {
+      insideStruct = false;
+      braceDepth = 0;
+    }
+  }
+
+  return ans;
+}
+
+Set<int> _computeMultilineDestructureLines(List<String> fileLines) {
+  final ans = <int>{};
+
+  var insideDestructure = false;
+  for (var i = 0; i < fileLines.length; i++) {
+    final line = fileLines[i];
+    final trimmed = line.trim();
+    final lineNumber = i + 1;
+
+    if (!insideDestructure &&
+        (_kLetDestructureStartRegex.hasMatch(line) ||
+            _kVariantDestructureStartRegex.hasMatch(line))) {
+      insideDestructure = true;
+      ans.add(lineNumber);
+      continue;
+    }
+
+    if (!insideDestructure) continue;
+
+    if (_kSimpleDestructuredFieldRegex.hasMatch(line) ||
+        _kNamedDestructuredFieldPrefixRegex.hasMatch(line) ||
+        _kDotDotPatternRegex.hasMatch(line) ||
+        trimmed == '),' ||
+        trimmed == '})' ||
+        trimmed == '}),' ||
+        trimmed == '}' ||
+        trimmed == '},' ||
+        trimmed.endsWith('{')) {
+      ans.add(lineNumber);
+    }
+
+    if (_kDestructureEndRegex.hasMatch(trimmed)) {
+      ans.add(lineNumber);
+      insideDestructure = false;
+    }
+  }
+
+  return ans;
+}
+
+int _computeBraceDelta(String line) {
+  var delta = 0;
+  for (final char in line.split('')) {
+    if (char == '{') delta++;
+    if (char == '}') delta--;
+  }
+  return delta;
 }

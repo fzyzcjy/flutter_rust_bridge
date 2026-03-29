@@ -111,6 +111,108 @@ void main() {
   );
 
   test(
+    'transformCodecovFileCoverageForTest ignores uncovered struct fields',
+    () {
+      final fileLines = [
+        'pub(crate) struct Cli {',
+        '    /// Show debug messages.',
+        '    #[arg(short, long)]',
+        '    pub verbose: bool,',
+        '',
+        '    #[command(subcommand)]',
+        '    pub(crate) command: Commands,',
+        '}',
+      ];
+
+      final transformed = transformCodecovFileCoverageForTest(fileLines, {
+        '4': 0,
+        '7': 0,
+      });
+
+      expect(transformed['4'], null);
+      expect(transformed['7'], null);
+    },
+  );
+
+  test(
+    'transformCodecovFileCoverageForTest ignores uncovered multiline destructure noise',
+    () {
+      final fileLines = [
+        'attrs',
+        '    .iter()',
+        '    .filter_map(|attr| match &attr.meta {',
+        '        Meta::NameValue(MetaNameValue {',
+        '            path,',
+        '            value:',
+        '                Expr::Lit(ExprLit {',
+        '                    lit: Lit::Str(lit), ..',
+        '                }),',
+        '            ..',
+        '        }) if path.is_ident("doc") => Some(parse_comment(&lit.value())),',
+        '        _ => None,',
+        '    })',
+      ];
+
+      final transformed = transformCodecovFileCoverageForTest(fileLines, {
+        '4': 0,
+        '5': 1,
+        '6': 0,
+        '7': 0,
+        '8': 1,
+        '9': 0,
+        '10': 0,
+        '11': 1,
+      });
+
+      expect(transformed['4'], null);
+      expect(transformed['5'], 1);
+      expect(transformed['6'], null);
+      expect(transformed['7'], null);
+      expect(transformed['8'], 1);
+      expect(transformed['9'], null);
+      expect(transformed['10'], null);
+      expect(transformed['11'], 1);
+    },
+  );
+
+  test(
+    'transformCodecovFileCoverageForTest ignores uncovered let destructure noise',
+    () {
+      final fileLines = [
+        '    fn generate_class(&self) -> Option<ApiDartGeneratedClass> {',
+        '        let Info {',
+        '            dart_api_type,',
+        '            methods,',
+        '        } = self.compute_info(',
+        '            &GenerateApiMethodConfig {',
+        '                mode_static: GenerateApiMethodMode::DeclAndImpl,',
+        '                mode_non_static: GenerateApiMethodMode::DeclOnly,',
+        '            },',
+        '            "",',
+        '        );',
+        '        let rust_api_type = self.mir.rust_api_type();',
+        '    }',
+      ];
+
+      final transformed = transformCodecovFileCoverageForTest(fileLines, {
+        '2': 0,
+        '3': 0,
+        '4': 0,
+        '5': 0,
+        '6': 1,
+        '12': 2,
+      });
+
+      expect(transformed['2'], null);
+      expect(transformed['3'], null);
+      expect(transformed['4'], null);
+      expect(transformed['5'], null);
+      expect(transformed['6'], 1);
+      expect(transformed['12'], 2);
+    },
+  );
+
+  test(
     'computeFormatCallNoiseLines does not ignore ordinary multiline strings',
     () {
       final fileLines = ['let sql = "', 'SELECT *', 'FROM demo', '";'];

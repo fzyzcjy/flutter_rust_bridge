@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:glob/glob.dart';
+import 'package:flutter_rust_bridge_internal/src/utils/codecov_transformer.dart';
 import 'package:meta/meta.dart';
 import 'package:path/path.dart' as path;
 import 'package:yaml/yaml.dart';
@@ -38,6 +39,7 @@ Future<CodecovPreaggregateResult> preaggregateCodecovReports({
   String? outputPath,
   String? ignoreConfigPath,
 }) async {
+  final effectiveIgnoreConfigPath = ignoreConfigPath ?? findNearestCodecovYamlPath();
   final reportFiles =
       Directory(inputDir)
           .listSync(recursive: true)
@@ -46,6 +48,9 @@ Future<CodecovPreaggregateResult> preaggregateCodecovReports({
           .toList()
         ..sort((a, b) => a.path.compareTo(b.path));
   final ignoreMatcher = loadCodecovIgnoreMatcher(ignoreConfigPath);
+  final repoRoot = effectiveIgnoreConfigPath == null
+      ? Directory.current.path
+      : path.dirname(effectiveIgnoreConfigPath);
 
   final mergedCoverage = <String, Map<String, dynamic>>{};
 
@@ -72,7 +77,21 @@ Future<CodecovPreaggregateResult> preaggregateCodecovReports({
     });
   }
 
-  final sortedMergedCoverage = _sortMergedCoverage(mergedCoverage);
+  final postprocessedMergedCoverage = mergedCoverage.map((
+    filename,
+    fileCoverage,
+  ) {
+    final file = File(path.join(repoRoot, filename));
+    final transformedCoverage = file.existsSync()
+        ? postprocessCodecovFileCoverage(
+            file.readAsStringSync().split('\n'),
+            fileCoverage,
+          )
+        : fileCoverage;
+    return MapEntry(filename, transformedCoverage);
+  });
+
+  final sortedMergedCoverage = _sortMergedCoverage(postprocessedMergedCoverage);
   final result = CodecovPreaggregateResult(
     mergedCoverage: {'coverage': sortedMergedCoverage},
     reportCount: reportFiles.length,
