@@ -1016,11 +1016,24 @@ jobs:
       - uses: actions/checkout@v5
         with:
           submodules: recursive
+      - uses: flutter-actions/setup-flutter@v4
+        with:
+          cache: true
+          version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
       - name: Download artifacts
         uses: actions/download-artifact@v5
         with:
           path: downloaded-artifacts/
           pattern: '*-coverage'
+      - run: tree downloaded-artifacts
+      - name: Preaggregate Rust coverage
+        run: |-
+          cd tools/frb_internal
+          dart pub get
+          dart run bin/flutter_rust_bridge_internal.dart codecov-preaggregate \
+            --input-dir ../../downloaded-artifacts \
+            --output ../../downloaded-artifacts/preaggregated/rust/codecov.json
+          find ../../downloaded-artifacts -name codecov.json ! -path '../../downloaded-artifacts/preaggregated/rust/codecov.json' -delete
       - run: tree downloaded-artifacts
 
       - uses: codecov/codecov-action@v5
