@@ -43,6 +43,26 @@ void main() {
     });
   });
 
+  group('CodecovIgnoreMatcher', () {
+    test('matches directory and suffix ignore patterns', () {
+      const matcher = CodecovIgnoreMatcher(
+        patterns: [
+          '**/example/',
+          '**/*.g.dart',
+          '**/*.freezed.dart',
+          '**/test/',
+          'frb_example/',
+        ],
+      );
+
+      expect(matcher.matches('frb_example/pure_dart/lib/main.dart'), isTrue);
+      expect(matcher.matches('frb_codegen/lib/src/foo.g.dart'), isTrue);
+      expect(matcher.matches('frb_codegen/lib/src/foo.freezed.dart'), isTrue);
+      expect(matcher.matches('frb_codegen/test/foo_test.dart'), isTrue);
+      expect(matcher.matches('frb_codegen/src/main.dart'), isFalse);
+    });
+  });
+
   test('preaggregateCodecovReports merges reports and computes coverage', () async {
     final tempDir = await Directory.systemTemp.createTemp();
     addTearDown(() async => tempDir.delete(recursive: true));

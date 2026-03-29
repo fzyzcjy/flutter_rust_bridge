@@ -48,6 +48,10 @@ class CodecovPreaggregateCommand extends Command<void> {
       ..addOption(
         'output',
         help: 'Optional output file path for merged codecov.json',
+      )
+      ..addOption(
+        'ignore-config',
+        help: 'Optional path to codecov.yml for ignore rules',
       );
   }
 
@@ -55,10 +59,12 @@ class CodecovPreaggregateCommand extends Command<void> {
   Future<void> run() async {
     final inputDir = argResults!['input-dir'] as String;
     final output = argResults!['output'] as String?;
+    final ignoreConfig = argResults!['ignore-config'] as String?;
 
     final result = await preaggregateCodecovReports(
       inputDir: inputDir,
       outputPath: output,
+      ignoreConfigPath: ignoreConfig,
     );
 
     print(

@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:glob/glob.dart';
 import 'package:meta/meta.dart';
 import 'package:path/path.dart' as path;
+import 'package:yaml/yaml.dart';
 
 class CodecovCoverageSummary {
   final int coveredLines;
@@ -34,6 +36,7 @@ class CodecovPreaggregateResult {
 Future<CodecovPreaggregateResult> preaggregateCodecovReports({
   required String inputDir,
   String? outputPath,
+  String? ignoreConfigPath,
 }) async {
   final reportFiles =
       Directory(inputDir)
@@ -42,6 +45,7 @@ Future<CodecovPreaggregateResult> preaggregateCodecovReports({
           .where((file) => path.basename(file.path) == 'codecov.json')
           .toList()
         ..sort((a, b) => a.path.compareTo(b.path));
+  final ignoreMatcher = loadCodecovIgnoreMatcher(ignoreConfigPath);
 
   final mergedCoverage = <String, Map<String, dynamic>>{};
 
@@ -51,6 +55,7 @@ Future<CodecovPreaggregateResult> preaggregateCodecovReports({
     final coverage = raw['coverage'] as Map<String, dynamic>;
     coverage.forEach((filename, fileCoverageRaw) {
       final normalizedFilename = normalizeCodecovFilename(filename);
+      if (ignoreMatcher.matches(normalizedFilename)) return;
       final fileCoverage = (fileCoverageRaw as Map<String, dynamic>)
           .cast<String, dynamic>();
       final mergedFileCoverage = mergedCoverage.putIfAbsent(
@@ -84,6 +89,37 @@ Future<CodecovPreaggregateResult> preaggregateCodecovReports({
   }
 
   return result;
+}
+
+CodecovIgnoreMatcher loadCodecovIgnoreMatcher(String? configPath) {
+  final effectiveConfigPath = configPath ?? findNearestCodecovYamlPath();
+  if (effectiveConfigPath == null) {
+    return const CodecovIgnoreMatcher(patterns: []);
+  }
+
+  final raw = loadYaml(File(effectiveConfigPath).readAsStringSync()) as YamlMap;
+  final patterns = (raw['ignore'] as YamlList? ?? const [])
+      .map((item) => item.toString())
+      .toList();
+  return CodecovIgnoreMatcher(patterns: patterns);
+}
+
+String? findNearestCodecovYamlPath() {
+  var current = Directory.current.absolute;
+  while (true) {
+    for (final candidate in [
+      path.join(current.path, 'codecov.yml'),
+      path.join(current.path, '.codecov.yml'),
+      path.join(current.path, 'codecov.yaml'),
+      path.join(current.path, '.codecov.yaml'),
+    ]) {
+      if (File(candidate).existsSync()) return candidate;
+    }
+
+    final parent = current.parent;
+    if (parent.path == current.path) return null;
+    current = parent;
+  }
 }
 
 CodecovCoverageSummary computeCodecovCoverageSummary(
@@ -191,4 +227,23 @@ String normalizeCodecovFilename(String filename) {
   }
 
   return normalized;
+}
+
+class CodecovIgnoreMatcher {
+  final List<String> patterns;
+
+  const CodecovIgnoreMatcher({required this.patterns});
+
+  bool matches(String filename) {
+    final normalizedFilename = filename.replaceAll(r'\', '/');
+    return patterns.any(
+      (pattern) =>
+          Glob(_normalizeIgnorePattern(pattern)).matches(normalizedFilename),
+    );
+  }
+}
+
+String _normalizeIgnorePattern(String pattern) {
+  if (pattern.endsWith('/')) return '${pattern}**';
+  return pattern;
 }
