@@ -88,18 +88,21 @@ void main() {
     },
   );
 
-  test('transformCodecovFileCoverageForTest ignores uncovered struct fields', () {
-    _expectFixtureTransformation([
-      '[_,_] pub(crate) struct Cli {',
-      '[_,_]     /// Show debug messages.',
-      '[_,_]     #[arg(short, long)]',
-      '[0,null]     pub verbose: bool,',
-      '[_,_] ',
-      '[_,_]     #[command(subcommand)]',
-      '[0,null]     pub(crate) command: Commands,',
-      '[_,_] }',
-    ]);
-  });
+  test(
+    'transformCodecovFileCoverageForTest ignores uncovered struct fields',
+    () {
+      _expectFixtureTransformation([
+        '[_,_] pub(crate) struct Cli {',
+        '[_,_]     /// Show debug messages.',
+        '[_,_]     #[arg(short, long)]',
+        '[0,null]     pub verbose: bool,',
+        '[_,_] ',
+        '[_,_]     #[command(subcommand)]',
+        '[0,null]     pub(crate) command: Commands,',
+        '[_,_] }',
+      ]);
+    },
+  );
 
   test(
     'transformCodecovFileCoverageForTest ignores uncovered multiline destructure noise',
@@ -195,16 +198,19 @@ void main() {
     },
   );
 
-  test('computeFormatCallNoiseLines does not ignore ordinary multiline strings', () {
-    final fileLines = _parseCoverageFixture([
-      '[_,_] let sql = "',
-      '[_,_] SELECT *',
-      '[_,_] FROM demo',
-      '[_,_] ";',
-    ]).fileLines;
+  test(
+    'computeFormatCallNoiseLines does not ignore ordinary multiline strings',
+    () {
+      final fileLines = _parseCoverageFixture([
+        '[_,_] let sql = "',
+        '[_,_] SELECT *',
+        '[_,_] FROM demo',
+        '[_,_] ";',
+      ]).fileLines;
 
-    expect(computeFormatCallNoiseLines(fileLines), isEmpty);
-  });
+      expect(computeFormatCallNoiseLines(fileLines), isEmpty);
+    },
+  );
 
   test(
     'computeFormatCallNoiseLines handles nested parentheses inside format call',
@@ -233,19 +239,22 @@ void main() {
     },
   );
 
-  test('computeFormatCallNoiseLines ignores multiple format calls in one file', () {
-    final fileLines = _parseCoverageFixture([
-      '[_,_] let first = format!(',
-      '[_,_]     "{} {}",',
-      '[_,_]     one,',
-      '[_,_]     two,',
-      '[_,_] );',
-      '[_,_] let keep = do_work();',
-      '[_,_] let second = format!("value={}", three);',
-    ]).fileLines;
+  test(
+    'computeFormatCallNoiseLines ignores multiple format calls in one file',
+    () {
+      final fileLines = _parseCoverageFixture([
+        '[_,_] let first = format!(',
+        '[_,_]     "{} {}",',
+        '[_,_]     one,',
+        '[_,_]     two,',
+        '[_,_] );',
+        '[_,_] let keep = do_work();',
+        '[_,_] let second = format!("value={}", three);',
+      ]).fileLines;
 
-    expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4, 5, 7});
-  });
+      expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4, 5, 7});
+    },
+  );
 
   test(
     'computeFormatCallNoiseLines ignores format call with escaped quotes in strings',
@@ -360,17 +369,20 @@ void main() {
     },
   );
 
-  test('computeFormatCallNoiseLines stops at line comments inside format call', () {
-    final fileLines = _parseCoverageFixture([
-      '[_,_] let content = format!(',
-      '[_,_]     "{} {}", // comment with ) and format!(',
-      '[_,_]     one,',
-      '[_,_]     two,',
-      '[_,_] );',
-    ]).fileLines;
+  test(
+    'computeFormatCallNoiseLines stops at line comments inside format call',
+    () {
+      final fileLines = _parseCoverageFixture([
+        '[_,_] let content = format!(',
+        '[_,_]     "{} {}", // comment with ) and format!(',
+        '[_,_]     one,',
+        '[_,_]     two,',
+        '[_,_] );',
+      ]).fileLines;
 
-    expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4, 5});
-  });
+      expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4, 5});
+    },
+  );
 
   test(
     'transformCodecovFileCoverageForTest preserves hit lines even inside format call',
@@ -498,9 +510,9 @@ _CoverageFixture _parseCoverageFixture(List<String> fixtureLines) {
 
   for (var i = 0; i < fixtureLines.length; i++) {
     final lineNumber = (i + 1).toString();
-    final match = RegExp(r'^\[([^,]+),([^\]]+)\]\s?(.*)$').firstMatch(
-      fixtureLines[i],
-    );
+    final match = RegExp(
+      r'^\[([^,]+),([^\]]+)\]\s?(.*)$',
+    ).firstMatch(fixtureLines[i]);
     if (match == null) {
       throw ArgumentError('Invalid fixture line: ${fixtureLines[i]}');
     }
