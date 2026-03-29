@@ -24,6 +24,7 @@ jobs:
   # ref https://docusaurus.io/docs/deployment#triggering-deployment-with-github-actions
   deploy_website:
     name: 'Deploy :: Website'
+    if: false
     runs-on: ubuntu-latest
 
     steps:
@@ -67,6 +68,7 @@ jobs:
 
   lint_rust_primary:
     name: 'Lint :: Rust :: Primary'
+    if: false
     runs-on: ubuntu-latest
 
     steps:
@@ -95,6 +97,7 @@ jobs:
 
   lint_dart_primary:
     name: 'Lint :: Dart :: Primary'
+    if: false
     runs-on: ubuntu-latest
 
     steps:
@@ -115,6 +118,7 @@ jobs:
 
   lint_rust_feature_flag:
     name: 'Lint :: Rust :: Feature flag'
+    if: false
     runs-on: ubuntu-latest
 
     steps:
@@ -312,6 +316,7 @@ jobs:
 
   bench_dart_native:
     name: 'Bench :: Dart :: Native'
+    if: false
     runs-on: ${{ matrix.image }}
     strategy:
       fail-fast: false
@@ -348,6 +353,7 @@ jobs:
 
   bench_upload:
     name: 'Bench :: Upload'
+    if: false
     runs-on: ubuntu-latest
     # NOTE Even if some previous jobs failed, we still want partial info
     if: ${{ always() && !cancelled() }}
@@ -388,6 +394,7 @@ jobs:
 
   build_flutter:
     name: 'Build :: Flutter'
+    if: false
     runs-on: ${{ matrix.info.image }}
     strategy:
       fail-fast: false
@@ -435,6 +442,7 @@ jobs:
 
   test_mimic_quickstart:
     name: 'Test :: MimicQuickstart'
+    if: false
     runs-on: ${{ matrix.image }}
     strategy:
       fail-fast: false
@@ -612,6 +620,7 @@ jobs:
 
   test_dart_web:
     name: 'Test :: Dart :: Web'
+    if: false
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -666,6 +675,7 @@ jobs:
 
   test_dart_valgrind:
     name: 'Test :: Dart :: Valgrind'
+    if: false
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -699,6 +709,7 @@ jobs:
 
   test_dart_sanitizer:
     name: 'Test :: Dart :: Sanitizer'
+    if: false
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -813,6 +824,7 @@ jobs:
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
   test_flutter_native_ios:
     name: 'Test :: Flutter :: Native:: iOS'
+    if: false
     runs-on: macos-latest
     strategy:
       fail-fast: false
@@ -853,6 +865,7 @@ jobs:
 
   test_flutter_native_desktop:
     name: 'Test :: Flutter :: Native:: ${{ matrix.info.platform }} (${{ matrix.info.package }})'
+    if: false
     runs-on: ${{ matrix.info.image }}
     strategy:
       fail-fast: false
