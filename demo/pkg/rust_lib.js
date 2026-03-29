@@ -463,7 +463,7 @@ let wasm_bindgen;
             const ret = arg0.data;
             return ret;
         };
-        imports.wbg.__wbg_error_076d4beefd7cfd14 = function(arg0, arg1) {
+        imports.wbg.__wbg_error_2cdfbae2e8e23e41 = function(arg0, arg1) {
             console.error(getStringFromWasm0(arg0, arg1));
         };
         imports.wbg.__wbg_error_7534b8e9a36f1ab4 = function(arg0, arg1) {
@@ -606,7 +606,7 @@ let wasm_bindgen;
         imports.wbg.__wbg_postMessage_1e07b7e27afe8015 = function() { return handleError(function (arg0, arg1) {
             arg0.postMessage(arg1);
         }, arguments) };
-        imports.wbg.__wbg_postMessage_33814d4dc32c2dcf = function() { return handleError(function (arg0, arg1) {
+        imports.wbg.__wbg_postMessage_68b94be862c0db01 = function() { return handleError(function (arg0, arg1) {
             arg0.postMessage(arg1);
         }, arguments) };
         imports.wbg.__wbg_postMessage_925a86ed193341b7 = function() { return handleError(function (arg0, arg1, arg2) {
