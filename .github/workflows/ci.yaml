@@ -353,10 +353,9 @@ jobs:
 
   bench_upload:
     name: 'Bench :: Upload'
-    if: false
     runs-on: ubuntu-latest
     # NOTE Even if some previous jobs failed, we still want partial info
-    if: ${{ always() && !cancelled() }}
+    if: false
     needs:
       # NOTE We do this to ensure bench upload *after* deploy website.
       # Otherwise, if they are run concurrently, they can push to git at the same time, causing failure for one of them
