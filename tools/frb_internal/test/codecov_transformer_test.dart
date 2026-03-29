@@ -530,4 +530,93 @@ void main() {
       expect(transformed['5'], null);
     },
   );
+
+  test(
+    'transformCodecovFileCoverageForTest keeps uncovered semantic control-flow lines',
+    () {
+      final fileLines = [
+        'fn demo(raw: *mut c_void, latest: Output, dart_coverage: bool) -> Result<Self> {',
+        '    if condition {',
+        '        do_work()?;',
+        '    } else {',
+        '        check_exit_code(&latest)?;',
+        '    }',
+        '    if dart_coverage {',
+        '        return Self(raw);',
+        '    }',
+        '    Ok(())',
+        '}',
+      ];
+
+      final transformed = transformCodecovFileCoverageForTest(fileLines, {
+        '4': 0,
+        '5': 0,
+        '8': 0,
+        '10': 0,
+      });
+
+      expect(transformed['4'], 0);
+      expect(transformed['5'], 0);
+      expect(transformed['8'], 0);
+      expect(transformed['10'], 0);
+    },
+  );
+
+  test(
+    'transformCodecovFileCoverageForTest keeps uncovered unsafe and error-handling lines',
+    () {
+      final fileLines = [
+        'fn demo(thread_result: Result<(), Error>, raw: *mut c_void) {',
+        '    unsafe {',
+        '        call_ffi(raw);',
+        '    }',
+        '    if let Err(error) = thread_result {',
+        '        handle_non_sync_panic_error::<Rust2DartCodec>(error);',
+        '    }',
+        '}',
+      ];
+
+      final transformed = transformCodecovFileCoverageForTest(fileLines, {
+        '2': 0,
+        '5': 0,
+        '6': 0,
+      });
+
+      expect(transformed['2'], 0);
+      expect(transformed['5'], 0);
+      expect(transformed['6'], 0);
+    },
+  );
+
+  test(
+    'transformCodecovFileCoverageForTest keeps uncovered semantic method calls while filtering pure argument scaffolding',
+    () {
+      final fileLines = [
+        'fn demo(manifest_path: &Path) -> Result<()> {',
+        '    run(',
+        '        "cargo",',
+        '        false,',
+        '        manifest_path.parent(),',
+        '    )?;',
+        '    Some(_) => None,',
+        '}',
+      ];
+
+      final transformed = transformCodecovFileCoverageForTest(fileLines, {
+        '2': 0,
+        '3': 0,
+        '4': 0,
+        '5': 0,
+        '6': 0,
+        '7': 0,
+      });
+
+      expect(transformed['2'], 0);
+      expect(transformed['3'], null);
+      expect(transformed['4'], null);
+      expect(transformed['5'], 0);
+      expect(transformed['6'], null);
+      expect(transformed['7'], 0);
+    },
+  );
 }
