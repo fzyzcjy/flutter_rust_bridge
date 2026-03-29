@@ -262,10 +262,12 @@ Map<String, dynamic> _transformByPatterns(
       key,
       ((value is int && value > 0) ||
               !structuralNoiseLines.contains(lineNumber) &&
-              shouldKeepLine(
-                fileLine,
-                isFormatCallNoise: formatCallNoiseLines.contains(lineNumber),
-              ))
+                  shouldKeepLine(
+                    fileLine,
+                    isFormatCallNoise: formatCallNoiseLines.contains(
+                      lineNumber,
+                    ),
+                  ))
           ? value
           : null,
     );
@@ -364,7 +366,9 @@ Set<int> _computeMultilineDeriveLines(List<String> fileLines) {
     final trimmed = fileLines[i].trim();
     final lineNumber = i + 1;
 
-    if (!insideDerive && trimmed.startsWith('#[derive(') && !trimmed.endsWith(')]')) {
+    if (!insideDerive &&
+        trimmed.startsWith('#[derive(') &&
+        !trimmed.endsWith(')]')) {
       insideDerive = true;
       ans.add(lineNumber);
       continue;
@@ -390,8 +394,9 @@ Set<int> _computeMultilineStaticRefLines(List<String> fileLines) {
     final lineNumber = i + 1;
 
     if (!insideStaticRef &&
-        RegExp(r'^\s*(?:pub\([^)]*\)\s+)?static ref [A-Za-z_][A-Za-z0-9_]*: .*=+\s*$')
-            .hasMatch(fileLines[i])) {
+        RegExp(
+          r'^\s*(?:pub\([^)]*\)\s+)?static ref [A-Za-z_][A-Za-z0-9_]*: .*=+\s*$',
+        ).hasMatch(fileLines[i])) {
       insideStaticRef = true;
       continue;
     }
