@@ -1242,7 +1242,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   DateTime dco_decode_Chrono_Local(dynamic raw);
 
   @protected
-  DateTime dco_decode_Chrono_Naive(dynamic raw);
+  DateTime dco_decode_Chrono_NaiveDate(dynamic raw);
+
+  @protected
+  DateTime dco_decode_Chrono_NaiveDateTime(dynamic raw);
 
   @protected
   DateTime dco_decode_Chrono_Utc(dynamic raw);
@@ -2324,7 +2327,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Duration dco_decode_box_autoadd_Chrono_Duration(dynamic raw);
 
   @protected
-  DateTime dco_decode_box_autoadd_Chrono_Naive(dynamic raw);
+  DateTime dco_decode_box_autoadd_Chrono_NaiveDate(dynamic raw);
+
+  @protected
+  DateTime dco_decode_box_autoadd_Chrono_NaiveDateTime(dynamic raw);
 
   @protected
   DateTime dco_decode_box_autoadd_Chrono_Utc(dynamic raw);
@@ -3721,7 +3727,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<DateTime> dco_decode_list_Chrono_Local(dynamic raw);
 
   @protected
-  List<DateTime> dco_decode_list_Chrono_Naive(dynamic raw);
+  List<DateTime> dco_decode_list_Chrono_NaiveDateTime(dynamic raw);
 
   @protected
   List<Object> dco_decode_list_DartOpaque(dynamic raw);
@@ -4340,7 +4346,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Duration? dco_decode_opt_box_autoadd_Chrono_Duration(dynamic raw);
 
   @protected
-  DateTime? dco_decode_opt_box_autoadd_Chrono_Naive(dynamic raw);
+  DateTime? dco_decode_opt_box_autoadd_Chrono_NaiveDate(dynamic raw);
+
+  @protected
+  DateTime? dco_decode_opt_box_autoadd_Chrono_NaiveDateTime(dynamic raw);
 
   @protected
   DateTime? dco_decode_opt_box_autoadd_Chrono_Utc(dynamic raw);
@@ -5936,7 +5945,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   DateTime sse_decode_Chrono_Local(SseDeserializer deserializer);
 
   @protected
-  DateTime sse_decode_Chrono_Naive(SseDeserializer deserializer);
+  DateTime sse_decode_Chrono_NaiveDate(SseDeserializer deserializer);
+
+  @protected
+  DateTime sse_decode_Chrono_NaiveDateTime(SseDeserializer deserializer);
 
   @protected
   DateTime sse_decode_Chrono_Utc(SseDeserializer deserializer);
@@ -7000,7 +7012,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Duration sse_decode_box_autoadd_Chrono_Duration(SseDeserializer deserializer);
 
   @protected
-  DateTime sse_decode_box_autoadd_Chrono_Naive(SseDeserializer deserializer);
+  DateTime sse_decode_box_autoadd_Chrono_NaiveDate(
+      SseDeserializer deserializer);
+
+  @protected
+  DateTime sse_decode_box_autoadd_Chrono_NaiveDateTime(
+      SseDeserializer deserializer);
 
   @protected
   DateTime sse_decode_box_autoadd_Chrono_Utc(SseDeserializer deserializer);
@@ -8580,7 +8597,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<DateTime> sse_decode_list_Chrono_Local(SseDeserializer deserializer);
 
   @protected
-  List<DateTime> sse_decode_list_Chrono_Naive(SseDeserializer deserializer);
+  List<DateTime> sse_decode_list_Chrono_NaiveDateTime(
+      SseDeserializer deserializer);
 
   @protected
   List<Object> sse_decode_list_DartOpaque(SseDeserializer deserializer);
@@ -9297,7 +9315,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
-  DateTime? sse_decode_opt_box_autoadd_Chrono_Naive(
+  DateTime? sse_decode_opt_box_autoadd_Chrono_NaiveDate(
+      SseDeserializer deserializer);
+
+  @protected
+  DateTime? sse_decode_opt_box_autoadd_Chrono_NaiveDateTime(
       SseDeserializer deserializer);
 
   @protected
@@ -11030,7 +11052,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_Chrono_Local(DateTime self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Chrono_Naive(DateTime self, SseSerializer serializer);
+  void sse_encode_Chrono_NaiveDate(DateTime self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Chrono_NaiveDateTime(DateTime self, SseSerializer serializer);
 
   @protected
   void sse_encode_Chrono_Utc(DateTime self, SseSerializer serializer);
@@ -12158,7 +12183,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       Duration self, SseSerializer serializer);
 
   @protected
-  void sse_encode_box_autoadd_Chrono_Naive(
+  void sse_encode_box_autoadd_Chrono_NaiveDate(
+      DateTime self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_Chrono_NaiveDateTime(
       DateTime self, SseSerializer serializer);
 
   @protected
@@ -13654,7 +13683,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       List<DateTime> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_list_Chrono_Naive(
+  void sse_encode_list_Chrono_NaiveDateTime(
       List<DateTime> self, SseSerializer serializer);
 
   @protected
@@ -14365,7 +14394,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       Duration? self, SseSerializer serializer);
 
   @protected
-  void sse_encode_opt_box_autoadd_Chrono_Naive(
+  void sse_encode_opt_box_autoadd_Chrono_NaiveDate(
+      DateTime? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_Chrono_NaiveDateTime(
       DateTime? self, SseSerializer serializer);
 
   @protected

@@ -18,6 +18,9 @@ Future<DateTime> datetimeLocalTwinSse({required DateTime d}) =>
     RustLib.instance.api
         .crateApiPseudoManualChronoTypeTwinSseDatetimeLocalTwinSse(d: d);
 
+Future<DateTime> naivedateTwinSse({required DateTime d}) => RustLib.instance.api
+    .crateApiPseudoManualChronoTypeTwinSseNaivedateTwinSse(d: d);
+
 Future<DateTime> naivedatetimeTwinSse({required DateTime d}) =>
     RustLib.instance.api
         .crateApiPseudoManualChronoTypeTwinSseNaivedatetimeTwinSse(d: d);
@@ -57,18 +60,24 @@ class FeatureChronoTwinSse {
   final DateTime utc;
   final DateTime local;
   final Duration duration;
-  final DateTime naive;
+  final DateTime naiveDate;
+  final DateTime naiveDateTime;
 
   const FeatureChronoTwinSse({
     required this.utc,
     required this.local,
     required this.duration,
-    required this.naive,
+    required this.naiveDate,
+    required this.naiveDateTime,
   });
 
   @override
   int get hashCode =>
-      utc.hashCode ^ local.hashCode ^ duration.hashCode ^ naive.hashCode;
+      utc.hashCode ^
+      local.hashCode ^
+      duration.hashCode ^
+      naiveDate.hashCode ^
+      naiveDateTime.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -78,22 +87,25 @@ class FeatureChronoTwinSse {
           utc == other.utc &&
           local == other.local &&
           duration == other.duration &&
-          naive == other.naive;
+          naiveDate == other.naiveDate &&
+          naiveDateTime == other.naiveDateTime;
 }
 
 class TestChronoTwinSse {
   final DateTime? dt;
   final DateTime? dt2;
+  final DateTime? da;
   final Duration? du;
 
   const TestChronoTwinSse({
     this.dt,
     this.dt2,
+    this.da,
     this.du,
   });
 
   @override
-  int get hashCode => dt.hashCode ^ dt2.hashCode ^ du.hashCode;
+  int get hashCode => dt.hashCode ^ dt2.hashCode ^ da.hashCode ^ du.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -102,5 +114,6 @@ class TestChronoTwinSse {
           runtimeType == other.runtimeType &&
           dt == other.dt &&
           dt2 == other.dt2 &&
+          da == other.da &&
           du == other.du;
 }
