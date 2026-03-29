@@ -29,6 +29,7 @@
 * Upgrade versions and CI #2951 #2934 #2810 #2918 #2932 #2811
 * Update troubleshooting.md #2806
 * Create docker image for development #3025
+* Add configurable log levels to setup functions #3026 (thanks @futpib)
 
 ## 2.11.1
 
