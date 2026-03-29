@@ -39,7 +39,8 @@ Future<CodecovPreaggregateResult> preaggregateCodecovReports({
   String? outputPath,
   String? ignoreConfigPath,
 }) async {
-  final effectiveIgnoreConfigPath = ignoreConfigPath ?? findNearestCodecovYamlPath();
+  final effectiveIgnoreConfigPath =
+      ignoreConfigPath ?? findNearestCodecovYamlPath();
   final reportFiles =
       Directory(inputDir)
           .listSync(recursive: true)
