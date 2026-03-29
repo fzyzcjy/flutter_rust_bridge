@@ -8,6 +8,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
+import 'package:flutter_rust_bridge_internal/src/utils/codecov_preaggregator.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 
 part 'misc.g.dart';
@@ -25,7 +26,52 @@ List<Command<void>> createCommands() {
     SimpleCommand('precommit-integrate', precommitIntegrate),
     SimpleCommand('pub-get-all', pubGetAll),
     SimpleCommand('cargo-fetch-all', cargoFetchAll),
+    CodecovPreaggregateCommand(),
   ];
+}
+
+class CodecovPreaggregateCommand extends Command<void> {
+  @override
+  final String name = 'codecov-preaggregate';
+
+  @override
+  final String description =
+      'Preaggregate Rust codecov.json reports with union semantics';
+
+  CodecovPreaggregateCommand() {
+    argParser
+      ..addOption(
+        'input-dir',
+        help: 'Directory containing downloaded codecov.json artifacts',
+        mandatory: true,
+      )
+      ..addOption(
+        'output',
+        help: 'Optional output file path for merged codecov.json',
+      );
+  }
+
+  @override
+  Future<void> run() async {
+    final inputDir = argResults!['input-dir'] as String;
+    final output = argResults!['output'] as String?;
+
+    final result = await preaggregateCodecovReports(
+      inputDir: inputDir,
+      outputPath: output,
+    );
+
+    print(
+      'Merged ${result.reportCount} reports into ${result.inputFileCount} files.',
+    );
+    print(
+      'Coverage: ${result.summary.coveredLines}/${result.summary.executableLines} '
+      '(${result.summary.coveragePercent.toStringAsFixed(4)}%)',
+    );
+    if (output != null) {
+      print('Merged report written to $output');
+    }
+  }
 }
 
 Future<void> miscNormalizePubspec() async {
