@@ -24,7 +24,6 @@ jobs:
   # ref https://docusaurus.io/docs/deployment#triggering-deployment-with-github-actions
   deploy_website:
     name: 'Deploy :: Website'
-    if: false
     runs-on: ubuntu-latest
 
     steps:
@@ -68,7 +67,6 @@ jobs:
 
   lint_rust_primary:
     name: 'Lint :: Rust :: Primary'
-    if: false
     runs-on: ubuntu-latest
 
     steps:
@@ -97,7 +95,6 @@ jobs:
 
   lint_dart_primary:
     name: 'Lint :: Dart :: Primary'
-    if: false
     runs-on: ubuntu-latest
 
     steps:
@@ -118,7 +115,6 @@ jobs:
 
   lint_rust_feature_flag:
     name: 'Lint :: Rust :: Feature flag'
-    if: false
     runs-on: ubuntu-latest
 
     steps:
@@ -174,7 +170,6 @@ jobs:
 
   generate_run_frb_codegen_command_generate:
     name: 'Generate :: FRB Codegen :: Command Generate'
-    if: false
     runs-on: ${{ matrix.image }}
 
     strategy:
@@ -233,7 +228,6 @@ jobs:
 
   generate_run_frb_codegen_command_integrate:
     name: 'Generate :: FRB Codegen :: Command Integrate'
-    if: false
     runs-on: ${{ matrix.image }}
     env:
       RUST_LOG: debug
@@ -291,7 +285,7 @@ jobs:
           submodules: recursive
       - uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: 1.88.0
+          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
           components: rustfmt, clippy
       - run: rustup toolchain install ${{ env.FRB_RUSTFMT_NIGHTLY_VERSION }} && rustup component add rustfmt llvm-tools-preview --toolchain ${{ env.FRB_RUSTFMT_NIGHTLY_VERSION }}-x86_64-unknown-linux-gnu
       - run: yarn global add all-contributors-cli
@@ -299,9 +293,7 @@ jobs:
         with:
           cache: true
           version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
-      - uses: taiki-e/install-action@cargo-llvm-cov
-        with:
-          version: 0.6.24
+      - run: cargo install cargo-llvm-cov --version ${{ matrix.info.version == '1.85.0' && '0.6.21' || '0.6.24' }} --locked
 
       # execute
       - run: ./frb_internal generate-internal --set-exit-if-changed --coverage
@@ -316,7 +308,6 @@ jobs:
 
   bench_dart_native:
     name: 'Bench :: Dart :: Native'
-    if: false
     runs-on: ${{ matrix.image }}
     strategy:
       fail-fast: false
@@ -355,7 +346,7 @@ jobs:
     name: 'Bench :: Upload'
     runs-on: ubuntu-latest
     # NOTE Even if some previous jobs failed, we still want partial info
-    if: false
+    if: ${{ always() && !cancelled() }}
     needs:
       # NOTE We do this to ensure bench upload *after* deploy website.
       # Otherwise, if they are run concurrently, they can push to git at the same time, causing failure for one of them
@@ -393,7 +384,6 @@ jobs:
 
   build_flutter:
     name: 'Build :: Flutter'
-    if: false
     runs-on: ${{ matrix.info.image }}
     strategy:
       fail-fast: false
@@ -441,7 +431,6 @@ jobs:
 
   test_mimic_quickstart:
     name: 'Test :: MimicQuickstart'
-    if: false
     runs-on: ${{ matrix.image }}
     strategy:
       fail-fast: false
@@ -529,8 +518,22 @@ jobs:
       fail-fast: false
       matrix:
         info:
+          # run on various platforms
+          - image: macos-15-intel
+            version: ''
+          - image: windows-2025
+            version: ''
           - image: ubuntu-latest
-            version: 1.88.0
+            version: ''
+          # run on various rust versions
+          - image: ubuntu-latest
+            version: nightly
+          # tests the MSRV
+          # run on all rust packages, though only needed for frb_rust and frb_codegen
+          - image: ubuntu-latest
+            # update this, if a later MSRV is needed
+            # Need at least 1.85.0 for latest cargo-expand; if need older Rust version may pin a old cargo-expand
+            version: 1.85.0
 
     steps:
       # setup
@@ -549,9 +552,7 @@ jobs:
         with:
           sdk: ${{ env.FRB_MAIN_DART_VERSION }}
           architecture: x64
-      - uses: taiki-e/install-action@cargo-llvm-cov
-        with:
-          version: 0.6.24
+      - run: cargo install cargo-llvm-cov --version ${{ matrix.info.version == '1.85.0' && '0.6.21' || '0.6.24' }} --locked
 
       # execute
       - run: ./frb_internal test-rust --coverage
@@ -564,7 +565,6 @@ jobs:
 
   test_dart_native:
     name: 'Test :: Dart :: Native'
-    if: false
     runs-on: ${{ matrix.image }}
     strategy:
       fail-fast: false
@@ -619,7 +619,6 @@ jobs:
 
   test_dart_web:
     name: 'Test :: Dart :: Web'
-    if: false
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -674,7 +673,6 @@ jobs:
 
   test_dart_valgrind:
     name: 'Test :: Dart :: Valgrind'
-    if: false
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -708,7 +706,6 @@ jobs:
 
   test_dart_sanitizer:
     name: 'Test :: Dart :: Sanitizer'
-    if: false
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -823,7 +820,6 @@ jobs:
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
   test_flutter_native_ios:
     name: 'Test :: Flutter :: Native:: iOS'
-    if: false
     runs-on: macos-latest
     strategy:
       fail-fast: false
@@ -864,7 +860,6 @@ jobs:
 
   test_flutter_native_desktop:
     name: 'Test :: Flutter :: Native:: ${{ matrix.info.platform }} (${{ matrix.info.package }})'
-    if: false
     runs-on: ${{ matrix.info.image }}
     strategy:
       fail-fast: false
@@ -947,7 +942,6 @@ jobs:
 
   test_flutter_web:
     name: 'Test :: Flutter :: Web'
-    if: false
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -1010,8 +1004,13 @@ jobs:
     if: ${{ always() && !cancelled() }}
     # NOTE need to depend on *all* jobs that may generate codecov artifacts
     needs:
+      - generate_run_frb_codegen_command_generate
+      - generate_run_frb_codegen_command_integrate
       - generate_internal
+      # - test_upgrade
       - test_rust
+      - test_dart_native
+      - test_flutter_web
 
     steps:
       - uses: actions/checkout@v5
