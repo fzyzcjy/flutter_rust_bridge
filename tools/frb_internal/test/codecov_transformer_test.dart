@@ -619,4 +619,104 @@ void main() {
       expect(transformed['7'], 0);
     },
   );
+
+  test(
+    'transformCodecovFileCoverageForTest keeps uncovered semantic bool argument from cargo_expand real code',
+    () {
+      final fileLines = [
+        '    Ok(decode_macro_frb_encoded_comments(&run_raw(',
+        '        rust_crate_dir,',
+        '        interest_crate_name,',
+        '        "--cfg frb_expand",',
+        '        true,',
+        '        features,',
+        '    )?)',
+        '    .into_owned())',
+      ];
+
+      final transformed = transformCodecovFileCoverageForTest(fileLines, {
+        '1': 0,
+        '2': 0,
+        '3': 0,
+        '4': 0,
+        '5': 0,
+        '6': 0,
+        '7': 0,
+        '8': 0,
+      });
+
+      expect(transformed['1'], 0);
+      expect(transformed['2'], 0);
+      expect(transformed['3'], 0);
+      expect(transformed['4'], null);
+      expect(transformed['5'], null);
+      expect(transformed['6'], 0);
+      expect(transformed['7'], null);
+      expect(transformed['8'], 0);
+    },
+  );
+
+  test(
+    'transformCodecovFileCoverageForTest keeps uncovered build_web coverage branch lines',
+    () {
+      final fileLines = [
+        '    if dart_coverage {',
+        '        let res = command_run!(',
+        '            call_shell[Some(current_dir), None],',
+        '            "dart",',
+        '            "pub",',
+        '            "global",',
+        '            "run",',
+        '            "coverage:collect_coverage",',
+        '            "--wait-paused",',
+        '            "--uri=http://127.0.0.1:8181/",',
+        '            "-o",',
+        '            "coverage/coverage.json",',
+        '            "--resume-isolates",',
+        '            // TODO this scope-output?',
+        '            "--scope-output=foo",',
+        '        )?;',
+        '        check_exit_code(&res)?;',
+        '    }',
+      ];
+
+      final transformed = transformCodecovFileCoverageForTest(fileLines, {
+        '1': 0,
+        '2': 0,
+        '3': 0,
+        '4': 0,
+        '5': 0,
+        '6': 0,
+        '7': 0,
+        '8': 0,
+        '9': 0,
+        '10': 0,
+        '11': 0,
+        '12': 0,
+        '13': 0,
+        '15': 0,
+        '16': 0,
+        '17': 0,
+        '18': 0,
+      });
+
+      expect(transformed['1'], 0);
+      expect(transformed['2'], 0);
+      expect(transformed['3'], 0);
+      expect(transformed['4'], null);
+      expect(transformed['5'], null);
+      expect(transformed['6'], null);
+      expect(transformed['7'], null);
+      expect(transformed['8'], null);
+      expect(transformed['9'], null);
+      expect(transformed['10'], null);
+      expect(transformed['11'], null);
+      expect(transformed['12'], null);
+      expect(transformed['13'], null);
+      expect(transformed['15'], null);
+      expect(transformed['16'], null);
+      expect(transformed['17'], 0);
+      expect(transformed['18'], null);
+    },
+  );
 }
