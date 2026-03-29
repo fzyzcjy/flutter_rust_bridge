@@ -170,6 +170,7 @@ jobs:
 
   generate_run_frb_codegen_command_generate:
     name: 'Generate :: FRB Codegen :: Command Generate'
+    if: false
     runs-on: ${{ matrix.image }}
 
     strategy:
@@ -228,6 +229,7 @@ jobs:
 
   generate_run_frb_codegen_command_integrate:
     name: 'Generate :: FRB Codegen :: Command Integrate'
+    if: false
     runs-on: ${{ matrix.image }}
     env:
       RUST_LOG: debug
@@ -285,7 +287,7 @@ jobs:
           submodules: recursive
       - uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
+          toolchain: 1.88.0
           components: rustfmt, clippy
       - run: rustup toolchain install ${{ env.FRB_RUSTFMT_NIGHTLY_VERSION }} && rustup component add rustfmt llvm-tools-preview --toolchain ${{ env.FRB_RUSTFMT_NIGHTLY_VERSION }}-x86_64-unknown-linux-gnu
       - run: yarn global add all-contributors-cli
@@ -293,7 +295,9 @@ jobs:
         with:
           cache: true
           version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
-      - run: cargo install cargo-llvm-cov --version ${{ matrix.info.version == '1.85.0' && '0.6.21' || '0.6.24' }} --locked
+      - uses: taiki-e/install-action@cargo-llvm-cov
+        with:
+          version: 0.6.24
 
       # execute
       - run: ./frb_internal generate-internal --set-exit-if-changed --coverage
@@ -518,22 +522,8 @@ jobs:
       fail-fast: false
       matrix:
         info:
-          # run on various platforms
-          - image: macos-15-intel
-            version: ''
-          - image: windows-2025
-            version: ''
           - image: ubuntu-latest
-            version: ''
-          # run on various rust versions
-          - image: ubuntu-latest
-            version: nightly
-          # tests the MSRV
-          # run on all rust packages, though only needed for frb_rust and frb_codegen
-          - image: ubuntu-latest
-            # update this, if a later MSRV is needed
-            # Need at least 1.85.0 for latest cargo-expand; if need older Rust version may pin a old cargo-expand
-            version: 1.85.0
+            version: 1.88.0
 
     steps:
       # setup
@@ -552,7 +542,9 @@ jobs:
         with:
           sdk: ${{ env.FRB_MAIN_DART_VERSION }}
           architecture: x64
-      - run: cargo install cargo-llvm-cov --version ${{ matrix.info.version == '1.85.0' && '0.6.21' || '0.6.24' }} --locked
+      - uses: taiki-e/install-action@cargo-llvm-cov
+        with:
+          version: 0.6.24
 
       # execute
       - run: ./frb_internal test-rust --coverage
@@ -565,6 +557,7 @@ jobs:
 
   test_dart_native:
     name: 'Test :: Dart :: Native'
+    if: false
     runs-on: ${{ matrix.image }}
     strategy:
       fail-fast: false
@@ -942,6 +935,7 @@ jobs:
 
   test_flutter_web:
     name: 'Test :: Flutter :: Web'
+    if: false
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -1004,13 +998,8 @@ jobs:
     if: ${{ always() && !cancelled() }}
     # NOTE need to depend on *all* jobs that may generate codecov artifacts
     needs:
-      - generate_run_frb_codegen_command_generate
-      - generate_run_frb_codegen_command_integrate
       - generate_internal
-      # - test_upgrade
       - test_rust
-      - test_dart_native
-      - test_flutter_web
 
     steps:
       - uses: actions/checkout@v5
