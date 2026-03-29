@@ -1,28 +1,32 @@
 import 'package:flutter_rust_bridge_internal/src/utils/codecov_transformer.dart';
 import 'package:test/test.dart';
 
+class _CoverageFixture {
+  final List<String> fileLines;
+  final Map<String, dynamic> rawCoverage;
+  final Map<String, dynamic> expectedCoverage;
+
+  const _CoverageFixture({
+    required this.fileLines,
+    required this.rawCoverage,
+    required this.expectedCoverage,
+  });
+}
+
 void main() {
   test('kIgnoreLineRegex', () {
     expect(shouldKeepLine('hello'), true);
 
-    // Ignore since this is by Rust compiler and is surely correct
     expect(shouldKeepLine('#[derive(Debug)]'), false);
     expect(shouldKeepLine('   #[derive(Copy, Debug, Eq)]   '), false);
 
-    // Also ignore since in Dart/Java/...,
-    // such error handling is implicit and will not even appear in code coverage
     expect(shouldKeepLine('    )?;'), false);
     expect(shouldKeepLine('  )?,'), false);
     expect(shouldKeepLine('    }?;'), false);
 
-    // Also ignore pure comments - they are not real code
     expect(shouldKeepLine('// hello'), false);
     expect(shouldKeepLine('    // hello'), false);
 
-    // Also ignore pure brackets, since they are not real code
-    // If some branch is not covered, the body itself will be red
-    // and we will know it. I see sometimes a bracket is marked red,
-    // thus ignore it by default.
     expect(shouldKeepLine('}'), false);
     expect(shouldKeepLine('   };'), false);
     expect(shouldKeepLine('{'), false);
@@ -33,21 +37,21 @@ void main() {
   test(
     'computeFormatCallNoiseLines detects format call body by matching parentheses',
     () {
-      final fileLines = [
-        'let maybe_deref_mut_code = if rw == ReadWrite::Write {',
-        '    format!(',
-        '        "',
-        "        impl std::ops::DerefMut for {enum_name}<'_> {{",
-        '            fn deref_mut(&mut self) -> &mut Self::Target {',
-        '                {body}',
-        '            }',
-        '        }',
-        '        "',
-        '    )',
-        '} else {',
-        '    "".to_owned()',
-        '};',
-      ];
+      final fileLines = _parseCoverageFixture([
+        '[_,_] let maybe_deref_mut_code = if rw == ReadWrite::Write {',
+        '[_,_]     format!(',
+        '[_,_]         "',
+        "[_,_]         impl std::ops::DerefMut for {enum_name}<'_> {{",
+        '[_,_]             fn deref_mut(&mut self) -> &mut Self::Target {',
+        '[_,_]                 {body}',
+        '[_,_]             }',
+        '[_,_]         }',
+        '[_,_]         "',
+        '[_,_]     )',
+        '[_,_] } else {',
+        '[_,_]     "".to_owned()',
+        '[_,_] };',
+      ]).fileLines;
 
       expect(computeFormatCallNoiseLines(fileLines), {
         2,
@@ -66,286 +70,152 @@ void main() {
   test(
     'transformCodecovFileCoverageForTest ignores uncovered format call body',
     () {
-      final fileLines = [
-        'let maybe_deref_mut_code = if rw == ReadWrite::Write {',
-        '    format!(',
-        '        "',
-        "        impl std::ops::DerefMut for {enum_name}<'_> {{",
-        '            fn deref_mut(&mut self) -> &mut Self::Target {',
-        '                {body}',
-        '            }',
-        '        }',
-        '        "',
-        '    )',
-        '} else {',
-        '    "".to_owned()',
-        '};',
-      ];
-      final transformed = transformCodecovFileCoverageForTest(fileLines, {
-        '1': 0,
-        '2': 0,
-        '3': 0,
-        '4': 0,
-        '5': 0,
-        '6': 0,
-        '7': 0,
-        '8': 0,
-        '9': 0,
-        '10': 0,
-        '11': 0,
-        '12': 0,
-        '13': 0,
-      });
-
-      expect(transformed['1'], 0);
-      expect(transformed['2'], null);
-      expect(transformed['3'], null);
-      expect(transformed['4'], null);
-      expect(transformed['5'], null);
-      expect(transformed['6'], null);
-      expect(transformed['7'], null);
-      expect(transformed['8'], null);
-      expect(transformed['9'], null);
-      expect(transformed['10'], null);
-      expect(transformed['11'], 0);
-      expect(transformed['12'], 0);
-      expect(transformed['13'], null);
+      _expectFixtureTransformation([
+        '[0,0] let maybe_deref_mut_code = if rw == ReadWrite::Write {',
+        '[0,null]     format!(',
+        '[0,null]         "',
+        "[0,null]         impl std::ops::DerefMut for {enum_name}<'_> {{",
+        '[0,null]             fn deref_mut(&mut self) -> &mut Self::Target {',
+        '[0,null]                 {body}',
+        '[0,null]             }',
+        '[0,null]         }',
+        '[0,null]         "',
+        '[0,null]     )',
+        '[0,0] } else {',
+        '[0,0]     "".to_owned()',
+        '[0,null] };',
+      ]);
     },
   );
 
-  test(
-    'transformCodecovFileCoverageForTest ignores uncovered struct fields',
-    () {
-      final fileLines = [
-        'pub(crate) struct Cli {',
-        '    /// Show debug messages.',
-        '    #[arg(short, long)]',
-        '    pub verbose: bool,',
-        '',
-        '    #[command(subcommand)]',
-        '    pub(crate) command: Commands,',
-        '}',
-      ];
-
-      final transformed = transformCodecovFileCoverageForTest(fileLines, {
-        '4': 0,
-        '7': 0,
-      });
-
-      expect(transformed['4'], null);
-      expect(transformed['7'], null);
-    },
-  );
+  test('transformCodecovFileCoverageForTest ignores uncovered struct fields', () {
+    _expectFixtureTransformation([
+      '[_,_] pub(crate) struct Cli {',
+      '[_,_]     /// Show debug messages.',
+      '[_,_]     #[arg(short, long)]',
+      '[0,null]     pub verbose: bool,',
+      '[_,_] ',
+      '[_,_]     #[command(subcommand)]',
+      '[0,null]     pub(crate) command: Commands,',
+      '[_,_] }',
+    ]);
+  });
 
   test(
     'transformCodecovFileCoverageForTest ignores uncovered multiline destructure noise',
     () {
-      final fileLines = [
-        'attrs',
-        '    .iter()',
-        '    .filter_map(|attr| match &attr.meta {',
-        '        Meta::NameValue(MetaNameValue {',
-        '            path,',
-        '            value:',
-        '                Expr::Lit(ExprLit {',
-        '                    lit: Lit::Str(lit), ..',
-        '                }),',
-        '            ..',
-        '        }) if path.is_ident("doc") => Some(parse_comment(&lit.value())),',
-        '        _ => None,',
-        '    })',
-      ];
-
-      final transformed = transformCodecovFileCoverageForTest(fileLines, {
-        '4': 0,
-        '5': 1,
-        '6': 0,
-        '7': 0,
-        '8': 1,
-        '9': 0,
-        '10': 0,
-        '11': 1,
-      });
-
-      expect(transformed['4'], null);
-      expect(transformed['5'], 1);
-      expect(transformed['6'], null);
-      expect(transformed['7'], null);
-      expect(transformed['8'], 1);
-      expect(transformed['9'], null);
-      expect(transformed['10'], null);
-      expect(transformed['11'], 1);
+      _expectFixtureTransformation([
+        '[_,_] attrs',
+        '[_,_]     .iter()',
+        '[_,_]     .filter_map(|attr| match &attr.meta {',
+        '[0,null]         Meta::NameValue(MetaNameValue {',
+        '[1,1]             path,',
+        '[0,null]             value:',
+        '[0,null]                 Expr::Lit(ExprLit {',
+        '[1,1]                     lit: Lit::Str(lit), ..',
+        '[0,null]                 }),',
+        '[0,null]             ..',
+        '[1,1]         }) if path.is_ident("doc") => Some(parse_comment(&lit.value())),',
+        '[_,_]         _ => None,',
+        '[_,_]     })',
+      ]);
     },
   );
 
   test(
     'transformCodecovFileCoverageForTest ignores uncovered let destructure noise',
     () {
-      final fileLines = [
-        '    fn generate_class(&self) -> Option<ApiDartGeneratedClass> {',
-        '        let Info {',
-        '            dart_api_type,',
-        '            methods,',
-        '        } = self.compute_info(',
-        '            &GenerateApiMethodConfig {',
-        '                mode_static: GenerateApiMethodMode::DeclAndImpl,',
-        '                mode_non_static: GenerateApiMethodMode::DeclOnly,',
-        '            },',
-        '            "",',
-        '        );',
-        '        let rust_api_type = self.mir.rust_api_type();',
-        '    }',
-      ];
-
-      final transformed = transformCodecovFileCoverageForTest(fileLines, {
-        '2': 0,
-        '3': 0,
-        '4': 0,
-        '5': 0,
-        '6': 1,
-        '12': 2,
-      });
-
-      expect(transformed['2'], null);
-      expect(transformed['3'], null);
-      expect(transformed['4'], null);
-      expect(transformed['5'], null);
-      expect(transformed['6'], 1);
-      expect(transformed['12'], 2);
+      _expectFixtureTransformation([
+        '[_,_]     fn generate_class(&self) -> Option<ApiDartGeneratedClass> {',
+        '[0,null]         let Info {',
+        '[0,null]             dart_api_type,',
+        '[0,null]             methods,',
+        '[0,null]         } = self.compute_info(',
+        '[1,1]             &GenerateApiMethodConfig {',
+        '[_,_]                 mode_static: GenerateApiMethodMode::DeclAndImpl,',
+        '[_,_]                 mode_non_static: GenerateApiMethodMode::DeclOnly,',
+        '[_,_]             },',
+        '[_,_]             "",',
+        '[_,_]         );',
+        '[2,2]         let rust_api_type = self.mir.rust_api_type();',
+        '[_,_]     }',
+      ]);
     },
   );
 
   test(
     'transformCodecovFileCoverageForTest ignores uncovered constructor scaffolding and call continuations',
     () {
-      final fileLines = [
-        'fn demo() {',
-        '    let value = Some(',
-        '        DemoStruct {',
-        '            field: Some(',
-        '                other.call()',
-        '                    .status',
-        '            ),',
-        '        },',
-        '    );',
-        '}',
-      ];
-
-      final transformed = transformCodecovFileCoverageForTest(fileLines, {
-        '2': 0,
-        '3': 0,
-        '4': 0,
-        '5': 1,
-        '6': 0,
-        '7': 0,
-        '8': 0,
-        '9': 0,
-      });
-
-      expect(transformed['2'], 0);
-      expect(transformed['3'], null);
-      expect(transformed['4'], null);
-      expect(transformed['5'], 1);
-      expect(transformed['6'], null);
-      expect(transformed['7'], null);
-      expect(transformed['8'], null);
-      expect(transformed['9'], null);
+      _expectFixtureTransformation([
+        '[_,_] fn demo() {',
+        '[0,0]     let value = Some(',
+        '[0,null]         DemoStruct {',
+        '[0,null]             field: Some(',
+        '[1,1]                 other.call()',
+        '[0,null]                     .status',
+        '[0,null]             ),',
+        '[0,null]         },',
+        '[0,null]     );',
+        '[_,_] }',
+      ]);
     },
   );
 
   test(
     'transformCodecovFileCoverageForTest ignores uncovered multiline derive and static ref noise',
     () {
-      final fileLines = [
-        '#[derive(',
-        '    Debug, Clone, Copy,',
-        ')]',
-        'lazy_static! {',
-        '    static ref FILTER: Regex =',
-        '        Regex::new("abc")',
-        '            .unwrap();',
-        '}',
-      ];
-
-      final transformed = transformCodecovFileCoverageForTest(fileLines, {
-        '1': 0,
-        '2': 0,
-        '3': 0,
-        '4': 0,
-        '5': 0,
-        '6': 0,
-        '7': 0,
-        '8': 0,
-      });
-
-      expect(transformed['1'], null);
-      expect(transformed['2'], null);
-      expect(transformed['3'], null);
-      expect(transformed['4'], null);
-      expect(transformed['5'], null);
-      expect(transformed['6'], null);
-      expect(transformed['7'], null);
-      expect(transformed['8'], null);
+      _expectFixtureTransformation([
+        '[0,null] #[derive(',
+        '[0,null]     Debug, Clone, Copy,',
+        '[0,null] )]',
+        '[0,null] lazy_static! {',
+        '[0,null]     static ref FILTER: Regex =',
+        '[0,null]         Regex::new("abc")',
+        '[0,null]             .unwrap();',
+        '[0,null] }',
+      ]);
     },
   );
 
   test(
     'transformCodecovFileCoverageForTest ignores uncovered scalar argument and field prefix noise',
     () {
-      final fileLines = [
-        'fn demo() {',
-        '    info!(',
-        '        "hello {}",',
-        '        name,',
-        '    );',
-        '    build(false, 42, SomeConfig {',
-        '        arguments:',
-        '            value,',
-        '    });',
-        '}',
-      ];
-
-      final transformed = transformCodecovFileCoverageForTest(fileLines, {
-        '2': 0,
-        '3': 0,
-        '4': 1,
-        '5': 0,
-        '6': 1,
-        '7': 0,
-        '8': 1,
-        '9': 0,
-      });
-
-      expect(transformed['2'], 0);
-      expect(transformed['3'], null);
-      expect(transformed['4'], 1);
-      expect(transformed['5'], null);
-      expect(transformed['6'], 1);
-      expect(transformed['7'], null);
-      expect(transformed['8'], 1);
-      expect(transformed['9'], null);
+      _expectFixtureTransformation([
+        '[_,_] fn demo() {',
+        '[0,0]     info!(',
+        '[0,null]         "hello {}",',
+        '[1,1]         name,',
+        '[0,null]     );',
+        '[1,1]     build(false, 42, SomeConfig {',
+        '[0,null]         arguments:',
+        '[1,1]             value,',
+        '[0,null]     });',
+        '[_,_] }',
+      ]);
     },
   );
 
-  test(
-    'computeFormatCallNoiseLines does not ignore ordinary multiline strings',
-    () {
-      final fileLines = ['let sql = "', 'SELECT *', 'FROM demo', '";'];
+  test('computeFormatCallNoiseLines does not ignore ordinary multiline strings', () {
+    final fileLines = _parseCoverageFixture([
+      '[_,_] let sql = "',
+      '[_,_] SELECT *',
+      '[_,_] FROM demo',
+      '[_,_] ";',
+    ]).fileLines;
 
-      expect(computeFormatCallNoiseLines(fileLines), isEmpty);
-    },
-  );
+    expect(computeFormatCallNoiseLines(fileLines), isEmpty);
+  });
 
   test(
     'computeFormatCallNoiseLines handles nested parentheses inside format call',
     () {
-      final fileLines = [
-        'let content = format!(',
-        '    "{} {}",',
-        '    compute_name(foo(bar)),',
-        '    other_call(),',
-        ');',
-      ];
+      final fileLines = _parseCoverageFixture([
+        '[_,_] let content = format!(',
+        '[_,_]     "{} {}",',
+        '[_,_]     compute_name(foo(bar)),',
+        '[_,_]     other_call(),',
+        '[_,_] );',
+      ]).fileLines;
 
       expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4, 5});
     },
@@ -354,41 +224,38 @@ void main() {
   test(
     'computeFormatCallNoiseLines ignores single-line format call on one line',
     () {
-      final fileLines = [
-        'let content = format!("hello {}", name);',
-        'let untouched = 1;',
-      ];
+      final fileLines = _parseCoverageFixture([
+        '[_,_] let content = format!("hello {}", name);',
+        '[_,_] let untouched = 1;',
+      ]).fileLines;
 
       expect(computeFormatCallNoiseLines(fileLines), {1});
     },
   );
 
-  test(
-    'computeFormatCallNoiseLines ignores multiple format calls in one file',
-    () {
-      final fileLines = [
-        'let first = format!(',
-        '    "{} {}",',
-        '    one,',
-        '    two,',
-        ');',
-        'let keep = do_work();',
-        'let second = format!("value={}", three);',
-      ];
+  test('computeFormatCallNoiseLines ignores multiple format calls in one file', () {
+    final fileLines = _parseCoverageFixture([
+      '[_,_] let first = format!(',
+      '[_,_]     "{} {}",',
+      '[_,_]     one,',
+      '[_,_]     two,',
+      '[_,_] );',
+      '[_,_] let keep = do_work();',
+      '[_,_] let second = format!("value={}", three);',
+    ]).fileLines;
 
-      expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4, 5, 7});
-    },
-  );
+    expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4, 5, 7});
+  });
 
   test(
     'computeFormatCallNoiseLines ignores format call with escaped quotes in strings',
     () {
-      final fileLines = [
-        'let content = format!(',
-        r'    "say \"hello\" to {}",',
-        '    name,',
-        ');',
-      ];
+      final fileLines = _parseCoverageFixture([
+        '[_,_] let content = format!(',
+        r'[_,_]     "say \"hello\" to {}",',
+        '[_,_]     name,',
+        '[_,_] );',
+      ]).fileLines;
 
       expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4});
     },
@@ -397,13 +264,13 @@ void main() {
   test(
     'computeFormatCallNoiseLines ignores nested format call inside format arguments',
     () {
-      final fileLines = [
-        'let content = format!(',
-        '    "{} {}",',
-        '    format!("inner {}", value),',
-        '    other,',
-        ');',
-      ];
+      final fileLines = _parseCoverageFixture([
+        '[_,_] let content = format!(',
+        '[_,_]     "{} {}",',
+        '[_,_]     format!("inner {}", value),',
+        '[_,_]     other,',
+        '[_,_] );',
+      ]).fileLines;
 
       expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4, 5});
     },
@@ -412,21 +279,24 @@ void main() {
   test(
     'computeFormatCallNoiseLines ignores format call when opening parenthesis is on next line',
     () {
-      final fileLines = [
-        'let content = format!',
-        '(',
-        '    "{} {}",',
-        '    one,',
-        '    two,',
-        ');',
-      ];
+      final fileLines = _parseCoverageFixture([
+        '[_,_] let content = format!',
+        '[_,_] (',
+        '[_,_]     "{} {}",',
+        '[_,_]     one,',
+        '[_,_]     two,',
+        '[_,_] );',
+      ]).fileLines;
 
       expect(computeFormatCallNoiseLines(fileLines), {2, 3, 4, 5, 6});
     },
   );
 
   test('computeFormatCallNoiseLines does not match format inside comments', () {
-    final fileLines = ['// format!("hello {}", name)', 'let untouched = 1;'];
+    final fileLines = _parseCoverageFixture([
+      '[_,_] // format!("hello {}", name)',
+      '[_,_] let untouched = 1;',
+    ]).fileLines;
 
     expect(computeFormatCallNoiseLines(fileLines), isEmpty);
   });
@@ -434,10 +304,10 @@ void main() {
   test(
     'computeFormatCallNoiseLines does not match format inside ordinary strings',
     () {
-      final fileLines = [
-        'let text = "call format!(\\"hello {}\\", name) later";',
-        'let untouched = 1;',
-      ];
+      final fileLines = _parseCoverageFixture([
+        '[_,_] let text = "call format!(\\"hello {}\\", name) later";',
+        '[_,_] let untouched = 1;',
+      ]).fileLines;
 
       expect(computeFormatCallNoiseLines(fileLines), isEmpty);
     },
@@ -446,13 +316,13 @@ void main() {
   test(
     'computeFormatCallNoiseLines ignores misleading format text and unmatched parentheses inside format strings',
     () {
-      final fileLines = [
-        'let content = format!(',
-        r'    "literal format!( not a call, stray ) ( braces {} and text",',
-        '    value,',
-        ');',
-        'let untouched = 1;',
-      ];
+      final fileLines = _parseCoverageFixture([
+        '[_,_] let content = format!(',
+        r'[_,_]     "literal format!( not a call, stray ) ( braces {} and text",',
+        '[_,_]     value,',
+        '[_,_] );',
+        '[_,_] let untouched = 1;',
+      ]).fileLines;
 
       expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4});
     },
@@ -461,16 +331,16 @@ void main() {
   test(
     'computeFormatCallNoiseLines ignores multiline template text containing format markers and stray parentheses',
     () {
-      final fileLines = [
-        'let content = format!(',
-        '    "',
-        '    here is text: format!( definitely not real',
-        '    and unmatched ) ( inside generated code text',
-        '    still same template block',
-        '    ",',
-        '    value,',
-        ');',
-      ];
+      final fileLines = _parseCoverageFixture([
+        '[_,_] let content = format!(',
+        '[_,_]     "',
+        '[_,_]     here is text: format!( definitely not real',
+        '[_,_]     and unmatched ) ( inside generated code text',
+        '[_,_]     still same template block',
+        '[_,_]     ",',
+        '[_,_]     value,',
+        '[_,_] );',
+      ]).fileLines;
 
       expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4, 5, 6, 7, 8});
     },
@@ -479,244 +349,191 @@ void main() {
   test(
     'computeFormatCallNoiseLines ignores line comments that mention format and unmatched parentheses inside string args',
     () {
-      final fileLines = [
-        'let content = format!(',
-        r'    "value // format!( not code ) ( {}",',
-        '    value, // comment says format!( )(',
-        ');',
-      ];
+      final fileLines = _parseCoverageFixture([
+        '[_,_] let content = format!(',
+        r'[_,_]     "value // format!( not code ) ( {}",',
+        '[_,_]     value, // comment says format!( )(',
+        '[_,_] );',
+      ]).fileLines;
 
       expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4});
     },
   );
 
-  test(
-    'computeFormatCallNoiseLines stops at line comments inside format call',
-    () {
-      final fileLines = [
-        'let content = format!(',
-        '    "{} {}", // comment with ) and format!(',
-        '    one,',
-        '    two,',
-        ');',
-      ];
+  test('computeFormatCallNoiseLines stops at line comments inside format call', () {
+    final fileLines = _parseCoverageFixture([
+      '[_,_] let content = format!(',
+      '[_,_]     "{} {}", // comment with ) and format!(',
+      '[_,_]     one,',
+      '[_,_]     two,',
+      '[_,_] );',
+    ]).fileLines;
 
-      expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4, 5});
-    },
-  );
+    expect(computeFormatCallNoiseLines(fileLines), {1, 2, 3, 4, 5});
+  });
 
   test(
     'transformCodecovFileCoverageForTest preserves hit lines even inside format call',
     () {
-      final fileLines = [
-        'let content = format!(',
-        '    "{} {}",',
-        '    one,',
-        '    two,',
-        ');',
-      ];
-      final transformed = transformCodecovFileCoverageForTest(fileLines, {
-        '1': 0,
-        '2': 3,
-        '3': 0,
-        '4': 0,
-        '5': 0,
-      });
-
-      expect(transformed['1'], null);
-      expect(transformed['2'], 3);
-      expect(transformed['3'], null);
-      expect(transformed['4'], null);
-      expect(transformed['5'], null);
+      _expectFixtureTransformation([
+        '[0,null] let content = format!(',
+        '[3,3]     "{} {}",',
+        '[0,null]     one,',
+        '[0,null]     two,',
+        '[0,null] );',
+      ]);
     },
   );
 
   test(
     'transformCodecovFileCoverageForTest keeps uncovered semantic control-flow lines',
     () {
-      final fileLines = [
-        'fn demo(raw: *mut c_void, latest: Output, dart_coverage: bool) -> Result<Self> {',
-        '    if condition {',
-        '        do_work()?;',
-        '    } else {',
-        '        check_exit_code(&latest)?;',
-        '    }',
-        '    if dart_coverage {',
-        '        return Self(raw);',
-        '    }',
-        '    Ok(())',
-        '}',
-      ];
-
-      final transformed = transformCodecovFileCoverageForTest(fileLines, {
-        '4': 0,
-        '5': 0,
-        '8': 0,
-        '10': 0,
-      });
-
-      expect(transformed['4'], 0);
-      expect(transformed['5'], 0);
-      expect(transformed['8'], 0);
-      expect(transformed['10'], 0);
+      _expectFixtureTransformation([
+        '[_,_] fn demo(raw: *mut c_void, latest: Output, dart_coverage: bool) -> Result<Self> {',
+        '[_,_]     if condition {',
+        '[_,_]         do_work()?;',
+        '[0,0]     } else {',
+        '[0,0]         check_exit_code(&latest)?;',
+        '[_,_]     }',
+        '[_,_]     if dart_coverage {',
+        '[0,0]         return Self(raw);',
+        '[_,_]     }',
+        '[0,0]     Ok(())',
+        '[_,_] }',
+      ]);
     },
   );
 
   test(
     'transformCodecovFileCoverageForTest keeps uncovered unsafe and error-handling lines',
     () {
-      final fileLines = [
-        'fn demo(thread_result: Result<(), Error>, raw: *mut c_void) {',
-        '    unsafe {',
-        '        call_ffi(raw);',
-        '    }',
-        '    if let Err(error) = thread_result {',
-        '        handle_non_sync_panic_error::<Rust2DartCodec>(error);',
-        '    }',
-        '}',
-      ];
-
-      final transformed = transformCodecovFileCoverageForTest(fileLines, {
-        '2': 0,
-        '5': 0,
-        '6': 0,
-      });
-
-      expect(transformed['2'], 0);
-      expect(transformed['5'], 0);
-      expect(transformed['6'], 0);
+      _expectFixtureTransformation([
+        '[_,_] fn demo(thread_result: Result<(), Error>, raw: *mut c_void) {',
+        '[0,0]     unsafe {',
+        '[_,_]         call_ffi(raw);',
+        '[_,_]     }',
+        '[0,0]     if let Err(error) = thread_result {',
+        '[0,0]         handle_non_sync_panic_error::<Rust2DartCodec>(error);',
+        '[_,_]     }',
+        '[_,_] }',
+      ]);
     },
   );
 
   test(
     'transformCodecovFileCoverageForTest keeps uncovered semantic method calls while filtering pure argument scaffolding',
     () {
-      final fileLines = [
-        'fn demo(manifest_path: &Path) -> Result<()> {',
-        '    run(',
-        '        "cargo",',
-        '        false,',
-        '        manifest_path.parent(),',
-        '    )?;',
-        '    Some(_) => None,',
-        '}',
-      ];
-
-      final transformed = transformCodecovFileCoverageForTest(fileLines, {
-        '2': 0,
-        '3': 0,
-        '4': 0,
-        '5': 0,
-        '6': 0,
-        '7': 0,
-      });
-
-      expect(transformed['2'], 0);
-      expect(transformed['3'], null);
-      expect(transformed['4'], null);
-      expect(transformed['5'], 0);
-      expect(transformed['6'], null);
-      expect(transformed['7'], 0);
+      _expectFixtureTransformation([
+        '[_,_] fn demo(manifest_path: &Path) -> Result<()> {',
+        '[0,0]     run(',
+        '[0,null]         "cargo",',
+        '[0,null]         false,',
+        '[0,0]         manifest_path.parent(),',
+        '[0,null]     )?;',
+        '[0,0]     Some(_) => None,',
+        '[_,_] }',
+      ]);
     },
   );
 
   test(
     'transformCodecovFileCoverageForTest keeps uncovered semantic bool argument from cargo_expand real code',
     () {
-      final fileLines = [
-        '    Ok(decode_macro_frb_encoded_comments(&run_raw(',
-        '        rust_crate_dir,',
-        '        interest_crate_name,',
-        '        "--cfg frb_expand",',
-        '        true,',
-        '        features,',
-        '    )?)',
-        '    .into_owned())',
-      ];
-
-      final transformed = transformCodecovFileCoverageForTest(fileLines, {
-        '1': 0,
-        '2': 0,
-        '3': 0,
-        '4': 0,
-        '5': 0,
-        '6': 0,
-        '7': 0,
-        '8': 0,
-      });
-
-      expect(transformed['1'], 0);
-      expect(transformed['2'], 0);
-      expect(transformed['3'], 0);
-      expect(transformed['4'], null);
-      expect(transformed['5'], null);
-      expect(transformed['6'], 0);
-      expect(transformed['7'], null);
-      expect(transformed['8'], 0);
+      _expectFixtureTransformation([
+        '[0,0]     Ok(decode_macro_frb_encoded_comments(&run_raw(',
+        '[0,0]         rust_crate_dir,',
+        '[0,0]         interest_crate_name,',
+        '[0,null]         "--cfg frb_expand",',
+        '[0,null]         true,',
+        '[0,0]         features,',
+        '[0,null]     )?)',
+        '[0,0]     .into_owned())',
+      ]);
     },
   );
 
   test(
     'transformCodecovFileCoverageForTest keeps uncovered build_web coverage branch lines',
     () {
-      final fileLines = [
-        '    if dart_coverage {',
-        '        let res = command_run!(',
-        '            call_shell[Some(current_dir), None],',
-        '            "dart",',
-        '            "pub",',
-        '            "global",',
-        '            "run",',
-        '            "coverage:collect_coverage",',
-        '            "--wait-paused",',
-        '            "--uri=http://127.0.0.1:8181/",',
-        '            "-o",',
-        '            "coverage/coverage.json",',
-        '            "--resume-isolates",',
-        '            // TODO this scope-output?',
-        '            "--scope-output=foo",',
-        '        )?;',
-        '        check_exit_code(&res)?;',
-        '    }',
-      ];
-
-      final transformed = transformCodecovFileCoverageForTest(fileLines, {
-        '1': 0,
-        '2': 0,
-        '3': 0,
-        '4': 0,
-        '5': 0,
-        '6': 0,
-        '7': 0,
-        '8': 0,
-        '9': 0,
-        '10': 0,
-        '11': 0,
-        '12': 0,
-        '13': 0,
-        '15': 0,
-        '16': 0,
-        '17': 0,
-        '18': 0,
-      });
-
-      expect(transformed['1'], 0);
-      expect(transformed['2'], 0);
-      expect(transformed['3'], 0);
-      expect(transformed['4'], null);
-      expect(transformed['5'], null);
-      expect(transformed['6'], null);
-      expect(transformed['7'], null);
-      expect(transformed['8'], null);
-      expect(transformed['9'], null);
-      expect(transformed['10'], null);
-      expect(transformed['11'], null);
-      expect(transformed['12'], null);
-      expect(transformed['13'], null);
-      expect(transformed['15'], null);
-      expect(transformed['16'], null);
-      expect(transformed['17'], 0);
-      expect(transformed['18'], null);
+      _expectFixtureTransformation([
+        '[0,0]     if dart_coverage {',
+        '[0,0]         let res = command_run!(',
+        '[0,0]             call_shell[Some(current_dir), None],',
+        '[0,null]             "dart",',
+        '[0,null]             "pub",',
+        '[0,null]             "global",',
+        '[0,null]             "run",',
+        '[0,null]             "coverage:collect_coverage",',
+        '[0,null]             "--wait-paused",',
+        '[0,null]             "--uri=http://127.0.0.1:8181/",',
+        '[0,null]             "-o",',
+        '[0,null]             "coverage/coverage.json",',
+        '[0,null]             "--resume-isolates",',
+        '[_,_]             // TODO this scope-output?',
+        '[0,null]             "--scope-output=foo",',
+        '[0,null]         )?;',
+        '[0,0]         check_exit_code(&res)?;',
+        '[0,null]     }',
+      ]);
     },
   );
+}
+
+void _expectFixtureTransformation(List<String> fixtureLines) {
+  final fixture = _parseCoverageFixture(fixtureLines);
+  final transformed = transformCodecovFileCoverageForTest(
+    fixture.fileLines,
+    fixture.rawCoverage,
+  );
+
+  for (final entry in fixture.expectedCoverage.entries) {
+    expect(transformed[entry.key], entry.value, reason: 'line ${entry.key}');
+  }
+}
+
+_CoverageFixture _parseCoverageFixture(List<String> fixtureLines) {
+  final fileLines = <String>[];
+  final rawCoverage = <String, dynamic>{};
+  final expectedCoverage = <String, dynamic>{};
+
+  for (var i = 0; i < fixtureLines.length; i++) {
+    final lineNumber = (i + 1).toString();
+    final match = RegExp(r'^\[([^,]+),([^\]]+)\]\s?(.*)$').firstMatch(
+      fixtureLines[i],
+    );
+    if (match == null) {
+      throw ArgumentError('Invalid fixture line: ${fixtureLines[i]}');
+    }
+
+    final rawToken = match.group(1)!;
+    final expectedToken = match.group(2)!;
+    final code = match.group(3)!;
+
+    fileLines.add(code);
+
+    final rawValue = _parseCoverageToken(rawToken);
+    if (rawValue != _kCoverageOmitted) {
+      rawCoverage[lineNumber] = rawValue;
+    }
+
+    final expectedValue = _parseCoverageToken(expectedToken);
+    if (expectedValue != _kCoverageOmitted) {
+      expectedCoverage[lineNumber] = expectedValue;
+    }
+  }
+
+  return _CoverageFixture(
+    fileLines: fileLines,
+    rawCoverage: rawCoverage,
+    expectedCoverage: expectedCoverage,
+  );
+}
+
+const _kCoverageOmitted = Object();
+
+dynamic _parseCoverageToken(String token) {
+  final trimmed = token.trim();
+  if (trimmed == '_') return _kCoverageOmitted;
+  if (trimmed == 'null') return null;
+  return int.parse(trimmed);
 }
