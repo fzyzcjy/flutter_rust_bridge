@@ -128,7 +128,13 @@ final _kChainContinuationRegex = RegExp(
 final _kMacroStartRegex = RegExp(r'^\s*[A-Za-z_][A-Za-z0-9_:]*!\s*\{\s*$');
 
 final _kStaticRefStartRegex = RegExp(
-  r'^\s*(?:pub\([^)]*\)\s+)?static ref [A-Za-z_][A-Za-z0-9_]*: .*=+\s*$',
+  r'^\s*(?:pub\([^)]*\)\s+)?static ref [A-Za-z_][A-Za-z0-9_]*: .*(?:=\s*$|;\s*$)',
+);
+
+final _kStringArgumentRegex = RegExp(r'^\s*(?:[rb]|br)?#*".*"#*\s*,\s*$');
+
+final _kBoolOrNumberArgumentRegex = RegExp(
+  r'^\s*(?:true|false|-?\d+(?:\.\d+)?)\s*,\s*$',
 );
 
 @visibleForTesting
@@ -413,7 +419,10 @@ Set<int> _computeInlineStructuralNoiseLines(List<String> fileLines) {
         _kWrappedConstructorStartRegex.hasMatch(line) ||
         _kChainContinuationRegex.hasMatch(line) ||
         _kMacroStartRegex.hasMatch(line) ||
-        _kStaticRefStartRegex.hasMatch(line)) {
+        _kStaticRefStartRegex.hasMatch(line) ||
+        _kStringArgumentRegex.hasMatch(line) ||
+        _kBoolOrNumberArgumentRegex.hasMatch(line) ||
+        _kNamedDestructuredFieldPrefixRegex.hasMatch(line)) {
       ans.add(lineNumber);
     }
   }

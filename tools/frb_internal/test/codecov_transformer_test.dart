@@ -290,6 +290,44 @@ void main() {
   );
 
   test(
+    'transformCodecovFileCoverageForTest ignores uncovered scalar argument and field prefix noise',
+    () {
+      final fileLines = [
+        'fn demo() {',
+        '    info!(',
+        '        "hello {}",',
+        '        name,',
+        '    );',
+        '    build(false, 42, SomeConfig {',
+        '        arguments:',
+        '            value,',
+        '    });',
+        '}',
+      ];
+
+      final transformed = transformCodecovFileCoverageForTest(fileLines, {
+        '2': 0,
+        '3': 0,
+        '4': 1,
+        '5': 0,
+        '6': 1,
+        '7': 0,
+        '8': 1,
+        '9': 0,
+      });
+
+      expect(transformed['2'], 0);
+      expect(transformed['3'], null);
+      expect(transformed['4'], 1);
+      expect(transformed['5'], null);
+      expect(transformed['6'], 1);
+      expect(transformed['7'], null);
+      expect(transformed['8'], 1);
+      expect(transformed['9'], null);
+    },
+  );
+
+  test(
     'computeFormatCallNoiseLines does not ignore ordinary multiline strings',
     () {
       final fileLines = ['let sql = "', 'SELECT *', 'FROM demo', '";'];
