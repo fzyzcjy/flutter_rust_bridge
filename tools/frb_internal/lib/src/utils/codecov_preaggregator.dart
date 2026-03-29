@@ -264,6 +264,6 @@ class CodecovIgnoreMatcher {
 }
 
 String _normalizeIgnorePattern(String pattern) {
-  if (pattern.endsWith('/')) return '${pattern}**';
+  if (pattern.endsWith('/')) return '$pattern**';
   return pattern;
 }
