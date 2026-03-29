@@ -95,11 +95,11 @@ void main() {
     expect(result.inputFileCount, 1);
     expect(result.mergedCoverage, {
       'coverage': {
-        'frb_codegen/src/binary/commands.rs': {'12': 3, '13': null, '14': 0},
+        'frb_codegen/src/binary/commands.rs': {'12': 3, '13': null, '14': null},
       },
     });
     expect(result.summary.coveredLines, 1);
-    expect(result.summary.executableLines, 2);
-    expect(result.summary.coveragePercent, 50);
+    expect(result.summary.executableLines, 1);
+    expect(result.summary.coveragePercent, 100);
   });
 }

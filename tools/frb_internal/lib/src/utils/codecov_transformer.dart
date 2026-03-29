@@ -354,6 +354,7 @@ Set<int> _computeMultilineDeriveLines(List<String> fileLines) {
 
     if (!insideDerive && trimmed.startsWith('#[derive(') && !trimmed.endsWith(')]')) {
       insideDerive = true;
+      ans.add(lineNumber);
       continue;
     }
 

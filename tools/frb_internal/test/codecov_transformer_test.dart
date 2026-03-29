@@ -98,7 +98,7 @@ void main() {
       });
 
       expect(transformed['1'], 0);
-      expect(transformed['2'], null);
+      expect(transformed['2'], 0);
       expect(transformed['3'], null);
       expect(transformed['4'], null);
       expect(transformed['5'], null);
