@@ -127,6 +127,10 @@ final _kChainContinuationRegex = RegExp(
 
 final _kMacroStartRegex = RegExp(r'^\s*[A-Za-z_][A-Za-z0-9_:]*!\s*\{\s*$');
 
+final _kStaticRefStartRegex = RegExp(
+  r'^\s*(?:pub\([^)]*\)\s+)?static ref [A-Za-z_][A-Za-z0-9_]*: .*=+\s*$',
+);
+
 @visibleForTesting
 bool shouldKeepLine(String line, {bool isFormatCallNoise = false}) =>
     !isFormatCallNoise &&
@@ -408,7 +412,8 @@ Set<int> _computeInlineStructuralNoiseLines(List<String> fileLines) {
         _kFieldConstructorStartRegex.hasMatch(line) ||
         _kWrappedConstructorStartRegex.hasMatch(line) ||
         _kChainContinuationRegex.hasMatch(line) ||
-        _kMacroStartRegex.hasMatch(line)) {
+        _kMacroStartRegex.hasMatch(line) ||
+        _kStaticRefStartRegex.hasMatch(line)) {
       ans.add(lineNumber);
     }
   }
