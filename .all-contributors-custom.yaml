@@ -54,6 +54,7 @@
 - turtletongue: Check deps when upgrading.
 - Shadowcat650: Vec optimization.
 - TrackerSB: Bump allo-isolate. Update CI.
+- futpib: Configurable log levels.
 - borgoat: Upgrade freezed.
 - xuwaters: Support edition 2024.
 - SirKrlos: Fix fvm calls.
