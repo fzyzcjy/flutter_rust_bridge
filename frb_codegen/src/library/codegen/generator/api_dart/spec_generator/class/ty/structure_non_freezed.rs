@@ -6,7 +6,9 @@ use crate::codegen::generator::api_dart::spec_generator::misc::{
     generate_dart_comments, generate_dart_maybe_implements_exception,
 };
 use crate::codegen::ir::mir::field::MirField;
+use crate::codegen::ir::mir::ty::delegate::MirTypeDelegate;
 use crate::codegen::ir::mir::ty::structure::MirStruct;
+use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use itertools::Itertools;
@@ -105,8 +107,14 @@ fn generate_hashcode(fields: &[MirField]) -> String {
     } else {
         fields
             .iter()
-            .map(|x| x.name.dart_style())
-            .map(|x| format!("{x}.hashCode"))
+            .map(|f| {
+                let name = f.name.dart_style();
+                if needs_deep_equality(&f.ty) {
+                    format!("const DeepCollectionEquality().hash({name})")
+                } else {
+                    format!("{name}.hashCode")
+                }
+            })
             .join("^")
     };
 
@@ -121,8 +129,14 @@ fn generate_hashcode(fields: &[MirField]) -> String {
 fn generate_equals(fields: &[MirField], struct_name: &str) -> String {
     let cmp = fields
         .iter()
-        .map(|x| x.name.dart_style())
-        .map(|x| format!("&& {x} == other.{x}"))
+        .map(|f| {
+            let name = f.name.dart_style();
+            if needs_deep_equality(&f.ty) {
+                format!("&& const DeepCollectionEquality().equals({name}, other.{name})")
+            } else {
+                format!("&& {name} == other.{name}")
+            }
+        })
         .join("");
 
     format!(
@@ -135,4 +149,16 @@ fn generate_equals(fields: &[MirField], struct_name: &str) -> String {
                 {cmp};
         "
     )
+}
+
+fn needs_deep_equality(ty: &MirType) -> bool {
+    match ty {
+        MirType::GeneralList(_) => true,
+        MirType::Delegate(delegate) => matches!(
+            delegate,
+            MirTypeDelegate::Map(_) | MirTypeDelegate::Set(_)
+        ),
+        MirType::Optional(opt) => needs_deep_equality(&opt.inner),
+        _ => false,
+    }
 }

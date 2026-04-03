@@ -166,7 +166,11 @@ class MirrorStructTwinSyncSse {
   });
 
   @override
-  int get hashCode => a.hashCode ^ b.hashCode ^ c.hashCode ^ d.hashCode;
+  int get hashCode =>
+      a.hashCode ^
+      b.hashCode ^
+      const DeepCollectionEquality().hash(c) ^
+      const DeepCollectionEquality().hash(d);
 
   @override
   bool operator ==(Object other) =>
@@ -175,6 +179,6 @@ class MirrorStructTwinSyncSse {
           runtimeType == other.runtimeType &&
           a == other.a &&
           b == other.b &&
-          c == other.c &&
-          d == other.d;
+          const DeepCollectionEquality().equals(c, other.c) &&
+          const DeepCollectionEquality().equals(d, other.d);
 }

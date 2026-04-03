@@ -190,7 +190,7 @@ class MyTreeNodeTwinSse {
       valueI32.hashCode ^
       valueVecU8.hashCode ^
       valueBoolean.hashCode ^
-      children.hashCode;
+      const DeepCollectionEquality().hash(children);
 
   @override
   bool operator ==(Object other) =>
@@ -200,7 +200,7 @@ class MyTreeNodeTwinSse {
           valueI32 == other.valueI32 &&
           valueVecU8 == other.valueVecU8 &&
           valueBoolean == other.valueBoolean &&
-          children == other.children;
+          const DeepCollectionEquality().equals(children, other.children);
 }
 
 class StructWithEnumTwinSse {

@@ -129,14 +129,14 @@ class ApplicationEnv {
   });
 
   @override
-  int get hashCode => vars.hashCode;
+  int get hashCode => const DeepCollectionEquality().hash(vars);
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ApplicationEnv &&
           runtimeType == other.runtimeType &&
-          vars == other.vars;
+          const DeepCollectionEquality().equals(vars, other.vars);
 }
 
 class ApplicationEnvVar {
@@ -277,14 +277,14 @@ class ListOfNestedRawStringMirrored {
   });
 
   @override
-  int get hashCode => raw.hashCode;
+  int get hashCode => const DeepCollectionEquality().hash(raw);
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ListOfNestedRawStringMirrored &&
           runtimeType == other.runtimeType &&
-          raw == other.raw;
+          const DeepCollectionEquality().equals(raw, other.raw);
 }
 
 class MirrorStructTwinNormal {
@@ -301,7 +301,11 @@ class MirrorStructTwinNormal {
   });
 
   @override
-  int get hashCode => a.hashCode ^ b.hashCode ^ c.hashCode ^ d.hashCode;
+  int get hashCode =>
+      a.hashCode ^
+      b.hashCode ^
+      const DeepCollectionEquality().hash(c) ^
+      const DeepCollectionEquality().hash(d);
 
   @override
   bool operator ==(Object other) =>
@@ -310,8 +314,8 @@ class MirrorStructTwinNormal {
           runtimeType == other.runtimeType &&
           a == other.a &&
           b == other.b &&
-          c == other.c &&
-          d == other.d;
+          const DeepCollectionEquality().equals(c, other.c) &&
+          const DeepCollectionEquality().equals(d, other.d);
 }
 
 class NestedRawStringMirrored {
@@ -412,12 +416,12 @@ class StructWithHashMap {
   });
 
   @override
-  int get hashCode => map.hashCode;
+  int get hashCode => const DeepCollectionEquality().hash(map);
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is StructWithHashMap &&
           runtimeType == other.runtimeType &&
-          map == other.map;
+          const DeepCollectionEquality().equals(map, other.map);
 }

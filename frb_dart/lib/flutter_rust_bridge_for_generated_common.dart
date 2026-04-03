@@ -7,6 +7,7 @@ library;
 export 'dart:async' show FutureOr;
 export 'dart:typed_data' hide Int64List, Uint64List;
 
+export 'package:collection/collection.dart' show DeepCollectionEquality;
 export 'package:meta/meta.dart' show internal, protected, sealed;
 
 export 'flutter_rust_bridge.dart';
