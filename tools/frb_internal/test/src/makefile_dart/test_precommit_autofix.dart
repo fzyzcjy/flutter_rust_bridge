@@ -124,7 +124,15 @@ void main() {
         'Flutter',
         'Flutter-Debug.xcconfig',
       );
-      File(excludedPath).createSync(recursive: true);
+      await _commitFile(
+        repo: repo,
+        relativePath:
+            'frb_example/flutter_via_create/macos/Flutter/Flutter-Debug.xcconfig',
+        contents:
+            '#include? "Pods/Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"\n'
+            '#include "ephemeral/Flutter-Generated.xcconfig"\n',
+        message: 'add excluded integrate drift fixture',
+      );
 
       final outputPath = path.join(repo.path, 'artifacts', 'precommit.diff');
       final result = await _runService(
@@ -157,7 +165,15 @@ void main() {
         'Flutter',
         'Flutter-Debug.xcconfig',
       );
-      File(excludedPath).createSync(recursive: true);
+      await _commitFile(
+        repo: repo,
+        relativePath:
+            'frb_example/flutter_via_create/macos/Flutter/Flutter-Debug.xcconfig',
+        contents:
+            '#include? "Pods/Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"\n'
+            '#include "ephemeral/Flutter-Generated.xcconfig"\n',
+        message: 'add excluded integrate drift fixture',
+      );
 
       final outputPath = path.join(repo.path, 'artifacts', 'precommit.diff');
       final result = await _runService(
@@ -262,6 +278,20 @@ Future<Directory> _createCommittedRepo({
   await runCommand('git', ['commit', '-m', 'initial'], pwd: repo.path);
 
   return repo;
+}
+
+Future<void> _commitFile({
+  required Directory repo,
+  required String relativePath,
+  required String contents,
+  required String message,
+}) async {
+  final file = File(path.join(repo.path, relativePath));
+  file.parent.createSync(recursive: true);
+  file.writeAsStringSync(contents);
+
+  await runCommand('git', ['add', relativePath], pwd: repo.path);
+  await runCommand('git', ['commit', '-m', message], pwd: repo.path);
 }
 
 Future<PrecommitAutofixRunResult> _runService({
