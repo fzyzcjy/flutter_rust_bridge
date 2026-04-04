@@ -149,6 +149,9 @@ flutter_rust_bridge_codegen build-web
 flutter run --web-header=Cross-Origin-Opener-Policy=same-origin --web-header=Cross-Origin-Embedder-Policy=require-corp
 ```
 
+`build-web` now supplies the shared-memory Rust flags needed by modern threaded WASM builds.
+If you override `--wasm-pack-rustflags`, keep the default threaded-WASM flags as well; otherwise the app may fail at runtime with errors such as `WebAssembly.Memory could not be cloned`.
+
 </TabItem>
 
 </Tabs>
