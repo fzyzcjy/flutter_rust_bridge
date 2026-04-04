@@ -19,7 +19,7 @@ void main() {
       'flutter-3.41.2-rust-1.93.1-nightly-2025-02-01',
     );
     expect(
-      metadata.imageRef,
+      metadata.imageRef(imageName: 'fzyzcjy/flutter_rust_bridge_dev'),
       'fzyzcjy/flutter_rust_bridge_dev:flutter-3.41.2-rust-1.93.1-nightly-2025-02-01',
     );
   });
@@ -52,6 +52,24 @@ void main() {
     writeCommandOutput(outputText: outputText, outputPath: outputPath);
 
     expect(File(outputPath).readAsStringSync(), outputText);
+  });
+
+  test('workflow metadata imageRef respects custom image name', () {
+    const metadata = DevDockerMetadata(
+      flutterVersion: '3.41.2',
+      rustVersion: '1.93.1',
+      rustNightlyVersion: '2025-02-01',
+    );
+    const workflowMetadata = DevDockerWorkflowMetadata(
+      metadata: metadata,
+      imageName: 'example/custom-dev-image',
+      shortSha: 'abc1234',
+    );
+
+    expect(
+      workflowMetadata.imageRef,
+      'example/custom-dev-image:flutter-3.41.2-rust-1.93.1-nightly-2025-02-01',
+    );
   });
 }
 

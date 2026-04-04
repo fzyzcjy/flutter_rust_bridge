@@ -17,7 +17,7 @@ class DevDockerMetadata {
   String get versionTag =>
       'flutter-$flutterVersion-rust-$rustVersion-nightly-$rustNightlyVersion';
 
-  String get imageRef => 'fzyzcjy/flutter_rust_bridge_dev:$versionTag';
+  String imageRef({required String imageName}) => '$imageName:$versionTag';
 
   Map<String, Object> toJson() {
     return {
@@ -25,7 +25,7 @@ class DevDockerMetadata {
       'rust_version': rustVersion,
       'rust_nightly_version': rustNightlyVersion,
       'version_tag': versionTag,
-      'image_ref': imageRef,
+      'image_ref': imageRef(imageName: 'fzyzcjy/flutter_rust_bridge_dev'),
     };
   }
 
@@ -43,7 +43,7 @@ class DevDockerWorkflowMetadata {
     required this.shortSha,
   });
 
-  String get imageRef => metadata.imageRef;
+  String get imageRef => metadata.imageRef(imageName: imageName);
 
   String get shaTag => 'sha-$shortSha';
 
