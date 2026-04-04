@@ -222,6 +222,7 @@ jobs:
 
       # report
       - uses: actions/upload-artifact@v4
+        continue-on-error: true
         with:
           name: ${{ github.job }}--${{ matrix.image }}--${{ matrix.package }}--coverage
           path: target/coverage
@@ -267,6 +268,7 @@ jobs:
 
       # report
       - uses: actions/upload-artifact@v4
+        continue-on-error: true
         with:
           name: ${{ github.job }}--${{ matrix.image }}--${{ matrix.package }}--coverage
           path: target/coverage
@@ -300,6 +302,7 @@ jobs:
 
       # report
       - uses: actions/upload-artifact@v4
+        continue-on-error: true
         with:
           name: ${{ github.job }}--coverage
           path: target/coverage
@@ -338,6 +341,7 @@ jobs:
       - run: ./frb_internal bench-dart-native
 
       - uses: actions/upload-artifact@v4
+        continue-on-error: true
         with:
           name: ${{ github.job }}--${{ matrix.image }}--benchmark
           path: frb_example/pure_dart/build/simple_benchmark/benchmark_result.json
@@ -423,6 +427,7 @@ jobs:
 
       # report
       - uses: actions/upload-artifact@v4
+        continue-on-error: true
         with:
           name: ${{ github.job }}--${{ matrix.info.target }}--output
           path: target/build_flutter_output
@@ -559,6 +564,7 @@ jobs:
 
       # report
       - uses: actions/upload-artifact@v4
+        continue-on-error: true
         with:
           name: ${{ github.job }}--${{ matrix.info.image }}--${{ matrix.info.version }}--coverage
           path: target/coverage
@@ -613,6 +619,7 @@ jobs:
 
       # report
       - uses: actions/upload-artifact@v4
+        continue-on-error: true
         with:
           name: ${{ github.job }}--${{ matrix.image }}--${{ matrix.package }}--coverage
           path: target/coverage
