@@ -89,6 +89,10 @@ class DevDockerMetadataCommand extends Command<void> {
       ..addOption(
         'short-sha',
         help: 'Short git SHA used to derive GitHub Actions tags.',
+      )
+      ..addOption(
+        'output-path',
+        help: 'Optional path to write the command output instead of stdout.',
       );
   }
 
@@ -97,21 +101,19 @@ class DevDockerMetadataCommand extends Command<void> {
     final dockerfilePath = argResults!['dockerfile'] as String;
     final metadata = readDevDockerMetadataFile(dockerfilePath: dockerfilePath);
     final githubOutput = argResults!['github-output'] as bool;
+    final outputPath = argResults!['output-path'] as String?;
+    final outputText =
+        !githubOutput
+            ? metadata.toJsonString()
+            : workflowMetadataToGithubOutput(
+              DevDockerWorkflowMetadata(
+                metadata: metadata,
+                imageName: argResults!['image-name'] as String,
+                shortSha: argResults!['short-sha'] as String? ?? '',
+              ),
+            );
 
-    if (!githubOutput) {
-      print(metadata.toJsonString());
-      return;
-    }
-
-    final imageName = argResults!['image-name'] as String;
-    final shortSha = argResults!['short-sha'] as String? ?? '';
-    final workflowMetadata = DevDockerWorkflowMetadata(
-      metadata: metadata,
-      imageName: imageName,
-      shortSha: shortSha,
-    );
-
-    stdout.write(workflowMetadataToGithubOutput(workflowMetadata));
+    writeCommandOutput(outputText: outputText, outputPath: outputPath);
   }
 }
 
@@ -158,6 +160,21 @@ String workflowMetadataToGithubOutput(
 
   buffer.writeln('EOF');
   return buffer.toString();
+}
+
+@visibleForTesting
+void writeCommandOutput({
+  required String outputText,
+  required String? outputPath,
+}) {
+  if (outputPath == null) {
+    stdout.write(outputText);
+    return;
+  }
+
+  final outputFile = File(outputPath);
+  outputFile.parent.createSync(recursive: true);
+  outputFile.writeAsStringSync(outputText);
 }
 
 String _parseDockerfileArgument(String dockerfileText, String argumentName) {

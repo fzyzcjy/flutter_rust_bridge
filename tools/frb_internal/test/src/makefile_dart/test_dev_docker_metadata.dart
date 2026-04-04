@@ -68,6 +68,17 @@ void main() {
     expect(output, contains('fzyzcjy/flutter_rust_bridge_dev:latest'));
     expect(output, contains('fzyzcjy/flutter_rust_bridge_dev:sha-abc1234'));
   });
+
+  test('dev docker metadata command writes github output to file', () async {
+    final tempDir = await Directory.systemTemp.createTemp('dev-docker-output-');
+    addTearDown(() => tempDir.delete(recursive: true));
+    final outputPath = path.join(tempDir.path, 'github-output.txt');
+    const outputText = 'hello workflow output\n';
+
+    writeCommandOutput(outputText: outputText, outputPath: outputPath);
+
+    expect(File(outputPath).readAsStringSync(), outputText);
+  });
 }
 
 String _readCurrentDockerfileText() {
