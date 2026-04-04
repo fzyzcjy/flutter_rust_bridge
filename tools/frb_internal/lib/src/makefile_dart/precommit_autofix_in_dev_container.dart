@@ -194,6 +194,7 @@ class PrecommitAutofixInDevContainerService {
     final hostPatchPath = path.join(artifactDir.path, path.basename(outputPath));
     final containerCommand =
         'git config --global --add safe.directory /workspace && '
+        'rustup target add wasm32-unknown-unknown && '
         '(cargo expand --version >/dev/null 2>&1 || '
         'cargo install cargo-expand || '
         'cargo install cargo-expand --version 1.0.112 --locked) && '
