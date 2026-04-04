@@ -38,7 +38,8 @@ Open the workflow run, download the `precommit-autofix-diff` artifact, and apply
 ```shell
 gh run download <run-id> -n precommit-autofix-diff
 git apply precommit-autofix.diff
-git commit -am "Apply precommit autofix"
+git add -A
+git commit -m "Apply precommit autofix"
 git push
 ```
 

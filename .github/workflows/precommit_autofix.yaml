@@ -1,0 +1,127 @@
+name: Precommit Autofix
+
+on:
+  pull_request: { }
+  workflow_dispatch: { }
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  precommit_autofix:
+    name: Generate precommit autofix patch
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          submodules: recursive
+
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: 3.11.0
+          architecture: x64
+
+      - name: Compute metadata from Dockerfile
+        id: metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          metadata_json="$(./frb_internal dev-docker-metadata)"
+          export METADATA_JSON="${metadata_json}"
+          export SHORT_SHA="${GITHUB_SHA::7}"
+
+          python3 - <<'PY' >> "${GITHUB_OUTPUT}"
+import json
+import os
+
+data = json.loads(os.environ["METADATA_JSON"])
+image_name = "fzyzcjy/flutter_rust_bridge_dev"
+short_sha = os.environ["SHORT_SHA"]
+sha_tag = f"sha-{short_sha}"
+image_ref = data["image_ref"]
+tags = [
+    f"{image_name}:latest",
+    image_ref,
+    f"{image_name}:{sha_tag}",
+]
+
+print(f"flutter_version={data['flutter_version']}")
+print(f"rust_version={data['rust_version']}")
+print(f"rust_nightly_version={data['rust_nightly_version']}")
+print(f"version_tag={data['version_tag']}")
+print(f"image_ref={image_ref}")
+print(f"sha_tag={sha_tag}")
+print(f"local_tag=frb-dev-image-smoke:{short_sha}")
+print("tags<<EOF")
+for tag in tags:
+    print(tag)
+print("EOF")
+PY
+
+      - name: Pull dev image
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          docker pull "${{ steps.metadata.outputs.image_ref }}"
+
+      - name: Run precommit autofix in dev image
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          artifact_dir="${RUNNER_TEMP}/precommit-autofix"
+          mkdir -p "${artifact_dir}"
+
+          docker run --rm \
+            --volume "${GITHUB_WORKSPACE}:/workspace" \
+            --volume "${artifact_dir}:/artifacts" \
+            --workdir /workspace \
+            "${{ steps.metadata.outputs.image_ref }}" \
+            bash -lc 'git config --global --add safe.directory /workspace && ./frb_internal precommit-autofix --mode slow --output /artifacts/precommit-autofix.diff'
+
+      - name: Collect patch artifact
+        id: collect
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          patch_source="${RUNNER_TEMP}/precommit-autofix/precommit-autofix.diff"
+          patch_target="${GITHUB_WORKSPACE}/precommit-autofix.diff"
+
+          if [[ -s "${patch_source}" ]]; then
+            cp "${patch_source}" "${patch_target}"
+
+            apply_command='gh run download '"${GITHUB_RUN_ID}"' -n precommit-autofix-diff && git apply precommit-autofix.diff && git add -A && git commit -m "Apply precommit autofix" && git push'
+            {
+              echo "## Precommit Autofix"
+              echo
+              echo "A precommit autofix patch was produced in the standardized dev image."
+              echo
+              echo "Download the \`precommit-autofix-diff\` artifact and apply:"
+              echo
+              echo '```shell'
+              echo "${apply_command}"
+              echo '```'
+            } >> "${GITHUB_STEP_SUMMARY}"
+            printf '%s\n' "::notice::${apply_command}"
+            echo "has_patch=true" >> "${GITHUB_OUTPUT}"
+          else
+            rm -f "${patch_target}"
+            echo "No autofix patch was produced; the branch is already clean after precommit." >> "${GITHUB_STEP_SUMMARY}"
+            echo "has_patch=false" >> "${GITHUB_OUTPUT}"
+          fi
+
+      - name: Upload patch artifact
+        if: ${{ steps.collect.outputs.has_patch == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: precommit-autofix-diff
+          path: precommit-autofix.diff
