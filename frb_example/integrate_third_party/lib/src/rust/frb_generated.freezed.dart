@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -39,6 +38,555 @@ mixin _$AudioNodeImplementor {
 class $AudioNodeImplementorCopyWith<$Res> {
   $AudioNodeImplementorCopyWith(
       AudioNodeImplementor _, $Res Function(AudioNodeImplementor) __);
+}
+
+/// Adds pattern-matching-related methods to [AudioNodeImplementor].
+extension AudioNodeImplementorPatterns on AudioNodeImplementor {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult Function(AudioNodeImplementor_Variant22 value)? variant22,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case AudioNodeImplementor_Variant0() when variant0 != null:
+        return variant0(_that);
+      case AudioNodeImplementor_Variant1() when variant1 != null:
+        return variant1(_that);
+      case AudioNodeImplementor_Variant2() when variant2 != null:
+        return variant2(_that);
+      case AudioNodeImplementor_Variant3() when variant3 != null:
+        return variant3(_that);
+      case AudioNodeImplementor_Variant4() when variant4 != null:
+        return variant4(_that);
+      case AudioNodeImplementor_Variant5() when variant5 != null:
+        return variant5(_that);
+      case AudioNodeImplementor_Variant6() when variant6 != null:
+        return variant6(_that);
+      case AudioNodeImplementor_Variant7() when variant7 != null:
+        return variant7(_that);
+      case AudioNodeImplementor_Variant8() when variant8 != null:
+        return variant8(_that);
+      case AudioNodeImplementor_Variant9() when variant9 != null:
+        return variant9(_that);
+      case AudioNodeImplementor_Variant10() when variant10 != null:
+        return variant10(_that);
+      case AudioNodeImplementor_Variant11() when variant11 != null:
+        return variant11(_that);
+      case AudioNodeImplementor_Variant12() when variant12 != null:
+        return variant12(_that);
+      case AudioNodeImplementor_Variant13() when variant13 != null:
+        return variant13(_that);
+      case AudioNodeImplementor_Variant14() when variant14 != null:
+        return variant14(_that);
+      case AudioNodeImplementor_Variant15() when variant15 != null:
+        return variant15(_that);
+      case AudioNodeImplementor_Variant16() when variant16 != null:
+        return variant16(_that);
+      case AudioNodeImplementor_Variant17() when variant17 != null:
+        return variant17(_that);
+      case AudioNodeImplementor_Variant18() when variant18 != null:
+        return variant18(_that);
+      case AudioNodeImplementor_Variant19() when variant19 != null:
+        return variant19(_that);
+      case AudioNodeImplementor_Variant20() when variant20 != null:
+        return variant20(_that);
+      case AudioNodeImplementor_Variant21() when variant21 != null:
+        return variant21(_that);
+      case AudioNodeImplementor_Variant22() when variant22 != null:
+        return variant22(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AudioNodeImplementor_Variant0 value) variant0,
+    required TResult Function(AudioNodeImplementor_Variant1 value) variant1,
+    required TResult Function(AudioNodeImplementor_Variant2 value) variant2,
+    required TResult Function(AudioNodeImplementor_Variant3 value) variant3,
+    required TResult Function(AudioNodeImplementor_Variant4 value) variant4,
+    required TResult Function(AudioNodeImplementor_Variant5 value) variant5,
+    required TResult Function(AudioNodeImplementor_Variant6 value) variant6,
+    required TResult Function(AudioNodeImplementor_Variant7 value) variant7,
+    required TResult Function(AudioNodeImplementor_Variant8 value) variant8,
+    required TResult Function(AudioNodeImplementor_Variant9 value) variant9,
+    required TResult Function(AudioNodeImplementor_Variant10 value) variant10,
+    required TResult Function(AudioNodeImplementor_Variant11 value) variant11,
+    required TResult Function(AudioNodeImplementor_Variant12 value) variant12,
+    required TResult Function(AudioNodeImplementor_Variant13 value) variant13,
+    required TResult Function(AudioNodeImplementor_Variant14 value) variant14,
+    required TResult Function(AudioNodeImplementor_Variant15 value) variant15,
+    required TResult Function(AudioNodeImplementor_Variant16 value) variant16,
+    required TResult Function(AudioNodeImplementor_Variant17 value) variant17,
+    required TResult Function(AudioNodeImplementor_Variant18 value) variant18,
+    required TResult Function(AudioNodeImplementor_Variant19 value) variant19,
+    required TResult Function(AudioNodeImplementor_Variant20 value) variant20,
+    required TResult Function(AudioNodeImplementor_Variant21 value) variant21,
+    required TResult Function(AudioNodeImplementor_Variant22 value) variant22,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case AudioNodeImplementor_Variant0():
+        return variant0(_that);
+      case AudioNodeImplementor_Variant1():
+        return variant1(_that);
+      case AudioNodeImplementor_Variant2():
+        return variant2(_that);
+      case AudioNodeImplementor_Variant3():
+        return variant3(_that);
+      case AudioNodeImplementor_Variant4():
+        return variant4(_that);
+      case AudioNodeImplementor_Variant5():
+        return variant5(_that);
+      case AudioNodeImplementor_Variant6():
+        return variant6(_that);
+      case AudioNodeImplementor_Variant7():
+        return variant7(_that);
+      case AudioNodeImplementor_Variant8():
+        return variant8(_that);
+      case AudioNodeImplementor_Variant9():
+        return variant9(_that);
+      case AudioNodeImplementor_Variant10():
+        return variant10(_that);
+      case AudioNodeImplementor_Variant11():
+        return variant11(_that);
+      case AudioNodeImplementor_Variant12():
+        return variant12(_that);
+      case AudioNodeImplementor_Variant13():
+        return variant13(_that);
+      case AudioNodeImplementor_Variant14():
+        return variant14(_that);
+      case AudioNodeImplementor_Variant15():
+        return variant15(_that);
+      case AudioNodeImplementor_Variant16():
+        return variant16(_that);
+      case AudioNodeImplementor_Variant17():
+        return variant17(_that);
+      case AudioNodeImplementor_Variant18():
+        return variant18(_that);
+      case AudioNodeImplementor_Variant19():
+        return variant19(_that);
+      case AudioNodeImplementor_Variant20():
+        return variant20(_that);
+      case AudioNodeImplementor_Variant21():
+        return variant21(_that);
+      case AudioNodeImplementor_Variant22():
+        return variant22(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AudioNodeImplementor_Variant0 value)? variant0,
+    TResult? Function(AudioNodeImplementor_Variant1 value)? variant1,
+    TResult? Function(AudioNodeImplementor_Variant2 value)? variant2,
+    TResult? Function(AudioNodeImplementor_Variant3 value)? variant3,
+    TResult? Function(AudioNodeImplementor_Variant4 value)? variant4,
+    TResult? Function(AudioNodeImplementor_Variant5 value)? variant5,
+    TResult? Function(AudioNodeImplementor_Variant6 value)? variant6,
+    TResult? Function(AudioNodeImplementor_Variant7 value)? variant7,
+    TResult? Function(AudioNodeImplementor_Variant8 value)? variant8,
+    TResult? Function(AudioNodeImplementor_Variant9 value)? variant9,
+    TResult? Function(AudioNodeImplementor_Variant10 value)? variant10,
+    TResult? Function(AudioNodeImplementor_Variant11 value)? variant11,
+    TResult? Function(AudioNodeImplementor_Variant12 value)? variant12,
+    TResult? Function(AudioNodeImplementor_Variant13 value)? variant13,
+    TResult? Function(AudioNodeImplementor_Variant14 value)? variant14,
+    TResult? Function(AudioNodeImplementor_Variant15 value)? variant15,
+    TResult? Function(AudioNodeImplementor_Variant16 value)? variant16,
+    TResult? Function(AudioNodeImplementor_Variant17 value)? variant17,
+    TResult? Function(AudioNodeImplementor_Variant18 value)? variant18,
+    TResult? Function(AudioNodeImplementor_Variant19 value)? variant19,
+    TResult? Function(AudioNodeImplementor_Variant20 value)? variant20,
+    TResult? Function(AudioNodeImplementor_Variant21 value)? variant21,
+    TResult? Function(AudioNodeImplementor_Variant22 value)? variant22,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case AudioNodeImplementor_Variant0() when variant0 != null:
+        return variant0(_that);
+      case AudioNodeImplementor_Variant1() when variant1 != null:
+        return variant1(_that);
+      case AudioNodeImplementor_Variant2() when variant2 != null:
+        return variant2(_that);
+      case AudioNodeImplementor_Variant3() when variant3 != null:
+        return variant3(_that);
+      case AudioNodeImplementor_Variant4() when variant4 != null:
+        return variant4(_that);
+      case AudioNodeImplementor_Variant5() when variant5 != null:
+        return variant5(_that);
+      case AudioNodeImplementor_Variant6() when variant6 != null:
+        return variant6(_that);
+      case AudioNodeImplementor_Variant7() when variant7 != null:
+        return variant7(_that);
+      case AudioNodeImplementor_Variant8() when variant8 != null:
+        return variant8(_that);
+      case AudioNodeImplementor_Variant9() when variant9 != null:
+        return variant9(_that);
+      case AudioNodeImplementor_Variant10() when variant10 != null:
+        return variant10(_that);
+      case AudioNodeImplementor_Variant11() when variant11 != null:
+        return variant11(_that);
+      case AudioNodeImplementor_Variant12() when variant12 != null:
+        return variant12(_that);
+      case AudioNodeImplementor_Variant13() when variant13 != null:
+        return variant13(_that);
+      case AudioNodeImplementor_Variant14() when variant14 != null:
+        return variant14(_that);
+      case AudioNodeImplementor_Variant15() when variant15 != null:
+        return variant15(_that);
+      case AudioNodeImplementor_Variant16() when variant16 != null:
+        return variant16(_that);
+      case AudioNodeImplementor_Variant17() when variant17 != null:
+        return variant17(_that);
+      case AudioNodeImplementor_Variant18() when variant18 != null:
+        return variant18(_that);
+      case AudioNodeImplementor_Variant19() when variant19 != null:
+        return variant19(_that);
+      case AudioNodeImplementor_Variant20() when variant20 != null:
+        return variant20(_that);
+      case AudioNodeImplementor_Variant21() when variant21 != null:
+        return variant21(_that);
+      case AudioNodeImplementor_Variant22() when variant22 != null:
+        return variant22(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AnalyserNode field0)? variant0,
+    TResult Function(AudioBufferSourceNode field0)? variant1,
+    TResult Function(AudioDestinationNode field0)? variant2,
+    TResult Function(AudioParam field0)? variant3,
+    TResult Function(AudioWorkletNode field0)? variant4,
+    TResult Function(BiquadFilterNode field0)? variant5,
+    TResult Function(ChannelMergerNode field0)? variant6,
+    TResult Function(ChannelSplitterNode field0)? variant7,
+    TResult Function(ConstantSourceNode field0)? variant8,
+    TResult Function(ConvolverNode field0)? variant9,
+    TResult Function(DelayNode field0)? variant10,
+    TResult Function(DynamicsCompressorNode field0)? variant11,
+    TResult Function(GainNode field0)? variant12,
+    TResult Function(IirFilterNode field0)? variant13,
+    TResult Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult Function(OscillatorNode field0)? variant18,
+    TResult Function(PannerNode field0)? variant19,
+    TResult Function(ScriptProcessorNode field0)? variant20,
+    TResult Function(StereoPannerNode field0)? variant21,
+    TResult Function(WaveShaperNode field0)? variant22,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case AudioNodeImplementor_Variant0() when variant0 != null:
+        return variant0(_that.field0);
+      case AudioNodeImplementor_Variant1() when variant1 != null:
+        return variant1(_that.field0);
+      case AudioNodeImplementor_Variant2() when variant2 != null:
+        return variant2(_that.field0);
+      case AudioNodeImplementor_Variant3() when variant3 != null:
+        return variant3(_that.field0);
+      case AudioNodeImplementor_Variant4() when variant4 != null:
+        return variant4(_that.field0);
+      case AudioNodeImplementor_Variant5() when variant5 != null:
+        return variant5(_that.field0);
+      case AudioNodeImplementor_Variant6() when variant6 != null:
+        return variant6(_that.field0);
+      case AudioNodeImplementor_Variant7() when variant7 != null:
+        return variant7(_that.field0);
+      case AudioNodeImplementor_Variant8() when variant8 != null:
+        return variant8(_that.field0);
+      case AudioNodeImplementor_Variant9() when variant9 != null:
+        return variant9(_that.field0);
+      case AudioNodeImplementor_Variant10() when variant10 != null:
+        return variant10(_that.field0);
+      case AudioNodeImplementor_Variant11() when variant11 != null:
+        return variant11(_that.field0);
+      case AudioNodeImplementor_Variant12() when variant12 != null:
+        return variant12(_that.field0);
+      case AudioNodeImplementor_Variant13() when variant13 != null:
+        return variant13(_that.field0);
+      case AudioNodeImplementor_Variant14() when variant14 != null:
+        return variant14(_that.field0);
+      case AudioNodeImplementor_Variant15() when variant15 != null:
+        return variant15(_that.field0);
+      case AudioNodeImplementor_Variant16() when variant16 != null:
+        return variant16(_that.field0);
+      case AudioNodeImplementor_Variant17() when variant17 != null:
+        return variant17(_that.field0);
+      case AudioNodeImplementor_Variant18() when variant18 != null:
+        return variant18(_that.field0);
+      case AudioNodeImplementor_Variant19() when variant19 != null:
+        return variant19(_that.field0);
+      case AudioNodeImplementor_Variant20() when variant20 != null:
+        return variant20(_that.field0);
+      case AudioNodeImplementor_Variant21() when variant21 != null:
+        return variant21(_that.field0);
+      case AudioNodeImplementor_Variant22() when variant22 != null:
+        return variant22(_that.field0);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AnalyserNode field0) variant0,
+    required TResult Function(AudioBufferSourceNode field0) variant1,
+    required TResult Function(AudioDestinationNode field0) variant2,
+    required TResult Function(AudioParam field0) variant3,
+    required TResult Function(AudioWorkletNode field0) variant4,
+    required TResult Function(BiquadFilterNode field0) variant5,
+    required TResult Function(ChannelMergerNode field0) variant6,
+    required TResult Function(ChannelSplitterNode field0) variant7,
+    required TResult Function(ConstantSourceNode field0) variant8,
+    required TResult Function(ConvolverNode field0) variant9,
+    required TResult Function(DelayNode field0) variant10,
+    required TResult Function(DynamicsCompressorNode field0) variant11,
+    required TResult Function(GainNode field0) variant12,
+    required TResult Function(IirFilterNode field0) variant13,
+    required TResult Function(MediaElementAudioSourceNode field0) variant14,
+    required TResult Function(MediaStreamAudioDestinationNode field0) variant15,
+    required TResult Function(MediaStreamAudioSourceNode field0) variant16,
+    required TResult Function(MediaStreamTrackAudioSourceNode field0) variant17,
+    required TResult Function(OscillatorNode field0) variant18,
+    required TResult Function(PannerNode field0) variant19,
+    required TResult Function(ScriptProcessorNode field0) variant20,
+    required TResult Function(StereoPannerNode field0) variant21,
+    required TResult Function(WaveShaperNode field0) variant22,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case AudioNodeImplementor_Variant0():
+        return variant0(_that.field0);
+      case AudioNodeImplementor_Variant1():
+        return variant1(_that.field0);
+      case AudioNodeImplementor_Variant2():
+        return variant2(_that.field0);
+      case AudioNodeImplementor_Variant3():
+        return variant3(_that.field0);
+      case AudioNodeImplementor_Variant4():
+        return variant4(_that.field0);
+      case AudioNodeImplementor_Variant5():
+        return variant5(_that.field0);
+      case AudioNodeImplementor_Variant6():
+        return variant6(_that.field0);
+      case AudioNodeImplementor_Variant7():
+        return variant7(_that.field0);
+      case AudioNodeImplementor_Variant8():
+        return variant8(_that.field0);
+      case AudioNodeImplementor_Variant9():
+        return variant9(_that.field0);
+      case AudioNodeImplementor_Variant10():
+        return variant10(_that.field0);
+      case AudioNodeImplementor_Variant11():
+        return variant11(_that.field0);
+      case AudioNodeImplementor_Variant12():
+        return variant12(_that.field0);
+      case AudioNodeImplementor_Variant13():
+        return variant13(_that.field0);
+      case AudioNodeImplementor_Variant14():
+        return variant14(_that.field0);
+      case AudioNodeImplementor_Variant15():
+        return variant15(_that.field0);
+      case AudioNodeImplementor_Variant16():
+        return variant16(_that.field0);
+      case AudioNodeImplementor_Variant17():
+        return variant17(_that.field0);
+      case AudioNodeImplementor_Variant18():
+        return variant18(_that.field0);
+      case AudioNodeImplementor_Variant19():
+        return variant19(_that.field0);
+      case AudioNodeImplementor_Variant20():
+        return variant20(_that.field0);
+      case AudioNodeImplementor_Variant21():
+        return variant21(_that.field0);
+      case AudioNodeImplementor_Variant22():
+        return variant22(_that.field0);
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AnalyserNode field0)? variant0,
+    TResult? Function(AudioBufferSourceNode field0)? variant1,
+    TResult? Function(AudioDestinationNode field0)? variant2,
+    TResult? Function(AudioParam field0)? variant3,
+    TResult? Function(AudioWorkletNode field0)? variant4,
+    TResult? Function(BiquadFilterNode field0)? variant5,
+    TResult? Function(ChannelMergerNode field0)? variant6,
+    TResult? Function(ChannelSplitterNode field0)? variant7,
+    TResult? Function(ConstantSourceNode field0)? variant8,
+    TResult? Function(ConvolverNode field0)? variant9,
+    TResult? Function(DelayNode field0)? variant10,
+    TResult? Function(DynamicsCompressorNode field0)? variant11,
+    TResult? Function(GainNode field0)? variant12,
+    TResult? Function(IirFilterNode field0)? variant13,
+    TResult? Function(MediaElementAudioSourceNode field0)? variant14,
+    TResult? Function(MediaStreamAudioDestinationNode field0)? variant15,
+    TResult? Function(MediaStreamAudioSourceNode field0)? variant16,
+    TResult? Function(MediaStreamTrackAudioSourceNode field0)? variant17,
+    TResult? Function(OscillatorNode field0)? variant18,
+    TResult? Function(PannerNode field0)? variant19,
+    TResult? Function(ScriptProcessorNode field0)? variant20,
+    TResult? Function(StereoPannerNode field0)? variant21,
+    TResult? Function(WaveShaperNode field0)? variant22,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case AudioNodeImplementor_Variant0() when variant0 != null:
+        return variant0(_that.field0);
+      case AudioNodeImplementor_Variant1() when variant1 != null:
+        return variant1(_that.field0);
+      case AudioNodeImplementor_Variant2() when variant2 != null:
+        return variant2(_that.field0);
+      case AudioNodeImplementor_Variant3() when variant3 != null:
+        return variant3(_that.field0);
+      case AudioNodeImplementor_Variant4() when variant4 != null:
+        return variant4(_that.field0);
+      case AudioNodeImplementor_Variant5() when variant5 != null:
+        return variant5(_that.field0);
+      case AudioNodeImplementor_Variant6() when variant6 != null:
+        return variant6(_that.field0);
+      case AudioNodeImplementor_Variant7() when variant7 != null:
+        return variant7(_that.field0);
+      case AudioNodeImplementor_Variant8() when variant8 != null:
+        return variant8(_that.field0);
+      case AudioNodeImplementor_Variant9() when variant9 != null:
+        return variant9(_that.field0);
+      case AudioNodeImplementor_Variant10() when variant10 != null:
+        return variant10(_that.field0);
+      case AudioNodeImplementor_Variant11() when variant11 != null:
+        return variant11(_that.field0);
+      case AudioNodeImplementor_Variant12() when variant12 != null:
+        return variant12(_that.field0);
+      case AudioNodeImplementor_Variant13() when variant13 != null:
+        return variant13(_that.field0);
+      case AudioNodeImplementor_Variant14() when variant14 != null:
+        return variant14(_that.field0);
+      case AudioNodeImplementor_Variant15() when variant15 != null:
+        return variant15(_that.field0);
+      case AudioNodeImplementor_Variant16() when variant16 != null:
+        return variant16(_that.field0);
+      case AudioNodeImplementor_Variant17() when variant17 != null:
+        return variant17(_that.field0);
+      case AudioNodeImplementor_Variant18() when variant18 != null:
+        return variant18(_that.field0);
+      case AudioNodeImplementor_Variant19() when variant19 != null:
+        return variant19(_that.field0);
+      case AudioNodeImplementor_Variant20() when variant20 != null:
+        return variant20(_that.field0);
+      case AudioNodeImplementor_Variant21() when variant21 != null:
+        return variant21(_that.field0);
+      case AudioNodeImplementor_Variant22() when variant22 != null:
+        return variant22(_that.field0);
+      case _:
+        return null;
+    }
+  }
 }
 
 /// @nodoc
@@ -1613,6 +2161,1134 @@ class $Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAu
       $Res Function(
               Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum)
           __);
+}
+
+/// Adds pattern-matching-related methods to [Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum].
+extension Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnumPatterns
+    on Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant0
+                value)?
+        variant0,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant1
+                value)?
+        variant1,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant2
+                value)?
+        variant2,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant3
+                value)?
+        variant3,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant4
+                value)?
+        variant4,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant5
+                value)?
+        variant5,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant6
+                value)?
+        variant6,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant7
+                value)?
+        variant7,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant8
+                value)?
+        variant8,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant9
+                value)?
+        variant9,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant10
+                value)?
+        variant10,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant11
+                value)?
+        variant11,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant12
+                value)?
+        variant12,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant13
+                value)?
+        variant13,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant14
+                value)?
+        variant14,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant15
+                value)?
+        variant15,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant16
+                value)?
+        variant16,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant17
+                value)?
+        variant17,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant18
+                value)?
+        variant18,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant19
+                value)?
+        variant19,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant20
+                value)?
+        variant20,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant21
+                value)?
+        variant21,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant22
+                value)?
+        variant22,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant23
+                value)?
+        variant23,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant24
+                value)?
+        variant24,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant25
+                value)?
+        variant25,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant26
+                value)?
+        variant26,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant27
+                value)?
+        variant27,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant28
+                value)?
+        variant28,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant29
+                value)?
+        variant29,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant30
+                value)?
+        variant30,
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant31
+                value)?
+        variant31,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant0()
+          when variant0 != null:
+        return variant0(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant1()
+          when variant1 != null:
+        return variant1(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant2()
+          when variant2 != null:
+        return variant2(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant3()
+          when variant3 != null:
+        return variant3(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant4()
+          when variant4 != null:
+        return variant4(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant5()
+          when variant5 != null:
+        return variant5(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant6()
+          when variant6 != null:
+        return variant6(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant7()
+          when variant7 != null:
+        return variant7(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant8()
+          when variant8 != null:
+        return variant8(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant9()
+          when variant9 != null:
+        return variant9(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant10()
+          when variant10 != null:
+        return variant10(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant11()
+          when variant11 != null:
+        return variant11(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant12()
+          when variant12 != null:
+        return variant12(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant13()
+          when variant13 != null:
+        return variant13(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant14()
+          when variant14 != null:
+        return variant14(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant15()
+          when variant15 != null:
+        return variant15(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant16()
+          when variant16 != null:
+        return variant16(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant17()
+          when variant17 != null:
+        return variant17(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant18()
+          when variant18 != null:
+        return variant18(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant19()
+          when variant19 != null:
+        return variant19(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant20()
+          when variant20 != null:
+        return variant20(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant21()
+          when variant21 != null:
+        return variant21(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant22()
+          when variant22 != null:
+        return variant22(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant23()
+          when variant23 != null:
+        return variant23(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant24()
+          when variant24 != null:
+        return variant24(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant25()
+          when variant25 != null:
+        return variant25(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant26()
+          when variant26 != null:
+        return variant26(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant27()
+          when variant27 != null:
+        return variant27(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant28()
+          when variant28 != null:
+        return variant28(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant29()
+          when variant29 != null:
+        return variant29(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant30()
+          when variant30 != null:
+        return variant30(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant31()
+          when variant31 != null:
+        return variant31(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant0
+                value)
+        variant0,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant1
+                value)
+        variant1,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant2
+                value)
+        variant2,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant3
+                value)
+        variant3,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant4
+                value)
+        variant4,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant5
+                value)
+        variant5,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant6
+                value)
+        variant6,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant7
+                value)
+        variant7,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant8
+                value)
+        variant8,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant9
+                value)
+        variant9,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant10
+                value)
+        variant10,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant11
+                value)
+        variant11,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant12
+                value)
+        variant12,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant13
+                value)
+        variant13,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant14
+                value)
+        variant14,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant15
+                value)
+        variant15,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant16
+                value)
+        variant16,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant17
+                value)
+        variant17,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant18
+                value)
+        variant18,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant19
+                value)
+        variant19,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant20
+                value)
+        variant20,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant21
+                value)
+        variant21,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant22
+                value)
+        variant22,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant23
+                value)
+        variant23,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant24
+                value)
+        variant24,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant25
+                value)
+        variant25,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant26
+                value)
+        variant26,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant27
+                value)
+        variant27,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant28
+                value)
+        variant28,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant29
+                value)
+        variant29,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant30
+                value)
+        variant30,
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant31
+                value)
+        variant31,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant0():
+        return variant0(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant1():
+        return variant1(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant2():
+        return variant2(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant3():
+        return variant3(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant4():
+        return variant4(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant5():
+        return variant5(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant6():
+        return variant6(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant7():
+        return variant7(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant8():
+        return variant8(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant9():
+        return variant9(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant10():
+        return variant10(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant11():
+        return variant11(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant12():
+        return variant12(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant13():
+        return variant13(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant14():
+        return variant14(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant15():
+        return variant15(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant16():
+        return variant16(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant17():
+        return variant17(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant18():
+        return variant18(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant19():
+        return variant19(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant20():
+        return variant20(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant21():
+        return variant21(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant22():
+        return variant22(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant23():
+        return variant23(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant24():
+        return variant24(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant25():
+        return variant25(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant26():
+        return variant26(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant27():
+        return variant27(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant28():
+        return variant28(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant29():
+        return variant29(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant30():
+        return variant30(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant31():
+        return variant31(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant0
+                value)?
+        variant0,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant1
+                value)?
+        variant1,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant2
+                value)?
+        variant2,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant3
+                value)?
+        variant3,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant4
+                value)?
+        variant4,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant5
+                value)?
+        variant5,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant6
+                value)?
+        variant6,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant7
+                value)?
+        variant7,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant8
+                value)?
+        variant8,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant9
+                value)?
+        variant9,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant10
+                value)?
+        variant10,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant11
+                value)?
+        variant11,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant12
+                value)?
+        variant12,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant13
+                value)?
+        variant13,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant14
+                value)?
+        variant14,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant15
+                value)?
+        variant15,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant16
+                value)?
+        variant16,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant17
+                value)?
+        variant17,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant18
+                value)?
+        variant18,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant19
+                value)?
+        variant19,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant20
+                value)?
+        variant20,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant21
+                value)?
+        variant21,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant22
+                value)?
+        variant22,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant23
+                value)?
+        variant23,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant24
+                value)?
+        variant24,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant25
+                value)?
+        variant25,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant26
+                value)?
+        variant26,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant27
+                value)?
+        variant27,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant28
+                value)?
+        variant28,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant29
+                value)?
+        variant29,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant30
+                value)?
+        variant30,
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant31
+                value)?
+        variant31,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant0()
+          when variant0 != null:
+        return variant0(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant1()
+          when variant1 != null:
+        return variant1(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant2()
+          when variant2 != null:
+        return variant2(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant3()
+          when variant3 != null:
+        return variant3(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant4()
+          when variant4 != null:
+        return variant4(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant5()
+          when variant5 != null:
+        return variant5(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant6()
+          when variant6 != null:
+        return variant6(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant7()
+          when variant7 != null:
+        return variant7(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant8()
+          when variant8 != null:
+        return variant8(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant9()
+          when variant9 != null:
+        return variant9(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant10()
+          when variant10 != null:
+        return variant10(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant11()
+          when variant11 != null:
+        return variant11(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant12()
+          when variant12 != null:
+        return variant12(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant13()
+          when variant13 != null:
+        return variant13(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant14()
+          when variant14 != null:
+        return variant14(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant15()
+          when variant15 != null:
+        return variant15(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant16()
+          when variant16 != null:
+        return variant16(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant17()
+          when variant17 != null:
+        return variant17(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant18()
+          when variant18 != null:
+        return variant18(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant19()
+          when variant19 != null:
+        return variant19(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant20()
+          when variant20 != null:
+        return variant20(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant21()
+          when variant21 != null:
+        return variant21(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant22()
+          when variant22 != null:
+        return variant22(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant23()
+          when variant23 != null:
+        return variant23(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant24()
+          when variant24 != null:
+        return variant24(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant25()
+          when variant25 != null:
+        return variant25(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant26()
+          when variant26 != null:
+        return variant26(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant27()
+          when variant27 != null:
+        return variant27(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant28()
+          when variant28 != null:
+        return variant28(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant29()
+          when variant29 != null:
+        return variant29(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant30()
+          when variant30 != null:
+        return variant30(_that);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant31()
+          when variant31 != null:
+        return variant31(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AudioBufferSourceNode field0)? variant0,
+    TResult Function(AudioBufferSourceNode field0)? variant1,
+    TResult Function(AudioListener field0)? variant2,
+    TResult Function(AudioListener field0)? variant3,
+    TResult Function(AudioListener field0)? variant4,
+    TResult Function(AudioListener field0)? variant5,
+    TResult Function(AudioListener field0)? variant6,
+    TResult Function(AudioListener field0)? variant7,
+    TResult Function(AudioListener field0)? variant8,
+    TResult Function(AudioListener field0)? variant9,
+    TResult Function(AudioListener field0)? variant10,
+    TResult Function(BiquadFilterNode field0)? variant11,
+    TResult Function(BiquadFilterNode field0)? variant12,
+    TResult Function(BiquadFilterNode field0)? variant13,
+    TResult Function(BiquadFilterNode field0)? variant14,
+    TResult Function(ConstantSourceNode field0)? variant15,
+    TResult Function(DelayNode field0)? variant16,
+    TResult Function(DynamicsCompressorNode field0)? variant17,
+    TResult Function(DynamicsCompressorNode field0)? variant18,
+    TResult Function(DynamicsCompressorNode field0)? variant19,
+    TResult Function(DynamicsCompressorNode field0)? variant20,
+    TResult Function(DynamicsCompressorNode field0)? variant21,
+    TResult Function(GainNode field0)? variant22,
+    TResult Function(OscillatorNode field0)? variant23,
+    TResult Function(OscillatorNode field0)? variant24,
+    TResult Function(PannerNode field0)? variant25,
+    TResult Function(PannerNode field0)? variant26,
+    TResult Function(PannerNode field0)? variant27,
+    TResult Function(PannerNode field0)? variant28,
+    TResult Function(PannerNode field0)? variant29,
+    TResult Function(PannerNode field0)? variant30,
+    TResult Function(StereoPannerNode field0)? variant31,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant0()
+          when variant0 != null:
+        return variant0(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant1()
+          when variant1 != null:
+        return variant1(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant2()
+          when variant2 != null:
+        return variant2(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant3()
+          when variant3 != null:
+        return variant3(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant4()
+          when variant4 != null:
+        return variant4(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant5()
+          when variant5 != null:
+        return variant5(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant6()
+          when variant6 != null:
+        return variant6(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant7()
+          when variant7 != null:
+        return variant7(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant8()
+          when variant8 != null:
+        return variant8(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant9()
+          when variant9 != null:
+        return variant9(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant10()
+          when variant10 != null:
+        return variant10(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant11()
+          when variant11 != null:
+        return variant11(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant12()
+          when variant12 != null:
+        return variant12(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant13()
+          when variant13 != null:
+        return variant13(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant14()
+          when variant14 != null:
+        return variant14(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant15()
+          when variant15 != null:
+        return variant15(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant16()
+          when variant16 != null:
+        return variant16(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant17()
+          when variant17 != null:
+        return variant17(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant18()
+          when variant18 != null:
+        return variant18(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant19()
+          when variant19 != null:
+        return variant19(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant20()
+          when variant20 != null:
+        return variant20(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant21()
+          when variant21 != null:
+        return variant21(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant22()
+          when variant22 != null:
+        return variant22(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant23()
+          when variant23 != null:
+        return variant23(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant24()
+          when variant24 != null:
+        return variant24(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant25()
+          when variant25 != null:
+        return variant25(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant26()
+          when variant26 != null:
+        return variant26(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant27()
+          when variant27 != null:
+        return variant27(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant28()
+          when variant28 != null:
+        return variant28(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant29()
+          when variant29 != null:
+        return variant29(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant30()
+          when variant30 != null:
+        return variant30(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant31()
+          when variant31 != null:
+        return variant31(_that.field0);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AudioBufferSourceNode field0) variant0,
+    required TResult Function(AudioBufferSourceNode field0) variant1,
+    required TResult Function(AudioListener field0) variant2,
+    required TResult Function(AudioListener field0) variant3,
+    required TResult Function(AudioListener field0) variant4,
+    required TResult Function(AudioListener field0) variant5,
+    required TResult Function(AudioListener field0) variant6,
+    required TResult Function(AudioListener field0) variant7,
+    required TResult Function(AudioListener field0) variant8,
+    required TResult Function(AudioListener field0) variant9,
+    required TResult Function(AudioListener field0) variant10,
+    required TResult Function(BiquadFilterNode field0) variant11,
+    required TResult Function(BiquadFilterNode field0) variant12,
+    required TResult Function(BiquadFilterNode field0) variant13,
+    required TResult Function(BiquadFilterNode field0) variant14,
+    required TResult Function(ConstantSourceNode field0) variant15,
+    required TResult Function(DelayNode field0) variant16,
+    required TResult Function(DynamicsCompressorNode field0) variant17,
+    required TResult Function(DynamicsCompressorNode field0) variant18,
+    required TResult Function(DynamicsCompressorNode field0) variant19,
+    required TResult Function(DynamicsCompressorNode field0) variant20,
+    required TResult Function(DynamicsCompressorNode field0) variant21,
+    required TResult Function(GainNode field0) variant22,
+    required TResult Function(OscillatorNode field0) variant23,
+    required TResult Function(OscillatorNode field0) variant24,
+    required TResult Function(PannerNode field0) variant25,
+    required TResult Function(PannerNode field0) variant26,
+    required TResult Function(PannerNode field0) variant27,
+    required TResult Function(PannerNode field0) variant28,
+    required TResult Function(PannerNode field0) variant29,
+    required TResult Function(PannerNode field0) variant30,
+    required TResult Function(StereoPannerNode field0) variant31,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant0():
+        return variant0(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant1():
+        return variant1(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant2():
+        return variant2(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant3():
+        return variant3(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant4():
+        return variant4(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant5():
+        return variant5(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant6():
+        return variant6(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant7():
+        return variant7(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant8():
+        return variant8(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant9():
+        return variant9(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant10():
+        return variant10(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant11():
+        return variant11(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant12():
+        return variant12(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant13():
+        return variant13(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant14():
+        return variant14(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant15():
+        return variant15(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant16():
+        return variant16(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant17():
+        return variant17(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant18():
+        return variant18(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant19():
+        return variant19(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant20():
+        return variant20(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant21():
+        return variant21(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant22():
+        return variant22(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant23():
+        return variant23(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant24():
+        return variant24(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant25():
+        return variant25(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant26():
+        return variant26(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant27():
+        return variant27(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant28():
+        return variant28(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant29():
+        return variant29(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant30():
+        return variant30(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant31():
+        return variant31(_that.field0);
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AudioBufferSourceNode field0)? variant0,
+    TResult? Function(AudioBufferSourceNode field0)? variant1,
+    TResult? Function(AudioListener field0)? variant2,
+    TResult? Function(AudioListener field0)? variant3,
+    TResult? Function(AudioListener field0)? variant4,
+    TResult? Function(AudioListener field0)? variant5,
+    TResult? Function(AudioListener field0)? variant6,
+    TResult? Function(AudioListener field0)? variant7,
+    TResult? Function(AudioListener field0)? variant8,
+    TResult? Function(AudioListener field0)? variant9,
+    TResult? Function(AudioListener field0)? variant10,
+    TResult? Function(BiquadFilterNode field0)? variant11,
+    TResult? Function(BiquadFilterNode field0)? variant12,
+    TResult? Function(BiquadFilterNode field0)? variant13,
+    TResult? Function(BiquadFilterNode field0)? variant14,
+    TResult? Function(ConstantSourceNode field0)? variant15,
+    TResult? Function(DelayNode field0)? variant16,
+    TResult? Function(DynamicsCompressorNode field0)? variant17,
+    TResult? Function(DynamicsCompressorNode field0)? variant18,
+    TResult? Function(DynamicsCompressorNode field0)? variant19,
+    TResult? Function(DynamicsCompressorNode field0)? variant20,
+    TResult? Function(DynamicsCompressorNode field0)? variant21,
+    TResult? Function(GainNode field0)? variant22,
+    TResult? Function(OscillatorNode field0)? variant23,
+    TResult? Function(OscillatorNode field0)? variant24,
+    TResult? Function(PannerNode field0)? variant25,
+    TResult? Function(PannerNode field0)? variant26,
+    TResult? Function(PannerNode field0)? variant27,
+    TResult? Function(PannerNode field0)? variant28,
+    TResult? Function(PannerNode field0)? variant29,
+    TResult? Function(PannerNode field0)? variant30,
+    TResult? Function(StereoPannerNode field0)? variant31,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant0()
+          when variant0 != null:
+        return variant0(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant1()
+          when variant1 != null:
+        return variant1(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant2()
+          when variant2 != null:
+        return variant2(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant3()
+          when variant3 != null:
+        return variant3(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant4()
+          when variant4 != null:
+        return variant4(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant5()
+          when variant5 != null:
+        return variant5(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant6()
+          when variant6 != null:
+        return variant6(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant7()
+          when variant7 != null:
+        return variant7(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant8()
+          when variant8 != null:
+        return variant8(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant9()
+          when variant9 != null:
+        return variant9(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant10()
+          when variant10 != null:
+        return variant10(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant11()
+          when variant11 != null:
+        return variant11(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant12()
+          when variant12 != null:
+        return variant12(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant13()
+          when variant13 != null:
+        return variant13(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant14()
+          when variant14 != null:
+        return variant14(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant15()
+          when variant15 != null:
+        return variant15(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant16()
+          when variant16 != null:
+        return variant16(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant17()
+          when variant17 != null:
+        return variant17(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant18()
+          when variant18 != null:
+        return variant18(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant19()
+          when variant19 != null:
+        return variant19(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant20()
+          when variant20 != null:
+        return variant20(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant21()
+          when variant21 != null:
+        return variant21(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant22()
+          when variant22 != null:
+        return variant22(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant23()
+          when variant23 != null:
+        return variant23(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant24()
+          when variant24 != null:
+        return variant24(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant25()
+          when variant25 != null:
+        return variant25(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant26()
+          when variant26 != null:
+        return variant26(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant27()
+          when variant27 != null:
+        return variant27(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant28()
+          when variant28 != null:
+        return variant28(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant29()
+          when variant29 != null:
+        return variant29(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant30()
+          when variant30 != null:
+        return variant30(_that.field0);
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAudioParamProxyEnum_Variant31()
+          when variant31 != null:
+        return variant31(_that.field0);
+      case _:
+        return null;
+    }
+  }
 }
 
 /// @nodoc
@@ -4508,6 +6184,173 @@ class _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerM
           : field0 // ignore: cast_nullable_to_non_nullable
               as MediaStreamAudioDestinationNode,
     ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum].
+extension Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnumPatterns
+    on Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum_Variant0
+                value)?
+        variant0,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum_Variant0()
+          when variant0 != null:
+        return variant0(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum_Variant0
+                value)
+        variant0,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum_Variant0():
+        return variant0(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(
+            Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum_Variant0
+                value)?
+        variant0,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum_Variant0()
+          when variant0 != null:
+        return variant0(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(MediaStreamAudioDestinationNode field0)? variant0,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum_Variant0()
+          when variant0 != null:
+        return variant0(_that.field0);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(MediaStreamAudioDestinationNode field0) variant0,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum_Variant0():
+        return variant0(_that.field0);
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(MediaStreamAudioDestinationNode field0)? variant0,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMediaStreamProxyEnum_Variant0()
+          when variant0 != null:
+        return variant0(_that.field0);
+      case _:
+        return null;
+    }
   }
 }
 

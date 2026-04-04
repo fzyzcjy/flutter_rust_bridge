@@ -9,17 +9,13 @@ part of 'generate.dart';
 // **************************************************************************
 
 GenerateConfig _$parseGenerateConfigResult(ArgResults result) => GenerateConfig(
-      setExitIfChanged: result['set-exit-if-changed'] as bool,
-      coverage: result['coverage'] as bool,
-    );
+  setExitIfChanged: result['set-exit-if-changed'] as bool,
+  coverage: result['coverage'] as bool,
+);
 
 ArgParser _$populateGenerateConfigParser(ArgParser parser) => parser
-  ..addFlag(
-    'set-exit-if-changed',
-  )
-  ..addFlag(
-    'coverage',
-  );
+  ..addFlag('set-exit-if-changed')
+  ..addFlag('coverage');
 
 final _$parserForGenerateConfig = _$populateGenerateConfigParser(ArgParser());
 
@@ -36,18 +32,13 @@ GeneratePackageConfig _$parseGeneratePackageConfigResult(ArgResults result) =>
     );
 
 ArgParser _$populateGeneratePackageConfigParser(ArgParser parser) => parser
-  ..addFlag(
-    'set-exit-if-changed',
-  )
-  ..addOption(
-    'package',
-  )
-  ..addFlag(
-    'coverage',
-  );
+  ..addFlag('set-exit-if-changed')
+  ..addOption('package')
+  ..addFlag('coverage');
 
-final _$parserForGeneratePackageConfig =
-    _$populateGeneratePackageConfigParser(ArgParser());
+final _$parserForGeneratePackageConfig = _$populateGeneratePackageConfigParser(
+  ArgParser(),
+);
 
 GeneratePackageConfig parseGeneratePackageConfig(List<String> args) {
   final result = _$parserForGeneratePackageConfig.parse(args);
@@ -55,17 +46,14 @@ GeneratePackageConfig parseGeneratePackageConfig(List<String> args) {
 }
 
 GenerateWebsiteConfig _$parseGenerateWebsiteConfigResult(ArgResults result) =>
-    GenerateWebsiteConfig(
-      coverage: result['coverage'] as bool,
-    );
+    GenerateWebsiteConfig(coverage: result['coverage'] as bool);
 
-ArgParser _$populateGenerateWebsiteConfigParser(ArgParser parser) => parser
-  ..addFlag(
-    'coverage',
-  );
+ArgParser _$populateGenerateWebsiteConfigParser(ArgParser parser) =>
+    parser..addFlag('coverage');
 
-final _$parserForGenerateWebsiteConfig =
-    _$populateGenerateWebsiteConfigParser(ArgParser());
+final _$parserForGenerateWebsiteConfig = _$populateGenerateWebsiteConfigParser(
+  ArgParser(),
+);
 
 GenerateWebsiteConfig parseGenerateWebsiteConfig(List<String> args) {
   final result = _$parserForGenerateWebsiteConfig.parse(args);

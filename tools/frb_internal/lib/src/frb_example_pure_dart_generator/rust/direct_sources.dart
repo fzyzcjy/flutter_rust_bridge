@@ -4,18 +4,25 @@ import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator
 
 Map<String, String> generateRustDirectSources() {
   return {
-    'pseudo_manual/basic.rs': _generateBasicRelated((x) => x, '',
-        withArgExpect: (ty) => ty.enableRustExpect),
-    'pseudo_manual/basic_optional.rs':
-        _generateBasicRelated((x) => 'Option<$x>', '_optional'),
+    'pseudo_manual/basic.rs': _generateBasicRelated(
+      (x) => x,
+      '',
+      withArgExpect: (ty) => ty.enableRustExpect,
+    ),
+    'pseudo_manual/basic_optional.rs': _generateBasicRelated(
+      (x) => 'Option<$x>',
+      '_optional',
+    ),
     'pseudo_manual/basic_list.rs': _generateBasicRelated(
       (x) => 'Vec<$x>',
       '_list',
       enable: (ty) => ty.enableList,
     ),
     'pseudo_manual/basic_map.rs': _generateBasicRelated(
-        (x) => 'HashMap<i32, $x>', '_map',
-        extraBody: 'use std::collections::HashMap;\n'),
+      (x) => 'HashMap<i32, $x>',
+      '_map',
+      extraBody: 'use std::collections::HashMap;\n',
+    ),
     'pseudo_manual/benchmark_api.rs': generateBenchmark(),
   };
 }
@@ -63,7 +70,9 @@ pub use super::basic::*;
         }\n\n''';
       } else {
         builder.addIdentityFunction(
-            rustTypeNameWrapper(ty.rustTypeName), partialName);
+          rustTypeNameWrapper(ty.rustTypeName),
+          partialName,
+        );
       }
     }
   }

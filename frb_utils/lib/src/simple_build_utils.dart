@@ -3,31 +3,48 @@
 import 'dart:io';
 
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
-import 'package:native_assets_cli/native_assets_cli.dart';
+import 'package:hooks/hooks.dart';
 
-/// Utilities that can be used in `build.dart`.
-/// Do not export this function for public use yet, since Dart's `build.dart` support
-/// is still experimental.
-// ref: https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/example/native_add_library/build.dart
-void simpleBuild(List<String> args, {List<String> features = const []}) async {
-  final buildConfig = await BuildConfig.fromArgs(args);
-  final buildOutput = BuildOutput();
+/// New simpleBuild for Dart 3.10+ hooks.
+///
+/// Environment variable mapping (using NIX_ prefix to bypass semi-hermetic environment):
+/// - `NIX_FRB_SIMPLE_BUILD_CARGO_NIGHTLY` → use nightly cargo
+/// - `NIX_FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS` → extra cargo args (space-separated)
+/// - `NIX_FRB_SIMPLE_BUILD_SKIP` → skip build
+/// - `NIX_FRB_RUSTFLAGS` → RUSTFLAGS (set in cargo command)
+///
+/// Note: Old environment variables (FRB_*) are no longer supported because
+/// new hooks run in a semi-hermetic environment.
+Future<void> simpleBuild(
+  List<String> args, {
+  List<String> features = const [],
+  String rustCrateName = 'rust',
+}) async {
+  await build(args, (input, output) async {
+    final rustCrateDir = input.packageRoot.resolve('$rustCrateName/');
 
-  final rustCrateDir = buildConfig.packageRoot.resolve('rust');
+    final cargoNightly =
+        Platform.environment['NIX_FRB_SIMPLE_BUILD_CARGO_NIGHTLY'] == '1';
+    final cargoExtraArgs =
+        Platform.environment['NIX_FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS']?.split(
+              ' ',
+            ) ??
+            const <String>[];
+    final skip = Platform.environment['NIX_FRB_SIMPLE_BUILD_SKIP'] == '1';
+    final rustflags = Platform.environment['NIX_FRB_RUSTFLAGS'];
 
-  final cargoNightly =
-      Platform.environment['FRB_SIMPLE_BUILD_CARGO_NIGHTLY'] == '1';
-  final cargoExtraArgs =
-      Platform.environment['FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS']?.split(' ') ??
-          const <String>[];
-  final skip = Platform.environment['FRB_SIMPLE_BUILD_SKIP'] == '1';
-  final rustflags = Platform.environment['RUSTFLAGS'];
+    if (skip) {
+      print('frb_utils::simpleBuild SKIP BUILD (NIX_FRB_SIMPLE_BUILD_SKIP=1)');
+      return;
+    }
 
-  if (skip) {
+    print('Building Rust crate: ${rustCrateDir.toFilePath()}');
     print(
-        'frb_utils::simpleBuild SKIP BUILD since environment variable requires this');
-  } else {
-    final featureArgs = features.expand((x) => ['--features', x]).toList();
+      'Config: cargoNightly=$cargoNightly, cargoExtraArgs=$cargoExtraArgs, rustflags=$rustflags',
+    );
+
+    final featureArgs = features.expand((f) => ['--features', f]).toList();
+
     await runCommand(
       'cargo',
       [
@@ -39,20 +56,11 @@ void simpleBuild(List<String> args, {List<String> features = const []}) async {
       ],
       pwd: rustCrateDir.toFilePath(),
       printCommandInStderr: true,
-      env: {
-        // Though runCommand auto pass environment variable to commands,
-        // we do this to explicitly show this important flag
-        if (rustflags != null) 'RUSTFLAGS': rustflags,
-      },
+      env: {if (rustflags != null) 'RUSTFLAGS': rustflags},
     );
-  }
 
-  final dependencies = {
-    rustCrateDir,
-    buildConfig.packageRoot.resolve('build.rs'),
-  };
-  print('dependencies: $dependencies');
-  buildOutput.dependencies.dependencies.addAll(dependencies);
+    output.dependencies.add(rustCrateDir);
 
-  await buildOutput.writeToFile(outDir: buildConfig.outDir);
+    print('dependencies: ${output.dependencies}');
+  });
 }

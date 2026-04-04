@@ -8,14 +8,11 @@ part of 'lint.dart';
 // CliGenerator
 // **************************************************************************
 
-LintConfig _$parseLintConfigResult(ArgResults result) => LintConfig(
-      fix: result['fix'] as bool,
-    );
+LintConfig _$parseLintConfigResult(ArgResults result) =>
+    LintConfig(fix: result['fix'] as bool);
 
-ArgParser _$populateLintConfigParser(ArgParser parser) => parser
-  ..addFlag(
-    'fix',
-  );
+ArgParser _$populateLintConfigParser(ArgParser parser) =>
+    parser..addFlag('fix');
 
 final _$parserForLintConfig = _$populateLintConfigParser(ArgParser());
 

@@ -11,10 +11,13 @@ import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/generator.dart'
     as frb_example_pure_dart_generator;
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_apple_scaffold.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_diff_exclusions.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/codecov_transformer.dart';
+import 'package:flutter_rust_bridge_internal/src/utils/execute_process.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:path/path.dart' as path;
 import 'package:yaml/yaml.dart';
@@ -265,7 +268,7 @@ Future<void> generateInternalContributor(GenerateConfig config) async {
       'https://img.shields.io/badge/all_contributors-$numContributors-orange.svg',
     );
 
-    await exec('all-contributors generate');
+    await exec('npx all-contributors-cli generate');
   });
 
   await generateInternalReadme(config);
@@ -341,7 +344,17 @@ Future<void> generateRunFrbCodegenCommandGenerate(
       coverage: config.coverage,
       coverageName: 'GenerateRunFrbCodegenCommandGenerate',
     );
+    await _formatPackageAfterGenerate(config.package);
   });
+}
+
+Future<void> _formatPackageAfterGenerate(String package) async {
+  switch (package) {
+    case 'frb_example/pure_dart':
+      await exec('dart format lib test benchmark', relativePwd: package);
+    default:
+      return;
+  }
 }
 
 Future<void> generateRunFrbCodegenCommandIntegrate(
@@ -349,10 +362,7 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
 ) async {
   await _wrapMaybeSetExitIfChanged(
     config,
-    extraArgs:
-        "':(exclude)*Podfile' ':(exclude)*.xcconfig' ':(exclude)pubspec.lock' ':(exclude)*Cargo.lock' "
-        "':(exclude)frb_example/flutter_via_create/ios/**' "
-        "':(exclude)frb_example/flutter_package/example/ios/**'",
+    extraArgs: integrateDiffExclusionArgs(config.package),
     () async {
       final dirPackage = path.join(exec.pwd!, config.package);
 
@@ -369,9 +379,8 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
       await Directory(dirTemp).create(recursive: true);
 
       // We move instead of delete folder for extra safety of this script
-      final dirTempOriginal = path.join(dirTemp, 'original');
       if (await Directory(dirPackage).exists()) {
-        await Directory(dirPackage).rename(dirTempOriginal);
+        await Directory(dirPackage).rename(path.join(dirTemp, 'original'));
       }
 
       switch (config.package) {
@@ -407,6 +416,11 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
           );
       }
 
+      await applyCheckedInAppleScaffoldSourceOfTruth(
+        package: config.package,
+        generatedPackageDir: dirPackage,
+      );
+
       // move back compilation cache to speed up future usage
       // for (final subPath in ['build', 'rust/target']) {
       //   await _renameDirIfExists(
@@ -434,8 +448,9 @@ Future<RunCommandOutput> executeFrbCodegen(
     );
   } else {
     final outputCodecovPath = '${getCoverageDir(coverageName)}/codecov.json';
+    final toolchainPrefix = nightly ? '+$kPinnedRustfmtNightly ' : '';
     final ans = await exec(
-      'cargo ${nightly ? "+nightly" : ""} ${coverage ? "llvm-cov run --codecov --output-path $outputCodecovPath" : "run"} --manifest-path ${exec.pwd}frb_codegen/Cargo.toml -- $cmd',
+      'cargo $toolchainPrefix${coverage ? "llvm-cov run --codecov --output-path $outputCodecovPath" : "run"} --manifest-path ${exec.pwd}frb_codegen/Cargo.toml -- $cmd',
       relativePwd: relativePwd,
       extraEnv: {'RUST_BACKTRACE': '1', ...?extraEnv},
     );

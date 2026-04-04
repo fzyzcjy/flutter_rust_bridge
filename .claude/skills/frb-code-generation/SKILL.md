@@ -13,6 +13,8 @@ flutter_rust_bridge requires code generation when Rust APIs change. This skill m
 
 **Core principle:** Run only the generation commands needed for your change type.
 
+**Validation rule:** If regenerated outputs cause previously green non-`Generate` jobs to fail, treat the generated outputs as suspect until they are validated from a clean environment.
+
 > **After codegen:** Check your user-level `remote-testing` rules. If codegen was run remotely, pull changes back to local.
 
 ## Quick Reference
@@ -26,3 +28,13 @@ flutter_rust_bridge requires code generation when Rust APIs change. This skill m
 | `frb_example/pure_dart` generator | `./frb_internal generate-internal-frb-example-pure-dart` |
 | CLI help documentation | `./frb_internal generate-internal-book-help` |
 | Non-generated (docs, comments, tests, `frb_dart/`) | No generation needed |
+
+## Important Rules
+
+For CI diagnosis rules about generated-file format/lint failures, repeated package-level `Generate` drift, or `Generate :: FRB Codegen :: Command Integrate` failures, you MUST read `frb-fix-ci` first. This skill is for command selection, not CI failure-propagation diagnosis.
+
+For `pure_dart` / `pure_dart_pde` generation issues, treat `frb_example/pure_dart` as the upstream source and `frb_example/pure_dart_pde` as the derived copy. See `frb-fix-ci` for the CI diagnosis workflow.
+
+If CI repair has already entered repeated package-level drift, you MUST stop choosing narrower commands and switch to `frb-fix-ci`.
+
+Do not manually patch generated files as the final fix. The final accepted result should be produced by the corresponding generation command in a clean matching environment.

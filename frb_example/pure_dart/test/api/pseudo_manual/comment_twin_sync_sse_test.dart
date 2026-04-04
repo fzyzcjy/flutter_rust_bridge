@@ -17,13 +17,18 @@ Future<void> main({bool skipRustLibInit = false}) async {
     await futurizeVoidTwinSyncSse(
         functionWithCommentsSlashStarStarTwinSyncSse());
     await futurizeVoidTwinSyncSse(
-        functionWithCommentsTripleSlashMultiLineTwinSyncSse());
+      functionWithCommentsTripleSlashMultiLineTwinSyncSse(),
+    );
     await futurizeVoidTwinSyncSse(
-        functionWithCommentsTripleSlashSingleLineTwinSyncSse());
+      functionWithCommentsTripleSlashSingleLineTwinSyncSse(),
+    );
     await futurizeVoidTwinSyncSse(
-        StructWithCommentsTwinSyncSse(fieldWithComments: 42)
-            .instanceMethodTwinSyncSse());
+      StructWithCommentsTwinSyncSse(
+        fieldWithComments: 42,
+      ).instanceMethodTwinSyncSse(),
+    );
     await futurizeVoidTwinSyncSse(
-        StructWithCommentsTwinSyncSse.staticMethodTwinSyncSse());
+      StructWithCommentsTwinSyncSse.staticMethodTwinSyncSse(),
+    );
   });
 }

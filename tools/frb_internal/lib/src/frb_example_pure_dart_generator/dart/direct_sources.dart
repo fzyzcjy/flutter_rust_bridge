@@ -16,11 +16,14 @@ Map<String, String> generateDartDirectSources(Package package) {
     'pseudo_manual/basic_optional_test.dart': _generateBasicRelated(
       package,
       postfix: '_optional',
-      imports: """
+      imports:
+          """
       import 'package:${package.dartPackageName}/src/rust/api/pseudo_manual/basic.dart';
       """,
-      values: (ty) =>
-          ["null", ...ty.interestRawValues.map((x) => x.textAndGuard)],
+      values: (ty) => [
+        "null",
+        ...ty.interestRawValues.map((x) => x.textAndGuard),
+      ],
       valueType: (ty) => '${ty.dartTypeName}?',
     ),
     'pseudo_manual/basic_list_test.dart': _generateBasicRelated(
@@ -28,10 +31,12 @@ Map<String, String> generateDartDirectSources(Package package) {
       postfix: '_list',
       values: (ty) => [
         ty.listWrapper(ty, null),
-        ...ty.interestRawValues
-            .map((x) => x.guard + ty.listWrapper(ty, x.text)),
+        ...ty.interestRawValues.map(
+          (x) => x.guard + ty.listWrapper(ty, x.text),
+        ),
       ],
-      imports: """
+      imports:
+          """
       import 'package:${package.dartPackageName}/src/rust/api/pseudo_manual/basic.dart';
       """,
       enable: (ty) => ty.enableList,
@@ -40,12 +45,13 @@ Map<String, String> generateDartDirectSources(Package package) {
     'pseudo_manual/basic_map_test.dart': _generateBasicRelated(
       package,
       postfix: '_map',
-      imports: """
+      imports:
+          """
       import 'package:${package.dartPackageName}/src/rust/api/pseudo_manual/basic.dart';
       """,
       values: (ty) => [
         '{}',
-        ...ty.interestRawValues.map((x) => '${x.guard}{42: ${x.text}}')
+        ...ty.interestRawValues.map((x) => '${x.guard}{42: ${x.text}}'),
       ],
       valueType: (ty) => 'Map<int, ${ty.dartTypeName}>',
     ),
@@ -64,7 +70,8 @@ String _generateBasicRelated(
   bool Function(BasicTypeInfo)? enable,
 }) {
   final builder = DartFileBuilder(package, importName: 'basic$postfix');
-  builder.imports += '''
+  builder.imports +=
+      '''
   $imports
   ''';
   for (final ty in kBasicTypes) {

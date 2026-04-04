@@ -11,9 +11,18 @@ FROM dart:3.1.5
 # libclang-dev is required by https://pub.dev/packages/ffigen
 RUN dart pub global activate ffigen --version 8.0.0 && \
     apt-get update && \
-    apt-get install -y libclang-dev
-# TODO rm
-# && rm -rf /var/lib/apt/lists/*
+    apt-get install -y ca-certificates gnupg libclang-dev wget && \
+    wget -qO- https://dl.google.com/linux/linux_signing_key.pub | \
+      gpg --dearmor -o /usr/share/keyrings/google-chrome.gpg && \
+    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] https://dl.google.com/linux/chrome/deb/ stable main" > \
+      /etc/apt/sources.list.d/google-chrome.list && \
+    apt-get update && \
+    apt-get install -y google-chrome-stable && \
+    rm -rf /var/lib/apt/lists/*
+
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome \
+    NO_PROXY=127.0.0.1,localhost,::1 \
+    no_proxy=127.0.0.1,localhost,::1
 
 COPY --from=builder /usr/local/cargo/bin/flutter_rust_bridge_codegen /usr/local/bin/flutter_rust_bridge_codegen
 CMD ["flutter_rust_bridge_codegen"]

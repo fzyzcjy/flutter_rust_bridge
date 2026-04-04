@@ -12,28 +12,23 @@ part 'build.g.dart';
 
 List<Command<void>> createCommands() {
   return [
-    SimpleConfigCommand('build-flutter', buildFlutter,
-        _$populateBuildFlutterConfigParser, _$parseBuildFlutterConfigResult),
+    SimpleConfigCommand(
+      'build-flutter',
+      buildFlutter,
+      _$populateBuildFlutterConfigParser,
+      _$parseBuildFlutterConfigResult,
+    ),
   ];
 }
 
 // We do not test web, since it is already tested when building the demo on website
-enum BuildTarget {
-  windows,
-  macos,
-  linux,
-  androidAab,
-  androidApk,
-  ios,
-}
+enum BuildTarget { windows, macos, linux, androidAab, androidApk, ios }
 
 @CliOptions()
 class BuildFlutterConfig {
   final BuildTarget target;
 
-  const BuildFlutterConfig({
-    required this.target,
-  });
+  const BuildFlutterConfig({required this.target});
 }
 
 // ref: https://docs.flutter.dev/deployment
@@ -79,8 +74,10 @@ Future<void> buildFlutter(BuildFlutterConfig config) async {
 
     case BuildTarget.ios:
       // https://docs.flutter.dev/deployment/ios
-      await exec('flutter build ipa --no-codesign --verbose',
-          relativePwd: package);
+      await exec(
+        'flutter build ipa --no-codesign --verbose',
+        relativePwd: package,
+      );
       copyArtifacts(['build/ios/archive']);
   }
 }

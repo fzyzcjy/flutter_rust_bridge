@@ -1,4 +1,4 @@
-// ignore_for_file: implementation_imports, avoid_print
+// ignore_for_file: implementation_imports, avoid_print, deprecated_member_use, deprecated_member_use_from_same_package
 
 import 'dart:async';
 import 'dart:convert';
@@ -16,8 +16,13 @@ external void _jsClose();
 Future<void> dartWebTestEntrypoint(FutureOr<void> Function() testMain) async {
   final result = await directRunTests(
     testMain,
-    reporterFactory: (engine) => ExpandedReporter.watch(engine, PrintSink(),
-        color: true, printPlatform: false, printPath: false),
+    reporterFactory: (engine) => ExpandedReporter.watch(
+      engine,
+      PrintSink(),
+      color: true,
+      printPlatform: false,
+      printPath: false,
+    ),
   );
 
   // print('hack: sleep forever...');

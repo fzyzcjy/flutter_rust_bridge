@@ -12,15 +12,8 @@ TestWebConfig _$parseTestWebConfigResult(ArgResults result) => TestWebConfig()
   ..rustFeatures = result['rust-features'] as List<String>;
 
 ArgParser _$populateTestWebConfigParser(ArgParser parser) => parser
-  ..addOption(
-    'entrypoint',
-    help: 'Dart file to be tested',
-  )
-  ..addFlag(
-    'headless',
-    help: 'Make the browser headless',
-    defaultsTo: true,
-  )
+  ..addOption('entrypoint', help: 'Dart file to be tested')
+  ..addFlag('headless', help: 'Make the browser headless', defaultsTo: true)
   ..addMultiOption(
     'rust-features',
     help: 'Rust feature flags to set during build',

@@ -9,9 +9,10 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
-  FRB_MAIN_RUST_VERSION: 1.88.0
-  FRB_MAIN_DART_VERSION: 3.6.2
-  FRB_MAIN_FLUTTER_VERSION: 3.27.4
+  FRB_MAIN_RUST_VERSION: 1.93.1
+  FRB_MAIN_DART_VERSION: 3.11.0
+  FRB_MAIN_FLUTTER_VERSION: 3.41.2
+  FRB_RUSTFMT_NIGHTLY_VERSION: nightly-2025-02-01
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -85,8 +86,8 @@ jobs:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
           components: rustfmt, clippy
       - run: |-
-          rustup toolchain install nightly
-          rustup component add rustfmt --toolchain nightly-x86_64-unknown-linux-gnu
+          rustup toolchain install ${{ env.FRB_RUSTFMT_NIGHTLY_VERSION }}
+          rustup component add rustfmt --toolchain ${{ env.FRB_RUSTFMT_NIGHTLY_VERSION }}-x86_64-unknown-linux-gnu
           rustup target add wasm32-unknown-unknown
 
       # execute
@@ -134,8 +135,8 @@ jobs:
           components: rustfmt, clippy
       - uses: taiki-e/install-action@cargo-hack
       - run: |-
-          rustup toolchain install nightly
-          rustup component add rustfmt --toolchain nightly-x86_64-unknown-linux-gnu
+          rustup toolchain install ${{ env.FRB_RUSTFMT_NIGHTLY_VERSION }}
+          rustup component add rustfmt --toolchain ${{ env.FRB_RUSTFMT_NIGHTLY_VERSION }}-x86_64-unknown-linux-gnu
           rustup target add wasm32-unknown-unknown
 
       # execute
@@ -214,9 +215,7 @@ jobs:
         with:
           cache: true
           version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
-      - uses: taiki-e/install-action@v2
-        with:
-          tool: cargo-llvm-cov@0.6.24
+      - run: cargo install cargo-llvm-cov --version ${{ matrix.info.version == '1.85.0' && '0.6.21' || '0.6.24' }} --locked
 
       # execute
       - run: ./frb_internal generate-run-frb-codegen-command-generate --set-exit-if-changed --package ${{ matrix.package }} --coverage
@@ -261,9 +260,7 @@ jobs:
         with:
           cache: true
           version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
-      - uses: taiki-e/install-action@v2
-        with:
-          tool: cargo-llvm-cov@0.6.24
+      - run: cargo install cargo-llvm-cov --version ${{ matrix.info.version == '1.85.0' && '0.6.21' || '0.6.24' }} --locked
 
       # execute
       - run: ./frb_internal generate-run-frb-codegen-command-integrate --set-exit-if-changed --package ${{ matrix.package }} --coverage
@@ -290,15 +287,13 @@ jobs:
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
           components: rustfmt, clippy
-      - run: rustup toolchain install nightly && rustup component add rustfmt --toolchain nightly-x86_64-unknown-linux-gnu
+      - run: rustup toolchain install ${{ env.FRB_RUSTFMT_NIGHTLY_VERSION }} && rustup component add rustfmt llvm-tools-preview --toolchain ${{ env.FRB_RUSTFMT_NIGHTLY_VERSION }}-x86_64-unknown-linux-gnu
       - run: yarn global add all-contributors-cli
       - uses: flutter-actions/setup-flutter@v4
         with:
           cache: true
           version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
-      - uses: taiki-e/install-action@v2
-        with:
-          tool: cargo-llvm-cov@0.6.24
+      - run: cargo install cargo-llvm-cov --version ${{ matrix.info.version == '1.85.0' && '0.6.21' || '0.6.24' }} --locked
 
       # execute
       - run: ./frb_internal generate-internal --set-exit-if-changed --coverage
@@ -537,8 +532,8 @@ jobs:
           # run on all rust packages, though only needed for frb_rust and frb_codegen
           - image: ubuntu-latest
             # update this, if a later MSRV is needed
-            # Need at least 1.88.0 for latest cargo-expand; if need older Rust version may pin a old cargo-expand
-            version: 1.88.0
+            # Need at least 1.85.0 for latest cargo-expand; if need older Rust version may pin a old cargo-expand
+            version: 1.85.0
 
     steps:
       # setup
@@ -557,9 +552,7 @@ jobs:
         with:
           sdk: ${{ env.FRB_MAIN_DART_VERSION }}
           architecture: x64
-      - uses: taiki-e/install-action@v2
-        with:
-          tool: cargo-llvm-cov@0.6.24
+      - run: cargo install cargo-llvm-cov --version ${{ matrix.info.version == '1.85.0' && '0.6.21' || '0.6.24' }} --locked
 
       # execute
       - run: ./frb_internal test-rust --coverage
@@ -613,9 +606,7 @@ jobs:
         with:
           sdk: ${{ env.FRB_MAIN_DART_VERSION }}
           architecture: x64
-      - uses: taiki-e/install-action@v2
-        with:
-          tool: cargo-llvm-cov@0.6.24
+      - run: cargo install cargo-llvm-cov --version 0.6.24 --locked
 
       # execute
       - run: ./frb_internal test-dart-native --package ${{ matrix.package }} --coverage
@@ -755,6 +746,8 @@ jobs:
 
       # execute
       - run: ./frb_internal test-dart-sanitizer --package ${{ matrix.package }} --sanitizer ${{ matrix.sanitizer }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
 
   # TODO re-enable when upgrading CI flutter version
   #  # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
@@ -976,9 +969,7 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
-      - uses: taiki-e/install-action@v2
-        with:
-          tool: cargo-llvm-cov@0.6.24
+      - run: cargo install cargo-llvm-cov --version 0.6.24 --locked
       - run: |-
           rustup toolchain install nightly
           rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
@@ -1025,11 +1016,24 @@ jobs:
       - uses: actions/checkout@v5
         with:
           submodules: recursive
+      - uses: flutter-actions/setup-flutter@v4
+        with:
+          cache: true
+          version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
       - name: Download artifacts
         uses: actions/download-artifact@v5
         with:
           path: downloaded-artifacts/
           pattern: '*-coverage'
+      - run: tree downloaded-artifacts
+      - name: Preaggregate Rust coverage
+        run: |-
+          cd tools/frb_internal
+          dart pub get
+          dart run bin/flutter_rust_bridge_internal.dart codecov-preaggregate \
+            --input-dir ../../downloaded-artifacts \
+            --output ../../downloaded-artifacts/preaggregated/rust/codecov.json
+          find ../../downloaded-artifacts -name codecov.json ! -path '../../downloaded-artifacts/preaggregated/rust/codecov.json' -delete
       - run: tree downloaded-artifacts
 
       - uses: codecov/codecov-action@v5

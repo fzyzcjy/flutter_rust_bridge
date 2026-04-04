@@ -41,14 +41,7 @@ const _kBinaryTreeNodeName = 'HelloWorld';
 
 List<MaybeAsyncBenchmarkBase> createBenchmarks({required ScoreEmitter emitter}) {
   return [
-    ${benchmarks.expand(
-            (bench) => bench.argValues.isEmpty
-                ? ['${bench.className}(emitter: emitter),\n']
-                : [
-                    for (final argValue in bench.argValues)
-                      '${bench.className}(${bench.args.single.name}: $argValue, emitter: emitter),\n'
-                  ],
-          ).join("")}
+    ${benchmarks.expand((bench) => bench.argValues.isEmpty ? ['${bench.className}(emitter: emitter),\n'] : [for (final argValue in bench.argValues) '${bench.className}(${bench.args.single.name}: $argValue, emitter: emitter),\n']).join("")}
   ];
 }
 
@@ -63,20 +56,9 @@ class _TypedName {
   const _TypedName(this.type, this.name);
 }
 
-enum _Approach {
-  frb,
-  frbSse,
-  frbCstSse,
-  raw,
-  protobuf,
-  json,
-  na,
-}
+enum _Approach { frb, frbSse, frbCstSse, raw, protobuf, json, na }
 
-enum _Direction {
-  input,
-  output,
-}
+enum _Direction { input, output }
 
 class _Benchmark {
   final String task;
@@ -139,7 +121,8 @@ class _Benchmark {
           ? 'Future<void> run() async { $run }'
           : 'void run() { $run }';
 
-      classInside = '''
+      classInside =
+          '''
       ${setupDataType == null ? "" : "late final $setupDataType setupData;"}
       ${args.map((arg) => 'final ${arg.type} ${arg.name};\n').join('')}
       
@@ -321,7 +304,8 @@ List<_Benchmark> _benchmarkBytes() {
       asynchronous: true,
       args: args,
       argValues: argValues,
-      raw: (className, benchmarkName) => '''
+      raw: (className, benchmarkName) =>
+          '''
         final receivePort = RawReceivePort();
         late final sendPort = receivePort.sendPort.nativePort;
         final int len;
@@ -379,7 +363,8 @@ List<_Benchmark> _benchmarkBinaryTree() {
         setup: 'setupData = _createTree(depth);',
         run:
             'benchmarkBinaryTreeInputTwinSync${sse ? "Sse" : ""}(tree: setupData);',
-        extra: '''
+        extra:
+            '''
           static BenchmarkBinaryTreeTwinSync${sse ? "Sse" : ""} _createTree(int depth) {
             if (depth == 0) {
               return BenchmarkBinaryTreeTwinSync${sse ? "Sse" : ""}(
@@ -492,7 +477,8 @@ List<_Benchmark> _benchmarkBlob() {
   const args = [_TypedName('int', 'len')];
   const argValues = ['0', '10000', '1000000'];
 
-  String setupDataSimple({required bool sse}) => '''
+  String setupDataSimple({required bool sse}) =>
+      '''
         setupData = BenchmarkBlobTwinSync${sse ? "Sse" : ""}(
           first: Uint8List(len),
           second: Uint8List(len),

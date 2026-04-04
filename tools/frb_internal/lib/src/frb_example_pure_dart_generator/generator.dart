@@ -6,21 +6,27 @@ import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/pde_generator.dart';
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/rust/entrypoint.dart';
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/utils/generator_utils.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 
 Future<void> generate() async {
-  final dirPureDart =
-      Directory.current.uri.resolve('../../frb_example/pure_dart/');
+  final dirPureDart = pureDartUriForTesting();
   final dirPureDartPde = dirPureDart.resolve('../pure_dart_pde/');
 
   await generateForPackage(dartRoot: dirPureDart, package: Package.pureDart);
   await generatePureDartPde(
-      dirPureDart: dirPureDart, dirPureDartPde: dirPureDartPde);
+    dirPureDart: dirPureDart,
+    dirPureDartPde: dirPureDartPde,
+  );
   await generateForPackage(
-      dartRoot: dirPureDartPde, package: Package.pureDartPde);
+    dartRoot: dirPureDartPde,
+    package: Package.pureDartPde,
+  );
 }
 
-Future<void> generateForPackage(
-    {required Uri dartRoot, required Package package}) async {
+Future<void> generateForPackage({
+  required Uri dartRoot,
+  required Package package,
+}) async {
   final rust = RustGenerator(
     packageRootDir: dartRoot.resolve('rust/'),
     interestDir: 'src/api/',
@@ -37,9 +43,16 @@ Future<void> generateForPackage(
 
   await generateDartTestEntrypoints(package, dartRoot: dartRoot);
   await generateRustMod(dartRoot.resolve('rust/src/api/pseudo_manual/'));
-  await generateRustMod(dartRoot.resolve('rust/src/api/'),
-      extraLines: ['pub fn function_at_api_mod_rs() {}', '']);
+  await generateRustMod(
+    dartRoot.resolve('rust/src/api/'),
+    extraLines: ['pub fn function_at_api_mod_rs() {}', ''],
+  );
 
   await rust.executeFormat();
   await dart.executeFormat();
+}
+
+Uri pureDartUriForTesting({String? repoRootPath}) {
+  final repoRoot = Directory(repoRootPath ?? exec.pwd!).uri;
+  return repoRoot.resolve('frb_example/pure_dart/');
 }

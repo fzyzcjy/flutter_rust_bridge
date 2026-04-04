@@ -68,7 +68,7 @@ class _FakeBaseEntrypoint extends BaseEntrypoint {
 
   @override
   get wireConstructor => throw UnimplementedError();
-// frb-coverage:ignore-end
+  // frb-coverage:ignore-end
 }
 
 class _FakeApi implements BaseApi {}

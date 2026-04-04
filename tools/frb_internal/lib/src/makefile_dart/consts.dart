@@ -18,20 +18,14 @@ const kRustPackagesAllowWeb = [
   'frb_example/gallery/rust',
 ];
 
-const kRustPackagesDisallowWeb = [
-  'frb_codegen',
-  'frb_macros',
-];
+const kRustPackagesDisallowWeb = ['frb_codegen', 'frb_macros'];
 
-const kRustPackages = [
-  ...kRustPackagesAllowWeb,
-  ...kRustPackagesDisallowWeb,
-];
+const kRustPackages = [...kRustPackagesAllowWeb, ...kRustPackagesDisallowWeb];
 
 const kDartExampleIntegratePackages = [
   'frb_example/flutter_via_create',
   'frb_example/flutter_via_integrate',
-  'frb_example/flutter_package'
+  'frb_example/flutter_package',
 ];
 
 const kDartExamplePackages = [
@@ -47,16 +41,9 @@ const kDartExamplePackages = [
   'frb_example/gallery',
 ];
 
-const kDartNonExamplePackages = [
-  'frb_dart',
-  'frb_utils',
-  'tools/frb_internal',
-];
+const kDartNonExamplePackages = ['frb_dart', 'frb_utils', 'tools/frb_internal'];
 
-const kDartPackages = [
-  ...kDartNonExamplePackages,
-  ...kDartExamplePackages,
-];
+const kDartPackages = [...kDartNonExamplePackages, ...kDartExamplePackages];
 
 enum DartMode { dart, flutter }
 
@@ -84,9 +71,7 @@ const kBuildWebPackageReplacer = {
 };
 
 final exec = SimpleExecutor(
-  env: {
-    'CARGO_TERM_COLOR': 'always',
-  },
+  env: {'CARGO_TERM_COLOR': 'always'},
   // Use project root directory
   pwd: Directory.current.parent.parent.uri.toFilePath(),
 );
@@ -117,7 +102,7 @@ Future<void> _runPubGetIfNotRunYetRaw(String package, DartMode mode) async {
 
 Future<void> runPubGet(String package, DartMode mode) async {
   final cmd = switch (mode) {
-    DartMode.dart => 'dart --enable-experiment=native-assets',
+    DartMode.dart => 'dart',
     DartMode.flutter => 'flutter',
   };
   await exec('$cmd pub get', relativePwd: package);

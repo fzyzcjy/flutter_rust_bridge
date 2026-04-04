@@ -25,15 +25,18 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('dart call isAppEmbedded()', () async {
     expect(
-        await isAppEmbeddedTwinRustAsync(
-            appSettings: ApplicationSettings(
-                name: "from dart",
-                version: "XX",
-                mode: ApplicationMode.embedded,
-                env: ApplicationEnv(vars: [
-                  ApplicationEnvVar(field0: "sendback", field1: true)
-                ]))),
-        true);
+      await isAppEmbeddedTwinRustAsync(
+        appSettings: ApplicationSettings(
+          name: "from dart",
+          version: "XX",
+          mode: ApplicationMode.embedded,
+          env: ApplicationEnv(
+            vars: [ApplicationEnvVar(field0: "sendback", field1: true)],
+          ),
+        ),
+      ),
+      true,
+    );
   });
 
   test('dart call app_settings_stream', () async {
@@ -81,15 +84,21 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('dart call repeatNumber()', () async {
     var numbers =
         await repeatNumberTwinRustAsync(num: 1, times: BigInt.from(10));
-    expect(numbers.field0.toList(),
-        Int32List.fromList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]));
+    expect(
+      numbers.field0.toList(),
+      Int32List.fromList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
+    );
   });
 
   test('dart call repeatSequence()', () async {
-    var sequences =
-        await repeatSequenceTwinRustAsync(seq: 1, times: BigInt.from(10));
-    expect(sequences.field0.toList(),
-        Int32List.fromList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]));
+    var sequences = await repeatSequenceTwinRustAsync(
+      seq: 1,
+      times: BigInt.from(10),
+    );
+    expect(
+      sequences.field0.toList(),
+      Int32List.fromList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
+    );
   });
 
   test('dart call firstNumber()', () async {
@@ -156,10 +165,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final output = await mirrorEnumStreamTwinRustAsync().toList();
     expect(
       output,
-      orderedEquals([
-        ApplicationMode.embedded,
-        ApplicationMode.standalone,
-      ]),
+      orderedEquals([ApplicationMode.embedded, ApplicationMode.standalone]),
     );
   });
 
@@ -189,27 +195,21 @@ Future<void> main({bool skipRustLibInit = false}) async {
       allOf(
         containsPair(0, ApplicationMode.embedded),
         containsPair(1, ApplicationMode.standalone),
-      )
+      ),
     ]);
   });
 
   test('mirror_set_enum_stream_twin_normal', () async {
     final output = await mirrorSetEnumStreamTwinRustAsync().toList();
     expect(output, [
-      unorderedEquals([
-        ApplicationMode.embedded,
-        ApplicationMode.standalone,
-      ])
+      unorderedEquals([ApplicationMode.embedded, ApplicationMode.standalone]),
     ]);
   });
 
   test('mirror_array_enum_stream_twin_normal', () async {
     final output = await mirrorArrayEnumStreamTwinRustAsync().toList();
     expect(output, [
-      orderedEquals([
-        ApplicationMode.embedded,
-        ApplicationMode.standalone,
-      ])
+      orderedEquals([ApplicationMode.embedded, ApplicationMode.standalone]),
     ]);
   });
 }

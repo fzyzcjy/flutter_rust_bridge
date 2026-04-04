@@ -20,17 +20,13 @@ TestConfig parseTestConfig(List<String> args) {
 }
 
 TestRustConfig _$parseTestRustConfigResult(ArgResults result) => TestRustConfig(
-      updateGoldens: result['update-goldens'] as bool,
-      coverage: result['coverage'] as bool,
-    );
+  updateGoldens: result['update-goldens'] as bool,
+  coverage: result['coverage'] as bool,
+);
 
 ArgParser _$populateTestRustConfigParser(ArgParser parser) => parser
-  ..addFlag(
-    'update-goldens',
-  )
-  ..addFlag(
-    'coverage',
-  );
+  ..addFlag('update-goldens')
+  ..addFlag('coverage');
 
 final _$parserForTestRustConfig = _$populateTestRustConfigParser(ArgParser());
 
@@ -47,32 +43,24 @@ TestRustPackageConfig _$parseTestRustPackageConfigResult(ArgResults result) =>
     );
 
 ArgParser _$populateTestRustPackageConfigParser(ArgParser parser) => parser
-  ..addOption(
-    'package',
-  )
-  ..addFlag(
-    'update-goldens',
-  )
-  ..addFlag(
-    'coverage',
-  );
+  ..addOption('package')
+  ..addFlag('update-goldens')
+  ..addFlag('coverage');
 
-final _$parserForTestRustPackageConfig =
-    _$populateTestRustPackageConfigParser(ArgParser());
+final _$parserForTestRustPackageConfig = _$populateTestRustPackageConfigParser(
+  ArgParser(),
+);
 
 TestRustPackageConfig parseTestRustPackageConfig(List<String> args) {
   final result = _$parserForTestRustPackageConfig.parse(args);
   return _$parseTestRustPackageConfigResult(result);
 }
 
-TestDartConfig _$parseTestDartConfigResult(ArgResults result) => TestDartConfig(
-      package: convertConfigPackage(result['package'] as String),
-    );
+TestDartConfig _$parseTestDartConfigResult(ArgResults result) =>
+    TestDartConfig(package: convertConfigPackage(result['package'] as String));
 
-ArgParser _$populateTestDartConfigParser(ArgParser parser) => parser
-  ..addOption(
-    'package',
-  );
+ArgParser _$populateTestDartConfigParser(ArgParser parser) =>
+    parser..addOption('package');
 
 final _$parserForTestDartConfig = _$populateTestDartConfigParser(ArgParser());
 
@@ -89,65 +77,53 @@ TestDartNativeConfig _$parseTestDartNativeConfigResult(ArgResults result) =>
     );
 
 ArgParser _$populateTestDartNativeConfigParser(ArgParser parser) => parser
-  ..addOption(
-    'package',
-  )
-  ..addFlag(
-    'coverage',
-  )
-  ..addFlag(
-    'check-clean',
-  );
+  ..addOption('package')
+  ..addFlag('coverage')
+  ..addFlag('check-clean');
 
-final _$parserForTestDartNativeConfig =
-    _$populateTestDartNativeConfigParser(ArgParser());
+final _$parserForTestDartNativeConfig = _$populateTestDartNativeConfigParser(
+  ArgParser(),
+);
 
 TestDartNativeConfig parseTestDartNativeConfig(List<String> args) {
   final result = _$parserForTestDartNativeConfig.parse(args);
   return _$parseTestDartNativeConfigResult(result);
 }
 
-T _$enumValueHelper<T>(Map<T, String> enumValues, String source) =>
-    enumValues.entries
-        .singleWhere(
-          (e) => e.value == source,
-          orElse: () => throw ArgumentError(
-            '`$source` is not one of the supported values: '
-            '${enumValues.values.join(', ')}',
-          ),
-        )
-        .key;
+T _$enumValueHelper<T>(Map<T, String> enumValues, String source) => enumValues
+    .entries
+    .singleWhere(
+      (e) => e.value == source,
+      orElse: () => throw ArgumentError(
+        '`$source` is not one of the supported values: '
+        '${enumValues.values.join(', ')}',
+      ),
+    )
+    .key;
 
 TestDartSanitizerConfig _$parseTestDartSanitizerConfigResult(
-        ArgResults result) =>
-    TestDartSanitizerConfig(
-      package: convertConfigPackage(result['package'] as String),
-      useLocalSanitizedDartBinary:
-          result['use-local-sanitized-dart-binary'] as bool,
-      sanitizer: _$enumValueHelper(
-        _$SanitizerEnumMapBuildCli,
-        result['sanitizer'] as String,
-      ),
-    );
+  ArgResults result,
+) => TestDartSanitizerConfig(
+  package: convertConfigPackage(result['package'] as String),
+  useLocalSanitizedDartBinary:
+      result['use-local-sanitized-dart-binary'] as bool,
+  sanitizer: _$enumValueHelper(
+    _$SanitizerEnumMapBuildCli,
+    result['sanitizer'] as String,
+  ),
+);
 
 const _$SanitizerEnumMapBuildCli = <Sanitizer, String>{
   Sanitizer.asan: 'asan',
   Sanitizer.msan: 'msan',
   Sanitizer.lsan: 'lsan',
-  Sanitizer.tsan: 'tsan'
+  Sanitizer.tsan: 'tsan',
 };
 
 ArgParser _$populateTestDartSanitizerConfigParser(ArgParser parser) => parser
-  ..addOption(
-    'package',
-  )
-  ..addFlag(
-    'use-local-sanitized-dart-binary',
-  )
-  ..addOption(
-    'sanitizer',
-    allowed: ['asan', 'msan', 'lsan', 'tsan'],
-  );
+  ..addOption('package')
+  ..addFlag('use-local-sanitized-dart-binary')
+  ..addOption('sanitizer', allowed: ['asan', 'msan', 'lsan', 'tsan']);
 
 final _$parserForTestDartSanitizerConfig =
     _$populateTestDartSanitizerConfigParser(ArgParser());
@@ -164,15 +140,12 @@ TestFlutterConfig _$parseTestFlutterConfigResult(ArgResults result) =>
     );
 
 ArgParser _$populateTestFlutterConfigParser(ArgParser parser) => parser
-  ..addOption(
-    'flutter-test-args',
-  )
-  ..addOption(
-    'package',
-  );
+  ..addOption('flutter-test-args')
+  ..addOption('package');
 
-final _$parserForTestFlutterConfig =
-    _$populateTestFlutterConfigParser(ArgParser());
+final _$parserForTestFlutterConfig = _$populateTestFlutterConfigParser(
+  ArgParser(),
+);
 
 TestFlutterConfig parseTestFlutterConfig(List<String> args) {
   final result = _$parserForTestFlutterConfig.parse(args);
@@ -186,15 +159,12 @@ TestFlutterWebConfig _$parseTestFlutterWebConfigResult(ArgResults result) =>
     );
 
 ArgParser _$populateTestFlutterWebConfigParser(ArgParser parser) => parser
-  ..addOption(
-    'package',
-  )
-  ..addFlag(
-    'coverage',
-  );
+  ..addOption('package')
+  ..addFlag('coverage');
 
-final _$parserForTestFlutterWebConfig =
-    _$populateTestFlutterWebConfigParser(ArgParser());
+final _$parserForTestFlutterWebConfig = _$populateTestFlutterWebConfigParser(
+  ArgParser(),
+);
 
 TestFlutterWebConfig parseTestFlutterWebConfig(List<String> args) {
   final result = _$parserForTestFlutterWebConfig.parse(args);
