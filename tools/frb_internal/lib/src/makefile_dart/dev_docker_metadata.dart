@@ -74,7 +74,6 @@ DevDockerMetadata readDevDockerMetadataFile({required String dockerfilePath}) {
   );
 }
 
-@visibleForTesting
 void writeCommandOutput({
   required String outputText,
   required String? outputPath,

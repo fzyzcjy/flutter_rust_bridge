@@ -1,7 +1,7 @@
 import 'dart:io';
 
+// ignore: implementation_imports
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
-import 'package:meta/meta.dart';
 import 'package:path/path.dart' as path;
 
 typedef DevDockerWorkflowCommandRunner =
@@ -12,7 +12,6 @@ typedef DevDockerWorkflowCommandRunner =
       bool? checkExitCode,
     });
 
-@visibleForTesting
 String shellEscape(String value) {
   return "'${value.replaceAll("'", r"'\''")}'";
 }

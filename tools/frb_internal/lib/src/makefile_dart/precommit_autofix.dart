@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:args/command_runner.dart';
+// ignore: implementation_imports
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_diff_exclusions.dart';
 import 'package:meta/meta.dart';
@@ -107,7 +108,7 @@ class PrecommitAutofixCommand extends Command<void> {
       repoRootPath: repoRootPath,
     ).run(mode: mode, outputPath: outputPath);
 
-    print(result.summary.toJsonString());
+    stdout.writeln(result.summary.toJsonString());
   }
 }
 
