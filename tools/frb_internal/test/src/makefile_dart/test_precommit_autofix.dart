@@ -109,6 +109,77 @@ void main() {
       expect(patchText, contains('tracked.txt'));
     });
 
+    test('excluded integrate drift does not emit a patch', () async {
+      final repo = await _createCommittedRepo(
+        fileName: 'tracked.txt',
+        fileContents: 'hello\n',
+      );
+      addTearDown(() => repo.delete(recursive: true));
+
+      final excludedPath = path.join(
+        repo.path,
+        'frb_example',
+        'flutter_via_create',
+        'macos',
+        'Flutter',
+        'Flutter-Debug.xcconfig',
+      );
+      File(excludedPath).createSync(recursive: true);
+
+      final outputPath = path.join(repo.path, 'artifacts', 'precommit.diff');
+      final result = await _runService(
+        repo: repo,
+        outputPath: outputPath,
+        precommitRunner: (_) async {
+          File(excludedPath).writeAsStringSync(
+            '#include "ephemeral/Flutter-Generated.xcconfig"\n',
+          );
+        },
+      );
+
+      expect(result.hasPatch, isFalse);
+      expect(File(outputPath).existsSync(), isFalse);
+      expect(result.summary.status, PrecommitAutofixStatus.clean);
+    });
+
+    test('excluded integrate drift is omitted while real changes remain', () async {
+      final repo = await _createCommittedRepo(
+        fileName: 'tracked.txt',
+        fileContents: 'hello\n',
+      );
+      addTearDown(() => repo.delete(recursive: true));
+
+      final excludedPath = path.join(
+        repo.path,
+        'frb_example',
+        'flutter_via_create',
+        'macos',
+        'Flutter',
+        'Flutter-Debug.xcconfig',
+      );
+      File(excludedPath).createSync(recursive: true);
+
+      final outputPath = path.join(repo.path, 'artifacts', 'precommit.diff');
+      final result = await _runService(
+        repo: repo,
+        outputPath: outputPath,
+        precommitRunner: (_) async {
+          File(
+            path.join(repo.path, 'tracked.txt'),
+          ).writeAsStringSync('hello world\n');
+          File(excludedPath).writeAsStringSync(
+            '#include "ephemeral/Flutter-Generated.xcconfig"\n',
+          );
+        },
+      );
+
+      final patchText = File(outputPath).readAsStringSync();
+
+      expect(result.hasPatch, isTrue);
+      expect(patchText, contains('tracked.txt'));
+      expect(patchText, isNot(contains('Flutter-Debug.xcconfig')));
+    });
+
     test('dirty-before-run repo fails with actionable error', () async {
       final repo = await _createCommittedRepo(
         fileName: 'tracked.txt',

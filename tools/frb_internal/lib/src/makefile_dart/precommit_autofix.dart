@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:args/command_runner.dart';
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_diff_exclusions.dart';
 import 'package:meta/meta.dart';
 import 'package:path/path.dart' as path;
 
@@ -172,7 +173,8 @@ class PrecommitAutofixService {
   Future<String> _generatePatchText() async {
     await commandRunner('git add -A .');
     final diff = await commandRunner(
-      'git diff --cached --binary --full-index --no-color',
+      'git diff --cached --binary --full-index --no-color -- . '
+      '${gitExcludePathspecArgs(kIntegrateDiffExcludedPaths)}',
     );
     return diff.stdout;
   }
