@@ -197,15 +197,20 @@ Future<void> _executeWasmPack(
 }
 
 class WasmPackRustflagsResolution {
+  /// The `RUSTFLAGS` value that will be passed to `wasm-pack`.
   final String rustflags;
+
+  /// Optional warning shown when user-provided overrides drop required defaults.
   final String? warning;
 
+  /// Creates a resolved `wasm-pack` rustflags result.
   const WasmPackRustflagsResolution({
     required this.rustflags,
     required this.warning,
   });
 }
 
+/// Default threaded-WASM rustflag segments used by `build-web`.
 const buildWebDefaultWasmPackRustflagSegments = [
   '-C target-feature=+atomics,+bulk-memory,+mutable-globals',
   '-C link-args=--shared-memory',
@@ -217,6 +222,7 @@ const buildWebDefaultWasmPackRustflagSegments = [
   '-C link-args=--export=__tls_base',
 ];
 
+/// Default threaded-WASM rustflags used by `build-web`.
 final buildWebDefaultWasmPackRustflags = buildWebDefaultWasmPackRustflagSegments
     .join(' ');
 

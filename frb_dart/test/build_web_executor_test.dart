@@ -41,7 +41,7 @@ void main() {
   });
 
   test('override path with default threaded wasm flags does not warn', () {
-    const override =
+    final override =
         '$buildWebDefaultWasmPackRustflags -C link-args=--stack-first';
 
     final resolution = computeWasmPackRustflagsResolution(
