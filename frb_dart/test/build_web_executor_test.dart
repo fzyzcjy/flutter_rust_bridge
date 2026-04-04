@@ -51,4 +51,27 @@ void main() {
     expect(resolution.rustflags, override);
     expect(resolution.warning, isNull);
   });
+
+  test(
+    'override path with reordered default threaded wasm flags does not warn',
+    () {
+      const override =
+          '-C link-args=--stack-first '
+          '-C link-args=--export=__tls_base '
+          '-C target-feature=+atomics,+bulk-memory,+mutable-globals '
+          '-C link-args=--export=__tls_align '
+          '-C link-args=--max-memory=1073741824 '
+          '-C link-args=--import-memory '
+          '-C link-args=--shared-memory '
+          '-C link-args=--export=__tls_size '
+          '-C link-args=--export=__wasm_init_tls';
+
+      final resolution = computeWasmPackRustflagsResolution(
+        argsOverride: override,
+      );
+
+      expect(resolution.rustflags, override);
+      expect(resolution.warning, isNull);
+    },
+  );
 }

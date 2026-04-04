@@ -206,7 +206,7 @@ class WasmPackRustflagsResolution {
   });
 }
 
-const buildWebDefaultWasmPackRustflags = [
+const buildWebDefaultWasmPackRustflagSegments = [
   '-C target-feature=+atomics,+bulk-memory,+mutable-globals',
   '-C link-args=--shared-memory',
   '-C link-args=--max-memory=1073741824',
@@ -215,7 +215,14 @@ const buildWebDefaultWasmPackRustflags = [
   '-C link-args=--export=__tls_size',
   '-C link-args=--export=__tls_align',
   '-C link-args=--export=__tls_base',
-].join(' ');
+];
+
+const buildWebDefaultWasmPackRustflags = buildWebDefaultWasmPackRustflagSegments
+    .join(' ');
+
+bool _containsDefaultWasmPackRustflags(String rustflags) {
+  return buildWebDefaultWasmPackRustflagSegments.every(rustflags.contains);
+}
 
 @visibleForTesting
 WasmPackRustflagsResolution computeWasmPackRustflagsResolution({
@@ -228,7 +235,7 @@ WasmPackRustflagsResolution computeWasmPackRustflagsResolution({
     );
   }
 
-  final warning = argsOverride.contains(buildWebDefaultWasmPackRustflags)
+  final warning = _containsDefaultWasmPackRustflags(argsOverride)
       ? null
       : 'WARN: RUSTFLAGS will be `$argsOverride`, which does not contain the default threaded-WASM flags `$buildWebDefaultWasmPackRustflags`. Keep the default flags when overriding `--wasm-pack-rustflags`, otherwise worker startup may fail with errors such as `WebAssembly.Memory could not be cloned`.';
   return WasmPackRustflagsResolution(rustflags: argsOverride, warning: warning);
