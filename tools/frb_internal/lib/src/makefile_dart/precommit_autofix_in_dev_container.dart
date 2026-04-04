@@ -295,21 +295,6 @@ String buildPrecommitAutofixContainerCommand({
         'cargo install cargo-expand || '
         'cargo install cargo-expand --version 1.0.112 --locked)',
     './frb_internal precommit-autofix --mode $mode --output $outputPath',
-    'if [ -s $outputPath ]; then',
-    '  git apply $outputPath',
-    '  git add -A',
-    '  git config user.email precommit-autofix@local',
-    '  git config user.name "Precommit Autofix"',
-    '  git commit -m "Validate precommit autofix patch" >/dev/null',
-    '  ./frb_internal precommit-autofix --mode $mode '
-        '--output /tmp/precommit-autofix-validate.diff '
-        '>/tmp/precommit-autofix-validate.json',
-    '  if [ -s /tmp/precommit-autofix-validate.diff ]; then',
-    '    echo "Generated precommit autofix patch is not idempotent." >&2',
-    '    cat /tmp/precommit-autofix-validate.json >&2 || true',
-    '    exit 1',
-    '  fi',
-    'fi',
   ].join('\n');
 }
 

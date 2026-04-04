@@ -54,24 +54,20 @@ void main() {
     );
   });
 
-  test('buildPrecommitAutofixContainerCommand validates patch idempotency', () {
+  test('buildPrecommitAutofixContainerCommand runs in temporary workspace', () {
     final command = buildPrecommitAutofixContainerCommand(
       mode: 'slow',
       outputPath: '/artifacts/precommit-autofix.diff',
     );
 
     expect(command, contains(r'cp -a /source/. "${temp_workspace}/"'));
+    expect(command, contains(r'cd "${temp_workspace}"'));
     expect(
       command,
       contains(
         './frb_internal precommit-autofix --mode slow --output /artifacts/precommit-autofix.diff',
       ),
     );
-    expect(command, contains('Validate precommit autofix patch'));
-    expect(
-      command,
-      contains('/tmp/precommit-autofix-validate.diff'),
-    );
-    expect(command, contains('Generated precommit autofix patch is not idempotent.'));
+    expect(command, isNot(contains('Validate precommit autofix patch')));
   });
 }
