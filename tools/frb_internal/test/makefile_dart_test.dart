@@ -81,7 +81,7 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
   });
 
   test(
-    'integrate Cargo.lock source of truth keeps local crate before flutter_rust_bridge',
+    'integrate Cargo.lock source of truth keeps local crate after flutter_rust_bridge',
     () {
       for (final (package, crateName) in [
         (
@@ -99,7 +99,7 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
 
         expect(localCrateIndex, greaterThanOrEqualTo(0), reason: package);
         expect(frbIndex, greaterThanOrEqualTo(0), reason: package);
-        expect(localCrateIndex, lessThan(frbIndex), reason: package);
+        expect(localCrateIndex, greaterThan(frbIndex), reason: package);
       }
     },
   );
