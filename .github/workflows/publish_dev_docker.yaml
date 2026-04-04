@@ -23,6 +23,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: 3.11.0
+          architecture: x64
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
