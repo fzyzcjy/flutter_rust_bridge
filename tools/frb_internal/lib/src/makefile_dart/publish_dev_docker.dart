@@ -52,10 +52,6 @@ class PublishDevDockerCommand extends Command<void> {
         help: 'Push the image tags after the smoke test.',
       )
       ..addOption(
-        'github-output-path',
-        help: 'Optional GitHub Actions output file path.',
-      )
-      ..addOption(
         'github-summary-path',
         help: 'Optional GitHub Actions summary file path.',
       );
@@ -63,9 +59,6 @@ class PublishDevDockerCommand extends Command<void> {
 
   @override
   Future<void> run() async {
-    final githubOutputPath =
-        (argResults!['github-output-path'] as String?) ??
-        Platform.environment['GITHUB_OUTPUT'];
     final githubSummaryPath =
         (argResults!['github-summary-path'] as String?) ??
         Platform.environment['GITHUB_STEP_SUMMARY'];
@@ -81,7 +74,6 @@ class PublishDevDockerCommand extends Command<void> {
         shortSha: argResults!['short-sha'] as String?,
         platform: argResults!['platform'] as String,
         push: argResults!['push'] as bool,
-        githubOutputPath: githubOutputPath,
         githubSummaryPath: githubSummaryPath,
       ),
     );
@@ -97,7 +89,6 @@ class PublishDevDockerConfig {
   final String? shortSha;
   final String platform;
   final bool push;
-  final String? githubOutputPath;
   final String? githubSummaryPath;
 
   const PublishDevDockerConfig({
@@ -107,7 +98,6 @@ class PublishDevDockerConfig {
     required this.shortSha,
     required this.platform,
     required this.push,
-    required this.githubOutputPath,
     required this.githubSummaryPath,
   });
 }
@@ -177,13 +167,6 @@ class PublishDevDockerService {
         '--file ${shellEscape(dockerfilePath)} '
         '--platform ${shellEscape(config.platform)} '
         '--push $tagArgs ${shellEscape(contextPath)}',
-      );
-    }
-
-    if (config.githubOutputPath != null) {
-      writeCommandOutput(
-        outputText: workflowMetadataToGithubOutput(workflowMetadata),
-        outputPath: config.githubOutputPath,
       );
     }
 

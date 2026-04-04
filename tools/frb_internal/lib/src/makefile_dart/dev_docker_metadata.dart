@@ -78,30 +78,6 @@ DevDockerMetadata readDevDockerMetadataFile({required String dockerfilePath}) {
 }
 
 @visibleForTesting
-String workflowMetadataToGithubOutput(
-  DevDockerWorkflowMetadata workflowMetadata,
-) {
-  final buffer = StringBuffer()
-    ..writeln('flutter_version=${workflowMetadata.metadata.flutterVersion}')
-    ..writeln('rust_version=${workflowMetadata.metadata.rustVersion}')
-    ..writeln(
-      'rust_nightly_version=${workflowMetadata.metadata.rustNightlyVersion}',
-    )
-    ..writeln('version_tag=${workflowMetadata.metadata.versionTag}')
-    ..writeln('image_ref=${workflowMetadata.imageRef}')
-    ..writeln('sha_tag=${workflowMetadata.shaTag}')
-    ..writeln('local_tag=${workflowMetadata.localTag}')
-    ..writeln('tags<<EOF');
-
-  for (final tag in workflowMetadata.tags) {
-    buffer.writeln(tag);
-  }
-
-  buffer.writeln('EOF');
-  return buffer.toString();
-}
-
-@visibleForTesting
 void writeCommandOutput({
   required String outputText,
   required String? outputPath,

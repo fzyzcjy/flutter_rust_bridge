@@ -39,36 +39,6 @@ void main() {
     );
   });
 
-  test('workflowMetadataToGithubOutput emits GitHub output fields', () {
-    final metadata = parseDevDockerMetadataFromText(_readCurrentDockerfileText());
-    final output = workflowMetadataToGithubOutput(
-      DevDockerWorkflowMetadata(
-        metadata: metadata,
-        imageName: 'fzyzcjy/flutter_rust_bridge_dev',
-        shortSha: 'abc1234',
-      ),
-    );
-
-    expect(output, contains('flutter_version=3.41.2'));
-    expect(output, contains('rust_version=1.93.1'));
-    expect(output, contains('rust_nightly_version=2025-02-01'));
-    expect(
-      output,
-      contains('version_tag=flutter-3.41.2-rust-1.93.1-nightly-2025-02-01'),
-    );
-    expect(
-      output,
-      contains(
-        'image_ref=fzyzcjy/flutter_rust_bridge_dev:flutter-3.41.2-rust-1.93.1-nightly-2025-02-01',
-      ),
-    );
-    expect(output, contains('sha_tag=sha-abc1234'));
-    expect(output, contains('local_tag=frb-dev-image-smoke:abc1234'));
-    expect(output, contains('tags<<EOF'));
-    expect(output, contains('fzyzcjy/flutter_rust_bridge_dev:latest'));
-    expect(output, contains('fzyzcjy/flutter_rust_bridge_dev:sha-abc1234'));
-  });
-
   test('dev docker metadata command writes github output to file', () async {
     final tempDir = await Directory.systemTemp.createTemp('dev-docker-output-');
     addTearDown(() => tempDir.delete(recursive: true));
