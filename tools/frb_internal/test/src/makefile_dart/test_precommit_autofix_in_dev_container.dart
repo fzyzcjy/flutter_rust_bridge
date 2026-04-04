@@ -53,4 +53,25 @@ void main() {
       'No autofix patch was produced; the branch is already clean after precommit.\n',
     );
   });
+
+  test('buildPrecommitAutofixContainerCommand validates patch idempotency', () {
+    final command = buildPrecommitAutofixContainerCommand(
+      mode: 'slow',
+      outputPath: '/artifacts/precommit-autofix.diff',
+    );
+
+    expect(command, contains(r'cp -a /source/. "${temp_workspace}/"'));
+    expect(
+      command,
+      contains(
+        './frb_internal precommit-autofix --mode slow --output /artifacts/precommit-autofix.diff',
+      ),
+    );
+    expect(command, contains('Validate precommit autofix patch'));
+    expect(
+      command,
+      contains('/tmp/precommit-autofix-validate.diff'),
+    );
+    expect(command, contains('Generated precommit autofix patch is not idempotent.'));
+  });
 }

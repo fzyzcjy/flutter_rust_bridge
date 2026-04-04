@@ -191,22 +191,21 @@ class PrecommitAutofixInDevContainerService {
     final artifactDir = Directory(path.join(randomTempDir(), 'artifacts'));
     artifactDir.createSync(recursive: true);
     final containerPatchPath = '/artifacts/${path.basename(outputPath)}';
-    final hostPatchPath = path.join(artifactDir.path, path.basename(outputPath));
-    final containerCommand =
-        'git config --global --add safe.directory /workspace && '
-        'rustup target add wasm32-unknown-unknown && '
-        '(cargo expand --version >/dev/null 2>&1 || '
-        'cargo install cargo-expand || '
-        'cargo install cargo-expand --version 1.0.112 --locked) && '
-        './frb_internal precommit-autofix --mode ${config.mode} --output $containerPatchPath';
+    final hostPatchPath = path.join(
+      artifactDir.path,
+      path.basename(outputPath),
+    );
+    final containerCommand = buildPrecommitAutofixContainerCommand(
+      mode: config.mode,
+      outputPath: containerPatchPath,
+    );
 
     await commandRunner('docker pull ${shellEscape(imageRef)}');
 
     await commandRunner(
       'docker run --rm '
-      '--volume ${shellEscape('$repoRootPath:/workspace')} '
+      '--volume ${shellEscape('$repoRootPath:/source:ro')} '
       '--volume ${shellEscape('${artifactDir.path}:/artifacts')} '
-      '--workdir /workspace '
       '${shellEscape(imageRef)} bash -lc '
       '${shellEscape(containerCommand)}',
     );
@@ -278,6 +277,40 @@ String buildPrecommitAutofixApplyCommand({
       'git add -A && '
       'git commit -m "Apply precommit autofix" && '
       'git push';
+}
+
+@visibleForTesting
+String buildPrecommitAutofixContainerCommand({
+  required String mode,
+  required String outputPath,
+}) {
+  return [
+    'set -euo pipefail',
+    'temp_workspace="\$(mktemp -d /tmp/frb-precommit-workspace.XXXXXX)"',
+    'cp -a /source/. "\${temp_workspace}/"',
+    'cd "\${temp_workspace}"',
+    'git config --global --add safe.directory "\${temp_workspace}"',
+    'rustup target add wasm32-unknown-unknown',
+    '(cargo expand --version >/dev/null 2>&1 || '
+        'cargo install cargo-expand || '
+        'cargo install cargo-expand --version 1.0.112 --locked)',
+    './frb_internal precommit-autofix --mode $mode --output $outputPath',
+    'if [ -s $outputPath ]; then',
+    '  git apply $outputPath',
+    '  git add -A',
+    '  git config user.email precommit-autofix@local',
+    '  git config user.name "Precommit Autofix"',
+    '  git commit -m "Validate precommit autofix patch" >/dev/null',
+    '  ./frb_internal precommit-autofix --mode $mode '
+        '--output /tmp/precommit-autofix-validate.diff '
+        '>/tmp/precommit-autofix-validate.json',
+    '  if [ -s /tmp/precommit-autofix-validate.diff ]; then',
+    '    echo "Generated precommit autofix patch is not idempotent." >&2',
+    '    cat /tmp/precommit-autofix-validate.json >&2 || true',
+    '    exit 1',
+    '  fi',
+    'fi',
+  ].join('\n');
 }
 
 @visibleForTesting
