@@ -238,7 +238,9 @@ flutter --version
 dart --version
 cargo --version
 rustup show
+rustup target list --installed | grep wasm32-unknown-unknown
 rustup target list --toolchain nightly-${workflowMetadata.metadata.rustNightlyVersion} --installed
+cargo expand --version
 wasm-pack --version
 "\${CHROME_BIN}" --version
 rustup target list --toolchain nightly-${workflowMetadata.metadata.rustNightlyVersion} --installed | grep wasm32-unknown-unknown
