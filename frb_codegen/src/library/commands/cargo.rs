@@ -15,5 +15,11 @@ pub fn cargo_add(args: &[&str], pwd: &Path) -> anyhow::Result<()> {
 
 #[allow(clippy::vec_init_then_push)]
 pub fn cargo_fetch(pwd: &Path) -> anyhow::Result<()> {
-    check_exit_code(&command_run!(call_shell[Some(pwd), None], "cargo", "fetch")?)
+    check_exit_code(&command_run!(
+        call_shell[None, None],
+        "cargo",
+        "fetch",
+        "--manifest-path",
+        pwd.join("Cargo.toml"),
+    )?)
 }
