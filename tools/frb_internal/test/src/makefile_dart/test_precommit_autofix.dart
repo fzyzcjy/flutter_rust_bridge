@@ -27,10 +27,7 @@ void main() {
       expect(result.summary.status, PrecommitAutofixStatus.clean);
       expect(result.summary.message, 'No changes were produced.');
       expect(result.summary.artifactName, 'precommit-autofix-diff');
-      expect(
-        result.summary.toJsonString(),
-        contains('"status":"clean"'),
-      );
+      expect(result.summary.toJsonString(), contains('"status":"clean"'));
     });
 
     test('modified tracked file emits non-empty diff', () async {
@@ -45,9 +42,9 @@ void main() {
         repo: repo,
         outputPath: outputPath,
         precommitRunner: (_) async {
-          File(path.join(repo.path, 'tracked.txt')).writeAsStringSync(
-            'hello world\n',
-          );
+          File(
+            path.join(repo.path, 'tracked.txt'),
+          ).writeAsStringSync('hello world\n');
         },
       );
 
@@ -72,10 +69,12 @@ void main() {
         repo: repo,
         outputPath: outputPath,
         precommitRunner: (_) async {
-          File(path.join(repo.path, 'generated', 'new_file.txt'))
-              .createSync(recursive: true);
-          File(path.join(repo.path, 'generated', 'new_file.txt'))
-              .writeAsStringSync('new content\n');
+          File(
+            path.join(repo.path, 'generated', 'new_file.txt'),
+          ).createSync(recursive: true);
+          File(
+            path.join(repo.path, 'generated', 'new_file.txt'),
+          ).writeAsStringSync('new content\n');
         },
       );
 
@@ -203,9 +202,9 @@ void main() {
       );
       addTearDown(() => repo.delete(recursive: true));
 
-      File(path.join(repo.path, 'tracked.txt')).writeAsStringSync(
-        'dirty before run\n',
-      );
+      File(
+        path.join(repo.path, 'tracked.txt'),
+      ).writeAsStringSync('dirty before run\n');
 
       var precommitInvoked = false;
 
@@ -221,7 +220,9 @@ void main() {
           isA<StateError>().having(
             (error) => error.message,
             'message',
-            contains('Repository must be clean before running precommit-autofix.'),
+            contains(
+              'Repository must be clean before running precommit-autofix.',
+            ),
           ),
         ),
       );
@@ -247,7 +248,10 @@ void main() {
     );
 
     expect(summary, contains('"artifact_name":"precommit-autofix-diff"'));
-    expect(summary, contains('"apply_command":"git apply precommit-autofix.diff"'));
+    expect(
+      summary,
+      contains('"apply_command":"git apply precommit-autofix.diff"'),
+    );
     expect(summary, contains('"status":"patched"'));
   });
 }
@@ -259,16 +263,12 @@ Future<Directory> _createCommittedRepo({
   final repo = Directory.systemTemp.createTempSync('frb-precommit-autofix-');
 
   await runCommand('git', ['init'], pwd: repo.path);
-  await runCommand(
-    'git',
-    ['config', 'user.email', 'test@example.com'],
-    pwd: repo.path,
-  );
-  await runCommand(
-    'git',
-    ['config', 'user.name', 'Test User'],
-    pwd: repo.path,
-  );
+  await runCommand('git', [
+    'config',
+    'user.email',
+    'test@example.com',
+  ], pwd: repo.path);
+  await runCommand('git', ['config', 'user.name', 'Test User'], pwd: repo.path);
 
   final file = File(path.join(repo.path, fileName));
   file.parent.createSync(recursive: true);
@@ -303,8 +303,5 @@ Future<PrecommitAutofixRunResult> _runService({
     commandRunner: SimpleExecutor(pwd: repo.path).call,
     precommitRunner: precommitRunner,
     repoRootPath: repo.path,
-  ).run(
-    mode: PrecommitAutofixMode.slow,
-    outputPath: outputPath,
-  );
+  ).run(mode: PrecommitAutofixMode.slow, outputPath: outputPath);
 }

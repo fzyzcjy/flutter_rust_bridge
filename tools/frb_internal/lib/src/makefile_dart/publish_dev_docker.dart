@@ -63,20 +63,21 @@ class PublishDevDockerCommand extends Command<void> {
         (argResults!['github-summary-path'] as String?) ??
         Platform.environment['GITHUB_STEP_SUMMARY'];
 
-    final result = await PublishDevDockerService(
-      commandRunner: commandRunner,
-      repoRootPath: repoRootPath,
-    ).run(
-      config: PublishDevDockerConfig(
-        dockerfilePath: argResults!['dockerfile'] as String,
-        contextPath: argResults!['context-path'] as String,
-        imageName: argResults!['image-name'] as String,
-        shortSha: argResults!['short-sha'] as String?,
-        platform: argResults!['platform'] as String,
-        push: argResults!['push'] as bool,
-        githubSummaryPath: githubSummaryPath,
-      ),
-    );
+    final result =
+        await PublishDevDockerService(
+          commandRunner: commandRunner,
+          repoRootPath: repoRootPath,
+        ).run(
+          config: PublishDevDockerConfig(
+            dockerfilePath: argResults!['dockerfile'] as String,
+            contextPath: argResults!['context-path'] as String,
+            imageName: argResults!['image-name'] as String,
+            shortSha: argResults!['short-sha'] as String?,
+            platform: argResults!['platform'] as String,
+            push: argResults!['push'] as bool,
+            githubSummaryPath: githubSummaryPath,
+          ),
+        );
 
     stdout.writeln(jsonEncode(result.toJson()));
   }

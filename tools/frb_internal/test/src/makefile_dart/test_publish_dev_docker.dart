@@ -17,7 +17,10 @@ void main() {
     );
 
     expect(summary, contains('## Dev Docker Image Published'));
-    expect(summary, contains('- Repository: `fzyzcjy/flutter_rust_bridge_dev`'));
+    expect(
+      summary,
+      contains('- Repository: `fzyzcjy/flutter_rust_bridge_dev`'),
+    );
     expect(
       summary,
       contains(
