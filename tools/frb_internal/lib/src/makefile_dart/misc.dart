@@ -37,12 +37,12 @@ List<Command<void>> createCommands() {
           ),
         );
       },
-      repoRootPath: exec.pwd,
+      repoRootPath: exec.pwd!,
     ),
-    PublishDevDockerCommand(commandRunner: exec.call, repoRootPath: exec.pwd),
+    PublishDevDockerCommand(commandRunner: exec.call, repoRootPath: exec.pwd!),
     PrecommitAutofixInDevContainerCommand(
       commandRunner: exec.call,
-      repoRootPath: exec.pwd,
+      repoRootPath: exec.pwd!,
     ),
     SimpleCommand('precommit-generate', precommitGenerate),
     SimpleCommand('precommit-integrate', precommitIntegrate),
