@@ -93,7 +93,7 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
           'rust_lib_flutter_via_integrate',
         ),
       ]) {
-        final content = File(package).readAsStringSync();
+        final content = File('../../$package').readAsStringSync();
         final localCrateIndex = content.indexOf('name = "$crateName"');
         final frbIndex = content.indexOf('name = "flutter_rust_bridge"');
 
