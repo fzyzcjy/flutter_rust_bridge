@@ -33,33 +33,44 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Compute tags from Dockerfile
+      - name: Compute metadata from Dockerfile
         id: metadata
         shell: bash
         run: |
           set -euo pipefail
 
-          flutter_version="$(awk -F= '/^ARG FLUTTER_VERSION=/{print $2; exit}' .devcontainer/Dockerfile)"
-          rust_version="$(awk -F= '/^ARG RUST_VERSION=/{print $2; exit}' .devcontainer/Dockerfile)"
-          rust_nightly_version="$(awk -F= '/^ARG RUST_NIGHTLY_VERSION=/{print $2; exit}' .devcontainer/Dockerfile)"
+          metadata_json="$(./frb_internal dev-docker-metadata)"
           short_sha="${GITHUB_SHA::7}"
-          version_tag="flutter-${flutter_version}-rust-${rust_version}-nightly-${rust_nightly_version}"
-          sha_tag="sha-${short_sha}"
-          local_tag="frb-dev-image-smoke:${short_sha}"
+          export METADATA_JSON="${metadata_json}"
+          export SHORT_SHA="${short_sha}"
 
-          {
-            echo "flutter_version=${flutter_version}"
-            echo "rust_version=${rust_version}"
-            echo "rust_nightly_version=${rust_nightly_version}"
-            echo "version_tag=${version_tag}"
-            echo "sha_tag=${sha_tag}"
-            echo "local_tag=${local_tag}"
-            echo "tags<<EOF"
-            echo "${IMAGE_NAME}:latest"
-            echo "${IMAGE_NAME}:${version_tag}"
-            echo "${IMAGE_NAME}:${sha_tag}"
-            echo "EOF"
-          } >> "${GITHUB_OUTPUT}"
+          python3 - <<'PY' >> "${GITHUB_OUTPUT}"
+import json
+import os
+
+data = json.loads(os.environ["METADATA_JSON"])
+image_name = os.environ["IMAGE_NAME"]
+short_sha = os.environ["SHORT_SHA"]
+sha_tag = f"sha-{short_sha}"
+image_ref = data["image_ref"]
+tags = [
+    f"{image_name}:latest",
+    image_ref,
+    f"{image_name}:{sha_tag}",
+]
+
+print(f"flutter_version={data['flutter_version']}")
+print(f"rust_version={data['rust_version']}")
+print(f"rust_nightly_version={data['rust_nightly_version']}")
+print(f"version_tag={data['version_tag']}")
+print(f"image_ref={image_ref}")
+print(f"sha_tag={sha_tag}")
+print(f"local_tag=frb-dev-image-smoke:{short_sha}")
+print("tags<<EOF")
+for tag in tags:
+    print(tag)
+print("EOF")
+PY
 
       - name: Build local image for smoke test
         uses: docker/build-push-action@v6
@@ -108,6 +119,7 @@ jobs:
             echo "- Flutter: \`${{ steps.metadata.outputs.flutter_version }}\`"
             echo "- Rust: \`${{ steps.metadata.outputs.rust_version }}\`"
             echo "- Rust nightly: \`${{ steps.metadata.outputs.rust_nightly_version }}\`"
+            echo "- Image ref: \`${{ steps.metadata.outputs.image_ref }}\`"
             echo "- Tags:"
             echo "  - \`latest\`"
             echo "  - \`${{ steps.metadata.outputs.version_tag }}\`"
