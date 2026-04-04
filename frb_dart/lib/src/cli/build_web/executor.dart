@@ -5,6 +5,7 @@ import 'dart:io';
 
 import 'package:flutter_rust_bridge/src/cli/cli_utils.dart';
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
+import 'package:meta/meta.dart';
 
 /// {@macro flutter_rust_bridge.cli}
 class BuildWebArgs {
@@ -158,6 +159,13 @@ Future<void> _executeWasmPack(
   BuildWebArgs args, {
   required String rustCrateName,
 }) async {
+  final rustflagsResolution = computeWasmPackRustflagsResolution(
+    argsOverride: args.wasmPackRustflags,
+  );
+  if (rustflagsResolution.warning != null) {
+    print(rustflagsResolution.warning);
+  }
+
   await runCommand(
     'wasm-pack',
     [
@@ -182,21 +190,48 @@ Future<void> _executeWasmPack(
     ],
     env: {
       'RUSTUP_TOOLCHAIN': args.wasmPackRustupToolchain ?? 'nightly',
-      'RUSTFLAGS': _computeRustflags(argsOverride: args.wasmPackRustflags),
+      'RUSTFLAGS': rustflagsResolution.rustflags,
       if (stdout.supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',
     },
   );
 }
 
-String _computeRustflags({required String? argsOverride}) {
-  const kDefault = '-C target-feature=+atomics,+bulk-memory,+mutable-globals';
-  if (argsOverride == null) return kDefault;
-  if (!argsOverride.contains(kDefault)) {
-    print(
-      'WARN: RUSTFLAGS will be `$argsOverride`, which does not contain the default one `$kDefault`',
+class WasmPackRustflagsResolution {
+  final String rustflags;
+  final String? warning;
+
+  const WasmPackRustflagsResolution({
+    required this.rustflags,
+    required this.warning,
+  });
+}
+
+const buildWebDefaultWasmPackRustflags = [
+  '-C target-feature=+atomics,+bulk-memory,+mutable-globals',
+  '-C link-args=--shared-memory',
+  '-C link-args=--max-memory=1073741824',
+  '-C link-args=--import-memory',
+  '-C link-args=--export=__wasm_init_tls',
+  '-C link-args=--export=__tls_size',
+  '-C link-args=--export=__tls_align',
+  '-C link-args=--export=__tls_base',
+].join(' ');
+
+@visibleForTesting
+WasmPackRustflagsResolution computeWasmPackRustflagsResolution({
+  required String? argsOverride,
+}) {
+  if (argsOverride == null) {
+    return const WasmPackRustflagsResolution(
+      rustflags: buildWebDefaultWasmPackRustflags,
+      warning: null,
     );
   }
-  return argsOverride;
+
+  final warning = argsOverride.contains(buildWebDefaultWasmPackRustflags)
+      ? null
+      : 'WARN: RUSTFLAGS will be `$argsOverride`, which does not contain the default threaded-WASM flags `$buildWebDefaultWasmPackRustflags`. Keep the default flags when overriding `--wasm-pack-rustflags`, otherwise worker startup may fail with errors such as `WebAssembly.Memory could not be cloned`.';
+  return WasmPackRustflagsResolution(rustflags: argsOverride, warning: warning);
 }
 
 Future<void> _executeWasmBindgen(
