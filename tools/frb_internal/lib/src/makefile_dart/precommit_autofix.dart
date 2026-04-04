@@ -170,9 +170,9 @@ class PrecommitAutofixService {
   }
 
   Future<String> _generatePatchText() async {
-    await commandRunner('git add -N .');
+    await commandRunner('git add -A .');
     final diff = await commandRunner(
-      'git diff --binary --full-index --no-color',
+      'git diff --cached --binary --full-index --no-color',
     );
     return diff.stdout;
   }
