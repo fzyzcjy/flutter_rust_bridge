@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:args/command_runner.dart';
 import 'package:meta/meta.dart';
 
 class DevDockerMetadata {
@@ -55,66 +54,6 @@ class DevDockerWorkflowMetadata {
     imageRef,
     '$imageName:$shaTag',
   ];
-}
-
-class DevDockerMetadataCommand extends Command<void> {
-  @override
-  final String name = 'dev-docker-metadata';
-
-  @override
-  final String description =
-      'Print dev Docker image metadata derived from .devcontainer/Dockerfile';
-
-  final String defaultDockerfilePath;
-
-  DevDockerMetadataCommand({
-    this.defaultDockerfilePath = '.devcontainer/Dockerfile',
-  }) {
-    argParser
-      ..addOption(
-        'dockerfile',
-        defaultsTo: defaultDockerfilePath,
-        help: 'Path to the Dockerfile to parse.',
-      )
-      ..addFlag(
-        'github-output',
-        defaultsTo: false,
-        help: 'Print GitHub Actions output format instead of JSON.',
-      )
-      ..addOption(
-        'image-name',
-        defaultsTo: 'fzyzcjy/flutter_rust_bridge_dev',
-        help: 'Docker image repository name for GitHub Actions output.',
-      )
-      ..addOption(
-        'short-sha',
-        help: 'Short git SHA used to derive GitHub Actions tags.',
-      )
-      ..addOption(
-        'output-path',
-        help: 'Optional path to write the command output instead of stdout.',
-      );
-  }
-
-  @override
-  Future<void> run() async {
-    final dockerfilePath = argResults!['dockerfile'] as String;
-    final metadata = readDevDockerMetadataFile(dockerfilePath: dockerfilePath);
-    final githubOutput = argResults!['github-output'] as bool;
-    final outputPath = argResults!['output-path'] as String?;
-    final outputText =
-        !githubOutput
-            ? metadata.toJsonString()
-            : workflowMetadataToGithubOutput(
-              DevDockerWorkflowMetadata(
-                metadata: metadata,
-                imageName: argResults!['image-name'] as String,
-                shortSha: argResults!['short-sha'] as String? ?? '',
-              ),
-            );
-
-    writeCommandOutput(outputText: outputText, outputPath: outputPath);
-  }
 }
 
 @visibleForTesting
