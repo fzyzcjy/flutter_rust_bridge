@@ -59,7 +59,10 @@ class DevDockerWorkflowMetadata {
 @visibleForTesting
 DevDockerMetadata parseDevDockerMetadataFromText(String dockerfileText) {
   return DevDockerMetadata(
-    flutterVersion: _parseDockerfileArgument(dockerfileText, 'FLUTTER_VERSION'),
+    flutterVersion: _parseDockerfileArgument(
+      dockerfileText,
+      'FLUTTER_VERSION',
+    ),
     rustVersion: _parseDockerfileArgument(dockerfileText, 'RUST_VERSION'),
     rustNightlyVersion: _parseDockerfileArgument(
       dockerfileText,
@@ -95,7 +98,9 @@ String _parseDockerfileArgument(String dockerfileText, String argumentName) {
     multiLine: true,
   ).firstMatch(dockerfileText);
   if (match == null) {
-    throw StateError('Missing ARG $argumentName in .devcontainer/Dockerfile.');
+    throw StateError(
+      'Missing ARG $argumentName in .devcontainer/Dockerfile.',
+    );
   }
 
   return match.group(1)!.trim();

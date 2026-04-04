@@ -95,23 +95,22 @@ class PrecommitAutofixInDevContainerCommand extends Command<void> {
         (argResults!['github-notice'] as bool) ||
         Platform.environment['GITHUB_ACTIONS'] == 'true';
 
-    final result =
-        await PrecommitAutofixInDevContainerService(
-          commandRunner: commandRunner,
-          repoRootPath: repoRootPath,
-        ).run(
-          config: PrecommitAutofixInDevContainerConfig(
-            dockerfilePath: argResults!['dockerfile'] as String,
-            imageName: argResults!['image-name'] as String,
-            mode: argResults!['mode'] as String,
-            outputPath: outputPath,
-            artifactName: argResults!['artifact-name'] as String,
-            githubRunId: githubRunId,
-            githubOutputPath: githubOutputPath,
-            githubSummaryPath: githubSummaryPath,
-            githubNotice: githubNotice,
-          ),
-        );
+    final result = await PrecommitAutofixInDevContainerService(
+      commandRunner: commandRunner,
+      repoRootPath: repoRootPath,
+    ).run(
+      config: PrecommitAutofixInDevContainerConfig(
+        dockerfilePath: argResults!['dockerfile'] as String,
+        imageName: argResults!['image-name'] as String,
+        mode: argResults!['mode'] as String,
+        outputPath: outputPath,
+        artifactName: argResults!['artifact-name'] as String,
+        githubRunId: githubRunId,
+        githubOutputPath: githubOutputPath,
+        githubSummaryPath: githubSummaryPath,
+        githubNotice: githubNotice,
+      ),
+    );
 
     stdout.writeln(jsonEncode(result.toJson()));
   }
@@ -192,10 +191,7 @@ class PrecommitAutofixInDevContainerService {
     final artifactDir = Directory(path.join(randomTempDir(), 'artifacts'));
     artifactDir.createSync(recursive: true);
     final containerPatchPath = '/artifacts/${path.basename(outputPath)}';
-    final hostPatchPath = path.join(
-      artifactDir.path,
-      path.basename(outputPath),
-    );
+    final hostPatchPath = path.join(artifactDir.path, path.basename(outputPath));
     final containerCommand =
         'git config --global --add safe.directory /workspace && '
         'rustup target add wasm32-unknown-unknown && '
@@ -217,8 +213,7 @@ class PrecommitAutofixInDevContainerService {
 
     final outputFile = File(outputPath);
     final hostPatchFile = File(hostPatchPath);
-    final hasPatch =
-        hostPatchFile.existsSync() && hostPatchFile.lengthSync() > 0;
+    final hasPatch = hostPatchFile.existsSync() && hostPatchFile.lengthSync() > 0;
 
     if (hasPatch) {
       outputFile.parent.createSync(recursive: true);

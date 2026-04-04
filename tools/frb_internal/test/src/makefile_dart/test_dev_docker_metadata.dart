@@ -7,9 +7,7 @@ import 'package:test/test.dart';
 
 void main() {
   test('parseDevDockerMetadataFromText parses the current Dockerfile', () {
-    final metadata = parseDevDockerMetadataFromText(
-      _readCurrentDockerfileText(),
-    );
+    final metadata = parseDevDockerMetadataFromText(_readCurrentDockerfileText());
 
     expect(metadata.flutterVersion, '3.41.2');
     expect(metadata.rustVersion, '1.93.1');
@@ -25,9 +23,7 @@ void main() {
   });
 
   test('dev docker metadata JSON emits the expected key fields', () {
-    final metadata = parseDevDockerMetadataFromText(
-      _readCurrentDockerfileText(),
-    );
+    final metadata = parseDevDockerMetadataFromText(_readCurrentDockerfileText());
     final decoded = jsonDecode(metadata.toJsonString()) as Map<String, dynamic>;
 
     expect(decoded['flutter_version'], '3.41.2');

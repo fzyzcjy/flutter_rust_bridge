@@ -7,16 +7,16 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_diff_ex
 import 'package:meta/meta.dart';
 import 'package:path/path.dart' as path;
 
-typedef PrecommitAutofixCommandRunner =
-    Future<RunCommandOutput> Function(
-      String command, {
-      String? relativePwd,
-      Map<String, String>? extraEnv,
-      bool? checkExitCode,
-    });
+typedef PrecommitAutofixCommandRunner = Future<RunCommandOutput> Function(
+  String command, {
+  String? relativePwd,
+  Map<String, String>? extraEnv,
+  bool? checkExitCode,
+});
 
-typedef PrecommitAutofixRunner =
-    Future<void> Function(PrecommitAutofixMode mode);
+typedef PrecommitAutofixRunner = Future<void> Function(
+  PrecommitAutofixMode mode,
+);
 
 enum PrecommitAutofixMode { fast, slow }
 
