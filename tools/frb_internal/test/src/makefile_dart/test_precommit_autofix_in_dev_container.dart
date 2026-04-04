@@ -22,21 +22,18 @@ void main() {
     },
   );
 
-  test(
-    'buildPrecommitAutofixApplyCommand falls back to placeholder run id',
-    () {
-      expect(
-        buildPrecommitAutofixApplyCommand(
-          artifactName: 'precommit-autofix-diff',
-          githubRunId: null,
-          patchFileName: 'precommit-autofix.diff',
-        ),
-        contains(
-          'gh run download <run-id> -n precommit-autofix-diff -D "\$artifact_dir"',
-        ),
-      );
-    },
-  );
+  test('buildPrecommitAutofixApplyCommand falls back to placeholder run id', () {
+    expect(
+      buildPrecommitAutofixApplyCommand(
+        artifactName: 'precommit-autofix-diff',
+        githubRunId: null,
+        patchFileName: 'precommit-autofix.diff',
+      ),
+      contains(
+        'gh run download <run-id> -n precommit-autofix-diff -D "\$artifact_dir"',
+      ),
+    );
+  });
 
   test('buildPrecommitAutofixGithubOutput emits expected keys', () {
     final output = buildPrecommitAutofixGithubOutput(
