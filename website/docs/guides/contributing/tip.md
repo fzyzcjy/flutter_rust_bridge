@@ -36,8 +36,10 @@ If a pull request fails because generated or normalized files were not committed
 Open the workflow run, download the `precommit-autofix-diff` artifact, and apply it locally:
 
 ```shell
-gh run download <run-id> -n precommit-autofix-diff
-git apply precommit-autofix.diff
+artifact_dir="$(mktemp -d)"
+gh run download <run-id> -n precommit-autofix-diff -D "$artifact_dir"
+git apply "$artifact_dir/precommit-autofix.diff"
+rm -rf "$artifact_dir"
 git add -A
 git commit -m "Apply precommit autofix"
 git push

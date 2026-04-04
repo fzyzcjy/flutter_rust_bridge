@@ -11,8 +11,10 @@ void main() {
           githubRunId: '12345',
           patchFileName: 'precommit-autofix.diff',
         ),
-        'gh run download 12345 -n precommit-autofix-diff && '
-        'git apply precommit-autofix.diff && '
+        'artifact_dir="\$(mktemp -d)" && '
+        'gh run download 12345 -n precommit-autofix-diff -D "\$artifact_dir" && '
+        'git apply "\$artifact_dir/precommit-autofix.diff" && '
+        'rm -rf "\$artifact_dir" && '
         'git add -A && '
         'git commit -m "Apply precommit autofix" && '
         'git push',
@@ -29,7 +31,9 @@ void main() {
           githubRunId: null,
           patchFileName: 'precommit-autofix.diff',
         ),
-        contains('gh run download <run-id> -n precommit-autofix-diff'),
+        contains(
+          'gh run download <run-id> -n precommit-autofix-diff -D "\$artifact_dir"',
+        ),
       );
     },
   );

@@ -274,8 +274,10 @@ String buildPrecommitAutofixApplyCommand({
   required String patchFileName,
 }) {
   final effectiveGithubRunId = githubRunId ?? '<run-id>';
-  return 'gh run download $effectiveGithubRunId -n $artifactName && '
-      'git apply $patchFileName && '
+  return 'artifact_dir="\$(mktemp -d)" && '
+      'gh run download $effectiveGithubRunId -n $artifactName -D "\$artifact_dir" && '
+      'git apply "\$artifact_dir/$patchFileName" && '
+      'rm -rf "\$artifact_dir" && '
       'git add -A && '
       'git commit -m "Apply precommit autofix" && '
       'git push';
