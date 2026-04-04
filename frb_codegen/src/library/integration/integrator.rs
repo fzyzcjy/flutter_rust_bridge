@@ -1,5 +1,4 @@
 use crate::integration::utils::{overlay_dir, replace_file_content};
-use crate::library::commands::cargo::cargo_fetch;
 use crate::library::commands::dart_fix::dart_fix;
 use crate::library::commands::dart_format::dart_format;
 use crate::library::commands::flutter::{flutter_pub_add, flutter_pub_get};
@@ -98,9 +97,6 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     } else {
         info!("Dart format is disabled.");
     }
-
-    info!("Refresh Cargo.lock ordering");
-    cargo_fetch(&dart_root.join(&config.rust_crate_dir))?;
 
     Ok(())
 }
