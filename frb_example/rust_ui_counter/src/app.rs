@@ -8,6 +8,7 @@ pub struct RustState {
 }
 
 impl RustState {
+    #[frb(sync)]
     pub fn new() -> Self {
         Self {
             count: 100,
