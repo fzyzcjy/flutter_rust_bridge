@@ -15,7 +15,7 @@ The published development image is `fzyzcjy/flutter_rust_bridge_dev`. It package
 Prefer the full version tag when you want reproducible environments:
 
 ```shell
-docker run --rm -it fzyzcjy/flutter_rust_bridge_dev:flutter-3.27.4-rust-1.88.0-nightly-2025-02-01 bash
+docker run --rm -it fzyzcjy/flutter_rust_bridge_dev:flutter-3.41.2-rust-1.93.1-nightly-2025-02-01 bash
 ```
 
 Those version numbers are derived from the `ARG` values in `.devcontainer/Dockerfile`, which is the single source of truth. `latest` only means the current recommended image and is not intended for long-term reproducibility.
@@ -28,6 +28,21 @@ The `./frb_internal whatever-command` (or `./frb_internal.bat`) delegates to the
 It contains all scripts to work on flutter_rust_bridge development.
 It as a similar role as [justfile](https://github.com/casey/just/blob/master/justfile), makefile, etc.
 For example, `./frb_internal precommit --mode fast` (or `--mode slow`) runs code generator, formatter, etc for you.
+
+### CI autofix for generated changes
+
+If a pull request fails because generated or normalized files were not committed, the `Precommit Autofix` workflow can prepare a patch artifact for you in the standardized dev image.
+
+Open the workflow run, download the `precommit-autofix-diff` artifact, and apply it locally:
+
+```shell
+gh run download <run-id> -n precommit-autofix-diff
+git apply precommit-autofix.diff
+git commit -am "Apply precommit autofix"
+git push
+```
+
+The workflow summary prints the exact command sequence for that run. The workflow never pushes commits on your behalf; it only prepares a patch for review and application.
 
 ### The `just codegen`
 
