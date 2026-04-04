@@ -170,22 +170,22 @@ class PrecommitAutofixService {
   }
 
   Future<String> _generatePatchText() async {
-    await _commandRunner('git add -N .');
-    final diff = await _commandRunner(
+    await commandRunner('git add -N .');
+    final diff = await commandRunner(
       'git diff --binary --full-index --no-color',
     );
     return diff.stdout;
   }
 
   Future<String> _gitStatusPorcelain() async {
-    final output = await _commandRunner(
+    final output = await commandRunner(
       'git status --porcelain=v1 --untracked-files=all',
     );
     return output.stdout;
   }
 
   Future<void> _restoreIndex() async {
-    await _commandRunner('git reset --mixed');
+    await commandRunner('git reset --mixed');
   }
 
   Future<void> _removeFileIfExists(String outputPath) async {

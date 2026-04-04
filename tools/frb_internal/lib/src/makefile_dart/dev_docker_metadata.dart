@@ -85,7 +85,7 @@ DevDockerMetadata readDevDockerMetadataFile({required String dockerfilePath}) {
 
 String _parseDockerfileArgument(String dockerfileText, String argumentName) {
   final match = RegExp(
-    '^ARG $argumentName=(.+)\$',
+    '^ARG\\s+$argumentName\\s*=\\s*(.+)\$',
     multiLine: true,
   ).firstMatch(dockerfileText);
   if (match == null) {
