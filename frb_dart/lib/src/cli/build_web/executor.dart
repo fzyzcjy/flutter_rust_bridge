@@ -217,7 +217,7 @@ const buildWebDefaultWasmPackRustflagSegments = [
   '-C link-args=--export=__tls_base',
 ];
 
-const buildWebDefaultWasmPackRustflags = buildWebDefaultWasmPackRustflagSegments
+final buildWebDefaultWasmPackRustflags = buildWebDefaultWasmPackRustflagSegments
     .join(' ');
 
 bool _containsDefaultWasmPackRustflags(String rustflags) {
@@ -229,7 +229,7 @@ WasmPackRustflagsResolution computeWasmPackRustflagsResolution({
   required String? argsOverride,
 }) {
   if (argsOverride == null) {
-    return const WasmPackRustflagsResolution(
+    return WasmPackRustflagsResolution(
       rustflags: buildWebDefaultWasmPackRustflags,
       warning: null,
     );
