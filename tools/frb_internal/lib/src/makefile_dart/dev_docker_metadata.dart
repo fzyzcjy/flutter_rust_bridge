@@ -33,6 +33,30 @@ class DevDockerMetadata {
   String toJsonString() => jsonEncode(toJson());
 }
 
+class DevDockerWorkflowMetadata {
+  final DevDockerMetadata metadata;
+  final String imageName;
+  final String shortSha;
+
+  const DevDockerWorkflowMetadata({
+    required this.metadata,
+    required this.imageName,
+    required this.shortSha,
+  });
+
+  String get imageRef => metadata.imageRef;
+
+  String get shaTag => 'sha-$shortSha';
+
+  String get localTag => 'frb-dev-image-smoke:$shortSha';
+
+  List<String> get tags => [
+    '$imageName:latest',
+    imageRef,
+    '$imageName:$shaTag',
+  ];
+}
+
 class DevDockerMetadataCommand extends Command<void> {
   @override
   final String name = 'dev-docker-metadata';
@@ -46,19 +70,48 @@ class DevDockerMetadataCommand extends Command<void> {
   DevDockerMetadataCommand({
     this.defaultDockerfilePath = '.devcontainer/Dockerfile',
   }) {
-    argParser.addOption(
-      'dockerfile',
-      defaultsTo: defaultDockerfilePath,
-      help: 'Path to the Dockerfile to parse.',
-    );
+    argParser
+      ..addOption(
+        'dockerfile',
+        defaultsTo: defaultDockerfilePath,
+        help: 'Path to the Dockerfile to parse.',
+      )
+      ..addFlag(
+        'github-output',
+        defaultsTo: false,
+        help: 'Print GitHub Actions output format instead of JSON.',
+      )
+      ..addOption(
+        'image-name',
+        defaultsTo: 'fzyzcjy/flutter_rust_bridge_dev',
+        help: 'Docker image repository name for GitHub Actions output.',
+      )
+      ..addOption(
+        'short-sha',
+        help: 'Short git SHA used to derive GitHub Actions tags.',
+      );
   }
 
   @override
   Future<void> run() async {
     final dockerfilePath = argResults!['dockerfile'] as String;
     final metadata = readDevDockerMetadataFile(dockerfilePath: dockerfilePath);
+    final githubOutput = argResults!['github-output'] as bool;
 
-    print(metadata.toJsonString());
+    if (!githubOutput) {
+      print(metadata.toJsonString());
+      return;
+    }
+
+    final imageName = argResults!['image-name'] as String;
+    final shortSha = argResults!['short-sha'] as String? ?? '';
+    final workflowMetadata = DevDockerWorkflowMetadata(
+      metadata: metadata,
+      imageName: imageName,
+      shortSha: shortSha,
+    );
+
+    stdout.write(workflowMetadataToGithubOutput(workflowMetadata));
   }
 }
 
@@ -81,6 +134,30 @@ DevDockerMetadata readDevDockerMetadataFile({required String dockerfilePath}) {
   return parseDevDockerMetadataFromText(
     File(dockerfilePath).readAsStringSync(),
   );
+}
+
+@visibleForTesting
+String workflowMetadataToGithubOutput(
+  DevDockerWorkflowMetadata workflowMetadata,
+) {
+  final buffer = StringBuffer()
+    ..writeln('flutter_version=${workflowMetadata.metadata.flutterVersion}')
+    ..writeln('rust_version=${workflowMetadata.metadata.rustVersion}')
+    ..writeln(
+      'rust_nightly_version=${workflowMetadata.metadata.rustNightlyVersion}',
+    )
+    ..writeln('version_tag=${workflowMetadata.metadata.versionTag}')
+    ..writeln('image_ref=${workflowMetadata.imageRef}')
+    ..writeln('sha_tag=${workflowMetadata.shaTag}')
+    ..writeln('local_tag=${workflowMetadata.localTag}')
+    ..writeln('tags<<EOF');
+
+  for (final tag in workflowMetadata.tags) {
+    buffer.writeln(tag);
+  }
+
+  buffer.writeln('EOF');
+  return buffer.toString();
 }
 
 String _parseDockerfileArgument(String dockerfileText, String argumentName) {

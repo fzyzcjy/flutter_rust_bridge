@@ -27,43 +27,15 @@ jobs:
           sdk: 3.11.0
           architecture: x64
 
-      - name: Compute metadata from Dockerfile
+      - name: Read dev docker metadata via frb_internal
         id: metadata
         shell: bash
         run: |
           set -euo pipefail
 
-          metadata_json="$(./frb_internal dev-docker-metadata)"
-          export METADATA_JSON="${metadata_json}"
-          export SHORT_SHA="${GITHUB_SHA::7}"
-
-          python3 - <<'PY' >> "${GITHUB_OUTPUT}"
-import json
-import os
-
-data = json.loads(os.environ["METADATA_JSON"])
-image_name = "fzyzcjy/flutter_rust_bridge_dev"
-short_sha = os.environ["SHORT_SHA"]
-sha_tag = f"sha-{short_sha}"
-image_ref = data["image_ref"]
-tags = [
-    f"{image_name}:latest",
-    image_ref,
-    f"{image_name}:{sha_tag}",
-]
-
-print(f"flutter_version={data['flutter_version']}")
-print(f"rust_version={data['rust_version']}")
-print(f"rust_nightly_version={data['rust_nightly_version']}")
-print(f"version_tag={data['version_tag']}")
-print(f"image_ref={image_ref}")
-print(f"sha_tag={sha_tag}")
-print(f"local_tag=frb-dev-image-smoke:{short_sha}")
-print("tags<<EOF")
-for tag in tags:
-    print(tag)
-print("EOF")
-PY
+          ./frb_internal dev-docker-metadata \
+            --github-output \
+            --short-sha "${GITHUB_SHA::7}" >> "${GITHUB_OUTPUT}"
 
       - name: Pull dev image
         shell: bash
