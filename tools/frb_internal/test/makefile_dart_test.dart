@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/generator.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
@@ -77,6 +79,30 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
       '''),
     );
   });
+
+  test(
+    'integrate Cargo.lock source of truth keeps local crate before flutter_rust_bridge',
+    () {
+      for (final (package, crateName) in [
+        (
+          'frb_example/flutter_via_create/rust/Cargo.lock',
+          'rust_lib_flutter_via_create',
+        ),
+        (
+          'frb_example/flutter_via_integrate/rust/Cargo.lock',
+          'rust_lib_flutter_via_integrate',
+        ),
+      ]) {
+        final content = File(package).readAsStringSync();
+        final localCrateIndex = content.indexOf('name = "$crateName"');
+        final frbIndex = content.indexOf('name = "flutter_rust_bridge"');
+
+        expect(localCrateIndex, greaterThanOrEqualTo(0), reason: package);
+        expect(frbIndex, greaterThanOrEqualTo(0), reason: package);
+        expect(localCrateIndex, lessThan(frbIndex), reason: package);
+      }
+    },
+  );
 
   group('test checkValgrindOutput', () {
     test('good', () {
