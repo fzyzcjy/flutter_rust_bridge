@@ -39,67 +39,13 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Read dev docker metadata via frb_internal
-        id: metadata
+      - name: Publish dev docker via frb_internal
         shell: bash
         run: |
           set -euo pipefail
 
-          ./frb_internal dev-docker-metadata \
-            --github-output \
+          ./frb_internal publish-dev-docker \
             --image-name "${IMAGE_NAME}" \
-            --short-sha "${GITHUB_SHA::7}" >> "${GITHUB_OUTPUT}"
-
-      - name: Build local image for smoke test
-        uses: docker/build-push-action@v6
-        with:
-          context: .devcontainer
-          file: .devcontainer/Dockerfile
-          platforms: linux/amd64
-          load: true
-          push: false
-          tags: ${{ steps.metadata.outputs.local_tag }}
-
-      - name: Smoke test local image
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          docker run --rm "${{ steps.metadata.outputs.local_tag }}" bash -lc '
-            set -euo pipefail
-            flutter --version
-            dart --version
-            cargo --version
-            rustup show
-            rustup target list --toolchain nightly-${{ steps.metadata.outputs.rust_nightly_version }} --installed
-            wasm-pack --version
-            "${CHROME_BIN}" --version
-            rustup target list --toolchain nightly-${{ steps.metadata.outputs.rust_nightly_version }} --installed | grep wasm32-unknown-unknown
-            rustup show | grep "nightly-${{ steps.metadata.outputs.rust_nightly_version }}"
-          '
-
-      - name: Push image to Docker Hub
-        uses: docker/build-push-action@v6
-        with:
-          context: .devcontainer
-          file: .devcontainer/Dockerfile
-          platforms: linux/amd64
-          push: true
-          tags: ${{ steps.metadata.outputs.tags }}
-
-      - name: Publish workflow summary
-        shell: bash
-        run: |
-          {
-            echo "## Dev Docker Image Published"
-            echo
-            echo "- Repository: \`${IMAGE_NAME}\`"
-            echo "- Flutter: \`${{ steps.metadata.outputs.flutter_version }}\`"
-            echo "- Rust: \`${{ steps.metadata.outputs.rust_version }}\`"
-            echo "- Rust nightly: \`${{ steps.metadata.outputs.rust_nightly_version }}\`"
-            echo "- Image ref: \`${{ steps.metadata.outputs.image_ref }}\`"
-            echo "- Tags:"
-            echo "  - \`latest\`"
-            echo "  - \`${{ steps.metadata.outputs.version_tag }}\`"
-            echo "  - \`${{ steps.metadata.outputs.sha_tag }}\`"
-          } >> "${GITHUB_STEP_SUMMARY}"
+            --short-sha "${GITHUB_SHA::7}" \
+            --push \
+            --github-summary-path "${GITHUB_STEP_SUMMARY}"

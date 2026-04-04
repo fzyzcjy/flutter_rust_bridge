@@ -27,72 +27,22 @@ jobs:
           sdk: 3.11.0
           architecture: x64
 
-      - name: Read dev docker metadata via frb_internal
-        id: metadata
+      - name: Run precommit autofix via frb_internal
+        id: autofix
         shell: bash
         run: |
           set -euo pipefail
 
-          ./frb_internal dev-docker-metadata \
-            --github-output \
-            --short-sha "${GITHUB_SHA::7}" >> "${GITHUB_OUTPUT}"
-
-      - name: Pull dev image
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          docker pull "${{ steps.metadata.outputs.image_ref }}"
-
-      - name: Run precommit autofix in dev image
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          artifact_dir="${RUNNER_TEMP}/precommit-autofix"
-          mkdir -p "${artifact_dir}"
-
-          docker run --rm \
-            --volume "${GITHUB_WORKSPACE}:/workspace" \
-            --volume "${artifact_dir}:/artifacts" \
-            --workdir /workspace \
-            "${{ steps.metadata.outputs.image_ref }}" \
-            bash -lc 'git config --global --add safe.directory /workspace && ./frb_internal precommit-autofix --mode slow --output /artifacts/precommit-autofix.diff'
-
-      - name: Collect patch artifact
-        id: collect
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          patch_source="${RUNNER_TEMP}/precommit-autofix/precommit-autofix.diff"
-          patch_target="${GITHUB_WORKSPACE}/precommit-autofix.diff"
-
-          if [[ -s "${patch_source}" ]]; then
-            cp "${patch_source}" "${patch_target}"
-
-            apply_command='gh run download '"${GITHUB_RUN_ID}"' -n precommit-autofix-diff && git apply precommit-autofix.diff && git add -A && git commit -m "Apply precommit autofix" && git push'
-            {
-              echo "## Precommit Autofix"
-              echo
-              echo "A precommit autofix patch was produced in the standardized dev image."
-              echo
-              echo "Download the \`precommit-autofix-diff\` artifact and apply:"
-              echo
-              echo '```shell'
-              echo "${apply_command}"
-              echo '```'
-            } >> "${GITHUB_STEP_SUMMARY}"
-            printf '%s\n' "::notice::${apply_command}"
-            echo "has_patch=true" >> "${GITHUB_OUTPUT}"
-          else
-            rm -f "${patch_target}"
-            echo "No autofix patch was produced; the branch is already clean after precommit." >> "${GITHUB_STEP_SUMMARY}"
-            echo "has_patch=false" >> "${GITHUB_OUTPUT}"
-          fi
+          ./frb_internal precommit-autofix-in-dev-container \
+            --mode slow \
+            --output "${GITHUB_WORKSPACE}/precommit-autofix.diff" \
+            --github-run-id "${GITHUB_RUN_ID}" \
+            --github-output-path "${GITHUB_OUTPUT}" \
+            --github-summary-path "${GITHUB_STEP_SUMMARY}" \
+            --github-notice
 
       - name: Upload patch artifact
-        if: ${{ steps.collect.outputs.has_patch == 'true' }}
+        if: ${{ steps.autofix.outputs.has_patch == 'true' }}
         uses: actions/upload-artifact@v4
         with:
           name: precommit-autofix-diff

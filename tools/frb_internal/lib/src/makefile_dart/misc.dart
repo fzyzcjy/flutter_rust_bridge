@@ -6,6 +6,7 @@ import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/dev_docker_metadata.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/dev_docker_workflow.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/precommit_autofix.dart';
@@ -39,6 +40,11 @@ List<Command<void>> createCommands() {
       repoRootPath: exec.pwd,
     ),
     DevDockerMetadataCommand(),
+    PublishDevDockerCommand(commandRunner: exec.call, repoRootPath: exec.pwd),
+    PrecommitAutofixInDevContainerCommand(
+      commandRunner: exec.call,
+      repoRootPath: exec.pwd,
+    ),
     SimpleCommand('precommit-generate', precommitGenerate),
     SimpleCommand('precommit-integrate', precommitIntegrate),
     SimpleCommand('pub-get-all', pubGetAll),
