@@ -612,8 +612,7 @@ Future<void> testFlutterWeb(TestFlutterWebConfig config) async {
   await runPubGetIfNotRunYet(config.package);
   await _installDartCoverage();
 
-  final buildWebPackage =
-      kBuildWebPackageReplacer[config.package] ?? config.package;
+  final buildWebPackage = resolveBuildWebPackage(config.package);
   await executeFrbCodegen(
     'build-web --dart-coverage',
     relativePwd: buildWebPackage,
@@ -631,9 +630,13 @@ Future<void> testFlutterWeb(TestFlutterWebConfig config) async {
   );
 
   if (config.coverage) {
-    await _formatDartCoverage(package: config.package);
+    await _formatDartCoverage(package: buildWebPackage);
   }
 }
+
+@visibleForTesting
+String resolveBuildWebPackage(String package) =>
+    kBuildWebPackageReplacer[package] ?? package;
 
 Future<void> _runFlutterDoctor() async => await exec('flutter doctor -v');
 

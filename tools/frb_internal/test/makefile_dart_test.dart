@@ -104,6 +104,23 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
     },
   );
 
+  test(
+    'resolveBuildWebPackage uses replacement package for flutter package example',
+    () {
+      expect(
+        resolveBuildWebPackage('frb_example/flutter_package/example'),
+        'frb_example/flutter_package',
+      );
+    },
+  );
+
+  test('resolveBuildWebPackage keeps package when no replacement exists', () {
+    expect(
+      resolveBuildWebPackage('frb_example/gallery'),
+      'frb_example/gallery',
+    );
+  });
+
   group('test checkValgrindOutput', () {
     test('good', () {
       checkValgrindOutput('''
