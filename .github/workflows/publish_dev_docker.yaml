@@ -47,5 +47,4 @@ jobs:
           ./frb_internal publish-dev-docker \
             --image-name "${IMAGE_NAME}" \
             --short-sha "${GITHUB_SHA::7}" \
-            --push \
-            --github-summary-path "${GITHUB_STEP_SUMMARY}"
+            --push

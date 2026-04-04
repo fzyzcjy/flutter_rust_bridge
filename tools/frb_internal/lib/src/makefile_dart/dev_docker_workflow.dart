@@ -72,6 +72,13 @@ class PublishDevDockerCommand extends Command<void> {
 
   @override
   Future<void> run() async {
+    final githubOutputPath =
+        (argResults!['github-output-path'] as String?) ??
+        Platform.environment['GITHUB_OUTPUT'];
+    final githubSummaryPath =
+        (argResults!['github-summary-path'] as String?) ??
+        Platform.environment['GITHUB_STEP_SUMMARY'];
+
     final result = await PublishDevDockerService(
       commandRunner: commandRunner,
       repoRootPath: repoRootPath,
@@ -83,8 +90,8 @@ class PublishDevDockerCommand extends Command<void> {
         shortSha: argResults!['short-sha'] as String?,
         platform: argResults!['platform'] as String,
         push: argResults!['push'] as bool,
-        githubOutputPath: argResults!['github-output-path'] as String?,
-        githubSummaryPath: argResults!['github-summary-path'] as String?,
+        githubOutputPath: githubOutputPath,
+        githubSummaryPath: githubSummaryPath,
       ),
     );
 
@@ -126,7 +133,6 @@ class PrecommitAutofixInDevContainerCommand extends Command<void> {
       )
       ..addOption(
         'output',
-        mandatory: true,
         help: 'Host-side path to write the final patch file.',
       )
       ..addOption(
@@ -155,6 +161,31 @@ class PrecommitAutofixInDevContainerCommand extends Command<void> {
 
   @override
   Future<void> run() async {
+    final githubWorkspace = Platform.environment['GITHUB_WORKSPACE'];
+    final outputPath =
+        (argResults!['output'] as String?) ??
+        (githubWorkspace == null
+            ? null
+            : path.join(githubWorkspace, 'precommit-autofix.diff'));
+    if (outputPath == null) {
+      throw ArgumentError(
+        'Either --output must be provided or GITHUB_WORKSPACE must be set.',
+      );
+    }
+
+    final githubRunId =
+        (argResults!['github-run-id'] as String?) ??
+        Platform.environment['GITHUB_RUN_ID'];
+    final githubOutputPath =
+        (argResults!['github-output-path'] as String?) ??
+        Platform.environment['GITHUB_OUTPUT'];
+    final githubSummaryPath =
+        (argResults!['github-summary-path'] as String?) ??
+        Platform.environment['GITHUB_STEP_SUMMARY'];
+    final githubNotice =
+        (argResults!['github-notice'] as bool) ||
+        Platform.environment['GITHUB_ACTIONS'] == 'true';
+
     final result = await PrecommitAutofixInDevContainerService(
       commandRunner: commandRunner,
       repoRootPath: repoRootPath,
@@ -163,12 +194,12 @@ class PrecommitAutofixInDevContainerCommand extends Command<void> {
         dockerfilePath: argResults!['dockerfile'] as String,
         imageName: argResults!['image-name'] as String,
         mode: argResults!['mode'] as String,
-        outputPath: argResults!['output'] as String,
+        outputPath: outputPath,
         artifactName: argResults!['artifact-name'] as String,
-        githubRunId: argResults!['github-run-id'] as String?,
-        githubOutputPath: argResults!['github-output-path'] as String?,
-        githubSummaryPath: argResults!['github-summary-path'] as String?,
-        githubNotice: argResults!['github-notice'] as bool,
+        githubRunId: githubRunId,
+        githubOutputPath: githubOutputPath,
+        githubSummaryPath: githubSummaryPath,
+        githubNotice: githubNotice,
       ),
     );
 

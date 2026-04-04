@@ -33,13 +33,7 @@ jobs:
         run: |
           set -euo pipefail
 
-          ./frb_internal precommit-autofix-in-dev-container \
-            --mode slow \
-            --output "${GITHUB_WORKSPACE}/precommit-autofix.diff" \
-            --github-run-id "${GITHUB_RUN_ID}" \
-            --github-output-path "${GITHUB_OUTPUT}" \
-            --github-summary-path "${GITHUB_STEP_SUMMARY}" \
-            --github-notice
+          ./frb_internal precommit-autofix-in-dev-container --mode slow
 
       - name: Upload patch artifact
         if: ${{ steps.autofix.outputs.has_patch == 'true' }}
