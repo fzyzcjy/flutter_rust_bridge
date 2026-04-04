@@ -194,7 +194,10 @@ fn set_permission_executable(path: &Path) -> Result<()> {
     use std::os::unix::fs::PermissionsExt;
 
     if !path.exists() {
-        debug!("Skip executable permission for missing path {}", path.display());
+        debug!(
+            "Skip executable permission for missing path {}",
+            path.display()
+        );
         return Ok(());
     }
 
