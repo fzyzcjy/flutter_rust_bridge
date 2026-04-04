@@ -69,12 +69,15 @@ void main() {
 
     expect(command, contains(r'cp -a /source/. "${temp_workspace}/"'));
     expect(command, contains(r'cd "${temp_workspace}"'));
+    expect(command, contains(r'log_path="/artifacts/precommit-autofix.log"'));
     expect(
       command,
       contains(
         './frb_internal precommit-autofix --mode slow --output /artifacts/precommit-autofix.diff',
       ),
     );
+    expect(command, contains(r'tail -n 200 "${log_path}" >&2 || true'));
+    expect(command, contains(r'tail -n 40 "${log_path}" || true'));
     expect(command, isNot(contains('Validate precommit autofix patch')));
   });
 }

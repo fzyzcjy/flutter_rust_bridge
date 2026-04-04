@@ -289,14 +289,21 @@ String buildPrecommitAutofixContainerCommand({
   return [
     'set -euo pipefail',
     'temp_workspace="\$(mktemp -d /tmp/frb-precommit-workspace.XXXXXX)"',
+    'log_path="/artifacts/precommit-autofix.log"',
     'cp -a /source/. "\${temp_workspace}/"',
     'cd "\${temp_workspace}"',
     'git config --global --add safe.directory "\${temp_workspace}"',
-    'rustup target add wasm32-unknown-unknown',
-    '(cargo expand --version >/dev/null 2>&1 || '
+    'if ! {',
+    '  rustup target add wasm32-unknown-unknown',
+    '  (cargo expand --version >/dev/null 2>&1 || '
         'cargo install cargo-expand || '
         'cargo install cargo-expand --version 1.0.112 --locked)',
-    './frb_internal precommit-autofix --mode $mode --output $outputPath',
+    '  ./frb_internal precommit-autofix --mode $mode --output $outputPath',
+    '} >"\${log_path}" 2>&1; then',
+    '  tail -n 200 "\${log_path}" >&2 || true',
+    '  exit 1',
+    'fi',
+    'tail -n 40 "\${log_path}" || true',
   ].join('\n');
 }
 
