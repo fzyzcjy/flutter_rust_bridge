@@ -196,6 +196,7 @@ Future<void> _executeWasmPack(
   );
 }
 
+/// Resolved `RUSTFLAGS` output for a `wasm-pack` invocation.
 class WasmPackRustflagsResolution {
   /// The `RUSTFLAGS` value that will be passed to `wasm-pack`.
   final String rustflags;
@@ -231,6 +232,7 @@ bool _containsDefaultWasmPackRustflags(String rustflags) {
 }
 
 @visibleForTesting
+/// Resolves the effective `wasm-pack` rustflags and any warning to display.
 WasmPackRustflagsResolution computeWasmPackRustflagsResolution({
   required String? argsOverride,
 }) {
