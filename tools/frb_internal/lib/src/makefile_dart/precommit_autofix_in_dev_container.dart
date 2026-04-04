@@ -192,6 +192,12 @@ class PrecommitAutofixInDevContainerService {
     artifactDir.createSync(recursive: true);
     final containerPatchPath = '/artifacts/${path.basename(outputPath)}';
     final hostPatchPath = path.join(artifactDir.path, path.basename(outputPath));
+    final containerCommand =
+        'git config --global --add safe.directory /workspace && '
+        '(cargo expand --version >/dev/null 2>&1 || '
+        'cargo install cargo-expand || '
+        'cargo install cargo-expand --version 1.0.112 --locked) && '
+        './frb_internal precommit-autofix --mode ${config.mode} --output $containerPatchPath';
 
     await commandRunner('docker pull ${shellEscape(imageRef)}');
 
@@ -201,10 +207,7 @@ class PrecommitAutofixInDevContainerService {
       '--volume ${shellEscape('${artifactDir.path}:/artifacts')} '
       '--workdir /workspace '
       '${shellEscape(imageRef)} bash -lc '
-      '${shellEscape(
-        'git config --global --add safe.directory /workspace && '
-        './frb_internal precommit-autofix --mode ${config.mode} --output $containerPatchPath',
-      )}',
+      '${shellEscape(containerCommand)}',
     );
 
     final outputFile = File(outputPath);
