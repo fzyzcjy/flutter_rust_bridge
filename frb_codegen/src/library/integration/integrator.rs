@@ -230,8 +230,7 @@ fn set_permission_executable(path: &Path) -> Result<()> {
 #[cfg(all(test, unix))]
 mod tests {
     use super::{
-        refresh_cargo_lock_ordering, refresh_cargo_lock_ordering_with,
-        set_permission_executable,
+        refresh_cargo_lock_ordering, refresh_cargo_lock_ordering_with, set_permission_executable,
     };
     use std::fs;
     use std::os::unix::fs::PermissionsExt;
@@ -284,7 +283,11 @@ mod tests {
             "[package]\nname = \"integrator_refresh_test\"\nversion = \"0.1.0\"\nedition = \"2021\"\n",
         )
         .unwrap();
-        fs::write(rust_dir.join("src/lib.rs"), "pub fn answer() -> i32 { 42 }\n").unwrap();
+        fs::write(
+            rust_dir.join("src/lib.rs"),
+            "pub fn answer() -> i32 { 42 }\n",
+        )
+        .unwrap();
 
         refresh_cargo_lock_ordering(temp_dir.path(), "rust").unwrap();
     }

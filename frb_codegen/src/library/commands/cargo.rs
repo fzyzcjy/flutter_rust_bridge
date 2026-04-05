@@ -34,10 +34,7 @@ pub fn cargo_fetch(pwd: &Path) -> Result<()> {
     // frb-coverage:ignore-end
 }
 
-fn cargo_fetch_with(
-    pwd: &Path,
-    run_fetch: impl FnOnce(&Path) -> Result<Output>,
-) -> Result<()> {
+fn cargo_fetch_with(pwd: &Path, run_fetch: impl FnOnce(&Path) -> Result<Output>) -> Result<()> {
     let output = run_fetch(&pwd.join("Cargo.toml"))?;
     let stderr = String::from_utf8_lossy(&output.stderr);
     match decide_cargo_fetch_outcome(output.status.success(), &stderr) {
@@ -60,10 +57,7 @@ enum CargoFetchOutcome {
     Fail,
 }
 
-fn decide_cargo_fetch_outcome(
-    status_success: bool,
-    stderr: &Cow<'_, str>,
-) -> CargoFetchOutcome {
+fn decide_cargo_fetch_outcome(status_success: bool, stderr: &Cow<'_, str>) -> CargoFetchOutcome {
     if status_success {
         return CargoFetchOutcome::Success;
     }
@@ -140,10 +134,7 @@ mod tests {
 
     #[test]
     fn test_cargo_fetch_with_success() {
-        cargo_fetch_with(Path::new("/tmp/project"), |_| {
-            Ok(fake_output(0, ""))
-        })
-        .unwrap();
+        cargo_fetch_with(Path::new("/tmp/project"), |_| Ok(fake_output(0, ""))).unwrap();
     }
 
     #[test]
@@ -164,11 +155,9 @@ mod tests {
         })
         .unwrap_err();
 
-        assert!(
-            error
-                .to_string()
-                .contains("failed to download from registry"),
-        );
+        assert!(error
+            .to_string()
+            .contains("failed to download from registry"),);
     }
 
     #[test]
@@ -180,8 +169,11 @@ mod tests {
             "[package]\nname = \"cargo_fetch_test\"\nversion = \"0.1.0\"\nedition = \"2021\"\n",
         )
         .unwrap();
-        fs::write(temp_dir.path().join("src/lib.rs"), "pub fn answer() -> i32 { 42 }\n")
-            .unwrap();
+        fs::write(
+            temp_dir.path().join("src/lib.rs"),
+            "pub fn answer() -> i32 { 42 }\n",
+        )
+        .unwrap();
 
         super::cargo_fetch(temp_dir.path()).unwrap();
     }
@@ -205,10 +197,7 @@ mod tests {
     #[cfg(windows)]
     fn run_shell(exit_code: i32, stderr: &str) -> Result<Output> {
         Command::new("cmd")
-            .args([
-                "/C",
-                &format!("echo {stderr} 1>&2 & exit /b {exit_code}"),
-            ])
+            .args(["/C", &format!("echo {stderr} 1>&2 & exit /b {exit_code}")])
             .output()
             .map_err(Into::into)
     }
