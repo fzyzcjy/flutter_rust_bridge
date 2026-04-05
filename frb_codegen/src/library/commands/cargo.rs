@@ -1,9 +1,11 @@
 use crate::command_run;
 use crate::commands::command_runner::call_shell;
 use crate::library::commands::command_runner::check_exit_code;
+use anyhow::Result;
 use log::warn;
 use std::borrow::Cow;
 use std::path::Path;
+use std::process::{Command, Output};
 
 #[allow(clippy::vec_init_then_push)]
 pub fn cargo_add(args: &[&str], pwd: &Path) -> anyhow::Result<()> {
@@ -16,15 +18,23 @@ pub fn cargo_add(args: &[&str], pwd: &Path) -> anyhow::Result<()> {
 }
 
 #[allow(clippy::vec_init_then_push)]
-pub fn cargo_fetch(pwd: &Path) -> anyhow::Result<()> {
-    let output = command_run!(
-        call_shell[None, None],
-        "cargo",
-        "fetch",
-        "--manifest-path",
-        pwd.join("Cargo.toml"),
-    )?;
+pub fn cargo_fetch(pwd: &Path) -> Result<()> {
+    cargo_fetch_with(pwd, |manifest_path| {
+        Ok(command_run!(
+            call_shell[None, None],
+            "cargo",
+            "fetch",
+            "--manifest-path",
+            manifest_path,
+        )?)
+    })
+}
 
+fn cargo_fetch_with(
+    pwd: &Path,
+    run_fetch: impl FnOnce(&Path) -> Result<Output>,
+) -> Result<()> {
+    let output = run_fetch(&pwd.join("Cargo.toml"))?;
     let stderr = String::from_utf8_lossy(&output.stderr);
     match decide_cargo_fetch_outcome(output.status.success(), &stderr) {
         CargoFetchOutcome::Success => Ok(()),
@@ -68,9 +78,13 @@ fn should_ignore_cargo_fetch_error(stderr: &str) -> bool {
 #[cfg(test)]
 mod tests {
     use super::{
-        decide_cargo_fetch_outcome, should_ignore_cargo_fetch_error, CargoFetchOutcome,
+        cargo_fetch_with, decide_cargo_fetch_outcome, should_ignore_cargo_fetch_error,
+        CargoFetchOutcome,
     };
+    use anyhow::Result;
     use std::borrow::Cow;
+    use std::path::Path;
+    use std::process::Output;
 
     #[test]
     fn test_should_ignore_cargo_fetch_error_workspace_conflict() {
@@ -116,5 +130,65 @@ mod tests {
             ),
             CargoFetchOutcome::Fail,
         );
+    }
+
+    #[test]
+    fn test_cargo_fetch_with_success() {
+        cargo_fetch_with(Path::new("/tmp/project"), |_| {
+            Ok(fake_output(0, ""))
+        })
+        .unwrap();
+    }
+
+    #[test]
+    fn test_cargo_fetch_with_workspace_conflict() {
+        cargo_fetch_with(Path::new("/tmp/project"), |_| {
+            Ok(fake_output(
+                1,
+                "error: current package believes it's in a workspace when it's not:",
+            ))
+        })
+        .unwrap();
+    }
+
+    #[test]
+    fn test_cargo_fetch_with_other_error() {
+        let error = cargo_fetch_with(Path::new("/tmp/project"), |_| {
+            Ok(fake_output(1, "error: failed to download from registry"))
+        })
+        .unwrap_err();
+
+        assert!(
+            error
+                .to_string()
+                .contains("failed to download from registry"),
+        );
+    }
+
+    fn fake_output(exit_code: i32, stderr: &str) -> Output {
+        run_shell(exit_code, stderr).unwrap()
+    }
+
+    #[cfg(unix)]
+    fn run_shell(exit_code: i32, stderr: &str) -> Result<Output> {
+        Command::new("sh")
+            .arg("-c")
+            .arg("printf '%s' \"$1\" >&2; exit \"$2\"")
+            .arg("sh")
+            .arg(stderr)
+            .arg(exit_code.to_string())
+            .output()
+            .map_err(Into::into)
+    }
+
+    #[cfg(windows)]
+    fn run_shell(exit_code: i32, stderr: &str) -> Result<Output> {
+        Command::new("cmd")
+            .args([
+                "/C",
+                &format!("echo {stderr} 1>&2 & exit /b {exit_code}"),
+            ])
+            .output()
+            .map_err(Into::into)
     }
 }
