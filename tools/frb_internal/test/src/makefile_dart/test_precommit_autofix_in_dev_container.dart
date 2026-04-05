@@ -3,31 +3,39 @@ import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:test/test.dart';
 
 void main() {
-  test('validatePrecommitAutofixPatch runs git apply check in repo root', () async {
-    String? command;
-    String? capturedRelativePwd;
+  test(
+    'validatePrecommitAutofixPatch runs git apply check in repo root',
+    () async {
+      String? command;
+      String? capturedRelativePwd;
 
-    await validatePrecommitAutofixPatch(
-      commandRunner: (
-        cmd, {
-        String? relativePwd,
-        Map<String, String>? extraEnv,
-        bool? checkExitCode,
-      }) async {
-        command = cmd;
-        capturedRelativePwd = relativePwd;
-        return const RunCommandOutput(stdout: '', stderr: '', exitCode: 0);
-      },
-      outputPath: '/tmp/precommit-autofix.diff',
-      repoRootPath: '/repo',
-    );
+      await validatePrecommitAutofixPatch(
+        commandRunner:
+            (
+              cmd, {
+              String? relativePwd,
+              Map<String, String>? extraEnv,
+              bool? checkExitCode,
+            }) async {
+              command = cmd;
+              capturedRelativePwd = relativePwd;
+              return const RunCommandOutput(
+                stdout: '',
+                stderr: '',
+                exitCode: 0,
+              );
+            },
+        outputPath: '/tmp/precommit-autofix.diff',
+        repoRootPath: '/repo',
+      );
 
-    expect(
-      command,
-      "cd '/repo' && git apply --check '/tmp/precommit-autofix.diff'",
-    );
-    expect(capturedRelativePwd, isNull);
-  });
+      expect(
+        command,
+        "cd '/repo' && git apply --check '/tmp/precommit-autofix.diff'",
+      );
+      expect(capturedRelativePwd, isNull);
+    },
+  );
 
   test(
     'buildPrecommitAutofixApplyCommand uses concrete run id when provided',
