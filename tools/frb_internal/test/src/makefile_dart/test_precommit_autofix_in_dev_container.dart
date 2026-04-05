@@ -22,8 +22,11 @@ void main() {
       repoRootPath: '/repo',
     );
 
-    expect(command, "git apply --check '/tmp/precommit-autofix.diff'");
-    expect(capturedRelativePwd, '/repo');
+    expect(
+      command,
+      "cd '/repo' && git apply --check '/tmp/precommit-autofix.diff'",
+    );
+    expect(capturedRelativePwd, isNull);
   });
 
   test(

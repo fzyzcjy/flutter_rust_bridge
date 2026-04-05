@@ -279,8 +279,8 @@ Future<void> validatePrecommitAutofixPatch({
   required String repoRootPath,
 }) async {
   await commandRunner(
+    'cd ${shellEscape(repoRootPath)} && '
     'git apply --check ${shellEscape(outputPath)}',
-    relativePwd: repoRootPath,
   );
 }
 
