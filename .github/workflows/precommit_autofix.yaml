@@ -50,12 +50,16 @@ jobs:
           HAS_PATCH: ${{ steps.autofix.outputs.has_patch }}
           APPLY_COMMAND: ${{ steps.autofix.outputs.apply_command }}
           ARTIFACT_NAME: ${{ steps.autofix.outputs.artifact_name }}
+          HEAD_SHA: ${{ github.sha }}
+          RUN_ID: ${{ github.run_id }}
         with:
           script: |
             const marker = '<!-- precommit-autofix-comment -->';
             const hasPatch = process.env.HAS_PATCH === 'true';
             const applyCommand = process.env.APPLY_COMMAND ?? '';
             const artifactName = process.env.ARTIFACT_NAME ?? 'precommit-autofix-diff';
+            const headSha = process.env.HEAD_SHA ?? context.sha;
+            const runId = process.env.RUN_ID ?? context.runId ?? '';
             const issueNumber = context.payload.pull_request.number;
 
             const comments = await github.paginate(
@@ -75,19 +79,11 @@ jobs:
                 comment.body.includes(marker),
             );
 
-            if (!hasPatch) {
-              if (existingComment) {
-                await github.rest.issues.deleteComment({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  comment_id: existingComment.id,
-                });
-              }
-              return;
-            }
-
-            const body = `${marker}
+            const body = hasPatch ? `${marker}
             ## Precommit Autofix
+
+            Commit: \`${headSha}\`
+            Run: \`${runId}\`
 
             CI generated a non-empty autofix patch in artifact \`${artifactName}\`.
 
@@ -96,6 +92,13 @@ jobs:
             \`\`\`shell
             ${applyCommand}
             \`\`\`
+            ` : `${marker}
+            ## Precommit Autofix
+
+            Commit: \`${headSha}\`
+            Run: \`${runId}\`
+
+            CI produced no diff. The branch is already clean after precommit autofix.
             `;
 
             if (existingComment) {
