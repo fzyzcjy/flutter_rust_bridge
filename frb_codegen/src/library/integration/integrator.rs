@@ -208,6 +208,36 @@ fn set_permission_executable(path: &Path) -> Result<()> {
     Ok(())
 }
 
+#[cfg(all(test, unix))]
+mod tests {
+    use super::set_permission_executable;
+    use std::fs;
+    use std::os::unix::fs::PermissionsExt;
+
+    #[test]
+    fn test_set_permission_executable_missing_path() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let missing_path = temp_dir.path().join("missing.sh");
+
+        set_permission_executable(&missing_path).unwrap();
+
+        assert!(!missing_path.exists());
+    }
+
+    #[test]
+    fn test_set_permission_executable_existing_file() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let script_path = temp_dir.path().join("script.sh");
+        fs::write(&script_path, "#!/bin/sh\n").unwrap();
+        fs::set_permissions(&script_path, PermissionsExt::from_mode(0o644)).unwrap();
+
+        set_permission_executable(&script_path).unwrap();
+
+        let permissions = fs::metadata(&script_path).unwrap().permissions();
+        assert_eq!(permissions.mode() & 0o777, 0o755);
+    }
+}
+
 fn modify_file(
     target_path: PathBuf,
     reference_content: &[u8],
