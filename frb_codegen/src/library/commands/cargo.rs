@@ -83,6 +83,7 @@ mod tests {
     };
     use anyhow::Result;
     use std::borrow::Cow;
+    use std::fs;
     use std::path::Path;
     use std::process::Command;
     use std::process::Output;
@@ -164,6 +165,21 @@ mod tests {
                 .to_string()
                 .contains("failed to download from registry"),
         );
+    }
+
+    #[test]
+    fn test_cargo_fetch_success_for_standalone_manifest() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        fs::create_dir_all(temp_dir.path().join("src")).unwrap();
+        fs::write(
+            temp_dir.path().join("Cargo.toml"),
+            "[package]\nname = \"cargo_fetch_test\"\nversion = \"0.1.0\"\nedition = \"2021\"\n",
+        )
+        .unwrap();
+        fs::write(temp_dir.path().join("src/lib.rs"), "pub fn answer() -> i32 { 42 }\n")
+            .unwrap();
+
+        super::cargo_fetch(temp_dir.path()).unwrap();
     }
 
     fn fake_output(exit_code: i32, stderr: &str) -> Output {
