@@ -99,7 +99,12 @@ void main() {
           handlers: {
             'which:wasm-pack': (_) {
               if (wasmPackInstalled) return Future.value(success());
-              throw ProcessException('which', ['wasm-pack'], 'missing', 1);
+              throw const ProcessException(
+                'which',
+                ['wasm-pack'],
+                'missing',
+                1,
+              );
             },
             'cargo:install': (_) async {
               wasmPackInstalled = true;
@@ -190,7 +195,7 @@ void main() {
           runCommandFn: makeRunCommandStub(
             commands: [],
             handlers: {
-              'which:wasm-bindgen': (_) => throw ProcessException(
+              'which:wasm-bindgen': (_) => throw const ProcessException(
                 'which',
                 ['wasm-bindgen'],
                 'missing',

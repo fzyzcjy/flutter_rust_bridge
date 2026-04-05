@@ -67,6 +67,7 @@ Future<void> executeBuildWeb(BuildWebArgs args) async {
   await BuildWebExecutor().execute(args);
 }
 
+/// Signature used to invoke external commands during web builds.
 typedef BuildWebRunCommand =
     Future<RunCommandOutput> Function(
       String command,
@@ -81,10 +82,16 @@ typedef BuildWebRunCommand =
 
 /// {@macro flutter_rust_bridge.internal}
 class BuildWebExecutor {
+  /// Command runner used for external process execution.
   final BuildWebRunCommand runCommandFn;
+
+  /// Failure path used when validation cannot continue.
   final Never Function(String? message) bailFn;
+
+  /// Binary lookup command for the current platform.
   final String commandWhich;
 
+  /// Creates an executor with injectable command and failure hooks.
   BuildWebExecutor({
     this.runCommandFn = runCommand,
     this.bailFn = bail,
@@ -111,6 +118,7 @@ class BuildWebExecutor {
   }
 
   @visibleForTesting
+  /// Validates required tools and crate inputs before building.
   Future<void> sanityChecks(BuildWebArgs args) async {
     await ensurePackageInstalled(
       binaryName: 'wasm-pack',
@@ -143,6 +151,7 @@ class BuildWebExecutor {
   }
 
   @visibleForTesting
+  /// Installs a required binary when it is not already available.
   Future<void> ensurePackageInstalled({
     required String binaryName,
     required Future<void> Function() install,
@@ -168,6 +177,7 @@ class BuildWebExecutor {
   }
 
   @visibleForTesting
+  /// Reads the cdylib crate name from `cargo read-manifest`.
   Future<String> getRustCrateName({required String rustCrateDir}) async {
     final manifest = jsonDecode(
       (await runCommandFn(
@@ -187,6 +197,7 @@ class BuildWebExecutor {
   }
 
   @visibleForTesting
+  /// Builds the Rust crate into WebAssembly with `wasm-pack`.
   Future<void> executeWasmPack(
     BuildWebArgs args, {
     required String rustCrateName,
@@ -218,6 +229,7 @@ class BuildWebExecutor {
   }
 
   @visibleForTesting
+  /// Post-processes the generated wasm artifact with `wasm-bindgen`.
   Future<void> executeWasmBindgen(
     BuildWebArgs args, {
     required String rustCrateName,
@@ -234,6 +246,7 @@ class BuildWebExecutor {
   }
 
   @visibleForTesting
+  /// Compiles the Dart entrypoint into JavaScript when requested.
   Future<void> executeDartCompile(BuildWebArgs args) async {
     await runCommandFn('dart', [
       'compile',
@@ -249,7 +262,9 @@ class BuildWebExecutor {
 }
 
 final _defaultCommandWhich = Platform.isWindows ? 'where.exe' : 'which';
+
 @visibleForTesting
+/// Computes the `RUSTFLAGS` passed into `wasm-pack`.
 String computeRustflags({required String? argsOverride}) {
   const kDefault = '-C target-feature=+atomics,+bulk-memory,+mutable-globals';
   if (argsOverride == null) return kDefault;

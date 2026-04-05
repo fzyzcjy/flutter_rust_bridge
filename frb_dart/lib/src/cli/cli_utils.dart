@@ -3,9 +3,11 @@ import 'dart:io';
 import 'package:meta/meta.dart';
 
 @visibleForTesting
+/// Test seam for stderr output.
 IOSink cliStderr = stderr;
 
 @visibleForTesting
+/// Test seam for process exit.
 Never Function(int) cliExit = exit;
 
 /// {@macro flutter_rust_bridge.internal}
