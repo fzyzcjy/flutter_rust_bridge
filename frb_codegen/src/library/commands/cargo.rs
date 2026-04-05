@@ -57,7 +57,7 @@ enum CargoFetchOutcome {
     Fail,
 }
 
-fn decide_cargo_fetch_outcome(status_success: bool, stderr: &Cow<'_, str>) -> CargoFetchOutcome {
+fn decide_cargo_fetch_outcome(status_success: bool, stderr: &str) -> CargoFetchOutcome {
     if status_success {
         return CargoFetchOutcome::Success;
     }
