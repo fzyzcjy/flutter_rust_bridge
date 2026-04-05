@@ -5,17 +5,17 @@ import 'package:test/test.dart';
 void main() {
   test('validatePrecommitAutofixPatch runs git apply check in repo root', () async {
     String? command;
-    String? relativePwd;
+    String? capturedRelativePwd;
 
     await validatePrecommitAutofixPatch(
       commandRunner: (
         cmd, {
-        String? relativePwd: relativePwdArg,
+        String? relativePwd,
         Map<String, String>? extraEnv,
         bool? checkExitCode,
       }) async {
         command = cmd;
-        relativePwd = relativePwdArg;
+        capturedRelativePwd = relativePwd;
         return const RunCommandOutput(stdout: '', stderr: '', exitCode: 0);
       },
       outputPath: '/tmp/precommit-autofix.diff',
@@ -23,7 +23,7 @@ void main() {
     );
 
     expect(command, "git apply --check '/tmp/precommit-autofix.diff'");
-    expect(relativePwd, '/repo');
+    expect(capturedRelativePwd, '/repo');
   });
 
   test(
