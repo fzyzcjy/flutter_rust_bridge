@@ -11,9 +11,6 @@ the web server needs to respond with the following headers to enable shared buff
 Cross-origin isolated documents have less restrictions on advanced features, such as asynchronous WASM which utilize shared buffers.
 You can read more about crossOriginIsolation [here](https://developer.mozilla.org/en-US/docs/Web/API/Window/crossOriginIsolated).
 
-The `flutter_rust_bridge_codegen build-web` command emits the default Rust flags required by modern threaded WASM builds.
-If you override `--wasm-pack-rustflags`, you are responsible for preserving those defaults; otherwise worker startup may fail with errors such as `WebAssembly.Memory could not be cloned`.
-
 ## When `flutter run`
 
 Thanks to [this pull request](https://github.com/flutter/flutter/pull/136297), we can:

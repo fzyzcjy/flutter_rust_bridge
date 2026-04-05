@@ -6,8 +6,7 @@ void main() {
     expect(
       integrateDiffExclusionArgsForTesting('frb_example/flutter_via_create'),
       "':(exclude)frb_example/flutter_via_create/macos/Flutter/Flutter-Debug.xcconfig' "
-      "':(exclude)frb_example/flutter_via_create/macos/Flutter/Flutter-Release.xcconfig' "
-      "':(exclude)frb_example/flutter_via_create/rust/Cargo.lock'",
+      "':(exclude)frb_example/flutter_via_create/macos/Flutter/Flutter-Release.xcconfig'",
     );
   });
 
@@ -15,8 +14,7 @@ void main() {
     expect(
       integrateDiffExclusionArgsForTesting('frb_example/flutter_via_integrate'),
       "':(exclude)frb_example/flutter_via_integrate/macos/Flutter/Flutter-Debug.xcconfig' "
-      "':(exclude)frb_example/flutter_via_integrate/macos/Flutter/Flutter-Release.xcconfig' "
-      "':(exclude)frb_example/flutter_via_integrate/rust/Cargo.lock'",
+      "':(exclude)frb_example/flutter_via_integrate/macos/Flutter/Flutter-Release.xcconfig'",
     );
   });
 
@@ -24,8 +22,7 @@ void main() {
     expect(
       integrateDiffExclusionArgsForTesting('frb_example/flutter_package'),
       "':(exclude)frb_example/flutter_package/example/macos/Flutter/Flutter-Debug.xcconfig' "
-      "':(exclude)frb_example/flutter_package/example/macos/Flutter/Flutter-Release.xcconfig' "
-      "':(exclude)frb_example/flutter_package/rust/Cargo.lock'",
+      "':(exclude)frb_example/flutter_package/example/macos/Flutter/Flutter-Release.xcconfig'",
     );
   });
 

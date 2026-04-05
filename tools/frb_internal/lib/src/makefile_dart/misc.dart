@@ -7,6 +7,9 @@ import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/precommit_autofix_in_dev_container.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/precommit_autofix.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/publish_dev_docker.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/codecov_preaggregator.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
@@ -21,6 +24,25 @@ List<Command<void>> createCommands() {
       precommit,
       _$populatePrecommitConfigParser,
       _$parsePrecommitConfigResult,
+    ),
+    PrecommitAutofixCommand(
+      commandRunner: exec.call,
+      precommitRunner: (mode) async {
+        await precommit(
+          PrecommitConfig(
+            mode: switch (mode) {
+              PrecommitAutofixMode.fast => PrecommitMode.fast,
+              PrecommitAutofixMode.slow => PrecommitMode.slow,
+            },
+          ),
+        );
+      },
+      repoRootPath: exec.pwd!,
+    ),
+    PublishDevDockerCommand(commandRunner: exec.call, repoRootPath: exec.pwd!),
+    PrecommitAutofixInDevContainerCommand(
+      commandRunner: exec.call,
+      repoRootPath: exec.pwd!,
     ),
     SimpleCommand('precommit-generate', precommitGenerate),
     SimpleCommand('precommit-integrate', precommitIntegrate),

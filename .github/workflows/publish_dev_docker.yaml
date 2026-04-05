@@ -23,6 +23,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: 3.11.0
+          architecture: x64
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -33,83 +39,12 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Compute tags from Dockerfile
-        id: metadata
+      - name: Publish dev docker via frb_internal
         shell: bash
         run: |
           set -euo pipefail
 
-          flutter_version="$(awk -F= '/^ARG FLUTTER_VERSION=/{print $2; exit}' .devcontainer/Dockerfile)"
-          rust_version="$(awk -F= '/^ARG RUST_VERSION=/{print $2; exit}' .devcontainer/Dockerfile)"
-          rust_nightly_version="$(awk -F= '/^ARG RUST_NIGHTLY_VERSION=/{print $2; exit}' .devcontainer/Dockerfile)"
-          short_sha="${GITHUB_SHA::7}"
-          version_tag="flutter-${flutter_version}-rust-${rust_version}-nightly-${rust_nightly_version}"
-          sha_tag="sha-${short_sha}"
-          local_tag="frb-dev-image-smoke:${short_sha}"
-
-          {
-            echo "flutter_version=${flutter_version}"
-            echo "rust_version=${rust_version}"
-            echo "rust_nightly_version=${rust_nightly_version}"
-            echo "version_tag=${version_tag}"
-            echo "sha_tag=${sha_tag}"
-            echo "local_tag=${local_tag}"
-            echo "tags<<EOF"
-            echo "${IMAGE_NAME}:latest"
-            echo "${IMAGE_NAME}:${version_tag}"
-            echo "${IMAGE_NAME}:${sha_tag}"
-            echo "EOF"
-          } >> "${GITHUB_OUTPUT}"
-
-      - name: Build local image for smoke test
-        uses: docker/build-push-action@v6
-        with:
-          context: .devcontainer
-          file: .devcontainer/Dockerfile
-          platforms: linux/amd64
-          load: true
-          push: false
-          tags: ${{ steps.metadata.outputs.local_tag }}
-
-      - name: Smoke test local image
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          docker run --rm "${{ steps.metadata.outputs.local_tag }}" bash -lc '
-            set -euo pipefail
-            flutter --version
-            dart --version
-            cargo --version
-            rustup show
-            rustup target list --toolchain nightly-${{ steps.metadata.outputs.rust_nightly_version }} --installed
-            wasm-pack --version
-            "${CHROME_BIN}" --version
-            rustup target list --toolchain nightly-${{ steps.metadata.outputs.rust_nightly_version }} --installed | grep wasm32-unknown-unknown
-            rustup show | grep "nightly-${{ steps.metadata.outputs.rust_nightly_version }}"
-          '
-
-      - name: Push image to Docker Hub
-        uses: docker/build-push-action@v6
-        with:
-          context: .devcontainer
-          file: .devcontainer/Dockerfile
-          platforms: linux/amd64
-          push: true
-          tags: ${{ steps.metadata.outputs.tags }}
-
-      - name: Publish workflow summary
-        shell: bash
-        run: |
-          {
-            echo "## Dev Docker Image Published"
-            echo
-            echo "- Repository: \`${IMAGE_NAME}\`"
-            echo "- Flutter: \`${{ steps.metadata.outputs.flutter_version }}\`"
-            echo "- Rust: \`${{ steps.metadata.outputs.rust_version }}\`"
-            echo "- Rust nightly: \`${{ steps.metadata.outputs.rust_nightly_version }}\`"
-            echo "- Tags:"
-            echo "  - \`latest\`"
-            echo "  - \`${{ steps.metadata.outputs.version_tag }}\`"
-            echo "  - \`${{ steps.metadata.outputs.sha_tag }}\`"
-          } >> "${GITHUB_STEP_SUMMARY}"
+          ./frb_internal publish-dev-docker \
+            --image-name "${IMAGE_NAME}" \
+            --short-sha "${GITHUB_SHA::7}" \
+            --push

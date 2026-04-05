@@ -1,4 +1,5 @@
 use crate::integration::utils::{overlay_dir, replace_file_content};
+use crate::library::commands::cargo::cargo_fetch;
 use crate::library::commands::dart_fix::dart_fix;
 use crate::library::commands::dart_format::dart_format;
 use crate::library::commands::flutter::{flutter_pub_add, flutter_pub_get};
@@ -98,7 +99,14 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
         info!("Dart format is disabled.");
     }
 
+    refresh_cargo_lock_ordering(&dart_root, &config.rust_crate_dir)?;
+
     Ok(())
+}
+
+fn refresh_cargo_lock_ordering(dart_root: &Path, rust_crate_dir: &str) -> Result<()> {
+    info!("Refresh Cargo.lock ordering");
+    cargo_fetch(&dart_root.join(rust_crate_dir))
 }
 
 fn execute_overlay_dir(
@@ -189,11 +197,72 @@ fn setup_cargokit_dependencies(dart_root: &Path, template: &Template) -> Result<
 fn set_permission_executable(path: &Path) -> Result<()> {
     use std::os::unix::fs::PermissionsExt;
 
+    // the early-return branch is exercised by tests, but llvm-cov still reports the
+    // branch lines as uncovered
+    // frb-coverage:ignore-start
+    if !path.exists() {
+        debug!(
+            "Skip executable permission for missing path {}",
+            path.display()
+        );
+        return Ok(());
+    }
+    // frb-coverage:ignore-end
+
     debug!("Change \"{}\" to executable", path.display());
     let mut perms = std::fs::metadata(path)?.permissions();
     perms.set_mode(0o755);
     std::fs::set_permissions(path, perms)?;
     Ok(())
+}
+
+#[cfg(all(test, unix))]
+mod tests {
+    use super::{refresh_cargo_lock_ordering, set_permission_executable};
+    use std::fs;
+    use std::os::unix::fs::PermissionsExt;
+
+    #[test]
+    fn test_set_permission_executable_missing_path() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let missing_path = temp_dir.path().join("missing.sh");
+
+        set_permission_executable(&missing_path).unwrap();
+
+        assert!(!missing_path.exists());
+    }
+
+    #[test]
+    fn test_set_permission_executable_existing_file() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let script_path = temp_dir.path().join("script.sh");
+        fs::write(&script_path, "#!/bin/sh\n").unwrap();
+        fs::set_permissions(&script_path, PermissionsExt::from_mode(0o644)).unwrap();
+
+        set_permission_executable(&script_path).unwrap();
+
+        let permissions = fs::metadata(&script_path).unwrap().permissions();
+        assert_eq!(permissions.mode() & 0o777, 0o755);
+    }
+
+    #[test]
+    fn test_refresh_cargo_lock_ordering_real_fetch() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let rust_dir = temp_dir.path().join("rust");
+        fs::create_dir_all(rust_dir.join("src")).unwrap();
+        fs::write(
+            rust_dir.join("Cargo.toml"),
+            "[package]\nname = \"integrator_refresh_test\"\nversion = \"0.1.0\"\nedition = \"2021\"\n",
+        )
+        .unwrap();
+        fs::write(
+            rust_dir.join("src/lib.rs"),
+            "pub fn answer() -> i32 { 42 }\n",
+        )
+        .unwrap();
+
+        refresh_cargo_lock_ordering(temp_dir.path(), "rust").unwrap();
+    }
 }
 
 fn modify_file(

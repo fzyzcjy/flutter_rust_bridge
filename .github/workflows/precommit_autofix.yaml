@@ -1,0 +1,119 @@
+name: Precommit Autofix
+
+on:
+  pull_request: { }
+  workflow_dispatch: { }
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  precommit_autofix:
+    name: Generate precommit autofix patch
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          submodules: recursive
+
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: 3.11.0
+          architecture: x64
+
+      - name: Run precommit autofix via frb_internal
+        id: autofix
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          ./frb_internal precommit-autofix-in-dev-container --mode slow
+
+      - name: Upload patch artifact
+        if: ${{ steps.autofix.outputs.has_patch == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: precommit-autofix-diff
+          path: precommit-autofix.diff
+
+      - name: Update PR autofix comment
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: actions/github-script@v8
+        env:
+          HAS_PATCH: ${{ steps.autofix.outputs.has_patch }}
+          APPLY_COMMAND: ${{ steps.autofix.outputs.apply_command }}
+          ARTIFACT_NAME: ${{ steps.autofix.outputs.artifact_name }}
+          HEAD_SHA: ${{ github.sha }}
+          RUN_ID: ${{ github.run_id }}
+        with:
+          script: |
+            const marker = '<!-- precommit-autofix-comment -->';
+            const hasPatch = process.env.HAS_PATCH === 'true';
+            const applyCommand = process.env.APPLY_COMMAND ?? '';
+            const artifactName = process.env.ARTIFACT_NAME ?? 'precommit-autofix-diff';
+            const headSha = process.env.HEAD_SHA ?? context.sha;
+            const runId = process.env.RUN_ID ?? context.runId ?? '';
+            const issueNumber = context.payload.pull_request.number;
+
+            const comments = await github.paginate(
+              github.rest.issues.listComments,
+              {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                per_page: 100,
+              },
+            );
+
+            const existingComment = comments.find(
+              (comment) =>
+                comment.user?.type === 'Bot' &&
+                typeof comment.body === 'string' &&
+                comment.body.includes(marker),
+            );
+
+            const body = hasPatch ? `${marker}
+            ## Precommit Autofix
+
+            Commit: \`${headSha}\`
+            Run: \`${runId}\`
+
+            CI generated a non-empty autofix patch in artifact \`${artifactName}\`.
+
+            Apply it with:
+
+            \`\`\`shell
+            ${applyCommand}
+            \`\`\`
+            ` : `${marker}
+            ## Precommit Autofix
+
+            Commit: \`${headSha}\`
+            Run: \`${runId}\`
+
+            CI produced no diff. The branch is already clean after precommit autofix.
+            `;
+
+            if (existingComment) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existingComment.id,
+                body,
+              });
+              return;
+            }
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              body,
+            });
