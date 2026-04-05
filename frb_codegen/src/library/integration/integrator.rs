@@ -221,7 +221,6 @@ mod tests {
     use super::{refresh_cargo_lock_ordering, set_permission_executable};
     use std::fs;
     use std::os::unix::fs::PermissionsExt;
-    use std::path::Path;
 
     #[test]
     fn test_set_permission_executable_missing_path() {
