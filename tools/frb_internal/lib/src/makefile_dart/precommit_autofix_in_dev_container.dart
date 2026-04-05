@@ -235,15 +235,16 @@ class PrecommitAutofixInDevContainerService {
     );
 
     if (config.githubOutputPath != null) {
-      writeCommandOutput(
-        outputText: buildPrecommitAutofixGithubOutput(
+      final githubOutputFile = File(config.githubOutputPath!);
+      githubOutputFile.parent.createSync(recursive: true);
+      githubOutputFile.writeAsStringSync(
+        buildPrecommitAutofixGithubOutput(
           applyCommand: applyCommand,
           artifactName: config.artifactName,
           hasPatch: hasPatch,
           imageRef: imageRef,
           outputPath: outputPath,
         ),
-        outputPath: config.githubOutputPath,
       );
     }
 

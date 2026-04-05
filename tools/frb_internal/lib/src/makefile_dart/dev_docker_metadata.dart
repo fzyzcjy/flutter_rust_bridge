@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:meta/meta.dart';
@@ -18,18 +17,6 @@ class DevDockerMetadata {
       'flutter-$flutterVersion-rust-$rustVersion-nightly-$rustNightlyVersion';
 
   String imageRef({required String imageName}) => '$imageName:$versionTag';
-
-  Map<String, Object> toJson() {
-    return {
-      'flutter_version': flutterVersion,
-      'rust_version': rustVersion,
-      'rust_nightly_version': rustNightlyVersion,
-      'version_tag': versionTag,
-      'image_ref': imageRef(imageName: 'fzyzcjy/flutter_rust_bridge_dev'),
-    };
-  }
-
-  String toJsonString() => jsonEncode(toJson());
 }
 
 class DevDockerWorkflowMetadata {
@@ -72,20 +59,6 @@ DevDockerMetadata readDevDockerMetadataFile({required String dockerfilePath}) {
   return parseDevDockerMetadataFromText(
     File(dockerfilePath).readAsStringSync(),
   );
-}
-
-void writeCommandOutput({
-  required String outputText,
-  required String? outputPath,
-}) {
-  if (outputPath == null) {
-    stdout.write(outputText);
-    return;
-  }
-
-  final outputFile = File(outputPath);
-  outputFile.parent.createSync(recursive: true);
-  outputFile.writeAsStringSync(outputText);
 }
 
 String _parseDockerfileArgument(String dockerfileText, String argumentName) {
