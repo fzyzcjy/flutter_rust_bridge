@@ -46,6 +46,7 @@ const kPrecommitGeneratePackages = [
   'frb_example/pure_dart',
   'frb_example/pure_dart_pde',
   'frb_example/dart_build_rs',
+  'frb_example/deliberate_bad',
   'frb_example/integrate_third_party',
   'frb_example/rust_ui_counter/ui',
   'frb_example/rust_ui_todo_list/ui',
