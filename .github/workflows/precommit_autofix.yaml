@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      pull-requests: write
 
     steps:
       - name: Checkout
@@ -41,3 +42,75 @@ jobs:
         with:
           name: precommit-autofix-diff
           path: precommit-autofix.diff
+
+      - name: Update PR autofix comment
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: actions/github-script@v8
+        env:
+          HAS_PATCH: ${{ steps.autofix.outputs.has_patch }}
+          APPLY_COMMAND: ${{ steps.autofix.outputs.apply_command }}
+          ARTIFACT_NAME: ${{ steps.autofix.outputs.artifact_name }}
+        with:
+          script: |
+            const marker = '<!-- precommit-autofix-comment -->';
+            const hasPatch = process.env.HAS_PATCH === 'true';
+            const applyCommand = process.env.APPLY_COMMAND ?? '';
+            const artifactName = process.env.ARTIFACT_NAME ?? 'precommit-autofix-diff';
+            const issueNumber = context.payload.pull_request.number;
+
+            const comments = await github.paginate(
+              github.rest.issues.listComments,
+              {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                per_page: 100,
+              },
+            );
+
+            const existingComment = comments.find(
+              (comment) =>
+                comment.user?.type === 'Bot' &&
+                typeof comment.body === 'string' &&
+                comment.body.includes(marker),
+            );
+
+            if (!hasPatch) {
+              if (existingComment) {
+                await github.rest.issues.deleteComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  comment_id: existingComment.id,
+                });
+              }
+              return;
+            }
+
+            const body = `${marker}
+            ## Precommit Autofix
+
+            CI generated a non-empty autofix patch in artifact \`${artifactName}\`.
+
+            Apply it with:
+
+            \`\`\`shell
+            ${applyCommand}
+            \`\`\`
+            `;
+
+            if (existingComment) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existingComment.id,
+                body,
+              });
+              return;
+            }
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              body,
+            });
