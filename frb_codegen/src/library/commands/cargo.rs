@@ -5,7 +5,7 @@ use anyhow::Result;
 use log::warn;
 use std::borrow::Cow;
 use std::path::Path;
-use std::process::{Command, Output};
+use std::process::Output;
 
 #[allow(clippy::vec_init_then_push)]
 pub fn cargo_add(args: &[&str], pwd: &Path) -> anyhow::Result<()> {
@@ -84,6 +84,7 @@ mod tests {
     use anyhow::Result;
     use std::borrow::Cow;
     use std::path::Path;
+    use std::process::Command;
     use std::process::Output;
 
     #[test]
