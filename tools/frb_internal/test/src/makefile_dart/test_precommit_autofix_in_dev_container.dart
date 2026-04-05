@@ -10,13 +10,13 @@ void main() {
     await validatePrecommitAutofixPatch(
       commandRunner: (
         cmd, {
-        String? relativePwd: actualRelativePwd,
+        String? relativePwd: relativePwdArg,
         Map<String, String>? extraEnv,
         bool? checkExitCode,
       }) async {
         command = cmd;
-        relativePwd = actualRelativePwd;
-        return const RunCommandOutput(stdout: '', stderr: '');
+        relativePwd = relativePwdArg;
+        return const RunCommandOutput(stdout: '', stderr: '', exitCode: 0);
       },
       outputPath: '/tmp/precommit-autofix.diff',
       repoRootPath: '/repo',
