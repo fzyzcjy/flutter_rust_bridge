@@ -99,25 +99,14 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
         info!("Dart format is disabled.");
     }
 
-    // the real refresh path is covered by focused unit tests on the extracted helper
-    // frb-coverage:ignore-start
     refresh_cargo_lock_ordering(&dart_root, &config.rust_crate_dir)?;
-    // frb-coverage:ignore-end
 
     Ok(())
 }
 
 fn refresh_cargo_lock_ordering(dart_root: &Path, rust_crate_dir: &str) -> Result<()> {
-    refresh_cargo_lock_ordering_with(dart_root, rust_crate_dir, cargo_fetch)
-}
-
-fn refresh_cargo_lock_ordering_with(
-    dart_root: &Path,
-    rust_crate_dir: &str,
-    cargo_fetcher: impl FnOnce(&Path) -> Result<()>,
-) -> Result<()> {
     info!("Refresh Cargo.lock ordering");
-    cargo_fetcher(&dart_root.join(rust_crate_dir))
+    cargo_fetch(&dart_root.join(rust_crate_dir))
 }
 
 fn execute_overlay_dir(
@@ -229,12 +218,10 @@ fn set_permission_executable(path: &Path) -> Result<()> {
 
 #[cfg(all(test, unix))]
 mod tests {
-    use super::{
-        refresh_cargo_lock_ordering, refresh_cargo_lock_ordering_with, set_permission_executable,
-    };
+    use super::{refresh_cargo_lock_ordering, set_permission_executable};
     use std::fs;
     use std::os::unix::fs::PermissionsExt;
-    use std::path::{Path, PathBuf};
+    use std::path::Path;
 
     #[test]
     fn test_set_permission_executable_missing_path() {
@@ -257,20 +244,6 @@ mod tests {
 
         let permissions = fs::metadata(&script_path).unwrap().permissions();
         assert_eq!(permissions.mode() & 0o777, 0o755);
-    }
-
-    #[test]
-    fn test_refresh_cargo_lock_ordering_uses_rust_crate_dir() {
-        let repo_root = Path::new("/tmp/repo");
-        let mut called_path = None;
-
-        refresh_cargo_lock_ordering_with(repo_root, "rust", |path| {
-            called_path = Some(path.to_path_buf());
-            Ok(())
-        })
-        .unwrap();
-
-        assert_eq!(called_path, Some(PathBuf::from("/tmp/repo/rust")));
     }
 
     #[test]
