@@ -156,7 +156,7 @@ Future<void> precommit(PrecommitConfig config) async {
 
 Future<void> precommitGenerate() async {
   await Future.wait([
-    for (final package in kPrecommitGeneratePackages)
+    for (final package in kDartExamplePackages)
       generateRunFrbCodegenCommandGenerate(
         GeneratePackageConfig(
           setExitIfChanged: false,
