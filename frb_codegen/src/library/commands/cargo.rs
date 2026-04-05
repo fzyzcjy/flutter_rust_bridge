@@ -3,7 +3,6 @@ use crate::commands::command_runner::call_shell;
 use crate::library::commands::command_runner::check_exit_code;
 use anyhow::Result;
 use log::warn;
-use std::borrow::Cow;
 use std::path::Path;
 use std::process::Output;
 
