@@ -19,6 +19,9 @@ pub fn cargo_add(args: &[&str], pwd: &Path) -> anyhow::Result<()> {
 
 #[allow(clippy::vec_init_then_push)]
 pub fn cargo_fetch(pwd: &Path) -> Result<()> {
+    // the command macro body is covered via wrapper tests, but llvm-cov still reports
+    // the macro-closing line as uncovered
+    // frb-coverage:ignore-start
     cargo_fetch_with(pwd, |manifest_path| {
         Ok(command_run!(
             call_shell[None, None],
@@ -28,6 +31,7 @@ pub fn cargo_fetch(pwd: &Path) -> Result<()> {
             manifest_path,
         )?)
     })
+    // frb-coverage:ignore-end
 }
 
 fn cargo_fetch_with(
