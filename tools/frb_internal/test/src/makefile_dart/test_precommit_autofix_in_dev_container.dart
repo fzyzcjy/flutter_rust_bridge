@@ -1,7 +1,31 @@
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/precommit_autofix_in_dev_container.dart';
+import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:test/test.dart';
 
 void main() {
+  test('validatePrecommitAutofixPatch runs git apply check in repo root', () async {
+    String? command;
+    String? relativePwd;
+
+    await validatePrecommitAutofixPatch(
+      commandRunner: (
+        cmd, {
+        String? relativePwd: actualRelativePwd,
+        Map<String, String>? extraEnv,
+        bool? checkExitCode,
+      }) async {
+        command = cmd;
+        relativePwd = actualRelativePwd;
+        return const RunCommandOutput(stdout: '', stderr: '');
+      },
+      outputPath: '/tmp/precommit-autofix.diff',
+      repoRootPath: '/repo',
+    );
+
+    expect(command, "git apply --check '/tmp/precommit-autofix.diff'");
+    expect(relativePwd, '/repo');
+  });
+
   test(
     'buildPrecommitAutofixApplyCommand uses concrete run id when provided',
     () {

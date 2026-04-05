@@ -219,6 +219,11 @@ class PrecommitAutofixInDevContainerService {
     if (hasPatch) {
       outputFile.parent.createSync(recursive: true);
       hostPatchFile.copySync(outputPath);
+      await validatePrecommitAutofixPatch(
+        commandRunner: commandRunner,
+        outputPath: outputPath,
+        repoRootPath: repoRootPath,
+      );
     } else if (outputFile.existsSync()) {
       outputFile.deleteSync();
     }
@@ -265,6 +270,18 @@ class PrecommitAutofixInDevContainerService {
       outputPath: outputPath,
     );
   }
+}
+
+@visibleForTesting
+Future<void> validatePrecommitAutofixPatch({
+  required DevDockerWorkflowCommandRunner commandRunner,
+  required String outputPath,
+  required String repoRootPath,
+}) async {
+  await commandRunner(
+    'git apply --check ${shellEscape(outputPath)}',
+    relativePwd: repoRootPath,
+  );
 }
 
 @visibleForTesting
