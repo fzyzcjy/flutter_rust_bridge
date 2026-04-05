@@ -1,15 +1,5 @@
 import 'dart:io';
 
-import 'package:meta/meta.dart';
-
-@visibleForTesting
-/// Test seam for stderr output.
-IOSink cliStderr = stderr;
-
-@visibleForTesting
-/// Test seam for process exit.
-Never Function(int) cliExit = exit;
-
 /// {@macro flutter_rust_bridge.internal}
 String err(String msg) {
   // return stderr.supportsAnsiEscapes ? Colorize(msg).red().bold().toString() : msg; // #1262
@@ -18,13 +8,13 @@ String err(String msg) {
 
 /// {@macro flutter_rust_bridge.internal}
 void eprint([Object? msg = 'unspecified']) {
-  cliStderr.writeln('${err('error')}: $msg');
+  stderr.writeln('${err('error')}: $msg');
 }
 
 /// {@macro flutter_rust_bridge.internal}
 Never bail([String? message]) {
   eprint(message);
-  cliExit(1);
+  exit(1);
 }
 
 /// {@macro flutter_rust_bridge.internal}

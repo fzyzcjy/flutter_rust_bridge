@@ -64,214 +64,218 @@ extension on BuildWebArgs {
 
 /// {@macro flutter_rust_bridge.cli}
 Future<void> executeBuildWeb(BuildWebArgs args) async {
-  await BuildWebExecutor().execute(args);
+  await _sanityChecks(args);
+
+  final rustCrateName = await _getRustCreateName(
+    rustCrateDir: args.rustCrateDir,
+  );
+
+  await _executeWasmPack(args, rustCrateName: rustCrateName);
+
+  if (args.enableWasmBindgen) {
+    await _executeWasmBindgen(args, rustCrateName: rustCrateName);
+  }
+
+  if (args.dartCompileJsEntrypoint != null) {
+    await _executeDartCompile(args);
+  }
 }
 
-/// Signature used to invoke external commands during web builds.
-typedef BuildWebRunCommand =
-    Future<RunCommandOutput> Function(
-      String command,
-      List<String> arguments, {
-      String? pwd,
-      Map<String, String>? env,
-      bool shell,
-      bool silent,
-      bool? checkExitCode,
-      bool printCommandInStderr,
-    });
+final _commandWhich = Platform.isWindows ? 'where.exe' : 'which';
 
-/// {@macro flutter_rust_bridge.internal}
-class BuildWebExecutor {
-  /// Command runner used for external process execution.
-  final BuildWebRunCommand runCommandFn;
+Future<void> _sanityChecks(BuildWebArgs args) async {
+  await _ensurePackageInstalled(
+    binaryName: 'wasm-pack',
+    install: () async => await runCommand('cargo', ['install', 'wasm-pack']),
+    hint:
+        'wasm-pack is required, but not found in the path.\n'
+        'Please install wasm-pack by following the instructions at https://rustwasm.github.io/wasm-pack/\n'
+        'or running `cargo install wasm-pack`.',
+  );
 
-  /// Failure path used when validation cannot continue.
-  final Never Function(String? message) bailFn;
-
-  /// Binary lookup command for the current platform.
-  final String commandWhich;
-
-  /// Creates an executor with injectable command and failure hooks.
-  BuildWebExecutor({
-    this.runCommandFn = runCommand,
-    this.bailFn = bail,
-    String? commandWhich,
-  }) : commandWhich = commandWhich ?? _defaultCommandWhich;
-
-  /// {@macro flutter_rust_bridge.cli}
-  Future<void> execute(BuildWebArgs args) async {
-    await sanityChecks(args);
-
-    final rustCrateName = await getRustCrateName(
-      rustCrateDir: args.rustCrateDir,
-    );
-
-    await executeWasmPack(args, rustCrateName: rustCrateName);
-
-    if (args.enableWasmBindgen) {
-      await executeWasmBindgen(args, rustCrateName: rustCrateName);
-    }
-
-    if (args.dartCompileJsEntrypoint != null) {
-      await executeDartCompile(args);
-    }
-  }
-
-  @visibleForTesting
-  /// Validates required tools and crate inputs before building.
-  Future<void> sanityChecks(BuildWebArgs args) async {
-    await ensurePackageInstalled(
-      binaryName: 'wasm-pack',
+  if (args.enableWasmBindgen) {
+    await _ensurePackageInstalled(
+      binaryName: 'wasm-bindgen',
       install: () async =>
-          await runCommandFn('cargo', ['install', 'wasm-pack']),
+          await runCommand('cargo', ['install', '-f', 'wasm-bindgen-cli']),
       hint:
-          'wasm-pack is required, but not found in the path.\n'
-          'Please install wasm-pack by following the instructions at https://rustwasm.github.io/wasm-pack/\n'
-          'or running `cargo install wasm-pack`.',
-    );
-
-    if (args.enableWasmBindgen) {
-      await ensurePackageInstalled(
-        binaryName: 'wasm-bindgen',
-        install: () async =>
-            await runCommandFn('cargo', ['install', '-f', 'wasm-bindgen-cli']),
-        hint:
-            'wasm-bindgen flags are enabled, but wasm-bindgen could not be found in the path.\n'
-            'Please install wasm-bindgen using `cargo install -f wasm-bindgen-cli`.',
-      );
-    }
-
-    final crateDir = args.rustCrateDir;
-    if (!await File('$crateDir/Cargo.toml').exists()) {
-      bailFn(
-        '$crateDir is not a crate directory.\n'
-        'Please specify the crate directory using "--crate <CRATE>".',
-      );
-    }
-  }
-
-  @visibleForTesting
-  /// Installs a required binary when it is not already available.
-  Future<void> ensurePackageInstalled({
-    required String binaryName,
-    required Future<void> Function() install,
-    required String hint,
-  }) async {
-    Future<bool> isBinaryInstalled() async {
-      try {
-        await runCommandFn(commandWhich, [binaryName]);
-        return true;
-      } catch (_) {
-        return false;
-      }
-    }
-
-    if (await isBinaryInstalled()) return;
-
-    print('Try to install `$binaryName`');
-    await install();
-
-    if (!await isBinaryInstalled()) {
-      bailFn(hint);
-    }
-  }
-
-  @visibleForTesting
-  /// Reads the cdylib crate name from `cargo read-manifest`.
-  Future<String> getRustCrateName({required String rustCrateDir}) async {
-    final manifest = jsonDecode(
-      (await runCommandFn(
-        'cargo',
-        ['read-manifest'],
-        pwd: rustCrateDir,
-        silent: true,
-      )).stdout,
-    );
-
-    final rustCrateName = (manifest['targets'] as List).firstWhere(
-      (target) => (target['kind'] as List).contains('cdylib'),
-    )['name'];
-    if (rustCrateName.isEmpty) bailFn('Crate name cannot be empty.');
-
-    return rustCrateName;
-  }
-
-  @visibleForTesting
-  /// Builds the Rust crate into WebAssembly with `wasm-pack`.
-  Future<void> executeWasmPack(
-    BuildWebArgs args, {
-    required String rustCrateName,
-  }) async {
-    await runCommandFn(
-      'wasm-pack',
-      [
-        'build',
-        '-t',
-        'no-modules',
-        '-d',
-        args.outputWasm,
-        '--no-typescript',
-        '--out-name',
-        rustCrateName,
-        if (!args.release) '--dev',
-        args.rustCrateDir,
-        '--',
-        '-Z',
-        'build-std=std,panic_abort',
-        ...args.cargoBuildArgs,
-      ],
-      env: {
-        'RUSTUP_TOOLCHAIN': args.wasmPackRustupToolchain ?? 'nightly',
-        'RUSTFLAGS': computeRustflags(argsOverride: args.wasmPackRustflags),
-        if (stdout.supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',
-      },
+          'wasm-bindgen flags are enabled, but wasm-bindgen could not be found in the path.\n'
+          'Please install wasm-bindgen using `cargo install -f wasm-bindgen-cli`.',
     );
   }
 
-  @visibleForTesting
-  /// Post-processes the generated wasm artifact with `wasm-bindgen`.
-  Future<void> executeWasmBindgen(
-    BuildWebArgs args, {
-    required String rustCrateName,
-  }) async {
-    await runCommandFn('wasm-bindgen', [
-      '${args.rustCrateDir}/target/wasm32-unknown-unknown/${args.release ? 'release' : 'debug'}/$rustCrateName.wasm',
-      '--out-dir',
+  final crateDir = args.rustCrateDir;
+  if (!await File('$crateDir/Cargo.toml').exists()) {
+    bail(
+      '$crateDir is not a crate directory.\n'
+      'Please specify the crate directory using "--crate <CRATE>".',
+    );
+  }
+}
+
+Future<void> _ensurePackageInstalled({
+  required String binaryName,
+  required Future<void> Function() install,
+  required String hint,
+}) async {
+  Future<bool> isBinaryInstalled() async {
+    try {
+      await runCommand(_commandWhich, [binaryName]);
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  if (await isBinaryInstalled()) return;
+
+  print('Try to install `$binaryName`');
+  await install();
+
+  if (!await isBinaryInstalled()) {
+    bail(hint);
+  }
+}
+
+Future<String> _getRustCreateName({required String rustCrateDir}) async {
+  final manifest = jsonDecode(
+    (await runCommand(
+      'cargo',
+      ['read-manifest'],
+      pwd: rustCrateDir,
+      silent: true,
+    )).stdout,
+  );
+
+  final rustCrateName = (manifest['targets'] as List).firstWhere(
+    (target) => (target['kind'] as List).contains('cdylib'),
+  )['name'];
+  if (rustCrateName.isEmpty) bail('Crate name cannot be empty.');
+
+  return rustCrateName;
+}
+
+Future<void> _executeWasmPack(
+  BuildWebArgs args, {
+  required String rustCrateName,
+}) async {
+  final rustflagsResolution = computeWasmPackRustflagsResolution(
+    argsOverride: args.wasmPackRustflags,
+  );
+  if (rustflagsResolution.warning != null) {
+    print(rustflagsResolution.warning);
+  }
+
+  await runCommand(
+    'wasm-pack',
+    [
+      'build',
+      '-t',
+      'no-modules',
+      '-d',
       args.outputWasm,
       '--no-typescript',
-      '--target',
-      'no-modules',
-      ...args.wasmBindgenArgs,
-    ]);
-  }
-
-  @visibleForTesting
-  /// Compiles the Dart entrypoint into JavaScript when requested.
-  Future<void> executeDartCompile(BuildWebArgs args) async {
-    await runCommandFn('dart', [
-      'compile',
-      'js',
-      '-o',
-      args.outputDart,
-      if (args.release) '-O2',
-      if (stdout.supportsAnsiEscapes) '--enable-diagnostic-colors',
-      if (args.verbose) '--verbose',
-      args.dartCompileJsEntrypoint!,
-    ]);
-  }
+      '--out-name',
+      rustCrateName,
+      if (!args.release) '--dev',
+      args.rustCrateDir,
+      '--',
+      // cargo build args
+      '-Z',
+      'build-std=std,panic_abort',
+      ...args.cargoBuildArgs,
+      // migrate to `cargoBuildArgs`
+      // if (config.cliOpts.noDefaultFeatures) '--no-default-features',
+      // if (config.cliOpts.features != null) '--features=${config.cliOpts.features}'
+    ],
+    env: {
+      'RUSTUP_TOOLCHAIN': args.wasmPackRustupToolchain ?? 'nightly',
+      'RUSTFLAGS': rustflagsResolution.rustflags,
+      if (stdout.supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',
+    },
+  );
 }
 
-final _defaultCommandWhich = Platform.isWindows ? 'where.exe' : 'which';
+/// Resolved `RUSTFLAGS` output for a `wasm-pack` invocation.
+class WasmPackRustflagsResolution {
+  /// The `RUSTFLAGS` value that will be passed to `wasm-pack`.
+  final String rustflags;
+
+  /// Optional warning shown when user-provided overrides drop required defaults.
+  final String? warning;
+
+  /// Creates a resolved `wasm-pack` rustflags result.
+  const WasmPackRustflagsResolution({
+    required this.rustflags,
+    required this.warning,
+  });
+}
+
+/// Default threaded-WASM rustflag segments used by `build-web`.
+const buildWebDefaultWasmPackRustflagSegments = [
+  '-C target-feature=+atomics,+bulk-memory,+mutable-globals',
+  '-C link-args=--shared-memory',
+  '-C link-args=--max-memory=1073741824',
+  '-C link-args=--import-memory',
+  '-C link-args=--export=__wasm_init_tls',
+  '-C link-args=--export=__tls_size',
+  '-C link-args=--export=__tls_align',
+  '-C link-args=--export=__tls_base',
+];
+
+/// Default threaded-WASM rustflags used by `build-web`.
+final buildWebDefaultWasmPackRustflags = buildWebDefaultWasmPackRustflagSegments
+    .join(' ');
+
+bool _containsDefaultWasmPackRustflags(String rustflags) {
+  return buildWebDefaultWasmPackRustflagSegments.every(rustflags.contains);
+}
 
 @visibleForTesting
-/// Computes the `RUSTFLAGS` passed into `wasm-pack`.
-String computeRustflags({required String? argsOverride}) {
-  const kDefault = '-C target-feature=+atomics,+bulk-memory,+mutable-globals';
-  if (argsOverride == null) return kDefault;
-  if (!argsOverride.contains(kDefault)) {
-    print(
-      'WARN: RUSTFLAGS will be `$argsOverride`, which does not contain the default one `$kDefault`',
+/// Resolves the effective `wasm-pack` rustflags and any warning to display.
+WasmPackRustflagsResolution computeWasmPackRustflagsResolution({
+  required String? argsOverride,
+}) {
+  if (argsOverride == null) {
+    return WasmPackRustflagsResolution(
+      rustflags: buildWebDefaultWasmPackRustflags,
+      warning: null,
     );
   }
-  return argsOverride;
+
+  final warning = _containsDefaultWasmPackRustflags(argsOverride)
+      ? null
+      : 'WARN: RUSTFLAGS will be `$argsOverride`, which does not contain the default threaded-WASM flags `$buildWebDefaultWasmPackRustflags`. Keep the default flags when overriding `--wasm-pack-rustflags`, otherwise worker startup may fail with errors such as `WebAssembly.Memory could not be cloned`.';
+  return WasmPackRustflagsResolution(rustflags: argsOverride, warning: warning);
+}
+
+Future<void> _executeWasmBindgen(
+  BuildWebArgs args, {
+  required String rustCrateName,
+}) async {
+  await runCommand('wasm-bindgen', [
+    '${args.rustCrateDir}/target/wasm32-unknown-unknown/${args.release ? 'release' : 'debug'}/$rustCrateName.wasm',
+    '--out-dir',
+    args.outputWasm,
+    '--no-typescript',
+    '--target',
+    'no-modules',
+    ...args.wasmBindgenArgs,
+    // migrate to `wasmBindgenArgs`
+    // if (config.cliOpts.weakRefs) '--weak-refs',
+    // if (config.cliOpts.referenceTypes) '--reference-types',
+  ]);
+}
+
+Future<void> _executeDartCompile(BuildWebArgs args) async {
+  await runCommand('dart', [
+    'compile',
+    'js',
+    '-o',
+    args.outputDart,
+    if (args.release) '-O2',
+    if (stdout.supportsAnsiEscapes) '--enable-diagnostic-colors',
+    if (args.verbose) '--verbose',
+    args.dartCompileJsEntrypoint!,
+  ]);
 }
