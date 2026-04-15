@@ -75,3 +75,7 @@ pub enum CustomStructError {
 ```
 
 As for how to fill it in or use it, you can refer to `thiserror` crate for some hints.
+
+## Oxidized Result Types
+
+If you prefer Rust-style `Result` types in Dart instead of exceptions, see [Result (Oxidized)](detailed/result.md).

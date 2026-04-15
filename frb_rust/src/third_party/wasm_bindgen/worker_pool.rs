@@ -10,7 +10,6 @@ use std::iter::FromIterator;
 use std::rc::Rc;
 use wasm_bindgen::prelude::*;
 use wasm_bindgen::JsCast;
-use web_sys::BlobPropertyBag;
 use web_sys::ErrorEvent;
 use web_sys::MessageEvent;
 use web_sys::{Blob, Url};
@@ -124,10 +123,7 @@ impl WorkerPool {
                 }}
             }}",
         );
-        let blob = Blob::new_with_blob_sequence_and_options(
-            &Array::from_iter([JsValue::from(script)]).into(),
-            BlobPropertyBag::new().type_("text/javascript"),
-        )?;
+        let blob = Blob::new_with_str_sequence(&Array::from_iter([JsValue::from(script)]).into())?;
         let url = Url::create_object_url_with_blob(&blob)?;
         let worker: Worker = Worker::new(&url)?;
 

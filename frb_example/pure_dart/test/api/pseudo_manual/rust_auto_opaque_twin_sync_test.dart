@@ -85,11 +85,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         expect(obj.isDisposed, false);
 
         await futurizeVoidTwinSync(
-          rustAutoOpaqueArgMutBorrowTwinSync(
-            arg: obj,
-            expect: 101,
-            adder: 10,
-          ),
+          rustAutoOpaqueArgMutBorrowTwinSync(arg: obj, expect: 101, adder: 10),
         );
 
         expect(obj.isDisposed, false);
@@ -201,16 +197,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
   group('complex type signatures', () {
     test('plus sign', () async {
       final obj = await rustAutoOpaquePlusSignReturnTwinSync();
-      await futurizeVoidTwinSync(
-        rustAutoOpaquePlusSignArgTwinSync(arg: obj),
-      );
+      await futurizeVoidTwinSync(rustAutoOpaquePlusSignArgTwinSync(arg: obj));
     });
 
     test('callable', () async {
       final obj = await rustAutoOpaqueCallableReturnTwinSync();
-      await futurizeVoidTwinSync(
-        rustAutoOpaqueCallableArgTwinSync(arg: obj),
-      );
+      await futurizeVoidTwinSync(rustAutoOpaqueCallableArgTwinSync(arg: obj));
     });
   });
 
@@ -299,9 +291,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('enum opaque type', () async {
     final obj = await rustAutoOpaqueEnumReturnOwnTwinSync();
-    await futurizeVoidTwinSync(
-      rustAutoOpaqueEnumArgBorrowTwinSync(arg: obj),
-    );
+    await futurizeVoidTwinSync(rustAutoOpaqueEnumArgBorrowTwinSync(arg: obj));
   });
 
   test('stream sink', () async {
@@ -389,10 +379,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final a = await rustAutoOpaqueReturnOwnTwinSync(initial: 100);
       final b = await rustAutoOpaqueReturnOwnTwinSync(initial: 200);
       expect(
-        await rustAutoOpaqueBorrowAndMutBorrowTwinSync(
-          borrow: a,
-          mutBorrow: b,
-        ),
+        await rustAutoOpaqueBorrowAndMutBorrowTwinSync(borrow: a, mutBorrow: b),
         300,
       );
     });
@@ -401,10 +388,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   group('borrow + borrow', () {
     test('when same object', () async {
       final obj = await rustAutoOpaqueReturnOwnTwinSync(initial: 100);
-      expect(
-        await rustAutoOpaqueBorrowAndBorrowTwinSync(a: obj, b: obj),
-        200,
-      );
+      expect(await rustAutoOpaqueBorrowAndBorrowTwinSync(a: obj, b: obj), 200);
     });
 
     test('when different object', () async {

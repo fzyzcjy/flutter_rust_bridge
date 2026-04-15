@@ -16,7 +16,7 @@ env
 # Platform name (macosx, iphoneos, iphonesimulator)
 export CARGOKIT_DARWIN_PLATFORM_NAME=$PLATFORM_NAME
 
-# Arctive architectures (arm64, armv7, x86_64), space separated.
+# Active architectures (arm64, armv7, x86_64), space separated.
 export CARGOKIT_DARWIN_ARCHS=$ARCHS
 
 # Current build configuration (Debug, Release)

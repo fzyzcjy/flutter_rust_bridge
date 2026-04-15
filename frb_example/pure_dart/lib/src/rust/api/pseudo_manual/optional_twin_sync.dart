@@ -12,58 +12,64 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `fmt`, `fmt`, `fmt`
 
-double? handleOptionalReturnTwinSync(
-        {required double left, required double right}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSyncHandleOptionalReturnTwinSync(
-            left: left, right: right);
+double? handleOptionalReturnTwinSync({
+  required double left,
+  required double right,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinSyncHandleOptionalReturnTwinSync(
+      left: left,
+      right: right,
+    );
 
-ElementTwinSync? handleOptionalStructTwinSync({String? document}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSyncHandleOptionalStructTwinSync(
-            document: document);
+ElementTwinSync? handleOptionalStructTwinSync({String? document}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualOptionalTwinSyncHandleOptionalStructTwinSync(
+      document: document,
+    );
 
-ExoticOptionalsTwinSync? handleOptionalIncrementTwinSync(
-        {ExoticOptionalsTwinSync? opt}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSyncHandleOptionalIncrementTwinSync(
-            opt: opt);
+ExoticOptionalsTwinSync? handleOptionalIncrementTwinSync({
+  ExoticOptionalsTwinSync? opt,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinSyncHandleOptionalIncrementTwinSync(
+      opt: opt,
+    );
 
 double handleIncrementBoxedOptionalTwinSync({double? opt}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualOptionalTwinSyncHandleIncrementBoxedOptionalTwinSync(
-        opt: opt);
+      opt: opt,
+    );
 
 OptVecsTwinSync handleVecOfOptsTwinSync({required OptVecsTwinSync opt}) =>
     RustLib.instance.api
         .crateApiPseudoManualOptionalTwinSyncHandleVecOfOptsTwinSync(opt: opt);
 
-String handleOptionBoxArgumentsTwinSync(
-        {int? i8Box,
-        int? u8Box,
-        int? i32Box,
-        PlatformInt64? i64Box,
-        double? f64Box,
-        bool? boolbox,
-        ExoticOptionalsTwinSync? structbox}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinSyncHandleOptionBoxArgumentsTwinSync(
-            i8Box: i8Box,
-            u8Box: u8Box,
-            i32Box: i32Box,
-            i64Box: i64Box,
-            f64Box: f64Box,
-            boolbox: boolbox,
-            structbox: structbox);
+String handleOptionBoxArgumentsTwinSync({
+  int? i8Box,
+  int? u8Box,
+  int? i32Box,
+  PlatformInt64? i64Box,
+  double? f64Box,
+  bool? boolbox,
+  ExoticOptionalsTwinSync? structbox,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinSyncHandleOptionBoxArgumentsTwinSync(
+      i8Box: i8Box,
+      u8Box: u8Box,
+      i32Box: i32Box,
+      i64Box: i64Box,
+      f64Box: f64Box,
+      boolbox: boolbox,
+      structbox: structbox,
+    );
 
 class AttributeTwinSync {
   final String key;
   final String value;
 
-  const AttributeTwinSync({
-    required this.key,
-    required this.value,
-  });
+  const AttributeTwinSync({required this.key, required this.value});
 
   @override
   int get hashCode => key.hashCode ^ value.hashCode;
@@ -83,19 +89,17 @@ class ElementTwinSync {
   final List<AttributeTwinSync>? attributes;
   final List<ElementTwinSync>? children;
 
-  const ElementTwinSync({
-    this.tag,
-    this.text,
-    this.attributes,
-    this.children,
-  });
+  const ElementTwinSync({this.tag, this.text, this.attributes, this.children});
 
   static Future<ElementTwinSync> default_() => RustLib.instance.api
       .crateApiPseudoManualOptionalTwinSyncElementTwinSyncDefault();
 
   @override
   int get hashCode =>
-      tag.hashCode ^ text.hashCode ^ attributes.hashCode ^ children.hashCode;
+      tag.hashCode ^
+      text.hashCode ^
+      const DeepCollectionEquality().hash(attributes) ^
+      const DeepCollectionEquality().hash(children);
 
   @override
   bool operator ==(Object other) =>
@@ -104,8 +108,8 @@ class ElementTwinSync {
           runtimeType == other.runtimeType &&
           tag == other.tag &&
           text == other.text &&
-          attributes == other.attributes &&
-          children == other.children;
+          const DeepCollectionEquality().equals(attributes, other.attributes) &&
+          const DeepCollectionEquality().equals(children, other.children);
 }
 
 class ExoticOptionalsTwinSync {
@@ -153,9 +157,9 @@ class ExoticOptionalsTwinSync {
       int32List.hashCode ^
       float32List.hashCode ^
       float64List.hashCode ^
-      attributes.hashCode ^
-      attributesNullable.hashCode ^
-      nullableAttributes.hashCode ^
+      const DeepCollectionEquality().hash(attributes) ^
+      const DeepCollectionEquality().hash(attributesNullable) ^
+      const DeepCollectionEquality().hash(nullableAttributes) ^
       newtypeint.hashCode;
 
   @override
@@ -173,9 +177,15 @@ class ExoticOptionalsTwinSync {
           int32List == other.int32List &&
           float32List == other.float32List &&
           float64List == other.float64List &&
-          attributes == other.attributes &&
-          attributesNullable == other.attributesNullable &&
-          nullableAttributes == other.nullableAttributes &&
+          const DeepCollectionEquality().equals(attributes, other.attributes) &&
+          const DeepCollectionEquality().equals(
+            attributesNullable,
+            other.attributesNullable,
+          ) &&
+          const DeepCollectionEquality().equals(
+            nullableAttributes,
+            other.nullableAttributes,
+          ) &&
           newtypeint == other.newtypeint;
 }
 
@@ -194,15 +204,18 @@ class OptVecsTwinSync {
 
   @override
   int get hashCode =>
-      i32.hashCode ^ enums.hashCode ^ strings.hashCode ^ buffers.hashCode;
+      const DeepCollectionEquality().hash(i32) ^
+      const DeepCollectionEquality().hash(enums) ^
+      const DeepCollectionEquality().hash(strings) ^
+      const DeepCollectionEquality().hash(buffers);
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is OptVecsTwinSync &&
           runtimeType == other.runtimeType &&
-          i32 == other.i32 &&
-          enums == other.enums &&
-          strings == other.strings &&
-          buffers == other.buffers;
+          const DeepCollectionEquality().equals(i32, other.i32) &&
+          const DeepCollectionEquality().equals(enums, other.enums) &&
+          const DeepCollectionEquality().equals(strings, other.strings) &&
+          const DeepCollectionEquality().equals(buffers, other.buffers);
 }

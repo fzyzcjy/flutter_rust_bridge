@@ -1,6 +1,3 @@
-/// This is copied from Cargokit (which is the official way to use it currently)
-/// Details: https://fzyzcjy.github.io/flutter_rust_bridge/manual/integrate/builtin
-
 import 'dart:io';
 
 import 'package:logging/logging.dart';
@@ -37,7 +34,11 @@ void initLogging() {
     final lines = rec.message.split('\n');
     for (final line in lines) {
       if (line.isNotEmpty || lines.length == 1 || line != lines.last) {
-        _log(LogRecord(rec.level, line, rec.loggerName));
+        _log(LogRecord(
+          rec.level,
+          line,
+          rec.loggerName,
+        ));
       }
     }
   });

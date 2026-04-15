@@ -11,26 +11,24 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `MessageWithCustomSerializerTwinNormal`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `fmt`
 
-Future<int> functionUsingTypeWithCustomSerializer({required int arg}) =>
-    RustLib.instance.api
-        .crateApiCustomSerDesFunctionUsingTypeWithCustomSerializer(arg: arg);
+Future<int> functionUsingTypeWithCustomSerializer({required int arg}) => RustLib
+    .instance
+    .api
+    .crateApiCustomSerDesFunctionUsingTypeWithCustomSerializer(arg: arg);
 
 Future<InternetAddress> funcUsingIpv4Addr({required InternetAddress arg}) =>
     RustLib.instance.api.crateApiCustomSerDesFuncUsingIpv4Addr(arg: arg);
 
 Future<NonOpaqueStructContainingIpv4Addr>
-    funcUsingNonOpaqueStructContainingIpv4Addr(
-            {required NonOpaqueStructContainingIpv4Addr arg}) =>
-        RustLib.instance.api
-            .crateApiCustomSerDesFuncUsingNonOpaqueStructContainingIpv4Addr(
-                arg: arg);
+funcUsingNonOpaqueStructContainingIpv4Addr({
+  required NonOpaqueStructContainingIpv4Addr arg,
+}) => RustLib.instance.api
+    .crateApiCustomSerDesFuncUsingNonOpaqueStructContainingIpv4Addr(arg: arg);
 
 class NonOpaqueStructContainingIpv4Addr {
   final InternetAddress inner;
 
-  const NonOpaqueStructContainingIpv4Addr({
-    required this.inner,
-  });
+  const NonOpaqueStructContainingIpv4Addr({required this.inner});
 
   @override
   int get hashCode => inner.hashCode;

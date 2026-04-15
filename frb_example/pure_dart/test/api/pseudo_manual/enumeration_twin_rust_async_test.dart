@@ -61,7 +61,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     test('dart call handleEnumStruct', () async {
       expect(
         await handleEnumStructTwinRustAsync(
-            val: KitchenSinkTwinRustAsync_Empty()),
+          val: KitchenSinkTwinRustAsync_Empty(),
+        ),
         KitchenSinkTwinRustAsync_Empty(),
       );
       expect(
@@ -73,7 +74,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
           ),
         ),
         KitchenSinkTwinRustAsync_Primitives(
-            int32: 1, float64: 2, boolean: true),
+          int32: 1,
+          float64: 2,
+          boolean: true,
+        ),
       );
       expect(
         await handleEnumStructTwinRustAsync(
@@ -101,7 +105,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
           ),
         ),
         const KitchenSinkTwinRustAsync.nested(
-            1, KitchenSinkTwinRustAsync.empty()),
+          1,
+          KitchenSinkTwinRustAsync.empty(),
+        ),
       );
     });
 
@@ -118,8 +124,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
         ),
         null,
       );
-      final skipMinified =
-          releaseMode ? skipWeb('Minified names cannot be compared.') : null;
+      final skipMinified = releaseMode
+          ? skipWeb('Minified names cannot be compared.')
+          : null;
       expect(
         (SpeedTwinRustAsync_Unknown).toString(),
         'SpeedTwinRustAsync_Unknown',

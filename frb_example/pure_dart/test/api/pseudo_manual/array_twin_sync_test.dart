@@ -46,9 +46,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('FeedId', () async {
     final inner = U8Array8.init();
     inner[3] = 3;
-    final FeedIdTwinSync feedId = await returnBoxedFeedIdTwinSync(
-      id: inner,
-    );
+    final FeedIdTwinSync feedId = await returnBoxedFeedIdTwinSync(id: inner);
     expect(feedId.field0[3], 3);
     feedId.field0[5] = 5;
     final raw = await returnBoxedRawFeedIdTwinSync(id: feedId);
@@ -60,9 +58,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final inner = I32Array2.init();
     inner[0] = 1;
     inner[1] = 2;
-    final testId = await funcTestIdTwinSync(
-      id: TestIdTwinSync(field0: inner),
-    );
+    final testId = await funcTestIdTwinSync(id: TestIdTwinSync(field0: inner));
     expect(testId.field0[0], 1);
     expect(testId.field0[1], 2);
   });

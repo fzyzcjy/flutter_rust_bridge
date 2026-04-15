@@ -11,20 +11,13 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<NonCloneDataRaw>>
 abstract class NonCloneDataRaw implements RustOpaqueInterface {}
 
-enum MyEnum {
-  false_,
-  true_,
-  ;
-}
+enum MyEnum { false_, true_ }
 
 class MySize {
   final int width;
   final int height;
 
-  const MySize({
-    required this.width,
-    required this.height,
-  });
+  const MySize({required this.width, required this.height});
 
   @override
   int get hashCode => width.hashCode ^ height.hashCode;
@@ -41,9 +34,7 @@ class MySize {
 class MyStruct {
   final bool content;
 
-  const MyStruct({
-    required this.content,
-  });
+  const MyStruct({required this.content});
 
   @override
   int get hashCode => content.hashCode;

@@ -7,15 +7,28 @@ use itertools::Itertools;
 
 impl WireRustGeneratorMiscTrait for DelegateWireRustGenerator<'_> {
     fn generate_imports(&self) -> Option<Vec<Namespace>> {
-        if let MirTypeDelegate::CustomSerDes(mir) = &self.mir {
-            Some(
+        match &self.mir {
+            MirTypeDelegate::CustomSerDes(mir) => Some(
                 [&mir.info.rust2dart, &mir.info.dart2rust]
                     .into_iter()
                     .map(|x| x.rust_function.namespace.clone())
                     .collect_vec(),
-            )
-        } else {
-            None
+            ),
+            MirTypeDelegate::Map(mir) => Some(
+                mir.hasher
+                    .as_ref()
+                    .and_then(|hasher| hasher.self_namespace())
+                    .into_iter()
+                    .collect_vec(),
+            ),
+            MirTypeDelegate::Set(mir) => Some(
+                mir.hasher
+                    .as_ref()
+                    .and_then(|hasher| hasher.self_namespace())
+                    .into_iter()
+                    .collect_vec(),
+            ),
+            _ => None,
         }
     }
 

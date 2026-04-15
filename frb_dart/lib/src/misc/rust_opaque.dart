@@ -11,7 +11,9 @@ abstract class RustOpaqueInterface {
 }
 
 /// An opaque pointer to a native arbitrary Rust type.
-/// TODO: link to the doc talking about "dispose"/GC semantics
+///
+/// See https://cjycode.com/flutter_rust_bridge/guides/types/arbitrary/rust-opaque
+/// for details about ownership, `dispose()`, and GC/finalizer semantics.
 abstract class RustOpaque implements RustOpaqueInterface {
   final RustArc _arc;
 

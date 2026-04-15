@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,106 +9,269 @@ part of 'dart_opaque_twin_sync.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$EnumDartOpaqueTwinSync {
-  Object get field0 => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int field0) primitive,
-    required TResult Function(Object field0) opaque,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int field0)? primitive,
-    TResult? Function(Object field0)? opaque,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int field0)? primitive,
-    TResult Function(Object field0)? opaque,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(EnumDartOpaqueTwinSync_Primitive value) primitive,
-    required TResult Function(EnumDartOpaqueTwinSync_Opaque value) opaque,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumDartOpaqueTwinSync_Primitive value)? primitive,
-    TResult? Function(EnumDartOpaqueTwinSync_Opaque value)? opaque,
-  }) =>
-      throw _privateConstructorUsedError;
+  Object get field0;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is EnumDartOpaqueTwinSync &&
+            const DeepCollectionEquality().equals(other.field0, field0));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+
+  @override
+  String toString() {
+    return 'EnumDartOpaqueTwinSync(field0: $field0)';
+  }
+}
+
+/// @nodoc
+class $EnumDartOpaqueTwinSyncCopyWith<$Res> {
+  $EnumDartOpaqueTwinSyncCopyWith(
+      EnumDartOpaqueTwinSync _, $Res Function(EnumDartOpaqueTwinSync) __);
+}
+
+/// Adds pattern-matching-related methods to [EnumDartOpaqueTwinSync].
+extension EnumDartOpaqueTwinSyncPatterns on EnumDartOpaqueTwinSync {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EnumDartOpaqueTwinSync_Primitive value)? primitive,
     TResult Function(EnumDartOpaqueTwinSync_Opaque value)? opaque,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) {
+    final _that = this;
+    switch (_that) {
+      case EnumDartOpaqueTwinSync_Primitive() when primitive != null:
+        return primitive(_that);
+      case EnumDartOpaqueTwinSync_Opaque() when opaque != null:
+        return opaque(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EnumDartOpaqueTwinSync_Primitive value) primitive,
+    required TResult Function(EnumDartOpaqueTwinSync_Opaque value) opaque,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case EnumDartOpaqueTwinSync_Primitive():
+        return primitive(_that);
+      case EnumDartOpaqueTwinSync_Opaque():
+        return opaque(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(EnumDartOpaqueTwinSync_Primitive value)? primitive,
+    TResult? Function(EnumDartOpaqueTwinSync_Opaque value)? opaque,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case EnumDartOpaqueTwinSync_Primitive() when primitive != null:
+        return primitive(_that);
+      case EnumDartOpaqueTwinSync_Opaque() when opaque != null:
+        return opaque(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int field0)? primitive,
+    TResult Function(Object field0)? opaque,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case EnumDartOpaqueTwinSync_Primitive() when primitive != null:
+        return primitive(_that.field0);
+      case EnumDartOpaqueTwinSync_Opaque() when opaque != null:
+        return opaque(_that.field0);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int field0) primitive,
+    required TResult Function(Object field0) opaque,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case EnumDartOpaqueTwinSync_Primitive():
+        return primitive(_that.field0);
+      case EnumDartOpaqueTwinSync_Opaque():
+        return opaque(_that.field0);
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int field0)? primitive,
+    TResult? Function(Object field0)? opaque,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case EnumDartOpaqueTwinSync_Primitive() when primitive != null:
+        return primitive(_that.field0);
+      case EnumDartOpaqueTwinSync_Opaque() when opaque != null:
+        return opaque(_that.field0);
+      case _:
+        return null;
+    }
+  }
 }
 
 /// @nodoc
-abstract class $EnumDartOpaqueTwinSyncCopyWith<$Res> {
-  factory $EnumDartOpaqueTwinSyncCopyWith(EnumDartOpaqueTwinSync value,
-          $Res Function(EnumDartOpaqueTwinSync) then) =
-      _$EnumDartOpaqueTwinSyncCopyWithImpl<$Res, EnumDartOpaqueTwinSync>;
-}
 
-/// @nodoc
-class _$EnumDartOpaqueTwinSyncCopyWithImpl<$Res,
-        $Val extends EnumDartOpaqueTwinSync>
-    implements $EnumDartOpaqueTwinSyncCopyWith<$Res> {
-  _$EnumDartOpaqueTwinSyncCopyWithImpl(this._value, this._then);
+class EnumDartOpaqueTwinSync_Primitive extends EnumDartOpaqueTwinSync {
+  const EnumDartOpaqueTwinSync_Primitive(this.field0) : super._();
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  @override
+  final int field0;
 
   /// Create a copy of EnumDartOpaqueTwinSync
   /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $EnumDartOpaqueTwinSync_PrimitiveCopyWith<EnumDartOpaqueTwinSync_Primitive>
+      get copyWith => _$EnumDartOpaqueTwinSync_PrimitiveCopyWithImpl<
+          EnumDartOpaqueTwinSync_Primitive>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is EnumDartOpaqueTwinSync_Primitive &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @override
+  String toString() {
+    return 'EnumDartOpaqueTwinSync.primitive(field0: $field0)';
+  }
 }
 
 /// @nodoc
-abstract class _$$EnumDartOpaqueTwinSync_PrimitiveImplCopyWith<$Res> {
-  factory _$$EnumDartOpaqueTwinSync_PrimitiveImplCopyWith(
-          _$EnumDartOpaqueTwinSync_PrimitiveImpl value,
-          $Res Function(_$EnumDartOpaqueTwinSync_PrimitiveImpl) then) =
-      __$$EnumDartOpaqueTwinSync_PrimitiveImplCopyWithImpl<$Res>;
+abstract mixin class $EnumDartOpaqueTwinSync_PrimitiveCopyWith<$Res>
+    implements $EnumDartOpaqueTwinSyncCopyWith<$Res> {
+  factory $EnumDartOpaqueTwinSync_PrimitiveCopyWith(
+          EnumDartOpaqueTwinSync_Primitive value,
+          $Res Function(EnumDartOpaqueTwinSync_Primitive) _then) =
+      _$EnumDartOpaqueTwinSync_PrimitiveCopyWithImpl;
   @useResult
   $Res call({int field0});
 }
 
 /// @nodoc
-class __$$EnumDartOpaqueTwinSync_PrimitiveImplCopyWithImpl<$Res>
-    extends _$EnumDartOpaqueTwinSyncCopyWithImpl<$Res,
-        _$EnumDartOpaqueTwinSync_PrimitiveImpl>
-    implements _$$EnumDartOpaqueTwinSync_PrimitiveImplCopyWith<$Res> {
-  __$$EnumDartOpaqueTwinSync_PrimitiveImplCopyWithImpl(
-      _$EnumDartOpaqueTwinSync_PrimitiveImpl _value,
-      $Res Function(_$EnumDartOpaqueTwinSync_PrimitiveImpl) _then)
-      : super(_value, _then);
+class _$EnumDartOpaqueTwinSync_PrimitiveCopyWithImpl<$Res>
+    implements $EnumDartOpaqueTwinSync_PrimitiveCopyWith<$Res> {
+  _$EnumDartOpaqueTwinSync_PrimitiveCopyWithImpl(this._self, this._then);
+
+  final EnumDartOpaqueTwinSync_Primitive _self;
+  final $Res Function(EnumDartOpaqueTwinSync_Primitive) _then;
 
   /// Create a copy of EnumDartOpaqueTwinSync
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$EnumDartOpaqueTwinSync_PrimitiveImpl(
+    return _then(EnumDartOpaqueTwinSync_Primitive(
       null == field0
-          ? _value.field0
+          ? _self.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as int,
     ));
@@ -117,170 +280,25 @@ class __$$EnumDartOpaqueTwinSync_PrimitiveImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EnumDartOpaqueTwinSync_PrimitiveImpl
-    extends EnumDartOpaqueTwinSync_Primitive {
-  const _$EnumDartOpaqueTwinSync_PrimitiveImpl(this.field0) : super._();
-
-  @override
-  final int field0;
-
-  @override
-  String toString() {
-    return 'EnumDartOpaqueTwinSync.primitive(field0: $field0)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$EnumDartOpaqueTwinSync_PrimitiveImpl &&
-            (identical(other.field0, field0) || other.field0 == field0));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, field0);
-
-  /// Create a copy of EnumDartOpaqueTwinSync
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$EnumDartOpaqueTwinSync_PrimitiveImplCopyWith<
-          _$EnumDartOpaqueTwinSync_PrimitiveImpl>
-      get copyWith => __$$EnumDartOpaqueTwinSync_PrimitiveImplCopyWithImpl<
-          _$EnumDartOpaqueTwinSync_PrimitiveImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int field0) primitive,
-    required TResult Function(Object field0) opaque,
-  }) {
-    return primitive(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int field0)? primitive,
-    TResult? Function(Object field0)? opaque,
-  }) {
-    return primitive?.call(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int field0)? primitive,
-    TResult Function(Object field0)? opaque,
-    required TResult orElse(),
-  }) {
-    if (primitive != null) {
-      return primitive(field0);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(EnumDartOpaqueTwinSync_Primitive value) primitive,
-    required TResult Function(EnumDartOpaqueTwinSync_Opaque value) opaque,
-  }) {
-    return primitive(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumDartOpaqueTwinSync_Primitive value)? primitive,
-    TResult? Function(EnumDartOpaqueTwinSync_Opaque value)? opaque,
-  }) {
-    return primitive?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnumDartOpaqueTwinSync_Primitive value)? primitive,
-    TResult Function(EnumDartOpaqueTwinSync_Opaque value)? opaque,
-    required TResult orElse(),
-  }) {
-    if (primitive != null) {
-      return primitive(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class EnumDartOpaqueTwinSync_Primitive extends EnumDartOpaqueTwinSync {
-  const factory EnumDartOpaqueTwinSync_Primitive(final int field0) =
-      _$EnumDartOpaqueTwinSync_PrimitiveImpl;
-  const EnumDartOpaqueTwinSync_Primitive._() : super._();
-
-  @override
-  int get field0;
-
-  /// Create a copy of EnumDartOpaqueTwinSync
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$EnumDartOpaqueTwinSync_PrimitiveImplCopyWith<
-          _$EnumDartOpaqueTwinSync_PrimitiveImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$EnumDartOpaqueTwinSync_OpaqueImplCopyWith<$Res> {
-  factory _$$EnumDartOpaqueTwinSync_OpaqueImplCopyWith(
-          _$EnumDartOpaqueTwinSync_OpaqueImpl value,
-          $Res Function(_$EnumDartOpaqueTwinSync_OpaqueImpl) then) =
-      __$$EnumDartOpaqueTwinSync_OpaqueImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Object field0});
-}
-
-/// @nodoc
-class __$$EnumDartOpaqueTwinSync_OpaqueImplCopyWithImpl<$Res>
-    extends _$EnumDartOpaqueTwinSyncCopyWithImpl<$Res,
-        _$EnumDartOpaqueTwinSync_OpaqueImpl>
-    implements _$$EnumDartOpaqueTwinSync_OpaqueImplCopyWith<$Res> {
-  __$$EnumDartOpaqueTwinSync_OpaqueImplCopyWithImpl(
-      _$EnumDartOpaqueTwinSync_OpaqueImpl _value,
-      $Res Function(_$EnumDartOpaqueTwinSync_OpaqueImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of EnumDartOpaqueTwinSync
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$EnumDartOpaqueTwinSync_OpaqueImpl(
-      null == field0 ? _value.field0 : field0,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$EnumDartOpaqueTwinSync_OpaqueImpl
-    extends EnumDartOpaqueTwinSync_Opaque {
-  const _$EnumDartOpaqueTwinSync_OpaqueImpl(this.field0) : super._();
+class EnumDartOpaqueTwinSync_Opaque extends EnumDartOpaqueTwinSync {
+  const EnumDartOpaqueTwinSync_Opaque(this.field0) : super._();
 
   @override
   final Object field0;
 
-  @override
-  String toString() {
-    return 'EnumDartOpaqueTwinSync.opaque(field0: $field0)';
-  }
+  /// Create a copy of EnumDartOpaqueTwinSync
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $EnumDartOpaqueTwinSync_OpaqueCopyWith<EnumDartOpaqueTwinSync_Opaque>
+      get copyWith => _$EnumDartOpaqueTwinSync_OpaqueCopyWithImpl<
+          EnumDartOpaqueTwinSync_Opaque>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EnumDartOpaqueTwinSync_OpaqueImpl &&
+            other is EnumDartOpaqueTwinSync_Opaque &&
             const DeepCollectionEquality().equals(other.field0, field0));
   }
 
@@ -288,91 +306,41 @@ class _$EnumDartOpaqueTwinSync_OpaqueImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
 
+  @override
+  String toString() {
+    return 'EnumDartOpaqueTwinSync.opaque(field0: $field0)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $EnumDartOpaqueTwinSync_OpaqueCopyWith<$Res>
+    implements $EnumDartOpaqueTwinSyncCopyWith<$Res> {
+  factory $EnumDartOpaqueTwinSync_OpaqueCopyWith(
+          EnumDartOpaqueTwinSync_Opaque value,
+          $Res Function(EnumDartOpaqueTwinSync_Opaque) _then) =
+      _$EnumDartOpaqueTwinSync_OpaqueCopyWithImpl;
+  @useResult
+  $Res call({Object field0});
+}
+
+/// @nodoc
+class _$EnumDartOpaqueTwinSync_OpaqueCopyWithImpl<$Res>
+    implements $EnumDartOpaqueTwinSync_OpaqueCopyWith<$Res> {
+  _$EnumDartOpaqueTwinSync_OpaqueCopyWithImpl(this._self, this._then);
+
+  final EnumDartOpaqueTwinSync_Opaque _self;
+  final $Res Function(EnumDartOpaqueTwinSync_Opaque) _then;
+
   /// Create a copy of EnumDartOpaqueTwinSync
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
   @pragma('vm:prefer-inline')
-  _$$EnumDartOpaqueTwinSync_OpaqueImplCopyWith<
-          _$EnumDartOpaqueTwinSync_OpaqueImpl>
-      get copyWith => __$$EnumDartOpaqueTwinSync_OpaqueImplCopyWithImpl<
-          _$EnumDartOpaqueTwinSync_OpaqueImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int field0) primitive,
-    required TResult Function(Object field0) opaque,
+  $Res call({
+    Object? field0 = null,
   }) {
-    return opaque(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int field0)? primitive,
-    TResult? Function(Object field0)? opaque,
-  }) {
-    return opaque?.call(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int field0)? primitive,
-    TResult Function(Object field0)? opaque,
-    required TResult orElse(),
-  }) {
-    if (opaque != null) {
-      return opaque(field0);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(EnumDartOpaqueTwinSync_Primitive value) primitive,
-    required TResult Function(EnumDartOpaqueTwinSync_Opaque value) opaque,
-  }) {
-    return opaque(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EnumDartOpaqueTwinSync_Primitive value)? primitive,
-    TResult? Function(EnumDartOpaqueTwinSync_Opaque value)? opaque,
-  }) {
-    return opaque?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnumDartOpaqueTwinSync_Primitive value)? primitive,
-    TResult Function(EnumDartOpaqueTwinSync_Opaque value)? opaque,
-    required TResult orElse(),
-  }) {
-    if (opaque != null) {
-      return opaque(this);
-    }
-    return orElse();
+    return _then(EnumDartOpaqueTwinSync_Opaque(
+      null == field0 ? _self.field0 : field0,
+    ));
   }
 }
 
-abstract class EnumDartOpaqueTwinSync_Opaque extends EnumDartOpaqueTwinSync {
-  const factory EnumDartOpaqueTwinSync_Opaque(final Object field0) =
-      _$EnumDartOpaqueTwinSync_OpaqueImpl;
-  const EnumDartOpaqueTwinSync_Opaque._() : super._();
-
-  @override
-  Object get field0;
-
-  /// Create a copy of EnumDartOpaqueTwinSync
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$EnumDartOpaqueTwinSync_OpaqueImplCopyWith<
-          _$EnumDartOpaqueTwinSync_OpaqueImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
+// dart format on

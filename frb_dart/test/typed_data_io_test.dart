@@ -1,4 +1,6 @@
 @TestOn('vm')
+library;
+
 import 'dart:typed_data' as $data;
 import 'dart:typed_data';
 

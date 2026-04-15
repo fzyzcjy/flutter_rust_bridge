@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,335 +9,289 @@ part of 'method_twin_rust_async_sse.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SimpleEnumTwinRustAsyncSse {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() first,
-    required TResult Function(String field0) second,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? first,
-    TResult? Function(String field0)? second,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? first,
-    TResult Function(String field0)? second,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(SimpleEnumTwinRustAsyncSse_First value) first,
-    required TResult Function(SimpleEnumTwinRustAsyncSse_Second value) second,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(SimpleEnumTwinRustAsyncSse_First value)? first,
-    TResult? Function(SimpleEnumTwinRustAsyncSse_Second value)? second,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(SimpleEnumTwinRustAsyncSse_First value)? first,
-    TResult Function(SimpleEnumTwinRustAsyncSse_Second value)? second,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $SimpleEnumTwinRustAsyncSseCopyWith<$Res> {
-  factory $SimpleEnumTwinRustAsyncSseCopyWith(SimpleEnumTwinRustAsyncSse value,
-          $Res Function(SimpleEnumTwinRustAsyncSse) then) =
-      _$SimpleEnumTwinRustAsyncSseCopyWithImpl<$Res,
-          SimpleEnumTwinRustAsyncSse>;
-}
-
-/// @nodoc
-class _$SimpleEnumTwinRustAsyncSseCopyWithImpl<$Res,
-        $Val extends SimpleEnumTwinRustAsyncSse>
-    implements $SimpleEnumTwinRustAsyncSseCopyWith<$Res> {
-  _$SimpleEnumTwinRustAsyncSseCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of SimpleEnumTwinRustAsyncSse
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-abstract class _$$SimpleEnumTwinRustAsyncSse_FirstImplCopyWith<$Res> {
-  factory _$$SimpleEnumTwinRustAsyncSse_FirstImplCopyWith(
-          _$SimpleEnumTwinRustAsyncSse_FirstImpl value,
-          $Res Function(_$SimpleEnumTwinRustAsyncSse_FirstImpl) then) =
-      __$$SimpleEnumTwinRustAsyncSse_FirstImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$SimpleEnumTwinRustAsyncSse_FirstImplCopyWithImpl<$Res>
-    extends _$SimpleEnumTwinRustAsyncSseCopyWithImpl<$Res,
-        _$SimpleEnumTwinRustAsyncSse_FirstImpl>
-    implements _$$SimpleEnumTwinRustAsyncSse_FirstImplCopyWith<$Res> {
-  __$$SimpleEnumTwinRustAsyncSse_FirstImplCopyWithImpl(
-      _$SimpleEnumTwinRustAsyncSse_FirstImpl _value,
-      $Res Function(_$SimpleEnumTwinRustAsyncSse_FirstImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of SimpleEnumTwinRustAsyncSse
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$SimpleEnumTwinRustAsyncSse_FirstImpl
-    extends SimpleEnumTwinRustAsyncSse_First {
-  const _$SimpleEnumTwinRustAsyncSse_FirstImpl() : super._();
-
-  @override
-  String toString() {
-    return 'SimpleEnumTwinRustAsyncSse.first()';
-  }
-
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SimpleEnumTwinRustAsyncSse_FirstImpl);
+            other is SimpleEnumTwinRustAsyncSse);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() first,
-    required TResult Function(String field0) second,
-  }) {
-    return first();
+  String toString() {
+    return 'SimpleEnumTwinRustAsyncSse()';
   }
+}
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? first,
-    TResult? Function(String field0)? second,
-  }) {
-    return first?.call();
-  }
+/// @nodoc
+class $SimpleEnumTwinRustAsyncSseCopyWith<$Res> {
+  $SimpleEnumTwinRustAsyncSseCopyWith(SimpleEnumTwinRustAsyncSse _,
+      $Res Function(SimpleEnumTwinRustAsyncSse) __);
+}
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? first,
-    TResult Function(String field0)? second,
-    required TResult orElse(),
-  }) {
-    if (first != null) {
-      return first();
-    }
-    return orElse();
-  }
+/// Adds pattern-matching-related methods to [SimpleEnumTwinRustAsyncSse].
+extension SimpleEnumTwinRustAsyncSsePatterns on SimpleEnumTwinRustAsyncSse {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(SimpleEnumTwinRustAsyncSse_First value) first,
-    required TResult Function(SimpleEnumTwinRustAsyncSse_Second value) second,
-  }) {
-    return first(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(SimpleEnumTwinRustAsyncSse_First value)? first,
-    TResult? Function(SimpleEnumTwinRustAsyncSse_Second value)? second,
-  }) {
-    return first?.call(this);
-  }
-
-  @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SimpleEnumTwinRustAsyncSse_First value)? first,
     TResult Function(SimpleEnumTwinRustAsyncSse_Second value)? second,
     required TResult orElse(),
   }) {
-    if (first != null) {
-      return first(this);
+    final _that = this;
+    switch (_that) {
+      case SimpleEnumTwinRustAsyncSse_First() when first != null:
+        return first(_that);
+      case SimpleEnumTwinRustAsyncSse_Second() when second != null:
+        return second(_that);
+      case _:
+        return orElse();
     }
-    return orElse();
   }
-}
 
-abstract class SimpleEnumTwinRustAsyncSse_First
-    extends SimpleEnumTwinRustAsyncSse {
-  const factory SimpleEnumTwinRustAsyncSse_First() =
-      _$SimpleEnumTwinRustAsyncSse_FirstImpl;
-  const SimpleEnumTwinRustAsyncSse_First._() : super._();
-}
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
 
-/// @nodoc
-abstract class _$$SimpleEnumTwinRustAsyncSse_SecondImplCopyWith<$Res> {
-  factory _$$SimpleEnumTwinRustAsyncSse_SecondImplCopyWith(
-          _$SimpleEnumTwinRustAsyncSse_SecondImpl value,
-          $Res Function(_$SimpleEnumTwinRustAsyncSse_SecondImpl) then) =
-      __$$SimpleEnumTwinRustAsyncSse_SecondImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String field0});
-}
-
-/// @nodoc
-class __$$SimpleEnumTwinRustAsyncSse_SecondImplCopyWithImpl<$Res>
-    extends _$SimpleEnumTwinRustAsyncSseCopyWithImpl<$Res,
-        _$SimpleEnumTwinRustAsyncSse_SecondImpl>
-    implements _$$SimpleEnumTwinRustAsyncSse_SecondImplCopyWith<$Res> {
-  __$$SimpleEnumTwinRustAsyncSse_SecondImplCopyWithImpl(
-      _$SimpleEnumTwinRustAsyncSse_SecondImpl _value,
-      $Res Function(_$SimpleEnumTwinRustAsyncSse_SecondImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of SimpleEnumTwinRustAsyncSse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? field0 = null,
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SimpleEnumTwinRustAsyncSse_First value) first,
+    required TResult Function(SimpleEnumTwinRustAsyncSse_Second value) second,
   }) {
-    return _then(_$SimpleEnumTwinRustAsyncSse_SecondImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    final _that = this;
+    switch (_that) {
+      case SimpleEnumTwinRustAsyncSse_First():
+        return first(_that);
+      case SimpleEnumTwinRustAsyncSse_Second():
+        return second(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SimpleEnumTwinRustAsyncSse_First value)? first,
+    TResult? Function(SimpleEnumTwinRustAsyncSse_Second value)? second,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case SimpleEnumTwinRustAsyncSse_First() when first != null:
+        return first(_that);
+      case SimpleEnumTwinRustAsyncSse_Second() when second != null:
+        return second(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? first,
+    TResult Function(String field0)? second,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case SimpleEnumTwinRustAsyncSse_First() when first != null:
+        return first();
+      case SimpleEnumTwinRustAsyncSse_Second() when second != null:
+        return second(_that.field0);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() first,
+    required TResult Function(String field0) second,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case SimpleEnumTwinRustAsyncSse_First():
+        return first();
+      case SimpleEnumTwinRustAsyncSse_Second():
+        return second(_that.field0);
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? first,
+    TResult? Function(String field0)? second,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case SimpleEnumTwinRustAsyncSse_First() when first != null:
+        return first();
+      case SimpleEnumTwinRustAsyncSse_Second() when second != null:
+        return second(_that.field0);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 
-class _$SimpleEnumTwinRustAsyncSse_SecondImpl
-    extends SimpleEnumTwinRustAsyncSse_Second {
-  const _$SimpleEnumTwinRustAsyncSse_SecondImpl(this.field0) : super._();
-
-  @override
-  final String field0;
-
-  @override
-  String toString() {
-    return 'SimpleEnumTwinRustAsyncSse.second(field0: $field0)';
-  }
+class SimpleEnumTwinRustAsyncSse_First extends SimpleEnumTwinRustAsyncSse {
+  const SimpleEnumTwinRustAsyncSse_First() : super._();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SimpleEnumTwinRustAsyncSse_SecondImpl &&
+            other is SimpleEnumTwinRustAsyncSse_First);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'SimpleEnumTwinRustAsyncSse.first()';
+  }
+}
+
+/// @nodoc
+
+class SimpleEnumTwinRustAsyncSse_Second extends SimpleEnumTwinRustAsyncSse {
+  const SimpleEnumTwinRustAsyncSse_Second(this.field0) : super._();
+
+  final String field0;
+
+  /// Create a copy of SimpleEnumTwinRustAsyncSse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $SimpleEnumTwinRustAsyncSse_SecondCopyWith<SimpleEnumTwinRustAsyncSse_Second>
+      get copyWith => _$SimpleEnumTwinRustAsyncSse_SecondCopyWithImpl<
+          SimpleEnumTwinRustAsyncSse_Second>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is SimpleEnumTwinRustAsyncSse_Second &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
+  @override
+  String toString() {
+    return 'SimpleEnumTwinRustAsyncSse.second(field0: $field0)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $SimpleEnumTwinRustAsyncSse_SecondCopyWith<$Res>
+    implements $SimpleEnumTwinRustAsyncSseCopyWith<$Res> {
+  factory $SimpleEnumTwinRustAsyncSse_SecondCopyWith(
+          SimpleEnumTwinRustAsyncSse_Second value,
+          $Res Function(SimpleEnumTwinRustAsyncSse_Second) _then) =
+      _$SimpleEnumTwinRustAsyncSse_SecondCopyWithImpl;
+  @useResult
+  $Res call({String field0});
+}
+
+/// @nodoc
+class _$SimpleEnumTwinRustAsyncSse_SecondCopyWithImpl<$Res>
+    implements $SimpleEnumTwinRustAsyncSse_SecondCopyWith<$Res> {
+  _$SimpleEnumTwinRustAsyncSse_SecondCopyWithImpl(this._self, this._then);
+
+  final SimpleEnumTwinRustAsyncSse_Second _self;
+  final $Res Function(SimpleEnumTwinRustAsyncSse_Second) _then;
+
   /// Create a copy of SimpleEnumTwinRustAsyncSse
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
   @pragma('vm:prefer-inline')
-  _$$SimpleEnumTwinRustAsyncSse_SecondImplCopyWith<
-          _$SimpleEnumTwinRustAsyncSse_SecondImpl>
-      get copyWith => __$$SimpleEnumTwinRustAsyncSse_SecondImplCopyWithImpl<
-          _$SimpleEnumTwinRustAsyncSse_SecondImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() first,
-    required TResult Function(String field0) second,
+  $Res call({
+    Object? field0 = null,
   }) {
-    return second(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? first,
-    TResult? Function(String field0)? second,
-  }) {
-    return second?.call(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? first,
-    TResult Function(String field0)? second,
-    required TResult orElse(),
-  }) {
-    if (second != null) {
-      return second(field0);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(SimpleEnumTwinRustAsyncSse_First value) first,
-    required TResult Function(SimpleEnumTwinRustAsyncSse_Second value) second,
-  }) {
-    return second(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(SimpleEnumTwinRustAsyncSse_First value)? first,
-    TResult? Function(SimpleEnumTwinRustAsyncSse_Second value)? second,
-  }) {
-    return second?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(SimpleEnumTwinRustAsyncSse_First value)? first,
-    TResult Function(SimpleEnumTwinRustAsyncSse_Second value)? second,
-    required TResult orElse(),
-  }) {
-    if (second != null) {
-      return second(this);
-    }
-    return orElse();
+    return _then(SimpleEnumTwinRustAsyncSse_Second(
+      null == field0
+          ? _self.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
-abstract class SimpleEnumTwinRustAsyncSse_Second
-    extends SimpleEnumTwinRustAsyncSse {
-  const factory SimpleEnumTwinRustAsyncSse_Second(final String field0) =
-      _$SimpleEnumTwinRustAsyncSse_SecondImpl;
-  const SimpleEnumTwinRustAsyncSse_Second._() : super._();
-
-  String get field0;
-
-  /// Create a copy of SimpleEnumTwinRustAsyncSse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SimpleEnumTwinRustAsyncSse_SecondImplCopyWith<
-          _$SimpleEnumTwinRustAsyncSse_SecondImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
+// dart format on

@@ -14,4 +14,6 @@ Future<void> funcAsyncVoidTwinSse() => RustLib.instance.api
 Future<int> funcAsyncSimpleAddTwinSse({required int a, required int b}) =>
     RustLib.instance.api
         .crateApiPseudoManualAsyncMiscTwinSseFuncAsyncSimpleAddTwinSse(
-            a: a, b: b);
+          a: a,
+          b: b,
+        );

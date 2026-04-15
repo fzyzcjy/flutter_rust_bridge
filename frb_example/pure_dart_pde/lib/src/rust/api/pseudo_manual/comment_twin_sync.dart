@@ -30,13 +30,11 @@ class StructWithCommentsTwinSync {
   /// Documentation on a struct field
   final int fieldWithComments;
 
-  const StructWithCommentsTwinSync({
-    required this.fieldWithComments,
-  });
+  const StructWithCommentsTwinSync({required this.fieldWithComments});
 
   /// Documentation on an instance method
   void instanceMethodTwinSync() => RustLib.instance.api
-          .crateApiPseudoManualCommentTwinSyncStructWithCommentsTwinSyncInstanceMethodTwinSync(
+      .crateApiPseudoManualCommentTwinSyncStructWithCommentsTwinSyncInstanceMethodTwinSync(
         that: this,
       );
 

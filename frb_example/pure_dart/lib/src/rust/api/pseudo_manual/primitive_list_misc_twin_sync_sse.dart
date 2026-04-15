@@ -8,11 +8,12 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-VecOfPrimitivePackTwinSyncSse handleVecOfPrimitiveTwinSyncSse(
-        {required int n}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualPrimitiveListMiscTwinSyncSseHandleVecOfPrimitiveTwinSyncSse(
-            n: n);
+VecOfPrimitivePackTwinSyncSse handleVecOfPrimitiveTwinSyncSse({
+  required int n,
+}) => RustLib.instance.api
+    .crateApiPseudoManualPrimitiveListMiscTwinSyncSseHandleVecOfPrimitiveTwinSyncSse(
+      n: n,
+    );
 
 class VecOfPrimitivePackTwinSyncSse {
   final Int8List int8List;
@@ -53,7 +54,7 @@ class VecOfPrimitivePackTwinSyncSse {
       int64List.hashCode ^
       float32List.hashCode ^
       float64List.hashCode ^
-      boolList.hashCode;
+      const DeepCollectionEquality().hash(boolList);
 
   @override
   bool operator ==(Object other) =>
@@ -70,5 +71,5 @@ class VecOfPrimitivePackTwinSyncSse {
           int64List == other.int64List &&
           float32List == other.float32List &&
           float64List == other.float64List &&
-          boolList == other.boolList;
+          const DeepCollectionEquality().equals(boolList, other.boolList);
 }

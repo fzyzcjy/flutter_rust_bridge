@@ -3,15 +3,15 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:html';
+import 'dart:js_interop';
 
 import 'package:flutter_rust_bridge_utils/src/dart_web_test_utils/run_test.dart';
-import 'package:js/js.dart';
 import 'package:test_core/src/direct_run.dart';
 import 'package:test_core/src/runner/reporter/expanded.dart';
 import 'package:test_core/src/util/print_sink.dart';
 
 @JS('close')
-external void _jsClose();
+external void _closeJs();
 
 Future<void> dartWebTestEntrypoint(FutureOr<void> Function() testMain) async {
   final result = await directRunTests(
@@ -30,7 +30,7 @@ Future<void> dartWebTestEntrypoint(FutureOr<void> Function() testMain) async {
 
   await _sendResult(result: result);
 
-  _jsClose();
+  _closeJs();
 }
 
 Future<void> _sendResult({required bool result}) async {

@@ -1,4 +1,6 @@
 @TestOn('vm')
+library;
+
 import 'dart:io';
 
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';

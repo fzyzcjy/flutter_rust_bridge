@@ -204,6 +204,13 @@ impl_into_into_dart_by_self!(allo_isolate::ffi::DartCObject);
 impl_into_into_dart_by_self!(wasm_bindgen::JsValue);
 #[cfg(feature = "uuid")]
 impl_into_into_dart_by_self!(uuid::Uuid);
+#[cfg(feature = "serde_json")]
+impl IntoIntoDart<String> for serde_json::Value {
+    #[inline(always)]
+    fn into_into_dart(self) -> String {
+        serde_json::to_string(&self).expect("Failed to serialize serde_json::Value")
+    }
+}
 #[cfg(feature = "backtrace")]
 impl_into_into_dart_by_self!(backtrace::Backtrace);
 #[cfg(feature = "anyhow")]
@@ -216,6 +223,7 @@ mod chrono_impls {
     use super::IntoIntoDart;
     use chrono::{Local, Utc};
     impl_into_into_dart_by_self!(chrono::Duration);
+    impl_into_into_dart_by_self!(chrono::NaiveDate);
     impl_into_into_dart_by_self!(chrono::NaiveDateTime);
     impl_into_into_dart_by_self!(chrono::DateTime<Local>);
     impl_into_into_dart_by_self!(chrono::DateTime<Utc>);

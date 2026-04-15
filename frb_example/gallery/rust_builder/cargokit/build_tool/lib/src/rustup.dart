@@ -21,17 +21,6 @@ class Rustup {
     return targets != null ? List.unmodifiable(targets) : null;
   }
 
-  String resolveToolchain(String toolchain) =>
-      _installedToolchains
-          .firstWhereOrNull(
-            (e) => _matchesRequestedToolchain(
-              installedName: e.name,
-              requestedToolchain: toolchain,
-            ),
-          )
-          ?.name ??
-      toolchain;
-
   void installToolchain(String toolchain) {
     log.info("Installing Rust toolchain: $toolchain");
     runCommand("rustup", ['toolchain', 'install', toolchain]);
@@ -71,20 +60,9 @@ class Rustup {
 
   Rustup() : _installedToolchains = _getInstalledToolchains();
 
-  bool _matchesRequestedToolchain({
-    required String installedName,
-    required String requestedToolchain,
-  }) =>
-      installedName == requestedToolchain ||
-      installedName.startsWith('$requestedToolchain-');
-
   List<String>? _installedTargets(String toolchain) => _installedToolchains
       .firstWhereOrNull(
-        (e) => _matchesRequestedToolchain(
-          installedName: e.name,
-          requestedToolchain: toolchain,
-        ),
-      )
+          (e) => e.name == toolchain || e.name.startsWith('$toolchain-'))
       ?.targets;
 
   static List<_Toolchain> _getInstalledToolchains() {
@@ -98,11 +76,11 @@ class Rustup {
 
     // To list all non-custom toolchains, we need to filter out lines that
     // don't start with "stable", "beta", or "nightly".
-    final nonCustom = RegExp(r'^(stable|beta|nightly)');
+    Pattern nonCustom = RegExp(r"^(stable|beta|nightly)");
     final lines = res.stdout
         .toString()
         .split('\n')
-        .where((e) => e.isNotEmpty && nonCustom.hasMatch(e))
+        .where((e) => e.isNotEmpty && e.startsWith(nonCustom))
         .map(extractToolchainName)
         .toList(growable: true);
 
@@ -134,14 +112,14 @@ class Rustup {
 
   bool _didInstallRustSrcForNightly = false;
 
-  void installRustSrcForNightly({String toolchain = 'nightly'}) {
+  void installRustSrcForNightly() {
     if (_didInstallRustSrcForNightly) {
       return;
     }
     // Useful for -Z build-std
     runCommand(
       "rustup",
-      ['component', 'add', 'rust-src', '--toolchain', toolchain],
+      ['component', 'add', 'rust-src', '--toolchain', 'nightly'],
     );
     _didInstallRustSrcForNightly = true;
   }

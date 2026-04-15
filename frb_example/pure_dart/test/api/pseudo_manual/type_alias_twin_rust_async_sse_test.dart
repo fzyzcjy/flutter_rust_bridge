@@ -16,8 +16,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('dart call handle_type_nest_alias_id', () async {
-    final id =
-        await handleTypeNestAliasIdTwinRustAsyncSse(input: BigInt.from(42));
+    final id = await handleTypeNestAliasIdTwinRustAsyncSse(
+      input: BigInt.from(42),
+    );
     expect(id.toInt(), 42);
   });
 

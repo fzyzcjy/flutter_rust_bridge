@@ -3,10 +3,9 @@ use crate::integration::integrator::pub_add_dependency_frb;
 use crate::library::commands::cargo::cargo_add;
 use crate::utils::dart_repository::dart_repo::{DartDependencyMode, DartRepository};
 use anyhow::{anyhow, Result};
-use cargo_metadata::VersionReq;
+use cargo_metadata::semver::VersionReq;
 use cargo_toml::{Dependency, Manifest};
 use std::path::Path;
-use std::str::FromStr;
 
 pub(super) fn execute(
     progress_bar_pack: &GeneratorProgressBarPack,
@@ -61,7 +60,7 @@ impl Upgrader for DartUpgrader<'_> {
             .has_specified_and_installed(
                 "flutter_rust_bridge",
                 DartDependencyMode::Main,
-                &VersionReq::from_str(concat!("=", env!("CARGO_PKG_VERSION")))?,
+                &VersionReq::parse(concat!("=", env!("CARGO_PKG_VERSION")))?,
             )
             .is_ok())
     }

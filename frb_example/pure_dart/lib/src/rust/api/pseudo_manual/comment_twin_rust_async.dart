@@ -12,20 +12,23 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 /// This is single line comment
 Future<void> functionWithCommentsTripleSlashSingleLineTwinRustAsync() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualCommentTwinRustAsyncFunctionWithCommentsTripleSlashSingleLineTwinRustAsync();
 
 /// This is first line
 /// This is second line
 Future<void> functionWithCommentsTripleSlashMultiLineTwinRustAsync() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualCommentTwinRustAsyncFunctionWithCommentsTripleSlashMultiLineTwinRustAsync();
 
 /// Multiline comments are fine,
 /// but they are not preferred in Rust nor in Dart.
 /// Newlines are preserved.
 Future<void> functionWithCommentsSlashStarStarTwinRustAsync() => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualCommentTwinRustAsyncFunctionWithCommentsSlashStarStarTwinRustAsync();
 
 /// Comments on structs
@@ -33,13 +36,11 @@ class StructWithCommentsTwinRustAsync {
   /// Documentation on a struct field
   final int fieldWithComments;
 
-  const StructWithCommentsTwinRustAsync({
-    required this.fieldWithComments,
-  });
+  const StructWithCommentsTwinRustAsync({required this.fieldWithComments});
 
   /// Documentation on an instance method
   Future<void> instanceMethodTwinRustAsync() => RustLib.instance.api
-          .crateApiPseudoManualCommentTwinRustAsyncStructWithCommentsTwinRustAsyncInstanceMethodTwinRustAsync(
+      .crateApiPseudoManualCommentTwinRustAsyncStructWithCommentsTwinRustAsyncInstanceMethodTwinRustAsync(
         that: this,
       );
 

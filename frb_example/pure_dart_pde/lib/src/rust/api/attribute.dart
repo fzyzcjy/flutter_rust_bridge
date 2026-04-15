@@ -16,23 +16,22 @@ part 'attribute.freezed.dart';
 // These functions are ignored (category: IgnoreBecauseExplicitAttribute): `func_should_not_exist_in_dart_twin_normal`, `method_should_not_exist_in_dart_twin_normal`
 // These functions are ignored (category: IgnoreBecauseOwnerTyShouldIgnore): `method_should_not_exist_in_dart_twin_normal`
 
-Future<void> handleCustomizedStructTwinNormal(
-        {required CustomizedTwinNormal val}) =>
-    RustLib.instance.api
-        .crateApiAttributeHandleCustomizedStructTwinNormal(val: val);
+Future<void> handleCustomizedStructTwinNormal({
+  required CustomizedTwinNormal val,
+}) => RustLib.instance.api.crateApiAttributeHandleCustomizedStructTwinNormal(
+  val: val,
+);
 
-Future<UserIdTwinNormal> nextUserIdTwinNormal(
-        {UserIdTwinNormal userId = const UserIdTwinNormal()}) =>
+Future<UserIdTwinNormal> nextUserIdTwinNormal({
+  UserIdTwinNormal userId = const UserIdTwinNormal(),
+}) =>
     RustLib.instance.api.crateApiAttributeNextUserIdTwinNormal(userId: userId);
 
 class CustomizedTwinNormal {
   final String finalField;
   String? nonFinalField;
 
-  CustomizedTwinNormal({
-    required this.finalField,
-    this.nonFinalField,
-  });
+  CustomizedTwinNormal({required this.finalField, this.nonFinalField});
 
   @override
   int get hashCode => finalField.hashCode ^ nonFinalField.hashCode;
@@ -50,7 +49,5 @@ class CustomizedTwinNormal {
 @freezed
 @meta.immutable
 sealed class UserIdTwinNormal with _$UserIdTwinNormal {
-  const factory UserIdTwinNormal({
-    @Default(0) int value,
-  }) = _UserIdTwinNormal;
+  const factory UserIdTwinNormal({@Default(0) int value}) = _UserIdTwinNormal;
 }

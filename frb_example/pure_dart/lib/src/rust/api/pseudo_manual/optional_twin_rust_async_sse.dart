@@ -12,62 +12,68 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `fmt`, `fmt`, `fmt`
 
-Future<double?> handleOptionalReturnTwinRustAsyncSse(
-        {required double left, required double right}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinRustAsyncSseHandleOptionalReturnTwinRustAsyncSse(
-            left: left, right: right);
+Future<double?> handleOptionalReturnTwinRustAsyncSse({
+  required double left,
+  required double right,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinRustAsyncSseHandleOptionalReturnTwinRustAsyncSse(
+      left: left,
+      right: right,
+    );
 
-Future<ElementTwinRustAsyncSse?> handleOptionalStructTwinRustAsyncSse(
-        {String? document}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinRustAsyncSseHandleOptionalStructTwinRustAsyncSse(
-            document: document);
+Future<ElementTwinRustAsyncSse?> handleOptionalStructTwinRustAsyncSse({
+  String? document,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinRustAsyncSseHandleOptionalStructTwinRustAsyncSse(
+      document: document,
+    );
 
-Future<
-    ExoticOptionalsTwinRustAsyncSse?> handleOptionalIncrementTwinRustAsyncSse(
-        {ExoticOptionalsTwinRustAsyncSse? opt}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinRustAsyncSseHandleOptionalIncrementTwinRustAsyncSse(
-            opt: opt);
+Future<ExoticOptionalsTwinRustAsyncSse?>
+handleOptionalIncrementTwinRustAsyncSse({
+  ExoticOptionalsTwinRustAsyncSse? opt,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinRustAsyncSseHandleOptionalIncrementTwinRustAsyncSse(
+      opt: opt,
+    );
 
-Future<double> handleIncrementBoxedOptionalTwinRustAsyncSse({double? opt}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinRustAsyncSseHandleIncrementBoxedOptionalTwinRustAsyncSse(
-            opt: opt);
+Future<double> handleIncrementBoxedOptionalTwinRustAsyncSse({
+  double? opt,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinRustAsyncSseHandleIncrementBoxedOptionalTwinRustAsyncSse(
+      opt: opt,
+    );
 
-Future<OptVecsTwinRustAsyncSse> handleVecOfOptsTwinRustAsyncSse(
-        {required OptVecsTwinRustAsyncSse opt}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinRustAsyncSseHandleVecOfOptsTwinRustAsyncSse(
-            opt: opt);
+Future<OptVecsTwinRustAsyncSse> handleVecOfOptsTwinRustAsyncSse({
+  required OptVecsTwinRustAsyncSse opt,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinRustAsyncSseHandleVecOfOptsTwinRustAsyncSse(
+      opt: opt,
+    );
 
-Future<String> handleOptionBoxArgumentsTwinRustAsyncSse(
-        {int? i8Box,
-        int? u8Box,
-        int? i32Box,
-        PlatformInt64? i64Box,
-        double? f64Box,
-        bool? boolbox,
-        ExoticOptionalsTwinRustAsyncSse? structbox}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinRustAsyncSseHandleOptionBoxArgumentsTwinRustAsyncSse(
-            i8Box: i8Box,
-            u8Box: u8Box,
-            i32Box: i32Box,
-            i64Box: i64Box,
-            f64Box: f64Box,
-            boolbox: boolbox,
-            structbox: structbox);
+Future<String> handleOptionBoxArgumentsTwinRustAsyncSse({
+  int? i8Box,
+  int? u8Box,
+  int? i32Box,
+  PlatformInt64? i64Box,
+  double? f64Box,
+  bool? boolbox,
+  ExoticOptionalsTwinRustAsyncSse? structbox,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinRustAsyncSseHandleOptionBoxArgumentsTwinRustAsyncSse(
+      i8Box: i8Box,
+      u8Box: u8Box,
+      i32Box: i32Box,
+      i64Box: i64Box,
+      f64Box: f64Box,
+      boolbox: boolbox,
+      structbox: structbox,
+    );
 
 class AttributeTwinRustAsyncSse {
   final String key;
   final String value;
 
-  const AttributeTwinRustAsyncSse({
-    required this.key,
-    required this.value,
-  });
+  const AttributeTwinRustAsyncSse({required this.key, required this.value});
 
   @override
   int get hashCode => key.hashCode ^ value.hashCode;
@@ -99,7 +105,10 @@ class ElementTwinRustAsyncSse {
 
   @override
   int get hashCode =>
-      tag.hashCode ^ text.hashCode ^ attributes.hashCode ^ children.hashCode;
+      tag.hashCode ^
+      text.hashCode ^
+      const DeepCollectionEquality().hash(attributes) ^
+      const DeepCollectionEquality().hash(children);
 
   @override
   bool operator ==(Object other) =>
@@ -108,8 +117,8 @@ class ElementTwinRustAsyncSse {
           runtimeType == other.runtimeType &&
           tag == other.tag &&
           text == other.text &&
-          attributes == other.attributes &&
-          children == other.children;
+          const DeepCollectionEquality().equals(attributes, other.attributes) &&
+          const DeepCollectionEquality().equals(children, other.children);
 }
 
 class ExoticOptionalsTwinRustAsyncSse {
@@ -157,9 +166,9 @@ class ExoticOptionalsTwinRustAsyncSse {
       int32List.hashCode ^
       float32List.hashCode ^
       float64List.hashCode ^
-      attributes.hashCode ^
-      attributesNullable.hashCode ^
-      nullableAttributes.hashCode ^
+      const DeepCollectionEquality().hash(attributes) ^
+      const DeepCollectionEquality().hash(attributesNullable) ^
+      const DeepCollectionEquality().hash(nullableAttributes) ^
       newtypeint.hashCode;
 
   @override
@@ -177,9 +186,15 @@ class ExoticOptionalsTwinRustAsyncSse {
           int32List == other.int32List &&
           float32List == other.float32List &&
           float64List == other.float64List &&
-          attributes == other.attributes &&
-          attributesNullable == other.attributesNullable &&
-          nullableAttributes == other.nullableAttributes &&
+          const DeepCollectionEquality().equals(attributes, other.attributes) &&
+          const DeepCollectionEquality().equals(
+            attributesNullable,
+            other.attributesNullable,
+          ) &&
+          const DeepCollectionEquality().equals(
+            nullableAttributes,
+            other.nullableAttributes,
+          ) &&
           newtypeint == other.newtypeint;
 }
 
@@ -198,15 +213,18 @@ class OptVecsTwinRustAsyncSse {
 
   @override
   int get hashCode =>
-      i32.hashCode ^ enums.hashCode ^ strings.hashCode ^ buffers.hashCode;
+      const DeepCollectionEquality().hash(i32) ^
+      const DeepCollectionEquality().hash(enums) ^
+      const DeepCollectionEquality().hash(strings) ^
+      const DeepCollectionEquality().hash(buffers);
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is OptVecsTwinRustAsyncSse &&
           runtimeType == other.runtimeType &&
-          i32 == other.i32 &&
-          enums == other.enums &&
-          strings == other.strings &&
-          buffers == other.buffers;
+          const DeepCollectionEquality().equals(i32, other.i32) &&
+          const DeepCollectionEquality().equals(enums, other.enums) &&
+          const DeepCollectionEquality().equals(strings, other.strings) &&
+          const DeepCollectionEquality().equals(buffers, other.buffers);
 }

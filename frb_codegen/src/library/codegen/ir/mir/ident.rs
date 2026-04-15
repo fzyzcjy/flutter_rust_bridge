@@ -54,14 +54,6 @@ impl std::fmt::Display for MirIdent {
 fn convert_rust_to_c_style(raw: &str) -> String {
     let mut ans = strip_prefix_rhash(raw).to_owned();
 
-    // match behavior of ffigen
-    if &ans == "async" {
-        "async1".clone_into(&mut ans);
-    }
-    if &ans == "interface" {
-        "interface1".clone_into(&mut ans);
-    }
-
     // match behavior of cbindgen
     cbindgen_keywords::escape(&mut ans);
 
@@ -76,4 +68,19 @@ fn convert_rust_to_dart_style(raw: &str) -> String {
 
 fn strip_prefix_rhash(raw: &str) -> &str {
     raw.strip_prefix("r#").unwrap_or(raw)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_c_style_handles_keywords_consistently() {
+        assert_eq!(MirIdent::new("r#async".into(), None).c_style(), "async");
+        assert_eq!(
+            MirIdent::new("interface".into(), None).c_style(),
+            "interface"
+        );
+        assert_eq!(MirIdent::new("class".into(), None).c_style(), "class_");
+    }
 }

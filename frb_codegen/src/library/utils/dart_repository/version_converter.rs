@@ -1,6 +1,6 @@
 use crate::utils::dart_repository::dart_repo::*;
 use crate::utils::dart_repository::pubspec::*;
-use cargo_metadata::{Version, VersionReq};
+use cargo_metadata::semver::{Version, VersionReq};
 use std::convert::TryFrom;
 
 #[derive(Debug, Clone, PartialEq, Eq)]

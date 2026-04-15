@@ -1,0 +1,36 @@
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+name: Dart Quality
+
+jobs:
+  BuildTool:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+    steps:
+      - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # 4.1.0
+      - uses: subosito/flutter-action@44ac965b96f18d999802d4b807e3256d5a3f9fa1 # 2.16.0
+        with:
+          channel: stable
+      - name: Pub Get
+        run: dart pub get --no-precompile
+        working-directory: build_tool
+      - name: Dart Format
+        run: dart format . --output=none --set-exit-if-changed
+        working-directory: build_tool
+      - name: Analyze
+        run: dart analyze
+        working-directory: build_tool
+      - name: Test
+        run: flutter test
+        working-directory: build_tool

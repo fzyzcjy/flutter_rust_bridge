@@ -19,9 +19,10 @@ Future<int> funcTypeFalliblePanicTwinNormal() =>
 Future<int> funcTypeInfalliblePanicTwinNormal() =>
     RustLib.instance.api.crateApiExceptionFuncTypeInfalliblePanicTwinNormal();
 
-Future<int> customEnumErrorReturnOkTwinNormal({required int arg}) =>
-    RustLib.instance.api
-        .crateApiExceptionCustomEnumErrorReturnOkTwinNormal(arg: arg);
+Future<int> customEnumErrorReturnOkTwinNormal({required int arg}) => RustLib
+    .instance
+    .api
+    .crateApiExceptionCustomEnumErrorReturnOkTwinNormal(arg: arg);
 
 Future<void> customEnumErrorPanicTwinNormal() =>
     RustLib.instance.api.crateApiExceptionCustomEnumErrorPanicTwinNormal();
@@ -29,15 +30,15 @@ Future<void> customEnumErrorPanicTwinNormal() =>
 Future<int> customEnumErrorReturnErrorTwinNormal() => RustLib.instance.api
     .crateApiExceptionCustomEnumErrorReturnErrorTwinNormal();
 
-Future<void> customNestedErrorReturnErrorTwinNormal(
-        {required CustomNestedErrorOuterTwinNormal arg}) =>
-    RustLib.instance.api
-        .crateApiExceptionCustomNestedErrorReturnErrorTwinNormal(arg: arg);
+Future<void> customNestedErrorReturnErrorTwinNormal({
+  required CustomNestedErrorOuterTwinNormal arg,
+}) => RustLib.instance.api
+    .crateApiExceptionCustomNestedErrorReturnErrorTwinNormal(arg: arg);
 
-Future<void> customStructErrorReturnErrorTwinNormal(
-        {required CustomStructErrorTwinNormal arg}) =>
-    RustLib.instance.api
-        .crateApiExceptionCustomStructErrorReturnErrorTwinNormal(arg: arg);
+Future<void> customStructErrorReturnErrorTwinNormal({
+  required CustomStructErrorTwinNormal arg,
+}) => RustLib.instance.api
+    .crateApiExceptionCustomStructErrorReturnErrorTwinNormal(arg: arg);
 
 Future<int> returnErrCustomErrorTwinNormal() =>
     RustLib.instance.api.crateApiExceptionReturnErrCustomErrorTwinNormal();
@@ -45,16 +46,18 @@ Future<int> returnErrCustomErrorTwinNormal() =>
 Future<int> returnOkCustomErrorTwinNormal() =>
     RustLib.instance.api.crateApiExceptionReturnOkCustomErrorTwinNormal();
 
-Future<int> returnErrorVariantTwinNormal({required int variant}) =>
-    RustLib.instance.api
-        .crateApiExceptionReturnErrorVariantTwinNormal(variant: variant);
+Future<int> returnErrorVariantTwinNormal({required int variant}) => RustLib
+    .instance
+    .api
+    .crateApiExceptionReturnErrorVariantTwinNormal(variant: variant);
 
 Future<void> returnCustomNestedError1TwinNormal() =>
     RustLib.instance.api.crateApiExceptionReturnCustomNestedError1TwinNormal();
 
-Future<void> returnCustomNestedError1Variant1TwinNormal() =>
-    RustLib.instance.api
-        .crateApiExceptionReturnCustomNestedError1Variant1TwinNormal();
+Future<void> returnCustomNestedError1Variant1TwinNormal() => RustLib
+    .instance
+    .api
+    .crateApiExceptionReturnCustomNestedError1Variant1TwinNormal();
 
 Future<void> returnCustomNestedError2TwinNormal() =>
     RustLib.instance.api.crateApiExceptionReturnCustomNestedError2TwinNormal();
@@ -116,9 +119,8 @@ sealed class CustomNestedError1TwinNormal
     implements FrbException {
   const CustomNestedError1TwinNormal._();
 
-  const factory CustomNestedError1TwinNormal.customNested1(
-    String field0,
-  ) = CustomNestedError1TwinNormal_CustomNested1;
+  const factory CustomNestedError1TwinNormal.customNested1(String field0) =
+      CustomNestedError1TwinNormal_CustomNested1;
   const factory CustomNestedError1TwinNormal.errorNested(
     CustomNestedError2TwinNormal field0,
   ) = CustomNestedError1TwinNormal_ErrorNested;
@@ -128,12 +130,10 @@ sealed class CustomNestedError1TwinNormal
 sealed class CustomNestedError2TwinNormal with _$CustomNestedError2TwinNormal {
   const CustomNestedError2TwinNormal._();
 
-  const factory CustomNestedError2TwinNormal.customNested2(
-    String field0,
-  ) = CustomNestedError2TwinNormal_CustomNested2;
-  const factory CustomNestedError2TwinNormal.customNested2Number(
-    int field0,
-  ) = CustomNestedError2TwinNormal_CustomNested2Number;
+  const factory CustomNestedError2TwinNormal.customNested2(String field0) =
+      CustomNestedError2TwinNormal_CustomNested2;
+  const factory CustomNestedError2TwinNormal.customNested2Number(int field0) =
+      CustomNestedError2TwinNormal_CustomNested2Number;
 }
 
 @freezed
@@ -141,12 +141,10 @@ sealed class CustomNestedErrorInnerTwinNormal
     with _$CustomNestedErrorInnerTwinNormal {
   const CustomNestedErrorInnerTwinNormal._();
 
-  const factory CustomNestedErrorInnerTwinNormal.three(
-    String field0,
-  ) = CustomNestedErrorInnerTwinNormal_Three;
-  const factory CustomNestedErrorInnerTwinNormal.four(
-    int field0,
-  ) = CustomNestedErrorInnerTwinNormal_Four;
+  const factory CustomNestedErrorInnerTwinNormal.three(String field0) =
+      CustomNestedErrorInnerTwinNormal_Three;
+  const factory CustomNestedErrorInnerTwinNormal.four(int field0) =
+      CustomNestedErrorInnerTwinNormal_Four;
 }
 
 @freezed
@@ -154,9 +152,8 @@ sealed class CustomNestedErrorOuterTwinNormal
     with _$CustomNestedErrorOuterTwinNormal {
   const CustomNestedErrorOuterTwinNormal._();
 
-  const factory CustomNestedErrorOuterTwinNormal.one(
-    String field0,
-  ) = CustomNestedErrorOuterTwinNormal_One;
+  const factory CustomNestedErrorOuterTwinNormal.one(String field0) =
+      CustomNestedErrorOuterTwinNormal_One;
   const factory CustomNestedErrorOuterTwinNormal.two(
     CustomNestedErrorInnerTwinNormal field0,
   ) = CustomNestedErrorOuterTwinNormal_Two;
@@ -165,9 +162,7 @@ sealed class CustomNestedErrorOuterTwinNormal
 class CustomStructErrorAnotherTwinNormal implements FrbException {
   final String message;
 
-  const CustomStructErrorAnotherTwinNormal({
-    required this.message,
-  });
+  const CustomStructErrorAnotherTwinNormal({required this.message});
 
   @override
   int get hashCode => message.hashCode;
@@ -183,9 +178,7 @@ class CustomStructErrorAnotherTwinNormal implements FrbException {
 class CustomStructErrorTwinNormal {
   final String a;
 
-  const CustomStructErrorTwinNormal({
-    required this.a,
-  });
+  const CustomStructErrorTwinNormal({required this.a});
 
   @override
   int get hashCode => a.hashCode;
@@ -201,32 +194,33 @@ class CustomStructErrorTwinNormal {
 class CustomStructTwinNormal {
   final String message;
 
-  const CustomStructTwinNormal({
-    required this.message,
-  });
+  const CustomStructTwinNormal({required this.message});
 
-  static Future<CustomStructTwinNormal> newTwinNormal(
-          {required String message}) =>
-      RustLib.instance.api.crateApiExceptionCustomStructTwinNormalNewTwinNormal(
-          message: message);
+  static Future<CustomStructTwinNormal> newTwinNormal({
+    required String message,
+  }) => RustLib.instance.api
+      .crateApiExceptionCustomStructTwinNormalNewTwinNormal(message: message);
 
-  Future<void> nonstaticReturnCustomStructErrorTwinNormal() =>
-      RustLib.instance.api
-          .crateApiExceptionCustomStructTwinNormalNonstaticReturnCustomStructErrorTwinNormal(
+  Future<void> nonstaticReturnCustomStructErrorTwinNormal() => RustLib
+      .instance
+      .api
+      .crateApiExceptionCustomStructTwinNormalNonstaticReturnCustomStructErrorTwinNormal(
         that: this,
       );
 
   Future<int> nonstaticReturnCustomStructOkTwinNormal() => RustLib.instance.api
-          .crateApiExceptionCustomStructTwinNormalNonstaticReturnCustomStructOkTwinNormal(
+      .crateApiExceptionCustomStructTwinNormalNonstaticReturnCustomStructOkTwinNormal(
         that: this,
       );
 
   static Future<void> staticReturnCustomStructErrorTwinNormal() => RustLib
-      .instance.api
+      .instance
+      .api
       .crateApiExceptionCustomStructTwinNormalStaticReturnCustomStructErrorTwinNormal();
 
   static Future<int> staticReturnCustomStructOkTwinNormal() => RustLib
-      .instance.api
+      .instance
+      .api
       .crateApiExceptionCustomStructTwinNormalStaticReturnCustomStructOkTwinNormal();
 
   @override
@@ -243,30 +237,31 @@ class CustomStructTwinNormal {
 class SomeStructTwinNormal {
   final int value;
 
-  const SomeStructTwinNormal({
-    required this.value,
-  });
+  const SomeStructTwinNormal({required this.value});
 
   static Future<SomeStructTwinNormal> newTwinNormal({required int value}) =>
-      RustLib.instance.api
-          .crateApiExceptionSomeStructTwinNormalNewTwinNormal(value: value);
+      RustLib.instance.api.crateApiExceptionSomeStructTwinNormalNewTwinNormal(
+        value: value,
+      );
 
   Future<int> nonStaticReturnErrCustomErrorTwinNormal() => RustLib.instance.api
-          .crateApiExceptionSomeStructTwinNormalNonStaticReturnErrCustomErrorTwinNormal(
+      .crateApiExceptionSomeStructTwinNormalNonStaticReturnErrCustomErrorTwinNormal(
         that: this,
       );
 
   Future<int> nonStaticReturnOkCustomErrorTwinNormal() => RustLib.instance.api
-          .crateApiExceptionSomeStructTwinNormalNonStaticReturnOkCustomErrorTwinNormal(
+      .crateApiExceptionSomeStructTwinNormalNonStaticReturnOkCustomErrorTwinNormal(
         that: this,
       );
 
   static Future<int> staticReturnErrCustomErrorTwinNormal() => RustLib
-      .instance.api
+      .instance
+      .api
       .crateApiExceptionSomeStructTwinNormalStaticReturnErrCustomErrorTwinNormal();
 
   static Future<int> staticReturnOkCustomErrorTwinNormal() => RustLib
-      .instance.api
+      .instance
+      .api
       .crateApiExceptionSomeStructTwinNormalStaticReturnOkCustomErrorTwinNormal();
 
   @override

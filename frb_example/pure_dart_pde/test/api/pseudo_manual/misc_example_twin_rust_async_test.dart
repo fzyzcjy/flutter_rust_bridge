@@ -85,8 +85,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
     );
     expect((output3 as AbcTwinRustAsync_C).field0.c, false);
 
-    final output4 =
-        await testAbcEnumTwinRustAsync(abc: AbcTwinRustAsync.justInt(1));
+    final output4 = await testAbcEnumTwinRustAsync(
+      abc: AbcTwinRustAsync.justInt(1),
+    );
     expect((output4 as AbcTwinRustAsync_JustInt).field0, 1);
   });
 
@@ -130,7 +131,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final len = 100000;
     expect(
       await handleVecU8TwinRustAsync(
-          v: Uint8List.fromList(List.filled(len, 127))),
+        v: Uint8List.fromList(List.filled(len, 127)),
+      ),
       Uint8List.fromList(List.filled(len * 2, 127)),
     );
   });

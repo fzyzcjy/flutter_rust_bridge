@@ -19,10 +19,12 @@ Future<int> funcTypeFalliblePanicTwinSse() => RustLib.instance.api
 Future<int> funcTypeInfalliblePanicTwinSse() => RustLib.instance.api
     .crateApiPseudoManualExceptionTwinSseFuncTypeInfalliblePanicTwinSse();
 
-Future<int> customEnumErrorReturnOkTwinSse({required int arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualExceptionTwinSseCustomEnumErrorReturnOkTwinSse(
-            arg: arg);
+Future<int> customEnumErrorReturnOkTwinSse({required int arg}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualExceptionTwinSseCustomEnumErrorReturnOkTwinSse(
+      arg: arg,
+    );
 
 Future<void> customEnumErrorPanicTwinSse() => RustLib.instance.api
     .crateApiPseudoManualExceptionTwinSseCustomEnumErrorPanicTwinSse();
@@ -30,17 +32,19 @@ Future<void> customEnumErrorPanicTwinSse() => RustLib.instance.api
 Future<int> customEnumErrorReturnErrorTwinSse() => RustLib.instance.api
     .crateApiPseudoManualExceptionTwinSseCustomEnumErrorReturnErrorTwinSse();
 
-Future<void> customNestedErrorReturnErrorTwinSse(
-        {required CustomNestedErrorOuterTwinSse arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualExceptionTwinSseCustomNestedErrorReturnErrorTwinSse(
-            arg: arg);
+Future<void> customNestedErrorReturnErrorTwinSse({
+  required CustomNestedErrorOuterTwinSse arg,
+}) => RustLib.instance.api
+    .crateApiPseudoManualExceptionTwinSseCustomNestedErrorReturnErrorTwinSse(
+      arg: arg,
+    );
 
-Future<void> customStructErrorReturnErrorTwinSse(
-        {required CustomStructErrorTwinSse arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualExceptionTwinSseCustomStructErrorReturnErrorTwinSse(
-            arg: arg);
+Future<void> customStructErrorReturnErrorTwinSse({
+  required CustomStructErrorTwinSse arg,
+}) => RustLib.instance.api
+    .crateApiPseudoManualExceptionTwinSseCustomStructErrorReturnErrorTwinSse(
+      arg: arg,
+    );
 
 Future<int> returnErrCustomErrorTwinSse() => RustLib.instance.api
     .crateApiPseudoManualExceptionTwinSseReturnErrCustomErrorTwinSse();
@@ -48,10 +52,12 @@ Future<int> returnErrCustomErrorTwinSse() => RustLib.instance.api
 Future<int> returnOkCustomErrorTwinSse() => RustLib.instance.api
     .crateApiPseudoManualExceptionTwinSseReturnOkCustomErrorTwinSse();
 
-Future<int> returnErrorVariantTwinSse({required int variant}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualExceptionTwinSseReturnErrorVariantTwinSse(
-            variant: variant);
+Future<int> returnErrorVariantTwinSse({required int variant}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualExceptionTwinSseReturnErrorVariantTwinSse(
+      variant: variant,
+    );
 
 Future<void> returnCustomNestedError1TwinSse() => RustLib.instance.api
     .crateApiPseudoManualExceptionTwinSseReturnCustomNestedError1TwinSse();
@@ -119,9 +125,8 @@ sealed class CustomNestedError1TwinSse
     implements FrbException {
   const CustomNestedError1TwinSse._();
 
-  const factory CustomNestedError1TwinSse.customNested1(
-    String field0,
-  ) = CustomNestedError1TwinSse_CustomNested1;
+  const factory CustomNestedError1TwinSse.customNested1(String field0) =
+      CustomNestedError1TwinSse_CustomNested1;
   const factory CustomNestedError1TwinSse.errorNested(
     CustomNestedError2TwinSse field0,
   ) = CustomNestedError1TwinSse_ErrorNested;
@@ -131,12 +136,10 @@ sealed class CustomNestedError1TwinSse
 sealed class CustomNestedError2TwinSse with _$CustomNestedError2TwinSse {
   const CustomNestedError2TwinSse._();
 
-  const factory CustomNestedError2TwinSse.customNested2(
-    String field0,
-  ) = CustomNestedError2TwinSse_CustomNested2;
-  const factory CustomNestedError2TwinSse.customNested2Number(
-    int field0,
-  ) = CustomNestedError2TwinSse_CustomNested2Number;
+  const factory CustomNestedError2TwinSse.customNested2(String field0) =
+      CustomNestedError2TwinSse_CustomNested2;
+  const factory CustomNestedError2TwinSse.customNested2Number(int field0) =
+      CustomNestedError2TwinSse_CustomNested2Number;
 }
 
 @freezed
@@ -144,12 +147,10 @@ sealed class CustomNestedErrorInnerTwinSse
     with _$CustomNestedErrorInnerTwinSse {
   const CustomNestedErrorInnerTwinSse._();
 
-  const factory CustomNestedErrorInnerTwinSse.three(
-    String field0,
-  ) = CustomNestedErrorInnerTwinSse_Three;
-  const factory CustomNestedErrorInnerTwinSse.four(
-    int field0,
-  ) = CustomNestedErrorInnerTwinSse_Four;
+  const factory CustomNestedErrorInnerTwinSse.three(String field0) =
+      CustomNestedErrorInnerTwinSse_Three;
+  const factory CustomNestedErrorInnerTwinSse.four(int field0) =
+      CustomNestedErrorInnerTwinSse_Four;
 }
 
 @freezed
@@ -157,9 +158,8 @@ sealed class CustomNestedErrorOuterTwinSse
     with _$CustomNestedErrorOuterTwinSse {
   const CustomNestedErrorOuterTwinSse._();
 
-  const factory CustomNestedErrorOuterTwinSse.one(
-    String field0,
-  ) = CustomNestedErrorOuterTwinSse_One;
+  const factory CustomNestedErrorOuterTwinSse.one(String field0) =
+      CustomNestedErrorOuterTwinSse_One;
   const factory CustomNestedErrorOuterTwinSse.two(
     CustomNestedErrorInnerTwinSse field0,
   ) = CustomNestedErrorOuterTwinSse_Two;
@@ -168,9 +168,7 @@ sealed class CustomNestedErrorOuterTwinSse
 class CustomStructErrorAnotherTwinSse implements FrbException {
   final String message;
 
-  const CustomStructErrorAnotherTwinSse({
-    required this.message,
-  });
+  const CustomStructErrorAnotherTwinSse({required this.message});
 
   @override
   int get hashCode => message.hashCode;
@@ -186,9 +184,7 @@ class CustomStructErrorAnotherTwinSse implements FrbException {
 class CustomStructErrorTwinSse {
   final String a;
 
-  const CustomStructErrorTwinSse({
-    required this.a,
-  });
+  const CustomStructErrorTwinSse({required this.a});
 
   @override
   int get hashCode => a.hashCode;
@@ -204,27 +200,27 @@ class CustomStructErrorTwinSse {
 class CustomStructTwinSse {
   final String message;
 
-  const CustomStructTwinSse({
-    required this.message,
-  });
+  const CustomStructTwinSse({required this.message});
 
   static Future<CustomStructTwinSse> newTwinSse({required String message}) =>
       RustLib.instance.api
           .crateApiPseudoManualExceptionTwinSseCustomStructTwinSseNewTwinSse(
-              message: message);
+            message: message,
+          );
 
   Future<void> nonstaticReturnCustomStructErrorTwinSse() => RustLib.instance.api
-          .crateApiPseudoManualExceptionTwinSseCustomStructTwinSseNonstaticReturnCustomStructErrorTwinSse(
+      .crateApiPseudoManualExceptionTwinSseCustomStructTwinSseNonstaticReturnCustomStructErrorTwinSse(
         that: this,
       );
 
   Future<int> nonstaticReturnCustomStructOkTwinSse() => RustLib.instance.api
-          .crateApiPseudoManualExceptionTwinSseCustomStructTwinSseNonstaticReturnCustomStructOkTwinSse(
+      .crateApiPseudoManualExceptionTwinSseCustomStructTwinSseNonstaticReturnCustomStructOkTwinSse(
         that: this,
       );
 
   static Future<void> staticReturnCustomStructErrorTwinSse() => RustLib
-      .instance.api
+      .instance
+      .api
       .crateApiPseudoManualExceptionTwinSseCustomStructTwinSseStaticReturnCustomStructErrorTwinSse();
 
   static Future<int> staticReturnCustomStructOkTwinSse() => RustLib.instance.api
@@ -244,22 +240,22 @@ class CustomStructTwinSse {
 class SomeStructTwinSse {
   final int value;
 
-  const SomeStructTwinSse({
-    required this.value,
-  });
+  const SomeStructTwinSse({required this.value});
 
-  static Future<SomeStructTwinSse> newTwinSse({required int value}) =>
-      RustLib.instance.api
-          .crateApiPseudoManualExceptionTwinSseSomeStructTwinSseNewTwinSse(
-              value: value);
+  static Future<SomeStructTwinSse> newTwinSse({required int value}) => RustLib
+      .instance
+      .api
+      .crateApiPseudoManualExceptionTwinSseSomeStructTwinSseNewTwinSse(
+        value: value,
+      );
 
   Future<int> nonStaticReturnErrCustomErrorTwinSse() => RustLib.instance.api
-          .crateApiPseudoManualExceptionTwinSseSomeStructTwinSseNonStaticReturnErrCustomErrorTwinSse(
+      .crateApiPseudoManualExceptionTwinSseSomeStructTwinSseNonStaticReturnErrCustomErrorTwinSse(
         that: this,
       );
 
   Future<int> nonStaticReturnOkCustomErrorTwinSse() => RustLib.instance.api
-          .crateApiPseudoManualExceptionTwinSseSomeStructTwinSseNonStaticReturnOkCustomErrorTwinSse(
+      .crateApiPseudoManualExceptionTwinSseSomeStructTwinSseNonStaticReturnOkCustomErrorTwinSse(
         that: this,
       );
 

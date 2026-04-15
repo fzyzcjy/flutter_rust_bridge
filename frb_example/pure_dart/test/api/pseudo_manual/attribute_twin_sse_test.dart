@@ -21,9 +21,6 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('dart call next_user_id to test metadata annotations', () async {
     UserIdTwinSse userId = UserIdTwinSse(value: 11);
-    expect(
-      await nextUserIdTwinSse(userId: userId),
-      UserIdTwinSse(value: 12),
-    );
+    expect(await nextUserIdTwinSse(userId: userId), UserIdTwinSse(value: 12));
   });
 }

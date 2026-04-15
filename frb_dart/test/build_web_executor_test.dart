@@ -1,4 +1,6 @@
 @TestOn('vm')
+library;
+
 import 'package:flutter_rust_bridge/src/cli/build_web/executor.dart';
 import 'package:test/test.dart';
 

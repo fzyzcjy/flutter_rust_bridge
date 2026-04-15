@@ -1,1 +1,2 @@
-group_imports = "One"
+# Keep rustfmt config stable-compatible.
+# `group_imports` requires nightly rustfmt and emits warnings on stable.

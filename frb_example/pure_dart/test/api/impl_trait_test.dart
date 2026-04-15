@@ -23,8 +23,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('trait default impl', () async {
     expect(
-      await StructOneWithTraitTwinNormal
-          .simpleTraitFnWithDefaultImplTwinNormal(),
+      await StructOneWithTraitTwinNormal.simpleTraitFnWithDefaultImplTwinNormal(),
       42,
     );
   });

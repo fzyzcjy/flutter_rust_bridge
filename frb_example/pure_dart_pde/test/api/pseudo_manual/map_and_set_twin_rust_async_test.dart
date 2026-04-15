@@ -49,11 +49,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
     {'a', 'b'},
   ]);
   addTestsIdentityFunctionCall(
-      funcHashSetStringHasherTwinRustAsync, <Set<String>>[
-    {},
-    {'a'},
-    {'a', 'b'},
-  ]);
+    funcHashSetStringHasherTwinRustAsync,
+    <Set<String>>[
+      {},
+      {'a'},
+      {'a', 'b'},
+    ],
+  );
 
   addTestsIdentityFunctionCall(
     funcHashMapStringBytesTwinRustAsync,

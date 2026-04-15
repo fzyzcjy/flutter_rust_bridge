@@ -12,61 +12,67 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `fmt`, `fmt`, `fmt`
 
-Future<double?> handleOptionalReturnTwinRustAsync(
-        {required double left, required double right}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinRustAsyncHandleOptionalReturnTwinRustAsync(
-            left: left, right: right);
+Future<double?> handleOptionalReturnTwinRustAsync({
+  required double left,
+  required double right,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinRustAsyncHandleOptionalReturnTwinRustAsync(
+      left: left,
+      right: right,
+    );
 
-Future<ElementTwinRustAsync?> handleOptionalStructTwinRustAsync(
-        {String? document}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinRustAsyncHandleOptionalStructTwinRustAsync(
-            document: document);
+Future<ElementTwinRustAsync?> handleOptionalStructTwinRustAsync({
+  String? document,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinRustAsyncHandleOptionalStructTwinRustAsync(
+      document: document,
+    );
 
-Future<ExoticOptionalsTwinRustAsync?> handleOptionalIncrementTwinRustAsync(
-        {ExoticOptionalsTwinRustAsync? opt}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinRustAsyncHandleOptionalIncrementTwinRustAsync(
-            opt: opt);
+Future<ExoticOptionalsTwinRustAsync?> handleOptionalIncrementTwinRustAsync({
+  ExoticOptionalsTwinRustAsync? opt,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinRustAsyncHandleOptionalIncrementTwinRustAsync(
+      opt: opt,
+    );
 
-Future<double> handleIncrementBoxedOptionalTwinRustAsync({double? opt}) => RustLib
-    .instance.api
+Future<double> handleIncrementBoxedOptionalTwinRustAsync({
+  double? opt,
+}) => RustLib.instance.api
     .crateApiPseudoManualOptionalTwinRustAsyncHandleIncrementBoxedOptionalTwinRustAsync(
-        opt: opt);
+      opt: opt,
+    );
 
-Future<OptVecsTwinRustAsync> handleVecOfOptsTwinRustAsync(
-        {required OptVecsTwinRustAsync opt}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinRustAsyncHandleVecOfOptsTwinRustAsync(
-            opt: opt);
+Future<OptVecsTwinRustAsync> handleVecOfOptsTwinRustAsync({
+  required OptVecsTwinRustAsync opt,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinRustAsyncHandleVecOfOptsTwinRustAsync(
+      opt: opt,
+    );
 
-Future<String> handleOptionBoxArgumentsTwinRustAsync(
-        {int? i8Box,
-        int? u8Box,
-        int? i32Box,
-        PlatformInt64? i64Box,
-        double? f64Box,
-        bool? boolbox,
-        ExoticOptionalsTwinRustAsync? structbox}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualOptionalTwinRustAsyncHandleOptionBoxArgumentsTwinRustAsync(
-            i8Box: i8Box,
-            u8Box: u8Box,
-            i32Box: i32Box,
-            i64Box: i64Box,
-            f64Box: f64Box,
-            boolbox: boolbox,
-            structbox: structbox);
+Future<String> handleOptionBoxArgumentsTwinRustAsync({
+  int? i8Box,
+  int? u8Box,
+  int? i32Box,
+  PlatformInt64? i64Box,
+  double? f64Box,
+  bool? boolbox,
+  ExoticOptionalsTwinRustAsync? structbox,
+}) => RustLib.instance.api
+    .crateApiPseudoManualOptionalTwinRustAsyncHandleOptionBoxArgumentsTwinRustAsync(
+      i8Box: i8Box,
+      u8Box: u8Box,
+      i32Box: i32Box,
+      i64Box: i64Box,
+      f64Box: f64Box,
+      boolbox: boolbox,
+      structbox: structbox,
+    );
 
 class AttributeTwinRustAsync {
   final String key;
   final String value;
 
-  const AttributeTwinRustAsync({
-    required this.key,
-    required this.value,
-  });
+  const AttributeTwinRustAsync({required this.key, required this.value});
 
   @override
   int get hashCode => key.hashCode ^ value.hashCode;
@@ -98,7 +104,10 @@ class ElementTwinRustAsync {
 
   @override
   int get hashCode =>
-      tag.hashCode ^ text.hashCode ^ attributes.hashCode ^ children.hashCode;
+      tag.hashCode ^
+      text.hashCode ^
+      const DeepCollectionEquality().hash(attributes) ^
+      const DeepCollectionEquality().hash(children);
 
   @override
   bool operator ==(Object other) =>
@@ -107,8 +116,8 @@ class ElementTwinRustAsync {
           runtimeType == other.runtimeType &&
           tag == other.tag &&
           text == other.text &&
-          attributes == other.attributes &&
-          children == other.children;
+          const DeepCollectionEquality().equals(attributes, other.attributes) &&
+          const DeepCollectionEquality().equals(children, other.children);
 }
 
 class ExoticOptionalsTwinRustAsync {
@@ -156,9 +165,9 @@ class ExoticOptionalsTwinRustAsync {
       int32List.hashCode ^
       float32List.hashCode ^
       float64List.hashCode ^
-      attributes.hashCode ^
-      attributesNullable.hashCode ^
-      nullableAttributes.hashCode ^
+      const DeepCollectionEquality().hash(attributes) ^
+      const DeepCollectionEquality().hash(attributesNullable) ^
+      const DeepCollectionEquality().hash(nullableAttributes) ^
       newtypeint.hashCode;
 
   @override
@@ -176,9 +185,15 @@ class ExoticOptionalsTwinRustAsync {
           int32List == other.int32List &&
           float32List == other.float32List &&
           float64List == other.float64List &&
-          attributes == other.attributes &&
-          attributesNullable == other.attributesNullable &&
-          nullableAttributes == other.nullableAttributes &&
+          const DeepCollectionEquality().equals(attributes, other.attributes) &&
+          const DeepCollectionEquality().equals(
+            attributesNullable,
+            other.attributesNullable,
+          ) &&
+          const DeepCollectionEquality().equals(
+            nullableAttributes,
+            other.nullableAttributes,
+          ) &&
           newtypeint == other.newtypeint;
 }
 
@@ -197,15 +212,18 @@ class OptVecsTwinRustAsync {
 
   @override
   int get hashCode =>
-      i32.hashCode ^ enums.hashCode ^ strings.hashCode ^ buffers.hashCode;
+      const DeepCollectionEquality().hash(i32) ^
+      const DeepCollectionEquality().hash(enums) ^
+      const DeepCollectionEquality().hash(strings) ^
+      const DeepCollectionEquality().hash(buffers);
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is OptVecsTwinRustAsync &&
           runtimeType == other.runtimeType &&
-          i32 == other.i32 &&
-          enums == other.enums &&
-          strings == other.strings &&
-          buffers == other.buffers;
+          const DeepCollectionEquality().equals(i32, other.i32) &&
+          const DeepCollectionEquality().equals(enums, other.enums) &&
+          const DeepCollectionEquality().equals(strings, other.strings) &&
+          const DeepCollectionEquality().equals(buffers, other.buffers);
 }

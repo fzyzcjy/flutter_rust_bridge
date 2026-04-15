@@ -14,23 +14,26 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<void> funcReturnUnitTwinRustAsyncSse() => RustLib.instance.api
     .crateApiPseudoManualMiscTypeTwinRustAsyncSseFuncReturnUnitTwinRustAsyncSse();
 
-Future<List<MySize>> handleListOfStructTwinRustAsyncSse(
-        {required List<MySize> l}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscTypeTwinRustAsyncSseHandleListOfStructTwinRustAsyncSse(
-            l: l);
+Future<List<MySize>> handleListOfStructTwinRustAsyncSse({
+  required List<MySize> l,
+}) => RustLib.instance.api
+    .crateApiPseudoManualMiscTypeTwinRustAsyncSseHandleListOfStructTwinRustAsyncSse(
+      l: l,
+    );
 
-Future<List<String>> handleStringListTwinRustAsyncSse(
-        {required List<String> names}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscTypeTwinRustAsyncSseHandleStringListTwinRustAsyncSse(
-            names: names);
+Future<List<String>> handleStringListTwinRustAsyncSse({
+  required List<String> names,
+}) => RustLib.instance.api
+    .crateApiPseudoManualMiscTypeTwinRustAsyncSseHandleStringListTwinRustAsyncSse(
+      names: names,
+    );
 
-Future<EmptyTwinRustAsyncSse> emptyStructTwinRustAsyncSse(
-        {required EmptyTwinRustAsyncSse empty}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualMiscTypeTwinRustAsyncSseEmptyStructTwinRustAsyncSse(
-            empty: empty);
+Future<EmptyTwinRustAsyncSse> emptyStructTwinRustAsyncSse({
+  required EmptyTwinRustAsyncSse empty,
+}) => RustLib.instance.api
+    .crateApiPseudoManualMiscTypeTwinRustAsyncSseEmptyStructTwinRustAsyncSse(
+      empty: empty,
+    );
 
 class EmptyTwinRustAsyncSse {
   const EmptyTwinRustAsyncSse();

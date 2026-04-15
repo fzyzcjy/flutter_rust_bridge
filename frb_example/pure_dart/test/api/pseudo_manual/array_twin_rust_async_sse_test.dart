@@ -35,8 +35,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('BlobId', () async {
     final inner = U8Array1600.init();
     inner[14] = 99;
-    final BlobTwinRustAsyncSse blob =
-        await boxedBlobTwinRustAsyncSse(blob: inner);
+    final BlobTwinRustAsyncSse blob = await boxedBlobTwinRustAsyncSse(
+      blob: inner,
+    );
     expect(blob.field0[14], 99);
     blob.field0[10] = 100;
     final unboxed = await useBoxedBlobTwinRustAsyncSse(blob: blob);
@@ -48,9 +49,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final inner = U8Array8.init();
     inner[3] = 3;
     final FeedIdTwinRustAsyncSse feedId =
-        await returnBoxedFeedIdTwinRustAsyncSse(
-      id: inner,
-    );
+        await returnBoxedFeedIdTwinRustAsyncSse(id: inner);
     expect(feedId.field0[3], 3);
     feedId.field0[5] = 5;
     final raw = await returnBoxedRawFeedIdTwinRustAsyncSse(id: feedId);

@@ -16,26 +16,25 @@ part 'attribute_twin_rust_async_sse.freezed.dart';
 // These functions are ignored (category: IgnoreBecauseExplicitAttribute): `func_should_not_exist_in_dart_twin_rust_async_sse`, `method_should_not_exist_in_dart_twin_rust_async_sse`
 // These functions are ignored (category: IgnoreBecauseOwnerTyShouldIgnore): `method_should_not_exist_in_dart_twin_rust_async_sse`
 
-Future<void> handleCustomizedStructTwinRustAsyncSse(
-        {required CustomizedTwinRustAsyncSse val}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualAttributeTwinRustAsyncSseHandleCustomizedStructTwinRustAsyncSse(
-            val: val);
+Future<void> handleCustomizedStructTwinRustAsyncSse({
+  required CustomizedTwinRustAsyncSse val,
+}) => RustLib.instance.api
+    .crateApiPseudoManualAttributeTwinRustAsyncSseHandleCustomizedStructTwinRustAsyncSse(
+      val: val,
+    );
 
-Future<UserIdTwinRustAsyncSse> nextUserIdTwinRustAsyncSse(
-        {UserIdTwinRustAsyncSse userId = const UserIdTwinRustAsyncSse()}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualAttributeTwinRustAsyncSseNextUserIdTwinRustAsyncSse(
-            userId: userId);
+Future<UserIdTwinRustAsyncSse> nextUserIdTwinRustAsyncSse({
+  UserIdTwinRustAsyncSse userId = const UserIdTwinRustAsyncSse(),
+}) => RustLib.instance.api
+    .crateApiPseudoManualAttributeTwinRustAsyncSseNextUserIdTwinRustAsyncSse(
+      userId: userId,
+    );
 
 class CustomizedTwinRustAsyncSse {
   final String finalField;
   String? nonFinalField;
 
-  CustomizedTwinRustAsyncSse({
-    required this.finalField,
-    this.nonFinalField,
-  });
+  CustomizedTwinRustAsyncSse({required this.finalField, this.nonFinalField});
 
   @override
   int get hashCode => finalField.hashCode ^ nonFinalField.hashCode;
@@ -53,7 +52,6 @@ class CustomizedTwinRustAsyncSse {
 @freezed
 @meta.immutable
 sealed class UserIdTwinRustAsyncSse with _$UserIdTwinRustAsyncSse {
-  const factory UserIdTwinRustAsyncSse({
-    @Default(0) int value,
-  }) = _UserIdTwinRustAsyncSse;
+  const factory UserIdTwinRustAsyncSse({@Default(0) int value}) =
+      _UserIdTwinRustAsyncSse;
 }

@@ -21,8 +21,7 @@
     clippy::explicit_auto_deref,
     clippy::borrow_deref_ref,
     clippy::uninlined_format_args,
-    clippy::needless_borrow,
-    mismatched_lifetime_syntaxes
+    clippy::needless_borrow
 )]
 
 // Section: imports

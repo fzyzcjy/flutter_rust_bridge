@@ -15,11 +15,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   addTestsIdentityFunctionCall(
-      funcHashMapI32I32TwinRustAsyncSse, <Map<int, int>>[
-    {},
-    {10: 20},
-    {10: 20, 30: 40},
-  ]);
+    funcHashMapI32I32TwinRustAsyncSse,
+    <Map<int, int>>[
+      {},
+      {10: 20},
+      {10: 20, 30: 40},
+    ],
+  );
   addTestsIdentityFunctionCall(funcHashSetI32TwinRustAsyncSse, <Set<int>>[
     {},
     {10},
@@ -48,11 +50,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
     {'a', 'b'},
   ]);
   addTestsIdentityFunctionCall(
-      funcHashSetStringHasherTwinRustAsyncSse, <Set<String>>[
-    {},
-    {'a'},
-    {'a', 'b'},
-  ]);
+    funcHashSetStringHasherTwinRustAsyncSse,
+    <Set<String>>[
+      {},
+      {'a'},
+      {'a', 'b'},
+    ],
+  );
 
   addTestsIdentityFunctionCall(
     funcHashMapStringBytesTwinRustAsyncSse,

@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,11 +9,8 @@ part of 'misc_no_twin_example_a.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 MyEnumWithJsonSerializableTwinNormal
     _$MyEnumWithJsonSerializableTwinNormalFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType']) {
@@ -33,107 +30,288 @@ MyEnumWithJsonSerializableTwinNormal
 
 /// @nodoc
 mixin _$MyEnumWithJsonSerializableTwinNormal {
+  /// Serializes this MyEnumWithJsonSerializableTwinNormal to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is MyEnumWithJsonSerializableTwinNormal);
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'MyEnumWithJsonSerializableTwinNormal()';
+  }
+}
+
+/// @nodoc
+class $MyEnumWithJsonSerializableTwinNormalCopyWith<$Res> {
+  $MyEnumWithJsonSerializableTwinNormalCopyWith(
+      MyEnumWithJsonSerializableTwinNormal _,
+      $Res Function(MyEnumWithJsonSerializableTwinNormal) __);
+}
+
+/// Adds pattern-matching-related methods to [MyEnumWithJsonSerializableTwinNormal].
+extension MyEnumWithJsonSerializableTwinNormalPatterns
+    on MyEnumWithJsonSerializableTwinNormal {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String field0) apple,
-    required TResult Function(int a) orange,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String field0)? apple,
-    TResult? Function(int a)? orange,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String field0)? apple,
-    TResult Function(int a)? orange,
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MyEnumWithJsonSerializableTwinNormal_Apple value)? apple,
+    TResult Function(MyEnumWithJsonSerializableTwinNormal_Orange value)? orange,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) {
+    final _that = this;
+    switch (_that) {
+      case MyEnumWithJsonSerializableTwinNormal_Apple() when apple != null:
+        return apple(_that);
+      case MyEnumWithJsonSerializableTwinNormal_Orange() when orange != null:
+        return orange(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(MyEnumWithJsonSerializableTwinNormal_Apple value)
         apple,
     required TResult Function(MyEnumWithJsonSerializableTwinNormal_Orange value)
         orange,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) {
+    final _that = this;
+    switch (_that) {
+      case MyEnumWithJsonSerializableTwinNormal_Apple():
+        return apple(_that);
+      case MyEnumWithJsonSerializableTwinNormal_Orange():
+        return orange(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(MyEnumWithJsonSerializableTwinNormal_Apple value)? apple,
     TResult? Function(MyEnumWithJsonSerializableTwinNormal_Orange value)?
         orange,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) {
+    final _that = this;
+    switch (_that) {
+      case MyEnumWithJsonSerializableTwinNormal_Apple() when apple != null:
+        return apple(_that);
+      case MyEnumWithJsonSerializableTwinNormal_Orange() when orange != null:
+        return orange(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(MyEnumWithJsonSerializableTwinNormal_Apple value)? apple,
-    TResult Function(MyEnumWithJsonSerializableTwinNormal_Orange value)? orange,
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String field0)? apple,
+    TResult Function(int a)? orange,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) {
+    final _that = this;
+    switch (_that) {
+      case MyEnumWithJsonSerializableTwinNormal_Apple() when apple != null:
+        return apple(_that.field0);
+      case MyEnumWithJsonSerializableTwinNormal_Orange() when orange != null:
+        return orange(_that.a);
+      case _:
+        return orElse();
+    }
+  }
 
-  /// Serializes this MyEnumWithJsonSerializableTwinNormal to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String field0) apple,
+    required TResult Function(int a) orange,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case MyEnumWithJsonSerializableTwinNormal_Apple():
+        return apple(_that.field0);
+      case MyEnumWithJsonSerializableTwinNormal_Orange():
+        return orange(_that.a);
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String field0)? apple,
+    TResult? Function(int a)? orange,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case MyEnumWithJsonSerializableTwinNormal_Apple() when apple != null:
+        return apple(_that.field0);
+      case MyEnumWithJsonSerializableTwinNormal_Orange() when orange != null:
+        return orange(_that.a);
+      case _:
+        return null;
+    }
+  }
 }
 
 /// @nodoc
-abstract class $MyEnumWithJsonSerializableTwinNormalCopyWith<$Res> {
-  factory $MyEnumWithJsonSerializableTwinNormalCopyWith(
-          MyEnumWithJsonSerializableTwinNormal value,
-          $Res Function(MyEnumWithJsonSerializableTwinNormal) then) =
-      _$MyEnumWithJsonSerializableTwinNormalCopyWithImpl<$Res,
-          MyEnumWithJsonSerializableTwinNormal>;
-}
+@JsonSerializable()
+class MyEnumWithJsonSerializableTwinNormal_Apple
+    extends MyEnumWithJsonSerializableTwinNormal {
+  const MyEnumWithJsonSerializableTwinNormal_Apple(this.field0,
+      {final String? $type})
+      : $type = $type ?? 'apple',
+        super._();
+  factory MyEnumWithJsonSerializableTwinNormal_Apple.fromJson(
+          Map<String, dynamic> json) =>
+      _$MyEnumWithJsonSerializableTwinNormal_AppleFromJson(json);
 
-/// @nodoc
-class _$MyEnumWithJsonSerializableTwinNormalCopyWithImpl<$Res,
-        $Val extends MyEnumWithJsonSerializableTwinNormal>
-    implements $MyEnumWithJsonSerializableTwinNormalCopyWith<$Res> {
-  _$MyEnumWithJsonSerializableTwinNormalCopyWithImpl(this._value, this._then);
+  final String field0;
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   /// Create a copy of MyEnumWithJsonSerializableTwinNormal
   /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $MyEnumWithJsonSerializableTwinNormal_AppleCopyWith<
+          MyEnumWithJsonSerializableTwinNormal_Apple>
+      get copyWith => _$MyEnumWithJsonSerializableTwinNormal_AppleCopyWithImpl<
+          MyEnumWithJsonSerializableTwinNormal_Apple>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$MyEnumWithJsonSerializableTwinNormal_AppleToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is MyEnumWithJsonSerializableTwinNormal_Apple &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @override
+  String toString() {
+    return 'MyEnumWithJsonSerializableTwinNormal.apple(field0: $field0)';
+  }
 }
 
 /// @nodoc
-abstract class _$$MyEnumWithJsonSerializableTwinNormal_AppleImplCopyWith<$Res> {
-  factory _$$MyEnumWithJsonSerializableTwinNormal_AppleImplCopyWith(
-          _$MyEnumWithJsonSerializableTwinNormal_AppleImpl value,
-          $Res Function(_$MyEnumWithJsonSerializableTwinNormal_AppleImpl)
-              then) =
-      __$$MyEnumWithJsonSerializableTwinNormal_AppleImplCopyWithImpl<$Res>;
+abstract mixin class $MyEnumWithJsonSerializableTwinNormal_AppleCopyWith<$Res>
+    implements $MyEnumWithJsonSerializableTwinNormalCopyWith<$Res> {
+  factory $MyEnumWithJsonSerializableTwinNormal_AppleCopyWith(
+          MyEnumWithJsonSerializableTwinNormal_Apple value,
+          $Res Function(MyEnumWithJsonSerializableTwinNormal_Apple) _then) =
+      _$MyEnumWithJsonSerializableTwinNormal_AppleCopyWithImpl;
   @useResult
   $Res call({String field0});
 }
 
 /// @nodoc
-class __$$MyEnumWithJsonSerializableTwinNormal_AppleImplCopyWithImpl<$Res>
-    extends _$MyEnumWithJsonSerializableTwinNormalCopyWithImpl<$Res,
-        _$MyEnumWithJsonSerializableTwinNormal_AppleImpl>
-    implements _$$MyEnumWithJsonSerializableTwinNormal_AppleImplCopyWith<$Res> {
-  __$$MyEnumWithJsonSerializableTwinNormal_AppleImplCopyWithImpl(
-      _$MyEnumWithJsonSerializableTwinNormal_AppleImpl _value,
-      $Res Function(_$MyEnumWithJsonSerializableTwinNormal_AppleImpl) _then)
-      : super(_value, _then);
+class _$MyEnumWithJsonSerializableTwinNormal_AppleCopyWithImpl<$Res>
+    implements $MyEnumWithJsonSerializableTwinNormal_AppleCopyWith<$Res> {
+  _$MyEnumWithJsonSerializableTwinNormal_AppleCopyWithImpl(
+      this._self, this._then);
+
+  final MyEnumWithJsonSerializableTwinNormal_Apple _self;
+  final $Res Function(MyEnumWithJsonSerializableTwinNormal_Apple) _then;
 
   /// Create a copy of MyEnumWithJsonSerializableTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? field0 = null,
   }) {
-    return _then(_$MyEnumWithJsonSerializableTwinNormal_AppleImpl(
+    return _then(MyEnumWithJsonSerializableTwinNormal_Apple(
       null == field0
-          ? _value.field0
+          ? _self.field0
           : field0 // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -142,213 +320,42 @@ class __$$MyEnumWithJsonSerializableTwinNormal_AppleImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$MyEnumWithJsonSerializableTwinNormal_AppleImpl
-    extends MyEnumWithJsonSerializableTwinNormal_Apple {
-  const _$MyEnumWithJsonSerializableTwinNormal_AppleImpl(this.field0,
-      {final String? $type})
-      : $type = $type ?? 'apple',
-        super._();
-
-  factory _$MyEnumWithJsonSerializableTwinNormal_AppleImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$MyEnumWithJsonSerializableTwinNormal_AppleImplFromJson(json);
-
-  @override
-  final String field0;
-
-  @JsonKey(name: 'runtimeType')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'MyEnumWithJsonSerializableTwinNormal.apple(field0: $field0)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$MyEnumWithJsonSerializableTwinNormal_AppleImpl &&
-            (identical(other.field0, field0) || other.field0 == field0));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, field0);
-
-  /// Create a copy of MyEnumWithJsonSerializableTwinNormal
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$MyEnumWithJsonSerializableTwinNormal_AppleImplCopyWith<
-          _$MyEnumWithJsonSerializableTwinNormal_AppleImpl>
-      get copyWith =>
-          __$$MyEnumWithJsonSerializableTwinNormal_AppleImplCopyWithImpl<
-                  _$MyEnumWithJsonSerializableTwinNormal_AppleImpl>(
-              this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String field0) apple,
-    required TResult Function(int a) orange,
-  }) {
-    return apple(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String field0)? apple,
-    TResult? Function(int a)? orange,
-  }) {
-    return apple?.call(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String field0)? apple,
-    TResult Function(int a)? orange,
-    required TResult orElse(),
-  }) {
-    if (apple != null) {
-      return apple(field0);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(MyEnumWithJsonSerializableTwinNormal_Apple value)
-        apple,
-    required TResult Function(MyEnumWithJsonSerializableTwinNormal_Orange value)
-        orange,
-  }) {
-    return apple(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(MyEnumWithJsonSerializableTwinNormal_Apple value)? apple,
-    TResult? Function(MyEnumWithJsonSerializableTwinNormal_Orange value)?
-        orange,
-  }) {
-    return apple?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(MyEnumWithJsonSerializableTwinNormal_Apple value)? apple,
-    TResult Function(MyEnumWithJsonSerializableTwinNormal_Orange value)? orange,
-    required TResult orElse(),
-  }) {
-    if (apple != null) {
-      return apple(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$MyEnumWithJsonSerializableTwinNormal_AppleImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class MyEnumWithJsonSerializableTwinNormal_Apple
+class MyEnumWithJsonSerializableTwinNormal_Orange
     extends MyEnumWithJsonSerializableTwinNormal {
-  const factory MyEnumWithJsonSerializableTwinNormal_Apple(
-      final String field0) = _$MyEnumWithJsonSerializableTwinNormal_AppleImpl;
-  const MyEnumWithJsonSerializableTwinNormal_Apple._() : super._();
-
-  factory MyEnumWithJsonSerializableTwinNormal_Apple.fromJson(
-          Map<String, dynamic> json) =
-      _$MyEnumWithJsonSerializableTwinNormal_AppleImpl.fromJson;
-
-  String get field0;
-
-  /// Create a copy of MyEnumWithJsonSerializableTwinNormal
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MyEnumWithJsonSerializableTwinNormal_AppleImplCopyWith<
-          _$MyEnumWithJsonSerializableTwinNormal_AppleImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$MyEnumWithJsonSerializableTwinNormal_OrangeImplCopyWith<
-    $Res> {
-  factory _$$MyEnumWithJsonSerializableTwinNormal_OrangeImplCopyWith(
-          _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl value,
-          $Res Function(_$MyEnumWithJsonSerializableTwinNormal_OrangeImpl)
-              then) =
-      __$$MyEnumWithJsonSerializableTwinNormal_OrangeImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int a});
-}
-
-/// @nodoc
-class __$$MyEnumWithJsonSerializableTwinNormal_OrangeImplCopyWithImpl<$Res>
-    extends _$MyEnumWithJsonSerializableTwinNormalCopyWithImpl<$Res,
-        _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl>
-    implements
-        _$$MyEnumWithJsonSerializableTwinNormal_OrangeImplCopyWith<$Res> {
-  __$$MyEnumWithJsonSerializableTwinNormal_OrangeImplCopyWithImpl(
-      _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl _value,
-      $Res Function(_$MyEnumWithJsonSerializableTwinNormal_OrangeImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of MyEnumWithJsonSerializableTwinNormal
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? a = null,
-  }) {
-    return _then(_$MyEnumWithJsonSerializableTwinNormal_OrangeImpl(
-      a: null == a
-          ? _value.a
-          : a // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl
-    extends MyEnumWithJsonSerializableTwinNormal_Orange {
-  const _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl(
+  const MyEnumWithJsonSerializableTwinNormal_Orange(
       {required this.a, final String? $type})
       : $type = $type ?? 'orange',
         super._();
-
-  factory _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl.fromJson(
+  factory MyEnumWithJsonSerializableTwinNormal_Orange.fromJson(
           Map<String, dynamic> json) =>
-      _$$MyEnumWithJsonSerializableTwinNormal_OrangeImplFromJson(json);
+      _$MyEnumWithJsonSerializableTwinNormal_OrangeFromJson(json);
 
-  @override
   final int a;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
+  /// Create a copy of MyEnumWithJsonSerializableTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $MyEnumWithJsonSerializableTwinNormal_OrangeCopyWith<
+          MyEnumWithJsonSerializableTwinNormal_Orange>
+      get copyWith => _$MyEnumWithJsonSerializableTwinNormal_OrangeCopyWithImpl<
+          MyEnumWithJsonSerializableTwinNormal_Orange>(this, _$identity);
+
   @override
-  String toString() {
-    return 'MyEnumWithJsonSerializableTwinNormal.orange(a: $a)';
+  Map<String, dynamic> toJson() {
+    return _$MyEnumWithJsonSerializableTwinNormal_OrangeToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl &&
+            other is MyEnumWithJsonSerializableTwinNormal_Orange &&
             (identical(other.a, a) || other.a == a));
   }
 
@@ -356,468 +363,362 @@ class _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl
   @override
   int get hashCode => Object.hash(runtimeType, a);
 
-  /// Create a copy of MyEnumWithJsonSerializableTwinNormal
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$MyEnumWithJsonSerializableTwinNormal_OrangeImplCopyWith<
-          _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl>
-      get copyWith =>
-          __$$MyEnumWithJsonSerializableTwinNormal_OrangeImplCopyWithImpl<
-                  _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl>(
-              this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String field0) apple,
-    required TResult Function(int a) orange,
-  }) {
-    return orange(a);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String field0)? apple,
-    TResult? Function(int a)? orange,
-  }) {
-    return orange?.call(a);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String field0)? apple,
-    TResult Function(int a)? orange,
-    required TResult orElse(),
-  }) {
-    if (orange != null) {
-      return orange(a);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(MyEnumWithJsonSerializableTwinNormal_Apple value)
-        apple,
-    required TResult Function(MyEnumWithJsonSerializableTwinNormal_Orange value)
-        orange,
-  }) {
-    return orange(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(MyEnumWithJsonSerializableTwinNormal_Apple value)? apple,
-    TResult? Function(MyEnumWithJsonSerializableTwinNormal_Orange value)?
-        orange,
-  }) {
-    return orange?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(MyEnumWithJsonSerializableTwinNormal_Apple value)? apple,
-    TResult Function(MyEnumWithJsonSerializableTwinNormal_Orange value)? orange,
-    required TResult orElse(),
-  }) {
-    if (orange != null) {
-      return orange(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$MyEnumWithJsonSerializableTwinNormal_OrangeImplToJson(
-      this,
-    );
+  String toString() {
+    return 'MyEnumWithJsonSerializableTwinNormal.orange(a: $a)';
   }
 }
 
-abstract class MyEnumWithJsonSerializableTwinNormal_Orange
-    extends MyEnumWithJsonSerializableTwinNormal {
-  const factory MyEnumWithJsonSerializableTwinNormal_Orange(
-          {required final int a}) =
-      _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl;
-  const MyEnumWithJsonSerializableTwinNormal_Orange._() : super._();
+/// @nodoc
+abstract mixin class $MyEnumWithJsonSerializableTwinNormal_OrangeCopyWith<$Res>
+    implements $MyEnumWithJsonSerializableTwinNormalCopyWith<$Res> {
+  factory $MyEnumWithJsonSerializableTwinNormal_OrangeCopyWith(
+          MyEnumWithJsonSerializableTwinNormal_Orange value,
+          $Res Function(MyEnumWithJsonSerializableTwinNormal_Orange) _then) =
+      _$MyEnumWithJsonSerializableTwinNormal_OrangeCopyWithImpl;
+  @useResult
+  $Res call({int a});
+}
 
-  factory MyEnumWithJsonSerializableTwinNormal_Orange.fromJson(
-          Map<String, dynamic> json) =
-      _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl.fromJson;
+/// @nodoc
+class _$MyEnumWithJsonSerializableTwinNormal_OrangeCopyWithImpl<$Res>
+    implements $MyEnumWithJsonSerializableTwinNormal_OrangeCopyWith<$Res> {
+  _$MyEnumWithJsonSerializableTwinNormal_OrangeCopyWithImpl(
+      this._self, this._then);
 
-  int get a;
+  final MyEnumWithJsonSerializableTwinNormal_Orange _self;
+  final $Res Function(MyEnumWithJsonSerializableTwinNormal_Orange) _then;
 
   /// Create a copy of MyEnumWithJsonSerializableTwinNormal
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MyEnumWithJsonSerializableTwinNormal_OrangeImplCopyWith<
-          _$MyEnumWithJsonSerializableTwinNormal_OrangeImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-mixin _$MyEnumWithoutFnWithUnignoreTwinNormal {
-  String get field0 => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String field0) one,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String field0)? one,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String field0)? one,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(MyEnumWithoutFnWithUnignoreTwinNormal_One value)
-        one,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(MyEnumWithoutFnWithUnignoreTwinNormal_One value)? one,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(MyEnumWithoutFnWithUnignoreTwinNormal_One value)? one,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  /// Create a copy of MyEnumWithoutFnWithUnignoreTwinNormal
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $MyEnumWithoutFnWithUnignoreTwinNormalCopyWith<
-          MyEnumWithoutFnWithUnignoreTwinNormal>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $MyEnumWithoutFnWithUnignoreTwinNormalCopyWith<$Res> {
-  factory $MyEnumWithoutFnWithUnignoreTwinNormalCopyWith(
-          MyEnumWithoutFnWithUnignoreTwinNormal value,
-          $Res Function(MyEnumWithoutFnWithUnignoreTwinNormal) then) =
-      _$MyEnumWithoutFnWithUnignoreTwinNormalCopyWithImpl<$Res,
-          MyEnumWithoutFnWithUnignoreTwinNormal>;
-  @useResult
-  $Res call({String field0});
-}
-
-/// @nodoc
-class _$MyEnumWithoutFnWithUnignoreTwinNormalCopyWithImpl<$Res,
-        $Val extends MyEnumWithoutFnWithUnignoreTwinNormal>
-    implements $MyEnumWithoutFnWithUnignoreTwinNormalCopyWith<$Res> {
-  _$MyEnumWithoutFnWithUnignoreTwinNormalCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of MyEnumWithoutFnWithUnignoreTwinNormal
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
-    Object? field0 = null,
+    Object? a = null,
   }) {
-    return _then(_value.copyWith(
-      field0: null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$MyEnumWithoutFnWithUnignoreTwinNormal_OneImplCopyWith<$Res>
-    implements $MyEnumWithoutFnWithUnignoreTwinNormalCopyWith<$Res> {
-  factory _$$MyEnumWithoutFnWithUnignoreTwinNormal_OneImplCopyWith(
-          _$MyEnumWithoutFnWithUnignoreTwinNormal_OneImpl value,
-          $Res Function(_$MyEnumWithoutFnWithUnignoreTwinNormal_OneImpl) then) =
-      __$$MyEnumWithoutFnWithUnignoreTwinNormal_OneImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String field0});
-}
-
-/// @nodoc
-class __$$MyEnumWithoutFnWithUnignoreTwinNormal_OneImplCopyWithImpl<$Res>
-    extends _$MyEnumWithoutFnWithUnignoreTwinNormalCopyWithImpl<$Res,
-        _$MyEnumWithoutFnWithUnignoreTwinNormal_OneImpl>
-    implements _$$MyEnumWithoutFnWithUnignoreTwinNormal_OneImplCopyWith<$Res> {
-  __$$MyEnumWithoutFnWithUnignoreTwinNormal_OneImplCopyWithImpl(
-      _$MyEnumWithoutFnWithUnignoreTwinNormal_OneImpl _value,
-      $Res Function(_$MyEnumWithoutFnWithUnignoreTwinNormal_OneImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of MyEnumWithoutFnWithUnignoreTwinNormal
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$MyEnumWithoutFnWithUnignoreTwinNormal_OneImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(MyEnumWithJsonSerializableTwinNormal_Orange(
+      a: null == a
+          ? _self.a
+          : a // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
 
 /// @nodoc
+mixin _$MyEnumWithoutFnWithUnignoreTwinNormal {
+  String get field0;
 
-class _$MyEnumWithoutFnWithUnignoreTwinNormal_OneImpl
-    extends MyEnumWithoutFnWithUnignoreTwinNormal_One {
-  const _$MyEnumWithoutFnWithUnignoreTwinNormal_OneImpl(this.field0)
-      : super._();
-
-  @override
-  final String field0;
-
-  @override
-  String toString() {
-    return 'MyEnumWithoutFnWithUnignoreTwinNormal.one(field0: $field0)';
-  }
+  /// Create a copy of MyEnumWithoutFnWithUnignoreTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $MyEnumWithoutFnWithUnignoreTwinNormalCopyWith<
+          MyEnumWithoutFnWithUnignoreTwinNormal>
+      get copyWith => _$MyEnumWithoutFnWithUnignoreTwinNormalCopyWithImpl<
+              MyEnumWithoutFnWithUnignoreTwinNormal>(
+          this as MyEnumWithoutFnWithUnignoreTwinNormal, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MyEnumWithoutFnWithUnignoreTwinNormal_OneImpl &&
+            other is MyEnumWithoutFnWithUnignoreTwinNormal &&
             (identical(other.field0, field0) || other.field0 == field0));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
+  @override
+  String toString() {
+    return 'MyEnumWithoutFnWithUnignoreTwinNormal(field0: $field0)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $MyEnumWithoutFnWithUnignoreTwinNormalCopyWith<$Res> {
+  factory $MyEnumWithoutFnWithUnignoreTwinNormalCopyWith(
+          MyEnumWithoutFnWithUnignoreTwinNormal value,
+          $Res Function(MyEnumWithoutFnWithUnignoreTwinNormal) _then) =
+      _$MyEnumWithoutFnWithUnignoreTwinNormalCopyWithImpl;
+  @useResult
+  $Res call({String field0});
+}
+
+/// @nodoc
+class _$MyEnumWithoutFnWithUnignoreTwinNormalCopyWithImpl<$Res>
+    implements $MyEnumWithoutFnWithUnignoreTwinNormalCopyWith<$Res> {
+  _$MyEnumWithoutFnWithUnignoreTwinNormalCopyWithImpl(this._self, this._then);
+
+  final MyEnumWithoutFnWithUnignoreTwinNormal _self;
+  final $Res Function(MyEnumWithoutFnWithUnignoreTwinNormal) _then;
+
   /// Create a copy of MyEnumWithoutFnWithUnignoreTwinNormal
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
   @pragma('vm:prefer-inline')
-  _$$MyEnumWithoutFnWithUnignoreTwinNormal_OneImplCopyWith<
-          _$MyEnumWithoutFnWithUnignoreTwinNormal_OneImpl>
-      get copyWith =>
-          __$$MyEnumWithoutFnWithUnignoreTwinNormal_OneImplCopyWithImpl<
-                  _$MyEnumWithoutFnWithUnignoreTwinNormal_OneImpl>(
-              this, _$identity);
-
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String field0) one,
+  $Res call({
+    Object? field0 = null,
   }) {
-    return one(field0);
+    return _then(_self.copyWith(
+      field0: null == field0
+          ? _self.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
+}
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String field0)? one,
-  }) {
-    return one?.call(field0);
-  }
+/// Adds pattern-matching-related methods to [MyEnumWithoutFnWithUnignoreTwinNormal].
+extension MyEnumWithoutFnWithUnignoreTwinNormalPatterns
+    on MyEnumWithoutFnWithUnignoreTwinNormal {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String field0)? one,
-    required TResult orElse(),
-  }) {
-    if (one != null) {
-      return one(field0);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(MyEnumWithoutFnWithUnignoreTwinNormal_One value)
-        one,
-  }) {
-    return one(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(MyEnumWithoutFnWithUnignoreTwinNormal_One value)? one,
-  }) {
-    return one?.call(this);
-  }
-
-  @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MyEnumWithoutFnWithUnignoreTwinNormal_One value)? one,
     required TResult orElse(),
   }) {
-    if (one != null) {
-      return one(this);
+    final _that = this;
+    switch (_that) {
+      case MyEnumWithoutFnWithUnignoreTwinNormal_One() when one != null:
+        return one(_that);
+      case _:
+        return orElse();
     }
-    return orElse();
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(MyEnumWithoutFnWithUnignoreTwinNormal_One value)
+        one,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case MyEnumWithoutFnWithUnignoreTwinNormal_One():
+        return one(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(MyEnumWithoutFnWithUnignoreTwinNormal_One value)? one,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case MyEnumWithoutFnWithUnignoreTwinNormal_One() when one != null:
+        return one(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String field0)? one,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case MyEnumWithoutFnWithUnignoreTwinNormal_One() when one != null:
+        return one(_that.field0);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String field0) one,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case MyEnumWithoutFnWithUnignoreTwinNormal_One():
+        return one(_that.field0);
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String field0)? one,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case MyEnumWithoutFnWithUnignoreTwinNormal_One() when one != null:
+        return one(_that.field0);
+      case _:
+        return null;
+    }
   }
 }
 
-abstract class MyEnumWithoutFnWithUnignoreTwinNormal_One
+/// @nodoc
+
+class MyEnumWithoutFnWithUnignoreTwinNormal_One
     extends MyEnumWithoutFnWithUnignoreTwinNormal {
-  const factory MyEnumWithoutFnWithUnignoreTwinNormal_One(final String field0) =
-      _$MyEnumWithoutFnWithUnignoreTwinNormal_OneImpl;
-  const MyEnumWithoutFnWithUnignoreTwinNormal_One._() : super._();
+  const MyEnumWithoutFnWithUnignoreTwinNormal_One(this.field0) : super._();
 
   @override
-  String get field0;
+  final String field0;
 
   /// Create a copy of MyEnumWithoutFnWithUnignoreTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MyEnumWithoutFnWithUnignoreTwinNormal_OneImplCopyWith<
-          _$MyEnumWithoutFnWithUnignoreTwinNormal_OneImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-MyStructWithJsonSerializableTwinNormal
-    _$MyStructWithJsonSerializableTwinNormalFromJson(
-        Map<String, dynamic> json) {
-  return _MyStructWithJsonSerializableTwinNormal.fromJson(json);
-}
-
-/// @nodoc
-mixin _$MyStructWithJsonSerializableTwinNormal {
-  String get fieldOne => throw _privateConstructorUsedError;
-
-  /// Serializes this MyStructWithJsonSerializableTwinNormal to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of MyStructWithJsonSerializableTwinNormal
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $MyStructWithJsonSerializableTwinNormalCopyWith<
-          MyStructWithJsonSerializableTwinNormal>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $MyStructWithJsonSerializableTwinNormalCopyWith<$Res> {
-  factory $MyStructWithJsonSerializableTwinNormalCopyWith(
-          MyStructWithJsonSerializableTwinNormal value,
-          $Res Function(MyStructWithJsonSerializableTwinNormal) then) =
-      _$MyStructWithJsonSerializableTwinNormalCopyWithImpl<$Res,
-          MyStructWithJsonSerializableTwinNormal>;
-  @useResult
-  $Res call({String fieldOne});
-}
-
-/// @nodoc
-class _$MyStructWithJsonSerializableTwinNormalCopyWithImpl<$Res,
-        $Val extends MyStructWithJsonSerializableTwinNormal>
-    implements $MyStructWithJsonSerializableTwinNormalCopyWith<$Res> {
-  _$MyStructWithJsonSerializableTwinNormalCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of MyStructWithJsonSerializableTwinNormal
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $MyEnumWithoutFnWithUnignoreTwinNormal_OneCopyWith<
+          MyEnumWithoutFnWithUnignoreTwinNormal_One>
+      get copyWith => _$MyEnumWithoutFnWithUnignoreTwinNormal_OneCopyWithImpl<
+          MyEnumWithoutFnWithUnignoreTwinNormal_One>(this, _$identity);
+
   @override
-  $Res call({
-    Object? fieldOne = null,
-  }) {
-    return _then(_value.copyWith(
-      fieldOne: null == fieldOne
-          ? _value.fieldOne
-          : fieldOne // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is MyEnumWithoutFnWithUnignoreTwinNormal_One &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @override
+  String toString() {
+    return 'MyEnumWithoutFnWithUnignoreTwinNormal.one(field0: $field0)';
   }
 }
 
 /// @nodoc
-abstract class _$$MyStructWithJsonSerializableTwinNormalImplCopyWith<$Res>
-    implements $MyStructWithJsonSerializableTwinNormalCopyWith<$Res> {
-  factory _$$MyStructWithJsonSerializableTwinNormalImplCopyWith(
-          _$MyStructWithJsonSerializableTwinNormalImpl value,
-          $Res Function(_$MyStructWithJsonSerializableTwinNormalImpl) then) =
-      __$$MyStructWithJsonSerializableTwinNormalImplCopyWithImpl<$Res>;
+abstract mixin class $MyEnumWithoutFnWithUnignoreTwinNormal_OneCopyWith<$Res>
+    implements $MyEnumWithoutFnWithUnignoreTwinNormalCopyWith<$Res> {
+  factory $MyEnumWithoutFnWithUnignoreTwinNormal_OneCopyWith(
+          MyEnumWithoutFnWithUnignoreTwinNormal_One value,
+          $Res Function(MyEnumWithoutFnWithUnignoreTwinNormal_One) _then) =
+      _$MyEnumWithoutFnWithUnignoreTwinNormal_OneCopyWithImpl;
   @override
   @useResult
-  $Res call({String fieldOne});
+  $Res call({String field0});
 }
 
 /// @nodoc
-class __$$MyStructWithJsonSerializableTwinNormalImplCopyWithImpl<$Res>
-    extends _$MyStructWithJsonSerializableTwinNormalCopyWithImpl<$Res,
-        _$MyStructWithJsonSerializableTwinNormalImpl>
-    implements _$$MyStructWithJsonSerializableTwinNormalImplCopyWith<$Res> {
-  __$$MyStructWithJsonSerializableTwinNormalImplCopyWithImpl(
-      _$MyStructWithJsonSerializableTwinNormalImpl _value,
-      $Res Function(_$MyStructWithJsonSerializableTwinNormalImpl) _then)
-      : super(_value, _then);
+class _$MyEnumWithoutFnWithUnignoreTwinNormal_OneCopyWithImpl<$Res>
+    implements $MyEnumWithoutFnWithUnignoreTwinNormal_OneCopyWith<$Res> {
+  _$MyEnumWithoutFnWithUnignoreTwinNormal_OneCopyWithImpl(
+      this._self, this._then);
 
-  /// Create a copy of MyStructWithJsonSerializableTwinNormal
+  final MyEnumWithoutFnWithUnignoreTwinNormal_One _self;
+  final $Res Function(MyEnumWithoutFnWithUnignoreTwinNormal_One) _then;
+
+  /// Create a copy of MyEnumWithoutFnWithUnignoreTwinNormal
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
-    Object? fieldOne = null,
+    Object? field0 = null,
   }) {
-    return _then(_$MyStructWithJsonSerializableTwinNormalImpl(
-      fieldOne: null == fieldOne
-          ? _value.fieldOne
-          : fieldOne // ignore: cast_nullable_to_non_nullable
+    return _then(MyEnumWithoutFnWithUnignoreTwinNormal_One(
+      null == field0
+          ? _self.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$MyStructWithJsonSerializableTwinNormalImpl
-    extends _MyStructWithJsonSerializableTwinNormal {
-  const _$MyStructWithJsonSerializableTwinNormalImpl({required this.fieldOne})
-      : super._();
+mixin _$MyStructWithJsonSerializableTwinNormal {
+  String get fieldOne;
 
-  factory _$MyStructWithJsonSerializableTwinNormalImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$MyStructWithJsonSerializableTwinNormalImplFromJson(json);
+  /// Create a copy of MyStructWithJsonSerializableTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $MyStructWithJsonSerializableTwinNormalCopyWith<
+          MyStructWithJsonSerializableTwinNormal>
+      get copyWith => _$MyStructWithJsonSerializableTwinNormalCopyWithImpl<
+              MyStructWithJsonSerializableTwinNormal>(
+          this as MyStructWithJsonSerializableTwinNormal, _$identity);
 
-  @override
-  final String fieldOne;
-
-  @override
-  String toString() {
-    return 'MyStructWithJsonSerializableTwinNormal(fieldOne: $fieldOne)';
-  }
+  /// Serializes this MyStructWithJsonSerializableTwinNormal to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MyStructWithJsonSerializableTwinNormalImpl &&
+            other is MyStructWithJsonSerializableTwinNormal &&
             (identical(other.fieldOne, fieldOne) ||
                 other.fieldOne == fieldOne));
   }
@@ -826,191 +727,311 @@ class _$MyStructWithJsonSerializableTwinNormalImpl
   @override
   int get hashCode => Object.hash(runtimeType, fieldOne);
 
-  /// Create a copy of MyStructWithJsonSerializableTwinNormal
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$MyStructWithJsonSerializableTwinNormalImplCopyWith<
-          _$MyStructWithJsonSerializableTwinNormalImpl>
-      get copyWith =>
-          __$$MyStructWithJsonSerializableTwinNormalImplCopyWithImpl<
-              _$MyStructWithJsonSerializableTwinNormalImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$MyStructWithJsonSerializableTwinNormalImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _MyStructWithJsonSerializableTwinNormal
-    extends MyStructWithJsonSerializableTwinNormal {
-  const factory _MyStructWithJsonSerializableTwinNormal(
-          {required final String fieldOne}) =
-      _$MyStructWithJsonSerializableTwinNormalImpl;
-  const _MyStructWithJsonSerializableTwinNormal._() : super._();
-
-  factory _MyStructWithJsonSerializableTwinNormal.fromJson(
-          Map<String, dynamic> json) =
-      _$MyStructWithJsonSerializableTwinNormalImpl.fromJson;
-
-  @override
-  String get fieldOne;
-
-  /// Create a copy of MyStructWithJsonSerializableTwinNormal
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MyStructWithJsonSerializableTwinNormalImplCopyWith<
-          _$MyStructWithJsonSerializableTwinNormalImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
-    _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalFromJson(
-        Map<String, dynamic> json) {
-  return _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal.fromJson(
-      json);
-}
-
-/// @nodoc
-mixin _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal {
-  String get a => throw _privateConstructorUsedError;
-
-  /// Serializes this MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWith<
-          MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWith<
-    $Res> {
-  factory $MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWith(
-          MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal value,
-          $Res Function(
-                  MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal)
-              then) =
-      _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWithImpl<
-          $Res, MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal>;
-  @useResult
-  $Res call({String a});
-}
-
-/// @nodoc
-class _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWithImpl<
-        $Res,
-        $Val extends MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal>
-    implements
-        $MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWith<
-            $Res> {
-  _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWithImpl(
-      this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? a = null,
-  }) {
-    return _then(_value.copyWith(
-      a: null == a
-          ? _value.a
-          : a // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  String toString() {
+    return 'MyStructWithJsonSerializableTwinNormal(fieldOne: $fieldOne)';
   }
 }
 
 /// @nodoc
-abstract class _$$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImplCopyWith<
-        $Res>
-    implements
-        $MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWith<
-            $Res> {
-  factory _$$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImplCopyWith(
-          _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl value,
-          $Res Function(
-                  _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl)
-              then) =
-      __$$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImplCopyWithImpl<
-          $Res>;
-  @override
+abstract mixin class $MyStructWithJsonSerializableTwinNormalCopyWith<$Res> {
+  factory $MyStructWithJsonSerializableTwinNormalCopyWith(
+          MyStructWithJsonSerializableTwinNormal value,
+          $Res Function(MyStructWithJsonSerializableTwinNormal) _then) =
+      _$MyStructWithJsonSerializableTwinNormalCopyWithImpl;
   @useResult
-  $Res call({String a});
+  $Res call({String fieldOne});
 }
 
 /// @nodoc
-class __$$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImplCopyWithImpl<
-        $Res>
-    extends _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWithImpl<
-        $Res, _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl>
-    implements
-        _$$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImplCopyWith<
-            $Res> {
-  __$$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImplCopyWithImpl(
-      _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl _value,
-      $Res Function(
-              _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl)
-          _then)
-      : super(_value, _then);
+class _$MyStructWithJsonSerializableTwinNormalCopyWithImpl<$Res>
+    implements $MyStructWithJsonSerializableTwinNormalCopyWith<$Res> {
+  _$MyStructWithJsonSerializableTwinNormalCopyWithImpl(this._self, this._then);
 
-  /// Create a copy of MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
+  final MyStructWithJsonSerializableTwinNormal _self;
+  final $Res Function(MyStructWithJsonSerializableTwinNormal) _then;
+
+  /// Create a copy of MyStructWithJsonSerializableTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? a = null,
+    Object? fieldOne = null,
   }) {
-    return _then(
-        _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl(
-      a: null == a
-          ? _value.a
-          : a // ignore: cast_nullable_to_non_nullable
+    return _then(_self.copyWith(
+      fieldOne: null == fieldOne
+          ? _self.fieldOne
+          : fieldOne // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [MyStructWithJsonSerializableTwinNormal].
+extension MyStructWithJsonSerializableTwinNormalPatterns
+    on MyStructWithJsonSerializableTwinNormal {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_MyStructWithJsonSerializableTwinNormal value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _MyStructWithJsonSerializableTwinNormal() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_MyStructWithJsonSerializableTwinNormal value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _MyStructWithJsonSerializableTwinNormal():
+        return $default(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_MyStructWithJsonSerializableTwinNormal value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _MyStructWithJsonSerializableTwinNormal() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String fieldOne)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _MyStructWithJsonSerializableTwinNormal() when $default != null:
+        return $default(_that.fieldOne);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String fieldOne) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _MyStructWithJsonSerializableTwinNormal():
+        return $default(_that.fieldOne);
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String fieldOne)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _MyStructWithJsonSerializableTwinNormal() when $default != null:
+        return $default(_that.fieldOne);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 @JsonSerializable()
-class _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl
-    implements _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal {
-  const _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl(
-      {required this.a});
-
-  factory _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl.fromJson(
+class _MyStructWithJsonSerializableTwinNormal
+    extends MyStructWithJsonSerializableTwinNormal {
+  const _MyStructWithJsonSerializableTwinNormal({required this.fieldOne})
+      : super._();
+  factory _MyStructWithJsonSerializableTwinNormal.fromJson(
           Map<String, dynamic> json) =>
-      _$$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImplFromJson(
-          json);
+      _$MyStructWithJsonSerializableTwinNormalFromJson(json);
 
   @override
-  final String a;
+  final String fieldOne;
+
+  /// Create a copy of MyStructWithJsonSerializableTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$MyStructWithJsonSerializableTwinNormalCopyWith<
+          _MyStructWithJsonSerializableTwinNormal>
+      get copyWith => __$MyStructWithJsonSerializableTwinNormalCopyWithImpl<
+          _MyStructWithJsonSerializableTwinNormal>(this, _$identity);
 
   @override
-  String toString() {
-    return 'MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal(a: $a)';
+  Map<String, dynamic> toJson() {
+    return _$MyStructWithJsonSerializableTwinNormalToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
+            other is _MyStructWithJsonSerializableTwinNormal &&
+            (identical(other.fieldOne, fieldOne) ||
+                other.fieldOne == fieldOne));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, fieldOne);
+
+  @override
+  String toString() {
+    return 'MyStructWithJsonSerializableTwinNormal(fieldOne: $fieldOne)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$MyStructWithJsonSerializableTwinNormalCopyWith<$Res>
+    implements $MyStructWithJsonSerializableTwinNormalCopyWith<$Res> {
+  factory _$MyStructWithJsonSerializableTwinNormalCopyWith(
+          _MyStructWithJsonSerializableTwinNormal value,
+          $Res Function(_MyStructWithJsonSerializableTwinNormal) _then) =
+      __$MyStructWithJsonSerializableTwinNormalCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String fieldOne});
+}
+
+/// @nodoc
+class __$MyStructWithJsonSerializableTwinNormalCopyWithImpl<$Res>
+    implements _$MyStructWithJsonSerializableTwinNormalCopyWith<$Res> {
+  __$MyStructWithJsonSerializableTwinNormalCopyWithImpl(this._self, this._then);
+
+  final _MyStructWithJsonSerializableTwinNormal _self;
+  final $Res Function(_MyStructWithJsonSerializableTwinNormal) _then;
+
+  /// Create a copy of MyStructWithJsonSerializableTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? fieldOne = null,
+  }) {
+    return _then(_MyStructWithJsonSerializableTwinNormal(
+      fieldOne: null == fieldOne
+          ? _self.fieldOne
+          : fieldOne // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+mixin _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal {
+  String get a;
+
+  /// Create a copy of MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWith<
+          MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal>
+      get copyWith =>
+          _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWithImpl<
+                  MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal>(
+              this
+                  as MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal,
+              _$identity);
+
+  /// Serializes this MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
             other
-                is _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl &&
+                is MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal &&
             (identical(other.a, a) || other.a == a));
   }
 
@@ -1018,45 +1039,314 @@ class _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl
   @override
   int get hashCode => Object.hash(runtimeType, a);
 
+  @override
+  String toString() {
+    return 'MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal(a: $a)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWith<
+    $Res> {
+  factory $MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWith(
+          MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal value,
+          $Res Function(
+                  MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal)
+              _then) =
+      _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWithImpl;
+  @useResult
+  $Res call({String a});
+}
+
+/// @nodoc
+class _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWithImpl<
+        $Res>
+    implements
+        $MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWith<
+            $Res> {
+  _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWithImpl(
+      this._self, this._then);
+
+  final MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal _self;
+  final $Res Function(
+      MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal) _then;
+
   /// Create a copy of MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
   @pragma('vm:prefer-inline')
-  _$$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImplCopyWith<
-          _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl>
+  @override
+  $Res call({
+    Object? a = null,
+  }) {
+    return _then(_self.copyWith(
+      a: null == a
+          ? _self.a
+          : a // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal].
+extension MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalPatterns
+    on MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(
+            _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal value)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal()
+          when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(
+            _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal value)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal():
+        return $default(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(
+            _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal value)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal()
+          when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String a)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal()
+          when $default != null:
+        return $default(_that.a);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String a) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal():
+        return $default(_that.a);
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String a)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal()
+          when $default != null:
+        return $default(_that.a);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
+    implements MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal {
+  const _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal(
+      {required this.a});
+  factory _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal.fromJson(
+          Map<String, dynamic> json) =>
+      _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalFromJson(
+          json);
+
+  @override
+  final String a;
+
+  /// Create a copy of MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWith<
+          _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal>
       get copyWith =>
-          __$$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImplCopyWithImpl<
-                  _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl>(
+          __$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWithImpl<
+                  _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal>(
               this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImplToJson(
+    return _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalToJson(
       this,
     );
   }
-}
-
-abstract class _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
-    implements MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal {
-  const factory _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal(
-          {required final String a}) =
-      _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl;
-
-  factory _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal.fromJson(
-          Map<String, dynamic> json) =
-      _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl
-      .fromJson;
 
   @override
-  String get a;
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other
+                is _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal &&
+            (identical(other.a, a) || other.a == a));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, a);
+
+  @override
+  String toString() {
+    return 'MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal(a: $a)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWith<
+        $Res>
+    implements
+        $MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWith<
+            $Res> {
+  factory _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWith(
+          _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal value,
+          $Res Function(
+                  _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal)
+              _then) =
+      __$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String a});
+}
+
+/// @nodoc
+class __$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWithImpl<
+        $Res>
+    implements
+        _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWith<
+            $Res> {
+  __$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalCopyWithImpl(
+      this._self, this._then);
+
+  final _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal _self;
+  final $Res Function(
+      _MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal) _then;
 
   /// Create a copy of MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImplCopyWith<
-          _$MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormalImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? a = null,
+  }) {
+    return _then(_MyStructWithoutFnWithUnignoreWithJsonSerializableTwinNormal(
+      a: null == a
+          ? _self.a
+          : a // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
+
+// dart format on

@@ -1,6 +1,3 @@
-# This is copied from Cargokit (which is the official way to use it currently)
-# Details: https://fzyzcjy.github.io/flutter_rust_bridge/manual/integrate/builtin
-
 # This file configures the static analysis results for your project (errors,
 # warnings, and lints).
 #
@@ -22,6 +19,9 @@ linter:
   rules:
     - prefer_relative_imports
     - directives_ordering
+    - avoid_redundant_argument_values
+    - no_adjacent_strings_in_list
+    - unnecessary_parenthesis
 
 # analyzer:
 #   exclude:

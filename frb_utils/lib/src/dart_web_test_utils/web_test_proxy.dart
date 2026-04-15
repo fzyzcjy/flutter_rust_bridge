@@ -16,7 +16,8 @@ String findWebTestProxyFromEnvironment(
     return 'DIRECT';
   }
 
-  final proxy = _findProxyValue(
+  final proxy =
+      _findProxyValue(
         uri.scheme == 'https'
             ? ['HTTPS_PROXY', 'https_proxy', 'HTTP_PROXY', 'http_proxy']
             : ['HTTP_PROXY', 'http_proxy'],
@@ -101,8 +102,9 @@ String _proxyDirectiveFromValue(String value) {
   final uri = Uri.tryParse(value);
   if (uri != null && uri.host.isNotEmpty) {
     final port = uri.hasPort ? ':${uri.port}' : '';
-    final directive =
-        uri.scheme.toLowerCase().startsWith('socks') ? 'SOCKS' : 'PROXY';
+    final directive = uri.scheme.toLowerCase().startsWith('socks')
+        ? 'SOCKS'
+        : 'PROXY';
     return '$directive ${uri.host}$port';
   }
 

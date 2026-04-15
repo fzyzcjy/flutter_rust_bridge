@@ -12,53 +12,57 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `fmt`, `fmt`, `fmt`
 
-Future<double?> handleOptionalReturnTwinNormal(
-        {required double left, required double right}) =>
-    RustLib.instance.api.crateApiOptionalHandleOptionalReturnTwinNormal(
-        left: left, right: right);
+Future<double?> handleOptionalReturnTwinNormal({
+  required double left,
+  required double right,
+}) => RustLib.instance.api.crateApiOptionalHandleOptionalReturnTwinNormal(
+  left: left,
+  right: right,
+);
 
 Future<ElementTwinNormal?> handleOptionalStructTwinNormal({String? document}) =>
-    RustLib.instance.api
-        .crateApiOptionalHandleOptionalStructTwinNormal(document: document);
+    RustLib.instance.api.crateApiOptionalHandleOptionalStructTwinNormal(
+      document: document,
+    );
 
-Future<ExoticOptionalsTwinNormal?> handleOptionalIncrementTwinNormal(
-        {ExoticOptionalsTwinNormal? opt}) =>
-    RustLib.instance.api
-        .crateApiOptionalHandleOptionalIncrementTwinNormal(opt: opt);
+Future<ExoticOptionalsTwinNormal?> handleOptionalIncrementTwinNormal({
+  ExoticOptionalsTwinNormal? opt,
+}) => RustLib.instance.api.crateApiOptionalHandleOptionalIncrementTwinNormal(
+  opt: opt,
+);
 
-Future<double> handleIncrementBoxedOptionalTwinNormal({double? opt}) =>
-    RustLib.instance.api
-        .crateApiOptionalHandleIncrementBoxedOptionalTwinNormal(opt: opt);
+Future<double> handleIncrementBoxedOptionalTwinNormal({double? opt}) => RustLib
+    .instance
+    .api
+    .crateApiOptionalHandleIncrementBoxedOptionalTwinNormal(opt: opt);
 
-Future<OptVecsTwinNormal> handleVecOfOptsTwinNormal(
-        {required OptVecsTwinNormal opt}) =>
-    RustLib.instance.api.crateApiOptionalHandleVecOfOptsTwinNormal(opt: opt);
+Future<OptVecsTwinNormal> handleVecOfOptsTwinNormal({
+  required OptVecsTwinNormal opt,
+}) => RustLib.instance.api.crateApiOptionalHandleVecOfOptsTwinNormal(opt: opt);
 
-Future<String> handleOptionBoxArgumentsTwinNormal(
-        {int? i8Box,
-        int? u8Box,
-        int? i32Box,
-        PlatformInt64? i64Box,
-        double? f64Box,
-        bool? boolbox,
-        ExoticOptionalsTwinNormal? structbox}) =>
-    RustLib.instance.api.crateApiOptionalHandleOptionBoxArgumentsTwinNormal(
-        i8Box: i8Box,
-        u8Box: u8Box,
-        i32Box: i32Box,
-        i64Box: i64Box,
-        f64Box: f64Box,
-        boolbox: boolbox,
-        structbox: structbox);
+Future<String> handleOptionBoxArgumentsTwinNormal({
+  int? i8Box,
+  int? u8Box,
+  int? i32Box,
+  PlatformInt64? i64Box,
+  double? f64Box,
+  bool? boolbox,
+  ExoticOptionalsTwinNormal? structbox,
+}) => RustLib.instance.api.crateApiOptionalHandleOptionBoxArgumentsTwinNormal(
+  i8Box: i8Box,
+  u8Box: u8Box,
+  i32Box: i32Box,
+  i64Box: i64Box,
+  f64Box: f64Box,
+  boolbox: boolbox,
+  structbox: structbox,
+);
 
 class AttributeTwinNormal {
   final String key;
   final String value;
 
-  const AttributeTwinNormal({
-    required this.key,
-    required this.value,
-  });
+  const AttributeTwinNormal({required this.key, required this.value});
 
   @override
   int get hashCode => key.hashCode ^ value.hashCode;
@@ -90,7 +94,10 @@ class ElementTwinNormal {
 
   @override
   int get hashCode =>
-      tag.hashCode ^ text.hashCode ^ attributes.hashCode ^ children.hashCode;
+      tag.hashCode ^
+      text.hashCode ^
+      const DeepCollectionEquality().hash(attributes) ^
+      const DeepCollectionEquality().hash(children);
 
   @override
   bool operator ==(Object other) =>
@@ -99,8 +106,8 @@ class ElementTwinNormal {
           runtimeType == other.runtimeType &&
           tag == other.tag &&
           text == other.text &&
-          attributes == other.attributes &&
-          children == other.children;
+          const DeepCollectionEquality().equals(attributes, other.attributes) &&
+          const DeepCollectionEquality().equals(children, other.children);
 }
 
 class ExoticOptionalsTwinNormal {
@@ -148,9 +155,9 @@ class ExoticOptionalsTwinNormal {
       int32List.hashCode ^
       float32List.hashCode ^
       float64List.hashCode ^
-      attributes.hashCode ^
-      attributesNullable.hashCode ^
-      nullableAttributes.hashCode ^
+      const DeepCollectionEquality().hash(attributes) ^
+      const DeepCollectionEquality().hash(attributesNullable) ^
+      const DeepCollectionEquality().hash(nullableAttributes) ^
       newtypeint.hashCode;
 
   @override
@@ -168,9 +175,15 @@ class ExoticOptionalsTwinNormal {
           int32List == other.int32List &&
           float32List == other.float32List &&
           float64List == other.float64List &&
-          attributes == other.attributes &&
-          attributesNullable == other.attributesNullable &&
-          nullableAttributes == other.nullableAttributes &&
+          const DeepCollectionEquality().equals(attributes, other.attributes) &&
+          const DeepCollectionEquality().equals(
+            attributesNullable,
+            other.attributesNullable,
+          ) &&
+          const DeepCollectionEquality().equals(
+            nullableAttributes,
+            other.nullableAttributes,
+          ) &&
           newtypeint == other.newtypeint;
 }
 
@@ -189,15 +202,18 @@ class OptVecsTwinNormal {
 
   @override
   int get hashCode =>
-      i32.hashCode ^ enums.hashCode ^ strings.hashCode ^ buffers.hashCode;
+      const DeepCollectionEquality().hash(i32) ^
+      const DeepCollectionEquality().hash(enums) ^
+      const DeepCollectionEquality().hash(strings) ^
+      const DeepCollectionEquality().hash(buffers);
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is OptVecsTwinNormal &&
           runtimeType == other.runtimeType &&
-          i32 == other.i32 &&
-          enums == other.enums &&
-          strings == other.strings &&
-          buffers == other.buffers;
+          const DeepCollectionEquality().equals(i32, other.i32) &&
+          const DeepCollectionEquality().equals(enums, other.enums) &&
+          const DeepCollectionEquality().equals(strings, other.strings) &&
+          const DeepCollectionEquality().equals(buffers, other.buffers);
 }

@@ -12,6 +12,7 @@
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
+import 'package:protobuf/src/protobuf/pb_list.dart' as $pb_list;
 
 class BinaryTreeProtobuf extends $pb.GeneratedMessage {
   factory BinaryTreeProtobuf({
@@ -66,7 +67,7 @@ class BinaryTreeProtobuf extends $pb.GeneratedMessage {
   static BinaryTreeProtobuf create() => BinaryTreeProtobuf._();
   BinaryTreeProtobuf createEmptyInstance() => create();
   static $pb.PbList<BinaryTreeProtobuf> createRepeated() =>
-      $pb.PbList<BinaryTreeProtobuf>();
+      $pb_list.newPbList<BinaryTreeProtobuf>();
   @$core.pragma('dart2js:noInline')
   static BinaryTreeProtobuf getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<BinaryTreeProtobuf>(create);
@@ -167,7 +168,7 @@ class BlobProtobuf extends $pb.GeneratedMessage {
   static BlobProtobuf create() => BlobProtobuf._();
   BlobProtobuf createEmptyInstance() => create();
   static $pb.PbList<BlobProtobuf> createRepeated() =>
-      $pb.PbList<BlobProtobuf>();
+      $pb_list.newPbList<BlobProtobuf>();
   @$core.pragma('dart2js:noInline')
   static BlobProtobuf getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<BlobProtobuf>(create);

@@ -3,8 +3,7 @@ name: sub_project
 description: Sub Project
 resolution: workspace
 environment:
-  sdk: ^3.9.2
-
+  sdk: ">=3.11.0 <4.0.0"
 dependencies:
   test_dep: ^1.0.0
 

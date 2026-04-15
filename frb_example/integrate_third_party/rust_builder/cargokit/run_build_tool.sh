@@ -22,7 +22,7 @@ fi
 
 cat << EOF > "pubspec.yaml"
 name: build_tool_runner
-version: 1.0.0
+version: 1.0.1
 publish_to: none
 
 environment:
@@ -75,6 +75,11 @@ if [ ! -f "$PACKAGE_HASH_FILE" ]; then
     "$DART" pub get --no-precompile
     "$DART" compile kernel bin/build_tool_runner.dart
     echo "$PACKAGE_HASH" > "$PACKAGE_HASH_FILE"
+fi
+
+# Rebuild the tool if it was deleted by Android Studio
+if [ ! -f "bin/build_tool_runner.dill" ]; then
+  "$DART" compile kernel bin/build_tool_runner.dart
 fi
 
 set +e

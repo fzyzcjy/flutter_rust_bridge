@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_print
 
-import 'dart:io' show File;
+import 'dart:io' show Directory, File;
 
 import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
@@ -34,6 +34,7 @@ List<Command<void>> createCommands() {
       _$populateLintConfigParser,
       _$parseLintConfigResult,
     ),
+    SimpleCommand('fmt-rust-nightly', fmtRustNightly),
     SimpleCommand('lint-rust-feature-flag', lintRustFeatureFlag),
     SimpleCommand('lint-dart-ffigen', lintDartFfigen),
   ];
@@ -55,6 +56,12 @@ Future<void> lint(LintConfig config) async {
 Future<void> lintRust(LintConfig config) async {
   await lintRustFormat(config);
   await lintRustClippy(config);
+}
+
+Future<void> fmtRustNightly() async {
+  for (final package in kRustPackages) {
+    await exec('cargo +$kPinnedRustfmtNightly fmt', relativePwd: package);
+  }
 }
 
 Future<void> lintRustFormat(LintConfig config) async {
@@ -162,10 +169,23 @@ Future<void> lintDartVersion() async {
 }
 
 Future<void> lintDartFormat(LintConfig config) async {
+  const candidateDirs = [
+    'lib',
+    'test',
+    'benchmark',
+    'bin',
+    'tool',
+    'example',
+    'integration_test',
+    'web',
+  ];
   for (final package in kDartPackages) {
     await runPubGetIfNotRunYet(package);
+    final existingDirs = candidateDirs
+        .where((dir) => Directory('${exec.pwd}/$package/$dir').existsSync())
+        .toList();
     await exec(
-      'dart format ${config.fix ? "" : "--set-exit-if-changed"} .',
+      'dart format ${config.fix ? "" : "--set-exit-if-changed"} ${existingDirs.join(" ")}',
       relativePwd: package,
     );
   }

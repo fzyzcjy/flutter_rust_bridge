@@ -3,7 +3,7 @@ description: Utility for flutter_rust_bridge, may publish later
 version: 1.0.0
 repository: https://github.com/fzyzcjy/flutter_rust_bridge
 environment:
-  sdk: ">=3.0.0 <4.0.0"
+  sdk: ">=3.11.0 <4.0.0"
 publish_to: none
 
 dependencies:
@@ -14,13 +14,12 @@ dependencies:
   puppeteer: ^3.1.1
   shelf: ^1.3.2
   shelf_static: ^1.1.1
-  shelf_web_socket: ^1.0.2
-  web_socket_channel: ^2.2.0
+  shelf_web_socket: ^3.0.0
+  web_socket_channel: ^3.0.3
   flutter_rust_bridge:
     path: ../frb_dart
   hooks: ^1.0.2
   code_assets: ^1.0.0
-  js: ^0.6.4
   test_core: ^0.6.8
   path: ^1.8.1
 
@@ -28,5 +27,5 @@ dev_dependencies:
   build_runner: ^2.2.0
   # Temporarily remove before https://github.com/kevmoo/build_cli/issues/168 is fixed
   # build_cli: ^2.2.4
-  flutter_lints: ^3.0.1
+  flutter_lints: ^6.0.0
   test: ^1.24.0

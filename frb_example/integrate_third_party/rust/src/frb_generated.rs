@@ -30407,6 +30407,15 @@ impl SseDecode for String {
     }
 }
 
+impl SseDecode for (AudioParam, AudioParamId) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_field0 = <AudioParam>::sse_decode(deserializer);
+        let mut var_field1 = <AudioParamId>::sse_decode(deserializer);
+        return (var_field0, var_field1);
+    }
+}
+
 impl SseDecode for web_audio_api::node::AnalyserOptions {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -31233,15 +31242,6 @@ impl SseDecode for web_audio_api::PeriodicWaveOptions {
             imag: var_imag,
             disable_normalization: var_disableNormalization,
         };
-    }
-}
-
-impl SseDecode for (AudioParam, AudioParamId) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_field0 = <AudioParam>::sse_decode(deserializer);
-        let mut var_field1 = <AudioParamId>::sse_decode(deserializer);
-        return (var_field0, var_field1);
     }
 }
 
@@ -37234,6 +37234,14 @@ impl SseEncode for String {
     }
 }
 
+impl SseEncode for (AudioParam, AudioParamId) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <AudioParam>::sse_encode(self.0, serializer);
+        <AudioParamId>::sse_encode(self.1, serializer);
+    }
+}
+
 impl SseEncode for web_audio_api::node::AnalyserOptions {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -37956,14 +37964,6 @@ impl SseEncode for web_audio_api::PeriodicWaveOptions {
         <Option<Vec<f32>>>::sse_encode(self.real, serializer);
         <Option<Vec<f32>>>::sse_encode(self.imag, serializer);
         <bool>::sse_encode(self.disable_normalization, serializer);
-    }
-}
-
-impl SseEncode for (AudioParam, AudioParamId) {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <AudioParam>::sse_encode(self.0, serializer);
-        <AudioParamId>::sse_encode(self.1, serializer);
     }
 }
 

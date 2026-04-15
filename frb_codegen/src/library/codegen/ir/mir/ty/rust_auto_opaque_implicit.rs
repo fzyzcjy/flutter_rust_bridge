@@ -33,6 +33,11 @@ impl MirTypeTrait for MirTypeRustAutoOpaqueImplicit {
         f: &mut F,
         mir_context: &impl MirContext,
     ) {
+        // Don't visit children if this type is marked as ignored.
+        // This prevents generating bindings for types like `dyn IgnoredTrait`.
+        if self.ignore {
+            return;
+        }
         MirType::RustOpaque(self.inner.clone()).visit_types(f, mir_context)
     }
 

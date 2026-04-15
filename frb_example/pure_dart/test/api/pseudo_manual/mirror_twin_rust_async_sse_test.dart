@@ -82,8 +82,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('dart call repeatNumber()', () async {
-    var numbers =
-        await repeatNumberTwinRustAsyncSse(num: 1, times: BigInt.from(10));
+    var numbers = await repeatNumberTwinRustAsyncSse(
+      num: 1,
+      times: BigInt.from(10),
+    );
     expect(
       numbers.field0.toList(),
       Int32List.fromList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
@@ -127,13 +129,15 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('test raw string enum', () async {
-    final output1 =
-        await testRawStringEnumMirroredTwinRustAsyncSse(nested: true);
+    final output1 = await testRawStringEnumMirroredTwinRustAsyncSse(
+      nested: true,
+    );
     expect(output1 is RawStringEnumMirrored_Nested, true);
     expect((output1 as RawStringEnumMirrored_Nested).field0.raw.value, "test");
 
-    final output2 =
-        await testRawStringEnumMirroredTwinRustAsyncSse(nested: false);
+    final output2 = await testRawStringEnumMirroredTwinRustAsyncSse(
+      nested: false,
+    );
     expect(output2 is RawStringEnumMirrored_Raw, true);
     expect((output2 as RawStringEnumMirrored_Raw).field0.value, "test");
   });
@@ -161,6 +165,36 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test('test_hashmap_with_mirrored_value', () async {
     final output = await testHashmapWithMirroredValueTwinRustAsyncSse();
     expect(output.map, {'key': HashMapValue(inner: 'value')});
+  });
+
+  test('struct_with_map_equality', () {
+    final struct1 = StructWithHashMap(
+      map: {'key': HashMapValue(inner: 'value')},
+    );
+    final struct2 = StructWithHashMap(
+      map: {'key': HashMapValue(inner: 'value')},
+    );
+
+    expect(
+      struct1,
+      equals(struct2),
+      reason: 'Two structs with identical Map contents should be equal',
+    );
+  });
+
+  test('struct_with_list_equality', () {
+    final struct1 = ApplicationEnv(
+      vars: [ApplicationEnvVar(field0: 'test', field1: true)],
+    );
+    final struct2 = ApplicationEnv(
+      vars: [ApplicationEnvVar(field0: 'test', field1: true)],
+    );
+
+    expect(
+      struct1,
+      equals(struct2),
+      reason: 'Two structs with identical List contents should be equal',
+    );
   });
 
   test('mirror_enum_stream_twin_normal', () async {

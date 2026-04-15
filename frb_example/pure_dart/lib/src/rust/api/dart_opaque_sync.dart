@@ -14,15 +14,18 @@ Object syncLoopbackTwinNormal({required Object opaque}) => RustLib.instance.api
 Object? syncOptionLoopbackTwinNormal({Object? opaque}) => RustLib.instance.api
     .crateApiDartOpaqueSyncSyncOptionLoopbackTwinNormal(opaque: opaque);
 
-String syncAcceptDartOpaqueTwinNormal({required Object opaque}) =>
-    RustLib.instance.api
-        .crateApiDartOpaqueSyncSyncAcceptDartOpaqueTwinNormal(opaque: opaque);
+String syncAcceptDartOpaqueTwinNormal({required Object opaque}) => RustLib
+    .instance
+    .api
+    .crateApiDartOpaqueSyncSyncAcceptDartOpaqueTwinNormal(opaque: opaque);
 
 /// [DartWrapObject] can be safely retrieved on a dart thread.
-String unwrapDartOpaqueTwinNormal({required Object opaque}) =>
-    RustLib.instance.api
-        .crateApiDartOpaqueSyncUnwrapDartOpaqueTwinNormal(opaque: opaque);
+String unwrapDartOpaqueTwinNormal({required Object opaque}) => RustLib
+    .instance
+    .api
+    .crateApiDartOpaqueSyncUnwrapDartOpaqueTwinNormal(opaque: opaque);
 
-Object? syncOptionDartOpaqueTwinNormal({required Object opaque}) =>
-    RustLib.instance.api
-        .crateApiDartOpaqueSyncSyncOptionDartOpaqueTwinNormal(opaque: opaque);
+Object? syncOptionDartOpaqueTwinNormal({required Object opaque}) => RustLib
+    .instance
+    .api
+    .crateApiDartOpaqueSyncSyncOptionDartOpaqueTwinNormal(opaque: opaque);

@@ -1,5 +1,5 @@
 /// Shims for dart:isolate on the web.
-library html_isolate;
+library;
 
 import 'dart:async';
 

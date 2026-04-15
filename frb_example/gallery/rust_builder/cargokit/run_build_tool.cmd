@@ -8,7 +8,7 @@ SET BASEDIR=%~dp0
 if not exist "%CARGOKIT_TOOL_TEMP_DIR%" (
     mkdir "%CARGOKIT_TOOL_TEMP_DIR%"
 )
-cd "%CARGOKIT_TOOL_TEMP_DIR%"
+cd /D "%CARGOKIT_TOOL_TEMP_DIR%"
 
 SET BUILD_TOOL_PKG_DIR=%BASEDIR%build_tool
 SET DART=%FLUTTER_ROOT%\bin\cache\dart-sdk\bin\dart
@@ -17,7 +17,7 @@ set BUILD_TOOL_PKG_DIR_POSIX=%BUILD_TOOL_PKG_DIR:\=/%
 
 (
     echo name: build_tool_runner
-    echo version: 1.0.0
+    echo version: 1.0.1
     echo publish_to: none
     echo.
     echo environment:
@@ -76,6 +76,7 @@ If %ERRORLEVEL% neq 0 (
 REM There is no CUR_PACKAGE_INFO it was renamed in previous step to %PREV_PACKAGE_INFO%
 REM which means  we need to do pub get and precompile
 if not exist "%PRECOMPILED%" (
+    echo Running pub get in "%cd%"
     "%DART%" pub get --no-precompile
     "%DART%" compile kernel bin/build_tool_runner.dart
 )

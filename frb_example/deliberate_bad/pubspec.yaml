@@ -3,9 +3,9 @@ description: flutter rust bridge example
 version: 1.0.0
 publish_to: none
 environment:
-  sdk: '>=3.3.0 <4.0.0'
+  sdk: ">=3.11.0 <4.0.0"
 dependencies:
-  lints: ^5.1.1
+  lints: ^6.1.0
   flutter_rust_bridge:
     path: ../../frb_dart
   flutter_rust_bridge_utils:
@@ -13,6 +13,6 @@ dependencies:
   flutter_rust_bridge_internal:
     path: ../../tools/frb_internal
 dev_dependencies:
-  test: ^1.21.4
-  build_runner: ^2.4.4
+  test: ^1.24.0
+  build_runner: ^2.13.1
   ffigen: ^20.1.1

@@ -22,15 +22,16 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     final staticConcatenated =
         await ConcatenateWithTwinSync.concatenateStaticTwinSync(
-      a: "hello ",
-      b: "world",
-    );
+          a: "hello ",
+          b: "world",
+        );
     expect(staticConcatenated, equals("hello world"));
 
-    final concatenatedConstructor =
-        await ConcatenateWithTwinSync.newTwinSync(a: "hello ");
-    final String concatenated2 =
-        await concatenatedConstructor.concatenateTwinSync(b: "world");
+    final concatenatedConstructor = await ConcatenateWithTwinSync.newTwinSync(
+      a: "hello ",
+    );
+    final String concatenated2 = await concatenatedConstructor
+        .concatenateTwinSync(b: "world");
     expect(concatenated2, equals("hello world"));
   });
 

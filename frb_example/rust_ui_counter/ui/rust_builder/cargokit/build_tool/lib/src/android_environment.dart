@@ -1,6 +1,4 @@
-/// This is copied from Cargokit (which is the official way to use it currently)
-/// Details: https://fzyzcjy.github.io/flutter_rust_bridge/manual/integrate/builtin
-
+import 'dart:ffi';
 import 'dart:io';
 import 'dart:isolate';
 import 'dart:math' as math;
@@ -9,6 +7,7 @@ import 'package:collection/collection.dart';
 import 'package:path/path.dart' as path;
 import 'package:version/version.dart';
 
+import 'exceptions.dart';
 import 'target.dart';
 import 'util.dart';
 
@@ -19,23 +18,30 @@ class AndroidEnvironment {
     required this.minSdkVersion,
     required this.targetTempDir,
     required this.target,
+    this.hostAbi,
+    this.buildToolRunnerPath,
   });
 
   static void clangLinkerWrapper(List<String> args) {
     final clang = Platform.environment['_CARGOKIT_NDK_LINK_CLANG'];
     if (clang == null) {
-      throw Exception(
-        "cargo-ndk rustc linker: didn't find _CARGOKIT_NDK_LINK_CLANG env var",
+      throw EnvironmentVariableException(
+        name: '_CARGOKIT_NDK_LINK_CLANG',
+        context: 'the Android NDK linker wrapper',
       );
     }
     final target = Platform.environment['_CARGOKIT_NDK_LINK_TARGET'];
     if (target == null) {
-      throw Exception(
-        "cargo-ndk rustc linker: didn't find _CARGOKIT_NDK_LINK_TARGET env var",
+      throw EnvironmentVariableException(
+        name: '_CARGOKIT_NDK_LINK_TARGET',
+        context: 'the Android NDK linker wrapper',
       );
     }
 
-    runCommand(clang, [target, ...args]);
+    runCommand(clang, [
+      target,
+      ...args,
+    ]);
   }
 
   /// Full path to Android SDK.
@@ -53,13 +59,21 @@ class AndroidEnvironment {
   /// Target being built.
   final Target target;
 
+  /// Test override for the host ABI used to resolve the NDK prebuilt toolchain.
+  final Abi? hostAbi;
+
+  /// Test override for the runner script used as the Android linker wrapper.
+  final String? buildToolRunnerPath;
+
   bool ndkIsInstalled() {
     final ndkPath = path.join(sdkPath, 'ndk', ndkVersion);
     final ndkPackageXml = File(path.join(ndkPath, 'package.xml'));
     return ndkPackageXml.existsSync();
   }
 
-  void installNdk({required String javaHome}) {
+  void installNdk({
+    required String javaHome,
+  }) {
     final sdkManagerExtension = Platform.isWindows ? '.bat' : '';
     final sdkManager = path.join(
       sdkPath,
@@ -70,19 +84,17 @@ class AndroidEnvironment {
     );
 
     log.info('Installing NDK $ndkVersion');
-    runCommand(
-      sdkManager,
-      ['--install', 'ndk;$ndkVersion'],
-      environment: {'JAVA_HOME': javaHome},
-    );
+    runCommand(sdkManager, [
+      '--install',
+      'ndk;$ndkVersion',
+    ], environment: {
+      'JAVA_HOME': javaHome,
+    });
   }
 
   Future<Map<String, String>> buildEnvironment() async {
-    final hostArch = Platform.isMacOS
-        ? "darwin-x86_64"
-        : (Platform.isLinux ? "linux-x86_64" : "windows-x86_64");
-
     final ndkPath = path.join(sdkPath, 'ndk', ndkVersion);
+    final hostArch = _hostToolchainSubdir(ndkPath);
     final toolchainPath = path.join(
       ndkPath,
       'toolchains',
@@ -92,19 +104,21 @@ class AndroidEnvironment {
       'bin',
     );
 
-    final minSdkVersion = math.max(
-      target.androidMinSdkVersion!,
-      this.minSdkVersion,
-    );
+    final minSdkVersion =
+        math.max(target.androidMinSdkVersion!, this.minSdkVersion);
 
     final exe = Platform.isWindows ? '.exe' : '';
 
     final arKey = 'AR_${target.rust}';
-    final arValue = ['${target.rust}-ar', 'llvm-ar', 'llvm-ar.exe']
-        .map((e) => path.join(toolchainPath, e))
-        .firstWhereOrNull((element) => File(element).existsSync());
+    final arValue = _resolveTool(toolchainPath, [
+      '${target.rust}-ar$exe',
+      'llvm-ar$exe',
+      if (exe.isEmpty) 'llvm-ar.exe',
+    ]);
     if (arValue == null) {
-      throw Exception('Failed to find ar for $target in $toolchainPath');
+      throw ArtifactException(
+        'Failed to find an archiver for target "$target" in "$toolchainPath".',
+      );
     }
 
     final targetArg = '--target=${target.rust}$minSdkVersion';
@@ -123,22 +137,22 @@ class AndroidEnvironment {
         'cargo_target_${target.rust.replaceAll('-', '_')}_linker'.toUpperCase();
 
     final ranlibKey = 'RANLIB_${target.rust}';
-    final ranlibValue = path.join(toolchainPath, 'llvm-ranlib$exe');
+    final ranlibValue = _resolveTool(toolchainPath, [
+      '${target.rust}-ranlib$exe',
+      'llvm-ranlib$exe',
+      if (exe.isEmpty) 'llvm-ranlib.exe',
+    ]);
+    if (ranlibValue == null) {
+      throw ArtifactException(
+        'Failed to find ranlib for target "$target" in "$toolchainPath".',
+      );
+    }
 
     final ndkVersionParsed = Version.parse(ndkVersion);
     final rustFlagsKey = 'CARGO_ENCODED_RUSTFLAGS';
     final rustFlagsValue = _libGccWorkaround(targetTempDir, ndkVersionParsed);
 
-    final runRustTool =
-        Platform.isWindows ? 'run_build_tool.cmd' : 'run_build_tool.sh';
-
-    final packagePath = (await Isolate.resolvePackageUri(
-      Uri.parse('package:build_tool/buildtool.dart'),
-    ))!
-        .toFilePath();
-    final selfPath = path.canonicalize(
-      path.join(packagePath, '..', '..', '..', runRustTool),
-    );
+    final selfPath = buildToolRunnerPath ?? await _resolveBuildToolRunnerPath();
 
     // Make sure that run_build_tool is working properly even initially launched directly
     // through dart run.
@@ -161,6 +175,60 @@ class AndroidEnvironment {
     };
   }
 
+  String? _resolveTool(String toolchainPath, List<String> candidates) {
+    return candidates
+        .map((candidate) => path.join(toolchainPath, candidate))
+        .firstWhereOrNull((toolPath) => File(toolPath).existsSync());
+  }
+
+  String _hostToolchainSubdir(String ndkPath) {
+    final prebuiltRoot = path.join(
+      ndkPath,
+      'toolchains',
+      'llvm',
+      'prebuilt',
+    );
+    final resolvedHostAbi = hostAbi ?? Abi.current();
+
+    final candidates = switch (resolvedHostAbi) {
+      Abi.macosArm64 => ['darwin-arm64', 'darwin-x86_64'],
+      Abi.macosX64 => ['darwin-x86_64', 'darwin-arm64'],
+      Abi.linuxX64 => ['linux-x86_64'],
+      Abi.windowsX64 => ['windows-x86_64'],
+      _ => throw UnsupportedPlatformException(
+          'Android NDK builds are not supported from host ABI $resolvedHostAbi.',
+        ),
+    };
+
+    for (final candidate in candidates) {
+      final candidatePath = path.join(prebuiltRoot, candidate);
+      if (Directory(candidatePath).existsSync()) {
+        return candidate;
+      }
+    }
+
+    throw ArtifactException(
+      'Unable to locate an Android NDK LLVM prebuilt toolchain for host ABI '
+      '$resolvedHostAbi under "$prebuiltRoot". Checked: ${candidates.join(', ')}.',
+    );
+  }
+
+  Future<String> _resolveBuildToolRunnerPath() async {
+    final runRustTool =
+        Platform.isWindows ? 'run_build_tool.cmd' : 'run_build_tool.sh';
+
+    final packagePath = (await Isolate.resolvePackageUri(
+            Uri.parse('package:build_tool/build_tool.dart')))!
+        .toFilePath();
+    return path.canonicalize(path.join(
+      packagePath,
+      '..',
+      '..',
+      '..',
+      runRustTool,
+    ));
+  }
+
   // Workaround for libgcc missing in NDK23, inspired by cargo-ndk
   String _libGccWorkaround(String buildDir, Version ndkVersion) {
     final workaroundDir = path.join(
@@ -171,15 +239,13 @@ class AndroidEnvironment {
     );
     Directory(workaroundDir).createSync(recursive: true);
     if (ndkVersion.major >= 23) {
-      File(
-        path.join(workaroundDir, 'libgcc.a'),
-      ).writeAsStringSync('INPUT(-lunwind)');
+      File(path.join(workaroundDir, 'libgcc.a'))
+          .writeAsStringSync('INPUT(-lunwind)');
     } else {
       // Other way around, untested, forward libgcc.a from libunwind once Rust
       // gets updated for NDK23+.
-      File(
-        path.join(workaroundDir, 'libunwind.a'),
-      ).writeAsStringSync('INPUT(-lgcc)');
+      File(path.join(workaroundDir, 'libunwind.a'))
+          .writeAsStringSync('INPUT(-lgcc)');
     }
 
     var rustFlags = Platform.environment['CARGO_ENCODED_RUSTFLAGS'] ?? '';

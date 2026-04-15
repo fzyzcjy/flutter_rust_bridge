@@ -46,14 +46,15 @@ Future<void> main({bool skipRustLibInit = false}) async {
   test("dart call list_of_primitive_enums", () async {
     List<WeekdaysTwinRustAsyncSse> days =
         await listOfPrimitiveEnumsTwinRustAsyncSse(
-      weekdays: WeekdaysTwinRustAsyncSse.values,
-    );
+          weekdays: WeekdaysTwinRustAsyncSse.values,
+        );
     expect(days, WeekdaysTwinRustAsyncSse.values);
   });
 
   test('dart call handleNestedStruct', () async {
-    final r =
-        await handleNestedStructTwinRustAsyncSse(s: _createMyNestedStruct());
+    final r = await handleNestedStructTwinRustAsyncSse(
+      s: _createMyNestedStruct(),
+    );
     testComplexStruct(r.treeNode, arrLen: 5);
     expect(r.weekday, WeekdaysTwinRustAsyncSse.friday);
   });
@@ -85,8 +86,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
     );
     expect((output3 as AbcTwinRustAsyncSse_C).field0.c, false);
 
-    final output4 =
-        await testAbcEnumTwinRustAsyncSse(abc: AbcTwinRustAsyncSse.justInt(1));
+    final output4 = await testAbcEnumTwinRustAsyncSse(
+      abc: AbcTwinRustAsyncSse.justInt(1),
+    );
     expect((output4 as AbcTwinRustAsyncSse_JustInt).field0, 1);
   });
 
@@ -130,7 +132,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final len = 100000;
     expect(
       await handleVecU8TwinRustAsyncSse(
-          v: Uint8List.fromList(List.filled(len, 127))),
+        v: Uint8List.fromList(List.filled(len, 127)),
+      ),
       Uint8List.fromList(List.filled(len * 2, 127)),
     );
   });

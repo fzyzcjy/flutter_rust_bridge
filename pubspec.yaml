@@ -1,8 +1,8 @@
 name: flutter_rust_bridge_workspace
 
 environment:
-  sdk: ^3.11.0
-
+  sdk: ">=3.11.0 <4.0.0"
 dev_dependencies:
-  melos: ^6.0.0
-  lints: any
+  melos: ^7.5.1
+  lints: 6.1.0
+  flutter_lints: ^6.0.0

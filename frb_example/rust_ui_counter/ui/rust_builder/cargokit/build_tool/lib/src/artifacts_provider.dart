@@ -1,6 +1,3 @@
-/// This is copied from Cargokit (which is the official way to use it currently)
-/// Details: https://fzyzcjy.github.io/flutter_rust_bridge/manual/integrate/builtin
-
 import 'dart:io';
 
 import 'package:ed25519_edwards/ed25519_edwards.dart';
@@ -10,6 +7,7 @@ import 'package:path/path.dart' as path;
 
 import 'builder.dart';
 import 'crate_hash.dart';
+import 'exceptions.dart';
 import 'options.dart';
 import 'precompile_binaries.dart';
 import 'rustup.dart';
@@ -22,27 +20,72 @@ class Artifact {
   /// Actual file name that the artifact should have in destination folder.
   final String finalFileName;
 
-  AritifactType get type {
+  ArtifactType get type {
     if (finalFileName.endsWith('.dll') ||
         finalFileName.endsWith('.dll.lib') ||
         finalFileName.endsWith('.pdb') ||
         finalFileName.endsWith('.so') ||
         finalFileName.endsWith('.dylib')) {
-      return AritifactType.dylib;
+      return ArtifactType.dylib;
     } else if (finalFileName.endsWith('.lib') || finalFileName.endsWith('.a')) {
-      return AritifactType.staticlib;
+      return ArtifactType.staticlib;
     } else {
-      throw Exception('Unknown artifact type for $finalFileName');
+      throw ArtifactException(
+        'Unknown artifact type for "$finalFileName".',
+      );
     }
   }
 
-  Artifact({required this.path, required this.finalFileName});
+  Artifact({
+    required this.path,
+    required this.finalFileName,
+  });
 }
 
 final _log = Logger('artifacts_provider');
 
+class ArtifactMaterializer {
+  static Iterable<Artifact> artifactsForType(
+    Iterable<Artifact> artifacts, {
+    required ArtifactType type,
+  }) {
+    return artifacts.where((artifact) => artifact.type == type);
+  }
+
+  static List<Artifact> flattenForType(
+    Map<Target, List<Artifact>> artifacts, {
+    required ArtifactType type,
+  }) {
+    return artifacts.values
+        .expand((targetArtifacts) => targetArtifacts)
+        .where((artifact) => artifact.type == type)
+        .toList(growable: false);
+  }
+
+  static List<String> copyDynamicLibraries(
+    Iterable<Artifact> artifacts, {
+    required String outputDir,
+  }) {
+    Directory(outputDir).createSync(recursive: true);
+
+    final copied = <String>[];
+    for (final lib in artifactsForType(
+      artifacts,
+      type: ArtifactType.dylib,
+    )) {
+      final destination = path.join(outputDir, lib.finalFileName);
+      File(lib.path).copySync(destination);
+      copied.add(destination);
+    }
+    return copied;
+  }
+}
+
 class ArtifactProvider {
-  ArtifactProvider({required this.environment, required this.userOptions});
+  ArtifactProvider({
+    required this.environment,
+    required this.userOptions,
+  });
 
   final BuildEnvironment environment;
   final CargokitUserOptions userOptions;
@@ -58,7 +101,7 @@ class ArtifactProvider {
     }
 
     final rustup = Rustup();
-    for (final target in targets) {
+    for (final target in pendingTargets) {
       final builder = RustBuilder(target: target, environment: environment);
       builder.prepare(rustup);
       _log.info('Building ${environment.crateInfo.packageName} for $target');
@@ -68,23 +111,21 @@ class ArtifactProvider {
         ...getArtifactNames(
           target: target,
           libraryName: environment.crateInfo.packageName,
-          aritifactType: AritifactType.dylib,
+          artifactType: ArtifactType.dylib,
           remote: false,
         ),
         ...getArtifactNames(
           target: target,
           libraryName: environment.crateInfo.packageName,
-          aritifactType: AritifactType.staticlib,
+          artifactType: ArtifactType.staticlib,
           remote: false,
-        ),
+        )
       };
       final artifacts = artifactNames
-          .map(
-            (artifactName) => Artifact(
-              path: path.join(targetDir, artifactName),
-              finalFileName: artifactName,
-            ),
-          )
+          .map((artifactName) => Artifact(
+                path: path.join(targetDir, artifactName),
+                finalFileName: artifactName,
+              ))
           .where((element) => File(element.path).existsSync())
           .toList();
       result[target] = artifacts;
@@ -93,8 +134,7 @@ class ArtifactProvider {
   }
 
   Future<Map<Target, List<Artifact>>> _getPrecompiledArtifacts(
-    List<Target> targets,
-  ) async {
+      List<Target> targets) async {
     if (userOptions.usePrecompiledBinaries == false) {
       _log.info('Precompiled binaries are disabled');
       return {};
@@ -105,19 +145,13 @@ class ArtifactProvider {
     }
 
     final start = Stopwatch()..start();
-    final crateHash = CrateHash.compute(
-      environment.manifestDir,
-      tempStorage: environment.targetTempDir,
-    );
+    final crateHash = CrateHash.compute(environment.manifestDir,
+        tempStorage: environment.targetTempDir);
     _log.fine(
-      'Computed crate hash $crateHash in ${start.elapsedMilliseconds}ms',
-    );
+        'Computed crate hash $crateHash in ${start.elapsedMilliseconds}ms');
 
-    final downloadedArtifactsDir = path.join(
-      environment.targetTempDir,
-      'precompiled',
-      crateHash,
-    );
+    final downloadedArtifactsDir =
+        path.join(environment.targetTempDir, 'precompiled', crateHash);
     Directory(downloadedArtifactsDir).createSync(recursive: true);
 
     final res = <Target, List<Artifact>>{};
@@ -134,10 +168,8 @@ class ArtifactProvider {
         final fileName = PrecompileBinaries.fileName(target, artifact);
         final downloadedPath = path.join(downloadedArtifactsDir, fileName);
         if (!File(downloadedPath).existsSync()) {
-          final signatureFileName = PrecompileBinaries.signatureFileName(
-            target,
-            artifact,
-          );
+          final signatureFileName =
+              PrecompileBinaries.signatureFileName(target, artifact);
           await _tryDownloadArtifacts(
             crateHash: crateHash,
             fileName: fileName,
@@ -146,9 +178,10 @@ class ArtifactProvider {
           );
         }
         if (File(downloadedPath).existsSync()) {
-          artifactsForTarget.add(
-            Artifact(path: downloadedPath, finalFileName: artifact),
-          );
+          artifactsForTarget.add(Artifact(
+            path: downloadedPath,
+            finalFileName: artifact,
+          ));
         } else {
           break;
         }
@@ -175,8 +208,7 @@ class ArtifactProvider {
         if (attempt++ < maxAttempts &&
             (e.osError?.errorCode == 54 || e.osError?.errorCode == 10054)) {
           _log.severe(
-            'Failed to download $url: $e, attempt $attempt of $maxAttempts, will retry...',
-          );
+              'Failed to download $url: $e, attempt $attempt of $maxAttempts, will retry...');
           await Future.delayed(Duration(seconds: 1));
           continue;
         } else {
@@ -200,14 +232,12 @@ class ArtifactProvider {
     final signature = await _get(signatureUrl);
     if (signature.statusCode == 404) {
       _log.warning(
-        'Precompiled binaries not available for crate hash $crateHash ($fileName)',
-      );
+          'Precompiled binaries not available for crate hash $crateHash ($fileName)');
       return;
     }
     if (signature.statusCode != 200) {
       _log.severe(
-        'Failed to download signature $signatureUrl: status ${signature.statusCode}',
-      );
+          'Failed to download signature $signatureUrl: status ${signature.statusCode}');
       return;
     }
     _log.fine('Downloading binary from $url');
@@ -217,10 +247,7 @@ class ArtifactProvider {
       return;
     }
     if (verify(
-      precompiledBinaries.publicKey,
-      res.bodyBytes,
-      signature.bodyBytes,
-    )) {
+        precompiledBinaries.publicKey, res.bodyBytes, signature.bodyBytes)) {
       File(finalPath).writeAsBytesSync(res.bodyBytes);
     } else {
       _log.shout('Signature verification failed! Ignoring binary.');
@@ -228,13 +255,16 @@ class ArtifactProvider {
   }
 }
 
-enum AritifactType { staticlib, dylib }
+enum ArtifactType {
+  staticlib,
+  dylib,
+}
 
-AritifactType artifactTypeForTarget(Target target) {
+ArtifactType artifactTypeForTarget(Target target) {
   if (target.darwinPlatform != null) {
-    return AritifactType.staticlib;
+    return ArtifactType.staticlib;
   } else {
-    return AritifactType.dylib;
+    return ArtifactType.dylib;
   }
 }
 
@@ -242,32 +272,34 @@ List<String> getArtifactNames({
   required Target target,
   required String libraryName,
   required bool remote,
-  AritifactType? aritifactType,
+  ArtifactType? artifactType,
 }) {
-  aritifactType ??= artifactTypeForTarget(target);
+  artifactType ??= artifactTypeForTarget(target);
   if (target.darwinArch != null) {
-    if (aritifactType == AritifactType.staticlib) {
+    if (artifactType == ArtifactType.staticlib) {
       return ['lib$libraryName.a'];
     } else {
       return ['lib$libraryName.dylib'];
     }
   } else if (target.rust.contains('-windows-')) {
-    if (aritifactType == AritifactType.staticlib) {
+    if (artifactType == ArtifactType.staticlib) {
       return ['$libraryName.lib'];
     } else {
       return [
         '$libraryName.dll',
         '$libraryName.dll.lib',
-        if (!remote) '$libraryName.pdb',
+        if (!remote) '$libraryName.pdb'
       ];
     }
   } else if (target.rust.contains('-linux-')) {
-    if (aritifactType == AritifactType.staticlib) {
+    if (artifactType == ArtifactType.staticlib) {
       return ['lib$libraryName.a'];
     } else {
       return ['lib$libraryName.so'];
     }
   } else {
-    throw Exception("Unsupported target: ${target.rust}");
+    throw UnsupportedPlatformException(
+      'Artifact naming is not implemented for Rust target "${target.rust}".',
+    );
   }
 }

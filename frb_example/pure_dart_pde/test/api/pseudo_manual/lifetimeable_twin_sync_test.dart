@@ -38,8 +38,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         value: 'a',
         logger: simpleLogger,
       );
-      final typeWithLifetime =
-          await ownedStruct.computeTypeWithLifetimeTwinSync();
+      final typeWithLifetime = await ownedStruct
+          .computeTypeWithLifetimeTwinSync();
 
       ownedStruct.dispose();
       expect(simpleLogger.getAndReset(), <String>[
@@ -61,8 +61,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         value: 'a',
         logger: simpleLogger,
       );
-      final typeWithLifetime =
-          await ownedStruct.computeTypeWithLifetimeTwinSync();
+      final typeWithLifetime = await ownedStruct
+          .computeTypeWithLifetimeTwinSync();
 
       typeWithLifetime.dispose();
       expect(simpleLogger.getAndReset(), <String>[
@@ -82,8 +82,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
         value: 'a',
         logger: simpleLogger,
       );
-      final typeWithLifetime =
-          await ownedStruct.computeTypeWithLifetimeTwinSync();
+      final typeWithLifetime = await ownedStruct
+          .computeTypeWithLifetimeTwinSync();
 
       ownedStruct.dispose();
       expect(simpleLogger.getAndReset(), <String>[
@@ -105,13 +105,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
         final simpleLogger = SimpleLogger();
         final ownedStruct =
             await LtOwnedStructTwinSync.createWithLoggerTwinSync(
-          value: 'a',
-          logger: simpleLogger,
-        );
-        final typeWithLifetime =
-            await ownedStruct.computeTypeWithLifetimeTwinSync();
-        final nestedTypeWithLifetime =
-            await typeWithLifetime.computeNestedTypeWithLifetimeTwinSync();
+              value: 'a',
+              logger: simpleLogger,
+            );
+        final typeWithLifetime = await ownedStruct
+            .computeTypeWithLifetimeTwinSync();
+        final nestedTypeWithLifetime = await typeWithLifetime
+            .computeNestedTypeWithLifetimeTwinSync();
 
         ownedStruct.dispose();
         expect(simpleLogger.getAndReset(), <String>[
@@ -140,8 +140,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final ownedStruct = await LtOwnedStructTwinSync.createTwinSync(
         value: 'a',
       );
-      final typeWithLifetime =
-          await ownedStruct.computeTypeWithLifetimeTwinSync();
+      final typeWithLifetime = await ownedStruct
+          .computeTypeWithLifetimeTwinSync();
       await _testTypeWithLifetime(ownedStruct, typeWithLifetime);
     });
 
@@ -149,15 +149,15 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final ownedStruct = await LtOwnedStructTwinSync.createTwinSync(
         value: 'a',
       );
-      final typeWithLifetime =
-          await ownedStruct.computeWithUnrelatedBorrowedArgTwinSync(
-        unrelatedBorrowed: await LtOwnedStructTwinSync.createTwinSync(
-          value: 'hi',
-        ),
-        unrelatedOwned: await LtOwnedStructTwinSync.createTwinSync(
-          value: 'hi',
-        ),
-      );
+      final typeWithLifetime = await ownedStruct
+          .computeWithUnrelatedBorrowedArgTwinSync(
+            unrelatedBorrowed: await LtOwnedStructTwinSync.createTwinSync(
+              value: 'hi',
+            ),
+            unrelatedOwned: await LtOwnedStructTwinSync.createTwinSync(
+              value: 'hi',
+            ),
+          );
       await _testTypeWithLifetime(ownedStruct, typeWithLifetime);
     });
 
@@ -175,10 +175,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final ownedStruct = await LtOwnedStructTwinSync.createTwinSync(
         value: 'a',
       );
-      final typeWithLifetime =
-          await ownedStruct.computeTypeWithLifetimeTwinSync();
-      final nestedTypeWithLifetime =
-          await typeWithLifetime.computeNestedTypeWithLifetimeTwinSync();
+      final typeWithLifetime = await ownedStruct
+          .computeTypeWithLifetimeTwinSync();
+      final nestedTypeWithLifetime = await typeWithLifetime
+          .computeNestedTypeWithLifetimeTwinSync();
       await _testNestedTypeWithLifetime(
         ownedStruct,
         typeWithLifetime,
@@ -190,12 +190,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final ownedStruct = await LtOwnedStructTwinSync.createTwinSync(
         value: 'a',
       );
-      final typeWithLifetime =
-          await ownedStruct.computeTypeWithLifetimeTwinSync();
+      final typeWithLifetime = await ownedStruct
+          .computeTypeWithLifetimeTwinSync();
       final anotherTypeWithLifetime =
           await LtTypeWithLifetimeTwinSync.computeArgGenericLifetimeTwinSync(
-        arg: typeWithLifetime,
-      );
+            arg: typeWithLifetime,
+          );
 
       expect(await anotherTypeWithLifetime.greetBorrowSelfTwinSync(), 'a');
       expect(await anotherTypeWithLifetime.greetBorrowMutSelfTwinSync(), 'a');
@@ -208,17 +208,17 @@ Future<void> main({bool skipRustLibInit = false}) async {
     });
 
     test('computeWithMultiArgHavingLifetimeTwinSync', () async {
-      final typeWithMultiDep = await LtTypeWithMultiDepTwinSync
-          .computeWithMultiArgHavingLifetimeTwinSync(
-        a: await LtOwnedStructTwinSync.createTwinSync(value: 'a'),
-        b: await LtOwnedStructTwinSync.createTwinSync(value: 'b'),
-        unrelatedBorrowed: await LtOwnedStructTwinSync.createTwinSync(
-          value: 'hi',
-        ),
-        unrelatedOwned: await LtOwnedStructTwinSync.createTwinSync(
-          value: 'hi',
-        ),
-      );
+      final typeWithMultiDep =
+          await LtTypeWithMultiDepTwinSync.computeWithMultiArgHavingLifetimeTwinSync(
+            a: await LtOwnedStructTwinSync.createTwinSync(value: 'a'),
+            b: await LtOwnedStructTwinSync.createTwinSync(value: 'b'),
+            unrelatedBorrowed: await LtOwnedStructTwinSync.createTwinSync(
+              value: 'hi',
+            ),
+            unrelatedOwned: await LtOwnedStructTwinSync.createTwinSync(
+              value: 'hi',
+            ),
+          );
       expect(await typeWithMultiDep.greetBorrowSelfTwinSync(), ['a', 'b']);
       expect(await typeWithMultiDep.greetBorrowMutSelfTwinSync(), ['a', 'b']);
     });

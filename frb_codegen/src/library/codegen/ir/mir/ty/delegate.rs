@@ -25,6 +25,7 @@ pub enum MirTypeDelegate {
     // TimeList(MirTypeDelegateTime),// TODO avoid this special case?
     Uuid,
     // Uuids,// TODO avoid this special case?
+    SerdeJsonValue,
     Backtrace,
     AnyhowException,
     Map(MirTypeDelegateMap),
@@ -61,7 +62,8 @@ pub struct MirTypeDelegatePrimitiveEnum {
 pub enum MirTypeDelegateTime {
     Local,
     Utc,
-    Naive,
+    NaiveDate,
+    NaiveDateTime,
     Duration,
 }
 
@@ -148,16 +150,11 @@ impl MirTypeTrait for MirTypeDelegate {
                 mir.inner_ok.visit_types(f, mir_context);
                 mir.inner_err.visit_types(f, mir_context);
             }
-            Self::Map(MirTypeDelegateMap {
-                hasher: Some(hasher),
-                ..
-            })
-            | Self::Set(MirTypeDelegateSet {
-                hasher: Some(hasher),
-                ..
-            }) => {
-                hasher.visit_types(f, mir_context);
-            }
+            // HashMap/HashSet hashers are part of Rust type signatures, but are not
+            // serialized across FFI. Traversing them here makes codegen try to emit
+            // translatable codecs/bindings for hasher types (e.g. custom BuildHasher),
+            // which is invalid.
+            Self::Map(_) | Self::Set(_) => {}
             // ... others
             _ => {}
         }
@@ -177,6 +174,7 @@ impl MirTypeTrait for MirTypeDelegate {
             // MirTypeDelegate::TimeList(mir) => format!("Chrono_{}List", mir),
             MirTypeDelegate::Uuid => "Uuid".to_owned(),
             // MirTypeDelegate::Uuids => "Uuids".to_owned(),
+            MirTypeDelegate::SerdeJsonValue => "SerdeJsonValue".to_owned(),
             MirTypeDelegate::Backtrace => "Backtrace".to_owned(),
             MirTypeDelegate::AnyhowException => "AnyhowException".to_owned(),
             MirTypeDelegate::Map(mir) => {
@@ -248,7 +246,8 @@ impl MirTypeTrait for MirTypeDelegate {
                 mir.rust_api_type()
             }
             MirTypeDelegate::Time(mir) => match mir {
-                MirTypeDelegateTime::Naive => "chrono::NaiveDateTime",
+                MirTypeDelegateTime::NaiveDate => "chrono::NaiveDate",
+                MirTypeDelegateTime::NaiveDateTime => "chrono::NaiveDateTime",
                 MirTypeDelegateTime::Local => "chrono::DateTime::<chrono::Local>",
                 MirTypeDelegateTime::Utc => "chrono::DateTime::<chrono::Utc>",
                 MirTypeDelegateTime::Duration => "chrono::Duration",
@@ -263,6 +262,7 @@ impl MirTypeTrait for MirTypeDelegate {
             // .to_owned(),
             MirTypeDelegate::Uuid => "uuid::Uuid".to_owned(),
             // MirTypeDelegate::Uuids => "Vec<uuid::Uuid>".to_owned(),
+            MirTypeDelegate::SerdeJsonValue => "serde_json::Value".to_owned(),
             MirTypeDelegate::Backtrace => "backtrace::Backtrace".to_owned(),
             MirTypeDelegate::AnyhowException => {
                 "flutter_rust_bridge::for_generated::anyhow::Error".to_owned()
@@ -342,6 +342,7 @@ impl MirTypeTrait for MirTypeDelegate {
                 | MirTypeDelegate::Char
                 | MirTypeDelegate::PrimitiveEnum(_)
                 | MirTypeDelegate::BigPrimitive(_)
+                | MirTypeDelegate::SerdeJsonValue
                 | MirTypeDelegate::CastedPrimitive(_)
                 | MirTypeDelegate::RustAutoOpaqueExplicit(_)
         )
@@ -375,6 +376,7 @@ impl MirTypeDelegate {
             // MirTypeDelegate::Uuids => MirType::PrimitiveList(MirTypePrimitiveList {
             //     primitive: MirTypePrimitive::U8,
             // }),
+            MirTypeDelegate::SerdeJsonValue => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::Backtrace => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::AnyhowException => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::Map(mir) => {

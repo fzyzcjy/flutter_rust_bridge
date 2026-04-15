@@ -16,25 +16,25 @@ part 'attribute_twin_sync_sse.freezed.dart';
 // These functions are ignored (category: IgnoreBecauseExplicitAttribute): `func_should_not_exist_in_dart_twin_sync_sse`, `method_should_not_exist_in_dart_twin_sync_sse`
 // These functions are ignored (category: IgnoreBecauseOwnerTyShouldIgnore): `method_should_not_exist_in_dart_twin_sync_sse`
 
-void handleCustomizedStructTwinSyncSse({required CustomizedTwinSyncSse val}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualAttributeTwinSyncSseHandleCustomizedStructTwinSyncSse(
-            val: val);
+void handleCustomizedStructTwinSyncSse({
+  required CustomizedTwinSyncSse val,
+}) => RustLib.instance.api
+    .crateApiPseudoManualAttributeTwinSyncSseHandleCustomizedStructTwinSyncSse(
+      val: val,
+    );
 
-UserIdTwinSyncSse nextUserIdTwinSyncSse(
-        {UserIdTwinSyncSse userId = const UserIdTwinSyncSse()}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualAttributeTwinSyncSseNextUserIdTwinSyncSse(
-            userId: userId);
+UserIdTwinSyncSse nextUserIdTwinSyncSse({
+  UserIdTwinSyncSse userId = const UserIdTwinSyncSse(),
+}) => RustLib.instance.api
+    .crateApiPseudoManualAttributeTwinSyncSseNextUserIdTwinSyncSse(
+      userId: userId,
+    );
 
 class CustomizedTwinSyncSse {
   final String finalField;
   String? nonFinalField;
 
-  CustomizedTwinSyncSse({
-    required this.finalField,
-    this.nonFinalField,
-  });
+  CustomizedTwinSyncSse({required this.finalField, this.nonFinalField});
 
   @override
   int get hashCode => finalField.hashCode ^ nonFinalField.hashCode;
@@ -52,7 +52,5 @@ class CustomizedTwinSyncSse {
 @freezed
 @meta.immutable
 sealed class UserIdTwinSyncSse with _$UserIdTwinSyncSse {
-  const factory UserIdTwinSyncSse({
-    @Default(0) int value,
-  }) = _UserIdTwinSyncSse;
+  const factory UserIdTwinSyncSse({@Default(0) int value}) = _UserIdTwinSyncSse;
 }

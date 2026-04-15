@@ -15,79 +15,92 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 Future<void> benchmarkVoidTwinNormal() => RustLib.instance.api
     .crateApiPseudoManualBenchmarkApiBenchmarkVoidTwinNormal();
 
-Future<int> benchmarkInputBytesTwinNormal({required List<int> bytes}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBenchmarkApiBenchmarkInputBytesTwinNormal(
-            bytes: bytes);
+Future<int> benchmarkInputBytesTwinNormal({required List<int> bytes}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualBenchmarkApiBenchmarkInputBytesTwinNormal(
+      bytes: bytes,
+    );
 
 Future<Uint8List> benchmarkOutputBytesTwinNormal({required int size}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualBenchmarkApiBenchmarkOutputBytesTwinNormal(size: size);
 
-Future<void> benchmarkBinaryTreeInputTwinNormal(
-        {required BenchmarkBinaryTreeTwinNormal tree}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBenchmarkApiBenchmarkBinaryTreeInputTwinNormal(
-            tree: tree);
+Future<void> benchmarkBinaryTreeInputTwinNormal({
+  required BenchmarkBinaryTreeTwinNormal tree,
+}) => RustLib.instance.api
+    .crateApiPseudoManualBenchmarkApiBenchmarkBinaryTreeInputTwinNormal(
+      tree: tree,
+    );
 
-Future<BenchmarkBinaryTreeTwinNormal> benchmarkBinaryTreeOutputTwinNormal(
-        {required int depth}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBenchmarkApiBenchmarkBinaryTreeOutputTwinNormal(
-            depth: depth);
+Future<BenchmarkBinaryTreeTwinNormal> benchmarkBinaryTreeOutputTwinNormal({
+  required int depth,
+}) => RustLib.instance.api
+    .crateApiPseudoManualBenchmarkApiBenchmarkBinaryTreeOutputTwinNormal(
+      depth: depth,
+    );
 
-Future<void> benchmarkBinaryTreeInputProtobufTwinNormal(
-        {required List<int> raw}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBenchmarkApiBenchmarkBinaryTreeInputProtobufTwinNormal(
-            raw: raw);
+Future<void> benchmarkBinaryTreeInputProtobufTwinNormal({
+  required List<int> raw,
+}) => RustLib.instance.api
+    .crateApiPseudoManualBenchmarkApiBenchmarkBinaryTreeInputProtobufTwinNormal(
+      raw: raw,
+    );
 
-Future<Uint8List> benchmarkBinaryTreeOutputProtobufTwinNormal(
-        {required int depth}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBenchmarkApiBenchmarkBinaryTreeOutputProtobufTwinNormal(
-            depth: depth);
+Future<Uint8List> benchmarkBinaryTreeOutputProtobufTwinNormal({
+  required int depth,
+}) => RustLib.instance.api
+    .crateApiPseudoManualBenchmarkApiBenchmarkBinaryTreeOutputProtobufTwinNormal(
+      depth: depth,
+    );
 
 Future<void> benchmarkBinaryTreeInputJsonTwinNormal({required String raw}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiBenchmarkBinaryTreeInputJsonTwinNormal(
-            raw: raw);
+          raw: raw,
+        );
 
-Future<String> benchmarkBinaryTreeOutputJsonTwinNormal({required int depth}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBenchmarkApiBenchmarkBinaryTreeOutputJsonTwinNormal(
-            depth: depth);
+Future<String> benchmarkBinaryTreeOutputJsonTwinNormal({
+  required int depth,
+}) => RustLib.instance.api
+    .crateApiPseudoManualBenchmarkApiBenchmarkBinaryTreeOutputJsonTwinNormal(
+      depth: depth,
+    );
 
-Future<void> benchmarkBlobInputTwinNormal(
-        {required BenchmarkBlobTwinNormal blob}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBenchmarkApiBenchmarkBlobInputTwinNormal(
-            blob: blob);
+Future<void> benchmarkBlobInputTwinNormal({
+  required BenchmarkBlobTwinNormal blob,
+}) => RustLib.instance.api
+    .crateApiPseudoManualBenchmarkApiBenchmarkBlobInputTwinNormal(blob: blob);
 
-Future<BenchmarkBlobTwinNormal> benchmarkBlobOutputTwinNormal(
-        {required int size}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBenchmarkApiBenchmarkBlobOutputTwinNormal(
-            size: size);
+Future<BenchmarkBlobTwinNormal> benchmarkBlobOutputTwinNormal({
+  required int size,
+}) => RustLib.instance.api
+    .crateApiPseudoManualBenchmarkApiBenchmarkBlobOutputTwinNormal(size: size);
 
 Future<void> benchmarkBlobInputProtobufTwinNormal({required List<int> raw}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiBenchmarkBlobInputProtobufTwinNormal(
-            raw: raw);
+          raw: raw,
+        );
 
 Future<Uint8List> benchmarkBlobOutputProtobufTwinNormal({required int size}) =>
     RustLib.instance.api
         .crateApiPseudoManualBenchmarkApiBenchmarkBlobOutputProtobufTwinNormal(
-            size: size);
+          size: size,
+        );
 
 Future<void> benchmarkBlobInputJsonTwinNormal({required String raw}) => RustLib
-    .instance.api
+    .instance
+    .api
     .crateApiPseudoManualBenchmarkApiBenchmarkBlobInputJsonTwinNormal(raw: raw);
 
-Future<String> benchmarkBlobOutputJsonTwinNormal({required int size}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualBenchmarkApiBenchmarkBlobOutputJsonTwinNormal(
-            size: size);
+Future<String> benchmarkBlobOutputJsonTwinNormal({required int size}) => RustLib
+    .instance
+    .api
+    .crateApiPseudoManualBenchmarkApiBenchmarkBlobOutputJsonTwinNormal(
+      size: size,
+    );
 
 class BenchmarkBinaryTreeTwinNormal {
   final String name;

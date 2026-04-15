@@ -42,6 +42,7 @@ BigInt jsBigIntToDartBigInt(Object? raw) {
 
 /// {@macro flutter_rust_bridge.internal}
 Object? maybeDartify(Object? object) {
+  // ignore: invalid_runtime_check_with_js_interop_types
   if (object is JSAny) {
     return object.dartify();
   }

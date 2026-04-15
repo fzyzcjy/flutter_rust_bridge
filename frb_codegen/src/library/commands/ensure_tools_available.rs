@@ -1,6 +1,6 @@
 use crate::utils::dart_repository::dart_repo::{DartDependencyMode, DartRepository};
 use anyhow::bail;
-use cargo_metadata::VersionReq;
+use cargo_metadata::semver::VersionReq;
 use lazy_static::lazy_static;
 use std::path::Path;
 

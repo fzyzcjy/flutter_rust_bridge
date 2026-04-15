@@ -1,8 +1,7 @@
-/// This is copied from Cargokit (which is the official way to use it currently)
-/// Details: https://fzyzcjy.github.io/flutter_rust_bridge/manual/integrate/builtin
-
 import java.nio.file.Paths
 import org.apache.tools.ant.taskdefs.condition.Os
+import org.gradle.process.ExecOperations
+import javax.inject.Inject
 
 CargoKitPlugin.file = buildscript.sourceFile
 
@@ -42,6 +41,10 @@ abstract class CargoKitBuildTask extends DefaultTask {
     @Input
     List<String> targetPlatforms
 
+    // Inject ExecOperations — the Gradle 8.8+ compatible replacement for project.exec
+    @Inject
+    abstract ExecOperations getExecOperations()
+
     @TaskAction
     def build() {
         if (project.cargokit.manifestDir == null) {
@@ -58,14 +61,16 @@ abstract class CargoKitBuildTask extends DefaultTask {
         def manifestDir = Paths.get(project.buildscript.sourceFile.parent, project.cargokit.manifestDir)
 
         def rootProjectDir = project.rootProject.projectDir
-        
+
         if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
-            project.exec {
+            // Use injected ExecOperations instead of project.exec
+            execOperations.exec {
                 commandLine 'chmod', '+x', path
             }
         }
-        
-        project.exec {
+
+        // Use injected ExecOperations instead of project.exec
+        execOperations.exec {
             executable path
             args "build-gradle"
             environment "CARGOKIT_ROOT_PROJECT_DIR", rootProjectDir
@@ -92,10 +97,15 @@ class CargoKitPlugin implements Plugin<Project> {
         _findFlutterPlugin(rootProject.childProjects)
     }
 
-   private Plugin _findFlutterPlugin(Map projects) {
+    private Plugin _findFlutterPlugin(Map projects) {
         for (project in projects) {
             for (plugin in project.value.getPlugins()) {
-                if (plugin.class.name == "FlutterPlugin") {
+                // Compatibility: Flutter >=3.32.0-0.0.pre
+                // In Flutter 3.32.0-0.0.pre, the Flutter Gradle plugin was refactored from Groovy to Kotlin.
+                // (See: https://github.com/flutter/flutter/tree/3.32.0-0.0.pre/packages/flutter_tools/gradle/src/main)
+                // FlutterPlugin >> com.flutter.gradle.FlutterPlugin
+                // plugin.getTargetPlatforms >> com.flutter.gradle.FlutterPluginUtils.getTargetPlatforms
+                if (plugin.class.name == "com.flutter.gradle.FlutterPlugin" || plugin.class.name == "FlutterPlugin") {
                     return plugin;
                 }
             }
@@ -114,13 +124,17 @@ class CargoKitPlugin implements Plugin<Project> {
         project.extensions.create("cargokit", CargoKitExtension)
 
         if (plugin == null) {
-            print("Flutter plugin not found, CargoKit plugin will not be applied.")
+            project.logger.lifecycle("Flutter plugin not found, CargoKit plugin will not be applied.")
             return;
         }
 
         def cargoBuildDir = "${project.buildDir}/build"
 
-        plugin.project.android.applicationVariants.all { variant ->
+        // Determine if the project is an application or library
+        def isApplication = plugin.project.plugins.hasPlugin('com.android.application')
+        def variants = isApplication ? plugin.project.android.applicationVariants : plugin.project.android.libraryVariants
+
+        variants.all { variant ->
 
             final buildType = variant.buildType.name
 
@@ -128,8 +142,13 @@ class CargoKitPlugin implements Plugin<Project> {
             def jniLibs = project.android.sourceSets.maybeCreate(buildType).jniLibs;
             jniLibs.srcDir(new File(cargoOutputDir))
 
-            def platforms = plugin.getTargetPlatforms().collect()
-
+            def platforms
+            try {
+                // Compatibility: Flutter >=3.32.0-0.0.pre
+                platforms = com.flutter.gradle.FlutterPluginUtils.getTargetPlatforms(project).collect()
+            } catch (Exception e) {
+                platforms = plugin.getTargetPlatforms().collect()
+            }
             // Same thing addFlutterDependencies does in flutter.gradle
             if (buildType == "debug") {
                 platforms.add("android-x86")

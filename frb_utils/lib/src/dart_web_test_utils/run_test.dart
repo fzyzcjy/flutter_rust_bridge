@@ -16,15 +16,22 @@ import 'package:shelf/shelf.dart';
 import 'package:shelf_web_socket/shelf_web_socket.dart';
 
 const kTestResultKey = '__result__';
+const _kDefaultWasmPackRustupToolchain = 'nightly-2025-02-01';
+const _kWasmPackRustupToolchainEnvKey = 'FRB_WASM_PACK_RUSTUP_TOOLCHAIN';
+const _kRustCrateDirEnvKey = 'FRB_TEST_WEB_RUST_CRATE_DIR';
+
 Future<void> executeTestWeb(TestWebConfig config) async {
   final dartRoot = await findDartPackageDirectory(
     path.dirname(config.entrypoint),
   );
   final webRoot = '$dartRoot/web';
+  final rustCrateDir =
+      Platform.environment[_kRustCrateDirEnvKey] ?? '$dartRoot/rust';
   print('executeTestWeb: Pick dartRoot=$dartRoot');
 
-  List<String> cargoArgs =
-      config.rustFeatures.expand((x) => ['--features', x]).toList();
+  List<String> cargoArgs = config.rustFeatures
+      .expand((x) => ['--features', x])
+      .toList();
 
   print('executeTestWeb: compile');
   await executeBuildWeb(
@@ -32,14 +39,13 @@ Future<void> executeTestWeb(TestWebConfig config) async {
       output: webRoot,
       release: false,
       verbose: false,
-      // TODO make these configurable later when it is publicly used
-      //      (now it is only used internally)
-      rustCrateDir: '$dartRoot/rust',
+      rustCrateDir: rustCrateDir,
       cargoBuildArgs: cargoArgs,
       wasmBindgenArgs: [],
       dartCompileJsEntrypoint: config.entrypoint,
-      // TODO make this configurable later
-      wasmPackRustupToolchain: 'nightly-2025-02-01',
+      wasmPackRustupToolchain:
+          Platform.environment[_kWasmPackRustupToolchainEnvKey] ??
+          _kDefaultWasmPackRustupToolchain,
       wasmPackRustflags: null,
     ),
   );
@@ -71,13 +77,14 @@ Future<void> executeTestWeb(TestWebConfig config) async {
 Handler _createWebSocketHandler({
   required Future<void> Function() closeBrowser,
 }) {
-  return webSocketHandler((channel) async {
+  return webSocketHandler((channel, _) async {
     await for (final mes in channel.stream) {
       try {
         final data = jsonDecode(mes);
         if (data is Map && data.containsKey(kTestResultKey)) {
+          final testResult = data[kTestResultKey];
           await closeBrowser();
-          exit(data[kTestResultKey] ? 0 : 1);
+          exit(testResult == true ? 0 : 1);
         } else {
           print(data);
         }
@@ -91,14 +98,14 @@ Handler _createWebSocketHandler({
 const _kTestEntrypointHttpName = 'test_entrypoint.html';
 
 Handler _createIndexFileHandler() => (request) {
-      if (request.url.path == _kTestEntrypointHttpName) {
-        return Response.ok(
-          kTestEntrypointHtmlContent,
-          headers: {HttpHeaders.contentTypeHeader: 'text/html'},
-        );
-      }
-      return Response.notFound(null);
-    };
+  if (request.url.path == _kTestEntrypointHttpName) {
+    return Response.ok(
+      kTestEntrypointHtmlContent,
+      headers: {HttpHeaders.contentTypeHeader: 'text/html'},
+    );
+  }
+  return Response.notFound(null);
+};
 
 Future<Browser> _launchBrowser({
   required String baseAddr,

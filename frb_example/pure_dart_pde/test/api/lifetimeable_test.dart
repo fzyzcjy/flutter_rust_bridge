@@ -17,9 +17,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final simpleLogger = SimpleLogger();
       final ownedStruct =
           await LtOwnedStructTwinNormal.createWithLoggerTwinNormal(
-        value: 'a',
-        logger: simpleLogger,
-      );
+            value: 'a',
+            logger: simpleLogger,
+          );
       expect(simpleLogger.getAndReset(), <String>[]);
 
       ownedStruct.dispose();
@@ -33,11 +33,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final simpleLogger = SimpleLogger();
       final ownedStruct =
           await LtOwnedStructTwinNormal.createWithLoggerTwinNormal(
-        value: 'a',
-        logger: simpleLogger,
-      );
-      final typeWithLifetime =
-          await ownedStruct.computeTypeWithLifetimeTwinNormal();
+            value: 'a',
+            logger: simpleLogger,
+          );
+      final typeWithLifetime = await ownedStruct
+          .computeTypeWithLifetimeTwinNormal();
 
       ownedStruct.dispose();
       expect(simpleLogger.getAndReset(), <String>[
@@ -57,11 +57,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final simpleLogger = SimpleLogger();
       final ownedStruct =
           await LtOwnedStructTwinNormal.createWithLoggerTwinNormal(
-        value: 'a',
-        logger: simpleLogger,
-      );
-      final typeWithLifetime =
-          await ownedStruct.computeTypeWithLifetimeTwinNormal();
+            value: 'a',
+            logger: simpleLogger,
+          );
+      final typeWithLifetime = await ownedStruct
+          .computeTypeWithLifetimeTwinNormal();
 
       typeWithLifetime.dispose();
       expect(simpleLogger.getAndReset(), <String>[
@@ -79,11 +79,11 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final simpleLogger = SimpleLogger();
       final ownedStruct =
           await LtOwnedStructTwinNormal.createWithLoggerTwinNormal(
-        value: 'a',
-        logger: simpleLogger,
-      );
-      final typeWithLifetime =
-          await ownedStruct.computeTypeWithLifetimeTwinNormal();
+            value: 'a',
+            logger: simpleLogger,
+          );
+      final typeWithLifetime = await ownedStruct
+          .computeTypeWithLifetimeTwinNormal();
 
       ownedStruct.dispose();
       expect(simpleLogger.getAndReset(), <String>[
@@ -105,13 +105,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
         final simpleLogger = SimpleLogger();
         final ownedStruct =
             await LtOwnedStructTwinNormal.createWithLoggerTwinNormal(
-          value: 'a',
-          logger: simpleLogger,
-        );
-        final typeWithLifetime =
-            await ownedStruct.computeTypeWithLifetimeTwinNormal();
-        final nestedTypeWithLifetime =
-            await typeWithLifetime.computeNestedTypeWithLifetimeTwinNormal();
+              value: 'a',
+              logger: simpleLogger,
+            );
+        final typeWithLifetime = await ownedStruct
+            .computeTypeWithLifetimeTwinNormal();
+        final nestedTypeWithLifetime = await typeWithLifetime
+            .computeNestedTypeWithLifetimeTwinNormal();
 
         ownedStruct.dispose();
         expect(simpleLogger.getAndReset(), <String>[
@@ -140,8 +140,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final ownedStruct = await LtOwnedStructTwinNormal.createTwinNormal(
         value: 'a',
       );
-      final typeWithLifetime =
-          await ownedStruct.computeTypeWithLifetimeTwinNormal();
+      final typeWithLifetime = await ownedStruct
+          .computeTypeWithLifetimeTwinNormal();
       await _testTypeWithLifetime(ownedStruct, typeWithLifetime);
     });
 
@@ -149,15 +149,15 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final ownedStruct = await LtOwnedStructTwinNormal.createTwinNormal(
         value: 'a',
       );
-      final typeWithLifetime =
-          await ownedStruct.computeWithUnrelatedBorrowedArgTwinNormal(
-        unrelatedBorrowed: await LtOwnedStructTwinNormal.createTwinNormal(
-          value: 'hi',
-        ),
-        unrelatedOwned: await LtOwnedStructTwinNormal.createTwinNormal(
-          value: 'hi',
-        ),
-      );
+      final typeWithLifetime = await ownedStruct
+          .computeWithUnrelatedBorrowedArgTwinNormal(
+            unrelatedBorrowed: await LtOwnedStructTwinNormal.createTwinNormal(
+              value: 'hi',
+            ),
+            unrelatedOwned: await LtOwnedStructTwinNormal.createTwinNormal(
+              value: 'hi',
+            ),
+          );
       await _testTypeWithLifetime(ownedStruct, typeWithLifetime);
     });
 
@@ -175,10 +175,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final ownedStruct = await LtOwnedStructTwinNormal.createTwinNormal(
         value: 'a',
       );
-      final typeWithLifetime =
-          await ownedStruct.computeTypeWithLifetimeTwinNormal();
-      final nestedTypeWithLifetime =
-          await typeWithLifetime.computeNestedTypeWithLifetimeTwinNormal();
+      final typeWithLifetime = await ownedStruct
+          .computeTypeWithLifetimeTwinNormal();
+      final nestedTypeWithLifetime = await typeWithLifetime
+          .computeNestedTypeWithLifetimeTwinNormal();
       await _testNestedTypeWithLifetime(
         ownedStruct,
         typeWithLifetime,
@@ -190,12 +190,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
       final ownedStruct = await LtOwnedStructTwinNormal.createTwinNormal(
         value: 'a',
       );
-      final typeWithLifetime =
-          await ownedStruct.computeTypeWithLifetimeTwinNormal();
-      final anotherTypeWithLifetime = await LtTypeWithLifetimeTwinNormal
-          .computeArgGenericLifetimeTwinNormal(
-        arg: typeWithLifetime,
-      );
+      final typeWithLifetime = await ownedStruct
+          .computeTypeWithLifetimeTwinNormal();
+      final anotherTypeWithLifetime =
+          await LtTypeWithLifetimeTwinNormal.computeArgGenericLifetimeTwinNormal(
+            arg: typeWithLifetime,
+          );
 
       expect(await anotherTypeWithLifetime.greetBorrowSelfTwinNormal(), 'a');
       expect(await anotherTypeWithLifetime.greetBorrowMutSelfTwinNormal(), 'a');
@@ -208,17 +208,17 @@ Future<void> main({bool skipRustLibInit = false}) async {
     });
 
     test('computeWithMultiArgHavingLifetimeTwinNormal', () async {
-      final typeWithMultiDep = await LtTypeWithMultiDepTwinNormal
-          .computeWithMultiArgHavingLifetimeTwinNormal(
-        a: await LtOwnedStructTwinNormal.createTwinNormal(value: 'a'),
-        b: await LtOwnedStructTwinNormal.createTwinNormal(value: 'b'),
-        unrelatedBorrowed: await LtOwnedStructTwinNormal.createTwinNormal(
-          value: 'hi',
-        ),
-        unrelatedOwned: await LtOwnedStructTwinNormal.createTwinNormal(
-          value: 'hi',
-        ),
-      );
+      final typeWithMultiDep =
+          await LtTypeWithMultiDepTwinNormal.computeWithMultiArgHavingLifetimeTwinNormal(
+            a: await LtOwnedStructTwinNormal.createTwinNormal(value: 'a'),
+            b: await LtOwnedStructTwinNormal.createTwinNormal(value: 'b'),
+            unrelatedBorrowed: await LtOwnedStructTwinNormal.createTwinNormal(
+              value: 'hi',
+            ),
+            unrelatedOwned: await LtOwnedStructTwinNormal.createTwinNormal(
+              value: 'hi',
+            ),
+          );
       expect(await typeWithMultiDep.greetBorrowSelfTwinNormal(), ['a', 'b']);
       expect(await typeWithMultiDep.greetBorrowMutSelfTwinNormal(), ['a', 'b']);
     });

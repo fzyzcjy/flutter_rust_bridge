@@ -1,7 +1,7 @@
 use crate::utils::dart_repository::dart_toolchain::DartToolchain;
 use crate::utils::dart_repository::pubspec::*;
 use anyhow::{anyhow, bail, Context};
-use cargo_metadata::{Version, VersionReq};
+use cargo_metadata::semver::{Version, VersionReq};
 use log::{debug, warn};
 use serde::de::DeserializeOwned;
 use std::collections::HashMap;
@@ -104,6 +104,18 @@ impl DartRepository {
             // frb-coverage:ignore-end
         }
         Ok(())
+    }
+
+    /// Check if a package is listed in dependencies (without version checking).
+    pub(crate) fn has_dependency(&self, package: &str) -> bool {
+        let at = &self.at;
+        let manifest_file: PubspecYaml =
+            match read_file_and_parse_yaml(at, DartToolchain::manifest_filename()) {
+                Ok(f) => f,
+                Err(_) => return false,
+            };
+        let deps = manifest_file.dependencies.unwrap_or_default();
+        deps.contains_key(package)
     }
 
     /// check whether a package has been correctly pinned in pubspec.lock

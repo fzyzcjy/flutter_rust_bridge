@@ -189,8 +189,8 @@ dynamic mergeCodecovValues({
   if (_isCoveredHitCount(existingHitCount) ||
       _isCoveredHitCount(incomingHitCount)) {
     return [
-      if (existingHitCount != null) existingHitCount,
-      if (incomingHitCount != null) incomingHitCount,
+      ?existingHitCount,
+      ?incomingHitCount,
     ].reduce((a, b) => a > b ? a : b);
   }
 

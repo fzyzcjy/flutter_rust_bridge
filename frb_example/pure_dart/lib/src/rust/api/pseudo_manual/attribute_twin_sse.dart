@@ -19,21 +19,19 @@ part 'attribute_twin_sse.freezed.dart';
 Future<void> handleCustomizedStructTwinSse({required CustomizedTwinSse val}) =>
     RustLib.instance.api
         .crateApiPseudoManualAttributeTwinSseHandleCustomizedStructTwinSse(
-            val: val);
+          val: val,
+        );
 
-Future<UserIdTwinSse> nextUserIdTwinSse(
-        {UserIdTwinSse userId = const UserIdTwinSse()}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualAttributeTwinSseNextUserIdTwinSse(userId: userId);
+Future<UserIdTwinSse> nextUserIdTwinSse({
+  UserIdTwinSse userId = const UserIdTwinSse(),
+}) => RustLib.instance.api
+    .crateApiPseudoManualAttributeTwinSseNextUserIdTwinSse(userId: userId);
 
 class CustomizedTwinSse {
   final String finalField;
   String? nonFinalField;
 
-  CustomizedTwinSse({
-    required this.finalField,
-    this.nonFinalField,
-  });
+  CustomizedTwinSse({required this.finalField, this.nonFinalField});
 
   @override
   int get hashCode => finalField.hashCode ^ nonFinalField.hashCode;
@@ -51,7 +49,5 @@ class CustomizedTwinSse {
 @freezed
 @meta.immutable
 sealed class UserIdTwinSse with _$UserIdTwinSse {
-  const factory UserIdTwinSse({
-    @Default(0) int value,
-  }) = _UserIdTwinSse;
+  const factory UserIdTwinSse({@Default(0) int value}) = _UserIdTwinSse;
 }

@@ -189,6 +189,14 @@ fn setup_cargokit_dependencies(dart_root: &Path, template: &Template) -> Result<
 fn set_permission_executable(path: &Path) -> Result<()> {
     use std::os::unix::fs::PermissionsExt;
 
+    if !path.exists() {
+        debug!(
+            "Skip setting executable permission because file does not exist: {}",
+            path.display()
+        );
+        return Ok(());
+    }
+
     debug!("Change \"{}\" to executable", path.display());
     let mut perms = std::fs::metadata(path)?.permissions();
     perms.set_mode(0o755);

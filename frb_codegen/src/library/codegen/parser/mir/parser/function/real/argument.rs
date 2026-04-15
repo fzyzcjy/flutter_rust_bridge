@@ -133,15 +133,19 @@ fn syntheize_receiver_type(
     method: &MirFuncOwnerInfoMethod,
 ) -> anyhow::Result<Type> {
     let mut ty_str = "".to_owned();
-    if let Some(reference) = &receiver.reference {
+
+    // The new syn API: receiver.reference is Option<(And, Option<Lifetime>)>
+    if let Some((_, lifetime_opt)) = &receiver.reference {
         ty_str += "&";
-        if let Some(lifetime) = &reference.1 {
+        if let Some(lifetime) = lifetime_opt {
             ty_str += &lifetime.to_string();
         }
     }
+
     if receiver.mutability.is_some() {
         ty_str += " mut";
     }
+
     ty_str += " ";
     ty_str += &method.owner_ty_raw;
 

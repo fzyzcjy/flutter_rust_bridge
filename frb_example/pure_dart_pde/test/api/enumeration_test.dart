@@ -113,8 +113,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
         ),
         null,
       );
-      final skipMinified =
-          releaseMode ? skipWeb('Minified names cannot be compared.') : null;
+      final skipMinified = releaseMode
+          ? skipWeb('Minified names cannot be compared.')
+          : null;
       expect(
         (SpeedTwinNormal_Unknown).toString(),
         'SpeedTwinNormal_Unknown',

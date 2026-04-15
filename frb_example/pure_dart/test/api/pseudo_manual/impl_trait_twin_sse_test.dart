@@ -12,16 +12,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   test('impl class should extend trait class', () async {
-    final one = await StructOneWithTraitTwinSse.simpleTraitFnTwinSse(
-      value: 10,
-    );
+    final one = await StructOneWithTraitTwinSse.simpleTraitFnTwinSse(value: 10);
     expect(one, isA<SimpleTraitTwinSse>());
   });
 
   test('call methods', () async {
-    final one = await StructOneWithTraitTwinSse.simpleTraitFnTwinSse(
-      value: 10,
-    );
+    final one = await StructOneWithTraitTwinSse.simpleTraitFnTwinSse(value: 10);
     expect(await one.simpleTraitFnReceiverBorrowTwinSse(), 10);
   });
 

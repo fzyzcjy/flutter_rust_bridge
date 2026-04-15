@@ -20,15 +20,16 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     final staticConcatenated =
         await ConcatenateWithTwinSse.concatenateStaticTwinSse(
-      a: "hello ",
-      b: "world",
-    );
+          a: "hello ",
+          b: "world",
+        );
     expect(staticConcatenated, equals("hello world"));
 
-    final concatenatedConstructor =
-        await ConcatenateWithTwinSse.newTwinSse(a: "hello ");
-    final String concatenated2 =
-        await concatenatedConstructor.concatenateTwinSse(b: "world");
+    final concatenatedConstructor = await ConcatenateWithTwinSse.newTwinSse(
+      a: "hello ",
+    );
+    final String concatenated2 = await concatenatedConstructor
+        .concatenateTwinSse(b: "world");
     expect(concatenated2, equals("hello world"));
   });
 
@@ -133,10 +134,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     test('vecSelf', () async {
       final a = SimpleStructTwinSse(one: 'a');
       final b = SimpleStructTwinSse(one: 'b');
-      expect(await SimpleStructTwinSse.vecSelfTwinSse(arg: [a, b]), [
-        'a',
-        'b',
-      ]);
+      expect(await SimpleStructTwinSse.vecSelfTwinSse(arg: [a, b]), ['a', 'b']);
     });
   });
 
@@ -146,10 +144,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('SimplePrimitiveEnum', () async {
-    expect(
-      await SimplePrimitiveEnumTwinSse.second.simpleMethodTwinSse(),
-      200,
-    );
+    expect(await SimplePrimitiveEnumTwinSse.second.simpleMethodTwinSse(), 200);
   });
 
   test('StaticOnly', () async {

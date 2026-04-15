@@ -1,11 +1,77 @@
-/// This is copied from Cargokit (which is the official way to use it currently)
-/// Details: https://fzyzcjy.github.io/flutter_rust_bridge/manual/integrate/builtin
+Cargokit is a lightweight integration layer for building Rust crates as part of
+Flutter plugin and application builds.
 
-Experimental repository to provide glue for seamlessly integrating cargo build
-with flutter plugins and packages.
+It provides the glue between Flutter's platform build systems and `cargo`:
 
-See https://matejknopp.com/post/flutter_plugin_in_rust_with_no_prebuilt_binaries/
-for a tutorial on how to use Cargokit.
+- Android via Gradle
+- iOS and macOS via CocoaPods script phases
+- Linux and Windows via CMake
+- Optional signed precompiled binary distribution for plugin authors
 
-Example plugin available at https://github.com/irondash/hello_rust_ffi_plugin.
+The goal is that the app developer using the plugin does not need to think
+about Cargokit at all. The plugin author wires it in once, and Cargokit handles
+toolchain setup, target selection, artifact building, and artifact placement.
 
+## Repository Layout
+
+- `build_tool/`: Dart CLI that performs target resolution, toolchain setup,
+  local builds, precompiled binary download, and verification.
+- `gradle/plugin.gradle`: Android integration used by Flutter plugins.
+- `cmake/cargokit.cmake`: Linux and Windows integration for CMake-based builds.
+- `build_pod.sh`: CocoaPods integration for iOS and macOS builds.
+- `docs/architecture.md`: High-level explanation of how the pieces fit
+  together.
+- `docs/precompiled_binaries.md`: Guide for shipping signed precompiled
+  artifacts.
+
+## How It Works
+
+At build time, the platform-specific integration layer exports a set of
+environment variables that describe the target build:
+
+- target platform(s)
+- build mode
+- manifest directory containing `Cargo.toml`
+- temporary artifact directory
+- final output directory
+
+Those variables are consumed by the Dart `build_tool`, which either:
+
+1. downloads and verifies precompiled binaries, or
+2. ensures the right Rust toolchain/targets exist and builds from source.
+
+The resulting artifacts are then copied or combined into the location expected
+by the current platform build system.
+
+## Typical Integration
+
+This repository is intended to be vendored into a Flutter plugin or app, most
+commonly as a git subtree for packages published through pub.
+
+For a step-by-step tutorial, see:
+https://matejknopp.com/post/flutter_plugin_in_rust_with_no_prebuilt_binaries/
+
+Example plugin:
+https://github.com/irondash/hello_rust_ffi_plugin
+
+## Local Development
+
+Most day-to-day development happens in `build_tool/`.
+
+Useful commands:
+
+```sh
+cd build_tool
+dart analyze
+dart test
+```
+
+If you are exercising platform build flows directly, you will usually do so from
+a host Flutter project that vendors this repository, not from this repository in
+isolation.
+
+## Documentation
+
+- Architecture: [docs/architecture.md](docs/architecture.md)
+- Precompiled binaries: [docs/precompiled_binaries.md](docs/precompiled_binaries.md)
+- Build tool command reference: [build_tool/README.md](build_tool/README.md)

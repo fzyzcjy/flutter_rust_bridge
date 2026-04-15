@@ -1,6 +1,3 @@
-/// This is copied from Cargokit (which is the official way to use it currently)
-/// Details: https://fzyzcjy.github.io/flutter_rust_bridge/manual/integrate/builtin
-
 import 'dart:io';
 
 import 'package:args/command_runner.dart';
@@ -13,6 +10,7 @@ import 'android_environment.dart';
 import 'build_cmake.dart';
 import 'build_gradle.dart';
 import 'build_pod.dart';
+import 'exceptions.dart';
 import 'logging.dart';
 import 'options.dart';
 import 'precompile_binaries.dart';
@@ -92,8 +90,8 @@ class GenKeyCommand extends Command {
     final kp = generateKey();
     final private = HEX.encode(kp.privateKey.bytes);
     final public = HEX.encode(kp.publicKey.bytes);
-    print("Private Key: $private");
-    print("Public Key: $public");
+    stdout.writeln("Private Key: $private");
+    stdout.writeln("Public Key: $public");
   }
 }
 
@@ -110,12 +108,10 @@ class PrecompileBinariesCommand extends Command {
         mandatory: true,
         help: 'Directory containing Cargo.toml',
       )
-      ..addMultiOption(
-        'target',
-        help: 'Rust target triple of artifact to build.\n'
-            'Can be specified multiple times or omitted in which case\n'
-            'all targets for current platform will be built.',
-      )
+      ..addMultiOption('target',
+          help: 'Rust target triple of artifact to build.\n'
+              'Can be specified multiple times or omitted in which case\n'
+              'all targets for current platform will be built.')
       ..addOption(
         'android-sdk-location',
         help: 'Location of Android SDK (if available)',
@@ -126,16 +122,19 @@ class PrecompileBinariesCommand extends Command {
       )
       ..addOption(
         'android-min-sdk-version',
-        help: 'Android minimum rquired version (if available)',
+        help: 'Android minimum required version (if available)',
       )
       ..addOption(
         'temp-dir',
         help: 'Directory to store temporary build artifacts',
       )
+      ..addOption(
+        'glibc-version',
+        help: 'GLIBC version to use for linux builds',
+      )
       ..addFlag(
         "verbose",
         abbr: "v",
-        defaultsTo: false,
         help: "Enable verbose logging",
       );
   }
@@ -146,7 +145,7 @@ class PrecompileBinariesCommand extends Command {
   @override
   final description = 'Prebuild and upload binaries\n'
       'Private key must be passed through PRIVATE_KEY environment variable. '
-      'Use gen_key through generate priave key.\n'
+      'Use gen-key to generate the private key.\n'
       'Github token must be passed as GITHUB_TOKEN environment variable.\n';
 
   @override
@@ -158,19 +157,27 @@ class PrecompileBinariesCommand extends Command {
 
     final privateKeyString = Platform.environment['PRIVATE_KEY'];
     if (privateKeyString == null) {
-      throw ArgumentError('Missing PRIVATE_KEY environment variable');
+      throw ConfigurationException(
+        'Missing PRIVATE_KEY environment variable.',
+      );
     }
     final githubToken = Platform.environment['GITHUB_TOKEN'];
     if (githubToken == null) {
-      throw ArgumentError('Missing GITHUB_TOKEN environment variable');
+      throw ConfigurationException(
+        'Missing GITHUB_TOKEN environment variable.',
+      );
     }
     final privateKey = HEX.decode(privateKeyString);
     if (privateKey.length != 64) {
-      throw ArgumentError('Private key must be 64 bytes long');
+      throw ConfigurationException(
+        'PRIVATE_KEY must be a 64-byte Ed25519 private key.',
+      );
     }
     final manifestDir = argResults!['manifest-dir'] as String;
     if (!Directory(manifestDir).existsSync()) {
-      throw ArgumentError('Manifest directory does not exist: $manifestDir');
+      throw ConfigurationException(
+        'Manifest directory does not exist: $manifestDir',
+      );
     }
     String? androidMinSdkVersionString =
         argResults!['android-min-sdk-version'] as String?;
@@ -178,16 +185,16 @@ class PrecompileBinariesCommand extends Command {
     if (androidMinSdkVersionString != null) {
       androidMinSdkVersion = int.tryParse(androidMinSdkVersionString);
       if (androidMinSdkVersion == null) {
-        throw ArgumentError(
+        throw ConfigurationException(
           'Invalid android-min-sdk-version: $androidMinSdkVersionString',
         );
       }
     }
-    final targetStrigns = argResults!['target'] as List<String>;
-    final targets = targetStrigns.map((target) {
+    final targetStrings = argResults!['target'] as List<String>;
+    final targets = targetStrings.map((target) {
       final res = Target.forRustTriple(target);
       if (res == null) {
-        throw ArgumentError('Invalid target: $target');
+        throw ConfigurationException('Invalid target: $target');
       }
       return res;
     }).toList(growable: false);
@@ -201,6 +208,7 @@ class PrecompileBinariesCommand extends Command {
       androidNdkVersion: argResults!['android-ndk-version'] as String?,
       androidMinSdkVersion: androidMinSdkVersion,
       tempDir: argResults!['temp-dir'] as String?,
+      glibcVersion: argResults!['glibc-version'] as String?,
     );
 
     await precompileBinaries.run();
@@ -227,7 +235,9 @@ class VerifyBinariesCommand extends Command {
   @override
   Future<void> run() async {
     final manifestDir = argResults!['manifest-dir'] as String;
-    final verifyBinaries = VerifyBinaries(manifestDir: manifestDir);
+    final verifyBinaries = VerifyBinaries(
+      manifestDir: manifestDir,
+    );
     await verifyBinaries.run();
   }
 }
@@ -241,7 +251,7 @@ Future<void> runMain(List<String> args) async {
       return AndroidEnvironment.clangLinkerWrapper(args);
     }
 
-    final runner = CommandRunner('build_tool', 'Cargokit built_tool')
+    final runner = CommandRunner('build_tool', 'Cargokit build tool')
       ..addCommand(BuildPodCommand())
       ..addCommand(BuildGradleCommand())
       ..addCommand(BuildCMakeCommand())

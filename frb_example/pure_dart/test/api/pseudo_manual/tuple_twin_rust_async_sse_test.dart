@@ -11,7 +11,9 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test("dart call tuples", () async {
     expect(await testTupleTwinRustAsyncSse(), ('John', 0));
-    expect(
-        await testTupleTwinRustAsyncSse(value: ('Bob', 42)), ('Hello Bob', 43));
+    expect(await testTupleTwinRustAsyncSse(value: ('Bob', 42)), (
+      'Hello Bob',
+      43,
+    ));
   });
 }

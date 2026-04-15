@@ -49,8 +49,12 @@ impl TypeParserWithContext<'_, '_, '_> {
                         MirTypeOptional::new(inner.clone())
                     }
                     // frb-coverage:ignore-start
-                    Optional(_) | MirType::TraitDef(_) => unreachable!(),
-                    // frb-coverage:ignore-end
+                    Optional(_) | MirType::TraitDef(_) => {
+                        return Err(anyhow::anyhow!(
+                            "Unsupported type inside Option: {:?}",
+                            inner
+                        ));
+                    } // frb-coverage:ignore-end
                 })
             }
 

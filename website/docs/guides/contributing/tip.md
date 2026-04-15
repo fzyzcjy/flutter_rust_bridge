@@ -15,7 +15,7 @@ The published development image is `fzyzcjy/flutter_rust_bridge_dev`. It package
 Prefer the full version tag when you want reproducible environments:
 
 ```shell
-docker run --rm -it fzyzcjy/flutter_rust_bridge_dev:flutter-3.27.4-rust-1.88.0-nightly-2025-02-01 bash
+docker run --rm -it fzyzcjy/flutter_rust_bridge_dev:flutter-3.27.4-rust-1.88.0-nightly-2026-04-07 bash
 ```
 
 Those version numbers are derived from the `ARG` values in `.devcontainer/Dockerfile`, which is the single source of truth. `latest` only means the current recommended image and is not intended for long-term reproducibility.
