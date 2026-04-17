@@ -19,8 +19,8 @@ class GeneralizedFrbRustBinding {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   GeneralizedFrbRustBinding(ExternalLibrary externalLibrary)
-    : _binding = MultiPackageCBinding(externalLibrary.ffiDynamicLibrary),
-      _externalLibraryDebugInfo = externalLibrary.debugInfo;
+      : _binding = MultiPackageCBinding(externalLibrary.ffiDynamicLibrary),
+        _externalLibraryDebugInfo = externalLibrary.debugInfo;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void storeDartPostCObject() {
@@ -104,7 +104,8 @@ class GeneralizedFrbRustBinding {
   PlatformPointer dartOpaqueDart2RustEncode(
     Object object,
     NativePortType dartHandlerPort,
-  ) => _binding.frb_dart_opaque_dart2rust_encode(object, dartHandlerPort);
+  ) =>
+      _binding.frb_dart_opaque_dart2rust_encode(object, dartHandlerPort);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   Object dartOpaqueRust2DartDecode(int ptr) =>
@@ -131,7 +132,8 @@ class GeneralizedFrbRustBinding {
     ffi.Pointer<ffi.Uint8> ptr,
     int oldLen,
     int newLen,
-  ) => _binding.frb_rust_vec_u8_resize(ptr, oldLen, newLen);
+  ) =>
+      _binding.frb_rust_vec_u8_resize(ptr, oldLen, newLen);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void rustVecU8Free(ffi.Pointer<ffi.Uint8> ptr, int len) =>
@@ -158,7 +160,7 @@ final class _ShutdownWatcher implements ffi.Finalizable {
   final ffi.NativeFinalizer _finalizer;
 
   _ShutdownWatcher(ffi.Pointer<ffi.NativeFinalizerFunction> callback)
-    : _finalizer = ffi.NativeFinalizer(callback) {
+      : _finalizer = ffi.NativeFinalizer(callback) {
     _finalizer.attach(this, ffi.Pointer.fromAddress(0));
   }
 }

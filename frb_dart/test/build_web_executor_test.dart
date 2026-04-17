@@ -55,8 +55,7 @@ void main() {
   test(
     'override path with reordered default threaded wasm flags does not warn',
     () {
-      const override =
-          '-C link-args=--stack-first '
+      const override = '-C link-args=--stack-first '
           '-C link-args=--export=__tls_base '
           '-C target-feature=+atomics,+bulk-memory,+mutable-globals '
           '-C link-args=--export=__tls_align '

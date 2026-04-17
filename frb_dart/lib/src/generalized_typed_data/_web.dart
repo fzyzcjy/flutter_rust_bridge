@@ -72,7 +72,8 @@ void byteDataSetUint64(
   int byteOffset,
   BigInt value,
   Endian endian,
-) => byteDataSetInt64(byteData, byteOffset, value.toSigned(64), endian);
+) =>
+    byteDataSetInt64(byteData, byteOffset, value.toSigned(64), endian);
 
 /// {@macro flutter_rust_bridge.internal}
 void byteDataSetInt64(

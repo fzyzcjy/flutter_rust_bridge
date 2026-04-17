@@ -7,19 +7,21 @@ PlatformPointer encodeDartOpaque(
   Object raw,
   NativePortType dartHandlerPort,
   GeneralizedFrbRustBinding generalizedFrbRustBinding,
-) => encodeDartOpaqueCommon(
-  _prepareDartOpaque(raw),
-  dartHandlerPort,
-  generalizedFrbRustBinding,
-);
+) =>
+    encodeDartOpaqueCommon(
+      _prepareDartOpaque(raw),
+      dartHandlerPort,
+      generalizedFrbRustBinding,
+    );
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 Object decodeDartOpaque(
   dynamic raw,
   GeneralizedFrbRustBinding generalizedFrbRustBinding,
-) => _unprepareDartOpaque(
-  decodeDartOpaqueCommon(raw, generalizedFrbRustBinding),
-);
+) =>
+    _unprepareDartOpaque(
+      decodeDartOpaqueCommon(raw, generalizedFrbRustBinding),
+    );
 
 Object _prepareDartOpaque(Object raw) {
   // #2183

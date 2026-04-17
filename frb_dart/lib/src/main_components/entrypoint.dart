@@ -16,11 +16,8 @@ import 'package:meta/meta.dart';
 /// This class is like "service locator" (e.g. the get_it package) for all services related to flutter_rust_bridge.
 ///
 /// This should be a singleton per flutter_rust_bridge usage (enforced via generated subclass code).
-abstract class BaseEntrypoint<
-  A extends BaseApi,
-  AI extends BaseApiImpl,
-  W extends BaseWire
-> {
+abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
+    W extends BaseWire> {
   /// Whether the system has been initialized.
   bool get initialized => __state != null;
 
@@ -127,8 +124,8 @@ abstract class BaseEntrypoint<
   void _sanityCheckContentHash(
     GeneralizedFrbRustBinding generalizedFrbRustBinding,
   ) {
-    final rustSideRustContentHash = generalizedFrbRustBinding
-        .getRustContentHash();
+    final rustSideRustContentHash =
+        generalizedFrbRustBinding.getRustContentHash();
     if (rustContentHash != rustSideRustContentHash) {
       throw StateError(
         "Content hash on Dart side ($rustContentHash) is different from Rust side ($rustSideRustContentHash), indicating out-of-sync code. "
@@ -172,12 +169,11 @@ abstract class BaseEntrypoint<
     ExternalLibrary externalLibrary,
   ) {
     return apiImplConstructor(
-          handler: handler,
-          generalizedFrbRustBinding: generalizedFrbRustBinding,
-          portManager: portManager,
-          wire: wireConstructor(externalLibrary),
-        )
-        as A;
+      handler: handler,
+      generalizedFrbRustBinding: generalizedFrbRustBinding,
+      portManager: portManager,
+      wire: wireConstructor(externalLibrary),
+    ) as A;
   }
 }
 
