@@ -19,8 +19,9 @@ Future<void> run(TestDartSanitizerConfig config) async {
 
   // Otherwise it seems the sanitized dart binary does not compile native assets
   await exec(
-      'dart --enable-experiment=native-assets run test/empty_entrypoint.dart',
-      relativePwd: config.package);
+    'dart run test/empty_entrypoint.dart',
+    relativePwd: config.package,
+  );
 
   if (config.package == 'frb_example/deliberate_bad') {
     await _runPackageDeliberateBad(config);
@@ -53,9 +54,12 @@ Future<void> _modifySdkMinVersion({required String path}) async {
 Future<void> _runEntrypoint(TestDartSanitizerConfig config) async {
   final sanitizedDart = await _getSanitizedDartBinary(config);
   await _execAndCheckWithSanitizerEnvVar(
-    '$sanitizedDart --enable-experiment=native-assets run test/dart_valgrind_test_entrypoint.dart',
+    '$sanitizedDart run test/dart_valgrind_test_entrypoint.dart',
     const _Info(
-        name: 'entrypoint', expectSucceed: true, expectStderrContains: ''),
+      name: 'entrypoint',
+      expectSucceed: true,
+      expectStderrContains: '',
+    ),
     config.sanitizer,
     relativePwd: config.package,
   );
@@ -67,7 +71,8 @@ Future<void> _runPackageDeliberateBad(TestDartSanitizerConfig config) async {
 }
 
 Future<void> _runPackageDeliberateBadRustOnly(
-    TestDartSanitizerConfig config) async {
+  TestDartSanitizerConfig config,
+) async {
   final kInfos = [
     const _Info(
       name: 'RustOnly_Good',
@@ -76,41 +81,40 @@ Future<void> _runPackageDeliberateBadRustOnly(
     ),
     ...switch (config.sanitizer) {
       Sanitizer.asan => [
-          const _Info(
-            name: 'RustOnly_StackBufferOverflow',
-            expectSucceed: false,
-            expectStderrContains:
-                'ERROR: AddressSanitizer: stack-buffer-overflow',
-          ),
-          const _Info(
-            name: 'RustOnly_HeapUseAfterFree',
-            expectSucceed: false,
-            expectStderrContains:
-                'ERROR: AddressSanitizer: heap-use-after-free',
-          ),
-        ],
+        const _Info(
+          name: 'RustOnly_StackBufferOverflow',
+          expectSucceed: false,
+          expectStderrContains:
+              'ERROR: AddressSanitizer: stack-buffer-overflow',
+        ),
+        const _Info(
+          name: 'RustOnly_HeapUseAfterFree',
+          expectSucceed: false,
+          expectStderrContains: 'ERROR: AddressSanitizer: heap-use-after-free',
+        ),
+      ],
       Sanitizer.msan => [
-          const _Info(
-            name: 'RustOnly_UseOfUninitializedValue',
-            expectSucceed: false,
-            expectStderrContains:
-                'WARNING: MemorySanitizer: use-of-uninitialized-value',
-          ),
-        ],
+        const _Info(
+          name: 'RustOnly_UseOfUninitializedValue',
+          expectSucceed: false,
+          expectStderrContains:
+              'WARNING: MemorySanitizer: use-of-uninitialized-value',
+        ),
+      ],
       Sanitizer.lsan => [
-          const _Info(
-            name: 'RustOnly_MemoryLeak',
-            expectSucceed: false,
-            expectStderrContains: 'ERROR: LeakSanitizer: detected memory leaks',
-          ),
-        ],
+        const _Info(
+          name: 'RustOnly_MemoryLeak',
+          expectSucceed: false,
+          expectStderrContains: 'ERROR: LeakSanitizer: detected memory leaks',
+        ),
+      ],
       Sanitizer.tsan => [
-          const _Info(
-            name: 'RustOnly_DataRace',
-            expectSucceed: false,
-            expectStderrContains: 'WARNING: ThreadSanitizer: data race',
-          ),
-        ],
+        const _Info(
+          name: 'RustOnly_DataRace',
+          expectSucceed: false,
+          expectStderrContains: 'WARNING: ThreadSanitizer: data race',
+        ),
+      ],
     },
   ];
 
@@ -125,7 +129,8 @@ Future<void> _runPackageDeliberateBadRustOnly(
 }
 
 Future<void> _runPackageDeliberateBadWithDart(
-    TestDartSanitizerConfig config) async {
+  TestDartSanitizerConfig config,
+) async {
   final kDartOnlyInfos = [
     const _Info(
       name: 'DartOnly_Good',
@@ -134,75 +139,74 @@ Future<void> _runPackageDeliberateBadWithDart(
     ),
     ...switch (config.sanitizer) {
       Sanitizer.asan => [
-          // NOTE ASAN does not report this as buggy...
-          const _Info(
-            name: 'DartOnly_HeapUseAfterFree',
-            expectSucceed: true,
-            expectStderrContains: '',
-          ),
-        ],
+        // NOTE ASAN does not report this as buggy...
+        const _Info(
+          name: 'DartOnly_HeapUseAfterFree',
+          expectSucceed: true,
+          expectStderrContains: '',
+        ),
+      ],
       Sanitizer.msan => [
-          // Pure dart almost cannot have this problem
-        ],
+        // Pure dart almost cannot have this problem
+      ],
       Sanitizer.lsan => [
-          const _Info(
-            name: 'DartOnly_MemoryLeak',
-            expectSucceed: false,
-            expectStderrContains: 'ERROR: LeakSanitizer: detected memory leaks',
-          ),
-        ],
+        const _Info(
+          name: 'DartOnly_MemoryLeak',
+          expectSucceed: false,
+          expectStderrContains: 'ERROR: LeakSanitizer: detected memory leaks',
+        ),
+      ],
       Sanitizer.tsan => [
-          // Pure-dart almost cannot have data race
-        ],
+        // Pure-dart almost cannot have data race
+      ],
     },
   ];
 
   final kDartCallRustInfos = [
     ...switch (config.sanitizer) {
       Sanitizer.asan => [
-          // NOTE It should fail, but ASAN did not realize this case...
-          const _Info(
-            name: 'DartCallRust_StackBufferOverflow',
-            expectSucceed: true,
-            expectStderrContains: '',
-          ),
-          // ASAN successfully understand this case
-          const _Info(
-            name: 'DartCallRust_HeapUseAfterFree',
-            expectSucceed: false,
-            expectStderrContains:
-                'ERROR: AddressSanitizer: heap-use-after-free',
-          ),
-        ],
+        // NOTE It should fail, but ASAN did not realize this case...
+        const _Info(
+          name: 'DartCallRust_StackBufferOverflow',
+          expectSucceed: true,
+          expectStderrContains: '',
+        ),
+        // ASAN successfully understand this case
+        const _Info(
+          name: 'DartCallRust_HeapUseAfterFree',
+          expectSucceed: false,
+          expectStderrContains: 'ERROR: AddressSanitizer: heap-use-after-free',
+        ),
+      ],
       Sanitizer.msan => [
-          const _Info(
-            name: 'DartCallRust_UseOfUninitializedValue',
-            expectSucceed: false,
-            expectStderrContains:
-                'WARNING: MemorySanitizer: use-of-uninitialized-value',
-          ),
-        ],
+        const _Info(
+          name: 'DartCallRust_UseOfUninitializedValue',
+          expectSucceed: false,
+          expectStderrContains:
+              'WARNING: MemorySanitizer: use-of-uninitialized-value',
+        ),
+      ],
       Sanitizer.lsan => [
-          const _Info(
-            name: 'DartCallRust_MemoryLeak',
-            expectSucceed: false,
-            expectStderrContains: 'ERROR: LeakSanitizer: detected memory leaks',
-          ),
-        ],
+        const _Info(
+          name: 'DartCallRust_MemoryLeak',
+          expectSucceed: false,
+          expectStderrContains: 'ERROR: LeakSanitizer: detected memory leaks',
+        ),
+      ],
       Sanitizer.tsan => [
-          const _Info(
-            name: 'DartCallRust_DataRace',
-            expectSucceed: false,
-            expectStderrContains: 'WARNING: ThreadSanitizer: data race',
-          ),
-        ],
+        const _Info(
+          name: 'DartCallRust_DataRace',
+          expectSucceed: false,
+          expectStderrContains: 'WARNING: ThreadSanitizer: data race',
+        ),
+      ],
     },
   ];
 
   final sanitizedDart = await _getSanitizedDartBinary(config);
   for (final info in kDartOnlyInfos + kDartCallRustInfos) {
     await _execAndCheckWithSanitizerEnvVar(
-      '$sanitizedDart --enable-experiment=native-assets run '
+      '$sanitizedDart run '
       'frb_example_deliberate_bad ${info.name}',
       info,
       config.sanitizer,
@@ -235,9 +239,9 @@ Future<void> _execAndCheckWithSanitizerEnvVar(
     cmd,
     relativePwd: relativePwd,
     extraEnv: {
-      'RUSTFLAGS': '-Zsanitizer=${sanitizer.rustflagValue}',
-      'FRB_SIMPLE_BUILD_CARGO_NIGHTLY': '1',
-      'FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS': _cargoBuildExtraArgs,
+      'NIX_FRB_RUSTFLAGS': '-Zsanitizer=${sanitizer.rustflagValue}',
+      'NIX_FRB_SIMPLE_BUILD_CARGO_NIGHTLY': '1',
+      'NIX_FRB_SIMPLE_BUILD_CARGO_EXTRA_ARGS': _cargoBuildExtraArgs,
       // because we unconventionally specified the `--target` in cargo build
       'FRB_DART_LOAD_EXTERNAL_LIBRARY_NATIVE_LIB_DIR': 'rust/target/release/',
       ...kEnvEnableRustBacktrace,
@@ -247,12 +251,14 @@ Future<void> _execAndCheckWithSanitizerEnvVar(
 
   if ((output.exitCode == 0) != info.expectSucceed) {
     throw Exception(
-        'Bad exitCode=${output.exitCode}, while expectSucceed=${info.expectSucceed}');
+      'Bad exitCode=${output.exitCode}, while expectSucceed=${info.expectSucceed}',
+    );
   }
 
   if (!output.stderr.contains(info.expectStderrContains)) {
     throw Exception(
-        'Bad stderr which does not contain `${info.expectStderrContains}`');
+      'Bad stderr which does not contain `${info.expectStderrContains}`',
+    );
   }
 
   print('Pass check for ${info.name}');
@@ -270,14 +276,17 @@ Future<String> _getSanitizedDartBinary(TestDartSanitizerConfig config) async {
 
   final pathTarGz = path.join(Directory.systemTemp.path, fileNameTarGz);
   final pathUnzippedDir = path.join(Directory.systemTemp.path, baseName);
-  final pathBin = path.join(pathUnzippedDir,
-      'dart-sdk/sdk/out/${config.sanitizer.dartSdkBuildOutDir}/dart-sdk/bin/dart');
+  final pathBin = path.join(
+    pathUnzippedDir,
+    'dart-sdk/sdk/out/${config.sanitizer.dartSdkBuildOutDir}/dart-sdk/bin/dart',
+  );
 
   if (!await File(pathTarGz).exists()) {
-    final url =
-        'https://github.com/fzyzcjy/dart_lang_ci/releases/download/$releaseName/$fileNameTarGz';
-    print('Download artifact from $url to $pathTarGz...');
-    await Dio().download(url, pathTarGz);
+    await _downloadSanitizedDartBinaryArtifact(
+      releaseName: releaseName,
+      fileNameTarGz: fileNameTarGz,
+      pathTarGz: pathTarGz,
+    );
   }
 
   if (!await File(pathBin).exists()) {
@@ -290,6 +299,74 @@ Future<String> _getSanitizedDartBinary(TestDartSanitizerConfig config) async {
   }
 
   return pathBin;
+}
+
+Future<void> _downloadSanitizedDartBinaryArtifact({
+  required String releaseName,
+  required String fileNameTarGz,
+  required String pathTarGz,
+}) async {
+  final publicUrl =
+      'https://github.com/fzyzcjy/dart_lang_ci/releases/download/$releaseName/$fileNameTarGz';
+  print('Download artifact from $publicUrl to $pathTarGz...');
+
+  try {
+    await Dio().download(publicUrl, pathTarGz);
+    return;
+  } on DioException {
+    final token =
+        Platform.environment['GITHUB_TOKEN'] ??
+        Platform.environment['GH_TOKEN'];
+    if (token == null || token.isEmpty) rethrow;
+
+    print(
+      'Public artifact download failed; retry via GitHub API asset download',
+    );
+
+    final assetId = await _findGitHubReleaseAssetId(
+      releaseName: releaseName,
+      fileNameTarGz: fileNameTarGz,
+      token: token,
+    );
+    final response = await Dio().get<List<int>>(
+      'https://api.github.com/repos/fzyzcjy/dart_lang_ci/releases/assets/$assetId',
+      options: Options(
+        responseType: ResponseType.bytes,
+        headers: {
+          HttpHeaders.authorizationHeader: 'Bearer $token',
+          HttpHeaders.acceptHeader: 'application/octet-stream',
+          HttpHeaders.userAgentHeader: 'flutter-rust-bridge-ci',
+        },
+      ),
+    );
+    await File(pathTarGz).writeAsBytes(response.data!);
+  }
+}
+
+Future<int> _findGitHubReleaseAssetId({
+  required String releaseName,
+  required String fileNameTarGz,
+  required String token,
+}) async {
+  final response = await Dio().get<Map<String, dynamic>>(
+    'https://api.github.com/repos/fzyzcjy/dart_lang_ci/releases/tags/$releaseName',
+    options: Options(
+      headers: {
+        HttpHeaders.authorizationHeader: 'Bearer $token',
+        HttpHeaders.acceptHeader: 'application/vnd.github+json',
+        HttpHeaders.userAgentHeader: 'flutter-rust-bridge-ci',
+      },
+    ),
+  );
+
+  final assets = response.data!['assets'] as List<dynamic>;
+  final asset = assets.cast<Map<String, dynamic>>().firstWhere(
+    (element) => element['name'] == fileNameTarGz,
+    orElse: () => throw Exception(
+      'Cannot find GitHub release asset `$fileNameTarGz` in `$releaseName`',
+    ),
+  );
+  return asset['id'] as int;
 }
 
 const _cargoBuildExtraArgs = '-Zbuild-std --target x86_64-unknown-linux-gnu';

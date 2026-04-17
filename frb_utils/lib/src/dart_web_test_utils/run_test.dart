@@ -8,6 +8,7 @@ import 'package:flutter_rust_bridge/src/cli/cli_utils.dart';
 import 'package:flutter_rust_bridge_utils/src/commands/serve_web_command.dart';
 import 'package:flutter_rust_bridge_utils/src/commands/test_web_command.dart';
 import 'package:flutter_rust_bridge_utils/src/dart_web_test_utils/static_content.dart';
+import 'package:flutter_rust_bridge_utils/src/dart_web_test_utils/web_test_proxy.dart';
 import 'package:flutter_rust_bridge_utils/src/serve_web/run_server.dart';
 import 'package:path/path.dart' as path;
 import 'package:puppeteer/puppeteer.dart' hide Response;
@@ -15,10 +16,10 @@ import 'package:shelf/shelf.dart';
 import 'package:shelf_web_socket/shelf_web_socket.dart';
 
 const kTestResultKey = '__result__';
-
 Future<void> executeTestWeb(TestWebConfig config) async {
-  final dartRoot =
-      await findDartPackageDirectory(path.dirname(config.entrypoint));
+  final dartRoot = await findDartPackageDirectory(
+    path.dirname(config.entrypoint),
+  );
   final webRoot = '$dartRoot/web';
   print('executeTestWeb: Pick dartRoot=$dartRoot');
 
@@ -26,20 +27,22 @@ Future<void> executeTestWeb(TestWebConfig config) async {
       config.rustFeatures.expand((x) => ['--features', x]).toList();
 
   print('executeTestWeb: compile');
-  await executeBuildWeb(BuildWebArgs(
-    output: webRoot,
-    release: false,
-    verbose: false,
-    // TODO make these configurable later when it is publicly used
-    //      (now it is only used internally)
-    rustCrateDir: '$dartRoot/rust',
-    cargoBuildArgs: cargoArgs,
-    wasmBindgenArgs: [],
-    dartCompileJsEntrypoint: config.entrypoint,
-    // TODO make this configurable later
-    wasmPackRustupToolchain: 'nightly-2025-02-01',
-    wasmPackRustflags: null,
-  ));
+  await executeBuildWeb(
+    BuildWebArgs(
+      output: webRoot,
+      release: false,
+      verbose: false,
+      // TODO make these configurable later when it is publicly used
+      //      (now it is only used internally)
+      rustCrateDir: '$dartRoot/rust',
+      cargoBuildArgs: cargoArgs,
+      wasmBindgenArgs: [],
+      dartCompileJsEntrypoint: config.entrypoint,
+      // TODO make this configurable later
+      wasmPackRustupToolchain: 'nightly-2025-02-01',
+      wasmPackRustflags: null,
+    ),
+  );
 
   Browser? browser;
 
@@ -65,8 +68,9 @@ Future<void> executeTestWeb(TestWebConfig config) async {
   browser = await _launchBrowser(baseAddr: baseAddr, headless: config.headless);
 }
 
-Handler _createWebSocketHandler(
-    {required Future<void> Function() closeBrowser}) {
+Handler _createWebSocketHandler({
+  required Future<void> Function() closeBrowser,
+}) {
   return webSocketHandler((channel) async {
     await for (final mes in channel.stream) {
       try {
@@ -88,8 +92,10 @@ const _kTestEntrypointHttpName = 'test_entrypoint.html';
 
 Handler _createIndexFileHandler() => (request) {
       if (request.url.path == _kTestEntrypointHttpName) {
-        return Response.ok(kTestEntrypointHtmlContent,
-            headers: {HttpHeaders.contentTypeHeader: 'text/html'});
+        return Response.ok(
+          kTestEntrypointHtmlContent,
+          headers: {HttpHeaders.contentTypeHeader: 'text/html'},
+        );
       }
       return Response.notFound(null);
     };
@@ -99,32 +105,39 @@ Future<Browser> _launchBrowser({
   required bool headless,
 }) async {
   if (headless) {
-    print('Hint: Running browser in headless mode now. '
-        'There are more logs on the browser console, so you can disable headless mode to debug.');
+    print(
+      'Hint: Running browser in headless mode now. '
+      'There are more logs on the browser console, so you can disable headless mode to debug.',
+    );
   }
 
   // Check if running in Docker/container environment (no sandbox needed)
   final isInContainer = File('/.dockerenv').existsSync();
 
-  final browser = await puppeteer.launch(
-    headless: headless,
-    timeout: const Duration(minutes: 5),
-    args: isInContainer ? ['--no-sandbox', '--disable-setuid-sandbox'] : [],
-  );
-  final page = await browser.newPage();
-  _configurePageLogging(page);
-  await page.goto('$baseAddr/$_kTestEntrypointHttpName');
-  return browser;
+  return await HttpOverrides.runZoned(() async {
+    final browser = await puppeteer.launch(
+      headless: headless,
+      timeout: const Duration(minutes: 5),
+      args: isInContainer ? ['--no-sandbox', '--disable-setuid-sandbox'] : [],
+      environment: createWebTestBrowserEnvironment(),
+    );
+    final page = await browser.newPage();
+    _configurePageLogging(page);
+    await page.goto('$baseAddr/$_kTestEntrypointHttpName');
+    return browser;
+  }, findProxyFromEnvironment: findWebTestProxyFromEnvironment);
 }
 
 void _configurePageLogging(Page page) {
   // https://stackoverflow.com/questions/47539043/how-to-get-all-console-messages-with-puppeteer-including-errors-csp-violations
 
   page.onConsole.listen(
-      (e) => print('[puppeteer console] [${e.typeName}] ${e.text?.trim()}'));
+    (e) => print('[puppeteer console] [${e.typeName}] ${e.text?.trim()}'),
+  );
 
   page.onPageCrashed.listen((_) => print('puppeteer.Page.onPageCrashed'));
-  page.onRequestFailed
-      .listen((e) => print('puppeteer.Page.onRequestFailed $e'));
+  page.onRequestFailed.listen(
+    (e) => print('puppeteer.Page.onRequestFailed $e'),
+  );
   page.onError.listen((e) => print('puppeteer.Page.onError $e'));
 }

@@ -46,18 +46,14 @@ abstract class BaseGenerator {
 
   void _writeCodeFiles(Map<String, String> textOfPathMap) {
     for (final entry in textOfPathMap.entries) {
-      File(interestDir.resolve(entry.key).toFilePath())
-          .writeAsStringSync(entry.value);
+      File(
+        interestDir.resolve(entry.key).toFilePath(),
+      ).writeAsStringSync(entry.value);
     }
   }
 }
 
-enum DuplicatorComponentMode {
-  sync,
-  rustAsync,
-  sse,
-  moi,
-}
+enum DuplicatorComponentMode { sync, rustAsync, sse, moi }
 
 @freezed
 sealed class DuplicatorMode with _$DuplicatorMode {
@@ -67,21 +63,25 @@ sealed class DuplicatorMode with _$DuplicatorMode {
   const DuplicatorMode._();
 
   static DuplicatorMode parse(String raw) => DuplicatorMode(
-      raw.split(' ').map(DuplicatorComponentMode.values.byName).toList());
+    raw.split(' ').map(DuplicatorComponentMode.values.byName).toList(),
+  );
 
   static const defaultValues = [
     DuplicatorMode([DuplicatorComponentMode.sync]),
     DuplicatorMode([DuplicatorComponentMode.rustAsync]),
     DuplicatorMode([DuplicatorComponentMode.sse]),
     DuplicatorMode([DuplicatorComponentMode.sync, DuplicatorComponentMode.sse]),
-    DuplicatorMode(
-        [DuplicatorComponentMode.rustAsync, DuplicatorComponentMode.sse]),
+    DuplicatorMode([
+      DuplicatorComponentMode.rustAsync,
+      DuplicatorComponentMode.sse,
+    ]),
   ];
 
   static final allValues = [
     ...defaultValues,
     ...[const DuplicatorMode([]), ...defaultValues].map(
-        (e) => DuplicatorMode([...e.components, DuplicatorComponentMode.moi])),
+      (e) => DuplicatorMode([...e.components, DuplicatorComponentMode.moi]),
+    ),
   ];
 
   String get postfix =>
@@ -95,8 +95,8 @@ class _Duplicator {
 
   void _generate() {
     for (final file in Glob(
-            '${generator.interestDir.toFilePath()}/**.${generator.extension}')
-        .listSync()) {
+      '${generator.interestDir.toFilePath()}/**.${generator.extension}',
+    ).listSync()) {
       final fileName = path.basename(file.path);
       final fileStem = path.basenameWithoutExtension(file.path);
       if (file is! File ||
@@ -106,8 +106,9 @@ class _Duplicator {
       if (generator.duplicatorBlacklistNames.contains(fileName)) {
         continue;
       }
-      if (DuplicatorMode.allValues
-          .any((mode) => fileStem.contains(mode.postfix))) {
+      if (DuplicatorMode.allValues.any(
+        (mode) => fileStem.contains(mode.postfix),
+      )) {
         continue;
       }
 
@@ -121,10 +122,13 @@ class _Duplicator {
           continue;
         }
 
-        var outputText = computeDuplicatorPrelude(' from `$fileName`') +
+        var outputText =
+            computeDuplicatorPrelude(' from `$fileName`') +
             (annotation.addCode ?? '') +
             generator.generateDuplicateCode(
-                _handleFileContent(fileContent), mode);
+              _handleFileContent(fileContent),
+              mode,
+            );
         for (final entry in annotation.replaceCode.entries) {
           outputText = outputText.replaceAll(entry.key, entry.value);
         }
@@ -132,7 +136,8 @@ class _Duplicator {
         final targetPath = generator.interestDir
             .resolve('pseudo_manual/')
             .resolve(
-                '${generator.generateDuplicateFileStem(fileStem, mode)}.${generator.extension}')
+              '${generator.generateDuplicateFileStem(fileStem, mode)}.${generator.extension}',
+            )
             .toFilePath();
         File(targetPath).writeAsStringSync(outputText);
       }
@@ -147,9 +152,11 @@ class _Duplicator {
     // In PDE mode, we use SSE by default, so cannot annotate it
     if (generator.package == Package.pureDartPde) {
       modes = modes
-          .where((m) =>
-              !m.components.contains(DuplicatorComponentMode.sse) &&
-              !m.components.contains(DuplicatorComponentMode.moi))
+          .where(
+            (m) =>
+                !m.components.contains(DuplicatorComponentMode.sse) &&
+                !m.components.contains(DuplicatorComponentMode.moi),
+          )
           .toList();
     }
 
@@ -159,12 +166,13 @@ class _Duplicator {
 
 String _handleFileContent(String content) {
   return content.replaceAll(
-      RegExp(
-        r'// FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_START.*// FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_END',
-        multiLine: true,
-        dotAll: true,
-      ),
-      '');
+    RegExp(
+      r'// FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_START.*// FRB_INTERNAL_GENERATOR_DISABLE_DUPLICATOR_END',
+      multiLine: true,
+      dotAll: true,
+    ),
+    '',
+  );
 }
 
 class Annotation {
@@ -201,9 +209,10 @@ class Annotation {
               .map((x) => DuplicatorMode.parse(x as String))
               .toList(),
       addCode: data['addCode'] as String?,
-      replaceCode: ((data['replaceCode'] as Map<dynamic, dynamic>?) ??
-              <dynamic, dynamic>{})
-          .map((k, v) => MapEntry(k as String, v as String)),
+      replaceCode:
+          ((data['replaceCode'] as Map<dynamic, dynamic>?) ??
+                  <dynamic, dynamic>{})
+              .map((k, v) => MapEntry(k as String, v as String)),
       enableAll: data['enableAll'] as bool? ?? false,
       skipPde: data['skipPde'] as bool? ?? false,
     );
@@ -215,7 +224,7 @@ enum Package {
   pureDartPde;
 
   String get dartPackageName => switch (this) {
-        Package.pureDart => 'frb_example_pure_dart',
-        Package.pureDartPde => 'frb_example_pure_dart_pde',
-      };
+    Package.pureDart => 'frb_example_pure_dart',
+    Package.pureDartPde => 'frb_example_pure_dart_pde',
+  };
 }

@@ -16,8 +16,11 @@ import 'package:meta/meta.dart';
 /// This class is like "service locator" (e.g. the get_it package) for all services related to flutter_rust_bridge.
 ///
 /// This should be a singleton per flutter_rust_bridge usage (enforced via generated subclass code).
-abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
-    W extends BaseWire> {
+abstract class BaseEntrypoint<
+  A extends BaseApi,
+  AI extends BaseApiImpl,
+  W extends BaseWire
+> {
   /// Whether the system has been initialized.
   bool get initialized => __state != null;
 
@@ -27,9 +30,11 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
 
   _EntrypointState<A> get _state =>
       __state ??
-      (throw StateError('flutter_rust_bridge has not been initialized. '
-          'Did you forget to call `await RustLib.init();`? '
-          '(If you have configured a different lib name, change `RustLib` to your name.)'));
+      (throw StateError(
+        'flutter_rust_bridge has not been initialized. '
+        'Did you forget to call `await RustLib.init();`? '
+        '(If you have configured a different lib name, change `RustLib` to your name.)',
+      ));
   _EntrypointState<A>? __state;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
@@ -48,12 +53,17 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
 
     externalLibrary ??= await _loadDefaultExternalLibrary();
     handler ??= BaseHandler();
-    final generalizedFrbRustBinding =
-        GeneralizedFrbRustBinding(externalLibrary);
+    final generalizedFrbRustBinding = GeneralizedFrbRustBinding(
+      externalLibrary,
+    );
     _sanityCheckContentHash(generalizedFrbRustBinding);
     final portManager = PortManager(generalizedFrbRustBinding, handler);
     api ??= _createDefaultApi(
-        handler, generalizedFrbRustBinding, portManager, externalLibrary);
+      handler,
+      generalizedFrbRustBinding,
+      portManager,
+      externalLibrary,
+    );
 
     __state = _EntrypointState(
       generalizedFrbRustBinding: generalizedFrbRustBinding,
@@ -66,9 +76,7 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @protected
-  void initMockImpl({
-    required A api,
-  }) {
+  void initMockImpl({required A api}) {
     if (__state != null) {
       throw StateError('Should not initialize flutter_rust_bridge twice');
     }
@@ -88,7 +96,8 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
   void resetState() {
     // ignore: avoid_print
     print(
-        'WARN: resetState() (should only be used in internal tests, never be used by normal users)');
+      'WARN: resetState() (should only be used in internal tests, never be used by normal users)',
+    );
     __state = null;
   }
 
@@ -116,9 +125,10 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
   }
 
   void _sanityCheckContentHash(
-      GeneralizedFrbRustBinding generalizedFrbRustBinding) {
-    final rustSideRustContentHash =
-        generalizedFrbRustBinding.getRustContentHash();
+    GeneralizedFrbRustBinding generalizedFrbRustBinding,
+  ) {
+    final rustSideRustContentHash = generalizedFrbRustBinding
+        .getRustContentHash();
     if (rustContentHash != rustSideRustContentHash) {
       throw StateError(
         "Content hash on Dart side ($rustContentHash) is different from Rust side ($rustSideRustContentHash), indicating out-of-sync code. "
@@ -162,11 +172,12 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl,
     ExternalLibrary externalLibrary,
   ) {
     return apiImplConstructor(
-      handler: handler,
-      generalizedFrbRustBinding: generalizedFrbRustBinding,
-      portManager: portManager,
-      wire: wireConstructor(externalLibrary),
-    ) as A;
+          handler: handler,
+          generalizedFrbRustBinding: generalizedFrbRustBinding,
+          portManager: portManager,
+          wire: wireConstructor(externalLibrary),
+        )
+        as A;
   }
 }
 
@@ -194,9 +205,7 @@ class _FakeEntrypointState<A extends BaseApi> implements _EntrypointState<A> {
   @override
   final A api;
 
-  _FakeEntrypointState({
-    required this.api,
-  });
+  _FakeEntrypointState({required this.api});
 
   @override
   void dispose() {}
@@ -208,7 +217,8 @@ class _FakeEntrypointState<A extends BaseApi> implements _EntrypointState<A> {
 }
 
 void _setUpRustToDartCommunication(
-    GeneralizedFrbRustBinding generalizedFrbRustBinding) {
+  GeneralizedFrbRustBinding generalizedFrbRustBinding,
+) {
   generalizedFrbRustBinding.storeDartPostCObject();
 }
 
@@ -217,6 +227,7 @@ void _initializeApiDlData(GeneralizedFrbRustBinding generalizedFrbRustBinding) {
 }
 
 void _initializeShutdownWatcher(
-    GeneralizedFrbRustBinding generalizedFrbRustBinding) {
+  GeneralizedFrbRustBinding generalizedFrbRustBinding,
+) {
   generalizedFrbRustBinding.initShutdownWatcher();
 }

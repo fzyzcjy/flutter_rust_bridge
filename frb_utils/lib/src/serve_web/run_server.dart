@@ -9,10 +9,14 @@ import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart';
 import 'package:shelf_static/shelf_static.dart';
 
-Future<String> runServer(ServeWebConfig config,
-    {List<Handler>? extraHandlers}) async {
-  final staticFilesHandler =
-      createStaticHandler(config.webRoot, defaultDocument: 'index.html');
+Future<String> runServer(
+  ServeWebConfig config, {
+  List<Handler>? extraHandlers,
+}) async {
+  final staticFilesHandler = createStaticHandler(
+    config.webRoot,
+    defaultDocument: 'index.html',
+  );
 
   var innerHandler = Cascade();
   for (final extraHandler in extraHandlers ?? const <Handler>[]) {
@@ -25,18 +29,21 @@ Future<String> runServer(ServeWebConfig config,
       print('runServer.Request: ${req.method} ${req.requestedUri}');
       final res = await handler(req);
       print(
-          'runServer.Response: code=${res.statusCode} mimeType=${res.mimeType}');
-      return res.change(headers: {
-        'Cross-Origin-Opener-Policy': 'same-origin',
-        // TODO add back this flag `shouldRelaxCoep` after refactor
-        // See https://github.com/fzyzcjy/flutter_rust_bridge/issues/1618 for details
-        'Cross-Origin-Embedder-Policy': 'require-corp',
-        // shouldRelaxCoep ? 'credentialless' : 'require-corp',
-        // TODO rm
-        // // Disable CORS since this server (hosting JS/WASM) is different from
-        // // the server that `dart test -p chrome` creates.
-        // 'Access-Control-Allow-Origin': '*',
-      });
+        'runServer.Response: code=${res.statusCode} mimeType=${res.mimeType}',
+      );
+      return res.change(
+        headers: {
+          'Cross-Origin-Opener-Policy': 'same-origin',
+          // TODO add back this flag `shouldRelaxCoep` after refactor
+          // See https://github.com/fzyzcjy/flutter_rust_bridge/issues/1618 for details
+          'Cross-Origin-Embedder-Policy': 'require-corp',
+          // shouldRelaxCoep ? 'credentialless' : 'require-corp',
+          // TODO rm
+          // // Disable CORS since this server (hosting JS/WASM) is different from
+          // // the server that `dart test -p chrome` creates.
+          // 'Access-Control-Allow-Origin': '*',
+        },
+      );
     };
   }).addHandler(innerHandler.handler);
 

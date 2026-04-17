@@ -130,6 +130,10 @@ class PrecompileBinariesCommand extends Command {
         'temp-dir',
         help: 'Directory to store temporary build artifacts',
       )
+      ..addOption(
+        'glibc-version',
+        help: 'GLIBC version to use for linux builds',
+      )
       ..addFlag(
         "verbose",
         abbr: "v",
@@ -198,6 +202,7 @@ class PrecompileBinariesCommand extends Command {
       androidNdkVersion: argResults!['android-ndk-version'] as String?,
       androidMinSdkVersion: androidMinSdkVersion,
       tempDir: argResults!['temp-dir'] as String?,
+      glibcVersion: argResults!['glibc-version'] as String?,
     );
 
     await precompileBinaries.run();

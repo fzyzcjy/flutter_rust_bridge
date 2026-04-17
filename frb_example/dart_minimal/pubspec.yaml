@@ -10,11 +10,13 @@ dependencies:
     path: ../../frb_dart
   flutter_rust_bridge_utils:
     path: ../../frb_utils
+  hooks: ^1.0.2
+  code_assets: ^1.0.0
   freezed_annotation: ^3.0.0
   json_annotation: ^4.9.0
 dev_dependencies:
   test: ^1.21.4
   freezed: ^3.0.6
   build_runner: ^2.4.4
-  ffigen: ^16.1.0
+  ffigen: ^20.1.1
   json_serializable: ^6.9.0

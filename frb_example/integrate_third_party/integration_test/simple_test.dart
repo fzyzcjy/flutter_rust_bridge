@@ -26,8 +26,9 @@ Future<void> _rustWebAudioApiReadmeDemoUsage() async {
   );
   final context = AudioContext(options: options);
 
-  final buffer =
-      await context.decodeAudioDataSync(inputPath: 'samples/major-scale.ogg');
+  final buffer = await context.decodeAudioDataSync(
+    inputPath: 'samples/major-scale.ogg',
+  );
 
   final src = await context.createBufferSource();
   await src.setBuffer(audioBuffer: buffer);
@@ -58,8 +59,9 @@ Future<void> _mdnUsingWebAudioApiDemoUsage() async {
   final audioContext = AudioContext(options: options);
 
   final audioElement = MediaElement(file: 'some_file_here');
-  final track =
-      await audioContext.createMediaElementSource(mediaElement: audioElement);
+  final track = await audioContext.createMediaElementSource(
+    mediaElement: audioElement,
+  );
 
   final gainNode = await audioContext.createGain();
   gainNode.gain.value = 1.2345;

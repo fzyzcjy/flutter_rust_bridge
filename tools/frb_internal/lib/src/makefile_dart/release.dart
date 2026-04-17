@@ -98,11 +98,9 @@ void _updateVersionInText() {
 
   for (final relativePattern in [
     'frb_codegen/assets/integration_template/**',
-    ...kDartExamplePackages.expand((x) => [
-          '$x/lib/**',
-          '$x/rust/src/**',
-          '$x/../src/**',
-        ]),
+    ...kDartExamplePackages.expand(
+      (x) => ['$x/lib/**', '$x/rust/src/**', '$x/../src/**'],
+    ),
   ]) {
     for (final file in Glob('${exec.pwd}$relativePattern').listSync()) {
       if (file is File) {
@@ -131,7 +129,8 @@ void _updateVersionInText() {
 
 Future<void> releaseUpdateScoop() async {
   await exec(
-      'cd frb_codegen && ./contrib/scoop.json.sh > ./contrib/flutter_rust_bridge_codegen.json');
+    'cd frb_codegen && ./contrib/scoop.json.sh > ./contrib/flutter_rust_bridge_codegen.json',
+  );
 }
 
 Future<void> releaseUpdateGit() async {
@@ -139,7 +138,8 @@ Future<void> releaseUpdateGit() async {
   await exec('git add --all');
   await exec('git status && git diff --staged | grep ""');
   await exec(
-      'git commit -m "bump from ${versionInfo.oldVersion} to ${versionInfo.newVersion}"');
+    'git commit -m "bump from ${versionInfo.oldVersion} to ${versionInfo.newVersion}"',
+  );
   await exec('git push');
 }
 
@@ -148,12 +148,15 @@ Future<void> releaseUpdateGithub() async {
 
   File('${exec.pwd}temp.txt').writeAsStringSync(_extractChangelog().$2);
 
-  await exec('gh release create v${versionInfo.newVersion} '
-      '--notes-file temp.txt '
-      '--draft '
-      '--title v${versionInfo.newVersion}');
+  await exec(
+    'gh release create v${versionInfo.newVersion} '
+    '--notes-file temp.txt '
+    '--draft '
+    '--title v${versionInfo.newVersion}',
+  );
   print(
-      'A *DRAFT* release has been created. Please go to the webpage and really release if you find it correct.');
+    'A *DRAFT* release has been created. Please go to the webpage and really release if you find it correct.',
+  );
   await exec('open https://github.com/fzyzcjy/flutter_rust_bridge/releases');
 }
 
@@ -162,11 +165,13 @@ Future<void> releasePublishAll() async {
   await exec('cd frb_macros && cargo publish');
   await exec('cd frb_rust && cargo publish');
   await exec(
-      'cd frb_dart && flutter pub publish --force --server=https://pub.dartlang.org');
+    'cd frb_dart && flutter pub publish --force --server=https://pub.dartlang.org',
+  );
 }
 
 String getFrbDartVersion() => loadYaml(
-    File('${exec.pwd}frb_dart/pubspec.yaml').readAsStringSync())['version'];
+  File('${exec.pwd}frb_dart/pubspec.yaml').readAsStringSync(),
+)['version'];
 
 VersionInfo computeVersionInfo() => _extractChangelog().$1;
 
@@ -187,10 +192,7 @@ VersionInfo computeVersionInfo() => _extractChangelog().$1;
   }
 
   return (
-    VersionInfo(
-      newVersion: newVersion.$2,
-      oldVersion: oldVersion.$2,
-    ),
+    VersionInfo(newVersion: newVersion.$2, oldVersion: oldVersion.$2),
     lines.sublist(newVersion.$1 + 1, oldVersion.$1).join("\n").trim(),
   );
 }
@@ -214,9 +216,14 @@ void simpleReplaceFile(
   int? expectReplaceCount = 1,
 }) {
   simpleActFile(
-      path,
-      (x) => simpleReplaceString(x, from, replace,
-          expectReplaceCount: expectReplaceCount));
+    path,
+    (x) => simpleReplaceString(
+      x,
+      from,
+      replace,
+      expectReplaceCount: expectReplaceCount,
+    ),
+  );
 }
 
 String simpleReplaceString(

@@ -8,14 +8,11 @@ part of 'bench.dart';
 // CliGenerator
 // **************************************************************************
 
-BenchConfig _$parseBenchConfigResult(ArgResults result) => BenchConfig(
-      filter: result['filter'] as String?,
-    );
+BenchConfig _$parseBenchConfigResult(ArgResults result) =>
+    BenchConfig(filter: result['filter'] as String?);
 
-ArgParser _$populateBenchConfigParser(ArgParser parser) => parser
-  ..addOption(
-    'filter',
-  );
+ArgParser _$populateBenchConfigParser(ArgParser parser) =>
+    parser..addOption('filter');
 
 final _$parserForBenchConfig = _$populateBenchConfigParser(ArgParser());
 
@@ -28,30 +25,22 @@ T _$badNumberFormat<T extends num>(
   String source,
   String type,
   String argName,
-) =>
-    throw FormatException(
-      'Cannot parse "$source" into `$type` for option "$argName".',
-    );
+) => throw FormatException(
+  'Cannot parse "$source" into `$type` for option "$argName".',
+);
 
 BenchFlamegraphRunConfig _$parseBenchFlamegraphRunConfigResult(
-        ArgResults result) =>
-    BenchFlamegraphRunConfig(
-      filter: result['filter'] as String,
-      loopCount: int.tryParse(result['loop-count'] as String) ??
-          _$badNumberFormat(
-            result['loop-count'] as String,
-            'int',
-            'loop-count',
-          ),
-    );
+  ArgResults result,
+) => BenchFlamegraphRunConfig(
+  filter: result['filter'] as String,
+  loopCount:
+      int.tryParse(result['loop-count'] as String) ??
+      _$badNumberFormat(result['loop-count'] as String, 'int', 'loop-count'),
+);
 
 ArgParser _$populateBenchFlamegraphRunConfigParser(ArgParser parser) => parser
-  ..addOption(
-    'filter',
-  )
-  ..addOption(
-    'loop-count',
-  );
+  ..addOption('filter')
+  ..addOption('loop-count');
 
 final _$parserForBenchFlamegraphRunConfig =
     _$populateBenchFlamegraphRunConfigParser(ArgParser());

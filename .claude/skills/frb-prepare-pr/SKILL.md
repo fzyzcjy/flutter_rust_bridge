@@ -48,6 +48,8 @@ CI automatically runs:
 
 Run lint locally to avoid CI failures. Tests are optional locally.
 
+If your PR fixes Flutter integrate example outputs and the real bug is inside the embedded `cargokit` submodule, do not stop at copied example files. Push the `cargokit` fix to `fzyzcjy/cargokit` and update the submodule ref in this repo before pushing the PR branch.
+
 ## Related Skills
 
 - `frb-code-generation` - Determines which generation commands to run

@@ -1,6 +1,3 @@
-/// This is copied from Cargokit (which is the official way to use it currently)
-/// Details: https://fzyzcjy.github.io/flutter_rust_bridge/manual/integrate/builtin
-
 import 'package:collection/collection.dart';
 import 'package:logging/logging.dart';
 import 'package:path/path.dart' as path;
@@ -54,6 +51,8 @@ class BuildEnvironment {
   final int? androidMinSdkVersion;
   final String? javaHome;
 
+  final String? glibcVersion;
+
   BuildEnvironment({
     required this.configuration,
     required this.crateOptions,
@@ -65,6 +64,7 @@ class BuildEnvironment {
     this.androidNdkVersion,
     this.androidMinSdkVersion,
     this.javaHome,
+    this.glibcVersion,
   });
 
   static BuildConfiguration parseBuildConfiguration(String value) {
@@ -109,6 +109,7 @@ class BuildEnvironment {
 class RustBuilder {
   final Target target;
   final BuildEnvironment environment;
+  String? _resolvedToolchain;
 
   RustBuilder({
     required this.target,
@@ -119,21 +120,28 @@ class RustBuilder {
     Rustup rustup,
   ) {
     final toolchain = _toolchain;
+    var resolvedToolchain = rustup.resolveToolchain(toolchain);
     if (rustup.installedTargets(toolchain) == null) {
       rustup.installToolchain(toolchain);
+      resolvedToolchain = rustup.resolveToolchain(toolchain);
     }
     if (toolchain == 'nightly') {
-      rustup.installRustSrcForNightly();
+      rustup.installRustSrcForNightly(toolchain: resolvedToolchain);
     }
     if (!rustup.installedTargets(toolchain)!.contains(target.rust)) {
-      rustup.installTarget(target.rust, toolchain: toolchain);
+      rustup.installTarget(target.rust, toolchain: resolvedToolchain);
     }
+    if (environment.glibcVersion != null) {
+      rustup.installZigBuild(resolvedToolchain);
+    }
+    _resolvedToolchain = resolvedToolchain;
   }
 
   CargoBuildOptions? get _buildOptions =>
       environment.crateOptions.cargo[environment.configuration];
 
   String get _toolchain => _buildOptions?.toolchain.name ?? 'stable';
+  String get _effectiveToolchain => _resolvedToolchain ?? _toolchain;
 
   /// Returns the path of directory containing build artifacts.
   Future<String> build() async {
@@ -143,9 +151,11 @@ class RustBuilder {
       'rustup',
       [
         'run',
-        _toolchain,
+        _effectiveToolchain,
         'cargo',
-        'build',
+        (target.android == null && environment.glibcVersion != null)
+            ? 'zigbuild'
+            : 'build',
         ...extraArgs,
         '--manifest-path',
         manifestPath,
@@ -153,7 +163,10 @@ class RustBuilder {
         environment.crateInfo.packageName,
         if (!environment.configuration.isDebug) '--release',
         '--target',
-        target.rust,
+        target.rust +
+            ((target.android == null && environment.glibcVersion != null)
+                ? '.${environment.glibcVersion!}'
+                : ""),
         '--target-dir',
         environment.targetTempDir,
       ],
