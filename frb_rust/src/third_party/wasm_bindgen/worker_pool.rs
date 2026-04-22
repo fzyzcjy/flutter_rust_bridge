@@ -4,23 +4,36 @@
 
 use crate::misc::web_utils::script_path;
 use crate::web_transfer::transfer_closure::TransferClosure;
+// `Array`, `Object`, `Reflect`, `FromIterator`, `Blob`, `BlobPropertyBag`, `Url`
+// are used only by the non-emscripten `spawn` body; the emscripten stub doesn't
+// need them. Gate the imports so emscripten builds stay warning-free.
+#[cfg(not(target_os = "emscripten"))]
 use js_sys::{Array, Object, Reflect};
 use std::cell::RefCell;
+#[cfg(not(target_os = "emscripten"))]
 use std::iter::FromIterator;
 use std::rc::Rc;
 use wasm_bindgen::prelude::*;
 use wasm_bindgen::JsCast;
+#[cfg(not(target_os = "emscripten"))]
 use web_sys::BlobPropertyBag;
 use web_sys::ErrorEvent;
 use web_sys::MessageEvent;
+#[cfg(not(target_os = "emscripten"))]
 use web_sys::{Blob, Url};
 use web_sys::{Event, Worker};
 
 #[wasm_bindgen]
 pub struct WorkerPool {
     state: Rc<PoolState>,
+    // These fields are consumed only by the non-emscripten `spawn` body.
+    // `new_raw` still stores them on emscripten (the API signature is shared),
+    // so suppress the resulting dead-code warning rather than drop the fields.
+    #[cfg_attr(target_os = "emscripten", allow(dead_code))]
     script_src: String,
+    #[cfg_attr(target_os = "emscripten", allow(dead_code))]
     worker_js_preamble: String,
+    #[cfg_attr(target_os = "emscripten", allow(dead_code))]
     wasm_bindgen_name: String,
 }
 
@@ -77,10 +90,19 @@ impl WorkerPool {
             worker_js_preamble,
             wasm_bindgen_name,
         };
+        // On emscripten, `spawn` is a fail-fast stub (see its doc comment);
+        // eagerly priming the pool here would make `default()` — which uses
+        // `hardwareConcurrency` as `initial` — panic on startup for any
+        // program that just links the library, even if it never dispatches
+        // worker-bound work. Leave the pool empty on that target; explicit
+        // calls to `spawn` still return the same descriptive `Err`.
+        #[cfg(not(target_os = "emscripten"))]
         for _ in 0..initial {
             let worker = pool.spawn()?;
             pool.state.push(worker);
         }
+        #[cfg(target_os = "emscripten")]
+        let _ = initial; // silence unused-variable warning on emscripten
 
         Ok(pool)
     }
@@ -94,6 +116,12 @@ impl WorkerPool {
     ///
     /// Returns any error that may happen while a JS web worker is created and a
     /// message is sent to it.
+    ///
+    /// On `target_os = "emscripten"` this always returns `Err`: the worker init
+    /// path calls [`wasm_bindgen::module`], which is unsupported in
+    /// wasm-bindgen-cli's `OutputMode::Emscripten`. See the emscripten stub of
+    /// this function for the full context.
+    #[cfg(not(target_os = "emscripten"))]
     fn spawn(&self) -> Result<Worker, JsValue> {
         let worker_js_preamble = &self.worker_js_preamble;
         let script_src = &self.script_src;
@@ -146,6 +174,33 @@ impl WorkerPool {
         worker.post_message(&Array::from_iter([JsValue::from(wasm_init_object)]))?;
 
         Ok(worker)
+    }
+
+    /// Emscripten stub — see the non-emscripten variant for the normal
+    /// implementation.
+    ///
+    /// `wasm_bindgen::module()` is unsupported in wasm-bindgen-cli's
+    /// `OutputMode::Emscripten` (see `wasm-bindgen-cli-support/src/js/mod.rs`,
+    /// `Intrinsic::Module`, which bails for Bundler and Emscripten). That mode
+    /// is force-selected when an emscripten fork with `-sWASM_BINDGEN`
+    /// integration inserts a `__wasm_bindgen_emscripten_marker` custom
+    /// section, regardless of any explicit `--target` flag.
+    ///
+    /// The mere presence of a `wasm_bindgen::module()` call anywhere in the
+    /// dependency graph fails wasm-bindgen post-link on that target (bindings
+    /// cannot be generated for the `__wbindgen_module` import), even when
+    /// `spawn` is never actually called. The `cfg` gate keeps the import out
+    /// of the wasm entirely.
+    ///
+    /// At runtime, fail fast with a clear error rather than returning a
+    /// dead `Worker` initialised with a null module handle.
+    #[cfg(target_os = "emscripten")]
+    fn spawn(&self) -> Result<Worker, JsValue> {
+        Err(JsValue::from_str(
+            "flutter_rust_bridge::WorkerPool::spawn is not supported on \
+             target_os = \"emscripten\": wasm_bindgen::module() is \
+             unsupported in wasm-bindgen-cli's OutputMode::Emscripten",
+        ))
     }
 
     /// Fetches a worker from this pool, spawning one if necessary.
