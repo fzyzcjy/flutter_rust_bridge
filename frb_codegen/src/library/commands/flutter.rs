@@ -29,9 +29,9 @@ pub fn flutter_create(
             ""
         },
         if matches!(template, Template::Plugin) {
-            ",web"
-        } else {
             ""
+        } else {
+            ",web"
         }
     ));
     if let Some(o) = org {
