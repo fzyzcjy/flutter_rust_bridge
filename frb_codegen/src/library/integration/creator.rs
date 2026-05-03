@@ -140,22 +140,22 @@ fn remove_unnecessary_plugin_files(
         let cpp_dir = main_dir.join("cpp");
         let types_dir = cpp_dir.join("types");
         let lib_dir = types_dir.join(format!("lib{}", rust_crate_name));
-        let _ = remove_files_in_dir(&lib_dir);
-        let _ = fs::remove_dir(&lib_dir);
+        remove_files_in_dir(&lib_dir)?;
+        fs::remove_dir(&lib_dir)?;
 
-        let _ = remove_files_in_dir(&types_dir);
-        let _ = fs::remove_dir(&types_dir);
+        remove_files_in_dir(&types_dir)?;
+        fs::remove_dir(&types_dir)?;
 
-        let _ = remove_files_in_dir(&cpp_dir);
-        let _ = fs::remove_dir(&cpp_dir);
+        remove_files_in_dir(&cpp_dir)?;
+        fs::remove_dir(&cpp_dir)?;
 
-        let _ = remove_files_in_dir(&main_dir);
-        let _ = fs::remove_dir(&main_dir);
+        remove_files_in_dir(&main_dir)?;
+        fs::remove_dir(&main_dir)?;
 
-        let _ = remove_files_in_dir(&src_dir);
-        let _ = fs::remove_dir(&src_dir);
+        remove_files_in_dir(&src_dir)?;
+        fs::remove_dir(&src_dir)?;
 
-        let _ = remove_files_in_dir(&ohos_dir);
+        remove_files_in_dir(&ohos_dir)?;
     }
     Ok(())
 }
