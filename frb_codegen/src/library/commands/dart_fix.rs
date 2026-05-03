@@ -7,12 +7,12 @@ use log::debug;
 use std::path::Path;
 
 #[allow(clippy::vec_init_then_push)]
-pub fn dart_fix(base_path: &Path) -> Result<()> {
+pub fn dart_fix(base_path: &Path, skip_fvm_install: bool) -> Result<()> {
     debug!("execute dart_fix base_path={base_path:?}");
 
     let res = command_run!(
         call_shell[Some(base_path), None],
-        ?command_arg_maybe_fvm(Some(base_path)),
+        ?command_arg_maybe_fvm(Some(base_path),skip_fvm_install),
         "dart",
         "fix",
         "--apply",

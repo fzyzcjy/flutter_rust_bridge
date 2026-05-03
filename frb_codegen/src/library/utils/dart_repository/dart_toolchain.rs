@@ -47,7 +47,7 @@ impl DartToolchain {
             DartToolchain::Dart => "dart",
             DartToolchain::Flutter => "flutter",
         };
-        command_run!(call_shell[None, None], ?command_arg_maybe_fvm(None), toolchain, "--version")
+        command_run!(call_shell[None, None], ?command_arg_maybe_fvm(None, false), toolchain, "--version")
             .unwrap()
             .status
             .success()

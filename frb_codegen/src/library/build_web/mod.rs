@@ -19,10 +19,11 @@ pub fn build(
     dart_root: Option<PathBuf>,
     dart_coverage: bool,
     args: Vec<String>,
+    skip_fvm_install: bool,
 ) -> anyhow::Result<()> {
     let dart_root = parse_dart_root(dart_root)?;
     debug!("build dart_root={dart_root:?} args={args:?}");
-    execute_dart_command(&dart_root, &args, dart_coverage)
+    execute_dart_command(&dart_root, &args, dart_coverage, skip_fvm_install)
 }
 
 fn parse_dart_root(dart_root: Option<PathBuf>) -> anyhow::Result<PathBuf> {
@@ -38,6 +39,7 @@ fn execute_dart_command(
     dart_root: &Path,
     args: &[String],
     dart_coverage: bool,
+    skip_fvm_install: bool,
 ) -> anyhow::Result<()> {
     let repo = DartRepository::from_path(dart_root)?;
 
@@ -51,7 +53,13 @@ fn execute_dart_command(
         ans.extend(args.to_owned());
         ans
     };
-    let status = dart_run(&repo, dart_root, dart_coverage, dart_run_args)?;
+    let status = dart_run(
+        &repo,
+        dart_root,
+        dart_coverage,
+        dart_run_args,
+        skip_fvm_install,
+    )?;
 
     if !status.success() {
         // This will stop the whole generator and tell the users, so we do not care about testing it
@@ -70,9 +78,11 @@ fn dart_run(
     current_dir: &Path,
     dart_coverage: bool,
     args: Vec<String>,
+    skip_fvm_install: bool,
 ) -> anyhow::Result<ExitStatus> {
     let handle = {
-        let mut cmd_args: Vec<PathBuf> = if command_arg_maybe_fvm(None).is_some() {
+        let mut cmd_args: Vec<PathBuf> = if command_arg_maybe_fvm(None, skip_fvm_install).is_some()
+        {
             vec!["fvm".into(), "dart".into()]
         } else {
             vec!["dart".into()]

@@ -3,7 +3,7 @@ use crate::library::commands::dart_fix::dart_fix;
 use crate::library::commands::dart_format::dart_format;
 use crate::library::commands::flutter::{flutter_pub_add, flutter_pub_get};
 use crate::misc::Template;
-use crate::utils::dart_repository::get_dart_package_name;
+use crate::utils::dart_repository::get_dart_package_name_and_rust_crate_name;
 use crate::utils::path_utils::find_dart_package_dir;
 use anyhow::Result;
 use include_dir::{include_dir, Dir};
@@ -23,6 +23,7 @@ pub struct IntegrateConfig {
     pub rust_crate_name: Option<String>,
     pub rust_crate_dir: String,
     pub template: Template,
+    pub skip_fvm_install: bool,
 }
 
 /// Integrate Rust into existing Flutter project.
@@ -31,16 +32,11 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     let dart_root = find_dart_package_dir(&env::current_dir()?)?;
     debug!("integrate dart_root={dart_root:?}");
 
-    let dart_package_name = get_dart_package_name(&dart_root)?;
-    let rust_crate_name = config
-        .rust_crate_name
-        .clone()
-        .unwrap_or(match &config.template {
-            Template::App => {
-                format!("rust_lib_{dart_package_name}")
-            }
-            Template::Plugin => dart_package_name.to_owned(),
-        });
+    let (dart_package_name, rust_crate_name) = get_dart_package_name_and_rust_crate_name(
+        &dart_root,
+        &config.rust_crate_name,
+        &config.template,
+    )?;
 
     info!("Overlay template onto project");
     let replacements = compute_replacements(&config, &dart_package_name, &rust_crate_name);
@@ -79,21 +75,22 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
         config.enable_local_dependency,
         &rust_crate_name,
         &config.template,
+        config.skip_fvm_install,
     )?;
 
     info!("Setup cargokit dependencies");
-    setup_cargokit_dependencies(&dart_root, &config.template)?;
+    setup_cargokit_dependencies(&dart_root, &config.template, config.skip_fvm_install)?;
 
     if config.enable_dart_fix {
         info!("Apply Dart fixes");
-        dart_fix(&dart_root)?;
+        dart_fix(&dart_root, config.skip_fvm_install)?;
     } else {
         info!("Dart fix is disabled.")
     }
 
     if config.enable_dart_format {
         info!("Format Dart code");
-        dart_format(&dart_root, 80)?;
+        dart_format(&dart_root, 80, config.skip_fvm_install)?;
     } else {
         info!("Dart format is disabled.");
     }
@@ -173,7 +170,11 @@ fn modify_permissions(dart_root: &Path, template: &Template) -> Result<()> {
     Ok(())
 }
 
-fn setup_cargokit_dependencies(dart_root: &Path, template: &Template) -> Result<()> {
+fn setup_cargokit_dependencies(
+    dart_root: &Path,
+    template: &Template,
+    skip_fvm_install: bool,
+) -> Result<()> {
     let build_tool_dir = match template {
         Template::App => dart_root
             .join("rust_builder")
@@ -182,7 +183,7 @@ fn setup_cargokit_dependencies(dart_root: &Path, template: &Template) -> Result<
         Template::Plugin => dart_root.join("cargokit").join("build_tool"),
     };
 
-    flutter_pub_get(&build_tool_dir)
+    flutter_pub_get(&build_tool_dir, skip_fvm_install)
 }
 
 #[cfg(unix)]
@@ -280,6 +281,7 @@ fn filter_file(path: &Path, enable_write_lib: bool, enable_integration_test: boo
             || path.iter().contains(&OsStr::new("windows"))
             || path.iter().contains(&OsStr::new("macos"))
             || path.iter().contains(&OsStr::new("linux"))
+            || path.iter().contains(&OsStr::new("ohos"))
             || path.iter().contains(&OsStr::new("lib"))
             || path
                 .iter()
@@ -346,23 +348,33 @@ fn pub_add_dependencies(
     enable_local_dependency: bool,
     rust_crate_name: &str,
     template: &Template,
+    skip_fvm_install: bool,
 ) -> Result<()> {
     // frb-coverage:ignore-end
     match template {
-        Template::App => flutter_pub_add(&[rust_crate_name, "--path=rust_builder"], None)?,
+        Template::App => flutter_pub_add(
+            &[rust_crate_name, "--path=rust_builder"],
+            None,
+            skip_fvm_install,
+        )?,
         Template::Plugin => flutter_pub_add(
             &["integration_test", "--dev", "--sdk=flutter"],
             Some(Path::new("example")),
+            skip_fvm_install,
         )?,
     }
 
-    pub_add_dependency_frb(enable_local_dependency, None)?;
+    pub_add_dependency_frb(enable_local_dependency, None, skip_fvm_install)?;
 
     // // Temporarily avoid `^` before https://github.com/flutter/flutter/issues/84270 is fixed
     // flutter_pub_add(&["ffigen:8.0.2", "--dev"])?;
 
     if enable_integration_test {
-        flutter_pub_add(&["integration_test", "--dev", "--sdk=flutter"], None)?;
+        flutter_pub_add(
+            &["integration_test", "--dev", "--sdk=flutter"],
+            None,
+            skip_fvm_install,
+        )?;
         // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
         // frb-coverage:ignore-start
     }
@@ -374,13 +386,19 @@ fn pub_add_dependencies(
 pub(crate) fn pub_add_dependency_frb(
     enable_local_dependency: bool,
     pwd: Option<&Path>,
+    skip_fvm_install: bool,
 ) -> Result<()> {
     if enable_local_dependency {
-        flutter_pub_add(&["flutter_rust_bridge", "--path=../../frb_dart"], pwd)?;
+        flutter_pub_add(
+            &["flutter_rust_bridge", "--path=../../frb_dart"],
+            pwd,
+            skip_fvm_install,
+        )?;
     } else {
         flutter_pub_add(
             &[concat!("flutter_rust_bridge:", env!("CARGO_PKG_VERSION"))],
             pwd,
+            skip_fvm_install,
         )?;
     };
 

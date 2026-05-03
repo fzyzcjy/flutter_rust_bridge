@@ -2,17 +2,20 @@ use crate::command_run;
 use crate::library::commands::command_runner::{call_shell, ExecuteCommandOptions};
 use std::path::Path;
 
-pub(crate) fn command_arg_maybe_fvm(pwd: Option<&Path>) -> Option<String> {
-    should_use_fvm(pwd).then(|| "fvm".to_owned())
+pub(crate) fn command_arg_maybe_fvm(pwd: Option<&Path>, skip_fvm_install: bool) -> Option<String> {
+    should_use_fvm(pwd, skip_fvm_install).then(|| "fvm".to_owned())
 }
 
-fn should_use_fvm(pwd: Option<&Path>) -> bool {
+fn should_use_fvm(pwd: Option<&Path>, skip_fvm_install: bool) -> bool {
     if pwd.is_some() && !has_fvmrc(pwd.unwrap()) {
         false
     } else {
         let has_fvm_installation_output = has_fvm_installation();
-        if has_fvm_installation_output {
+        if !skip_fvm_install && has_fvm_installation_output {
             fvm_install_flutter_version();
+        }
+        if skip_fvm_install {
+            log::info!("The user actively skipped installing fvm.");
         }
         if !has_fvm_installation_output {
             log::info!("Has .fvmrc but no fvm binary installation, thus skip using fvm.");
