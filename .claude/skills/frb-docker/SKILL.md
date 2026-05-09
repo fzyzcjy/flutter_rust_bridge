@@ -72,7 +72,9 @@ Apple Silicon Macs use the same commands as other platforms. Do not add `--platf
 
 Docker should select `linux/arm64` automatically for multi-arch images. If a command only works with `--platform linux/amd64`, treat that as a regression to investigate.
 
-## Local Validation
+## Publishing
+
+### Local Validation
 
 For Dockerfile changes, validate at least:
 
@@ -105,7 +107,7 @@ docker run --rm -v "$PWD:/workspace" -w /workspace/frb_rust frb-dev bash -lc 'ca
 
 If generated files drift during lint/codegen, do not manually edit generated files. Restore unrelated generated drift unless the task intentionally changes generation outputs.
 
-## Publishing
+### Publish Workflow
 
 Publish the dev image from the workflow:
 
