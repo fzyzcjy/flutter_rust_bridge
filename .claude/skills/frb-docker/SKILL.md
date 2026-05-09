@@ -30,13 +30,13 @@ The devcontainer builds from `.devcontainer/Dockerfile` and runs `./frb_internal
 
 ### Published Image
 
-Use this when you want the prebuilt dev image instead of building `.devcontainer/Dockerfile` locally.
+Default behavior is still to build locally from `.devcontainer/Dockerfile`. If you want to use a prebuilt image instead, switch to the full version tag derived from the current Dockerfile args rather than `latest`.
 
 ```shell
 docker run --rm -it -v "$PWD:/workspace" -w /workspace fzyzcjy/flutter_rust_bridge_dev:latest bash
 ```
 
-Prefer the full version tag when reproducibility matters.
+Use `latest` only for quick local checks where reproducibility does not matter.
 
 ### Manual Docker Build
 
