@@ -1,7 +1,13 @@
 name: Publish Dev Docker Image
 
 on:
-  workflow_dispatch: { }
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: 'Publish the image to Docker Hub'
+        required: true
+        default: true
+        type: boolean
   push:
     branches:
       - master
@@ -13,25 +19,22 @@ env:
   IMAGE_NAME: fzyzcjy/flutter_rust_bridge_dev
 
 jobs:
-  publish:
-    name: Build, Test and Publish Dev Image
+  metadata:
+    name: Compute image metadata
     runs-on: ubuntu-latest
     permissions:
       contents: read
+    outputs:
+      flutter_version: ${{ steps.metadata.outputs.flutter_version }}
+      rust_version: ${{ steps.metadata.outputs.rust_version }}
+      rust_nightly_version: ${{ steps.metadata.outputs.rust_nightly_version }}
+      version_tag: ${{ steps.metadata.outputs.version_tag }}
+      sha_tag: ${{ steps.metadata.outputs.sha_tag }}
+      should_publish: ${{ steps.metadata.outputs.should_publish }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v5
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Log in to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          registry: docker.io
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Compute tags from Dockerfile
         id: metadata
@@ -45,7 +48,12 @@ jobs:
           short_sha="${GITHUB_SHA::7}"
           version_tag="flutter-${flutter_version}-rust-${rust_version}-nightly-${rust_nightly_version}"
           sha_tag="sha-${short_sha}"
-          local_tag="frb-dev-image-smoke:${short_sha}"
+
+          if [[ "${{ github.event_name }}" == "push" || "${{ inputs.publish }}" == "true" ]]; then
+            should_publish="true"
+          else
+            should_publish="false"
+          fi
 
           {
             echo "flutter_version=${flutter_version}"
@@ -53,50 +61,128 @@ jobs:
             echo "rust_nightly_version=${rust_nightly_version}"
             echo "version_tag=${version_tag}"
             echo "sha_tag=${sha_tag}"
-            echo "local_tag=${local_tag}"
-            echo "tags<<EOF"
-            echo "${IMAGE_NAME}:latest"
-            echo "${IMAGE_NAME}:${version_tag}"
-            echo "${IMAGE_NAME}:${sha_tag}"
-            echo "EOF"
+            echo "should_publish=${should_publish}"
           } >> "${GITHUB_OUTPUT}"
+
+  build:
+    name: Build and smoke test (${{ matrix.arch }})
+    needs: metadata
+    runs-on: ${{ matrix.runner }}
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: amd64
+            platform: linux/amd64
+            runner: ubuntu-latest
+          - arch: arm64
+            platform: linux/arm64
+            runner: ubuntu-24.04-arm
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        if: needs.metadata.outputs.should_publish == 'true'
+        uses: docker/login-action@v3
+        with:
+          registry: docker.io
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build local image for smoke test
         uses: docker/build-push-action@v6
         with:
           context: .devcontainer
           file: .devcontainer/Dockerfile
-          platforms: linux/amd64
+          platforms: ${{ matrix.platform }}
           load: true
           push: false
-          tags: ${{ steps.metadata.outputs.local_tag }}
+          tags: frb-dev-image-smoke:${{ needs.metadata.outputs.sha_tag }}-${{ matrix.arch }}
 
       - name: Smoke test local image
         shell: bash
         run: |
           set -euo pipefail
 
-          docker run --rm "${{ steps.metadata.outputs.local_tag }}" bash -lc '
+          docker run --rm --platform "${{ matrix.platform }}" "frb-dev-image-smoke:${{ needs.metadata.outputs.sha_tag }}-${{ matrix.arch }}" bash -lc '
             set -euo pipefail
             flutter --version
             dart --version
             cargo --version
             rustup show
-            rustup target list --toolchain nightly-${{ steps.metadata.outputs.rust_nightly_version }} --installed
+            rustup target list --toolchain nightly-${{ needs.metadata.outputs.rust_nightly_version }} --installed
             wasm-pack --version
             "${CHROME_BIN}" --version
-            rustup target list --toolchain nightly-${{ steps.metadata.outputs.rust_nightly_version }} --installed | grep wasm32-unknown-unknown
-            rustup show | grep "nightly-${{ steps.metadata.outputs.rust_nightly_version }}"
+            rustup target list --toolchain nightly-${{ needs.metadata.outputs.rust_nightly_version }} --installed | grep wasm32-unknown-unknown
+            rustup show | grep "nightly-${{ needs.metadata.outputs.rust_nightly_version }}"
           '
 
-      - name: Push image to Docker Hub
+      - name: Push platform image to Docker Hub
+        if: needs.metadata.outputs.should_publish == 'true'
         uses: docker/build-push-action@v6
         with:
           context: .devcontainer
           file: .devcontainer/Dockerfile
-          platforms: linux/amd64
+          platforms: ${{ matrix.platform }}
           push: true
-          tags: ${{ steps.metadata.outputs.tags }}
+          tags: |
+            ${{ env.IMAGE_NAME }}:${{ needs.metadata.outputs.sha_tag }}-${{ matrix.arch }}
+            ${{ env.IMAGE_NAME }}:${{ needs.metadata.outputs.version_tag }}-${{ matrix.arch }}
+            ${{ env.IMAGE_NAME }}:latest-${{ matrix.arch }}
+
+      - name: Build workflow summary
+        shell: bash
+        run: |
+          {
+            echo "## Dev Docker Image ${{ matrix.arch }} Verified"
+            echo
+            echo "- Repository: \`${IMAGE_NAME}\`"
+            echo "- Published platform image: \`${{ needs.metadata.outputs.should_publish }}\`"
+            echo "- Platform: \`${{ matrix.platform }}\`"
+            echo "- Flutter: \`${{ needs.metadata.outputs.flutter_version }}\`"
+            echo "- Rust: \`${{ needs.metadata.outputs.rust_version }}\`"
+            echo "- Rust nightly: \`${{ needs.metadata.outputs.rust_nightly_version }}\`"
+          } >> "${GITHUB_STEP_SUMMARY}"
+
+  publish_manifest:
+    name: Publish multi-arch manifest
+    needs:
+      - metadata
+      - build
+    if: needs.metadata.outputs.should_publish == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          registry: docker.io
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Publish multi-arch tags
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          docker buildx imagetools create \
+            -t "${IMAGE_NAME}:latest" \
+            -t "${IMAGE_NAME}:${{ needs.metadata.outputs.version_tag }}" \
+            -t "${IMAGE_NAME}:${{ needs.metadata.outputs.sha_tag }}" \
+            "${IMAGE_NAME}:${{ needs.metadata.outputs.sha_tag }}-amd64" \
+            "${IMAGE_NAME}:${{ needs.metadata.outputs.sha_tag }}-arm64"
 
       - name: Publish workflow summary
         shell: bash
@@ -105,11 +191,12 @@ jobs:
             echo "## Dev Docker Image Published"
             echo
             echo "- Repository: \`${IMAGE_NAME}\`"
-            echo "- Flutter: \`${{ steps.metadata.outputs.flutter_version }}\`"
-            echo "- Rust: \`${{ steps.metadata.outputs.rust_version }}\`"
-            echo "- Rust nightly: \`${{ steps.metadata.outputs.rust_nightly_version }}\`"
+            echo "- Platforms: \`linux/amd64\`, \`linux/arm64\`"
+            echo "- Flutter: \`${{ needs.metadata.outputs.flutter_version }}\`"
+            echo "- Rust: \`${{ needs.metadata.outputs.rust_version }}\`"
+            echo "- Rust nightly: \`${{ needs.metadata.outputs.rust_nightly_version }}\`"
             echo "- Tags:"
             echo "  - \`latest\`"
-            echo "  - \`${{ steps.metadata.outputs.version_tag }}\`"
-            echo "  - \`${{ steps.metadata.outputs.sha_tag }}\`"
+            echo "  - \`${{ needs.metadata.outputs.version_tag }}\`"
+            echo "  - \`${{ needs.metadata.outputs.sha_tag }}\`"
           } >> "${GITHUB_STEP_SUMMARY}"

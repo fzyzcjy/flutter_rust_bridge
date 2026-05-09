@@ -19,3 +19,4 @@
 - `frb-lint` - Lint and format checks
 - `frb-prepare-pr` - PR preparation
 - `frb-fix-ci` - CI fixes
+- `frb-docker` - Docker/devcontainer usage and dev image publishing
