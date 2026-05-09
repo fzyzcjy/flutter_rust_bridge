@@ -6,7 +6,7 @@ on:
       publish:
         description: 'Publish the image to Docker Hub'
         required: true
-        default: false
+        default: true
         type: boolean
   push:
     branches:
