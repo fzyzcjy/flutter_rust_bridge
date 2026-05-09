@@ -60,7 +60,7 @@ ARG PLAYWRIGHT_VERSION=1.59.1
 ENV PLAYWRIGHT_BROWSERS_PATH=/opt/ms-playwright
 RUN npm install -g "playwright@${PLAYWRIGHT_VERSION}" && \
     playwright install --with-deps chromium && \
-    ln -s "$(find "${PLAYWRIGHT_BROWSERS_PATH}" -path "*/chrome-linux/chrome" -type f | head -n 1)" /usr/bin/google-chrome
+    ln -s "$(find "${PLAYWRIGHT_BROWSERS_PATH}" -path "*/chrome-linux*/chrome" -type f | head -n 1)" /usr/bin/google-chrome
 ENV CHROME_BIN=/usr/bin/google-chrome
 
 # Working directory
