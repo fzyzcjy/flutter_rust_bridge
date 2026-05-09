@@ -23,6 +23,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -45,7 +48,8 @@ jobs:
           short_sha="${GITHUB_SHA::7}"
           version_tag="flutter-${flutter_version}-rust-${rust_version}-nightly-${rust_nightly_version}"
           sha_tag="sha-${short_sha}"
-          local_tag="frb-dev-image-smoke:${short_sha}"
+          local_tag_amd64="frb-dev-image-smoke:${short_sha}-amd64"
+          local_tag_arm64="frb-dev-image-smoke:${short_sha}-arm64"
 
           {
             echo "flutter_version=${flutter_version}"
@@ -53,7 +57,8 @@ jobs:
             echo "rust_nightly_version=${rust_nightly_version}"
             echo "version_tag=${version_tag}"
             echo "sha_tag=${sha_tag}"
-            echo "local_tag=${local_tag}"
+            echo "local_tag_amd64=${local_tag_amd64}"
+            echo "local_tag_arm64=${local_tag_arm64}"
             echo "tags<<EOF"
             echo "${IMAGE_NAME}:latest"
             echo "${IMAGE_NAME}:${version_tag}"
@@ -61,7 +66,7 @@ jobs:
             echo "EOF"
           } >> "${GITHUB_OUTPUT}"
 
-      - name: Build local image for smoke test
+      - name: Build local amd64 image for smoke test
         uses: docker/build-push-action@v6
         with:
           context: .devcontainer
@@ -69,14 +74,42 @@ jobs:
           platforms: linux/amd64
           load: true
           push: false
-          tags: ${{ steps.metadata.outputs.local_tag }}
+          tags: ${{ steps.metadata.outputs.local_tag_amd64 }}
 
-      - name: Smoke test local image
+      - name: Smoke test local amd64 image
         shell: bash
         run: |
           set -euo pipefail
 
-          docker run --rm "${{ steps.metadata.outputs.local_tag }}" bash -lc '
+          docker run --rm --platform linux/amd64 "${{ steps.metadata.outputs.local_tag_amd64 }}" bash -lc '
+            set -euo pipefail
+            flutter --version
+            dart --version
+            cargo --version
+            rustup show
+            rustup target list --toolchain nightly-${{ steps.metadata.outputs.rust_nightly_version }} --installed
+            wasm-pack --version
+            "${CHROME_BIN}" --version
+            rustup target list --toolchain nightly-${{ steps.metadata.outputs.rust_nightly_version }} --installed | grep wasm32-unknown-unknown
+            rustup show | grep "nightly-${{ steps.metadata.outputs.rust_nightly_version }}"
+          '
+
+      - name: Build local arm64 image for smoke test
+        uses: docker/build-push-action@v6
+        with:
+          context: .devcontainer
+          file: .devcontainer/Dockerfile
+          platforms: linux/arm64
+          load: true
+          push: false
+          tags: ${{ steps.metadata.outputs.local_tag_arm64 }}
+
+      - name: Smoke test local arm64 image
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          docker run --rm --platform linux/arm64 "${{ steps.metadata.outputs.local_tag_arm64 }}" bash -lc '
             set -euo pipefail
             flutter --version
             dart --version
@@ -94,7 +127,7 @@ jobs:
         with:
           context: .devcontainer
           file: .devcontainer/Dockerfile
-          platforms: linux/amd64
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ steps.metadata.outputs.tags }}
 
@@ -108,6 +141,7 @@ jobs:
             echo "- Flutter: \`${{ steps.metadata.outputs.flutter_version }}\`"
             echo "- Rust: \`${{ steps.metadata.outputs.rust_version }}\`"
             echo "- Rust nightly: \`${{ steps.metadata.outputs.rust_nightly_version }}\`"
+            echo "- Platforms: \`linux/amd64\`, \`linux/arm64\`"
             echo "- Tags:"
             echo "  - \`latest\`"
             echo "  - \`${{ steps.metadata.outputs.version_tag }}\`"
