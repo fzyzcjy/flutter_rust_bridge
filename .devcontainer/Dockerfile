@@ -32,6 +32,7 @@ SHELL ["/bin/bash", "-c"]
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain ${RUST_VERSION} && \
     export PATH="$HOME/.cargo/bin:$PATH" && \
     rustup component add rustfmt clippy && \
+    rustup target add wasm32-unknown-unknown && \
     rustup toolchain install "nightly-${RUST_NIGHTLY_VERSION}" && \
     rustup component add rust-src --toolchain "nightly-${RUST_NIGHTLY_VERSION}" && \
     rustup target add wasm32-unknown-unknown --toolchain "nightly-${RUST_NIGHTLY_VERSION}"
