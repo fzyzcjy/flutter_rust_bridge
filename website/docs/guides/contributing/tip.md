@@ -15,19 +15,19 @@ The published development image is `fzyzcjy/flutter_rust_bridge_dev`. It package
 Prefer the full version tag when you want reproducible environments:
 
 ```shell
-docker run --rm -it fzyzcjy/flutter_rust_bridge_dev:flutter-3.27.4-rust-1.88.0-nightly-2025-02-01 bash
+docker run --rm -it fzyzcjy/flutter_rust_bridge_dev:flutter-3.41.2-rust-1.93.1-nightly-2025-02-01 bash
 ```
 
 Those version numbers are derived from the `ARG` values in `.devcontainer/Dockerfile`, which is the single source of truth. `latest` only means the current recommended image and is not intended for long-term reproducibility.
 
 The default devcontainer configuration still builds locally from `.devcontainer/Dockerfile`. If you want to use the prebuilt image manually, use the full version tag above or regenerate it from the current Dockerfile args after version bumps.
 
-On Apple Silicon Macs, the local devcontainer build uses the same Linux amd64 Flutter image under Docker Desktop emulation, because the current `instrumentisto/flutter` tags are not published as Linux arm64 images. This keeps the environment aligned with Linux amd64 development machines, though it can be slower than a native arm64 image.
+On Apple Silicon Macs, the local devcontainer build uses the Linux arm64 variant of the multi-arch Flutter base image from `ghcr.io/cirruslabs/flutter`. Docker Desktop should select the native platform automatically, so no `--platform linux/amd64` override is needed for normal local development.
 
-When running the image manually on Apple Silicon, pass `--platform linux/amd64` to avoid Docker's platform warning:
+When running the image manually on Apple Silicon, use the same command as other platforms:
 
 ```shell
-docker run --rm -it --platform linux/amd64 fzyzcjy/flutter_rust_bridge_dev:flutter-3.27.4-rust-1.88.0-nightly-2025-02-01 bash
+docker run --rm -it fzyzcjy/flutter_rust_bridge_dev:flutter-3.41.2-rust-1.93.1-nightly-2025-02-01 bash
 ```
 
 ### The `./frb_internal`
