@@ -548,7 +548,8 @@ Future<void> callFileEntrypoints() async {
   await exception_twin_sync_sse_test.main(skipRustLibInit: true);
   await exception_twin_sync_test.main(skipRustLibInit: true);
   await external_type_in_crate_twin_rust_async_sse_test.main(
-      skipRustLibInit: true);
+    skipRustLibInit: true,
+  );
   await external_type_in_crate_twin_rust_async_test.main(skipRustLibInit: true);
   await external_type_in_crate_twin_sse_test.main(skipRustLibInit: true);
   await external_type_in_crate_twin_sync_sse_test.main(skipRustLibInit: true);
@@ -588,9 +589,11 @@ Future<void> callFileEntrypoints() async {
   await newtype_pattern_twin_sync_sse_test.main(skipRustLibInit: true);
   await newtype_pattern_twin_sync_test.main(skipRustLibInit: true);
   await optional_primitive_misc_twin_rust_async_sse_test.main(
-      skipRustLibInit: true);
+    skipRustLibInit: true,
+  );
   await optional_primitive_misc_twin_rust_async_test.main(
-      skipRustLibInit: true);
+    skipRustLibInit: true,
+  );
   await optional_primitive_misc_twin_sse_test.main(skipRustLibInit: true);
   await optional_primitive_misc_twin_sync_sse_test.main(skipRustLibInit: true);
   await optional_primitive_misc_twin_sync_test.main(skipRustLibInit: true);
@@ -605,7 +608,8 @@ Future<void> callFileEntrypoints() async {
   await ownership_twin_sync_sse_test.main(skipRustLibInit: true);
   await ownership_twin_sync_test.main(skipRustLibInit: true);
   await primitive_list_misc_twin_rust_async_sse_test.main(
-      skipRustLibInit: true);
+    skipRustLibInit: true,
+  );
   await primitive_list_misc_twin_rust_async_test.main(skipRustLibInit: true);
   await primitive_list_misc_twin_sse_test.main(skipRustLibInit: true);
   await primitive_list_misc_twin_sync_sse_test.main(skipRustLibInit: true);
@@ -623,7 +627,8 @@ Future<void> callFileEntrypoints() async {
   await rust_auto_opaque_twin_moi_test.main(skipRustLibInit: true);
   await rust_auto_opaque_twin_rust_async_moi_test.main(skipRustLibInit: true);
   await rust_auto_opaque_twin_rust_async_sse_moi_test.main(
-      skipRustLibInit: true);
+    skipRustLibInit: true,
+  );
   await rust_auto_opaque_twin_rust_async_sse_test.main(skipRustLibInit: true);
   await rust_auto_opaque_twin_rust_async_test.main(skipRustLibInit: true);
   await rust_auto_opaque_twin_sse_moi_test.main(skipRustLibInit: true);

@@ -58,7 +58,7 @@ Future<void> _generateDartValgrindTestEntrypoint(
   ];
   final calls = [
     for (final file in files) //
-      'await ${path.basenameWithoutExtension(file)}.main(skipRustLibInit: true);\n',
+      _generateFileEntrypointCall(file),
   ];
 
   final code =
@@ -97,6 +97,20 @@ Future<void> callFileEntrypoints() async {
   ''';
 
   await _writeToFile(dartRoot, 'test/dart_valgrind_test_entrypoint.dart', code);
+}
+
+String _generateFileEntrypointCall(String file) {
+  final name = path.basenameWithoutExtension(file);
+  final oneLine = 'await $name.main(skipRustLibInit: true);';
+  if ('  $oneLine'.length <= 80) {
+    return '$oneLine\n';
+  }
+
+  return '''
+await $name.main(
+  skipRustLibInit: true,
+);
+''';
 }
 
 Future<void> _writeToFile(
