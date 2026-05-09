@@ -23,20 +23,15 @@ void main() {
     );
   });
 
-  test('workflow metadata imageRef respects custom image name', () {
+  test('metadata imageRef respects custom image name', () {
     const metadata = DevDockerMetadata(
       flutterVersion: '3.41.2',
       rustVersion: '1.93.1',
       rustNightlyVersion: '2025-02-01',
     );
-    const workflowMetadata = DevDockerWorkflowMetadata(
-      metadata: metadata,
-      imageName: 'example/custom-dev-image',
-      shortSha: 'abc1234',
-    );
 
     expect(
-      workflowMetadata.imageRef,
+      metadata.imageRef(imageName: 'example/custom-dev-image'),
       'example/custom-dev-image:flutter-3.41.2-rust-1.93.1-nightly-2025-02-01',
     );
   });

@@ -1,9 +1,10 @@
 ARG FLUTTER_VERSION=3.41.2
-FROM instrumentisto/flutter:${FLUTTER_VERSION}
+FROM ghcr.io/cirruslabs/flutter:${FLUTTER_VERSION}
 
 # Configurable version parameters
 ARG RUST_VERSION=1.93.1
 ARG RUST_NIGHTLY_VERSION=2025-02-01
+ARG NODE_VERSION=22.11.0
 
 # Environment variables
 ENV DEBIAN_FRONTEND=noninteractive
@@ -17,9 +18,8 @@ RUN apt-get update && apt-get install -y \
     ninja-build \
     pkg-config \
     libclang-dev \
-    nodejs \
-    npm \
     python3-pip \
+    xz-utils \
     && rm -rf /var/lib/apt/lists/*
 
 # Configure pip to allow system package installation (PEP 668)
@@ -37,6 +37,16 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --de
     rustup target add wasm32-unknown-unknown --toolchain "nightly-${RUST_NIGHTLY_VERSION}"
 ENV PATH="/root/.cargo/bin:${PATH}"
 
+# Install Node.js and npm from official multi-arch binaries.
+RUN ARCH="$(dpkg --print-architecture)" && \
+    case "$ARCH" in \
+        amd64) NODE_ARCH="x64" ;; \
+        arm64) NODE_ARCH="arm64" ;; \
+        *) echo "Unsupported architecture: $ARCH" >&2; exit 1 ;; \
+    esac && \
+    curl -fsSL "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-${NODE_ARCH}.tar.xz" \
+        | tar -xJ -C /usr/local --strip-components=1
+
 # Install wasm-pack for web tests (using cargo for better reliability)
 RUN cargo install wasm-pack
 
@@ -45,15 +55,13 @@ RUN cargo install cargo-expand && \
     cargo install cargo-llvm-cov && \
     npm install -g all-contributors-cli
 
-# Install Chrome for web tests (headless testing)
-RUN apt-get update && apt-get install -y \
-    wget \
-    gnupg \
-    && wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /usr/share/keyrings/google-chrome.gpg && \
-    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list && \
-    apt-get update && apt-get install -y \
-    google-chrome-stable \
-    && rm -rf /var/lib/apt/lists/*
+# Install Chromium for web tests (headless testing). Google Chrome does not
+# provide Linux arm64 builds yet, and Ubuntu's chromium-browser package is snap.
+ARG PLAYWRIGHT_VERSION=1.59.1
+ENV PLAYWRIGHT_BROWSERS_PATH=/opt/ms-playwright
+RUN npm install -g "playwright@${PLAYWRIGHT_VERSION}" && \
+    playwright install --with-deps chromium && \
+    ln -s "$(find "${PLAYWRIGHT_BROWSERS_PATH}" -path "*/chrome-linux*/chrome" -type f | head -n 1)" /usr/bin/google-chrome
 ENV CHROME_BIN=/usr/bin/google-chrome
 
 # Working directory
@@ -61,6 +69,8 @@ WORKDIR /workspace
 
 RUN flutter --version && \
     dart --version && \
+    node --version && \
+    npm --version && \
     cargo --version && \
     rustup toolchain list | grep "nightly-${RUST_NIGHTLY_VERSION}" && \
     rustup target list --installed | grep wasm32-unknown-unknown && \

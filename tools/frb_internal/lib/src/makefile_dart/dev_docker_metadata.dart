@@ -19,30 +19,6 @@ class DevDockerMetadata {
   String imageRef({required String imageName}) => '$imageName:$versionTag';
 }
 
-class DevDockerWorkflowMetadata {
-  final DevDockerMetadata metadata;
-  final String imageName;
-  final String shortSha;
-
-  const DevDockerWorkflowMetadata({
-    required this.metadata,
-    required this.imageName,
-    required this.shortSha,
-  });
-
-  String get imageRef => metadata.imageRef(imageName: imageName);
-
-  String get shaTag => 'sha-$shortSha';
-
-  String get localTag => 'frb-dev-image-smoke:$shortSha';
-
-  List<String> get tags => [
-    '$imageName:latest',
-    imageRef,
-    '$imageName:$shaTag',
-  ];
-}
-
 @visibleForTesting
 DevDockerMetadata parseDevDockerMetadataFromText(String dockerfileText) {
   return DevDockerMetadata(

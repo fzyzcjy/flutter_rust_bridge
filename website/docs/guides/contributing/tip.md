@@ -8,19 +8,7 @@ For common development workflows, see the skills in `.claude/skills/`.
 
 ### Docker and devcontainer
 
-Optionally, you can use Docker and/or devcontainer to quickly get a standardized development environment. The related code is in `.devcontainer`.
-
-The published development image is `fzyzcjy/flutter_rust_bridge_dev`. It packages the Flutter + Rust toolchain used for flutter_rust_bridge development, including the nightly toolchain, `wasm-pack`, and Chromium for web testing.
-
-Prefer the full version tag when you want reproducible environments:
-
-```shell
-docker run --rm -it fzyzcjy/flutter_rust_bridge_dev:flutter-3.41.2-rust-1.93.1-nightly-2025-02-01 bash
-```
-
-Those version numbers are derived from the `ARG` values in `.devcontainer/Dockerfile`, which is the single source of truth. `latest` only means the current recommended image and is not intended for long-term reproducibility.
-
-The default devcontainer configuration still builds locally from `.devcontainer/Dockerfile`. If you want to use the prebuilt image manually, use the full version tag above or regenerate it from the current Dockerfile args after version bumps.
+Optionally, you can use Docker and/or devcontainer to quickly get a standardized development environment. The related code is in `.devcontainer`. For daily use, manual Docker commands, Apple Silicon notes, and publishing the dev Docker image, see `.claude/skills/frb-docker/SKILL.md`.
 
 ### The `./frb_internal`
 
