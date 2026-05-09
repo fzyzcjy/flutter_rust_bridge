@@ -22,6 +22,8 @@ Those version numbers are derived from the `ARG` values in `.devcontainer/Docker
 
 The default devcontainer configuration still builds locally from `.devcontainer/Dockerfile`. If you want to use the prebuilt image manually, use the full version tag above or regenerate it from the current Dockerfile args after version bumps.
 
+On Apple Silicon Macs, the local devcontainer build uses the native Linux arm64 base image from `ghcr.io/cirruslabs/flutter` and installs Chromium from the distro packages for web tests. On Linux amd64, it installs Google Chrome from Google's apt repository.
+
 ### The `./frb_internal`
 
 The `./frb_internal whatever-command` (or `./frb_internal.bat`) delegates to the `./tools/frb_internal` dart package.
