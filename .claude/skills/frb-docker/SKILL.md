@@ -18,7 +18,9 @@ The Dockerfile is the source of truth for tool versions. Derive image tags from 
 
 ## Daily Local Use
 
-Prefer devcontainer for normal development:
+### Devcontainer
+
+Prefer devcontainer for normal development.
 
 ```shell
 Dev Containers: Reopen in Container
@@ -32,7 +34,9 @@ The devcontainer builds from `.devcontainer/Dockerfile` and runs:
 
 This prepares Dart/Flutter package dependencies. First Rust/wasm builds may still be slow because crate compilation caches are not warmed.
 
-For manual Docker from the repo root:
+### Manual Docker Build
+
+Use this when not using VS Code devcontainers, or when validating local Dockerfile changes.
 
 ```shell
 docker build -f .devcontainer/Dockerfile -t frb-dev .devcontainer
@@ -52,7 +56,9 @@ Then run normal development commands such as:
 cargo check
 ```
 
-To use the published image instead of building locally:
+### Published Image
+
+Use this when you want the prebuilt dev image instead of building `.devcontainer/Dockerfile` locally.
 
 ```shell
 docker run --rm -it -v "$PWD:/workspace" -w /workspace fzyzcjy/flutter_rust_bridge_dev:latest bash
