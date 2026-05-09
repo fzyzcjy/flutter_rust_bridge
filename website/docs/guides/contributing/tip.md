@@ -22,7 +22,7 @@ Those version numbers are derived from the `ARG` values in `.devcontainer/Docker
 
 The default devcontainer configuration still builds locally from `.devcontainer/Dockerfile`. If you want to use the prebuilt image manually, use the full version tag above or regenerate it from the current Dockerfile args after version bumps.
 
-On Apple Silicon Macs, the local devcontainer build uses the native Linux arm64 base image from `ghcr.io/cirruslabs/flutter` and installs Chromium from the distro packages for web tests. On Linux amd64, it installs Google Chrome from Google's apt repository.
+On Apple Silicon Macs, the local devcontainer build uses the same Linux amd64 Flutter image under Docker Desktop emulation, because the current `instrumentisto/flutter` tags are not published as Linux arm64 images. This keeps the environment aligned with Linux amd64 development machines, though it can be slower than a native arm64 image.
 
 ### The `./frb_internal`
 

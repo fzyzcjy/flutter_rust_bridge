@@ -1,5 +1,6 @@
 ARG FLUTTER_VERSION=3.41.2
-FROM ghcr.io/cirruslabs/flutter:${FLUTTER_VERSION}
+ARG FLUTTER_IMAGE_PLATFORM=linux/amd64
+FROM --platform=${FLUTTER_IMAGE_PLATFORM} instrumentisto/flutter:${FLUTTER_VERSION}
 
 # Configurable version parameters
 ARG RUST_VERSION=1.93.1
