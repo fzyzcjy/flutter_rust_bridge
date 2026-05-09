@@ -942,7 +942,6 @@ typedef struct {
    * as early as during the Dart_Initialize() call.
    */
   Dart_CodeObserver* code_observer;
-
 } Dart_InitializeParams;
 
 /**
