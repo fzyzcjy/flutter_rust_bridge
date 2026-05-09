@@ -24,6 +24,12 @@ The default devcontainer configuration still builds locally from `.devcontainer/
 
 On Apple Silicon Macs, the local devcontainer build uses the same Linux amd64 Flutter image under Docker Desktop emulation, because the current `instrumentisto/flutter` tags are not published as Linux arm64 images. This keeps the environment aligned with Linux amd64 development machines, though it can be slower than a native arm64 image.
 
+When running the image manually on Apple Silicon, pass `--platform linux/amd64` to avoid Docker's platform warning:
+
+```shell
+docker run --rm -it --platform linux/amd64 fzyzcjy/flutter_rust_bridge_dev:flutter-3.27.4-rust-1.88.0-nightly-2025-02-01 bash
+```
+
 ### The `./frb_internal`
 
 The `./frb_internal whatever-command` (or `./frb_internal.bat`) delegates to the `./tools/frb_internal` dart package.
