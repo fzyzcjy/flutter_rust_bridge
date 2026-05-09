@@ -28,6 +28,16 @@ Dev Containers: Reopen in Container
 
 The devcontainer builds from `.devcontainer/Dockerfile` and runs `./frb_internal pub-get-all` to prepare Dart/Flutter package dependencies; first Rust/wasm builds may still be slow because crate compilation caches are not warmed.
 
+### Published Image
+
+Use this when you want the prebuilt dev image instead of building `.devcontainer/Dockerfile` locally.
+
+```shell
+docker run --rm -it -v "$PWD:/workspace" -w /workspace fzyzcjy/flutter_rust_bridge_dev:latest bash
+```
+
+Prefer the full version tag when reproducibility matters.
+
 ### Manual Docker Build
 
 Use this when not using VS Code devcontainers, or when validating local Dockerfile changes.
@@ -49,16 +59,6 @@ Then run normal development commands such as:
 ./frb_internal lint
 cargo check
 ```
-
-### Published Image
-
-Use this when you want the prebuilt dev image instead of building `.devcontainer/Dockerfile` locally.
-
-```shell
-docker run --rm -it -v "$PWD:/workspace" -w /workspace fzyzcjy/flutter_rust_bridge_dev:latest bash
-```
-
-Prefer the full version tag when reproducibility matters.
 
 ## Apple Silicon
 
