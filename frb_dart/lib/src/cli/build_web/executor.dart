@@ -217,6 +217,7 @@ const buildWebDefaultWasmPackRustflagSegments = [
   '-C link-args=--shared-memory',
   '-C link-args=--max-memory=1073741824',
   '-C link-args=--import-memory',
+  '-C link-args=--export=__heap_base',
   '-C link-args=--export=__wasm_init_tls',
   '-C link-args=--export=__tls_size',
   '-C link-args=--export=__tls_align',
