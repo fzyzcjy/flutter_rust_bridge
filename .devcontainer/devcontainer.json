@@ -5,7 +5,7 @@
   },
   "workspaceFolder": "/workspace",
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
-  "postCreateCommand": "cd tools/frb_internal && dart pub get && cd /workspace && ./frb_internal pub-get-all",
+  "postCreateCommand": "./frb_internal pub-get-all",
   "customizations": {
     "vscode": {
       "extensions": [
