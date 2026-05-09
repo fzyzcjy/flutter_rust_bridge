@@ -1,9 +1,7 @@
-// Default behavior is still to build locally from .devcontainer/Dockerfile. If you want to use a prebuilt image instead, switch to the full version tag derived from the current Dockerfile args rather than `latest`.
 {
   "name": "flutter_rust_bridge Development",
   "build": {
-    "dockerfile": "Dockerfile",
-    "options": ["--platform=linux/amd64"]
+    "dockerfile": "Dockerfile"
   },
   "workspaceFolder": "/workspace",
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
