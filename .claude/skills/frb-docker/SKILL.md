@@ -26,13 +26,7 @@ Prefer devcontainer for normal development.
 Dev Containers: Reopen in Container
 ```
 
-The devcontainer builds from `.devcontainer/Dockerfile` and runs:
-
-```shell
-./frb_internal pub-get-all
-```
-
-This prepares Dart/Flutter package dependencies. First Rust/wasm builds may still be slow because crate compilation caches are not warmed.
+The devcontainer builds from `.devcontainer/Dockerfile` and runs `./frb_internal pub-get-all` to prepare Dart/Flutter package dependencies; first Rust/wasm builds may still be slow because crate compilation caches are not warmed.
 
 ### Manual Docker Build
 
