@@ -22,13 +22,7 @@ Those version numbers are derived from the `ARG` values in `.devcontainer/Docker
 
 The default devcontainer configuration still builds locally from `.devcontainer/Dockerfile`. If you want to use the prebuilt image manually, use the full version tag above or regenerate it from the current Dockerfile args after version bumps.
 
-On Apple Silicon Macs, the local devcontainer build uses the Linux arm64 variant of the multi-arch Flutter base image from `ghcr.io/cirruslabs/flutter`. Docker Desktop should select the native platform automatically, so no `--platform linux/amd64` override is needed for normal local development.
-
-When running the image manually on Apple Silicon, use the same command as other platforms:
-
-```shell
-docker run --rm -it fzyzcjy/flutter_rust_bridge_dev:flutter-3.41.2-rust-1.93.1-nightly-2025-02-01 bash
-```
+Apple Silicon Macs use the same devcontainer and manual Docker commands as other platforms.
 
 ### The `./frb_internal`
 
