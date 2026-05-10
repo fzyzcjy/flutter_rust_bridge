@@ -26,8 +26,12 @@ pub fn handle_customized_struct_twin_normal(val: CustomizedTwinNormal) {
     info!("{:#?}", val);
 }
 
-#[frb(init_dart_code = "api.crateApiAttributeRecordInitDartCodeMessageTwinNormal(message: 'first');")]
-#[frb(init_dart_code = "api.crateApiAttributeRecordInitDartCodeMessageTwinNormal(message: 'second');")]
+#[frb(
+    init_dart_code = "api.crateApiAttributeRecordInitDartCodeMessageTwinNormal(message: 'first');"
+)]
+#[frb(
+    init_dart_code = "api.crateApiAttributeRecordInitDartCodeMessageTwinNormal(message: 'second');"
+)]
 pub fn request_init_dart_code_message_twin_normal() {}
 
 #[frb(sync)]
