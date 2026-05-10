@@ -1,4 +1,6 @@
 import 'package:frb_example_pure_dart/src/rust/api/chrono_type.dart';
+import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/chrono_type_twin_sse.dart'
+    as sse;
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
@@ -60,6 +62,20 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(resp.microsecond, 0);
   });
 
+  test('NaiveDate SSE', () async {
+    final date = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 0);
+    final resp = await sse.naivedateTwinSse(d: date);
+    expect(resp.isUtc, true);
+    expect(resp.year, date.year);
+    expect(resp.month, date.month);
+    expect(resp.day, date.day);
+    expect(resp.hour, 0);
+    expect(resp.minute, 0);
+    expect(resp.second, 0);
+    expect(resp.millisecond, 0);
+    expect(resp.microsecond, 0);
+  });
+
   test('Empty DateTime', () async {
     final resp = await optionalEmptyDatetimeUtcTwinNormal(d: null);
     expect(resp, null);
@@ -109,6 +125,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(test.du, Duration(hours: 4));
   });
 
+  test('Combined Chrono types SSE', () async {
+    final test = await sse.testChronoTwinSse();
+    expect(test.dt!.millisecondsSinceEpoch, 1631297333000);
+    expect(test.dt2!.millisecondsSinceEpoch, 1631297333000);
+    expect(test.da!.millisecondsSinceEpoch, 1631232000000);
+    expect(test.du, Duration(hours: 4));
+  });
+
   test('combined chrono types precise', () async {
     final datetime_1 = DateTime.utc(2002, 02, 23, 12, 13, 55);
     final datetime_2 = DateTime.utc(1800, 01, 23, 12, 56, 25);
@@ -116,6 +140,22 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final duration = Duration(hours: 4);
 
     final result = await testPreciseChronoTwinNormal();
+
+    expect(
+        result.dt!.millisecondsSinceEpoch, datetime_1.millisecondsSinceEpoch);
+    expect(
+        result.dt2!.millisecondsSinceEpoch, datetime_2.millisecondsSinceEpoch);
+    expect(result.da!.millisecondsSinceEpoch, date_2.millisecondsSinceEpoch);
+    expect(result.du!.inHours, duration.inHours);
+  });
+
+  test('combined chrono types precise SSE', () async {
+    final datetime_1 = DateTime.utc(2002, 02, 23, 12, 13, 55);
+    final datetime_2 = DateTime.utc(1800, 01, 23, 12, 56, 25);
+    final date_2 = DateTime.utc(1800, 01, 23);
+    final duration = Duration(hours: 4);
+
+    final result = await sse.testPreciseChronoTwinSse();
 
     expect(
         result.dt!.millisecondsSinceEpoch, datetime_1.millisecondsSinceEpoch);
