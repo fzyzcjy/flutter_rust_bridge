@@ -24,6 +24,8 @@ import 'package:yaml/yaml.dart';
 
 part 'generate.g.dart';
 
+const _kRefreshCargoLockOrderingEnv = 'FRB_REFRESH_CARGO_LOCK_ORDERING';
+
 List<Command<void>> createCommands() {
   return [
     SimpleConfigCommand(
@@ -390,6 +392,7 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
             relativePwd: 'frb_example',
             coverage: config.coverage,
             coverageName: 'GenerateRunFrbCodegenCommandIntegrate',
+            extraEnv: {_kRefreshCargoLockOrderingEnv: '1'},
           );
 
         case 'frb_example/flutter_via_integrate':
@@ -402,6 +405,7 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
             relativePwd: config.package,
             coverage: config.coverage,
             coverageName: 'GenerateRunFrbCodegenCommandIntegrate',
+            extraEnv: {_kRefreshCargoLockOrderingEnv: '1'},
           );
         case 'frb_example/flutter_package':
           await executeFrbCodegen(
@@ -409,6 +413,7 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
             relativePwd: 'frb_example',
             coverage: config.coverage,
             coverageName: 'GenerateRunFrbCodegenCommandIntegrate',
+            extraEnv: {_kRefreshCargoLockOrderingEnv: '1'},
           );
         default:
           throw Exception(

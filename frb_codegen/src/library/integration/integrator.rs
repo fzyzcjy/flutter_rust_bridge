@@ -15,6 +15,8 @@ use std::env;
 use std::ffi::OsStr;
 use std::path::{Path, PathBuf};
 
+const REFRESH_CARGO_LOCK_ORDERING_ENV_VAR: &str = "FRB_REFRESH_CARGO_LOCK_ORDERING";
+
 pub struct IntegrateConfig {
     pub enable_write_lib: bool,
     pub enable_integration_test: bool,
@@ -99,13 +101,28 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
         info!("Dart format is disabled.");
     }
 
-    refresh_cargo_lock_ordering(&dart_root, &config.rust_crate_dir)?;
+    maybe_refresh_cargo_lock_ordering(&dart_root, &config.rust_crate_dir)?;
 
     Ok(())
 }
 
+fn maybe_refresh_cargo_lock_ordering(dart_root: &Path, rust_crate_dir: &str) -> Result<()> {
+    if !should_refresh_cargo_lock_ordering() {
+        debug!(
+            "Skip Cargo.lock ordering refresh; set {REFRESH_CARGO_LOCK_ORDERING_ENV_VAR}=1 to enable"
+        );
+        return Ok(());
+    }
+
+    refresh_cargo_lock_ordering(dart_root, rust_crate_dir)
+}
+
+fn should_refresh_cargo_lock_ordering() -> bool {
+    env::var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR).unwrap_or_default() == "1"
+}
+
 fn refresh_cargo_lock_ordering(dart_root: &Path, rust_crate_dir: &str) -> Result<()> {
-    info!("Refresh Cargo.lock ordering");
+    info!("Refresh Cargo.lock ordering because {REFRESH_CARGO_LOCK_ORDERING_ENV_VAR}=1");
     cargo_fetch(&dart_root.join(rust_crate_dir))
 }
 
@@ -218,7 +235,11 @@ fn set_permission_executable(path: &Path) -> Result<()> {
 
 #[cfg(all(test, unix))]
 mod tests {
-    use super::{refresh_cargo_lock_ordering, set_permission_executable};
+    use super::{
+        refresh_cargo_lock_ordering, set_permission_executable, should_refresh_cargo_lock_ordering,
+        REFRESH_CARGO_LOCK_ORDERING_ENV_VAR,
+    };
+    use serial_test::serial;
     use std::fs;
     use std::os::unix::fs::PermissionsExt;
 
@@ -262,6 +283,21 @@ mod tests {
         .unwrap();
 
         refresh_cargo_lock_ordering(temp_dir.path(), "rust").unwrap();
+    }
+
+    #[test]
+    #[serial]
+    fn test_should_refresh_cargo_lock_ordering_only_when_env_var_is_one() {
+        std::env::remove_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR);
+        assert!(!should_refresh_cargo_lock_ordering());
+
+        std::env::set_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR, "true");
+        assert!(!should_refresh_cargo_lock_ordering());
+
+        std::env::set_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR, "1");
+        assert!(should_refresh_cargo_lock_ordering());
+
+        std::env::remove_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR);
     }
 }
 
