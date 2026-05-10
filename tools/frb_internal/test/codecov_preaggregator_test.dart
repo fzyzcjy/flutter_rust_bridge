@@ -51,10 +51,12 @@ void main() {
           '**/*.g.dart',
           '**/*.freezed.dart',
           '**/test/',
+          'frb_dart/',
           'frb_example/',
         ],
       );
 
+      expect(matcher.matches('frb_dart/lib/src/main.dart'), isTrue);
       expect(matcher.matches('frb_example/pure_dart/lib/main.dart'), isTrue);
       expect(matcher.matches('frb_codegen/lib/src/foo.g.dart'), isTrue);
       expect(matcher.matches('frb_codegen/lib/src/foo.freezed.dart'), isTrue);
