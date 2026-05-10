@@ -480,16 +480,12 @@ Future<void> wrapMaybeSetExitIfChangedRaw(
   bool enable,
   Future<void> Function() inner, {
   String? extraArgs,
-  Future<RunCommandOutput> Function(String command)? gitDiffExecutor,
-  bool? isCi,
 }) async {
   // Before actually executing anything, check whether git repository is already dirty
   await _maybeSetExitIfChanged(
     enable,
     extraArgs: extraArgs,
     phase: _GitDiffPhase.before,
-    gitDiffExecutor: gitDiffExecutor,
-    isCi: isCi,
   );
   await inner();
   // The real check
@@ -497,8 +493,6 @@ Future<void> wrapMaybeSetExitIfChangedRaw(
     enable,
     extraArgs: extraArgs,
     phase: _GitDiffPhase.after,
-    gitDiffExecutor: gitDiffExecutor,
-    isCi: isCi,
   );
 }
 
@@ -506,42 +500,41 @@ Future<void> _maybeSetExitIfChanged(
   bool enable, {
   String? extraArgs,
   required _GitDiffPhase phase,
-  Future<RunCommandOutput> Function(String command)? gitDiffExecutor,
-  bool? isCi,
 }) async {
   if (enable) {
     final command = 'git diff --exit-code ${extraArgs ?? ""}';
-    final output = await (gitDiffExecutor ?? _executeGitDiff)(command);
-    final result = _classifyGitDiffExitCode(output.exitCode);
+    final output = await _executeGitDiff(command);
+    final action = _decideGitDiffAction(
+      exitCode: output.exitCode,
+      phase: phase,
+      isCi: _isCi(),
+    );
 
-    switch (result) {
-      case _GitDiffResult.clean:
+    switch (action) {
+      case _GitDiffAction.continueSilently:
         return;
-      case _GitDiffResult.dirty:
-        if (phase == _GitDiffPhase.before) {
-          stderr.writeln(
-            'Warning: working tree is already dirty before running the command; continuing anyway.',
-          );
-          return;
-        }
-        throw _gitDiffProcessException(
-          command: command,
-          output: output,
-          message: 'Working tree changed.',
+      case _GitDiffAction.warnDirty:
+        stderr.writeln(
+          'Warning: working tree is already dirty before running the command; continuing anyway.',
         );
-      case _GitDiffResult.unavailable:
-        final strict = isCi ?? _isCi();
-        if (strict) {
-          throw _gitDiffProcessException(
-            command: command,
-            output: output,
-            message: 'Cannot check working tree cleanliness.',
-          );
-        }
+        return;
+      case _GitDiffAction.warnUnavailable:
         stderr.writeln(
           'Warning: cannot check working tree cleanliness because git metadata is unavailable; continuing anyway.',
         );
         return;
+      case _GitDiffAction.failDirty:
+        throw _processExceptionForCommand(
+          command: command,
+          output: output,
+          message: 'Working tree changed.',
+        );
+      case _GitDiffAction.failUnavailable:
+        throw _processExceptionForCommand(
+          command: command,
+          output: output,
+          message: 'Cannot check working tree cleanliness.',
+        );
     }
   }
 }
@@ -557,63 +550,68 @@ _GitDiffResult _classifyGitDiffExitCode(int exitCode) {
 
 bool _isCi() => Platform.environment['CI'] == 'true';
 
-ProcessException _gitDiffProcessException({
+ProcessException _processExceptionForCommand({
   required String command,
   required RunCommandOutput output,
   required String message,
-  bool? isWindows,
 }) {
-  final shellCommand = _shellCommandForProcessException(
-    command,
-    isWindows: isWindows,
-  );
+  final executable = Platform.isWindows ? 'powershell' : '/bin/sh';
+  final arguments = Platform.isWindows
+      ? ['-noprofile', '-command', '& $command']
+      : ['-c', command];
+
   return ProcessException(
-    shellCommand.executable,
-    shellCommand.arguments,
+    executable,
+    arguments,
     'Bad exit code (${output.exitCode}). $message',
     output.exitCode,
   );
-}
-
-_ShellCommand _shellCommandForProcessException(
-  String command, {
-  bool? isWindows,
-}) {
-  if (isWindows ?? Platform.isWindows) {
-    return _ShellCommand('powershell', [
-      '-noprofile',
-      '-command',
-      '& $command',
-    ]);
-  }
-  return _ShellCommand('/bin/sh', ['-c', command]);
-}
-
-class _ShellCommand {
-  const _ShellCommand(this.executable, this.arguments);
-
-  final String executable;
-  final List<String> arguments;
 }
 
 enum _GitDiffPhase { before, after }
 
 enum _GitDiffResult { clean, dirty, unavailable }
 
+enum _GitDiffAction {
+  continueSilently,
+  warnDirty,
+  warnUnavailable,
+  failDirty,
+  failUnavailable,
+}
+
 String classifyGitDiffExitCodeForTesting(int exitCode) =>
     _classifyGitDiffExitCode(exitCode).name;
 
-ProcessException gitDiffProcessExceptionForTesting({
-  required String command,
+_GitDiffAction _decideGitDiffAction({
   required int exitCode,
-  required String message,
-  required bool isWindows,
-}) => _gitDiffProcessException(
-  command: command,
-  output: RunCommandOutput(stdout: '', stderr: '', exitCode: exitCode),
-  message: message,
-  isWindows: isWindows,
-);
+  required _GitDiffPhase phase,
+  required bool isCi,
+}) {
+  final result = _classifyGitDiffExitCode(exitCode);
+  switch (result) {
+    case _GitDiffResult.clean:
+      return _GitDiffAction.continueSilently;
+    case _GitDiffResult.dirty:
+      return phase == _GitDiffPhase.before
+          ? _GitDiffAction.warnDirty
+          : _GitDiffAction.failDirty;
+    case _GitDiffResult.unavailable:
+      return isCi
+          ? _GitDiffAction.failUnavailable
+          : _GitDiffAction.warnUnavailable;
+  }
+}
+
+String decideGitDiffActionForTesting({
+  required int exitCode,
+  required bool isBefore,
+  required bool isCi,
+}) => _decideGitDiffAction(
+  exitCode: exitCode,
+  phase: isBefore ? _GitDiffPhase.before : _GitDiffPhase.after,
+  isCi: isCi,
+).name;
 
 Future<void> generateWebsite(GenerateWebsiteConfig config) async {
   await generateWebsiteBuild(config);

@@ -1,6 +1,3 @@
-import 'dart:io';
-
-import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/generator.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
@@ -89,107 +86,56 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
       expect(classifyGitDiffExitCodeForTesting(128), 'unavailable');
     });
 
-    test('uses posix shell in git diff process exception outside Windows', () {
-      final exception = gitDiffProcessExceptionForTesting(
-        command: 'git diff --exit-code',
-        exitCode: 1,
-        message: 'Working tree changed.',
-        isWindows: false,
+    test('decides clean git diff should continue silently', () {
+      expect(
+        decideGitDiffActionForTesting(
+          exitCode: 0,
+          isBefore: false,
+          isCi: false,
+        ),
+        'continueSilently',
       );
-
-      expect(exception.executable, '/bin/sh');
-      expect(exception.arguments, ['-c', 'git diff --exit-code']);
     });
 
-    test('uses powershell in git diff process exception on Windows', () {
-      final exception = gitDiffProcessExceptionForTesting(
-        command: 'git diff --exit-code',
-        exitCode: 1,
-        message: 'Working tree changed.',
-        isWindows: true,
+    test('decides pre-existing dirty tree should warn and continue', () {
+      expect(
+        decideGitDiffActionForTesting(exitCode: 1, isBefore: true, isCi: false),
+        'warnDirty',
       );
-
-      expect(exception.executable, 'powershell');
-      expect(exception.arguments, [
-        '-noprofile',
-        '-command',
-        '& git diff --exit-code',
-      ]);
     });
 
-    test('continues when git metadata is unavailable outside CI', () async {
-      var innerDidRun = false;
-      var checkCount = 0;
-
-      await wrapMaybeSetExitIfChangedRaw(
-        true,
-        () async {
-          innerDidRun = true;
-        },
-        gitDiffExecutor: (_) async {
-          checkCount++;
-          return const RunCommandOutput(stdout: '', stderr: '', exitCode: 128);
-        },
-        isCi: false,
+    test('decides post-command dirty tree should fail', () {
+      expect(
+        decideGitDiffActionForTesting(
+          exitCode: 1,
+          isBefore: false,
+          isCi: false,
+        ),
+        'failDirty',
       );
-
-      expect(innerDidRun, true);
-      expect(checkCount, 2);
     });
 
-    test('fails when git metadata is unavailable in CI', () async {
-      var innerDidRun = false;
+    test('decides unavailable git metadata should warn outside CI', () {
+      expect(
+        decideGitDiffActionForTesting(
+          exitCode: 128,
+          isBefore: false,
+          isCi: false,
+        ),
+        'warnUnavailable',
+      );
+    });
 
-      await expectLater(
-        wrapMaybeSetExitIfChangedRaw(
-          true,
-          () async {
-            innerDidRun = true;
-          },
-          gitDiffExecutor: (_) async {
-            return const RunCommandOutput(
-              stdout: '',
-              stderr: '',
-              exitCode: 128,
-            );
-          },
+    test('decides unavailable git metadata should fail in CI', () {
+      expect(
+        decideGitDiffActionForTesting(
+          exitCode: 128,
+          isBefore: false,
           isCi: true,
         ),
-        throwsA(isA<ProcessException>()),
+        'failUnavailable',
       );
-
-      expect(innerDidRun, false);
     });
-
-    test(
-      'warns on pre-existing dirty tree but still fails after dirty result',
-      () async {
-        var innerDidRun = false;
-        var checkCount = 0;
-
-        await expectLater(
-          wrapMaybeSetExitIfChangedRaw(
-            true,
-            () async {
-              innerDidRun = true;
-            },
-            gitDiffExecutor: (_) async {
-              checkCount++;
-              return const RunCommandOutput(
-                stdout: '',
-                stderr: '',
-                exitCode: 1,
-              );
-            },
-            isCi: false,
-          ),
-          throwsA(isA<ProcessException>()),
-        );
-
-        expect(innerDidRun, true);
-        expect(checkCount, 2);
-      },
-    );
   });
 
   group('test checkValgrindOutput', () {
