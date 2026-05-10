@@ -116,6 +116,8 @@ impl WorkerPool {
                         if (transfer[0] && typeof transfer[0].postMessage === 'function') {{
                             // panic
                             transfer[0].postMessage([FRB_ACTION_PANIC, err.toString()])
+                            postMessage(null)
+                            return
                         }}
                         setTimeout(() => {{ throw err }})
                         postMessage(null)
