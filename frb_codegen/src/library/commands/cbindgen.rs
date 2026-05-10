@@ -43,7 +43,7 @@ fn cbindgen_to_file(args: CbindgenArgs, c_output_path: &Path) -> anyhow::Result<
         ),
         ..default_cbindgen_config
     };
-    debug!("cbindgen config: {:#?}", config);
+    debug!("cbindgen config: {config:#?}");
 
     cbindgen_raw(config, args.rust_crate_dir, c_output_path)
 }
@@ -70,7 +70,7 @@ pub(crate) fn cbindgen_raw(
     c_output_path: &Path,
 ) -> anyhow::Result<()> {
     let parsed_crate_dir = parse_crate_dir(rust_crate_dir)?;
-    debug!("cbindgen parsed_crate_dir={}", parsed_crate_dir);
+    debug!("cbindgen parsed_crate_dir={parsed_crate_dir}");
 
     #[allow(clippy::manual_inspect)]
     let bindings = cbindgen::generate_with_config(parsed_crate_dir, config).map_err(|e| {

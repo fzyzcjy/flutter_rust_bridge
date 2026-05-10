@@ -123,10 +123,7 @@ fn transform_module_by_pub_use_single(
     if let Some(src_mod) = module.get_module_nested(&pub_use_info.namespace.path()) {
         // Codecov seems to be buggy by saying this line is not covered (while lines above/below) are
         // frb-coverage:ignore-start
-        log::debug!(
-            "transform_module_by_pub_use_single pub_use_info={:?}",
-            pub_use_info
-        );
+        log::debug!("transform_module_by_pub_use_single pub_use_info={pub_use_info:?}");
         // frb-coverage:ignore-end
 
         if src_mod.meta.is_public() {

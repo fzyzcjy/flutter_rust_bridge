@@ -80,7 +80,6 @@ mod tests {
     use crate::binary::test_utils::set_cwd_test_fixture;
     use clap::Parser;
     use itertools::concat;
-    use lib_flutter_rust_bridge_codegen::utils::logs::configure_opinionated_test_logging;
     use lib_flutter_rust_bridge_codegen::{codegen, if_then_some};
     use serial_test::serial;
 
@@ -89,7 +88,6 @@ mod tests {
     #[serial]
     fn test_compute_codegen_config_mode_from_files_auto_flutter_rust_bridge_yaml(
     ) -> anyhow::Result<()> {
-        configure_opinionated_test_logging();
         set_cwd_test_fixture("binary/commands_parser/flutter_rust_bridge_yaml")?;
 
         let config = run_command_line(vec!["", "generate"])?;
@@ -102,7 +100,6 @@ mod tests {
     #[test]
     #[serial]
     fn test_compute_codegen_config_mode_from_files_auto_pubspec_yaml() -> anyhow::Result<()> {
-        configure_opinionated_test_logging();
         set_cwd_test_fixture("binary/commands_parser/pubspec_yaml")?;
 
         let config = run_command_line(vec!["", "generate"])?;
@@ -116,7 +113,6 @@ mod tests {
     #[serial]
     fn test_compute_codegen_config_mode_from_files_auto_pubspec_yaml_faulty() -> anyhow::Result<()>
     {
-        configure_opinionated_test_logging();
         set_cwd_test_fixture("binary/commands_parser/faulty_pubspec_yaml")?;
 
         let result = run_command_line(vec!["", "generate"]);
@@ -134,7 +130,6 @@ mod tests {
     #[test]
     #[serial]
     fn test_compute_codegen_config_mode_config_file() -> anyhow::Result<()> {
-        configure_opinionated_test_logging();
         set_cwd_test_fixture("binary/commands_parser/config_file")?;
 
         let config = run_command_line(vec!["", "generate", "--config-file", "hello.yaml"])?;
@@ -147,7 +142,6 @@ mod tests {
     #[test]
     #[serial]
     fn test_compute_codegen_config_mode_config_file_faulty_file() -> anyhow::Result<()> {
-        configure_opinionated_test_logging();
         set_cwd_test_fixture("binary/commands_parser/flutter_rust_bridge_yaml")?;
         let result = run_command_line(vec![
             "",
@@ -168,7 +162,6 @@ mod tests {
     #[test]
     #[serial]
     fn test_compute_codegen_config_mode_from_naive_generate_command_args() {
-        configure_opinionated_test_logging();
         set_cwd_test_fixture("binary/commands_parser").unwrap(); // use whatever folder without config file
 
         // bool flags
@@ -196,7 +189,6 @@ mod tests {
     #[test]
     #[serial]
     fn test_compute_codegen_config_from_both_file_and_command_line() -> anyhow::Result<()> {
-        configure_opinionated_test_logging();
         set_cwd_test_fixture("binary/commands_parser/flutter_rust_bridge_yaml")?;
 
         let config = run_command_line(vec!["", "generate", "--llvm-path", "/my/path"])?;

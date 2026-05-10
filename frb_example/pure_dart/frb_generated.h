@@ -18,11 +18,6 @@ typedef struct _Dart_Handle* Dart_Handle;
 
 #define CONST_WITH_EXPLICIT_IGNORE_SHOULD_IGNORE 42
 
-typedef struct benchmark_raw_list_prim_u_8 {
-  uint8_t *ptr;
-  int32_t len;
-} benchmark_raw_list_prim_u_8;
-
 typedef struct wire_cst_list_prim_u_8_strict {
   uint8_t *ptr;
   int32_t len;
@@ -2960,6 +2955,11 @@ typedef struct wire_cst_list_sum_with_twin_sync {
   int32_t len;
 } wire_cst_list_sum_with_twin_sync;
 
+typedef struct benchmark_raw_list_prim_u_8 {
+  uint8_t *ptr;
+  int32_t len;
+} benchmark_raw_list_prim_u_8;
+
 typedef struct wire_cst_another_macro_struct_twin_normal {
   int32_t data;
   int32_t non_final_data;
@@ -3533,14 +3533,6 @@ typedef struct wire_cst_vec_of_primitive_pack_twin_sync {
   struct wire_cst_list_prim_f_64_strict *float64list;
   struct wire_cst_list_bool *bool_list;
 } wire_cst_vec_of_primitive_pack_twin_sync;
-
-void benchmark_raw_void_sync(void);
-
-struct benchmark_raw_list_prim_u_8 benchmark_raw_new_list_prim_u_8(int32_t len);
-
-int32_t benchmark_raw_input_bytes(struct benchmark_raw_list_prim_u_8 bytes);
-
-void benchmark_raw_output_bytes(int64_t port, int32_t message_id, int32_t size);
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__misc_no_twin_example_a__CONST_ARRAY_TWIN_NORMAL(void);
 
@@ -15513,6 +15505,14 @@ struct wire_cst_list_weekdays_twin_normal *frbgen_frb_example_pure_dart_cst_new_
 struct wire_cst_list_weekdays_twin_rust_async *frbgen_frb_example_pure_dart_cst_new_list_weekdays_twin_rust_async(int32_t len);
 
 struct wire_cst_list_weekdays_twin_sync *frbgen_frb_example_pure_dart_cst_new_list_weekdays_twin_sync(int32_t len);
+
+void benchmark_raw_void_sync(void);
+
+struct benchmark_raw_list_prim_u_8 benchmark_raw_new_list_prim_u_8(int32_t len);
+
+int32_t benchmark_raw_input_bytes(struct benchmark_raw_list_prim_u_8 bytes);
+
+void benchmark_raw_output_bytes(int64_t port, int32_t message_id, int32_t size);
 static int64_t dummy_method_to_enforce_bundling(void) {
     int64_t dummy_var = 0;
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_application_env);
