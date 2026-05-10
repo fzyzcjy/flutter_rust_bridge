@@ -95,20 +95,15 @@ impl FrbAttributes {
     }
 
     pub(crate) fn init_dart_code(&self) -> Option<String> {
-        let candidates = self
+        let ans = self
             .0
             .iter()
             .filter_map(
                 |item| if_then_some!(let FrbAttribute::InitDartCode(inner) = item, inner.0.clone()),
             )
-            .collect_vec();
-        if candidates.len() > 1 {
-            // We do not care about details of this warning message
-            // frb-coverage:ignore-start
-            log::warn!("Only one `init_dart_code = ..` attribute is expected; taking the last one");
-            // frb-coverage:ignore-end
-        }
-        candidates.last().cloned()
+            .join("\n\n");
+
+        (!ans.is_empty()).then_some(ans)
     }
 
     pub(crate) fn ignore(&self) -> bool {
@@ -956,6 +951,13 @@ mod tests {
             ))])
         );
         assert_eq!(parsed.init_dart_code(), Some("a\nb\nc".to_owned()));
+        Ok(())
+    }
+
+    #[test]
+    fn test_multiple_init_dart_code() -> anyhow::Result<()> {
+        let parsed = parse("#[frb(init_dart_code=\"a\")]\n#[frb(init_dart_code=\"b\")]")?;
+        assert_eq!(parsed.init_dart_code(), Some("a\n\nb".to_owned()));
         Ok(())
     }
 

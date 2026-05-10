@@ -8796,6 +8796,8 @@ WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manua
                                                                                                                                                  int32_t rust_vec_len_,
                                                                                                                                                  int32_t data_len_);
 
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__attribute__get_init_dart_code_messages_twin_normal(void);
+
 void frbgen_frb_example_pure_dart_wire__crate__api__mirror__get_message_twin_normal(int64_t port_);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__mirror_twin_rust_async__get_message_twin_rust_async(int64_t port_);
@@ -10574,6 +10576,8 @@ WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manua
                                                                                                                                        int32_t rust_vec_len_,
                                                                                                                                        int32_t data_len_);
 
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__attribute__record_init_dart_code_message_twin_normal(struct wire_cst_list_prim_u_8_strict *message);
+
 void frbgen_frb_example_pure_dart_wire__crate__api__event_listener__register_event_listener_twin_normal(int64_t port_,
                                                                                                         struct wire_cst_list_prim_u_8_strict *listener);
 
@@ -10639,6 +10643,8 @@ WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manua
 WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__mirror_twin_sync_sse__repeat_sequence_twin_sync_sse(uint8_t *ptr_,
                                                                                                                                        int32_t rust_vec_len_,
                                                                                                                                        int32_t data_len_);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__attribute__request_init_dart_code_message_twin_normal(int64_t port_);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__array__return_boxed_feed_id_twin_normal(int64_t port_,
                                                                                             struct wire_cst_list_prim_u_8_strict *id);
@@ -16414,8 +16420,11 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__async_spawn__simple_use_async_spawn);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__async_spawn__simple_use_async_spawn_blocking);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__async_spawn__simple_use_async_spawn_local);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__attribute__get_init_dart_code_messages_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__attribute__handle_customized_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__attribute__next_user_id_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__attribute__record_init_dart_code_message_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__attribute__request_init_dart_code_message_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__benchmark_misc__benchmark_void_semi_serialize);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__casted_primitive__casted_primitive_i64_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__casted_primitive__casted_primitive_isize_twin_normal);

@@ -50900,6 +50900,11 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__mirror_twin_sync_sse__get_fallible_app_settings_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__attribute__get_init_dart_code_messages_twin_normal() =>
+          wasmModule
+              .wire__crate__api__attribute__get_init_dart_code_messages_twin_normal();
+
   void wire__crate__api__mirror__get_message_twin_normal(
           NativePortType port_) =>
       wasmModule.wire__crate__api__mirror__get_message_twin_normal(port_);
@@ -54440,6 +54445,13 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__print_note_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__attribute__record_init_dart_code_message_twin_normal(
+              String message) =>
+          wasmModule
+              .wire__crate__api__attribute__record_init_dart_code_message_twin_normal(
+                  message);
+
   void wire__crate__api__event_listener__register_event_listener_twin_normal(
           NativePortType port_, String listener) =>
       wasmModule
@@ -54559,6 +54571,12 @@ class RustLibWire implements BaseWire {
           wasmModule
               .wire__crate__api__pseudo_manual__mirror_twin_sync_sse__repeat_sequence_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__attribute__request_init_dart_code_message_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__attribute__request_init_dart_code_message_twin_normal(
+              port_);
 
   void wire__crate__api__array__return_boxed_feed_id_twin_normal(
           NativePortType port_, JSAny id) =>
@@ -71213,6 +71231,9 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__attribute__get_init_dart_code_messages_twin_normal();
+
   external void wire__crate__api__mirror__get_message_twin_normal(
       NativePortType port_);
 
@@ -73683,6 +73704,10 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__attribute__record_init_dart_code_message_twin_normal(
+          String message);
+
   external void
       wire__crate__api__event_listener__register_event_listener_twin_normal(
           NativePortType port_, String listener);
@@ -73766,6 +73791,10 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
+
+  external void
+      wire__crate__api__attribute__request_init_dart_code_message_twin_normal(
+          NativePortType port_);
 
   external void wire__crate__api__array__return_boxed_feed_id_twin_normal(
       NativePortType port_, JSAny id);
