@@ -88,52 +88,68 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
 
     test('decides clean git diff should continue silently', () {
       expect(
-        decideGitDiffActionForTesting(
+        () => handleGitDiffResultForTesting(
           exitCode: 0,
           isBefore: false,
           isCi: false,
         ),
-        'continueSilently',
+        returnsNormally,
       );
     });
 
-    test('decides pre-existing dirty tree should warn and continue', () {
+    test('warns when working tree is already dirty before command', () {
       expect(
-        decideGitDiffActionForTesting(exitCode: 1, isBefore: true, isCi: false),
-        'warnDirty',
+        () => handleGitDiffResultForTesting(
+          exitCode: 1,
+          isBefore: true,
+          isCi: false,
+        ),
+        prints(contains('working tree is already dirty')),
       );
     });
 
-    test('decides post-command dirty tree should fail', () {
+    test('fails when working tree changed after command', () {
       expect(
-        decideGitDiffActionForTesting(
+        () => handleGitDiffResultForTesting(
           exitCode: 1,
           isBefore: false,
           isCi: false,
         ),
-        'failDirty',
+        throwsA(
+          isA<Exception>().having(
+            (exception) => exception.toString(),
+            'message',
+            contains('Working tree changed'),
+          ),
+        ),
       );
     });
 
-    test('decides unavailable git metadata should warn outside CI', () {
+    test('warns when git metadata is unavailable outside CI', () {
       expect(
-        decideGitDiffActionForTesting(
+        () => handleGitDiffResultForTesting(
           exitCode: 128,
           isBefore: false,
           isCi: false,
         ),
-        'warnUnavailable',
+        prints(contains('git metadata is unavailable')),
       );
     });
 
-    test('decides unavailable git metadata should fail in CI', () {
+    test('fails when git metadata is unavailable in CI', () {
       expect(
-        decideGitDiffActionForTesting(
+        () => handleGitDiffResultForTesting(
           exitCode: 128,
           isBefore: false,
           isCi: true,
         ),
-        'failUnavailable',
+        throwsA(
+          isA<Exception>().having(
+            (exception) => exception.toString(),
+            'message',
+            contains('Failed to check working tree cleanliness'),
+          ),
+        ),
       );
     });
   });

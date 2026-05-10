@@ -504,7 +504,12 @@ Future<void> _maybeSetExitIfChanged(
   if (enable) {
     final command = 'git diff --exit-code ${extraArgs ?? ""}';
     final output = await _executeGitDiff(command);
-    _handleGitDiffResult(command: command, output: output, phase: phase);
+    _handleGitDiffResult(
+      command: command,
+      output: output,
+      phase: phase,
+      isCi: _isCi(),
+    );
   }
 }
 
@@ -512,31 +517,28 @@ void _handleGitDiffResult({
   required String command,
   required RunCommandOutput output,
   required _GitDiffPhase phase,
+  required bool isCi,
 }) {
-  final action = _decideGitDiffAction(
-    exitCode: output.exitCode,
-    phase: phase,
-    isCi: _isCi(),
-  );
-
-  switch (action) {
-    case _GitDiffAction.continueSilently:
+  switch (_classifyGitDiffExitCode(output.exitCode)) {
+    case _GitDiffResult.clean:
       return;
-    case _GitDiffAction.warnDirty:
-      stderr.writeln(
-        'Warning: working tree is already dirty before running the command; continuing anyway.',
-      );
-      return;
-    case _GitDiffAction.warnUnavailable:
-      stderr.writeln(
-        'Warning: cannot check working tree cleanliness because git metadata is unavailable; continuing anyway.',
-      );
-      return;
-    case _GitDiffAction.failDirty:
+    case _GitDiffResult.dirty:
+      if (phase == _GitDiffPhase.before) {
+        print(
+          'Warning: working tree is already dirty before running the command; continuing anyway.',
+        );
+        return;
+      }
       throw Exception(
         'Failed to check working tree after command: `$command` exited with ${output.exitCode}. Working tree changed.',
       );
-    case _GitDiffAction.failUnavailable:
+    case _GitDiffResult.unavailable:
+      if (!isCi) {
+        print(
+          'Warning: cannot check working tree cleanliness because git metadata is unavailable; continuing anyway.',
+        );
+        return;
+      }
       throw Exception(
         'Failed to check working tree cleanliness: `$command` exited with ${output.exitCode}.',
       );
@@ -558,46 +560,20 @@ enum _GitDiffPhase { before, after }
 
 enum _GitDiffResult { clean, dirty, unavailable }
 
-enum _GitDiffAction {
-  continueSilently,
-  warnDirty,
-  warnUnavailable,
-  failDirty,
-  failUnavailable,
-}
-
 String classifyGitDiffExitCodeForTesting(int exitCode) =>
     _classifyGitDiffExitCode(exitCode).name;
 
-_GitDiffAction _decideGitDiffAction({
-  required int exitCode,
-  required _GitDiffPhase phase,
-  required bool isCi,
-}) {
-  final result = _classifyGitDiffExitCode(exitCode);
-  switch (result) {
-    case _GitDiffResult.clean:
-      return _GitDiffAction.continueSilently;
-    case _GitDiffResult.dirty:
-      return phase == _GitDiffPhase.before
-          ? _GitDiffAction.warnDirty
-          : _GitDiffAction.failDirty;
-    case _GitDiffResult.unavailable:
-      return isCi
-          ? _GitDiffAction.failUnavailable
-          : _GitDiffAction.warnUnavailable;
-  }
-}
-
-String decideGitDiffActionForTesting({
+void handleGitDiffResultForTesting({
+  String command = 'git diff --exit-code',
   required int exitCode,
   required bool isBefore,
   required bool isCi,
-}) => _decideGitDiffAction(
-  exitCode: exitCode,
+}) => _handleGitDiffResult(
+  command: command,
+  output: RunCommandOutput(stdout: '', stderr: '', exitCode: exitCode),
   phase: isBefore ? _GitDiffPhase.before : _GitDiffPhase.after,
   isCi: isCi,
-).name;
+);
 
 Future<void> generateWebsite(GenerateWebsiteConfig config) async {
   await generateWebsiteBuild(config);
