@@ -48,3 +48,14 @@ When running web tests in Docker containers, puppeteer needs `--no-sandbox` flag
 **Run:** Debugging test failure, developing new tests, verifying fix before push
 
 **Skip:** Documentation only, CI will catch it, just checking compilation
+
+## CI Discipline
+
+CI is slow and often queues for a long time. Before pushing a non-trivial FRB change, run the smallest meaningful local tests in Tom's local Docker environment and understand the result locally first. Do not use CI as the first feedback loop for changes that can be verified locally.
+
+Choose tests by blast radius:
+- Runtime changes: run the relevant Rust package tests
+- Generated or example API changes: run the focused Dart or Flutter example test first
+- Codegen changes: run generation and the affected example tests
+
+After pushing to a PR branch, monitor GitHub Actions until the run reaches a terminal state. If CI fails, inspect the failing job logs and either fix the issue or clearly report why it is unrelated or flaky. Do not leave a PR in an unknown queued or in-progress state when the user asked for CI validation.
