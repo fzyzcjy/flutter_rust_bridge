@@ -554,7 +554,12 @@ _GitDiffResult _classifyGitDiffExitCode(int exitCode) {
   return _GitDiffResult.unavailable;
 }
 
-bool _isCi() => Platform.environment['CI'] == 'true';
+bool _isCi({Map<String, String>? environment}) {
+  final effectiveEnvironment = environment ?? Platform.environment;
+  final ciRaw = effectiveEnvironment['CI']?.toLowerCase();
+  return effectiveEnvironment['GITHUB_ACTIONS'] == 'true' ||
+      (ciRaw != null && ciRaw != 'false' && ciRaw != '0');
+}
 
 enum _GitDiffPhase { before, after }
 
@@ -574,6 +579,9 @@ void handleGitDiffResultForTesting({
   phase: isBefore ? _GitDiffPhase.before : _GitDiffPhase.after,
   isCi: isCi,
 );
+
+bool isCiForTesting(Map<String, String> environment) =>
+    _isCi(environment: environment);
 
 Future<void> generateWebsite(GenerateWebsiteConfig config) async {
   await generateWebsiteBuild(config);

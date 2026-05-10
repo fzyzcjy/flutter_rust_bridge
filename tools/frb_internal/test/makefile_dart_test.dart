@@ -86,6 +86,15 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
       expect(classifyGitDiffExitCodeForTesting(128), 'unavailable');
     });
 
+    test('detects CI from common environment variables', () {
+      expect(isCiForTesting({'GITHUB_ACTIONS': 'true'}), true);
+      expect(isCiForTesting({'CI': 'true'}), true);
+      expect(isCiForTesting({'CI': '1'}), true);
+      expect(isCiForTesting({'CI': 'false'}), false);
+      expect(isCiForTesting({'CI': '0'}), false);
+      expect(isCiForTesting({}), false);
+    });
+
     test('decides clean git diff should continue silently', () {
       expect(
         () => handleGitDiffResultForTesting(
