@@ -54,6 +54,10 @@ class PrecommitAutofixInDevContainerCommand extends Command<void> {
         help: 'GitHub run id used in the suggested download command.',
       )
       ..addOption(
+        'github-head-sha',
+        help: 'GitHub commit SHA shown in the PR comment.',
+      )
+      ..addOption(
         'github-output-path',
         help: 'Optional GitHub Actions output file path.',
       )
@@ -85,6 +89,9 @@ class PrecommitAutofixInDevContainerCommand extends Command<void> {
     final githubRunId =
         (argResults!['github-run-id'] as String?) ??
         Platform.environment['GITHUB_RUN_ID'];
+    final githubHeadSha =
+        (argResults!['github-head-sha'] as String?) ??
+        Platform.environment['GITHUB_SHA'];
     final githubOutputPath =
         (argResults!['github-output-path'] as String?) ??
         Platform.environment['GITHUB_OUTPUT'];
@@ -106,6 +113,7 @@ class PrecommitAutofixInDevContainerCommand extends Command<void> {
             mode: argResults!['mode'] as String,
             outputPath: outputPath,
             artifactName: argResults!['artifact-name'] as String,
+            githubHeadSha: githubHeadSha,
             githubRunId: githubRunId,
             githubOutputPath: githubOutputPath,
             githubSummaryPath: githubSummaryPath,
@@ -120,6 +128,7 @@ class PrecommitAutofixInDevContainerCommand extends Command<void> {
 class PrecommitAutofixInDevContainerConfig {
   final String artifactName;
   final String dockerfilePath;
+  final String? githubHeadSha;
   final String? githubRunId;
   final String? githubOutputPath;
   final String? githubSummaryPath;
@@ -131,6 +140,7 @@ class PrecommitAutofixInDevContainerConfig {
   const PrecommitAutofixInDevContainerConfig({
     required this.artifactName,
     required this.dockerfilePath,
+    required this.githubHeadSha,
     required this.githubRunId,
     required this.githubOutputPath,
     required this.githubSummaryPath,
@@ -241,6 +251,8 @@ class PrecommitAutofixInDevContainerService {
         buildPrecommitAutofixGithubOutput(
           applyCommand: applyCommand,
           artifactName: config.artifactName,
+          githubHeadSha: config.githubHeadSha,
+          githubRunId: config.githubRunId,
           hasPatch: hasPatch,
           imageRef: imageRef,
           outputPath: outputPath,
@@ -331,17 +343,72 @@ String buildPrecommitAutofixContainerCommand({
 String buildPrecommitAutofixGithubOutput({
   required String applyCommand,
   required String artifactName,
+  required String? githubHeadSha,
+  required String? githubRunId,
   required bool hasPatch,
   required String imageRef,
   required String outputPath,
 }) {
+  const commentBodyDelimiter = 'PRECOMMIT_AUTOFIX_COMMENT_BODY';
+  final commentBody = buildPrecommitAutofixCommentBody(
+    applyCommand: applyCommand,
+    artifactName: artifactName,
+    githubHeadSha: githubHeadSha,
+    githubRunId: githubRunId,
+    hasPatch: hasPatch,
+  );
   final buffer = StringBuffer()
     ..writeln('has_patch=${hasPatch.toString()}')
     ..writeln('artifact_name=$artifactName')
     ..writeln('apply_command=$applyCommand')
     ..writeln('image_ref=$imageRef')
-    ..writeln('output_path=$outputPath');
+    ..writeln('output_path=$outputPath')
+    ..writeln('comment_body<<$commentBodyDelimiter')
+    ..writeln(commentBody)
+    ..writeln(commentBodyDelimiter);
   return buffer.toString();
+}
+
+@visibleForTesting
+String buildPrecommitAutofixCommentBody({
+  required String applyCommand,
+  required String artifactName,
+  required String? githubHeadSha,
+  required String? githubRunId,
+  required bool hasPatch,
+}) {
+  final effectiveHeadSha = githubHeadSha ?? '<head-sha>';
+  final effectiveRunId = githubRunId ?? '<run-id>';
+
+  if (!hasPatch) {
+    return '''
+<!-- precommit-autofix-comment -->
+## Precommit Autofix
+
+Commit: `$effectiveHeadSha`
+Run: `$effectiveRunId`
+
+CI produced no diff. The branch is already clean after precommit autofix.
+''';
+  }
+
+  return '''
+<!-- precommit-autofix-comment -->
+## Precommit Autofix
+
+Commit: `$effectiveHeadSha`
+Run: `$effectiveRunId`
+
+CI generated a non-empty autofix patch in artifact `$artifactName`.
+
+This usually means generated or normalized files were not committed. Download the artifact and apply it locally:
+
+```shell
+$applyCommand
+```
+
+The workflow never pushes commits on your behalf; it only prepares a patch for review and application.
+''';
 }
 
 @visibleForTesting

@@ -74,6 +74,8 @@ void main() {
     final output = buildPrecommitAutofixGithubOutput(
       applyCommand: 'git apply precommit-autofix.diff',
       artifactName: 'precommit-autofix-diff',
+      githubHeadSha: 'abc123',
+      githubRunId: '456',
       hasPatch: true,
       imageRef:
           'fzyzcjy/flutter_rust_bridge_dev:flutter-3.41.2-rust-1.93.1-nightly-2025-02-01',
@@ -84,6 +86,39 @@ void main() {
     expect(output, contains('artifact_name=precommit-autofix-diff'));
     expect(output, contains('apply_command=git apply precommit-autofix.diff'));
     expect(output, contains('output_path=/tmp/precommit-autofix.diff'));
+    expect(output, contains('comment_body<<PRECOMMIT_AUTOFIX_COMMENT_BODY'));
+    expect(output, contains('Commit: `abc123`'));
+    expect(output, contains('Run: `456`'));
+  });
+
+  test('buildPrecommitAutofixCommentBody reports clean branch', () {
+    final body = buildPrecommitAutofixCommentBody(
+      applyCommand: 'unused',
+      artifactName: 'precommit-autofix-diff',
+      githubHeadSha: 'abc123',
+      githubRunId: '456',
+      hasPatch: false,
+    );
+
+    expect(body, contains('<!-- precommit-autofix-comment -->'));
+    expect(body, contains('Commit: `abc123`'));
+    expect(body, contains('Run: `456`'));
+    expect(body, contains('CI produced no diff'));
+  });
+
+  test('buildPrecommitAutofixCommentBody explains patch application', () {
+    final body = buildPrecommitAutofixCommentBody(
+      applyCommand: 'git apply precommit-autofix.diff',
+      artifactName: 'precommit-autofix-diff',
+      githubHeadSha: 'abc123',
+      githubRunId: '456',
+      hasPatch: true,
+    );
+
+    expect(body, contains('<!-- precommit-autofix-comment -->'));
+    expect(body, contains('artifact `precommit-autofix-diff`'));
+    expect(body, contains('git apply precommit-autofix.diff'));
+    expect(body, contains('never pushes commits on your behalf'));
   });
 
   test('buildPrecommitAutofixSummaryMarkdown reports clean branch', () {

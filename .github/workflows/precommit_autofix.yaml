@@ -47,20 +47,12 @@ jobs:
         if: ${{ github.event_name == 'pull_request' }}
         uses: actions/github-script@v8
         env:
-          HAS_PATCH: ${{ steps.autofix.outputs.has_patch }}
-          APPLY_COMMAND: ${{ steps.autofix.outputs.apply_command }}
-          ARTIFACT_NAME: ${{ steps.autofix.outputs.artifact_name }}
-          HEAD_SHA: ${{ github.sha }}
-          RUN_ID: ${{ github.run_id }}
+          COMMENT_BODY: ${{ steps.autofix.outputs.comment_body }}
         with:
           script: |
             const marker = '<!-- precommit-autofix-comment -->';
-            const hasPatch = process.env.HAS_PATCH === 'true';
-            const applyCommand = process.env.APPLY_COMMAND ?? '';
-            const artifactName = process.env.ARTIFACT_NAME ?? 'precommit-autofix-diff';
-            const headSha = process.env.HEAD_SHA ?? context.sha;
-            const runId = process.env.RUN_ID ?? context.runId ?? '';
             const issueNumber = context.payload.pull_request.number;
+            const body = process.env.COMMENT_BODY;
 
             const comments = await github.paginate(
               github.rest.issues.listComments,
@@ -78,30 +70,6 @@ jobs:
                 typeof comment.body === 'string' &&
                 comment.body.includes(marker),
             );
-
-            const body = hasPatch ? `${marker}
-            ## Precommit Autofix
-
-            Commit: \`${headSha}\`
-            Run: \`${runId}\`
-
-            CI generated a non-empty autofix patch in artifact \`${artifactName}\`.
-
-            This usually means generated or normalized files were not committed. Download the artifact and apply it locally:
-
-            \`\`\`shell
-            ${applyCommand}
-            \`\`\`
-
-            The workflow never pushes commits on your behalf; it only prepares a patch for review and application.
-            ` : `${marker}
-            ## Precommit Autofix
-
-            Commit: \`${headSha}\`
-            Run: \`${runId}\`
-
-            CI produced no diff. The branch is already clean after precommit autofix.
-            `;
 
             if (existingComment) {
               await github.rest.issues.updateComment({
