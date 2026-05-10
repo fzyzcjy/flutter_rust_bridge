@@ -80,13 +80,6 @@ flutter_rust_bridge::enable_frb_rust_to_dart_logging!(
 );
 ```
 
-```rust
-flutter_rust_bridge::enable_frb_rust_to_dart_logging!(
-    max_level = log::LevelFilter::Trace,
-    setup_dart_logging_output = false
-);
-```
-
 ## Case 3: Alternative examples
 
 ### Example 2: Print logs to console
