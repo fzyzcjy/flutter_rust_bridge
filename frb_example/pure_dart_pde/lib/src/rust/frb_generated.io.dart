@@ -111,6 +111,8 @@ import 'api/pseudo_manual/rust_auto_opaque_twin_rust_async.dart';
 import 'api/pseudo_manual/rust_auto_opaque_twin_sync.dart';
 import 'api/pseudo_manual/rust_opaque_twin_rust_async.dart';
 import 'api/pseudo_manual/rust_opaque_twin_sync.dart';
+import 'api/pseudo_manual/serde_json_type_twin_rust_async.dart';
+import 'api/pseudo_manual/serde_json_type_twin_sync.dart';
 import 'api/pseudo_manual/simple_twin_rust_async.dart';
 import 'api/pseudo_manual/simple_twin_sync.dart';
 import 'api/pseudo_manual/stream_twin_rust_async.dart';
@@ -126,6 +128,7 @@ import 'api/raw_string.dart';
 import 'api/rust_auto_opaque.dart';
 import 'api/rust_opaque.dart';
 import 'api/rust_opaque_sync.dart';
+import 'api/serde_json_type.dart';
 import 'api/simple.dart';
 import 'api/stream.dart';
 import 'api/stream_misc.dart';
@@ -1381,6 +1384,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  Map<String, Object?> dco_decode_Map_String_SerdeJsonValue_None(dynamic raw);
+
+  @protected
   Map<String, String>
       dco_decode_Map_String_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
           dynamic raw);
@@ -1977,6 +1983,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   I32 dco_decode_RustOpaque_i32(dynamic raw);
+
+  @protected
+  Object? dco_decode_SerdeJsonValue(dynamic raw);
 
   @protected
   Set<String>
@@ -2691,6 +2700,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   FeatureChronoTwinSync dco_decode_box_autoadd_feature_chrono_twin_sync(
+      dynamic raw);
+
+  @protected
+  FeatureSerdeJsonTwinNormal
+      dco_decode_box_autoadd_feature_serde_json_twin_normal(dynamic raw);
+
+  @protected
+  FeatureSerdeJsonTwinRustAsync
+      dco_decode_box_autoadd_feature_serde_json_twin_rust_async(dynamic raw);
+
+  @protected
+  FeatureSerdeJsonTwinSync dco_decode_box_autoadd_feature_serde_json_twin_sync(
       dynamic raw);
 
   @protected
@@ -3636,6 +3657,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   FeatureChronoTwinSync dco_decode_feature_chrono_twin_sync(dynamic raw);
 
   @protected
+  FeatureSerdeJsonTwinNormal dco_decode_feature_serde_json_twin_normal(
+      dynamic raw);
+
+  @protected
+  FeatureSerdeJsonTwinRustAsync dco_decode_feature_serde_json_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  FeatureSerdeJsonTwinSync dco_decode_feature_serde_json_twin_sync(dynamic raw);
+
+  @protected
   FeatureUuidTwinNormal dco_decode_feature_uuid_twin_normal(dynamic raw);
 
   @protected
@@ -3735,6 +3767,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<HideDataTwinSync> dco_decode_list_RustOpaque_HideDataTwinSync(
       dynamic raw);
+
+  @protected
+  List<Object?> dco_decode_list_SerdeJsonValue(dynamic raw);
 
   @protected
   List<RustStreamSink<int>> dco_decode_list_StreamSink_i_32_Sse(dynamic raw);
@@ -4083,6 +4118,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<(String, MySize)> dco_decode_list_record_string_my_size(dynamic raw);
 
   @protected
+  List<(String, Object?)> dco_decode_list_record_string_serde_json_value(
+      dynamic raw);
+
+  @protected
   List<(String, String)> dco_decode_list_record_string_string(dynamic raw);
 
   @protected
@@ -4312,6 +4351,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   BigInt? dco_decode_opt_I128(dynamic raw);
+
+  @protected
+  Object? dco_decode_opt_SerdeJsonValue(dynamic raw);
 
   @protected
   String? dco_decode_opt_String(dynamic raw);
@@ -4816,6 +4858,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   (String, MySize) dco_decode_record_string_my_size(dynamic raw);
+
+  @protected
+  (String, Object?) dco_decode_record_string_serde_json_value(dynamic raw);
 
   @protected
   (String, String) dco_decode_record_string_string(dynamic raw);
@@ -6022,6 +6067,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  Map<String, Object?> sse_decode_Map_String_SerdeJsonValue_None(
+      SseDeserializer deserializer);
+
+  @protected
   Map<String, String>
       sse_decode_Map_String_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
           SseDeserializer deserializer);
@@ -6642,6 +6691,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   I32 sse_decode_RustOpaque_i32(SseDeserializer deserializer);
+
+  @protected
+  Object? sse_decode_SerdeJsonValue(SseDeserializer deserializer);
 
   @protected
   Set<String>
@@ -7428,6 +7480,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   FeatureChronoTwinSync sse_decode_box_autoadd_feature_chrono_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureSerdeJsonTwinNormal
+      sse_decode_box_autoadd_feature_serde_json_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  FeatureSerdeJsonTwinRustAsync
+      sse_decode_box_autoadd_feature_serde_json_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  FeatureSerdeJsonTwinSync sse_decode_box_autoadd_feature_serde_json_twin_sync(
       SseDeserializer deserializer);
 
   @protected
@@ -8487,6 +8553,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  FeatureSerdeJsonTwinNormal sse_decode_feature_serde_json_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureSerdeJsonTwinRustAsync sse_decode_feature_serde_json_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureSerdeJsonTwinSync sse_decode_feature_serde_json_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
   FeatureUuidTwinNormal sse_decode_feature_uuid_twin_normal(
       SseDeserializer deserializer);
 
@@ -8594,6 +8672,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<HideDataTwinSync> sse_decode_list_RustOpaque_HideDataTwinSync(
       SseDeserializer deserializer);
+
+  @protected
+  List<Object?> sse_decode_list_SerdeJsonValue(SseDeserializer deserializer);
 
   @protected
   List<RustStreamSink<int>> sse_decode_list_StreamSink_i_32_Sse(
@@ -8999,6 +9080,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  List<(String, Object?)> sse_decode_list_record_string_serde_json_value(
+      SseDeserializer deserializer);
+
+  @protected
   List<(String, String)> sse_decode_list_record_string_string(
       SseDeserializer deserializer);
 
@@ -9268,6 +9353,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   BigInt? sse_decode_opt_I128(SseDeserializer deserializer);
+
+  @protected
+  Object? sse_decode_opt_SerdeJsonValue(SseDeserializer deserializer);
 
   @protected
   String? sse_decode_opt_String(SseDeserializer deserializer);
@@ -9825,6 +9913,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   (String, MySize) sse_decode_record_string_my_size(
+      SseDeserializer deserializer);
+
+  @protected
+  (String, Object?) sse_decode_record_string_serde_json_value(
       SseDeserializer deserializer);
 
   @protected
@@ -11179,6 +11271,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           LtTypeWithMultiDepTwinSync self, SseSerializer serializer);
 
   @protected
+  void sse_encode_Map_String_SerdeJsonValue_None(
+      Map<String, Object?> self, SseSerializer serializer);
+
+  @protected
   void
       sse_encode_Map_String_String_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinNormal(
           Map<String, String> self, SseSerializer serializer);
@@ -11802,6 +11898,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_RustOpaque_i32(I32 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_SerdeJsonValue(Object? self, SseSerializer serializer);
 
   @protected
   void
@@ -12552,6 +12651,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_box_autoadd_feature_chrono_twin_sync(
       FeatureChronoTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feature_serde_json_twin_normal(
+      FeatureSerdeJsonTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feature_serde_json_twin_rust_async(
+      FeatureSerdeJsonTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feature_serde_json_twin_sync(
+      FeatureSerdeJsonTwinSync self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_feature_uuid_twin_normal(
@@ -13558,6 +13669,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       FeatureChronoTwinSync self, SseSerializer serializer);
 
   @protected
+  void sse_encode_feature_serde_json_twin_normal(
+      FeatureSerdeJsonTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feature_serde_json_twin_rust_async(
+      FeatureSerdeJsonTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feature_serde_json_twin_sync(
+      FeatureSerdeJsonTwinSync self, SseSerializer serializer);
+
+  @protected
   void sse_encode_feature_uuid_twin_normal(
       FeatureUuidTwinNormal self, SseSerializer serializer);
 
@@ -13669,6 +13792,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_list_RustOpaque_HideDataTwinSync(
       List<HideDataTwinSync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_SerdeJsonValue(
+      List<Object?> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_StreamSink_i_32_Sse(
@@ -14068,6 +14195,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       List<(String, MySize)> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_list_record_string_serde_json_value(
+      List<(String, Object?)> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_list_record_string_string(
       List<(String, String)> self, SseSerializer serializer);
 
@@ -14336,6 +14467,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_opt_I128(BigInt? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_SerdeJsonValue(Object? self, SseSerializer serializer);
 
   @protected
   void sse_encode_opt_String(String? self, SseSerializer serializer);
@@ -14875,6 +15009,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_record_string_my_size(
       (String, MySize) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_serde_json_value(
+      (String, Object?) self, SseSerializer serializer);
 
   @protected
   void sse_encode_record_string_string(
