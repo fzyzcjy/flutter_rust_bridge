@@ -524,20 +524,18 @@ Future<void> _maybeSetExitIfChanged(
           );
           return;
         }
-        throw ProcessException(
-          '/bin/sh',
-          ['-c', command],
-          'Bad exit code (${output.exitCode}). Working tree changed.',
-          output.exitCode,
+        throw _gitDiffProcessException(
+          command: command,
+          output: output,
+          message: 'Working tree changed.',
         );
       case _GitDiffResult.unavailable:
         final strict = isCi ?? _isCi();
         if (strict) {
-          throw ProcessException(
-            '/bin/sh',
-            ['-c', command],
-            'Bad exit code (${output.exitCode}). Cannot check working tree cleanliness.',
-            output.exitCode,
+          throw _gitDiffProcessException(
+            command: command,
+            output: output,
+            message: 'Cannot check working tree cleanliness.',
           );
         }
         stderr.writeln(
@@ -559,12 +557,63 @@ _GitDiffResult _classifyGitDiffExitCode(int exitCode) {
 
 bool _isCi() => Platform.environment['CI'] == 'true';
 
+ProcessException _gitDiffProcessException({
+  required String command,
+  required RunCommandOutput output,
+  required String message,
+  bool? isWindows,
+}) {
+  final shellCommand = _shellCommandForProcessException(
+    command,
+    isWindows: isWindows,
+  );
+  return ProcessException(
+    shellCommand.executable,
+    shellCommand.arguments,
+    'Bad exit code (${output.exitCode}). $message',
+    output.exitCode,
+  );
+}
+
+_ShellCommand _shellCommandForProcessException(
+  String command, {
+  bool? isWindows,
+}) {
+  if (isWindows ?? Platform.isWindows) {
+    return _ShellCommand('powershell', [
+      '-noprofile',
+      '-command',
+      '& $command',
+    ]);
+  }
+  return _ShellCommand('/bin/sh', ['-c', command]);
+}
+
+class _ShellCommand {
+  const _ShellCommand(this.executable, this.arguments);
+
+  final String executable;
+  final List<String> arguments;
+}
+
 enum _GitDiffPhase { before, after }
 
 enum _GitDiffResult { clean, dirty, unavailable }
 
 String classifyGitDiffExitCodeForTesting(int exitCode) =>
     _classifyGitDiffExitCode(exitCode).name;
+
+ProcessException gitDiffProcessExceptionForTesting({
+  required String command,
+  required int exitCode,
+  required String message,
+  required bool isWindows,
+}) => _gitDiffProcessException(
+  command: command,
+  output: RunCommandOutput(stdout: '', stderr: '', exitCode: exitCode),
+  message: message,
+  isWindows: isWindows,
+);
 
 Future<void> generateWebsite(GenerateWebsiteConfig config) async {
   await generateWebsiteBuild(config);

@@ -89,6 +89,34 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
       expect(classifyGitDiffExitCodeForTesting(128), 'unavailable');
     });
 
+    test('uses posix shell in git diff process exception outside Windows', () {
+      final exception = gitDiffProcessExceptionForTesting(
+        command: 'git diff --exit-code',
+        exitCode: 1,
+        message: 'Working tree changed.',
+        isWindows: false,
+      );
+
+      expect(exception.executable, '/bin/sh');
+      expect(exception.arguments, ['-c', 'git diff --exit-code']);
+    });
+
+    test('uses powershell in git diff process exception on Windows', () {
+      final exception = gitDiffProcessExceptionForTesting(
+        command: 'git diff --exit-code',
+        exitCode: 1,
+        message: 'Working tree changed.',
+        isWindows: true,
+      );
+
+      expect(exception.executable, 'powershell');
+      expect(exception.arguments, [
+        '-noprofile',
+        '-command',
+        '& git diff --exit-code',
+      ]);
+    });
+
     test('continues when git metadata is unavailable outside CI', () async {
       var innerDidRun = false;
       var checkCount = 0;
