@@ -80,8 +80,6 @@ flutter_rust_bridge::enable_frb_rust_to_dart_logging!(
 );
 ```
 
-Both options can be combined:
-
 ```rust
 flutter_rust_bridge::enable_frb_rust_to_dart_logging!(
     max_level = log::LevelFilter::Trace,
