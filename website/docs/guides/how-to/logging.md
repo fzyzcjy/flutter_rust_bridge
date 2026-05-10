@@ -2,11 +2,11 @@
 
 ## Overview
 
-There are three common logging cases:
+flutter_rust_bridge provides three kinds of logging support:
 
-- Builtin Rust console logging: projects created or integrated by the codegen tool configure platform-native console logging by default via `setup_default_user_utils()`.
-- Builtin Rust-to-Dart logging: enable `enable_frb_rust_to_dart_logging!()` when Rust logs should enter Dart's `logging` package.
-- Alternative examples: older manual patterns remain possible when you want full control over platform loggers or streams.
+- Builtin Rust console logging via `setup_default_user_utils()`.
+- Builtin Rust-to-Dart logging via `enable_frb_rust_to_dart_logging!()`.
+- Alternative examples for full control over platform loggers or streams.
 
 ## Case 1: Builtin Rust console logging
 
