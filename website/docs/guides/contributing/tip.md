@@ -19,21 +19,7 @@ For example, `./frb_internal precommit --mode fast` (or `--mode slow`) runs code
 
 ### CI autofix for generated changes
 
-If a pull request fails because generated or normalized files were not committed, the `Precommit Autofix` workflow can prepare a patch artifact for you in the standardized dev image.
-
-Open the workflow run, download the `precommit-autofix-diff` artifact, and apply it locally:
-
-```shell
-artifact_dir="$(mktemp -d)"
-gh run download <run-id> -n precommit-autofix-diff -D "$artifact_dir"
-git apply "$artifact_dir/precommit-autofix.diff"
-rm -rf "$artifact_dir"
-git add -A
-git commit -m "Apply precommit autofix"
-git push
-```
-
-The workflow summary prints the exact command sequence for that run. The workflow never pushes commits on your behalf; it only prepares a patch for review and application.
+If generated or normalized files are missing from a pull request, the `Precommit Autofix` bot comment explains how to apply its patch artifact locally.
 
 ### The `just codegen`
 

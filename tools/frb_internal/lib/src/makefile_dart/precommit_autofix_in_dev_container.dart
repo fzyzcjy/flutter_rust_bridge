@@ -357,13 +357,15 @@ String buildPrecommitAutofixSummaryMarkdown({
   return [
     '## Precommit Autofix',
     '',
-    'A precommit autofix patch was produced in the standardized dev image.',
+    'A precommit autofix patch was produced in the standardized dev image because generated or normalized files were not committed.',
     '',
-    'Download the `$artifactName` artifact and apply:',
+    'Download the `$artifactName` artifact and apply it locally:',
     '',
     '```shell',
     applyCommand,
     '```',
+    '',
+    'The workflow never pushes commits on your behalf; it only prepares a patch for review and application.',
     '',
   ].join('\n');
 }

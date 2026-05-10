@@ -97,6 +97,23 @@ void main() {
     );
   });
 
+  test('buildPrecommitAutofixSummaryMarkdown explains patch application', () {
+    final summary = buildPrecommitAutofixSummaryMarkdown(
+      applyCommand: 'git apply precommit-autofix.diff',
+      artifactName: 'precommit-autofix-diff',
+      hasPatch: true,
+    );
+
+    expect(summary, contains('standardized dev image'));
+    expect(
+      summary,
+      contains('generated or normalized files were not committed'),
+    );
+    expect(summary, contains('Download the `precommit-autofix-diff` artifact'));
+    expect(summary, contains('git apply precommit-autofix.diff'));
+    expect(summary, contains('never pushes commits on your behalf'));
+  });
+
   test('buildPrecommitAutofixContainerCommand runs in temporary workspace', () {
     final command = buildPrecommitAutofixContainerCommand(
       mode: 'slow',

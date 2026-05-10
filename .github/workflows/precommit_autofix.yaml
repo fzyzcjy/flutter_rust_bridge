@@ -87,11 +87,13 @@ jobs:
 
             CI generated a non-empty autofix patch in artifact \`${artifactName}\`.
 
-            Apply it with:
+            This usually means generated or normalized files were not committed. Download the artifact and apply it locally:
 
             \`\`\`shell
             ${applyCommand}
             \`\`\`
+
+            The workflow never pushes commits on your behalf; it only prepares a patch for review and application.
             ` : `${marker}
             ## Precommit Autofix
 
