@@ -29,7 +29,6 @@ First, ensure your Rust crate depends on the standard Rust `log` crate:
 
 ```toml
 [dependencies]
-flutter_rust_bridge = "..."
 log = "0.4"
 ```
 
@@ -37,14 +36,9 @@ Then enable the bridge with one macro call in a Rust file covered by `rust_input
 
 ```rust
 flutter_rust_bridge::enable_frb_rust_to_dart_logging!();
-
-pub fn compute() {
-    log::info!("start compute");
-    log::warn!("using fallback path");
-}
 ```
 
-After code generation, `RustLib.init()` automatically initializes the generated log stream and connects it to Dart logging. By default, FRB also installs a simple Dart-side output listener, so logs are visible in `flutter run`.
+After code generation, `RustLib.init()` automatically initializes the generated log stream and connects it to Dart logging. By default, FRB also installs a simple Dart-side output listener, so items logged via the standard Rust calls like `log::info!` are visible in `flutter run`.
 
 ### Customize Dart output
 
