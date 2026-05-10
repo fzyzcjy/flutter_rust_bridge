@@ -17,21 +17,6 @@ class BaseHandler {
     return completer.future.then(task.codec.decodeObject);
   }
 
-  /// Similar to [executeNormal], but returns a caller-provided Result type instead of throwing on error.
-  /// Panics still throw PanicException since they represent bugs, not expected errors.
-  Future<R> executeNormalAsResult<S, E extends Object, R>(
-    NormalTask<S, E> task, {
-    required R Function(S value) ok,
-    required R Function(E error) err,
-  }) {
-    final completer = Completer<dynamic>();
-    final SendPort sendPort = singleCompletePort(completer);
-    task.callFfi(sendPort.nativePort);
-    return completer.future
-        .then(task.codec.decodeObjectAsResult)
-        .then((value) => value.into(ok: ok, err: err));
-  }
-
   /// Similar to [executeNormal], except that this will return synchronously
   S executeSync<S, E extends Object, WireSyncType>(
     SyncTask<S, E, WireSyncType> task,
@@ -48,32 +33,6 @@ class BaseHandler {
     }
     try {
       return task.codec.decodeWireSyncType(syncReturn);
-    } finally {
-      task.codec.freeWireSyncRust2Dart(
-        syncReturn,
-        task.apiImpl.generalizedFrbRustBinding,
-      );
-    }
-  }
-
-  /// Similar to [executeSync], but returns a caller-provided Result type instead of throwing on error.
-  /// Panics still throw PanicException since they represent bugs, not expected errors.
-  R executeSyncAsResult<S, E extends Object, WireSyncType, R>(
-    SyncTask<S, E, WireSyncType> task, {
-    required R Function(S value) ok,
-    required R Function(E error) err,
-  }) {
-    final WireSyncType syncReturn;
-    try {
-      syncReturn = task.callFfi();
-    } catch (e, s) {
-      if (e is FrbException) rethrow;
-      throw PanicException('EXECUTE_SYNC_ABORT $e $s');
-    }
-    try {
-      return task.codec
-          .decodeWireSyncTypeAsResult(syncReturn)
-          .into(ok: ok, err: err);
     } finally {
       task.codec.freeWireSyncRust2Dart(
         syncReturn,

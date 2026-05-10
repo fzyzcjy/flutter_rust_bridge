@@ -26,18 +26,8 @@ class DcoCodec<S, E extends Object>
   }
 
   @override
-  FrbResult<S, E> decodeObjectAsResult(dynamic raw) {
-    final rawList = raw as List<dynamic>;
-    return _DcoSimpleDecoder(this, rawList).decodeAsResult(rawList[0]);
-  }
-
-  @override
   S decodeWireSyncType(WireSyncRust2DartDco raw) =>
       decodeObject(wireSyncRust2DartDcoIntoDart(raw));
-
-  @override
-  FrbResult<S, E> decodeWireSyncTypeAsResult(WireSyncRust2DartDco raw) =>
-      decodeObjectAsResult(wireSyncRust2DartDcoIntoDart(raw));
 
   @override
   void freeWireSyncRust2Dart(

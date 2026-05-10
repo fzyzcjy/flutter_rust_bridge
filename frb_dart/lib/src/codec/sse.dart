@@ -36,23 +36,8 @@ class SseCodec<S, E extends Object>
   }
 
   @override
-  FrbResult<S, E> decodeObjectAsResult(dynamic raw) {
-    raw = maybeDartify(raw);
-
-    if (raw is! Uint8List) {
-      return _decodeObjectOfOtherTypeAsResult(raw);
-    }
-
-    return _decodeAsResult(raw);
-  }
-
-  @override
   S decodeWireSyncType(WireSyncRust2DartSse raw) =>
       _decode(wireSyncRust2DartSseAsUint8ListView(raw));
-
-  @override
-  FrbResult<S, E> decodeWireSyncTypeAsResult(WireSyncRust2DartSse raw) =>
-      _decodeAsResult(wireSyncRust2DartSseAsUint8ListView(raw));
 
   S _decode(Uint8List bytes) {
     final deserializer = SseDeserializer(bytes.buffer.asByteData());
@@ -62,19 +47,12 @@ class SseCodec<S, E extends Object>
     return ans;
   }
 
-  FrbResult<S, E> _decodeAsResult(Uint8List bytes) {
-    final deserializer = SseDeserializer(bytes.buffer.asByteData());
-    final action = deserializer.buffer.getUint8();
-    final ans = _SseSimpleDecoder(this, deserializer).decodeAsResult(action);
-    assert(!deserializer.buffer.hasRemaining);
-    return ans;
-  }
-
   @override
   void freeWireSyncRust2Dart(
     WireSyncRust2DartSse raw,
     GeneralizedFrbRustBinding generalizedFrbRustBinding,
-  ) => generalizedFrbRustBinding.freeWireSyncRust2DartSse(raw);
+  ) =>
+      generalizedFrbRustBinding.freeWireSyncRust2DartSse(raw);
 }
 
 class _SseSimpleDecoder<S, E extends Object> extends SimpleDecoder<S, E> {
@@ -109,7 +87,7 @@ class SseSerializer {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   SseSerializer(GeneralizedFrbRustBinding binding)
-    : buffer = WriteBuffer(binding: binding);
+      : buffer = WriteBuffer(binding: binding);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   WriteBufferRaw intoRaw() => buffer.intoRaw();
@@ -133,17 +111,6 @@ S _decodeObjectOfOtherType<S>(dynamic raw) {
     decodeErrorData: null,
   );
   return decoder.decodeObject(raw);
-}
-
-FrbResult<S, E> _decodeObjectOfOtherTypeAsResult<S, E extends Object>(
-  dynamic raw,
-) {
-  const decoder = DcoCodec<dynamic, Object>(
-    decodeSuccessData: _unimplementedFunction,
-    decodeErrorData: null,
-  );
-  final result = decoder.decodeObjectAsResult(raw);
-  return result.mapOk((v) => v as S).mapErr((e) => e as E);
 }
 
 dynamic _unimplementedFunction(dynamic arg) => throw UnimplementedError();
