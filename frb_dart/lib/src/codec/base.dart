@@ -14,7 +14,9 @@ abstract class BaseCodec<S, E extends Object, WireSyncType> {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void freeWireSyncRust2Dart(
-      WireSyncType raw, GeneralizedFrbRustBinding generalizedFrbRustBinding);
+    WireSyncType raw,
+    GeneralizedFrbRustBinding generalizedFrbRustBinding,
+  );
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}

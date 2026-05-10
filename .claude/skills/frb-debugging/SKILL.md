@@ -5,6 +5,8 @@ description: Use when generated code looks wrong, code generation fails, or you 
 
 # FRB Debugging
 
+> **Note:** Check your user-level `remote-testing` rules before running commands. Codegen and debugging may require remote execution.
+
 ## When to Use
 
 - Generated code looks wrong
@@ -37,7 +39,15 @@ If above doesn't help, see:
 * `website/docs/docs/guides/contributing/tip.md`
 * `website/docs/manual/troubleshooting.md`
 
+Before going deep into FRB internals, first check whether you are actually seeing failure propagation from unstable generated outputs or integrate templates.
+
+In particular:
+
+- If CI failures may be explained by failure propagation, repeated package-level drift, or unstable generated outputs, you MUST use `frb-fix-ci` first
+- You MUST only stay in `frb-debugging` after `frb-fix-ci` has ruled out those simpler explanations
+
 ## Related Skills
 
 - `frb-code-generation` - Which generation commands to run
+- `frb-fix-ci` - Diagnose CI failure propagation before deep debugging
 - `frb-develop-feature` - Development workflow

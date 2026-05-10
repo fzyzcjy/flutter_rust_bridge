@@ -139,8 +139,10 @@ void main() {
                 final newByteData = ByteData(8);
                 setter(newByteData, 0, integer, endian);
 
-                expect(oldByteData.buffer.asUint8List(),
-                    newByteData.buffer.asUint8List());
+                expect(
+                  oldByteData.buffer.asUint8List(),
+                  newByteData.buffer.asUint8List(),
+                );
               }
             });
           });
@@ -150,10 +152,15 @@ void main() {
   });
 }
 
-typedef _Setter = void Function(
-    ByteData byteData, int byteOffset, BigInt value, Endian endian);
-typedef _Getter = BigInt Function(
-    ByteData byteData, int byteOffset, Endian endian);
+typedef _Setter =
+    void Function(
+      ByteData byteData,
+      int byteOffset,
+      BigInt value,
+      Endian endian,
+    );
+typedef _Getter =
+    BigInt Function(ByteData byteData, int byteOffset, Endian endian);
 
 void _body(_Setter setter, _Getter getter, _Info info, Endian endian) {
   final byteData = ByteData(60);
@@ -178,10 +185,10 @@ class _Info {
   });
 
   List<int> expectBytes(Endian endian) => switch (endian) {
-        Endian.little => expectLittleEndian,
-        Endian.big => expectBigEndian,
-        _ => throw UnimplementedError(),
-      };
+    Endian.little => expectLittleEndian,
+    Endian.big => expectBigEndian,
+    _ => throw UnimplementedError(),
+  };
 
   @override
   String toString() =>

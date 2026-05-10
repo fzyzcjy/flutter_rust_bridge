@@ -6,6 +6,10 @@ For common development workflows, see the skills in `.claude/skills/`.
 
 ## Tips for development
 
+### Docker and devcontainer
+
+Optionally, you can use Docker and/or devcontainer to quickly get a standardized development environment. The related code is in `.devcontainer`. For daily use, manual Docker commands, Apple Silicon notes, and publishing the dev Docker image, see `.claude/skills/frb-docker/SKILL.md`.
+
 ### The `./frb_internal`
 
 The `./frb_internal whatever-command` (or `./frb_internal.bat`) delegates to the `./tools/frb_internal` dart package.

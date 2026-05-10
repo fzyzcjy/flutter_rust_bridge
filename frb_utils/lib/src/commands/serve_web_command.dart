@@ -39,9 +39,9 @@ class ServeWebConfig {
   @CliOption(help: 'Open the webpage in a browser', defaultsTo: true)
   final bool open;
 
-// migrate to `test-web`
-// @CliOption(help: 'Run tests in headless Chromium', negatable: false)
-// late bool runTests;
+  // migrate to `test-web`
+  // @CliOption(help: 'Run tests in headless Chromium', negatable: false)
+  // late bool runTests;
 
   const ServeWebConfig({
     required this.webRoot,

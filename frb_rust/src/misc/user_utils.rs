@@ -7,7 +7,8 @@ pub fn setup_default_user_utils() {
     setup_backtrace();
 }
 
-fn setup_backtrace() {
+/// Setup backtrace recording, including setting `RUST_BACKTRACE=1` if not already set.
+pub fn setup_backtrace() {
     #[cfg(not(target_family = "wasm"))]
     if std::env::var("RUST_BACKTRACE").err() == Some(std::env::VarError::NotPresent) {
         std::env::set_var("RUST_BACKTRACE", "1");

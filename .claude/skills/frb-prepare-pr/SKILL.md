@@ -5,11 +5,15 @@ description: Use when about to create a PR or push changes in flutter_rust_bridg
 
 # FRB Prepare for PR
 
+> **Note:** Check your user-level `remote-testing` rules before running commands. Codegen, lint, and tests may require remote execution.
+
 ## Overview
 
 Before creating a PR, ensure generated code is up to date and lint passes.
 
 **Core principle:** Generate → Lint → Commit → PR.
+
+> **After codegen:** Check your user-level `remote-testing` rules. If codegen was run remotely, pull changes back to local.
 
 ## Workflow
 
@@ -43,6 +47,8 @@ CI automatically runs:
 - Lint and format checks
 
 Run lint locally to avoid CI failures. Tests are optional locally.
+
+If your PR fixes Flutter integrate example outputs and the real bug is inside the embedded `cargokit` submodule, do not stop at copied example files. Push the `cargokit` fix to `fzyzcjy/cargokit` and update the submodule ref in this repo before pushing the PR branch.
 
 ## Related Skills
 

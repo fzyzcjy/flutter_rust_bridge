@@ -5,6 +5,8 @@ description: Use when you need to run lint, format, or clippy checks in flutter_
 
 # FRB Lint
 
+> **Note:** Check your user-level `remote-testing` rules before running commands. Lint may require remote execution.
+
 ## Quick Reference
 
 | Command | Description |

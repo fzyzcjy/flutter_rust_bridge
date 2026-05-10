@@ -47,6 +47,10 @@ class Target {
       flutter: 'windows-x64',
     ),
     Target(
+      rust: 'aarch64-pc-windows-msvc',
+      flutter: 'windows-arm64',
+    ),
+    Target(
       rust: 'x86_64-unknown-linux-gnu',
       flutter: 'linux-x64',
     ),
@@ -54,6 +58,7 @@ class Target {
       rust: 'aarch64-unknown-linux-gnu',
       flutter: 'linux-arm64',
     ),
+    Target(rust: 'riscv64gc-unknown-linux-gnu', flutter: 'linux-riscv64'),
     Target(
       rust: 'x86_64-apple-darwin',
       darwinPlatform: 'macosx',
@@ -109,9 +114,11 @@ class Target {
     if (Platform.isLinux) {
       // Right now we don't support cross-compiling on Linux. So we just return
       // the host target.
-      final arch = runCommand('arch', []).stdout as String;
-      if (arch.trim() == 'aarch64') {
+      final arch = (runCommand('arch', []).stdout as String).trim();
+      if (arch == 'aarch64') {
         return [Target.forRustTriple('aarch64-unknown-linux-gnu')!];
+      } else if (arch == 'riscv64') {
+        return [Target.forRustTriple('riscv64gc-unknown-linux-gnu')!];
       } else {
         return [Target.forRustTriple('x86_64-unknown-linux-gnu')!];
       }

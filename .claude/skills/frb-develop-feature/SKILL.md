@@ -5,6 +5,8 @@ description: Use when adding tests or developing new features in flutter_rust_br
 
 # FRB Develop Feature
 
+> **Note:** Check your user-level `remote-testing` rules before running commands. Tests and codegen may require remote execution.
+
 ## Overview
 
 **Iterate in frb_example/dart_minimal (fast compile), migrate to frb_example/pure_dart (full coverage).**
@@ -59,6 +61,8 @@ digraph workflow {
    ./frb_internal test-dart-native --package frb_example/dart_minimal
    ```
 
+   > **After codegen:** Check your user-level `remote-testing` rules. If codegen was run remotely, pull changes back to local.
+
 4. **Iterate until test passes**
 
 ### Phase 2: Migrate to frb_example/pure_dart
@@ -83,12 +87,18 @@ digraph workflow {
    # Codegen
    ./frb_internal precommit-generate
 
-   # Test (can run in parallel)
+   # Native tests (can run in parallel)
    ./frb_internal test-dart-native --package frb_example/pure_dart
    ./frb_internal test-dart-native --package frb_example/pure_dart_pde
+
+   # Web tests (optional, for web platform coverage)
+   ./frb_internal test-dart-web --package frb_example/pure_dart
+   ./frb_internal test-dart-web --package frb_example/pure_dart_pde
    ```
 
-   Both must pass - they test different codegen configurations.
+   > **After codegen:** Check your user-level `remote-testing` rules. If codegen was run remotely, pull changes back to local.
+
+   Native tests must pass - they test different codegen configurations. Web tests are optional but recommended for web platform coverage.
 
 4. **Iterate until test passes**
 
@@ -103,6 +113,8 @@ digraph workflow {
 | Test dart_minimal | `./frb_internal test-dart-native --package frb_example/dart_minimal` |
 | Test pure_dart | `./frb_internal test-dart-native --package frb_example/pure_dart` |
 | Test pure_dart_pde | `./frb_internal test-dart-native --package frb_example/pure_dart_pde` |
+| Web test pure_dart | `./frb_internal test-dart-web --package frb_example/pure_dart` |
+| Web test pure_dart_pde | `./frb_internal test-dart-web --package frb_example/pure_dart_pde` |
 | Code generation | `./frb_internal precommit-generate` |
 
 ### Architecture

@@ -9,8 +9,9 @@ import '../test_utils.dart';
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
-  addTestsIdentityFunctionCall(
-      funcMacroStructTwinNormal, [const MacroStruct(data: 42)]);
+  addTestsIdentityFunctionCall(funcMacroStructTwinNormal, [
+    const MacroStruct(data: 42),
+  ]);
 
   test("macro struct", () async {
     var x = await anotherMacroStructTwinNormal();

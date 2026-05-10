@@ -47,7 +47,11 @@ pub use crate::misc::into_into_dart::IntoIntoDart;
 use crate::misc::logging::test::mock_frb_generated as frb_generated;
 pub use crate::misc::panic_backtrace::{CatchUnwindWithBacktrace, PanicBacktrace};
 #[cfg(feature = "user-utils")]
+pub use crate::misc::user_utils::setup_backtrace;
+#[cfg(feature = "user-utils")]
 pub use crate::misc::user_utils::setup_default_user_utils;
+#[cfg(all(feature = "user-utils", feature = "log"))]
+pub use crate::misc::user_utils::setup_log_to_console;
 pub use crate::platform_types::DartAbi;
 pub use crate::rust2dart::sender::Rust2DartSendError;
 #[cfg(all(feature = "rust-async", feature = "thread-pool"))]

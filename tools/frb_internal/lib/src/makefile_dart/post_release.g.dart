@@ -8,16 +8,16 @@ part of 'post_release.dart';
 // CliGenerator
 // **************************************************************************
 
-T _$enumValueHelper<T>(Map<T, String> enumValues, String source) =>
-    enumValues.entries
-        .singleWhere(
-          (e) => e.value == source,
-          orElse: () => throw ArgumentError(
-            '`$source` is not one of the supported values: '
-            '${enumValues.values.join(', ')}',
-          ),
-        )
-        .key;
+T _$enumValueHelper<T>(Map<T, String> enumValues, String source) => enumValues
+    .entries
+    .singleWhere(
+      (e) => e.value == source,
+      orElse: () => throw ArgumentError(
+        '`$source` is not one of the supported values: '
+        '${enumValues.values.join(', ')}',
+      ),
+    )
+    .key;
 
 PostReleaseConfig _$parsePostReleaseConfigResult(ArgResults result) =>
     PostReleaseConfig(
@@ -31,17 +31,18 @@ const _$CodegenInstallModeEnumMapBuildCli = <CodegenInstallMode, String>{
   CodegenInstallMode.cargoInstall: 'cargo-install',
   CodegenInstallMode.cargoBinstall: 'cargo-binstall',
   CodegenInstallMode.scoop: 'scoop',
-  CodegenInstallMode.homebrew: 'homebrew'
+  CodegenInstallMode.homebrew: 'homebrew',
 };
 
-ArgParser _$populatePostReleaseConfigParser(ArgParser parser) => parser
-  ..addOption(
-    'codegen-install-mode',
-    allowed: ['cargo-install', 'cargo-binstall', 'scoop', 'homebrew'],
-  );
+ArgParser _$populatePostReleaseConfigParser(ArgParser parser) =>
+    parser..addOption(
+      'codegen-install-mode',
+      allowed: ['cargo-install', 'cargo-binstall', 'scoop', 'homebrew'],
+    );
 
-final _$parserForPostReleaseConfig =
-    _$populatePostReleaseConfigParser(ArgParser());
+final _$parserForPostReleaseConfig = _$populatePostReleaseConfigParser(
+  ArgParser(),
+);
 
 PostReleaseConfig parsePostReleaseConfig(List<String> args) {
   final result = _$parserForPostReleaseConfig.parse(args);

@@ -196,7 +196,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge"
-version = "2.11.1"
+version = "2.12.0"
 dependencies = [
  "allo-isolate",
  "anyhow",
@@ -222,7 +222,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge_macros"
-version = "2.11.1"
+version = "2.12.0"
 dependencies = [
  "hex",
  "md-5",
@@ -472,9 +472,9 @@ checksum = "8b870d8c151b6f2fb93e84a13146138f05d02ed11c7e7c54f8826aaaf7c9f184"
 
 [[package]]
 name = "portable-atomic"
-version = "1.11.0"
+version = "1.13.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "350e9b48cbc6b0e028b0473b114454c6316e57336ee184ceab6e53f72c178b3e"
+checksum = "c33a9471896f1c69cecef8d20cbe2f7accd12527ce60845ff44c153bb2a21b49"
 
 [[package]]
 name = "proc-macro2"
