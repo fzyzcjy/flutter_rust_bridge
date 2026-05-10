@@ -21,41 +21,29 @@ Future<void> main({bool skipRustLibInit = false}) async {
         ),
       );
     });
-    test(
-      'call funcTypeFalliblePanicTwinNormal',
-      () async {
-        await expectRustPanic(
-          () async => funcTypeFalliblePanicTwinNormal(),
-          'TwinNormal',
-          messageOnNative: 'deliberate panic',
-        );
-      },
-      skip: skipWeb('Rust panic aborts the web runtime.'),
-    );
-    test(
-      'call funcTypeInfalliblePanicTwinNormal',
-      () async {
-        await expectRustPanic(
-          () async => funcTypeInfalliblePanicTwinNormal(),
-          'TwinNormal',
-          messageOnNative: 'deliberate panic',
-        );
-      },
-      skip: skipWeb('Rust panic aborts the web runtime.'),
-    );
+    test('call funcTypeFalliblePanicTwinNormal', () async {
+      await expectRustPanic(
+        () async => funcTypeFalliblePanicTwinNormal(),
+        'TwinNormal',
+        messageOnNative: 'deliberate panic',
+      );
+    });
+    test('call funcTypeInfalliblePanicTwinNormal', () async {
+      await expectRustPanic(
+        () async => funcTypeInfalliblePanicTwinNormal(),
+        'TwinNormal',
+        messageOnNative: 'deliberate panic',
+      );
+    });
 
     addTestsIdentityFunctionCall(customEnumErrorReturnOkTwinNormal, [100]);
-    test(
-      'call customEnumErrorPanicTwinNormal',
-      () async {
-        await expectRustPanic(
-          () async => customEnumErrorPanicTwinNormal(),
-          'TwinNormal',
-          messageOnNative: 'deliberate panic',
-        );
-      },
-      skip: skipWeb('Rust panic aborts the web runtime.'),
-    );
+    test('call customEnumErrorPanicTwinNormal', () async {
+      await expectRustPanic(
+        () async => customEnumErrorPanicTwinNormal(),
+        'TwinNormal',
+        messageOnNative: 'deliberate panic',
+      );
+    });
 
     test('call funcReturnErrorTwinNormal', () async {
       var matcher = isA<CustomEnumErrorTwinNormal>().having(
@@ -257,17 +245,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
         );
       });
 
-      test(
-        'Function with custom result panics',
-        () async {
-          await expectRustPanicRaw(
-            () async => panicWithCustomResultTwinNormal(),
-            'TwinNormal',
-            throwsA(isA<FrbException>()),
-          );
-        },
-        skip: skipWeb('Rust panic aborts the web runtime.'),
-      );
+      test('Function with custom result panics', () async {
+        await expectRustPanicRaw(
+          () async => panicWithCustomResultTwinNormal(),
+          'TwinNormal',
+          throwsA(isA<FrbException>()),
+        );
+      });
 
       test('Stream sink throw anyhow error', () async {
         expect(

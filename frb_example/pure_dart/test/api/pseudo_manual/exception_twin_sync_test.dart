@@ -25,41 +25,29 @@ Future<void> main({bool skipRustLibInit = false}) async {
         ),
       );
     });
-    test(
-      'call funcTypeFalliblePanicTwinSync',
-      () async {
-        await expectRustPanic(
-          () async => funcTypeFalliblePanicTwinSync(),
-          'TwinSync',
-          messageOnNative: 'deliberate panic',
-        );
-      },
-      skip: skipWeb('Rust panic aborts the web runtime.'),
-    );
-    test(
-      'call funcTypeInfalliblePanicTwinSync',
-      () async {
-        await expectRustPanic(
-          () async => funcTypeInfalliblePanicTwinSync(),
-          'TwinSync',
-          messageOnNative: 'deliberate panic',
-        );
-      },
-      skip: skipWeb('Rust panic aborts the web runtime.'),
-    );
+    test('call funcTypeFalliblePanicTwinSync', () async {
+      await expectRustPanic(
+        () async => funcTypeFalliblePanicTwinSync(),
+        'TwinSync',
+        messageOnNative: 'deliberate panic',
+      );
+    });
+    test('call funcTypeInfalliblePanicTwinSync', () async {
+      await expectRustPanic(
+        () async => funcTypeInfalliblePanicTwinSync(),
+        'TwinSync',
+        messageOnNative: 'deliberate panic',
+      );
+    });
 
     addTestsIdentityFunctionCall(customEnumErrorReturnOkTwinSync, [100]);
-    test(
-      'call customEnumErrorPanicTwinSync',
-      () async {
-        await expectRustPanic(
-          () async => customEnumErrorPanicTwinSync(),
-          'TwinSync',
-          messageOnNative: 'deliberate panic',
-        );
-      },
-      skip: skipWeb('Rust panic aborts the web runtime.'),
-    );
+    test('call customEnumErrorPanicTwinSync', () async {
+      await expectRustPanic(
+        () async => customEnumErrorPanicTwinSync(),
+        'TwinSync',
+        messageOnNative: 'deliberate panic',
+      );
+    });
 
     test('call funcReturnErrorTwinSync', () async {
       var matcher = isA<CustomEnumErrorTwinSync>().having(
@@ -259,17 +247,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
         );
       });
 
-      test(
-        'Function with custom result panics',
-        () async {
-          await expectRustPanicRaw(
-            () async => panicWithCustomResultTwinSync(),
-            'TwinSync',
-            throwsA(isA<FrbException>()),
-          );
-        },
-        skip: skipWeb('Rust panic aborts the web runtime.'),
-      );
+      test('Function with custom result panics', () async {
+        await expectRustPanicRaw(
+          () async => panicWithCustomResultTwinSync(),
+          'TwinSync',
+          throwsA(isA<FrbException>()),
+        );
+      });
 
       test('Stream sink throw anyhow error', () async {
         expect(
