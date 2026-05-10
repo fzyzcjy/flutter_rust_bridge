@@ -167,5 +167,7 @@ void main() {
     expect(command, contains(r'tail -n 200 "${log_path}" >&2 || true'));
     expect(command, contains(r'tail -n 40 "${log_path}" || true'));
     expect(command, isNot(contains('Validate precommit autofix patch')));
+    expect(command, isNot(contains('rustup target add')));
+    expect(command, isNot(contains('cargo install')));
   });
 }

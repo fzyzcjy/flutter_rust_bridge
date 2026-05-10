@@ -17,6 +17,7 @@ pub fn cargo_add(args: &[&str], pwd: &Path) -> anyhow::Result<()> {
 
 #[allow(clippy::vec_init_then_push)]
 pub fn cargo_fetch(pwd: &Path) -> Result<()> {
+    // frb-coverage:ignore-start
     let output = command_run!(
         call_shell[None, None],
         "cargo",
@@ -37,4 +38,5 @@ pub fn cargo_fetch(pwd: &Path) -> Result<()> {
     }
 
     check_exit_code(&output)
+    // frb-coverage:ignore-end
 }
