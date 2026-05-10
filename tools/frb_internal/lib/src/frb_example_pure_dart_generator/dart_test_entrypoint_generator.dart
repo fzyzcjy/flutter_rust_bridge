@@ -102,6 +102,8 @@ Future<void> callFileEntrypoints() async {
 String _generateFileEntrypointCall(String file) {
   final name = path.basenameWithoutExtension(file);
   final oneLine = 'await $name.main(skipRustLibInit: true);';
+  // TODO: Call an automatic formatter for this generated snippet instead of
+  // hand-writing this ad hoc wrapping.
   if ('  $oneLine'.length <= 80) {
     return '$oneLine\n';
   }
