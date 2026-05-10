@@ -94,6 +94,23 @@ impl FrbAttributes {
         self.any_eq(&FrbAttribute::Init)
     }
 
+    pub(crate) fn init_dart_code(&self) -> Option<String> {
+        let candidates = self
+            .0
+            .iter()
+            .filter_map(
+                |item| if_then_some!(let FrbAttribute::InitDartCode(inner) = item, inner.0.clone()),
+            )
+            .collect_vec();
+        if candidates.len() > 1 {
+            // We do not care about details of this warning message
+            // frb-coverage:ignore-start
+            log::warn!("Only one `init_dart_code = ..` attribute is expected; taking the last one");
+            // frb-coverage:ignore-end
+        }
+        candidates.last().cloned()
+    }
+
     pub(crate) fn ignore(&self) -> bool {
         self.any_eq(&FrbAttribute::Ignore)
     }
@@ -283,6 +300,7 @@ mod frb_keyword {
     syn::custom_keyword!(init);
     syn::custom_keyword!(ignore);
     syn::custom_keyword!(ignore_all);
+    syn::custom_keyword!(init_dart_code);
     syn::custom_keyword!(unignore);
     syn::custom_keyword!(opaque);
     syn::custom_keyword!(non_opaque);
@@ -333,6 +351,7 @@ enum FrbAttribute {
     Getter,
     Ignore,
     IgnoreAll,
+    InitDartCode(FrbAttributeInitDartCode),
     Unignore,
     Init,
     Mirror(FrbAttributeMirror),
@@ -444,6 +463,10 @@ impl Parse for FrbAttribute {
             input.parse::<default>()?;
             input.parse::<Token![=]>()?;
             input.parse().map(Default)?
+        } else if lookahead.peek(init_dart_code) {
+            input.parse::<init_dart_code>()?;
+            input.parse::<Token![=]>()?;
+            input.parse().map(InitDartCode)?
         } else if lookahead.peek(dart_code) {
             input.parse::<dart_code>()?;
             input.parse::<Token![=]>()?;
@@ -680,6 +703,15 @@ impl Parse for FrbAttributeDartCode {
 }
 
 #[derive(Clone, Serialize, Eq, PartialEq, Debug)]
+struct FrbAttributeInitDartCode(String);
+
+impl Parse for FrbAttributeInitDartCode {
+    fn parse(input: ParseStream) -> Result<Self> {
+        input.parse::<syn::LitStr>().map(|x| Self(x.value()))
+    }
+}
+
+#[derive(Clone, Serialize, Eq, PartialEq, Debug)]
 struct FrbAttributeName(String);
 
 impl Parse for FrbAttributeName {
@@ -720,8 +752,8 @@ impl Parse for FrbAttributeSerDes {
 mod tests {
     use crate::codegen::ir::mir::default::MirDefaultValue;
     use crate::codegen::parser::mir::parser::attribute::{
-        FrbAttribute, FrbAttributeDartCode, FrbAttributeDefaultValue, FrbAttributeMirror,
-        FrbAttributeName, FrbAttributeSerDes, FrbAttributes, NamedOption,
+        FrbAttribute, FrbAttributeDartCode, FrbAttributeDefaultValue, FrbAttributeInitDartCode,
+        FrbAttributeMirror, FrbAttributeName, FrbAttributeSerDes, FrbAttributes, NamedOption,
     };
     use crate::if_then_some;
     use quote::quote;
@@ -911,6 +943,19 @@ mod tests {
                 "a\nb\nc".to_owned()
             ))])
         );
+        Ok(())
+    }
+
+    #[test]
+    fn test_init_dart_code() -> anyhow::Result<()> {
+        let parsed = parse(r###"#[frb(init_dart_code="a\nb\nc")]"###)?;
+        assert_eq!(
+            parsed,
+            FrbAttributes(vec![FrbAttribute::InitDartCode(FrbAttributeInitDartCode(
+                "a\nb\nc".to_owned()
+            ))])
+        );
+        assert_eq!(parsed.init_dart_code(), Some("a\nb\nc".to_owned()));
         Ok(())
     }
 

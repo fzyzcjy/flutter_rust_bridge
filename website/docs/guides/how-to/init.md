@@ -18,6 +18,22 @@ Indeed, the `flutter_rust_bridge_codegen create` already creates an init functio
 
 Remark: The function needs to be inside your Rust input folder, otherwise it is simply ignored.
 
+## Use `#[frb(init_dart_code = ...)]`
+
+If a Rust declaration needs Dart-side initialization during `RustLib.init()`,
+annotate the generated Rust function with `#[frb(init_dart_code = "...")]`.
+The Dart code runs after all `#[frb(init)]` Rust initializers, inside the generated
+`executeRustInitializers` method, where `api` refers to the generated Dart API.
+
+For example:
+
+```rust
+#[frb(init_dart_code = r#"
+api.setupDartRuntime();
+"#)]
+pub fn setup_dart_runtime() {}
+```
+
 ## Alternative approach
 
 Alternatively, if you do not want to use the annotation above,
