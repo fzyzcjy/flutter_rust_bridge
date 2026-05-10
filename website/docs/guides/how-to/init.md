@@ -39,7 +39,7 @@ For example:
 
 ```rust
 #[frb(init_dart_code = r#"
-api.crateApiSetupDartRuntime();
+print("hi");
 "#)]
 pub fn setup_dart_runtime() {}
 ```
@@ -50,7 +50,7 @@ The generated code will look roughly like this:
 @override
 Future<void> executeRustInitializers() async {
   await api.letsInitAppHere();
-  api.crateApiSetupDartRuntime();
+  print("hi");
 }
 ```
 
