@@ -51,7 +51,7 @@ When running web tests in Docker containers, puppeteer needs `--no-sandbox` flag
 
 ## CI Discipline
 
-CI is slow and often queues for a long time. Before pushing a non-trivial FRB change, run the smallest meaningful tests in the appropriate local development environment and understand the result locally first. Do not use CI as the first feedback loop for changes that can be verified locally.
+CI is slow and often queues for a long time. Before pushing a non-trivial FRB change, run meaningful local tests in the appropriate development environment and understand the result locally first. Scale the local test scope with the risk and blast radius of the change. Do not use CI as the first feedback loop for changes that can be verified locally.
 
 Choose tests by blast radius:
 - Runtime changes: run the relevant Rust package tests
