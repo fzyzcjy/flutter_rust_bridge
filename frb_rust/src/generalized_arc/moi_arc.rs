@@ -116,11 +116,58 @@ macro_rules! frb_generated_moi_arc_def {
                 map.get_mut(&raw).unwrap().ref_count += 1;
             }
 
+            #[cfg(not(target_family = "wasm"))]
             pub fn decrement_strong_count(raw: usize) {
                 let mut pool = T::get_pool().write().unwrap();
                 let object = Self::decrement_strong_count_raw(raw, &mut pool);
                 drop(pool);
                 drop(object);
+            }
+
+            #[cfg(target_family = "wasm")]
+            pub fn decrement_strong_count(raw: usize) {
+                match T::get_pool().try_write() {
+                    Ok(mut pool) => {
+                        let object = Self::decrement_strong_count_raw(raw, &mut pool);
+                        drop(pool);
+                        drop(object);
+                    }
+                    Err(std::sync::TryLockError::WouldBlock) => {
+                        Self::decrement_strong_count_later(raw);
+                    }
+                    Err(std::sync::TryLockError::Poisoned(error)) => {
+                        let mut pool = error.into_inner();
+                        let object = Self::decrement_strong_count_raw(raw, &mut pool);
+                        drop(pool);
+                        drop(object);
+                    }
+                }
+            }
+
+            #[cfg(target_family = "wasm")]
+            fn decrement_strong_count_later(raw: usize) {
+                use $crate::for_generated::wasm_bindgen::JsCast;
+
+                let callback = $crate::for_generated::wasm_bindgen::closure::Closure::once_into_js(
+                    move || Self::decrement_strong_count(raw),
+                );
+                let global = $crate::for_generated::js_sys::global();
+                let set_timeout = $crate::for_generated::js_sys::Reflect::get(
+                    &global,
+                    &$crate::for_generated::wasm_bindgen::JsValue::from_str("setTimeout"),
+                )
+                .expect("setTimeout should exist");
+                let set_timeout = set_timeout
+                    .dyn_ref::<$crate::for_generated::js_sys::Function>()
+                    .expect("setTimeout should be a function");
+
+                set_timeout
+                    .call2(
+                        &global,
+                        &callback,
+                        &$crate::for_generated::wasm_bindgen::JsValue::from_f64(0.0),
+                    )
+                    .expect("setTimeout should accept callback");
             }
 
             fn decrement_strong_count_raw(
