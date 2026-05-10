@@ -7,5 +7,4 @@ ignore:
   - "**/*.g.dart"
   - "**/*.freezed.dart"
   - "**/test/"
-  - "frb_dart/"
   - "frb_example/"
