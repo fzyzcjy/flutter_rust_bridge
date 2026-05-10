@@ -1,18 +1,29 @@
 # Logging
 
-flutter_rust_bridge configures platform-native console logging by default in projects created or integrated by the codegen tool:
+## Overview
 
-- `setup_default_user_utils()` configures platform-specific Rust console logging on supported platforms.
+There are three common logging cases:
 
-When you want Rust logs to follow the same Dart-side pipeline as the rest of your Flutter app, enable the built-in Rust-to-Dart bridge with one macro call:
+- Builtin Rust console logging: projects created or integrated by the codegen tool configure platform-native console logging by default via `setup_default_user_utils()`.
+- Builtin Rust-to-Dart logging: enable `enable_frb_rust_to_dart_logging!()` when Rust logs should enter Dart's `logging` package.
+- Alternative examples: older manual patterns remain possible when you want full control over platform loggers or streams.
 
-- `enable_frb_logging!()` bridges Rust `log` records into Dart's `logging` package.
+## Case 1: Builtin Rust console logging
 
-Use the bridge for app-level logging setups, for example when saving logs to a file, uploading them to a service, or using one Dart logging listener for both Dart and Rust code.
+### Approach 1: Use the default one
 
-## Built-in Rust-to-Dart logging
+If using the template by `flutter_rust_bridge_codegen create/integrate`, the "print logs to console" is configured by default,
+via the auto-generated call to `flutter_rust_bridge::setup_default_user_utils()`.
 
-### Bridge Rust logs to Dart
+Thus, you do not need to do anything :)
+
+This path sends Rust logs to platform-native logging tools such as Android Logcat, Apple unified logging, or the browser console on wasm.
+
+## Case 2: Builtin Rust-to-Dart logging
+
+Use the Rust-to-Dart bridge when you want Rust logs to follow the same Dart-side pipeline as the rest of your Flutter app, for example when saving logs to a file, uploading them to a service, or using one Dart logging listener for both Dart and Rust code.
+
+### Enable Rust-to-Dart logging
 
 First, ensure your Rust crate depends on the standard Rust `log` crate:
 
@@ -25,7 +36,7 @@ log = "0.4"
 Then enable the bridge with one macro call in a Rust file covered by `rust_input`:
 
 ```rust
-flutter_rust_bridge::enable_frb_logging!();
+flutter_rust_bridge::enable_frb_rust_to_dart_logging!();
 
 pub fn compute() {
     log::info!("start compute");
@@ -40,7 +51,7 @@ After code generation, `RustLib.init()` automatically initializes the generated 
 The default output is meant for quick start. For an app-specific logging setup, disable it:
 
 ```rust
-flutter_rust_bridge::enable_frb_logging!(
+flutter_rust_bridge::enable_frb_rust_to_dart_logging!(
     setup_dart_logging_output = false
 );
 ```
@@ -70,7 +81,7 @@ Rust `log::info!`, `log::warn!`, and similar calls will enter this Dart listener
 The bridge defaults to `log::LevelFilter::Info`. You can choose another Rust max level:
 
 ```rust
-flutter_rust_bridge::enable_frb_logging!(
+flutter_rust_bridge::enable_frb_rust_to_dart_logging!(
     max_level = log::LevelFilter::Debug
 );
 ```
@@ -78,20 +89,13 @@ flutter_rust_bridge::enable_frb_logging!(
 Both options can be combined:
 
 ```rust
-flutter_rust_bridge::enable_frb_logging!(
+flutter_rust_bridge::enable_frb_rust_to_dart_logging!(
     max_level = log::LevelFilter::Trace,
     setup_dart_logging_output = false
 );
 ```
 
-## Examples and alternatives
-
-### Approach 1: Use the default one
-
-If using the template by `flutter_rust_bridge_codegen create/integrate`, the "print logs to console" is configured by default,
-via the auto-generated call to `flutter_rust_bridge::setup_default_user_utils()`.
-
-Thus, you do not need to do anything :)
+## Case 3: Alternative examples
 
 ### Example 2: Print logs to console
 

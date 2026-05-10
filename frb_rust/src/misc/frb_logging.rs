@@ -1,23 +1,26 @@
 #[allow(clippy::crate_in_macro_def)]
 #[macro_export]
-macro_rules! enable_frb_logging {
+macro_rules! enable_frb_rust_to_dart_logging {
     () => {
-        $crate::enable_frb_logging!(
+        $crate::enable_frb_rust_to_dart_logging!(
             max_level = log::LevelFilter::Info,
             setup_dart_logging_output = true
         );
     };
     (max_level = $max_level:expr) => {
-        $crate::enable_frb_logging!(max_level = $max_level, setup_dart_logging_output = true);
+        $crate::enable_frb_rust_to_dart_logging!(
+            max_level = $max_level,
+            setup_dart_logging_output = true
+        );
     };
     (setup_dart_logging_output = $setup_dart_logging_output:expr) => {
-        $crate::enable_frb_logging!(
+        $crate::enable_frb_rust_to_dart_logging!(
             max_level = log::LevelFilter::Info,
             setup_dart_logging_output = $setup_dart_logging_output
         );
     };
     (setup_dart_logging_output = $setup_dart_logging_output:expr, max_level = $max_level:expr) => {
-        $crate::enable_frb_logging!(
+        $crate::enable_frb_rust_to_dart_logging!(
             max_level = $max_level,
             setup_dart_logging_output = $setup_dart_logging_output
         );
