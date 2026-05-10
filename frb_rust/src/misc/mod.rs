@@ -1,8 +1,6 @@
 pub(crate) mod atomic;
 pub(crate) mod dart_dynamic;
 pub(crate) mod into_into_dart;
-#[cfg(feature = "log")]
-pub(crate) mod logging;
 pub(crate) mod logs;
 pub(crate) mod manual_impl;
 pub(crate) mod panic_backtrace;

@@ -4,6 +4,8 @@ use crate::misc::panic_backtrace::PanicBacktrace;
 /// Surely, you are free to customize everything.
 pub fn setup_default_user_utils() {
     // setup log before others, such that we can see logs in other setup functions
+    #[cfg(feature = "log")]
+    setup_log_to_console(log::LevelFilter::Trace);
     setup_backtrace();
 }
 
@@ -20,11 +22,25 @@ pub fn setup_backtrace() {
     PanicBacktrace::setup();
 }
 
-// TODO: check if web logging requires this setup
-// #[cfg(feature = "log")]
-// fn setup_log_to_console() {
-//     #[cfg(target_family = "wasm")]
-//     let _ = crate::misc::web_utils::WebConsoleLogger::init();
+/// Setup platform-specific console logging with the given level filter.
+///
+/// # Example
+///
+/// ```rust,no_run
+/// flutter_rust_bridge::setup_log_to_console(
+///     if cfg!(debug_assertions) { log::LevelFilter::Trace } else { log::LevelFilter::Warn }
+/// );
+/// ```
+#[cfg(feature = "log")]
+pub fn setup_log_to_console(#[allow(unused)] level: log::LevelFilter) {
+    #[cfg(target_os = "android")]
+    let _ = android_logger::init_once(android_logger::Config::default().with_max_level(level));
 
-//     // TODO add more platforms
-// }
+    #[cfg(any(target_os = "ios", target_os = "macos"))]
+    let _ = oslog::OsLogger::new("frb_user").level_filter(level).init();
+
+    #[cfg(target_family = "wasm")]
+    let _ = crate::misc::web_utils::WebConsoleLogger::init(level);
+
+    // TODO add more platforms
+}

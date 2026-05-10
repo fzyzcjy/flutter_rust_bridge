@@ -70,8 +70,6 @@ pub use anyhow;
 pub use byteorder;
 #[cfg(target_family = "wasm")]
 pub use cast::slice_from_byte_buffer;
-#[cfg(feature = "log")]
-pub use chrono;
 #[cfg(feature = "rust-async")]
 pub use futures;
 #[cfg(target_family = "wasm")]

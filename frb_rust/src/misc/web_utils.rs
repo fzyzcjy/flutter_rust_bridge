@@ -37,32 +37,31 @@ pub(crate) fn script_path() -> Option<String> {
     .as_string()
 }
 
-// TODO check if this is needed for console logging
-// #[cfg(feature = "log")]
-// #[derive(Clone, Copy)]
-// pub(crate) struct WebConsoleLogger;
+#[cfg(feature = "log")]
+#[derive(Clone, Copy)]
+pub(crate) struct WebConsoleLogger;
 
-// #[cfg(feature = "log")]
-// static WEB_CONSOLE_LOGGER: WebConsoleLogger = WebConsoleLogger;
+#[cfg(feature = "log")]
+static WEB_CONSOLE_LOGGER: WebConsoleLogger = WebConsoleLogger;
 
-// #[cfg(feature = "log")]
-// impl WebConsoleLogger {
-//     pub(crate) fn init() -> Result<(), log::SetLoggerError> {
-//         log::set_logger(&WEB_CONSOLE_LOGGER).map(|()| log::set_max_level(log::LevelFilter::Trace))
-//     }
-// }
+#[cfg(feature = "log")]
+impl WebConsoleLogger {
+    pub(crate) fn init(level: log::LevelFilter) -> Result<(), log::SetLoggerError> {
+        log::set_logger(&WEB_CONSOLE_LOGGER).map(|()| log::set_max_level(level))
+    }
+}
 
-// #[cfg(feature = "log")]
-// impl log::Log for WebConsoleLogger {
-//     fn enabled(&self, _metadata: &log::Metadata) -> bool {
-//         true
-//     }
+#[cfg(feature = "log")]
+impl log::Log for WebConsoleLogger {
+    fn enabled(&self, _metadata: &log::Metadata) -> bool {
+        true
+    }
 
-//     fn log(&self, record: &log::Record) {
-//         if self.enabled(record.metadata()) {
-//             js_console_log(&format!("{} - {}", record.level(), record.args()));
-//         }
-//     }
+    fn log(&self, record: &log::Record) {
+        if self.enabled(record.metadata()) {
+            js_console_log(&format!("{} - {}", record.level(), record.args()));
+        }
+    }
 
-//     fn flush(&self) {}
-// }
+    fn flush(&self) {}
+}

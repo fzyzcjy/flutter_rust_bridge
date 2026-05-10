@@ -71,6 +71,7 @@ mod tests {
         ParserMirInternalConfig, RustInputNamespacePack,
     };
     use crate::codegen::parser::{parse_inner, MirPack};
+    use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::namespace::Namespace;
     use crate::utils::test_utils::{
         create_path_sanitizers, get_test_fixture_dir, json_golden_test,
@@ -156,6 +157,7 @@ mod tests {
         fixture_name: &str,
         rust_input_namespace_pack: Option<Box<dyn Fn(&Path) -> RustInputNamespacePack>>,
     ) -> anyhow::Result<(MirPack, PathBuf)> {
+        configure_opinionated_test_logging();
         let test_fixture_dir = get_test_fixture_dir(fixture_name);
         let rust_crate_dir = test_fixture_dir.clone();
         info!("test_fixture_dir={test_fixture_dir:?}");
