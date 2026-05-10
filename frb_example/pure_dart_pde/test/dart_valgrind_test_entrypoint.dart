@@ -279,9 +279,7 @@ Future<void> callFileEntrypoints() async {
   await event_listener_twin_rust_async_test.main(skipRustLibInit: true);
   await exception_twin_rust_async_test.main(skipRustLibInit: true);
   await exception_twin_sync_test.main(skipRustLibInit: true);
-  await external_type_in_crate_twin_rust_async_test.main(
-    skipRustLibInit: true,
-  );
+  await external_type_in_crate_twin_rust_async_test.main(skipRustLibInit: true);
   await external_type_in_crate_twin_sync_test.main(skipRustLibInit: true);
   await impl_trait_twin_sync_test.main(skipRustLibInit: true);
   await lifetimeable_twin_sync_test.main(skipRustLibInit: true);

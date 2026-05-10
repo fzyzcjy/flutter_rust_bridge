@@ -569,9 +569,7 @@ Future<void> callFileEntrypoints() async {
   await external_type_in_crate_twin_rust_async_sse_test.main(
     skipRustLibInit: true,
   );
-  await external_type_in_crate_twin_rust_async_test.main(
-    skipRustLibInit: true,
-  );
+  await external_type_in_crate_twin_rust_async_test.main(skipRustLibInit: true);
   await external_type_in_crate_twin_sse_test.main(skipRustLibInit: true);
   await external_type_in_crate_twin_sync_sse_test.main(skipRustLibInit: true);
   await external_type_in_crate_twin_sync_test.main(skipRustLibInit: true);
