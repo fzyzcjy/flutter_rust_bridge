@@ -5,7 +5,7 @@ pub struct Simple {
     values: Vec<String>,
 }
 
-#[frb(dart_collection_deep_equality)]
+#[flutter_rust_bridge_macros::frb(dart_collection_deep_equality)]
 pub struct DeepCollectionStruct {
     values: Vec<String>,
     map: HashMap<String, String>,

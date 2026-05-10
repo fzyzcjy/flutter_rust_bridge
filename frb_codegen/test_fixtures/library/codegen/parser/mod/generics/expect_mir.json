@@ -13,6 +13,7 @@
           "kind": {
             "Struct": {
               "comments": [],
+              "dart_collection_deep_equality": false,
               "dart_metadata_raw": [],
               "fields": [
                 {
@@ -83,6 +84,7 @@
           "kind": {
             "Struct": {
               "comments": [],
+              "dart_collection_deep_equality": false,
               "dart_metadata_raw": [],
               "fields": [
                 {
@@ -569,6 +571,7 @@
   "struct_pool": {
     "crate::api/MyGenericStruct": {
       "comments": [],
+      "dart_collection_deep_equality": false,
       "dart_metadata_raw": [],
       "fields": [
         {
