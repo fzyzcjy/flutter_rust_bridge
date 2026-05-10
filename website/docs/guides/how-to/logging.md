@@ -1,11 +1,14 @@
 # Logging
 
-flutter_rust_bridge provides two logging paths:
+flutter_rust_bridge configures platform-native console logging by default in projects created or integrated by the codegen tool:
 
 - `setup_default_user_utils()` configures platform-specific Rust console logging on supported platforms.
+
+When you want Rust logs to follow the same Dart-side pipeline as the rest of your Flutter app, enable the built-in Rust-to-Dart bridge with one macro call:
+
 - `enable_frb_logging!()` bridges Rust `log` records into Dart's `logging` package.
 
-Use the bridge when you want Rust logs to follow the same Dart-side pipeline as the rest of your Flutter app, for example when saving logs to a file, uploading them to a service, or using one Dart logging listener for both Dart and Rust code.
+Use the bridge for app-level logging setups, for example when saving logs to a file, uploading them to a service, or using one Dart logging listener for both Dart and Rust code.
 
 ## Built-in Rust-to-Dart logging
 
@@ -19,7 +22,7 @@ flutter_rust_bridge = "..."
 log = "0.4"
 ```
 
-Then enable the bridge in a Rust file covered by `rust_input`:
+Then enable the bridge with one macro call in a Rust file covered by `rust_input`:
 
 ```rust
 flutter_rust_bridge::enable_frb_logging!();
