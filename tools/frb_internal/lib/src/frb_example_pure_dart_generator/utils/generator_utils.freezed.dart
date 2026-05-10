@@ -78,7 +78,7 @@ as List<DuplicatorComponentMode>,
 
 class _DuplicatorMode extends DuplicatorMode {
   const _DuplicatorMode(final  List<DuplicatorComponentMode> components): _components = components,super._();
-
+  
 
  final  List<DuplicatorComponentMode> _components;
 @override List<DuplicatorComponentMode> get components {
