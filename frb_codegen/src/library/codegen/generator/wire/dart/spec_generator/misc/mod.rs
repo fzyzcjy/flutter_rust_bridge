@@ -247,65 +247,8 @@ fn generate_boilerplate(
 }
 
 fn generate_execute_dart_initializers(context: WireDartGeneratorContext) -> String {
-    let funcs = context.mir_pack.funcs_with_impl();
-    let init_func_name = funcs
-        .iter()
-        .find(|f| f.name.rust_style(true) == "frb_init_logger")
-        .map(|f| f.name_dart_wire());
-    let max_level_func_name = funcs
-        .iter()
-        .find(|f| f.name.rust_style(true) == "frb_logging_max_level")
-        .map(|f| f.name_dart_wire());
-    let setup_default_output_func_name = funcs
-        .iter()
-        .find(|f| f.name.rust_style(true) == "frb_logging_setup_dart_logging_output")
-        .map(|f| f.name_dart_wire());
-
-    generate_execute_dart_logging_initializer(DartLoggingInitializerFunctionNames {
-        init: init_func_name,
-        max_level: max_level_func_name,
-        setup_default_output: setup_default_output_func_name,
-    })
-}
-
-struct DartLoggingInitializerFunctionNames {
-    init: Option<String>,
-    max_level: Option<String>,
-    setup_default_output: Option<String>,
-}
-
-fn generate_execute_dart_logging_initializer(
-    function_names: DartLoggingInitializerFunctionNames,
-) -> String {
-    let Some(init_func_name) = function_names.init else {
-        return "".to_owned();
-    };
-
-    let max_level = function_names
-        .max_level
-        .map(|name| format!("api.{name}()"))
-        .unwrap_or_else(|| "'INFO'".to_owned());
-    let setup_default_output = function_names
-        .setup_default_output
-        .map(|name| format!("api.{name}()"))
-        .unwrap_or_else(|| "true".to_owned());
-
-    format!(
-        r#"
-                    FrbDartLogging.init(
-                      rustLogStream: api.{init_func_name}(maxLevel: {max_level}),
-                      mapRecord: (record) => FrbLogRecordData(
-                        level: record.level,
-                        message: record.message,
-                        target: record.target,
-                        modulePath: record.modulePath,
-                        file: record.file,
-                        line: record.line,
-                      ),
-                      setupDefaultOutput: {setup_default_output},
-                    );
-"#
-    )
+    let _ = context;
+    "".to_owned()
 }
 
 fn file_stem(p: &Path) -> String {
@@ -327,39 +270,6 @@ fn generate_import_dart_api_layer(
         })
         .collect::<anyhow::Result<Vec<_>>>()?
         .join(""))
-}
-
-#[cfg(test)]
-mod tests {
-    use super::{generate_execute_dart_logging_initializer, DartLoggingInitializerFunctionNames};
-
-    #[test]
-    fn test_generate_execute_dart_logging_initializer_uses_config_functions() {
-        let actual =
-            generate_execute_dart_logging_initializer(DartLoggingInitializerFunctionNames {
-                init: Some("frbInitLogger".to_owned()),
-                max_level: Some("frbLoggingMaxLevel".to_owned()),
-                setup_default_output: Some("frbLoggingSetupDartLoggingOutput".to_owned()),
-            });
-
-        assert!(actual.contains("FrbDartLogging.init("));
-        assert!(
-            actual.contains("rustLogStream: api.frbInitLogger(maxLevel: api.frbLoggingMaxLevel())")
-        );
-        assert!(actual.contains("setupDefaultOutput: api.frbLoggingSetupDartLoggingOutput()"));
-    }
-
-    #[test]
-    fn test_generate_execute_dart_logging_initializer_requires_init_function() {
-        let actual =
-            generate_execute_dart_logging_initializer(DartLoggingInitializerFunctionNames {
-                init: None,
-                max_level: Some("frbLoggingMaxLevel".to_owned()),
-                setup_default_output: Some("frbLoggingSetupDartLoggingOutput".to_owned()),
-            });
-
-        assert_eq!(actual, "");
-    }
 }
 
 // fn generate_wire_delegate_functions(func: &ExternFunc) -> Acc<Vec<WireDartOutputCode>> {
