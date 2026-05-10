@@ -504,38 +504,42 @@ Future<void> _maybeSetExitIfChanged(
   if (enable) {
     final command = 'git diff --exit-code ${extraArgs ?? ""}';
     final output = await _executeGitDiff(command);
-    final action = _decideGitDiffAction(
-      exitCode: output.exitCode,
-      phase: phase,
-      isCi: _isCi(),
-    );
+    _handleGitDiffResult(command: command, output: output, phase: phase);
+  }
+}
 
-    switch (action) {
-      case _GitDiffAction.continueSilently:
-        return;
-      case _GitDiffAction.warnDirty:
-        stderr.writeln(
-          'Warning: working tree is already dirty before running the command; continuing anyway.',
-        );
-        return;
-      case _GitDiffAction.warnUnavailable:
-        stderr.writeln(
-          'Warning: cannot check working tree cleanliness because git metadata is unavailable; continuing anyway.',
-        );
-        return;
-      case _GitDiffAction.failDirty:
-        throw _processExceptionForCommand(
-          command: command,
-          output: output,
-          message: 'Working tree changed.',
-        );
-      case _GitDiffAction.failUnavailable:
-        throw _processExceptionForCommand(
-          command: command,
-          output: output,
-          message: 'Cannot check working tree cleanliness.',
-        );
-    }
+void _handleGitDiffResult({
+  required String command,
+  required RunCommandOutput output,
+  required _GitDiffPhase phase,
+}) {
+  final action = _decideGitDiffAction(
+    exitCode: output.exitCode,
+    phase: phase,
+    isCi: _isCi(),
+  );
+
+  switch (action) {
+    case _GitDiffAction.continueSilently:
+      return;
+    case _GitDiffAction.warnDirty:
+      stderr.writeln(
+        'Warning: working tree is already dirty before running the command; continuing anyway.',
+      );
+      return;
+    case _GitDiffAction.warnUnavailable:
+      stderr.writeln(
+        'Warning: cannot check working tree cleanliness because git metadata is unavailable; continuing anyway.',
+      );
+      return;
+    case _GitDiffAction.failDirty:
+      throw Exception(
+        'Failed to check working tree after command: `$command` exited with ${output.exitCode}. Working tree changed.',
+      );
+    case _GitDiffAction.failUnavailable:
+      throw Exception(
+        'Failed to check working tree cleanliness: `$command` exited with ${output.exitCode}.',
+      );
   }
 }
 
@@ -549,24 +553,6 @@ _GitDiffResult _classifyGitDiffExitCode(int exitCode) {
 }
 
 bool _isCi() => Platform.environment['CI'] == 'true';
-
-ProcessException _processExceptionForCommand({
-  required String command,
-  required RunCommandOutput output,
-  required String message,
-}) {
-  final executable = Platform.isWindows ? 'powershell' : '/bin/sh';
-  final arguments = Platform.isWindows
-      ? ['-noprofile', '-command', '& $command']
-      : ['-c', command];
-
-  return ProcessException(
-    executable,
-    arguments,
-    'Bad exit code (${output.exitCode}). $message',
-    output.exitCode,
-  );
-}
 
 enum _GitDiffPhase { before, after }
 
