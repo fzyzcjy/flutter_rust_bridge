@@ -49,6 +49,91 @@ void main() {
       await controller.close();
     }
   });
+
+  test('Rust log stream errors are forwarded to Dart logging', () async {
+    final controller = StreamController<_RustLogRecord>();
+    final receivedRecords = <LogRecord>[];
+    final previousLevel = Logger.root.level;
+    final subscription = Logger.root.onRecord.listen(receivedRecords.add);
+    Logger.root.level = Level.ALL;
+
+    try {
+      FrbDartLogging.init<_RustLogRecord>(
+        rustLogStream: controller.stream,
+        setupDefaultOutput: false,
+        mapRecord: (record) => FrbLogRecordData(
+          level: record.level,
+          message: record.message,
+          target: record.target,
+          modulePath: null,
+          file: null,
+          line: null,
+        ),
+      );
+
+      final error = StateError('stream failed');
+      controller.addError(error, StackTrace.current);
+      await pumpEventQueue();
+
+      expect(receivedRecords, hasLength(1));
+      expect(receivedRecords.single.level, Level.SEVERE);
+      expect(receivedRecords.single.message, 'Error in Rust log stream');
+      expect(receivedRecords.single.error, same(error));
+      expect(receivedRecords.single.loggerName, 'flutter_rust_bridge.logging');
+    } finally {
+      Logger.root.level = previousLevel;
+      await subscription.cancel();
+      await controller.close();
+    }
+  });
+
+  test('Rust log levels are mapped to idiomatic Dart logging levels', () async {
+    final controller = StreamController<_RustLogRecord>();
+    final receivedRecords = <LogRecord>[];
+    final previousLevel = Logger.root.level;
+    final subscription = Logger.root.onRecord.listen(receivedRecords.add);
+    Logger.root.level = Level.ALL;
+
+    try {
+      FrbDartLogging.init<_RustLogRecord>(
+        rustLogStream: controller.stream,
+        setupDefaultOutput: false,
+        mapRecord: (record) => FrbLogRecordData(
+          level: record.level,
+          message: record.message,
+          target: record.target,
+          modulePath: null,
+          file: null,
+          line: null,
+        ),
+      );
+
+      controller.add(
+        const _RustLogRecord(
+          level: 'TRACE',
+          message: 'trace message',
+          target: 'rust.trace',
+        ),
+      );
+      controller.add(
+        const _RustLogRecord(
+          level: 'DEBUG',
+          message: 'debug message',
+          target: 'rust.debug',
+        ),
+      );
+      await pumpEventQueue();
+
+      expect(receivedRecords.map((record) => record.level), [
+        Level.FINER,
+        Level.FINE,
+      ]);
+    } finally {
+      Logger.root.level = previousLevel;
+      await subscription.cancel();
+      await controller.close();
+    }
+  });
 }
 
 class _RustLogRecord {

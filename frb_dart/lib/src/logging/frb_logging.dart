@@ -50,10 +50,17 @@ class FrbDartLogging {
       throw StateError('FRB logging should not be initialized twice');
     }
 
-    _subscription = rustLogStream.listen((record) {
-      final mapped = mapRecord(record);
-      Logger(mapped.target).log(_toDartLevel(mapped.level), mapped.message);
-    });
+    _subscription = rustLogStream.listen(
+      (record) {
+        final mapped = mapRecord(record);
+        Logger(mapped.target).log(_toDartLevel(mapped.level), mapped.message);
+      },
+      onError: (Object error, StackTrace stackTrace) {
+        Logger(
+          'flutter_rust_bridge.logging',
+        ).severe('Error in Rust log stream', error, stackTrace);
+      },
+    );
 
     if (setupDefaultOutput) {
       _setupDefaultOutput();
@@ -78,9 +85,9 @@ class FrbDartLogging {
   static Level _toDartLevel(String level) {
     switch (level.toUpperCase()) {
       case 'TRACE':
-        return Level.FINE;
+        return Level.FINER;
       case 'DEBUG':
-        return Level.CONFIG;
+        return Level.FINE;
       case 'INFO':
         return Level.INFO;
       case 'WARN':
