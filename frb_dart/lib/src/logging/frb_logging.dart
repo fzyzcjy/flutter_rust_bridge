@@ -6,13 +6,25 @@ import 'package:logging/logging.dart';
 
 /// A normalized Rust log record received through flutter_rust_bridge.
 class FrbLogRecordData {
+  /// The Rust `log` level name, for example `INFO` or `WARN`.
   final String level;
+
+  /// The formatted log message.
   final String message;
+
+  /// The Rust log target.
   final String target;
+
+  /// The Rust module path, when available.
   final String? modulePath;
+
+  /// The Rust source file, when available.
   final String? file;
+
+  /// The Rust source line, when available.
   final int? line;
 
+  /// Creates a normalized log record for Dart-side processing.
   const FrbLogRecordData({
     required this.level,
     required this.message,
@@ -28,6 +40,7 @@ class FrbDartLogging {
   static StreamSubscription<Object?>? _subscription;
   static StreamSubscription<LogRecord>? _defaultOutputSubscription;
 
+  /// Connects a generated Rust log stream to the Dart `logging` package.
   static void init<T>({
     required Stream<T> rustLogStream,
     required FrbLogRecordData Function(T record) mapRecord,
@@ -39,10 +52,7 @@ class FrbDartLogging {
 
     _subscription = rustLogStream.listen((record) {
       final mapped = mapRecord(record);
-      Logger(mapped.target).log(
-        _toDartLevel(mapped.level),
-        mapped.message,
-      );
+      Logger(mapped.target).log(_toDartLevel(mapped.level), mapped.message);
     });
 
     if (setupDefaultOutput) {
