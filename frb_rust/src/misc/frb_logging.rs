@@ -1,9 +1,27 @@
 #[macro_export]
 macro_rules! enable_frb_logging {
     () => {
-        $crate::enable_frb_logging!(max_level = log::LevelFilter::Info);
+        $crate::enable_frb_logging!(
+            max_level = log::LevelFilter::Info,
+            setup_dart_logging_output = true
+        );
     };
     (max_level = $max_level:expr) => {
+        $crate::enable_frb_logging!(max_level = $max_level, setup_dart_logging_output = true);
+    };
+    (setup_dart_logging_output = $setup_dart_logging_output:expr) => {
+        $crate::enable_frb_logging!(
+            max_level = log::LevelFilter::Info,
+            setup_dart_logging_output = $setup_dart_logging_output
+        );
+    };
+    (setup_dart_logging_output = $setup_dart_logging_output:expr, max_level = $max_level:expr) => {
+        $crate::enable_frb_logging!(
+            max_level = $max_level,
+            setup_dart_logging_output = $setup_dart_logging_output
+        );
+    };
+    (max_level = $max_level:expr, setup_dart_logging_output = $setup_dart_logging_output:expr) => {
         #[derive(Clone, Debug)]
         pub struct FrbLogRecord {
             pub level: String,
@@ -76,6 +94,11 @@ macro_rules! enable_frb_logging {
                 log::LevelFilter::Debug => 4,
                 log::LevelFilter::Trace => 5,
             }
+        }
+
+        #[doc(hidden)]
+        pub fn frb_logging_setup_dart_logging_output() -> bool {
+            $setup_dart_logging_output
         }
     };
 }

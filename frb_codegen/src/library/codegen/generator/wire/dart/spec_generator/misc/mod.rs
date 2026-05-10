@@ -254,6 +254,9 @@ fn generate_execute_dart_initializers(context: WireDartGeneratorContext) -> Stri
     let max_level_func = funcs
         .iter()
         .find(|f| f.name.rust_style(true) == "frb_logging_max_level");
+    let setup_default_output_func = funcs
+        .iter()
+        .find(|f| f.name.rust_style(true) == "frb_logging_setup_dart_logging_output");
 
     let Some(init_func) = init_func else {
         return "".to_owned();
@@ -262,6 +265,9 @@ fn generate_execute_dart_initializers(context: WireDartGeneratorContext) -> Stri
     let max_level = max_level_func
         .map(|f| format!("api.{}()", f.name_dart_wire()))
         .unwrap_or_else(|| "3".to_owned());
+    let setup_default_output = setup_default_output_func
+        .map(|f| format!("api.{}()", f.name_dart_wire()))
+        .unwrap_or_else(|| "true".to_owned());
     let init_func_name = init_func.name_dart_wire();
 
     format!(
@@ -276,6 +282,7 @@ fn generate_execute_dart_initializers(context: WireDartGeneratorContext) -> Stri
                         file: record.file,
                         line: record.line,
                       ),
+                      setupDefaultOutput: {setup_default_output},
                     );
 "#
     )
