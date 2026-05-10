@@ -211,8 +211,7 @@ class ItemContainerSolutionTwoTwinNormal {
       );
 
   @override
-  int get hashCode =>
-      name.hashCode ^ const DeepCollectionEquality().hash(items);
+  int get hashCode => name.hashCode ^ items.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -220,7 +219,7 @@ class ItemContainerSolutionTwoTwinNormal {
       other is ItemContainerSolutionTwoTwinNormal &&
           runtimeType == other.runtimeType &&
           name == other.name &&
-          const DeepCollectionEquality().equals(items, other.items);
+          items == other.items;
 }
 
 @freezed

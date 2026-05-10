@@ -127,6 +127,10 @@ impl FrbAttributes {
         !self.any_eq(&FrbAttribute::NonEq)
     }
 
+    pub(crate) fn dart_collection_deep_equality(&self) -> bool {
+        self.any_eq(&FrbAttribute::DartCollectionDeepEquality)
+    }
+
     pub(crate) fn positional(&self) -> bool {
         self.any_eq(&FrbAttribute::Positional)
     }
@@ -273,6 +277,7 @@ fn parse_syn_attribute(raw: &str) -> anyhow::Result<Attribute> {
 }
 
 mod frb_keyword {
+    syn::custom_keyword!(dart_collection_deep_equality);
     syn::custom_keyword!(mirror);
     syn::custom_keyword!(non_final);
     syn::custom_keyword!(sync);
@@ -326,6 +331,7 @@ impl Parse for FrbAttributesInner {
 // Alphabetical order
 #[derive(Eq, PartialEq, Debug, Clone)]
 enum FrbAttribute {
+    DartCollectionDeepEquality,
     Dart2Rust(FrbAttributeSerDes),
     DartCode(FrbAttributeDartCode),
     Default(FrbAttributeDefaultValue),
@@ -372,65 +378,69 @@ impl Parse for FrbAttribute {
 
         let lookahead = input.lookahead1();
 
-        let keyword_output = parse_keyword::<non_final, _>(input, &lookahead, non_final, NonFinal)
-            .or_else(|| parse_keyword::<sync, _>(input, &lookahead, sync, Sync))
-            .or_else(|| parse_keyword::<dart_async, _>(input, &lookahead, dart_async, DartAsync))
-            .or_else(|| {
-                parse_keyword::<stream_dart_await, _>(
-                    input,
-                    &lookahead,
-                    stream_dart_await,
-                    StreamDartAwait,
-                )
-            })
-            .or_else(|| parse_keyword::<getter, _>(input, &lookahead, getter, Getter))
-            .or_else(|| parse_keyword::<setter, _>(input, &lookahead, setter, Setter))
-            .or_else(|| parse_keyword::<init, _>(input, &lookahead, init, Init))
-            .or_else(|| parse_keyword::<ignore, _>(input, &lookahead, ignore, Ignore))
-            .or_else(|| parse_keyword::<ignore_all, _>(input, &lookahead, ignore_all, IgnoreAll))
-            .or_else(|| parse_keyword::<unignore, _>(input, &lookahead, unignore, Unignore))
-            .or_else(|| parse_keyword::<opaque, _>(input, &lookahead, opaque, Opaque))
-            .or_else(|| parse_keyword::<non_opaque, _>(input, &lookahead, non_opaque, NonOpaque))
-            .or_else(|| parse_keyword::<non_hash, _>(input, &lookahead, non_hash, NonHash))
-            .or_else(|| parse_keyword::<non_eq, _>(input, &lookahead, non_eq, NonEq))
-            .or_else(|| parse_keyword::<positional, _>(input, &lookahead, positional, Positional))
-            .or_else(|| parse_keyword::<proxy, _>(input, &lookahead, proxy, Proxy))
-            .or_else(|| {
-                parse_keyword::<json_serializable, _>(
-                    input,
-                    &lookahead,
-                    json_serializable,
-                    JsonSerializable,
-                )
-            })
-            .or_else(|| parse_keyword::<external, _>(input, &lookahead, external, External))
-            .or_else(|| {
-                parse_keyword::<type_64bit_int, _>(input, &lookahead, type_64bit_int, Type64bitInt)
-            })
-            // .or_else(|| {
-            //     parse_keyword::<generate_implementor_enum, _>(
-            //         input,
-            //         &lookahead,
-            //         generate_implementor_enum,
-            //         GenerateImplEnum,
-            //     )
-            // })
-            .or_else(|| {
-                parse_keyword::<rust_opaque_codec_moi, _>(
-                    input,
-                    &lookahead,
-                    rust_opaque_codec_moi,
-                    RustOpaqueCodecMoi,
-                )
-            })
-            .or_else(|| parse_keyword::<serialize, _>(input, &lookahead, serialize, Serialize))
-            .or_else(|| {
-                parse_keyword::<semi_serialize, _>(input, &lookahead, semi_serialize, SemiSerialize)
-            })
-            .or_else(|| parse_keyword::<ui_state, _>(input, &lookahead, ui_state, UiState))
-            .or_else(|| {
-                parse_keyword::<ui_mutation, _>(input, &lookahead, ui_mutation, UiMutation)
-            });
+        let keyword_output = parse_keyword::<dart_collection_deep_equality, _>(
+            input,
+            &lookahead,
+            dart_collection_deep_equality,
+            DartCollectionDeepEquality,
+        )
+        .or_else(|| parse_keyword::<non_final, _>(input, &lookahead, non_final, NonFinal))
+        .or_else(|| parse_keyword::<sync, _>(input, &lookahead, sync, Sync))
+        .or_else(|| parse_keyword::<dart_async, _>(input, &lookahead, dart_async, DartAsync))
+        .or_else(|| {
+            parse_keyword::<stream_dart_await, _>(
+                input,
+                &lookahead,
+                stream_dart_await,
+                StreamDartAwait,
+            )
+        })
+        .or_else(|| parse_keyword::<getter, _>(input, &lookahead, getter, Getter))
+        .or_else(|| parse_keyword::<setter, _>(input, &lookahead, setter, Setter))
+        .or_else(|| parse_keyword::<init, _>(input, &lookahead, init, Init))
+        .or_else(|| parse_keyword::<ignore, _>(input, &lookahead, ignore, Ignore))
+        .or_else(|| parse_keyword::<ignore_all, _>(input, &lookahead, ignore_all, IgnoreAll))
+        .or_else(|| parse_keyword::<unignore, _>(input, &lookahead, unignore, Unignore))
+        .or_else(|| parse_keyword::<opaque, _>(input, &lookahead, opaque, Opaque))
+        .or_else(|| parse_keyword::<non_opaque, _>(input, &lookahead, non_opaque, NonOpaque))
+        .or_else(|| parse_keyword::<non_hash, _>(input, &lookahead, non_hash, NonHash))
+        .or_else(|| parse_keyword::<non_eq, _>(input, &lookahead, non_eq, NonEq))
+        .or_else(|| parse_keyword::<positional, _>(input, &lookahead, positional, Positional))
+        .or_else(|| parse_keyword::<proxy, _>(input, &lookahead, proxy, Proxy))
+        .or_else(|| {
+            parse_keyword::<json_serializable, _>(
+                input,
+                &lookahead,
+                json_serializable,
+                JsonSerializable,
+            )
+        })
+        .or_else(|| parse_keyword::<external, _>(input, &lookahead, external, External))
+        .or_else(|| {
+            parse_keyword::<type_64bit_int, _>(input, &lookahead, type_64bit_int, Type64bitInt)
+        })
+        // .or_else(|| {
+        //     parse_keyword::<generate_implementor_enum, _>(
+        //         input,
+        //         &lookahead,
+        //         generate_implementor_enum,
+        //         GenerateImplEnum,
+        //     )
+        // })
+        .or_else(|| {
+            parse_keyword::<rust_opaque_codec_moi, _>(
+                input,
+                &lookahead,
+                rust_opaque_codec_moi,
+                RustOpaqueCodecMoi,
+            )
+        })
+        .or_else(|| parse_keyword::<serialize, _>(input, &lookahead, serialize, Serialize))
+        .or_else(|| {
+            parse_keyword::<semi_serialize, _>(input, &lookahead, semi_serialize, SemiSerialize)
+        })
+        .or_else(|| parse_keyword::<ui_state, _>(input, &lookahead, ui_state, UiState))
+        .or_else(|| parse_keyword::<ui_mutation, _>(input, &lookahead, ui_mutation, UiMutation));
         if let Some(keyword_output) = keyword_output {
             return keyword_output;
         }
@@ -830,6 +840,14 @@ mod tests {
     #[test]
     fn test_init() {
         simple_keyword_tester("init", FrbAttribute::Init);
+    }
+
+    #[test]
+    fn test_dart_collection_deep_equality() {
+        simple_keyword_tester(
+            "dart_collection_deep_equality",
+            FrbAttribute::DartCollectionDeepEquality,
+        );
     }
 
     #[test]

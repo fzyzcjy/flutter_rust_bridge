@@ -207,7 +207,7 @@ class MyTreeNodeTwinRustAsyncSse {
       valueI32.hashCode ^
       valueVecU8.hashCode ^
       valueBoolean.hashCode ^
-      const DeepCollectionEquality().hash(children);
+      children.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -217,7 +217,7 @@ class MyTreeNodeTwinRustAsyncSse {
           valueI32 == other.valueI32 &&
           valueVecU8 == other.valueVecU8 &&
           valueBoolean == other.valueBoolean &&
-          const DeepCollectionEquality().equals(children, other.children);
+          children == other.children;
 }
 
 class StructWithEnumTwinRustAsyncSse {

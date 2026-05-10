@@ -32,7 +32,8 @@ impl StructRefApiDartGenerator<'_> {
         let maybe_const = if const_capable { "const " } else { "" };
         let implements_exception = generate_dart_maybe_implements_exception(self.mir.is_exception);
         let methods_str = &methods.code;
-        let dart_collection_deep_equality = self.context.config.dart_collection_deep_equality;
+        let dart_collection_deep_equality =
+            self.context.config.dart_collection_deep_equality || src.dart_collection_deep_equality;
 
         let hashcode = if src.generate_hash {
             generate_hashcode(&src.fields, dart_collection_deep_equality)
@@ -59,6 +60,9 @@ impl StructRefApiDartGenerator<'_> {
                 {equals}
             }}"
         )
+        .lines()
+        .map(str::trim_end)
+        .join("\n")
     }
 
     fn generate_field_declarations(&self, src: &MirStruct) -> String {

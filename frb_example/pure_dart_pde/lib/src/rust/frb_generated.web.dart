@@ -16,6 +16,7 @@ import 'api/attribute.dart';
 import 'api/benchmark_misc.dart';
 import 'api/casted_primitive.dart';
 import 'api/chrono_type.dart';
+import 'api/collection_equality.dart';
 import 'api/comment.dart';
 import 'api/constructor.dart';
 import 'api/custom_ser_des.dart';
@@ -70,6 +71,8 @@ import 'api/pseudo_manual/benchmark_api_twin_rust_async.dart';
 import 'api/pseudo_manual/benchmark_api_twin_sync.dart';
 import 'api/pseudo_manual/chrono_type_twin_rust_async.dart';
 import 'api/pseudo_manual/chrono_type_twin_sync.dart';
+import 'api/pseudo_manual/collection_equality_twin_rust_async.dart';
+import 'api/pseudo_manual/collection_equality_twin_sync.dart';
 import 'api/pseudo_manual/comment_twin_rust_async.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
 import 'api/pseudo_manual/dart_fn_twin_rust_async.dart';
@@ -3001,6 +3004,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  StructWithDeepCollectionEqualityTwinNormal
+      dco_decode_box_autoadd_struct_with_deep_collection_equality_twin_normal(
+          dynamic raw);
+
+  @protected
+  StructWithDeepCollectionEqualityTwinRustAsync
+      dco_decode_box_autoadd_struct_with_deep_collection_equality_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  StructWithDeepCollectionEqualityTwinSync
+      dco_decode_box_autoadd_struct_with_deep_collection_equality_twin_sync(
+          dynamic raw);
+
+  @protected
   StructWithEnumTwinNormal dco_decode_box_autoadd_struct_with_enum_twin_normal(
       dynamic raw);
 
@@ -3080,6 +3098,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithRustAutoOpaqueWithNonCloneData
       dco_decode_box_autoadd_struct_with_rust_auto_opaque_with_non_clone_data(
+          dynamic raw);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinNormal
+      dco_decode_box_autoadd_struct_with_shallow_collection_equality_twin_normal(
+          dynamic raw);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinRustAsync
+      dco_decode_box_autoadd_struct_with_shallow_collection_equality_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinSync
+      dco_decode_box_autoadd_struct_with_shallow_collection_equality_twin_sync(
           dynamic raw);
 
   @protected
@@ -4563,6 +4596,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   int? dco_decode_opt_box_u_8(dynamic raw);
 
   @protected
+  List<String>? dco_decode_opt_list_String(dynamic raw);
+
+  @protected
   List<AttributeTwinNormal>? dco_decode_opt_list_attribute_twin_normal(
       dynamic raw);
 
@@ -4945,6 +4981,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_struct_with_dart_keyword_field_twin_sync(dynamic raw);
 
   @protected
+  StructWithDeepCollectionEqualityTwinNormal
+      dco_decode_struct_with_deep_collection_equality_twin_normal(dynamic raw);
+
+  @protected
+  StructWithDeepCollectionEqualityTwinRustAsync
+      dco_decode_struct_with_deep_collection_equality_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  StructWithDeepCollectionEqualityTwinSync
+      dco_decode_struct_with_deep_collection_equality_twin_sync(dynamic raw);
+
+  @protected
   StructWithEnumTwinNormal dco_decode_struct_with_enum_twin_normal(dynamic raw);
 
   @protected
@@ -5026,6 +5075,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithRustAutoOpaqueWithNonCloneData
       dco_decode_struct_with_rust_auto_opaque_with_non_clone_data(dynamic raw);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinNormal
+      dco_decode_struct_with_shallow_collection_equality_twin_normal(
+          dynamic raw);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinRustAsync
+      dco_decode_struct_with_shallow_collection_equality_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinSync
+      dco_decode_struct_with_shallow_collection_equality_twin_sync(dynamic raw);
 
   @protected
   StructWithTwoFieldTwinNormal dco_decode_struct_with_two_field_twin_normal(
@@ -7766,6 +7829,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  StructWithDeepCollectionEqualityTwinNormal
+      sse_decode_box_autoadd_struct_with_deep_collection_equality_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithDeepCollectionEqualityTwinRustAsync
+      sse_decode_box_autoadd_struct_with_deep_collection_equality_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithDeepCollectionEqualityTwinSync
+      sse_decode_box_autoadd_struct_with_deep_collection_equality_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
   StructWithEnumTwinNormal sse_decode_box_autoadd_struct_with_enum_twin_normal(
       SseDeserializer deserializer);
 
@@ -7851,6 +7929,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithRustAutoOpaqueWithNonCloneData
       sse_decode_box_autoadd_struct_with_rust_auto_opaque_with_non_clone_data(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinNormal
+      sse_decode_box_autoadd_struct_with_shallow_collection_equality_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinRustAsync
+      sse_decode_box_autoadd_struct_with_shallow_collection_equality_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinSync
+      sse_decode_box_autoadd_struct_with_shallow_collection_equality_twin_sync(
           SseDeserializer deserializer);
 
   @protected
@@ -9541,6 +9634,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   int? sse_decode_opt_box_u_8(SseDeserializer deserializer);
 
   @protected
+  List<String>? sse_decode_opt_list_String(SseDeserializer deserializer);
+
+  @protected
   List<AttributeTwinNormal>? sse_decode_opt_list_attribute_twin_normal(
       SseDeserializer deserializer);
 
@@ -9982,6 +10078,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  StructWithDeepCollectionEqualityTwinNormal
+      sse_decode_struct_with_deep_collection_equality_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithDeepCollectionEqualityTwinRustAsync
+      sse_decode_struct_with_deep_collection_equality_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithDeepCollectionEqualityTwinSync
+      sse_decode_struct_with_deep_collection_equality_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
   StructWithEnumTwinNormal sse_decode_struct_with_enum_twin_normal(
       SseDeserializer deserializer);
 
@@ -10076,6 +10187,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithRustAutoOpaqueWithNonCloneData
       sse_decode_struct_with_rust_auto_opaque_with_non_clone_data(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinNormal
+      sse_decode_struct_with_shallow_collection_equality_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinRustAsync
+      sse_decode_struct_with_shallow_collection_equality_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinSync
+      sse_decode_struct_with_shallow_collection_equality_twin_sync(
           SseDeserializer deserializer);
 
   @protected
@@ -12872,6 +12998,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       StructWithDartKeywordFieldTwinSync self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_struct_with_deep_collection_equality_twin_normal(
+      StructWithDeepCollectionEqualityTwinNormal self,
+      SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_box_autoadd_struct_with_deep_collection_equality_twin_rust_async(
+          StructWithDeepCollectionEqualityTwinRustAsync self,
+          SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_deep_collection_equality_twin_sync(
+      StructWithDeepCollectionEqualityTwinSync self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_struct_with_enum_twin_normal(
       StructWithEnumTwinNormal self, SseSerializer serializer);
 
@@ -12949,6 +13090,23 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_box_autoadd_struct_with_rust_auto_opaque_with_non_clone_data(
       StructWithRustAutoOpaqueWithNonCloneData self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_box_autoadd_struct_with_shallow_collection_equality_twin_normal(
+          StructWithShallowCollectionEqualityTwinNormal self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_box_autoadd_struct_with_shallow_collection_equality_twin_rust_async(
+          StructWithShallowCollectionEqualityTwinRustAsync self,
+          SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_shallow_collection_equality_twin_sync(
+      StructWithShallowCollectionEqualityTwinSync self,
+      SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_struct_with_two_field_twin_normal(
@@ -14596,6 +14754,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_opt_box_u_8(int? self, SseSerializer serializer);
 
   @protected
+  void sse_encode_opt_list_String(List<String>? self, SseSerializer serializer);
+
+  @protected
   void sse_encode_opt_list_attribute_twin_normal(
       List<AttributeTwinNormal>? self, SseSerializer serializer);
 
@@ -15022,6 +15183,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       StructWithDartKeywordFieldTwinSync self, SseSerializer serializer);
 
   @protected
+  void sse_encode_struct_with_deep_collection_equality_twin_normal(
+      StructWithDeepCollectionEqualityTwinNormal self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_deep_collection_equality_twin_rust_async(
+      StructWithDeepCollectionEqualityTwinRustAsync self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_deep_collection_equality_twin_sync(
+      StructWithDeepCollectionEqualityTwinSync self, SseSerializer serializer);
+
+  @protected
   void sse_encode_struct_with_enum_twin_normal(
       StructWithEnumTwinNormal self, SseSerializer serializer);
 
@@ -15108,6 +15283,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_struct_with_rust_auto_opaque_with_non_clone_data(
       StructWithRustAutoOpaqueWithNonCloneData self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_shallow_collection_equality_twin_normal(
+      StructWithShallowCollectionEqualityTwinNormal self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_shallow_collection_equality_twin_rust_async(
+      StructWithShallowCollectionEqualityTwinRustAsync self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_shallow_collection_equality_twin_sync(
+      StructWithShallowCollectionEqualityTwinSync self,
+      SseSerializer serializer);
 
   @protected
   void sse_encode_struct_with_two_field_twin_normal(

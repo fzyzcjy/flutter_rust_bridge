@@ -13,27 +13,53 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
             
 
-            class Simple  {
+            class DeepCollectionStruct  {
+                final List<String> values;
+final Map<String, String> map;
+final Set<String> set_;
+final List<String>? optionalValues;
+
+                const DeepCollectionStruct({required this.values ,required this.map ,required this.set_ ,this.optionalValues ,});
+
+
+
+
+
+        @override
+        int get hashCode => const DeepCollectionEquality().hash(values)^const DeepCollectionEquality().hash(map)^const DeepCollectionEquality().hash(set_)^const DeepCollectionEquality().hash(optionalValues);
+
+
+
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is DeepCollectionStruct &&
+                runtimeType == other.runtimeType
+                && const DeepCollectionEquality().equals(values, other.values)&& const DeepCollectionEquality().equals(map, other.map)&& const DeepCollectionEquality().equals(set_, other.set_)&& const DeepCollectionEquality().equals(optionalValues, other.optionalValues);
+
+            }
+
+class Simple  {
                 final int val;
 final List<String> values;
 
                 const Simple({required this.val ,required this.values ,});
 
-                
-                
 
-                
+
+
+
         @override
         int get hashCode => val.hashCode^const DeepCollectionEquality().hash(values);
-        
 
-                
+
+
         @override
         bool operator ==(Object other) =>
             identical(this, other) ||
             other is Simple &&
                 runtimeType == other.runtimeType
                 && val == other.val&& const DeepCollectionEquality().equals(values, other.values);
-        
+
             }
             

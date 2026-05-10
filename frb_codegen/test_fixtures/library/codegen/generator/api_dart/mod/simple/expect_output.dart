@@ -16,5 +16,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<void>  secondFunction({required Simple arg }) => RustLib.instance.api.crateApiSecondFunction(arg: arg);
 
+Future<void>  thirdFunction({required DeepCollectionStruct arg }) => RustLib.instance.api.crateApiThirdFunction(arg: arg);
+
             
             

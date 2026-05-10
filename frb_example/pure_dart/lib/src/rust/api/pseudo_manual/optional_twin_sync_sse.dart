@@ -97,10 +97,7 @@ class ElementTwinSyncSse {
 
   @override
   int get hashCode =>
-      tag.hashCode ^
-      text.hashCode ^
-      const DeepCollectionEquality().hash(attributes) ^
-      const DeepCollectionEquality().hash(children);
+      tag.hashCode ^ text.hashCode ^ attributes.hashCode ^ children.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -109,8 +106,8 @@ class ElementTwinSyncSse {
           runtimeType == other.runtimeType &&
           tag == other.tag &&
           text == other.text &&
-          const DeepCollectionEquality().equals(attributes, other.attributes) &&
-          const DeepCollectionEquality().equals(children, other.children);
+          attributes == other.attributes &&
+          children == other.children;
 }
 
 class ExoticOptionalsTwinSyncSse {
@@ -158,9 +155,9 @@ class ExoticOptionalsTwinSyncSse {
       int32List.hashCode ^
       float32List.hashCode ^
       float64List.hashCode ^
-      const DeepCollectionEquality().hash(attributes) ^
-      const DeepCollectionEquality().hash(attributesNullable) ^
-      const DeepCollectionEquality().hash(nullableAttributes) ^
+      attributes.hashCode ^
+      attributesNullable.hashCode ^
+      nullableAttributes.hashCode ^
       newtypeint.hashCode;
 
   @override
@@ -178,11 +175,9 @@ class ExoticOptionalsTwinSyncSse {
           int32List == other.int32List &&
           float32List == other.float32List &&
           float64List == other.float64List &&
-          const DeepCollectionEquality().equals(attributes, other.attributes) &&
-          const DeepCollectionEquality()
-              .equals(attributesNullable, other.attributesNullable) &&
-          const DeepCollectionEquality()
-              .equals(nullableAttributes, other.nullableAttributes) &&
+          attributes == other.attributes &&
+          attributesNullable == other.attributesNullable &&
+          nullableAttributes == other.nullableAttributes &&
           newtypeint == other.newtypeint;
 }
 
@@ -201,18 +196,15 @@ class OptVecsTwinSyncSse {
 
   @override
   int get hashCode =>
-      const DeepCollectionEquality().hash(i32) ^
-      const DeepCollectionEquality().hash(enums) ^
-      const DeepCollectionEquality().hash(strings) ^
-      const DeepCollectionEquality().hash(buffers);
+      i32.hashCode ^ enums.hashCode ^ strings.hashCode ^ buffers.hashCode;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is OptVecsTwinSyncSse &&
           runtimeType == other.runtimeType &&
-          const DeepCollectionEquality().equals(i32, other.i32) &&
-          const DeepCollectionEquality().equals(enums, other.enums) &&
-          const DeepCollectionEquality().equals(strings, other.strings) &&
-          const DeepCollectionEquality().equals(buffers, other.buffers);
+          i32 == other.i32 &&
+          enums == other.enums &&
+          strings == other.strings &&
+          buffers == other.buffers;
 }
