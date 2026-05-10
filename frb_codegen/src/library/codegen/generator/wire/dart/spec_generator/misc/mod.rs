@@ -121,6 +121,7 @@ fn generate_boilerplate(
             )
         })
         .join("");
+    let execute_dart_initializers = generate_execute_dart_initializers(context);
 
     let codegen_version = env!("CARGO_PKG_VERSION");
 
@@ -186,6 +187,7 @@ fn generate_boilerplate(
                   @override
                   Future<void> executeRustInitializers() async {{
                     {execute_rust_initializers}
+                    {execute_dart_initializers}
                   }}
 
                   @override
@@ -242,6 +244,41 @@ fn generate_boilerplate(
             ..Default::default()
         }],
     })
+}
+
+fn generate_execute_dart_initializers(context: WireDartGeneratorContext) -> String {
+    let funcs = context.mir_pack.funcs_with_impl();
+    let init_func = funcs
+        .iter()
+        .find(|f| f.name.rust_style(true) == "frb_init_logger");
+    let max_level_func = funcs
+        .iter()
+        .find(|f| f.name.rust_style(true) == "frb_logging_max_level");
+
+    let Some(init_func) = init_func else {
+        return "".to_owned();
+    };
+
+    let max_level = max_level_func
+        .map(|f| format!("api.{}()", f.name_dart_wire()))
+        .unwrap_or_else(|| "3".to_owned());
+    let init_func_name = init_func.name_dart_wire();
+
+    format!(
+        r#"
+                    FrbDartLogging.init(
+                      rustLogStream: api.{init_func_name}(maxLevel: {max_level}),
+                      mapRecord: (record) => FrbLogRecordData(
+                        level: record.level,
+                        message: record.message,
+                        target: record.target,
+                        modulePath: record.modulePath,
+                        file: record.file,
+                        line: record.line,
+                      ),
+                    );
+"#
+    )
 }
 
 fn file_stem(p: &Path) -> String {
