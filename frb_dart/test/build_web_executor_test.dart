@@ -9,6 +9,7 @@ void main() {
     expect(resolution.rustflags, buildWebDefaultWasmPackRustflags);
     expect(resolution.rustflags, contains('-C link-args=--shared-memory'));
     expect(resolution.rustflags, contains('-C link-args=--import-memory'));
+    expect(resolution.rustflags, contains('-C link-args=--export=__heap_base'));
     expect(
       resolution.rustflags,
       contains('-C link-args=--export=__wasm_init_tls'),
@@ -55,12 +56,14 @@ void main() {
   test(
     'override path with reordered default threaded wasm flags does not warn',
     () {
-      const override = '-C link-args=--stack-first '
+      const override =
+          '-C link-args=--stack-first '
           '-C link-args=--export=__tls_base '
           '-C target-feature=+atomics,+bulk-memory,+mutable-globals '
           '-C link-args=--export=__tls_align '
           '-C link-args=--max-memory=1073741824 '
           '-C link-args=--import-memory '
+          '-C link-args=--export=__heap_base '
           '-C link-args=--shared-memory '
           '-C link-args=--export=__tls_size '
           '-C link-args=--export=__wasm_init_tls';

@@ -13,7 +13,7 @@ class GeneralizedFrbRustBinding {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   GeneralizedFrbRustBinding(ExternalLibrary externalLibrary)
-      : _wasmBindgenName = externalLibrary.wasmBindgenName;
+    : _wasmBindgenName = externalLibrary.wasmBindgenName;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void storeDartPostCObject() {}
@@ -78,11 +78,10 @@ class GeneralizedFrbRustBinding {
   PlatformPointer dartOpaqueDart2RustEncode(
     Object object,
     NativePortType dartHandlerPort,
-  ) =>
-      _wasmBindgen.frb_dart_opaque_dart2rust_encode(
-        object.jsify()!,
-        dartHandlerPort,
-      );
+  ) => _wasmBindgen.frb_dart_opaque_dart2rust_encode(
+    object.jsify()!,
+    dartHandlerPort,
+  );
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   Object dartOpaqueRust2DartDecode(int ptr) =>

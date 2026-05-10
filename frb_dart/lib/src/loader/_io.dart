@@ -13,8 +13,9 @@ FutureOr<ExternalLibrary> loadExternalLibrary(
 ) async {
   final ioDirectory = config.ioDirectory;
   return loadExternalLibraryRaw(
-    nativeLibDirWhenNonPackaged:
-        ioDirectory == null ? null : Directory.current.uri.resolve(ioDirectory),
+    nativeLibDirWhenNonPackaged: ioDirectory == null
+        ? null
+        : Directory.current.uri.resolve(ioDirectory),
     stem: config.stem,
   );
 }
@@ -37,8 +38,8 @@ ExternalLibrary loadExternalLibraryRaw({
     String name,
     ExternalLibrary Function(String debugInfo) fallback,
   ) {
-    final effectiveNativeLibDir = Platform
-            .environment['FRB_DART_LOAD_EXTERNAL_LIBRARY_NATIVE_LIB_DIR']
+    final effectiveNativeLibDir =
+        Platform.environment['FRB_DART_LOAD_EXTERNAL_LIBRARY_NATIVE_LIB_DIR']
             ?.toUriDirectory() ??
         nativeLibDirWhenNonPackaged;
 

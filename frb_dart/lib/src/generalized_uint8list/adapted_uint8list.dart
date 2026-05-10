@@ -10,7 +10,7 @@ class AdaptedUint8List implements BaseGeneralizedUint8List<JSUint8Array> {
 
   /// {@macro flutter_rust_bridge.internal}
   AdaptedUint8List(int length, GeneralizedFrbRustBinding binding)
-      : _inner = Uint8List(length);
+    : _inner = Uint8List(length);
 
   @override
   int get length => _inner.length;

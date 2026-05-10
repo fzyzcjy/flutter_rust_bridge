@@ -20,9 +20,9 @@ class RustArc<T> extends Droppable {
     required int ptr,
     required super.externalSizeOnNative,
     required RustArcStaticData<T> staticData,
-  })  : assert(ptr != 0),
-        _staticData = staticData,
-        super(ptr: PlatformPointerUtil.ptrFromInt(ptr));
+  }) : assert(ptr != 0),
+       _staticData = staticData,
+       super(ptr: PlatformPointerUtil.ptrFromInt(ptr));
 
   /// Mimic `std::sync::Arc::clone`
   RustArc<T> clone() {
@@ -71,11 +71,11 @@ class RustArcStaticData<T> extends DroppableStaticData {
 
     /// The function pointer to `rustArcDecrementStrongCount`
     required CrossPlatformFinalizerArg rustArcDecrementStrongCountPtr,
-  })  : _rustArcIncrementStrongCount = rustArcIncrementStrongCount,
-        super(
-          releaseFn: rustArcDecrementStrongCount,
-          releaseFnPtr: rustArcDecrementStrongCountPtr,
-        );
+  }) : _rustArcIncrementStrongCount = rustArcIncrementStrongCount,
+       super(
+         releaseFn: rustArcDecrementStrongCount,
+         releaseFnPtr: rustArcDecrementStrongCountPtr,
+       );
 }
 
 /// The type of [RustArcStaticData._rustArcIncrementStrongCount]

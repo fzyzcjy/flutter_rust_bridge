@@ -87,7 +87,8 @@ Future<void> _sanityChecks(BuildWebArgs args) async {
   await _ensurePackageInstalled(
     binaryName: 'wasm-pack',
     install: () async => await runCommand('cargo', ['install', 'wasm-pack']),
-    hint: 'wasm-pack is required, but not found in the path.\n'
+    hint:
+        'wasm-pack is required, but not found in the path.\n'
         'Please install wasm-pack by following the instructions at https://rustwasm.github.io/wasm-pack/\n'
         'or running `cargo install wasm-pack`.',
   );
@@ -143,8 +144,7 @@ Future<String> _getRustCreateName({required String rustCrateDir}) async {
       ['read-manifest'],
       pwd: rustCrateDir,
       silent: true,
-    ))
-        .stdout,
+    )).stdout,
   );
 
   final rustCrateName = (manifest['targets'] as List).firstWhere(
@@ -217,6 +217,7 @@ const buildWebDefaultWasmPackRustflagSegments = [
   '-C link-args=--shared-memory',
   '-C link-args=--max-memory=1073741824',
   '-C link-args=--import-memory',
+  '-C link-args=--export=__heap_base',
   '-C link-args=--export=__wasm_init_tls',
   '-C link-args=--export=__tls_size',
   '-C link-args=--export=__tls_align',
@@ -224,15 +225,14 @@ const buildWebDefaultWasmPackRustflagSegments = [
 ];
 
 /// Default threaded-WASM rustflags used by `build-web`.
-final buildWebDefaultWasmPackRustflags =
-    buildWebDefaultWasmPackRustflagSegments.join(' ');
+final buildWebDefaultWasmPackRustflags = buildWebDefaultWasmPackRustflagSegments
+    .join(' ');
 
 bool _containsDefaultWasmPackRustflags(String rustflags) {
   return buildWebDefaultWasmPackRustflagSegments.every(rustflags.contains);
 }
 
 @visibleForTesting
-
 /// Resolves the effective `wasm-pack` rustflags and any warning to display.
 WasmPackRustflagsResolution computeWasmPackRustflagsResolution({
   required String? argsOverride,

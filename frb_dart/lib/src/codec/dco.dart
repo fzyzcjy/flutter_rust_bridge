@@ -33,8 +33,7 @@ class DcoCodec<S, E extends Object>
   void freeWireSyncRust2Dart(
     WireSyncRust2DartDco raw,
     GeneralizedFrbRustBinding generalizedFrbRustBinding,
-  ) =>
-      generalizedFrbRustBinding.freeWireSyncRust2DartDco(raw);
+  ) => generalizedFrbRustBinding.freeWireSyncRust2DartDco(raw);
 }
 
 class _DcoSimpleDecoder<S, E extends Object> extends SimpleDecoder<S, E> {

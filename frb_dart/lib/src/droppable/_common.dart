@@ -32,8 +32,8 @@ abstract class Droppable implements DroppableBase {
 
   /// {@macro flutter_rust_bridge.internal}
   Droppable({required PlatformPointer ptr, required this.externalSizeOnNative})
-      : assert(!PlatformPointerUtil.isNullPtr(ptr)),
-        _ptr = ptr {
+    : assert(!PlatformPointerUtil.isNullPtr(ptr)),
+      _ptr = ptr {
     // Note: The finalizer attaches to the `_ptr` at *current* time,
     // thus even if we assign `RustArc._ptr = something-new`, this finalizer
     // attachment will not be changed.
@@ -91,8 +91,8 @@ class DroppableStaticData {
   DroppableStaticData({
     required void Function(PlatformPointer) releaseFn,
     required CrossPlatformFinalizerArg releaseFnPtr,
-  })  : _releaseFn = releaseFn,
-        _releaseFnPtr = releaseFnPtr;
+  }) : _releaseFn = releaseFn,
+       _releaseFnPtr = releaseFnPtr;
 }
 
 /// {@macro flutter_rust_bridge.internal}
@@ -104,6 +104,7 @@ class DroppableDisposedException implements FrbException {
   const DroppableDisposedException(this.name);
 
   @override
-  String toString() => 'DroppableDisposedException: '
+  String toString() =>
+      'DroppableDisposedException: '
       'Try to use `$name` after it has been disposed';
 }
