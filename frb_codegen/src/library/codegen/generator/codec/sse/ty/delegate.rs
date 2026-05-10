@@ -104,7 +104,10 @@ impl CodecSseTyTrait for DelegateCodecSseTy<'_> {
                     }
                 },
                 MirTypeDelegate::Uuid => "self.as_bytes().to_vec()".to_owned(),
-                MirTypeDelegate::SerdeJsonValue => "serde_json::to_string(&self).expect(\"Failed to serialize serde_json::Value\")".to_owned(),
+                MirTypeDelegate::SerdeJsonValue => {
+                    "serde_json::to_string(&self).expect(\"Failed to serialize serde_json::Value\")"
+                        .to_owned()
+                }
                 MirTypeDelegate::StreamSink(_) => return Some(lang.throw_unimplemented("")),
                 MirTypeDelegate::BigPrimitive(_) => "self.to_string()".to_owned(),
                 MirTypeDelegate::RustAutoOpaqueExplicit(_ir) => {
