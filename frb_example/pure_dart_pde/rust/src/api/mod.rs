@@ -46,6 +46,7 @@ pub mod primitive_misc;
 pub mod proxy;
 pub mod pseudo_manual;
 pub mod raw_string;
+pub mod result_oxidized;
 pub mod rust_auto_opaque;
 pub mod rust_opaque;
 pub mod rust_opaque_sync;

@@ -12,7 +12,6 @@ import 'misc_example.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `build_hasher`, `clone`, `fmt`, `hash_one`
-// These functions are ignored (category: IgnoreBecauseOwnerTyShouldIgnore): `default`
 
 Future<Map<int, int>> funcHashMapI32I32TwinNormal(
         {required Map<int, int> arg}) =>
@@ -61,4 +60,7 @@ Future<Map<String, KitchenSinkTwinNormal>>
             .crateApiMapAndSetFuncHashMapStringComplexEnumTwinNormal(arg: arg);
 
 // Rust type: RustOpaqueNom<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<CustomHasherTwinNormal>>
-abstract class CustomHasherTwinNormal implements RustOpaqueInterface {}
+abstract class CustomHasherTwinNormal implements RustOpaqueInterface {
+  static Future<CustomHasherTwinNormal> default_() =>
+      RustLib.instance.api.crateApiMapAndSetCustomHasherTwinNormalDefault();
+}

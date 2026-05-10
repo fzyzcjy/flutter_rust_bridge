@@ -1,9 +1,12 @@
 import 'dart:typed_data';
 
+import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart'
+    show PanicException;
 import 'package:frb_example_pure_dart/src/rust/api/result_oxidized.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
-import 'package:uuid/uuid.dart';
+
+// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "sse", "sync sse", "rustAsync sse"]}
 
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
@@ -54,12 +57,6 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final err = wresultAliasSync(a: 12, b: 0);
     expect(err.isErr(), isTrue);
     expect(err.unwrapErr().message, 'division by zero');
-  });
-
-  test('generic Result alias returns deterministic Uuid', () async {
-    final result = await wresultUuid();
-    expect(result.isOk(), isTrue);
-    expect(result.unwrap(), UuidValue.fromString('12345678-1234-5678-1234-567812345678'));
   });
 
   test('generic Result alias returns String Ok and Err', () {

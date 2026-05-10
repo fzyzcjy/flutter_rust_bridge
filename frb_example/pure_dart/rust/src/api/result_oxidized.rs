@@ -1,5 +1,7 @@
 use flutter_rust_bridge::frb;
 
+// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync", "rustAsync", "sse", "sync sse", "rustAsync sse"]}
+
 #[derive(Debug, Clone)]
 pub struct ResultOxidizedError {
     pub message: String,
@@ -16,10 +18,7 @@ pub type WResult<T> = std::result::Result<T, ResultOxidizedError>;
 pub type MyPair<A, B> = (A, B);
 
 #[frb(oxidized)]
-pub fn fallible_divide_oxidized(
-    a: i32,
-    b: i32,
-) -> Result<i32, ResultOxidizedError> {
+pub fn fallible_divide_oxidized(a: i32, b: i32) -> Result<i32, ResultOxidizedError> {
     divide_impl(a, b)
 }
 
@@ -29,10 +28,7 @@ pub fn fallible_divide_throwing(a: i32, b: i32) -> Result<i32, ResultOxidizedErr
 
 #[frb(oxidized)]
 #[frb(sync)]
-pub fn fallible_divide_oxidized_sync(
-    a: i32,
-    b: i32,
-) -> Result<i32, ResultOxidizedError> {
+pub fn fallible_divide_oxidized_sync(a: i32, b: i32) -> Result<i32, ResultOxidizedError> {
     divide_impl(a, b)
 }
 
@@ -45,11 +41,6 @@ pub fn panic_oxidized_result() -> Result<i32, ResultOxidizedError> {
 #[frb(sync)]
 pub fn wresult_alias_sync(a: i32, b: i32) -> WResult<i32> {
     divide_impl(a, b)
-}
-
-#[frb(oxidized)]
-pub fn wresult_uuid() -> WResult<uuid::Uuid> {
-    Ok(uuid::Uuid::from_u128(0x12345678123456781234567812345678))
 }
 
 #[frb(oxidized)]

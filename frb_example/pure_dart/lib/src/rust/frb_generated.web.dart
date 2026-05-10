@@ -254,6 +254,7 @@ import 'api/pseudo_manual/uuid_type_twin_sse.dart';
 import 'api/pseudo_manual/uuid_type_twin_sync.dart';
 import 'api/pseudo_manual/uuid_type_twin_sync_sse.dart';
 import 'api/raw_string.dart';
+import 'api/result_oxidized.dart';
 import 'api/rust_auto_opaque.dart';
 import 'api/rust_opaque.dart';
 import 'api/rust_opaque_sync.dart';
@@ -9698,6 +9699,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   (int, ApplicationMode) dco_decode_record_u_8_application_mode(dynamic raw);
+
+  @protected
+  ResultOxidizedError dco_decode_result_oxidized_error(dynamic raw);
+
+  @protected
+  ResultOxidizedUser dco_decode_result_oxidized_user(dynamic raw);
 
   @protected
   Sequences dco_decode_sequences(dynamic raw);
@@ -19589,6 +19596,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  ResultOxidizedError sse_decode_result_oxidized_error(
+      SseDeserializer deserializer);
+
+  @protected
+  ResultOxidizedUser sse_decode_result_oxidized_user(
+      SseDeserializer deserializer);
+
+  @protected
   Sequences sse_decode_sequences(SseDeserializer deserializer);
 
   @protected
@@ -27900,6 +27915,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  JSAny cst_encode_result_oxidized_error(ResultOxidizedError raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_String(raw.message)].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_result_oxidized_user(ResultOxidizedUser raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_i_32(raw.id), cst_encode_String(raw.name)].jsify()!;
+  }
+
+  @protected
   JSAny cst_encode_sequences(Sequences raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_list_prim_i_32_strict(raw.field0)].jsify()!;
@@ -28819,8 +28846,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       CustomHasherTwinRustAsync raw);
 
   @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsyncSse(
+      CustomHasherTwinRustAsyncSse raw);
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSse(
+      CustomHasherTwinSse raw);
+
+  @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
       CustomHasherTwinSync raw);
+
+  @protected
+  int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSyncSse(
+      CustomHasherTwinSyncSse raw);
 
   @protected
   int cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
@@ -29747,8 +29786,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       CustomHasherTwinRustAsync raw);
 
   @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinRustAsyncSse(
+      CustomHasherTwinRustAsyncSse raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSse(
+      CustomHasherTwinSse raw);
+
+  @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSync(
       CustomHasherTwinSync raw);
+
+  @protected
+  int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerCustomHasherTwinSyncSse(
+      CustomHasherTwinSyncSse raw);
 
   @protected
   int cst_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerDeliberateFailSanityCheckTwinNormal(
@@ -39108,6 +39159,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       (int, ApplicationMode) self, SseSerializer serializer);
 
   @protected
+  void sse_encode_result_oxidized_error(
+      ResultOxidizedError self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_result_oxidized_user(
+      ResultOxidizedUser self, SseSerializer serializer);
+
+  @protected
   void sse_encode_sequences(Sequences self, SseSerializer serializer);
 
   @protected
@@ -39999,6 +40058,41 @@ class RustLibWire implements BaseWire {
       wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_new() =>
           wasmModule
               .wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_new();
+
+  void wire__crate__api__map_and_set__CustomHasherTwinNormal_default(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__map_and_set__CustomHasherTwinNormal_default(port_);
+
+  void wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__CustomHasherTwinRustAsyncSse_default(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__CustomHasherTwinRustAsyncSse_default(
+              port_);
+
+  void wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__CustomHasherTwinRustAsync_default(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__CustomHasherTwinRustAsync_default(
+              port_);
+
+  void wire__crate__api__pseudo_manual__map_and_set_twin_sse__CustomHasherTwinSse_default(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__map_and_set_twin_sse__CustomHasherTwinSse_default(
+              port_);
+
+  void wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__CustomHasherTwinSyncSse_default(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__CustomHasherTwinSyncSse_default(
+              port_);
+
+  void wire__crate__api__pseudo_manual__map_and_set_twin_sync__CustomHasherTwinSync_default(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__map_and_set_twin_sync__CustomHasherTwinSync_default(
+              port_);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_a(
@@ -48881,6 +48975,23 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__basic_twin_sync_sse__example_basic_type_usize_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
+  void wire__crate__api__result_oxidized__fallible_divide_oxidized(
+          NativePortType port_, int a, int b) =>
+      wasmModule.wire__crate__api__result_oxidized__fallible_divide_oxidized(
+          port_, a, b);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__result_oxidized__fallible_divide_oxidized_sync(
+              int a, int b) =>
+          wasmModule
+              .wire__crate__api__result_oxidized__fallible_divide_oxidized_sync(
+                  a, b);
+
+  void wire__crate__api__result_oxidized__fallible_divide_throwing(
+          NativePortType port_, int a, int b) =>
+      wasmModule.wire__crate__api__result_oxidized__fallible_divide_throwing(
+          port_, a, b);
+
   void wire__crate__api__misc_no_twin_example_a__feature_gated_function(
           NativePortType port_) =>
       wasmModule
@@ -54106,6 +54217,15 @@ class RustLibWire implements BaseWire {
           wasmModule
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__optional_empty_datetime_utc_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__result_oxidized__pair_alias_sync(int a, String b) =>
+          wasmModule.wire__crate__api__result_oxidized__pair_alias_sync(a, b);
+
+  void wire__crate__api__result_oxidized__panic_oxidized_result(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__result_oxidized__panic_oxidized_result(port_);
 
   void wire__crate__api__dart_opaque__panic_unwrap_dart_opaque_twin_normal(
           NativePortType port_, PlatformPointer opaque) =>
@@ -60920,6 +61040,35 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__array_twin_sync_sse__use_msgid_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__result_oxidized__wresult_alias_sync(int a, int b) =>
+          wasmModule.wire__crate__api__result_oxidized__wresult_alias_sync(
+              a, b);
+
+  void wire__crate__api__result_oxidized__wresult_nested(
+          NativePortType port_, JSAny items) =>
+      wasmModule.wire__crate__api__result_oxidized__wresult_nested(
+          port_, items);
+
+  void wire__crate__api__result_oxidized__wresult_option(
+          NativePortType port_, int? value) =>
+      wasmModule.wire__crate__api__result_oxidized__wresult_option(
+          port_, value);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__result_oxidized__wresult_string_sync(String name) =>
+          wasmModule
+              .wire__crate__api__result_oxidized__wresult_string_sync(name);
+
+  void wire__crate__api__result_oxidized__wresult_struct(
+          NativePortType port_, int id, String name) =>
+      wasmModule.wire__crate__api__result_oxidized__wresult_struct(
+          port_, id, name);
+
+  void wire__crate__api__result_oxidized__wresult_vec(
+          NativePortType port_, int count) =>
+      wasmModule.wire__crate__api__result_oxidized__wresult_vec(port_, count);
+
   void rust_arc_increment_strong_count_RustOpaque_BoxdynDartDebugTwinMoi(
           int ptr) =>
       wasmModule
@@ -63665,6 +63814,29 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__constructor__ConstructorOpaqueSyncStructTwinNormal_new();
+
+  external void wire__crate__api__map_and_set__CustomHasherTwinNormal_default(
+      NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__map_and_set_twin_rust_async_sse__CustomHasherTwinRustAsyncSse_default(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__map_and_set_twin_rust_async__CustomHasherTwinRustAsync_default(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__map_and_set_twin_sse__CustomHasherTwinSse_default(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__map_and_set_twin_sync_sse__CustomHasherTwinSyncSse_default(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__map_and_set_twin_sync__CustomHasherTwinSync_default(
+          NativePortType port_);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__misc_no_twin_example_a__DeliberateFailSanityCheckTwinNormal_auto_accessor_get_deliberate_bad_field_a(
@@ -69801,6 +69973,16 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
+  external void wire__crate__api__result_oxidized__fallible_divide_oxidized(
+      NativePortType port_, int a, int b);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__result_oxidized__fallible_divide_oxidized_sync(
+          int a, int b);
+
+  external void wire__crate__api__result_oxidized__fallible_divide_throwing(
+      NativePortType port_, int a, int b);
+
   external void
       wire__crate__api__misc_no_twin_example_a__feature_gated_function(
           NativePortType port_);
@@ -73446,6 +73628,12 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__result_oxidized__pair_alias_sync(int a, String b);
+
+  external void wire__crate__api__result_oxidized__panic_oxidized_result(
+      NativePortType port_);
 
   external void
       wire__crate__api__dart_opaque__panic_unwrap_dart_opaque_twin_normal(
@@ -78203,6 +78391,24 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__result_oxidized__wresult_alias_sync(int a, int b);
+
+  external void wire__crate__api__result_oxidized__wresult_nested(
+      NativePortType port_, JSAny items);
+
+  external void wire__crate__api__result_oxidized__wresult_option(
+      NativePortType port_, int? value);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__result_oxidized__wresult_string_sync(String name);
+
+  external void wire__crate__api__result_oxidized__wresult_struct(
+      NativePortType port_, int id, String name);
+
+  external void wire__crate__api__result_oxidized__wresult_vec(
+      NativePortType port_, int count);
 
   external void
       rust_arc_increment_strong_count_RustOpaque_BoxdynDartDebugTwinMoi(

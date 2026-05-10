@@ -2,7 +2,6 @@ use crate::api::enumeration::{EnumSimpleTwinNormal, KitchenSinkTwinNormal};
 use crate::auxiliary::sample_types::MySize;
 use std::collections::{HashMap, HashSet};
 
-/// flutter_rust_bridge:ignore
 #[derive(Clone, Debug, Default)]
 pub struct CustomHasherTwinNormal(std::collections::hash_map::RandomState);
 
