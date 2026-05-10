@@ -35,6 +35,12 @@ impl Channel {
 #[derive(Clone)]
 pub struct SendableChannelHandle(SendableMessagePortHandle);
 
+impl SendableChannelHandle {
+    pub(crate) fn cache_key(&self) -> String {
+        self.0.cache_key()
+    }
+}
+
 pub fn channel_to_handle(channel: &Channel) -> SendableChannelHandle {
     SendableChannelHandle(message_port_to_handle(&channel.port))
 }

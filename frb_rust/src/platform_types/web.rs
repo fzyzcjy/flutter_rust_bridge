@@ -12,6 +12,12 @@ pub type DartAbi = wasm_bindgen::JsValue;
 #[derive(Clone, Debug)]
 pub struct SendableMessagePortHandle(String);
 
+impl SendableMessagePortHandle {
+    pub(crate) fn cache_key(&self) -> String {
+        self.0.clone()
+    }
+}
+
 pub fn message_port_to_handle(port: &MessagePort) -> SendableMessagePortHandle {
     SendableMessagePortHandle(
         port.dyn_ref::<BroadcastChannel>()

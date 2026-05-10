@@ -1,5 +1,4 @@
 use crate::codec::BaseCodec;
-use crate::codec::Rust2DartMessageTrait;
 use crate::generalized_isolate::SendableChannelHandle;
 use std::marker::PhantomData;
 
@@ -20,7 +19,6 @@ impl<Rust2DartCodec: BaseCodec> StreamSinkCloser<Rust2DartCodec> {
 
 impl<Rust2DartCodec: BaseCodec> Drop for StreamSinkCloser<Rust2DartCodec> {
     fn drop(&mut self) {
-        super::stream_sink::sender(&self.sendable_channel_handle)
-            .send_or_warn(Rust2DartCodec::encode_close_stream().into_dart_abi())
+        super::stream_sink::close_stream::<Rust2DartCodec>(&self.sendable_channel_handle)
     }
 }
