@@ -21,6 +21,17 @@ void handleCustomizedStructTwinSync({required CustomizedTwinSync val}) =>
         .crateApiPseudoManualAttributeTwinSyncHandleCustomizedStructTwinSync(
             val: val);
 
+void requestInitDartCodeMessageTwinSync() => RustLib.instance.api
+    .crateApiPseudoManualAttributeTwinSyncRequestInitDartCodeMessageTwinSync();
+
+void recordInitDartCodeMessageTwinSync({required String message}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualAttributeTwinSyncRecordInitDartCodeMessageTwinSync(
+            message: message);
+
+List<String> getInitDartCodeMessagesTwinSync() => RustLib.instance.api
+    .crateApiPseudoManualAttributeTwinSyncGetInitDartCodeMessagesTwinSync();
+
 UserIdTwinSync nextUserIdTwinSync(
         {UserIdTwinSync userId = const UserIdTwinSync()}) =>
     RustLib.instance.api

@@ -21,6 +21,17 @@ Future<void> handleCustomizedStructTwinSse({required CustomizedTwinSse val}) =>
         .crateApiPseudoManualAttributeTwinSseHandleCustomizedStructTwinSse(
             val: val);
 
+Future<void> requestInitDartCodeMessageTwinSse() => RustLib.instance.api
+    .crateApiPseudoManualAttributeTwinSseRequestInitDartCodeMessageTwinSse();
+
+void recordInitDartCodeMessageTwinSse({required String message}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualAttributeTwinSseRecordInitDartCodeMessageTwinSse(
+            message: message);
+
+List<String> getInitDartCodeMessagesTwinSse() => RustLib.instance.api
+    .crateApiPseudoManualAttributeTwinSseGetInitDartCodeMessagesTwinSse();
+
 Future<UserIdTwinSse> nextUserIdTwinSse(
         {UserIdTwinSse userId = const UserIdTwinSse()}) =>
     RustLib.instance.api
