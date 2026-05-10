@@ -21,16 +21,6 @@ Future<void> handleCustomizedStructTwinNormal(
     RustLib.instance.api
         .crateApiAttributeHandleCustomizedStructTwinNormal(val: val);
 
-Future<void> requestInitDartCodeMessageTwinNormal() => RustLib.instance.api
-    .crateApiAttributeRequestInitDartCodeMessageTwinNormal();
-
-void recordInitDartCodeMessageTwinNormal({required String message}) =>
-    RustLib.instance.api
-        .crateApiAttributeRecordInitDartCodeMessageTwinNormal(message: message);
-
-List<String> getInitDartCodeMessagesTwinNormal() =>
-    RustLib.instance.api.crateApiAttributeGetInitDartCodeMessagesTwinNormal();
-
 Future<UserIdTwinNormal> nextUserIdTwinNormal(
         {UserIdTwinNormal userId = const UserIdTwinNormal()}) =>
     RustLib.instance.api.crateApiAttributeNextUserIdTwinNormal(userId: userId);

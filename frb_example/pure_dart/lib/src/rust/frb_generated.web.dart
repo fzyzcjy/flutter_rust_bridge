@@ -34,6 +34,7 @@ import 'api/exception.dart';
 import 'api/external_impl.dart';
 import 'api/external_type_in_crate.dart';
 import 'api/impl_trait.dart';
+import 'api/init_dart_code.dart';
 import 'api/inside_macro.dart';
 import 'api/lifetimeable.dart';
 import 'api/map_and_set.dart';
@@ -50901,46 +50902,9 @@ class RustLibWire implements BaseWire {
                   ptr_, rust_vec_len_, data_len_);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__attribute__get_init_dart_code_messages_twin_normal() =>
+      wire__crate__api__init_dart_code__get_init_dart_code_messages() =>
           wasmModule
-              .wire__crate__api__attribute__get_init_dart_code_messages_twin_normal();
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__attribute_twin_rust_async__get_init_dart_code_messages_twin_rust_async() =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__attribute_twin_rust_async__get_init_dart_code_messages_twin_rust_async();
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire__crate__api__pseudo_manual__attribute_twin_rust_async_sse__get_init_dart_code_messages_twin_rust_async_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__attribute_twin_rust_async_sse__get_init_dart_code_messages_twin_rust_async_sse(
-                  ptr_, rust_vec_len_, data_len_);
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire__crate__api__pseudo_manual__attribute_twin_sse__get_init_dart_code_messages_twin_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__attribute_twin_sse__get_init_dart_code_messages_twin_sse(
-                  ptr_, rust_vec_len_, data_len_);
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__attribute_twin_sync__get_init_dart_code_messages_twin_sync() =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__attribute_twin_sync__get_init_dart_code_messages_twin_sync();
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire__crate__api__pseudo_manual__attribute_twin_sync_sse__get_init_dart_code_messages_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__attribute_twin_sync_sse__get_init_dart_code_messages_twin_sync_sse(
-                  ptr_, rust_vec_len_, data_len_);
+              .wire__crate__api__init_dart_code__get_init_dart_code_messages();
 
   void wire__crate__api__mirror__get_message_twin_normal(
           NativePortType port_) =>
@@ -54483,52 +54447,11 @@ class RustLibWire implements BaseWire {
                   ptr_, rust_vec_len_, data_len_);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__attribute__record_init_dart_code_message_twin_normal(
+      wire__crate__api__init_dart_code__record_init_dart_code_message(
               String message) =>
           wasmModule
-              .wire__crate__api__attribute__record_init_dart_code_message_twin_normal(
+              .wire__crate__api__init_dart_code__record_init_dart_code_message(
                   message);
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__attribute_twin_rust_async__record_init_dart_code_message_twin_rust_async(
-              String message) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__attribute_twin_rust_async__record_init_dart_code_message_twin_rust_async(
-                  message);
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire__crate__api__pseudo_manual__attribute_twin_rust_async_sse__record_init_dart_code_message_twin_rust_async_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__attribute_twin_rust_async_sse__record_init_dart_code_message_twin_rust_async_sse(
-                  ptr_, rust_vec_len_, data_len_);
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire__crate__api__pseudo_manual__attribute_twin_sse__record_init_dart_code_message_twin_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__attribute_twin_sse__record_init_dart_code_message_twin_sse(
-                  ptr_, rust_vec_len_, data_len_);
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__attribute_twin_sync__record_init_dart_code_message_twin_sync(
-              String message) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__attribute_twin_sync__record_init_dart_code_message_twin_sync(
-                  message);
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire__crate__api__pseudo_manual__attribute_twin_sync_sse__record_init_dart_code_message_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__attribute_twin_sync_sse__record_init_dart_code_message_twin_sync_sse(
-                  ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__event_listener__register_event_listener_twin_normal(
           NativePortType port_, String listener) =>
@@ -54650,49 +54573,11 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__mirror_twin_sync_sse__repeat_sequence_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
-  void wire__crate__api__attribute__request_init_dart_code_message_twin_normal(
+  void wire__crate__api__init_dart_code__request_init_dart_code_message(
           NativePortType port_) =>
       wasmModule
-          .wire__crate__api__attribute__request_init_dart_code_message_twin_normal(
+          .wire__crate__api__init_dart_code__request_init_dart_code_message(
               port_);
-
-  void wire__crate__api__pseudo_manual__attribute_twin_rust_async__request_init_dart_code_message_twin_rust_async(
-          NativePortType port_) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__attribute_twin_rust_async__request_init_dart_code_message_twin_rust_async(
-              port_);
-
-  void wire__crate__api__pseudo_manual__attribute_twin_rust_async_sse__request_init_dart_code_message_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__attribute_twin_rust_async_sse__request_init_dart_code_message_twin_rust_async_sse(
-              port_, ptr_, rust_vec_len_, data_len_);
-
-  void wire__crate__api__pseudo_manual__attribute_twin_sse__request_init_dart_code_message_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_) =>
-      wasmModule
-          .wire__crate__api__pseudo_manual__attribute_twin_sse__request_init_dart_code_message_twin_sse(
-              port_, ptr_, rust_vec_len_, data_len_);
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__attribute_twin_sync__request_init_dart_code_message_twin_sync() =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__attribute_twin_sync__request_init_dart_code_message_twin_sync();
-
-  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire__crate__api__pseudo_manual__attribute_twin_sync_sse__request_init_dart_code_message_twin_sync_sse(
-              PlatformGeneralizedUint8ListPtr ptr_,
-              int rust_vec_len_,
-              int data_len_) =>
-          wasmModule
-              .wire__crate__api__pseudo_manual__attribute_twin_sync_sse__request_init_dart_code_message_twin_sync_sse(
-                  ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__array__return_boxed_feed_id_twin_normal(
           NativePortType port_, JSAny id) =>
@@ -71348,31 +71233,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int data_len_);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__attribute__get_init_dart_code_messages_twin_normal();
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__attribute_twin_rust_async__get_init_dart_code_messages_twin_rust_async();
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire__crate__api__pseudo_manual__attribute_twin_rust_async_sse__get_init_dart_code_messages_twin_rust_async_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire__crate__api__pseudo_manual__attribute_twin_sse__get_init_dart_code_messages_twin_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__attribute_twin_sync__get_init_dart_code_messages_twin_sync();
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire__crate__api__pseudo_manual__attribute_twin_sync_sse__get_init_dart_code_messages_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
+      wire__crate__api__init_dart_code__get_init_dart_code_messages();
 
   external void wire__crate__api__mirror__get_message_twin_normal(
       NativePortType port_);
@@ -73845,34 +73706,8 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int data_len_);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__attribute__record_init_dart_code_message_twin_normal(
+      wire__crate__api__init_dart_code__record_init_dart_code_message(
           String message);
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__attribute_twin_rust_async__record_init_dart_code_message_twin_rust_async(
-          String message);
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire__crate__api__pseudo_manual__attribute_twin_rust_async_sse__record_init_dart_code_message_twin_rust_async_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire__crate__api__pseudo_manual__attribute_twin_sse__record_init_dart_code_message_twin_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__attribute_twin_sync__record_init_dart_code_message_twin_sync(
-          String message);
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire__crate__api__pseudo_manual__attribute_twin_sync_sse__record_init_dart_code_message_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
 
   external void
       wire__crate__api__event_listener__register_event_listener_twin_normal(
@@ -73959,35 +73794,8 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int data_len_);
 
   external void
-      wire__crate__api__attribute__request_init_dart_code_message_twin_normal(
+      wire__crate__api__init_dart_code__request_init_dart_code_message(
           NativePortType port_);
-
-  external void
-      wire__crate__api__pseudo_manual__attribute_twin_rust_async__request_init_dart_code_message_twin_rust_async(
-          NativePortType port_);
-
-  external void
-      wire__crate__api__pseudo_manual__attribute_twin_rust_async_sse__request_init_dart_code_message_twin_rust_async_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external void
-      wire__crate__api__pseudo_manual__attribute_twin_sse__request_init_dart_code_message_twin_sse(
-          NativePortType port_,
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__pseudo_manual__attribute_twin_sync__request_init_dart_code_message_twin_sync();
-
-  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
-      wire__crate__api__pseudo_manual__attribute_twin_sync_sse__request_init_dart_code_message_twin_sync_sse(
-          PlatformGeneralizedUint8ListPtr ptr_,
-          int rust_vec_len_,
-          int data_len_);
 
   external void wire__crate__api__array__return_boxed_feed_id_twin_normal(
       NativePortType port_, JSAny id);

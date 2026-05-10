@@ -4,9 +4,6 @@
 
 use flutter_rust_bridge::frb;
 use log::info;
-use std::sync::Mutex;
-
-static INIT_DART_CODE_MESSAGES_TWIN_NORMAL: Mutex<Vec<String>> = Mutex::new(vec![]);
 
 #[frb]
 #[derive(Debug, Clone)]
@@ -34,29 +31,6 @@ impl StructWithOnlyIgnoredMethodTwinSyncSse {
 #[flutter_rust_bridge::frb(sync)]
 pub fn handle_customized_struct_twin_sync_sse(val: CustomizedTwinSyncSse) {
     info!("{:#?}", val);
-}
-
-#[frb(init_dart_code = "recordInitDartCodeMessageTwinSyncSse(message: 'first');")]
-#[frb(init_dart_code = "recordInitDartCodeMessageTwinSyncSse(message: 'second');")]
-#[flutter_rust_bridge::frb(serialize)]
-#[flutter_rust_bridge::frb(sync)]
-pub fn request_init_dart_code_message_twin_sync_sse() {}
-
-#[frb(sync)]
-#[flutter_rust_bridge::frb(serialize)]
-#[flutter_rust_bridge::frb(sync)]
-pub fn record_init_dart_code_message_twin_sync_sse(message: String) {
-    let mut messages = INIT_DART_CODE_MESSAGES_TWIN_NORMAL.lock().unwrap();
-    if !messages.contains(&message) {
-        messages.push(message);
-    }
-}
-
-#[frb(sync)]
-#[flutter_rust_bridge::frb(serialize)]
-#[flutter_rust_bridge::frb(sync)]
-pub fn get_init_dart_code_messages_twin_sync_sse() -> Vec<String> {
-    INIT_DART_CODE_MESSAGES_TWIN_NORMAL.lock().unwrap().clone()
 }
 
 /// Example for @freezed and @meta.immutable

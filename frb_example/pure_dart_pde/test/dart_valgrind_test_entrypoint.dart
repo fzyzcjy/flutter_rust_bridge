@@ -28,6 +28,7 @@ import 'api/exception_test.dart' as exception_test;
 import 'api/external_impl_test.dart' as external_impl_test;
 import 'api/external_type_in_crate_test.dart' as external_type_in_crate_test;
 import 'api/impl_trait_test.dart' as impl_trait_test;
+import 'api/init_dart_code_test.dart' as init_dart_code_test;
 import 'api/inside_macro_test.dart' as inside_macro_test;
 import 'api/lifetimeable_test.dart' as lifetimeable_test;
 import 'api/map_and_set_test.dart' as map_and_set_test;
@@ -267,6 +268,9 @@ Future<void> callFileEntrypoints() async {
     skipRustLibInit: true,
   );
   await impl_trait_test.main(
+    skipRustLibInit: true,
+  );
+  await init_dart_code_test.main(
     skipRustLibInit: true,
   );
   await inside_macro_test.main(

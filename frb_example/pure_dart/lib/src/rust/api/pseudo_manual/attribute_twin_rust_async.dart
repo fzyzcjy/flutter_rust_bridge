@@ -22,17 +22,6 @@ Future<void> handleCustomizedStructTwinRustAsync(
         .crateApiPseudoManualAttributeTwinRustAsyncHandleCustomizedStructTwinRustAsync(
             val: val);
 
-Future<void> requestInitDartCodeMessageTwinRustAsync() => RustLib.instance.api
-    .crateApiPseudoManualAttributeTwinRustAsyncRequestInitDartCodeMessageTwinRustAsync();
-
-void recordInitDartCodeMessageTwinRustAsync({required String message}) => RustLib
-    .instance.api
-    .crateApiPseudoManualAttributeTwinRustAsyncRecordInitDartCodeMessageTwinRustAsync(
-        message: message);
-
-List<String> getInitDartCodeMessagesTwinRustAsync() => RustLib.instance.api
-    .crateApiPseudoManualAttributeTwinRustAsyncGetInitDartCodeMessagesTwinRustAsync();
-
 Future<UserIdTwinRustAsync> nextUserIdTwinRustAsync(
         {UserIdTwinRustAsync userId = const UserIdTwinRustAsync()}) =>
     RustLib.instance.api
