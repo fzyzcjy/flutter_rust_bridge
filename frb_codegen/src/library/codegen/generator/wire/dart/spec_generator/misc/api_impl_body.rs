@@ -1,7 +1,7 @@
 use crate::codegen::generator::api_dart;
 use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::api_dart::spec_generator::function::{
-    compute_params_str, ApiDartGeneratedFunction,
+    compute_params_str, should_use_oxidized, ApiDartGeneratedFunction,
 };
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::codec::base::WireDartCodecEntrypoint;
@@ -28,6 +28,7 @@ pub(crate) fn generate_api_impl_normal_function(
     let wire_func_name = wire_func_name(func);
     let inner_func_stmt = dart2rust_codec.generate_dart2rust_inner_func_stmt(func, &wire_func_name);
     let execute_func_name = generate_execute_func_name(func, context);
+    let result_factory_args = generate_result_factory_args(func, context);
 
     let codec = generate_rust2dart_codec_object(func);
     let call_ffi_args = generate_call_ffi_args(func);
@@ -55,7 +56,7 @@ pub(crate) fn generate_api_impl_normal_function(
             constMeta: {const_meta_field_name},
             argValues: [{arg_values}],
             apiImpl: this,
-        ))",
+        ){result_factory_args})",
     );
     let function_implementation_body = if let Some(return_stream) = &api_dart_func.return_stream {
         let wrapped_call_handler = match func.mode {
@@ -109,12 +110,22 @@ pub(crate) fn generate_api_impl_normal_function(
 }
 
 fn generate_execute_func_name(func: &MirFunc, context: WireDartGeneratorContext) -> &'static str {
-    let use_oxidized = func.oxidized.unwrap_or(context.api_dart_config.use_oxidized) && func.fallible();
-    match (func.mode, use_oxidized) {
+    match (
+        func.mode,
+        should_use_oxidized(func, context.as_api_dart_context()),
+    ) {
         (MirFuncMode::Normal, true) => "executeNormalAsResult",
         (MirFuncMode::Normal, false) => "executeNormal",
         (MirFuncMode::Sync, true) => "executeSyncAsResult",
         (MirFuncMode::Sync, false) => "executeSync",
+    }
+}
+
+fn generate_result_factory_args(func: &MirFunc, context: WireDartGeneratorContext) -> &'static str {
+    if should_use_oxidized(func, context.as_api_dart_context()) {
+        ", ok: Ok.new, err: Err.new"
+    } else {
+        ""
     }
 }
 

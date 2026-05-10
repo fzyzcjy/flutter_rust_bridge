@@ -2,7 +2,6 @@ import 'package:flutter_rust_bridge/src/codec/base.dart';
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
 import 'package:flutter_rust_bridge/src/manual_impl/manual_impl.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
-import 'package:oxidized/oxidized.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 class DcoCodec<S, E extends Object>
@@ -27,7 +26,7 @@ class DcoCodec<S, E extends Object>
   }
 
   @override
-  Result<S, E> decodeObjectAsResult(dynamic raw) {
+  FrbResult<S, E> decodeObjectAsResult(dynamic raw) {
     final rawList = raw as List<dynamic>;
     return _DcoSimpleDecoder(this, rawList).decodeAsResult(rawList[0]);
   }
@@ -37,13 +36,14 @@ class DcoCodec<S, E extends Object>
       decodeObject(wireSyncRust2DartDcoIntoDart(raw));
 
   @override
-  Result<S, E> decodeWireSyncTypeAsResult(WireSyncRust2DartDco raw) =>
+  FrbResult<S, E> decodeWireSyncTypeAsResult(WireSyncRust2DartDco raw) =>
       decodeObjectAsResult(wireSyncRust2DartDcoIntoDart(raw));
 
   @override
-  void freeWireSyncRust2Dart(WireSyncRust2DartDco raw,
-          GeneralizedFrbRustBinding generalizedFrbRustBinding) =>
-      generalizedFrbRustBinding.freeWireSyncRust2DartDco(raw);
+  void freeWireSyncRust2Dart(
+    WireSyncRust2DartDco raw,
+    GeneralizedFrbRustBinding generalizedFrbRustBinding,
+  ) => generalizedFrbRustBinding.freeWireSyncRust2DartDco(raw);
 }
 
 class _DcoSimpleDecoder<S, E extends Object> extends SimpleDecoder<S, E> {
@@ -64,8 +64,9 @@ class _DcoSimpleDecoder<S, E extends Object> extends SimpleDecoder<S, E> {
     final decodeErrorData = codec.decodeErrorData;
     if (decodeErrorData == null) {
       throw Exception(
-          'transformRust2DartMessage received error message, but no decodeErrorData to parse it. '
-          'Raw data: $rawList');
+        'transformRust2DartMessage received error message, but no decodeErrorData to parse it. '
+        'Raw data: $rawList',
+      );
     }
     return decodeErrorData(rawList[1]);
   }

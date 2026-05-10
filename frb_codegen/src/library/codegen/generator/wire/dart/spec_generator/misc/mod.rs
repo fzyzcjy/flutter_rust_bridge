@@ -1,4 +1,5 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::api_dart::spec_generator::function::should_use_oxidized;
 use crate::codegen::generator::api_dart::spec_generator::misc::generate_imports_which_types_and_funcs_use;
 use crate::codegen::generator::misc::generate_code_header;
 use crate::codegen::generator::misc::target::{TargetOrCommon, TargetOrCommonMap};
@@ -106,6 +107,11 @@ fn generate_boilerplate(
     import 'dart:convert';
     import 'dart:async';
     ";
+    if (context.mir_pack.funcs_with_impl().iter())
+        .any(|func| should_use_oxidized(func, context.as_api_dart_context()))
+    {
+        universal_imports += "import 'package:oxidized/oxidized.dart';\n";
+    }
 
     let execute_rust_initializers = (context.mir_pack.funcs_with_impl().iter())
         .filter(|f| f.initializer)

@@ -6,7 +6,6 @@ import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized
 import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart';
 import 'package:flutter_rust_bridge/src/task.dart';
 import 'package:flutter_rust_bridge/src/utils/single_complete_port.dart';
-import 'package:oxidized/oxidized.dart';
 
 /// Generically handles a Dart-Rust call.
 class BaseHandler {
@@ -18,19 +17,25 @@ class BaseHandler {
     return completer.future.then(task.codec.decodeObject);
   }
 
-  /// Similar to [executeNormal], but returns an oxidized Result instead of throwing on error.
+  /// Similar to [executeNormal], but returns a caller-provided Result type instead of throwing on error.
   /// Panics still throw PanicException since they represent bugs, not expected errors.
-  Future<Result<S, E>> executeNormalAsResult<S, E extends Object>(
-      NormalTask<S, E> task) {
+  Future<R> executeNormalAsResult<S, E extends Object, R>(
+    NormalTask<S, E> task, {
+    required R Function(S value) ok,
+    required R Function(E error) err,
+  }) {
     final completer = Completer<dynamic>();
     final SendPort sendPort = singleCompletePort(completer);
     task.callFfi(sendPort.nativePort);
-    return completer.future.then(task.codec.decodeObjectAsResult);
+    return completer.future
+        .then(task.codec.decodeObjectAsResult)
+        .then((value) => value.into(ok: ok, err: err));
   }
 
   /// Similar to [executeNormal], except that this will return synchronously
   S executeSync<S, E extends Object, WireSyncType>(
-      SyncTask<S, E, WireSyncType> task) {
+    SyncTask<S, E, WireSyncType> task,
+  ) {
     final WireSyncType syncReturn;
     try {
       syncReturn = task.callFfi();
@@ -45,14 +50,19 @@ class BaseHandler {
       return task.codec.decodeWireSyncType(syncReturn);
     } finally {
       task.codec.freeWireSyncRust2Dart(
-          syncReturn, task.apiImpl.generalizedFrbRustBinding);
+        syncReturn,
+        task.apiImpl.generalizedFrbRustBinding,
+      );
     }
   }
 
-  /// Similar to [executeSync], but returns an oxidized Result instead of throwing on error.
+  /// Similar to [executeSync], but returns a caller-provided Result type instead of throwing on error.
   /// Panics still throw PanicException since they represent bugs, not expected errors.
-  Result<S, E> executeSyncAsResult<S, E extends Object, WireSyncType>(
-      SyncTask<S, E, WireSyncType> task) {
+  R executeSyncAsResult<S, E extends Object, WireSyncType, R>(
+    SyncTask<S, E, WireSyncType> task, {
+    required R Function(S value) ok,
+    required R Function(E error) err,
+  }) {
     final WireSyncType syncReturn;
     try {
       syncReturn = task.callFfi();
@@ -61,16 +71,22 @@ class BaseHandler {
       throw PanicException('EXECUTE_SYNC_ABORT $e $s');
     }
     try {
-      return task.codec.decodeWireSyncTypeAsResult(syncReturn);
+      return task.codec
+          .decodeWireSyncTypeAsResult(syncReturn)
+          .into(ok: ok, err: err);
     } finally {
       task.codec.freeWireSyncRust2Dart(
-          syncReturn, task.apiImpl.generalizedFrbRustBinding);
+        syncReturn,
+        task.apiImpl.generalizedFrbRustBinding,
+      );
     }
   }
 
   /// When Rust invokes a Dart function
-  void dartFnInvoke(List<dynamic> message,
-      GeneralizedFrbRustBinding generalizedFrbRustBinding) {
+  void dartFnInvoke(
+    List<dynamic> message,
+    GeneralizedFrbRustBinding generalizedFrbRustBinding,
+  ) {
     final [closureDartOpaque, ...args] = message;
     final closureDartObject =
         decodeDartOpaque(closureDartOpaque, generalizedFrbRustBinding)

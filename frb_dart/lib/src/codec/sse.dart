@@ -8,7 +8,6 @@ import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 import 'package:flutter_rust_bridge/src/platform_utils/platform_utils.dart';
 import 'package:flutter_rust_bridge/src/third_party/flutter_foundation_serialization/read_buffer.dart';
 import 'package:flutter_rust_bridge/src/third_party/flutter_foundation_serialization/write_buffer.dart';
-import 'package:oxidized/oxidized.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 class SseCodec<S, E extends Object>
@@ -37,7 +36,7 @@ class SseCodec<S, E extends Object>
   }
 
   @override
-  Result<S, E> decodeObjectAsResult(dynamic raw) {
+  FrbResult<S, E> decodeObjectAsResult(dynamic raw) {
     raw = maybeDartify(raw);
 
     if (raw is! Uint8List) {
@@ -52,7 +51,7 @@ class SseCodec<S, E extends Object>
       _decode(wireSyncRust2DartSseAsUint8ListView(raw));
 
   @override
-  Result<S, E> decodeWireSyncTypeAsResult(WireSyncRust2DartSse raw) =>
+  FrbResult<S, E> decodeWireSyncTypeAsResult(WireSyncRust2DartSse raw) =>
       _decodeAsResult(wireSyncRust2DartSseAsUint8ListView(raw));
 
   S _decode(Uint8List bytes) {
@@ -63,7 +62,7 @@ class SseCodec<S, E extends Object>
     return ans;
   }
 
-  Result<S, E> _decodeAsResult(Uint8List bytes) {
+  FrbResult<S, E> _decodeAsResult(Uint8List bytes) {
     final deserializer = SseDeserializer(bytes.buffer.asByteData());
     final action = deserializer.buffer.getUint8();
     final ans = _SseSimpleDecoder(this, deserializer).decodeAsResult(action);
@@ -72,9 +71,10 @@ class SseCodec<S, E extends Object>
   }
 
   @override
-  void freeWireSyncRust2Dart(WireSyncRust2DartSse raw,
-          GeneralizedFrbRustBinding generalizedFrbRustBinding) =>
-      generalizedFrbRustBinding.freeWireSyncRust2DartSse(raw);
+  void freeWireSyncRust2Dart(
+    WireSyncRust2DartSse raw,
+    GeneralizedFrbRustBinding generalizedFrbRustBinding,
+  ) => generalizedFrbRustBinding.freeWireSyncRust2DartSse(raw);
 }
 
 class _SseSimpleDecoder<S, E extends Object> extends SimpleDecoder<S, E> {
@@ -91,8 +91,9 @@ class _SseSimpleDecoder<S, E extends Object> extends SimpleDecoder<S, E> {
     final decodeErrorData = codec.decodeErrorData;
     if (decodeErrorData == null) {
       throw Exception(
-          'transformRust2DartMessage received error message, but no decodeErrorData to parse it. '
-          'Raw data: ${deserializer.buffer.data.buffer.asUint8List()}');
+        'transformRust2DartMessage received error message, but no decodeErrorData to parse it. '
+        'Raw data: ${deserializer.buffer.data.buffer.asUint8List()}',
+      );
     }
     return decodeErrorData(deserializer);
   }
@@ -108,7 +109,7 @@ class SseSerializer {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   SseSerializer(GeneralizedFrbRustBinding binding)
-      : buffer = WriteBuffer(binding: binding);
+    : buffer = WriteBuffer(binding: binding);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   WriteBufferRaw intoRaw() => buffer.intoRaw();
@@ -128,15 +129,21 @@ S _decodeObjectOfOtherType<S>(dynamic raw) {
   // Then, when panic happens, the Rust side WorkerPool will use JavaScript
   // to inform the error. Thus we have to use a simple JS implementable protocol.
   const decoder = DcoCodec(
-      decodeSuccessData: _unimplementedFunction, decodeErrorData: null);
+    decodeSuccessData: _unimplementedFunction,
+    decodeErrorData: null,
+  );
   return decoder.decodeObject(raw);
 }
 
-Result<S, E> _decodeObjectOfOtherTypeAsResult<S, E extends Object>(dynamic raw) {
+FrbResult<S, E> _decodeObjectOfOtherTypeAsResult<S, E extends Object>(
+  dynamic raw,
+) {
   const decoder = DcoCodec<dynamic, Object>(
-      decodeSuccessData: _unimplementedFunction, decodeErrorData: null);
+    decodeSuccessData: _unimplementedFunction,
+    decodeErrorData: null,
+  );
   final result = decoder.decodeObjectAsResult(raw);
-  return result.map((v) => v as S).mapErr((e) => e as E);
+  return result.mapOk((v) => v as S).mapErr((e) => e as E);
 }
 
 dynamic _unimplementedFunction(dynamic arg) => throw UnimplementedError();

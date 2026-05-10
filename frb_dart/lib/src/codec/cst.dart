@@ -1,6 +1,5 @@
 import 'package:flutter_rust_bridge/src/codec/base.dart';
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
-import 'package:oxidized/oxidized.dart';
 
 // This is nothing but "unreachable", so by definition it will not be covered
 // coverage:ignore-start
@@ -11,21 +10,23 @@ class CstCodec<S, E extends Object> extends BaseCodec<S, E, dynamic> {
 
   @override
   void freeWireSyncRust2Dart(
-          dynamic raw, GeneralizedFrbRustBinding generalizedFrbRustBinding) =>
-      throw UnimplementedError('unreachable');
+    dynamic raw,
+    GeneralizedFrbRustBinding generalizedFrbRustBinding,
+  ) => throw UnimplementedError('unreachable');
 
   @override
   S decodeObject(dynamic raw) => throw UnimplementedError('unreachable');
 
   @override
-  Result<S, E> decodeObjectAsResult(dynamic raw) =>
+  FrbResult<S, E> decodeObjectAsResult(dynamic raw) =>
       throw UnimplementedError('unreachable');
 
   @override
   S decodeWireSyncType(dynamic raw) => throw UnimplementedError('unreachable');
 
   @override
-  Result<S, E> decodeWireSyncTypeAsResult(dynamic raw) =>
+  FrbResult<S, E> decodeWireSyncTypeAsResult(dynamic raw) =>
       throw UnimplementedError('unreachable');
 }
+
 // coverage:ignore-end

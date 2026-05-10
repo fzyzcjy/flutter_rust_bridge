@@ -1,6 +1,5 @@
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
 import 'package:meta/meta.dart';
-import 'package:oxidized/oxidized.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 abstract class BaseCodec<S, E extends Object, WireSyncType> {
@@ -11,21 +10,73 @@ abstract class BaseCodec<S, E extends Object, WireSyncType> {
   S decodeObject(dynamic raw);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  Result<S, E> decodeObjectAsResult(dynamic raw);
+  FrbResult<S, E> decodeObjectAsResult(dynamic raw);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   S decodeWireSyncType(WireSyncType raw);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  Result<S, E> decodeWireSyncTypeAsResult(WireSyncType raw);
+  FrbResult<S, E> decodeWireSyncTypeAsResult(WireSyncType raw);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void freeWireSyncRust2Dart(
-      WireSyncType raw, GeneralizedFrbRustBinding generalizedFrbRustBinding);
+    WireSyncType raw,
+    GeneralizedFrbRustBinding generalizedFrbRustBinding,
+  );
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 class CloseStreamException implements Exception {}
+
+/// {@macro flutter_rust_bridge.only_for_generated_code}
+sealed class FrbResult<S, E extends Object> {
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  const FrbResult();
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  T into<T>({
+    required T Function(S value) ok,
+    required T Function(E error) err,
+  });
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  FrbResult<T, E> mapOk<T>(T Function(S value) transform) =>
+      into(ok: (value) => FrbOk(transform(value)), err: FrbErr.new);
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  FrbResult<S, T> mapErr<T extends Object>(T Function(E error) transform) =>
+      into(ok: FrbOk.new, err: (error) => FrbErr(transform(error)));
+}
+
+/// {@macro flutter_rust_bridge.only_for_generated_code}
+final class FrbOk<S, E extends Object> extends FrbResult<S, E> {
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  final S value;
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  const FrbOk(this.value);
+
+  @override
+  T into<T>({
+    required T Function(S value) ok,
+    required T Function(E error) err,
+  }) => ok(value);
+}
+
+/// {@macro flutter_rust_bridge.only_for_generated_code}
+final class FrbErr<S, E extends Object> extends FrbResult<S, E> {
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  final E error;
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  const FrbErr(this.error);
+
+  @override
+  T into<T>({
+    required T Function(S value) ok,
+    required T Function(E error) err,
+  }) => err(error);
+}
 
 /// {@macro flutter_rust_bridge.internal}
 abstract class SimpleDecoder<S, E extends Object> {
@@ -52,15 +103,15 @@ abstract class SimpleDecoder<S, E extends Object> {
   }
 
   /// {@macro flutter_rust_bridge.internal}
-  /// Decodes as oxidized Result instead of throwing on error.
+  /// Decodes as [FrbResult] instead of throwing on error.
   /// Panics still throw since they represent bugs, not expected errors.
-  Result<S, E> decodeAsResult(int action) {
+  FrbResult<S, E> decodeAsResult(int action) {
     switch (action) {
       case _Rust2DartAction.success:
-        return Ok(decodeSuccess());
+        return FrbOk(decodeSuccess());
 
       case _Rust2DartAction.error:
-        return Err(decodeError());
+        return FrbErr(decodeError());
 
       case _Rust2DartAction.panic:
         throw decodePanic();
