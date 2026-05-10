@@ -28,4 +28,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
       UserIdTwinSync(value: 12),
     );
   });
+
+  test('init_dart_code runs during RustLib.init', () {
+    expect(getInitDartCodeMessagesTwinSync(), ['first', 'second']);
+  });
 }
