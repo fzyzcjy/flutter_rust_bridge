@@ -480,19 +480,91 @@ Future<void> wrapMaybeSetExitIfChangedRaw(
   bool enable,
   Future<void> Function() inner, {
   String? extraArgs,
+  Future<RunCommandOutput> Function(String command)? gitDiffExecutor,
+  bool? isCi,
 }) async {
   // Before actually executing anything, check whether git repository is already dirty
-  await _maybeSetExitIfChanged(enable, extraArgs: extraArgs);
+  await _maybeSetExitIfChanged(
+    enable,
+    extraArgs: extraArgs,
+    phase: _GitDiffPhase.before,
+    gitDiffExecutor: gitDiffExecutor,
+    isCi: isCi,
+  );
   await inner();
   // The real check
-  await _maybeSetExitIfChanged(enable, extraArgs: extraArgs);
+  await _maybeSetExitIfChanged(
+    enable,
+    extraArgs: extraArgs,
+    phase: _GitDiffPhase.after,
+    gitDiffExecutor: gitDiffExecutor,
+    isCi: isCi,
+  );
 }
 
-Future<void> _maybeSetExitIfChanged(bool enable, {String? extraArgs}) async {
+Future<void> _maybeSetExitIfChanged(
+  bool enable, {
+  String? extraArgs,
+  required _GitDiffPhase phase,
+  Future<RunCommandOutput> Function(String command)? gitDiffExecutor,
+  bool? isCi,
+}) async {
   if (enable) {
-    await exec('git diff --exit-code ${extraArgs ?? ""}');
+    final command = 'git diff --exit-code ${extraArgs ?? ""}';
+    final output = await (gitDiffExecutor ?? _executeGitDiff)(command);
+    final result = _classifyGitDiffExitCode(output.exitCode);
+
+    switch (result) {
+      case _GitDiffResult.clean:
+        return;
+      case _GitDiffResult.dirty:
+        if (phase == _GitDiffPhase.before) {
+          stderr.writeln(
+            'Warning: working tree is already dirty before running the command; continuing anyway.',
+          );
+          return;
+        }
+        throw ProcessException(
+          '/bin/sh',
+          ['-c', command],
+          'Bad exit code (${output.exitCode}). Working tree changed.',
+          output.exitCode,
+        );
+      case _GitDiffResult.unavailable:
+        final strict = isCi ?? _isCi();
+        if (strict) {
+          throw ProcessException(
+            '/bin/sh',
+            ['-c', command],
+            'Bad exit code (${output.exitCode}). Cannot check working tree cleanliness.',
+            output.exitCode,
+          );
+        }
+        stderr.writeln(
+          'Warning: cannot check working tree cleanliness because git metadata is unavailable; continuing anyway.',
+        );
+        return;
+    }
   }
 }
+
+Future<RunCommandOutput> _executeGitDiff(String command) =>
+    exec(command, checkExitCode: false);
+
+_GitDiffResult _classifyGitDiffExitCode(int exitCode) {
+  if (exitCode == 0) return _GitDiffResult.clean;
+  if (exitCode == 1) return _GitDiffResult.dirty;
+  return _GitDiffResult.unavailable;
+}
+
+bool _isCi() => Platform.environment['CI'] == 'true';
+
+enum _GitDiffPhase { before, after }
+
+enum _GitDiffResult { clean, dirty, unavailable }
+
+String classifyGitDiffExitCodeForTesting(int exitCode) =>
+    _classifyGitDiffExitCode(exitCode).name;
 
 Future<void> generateWebsite(GenerateWebsiteConfig config) async {
   await generateWebsiteBuild(config);
