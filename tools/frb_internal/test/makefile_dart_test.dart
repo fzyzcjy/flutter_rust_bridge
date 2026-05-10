@@ -1,4 +1,5 @@
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/generator.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:test/test.dart';
@@ -76,6 +77,90 @@ late final callback = ptr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
 late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
       '''),
     );
+  });
+
+  group('git clean check', () {
+    test('classifies git diff exit codes', () {
+      expect(classifyGitDiffExitCodeForTesting(0), 'clean');
+      expect(classifyGitDiffExitCodeForTesting(1), 'dirty');
+      expect(classifyGitDiffExitCodeForTesting(128), 'unavailable');
+    });
+
+    test('detects CI from common environment variables', () {
+      expect(isCiForTesting({'GITHUB_ACTIONS': 'true'}), true);
+      expect(isCiForTesting({'CI': 'true'}), true);
+      expect(isCiForTesting({'CI': '1'}), true);
+      expect(isCiForTesting({'CI': 'false'}), false);
+      expect(isCiForTesting({'CI': '0'}), false);
+      expect(isCiForTesting({}), false);
+    });
+
+    test('decides clean git diff should continue silently', () {
+      expect(
+        () => handleGitDiffResultForTesting(
+          exitCode: 0,
+          isBefore: false,
+          isCi: false,
+        ),
+        returnsNormally,
+      );
+    });
+
+    test('warns when working tree is already dirty before command', () {
+      expect(
+        () => handleGitDiffResultForTesting(
+          exitCode: 1,
+          isBefore: true,
+          isCi: false,
+        ),
+        prints(contains('working tree is already dirty')),
+      );
+    });
+
+    test('fails when working tree changed after command', () {
+      expect(
+        () => handleGitDiffResultForTesting(
+          exitCode: 1,
+          isBefore: false,
+          isCi: false,
+        ),
+        throwsA(
+          isA<Exception>().having(
+            (exception) => exception.toString(),
+            'message',
+            contains('Working tree changed'),
+          ),
+        ),
+      );
+    });
+
+    test('warns when git metadata is unavailable outside CI', () {
+      expect(
+        () => handleGitDiffResultForTesting(
+          exitCode: 128,
+          isBefore: false,
+          isCi: false,
+        ),
+        prints(contains('git metadata is unavailable')),
+      );
+    });
+
+    test('fails when git metadata is unavailable in CI', () {
+      expect(
+        () => handleGitDiffResultForTesting(
+          exitCode: 128,
+          isBefore: false,
+          isCi: true,
+        ),
+        throwsA(
+          isA<Exception>().having(
+            (exception) => exception.toString(),
+            'message',
+            contains('Failed to check working tree cleanliness'),
+          ),
+        ),
+      );
+    });
   });
 
   group('test checkValgrindOutput', () {
