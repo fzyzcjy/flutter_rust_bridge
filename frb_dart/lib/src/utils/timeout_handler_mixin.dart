@@ -13,9 +13,14 @@ mixin TimeoutHandlerMixin on BaseHandler {
 
     var future = super.executeNormal(task);
     if (timeLimitForExecuteNormal != null) {
-      future = future.timeout(timeLimitForExecuteNormal,
-          onTimeout: () => throw FrbTimeoutException(
-              timeLimitForExecuteNormal, task.constMeta.debugName, stackTrace));
+      future = future.timeout(
+        timeLimitForExecuteNormal,
+        onTimeout: () => throw FrbTimeoutException(
+          timeLimitForExecuteNormal,
+          task.constMeta.debugName,
+          stackTrace,
+        ),
+      );
     }
 
     return future;

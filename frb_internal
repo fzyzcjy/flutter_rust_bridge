@@ -1,4 +1,21 @@
 #!/usr/bin/env bash
 SCRIPT=$(readlink -f "$0")
 SCRIPT_PATH=$(dirname "$SCRIPT")
-cd "$SCRIPT_PATH"/tools/frb_internal && exec dart run flutter_rust_bridge_internal "$@"
+
+PACKAGE_CONFIG="$SCRIPT_PATH/tools/frb_internal/.dart_tool/package_config.json"
+if [[ -f "$PACKAGE_CONFIG" ]]; then
+  while IFS= read -r root_uri; do
+    root_path="${root_uri#file://}"
+    if [[ "$root_path" = /* && ! -e "$root_path" ]]; then
+      rm -f "$PACKAGE_CONFIG"
+      break
+    fi
+  done < <(sed -nE 's/.*"rootUri":[[:space:]]*"([^"]+)".*/\1/p' "$PACKAGE_CONFIG")
+fi
+
+cd "$SCRIPT_PATH"/tools/frb_internal
+if [[ ! -f .dart_tool/package_config.json ]]; then
+  dart pub get
+fi
+
+exec dart run flutter_rust_bridge_internal "$@"

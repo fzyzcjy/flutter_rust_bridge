@@ -27,14 +27,14 @@ pub(crate) struct WireDartGeneratorContext<'a> {
 
 // TODO duplicated with `WireDartCodecCstGeneratorContext`
 impl WireDartGeneratorContext<'_> {
-    pub(crate) fn as_api_dart_context(&self) -> ApiDartGeneratorContext {
+    pub(crate) fn as_api_dart_context(&self) -> ApiDartGeneratorContext<'_> {
         ApiDartGeneratorContext {
             mir_pack: self.mir_pack,
             config: self.api_dart_config,
         }
     }
 
-    pub(crate) fn as_wire_dart_codec_cst_context(&self) -> WireDartCodecCstGeneratorContext {
+    pub(crate) fn as_wire_dart_codec_cst_context(&self) -> WireDartCodecCstGeneratorContext<'_> {
         WireDartCodecCstGeneratorContext {
             mir_pack: self.mir_pack,
             config: self.config,
@@ -43,14 +43,14 @@ impl WireDartGeneratorContext<'_> {
         }
     }
 
-    pub(crate) fn as_wire_dart_codec_dco_context(&self) -> WireDartCodecDcoGeneratorContext {
+    pub(crate) fn as_wire_dart_codec_dco_context(&self) -> WireDartCodecDcoGeneratorContext<'_> {
         WireDartCodecDcoGeneratorContext {
             mir_pack: self.mir_pack,
             api_dart_config: self.api_dart_config,
         }
     }
 
-    pub(crate) fn as_wire_dart_codec_sse_context(&self) -> WireDartCodecSseGeneratorContext {
+    pub(crate) fn as_wire_dart_codec_sse_context(&self) -> WireDartCodecSseGeneratorContext<'_> {
         WireDartCodecSseGeneratorContext {
             mir_pack: self.mir_pack,
             api_dart_config: self.api_dart_config,

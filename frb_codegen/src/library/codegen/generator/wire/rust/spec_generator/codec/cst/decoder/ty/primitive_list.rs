@@ -44,7 +44,7 @@ impl WireRustCodecCstGeneratorDecoderTrait for PrimitiveListWireRustCodecCstGene
         }
     }
 
-    fn generate_impl_decode_jsvalue_body(&self) -> Option<std::borrow::Cow<str>> {
+    fn generate_impl_decode_jsvalue_body(&self) -> Option<std::borrow::Cow<'_, str>> {
         if !self.mir.strict_dart_type {
             return None;
         }

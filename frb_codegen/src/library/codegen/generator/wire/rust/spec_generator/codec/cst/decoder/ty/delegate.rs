@@ -115,7 +115,7 @@ impl WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator
         }
     }
 
-    fn generate_impl_decode_jsvalue_body(&self) -> Option<std::borrow::Cow<str>> {
+    fn generate_impl_decode_jsvalue_body(&self) -> Option<std::borrow::Cow<'_, str>> {
         Some(match &self.mir {
             MirTypeDelegate::String => {
                 "self.as_string().expect(\"non-UTF-8 string, or not a string\")".into()

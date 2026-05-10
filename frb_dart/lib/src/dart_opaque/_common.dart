@@ -3,7 +3,9 @@ import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 Object decodeDartOpaqueCommon(
-    dynamic raw, GeneralizedFrbRustBinding generalizedFrbRustBinding) {
+  dynamic raw,
+  GeneralizedFrbRustBinding generalizedFrbRustBinding,
+) {
   if (raw is BigInt) {
     raw = raw.toInt();
   }
@@ -12,9 +14,12 @@ Object decodeDartOpaqueCommon(
 
 /// {@macro flutter_rust_bridge.internal}
 PlatformPointer encodeDartOpaqueCommon(
-    Object raw,
-    NativePortType dartHandlerPort,
-    GeneralizedFrbRustBinding generalizedFrbRustBinding) {
+  Object raw,
+  NativePortType dartHandlerPort,
+  GeneralizedFrbRustBinding generalizedFrbRustBinding,
+) {
   return generalizedFrbRustBinding.dartOpaqueDart2RustEncode(
-      raw, dartHandlerPort);
+    raw,
+    dartHandlerPort,
+  );
 }

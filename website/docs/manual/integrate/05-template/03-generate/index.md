@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Generating code
+
+<V1Notice />
 
 This section assumes you followed the instructions in [Creating a new project](../), and has successfully `flutter run` on your target device.
 

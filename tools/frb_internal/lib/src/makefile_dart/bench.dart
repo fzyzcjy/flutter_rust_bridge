@@ -14,15 +14,20 @@ part 'bench.g.dart';
 
 List<Command<void>> createCommands() {
   return [
-    SimpleConfigCommand('bench-dart-native', benchDartNative,
-        _$populateBenchConfigParser, _$parseBenchConfigResult),
+    SimpleConfigCommand(
+      'bench-dart-native',
+      benchDartNative,
+      _$populateBenchConfigParser,
+      _$parseBenchConfigResult,
+    ),
     SimpleCommand('bench-merge', benchMerge),
     SimpleCommand('bench-flamegraph-compile', benchFlamegraphCompile),
     SimpleConfigCommand(
-        'bench-flamegraph-run',
-        benchFlamegraphRun,
-        _$populateBenchFlamegraphRunConfigParser,
-        _$parseBenchFlamegraphRunConfigResult),
+      'bench-flamegraph-run',
+      benchFlamegraphRun,
+      _$populateBenchFlamegraphRunConfigParser,
+      _$parseBenchFlamegraphRunConfigResult,
+    ),
   ];
 }
 
@@ -30,9 +35,7 @@ List<Command<void>> createCommands() {
 class BenchConfig {
   final String? filter;
 
-  const BenchConfig({
-    required this.filter,
-  });
+  const BenchConfig({required this.filter});
 }
 
 @CliOptions()
@@ -52,14 +55,14 @@ Future<void> benchMerge() async {
 
   final inputFiles = [
     for (final file in Glob(pattern).listSync())
-      if (file is File) file as File
+      if (file is File) file as File,
   ];
   print('benchMerge inputFiles=$inputFiles');
   if (inputFiles.isEmpty) throw Exception('No input files, are you sure?');
 
   final outputContent = jsonEncode([
     for (final file in inputFiles)
-      ...(jsonDecode(file.readAsStringSync()) as List<dynamic>)
+      ...(jsonDecode(file.readAsStringSync()) as List<dynamic>),
   ]);
 
   final pathOutput = '${exec.pwd}merged_benchmark.json';
@@ -72,16 +75,19 @@ const _kPackage = 'frb_example/pure_dart';
 
 Future<void> _dartBuild() async {
   await exec(
-      'dart --enable-experiment=native-assets build benchmark/simple_benchmark.dart -o build/simple_benchmark/',
-      relativePwd: _kPackage);
+    'dart build cli -o build/simple_benchmark',
+    relativePwd: _kPackage,
+  );
 }
 
 Future<void> benchDartNative(BenchConfig config) async {
   await runPubGetIfNotRunYet(_kPackage);
+
   await _dartBuild();
   await exec(
-      'build/simple_benchmark/simple_benchmark.exe benchmark build/simple_benchmark/benchmark_result.json ${config.filter ?? ""}',
-      relativePwd: _kPackage);
+    'build/simple_benchmark/bundle/bin/simple_benchmark benchmark build/simple_benchmark/benchmark_result.json ${config.filter ?? ""}',
+    relativePwd: _kPackage,
+  );
 }
 
 // ref:
@@ -95,14 +101,17 @@ Future<void> benchFlamegraphCompile() async {
   const dartSdk = '/Users/tom/fvm/default/bin/cache/dart-sdk';
 
   await exec(
-      '$dartSdk/bin/dartaotruntime $dartSdk/bin/snapshots/gen_kernel_aot.dart.snapshot --platform=$dartSdk/lib/_internal/vm_platform_strong.dill --aot --tfa -o build/simple_benchmark.dill benchmark/simple_benchmark.dart',
-      relativePwd: _kPackage);
+    '$dartSdk/bin/dartaotruntime $dartSdk/bin/snapshots/gen_kernel_aot.dart.snapshot --platform=$dartSdk/lib/_internal/vm_platform_strong.dill --aot --tfa -o build/simple_benchmark.dill benchmark/simple_benchmark.dart',
+    relativePwd: _kPackage,
+  );
   await exec(
-      '$dartSdk/bin/utils/gen_snapshot --snapshot-kind=app-aot-assembly --assembly=build/simple_benchmark.S build/simple_benchmark.dill',
-      relativePwd: _kPackage);
+    '$dartSdk/bin/utils/gen_snapshot --snapshot-kind=app-aot-assembly --assembly=build/simple_benchmark.S build/simple_benchmark.dill',
+    relativePwd: _kPackage,
+  );
   await exec(
-      'gcc -shared -o build/simple_benchmark.so build/simple_benchmark.S',
-      relativePwd: _kPackage);
+    'gcc -shared -o build/simple_benchmark.so build/simple_benchmark.S',
+    relativePwd: _kPackage,
+  );
 
   // In order to build native Rust code
   await _dartBuild();
@@ -110,6 +119,7 @@ Future<void> benchFlamegraphCompile() async {
 
 Future<void> benchFlamegraphRun(BenchFlamegraphRunConfig config) async {
   await exec(
-      "sudo flamegraph -o build/my_flamegraph.svg -- ~/temp/dartaotruntime build/simple_benchmark.so loop build/whatever.out '${config.filter}' ${config.loopCount}",
-      relativePwd: _kPackage);
+    "sudo flamegraph -o build/my_flamegraph.svg -- ~/temp/dartaotruntime build/simple_benchmark.so loop build/whatever.out '${config.filter}' ${config.loopCount}",
+    relativePwd: _kPackage,
+  );
 }

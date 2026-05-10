@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # CMake with Gradle
+
+<V1Notice />
 
 If you have taken a look at either the `windows` or `linux` folder,
 you will see a file named `CMakeLists.txt`. This is the definition file

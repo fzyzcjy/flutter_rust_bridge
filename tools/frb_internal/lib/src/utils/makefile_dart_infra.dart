@@ -54,11 +54,7 @@ class SimpleCommand extends Command<void> {
   final String description;
   final Future<void> Function() executor;
 
-  SimpleCommand(
-    this.name,
-    this.executor, {
-    this.description = '',
-  });
+  SimpleCommand(this.name, this.executor, {this.description = ''});
 
   @override
   Future<void> run() async => await executor();
@@ -89,8 +85,10 @@ class SimpleConfigCommand<T> extends Command<void> {
 }
 
 String randomTempDirName() {
-  final timeStr =
-      DateTime.now().toIso8601String().replaceAll(".", "").replaceAll(":", "");
+  final timeStr = DateTime.now()
+      .toIso8601String()
+      .replaceAll(".", "")
+      .replaceAll(":", "");
   final randomStr = Random().nextInt(1000000000);
   return 'temp_${timeStr}_$randomStr';
 }

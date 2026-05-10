@@ -11,10 +11,13 @@ import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/generator.dart'
     as frb_example_pure_dart_generator;
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_apple_scaffold.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_diff_exclusions.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/codecov_transformer.dart';
+import 'package:flutter_rust_bridge_internal/src/utils/execute_process.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:path/path.dart' as path;
 import 'package:yaml/yaml.dart';
@@ -23,50 +26,73 @@ part 'generate.g.dart';
 
 List<Command<void>> createCommands() {
   return [
-    SimpleConfigCommand('generate-internal', generateInternal,
-        _$populateGenerateConfigParser, _$parseGenerateConfigResult),
     SimpleConfigCommand(
-        'generate-run-frb-codegen-command-generate',
-        generateRunFrbCodegenCommandGenerate,
-        _$populateGeneratePackageConfigParser,
-        _$parseGeneratePackageConfigResult),
+      'generate-internal',
+      generateInternal,
+      _$populateGenerateConfigParser,
+      _$parseGenerateConfigResult,
+    ),
     SimpleConfigCommand(
-        'generate-run-frb-codegen-command-integrate',
-        generateRunFrbCodegenCommandIntegrate,
-        _$populateGeneratePackageConfigParser,
-        _$parseGeneratePackageConfigResult),
+      'generate-run-frb-codegen-command-generate',
+      generateRunFrbCodegenCommandGenerate,
+      _$populateGeneratePackageConfigParser,
+      _$parseGeneratePackageConfigResult,
+    ),
+    SimpleConfigCommand(
+      'generate-run-frb-codegen-command-integrate',
+      generateRunFrbCodegenCommandIntegrate,
+      _$populateGeneratePackageConfigParser,
+      _$parseGeneratePackageConfigResult,
+    ),
     // more detailed command, can be used to execute just a portion of the main command
     SimpleConfigCommand(
-        'generate-internal-frb-example-pure-dart',
-        generateInternalFrbExamplePureDart,
-        _$populateGenerateConfigParser,
-        _$parseGenerateConfigResult),
-    SimpleConfigCommand('generate-internal-rust', generateInternalRust,
-        _$populateGenerateConfigParser, _$parseGenerateConfigResult),
-    SimpleConfigCommand('generate-internal-book-help', generateInternalBookHelp,
-        _$populateGenerateConfigParser, _$parseGenerateConfigResult),
+      'generate-internal-frb-example-pure-dart',
+      generateInternalFrbExamplePureDart,
+      _$populateGenerateConfigParser,
+      _$parseGenerateConfigResult,
+    ),
     SimpleConfigCommand(
-        'generate-internal-contributor',
-        generateInternalContributor,
-        _$populateGenerateConfigParser,
-        _$parseGenerateConfigResult),
-    SimpleConfigCommand('generate-internal-readme', generateInternalReadme,
-        _$populateGenerateConfigParser, _$parseGenerateConfigResult),
+      'generate-internal-rust',
+      generateInternalRust,
+      _$populateGenerateConfigParser,
+      _$parseGenerateConfigResult,
+    ),
     SimpleConfigCommand(
-        'generate-internal-dart-source',
-        generateInternalDartSource,
-        _$populateGenerateConfigParser,
-        _$parseGenerateConfigResult),
+      'generate-internal-book-help',
+      generateInternalBookHelp,
+      _$populateGenerateConfigParser,
+      _$parseGenerateConfigResult,
+    ),
     SimpleConfigCommand(
-        'generate-website',
-        generateWebsite,
-        _$populateGenerateWebsiteConfigParser,
-        _$parseGenerateWebsiteConfigResult),
+      'generate-internal-contributor',
+      generateInternalContributor,
+      _$populateGenerateConfigParser,
+      _$parseGenerateConfigResult,
+    ),
     SimpleConfigCommand(
-        'generate-website-build',
-        generateWebsiteBuild,
-        _$populateGenerateWebsiteConfigParser,
-        _$parseGenerateWebsiteConfigResult),
+      'generate-internal-readme',
+      generateInternalReadme,
+      _$populateGenerateConfigParser,
+      _$parseGenerateConfigResult,
+    ),
+    SimpleConfigCommand(
+      'generate-internal-dart-source',
+      generateInternalDartSource,
+      _$populateGenerateConfigParser,
+      _$parseGenerateConfigResult,
+    ),
+    SimpleConfigCommand(
+      'generate-website',
+      generateWebsite,
+      _$populateGenerateWebsiteConfigParser,
+      _$parseGenerateWebsiteConfigResult,
+    ),
+    SimpleConfigCommand(
+      'generate-website-build',
+      generateWebsiteBuild,
+      _$populateGenerateWebsiteConfigParser,
+      _$parseGenerateWebsiteConfigResult,
+    ),
     SimpleCommand('generate-website-merge', generateWebsiteMerge),
     SimpleCommand('generate-website-serve', generateWebsiteServe),
   ];
@@ -105,13 +131,13 @@ class GeneratePackageConfig implements GenerateConfig {
 class GenerateWebsiteConfig {
   final bool coverage;
 
-  const GenerateWebsiteConfig({
-    required this.coverage,
-  });
+  const GenerateWebsiteConfig({required this.coverage});
 }
 
-Future<void> generateInternal(GenerateConfig config,
-    {bool canSkipAllContributor = false}) async {
+Future<void> generateInternal(
+  GenerateConfig config, {
+  bool canSkipAllContributor = false,
+}) async {
   await generateInternalFrbExamplePureDart(config);
   await generateInternalRust(config);
   await generateInternalBookHelp(config);
@@ -178,8 +204,9 @@ Future<void> generateInternalBookHelp(GenerateConfig config) async {
         coverageName: 'GenerateInternalBookHelp',
         extraEnv: {'RUST_LOG': 'error'},
       );
-      File('${exec.pwd}website/docs/generated/_frb-codegen-command-${cmd.isEmpty ? "main" : cmd}.mdx')
-          .writeAsStringSync('```\n${resp.stdout}```');
+      File(
+        '${exec.pwd}website/docs/generated/_frb-codegen-command-${cmd.isEmpty ? "main" : cmd}.mdx',
+      ).writeAsStringSync('```\n${resp.stdout}```');
     }
   });
 }
@@ -193,13 +220,14 @@ Future<void> generateInternalContributor(GenerateConfig config) async {
         {
           'login': (item as Map<dynamic, dynamic>).keys.single,
           'customMessage': item.values.single,
-        }
+        },
     ];
     print('customConverted=$customConverted');
 
     final fileAllContributorsrc = File('${exec.pwd}/.all-contributorsrc');
-    final allContributorsrcOld =
-        jsonDecode(fileAllContributorsrc.readAsStringSync());
+    final allContributorsrcOld = jsonDecode(
+      fileAllContributorsrc.readAsStringSync(),
+    );
 
     final contributorNamesNew = [
       'fzyzcjy',
@@ -211,18 +239,20 @@ Future<void> generateInternalContributor(GenerateConfig config) async {
         for (final login in contributorNamesNew)
           allContributorsrcOld['contributors']
               .where((x) => x['login'] == login)
-              .single
-      ]
+              .single,
+      ],
     };
 
     if (allContributorsrcNew['contributors'].length !=
         allContributorsrcOld['contributors'].length) {
       throw Exception(
-          'num contributors does not agree, maybe you forget to put contributors in $customPath?');
+        'num contributors does not agree, maybe you forget to put contributors in $customPath?',
+      );
     }
 
     fileAllContributorsrc.writeAsStringSync(
-        const JsonEncoder.withIndent('  ').convert(allContributorsrcNew));
+      const JsonEncoder.withIndent('  ').convert(allContributorsrcNew),
+    );
 
     final messageTextNew = [
       for (final item in customConverted)
@@ -238,7 +268,7 @@ Future<void> generateInternalContributor(GenerateConfig config) async {
       'https://img.shields.io/badge/all_contributors-$numContributors-orange.svg',
     );
 
-    await exec('all-contributors generate');
+    await exec('npx all-contributors-cli generate');
   });
 
   await generateInternalReadme(config);
@@ -271,11 +301,11 @@ hide_title: true
 
 ''';
 
-//       const kShowMeTheCode = '''
-// import ShowMeTheCode from "@site/src/components/ShowMeTheCode";
-//
-// <ShowMeTheCode/>
-// ''';
+      //       const kShowMeTheCode = '''
+      // import ShowMeTheCode from "@site/src/components/ShowMeTheCode";
+      //
+      // <ShowMeTheCode/>
+      // ''';
 
       final text = kPrelude + readmeText;
       // simpleReplaceSection(
@@ -294,14 +324,17 @@ Future<void> generateInternalBuildRunner(GenerateConfig config) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
     for (final package in kDartNonExamplePackages) {
       await runPubGetIfNotRunYet(package);
-      await exec('dart run build_runner build --delete-conflicting-outputs',
-          relativePwd: package);
+      await exec(
+        'dart run build_runner build --delete-conflicting-outputs',
+        relativePwd: package,
+      );
     }
   });
 }
 
 Future<void> generateRunFrbCodegenCommandGenerate(
-    GeneratePackageConfig config) async {
+  GeneratePackageConfig config,
+) async {
   await _wrapMaybeSetExitIfChanged(config, () async {
     await runPubGetIfNotRunYet(config.package);
     print("generating with ${config.package}");
@@ -311,66 +344,90 @@ Future<void> generateRunFrbCodegenCommandGenerate(
       coverage: config.coverage,
       coverageName: 'GenerateRunFrbCodegenCommandGenerate',
     );
+    await _formatPackageAfterGenerate(config.package);
   });
 }
 
+Future<void> _formatPackageAfterGenerate(String package) async {
+  switch (package) {
+    case 'frb_example/pure_dart':
+      await exec('dart format lib test benchmark', relativePwd: package);
+    default:
+      return;
+  }
+}
+
 Future<void> generateRunFrbCodegenCommandIntegrate(
-    GeneratePackageConfig config) async {
-  await _wrapMaybeSetExitIfChanged(config,
-      extraArgs:
-          "':(exclude)*Podfile' ':(exclude)*.xcconfig' ':(exclude)pubspec.lock' ':(exclude)*Cargo.lock'",
-      () async {
-    final dirPackage = path.join(exec.pwd!, config.package);
+  GeneratePackageConfig config,
+) async {
+  await _wrapMaybeSetExitIfChanged(
+    config,
+    extraArgs: integrateDiffExclusionArgs(config.package),
+    () async {
+      final dirPackage = path.join(exec.pwd!, config.package);
 
-    // Use temp dir within the repo. If use system-wide temp directory,
-    // may see "OS Error: Cross-device link, errno = 18" and cannot use the
-    // cheap "move directory" operation.
-    final dirTemp = path.join(exec.pwd!, 'target',
-        'GenerateRunFrbCodegenCommandIntegrate', randomTempDirName());
-    print('Pick temporary directory: $dirTemp');
-    await Directory(dirTemp).create(recursive: true);
+      // Use temp dir within the repo. If use system-wide temp directory,
+      // may see "OS Error: Cross-device link, errno = 18" and cannot use the
+      // cheap "move directory" operation.
+      final dirTemp = path.join(
+        exec.pwd!,
+        'target',
+        'GenerateRunFrbCodegenCommandIntegrate',
+        randomTempDirName(),
+      );
+      print('Pick temporary directory: $dirTemp');
+      await Directory(dirTemp).create(recursive: true);
 
-    // We move instead of delete folder for extra safety of this script
-    final dirTempOriginal = path.join(dirTemp, 'original');
-    if (await Directory(dirPackage).exists()) {
-      await Directory(dirPackage).rename(dirTempOriginal);
-    }
+      // We move instead of delete folder for extra safety of this script
+      if (await Directory(dirPackage).exists()) {
+        await Directory(dirPackage).rename(path.join(dirTemp, 'original'));
+      }
 
-    switch (config.package) {
-      case 'frb_example/flutter_via_create':
-        await executeFrbCodegen(
-          'create flutter_via_create --local',
-          relativePwd: 'frb_example',
-          coverage: config.coverage,
-          coverageName: 'GenerateRunFrbCodegenCommandIntegrate',
-        );
+      switch (config.package) {
+        case 'frb_example/flutter_via_create':
+          await executeFrbCodegen(
+            'create flutter_via_create --local',
+            relativePwd: 'frb_example',
+            coverage: config.coverage,
+            coverageName: 'GenerateRunFrbCodegenCommandIntegrate',
+          );
 
-      case 'frb_example/flutter_via_integrate':
-        await exec('flutter create flutter_via_integrate',
-            relativePwd: 'frb_example');
-        await executeFrbCodegen(
-          'integrate --local',
-          relativePwd: config.package,
-          coverage: config.coverage,
-          coverageName: 'GenerateRunFrbCodegenCommandIntegrate',
-        );
-      case 'frb_example/flutter_package':
-        await executeFrbCodegen(
-          'create --local --template plugin flutter_package',
-          relativePwd: 'frb_example',
-          coverage: config.coverage,
-          coverageName: 'GenerateRunFrbCodegenCommandIntegrate',
-        );
-      default:
-        throw Exception('Do not know how to handle package ${config.package}');
-    }
+        case 'frb_example/flutter_via_integrate':
+          await exec(
+            'flutter create flutter_via_integrate',
+            relativePwd: 'frb_example',
+          );
+          await executeFrbCodegen(
+            'integrate --local',
+            relativePwd: config.package,
+            coverage: config.coverage,
+            coverageName: 'GenerateRunFrbCodegenCommandIntegrate',
+          );
+        case 'frb_example/flutter_package':
+          await executeFrbCodegen(
+            'create --local --template plugin flutter_package',
+            relativePwd: 'frb_example',
+            coverage: config.coverage,
+            coverageName: 'GenerateRunFrbCodegenCommandIntegrate',
+          );
+        default:
+          throw Exception(
+            'Do not know how to handle package ${config.package}',
+          );
+      }
 
-    // move back compilation cache to speed up future usage
-    // for (final subPath in ['build', 'rust/target']) {
-    //   await _renameDirIfExists(
-    //       path.join(dirTempOriginal, subPath), path.join(dirPackage, subPath));
-    // }
-  });
+      await applyCheckedInAppleScaffoldSourceOfTruth(
+        package: config.package,
+        generatedPackageDir: dirPackage,
+      );
+
+      // move back compilation cache to speed up future usage
+      // for (final subPath in ['build', 'rust/target']) {
+      //   await _renameDirIfExists(
+      //       path.join(dirTempOriginal, subPath), path.join(dirPackage, subPath));
+      // }
+    },
+  );
 }
 
 Future<RunCommandOutput> executeFrbCodegen(
@@ -384,12 +441,16 @@ Future<RunCommandOutput> executeFrbCodegen(
 }) async {
   if (postRelease) {
     assert(!coverage);
-    return await exec('flutter_rust_bridge_codegen $cmd',
-        relativePwd: relativePwd, extraEnv: extraEnv);
+    return await exec(
+      'flutter_rust_bridge_codegen $cmd',
+      relativePwd: relativePwd,
+      extraEnv: extraEnv,
+    );
   } else {
     final outputCodecovPath = '${getCoverageDir(coverageName)}/codecov.json';
+    final toolchainPrefix = nightly ? '+$kPinnedRustfmtNightly ' : '';
     final ans = await exec(
-      'cargo ${nightly ? "+nightly" : ""} ${coverage ? "llvm-cov run --codecov --output-path $outputCodecovPath" : "run"} --manifest-path ${exec.pwd}frb_codegen/Cargo.toml -- $cmd',
+      'cargo $toolchainPrefix${coverage ? "llvm-cov run --codecov --output-path $outputCodecovPath" : "run"} --manifest-path ${exec.pwd}frb_codegen/Cargo.toml -- $cmd',
       relativePwd: relativePwd,
       extraEnv: {'RUST_BACKTRACE': '1', ...?extraEnv},
     );
@@ -404,10 +465,15 @@ Future<RunCommandOutput> executeFrbCodegen(
 // }
 
 Future<void> _wrapMaybeSetExitIfChanged(
-    GenerateConfig config, Future<void> Function() inner,
-    {String? extraArgs}) async {
-  await wrapMaybeSetExitIfChangedRaw(config.setExitIfChanged, inner,
-      extraArgs: extraArgs);
+  GenerateConfig config,
+  Future<void> Function() inner, {
+  String? extraArgs,
+}) async {
+  await wrapMaybeSetExitIfChangedRaw(
+    config.setExitIfChanged,
+    inner,
+    extraArgs: extraArgs,
+  );
 }
 
 Future<void> wrapMaybeSetExitIfChangedRaw(
@@ -416,17 +482,106 @@ Future<void> wrapMaybeSetExitIfChangedRaw(
   String? extraArgs,
 }) async {
   // Before actually executing anything, check whether git repository is already dirty
-  await _maybeSetExitIfChanged(enable, extraArgs: extraArgs);
+  await _maybeSetExitIfChanged(
+    enable,
+    extraArgs: extraArgs,
+    phase: _GitDiffPhase.before,
+  );
   await inner();
   // The real check
-  await _maybeSetExitIfChanged(enable, extraArgs: extraArgs);
+  await _maybeSetExitIfChanged(
+    enable,
+    extraArgs: extraArgs,
+    phase: _GitDiffPhase.after,
+  );
 }
 
-Future<void> _maybeSetExitIfChanged(bool enable, {String? extraArgs}) async {
+Future<void> _maybeSetExitIfChanged(
+  bool enable, {
+  String? extraArgs,
+  required _GitDiffPhase phase,
+}) async {
   if (enable) {
-    await exec('git diff --exit-code ${extraArgs ?? ""}');
+    final command = 'git diff --exit-code ${extraArgs ?? ""}';
+    final output = await _executeGitDiff(command);
+    _handleGitDiffResult(
+      command: command,
+      output: output,
+      phase: phase,
+      isCi: _isCi(),
+    );
   }
 }
+
+void _handleGitDiffResult({
+  required String command,
+  required RunCommandOutput output,
+  required _GitDiffPhase phase,
+  required bool isCi,
+}) {
+  switch (_classifyGitDiffExitCode(output.exitCode)) {
+    case _GitDiffResult.clean:
+      return;
+    case _GitDiffResult.dirty:
+      if (phase == _GitDiffPhase.before) {
+        print(
+          'Warning: working tree is already dirty before running the command; continuing anyway.',
+        );
+        return;
+      }
+      throw Exception(
+        'Failed to check working tree after command: `$command` exited with ${output.exitCode}. Working tree changed.',
+      );
+    case _GitDiffResult.unavailable:
+      if (!isCi) {
+        print(
+          'Warning: cannot check working tree cleanliness because git metadata is unavailable; continuing anyway.',
+        );
+        return;
+      }
+      throw Exception(
+        'Failed to check working tree cleanliness: `$command` exited with ${output.exitCode}.',
+      );
+  }
+}
+
+Future<RunCommandOutput> _executeGitDiff(String command) =>
+    exec(command, checkExitCode: false);
+
+_GitDiffResult _classifyGitDiffExitCode(int exitCode) {
+  if (exitCode == 0) return _GitDiffResult.clean;
+  if (exitCode == 1) return _GitDiffResult.dirty;
+  return _GitDiffResult.unavailable;
+}
+
+bool _isCi({Map<String, String>? environment}) {
+  final effectiveEnvironment = environment ?? Platform.environment;
+  final ciRaw = effectiveEnvironment['CI']?.toLowerCase();
+  return effectiveEnvironment['GITHUB_ACTIONS'] == 'true' ||
+      (ciRaw != null && ciRaw != 'false' && ciRaw != '0');
+}
+
+enum _GitDiffPhase { before, after }
+
+enum _GitDiffResult { clean, dirty, unavailable }
+
+String classifyGitDiffExitCodeForTesting(int exitCode) =>
+    _classifyGitDiffExitCode(exitCode).name;
+
+void handleGitDiffResultForTesting({
+  String command = 'git diff --exit-code',
+  required int exitCode,
+  required bool isBefore,
+  required bool isCi,
+}) => _handleGitDiffResult(
+  command: command,
+  output: RunCommandOutput(stdout: '', stderr: '', exitCode: exitCode),
+  phase: isBefore ? _GitDiffPhase.before : _GitDiffPhase.after,
+  isCi: isCi,
+);
+
+bool isCiForTesting(Map<String, String> environment) =>
+    _isCi(environment: environment);
 
 Future<void> generateWebsite(GenerateWebsiteConfig config) async {
   await generateWebsiteBuild(config);
@@ -444,12 +599,13 @@ Future<void> generateWebsiteBuild(GenerateWebsiteConfig config) async {
     coverageName: 'GenerateWebsiteBuild',
   );
   await exec(
-      'flutter build web '
-      '--base-href /flutter_rust_bridge/demo/ '
-      // Pwa seems to have conflict with the enable-threads.js hack
-      // enable-threads.js: https://github.com/orgs/community/discussions/13309
-      '--pwa-strategy none',
-      relativePwd: 'frb_example/gallery');
+    'flutter build web '
+    '--base-href /flutter_rust_bridge/demo/ '
+    // Pwa seems to have conflict with the enable-threads.js hack
+    // enable-threads.js: https://github.com/orgs/community/discussions/13309
+    '--pwa-strategy none',
+    relativePwd: 'frb_example/gallery',
+  );
 
   await exec('mdbook build .', relativePwd: 'website/v1_mdbook');
 }
@@ -469,13 +625,15 @@ Future<void> generateWebsiteMerge() async {
   await exec('cp -r frb_example/gallery/build/web/* $_kWebsiteDir/demo');
   await exec('rm $_kWebsiteDir/demo/pkg/.gitignore');
   await exec(
-      'cp ${exec.pwd}website/build/demo.html ${exec.pwd}$_kWebsiteDir/demo/index.html');
+    'cp ${exec.pwd}website/build/demo.html ${exec.pwd}$_kWebsiteDir/demo/index.html',
+  );
   // _generateWebsiteMergeDemoIndexHtml();
 
   await exec('mkdir -p $_kWebsiteDir/dev/bench');
   for (final name in ['data.js', 'index.html']) {
     await exec(
-        'curl https://raw.githubusercontent.com/fzyzcjy/flutter_rust_bridge/gh-pages/dev/bench/$name -o $_kWebsiteDir/dev/bench/$name');
+      'curl https://raw.githubusercontent.com/fzyzcjy/flutter_rust_bridge/gh-pages/dev/bench/$name -o $_kWebsiteDir/dev/bench/$name',
+    );
   }
 
   await exec('ls -al $_kWebsiteDir ; ls -al $_kWebsiteDir/demo');
@@ -513,8 +671,10 @@ Future<void> generateWebsiteMerge() async {
 // }
 
 Future<void> generateWebsiteServe() async {
-  await exec('python -m http.server 8765',
-      relativePwd: 'website/merged_target');
+  await exec(
+    'python -m http.server 8765',
+    relativePwd: 'website/merged_target',
+  );
 }
 
 Future<void> _maybeAllowFailureAndSkip(

@@ -19,8 +19,8 @@ class BasicTypeInfo {
     this.enableRustExpect = false,
     required this.interestRawValues,
     required this.listWrapper,
-  })  : name = name ?? ReCase(rustTypeName).snakeCase,
-        listName = listName ?? 'List<$dartTypeName>';
+  }) : name = name ?? ReCase(rustTypeName).snakeCase,
+       listName = listName ?? 'List<$dartTypeName>';
 }
 
 class RawValue {
@@ -244,10 +244,7 @@ final kBasicTypes = [
     rustTypeName: 'bool',
     dartTypeName: 'bool',
     listName: 'List<bool>',
-    interestRawValues: [
-      const RawValue('false'),
-      const RawValue('true'),
-    ],
+    interestRawValues: [const RawValue('false'), const RawValue('true')],
     listWrapper: (info, x) => x == null ? '<bool>[]' : '<bool>[$x]',
   ),
   BasicTypeInfo(

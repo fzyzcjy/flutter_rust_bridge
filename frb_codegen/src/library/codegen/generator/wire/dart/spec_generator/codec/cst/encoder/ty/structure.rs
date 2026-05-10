@@ -27,7 +27,7 @@ impl WireDartCodecCstGeneratorEncoderTrait for StructRefWireDartCodecCstGenerato
 }
 
 impl StructRefWireDartCodecCstGenerator<'_> {
-    fn new_generalized_generator(&self) -> GeneralizedStructGenerator {
+    fn new_generalized_generator(&self) -> GeneralizedStructGenerator<'_> {
         GeneralizedStructGenerator::new(self.mir.clone(), self.context, Struct)
     }
 }

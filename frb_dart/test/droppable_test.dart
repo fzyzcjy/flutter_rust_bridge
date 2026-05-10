@@ -3,7 +3,9 @@ import 'package:test/test.dart';
 
 void main() {
   test('DroppableDisposedException', () {
-    expect(const DroppableDisposedException('sth').toString(),
-        contains('DroppableDisposedException'));
+    expect(
+      const DroppableDisposedException('sth').toString(),
+      contains('DroppableDisposedException'),
+    );
   });
 }

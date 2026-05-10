@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Setup
+
+<V1Notice />
 
 ## Dependencies
 To start developing your Dart/Flutter library, you will need to download some dependencies locally.

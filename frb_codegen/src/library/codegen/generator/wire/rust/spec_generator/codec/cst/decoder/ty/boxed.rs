@@ -37,7 +37,7 @@ impl WireRustCodecCstGeneratorDecoderTrait for BoxedWireRustCodecCstGenerator<'_
         })
     }
 
-    fn generate_impl_decode_jsvalue_body(&self) -> Option<std::borrow::Cow<str>> {
+    fn generate_impl_decode_jsvalue_body(&self) -> Option<std::borrow::Cow<'_, str>> {
         (self.mir.exist_in_real_api).then(|| match &*self.mir.inner {
             MirType::Delegate(MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum {
                                                                repr,

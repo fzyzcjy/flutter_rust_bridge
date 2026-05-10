@@ -143,7 +143,7 @@ impl WorkerPool {
             &module,
         )?;
         Reflect::set(&wasm_init_object, &JsValue::from_str("memory"), &memory)?;
-        worker.post_message(&Array::from_iter([wasm_init_object]))?;
+        worker.post_message(&Array::from_iter([JsValue::from(wasm_init_object)]))?;
 
         Ok(worker)
     }

@@ -5,6 +5,7 @@ import 'dart:io';
 
 import 'package:flutter_rust_bridge/src/cli/cli_utils.dart';
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
+import 'package:meta/meta.dart';
 
 /// {@macro flutter_rust_bridge.cli}
 class BuildWebArgs {
@@ -39,17 +40,18 @@ class BuildWebArgs {
   final List<String> features;
 
   /// {@macro flutter_rust_bridge.cli}
-  const BuildWebArgs(
-      {required this.output,
-      required this.release,
-      required this.verbose,
-      required this.rustCrateDir,
-      required this.cargoBuildArgs,
-      required this.wasmBindgenArgs,
-      required this.wasmPackRustupToolchain,
-      required this.wasmPackRustflags,
-      required this.dartCompileJsEntrypoint,
-      this.features = const []});
+  const BuildWebArgs({
+    required this.output,
+    required this.release,
+    required this.verbose,
+    required this.rustCrateDir,
+    required this.cargoBuildArgs,
+    required this.wasmBindgenArgs,
+    required this.wasmPackRustupToolchain,
+    required this.wasmPackRustflags,
+    required this.dartCompileJsEntrypoint,
+    this.features = const [],
+  });
 }
 
 extension on BuildWebArgs {
@@ -64,8 +66,9 @@ extension on BuildWebArgs {
 Future<void> executeBuildWeb(BuildWebArgs args) async {
   await _sanityChecks(args);
 
-  final rustCrateName =
-      await _getRustCreateName(rustCrateDir: args.rustCrateDir);
+  final rustCrateName = await _getRustCreateName(
+    rustCrateDir: args.rustCrateDir,
+  );
 
   await _executeWasmPack(args, rustCrateName: rustCrateName);
 
@@ -84,7 +87,8 @@ Future<void> _sanityChecks(BuildWebArgs args) async {
   await _ensurePackageInstalled(
     binaryName: 'wasm-pack',
     install: () async => await runCommand('cargo', ['install', 'wasm-pack']),
-    hint: 'wasm-pack is required, but not found in the path.\n'
+    hint:
+        'wasm-pack is required, but not found in the path.\n'
         'Please install wasm-pack by following the instructions at https://rustwasm.github.io/wasm-pack/\n'
         'or running `cargo install wasm-pack`.',
   );
@@ -134,61 +138,122 @@ Future<void> _ensurePackageInstalled({
 }
 
 Future<String> _getRustCreateName({required String rustCrateDir}) async {
-  final manifest = jsonDecode((await runCommand(
-    'cargo',
-    ['read-manifest'],
-    pwd: rustCrateDir,
-    silent: true,
-  ))
-      .stdout);
+  final manifest = jsonDecode(
+    (await runCommand(
+      'cargo',
+      ['read-manifest'],
+      pwd: rustCrateDir,
+      silent: true,
+    )).stdout,
+  );
 
   final rustCrateName = (manifest['targets'] as List).firstWhere(
-      (target) => (target['kind'] as List).contains('cdylib'))['name'];
+    (target) => (target['kind'] as List).contains('cdylib'),
+  )['name'];
   if (rustCrateName.isEmpty) bail('Crate name cannot be empty.');
 
   return rustCrateName;
 }
 
-Future<void> _executeWasmPack(BuildWebArgs args,
-    {required String rustCrateName}) async {
-  await runCommand('wasm-pack', [
-    'build',
-    '-t',
-    'no-modules',
-    '-d',
-    args.outputWasm,
-    '--no-typescript',
-    '--out-name',
-    rustCrateName,
-    if (!args.release) '--dev',
-    args.rustCrateDir,
-    '--',
-    // cargo build args
-    '-Z',
-    'build-std=std,panic_abort',
-    ...args.cargoBuildArgs,
-    // migrate to `cargoBuildArgs`
-    // if (config.cliOpts.noDefaultFeatures) '--no-default-features',
-    // if (config.cliOpts.features != null) '--features=${config.cliOpts.features}'
-  ], env: {
-    'RUSTUP_TOOLCHAIN': args.wasmPackRustupToolchain ?? 'nightly',
-    'RUSTFLAGS': _computeRustflags(argsOverride: args.wasmPackRustflags),
-    if (stdout.supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',
+Future<void> _executeWasmPack(
+  BuildWebArgs args, {
+  required String rustCrateName,
+}) async {
+  final rustflagsResolution = computeWasmPackRustflagsResolution(
+    argsOverride: args.wasmPackRustflags,
+  );
+  if (rustflagsResolution.warning != null) {
+    print(rustflagsResolution.warning);
+  }
+
+  await runCommand(
+    'wasm-pack',
+    [
+      'build',
+      '-t',
+      'no-modules',
+      '-d',
+      args.outputWasm,
+      '--no-typescript',
+      '--out-name',
+      rustCrateName,
+      if (!args.release) '--dev',
+      args.rustCrateDir,
+      '--',
+      // cargo build args
+      '-Z',
+      'build-std=std,panic_abort',
+      ...args.cargoBuildArgs,
+      // migrate to `cargoBuildArgs`
+      // if (config.cliOpts.noDefaultFeatures) '--no-default-features',
+      // if (config.cliOpts.features != null) '--features=${config.cliOpts.features}'
+    ],
+    env: {
+      'RUSTUP_TOOLCHAIN': args.wasmPackRustupToolchain ?? 'nightly',
+      'RUSTFLAGS': rustflagsResolution.rustflags,
+      if (stdout.supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',
+    },
+  );
+}
+
+/// Resolved `RUSTFLAGS` output for a `wasm-pack` invocation.
+class WasmPackRustflagsResolution {
+  /// The `RUSTFLAGS` value that will be passed to `wasm-pack`.
+  final String rustflags;
+
+  /// Optional warning shown when user-provided overrides drop required defaults.
+  final String? warning;
+
+  /// Creates a resolved `wasm-pack` rustflags result.
+  const WasmPackRustflagsResolution({
+    required this.rustflags,
+    required this.warning,
   });
 }
 
-String _computeRustflags({required String? argsOverride}) {
-  const kDefault = '-C target-feature=+atomics,+bulk-memory,+mutable-globals';
-  if (argsOverride == null) return kDefault;
-  if (!argsOverride.contains(kDefault)) {
-    print(
-        'WARN: RUSTFLAGS will be `$argsOverride`, which does not contain the default one `$kDefault`');
-  }
-  return argsOverride;
+/// Default threaded-WASM rustflag segments used by `build-web`.
+const buildWebDefaultWasmPackRustflagSegments = [
+  '-C target-feature=+atomics,+bulk-memory,+mutable-globals',
+  '-C link-args=--shared-memory',
+  '-C link-args=--max-memory=1073741824',
+  '-C link-args=--import-memory',
+  '-C link-args=--export=__heap_base',
+  '-C link-args=--export=__wasm_init_tls',
+  '-C link-args=--export=__tls_size',
+  '-C link-args=--export=__tls_align',
+  '-C link-args=--export=__tls_base',
+];
+
+/// Default threaded-WASM rustflags used by `build-web`.
+final buildWebDefaultWasmPackRustflags = buildWebDefaultWasmPackRustflagSegments
+    .join(' ');
+
+bool _containsDefaultWasmPackRustflags(String rustflags) {
+  return buildWebDefaultWasmPackRustflagSegments.every(rustflags.contains);
 }
 
-Future<void> _executeWasmBindgen(BuildWebArgs args,
-    {required String rustCrateName}) async {
+@visibleForTesting
+/// Resolves the effective `wasm-pack` rustflags and any warning to display.
+WasmPackRustflagsResolution computeWasmPackRustflagsResolution({
+  required String? argsOverride,
+}) {
+  if (argsOverride == null) {
+    return WasmPackRustflagsResolution(
+      rustflags: buildWebDefaultWasmPackRustflags,
+      warning: null,
+    );
+  }
+
+  final warning = _containsDefaultWasmPackRustflags(argsOverride)
+      ? null
+      : 'WARN: RUSTFLAGS will be `$argsOverride`, which does not contain the default threaded-WASM flags `$buildWebDefaultWasmPackRustflags`. Keep the default flags when overriding `--wasm-pack-rustflags`, otherwise worker startup may fail with errors such as `WebAssembly.Memory could not be cloned`.';
+  return WasmPackRustflagsResolution(rustflags: argsOverride, warning: warning);
+}
+
+Future<void> _executeWasmBindgen(
+  BuildWebArgs args, {
+  required String rustCrateName,
+}) async {
   await runCommand('wasm-bindgen', [
     '${args.rustCrateDir}/target/wasm32-unknown-unknown/${args.release ? 'release' : 'debug'}/$rustCrateName.wasm',
     '--out-dir',

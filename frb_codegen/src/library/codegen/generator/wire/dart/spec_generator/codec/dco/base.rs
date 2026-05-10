@@ -17,7 +17,7 @@ pub(crate) struct WireDartCodecDcoGeneratorContext<'a> {
 }
 
 impl WireDartCodecDcoGeneratorContext<'_> {
-    pub(crate) fn as_api_dart_context(&self) -> ApiDartGeneratorContext {
+    pub(crate) fn as_api_dart_context(&self) -> ApiDartGeneratorContext<'_> {
         ApiDartGeneratorContext {
             mir_pack: self.mir_pack,
             config: self.api_dart_config,

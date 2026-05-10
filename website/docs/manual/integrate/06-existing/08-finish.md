@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Wrapping up
+
+<V1Notice />
 
 Congratulations! You have successfully added a Rust component to
 your Flutter app using `flutter_rust_bridge` and configured

@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Overview
+
+<V1Notice />
 This section of the user guide will walk you through the entire process of
 making a Dart-only library base with a Flutter library built on top of it.
 

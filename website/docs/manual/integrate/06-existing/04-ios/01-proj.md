@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Creating the Rust project
+
+<V1Notice />
 
 First, follow the instructions on the [Usage](https://gitlab.com/kornelski/cargo-xcode#usage)
 section of `cargo-xcode`. The instructions that follow are quoted from there, but keep in mind

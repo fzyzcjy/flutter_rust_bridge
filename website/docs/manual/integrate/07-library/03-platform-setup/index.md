@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Platform setup
+
+<V1Notice />
 In this subsection, we will be exploring how to set up our Flutter wrapper package
 to bundle the platform-specific Rust binaries so users of the library will be able
 to actually use the library.

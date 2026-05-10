@@ -84,7 +84,7 @@ fn get_variable_name(field: &MirFuncInput) -> String {
     field.inner.name.rust_style(true)
 }
 
-fn filter_interest_fields(func: &MirFunc) -> Vec<FieldInfo> {
+fn filter_interest_fields(func: &MirFunc) -> Vec<FieldInfo<'_>> {
     (func.inputs.iter())
         .filter_map(|field| {
             compute_interest_field_ownership_mode(&field.inner.ty).map(|ownership_mode| FieldInfo {

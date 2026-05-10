@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Hooking onto tasks
+
+<V1Notice />
 
 This is the same method used by the app template and also the easier one.
 Go ahead and install `cargo-ndk` if you have not already done so:

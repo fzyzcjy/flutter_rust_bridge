@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Using the dynamic library
+
+<V1Notice />
 
 If everything went well, running `flutter run` will now build your Rust library,
 the Flutter binary and link the two together. Now the only thing left to do is

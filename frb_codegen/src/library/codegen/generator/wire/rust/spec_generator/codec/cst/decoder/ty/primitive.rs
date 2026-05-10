@@ -15,7 +15,7 @@ impl WireRustCodecCstGeneratorDecoderTrait for PrimitiveWireRustCodecCstGenerato
         }
     }
 
-    fn generate_impl_decode_jsvalue_body(&self) -> Option<std::borrow::Cow<str>> {
+    fn generate_impl_decode_jsvalue_body(&self) -> Option<std::borrow::Cow<'_, str>> {
         use MirTypePrimitive::*;
         Some(match &self.mir {
             Unit => return None,
