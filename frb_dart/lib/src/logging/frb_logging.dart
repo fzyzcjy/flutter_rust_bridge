@@ -60,6 +60,12 @@ class FrbDartLogging {
     }
   }
 
+  /// Disconnects the Rust log stream listener.
+  static Future<void> dispose() async {
+    await _subscription?.cancel();
+    _subscription = null;
+  }
+
   static void _setupDefaultOutput() {
     _defaultOutputSubscription ??= Logger.root.onRecord.listen((record) {
       final loggerName = record.loggerName.isEmpty ? 'root' : record.loggerName;
