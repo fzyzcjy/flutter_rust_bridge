@@ -49,6 +49,21 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(resp.millisecondsSinceEpoch, date.millisecondsSinceEpoch);
     expect(resp.microsecondsSinceEpoch, date.microsecondsSinceEpoch);
   });
+
+  test('NaiveDate', () async {
+    final date = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 0);
+    final resp = await naivedateTwinSyncSse(d: date);
+    expect(resp.isUtc, true);
+    expect(resp.year, date.year);
+    expect(resp.month, date.month);
+    expect(resp.day, date.day);
+    expect(resp.hour, 0);
+    expect(resp.minute, 0);
+    expect(resp.second, 0);
+    expect(resp.millisecond, 0);
+    expect(resp.microsecond, 0);
+  });
+
   test('Empty DateTime', () async {
     final resp = await optionalEmptyDatetimeUtcTwinSyncSse(d: null);
     expect(resp, null);
@@ -94,12 +109,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final test = await testChronoTwinSyncSse();
     expect(test.dt!.millisecondsSinceEpoch, 1631297333000);
     expect(test.dt2!.millisecondsSinceEpoch, 1631297333000);
+    expect(test.da!.millisecondsSinceEpoch, 1631232000000);
     expect(test.du, Duration(hours: 4));
   });
 
   test('combined chrono types precise', () async {
     final datetime_1 = DateTime.utc(2002, 02, 23, 12, 13, 55);
     final datetime_2 = DateTime.utc(1800, 01, 23, 12, 56, 25);
+    final date_2 = DateTime.utc(1800, 01, 23);
     final duration = Duration(hours: 4);
 
     final result = await testPreciseChronoTwinSyncSse();
@@ -108,6 +125,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
         result.dt!.millisecondsSinceEpoch, datetime_1.millisecondsSinceEpoch);
     expect(
         result.dt2!.millisecondsSinceEpoch, datetime_2.millisecondsSinceEpoch);
+    expect(result.da!.millisecondsSinceEpoch, date_2.millisecondsSinceEpoch);
     expect(result.du!.inHours, duration.inHours);
   });
 
