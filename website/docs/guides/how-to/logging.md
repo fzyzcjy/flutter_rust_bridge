@@ -50,7 +50,7 @@ flutter_rust_bridge::enable_frb_rust_to_dart_logging!(
 );
 ```
 
-Then configure Dart logging yourself before or after `RustLib.init()`:
+Then configure the standard Dart logging yourself before or after `RustLib.init()`:
 
 ```dart
 import 'package:logging/logging.dart';
