@@ -33,12 +33,8 @@ pub async fn handle_customized_struct_twin_rust_async_sse(val: CustomizedTwinRus
     info!("{:#?}", val);
 }
 
-#[frb(
-    init_dart_code = "api.crateApiAttributeRecordInitDartCodeMessageTwinRustAsyncSse(message: 'first');"
-)]
-#[frb(
-    init_dart_code = "api.crateApiAttributeRecordInitDartCodeMessageTwinRustAsyncSse(message: 'second');"
-)]
+#[frb(init_dart_code = "recordInitDartCodeMessageTwinRustAsyncSse(message: 'first');")]
+#[frb(init_dart_code = "recordInitDartCodeMessageTwinRustAsyncSse(message: 'second');")]
 #[flutter_rust_bridge::frb(serialize)]
 pub async fn request_init_dart_code_message_twin_rust_async_sse() {}
 

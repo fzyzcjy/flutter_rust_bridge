@@ -204,17 +204,15 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
     await api.crateApiCustomizationMyInitOne();
     await api.crateApiCustomizationMyInitTwo();
 
-    api.crateApiAttributeRecordInitDartCodeMessageTwinNormal(message: 'first');
+    recordInitDartCodeMessageTwinNormal(message: 'first');
 
-    api.crateApiAttributeRecordInitDartCodeMessageTwinNormal(message: 'second');
-    api.crateApiAttributeRecordInitDartCodeMessageTwinRustAsync(
-        message: 'first');
+    recordInitDartCodeMessageTwinNormal(message: 'second');
+    recordInitDartCodeMessageTwinRustAsync(message: 'first');
 
-    api.crateApiAttributeRecordInitDartCodeMessageTwinRustAsync(
-        message: 'second');
-    api.crateApiAttributeRecordInitDartCodeMessageTwinSync(message: 'first');
+    recordInitDartCodeMessageTwinRustAsync(message: 'second');
+    recordInitDartCodeMessageTwinSync(message: 'first');
 
-    api.crateApiAttributeRecordInitDartCodeMessageTwinSync(message: 'second');
+    recordInitDartCodeMessageTwinSync(message: 'second');
   }
 
   @override

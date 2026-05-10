@@ -32,12 +32,8 @@ pub async fn handle_customized_struct_twin_rust_async(val: CustomizedTwinRustAsy
     info!("{:#?}", val);
 }
 
-#[frb(
-    init_dart_code = "api.crateApiAttributeRecordInitDartCodeMessageTwinRustAsync(message: 'first');"
-)]
-#[frb(
-    init_dart_code = "api.crateApiAttributeRecordInitDartCodeMessageTwinRustAsync(message: 'second');"
-)]
+#[frb(init_dart_code = "recordInitDartCodeMessageTwinRustAsync(message: 'first');")]
+#[frb(init_dart_code = "recordInitDartCodeMessageTwinRustAsync(message: 'second');")]
 pub async fn request_init_dart_code_message_twin_rust_async() {}
 
 #[frb(sync)]

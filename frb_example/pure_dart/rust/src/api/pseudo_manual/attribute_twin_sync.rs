@@ -33,10 +33,8 @@ pub fn handle_customized_struct_twin_sync(val: CustomizedTwinSync) {
     info!("{:#?}", val);
 }
 
-#[frb(init_dart_code = "api.crateApiAttributeRecordInitDartCodeMessageTwinSync(message: 'first');")]
-#[frb(
-    init_dart_code = "api.crateApiAttributeRecordInitDartCodeMessageTwinSync(message: 'second');"
-)]
+#[frb(init_dart_code = "recordInitDartCodeMessageTwinSync(message: 'first');")]
+#[frb(init_dart_code = "recordInitDartCodeMessageTwinSync(message: 'second');")]
 #[flutter_rust_bridge::frb(sync)]
 pub fn request_init_dart_code_message_twin_sync() {}
 
