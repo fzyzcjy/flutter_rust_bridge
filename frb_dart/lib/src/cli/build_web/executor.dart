@@ -7,41 +7,6 @@ import 'package:flutter_rust_bridge/src/cli/cli_utils.dart';
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:meta/meta.dart';
 
-/// {@macro flutter_rust_bridge.internal}
-typedef BuildWebRunCommand =
-    Future<RunCommandOutput> Function(
-      String command,
-      List<String> arguments, {
-      String? pwd,
-      Map<String, String>? env,
-      bool shell,
-      bool silent,
-      bool? checkExitCode,
-      bool printCommandInStderr,
-    });
-
-BuildWebRunCommand? _runCommandOverrideForTest;
-Future<bool> Function(String binaryName)? _isBinaryInstalledOverrideForTest;
-bool? _supportsAnsiEscapesOverrideForTest;
-
-@visibleForTesting
-void setBuildWebCommandOverridesForTest({
-  required BuildWebRunCommand runCommand,
-  required Future<bool> Function(String binaryName) isBinaryInstalled,
-  required bool supportsAnsiEscapes,
-}) {
-  _runCommandOverrideForTest = runCommand;
-  _isBinaryInstalledOverrideForTest = isBinaryInstalled;
-  _supportsAnsiEscapesOverrideForTest = supportsAnsiEscapes;
-}
-
-@visibleForTesting
-void resetBuildWebCommandOverridesForTest() {
-  _runCommandOverrideForTest = null;
-  _isBinaryInstalledOverrideForTest = null;
-  _supportsAnsiEscapesOverrideForTest = null;
-}
-
 /// {@macro flutter_rust_bridge.cli}
 class BuildWebArgs {
   /// {@macro flutter_rust_bridge.cli}
@@ -118,48 +83,10 @@ Future<void> executeBuildWeb(BuildWebArgs args) async {
 
 final _commandWhich = Platform.isWindows ? 'where.exe' : 'which';
 
-Future<RunCommandOutput> _runBuildWebCommand(
-  String command,
-  List<String> arguments, {
-  String? pwd,
-  Map<String, String>? env,
-  bool shell = true,
-  bool silent = false,
-  bool? checkExitCode,
-  bool printCommandInStderr = false,
-}) async {
-  return await (_runCommandOverrideForTest ?? runCommand)(
-    command,
-    arguments,
-    pwd: pwd,
-    env: env,
-    shell: shell,
-    silent: silent,
-    checkExitCode: checkExitCode,
-    printCommandInStderr: printCommandInStderr,
-  );
-}
-
-Future<bool> _isBuildWebBinaryInstalled(String binaryName) async {
-  final override = _isBinaryInstalledOverrideForTest;
-  if (override != null) return await override(binaryName);
-
-  try {
-    await _runBuildWebCommand(_commandWhich, [binaryName]);
-    return true;
-  } catch (_) {
-    return false;
-  }
-}
-
-bool _supportsAnsiEscapes() =>
-    _supportsAnsiEscapesOverrideForTest ?? stdout.supportsAnsiEscapes;
-
 Future<void> _sanityChecks(BuildWebArgs args) async {
   await _ensurePackageInstalled(
     binaryName: 'wasm-pack',
-    install: () async =>
-        await _runBuildWebCommand('cargo', ['install', 'wasm-pack']),
+    install: () async => await runCommand('cargo', ['install', 'wasm-pack']),
     hint:
         'wasm-pack is required, but not found in the path.\n'
         'Please install wasm-pack by following the instructions at https://rustwasm.github.io/wasm-pack/\n'
@@ -169,11 +96,8 @@ Future<void> _sanityChecks(BuildWebArgs args) async {
   if (args.enableWasmBindgen) {
     await _ensurePackageInstalled(
       binaryName: 'wasm-bindgen',
-      install: () async => await _runBuildWebCommand('cargo', [
-        'install',
-        '-f',
-        'wasm-bindgen-cli',
-      ]),
+      install: () async =>
+          await runCommand('cargo', ['install', '-f', 'wasm-bindgen-cli']),
       hint:
           'wasm-bindgen flags are enabled, but wasm-bindgen could not be found in the path.\n'
           'Please install wasm-bindgen using `cargo install -f wasm-bindgen-cli`.',
@@ -194,19 +118,28 @@ Future<void> _ensurePackageInstalled({
   required Future<void> Function() install,
   required String hint,
 }) async {
-  if (await _isBuildWebBinaryInstalled(binaryName)) return;
+  Future<bool> isBinaryInstalled() async {
+    try {
+      await runCommand(_commandWhich, [binaryName]);
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  if (await isBinaryInstalled()) return;
 
   print('Try to install `$binaryName`');
   await install();
 
-  if (!await _isBuildWebBinaryInstalled(binaryName)) {
+  if (!await isBinaryInstalled()) {
     bail(hint);
   }
 }
 
 Future<String> _getRustCreateName({required String rustCrateDir}) async {
   final manifest = jsonDecode(
-    (await _runBuildWebCommand(
+    (await runCommand(
       'cargo',
       ['read-manifest'],
       pwd: rustCrateDir,
@@ -233,7 +166,7 @@ Future<void> _executeWasmPack(
     print(rustflagsResolution.warning);
   }
 
-  await _runBuildWebCommand(
+  await runCommand(
     'wasm-pack',
     [
       'build',
@@ -258,7 +191,7 @@ Future<void> _executeWasmPack(
     env: {
       'RUSTUP_TOOLCHAIN': args.wasmPackRustupToolchain ?? 'nightly',
       'RUSTFLAGS': rustflagsResolution.rustflags,
-      if (_supportsAnsiEscapes()) 'CARGO_TERM_COLOR': 'always',
+      if (stdout.supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',
     },
   );
 }
@@ -321,7 +254,7 @@ Future<void> _executeWasmBindgen(
   BuildWebArgs args, {
   required String rustCrateName,
 }) async {
-  await _runBuildWebCommand('wasm-bindgen', [
+  await runCommand('wasm-bindgen', [
     '${args.rustCrateDir}/target/wasm32-unknown-unknown/${args.release ? 'release' : 'debug'}/$rustCrateName.wasm',
     '--out-dir',
     args.outputWasm,
@@ -336,13 +269,13 @@ Future<void> _executeWasmBindgen(
 }
 
 Future<void> _executeDartCompile(BuildWebArgs args) async {
-  await _runBuildWebCommand('dart', [
+  await runCommand('dart', [
     'compile',
     'js',
     '-o',
     args.outputDart,
     if (args.release) '-O2',
-    if (_supportsAnsiEscapes()) '--enable-diagnostic-colors',
+    if (stdout.supportsAnsiEscapes) '--enable-diagnostic-colors',
     if (args.verbose) '--verbose',
     args.dartCompileJsEntrypoint!,
   ]);
