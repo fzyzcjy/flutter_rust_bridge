@@ -121,7 +121,6 @@ fn generate_boilerplate(
             )
         })
         .join("");
-    let execute_dart_initializers = generate_execute_dart_initializers(context);
 
     let codegen_version = env!("CARGO_PKG_VERSION");
 
@@ -187,7 +186,6 @@ fn generate_boilerplate(
                   @override
                   Future<void> executeRustInitializers() async {{
                     {execute_rust_initializers}
-                    {execute_dart_initializers}
                   }}
 
                   @override
@@ -244,11 +242,6 @@ fn generate_boilerplate(
             ..Default::default()
         }],
     })
-}
-
-fn generate_execute_dart_initializers(context: WireDartGeneratorContext) -> String {
-    let _ = context;
-    "".to_owned()
 }
 
 fn file_stem(p: &Path) -> String {
