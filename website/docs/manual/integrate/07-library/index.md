@@ -1,9 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Creating a Dart/Flutter library with binary release
 
-:::info
-This guide was written for flutter_rust_bridge v1, thus some content may be outdated.
-The quickest approach to integrate is to follow the one-click approach in flutter_rust_bridge's quickstart page.
-:::
+<V1Notice />
 
 In this chapter, we discuss how to add `flutter_rust_bridge` (FRB)
 to an already existing application or create a new application from scratch;

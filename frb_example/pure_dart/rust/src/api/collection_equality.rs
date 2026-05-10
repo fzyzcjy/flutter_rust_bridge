@@ -7,6 +7,7 @@ pub struct StructWithDeepCollectionEqualityTwinNormal {
     pub map: HashMap<String, String>,
     pub set_values: HashSet<String>,
     pub optional_list: Option<Vec<String>>,
+    pub bytes: Vec<u8>,
 }
 
 pub struct StructWithShallowCollectionEqualityTwinNormal {
@@ -14,6 +15,7 @@ pub struct StructWithShallowCollectionEqualityTwinNormal {
     pub map: HashMap<String, String>,
     pub set_values: HashSet<String>,
     pub optional_list: Option<Vec<String>>,
+    pub bytes: Vec<u8>,
 }
 
 pub fn echo_struct_with_deep_collection_equality_twin_normal(

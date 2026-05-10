@@ -162,11 +162,57 @@ fn generate_equals(
 
 fn needs_deep_equality(ty: &MirType) -> bool {
     match ty {
-        MirType::GeneralList(_) => true,
+        MirType::Boxed(boxed) => needs_deep_equality(&boxed.inner),
+        MirType::GeneralList(_) | MirType::PrimitiveList(_) => true,
         MirType::Delegate(delegate) => {
-            matches!(delegate, MirTypeDelegate::Map(_) | MirTypeDelegate::Set(_))
+            matches!(
+                delegate,
+                MirTypeDelegate::Array(_) | MirTypeDelegate::Map(_) | MirTypeDelegate::Set(_)
+            )
         }
         MirType::Optional(opt) => needs_deep_equality(&opt.inner),
         _ => false,
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::ir::mir::ty::boxed::MirTypeBoxed;
+    use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegateArray, MirTypeDelegateArrayMode};
+    use crate::codegen::ir::mir::ty::general_list::MirTypeGeneralList;
+    use crate::codegen::ir::mir::ty::optional::MirTypeOptional;
+    use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
+    use crate::codegen::ir::mir::ty::primitive_list::MirTypePrimitiveList;
+    use crate::utils::namespace::Namespace;
+
+    #[test]
+    fn test_needs_deep_equality_handles_collection_wrappers() {
+        let primitive = MirType::Primitive(MirTypePrimitive::U8);
+        let list = MirType::GeneralList(MirTypeGeneralList {
+            inner: Box::new(primitive.clone()),
+        });
+        let primitive_list = MirType::PrimitiveList(MirTypePrimitiveList {
+            primitive: MirTypePrimitive::U8,
+            strict_dart_type: true,
+        });
+        let array = MirType::Delegate(MirTypeDelegate::Array(MirTypeDelegateArray {
+            namespace: Namespace::default(),
+            length: 3,
+            mode: MirTypeDelegateArrayMode::Primitive(MirTypePrimitive::U8),
+        }));
+        let boxed_list = MirType::Boxed(MirTypeBoxed {
+            exist_in_real_api: true,
+            inner: Box::new(list.clone()),
+        });
+        let optional_boxed_list = MirType::Optional(MirTypeOptional {
+            inner: Box::new(boxed_list),
+        });
+
+        assert!(needs_deep_equality(&list));
+        assert!(needs_deep_equality(&primitive_list));
+        assert!(needs_deep_equality(&array));
+        assert!(needs_deep_equality(&optional_boxed_list));
+        assert!(!needs_deep_equality(&primitive));
     }
 }

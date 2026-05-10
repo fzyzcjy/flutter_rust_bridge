@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Using `build_runner`
+
+<V1Notice />
 
 Inspect your `lib/bridge_generated.dart` and you will see that the definition of `Platform` has changed:
 

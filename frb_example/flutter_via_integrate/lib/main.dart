@@ -30,8 +30,7 @@
 //         //
 //         // This works for code too, not just values: Most code changes can be
 //         // tested with just a hot reload.
-//         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-//         useMaterial3: true,
+//         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
 //       ),
 //       home: const MyHomePage(title: 'Flutter Demo Home Page'),
 //     );
@@ -105,11 +104,9 @@
 //           // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
 //           // action in the IDE, or press "p" in the console), to see the
 //           // wireframe for each widget.
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: <Widget>[
-//             const Text(
-//               'You have pushed the button this many times:',
-//             ),
+//           mainAxisAlignment: .center,
+//           children: [
+//             const Text('You have pushed the button this many times:'),
 //             Text(
 //               '$_counter',
 //               style: Theme.of(context).textTheme.headlineMedium,
@@ -121,7 +118,7 @@
 //         onPressed: _incrementCounter,
 //         tooltip: 'Increment',
 //         child: const Icon(Icons.add),
-//       ), // This trailing comma makes auto-formatting nicer for build methods.
+//       ),
 //     );
 //   }
 // }
@@ -146,7 +143,8 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(title: const Text('flutter_rust_bridge quickstart')),
         body: Center(
           child: Text(
-              'Action: Call Rust `greet("Tom")`\nResult: `${greet(name: "Tom")}`'),
+            'Action: Call Rust `greet("Tom")`\nResult: `${greet(name: "Tom")}`',
+          ),
         ),
       ),
     );

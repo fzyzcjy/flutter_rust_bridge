@@ -17,7 +17,7 @@ impl WireRustCodecCstGeneratorDecoderTrait for RustAutoOpaqueImplicitWireRustCod
         }
     }
 
-    fn generate_impl_decode_jsvalue_body(&self) -> Option<Cow<str>> {
+    fn generate_impl_decode_jsvalue_body(&self) -> Option<Cow<'_, str>> {
         generate_decode(&self.mir).map(Cow::from)
     }
 

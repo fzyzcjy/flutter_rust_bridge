@@ -223,13 +223,13 @@ impl ::protobuf::Message for BinaryTreeProtobuf {
         &mut self.unknown_fields
     }
 
-    fn as_any(&self) -> &dyn (::std::any::Any) {
-        self as &dyn (::std::any::Any)
+    fn as_any(&self) -> &dyn ::std::any::Any {
+        self as &dyn ::std::any::Any
     }
-    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
-        self as &mut dyn (::std::any::Any)
+    fn as_any_mut(&mut self) -> &mut dyn ::std::any::Any {
+        self as &mut dyn ::std::any::Any
     }
-    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn ::std::any::Any> {
         self
     }
 
@@ -290,7 +290,7 @@ impl ::std::fmt::Debug for BinaryTreeProtobuf {
 }
 
 impl ::protobuf::reflect::ProtobufValue for BinaryTreeProtobuf {
-    fn as_ref(&self) -> ::protobuf::reflect::ReflectValueRef {
+    fn as_ref(&self) -> ::protobuf::reflect::ReflectValueRef<'_> {
         ::protobuf::reflect::ReflectValueRef::Message(self)
     }
 }
@@ -466,13 +466,13 @@ impl ::protobuf::Message for BlobProtobuf {
         &mut self.unknown_fields
     }
 
-    fn as_any(&self) -> &dyn (::std::any::Any) {
-        self as &dyn (::std::any::Any)
+    fn as_any(&self) -> &dyn ::std::any::Any {
+        self as &dyn ::std::any::Any
     }
-    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
-        self as &mut dyn (::std::any::Any)
+    fn as_any_mut(&mut self) -> &mut dyn ::std::any::Any {
+        self as &mut dyn ::std::any::Any
     }
-    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn ::std::any::Any> {
         self
     }
 
@@ -533,7 +533,7 @@ impl ::std::fmt::Debug for BlobProtobuf {
 }
 
 impl ::protobuf::reflect::ProtobufValue for BlobProtobuf {
-    fn as_ref(&self) -> ::protobuf::reflect::ReflectValueRef {
+    fn as_ref(&self) -> ::protobuf::reflect::ReflectValueRef<'_> {
         ::protobuf::reflect::ReflectValueRef::Message(self)
     }
 }

@@ -98,8 +98,10 @@ class ReadBuffer {
 
   /// Reads the given number of Uint8s from the buffer.
   Uint8List getUint8List(int length) {
-    final Uint8List listView =
-        data.buffer.asUint8List(data.offsetInBytes + _position, length);
+    final Uint8List listView = data.buffer.asUint8List(
+      data.offsetInBytes + _position,
+      length,
+    );
     _position += length;
     // NOTE: Must copy when in `sync` mode, because the underlying buffer
     // is a Rust pointer and will be freed later
@@ -160,11 +162,11 @@ class ReadBuffer {
     return getUint8List(length * 8).buffer.asFloat64List();
   }
 
-// NOTE MODIFIED try remove this to simplify rust side
-// void _alignTo(int alignment) {
-//   final int mod = _position % alignment;
-//   if (mod != 0) {
-//     _position += alignment - mod;
-//   }
-// }
+  // NOTE MODIFIED try remove this to simplify rust side
+  // void _alignTo(int alignment) {
+  //   final int mod = _position % alignment;
+  //   if (mod != 0) {
+  //     _position += alignment - mod;
+  //   }
+  // }
 }

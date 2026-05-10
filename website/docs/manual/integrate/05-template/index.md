@@ -1,9 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Use code template to create new projects
 
-:::info
-This guide was written for flutter_rust_bridge v1, thus some content may be outdated.
-The quickest approach to integrate is to follow the one-click approach in flutter_rust_bridge's quickstart page.
-:::
+<V1Notice />
 
 In this chapter, we are going to use create your own project from a code template. It seems a bit long, but it is just because we have tried to describe *every detail* that you may encounter.
 

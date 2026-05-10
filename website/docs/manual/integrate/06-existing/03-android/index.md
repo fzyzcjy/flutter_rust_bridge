@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Integrating with Android
+
+<V1Notice />
 
 The setup process is identical to [Android setup](../template/setup/android),
 so go ahead and follow the steps described there. Once you're done, we will discuss

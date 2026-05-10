@@ -14,3 +14,4 @@ ide:
   intellij:
     enabled: true
     moduleNamePrefix: ''
+sdkPath: .fvm/flutter_sdk

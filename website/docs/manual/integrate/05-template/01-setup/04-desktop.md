@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Windows and Linux
+
+<V1Notice />
 
 Windows and Linux share the same build system (CMake), making setup for these two
 platforms the easiest even from scratch. The template uses [Corrosion] to expedite the process, which has to clone and initialize the builder first. If you are running builds continuously, it might be a good idea to follow [this guide] to learn how to install [Corrosion] permanently onto your system. Once that's done, go ahead and modify `rust.cmake` in `windows` and `linux`:

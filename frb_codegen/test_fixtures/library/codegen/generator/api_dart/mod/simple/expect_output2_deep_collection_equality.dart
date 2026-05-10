@@ -5,6 +5,7 @@
 
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
+import 'api.dart';
 import 'frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
@@ -18,15 +19,17 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 final Map<String, String> map;
 final Set<String> set_;
 final List<String>? optionalValues;
+final Uint8List bytes;
+final U8Array3 fixedBytes;
 
-                const DeepCollectionStruct({required this.values ,required this.map ,required this.set_ ,this.optionalValues ,});
+                const DeepCollectionStruct({required this.values ,required this.map ,required this.set_ ,this.optionalValues ,required this.bytes ,required this.fixedBytes ,});
 
 
 
 
 
         @override
-        int get hashCode => const DeepCollectionEquality().hash(values)^const DeepCollectionEquality().hash(map)^const DeepCollectionEquality().hash(set_)^const DeepCollectionEquality().hash(optionalValues);
+        int get hashCode => const DeepCollectionEquality().hash(values)^const DeepCollectionEquality().hash(map)^const DeepCollectionEquality().hash(set_)^const DeepCollectionEquality().hash(optionalValues)^const DeepCollectionEquality().hash(bytes)^const DeepCollectionEquality().hash(fixedBytes);
 
 
 
@@ -35,7 +38,31 @@ final List<String>? optionalValues;
             identical(this, other) ||
             other is DeepCollectionStruct &&
                 runtimeType == other.runtimeType
-                && const DeepCollectionEquality().equals(values, other.values)&& const DeepCollectionEquality().equals(map, other.map)&& const DeepCollectionEquality().equals(set_, other.set_)&& const DeepCollectionEquality().equals(optionalValues, other.optionalValues);
+                && const DeepCollectionEquality().equals(values, other.values)&& const DeepCollectionEquality().equals(map, other.map)&& const DeepCollectionEquality().equals(set_, other.set_)&& const DeepCollectionEquality().equals(optionalValues, other.optionalValues)&& const DeepCollectionEquality().equals(bytes, other.bytes)&& const DeepCollectionEquality().equals(fixedBytes, other.fixedBytes);
+
+            }
+
+class ShallowCollectionStruct  {
+                final Uint8List bytes;
+final U8Array3 fixedBytes;
+
+                const ShallowCollectionStruct({required this.bytes ,required this.fixedBytes ,});
+
+
+
+
+
+        @override
+        int get hashCode => const DeepCollectionEquality().hash(bytes)^const DeepCollectionEquality().hash(fixedBytes);
+
+
+
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is ShallowCollectionStruct &&
+                runtimeType == other.runtimeType
+                && const DeepCollectionEquality().equals(bytes, other.bytes)&& const DeepCollectionEquality().equals(fixedBytes, other.fixedBytes);
 
             }
 

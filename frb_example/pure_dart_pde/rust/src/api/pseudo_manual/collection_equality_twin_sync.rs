@@ -13,6 +13,7 @@ pub struct StructWithDeepCollectionEqualityTwinSync {
     pub map: HashMap<String, String>,
     pub set_values: HashSet<String>,
     pub optional_list: Option<Vec<String>>,
+    pub bytes: Vec<u8>,
 }
 
 pub struct StructWithShallowCollectionEqualityTwinSync {
@@ -20,6 +21,7 @@ pub struct StructWithShallowCollectionEqualityTwinSync {
     pub map: HashMap<String, String>,
     pub set_values: HashSet<String>,
     pub optional_list: Option<Vec<String>>,
+    pub bytes: Vec<u8>,
 }
 
 #[flutter_rust_bridge::frb(sync)]

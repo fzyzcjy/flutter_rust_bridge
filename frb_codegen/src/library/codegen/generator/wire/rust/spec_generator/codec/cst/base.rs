@@ -21,7 +21,7 @@ pub(crate) struct WireRustCodecCstGeneratorContext<'a> {
 }
 
 impl WireRustCodecCstGeneratorContext<'_> {
-    pub(crate) fn as_wire_dart_context(&self) -> WireDartCodecCstGeneratorContext {
+    pub(crate) fn as_wire_dart_context(&self) -> WireDartCodecCstGeneratorContext<'_> {
         WireDartCodecCstGeneratorContext {
             mir_pack: self.mir_pack,
             config: self.wire_dart_config,

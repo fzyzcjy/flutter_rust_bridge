@@ -7,8 +7,11 @@ class ExecuteStreamPortGenerator {
 
   /// {@macro flutter_rust_bridge.internal}
   static String create(String funcName) {
-    final nextIndex = _streamSinkNameIndex
-        .update(funcName, (value) => value + 1, ifAbsent: () => 0);
+    final nextIndex = _streamSinkNameIndex.update(
+      funcName,
+      (value) => value + 1,
+      ifAbsent: () => 0,
+    );
     return '__frb_streamsink_${funcName}_$nextIndex';
   }
 }

@@ -11,6 +11,7 @@ pub struct StructWithDeepCollectionEqualityTwinRustAsync {
     pub map: HashMap<String, String>,
     pub set_values: HashSet<String>,
     pub optional_list: Option<Vec<String>>,
+    pub bytes: Vec<u8>,
 }
 
 pub struct StructWithShallowCollectionEqualityTwinRustAsync {
@@ -18,6 +19,7 @@ pub struct StructWithShallowCollectionEqualityTwinRustAsync {
     pub map: HashMap<String, String>,
     pub set_values: HashSet<String>,
     pub optional_list: Option<Vec<String>>,
+    pub bytes: Vec<u8>,
 }
 
 pub async fn echo_struct_with_deep_collection_equality_twin_rust_async(

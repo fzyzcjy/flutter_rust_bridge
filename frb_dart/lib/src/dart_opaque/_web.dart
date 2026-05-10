@@ -3,16 +3,23 @@ import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-PlatformPointer encodeDartOpaque(Object raw, NativePortType dartHandlerPort,
-        GeneralizedFrbRustBinding generalizedFrbRustBinding) =>
-    encodeDartOpaqueCommon(
-        _prepareDartOpaque(raw), dartHandlerPort, generalizedFrbRustBinding);
+PlatformPointer encodeDartOpaque(
+  Object raw,
+  NativePortType dartHandlerPort,
+  GeneralizedFrbRustBinding generalizedFrbRustBinding,
+) => encodeDartOpaqueCommon(
+  _prepareDartOpaque(raw),
+  dartHandlerPort,
+  generalizedFrbRustBinding,
+);
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 Object decodeDartOpaque(
-        dynamic raw, GeneralizedFrbRustBinding generalizedFrbRustBinding) =>
-    _unprepareDartOpaque(
-        decodeDartOpaqueCommon(raw, generalizedFrbRustBinding));
+  dynamic raw,
+  GeneralizedFrbRustBinding generalizedFrbRustBinding,
+) => _unprepareDartOpaque(
+  decodeDartOpaqueCommon(raw, generalizedFrbRustBinding),
+);
 
 Object _prepareDartOpaque(Object raw) {
   // #2183

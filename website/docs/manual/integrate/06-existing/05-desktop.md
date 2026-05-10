@@ -1,4 +1,8 @@
+import V1Notice from '@site/docs/snippets/_v1-notice.mdx';
+
 # Integrating with Windows and Linux
+
+<V1Notice />
 
 This guide groups together instructions for Windows and Linux desktop apps,
 as they use the same build system.

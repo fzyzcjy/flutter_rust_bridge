@@ -7,10 +7,11 @@
 
 import 'dep.dart';
 import 'frb_generated.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 
-            
+
 
             Future<void>  firstFunction() => RustLib.instance.api.crateApiFirstFunction();
 
@@ -18,5 +19,20 @@ Future<void>  secondFunction({required Simple arg }) => RustLib.instance.api.cra
 
 Future<void>  thirdFunction({required DeepCollectionStruct arg }) => RustLib.instance.api.crateApiThirdFunction(arg: arg);
 
-            
-            
+Future<void>  fourthFunction({required ShallowCollectionStruct arg }) => RustLib.instance.api.crateApiFourthFunction(arg: arg);
+
+
+            class U8Array3 extends NonGrowableListView<int> {
+                static const arraySize = 3;
+
+                @internal
+                Uint8List get inner => _inner;
+                final Uint8List _inner;
+
+                U8Array3(this._inner)
+                    : assert(_inner.length == arraySize),
+                      super(_inner);
+
+                U8Array3.init(): this(Uint8List(arraySize));
+              }
+

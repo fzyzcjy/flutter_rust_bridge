@@ -46,8 +46,8 @@ static WEB_CONSOLE_LOGGER: WebConsoleLogger = WebConsoleLogger;
 
 #[cfg(feature = "log")]
 impl WebConsoleLogger {
-    pub(crate) fn init() -> Result<(), log::SetLoggerError> {
-        log::set_logger(&WEB_CONSOLE_LOGGER).map(|()| log::set_max_level(log::LevelFilter::Trace))
+    pub(crate) fn init(level: log::LevelFilter) -> Result<(), log::SetLoggerError> {
+        log::set_logger(&WEB_CONSOLE_LOGGER).map(|()| log::set_max_level(level))
     }
 }
 

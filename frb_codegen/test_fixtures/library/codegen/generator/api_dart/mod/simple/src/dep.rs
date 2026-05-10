@@ -11,4 +11,11 @@ pub struct DeepCollectionStruct {
     map: HashMap<String, String>,
     set: HashSet<String>,
     optional_values: Option<Vec<String>>,
+    bytes: Vec<u8>,
+    fixed_bytes: [u8; 3],
+}
+
+pub struct ShallowCollectionStruct {
+    bytes: Vec<u8>,
+    fixed_bytes: [u8; 3],
 }

@@ -250,6 +250,7 @@ typedef struct wire_cst_struct_with_deep_collection_equality_twin_normal {
   struct wire_cst_list_record_string_string *map;
   struct wire_cst_list_String *set_values;
   struct wire_cst_list_String *optional_list;
+  struct wire_cst_list_prim_u_8_strict *bytes;
 } wire_cst_struct_with_deep_collection_equality_twin_normal;
 
 typedef struct wire_cst_struct_with_deep_collection_equality_twin_rust_async {
@@ -257,6 +258,7 @@ typedef struct wire_cst_struct_with_deep_collection_equality_twin_rust_async {
   struct wire_cst_list_record_string_string *map;
   struct wire_cst_list_String *set_values;
   struct wire_cst_list_String *optional_list;
+  struct wire_cst_list_prim_u_8_strict *bytes;
 } wire_cst_struct_with_deep_collection_equality_twin_rust_async;
 
 typedef struct wire_cst_struct_with_deep_collection_equality_twin_sync {
@@ -264,6 +266,7 @@ typedef struct wire_cst_struct_with_deep_collection_equality_twin_sync {
   struct wire_cst_list_record_string_string *map;
   struct wire_cst_list_String *set_values;
   struct wire_cst_list_String *optional_list;
+  struct wire_cst_list_prim_u_8_strict *bytes;
 } wire_cst_struct_with_deep_collection_equality_twin_sync;
 
 typedef struct wire_cst_struct_with_shallow_collection_equality_twin_normal {
@@ -271,6 +274,7 @@ typedef struct wire_cst_struct_with_shallow_collection_equality_twin_normal {
   struct wire_cst_list_record_string_string *map;
   struct wire_cst_list_String *set_values;
   struct wire_cst_list_String *optional_list;
+  struct wire_cst_list_prim_u_8_strict *bytes;
 } wire_cst_struct_with_shallow_collection_equality_twin_normal;
 
 typedef struct wire_cst_struct_with_shallow_collection_equality_twin_rust_async {
@@ -278,6 +282,7 @@ typedef struct wire_cst_struct_with_shallow_collection_equality_twin_rust_async 
   struct wire_cst_list_record_string_string *map;
   struct wire_cst_list_String *set_values;
   struct wire_cst_list_String *optional_list;
+  struct wire_cst_list_prim_u_8_strict *bytes;
 } wire_cst_struct_with_shallow_collection_equality_twin_rust_async;
 
 typedef struct wire_cst_struct_with_shallow_collection_equality_twin_sync {
@@ -285,6 +290,7 @@ typedef struct wire_cst_struct_with_shallow_collection_equality_twin_sync {
   struct wire_cst_list_record_string_string *map;
   struct wire_cst_list_String *set_values;
   struct wire_cst_list_String *optional_list;
+  struct wire_cst_list_prim_u_8_strict *bytes;
 } wire_cst_struct_with_shallow_collection_equality_twin_sync;
 
 typedef struct wire_cst_empty_twin_normal {

@@ -62,7 +62,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       Duration(days: 10),
       Duration(days: 100),
       Duration(milliseconds: 333),
-      if (!kIsWeb) Duration(microseconds: 333)
+      if (!kIsWeb) Duration(microseconds: 333),
     ];
     final now = DateTime.now();
     final durations = await handleTimestampsTwinNormal(
@@ -78,11 +78,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
       Duration(hours: 2),
       Duration(seconds: 1),
       Duration(milliseconds: 500),
-      if (!kIsWeb) Duration(microseconds: 400)
+      if (!kIsWeb) Duration(microseconds: 400),
     ];
     final now = DateTime.now();
-    final result =
-        await handleDurationsTwinNormal(durations: expected, since: now);
+    final result = await handleDurationsTwinNormal(
+      durations: expected,
+      since: now,
+    );
     expect(result, expected.map(now.subtract));
   });
 
@@ -101,9 +103,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final result = await testPreciseChronoTwinNormal();
 
     expect(
-        result.dt!.millisecondsSinceEpoch, datetime_1.millisecondsSinceEpoch);
+      result.dt!.millisecondsSinceEpoch,
+      datetime_1.millisecondsSinceEpoch,
+    );
     expect(
-        result.dt2!.millisecondsSinceEpoch, datetime_2.millisecondsSinceEpoch);
+      result.dt2!.millisecondsSinceEpoch,
+      datetime_2.millisecondsSinceEpoch,
+    );
     expect(result.du!.inHours, duration.inHours);
   });
 
@@ -113,8 +119,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
     final local = DateTime.now();
     final utc = DateTime.now().toUtc();
     final difference = await howLongDoesItTakeTwinNormal(
-        mine: FeatureChronoTwinNormal(
-            utc: utc, local: local, duration: duration, naive: naive));
+      mine: FeatureChronoTwinNormal(
+        utc: utc,
+        local: local,
+        duration: duration,
+        naive: naive,
+      ),
+    );
     debugPrint('$difference');
   });
 }

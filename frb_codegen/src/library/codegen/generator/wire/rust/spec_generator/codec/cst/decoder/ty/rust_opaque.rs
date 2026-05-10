@@ -14,7 +14,7 @@ impl WireRustCodecCstGeneratorDecoderTrait for RustOpaqueWireRustCodecCstGenerat
         }
     }
 
-    fn generate_impl_decode_jsvalue_body(&self) -> Option<Cow<str>> {
+    fn generate_impl_decode_jsvalue_body(&self) -> Option<Cow<'_, str>> {
         Some(
             format!(
                 r#"
