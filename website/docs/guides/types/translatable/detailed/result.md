@@ -17,7 +17,7 @@ There are three ways to enable oxidized Result types:
 
 ### 1. Auto-detection (default)
 
-If the `oxidized` package is detected in your project's dependencies, fallible functions will automatically return `Result<T, E>` instead of throwing exceptions.
+If the `oxidized` package is listed in your project's `pubspec.yaml` dependencies, fallible functions will automatically return `Result<T, E>` instead of throwing exceptions.
 
 ### 2. Project-wide configuration
 
@@ -81,5 +81,3 @@ result.when(
 | -------------------- | ---------------------------------------------------------------- |
 | `Result<T, E>`       | `Result<T, E>` from [oxidized](https://pub.dev/packages/oxidized) |
 | `anyhow::Result<T>`  | `Result<T, AnyhowException>`                                     |
-
-:warning: Please note that you need to add the [oxidized](https://pub.dev/packages/oxidized/install) package to your Dart/Flutter dependencies in `pubspec.yaml`.
