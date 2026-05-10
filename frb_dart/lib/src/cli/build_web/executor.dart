@@ -25,7 +25,6 @@ Future<bool> Function(String binaryName)? _isBinaryInstalledOverrideForTest;
 bool? _supportsAnsiEscapesOverrideForTest;
 
 @visibleForTesting
-/// Overrides external command access for `build-web` tests.
 void setBuildWebCommandOverridesForTest({
   required BuildWebRunCommand runCommand,
   required Future<bool> Function(String binaryName) isBinaryInstalled,
@@ -37,7 +36,6 @@ void setBuildWebCommandOverridesForTest({
 }
 
 @visibleForTesting
-/// Clears external command overrides installed by `setBuildWebCommandOverridesForTest`.
 void resetBuildWebCommandOverridesForTest() {
   _runCommandOverrideForTest = null;
   _isBinaryInstalledOverrideForTest = null;
