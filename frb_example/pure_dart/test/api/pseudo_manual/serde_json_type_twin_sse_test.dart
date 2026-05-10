@@ -1,35 +1,37 @@
-// AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
+// NOTE: This file is mimicking how a human developer writes tests,
+// and is auto-generated from `serde_json_type_test.dart` by frb_internal
+// Please do not modify manually, but modify the origin and re-run frb_internal generator
 
-import 'package:frb_example_pure_dart_pde/src/rust/api/serde_json_type.dart';
-import 'package:frb_example_pure_dart_pde/src/rust/frb_generated.dart';
+import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/serde_json_type_twin_sse.dart';
+import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
 Future<void> main({bool skipRustLibInit = false}) async {
   if (!skipRustLibInit) await RustLib.init();
 
   test('serde_json::Value null', () async {
-    final output = await handleSerdeJsonValueTwinNormal(val: null);
+    final output = await handleSerdeJsonValueTwinSse(val: null);
     expect(output, isNull);
   });
 
   test('serde_json::Value number', () async {
-    final output = await handleSerdeJsonValueTwinNormal(val: 42);
+    final output = await handleSerdeJsonValueTwinSse(val: 42);
     expect(output, 42);
   });
 
   test('serde_json::Value string', () async {
-    final output = await handleSerdeJsonValueTwinNormal(val: 'hello');
+    final output = await handleSerdeJsonValueTwinSse(val: 'hello');
     expect(output, 'hello');
   });
 
   test('serde_json::Value bool', () async {
-    final output = await handleSerdeJsonValueTwinNormal(val: true);
+    final output = await handleSerdeJsonValueTwinSse(val: true);
     expect(output, true);
   });
 
   test('serde_json::Value list', () async {
     final input = [1, 'two', null, true];
-    final output = await handleSerdeJsonValueTwinNormal(val: input);
+    final output = await handleSerdeJsonValueTwinSse(val: input);
     expect(output, input);
   });
 
@@ -40,18 +42,18 @@ Future<void> main({bool skipRustLibInit = false}) async {
       'active': true,
       'tags': ['a', 'b'],
     };
-    final output = await handleSerdeJsonValueTwinNormal(val: input);
+    final output = await handleSerdeJsonValueTwinSse(val: input);
     expect(output, input);
   });
 
   test('Option<serde_json::Value> some', () async {
     final output =
-        await handleOptionSerdeJsonValueTwinNormal(val: {'key': 'value'});
+        await handleOptionSerdeJsonValueTwinSse(val: {'key': 'value'});
     expect(output, {'key': 'value'});
   });
 
   test('Option<serde_json::Value> none', () async {
-    final output = await handleOptionSerdeJsonValueTwinNormal(val: null);
+    final output = await handleOptionSerdeJsonValueTwinSse(val: null);
     expect(output, isNull);
   });
 
@@ -61,7 +63,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       'hello',
       {'nested': true}
     ];
-    final output = await handleVecSerdeJsonValueTwinNormal(val: input);
+    final output = await handleVecSerdeJsonValueTwinSse(val: input);
     expect(output, input);
   });
 
@@ -71,7 +73,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       'str': 'hello',
       'obj': {'a': true},
     };
-    final output = await handleMapSerdeJsonValueTwinNormal(val: input);
+    final output = await handleMapSerdeJsonValueTwinSse(val: input);
     expect(output, input);
   });
 
@@ -80,8 +82,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
       'key': 'value',
       'nested': {'a': 1}
     };
-    final wrapper = FeatureSerdeJsonTwinNormal(data: data);
-    final output = await handleNestedSerdeJsonValueTwinNormal(wrapper: wrapper);
+    final wrapper = FeatureSerdeJsonTwinSse(data: data);
+    final output = await handleNestedSerdeJsonValueTwinSse(wrapper: wrapper);
     expect(output.data, data);
   });
 }

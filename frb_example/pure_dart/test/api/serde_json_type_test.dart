@@ -74,10 +74,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('serde_json::Value nested struct', () async {
-    final data = {'key': 'value', 'nested': {'a': 1}};
+    final data = {
+      'key': 'value',
+      'nested': {'a': 1}
+    };
     final wrapper = FeatureSerdeJsonTwinNormal(data: data);
-    final output =
-        await handleNestedSerdeJsonValueTwinNormal(wrapper: wrapper);
+    final output = await handleNestedSerdeJsonValueTwinNormal(wrapper: wrapper);
     expect(output.data, data);
   });
 }
