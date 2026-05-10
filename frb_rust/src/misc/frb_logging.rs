@@ -74,7 +74,7 @@ macro_rules! enable_frb_logging {
                 _ => log::LevelFilter::Trace,
             };
 
-            log::set_boxed_logger(Box::new(FrbDartLogger { sink }))
+            log::set_logger(Box::leak(Box::new(FrbDartLogger { sink })))
                 .map(|()| log::set_max_level(max_level))
                 .expect("FRB logging should only be initialized once");
 
