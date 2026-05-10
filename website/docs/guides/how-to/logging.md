@@ -7,7 +7,9 @@ flutter_rust_bridge provides two logging paths:
 
 Use the bridge when you want Rust logs to follow the same Dart-side pipeline as the rest of your Flutter app, for example when saving logs to a file, uploading them to a service, or using one Dart logging listener for both Dart and Rust code.
 
-## Bridge Rust logs to Dart
+## Built-in Rust-to-Dart logging
+
+### Bridge Rust logs to Dart
 
 First, ensure your Rust crate depends on the standard Rust `log` crate:
 
@@ -30,7 +32,7 @@ pub fn compute() {
 
 After code generation, `RustLib.init()` automatically initializes the generated log stream and connects it to Dart logging. By default, FRB also installs a simple Dart-side output listener, so logs are visible in `flutter run`.
 
-## Customize Dart output
+### Customize Dart output
 
 The default output is meant for quick start. For an app-specific logging setup, disable it:
 
@@ -60,7 +62,7 @@ void setupLogging() {
 
 Rust `log::info!`, `log::warn!`, and similar calls will enter this Dart listener through FRB.
 
-## Change the Rust max level
+### Change the Rust max level
 
 The bridge defaults to `log::LevelFilter::Info`. You can choose another Rust max level:
 
@@ -79,13 +81,15 @@ flutter_rust_bridge::enable_frb_logging!(
 );
 ```
 
-## Platform console logging
+## Examples and alternatives
+
+### Platform console logging
 
 The older platform console setup is still available through `setup_default_user_utils()` and `setup_log_to_console(...)`. It sends Rust logs to platform tools such as Android Logcat, Apple unified logging, or the browser console on wasm.
 
 That is useful when platform-native logs are exactly what you want. The Dart bridge is useful when you want Rust logs to be handled by Dart code.
 
-## Fully manual streams
+### Fully manual streams
 
 For unusual logging designs, you can still expose your own `StreamSink<T>` and send custom records manually:
 
