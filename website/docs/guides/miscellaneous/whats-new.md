@@ -50,7 +50,7 @@ where there are lists of features (advantages) and a quick show-me-the-code.
   * Integrate with Cargokit (setup the build environment and hooks automatically).
   * Provide defaults, while keeping customizability (e.g. auto find and load the dynamic libraries by default, while allowing full manual control).
 * Improve error stack trace of `frb_codegen` (replace `thiserror` with `anyhow`).
-* Generate hashCode/equals for non-freezed structs.
+* Generate hashCode/equals for non-freezed structs, with opt-in deep equality for Dart collection fields.
 * Remove global internal thread pool, thus users can arbitrarily customize thread pool easily.
 * Refactor the scripts for repository contributors and the CI.
 * Automatically install `cargo expand` if not installed.

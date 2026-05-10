@@ -16,6 +16,7 @@
   "generator": {
     "api_dart": {
       "dart3": true,
+      "dart_collection_deep_equality": false,
       "dart_decl_base_output_path": "{the-working-directory}/my_dart_folder",
       "dart_entrypoint_class_name": "RustLib",
       "dart_enums_style": true,

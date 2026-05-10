@@ -24,7 +24,7 @@ final List<String> values;
 
                 
         @override
-        int get hashCode => val.hashCode^values.hashCode;
+        int get hashCode => val.hashCode^const DeepCollectionEquality().hash(values);
         
 
                 
@@ -33,7 +33,7 @@ final List<String> values;
             identical(this, other) ||
             other is Simple &&
                 runtimeType == other.runtimeType
-                && val == other.val&& values == other.values;
+                && val == other.val&& const DeepCollectionEquality().equals(values, other.values);
         
             }
             

@@ -10,6 +10,7 @@ dart_type_rename:
 
 rust_preamble: "// test for rust_preamble"
 dart_preamble: "import 'dart:io';"
+dart_collection_deep_equality: true
 
 # To help developing flutter_rust_bridge; normal users usually do not set this
 stop_on_error: true

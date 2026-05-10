@@ -97,6 +97,10 @@ pub(crate) struct GenerateCommandArgsPrimary {
     #[arg(long)]
     pub rust_preamble: Option<String>,
 
+    /// Use deep equality for Dart collection fields in generated non-freezed classes.
+    #[arg(long)]
+    pub dart_collection_deep_equality: bool,
+
     /// The generated Dart enums will not have their variant names camelCased.
     #[arg(long)]
     pub no_dart_enums_style: bool,
