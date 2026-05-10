@@ -70,6 +70,11 @@ impl FunctionParser<'_, '_> {
                 )
             }
             HirFlatFunctionOwner::TraitDef { trait_def_name } => {
+                // Skip functions belonging to traits that are marked with #[frb(ignore)]
+                if self.type_parser.ignored_trait_names.contains(&trait_def_name.name) {
+                    return Ok(IrValueOrSkip::Skip(IgnoreBecauseOwnerTyShouldIgnore));
+                }
+
                 let trait_def = MirTypeTraitDef {
                     name: trait_def_name.to_owned(),
                 };

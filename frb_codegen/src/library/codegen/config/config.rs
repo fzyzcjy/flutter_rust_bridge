@@ -46,6 +46,7 @@ pub struct Config {
     pub dump: Option<Vec<ConfigDumpContent>>,
     pub dump_all: Option<bool>,
     pub rust_features: Option<Vec<String>>,
+    pub use_oxidized: Option<bool>,
 }
 
 #[derive(Debug, Serialize, Deserialize, Default)]
@@ -109,4 +110,5 @@ generate_merge!(
     dump,
     dump_all,
     rust_features,
+    use_oxidized,
 );

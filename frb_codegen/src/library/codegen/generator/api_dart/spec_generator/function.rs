@@ -232,13 +232,19 @@ fn generate_header(
     func: &MirFunc,
     context: ApiDartGeneratorContext,
 ) -> anyhow::Result<DartHeaderCode> {
+    let oxidized_import = if should_use_oxidized(func, context) {
+        "import 'package:oxidized/oxidized.dart';\n"
+    } else {
+        ""
+    };
+
     Ok(DartHeaderCode {
         import: generate_imports_which_types_and_funcs_use(
             &func.namespace.clone(),
             &None,
             &Some(&vec![func]),
             context,
-        )?,
+        )? + oxidized_import,
         ..Default::default()
     })
 }
@@ -258,6 +264,16 @@ fn generate_function_dart_return_type(
         );
     }
 
+    if should_use_oxidized(func, context) && return_stream.is_none() {
+        let error_type = func
+            .output
+            .error
+            .as_ref()
+            .map(|e| ApiDartGenerator::new(e.clone(), context).dart_api_type())
+            .unwrap_or_else(|| "Object".to_owned());
+        inner = format!("Result<{inner}, {error_type}>");
+    }
+
     let return_future = if return_stream.is_some() {
         func.stream_dart_await
     } else {
@@ -268,4 +284,8 @@ fn generate_function_dart_return_type(
     }
 
     inner
+}
+
+pub(crate) fn should_use_oxidized(func: &MirFunc, context: ApiDartGeneratorContext) -> bool {
+    func.oxidized.unwrap_or(context.config.use_oxidized) && func.fallible()
 }

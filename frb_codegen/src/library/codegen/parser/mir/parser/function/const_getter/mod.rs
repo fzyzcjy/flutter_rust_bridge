@@ -86,6 +86,7 @@ fn parse_constant(
         rust_call_code: Some(rust_call_code),
         rust_aop_after: None,
         impl_mode: MirFuncImplMode::Normal,
+        oxidized: None,
         src_lineno_pseudo: constant.item_const.span().start().line,
     })))
 }

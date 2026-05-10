@@ -1,7 +1,7 @@
 use crate::codegen::generator::api_dart;
 use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::api_dart::spec_generator::function::{
-    compute_params_str, ApiDartGeneratedFunction,
+    compute_params_str, should_use_oxidized, ApiDartGeneratedFunction,
 };
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::codec::base::WireDartCodecEntrypoint;
@@ -45,6 +45,8 @@ pub(crate) fn generate_api_impl_normal_function(
         "{func_return_type} {func_name}({func_params_str})",
         func_name = func.name_dart_wire(),
     );
+    let should_wrap_with_oxidized_result = should_use_oxidized(func, context.as_api_dart_context())
+        && api_dart_func.return_stream.is_none();
 
     let call_handler = format!(
         "handler.{execute_func_name}({task_class}(
@@ -82,14 +84,16 @@ pub(crate) fn generate_api_impl_normal_function(
             )
             .dart_api_type(),
         )
+    } else if should_wrap_with_oxidized_result {
+        generate_oxidized_result_wrapper(func, context, &call_handler)
     } else {
         format!("return {call_handler};")
     };
     let function_implementation = format!(
         "@override {func_expr} {maybe_async} {{ {function_implementation_body} }}",
         maybe_async = if func.mode != MirFuncMode::Sync
-            && api_dart_func.return_stream.is_some()
-            && func.stream_dart_await
+            && ((api_dart_func.return_stream.is_some() && func.stream_dart_await)
+                || should_wrap_with_oxidized_result)
         {
             "async "
         } else {
@@ -108,11 +112,44 @@ pub(crate) fn generate_api_impl_normal_function(
     })
 }
 
-fn generate_execute_func_name(func: &MirFunc) -> &str {
+fn generate_execute_func_name(func: &MirFunc) -> &'static str {
     match func.mode {
         MirFuncMode::Normal => "executeNormal",
         MirFuncMode::Sync => "executeSync",
     }
+}
+
+fn generate_oxidized_result_wrapper(
+    func: &MirFunc,
+    context: WireDartGeneratorContext,
+    call_handler: &str,
+) -> String {
+    let error_type = generate_error_type(func, context);
+    let maybe_await = if func.mode == MirFuncMode::Normal {
+        "await "
+    } else {
+        ""
+    };
+
+    format!(
+        "
+        try {{
+          return Ok({maybe_await}{call_handler});
+        }} on PanicException {{
+          rethrow;
+        }} on {error_type} catch (e) {{
+          return Err(e);
+        }}
+        "
+    )
+}
+
+fn generate_error_type(func: &MirFunc, context: WireDartGeneratorContext) -> String {
+    func.output
+        .error
+        .as_ref()
+        .map(|ty| ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type())
+        .unwrap_or_else(|| "Object".to_owned())
 }
 
 fn generate_task_class(func: &MirFunc) -> &str {

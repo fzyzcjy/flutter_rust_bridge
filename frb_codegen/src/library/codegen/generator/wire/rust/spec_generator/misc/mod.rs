@@ -14,6 +14,7 @@ use crate::codegen::ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::if_then_some;
 use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
+use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use crate::utils::namespace::Namespace;
 use itertools::Itertools;
 use serde::Serialize;
@@ -114,6 +115,7 @@ fn generate_imports(
         .iter()
         .flat_map(|ty| WireRustGenerator::new(ty.clone(), context).generate_imports())
         .flatten()
+        .chain(types.iter().filter_map(MirTypeTrait::self_namespace))
         .filter(|namespace| namespace != &output_namespace)
         .map(|namespace| format!("use {}::*;", namespace.joined_path))
         .collect::<HashSet<String>>()

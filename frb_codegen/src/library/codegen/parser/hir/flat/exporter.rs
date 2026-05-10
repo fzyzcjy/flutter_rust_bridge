@@ -1,6 +1,8 @@
 use crate::codegen::ir::hir::flat::pack::HirFlatPack;
 use crate::codegen::ir::hir::flat::struct_or_enum::{HirFlatEnum, HirFlatStruct};
 use crate::codegen::ir::hir::flat::traits::HirFlatTrait;
+use crate::codegen::ir::hir::flat::type_alias::HirFlatTypeAlias;
+use crate::codegen::parser::mir::parser::attribute::FrbAttributes;
 use log::debug;
 use std::collections::HashMap;
 use std::fmt::{Debug, Display};
@@ -17,11 +19,52 @@ impl HirFlatPack {
     }
 
     pub(crate) fn traits_map(&self) -> HashMap<String, &HirFlatTrait> {
-        vec_to_map_with_warn(&self.traits, |x| (x.name.name.clone(), x))
+        // Filter out traits marked with #[frb(ignore)]
+        let non_ignored: Vec<_> = self
+            .traits
+            .iter()
+            .filter(|t| {
+                !FrbAttributes::parse(&t.attrs)
+                    .map(|a| a.ignore())
+                    .unwrap_or(false)
+            })
+            .collect();
+        vec_to_map_with_warn(&non_ignored, |x| (x.name.name.clone(), *x))
+    }
+
+    /// Returns the names of traits that are marked with #[frb(ignore)].
+    /// Used to properly handle trait object types for ignored traits.
+    pub(crate) fn ignored_trait_names(&self) -> std::collections::HashSet<String> {
+        let ignored: std::collections::HashSet<_> = self.traits
+            .iter()
+            .filter(|t| {
+                FrbAttributes::parse(&t.attrs)
+                    .map(|a| a.ignore())
+                    .unwrap_or(false)
+            })
+            .map(|t| t.name.name.clone())
+            .collect();
+        if !ignored.is_empty() {
+            log::debug!("Ignored trait names: {:?}", ignored);
+        }
+        ignored
     }
 
     pub(crate) fn types_map(&self) -> HashMap<String, Type> {
-        vec_to_map_with_warn(&self.types, |x| (x.ident.clone(), x.target.clone()))
+        // Only include non-generic type aliases here.
+        // Generic type aliases are handled separately via generic_types_map()
+        // to support proper generic parameter substitution.
+        vec_to_map_with_warn(
+            &self.types.iter().filter(|x| x.generics.is_none()).collect::<Vec<_>>(),
+            |x| (x.ident.clone(), x.target.clone()),
+        )
+    }
+
+    pub(crate) fn generic_types_map(&self) -> HashMap<String, &HirFlatTypeAlias> {
+        vec_to_map_with_warn(
+            &self.types.iter().filter(|x| x.generics.is_some()).collect::<Vec<_>>(),
+            |x| (x.ident.clone(), *x),
+        )
     }
 }
 

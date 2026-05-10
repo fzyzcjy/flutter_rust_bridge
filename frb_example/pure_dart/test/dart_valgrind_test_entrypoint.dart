@@ -411,6 +411,7 @@ import 'api/pseudo_manual/uuid_type_twin_sync_sse_test.dart'
 import 'api/pseudo_manual/uuid_type_twin_sync_test.dart'
     as uuid_type_twin_sync_test;
 import 'api/raw_string_test.dart' as raw_string_test;
+import 'api/result_oxidized_test.dart' as result_oxidized_test;
 import 'api/rust_auto_opaque_test.dart' as rust_auto_opaque_test;
 import 'api/rust_opaque_sync_test.dart' as rust_opaque_sync_test;
 import 'api/rust_opaque_test.dart' as rust_opaque_test;
@@ -681,6 +682,7 @@ Future<void> callFileEntrypoints() async {
   await uuid_type_twin_sync_sse_test.main(skipRustLibInit: true);
   await uuid_type_twin_sync_test.main(skipRustLibInit: true);
   await raw_string_test.main(skipRustLibInit: true);
+  await result_oxidized_test.main(skipRustLibInit: true);
   await rust_auto_opaque_test.main(skipRustLibInit: true);
   await rust_opaque_sync_test.main(skipRustLibInit: true);
   await rust_opaque_test.main(skipRustLibInit: true);

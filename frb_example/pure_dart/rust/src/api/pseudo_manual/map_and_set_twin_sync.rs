@@ -6,7 +6,6 @@ use crate::api::pseudo_manual::enumeration_twin_sync::{EnumSimpleTwinSync, Kitch
 use crate::auxiliary::sample_types::MySize;
 use std::collections::{HashMap, HashSet};
 
-/// flutter_rust_bridge:ignore
 #[derive(Clone, Debug, Default)]
 pub struct CustomHasherTwinSync(std::collections::hash_map::RandomState);
 
