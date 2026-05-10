@@ -284,7 +284,7 @@ fn generate_execute_dart_logging_initializer(
     let max_level = function_names
         .max_level
         .map(|name| format!("api.{name}()"))
-        .unwrap_or_else(|| "3".to_owned());
+        .unwrap_or_else(|| "'INFO'".to_owned());
     let setup_default_output = function_names
         .setup_default_output
         .map(|name| format!("api.{name}()"))

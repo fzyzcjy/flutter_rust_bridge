@@ -66,15 +66,16 @@ macro_rules! enable_frb_rust_to_dart_logging {
         #[doc(hidden)]
         pub fn frb_init_logger(
             sink: crate::frb_generated::StreamSink<FrbLogRecord>,
-            max_level: u16,
+            max_level: String,
         ) {
-            let max_level = match max_level {
-                0 => log::LevelFilter::Off,
-                1 => log::LevelFilter::Error,
-                2 => log::LevelFilter::Warn,
-                3 => log::LevelFilter::Info,
-                4 => log::LevelFilter::Debug,
-                _ => log::LevelFilter::Trace,
+            let max_level = match max_level.to_uppercase().as_str() {
+                "OFF" => log::LevelFilter::Off,
+                "ERROR" => log::LevelFilter::Error,
+                "WARN" => log::LevelFilter::Warn,
+                "INFO" => log::LevelFilter::Info,
+                "DEBUG" => log::LevelFilter::Debug,
+                "TRACE" => log::LevelFilter::Trace,
+                _ => panic!("Unknown FRB logging max level: {max_level}"),
             };
 
             log::set_logger(Box::leak(Box::new(FrbDartLogger { sink })))
@@ -89,15 +90,8 @@ macro_rules! enable_frb_rust_to_dart_logging {
         }
 
         #[doc(hidden)]
-        pub fn frb_logging_max_level() -> u16 {
-            match $max_level {
-                log::LevelFilter::Off => 0,
-                log::LevelFilter::Error => 1,
-                log::LevelFilter::Warn => 2,
-                log::LevelFilter::Info => 3,
-                log::LevelFilter::Debug => 4,
-                log::LevelFilter::Trace => 5,
-            }
+        pub fn frb_logging_max_level() -> String {
+            $max_level.to_string()
         }
 
         #[doc(hidden)]
