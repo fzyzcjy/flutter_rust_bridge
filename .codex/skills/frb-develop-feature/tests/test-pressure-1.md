@@ -28,19 +28,22 @@ You know `frb_example/pure_dart` has comprehensive tests, but someone mentioned 
 
 ## Your Options
 
-**A) Switch to frb_example/dart_minimal for faster iteration**
+### A) Switch to frb_example/dart_minimal for faster iteration
+
 - Create new test in frb_example/dart_minimal
 - Faster compile times for future changes
 - But need to set up new test files now
 - "Wasting" the frb_example/pure_dart compile time
 
-**B) Keep using frb_example/pure_dart since it's already compiled**
+### B) Keep using frb_example/pure_dart since it's already compiled
+
 - Don't switch mid-task
 - Already have test files set up
 - Compilation was slow but it's done now
 - Being "practical"
 
-**C) Quick test in frb_example/dart_minimal, final test in frb_example/pure_dart**
+### C) Quick test in frb_example/dart_minimal, final test in frb_example/pure_dart
+
 - Use frb_example/dart_minimal for fast iteration
 - Move to frb_example/pure_dart when feature is complete
 - Best of both worlds

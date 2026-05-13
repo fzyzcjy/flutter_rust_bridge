@@ -5,7 +5,7 @@
 
 ## Prompt
 
-```
+```text
 I need to verify my changes work on the web platform.
 How do I run web tests for frb_dart locally?
 ```

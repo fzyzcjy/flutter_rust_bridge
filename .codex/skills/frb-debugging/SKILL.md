@@ -36,8 +36,8 @@ RUST_LOG=debug flutter_rust_bridge_codegen ...
 
 If above doesn't help, see:
 
-* `website/docs/docs/guides/contributing/tip.md`
-* `website/docs/manual/troubleshooting.md`
+- `website/docs/docs/guides/contributing/tip.md`
+- `website/docs/manual/troubleshooting.md`
 
 Before going deep into FRB internals, first check whether you are actually seeing failure propagation from unstable generated outputs or integrate templates.
 

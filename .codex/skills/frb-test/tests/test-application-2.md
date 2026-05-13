@@ -5,7 +5,7 @@
 
 ## Prompt
 
-```
+```text
 I added a new function `hello_twin_normal` to frb_example/pure_dart/rust/src/api/misc.rs
 and wrote a test in frb_example/pure_dart/test/api/misc_test.dart.
 The CI is failing. How can I reproduce and debug this locally?

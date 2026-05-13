@@ -187,7 +187,7 @@ If it passes on retry -> flaky, not your bug.
 
 When CI shows a diff, you have two options:
 
-**Option A: `git apply` (faster)**
+#### Option A: `git apply` (faster)
 
 CI already ran the generator. Just apply what it computed:
 
@@ -196,7 +196,7 @@ CI already ran the generator. Just apply what it computed:
 pbpaste | git apply   # macOS
 ```
 
-**Option B: Regenerate (slower but more "proper")**
+#### Option B: Regenerate (slower but more "proper")
 
 ```bash
 ./frb_internal precommit-generate

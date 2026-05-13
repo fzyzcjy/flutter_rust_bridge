@@ -25,20 +25,23 @@ This generates ~6 test variants automatically.
 
 ## Your Options
 
-**A) Follow the twin naming convention exactly**
+### A) Follow the twin naming convention exactly
+
 - `process_data_twin_normal` in Rust
 - `ProcessDataTwinNormal` in Dart
 - Gets ~6 auto-generated variants
 - Even for simple functions
 - Following the pattern consistently
 
-**B) Skip twin naming for this simple function**
+### B) Skip twin naming for this simple function
+
 - Just `process_data` without suffix
 - Simpler, less ceremony
 - Can always add twin later if needed
 - "Being pragmatic not dogmatic"
 
-**C) Check existing code for similar simple functions, match their pattern**
+### C) Check existing code for similar simple functions, match their pattern
+
 - Look at what others did for simple functions
 - Follow existing conventions
 - "When in Rome"

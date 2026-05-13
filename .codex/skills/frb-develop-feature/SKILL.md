@@ -56,6 +56,7 @@ digraph workflow {
    Usually need to modify `frb_codegen`, `frb_dart`, and/or `frb_rust`.
 
 3. **Run codegen and test:**
+
    ```bash
    (cd frb_example/dart_minimal && cargo run --manifest-path ../../frb_codegen/Cargo.toml -- generate)
    ./frb_internal test-dart-native --package frb_example/dart_minimal

@@ -5,7 +5,7 @@
 
 ## Prompt
 
-```
+```text
 I made changes to both frb_rust and frb_dart.
 What tests should I run to verify everything works?
 ```

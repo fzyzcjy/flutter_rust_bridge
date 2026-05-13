@@ -17,7 +17,7 @@ Before creating a PR, ensure generated code is up to date and lint passes.
 
 ## Workflow
 
-```
+```text
 1. Read frb-code-generation skill
    |
    +-- Run required generation commands
