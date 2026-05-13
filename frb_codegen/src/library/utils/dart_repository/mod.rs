@@ -4,11 +4,11 @@
 //! and beware that Cargo and Dart interpret semantic versioning differently:
 //! see this [discussion](https://github.com/fzyzcjy/flutter_rust_bridge/pull/605#discussion_r935180160) for more information.
 
+use crate::misc::Template;
 use anyhow::Context;
 use serde_json::Value;
 use std::fs;
 use std::path::Path;
-use crate::misc::Template;
 
 pub(crate) mod dart_repo;
 pub(crate) mod dart_toolchain;
@@ -40,7 +40,6 @@ pub(crate) fn get_dart_package_name_and_rust_crate_name(
     rust_crate_name: &Option<String>,
     template: &Template,
 ) -> anyhow::Result<(String, String)> {
-
     let dart_package_name = get_dart_package_name(dart_root)?;
     let rust_crate_name = rust_crate_name.clone().unwrap_or(match template {
         Template::App => {

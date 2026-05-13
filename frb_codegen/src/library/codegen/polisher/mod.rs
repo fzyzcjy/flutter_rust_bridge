@@ -31,12 +31,12 @@ pub(super) fn polish(
     ensure_dependencies(config, needs_freezed, needs_json_serializable)?;
 
     warn_if_fail(
-        execute_build_runner(needs_freezed, config, progress_bar_pack,skip_fvm_install),
+        execute_build_runner(needs_freezed, config, progress_bar_pack, skip_fvm_install),
         "execute_build_runner",
     );
     if config.dart_fix {
         warn_if_fail(
-            execute_dart_fix(config, progress_bar_pack,skip_fvm_install),
+            execute_dart_fix(config, progress_bar_pack, skip_fvm_install),
             "execute_dart_fix",
         );
     }
@@ -44,7 +44,7 @@ pub(super) fn polish(
     // Even if formatting generated code fails, it is not a big problem, and our codegen should not fail.
     if config.dart_format {
         warn_if_fail(
-            execute_dart_format(config, progress_bar_pack,skip_fvm_install),
+            execute_dart_format(config, progress_bar_pack, skip_fvm_install),
             "execute_dart_format",
         );
     }
@@ -61,7 +61,7 @@ pub(super) fn polish(
             &config.dart_root,
             &config.rust_crate_dir,
             config.enable_auto_upgrade,
-            skip_fvm_install
+            skip_fvm_install,
         ),
         "auto_upgrade",
     );

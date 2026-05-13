@@ -260,7 +260,7 @@ pub(crate) struct IntegrateCommandArgs {
     /// being integrating with.
     #[clap(short, long, value_enum, default_value = "app")]
     pub template: TemplateArg,
-    
+
     /// Skip fvm installation
     #[clap(long)]
     pub skip_fvm_install: bool,

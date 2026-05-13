@@ -20,7 +20,11 @@ pub use ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use log::debug;
 
 /// Execute the main code generator
-pub fn generate(config: Config, meta_config: MetaConfig,skip_fvm_install: bool,) -> anyhow::Result<()> {
+pub fn generate(
+    config: Config,
+    meta_config: MetaConfig,
+    skip_fvm_install: bool,
+) -> anyhow::Result<()> {
     debug!("config={config:?} meta_config={meta_config:?}");
 
     let internal_config = InternalConfig::parse(&config, &meta_config)?;
@@ -32,7 +36,7 @@ pub fn generate(config: Config, meta_config: MetaConfig,skip_fvm_install: bool,)
         .dump("config.json", &config)?;
 
     controller::run(&internal_config.controller, &|| {
-        generate_once(&internal_config, &dumper,skip_fvm_install)
+        generate_once(&internal_config, &dumper, skip_fvm_install)
     })?;
 
     Ok(())
