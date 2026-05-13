@@ -84,6 +84,7 @@ digraph workflow {
    This triggers automatic test generation (~6 variants) under different codegen modes. Always mimic existing frb_example/pure_dart tests for exact patterns.
 
 3. **Run codegen and test:**
+
    ```bash
    # Codegen
    ./frb_internal precommit-generate
