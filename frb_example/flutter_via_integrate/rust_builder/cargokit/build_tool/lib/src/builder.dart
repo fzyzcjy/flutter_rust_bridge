@@ -110,8 +110,7 @@ class BuildEnvironment {
         androidMinSdkVersion:
             isAndroid ? int.parse(Environment.minSdkVersion) : null,
         javaHome: isAndroid ? Environment.javaHome : null,
-        ohosSdkHome: Environment.ohosSdkHome
-    );
+        ohosSdkHome: Environment.ohosSdkHome);
   }
 }
 
