@@ -34,3 +34,4 @@ flutter:
         ffiPlugin: true
       ohos:
         ffiPlugin: true
+
