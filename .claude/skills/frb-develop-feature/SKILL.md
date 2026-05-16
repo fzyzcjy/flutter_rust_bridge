@@ -33,8 +33,8 @@ For every bug fix, the PR description must include a reproduction report before 
 
 Capture the report immediately after reproducing the bug and before changing the fix code. It must include:
 
-- **Baseline commit:** the exact commit hash used to reproduce the bug
-- **Mechanical steps:** copy-pasteable commands or file edits that reproduce the bug from that commit
+- **Baseline commit:** the exact commit hash, pushed and accessible to reviewers, used to reproduce the bug
+- **Mechanical steps:** copy-pasteable commands or file edits, using code blocks for multi-line changes, that reproduce the bug from that commit
 - **Observed failure:** the concrete failing command, error message, panic, assertion, or incorrect output
 - **Expected behavior:** the behavior that should happen after the fix
 
