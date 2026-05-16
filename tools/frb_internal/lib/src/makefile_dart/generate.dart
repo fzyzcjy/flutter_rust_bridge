@@ -482,17 +482,106 @@ Future<void> wrapMaybeSetExitIfChangedRaw(
   String? extraArgs,
 }) async {
   // Before actually executing anything, check whether git repository is already dirty
-  await _maybeSetExitIfChanged(enable, extraArgs: extraArgs);
+  await _maybeSetExitIfChanged(
+    enable,
+    extraArgs: extraArgs,
+    phase: _GitDiffPhase.before,
+  );
   await inner();
   // The real check
-  await _maybeSetExitIfChanged(enable, extraArgs: extraArgs);
+  await _maybeSetExitIfChanged(
+    enable,
+    extraArgs: extraArgs,
+    phase: _GitDiffPhase.after,
+  );
 }
 
-Future<void> _maybeSetExitIfChanged(bool enable, {String? extraArgs}) async {
+Future<void> _maybeSetExitIfChanged(
+  bool enable, {
+  String? extraArgs,
+  required _GitDiffPhase phase,
+}) async {
   if (enable) {
-    await exec('git diff --exit-code ${extraArgs ?? ""}');
+    final command = 'git diff --exit-code ${extraArgs ?? ""}';
+    final output = await _executeGitDiff(command);
+    _handleGitDiffResult(
+      command: command,
+      output: output,
+      phase: phase,
+      isCi: _isCi(),
+    );
   }
 }
+
+void _handleGitDiffResult({
+  required String command,
+  required RunCommandOutput output,
+  required _GitDiffPhase phase,
+  required bool isCi,
+}) {
+  switch (_classifyGitDiffExitCode(output.exitCode)) {
+    case _GitDiffResult.clean:
+      return;
+    case _GitDiffResult.dirty:
+      if (phase == _GitDiffPhase.before) {
+        print(
+          'Warning: working tree is already dirty before running the command; continuing anyway.',
+        );
+        return;
+      }
+      throw Exception(
+        'Failed to check working tree after command: `$command` exited with ${output.exitCode}. Working tree changed.',
+      );
+    case _GitDiffResult.unavailable:
+      if (!isCi) {
+        print(
+          'Warning: cannot check working tree cleanliness because git metadata is unavailable; continuing anyway.',
+        );
+        return;
+      }
+      throw Exception(
+        'Failed to check working tree cleanliness: `$command` exited with ${output.exitCode}.',
+      );
+  }
+}
+
+Future<RunCommandOutput> _executeGitDiff(String command) =>
+    exec(command, checkExitCode: false);
+
+_GitDiffResult _classifyGitDiffExitCode(int exitCode) {
+  if (exitCode == 0) return _GitDiffResult.clean;
+  if (exitCode == 1) return _GitDiffResult.dirty;
+  return _GitDiffResult.unavailable;
+}
+
+bool _isCi({Map<String, String>? environment}) {
+  final effectiveEnvironment = environment ?? Platform.environment;
+  final ciRaw = effectiveEnvironment['CI']?.toLowerCase();
+  return effectiveEnvironment['GITHUB_ACTIONS'] == 'true' ||
+      (ciRaw != null && ciRaw != 'false' && ciRaw != '0');
+}
+
+enum _GitDiffPhase { before, after }
+
+enum _GitDiffResult { clean, dirty, unavailable }
+
+String classifyGitDiffExitCodeForTesting(int exitCode) =>
+    _classifyGitDiffExitCode(exitCode).name;
+
+void handleGitDiffResultForTesting({
+  String command = 'git diff --exit-code',
+  required int exitCode,
+  required bool isBefore,
+  required bool isCi,
+}) => _handleGitDiffResult(
+  command: command,
+  output: RunCommandOutput(stdout: '', stderr: '', exitCode: exitCode),
+  phase: isBefore ? _GitDiffPhase.before : _GitDiffPhase.after,
+  isCi: isCi,
+);
+
+bool isCiForTesting(Map<String, String> environment) =>
+    _isCi(environment: environment);
 
 Future<void> generateWebsite(GenerateWebsiteConfig config) async {
   await generateWebsiteBuild(config);

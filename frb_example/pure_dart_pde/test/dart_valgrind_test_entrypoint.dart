@@ -28,6 +28,7 @@ import 'api/exception_test.dart' as exception_test;
 import 'api/external_impl_test.dart' as external_impl_test;
 import 'api/external_type_in_crate_test.dart' as external_type_in_crate_test;
 import 'api/impl_trait_test.dart' as impl_trait_test;
+import 'api/init_dart_code_test.dart' as init_dart_code_test;
 import 'api/inside_macro_test.dart' as inside_macro_test;
 import 'api/lifetimeable_test.dart' as lifetimeable_test;
 import 'api/map_and_set_test.dart' as map_and_set_test;
@@ -206,125 +207,130 @@ Future<void> main() async {
 }
 
 Future<void> callFileEntrypoints() async {
-  await array_test.main(skipRustLibInit: true);
-  await async_misc_test.main(skipRustLibInit: true);
-  await async_spawn_test.main(skipRustLibInit: true);
-  await attribute_test.main(skipRustLibInit: true);
-  await casted_primitive_test.main(skipRustLibInit: true);
-  await chrono_type_test.main(skipRustLibInit: true);
-  await comment_test.main(skipRustLibInit: true);
-  await constructor_test.main(skipRustLibInit: true);
-  await custom_ser_des_test.main(skipRustLibInit: true);
-  await customization_test.main(skipRustLibInit: true);
-  await dart_code_test.main(skipRustLibInit: true);
-  await dart_fn_test.main(skipRustLibInit: true);
-  await dart_opaque_sync_test.main(skipRustLibInit: true);
-  await dart_opaque_test.main(skipRustLibInit: true);
-  await dyn_trait_test.main(skipRustLibInit: true);
-  await enumeration_test.main(skipRustLibInit: true);
-  await event_listener_test.main(skipRustLibInit: true);
-  await exception_test.main(skipRustLibInit: true);
-  await external_impl_test.main(skipRustLibInit: true);
-  await external_type_in_crate_test.main(skipRustLibInit: true);
-  await impl_trait_test.main(skipRustLibInit: true);
-  await inside_macro_test.main(skipRustLibInit: true);
-  await lifetimeable_test.main(skipRustLibInit: true);
-  await map_and_set_test.main(skipRustLibInit: true);
-  await method_test.main(skipRustLibInit: true);
-  await mirror_test.main(skipRustLibInit: true);
-  await misc_example_test.main(skipRustLibInit: true);
-  await misc_no_twin_example_a_test.main(skipRustLibInit: true);
-  await misc_no_twin_example_b_test.main(skipRustLibInit: true);
-  await misc_type_test.main(skipRustLibInit: true);
-  await newtype_pattern_test.main(skipRustLibInit: true);
-  await optional_primitive_misc_test.main(skipRustLibInit: true);
-  await optional_test.main(skipRustLibInit: true);
-  await ownership_test.main(skipRustLibInit: true);
-  await primitive_list_misc_test.main(skipRustLibInit: true);
-  await primitive_misc_test.main(skipRustLibInit: true);
-  await proxy_test.main(skipRustLibInit: true);
-  await array_twin_rust_async_test.main(skipRustLibInit: true);
-  await array_twin_sync_test.main(skipRustLibInit: true);
-  await attribute_twin_rust_async_test.main(skipRustLibInit: true);
-  await attribute_twin_sync_test.main(skipRustLibInit: true);
-  await basic_list_test.main(skipRustLibInit: true);
-  await basic_list_twin_rust_async_test.main(skipRustLibInit: true);
-  await basic_list_twin_sync_test.main(skipRustLibInit: true);
-  await basic_map_test.main(skipRustLibInit: true);
-  await basic_map_twin_rust_async_test.main(skipRustLibInit: true);
-  await basic_map_twin_sync_test.main(skipRustLibInit: true);
-  await basic_optional_test.main(skipRustLibInit: true);
-  await basic_optional_twin_rust_async_test.main(skipRustLibInit: true);
-  await basic_optional_twin_sync_test.main(skipRustLibInit: true);
-  await basic_test.main(skipRustLibInit: true);
-  await basic_twin_rust_async_test.main(skipRustLibInit: true);
-  await basic_twin_sync_test.main(skipRustLibInit: true);
-  await chrono_type_twin_rust_async_test.main(skipRustLibInit: true);
-  await chrono_type_twin_sync_test.main(skipRustLibInit: true);
-  await comment_twin_rust_async_test.main(skipRustLibInit: true);
-  await comment_twin_sync_test.main(skipRustLibInit: true);
-  await dart_fn_twin_rust_async_test.main(skipRustLibInit: true);
-  await dart_opaque_twin_rust_async_test.main(skipRustLibInit: true);
-  await dart_opaque_twin_sync_test.main(skipRustLibInit: true);
-  await enumeration_twin_rust_async_test.main(skipRustLibInit: true);
-  await enumeration_twin_sync_test.main(skipRustLibInit: true);
-  await event_listener_twin_rust_async_test.main(skipRustLibInit: true);
-  await exception_twin_rust_async_test.main(skipRustLibInit: true);
-  await exception_twin_sync_test.main(skipRustLibInit: true);
-  await external_type_in_crate_twin_rust_async_test.main(skipRustLibInit: true);
-  await external_type_in_crate_twin_sync_test.main(skipRustLibInit: true);
-  await impl_trait_twin_sync_test.main(skipRustLibInit: true);
-  await lifetimeable_twin_sync_test.main(skipRustLibInit: true);
-  await map_and_set_twin_rust_async_test.main(skipRustLibInit: true);
-  await map_and_set_twin_sync_test.main(skipRustLibInit: true);
-  await method_twin_rust_async_test.main(skipRustLibInit: true);
-  await method_twin_sync_test.main(skipRustLibInit: true);
-  await mirror_twin_rust_async_test.main(skipRustLibInit: true);
-  await mirror_twin_sync_test.main(skipRustLibInit: true);
-  await misc_example_twin_rust_async_test.main(skipRustLibInit: true);
-  await misc_example_twin_sync_test.main(skipRustLibInit: true);
-  await misc_type_twin_rust_async_test.main(skipRustLibInit: true);
-  await misc_type_twin_sync_test.main(skipRustLibInit: true);
-  await newtype_pattern_twin_rust_async_test.main(skipRustLibInit: true);
-  await newtype_pattern_twin_sync_test.main(skipRustLibInit: true);
-  await optional_primitive_misc_twin_rust_async_test.main(
-    skipRustLibInit: true,
-  );
-  await optional_primitive_misc_twin_sync_test.main(skipRustLibInit: true);
-  await optional_twin_rust_async_test.main(skipRustLibInit: true);
-  await optional_twin_sync_test.main(skipRustLibInit: true);
-  await ownership_twin_rust_async_test.main(skipRustLibInit: true);
-  await ownership_twin_sync_test.main(skipRustLibInit: true);
-  await primitive_list_misc_twin_rust_async_test.main(skipRustLibInit: true);
-  await primitive_list_misc_twin_sync_test.main(skipRustLibInit: true);
-  await primitive_misc_twin_rust_async_test.main(skipRustLibInit: true);
-  await primitive_misc_twin_sync_test.main(skipRustLibInit: true);
-  await raw_string_twin_rust_async_test.main(skipRustLibInit: true);
-  await raw_string_twin_sync_test.main(skipRustLibInit: true);
-  await rust_auto_opaque_twin_rust_async_test.main(skipRustLibInit: true);
-  await rust_auto_opaque_twin_sync_test.main(skipRustLibInit: true);
-  await rust_opaque_twin_rust_async_test.main(skipRustLibInit: true);
-  await rust_opaque_twin_sync_test.main(skipRustLibInit: true);
-  await simple_twin_rust_async_test.main(skipRustLibInit: true);
-  await simple_twin_sync_test.main(skipRustLibInit: true);
-  await stream_twin_rust_async_test.main(skipRustLibInit: true);
-  await structure_twin_rust_async_test.main(skipRustLibInit: true);
-  await structure_twin_sync_test.main(skipRustLibInit: true);
-  await tuple_twin_rust_async_test.main(skipRustLibInit: true);
-  await tuple_twin_sync_test.main(skipRustLibInit: true);
-  await type_alias_twin_rust_async_test.main(skipRustLibInit: true);
-  await type_alias_twin_sync_test.main(skipRustLibInit: true);
-  await uuid_type_twin_rust_async_test.main(skipRustLibInit: true);
-  await uuid_type_twin_sync_test.main(skipRustLibInit: true);
-  await raw_string_test.main(skipRustLibInit: true);
-  await rust_auto_opaque_test.main(skipRustLibInit: true);
-  await rust_opaque_sync_test.main(skipRustLibInit: true);
-  await rust_opaque_test.main(skipRustLibInit: true);
-  await simple_test.main(skipRustLibInit: true);
-  await stream_misc_test.main(skipRustLibInit: true);
-  await stream_test.main(skipRustLibInit: true);
-  await structure_test.main(skipRustLibInit: true);
-  await tuple_test.main(skipRustLibInit: true);
-  await type_alias_test.main(skipRustLibInit: true);
-  await uuid_type_test.main(skipRustLibInit: true);
+  final entrypoints = <Future<void> Function({bool skipRustLibInit})>[
+    array_test.main,
+    async_misc_test.main,
+    async_spawn_test.main,
+    attribute_test.main,
+    casted_primitive_test.main,
+    chrono_type_test.main,
+    comment_test.main,
+    constructor_test.main,
+    custom_ser_des_test.main,
+    customization_test.main,
+    dart_code_test.main,
+    dart_fn_test.main,
+    dart_opaque_sync_test.main,
+    dart_opaque_test.main,
+    dyn_trait_test.main,
+    enumeration_test.main,
+    event_listener_test.main,
+    exception_test.main,
+    external_impl_test.main,
+    external_type_in_crate_test.main,
+    impl_trait_test.main,
+    init_dart_code_test.main,
+    inside_macro_test.main,
+    lifetimeable_test.main,
+    map_and_set_test.main,
+    method_test.main,
+    mirror_test.main,
+    misc_example_test.main,
+    misc_no_twin_example_a_test.main,
+    misc_no_twin_example_b_test.main,
+    misc_type_test.main,
+    newtype_pattern_test.main,
+    optional_primitive_misc_test.main,
+    optional_test.main,
+    ownership_test.main,
+    primitive_list_misc_test.main,
+    primitive_misc_test.main,
+    proxy_test.main,
+    array_twin_rust_async_test.main,
+    array_twin_sync_test.main,
+    attribute_twin_rust_async_test.main,
+    attribute_twin_sync_test.main,
+    basic_list_test.main,
+    basic_list_twin_rust_async_test.main,
+    basic_list_twin_sync_test.main,
+    basic_map_test.main,
+    basic_map_twin_rust_async_test.main,
+    basic_map_twin_sync_test.main,
+    basic_optional_test.main,
+    basic_optional_twin_rust_async_test.main,
+    basic_optional_twin_sync_test.main,
+    basic_test.main,
+    basic_twin_rust_async_test.main,
+    basic_twin_sync_test.main,
+    chrono_type_twin_rust_async_test.main,
+    chrono_type_twin_sync_test.main,
+    comment_twin_rust_async_test.main,
+    comment_twin_sync_test.main,
+    dart_fn_twin_rust_async_test.main,
+    dart_opaque_twin_rust_async_test.main,
+    dart_opaque_twin_sync_test.main,
+    enumeration_twin_rust_async_test.main,
+    enumeration_twin_sync_test.main,
+    event_listener_twin_rust_async_test.main,
+    exception_twin_rust_async_test.main,
+    exception_twin_sync_test.main,
+    external_type_in_crate_twin_rust_async_test.main,
+    external_type_in_crate_twin_sync_test.main,
+    impl_trait_twin_sync_test.main,
+    lifetimeable_twin_sync_test.main,
+    map_and_set_twin_rust_async_test.main,
+    map_and_set_twin_sync_test.main,
+    method_twin_rust_async_test.main,
+    method_twin_sync_test.main,
+    mirror_twin_rust_async_test.main,
+    mirror_twin_sync_test.main,
+    misc_example_twin_rust_async_test.main,
+    misc_example_twin_sync_test.main,
+    misc_type_twin_rust_async_test.main,
+    misc_type_twin_sync_test.main,
+    newtype_pattern_twin_rust_async_test.main,
+    newtype_pattern_twin_sync_test.main,
+    optional_primitive_misc_twin_rust_async_test.main,
+    optional_primitive_misc_twin_sync_test.main,
+    optional_twin_rust_async_test.main,
+    optional_twin_sync_test.main,
+    ownership_twin_rust_async_test.main,
+    ownership_twin_sync_test.main,
+    primitive_list_misc_twin_rust_async_test.main,
+    primitive_list_misc_twin_sync_test.main,
+    primitive_misc_twin_rust_async_test.main,
+    primitive_misc_twin_sync_test.main,
+    raw_string_twin_rust_async_test.main,
+    raw_string_twin_sync_test.main,
+    rust_auto_opaque_twin_rust_async_test.main,
+    rust_auto_opaque_twin_sync_test.main,
+    rust_opaque_twin_rust_async_test.main,
+    rust_opaque_twin_sync_test.main,
+    simple_twin_rust_async_test.main,
+    simple_twin_sync_test.main,
+    stream_twin_rust_async_test.main,
+    structure_twin_rust_async_test.main,
+    structure_twin_sync_test.main,
+    tuple_twin_rust_async_test.main,
+    tuple_twin_sync_test.main,
+    type_alias_twin_rust_async_test.main,
+    type_alias_twin_sync_test.main,
+    uuid_type_twin_rust_async_test.main,
+    uuid_type_twin_sync_test.main,
+    raw_string_test.main,
+    rust_auto_opaque_test.main,
+    rust_opaque_sync_test.main,
+    rust_opaque_test.main,
+    simple_test.main,
+    stream_misc_test.main,
+    stream_test.main,
+    structure_test.main,
+    tuple_test.main,
+    type_alias_test.main,
+    uuid_type_test.main,
+  ];
+
+  for (final entrypoint in entrypoints) {
+    await entrypoint(skipRustLibInit: true);
+  }
 }
