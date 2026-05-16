@@ -53,6 +53,21 @@ When a generated file conflicts because both base and PR independently added tes
 ./frb_internal precommit-generate
 ```
 
+   For `frb_example/pure_dart` and `frb_example/pure_dart_pde` conflicts, the internal generator and package codegen cover different outputs. If the merge touches generated test entrypoints, copied PDE files, or the pure-Dart chain, run:
+
+```bash
+./frb_internal generate-internal-frb-example-pure-dart
+```
+
+   If the merge also brings in hand-written Rust or Dart API changes, run package codegen after the internal generator:
+
+```bash
+./frb_internal generate-run-frb-codegen-command-generate --package frb_example/pure_dart
+./frb_internal generate-run-frb-codegen-command-generate --package frb_example/pure_dart_pde
+```
+
+   Do not stop after the internal generator when CI errors mention missing methods on generated Dart APIs such as `RustLibApi`; that usually means the package `frb_generated.*` files are stale.
+
 5. Inspect the regenerated diff. The final generated files should reflect both sides' hand-written sources.
 6. Commit the merge/rebase resolution.
 
