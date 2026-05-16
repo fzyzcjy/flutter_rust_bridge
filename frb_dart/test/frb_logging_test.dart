@@ -6,7 +6,7 @@ import 'package:test/test.dart';
 
 void main() {
   tearDown(() async {
-    await FrbDartLogging.dispose();
+    await kFrbDartLogging.dispose();
   });
 
   test('Rust log records are forwarded to Dart logging', () async {
@@ -17,7 +17,7 @@ void main() {
     Logger.root.level = Level.ALL;
 
     try {
-      FrbDartLogging.init<_RustLogRecord>(
+      kFrbDartLogging.init<_RustLogRecord>(
         rustLogStream: controller.stream,
         setupDefaultOutput: false,
         mapRecord: (record) => FrbLogRecordData(
@@ -58,7 +58,7 @@ void main() {
     Logger.root.level = Level.ALL;
 
     try {
-      FrbDartLogging.init<_RustLogRecord>(
+      kFrbDartLogging.init<_RustLogRecord>(
         rustLogStream: controller.stream,
         setupDefaultOutput: false,
         mapRecord: (record) => FrbLogRecordData(
@@ -95,7 +95,7 @@ void main() {
     Logger.root.level = Level.ALL;
 
     try {
-      FrbDartLogging.init<_RustLogRecord>(
+      kFrbDartLogging.init<_RustLogRecord>(
         rustLogStream: controller.stream,
         setupDefaultOutput: false,
         mapRecord: (record) => FrbLogRecordData(

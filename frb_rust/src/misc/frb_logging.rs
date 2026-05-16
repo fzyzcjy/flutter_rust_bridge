@@ -86,7 +86,7 @@ macro_rules! enable_frb_rust_to_dart_logging {
 
         #[doc(hidden)]
         #[flutter_rust_bridge::frb(init_dart_code = r#"
-                    FrbDartLogging.init(
+                    kFrbDartLogging.init(
                       rustLogStream: frbInitLogger(maxLevel: frbLoggingMaxLevel()),
                       mapRecord: (record) => FrbLogRecordData(
                         level: record.level,

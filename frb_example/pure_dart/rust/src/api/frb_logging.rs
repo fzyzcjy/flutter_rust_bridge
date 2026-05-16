@@ -5,8 +5,8 @@ flutter_rust_bridge::enable_frb_rust_to_dart_logging!(
     setup_dart_logging_output = false
 );
 
-pub fn emit_log_message() {
-    log::warn!("hello from rust logging bridge");
+pub fn emit_log_message(message: String) {
+    log::warn!("{message}");
 }
 
 pub fn print_to_console_smoke_test() {

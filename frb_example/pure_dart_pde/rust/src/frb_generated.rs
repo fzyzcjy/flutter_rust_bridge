@@ -9553,11 +9553,12 @@ fn wire__crate__api__frb_logging__emit_log_message_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_message = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok = Result::<_, ()>::Ok({
-                        crate::api::frb_logging::emit_log_message();
+                        crate::api::frb_logging::emit_log_message(api_message);
                     })?;
                     Ok(output_ok)
                 })())

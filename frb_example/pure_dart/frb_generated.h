@@ -6205,7 +6205,8 @@ void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__optional_twin
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__optional_twin_sync_sse__element_twin_sync_sse_default(int64_t port_);
 
-void frbgen_frb_example_pure_dart_wire__crate__api__frb_logging__emit_log_message(int64_t port_);
+void frbgen_frb_example_pure_dart_wire__crate__api__frb_logging__emit_log_message(int64_t port_,
+                                                                                  struct wire_cst_list_prim_u_8_strict *message);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__misc_type__empty_struct_twin_normal(int64_t port_,
                                                                                         struct wire_cst_empty_twin_normal *empty);

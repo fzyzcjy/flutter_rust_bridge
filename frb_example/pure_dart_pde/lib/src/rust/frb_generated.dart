@@ -212,7 +212,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
     await api.crateApiCustomizationMyInitOne();
     await api.crateApiCustomizationMyInitTwo();
 
-    FrbDartLogging.init(
+    kFrbDartLogging.init(
       rustLogStream: frbInitLogger(maxLevel: frbLoggingMaxLevel()),
       mapRecord: (record) => FrbLogRecordData(
         level: record.level,
@@ -1554,7 +1554,7 @@ abstract class RustLibApi extends BaseApi {
   Future<ElementTwinSync>
       crateApiPseudoManualOptionalTwinSyncElementTwinSyncDefault();
 
-  Future<void> crateApiFrbLoggingEmitLogMessage();
+  Future<void> crateApiFrbLoggingEmitLogMessage({required String message});
 
   Future<EmptyTwinNormal> crateApiMiscTypeEmptyStructTwinNormal(
       {required EmptyTwinNormal empty});
@@ -16311,10 +16311,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Future<void> crateApiFrbLoggingEmitLogMessage() {
+  Future<void> crateApiFrbLoggingEmitLogMessage({required String message}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_String(message, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
             funcId: 383, port: port_);
       },
@@ -16323,7 +16324,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeErrorData: null,
       ),
       constMeta: kCrateApiFrbLoggingEmitLogMessageConstMeta,
-      argValues: [],
+      argValues: [message],
       apiImpl: this,
     ));
   }
@@ -16331,7 +16332,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kCrateApiFrbLoggingEmitLogMessageConstMeta =>
       const TaskConstMeta(
         debugName: "emit_log_message",
-        argNames: [],
+        argNames: ["message"],
       );
 
   @override

@@ -35,13 +35,18 @@ class FrbLogRecordData {
   });
 }
 
+/// The Dart side of the Rust `log` to Dart `logging` bridge.
+final kFrbDartLogging = FrbDartLogging._();
+
 /// Installs the Dart side of the Rust `log` to Dart `logging` bridge.
 class FrbDartLogging {
-  static StreamSubscription<Object?>? _subscription;
-  static StreamSubscription<LogRecord>? _defaultOutputSubscription;
+  FrbDartLogging._();
+
+  StreamSubscription<Object?>? _subscription;
+  StreamSubscription<LogRecord>? _defaultOutputSubscription;
 
   /// Connects a generated Rust log stream to the Dart `logging` package.
-  static void init<T>({
+  void init<T>({
     required Stream<T> rustLogStream,
     required FrbLogRecordData Function(T record) mapRecord,
     bool setupDefaultOutput = true,
@@ -70,12 +75,12 @@ class FrbDartLogging {
   }
 
   /// Disconnects the Rust log stream listener.
-  static Future<void> dispose() async {
+  Future<void> dispose() async {
     await _subscription?.cancel();
     _subscription = null;
   }
 
-  static void _setupDefaultOutput() {
+  void _setupDefaultOutput() {
     _defaultOutputSubscription ??= Logger.root.onRecord.listen((record) {
       final loggerName = record.loggerName.isEmpty ? 'root' : record.loggerName;
       print(
@@ -84,7 +89,7 @@ class FrbDartLogging {
     });
   }
 
-  static Level _toDartLevel(String level) {
+  Level _toDartLevel(String level) {
     switch (level.toUpperCase()) {
       case 'TRACE':
         return Level.FINER;

@@ -46308,8 +46308,10 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__optional_twin_sync_sse__element_twin_sync_sse_default(
               port_);
 
-  void wire__crate__api__frb_logging__emit_log_message(NativePortType port_) =>
-      wasmModule.wire__crate__api__frb_logging__emit_log_message(port_);
+  void wire__crate__api__frb_logging__emit_log_message(
+          NativePortType port_, String message) =>
+      wasmModule.wire__crate__api__frb_logging__emit_log_message(
+          port_, message);
 
   void wire__crate__api__misc_type__empty_struct_twin_normal(
           NativePortType port_, JSAny empty) =>
@@ -68693,7 +68695,7 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           NativePortType port_);
 
   external void wire__crate__api__frb_logging__emit_log_message(
-      NativePortType port_);
+      NativePortType port_, String message);
 
   external void wire__crate__api__misc_type__empty_struct_twin_normal(
       NativePortType port_, JSAny empty);

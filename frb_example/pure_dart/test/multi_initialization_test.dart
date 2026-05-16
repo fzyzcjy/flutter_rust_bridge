@@ -11,6 +11,9 @@ Future<void> main() async {
     final previousLevel = Logger.root.level;
     final receivedRecords = <LogRecord>[];
     final subscription = Logger.root.onRecord.listen(receivedRecords.add);
+    final uniqueSuffix = DateTime.now().microsecondsSinceEpoch;
+    final firstMessage = 'first rust logging bridge message $uniqueSuffix';
+    final secondMessage = 'second rust logging bridge message $uniqueSuffix';
     Logger.root.level = Level.ALL;
 
     addTearDown(() async {
@@ -24,6 +27,12 @@ Future<void> main() async {
     expect(await simpleAdderTwinNormal(a: 42, b: 100), 142);
     expect(simpleAdderTwinSync(a: 42, b: 100), 142);
 
+    await emitLogMessage(message: firstMessage);
+    await pumpEventQueue();
+
+    expect(_countLogMessage(receivedRecords, firstMessage), 1);
+    expect(_countLogMessage(receivedRecords, secondMessage), 0);
+
     // Step 2: Reset Dart-side singleton state to mimic hot restart.
     // ignore: invalid_use_of_internal_member
     RustLib.instance.resetState();
@@ -34,24 +43,22 @@ Future<void> main() async {
     expect(await simpleAdderTwinNormal(a: 42, b: 100), 142);
     expect(simpleAdderTwinSync(a: 42, b: 100), 142);
 
-    await emitLogMessage();
+    await emitLogMessage(message: secondMessage);
     await pumpEventQueue();
 
     // Step 4: Exercise the platform console fallback path without asserting
     // platform-specific output capture.
     await printToConsoleSmokeTest();
 
+    expect(_countLogMessage(receivedRecords, firstMessage), 1);
+    expect(_countLogMessage(receivedRecords, secondMessage), 1);
     expect(
-      receivedRecords,
-      contains(
-        isA<LogRecord>()
-            .having((record) => record.level, 'level', Level.WARNING)
-            .having(
-              (record) => record.message,
-              'message',
-              'hello from rust logging bridge',
-            ),
-      ),
-    );
+        _hasLogRecord(receivedRecords, secondMessage, Level.WARNING), isTrue);
   });
 }
+
+int _countLogMessage(List<LogRecord> records, String message) =>
+    records.where((record) => record.message == message).length;
+
+bool _hasLogRecord(List<LogRecord> records, String message, Level level) =>
+    records.any((record) => record.message == message && record.level == level);
