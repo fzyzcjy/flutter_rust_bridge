@@ -71,6 +71,20 @@ mod tests {
 
     #[test]
     #[serial]
+    fn test_simple_dart_collection_deep_equality() -> anyhow::Result<()> {
+        body_with_config(
+            "library/codegen/generator/api_dart/mod/simple",
+            HashMap::from([
+                ("api.dart", "expect_output.dart"),
+                ("dep.dart", "expect_output2_deep_collection_equality.dart"),
+                ("frb_generated.dart", "expect_output3.dart"),
+            ]),
+            Some(true),
+        )
+    }
+
+    #[test]
+    #[serial]
     fn test_functions() -> anyhow::Result<()> {
         body(
             "library/codegen/generator/api_dart/mod/functions",
@@ -82,11 +96,20 @@ mod tests {
     }
 
     fn body(fixture_name: &str, expect_outputs: HashMap<&str, &str>) -> anyhow::Result<()> {
+        body_with_config(fixture_name, expect_outputs, None)
+    }
+
+    fn body_with_config(
+        fixture_name: &str,
+        expect_outputs: HashMap<&str, &str>,
+        dart_collection_deep_equality: Option<bool>,
+    ) -> anyhow::Result<()> {
         configure_opinionated_test_logging();
         let test_fixture_dir = get_test_fixture_dir(fixture_name);
         env::set_current_dir(&test_fixture_dir)?;
 
-        let config = Config::from_files_auto()?;
+        let mut config = Config::from_files_auto()?;
+        config.dart_collection_deep_equality = dart_collection_deep_equality;
         let internal_config = InternalConfig::parse(&config, &MetaConfig { watch: false })?;
         let mir_pack = crate::codegen::parser::parse(
             &internal_config.parser,
@@ -108,12 +131,21 @@ mod tests {
         for path_text in output_texts.0 {
             let path = path_text.path.file_name().unwrap().to_str().unwrap();
             let expect_output = expect_outputs.get(path).unwrap();
-            let raw_text = (path_text.text)
-                .all_code()
-                .replace(env!("CARGO_PKG_VERSION"), "{VERSION}");
+            let raw_text = strip_trailing_line_whitespace(
+                &(path_text.text)
+                    .all_code()
+                    .replace(env!("CARGO_PKG_VERSION"), "{VERSION}"),
+            );
             text_golden_test(raw_text, &test_fixture_dir.join(expect_output))?;
         }
 
         Ok(())
+    }
+
+    fn strip_trailing_line_whitespace(text: &str) -> String {
+        text.lines()
+            .map(str::trim_end)
+            .collect::<Vec<_>>()
+            .join("\n")
     }
 }

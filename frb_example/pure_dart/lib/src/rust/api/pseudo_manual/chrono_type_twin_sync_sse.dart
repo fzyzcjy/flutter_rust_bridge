@@ -16,6 +16,9 @@ DateTime datetimeUtcTwinSyncSse({required DateTime d}) => RustLib.instance.api
 DateTime datetimeLocalTwinSyncSse({required DateTime d}) => RustLib.instance.api
     .crateApiPseudoManualChronoTypeTwinSyncSseDatetimeLocalTwinSyncSse(d: d);
 
+DateTime naivedateTwinSyncSse({required DateTime d}) => RustLib.instance.api
+    .crateApiPseudoManualChronoTypeTwinSyncSseNaivedateTwinSyncSse(d: d);
+
 DateTime naivedatetimeTwinSyncSse({required DateTime d}) => RustLib.instance.api
     .crateApiPseudoManualChronoTypeTwinSyncSseNaivedatetimeTwinSyncSse(d: d);
 
@@ -55,18 +58,24 @@ class FeatureChronoTwinSyncSse {
   final DateTime utc;
   final DateTime local;
   final Duration duration;
-  final DateTime naive;
+  final DateTime naiveDate;
+  final DateTime naiveDateTime;
 
   const FeatureChronoTwinSyncSse({
     required this.utc,
     required this.local,
     required this.duration,
-    required this.naive,
+    required this.naiveDate,
+    required this.naiveDateTime,
   });
 
   @override
   int get hashCode =>
-      utc.hashCode ^ local.hashCode ^ duration.hashCode ^ naive.hashCode;
+      utc.hashCode ^
+      local.hashCode ^
+      duration.hashCode ^
+      naiveDate.hashCode ^
+      naiveDateTime.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -76,22 +85,25 @@ class FeatureChronoTwinSyncSse {
           utc == other.utc &&
           local == other.local &&
           duration == other.duration &&
-          naive == other.naive;
+          naiveDate == other.naiveDate &&
+          naiveDateTime == other.naiveDateTime;
 }
 
 class TestChronoTwinSyncSse {
   final DateTime? dt;
   final DateTime? dt2;
+  final DateTime? da;
   final Duration? du;
 
   const TestChronoTwinSyncSse({
     this.dt,
     this.dt2,
+    this.da,
     this.du,
   });
 
   @override
-  int get hashCode => dt.hashCode ^ dt2.hashCode ^ du.hashCode;
+  int get hashCode => dt.hashCode ^ dt2.hashCode ^ da.hashCode ^ du.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -100,5 +112,6 @@ class TestChronoTwinSyncSse {
           runtimeType == other.runtimeType &&
           dt == other.dt &&
           dt2 == other.dt2 &&
+          da == other.da &&
           du == other.du;
 }

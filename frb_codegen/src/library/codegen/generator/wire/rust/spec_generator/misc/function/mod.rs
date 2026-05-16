@@ -58,7 +58,7 @@ pub(crate) fn generate_wire_func(
         .into(),
         TargetOrCommon::Common => format!(
             "fn {func_name}_impl({params}) {return_type} {{
-                {HANDLER_NAME}.{handler_func_name}({wrap_info_obj}, move || {{ {code_closure} }})
+                {HANDLER_NAME}.{handler_func_name}({wrap_info_obj}, move || {{{code_closure} }})
             }}",
             HANDLER_NAME = HANDLER_NAME,
             params = params

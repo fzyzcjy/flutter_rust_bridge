@@ -27,6 +27,7 @@ Maps change types to local test commands. Tests run on CI by default, so local t
 ## Web Tests
 
 Web tests compile Dart tests to WebAssembly and run in a headless browser.
+Some individual web test cases are flaky; rerun the failed web test job or command before treating the failure as deterministic.
 
 ### Supported Packages
 - `frb_dart`

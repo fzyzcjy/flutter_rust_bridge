@@ -46,12 +46,15 @@ impl WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator
                     };
                 }
                 let codegen_timestamp = "let flutter_rust_bridge::for_generated::Timestamp { s, ns } = flutter_rust_bridge::for_generated::decode_timestamp(self);";
-                let codegen_naive =
+                let codegen_naive_date_time =
                     "chrono::DateTime::from_timestamp(s, ns).expect(\"invalid or out-of-range datetime\").naive_utc()";
-                let codegen_utc = format!("chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset({codegen_naive}, chrono::Utc)");
+                let codegen_naive_date =
+                    format!("{codegen_naive_date_time}.date()");
+                let codegen_utc = format!("chrono::DateTime::<chrono::Utc>::from_naive_utc_and_offset({codegen_naive_date_time}, chrono::Utc)");
                 let codegen_local = format!("chrono::DateTime::<chrono::Local>::from({codegen_utc})");
                 let codegen_conversion = match mir {
-                    MirTypeDelegateTime::Naive => codegen_naive,
+                    MirTypeDelegateTime::NaiveDate => codegen_naive_date.as_str(),
+                    MirTypeDelegateTime::NaiveDateTime => codegen_naive_date_time,
                     MirTypeDelegateTime::Utc => codegen_utc.as_str(),
                     MirTypeDelegateTime::Local => codegen_local.as_str(),
                     // frb-coverage:ignore-start
@@ -73,6 +76,11 @@ impl WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator
             MirTypeDelegate::Uuid => Acc::distribute(
                 Some(
                     "let single: Vec<u8> = self.cst_decode(); flutter_rust_bridge::for_generated::decode_uuid(single)".into(),
+                ),
+            ),
+            MirTypeDelegate::SerdeJsonValue => Acc::distribute(
+                Some(
+                    r#"let s: String = self.cst_decode(); serde_json::from_str(&s).expect("Failed to deserialize serde_json::Value")"#.into(),
                 ),
             ),
             // MirTypeDelegate::Uuids => Acc::distribute(
@@ -140,6 +148,9 @@ impl WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator
             MirTypeDelegate::Uuid /*| MirTypeDelegate::Uuids*/ => {
                 "self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Uint8Array>().to_vec().into_boxed_slice().cst_decode()"
                     .into()
+            }
+            MirTypeDelegate::SerdeJsonValue => {
+                r#"serde_json::from_str(&CstDecode::<String>::cst_decode(self)).expect("Failed to deserialize serde_json::Value")"#.into()
             }
             MirTypeDelegate::Backtrace | MirTypeDelegate::AnyhowException | MirTypeDelegate::DynTrait(_) => "unimplemented!()".into(),
             MirTypeDelegate::Array(array) => generate_decode_array(array)
