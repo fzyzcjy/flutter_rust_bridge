@@ -46,9 +46,7 @@ class FrbDartLogging {
     required FrbLogRecordData Function(T record) mapRecord,
     bool setupDefaultOutput = true,
   }) {
-    if (_subscription != null) {
-      throw StateError('FRB logging should not be initialized twice');
-    }
+    final previousSubscription = _subscription;
 
     _subscription = rustLogStream.listen(
       (record) {
@@ -61,6 +59,10 @@ class FrbDartLogging {
         ).severe('Error in Rust log stream', error, stackTrace);
       },
     );
+
+    if (previousSubscription != null) {
+      unawaited(previousSubscription.cancel());
+    }
 
     if (setupDefaultOutput) {
       _setupDefaultOutput();

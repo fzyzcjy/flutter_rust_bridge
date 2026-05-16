@@ -37,7 +37,7 @@ macro_rules! enable_frb_rust_to_dart_logging {
         }
 
         struct FrbDartLogger {
-            sink: crate::frb_generated::StreamSink<FrbLogRecord>,
+            sink: std::sync::RwLock<Option<crate::frb_generated::StreamSink<FrbLogRecord>>>,
         }
 
         impl log::Log for FrbDartLogger {
@@ -50,7 +50,14 @@ macro_rules! enable_frb_rust_to_dart_logging {
                     return;
                 }
 
-                let _ = self.sink.add(FrbLogRecord {
+                let Ok(sink) = self.sink.read() else {
+                    return;
+                };
+                let Some(sink) = sink.as_ref() else {
+                    return;
+                };
+
+                let _ = sink.add(FrbLogRecord {
                     level: record.level().to_string(),
                     message: record.args().to_string(),
                     target: record.target().to_owned(),
@@ -83,19 +90,26 @@ macro_rules! enable_frb_rust_to_dart_logging {
             max_level: String,
         ) {
             let max_level = frb_parse_logging_max_level(&max_level);
+            let logger = FRB_DART_LOGGER.get_or_init(|| FrbDartLogger {
+                sink: std::sync::RwLock::new(None),
+            });
 
-            log::set_logger(Box::leak(Box::new(FrbDartLogger { sink })))
-                .map(|()| log::set_max_level(max_level))
-                // This initializer is expected to run only once. If a second intentional
-                // initialization use case appears, please open an issue to discuss it.
-                .expect("FRB logging should only be initialized once");
+            let _ = log::set_logger(logger);
+            log::set_max_level(max_level);
 
-            let previous_hook = std::panic::take_hook();
-            std::panic::set_hook(Box::new(move |info| {
-                log::error!("{info}");
-                previous_hook(info);
-            }));
+            *logger.sink.write().expect("FRB logger sink lock poisoned") = Some(sink);
+
+            FRB_DART_LOGGER_PANIC_HOOK.call_once(|| {
+                let previous_hook = std::panic::take_hook();
+                std::panic::set_hook(Box::new(move |info| {
+                    log::error!("{info}");
+                    previous_hook(info);
+                }));
+            });
         }
+
+        static FRB_DART_LOGGER: std::sync::OnceLock<FrbDartLogger> = std::sync::OnceLock::new();
+        static FRB_DART_LOGGER_PANIC_HOOK: std::sync::Once = std::sync::Once::new();
 
         fn frb_parse_logging_max_level(max_level: &str) -> log::LevelFilter {
             match max_level.to_uppercase().as_str() {

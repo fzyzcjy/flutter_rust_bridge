@@ -34,6 +34,7 @@ import 'api/event_listener.dart';
 import 'api/exception.dart';
 import 'api/external_impl.dart';
 import 'api/external_type_in_crate.dart';
+import 'api/frb_logging.dart';
 import 'api/impl_trait.dart';
 import 'api/init_dart_code.dart';
 import 'api/inside_macro.dart';
@@ -4344,6 +4345,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  RustStreamSink<FrbLogRecord> dco_decode_StreamSink_frb_log_record_Dco(
+      dynamic raw);
+
+  @protected
   RustStreamSink<int> dco_decode_StreamSink_i_32_Dco(dynamic raw);
 
   @protected
@@ -7729,6 +7734,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   FeedIdTwinSyncSse dco_decode_feed_id_twin_sync_sse(dynamic raw);
+
+  @protected
+  FrbLogRecord dco_decode_frb_log_record(dynamic raw);
 
   @protected
   HashMapValue dco_decode_hash_map_value(dynamic raw);
@@ -13794,6 +13802,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  RustStreamSink<FrbLogRecord> sse_decode_StreamSink_frb_log_record_Dco(
+      SseDeserializer deserializer);
+
+  @protected
   RustStreamSink<int> sse_decode_StreamSink_i_32_Dco(
       SseDeserializer deserializer);
 
@@ -17545,6 +17557,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   FeedIdTwinSyncSse sse_decode_feed_id_twin_sync_sse(
       SseDeserializer deserializer);
+
+  @protected
+  FrbLogRecord sse_decode_frb_log_record(SseDeserializer deserializer);
 
   @protected
   HashMapValue sse_decode_hash_map_value(SseDeserializer deserializer);
@@ -21602,6 +21617,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  String cst_encode_StreamSink_frb_log_record_Dco(
+      RustStreamSink<FrbLogRecord> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.setupAndSerialize(
+        codec: DcoCodec(
+      decodeSuccessData: dco_decode_frb_log_record,
+      decodeErrorData: dco_decode_AnyhowException,
+    )));
+  }
+
+  @protected
   String cst_encode_StreamSink_i_32_Dco(RustStreamSink<int> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw.setupAndSerialize(
@@ -25508,6 +25534,19 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   JSAny cst_encode_feed_id_twin_sync(FeedIdTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_u_8_array_8(raw.field0)].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_frb_log_record(FrbLogRecord raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [
+      cst_encode_String(raw.level),
+      cst_encode_String(raw.message),
+      cst_encode_String(raw.target),
+      cst_encode_opt_String(raw.modulePath),
+      cst_encode_opt_String(raw.file),
+      cst_encode_opt_box_autoadd_u_32(raw.line)
+    ].jsify()!;
   }
 
   @protected
@@ -34084,6 +34123,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       RustStreamSink<EventTwinSse> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_StreamSink_frb_log_record_Dco(
+      RustStreamSink<FrbLogRecord> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_StreamSink_i_32_Dco(
       RustStreamSink<int> self, SseSerializer serializer);
 
@@ -37617,6 +37660,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_feed_id_twin_sync_sse(
       FeedIdTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_frb_log_record(FrbLogRecord self, SseSerializer serializer);
 
   @protected
   void sse_encode_hash_map_value(HashMapValue self, SseSerializer serializer);
@@ -46262,6 +46308,9 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__optional_twin_sync_sse__element_twin_sync_sse_default(
               port_);
 
+  void wire__crate__api__frb_logging__emit_log_message(NativePortType port_) =>
+      wasmModule.wire__crate__api__frb_logging__emit_log_message(port_);
+
   void wire__crate__api__misc_type__empty_struct_twin_normal(
           NativePortType port_, JSAny empty) =>
       wasmModule.wire__crate__api__misc_type__empty_struct_twin_normal(
@@ -50023,6 +50072,20 @@ class RustLibWire implements BaseWire {
           wasmModule
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__frb_generator_test_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__frb_logging__frb_init_logger(
+          NativePortType port_, String sink, String max_level) =>
+      wasmModule.wire__crate__api__frb_logging__frb_init_logger(
+          port_, sink, max_level);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__frb_logging__frb_logging_max_level() =>
+          wasmModule.wire__crate__api__frb_logging__frb_logging_max_level();
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__frb_logging__frb_logging_setup_dart_logging_output() =>
+          wasmModule
+              .wire__crate__api__frb_logging__frb_logging_setup_dart_logging_output();
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_sync_twin_moi__frb_sync_generator_test_twin_moi() =>
@@ -68624,6 +68687,9 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
       wire__crate__api__pseudo_manual__optional_twin_sync_sse__element_twin_sync_sse_default(
           NativePortType port_);
 
+  external void wire__crate__api__frb_logging__emit_log_message(
+      NativePortType port_);
+
   external void wire__crate__api__misc_type__empty_struct_twin_normal(
       NativePortType port_, JSAny empty);
 
@@ -71241,6 +71307,15 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
+
+  external void wire__crate__api__frb_logging__frb_init_logger(
+      NativePortType port_, String sink, String max_level);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__frb_logging__frb_logging_max_level();
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__frb_logging__frb_logging_setup_dart_logging_output();
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_sync_twin_moi__frb_sync_generator_test_twin_moi();
