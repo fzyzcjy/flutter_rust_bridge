@@ -13,3 +13,7 @@ pub async fn test_tuple_twin_rust_async(value: Option<(String, i32)>) -> (String
 pub async fn test_tuple_2_twin_rust_async(value: Vec<(String, i32)>) {
     drop(value)
 }
+
+pub async fn return_optional_f_32_tuple_twin_rust_async() -> Option<(f32, f32)> {
+    Some((1.25, 2.5))
+}

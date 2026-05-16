@@ -14,4 +14,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(
         await testTupleTwinRustAsyncSse(value: ('Bob', 42)), ('Hello Bob', 43));
   });
+
+  test("dart call optional f32 tuple returns record", () async {
+    expect(await returnOptionalF32TupleTwinRustAsyncSse(), (1.25, 2.5));
+  });
 }

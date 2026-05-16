@@ -6,8 +6,9 @@
 #[doc(hidden)]
 #[cfg(all(target_os = "android", feature = "user-utils", feature = "log"))]
 pub fn print_to_console(message: &str) {
+    let args = format_args!("{message}");
     let record = log::Record::builder()
-        .args(format_args!("{message}"))
+        .args(args)
         .level(log::Level::Error)
         .target("flutter_rust_bridge")
         .module_path_static(Some("flutter_rust_bridge"))

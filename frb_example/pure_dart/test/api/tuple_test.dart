@@ -9,4 +9,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(await testTupleTwinNormal(), ('John', 0));
     expect(await testTupleTwinNormal(value: ('Bob', 42)), ('Hello Bob', 43));
   });
+
+  test("dart call optional f32 tuple returns record", () async {
+    expect(await returnOptionalF32TupleTwinNormal(), (1.25, 2.5));
+  });
 }

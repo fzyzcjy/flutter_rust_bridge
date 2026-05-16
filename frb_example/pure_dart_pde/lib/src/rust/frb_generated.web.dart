@@ -2934,6 +2934,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   RawStringMirrored dco_decode_box_autoadd_raw_string_mirrored(dynamic raw);
 
   @protected
+  (double, double) dco_decode_box_autoadd_record_f_32_f_32(dynamic raw);
+
+  @protected
   (String, int) dco_decode_box_autoadd_record_string_i_32(dynamic raw);
 
   @protected
@@ -4585,6 +4588,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  (double, double)? dco_decode_opt_box_autoadd_record_f_32_f_32(dynamic raw);
+
+  @protected
   (String, int)? dco_decode_opt_box_autoadd_record_string_i_32(dynamic raw);
 
   @protected
@@ -4790,6 +4796,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     OpaqueTwoTwinSync
   ) dco_decode_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_one_twin_sync_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_two_twin_sync(
       dynamic raw);
+
+  @protected
+  (double, double) dco_decode_record_f_32_f_32(dynamic raw);
 
   @protected
   (int, BasicGeneralEnumTwinNormal)
@@ -7812,6 +7821,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  (double, double) sse_decode_box_autoadd_record_f_32_f_32(
+      SseDeserializer deserializer);
+
+  @protected
   (String, int) sse_decode_box_autoadd_record_string_i_32(
       SseDeserializer deserializer);
 
@@ -9683,6 +9696,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  (double, double)? sse_decode_opt_box_autoadd_record_f_32_f_32(
+      SseDeserializer deserializer);
+
+  @protected
   (String, int)? sse_decode_opt_box_autoadd_record_string_i_32(
       SseDeserializer deserializer);
 
@@ -9910,6 +9927,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     OpaqueTwoTwinSync
   ) sse_decode_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_one_twin_sync_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_two_twin_sync(
       SseDeserializer deserializer);
+
+  @protected
+  (double, double) sse_decode_record_f_32_f_32(SseDeserializer deserializer);
 
   @protected
   (int, BasicGeneralEnumTwinNormal)
@@ -13057,6 +13077,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       RawStringMirrored self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_record_f_32_f_32(
+      (double, double) self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_record_string_i_32(
       (String, int) self, SseSerializer serializer);
 
@@ -14871,6 +14895,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       NewTypeIntTwinSync? self, SseSerializer serializer);
 
   @protected
+  void sse_encode_opt_box_autoadd_record_f_32_f_32(
+      (double, double)? self, SseSerializer serializer);
+
+  @protected
   void sse_encode_opt_box_autoadd_record_string_i_32(
       (String, int)? self, SseSerializer serializer);
 
@@ -15091,6 +15119,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       sse_encode_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_one_twin_sync_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_two_twin_sync(
           (OpaqueOneTwinSync, OpaqueTwoTwinSync) self,
           SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_f_32_f_32(
+      (double, double) self, SseSerializer serializer);
 
   @protected
   void sse_encode_record_i_32_basic_general_enum_twin_normal(

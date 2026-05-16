@@ -6105,6 +6105,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   RawStringMirrored dco_decode_box_autoadd_raw_string_mirrored(dynamic raw);
 
   @protected
+  (double, double) dco_decode_box_autoadd_record_f_32_f_32(dynamic raw);
+
+  @protected
   (String, int) dco_decode_box_autoadd_record_string_i_32(dynamic raw);
 
   @protected
@@ -9271,6 +9274,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  (double, double)? dco_decode_opt_box_autoadd_record_f_32_f_32(dynamic raw);
+
+  @protected
   (String, int)? dco_decode_opt_box_autoadd_record_string_i_32(dynamic raw);
 
   @protected
@@ -9661,6 +9667,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     OpaqueTwoTwinSyncSseMoi
   ) dco_decode_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_one_twin_sync_sse_moi_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_two_twin_sync_sse_moi(
       dynamic raw);
+
+  @protected
+  (double, double) dco_decode_record_f_32_f_32(dynamic raw);
 
   @protected
   (int, BasicGeneralEnumTwinNormal)
@@ -15715,6 +15724,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  (double, double) sse_decode_box_autoadd_record_f_32_f_32(
+      SseDeserializer deserializer);
+
+  @protected
   (String, int) sse_decode_box_autoadd_record_string_i_32(
       SseDeserializer deserializer);
 
@@ -19303,6 +19316,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  (double, double)? sse_decode_opt_box_autoadd_record_f_32_f_32(
+      SseDeserializer deserializer);
+
+  @protected
   (String, int)? sse_decode_opt_box_autoadd_record_string_i_32(
       SseDeserializer deserializer);
 
@@ -19734,6 +19751,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     OpaqueTwoTwinSyncSseMoi
   ) sse_decode_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_one_twin_sync_sse_moi_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_two_twin_sync_sse_moi(
       SseDeserializer deserializer);
+
+  @protected
+  (double, double) sse_decode_record_f_32_f_32(SseDeserializer deserializer);
 
   @protected
   (int, BasicGeneralEnumTwinNormal)
@@ -23428,6 +23448,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   JSAny cst_encode_box_autoadd_raw_string_mirrored(RawStringMirrored raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_raw_string_mirrored(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_record_f_32_f_32((double, double) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_record_f_32_f_32(raw);
   }
 
   @protected
@@ -27675,6 +27701,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  JSAny? cst_encode_opt_box_autoadd_record_f_32_f_32((double, double)? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw == null ? null : cst_encode_box_autoadd_record_f_32_f_32(raw);
+  }
+
+  @protected
   JSAny? cst_encode_opt_box_autoadd_record_string_i_32((String, int)? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw == null ? null : cst_encode_box_autoadd_record_string_i_32(raw);
@@ -28213,6 +28245,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerOpaqueTwoTwinSyncMoi(
           raw.$2)
     ].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_record_f_32_f_32((double, double) raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_f_32(raw.$1), cst_encode_f_32(raw.$2)].jsify()!;
   }
 
   @protected
@@ -35918,6 +35956,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       RawStringMirrored self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_record_f_32_f_32(
+      (double, double) self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_record_string_i_32(
       (String, int) self, SseSerializer serializer);
 
@@ -39342,6 +39384,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       NewTypeIntTwinSyncSse? self, SseSerializer serializer);
 
   @protected
+  void sse_encode_opt_box_autoadd_record_f_32_f_32(
+      (double, double)? self, SseSerializer serializer);
+
+  @protected
   void sse_encode_opt_box_autoadd_record_string_i_32(
       (String, int)? self, SseSerializer serializer);
 
@@ -39745,6 +39791,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       sse_encode_record_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_one_twin_sync_sse_moi_auto_owned_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_opaque_two_twin_sync_sse_moi(
           (OpaqueOneTwinSyncSseMoi, OpaqueTwoTwinSyncSseMoi) self,
           SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_f_32_f_32(
+      (double, double) self, SseSerializer serializer);
 
   @protected
   void sse_encode_record_i_32_basic_general_enum_twin_normal(
@@ -56337,6 +56387,50 @@ class RustLibWire implements BaseWire {
               int data_len_) =>
           wasmModule
               .wire__crate__api__pseudo_manual__exception_twin_sync_sse__return_ok_custom_error_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__tuple__return_optional_f_32_tuple_twin_normal(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__tuple__return_optional_f_32_tuple_twin_normal(
+              port_);
+
+  void wire__crate__api__pseudo_manual__tuple_twin_rust_async__return_optional_f_32_tuple_twin_rust_async(
+          NativePortType port_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__tuple_twin_rust_async__return_optional_f_32_tuple_twin_rust_async(
+              port_);
+
+  void wire__crate__api__pseudo_manual__tuple_twin_rust_async_sse__return_optional_f_32_tuple_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__tuple_twin_rust_async_sse__return_optional_f_32_tuple_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__tuple_twin_sse__return_optional_f_32_tuple_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__tuple_twin_sse__return_optional_f_32_tuple_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__tuple_twin_sync__return_optional_f_32_tuple_twin_sync() =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__tuple_twin_sync__return_optional_f_32_tuple_twin_sync();
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__tuple_twin_sync_sse__return_optional_f_32_tuple_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__tuple_twin_sync_sse__return_optional_f_32_tuple_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__pseudo_manual__rust_opaque_twin_moi__run_enum_opaque_twin_moi(
@@ -75685,6 +75779,36 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__exception_twin_sync_sse__return_ok_custom_error_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void wire__crate__api__tuple__return_optional_f_32_tuple_twin_normal(
+      NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__tuple_twin_rust_async__return_optional_f_32_tuple_twin_rust_async(
+          NativePortType port_);
+
+  external void
+      wire__crate__api__pseudo_manual__tuple_twin_rust_async_sse__return_optional_f_32_tuple_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__tuple_twin_sse__return_optional_f_32_tuple_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__tuple_twin_sync__return_optional_f_32_tuple_twin_sync();
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__tuple_twin_sync_sse__return_optional_f_32_tuple_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
