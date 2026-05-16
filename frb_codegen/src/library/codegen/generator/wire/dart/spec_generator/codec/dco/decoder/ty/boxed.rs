@@ -14,6 +14,7 @@ impl WireDartCodecDcoGeneratorDecoderTrait for BoxedWireDartCodecDcoGenerator<'_
         // frb-coverage:ignore-end
         match &*self.mir.inner {
             StructRef(_)
+            | Record(_)
             | DartOpaque(_)
             | RustOpaque(_)
             | MirType::Delegate(MirTypeDelegate::RustAutoOpaqueExplicit(_))

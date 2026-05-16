@@ -11,3 +11,7 @@ pub fn test_tuple_twin_normal(value: Option<(String, i32)>) -> (String, i32) {
 pub fn test_tuple_2_twin_normal(value: Vec<(String, i32)>) {
     drop(value)
 }
+
+pub fn return_optional_f_32_tuple_twin_normal() -> Option<(f32, f32)> {
+    Some((1.25, 2.5))
+}
