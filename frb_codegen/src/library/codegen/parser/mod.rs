@@ -88,6 +88,12 @@ mod tests {
 
     #[test]
     #[serial]
+    fn test_init_dart_code() -> anyhow::Result<()> {
+        body("library/codegen/parser/mod/init_dart_code", None)
+    }
+
+    #[test]
+    #[serial]
     fn test_methods() -> anyhow::Result<()> {
         body("library/codegen/parser/mod/methods", None)
     }

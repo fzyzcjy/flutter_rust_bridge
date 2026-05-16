@@ -46,6 +46,7 @@
       "comments": [],
       "id": 1,
       "impl_mode": "Normal",
+      "init_dart_code": null,
       "initializer": false,
       "inputs": [
         {

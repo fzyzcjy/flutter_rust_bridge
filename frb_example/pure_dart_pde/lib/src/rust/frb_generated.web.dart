@@ -34,6 +34,7 @@ import 'api/exception.dart';
 import 'api/external_impl.dart';
 import 'api/external_type_in_crate.dart';
 import 'api/impl_trait.dart';
+import 'api/init_dart_code.dart';
 import 'api/inside_macro.dart';
 import 'api/lifetimeable.dart';
 import 'api/map_and_set.dart';
