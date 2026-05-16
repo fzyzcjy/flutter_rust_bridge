@@ -189,6 +189,7 @@ Future<void> ensureCargoExpandInstalledForPrecommitGenerate() async {
 }
 
 bool _shouldFallbackCargoExpandInstall(String stderr) =>
+    // Mimic `cargo_expand_fallback_version` in frb_codegen's cargo_expand/real.rs.
     stderr.contains('requires rustc');
 
 void _throwCommandFailed(String command, RunCommandOutput output) {
