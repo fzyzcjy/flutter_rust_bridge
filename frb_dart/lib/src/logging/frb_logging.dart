@@ -38,13 +38,23 @@ class FrbLogRecordData {
 /// The Dart side of the Rust `log` to Dart `logging` bridge.
 final kFrbDartLogging = FrbDartLogging._();
 
+class _FrbDartLoggingState {
+  final StreamSubscription<Object?> subscription;
+  final StreamSubscription<LogRecord>? defaultOutputSubscription;
+  final void Function()? disposeRustLogger;
+
+  _FrbDartLoggingState({
+    required this.subscription,
+    required this.defaultOutputSubscription,
+    required this.disposeRustLogger,
+  });
+}
+
 /// Installs the Dart side of the Rust `log` to Dart `logging` bridge.
 class FrbDartLogging {
   FrbDartLogging._();
 
-  StreamSubscription<Object?>? _subscription;
-  StreamSubscription<LogRecord>? _defaultOutputSubscription;
-  void Function()? _disposeRustLogger;
+  _FrbDartLoggingState? _state;
 
   /// Connects a generated Rust log stream to the Dart `logging` package.
   void init<T>({
@@ -53,10 +63,14 @@ class FrbDartLogging {
     bool setupDefaultOutput = true,
     void Function()? disposeRustLogger,
   }) {
-    final previousSubscription = _subscription;
+    final previousState = _state;
 
-    _disposeRustLogger = disposeRustLogger;
-    _subscription = rustLogStream.listen(
+    var defaultOutputSubscription = previousState?.defaultOutputSubscription;
+    if (setupDefaultOutput && defaultOutputSubscription == null) {
+      defaultOutputSubscription = _createDefaultOutputSubscription();
+    }
+
+    final subscription = rustLogStream.listen(
       (record) {
         final mapped = mapRecord(record);
         Logger(mapped.target).log(_toDartLevel(mapped.level), mapped.message);
@@ -68,41 +82,38 @@ class FrbDartLogging {
       },
     );
 
-    if (previousSubscription != null) {
-      unawaited(previousSubscription.cancel());
-    }
-
-    if (setupDefaultOutput) {
-      _setupDefaultOutput();
+    _state = _FrbDartLoggingState(
+      subscription: subscription,
+      defaultOutputSubscription: defaultOutputSubscription,
+      disposeRustLogger: disposeRustLogger,
+    );
+    if (previousState != null) {
+      unawaited(previousState.subscription.cancel());
     }
   }
 
   /// Disconnects the Rust log stream listener.
   void dispose() {
-    final subscription = _subscription;
-    final defaultOutputSubscription = _defaultOutputSubscription;
-    final disposeRustLogger = _disposeRustLogger;
-    _subscription = null;
-    _defaultOutputSubscription = null;
-    _disposeRustLogger = null;
-
-    disposeRustLogger?.call();
-    if (subscription != null) {
-      unawaited(subscription.cancel());
+    final state = _state;
+    _state = null;
+    if (state == null) {
+      return;
     }
-    if (defaultOutputSubscription != null) {
-      unawaited(defaultOutputSubscription.cancel());
+
+    state.disposeRustLogger?.call();
+    unawaited(state.subscription.cancel());
+    if (state.defaultOutputSubscription != null) {
+      unawaited(state.defaultOutputSubscription!.cancel());
     }
   }
 
-  void _setupDefaultOutput() {
-    _defaultOutputSubscription ??= Logger.root.onRecord.listen((record) {
-      final loggerName = record.loggerName.isEmpty ? 'root' : record.loggerName;
-      print(
-        '${record.level.name}: ${record.time}: $loggerName: ${record.message}',
-      );
-    });
-  }
+  StreamSubscription<LogRecord>
+  _createDefaultOutputSubscription() => Logger.root.onRecord.listen((record) {
+    final loggerName = record.loggerName.isEmpty ? 'root' : record.loggerName;
+    print(
+      '${record.level.name}: ${record.time}: $loggerName: ${record.message}',
+    );
+  });
 
   Level _toDartLevel(String level) {
     switch (level.toUpperCase()) {
