@@ -58,7 +58,7 @@ impl WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGenerator
                 } else {
                     format!(
                         "return dcoDecodeTimestamp(ts: dco_decode_i_64(raw).toInt(), isUtc: {is_utc});",
-                        is_utc = matches!(mir, MirTypeDelegateTime::Naive | MirTypeDelegateTime::Utc)
+                        is_utc = matches!(mir, MirTypeDelegateTime::NaiveDateTime | MirTypeDelegateTime::NaiveDate | MirTypeDelegateTime::Utc)
                     )
                 }
             }
@@ -70,6 +70,9 @@ impl WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGenerator
             // }
             MirTypeDelegate::Uuid => {
                 "return UuidValue.fromByteList(dco_decode_list_prim_u_8_strict(raw));".to_owned()
+            }
+            MirTypeDelegate::SerdeJsonValue => {
+                "return jsonDecode(raw as String);".to_owned()
             }
             // MirTypeDelegate::Uuids => ...,
             MirTypeDelegate::AnyhowException => "return AnyhowException(raw as String);".to_owned(),
@@ -88,9 +91,9 @@ impl WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGenerator
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => format!(r"return dco_decode_{}(raw);", mir.inner.safe_ident()),
             MirTypeDelegate::CustomSerDes(inner) => {
                 let body = inner.info.rust2dart.dart_code.replace(
-                    "{}", 
+                    "{}",
                 &format!(
-                        "dco_decode_{}(raw)", 
+                        "dco_decode_{}(raw)",
                         inner.info.inner_type.safe_ident()
                     )
                 );

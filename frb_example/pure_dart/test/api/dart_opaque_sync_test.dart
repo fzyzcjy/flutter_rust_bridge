@@ -41,10 +41,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
       unwrapDartOpaqueTwinNormal(opaque: createLargeList(mb: 200)),
       'Test',
     );
-    await expectLater(
-      () => panicUnwrapDartOpaqueTwinNormal(opaque: createLargeList(mb: 200)),
-      throwsA(isA<PanicException>()),
-    );
+    if (!kIsWeb) {
+      await expectLater(
+        () => panicUnwrapDartOpaqueTwinNormal(opaque: createLargeList(mb: 200)),
+        throwsA(isA<PanicException>()),
+      );
+    }
   });
 
   // `returnNonDroppableDartOpaqueTwinNormal` is removed

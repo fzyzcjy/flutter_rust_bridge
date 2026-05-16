@@ -26,6 +26,7 @@
   "struct_pool": {
     "crate::api/UnusedStruct": {
       "comments": [],
+      "dart_collection_deep_equality": false,
       "dart_metadata_raw": [],
       "fields": [
         {

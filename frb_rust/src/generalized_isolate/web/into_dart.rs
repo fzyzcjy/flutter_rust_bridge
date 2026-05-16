@@ -38,6 +38,17 @@ impl<Tz: chrono::TimeZone> IntoDart for chrono::DateTime<Tz> {
     }
 }
 #[cfg(feature = "chrono")]
+impl IntoDart for chrono::NaiveDate {
+    #[inline]
+    fn into_dart(self) -> DartAbi {
+        self.and_hms_opt(0, 0, 0)
+            .expect("Time out of range")
+            .and_utc()
+            .timestamp_millis()
+            .into_dart()
+    }
+}
+#[cfg(feature = "chrono")]
 impl IntoDart for chrono::NaiveDateTime {
     #[inline]
     fn into_dart(self) -> DartAbi {
@@ -75,6 +86,16 @@ impl IntoDart for Vec<chrono::Duration> {
         self.into_iter()
             .map(IntoDart::into_dart)
             .collect::<Vec<_>>()
+            .into_dart()
+    }
+}
+
+#[cfg(feature = "serde_json")]
+impl IntoDart for serde_json::Value {
+    #[inline]
+    fn into_dart(self) -> DartAbi {
+        serde_json::to_string(&self)
+            .expect("Failed to serialize serde_json::Value")
             .into_dart()
     }
 }

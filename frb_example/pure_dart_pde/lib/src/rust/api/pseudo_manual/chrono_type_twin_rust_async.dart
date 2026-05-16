@@ -19,6 +19,10 @@ Future<DateTime> datetimeLocalTwinRustAsync({required DateTime d}) =>
         .crateApiPseudoManualChronoTypeTwinRustAsyncDatetimeLocalTwinRustAsync(
             d: d);
 
+Future<DateTime> naivedateTwinRustAsync({required DateTime d}) => RustLib
+    .instance.api
+    .crateApiPseudoManualChronoTypeTwinRustAsyncNaivedateTwinRustAsync(d: d);
+
 Future<DateTime> naivedatetimeTwinRustAsync({required DateTime d}) =>
     RustLib.instance.api
         .crateApiPseudoManualChronoTypeTwinRustAsyncNaivedatetimeTwinRustAsync(
@@ -63,18 +67,24 @@ class FeatureChronoTwinRustAsync {
   final DateTime utc;
   final DateTime local;
   final Duration duration;
-  final DateTime naive;
+  final DateTime naiveDate;
+  final DateTime naiveDateTime;
 
   const FeatureChronoTwinRustAsync({
     required this.utc,
     required this.local,
     required this.duration,
-    required this.naive,
+    required this.naiveDate,
+    required this.naiveDateTime,
   });
 
   @override
   int get hashCode =>
-      utc.hashCode ^ local.hashCode ^ duration.hashCode ^ naive.hashCode;
+      utc.hashCode ^
+      local.hashCode ^
+      duration.hashCode ^
+      naiveDate.hashCode ^
+      naiveDateTime.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -84,22 +94,25 @@ class FeatureChronoTwinRustAsync {
           utc == other.utc &&
           local == other.local &&
           duration == other.duration &&
-          naive == other.naive;
+          naiveDate == other.naiveDate &&
+          naiveDateTime == other.naiveDateTime;
 }
 
 class TestChronoTwinRustAsync {
   final DateTime? dt;
   final DateTime? dt2;
+  final DateTime? da;
   final Duration? du;
 
   const TestChronoTwinRustAsync({
     this.dt,
     this.dt2,
+    this.da,
     this.du,
   });
 
   @override
-  int get hashCode => dt.hashCode ^ dt2.hashCode ^ du.hashCode;
+  int get hashCode => dt.hashCode ^ dt2.hashCode ^ da.hashCode ^ du.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -108,5 +121,6 @@ class TestChronoTwinRustAsync {
           runtimeType == other.runtimeType &&
           dt == other.dt &&
           dt2 == other.dt2 &&
+          da == other.da &&
           du == other.du;
 }
