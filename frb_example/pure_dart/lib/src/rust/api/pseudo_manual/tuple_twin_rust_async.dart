@@ -16,3 +16,7 @@ Future<void> testTuple2TwinRustAsync({required List<(String, int)> value}) =>
     RustLib.instance.api
         .crateApiPseudoManualTupleTwinRustAsyncTestTuple2TwinRustAsync(
             value: value);
+
+Future<(double, double)?> returnOptionalF32TupleTwinRustAsync() => RustLib
+    .instance.api
+    .crateApiPseudoManualTupleTwinRustAsyncReturnOptionalF32TupleTwinRustAsync();

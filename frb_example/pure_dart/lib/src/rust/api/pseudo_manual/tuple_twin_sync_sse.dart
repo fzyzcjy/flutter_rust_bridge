@@ -15,3 +15,6 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 void testTuple2TwinSyncSse({required List<(String, int)> value}) => RustLib
     .instance.api
     .crateApiPseudoManualTupleTwinSyncSseTestTuple2TwinSyncSse(value: value);
+
+(double, double)? returnOptionalF32TupleTwinSyncSse() => RustLib.instance.api
+    .crateApiPseudoManualTupleTwinSyncSseReturnOptionalF32TupleTwinSyncSse();

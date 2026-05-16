@@ -15,3 +15,7 @@ Future<(String, int)> testTupleTwinSse({(String, int)? value}) =>
 Future<void> testTuple2TwinSse({required List<(String, int)> value}) =>
     RustLib.instance.api
         .crateApiPseudoManualTupleTwinSseTestTuple2TwinSse(value: value);
+
+Future<(double, double)?> returnOptionalF32TupleTwinSse() =>
+    RustLib.instance.api
+        .crateApiPseudoManualTupleTwinSseReturnOptionalF32TupleTwinSse();
