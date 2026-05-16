@@ -391,6 +391,8 @@ jobs:
         info:
           - image: windows-2025
             target: windows
+          - image: windows-11-arm
+            target: windows
           - image: macos-15-intel
             target: macos
           - image: ubuntu-latest
