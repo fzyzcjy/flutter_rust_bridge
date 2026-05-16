@@ -14,7 +14,7 @@ CI failures in flutter_rust_bridge often have simple fixes. Try the appropriate 
 
 **Core principle:** Start with lazy fixes (re-run, copy diff, --fix) before expensive investigation.
 
-If the CI failure or PR state is caused by merge/rebase conflicts, especially conflicts in generated files after `master` and a PR both added tests or APIs, read `frb-fix-merge-conflict` before resolving them.
+If the CI failure or PR state is caused by merge/rebase conflicts, especially conflicts in generated files after `master` and a PR both added tests or APIs, read the `/frb-fix-merge-conflict` skill before resolving them.
 
 ## Triage Order
 

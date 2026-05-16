@@ -15,7 +15,7 @@ Generated conflict output should be treated as a stale artifact from two indepen
 
 ## Before Starting
 
-1. Read `tom-frb-env` for Tom's local Docker workflow.
+1. Read the environment setup instructions for the current checkout before running generation or tests. In Tom's local workflow, this means the user-specific `/tom-frb-env` skill; other contributors should use their normal FRB setup.
 2. Read `frb-code-generation` to choose the minimal regeneration command.
 3. If the conflict is discovered through CI or PR checks, read `frb-fix-ci` before deeper investigation.
 4. Make sure the worktree starts clean except for the merge/rebase conflict you are intentionally resolving.
@@ -89,4 +89,3 @@ Keep the conflict-resolution commit focused:
 - Include regenerated outputs from the chosen generation command.
 - Do not include unrelated cleanup.
 - Mention the generation command in the commit message body when useful.
-
