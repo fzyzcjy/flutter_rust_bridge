@@ -9,7 +9,7 @@ description: Use when fixing bugs, adding regression tests, adding new features,
 
 ## Overview
 
-**For both bug fixes and new features: iterate in frb_example/dart_minimal (fast compile), then migrate the lasting test to frb_example/pure_dart (full coverage).**
+**For both bug fixes and new features: iterate in `frb_example/dart_minimal` (fast compile), then migrate the final test to `frb_example/pure_dart` (full coverage).**
 
 | Phase | Location | Why |
 |-------|----------|-----|
