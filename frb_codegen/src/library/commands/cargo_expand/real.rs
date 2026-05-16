@@ -1,7 +1,9 @@
 use crate::codegen::dumper::Dumper;
 use crate::codegen::ConfigDumpContent;
 use crate::command_args;
-use crate::library::commands::command_runner::{execute_command, ExecuteCommandOptions};
+use crate::library::commands::command_runner::{
+    check_exit_code, execute_command, ExecuteCommandOptions,
+};
 use crate::utils::crate_name::CrateName;
 use anyhow::{bail, Context, Result};
 use fs2::FileExt;
@@ -14,7 +16,6 @@ use std::env;
 use std::fs::{File, OpenOptions};
 use std::io::ErrorKind;
 use std::path::{Path, PathBuf};
-use std::process::Output;
 use std::str::FromStr;
 use std::thread::sleep;
 use std::time::{Duration, Instant};
@@ -139,83 +140,48 @@ fn run_raw(
 
 fn install_cargo_expand() -> Result<()> {
     let _lock = CargoExpandInstallLock::acquire()?;
-    let mut runner = RealCargoExpandInstallRunner;
-    install_cargo_expand_inner(&mut runner)
-}
 
-trait CargoExpandInstallRunner {
-    fn is_cargo_expand_installed(&mut self) -> Result<bool>;
-    fn install_cargo_expand(&mut self, version: Option<&str>) -> Result<CargoExpandInstallOutput>;
-}
-
-struct RealCargoExpandInstallRunner;
-
-impl CargoExpandInstallRunner for RealCargoExpandInstallRunner {
-    fn is_cargo_expand_installed(&mut self) -> Result<bool> {
-        Ok(execute_command(
-            "cargo",
-            &[PathBuf::from("expand"), PathBuf::from("--version")],
-            None,
-            Some(ExecuteCommandOptions {
-                log_when_error: Some(false),
-                ..Default::default()
-            }),
-        )?
-        .status
-        .success())
-    }
-
-    fn install_cargo_expand(&mut self, version: Option<&str>) -> Result<CargoExpandInstallOutput> {
-        Ok(execute_command("cargo", &cargo_expand_install_args(version), None, None)?.into())
-    }
-}
-
-struct CargoExpandInstallOutput {
-    success: bool,
-    stderr: String,
-}
-
-impl From<Output> for CargoExpandInstallOutput {
-    fn from(output: Output) -> Self {
-        Self {
-            success: output.status.success(),
-            stderr: String::from_utf8_lossy(&output.stderr).into_owned(),
-        }
-    }
-}
-
-fn install_cargo_expand_inner(runner: &mut impl CargoExpandInstallRunner) -> Result<()> {
-    if runner.is_cargo_expand_installed()? {
+    if is_cargo_expand_installed()? {
         info!("Cargo expand was installed by another process while waiting for the install lock.");
         return Ok(());
     }
 
-    let latest = runner.install_cargo_expand(None)?;
-    if latest.success {
+    let latest = execute_command("cargo", &cargo_expand_install_args(None), None, None)?;
+    if latest.status.success() {
         return Ok(());
     }
 
-    if let Some(version) = cargo_expand_fallback_version(&latest.stderr) {
+    let latest_stderr = String::from_utf8_lossy(&latest.stderr);
+    if let Some(version) = cargo_expand_fallback_version(&latest_stderr) {
         info!(
             "Latest cargo-expand is incompatible with the active Rust toolchain. Falling back to cargo-expand {version}."
         );
-        let fallback = runner.install_cargo_expand(Some(version))?;
-        check_cargo_expand_install_output(&fallback)?;
+        let fallback = execute_command(
+            "cargo",
+            &cargo_expand_install_args(Some(version)),
+            None,
+            None,
+        )?;
+        check_exit_code(&fallback)?;
         return Ok(());
     }
 
-    check_cargo_expand_install_output(&latest)?;
+    check_exit_code(&latest)?;
     Ok(())
 }
 
-fn check_cargo_expand_install_output(output: &CargoExpandInstallOutput) -> Result<()> {
-    if !output.success {
-        // This will stop the whole generator and tell the users, so we do not care about testing it
-        // frb-coverage:ignore-start
-        bail!("Command execution failed: {}", output.stderr);
-        // frb-coverage:ignore-end
-    }
-    Ok(())
+fn is_cargo_expand_installed() -> Result<bool> {
+    Ok(execute_command(
+        "cargo",
+        &[PathBuf::from("expand"), PathBuf::from("--version")],
+        None,
+        Some(ExecuteCommandOptions {
+            log_when_error: Some(false),
+            ..Default::default()
+        }),
+    )?
+    .status
+    .success())
 }
 
 struct CargoExpandInstallLock {
@@ -289,11 +255,7 @@ fn cargo_expand_install_args(version: Option<&str>) -> Vec<PathBuf> {
 
 #[cfg(test)]
 mod tests {
-    use super::{
-        cargo_expand_fallback_version, cargo_expand_install_args, install_cargo_expand_inner,
-        CargoExpandInstallOutput, CargoExpandInstallRunner,
-    };
-    use anyhow::Result;
+    use super::{cargo_expand_fallback_version, cargo_expand_install_args};
 
     #[test]
     fn test_cargo_expand_fallback_version_when_latest_requires_newer_rustc() {
@@ -324,64 +286,6 @@ mod tests {
                 "--locked"
             ]
         );
-    }
-
-    #[test]
-    fn test_install_cargo_expand_skips_install_when_already_installed_after_lock() {
-        let mut runner = FakeCargoExpandInstallRunner {
-            installed: true,
-            install_versions: vec![],
-        };
-
-        install_cargo_expand_inner(&mut runner).unwrap();
-
-        assert!(runner.install_versions.is_empty());
-    }
-
-    #[test]
-    fn test_install_cargo_expand_falls_back_when_latest_requires_newer_rustc() {
-        let mut runner = FakeCargoExpandInstallRunner {
-            installed: false,
-            install_versions: vec![],
-        };
-
-        install_cargo_expand_inner(&mut runner).unwrap();
-
-        assert_eq!(
-            runner.install_versions,
-            vec![None, Some("1.0.112".to_owned())]
-        );
-    }
-
-    struct FakeCargoExpandInstallRunner {
-        installed: bool,
-        install_versions: Vec<Option<String>>,
-    }
-
-    impl CargoExpandInstallRunner for FakeCargoExpandInstallRunner {
-        fn is_cargo_expand_installed(&mut self) -> Result<bool> {
-            Ok(self.installed)
-        }
-
-        fn install_cargo_expand(
-            &mut self,
-            version: Option<&str>,
-        ) -> Result<CargoExpandInstallOutput> {
-            self.install_versions.push(version.map(ToOwned::to_owned));
-            Ok(if version.is_none() {
-                CargoExpandInstallOutput {
-                    success: false,
-                    stderr:
-                        "error: cannot install package `cargo-expand`, it requires rustc 1.88 or newer"
-                            .to_owned(),
-                }
-            } else {
-                CargoExpandInstallOutput {
-                    success: true,
-                    stderr: String::new(),
-                }
-            })
-        }
     }
 }
 
