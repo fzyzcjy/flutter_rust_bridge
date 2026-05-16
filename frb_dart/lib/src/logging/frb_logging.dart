@@ -63,12 +63,13 @@ class FrbDartLogging {
     bool setupDefaultOutput = true,
     void Function()? disposeRustLogger,
   }) {
-    final previousState = _state;
-
-    var defaultOutputSubscription = previousState?.defaultOutputSubscription;
-    if (setupDefaultOutput && defaultOutputSubscription == null) {
-      defaultOutputSubscription = _createDefaultOutputSubscription();
+    if (_state != null) {
+      throw StateError('Should not initialize FRB Dart logging twice');
     }
+
+    final defaultOutputSubscription = setupDefaultOutput
+        ? _createDefaultOutputSubscription()
+        : null;
 
     final subscription = rustLogStream.listen(
       (record) {
@@ -87,9 +88,6 @@ class FrbDartLogging {
       defaultOutputSubscription: defaultOutputSubscription,
       disposeRustLogger: disposeRustLogger,
     );
-    if (previousState != null) {
-      unawaited(previousState.subscription.cancel());
-    }
   }
 
   /// Disconnects the Rust log stream listener.

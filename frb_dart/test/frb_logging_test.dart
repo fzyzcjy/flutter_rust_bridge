@@ -40,6 +40,42 @@ void main() {
     }
   });
 
+  test('init rejects duplicate initialization until disposed', () async {
+    final firstController = StreamController<_RustLogRecord>();
+    final secondController = StreamController<_RustLogRecord>();
+    final thirdController = StreamController<_RustLogRecord>();
+
+    try {
+      kFrbDartLogging.init<_RustLogRecord>(
+        rustLogStream: firstController.stream,
+        setupDefaultOutput: false,
+        mapRecord: _mapRustLogRecord,
+      );
+
+      expect(
+        () => kFrbDartLogging.init<_RustLogRecord>(
+          rustLogStream: secondController.stream,
+          setupDefaultOutput: false,
+          mapRecord: _mapRustLogRecord,
+        ),
+        throwsA(isA<StateError>()),
+      );
+
+      kFrbDartLogging.dispose();
+
+      kFrbDartLogging.init<_RustLogRecord>(
+        rustLogStream: thirdController.stream,
+        setupDefaultOutput: false,
+        mapRecord: _mapRustLogRecord,
+      );
+    } finally {
+      kFrbDartLogging.dispose();
+      await firstController.close();
+      await secondController.close();
+      await thirdController.close();
+    }
+  });
+
   test('Rust log records are forwarded to Dart logging', () async {
     final controller = StreamController<_RustLogRecord>();
     final receivedRecords = <LogRecord>[];
@@ -51,14 +87,7 @@ void main() {
       kFrbDartLogging.init<_RustLogRecord>(
         rustLogStream: controller.stream,
         setupDefaultOutput: false,
-        mapRecord: (record) => FrbLogRecordData(
-          level: record.level,
-          message: record.message,
-          target: record.target,
-          modulePath: null,
-          file: null,
-          line: null,
-        ),
+        mapRecord: _mapRustLogRecord,
       );
 
       controller.add(
@@ -92,14 +121,7 @@ void main() {
       kFrbDartLogging.init<_RustLogRecord>(
         rustLogStream: controller.stream,
         setupDefaultOutput: false,
-        mapRecord: (record) => FrbLogRecordData(
-          level: record.level,
-          message: record.message,
-          target: record.target,
-          modulePath: null,
-          file: null,
-          line: null,
-        ),
+        mapRecord: _mapRustLogRecord,
       );
 
       final error = StateError('stream failed');
@@ -129,14 +151,7 @@ void main() {
       kFrbDartLogging.init<_RustLogRecord>(
         rustLogStream: controller.stream,
         setupDefaultOutput: false,
-        mapRecord: (record) => FrbLogRecordData(
-          level: record.level,
-          message: record.message,
-          target: record.target,
-          modulePath: null,
-          file: null,
-          line: null,
-        ),
+        mapRecord: _mapRustLogRecord,
       );
 
       controller.add(
@@ -178,3 +193,12 @@ class _RustLogRecord {
     required this.target,
   });
 }
+
+FrbLogRecordData _mapRustLogRecord(_RustLogRecord record) => FrbLogRecordData(
+  level: record.level,
+  message: record.message,
+  target: record.target,
+  modulePath: null,
+  file: null,
+  line: null,
+);
