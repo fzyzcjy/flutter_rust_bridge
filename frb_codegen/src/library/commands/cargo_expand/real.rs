@@ -6,23 +6,16 @@ use crate::library::commands::command_runner::{
 };
 use crate::utils::crate_name::CrateName;
 use anyhow::{bail, Context, Result};
-use fs2::FileExt;
 use itertools::Itertools;
 use lazy_static::lazy_static;
 use log::{debug, info};
 use regex::{Captures, Regex};
 use std::borrow::Cow;
 use std::env;
-use std::fs::{File, OpenOptions};
-use std::io::ErrorKind;
 use std::path::{Path, PathBuf};
 use std::str::FromStr;
-use std::thread::sleep;
-use std::time::{Duration, Instant};
 
 const CARGO_EXPAND_FALLBACK_VERSION: &str = "1.0.112";
-const CARGO_EXPAND_INSTALL_LOCK_TIMEOUT: Duration = Duration::from_secs(30 * 60);
-const CARGO_EXPAND_INSTALL_LOCK_SLEEP: Duration = Duration::from_secs(1);
 
 pub(super) fn run(
     rust_crate_dir: &Path,
@@ -139,13 +132,6 @@ fn run_raw(
 }
 
 fn install_cargo_expand() -> Result<()> {
-    let _lock = CargoExpandInstallLock::acquire()?;
-
-    if is_cargo_expand_installed()? {
-        info!("Cargo expand was installed by another process while waiting for the install lock.");
-        return Ok(());
-    }
-
     let latest = execute_command("cargo", &cargo_expand_install_args(None), None, None)?;
     if latest.status.success() {
         return Ok(());
@@ -168,75 +154,6 @@ fn install_cargo_expand() -> Result<()> {
 
     check_exit_code(&latest)?;
     Ok(())
-}
-
-fn is_cargo_expand_installed() -> Result<bool> {
-    Ok(execute_command(
-        "cargo",
-        &[PathBuf::from("expand"), PathBuf::from("--version")],
-        None,
-        Some(ExecuteCommandOptions {
-            log_when_error: Some(false),
-            ..Default::default()
-        }),
-    )?
-    .status
-    .success())
-}
-
-struct CargoExpandInstallLock {
-    file: File,
-}
-
-impl CargoExpandInstallLock {
-    fn acquire() -> Result<Self> {
-        let lock_path = cargo_expand_install_lock_path();
-        std::fs::create_dir_all(
-            lock_path
-                .parent()
-                .context("cargo-expand install lock path has no parent")?,
-        )?;
-
-        let file = OpenOptions::new()
-            .create(true)
-            .read(true)
-            .truncate(false)
-            .write(true)
-            .open(&lock_path)?;
-
-        let start = Instant::now();
-        loop {
-            match file.try_lock_exclusive() {
-                Ok(()) => {
-                    debug!("Acquired cargo-expand install lock at {lock_path:?}");
-                    return Ok(Self { file });
-                }
-                Err(error) if error.kind() == ErrorKind::WouldBlock => {
-                    if start.elapsed() >= CARGO_EXPAND_INSTALL_LOCK_TIMEOUT {
-                        bail!(
-                            "Timed out waiting for cargo-expand install lock at {lock_path:?} after {:?}",
-                            CARGO_EXPAND_INSTALL_LOCK_TIMEOUT
-                        );
-                    }
-                    info!("Waiting for cargo-expand install lock at {lock_path:?}");
-                    sleep(CARGO_EXPAND_INSTALL_LOCK_SLEEP);
-                }
-                Err(error) => return Err(error.into()),
-            }
-        }
-    }
-}
-
-impl Drop for CargoExpandInstallLock {
-    fn drop(&mut self) {
-        let _ = FileExt::unlock(&self.file);
-    }
-}
-
-fn cargo_expand_install_lock_path() -> PathBuf {
-    env::temp_dir()
-        .join("flutter_rust_bridge_codegen")
-        .join("cargo-expand-install.lock")
 }
 
 fn cargo_expand_fallback_version(stderr: &str) -> Option<&'static str> {
