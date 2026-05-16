@@ -38,6 +38,15 @@ The dart code is _copied_ into the generated dart class, inside the scope of the
 
 For example, if you annotate a `struct MyStruct` in the rust file `minimal.rs`, then the dart code will be inserted into the generated dart class `class MyStruct` in the generated file `minimal.dart`, inside this class definition.
 
+## Difference from `init_dart_code`
+
+`#[frb(dart_code = ...)]` inserts Dart code into a generated class body, and is
+therefore only meaningful on Rust structs and enums that become Dart classes.
+
+`#[frb(init_dart_code = ...)]` inserts Dart code into the generated
+`RustLib.init()` startup flow, and is therefore meaningful on generated Rust
+functions. See [Initialization](../how-to/init.md) for details.
+
 ## Impossible Dart Code
 
 Because the dart_code is inserted into the generated dart code from the rust element you annotated, the result must be valid dart code.

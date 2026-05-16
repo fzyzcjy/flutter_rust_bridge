@@ -121,6 +121,13 @@ fn generate_boilerplate(
             )
         })
         .join("");
+    let execute_dart_initializers = generate_execute_dart_initializers(
+        context
+            .mir_pack
+            .funcs_with_impl()
+            .iter()
+            .filter_map(|f| f.init_dart_code.as_deref()),
+    );
 
     let codegen_version = env!("CARGO_PKG_VERSION");
 
@@ -186,6 +193,7 @@ fn generate_boilerplate(
                   @override
                   Future<void> executeRustInitializers() async {{
                     {execute_rust_initializers}
+                    {execute_dart_initializers}
                   }}
 
                   @override
@@ -244,6 +252,12 @@ fn generate_boilerplate(
     })
 }
 
+fn generate_execute_dart_initializers<'a>(
+    init_dart_codes: impl Iterator<Item = &'a str>,
+) -> String {
+    init_dart_codes.map(|code| format!("{code}\n")).join("")
+}
+
 fn file_stem(p: &Path) -> String {
     p.file_stem().unwrap().to_str().unwrap().into()
 }
@@ -263,6 +277,23 @@ fn generate_import_dart_api_layer(
         })
         .collect::<anyhow::Result<Vec<_>>>()?
         .join(""))
+}
+
+#[cfg(test)]
+mod tests {
+    use super::generate_execute_dart_initializers;
+
+    #[test]
+    fn test_generate_execute_dart_initializers() {
+        let actual = generate_execute_dart_initializers(
+            ["api.firstInit();", "api.secondInit(\n  value: 42,\n);"].into_iter(),
+        );
+
+        assert_eq!(
+            actual,
+            "api.firstInit();\napi.secondInit(\n  value: 42,\n);\n"
+        );
+    }
 }
 
 // fn generate_wire_delegate_functions(func: &ExternFunc) -> Acc<Vec<WireDartOutputCode>> {

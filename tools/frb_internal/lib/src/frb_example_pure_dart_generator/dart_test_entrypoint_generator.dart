@@ -56,9 +56,9 @@ Future<void> _generateDartValgrindTestEntrypoint(
     for (final file in files) //
       "import '${path.relative(file, from: dirTest.toFilePath())}' as ${path.basenameWithoutExtension(file)};\n",
   ];
-  final calls = [
+  final entrypoints = [
     for (final file in files) //
-      _generateFileEntrypointCall(file),
+      '${path.basenameWithoutExtension(file)}.main,\n',
   ];
 
   final code =
@@ -92,27 +92,17 @@ Future<void> main() async {
 }
 
 Future<void> callFileEntrypoints() async {
-  ${calls.join("")}
+  final entrypoints = <Future<void> Function({bool skipRustLibInit})>[
+    ${entrypoints.join("")}
+  ];
+
+  for (final entrypoint in entrypoints) {
+    await entrypoint(skipRustLibInit: true);
+  }
 }
   ''';
 
   await _writeToFile(dartRoot, 'test/dart_valgrind_test_entrypoint.dart', code);
-}
-
-String _generateFileEntrypointCall(String file) {
-  final name = path.basenameWithoutExtension(file);
-  final oneLine = 'await $name.main(skipRustLibInit: true);';
-  // TODO: Call an automatic formatter for this generated snippet instead of
-  // hand-writing this ad hoc wrapping.
-  if ('  $oneLine'.length <= 80) {
-    return '$oneLine\n';
-  }
-
-  return '''
-await $name.main(
-  skipRustLibInit: true,
-);
-''';
 }
 
 Future<void> _writeToFile(
