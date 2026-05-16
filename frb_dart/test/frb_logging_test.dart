@@ -40,41 +40,29 @@ void main() {
     }
   });
 
-  test('init rejects duplicate initialization until disposed', () async {
-    final firstController = StreamController<_RustLogRecord>();
-    final secondController = StreamController<_RustLogRecord>();
-    final thirdController = StreamController<_RustLogRecord>();
+  test('init rejects duplicate initialization until disposed', () {
+    kFrbDartLogging.init<_RustLogRecord>(
+      rustLogStream: const Stream.empty(),
+      setupDefaultOutput: false,
+      mapRecord: _mapRustLogRecord,
+    );
 
-    try {
-      kFrbDartLogging.init<_RustLogRecord>(
-        rustLogStream: firstController.stream,
+    expect(
+      () => kFrbDartLogging.init<_RustLogRecord>(
+        rustLogStream: const Stream.empty(),
         setupDefaultOutput: false,
         mapRecord: _mapRustLogRecord,
-      );
+      ),
+      throwsA(isA<StateError>()),
+    );
 
-      expect(
-        () => kFrbDartLogging.init<_RustLogRecord>(
-          rustLogStream: secondController.stream,
-          setupDefaultOutput: false,
-          mapRecord: _mapRustLogRecord,
-        ),
-        throwsA(isA<StateError>()),
-      );
+    kFrbDartLogging.dispose();
 
-      kFrbDartLogging.dispose();
-
-      kFrbDartLogging.init<_RustLogRecord>(
-        rustLogStream: thirdController.stream,
-        setupDefaultOutput: false,
-        mapRecord: _mapRustLogRecord,
-      );
-    } finally {
-      kFrbDartLogging.dispose();
-      await pumpEventQueue();
-      await firstController.close();
-      await secondController.close();
-      await thirdController.close();
-    }
+    kFrbDartLogging.init<_RustLogRecord>(
+      rustLogStream: const Stream.empty(),
+      setupDefaultOutput: false,
+      mapRecord: _mapRustLogRecord,
+    );
   });
 
   test('Rust log records are forwarded to Dart logging', () async {
