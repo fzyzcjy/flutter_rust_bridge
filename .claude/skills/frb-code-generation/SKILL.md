@@ -31,6 +31,18 @@ flutter_rust_bridge requires code generation when Rust APIs change. This skill m
 
 ## Important Rules
 
+### Integrate Template Drift
+
+If a diff touches Flutter integrate example outputs, platform scaffolds, or copied `cargokit` files under `frb_example/**`, check whether the real source of truth should also change under `frb_codegen/assets/integration_template/`.
+
+Do not submit only downstream integrate output changes when the behavior belongs in the template. Update the template first, then run:
+
+```bash
+./frb_internal precommit-integrate
+```
+
+Treat `frb_codegen/assets/integration_template/**/cargokit` as the source of truth for copied `cargokit` output. If the actual bug belongs inside the external `cargokit` submodule, read the `frb-cargokit` skill before deciding whether to patch the submodule and update its pointer.
+
 For CI diagnosis rules about generated-file format/lint failures, repeated package-level `Generate` drift, or `Generate :: FRB Codegen :: Command Integrate` failures, you MUST read `frb-fix-ci` first. This skill is for command selection, not CI failure-propagation diagnosis.
 
 For `pure_dart` / `pure_dart_pde` generation issues, treat `frb_example/pure_dart` as the upstream source and `frb_example/pure_dart_pde` as the derived copy. See `frb-fix-ci` for the CI diagnosis workflow.
