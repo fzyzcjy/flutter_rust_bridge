@@ -139,6 +139,10 @@ impl FrbAttributes {
         !self.any_eq(&FrbAttribute::NonEq)
     }
 
+    pub(crate) fn dart_collection_deep_equality(&self) -> bool {
+        self.any_eq(&FrbAttribute::DartCollectionDeepEquality)
+    }
+
     pub(crate) fn positional(&self) -> bool {
         self.any_eq(&FrbAttribute::Positional)
     }
@@ -285,6 +289,7 @@ fn parse_syn_attribute(raw: &str) -> anyhow::Result<Attribute> {
 }
 
 mod frb_keyword {
+    syn::custom_keyword!(dart_collection_deep_equality);
     syn::custom_keyword!(mirror);
     syn::custom_keyword!(non_final);
     syn::custom_keyword!(sync);
@@ -339,6 +344,7 @@ impl Parse for FrbAttributesInner {
 // Alphabetical order
 #[derive(Eq, PartialEq, Debug, Clone)]
 enum FrbAttribute {
+    DartCollectionDeepEquality,
     Dart2Rust(FrbAttributeSerDes),
     DartCode(FrbAttributeDartCode),
     Default(FrbAttributeDefaultValue),
@@ -420,6 +426,14 @@ impl Parse for FrbAttribute {
             .or_else(|| parse_keyword::<external, _>(input, &lookahead, external, External))
             .or_else(|| {
                 parse_keyword::<type_64bit_int, _>(input, &lookahead, type_64bit_int, Type64bitInt)
+            })
+            .or_else(|| {
+                parse_keyword::<dart_collection_deep_equality, _>(
+                    input,
+                    &lookahead,
+                    dart_collection_deep_equality,
+                    DartCollectionDeepEquality,
+                )
             })
             // .or_else(|| {
             //     parse_keyword::<generate_implementor_enum, _>(
@@ -857,6 +871,14 @@ mod tests {
     #[test]
     fn test_init() {
         simple_keyword_tester("init", FrbAttribute::Init);
+    }
+
+    #[test]
+    fn test_dart_collection_deep_equality() {
+        simple_keyword_tester(
+            "dart_collection_deep_equality",
+            FrbAttribute::DartCollectionDeepEquality,
+        );
     }
 
     #[test]

@@ -13,6 +13,7 @@ import 'api/async_spawn_test.dart' as async_spawn_test;
 import 'api/attribute_test.dart' as attribute_test;
 import 'api/casted_primitive_test.dart' as casted_primitive_test;
 import 'api/chrono_type_test.dart' as chrono_type_test;
+import 'api/collection_equality_test.dart' as collection_equality_test;
 import 'api/comment_test.dart' as comment_test;
 import 'api/constructor_test.dart' as constructor_test;
 import 'api/custom_ser_des_test.dart' as custom_ser_des_test;
@@ -75,6 +76,10 @@ import 'api/pseudo_manual/chrono_type_twin_rust_async_test.dart'
     as chrono_type_twin_rust_async_test;
 import 'api/pseudo_manual/chrono_type_twin_sync_test.dart'
     as chrono_type_twin_sync_test;
+import 'api/pseudo_manual/collection_equality_twin_rust_async_test.dart'
+    as collection_equality_twin_rust_async_test;
+import 'api/pseudo_manual/collection_equality_twin_sync_test.dart'
+    as collection_equality_twin_sync_test;
 import 'api/pseudo_manual/comment_twin_rust_async_test.dart'
     as comment_twin_rust_async_test;
 import 'api/pseudo_manual/comment_twin_sync_test.dart'
@@ -219,6 +224,7 @@ Future<void> callFileEntrypoints() async {
     attribute_test.main,
     casted_primitive_test.main,
     chrono_type_test.main,
+    collection_equality_test.main,
     comment_test.main,
     constructor_test.main,
     custom_ser_des_test.main,
@@ -269,6 +275,8 @@ Future<void> callFileEntrypoints() async {
     basic_twin_sync_test.main,
     chrono_type_twin_rust_async_test.main,
     chrono_type_twin_sync_test.main,
+    collection_equality_twin_rust_async_test.main,
+    collection_equality_twin_sync_test.main,
     comment_twin_rust_async_test.main,
     comment_twin_sync_test.main,
     dart_fn_twin_rust_async_test.main,

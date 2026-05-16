@@ -325,6 +325,7 @@
   "struct_pool": {
     "crate::api/MyStruct": {
       "comments": [],
+      "dart_collection_deep_equality": false,
       "dart_metadata_raw": [],
       "fields": [],
       "generate_eq": true,

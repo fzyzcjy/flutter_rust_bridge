@@ -16,6 +16,7 @@ import 'api/attribute.dart';
 import 'api/benchmark_misc.dart';
 import 'api/casted_primitive.dart';
 import 'api/chrono_type.dart';
+import 'api/collection_equality.dart';
 import 'api/comment.dart';
 import 'api/constructor.dart';
 import 'api/custom_ser_des.dart';
@@ -97,6 +98,11 @@ import 'api/pseudo_manual/chrono_type_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/chrono_type_twin_sse.dart';
 import 'api/pseudo_manual/chrono_type_twin_sync.dart';
 import 'api/pseudo_manual/chrono_type_twin_sync_sse.dart';
+import 'api/pseudo_manual/collection_equality_twin_rust_async.dart';
+import 'api/pseudo_manual/collection_equality_twin_rust_async_sse.dart';
+import 'api/pseudo_manual/collection_equality_twin_sse.dart';
+import 'api/pseudo_manual/collection_equality_twin_sync.dart';
+import 'api/pseudo_manual/collection_equality_twin_sync_sse.dart';
 import 'api/pseudo_manual/comment_twin_rust_async.dart';
 import 'api/pseudo_manual/comment_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/comment_twin_sse.dart';
@@ -6273,6 +6279,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           dynamic raw);
 
   @protected
+  StructWithDeepCollectionEqualityTwinNormal
+      dco_decode_box_autoadd_struct_with_deep_collection_equality_twin_normal(
+          dynamic raw);
+
+  @protected
+  StructWithDeepCollectionEqualityTwinRustAsync
+      dco_decode_box_autoadd_struct_with_deep_collection_equality_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  StructWithDeepCollectionEqualityTwinRustAsyncSse
+      dco_decode_box_autoadd_struct_with_deep_collection_equality_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  StructWithDeepCollectionEqualityTwinSse
+      dco_decode_box_autoadd_struct_with_deep_collection_equality_twin_sse(
+          dynamic raw);
+
+  @protected
+  StructWithDeepCollectionEqualityTwinSync
+      dco_decode_box_autoadd_struct_with_deep_collection_equality_twin_sync(
+          dynamic raw);
+
+  @protected
+  StructWithDeepCollectionEqualityTwinSyncSse
+      dco_decode_box_autoadd_struct_with_deep_collection_equality_twin_sync_sse(
+          dynamic raw);
+
+  @protected
   StructWithEnumTwinNormal dco_decode_box_autoadd_struct_with_enum_twin_normal(
       dynamic raw);
 
@@ -6481,6 +6517,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithRustAutoOpaqueWithNonCloneData
       dco_decode_box_autoadd_struct_with_rust_auto_opaque_with_non_clone_data(
+          dynamic raw);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinNormal
+      dco_decode_box_autoadd_struct_with_shallow_collection_equality_twin_normal(
+          dynamic raw);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinRustAsync
+      dco_decode_box_autoadd_struct_with_shallow_collection_equality_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinRustAsyncSse
+      dco_decode_box_autoadd_struct_with_shallow_collection_equality_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinSse
+      dco_decode_box_autoadd_struct_with_shallow_collection_equality_twin_sse(
+          dynamic raw);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinSync
+      dco_decode_box_autoadd_struct_with_shallow_collection_equality_twin_sync(
+          dynamic raw);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinSyncSse
+      dco_decode_box_autoadd_struct_with_shallow_collection_equality_twin_sync_sse(
           dynamic raw);
 
   @protected
@@ -9303,6 +9369,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   int? dco_decode_opt_box_u_8(dynamic raw);
 
   @protected
+  List<String>? dco_decode_opt_list_String(dynamic raw);
+
+  @protected
   List<AttributeTwinNormal>? dco_decode_opt_list_attribute_twin_normal(
       dynamic raw);
 
@@ -9999,6 +10068,33 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_struct_with_dart_keyword_field_twin_sync_sse(dynamic raw);
 
   @protected
+  StructWithDeepCollectionEqualityTwinNormal
+      dco_decode_struct_with_deep_collection_equality_twin_normal(dynamic raw);
+
+  @protected
+  StructWithDeepCollectionEqualityTwinRustAsync
+      dco_decode_struct_with_deep_collection_equality_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  StructWithDeepCollectionEqualityTwinRustAsyncSse
+      dco_decode_struct_with_deep_collection_equality_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  StructWithDeepCollectionEqualityTwinSse
+      dco_decode_struct_with_deep_collection_equality_twin_sse(dynamic raw);
+
+  @protected
+  StructWithDeepCollectionEqualityTwinSync
+      dco_decode_struct_with_deep_collection_equality_twin_sync(dynamic raw);
+
+  @protected
+  StructWithDeepCollectionEqualityTwinSyncSse
+      dco_decode_struct_with_deep_collection_equality_twin_sync_sse(
+          dynamic raw);
+
+  @protected
   StructWithEnumTwinNormal dco_decode_struct_with_enum_twin_normal(dynamic raw);
 
   @protected
@@ -10198,6 +10294,34 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithRustAutoOpaqueWithNonCloneData
       dco_decode_struct_with_rust_auto_opaque_with_non_clone_data(dynamic raw);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinNormal
+      dco_decode_struct_with_shallow_collection_equality_twin_normal(
+          dynamic raw);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinRustAsync
+      dco_decode_struct_with_shallow_collection_equality_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinRustAsyncSse
+      dco_decode_struct_with_shallow_collection_equality_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinSse
+      dco_decode_struct_with_shallow_collection_equality_twin_sse(dynamic raw);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinSync
+      dco_decode_struct_with_shallow_collection_equality_twin_sync(dynamic raw);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinSyncSse
+      dco_decode_struct_with_shallow_collection_equality_twin_sync_sse(
+          dynamic raw);
 
   @protected
   StructWithTwoFieldTwinNormal dco_decode_struct_with_two_field_twin_normal(
@@ -15776,6 +15900,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  StructWithDeepCollectionEqualityTwinNormal
+      sse_decode_box_autoadd_struct_with_deep_collection_equality_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithDeepCollectionEqualityTwinRustAsync
+      sse_decode_box_autoadd_struct_with_deep_collection_equality_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithDeepCollectionEqualityTwinRustAsyncSse
+      sse_decode_box_autoadd_struct_with_deep_collection_equality_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithDeepCollectionEqualityTwinSse
+      sse_decode_box_autoadd_struct_with_deep_collection_equality_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithDeepCollectionEqualityTwinSync
+      sse_decode_box_autoadd_struct_with_deep_collection_equality_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithDeepCollectionEqualityTwinSyncSse
+      sse_decode_box_autoadd_struct_with_deep_collection_equality_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
   StructWithEnumTwinNormal sse_decode_box_autoadd_struct_with_enum_twin_normal(
       SseDeserializer deserializer);
 
@@ -15995,6 +16149,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithRustAutoOpaqueWithNonCloneData
       sse_decode_box_autoadd_struct_with_rust_auto_opaque_with_non_clone_data(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinNormal
+      sse_decode_box_autoadd_struct_with_shallow_collection_equality_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinRustAsync
+      sse_decode_box_autoadd_struct_with_shallow_collection_equality_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinRustAsyncSse
+      sse_decode_box_autoadd_struct_with_shallow_collection_equality_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinSse
+      sse_decode_box_autoadd_struct_with_shallow_collection_equality_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinSync
+      sse_decode_box_autoadd_struct_with_shallow_collection_equality_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinSyncSse
+      sse_decode_box_autoadd_struct_with_shallow_collection_equality_twin_sync_sse(
           SseDeserializer deserializer);
 
   @protected
@@ -19221,6 +19405,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   int? sse_decode_opt_box_u_8(SseDeserializer deserializer);
 
   @protected
+  List<String>? sse_decode_opt_list_String(SseDeserializer deserializer);
+
+  @protected
   List<AttributeTwinNormal>? sse_decode_opt_list_attribute_twin_normal(
       SseDeserializer deserializer);
 
@@ -20015,6 +20202,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  StructWithDeepCollectionEqualityTwinNormal
+      sse_decode_struct_with_deep_collection_equality_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithDeepCollectionEqualityTwinRustAsync
+      sse_decode_struct_with_deep_collection_equality_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithDeepCollectionEqualityTwinRustAsyncSse
+      sse_decode_struct_with_deep_collection_equality_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithDeepCollectionEqualityTwinSse
+      sse_decode_struct_with_deep_collection_equality_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithDeepCollectionEqualityTwinSync
+      sse_decode_struct_with_deep_collection_equality_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithDeepCollectionEqualityTwinSyncSse
+      sse_decode_struct_with_deep_collection_equality_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
   StructWithEnumTwinNormal sse_decode_struct_with_enum_twin_normal(
       SseDeserializer deserializer);
 
@@ -20239,6 +20456,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   StructWithRustAutoOpaqueWithNonCloneData
       sse_decode_struct_with_rust_auto_opaque_with_non_clone_data(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinNormal
+      sse_decode_struct_with_shallow_collection_equality_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinRustAsync
+      sse_decode_struct_with_shallow_collection_equality_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinRustAsyncSse
+      sse_decode_struct_with_shallow_collection_equality_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinSse
+      sse_decode_struct_with_shallow_collection_equality_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinSync
+      sse_decode_struct_with_shallow_collection_equality_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  StructWithShallowCollectionEqualityTwinSyncSse
+      sse_decode_struct_with_shallow_collection_equality_twin_sync_sse(
           SseDeserializer deserializer);
 
   @protected
@@ -23321,6 +23568,28 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  JSAny cst_encode_box_autoadd_struct_with_deep_collection_equality_twin_normal(
+      StructWithDeepCollectionEqualityTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_struct_with_deep_collection_equality_twin_normal(raw);
+  }
+
+  @protected
+  JSAny
+      cst_encode_box_autoadd_struct_with_deep_collection_equality_twin_rust_async(
+          StructWithDeepCollectionEqualityTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_struct_with_deep_collection_equality_twin_rust_async(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_struct_with_deep_collection_equality_twin_sync(
+      StructWithDeepCollectionEqualityTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_struct_with_deep_collection_equality_twin_sync(raw);
+  }
+
+  @protected
   JSAny cst_encode_box_autoadd_struct_with_enum_twin_normal(
       StructWithEnumTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -23497,6 +23766,31 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       StructWithRustAutoOpaqueWithNonCloneData raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_struct_with_rust_auto_opaque_with_non_clone_data(raw);
+  }
+
+  @protected
+  JSAny
+      cst_encode_box_autoadd_struct_with_shallow_collection_equality_twin_normal(
+          StructWithShallowCollectionEqualityTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_struct_with_shallow_collection_equality_twin_normal(raw);
+  }
+
+  @protected
+  JSAny
+      cst_encode_box_autoadd_struct_with_shallow_collection_equality_twin_rust_async(
+          StructWithShallowCollectionEqualityTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_struct_with_shallow_collection_equality_twin_rust_async(
+        raw);
+  }
+
+  @protected
+  JSAny
+      cst_encode_box_autoadd_struct_with_shallow_collection_equality_twin_sync(
+          StructWithShallowCollectionEqualityTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_struct_with_shallow_collection_equality_twin_sync(raw);
   }
 
   @protected
@@ -27490,6 +27784,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  JSAny? cst_encode_opt_list_String(List<String>? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw == null ? null : cst_encode_list_String(raw);
+  }
+
+  @protected
   JSAny? cst_encode_opt_list_attribute_twin_normal(
       List<AttributeTwinNormal>? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -28425,6 +28725,45 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  JSAny cst_encode_struct_with_deep_collection_equality_twin_normal(
+      StructWithDeepCollectionEqualityTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [
+      cst_encode_list_String(raw.list),
+      cst_encode_Map_String_String_None(raw.map),
+      cst_encode_Set_String_None(raw.setValues),
+      cst_encode_opt_list_String(raw.optionalList),
+      cst_encode_list_prim_u_8_strict(raw.bytes)
+    ].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_struct_with_deep_collection_equality_twin_rust_async(
+      StructWithDeepCollectionEqualityTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [
+      cst_encode_list_String(raw.list),
+      cst_encode_Map_String_String_None(raw.map),
+      cst_encode_Set_String_None(raw.setValues),
+      cst_encode_opt_list_String(raw.optionalList),
+      cst_encode_list_prim_u_8_strict(raw.bytes)
+    ].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_struct_with_deep_collection_equality_twin_sync(
+      StructWithDeepCollectionEqualityTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [
+      cst_encode_list_String(raw.list),
+      cst_encode_Map_String_String_None(raw.map),
+      cst_encode_Set_String_None(raw.setValues),
+      cst_encode_opt_list_String(raw.optionalList),
+      cst_encode_list_prim_u_8_strict(raw.bytes)
+    ].jsify()!;
+  }
+
+  @protected
   JSAny cst_encode_struct_with_enum_twin_normal(StructWithEnumTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
@@ -28675,6 +29014,45 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     return [
       cst_encode_AutoExplicit_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerNonCloneDataRaw(
           raw.content)
+    ].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_struct_with_shallow_collection_equality_twin_normal(
+      StructWithShallowCollectionEqualityTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [
+      cst_encode_list_String(raw.list),
+      cst_encode_Map_String_String_None(raw.map),
+      cst_encode_Set_String_None(raw.setValues),
+      cst_encode_opt_list_String(raw.optionalList),
+      cst_encode_list_prim_u_8_strict(raw.bytes)
+    ].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_struct_with_shallow_collection_equality_twin_rust_async(
+      StructWithShallowCollectionEqualityTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [
+      cst_encode_list_String(raw.list),
+      cst_encode_Map_String_String_None(raw.map),
+      cst_encode_Set_String_None(raw.setValues),
+      cst_encode_opt_list_String(raw.optionalList),
+      cst_encode_list_prim_u_8_strict(raw.bytes)
+    ].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_struct_with_shallow_collection_equality_twin_sync(
+      StructWithShallowCollectionEqualityTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [
+      cst_encode_list_String(raw.list),
+      cst_encode_Map_String_String_None(raw.map),
+      cst_encode_Set_String_None(raw.setValues),
+      cst_encode_opt_list_String(raw.optionalList),
+      cst_encode_list_prim_u_8_strict(raw.bytes)
     ].jsify()!;
   }
 
@@ -35672,6 +36050,37 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       StructWithDartKeywordFieldTwinSyncSse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_struct_with_deep_collection_equality_twin_normal(
+      StructWithDeepCollectionEqualityTwinNormal self,
+      SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_box_autoadd_struct_with_deep_collection_equality_twin_rust_async(
+          StructWithDeepCollectionEqualityTwinRustAsync self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_box_autoadd_struct_with_deep_collection_equality_twin_rust_async_sse(
+          StructWithDeepCollectionEqualityTwinRustAsyncSse self,
+          SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_deep_collection_equality_twin_sse(
+      StructWithDeepCollectionEqualityTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_deep_collection_equality_twin_sync(
+      StructWithDeepCollectionEqualityTwinSync self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_box_autoadd_struct_with_deep_collection_equality_twin_sync_sse(
+          StructWithDeepCollectionEqualityTwinSyncSse self,
+          SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_struct_with_enum_twin_normal(
       StructWithEnumTwinNormal self, SseSerializer serializer);
 
@@ -35879,6 +36288,40 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_box_autoadd_struct_with_rust_auto_opaque_with_non_clone_data(
       StructWithRustAutoOpaqueWithNonCloneData self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_box_autoadd_struct_with_shallow_collection_equality_twin_normal(
+          StructWithShallowCollectionEqualityTwinNormal self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_box_autoadd_struct_with_shallow_collection_equality_twin_rust_async(
+          StructWithShallowCollectionEqualityTwinRustAsync self,
+          SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_box_autoadd_struct_with_shallow_collection_equality_twin_rust_async_sse(
+          StructWithShallowCollectionEqualityTwinRustAsyncSse self,
+          SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_shallow_collection_equality_twin_sse(
+      StructWithShallowCollectionEqualityTwinSse self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_struct_with_shallow_collection_equality_twin_sync(
+      StructWithShallowCollectionEqualityTwinSync self,
+      SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_box_autoadd_struct_with_shallow_collection_equality_twin_sync_sse(
+          StructWithShallowCollectionEqualityTwinSyncSse self,
+          SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_struct_with_two_field_twin_normal(
@@ -38962,6 +39405,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_opt_box_u_8(int? self, SseSerializer serializer);
 
   @protected
+  void sse_encode_opt_list_String(List<String>? self, SseSerializer serializer);
+
+  @protected
   void sse_encode_opt_list_attribute_twin_normal(
       List<AttributeTwinNormal>? self, SseSerializer serializer);
 
@@ -39707,6 +40153,34 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       StructWithDartKeywordFieldTwinSyncSse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_struct_with_deep_collection_equality_twin_normal(
+      StructWithDeepCollectionEqualityTwinNormal self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_deep_collection_equality_twin_rust_async(
+      StructWithDeepCollectionEqualityTwinRustAsync self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_deep_collection_equality_twin_rust_async_sse(
+      StructWithDeepCollectionEqualityTwinRustAsyncSse self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_deep_collection_equality_twin_sse(
+      StructWithDeepCollectionEqualityTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_deep_collection_equality_twin_sync(
+      StructWithDeepCollectionEqualityTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_deep_collection_equality_twin_sync_sse(
+      StructWithDeepCollectionEqualityTwinSyncSse self,
+      SseSerializer serializer);
+
+  @protected
   void sse_encode_struct_with_enum_twin_normal(
       StructWithEnumTwinNormal self, SseSerializer serializer);
 
@@ -39913,6 +40387,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_struct_with_rust_auto_opaque_with_non_clone_data(
       StructWithRustAutoOpaqueWithNonCloneData self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_shallow_collection_equality_twin_normal(
+      StructWithShallowCollectionEqualityTwinNormal self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_shallow_collection_equality_twin_rust_async(
+      StructWithShallowCollectionEqualityTwinRustAsync self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_shallow_collection_equality_twin_rust_async_sse(
+      StructWithShallowCollectionEqualityTwinRustAsyncSse self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_shallow_collection_equality_twin_sse(
+      StructWithShallowCollectionEqualityTwinSse self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_shallow_collection_equality_twin_sync(
+      StructWithShallowCollectionEqualityTwinSync self,
+      SseSerializer serializer);
+
+  @protected
+  void sse_encode_struct_with_shallow_collection_equality_twin_sync_sse(
+      StructWithShallowCollectionEqualityTwinSyncSse self,
+      SseSerializer serializer);
 
   @protected
   void sse_encode_struct_with_two_field_twin_normal(
@@ -45630,6 +46134,98 @@ class RustLibWire implements BaseWire {
               int data_len_) =>
           wasmModule
               .wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__duration_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__collection_equality__echo_struct_with_deep_collection_equality_twin_normal(
+          NativePortType port_, JSAny value) =>
+      wasmModule
+          .wire__crate__api__collection_equality__echo_struct_with_deep_collection_equality_twin_normal(
+              port_, value);
+
+  void wire__crate__api__pseudo_manual__collection_equality_twin_rust_async__echo_struct_with_deep_collection_equality_twin_rust_async(
+          NativePortType port_, JSAny value) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__collection_equality_twin_rust_async__echo_struct_with_deep_collection_equality_twin_rust_async(
+              port_, value);
+
+  void wire__crate__api__pseudo_manual__collection_equality_twin_rust_async_sse__echo_struct_with_deep_collection_equality_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__collection_equality_twin_rust_async_sse__echo_struct_with_deep_collection_equality_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__collection_equality_twin_sse__echo_struct_with_deep_collection_equality_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__collection_equality_twin_sse__echo_struct_with_deep_collection_equality_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__collection_equality_twin_sync__echo_struct_with_deep_collection_equality_twin_sync(
+              JSAny value) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__collection_equality_twin_sync__echo_struct_with_deep_collection_equality_twin_sync(
+                  value);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__collection_equality_twin_sync_sse__echo_struct_with_deep_collection_equality_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__collection_equality_twin_sync_sse__echo_struct_with_deep_collection_equality_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__collection_equality__echo_struct_with_shallow_collection_equality_twin_normal(
+          NativePortType port_, JSAny value) =>
+      wasmModule
+          .wire__crate__api__collection_equality__echo_struct_with_shallow_collection_equality_twin_normal(
+              port_, value);
+
+  void wire__crate__api__pseudo_manual__collection_equality_twin_rust_async__echo_struct_with_shallow_collection_equality_twin_rust_async(
+          NativePortType port_, JSAny value) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__collection_equality_twin_rust_async__echo_struct_with_shallow_collection_equality_twin_rust_async(
+              port_, value);
+
+  void wire__crate__api__pseudo_manual__collection_equality_twin_rust_async_sse__echo_struct_with_shallow_collection_equality_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__collection_equality_twin_rust_async_sse__echo_struct_with_shallow_collection_equality_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__collection_equality_twin_sse__echo_struct_with_shallow_collection_equality_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__collection_equality_twin_sse__echo_struct_with_shallow_collection_equality_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__collection_equality_twin_sync__echo_struct_with_shallow_collection_equality_twin_sync(
+              JSAny value) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__collection_equality_twin_sync__echo_struct_with_shallow_collection_equality_twin_sync(
+                  value);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__collection_equality_twin_sync_sse__echo_struct_with_shallow_collection_equality_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__collection_equality_twin_sync_sse__echo_struct_with_shallow_collection_equality_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__optional__element_twin_normal_default(
@@ -67937,6 +68533,70 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__duration_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__collection_equality__echo_struct_with_deep_collection_equality_twin_normal(
+          NativePortType port_, JSAny value);
+
+  external void
+      wire__crate__api__pseudo_manual__collection_equality_twin_rust_async__echo_struct_with_deep_collection_equality_twin_rust_async(
+          NativePortType port_, JSAny value);
+
+  external void
+      wire__crate__api__pseudo_manual__collection_equality_twin_rust_async_sse__echo_struct_with_deep_collection_equality_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__collection_equality_twin_sse__echo_struct_with_deep_collection_equality_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__collection_equality_twin_sync__echo_struct_with_deep_collection_equality_twin_sync(
+          JSAny value);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__collection_equality_twin_sync_sse__echo_struct_with_deep_collection_equality_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__collection_equality__echo_struct_with_shallow_collection_equality_twin_normal(
+          NativePortType port_, JSAny value);
+
+  external void
+      wire__crate__api__pseudo_manual__collection_equality_twin_rust_async__echo_struct_with_shallow_collection_equality_twin_rust_async(
+          NativePortType port_, JSAny value);
+
+  external void
+      wire__crate__api__pseudo_manual__collection_equality_twin_rust_async_sse__echo_struct_with_shallow_collection_equality_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__collection_equality_twin_sse__echo_struct_with_shallow_collection_equality_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__collection_equality_twin_sync__echo_struct_with_shallow_collection_equality_twin_sync(
+          JSAny value);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__collection_equality_twin_sync_sse__echo_struct_with_shallow_collection_equality_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);

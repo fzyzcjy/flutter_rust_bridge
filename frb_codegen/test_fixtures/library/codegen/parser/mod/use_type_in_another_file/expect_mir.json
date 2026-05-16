@@ -139,6 +139,7 @@
   "struct_pool": {
     "crate::another_file/StructInAnotherFile": {
       "comments": [],
+      "dart_collection_deep_equality": false,
       "dart_metadata_raw": [],
       "fields": [
         {

@@ -246,7 +246,7 @@ class _$CustomEnumErrorTwinSync_OneImpl extends CustomEnumErrorTwinSync_One {
 }
 
 abstract class CustomEnumErrorTwinSync_One extends CustomEnumErrorTwinSync
-    implements InvalidType {
+    implements FrbBacktracedException {
   const factory CustomEnumErrorTwinSync_One(
       {required final String message,
       required final String backtrace}) = _$CustomEnumErrorTwinSync_OneImpl;
@@ -411,7 +411,7 @@ class _$CustomEnumErrorTwinSync_TwoImpl extends CustomEnumErrorTwinSync_Two {
 }
 
 abstract class CustomEnumErrorTwinSync_Two extends CustomEnumErrorTwinSync
-    implements InvalidType {
+    implements FrbBacktracedException {
   const factory CustomEnumErrorTwinSync_Two(
       {required final int message,
       required final String backtrace}) = _$CustomEnumErrorTwinSync_TwoImpl;
@@ -661,7 +661,7 @@ class _$CustomErrorTwinSync_Error0Impl extends CustomErrorTwinSync_Error0 {
 }
 
 abstract class CustomErrorTwinSync_Error0 extends CustomErrorTwinSync
-    implements InvalidType {
+    implements FrbBacktracedException {
   const factory CustomErrorTwinSync_Error0(
       {required final String e,
       required final String backtrace}) = _$CustomErrorTwinSync_Error0Impl;
@@ -826,7 +826,7 @@ class _$CustomErrorTwinSync_Error1Impl extends CustomErrorTwinSync_Error1 {
 }
 
 abstract class CustomErrorTwinSync_Error1 extends CustomErrorTwinSync
-    implements InvalidType {
+    implements FrbBacktracedException {
   const factory CustomErrorTwinSync_Error1(
       {required final int e,
       required final String backtrace}) = _$CustomErrorTwinSync_Error1Impl;

@@ -6,6 +6,7 @@ pub mod attribute;
 pub mod benchmark_misc;
 pub mod casted_primitive;
 pub mod chrono_type;
+pub mod collection_equality;
 pub mod comment;
 #[cfg(target_os = "unknown")]
 pub mod conditionally_compiled_module;
