@@ -1,3 +1,5 @@
+// FRB_INTERNAL_GENERATOR: {"addCode": "import 'package:frb_example_pure_dart/src/rust/api/collection_equality.dart';"}
+
 import 'dart:typed_data';
 
 import 'package:frb_example_pure_dart/src/rust/api/collection_equality.dart';

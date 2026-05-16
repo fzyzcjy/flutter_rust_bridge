@@ -2,6 +2,8 @@
 // and is auto-generated from `collection_equality_test.dart` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
+import 'package:frb_example_pure_dart/src/rust/api/collection_equality.dart'; // FRB_INTERNAL_GENERATOR: {"addCode": "import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/collection_equality_twin_sse.dart';"}
+
 import 'dart:typed_data';
 
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/collection_equality_twin_sse.dart';
