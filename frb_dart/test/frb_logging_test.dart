@@ -9,6 +9,37 @@ void main() {
     await kFrbDartLogging.dispose();
   });
 
+  test('dispose without init is a no-op', () async {
+    await kFrbDartLogging.dispose();
+  });
+
+  test('dispose invokes Rust logger cleanup callback', () async {
+    final controller = StreamController<_RustLogRecord>();
+    var didDisposeRustLogger = false;
+
+    try {
+      kFrbDartLogging.init<_RustLogRecord>(
+        rustLogStream: controller.stream,
+        setupDefaultOutput: false,
+        disposeRustLogger: () => didDisposeRustLogger = true,
+        mapRecord: (record) => FrbLogRecordData(
+          level: record.level,
+          message: record.message,
+          target: record.target,
+          modulePath: null,
+          file: null,
+          line: null,
+        ),
+      );
+
+      await kFrbDartLogging.dispose();
+
+      expect(didDisposeRustLogger, isTrue);
+    } finally {
+      await controller.close();
+    }
+  });
+
   test('Rust log records are forwarded to Dart logging', () async {
     final controller = StreamController<_RustLogRecord>();
     final receivedRecords = <LogRecord>[];

@@ -196,11 +196,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   ///
   /// The call to this function is optional, since flutter_rust_bridge (and everything else)
   /// is automatically disposed when the app stops.
-  static Future<void> dispose() async {
-    frbInternalDisposeLogger();
-    await kFrbDartLogging.dispose();
-    instance.disposeImpl();
-  }
+  static Future<void> dispose() => instance.disposeImpl();
 
   @override
   ApiImplConstructor<RustLibApiImpl, RustLibWire> get apiImplConstructor =>
@@ -228,6 +224,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
         line: record.line,
       ),
       setupDefaultOutput: frbInternalLoggingSetupDartLoggingOutput(),
+      disposeRustLogger: frbInternalDisposeLogger,
     );
 
     recordInitDartCodeMessage(message: 'first');

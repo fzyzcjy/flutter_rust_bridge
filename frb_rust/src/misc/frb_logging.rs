@@ -97,6 +97,7 @@ macro_rules! enable_frb_rust_to_dart_logging {
                         line: record.line,
                       ),
                       setupDefaultOutput: frbInternalLoggingSetupDartLoggingOutput(),
+                      disposeRustLogger: frbInternalDisposeLogger,
                     );
 "#)]
         pub fn frb_internal_init_logger(

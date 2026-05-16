@@ -44,15 +44,18 @@ class FrbDartLogging {
 
   StreamSubscription<Object?>? _subscription;
   StreamSubscription<LogRecord>? _defaultOutputSubscription;
+  void Function()? _disposeRustLogger;
 
   /// Connects a generated Rust log stream to the Dart `logging` package.
   void init<T>({
     required Stream<T> rustLogStream,
     required FrbLogRecordData Function(T record) mapRecord,
     bool setupDefaultOutput = true,
+    void Function()? disposeRustLogger,
   }) {
     final previousSubscription = _subscription;
 
+    _disposeRustLogger = disposeRustLogger;
     _subscription = rustLogStream.listen(
       (record) {
         final mapped = mapRecord(record);
@@ -78,9 +81,12 @@ class FrbDartLogging {
   Future<void> dispose() async {
     final subscription = _subscription;
     final defaultOutputSubscription = _defaultOutputSubscription;
+    final disposeRustLogger = _disposeRustLogger;
     _subscription = null;
     _defaultOutputSubscription = null;
+    _disposeRustLogger = null;
 
+    disposeRustLogger?.call();
     if (subscription != null) {
       unawaited(subscription.cancel());
     }
