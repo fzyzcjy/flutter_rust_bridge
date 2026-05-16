@@ -8823,6 +8823,8 @@ WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manua
                                                                                                                                                  int32_t rust_vec_len_,
                                                                                                                                                  int32_t data_len_);
 
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__init_dart_code__get_init_dart_code_messages(void);
+
 void frbgen_frb_example_pure_dart_wire__crate__api__mirror__get_message_twin_normal(int64_t port_);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__mirror_twin_rust_async__get_message_twin_rust_async(int64_t port_);
@@ -10711,6 +10713,8 @@ WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manua
                                                                                                                                        int32_t rust_vec_len_,
                                                                                                                                        int32_t data_len_);
 
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__init_dart_code__record_init_dart_code_message(struct wire_cst_list_prim_u_8_strict *message);
+
 void frbgen_frb_example_pure_dart_wire__crate__api__event_listener__register_event_listener_twin_normal(int64_t port_,
                                                                                                         struct wire_cst_list_prim_u_8_strict *listener);
 
@@ -10776,6 +10780,8 @@ WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manua
 WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__mirror_twin_sync_sse__repeat_sequence_twin_sync_sse(uint8_t *ptr_,
                                                                                                                                        int32_t rust_vec_len_,
                                                                                                                                        int32_t data_len_);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__init_dart_code__request_init_dart_code_message(int64_t port_);
 
 void frbgen_frb_example_pure_dart_wire__crate__api__array__return_boxed_feed_id_twin_normal(int64_t port_,
                                                                                             struct wire_cst_list_prim_u_8_strict *id);
@@ -16719,6 +16725,9 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_simple_trait_fn_receiver_borrow_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_simple_trait_fn_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__impl_trait__StructTwoWithTraitTwinNormal_simple_trait_fn_with_default_impl_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__init_dart_code__get_init_dart_code_messages);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__init_dart_code__record_init_dart_code_message);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__init_dart_code__request_init_dart_code_message);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__inside_macro__another_macro_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__inside_macro__func_macro_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__lifetimeable__Lifetimeable_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerLtNestedTypeWithLifetimeTwinNormalstatic_greet_borrow_mut_self_twin_normal);
