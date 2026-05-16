@@ -11,6 +11,7 @@ concurrency:
 jobs:
   precommit_autofix:
     name: Generate precommit autofix patch
+    if: false
     runs-on: ubuntu-latest
     permissions:
       contents: read
