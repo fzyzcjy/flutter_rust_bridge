@@ -24,7 +24,6 @@ jobs:
   # ref https://docusaurus.io/docs/deployment#triggering-deployment-with-github-actions
   deploy_website:
     name: 'Deploy :: Website'
-    if: false
     runs-on: ubuntu-latest
 
     steps:
@@ -68,7 +67,6 @@ jobs:
 
   lint_rust_primary:
     name: 'Lint :: Rust :: Primary'
-    if: false
     runs-on: ubuntu-latest
 
     steps:
@@ -97,7 +95,6 @@ jobs:
 
   lint_dart_primary:
     name: 'Lint :: Dart :: Primary'
-    if: false
     runs-on: ubuntu-latest
 
     steps:
@@ -118,7 +115,6 @@ jobs:
 
   lint_rust_feature_flag:
     name: 'Lint :: Rust :: Feature flag'
-    if: false
     runs-on: ubuntu-latest
 
     steps:
@@ -174,7 +170,6 @@ jobs:
 
   generate_run_frb_codegen_command_generate:
     name: 'Generate :: FRB Codegen :: Command Generate'
-    if: false
     runs-on: ${{ matrix.image }}
 
     strategy:
@@ -233,7 +228,6 @@ jobs:
 
   generate_run_frb_codegen_command_integrate:
     name: 'Generate :: FRB Codegen :: Command Integrate'
-    if: false
     runs-on: ${{ matrix.image }}
     env:
       RUST_LOG: debug
@@ -279,7 +273,6 @@ jobs:
 
   generate_internal:
     name: 'Generate :: Internal'
-    if: false
     runs-on: ubuntu-latest
 
     steps:
@@ -315,7 +308,6 @@ jobs:
 
   bench_dart_native:
     name: 'Bench :: Dart :: Native'
-    if: false
     runs-on: ${{ matrix.image }}
     strategy:
       fail-fast: false
@@ -354,7 +346,7 @@ jobs:
     name: 'Bench :: Upload'
     runs-on: ubuntu-latest
     # NOTE Even if some previous jobs failed, we still want partial info
-    if: false
+    if: ${{ always() && !cancelled() }}
     needs:
       # NOTE We do this to ensure bench upload *after* deploy website.
       # Otherwise, if they are run concurrently, they can push to git at the same time, causing failure for one of them
@@ -397,8 +389,20 @@ jobs:
       fail-fast: false
       matrix:
         info:
+          - image: windows-2025
+            target: windows
           - image: windows-11-arm
             target: windows
+          - image: macos-15-intel
+            target: macos
+          - image: ubuntu-latest
+            target: linux
+          - image: ubuntu-latest
+            target: android-aab
+          - image: ubuntu-latest
+            target: android-apk
+          - image: macos-15-intel
+            target: ios
 
     steps:
       # setup
@@ -429,7 +433,6 @@ jobs:
 
   test_mimic_quickstart:
     name: 'Test :: MimicQuickstart'
-    if: false
     runs-on: ${{ matrix.image }}
     strategy:
       fail-fast: false
@@ -512,7 +515,6 @@ jobs:
 
   test_rust:
     name: 'Test :: Rust'
-    if: false
     runs-on: ${{ matrix.info.image }}
     strategy:
       fail-fast: false
@@ -565,7 +567,6 @@ jobs:
 
   test_dart_native:
     name: 'Test :: Dart :: Native'
-    if: false
     runs-on: ${{ matrix.image }}
     strategy:
       fail-fast: false
@@ -620,7 +621,6 @@ jobs:
 
   test_dart_web:
     name: 'Test :: Dart :: Web'
-    if: false
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -675,7 +675,6 @@ jobs:
 
   test_dart_valgrind:
     name: 'Test :: Dart :: Valgrind'
-    if: false
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -709,7 +708,6 @@ jobs:
 
   test_dart_sanitizer:
     name: 'Test :: Dart :: Sanitizer'
-    if: false
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -824,7 +822,6 @@ jobs:
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
   test_flutter_native_ios:
     name: 'Test :: Flutter :: Native:: iOS'
-    if: false
     runs-on: macos-latest
     strategy:
       fail-fast: false
@@ -865,7 +862,6 @@ jobs:
 
   test_flutter_native_desktop:
     name: 'Test :: Flutter :: Native:: ${{ matrix.info.platform }} (${{ matrix.info.package }})'
-    if: false
     runs-on: ${{ matrix.info.image }}
     strategy:
       fail-fast: false
@@ -948,7 +944,6 @@ jobs:
 
   test_flutter_web:
     name: 'Test :: Flutter :: Web'
-    if: false
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -1008,7 +1003,7 @@ jobs:
     name: 'Misc :: Codecov'
     runs-on: ubuntu-latest
     # NOTE Even if some previous jobs failed, we still want partial info
-    if: false
+    if: ${{ always() && !cancelled() }}
     # NOTE need to depend on *all* jobs that may generate codecov artifacts
     needs:
       - generate_run_frb_codegen_command_generate
