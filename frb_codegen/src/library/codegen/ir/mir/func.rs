@@ -25,6 +25,8 @@ pub struct MirFunc {
     pub stream_dart_await: bool,
     pub rust_async: bool,
     pub initializer: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub init_dart_code: Option<String>,
     pub arg_mode: MirFuncArgMode,
     pub accessor: Option<MirFuncAccessorMode>,
     pub comments: Vec<MirComment>,

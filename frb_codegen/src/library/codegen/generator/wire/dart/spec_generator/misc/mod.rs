@@ -110,15 +110,17 @@ fn generate_boilerplate(
     let execute_rust_initializers = (context.mir_pack.funcs_with_impl().iter())
         .filter(|f| f.initializer)
         .map(|f| {
-            format!(
-                "{maybe_await}api.{name}();\n",
-                maybe_await = if f.mode == MirFuncMode::Normal {
-                    "await "
-                } else {
-                    ""
-                },
-                name = f.name_dart_wire()
-            )
+            f.init_dart_code.clone().unwrap_or_else(|| {
+                format!(
+                    "{maybe_await}api.{name}();\n",
+                    maybe_await = if f.mode == MirFuncMode::Normal {
+                        "await "
+                    } else {
+                        ""
+                    },
+                    name = f.name_dart_wire()
+                )
+            })
         })
         .join("");
 
