@@ -38,6 +38,8 @@ pub use crate::lockable::{
     base::Lockable, order::LockableOrder, order_computer::lockable_compute_decode_order,
     order_info::LockableOrderInfo,
 };
+#[cfg(feature = "log")]
+pub use crate::misc::frb_logging::frb_logging_fallback_print;
 #[allow(unused)]
 pub use crate::misc::manual_impl::*;
 pub use crate::misc::version::FLUTTER_RUST_BRIDGE_RUNTIME_VERSION;
