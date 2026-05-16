@@ -222,10 +222,64 @@ impl_into_into_dart_by_self!(anyhow::Error);
 mod chrono_impls {
     use super::IntoIntoDart;
     use chrono::{Local, Utc};
-    impl_into_into_dart_by_self!(chrono::Duration);
-    impl_into_into_dart_by_self!(chrono::NaiveDateTime);
-    impl_into_into_dart_by_self!(chrono::DateTime<Local>);
-    impl_into_into_dart_by_self!(chrono::DateTime<Utc>);
+
+    impl IntoIntoDart<i64> for chrono::Duration {
+        fn into_into_dart(self) -> i64 {
+            #[cfg(not(target_family = "wasm"))]
+            {
+                self.num_microseconds()
+                    .expect("cannot get microseconds from time")
+            }
+
+            #[cfg(target_family = "wasm")]
+            {
+                self.num_milliseconds()
+            }
+        }
+    }
+
+    impl IntoIntoDart<i64> for chrono::NaiveDate {
+        fn into_into_dart(self) -> i64 {
+            self.and_hms_opt(0, 0, 0)
+                .expect("Out of range time")
+                .and_utc()
+                .into_into_dart()
+        }
+    }
+
+    impl IntoIntoDart<i64> for chrono::NaiveDateTime {
+        fn into_into_dart(self) -> i64 {
+            self.and_utc().into_into_dart()
+        }
+    }
+
+    impl IntoIntoDart<i64> for chrono::DateTime<Local> {
+        fn into_into_dart(self) -> i64 {
+            #[cfg(not(target_family = "wasm"))]
+            {
+                self.timestamp_micros()
+            }
+
+            #[cfg(target_family = "wasm")]
+            {
+                self.timestamp_millis()
+            }
+        }
+    }
+
+    impl IntoIntoDart<i64> for chrono::DateTime<Utc> {
+        fn into_into_dart(self) -> i64 {
+            #[cfg(not(target_family = "wasm"))]
+            {
+                self.timestamp_micros()
+            }
+
+            #[cfg(target_family = "wasm")]
+            {
+                self.timestamp_millis()
+            }
+        }
+    }
 }
 
 #[cfg(test)]

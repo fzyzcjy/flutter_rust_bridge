@@ -2672,7 +2672,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   DateTime dco_decode_Chrono_Local(dynamic raw);
 
   @protected
-  DateTime dco_decode_Chrono_Naive(dynamic raw);
+  DateTime dco_decode_Chrono_NaiveDate(dynamic raw);
+
+  @protected
+  DateTime dco_decode_Chrono_NaiveDateTime(dynamic raw);
 
   @protected
   DateTime dco_decode_Chrono_Utc(dynamic raw);
@@ -4885,7 +4888,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Duration dco_decode_box_autoadd_Chrono_Duration(dynamic raw);
 
   @protected
-  DateTime dco_decode_box_autoadd_Chrono_Naive(dynamic raw);
+  DateTime dco_decode_box_autoadd_Chrono_NaiveDate(dynamic raw);
+
+  @protected
+  DateTime dco_decode_box_autoadd_Chrono_NaiveDateTime(dynamic raw);
 
   @protected
   DateTime dco_decode_box_autoadd_Chrono_Utc(dynamic raw);
@@ -7779,7 +7785,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<DateTime> dco_decode_list_Chrono_Local(dynamic raw);
 
   @protected
-  List<DateTime> dco_decode_list_Chrono_Naive(dynamic raw);
+  List<DateTime> dco_decode_list_Chrono_NaiveDateTime(dynamic raw);
 
   @protected
   List<Object> dco_decode_list_DartOpaque(dynamic raw);
@@ -8887,7 +8893,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Duration? dco_decode_opt_box_autoadd_Chrono_Duration(dynamic raw);
 
   @protected
-  DateTime? dco_decode_opt_box_autoadd_Chrono_Naive(dynamic raw);
+  DateTime? dco_decode_opt_box_autoadd_Chrono_NaiveDate(dynamic raw);
+
+  @protected
+  DateTime? dco_decode_opt_box_autoadd_Chrono_NaiveDateTime(dynamic raw);
 
   @protected
   DateTime? dco_decode_opt_box_autoadd_Chrono_Utc(dynamic raw);
@@ -11986,7 +11995,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   DateTime sse_decode_Chrono_Local(SseDeserializer deserializer);
 
   @protected
-  DateTime sse_decode_Chrono_Naive(SseDeserializer deserializer);
+  DateTime sse_decode_Chrono_NaiveDate(SseDeserializer deserializer);
+
+  @protected
+  DateTime sse_decode_Chrono_NaiveDateTime(SseDeserializer deserializer);
 
   @protected
   DateTime sse_decode_Chrono_Utc(SseDeserializer deserializer);
@@ -14196,7 +14208,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Duration sse_decode_box_autoadd_Chrono_Duration(SseDeserializer deserializer);
 
   @protected
-  DateTime sse_decode_box_autoadd_Chrono_Naive(SseDeserializer deserializer);
+  DateTime sse_decode_box_autoadd_Chrono_NaiveDate(
+      SseDeserializer deserializer);
+
+  @protected
+  DateTime sse_decode_box_autoadd_Chrono_NaiveDateTime(
+      SseDeserializer deserializer);
 
   @protected
   DateTime sse_decode_box_autoadd_Chrono_Utc(SseDeserializer deserializer);
@@ -17472,7 +17489,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<DateTime> sse_decode_list_Chrono_Local(SseDeserializer deserializer);
 
   @protected
-  List<DateTime> sse_decode_list_Chrono_Naive(SseDeserializer deserializer);
+  List<DateTime> sse_decode_list_Chrono_NaiveDateTime(
+      SseDeserializer deserializer);
 
   @protected
   List<Object> sse_decode_list_DartOpaque(SseDeserializer deserializer);
@@ -18749,7 +18767,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
-  DateTime? sse_decode_opt_box_autoadd_Chrono_Naive(
+  DateTime? sse_decode_opt_box_autoadd_Chrono_NaiveDate(
+      SseDeserializer deserializer);
+
+  @protected
+  DateTime? sse_decode_opt_box_autoadd_Chrono_NaiveDateTime(
       SseDeserializer deserializer);
 
   @protected
@@ -20728,7 +20750,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  JSAny cst_encode_Chrono_Naive(DateTime raw) {
+  JSAny cst_encode_Chrono_NaiveDate(DateTime raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_i_64(BigInt.from(raw.millisecondsSinceEpoch));
+  }
+
+  @protected
+  JSAny cst_encode_Chrono_NaiveDateTime(DateTime raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_i_64(BigInt.from(raw.millisecondsSinceEpoch));
   }
@@ -21996,9 +22024,15 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  JSAny cst_encode_box_autoadd_Chrono_Naive(DateTime raw) {
+  JSAny cst_encode_box_autoadd_Chrono_NaiveDate(DateTime raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return cst_encode_Chrono_Naive(raw);
+    return cst_encode_Chrono_NaiveDate(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_Chrono_NaiveDateTime(DateTime raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_Chrono_NaiveDateTime(raw);
   }
 
   @protected
@@ -25096,7 +25130,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_Chrono_Utc(raw.utc),
       cst_encode_Chrono_Local(raw.local),
       cst_encode_Chrono_Duration(raw.duration),
-      cst_encode_Chrono_Naive(raw.naive)
+      cst_encode_Chrono_NaiveDate(raw.naiveDate),
+      cst_encode_Chrono_NaiveDateTime(raw.naiveDateTime)
     ].jsify()!;
   }
 
@@ -25108,7 +25143,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_Chrono_Utc(raw.utc),
       cst_encode_Chrono_Local(raw.local),
       cst_encode_Chrono_Duration(raw.duration),
-      cst_encode_Chrono_Naive(raw.naive)
+      cst_encode_Chrono_NaiveDate(raw.naiveDate),
+      cst_encode_Chrono_NaiveDateTime(raw.naiveDateTime)
     ].jsify()!;
   }
 
@@ -25119,7 +25155,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_Chrono_Utc(raw.utc),
       cst_encode_Chrono_Local(raw.local),
       cst_encode_Chrono_Duration(raw.duration),
-      cst_encode_Chrono_Naive(raw.naive)
+      cst_encode_Chrono_NaiveDate(raw.naiveDate),
+      cst_encode_Chrono_NaiveDateTime(raw.naiveDateTime)
     ].jsify()!;
   }
 
@@ -25437,9 +25474,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  JSAny cst_encode_list_Chrono_Naive(List<DateTime> raw) {
+  JSAny cst_encode_list_Chrono_NaiveDateTime(List<DateTime> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.map(cst_encode_Chrono_Naive).toList().jsify()!;
+    return raw.map(cst_encode_Chrono_NaiveDateTime).toList().jsify()!;
   }
 
   @protected
@@ -26943,9 +26980,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  JSAny? cst_encode_opt_box_autoadd_Chrono_Naive(DateTime? raw) {
+  JSAny? cst_encode_opt_box_autoadd_Chrono_NaiveDate(DateTime? raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw == null ? null : cst_encode_box_autoadd_Chrono_Naive(raw);
+    return raw == null ? null : cst_encode_box_autoadd_Chrono_NaiveDate(raw);
+  }
+
+  @protected
+  JSAny? cst_encode_opt_box_autoadd_Chrono_NaiveDateTime(DateTime? raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw == null
+        ? null
+        : cst_encode_box_autoadd_Chrono_NaiveDateTime(raw);
   }
 
   @protected
@@ -28717,7 +28762,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_opt_box_autoadd_Chrono_Utc(raw.dt),
-      cst_encode_opt_box_autoadd_Chrono_Naive(raw.dt2),
+      cst_encode_opt_box_autoadd_Chrono_NaiveDateTime(raw.dt2),
+      cst_encode_opt_box_autoadd_Chrono_NaiveDate(raw.da),
       cst_encode_opt_box_autoadd_Chrono_Duration(raw.du)
     ].jsify()!;
   }
@@ -28727,7 +28773,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_opt_box_autoadd_Chrono_Utc(raw.dt),
-      cst_encode_opt_box_autoadd_Chrono_Naive(raw.dt2),
+      cst_encode_opt_box_autoadd_Chrono_NaiveDateTime(raw.dt2),
+      cst_encode_opt_box_autoadd_Chrono_NaiveDate(raw.da),
       cst_encode_opt_box_autoadd_Chrono_Duration(raw.du)
     ].jsify()!;
   }
@@ -28737,7 +28784,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [
       cst_encode_opt_box_autoadd_Chrono_Utc(raw.dt),
-      cst_encode_opt_box_autoadd_Chrono_Naive(raw.dt2),
+      cst_encode_opt_box_autoadd_Chrono_NaiveDateTime(raw.dt2),
+      cst_encode_opt_box_autoadd_Chrono_NaiveDate(raw.da),
       cst_encode_opt_box_autoadd_Chrono_Duration(raw.du)
     ].jsify()!;
   }
@@ -31903,7 +31951,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_Chrono_Local(DateTime self, SseSerializer serializer);
 
   @protected
-  void sse_encode_Chrono_Naive(DateTime self, SseSerializer serializer);
+  void sse_encode_Chrono_NaiveDate(DateTime self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Chrono_NaiveDateTime(DateTime self, SseSerializer serializer);
 
   @protected
   void sse_encode_Chrono_Utc(DateTime self, SseSerializer serializer);
@@ -34187,7 +34238,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       Duration self, SseSerializer serializer);
 
   @protected
-  void sse_encode_box_autoadd_Chrono_Naive(
+  void sse_encode_box_autoadd_Chrono_NaiveDate(
+      DateTime self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_Chrono_NaiveDateTime(
       DateTime self, SseSerializer serializer);
 
   @protected
@@ -37249,7 +37304,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       List<DateTime> self, SseSerializer serializer);
 
   @protected
-  void sse_encode_list_Chrono_Naive(
+  void sse_encode_list_Chrono_NaiveDateTime(
       List<DateTime> self, SseSerializer serializer);
 
   @protected
@@ -38492,7 +38547,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       Duration? self, SseSerializer serializer);
 
   @protected
-  void sse_encode_opt_box_autoadd_Chrono_Naive(
+  void sse_encode_opt_box_autoadd_Chrono_NaiveDate(
+      DateTime? self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_opt_box_autoadd_Chrono_NaiveDateTime(
       DateTime? self, SseSerializer serializer);
 
   @protected
@@ -54060,6 +54119,50 @@ class RustLibWire implements BaseWire {
       wasmModule
           .wire__crate__api__misc_no_twin_example_a__my_struct_with_sync_sync(
               port_, that);
+
+  void wire__crate__api__chrono_type__naivedate_twin_normal(
+          NativePortType port_, JSAny d) =>
+      wasmModule.wire__crate__api__chrono_type__naivedate_twin_normal(port_, d);
+
+  void wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__naivedate_twin_rust_async(
+          NativePortType port_, JSAny d) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__naivedate_twin_rust_async(
+              port_, d);
+
+  void wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__naivedate_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__naivedate_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__chrono_type_twin_sse__naivedate_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__chrono_type_twin_sse__naivedate_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__chrono_type_twin_sync__naivedate_twin_sync(
+              JSAny d) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__chrono_type_twin_sync__naivedate_twin_sync(
+                  d);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__naivedate_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__naivedate_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__chrono_type__naivedatetime_twin_normal(
           NativePortType port_, JSAny d) =>
@@ -73750,6 +73853,37 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external void
       wire__crate__api__misc_no_twin_example_a__my_struct_with_sync_sync(
           NativePortType port_, JSAny that);
+
+  external void wire__crate__api__chrono_type__naivedate_twin_normal(
+      NativePortType port_, JSAny d);
+
+  external void
+      wire__crate__api__pseudo_manual__chrono_type_twin_rust_async__naivedate_twin_rust_async(
+          NativePortType port_, JSAny d);
+
+  external void
+      wire__crate__api__pseudo_manual__chrono_type_twin_rust_async_sse__naivedate_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__chrono_type_twin_sse__naivedate_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__chrono_type_twin_sync__naivedate_twin_sync(
+          JSAny d);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__chrono_type_twin_sync_sse__naivedate_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
 
   external void wire__crate__api__chrono_type__naivedatetime_twin_normal(
       NativePortType port_, JSAny d);
