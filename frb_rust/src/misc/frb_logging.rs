@@ -86,6 +86,8 @@ macro_rules! enable_frb_rust_to_dart_logging {
 
             log::set_logger(Box::leak(Box::new(FrbDartLogger { sink })))
                 .map(|()| log::set_max_level(max_level))
+                // This initializer is expected to run only once. If a second intentional
+                // initialization use case appears, please open an issue to discuss it.
                 .expect("FRB logging should only be initialized once");
 
             let previous_hook = std::panic::take_hook();
@@ -108,11 +110,13 @@ macro_rules! enable_frb_rust_to_dart_logging {
         }
 
         #[doc(hidden)]
+        #[flutter_rust_bridge::frb(sync)]
         pub fn frb_logging_max_level() -> String {
             $max_level.to_string()
         }
 
         #[doc(hidden)]
+        #[flutter_rust_bridge::frb(sync)]
         pub fn frb_logging_setup_dart_logging_output() -> bool {
             $setup_dart_logging_output
         }
