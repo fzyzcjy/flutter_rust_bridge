@@ -34,10 +34,11 @@ Before creating a PR, ensure generated code is up to date and lint passes.
 ## Quick Checklist
 
 1. [ ] **REQUIRED:** Read `frb-code-generation` skill, run commands if needed
-2. [ ] **REQUIRED:** Read `frb-lint` skill, run `./frb_internal lint --fix`
-3. [ ] (Optional) Read `frb-test` skill, run relevant tests
-4. [ ] Commit all changes
-5. [ ] Push and create PR
+2. [ ] **REQUIRED for integrate output diffs:** If the PR changes Flutter integrate example outputs, platform scaffolds, or copied `cargokit` files under `frb_example/**`, confirm whether `frb_codegen/assets/integration_template/` is the source that should change, then run `./frb_internal precommit-integrate`
+3. [ ] **REQUIRED:** Read `frb-lint` skill, run `./frb_internal lint --fix`
+4. [ ] (Optional) Read `frb-test` skill, run relevant tests
+5. [ ] Commit all changes
+6. [ ] Push and create PR
 
 ## What CI Will Do
 
@@ -49,6 +50,8 @@ CI automatically runs:
 Run lint locally to avoid CI failures. Tests are optional locally.
 
 If your PR fixes Flutter integrate example outputs and the real bug is inside the embedded `cargokit` submodule, do not stop at copied example files. Push the `cargokit` fix to `fzyzcjy/cargokit` and update the submodule ref in this repo before pushing the PR branch.
+
+If the PR changes integrate-generated example output but not `frb_codegen/assets/integration_template/`, explicitly verify that the output-only change is intentional. Most integrate scaffold behavior should be fixed in the template and regenerated, not patched only in `frb_example/**`.
 
 ## Related Skills
 
