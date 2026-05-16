@@ -65,6 +65,7 @@ fn general_list_maybe_extra_pointer_indirection(mir: &MirTypeGeneralList) -> &'s
             | Delegate(MirTypeDelegate::String)
             | Delegate(MirTypeDelegate::StreamSink(_))
             | Delegate(MirTypeDelegate::Uuid)
+            | Delegate(MirTypeDelegate::SerdeJsonValue)
             | MirType::PrimitiveList(_)
     ) {
         "*mut "
