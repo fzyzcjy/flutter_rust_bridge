@@ -24,6 +24,9 @@ bool frbLoggingSetupDartLoggingOutput() =>
 Future<void> emitLogMessage() =>
     RustLib.instance.api.crateApiFrbLoggingEmitLogMessage();
 
+Future<void> printToConsoleSmokeTest() =>
+    RustLib.instance.api.crateApiFrbLoggingPrintToConsoleSmokeTest();
+
 class FrbLogRecord {
   final String level;
   final String message;

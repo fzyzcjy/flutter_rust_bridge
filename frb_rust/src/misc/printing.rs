@@ -36,23 +36,27 @@ pub fn print_to_console(message: &str) {
 
 #[cfg(target_os = "android")]
 fn print_to_console_android(message: &str) {
-    use std::ffi::CString;
-    use std::os::raw::{c_char, c_int};
+    print_to_console_android_impl(message);
+}
 
-    const ANDROID_LOG_ERROR: c_int = 6;
+#[cfg(all(target_os = "android", feature = "user-utils", feature = "log"))]
+fn print_to_console_android_impl(message: &str) {
+    let record = log::Record::builder()
+        .args(format_args!("{message}"))
+        .level(log::Level::Error)
+        .target("flutter_rust_bridge")
+        .module_path_static(Some("flutter_rust_bridge"))
+        .build();
 
-    #[link(name = "log")]
-    extern "C" {
-        fn __android_log_write(prio: c_int, tag: *const c_char, text: *const c_char) -> c_int;
-    }
+    android_logger::log(&record);
+}
 
-    let tag = CString::new("flutter_rust_bridge")
-        .expect("static Android log tag should not contain interior null");
-    let text = string_to_c_string(message);
-
-    unsafe {
-        __android_log_write(ANDROID_LOG_ERROR, tag.as_ptr(), text.as_ptr());
-    }
+#[cfg(all(
+    target_os = "android",
+    not(all(feature = "user-utils", feature = "log"))
+))]
+fn print_to_console_android_impl(message: &str) {
+    eprintln!("{message}");
 }
 
 #[cfg(all(any(target_os = "ios", target_os = "macos"), feature = "user-utils"))]
@@ -66,10 +70,4 @@ fn print_to_console_apple(message: &str) {
 ))]
 fn print_to_console_apple(message: &str) {
     eprintln!("{message}");
-}
-
-#[cfg(target_os = "android")]
-fn string_to_c_string(message: &str) -> std::ffi::CString {
-    std::ffi::CString::new(message.replace('\0', "(null)"))
-        .expect("interior nulls should be replaced")
 }

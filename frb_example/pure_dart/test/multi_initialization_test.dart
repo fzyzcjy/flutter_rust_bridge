@@ -37,6 +37,10 @@ Future<void> main() async {
     await emitLogMessage();
     await pumpEventQueue();
 
+    // Step 4: Exercise the platform console fallback path without asserting
+    // platform-specific output capture.
+    await printToConsoleSmokeTest();
+
     expect(
       receivedRecords,
       contains(
