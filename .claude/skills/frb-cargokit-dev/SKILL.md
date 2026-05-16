@@ -53,8 +53,22 @@ In the FRB repository:
    git submodule update --init --recursive
    ```
 
-2. Fetch the CargoKit branch in both submodule checkouts.
-3. Check out the same CargoKit branch or commit in both template submodules.
+2. Fetch and check out the CargoKit branch or commit in both submodule checkouts:
+
+   ```bash
+   git -C frb_codegen/assets/integration_template/app/rust_builder/cargokit fetch origin <branch-or-ref>
+   git -C frb_codegen/assets/integration_template/app/rust_builder/cargokit checkout <commit-or-branch>
+   git -C frb_codegen/assets/integration_template/plugin/cargokit fetch origin <branch-or-ref>
+   git -C frb_codegen/assets/integration_template/plugin/cargokit checkout <commit-or-branch>
+   ```
+
+3. Stage the submodule pointer updates in the outer FRB repository:
+
+   ```bash
+   git add frb_codegen/assets/integration_template/app/rust_builder/cargokit
+   git add frb_codegen/assets/integration_template/plugin/cargokit
+   ```
+
 4. Confirm the outer FRB diff shows submodule pointer changes for both paths.
 
 Useful checks:
@@ -75,6 +89,13 @@ After changing either CargoKit submodule pointer, run:
 ```
 
 This updates copied CargoKit output and platform scaffold files under `frb_example/**`. Those downstream diffs are expected when CargoKit files are copied from the updated template.
+
+Stage and commit the regenerated integrate output together with the submodule pointer update:
+
+```bash
+git add frb_example frb_codegen/assets/integration_template
+git commit -m "Update CargoKit template pointers"
+```
 
 Then run the normal PR checks from `frb-prepare-pr`, especially:
 
