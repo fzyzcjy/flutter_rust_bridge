@@ -8,7 +8,7 @@ use crate::codegen::generator::wire::dart::spec_generator::base::{
 };
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
-use crate::codegen::ir::mir::func::MirFuncMode;
+use crate::codegen::ir::mir::func::{MirFunc, MirFuncMode};
 use crate::codegen::ir::mir::pack::MirPackComputedCache;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::library::codegen::generator::wire::dart::spec_generator::misc::ty::WireDartGeneratorMiscTrait;
@@ -107,21 +107,11 @@ fn generate_boilerplate(
     import 'dart:async';
     ";
 
-    let execute_rust_initializers = (context.mir_pack.funcs_with_impl().iter())
+    let funcs_with_impl = context.mir_pack.funcs_with_impl();
+    let execute_rust_initializers = funcs_with_impl
+        .iter()
         .filter(|f| f.initializer)
-        .map(|f| {
-            f.init_dart_code.clone().unwrap_or_else(|| {
-                format!(
-                    "{maybe_await}api.{name}();\n",
-                    maybe_await = if f.mode == MirFuncMode::Normal {
-                        "await "
-                    } else {
-                        ""
-                    },
-                    name = f.name_dart_wire()
-                )
-            })
-        })
+        .map(|f| generate_rust_initializer_call(f, &funcs_with_impl))
         .join("");
 
     let codegen_version = env!("CARGO_PKG_VERSION");
@@ -244,6 +234,31 @@ fn generate_boilerplate(
             ..Default::default()
         }],
     })
+}
+
+fn generate_rust_initializer_call(func: &MirFunc, funcs_with_impl: &[MirFunc]) -> String {
+    func.init_dart_code
+        .clone()
+        .map(|code| resolve_init_dart_code_placeholders(code, funcs_with_impl))
+        .unwrap_or_else(|| {
+            format!(
+                "{maybe_await}api.{name}();\n",
+                maybe_await = if func.mode == MirFuncMode::Normal {
+                    "await "
+                } else {
+                    ""
+                },
+                name = func.name_dart_wire()
+            )
+        })
+}
+
+fn resolve_init_dart_code_placeholders(mut code: String, funcs_with_impl: &[MirFunc]) -> String {
+    for func in funcs_with_impl {
+        let placeholder = format!("{{{{{}}}}}", func.name.rust_style(true));
+        code = code.replace(&placeholder, &format!("api.{}", func.name_dart_wire()));
+    }
+    code
 }
 
 fn file_stem(p: &Path) -> String {
