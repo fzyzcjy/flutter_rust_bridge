@@ -191,7 +191,11 @@ struct CargoExpandInstallLock {
 impl CargoExpandInstallLock {
     fn acquire() -> Result<Self> {
         let lock_path = cargo_expand_install_lock_path();
-        std::fs::create_dir_all(lock_path.parent().unwrap())?;
+        std::fs::create_dir_all(
+            lock_path
+                .parent()
+                .context("cargo-expand install lock path has no parent")?,
+        )?;
 
         let file = OpenOptions::new()
             .create(true)
