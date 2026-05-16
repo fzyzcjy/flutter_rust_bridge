@@ -70,6 +70,7 @@ void main() {
       );
     } finally {
       kFrbDartLogging.dispose();
+      await pumpEventQueue();
       await firstController.close();
       await secondController.close();
       await thirdController.close();
