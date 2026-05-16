@@ -16,15 +16,20 @@ Future<void> main() async {
     final uniqueSuffix = DateTime.now().microsecondsSinceEpoch;
     final firstMessage = 'first rust logging bridge message $uniqueSuffix';
     final secondMessage = 'second rust logging bridge message $uniqueSuffix';
+    var didInitialize = false;
     Logger.root.level = Level.ALL;
 
     addTearDown(() async {
+      if (didInitialize) {
+        await RustLib.dispose();
+      }
       Logger.root.level = previousLevel;
       await subscription.cancel();
     });
 
     // Step 1: Initialize once and confirm ordinary calls work before restart.
     await RustLib.init();
+    didInitialize = true;
 
     expect(await simpleAdderTwinNormal(a: 42, b: 100), 142);
     expect(simpleAdderTwinSync(a: 42, b: 100), 142);

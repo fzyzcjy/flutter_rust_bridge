@@ -128,6 +128,7 @@ fn generate_boilerplate(
             .iter()
             .filter_map(|f| f.init_dart_code.as_deref()),
     );
+    let dispose_method = generate_dispose_method(&execute_dart_initializers);
 
     let codegen_version = env!("CARGO_PKG_VERSION");
 
@@ -182,7 +183,7 @@ fn generate_boilerplate(
                   ///
                   /// The call to this function is optional, since flutter_rust_bridge (and everything else)
                   /// is automatically disposed when the app stops.
-                  static void dispose() => instance.disposeImpl();
+                  {dispose_method}
 
                   @override
                   ApiImplConstructor<{api_impl_class_name}, {wire_class_name}> get apiImplConstructor => {api_impl_class_name}.new;
@@ -256,6 +257,18 @@ fn generate_execute_dart_initializers<'a>(
     init_dart_codes: impl Iterator<Item = &'a str>,
 ) -> String {
     init_dart_codes.map(|code| format!("{code}\n")).join("")
+}
+
+fn generate_dispose_method(execute_dart_initializers: &str) -> &'static str {
+    if execute_dart_initializers.contains("kFrbDartLogging.init(") {
+        r#"static Future<void> dispose() async {
+                    frbInternalDisposeLogger();
+                    await kFrbDartLogging.dispose();
+                    instance.disposeImpl();
+                  }"#
+    } else {
+        "static void dispose() => instance.disposeImpl();"
+    }
 }
 
 fn file_stem(p: &Path) -> String {

@@ -24,7 +24,7 @@ Future<void> main() async {
         simpleAdderTwinSync(a: 42, b: 100),
       );
 
-      RustLib.dispose();
+      await RustLib.dispose();
 
       return ans;
     });

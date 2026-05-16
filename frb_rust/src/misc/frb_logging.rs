@@ -122,6 +122,14 @@ macro_rules! enable_frb_rust_to_dart_logging {
             });
         }
 
+        #[doc(hidden)]
+        #[flutter_rust_bridge::frb(sync)]
+        pub fn frb_internal_dispose_logger() {
+            if let Some(logger) = FRB_DART_LOGGER.get() {
+                *logger.sink.write().expect("FRB logger sink lock poisoned") = None;
+            }
+        }
+
         static FRB_DART_LOGGER: std::sync::OnceLock<FrbDartLogger> = std::sync::OnceLock::new();
         static FRB_DART_LOGGER_PANIC_HOOK: std::sync::Once = std::sync::Once::new();
 

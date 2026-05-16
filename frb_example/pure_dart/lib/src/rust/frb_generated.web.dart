@@ -50075,6 +50075,10 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__frb_generator_test_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__frb_logging__frb_internal_dispose_logger() => wasmModule
+          .wire__crate__api__frb_logging__frb_internal_dispose_logger();
+
   void wire__crate__api__frb_logging__frb_internal_init_logger(
           NativePortType port_, String sink, String max_level) =>
       wasmModule.wire__crate__api__frb_logging__frb_internal_init_logger(
@@ -71315,6 +71319,9 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__frb_logging__frb_internal_dispose_logger();
 
   external void wire__crate__api__frb_logging__frb_internal_init_logger(
       NativePortType port_, String sink, String max_level);

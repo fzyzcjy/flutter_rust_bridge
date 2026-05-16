@@ -8045,6 +8045,8 @@ WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manua
                                                                                                                                                        int32_t rust_vec_len_,
                                                                                                                                                        int32_t data_len_);
 
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__frb_logging__frb_internal_dispose_logger(void);
+
 void frbgen_frb_example_pure_dart_wire__crate__api__frb_logging__frb_internal_init_logger(int64_t port_,
                                                                                           struct wire_cst_list_prim_u_8_strict *sink,
                                                                                           struct wire_cst_list_prim_u_8_strict *max_level);
@@ -16879,6 +16881,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__external_type_in_crate__use_imported_enum_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__external_type_in_crate__use_imported_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__frb_logging__emit_log_message);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__frb_logging__frb_internal_dispose_logger);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__frb_logging__frb_internal_init_logger);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__frb_logging__frb_internal_logging_max_level);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__frb_logging__frb_internal_logging_setup_dart_logging_output);

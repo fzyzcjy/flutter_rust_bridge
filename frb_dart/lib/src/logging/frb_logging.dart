@@ -76,8 +76,15 @@ class FrbDartLogging {
 
   /// Disconnects the Rust log stream listener.
   Future<void> dispose() async {
-    await _subscription?.cancel();
+    final subscription = _subscription;
+    final defaultOutputSubscription = _defaultOutputSubscription;
     _subscription = null;
+    _defaultOutputSubscription = null;
+
+    if (subscription != null) {
+      unawaited(subscription.cancel());
+    }
+    await defaultOutputSubscription?.cancel();
   }
 
   void _setupDefaultOutput() {

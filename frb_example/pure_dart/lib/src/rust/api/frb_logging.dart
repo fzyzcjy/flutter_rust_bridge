@@ -16,6 +16,9 @@ Stream<FrbLogRecord> frbInternalInitLogger({required String maxLevel}) =>
     RustLib.instance.api
         .crateApiFrbLoggingFrbInternalInitLogger(maxLevel: maxLevel);
 
+void frbInternalDisposeLogger() =>
+    RustLib.instance.api.crateApiFrbLoggingFrbInternalDisposeLogger();
+
 String frbInternalLoggingMaxLevel() =>
     RustLib.instance.api.crateApiFrbLoggingFrbInternalLoggingMaxLevel();
 
