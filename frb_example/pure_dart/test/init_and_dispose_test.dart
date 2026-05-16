@@ -16,7 +16,7 @@ Future<void> main() async {
 
     expect(() => RustLib.init(), throwsA(isA<StateError>()));
 
-    await RustLib.dispose();
+    RustLib.dispose();
 
     expect(RustLib.instance.initialized, false);
 
@@ -24,6 +24,6 @@ Future<void> main() async {
 
     expect(RustLib.instance.initialized, true);
 
-    await RustLib.dispose();
+    RustLib.dispose();
   });
 }

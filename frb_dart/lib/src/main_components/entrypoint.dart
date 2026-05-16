@@ -87,9 +87,9 @@ abstract class BaseEntrypoint<
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @protected
-  Future<void> disposeImpl() async {
+  void disposeImpl() {
     try {
-      await kFrbDartLogging.dispose();
+      kFrbDartLogging.dispose();
     } finally {
       final state = __state;
       __state = null;

@@ -6,11 +6,11 @@ import 'package:test/test.dart';
 
 void main() {
   tearDown(() async {
-    await kFrbDartLogging.dispose();
+    kFrbDartLogging.dispose();
   });
 
-  test('dispose without init is a no-op', () async {
-    await kFrbDartLogging.dispose();
+  test('dispose without init is a no-op', () {
+    kFrbDartLogging.dispose();
   });
 
   test('dispose invokes Rust logger cleanup callback', () async {
@@ -32,7 +32,7 @@ void main() {
         ),
       );
 
-      await kFrbDartLogging.dispose();
+      kFrbDartLogging.dispose();
 
       expect(didDisposeRustLogger, isTrue);
     } finally {

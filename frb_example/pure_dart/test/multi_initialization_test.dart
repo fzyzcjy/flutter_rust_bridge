@@ -19,7 +19,7 @@ Future<void> main() async {
 
     addTearDown(() async {
       if (didInitialize) {
-        await RustLib.dispose();
+        RustLib.dispose();
       }
       Logger.root.level = previousLevel;
       await subscription.cancel();
@@ -39,7 +39,7 @@ Future<void> main() async {
     expect(_countLogMessage(receivedRecords, secondMessage), 0);
 
     // Step 2: Dispose Dart-side state to mimic hot restart teardown.
-    await RustLib.dispose();
+    RustLib.dispose();
 
     // Step 3: Initialize again and verify both calls and logging use the new state.
     await RustLib.init();

@@ -182,7 +182,7 @@ fn generate_boilerplate(
                   ///
                   /// The call to this function is optional, since flutter_rust_bridge (and everything else)
                   /// is automatically disposed when the app stops.
-                  static Future<void> dispose() => instance.disposeImpl();
+                  static void dispose() => instance.disposeImpl();
 
                   @override
                   ApiImplConstructor<{api_impl_class_name}, {wire_class_name}> get apiImplConstructor => {api_impl_class_name}.new;
