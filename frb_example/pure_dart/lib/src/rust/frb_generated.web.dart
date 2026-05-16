@@ -10577,6 +10577,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   U8Array2 dco_decode_u_8_array_2(dynamic raw);
 
   @protected
+  U8Array3 dco_decode_u_8_array_3(dynamic raw);
+
+  @protected
   U8Array32 dco_decode_u_8_array_32(dynamic raw);
 
   @protected
@@ -20787,6 +20790,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   U8Array2 sse_decode_u_8_array_2(SseDeserializer deserializer);
 
   @protected
+  U8Array3 sse_decode_u_8_array_3(SseDeserializer deserializer);
+
+  @protected
   U8Array32 sse_decode_u_8_array_32(SseDeserializer deserializer);
 
   @protected
@@ -28733,7 +28739,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_Map_String_String_None(raw.map),
       cst_encode_Set_String_None(raw.setValues),
       cst_encode_opt_list_String(raw.optionalList),
-      cst_encode_list_prim_u_8_strict(raw.bytes)
+      cst_encode_list_prim_u_8_strict(raw.bytes),
+      cst_encode_u_8_array_3(raw.fixedBytes)
     ].jsify()!;
   }
 
@@ -28746,7 +28753,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_Map_String_String_None(raw.map),
       cst_encode_Set_String_None(raw.setValues),
       cst_encode_opt_list_String(raw.optionalList),
-      cst_encode_list_prim_u_8_strict(raw.bytes)
+      cst_encode_list_prim_u_8_strict(raw.bytes),
+      cst_encode_u_8_array_3(raw.fixedBytes)
     ].jsify()!;
   }
 
@@ -28759,7 +28767,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_Map_String_String_None(raw.map),
       cst_encode_Set_String_None(raw.setValues),
       cst_encode_opt_list_String(raw.optionalList),
-      cst_encode_list_prim_u_8_strict(raw.bytes)
+      cst_encode_list_prim_u_8_strict(raw.bytes),
+      cst_encode_u_8_array_3(raw.fixedBytes)
     ].jsify()!;
   }
 
@@ -29026,7 +29035,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_Map_String_String_None(raw.map),
       cst_encode_Set_String_None(raw.setValues),
       cst_encode_opt_list_String(raw.optionalList),
-      cst_encode_list_prim_u_8_strict(raw.bytes)
+      cst_encode_list_prim_u_8_strict(raw.bytes),
+      cst_encode_u_8_array_3(raw.fixedBytes)
     ].jsify()!;
   }
 
@@ -29039,7 +29049,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_Map_String_String_None(raw.map),
       cst_encode_Set_String_None(raw.setValues),
       cst_encode_opt_list_String(raw.optionalList),
-      cst_encode_list_prim_u_8_strict(raw.bytes)
+      cst_encode_list_prim_u_8_strict(raw.bytes),
+      cst_encode_u_8_array_3(raw.fixedBytes)
     ].jsify()!;
   }
 
@@ -29052,7 +29063,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       cst_encode_Map_String_String_None(raw.map),
       cst_encode_Set_String_None(raw.setValues),
       cst_encode_opt_list_String(raw.optionalList),
-      cst_encode_list_prim_u_8_strict(raw.bytes)
+      cst_encode_list_prim_u_8_strict(raw.bytes),
+      cst_encode_u_8_array_3(raw.fixedBytes)
     ].jsify()!;
   }
 
@@ -29320,6 +29332,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   JSAny cst_encode_u_8_array_2(U8Array2 raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return Uint8List.fromList(raw).jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_u_8_array_3(U8Array3 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return Uint8List.fromList(raw).jsify()!;
   }
@@ -40703,6 +40721,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_u_8_array_2(U8Array2 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_u_8_array_3(U8Array3 self, SseSerializer serializer);
 
   @protected
   void sse_encode_u_8_array_32(U8Array32 self, SseSerializer serializer);

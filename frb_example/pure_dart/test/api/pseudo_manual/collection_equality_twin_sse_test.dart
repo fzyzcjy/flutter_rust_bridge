@@ -28,6 +28,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
       _makeDeepCollectionStruct(setValues: {'changed'}),
       _makeDeepCollectionStruct(optionalList: ['changed']),
       _makeDeepCollectionStruct(bytes: Uint8List.fromList([9, 2, 3])),
+      _makeDeepCollectionStruct(fixedBytes: _makeFixedBytes([9, 2, 3])),
     ];
 
     for (final variant in variants) {
@@ -41,6 +42,22 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
     expect(first == second, isFalse);
   });
+
+  test('struct_with_deep_collection_equality_compares_fixed_array_content', () {
+    final first = _makeDeepCollectionStruct();
+    final second = _makeDeepCollectionStruct();
+
+    expect(first, equals(second));
+    expect(first.hashCode, second.hashCode);
+  });
+
+  test('struct_without_deep_collection_equality_uses_fixed_array_identity', () {
+    final first = _makeShallowCollectionStruct();
+    final second = _makeShallowCollectionStruct();
+
+    expect(first.fixedBytes == second.fixedBytes, isFalse);
+    expect(first == second, isFalse);
+  });
 }
 
 StructWithDeepCollectionEqualityTwinSse _makeDeepCollectionStruct({
@@ -49,6 +66,7 @@ StructWithDeepCollectionEqualityTwinSse _makeDeepCollectionStruct({
   Set<String>? setValues,
   List<String>? optionalList,
   Uint8List? bytes,
+  U8Array3? fixedBytes,
 }) =>
     StructWithDeepCollectionEqualityTwinSse(
       list: list ?? ['a'],
@@ -56,6 +74,7 @@ StructWithDeepCollectionEqualityTwinSse _makeDeepCollectionStruct({
       setValues: setValues ?? {'x'},
       optionalList: optionalList ?? ['optional'],
       bytes: bytes ?? Uint8List.fromList([1, 2, 3]),
+      fixedBytes: fixedBytes ?? _makeFixedBytes([1, 2, 3]),
     );
 
 StructWithShallowCollectionEqualityTwinSse _makeShallowCollectionStruct() =>
@@ -65,4 +84,8 @@ StructWithShallowCollectionEqualityTwinSse _makeShallowCollectionStruct() =>
       setValues: {'x'},
       optionalList: ['optional'],
       bytes: Uint8List.fromList([1, 2, 3]),
+      fixedBytes: _makeFixedBytes([1, 2, 3]),
     );
+
+U8Array3 _makeFixedBytes(List<int> values) =>
+    U8Array3(Uint8List.fromList(values));
