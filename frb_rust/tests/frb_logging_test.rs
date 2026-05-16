@@ -17,8 +17,11 @@ flutter_rust_bridge::enable_frb_rust_to_dart_logging!(
 
 #[test]
 fn test_enable_frb_rust_to_dart_logging_macro_exposes_configuration_functions() {
-    assert_eq!(frb_logging_max_level(), log::LevelFilter::Debug.to_string());
-    assert!(!frb_logging_setup_dart_logging_output());
+    assert_eq!(
+        frb_internal_logging_max_level(),
+        log::LevelFilter::Debug.to_string()
+    );
+    assert!(!frb_internal_logging_setup_dart_logging_output());
 }
 
 #[test]

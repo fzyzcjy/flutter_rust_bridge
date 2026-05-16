@@ -50075,19 +50075,20 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__rust_opaque_twin_sync_sse_moi__frb_generator_test_twin_sync_sse_moi(
                   ptr_, rust_vec_len_, data_len_);
 
-  void wire__crate__api__frb_logging__frb_init_logger(
+  void wire__crate__api__frb_logging__frb_internal_init_logger(
           NativePortType port_, String sink, String max_level) =>
-      wasmModule.wire__crate__api__frb_logging__frb_init_logger(
+      wasmModule.wire__crate__api__frb_logging__frb_internal_init_logger(
           port_, sink, max_level);
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__frb_logging__frb_logging_max_level() =>
-          wasmModule.wire__crate__api__frb_logging__frb_logging_max_level();
+      wire__crate__api__frb_logging__frb_internal_logging_max_level() =>
+          wasmModule
+              .wire__crate__api__frb_logging__frb_internal_logging_max_level();
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__frb_logging__frb_logging_setup_dart_logging_output() =>
+      wire__crate__api__frb_logging__frb_internal_logging_setup_dart_logging_output() =>
           wasmModule
-              .wire__crate__api__frb_logging__frb_logging_setup_dart_logging_output();
+              .wire__crate__api__frb_logging__frb_internal_logging_setup_dart_logging_output();
 
   JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_sync_twin_moi__frb_sync_generator_test_twin_moi() =>
@@ -71315,14 +71316,14 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
-  external void wire__crate__api__frb_logging__frb_init_logger(
+  external void wire__crate__api__frb_logging__frb_internal_init_logger(
       NativePortType port_, String sink, String max_level);
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__frb_logging__frb_logging_max_level();
+      wire__crate__api__frb_logging__frb_internal_logging_max_level();
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
-      wire__crate__api__frb_logging__frb_logging_setup_dart_logging_output();
+      wire__crate__api__frb_logging__frb_internal_logging_setup_dart_logging_output();
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
       wire__crate__api__pseudo_manual__rust_opaque_sync_twin_moi__frb_sync_generator_test_twin_moi();

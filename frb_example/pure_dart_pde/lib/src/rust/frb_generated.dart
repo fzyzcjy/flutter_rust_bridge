@@ -213,7 +213,8 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
     await api.crateApiCustomizationMyInitTwo();
 
     kFrbDartLogging.init(
-      rustLogStream: frbInitLogger(maxLevel: frbLoggingMaxLevel()),
+      rustLogStream:
+          frbInternalInitLogger(maxLevel: frbInternalLoggingMaxLevel()),
       mapRecord: (record) => FrbLogRecordData(
         level: record.level,
         message: record.message,
@@ -222,7 +223,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
         file: record.file,
         line: record.line,
       ),
-      setupDefaultOutput: frbLoggingSetupDartLoggingOutput(),
+      setupDefaultOutput: frbInternalLoggingSetupDartLoggingOutput(),
     );
 
     recordInitDartCodeMessage(message: 'first');
@@ -238,7 +239,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.12.0';
 
   @override
-  int get rustContentHash => 151689805;
+  int get rustContentHash => 1227624088;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -2480,12 +2481,12 @@ abstract class RustLibApi extends BaseApi {
   FrbOpaqueReturnTwinSync
       crateApiPseudoManualRustOpaqueTwinSyncFrbGeneratorTestTwinSync();
 
-  Stream<FrbLogRecord> crateApiFrbLoggingFrbInitLogger(
+  Stream<FrbLogRecord> crateApiFrbLoggingFrbInternalInitLogger(
       {required String maxLevel});
 
-  String crateApiFrbLoggingFrbLoggingMaxLevel();
+  String crateApiFrbLoggingFrbInternalLoggingMaxLevel();
 
-  bool crateApiFrbLoggingFrbLoggingSetupDartLoggingOutput();
+  bool crateApiFrbLoggingFrbInternalLoggingSetupDartLoggingOutput();
 
   FrbOpaqueSyncReturnTwinNormal
       crateApiRustOpaqueSyncFrbSyncGeneratorTestTwinNormal();
@@ -23363,7 +23364,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
 
   @override
-  Stream<FrbLogRecord> crateApiFrbLoggingFrbInitLogger(
+  Stream<FrbLogRecord> crateApiFrbLoggingFrbInternalInitLogger(
       {required String maxLevel}) {
     final sink = RustStreamSink<FrbLogRecord>();
     unawaited(handler.executeNormal(NormalTask(
@@ -23378,63 +23379,64 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         decodeSuccessData: sse_decode_unit,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiFrbLoggingFrbInitLoggerConstMeta,
+      constMeta: kCrateApiFrbLoggingFrbInternalInitLoggerConstMeta,
       argValues: [sink, maxLevel],
       apiImpl: this,
     )));
     return sink.stream;
   }
 
-  TaskConstMeta get kCrateApiFrbLoggingFrbInitLoggerConstMeta =>
+  TaskConstMeta get kCrateApiFrbLoggingFrbInternalInitLoggerConstMeta =>
       const TaskConstMeta(
-        debugName: "frb_init_logger",
+        debugName: "frb_internal_init_logger",
         argNames: ["sink", "maxLevel"],
       );
 
   @override
-  String crateApiFrbLoggingFrbLoggingMaxLevel() {
+  String crateApiFrbLoggingFrbInternalLoggingMaxLevel() {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 631)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 629)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiFrbLoggingFrbLoggingMaxLevelConstMeta,
+      constMeta: kCrateApiFrbLoggingFrbInternalLoggingMaxLevelConstMeta,
       argValues: [],
       apiImpl: this,
     ));
   }
 
-  TaskConstMeta get kCrateApiFrbLoggingFrbLoggingMaxLevelConstMeta =>
+  TaskConstMeta get kCrateApiFrbLoggingFrbInternalLoggingMaxLevelConstMeta =>
       const TaskConstMeta(
-        debugName: "frb_logging_max_level",
+        debugName: "frb_internal_logging_max_level",
         argNames: [],
       );
 
   @override
-  bool crateApiFrbLoggingFrbLoggingSetupDartLoggingOutput() {
+  bool crateApiFrbLoggingFrbInternalLoggingSetupDartLoggingOutput() {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 632)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 630)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_bool,
         decodeErrorData: null,
       ),
-      constMeta: kCrateApiFrbLoggingFrbLoggingSetupDartLoggingOutputConstMeta,
+      constMeta:
+          kCrateApiFrbLoggingFrbInternalLoggingSetupDartLoggingOutputConstMeta,
       argValues: [],
       apiImpl: this,
     ));
   }
 
   TaskConstMeta
-      get kCrateApiFrbLoggingFrbLoggingSetupDartLoggingOutputConstMeta =>
+      get kCrateApiFrbLoggingFrbInternalLoggingSetupDartLoggingOutputConstMeta =>
           const TaskConstMeta(
-            debugName: "frb_logging_setup_dart_logging_output",
+            debugName: "frb_internal_logging_setup_dart_logging_output",
             argNames: [],
           );
 

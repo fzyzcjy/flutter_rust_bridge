@@ -5,6 +5,7 @@ pub fn greet(name: String) -> String {
 
 #[flutter_rust_bridge::frb(init)]
 pub fn init_app() {
-    // Default utilities - feel free to customize
-    flutter_rust_bridge::setup_default_user_utils();
+    // Keep stacktraces, but do not install a default logger, since that would
+    // prevent users from enabling the FRB Rust-to-Dart logging bridge.
+    flutter_rust_bridge::setup_backtrace();
 }
