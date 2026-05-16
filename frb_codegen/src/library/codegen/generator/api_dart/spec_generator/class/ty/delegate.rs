@@ -52,6 +52,11 @@ fn generate_array(
                 "{self_dart_api_type}.init(): this({delegate_dart_api_type}(arraySize));",
             ),
         };
+    let equality = if context.config.dart_collection_deep_equality {
+        generate_array_equality(&self_dart_api_type)
+    } else {
+        "".to_owned()
+    };
 
     Some(ApiDartGeneratedClass {
         header: DartHeaderCode {
@@ -72,14 +77,31 @@ fn generate_array(
                 {self_dart_api_type}(this._inner)
                     : assert(_inner.length == arraySize),
                       super(_inner);
-  
-                {dart_init_method}
+
+                {dart_init_method}{equality}
               }}
             "
         ),
         needs_freezed: false,
         needs_json_serializable: false,
     })
+}
+
+fn generate_array_equality(self_dart_api_type: &str) -> String {
+    format!(
+        "
+
+        @override
+        int get hashCode => const DeepCollectionEquality().hash(this);
+
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is {self_dart_api_type} &&
+                runtimeType == other.runtimeType &&
+                const DeepCollectionEquality().equals(this, other);
+        "
+    )
 }
 
 fn generate_proxy_variant(
