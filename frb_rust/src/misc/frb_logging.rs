@@ -55,6 +55,7 @@ macro_rules! enable_frb_rust_to_dart_logging {
                     return;
                 };
                 let Some(sink) = sink.as_ref() else {
+                    frb_log_record_to_console(record);
                     return;
                 };
 
@@ -73,6 +74,14 @@ macro_rules! enable_frb_rust_to_dart_logging {
             }
 
             fn flush(&self) {}
+        }
+
+        fn frb_log_record_to_console(record: &log::Record) {
+            $crate::for_generated::print_to_console(&format!(
+                "{} - {}",
+                record.level(),
+                record.args()
+            ));
         }
 
         #[doc(hidden)]
