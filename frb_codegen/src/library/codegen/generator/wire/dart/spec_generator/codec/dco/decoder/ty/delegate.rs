@@ -71,6 +71,9 @@ impl WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGenerator
             MirTypeDelegate::Uuid => {
                 "return UuidValue.fromByteList(dco_decode_list_prim_u_8_strict(raw));".to_owned()
             }
+            MirTypeDelegate::SerdeJsonValue => {
+                "return jsonDecode(raw as String);".to_owned()
+            }
             // MirTypeDelegate::Uuids => ...,
             MirTypeDelegate::AnyhowException => "return AnyhowException(raw as String);".to_owned(),
             MirTypeDelegate::Map(_) => format!(

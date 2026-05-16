@@ -114,6 +114,9 @@ impl WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGenerator
             //     return cst_encode_{}(builder.toBytes());",
             //     uint8list_safe_ident()
             // ))),
+            MirTypeDelegate::SerdeJsonValue => Acc::distribute(Some(
+                "return cst_encode_String(jsonEncode(raw));".to_string(),
+            )),
             MirTypeDelegate::Backtrace
             | MirTypeDelegate::AnyhowException
             | MirTypeDelegate::DynTrait(_) => {

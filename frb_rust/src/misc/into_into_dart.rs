@@ -204,6 +204,13 @@ impl_into_into_dart_by_self!(allo_isolate::ffi::DartCObject);
 impl_into_into_dart_by_self!(wasm_bindgen::JsValue);
 #[cfg(feature = "uuid")]
 impl_into_into_dart_by_self!(uuid::Uuid);
+#[cfg(feature = "serde_json")]
+impl IntoIntoDart<String> for serde_json::Value {
+    #[inline(always)]
+    fn into_into_dart(self) -> String {
+        serde_json::to_string(&self).expect("Failed to serialize serde_json::Value")
+    }
+}
 #[cfg(feature = "backtrace")]
 impl_into_into_dart_by_self!(backtrace::Backtrace);
 #[cfg(feature = "anyhow")]

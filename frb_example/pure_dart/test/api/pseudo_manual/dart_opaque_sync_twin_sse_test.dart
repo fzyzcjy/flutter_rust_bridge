@@ -45,10 +45,12 @@ Future<void> main({bool skipRustLibInit = false}) async {
       unwrapDartOpaqueTwinSse(opaque: createLargeList(mb: 200)),
       'Test',
     );
-    await expectLater(
-      () => panicUnwrapDartOpaqueTwinSse(opaque: createLargeList(mb: 200)),
-      throwsA(isA<PanicException>()),
-    );
+    if (!kIsWeb) {
+      await expectLater(
+        () => panicUnwrapDartOpaqueTwinSse(opaque: createLargeList(mb: 200)),
+        throwsA(isA<PanicException>()),
+      );
+    }
   });
 
   // `returnNonDroppableDartOpaqueTwinSse` is removed

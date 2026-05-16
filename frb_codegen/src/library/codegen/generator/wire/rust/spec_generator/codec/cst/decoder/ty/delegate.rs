@@ -78,6 +78,11 @@ impl WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator
                     "let single: Vec<u8> = self.cst_decode(); flutter_rust_bridge::for_generated::decode_uuid(single)".into(),
                 ),
             ),
+            MirTypeDelegate::SerdeJsonValue => Acc::distribute(
+                Some(
+                    r#"let s: String = self.cst_decode(); serde_json::from_str(&s).expect("Failed to deserialize serde_json::Value")"#.into(),
+                ),
+            ),
             // MirTypeDelegate::Uuids => Acc::distribute(
             //     Some(
             //         "let multiple: Vec<u8> = self.cst_decode(); flutter_rust_bridge::for_generated::decode_uuids(multiple)".into(),
@@ -143,6 +148,9 @@ impl WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator
             MirTypeDelegate::Uuid /*| MirTypeDelegate::Uuids*/ => {
                 "self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Uint8Array>().to_vec().into_boxed_slice().cst_decode()"
                     .into()
+            }
+            MirTypeDelegate::SerdeJsonValue => {
+                r#"serde_json::from_str(&CstDecode::<String>::cst_decode(self)).expect("Failed to deserialize serde_json::Value")"#.into()
             }
             MirTypeDelegate::Backtrace | MirTypeDelegate::AnyhowException | MirTypeDelegate::DynTrait(_) => "unimplemented!()".into(),
             MirTypeDelegate::Array(array) => generate_decode_array(array)

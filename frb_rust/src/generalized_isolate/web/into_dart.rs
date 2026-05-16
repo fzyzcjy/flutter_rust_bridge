@@ -90,6 +90,16 @@ impl IntoDart for Vec<chrono::Duration> {
     }
 }
 
+#[cfg(feature = "serde_json")]
+impl IntoDart for serde_json::Value {
+    #[inline]
+    fn into_dart(self) -> DartAbi {
+        serde_json::to_string(&self)
+            .expect("Failed to serialize serde_json::Value")
+            .into_dart()
+    }
+}
+
 #[cfg(feature = "uuid")]
 impl IntoDart for uuid::Uuid {
     #[inline]
