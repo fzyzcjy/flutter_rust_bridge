@@ -1,25 +1,28 @@
 ---
 name: frb-develop-feature
-description: Use when adding tests or developing new features in flutter_rust_bridge, when compilation is slow, or when learning twin test naming conventions
+description: Use when fixing bugs, adding regression tests, adding new features, when compilation is slow, or when learning twin test naming conventions in flutter_rust_bridge
 ---
 
-# FRB Develop Feature
+# FRB Develop Feature or Bug Fix
 
 > **Note:** Check your user-level `remote-testing` rules before running commands. Tests and codegen may require remote execution.
 
 ## Overview
 
-**Iterate in frb_example/dart_minimal (fast compile), migrate to frb_example/pure_dart (full coverage).**
+**For both bug fixes and new features: iterate in `frb_example/dart_minimal` (fast compile), then migrate the final test to `frb_example/pure_dart` (full coverage).**
 
 | Phase | Location | Why |
 |-------|----------|-----|
-| Iterate | frb_example/dart_minimal | Fast compile = quick feedback |
-| Migrate | frb_example/pure_dart + pure_dart_pde | Twin tests = automatic coverage of all codegen modes |
+| Reproduce / Iterate | frb_example/dart_minimal | Fast compile = quick feedback |
+| Migrate final regression / feature test | frb_example/pure_dart + pure_dart_pde | Twin tests = automatic coverage of all codegen modes |
 
-Write one test → get ~6 variants automatically via TwinNormal suffix.
+For bugs, first make the failure reproducible in `dart_minimal`, fix it there, and only then move the regression test to `pure_dart`. For features, follow the same fast-iteration loop before adding the final `pure_dart` coverage.
+
+Write one final test → get ~6 variants automatically via TwinNormal suffix.
 
 ## When to Use
 
+- Fixing a bug that should get a regression test
 - Adding a new function or feature
 - Writing tests for new or existing functionality
 - Compilation feels slow (use frb_example/dart_minimal instead)
@@ -31,12 +34,12 @@ digraph workflow {
     rankdir=TB;
     node [shape=box];
 
-    "Write test + impl in dart_minimal" -> "Run test";
-    "Run test" -> "Pass?" [shape=diamond];
-    "Pass?" -> "Move to pure_dart" [label="yes"];
+    "Write reproducer/test + impl in dart_minimal" -> "Run focused test";
+    "Run focused test" -> "Pass?" [shape=diamond];
+    "Pass?" -> "Move final test to pure_dart" [label="yes"];
     "Pass?" -> "Fix" [label="no"];
-    "Fix" -> "Run test";
-    "Move to pure_dart" -> "Add TwinNormal suffix" -> "Run code gen" -> "All tests pass?";
+    "Fix" -> "Run focused test";
+    "Move final test to pure_dart" -> "Add TwinNormal suffix" -> "Run code gen" -> "All tests pass?";
     "All tests pass?" -> "Done" [label="yes"];
     "All tests pass?" -> "Debug" [label="no"];
     "Debug" -> "All tests pass?";
@@ -45,13 +48,13 @@ digraph workflow {
 
 ### Phase 1: Iterate in frb_example/dart_minimal
 
-1. **Add tests:**
+1. **Add the smallest test or bug reproducer:**
    - Rust: add function to `frb_example/dart_minimal/rust/src/api/minimal.rs`
    - Dart: add test to `frb_example/dart_minimal/test/minimal_test.dart`
 
-   There is usually no need to create any new files.
+   For bug fixes, this test should fail before the fix and pass after the fix. There is usually no need to create any new files.
 
-2. **Add implementations:**
+2. **Add the implementation or fix:**
 
    Usually need to modify `frb_codegen`, `frb_dart`, and/or `frb_rust`.
 
@@ -65,13 +68,15 @@ digraph workflow {
 
 4. **Iterate until test passes**
 
+   Keep the temporary `dart_minimal` reproducer while debugging. Remove or simplify it after the final regression test has been migrated to `pure_dart`.
+
 ### Phase 2: Migrate to frb_example/pure_dart
 
-1. **Move code to frb_example/pure_dart:**
+1. **Move the final feature or regression test to frb_example/pure_dart:**
    - Rust: `frb_example/pure_dart/rust/src/api/my_feature.rs`
    - Dart: `frb_example/pure_dart/test/api/my_feature_test.dart`
 
-   Either add to existing files or create new files. Then remove from frb_example/dart_minimal files.
+   Either add to existing files or create new files. Then remove temporary reproducer code from `frb_example/dart_minimal` unless it is intentionally useful as a minimal example.
 
 2. **Add TwinNormal suffix** to all functions and types:
 
@@ -132,6 +137,7 @@ digraph workflow {
 
 | Mistake | Fix |
 |---------|-----|
+| Fixing a bug directly in pure_dart | First reproduce and iterate in dart_minimal, then migrate the regression test |
 | Skipping frb_example/dart_minimal phase | Start there - saves time on compilation |
 | Forgetting TwinNormal suffix | Add before code gen in frb_example/pure_dart |
 | Moving test without updating imports | Check import paths after migration |
