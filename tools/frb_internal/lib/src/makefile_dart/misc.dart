@@ -4,6 +4,8 @@ import 'dart:io';
 
 import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
+// ignore: implementation_imports
+import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
@@ -14,6 +16,8 @@ import 'package:flutter_rust_bridge_internal/src/utils/codecov_preaggregator.dar
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 
 part 'misc.g.dart';
+
+const _kCargoExpandFallbackVersion = '1.0.112';
 
 List<Command<void>> createCommands() {
   return [
@@ -153,6 +157,8 @@ Future<void> precommit(PrecommitConfig config) async {
 }
 
 Future<void> precommitGenerate() async {
+  await ensureCargoExpandInstalledForPrecommitGenerate();
+
   await Future.wait([
     for (final package in kDartExamplePackages)
       generateRunFrbCodegenCommandGenerate(
@@ -163,6 +169,33 @@ Future<void> precommitGenerate() async {
         ),
       ),
   ]);
+}
+
+Future<void> ensureCargoExpandInstalledForPrecommitGenerate() async {
+  final version = await exec('cargo expand --version', checkExitCode: false);
+  if (version.exitCode == 0) return;
+
+  final latest = await exec('cargo install cargo-expand', checkExitCode: false);
+  if (latest.exitCode == 0) return;
+
+  if (_shouldFallbackCargoExpandInstall(latest.stderr)) {
+    await exec(
+      'cargo install cargo-expand --version $_kCargoExpandFallbackVersion --locked',
+    );
+    return;
+  }
+
+  _throwCommandFailed('cargo install cargo-expand', latest);
+}
+
+bool _shouldFallbackCargoExpandInstall(String stderr) =>
+    // Mimic `cargo_expand_fallback_version` in frb_codegen's cargo_expand/real.rs.
+    stderr.contains('requires rustc');
+
+void _throwCommandFailed(String command, RunCommandOutput output) {
+  throw Exception(
+    'Command `$command` failed with exit code ${output.exitCode}. stderr=${output.stderr}',
+  );
 }
 
 Future<void> precommitIntegrate() async {
