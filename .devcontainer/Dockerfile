@@ -51,7 +51,8 @@ RUN ARCH="$(dpkg --print-architecture)" && \
 RUN cargo install wasm-pack
 
 # Install extra CLI tools used by internal generation and coverage workflows
-RUN cargo install cargo-llvm-cov && \
+RUN cargo install cargo-expand && \
+    cargo install cargo-llvm-cov && \
     npm install -g all-contributors-cli
 
 # Install Chromium for web tests (headless testing). Google Chrome does not
@@ -72,7 +73,9 @@ RUN flutter --version && \
     npm --version && \
     cargo --version && \
     rustup toolchain list | grep "nightly-${RUST_NIGHTLY_VERSION}" && \
+    rustup target list --installed | grep wasm32-unknown-unknown && \
     rustup target list --toolchain "nightly-${RUST_NIGHTLY_VERSION}" --installed | grep wasm32-unknown-unknown && \
+    cargo expand --version && \
     cargo llvm-cov --version && \
     wasm-pack --version && \
     all-contributors --version && \

@@ -17,6 +17,10 @@ It contains all scripts to work on flutter_rust_bridge development.
 It as a similar role as [justfile](https://github.com/casey/just/blob/master/justfile), makefile, etc.
 For example, `./frb_internal precommit --mode fast` (or `--mode slow`) runs code generator, formatter, etc for you.
 
+### CI autofix for generated changes
+
+If generated or normalized files are missing from a pull request, the `Precommit Autofix` bot comment explains how to apply its patch artifact locally.
+
 ### The `just codegen`
 
 To run the `flutter_rust_bridge_codegen`, but using the local code (instead of a released version),

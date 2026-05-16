@@ -20,6 +20,7 @@ futures = { version = "0.3.29", optional = true }
 lazy_static = { workspace = true }
 log = { version = "0.4", optional = true }
 portable-atomic = { version = "1.8.0", optional = true }
+serde_json = { workspace = true, optional = true }
 uuid = { workspace = true, optional = true }
 
 [target.'cfg(not(target_family = "wasm"))'.dependencies]
@@ -81,6 +82,7 @@ portable-atomic = ["dep:portable-atomic"]
 rust-async = ["dep:tokio", "dep:futures", "dep:wasm-bindgen-futures"]
 thread-pool = ["dep:threadpool"]
 user-utils = ["dep:android_logger", "dep:oslog"]
+serde_json = ["dep:serde_json"]
 uuid = ["dep:uuid", "allo-isolate/uuid"]
 wasm-start = ["console_error_panic_hook"]
 

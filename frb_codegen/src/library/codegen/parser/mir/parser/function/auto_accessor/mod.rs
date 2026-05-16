@@ -78,13 +78,16 @@ fn parse_auto_accessors_of_struct(
 
     let syn_path: syn::Path = syn::parse_str(&struct_name.name)?;
     let syn_path_segments = extract_path_data(&syn_path)?;
-    let ty_struct_ref = TypeParserWithContext::new(type_parser, &context)
+    let ty_struct_ref = match TypeParserWithContext::new(type_parser, &context)
         .parse_type_path_data_struct(
             &syn_path,
             splay_segments(&syn_path_segments).last().unwrap(),
             Some(false),
-        );
-    let ty_struct_ident = if let Ok(Some(MirType::StructRef(mir))) = ty_struct_ref {
+        ) {
+        Ok(value) => value,
+        Err(_) => return Ok(vec![]),
+    };
+    let ty_struct_ident = if let Some(MirType::StructRef(mir)) = ty_struct_ref {
         mir.ident
     } else {
         return Ok(vec![]);
