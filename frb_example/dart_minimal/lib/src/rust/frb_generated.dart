@@ -59,9 +59,10 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 
   @override
   Future<void> executeRustInitializers() async {
+    await api.crateApiMinimalInitApp();
+
     FrbDartLogging.init(
-      rustLogStream: api.crateApiMinimalFrbInitLogger(
-          maxLevel: api.crateApiMinimalFrbLoggingMaxLevel()),
+      rustLogStream: frbInitLogger(maxLevel: frbLoggingMaxLevel()),
       mapRecord: (record) => FrbLogRecordData(
         level: record.level,
         message: record.message,
@@ -70,9 +71,8 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
         file: record.file,
         line: record.line,
       ),
-      setupDefaultOutput: api.crateApiMinimalFrbLoggingSetupDartLoggingOutput(),
+      setupDefaultOutput: frbLoggingSetupDartLoggingOutput(),
     );
-    await api.crateApiMinimalInitApp();
   }
 
   @override

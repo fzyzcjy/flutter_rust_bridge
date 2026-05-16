@@ -242,8 +242,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             return Ok(create_output_skip(func, ignore_func));
         }
 
-        let init_dart_code = attributes.init_dart_code();
-
         Ok(IrValueOrSkip::Value(MirFunc {
             namespace: namespace_refined,
             name: MirIdent::new(func_name, dart_name),
@@ -254,8 +252,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             mode,
             stream_dart_await,
             rust_async: func.item_fn.sig().asyncness.is_some(),
-            initializer: attributes.init() || init_dart_code.is_some(),
-            init_dart_code,
+            initializer: attributes.init(),
+            init_dart_code: attributes.init_dart_code(),
             accessor,
             arg_mode: if attributes.positional() {
                 MirFuncArgMode::Positional

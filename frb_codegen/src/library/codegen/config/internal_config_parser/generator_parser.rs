@@ -59,6 +59,7 @@ pub(super) fn parse(args: Args) -> anyhow::Result<GeneratorInternalConfig> {
 
     Ok(GeneratorInternalConfig {
         api_dart: GeneratorApiDartInternalConfig {
+            dart_collection_deep_equality: config.dart_collection_deep_equality.unwrap_or(false),
             dart_enums_style,
             dart3,
             dart_decl_base_output_path: dart_output_path_pack.dart_decl_base_output_path.clone(),

@@ -95,12 +95,15 @@ impl FrbAttributes {
     }
 
     pub(crate) fn init_dart_code(&self) -> Option<String> {
-        self.0
+        let ans = self
+            .0
             .iter()
             .filter_map(
                 |item| if_then_some!(let FrbAttribute::InitDartCode(inner) = item, inner.0.clone()),
             )
-            .next()
+            .join("\n\n");
+
+        (!ans.is_empty()).then_some(ans)
     }
 
     pub(crate) fn ignore(&self) -> bool {
@@ -134,6 +137,10 @@ impl FrbAttributes {
 
     pub(crate) fn generate_eq(&self) -> bool {
         !self.any_eq(&FrbAttribute::NonEq)
+    }
+
+    pub(crate) fn dart_collection_deep_equality(&self) -> bool {
+        self.any_eq(&FrbAttribute::DartCollectionDeepEquality)
     }
 
     pub(crate) fn positional(&self) -> bool {
@@ -282,6 +289,7 @@ fn parse_syn_attribute(raw: &str) -> anyhow::Result<Attribute> {
 }
 
 mod frb_keyword {
+    syn::custom_keyword!(dart_collection_deep_equality);
     syn::custom_keyword!(mirror);
     syn::custom_keyword!(non_final);
     syn::custom_keyword!(sync);
@@ -290,9 +298,9 @@ mod frb_keyword {
     syn::custom_keyword!(getter);
     syn::custom_keyword!(setter);
     syn::custom_keyword!(init);
-    syn::custom_keyword!(init_dart_code);
     syn::custom_keyword!(ignore);
     syn::custom_keyword!(ignore_all);
+    syn::custom_keyword!(init_dart_code);
     syn::custom_keyword!(unignore);
     syn::custom_keyword!(opaque);
     syn::custom_keyword!(non_opaque);
@@ -336,6 +344,7 @@ impl Parse for FrbAttributesInner {
 // Alphabetical order
 #[derive(Eq, PartialEq, Debug, Clone)]
 enum FrbAttribute {
+    DartCollectionDeepEquality,
     Dart2Rust(FrbAttributeSerDes),
     DartCode(FrbAttributeDartCode),
     Default(FrbAttributeDefaultValue),
@@ -343,9 +352,9 @@ enum FrbAttribute {
     Getter,
     Ignore,
     IgnoreAll,
+    InitDartCode(FrbAttributeInitDartCode),
     Unignore,
     Init,
-    InitDartCode(FrbAttributeInitDartCode),
     Mirror(FrbAttributeMirror),
     Name(FrbAttributeName),
     NonEq,
@@ -417,6 +426,14 @@ impl Parse for FrbAttribute {
             .or_else(|| parse_keyword::<external, _>(input, &lookahead, external, External))
             .or_else(|| {
                 parse_keyword::<type_64bit_int, _>(input, &lookahead, type_64bit_int, Type64bitInt)
+            })
+            .or_else(|| {
+                parse_keyword::<dart_collection_deep_equality, _>(
+                    input,
+                    &lookahead,
+                    dart_collection_deep_equality,
+                    DartCollectionDeepEquality,
+                )
             })
             // .or_else(|| {
             //     parse_keyword::<generate_implementor_enum, _>(
@@ -857,15 +874,11 @@ mod tests {
     }
 
     #[test]
-    fn test_init_dart_code() -> anyhow::Result<()> {
-        let parsed = parse(r###"#[frb(init_dart_code="a\nb\nc")]"###)?;
-        assert_eq!(
-            parsed,
-            FrbAttributes(vec![FrbAttribute::InitDartCode(FrbAttributeInitDartCode(
-                "a\nb\nc".to_owned()
-            ))])
+    fn test_dart_collection_deep_equality() {
+        simple_keyword_tester(
+            "dart_collection_deep_equality",
+            FrbAttribute::DartCollectionDeepEquality,
         );
-        Ok(())
     }
 
     #[test]
@@ -947,6 +960,26 @@ mod tests {
                 "a\nb\nc".to_owned()
             ))])
         );
+        Ok(())
+    }
+
+    #[test]
+    fn test_init_dart_code() -> anyhow::Result<()> {
+        let parsed = parse(r###"#[frb(init_dart_code="a\nb\nc")]"###)?;
+        assert_eq!(
+            parsed,
+            FrbAttributes(vec![FrbAttribute::InitDartCode(FrbAttributeInitDartCode(
+                "a\nb\nc".to_owned()
+            ))])
+        );
+        assert_eq!(parsed.init_dart_code(), Some("a\nb\nc".to_owned()));
+        Ok(())
+    }
+
+    #[test]
+    fn test_multiple_init_dart_code() -> anyhow::Result<()> {
+        let parsed = parse("#[frb(init_dart_code=\"a\")]\n#[frb(init_dart_code=\"b\")]")?;
+        assert_eq!(parsed.init_dart_code(), Some("a\n\nb".to_owned()));
         Ok(())
     }
 

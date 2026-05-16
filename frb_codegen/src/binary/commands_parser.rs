@@ -40,6 +40,7 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgsPrima
         dart_format_line_length: args.dart_format_line_length,
         dart_preamble: args.dart_preamble,
         rust_preamble: args.rust_preamble,
+        dart_collection_deep_equality: positive_bool_arg(args.dart_collection_deep_equality),
         dart_enums_style: negative_bool_arg(args.no_dart_enums_style),
         add_mod_to_lib: negative_bool_arg(args.no_add_mod_to_lib),
         llvm_path: args.llvm_path,
@@ -190,6 +191,15 @@ mod tests {
                 .expect("failed to parse cli args")
                 .dart3,
             Some(false)
+        );
+        assert_eq!(
+            run_command_line(concat([
+                common_args.clone(),
+                vec!["--dart-collection-deep-equality"]
+            ]))
+            .expect("failed to parse cli args")
+            .dart_collection_deep_equality,
+            Some(true)
         );
     }
 

@@ -5,6 +5,7 @@ use std::path::PathBuf;
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub(crate) struct GeneratorApiDartInternalConfig {
+    pub dart_collection_deep_equality: bool,
     pub dart_enums_style: bool,
     pub dart3: bool,
     pub dart_decl_base_output_path: PathBuf,

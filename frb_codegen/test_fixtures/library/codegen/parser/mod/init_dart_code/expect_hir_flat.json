@@ -1,0 +1,29 @@
+{
+  "constants": [],
+  "enums": [],
+  "existing_handler": null,
+  "extra_dart_output_code": {
+    "body": "",
+    "header": {
+      "file_top": "",
+      "import": "",
+      "part": ""
+    }
+  },
+  "extra_rust_output_code": "",
+  "functions": [
+    {
+      "item_fn": "GeneralizedItemFn(name=first_function, vis=Some(Visibility::Public(Pub)), attrs=[# [doc = \" flutter_rust_bridge:init_dart_code = /\"api.firstInit();/\"\"]])",
+      "namespace": "crate::api",
+      "owner": "Function",
+      "sources": [
+        "Normal"
+      ]
+    }
+  ],
+  "skips": [],
+  "structs": [],
+  "trait_impls": [],
+  "traits": [],
+  "types": []
+}

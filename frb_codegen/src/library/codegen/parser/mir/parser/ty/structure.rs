@@ -75,6 +75,7 @@ impl TypeParserWithContext<'_, '_, '_> {
             needs_json_serializable: attributes.json_serializable(),
             generate_hash: attributes.generate_hash(),
             generate_eq: attributes.generate_eq(),
+            dart_collection_deep_equality: attributes.dart_collection_deep_equality(),
             ui_state: attributes.ui_state(),
             comments,
         })

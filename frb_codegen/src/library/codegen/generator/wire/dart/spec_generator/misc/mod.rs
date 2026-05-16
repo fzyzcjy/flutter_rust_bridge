@@ -8,7 +8,7 @@ use crate::codegen::generator::wire::dart::spec_generator::base::{
 };
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
-use crate::codegen::ir::mir::func::{MirFunc, MirFuncMode};
+use crate::codegen::ir::mir::func::MirFuncMode;
 use crate::codegen::ir::mir::pack::MirPackComputedCache;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::library::codegen::generator::wire::dart::spec_generator::misc::ty::WireDartGeneratorMiscTrait;
@@ -107,12 +107,27 @@ fn generate_boilerplate(
     import 'dart:async';
     ";
 
-    let funcs_with_impl = context.mir_pack.funcs_with_impl();
-    let execute_rust_initializers = funcs_with_impl
-        .iter()
+    let execute_rust_initializers = (context.mir_pack.funcs_with_impl().iter())
         .filter(|f| f.initializer)
-        .map(|f| generate_rust_initializer_call(f, &funcs_with_impl))
+        .map(|f| {
+            format!(
+                "{maybe_await}api.{name}();\n",
+                maybe_await = if f.mode == MirFuncMode::Normal {
+                    "await "
+                } else {
+                    ""
+                },
+                name = f.name_dart_wire()
+            )
+        })
         .join("");
+    let execute_dart_initializers = generate_execute_dart_initializers(
+        context
+            .mir_pack
+            .funcs_with_impl()
+            .iter()
+            .filter_map(|f| f.init_dart_code.as_deref()),
+    );
 
     let codegen_version = env!("CARGO_PKG_VERSION");
 
@@ -178,6 +193,7 @@ fn generate_boilerplate(
                   @override
                   Future<void> executeRustInitializers() async {{
                     {execute_rust_initializers}
+                    {execute_dart_initializers}
                   }}
 
                   @override
@@ -236,29 +252,10 @@ fn generate_boilerplate(
     })
 }
 
-fn generate_rust_initializer_call(func: &MirFunc, funcs_with_impl: &[MirFunc]) -> String {
-    func.init_dart_code
-        .clone()
-        .map(|code| resolve_init_dart_code_placeholders(code, funcs_with_impl))
-        .unwrap_or_else(|| {
-            format!(
-                "{maybe_await}api.{name}();\n",
-                maybe_await = if func.mode == MirFuncMode::Normal {
-                    "await "
-                } else {
-                    ""
-                },
-                name = func.name_dart_wire()
-            )
-        })
-}
-
-fn resolve_init_dart_code_placeholders(mut code: String, funcs_with_impl: &[MirFunc]) -> String {
-    for func in funcs_with_impl {
-        let placeholder = format!("{{{{{}}}}}", func.name.rust_style(true));
-        code = code.replace(&placeholder, &format!("api.{}", func.name_dart_wire()));
-    }
-    code
+fn generate_execute_dart_initializers<'a>(
+    init_dart_codes: impl Iterator<Item = &'a str>,
+) -> String {
+    init_dart_codes.map(|code| format!("{code}\n")).join("")
 }
 
 fn file_stem(p: &Path) -> String {
@@ -280,6 +277,23 @@ fn generate_import_dart_api_layer(
         })
         .collect::<anyhow::Result<Vec<_>>>()?
         .join(""))
+}
+
+#[cfg(test)]
+mod tests {
+    use super::generate_execute_dart_initializers;
+
+    #[test]
+    fn test_generate_execute_dart_initializers() {
+        let actual = generate_execute_dart_initializers(
+            ["api.firstInit();", "api.secondInit(\n  value: 42,\n);"].into_iter(),
+        );
+
+        assert_eq!(
+            actual,
+            "api.firstInit();\napi.secondInit(\n  value: 42,\n);\n"
+        );
+    }
 }
 
 // fn generate_wire_delegate_functions(func: &ExternFunc) -> Acc<Vec<WireDartOutputCode>> {
