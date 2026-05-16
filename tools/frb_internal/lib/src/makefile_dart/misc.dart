@@ -193,11 +193,8 @@ bool _shouldFallbackCargoExpandInstall(String stderr) =>
     stderr.contains('requires rustc');
 
 void _throwCommandFailed(String command, RunCommandOutput output) {
-  throw ProcessException(
-    command,
-    const [],
-    'Bad exit code (${output.exitCode}). stderr=${output.stderr}',
-    output.exitCode,
+  throw Exception(
+    'Command `$command` failed with exit code ${output.exitCode}. stderr=${output.stderr}',
   );
 }
 
