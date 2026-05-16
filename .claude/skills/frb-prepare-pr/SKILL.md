@@ -22,13 +22,15 @@ Before creating a PR, ensure generated code is up to date and lint passes.
    |
    +-- Run required generation commands
    |
-   +-- 2. Read frb-lint skill --> Run lint --fix
+   +-- 2. For integrate output diffs, verify templates and run precommit-integrate
    |
-   +-- 3. (Optional) Read frb-test skill --> Run relevant tests
+   +-- 3. Read frb-lint skill --> Run lint --fix
    |
-   +-- 4. Commit all changes
+   +-- 4. (Optional) Read frb-test skill --> Run relevant tests
    |
-   +-- 5. Create PR (use creating-pull-requests skill)
+   +-- 5. Commit all changes
+   |
+   +-- 6. Create PR (use creating-pull-requests skill)
 ```
 
 ## Quick Checklist

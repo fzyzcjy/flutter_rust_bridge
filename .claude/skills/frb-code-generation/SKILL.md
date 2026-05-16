@@ -41,7 +41,7 @@ Do not submit only downstream integrate output changes when the behavior belongs
 ./frb_internal precommit-integrate
 ```
 
-Treat `frb_codegen/assets/integration_template/**/cargokit` as the source of truth for copied `cargokit` output. If the actual bug belongs inside the external `cargokit` submodule, use `frb-cargokit` before deciding whether to patch the submodule and update its pointer.
+Treat `frb_codegen/assets/integration_template/**/cargokit` as the source of truth for copied `cargokit` output. If the actual bug belongs inside the external `cargokit` submodule, read the `frb-cargokit` skill before deciding whether to patch the submodule and update its pointer.
 
 For CI diagnosis rules about generated-file format/lint failures, repeated package-level `Generate` drift, or `Generate :: FRB Codegen :: Command Integrate` failures, you MUST read `frb-fix-ci` first. This skill is for command selection, not CI failure-propagation diagnosis.
 
