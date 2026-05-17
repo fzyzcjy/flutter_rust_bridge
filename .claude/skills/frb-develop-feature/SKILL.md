@@ -11,6 +11,8 @@ description: Use when fixing bugs, adding regression tests, adding new features,
 
 **For both bug fixes and new features: iterate in `frb_example/dart_minimal` (fast compile), then migrate the final test to `frb_example/pure_dart` (full coverage).**
 
+`dart_minimal` is only an iteration workspace. A bug fix or feature PR is not ready when its only regression coverage lives in `dart_minimal`; stop before PR preparation and move the final test to `pure_dart`/`pure_dart_pde`.
+
 | Phase | Location | Why |
 |-------|----------|-----|
 | Reproduce / Iterate | frb_example/dart_minimal | Fast compile = quick feedback |
@@ -19,6 +21,17 @@ description: Use when fixing bugs, adding regression tests, adding new features,
 For bugs, first make the failure reproducible in `dart_minimal`, write down the exact reproduction report, fix it there, and only then move the regression test to `pure_dart`. For features, follow the same fast-iteration loop before adding the final `pure_dart` coverage.
 
 Write one final test → get ~6 variants automatically via TwinNormal suffix.
+
+## Final Placement Gate
+
+Before pushing, opening a PR, requesting review, or monitoring CI as if the work is ready:
+
+- Confirm every final regression or feature test has been moved from `frb_example/dart_minimal` to `frb_example/pure_dart`.
+- Confirm the final Rust APIs/types/functions in `pure_dart` use the `TwinNormal` suffix pattern where applicable.
+- Confirm code generation has produced the matching `pure_dart_pde` coverage.
+- Remove the temporary `dart_minimal` reproducer unless it is intentionally kept as a minimal example in addition to the `pure_dart` regression.
+
+If any of these checks fail, return to Phase 2. Do not treat a passing `dart_minimal` test as final readiness.
 
 ## When to Use
 
@@ -110,7 +123,7 @@ digraph workflow {
 
 5. **Iterate until test passes**
 
-   Keep the temporary `dart_minimal` reproducer while debugging. Remove or simplify it after the final regression test has been migrated to `pure_dart`.
+   Keep the temporary `dart_minimal` reproducer while debugging. Passing here only proves the fix is ready to migrate; it is not the final regression placement. Remove or simplify the temporary reproducer after the final regression test has been migrated to `pure_dart`.
 
 ### Phase 2: Migrate to frb_example/pure_dart
 
@@ -180,6 +193,7 @@ digraph workflow {
 | Mistake | Fix |
 |---------|-----|
 | Fixing a bug directly in pure_dart | First reproduce and iterate in dart_minimal, then migrate the regression test |
+| Leaving final coverage only in dart_minimal | Move the final regression to pure_dart/pure_dart_pde before PR preparation |
 | Skipping frb_example/dart_minimal phase | Start there - saves time on compilation |
 | Forgetting TwinNormal suffix | Add before code gen in frb_example/pure_dart |
 | Moving test without updating imports | Check import paths after migration |
