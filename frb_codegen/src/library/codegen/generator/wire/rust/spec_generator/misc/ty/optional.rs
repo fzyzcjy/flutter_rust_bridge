@@ -54,7 +54,7 @@ fn optional_dart_fn_inner(
 ) -> Option<&crate::codegen::ir::mir::ty::dart_fn::MirTypeDartFn> {
     match ty {
         MirType::DartFn(inner) => Some(inner),
-        MirType::Boxed(inner) => optional_dart_fn_inner(&inner.inner),
+        MirType::Boxed(inner) if !inner.exist_in_real_api => optional_dart_fn_inner(&inner.inner),
         _ => None,
     }
 }
