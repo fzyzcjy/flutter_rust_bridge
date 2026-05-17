@@ -53,19 +53,19 @@ Read these when entering the matching phase:
    - Create the PR according to the active PR workflow and repository/user PR body rules.
    - If the work comes from a GitHub issue, ensure the PR body includes the appropriate closing keyword such as `Close #1234`, unless the active PR workflow explicitly requires an empty body.
 
-6. Monitor CI until terminal.
-   - After the PR is opened or updated, do not leave the PR in an unknown queued or in-progress state.
-   - On each wake-up, inspect the latest PR checks, not stale runs.
-   - If CI fails, read `frb-fix-ci` and `gh-actions-live-logs`, diagnose the latest relevant failure, fix it, commit, push, and continue monitoring.
-   - If CI appears flaky, rerun only failed jobs when appropriate, then keep monitoring.
-
-7. Handle Gemini review.
+6. Handle Gemini review.
    - After pushing the PR and once you believe the code is reasonably ready, post a PR comment containing exactly `/gemini review` to request a Gemini pass; do not wait for CI to be green before requesting this first self-initiated review.
    - Wait for Gemini's GitHub review or comments if the repository automation posts them.
    - Treat actionable Gemini feedback like review comments: inspect, fix if valid, commit, push, and reply or otherwise make the resolution visible.
    - If feedback is incorrect or not actionable, leave a concise PR comment explaining why.
    - After substantial follow-up fixes, request another Gemini pass when you again believe the code is reasonably ready.
    - Wait for each new Gemini response on GitHub, then resolve any actionable follow-up feedback.
+
+7. Monitor CI until terminal.
+   - After the PR is opened or updated, do not leave the PR in an unknown queued or in-progress state.
+   - On each wake-up, inspect the latest PR checks, not stale runs.
+   - If CI fails, read `frb-fix-ci` and `gh-actions-live-logs`, diagnose the latest relevant failure, fix it, commit, push, and continue monitoring.
+   - If CI appears flaky, rerun only failed jobs when appropriate, then keep monitoring.
 
 8. Stop only when ready.
    - The PR checks are green or all remaining non-green checks are clearly unrelated and explained.
