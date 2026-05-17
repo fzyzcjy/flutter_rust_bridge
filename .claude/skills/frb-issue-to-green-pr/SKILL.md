@@ -37,21 +37,19 @@ Read these when entering the matching phase:
    - Read and follow `frb-develop-feature`; treat it as the source of truth for reproduction, iteration, regression coverage, and final example placement.
    - Keep generated-file edits produced by the appropriate generator, not by hand.
 
-3. Verify locally with scope proportional to risk.
-   - Run the relevant generation, focused tests, and lint commands from the subskills.
-   - Prefer focused commands while iterating; broaden only when the change's blast radius requires it.
-   - Record any skipped expensive tests or local environment blockers explicitly.
+3. Verify through the existing FRB command-selection skills.
+   - Use `frb-code-generation`, `frb-test`, `frb-lint`, and `frb-prepare-pr` as the source of truth for generation, test, lint, and PR-preparation commands.
+   - Record skipped expensive checks or local environment blockers explicitly.
 
-4. Commit promptly.
-   - After each completed logical unit, stage only files you intentionally changed and create a small commit.
-   - Use English commit messages.
-   - Do not amend unless the user explicitly asks.
+4. Commit according to the active git policy.
+   - Stage only files intentionally changed for this task.
+   - Follow the user's active commit granularity, message, and amend rules.
 
 5. Prepare and open the PR.
    - Follow `frb-prepare-pr`.
    - Push with upstream tracking.
    - Before drafting a PR title, inspect the user's recent PR titles and mimic the repo style.
-   - Create the PR with a concise body covering issue, fix, tests, and known limitations.
+   - Create the PR according to the active PR workflow and repository/user PR body rules.
 
 6. Monitor CI until terminal.
    - After the PR is opened or updated, do not leave the PR in an unknown queued or in-progress state.
