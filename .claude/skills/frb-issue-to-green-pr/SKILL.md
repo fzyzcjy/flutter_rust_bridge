@@ -39,6 +39,7 @@ Read these when entering the matching phase:
 
 3. Develop with the project feature or bug-fix workflow.
    - Read and follow `frb-develop-feature`; treat it as the source of truth for reproduction, iteration, local verification, regression coverage, and final example placement.
+   - Before considering the change ready, explicitly pass the `frb-develop-feature` Final Placement Gate: final regression coverage belongs in `frb_example/pure_dart` with generated `pure_dart_pde` coverage, not only in `frb_example/dart_minimal`.
    - Keep generated-file edits produced by the appropriate generator, not by hand.
 
 4. Commit each completed logical unit immediately.
@@ -48,6 +49,7 @@ Read these when entering the matching phase:
 
 5. Prepare and open the PR.
    - Follow `frb-prepare-pr`.
+   - Re-check that no final regression or feature coverage remains only in `frb_example/dart_minimal`. If it does, stop PR preparation and migrate it to `frb_example/pure_dart` first.
    - Push with upstream tracking.
    - Before drafting a PR title, inspect the user's recent PR titles and mimic the repo style.
    - Create the PR according to the active PR workflow and repository/user PR body rules.
