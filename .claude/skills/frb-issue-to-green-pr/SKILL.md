@@ -54,6 +54,7 @@ Read these when entering the matching phase:
    - Push with upstream tracking.
    - Before drafting a PR title, inspect the user's recent PR titles and mimic the repo style.
    - Create the PR according to the active PR workflow and repository/user PR body rules.
+   - If the work comes from a GitHub issue, ensure the PR body includes the appropriate closing keyword such as `Close #1234`, unless the active PR workflow explicitly requires an empty body.
 
 7. Monitor CI until terminal.
    - After the PR is opened or updated, do not leave the PR in an unknown queued or in-progress state.
