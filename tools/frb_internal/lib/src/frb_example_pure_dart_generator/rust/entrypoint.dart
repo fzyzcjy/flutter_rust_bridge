@@ -87,12 +87,27 @@ class RustGenerator extends BaseGenerator {
       );
     }
 
-    return ans;
+    return _deduplicateAdjacentFrbAttributes(ans);
   }
 
   @override
   String generateDuplicateFileStem(String inputStem, DuplicatorMode mode) =>
       inputStem + mode.postfix;
+}
+
+String _deduplicateAdjacentFrbAttributes(String input) {
+  const attributes = [
+    '#[flutter_rust_bridge::frb(serialize)]',
+    '#[flutter_rust_bridge::frb(sync)]',
+    '#[flutter_rust_bridge::frb(rust_opaque_codec_moi)]',
+  ];
+
+  var ans = input;
+  for (final attribute in attributes) {
+    ans = ans.replaceAll('$attribute\n$attribute', attribute);
+  }
+
+  return ans;
 }
 
 /// Find matching [genericType]<[innerType]> and call [mapper] to
