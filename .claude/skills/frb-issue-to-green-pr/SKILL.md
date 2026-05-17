@@ -1,6 +1,6 @@
 ---
 name: frb-issue-to-green-pr
-description: Use when implementing a GitHub issue, bug fix, or feature in flutter_rust_bridge end-to-end: develop the change, add regression coverage, prepare and open a PR, monitor CI until green, request and resolve Gemini review, and keep following up on a 5 minute cadence until the PR is ready.
+description: "Use when implementing a GitHub issue, bug fix, or feature in flutter_rust_bridge end-to-end: develop the change, add regression coverage, prepare and open a PR, monitor CI until green, request and resolve Gemini review, and keep following up on a 5 minute cadence until the PR is ready."
 ---
 
 # FRB Issue to Green PR
@@ -66,7 +66,7 @@ Read these when entering the matching phase:
    - After pushing the PR, wait for Gemini's GitHub review or comments if the repository automation posts them.
    - Treat actionable Gemini feedback like review comments: inspect, fix if valid, commit, push, and reply or otherwise make the resolution visible.
    - If feedback is incorrect or not actionable, leave a concise PR comment explaining why.
-   - Once you believe the code is ready, post a PR comment containing exactly `/gemini review` to request another Gemini pass.
+   - Once you believe the code is ready and CI checks are passing, post a PR comment containing exactly `/gemini review` to request another Gemini pass.
    - Wait for the new Gemini response on GitHub, then resolve any actionable follow-up feedback.
 
 8. Stop only when ready.
