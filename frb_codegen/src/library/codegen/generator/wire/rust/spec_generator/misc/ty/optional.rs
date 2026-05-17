@@ -12,7 +12,8 @@ impl WireRustGeneratorMiscTrait for OptionalWireRustGenerator<'_> {
             return Default::default();
         };
 
-        let safe_ident = inner.safe_ident();
+        let optional_safe_ident = self.mir.safe_ident();
+        let dart_fn_safe_ident = inner.safe_ident();
         let parameter_types = (inner.inputs.iter())
             .map(|x| x.rust_api_type())
             .collect_vec();
@@ -25,11 +26,11 @@ impl WireRustGeneratorMiscTrait for OptionalWireRustGenerator<'_> {
 
         Acc::new_common(
             format!(
-                "fn decode_Optional_{safe_ident}(
+                "fn decode_Optional_{optional_safe_ident}(
                     raw: Option<flutter_rust_bridge::DartOpaque>,
                 ) -> Option<{dyn_fn_type}> {{
                     raw.map(|dart_opaque| {{
-                        Box::new(decode_{safe_ident}(dart_opaque)) as {dyn_fn_type}
+                        Box::new(decode_{dart_fn_safe_ident}(dart_opaque)) as {dyn_fn_type}
                     }})
                 }}"
             )
@@ -39,7 +40,7 @@ impl WireRustGeneratorMiscTrait for OptionalWireRustGenerator<'_> {
 
     fn generate_wire_func_call_decode_wrapper(&self) -> Option<String> {
         optional_dart_fn_inner(&self.mir.inner)
-            .map(|inner| format!("decode_Optional_{}", inner.safe_ident()))
+            .map(|_| format!("decode_Optional_{}", self.mir.safe_ident()))
     }
 
     fn generate_wire_func_call_decode_type(&self) -> Option<String> {
