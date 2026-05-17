@@ -104,7 +104,10 @@ String _deduplicateAdjacentFrbAttributes(String input) {
 
   var ans = input;
   for (final attribute in attributes) {
-    ans = ans.replaceAll('$attribute\n$attribute', attribute);
+    final duplicate = '$attribute\n$attribute';
+    while (ans.contains(duplicate)) {
+      ans = ans.replaceAll(duplicate, attribute);
+    }
   }
 
   return ans;
