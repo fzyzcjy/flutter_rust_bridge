@@ -14,7 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      pull-requests: write
 
     steps:
       - name: Checkout
@@ -42,48 +41,3 @@ jobs:
         with:
           name: precommit-autofix-diff
           path: precommit-autofix.diff
-
-      - name: Update PR autofix comment
-        if: ${{ github.event_name == 'pull_request' }}
-        uses: actions/github-script@v8
-        env:
-          COMMENT_BODY: ${{ steps.autofix.outputs.comment_body }}
-        with:
-          script: |
-            const marker = '<!-- precommit-autofix-comment -->';
-            const issueNumber = context.payload.pull_request.number;
-            const body = process.env.COMMENT_BODY;
-
-            const comments = await github.paginate(
-              github.rest.issues.listComments,
-              {
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: issueNumber,
-                per_page: 100,
-              },
-            );
-
-            const existingComment = comments.find(
-              (comment) =>
-                comment.user?.type === 'Bot' &&
-                typeof comment.body === 'string' &&
-                comment.body.includes(marker),
-            );
-
-            if (existingComment) {
-              await github.rest.issues.updateComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                comment_id: existingComment.id,
-                body,
-              });
-              return;
-            }
-
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: issueNumber,
-              body,
-            });

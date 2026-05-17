@@ -20,6 +20,7 @@ For example, `./frb_internal precommit --mode fast` (or `--mode slow`) runs code
 ### CI autofix for generated changes
 
 If generated or normalized files are missing from a pull request, the `Precommit Autofix` bot comment explains how to apply its patch artifact locally.
+For fork pull requests, a follow-up trusted workflow posts the comment after the patch workflow completes, because the patch workflow itself runs with read-only permissions.
 
 ### The `just codegen`
 
