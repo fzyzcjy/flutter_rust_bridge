@@ -75,7 +75,7 @@ mod tests {
         body_with_config(
             "library/codegen/generator/api_dart/mod/simple",
             HashMap::from([
-                ("api.dart", "expect_output.dart"),
+                ("api.dart", "expect_output_deep_collection_equality.dart"),
                 ("dep.dart", "expect_output2_deep_collection_equality.dart"),
                 ("frb_generated.dart", "expect_output3.dart"),
             ]),

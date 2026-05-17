@@ -1,0 +1,160 @@
+name: Precommit Autofix Comment
+
+on:
+  workflow_run:
+    # This matches the workflow's `name:`, not its filename.
+    workflows: ["Precommit Autofix"]
+    types: [completed]
+
+jobs:
+  update_comment:
+    name: Update PR autofix comment
+    if: >-
+      ${{
+        github.event.workflow_run.event == 'pull_request' &&
+        github.event.workflow_run.conclusion == 'success'
+      }}
+    runs-on: ubuntu-latest
+    # This trusted follow-up is loaded from the base repository default branch.
+    # It may write the PR comment, but must not check out or execute fork code.
+    permissions:
+      actions: read
+      contents: read
+      issues: write
+
+    steps:
+      - name: Update PR autofix comment
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const marker = '<!-- precommit-autofix-comment -->';
+            const artifactName = 'precommit-autofix-diff';
+            const patchFileName = 'precommit-autofix.diff';
+            const run = context.payload.workflow_run;
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            const issueNumber = await findPullRequestNumber({
+              github,
+              owner,
+              repo,
+              run,
+            });
+
+            const artifacts = await github.paginate(
+              github.rest.actions.listWorkflowRunArtifacts,
+              {
+                owner,
+                repo,
+                run_id: run.id,
+                per_page: 100,
+              },
+            );
+            const hasPatch = artifacts.some(
+              (artifact) => artifact.name === artifactName && !artifact.expired,
+            );
+
+            const body = buildCommentBody({
+              artifactName,
+              patchFileName,
+              headSha: run.head_sha,
+              hasPatch,
+              runId: run.id,
+            });
+
+            const comments = await github.paginate(
+              github.rest.issues.listComments,
+              {
+                owner,
+                repo,
+                issue_number: issueNumber,
+                per_page: 100,
+              },
+            );
+
+            const existingComment = comments.find(
+              (comment) =>
+                comment.user?.type === 'Bot' &&
+                typeof comment.body === 'string' &&
+                comment.body.includes(marker),
+            );
+
+            if (existingComment) {
+              await github.rest.issues.updateComment({
+                owner,
+                repo,
+                comment_id: existingComment.id,
+                body,
+              });
+              return;
+            }
+
+            await github.rest.issues.createComment({
+              owner,
+              repo,
+              issue_number: issueNumber,
+              body,
+            });
+
+            async function findPullRequestNumber({github, owner, repo, run}) {
+              const pullRequests = run.pull_requests ?? [];
+              if (pullRequests.length > 0) {
+                return pullRequests[0].number;
+              }
+
+              const associated = await github.rest.repos.listPullRequestsAssociatedWithCommit({
+                owner,
+                repo,
+                commit_sha: run.head_sha,
+              });
+              const candidates = associated.data.filter(
+                (pullRequest) =>
+                  pullRequest.base.repo.full_name === `${owner}/${repo}` &&
+                  pullRequest.head.sha === run.head_sha,
+              );
+              if (candidates.length > 0) {
+                return candidates[0].number;
+              }
+
+              throw new Error(`Could not find pull request for workflow run ${run.id}`);
+            }
+
+            function buildCommentBody({
+              artifactName,
+              patchFileName,
+              headSha,
+              hasPatch,
+              runId,
+            }) {
+              if (!hasPatch) {
+                return [
+                  marker,
+                  '## Precommit Autofix',
+                  '',
+                  `Commit: \`${headSha}\``,
+                  `Run: \`${runId}\``,
+                  '',
+                  'CI produced no diff. The branch is already clean after precommit autofix.',
+                  '',
+                ].join('\n');
+              }
+
+              return [
+                marker,
+                '## Precommit Autofix',
+                '',
+                `Commit: \`${headSha}\``,
+                `Run: \`${runId}\``,
+                '',
+                `CI generated a non-empty autofix patch in artifact \`${artifactName}\`.`,
+                '',
+                'This usually means generated or normalized files were not committed. Download the artifact and apply it locally:',
+                '',
+                '```shell',
+                `artifact_dir="$(mktemp -d)" && gh run download ${runId} -n ${artifactName} -D "$artifact_dir" && git apply "$artifact_dir/${patchFileName}"`,
+                '```',
+                '',
+                'The workflow never pushes commits on your behalf; it only prepares a patch for review and application.',
+                '',
+              ].join('\n');
+            }

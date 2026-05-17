@@ -6,6 +6,7 @@ import 'dart:io';
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
 import '../frb_generated.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<StructWithDeepCollectionEqualityTwinNormal>
@@ -28,6 +29,7 @@ class StructWithDeepCollectionEqualityTwinNormal {
   final Set<String> setValues;
   final List<String>? optionalList;
   final Uint8List bytes;
+  final U8Array3 fixedBytes;
 
   const StructWithDeepCollectionEqualityTwinNormal({
     required this.list,
@@ -35,6 +37,7 @@ class StructWithDeepCollectionEqualityTwinNormal {
     required this.setValues,
     this.optionalList,
     required this.bytes,
+    required this.fixedBytes,
   });
 
   @override
@@ -43,7 +46,8 @@ class StructWithDeepCollectionEqualityTwinNormal {
       const DeepCollectionEquality().hash(map) ^
       const DeepCollectionEquality().hash(setValues) ^
       const DeepCollectionEquality().hash(optionalList) ^
-      const DeepCollectionEquality().hash(bytes);
+      const DeepCollectionEquality().hash(bytes) ^
+      const DeepCollectionEquality().hash(fixedBytes);
 
   @override
   bool operator ==(Object other) =>
@@ -55,7 +59,8 @@ class StructWithDeepCollectionEqualityTwinNormal {
           const DeepCollectionEquality().equals(setValues, other.setValues) &&
           const DeepCollectionEquality()
               .equals(optionalList, other.optionalList) &&
-          const DeepCollectionEquality().equals(bytes, other.bytes);
+          const DeepCollectionEquality().equals(bytes, other.bytes) &&
+          const DeepCollectionEquality().equals(fixedBytes, other.fixedBytes);
 }
 
 class StructWithShallowCollectionEqualityTwinNormal {
@@ -64,6 +69,7 @@ class StructWithShallowCollectionEqualityTwinNormal {
   final Set<String> setValues;
   final List<String>? optionalList;
   final Uint8List bytes;
+  final U8Array3 fixedBytes;
 
   const StructWithShallowCollectionEqualityTwinNormal({
     required this.list,
@@ -71,6 +77,7 @@ class StructWithShallowCollectionEqualityTwinNormal {
     required this.setValues,
     this.optionalList,
     required this.bytes,
+    required this.fixedBytes,
   });
 
   @override
@@ -79,7 +86,8 @@ class StructWithShallowCollectionEqualityTwinNormal {
       map.hashCode ^
       setValues.hashCode ^
       optionalList.hashCode ^
-      bytes.hashCode;
+      bytes.hashCode ^
+      fixedBytes.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -90,5 +98,20 @@ class StructWithShallowCollectionEqualityTwinNormal {
           map == other.map &&
           setValues == other.setValues &&
           optionalList == other.optionalList &&
-          bytes == other.bytes;
+          bytes == other.bytes &&
+          fixedBytes == other.fixedBytes;
+}
+
+class U8Array3 extends NonGrowableListView<int> {
+  static const arraySize = 3;
+
+  @internal
+  Uint8List get inner => _inner;
+  final Uint8List _inner;
+
+  U8Array3(this._inner)
+      : assert(_inner.length == arraySize),
+        super(_inner);
+
+  U8Array3.init() : this(Uint8List(arraySize));
 }

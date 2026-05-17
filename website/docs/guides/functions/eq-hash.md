@@ -13,10 +13,11 @@ The default for `freezed` classes: Usually field-by-field comparison (see `freez
 ## Deep collection equality
 
 Set `dart_collection_deep_equality: true` in `flutter_rust_bridge.yaml`, or pass `--dart-collection-deep-equality` to the codegen command, to generate deep equality and hash code for Dart collection fields in non-`freezed` classes.
-This affects `List`, `Map`, `Set`, and optional values wrapping those collection types.
+This affects `List`, `Map`, `Set`, optional values wrapping those collection types, and generated fixed-size array wrapper classes such as `U8Array32`.
 
 To opt in for only one non-`freezed` struct, use `#[frb(dart_collection_deep_equality)]` on that struct instead of enabling the global option.
 This does not change the default behavior for other structs in the project.
+Since generated fixed-size array wrapper classes are shared Dart types, their own `operator==` and `hashCode` only change when the global option is enabled.
 
 If you want richer Dart value-class semantics, another option is to use `freezed`, which can also generate deep equality for collection fields.
 

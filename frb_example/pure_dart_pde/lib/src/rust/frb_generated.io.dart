@@ -30,6 +30,7 @@ import 'api/event_listener.dart';
 import 'api/exception.dart';
 import 'api/external_impl.dart';
 import 'api/external_type_in_crate.dart';
+import 'api/frb_logging.dart';
 import 'api/impl_trait.dart';
 import 'api/init_dart_code.dart';
 import 'api/inside_macro.dart';
@@ -2065,6 +2066,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_StreamSink_event_twin_rust_async_Sse(dynamic raw);
 
   @protected
+  RustStreamSink<FrbLogRecord> dco_decode_StreamSink_frb_log_record_Sse(
+      dynamic raw);
+
+  @protected
   RustStreamSink<int> dco_decode_StreamSink_i_32_Sse(dynamic raw);
 
   @protected
@@ -3729,6 +3734,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   FeedIdTwinSync dco_decode_feed_id_twin_sync(dynamic raw);
 
   @protected
+  FrbLogRecord dco_decode_frb_log_record(dynamic raw);
+
+  @protected
   HashMapValue dco_decode_hash_map_value(dynamic raw);
 
   @protected
@@ -5287,6 +5295,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   U8Array2 dco_decode_u_8_array_2(dynamic raw);
+
+  @protected
+  U8Array3 dco_decode_u_8_array_3(dynamic raw);
 
   @protected
   U8Array32 dco_decode_u_8_array_32(dynamic raw);
@@ -6856,6 +6867,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   RustStreamSink<EventTwinRustAsync>
       sse_decode_StreamSink_event_twin_rust_async_Sse(
           SseDeserializer deserializer);
+
+  @protected
+  RustStreamSink<FrbLogRecord> sse_decode_StreamSink_frb_log_record_Sse(
+      SseDeserializer deserializer);
 
   @protected
   RustStreamSink<int> sse_decode_StreamSink_i_32_Sse(
@@ -8711,6 +8726,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   FeedIdTwinSync sse_decode_feed_id_twin_sync(SseDeserializer deserializer);
 
   @protected
+  FrbLogRecord sse_decode_frb_log_record(SseDeserializer deserializer);
+
+  @protected
   HashMapValue sse_decode_hash_map_value(SseDeserializer deserializer);
 
   @protected
@@ -10498,6 +10516,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   U8Array2 sse_decode_u_8_array_2(SseDeserializer deserializer);
 
   @protected
+  U8Array3 sse_decode_u_8_array_3(SseDeserializer deserializer);
+
+  @protected
   U8Array32 sse_decode_u_8_array_32(SseDeserializer deserializer);
 
   @protected
@@ -12148,6 +12169,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_StreamSink_event_twin_rust_async_Sse(
       RustStreamSink<EventTwinRustAsync> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_StreamSink_frb_log_record_Sse(
+      RustStreamSink<FrbLogRecord> self, SseSerializer serializer);
 
   @protected
   void sse_encode_StreamSink_i_32_Sse(
@@ -13917,6 +13942,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       FeedIdTwinSync self, SseSerializer serializer);
 
   @protected
+  void sse_encode_frb_log_record(FrbLogRecord self, SseSerializer serializer);
+
+  @protected
   void sse_encode_hash_map_value(HashMapValue self, SseSerializer serializer);
 
   @protected
@@ -15654,6 +15682,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_u_8_array_2(U8Array2 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_u_8_array_3(U8Array3 self, SseSerializer serializer);
 
   @protected
   void sse_encode_u_8_array_32(U8Array32 self, SseSerializer serializer);
