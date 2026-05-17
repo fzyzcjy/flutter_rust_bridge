@@ -20,30 +20,33 @@ class BuildGradle {
   final CargokitUserOptions userOptions;
 
   Future<void> build() async {
-    final targets = Environment.targetPlatforms.map((arch) {
-      final target = Target.forFlutterName(arch);
-      if (target == null) {
-        throw Exception(
-            "Unknown darwin target or platform: $arch, ${Environment.darwinPlatformName}");
-      }
-      return target;
-    }).toList();
+    final targets = Environment.targetPlatforms
+        .map((arch) {
+          final target = Target.forFlutterName(arch);
+          if (target == null) {
+            throw Exception(
+                "Unknown darwin target or platform: $arch, ${Environment.darwinPlatformName}");
+          }
+          return target;
+        })
+        .toSet()
+        .toList();
 
     final environment = BuildEnvironment.fromEnvironment(isAndroid: true);
     final provider =
         ArtifactProvider(environment: environment, userOptions: userOptions);
     final artifacts = await provider.getArtifacts(targets);
 
-    for (final target in targets) {
+    await Future.wait(targets.map((target) async {
       final libs = artifacts[target]!;
       final outputDir = path.join(Environment.outputDir, target.android!);
-      Directory(outputDir).createSync(recursive: true);
+      await Directory(outputDir).create(recursive: true);
 
       for (final lib in libs) {
         if (lib.type == AritifactType.dylib) {
-          File(lib.path).copySync(path.join(outputDir, lib.finalFileName));
+          await File(lib.path).copy(path.join(outputDir, lib.finalFileName));
         }
       }
-    }
+    }));
   }
 }

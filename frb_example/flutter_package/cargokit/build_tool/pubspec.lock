@@ -105,6 +105,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
+  flutter_platform_utils:
+    dependency: "direct main"
+    description:
+      name: flutter_platform_utils
+      sha256: cb06a696d0b027edb7a4e95527dde847f5c4b7bd4f90e894336f58fefe5561ce
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   frontend_server_client:
     dependency: transitive
     description:

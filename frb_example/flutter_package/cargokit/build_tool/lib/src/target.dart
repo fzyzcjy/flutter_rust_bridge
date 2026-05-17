@@ -4,6 +4,7 @@
 import 'dart:io';
 
 import 'package:collection/collection.dart';
+import 'package:flutter_platform_utils/flutter_platform_utils.dart';
 
 import 'util.dart';
 
@@ -15,6 +16,7 @@ class Target {
     this.androidMinSdkVersion,
     this.darwinPlatform,
     this.darwinArch,
+    this.ohos,
   });
 
   static final all = [
@@ -84,6 +86,21 @@ class Target {
       darwinPlatform: 'iphonesimulator',
       darwinArch: 'x86_64',
     ),
+    Target(
+      rust: 'aarch64-unknown-linux-ohos',
+      flutter: 'ohos-arm64',
+      ohos: 'arm64-v8a',
+    ),
+    Target(
+      rust: 'armv7-unknown-linux-ohos',
+      flutter: 'ohos-arm',
+      ohos: 'armeabi-v7a',
+    ),
+    Target(
+      rust: 'x86_64-unknown-linux-ohos',
+      flutter: 'ohos-x64',
+      ohos: 'x86_64',
+    ),
   ];
 
   static Target? forFlutterName(String flutterName) {
@@ -109,8 +126,22 @@ class Target {
         .toList(growable: false);
   }
 
+  static List<Target> ohosTargets() {
+    return all.where((element) => element.ohos != null).toList(growable: false);
+  }
+
   /// Returns buildable targets on current host platform ignoring Android targets.
   static List<Target> buildableTargets() {
+    if (PlatformUtils.isOhos) {
+      final arch = (runCommand('arch', []).stdout as String).trim();
+      if (arch.trim() == 'aarch64') {
+        return [Target.forRustTriple('aarch64-unknown-linux-ohos')!];
+      }
+      if (arch == 'armv7') {
+        return [Target.forRustTriple('armv7-unknown-linux-ohos')!];
+      }
+      return [Target.forRustTriple('x86_64-unknown-linux-ohos')!];
+    }
     if (Platform.isLinux) {
       // Right now we don't support cross-compiling on Linux. So we just return
       // the host target.
@@ -144,4 +175,5 @@ class Target {
   final int? androidMinSdkVersion;
   final String? darwinPlatform;
   final String? darwinArch;
+  final String? ohos;
 }

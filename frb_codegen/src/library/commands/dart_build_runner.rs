@@ -8,7 +8,7 @@ use log::debug;
 use std::collections::HashMap;
 use std::path::Path;
 
-pub fn dart_build_runner(dart_root: &Path) -> anyhow::Result<()> {
+pub fn dart_build_runner(dart_root: &Path, skip_fvm_install: bool) -> anyhow::Result<()> {
     debug!("Running build_runner at dart_root={dart_root:?}");
 
     let repo = DartRepository::from_path(dart_root)?;
@@ -17,7 +17,7 @@ pub fn dart_build_runner(dart_root: &Path) -> anyhow::Result<()> {
             envs: Some(dart_run_extra_env()),
             ..Default::default()
         })],
-        ?command_arg_maybe_fvm(Some(dart_root)),
+        ?command_arg_maybe_fvm(Some(dart_root),skip_fvm_install),
         *repo.toolchain.as_run_command(),
         *repo.command_extra_args(),
         "run",

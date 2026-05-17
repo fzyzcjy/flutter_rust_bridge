@@ -2,6 +2,7 @@ use crate::integration::integrator;
 use crate::integration::integrator::IntegrateConfig;
 use crate::library::commands::flutter::flutter_create;
 use crate::misc::Template;
+use crate::utils::dart_repository::get_rust_crate_name;
 use anyhow::{bail, ensure};
 use log::{debug, info};
 use std::path::Path;
@@ -14,6 +15,8 @@ pub struct CreateConfig {
     pub rust_crate_name: Option<String>,
     pub rust_crate_dir: String,
     pub template: Template,
+    pub platforms: Option<String>,
+    pub skip_fvm_install: bool,
 }
 
 /// Create a new Flutter + Rust project.
@@ -33,13 +36,22 @@ pub fn create(config: CreateConfig) -> anyhow::Result<()> {
     );
     // frb-coverage:ignore-end
 
-    flutter_create(&config.name, &config.org, config.template)?;
+    flutter_create(
+        &config.name,
+        &config.org,
+        config.template,
+        config.platforms,
+        config.skip_fvm_install,
+    )?;
 
     env::set_current_dir(&dart_root)?;
 
     match &config.template {
         Template::App => remove_unnecessary_app_files(&dart_root)?,
-        Template::Plugin => remove_unnecessary_plugin_files(&dart_root)?,
+        Template::Plugin => remove_unnecessary_plugin_files(
+            &dart_root,
+            get_rust_crate_name(&dart_root, &config.rust_crate_name, &config.template)?,
+        )?,
     }
 
     info!("Step: Inject flutter_rust_bridge related code");
@@ -52,6 +64,7 @@ pub fn create(config: CreateConfig) -> anyhow::Result<()> {
         rust_crate_name: config.rust_crate_name,
         rust_crate_dir: config.rust_crate_dir,
         template: config.template,
+        skip_fvm_install: config.skip_fvm_install,
     })
 }
 
@@ -69,7 +82,10 @@ fn remove_unnecessary_app_files(dart_root: &Path) -> anyhow::Result<()> {
 
 // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
 // frb-coverage:ignore-start
-fn remove_unnecessary_plugin_files(dart_root: &Path) -> anyhow::Result<()> {
+fn remove_unnecessary_plugin_files(
+    dart_root: &Path,
+    rust_crate_name: String,
+) -> anyhow::Result<()> {
     // frb-coverage:ignore-end
     let lib_dir = dart_root.join("lib");
     remove_files_in_dir(&lib_dir)?;
@@ -117,6 +133,30 @@ fn remove_unnecessary_plugin_files(dart_root: &Path) -> anyhow::Result<()> {
         remove_files_in_dir(&windows_dir)?;
     }
 
+    let ohos_dir = dart_root.join("ohos");
+    if ohos_dir.exists() {
+        let src_dir = ohos_dir.join("src");
+        let main_dir = src_dir.join("main");
+        let cpp_dir = main_dir.join("cpp");
+        let types_dir = cpp_dir.join("types");
+        let lib_dir = types_dir.join(format!("lib{}", rust_crate_name));
+        remove_files_in_dir(&lib_dir)?;
+        fs::remove_dir(&lib_dir)?;
+
+        remove_files_in_dir(&types_dir)?;
+        fs::remove_dir(&types_dir)?;
+
+        remove_files_in_dir(&cpp_dir)?;
+        fs::remove_dir(&cpp_dir)?;
+
+        remove_files_in_dir(&main_dir)?;
+        fs::remove_dir(&main_dir)?;
+
+        remove_files_in_dir(&src_dir)?;
+        fs::remove_dir(&src_dir)?;
+
+        remove_files_in_dir(&ohos_dir)?;
+    }
     Ok(())
 }
 

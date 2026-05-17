@@ -13,21 +13,22 @@ pub(super) fn execute(
     dart_root: &Path,
     rust_crate_dir: &Path,
     enable_auto_upgrade: bool,
+    skip_fvm_install: bool,
 ) -> Result<()> {
     let _pb = progress_bar_pack.polish_upgrade.start();
 
     let dart_upgrader = DartUpgrader::new(dart_root)?;
-    dart_upgrader.execute(enable_auto_upgrade)?;
+    dart_upgrader.execute(enable_auto_upgrade, skip_fvm_install)?;
 
     let rust_upgrader = RustUpgrader::new(rust_crate_dir)?;
-    rust_upgrader.execute(enable_auto_upgrade)
+    rust_upgrader.execute(enable_auto_upgrade, skip_fvm_install)
 }
 
 trait Upgrader {
-    fn execute(&self, enable_auto_upgrade: bool) -> Result<()> {
+    fn execute(&self, enable_auto_upgrade: bool, skip_fvm_install: bool) -> Result<()> {
         if !self.check()? {
             if enable_auto_upgrade {
-                self.upgrade()?;
+                self.upgrade(skip_fvm_install)?;
             } else {
                 log::warn!("Auto upgrader find wrong Dart/Rust flutter_rust_bridge dependency version, please enable `auto_upgrade_dependencies` flag or upgrade manually.");
             }
@@ -37,7 +38,7 @@ trait Upgrader {
 
     fn check(&self) -> Result<bool>;
 
-    fn upgrade(&self) -> Result<()>;
+    fn upgrade(&self, skip_fvm_install: bool) -> Result<()>;
 }
 
 struct DartUpgrader<'a> {
@@ -66,9 +67,9 @@ impl Upgrader for DartUpgrader<'_> {
             .is_ok())
     }
 
-    fn upgrade(&self) -> Result<()> {
+    fn upgrade(&self, skip_fvm_install: bool) -> Result<()> {
         log::info!("Auto upgrade Dart dependency");
-        pub_add_dependency_frb(false, Some(self.base_dir))
+        pub_add_dependency_frb(false, Some(self.base_dir), skip_fvm_install)
     }
 }
 
@@ -115,7 +116,7 @@ impl Upgrader for RustUpgrader<'_> {
         Ok(self.dependency.req() == concat!("=", env!("CARGO_PKG_VERSION")))
     }
 
-    fn upgrade(&self) -> Result<()> {
+    fn upgrade(&self, _skip_fvm_install: bool) -> Result<()> {
         log::info!("Auto upgrade Rust dependency");
 
         let mut args = vec![concat!("flutter_rust_bridge@=", env!("CARGO_PKG_VERSION"))];

@@ -32,3 +32,6 @@ flutter:
         ffiPlugin: true
       windows:
         ffiPlugin: true
+      ohos:
+        ffiPlugin: true
+

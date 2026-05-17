@@ -64,7 +64,7 @@ class ArtifactProvider {
     }
 
     final rustup = Rustup();
-    for (final target in targets) {
+    final buildResults = await Future.wait(targets.map((target) async {
       final builder = RustBuilder(target: target, environment: environment);
       builder.prepare(rustup);
       _log.info('Building ${environment.crateInfo.packageName} for $target');
@@ -91,7 +91,10 @@ class ArtifactProvider {
               ))
           .where((element) => File(element.path).existsSync())
           .toList();
-      result[target] = artifacts;
+      return MapEntry(target, artifacts);
+    }));
+    for (final entry in buildResults) {
+      result[entry.key] = entry.value;
     }
     return result;
   }
@@ -117,9 +120,7 @@ class ArtifactProvider {
         path.join(environment.targetTempDir, 'precompiled', crateHash);
     Directory(downloadedArtifactsDir).createSync(recursive: true);
 
-    final res = <Target, List<Artifact>>{};
-
-    for (final target in targets) {
+    final results = await Future.wait(targets.map((target) async {
       final requiredArtifacts = getArtifactNames(
         target: target,
         libraryName: environment.crateInfo.packageName,
@@ -153,7 +154,15 @@ class ArtifactProvider {
       // Only provide complete set of artifacts.
       if (artifactsForTarget.length == requiredArtifacts.length) {
         _log.fine('Found precompiled artifacts for $target');
-        res[target] = artifactsForTarget;
+        return MapEntry(target, artifactsForTarget);
+      }
+      return null;
+    }));
+    final res = <Target, List<Artifact>>{};
+
+    for (final entry in results) {
+      if (entry != null) {
+        res[entry.key] = entry.value;
       }
     }
 
