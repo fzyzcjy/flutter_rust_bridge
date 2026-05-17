@@ -55094,14 +55094,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_struct_with_deep_collection_equality_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
-    if (arr.length != 5)
-      throw Exception('unexpected arr length: expect 5 but see ${arr.length}');
+    if (arr.length != 6)
+      throw Exception('unexpected arr length: expect 6 but see ${arr.length}');
     return StructWithDeepCollectionEqualityTwinNormal(
       list: dco_decode_list_String(arr[0]),
       map: dco_decode_Map_String_String_None(arr[1]),
       setValues: dco_decode_Set_String_None(arr[2]),
       optionalList: dco_decode_opt_list_String(arr[3]),
       bytes: dco_decode_list_prim_u_8_strict(arr[4]),
+      fixedBytes: dco_decode_u_8_array_3(arr[5]),
     );
   }
 
@@ -55111,14 +55112,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
-    if (arr.length != 5)
-      throw Exception('unexpected arr length: expect 5 but see ${arr.length}');
+    if (arr.length != 6)
+      throw Exception('unexpected arr length: expect 6 but see ${arr.length}');
     return StructWithDeepCollectionEqualityTwinRustAsync(
       list: dco_decode_list_String(arr[0]),
       map: dco_decode_Map_String_String_None(arr[1]),
       setValues: dco_decode_Set_String_None(arr[2]),
       optionalList: dco_decode_opt_list_String(arr[3]),
       bytes: dco_decode_list_prim_u_8_strict(arr[4]),
+      fixedBytes: dco_decode_u_8_array_3(arr[5]),
     );
   }
 
@@ -55127,14 +55129,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       dco_decode_struct_with_deep_collection_equality_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
-    if (arr.length != 5)
-      throw Exception('unexpected arr length: expect 5 but see ${arr.length}');
+    if (arr.length != 6)
+      throw Exception('unexpected arr length: expect 6 but see ${arr.length}');
     return StructWithDeepCollectionEqualityTwinSync(
       list: dco_decode_list_String(arr[0]),
       map: dco_decode_Map_String_String_None(arr[1]),
       setValues: dco_decode_Set_String_None(arr[2]),
       optionalList: dco_decode_opt_list_String(arr[3]),
       bytes: dco_decode_list_prim_u_8_strict(arr[4]),
+      fixedBytes: dco_decode_u_8_array_3(arr[5]),
     );
   }
 
@@ -55428,14 +55431,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
-    if (arr.length != 5)
-      throw Exception('unexpected arr length: expect 5 but see ${arr.length}');
+    if (arr.length != 6)
+      throw Exception('unexpected arr length: expect 6 but see ${arr.length}');
     return StructWithShallowCollectionEqualityTwinNormal(
       list: dco_decode_list_String(arr[0]),
       map: dco_decode_Map_String_String_None(arr[1]),
       setValues: dco_decode_Set_String_None(arr[2]),
       optionalList: dco_decode_opt_list_String(arr[3]),
       bytes: dco_decode_list_prim_u_8_strict(arr[4]),
+      fixedBytes: dco_decode_u_8_array_3(arr[5]),
     );
   }
 
@@ -55445,14 +55449,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
-    if (arr.length != 5)
-      throw Exception('unexpected arr length: expect 5 but see ${arr.length}');
+    if (arr.length != 6)
+      throw Exception('unexpected arr length: expect 6 but see ${arr.length}');
     return StructWithShallowCollectionEqualityTwinRustAsync(
       list: dco_decode_list_String(arr[0]),
       map: dco_decode_Map_String_String_None(arr[1]),
       setValues: dco_decode_Set_String_None(arr[2]),
       optionalList: dco_decode_opt_list_String(arr[3]),
       bytes: dco_decode_list_prim_u_8_strict(arr[4]),
+      fixedBytes: dco_decode_u_8_array_3(arr[5]),
     );
   }
 
@@ -55462,14 +55467,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
-    if (arr.length != 5)
-      throw Exception('unexpected arr length: expect 5 but see ${arr.length}');
+    if (arr.length != 6)
+      throw Exception('unexpected arr length: expect 6 but see ${arr.length}');
     return StructWithShallowCollectionEqualityTwinSync(
       list: dco_decode_list_String(arr[0]),
       map: dco_decode_Map_String_String_None(arr[1]),
       setValues: dco_decode_Set_String_None(arr[2]),
       optionalList: dco_decode_opt_list_String(arr[3]),
       bytes: dco_decode_list_prim_u_8_strict(arr[4]),
+      fixedBytes: dco_decode_u_8_array_3(arr[5]),
     );
   }
 
@@ -55882,6 +55888,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   U8Array2 dco_decode_u_8_array_2(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return U8Array2(dco_decode_list_prim_u_8_strict(raw));
+  }
+
+  @protected
+  U8Array3 dco_decode_u_8_array_3(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return U8Array3(dco_decode_list_prim_u_8_strict(raw));
   }
 
   @protected
@@ -67479,12 +67491,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_setValues = sse_decode_Set_String_None(deserializer);
     var var_optionalList = sse_decode_opt_list_String(deserializer);
     var var_bytes = sse_decode_list_prim_u_8_strict(deserializer);
+    var var_fixedBytes = sse_decode_u_8_array_3(deserializer);
     return StructWithDeepCollectionEqualityTwinNormal(
         list: var_list,
         map: var_map,
         setValues: var_setValues,
         optionalList: var_optionalList,
-        bytes: var_bytes);
+        bytes: var_bytes,
+        fixedBytes: var_fixedBytes);
   }
 
   @protected
@@ -67497,12 +67511,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_setValues = sse_decode_Set_String_None(deserializer);
     var var_optionalList = sse_decode_opt_list_String(deserializer);
     var var_bytes = sse_decode_list_prim_u_8_strict(deserializer);
+    var var_fixedBytes = sse_decode_u_8_array_3(deserializer);
     return StructWithDeepCollectionEqualityTwinRustAsync(
         list: var_list,
         map: var_map,
         setValues: var_setValues,
         optionalList: var_optionalList,
-        bytes: var_bytes);
+        bytes: var_bytes,
+        fixedBytes: var_fixedBytes);
   }
 
   @protected
@@ -67515,12 +67531,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_setValues = sse_decode_Set_String_None(deserializer);
     var var_optionalList = sse_decode_opt_list_String(deserializer);
     var var_bytes = sse_decode_list_prim_u_8_strict(deserializer);
+    var var_fixedBytes = sse_decode_u_8_array_3(deserializer);
     return StructWithDeepCollectionEqualityTwinSync(
         list: var_list,
         map: var_map,
         setValues: var_setValues,
         optionalList: var_optionalList,
-        bytes: var_bytes);
+        bytes: var_bytes,
+        fixedBytes: var_fixedBytes);
   }
 
   @protected
@@ -67752,12 +67770,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_setValues = sse_decode_Set_String_None(deserializer);
     var var_optionalList = sse_decode_opt_list_String(deserializer);
     var var_bytes = sse_decode_list_prim_u_8_strict(deserializer);
+    var var_fixedBytes = sse_decode_u_8_array_3(deserializer);
     return StructWithShallowCollectionEqualityTwinNormal(
         list: var_list,
         map: var_map,
         setValues: var_setValues,
         optionalList: var_optionalList,
-        bytes: var_bytes);
+        bytes: var_bytes,
+        fixedBytes: var_fixedBytes);
   }
 
   @protected
@@ -67770,12 +67790,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_setValues = sse_decode_Set_String_None(deserializer);
     var var_optionalList = sse_decode_opt_list_String(deserializer);
     var var_bytes = sse_decode_list_prim_u_8_strict(deserializer);
+    var var_fixedBytes = sse_decode_u_8_array_3(deserializer);
     return StructWithShallowCollectionEqualityTwinRustAsync(
         list: var_list,
         map: var_map,
         setValues: var_setValues,
         optionalList: var_optionalList,
-        bytes: var_bytes);
+        bytes: var_bytes,
+        fixedBytes: var_fixedBytes);
   }
 
   @protected
@@ -67788,12 +67810,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_setValues = sse_decode_Set_String_None(deserializer);
     var var_optionalList = sse_decode_opt_list_String(deserializer);
     var var_bytes = sse_decode_list_prim_u_8_strict(deserializer);
+    var var_fixedBytes = sse_decode_u_8_array_3(deserializer);
     return StructWithShallowCollectionEqualityTwinSync(
         list: var_list,
         map: var_map,
         setValues: var_setValues,
         optionalList: var_optionalList,
-        bytes: var_bytes);
+        bytes: var_bytes,
+        fixedBytes: var_fixedBytes);
   }
 
   @protected
@@ -68149,6 +68173,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_prim_u_8_strict(deserializer);
     return U8Array2(inner);
+  }
+
+  @protected
+  U8Array3 sse_decode_u_8_array_3(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner = sse_decode_list_prim_u_8_strict(deserializer);
+    return U8Array3(inner);
   }
 
   @protected
@@ -79141,6 +79172,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_Set_String_None(self.setValues, serializer);
     sse_encode_opt_list_String(self.optionalList, serializer);
     sse_encode_list_prim_u_8_strict(self.bytes, serializer);
+    sse_encode_u_8_array_3(self.fixedBytes, serializer);
   }
 
   @protected
@@ -79153,6 +79185,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_Set_String_None(self.setValues, serializer);
     sse_encode_opt_list_String(self.optionalList, serializer);
     sse_encode_list_prim_u_8_strict(self.bytes, serializer);
+    sse_encode_u_8_array_3(self.fixedBytes, serializer);
   }
 
   @protected
@@ -79164,6 +79197,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_Set_String_None(self.setValues, serializer);
     sse_encode_opt_list_String(self.optionalList, serializer);
     sse_encode_list_prim_u_8_strict(self.bytes, serializer);
+    sse_encode_u_8_array_3(self.fixedBytes, serializer);
   }
 
   @protected
@@ -79350,6 +79384,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_Set_String_None(self.setValues, serializer);
     sse_encode_opt_list_String(self.optionalList, serializer);
     sse_encode_list_prim_u_8_strict(self.bytes, serializer);
+    sse_encode_u_8_array_3(self.fixedBytes, serializer);
   }
 
   @protected
@@ -79362,6 +79397,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_Set_String_None(self.setValues, serializer);
     sse_encode_opt_list_String(self.optionalList, serializer);
     sse_encode_list_prim_u_8_strict(self.bytes, serializer);
+    sse_encode_u_8_array_3(self.fixedBytes, serializer);
   }
 
   @protected
@@ -79374,6 +79410,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_Set_String_None(self.setValues, serializer);
     sse_encode_opt_list_String(self.optionalList, serializer);
     sse_encode_list_prim_u_8_strict(self.bytes, serializer);
+    sse_encode_u_8_array_3(self.fixedBytes, serializer);
   }
 
   @protected
@@ -79667,6 +79704,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_u_8_array_2(U8Array2 self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_list_prim_u_8_strict(self.inner, serializer);
+  }
+
+  @protected
+  void sse_encode_u_8_array_3(U8Array3 self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_prim_u_8_strict(self.inner, serializer);
   }

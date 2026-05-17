@@ -42501,12 +42501,14 @@ impl SseDecode for crate::api::collection_equality::StructWithDeepCollectionEqua
         let mut var_setValues = <std::collections::HashSet<String>>::sse_decode(deserializer);
         let mut var_optionalList = <Option<Vec<String>>>::sse_decode(deserializer);
         let mut var_bytes = <Vec<u8>>::sse_decode(deserializer);
+        let mut var_fixedBytes = <[u8; 3]>::sse_decode(deserializer);
         return crate::api::collection_equality::StructWithDeepCollectionEqualityTwinNormal {
             list: var_list,
             map: var_map,
             set_values: var_setValues,
             optional_list: var_optionalList,
             bytes: var_bytes,
+            fixed_bytes: var_fixedBytes,
         };
     }
 }
@@ -42518,7 +42520,8 @@ let mut var_map = <std::collections::HashMap<String, String>>::sse_decode(deseri
 let mut var_setValues = <std::collections::HashSet<String>>::sse_decode(deserializer);
 let mut var_optionalList = <Option<Vec<String>>>::sse_decode(deserializer);
 let mut var_bytes = <Vec<u8>>::sse_decode(deserializer);
-return crate::api::pseudo_manual::collection_equality_twin_rust_async::StructWithDeepCollectionEqualityTwinRustAsync{list: var_list, map: var_map, set_values: var_setValues, optional_list: var_optionalList, bytes: var_bytes};}
+let mut var_fixedBytes = <[u8; 3]>::sse_decode(deserializer);
+return crate::api::pseudo_manual::collection_equality_twin_rust_async::StructWithDeepCollectionEqualityTwinRustAsync{list: var_list, map: var_map, set_values: var_setValues, optional_list: var_optionalList, bytes: var_bytes, fixed_bytes: var_fixedBytes};}
                 }
 
 impl SseDecode for crate::api::pseudo_manual::collection_equality_twin_sync::StructWithDeepCollectionEqualityTwinSync {
@@ -42528,7 +42531,8 @@ let mut var_map = <std::collections::HashMap<String, String>>::sse_decode(deseri
 let mut var_setValues = <std::collections::HashSet<String>>::sse_decode(deserializer);
 let mut var_optionalList = <Option<Vec<String>>>::sse_decode(deserializer);
 let mut var_bytes = <Vec<u8>>::sse_decode(deserializer);
-return crate::api::pseudo_manual::collection_equality_twin_sync::StructWithDeepCollectionEqualityTwinSync{list: var_list, map: var_map, set_values: var_setValues, optional_list: var_optionalList, bytes: var_bytes};}
+let mut var_fixedBytes = <[u8; 3]>::sse_decode(deserializer);
+return crate::api::pseudo_manual::collection_equality_twin_sync::StructWithDeepCollectionEqualityTwinSync{list: var_list, map: var_map, set_values: var_setValues, optional_list: var_optionalList, bytes: var_bytes, fixed_bytes: var_fixedBytes};}
                 }
 
 impl SseDecode for crate::api::misc_example::StructWithEnumTwinNormal {
@@ -42761,12 +42765,14 @@ impl SseDecode for crate::api::collection_equality::StructWithShallowCollectionE
         let mut var_setValues = <std::collections::HashSet<String>>::sse_decode(deserializer);
         let mut var_optionalList = <Option<Vec<String>>>::sse_decode(deserializer);
         let mut var_bytes = <Vec<u8>>::sse_decode(deserializer);
+        let mut var_fixedBytes = <[u8; 3]>::sse_decode(deserializer);
         return crate::api::collection_equality::StructWithShallowCollectionEqualityTwinNormal {
             list: var_list,
             map: var_map,
             set_values: var_setValues,
             optional_list: var_optionalList,
             bytes: var_bytes,
+            fixed_bytes: var_fixedBytes,
         };
     }
 }
@@ -42778,7 +42784,8 @@ let mut var_map = <std::collections::HashMap<String, String>>::sse_decode(deseri
 let mut var_setValues = <std::collections::HashSet<String>>::sse_decode(deserializer);
 let mut var_optionalList = <Option<Vec<String>>>::sse_decode(deserializer);
 let mut var_bytes = <Vec<u8>>::sse_decode(deserializer);
-return crate::api::pseudo_manual::collection_equality_twin_rust_async::StructWithShallowCollectionEqualityTwinRustAsync{list: var_list, map: var_map, set_values: var_setValues, optional_list: var_optionalList, bytes: var_bytes};}
+let mut var_fixedBytes = <[u8; 3]>::sse_decode(deserializer);
+return crate::api::pseudo_manual::collection_equality_twin_rust_async::StructWithShallowCollectionEqualityTwinRustAsync{list: var_list, map: var_map, set_values: var_setValues, optional_list: var_optionalList, bytes: var_bytes, fixed_bytes: var_fixedBytes};}
                 }
 
 impl SseDecode for crate::api::pseudo_manual::collection_equality_twin_sync::StructWithShallowCollectionEqualityTwinSync {
@@ -42788,7 +42795,8 @@ let mut var_map = <std::collections::HashMap<String, String>>::sse_decode(deseri
 let mut var_setValues = <std::collections::HashSet<String>>::sse_decode(deserializer);
 let mut var_optionalList = <Option<Vec<String>>>::sse_decode(deserializer);
 let mut var_bytes = <Vec<u8>>::sse_decode(deserializer);
-return crate::api::pseudo_manual::collection_equality_twin_sync::StructWithShallowCollectionEqualityTwinSync{list: var_list, map: var_map, set_values: var_setValues, optional_list: var_optionalList, bytes: var_bytes};}
+let mut var_fixedBytes = <[u8; 3]>::sse_decode(deserializer);
+return crate::api::pseudo_manual::collection_equality_twin_sync::StructWithShallowCollectionEqualityTwinSync{list: var_list, map: var_map, set_values: var_setValues, optional_list: var_optionalList, bytes: var_bytes, fixed_bytes: var_fixedBytes};}
                 }
 
 impl SseDecode for crate::api::structure::StructWithTwoFieldTwinNormal {
@@ -43182,6 +43190,14 @@ impl SseDecode for [u8; 1600] {
 }
 
 impl SseDecode for [u8; 2] {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <Vec<u8>>::sse_decode(deserializer);
+        return flutter_rust_bridge::for_generated::from_vec_to_array(inner);
+    }
+}
+
+impl SseDecode for [u8; 3] {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <Vec<u8>>::sse_decode(deserializer);
@@ -52123,6 +52139,7 @@ impl flutter_rust_bridge::IntoDart
             self.set_values.into_into_dart().into_dart(),
             self.optional_list.into_into_dart().into_dart(),
             self.bytes.into_into_dart().into_dart(),
+            self.fixed_bytes.into_into_dart().into_dart(),
         ]
         .into_dart()
     }
@@ -52150,7 +52167,8 @@ impl flutter_rust_bridge::IntoDart for crate::api::pseudo_manual::collection_equ
 self.map.into_into_dart().into_dart(),
 self.set_values.into_into_dart().into_dart(),
 self.optional_list.into_into_dart().into_dart(),
-self.bytes.into_into_dart().into_dart()
+self.bytes.into_into_dart().into_dart(),
+self.fixed_bytes.into_into_dart().into_dart()
                 ].into_dart()
                 }
             }
@@ -52168,7 +52186,8 @@ impl flutter_rust_bridge::IntoDart for crate::api::pseudo_manual::collection_equ
 self.map.into_into_dart().into_dart(),
 self.set_values.into_into_dart().into_dart(),
 self.optional_list.into_into_dart().into_dart(),
-self.bytes.into_into_dart().into_dart()
+self.bytes.into_into_dart().into_dart(),
+self.fixed_bytes.into_into_dart().into_dart()
                 ].into_dart()
                 }
             }
@@ -52648,6 +52667,7 @@ impl flutter_rust_bridge::IntoDart
             self.set_values.into_into_dart().into_dart(),
             self.optional_list.into_into_dart().into_dart(),
             self.bytes.into_into_dart().into_dart(),
+            self.fixed_bytes.into_into_dart().into_dart(),
         ]
         .into_dart()
     }
@@ -52675,7 +52695,8 @@ impl flutter_rust_bridge::IntoDart for crate::api::pseudo_manual::collection_equ
 self.map.into_into_dart().into_dart(),
 self.set_values.into_into_dart().into_dart(),
 self.optional_list.into_into_dart().into_dart(),
-self.bytes.into_into_dart().into_dart()
+self.bytes.into_into_dart().into_dart(),
+self.fixed_bytes.into_into_dart().into_dart()
                 ].into_dart()
                 }
             }
@@ -52693,7 +52714,8 @@ impl flutter_rust_bridge::IntoDart for crate::api::pseudo_manual::collection_equ
 self.map.into_into_dart().into_dart(),
 self.set_values.into_into_dart().into_dart(),
 self.optional_list.into_into_dart().into_dart(),
-self.bytes.into_into_dart().into_dart()
+self.bytes.into_into_dart().into_dart(),
+self.fixed_bytes.into_into_dart().into_dart()
                 ].into_dart()
                 }
             }
@@ -62623,6 +62645,7 @@ impl SseEncode for crate::api::collection_equality::StructWithDeepCollectionEqua
         <std::collections::HashSet<String>>::sse_encode(self.set_values, serializer);
         <Option<Vec<String>>>::sse_encode(self.optional_list, serializer);
         <Vec<u8>>::sse_encode(self.bytes, serializer);
+        <[u8; 3]>::sse_encode(self.fixed_bytes, serializer);
     }
 }
 
@@ -62632,7 +62655,8 @@ impl SseEncode for crate::api::pseudo_manual::collection_equality_twin_rust_asyn
 <std::collections::HashMap<String, String>>::sse_encode(self.map, serializer);
 <std::collections::HashSet<String>>::sse_encode(self.set_values, serializer);
 <Option<Vec<String>>>::sse_encode(self.optional_list, serializer);
-<Vec<u8>>::sse_encode(self.bytes, serializer);}
+<Vec<u8>>::sse_encode(self.bytes, serializer);
+<[u8; 3]>::sse_encode(self.fixed_bytes, serializer);}
                 }
 
 impl SseEncode for crate::api::pseudo_manual::collection_equality_twin_sync::StructWithDeepCollectionEqualityTwinSync {
@@ -62641,7 +62665,8 @@ impl SseEncode for crate::api::pseudo_manual::collection_equality_twin_sync::Str
 <std::collections::HashMap<String, String>>::sse_encode(self.map, serializer);
 <std::collections::HashSet<String>>::sse_encode(self.set_values, serializer);
 <Option<Vec<String>>>::sse_encode(self.optional_list, serializer);
-<Vec<u8>>::sse_encode(self.bytes, serializer);}
+<Vec<u8>>::sse_encode(self.bytes, serializer);
+<[u8; 3]>::sse_encode(self.fixed_bytes, serializer);}
                 }
 
 impl SseEncode for crate::api::misc_example::StructWithEnumTwinNormal {
@@ -62822,6 +62847,7 @@ impl SseEncode for crate::api::collection_equality::StructWithShallowCollectionE
         <std::collections::HashSet<String>>::sse_encode(self.set_values, serializer);
         <Option<Vec<String>>>::sse_encode(self.optional_list, serializer);
         <Vec<u8>>::sse_encode(self.bytes, serializer);
+        <[u8; 3]>::sse_encode(self.fixed_bytes, serializer);
     }
 }
 
@@ -62831,7 +62857,8 @@ impl SseEncode for crate::api::pseudo_manual::collection_equality_twin_rust_asyn
 <std::collections::HashMap<String, String>>::sse_encode(self.map, serializer);
 <std::collections::HashSet<String>>::sse_encode(self.set_values, serializer);
 <Option<Vec<String>>>::sse_encode(self.optional_list, serializer);
-<Vec<u8>>::sse_encode(self.bytes, serializer);}
+<Vec<u8>>::sse_encode(self.bytes, serializer);
+<[u8; 3]>::sse_encode(self.fixed_bytes, serializer);}
                 }
 
 impl SseEncode for crate::api::pseudo_manual::collection_equality_twin_sync::StructWithShallowCollectionEqualityTwinSync {
@@ -62840,7 +62867,8 @@ impl SseEncode for crate::api::pseudo_manual::collection_equality_twin_sync::Str
 <std::collections::HashMap<String, String>>::sse_encode(self.map, serializer);
 <std::collections::HashSet<String>>::sse_encode(self.set_values, serializer);
 <Option<Vec<String>>>::sse_encode(self.optional_list, serializer);
-<Vec<u8>>::sse_encode(self.bytes, serializer);}
+<Vec<u8>>::sse_encode(self.bytes, serializer);
+<[u8; 3]>::sse_encode(self.fixed_bytes, serializer);}
                 }
 
 impl SseEncode for crate::api::structure::StructWithTwoFieldTwinNormal {
@@ -63203,6 +63231,19 @@ impl SseEncode for [u8; 1600] {
 }
 
 impl SseEncode for [u8; 2] {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<u8>>::sse_encode(
+            {
+                let boxed: Box<[_]> = Box::new(self);
+                boxed.into_vec()
+            },
+            serializer,
+        );
+    }
+}
+
+impl SseEncode for [u8; 3] {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <Vec<u8>>::sse_encode(
