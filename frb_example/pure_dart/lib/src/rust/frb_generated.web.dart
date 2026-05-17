@@ -4908,6 +4908,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   DateTime dco_decode_box_autoadd_Chrono_Utc(dynamic raw);
 
   @protected
+  FutureOr<void> Function(String)
+      dco_decode_box_autoadd_DartFn_Inputs_String_Output_unit_AnyhowException(
+          dynamic raw);
+
+  @protected
   Object dco_decode_box_autoadd_DartOpaque(dynamic raw);
 
   @protected
@@ -8977,6 +8982,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   DateTime? dco_decode_opt_box_autoadd_Chrono_Utc(dynamic raw);
+
+  @protected
+  FutureOr<void> Function(String)?
+      dco_decode_opt_box_autoadd_DartFn_Inputs_String_Output_unit_AnyhowException(
+          dynamic raw);
 
   @protected
   Object? dco_decode_opt_box_autoadd_DartOpaque(dynamic raw);
@@ -34727,6 +34737,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       DateTime self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_DartFn_Inputs_String_Output_unit_AnyhowException(
+      FutureOr<void> Function(String) self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_DartOpaque(Object self, SseSerializer serializer);
 
   @protected
@@ -39106,6 +39120,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_opt_box_autoadd_Chrono_Utc(
       DateTime? self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_opt_box_autoadd_DartFn_Inputs_String_Output_unit_AnyhowException(
+          FutureOr<void> Function(String)? self, SseSerializer serializer);
 
   @protected
   void sse_encode_opt_box_autoadd_DartOpaque(
@@ -59810,6 +59829,41 @@ class RustLibWire implements BaseWire {
           .wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_one_arg_twin_sse(
               port_, ptr_, rust_vec_len_, data_len_);
 
+  void wire__crate__api__dart_fn__rust_call_dart_optional_twin_normal(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule.wire__crate__api__dart_fn__rust_call_dart_optional_twin_normal(
+          port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_optional_twin_rust_async(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_optional_twin_rust_async(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_optional_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_optional_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_optional_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_optional_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
   void wire__crate__api__dart_fn__rust_call_dart_return_result_twin_normal(
           NativePortType port_,
           PlatformPointer callback,
@@ -78173,6 +78227,33 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external void
       wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_one_arg_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void wire__crate__api__dart_fn__rust_call_dart_optional_twin_normal(
+      NativePortType port_,
+      PlatformGeneralizedUint8ListPtr ptr_,
+      int rust_vec_len_,
+      int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_optional_twin_rust_async(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__dart_fn_twin_rust_async_sse__rust_call_dart_optional_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__dart_fn_twin_sse__rust_call_dart_optional_twin_sse(
           NativePortType port_,
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,

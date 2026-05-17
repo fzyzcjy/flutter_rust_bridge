@@ -1,7 +1,9 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::codec::sse::lang::rust::RustLang;
 use crate::codegen::generator::codec::sse::lang::Lang;
-use crate::codegen::generator::codec::sse::misc::{rust_sse_codec_type, with_sse_extra_types};
+use crate::codegen::generator::codec::sse::misc::{
+    rust_sse_codec_mir_type, rust_sse_codec_type, with_sse_extra_types,
+};
 use crate::codegen::generator::codec::sse::ty::{CodecSseTy, CodecSseTyContext};
 use crate::codegen::generator::codec::structs::{CodecMode, EncodeOrDecode};
 use crate::codegen::generator::misc::comments::generate_codec_comments;
@@ -10,13 +12,17 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::sse::base::Wir
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::codec::sse::ty::CodecSseTyTrait;
+use itertools::Itertools;
 
 pub(super) fn generate_encode_or_decode(
     context: WireRustCodecSseGeneratorContext,
     types: &[MirType],
     mode: EncodeOrDecode,
 ) -> WireRustCodecOutputSpec {
-    let types = with_sse_extra_types(types);
+    let types = (with_sse_extra_types(types).into_iter())
+        .map(rust_sse_codec_mir_type)
+        .unique()
+        .collect_vec();
 
     let mut inner = Default::default();
     inner += (types.iter())

@@ -20,6 +20,12 @@ Future<void> rustCallDartOneArgTwinSse(
         .crateApiPseudoManualDartFnTwinSseRustCallDartOneArgTwinSse(
             callback: callback);
 
+Future<void> rustCallDartOptionalTwinSse(
+        {FutureOr<void> Function(String)? callback}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualDartFnTwinSseRustCallDartOptionalTwinSse(
+            callback: callback);
+
 Future<void> rustCallDartTwoArgsTwinSse(
         {required FutureOr<void> Function(
                 String, DemoStructForRustCallDartTwinSse)

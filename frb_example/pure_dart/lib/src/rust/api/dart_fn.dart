@@ -18,6 +18,11 @@ Future<void> rustCallDartOneArgTwinNormal(
     RustLib.instance.api
         .crateApiDartFnRustCallDartOneArgTwinNormal(callback: callback);
 
+Future<void> rustCallDartOptionalTwinNormal(
+        {FutureOr<void> Function(String)? callback}) =>
+    RustLib.instance.api
+        .crateApiDartFnRustCallDartOptionalTwinNormal(callback: callback);
+
 Future<void> rustCallDartTwoArgsTwinNormal(
         {required FutureOr<void> Function(
                 String, DemoStructForRustCallDartTwinNormal)

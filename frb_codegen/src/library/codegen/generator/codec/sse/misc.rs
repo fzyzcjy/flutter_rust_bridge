@@ -1,3 +1,5 @@
+use crate::codegen::ir::mir::ty::boxed::MirTypeBoxed;
+use crate::codegen::ir::mir::ty::optional::MirTypeOptional;
 use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::codegen::ir::mir::ty::MirType::{Boxed, DartFn, Optional};
@@ -27,6 +29,18 @@ pub(crate) fn rust_sse_codec_type(ty: &MirType) -> String {
         Boxed(mir) if mir.exist_in_real_api => format!("Box<{}>", rust_sse_codec_type(&mir.inner)),
         Boxed(mir) => rust_sse_codec_type(&mir.inner),
         _ => ty.rust_api_type(),
+    }
+}
+
+pub(crate) fn rust_sse_codec_mir_type(ty: MirType) -> MirType {
+    match ty {
+        DartFn(mir) => mir.get_delegate(),
+        Optional(mir) => Optional(MirTypeOptional::new(rust_sse_codec_mir_type(*mir.inner))),
+        Boxed(mir) => Boxed(MirTypeBoxed {
+            exist_in_real_api: mir.exist_in_real_api,
+            inner: Box::new(rust_sse_codec_mir_type(*mir.inner)),
+        }),
+        _ => ty,
     }
 }
 
