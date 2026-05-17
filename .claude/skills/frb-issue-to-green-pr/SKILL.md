@@ -13,7 +13,7 @@ This skill orchestrates the narrower FRB skills. Do not duplicate their detailed
 
 Always read these first:
 
-1. `tom-frb-env` for Tom's local FRB Docker workflow.
+1. The applicable user-level FRB workflow or environment skill, if one exists. For example, Tom's environment may provide `tom-frb-env`; other users may have different local rules.
 2. `frb-develop-feature` for the reproduce -> fix -> final regression workflow.
 
 Read these when entering the matching phase:
