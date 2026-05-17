@@ -1,3 +1,4 @@
+use crate::codegen::generator::codec::sse::misc::contains_dart_fn;
 use crate::codegen::generator::codec::sse::ty::*;
 use crate::library::codegen::generator::codec::sse::lang::LangTrait;
 
@@ -16,6 +17,10 @@ impl CodecSseTyTrait for BoxedCodecSseTy<'_> {
     }
 
     fn generate_decode(&self, lang: &Lang) -> Option<String> {
+        if matches!(lang, Lang::DartLang(_)) && contains_dart_fn(&self.mir.inner) {
+            return None;
+        }
+
         let wrapper = match lang {
             Lang::DartLang(_) => "",
             Lang::RustLang(_) => "Box::new",

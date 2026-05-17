@@ -30828,6 +30828,27 @@ impl SseDecode for bool {
     }
 }
 
+impl SseDecode for f32 {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        deserializer.cursor.read_f32::<NativeEndian>().unwrap()
+    }
+}
+
+impl SseDecode for web_audio_api::PeriodicWaveOptions {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_real = <Option<Vec<f32>>>::sse_decode(deserializer);
+        let mut var_imag = <Option<Vec<f32>>>::sse_decode(deserializer);
+        let mut var_disableNormalization = <bool>::sse_decode(deserializer);
+        return web_audio_api::PeriodicWaveOptions {
+            real: var_real,
+            imag: var_imag,
+            disable_normalization: var_disableNormalization,
+        };
+    }
+}
+
 impl SseDecode for web_audio_api::node::ChannelCountMode {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -30948,13 +30969,6 @@ impl SseDecode for web_audio_api::node::DynamicsCompressorOptions {
             threshold: var_threshold,
             audio_node_options: var_audioNodeOptions,
         };
-    }
-}
-
-impl SseDecode for f32 {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        deserializer.cursor.read_f32::<NativeEndian>().unwrap()
     }
 }
 
@@ -31218,20 +31232,6 @@ impl SseDecode for web_audio_api::node::PanningModelType {
             0 => web_audio_api::node::PanningModelType::EqualPower,
             1 => web_audio_api::node::PanningModelType::HRTF,
             _ => unreachable!("Invalid variant for PanningModelType: {}", inner),
-        };
-    }
-}
-
-impl SseDecode for web_audio_api::PeriodicWaveOptions {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        let mut var_real = <Option<Vec<f32>>>::sse_decode(deserializer);
-        let mut var_imag = <Option<Vec<f32>>>::sse_decode(deserializer);
-        let mut var_disableNormalization = <bool>::sse_decode(deserializer);
-        return web_audio_api::PeriodicWaveOptions {
-            real: var_real,
-            imag: var_imag,
-            disable_normalization: var_disableNormalization,
         };
     }
 }
@@ -37608,6 +37608,22 @@ impl SseEncode for bool {
     }
 }
 
+impl SseEncode for f32 {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        serializer.cursor.write_f32::<NativeEndian>(self).unwrap();
+    }
+}
+
+impl SseEncode for web_audio_api::PeriodicWaveOptions {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Option<Vec<f32>>>::sse_encode(self.real, serializer);
+        <Option<Vec<f32>>>::sse_encode(self.imag, serializer);
+        <bool>::sse_encode(self.disable_normalization, serializer);
+    }
+}
+
 impl SseEncode for web_audio_api::node::ChannelCountMode {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -37708,13 +37724,6 @@ impl SseEncode for web_audio_api::node::DynamicsCompressorOptions {
         <f32>::sse_encode(self.release, serializer);
         <f32>::sse_encode(self.threshold, serializer);
         <web_audio_api::node::AudioNodeOptions>::sse_encode(self.audio_node_options, serializer);
-    }
-}
-
-impl SseEncode for f32 {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        serializer.cursor.write_f32::<NativeEndian>(self).unwrap();
     }
 }
 
@@ -37947,15 +37956,6 @@ impl SseEncode for web_audio_api::node::PanningModelType {
             },
             serializer,
         );
-    }
-}
-
-impl SseEncode for web_audio_api::PeriodicWaveOptions {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        <Option<Vec<f32>>>::sse_encode(self.real, serializer);
-        <Option<Vec<f32>>>::sse_encode(self.imag, serializer);
-        <bool>::sse_encode(self.disable_normalization, serializer);
     }
 }
 

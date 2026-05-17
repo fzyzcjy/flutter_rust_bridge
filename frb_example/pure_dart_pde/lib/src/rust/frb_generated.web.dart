@@ -2354,6 +2354,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   DateTime dco_decode_box_autoadd_Chrono_Utc(dynamic raw);
 
   @protected
+  FutureOr<void> Function(String)
+      dco_decode_box_autoadd_DartFn_Inputs_String_Output_unit_AnyhowException(
+          dynamic raw);
+
+  @protected
   Object dco_decode_box_autoadd_DartOpaque(dynamic raw);
 
   @protected
@@ -4440,6 +4445,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   DateTime? dco_decode_opt_box_autoadd_Chrono_Utc(dynamic raw);
+
+  @protected
+  FutureOr<void> Function(String)?
+      dco_decode_opt_box_autoadd_DartFn_Inputs_String_Output_unit_AnyhowException(
+          dynamic raw);
 
   @protected
   Object? dco_decode_opt_box_autoadd_DartOpaque(dynamic raw);
@@ -12466,6 +12476,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       DateTime self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_DartFn_Inputs_String_Output_unit_AnyhowException(
+      FutureOr<void> Function(String) self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_DartOpaque(Object self, SseSerializer serializer);
 
   @protected
@@ -14749,6 +14763,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_opt_box_autoadd_Chrono_Utc(
       DateTime? self, SseSerializer serializer);
+
+  @protected
+  void
+      sse_encode_opt_box_autoadd_DartFn_Inputs_String_Output_unit_AnyhowException(
+          FutureOr<void> Function(String)? self, SseSerializer serializer);
 
   @protected
   void sse_encode_opt_box_autoadd_DartOpaque(

@@ -20,6 +20,12 @@ Future<void> rustCallDartOneArgTwinRustAsyncSse(
         .crateApiPseudoManualDartFnTwinRustAsyncSseRustCallDartOneArgTwinRustAsyncSse(
             callback: callback);
 
+Future<void> rustCallDartOptionalTwinRustAsyncSse(
+        {FutureOr<void> Function(String)? callback}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualDartFnTwinRustAsyncSseRustCallDartOptionalTwinRustAsyncSse(
+            callback: callback);
+
 Future<void> rustCallDartTwoArgsTwinRustAsyncSse(
         {required FutureOr<void> Function(
                 String, DemoStructForRustCallDartTwinRustAsyncSse)
