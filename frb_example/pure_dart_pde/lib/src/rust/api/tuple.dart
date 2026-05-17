@@ -13,3 +13,6 @@ Future<(String, int)> testTupleTwinNormal({(String, int)? value}) =>
 
 Future<void> testTuple2TwinNormal({required List<(String, int)> value}) =>
     RustLib.instance.api.crateApiTupleTestTuple2TwinNormal(value: value);
+
+Future<(double, double)?> returnOptionalF32TupleTwinNormal() =>
+    RustLib.instance.api.crateApiTupleReturnOptionalF32TupleTwinNormal();

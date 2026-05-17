@@ -15,3 +15,8 @@ pub async fn test_tuple_twin_rust_async_sse(value: Option<(String, i32)>) -> (St
 pub async fn test_tuple_2_twin_rust_async_sse(value: Vec<(String, i32)>) {
     drop(value)
 }
+
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn return_optional_f_32_tuple_twin_rust_async_sse() -> Option<(f32, f32)> {
+    Some((1.25, 2.5))
+}
