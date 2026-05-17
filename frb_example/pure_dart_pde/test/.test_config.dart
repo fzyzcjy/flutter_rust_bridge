@@ -3,11 +3,9 @@
 import 'dart:async';
 
 import 'package:frb_example_pure_dart_pde/src/rust/frb_generated.dart';
+import 'package:test/test.dart';
 
 Future<void> testExecutable(FutureOr<void> Function() testMain) async {
-  try {
-    await testMain();
-  } finally {
-    RustLib.dispose();
-  }
+  tearDownAll(RustLib.dispose);
+  await testMain();
 }
