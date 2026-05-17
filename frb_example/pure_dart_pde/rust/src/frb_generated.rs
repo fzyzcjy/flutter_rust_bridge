@@ -27261,11 +27261,9 @@ fn wire__crate__api__dart_fn__rust_call_dart_optional_twin_normal_impl(
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_callback =
-                decode_Optional_DartFn_Inputs_String_Output_unit_AnyhowException(<Option<
-                    flutter_rust_bridge::DartOpaque,
-                >>::sse_decode(
-                    &mut deserializer,
-                ));
+                decode_Optional_opt_box_autoadd_DartFn_Inputs_String_Output_unit_AnyhowException(
+                    <Option<flutter_rust_bridge::DartOpaque>>::sse_decode(&mut deserializer),
+                );
             deserializer.end();
             move |context| async move {
                 transform_result_sse::<_, ()>(
@@ -27291,7 +27289,7 @@ fn wire__crate__api__pseudo_manual__dart_fn_twin_rust_async__rust_call_dart_opti
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_async::<flutter_rust_bridge::for_generated::SseCodec,_,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "rust_call_dart_optional_twin_rust_async", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || {
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_callback = decode_Optional_DartFn_Inputs_String_Output_unit_AnyhowException(<Option<flutter_rust_bridge::DartOpaque>>::sse_decode(&mut deserializer));deserializer.end(); move |context| async move {
+            let api_callback = decode_Optional_opt_box_autoadd_DartFn_Inputs_String_Output_unit_AnyhowException(<Option<flutter_rust_bridge::DartOpaque>>::sse_decode(&mut deserializer));deserializer.end(); move |context| async move {
                     transform_result_sse::<_, ()>((move || async move {
                          let output_ok = Result::<_,()>::Ok({ crate::api::pseudo_manual::dart_fn_twin_rust_async::rust_call_dart_optional_twin_rust_async(api_callback).await; })?;   Ok(output_ok)
                     })().await)
@@ -31980,7 +31978,7 @@ flutter_rust_bridge::frb_generated_moi_arc_impl_value!(
     flutter_rust_bridge::for_generated::RustAutoOpaqueInner<TypeForIgnoreAll>
 );
 flutter_rust_bridge::frb_generated_moi_arc_impl_value!(i32);
-fn decode_Optional_DartFn_Inputs_String_Output_unit_AnyhowException(
+fn decode_Optional_opt_box_autoadd_DartFn_Inputs_String_Output_unit_AnyhowException(
     raw: Option<flutter_rust_bridge::DartOpaque>,
 ) -> Option<Box<dyn Fn(String) -> flutter_rust_bridge::DartFnFuture<()> + Send + Sync>> {
     raw.map(|dart_opaque| {
