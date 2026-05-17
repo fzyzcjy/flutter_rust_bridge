@@ -2,6 +2,7 @@ name: Precommit Autofix Comment
 
 on:
   workflow_run:
+    # This matches the workflow's `name:`, not its filename.
     workflows: ["Precommit Autofix"]
     types: [completed]
 
@@ -14,6 +15,8 @@ jobs:
         github.event.workflow_run.conclusion == 'success'
       }}
     runs-on: ubuntu-latest
+    # This trusted follow-up is loaded from the base repository default branch.
+    # It may write the PR comment, but must not check out or execute fork code.
     permissions:
       actions: read
       contents: read

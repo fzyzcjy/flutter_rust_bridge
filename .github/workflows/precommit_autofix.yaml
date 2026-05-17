@@ -12,6 +12,9 @@ jobs:
   precommit_autofix:
     name: Generate precommit autofix patch
     runs-on: ubuntu-latest
+    # This job checks out and executes pull request code, including code from
+    # external forks. Keep it read-only; PR comments are written by the trusted
+    # workflow_run follow-up in precommit_autofix_comment.yaml.
     permissions:
       contents: read
 
