@@ -15,5 +15,14 @@ Future<void> main() async {
     expect(await minimalAdder(a: 100, b: 200), 300);
     print('Action: Call rust (after)');
   });
+
+  test('dart call minimalOptionalCallback', () async {
+    final callbackCalls = <String>[];
+
+    await minimalOptionalCallback(callback: callbackCalls.add);
+    await minimalOptionalCallback(callback: null);
+
+    expect(callbackCalls, ['optional']);
+  });
   print('Action: Configure tests (end)');
 }

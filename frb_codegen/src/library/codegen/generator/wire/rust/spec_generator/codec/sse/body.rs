@@ -1,7 +1,7 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::codec::sse::lang::rust::RustLang;
 use crate::codegen::generator::codec::sse::lang::Lang;
-use crate::codegen::generator::codec::sse::misc::with_sse_extra_types;
+use crate::codegen::generator::codec::sse::misc::{rust_sse_codec_type, with_sse_extra_types};
 use crate::codegen::generator::codec::sse::ty::{CodecSseTy, CodecSseTyContext};
 use crate::codegen::generator::codec::structs::{CodecMode, EncodeOrDecode};
 use crate::codegen::generator::misc::comments::generate_codec_comments;
@@ -10,7 +10,6 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::sse::base::Wir
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::library::codegen::generator::codec::sse::ty::CodecSseTyTrait;
-use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 
 pub(super) fn generate_encode_or_decode(
     context: WireRustCodecSseGeneratorContext,
@@ -31,7 +30,7 @@ fn generate_encode_or_decode_for_type(
     context: WireRustCodecSseGeneratorContext,
     mode: EncodeOrDecode,
 ) -> Acc<WireRustOutputCode> {
-    let rust_api_type = ty.rust_api_type();
+    let rust_api_type = rust_sse_codec_type(ty);
     let body = CodecSseTy::new(
         ty.clone(),
         CodecSseTyContext::new(context.mir_pack, context.api_dart_config),
