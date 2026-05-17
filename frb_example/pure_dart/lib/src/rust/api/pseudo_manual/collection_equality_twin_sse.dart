@@ -6,6 +6,7 @@ import 'dart:io';
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
 import '../../frb_generated.dart';
+import '../collection_equality.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 Future<StructWithDeepCollectionEqualityTwinSse>
@@ -28,6 +29,7 @@ class StructWithDeepCollectionEqualityTwinSse {
   final Set<String> setValues;
   final List<String>? optionalList;
   final Uint8List bytes;
+  final U8Array3 fixedBytes;
 
   const StructWithDeepCollectionEqualityTwinSse({
     required this.list,
@@ -35,6 +37,7 @@ class StructWithDeepCollectionEqualityTwinSse {
     required this.setValues,
     this.optionalList,
     required this.bytes,
+    required this.fixedBytes,
   });
 
   @override
@@ -43,7 +46,8 @@ class StructWithDeepCollectionEqualityTwinSse {
       const DeepCollectionEquality().hash(map) ^
       const DeepCollectionEquality().hash(setValues) ^
       const DeepCollectionEquality().hash(optionalList) ^
-      const DeepCollectionEquality().hash(bytes);
+      const DeepCollectionEquality().hash(bytes) ^
+      const DeepCollectionEquality().hash(fixedBytes);
 
   @override
   bool operator ==(Object other) =>
@@ -55,7 +59,8 @@ class StructWithDeepCollectionEqualityTwinSse {
           const DeepCollectionEquality().equals(setValues, other.setValues) &&
           const DeepCollectionEquality()
               .equals(optionalList, other.optionalList) &&
-          const DeepCollectionEquality().equals(bytes, other.bytes);
+          const DeepCollectionEquality().equals(bytes, other.bytes) &&
+          const DeepCollectionEquality().equals(fixedBytes, other.fixedBytes);
 }
 
 class StructWithShallowCollectionEqualityTwinSse {
@@ -64,6 +69,7 @@ class StructWithShallowCollectionEqualityTwinSse {
   final Set<String> setValues;
   final List<String>? optionalList;
   final Uint8List bytes;
+  final U8Array3 fixedBytes;
 
   const StructWithShallowCollectionEqualityTwinSse({
     required this.list,
@@ -71,6 +77,7 @@ class StructWithShallowCollectionEqualityTwinSse {
     required this.setValues,
     this.optionalList,
     required this.bytes,
+    required this.fixedBytes,
   });
 
   @override
@@ -79,7 +86,8 @@ class StructWithShallowCollectionEqualityTwinSse {
       map.hashCode ^
       setValues.hashCode ^
       optionalList.hashCode ^
-      bytes.hashCode;
+      bytes.hashCode ^
+      fixedBytes.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -90,5 +98,6 @@ class StructWithShallowCollectionEqualityTwinSse {
           map == other.map &&
           setValues == other.setValues &&
           optionalList == other.optionalList &&
-          bytes == other.bytes;
+          bytes == other.bytes &&
+          fixedBytes == other.fixedBytes;
 }
