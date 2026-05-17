@@ -16,7 +16,7 @@ description: Use when fixing bugs, adding regression tests, adding new features,
 | Reproduce / Iterate | frb_example/dart_minimal | Fast compile = quick feedback |
 | Migrate final regression / feature test | frb_example/pure_dart + pure_dart_pde | Twin tests = automatic coverage of all codegen modes |
 
-For bugs, first make the failure reproducible in `dart_minimal`, fix it there, and only then move the regression test to `pure_dart`. For features, follow the same fast-iteration loop before adding the final `pure_dart` coverage.
+For bugs, first make the failure reproducible in `dart_minimal`, write down the exact reproduction report, fix it there, and only then move the regression test to `pure_dart`. For features, follow the same fast-iteration loop before adding the final `pure_dart` coverage.
 
 Write one final test → get ~6 variants automatically via TwinNormal suffix.
 
@@ -27,6 +27,39 @@ Write one final test → get ~6 variants automatically via TwinNormal suffix.
 - Writing tests for new or existing functionality
 - Compilation feels slow (use frb_example/dart_minimal instead)
 
+## Bug Fix Reproduction Report
+
+For every bug fix, the PR description must include a reproduction report before the fix is presented as convincing.
+
+Capture the report immediately after reproducing the bug and before changing the fix code. It must include:
+
+- **Baseline commit:** the exact commit hash, pushed and accessible to reviewers, used to reproduce the bug
+- **Mechanical steps:** copy-pasteable commands or file edits, using code blocks for multi-line changes, that reproduce the bug from that commit
+- **Observed failure:** the concrete failing command, error message, panic, assertion, or incorrect output
+- **Expected behavior:** the behavior that should happen after the fix
+
+Use this PR description shape:
+
+````markdown
+## Reproduction
+
+Baseline commit: `<commit-hash>`
+
+Steps:
+1. `<command or edit>`
+2. `<command>`
+
+Observed:
+```text
+<error output>
+```
+
+Expected:
+<expected behavior>
+````
+
+If the reproduction needs temporary test code in `frb_example/dart_minimal`, describe the exact temporary Rust/Dart edits in the steps. Keep the temporary reproducer only while debugging, then migrate the final regression test to `frb_example/pure_dart`.
+
 ## Implementation
 
 ```dot
@@ -34,11 +67,16 @@ digraph workflow {
     rankdir=TB;
     node [shape=box];
 
-    "Write reproducer/test + impl in dart_minimal" -> "Run focused test";
+    "Write reproducer/test in dart_minimal" -> "Run reproducer";
+    "Run reproducer" -> "Failure reproduced?" [shape=diamond];
+    "Failure reproduced?" -> "Write reproduction report" [label="yes"];
+    "Failure reproduced?" -> "Adjust reproducer" [label="no"];
+    "Adjust reproducer" -> "Run reproducer";
+    "Write reproduction report" -> "Fix";
+    "Fix" -> "Run focused test";
     "Run focused test" -> "Pass?" [shape=diamond];
     "Pass?" -> "Move final test to pure_dart" [label="yes"];
     "Pass?" -> "Fix" [label="no"];
-    "Fix" -> "Run focused test";
     "Move final test to pure_dart" -> "Add TwinNormal suffix" -> "Run code gen" -> "All tests pass?";
     "All tests pass?" -> "Done" [label="yes"];
     "All tests pass?" -> "Debug" [label="no"];
@@ -54,11 +92,15 @@ digraph workflow {
 
    For bug fixes, this test should fail before the fix and pass after the fix. There is usually no need to create any new files.
 
-2. **Add the implementation or fix:**
+2. **Run the reproducer and record the reproduction report:**
+
+   Before changing the fix code, save the baseline commit hash, exact commands or temporary edits, and the observed failure output. This report must go into the PR description.
+
+3. **Add the implementation or fix:**
 
    Usually need to modify `frb_codegen`, `frb_dart`, and/or `frb_rust`.
 
-3. **Run codegen and test:**
+4. **Run codegen and test:**
    ```bash
    (cd frb_example/dart_minimal && cargo run --manifest-path ../../frb_codegen/Cargo.toml -- generate)
    ./frb_internal test-dart-native --package frb_example/dart_minimal
@@ -66,7 +108,7 @@ digraph workflow {
 
    > **After codegen:** Check your user-level `remote-testing` rules. If codegen was run remotely, pull changes back to local.
 
-4. **Iterate until test passes**
+5. **Iterate until test passes**
 
    Keep the temporary `dart_minimal` reproducer while debugging. Remove or simplify it after the final regression test has been migrated to `pure_dart`.
 
