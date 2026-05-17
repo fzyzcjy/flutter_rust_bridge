@@ -41,9 +41,10 @@ Read these when entering the matching phase:
    - Read and follow `frb-develop-feature`; treat it as the source of truth for reproduction, iteration, local verification, regression coverage, and final example placement.
    - Keep generated-file edits produced by the appropriate generator, not by hand.
 
-4. Commit according to the active git policy.
+4. Commit each completed logical unit immediately.
+   - Make atomic commits as soon as a minimal unit is written; do not wait until the end of the task.
    - Stage only files intentionally changed for this task.
-   - Follow the user's active commit granularity, message, and amend rules.
+   - Always create a new commit unless the user explicitly asks to amend.
 
 5. Prepare and open the PR.
    - Follow `frb-prepare-pr`.
