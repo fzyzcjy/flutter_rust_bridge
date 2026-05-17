@@ -36,10 +36,11 @@ pub(crate) fn rust_sse_codec_mir_type(ty: MirType) -> MirType {
     match ty {
         DartFn(mir) => mir.get_delegate(),
         Optional(mir) => Optional(MirTypeOptional::new(rust_sse_codec_mir_type(*mir.inner))),
-        Boxed(mir) => Boxed(MirTypeBoxed {
-            exist_in_real_api: mir.exist_in_real_api,
+        Boxed(mir) if mir.exist_in_real_api => Boxed(MirTypeBoxed {
+            exist_in_real_api: true,
             inner: Box::new(rust_sse_codec_mir_type(*mir.inner)),
         }),
+        Boxed(mir) => rust_sse_codec_mir_type(*mir.inner),
         _ => ty,
     }
 }

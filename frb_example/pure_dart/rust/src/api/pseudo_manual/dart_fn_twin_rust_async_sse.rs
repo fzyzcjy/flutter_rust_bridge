@@ -26,7 +26,6 @@ pub async fn rust_call_dart_one_arg_twin_rust_async_sse(
 }
 
 #[flutter_rust_bridge::frb(serialize)]
-#[flutter_rust_bridge::frb(serialize)]
 pub async fn rust_call_dart_optional_twin_rust_async_sse(
     callback: Option<impl Fn(String) -> DartFnFuture<()>>,
 ) {
