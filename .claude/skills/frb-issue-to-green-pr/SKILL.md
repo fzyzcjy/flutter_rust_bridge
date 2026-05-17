@@ -33,10 +33,8 @@ Read these when entering the matching phase:
    - Identify the smallest observable failing behavior or missing capability.
    - Check `git status --short` and do not disturb unrelated user or multi-agent changes.
 
-2. Develop with a fast feedback loop.
-   - Follow `frb-develop-feature`: reproduce or prototype in `frb_example/dart_minimal` first when applicable.
-   - Add a regression test for bugs.
-   - Move the final coverage to `frb_example/pure_dart` with the required `TwinNormal` naming when applicable.
+2. Develop with the project feature or bug-fix workflow.
+   - Read and follow `frb-develop-feature`; treat it as the source of truth for reproduction, iteration, regression coverage, and final example placement.
    - Keep generated-file edits produced by the appropriate generator, not by hand.
 
 3. Verify locally with scope proportional to risk.
