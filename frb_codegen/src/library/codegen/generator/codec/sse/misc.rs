@@ -24,7 +24,8 @@ pub(crate) fn rust_sse_codec_type(ty: &MirType) -> String {
     match ty {
         DartFn(mir) => mir.get_delegate().rust_api_type(),
         Optional(mir) => format!("Option<{}>", rust_sse_codec_type(&mir.inner)),
-        Boxed(mir) if !mir.exist_in_real_api => rust_sse_codec_type(&mir.inner),
+        Boxed(mir) if mir.exist_in_real_api => format!("Box<{}>", rust_sse_codec_type(&mir.inner)),
+        Boxed(mir) => rust_sse_codec_type(&mir.inner),
         _ => ty.rust_api_type(),
     }
 }
