@@ -88,6 +88,7 @@ macro_rules! enable_frb_rust_to_dart_logging {
 
         #[doc(hidden)]
         #[flutter_rust_bridge::frb(init_dart_code = r#"
+                  if (!const bool.fromEnvironment('FRB_DISABLE_RUST_TO_DART_LOGGING')) {
                     kFrbDartLogging.init(
                       rustLogStream: frbInternalInitLogger(maxLevel: frbInternalLoggingMaxLevel()),
                       mapRecord: (record) => FrbLogRecordData(
@@ -101,6 +102,7 @@ macro_rules! enable_frb_rust_to_dart_logging {
                       setupDefaultOutput: frbInternalLoggingSetupDartLoggingOutput(),
                       disposeRustLogger: frbInternalDisposeLogger,
                     );
+                  }
 "#)]
         pub fn frb_internal_init_logger(
             sink: crate::frb_generated::StreamSink<FrbLogRecord>,

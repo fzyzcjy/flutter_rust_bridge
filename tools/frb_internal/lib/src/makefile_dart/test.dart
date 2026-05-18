@@ -387,12 +387,6 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
       // native-assets experiment was stabilized in Dart 3.10, so we no longer need the flag
       // VM service is automatically enabled in Dart 3.10+ when running tests
 
-      final testCommandPrefix = '${dartMode.name} $extraFlags test';
-      final testCommand = [
-        testCommandPrefix,
-        if (config.coverage) '--coverage="coverage"',
-      ].join(' ');
-
       // extra check for e.g. #1807
       await wrapMaybeSetExitIfChangedRaw(config.checkClean, () async {
         final extraEnv = {
@@ -400,17 +394,37 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
           // ...kEnvEnableRustBacktrace,
           ...rustEnvMap,
         };
-        if (_hasIsolatedDartTests(config.package)) {
-          for (final testFile in _dartTestFiles(config.package)) {
-            final command = testFile == 'test/with_vm_service_test.dart'
+        final testCommand =
+            '${dartMode.name} $extraFlags test ${config.coverage ? ' --coverage="coverage"' : ""}';
+
+        if (_hasPartiallyIsolatedDartTests(config.package)) {
+          final isolatedFiles = _isolatedDartTestFiles(config.package);
+          final regularFiles = _dartTestFiles(
+            config.package,
+          ).where((file) => !isolatedFiles.contains(file)).toList();
+          final regularTestCommand = testCommand.replaceFirst(
+            '${dartMode.name} ',
+            '${dartMode.name} -DFRB_DISABLE_RUST_TO_DART_LOGGING=true ',
+          );
+
+          await _runDartTestFiles(
+            command: regularTestCommand,
+            package: config.package,
+            testFiles: regularFiles,
+            extraEnv: extraEnv,
+          );
+          for (final testFile in isolatedFiles) {
+            final isolatedTestCommand =
+                testFile == 'test/with_vm_service_test.dart'
                 ? testCommand.replaceFirst(
-                    testCommandPrefix,
-                    '${dartMode.name} --enable-vm-service $extraFlags test',
+                    '${dartMode.name} ',
+                    '${dartMode.name} --enable-vm-service ',
                   )
                 : testCommand;
-            await exec(
-              '$command --concurrency=1 $testFile',
-              relativePwd: config.package,
+            await _runDartTestFiles(
+              command: isolatedTestCommand,
+              package: config.package,
+              testFiles: [testFile],
               extraEnv: extraEnv,
             );
           }
@@ -430,14 +444,31 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
   }
 }
 
-bool _hasIsolatedDartTests(String package) => const {
+bool _hasPartiallyIsolatedDartTests(String package) => const {
   'frb_example/pure_dart',
   'frb_example/pure_dart_pde',
 }.contains(package);
 
-List<String> _dartTestFiles(String package) {
-  if (!_hasIsolatedDartTests(package)) return const [];
+Set<String> _isolatedDartTestFiles(String package) =>
+    _dartTestFiles(package).where(_shouldIsolateDartTestFile).toSet();
 
+bool _shouldIsolateDartTestFile(String testFile) {
+  if (testFile.startsWith('test/api/') &&
+      (!testFile.startsWith('test/api/pseudo_manual/') ||
+          testFile.contains('_twin_'))) {
+    return true;
+  }
+
+  const exactFiles = {
+    'test/with_vm_service_test.dart',
+    'test/custom_handler_test.dart',
+    'test/init_and_dispose_test.dart',
+    'test/multi_initialization_test.dart',
+  };
+  return exactFiles.contains(testFile);
+}
+
+List<String> _dartTestFiles(String package) {
   final testDir = Directory('${exec.pwd}$package/test');
   return testDir
       .listSync(recursive: true)
@@ -450,6 +481,21 @@ List<String> _dartTestFiles(String package) {
       .map((file) => file.path.substring('${exec.pwd}$package/'.length))
       .toList()
     ..sort();
+}
+
+Future<void> _runDartTestFiles({
+  required String command,
+  required String package,
+  required List<String> testFiles,
+  required Map<String, String> extraEnv,
+}) async {
+  if (testFiles.isEmpty) return;
+
+  await exec(
+    '$command --concurrency=1 ${testFiles.join(' ')}',
+    relativePwd: package,
+    extraEnv: extraEnv,
+  );
 }
 
 // Follow steps in https://github.com/taiki-e/cargo-llvm-cov#get-coverage-of-external-tests

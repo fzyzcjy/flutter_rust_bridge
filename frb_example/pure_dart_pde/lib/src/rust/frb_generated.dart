@@ -208,24 +208,26 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 
   @override
   Future<void> executeRustInitializers() async {
+    if (!const bool.fromEnvironment('FRB_DISABLE_RUST_TO_DART_LOGGING')) {
+      kFrbDartLogging.init(
+        rustLogStream:
+            frbInternalInitLogger(maxLevel: frbInternalLoggingMaxLevel()),
+        mapRecord: (record) => FrbLogRecordData(
+          level: record.level,
+          message: record.message,
+          target: record.target,
+          modulePath: record.modulePath,
+          file: record.file,
+          line: record.line,
+        ),
+        setupDefaultOutput: frbInternalLoggingSetupDartLoggingOutput(),
+        disposeRustLogger: frbInternalDisposeLogger,
+      );
+    }
+
     await api.crateApiCustomizationInitApp();
     await api.crateApiCustomizationMyInitOne();
     await api.crateApiCustomizationMyInitTwo();
-
-    kFrbDartLogging.init(
-      rustLogStream:
-          frbInternalInitLogger(maxLevel: frbInternalLoggingMaxLevel()),
-      mapRecord: (record) => FrbLogRecordData(
-        level: record.level,
-        message: record.message,
-        target: record.target,
-        modulePath: record.modulePath,
-        file: record.file,
-        line: record.line,
-      ),
-      setupDefaultOutput: frbInternalLoggingSetupDartLoggingOutput(),
-      disposeRustLogger: frbInternalDisposeLogger,
-    );
 
     recordInitDartCodeMessage(message: 'first');
 
