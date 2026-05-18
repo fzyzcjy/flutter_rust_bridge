@@ -472,6 +472,8 @@ bool _shouldIsolateDartTestFile(String testFile) {
 List<String> _dartTestFiles(String package) {
   final packageDir = path.join(exec.pwd!, package);
   final testDir = Directory(path.join(packageDir, 'test'));
+  if (!testDir.existsSync()) return [];
+
   return testDir
       .listSync(recursive: true)
       .whereType<File>()

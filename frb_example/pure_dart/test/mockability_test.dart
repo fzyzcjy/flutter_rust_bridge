@@ -27,7 +27,7 @@ Future<void> main() async {
   ).thenReturn(false);
   when(
     () => mockApi.crateApiFrbLoggingFrbInternalInitLogger(maxLevel: 'WARN'),
-  ).thenAnswer((_) => const Stream.empty());
+  ).thenAnswer((_) => Stream.empty());
 
   await RustLib.init(api: mockApi);
 
