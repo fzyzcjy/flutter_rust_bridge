@@ -478,10 +478,6 @@ List<String> _dartTestFiles(String package) {
       .listSync(recursive: true)
       .whereType<File>()
       .where((file) => file.path.endsWith('_test.dart'))
-      .where((file) {
-        final content = file.readAsStringSync();
-        return content.contains('test(') || content.contains('testWidgets(');
-      })
       .map(
         (file) =>
             path.relative(file.path, from: packageDir).replaceAll(r'\', '/'),
