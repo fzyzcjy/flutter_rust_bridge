@@ -37,7 +37,9 @@ macro_rules! enable_frb_rust_to_dart_logging {
         }
 
         struct FrbDartLogger {
-            sink: std::sync::RwLock<Option<crate::frb_generated::StreamSink<FrbLogRecord>>>,
+            sink: std::sync::RwLock<
+                Option<std::sync::Arc<crate::frb_generated::StreamSink<FrbLogRecord>>>,
+            >,
         }
 
         impl log::Log for FrbDartLogger {
@@ -112,7 +114,8 @@ macro_rules! enable_frb_rust_to_dart_logging {
             let _ = log::set_logger(logger);
             log::set_max_level(max_level);
 
-            *logger.sink.write().expect("FRB logger sink lock poisoned") = Some(sink);
+            *logger.sink.write().expect("FRB logger sink lock poisoned") =
+                Some(std::sync::Arc::new(sink));
         }
 
         #[doc(hidden)]
