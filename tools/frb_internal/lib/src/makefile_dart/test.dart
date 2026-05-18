@@ -14,6 +14,7 @@ import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester.dart
 import 'package:flutter_rust_bridge_internal/src/utils/codecov_transformer.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:meta/meta.dart';
+import 'package:path/path.dart' as path;
 import 'package:retry/retry.dart';
 import 'package:toml/toml.dart';
 import 'package:yaml/yaml.dart';
@@ -398,10 +399,13 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
             '${dartMode.name} $extraFlags test ${config.coverage ? ' --coverage="coverage"' : ""}';
 
         if (_hasPartiallyIsolatedDartTests(config.package)) {
-          final isolatedFiles = _isolatedDartTestFiles(config.package);
-          final regularFiles = _dartTestFiles(
-            config.package,
-          ).where((file) => !isolatedFiles.contains(file)).toList();
+          final allTestFiles = _dartTestFiles(config.package);
+          final isolatedFiles = allTestFiles
+              .where(_shouldIsolateDartTestFile)
+              .toSet();
+          final regularFiles = allTestFiles
+              .where((file) => !isolatedFiles.contains(file))
+              .toList();
           final regularTestCommand = testCommand.replaceFirst(
             '${dartMode.name} ',
             '${dartMode.name} -DFRB_DISABLE_RUST_TO_DART_LOGGING=true ',
@@ -449,9 +453,6 @@ bool _hasPartiallyIsolatedDartTests(String package) => const {
   'frb_example/pure_dart_pde',
 }.contains(package);
 
-Set<String> _isolatedDartTestFiles(String package) =>
-    _dartTestFiles(package).where(_shouldIsolateDartTestFile).toSet();
-
 bool _shouldIsolateDartTestFile(String testFile) {
   if (testFile.startsWith('test/api/') &&
       (!testFile.startsWith('test/api/pseudo_manual/') ||
@@ -469,7 +470,8 @@ bool _shouldIsolateDartTestFile(String testFile) {
 }
 
 List<String> _dartTestFiles(String package) {
-  final testDir = Directory('${exec.pwd}$package/test');
+  final packageDir = path.join(exec.pwd!, package);
+  final testDir = Directory(path.join(packageDir, 'test'));
   return testDir
       .listSync(recursive: true)
       .whereType<File>()
@@ -478,7 +480,10 @@ List<String> _dartTestFiles(String package) {
         final content = file.readAsStringSync();
         return content.contains('test(') || content.contains('testWidgets(');
       })
-      .map((file) => file.path.substring('${exec.pwd}$package/'.length))
+      .map(
+        (file) =>
+            path.relative(file.path, from: packageDir).replaceAll(r'\', '/'),
+      )
       .toList()
     ..sort();
 }
