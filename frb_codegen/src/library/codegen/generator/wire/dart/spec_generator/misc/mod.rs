@@ -8,7 +8,7 @@ use crate::codegen::generator::wire::dart::spec_generator::base::{
 };
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
-use crate::codegen::ir::mir::func::MirFuncMode;
+use crate::codegen::ir::mir::func::{MirFunc, MirFuncMode};
 use crate::codegen::ir::mir::pack::MirPackComputedCache;
 use crate::codegen::misc::GeneratorProgressBarPack;
 use crate::library::codegen::generator::wire::dart::spec_generator::misc::ty::WireDartGeneratorMiscTrait;
@@ -121,12 +121,24 @@ fn generate_boilerplate(
             )
         })
         .join("");
-    let execute_dart_initializers = generate_execute_dart_initializers(
-        context
-            .mir_pack
-            .funcs_with_impl()
+    let funcs_with_impl = context.mir_pack.funcs_with_impl();
+    let init_dart_funcs = funcs_with_impl
+        .iter()
+        .filter(|f| f.init_dart_code.is_some())
+        .collect_vec();
+    let execute_dart_logging_initializers = generate_execute_dart_initializers(
+        init_dart_funcs
             .iter()
-            .filter_map(|f| f.init_dart_code.as_deref()),
+            .copied()
+            .filter(|f| is_logging_initializer(f))
+            .map(|f| f.init_dart_code.as_deref().unwrap()),
+    );
+    let execute_dart_initializers = generate_execute_dart_initializers(
+        init_dart_funcs
+            .iter()
+            .copied()
+            .filter(|f| !is_logging_initializer(f))
+            .map(|f| f.init_dart_code.as_deref().unwrap()),
     );
 
     let codegen_version = env!("CARGO_PKG_VERSION");
@@ -192,6 +204,7 @@ fn generate_boilerplate(
 
                   @override
                   Future<void> executeRustInitializers() async {{
+                    {execute_dart_logging_initializers}
                     {execute_rust_initializers}
                     {execute_dart_initializers}
                   }}
@@ -256,6 +269,10 @@ fn generate_execute_dart_initializers<'a>(
     init_dart_codes: impl Iterator<Item = &'a str>,
 ) -> String {
     init_dart_codes.map(|code| format!("{code}\n")).join("")
+}
+
+fn is_logging_initializer(func: &MirFunc) -> bool {
+    func.name.rust_style(true) == "frb_internal_init_logger"
 }
 
 fn file_stem(p: &Path) -> String {

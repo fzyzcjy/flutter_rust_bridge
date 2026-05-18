@@ -1,5 +1,7 @@
 // AUTO-GENERATED FROM frb_example/pure_dart, DO NOT EDIT
 
+import 'dart:async';
+
 import 'package:frb_example_pure_dart_pde/src/rust/api/simple.dart';
 import 'package:frb_example_pure_dart_pde/src/rust/frb_generated.dart';
 import 'package:mocktail/mocktail.dart';
@@ -19,6 +21,15 @@ Future<void> main() async {
   when(
     () => mockApi.crateApiCustomizationMyInitTwo(),
   ).thenAnswer((_) async => null);
+  when(
+    () => mockApi.crateApiFrbLoggingFrbInternalLoggingMaxLevel(),
+  ).thenReturn('WARN');
+  when(
+    () => mockApi.crateApiFrbLoggingFrbInternalLoggingSetupDartLoggingOutput(),
+  ).thenReturn(false);
+  when(
+    () => mockApi.crateApiFrbLoggingFrbInternalInitLogger(maxLevel: 'WARN'),
+  ).thenAnswer((_) => Stream.empty());
 
   await RustLib.init(api: mockApi);
 

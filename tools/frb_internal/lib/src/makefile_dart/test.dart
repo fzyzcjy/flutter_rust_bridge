@@ -14,6 +14,7 @@ import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester.dart
 import 'package:flutter_rust_bridge_internal/src/utils/codecov_transformer.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:meta/meta.dart';
+import 'package:path/path.dart' as path;
 import 'package:retry/retry.dart';
 import 'package:toml/toml.dart';
 import 'package:yaml/yaml.dart';
@@ -389,15 +390,55 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
 
       // extra check for e.g. #1807
       await wrapMaybeSetExitIfChangedRaw(config.checkClean, () async {
-        await exec(
-          '${dartMode.name} $extraFlags test ${config.coverage ? ' --coverage="coverage"' : ""}',
-          relativePwd: config.package,
-          extraEnv: {
-            // Deliberately do not provide backtrace env to see whether the test_utils work
-            // ...kEnvEnableRustBacktrace,
-            ...rustEnvMap,
-          },
-        );
+        final extraEnv = {
+          // Deliberately do not provide backtrace env to see whether the test_utils work
+          // ...kEnvEnableRustBacktrace,
+          ...rustEnvMap,
+        };
+        final testCommand =
+            '${dartMode.name} $extraFlags test ${config.coverage ? ' --coverage="coverage"' : ""}';
+
+        if (_hasPartiallyIsolatedDartTests(config.package)) {
+          final allTestFiles = _dartTestFiles(config.package);
+          final isolatedFiles = allTestFiles
+              .where(_shouldIsolateDartTestFile)
+              .toSet();
+          final regularFiles = allTestFiles
+              .where((file) => !isolatedFiles.contains(file))
+              .toList();
+          final regularTestCommand = testCommand.replaceFirst(
+            '${dartMode.name} ',
+            '${dartMode.name} -DFRB_DISABLE_RUST_TO_DART_LOGGING=true ',
+          );
+
+          await _runDartTestFiles(
+            command: regularTestCommand,
+            package: config.package,
+            testFiles: regularFiles,
+            extraEnv: extraEnv,
+          );
+          for (final testFile in isolatedFiles) {
+            final isolatedTestCommand =
+                testFile == 'test/with_vm_service_test.dart'
+                ? testCommand.replaceFirst(
+                    '${dartMode.name} ',
+                    '${dartMode.name} --enable-vm-service ',
+                  )
+                : testCommand;
+            await _runDartTestFiles(
+              command: isolatedTestCommand,
+              package: config.package,
+              testFiles: [testFile],
+              extraEnv: extraEnv,
+            );
+          }
+        } else {
+          await exec(
+            testCommand,
+            relativePwd: config.package,
+            extraEnv: extraEnv,
+          );
+        }
       });
     },
   );
@@ -405,6 +446,59 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
   if (config.coverage) {
     await _formatDartCoverage(package: config.package);
   }
+}
+
+bool _hasPartiallyIsolatedDartTests(String package) => const {
+  'frb_example/pure_dart',
+  'frb_example/pure_dart_pde',
+}.contains(package);
+
+bool _shouldIsolateDartTestFile(String testFile) {
+  if (testFile.startsWith('test/api/') &&
+      (!testFile.startsWith('test/api/pseudo_manual/') ||
+          testFile.contains('_twin_'))) {
+    return true;
+  }
+
+  const exactFiles = {
+    'test/with_vm_service_test.dart',
+    'test/custom_handler_test.dart',
+    'test/init_and_dispose_test.dart',
+    'test/multi_initialization_test.dart',
+  };
+  return exactFiles.contains(testFile);
+}
+
+List<String> _dartTestFiles(String package) {
+  final packageDir = path.join(exec.pwd!, package);
+  final testDir = Directory(path.join(packageDir, 'test'));
+  if (!testDir.existsSync()) return [];
+
+  return testDir
+      .listSync(recursive: true)
+      .whereType<File>()
+      .where((file) => file.path.endsWith('_test.dart'))
+      .map(
+        (file) =>
+            path.relative(file.path, from: packageDir).replaceAll(r'\', '/'),
+      )
+      .toList()
+    ..sort();
+}
+
+Future<void> _runDartTestFiles({
+  required String command,
+  required String package,
+  required List<String> testFiles,
+  required Map<String, String> extraEnv,
+}) async {
+  if (testFiles.isEmpty) return;
+
+  await exec(
+    '$command --concurrency=1 ${testFiles.join(' ')}',
+    relativePwd: package,
+    extraEnv: extraEnv,
+  );
 }
 
 // Follow steps in https://github.com/taiki-e/cargo-llvm-cov#get-coverage-of-external-tests

@@ -37,7 +37,9 @@ macro_rules! enable_frb_rust_to_dart_logging {
         }
 
         struct FrbDartLogger {
-            sink: std::sync::RwLock<Option<crate::frb_generated::StreamSink<FrbLogRecord>>>,
+            sink: std::sync::RwLock<
+                Option<std::sync::Arc<crate::frb_generated::StreamSink<FrbLogRecord>>>,
+            >,
         }
 
         impl log::Log for FrbDartLogger {
@@ -50,7 +52,7 @@ macro_rules! enable_frb_rust_to_dart_logging {
                     return;
                 }
 
-                let Ok(sink) = self.sink.read() else {
+                let Ok(sink) = self.sink.read().map(|sink| sink.clone()) else {
                     $crate::for_generated::print_to_console("FRB logging sink lock is poisoned");
                     return;
                 };
@@ -86,6 +88,7 @@ macro_rules! enable_frb_rust_to_dart_logging {
 
         #[doc(hidden)]
         #[flutter_rust_bridge::frb(init_dart_code = r#"
+                  if (!const bool.fromEnvironment('FRB_DISABLE_RUST_TO_DART_LOGGING')) {
                     kFrbDartLogging.init(
                       rustLogStream: frbInternalInitLogger(maxLevel: frbInternalLoggingMaxLevel()),
                       mapRecord: (record) => FrbLogRecordData(
@@ -99,6 +102,7 @@ macro_rules! enable_frb_rust_to_dart_logging {
                       setupDefaultOutput: frbInternalLoggingSetupDartLoggingOutput(),
                       disposeRustLogger: frbInternalDisposeLogger,
                     );
+                  }
 "#)]
         pub fn frb_internal_init_logger(
             sink: crate::frb_generated::StreamSink<FrbLogRecord>,
@@ -112,15 +116,8 @@ macro_rules! enable_frb_rust_to_dart_logging {
             let _ = log::set_logger(logger);
             log::set_max_level(max_level);
 
-            *logger.sink.write().expect("FRB logger sink lock poisoned") = Some(sink);
-
-            FRB_DART_LOGGER_PANIC_HOOK.call_once(|| {
-                let previous_hook = std::panic::take_hook();
-                std::panic::set_hook(Box::new(move |info| {
-                    log::error!("{info}");
-                    previous_hook(info);
-                }));
-            });
+            *logger.sink.write().expect("FRB logger sink lock poisoned") =
+                Some(std::sync::Arc::new(sink));
         }
 
         #[doc(hidden)]
@@ -132,7 +129,6 @@ macro_rules! enable_frb_rust_to_dart_logging {
         }
 
         static FRB_DART_LOGGER: std::sync::OnceLock<FrbDartLogger> = std::sync::OnceLock::new();
-        static FRB_DART_LOGGER_PANIC_HOOK: std::sync::Once = std::sync::Once::new();
 
         fn frb_parse_logging_max_level(max_level: &str) -> log::LevelFilter {
             match max_level.to_uppercase().as_str() {
