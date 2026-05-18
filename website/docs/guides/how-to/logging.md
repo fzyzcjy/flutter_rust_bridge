@@ -69,6 +69,7 @@ void setupLogging() {
 ```
 
 Rust `log::info!`, `log::warn!`, and similar calls will enter this Dart listener through FRB.
+Rust panics continue to use FRB's normal panic propagation and platform panic hooks; they are not forwarded through the logging stream.
 
 ### Change the Rust max level
 

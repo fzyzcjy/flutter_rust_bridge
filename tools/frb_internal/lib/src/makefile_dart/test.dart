@@ -387,17 +387,40 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
       // native-assets experiment was stabilized in Dart 3.10, so we no longer need the flag
       // VM service is automatically enabled in Dart 3.10+ when running tests
 
+      final testCommandPrefix = '${dartMode.name} $extraFlags test';
+      final testCommand = [
+        testCommandPrefix,
+        if (config.coverage) '--coverage="coverage"',
+      ].join(' ');
+
       // extra check for e.g. #1807
       await wrapMaybeSetExitIfChangedRaw(config.checkClean, () async {
-        await exec(
-          '${dartMode.name} $extraFlags test ${config.coverage ? ' --coverage="coverage"' : ""}',
-          relativePwd: config.package,
-          extraEnv: {
-            // Deliberately do not provide backtrace env to see whether the test_utils work
-            // ...kEnvEnableRustBacktrace,
-            ...rustEnvMap,
-          },
-        );
+        final extraEnv = {
+          // Deliberately do not provide backtrace env to see whether the test_utils work
+          // ...kEnvEnableRustBacktrace,
+          ...rustEnvMap,
+        };
+        if (_hasIsolatedDartTests(config.package)) {
+          for (final testFile in _dartTestFiles(config.package)) {
+            final command = testFile == 'test/with_vm_service_test.dart'
+                ? testCommand.replaceFirst(
+                    testCommandPrefix,
+                    '${dartMode.name} --enable-vm-service $extraFlags test',
+                  )
+                : testCommand;
+            await exec(
+              '$command --concurrency=1 $testFile',
+              relativePwd: config.package,
+              extraEnv: extraEnv,
+            );
+          }
+        } else {
+          await exec(
+            testCommand,
+            relativePwd: config.package,
+            extraEnv: extraEnv,
+          );
+        }
       });
     },
   );
@@ -405,6 +428,28 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
   if (config.coverage) {
     await _formatDartCoverage(package: config.package);
   }
+}
+
+bool _hasIsolatedDartTests(String package) => const {
+  'frb_example/pure_dart',
+  'frb_example/pure_dart_pde',
+}.contains(package);
+
+List<String> _dartTestFiles(String package) {
+  if (!_hasIsolatedDartTests(package)) return const [];
+
+  final testDir = Directory('${exec.pwd}$package/test');
+  return testDir
+      .listSync(recursive: true)
+      .whereType<File>()
+      .where((file) => file.path.endsWith('_test.dart'))
+      .where((file) {
+        final content = file.readAsStringSync();
+        return content.contains('test(') || content.contains('testWidgets(');
+      })
+      .map((file) => file.path.substring('${exec.pwd}$package/'.length))
+      .toList()
+    ..sort();
 }
 
 // Follow steps in https://github.com/taiki-e/cargo-llvm-cov#get-coverage-of-external-tests
