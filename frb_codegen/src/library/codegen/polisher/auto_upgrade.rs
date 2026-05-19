@@ -133,3 +133,58 @@ impl Upgrader for RustUpgrader<'_> {
         cargo_add(&args, self.base_dir)
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::RustUpgrader;
+    use cargo_toml::Manifest;
+
+    fn parse_manifest(text: &str) -> Manifest {
+        toml::from_str(text).unwrap()
+    }
+
+    #[test]
+    fn test_get_dependency_from_target_specific_dependencies() {
+        let manifest = parse_manifest(
+            r#"
+                [package]
+                name = "demo"
+                version = "0.1.0"
+                edition = "2021"
+
+                [target.x86_64-unknown-linux-gnu.dependencies]
+                flutter_rust_bridge = "=1.0.0"
+            "#,
+        );
+
+        let (target_name, dependency) =
+            RustUpgrader::get_dependency(manifest, "flutter_rust_bridge").unwrap();
+
+        assert_eq!(target_name.as_deref(), Some("x86_64-unknown-linux-gnu"));
+        assert_eq!(dependency.req(), "=1.0.0");
+    }
+
+    #[test]
+    fn test_get_dependency_prefers_root_dependencies() {
+        let manifest = parse_manifest(
+            r#"
+                [package]
+                name = "demo"
+                version = "0.1.0"
+                edition = "2021"
+
+                [dependencies]
+                flutter_rust_bridge = "=2.0.0"
+
+                [target.x86_64-unknown-linux-gnu.dependencies]
+                flutter_rust_bridge = "=1.0.0"
+            "#,
+        );
+
+        let (target_name, dependency) =
+            RustUpgrader::get_dependency(manifest, "flutter_rust_bridge").unwrap();
+
+        assert_eq!(target_name, None);
+        assert_eq!(dependency.req(), "=2.0.0");
+    }
+}

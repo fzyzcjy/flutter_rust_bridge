@@ -172,3 +172,82 @@ fn remove_files_in_dir(dir: &Path) -> anyhow::Result<()> {
     }
     Ok(())
 }
+#[cfg(test)]
+mod tests {
+    use super::{remove_files_in_dir, remove_unnecessary_plugin_files};
+    use std::fs;
+    use std::path::Path;
+
+    fn write_file(path: &Path) {
+        if let Some(parent) = path.parent() {
+            fs::create_dir_all(parent).unwrap();
+        }
+        fs::write(path, "x").unwrap();
+    }
+
+    #[test]
+    fn test_remove_files_in_dir_rejects_nested_directories() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let root = temp_dir.path().join("root");
+        fs::create_dir_all(root.join("nested")).unwrap();
+        write_file(&root.join("top.txt"));
+        write_file(&root.join("nested").join("child.txt"));
+
+        let err = remove_files_in_dir(&root).unwrap_err();
+        let message = err.to_string();
+        assert!(message.contains("expected to contain only files"));
+    }
+
+    #[test]
+    fn test_remove_unnecessary_plugin_files_cleans_platform_specific_layout() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let dart_root = temp_dir.path();
+
+        write_file(&dart_root.join("lib").join("a.dart"));
+        write_file(&dart_root.join("src").join("bridge.h"));
+        write_file(&dart_root.join("ffigen.yaml"));
+        write_file(&dart_root.join("example").join("lib").join("example.dart"));
+
+        write_file(
+            &dart_root
+                .join("android")
+                .join("src")
+                .join("main")
+                .join("plugin.kt"),
+        );
+        write_file(&dart_root.join("android").join("AndroidManifest.xml"));
+
+        write_file(&dart_root.join("ios").join("Classes").join("Plugin.swift"));
+        write_file(&dart_root.join("ios").join("podspec.yaml"));
+
+        write_file(&dart_root.join("linux").join("plugin.cc"));
+        write_file(&dart_root.join("macos").join("Classes").join("Plugin.swift"));
+        write_file(&dart_root.join("macos").join("podspec.yaml"));
+        write_file(&dart_root.join("windows").join("plugin.cpp"));
+
+        let ohos_lib = dart_root
+            .join("ohos")
+            .join("src")
+            .join("main")
+            .join("cpp")
+            .join("types")
+            .join("libmy_crate");
+        write_file(&ohos_lib.join("bridge.c"));
+        write_file(&dart_root.join("ohos").join("top.txt"));
+
+        remove_unnecessary_plugin_files(dart_root, "my_crate".to_owned()).unwrap();
+
+        assert!(!dart_root.join("ffigen.yaml").exists());
+        assert!(!dart_root.join("src").exists());
+        assert!(!dart_root.join("android").join("src").exists());
+        assert!(!dart_root.join("ios").join("Classes").exists());
+        assert!(!dart_root.join("macos").join("Classes").exists());
+        assert!(!dart_root.join("ohos").join("src").exists());
+        assert!(dart_root.join("android").exists());
+        assert!(dart_root.join("ios").exists());
+        assert!(dart_root.join("linux").exists());
+        assert!(dart_root.join("macos").exists());
+        assert!(dart_root.join("windows").exists());
+        assert!(dart_root.join("ohos").exists());
+    }
+}
