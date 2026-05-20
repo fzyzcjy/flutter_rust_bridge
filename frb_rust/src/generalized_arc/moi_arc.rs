@@ -9,7 +9,7 @@ macro_rules! frb_generated_moi_arc_def {
         #[derive(Debug)]
         pub struct MoiArc<T: ?Sized + MoiArcValue> {
             // `Option` for correct dropping
-            object_id: Option<ObjectId>,
+            object_id: Option<MoiObjectId>,
             // Mainly for `as_ref`. `Option` for correct dropping
             value: Option<Arc<T>>,
             _phantom: PhantomData<T>,
@@ -141,12 +141,12 @@ macro_rules! frb_generated_moi_arc_def {
             fn get_pool() -> &'static MoiArcPool<Self>;
         }
 
-        type ObjectId = usize;
+        type MoiObjectId = usize;
 
         pub type MoiArcPool<T> = std::sync::RwLock<MoiArcPoolInner<T>>;
 
         pub struct MoiArcPoolInner<T: ?Sized> {
-            map: HashMap<ObjectId, MoiArcPoolValue<T>>,
+            map: HashMap<MoiObjectId, MoiArcPoolValue<T>>,
             id_generator: IdGenerator,
         }
 
@@ -160,7 +160,7 @@ macro_rules! frb_generated_moi_arc_def {
         }
 
         struct IdGenerator {
-            next_id: ObjectId,
+            next_id: MoiObjectId,
         }
 
         impl Default for IdGenerator {
@@ -172,11 +172,11 @@ macro_rules! frb_generated_moi_arc_def {
         }
 
         impl IdGenerator {
-            const MIN_ID: ObjectId = 1;
+            const MIN_ID: MoiObjectId = 1;
             // Less than i32's max value to be extra safe
-            const MAX_ID: ObjectId = 2147483600;
+            const MAX_ID: MoiObjectId = 2147483600;
 
-            fn next_id(&mut self) -> ObjectId {
+            fn next_id(&mut self) -> MoiObjectId {
                 let ans = self.next_id;
 
                 self.next_id = if self.next_id >= Self::MAX_ID {
