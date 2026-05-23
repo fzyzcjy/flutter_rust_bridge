@@ -73,6 +73,8 @@ jobs:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
         continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
           job_summary: false
@@ -103,6 +105,8 @@ jobs:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
         continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
           job_summary: false
@@ -125,6 +129,8 @@ jobs:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
         continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
           job_summary: false
@@ -209,6 +215,8 @@ jobs:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
         continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
           job_summary: false
@@ -256,6 +264,8 @@ jobs:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
         continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
           job_summary: false
@@ -289,6 +299,8 @@ jobs:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
         continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
           job_summary: false
@@ -333,6 +345,8 @@ jobs:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
         continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
           job_summary: false
@@ -422,6 +436,8 @@ jobs:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
         continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
           job_summary: false
@@ -463,6 +479,8 @@ jobs:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
         continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
           job_summary: false
@@ -559,6 +577,8 @@ jobs:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
         continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
           job_summary: false
@@ -616,6 +636,8 @@ jobs:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
         continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
           job_summary: false
@@ -658,6 +680,8 @@ jobs:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
         continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
           job_summary: false
@@ -713,6 +737,8 @@ jobs:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
         continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
           job_summary: false
@@ -756,6 +782,8 @@ jobs:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
         continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
           job_summary: false
@@ -868,6 +896,8 @@ jobs:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
         continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
           job_summary: false
@@ -955,6 +985,8 @@ jobs:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
         continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
           job_summary: false
@@ -989,6 +1021,8 @@ jobs:
     steps:
       - uses: catchpoint/workflow-telemetry-action@v1
         continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
           job_summary: false
