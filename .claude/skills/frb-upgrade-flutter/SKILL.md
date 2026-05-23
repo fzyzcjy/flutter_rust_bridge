@@ -14,6 +14,7 @@ project after Flutter publishes a new stable channel version.
 - Devcontainer image definition: `.devcontainer/Dockerfile`.
 - Dev Docker publish workflow: `.github/workflows/publish_dev_docker.yaml`.
 - CI toolchain versions: top-level `env` in `.github/workflows/ci.yaml`.
+- Post-release toolchain versions: top-level `env` in `.github/workflows/post_release.yaml`.
 - Dev image metadata parser tests:
   `tools/frb_internal/test/src/makefile_dart/test_dev_docker_metadata.dart`.
 - Generated integration templates and example outputs:
@@ -59,6 +60,7 @@ At minimum, inspect:
 
 - `.devcontainer/Dockerfile`
 - `.github/workflows/ci.yaml`
+- `.github/workflows/post_release.yaml`
 - `.github/workflows/publish_dev_docker.yaml`
 - `pubspec.yaml`, package `pubspec.yaml` files, and checked-in `pubspec.lock` files
 - `tools/frb_internal/test/src/makefile_dart/test_dev_docker_metadata.dart`
@@ -113,12 +115,16 @@ appear as `unknown/unknown`; those are not platform images.
 
 ## Phase 4: Switch CI Pins
 
-Update `.github/workflows/ci.yaml` top-level env together:
+Update `.github/workflows/ci.yaml` and `.github/workflows/post_release.yaml` top-level env together:
 
 - `FRB_MAIN_FLUTTER_VERSION`
 - `FRB_MAIN_DART_VERSION`
 - `FRB_MAIN_RUST_VERSION` if the Flutter or tooling bump requires newer Rust
 - `FRB_RUSTFMT_NIGHTLY_VERSION` only if formatting or nightly-only rust-src behavior requires it
+
+`post_release.yaml` intentionally says it should stay in sync with `ci.yaml`. It verifies that the
+released quickstart and codegen installation modes still work, so do not leave it pinned to the old
+Flutter/Dart versions after CI moves forward.
 
 Then scan workflow setup steps for stale assumptions:
 
@@ -129,6 +135,8 @@ Then scan workflow setup steps for stale assumptions:
 - iOS simulator names and macOS runner labels
 - Windows ARM runner coverage
 - Chrome/chromedriver setup for web jobs
+- Post-release `codegen_install_mode` coverage for `cargo-install`, `cargo-binstall`, `scoop`, and
+  `homebrew`
 - Any commented job that says it was waiting for a CI Flutter upgrade
 
 ## Phase 5: Regenerate and Classify Drift
@@ -191,7 +199,8 @@ Triage in dependency order:
 3. Generate and Generate Internal failures.
 4. Integrate scaffold failures.
 5. Build and platform tests.
-6. Coverage, benchmark, website, and upload jobs.
+6. Post-release quickstart failures.
+7. Coverage, benchmark, website, and upload jobs.
 
 When a platform starts failing after the Flutter bump, compare against the release notes before
 patching symptoms. Flutter stable bumps often intentionally change generated platform projects.
