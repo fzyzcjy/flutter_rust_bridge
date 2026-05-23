@@ -18,8 +18,6 @@ app = typer.Typer(no_args_is_help=True)
 
 @dataclass(frozen=True)
 class PullRequestInfo:
-    __slots__ = ("base_sha", "head_sha", "raw")
-
     base_sha: str
     head_sha: str
     raw: dict[str, Any]
@@ -27,8 +25,6 @@ class PullRequestInfo:
 
 @dataclass(frozen=True)
 class MissingPatchLine:
-    __slots__ = ("file_path", "line_number")
-
     file_path: str
     line_number: int
 
