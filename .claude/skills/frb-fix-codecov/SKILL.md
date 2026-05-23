@@ -35,9 +35,93 @@ Read both Codecov statuses:
   irrelevant.
 
 The GitHub comment usually lists only files and counts, for example `2 Missing`, not precise line numbers.
-For exact lines, open the Codecov `details_url`, use the file links in the comment, and inspect the red
-uncovered lines in the file diff/tree view. If the web view is unavailable, fetch the coverage artifacts from
-the `Misc :: Codecov` run and inspect the uploaded `codecov.json` / `lcov.info` against the PR diff.
+Do not stop there. Obtain exact missing patch lines by combining the PR diff with Codecov's per-file report
+API.
+
+### Exact Missing Patch Lines
+
+Use Codecov's `file_report` endpoint for each file listed in the Codecov comment or check output:
+
+```bash
+curl -sS \
+  "https://api.codecov.io/api/v2/github/fzyzcjy/repos/flutter_rust_bridge/file_report/${URLENCODED_FILE}?sha=${HEAD_SHA}"
+```
+
+The `URLENCODED_FILE` must encode `/` as `%2F`; otherwise Codecov treats the path as multiple URL segments.
+In the returned JSON, `line_coverage` is a list of `[line_number, value]`. For FRB's uploaded custom Rust
+coverage JSON, interpret it this way:
+
+- `value == null`: not coverable or ignored
+- `value == 0`: covered
+- `value > 0`: missing
+
+Then intersect those missing line numbers with the changed line numbers from the PR diff. This gives the
+exact uncovered patch lines that Codecov is complaining about.
+
+Concrete command sequence:
+
+```bash
+PR=3065
+REPO=fzyzcjy/flutter_rust_bridge
+FILE=frb_codegen/src/library/codegen/polisher/auto_upgrade.rs
+
+BASE_SHA=$(gh pr view "$PR" --repo "$REPO" --json baseRefOid --jq .baseRefOid)
+HEAD_SHA=$(gh pr view "$PR" --repo "$REPO" --json headRefOid --jq .headRefOid)
+URLENCODED_FILE=$(python3 -c 'import sys, urllib.parse; print(urllib.parse.quote(sys.argv[1], safe=""))' "$FILE")
+
+curl -sS \
+  "https://api.codecov.io/api/v2/github/fzyzcjy/repos/flutter_rust_bridge/file_report/${URLENCODED_FILE}?sha=${HEAD_SHA}" \
+  | python3 -c '
+import json
+import subprocess
+import sys
+
+file_path = sys.argv[1]
+base_sha = sys.argv[2]
+head_sha = sys.argv[3]
+report = json.load(sys.stdin)
+
+missing_lines = {
+    line_number
+    for line_number, value in report["line_coverage"]
+    if value is not None and value > 0
+}
+
+diff = subprocess.check_output(
+    ["git", "diff", "--unified=0", base_sha, head_sha, "--", file_path],
+    text=True,
+)
+
+changed_lines = set()
+current_new_line = None
+for line in diff.splitlines():
+    if line.startswith("@@"):
+        new_range = line.split(" +", 1)[1].split(" ", 1)[0]
+        start_text, _, count_text = new_range.partition(",")
+        current_new_line = int(start_text)
+        if count_text == "0":
+            current_new_line = None
+        continue
+
+    if current_new_line is None:
+        continue
+    if line.startswith("+") and not line.startswith("+++"):
+        changed_lines.add(current_new_line)
+        current_new_line += 1
+    elif not line.startswith("-"):
+        current_new_line += 1
+
+for line_number in sorted(missing_lines & changed_lines):
+    print(f"{file_path}:{line_number}")
+' "$FILE" "$BASE_SHA" "$HEAD_SHA"
+```
+
+If the command prints nothing but Codecov still reports missing patch lines, check whether:
+
+- The Codecov comment is stale and points to an older head SHA.
+- The file path from the comment is truncated; use the full `filepath=` query parameter from the Codecov URL.
+- The local git repo does not have both SHAs; fetch the PR/head and base branch, then rerun.
+- Codecov's UI is showing an indirect project-coverage change rather than uncovered changed lines.
 
 In FRB CI, coverage is uploaded only by `Misc :: Codecov` after downloading all `*-coverage` artifacts. If
 upstream coverage jobs were cancelled or missing, treat the report as partial until you verify the artifact
@@ -101,23 +185,6 @@ When adding Dart ignores, use the native Dart coverage markers:
 
 Do not add ignore markers merely because adding a test is inconvenient. If the line is product behavior and
 no focused test path is obvious, summarize the missing lines and ask the human which tradeoff they want.
-
-## PR #3065 Pattern
-
-In `fzyzcjy/flutter_rust_bridge#3065`, Codecov initially reported patch coverage below 100% with four
-missing changed lines across:
-
-- `frb_codegen/src/library/codegen/polisher/auto_upgrade.rs`
-- `frb_codegen/src/library/integration/integrator.rs`
-
-The eventual fix was mixed:
-
-- Add focused Rust unit tests for newly testable logic.
-- Add `frb-coverage:ignore-start/end` around a branch that tests exercised but llvm-cov still reported as
-  uncovered.
-
-Use that as the default mental model: first try to cover meaningful behavior, then narrowly ignore only the
-coverage-tool artifact.
 
 ## Verification
 
