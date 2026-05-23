@@ -40,7 +40,6 @@ pub use crate::lockable::{
 };
 #[allow(unused)]
 pub use crate::misc::manual_impl::*;
-pub use crate::misc::printing::print_to_console;
 pub use crate::misc::version::FLUTTER_RUST_BRIDGE_RUNTIME_VERSION;
 #[cfg(target_family = "wasm")]
 pub use crate::misc::web_utils;
