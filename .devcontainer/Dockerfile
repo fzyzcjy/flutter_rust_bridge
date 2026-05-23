@@ -83,7 +83,7 @@ RUN flutter --version && \
     rustup toolchain list | grep "nightly-${RUST_NIGHTLY_VERSION}" && \
     rustup target list --installed | grep wasm32-unknown-unknown && \
     rustup target list --toolchain "nightly-${RUST_NIGHTLY_VERSION}" --installed | grep wasm32-unknown-unknown && \
-    rustup component list --installed | grep llvm-tools-preview && \
+    rustup component list --installed | grep llvm-tools && \
     rustup component list --toolchain nightly --installed | grep rust-src && \
     cargo expand --version && \
     cargo llvm-cov --version && \
