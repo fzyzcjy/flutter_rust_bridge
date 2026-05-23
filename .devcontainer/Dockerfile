@@ -69,7 +69,20 @@ ARG PLAYWRIGHT_VERSION=1.59.1
 ENV PLAYWRIGHT_BROWSERS_PATH=/opt/ms-playwright
 RUN npm install -g "playwright@${PLAYWRIGHT_VERSION}" && \
     playwright install --with-deps chromium && \
-    ln -s "$(find "${PLAYWRIGHT_BROWSERS_PATH}" -path "*/chrome-linux*/chrome" -type f | head -n 1)" /usr/bin/google-chrome
+    ln -s "$(find "${PLAYWRIGHT_BROWSERS_PATH}" -path "*/chrome-linux*/chrome" -type f | head -n 1)" /usr/bin/google-chrome && \
+    CHROMIUM_VERSION="$(/usr/bin/google-chrome --version | awk '{print $2}')" && \
+    ARCH="$(dpkg --print-architecture)" && \
+    case "$ARCH" in \
+        amd64) CHROMEDRIVER_PLATFORM="linux64" ;; \
+        arm64) CHROMEDRIVER_PLATFORM="linux-arm64" ;; \
+        *) echo "Unsupported architecture: $ARCH" >&2; exit 1 ;; \
+    esac && \
+    curl -fsSL \
+        "https://storage.googleapis.com/chrome-for-testing-public/${CHROMIUM_VERSION}/${CHROMEDRIVER_PLATFORM}/chromedriver-${CHROMEDRIVER_PLATFORM}.zip" \
+        -o /tmp/chromedriver.zip && \
+    unzip -q /tmp/chromedriver.zip -d /tmp && \
+    install -m 0755 "/tmp/chromedriver-${CHROMEDRIVER_PLATFORM}/chromedriver" /usr/local/bin/chromedriver && \
+    rm -rf /tmp/chromedriver.zip "/tmp/chromedriver-${CHROMEDRIVER_PLATFORM}"
 ENV CHROME_BIN=/usr/bin/google-chrome
 
 # Working directory
@@ -89,7 +102,8 @@ RUN flutter --version && \
     cargo llvm-cov --version && \
     wasm-pack --version && \
     all-contributors --version && \
-    "${CHROME_BIN}" --version
+    "${CHROME_BIN}" --version && \
+    chromedriver --version
 
 # Default command
 CMD ["bash"]
