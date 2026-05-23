@@ -73,16 +73,17 @@ RUN npm install -g "playwright@${PLAYWRIGHT_VERSION}" && \
     CHROMIUM_VERSION="$(/usr/bin/google-chrome --version | awk '{print $2}')" && \
     ARCH="$(dpkg --print-architecture)" && \
     case "$ARCH" in \
-        amd64) CHROMEDRIVER_PLATFORM="linux64" ;; \
-        arm64) CHROMEDRIVER_PLATFORM="linux-arm64" ;; \
+        amd64) \
+            CHROMEDRIVER_PLATFORM="linux64" && \
+            curl -fsSL \
+                "https://storage.googleapis.com/chrome-for-testing-public/${CHROMIUM_VERSION}/${CHROMEDRIVER_PLATFORM}/chromedriver-${CHROMEDRIVER_PLATFORM}.zip" \
+                -o /tmp/chromedriver.zip && \
+            unzip -q /tmp/chromedriver.zip -d /tmp && \
+            install -m 0755 "/tmp/chromedriver-${CHROMEDRIVER_PLATFORM}/chromedriver" /usr/local/bin/chromedriver && \
+            rm -rf /tmp/chromedriver.zip "/tmp/chromedriver-${CHROMEDRIVER_PLATFORM}" ;; \
+        arm64) echo "Chrome for Testing does not provide linux-arm64 chromedriver for ${CHROMIUM_VERSION}" ;; \
         *) echo "Unsupported architecture: $ARCH" >&2; exit 1 ;; \
-    esac && \
-    curl -fsSL \
-        "https://storage.googleapis.com/chrome-for-testing-public/${CHROMIUM_VERSION}/${CHROMEDRIVER_PLATFORM}/chromedriver-${CHROMEDRIVER_PLATFORM}.zip" \
-        -o /tmp/chromedriver.zip && \
-    unzip -q /tmp/chromedriver.zip -d /tmp && \
-    install -m 0755 "/tmp/chromedriver-${CHROMEDRIVER_PLATFORM}/chromedriver" /usr/local/bin/chromedriver && \
-    rm -rf /tmp/chromedriver.zip "/tmp/chromedriver-${CHROMEDRIVER_PLATFORM}"
+    esac
 ENV CHROME_BIN=/usr/bin/google-chrome
 
 # Working directory
@@ -103,7 +104,7 @@ RUN flutter --version && \
     wasm-pack --version && \
     all-contributors --version && \
     "${CHROME_BIN}" --version && \
-    chromedriver --version
+    if command -v chromedriver >/dev/null; then chromedriver --version; else echo "chromedriver unavailable on $(dpkg --print-architecture)"; fi
 
 # Default command
 CMD ["bash"]
