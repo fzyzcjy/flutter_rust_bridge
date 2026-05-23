@@ -41,7 +41,7 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v1
+      - uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
