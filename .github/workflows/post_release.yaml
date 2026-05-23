@@ -45,6 +45,7 @@ jobs:
         continue-on-error: true
         with:
           comment_on_pr: false
+          job_summary: false
       - uses: actions/checkout@v5
         with:
           submodules: recursive
