@@ -27,7 +27,7 @@ jobs:
       - name: Set up Dart
         uses: dart-lang/setup-dart@v1
         with:
-          sdk: 3.11.0
+          sdk: 3.12.0
           architecture: x64
 
       - name: Run precommit autofix via frb_internal
