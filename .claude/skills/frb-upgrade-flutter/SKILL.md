@@ -7,8 +7,7 @@ description: >-
 
 # FRB Upgrade Flutter
 
-Use this as the entry workflow for Flutter stable bumps in `flutter_rust_bridge`. Keep this skill
-single-file: the workflow is small enough that splitting references adds friction.
+Use this as the single-file workflow for Flutter stable bumps in `flutter_rust_bridge`.
 
 ## Start Here
 
@@ -27,7 +26,9 @@ single-file: the workflow is small enough that splitting references adds frictio
 - Do not hand-edit generated files as the final state.
 - Classify scaffold drift by source: integration template, Apple scaffold, Cargokit, or example output.
 
-## Release Review
+## Workflow
+
+### Step 1: Review the Flutter Release
 
 Use official Flutter sources. Record the target Flutter version, bundled Dart version, release date,
 and release-note items likely to affect FRB.
@@ -40,7 +41,7 @@ Scan for:
 - Web renderer, Chrome, DevTools, or test-driver changes
 - Host architecture changes such as Apple Silicon or Windows ARM support
 
-## Preferred PR Shape
+### Step 2: Plan Small PRs
 
 Prefer small PRs in this order:
 
@@ -50,7 +51,7 @@ Prefer small PRs in this order:
 4. Generated/scaffold drift.
 5. Real compatibility fixes.
 
-## Quick Inventory
+### Step 3: Inventory Current Pins
 
 Run these before planning the bump:
 
@@ -72,7 +73,7 @@ Inspect at least:
 - `tools/frb_internal/assets/apple_scaffold/**`
 - `frb_example/**`
 
-## Devcontainer First
+### Step 4: Upgrade the Devcontainer First
 
 Update `.devcontainer/Dockerfile`:
 
@@ -115,7 +116,7 @@ docker buildx imagetools inspect fzyzcjy/flutter_rust_bridge_dev:flutter-<flutte
 
 BuildKit attestation manifests can appear as `unknown/unknown`; those are not platform images.
 
-## CI And Post-Release Pins
+### Step 5: Sync CI and Post-Release Pins
 
 Update top-level env values together in `.github/workflows/ci.yaml` and
 `.github/workflows/post_release.yaml`:
@@ -141,7 +142,7 @@ Scan workflow assumptions:
   `homebrew`
 - Any commented job that says it was waiting for a CI Flutter upgrade
 
-## Generated And Scaffold Drift
+### Step 6: Regenerate and Classify Drift
 
 Read `frb-code-generation` first.
 
@@ -171,7 +172,7 @@ Run focused generation first when possible, then broaden:
 If multiple generated-output CI failures rotate across packages, stop package-by-package fixes and run
 a clean full `./frb_internal precommit-generate`.
 
-## Validation
+### Step 7: Validate Locally
 
 Read `frb-lint` and `frb-test` for exact command guidance. Tom's FRB environment runs tests locally,
 usually through the per-worktree Docker container.
@@ -189,7 +190,7 @@ Recommended minimum validation:
 For CI or Docker plumbing-only changes, dev image dry-run and focused metadata tests may be enough
 before opening the PR. Let CI cover the full matrix.
 
-## CI Triage Order
+### Step 8: Triage CI in Dependency Order
 
 Read `frb-fix-ci` before deep debugging.
 
