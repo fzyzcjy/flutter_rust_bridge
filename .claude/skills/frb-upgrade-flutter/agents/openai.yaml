@@ -1,4 +1,0 @@
-interface:
-  display_name: "FRB Flutter Upgrade"
-  short_description: "Upgrade FRB Flutter CI and Docker"
-  default_prompt: "Use $frb-upgrade-flutter to plan a flutter_rust_bridge Flutter stable upgrade."
