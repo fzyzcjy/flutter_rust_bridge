@@ -9,14 +9,12 @@ Future<void> main() async {
 
   test('can use custom handler', () async {
     expect(customHandler.logs, <String>[
-      'executeNormal frb_internal_init_logger',
       'executeNormal init_app',
       'executeNormal my_init_one',
       'executeNormal my_init_two',
     ]);
     expect(await simpleAdderTwinNormal(a: 1, b: 2), 3);
     expect(customHandler.logs, [
-      'executeNormal frb_internal_init_logger',
       'executeNormal init_app',
       'executeNormal my_init_one',
       'executeNormal my_init_two',
