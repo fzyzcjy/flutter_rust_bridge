@@ -41,15 +41,18 @@ Scan for:
 - Web renderer, Chrome, DevTools, or test-driver changes
 - Host architecture changes such as Apple Silicon or Windows ARM support
 
-### Step 2: Plan Small PRs
+### Step 2: Plan the Single Upgrade PR
 
-Prefer small PRs in this order:
+Plan one PR for the Flutter upgrade. Keep the PR internally organized by logical commits or phases,
+but do not split the upgrade across multiple PRs unless Tom explicitly asks.
 
-1. Workflow skill/docs update, if the process needs clarification.
-2. Dev Docker image upgrade and publish.
-3. CI and post-release version pin update.
-4. Generated/scaffold drift.
-5. Real compatibility fixes.
+Use this order inside the single PR:
+
+1. Upgrade the dev Docker image inputs and derived metadata tests.
+2. Sync CI and post-release version pins.
+3. Regenerate and classify scaffold drift.
+4. Fix real compatibility failures.
+5. Update workflow docs or skills only if the process changed.
 
 ### Step 3: Inventory Current Pins
 
@@ -207,7 +210,7 @@ symptoms. Flutter stable bumps often intentionally change generated platform pro
 
 ## PR Notes
 
-For the Docker/CI upgrade PR, include:
+For the single upgrade PR, include:
 
 - Old and new Flutter/Dart versions
 - Whether the dev image was dry-run or published
