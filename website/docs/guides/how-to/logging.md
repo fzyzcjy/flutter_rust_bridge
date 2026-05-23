@@ -38,7 +38,13 @@ Then enable the bridge with one macro call in a Rust file covered by `rust_input
 flutter_rust_bridge::enable_frb_rust_to_dart_logging!();
 ```
 
-After code generation, `RustLib.init()` automatically initializes the generated log stream and connects it to Dart logging. By default, FRB also installs a simple Dart-side output listener, so items logged via the standard Rust calls like `log::info!` are visible in `flutter run`.
+After code generation, opt in when initializing the generated library:
+
+```dart
+await RustLib.init(enableRustToDartLogging: true);
+```
+
+This initializes the generated log stream and connects it to Dart logging. By default, FRB also installs a simple Dart-side output listener, so items logged via the standard Rust calls like `log::info!` are visible in `flutter run`.
 
 ### Customize Dart output
 

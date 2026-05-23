@@ -28,7 +28,7 @@ Future<void> main() async {
     });
 
     // Step 1: Initialize once and confirm ordinary calls work before restart.
-    await RustLib.init();
+    await RustLib.init(enableRustToDartLogging: true);
     didInitialize = true;
 
     expect(await simpleAdderTwinNormal(a: 42, b: 100), 142);
@@ -44,7 +44,7 @@ Future<void> main() async {
     RustLib.dispose();
 
     // Step 3: Initialize again and verify both calls and logging use the new state.
-    await RustLib.init();
+    await RustLib.init(enableRustToDartLogging: true);
 
     expect(await simpleAdderTwinNormal(a: 42, b: 100), 142);
     expect(simpleAdderTwinSync(a: 42, b: 100), 142);

@@ -169,12 +169,14 @@ fn generate_boilerplate(
                     BaseHandler? handler,
                     ExternalLibrary? externalLibrary,
                     bool forceSameCodegenVersion = true,
+                    bool enableRustToDartLogging = false,
                   }}) async {{
                     await instance.initImpl(
                       api: api,
                       handler: handler,
                       externalLibrary: externalLibrary,
                       forceSameCodegenVersion: forceSameCodegenVersion,
+                      enableRustToDartLogging: enableRustToDartLogging,
                     );
                   }}
 
@@ -201,8 +203,12 @@ fn generate_boilerplate(
                   WireConstructor<{wire_class_name}> get wireConstructor => {wire_class_name}.fromExternalLibrary;
 
                   @override
-                  Future<void> executeRustInitializers() async {{
-                    {execute_dart_logging_initializers}
+                  Future<void> executeRustInitializers({{
+                    required bool enableRustToDartLogging,
+                  }}) async {{
+                    if (enableRustToDartLogging) {{
+                      {execute_dart_logging_initializers}
+                    }}
                     {execute_rust_initializers}
                     {execute_dart_initializers}
                   }}
