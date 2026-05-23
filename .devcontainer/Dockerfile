@@ -1,4 +1,4 @@
-ARG FLUTTER_VERSION=3.41.2
+ARG FLUTTER_VERSION=3.44.0
 FROM ghcr.io/cirruslabs/flutter:${FLUTTER_VERSION}
 
 # Configurable version parameters
