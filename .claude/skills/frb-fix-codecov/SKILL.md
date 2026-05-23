@@ -17,51 +17,21 @@ right fix is real coverage or a narrow, justified ignore marker.
 Start from the latest PR head. Codecov comments can be edited and old comments/checks can describe stale
 commits.
 
-Fetch the PR metadata, Codecov comments/checks, and the full Codecov report into a local temporary directory:
+Fetch the PR metadata, Codecov comments/checks, and the full Codecov report into a local temporary directory
+with the bundled analyzer:
 
 ```bash
-PR=<number>
-REPO=fzyzcjy/flutter_rust_bridge
-WORKDIR=/private/tmp/frb-codecov-${PR}-$(date +%Y%m%d%H%M%S)
-mkdir -p "$WORKDIR"
-
-gh pr view "$PR" --repo "$REPO" \
-  --json baseRefOid,headRefOid,comments,statusCheckRollup,url \
-  > "$WORKDIR/pr.json"
-
-BASE_SHA=$(jq -r .baseRefOid "$WORKDIR/pr.json")
-HEAD_SHA=$(jq -r .headRefOid "$WORKDIR/pr.json")
-
-gh api "repos/${REPO}/commits/${HEAD_SHA}/check-runs" --paginate \
-  > "$WORKDIR/check-runs.json"
-
-curl -sS \
-  "https://api.codecov.io/api/v2/github/fzyzcjy/repos/flutter_rust_bridge/report?sha=${HEAD_SHA}" \
-  > "$WORKDIR/codecov-report.json"
+python3 .claude/skills/frb-fix-codecov/codecov_analyzer.py analyze --pr <number>
 ```
 
-The full `report?sha=` endpoint is preferred because it returns all files in one response. Codecov also has
+The analyzer writes `pr.json`, `check-runs.json`, `codecov-report.json`, `codecov-comment.md`,
+`codecov-checks.json`, `codecov-files-summary.json`, and `missing-patch-lines.txt` under
+`/private/tmp/frb-codecov-<pr>-<timestamp>/` by default. Use `--output-dir <dir>` to choose a stable path for
+debugging or examples.
+
+The full Codecov `report?sha=` endpoint is preferred because it returns all files in one response. Codecov also has
 `file_report/<urlencoded-path>?sha=<sha>` for one file; use it only when the full report is too large or you
 need to re-check a path precisely.
-
-Save an initial human-readable summary:
-
-```bash
-jq -r '
-  .comments[]
-  | select(.author.login == "codecov")
-  | .body
-' "$WORKDIR/pr.json" > "$WORKDIR/codecov-comment.md"
-
-jq '
-  .check_runs[]
-  | select(.name | startswith("codecov/"))
-  | {name, conclusion, title: .output.title, summary: .output.summary, text: .output.text, details_url}
-' "$WORKDIR/check-runs.json" > "$WORKDIR/codecov-checks.json"
-
-jq '{totals, files: [.files[] | {name, totals}]}' \
-  "$WORKDIR/codecov-report.json" > "$WORKDIR/codecov-files-summary.json"
-```
 
 Read both Codecov statuses:
 
@@ -77,58 +47,9 @@ patch lines by intersecting Codecov's missing lines with Git's added/changed lin
 - `0`: covered
 - positive number: missing
 
-Use the full report already saved in `$WORKDIR`, and save the exact missing patch lines:
-
-```bash
-python3 - "$WORKDIR/codecov-report.json" "$BASE_SHA" "$HEAD_SHA" <<'PY' | tee "$WORKDIR/missing-patch-lines.txt"
-import json
-import subprocess
-import sys
-
-report_path, base_sha, head_sha = sys.argv[1:4]
-report = json.load(open(report_path))
-
-
-def changed_new_lines(file_path: str) -> set[int]:
-    diff = subprocess.check_output(
-        ["git", "diff", "--unified=0", base_sha, head_sha, "--", file_path],
-        text=True,
-    )
-
-    ans: set[int] = set()
-    current_new_line: int | None = None
-    for line in diff.splitlines():
-        if line.startswith("@@"):
-            new_range = line.split(" +", 1)[1].split(" ", 1)[0]
-            start_text, _, count_text = new_range.partition(",")
-            current_new_line = int(start_text)
-            if count_text == "0":
-                current_new_line = None
-            continue
-
-        if current_new_line is None:
-            continue
-        if line.startswith("+") and not line.startswith("+++"):
-            ans.add(current_new_line)
-            current_new_line += 1
-        elif not line.startswith("-"):
-            current_new_line += 1
-
-    return ans
-
-
-for file_entry in report["files"]:
-    file_path = file_entry["name"]
-    missing_lines = {
-        line_number
-        for line_number, value in file_entry["line_coverage"]
-        if value is not None and value > 0
-    }
-    patch_missing_lines = sorted(missing_lines & changed_new_lines(file_path))
-    for line_number in patch_missing_lines:
-        print(f"{file_path}:{line_number}")
-PY
-```
+The analyzer computes exact missing patch lines by intersecting the saved Codecov report with
+`git diff --unified=0 <base_sha> <head_sha>`. Read `missing-patch-lines.txt` first, then use the raw JSON files
+when the summary does not explain the status.
 
 If the computed output disagrees with Codecov:
 
