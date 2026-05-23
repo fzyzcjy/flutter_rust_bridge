@@ -22,7 +22,8 @@ Use this as the single-file workflow for Flutter stable bumps in `flutter_rust_b
 
 - Keep `.github/workflows/ci.yaml` and `.github/workflows/post_release.yaml` toolchain env values in sync.
 - Treat `.devcontainer/Dockerfile` `ARG` values as the source of truth for dev image tags.
-- Publish or dry-run the dev Docker image before depending on a new derived image tag.
+- Dry-run the dev Docker image before depending on a new derived image tag in the PR.
+- After the upgrade PR merges, trigger the dev Docker image publish workflow on `master`.
 - Do not hand-edit generated files as the final state.
 - Classify scaffold drift by source: integration template, Apple scaffold, Cargokit, or example output.
 
@@ -107,17 +108,6 @@ If local build is too expensive, dry-run the workflow:
 ```shell
 gh workflow run publish_dev_docker.yaml --ref <branch> -f publish=false
 ```
-
-After the Dockerfile change reaches the publish branch, publish and verify both `linux/amd64` and
-`linux/arm64`:
-
-```shell
-gh workflow run publish_dev_docker.yaml --ref master
-docker buildx imagetools inspect fzyzcjy/flutter_rust_bridge_dev:latest
-docker buildx imagetools inspect fzyzcjy/flutter_rust_bridge_dev:flutter-<flutter>-rust-<rust>-nightly-<nightly>
-```
-
-BuildKit attestation manifests can appear as `unknown/unknown`; those are not platform images.
 
 ### Step 5: Sync CI and Post-Release Pins
 
@@ -207,6 +197,24 @@ Read `frb-fix-ci` before deep debugging.
 
 When a platform starts failing after the Flutter bump, compare against release notes before patching
 symptoms. Flutter stable bumps often intentionally change generated platform projects.
+
+### Step 9: Publish the Dev Docker Image After Merge
+
+After the single upgrade PR is merged into `master`, trigger the publish workflow from `master` so the
+new derived dev image tag exists for future CI and developer workflows:
+
+```shell
+gh workflow run publish_dev_docker.yaml --ref master
+```
+
+After it completes, verify both `linux/amd64` and `linux/arm64`:
+
+```shell
+docker buildx imagetools inspect fzyzcjy/flutter_rust_bridge_dev:latest
+docker buildx imagetools inspect fzyzcjy/flutter_rust_bridge_dev:flutter-<flutter>-rust-<rust>-nightly-<nightly>
+```
+
+BuildKit attestation manifests can appear as `unknown/unknown`; those are not platform images.
 
 ## PR Notes
 
