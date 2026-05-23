@@ -4,6 +4,42 @@ import 'package:test/test.dart';
 
 void main() {
   test(
+    'ensurePrecommitAutofixImage builds local image when published tag is missing',
+    () async {
+      final commands = <String>[];
+
+      await ensurePrecommitAutofixImage(
+        buildIfMissing: true,
+        commandRunner:
+            (
+              cmd, {
+              String? relativePwd,
+              Map<String, String>? extraEnv,
+              bool? checkExitCode,
+            }) async {
+              commands.add(cmd);
+              if (cmd.startsWith('docker pull ')) {
+                throw Exception('missing image');
+              }
+              return const RunCommandOutput(
+                stdout: '',
+                stderr: '',
+                exitCode: 0,
+              );
+            },
+        dockerfilePath: '/repo/.devcontainer/Dockerfile',
+        imageRef:
+            'fzyzcjy/flutter_rust_bridge_dev:flutter-3.44.0-rust-1.93.1-nightly-2025-02-01',
+      );
+
+      expect(commands, [
+        "docker pull 'fzyzcjy/flutter_rust_bridge_dev:flutter-3.44.0-rust-1.93.1-nightly-2025-02-01'",
+        "docker build -f '/repo/.devcontainer/Dockerfile' -t 'fzyzcjy/flutter_rust_bridge_dev:flutter-3.44.0-rust-1.93.1-nightly-2025-02-01' '/repo/.devcontainer'",
+      ]);
+    },
+  );
+
+  test(
     'validatePrecommitAutofixPatch runs git apply check in repo root',
     () async {
       String? command;
