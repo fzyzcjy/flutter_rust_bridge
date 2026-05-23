@@ -283,17 +283,23 @@ def _write_human_summaries(
     _write_json(output_dir / "codecov-files-summary.json", files_summary)
 
 
-def _changed_new_lines(*, base_sha: str, head_sha: str, file_path: str) -> set[int]:
+def _changed_new_lines_by_file(*, base_sha: str, head_sha: str) -> dict[str, set[int]]:
     raw = exec_command(
-        ["git", "diff", "--unified=0", base_sha, head_sha, "--", file_path],
+        ["git", "diff", "--unified=0", base_sha, head_sha, "--"],
     )
     if raw is None:
         raise RuntimeError("git diff unexpectedly produced no output")
 
-    result: set[int] = set()
+    result: dict[str, set[int]] = {}
+    current_file_path: Optional[str] = None
     current_new_line: Optional[int] = None
 
     for line in raw.splitlines():
+        if line.startswith("+++ "):
+            current_file_path = _parse_new_file_path(line)
+            current_new_line = None
+            continue
+
         if line.startswith("@@"):
             new_range = line.split(" +", 1)[1].split(" ", 1)[0]
             start_text, _, count_text = new_range.partition(",")
@@ -305,13 +311,25 @@ def _changed_new_lines(*, base_sha: str, head_sha: str, file_path: str) -> set[i
         if current_new_line is None:
             continue
 
+        if current_file_path is None:
+            continue
+
         if line.startswith("+") and not line.startswith("+++"):
-            result.add(current_new_line)
+            result.setdefault(current_file_path, set()).add(current_new_line)
             current_new_line += 1
         elif not line.startswith("-"):
             current_new_line += 1
 
     return result
+
+
+def _parse_new_file_path(line: str) -> Optional[str]:
+    value = line.removeprefix("+++ ")
+    if value == "/dev/null":
+        return None
+    if value.startswith("b/"):
+        return value.removeprefix("b/")
+    return value
 
 
 def _compute_missing_patch_lines(
@@ -321,9 +339,17 @@ def _compute_missing_patch_lines(
     codecov_report: dict[str, Any],
 ) -> list[MissingPatchLine]:
     result: list[MissingPatchLine] = []
+    changed_new_lines_by_file = _changed_new_lines_by_file(
+        base_sha=base_sha,
+        head_sha=head_sha,
+    )
 
     for file_entry in codecov_report["files"]:
         file_path = file_entry["name"]
+        changed_new_lines = changed_new_lines_by_file.get(file_path)
+        if changed_new_lines is None:
+            continue
+
         missing_lines = {
             line_number
             for line_number, value in file_entry["line_coverage"]
@@ -333,12 +359,7 @@ def _compute_missing_patch_lines(
             continue
 
         patch_missing_lines = sorted(
-            missing_lines
-            & _changed_new_lines(
-                base_sha=base_sha,
-                head_sha=head_sha,
-                file_path=file_path,
-            )
+            missing_lines & changed_new_lines
         )
 
         result.extend(
