@@ -50,8 +50,9 @@ jobs:
           job_summary: false
       - uses: actions/checkout@v5
         with:
-          submodules: recursive
-          fetch-depth: 0
+          fetch-depth: 1
+      - name: Checkout submodules
+        run: git submodule update --init --recursive
       - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
