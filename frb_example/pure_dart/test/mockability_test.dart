@@ -19,16 +19,6 @@ Future<void> main() async {
   when(
     () => mockApi.crateApiCustomizationMyInitTwo(),
   ).thenAnswer((_) async => null);
-  when(
-    () => mockApi.crateApiFrbLoggingFrbInternalLoggingMaxLevel(),
-  ).thenReturn('WARN');
-  when(
-    () => mockApi.crateApiFrbLoggingFrbInternalLoggingSetupDartLoggingOutput(),
-  ).thenReturn(false);
-  when(
-    () => mockApi.crateApiFrbLoggingFrbInternalInitLogger(maxLevel: 'WARN'),
-  ).thenAnswer((_) => const Stream.empty());
-
   await RustLib.init(api: mockApi);
 
   test('can mock Rust calls', () async {
