@@ -30,6 +30,7 @@ import 'api/event_listener.dart';
 import 'api/exception.dart';
 import 'api/external_impl.dart';
 import 'api/external_type_in_crate.dart';
+import 'api/frb_logging.dart';
 import 'api/impl_trait.dart';
 import 'api/init_dart_code.dart';
 import 'api/inside_macro.dart';
@@ -2065,6 +2066,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dco_decode_StreamSink_event_twin_rust_async_Sse(dynamic raw);
 
   @protected
+  RustStreamSink<FrbLogRecord> dco_decode_StreamSink_frb_log_record_Sse(
+      dynamic raw);
+
+  @protected
   RustStreamSink<int> dco_decode_StreamSink_i_32_Sse(dynamic raw);
 
   @protected
@@ -3727,6 +3732,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   FeedIdTwinSync dco_decode_feed_id_twin_sync(dynamic raw);
+
+  @protected
+  FrbLogRecord dco_decode_frb_log_record(dynamic raw);
 
   @protected
   HashMapValue dco_decode_hash_map_value(dynamic raw);
@@ -6861,6 +6869,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           SseDeserializer deserializer);
 
   @protected
+  RustStreamSink<FrbLogRecord> sse_decode_StreamSink_frb_log_record_Sse(
+      SseDeserializer deserializer);
+
+  @protected
   RustStreamSink<int> sse_decode_StreamSink_i_32_Sse(
       SseDeserializer deserializer);
 
@@ -8712,6 +8724,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   FeedIdTwinSync sse_decode_feed_id_twin_sync(SseDeserializer deserializer);
+
+  @protected
+  FrbLogRecord sse_decode_frb_log_record(SseDeserializer deserializer);
 
   @protected
   HashMapValue sse_decode_hash_map_value(SseDeserializer deserializer);
@@ -12156,6 +12171,10 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       RustStreamSink<EventTwinRustAsync> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_StreamSink_frb_log_record_Sse(
+      RustStreamSink<FrbLogRecord> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_StreamSink_i_32_Sse(
       RustStreamSink<int> self, SseSerializer serializer);
 
@@ -13921,6 +13940,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_feed_id_twin_sync(
       FeedIdTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_frb_log_record(FrbLogRecord self, SseSerializer serializer);
 
   @protected
   void sse_encode_hash_map_value(HashMapValue self, SseSerializer serializer);
