@@ -24,12 +24,14 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
     BaseHandler? handler,
     ExternalLibrary? externalLibrary,
     bool forceSameCodegenVersion = true,
+    bool enableRustToDartLogging = false,
   }) async {
     await instance.initImpl(
       api: api,
       handler: handler,
       externalLibrary: externalLibrary,
       forceSameCodegenVersion: forceSameCodegenVersion,
+      enableRustToDartLogging: enableRustToDartLogging,
     );
   }
 
@@ -58,7 +60,10 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
       RustLibWire.fromExternalLibrary;
 
   @override
-  Future<void> executeRustInitializers() async {
+  Future<void> executeRustInitializers({
+    required bool enableRustToDartLogging,
+  }) async {
+    if (enableRustToDartLogging) {}
     await api.crateApiMinimalInitApp();
   }
 
