@@ -7,25 +7,60 @@ description: Use when a flutter_rust_bridge PR has Codecov patch or project cove
 
 ## Overview
 
-Triage Codecov as a coverage signal, not as a generic CI failure. First identify the exact missing patch
-lines from the latest Codecov report, then decide whether those lines deserve real coverage or a justified
-ignore marker.
+Use this skill to turn a vague Codecov PR comment into concrete file/line facts, then decide whether the
+right fix is real coverage or a narrow, justified ignore marker.
 
-## Triage
+## Workflow
 
-Start from the latest PR head, not an old Codecov comment. Codecov comments may be edited and checks may
-arrive after the main workflow finishes.
+### First, Understand the Concrete Codecov Report
 
-Useful commands:
+Start from the latest PR head. Codecov comments can be edited and old comments/checks can describe stale
+commits.
+
+Fetch the PR metadata, Codecov comments/checks, and the full Codecov report into a local temporary directory:
 
 ```bash
-gh pr view <number> --repo fzyzcjy/flutter_rust_bridge \
-  --json headRefOid,comments,statusCheckRollup,url
+PR=<number>
+REPO=fzyzcjy/flutter_rust_bridge
+WORKDIR=/private/tmp/frb-codecov-${PR}-$(date +%Y%m%d%H%M%S)
+mkdir -p "$WORKDIR"
 
-gh api repos/fzyzcjy/flutter_rust_bridge/commits/<head-sha>/check-runs --paginate \
-  | jq '.check_runs[]
-      | select(.name | startswith("codecov/"))
-      | {name, conclusion, title: .output.title, summary: .output.summary, text: .output.text, details_url}'
+gh pr view "$PR" --repo "$REPO" \
+  --json baseRefOid,headRefOid,comments,statusCheckRollup,url \
+  > "$WORKDIR/pr.json"
+
+BASE_SHA=$(jq -r .baseRefOid "$WORKDIR/pr.json")
+HEAD_SHA=$(jq -r .headRefOid "$WORKDIR/pr.json")
+
+gh api "repos/${REPO}/commits/${HEAD_SHA}/check-runs" --paginate \
+  > "$WORKDIR/check-runs.json"
+
+curl -sS \
+  "https://api.codecov.io/api/v2/github/fzyzcjy/repos/flutter_rust_bridge/report?sha=${HEAD_SHA}" \
+  > "$WORKDIR/codecov-report.json"
+```
+
+The full `report?sha=` endpoint is preferred because it returns all files in one response. Codecov also has
+`file_report/<urlencoded-path>?sha=<sha>` for one file; use it only when the full report is too large or you
+need to re-check a path precisely.
+
+Save an initial human-readable summary:
+
+```bash
+jq -r '
+  .comments[]
+  | select(.author.login == "codecov")
+  | .body
+' "$WORKDIR/pr.json" > "$WORKDIR/codecov-comment.md"
+
+jq '
+  .check_runs[]
+  | select(.name | startswith("codecov/"))
+  | {name, conclusion, title: .output.title, summary: .output.summary, text: .output.text, details_url}
+' "$WORKDIR/check-runs.json" > "$WORKDIR/codecov-checks.json"
+
+jq '{totals, files: [.files[] | {name, totals}]}' \
+  "$WORKDIR/codecov-report.json" > "$WORKDIR/codecov-files-summary.json"
 ```
 
 Read both Codecov statuses:
@@ -34,148 +69,84 @@ Read both Codecov statuses:
 - `codecov/project`: whole-project coverage delta. A green project status does not make a red patch status
   irrelevant.
 
-The GitHub comment usually lists only files and counts, for example `2 Missing`, not precise line numbers.
-Do not stop there. Obtain exact missing patch lines by combining the PR diff with Codecov's per-file report
-API.
+The GitHub comment usually lists files and missing counts, not precise line numbers. Compute exact missing
+patch lines by intersecting Codecov's missing lines with Git's added/changed lines. In Codecov's
+`line_coverage`, FRB's uploaded custom Rust coverage JSON uses:
 
-### Exact Missing Patch Lines
+- `null`: not coverable or ignored
+- `0`: covered
+- positive number: missing
 
-Use Codecov's `file_report` endpoint for each file listed in the Codecov comment or check output:
-
-```bash
-curl -sS \
-  "https://api.codecov.io/api/v2/github/fzyzcjy/repos/flutter_rust_bridge/file_report/${URLENCODED_FILE}?sha=${HEAD_SHA}"
-```
-
-The `URLENCODED_FILE` must encode `/` as `%2F`; otherwise Codecov treats the path as multiple URL segments.
-In the returned JSON, `line_coverage` is a list of `[line_number, value]`. For FRB's uploaded custom Rust
-coverage JSON, interpret it this way:
-
-- `value == null`: not coverable or ignored
-- `value == 0`: covered
-- `value > 0`: missing
-
-Then intersect those missing line numbers with the changed line numbers from the PR diff. This gives the
-exact uncovered patch lines that Codecov is complaining about.
-
-Concrete command sequence:
+Use the full report already saved in `$WORKDIR`, and save the exact missing patch lines:
 
 ```bash
-PR=3065
-REPO=fzyzcjy/flutter_rust_bridge
-FILE=frb_codegen/src/library/codegen/polisher/auto_upgrade.rs
-
-BASE_SHA=$(gh pr view "$PR" --repo "$REPO" --json baseRefOid --jq .baseRefOid)
-HEAD_SHA=$(gh pr view "$PR" --repo "$REPO" --json headRefOid --jq .headRefOid)
-URLENCODED_FILE=$(python3 -c 'import sys, urllib.parse; print(urllib.parse.quote(sys.argv[1], safe=""))' "$FILE")
-
-curl -sS \
-  "https://api.codecov.io/api/v2/github/fzyzcjy/repos/flutter_rust_bridge/file_report/${URLENCODED_FILE}?sha=${HEAD_SHA}" \
-  | python3 -c '
+python3 - "$WORKDIR/codecov-report.json" "$BASE_SHA" "$HEAD_SHA" <<'PY' | tee "$WORKDIR/missing-patch-lines.txt"
 import json
 import subprocess
 import sys
 
-file_path = sys.argv[1]
-base_sha = sys.argv[2]
-head_sha = sys.argv[3]
-report = json.load(sys.stdin)
+report_path, base_sha, head_sha = sys.argv[1:4]
+report = json.load(open(report_path))
 
-missing_lines = {
-    line_number
-    for line_number, value in report["line_coverage"]
-    if value is not None and value > 0
-}
 
-diff = subprocess.check_output(
-    ["git", "diff", "--unified=0", base_sha, head_sha, "--", file_path],
-    text=True,
-)
+def changed_new_lines(file_path: str) -> set[int]:
+    diff = subprocess.check_output(
+        ["git", "diff", "--unified=0", base_sha, head_sha, "--", file_path],
+        text=True,
+    )
 
-changed_lines = set()
-current_new_line = None
-for line in diff.splitlines():
-    if line.startswith("@@"):
-        new_range = line.split(" +", 1)[1].split(" ", 1)[0]
-        start_text, _, count_text = new_range.partition(",")
-        current_new_line = int(start_text)
-        if count_text == "0":
-            current_new_line = None
-        continue
+    ans: set[int] = set()
+    current_new_line: int | None = None
+    for line in diff.splitlines():
+        if line.startswith("@@"):
+            new_range = line.split(" +", 1)[1].split(" ", 1)[0]
+            start_text, _, count_text = new_range.partition(",")
+            current_new_line = int(start_text)
+            if count_text == "0":
+                current_new_line = None
+            continue
 
-    if current_new_line is None:
-        continue
-    if line.startswith("+") and not line.startswith("+++"):
-        changed_lines.add(current_new_line)
-        current_new_line += 1
-    elif not line.startswith("-"):
-        current_new_line += 1
+        if current_new_line is None:
+            continue
+        if line.startswith("+") and not line.startswith("+++"):
+            ans.add(current_new_line)
+            current_new_line += 1
+        elif not line.startswith("-"):
+            current_new_line += 1
 
-for line_number in sorted(missing_lines & changed_lines):
-    print(f"{file_path}:{line_number}")
-' "$FILE" "$BASE_SHA" "$HEAD_SHA"
+    return ans
+
+
+for file_entry in report["files"]:
+    file_path = file_entry["name"]
+    missing_lines = {
+        line_number
+        for line_number, value in file_entry["line_coverage"]
+        if value is not None and value > 0
+    }
+    patch_missing_lines = sorted(missing_lines & changed_new_lines(file_path))
+    for line_number in patch_missing_lines:
+        print(f"{file_path}:{line_number}")
+PY
 ```
 
-If the command prints nothing but Codecov still reports missing patch lines, check whether:
+If the computed output disagrees with Codecov:
 
-- The Codecov comment is stale and points to an older head SHA.
-- The file path from the comment is truncated; use the full `filepath=` query parameter from the Codecov URL.
-- The local git repo does not have both SHAs; fetch the PR/head and base branch, then rerun.
-- Codecov's UI is showing an indirect project-coverage change rather than uncovered changed lines.
+- Check whether the Codecov comment/check describes a different `HEAD_SHA`.
+- Check whether Git has both SHAs locally; fetch the PR head/base if needed.
+- For a truncated file path in the comment, get the full path from the Codecov URL's `filepath=` query.
+- Verify `Misc :: Codecov` downloaded all expected `*-coverage` artifacts before upload; use the
+  `gh-actions-live-logs` skill for GitHub Actions logs.
 
-In FRB CI, coverage is uploaded only by `Misc :: Codecov` after downloading all `*-coverage` artifacts. If
-upstream coverage jobs were cancelled or missing, treat the report as partial until you verify the artifact
-download in that job. Use the `gh-actions-live-logs` skill when reading GitHub Actions logs.
+### Then Fix According to the Situation
 
-## Understand FRB Coverage Inputs
+#### If the Branch Does Not Care About Codecov
 
-Rust coverage is transformed before upload by
-`tools/frb_internal/lib/src/utils/codecov_transformer.dart`.
+In this repo the Rust-side marker is `frb-coverage:ignore-start` /
+`frb-coverage:ignore-end` (not `frb-codecov-ignore`). It is implemented by
+`tools/frb_internal/lib/src/utils/codecov_transformer.dart`, which removes those Rust lines before upload.
 
-Important effects:
-
-- `frb-coverage:ignore-start` / `frb-coverage:ignore-end` remove Rust lines from the custom Codecov JSON.
-- Some syntax-only Rust lines are filtered by transformer patterns.
-- Dart-side coverage uses normal Dart/lcov markers such as `// coverage:ignore-start` and
-  `// coverage:ignore-end`.
-- `codecov.yml` ignores examples, tests, generated Dart files, and `frb_example/`; do not expect those paths
-  to repair patch coverage for `frb_codegen`, `frb_rust`, or `frb_dart` changes.
-
-## Decide the Fix
-
-Prefer real coverage when the uncovered line represents behavior that should keep working.
-
-Good candidates for tests:
-
-- Pure functions, parsers, config decisions, path computations, generated text decisions, and error handling
-  that can be exercised in Rust or Dart unit tests.
-- Regression-prone behavior that caused the PR change.
-- Logic where a small focused test can call the function directly after making the function test-visible or
-  private-in-module accessible from an existing `#[cfg(test)]` module.
-
-Use the relevant testing skills after choosing the test:
-
-- `frb-develop-feature` for adding feature or bug regression coverage.
-- `frb-test` for selecting local test commands.
-- `tom-frb-env` before running FRB tests or setup commands in Tom's environment.
-
-Ignore coverage only when the line is genuinely hard or misleading to execute and the source already makes
-that reason clear. Acceptable examples seen in this repo include:
-
-- Build-time or macro-time code that is certainly executed but invisible to llvm-cov.
-- OS-specific fallback or missing-tool branches that are impractical or flaky to force in normal CI.
-- Warning-only or defensive branches where testing would mostly assert implementation trivia.
-
-When adding Rust ignores, use:
-
-```rust
-// Short reason why coverage cannot see this or why the branch is not worth executing.
-// frb-coverage:ignore-start
-...
-// frb-coverage:ignore-end
-```
-
-When adding Dart ignores, use the native Dart coverage markers:
+Dart-side code uses normal Dart coverage markers:
 
 ```dart
 // coverage:ignore-start
@@ -183,16 +154,63 @@ When adding Dart ignores, use the native Dart coverage markers:
 // coverage:ignore-end
 ```
 
-Do not add ignore markers merely because adding a test is inconvenient. If the line is product behavior and
-no focused test path is obvious, summarize the missing lines and ask the human which tradeoff they want.
+Only use ignore markers when the code genuinely should not be judged by Codecov. Existing FRB examples
+usually have an explanatory comment immediately above the marker. Acceptable reasons include:
+
+- The code is definitely executed, but the coverage tool cannot see it, especially build-time or macro-time
+  execution.
+- llvm-cov reports a branch as uncovered even though a focused test exercises it.
+- The branch is warning-only, defensive, tool-missing, OS-specific, or otherwise not worth forcing in normal
+  CI.
+- The line is generated glue, FFI shape glue, or syntactic boilerplate where testing it would assert
+  implementation trivia rather than behavior.
+
+When adding Rust ignores, keep the ignored range as small as possible and write the reason first:
+
+```rust
+// This is executed at build time, but llvm-cov does not observe that path.
+// frb-coverage:ignore-start
+...
+// frb-coverage:ignore-end
+```
+
+Do not use ignore markers merely because adding a test is inconvenient. If the reason cannot be explained in
+one short public comment, treat the line as coverage-relevant.
+
+#### If the Branch Cares About Codecov
+
+Investigate why each exact missing line is not covered.
+
+Prefer real coverage when the uncovered line represents product behavior that should keep working. Good
+candidates for tests:
+
+- Pure functions, parsers, config decisions, path computations, generated text decisions, and error handling.
+- Integration/codegen behavior where the missing line affects generated files or public workflow behavior.
+- Regression-prone behavior introduced or modified by the PR.
+
+Choose the smallest meaningful test first:
+
+- Unit test the function directly when the behavior is local and stable.
+- Add a codegen or integration test when only the end-to-end generated output proves the behavior.
+- Add an E2E test when the missing line is only meaningful through a real FRB workflow.
+
+Use the relevant skills after choosing the test path:
+
+- `frb-develop-feature` for feature/bug regression coverage.
+- `frb-test` for selecting local test commands.
+- `tom-frb-env` before running FRB tests or setup commands in Tom's environment.
+
+If the behavior matters but a focused test would be brittle, very expensive, or require a product decision,
+summarize the exact missing lines, the suspected reason they are uncovered, and the realistic options, then
+ask the human which tradeoff to take.
 
 ## Verification
 
-After changing code or markers:
+After changing tests or ignore markers:
 
-1. Re-read the touched files before editing and stage only your files.
-2. Commit the logical fix before running long tests, following Tom's commit policy.
-3. Run the focused local test command that covers the changed package when practical.
+1. Re-read the touched files immediately before editing.
+2. Commit the logical fix before long verification, following Tom's commit policy.
+3. Run the focused local test command when practical.
 4. Push and check the latest `codecov/patch` and `codecov/project` statuses on the new head.
-5. If Codecov is still red, repeat from the exact latest missing-line report rather than reusing stale line
+5. If Codecov is still red, repeat the workflow from the latest exact report instead of reusing stale line
    numbers.
