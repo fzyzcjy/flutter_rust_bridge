@@ -7,6 +7,7 @@ import 'package:flutter_rust_bridge/src/utils/port_generator.dart';
 
 /// The Rust `StreamSink<T>` on the Dart side.
 class RustStreamSink<T> {
+  /// Whether the sink receive port keeps its isolate alive.
   final bool keepIsolateAlive;
 
   _State<T>? _state;
