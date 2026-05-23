@@ -12,7 +12,7 @@ right fix is real coverage or a narrow, justified ignore marker.
 
 ## Workflow
 
-### First, Understand the Concrete Codecov Report
+### Collect the Codecov Facts
 
 Start from the latest PR head. Codecov comments can be edited and old comments/checks can describe stale
 commits.
@@ -138,9 +138,9 @@ If the computed output disagrees with Codecov:
 - Verify `Misc :: Codecov` downloaded all expected `*-coverage` artifacts before upload; use the
   `gh-actions-live-logs` skill for GitHub Actions logs.
 
-### Then Fix According to the Situation
+### Choose the Fix
 
-#### If the Branch Does Not Care About Codecov
+#### Exclude Non-Meaningful Coverage
 
 In this repo the Rust-side marker is `frb-coverage:ignore-start` /
 `frb-coverage:ignore-end` (not `frb-codecov-ignore`). It is implemented by
@@ -177,7 +177,7 @@ When adding Rust ignores, keep the ignored range as small as possible and write 
 Do not use ignore markers merely because adding a test is inconvenient. If the reason cannot be explained in
 one short public comment, treat the line as coverage-relevant.
 
-#### If the Branch Cares About Codecov
+#### Add Meaningful Coverage
 
 Investigate why each exact missing line is not covered.
 
