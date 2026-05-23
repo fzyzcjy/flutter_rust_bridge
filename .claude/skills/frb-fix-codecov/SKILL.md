@@ -112,11 +112,14 @@ candidates for tests:
 - Integration/codegen behavior where the missing line affects generated files or public workflow behavior.
 - Regression-prone behavior introduced or modified by the PR.
 
-Choose the smallest meaningful test first:
+For feature behavior, default to an E2E-style regression first, especially by extending an existing
+`pure_dart` scenario when that can exercise the real generated workflow.
 
-- Unit test the function directly when the behavior is local and stable.
-- Add a codegen or integration test when only the end-to-end generated output proves the behavior.
-- Add an E2E test when the missing line is only meaningful through a real FRB workflow.
+Only fall back to narrower tests when the E2E route is brittle, too expensive, or cannot reach the behavior:
+
+- Add a codegen or integration test when generated output proves the behavior but a full E2E case is awkward.
+- Unit test the function directly when the behavior is local, stable, and not meaningfully tied to an FRB
+  workflow.
 
 Use the relevant skills after choosing the test path:
 
