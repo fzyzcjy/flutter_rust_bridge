@@ -407,8 +407,9 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
   }
 }
 
-String _testCommand(DartMode mode) =>
-    mode == DartMode.dart ? 'dart run test' : 'flutter test';
+String _testCommand(DartMode mode) => mode == DartMode.dart
+    ? 'dart --enable-vm-service=0 run test'
+    : 'flutter test';
 
 // Follow steps in https://github.com/taiki-e/cargo-llvm-cov#get-coverage-of-external-tests
 Future<T> withLlvmCovReport<T>(
