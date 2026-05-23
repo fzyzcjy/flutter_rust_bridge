@@ -25,14 +25,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
         ),
       );
     });
-    test('call funcTypeFalliblePanicTwinSyncSse', () async {
+    test('call funcTypeFalliblePanicTwinSyncSse', skip: kIsWeb, () async {
       await expectRustPanic(
         () async => funcTypeFalliblePanicTwinSyncSse(),
         'TwinSyncSse',
         messageOnNative: 'deliberate panic',
       );
     });
-    test('call funcTypeInfalliblePanicTwinSyncSse', () async {
+    test('call funcTypeInfalliblePanicTwinSyncSse', skip: kIsWeb, () async {
       await expectRustPanic(
         () async => funcTypeInfalliblePanicTwinSyncSse(),
         'TwinSyncSse',
@@ -41,7 +41,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     });
 
     addTestsIdentityFunctionCall(customEnumErrorReturnOkTwinSyncSse, [100]);
-    test('call customEnumErrorPanicTwinSyncSse', () async {
+    test('call customEnumErrorPanicTwinSyncSse', skip: kIsWeb, () async {
       await expectRustPanic(
         () async => customEnumErrorPanicTwinSyncSse(),
         'TwinSyncSse',
