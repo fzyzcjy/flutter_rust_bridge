@@ -39,7 +39,7 @@ def main() -> None:
 
 
 @app.command()
-def analyze(
+def download(
     pr: Annotated[
         Optional[int],
         typer.Option("--pr", help="Pull request number to analyze."),
@@ -56,7 +56,7 @@ def analyze(
         ),
     ] = None,
 ) -> None:
-    """Fetch Codecov PR data and print exact missing patch lines."""
+    """Download Codecov PR data into a local directory."""
 
     logging.basicConfig(level=logging.INFO)
 
@@ -85,17 +85,44 @@ def analyze(
         output_dir=resolved_output_dir,
     )
 
+    typer.echo(f"output_dir={resolved_output_dir}")
+    typer.echo(f"base_sha={pr_info.base_sha}")
+    typer.echo(f"head_sha={pr_info.head_sha}")
+    typer.echo(
+        "next_command="
+        f"python3 .claude/skills/frb-fix-codecov/codecov_analyzer.py analyze "
+        f"--input-dir {shlex.quote(str(resolved_output_dir))}"
+    )
+
+
+@app.command()
+def analyze(
+    input_dir: Annotated[
+        Optional[Path],
+        typer.Option("--input-dir", help="Directory created by the download command."),
+    ] = None,
+) -> None:
+    """Print exact missing patch lines from a downloaded Codecov report."""
+
+    logging.basicConfig(level=logging.INFO)
+
+    if input_dir is None:
+        raise typer.BadParameter("--input-dir is required")
+
+    pr_info = _load_pr_info(input_dir / "pr.json")
+    codecov_report: dict[str, Any] = json.loads((input_dir / "codecov-report.json").read_text())
+
     missing_patch_lines = _compute_missing_patch_lines(
         base_sha=pr_info.base_sha,
         head_sha=pr_info.head_sha,
         codecov_report=codecov_report,
     )
     _write_missing_patch_lines(
-        output_dir=resolved_output_dir,
+        output_dir=input_dir,
         missing_patch_lines=missing_patch_lines,
     )
 
-    typer.echo(f"output_dir={resolved_output_dir}")
+    typer.echo(f"input_dir={input_dir}")
     typer.echo(f"base_sha={pr_info.base_sha}")
     typer.echo(f"head_sha={pr_info.head_sha}")
     typer.echo("missing_patch_lines:")

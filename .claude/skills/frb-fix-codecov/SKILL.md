@@ -21,13 +21,16 @@ Fetch the PR metadata, Codecov comments/checks, and the full Codecov report into
 with the bundled analyzer:
 
 ```bash
-python3 .claude/skills/frb-fix-codecov/codecov_analyzer.py analyze --pr <number>
+python3 .claude/skills/frb-fix-codecov/codecov_analyzer.py download --pr <number>
+python3 .claude/skills/frb-fix-codecov/codecov_analyzer.py analyze --input-dir <output_dir>
 ```
 
-The analyzer writes `pr.json`, `check-runs.json`, `codecov-report.json`, `codecov-comment.md`,
-`codecov-checks.json`, `codecov-files-summary.json`, and `missing-patch-lines.txt` under
-`/private/tmp/frb-codecov-<pr>-<timestamp>/` by default. Use `--output-dir <dir>` to choose a stable path for
-debugging or examples.
+`download` writes `pr.json`, `check-runs.json`, `codecov-report.json`, `codecov-comment.md`,
+`codecov-checks.json`, and `codecov-files-summary.json` under `/private/tmp/frb-codecov-<pr>-<timestamp>/` by
+default. Use `download --output-dir <dir>` to choose a stable path for debugging or examples.
+
+`analyze` is offline: it reads the downloaded directory, writes `missing-patch-lines.txt`, and prints the exact
+missing patch lines.
 
 The full Codecov `report?sha=` endpoint is preferred because it returns all files in one response. Codecov also has
 `file_report/<urlencoded-path>?sha=<sha>` for one file; use it only when the full report is too large or you
