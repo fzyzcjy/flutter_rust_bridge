@@ -23400,7 +23400,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<FrbLogRecord> crateApiFrbLoggingFrbInternalInitLogger(
       {required String maxLevel}) {
-    final sink = RustStreamSink<FrbLogRecord>();
+    final sink = RustStreamSink<FrbLogRecord>(keepIsolateAlive: false);
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);

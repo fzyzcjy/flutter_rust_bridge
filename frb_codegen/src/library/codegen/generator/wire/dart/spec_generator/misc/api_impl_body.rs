@@ -68,10 +68,11 @@ pub(crate) fn generate_api_impl_normal_function(
             }
             MirFuncMode::Sync => call_handler.clone(),
         };
+        let return_stream_constructor_args = generate_return_stream_constructor_args(func);
 
         format!(
             "
-            final {return_stream_name} = {return_stream_type}();
+            final {return_stream_name} = {return_stream_type}{return_stream_constructor_args};
             {wrapped_call_handler};
             return {return_stream_name}.stream;
             ",
@@ -106,6 +107,14 @@ pub(crate) fn generate_api_impl_normal_function(
         ),
         ..Default::default()
     })
+}
+
+fn generate_return_stream_constructor_args(func: &MirFunc) -> &'static str {
+    if func.name_dart_wire().ends_with("FrbInternalInitLogger") {
+        "(keepIsolateAlive: false)"
+    } else {
+        "()"
+    }
 }
 
 fn generate_execute_func_name(func: &MirFunc) -> &str {

@@ -17,9 +17,10 @@ String serializeNativePort(NativePortType port) {
 }
 
 /// {@macro flutter_rust_bridge.internal}
-ReceivePort broadcastPort(String channelName) => ReceivePort._raw(
-  RawReceivePort._raw(_WebChannel.broadcastChannel(channelName)),
-);
+ReceivePort broadcastPort(String channelName, {bool keepIsolateAlive = true}) =>
+    ReceivePort._raw(
+      RawReceivePort._raw(_WebChannel.broadcastChannel(channelName)),
+    );
 
 /// {@template flutter_rust_bridge.same_as_native}
 /// Web implementation of the one with same name in native.

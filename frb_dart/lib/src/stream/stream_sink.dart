@@ -7,11 +7,16 @@ import 'package:flutter_rust_bridge/src/utils/port_generator.dart';
 
 /// The Rust `StreamSink<T>` on the Dart side.
 class RustStreamSink<T> {
+  final bool keepIsolateAlive;
+
   _State<T>? _state;
+
+  /// Creates a Rust stream sink.
+  RustStreamSink({this.keepIsolateAlive = true});
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   String setupAndSerialize({required BaseCodec<T, dynamic, dynamic> codec}) {
-    _state ??= _setup(codec);
+    _state ??= _setup(codec, keepIsolateAlive: keepIsolateAlive);
     return serializeNativePort(_state!.receivePort.sendPort.nativePort);
   }
 
@@ -26,9 +31,15 @@ class _State<T> {
   const _State(this.receivePort, this.stream);
 }
 
-_State<T> _setup<T>(BaseCodec<T, dynamic, dynamic> codec) {
+_State<T> _setup<T>(
+  BaseCodec<T, dynamic, dynamic> codec, {
+  required bool keepIsolateAlive,
+}) {
   final portName = ExecuteStreamPortGenerator.create('RustStreamSink');
-  final receivePort = broadcastPort(portName);
+  final receivePort = broadcastPort(
+    portName,
+    keepIsolateAlive: keepIsolateAlive,
+  );
 
   final Stream<T> rawStream = () async* {
     try {
