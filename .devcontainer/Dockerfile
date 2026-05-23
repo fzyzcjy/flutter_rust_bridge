@@ -14,10 +14,15 @@ ENV PIP_BREAK_SYSTEM_PACKAGES=1
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
+    clang \
     cmake \
     ninja-build \
     pkg-config \
     libclang-dev \
+    libgtk-3-dev \
+    liblzma-dev \
+    libstdc++-12-dev \
+    mesa-utils \
     python3-pip \
     xz-utils \
     && rm -rf /var/lib/apt/lists/*
@@ -30,11 +35,14 @@ RUN mkdir -p /etc/pip && \
 SHELL ["/bin/bash", "-c"]
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain ${RUST_VERSION} && \
     export PATH="$HOME/.cargo/bin:$PATH" && \
-    rustup component add rustfmt clippy && \
+    rustup component add rustfmt clippy llvm-tools-preview && \
     rustup target add wasm32-unknown-unknown && \
     rustup toolchain install "nightly-${RUST_NIGHTLY_VERSION}" && \
-    rustup component add rust-src --toolchain "nightly-${RUST_NIGHTLY_VERSION}" && \
-    rustup target add wasm32-unknown-unknown --toolchain "nightly-${RUST_NIGHTLY_VERSION}"
+    rustup component add rust-src llvm-tools-preview --toolchain "nightly-${RUST_NIGHTLY_VERSION}" && \
+    rustup target add wasm32-unknown-unknown --toolchain "nightly-${RUST_NIGHTLY_VERSION}" && \
+    rustup toolchain install nightly && \
+    rustup component add rust-src --toolchain nightly && \
+    rustup target add wasm32-unknown-unknown --toolchain nightly
 ENV PATH="/root/.cargo/bin:${PATH}"
 
 # Install Node.js and npm from official multi-arch binaries.
@@ -75,6 +83,8 @@ RUN flutter --version && \
     rustup toolchain list | grep "nightly-${RUST_NIGHTLY_VERSION}" && \
     rustup target list --installed | grep wasm32-unknown-unknown && \
     rustup target list --toolchain "nightly-${RUST_NIGHTLY_VERSION}" --installed | grep wasm32-unknown-unknown && \
+    rustup component list --installed | grep llvm-tools-preview && \
+    rustup component list --toolchain nightly --installed | grep rust-src && \
     cargo expand --version && \
     cargo llvm-cov --version && \
     wasm-pack --version && \
