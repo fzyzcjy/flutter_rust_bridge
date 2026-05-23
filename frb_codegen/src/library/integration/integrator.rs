@@ -336,7 +336,10 @@ mod tests {
 
     #[test]
     fn test_add_analyzer_exclude_prepends_analyzer_block() {
-        let actual = add_analyzer_exclude("include: package:flutter_lints/flutter.yaml\n", "cargokit/**");
+        let actual = add_analyzer_exclude(
+            "include: package:flutter_lints/flutter.yaml\n",
+            "cargokit/**",
+        );
 
         assert_eq!(
             actual,
