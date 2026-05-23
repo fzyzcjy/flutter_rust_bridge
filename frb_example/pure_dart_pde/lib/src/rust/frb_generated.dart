@@ -208,10 +208,6 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 
   @override
   Future<void> executeRustInitializers() async {
-    await api.crateApiCustomizationInitApp();
-    await api.crateApiCustomizationMyInitOne();
-    await api.crateApiCustomizationMyInitTwo();
-
     kFrbDartLogging.init(
       rustLogStream:
           frbInternalInitLogger(maxLevel: frbInternalLoggingMaxLevel()),
@@ -226,6 +222,10 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
       setupDefaultOutput: frbInternalLoggingSetupDartLoggingOutput(),
       disposeRustLogger: frbInternalDisposeLogger,
     );
+
+    await api.crateApiCustomizationInitApp();
+    await api.crateApiCustomizationMyInitOne();
+    await api.crateApiCustomizationMyInitTwo();
 
     recordInitDartCodeMessage(message: 'first');
 

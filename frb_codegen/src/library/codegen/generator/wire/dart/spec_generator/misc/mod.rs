@@ -121,12 +121,22 @@ fn generate_boilerplate(
             )
         })
         .join("");
-    let execute_dart_initializers = generate_execute_dart_initializers(
-        context
-            .mir_pack
-            .funcs_with_impl()
+    let funcs_with_impl = context.mir_pack.funcs_with_impl();
+    let init_dart_codes = funcs_with_impl
+        .iter()
+        .filter_map(|f| f.init_dart_code.as_deref())
+        .collect_vec();
+    let execute_dart_logging_initializers = generate_execute_dart_initializers(
+        init_dart_codes
             .iter()
-            .filter_map(|f| f.init_dart_code.as_deref()),
+            .copied()
+            .filter(|code| is_logging_initializer(code)),
+    );
+    let execute_dart_initializers = generate_execute_dart_initializers(
+        init_dart_codes
+            .iter()
+            .copied()
+            .filter(|code| !is_logging_initializer(code)),
     );
 
     let codegen_version = env!("CARGO_PKG_VERSION");
@@ -192,6 +202,7 @@ fn generate_boilerplate(
 
                   @override
                   Future<void> executeRustInitializers() async {{
+                    {execute_dart_logging_initializers}
                     {execute_rust_initializers}
                     {execute_dart_initializers}
                   }}
@@ -258,6 +269,10 @@ fn generate_execute_dart_initializers<'a>(
     init_dart_codes.map(|code| format!("{code}\n")).join("")
 }
 
+fn is_logging_initializer(code: &str) -> bool {
+    code.contains("kFrbDartLogging.init")
+}
+
 fn file_stem(p: &Path) -> String {
     p.file_stem().unwrap().to_str().unwrap().into()
 }
@@ -281,7 +296,7 @@ fn generate_import_dart_api_layer(
 
 #[cfg(test)]
 mod tests {
-    use super::generate_execute_dart_initializers;
+    use super::{generate_execute_dart_initializers, is_logging_initializer};
 
     #[test]
     fn test_generate_execute_dart_initializers() {
@@ -293,6 +308,14 @@ mod tests {
             actual,
             "api.firstInit();\napi.secondInit(\n  value: 42,\n);\n"
         );
+    }
+
+    #[test]
+    fn test_is_logging_initializer() {
+        assert!(is_logging_initializer(
+            "kFrbDartLogging.init(rustLogStream: stream);"
+        ));
+        assert!(!is_logging_initializer("api.userDefinedInitializer();"));
     }
 }
 
