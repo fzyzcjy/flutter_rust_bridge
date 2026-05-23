@@ -1,7 +1,13 @@
 name: Precommit Autofix
 
 on:
-  pull_request: { }
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+      - edited
   workflow_dispatch: { }
 
 concurrency:
