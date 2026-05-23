@@ -72,7 +72,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
-        if: ${{ false }}
         continue-on-error: true
         with:
           comment_on_pr: false
@@ -102,7 +101,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
-        if: ${{ false }}
         continue-on-error: true
         with:
           comment_on_pr: false
@@ -124,7 +122,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
-        if: ${{ false }}
         continue-on-error: true
         with:
           comment_on_pr: false
@@ -208,7 +205,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
-        if: ${{ false }}
         continue-on-error: true
         with:
           comment_on_pr: false
@@ -255,7 +251,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
-        if: ${{ false }}
         continue-on-error: true
         with:
           comment_on_pr: false
@@ -288,7 +283,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
-        if: ${{ false }}
         continue-on-error: true
         with:
           comment_on_pr: false
@@ -332,7 +326,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
-        if: ${{ false }}
         continue-on-error: true
         with:
           comment_on_pr: false
@@ -421,7 +414,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
-        if: ${{ false }}
         continue-on-error: true
         with:
           comment_on_pr: false
@@ -462,7 +454,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
-        if: ${{ false }}
         continue-on-error: true
         with:
           comment_on_pr: false
@@ -558,7 +549,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
-        if: ${{ false }}
         continue-on-error: true
         with:
           comment_on_pr: false
@@ -615,7 +605,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
-        if: ${{ false }}
         continue-on-error: true
         with:
           comment_on_pr: false
@@ -657,7 +646,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
-        if: ${{ false }}
         continue-on-error: true
         with:
           comment_on_pr: false
@@ -712,7 +700,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
-        if: ${{ false }}
         continue-on-error: true
         with:
           comment_on_pr: false
@@ -755,7 +742,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
-        if: ${{ false }}
         continue-on-error: true
         with:
           comment_on_pr: false
@@ -867,7 +853,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
-        if: ${{ false }}
         continue-on-error: true
         with:
           comment_on_pr: false
@@ -954,7 +939,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
-        if: ${{ false }}
         continue-on-error: true
         with:
           comment_on_pr: false
@@ -988,7 +972,6 @@ jobs:
 
     steps:
       - uses: catchpoint/workflow-telemetry-action@v2
-        if: ${{ false }}
         continue-on-error: true
         with:
           comment_on_pr: false
