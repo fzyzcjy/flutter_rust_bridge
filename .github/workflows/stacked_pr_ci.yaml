@@ -1,0 +1,143 @@
+name: Stacked PR CI
+
+on:
+  pull_request_target:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+      - edited
+    branches-ignore:
+      - master
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  run_ci:
+    name: Run CI for stacked PR
+    if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 370
+
+    permissions:
+      actions: write
+      contents: read
+      pull-requests: read
+
+    steps:
+      - name: Dispatch and monitor CI workflows
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const workflows = [
+              { fileName: 'ci.yaml', label: 'CI' },
+              { fileName: 'precommit_autofix.yaml', label: 'Precommit Autofix' },
+            ];
+            const pollIntervalMilliseconds = 60_000;
+            const runDiscoveryIntervalMilliseconds = 10_000;
+            const maxRunDiscoveryAttempts = 30;
+
+            const { owner, repo } = context.repo;
+            const pullRequest = context.payload.pull_request;
+            const branchName = pullRequest.head.ref;
+            const headSha = pullRequest.head.sha;
+            const dispatchStartedAt = Date.now() - 60_000;
+
+            const sleep = (milliseconds) =>
+              new Promise((resolve) => setTimeout(resolve, milliseconds));
+
+            const dispatchWorkflow = async (workflow) => {
+              core.notice(`Dispatching ${workflow.label} on ${branchName} (${headSha}).`);
+              await github.rest.actions.createWorkflowDispatch({
+                owner,
+                repo,
+                workflow_id: workflow.fileName,
+                ref: branchName,
+              });
+            };
+
+            const findDispatchedRun = async (workflow) => {
+              for (let attempt = 1; attempt <= maxRunDiscoveryAttempts; attempt += 1) {
+                const response = await github.rest.actions.listWorkflowRuns({
+                  owner,
+                  repo,
+                  workflow_id: workflow.fileName,
+                  branch: branchName,
+                  event: 'workflow_dispatch',
+                  per_page: 20,
+                });
+                const matchingRun = response.data.workflow_runs.find((run) =>
+                  run.head_sha === headSha &&
+                  new Date(run.created_at).getTime() >= dispatchStartedAt
+                );
+
+                if (matchingRun) {
+                  return matchingRun;
+                }
+
+                core.notice(`Waiting for ${workflow.label} run to appear (${attempt}/${maxRunDiscoveryAttempts}).`);
+                await sleep(runDiscoveryIntervalMilliseconds);
+              }
+
+              throw new Error(`Could not find the dispatched ${workflow.label} run for ${branchName}@${headSha}.`);
+            };
+
+            const waitForCompletion = async (workflow, run) => {
+              let currentRun = run;
+
+              while (currentRun.status !== 'completed') {
+                core.notice(`${workflow.label} is ${currentRun.status}: ${currentRun.html_url}`);
+                await sleep(pollIntervalMilliseconds);
+
+                const response = await github.rest.actions.getWorkflowRun({
+                  owner,
+                  repo,
+                  run_id: currentRun.id,
+                });
+                currentRun = response.data;
+              }
+
+              core.notice(`${workflow.label} concluded with ${currentRun.conclusion}: ${currentRun.html_url}`);
+              return currentRun;
+            };
+
+            const monitoredRuns = [];
+
+            for (const workflow of workflows) {
+              await dispatchWorkflow(workflow);
+              const run = await findDispatchedRun(workflow);
+              monitoredRuns.push({ workflow, run });
+              core.notice(`${workflow.label} run: ${run.html_url}`);
+            }
+
+            const completedRuns = [];
+
+            for (const monitoredRun of monitoredRuns) {
+              const completedRun = await waitForCompletion(monitoredRun.workflow, monitoredRun.run);
+              completedRuns.push({ workflow: monitoredRun.workflow, run: completedRun });
+            }
+
+            await core.summary.addHeading('Stacked PR CI').addTable([
+              [
+                { data: 'Workflow', header: true },
+                { data: 'Conclusion', header: true },
+                { data: 'Run', header: true },
+              ],
+              ...completedRuns.map(({ workflow, run }) => [
+                workflow.label,
+                run.conclusion ?? 'unknown',
+                `<a href="${run.html_url}">${run.id}</a>`,
+              ]),
+            ]).write();
+
+            const failedRuns = completedRuns.filter(({ run }) => run.conclusion !== 'success');
+
+            if (failedRuns.length > 0) {
+              const summary = failedRuns
+                .map(({ workflow, run }) => `${workflow.label}: ${run.conclusion} (${run.html_url})`)
+                .join('\n');
+              core.setFailed(`One or more stacked PR CI workflows failed:\n${summary}`);
+            }
