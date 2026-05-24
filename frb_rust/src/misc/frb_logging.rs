@@ -36,8 +36,10 @@ macro_rules! enable_frb_rust_to_dart_logging {
             pub line: Option<u32>,
         }
 
+        type FrbLogSink = crate::frb_generated::StreamSink<FrbLogRecord>;
+
         struct FrbDartLogger {
-            sink: std::sync::Mutex<Option<crate::frb_generated::StreamSink<FrbLogRecord>>>,
+            sink: arc_swap::ArcSwapOption<FrbLogSink>,
         }
 
         impl log::Log for FrbDartLogger {
@@ -50,19 +52,7 @@ macro_rules! enable_frb_rust_to_dart_logging {
                     return;
                 }
 
-                let sink = {
-                    let sink = match self.sink.lock() {
-                        Ok(sink) => sink,
-                        Err(poisoned) => {
-                            $crate::for_generated::print_to_console(
-                                "FRB logging sink lock is poisoned; recovering",
-                            );
-                            poisoned.into_inner()
-                        }
-                    };
-                    sink.as_ref().cloned()
-                };
-                let Some(sink) = sink else {
+                let Some(sink) = self.load_sink() else {
                     frb_log_record_to_console(record);
                     return;
                 };
@@ -82,6 +72,16 @@ macro_rules! enable_frb_rust_to_dart_logging {
             }
 
             fn flush(&self) {}
+        }
+
+        impl FrbDartLogger {
+            fn load_sink(&self) -> Option<std::sync::Arc<FrbLogSink>> {
+                self.sink.load_full()
+            }
+
+            fn swap_sink(&self, sink: Option<FrbLogSink>) {
+                self.sink.swap(sink.map(std::sync::Arc::new));
+            }
         }
 
         fn frb_log_record_to_console(record: &log::Record) {
@@ -114,46 +114,20 @@ macro_rules! enable_frb_rust_to_dart_logging {
         ) {
             let max_level = frb_parse_logging_max_level(&max_level);
             let logger = FRB_DART_LOGGER.get_or_init(|| FrbDartLogger {
-                sink: std::sync::Mutex::new(None),
+                sink: arc_swap::ArcSwapOption::from(None),
             });
 
             let _ = log::set_logger(logger);
             log::set_max_level(max_level);
 
-            let mut sink_slot = match logger.sink.lock() {
-                Ok(sink_slot) => sink_slot,
-                Err(poisoned) => {
-                    $crate::for_generated::print_to_console(
-                        "FRB logging sink lock is poisoned; recovering",
-                    );
-                    poisoned.into_inner()
-                }
-            };
-            *sink_slot = Some(sink);
-
+            logger.swap_sink(Some(sink));
         }
 
         #[doc(hidden)]
         #[flutter_rust_bridge::frb(sync)]
         pub fn frb_internal_dispose_logger() {
             if let Some(logger) = FRB_DART_LOGGER.get() {
-                let mut sink_slot = match logger.sink.try_lock() {
-                    Ok(sink_slot) => sink_slot,
-                    Err(error) => {
-                        if let std::sync::TryLockError::Poisoned(_) = error {
-                            $crate::for_generated::print_to_console(
-                                "FRB logging sink lock is poisoned; recovering",
-                            );
-                            logger
-                                .sink
-                                .lock()
-                                .unwrap_or_else(std::sync::PoisonError::into_inner)
-                        } else {
-                            return;
-                        }
-                    }
-                };
-                *sink_slot = None;
+                logger.swap_sink(None);
             }
         }
 
