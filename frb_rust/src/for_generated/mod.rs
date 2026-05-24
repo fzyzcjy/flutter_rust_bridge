@@ -68,7 +68,6 @@ pub use crate::thread_pool::{BaseThreadPool, SimpleThreadPool};
 pub use crate::web_transfer::transfer_closure::TransferClosure;
 #[cfg(feature = "anyhow")]
 pub use anyhow;
-pub use arc_swap;
 pub use byteorder;
 #[cfg(target_family = "wasm")]
 pub use cast::slice_from_byte_buffer;

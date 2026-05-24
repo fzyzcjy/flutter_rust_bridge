@@ -11,7 +11,6 @@ categories.workspace = true
 
 [dependencies]
 anyhow = { workspace = true, optional = true }
-arc-swap = "1.7.1"
 backtrace = { workspace = true, optional = true }
 byteorder = "1.5.0"
 chrono = { workspace = true, optional = true }

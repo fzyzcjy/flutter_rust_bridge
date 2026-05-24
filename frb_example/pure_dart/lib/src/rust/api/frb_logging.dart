@@ -8,7 +8,7 @@ import 'dart:io';
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These functions are ignored because they are not marked as `pub`: `frb_log_record_to_console`, `frb_parse_logging_max_level`
+// These functions are ignored because they are not marked as `pub`: `frb_log_record_to_console`, `frb_parse_logging_max_level`, `load_sink`, `swap_sink`
 // These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `FrbDartLogger`
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `enabled`, `flush`, `fmt`, `log`
 
