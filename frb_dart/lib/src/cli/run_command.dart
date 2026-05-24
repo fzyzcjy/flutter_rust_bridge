@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -30,6 +31,7 @@ Future<RunCommandOutput> runCommand(
   bool silent = false,
   bool? checkExitCode,
   bool printCommandInStderr = false,
+  Duration? timeout,
 }) async {
   // ignore: avoid_print
   (printCommandInStderr ? stderr : stdout).writeAndFlush(
@@ -58,7 +60,18 @@ Future<RunCommandOutput> runCommand(
     stderrText.add(line);
   });
 
-  final exitCode = await process.exitCode;
+  final int exitCode;
+  try {
+    exitCode = timeout == null
+        ? await process.exitCode
+        : await process.exitCode.timeout(timeout);
+  } on TimeoutException {
+    process.kill();
+    throw TimeoutException(
+      'Command timed out after $timeout: $command ${arguments.join(" ")}',
+      timeout,
+    );
+  }
   if ((checkExitCode ?? true) && (exitCode != 0)) {
     const envKey = 'FRB_DART_RUN_COMMAND_STDERR';
     final enableStderr = Platform.environment[envKey] == '1';
