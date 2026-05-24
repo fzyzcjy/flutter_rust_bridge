@@ -12,12 +12,14 @@ Future<void> main() async {
       'executeNormal init_app',
       'executeNormal my_init_one',
       'executeNormal my_init_two',
+      'executeNormal frb_internal_init_logger',
     ]);
     expect(await simpleAdderTwinNormal(a: 1, b: 2), 3);
     expect(customHandler.logs, [
       'executeNormal init_app',
       'executeNormal my_init_one',
       'executeNormal my_init_two',
+      'executeNormal frb_internal_init_logger',
       'executeNormal simple_adder_twin_normal',
     ]);
   });

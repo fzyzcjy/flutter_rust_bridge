@@ -50,11 +50,19 @@ macro_rules! enable_frb_rust_to_dart_logging {
                     return;
                 }
 
-                let Ok(sink) = self.sink.read() else {
-                    $crate::for_generated::print_to_console("FRB logging sink lock is poisoned");
-                    return;
+                let sink = {
+                    let sink = match self.sink.read() {
+                        Ok(sink) => sink,
+                        Err(poisoned) => {
+                            $crate::for_generated::print_to_console(
+                                "FRB logging sink lock is poisoned; recovering",
+                            );
+                            poisoned.into_inner()
+                        }
+                    };
+                    sink.as_ref().cloned()
                 };
-                let Some(sink) = sink.as_ref() else {
+                let Some(sink) = sink else {
                     frb_log_record_to_console(record);
                     return;
                 };
@@ -112,7 +120,16 @@ macro_rules! enable_frb_rust_to_dart_logging {
             let _ = log::set_logger(logger);
             log::set_max_level(max_level);
 
-            *logger.sink.write().expect("FRB logger sink lock poisoned") = Some(sink);
+            let mut sink_slot = match logger.sink.write() {
+                Ok(sink_slot) => sink_slot,
+                Err(poisoned) => {
+                    $crate::for_generated::print_to_console(
+                        "FRB logging sink lock is poisoned; recovering",
+                    );
+                    poisoned.into_inner()
+                }
+            };
+            *sink_slot = Some(sink);
 
             FRB_DART_LOGGER_PANIC_HOOK.call_once(|| {
                 let previous_hook = std::panic::take_hook();
@@ -127,7 +144,16 @@ macro_rules! enable_frb_rust_to_dart_logging {
         #[flutter_rust_bridge::frb(sync)]
         pub fn frb_internal_dispose_logger() {
             if let Some(logger) = FRB_DART_LOGGER.get() {
-                *logger.sink.write().expect("FRB logger sink lock poisoned") = None;
+                let mut sink_slot = match logger.sink.write() {
+                    Ok(sink_slot) => sink_slot,
+                    Err(poisoned) => {
+                        $crate::for_generated::print_to_console(
+                            "FRB logging sink lock is poisoned; recovering",
+                        );
+                        poisoned.into_inner()
+                    }
+                };
+                *sink_slot = None;
             }
         }
 
