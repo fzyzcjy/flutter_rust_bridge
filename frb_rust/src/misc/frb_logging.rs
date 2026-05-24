@@ -83,11 +83,15 @@ macro_rules! enable_frb_rust_to_dart_logging {
             }
 
             fn swap_sink(&self, sink: Option<FrbLogSink>) {
-                *self
-                    .sink
-                    .write()
-                    .unwrap_or_else(|poisoned| poisoned.into_inner()) =
-                    sink.map(std::sync::Arc::new);
+                let old_sink = {
+                    let mut sink_guard = self
+                        .sink
+                        .write()
+                        .unwrap_or_else(|poisoned| poisoned.into_inner());
+                    std::mem::replace(&mut *sink_guard, sink.map(std::sync::Arc::new))
+                };
+
+                drop(old_sink);
             }
         }
 
