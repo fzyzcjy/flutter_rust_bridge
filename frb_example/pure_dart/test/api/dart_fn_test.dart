@@ -25,6 +25,15 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(callbackCalls, ['a']);
   });
 
+  test('rustCallDartOptionalTwinNormal', () async {
+    final callbackCalls = <String>[];
+
+    await rustCallDartOptionalTwinNormal(callback: callbackCalls.add);
+    await rustCallDartOptionalTwinNormal(callback: null);
+
+    expect(callbackCalls, ['optional']);
+  });
+
   test('rustCallDartTwoArgsTwinNormal', () async {
     final callbackCalls = <(String, DemoStructForRustCallDartTwinNormal)>[];
     await rustCallDartTwoArgsTwinNormal(

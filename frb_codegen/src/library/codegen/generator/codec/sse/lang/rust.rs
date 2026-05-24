@@ -1,7 +1,7 @@
 use crate::codegen::generator::codec::sse::lang::LangTrait;
+use crate::codegen::generator::codec::sse::misc::rust_sse_codec_type;
 use crate::codegen::ir::mir::ty::structure::rust_brackets_pair;
 use crate::codegen::ir::mir::ty::MirType;
-use crate::library::codegen::ir::mir::ty::MirTypeTrait;
 use itertools::{multizip, Itertools};
 
 #[derive(Clone, Copy, Debug)]
@@ -11,13 +11,16 @@ impl LangTrait for RustLang {
     fn call_encode(&self, var_ty: &MirType, var_name: &str) -> String {
         format!(
             "<{}>::sse_encode({}, serializer)",
-            var_ty.rust_api_type(),
+            rust_sse_codec_type(var_ty),
             var_name
         )
     }
 
     fn call_decode(&self, var_ty: &MirType) -> String {
-        format!("<{}>::sse_decode(deserializer)", var_ty.rust_api_type())
+        format!(
+            "<{}>::sse_decode(deserializer)",
+            rust_sse_codec_type(var_ty)
+        )
     }
 
     fn call_constructor(

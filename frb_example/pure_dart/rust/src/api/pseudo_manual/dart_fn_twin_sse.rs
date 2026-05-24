@@ -24,6 +24,15 @@ pub async fn rust_call_dart_one_arg_twin_sse(callback: impl Fn(String) -> DartFn
 }
 
 #[flutter_rust_bridge::frb(serialize)]
+pub async fn rust_call_dart_optional_twin_sse(
+    callback: Option<impl Fn(String) -> DartFnFuture<()>>,
+) {
+    if let Some(callback) = callback {
+        callback("optional".to_owned()).await;
+    }
+}
+
+#[flutter_rust_bridge::frb(serialize)]
 pub async fn rust_call_dart_two_args_twin_sse(
     callback: impl Fn(String, DemoStructForRustCallDartTwinSse) -> DartFnFuture<()>,
 ) {
