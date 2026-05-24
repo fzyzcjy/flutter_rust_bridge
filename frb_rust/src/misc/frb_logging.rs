@@ -39,7 +39,7 @@ macro_rules! enable_frb_rust_to_dart_logging {
         type FrbLogSink = crate::frb_generated::StreamSink<FrbLogRecord>;
 
         struct FrbDartLogger {
-            sink: arc_swap::ArcSwapOption<FrbLogSink>,
+            sink: $crate::for_generated::arc_swap::ArcSwapOption<FrbLogSink>,
         }
 
         impl log::Log for FrbDartLogger {
@@ -114,7 +114,7 @@ macro_rules! enable_frb_rust_to_dart_logging {
         ) {
             let max_level = frb_parse_logging_max_level(&max_level);
             let logger = FRB_DART_LOGGER.get_or_init(|| FrbDartLogger {
-                sink: arc_swap::ArcSwapOption::from(None),
+                sink: $crate::for_generated::arc_swap::ArcSwapOption::from(None),
             });
 
             let _ = log::set_logger(logger);
