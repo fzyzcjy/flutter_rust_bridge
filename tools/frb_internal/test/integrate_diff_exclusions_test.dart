@@ -6,7 +6,8 @@ void main() {
     expect(
       integrateDiffExclusionArgsForTesting('frb_example/flutter_via_create'),
       "':(exclude)frb_example/flutter_via_create/macos/Flutter/Flutter-Debug.xcconfig' "
-      "':(exclude)frb_example/flutter_via_create/macos/Flutter/Flutter-Release.xcconfig'",
+      "':(exclude)frb_example/flutter_via_create/macos/Flutter/Flutter-Release.xcconfig' "
+      "':(exclude)frb_example/flutter_via_create/ohos'",
     );
   });
 
