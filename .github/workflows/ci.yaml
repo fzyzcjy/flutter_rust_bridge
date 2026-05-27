@@ -4,7 +4,13 @@ on:
   push:
     branches:
       - master
-  pull_request: { }
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+      - edited
   workflow_dispatch: { }
 
 env:
