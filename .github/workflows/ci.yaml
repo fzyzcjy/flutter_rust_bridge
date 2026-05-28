@@ -949,7 +949,7 @@ jobs:
       - run: ./frb_internal test-flutter-native --flutter-test-args '--device-id ${{ matrix.info.platform }}' --package ${{ matrix.info.package }}
 
   test_flutter_web:
-    name: 'Test :: Flutter :: Web'
+    name: "Test :: Flutter :: Web (${{ matrix.wasm && 'dart2wasm' || 'dart2js' }} / ${{ matrix.package }})"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -959,6 +959,9 @@ jobs:
           # no `frb_example--flutter_package--example` yet
           # no `frb_example--flutter_via_integrate` since it is similar to `flutter_via_create`
           - frb_example--gallery
+        # Run each package twice: once compiled to JavaScript (dart2js), once to WebAssembly (dart2wasm).
+        # dart2wasm coverage is not collected — coverage tooling is dart2js-only.
+        wasm: [false, true]
 
     steps:
       - uses: catchpoint/workflow-telemetry-action@v2
@@ -993,10 +996,11 @@ jobs:
           lsof -i :4444
 
       # execute
-      - run: ./frb_internal test-flutter-web --package ${{ matrix.package }} --coverage
+      - run: ./frb_internal test-flutter-web --package ${{ matrix.package }} ${{ matrix.wasm && '--wasm' || '--coverage' }}
 
       # report
-      - uses: actions/upload-artifact@v4
+      - if: ${{ !matrix.wasm }}
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ github.job }}--${{ matrix.package }}--coverage
           path: target/coverage

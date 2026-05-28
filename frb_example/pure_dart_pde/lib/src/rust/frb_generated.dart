@@ -45461,7 +45461,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   String dco_decode_Char(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return String.fromCharCode(raw);
+    return String.fromCharCode((raw as num).toInt());
   }
 
   @protected
@@ -47390,7 +47390,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   ApplicationMode dco_decode_application_mode(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return ApplicationMode.values[raw as int];
+    return ApplicationMode.values[(raw as num).toInt()];
   }
 
   @protected
@@ -47557,21 +47557,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   BasicPrimitiveEnumTwinNormal dco_decode_basic_primitive_enum_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BasicPrimitiveEnumTwinNormal.values[raw as int];
+    return BasicPrimitiveEnumTwinNormal.values[(raw as num).toInt()];
   }
 
   @protected
   BasicPrimitiveEnumTwinRustAsync
       dco_decode_basic_primitive_enum_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BasicPrimitiveEnumTwinRustAsync.values[raw as int];
+    return BasicPrimitiveEnumTwinRustAsync.values[(raw as num).toInt()];
   }
 
   @protected
   BasicPrimitiveEnumTwinSync dco_decode_basic_primitive_enum_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return BasicPrimitiveEnumTwinSync.values[raw as int];
+    return BasicPrimitiveEnumTwinSync.values[(raw as num).toInt()];
   }
 
   @protected
@@ -48557,13 +48557,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int dco_decode_box_autoadd_i_16(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return dco_decode_i_16(raw);
   }
 
   @protected
   int dco_decode_box_autoadd_i_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return dco_decode_i_32(raw);
   }
 
   @protected
@@ -48575,7 +48575,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int dco_decode_box_autoadd_i_8(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return dco_decode_i_8(raw);
   }
 
   @protected
@@ -49395,13 +49395,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int dco_decode_box_autoadd_u_16(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return dco_decode_u_16(raw);
   }
 
   @protected
   int dco_decode_box_autoadd_u_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return dco_decode_u_32(raw);
   }
 
   @protected
@@ -49413,7 +49413,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int dco_decode_box_autoadd_u_8(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return dco_decode_u_8(raw);
   }
 
   @protected
@@ -49571,7 +49571,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int dco_decode_box_i_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return dco_decode_i_32(raw);
   }
 
   @protected
@@ -49583,7 +49583,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int dco_decode_box_i_8(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return dco_decode_i_8(raw);
   }
 
   @protected
@@ -49632,7 +49632,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int dco_decode_box_u_8(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return dco_decode_u_8(raw);
   }
 
   @protected
@@ -50624,40 +50624,40 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   EnumSimpleTwinNormal dco_decode_enum_simple_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return EnumSimpleTwinNormal.values[raw as int];
+    return EnumSimpleTwinNormal.values[(raw as num).toInt()];
   }
 
   @protected
   EnumSimpleTwinRustAsync dco_decode_enum_simple_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return EnumSimpleTwinRustAsync.values[raw as int];
+    return EnumSimpleTwinRustAsync.values[(raw as num).toInt()];
   }
 
   @protected
   EnumSimpleTwinSync dco_decode_enum_simple_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return EnumSimpleTwinSync.values[raw as int];
+    return EnumSimpleTwinSync.values[(raw as num).toInt()];
   }
 
   @protected
   EnumWithDiscriminantTwinNormal dco_decode_enum_with_discriminant_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return EnumWithDiscriminantTwinNormal.values[raw as int];
+    return EnumWithDiscriminantTwinNormal.values[(raw as num).toInt()];
   }
 
   @protected
   EnumWithDiscriminantTwinRustAsync
       dco_decode_enum_with_discriminant_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return EnumWithDiscriminantTwinRustAsync.values[raw as int];
+    return EnumWithDiscriminantTwinRustAsync.values[(raw as num).toInt()];
   }
 
   @protected
   EnumWithDiscriminantTwinSync dco_decode_enum_with_discriminant_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return EnumWithDiscriminantTwinSync.values[raw as int];
+    return EnumWithDiscriminantTwinSync.values[(raw as num).toInt()];
   }
 
   @protected
@@ -51178,13 +51178,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int dco_decode_i_16(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return (raw as num).toInt();
   }
 
   @protected
   int dco_decode_i_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return (raw as num).toInt();
   }
 
   @protected
@@ -51202,7 +51202,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int dco_decode_i_8(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return (raw as num).toInt();
   }
 
   @protected
@@ -52595,7 +52595,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   MyEnum dco_decode_my_enum(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return MyEnum.values[raw as int];
+    return MyEnum.values[(raw as num).toInt()];
   }
 
   @protected
@@ -54534,21 +54534,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   SimplePrimitiveEnumTwinNormal dco_decode_simple_primitive_enum_twin_normal(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return SimplePrimitiveEnumTwinNormal.values[raw as int];
+    return SimplePrimitiveEnumTwinNormal.values[(raw as num).toInt()];
   }
 
   @protected
   SimplePrimitiveEnumTwinRustAsync
       dco_decode_simple_primitive_enum_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return SimplePrimitiveEnumTwinRustAsync.values[raw as int];
+    return SimplePrimitiveEnumTwinRustAsync.values[(raw as num).toInt()];
   }
 
   @protected
   SimplePrimitiveEnumTwinSync dco_decode_simple_primitive_enum_twin_sync(
       dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return SimplePrimitiveEnumTwinSync.values[raw as int];
+    return SimplePrimitiveEnumTwinSync.values[(raw as num).toInt()];
   }
 
   @protected
@@ -55656,13 +55656,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int dco_decode_u_16(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return (raw as num).toInt();
   }
 
   @protected
   int dco_decode_u_32(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return (raw as num).toInt();
   }
 
   @protected
@@ -55674,7 +55674,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   int dco_decode_u_8(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return raw as int;
+    return (raw as num).toInt();
   }
 
   @protected
@@ -55827,19 +55827,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @protected
   WeekdaysTwinNormal dco_decode_weekdays_twin_normal(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return WeekdaysTwinNormal.values[raw as int];
+    return WeekdaysTwinNormal.values[(raw as num).toInt()];
   }
 
   @protected
   WeekdaysTwinRustAsync dco_decode_weekdays_twin_rust_async(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return WeekdaysTwinRustAsync.values[raw as int];
+    return WeekdaysTwinRustAsync.values[(raw as num).toInt()];
   }
 
   @protected
   WeekdaysTwinSync dco_decode_weekdays_twin_sync(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
-    return WeekdaysTwinSync.values[raw as int];
+    return WeekdaysTwinSync.values[(raw as num).toInt()];
   }
 
   @protected
