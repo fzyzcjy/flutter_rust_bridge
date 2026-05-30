@@ -96,12 +96,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
   test('StreamSinkConstructor newTwinNormal', () async {
     final sink = RustStreamSink<int>();
-    final object = await StreamSinkConstructorTwinNormal.newTwinNormal(
+    final objectFuture = StreamSinkConstructorTwinNormal.newTwinNormal(
       value: 42,
       sink: sink,
     );
+    final values = sink.stream.take(1).toList();
+    final object = await objectFuture;
     expect(await object.valueTwinNormal(), 42);
-    expect(await sink.stream.take(1).toList(), [42]);
+    expect(await values, [42]);
   });
 
   test('getter', () async {
