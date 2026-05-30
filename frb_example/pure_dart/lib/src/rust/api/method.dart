@@ -224,6 +224,35 @@ class StaticOnlyTwinNormal {
           one == other.one;
 }
 
+class StreamSinkConstructorTwinNormal {
+  final int value;
+
+  const StreamSinkConstructorTwinNormal({
+    required this.value,
+  });
+
+  static Future<StreamSinkConstructorTwinNormal> newTwinNormal(
+          {required int value, required RustStreamSink<int> sink}) =>
+      RustLib.instance.api
+          .crateApiMethodStreamSinkConstructorTwinNormalNewTwinNormal(
+              value: value, sink: sink);
+
+  Future<int> valueTwinNormal() => RustLib.instance.api
+          .crateApiMethodStreamSinkConstructorTwinNormalValueTwinNormal(
+        that: this,
+      );
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StreamSinkConstructorTwinNormal &&
+          runtimeType == other.runtimeType &&
+          value == other.value;
+}
+
 class SumWithTwinNormal {
   final int x;
 

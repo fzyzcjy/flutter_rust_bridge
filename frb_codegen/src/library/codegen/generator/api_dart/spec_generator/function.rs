@@ -8,6 +8,7 @@ use crate::codegen::generator::api_dart::spec_generator::misc::{
 use crate::codegen::ir::mir::field::MirField;
 use crate::codegen::ir::mir::func::{MirFunc, MirFuncAccessorMode, MirFuncArgMode, MirFuncMode};
 use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegateStreamSink};
+use crate::codegen::ir::mir::ty::primitive::MirTypePrimitive;
 use crate::codegen::ir::mir::ty::MirType;
 use crate::if_then_some;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
@@ -114,6 +115,10 @@ pub(crate) struct ReturnStreamInfo {
 }
 
 fn compute_return_stream(func: &MirFunc) -> Option<ReturnStreamInfo> {
+    if func.output.normal != MirType::Primitive(MirTypePrimitive::Unit) {
+        return None;
+    }
+
     let stream_sink_vars = (func.inputs.iter())
         .filter_map(|input| {
             if_then_some!(

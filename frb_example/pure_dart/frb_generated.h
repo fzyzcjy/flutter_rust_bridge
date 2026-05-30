@@ -2427,6 +2427,10 @@ typedef struct wire_cst_some_struct_twin_sync {
   uint32_t value;
 } wire_cst_some_struct_twin_sync;
 
+typedef struct wire_cst_stream_sink_constructor_twin_normal {
+  uint32_t value;
+} wire_cst_stream_sink_constructor_twin_normal;
+
 typedef struct wire_cst_my_struct_containing_stream_sink_twin_normal {
   int32_t a;
   struct wire_cst_list_prim_u_8_strict *b;
@@ -13326,6 +13330,13 @@ WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manua
 
 WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__method_twin_sync__static_only_twin_sync_static_method_twin_sync(int32_t a);
 
+void frbgen_frb_example_pure_dart_wire__crate__api__method__stream_sink_constructor_twin_normal_new_twin_normal(int64_t port_,
+                                                                                                                uint32_t value,
+                                                                                                                struct wire_cst_list_prim_u_8_strict *sink);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__method__stream_sink_constructor_twin_normal_value_twin_normal(int64_t port_,
+                                                                                                                  struct wire_cst_stream_sink_constructor_twin_normal *that);
+
 void frbgen_frb_example_pure_dart_wire__crate__api__stream_misc__stream_sink_dart_async_twin_normal(int64_t port_,
                                                                                                     struct wire_cst_list_prim_u_8_strict *sink);
 
@@ -15374,6 +15385,8 @@ struct wire_cst_some_struct_twin_rust_async *frbgen_frb_example_pure_dart_cst_ne
 
 struct wire_cst_some_struct_twin_sync *frbgen_frb_example_pure_dart_cst_new_box_autoadd_some_struct_twin_sync(void);
 
+struct wire_cst_stream_sink_constructor_twin_normal *frbgen_frb_example_pure_dart_cst_new_box_autoadd_stream_sink_constructor_twin_normal(void);
+
 struct wire_cst_struct_in_lower_level *frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_in_lower_level(void);
 
 struct wire_cst_struct_with_comments_twin_normal *frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_comments_twin_normal(void);
@@ -16055,6 +16068,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_some_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_some_struct_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_some_struct_twin_sync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_stream_sink_constructor_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_in_lower_level);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_comments_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_struct_with_comments_twin_rust_async);
@@ -16985,6 +16999,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__method__simple_struct_twin_normal_return_self_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__method__simple_struct_twin_normal_vec_self_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__method__static_only_twin_normal_static_method_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__method__stream_sink_constructor_twin_normal_new_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__method__stream_sink_constructor_twin_normal_value_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__method__sum_with_twin_normal_sum_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__mirror__app_settings_stream_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__mirror__app_settings_vec_stream_twin_normal);
