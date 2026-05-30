@@ -25,14 +25,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
         ),
       );
     });
-    test('call funcTypeFalliblePanicTwinSyncSse', skip: kIsWeb, () async {
+    test('call funcTypeFalliblePanicTwinSyncSse', () async {
       await expectRustPanic(
         () async => funcTypeFalliblePanicTwinSyncSse(),
         'TwinSyncSse',
         messageOnNative: 'deliberate panic',
       );
     });
-    test('call funcTypeInfalliblePanicTwinSyncSse', skip: kIsWeb, () async {
+    test('call funcTypeInfalliblePanicTwinSyncSse', () async {
       await expectRustPanic(
         () async => funcTypeInfalliblePanicTwinSyncSse(),
         'TwinSyncSse',
@@ -41,7 +41,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     });
 
     addTestsIdentityFunctionCall(customEnumErrorReturnOkTwinSyncSse, [100]);
-    test('call customEnumErrorPanicTwinSyncSse', skip: kIsWeb, () async {
+    test('call customEnumErrorPanicTwinSyncSse', () async {
       await expectRustPanic(
         () async => customEnumErrorPanicTwinSyncSse(),
         'TwinSyncSse',
@@ -274,7 +274,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     });
   });
 
-  group('has backtraces', skip: kIsWeb, () {
+  group('has backtraces', () {
     final matcher = anyOf(
       contains('.rs'),
       contains('::'),

@@ -39,7 +39,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   // TODO implement in web
-  test('call funcStreamReturnPanicTwinSse', skip: kIsWeb, () async {
+  test('call funcStreamReturnPanicTwinSse', () async {
     await expectRustPanic(
       () async {
         await for (final _ in await funcStreamReturnPanicTwinSse()) {}

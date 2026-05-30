@@ -66,7 +66,7 @@ Future<RunCommandOutput> runCommand(
         ? await process.exitCode
         : await process.exitCode.timeout(timeout);
   } on TimeoutException {
-    process.kill();
+    await _killProcessTree(process.pid);
     throw TimeoutException(
       'Command timed out after $timeout: $command ${arguments.join(" ")}',
       timeout,
@@ -92,6 +92,43 @@ Future<RunCommandOutput> runCommand(
     exitCode: exitCode,
   );
 }
+
+Future<void> _killProcessTree(int pid) async {
+  if (Platform.isWindows) {
+    await Process.run('taskkill', ['/F', '/T', '/PID', '$pid']);
+    return;
+  }
+
+  for (final childPid in await _childProcessIds(pid)) {
+    await _killProcessTree(childPid);
+  }
+  Process.killPid(pid);
+  await Future<void>.delayed(const Duration(milliseconds: 100));
+  Process.killPid(pid, ProcessSignal.sigkill);
+}
+
+Future<List<int>> _childProcessIds(int pid) async {
+  final result = await Process.run('pgrep', ['-P', '$pid']);
+  if (result.exitCode == 0) {
+    return _parseProcessIds(result.stdout as String);
+  }
+
+  final psResult = await Process.run('ps', ['-eo', 'pid=,ppid=']);
+  if (psResult.exitCode != 0) {
+    return const [];
+  }
+
+  return (psResult.stdout as String)
+      .split('\n')
+      .map((line) => line.trim().split(RegExp(r'\s+')))
+      .where((parts) => parts.length == 2 && parts[1] == '$pid')
+      .map((parts) => int.tryParse(parts[0]))
+      .nonNulls
+      .toList();
+}
+
+List<int> _parseProcessIds(String text) =>
+    text.split('\n').map((line) => int.tryParse(line.trim())).nonNulls.toList();
 
 extension on IOSink {
   void writeAndFlush(String message) {

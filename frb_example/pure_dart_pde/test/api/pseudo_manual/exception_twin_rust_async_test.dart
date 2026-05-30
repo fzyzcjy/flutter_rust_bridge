@@ -27,14 +27,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
         ),
       );
     });
-    test('call funcTypeFalliblePanicTwinRustAsync', skip: kIsWeb, () async {
+    test('call funcTypeFalliblePanicTwinRustAsync', () async {
       await expectRustPanic(
         () async => funcTypeFalliblePanicTwinRustAsync(),
         'TwinRustAsync',
         messageOnNative: 'deliberate panic',
       );
     });
-    test('call funcTypeInfalliblePanicTwinRustAsync', skip: kIsWeb, () async {
+    test('call funcTypeInfalliblePanicTwinRustAsync', () async {
       await expectRustPanic(
         () async => funcTypeInfalliblePanicTwinRustAsync(),
         'TwinRustAsync',
@@ -43,7 +43,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     });
 
     addTestsIdentityFunctionCall(customEnumErrorReturnOkTwinRustAsync, [100]);
-    test('call customEnumErrorPanicTwinRustAsync', skip: kIsWeb, () async {
+    test('call customEnumErrorPanicTwinRustAsync', () async {
       await expectRustPanic(
         () async => customEnumErrorPanicTwinRustAsync(),
         'TwinRustAsync',
@@ -65,25 +65,19 @@ Future<void> main({bool skipRustLibInit = false}) async {
       );
     });
 
-    addTestsErrorFunctionCall(
-        customNestedErrorReturnErrorTwinRustAsync,
-        [
-          const CustomNestedErrorOuterTwinRustAsync.one('hello'),
-          const CustomNestedErrorOuterTwinRustAsync.two(
-            CustomNestedErrorInnerTwinRustAsync.three('hello'),
-          ),
-          const CustomNestedErrorOuterTwinRustAsync.two(
-            CustomNestedErrorInnerTwinRustAsync.four(42),
-          ),
-        ],
-        equals);
+    addTestsErrorFunctionCall(customNestedErrorReturnErrorTwinRustAsync, [
+      const CustomNestedErrorOuterTwinRustAsync.one('hello'),
+      const CustomNestedErrorOuterTwinRustAsync.two(
+        CustomNestedErrorInnerTwinRustAsync.three('hello'),
+      ),
+      const CustomNestedErrorOuterTwinRustAsync.two(
+        CustomNestedErrorInnerTwinRustAsync.four(42),
+      ),
+    ], equals);
 
-    addTestsErrorFunctionCall(
-        customStructErrorReturnErrorTwinRustAsync,
-        [
-          const CustomStructErrorTwinRustAsync(a: 'hello'),
-        ],
-        equals);
+    addTestsErrorFunctionCall(customStructErrorReturnErrorTwinRustAsync, [
+      const CustomStructErrorTwinRustAsync(a: 'hello'),
+    ], equals);
   });
 
   group('example-based tests', () {
@@ -128,16 +122,15 @@ Future<void> main({bool skipRustLibInit = false}) async {
 
       test('Throw CustomStructError static method', () async {
         await expectLater(
-          () async => CustomStructTwinRustAsync
-              .staticReturnCustomStructErrorTwinRustAsync(),
+          () async =>
+              CustomStructTwinRustAsync.staticReturnCustomStructErrorTwinRustAsync(),
           throwsA(isA<CustomStructErrorAnotherTwinRustAsync>()),
         );
       });
 
       test('Do not throw CustomStructError static method', () async {
         expect(
-          await CustomStructTwinRustAsync
-              .staticReturnCustomStructOkTwinRustAsync(),
+          await CustomStructTwinRustAsync.staticReturnCustomStructOkTwinRustAsync(),
           3,
         );
       });
@@ -193,21 +186,17 @@ Future<void> main({bool skipRustLibInit = false}) async {
         );
       });
 
-      test(
-        'Throw CustomError static method, verifies implements Frb',
-        () async {
-          await expectLater(
-            () async => SomeStructTwinRustAsync
-                .staticReturnErrCustomErrorTwinRustAsync(),
-            throwsA(isA<FrbException>()),
-          );
-        },
-      );
+      test('Throw CustomError static method, verifies implements Frb', () async {
+        await expectLater(
+          () async =>
+              SomeStructTwinRustAsync.staticReturnErrCustomErrorTwinRustAsync(),
+          throwsA(isA<FrbException>()),
+        );
+      });
 
       test('Do not throw CustomError static method', () async {
         expect(
-          await SomeStructTwinRustAsync
-              .staticReturnOkCustomErrorTwinRustAsync(),
+          await SomeStructTwinRustAsync.staticReturnOkCustomErrorTwinRustAsync(),
           3,
         );
       });
@@ -278,7 +267,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     });
   });
 
-  group('has backtraces', skip: kIsWeb, () {
+  group('has backtraces', () {
     final matcher = anyOf(
       contains('.rs'),
       contains('::'),

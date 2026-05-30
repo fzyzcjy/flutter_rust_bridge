@@ -23,14 +23,14 @@ Future<void> main({bool skipRustLibInit = false}) async {
         ),
       );
     });
-    test('call funcTypeFalliblePanicTwinNormal', skip: kIsWeb, () async {
+    test('call funcTypeFalliblePanicTwinNormal', () async {
       await expectRustPanic(
         () async => funcTypeFalliblePanicTwinNormal(),
         'TwinNormal',
         messageOnNative: 'deliberate panic',
       );
     });
-    test('call funcTypeInfalliblePanicTwinNormal', skip: kIsWeb, () async {
+    test('call funcTypeInfalliblePanicTwinNormal', () async {
       await expectRustPanic(
         () async => funcTypeInfalliblePanicTwinNormal(),
         'TwinNormal',
@@ -39,7 +39,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     });
 
     addTestsIdentityFunctionCall(customEnumErrorReturnOkTwinNormal, [100]);
-    test('call customEnumErrorPanicTwinNormal', skip: kIsWeb, () async {
+    test('call customEnumErrorPanicTwinNormal', () async {
       await expectRustPanic(
         () async => customEnumErrorPanicTwinNormal(),
         'TwinNormal',
@@ -61,25 +61,19 @@ Future<void> main({bool skipRustLibInit = false}) async {
       );
     });
 
-    addTestsErrorFunctionCall(
-        customNestedErrorReturnErrorTwinNormal,
-        [
-          const CustomNestedErrorOuterTwinNormal.one('hello'),
-          const CustomNestedErrorOuterTwinNormal.two(
-            CustomNestedErrorInnerTwinNormal.three('hello'),
-          ),
-          const CustomNestedErrorOuterTwinNormal.two(
-            CustomNestedErrorInnerTwinNormal.four(42),
-          ),
-        ],
-        equals);
+    addTestsErrorFunctionCall(customNestedErrorReturnErrorTwinNormal, [
+      const CustomNestedErrorOuterTwinNormal.one('hello'),
+      const CustomNestedErrorOuterTwinNormal.two(
+        CustomNestedErrorInnerTwinNormal.three('hello'),
+      ),
+      const CustomNestedErrorOuterTwinNormal.two(
+        CustomNestedErrorInnerTwinNormal.four(42),
+      ),
+    ], equals);
 
-    addTestsErrorFunctionCall(
-        customStructErrorReturnErrorTwinNormal,
-        [
-          const CustomStructErrorTwinNormal(a: 'hello'),
-        ],
-        equals);
+    addTestsErrorFunctionCall(customStructErrorReturnErrorTwinNormal, [
+      const CustomStructErrorTwinNormal(a: 'hello'),
+    ], equals);
   });
 
   group('example-based tests', () {
@@ -272,7 +266,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     });
   });
 
-  group('has backtraces', skip: kIsWeb, () {
+  group('has backtraces', () {
     final matcher = anyOf(
       contains('.rs'),
       contains('::'),
