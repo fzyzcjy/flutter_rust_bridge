@@ -6,7 +6,7 @@ use crate::library::commands::flutter::{
     flutter_pub_add, flutter_pub_get, resolve_flutter_platforms,
 };
 use crate::misc::{FvmInstallMode, Template};
-use crate::utils::dart_repository::get_dart_package_name_and_rust_crate_name;
+use crate::utils::dart_repository::get_dart_package_name;
 use crate::utils::path_utils::find_dart_package_dir;
 use anyhow::Result;
 use include_dir::{include_dir, Dir};
@@ -38,11 +38,16 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     let dart_root = find_dart_package_dir(&env::current_dir()?)?;
     debug!("integrate dart_root={dart_root:?}");
 
-    let (dart_package_name, rust_crate_name) = get_dart_package_name_and_rust_crate_name(
-        &dart_root,
-        &config.rust_crate_name,
-        &config.template,
-    )?;
+    let dart_package_name = get_dart_package_name(&dart_root)?;
+    let rust_crate_name = config
+        .rust_crate_name
+        .clone()
+        .unwrap_or(match &config.template {
+            Template::App => {
+                format!("rust_lib_{dart_package_name}")
+            }
+            Template::Plugin => dart_package_name.to_owned(),
+        });
     let platforms = resolve_flutter_platforms(
         config.template,
         config.platforms.clone(),
