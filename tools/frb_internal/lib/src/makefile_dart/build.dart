@@ -81,7 +81,6 @@ Future<void> buildFlutter(BuildFlutterConfig config) async {
       copyArtifacts(['build/ios/archive']);
 
     case BuildTarget.ohos:
-      // https://docs.flutter.dev/deployment/android
       await exec(
         'flutter build hap --no-codesign --verbose',
         relativePwd: package,
