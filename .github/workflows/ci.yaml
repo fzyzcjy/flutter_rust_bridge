@@ -36,9 +36,7 @@ jobs:
       # setup
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 1
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
+          submodules: recursive
       - uses: flutter-actions/setup-flutter@v4
         with:
           cache: true
@@ -88,9 +86,7 @@ jobs:
           job_summary: false
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 1
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
+          submodules: recursive
       - uses: dart-lang/setup-dart@v1
         with:
           sdk: ${{ env.FRB_MAIN_DART_VERSION }}
@@ -122,9 +118,7 @@ jobs:
           job_summary: false
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 1
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
+          submodules: recursive
       - uses: flutter-actions/setup-flutter@v4
         with:
           cache: true
@@ -148,9 +142,7 @@ jobs:
           job_summary: false
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 1
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
+          submodules: recursive
       - uses: dart-lang/setup-dart@v1
         with:
           sdk: ${{ env.FRB_MAIN_DART_VERSION }}
@@ -236,9 +228,7 @@ jobs:
           job_summary: false
       - uses: actions/checkout@v5
         with:
-          fetch-depth: 1
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
+          submodules: recursive
       - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
@@ -287,9 +277,7 @@ jobs:
           job_summary: false
       - uses: actions/checkout@v5
         with:
-          fetch-depth: 1
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
+          submodules: recursive
       - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
@@ -324,9 +312,7 @@ jobs:
           job_summary: false
       - uses: actions/checkout@v5
         with:
-          fetch-depth: 1
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
+          submodules: recursive
       - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
@@ -372,9 +358,7 @@ jobs:
           job_summary: false
       - uses: actions/checkout@v5
         with:
-          fetch-depth: 1
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
+          submodules: recursive
       - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
@@ -406,9 +390,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          fetch-depth: 1
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
+          submodules: recursive
       - name: Download artifacts
         uses: actions/download-artifact@v5
         with:
@@ -467,9 +449,7 @@ jobs:
           job_summary: false
       - uses: actions/checkout@v5
         with:
-          fetch-depth: 1
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
+          submodules: recursive
       # https://docs.flutter.dev/get-started/install/linux#linux-prerequisites
       - if: runner.os == 'Linux'
         run: sudo apt-get update && sudo apt-get install clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
@@ -512,9 +492,7 @@ jobs:
           job_summary: false
       - uses: actions/checkout@v5
         with:
-          fetch-depth: 1
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
+          submodules: recursive
       - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
@@ -612,9 +590,7 @@ jobs:
           job_summary: false
       - uses: actions/checkout@v5
         with:
-          fetch-depth: 1
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
+          submodules: recursive
       - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: ${{ matrix.info.version || env.FRB_MAIN_RUST_VERSION }}
@@ -673,9 +649,7 @@ jobs:
           job_summary: false
       - uses: actions/checkout@v5
         with:
-          fetch-depth: 1
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
+          submodules: recursive
       - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
@@ -719,9 +693,7 @@ jobs:
           job_summary: false
       - uses: actions/checkout@v5
         with:
-          fetch-depth: 1
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
+          submodules: recursive
       # https://github.com/puppeteer/puppeteer/pull/13196
       - name: Disable AppArmor
         run: echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
@@ -778,9 +750,7 @@ jobs:
           job_summary: false
       - uses: actions/checkout@v5
         with:
-          fetch-depth: 1
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
+          submodules: recursive
       - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
@@ -825,9 +795,7 @@ jobs:
           job_summary: false
       - uses: actions/checkout@v5
         with:
-          fetch-depth: 1
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
+          submodules: recursive
       - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
@@ -941,9 +909,7 @@ jobs:
           job_summary: false
       - uses: actions/checkout@v5
         with:
-          fetch-depth: 1
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
+          submodules: recursive
       - name: "Start Simulator"
         run: |
           # list all devices
@@ -1032,9 +998,7 @@ jobs:
           job_summary: false
       - uses: actions/checkout@v5
         with:
-          fetch-depth: 1
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
+          submodules: recursive
       # https://docs.flutter.dev/get-started/install/linux#linux-prerequisites
       - if: runner.os == 'Linux'
         run: sudo apt-get update && sudo apt-get install clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
@@ -1070,9 +1034,7 @@ jobs:
           job_summary: false
       - uses: actions/checkout@v5
         with:
-          fetch-depth: 1
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
+          submodules: recursive
       # https://github.com/puppeteer/puppeteer/pull/13196
       - name: Disable AppArmor
         run: echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
@@ -1129,9 +1091,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          fetch-depth: 1
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
+          submodules: recursive
       - uses: flutter-actions/setup-flutter@v4
         with:
           cache: true

@@ -57,9 +57,7 @@ jobs:
         uses: actions/checkout@v5
         with:
           ref: ${{ inputs.publish_tag || github.ref }}
-          fetch-depth: 1
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
+          submodules: recursive
       - name: Setup Rust toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
