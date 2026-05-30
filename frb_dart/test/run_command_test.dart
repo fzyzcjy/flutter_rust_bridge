@@ -46,6 +46,46 @@ void main() {
       }
     },
   );
+
+  test(
+    'runCommand kills nested child processes when timeout expires',
+    skip: !(Platform.isLinux || Platform.isMacOS),
+    () async {
+      final tempDir = await Directory.systemTemp.createTemp(
+        'frb_run_command_nested_test_',
+      );
+      final childPidFile = File('${tempDir.path}/child.pid');
+      final grandchildPidFile = File('${tempDir.path}/grandchild.pid');
+
+      try {
+        final nestedCommand =
+            'sleep 30 & echo \$! > ${_shellQuote(grandchildPidFile.path)}; wait';
+        final command =
+            '/bin/sh -c ${_shellQuote(nestedCommand)} & echo \$! > ${_shellQuote(childPidFile.path)}; wait';
+
+        await expectLater(
+          () async => await runCommand(
+            '/bin/sh',
+            ['-c', command],
+            shell: false,
+            silent: true,
+            timeout: const Duration(seconds: 2),
+          ),
+          throwsA(isA<TimeoutException>()),
+        );
+
+        final childPid = int.parse(await childPidFile.readAsString());
+        final grandchildPid = int.parse(await grandchildPidFile.readAsString());
+        await expectLater(_waitUntilProcessExits(childPid), completion(isTrue));
+        await expectLater(
+          _waitUntilProcessExits(grandchildPid),
+          completion(isTrue),
+        );
+      } finally {
+        await tempDir.delete(recursive: true);
+      }
+    },
+  );
 }
 
 Future<bool> _processExists(int pid) async {

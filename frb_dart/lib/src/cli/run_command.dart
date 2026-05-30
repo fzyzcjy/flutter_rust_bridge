@@ -94,6 +94,9 @@ Future<RunCommandOutput> runCommand(
 }
 
 Future<void> _killProcessTree(int pid) async {
+  // ignore: avoid_print
+  print('Killing process tree rooted at PID $pid');
+
   if (Platform.isWindows) {
     try {
       await Process.run('taskkill', ['/F', '/T', '/PID', '$pid']);
@@ -104,14 +107,17 @@ Future<void> _killProcessTree(int pid) async {
   }
 
   final pids = await _processTreeIds(pid);
-  final didSignal = [
-    for (final pid in pids.reversed) Process.killPid(pid),
-  ].any((value) => value);
-  if (didSignal) {
-    await Future<void>.delayed(const Duration(milliseconds: 500));
-    for (final pid in pids.reversed) {
-      Process.killPid(pid, ProcessSignal.sigkill);
-    }
+  var didSignal = false;
+  for (final pid in pids.reversed) {
+    didSignal |= Process.killPid(pid);
+  }
+  if (!didSignal) {
+    return;
+  }
+
+  await Future<void>.delayed(const Duration(milliseconds: 500));
+  for (final pid in pids.reversed) {
+    Process.killPid(pid, ProcessSignal.sigkill);
   }
 }
 
@@ -124,28 +130,16 @@ Future<List<int>> _processTreeIds(int pid) async {
 }
 
 Future<List<int>> _childProcessIds(int pid) async {
+  final ProcessResult result;
   try {
-    final result = await Process.run('pgrep', ['-P', '$pid']);
-    if (result.exitCode == 0) {
-      return _parseProcessIds(result.stdout as String);
-    }
-    if (result.exitCode == 1) {
-      return const [];
-    }
-  } on ProcessException {
-    // Fall back to ps below when pgrep is not installed.
-  }
-
-  late final ProcessResult psResult;
-  try {
-    psResult = await Process.run('ps', ['-eo', 'pid=,ppid=']);
+    result = await Process.run('ps', ['-eo', 'pid=,ppid=']);
   } on ProcessException {
     return const [];
   }
 
-  if (psResult.exitCode != 0) return const [];
+  if (result.exitCode != 0) return const [];
 
-  return (psResult.stdout as String)
+  return (result.stdout as String)
       .split('\n')
       .map((line) => line.trim().split(RegExp(r'\s+')))
       .where((parts) => parts.length == 2 && parts[1] == '$pid')
@@ -153,9 +147,6 @@ Future<List<int>> _childProcessIds(int pid) async {
       .nonNulls
       .toList();
 }
-
-List<int> _parseProcessIds(String text) =>
-    text.split('\n').map((line) => int.tryParse(line.trim())).nonNulls.toList();
 
 extension on IOSink {
   void writeAndFlush(String message) {
