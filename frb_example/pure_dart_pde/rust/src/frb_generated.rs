@@ -46599,7 +46599,7 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<std::time::Instant> {
                     .as_micros()
                     .try_into()
                     .expect("cannot get microseconds from time"),
-                Err(error) => -i64::try_from(error.duration().as_micros())
+                Err(error) => i64::try_from(-(error.duration().as_micros() as i128))
                     .expect("cannot get microseconds from time"),
             }
         };
@@ -46623,7 +46623,7 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<std::time::SystemTime> {
                 .as_micros()
                 .try_into()
                 .expect("cannot get microseconds from time"),
-            Err(error) => -i64::try_from(error.duration().as_micros())
+            Err(error) => i64::try_from(-(error.duration().as_micros() as i128))
                 .expect("cannot get microseconds from time"),
         };
         value.into_dart()
@@ -46661,7 +46661,7 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<tokio::time::Instant> {
                     .as_micros()
                     .try_into()
                     .expect("cannot get microseconds from time"),
-                Err(error) => -i64::try_from(error.duration().as_micros())
+                Err(error) => i64::try_from(-(error.duration().as_micros() as i128))
                     .expect("cannot get microseconds from time"),
             }
         };
@@ -56924,7 +56924,7 @@ impl SseEncode for std::time::Instant {
                         .as_micros()
                         .try_into()
                         .expect("cannot get microseconds from time"),
-                    Err(error) => -i64::try_from(error.duration().as_micros())
+                    Err(error) => i64::try_from(-(error.duration().as_micros() as i128))
                         .expect("cannot get microseconds from time"),
                 }
             },
@@ -56942,7 +56942,7 @@ impl SseEncode for std::time::SystemTime {
                     .as_micros()
                     .try_into()
                     .expect("cannot get microseconds from time"),
-                Err(error) => -i64::try_from(error.duration().as_micros())
+                Err(error) => i64::try_from(-(error.duration().as_micros() as i128))
                     .expect("cannot get microseconds from time"),
             },
             serializer,
@@ -57295,7 +57295,7 @@ impl SseEncode for tokio::time::Instant {
                         .as_micros()
                         .try_into()
                         .expect("cannot get microseconds from time"),
-                    Err(error) => -i64::try_from(error.duration().as_micros())
+                    Err(error) => i64::try_from(-(error.duration().as_micros() as i128))
                         .expect("cannot get microseconds from time"),
                 }
             },
