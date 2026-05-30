@@ -28,7 +28,7 @@ fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
         Commands::Generate(args) => {
             let meta_config = compute_codegen_meta_config(&args);
             let config = compute_codegen_config(args.primary)?;
-            codegen::generate(
+            codegen::generate_with_fvm_install_mode(
                 config,
                 meta_config,
                 FvmInstallMode::from_skip_fvm_install(args.skip_fvm_install),
