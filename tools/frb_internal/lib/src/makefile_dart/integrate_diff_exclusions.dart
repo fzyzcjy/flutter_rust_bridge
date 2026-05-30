@@ -27,6 +27,9 @@ Map<String, List<String>> _integrateSetExitIfChangedExcludedPathsByPackage({
     'frb_example/flutter_via_create/macos/Flutter/Flutter-Debug.xcconfig',
     'frb_example/flutter_via_create/macos/Flutter/Flutter-Release.xcconfig',
     if (!needCompareOhos) 'frb_example/flutter_via_create/ohos/',
+    if (!needCompareOhos) 'frb_example/flutter_via_create/rust_builder/ohos/',
+    if (!needCompareOhos)
+      'frb_example/flutter_via_create/rust_builder/pubspec.yaml',
   ],
   'frb_example/flutter_via_integrate': [
     'frb_example/flutter_via_integrate/macos/Flutter/Flutter-Debug.xcconfig',
