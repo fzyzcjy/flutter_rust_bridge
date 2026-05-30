@@ -327,8 +327,6 @@ jobs:
 
       # execute
       - run: ./frb_internal generate-internal --set-exit-if-changed --coverage
-      - run: ./frb_internal sync-cargokit-copies
-      - run: git diff --exit-code -- frb_example
 
       # report
       - uses: actions/upload-artifact@v4

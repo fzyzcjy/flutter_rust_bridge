@@ -41,7 +41,7 @@ Do not start by judging copied example files in isolation. First determine which
 
 Use `./frb_internal sync-cargokit-copies` to refresh all checked-in CargoKit copies from the template submodules. The command applies the same CargoKit file filtering and copied-file prelude as the integration template writer, then updates every known example copy.
 
-The CI `Generate :: Internal` job runs this command and then checks `git diff --exit-code -- frb_example`. If CargoKit copies drift, fix the source-of-truth template/submodule first when appropriate, run `./frb_internal sync-cargokit-copies`, and commit the resulting copied-output refresh.
+The CI `Generate :: Internal` job runs this as part of `./frb_internal generate-internal --set-exit-if-changed --coverage`, so the normal generate-internal diff gate also catches CargoKit copy drift. If CargoKit copies drift, fix the source-of-truth template/submodule first when appropriate, run `./frb_internal sync-cargokit-copies`, and commit the resulting copied-output refresh.
 
 ## Diff Analysis Order
 
