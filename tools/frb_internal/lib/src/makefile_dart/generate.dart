@@ -154,11 +154,7 @@ Future<void> generateInternal(
 }
 
 Future<void> generateInternalCargokitCopies(GenerateConfig config) async {
-  await _wrapMaybeSetExitIfChanged(
-    config,
-    syncCargokitCopies,
-    extraArgs: '-- frb_example',
-  );
+  await _wrapMaybeSetExitIfChanged(config, syncCargokitCopies);
 }
 
 Future<void> generateInternalFrbExamplePureDart(GenerateConfig config) async {
