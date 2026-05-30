@@ -50,6 +50,7 @@ Read these when entering the matching phase:
 5. Prepare and open the PR.
    - Follow `frb-prepare-pr`.
    - Re-check that no final regression or feature coverage remains only in `frb_example/dart_minimal`. If it does, stop PR preparation and migrate it to `frb_example/pure_dart` first.
+   - Before treating the PR as ready, have a subagent run the test-weakening gate described in `sdev-pass-test` and address any unjustified weakening.
    - Push with upstream tracking.
    - Before drafting a PR title, inspect the user's recent PR titles and mimic the repo style.
    - Create the PR according to the active PR workflow and repository/user PR body rules.

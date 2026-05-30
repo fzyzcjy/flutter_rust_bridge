@@ -192,6 +192,9 @@ Recommended minimum validation:
 For CI or Docker plumbing-only changes, dev image dry-run and focused metadata tests may be enough
 before opening the PR. Let CI cover the full matrix.
 
+Before treating the upgrade PR as ready, have a subagent run the test-weakening gate described in
+`sdev-pass-test` and address any unjustified weakening.
+
 ### Step 8: Triage CI in Dependency Order
 
 Read `frb-fix-ci` before deep debugging.
