@@ -56,7 +56,8 @@ impl WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator
                 }
                 if mir == &MirTypeDelegateTime::StdSystemTime {
                     return Acc {
-                        common: Some(decode_std_system_time("self")),
+                        io: Some(decode_std_system_time("self")),
+                        web: None,
                         ..Default::default()
                     };
                 }
