@@ -9,7 +9,7 @@ description: Use when about to create a PR or push changes in flutter_rust_bridg
 
 ## Overview
 
-Before creating a PR, ensure generated code is up to date, lint passes, and bug fixes have a concrete reproduction report in the PR description.
+Before creating a PR, ensure generated code is up to date, lint passes, and bug fixes have a concrete reproduction report in the PR description. Before treating a non-trivial PR as ready, run `frb-pr-review`.
 
 **Core principle:** Generate → Lint → Commit → PR.
 
@@ -28,11 +28,13 @@ Before creating a PR, ensure generated code is up to date, lint passes, and bug 
    |
    +-- 4. (Optional) Read frb-test skill --> Run relevant tests
    |
-   +-- 5. For bug fixes, add the reproduction report to the PR description
+   +-- 5. For non-trivial PRs, read frb-pr-review --> Run review gate
    |
-   +-- 6. Commit all changes
+   +-- 6. For bug fixes, add the reproduction report to the PR description
    |
-   +-- 7. Create PR (use creating-pull-requests skill)
+   +-- 7. Commit all changes
+   |
+   +-- 8. Create PR (use creating-pull-requests skill)
 ```
 
 ## Quick Checklist
@@ -41,9 +43,10 @@ Before creating a PR, ensure generated code is up to date, lint passes, and bug 
 2. [ ] **REQUIRED for integrate output diffs:** If the PR changes Flutter integrate example outputs, platform scaffolds, or copied `cargokit` files under `frb_example/**`, confirm whether `frb_codegen/assets/integration_template/` is the source that should change, then run `./frb_internal precommit-integrate`
 3. [ ] **REQUIRED:** Read `frb-lint` skill, run `./frb_internal lint --fix`
 4. [ ] (Optional) Read `frb-test` skill, run relevant tests
-5. [ ] **REQUIRED for bug fixes:** PR description includes the reproduction report from `frb-develop-feature`, including baseline commit, mechanical steps, observed failure, and expected behavior
-6. [ ] Commit all changes
-7. [ ] Push and create PR
+5. [ ] **REQUIRED for non-trivial PRs:** Read `frb-pr-review`, run the review gate before final readiness
+6. [ ] **REQUIRED for bug fixes:** PR description includes the reproduction report from `frb-develop-feature`, including baseline commit, mechanical steps, observed failure, and expected behavior
+7. [ ] Commit all changes
+8. [ ] Push and create PR
 
 ## What CI Will Do
 
@@ -63,4 +66,5 @@ If the PR changes integrate-generated example output but not `frb_codegen/assets
 - `frb-code-generation` - Determines which generation commands to run
 - `frb-lint` - Lint and format checks
 - `frb-test` - For local debugging when CI fails
+- `frb-pr-review` - PR readiness review gate
 - `creating-pull-requests` - Standard PR creation process
