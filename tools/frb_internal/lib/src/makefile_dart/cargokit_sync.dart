@@ -40,7 +40,7 @@ const _kCargokitPrelude = [
 ];
 
 Future<void> syncCargokitCopies() async {
-  final repoRoot = Directory.current.parent.parent;
+  final repoRoot = _findRepoRoot();
 
   for (final mapping in _kCargokitCopyMappings) {
     final source = Directory(path.join(repoRoot.path, mapping.source));
@@ -91,9 +91,34 @@ Future<void> _copyCargokitFile({
   final target = File(targetPath);
   target.parent.createSync(recursive: true);
 
-  final bytes = await source.readAsBytes();
   final prelude = _computeCargokitPrelude(targetPath);
-  await target.writeAsBytes([...prelude, ...bytes]);
+  if (prelude.isEmpty) {
+    await source.copy(targetPath);
+  } else {
+    await target.writeAsBytes(prelude);
+    await target.writeAsBytes(
+      await source.readAsBytes(),
+      mode: FileMode.append,
+    );
+  }
+}
+
+Directory _findRepoRoot() {
+  var directory = Directory.current.absolute;
+  while (true) {
+    if (File(path.join(directory.path, 'frb_internal')).existsSync() &&
+        Directory(
+          path.join(directory.path, 'tools', 'frb_internal'),
+        ).existsSync()) {
+      return directory;
+    }
+
+    final parent = directory.parent;
+    if (parent.path == directory.path) {
+      throw Exception('Could not find flutter_rust_bridge repository root.');
+    }
+    directory = parent;
+  }
 }
 
 List<int> _computeCargokitPrelude(String targetPath) {
