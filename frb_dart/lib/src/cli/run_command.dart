@@ -108,7 +108,7 @@ Future<void> _killProcessTree(int pid) async {
       _killProcessTree(childPid),
   ]);
   Process.killPid(pid);
-  await Future<void>.delayed(const Duration(milliseconds: 100));
+  await Future<void>.delayed(const Duration(milliseconds: 500));
   Process.killPid(pid, ProcessSignal.sigkill);
 }
 
