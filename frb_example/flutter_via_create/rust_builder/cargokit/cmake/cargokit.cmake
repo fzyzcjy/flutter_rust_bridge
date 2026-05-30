@@ -88,9 +88,8 @@ function(apply_cargokit target manifest_dir lib_name any_symbol_name)
                  "${CMAKE_CURRENT_BINARY_DIR}/_phony_"
                  COMMAND ${CMAKE_COMMAND} -E env ${CARGOKIT_ENV}
                  "${cargokit_cmake_root}/run_build_tool${SCRIPT_EXTENSION}" build-cmake
-                 message(STATUS "Current source directory: ${CMAKE_CURRENT_SOURCE_DIR}")
-                 COMMAND ${CMAKE_COMMAND} -E copy ${OUTPUT_LIB} ${DEST_LIB}  # 复制文件
-                 COMMENT "Building and copying ${OUTPUT_LIB} to ${DEST_LIB}"  # 注释
+                 COMMAND ${CMAKE_COMMAND} -E copy ${OUTPUT_LIB} ${DEST_LIB}
+                 COMMENT "Building and copying ${OUTPUT_LIB} to ${DEST_LIB}"
                  VERBATIM
                )
     else()

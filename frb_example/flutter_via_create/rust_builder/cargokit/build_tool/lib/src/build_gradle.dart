@@ -37,16 +37,16 @@ class BuildGradle {
         ArtifactProvider(environment: environment, userOptions: userOptions);
     final artifacts = await provider.getArtifacts(targets);
 
-    await Future.wait(targets.map((target) async {
+    for (final target in targets) {
       final libs = artifacts[target]!;
       final outputDir = path.join(Environment.outputDir, target.android!);
-      await Directory(outputDir).create(recursive: true);
+      Directory(outputDir).createSync(recursive: true);
 
       for (final lib in libs) {
         if (lib.type == AritifactType.dylib) {
-          await File(lib.path).copy(path.join(outputDir, lib.finalFileName));
+          File(lib.path).copySync(path.join(outputDir, lib.finalFileName));
         }
       }
-    }));
+    }
   }
 }
