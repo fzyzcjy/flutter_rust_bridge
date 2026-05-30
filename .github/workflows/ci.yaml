@@ -860,7 +860,7 @@ jobs:
           path: |
             ~/.android/avd/*
             ~/.android/adb*
-          key: avd-api-level-${{ matrix.api-level }}
+          key: avd-${{ matrix.device }}-api-level-${{ matrix.api-level }}
       - name: Create AVD and generate snapshot for caching
         if: steps.avd-cache.outputs.cache-hit != 'true'
         uses: reactivecircus/android-emulator-runner@v2
@@ -878,7 +878,7 @@ jobs:
           # emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
           # arch: x86_64
           profile: ${{ matrix.device }}
-          script: ./frb_internal test-flutter-native --package ${{ matrix.package }}
+          script: ./frb_internal test-flutter-native --flutter-test-args '--device-id emulator-5554' --package ${{ matrix.package }}
 
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
   test_flutter_native_ios:
