@@ -37,6 +37,10 @@ pub fn flutter_create(
     if let Some(o) = org {
         full_args.extend(["--org".to_owned(), o.to_owned()]);
     }
+    let platforms = platforms.unwrap_or_else(|| match template {
+        Template::App => "android,ios,linux,macos,web,windows".to_owned(),
+        Template::Plugin => "android,ios,linux,macos,windows".to_owned(),
+    });
     match template {
         Template::App => full_args.extend([
             "--template".to_owned(),

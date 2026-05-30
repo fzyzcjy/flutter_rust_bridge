@@ -341,3 +341,26 @@ impl From<RustOpaqueCodecModeArg> for RustOpaqueCodecMode {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::{Cli, Commands};
+    use clap::Parser;
+
+    #[test]
+    fn test_create_command_parses_platforms() {
+        let cli = Cli::parse_from([
+            "",
+            "create",
+            "demo",
+            "--platforms",
+            "android,ios",
+            "--skip-fvm-install",
+        ]);
+        let Commands::Create(args) = cli.command else {
+            panic!("expected create command");
+        };
+
+        assert_eq!(args.platforms, Some("android,ios".to_owned()));
+    }
+}

@@ -21,7 +21,12 @@ pub use ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
 use log::debug;
 
 /// Execute the main code generator
-pub fn generate(
+pub fn generate(config: Config, meta_config: MetaConfig) -> anyhow::Result<()> {
+    generate_with_fvm_install_mode(config, meta_config, FvmInstallMode::Normal)
+}
+
+/// Execute the main code generator with an explicit FVM install mode.
+pub fn generate_with_fvm_install_mode(
     config: Config,
     meta_config: MetaConfig,
     fvm_install_mode: FvmInstallMode,
