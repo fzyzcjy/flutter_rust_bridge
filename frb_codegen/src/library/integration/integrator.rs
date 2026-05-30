@@ -193,7 +193,7 @@ fn compute_replacements<'a>(
     replacements.insert(
         "REPLACE_ME_OHOS_PLUGIN_PLATFORM_TEXT",
         if include_ohos {
-            "      ohos:\n        ffiPlugin: true"
+            "\n      ohos:\n        ffiPlugin: true"
         } else {
             ""
         },

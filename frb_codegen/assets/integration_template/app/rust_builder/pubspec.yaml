@@ -31,5 +31,4 @@ flutter:
       macos:
         ffiPlugin: true
       windows:
-        ffiPlugin: true
-REPLACE_ME_OHOS_PLUGIN_PLATFORM_TEXT
+        ffiPlugin: trueREPLACE_ME_OHOS_PLUGIN_PLATFORM_TEXT
