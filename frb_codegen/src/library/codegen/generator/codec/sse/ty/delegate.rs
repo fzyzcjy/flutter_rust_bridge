@@ -332,10 +332,13 @@ pub(crate) fn encode_std_system_time(value: &str) -> String {
 
 pub(crate) fn decode_std_system_time(value: &str) -> String {
     format!(
-        r#"if {value} >= 0 {{
-            std::time::SystemTime::UNIX_EPOCH.checked_add(std::time::Duration::from_micros({value}.unsigned_abs())).expect("timestamp out of range")
-        }} else {{
-            std::time::SystemTime::UNIX_EPOCH.checked_sub(std::time::Duration::from_micros({value}.unsigned_abs())).expect("timestamp out of range")
+        r#"{{
+            let value = {value};
+            if value >= 0 {{
+                std::time::SystemTime::UNIX_EPOCH.checked_add(std::time::Duration::from_micros(value.unsigned_abs())).expect("timestamp out of range")
+            }} else {{
+                std::time::SystemTime::UNIX_EPOCH.checked_sub(std::time::Duration::from_micros(value.unsigned_abs())).expect("timestamp out of range")
+            }}
         }}"#
     )
 }

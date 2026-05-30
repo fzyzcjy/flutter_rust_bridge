@@ -35181,14 +35181,17 @@ impl SseDecode for std::time::Instant {
         return {
             let now_system_time = std::time::SystemTime::now();
             let now_instant = std::time::Instant::now();
-            let target_system_time = if inner >= 0 {
-                std::time::SystemTime::UNIX_EPOCH
-                    .checked_add(std::time::Duration::from_micros(inner.unsigned_abs()))
-                    .expect("timestamp out of range")
-            } else {
-                std::time::SystemTime::UNIX_EPOCH
-                    .checked_sub(std::time::Duration::from_micros(inner.unsigned_abs()))
-                    .expect("timestamp out of range")
+            let target_system_time = {
+                let value = inner;
+                if value >= 0 {
+                    std::time::SystemTime::UNIX_EPOCH
+                        .checked_add(std::time::Duration::from_micros(value.unsigned_abs()))
+                        .expect("timestamp out of range")
+                } else {
+                    std::time::SystemTime::UNIX_EPOCH
+                        .checked_sub(std::time::Duration::from_micros(value.unsigned_abs()))
+                        .expect("timestamp out of range")
+                }
             };
             if target_system_time >= now_system_time {
                 now_instant
@@ -35215,14 +35218,17 @@ impl SseDecode for std::time::SystemTime {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <i64>::sse_decode(deserializer);
-        return if inner >= 0 {
-            std::time::SystemTime::UNIX_EPOCH
-                .checked_add(std::time::Duration::from_micros(inner.unsigned_abs()))
-                .expect("timestamp out of range")
-        } else {
-            std::time::SystemTime::UNIX_EPOCH
-                .checked_sub(std::time::Duration::from_micros(inner.unsigned_abs()))
-                .expect("timestamp out of range")
+        return {
+            let value = inner;
+            if value >= 0 {
+                std::time::SystemTime::UNIX_EPOCH
+                    .checked_add(std::time::Duration::from_micros(value.unsigned_abs()))
+                    .expect("timestamp out of range")
+            } else {
+                std::time::SystemTime::UNIX_EPOCH
+                    .checked_sub(std::time::Duration::from_micros(value.unsigned_abs()))
+                    .expect("timestamp out of range")
+            }
         };
     }
 }
@@ -35587,14 +35593,17 @@ impl SseDecode for tokio::time::Instant {
         return tokio::time::Instant::from_std({
             let now_system_time = std::time::SystemTime::now();
             let now_instant = std::time::Instant::now();
-            let target_system_time = if inner >= 0 {
-                std::time::SystemTime::UNIX_EPOCH
-                    .checked_add(std::time::Duration::from_micros(inner.unsigned_abs()))
-                    .expect("timestamp out of range")
-            } else {
-                std::time::SystemTime::UNIX_EPOCH
-                    .checked_sub(std::time::Duration::from_micros(inner.unsigned_abs()))
-                    .expect("timestamp out of range")
+            let target_system_time = {
+                let value = inner;
+                if value >= 0 {
+                    std::time::SystemTime::UNIX_EPOCH
+                        .checked_add(std::time::Duration::from_micros(value.unsigned_abs()))
+                        .expect("timestamp out of range")
+                } else {
+                    std::time::SystemTime::UNIX_EPOCH
+                        .checked_sub(std::time::Duration::from_micros(value.unsigned_abs()))
+                        .expect("timestamp out of range")
+                }
             };
             if target_system_time >= now_system_time {
                 now_instant
