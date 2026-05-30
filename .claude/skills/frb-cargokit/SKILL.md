@@ -37,6 +37,12 @@ Treat these paths as downstream copies unless the evidence shows otherwise:
 
 Do not start by judging copied example files in isolation. First determine which source submodule pointer or template content produced them.
 
+## Synchronizing Copies
+
+Use `./frb_internal sync-cargokit-copies` to refresh all checked-in CargoKit copies from the template submodules. The command applies the same CargoKit file filtering and copied-file prelude as the integration template writer, then updates every known example copy.
+
+The CI `Generate :: Internal` job runs this command and then checks `git diff --exit-code -- frb_example`. If CargoKit copies drift, fix the source-of-truth template/submodule first when appropriate, run `./frb_internal sync-cargokit-copies`, and commit the resulting copied-output refresh.
+
 ## Diff Analysis Order
 
 When a user asks "what happened to cargokit?" follow this order:

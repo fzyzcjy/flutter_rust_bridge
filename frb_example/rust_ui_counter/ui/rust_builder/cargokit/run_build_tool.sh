@@ -77,6 +77,11 @@ if [ ! -f "$PACKAGE_HASH_FILE" ]; then
     echo "$PACKAGE_HASH" > "$PACKAGE_HASH_FILE"
 fi
 
+# Rebuild the tool if it was deleted by Android Studio
+if [ ! -f "bin/build_tool_runner.dill" ]; then
+  "$DART" compile kernel bin/build_tool_runner.dart
+fi
+
 set +e
 
 "$DART" bin/build_tool_runner.dill "$@"
