@@ -190,8 +190,8 @@ mod tests {
         let temp_dir = tempfile::tempdir().unwrap();
         let root = temp_dir.path().join("root");
         fs::create_dir_all(root.join("nested")).unwrap();
-        write_file(&root.join("top.txt"));
-        write_file(&root.join("nested").join("child.txt"));
+        fs::write(root.join("top.txt"), "x").unwrap();
+        fs::write(root.join("nested").join("child.txt"), "x").unwrap();
 
         let err = remove_files_in_dir(&root).unwrap_err();
         let message = err.to_string();
