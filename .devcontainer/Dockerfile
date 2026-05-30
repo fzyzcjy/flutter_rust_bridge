@@ -24,6 +24,7 @@ RUN apt-get update && apt-get install -y \
     libstdc++-12-dev \
     mesa-utils \
     python3-pip \
+    unzip \
     xz-utils \
     && rm -rf /var/lib/apt/lists/*
 
@@ -39,10 +40,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --de
     rustup target add wasm32-unknown-unknown && \
     rustup toolchain install "nightly-${RUST_NIGHTLY_VERSION}" && \
     rustup component add rust-src llvm-tools-preview --toolchain "nightly-${RUST_NIGHTLY_VERSION}" && \
-    rustup target add wasm32-unknown-unknown --toolchain "nightly-${RUST_NIGHTLY_VERSION}" && \
-    rustup toolchain install nightly && \
-    rustup component add rust-src --toolchain nightly && \
-    rustup target add wasm32-unknown-unknown --toolchain nightly
+    rustup target add wasm32-unknown-unknown --toolchain "nightly-${RUST_NIGHTLY_VERSION}"
 ENV PATH="/root/.cargo/bin:${PATH}"
 
 # Install Node.js and npm from official multi-arch binaries.
@@ -70,7 +68,7 @@ ENV PLAYWRIGHT_BROWSERS_PATH=/opt/ms-playwright
 RUN npm install -g "playwright@${PLAYWRIGHT_VERSION}" && \
     playwright install --with-deps chromium && \
     ln -s "$(find "${PLAYWRIGHT_BROWSERS_PATH}" -path "*/chrome-linux*/chrome" -type f | head -n 1)" /usr/bin/google-chrome && \
-    CHROMIUM_VERSION="$(node -e "const b=require('/usr/local/lib/node_modules/playwright/node_modules/playwright-core/browsers.json'); console.log(b.browsers.find(x=>x.name==='chromium').browserVersion)")" && \
+    CHROMIUM_VERSION="$(node -e "const p=require.resolve('playwright-core/browsers.json', {paths: ['/usr/local/lib/node_modules/playwright']}); const b=require(p); console.log(b.browsers.find(x=>x.name==='chromium').browserVersion)")" && \
     ARCH="$(dpkg --print-architecture)" && \
     case "$ARCH" in \
         amd64) \
@@ -98,7 +96,7 @@ RUN flutter --version && \
     rustup target list --installed | grep wasm32-unknown-unknown && \
     rustup target list --toolchain "nightly-${RUST_NIGHTLY_VERSION}" --installed | grep wasm32-unknown-unknown && \
     rustup component list --installed | grep llvm-tools && \
-    rustup component list --toolchain nightly --installed | grep rust-src && \
+    rustup component list --toolchain "nightly-${RUST_NIGHTLY_VERSION}" --installed | grep rust-src && \
     cargo expand --version && \
     cargo llvm-cov --version && \
     wasm-pack --version && \
