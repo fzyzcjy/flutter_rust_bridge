@@ -3,7 +3,7 @@ use crate::library::commands::cargo::cargo_fetch;
 use crate::library::commands::dart_fix::dart_fix;
 use crate::library::commands::dart_format::dart_format;
 use crate::library::commands::flutter::{
-    flutter_pub_add, flutter_pub_get, resolve_flutter_platforms,
+    flutter_pub_add, flutter_pub_get, platform_list_contains_ohos, resolve_flutter_platforms,
 };
 use crate::misc::{FvmInstallMode, Template};
 use crate::utils::dart_repository::get_dart_package_name;
@@ -49,6 +49,7 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
             Template::Plugin => dart_package_name.to_owned(),
         });
     let platforms = resolve_flutter_platforms(config.template, config.platforms.clone())?;
+    let include_ohos = platform_list_contains_ohos(&platforms);
 
     info!("Overlay template onto project");
     let replacements = compute_replacements(
@@ -63,7 +64,7 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
         &dart_root,
         &config,
         None,
-        platforms.include_ohos,
+        include_ohos,
     )?;
     let (dir, comment_out_files) = match &config.template {
         Template::App => (&TemplateDirs::APP, vec!["main.dart".to_string()]),
@@ -78,7 +79,7 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
         &dart_root,
         &config,
         Some(&comment_out_files),
-        platforms.include_ohos,
+        include_ohos,
     )?;
 
     if config.enable_local_dependency && config.template == Template::Plugin {
