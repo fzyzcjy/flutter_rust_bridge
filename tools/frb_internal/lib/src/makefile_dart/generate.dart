@@ -25,6 +25,7 @@ import 'package:yaml/yaml.dart';
 part 'generate.g.dart';
 
 const _kRefreshCargoLockOrderingEnv = 'FRB_REFRESH_CARGO_LOCK_ORDERING';
+const _kGenerateIncludeOhosEnv = 'FRB_INTERNAL_GENERATE_INCLUDE_OHOS';
 
 List<Command<void>> createCommands() {
   return [
@@ -362,9 +363,14 @@ Future<void> _formatPackageAfterGenerate(String package) async {
 Future<void> generateRunFrbCodegenCommandIntegrate(
   GeneratePackageConfig config,
 ) async {
+  final includeOhosInDiff =
+      Platform.environment[_kGenerateIncludeOhosEnv] == '1';
   await _wrapMaybeSetExitIfChanged(
     config,
-    extraArgs: integrateDiffExclusionArgs(config.package),
+    extraArgs: integrateDiffExclusionArgs(
+      config.package,
+      includeOhos: includeOhosInDiff,
+    ),
     () async {
       final dirPackage = path.join(exec.pwd!, config.package);
 

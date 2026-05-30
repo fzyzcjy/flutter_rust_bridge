@@ -253,6 +253,12 @@ jobs:
           - frb_example--flutter_via_create
           - frb_example--flutter_via_integrate
           - frb_example--flutter_package
+        platforms:
+          - default
+        include:
+          - image: ubuntu-24.04
+            package: frb_example--flutter_via_create
+            platforms: ohos
 
     steps:
       # setup
@@ -267,19 +273,44 @@ jobs:
         with:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
           components: rustfmt, clippy
-      - uses: flutter-actions/setup-flutter@v4
+      - if: matrix.platforms != 'ohos'
+        uses: flutter-actions/setup-flutter@v4
         with:
           cache: true
           version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+      - if: matrix.platforms == 'ohos'
+        name: Setup HarmonyOS toolchain
+        uses: ErBWs/setup-ohos@v1
+        with:
+          version: latest
+          cache: true
+      - if: matrix.platforms == 'ohos'
+        name: Setup JDK17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - if: matrix.platforms == 'ohos'
+        name: Setup flutter-ohos
+        run: |
+          git clone -b oh-3.41.9-dev https://gitcode.com/openharmony-tpc/flutter_flutter.git $GITHUB_WORKSPACE/flutter
+          echo "$GITHUB_WORKSPACE/flutter/bin" >> $GITHUB_PATH
+      - if: matrix.platforms == 'ohos'
+        name: Export OHOS_SDK_HOME
+        shell: bash
+        run: |
+          echo "OHOS_SDK_HOME=${OHOS_NDK_HOME}/native" >> $GITHUB_ENV
       - run: cargo install cargo-llvm-cov --version ${{ matrix.info.version == '1.85.0' && '0.6.21' || '0.6.24' }} --locked
 
       # execute
       - run: ./frb_internal generate-run-frb-codegen-command-integrate --set-exit-if-changed --package ${{ matrix.package }} --coverage
+        env:
+          FRB_INTERNAL_GENERATE_INCLUDE_OHOS: ${{ matrix.platforms == 'ohos' && '1' || '' }}
 
       # report
       - uses: actions/upload-artifact@v4
         with:
-          name: ${{ github.job }}--${{ matrix.image }}--${{ matrix.package }}--coverage
+          name: ${{ github.job }}--${{ matrix.image }}--${{ matrix.package }}--${{ matrix.platforms }}--coverage
           path: target/coverage
 
   generate_internal:

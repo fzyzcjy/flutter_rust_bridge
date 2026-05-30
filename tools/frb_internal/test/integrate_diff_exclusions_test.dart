@@ -11,6 +11,17 @@ void main() {
     );
   });
 
+  test('integrate extra args keep ohos for flutter_via_create when requested', () {
+    expect(
+      integrateDiffExclusionArgsForTesting(
+        'frb_example/flutter_via_create',
+        includeOhos: true,
+      ),
+      "':(exclude)frb_example/flutter_via_create/macos/Flutter/Flutter-Debug.xcconfig' "
+      "':(exclude)frb_example/flutter_via_create/macos/Flutter/Flutter-Release.xcconfig'",
+    );
+  });
+
   test('integrate extra args are explicit for flutter_via_integrate', () {
     expect(
       integrateDiffExclusionArgsForTesting('frb_example/flutter_via_integrate'),
