@@ -1,4 +1,5 @@
 use crate::codegen::misc::GeneratorProgressBarPack;
+use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::integration::integrator::pub_add_dependency_frb;
 use crate::library::commands::cargo::cargo_add;
 use crate::misc::FvmInstallMode;
@@ -11,25 +12,22 @@ use std::str::FromStr;
 
 pub(super) fn execute(
     progress_bar_pack: &GeneratorProgressBarPack,
-    dart_root: &Path,
-    rust_crate_dir: &Path,
-    enable_auto_upgrade: bool,
-    fvm_install_mode: FvmInstallMode,
+    config: &PolisherInternalConfig,
 ) -> Result<()> {
     let _pb = progress_bar_pack.polish_upgrade.start();
 
-    let dart_upgrader = DartUpgrader::new(dart_root)?;
-    dart_upgrader.execute(enable_auto_upgrade, fvm_install_mode)?;
+    let dart_upgrader = DartUpgrader::new(&config.dart_root)?;
+    dart_upgrader.execute(config)?;
 
-    let rust_upgrader = RustUpgrader::new(rust_crate_dir)?;
-    rust_upgrader.execute(enable_auto_upgrade, fvm_install_mode)
+    let rust_upgrader = RustUpgrader::new(&config.rust_crate_dir)?;
+    rust_upgrader.execute(config)
 }
 
 trait Upgrader {
-    fn execute(&self, enable_auto_upgrade: bool, fvm_install_mode: FvmInstallMode) -> Result<()> {
+    fn execute(&self, config: &PolisherInternalConfig) -> Result<()> {
         if !self.check()? {
-            if enable_auto_upgrade {
-                self.upgrade(fvm_install_mode)?;
+            if config.enable_auto_upgrade {
+                self.upgrade(config.fvm_install_mode)?;
             } else {
                 log::warn!("Auto upgrader find wrong Dart/Rust flutter_rust_bridge dependency version, please enable `auto_upgrade_dependencies` flag or upgrade manually.");
             }

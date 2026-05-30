@@ -1,5 +1,7 @@
 pub(crate) mod consts;
 
+use serde::{Deserialize, Serialize};
+
 /// Please refer to `TemplateArg` for doc
 #[derive(Debug, Copy, Clone, Eq, PartialEq)]
 pub enum Template {
@@ -7,7 +9,7 @@ pub enum Template {
     Plugin,
 }
 
-#[derive(Debug, Copy, Clone, Eq, PartialEq)]
+#[derive(Debug, Copy, Clone, Eq, PartialEq, Serialize, Deserialize)]
 pub enum FvmInstallMode {
     Normal,
     Skip,

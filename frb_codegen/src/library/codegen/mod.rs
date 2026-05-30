@@ -28,7 +28,8 @@ pub fn generate(
 ) -> anyhow::Result<()> {
     debug!("config={config:?} meta_config={meta_config:?}");
 
-    let internal_config = InternalConfig::parse(&config, &meta_config)?;
+    let mut internal_config = InternalConfig::parse(&config, &meta_config)?;
+    internal_config.polisher.fvm_install_mode = fvm_install_mode;
     debug!("internal_config={internal_config:?}");
 
     let dumper = Dumper::new(&internal_config.dumper);
@@ -37,17 +38,13 @@ pub fn generate(
         .dump("config.json", &config)?;
 
     controller::run(&internal_config.controller, &|| {
-        generate_once(&internal_config, &dumper, fvm_install_mode)
+        generate_once(&internal_config, &dumper)
     })?;
 
     Ok(())
 }
 
-fn generate_once(
-    internal_config: &InternalConfig,
-    dumper: &Dumper,
-    fvm_install_mode: FvmInstallMode,
-) -> anyhow::Result<()> {
+fn generate_once(internal_config: &InternalConfig, dumper: &Dumper) -> anyhow::Result<()> {
     let progress_bar_pack = GeneratorProgressBarPack::new();
 
     dumper
@@ -78,7 +75,6 @@ fn generate_once(
         generator_output.dart_needs_json_serializable,
         &generator_output.output_texts.paths(),
         &progress_bar_pack,
-        fvm_install_mode,
     )?;
     drop(pb);
 
