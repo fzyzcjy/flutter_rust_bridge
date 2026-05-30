@@ -54,6 +54,12 @@ impl WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator
                         ..Default::default()
                     };
                 }
+                if mir == &MirTypeDelegateTime::StdSystemTime {
+                    return Acc {
+                        common: Some(decode_std_system_time("self")),
+                        ..Default::default()
+                    };
+                }
                 let codegen_timestamp = "let flutter_rust_bridge::for_generated::Timestamp { s, ns } = flutter_rust_bridge::for_generated::decode_timestamp(self);";
                 let codegen_naive_date_time =
                     "chrono::DateTime::from_timestamp(s, ns).expect(\"invalid or out-of-range datetime\").naive_utc()";
@@ -66,21 +72,14 @@ impl WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator
                     MirTypeDelegateTime::NaiveDateTime => codegen_naive_date_time.to_owned(),
                     MirTypeDelegateTime::Utc => codegen_utc,
                     MirTypeDelegateTime::Local => codegen_local,
-                    MirTypeDelegateTime::StdSystemTime => decode_std_system_time("self"),
                     // frb-coverage:ignore-start
                     MirTypeDelegateTime::Duration
-                    | MirTypeDelegateTime::StdDuration => unreachable!(),
+                    | MirTypeDelegateTime::StdDuration
+                    | MirTypeDelegateTime::StdSystemTime => unreachable!(),
                     // frb-coverage:ignore-end
                 };
                 Acc {
-                    common: Some(if matches!(
-                        mir,
-                        MirTypeDelegateTime::StdSystemTime
-                    ) {
-                        codegen_conversion
-                    } else {
-                        format!("{codegen_timestamp}{codegen_conversion}")
-                    }),
+                    common: Some(format!("{codegen_timestamp}{codegen_conversion}")),
                     ..Default::default()
                 }
             },
