@@ -202,10 +202,11 @@ Future<void> precommitIntegrate() async {
   await Future.wait([
     for (final package in kDartExampleIntegratePackages)
       generateRunFrbCodegenCommandIntegrate(
-        GeneratePackageConfig(
+        GenerateIntegratePackageConfig(
           setExitIfChanged: false,
           package: package,
           coverage: false,
+          includeOhos: false,
         ),
       ),
   ]);

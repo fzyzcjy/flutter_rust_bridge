@@ -56,7 +56,7 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
         &config,
         &dart_package_name,
         &rust_crate_name,
-        platforms.include_ohos,
+        include_ohos,
     );
     execute_overlay_dir(
         &TemplateDirs::SHARED,
