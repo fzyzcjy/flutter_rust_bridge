@@ -94,6 +94,9 @@ Future<RunCommandOutput> runCommand(
 }
 
 Future<void> _killProcessTree(int pid) async {
+  // ignore: avoid_print
+  print('Killing process tree rooted at PID $pid');
+
   if (Platform.isWindows) {
     try {
       await Process.run('taskkill', ['/F', '/T', '/PID', '$pid']);
