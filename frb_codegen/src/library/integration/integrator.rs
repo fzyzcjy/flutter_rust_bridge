@@ -48,11 +48,7 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
             }
             Template::Plugin => dart_package_name.to_owned(),
         });
-    let platforms = resolve_flutter_platforms(
-        config.template,
-        config.platforms.clone(),
-        config.fvm_install_mode,
-    )?;
+    let platforms = resolve_flutter_platforms(config.template, config.platforms.clone())?;
 
     info!("Overlay template onto project");
     let replacements = compute_replacements(
