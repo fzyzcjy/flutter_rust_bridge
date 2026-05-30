@@ -170,16 +170,16 @@ impl WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator
             MirTypeDelegate::Time(mir) => match mir {
                 MirTypeDelegateTime::Duration => "chrono::Duration::milliseconds(CstDecode::<i64>::cst_decode(self))".into(),
                 MirTypeDelegateTime::StdDuration => {
-                    decode_std_duration("CstDecode::<i64>::cst_decode(self)").into()
+                    decode_js_value_once_then(&decode_std_duration)
                 }
                 MirTypeDelegateTime::StdSystemTime => {
-                    decode_std_system_time("CstDecode::<i64>::cst_decode(self)").into()
+                    decode_js_value_once_then(&decode_std_system_time)
                 }
                 MirTypeDelegateTime::StdInstant => {
-                    decode_std_instant("CstDecode::<i64>::cst_decode(self)").into()
+                    decode_js_value_once_then(&decode_std_instant)
                 }
                 MirTypeDelegateTime::TokioInstant => {
-                    decode_tokio_instant("CstDecode::<i64>::cst_decode(self)").into()
+                    decode_js_value_once_then(&decode_tokio_instant)
                 }
                 _ => "CstDecode::<i64>::cst_decode(self).cst_decode()".into(),
             },
@@ -246,6 +246,17 @@ impl DelegateWireRustCodecCstGenerator<'_> {
             Acc::distribute(Some(acc))
         }
     }
+}
+
+fn decode_js_value_once_then(
+    generate_conversion: &dyn Fn(&str) -> String,
+) -> std::borrow::Cow<'static, str> {
+    format!(
+        "let inner = CstDecode::<i64>::cst_decode(self);
+        {}",
+        generate_conversion("inner")
+    )
+    .into()
 }
 
 fn generate_decode_array(array: &MirTypeDelegateArray) -> String {
