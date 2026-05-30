@@ -103,13 +103,24 @@ Future<void> _killProcessTree(int pid) async {
     return;
   }
 
-  await Future.wait([
-    for (final childPid in await _childProcessIds(pid))
-      _killProcessTree(childPid),
-  ]);
-  Process.killPid(pid);
-  await Future<void>.delayed(const Duration(milliseconds: 500));
-  Process.killPid(pid, ProcessSignal.sigkill);
+  final pids = await _processTreeIds(pid);
+  final didSignal = [
+    for (final pid in pids.reversed) Process.killPid(pid),
+  ].any((value) => value);
+  if (didSignal) {
+    await Future<void>.delayed(const Duration(milliseconds: 500));
+    for (final pid in pids.reversed) {
+      Process.killPid(pid, ProcessSignal.sigkill);
+    }
+  }
+}
+
+Future<List<int>> _processTreeIds(int pid) async {
+  final pids = [pid];
+  for (final childPid in await _childProcessIds(pid)) {
+    pids.addAll(await _processTreeIds(childPid));
+  }
+  return pids;
 }
 
 Future<List<int>> _childProcessIds(int pid) async {

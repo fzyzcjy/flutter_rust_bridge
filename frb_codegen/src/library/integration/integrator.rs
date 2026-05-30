@@ -234,13 +234,16 @@ fn add_analyzer_exclude(text: &str, exclude: &str) -> String {
     let default_list_item_indent = "    ";
     if text
         .lines()
-        .any(|line| line.trim() == format!("- {exclude}"))
+        .any(|line| is_analyzer_exclude_line(line, exclude))
     {
         return text.to_owned();
     }
 
     let mut lines = text.lines().map(String::from).collect_vec();
-    let Some(analyzer_index) = lines.iter().position(|line| line.trim() == "analyzer:") else {
+    let Some(analyzer_index) = lines
+        .iter()
+        .position(|line| is_yaml_key_line(line, "analyzer"))
+    else {
         let exclude_line = format!("{default_list_item_indent}- {exclude}");
         return format!("analyzer:\n  exclude:\n{exclude_line}\n\n{text}");
     };
@@ -258,7 +261,7 @@ fn add_analyzer_exclude(text: &str, exclude: &str) -> String {
 
     if let Some(exclude_index) = lines[analyzer_index + 1..block_end]
         .iter()
-        .position(|line| line.trim() == "exclude:")
+        .position(|line| is_yaml_key_line(line, "exclude"))
         .map(|index| index + analyzer_index + 1)
     {
         let list_item_indent = detect_yaml_list_item_indent(&lines[exclude_index + 1..block_end])
@@ -286,6 +289,29 @@ fn add_analyzer_exclude(text: &str, exclude: &str) -> String {
         output.push('\n');
     }
     output
+}
+
+fn is_yaml_key_line(line: &str, key: &str) -> bool {
+    let trimmed = line.trim();
+    let key_with_colon = format!("{key}:");
+    trimmed == key_with_colon
+        || trimmed
+            .strip_prefix(&key_with_colon)
+            .is_some_and(|rest| rest.trim().starts_with('#'))
+}
+
+fn is_analyzer_exclude_line(line: &str, exclude: &str) -> bool {
+    let Some(value) = line.trim().strip_prefix("- ") else {
+        return false;
+    };
+    let value_without_comment = value
+        .split_once(" #")
+        .map(|(before_comment, _)| before_comment)
+        .unwrap_or(value);
+    value_without_comment
+        .trim()
+        .trim_matches(|char| char == '\'' || char == '"')
+        == exclude
 }
 
 fn detect_yaml_list_item_indent(lines: &[String]) -> Option<String> {
@@ -386,6 +412,26 @@ mod tests {
         let text = "analyzer:\n  exclude:\n    - rust_builder/cargokit/**\n";
 
         assert_eq!(add_analyzer_exclude(text, "rust_builder/cargokit/**"), text);
+    }
+
+    #[test]
+    fn test_add_analyzer_exclude_is_idempotent_with_quoted_value() {
+        let text = "analyzer:\n  exclude:\n    - 'rust_builder/cargokit/**' # generated\n";
+
+        assert_eq!(add_analyzer_exclude(text, "rust_builder/cargokit/**"), text);
+    }
+
+    #[test]
+    fn test_add_analyzer_exclude_handles_analyzer_and_exclude_comments() {
+        let actual = add_analyzer_exclude(
+            "analyzer: # project analyzer settings\n  exclude: # generated files\n    - build/**\n",
+            "rust_builder/cargokit/**",
+        );
+
+        assert_eq!(
+            actual,
+            "analyzer: # project analyzer settings\n  exclude: # generated files\n    - build/**\n    - rust_builder/cargokit/**\n"
+        );
     }
 
     #[test]
