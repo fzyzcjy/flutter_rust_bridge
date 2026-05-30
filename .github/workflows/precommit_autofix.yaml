@@ -42,7 +42,7 @@ jobs:
         run: |
           set -euo pipefail
 
-          ./frb_internal precommit-autofix-in-dev-container --mode slow
+          ./frb_internal precommit-autofix-in-dev-container --mode slow --build-if-missing
 
       - name: Upload patch artifact
         if: ${{ steps.autofix.outputs.has_patch == 'true' }}

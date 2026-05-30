@@ -22,6 +22,7 @@ Read these when entering the matching phase:
 - `frb-test` before running local tests.
 - `frb-lint` before lint or format checks.
 - `frb-prepare-pr` before pushing or opening the PR.
+- `frb-pr-review` before treating a non-trivial PR as ready.
 - `frb-fix-ci` before diagnosing any CI failure.
 - `gh-actions-live-logs` before reading GitHub Actions logs.
 - `frb-debugging` when generated code is surprising or codegen behavior is unclear.
@@ -56,6 +57,7 @@ Read these when entering the matching phase:
    - If the work comes from a GitHub issue, ensure the PR body includes the appropriate closing keyword such as `Close #1234`, unless the active PR workflow explicitly requires an empty body.
 
 6. Handle Gemini review.
+   - Follow `frb-pr-review` for the full PR review gate, including correctness review, test-weakening review, and Gemini.
    - After pushing the PR and once you believe the code is reasonably ready, post a PR comment containing exactly `/gemini review` to request a Gemini pass; do not wait for CI to be green before requesting this first self-initiated review.
    - Wait for Gemini's GitHub review or comments if the repository automation posts them.
    - Treat actionable Gemini feedback like review comments: inspect, fix if valid, commit, push, and reply or otherwise make the resolution visible.
