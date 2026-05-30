@@ -46561,11 +46561,22 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<MessageWithCustomSerializerTwi
 // Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for FrbWrapper<std::time::Duration> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        let value: i64 = self
-            .0
-            .as_micros()
-            .try_into()
-            .expect("cannot get microseconds from time");
+        let value: i64 = {
+            #[cfg(target_arch = "wasm32")]
+            {
+                self.0
+                    .as_millis()
+                    .try_into()
+                    .expect("cannot get milliseconds from time")
+            }
+            #[cfg(not(target_arch = "wasm32"))]
+            {
+                self.0
+                    .as_micros()
+                    .try_into()
+                    .expect("cannot get microseconds from time")
+            }
+        };
         value.into_dart()
     }
 }
@@ -46594,15 +46605,34 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<std::time::Instant> {
                     .checked_sub(now_instant.duration_since(value))
                     .expect("instant out of range")
             };
-            match system_time.duration_since(std::time::SystemTime::UNIX_EPOCH) {
-                Ok(duration) => duration
-                    .as_micros()
-                    .try_into()
-                    .expect("cannot get microseconds from time"),
-                Err(error) => {
-                    let micros = i128::try_from(error.duration().as_micros())
-                        .expect("cannot get microseconds from time");
-                    i64::try_from(-micros).expect("cannot get microseconds from time")
+            {
+                #[cfg(target_arch = "wasm32")]
+                {
+                    match system_time.duration_since(std::time::SystemTime::UNIX_EPOCH) {
+                        Ok(duration) => duration
+                            .as_millis()
+                            .try_into()
+                            .expect("cannot get milliseconds from time"),
+                        Err(error) => {
+                            let millis = i128::try_from(error.duration().as_millis())
+                                .expect("cannot get milliseconds from time");
+                            i64::try_from(-millis).expect("cannot get milliseconds from time")
+                        }
+                    }
+                }
+                #[cfg(not(target_arch = "wasm32"))]
+                {
+                    match system_time.duration_since(std::time::SystemTime::UNIX_EPOCH) {
+                        Ok(duration) => duration
+                            .as_micros()
+                            .try_into()
+                            .expect("cannot get microseconds from time"),
+                        Err(error) => {
+                            let micros = i128::try_from(error.duration().as_micros())
+                                .expect("cannot get microseconds from time");
+                            i64::try_from(-micros).expect("cannot get microseconds from time")
+                        }
+                    }
                 }
             }
         };
@@ -46621,15 +46651,34 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<std::time::Instant>> for std::
 // Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for FrbWrapper<std::time::SystemTime> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        let value: i64 = match self.0.duration_since(std::time::SystemTime::UNIX_EPOCH) {
-            Ok(duration) => duration
-                .as_micros()
-                .try_into()
-                .expect("cannot get microseconds from time"),
-            Err(error) => {
-                let micros = i128::try_from(error.duration().as_micros())
-                    .expect("cannot get microseconds from time");
-                i64::try_from(-micros).expect("cannot get microseconds from time")
+        let value: i64 = {
+            #[cfg(target_arch = "wasm32")]
+            {
+                match self.0.duration_since(std::time::SystemTime::UNIX_EPOCH) {
+                    Ok(duration) => duration
+                        .as_millis()
+                        .try_into()
+                        .expect("cannot get milliseconds from time"),
+                    Err(error) => {
+                        let millis = i128::try_from(error.duration().as_millis())
+                            .expect("cannot get milliseconds from time");
+                        i64::try_from(-millis).expect("cannot get milliseconds from time")
+                    }
+                }
+            }
+            #[cfg(not(target_arch = "wasm32"))]
+            {
+                match self.0.duration_since(std::time::SystemTime::UNIX_EPOCH) {
+                    Ok(duration) => duration
+                        .as_micros()
+                        .try_into()
+                        .expect("cannot get microseconds from time"),
+                    Err(error) => {
+                        let micros = i128::try_from(error.duration().as_micros())
+                            .expect("cannot get microseconds from time");
+                        i64::try_from(-micros).expect("cannot get microseconds from time")
+                    }
+                }
             }
         };
         value.into_dart()
@@ -46662,15 +46711,34 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<tokio::time::Instant> {
                     .checked_sub(now_instant.duration_since(value))
                     .expect("instant out of range")
             };
-            match system_time.duration_since(std::time::SystemTime::UNIX_EPOCH) {
-                Ok(duration) => duration
-                    .as_micros()
-                    .try_into()
-                    .expect("cannot get microseconds from time"),
-                Err(error) => {
-                    let micros = i128::try_from(error.duration().as_micros())
-                        .expect("cannot get microseconds from time");
-                    i64::try_from(-micros).expect("cannot get microseconds from time")
+            {
+                #[cfg(target_arch = "wasm32")]
+                {
+                    match system_time.duration_since(std::time::SystemTime::UNIX_EPOCH) {
+                        Ok(duration) => duration
+                            .as_millis()
+                            .try_into()
+                            .expect("cannot get milliseconds from time"),
+                        Err(error) => {
+                            let millis = i128::try_from(error.duration().as_millis())
+                                .expect("cannot get milliseconds from time");
+                            i64::try_from(-millis).expect("cannot get milliseconds from time")
+                        }
+                    }
+                }
+                #[cfg(not(target_arch = "wasm32"))]
+                {
+                    match system_time.duration_since(std::time::SystemTime::UNIX_EPOCH) {
+                        Ok(duration) => duration
+                            .as_micros()
+                            .try_into()
+                            .expect("cannot get microseconds from time"),
+                        Err(error) => {
+                            let micros = i128::try_from(error.duration().as_micros())
+                                .expect("cannot get microseconds from time");
+                            i64::try_from(-micros).expect("cannot get microseconds from time")
+                        }
+                    }
                 }
             }
         };
