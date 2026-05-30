@@ -61,9 +61,7 @@ class _FakeBaseEntrypoint extends BaseEntrypoint {
   get defaultExternalLibraryLoaderConfig => throw UnimplementedError();
 
   @override
-  Future<void> executeRustInitializers({
-    required bool enableRustToDartLogging,
-  }) => throw UnimplementedError();
+  Future<void> executeRustInitializers() => throw UnimplementedError();
 
   @override
   int get rustContentHash => throw UnimplementedError();

@@ -45,7 +45,6 @@ abstract class BaseEntrypoint<
     BaseHandler? handler,
     ExternalLibrary? externalLibrary,
     bool forceSameCodegenVersion = true,
-    bool enableRustToDartLogging = true,
   }) async {
     if (__state != null) {
       throw StateError('Should not initialize flutter_rust_bridge twice');
@@ -73,9 +72,7 @@ abstract class BaseEntrypoint<
       api: api,
     );
 
-    await executeRustInitializers(
-      enableRustToDartLogging: enableRustToDartLogging,
-    );
+    await executeRustInitializers();
   }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
@@ -167,7 +164,7 @@ abstract class BaseEntrypoint<
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @protected
-  Future<void> executeRustInitializers({required bool enableRustToDartLogging});
+  Future<void> executeRustInitializers();
 
   Future<ExternalLibrary> _loadDefaultExternalLibrary() async =>
       await loadExternalLibrary(defaultExternalLibraryLoaderConfig);

@@ -121,22 +121,12 @@ fn generate_boilerplate(
             )
         })
         .join("");
-    let funcs_with_impl = context.mir_pack.funcs_with_impl();
-    let init_dart_codes = funcs_with_impl
-        .iter()
-        .filter_map(|f| f.init_dart_code.as_deref())
-        .collect_vec();
-    let execute_dart_logging_initializers = generate_execute_dart_initializers(
-        init_dart_codes
-            .iter()
-            .copied()
-            .filter(|code| is_logging_initializer(code)),
-    );
     let execute_dart_initializers = generate_execute_dart_initializers(
-        init_dart_codes
+        context
+            .mir_pack
+            .funcs_with_impl()
             .iter()
-            .copied()
-            .filter(|code| !is_logging_initializer(code)),
+            .filter_map(|f| f.init_dart_code.as_deref()),
     );
 
     let codegen_version = env!("CARGO_PKG_VERSION");
@@ -169,14 +159,12 @@ fn generate_boilerplate(
                     BaseHandler? handler,
                     ExternalLibrary? externalLibrary,
                     bool forceSameCodegenVersion = true,
-                    bool enableRustToDartLogging = true,
                   }}) async {{
                     await instance.initImpl(
                       api: api,
                       handler: handler,
                       externalLibrary: externalLibrary,
                       forceSameCodegenVersion: forceSameCodegenVersion,
-                      enableRustToDartLogging: enableRustToDartLogging,
                     );
                   }}
 
@@ -203,12 +191,7 @@ fn generate_boilerplate(
                   WireConstructor<{wire_class_name}> get wireConstructor => {wire_class_name}.fromExternalLibrary;
 
                   @override
-                  Future<void> executeRustInitializers({{
-                    required bool enableRustToDartLogging,
-                  }}) async {{
-                    if (enableRustToDartLogging) {{
-                      {execute_dart_logging_initializers}
-                    }}
+                  Future<void> executeRustInitializers() async {{
                     {execute_rust_initializers}
                     {execute_dart_initializers}
                   }}
@@ -275,10 +258,6 @@ fn generate_execute_dart_initializers<'a>(
     init_dart_codes.map(|code| format!("{code}\n")).join("")
 }
 
-fn is_logging_initializer(code: &str) -> bool {
-    code.contains("kFrbDartLogging.init")
-}
-
 fn file_stem(p: &Path) -> String {
     p.file_stem().unwrap().to_str().unwrap().into()
 }
@@ -302,7 +281,7 @@ fn generate_import_dart_api_layer(
 
 #[cfg(test)]
 mod tests {
-    use super::{generate_execute_dart_initializers, is_logging_initializer};
+    use super::generate_execute_dart_initializers;
 
     #[test]
     fn test_generate_execute_dart_initializers() {
@@ -316,21 +295,6 @@ mod tests {
         );
     }
 
-    #[test]
-    fn test_is_logging_initializer() {
-        assert!(is_logging_initializer(
-            "kFrbDartLogging.init(rustLogStream: stream);"
-        ));
-        assert!(is_logging_initializer(
-            r#"
-                    kFrbDartLogging.init(
-                      rustLogStream: frbInternalInitLogger(maxLevel: frbInternalLoggingMaxLevel()),
-                      disposeRustLogger: frbInternalDisposeLogger,
-                    );
-"#
-        ));
-        assert!(!is_logging_initializer("api.userDefinedInitializer();"));
-    }
 }
 
 // fn generate_wire_delegate_functions(func: &ExternFunc) -> Acc<Vec<WireDartOutputCode>> {

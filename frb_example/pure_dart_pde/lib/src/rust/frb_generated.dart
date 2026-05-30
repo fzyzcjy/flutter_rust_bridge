@@ -173,14 +173,12 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
     BaseHandler? handler,
     ExternalLibrary? externalLibrary,
     bool forceSameCodegenVersion = true,
-    bool enableRustToDartLogging = true,
   }) async {
     await instance.initImpl(
       api: api,
       handler: handler,
       externalLibrary: externalLibrary,
       forceSameCodegenVersion: forceSameCodegenVersion,
-      enableRustToDartLogging: enableRustToDartLogging,
     );
   }
 
@@ -209,28 +207,25 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
       RustLibWire.fromExternalLibrary;
 
   @override
-  Future<void> executeRustInitializers({
-    required bool enableRustToDartLogging,
-  }) async {
-    if (enableRustToDartLogging) {
-      kFrbDartLogging.init(
-        rustLogStream:
-            frbInternalInitLogger(maxLevel: frbInternalLoggingMaxLevel()),
-        mapRecord: (record) => FrbLogRecordData(
-          level: record.level,
-          message: record.message,
-          target: record.target,
-          modulePath: record.modulePath,
-          file: record.file,
-          line: record.line,
-        ),
-        setupDefaultOutput: frbInternalLoggingSetupDartLoggingOutput(),
-        disposeRustLogger: frbInternalDisposeLogger,
-      );
-    }
+  Future<void> executeRustInitializers() async {
     await api.crateApiCustomizationInitApp();
     await api.crateApiCustomizationMyInitOne();
     await api.crateApiCustomizationMyInitTwo();
+
+    kFrbDartLogging.init(
+      rustLogStream:
+          frbInternalInitLogger(maxLevel: frbInternalLoggingMaxLevel()),
+      mapRecord: (record) => FrbLogRecordData(
+        level: record.level,
+        message: record.message,
+        target: record.target,
+        modulePath: record.modulePath,
+        file: record.file,
+        line: record.line,
+      ),
+      setupDefaultOutput: frbInternalLoggingSetupDartLoggingOutput(),
+      disposeRustLogger: frbInternalDisposeLogger,
+    );
 
     recordInitDartCodeMessage(message: 'first');
 
@@ -23405,7 +23400,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   Stream<FrbLogRecord> crateApiFrbLoggingFrbInternalInitLogger(
       {required String maxLevel}) {
-    final sink = RustStreamSink<FrbLogRecord>(keepIsolateAlive: false);
+    final sink = RustStreamSink<FrbLogRecord>();
     unawaited(handler.executeNormal(NormalTask(
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
