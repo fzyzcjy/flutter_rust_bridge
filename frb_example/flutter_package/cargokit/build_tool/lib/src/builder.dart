@@ -25,7 +25,6 @@ enum BuildConfiguration {
 
 extension on BuildConfiguration {
   bool get isDebug => this == BuildConfiguration.debug;
-
   String get rustName => switch (this) {
         BuildConfiguration.debug => 'debug',
         BuildConfiguration.release => 'release',
@@ -99,18 +98,19 @@ class BuildEnvironment {
     );
     final crateInfo = CrateInfo.load(manifestDir);
     return BuildEnvironment(
-        configuration: buildConfiguration,
-        crateOptions: crateOptions,
-        targetTempDir: Environment.targetTempDir,
-        manifestDir: manifestDir,
-        crateInfo: crateInfo,
-        isAndroid: isAndroid,
-        androidSdkPath: isAndroid ? Environment.sdkPath : null,
-        androidNdkVersion: isAndroid ? Environment.ndkVersion : null,
-        androidMinSdkVersion:
-            isAndroid ? int.parse(Environment.minSdkVersion) : null,
-        javaHome: isAndroid ? Environment.javaHome : null,
-        ohosSdkHome: Environment.ohosSdkHome);
+      configuration: buildConfiguration,
+      crateOptions: crateOptions,
+      targetTempDir: Environment.targetTempDir,
+      manifestDir: manifestDir,
+      crateInfo: crateInfo,
+      isAndroid: isAndroid,
+      androidSdkPath: isAndroid ? Environment.sdkPath : null,
+      androidNdkVersion: isAndroid ? Environment.ndkVersion : null,
+      androidMinSdkVersion:
+          isAndroid ? int.parse(Environment.minSdkVersion) : null,
+      javaHome: isAndroid ? Environment.javaHome : null,
+      ohosSdkHome: Environment.ohosSdkHome,
+    );
   }
 }
 
@@ -223,7 +223,7 @@ class RustBuilder {
     if (sdkPath == null) {
       throw BuildException('OHOS SDK native path is not set');
     }
-    final exe = Platform.isWindows ? ".exe" : "";
+    final exe = Platform.isWindows ? '.exe' : '';
     final clangPath = path.join(sdkPath, 'llvm', 'bin', 'clang$exe');
     final sysroot = path.join(sdkPath, 'sysroot');
     String clangTarget;
@@ -251,7 +251,7 @@ class RustBuilder {
       rustFlagsEnvVar: rustFlags,
       linkerEnvVar: clangPath,
       'CC_${target.rust}': clangPath,
-      "AR_${target.rust}": path.join(sdkPath, "llvm", "bin", "llvm-ar$exe")
+      'AR_${target.rust}': path.join(sdkPath, 'llvm', 'bin', 'llvm-ar$exe'),
     };
   }
 }
