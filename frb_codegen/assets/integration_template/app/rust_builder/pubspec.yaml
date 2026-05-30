@@ -32,6 +32,4 @@ flutter:
         ffiPlugin: true
       windows:
         ffiPlugin: true
-      ohos:
-        ffiPlugin: true
-
+REPLACE_ME_OHOS_PLUGIN_PLATFORM
