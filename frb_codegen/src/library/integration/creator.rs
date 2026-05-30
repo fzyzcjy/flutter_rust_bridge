@@ -141,3 +141,22 @@ fn remove_files_in_dir(dir: &Path) -> anyhow::Result<()> {
     }
     Ok(())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::remove_files_in_dir;
+    use std::fs;
+
+    #[test]
+    fn test_remove_files_in_dir_rejects_nested_directories() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let root = temp_dir.path().join("root");
+        fs::create_dir_all(root.join("nested")).unwrap();
+        fs::write(root.join("top.txt"), "x").unwrap();
+        fs::write(root.join("nested").join("child.txt"), "x").unwrap();
+
+        let err = remove_files_in_dir(&root).unwrap_err();
+        let message = err.to_string();
+        assert!(message.contains("expected to contain only files"));
+    }
+}
