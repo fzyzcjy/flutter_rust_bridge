@@ -45,9 +45,8 @@ std::string Utf8FromUtf16(const wchar_t* utf16_string) {
   if (utf16_string == nullptr) {
     return std::string();
   }
-  // First, find the length of the string with a safe upper bound (CWE-126).
-  constexpr size_t kUnicodeStringMaxChars = 32767;
-  int input_length = static_cast<int>(wcsnlen(utf16_string, kUnicodeStringMaxChars));
+  // UNICODE_STRING_MAX_CHARS (32767) is the maximum length of a UNICODE_STRING.
+  int input_length = static_cast<int>(wcsnlen(utf16_string, UNICODE_STRING_MAX_CHARS));
   // Now use that bounded length to determine the required buffer size.
   // When an explicit length is passed, WideCharToMultiByte does not include
   // the null terminator in its returned size.
