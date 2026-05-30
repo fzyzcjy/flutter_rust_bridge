@@ -73,6 +73,38 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(resp.inHours, d.inHours);
   });
 
+  test('std::time::Duration', () async {
+    final d = Duration(hours: 4);
+    final resp = await stdTimeDurationTwinNormal(d: d);
+    expect(resp, d);
+  });
+
+  test('std::time::SystemTime', () async {
+    final date =
+        DateTime.fromMillisecondsSinceEpoch(1631297333000, isUtc: true);
+    final resp = await stdTimeSystemTimeTwinNormal(d: date);
+    expect(resp.isUtc, true);
+    expect(resp.millisecondsSinceEpoch, date.millisecondsSinceEpoch);
+  });
+
+  test('std::time::Instant', () async {
+    final date = DateTime.now().toUtc().add(Duration(seconds: 5));
+    final resp = await stdTimeInstantTwinNormal(d: date);
+    expect(resp.difference(date).abs() < Duration(seconds: 1), true);
+  });
+
+  test('tokio::time::Duration', () async {
+    final d = Duration(hours: 4);
+    final resp = await tokioTimeDurationTwinNormal(d: d);
+    expect(resp, d);
+  });
+
+  test('tokio::time::Instant', () async {
+    final date = DateTime.now().toUtc().add(Duration(seconds: 5));
+    final resp = await tokioTimeInstantTwinNormal(d: date);
+    expect(resp.difference(date).abs() < Duration(seconds: 1), true);
+  });
+
   test('List<Duration>', () async {
     final expected = [
       Duration(days: 1),

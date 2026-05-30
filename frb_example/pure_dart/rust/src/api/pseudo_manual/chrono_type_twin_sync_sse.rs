@@ -78,6 +78,46 @@ pub fn duration_twin_sync_sse(d: chrono::Duration) -> chrono::Duration {
 
 #[flutter_rust_bridge::frb(serialize)]
 #[flutter_rust_bridge::frb(sync)]
+pub fn std_time_duration_twin_sync_sse(d: std::time::Duration) -> std::time::Duration {
+    assert_eq!(d.as_secs(), 4 * 60 * 60);
+    d
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn std_time_system_time_twin_sync_sse(d: std::time::SystemTime) -> std::time::SystemTime {
+    assert_eq!(
+        d.duration_since(std::time::SystemTime::UNIX_EPOCH)
+            .unwrap()
+            .as_secs(),
+        1_631_297_333
+    );
+    d
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn std_time_instant_twin_sync_sse(d: std::time::Instant) -> std::time::Instant {
+    assert!(d > std::time::Instant::now());
+    d
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn tokio_time_duration_twin_sync_sse(d: tokio::time::Duration) -> tokio::time::Duration {
+    assert_eq!(d.as_secs(), 4 * 60 * 60);
+    d
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
+pub fn tokio_time_instant_twin_sync_sse(d: tokio::time::Instant) -> tokio::time::Instant {
+    assert!(d > tokio::time::Instant::now());
+    d
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+#[flutter_rust_bridge::frb(sync)]
 pub fn handle_timestamps_twin_sync_sse(
     timestamps: Vec<chrono::NaiveDateTime>,
     epoch: chrono::NaiveDateTime,

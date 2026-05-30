@@ -1,6 +1,6 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::codec::sse::ty::delegate::{
-    generate_set_to_list, generate_stream_sink_setup_and_serialize,
+    generate_set_to_list, generate_stream_sink_setup_and_serialize, is_duration,
 };
 use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::codec::cst::base::*;
@@ -83,18 +83,24 @@ impl WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGenerator
                 MirTypeDelegateTime::Utc
                 | MirTypeDelegateTime::Local
                 | MirTypeDelegateTime::NaiveDate
-                | MirTypeDelegateTime::NaiveDateTime => Acc {
+                | MirTypeDelegateTime::NaiveDateTime
+                | MirTypeDelegateTime::StdSystemTime
+                | MirTypeDelegateTime::StdInstant
+                | MirTypeDelegateTime::TokioInstant => Acc {
                     io: Some("return cst_encode_i_64(raw.microsecondsSinceEpoch);".into()),
                     web: Some(
                         "return cst_encode_i_64(BigInt.from(raw.millisecondsSinceEpoch));".into(),
                     ),
                     ..Default::default()
                 },
-                MirTypeDelegateTime::Duration => Acc {
+                _ if is_duration(mir) => Acc {
                     io: Some("return cst_encode_i_64(raw.inMicroseconds);".into()),
                     web: Some("return cst_encode_i_64(BigInt.from(raw.inMilliseconds));".into()),
                     ..Default::default()
                 },
+                // frb-coverage:ignore-start
+                _ => unreachable!(),
+                // frb-coverage:ignore-end
             },
             // MirTypeDelegate::TimeList(t) => Acc::distribute(Some(format!(
             //     "final ans = Int64List(raw.length);

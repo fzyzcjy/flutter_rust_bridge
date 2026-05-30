@@ -1,3 +1,6 @@
+use crate::codegen::generator::codec::sse::ty::delegate::{
+    encode_std_duration, encode_std_instant, encode_std_system_time, encode_tokio_instant,
+};
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::misc::{
     generate_impl_into_dart, generate_impl_into_into_dart,
@@ -6,7 +9,9 @@ use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::
     generate_enum_access_object_core, parse_wrapper_name_into_dart_name_and_self_path,
 };
 use crate::codegen::generator::wire::rust::spec_generator::codec::dco::encoder::ty::WireRustCodecDcoGeneratorEncoderTrait;
-use crate::codegen::ir::mir::ty::delegate::{MirTypeDelegate, MirTypeDelegatePrimitiveEnum};
+use crate::codegen::ir::mir::ty::delegate::{
+    MirTypeDelegate, MirTypeDelegatePrimitiveEnum, MirTypeDelegateTime,
+};
 use itertools::Itertools;
 
 impl WireRustCodecDcoGeneratorEncoderTrait for DelegateWireRustCodecDcoGenerator<'_> {
@@ -56,7 +61,36 @@ impl WireRustCodecDcoGeneratorEncoderTrait for DelegateWireRustCodecDcoGenerator
                         + &generate_impl_into_into_dart(&name, &Some(wrapper_name.clone())),
                 )
             }
+            MirTypeDelegate::Time(mir) => match mir {
+                MirTypeDelegateTime::StdSystemTime => Some(generate_impl_into_dart_for_time(
+                    "std::time::SystemTime",
+                    &encode_std_system_time("self.0"),
+                )),
+                MirTypeDelegateTime::StdInstant => Some(generate_impl_into_dart_for_time(
+                    "std::time::Instant",
+                    &encode_std_instant("self.0"),
+                )),
+                MirTypeDelegateTime::StdDuration => Some(generate_impl_into_dart_for_time(
+                    "std::time::Duration",
+                    &encode_std_duration("self.0"),
+                )),
+                MirTypeDelegateTime::TokioInstant => Some(generate_impl_into_dart_for_time(
+                    "tokio::time::Instant",
+                    &encode_tokio_instant("self.0"),
+                )),
+                _ => None,
+            },
             _ => None,
         }
     }
+}
+
+fn generate_impl_into_dart_for_time(name: &str, body: &str) -> String {
+    let wrapper_name = format!("FrbWrapper<{name}>");
+    let body = format!(
+        "let value: i64 = {body};
+        value.into_dart()"
+    );
+    generate_impl_into_dart(&wrapper_name, &body)
+        + &generate_impl_into_into_dart(name, &Some(wrapper_name))
 }

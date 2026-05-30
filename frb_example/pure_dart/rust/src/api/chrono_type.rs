@@ -58,6 +58,36 @@ pub fn duration_twin_normal(d: chrono::Duration) -> chrono::Duration {
     d
 }
 
+pub fn std_time_duration_twin_normal(d: std::time::Duration) -> std::time::Duration {
+    assert_eq!(d.as_secs(), 4 * 60 * 60);
+    d
+}
+
+pub fn std_time_system_time_twin_normal(d: std::time::SystemTime) -> std::time::SystemTime {
+    assert_eq!(
+        d.duration_since(std::time::SystemTime::UNIX_EPOCH)
+            .unwrap()
+            .as_secs(),
+        1_631_297_333
+    );
+    d
+}
+
+pub fn std_time_instant_twin_normal(d: std::time::Instant) -> std::time::Instant {
+    assert!(d > std::time::Instant::now());
+    d
+}
+
+pub fn tokio_time_duration_twin_normal(d: tokio::time::Duration) -> tokio::time::Duration {
+    assert_eq!(d.as_secs(), 4 * 60 * 60);
+    d
+}
+
+pub fn tokio_time_instant_twin_normal(d: tokio::time::Instant) -> tokio::time::Instant {
+    assert!(d > tokio::time::Instant::now());
+    d
+}
+
 pub fn handle_timestamps_twin_normal(
     timestamps: Vec<chrono::NaiveDateTime>,
     epoch: chrono::NaiveDateTime,

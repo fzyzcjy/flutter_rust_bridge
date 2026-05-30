@@ -66,6 +66,40 @@ pub async fn duration_twin_rust_async(d: chrono::Duration) -> chrono::Duration {
     d
 }
 
+pub async fn std_time_duration_twin_rust_async(d: std::time::Duration) -> std::time::Duration {
+    assert_eq!(d.as_secs(), 4 * 60 * 60);
+    d
+}
+
+pub async fn std_time_system_time_twin_rust_async(
+    d: std::time::SystemTime,
+) -> std::time::SystemTime {
+    assert_eq!(
+        d.duration_since(std::time::SystemTime::UNIX_EPOCH)
+            .unwrap()
+            .as_secs(),
+        1_631_297_333
+    );
+    d
+}
+
+pub async fn std_time_instant_twin_rust_async(d: std::time::Instant) -> std::time::Instant {
+    assert!(d > std::time::Instant::now());
+    d
+}
+
+pub async fn tokio_time_duration_twin_rust_async(
+    d: tokio::time::Duration,
+) -> tokio::time::Duration {
+    assert_eq!(d.as_secs(), 4 * 60 * 60);
+    d
+}
+
+pub async fn tokio_time_instant_twin_rust_async(d: tokio::time::Instant) -> tokio::time::Instant {
+    assert!(d > tokio::time::Instant::now());
+    d
+}
+
 pub async fn handle_timestamps_twin_rust_async(
     timestamps: Vec<chrono::NaiveDateTime>,
     epoch: chrono::NaiveDateTime,

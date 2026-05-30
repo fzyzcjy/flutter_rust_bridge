@@ -205,6 +205,115 @@
       "rust_async": false,
       "rust_call_code": null,
       "stream_dart_await": false
+    },
+    {
+      "accessor": null,
+      "arg_mode": "Named",
+      "codec_mode_pack": {
+        "dart2rust": "Cst",
+        "rust2dart": "Dco"
+      },
+      "comments": [],
+      "id": 5,
+      "impl_mode": "Normal",
+      "init_dart_code": null,
+      "initializer": false,
+      "inputs": [
+        {
+          "inner": {
+            "comments": [],
+            "default": null,
+            "is_final": true,
+            "is_rust_public": null,
+            "name": {
+              "dart_style": null,
+              "rust_style": "duration"
+            },
+            "settings": {
+              "is_in_mirrored_enum": false,
+              "skip_auto_accessors": false
+            },
+            "ty": {
+              "data": {
+                "Time": "StdDuration"
+              },
+              "safe_ident": "StdTime_StdDuration",
+              "type": "Delegate"
+            }
+          },
+          "needs_extend_lifetime": false,
+          "ownership_mode": "Owned"
+        },
+        {
+          "inner": {
+            "comments": [],
+            "default": null,
+            "is_final": true,
+            "is_rust_public": null,
+            "name": {
+              "dart_style": null,
+              "rust_style": "system_time"
+            },
+            "settings": {
+              "is_in_mirrored_enum": false,
+              "skip_auto_accessors": false
+            },
+            "ty": {
+              "data": {
+                "Time": "StdSystemTime"
+              },
+              "safe_ident": "StdTime_StdSystemTime",
+              "type": "Delegate"
+            }
+          },
+          "needs_extend_lifetime": false,
+          "ownership_mode": "Owned"
+        },
+        {
+          "inner": {
+            "comments": [],
+            "default": null,
+            "is_final": true,
+            "is_rust_public": null,
+            "name": {
+              "dart_style": null,
+              "rust_style": "instant"
+            },
+            "settings": {
+              "is_in_mirrored_enum": false,
+              "skip_auto_accessors": false
+            },
+            "ty": {
+              "data": {
+                "Time": "StdInstant"
+              },
+              "safe_ident": "StdTime_StdInstant",
+              "type": "Delegate"
+            }
+          },
+          "needs_extend_lifetime": false,
+          "ownership_mode": "Owned"
+        }
+      ],
+      "mode": "Normal",
+      "name": {
+        "dart_style": null,
+        "rust_style": "func_std_time"
+      },
+      "namespace": "crate::api",
+      "output": {
+        "error": null,
+        "normal": {
+          "data": "Unit",
+          "safe_ident": "unit",
+          "type": "Primitive"
+        }
+      },
+      "owner": "Function",
+      "rust_aop_after": null,
+      "rust_async": false,
+      "rust_call_code": null,
+      "stream_dart_await": false
     }
   ],
   "skips": [],
