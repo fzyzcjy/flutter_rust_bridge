@@ -19,6 +19,5 @@ fn main() -> anyhow::Result<()> {
     codegen::generate(
         Config::from_config_file("../flutter_rust_bridge.yaml")?.unwrap(),
         Default::default(),
-        false,
     )
 }

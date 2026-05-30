@@ -14,6 +14,7 @@ use crate::codegen::config::internal_config::InternalConfig;
 use crate::codegen::dumper::internal_config::ConfigDumpContent::Config as ContentConfig;
 use crate::codegen::dumper::Dumper;
 use crate::codegen::misc::GeneratorProgressBarPack;
+use crate::misc::FvmInstallMode;
 pub use config::config::{Config, MetaConfig};
 pub use dumper::internal_config::ConfigDumpContent;
 pub use ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
@@ -23,11 +24,12 @@ use log::debug;
 pub fn generate(
     config: Config,
     meta_config: MetaConfig,
-    skip_fvm_install: bool,
+    fvm_install_mode: FvmInstallMode,
 ) -> anyhow::Result<()> {
     debug!("config={config:?} meta_config={meta_config:?}");
 
-    let internal_config = InternalConfig::parse(&config, &meta_config)?;
+    let mut internal_config = InternalConfig::parse(&config, &meta_config)?;
+    internal_config.polisher.fvm_install_mode = fvm_install_mode;
     debug!("internal_config={internal_config:?}");
 
     let dumper = Dumper::new(&internal_config.dumper);
@@ -36,17 +38,13 @@ pub fn generate(
         .dump("config.json", &config)?;
 
     controller::run(&internal_config.controller, &|| {
-        generate_once(&internal_config, &dumper, skip_fvm_install)
+        generate_once(&internal_config, &dumper)
     })?;
 
     Ok(())
 }
 
-fn generate_once(
-    internal_config: &InternalConfig,
-    dumper: &Dumper,
-    skip_fvm_install: bool,
-) -> anyhow::Result<()> {
+fn generate_once(internal_config: &InternalConfig, dumper: &Dumper) -> anyhow::Result<()> {
     let progress_bar_pack = GeneratorProgressBarPack::new();
 
     dumper
@@ -77,7 +75,6 @@ fn generate_once(
         generator_output.dart_needs_json_serializable,
         &generator_output.output_texts.paths(),
         &progress_bar_pack,
-        skip_fvm_install,
     )?;
     drop(pb);
 

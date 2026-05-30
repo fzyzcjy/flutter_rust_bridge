@@ -24,19 +24,18 @@ pub(super) fn polish(
     needs_json_serializable: bool,
     output_paths: &[PathBuf],
     progress_bar_pack: &GeneratorProgressBarPack,
-    skip_fvm_install: bool,
 ) -> anyhow::Result<()> {
     execute_try_add_mod_to_lib(config);
     execute_duplicate_c_output(config)?;
     ensure_dependencies(config, needs_freezed, needs_json_serializable)?;
 
     warn_if_fail(
-        execute_build_runner(needs_freezed, config, progress_bar_pack, skip_fvm_install),
+        execute_build_runner(needs_freezed, config, progress_bar_pack),
         "execute_build_runner",
     );
     if config.dart_fix {
         warn_if_fail(
-            execute_dart_fix(config, progress_bar_pack, skip_fvm_install),
+            execute_dart_fix(config, progress_bar_pack),
             "execute_dart_fix",
         );
     }
@@ -44,7 +43,7 @@ pub(super) fn polish(
     // Even if formatting generated code fails, it is not a big problem, and our codegen should not fail.
     if config.dart_format {
         warn_if_fail(
-            execute_dart_format(config, progress_bar_pack, skip_fvm_install),
+            execute_dart_format(config, progress_bar_pack),
             "execute_dart_format",
         );
     }
@@ -56,13 +55,7 @@ pub(super) fn polish(
     }
 
     warn_if_fail(
-        auto_upgrade::execute(
-            progress_bar_pack,
-            &config.dart_root,
-            &config.rust_crate_dir,
-            config.enable_auto_upgrade,
-            skip_fvm_install,
-        ),
+        auto_upgrade::execute(progress_bar_pack, config),
         "auto_upgrade",
     );
 
@@ -127,35 +120,32 @@ fn execute_build_runner(
     needs_freezed: bool,
     config: &PolisherInternalConfig,
     progress_bar_pack: &GeneratorProgressBarPack,
-    skip_fvm_install: bool,
 ) -> anyhow::Result<()> {
     if !(needs_freezed && config.build_runner) {
         return Ok(());
     }
 
     let _pb = progress_bar_pack.polish_dart_build_runner.start();
-    dart_build_runner(&config.dart_root, skip_fvm_install)
+    dart_build_runner(&config.dart_root, config.fvm_install_mode)
 }
 
 fn execute_dart_fix(
     config: &PolisherInternalConfig,
     progress_bar_pack: &GeneratorProgressBarPack,
-    skip_fvm_install: bool,
 ) -> anyhow::Result<()> {
     let _pb = progress_bar_pack.polish_dart_fix.start();
-    dart_fix(&config.dart_output, skip_fvm_install)
+    dart_fix(&config.dart_output, config.fvm_install_mode)
 }
 
 fn execute_dart_format(
     config: &PolisherInternalConfig,
     progress_bar_pack: &GeneratorProgressBarPack,
-    skip_fvm_install: bool,
 ) -> anyhow::Result<()> {
     let _pb = progress_bar_pack.polish_dart_formatter.start();
     dart_format(
         &config.dart_output,
         config.dart_format_line_length,
-        skip_fvm_install,
+        config.fvm_install_mode,
     )
 }
 
