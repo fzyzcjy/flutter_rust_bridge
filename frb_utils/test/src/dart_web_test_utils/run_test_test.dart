@@ -9,7 +9,7 @@ void main() {
           'PUPPETEER_EXECUTABLE_PATH': '/tmp/puppeteer-chrome',
           'CHROME_EXECUTABLE': '/tmp/chrome-executable',
           'CHROME_BIN': '/tmp/chrome-bin',
-        }),
+        }, isInContainer: false),
         '/tmp/puppeteer-chrome',
       );
     });
@@ -19,18 +19,29 @@ void main() {
         browserExecutablePathFromEnvironment({
           'CHROME_EXECUTABLE': '/tmp/chrome-executable',
           'CHROME_BIN': '/tmp/chrome-bin',
-        }),
+        }, isInContainer: false),
         '/tmp/chrome-executable',
       );
     });
 
-    test('uses Chrome bin alias after ignoring blank values', () {
+    test('ignores Chrome bin alias outside containers', () {
       expect(
         browserExecutablePathFromEnvironment({
           'PUPPETEER_EXECUTABLE_PATH': ' ',
           'CHROME_EXECUTABLE': '',
           'CHROME_BIN': '/tmp/chrome-bin',
-        }),
+        }, isInContainer: false),
+        isNull,
+      );
+    });
+
+    test('uses Chrome bin alias inside containers', () {
+      expect(
+        browserExecutablePathFromEnvironment({
+          'PUPPETEER_EXECUTABLE_PATH': ' ',
+          'CHROME_EXECUTABLE': '',
+          'CHROME_BIN': '/tmp/chrome-bin',
+        }, isInContainer: true),
         '/tmp/chrome-bin',
       );
     });
