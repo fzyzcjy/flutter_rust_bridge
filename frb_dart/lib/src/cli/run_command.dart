@@ -95,13 +95,18 @@ Future<RunCommandOutput> runCommand(
 
 Future<void> _killProcessTree(int pid) async {
   if (Platform.isWindows) {
-    await Process.run('taskkill', ['/F', '/T', '/PID', '$pid']);
+    try {
+      await Process.run('taskkill', ['/F', '/T', '/PID', '$pid']);
+    } on ProcessException {
+      Process.killPid(pid, ProcessSignal.sigkill);
+    }
     return;
   }
 
-  for (final childPid in await _childProcessIds(pid)) {
-    await _killProcessTree(childPid);
-  }
+  await Future.wait([
+    for (final childPid in await _childProcessIds(pid))
+      _killProcessTree(childPid),
+  ]);
   Process.killPid(pid);
   await Future<void>.delayed(const Duration(milliseconds: 100));
   Process.killPid(pid, ProcessSignal.sigkill);
