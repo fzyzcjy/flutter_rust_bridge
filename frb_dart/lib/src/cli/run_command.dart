@@ -107,7 +107,11 @@ Future<void> _killProcessTree(int pid) async {
   }
 
   final pids = await _processTreeIds(pid);
-  if (![for (final pid in pids.reversed) Process.killPid(pid)].any((x) => x)) {
+  var didSignal = false;
+  for (final pid in pids.reversed) {
+    didSignal |= Process.killPid(pid);
+  }
+  if (!didSignal) {
     return;
   }
 
