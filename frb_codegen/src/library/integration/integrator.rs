@@ -2,9 +2,11 @@ use crate::integration::utils::{overlay_dir, replace_file_content};
 use crate::library::commands::cargo::cargo_fetch;
 use crate::library::commands::dart_fix::dart_fix;
 use crate::library::commands::dart_format::dart_format;
-use crate::library::commands::flutter::{flutter_pub_add, flutter_pub_get};
+use crate::library::commands::flutter::{
+    flutter_pub_add, flutter_pub_get, resolve_flutter_platforms,
+};
 use crate::misc::{FvmInstallMode, Template};
-use crate::utils::dart_repository::get_dart_package_name;
+use crate::utils::dart_repository::get_dart_package_name_and_rust_crate_name;
 use crate::utils::path_utils::find_dart_package_dir;
 use anyhow::Result;
 use include_dir::{include_dir, Dir};
@@ -26,6 +28,7 @@ pub struct IntegrateConfig {
     pub rust_crate_name: Option<String>,
     pub rust_crate_dir: String,
     pub template: Template,
+    pub platforms: Option<String>,
     pub fvm_install_mode: FvmInstallMode,
 }
 
@@ -35,16 +38,16 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     let dart_root = find_dart_package_dir(&env::current_dir()?)?;
     debug!("integrate dart_root={dart_root:?}");
 
-    let dart_package_name = get_dart_package_name(&dart_root)?;
-    let rust_crate_name = config
-        .rust_crate_name
-        .clone()
-        .unwrap_or(match &config.template {
-            Template::App => {
-                format!("rust_lib_{dart_package_name}")
-            }
-            Template::Plugin => dart_package_name.to_owned(),
-        });
+    let (dart_package_name, rust_crate_name) = get_dart_package_name_and_rust_crate_name(
+        &dart_root,
+        &config.rust_crate_name,
+        &config.template,
+    )?;
+    let platforms = resolve_flutter_platforms(
+        config.template,
+        config.platforms.clone(),
+        config.fvm_install_mode,
+    )?;
 
     info!("Overlay template onto project");
     let replacements = compute_replacements(&config, &dart_package_name, &rust_crate_name);
@@ -54,6 +57,7 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
         &dart_root,
         &config,
         None,
+        platforms.include_ohos,
     )?;
     let (dir, comment_out_files) = match &config.template {
         Template::App => (&TemplateDirs::APP, vec!["main.dart".to_string()]),
@@ -68,6 +72,7 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
         &dart_root,
         &config,
         Some(&comment_out_files),
+        platforms.include_ohos,
     )?;
 
     if config.enable_local_dependency && config.template == Template::Plugin {
@@ -134,6 +139,7 @@ fn execute_overlay_dir(
     dart_root: &Path,
     config: &IntegrateConfig,
     comment_out_files: Option<&[String]>,
+    include_ohos: bool,
 ) -> Result<()> {
     overlay_dir(
         current_reference_dir,
@@ -154,6 +160,7 @@ fn execute_overlay_dir(
                 path,
                 config.enable_write_lib,
                 config.enable_integration_test,
+                include_ohos,
             )
         },
     )
@@ -391,7 +398,16 @@ fn comment_out_existing_file_and_write_template(
     Some((path, [commented_existing_content.as_bytes(), src].concat()))
 }
 
-fn filter_file(path: &Path, enable_write_lib: bool, enable_integration_test: bool) -> bool {
+fn filter_file(
+    path: &Path,
+    enable_write_lib: bool,
+    enable_integration_test: bool,
+    include_ohos: bool,
+) -> bool {
+    if path.iter().contains(&OsStr::new("ohos")) && !include_ohos {
+        return false;
+    }
+
     if path.iter().contains(&OsStr::new("cargokit")) {
         return ![".git", ".github", "docs", "test"].contains(&file_name(path));
     }
@@ -425,6 +441,54 @@ fn filter_file(path: &Path, enable_write_lib: bool, enable_integration_test: boo
     }
 
     true
+}
+
+#[cfg(test)]
+mod filter_tests {
+    use super::filter_file;
+    use std::path::Path;
+
+    #[test]
+    fn test_filter_file_excludes_ohos_when_not_enabled() {
+        assert!(!filter_file(
+            Path::new("rust_builder/ohos/src/main/module.json5"),
+            true,
+            true,
+            false,
+        ));
+        assert!(!filter_file(
+            Path::new("ohos/src/main/module.json5"),
+            true,
+            true,
+            false,
+        ));
+    }
+
+    #[test]
+    fn test_filter_file_includes_ohos_when_enabled() {
+        assert!(filter_file(
+            Path::new("rust_builder/ohos/src/main/module.json5"),
+            true,
+            true,
+            true,
+        ));
+        assert!(filter_file(
+            Path::new("ohos/src/main/module.json5"),
+            true,
+            true,
+            true,
+        ));
+    }
+
+    #[test]
+    fn test_filter_file_no_write_lib_excludes_enabled_ohos_platform_shell() {
+        assert!(!filter_file(
+            Path::new("ohos/src/main/module.json5"),
+            false,
+            true,
+            true,
+        ));
+    }
 }
 
 fn compute_cargokit_comments(path: &Path) -> Option<String> {
