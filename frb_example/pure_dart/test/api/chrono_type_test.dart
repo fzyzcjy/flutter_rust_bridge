@@ -85,6 +85,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(resp.millisecondsSinceEpoch, date.millisecondsSinceEpoch);
   });
 
+  test('std::time::SystemTime before UNIX epoch', () async {
+    final date = DateTime.fromMicrosecondsSinceEpoch(-1000000000, isUtc: true);
+    final resp = await stdTimeSystemTimeBeforeEpochTwinNormal(d: date);
+    expect(resp.isUtc, true);
+    expect(resp.microsecondsSinceEpoch, date.microsecondsSinceEpoch);
+  });
+
   test('std::time::Instant', () async {
     final date = DateTime.now().toUtc().add(Duration(seconds: 5));
     final resp = await stdTimeInstantTwinNormal(d: date);

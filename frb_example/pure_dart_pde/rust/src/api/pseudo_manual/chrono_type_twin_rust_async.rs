@@ -83,6 +83,19 @@ pub async fn std_time_system_time_twin_rust_async(
     d
 }
 
+pub async fn std_time_system_time_before_epoch_twin_rust_async(
+    d: std::time::SystemTime,
+) -> std::time::SystemTime {
+    assert_eq!(
+        std::time::SystemTime::UNIX_EPOCH
+            .duration_since(d)
+            .unwrap()
+            .as_secs(),
+        1_000
+    );
+    d
+}
+
 pub async fn std_time_instant_twin_rust_async(d: std::time::Instant) -> std::time::Instant {
     assert!(d > std::time::Instant::now());
     d

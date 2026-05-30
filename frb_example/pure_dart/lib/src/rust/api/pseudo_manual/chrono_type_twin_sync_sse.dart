@@ -39,6 +39,11 @@ DateTime stdTimeSystemTimeTwinSyncSse({required DateTime d}) => RustLib
     .crateApiPseudoManualChronoTypeTwinSyncSseStdTimeSystemTimeTwinSyncSse(
         d: d);
 
+DateTime stdTimeSystemTimeBeforeEpochTwinSyncSse({required DateTime d}) => RustLib
+    .instance.api
+    .crateApiPseudoManualChronoTypeTwinSyncSseStdTimeSystemTimeBeforeEpochTwinSyncSse(
+        d: d);
+
 DateTime stdTimeInstantTwinSyncSse({required DateTime d}) => RustLib
     .instance.api
     .crateApiPseudoManualChronoTypeTwinSyncSseStdTimeInstantTwinSyncSse(d: d);

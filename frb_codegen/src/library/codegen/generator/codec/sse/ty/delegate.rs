@@ -323,14 +323,17 @@ pub(crate) fn decode_std_duration(value: &str) -> String {
 
 pub(crate) fn encode_std_system_time(value: &str) -> String {
     format!(
-        r#"{value}.duration_since(std::time::SystemTime::UNIX_EPOCH).expect("time is before UNIX_EPOCH").as_micros().try_into().expect("cannot get microseconds from time")"#
+        r#"match {value}.duration_since(std::time::SystemTime::UNIX_EPOCH) {{
+            Ok(duration) => duration.as_micros().try_into().expect("cannot get microseconds from time"),
+            Err(error) => -i64::try_from(error.duration().as_micros()).expect("cannot get microseconds from time"),
+        }}"#
     )
 }
 
 pub(crate) fn decode_std_system_time(value: &str) -> String {
     format!(
         r#"if {value} >= 0 {{
-            std::time::SystemTime::UNIX_EPOCH.checked_add(std::time::Duration::from_micros({value}.try_into().expect("invalid timestamp"))).expect("timestamp out of range")
+            std::time::SystemTime::UNIX_EPOCH.checked_add(std::time::Duration::from_micros({value}.unsigned_abs())).expect("timestamp out of range")
         }} else {{
             std::time::SystemTime::UNIX_EPOCH.checked_sub(std::time::Duration::from_micros({value}.unsigned_abs())).expect("timestamp out of range")
         }}"#
@@ -340,12 +343,13 @@ pub(crate) fn decode_std_system_time(value: &str) -> String {
 pub(crate) fn encode_std_instant(value: &str) -> String {
     format!(
         r#"{{
+            let value = {value};
             let now_instant = std::time::Instant::now();
             let now_system_time = std::time::SystemTime::now();
-            let system_time = if {value} >= now_instant {{
-                now_system_time.checked_add({value}.duration_since(now_instant)).expect("instant out of range")
+            let system_time = if value >= now_instant {{
+                now_system_time.checked_add(value.duration_since(now_instant)).expect("instant out of range")
             }} else {{
-                now_system_time.checked_sub(now_instant.duration_since({value})).expect("instant out of range")
+                now_system_time.checked_sub(now_instant.duration_since(value)).expect("instant out of range")
             }};
             {system_time}
         }}"#,

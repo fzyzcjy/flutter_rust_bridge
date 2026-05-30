@@ -50,6 +50,12 @@ Future<DateTime> stdTimeSystemTimeTwinRustAsyncSse({required DateTime d}) =>
         .crateApiPseudoManualChronoTypeTwinRustAsyncSseStdTimeSystemTimeTwinRustAsyncSse(
             d: d);
 
+Future<DateTime> stdTimeSystemTimeBeforeEpochTwinRustAsyncSse(
+        {required DateTime d}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinRustAsyncSseStdTimeSystemTimeBeforeEpochTwinRustAsyncSse(
+            d: d);
+
 Future<DateTime> stdTimeInstantTwinRustAsyncSse({required DateTime d}) => RustLib
     .instance.api
     .crateApiPseudoManualChronoTypeTwinRustAsyncSseStdTimeInstantTwinRustAsyncSse(

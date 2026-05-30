@@ -35,6 +35,11 @@ Future<Duration> stdTimeDurationTwinNormal({required Duration d}) =>
 Future<DateTime> stdTimeSystemTimeTwinNormal({required DateTime d}) =>
     RustLib.instance.api.crateApiChronoTypeStdTimeSystemTimeTwinNormal(d: d);
 
+Future<DateTime> stdTimeSystemTimeBeforeEpochTwinNormal(
+        {required DateTime d}) =>
+    RustLib.instance.api
+        .crateApiChronoTypeStdTimeSystemTimeBeforeEpochTwinNormal(d: d);
+
 Future<DateTime> stdTimeInstantTwinNormal({required DateTime d}) =>
     RustLib.instance.api.crateApiChronoTypeStdTimeInstantTwinNormal(d: d);
 

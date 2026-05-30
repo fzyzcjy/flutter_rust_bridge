@@ -40,6 +40,11 @@ Future<DateTime> stdTimeSystemTimeTwinSse({required DateTime d}) =>
     RustLib.instance.api
         .crateApiPseudoManualChronoTypeTwinSseStdTimeSystemTimeTwinSse(d: d);
 
+Future<DateTime> stdTimeSystemTimeBeforeEpochTwinSse({required DateTime d}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualChronoTypeTwinSseStdTimeSystemTimeBeforeEpochTwinSse(
+            d: d);
+
 Future<DateTime> stdTimeInstantTwinSse({required DateTime d}) =>
     RustLib.instance.api
         .crateApiPseudoManualChronoTypeTwinSseStdTimeInstantTwinSse(d: d);

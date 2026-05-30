@@ -75,6 +75,19 @@ pub fn std_time_system_time_twin_normal(d: std::time::SystemTime) -> std::time::
     d
 }
 
+pub fn std_time_system_time_before_epoch_twin_normal(
+    d: std::time::SystemTime,
+) -> std::time::SystemTime {
+    assert_eq!(
+        std::time::SystemTime::UNIX_EPOCH
+            .duration_since(d)
+            .unwrap()
+            .as_secs(),
+        1_000
+    );
+    d
+}
+
 pub fn std_time_instant_twin_normal(d: std::time::Instant) -> std::time::Instant {
     assert!(d > std::time::Instant::now());
     d
