@@ -89,14 +89,17 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(resp.millisecondsSinceEpoch, date.millisecondsSinceEpoch);
   });
 
-  test('std::time::SystemTime before UNIX epoch', () async {
+  test('std::time::SystemTime before UNIX epoch',
+      skip: skipWeb('wasm SystemTime does not support pre-epoch values'),
+      () async {
     final date = DateTime.fromMicrosecondsSinceEpoch(-1000000000, isUtc: true);
     final resp = await stdTimeSystemTimeBeforeEpochTwinSync(d: date);
     expect(resp.isUtc, true);
     expect(resp.microsecondsSinceEpoch, date.microsecondsSinceEpoch);
   });
 
-  test('std::time::Instant', () async {
+  test('std::time::Instant', skip: skipWeb('wasm Instant::now panics'),
+      () async {
     final date = DateTime.now().toUtc().add(Duration(seconds: 5));
     final resp = await stdTimeInstantTwinSync(d: date);
     expect(resp.difference(date).abs() < Duration(seconds: 1), true);
@@ -108,7 +111,8 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(resp, d);
   });
 
-  test('tokio::time::Instant', () async {
+  test('tokio::time::Instant', skip: skipWeb('wasm Instant::now panics'),
+      () async {
     final date = DateTime.now().toUtc().add(Duration(seconds: 5));
     final resp = await tokioTimeInstantTwinSync(d: date);
     expect(resp.difference(date).abs() < Duration(seconds: 1), true);
