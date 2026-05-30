@@ -26,7 +26,7 @@ pub fn flutter_create(
         "create".to_owned(),
         name.to_owned(),
     ]);
-    let platforms = resolve_flutter_platforms(template, platforms, fvm_install_mode)?;
+    let platforms = resolve_flutter_platforms(template, platforms)?;
     if let Some(o) = org {
         full_args.extend(["--org".to_owned(), o.to_owned()]);
     }
@@ -91,7 +91,6 @@ pub fn flutter_pub_get(path: &Path, fvm_install_mode: FvmInstallMode) -> anyhow:
 pub(crate) fn resolve_flutter_platforms(
     template: Template,
     platforms: Option<String>,
-    _fvm_install_mode: FvmInstallMode,
 ) -> anyhow::Result<FlutterPlatforms> {
     if let Some(value) = platforms {
         return Ok(FlutterPlatforms {
