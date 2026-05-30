@@ -100,24 +100,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(resp.microsecondsSinceEpoch, date.microsecondsSinceEpoch);
   });
 
-  test('std::time::Instant', skip: skipWeb('wasm Instant::now panics'),
-      () async {
-    final date = DateTime.now().toUtc().add(Duration(seconds: 5));
-    final resp = await stdTimeInstantTwinRustAsync(d: date);
-    expect(resp.difference(date).abs() < Duration(seconds: 1), true);
-  });
-
   test('tokio::time::Duration', () async {
     final d = Duration(hours: 4);
     final resp = await tokioTimeDurationTwinRustAsync(d: d);
     expect(resp, d);
-  });
-
-  test('tokio::time::Instant', skip: skipWeb('wasm Instant::now panics'),
-      () async {
-    final date = DateTime.now().toUtc().add(Duration(seconds: 5));
-    final resp = await tokioTimeInstantTwinRustAsync(d: date);
-    expect(resp.difference(date).abs() < Duration(seconds: 1), true);
   });
 
   test('List<Duration>', () async {

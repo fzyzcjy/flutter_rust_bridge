@@ -40,14 +40,8 @@ Future<DateTime> stdTimeSystemTimeBeforeEpochTwinNormal(
     RustLib.instance.api
         .crateApiChronoTypeStdTimeSystemTimeBeforeEpochTwinNormal(d: d);
 
-Future<DateTime> stdTimeInstantTwinNormal({required DateTime d}) =>
-    RustLib.instance.api.crateApiChronoTypeStdTimeInstantTwinNormal(d: d);
-
 Future<Duration> tokioTimeDurationTwinNormal({required Duration d}) =>
     RustLib.instance.api.crateApiChronoTypeTokioTimeDurationTwinNormal(d: d);
-
-Future<DateTime> tokioTimeInstantTwinNormal({required DateTime d}) =>
-    RustLib.instance.api.crateApiChronoTypeTokioTimeInstantTwinNormal(d: d);
 
 Future<List<Duration>> handleTimestampsTwinNormal(
         {required List<DateTime> timestamps, required DateTime epoch}) =>

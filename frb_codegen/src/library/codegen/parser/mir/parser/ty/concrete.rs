@@ -38,9 +38,7 @@ impl TypeParserWithContext<'_, '_, '_> {
             ("NaiveDateTime", []) if check_prefix("chrono") => Delegate(MirTypeDelegate::Time(MirTypeDelegateTime::NaiveDateTime)),
             ("DateTime", args) if check_prefix("chrono") => self.parse_datetime(args)?,
             ("SystemTime", []) if check_prefix("std::time") => Delegate(MirTypeDelegate::Time(MirTypeDelegateTime::StdSystemTime)),
-            ("Instant", []) if check_prefix("std::time") => Delegate(MirTypeDelegate::Time(MirTypeDelegateTime::StdInstant)),
             ("Duration", []) if check_prefix("std::time") => Delegate(MirTypeDelegate::Time(MirTypeDelegateTime::StdDuration)),
-            ("Instant", []) if check_prefix("tokio::time") => Delegate(MirTypeDelegate::Time(MirTypeDelegateTime::TokioInstant)),
             ("Duration", []) if check_prefix("tokio::time") => Delegate(MirTypeDelegate::Time(MirTypeDelegateTime::StdDuration)),
 
             ("Uuid", []) if check_prefix("uuid") => Delegate(MirTypeDelegate::Uuid),

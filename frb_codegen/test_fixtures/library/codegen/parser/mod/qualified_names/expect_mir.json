@@ -268,31 +268,6 @@
           },
           "needs_extend_lifetime": false,
           "ownership_mode": "Owned"
-        },
-        {
-          "inner": {
-            "comments": [],
-            "default": null,
-            "is_final": true,
-            "is_rust_public": null,
-            "name": {
-              "dart_style": null,
-              "rust_style": "instant"
-            },
-            "settings": {
-              "is_in_mirrored_enum": false,
-              "skip_auto_accessors": false
-            },
-            "ty": {
-              "data": {
-                "Time": "StdInstant"
-              },
-              "safe_ident": "StdTime_StdInstant",
-              "type": "Delegate"
-            }
-          },
-          "needs_extend_lifetime": false,
-          "ownership_mode": "Owned"
         }
       ],
       "mode": "Normal",

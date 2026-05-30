@@ -66,17 +66,9 @@ impl WireRustCodecDcoGeneratorEncoderTrait for DelegateWireRustCodecDcoGenerator
                     "std::time::SystemTime",
                     &encode_std_system_time_for_dco("self.0"),
                 )),
-                MirTypeDelegateTime::StdInstant => Some(generate_impl_into_dart_for_time(
-                    "std::time::Instant",
-                    &encode_std_instant_for_dco("self.0"),
-                )),
                 MirTypeDelegateTime::StdDuration => Some(generate_impl_into_dart_for_time(
                     "std::time::Duration",
                     &encode_std_duration_for_dco("self.0"),
-                )),
-                MirTypeDelegateTime::TokioInstant => Some(generate_impl_into_dart_for_time(
-                    "tokio::time::Instant",
-                    &encode_tokio_instant_for_dco("self.0"),
                 )),
                 _ => None,
             },
@@ -131,25 +123,4 @@ fn encode_std_system_time_for_dco(value: &str) -> String {
         }}"#,
         micros = encode_std_system_time(value)
     )
-}
-
-fn encode_std_instant_for_dco(value: &str) -> String {
-    format!(
-        r#"{{
-            let value = {value}.clone();
-            let now_instant = std::time::Instant::now();
-            let now_system_time = std::time::SystemTime::now();
-            let system_time = if value >= now_instant {{
-                now_system_time.checked_add(value.duration_since(now_instant)).expect("instant out of range")
-            }} else {{
-                now_system_time.checked_sub(now_instant.duration_since(value)).expect("instant out of range")
-            }};
-            {system_time}
-        }}"#,
-        system_time = encode_std_system_time_for_dco("system_time")
-    )
-}
-
-fn encode_tokio_instant_for_dco(value: &str) -> String {
-    encode_std_instant_for_dco(&format!("{value}.into_std()"))
 }

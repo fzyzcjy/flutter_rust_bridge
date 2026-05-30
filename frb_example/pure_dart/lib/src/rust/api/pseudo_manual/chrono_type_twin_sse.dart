@@ -45,17 +45,9 @@ Future<DateTime> stdTimeSystemTimeBeforeEpochTwinSse({required DateTime d}) =>
         .crateApiPseudoManualChronoTypeTwinSseStdTimeSystemTimeBeforeEpochTwinSse(
             d: d);
 
-Future<DateTime> stdTimeInstantTwinSse({required DateTime d}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualChronoTypeTwinSseStdTimeInstantTwinSse(d: d);
-
 Future<Duration> tokioTimeDurationTwinSse({required Duration d}) =>
     RustLib.instance.api
         .crateApiPseudoManualChronoTypeTwinSseTokioTimeDurationTwinSse(d: d);
-
-Future<DateTime> tokioTimeInstantTwinSse({required DateTime d}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualChronoTypeTwinSseTokioTimeInstantTwinSse(d: d);
 
 Future<List<Duration>> handleTimestampsTwinSse(
         {required List<DateTime> timestamps, required DateTime epoch}) =>

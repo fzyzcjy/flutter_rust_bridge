@@ -2025,9 +2025,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Duration dco_decode_StdTime_StdDuration(dynamic raw);
 
   @protected
-  DateTime dco_decode_StdTime_StdInstant(dynamic raw);
-
-  @protected
   DateTime dco_decode_StdTime_StdSystemTime(dynamic raw);
 
   @protected
@@ -2148,9 +2145,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   String dco_decode_String(dynamic raw);
-
-  @protected
-  DateTime dco_decode_TokioTime_TokioInstant(dynamic raw);
 
   @protected
   Issue2170Trait dco_decode_TraitDef_Issue2170Trait(dynamic raw);
@@ -6834,9 +6828,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   Duration sse_decode_StdTime_StdDuration(SseDeserializer deserializer);
 
   @protected
-  DateTime sse_decode_StdTime_StdInstant(SseDeserializer deserializer);
-
-  @protected
   DateTime sse_decode_StdTime_StdSystemTime(SseDeserializer deserializer);
 
   @protected
@@ -6976,9 +6967,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   String sse_decode_String(SseDeserializer deserializer);
-
-  @protected
-  DateTime sse_decode_TokioTime_TokioInstant(SseDeserializer deserializer);
 
   @protected
   BigInt sse_decode_U128(SseDeserializer deserializer);
@@ -12150,9 +12138,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_StdTime_StdDuration(Duration self, SseSerializer serializer);
 
   @protected
-  void sse_encode_StdTime_StdInstant(DateTime self, SseSerializer serializer);
-
-  @protected
   void sse_encode_StdTime_StdSystemTime(
       DateTime self, SseSerializer serializer);
 
@@ -12283,10 +12268,6 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_String(String self, SseSerializer serializer);
-
-  @protected
-  void sse_encode_TokioTime_TokioInstant(
-      DateTime self, SseSerializer serializer);
 
   @protected
   void sse_encode_U128(BigInt self, SseSerializer serializer);

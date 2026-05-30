@@ -88,18 +88,8 @@ pub fn std_time_system_time_before_epoch_twin_normal(
     d
 }
 
-pub fn std_time_instant_twin_normal(d: std::time::Instant) -> std::time::Instant {
-    assert!(d > std::time::Instant::now());
-    d
-}
-
 pub fn tokio_time_duration_twin_normal(d: tokio::time::Duration) -> tokio::time::Duration {
     assert_eq!(d.as_secs(), 4 * 60 * 60);
-    d
-}
-
-pub fn tokio_time_instant_twin_normal(d: tokio::time::Instant) -> tokio::time::Instant {
-    assert!(d > tokio::time::Instant::now());
     d
 }
 

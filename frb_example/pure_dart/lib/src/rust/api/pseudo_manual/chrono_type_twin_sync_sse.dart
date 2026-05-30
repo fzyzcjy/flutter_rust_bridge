@@ -44,18 +44,10 @@ DateTime stdTimeSystemTimeBeforeEpochTwinSyncSse({required DateTime d}) => RustL
     .crateApiPseudoManualChronoTypeTwinSyncSseStdTimeSystemTimeBeforeEpochTwinSyncSse(
         d: d);
 
-DateTime stdTimeInstantTwinSyncSse({required DateTime d}) => RustLib
-    .instance.api
-    .crateApiPseudoManualChronoTypeTwinSyncSseStdTimeInstantTwinSyncSse(d: d);
-
 Duration tokioTimeDurationTwinSyncSse({required Duration d}) => RustLib
     .instance.api
     .crateApiPseudoManualChronoTypeTwinSyncSseTokioTimeDurationTwinSyncSse(
         d: d);
-
-DateTime tokioTimeInstantTwinSyncSse({required DateTime d}) => RustLib
-    .instance.api
-    .crateApiPseudoManualChronoTypeTwinSyncSseTokioTimeInstantTwinSyncSse(d: d);
 
 List<Duration> handleTimestampsTwinSyncSse(
         {required List<DateTime> timestamps, required DateTime epoch}) =>

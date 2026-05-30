@@ -66,9 +66,7 @@ pub enum MirTypeDelegateTime {
     NaiveDateTime,
     Duration,
     StdSystemTime,
-    StdInstant,
     StdDuration,
-    TokioInstant,
 }
 
 pub struct MirTypeDelegateMap {
@@ -185,10 +183,9 @@ impl MirTypeTrait for MirTypeDelegate {
                 | MirTypeDelegateTime::NaiveDate
                 | MirTypeDelegateTime::NaiveDateTime
                 | MirTypeDelegateTime::Duration => format!("Chrono_{mir}"),
-                MirTypeDelegateTime::StdSystemTime
-                | MirTypeDelegateTime::StdInstant
-                | MirTypeDelegateTime::StdDuration => format!("StdTime_{mir}"),
-                MirTypeDelegateTime::TokioInstant => format!("TokioTime_{mir}"),
+                MirTypeDelegateTime::StdSystemTime | MirTypeDelegateTime::StdDuration => {
+                    format!("StdTime_{mir}")
+                }
             },
             // MirTypeDelegate::TimeList(mir) => format!("Chrono_{}List", mir),
             MirTypeDelegate::Uuid => "Uuid".to_owned(),
@@ -271,9 +268,7 @@ impl MirTypeTrait for MirTypeDelegate {
                 MirTypeDelegateTime::Utc => "chrono::DateTime::<chrono::Utc>",
                 MirTypeDelegateTime::Duration => "chrono::Duration",
                 MirTypeDelegateTime::StdSystemTime => "std::time::SystemTime",
-                MirTypeDelegateTime::StdInstant => "std::time::Instant",
                 MirTypeDelegateTime::StdDuration => "std::time::Duration",
-                MirTypeDelegateTime::TokioInstant => "tokio::time::Instant",
             }
             .to_owned(),
             // MirTypeDelegate::TimeList(mir) => match mir {

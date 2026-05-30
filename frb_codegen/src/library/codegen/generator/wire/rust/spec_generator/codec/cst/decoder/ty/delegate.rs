@@ -1,7 +1,6 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::codec::sse::ty::delegate::{
-    decode_std_duration, decode_std_instant, decode_std_system_time, decode_tokio_instant,
-    rust_decode_primitive_enum,
+    decode_std_duration, decode_std_system_time, rust_decode_primitive_enum,
 };
 use crate::codegen::generator::misc::is_js_value;
 use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
@@ -68,8 +67,6 @@ impl WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator
                     MirTypeDelegateTime::Utc => codegen_utc,
                     MirTypeDelegateTime::Local => codegen_local,
                     MirTypeDelegateTime::StdSystemTime => decode_std_system_time("self"),
-                    MirTypeDelegateTime::StdInstant => decode_std_instant("self"),
-                    MirTypeDelegateTime::TokioInstant => decode_tokio_instant("self"),
                     // frb-coverage:ignore-start
                     MirTypeDelegateTime::Duration
                     | MirTypeDelegateTime::StdDuration => unreachable!(),
@@ -79,8 +76,6 @@ impl WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator
                     common: Some(if matches!(
                         mir,
                         MirTypeDelegateTime::StdSystemTime
-                            | MirTypeDelegateTime::StdInstant
-                            | MirTypeDelegateTime::TokioInstant
                     ) {
                         codegen_conversion
                     } else {
@@ -169,12 +164,6 @@ impl WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator
                 }
                 MirTypeDelegateTime::StdSystemTime => {
                     decode_js_value_millis_once_then(&decode_std_system_time)
-                }
-                MirTypeDelegateTime::StdInstant => {
-                    decode_js_value_millis_once_then(&decode_std_instant)
-                }
-                MirTypeDelegateTime::TokioInstant => {
-                    decode_js_value_millis_once_then(&decode_tokio_instant)
                 }
                 _ => "CstDecode::<i64>::cst_decode(self).cst_decode()".into(),
             },

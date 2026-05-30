@@ -34,9 +34,7 @@ impl CodecSseTyTrait for DelegateCodecSseTy<'_> {
                     | MirTypeDelegateTime::Local
                     | MirTypeDelegateTime::NaiveDate
                     | MirTypeDelegateTime::NaiveDateTime
-                    | MirTypeDelegateTime::StdSystemTime
-                    | MirTypeDelegateTime::StdInstant
-                    | MirTypeDelegateTime::TokioInstant => {
+                    | MirTypeDelegateTime::StdSystemTime => {
                         "PlatformInt64Util.from(self.microsecondsSinceEpoch)".to_owned()
                     }
                     MirTypeDelegateTime::Duration | MirTypeDelegateTime::StdDuration => {
@@ -112,9 +110,7 @@ impl CodecSseTyTrait for DelegateCodecSseTy<'_> {
                             .to_owned()
                     }
                     MirTypeDelegateTime::StdSystemTime => encode_std_system_time("self"),
-                    MirTypeDelegateTime::StdInstant => encode_std_instant("self"),
                     MirTypeDelegateTime::StdDuration => encode_std_duration("self"),
-                    MirTypeDelegateTime::TokioInstant => encode_tokio_instant("self"),
                 },
                 MirTypeDelegate::Uuid => "self.as_bytes().to_vec()".to_owned(),
                 MirTypeDelegate::SerdeJsonValue => {
@@ -176,9 +172,7 @@ impl CodecSseTyTrait for DelegateCodecSseTy<'_> {
                         | MirTypeDelegateTime::Local
                         | MirTypeDelegateTime::NaiveDate
                         | MirTypeDelegateTime::NaiveDateTime
-                        | MirTypeDelegateTime::StdSystemTime
-                        | MirTypeDelegateTime::StdInstant
-                        | MirTypeDelegateTime::TokioInstant => {
+                        | MirTypeDelegateTime::StdSystemTime => {
                             format!(
                             "DateTime.fromMicrosecondsSinceEpoch(inner.toInt(), isUtc: {is_utc})",
                             is_utc = is_dart_datetime_utc(mir),
@@ -239,9 +233,7 @@ impl CodecSseTyTrait for DelegateCodecSseTy<'_> {
                             "chrono::Duration::microseconds(inner)".to_owned()
                         }
                         MirTypeDelegateTime::StdSystemTime => decode_std_system_time("inner"),
-                        MirTypeDelegateTime::StdInstant => decode_std_instant("inner"),
                         MirTypeDelegateTime::StdDuration => decode_std_duration("inner"),
-                        MirTypeDelegateTime::TokioInstant => decode_tokio_instant("inner"),
                     }
                 }
                 MirTypeDelegate::Uuid => {
@@ -299,8 +291,6 @@ pub(crate) fn is_dart_datetime_utc(mir: &MirTypeDelegateTime) -> bool {
             | MirTypeDelegateTime::NaiveDate
             | MirTypeDelegateTime::Utc
             | MirTypeDelegateTime::StdSystemTime
-            | MirTypeDelegateTime::StdInstant
-            | MirTypeDelegateTime::TokioInstant
     )
 }
 
@@ -343,50 +333,6 @@ pub(crate) fn decode_std_system_time(value: &str) -> String {
                 std::time::SystemTime::UNIX_EPOCH.checked_sub(std::time::Duration::from_micros(value.unsigned_abs())).expect("timestamp out of range")
             }}
         }}"#
-    )
-}
-
-pub(crate) fn encode_std_instant(value: &str) -> String {
-    format!(
-        r#"{{
-            let value = {value}.clone();
-            let now_instant = std::time::Instant::now();
-            let now_system_time = std::time::SystemTime::now();
-            let system_time = if value >= now_instant {{
-                now_system_time.checked_add(value.duration_since(now_instant)).expect("instant out of range")
-            }} else {{
-                now_system_time.checked_sub(now_instant.duration_since(value)).expect("instant out of range")
-            }};
-            {system_time}
-        }}"#,
-        system_time = encode_std_system_time("system_time")
-    )
-}
-
-pub(crate) fn decode_std_instant(value: &str) -> String {
-    format!(
-        r#"{{
-            let now_system_time = std::time::SystemTime::now();
-            let now_instant = std::time::Instant::now();
-            let target_system_time = {target_system_time};
-            if target_system_time >= now_system_time {{
-                now_instant.checked_add(target_system_time.duration_since(now_system_time).expect("invalid timestamp")).expect("instant out of range")
-            }} else {{
-                now_instant.checked_sub(now_system_time.duration_since(target_system_time).expect("invalid timestamp")).expect("instant out of range")
-            }}
-        }}"#,
-        target_system_time = decode_std_system_time(value)
-    )
-}
-
-pub(crate) fn encode_tokio_instant(value: &str) -> String {
-    encode_std_instant(&format!("{value}.into_std()"))
-}
-
-pub(crate) fn decode_tokio_instant(value: &str) -> String {
-    format!(
-        "tokio::time::Instant::from_std({})",
-        decode_std_instant(value)
     )
 }
 

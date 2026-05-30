@@ -84,9 +84,7 @@ impl WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGenerator
                 | MirTypeDelegateTime::Local
                 | MirTypeDelegateTime::NaiveDate
                 | MirTypeDelegateTime::NaiveDateTime
-                | MirTypeDelegateTime::StdSystemTime
-                | MirTypeDelegateTime::StdInstant
-                | MirTypeDelegateTime::TokioInstant => Acc {
+                | MirTypeDelegateTime::StdSystemTime => Acc {
                     io: Some("return cst_encode_i_64(raw.microsecondsSinceEpoch);".into()),
                     web: Some(
                         "return cst_encode_i_64(BigInt.from(raw.millisecondsSinceEpoch));".into(),

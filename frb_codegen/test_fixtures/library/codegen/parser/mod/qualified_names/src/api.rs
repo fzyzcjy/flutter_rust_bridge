@@ -3,7 +3,6 @@ pub fn func_1(chrono_duration: chrono::Duration, uuid_uuid: uuid::Uuid) {}
 pub fn func_std_time(
     duration: std::time::Duration,
     system_time: std::time::SystemTime,
-    instant: std::time::Instant,
 ) {
 }
 

@@ -100,20 +100,8 @@ pub fn std_time_system_time_before_epoch_twin_sse(
 }
 
 #[flutter_rust_bridge::frb(serialize)]
-pub fn std_time_instant_twin_sse(d: std::time::Instant) -> std::time::Instant {
-    assert!(d > std::time::Instant::now());
-    d
-}
-
-#[flutter_rust_bridge::frb(serialize)]
 pub fn tokio_time_duration_twin_sse(d: tokio::time::Duration) -> tokio::time::Duration {
     assert_eq!(d.as_secs(), 4 * 60 * 60);
-    d
-}
-
-#[flutter_rust_bridge::frb(serialize)]
-pub fn tokio_time_instant_twin_sse(d: tokio::time::Instant) -> tokio::time::Instant {
-    assert!(d > tokio::time::Instant::now());
     d
 }
 
