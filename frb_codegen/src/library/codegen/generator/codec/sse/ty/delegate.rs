@@ -325,7 +325,10 @@ pub(crate) fn encode_std_system_time(value: &str) -> String {
     format!(
         r#"match {value}.duration_since(std::time::SystemTime::UNIX_EPOCH) {{
             Ok(duration) => duration.as_micros().try_into().expect("cannot get microseconds from time"),
-            Err(error) => i64::try_from(-(error.duration().as_micros() as i128)).expect("cannot get microseconds from time"),
+            Err(error) => {{
+                let micros = i128::try_from(error.duration().as_micros()).expect("cannot get microseconds from time");
+                i64::try_from(-micros).expect("cannot get microseconds from time")
+            }},
         }}"#
     )
 }

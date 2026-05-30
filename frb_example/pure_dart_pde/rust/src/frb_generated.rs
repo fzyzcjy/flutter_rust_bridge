@@ -46599,8 +46599,11 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<std::time::Instant> {
                     .as_micros()
                     .try_into()
                     .expect("cannot get microseconds from time"),
-                Err(error) => i64::try_from(-(error.duration().as_micros() as i128))
-                    .expect("cannot get microseconds from time"),
+                Err(error) => {
+                    let micros = i128::try_from(error.duration().as_micros())
+                        .expect("cannot get microseconds from time");
+                    i64::try_from(-micros).expect("cannot get microseconds from time")
+                }
             }
         };
         value.into_dart()
@@ -46623,8 +46626,11 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<std::time::SystemTime> {
                 .as_micros()
                 .try_into()
                 .expect("cannot get microseconds from time"),
-            Err(error) => i64::try_from(-(error.duration().as_micros() as i128))
-                .expect("cannot get microseconds from time"),
+            Err(error) => {
+                let micros = i128::try_from(error.duration().as_micros())
+                    .expect("cannot get microseconds from time");
+                i64::try_from(-micros).expect("cannot get microseconds from time")
+            }
         };
         value.into_dart()
     }
@@ -46661,8 +46667,11 @@ impl flutter_rust_bridge::IntoDart for FrbWrapper<tokio::time::Instant> {
                     .as_micros()
                     .try_into()
                     .expect("cannot get microseconds from time"),
-                Err(error) => i64::try_from(-(error.duration().as_micros() as i128))
-                    .expect("cannot get microseconds from time"),
+                Err(error) => {
+                    let micros = i128::try_from(error.duration().as_micros())
+                        .expect("cannot get microseconds from time");
+                    i64::try_from(-micros).expect("cannot get microseconds from time")
+                }
             }
         };
         value.into_dart()
@@ -56924,8 +56933,11 @@ impl SseEncode for std::time::Instant {
                         .as_micros()
                         .try_into()
                         .expect("cannot get microseconds from time"),
-                    Err(error) => i64::try_from(-(error.duration().as_micros() as i128))
-                        .expect("cannot get microseconds from time"),
+                    Err(error) => {
+                        let micros = i128::try_from(error.duration().as_micros())
+                            .expect("cannot get microseconds from time");
+                        i64::try_from(-micros).expect("cannot get microseconds from time")
+                    }
                 }
             },
             serializer,
@@ -56942,8 +56954,11 @@ impl SseEncode for std::time::SystemTime {
                     .as_micros()
                     .try_into()
                     .expect("cannot get microseconds from time"),
-                Err(error) => i64::try_from(-(error.duration().as_micros() as i128))
-                    .expect("cannot get microseconds from time"),
+                Err(error) => {
+                    let micros = i128::try_from(error.duration().as_micros())
+                        .expect("cannot get microseconds from time");
+                    i64::try_from(-micros).expect("cannot get microseconds from time")
+                }
             },
             serializer,
         );
@@ -57295,8 +57310,11 @@ impl SseEncode for tokio::time::Instant {
                         .as_micros()
                         .try_into()
                         .expect("cannot get microseconds from time"),
-                    Err(error) => i64::try_from(-(error.duration().as_micros() as i128))
-                        .expect("cannot get microseconds from time"),
+                    Err(error) => {
+                        let micros = i128::try_from(error.duration().as_micros())
+                            .expect("cannot get microseconds from time");
+                        i64::try_from(-micros).expect("cannot get microseconds from time")
+                    }
                 }
             },
             serializer,
