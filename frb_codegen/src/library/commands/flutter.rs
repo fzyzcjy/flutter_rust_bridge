@@ -6,11 +6,6 @@ use crate::misc::{FvmInstallMode, Template};
 use log::info;
 use std::path::Path;
 
-pub(crate) struct FlutterPlatforms {
-    pub(crate) value: String,
-    pub(crate) include_ohos: bool,
-}
-
 #[allow(clippy::vec_init_then_push)]
 pub fn flutter_create(
     name: &str,
@@ -35,13 +30,13 @@ pub fn flutter_create(
             "--template".to_owned(),
             "app".to_owned(),
             "--platforms".to_owned(),
-            platforms.value,
+            platforms,
         ]),
         Template::Plugin => full_args.extend([
             "--template".to_owned(),
             "plugin_ffi".to_owned(),
             "--platforms".to_owned(),
-            platforms.value,
+            platforms,
         ]),
     }
 
@@ -91,19 +86,13 @@ pub fn flutter_pub_get(path: &Path, fvm_install_mode: FvmInstallMode) -> anyhow:
 pub(crate) fn resolve_flutter_platforms(
     template: Template,
     platforms: Option<String>,
-) -> anyhow::Result<FlutterPlatforms> {
+) -> anyhow::Result<String> {
     if let Some(value) = platforms {
-        return Ok(FlutterPlatforms {
-            include_ohos: platform_list_contains_ohos(&value),
-            value,
-        });
+        return Ok(value);
     }
 
     let include_ohos = is_ohos_flutter().unwrap_or(false);
-    Ok(FlutterPlatforms {
-        value: default_flutter_platforms(template, include_ohos),
-        include_ohos,
-    })
+    Ok(default_flutter_platforms(template, include_ohos))
 }
 
 #[allow(clippy::vec_init_then_push)]
@@ -143,7 +132,7 @@ fn default_flutter_platforms(template: Template, include_ohos: bool) -> String {
     )
 }
 
-fn platform_list_contains_ohos(platforms: &str) -> bool {
+pub(crate) fn platform_list_contains_ohos(platforms: &str) -> bool {
     platforms
         .split(',')
         .any(|platform| platform.trim().eq_ignore_ascii_case("ohos"))
