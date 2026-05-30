@@ -45,7 +45,7 @@ abstract class BaseEntrypoint<
     BaseHandler? handler,
     ExternalLibrary? externalLibrary,
     bool forceSameCodegenVersion = true,
-    bool enableRustToDartLogging = false,
+    bool enableRustToDartLogging = true,
   }) async {
     if (__state != null) {
       throw StateError('Should not initialize flutter_rust_bridge twice');
