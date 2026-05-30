@@ -14,10 +14,15 @@ ENV PIP_BREAK_SYSTEM_PACKAGES=1
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
+    clang \
     cmake \
     ninja-build \
     pkg-config \
     libclang-dev \
+    libgtk-3-dev \
+    liblzma-dev \
+    libstdc++-12-dev \
+    mesa-utils \
     python3-pip \
     xz-utils \
     && rm -rf /var/lib/apt/lists/*
@@ -30,11 +35,14 @@ RUN mkdir -p /etc/pip && \
 SHELL ["/bin/bash", "-c"]
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain ${RUST_VERSION} && \
     export PATH="$HOME/.cargo/bin:$PATH" && \
-    rustup component add rustfmt clippy && \
+    rustup component add rustfmt clippy llvm-tools-preview && \
     rustup target add wasm32-unknown-unknown && \
     rustup toolchain install "nightly-${RUST_NIGHTLY_VERSION}" && \
-    rustup component add rust-src --toolchain "nightly-${RUST_NIGHTLY_VERSION}" && \
-    rustup target add wasm32-unknown-unknown --toolchain "nightly-${RUST_NIGHTLY_VERSION}"
+    rustup component add rust-src llvm-tools-preview --toolchain "nightly-${RUST_NIGHTLY_VERSION}" && \
+    rustup target add wasm32-unknown-unknown --toolchain "nightly-${RUST_NIGHTLY_VERSION}" && \
+    rustup toolchain install nightly && \
+    rustup component add rust-src --toolchain nightly && \
+    rustup target add wasm32-unknown-unknown --toolchain nightly
 ENV PATH="/root/.cargo/bin:${PATH}"
 
 # Install Node.js and npm from official multi-arch binaries.
@@ -61,7 +69,21 @@ ARG PLAYWRIGHT_VERSION=1.59.1
 ENV PLAYWRIGHT_BROWSERS_PATH=/opt/ms-playwright
 RUN npm install -g "playwright@${PLAYWRIGHT_VERSION}" && \
     playwright install --with-deps chromium && \
-    ln -s "$(find "${PLAYWRIGHT_BROWSERS_PATH}" -path "*/chrome-linux*/chrome" -type f | head -n 1)" /usr/bin/google-chrome
+    ln -s "$(find "${PLAYWRIGHT_BROWSERS_PATH}" -path "*/chrome-linux*/chrome" -type f | head -n 1)" /usr/bin/google-chrome && \
+    CHROMIUM_VERSION="$(node -e "const b=require('/usr/local/lib/node_modules/playwright/node_modules/playwright-core/browsers.json'); console.log(b.browsers.find(x=>x.name==='chromium').browserVersion)")" && \
+    ARCH="$(dpkg --print-architecture)" && \
+    case "$ARCH" in \
+        amd64) \
+            CHROMEDRIVER_PLATFORM="linux64" && \
+            curl -fsSL \
+                "https://storage.googleapis.com/chrome-for-testing-public/${CHROMIUM_VERSION}/${CHROMEDRIVER_PLATFORM}/chromedriver-${CHROMEDRIVER_PLATFORM}.zip" \
+                -o /tmp/chromedriver.zip && \
+            unzip -q /tmp/chromedriver.zip -d /tmp && \
+            install -m 0755 "/tmp/chromedriver-${CHROMEDRIVER_PLATFORM}/chromedriver" /usr/local/bin/chromedriver && \
+            rm -rf /tmp/chromedriver.zip "/tmp/chromedriver-${CHROMEDRIVER_PLATFORM}" ;; \
+        arm64) echo "Chrome for Testing does not provide linux-arm64 chromedriver for ${CHROMIUM_VERSION}" ;; \
+        *) echo "Unsupported architecture: $ARCH" >&2; exit 1 ;; \
+    esac
 ENV CHROME_BIN=/usr/bin/google-chrome
 
 # Working directory
@@ -75,11 +97,14 @@ RUN flutter --version && \
     rustup toolchain list | grep "nightly-${RUST_NIGHTLY_VERSION}" && \
     rustup target list --installed | grep wasm32-unknown-unknown && \
     rustup target list --toolchain "nightly-${RUST_NIGHTLY_VERSION}" --installed | grep wasm32-unknown-unknown && \
+    rustup component list --installed | grep llvm-tools && \
+    rustup component list --toolchain nightly --installed | grep rust-src && \
     cargo expand --version && \
     cargo llvm-cov --version && \
     wasm-pack --version && \
     all-contributors --version && \
-    "${CHROME_BIN}" --version
+    "${CHROME_BIN}" --version && \
+    if command -v chromedriver >/dev/null; then chromedriver --version; else echo "chromedriver unavailable on $(dpkg --print-architecture)"; fi
 
 # Default command
 CMD ["bash"]
