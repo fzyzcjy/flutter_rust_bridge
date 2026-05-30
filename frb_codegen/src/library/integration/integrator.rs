@@ -342,32 +342,51 @@ mod tests {
     #[test]
     fn test_add_analyzer_exclude_prepends_analyzer_block() {
         let actual = add_analyzer_exclude(
-            "include: package:flutter_lints/flutter.yaml\n",
+            r#"include: package:flutter_lints/flutter.yaml
+"#,
             "cargokit/**",
         );
 
         assert_eq!(
             actual,
-            "analyzer:\n  exclude:\n    - cargokit/**\n\ninclude: package:flutter_lints/flutter.yaml\n"
+            r#"analyzer:
+  exclude:
+    - cargokit/**
+
+include: package:flutter_lints/flutter.yaml
+"#
         );
     }
 
     #[test]
     fn test_add_analyzer_exclude_preserves_existing_analyzer_options() {
         let actual = add_analyzer_exclude(
-            "analyzer:\n  errors:\n    prefer_const_constructors: ignore\ninclude: package:flutter_lints/flutter.yaml\n",
+            r#"analyzer:
+  errors:
+    prefer_const_constructors: ignore
+include: package:flutter_lints/flutter.yaml
+"#,
             "rust_builder/cargokit/**",
         );
 
         assert_eq!(
             actual,
-            "analyzer:\n  exclude:\n    - rust_builder/cargokit/**\n  errors:\n    prefer_const_constructors: ignore\ninclude: package:flutter_lints/flutter.yaml\n"
+            r#"analyzer:
+  exclude:
+    - rust_builder/cargokit/**
+  errors:
+    prefer_const_constructors: ignore
+include: package:flutter_lints/flutter.yaml
+"#
         );
     }
 
     #[test]
     fn test_add_analyzer_exclude_is_idempotent() {
-        let text = "analyzer:\n  exclude:\n    - rust_builder/cargokit/**\n";
+        let text = r#"analyzer:
+  exclude:
+    - rust_builder/cargokit/**
+"#;
 
         assert_eq!(add_analyzer_exclude(text, "rust_builder/cargokit/**"), text);
     }
@@ -375,26 +394,44 @@ mod tests {
     #[test]
     fn test_add_analyzer_exclude_appends_to_existing_exclude_block() {
         let actual = add_analyzer_exclude(
-            "analyzer:\n  exclude:\n    - build/**\n  errors:\n    avoid_print: ignore\n",
+            r#"analyzer:
+  exclude:
+    - build/**
+  errors:
+    avoid_print: ignore
+"#,
             "rust_builder/cargokit/**",
         );
 
         assert_eq!(
             actual,
-            "analyzer:\n  exclude:\n    - build/**\n    - rust_builder/cargokit/**\n  errors:\n    avoid_print: ignore\n"
+            r#"analyzer:
+  exclude:
+    - build/**
+    - rust_builder/cargokit/**
+  errors:
+    avoid_print: ignore
+"#
         );
     }
 
     #[test]
     fn test_add_analyzer_exclude_appends_to_terminal_exclude_block() {
         let actual = add_analyzer_exclude(
-            "analyzer:\n  exclude:\n    - build/**\n",
+            r#"analyzer:
+  exclude:
+    - build/**
+"#,
             "rust_builder/cargokit/**",
         );
 
         assert_eq!(
             actual,
-            "analyzer:\n  exclude:\n    - build/**\n    - rust_builder/cargokit/**\n"
+            r#"analyzer:
+  exclude:
+    - build/**
+    - rust_builder/cargokit/**
+"#
         );
     }
 
