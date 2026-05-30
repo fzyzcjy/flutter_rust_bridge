@@ -1,6 +1,7 @@
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
 import 'package:flutter_rust_bridge/src/loader/_common.dart';
 import 'package:flutter_rust_bridge/src/loader/loader.dart';
+import 'package:flutter_rust_bridge/src/logging/frb_logging.dart';
 import 'package:flutter_rust_bridge/src/main_components/api.dart';
 import 'package:flutter_rust_bridge/src/main_components/api_impl.dart';
 import 'package:flutter_rust_bridge/src/main_components/handler.dart';
@@ -87,7 +88,10 @@ abstract class BaseEntrypoint<
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @protected
   void disposeImpl() {
-    __state!.dispose();
+    kFrbDartLogging.dispose();
+    final state = __state;
+    __state = null;
+    state?.dispose();
   }
 
   /// {@macro flutter_rust_bridge.internal}
