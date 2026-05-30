@@ -130,9 +130,7 @@ fn remove_unnecessary_plugin_files(dart_root: &Path) -> anyhow::Result<()> {
 
     let ohos_dir = dart_root.join("ohos");
     if ohos_dir.exists() {
-        let src_dir = ohos_dir.join("src");
-        fs::remove_dir_all(src_dir)?;
-        remove_files_in_dir(&ohos_dir)?;
+        fs::remove_dir_all(&ohos_dir)?;
     }
     Ok(())
 }
@@ -219,12 +217,11 @@ mod tests {
         assert!(!dart_root.join("android").join("src").exists());
         assert!(!dart_root.join("ios").join("Classes").exists());
         assert!(!dart_root.join("macos").join("Classes").exists());
-        assert!(!dart_root.join("ohos").join("src").exists());
+        assert!(!dart_root.join("ohos").exists());
         assert!(dart_root.join("android").exists());
         assert!(dart_root.join("ios").exists());
         assert!(dart_root.join("linux").exists());
         assert!(dart_root.join("macos").exists());
         assert!(dart_root.join("windows").exists());
-        assert!(dart_root.join("ohos").exists());
     }
 }
