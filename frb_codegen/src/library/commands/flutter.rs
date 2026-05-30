@@ -11,6 +11,7 @@ pub fn flutter_create(
     name: &str,
     org: &Option<String>,
     template: Template,
+    platforms: Option<String>,
     fvm_install_mode: FvmInstallMode,
 ) -> anyhow::Result<()> {
     let mut full_args = vec![];
@@ -23,18 +24,22 @@ pub fn flutter_create(
     if let Some(o) = org {
         full_args.extend(["--org".to_owned(), o.to_owned()]);
     }
+    let platforms = platforms.unwrap_or_else(|| match template {
+        Template::App => "android,ios,linux,macos,web,windows".to_owned(),
+        Template::Plugin => "android,ios,linux,macos,windows".to_owned(),
+    });
     match template {
         Template::App => full_args.extend([
             "--template".to_owned(),
             "app".to_owned(),
             "--platforms".to_owned(),
-            "android,ios,linux,macos,web,windows".to_owned(),
+            platforms,
         ]),
         Template::Plugin => full_args.extend([
             "--template".to_owned(),
             "plugin_ffi".to_owned(),
             "--platforms".to_owned(),
-            "android,ios,linux,macos,windows".to_owned(),
+            platforms,
         ]),
     }
 

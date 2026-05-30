@@ -14,6 +14,7 @@ pub struct CreateConfig {
     pub rust_crate_name: Option<String>,
     pub rust_crate_dir: String,
     pub template: Template,
+    pub platforms: Option<String>,
     pub fvm_install_mode: FvmInstallMode,
 }
 
@@ -38,6 +39,7 @@ pub fn create(config: CreateConfig) -> anyhow::Result<()> {
         &config.name,
         &config.org,
         config.template,
+        config.platforms,
         config.fvm_install_mode,
     )?;
 
