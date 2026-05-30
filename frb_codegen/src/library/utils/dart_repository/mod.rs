@@ -25,16 +25,6 @@ pub(crate) fn get_dart_package_name(dart_root: &Path) -> anyhow::Result<String> 
         .to_owned())
 }
 
-pub(crate) fn get_rust_crate_name(
-    dart_root: &Path,
-    rust_crate_name: &Option<String>,
-    template: &Template,
-) -> anyhow::Result<String> {
-    let (_, rust_crate_name) =
-        get_dart_package_name_and_rust_crate_name(dart_root, rust_crate_name, template)?;
-    Ok(rust_crate_name)
-}
-
 pub(crate) fn get_dart_package_name_and_rust_crate_name(
     dart_root: &Path,
     rust_crate_name: &Option<String>,

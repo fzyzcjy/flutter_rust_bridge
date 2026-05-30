@@ -2,7 +2,6 @@ use crate::integration::integrator;
 use crate::integration::integrator::IntegrateConfig;
 use crate::library::commands::flutter::flutter_create;
 use crate::misc::{FvmInstallMode, Template};
-use crate::utils::dart_repository::get_rust_crate_name;
 use anyhow::{bail, ensure};
 use log::{debug, info};
 use std::path::Path;
@@ -48,10 +47,7 @@ pub fn create(config: CreateConfig) -> anyhow::Result<()> {
 
     match &config.template {
         Template::App => remove_unnecessary_app_files(&dart_root)?,
-        Template::Plugin => remove_unnecessary_plugin_files(
-            &dart_root,
-            get_rust_crate_name(&dart_root, &config.rust_crate_name, &config.template)?,
-        )?,
+        Template::Plugin => remove_unnecessary_plugin_files(&dart_root)?,
     }
 
     info!("Step: Inject flutter_rust_bridge related code");
@@ -82,10 +78,7 @@ fn remove_unnecessary_app_files(dart_root: &Path) -> anyhow::Result<()> {
 
 // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
 // frb-coverage:ignore-start
-fn remove_unnecessary_plugin_files(
-    dart_root: &Path,
-    rust_crate_name: String,
-) -> anyhow::Result<()> {
+fn remove_unnecessary_plugin_files(dart_root: &Path) -> anyhow::Result<()> {
     // frb-coverage:ignore-end
     let lib_dir = dart_root.join("lib");
     remove_files_in_dir(&lib_dir)?;
@@ -136,25 +129,7 @@ fn remove_unnecessary_plugin_files(
     let ohos_dir = dart_root.join("ohos");
     if ohos_dir.exists() {
         let src_dir = ohos_dir.join("src");
-        let main_dir = src_dir.join("main");
-        let cpp_dir = main_dir.join("cpp");
-        let types_dir = cpp_dir.join("types");
-        let lib_dir = types_dir.join(format!("lib{}", rust_crate_name));
-        remove_files_in_dir(&lib_dir)?;
-        fs::remove_dir(&lib_dir)?;
-
-        remove_files_in_dir(&types_dir)?;
-        fs::remove_dir(&types_dir)?;
-
-        remove_files_in_dir(&cpp_dir)?;
-        fs::remove_dir(&cpp_dir)?;
-
-        remove_files_in_dir(&main_dir)?;
-        fs::remove_dir(&main_dir)?;
-
-        remove_files_in_dir(&src_dir)?;
-        fs::remove_dir(&src_dir)?;
-
+        fs::remove_dir_all(src_dir)?;
         remove_files_in_dir(&ohos_dir)?;
     }
     Ok(())
@@ -235,7 +210,7 @@ mod tests {
         write_file(&ohos_lib.join("bridge.c"));
         write_file(&dart_root.join("ohos").join("top.txt"));
 
-        remove_unnecessary_plugin_files(dart_root, "my_crate".to_owned()).unwrap();
+        remove_unnecessary_plugin_files(dart_root).unwrap();
 
         assert!(!dart_root.join("ffigen.yaml").exists());
         assert!(!dart_root.join("src").exists());
