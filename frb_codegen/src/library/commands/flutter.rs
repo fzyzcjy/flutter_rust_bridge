@@ -115,9 +115,82 @@ pub fn is_ohos_flutter() -> anyhow::Result<bool> {
         anyhow::bail!("Command execution failed: {msg}");
     }
     let res = String::from_utf8_lossy(&out.stdout);
-    let is_ohos = res.to_lowercase().contains("ohos");
+    let is_ohos = flutter_create_help_supports_platform(&res, "ohos");
     if is_ohos {
         info!("current flutter support ohos platform.")
     }
     Ok(is_ohos)
+}
+
+fn flutter_create_help_supports_platform(help: &str, platform: &str) -> bool {
+    let mut in_platforms_option = false;
+
+    for line in help.lines() {
+        let trimmed = line.trim_start();
+        let starts_new_option =
+            trimmed.starts_with("--") || trimmed.starts_with('-') && trimmed.contains("--");
+        if in_platforms_option && starts_new_option && !trimmed.contains("--platforms") {
+            return false;
+        }
+
+        if trimmed.contains("--platforms") {
+            in_platforms_option = true;
+        }
+
+        if in_platforms_option && text_contains_platform_token(line, platform) {
+            return true;
+        }
+    }
+
+    false
+}
+
+fn text_contains_platform_token(text: &str, platform: &str) -> bool {
+    text.split(|character: char| !character.is_ascii_alphanumeric() && character != '_')
+        .any(|token| token.eq_ignore_ascii_case(platform))
+}
+
+#[cfg(test)]
+mod tests {
+    use super::flutter_create_help_supports_platform;
+
+    #[test]
+    fn test_flutter_create_help_supports_platform_on_platforms_line() {
+        let help = "
+Usage: flutter create <output directory>
+
+    --platforms    The platforms supported by this project.
+                   [android, ios, linux, macos, ohos, web, windows]
+    --org          The organization responsible for your new Flutter project.
+";
+
+        assert!(flutter_create_help_supports_platform(help, "ohos"));
+    }
+
+    #[test]
+    fn test_flutter_create_help_supports_platform_rejects_other_help_text() {
+        let help = "
+Usage: flutter create <output directory>
+
+    --description  Create an app for the ohos store.
+    --platforms    The platforms supported by this project.
+                   [android, ios, linux, macos, web, windows]
+    --org          The organization responsible for your new Flutter project.
+";
+
+        assert!(!flutter_create_help_supports_platform(help, "ohos"));
+    }
+
+    #[test]
+    fn test_flutter_create_help_supports_platform_stops_at_next_option() {
+        let help = "
+Usage: flutter create <output directory>
+
+    --platforms    The platforms supported by this project.
+                   [android, ios, linux, macos, web, windows]
+    --org          The organization responsible for your ohos project.
+";
+
+        assert!(!flutter_create_help_supports_platform(help, "ohos"));
+    }
 }
