@@ -6,6 +6,11 @@ use crate::misc::{FvmInstallMode, Template};
 use log::info;
 use std::path::Path;
 
+pub(crate) struct FlutterPlatforms {
+    pub(crate) value: String,
+    pub(crate) include_ohos: bool,
+}
+
 #[allow(clippy::vec_init_then_push)]
 pub fn flutter_create(
     name: &str,
@@ -21,21 +26,7 @@ pub fn flutter_create(
         "create".to_owned(),
         name.to_owned(),
     ]);
-    let platforms = platforms.unwrap_or_else(|| {
-        format!(
-            "android,ios,linux,macos,windows{}{}",
-            if is_ohos_flutter().unwrap_or(false) {
-                ",ohos"
-            } else {
-                ""
-            },
-            if matches!(template, Template::Plugin) {
-                ""
-            } else {
-                ",web"
-            }
-        )
-    });
+    let platforms = resolve_flutter_platforms(template, platforms, fvm_install_mode)?;
     if let Some(o) = org {
         full_args.extend(["--org".to_owned(), o.to_owned()]);
     }
@@ -44,13 +35,13 @@ pub fn flutter_create(
             "--template".to_owned(),
             "app".to_owned(),
             "--platforms".to_owned(),
-            platforms,
+            platforms.value,
         ]),
         Template::Plugin => full_args.extend([
             "--template".to_owned(),
             "plugin_ffi".to_owned(),
             "--platforms".to_owned(),
-            platforms,
+            platforms.value,
         ]),
     }
 
@@ -97,6 +88,25 @@ pub fn flutter_pub_get(path: &Path, fvm_install_mode: FvmInstallMode) -> anyhow:
     check_exit_code(&command_run!(call_shell[Some(path), None], *full_args)?)
 }
 
+pub(crate) fn resolve_flutter_platforms(
+    template: Template,
+    platforms: Option<String>,
+    _fvm_install_mode: FvmInstallMode,
+) -> anyhow::Result<FlutterPlatforms> {
+    if let Some(value) = platforms {
+        return Ok(FlutterPlatforms {
+            include_ohos: platform_list_contains_ohos(&value),
+            value,
+        });
+    }
+
+    let include_ohos = is_ohos_flutter().unwrap_or(false);
+    Ok(FlutterPlatforms {
+        value: default_flutter_platforms(template, include_ohos),
+        include_ohos,
+    })
+}
+
 #[allow(clippy::vec_init_then_push)]
 pub fn is_ohos_flutter() -> anyhow::Result<bool> {
     let mut full_args = vec![];
@@ -120,6 +130,24 @@ pub fn is_ohos_flutter() -> anyhow::Result<bool> {
         info!("current flutter support ohos platform.")
     }
     Ok(is_ohos)
+}
+
+fn default_flutter_platforms(template: Template, include_ohos: bool) -> String {
+    format!(
+        "android,ios,linux,macos,windows{}{}",
+        if include_ohos { ",ohos" } else { "" },
+        if matches!(template, Template::Plugin) {
+            ""
+        } else {
+            ",web"
+        }
+    )
+}
+
+fn platform_list_contains_ohos(platforms: &str) -> bool {
+    platforms
+        .split(',')
+        .any(|platform| platform.trim().eq_ignore_ascii_case("ohos"))
 }
 
 fn flutter_create_help_supports_platform(help: &str, platform: &str) -> bool {
@@ -152,7 +180,52 @@ fn text_contains_platform_token(text: &str, platform: &str) -> bool {
 
 #[cfg(test)]
 mod tests {
-    use super::flutter_create_help_supports_platform;
+    use super::{
+        default_flutter_platforms, flutter_create_help_supports_platform,
+        platform_list_contains_ohos,
+    };
+    use crate::misc::Template;
+
+    #[test]
+    fn test_platform_list_contains_ohos_with_whitespace() {
+        assert!(platform_list_contains_ohos("android, ohos"));
+    }
+
+    #[test]
+    fn test_platform_list_contains_ohos_is_case_insensitive() {
+        assert!(platform_list_contains_ohos("android,OHOS"));
+    }
+
+    #[test]
+    fn test_platform_list_contains_ohos_rejects_other_platforms() {
+        assert!(!platform_list_contains_ohos(
+            "android,ios,linux,macos,windows"
+        ));
+    }
+
+    #[test]
+    fn test_default_flutter_platforms_for_app() {
+        assert_eq!(
+            default_flutter_platforms(Template::App, false),
+            "android,ios,linux,macos,windows,web"
+        );
+        assert_eq!(
+            default_flutter_platforms(Template::App, true),
+            "android,ios,linux,macos,windows,ohos,web"
+        );
+    }
+
+    #[test]
+    fn test_default_flutter_platforms_for_plugin() {
+        assert_eq!(
+            default_flutter_platforms(Template::Plugin, false),
+            "android,ios,linux,macos,windows"
+        );
+        assert_eq!(
+            default_flutter_platforms(Template::Plugin, true),
+            "android,ios,linux,macos,windows,ohos"
+        );
+    }
 
     #[test]
     fn test_flutter_create_help_supports_platform_on_platforms_line() {
