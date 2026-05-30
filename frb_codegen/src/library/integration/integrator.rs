@@ -52,12 +52,8 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     let include_ohos = platform_list_contains_ohos(&platforms);
 
     info!("Overlay template onto project");
-    let replacements = compute_replacements(
-        &config,
-        &dart_package_name,
-        &rust_crate_name,
-        include_ohos,
-    );
+    let replacements =
+        compute_replacements(&config, &dart_package_name, &rust_crate_name, include_ohos);
     execute_overlay_dir(
         &TemplateDirs::SHARED,
         &replacements,
