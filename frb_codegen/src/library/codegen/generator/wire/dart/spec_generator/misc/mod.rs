@@ -294,7 +294,6 @@ mod tests {
             "api.firstInit();\napi.secondInit(\n  value: 42,\n);\n"
         );
     }
-
 }
 
 // fn generate_wire_delegate_functions(func: &ExternFunc) -> Acc<Vec<WireDartOutputCode>> {
