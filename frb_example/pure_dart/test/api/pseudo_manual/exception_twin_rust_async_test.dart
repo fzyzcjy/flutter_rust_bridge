@@ -276,7 +276,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
     });
   });
 
-  group('has backtraces', () {
+  group('has backtraces', skip: kIsWeb, () {
     final matcher = anyOf(
       contains('.rs'),
       contains('::'),

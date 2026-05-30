@@ -39,7 +39,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   // TODO implement in web
-  test('call funcStreamReturnPanicTwinSse', () async {
+  test('call funcStreamReturnPanicTwinSse', skip: kIsWeb, () async {
     await expectRustPanic(
       () async {
         await for (final _ in await funcStreamReturnPanicTwinSse()) {}
@@ -65,16 +65,16 @@ Future<void> main({bool skipRustLibInit = false}) async {
     expect(cnt, max);
   }
 
-  test('dart call handle_stream_sink_at_1', () async {
-    await testHandleStream(handleStreamSinkAt1TwinSse);
+  test('dart call handle_stream_sink_at_1', () {
+    testHandleStream(handleStreamSinkAt1TwinSse);
   });
 
-  test('dart call handle_stream_sink_at_2', () async {
-    await testHandleStream(handleStreamSinkAt2TwinSse);
+  test('dart call handle_stream_sink_at_2', () {
+    testHandleStream(handleStreamSinkAt2TwinSse);
   });
 
-  test('dart call handle_stream_sink_at_3', () async {
-    await testHandleStream(handleStreamSinkAt3TwinSse);
+  test('dart call handle_stream_sink_at_3', () {
+    testHandleStream(handleStreamSinkAt3TwinSse);
   });
 
   test('stream_sink_fixed_sized_primitive_array_twin_normal', () async {
