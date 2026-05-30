@@ -21,26 +21,24 @@ pub fn flutter_create(
         "create".to_owned(),
         name.to_owned(),
     ]);
-    let platforms = platforms.unwrap_or(format!(
-        "android,ios,linux,macos,windows{}{}",
-        if is_ohos_flutter().unwrap_or(false) {
-            ",ohos"
-        } else {
-            ""
-        },
-        if matches!(template, Template::Plugin) {
-            ""
-        } else {
-            ",web"
-        }
-    ));
+    let platforms = platforms.unwrap_or_else(|| {
+        format!(
+            "android,ios,linux,macos,windows{}{}",
+            if is_ohos_flutter().unwrap_or(false) {
+                ",ohos"
+            } else {
+                ""
+            },
+            if matches!(template, Template::Plugin) {
+                ""
+            } else {
+                ",web"
+            }
+        )
+    });
     if let Some(o) = org {
         full_args.extend(["--org".to_owned(), o.to_owned()]);
     }
-    let platforms = platforms.unwrap_or_else(|| match template {
-        Template::App => "android,ios,linux,macos,web,windows".to_owned(),
-        Template::Plugin => "android,ios,linux,macos,windows".to_owned(),
-    });
     match template {
         Template::App => full_args.extend([
             "--template".to_owned(),
