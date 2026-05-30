@@ -231,20 +231,16 @@ fn exclude_cargokit_from_outer_analyzer(dart_root: &Path, template: &Template) -
 }
 
 fn add_analyzer_exclude(text: &str, exclude: &str) -> String {
-    let default_list_item_indent = "    ";
-    if text
-        .lines()
-        .any(|line| is_analyzer_exclude_line(line, exclude))
-    {
+    let exclude_line = format!("    - {exclude}");
+    if text.lines().any(|line| line.trim() == format!("- {exclude}")) {
         return text.to_owned();
     }
 
     let mut lines = text.lines().map(String::from).collect_vec();
     let Some(analyzer_index) = lines
         .iter()
-        .position(|line| is_yaml_key_line(line, "analyzer"))
+        .position(|line| line.trim() == "analyzer:")
     else {
-        let exclude_line = format!("{default_list_item_indent}- {exclude}");
         return format!("analyzer:\n  exclude:\n{exclude_line}\n\n{text}");
     };
 
@@ -261,26 +257,20 @@ fn add_analyzer_exclude(text: &str, exclude: &str) -> String {
 
     if let Some(exclude_index) = lines[analyzer_index + 1..block_end]
         .iter()
-        .position(|line| is_yaml_key_line(line, "exclude"))
+        .position(|line| line.trim() == "exclude:")
         .map(|index| index + analyzer_index + 1)
     {
-        let list_item_indent = detect_yaml_list_item_indent(&lines[exclude_index + 1..block_end])
-            .unwrap_or_else(|| default_list_item_indent.to_owned());
-        let exclude_line = format!("{list_item_indent}- {exclude}");
         let insert_index = lines[exclude_index + 1..block_end]
             .iter()
             .position(|line| {
                 let trimmed = line.trim();
-                !trimmed.is_empty() && !line.starts_with(&list_item_indent)
+                !trimmed.is_empty() && !trimmed.starts_with("- ")
             })
             .map(|index| index + exclude_index + 1)
             .unwrap_or(block_end);
         lines.insert(insert_index, exclude_line);
     } else {
-        lines.insert(
-            analyzer_index + 1,
-            format!("{default_list_item_indent}- {exclude}"),
-        );
+        lines.insert(analyzer_index + 1, exclude_line);
         lines.insert(analyzer_index + 1, "  exclude:".to_owned());
     }
 
@@ -289,38 +279,6 @@ fn add_analyzer_exclude(text: &str, exclude: &str) -> String {
         output.push('\n');
     }
     output
-}
-
-fn is_yaml_key_line(line: &str, key: &str) -> bool {
-    let trimmed = line.trim();
-    let key_with_colon = format!("{key}:");
-    trimmed == key_with_colon
-        || trimmed
-            .strip_prefix(&key_with_colon)
-            .is_some_and(|rest| rest.trim().starts_with('#'))
-}
-
-fn is_analyzer_exclude_line(line: &str, exclude: &str) -> bool {
-    let Some(value) = line.trim().strip_prefix("- ") else {
-        return false;
-    };
-    let value_without_comment = value
-        .split_once(" #")
-        .map(|(before_comment, _)| before_comment)
-        .unwrap_or(value);
-    value_without_comment
-        .trim()
-        .trim_matches(|char| char == '\'' || char == '"')
-        == exclude
-}
-
-fn detect_yaml_list_item_indent(lines: &[String]) -> Option<String> {
-    lines.iter().find_map(|line| {
-        let trimmed = line.trim_start();
-        trimmed
-            .starts_with("- ")
-            .then(|| line[..line.len() - trimmed.len()].to_owned())
-    })
 }
 
 #[cfg(unix)]
@@ -415,26 +373,6 @@ mod tests {
     }
 
     #[test]
-    fn test_add_analyzer_exclude_is_idempotent_with_quoted_value() {
-        let text = "analyzer:\n  exclude:\n    - 'rust_builder/cargokit/**' # generated\n";
-
-        assert_eq!(add_analyzer_exclude(text, "rust_builder/cargokit/**"), text);
-    }
-
-    #[test]
-    fn test_add_analyzer_exclude_handles_analyzer_and_exclude_comments() {
-        let actual = add_analyzer_exclude(
-            "analyzer: # project analyzer settings\n  exclude: # generated files\n    - build/**\n",
-            "rust_builder/cargokit/**",
-        );
-
-        assert_eq!(
-            actual,
-            "analyzer: # project analyzer settings\n  exclude: # generated files\n    - build/**\n    - rust_builder/cargokit/**\n"
-        );
-    }
-
-    #[test]
     fn test_add_analyzer_exclude_appends_to_existing_exclude_block() {
         let actual = add_analyzer_exclude(
             "analyzer:\n  exclude:\n    - build/**\n  errors:\n    avoid_print: ignore\n",
@@ -457,19 +395,6 @@ mod tests {
         assert_eq!(
             actual,
             "analyzer:\n  exclude:\n    - build/**\n    - rust_builder/cargokit/**\n"
-        );
-    }
-
-    #[test]
-    fn test_add_analyzer_exclude_uses_existing_exclude_list_indent() {
-        let actual = add_analyzer_exclude(
-            "analyzer:\n  exclude:\n      - build/**\n  errors:\n    avoid_print: ignore\n",
-            "rust_builder/cargokit/**",
-        );
-
-        assert_eq!(
-            actual,
-            "analyzer:\n  exclude:\n      - build/**\n      - rust_builder/cargokit/**\n  errors:\n    avoid_print: ignore\n"
         );
     }
 
