@@ -68,7 +68,7 @@ ENV PLAYWRIGHT_BROWSERS_PATH=/opt/ms-playwright
 RUN npm install -g "playwright@${PLAYWRIGHT_VERSION}" && \
     playwright install --with-deps chromium && \
     ln -s "$(find "${PLAYWRIGHT_BROWSERS_PATH}" -path "*/chrome-linux*/chrome" -type f | head -n 1)" /usr/bin/google-chrome && \
-    CHROMIUM_VERSION="$(node -e "const p=require.resolve('playwright-core/browsers.json', {paths: ['/usr/local/lib/node_modules/playwright']}); const b=require(p); console.log(b.browsers.find(x=>x.name==='chromium').browserVersion)")" && \
+    CHROMIUM_VERSION="$(node -e "const b=require('/usr/local/lib/node_modules/playwright/node_modules/playwright-core/browsers.json'); console.log(b.browsers.find(x=>x.name==='chromium').browserVersion)")" && \
     ARCH="$(dpkg --print-architecture)" && \
     case "$ARCH" in \
         amd64) \
