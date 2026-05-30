@@ -46582,7 +46582,7 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<std::time::Duration>> for std:
 impl flutter_rust_bridge::IntoDart for FrbWrapper<std::time::Instant> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         let value: i64 = {
-            let value = self.0;
+            let value = self.0.clone();
             let now_instant = std::time::Instant::now();
             let now_system_time = std::time::SystemTime::now();
             let system_time = if value >= now_instant {
@@ -46644,7 +46644,7 @@ impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<std::time::SystemTime>>
 impl flutter_rust_bridge::IntoDart for FrbWrapper<tokio::time::Instant> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
         let value: i64 = {
-            let value = self.0.into_std();
+            let value = self.0.into_std().clone();
             let now_instant = std::time::Instant::now();
             let now_system_time = std::time::SystemTime::now();
             let system_time = if value >= now_instant {
@@ -56907,7 +56907,7 @@ impl SseEncode for std::time::Instant {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <i64>::sse_encode(
             {
-                let value = self;
+                let value = self.clone();
                 let now_instant = std::time::Instant::now();
                 let now_system_time = std::time::SystemTime::now();
                 let system_time = if value >= now_instant {
@@ -57278,7 +57278,7 @@ impl SseEncode for tokio::time::Instant {
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <i64>::sse_encode(
             {
-                let value = self.into_std();
+                let value = self.into_std().clone();
                 let now_instant = std::time::Instant::now();
                 let now_system_time = std::time::SystemTime::now();
                 let system_time = if value >= now_instant {

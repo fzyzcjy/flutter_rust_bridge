@@ -1,7 +1,7 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::codec::sse::ty::delegate::{
     decode_std_duration, decode_std_instant, decode_std_system_time, decode_tokio_instant,
-    is_duration, rust_decode_primitive_enum,
+    rust_decode_primitive_enum,
 };
 use crate::codegen::generator::misc::is_js_value;
 use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
@@ -48,14 +48,9 @@ impl WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator
                         ..Default::default()
                     };
                 }
-                if is_duration(mir) {
+                if mir == &MirTypeDelegateTime::StdDuration {
                     return Acc {
-                        io: Some(match mir {
-                            MirTypeDelegateTime::StdDuration => decode_std_duration("self"),
-                            // frb-coverage:ignore-start
-                            _ => unreachable!(),
-                            // frb-coverage:ignore-end
-                        }),
+                        io: Some(decode_std_duration("self")),
                         web: None,
                         ..Default::default()
                     };

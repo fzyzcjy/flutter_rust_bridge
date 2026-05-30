@@ -346,7 +346,7 @@ pub(crate) fn decode_std_system_time(value: &str) -> String {
 pub(crate) fn encode_std_instant(value: &str) -> String {
     format!(
         r#"{{
-            let value = {value};
+            let value = {value}.clone();
             let now_instant = std::time::Instant::now();
             let now_system_time = std::time::SystemTime::now();
             let system_time = if value >= now_instant {{
