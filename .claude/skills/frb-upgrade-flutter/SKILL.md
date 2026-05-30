@@ -16,6 +16,7 @@ Use this as the single-file workflow for Flutter stable bumps in `flutter_rust_b
    - `frb-docker` before changing `.devcontainer/**` or publishing the dev image.
    - `frb-code-generation` before accepting generated or scaffold drift.
    - `frb-cargokit` or `frb-cargokit-dev` before changing copied `cargokit` files.
+   - `frb-pr-review` before treating the upgrade PR as ready.
    - `frb-fix-ci` when CI starts failing.
 
 ## Non-Negotiables
@@ -192,8 +193,7 @@ Recommended minimum validation:
 For CI or Docker plumbing-only changes, dev image dry-run and focused metadata tests may be enough
 before opening the PR. Let CI cover the full matrix.
 
-Before treating the upgrade PR as ready, have a subagent run the test-weakening gate described in
-`sdev-pass-test` and address any unjustified weakening.
+Before treating the upgrade PR as ready, run the review gate in `frb-pr-review`.
 
 ### Step 8: Triage CI in Dependency Order
 
