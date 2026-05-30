@@ -231,6 +231,7 @@ fn exclude_cargokit_from_outer_analyzer(dart_root: &Path, template: &Template) -
 }
 
 fn add_analyzer_exclude(text: &str, exclude: &str) -> String {
+    // Use a targeted text edit so YAML comments, blank lines, and formatting stay unchanged.
     let exclude_line = format!("    - {exclude}");
     if text.lines().any(|line| line.trim() == format!("- {exclude}")) {
         return text.to_owned();
@@ -436,12 +437,78 @@ include: package:flutter_lints/flutter.yaml
     }
 
     #[test]
+    fn test_add_analyzer_exclude_preserves_missing_trailing_newline() {
+        let actual = add_analyzer_exclude(
+            r#"analyzer:
+  exclude:
+    - build/**"#,
+            "rust_builder/cargokit/**",
+        );
+
+        assert_eq!(
+            actual,
+            r#"analyzer:
+  exclude:
+    - build/**
+    - rust_builder/cargokit/**"#
+        );
+    }
+
+    #[test]
     fn test_exclude_cargokit_from_outer_analyzer_ignores_missing_file() {
         let temp_dir = tempfile::tempdir().unwrap();
 
         exclude_cargokit_from_outer_analyzer(temp_dir.path(), &Template::App).unwrap();
 
         assert!(!temp_dir.path().join("analysis_options.yaml").exists());
+    }
+
+    #[test]
+    fn test_exclude_cargokit_from_outer_analyzer_writes_app_exclude() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let path = temp_dir.path().join("analysis_options.yaml");
+        fs::write(
+            &path,
+            r#"include: package:flutter_lints/flutter.yaml
+"#,
+        )
+        .unwrap();
+
+        exclude_cargokit_from_outer_analyzer(temp_dir.path(), &Template::App).unwrap();
+
+        assert_eq!(
+            fs::read_to_string(path).unwrap(),
+            r#"analyzer:
+  exclude:
+    - rust_builder/cargokit/**
+
+include: package:flutter_lints/flutter.yaml
+"#
+        );
+    }
+
+    #[test]
+    fn test_exclude_cargokit_from_outer_analyzer_writes_plugin_exclude() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let path = temp_dir.path().join("analysis_options.yaml");
+        fs::write(
+            &path,
+            r#"include: package:flutter_lints/flutter.yaml
+"#,
+        )
+        .unwrap();
+
+        exclude_cargokit_from_outer_analyzer(temp_dir.path(), &Template::Plugin).unwrap();
+
+        assert_eq!(
+            fs::read_to_string(path).unwrap(),
+            r#"analyzer:
+  exclude:
+    - cargokit/**
+
+include: package:flutter_lints/flutter.yaml
+"#
+        );
     }
 
     #[test]
