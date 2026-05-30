@@ -13,6 +13,7 @@ use log::{debug, info, warn};
 use std::collections::HashMap;
 use std::env;
 use std::ffi::OsStr;
+use std::fs;
 use std::path::{Path, PathBuf};
 
 const REFRESH_CARGO_LOCK_ORDERING_ENV_VAR: &str = "FRB_REFRESH_CARGO_LOCK_ORDERING";
@@ -86,6 +87,8 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
 
     info!("Setup cargokit dependencies");
     setup_cargokit_dependencies(&dart_root, &config.template)?;
+
+    exclude_cargokit_from_outer_analyzer(&dart_root, &config.template)?;
 
     if config.enable_dart_fix {
         info!("Apply Dart fixes");
@@ -210,6 +213,116 @@ fn setup_cargokit_dependencies(dart_root: &Path, template: &Template) -> Result<
     flutter_pub_get(&build_tool_dir)
 }
 
+fn exclude_cargokit_from_outer_analyzer(dart_root: &Path, template: &Template) -> Result<()> {
+    let path = dart_root.join("analysis_options.yaml");
+    if !path.exists() {
+        return Ok(());
+    }
+
+    let exclude = match template {
+        Template::App => "rust_builder/cargokit/**",
+        Template::Plugin => "cargokit/**",
+    };
+    let text = fs::read_to_string(&path)?;
+    let text = add_analyzer_exclude(&text, exclude);
+    fs::write(path, text)?;
+
+    Ok(())
+}
+
+fn add_analyzer_exclude(text: &str, exclude: &str) -> String {
+    let default_list_item_indent = "    ";
+    if text
+        .lines()
+        .any(|line| is_analyzer_exclude_line(line, exclude))
+    {
+        return text.to_owned();
+    }
+
+    let mut lines = text.lines().map(String::from).collect_vec();
+    let Some(analyzer_index) = lines
+        .iter()
+        .position(|line| is_yaml_key_line(line, "analyzer"))
+    else {
+        let exclude_line = format!("{default_list_item_indent}- {exclude}");
+        return format!("analyzer:\n  exclude:\n{exclude_line}\n\n{text}");
+    };
+
+    let block_end = lines
+        .iter()
+        .enumerate()
+        .skip(analyzer_index + 1)
+        .find(|(_, line)| {
+            let trimmed = line.trim();
+            !trimmed.is_empty() && !line.starts_with(' ') && !line.starts_with('#')
+        })
+        .map(|(index, _)| index)
+        .unwrap_or(lines.len());
+
+    if let Some(exclude_index) = lines[analyzer_index + 1..block_end]
+        .iter()
+        .position(|line| is_yaml_key_line(line, "exclude"))
+        .map(|index| index + analyzer_index + 1)
+    {
+        let list_item_indent = detect_yaml_list_item_indent(&lines[exclude_index + 1..block_end])
+            .unwrap_or_else(|| default_list_item_indent.to_owned());
+        let exclude_line = format!("{list_item_indent}- {exclude}");
+        let insert_index = lines[exclude_index + 1..block_end]
+            .iter()
+            .position(|line| {
+                let trimmed = line.trim();
+                !trimmed.is_empty() && !line.starts_with(&list_item_indent)
+            })
+            .map(|index| index + exclude_index + 1)
+            .unwrap_or(block_end);
+        lines.insert(insert_index, exclude_line);
+    } else {
+        lines.insert(
+            analyzer_index + 1,
+            format!("{default_list_item_indent}- {exclude}"),
+        );
+        lines.insert(analyzer_index + 1, "  exclude:".to_owned());
+    }
+
+    let mut output = lines.join("\n");
+    if text.ends_with('\n') {
+        output.push('\n');
+    }
+    output
+}
+
+fn is_yaml_key_line(line: &str, key: &str) -> bool {
+    let trimmed = line.trim();
+    let key_with_colon = format!("{key}:");
+    trimmed == key_with_colon
+        || trimmed
+            .strip_prefix(&key_with_colon)
+            .is_some_and(|rest| rest.trim().starts_with('#'))
+}
+
+fn is_analyzer_exclude_line(line: &str, exclude: &str) -> bool {
+    let Some(value) = line.trim().strip_prefix("- ") else {
+        return false;
+    };
+    let value_without_comment = value
+        .split_once(" #")
+        .map(|(before_comment, _)| before_comment)
+        .unwrap_or(value);
+    value_without_comment
+        .trim()
+        .trim_matches(|char| char == '\'' || char == '"')
+        == exclude
+}
+
+fn detect_yaml_list_item_indent(lines: &[String]) -> Option<String> {
+    lines.iter().find_map(|line| {
+        let trimmed = line.trim_start();
+        trimmed
+            .starts_with("- ")
+            .then(|| line[..line.len() - trimmed.len()].to_owned())
+    })
+}
+
 #[cfg(unix)]
 fn set_permission_executable(path: &Path) -> Result<()> {
     use std::os::unix::fs::PermissionsExt;
@@ -236,9 +349,11 @@ fn set_permission_executable(path: &Path) -> Result<()> {
 #[cfg(all(test, unix))]
 mod tests {
     use super::{
-        refresh_cargo_lock_ordering, set_permission_executable, should_refresh_cargo_lock_ordering,
+        add_analyzer_exclude, exclude_cargokit_from_outer_analyzer, refresh_cargo_lock_ordering,
+        set_permission_executable, should_refresh_cargo_lock_ordering,
         REFRESH_CARGO_LOCK_ORDERING_ENV_VAR,
     };
+    use crate::misc::Template;
     use serial_test::serial;
     use std::fs;
     use std::os::unix::fs::PermissionsExt;
@@ -264,6 +379,107 @@ mod tests {
 
         let permissions = fs::metadata(&script_path).unwrap().permissions();
         assert_eq!(permissions.mode() & 0o777, 0o755);
+    }
+
+    #[test]
+    fn test_add_analyzer_exclude_prepends_analyzer_block() {
+        let actual = add_analyzer_exclude(
+            "include: package:flutter_lints/flutter.yaml\n",
+            "cargokit/**",
+        );
+
+        assert_eq!(
+            actual,
+            "analyzer:\n  exclude:\n    - cargokit/**\n\ninclude: package:flutter_lints/flutter.yaml\n"
+        );
+    }
+
+    #[test]
+    fn test_add_analyzer_exclude_preserves_existing_analyzer_options() {
+        let actual = add_analyzer_exclude(
+            "analyzer:\n  errors:\n    prefer_const_constructors: ignore\ninclude: package:flutter_lints/flutter.yaml\n",
+            "rust_builder/cargokit/**",
+        );
+
+        assert_eq!(
+            actual,
+            "analyzer:\n  exclude:\n    - rust_builder/cargokit/**\n  errors:\n    prefer_const_constructors: ignore\ninclude: package:flutter_lints/flutter.yaml\n"
+        );
+    }
+
+    #[test]
+    fn test_add_analyzer_exclude_is_idempotent() {
+        let text = "analyzer:\n  exclude:\n    - rust_builder/cargokit/**\n";
+
+        assert_eq!(add_analyzer_exclude(text, "rust_builder/cargokit/**"), text);
+    }
+
+    #[test]
+    fn test_add_analyzer_exclude_is_idempotent_with_quoted_value() {
+        let text = "analyzer:\n  exclude:\n    - 'rust_builder/cargokit/**' # generated\n";
+
+        assert_eq!(add_analyzer_exclude(text, "rust_builder/cargokit/**"), text);
+    }
+
+    #[test]
+    fn test_add_analyzer_exclude_handles_analyzer_and_exclude_comments() {
+        let actual = add_analyzer_exclude(
+            "analyzer: # project analyzer settings\n  exclude: # generated files\n    - build/**\n",
+            "rust_builder/cargokit/**",
+        );
+
+        assert_eq!(
+            actual,
+            "analyzer: # project analyzer settings\n  exclude: # generated files\n    - build/**\n    - rust_builder/cargokit/**\n"
+        );
+    }
+
+    #[test]
+    fn test_add_analyzer_exclude_appends_to_existing_exclude_block() {
+        let actual = add_analyzer_exclude(
+            "analyzer:\n  exclude:\n    - build/**\n  errors:\n    avoid_print: ignore\n",
+            "rust_builder/cargokit/**",
+        );
+
+        assert_eq!(
+            actual,
+            "analyzer:\n  exclude:\n    - build/**\n    - rust_builder/cargokit/**\n  errors:\n    avoid_print: ignore\n"
+        );
+    }
+
+    #[test]
+    fn test_add_analyzer_exclude_appends_to_terminal_exclude_block() {
+        let actual = add_analyzer_exclude(
+            "analyzer:\n  exclude:\n    - build/**\n",
+            "rust_builder/cargokit/**",
+        );
+
+        assert_eq!(
+            actual,
+            "analyzer:\n  exclude:\n    - build/**\n    - rust_builder/cargokit/**\n"
+        );
+    }
+
+    #[test]
+    fn test_add_analyzer_exclude_uses_existing_exclude_list_indent() {
+        let actual = add_analyzer_exclude(
+            "analyzer:\n  exclude:\n      - build/**\n  errors:\n    avoid_print: ignore\n",
+            "rust_builder/cargokit/**",
+        );
+
+        assert_eq!(
+            actual,
+            "analyzer:\n  exclude:\n      - build/**\n      - rust_builder/cargokit/**\n  errors:\n    avoid_print: ignore\n"
+        );
+    }
+
+    #[test]
+    fn test_exclude_cargokit_from_outer_analyzer_ignores_missing_file() {
+        let temp_dir = tempfile::tempdir().unwrap();
+
+        exclude_cargokit_from_outer_analyzer(temp_dir.path(), &Template::App).unwrap();
+
+        assert!(!temp_dir.path().join("analysis_options.yaml").exists());
     }
 
     #[test]
