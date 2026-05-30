@@ -169,7 +169,7 @@ fn generate_boilerplate(
                     BaseHandler? handler,
                     ExternalLibrary? externalLibrary,
                     bool forceSameCodegenVersion = true,
-                    bool enableRustToDartLogging = false,
+                    bool enableRustToDartLogging = true,
                   }}) async {{
                     await instance.initImpl(
                       api: api,

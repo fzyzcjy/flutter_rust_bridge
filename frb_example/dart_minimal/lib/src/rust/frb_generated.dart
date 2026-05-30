@@ -24,7 +24,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
     BaseHandler? handler,
     ExternalLibrary? externalLibrary,
     bool forceSameCodegenVersion = true,
-    bool enableRustToDartLogging = false,
+    bool enableRustToDartLogging = true,
   }) async {
     await instance.initImpl(
       api: api,
