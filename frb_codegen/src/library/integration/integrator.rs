@@ -304,9 +304,11 @@ fn set_permission_executable(path: &Path) -> Result<()> {
 #[cfg(all(test, unix))]
 mod tests {
     use super::{
-        add_analyzer_exclude, refresh_cargo_lock_ordering, set_permission_executable,
-        should_refresh_cargo_lock_ordering, REFRESH_CARGO_LOCK_ORDERING_ENV_VAR,
+        add_analyzer_exclude, exclude_cargokit_from_outer_analyzer, refresh_cargo_lock_ordering,
+        set_permission_executable, should_refresh_cargo_lock_ordering,
+        REFRESH_CARGO_LOCK_ORDERING_ENV_VAR,
     };
+    use crate::misc::Template;
     use serial_test::serial;
     use std::fs;
     use std::os::unix::fs::PermissionsExt;
@@ -365,6 +367,41 @@ mod tests {
         let text = "analyzer:\n  exclude:\n    - rust_builder/cargokit/**\n";
 
         assert_eq!(add_analyzer_exclude(text, "rust_builder/cargokit/**"), text);
+    }
+
+    #[test]
+    fn test_add_analyzer_exclude_appends_to_existing_exclude_block() {
+        let actual = add_analyzer_exclude(
+            "analyzer:\n  exclude:\n    - build/**\n  errors:\n    avoid_print: ignore\n",
+            "rust_builder/cargokit/**",
+        );
+
+        assert_eq!(
+            actual,
+            "analyzer:\n  exclude:\n    - build/**\n    - rust_builder/cargokit/**\n  errors:\n    avoid_print: ignore\n"
+        );
+    }
+
+    #[test]
+    fn test_add_analyzer_exclude_appends_to_terminal_exclude_block() {
+        let actual = add_analyzer_exclude(
+            "analyzer:\n  exclude:\n    - build/**\n",
+            "rust_builder/cargokit/**",
+        );
+
+        assert_eq!(
+            actual,
+            "analyzer:\n  exclude:\n    - build/**\n    - rust_builder/cargokit/**\n"
+        );
+    }
+
+    #[test]
+    fn test_exclude_cargokit_from_outer_analyzer_ignores_missing_file() {
+        let temp_dir = tempfile::tempdir().unwrap();
+
+        exclude_cargokit_from_outer_analyzer(temp_dir.path(), &Template::App).unwrap();
+
+        assert!(!temp_dir.path().join("analysis_options.yaml").exists());
     }
 
     #[test]

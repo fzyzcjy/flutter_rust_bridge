@@ -23,6 +23,9 @@ Use this as the single-file workflow for Flutter stable bumps in `flutter_rust_b
 - Keep `.github/workflows/ci.yaml` and `.github/workflows/post_release.yaml` toolchain env values in sync.
 - Treat `.devcontainer/Dockerfile` `ARG` values as the source of truth for dev image tags.
 - Dry-run the dev Docker image before depending on a new derived image tag in the PR.
+- After changing `.devcontainer/Dockerfile`, build a fresh local image from that Dockerfile and use a
+  container based on that fresh image for local validation. Do not keep using an older per-worktree
+  container whose Flutter, Dart, Rust, Android, or browser tooling may still be stale.
 - After the upgrade PR merges, trigger the dev Docker image publish workflow on `master`.
 - Do not hand-edit generated files as the final state.
 - Classify scaffold drift by source: integration template, Apple scaffold, Cargokit, or example output.
@@ -86,7 +89,9 @@ Update `.devcontainer/Dockerfile`:
 
 Update metadata tests that assert the derived dev image tag.
 
-Build and smoke-test locally when practical:
+Build and smoke-test locally when practical. If an old per-worktree container already exists, do not
+use it for this step; create a fresh container from the newly built image, or rebuild/recreate the
+per-worktree container so it uses the updated Dockerfile contents.
 
 ```shell
 docker build -f .devcontainer/Dockerfile -t frb-dev .devcontainer
@@ -169,6 +174,10 @@ a clean full `./frb_internal precommit-generate`.
 
 Read `frb-lint` and `frb-test` for exact command guidance. Tom's FRB environment runs tests locally,
 usually through the per-worktree Docker container.
+
+If the Flutter upgrade changed `.devcontainer/Dockerfile`, first ensure local validation is running
+inside the fresh image built in Step 4. Seeing an old Dart or Flutter version locally means the
+container is stale; recreate it before trusting any validation result.
 
 Recommended minimum validation:
 
