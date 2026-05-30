@@ -88,6 +88,12 @@ impl WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGenerator
             MirTypeDelegate::BigPrimitive(_) => {
                 "return BigInt.parse(raw);".to_owned()
             }
+            MirTypeDelegate::BigInt(_) => {
+                "return BigInt.parse(raw);".to_owned()
+            }
+            MirTypeDelegate::Decimal(_) => {
+                "return Decimal.parse(raw);".to_owned()
+            }
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => format!(r"return dco_decode_{}(raw);", mir.inner.safe_ident()),
             MirTypeDelegate::CustomSerDes(inner) => {
                 let body = inner.info.rust2dart.dart_code.replace(

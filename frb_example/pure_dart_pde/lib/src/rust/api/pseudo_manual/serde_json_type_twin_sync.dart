@@ -7,9 +7,10 @@ import 'dart:io';
 
 import '../../frb_generated.dart';
 import 'dart:convert';
+import 'package:decimal/decimal.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `fmt`, `fmt`
 
 Object? handleSerdeJsonValueTwinSync({required Object? val}) => RustLib
     .instance.api
@@ -37,6 +38,51 @@ FeatureSerdeJsonTwinSync handleNestedSerdeJsonValueTwinSync(
     RustLib.instance.api
         .crateApiPseudoManualSerdeJsonTypeTwinSyncHandleNestedSerdeJsonValueTwinSync(
             wrapper: wrapper);
+
+FeatureBigNumberTwinSync handleBigNumberTypesTwinSync(
+        {required FeatureBigNumberTwinSync input}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualSerdeJsonTypeTwinSyncHandleBigNumberTypesTwinSync(
+            input: input);
+
+class FeatureBigNumberTwinSync {
+  final BigInt signed;
+  final BigInt unsigned;
+  final BigInt reexportedSigned;
+  final BigInt reexportedUnsigned;
+  final Decimal decimal;
+  final Decimal bigDecimal;
+
+  const FeatureBigNumberTwinSync({
+    required this.signed,
+    required this.unsigned,
+    required this.reexportedSigned,
+    required this.reexportedUnsigned,
+    required this.decimal,
+    required this.bigDecimal,
+  });
+
+  @override
+  int get hashCode =>
+      signed.hashCode ^
+      unsigned.hashCode ^
+      reexportedSigned.hashCode ^
+      reexportedUnsigned.hashCode ^
+      decimal.hashCode ^
+      bigDecimal.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is FeatureBigNumberTwinSync &&
+          runtimeType == other.runtimeType &&
+          signed == other.signed &&
+          unsigned == other.unsigned &&
+          reexportedSigned == other.reexportedSigned &&
+          reexportedUnsigned == other.reexportedUnsigned &&
+          decimal == other.decimal &&
+          bigDecimal == other.bigDecimal;
+}
 
 class FeatureSerdeJsonTwinSync {
   final Object? data;

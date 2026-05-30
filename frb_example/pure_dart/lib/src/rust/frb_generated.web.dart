@@ -285,6 +285,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'deliberate_name_conflict.dart';
 import 'frb_generated.dart';
+import 'package:decimal/decimal.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
 import 'package:meta/meta.dart' as meta;
 import 'package:uuid/uuid.dart';
@@ -2658,6 +2659,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   String dco_decode_Backtrace(dynamic raw);
 
   @protected
+  Decimal dco_decode_Bigdecimal(dynamic raw);
+
+  @protected
   int dco_decode_CastedPrimitive_i_64(dynamic raw);
 
   @protected
@@ -3071,6 +3075,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  BigInt dco_decode_NumBigintBigInt(dynamic raw);
+
+  @protected
+  BigInt dco_decode_NumBigintBigUint(dynamic raw);
+
+  @protected
   MyAudioParamTwinNormal
       dco_decode_ProxyEnum_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_twin_normal_proxy_enum(
           dynamic raw);
@@ -3084,6 +3094,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   MyAudioParamTwinNormal
       dco_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal_param_two_twin_normal(
           dynamic raw);
+
+  @protected
+  Decimal dco_decode_RustDecimal(dynamic raw);
 
   @protected
   BoxDartDebugTwinMoi dco_decode_RustOpaque_BoxdynDartDebugTwinMoi(dynamic raw);
@@ -5690,6 +5703,31 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   double dco_decode_box_autoadd_f_64(dynamic raw);
 
   @protected
+  FeatureBigNumberTwinNormal
+      dco_decode_box_autoadd_feature_big_number_twin_normal(dynamic raw);
+
+  @protected
+  FeatureBigNumberTwinRustAsync
+      dco_decode_box_autoadd_feature_big_number_twin_rust_async(dynamic raw);
+
+  @protected
+  FeatureBigNumberTwinRustAsyncSse
+      dco_decode_box_autoadd_feature_big_number_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  FeatureBigNumberTwinSse dco_decode_box_autoadd_feature_big_number_twin_sse(
+      dynamic raw);
+
+  @protected
+  FeatureBigNumberTwinSync dco_decode_box_autoadd_feature_big_number_twin_sync(
+      dynamic raw);
+
+  @protected
+  FeatureBigNumberTwinSyncSse
+      dco_decode_box_autoadd_feature_big_number_twin_sync_sse(dynamic raw);
+
+  @protected
   FeatureChronoTwinNormal dco_decode_box_autoadd_feature_chrono_twin_normal(
       dynamic raw);
 
@@ -7658,6 +7696,28 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   F64Array16 dco_decode_f_64_array_16(dynamic raw);
+
+  @protected
+  FeatureBigNumberTwinNormal dco_decode_feature_big_number_twin_normal(
+      dynamic raw);
+
+  @protected
+  FeatureBigNumberTwinRustAsync dco_decode_feature_big_number_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  FeatureBigNumberTwinRustAsyncSse
+      dco_decode_feature_big_number_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  FeatureBigNumberTwinSse dco_decode_feature_big_number_twin_sse(dynamic raw);
+
+  @protected
+  FeatureBigNumberTwinSync dco_decode_feature_big_number_twin_sync(dynamic raw);
+
+  @protected
+  FeatureBigNumberTwinSyncSse dco_decode_feature_big_number_twin_sync_sse(
+      dynamic raw);
 
   @protected
   FeatureChronoTwinNormal dco_decode_feature_chrono_twin_normal(dynamic raw);
@@ -12118,6 +12178,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   String sse_decode_Backtrace(SseDeserializer deserializer);
 
   @protected
+  Decimal sse_decode_Bigdecimal(SseDeserializer deserializer);
+
+  @protected
   int sse_decode_CastedPrimitive_i_64(SseDeserializer deserializer);
 
   @protected
@@ -12487,6 +12550,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  BigInt sse_decode_NumBigintBigInt(SseDeserializer deserializer);
+
+  @protected
+  BigInt sse_decode_NumBigintBigUint(SseDeserializer deserializer);
+
+  @protected
   MyAudioParamTwinNormal
       sse_decode_ProxyEnum_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_twin_normal_proxy_enum(
           SseDeserializer deserializer);
@@ -12500,6 +12569,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   MyAudioParamTwinNormal
       sse_decode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal_param_two_twin_normal(
           SseDeserializer deserializer);
+
+  @protected
+  Decimal sse_decode_RustDecimal(SseDeserializer deserializer);
 
   @protected
   BoxDartDebugTwinMoi sse_decode_RustOpaque_BoxdynDartDebugTwinMoi(
@@ -15263,6 +15335,34 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   double sse_decode_box_autoadd_f_64(SseDeserializer deserializer);
 
   @protected
+  FeatureBigNumberTwinNormal
+      sse_decode_box_autoadd_feature_big_number_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  FeatureBigNumberTwinRustAsync
+      sse_decode_box_autoadd_feature_big_number_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  FeatureBigNumberTwinRustAsyncSse
+      sse_decode_box_autoadd_feature_big_number_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  FeatureBigNumberTwinSse sse_decode_box_autoadd_feature_big_number_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureBigNumberTwinSync sse_decode_box_autoadd_feature_big_number_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureBigNumberTwinSyncSse
+      sse_decode_box_autoadd_feature_big_number_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
   FeatureChronoTwinNormal sse_decode_box_autoadd_feature_chrono_twin_normal(
       SseDeserializer deserializer);
 
@@ -17479,6 +17579,31 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   F64Array16 sse_decode_f_64_array_16(SseDeserializer deserializer);
+
+  @protected
+  FeatureBigNumberTwinNormal sse_decode_feature_big_number_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureBigNumberTwinRustAsync sse_decode_feature_big_number_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureBigNumberTwinRustAsyncSse
+      sse_decode_feature_big_number_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  FeatureBigNumberTwinSse sse_decode_feature_big_number_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureBigNumberTwinSync sse_decode_feature_big_number_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureBigNumberTwinSyncSse sse_decode_feature_big_number_twin_sync_sse(
+      SseDeserializer deserializer);
 
   @protected
   FeatureChronoTwinNormal sse_decode_feature_chrono_twin_normal(
@@ -21020,6 +21145,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  String cst_encode_Bigdecimal(Decimal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.toString());
+  }
+
+  @protected
   String cst_encode_Char(String raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_String(raw);
@@ -21385,6 +21516,24 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_record_u_8_application_mode(
         raw.entries.map((e) => (e.key, e.value)).toList());
+  }
+
+  @protected
+  String cst_encode_NumBigintBigInt(BigInt raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.toString());
+  }
+
+  @protected
+  String cst_encode_NumBigintBigUint(BigInt raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.toString());
+  }
+
+  @protected
+  String cst_encode_RustDecimal(Decimal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.toString());
   }
 
   @protected
@@ -23041,6 +23190,27 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   double cst_encode_box_autoadd_f_64(double raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_f_64(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_feature_big_number_twin_normal(
+      FeatureBigNumberTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_feature_big_number_twin_normal(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_feature_big_number_twin_rust_async(
+      FeatureBigNumberTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_feature_big_number_twin_rust_async(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_feature_big_number_twin_sync(
+      FeatureBigNumberTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_feature_big_number_twin_sync(raw);
   }
 
   @protected
@@ -25473,6 +25643,47 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   JSAny cst_encode_f_64_array_16(F64Array16 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return Float64List.fromList(raw).jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_feature_big_number_twin_normal(
+      FeatureBigNumberTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [
+      cst_encode_NumBigintBigInt(raw.signed),
+      cst_encode_NumBigintBigUint(raw.unsigned),
+      cst_encode_NumBigintBigInt(raw.reexportedSigned),
+      cst_encode_NumBigintBigUint(raw.reexportedUnsigned),
+      cst_encode_RustDecimal(raw.decimal),
+      cst_encode_Bigdecimal(raw.bigDecimal)
+    ].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_feature_big_number_twin_rust_async(
+      FeatureBigNumberTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [
+      cst_encode_NumBigintBigInt(raw.signed),
+      cst_encode_NumBigintBigUint(raw.unsigned),
+      cst_encode_NumBigintBigInt(raw.reexportedSigned),
+      cst_encode_NumBigintBigUint(raw.reexportedUnsigned),
+      cst_encode_RustDecimal(raw.decimal),
+      cst_encode_Bigdecimal(raw.bigDecimal)
+    ].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_feature_big_number_twin_sync(FeatureBigNumberTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [
+      cst_encode_NumBigintBigInt(raw.signed),
+      cst_encode_NumBigintBigUint(raw.unsigned),
+      cst_encode_NumBigintBigInt(raw.reexportedSigned),
+      cst_encode_NumBigintBigUint(raw.reexportedUnsigned),
+      cst_encode_RustDecimal(raw.decimal),
+      cst_encode_Bigdecimal(raw.bigDecimal)
+    ].jsify()!;
   }
 
   @protected
@@ -32403,6 +32614,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_Backtrace(String self, SseSerializer serializer);
 
   @protected
+  void sse_encode_Bigdecimal(Decimal self, SseSerializer serializer);
+
+  @protected
   void sse_encode_CastedPrimitive_i_64(int self, SseSerializer serializer);
 
   @protected
@@ -32853,6 +33067,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       Map<int, ApplicationMode> self, SseSerializer serializer);
 
   @protected
+  void sse_encode_NumBigintBigInt(BigInt self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_NumBigintBigUint(BigInt self, SseSerializer serializer);
+
+  @protected
   void
       sse_encode_ProxyEnum_auto_ref_rust_opaque_flutter_rust_bridgefor_generated_rust_auto_opaque_inner_my_audio_param_twin_normal_proxy_enum(
           MyAudioParamTwinNormal self, SseSerializer serializer);
@@ -32866,6 +33086,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void
       sse_encode_ProxyVariant_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyNodeTwinNormal_param_two_twin_normal(
           MyAudioParamTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_RustDecimal(Decimal self, SseSerializer serializer);
 
   @protected
   void sse_encode_RustOpaque_BoxdynDartDebugTwinMoi(
@@ -35533,6 +35756,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_box_autoadd_f_64(double self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_feature_big_number_twin_normal(
+      FeatureBigNumberTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feature_big_number_twin_rust_async(
+      FeatureBigNumberTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feature_big_number_twin_rust_async_sse(
+      FeatureBigNumberTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feature_big_number_twin_sse(
+      FeatureBigNumberTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feature_big_number_twin_sync(
+      FeatureBigNumberTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feature_big_number_twin_sync_sse(
+      FeatureBigNumberTwinSyncSse self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_feature_chrono_twin_normal(
       FeatureChronoTwinNormal self, SseSerializer serializer);
 
@@ -37624,6 +37871,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_f_64_array_16(F64Array16 self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feature_big_number_twin_normal(
+      FeatureBigNumberTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feature_big_number_twin_rust_async(
+      FeatureBigNumberTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feature_big_number_twin_rust_async_sse(
+      FeatureBigNumberTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feature_big_number_twin_sse(
+      FeatureBigNumberTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feature_big_number_twin_sync(
+      FeatureBigNumberTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feature_big_number_twin_sync_sse(
+      FeatureBigNumberTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_feature_chrono_twin_normal(
@@ -52214,6 +52485,52 @@ class RustLibWire implements BaseWire {
               int data_len_) =>
           wasmModule
               .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__handle_big_buffers_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__serde_json_type__handle_big_number_types_twin_normal(
+          NativePortType port_, JSAny input) =>
+      wasmModule
+          .wire__crate__api__serde_json_type__handle_big_number_types_twin_normal(
+              port_, input);
+
+  void wire__crate__api__pseudo_manual__serde_json_type_twin_rust_async__handle_big_number_types_twin_rust_async(
+          NativePortType port_, JSAny input) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__serde_json_type_twin_rust_async__handle_big_number_types_twin_rust_async(
+              port_, input);
+
+  void wire__crate__api__pseudo_manual__serde_json_type_twin_rust_async_sse__handle_big_number_types_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__serde_json_type_twin_rust_async_sse__handle_big_number_types_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__serde_json_type_twin_sse__handle_big_number_types_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__serde_json_type_twin_sse__handle_big_number_types_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__serde_json_type_twin_sync__handle_big_number_types_twin_sync(
+              JSAny input) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__serde_json_type_twin_sync__handle_big_number_types_twin_sync(
+                  input);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__serde_json_type_twin_sync_sse__handle_big_number_types_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__serde_json_type_twin_sync_sse__handle_big_number_types_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__misc_example__handle_char_twin_normal(
@@ -72878,6 +73195,38 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__handle_big_buffers_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__serde_json_type__handle_big_number_types_twin_normal(
+          NativePortType port_, JSAny input);
+
+  external void
+      wire__crate__api__pseudo_manual__serde_json_type_twin_rust_async__handle_big_number_types_twin_rust_async(
+          NativePortType port_, JSAny input);
+
+  external void
+      wire__crate__api__pseudo_manual__serde_json_type_twin_rust_async_sse__handle_big_number_types_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__serde_json_type_twin_sse__handle_big_number_types_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__serde_json_type_twin_sync__handle_big_number_types_twin_sync(
+          JSAny input);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__serde_json_type_twin_sync_sse__handle_big_number_types_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);

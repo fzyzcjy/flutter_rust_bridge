@@ -74,6 +74,7 @@ const sidebars = {
                                         'guides/types/translatable/detailed/chrono',
                                         'guides/types/translatable/detailed/uuid',
                                         'guides/types/translatable/detailed/serde_json',
+                                        'guides/types/translatable/detailed/big_number',
                                         'guides/types/translatable/detailed/primitive',
                                     ],
                                 },

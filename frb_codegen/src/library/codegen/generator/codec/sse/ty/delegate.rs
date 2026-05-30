@@ -46,6 +46,8 @@ impl CodecSseTyTrait for DelegateCodecSseTy<'_> {
                     generate_stream_sink_setup_and_serialize(mir, "self")
                 }
                 MirTypeDelegate::BigPrimitive(_) => "self.toString()".to_owned(),
+                MirTypeDelegate::BigInt(_) => "self.toString()".to_owned(),
+                MirTypeDelegate::Decimal(_) => "self.toString()".to_owned(),
                 MirTypeDelegate::CastedPrimitive(mir) => {
                     let postfix = match mir.inner {
                         MirTypePrimitive::Isize | MirTypePrimitive::I64 => "I64",
@@ -116,6 +118,8 @@ impl CodecSseTyTrait for DelegateCodecSseTy<'_> {
                 }
                 MirTypeDelegate::StreamSink(_) => return Some(lang.throw_unimplemented("")),
                 MirTypeDelegate::BigPrimitive(_) => "self.to_string()".to_owned(),
+                MirTypeDelegate::BigInt(_) => "self.to_string()".to_owned(),
+                MirTypeDelegate::Decimal(_) => "self.to_string()".to_owned(),
                 MirTypeDelegate::RustAutoOpaqueExplicit(_ir) => {
                     "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_encode(self)"
                         .to_owned()
@@ -187,6 +191,8 @@ impl CodecSseTyTrait for DelegateCodecSseTy<'_> {
                         return Some(format!("{};", lang.throw_unreachable("")));
                     }
                     MirTypeDelegate::BigPrimitive(_) => "BigInt.parse(inner)".to_owned(),
+                    MirTypeDelegate::BigInt(_) => "BigInt.parse(inner)".to_owned(),
+                    MirTypeDelegate::Decimal(_) => "Decimal.parse(inner)".to_owned(),
                     MirTypeDelegate::CastedPrimitive(_) => "inner.toInt()".to_owned(),
                     MirTypeDelegate::RustAutoOpaqueExplicit(_ir) => "inner".to_owned(),
                     MirTypeDelegate::DynTrait(_) => {
@@ -239,6 +245,8 @@ impl CodecSseTyTrait for DelegateCodecSseTy<'_> {
                 }
                 MirTypeDelegate::StreamSink(_) => "StreamSink::deserialize(inner)".to_owned(),
                 MirTypeDelegate::BigPrimitive(_) => "inner.parse().unwrap()".to_owned(),
+                MirTypeDelegate::BigInt(_) => "inner.parse().unwrap()".to_owned(),
+                MirTypeDelegate::Decimal(_) => "inner.parse().unwrap()".to_owned(),
                 MirTypeDelegate::RustAutoOpaqueExplicit(_ir) => {
                     "flutter_rust_bridge::for_generated::rust_auto_opaque_explicit_decode(inner)"
                         .to_owned()

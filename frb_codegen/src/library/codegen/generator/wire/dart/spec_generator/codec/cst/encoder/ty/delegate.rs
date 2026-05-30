@@ -139,6 +139,12 @@ impl WireDartCodecCstGeneratorEncoderTrait for DelegateWireDartCodecCstGenerator
             MirTypeDelegate::BigPrimitive(_) => Acc::distribute(Some(
                 "return cst_encode_String(raw.toString());".to_string(),
             )),
+            MirTypeDelegate::BigInt(_) => Acc::distribute(Some(
+                "return cst_encode_String(raw.toString());".to_string(),
+            )),
+            MirTypeDelegate::Decimal(_) => Acc::distribute(Some(
+                "return cst_encode_String(raw.toString());".to_string(),
+            )),
             MirTypeDelegate::RustAutoOpaqueExplicit(_) => Acc::distribute(Some(format!(
                 "return cst_encode_{}(raw);",
                 self.mir.get_delegate().safe_ident(),

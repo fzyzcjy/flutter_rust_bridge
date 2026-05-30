@@ -41,3 +41,38 @@ pub async fn handle_nested_serde_json_value_twin_rust_async_sse(
 ) -> anyhow::Result<FeatureSerdeJsonTwinRustAsyncSse> {
     Ok(wrapper)
 }
+
+#[derive(Debug, Clone)]
+pub struct FeatureBigNumberTwinRustAsyncSse {
+    pub signed: num_bigint::BigInt,
+    pub unsigned: num_bigint::BigUint,
+    pub reexported_signed: bigdecimal::num_bigint::BigInt,
+    pub reexported_unsigned: bigdecimal::num_bigint::BigUint,
+    pub decimal: rust_decimal::Decimal,
+    pub big_decimal: bigdecimal::BigDecimal,
+}
+
+#[flutter_rust_bridge::frb(serialize)]
+pub async fn handle_big_number_types_twin_rust_async_sse(
+    input: FeatureBigNumberTwinRustAsyncSse,
+) -> anyhow::Result<FeatureBigNumberTwinRustAsyncSse> {
+    assert_eq!(
+        input.signed.to_string(),
+        "-170141183460469231731687303715884105728"
+    );
+    assert_eq!(
+        input.unsigned.to_string(),
+        "340282366920938463463374607431768211455"
+    );
+    assert_eq!(
+        input.reexported_signed.to_string(),
+        "-123456789123456789123456789"
+    );
+    assert_eq!(
+        input.reexported_unsigned.to_string(),
+        "123456789123456789123456789"
+    );
+    assert_eq!(input.decimal.to_string(), "123456789.123456789");
+    assert_eq!(input.big_decimal.to_string(), "-987654321.987654321");
+    Ok(input)
+}

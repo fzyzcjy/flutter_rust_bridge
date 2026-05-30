@@ -12,6 +12,7 @@ categories.workspace = true
 [dependencies]
 anyhow = { workspace = true, optional = true }
 backtrace = { workspace = true, optional = true }
+bigdecimal = { workspace = true, optional = true }
 byteorder = "1.5.0"
 chrono = { workspace = true, optional = true }
 delegate-attr = "0.3.0"
@@ -19,7 +20,9 @@ flutter_rust_bridge_macros = { workspace = true }
 futures = { version = "0.3.29", optional = true }
 lazy_static = { workspace = true }
 log = { version = "0.4", optional = true }
+num-bigint = { workspace = true, optional = true }
 portable-atomic = { version = "1.8.0", optional = true }
+rust_decimal = { workspace = true, optional = true }
 serde_json = { workspace = true, optional = true }
 uuid = { workspace = true, optional = true }
 
@@ -76,9 +79,12 @@ default = [
     "wasm-start",
 ]
 backtrace = ["dep:backtrace", "allo-isolate/backtrace"]
+bigdecimal = ["dep:bigdecimal", "num-bigint"]
 chrono = ["dep:chrono", "allo-isolate/chrono"]
 dart-opaque = ["dep:dart-sys"]
+num-bigint = ["dep:num-bigint"]
 portable-atomic = ["dep:portable-atomic"]
+rust_decimal = ["dep:rust_decimal"]
 rust-async = ["dep:tokio", "dep:futures", "dep:wasm-bindgen-futures"]
 thread-pool = ["dep:threadpool"]
 user-utils = ["dep:android_logger", "dep:oslog"]

@@ -32,6 +32,8 @@ pub enum MirTypeDelegate {
     Set(MirTypeDelegateSet),
     StreamSink(MirTypeDelegateStreamSink),
     BigPrimitive(MirTypeDelegateBigPrimitive),
+    BigInt(MirTypeDelegateBigInt),
+    Decimal(MirTypeDelegateDecimal),
     CastedPrimitive(MirTypeDelegateCastedPrimitive),
     RustAutoOpaqueExplicit(MirTypeDelegateRustAutoOpaqueExplicit),
     ProxyVariant(MirTypeDelegateProxyVariant),
@@ -89,6 +91,18 @@ pub struct MirTypeDelegateStreamSink {
 pub enum MirTypeDelegateBigPrimitive {
     I128,
     U128,
+}
+
+#[derive(Copy, strum_macros::Display)]
+pub enum MirTypeDelegateBigInt {
+    NumBigintBigInt,
+    NumBigintBigUint,
+}
+
+#[derive(Copy, strum_macros::Display)]
+pub enum MirTypeDelegateDecimal {
+    RustDecimal,
+    Bigdecimal,
 }
 
 pub struct MirTypeDelegateCastedPrimitive {
@@ -207,6 +221,8 @@ impl MirTypeTrait for MirTypeDelegate {
                 format!("StreamSink_{}_{}", mir.inner_ok.safe_ident(), mir.codec)
             }
             MirTypeDelegate::BigPrimitive(mir) => mir.to_string(),
+            MirTypeDelegate::BigInt(mir) => mir.to_string(),
+            MirTypeDelegate::Decimal(mir) => mir.to_string(),
             MirTypeDelegate::CastedPrimitive(mir) => {
                 format!("CastedPrimitive_{}", mir.inner.safe_ident())
             }
@@ -306,6 +322,16 @@ impl MirTypeTrait for MirTypeDelegate {
                 MirTypeDelegateBigPrimitive::I128 => "i128".to_owned(),
                 MirTypeDelegateBigPrimitive::U128 => "u128".to_owned(),
             },
+            MirTypeDelegate::BigInt(mir) => match mir {
+                MirTypeDelegateBigInt::NumBigintBigInt => "num_bigint::BigInt",
+                MirTypeDelegateBigInt::NumBigintBigUint => "num_bigint::BigUint",
+            }
+            .to_owned(),
+            MirTypeDelegate::Decimal(mir) => match mir {
+                MirTypeDelegateDecimal::RustDecimal => "rust_decimal::Decimal",
+                MirTypeDelegateDecimal::Bigdecimal => "bigdecimal::BigDecimal",
+            }
+            .to_owned(),
             MirTypeDelegate::CastedPrimitive(mir) => mir.inner.rust_api_type(),
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => {
                 format!(
@@ -347,6 +373,8 @@ impl MirTypeTrait for MirTypeDelegate {
                 | MirTypeDelegate::Char
                 | MirTypeDelegate::PrimitiveEnum(_)
                 | MirTypeDelegate::BigPrimitive(_)
+                | MirTypeDelegate::BigInt(_)
+                | MirTypeDelegate::Decimal(_)
                 | MirTypeDelegate::SerdeJsonValue
                 | MirTypeDelegate::CastedPrimitive(_)
                 | MirTypeDelegate::RustAutoOpaqueExplicit(_)
@@ -390,6 +418,8 @@ impl MirTypeDelegate {
             MirTypeDelegate::Set(mir) => mir_list(*mir.inner.to_owned(), true),
             MirTypeDelegate::StreamSink(_) => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::BigPrimitive(_) => MirType::Delegate(MirTypeDelegate::String),
+            MirTypeDelegate::BigInt(_) => MirType::Delegate(MirTypeDelegate::String),
+            MirTypeDelegate::Decimal(_) => MirType::Delegate(MirTypeDelegate::String),
             MirTypeDelegate::CastedPrimitive(mir) => MirType::Primitive(mir.inner.clone()),
             MirTypeDelegate::RustAutoOpaqueExplicit(mir) => MirType::RustOpaque(mir.inner.clone()),
             MirTypeDelegate::DynTrait(mir) => mir.get_delegate(),
