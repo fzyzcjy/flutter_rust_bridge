@@ -321,6 +321,14 @@ mod tests {
         assert!(is_logging_initializer(
             "kFrbDartLogging.init(rustLogStream: stream);"
         ));
+        assert!(is_logging_initializer(
+            r#"
+                    kFrbDartLogging.init(
+                      rustLogStream: frbInternalInitLogger(maxLevel: frbInternalLoggingMaxLevel()),
+                      disposeRustLogger: frbInternalDisposeLogger,
+                    );
+"#
+        ));
         assert!(!is_logging_initializer("api.userDefinedInitializer();"));
     }
 }
