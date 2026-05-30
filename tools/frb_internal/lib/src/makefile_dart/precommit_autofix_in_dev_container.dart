@@ -308,7 +308,7 @@ Future<void> ensurePrecommitAutofixImage({
 }) async {
   try {
     await commandRunner('docker pull ${shellEscape(imageRef)}');
-  } on Object {
+  } on Exception {
     if (!buildIfMissing) {
       rethrow;
     }
