@@ -69,7 +69,7 @@ pub(crate) fn generate_api_impl_normal_function(
             MirFuncMode::Sync => call_handler.clone(),
         };
         let return_stream_constructor_args =
-            generate_return_stream_constructor_args(func.name_dart_wire());
+            generate_return_stream_constructor_args(&func.name_dart_wire());
 
         format!(
             "
@@ -110,7 +110,7 @@ pub(crate) fn generate_api_impl_normal_function(
     })
 }
 
-fn generate_return_stream_constructor_args(func_name_dart_wire: String) -> &'static str {
+fn generate_return_stream_constructor_args(func_name_dart_wire: &str) -> &'static str {
     if func_name_dart_wire.ends_with("FrbInternalInitLogger") {
         "(keepIsolateAlive: false)"
     } else {
@@ -195,9 +195,7 @@ mod tests {
     #[test]
     fn test_generate_return_stream_constructor_args_disables_logging_isolate_keepalive() {
         assert_eq!(
-            generate_return_stream_constructor_args(
-                "crateApiFrbLoggingFrbInternalInitLogger".to_owned()
-            ),
+            generate_return_stream_constructor_args("crateApiFrbLoggingFrbInternalInitLogger"),
             "(keepIsolateAlive: false)"
         );
     }
@@ -205,7 +203,7 @@ mod tests {
     #[test]
     fn test_generate_return_stream_constructor_args_keeps_regular_stream_default() {
         assert_eq!(
-            generate_return_stream_constructor_args("crateApiSimpleStreamSink".to_owned()),
+            generate_return_stream_constructor_args("crateApiSimpleStreamSink"),
             "()"
         );
     }

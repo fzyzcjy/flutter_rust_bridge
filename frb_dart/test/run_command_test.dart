@@ -22,20 +22,11 @@ void main() {
       final tempDir = await Directory.systemTemp.createTemp(
         'frb_run_command_test_',
       );
-      final script = File('${tempDir.path}/hang.dart');
       final pidFile = File('${tempDir.path}/child.pid');
 
       try {
-        await script.writeAsString(
-          [
-            'Future<void> main() async {',
-            '  await Future<void>.delayed(const Duration(seconds: 30));',
-            '}',
-          ].join('\n'),
-        );
         final command =
-            '${_shellQuote(Platform.resolvedExecutable)} ${_shellQuote(script.path)} '
-            '& echo \$! > ${_shellQuote(pidFile.path)}; wait';
+            'sleep 30 & echo \$! > ${_shellQuote(pidFile.path)}; wait';
 
         await expectLater(
           () async => await runCommand(
@@ -43,7 +34,7 @@ void main() {
             ['-c', command],
             shell: false,
             silent: true,
-            timeout: const Duration(milliseconds: 100),
+            timeout: const Duration(seconds: 2),
           ),
           throwsA(isA<TimeoutException>()),
         );

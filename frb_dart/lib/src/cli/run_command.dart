@@ -108,15 +108,26 @@ Future<void> _killProcessTree(int pid) async {
 }
 
 Future<List<int>> _childProcessIds(int pid) async {
-  final result = await Process.run('pgrep', ['-P', '$pid']);
-  if (result.exitCode == 0) {
-    return _parseProcessIds(result.stdout as String);
+  try {
+    final result = await Process.run('pgrep', ['-P', '$pid']);
+    if (result.exitCode == 0) {
+      return _parseProcessIds(result.stdout as String);
+    }
+    if (result.exitCode == 1) {
+      return const [];
+    }
+  } on ProcessException {
+    // Fall back to ps below when pgrep is not installed.
   }
 
-  final psResult = await Process.run('ps', ['-eo', 'pid=,ppid=']);
-  if (psResult.exitCode != 0) {
+  late final ProcessResult psResult;
+  try {
+    psResult = await Process.run('ps', ['-eo', 'pid=,ppid=']);
+  } on ProcessException {
     return const [];
   }
+
+  if (psResult.exitCode != 0) return const [];
 
   return (psResult.stdout as String)
       .split('\n')
