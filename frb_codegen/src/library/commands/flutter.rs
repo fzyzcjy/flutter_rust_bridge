@@ -85,3 +85,101 @@ pub fn flutter_pub_get(path: &Path, fvm_install_mode: FvmInstallMode) -> anyhow:
     );
     check_exit_code(&command_run!(call_shell[Some(path), None], *full_args)?)
 }
+
+#[allow(clippy::vec_init_then_push)]
+pub fn is_ohos_flutter() -> anyhow::Result<bool> {
+    let mut full_args = vec![];
+    full_args.extend(command_arg_maybe_fvm(None, FvmInstallMode::Skip));
+    full_args.extend(vec![
+        "flutter".to_owned(),
+        "create".to_owned(),
+        "--help".to_owned(),
+    ]);
+    info!("Execute `{}` (this may take a while)", full_args.join(" "));
+    let out = command_run!(call_shell[None, None], *full_args)?;
+    if !out.status.success() {
+        // This will stop the whole generator and tell the users, so we do not care about testing it
+        // frb-coverage:ignore-start
+        let msg = String::from_utf8_lossy(&out.stderr);
+        anyhow::bail!("Command execution failed: {msg}");
+    }
+    let res = String::from_utf8_lossy(&out.stdout);
+    let is_ohos = flutter_create_help_supports_platform(&res, "ohos");
+    if is_ohos {
+        info!("current flutter support ohos platform.")
+    }
+    Ok(is_ohos)
+}
+
+fn flutter_create_help_supports_platform(help: &str, platform: &str) -> bool {
+    let mut in_platforms_option = false;
+
+    for line in help.lines() {
+        let trimmed = line.trim_start();
+        let starts_new_option =
+            trimmed.starts_with("--") || trimmed.starts_with('-') && trimmed.contains("--");
+        if in_platforms_option && starts_new_option && !trimmed.contains("--platforms") {
+            return false;
+        }
+
+        if trimmed.contains("--platforms") {
+            in_platforms_option = true;
+        }
+
+        if in_platforms_option && text_contains_platform_token(line, platform) {
+            return true;
+        }
+    }
+
+    false
+}
+
+fn text_contains_platform_token(text: &str, platform: &str) -> bool {
+    text.split(|character: char| !character.is_ascii_alphanumeric() && character != '_')
+        .any(|token| token.eq_ignore_ascii_case(platform))
+}
+
+#[cfg(test)]
+mod tests {
+    use super::flutter_create_help_supports_platform;
+
+    #[test]
+    fn test_flutter_create_help_supports_platform_on_platforms_line() {
+        let help = "
+Usage: flutter create <output directory>
+
+    --platforms    The platforms supported by this project.
+                   [android, ios, linux, macos, ohos, web, windows]
+    --org          The organization responsible for your new Flutter project.
+";
+
+        assert!(flutter_create_help_supports_platform(help, "ohos"));
+    }
+
+    #[test]
+    fn test_flutter_create_help_supports_platform_rejects_other_help_text() {
+        let help = "
+Usage: flutter create <output directory>
+
+    --description  Create an app for the ohos store.
+    --platforms    The platforms supported by this project.
+                   [android, ios, linux, macos, web, windows]
+    --org          The organization responsible for your new Flutter project.
+";
+
+        assert!(!flutter_create_help_supports_platform(help, "ohos"));
+    }
+
+    #[test]
+    fn test_flutter_create_help_supports_platform_stops_at_next_option() {
+        let help = "
+Usage: flutter create <output directory>
+
+    --platforms    The platforms supported by this project.
+                   [android, ios, linux, macos, web, windows]
+    --org          The organization responsible for your ohos project.
+";
+
+        assert!(!flutter_create_help_supports_platform(help, "ohos"));
+    }
+}
