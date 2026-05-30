@@ -53,6 +53,7 @@ fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
             rust_crate_name: args.common.rust_crate_name.clone(),
             rust_crate_dir: compute_rust_crate_dir(&args.common),
             template: args.template.into(),
+            platforms: args.platforms,
             fvm_install_mode: FvmInstallMode::from_skip_fvm_install(args.skip_fvm_install),
         })?,
         Commands::BuildWeb(args) => build_web::build(

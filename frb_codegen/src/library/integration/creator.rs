@@ -35,11 +35,12 @@ pub fn create(config: CreateConfig) -> anyhow::Result<()> {
     );
     // frb-coverage:ignore-end
 
+    let platforms = config.platforms.clone();
     flutter_create(
         &config.name,
         &config.org,
         config.template,
-        config.platforms,
+        platforms.clone(),
         config.fvm_install_mode,
     )?;
 
@@ -60,6 +61,7 @@ pub fn create(config: CreateConfig) -> anyhow::Result<()> {
         rust_crate_name: config.rust_crate_name,
         rust_crate_dir: config.rust_crate_dir,
         template: config.template,
+        platforms,
         fvm_install_mode: config.fvm_install_mode,
     })
 }
