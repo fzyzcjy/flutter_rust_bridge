@@ -118,6 +118,7 @@ Future<Browser> _launchBrowser({
     final browser = await puppeteer.launch(
       executablePath: browserExecutablePathFromEnvironment(
         Platform.environment,
+        isInContainer: isInContainer,
       ),
       headless: headless,
       timeout: const Duration(minutes: 5),
@@ -131,14 +132,21 @@ Future<Browser> _launchBrowser({
   }, findProxyFromEnvironment: findWebTestProxyFromEnvironment);
 }
 
-String? browserExecutablePathFromEnvironment(Map<String, String> environment) {
+String? browserExecutablePathFromEnvironment(
+  Map<String, String> environment, {
+  required bool isInContainer,
+}) {
   for (final key in [
     'PUPPETEER_EXECUTABLE_PATH',
     'CHROME_EXECUTABLE',
-    'CHROME_BIN',
   ]) {
     final value = environment[key]?.trim();
     if (value != null && value.isNotEmpty) return value;
+  }
+
+  final chromeBin = environment['CHROME_BIN']?.trim();
+  if (isInContainer && chromeBin != null && chromeBin.isNotEmpty) {
+    return chromeBin;
   }
   return null;
 }
