@@ -77,9 +77,13 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v1
+      - uses: catchpoint/workflow-telemetry-action@v2
+        continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
+          job_summary: false
       - uses: actions/checkout@v4
         with:
           submodules: recursive
@@ -105,9 +109,13 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v1
+      - uses: catchpoint/workflow-telemetry-action@v2
+        continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
+          job_summary: false
       - uses: actions/checkout@v4
         with:
           submodules: recursive
@@ -125,9 +133,13 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v1
+      - uses: catchpoint/workflow-telemetry-action@v2
+        continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
+          job_summary: false
       - uses: actions/checkout@v4
         with:
           submodules: recursive
@@ -208,8 +220,12 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
+        continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
+          job_summary: false
       - uses: actions/checkout@v5
         with:
           submodules: recursive
@@ -253,8 +269,12 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
+        continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
+          job_summary: false
       - uses: actions/checkout@v5
         with:
           submodules: recursive
@@ -284,8 +304,12 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
+        continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
+          job_summary: false
       - uses: actions/checkout@v5
         with:
           submodules: recursive
@@ -326,8 +350,12 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
+        continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
+          job_summary: false
       - uses: actions/checkout@v5
         with:
           submodules: recursive
@@ -413,8 +441,12 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
+        continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
+          job_summary: false
       - uses: actions/checkout@v5
         with:
           submodules: recursive
@@ -452,8 +484,12 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
+        continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
+          job_summary: false
       - uses: actions/checkout@v5
         with:
           submodules: recursive
@@ -546,8 +582,12 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
+        continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
+          job_summary: false
       - uses: actions/checkout@v5
         with:
           submodules: recursive
@@ -601,8 +641,12 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
+        continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
+          job_summary: false
       - uses: actions/checkout@v5
         with:
           submodules: recursive
@@ -641,8 +685,12 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
+        continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
+          job_summary: false
       - uses: actions/checkout@v5
         with:
           submodules: recursive
@@ -694,8 +742,12 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
+        continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
+          job_summary: false
       - uses: actions/checkout@v5
         with:
           submodules: recursive
@@ -735,8 +787,12 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
+        continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
+          job_summary: false
       - uses: actions/checkout@v5
         with:
           submodules: recursive
@@ -845,8 +901,12 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
+        continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
+          job_summary: false
       - uses: actions/checkout@v5
         with:
           submodules: recursive
@@ -930,8 +990,12 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
+        continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
+          job_summary: false
       - uses: actions/checkout@v5
         with:
           submodules: recursive
@@ -962,8 +1026,12 @@ jobs:
 
     steps:
       - uses: catchpoint/workflow-telemetry-action@v2
+        continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
         with:
           comment_on_pr: false
+          job_summary: false
       - uses: actions/checkout@v5
         with:
           submodules: recursive
