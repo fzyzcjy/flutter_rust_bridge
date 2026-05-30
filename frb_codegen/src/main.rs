@@ -27,7 +27,7 @@ fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
         Commands::Generate(args) => {
             let meta_config = compute_codegen_meta_config(&args);
             let config = compute_codegen_config(args.primary)?;
-            codegen::generate(config, meta_config)?
+            codegen::generate(config, meta_config, args.skip_fvm_install)?
         }
         Commands::Create(args) => integration::create(CreateConfig {
             name: args.name,
@@ -36,6 +36,7 @@ fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
             rust_crate_name: args.common.rust_crate_name.clone(),
             rust_crate_dir: compute_rust_crate_dir(&args.common),
             template: args.template.into(),
+            skip_fvm_install: args.skip_fvm_install,
         })?,
         Commands::Integrate(args) => integration::integrate(IntegrateConfig {
             enable_write_lib: !args.no_write_lib,
@@ -46,10 +47,14 @@ fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
             rust_crate_name: args.common.rust_crate_name.clone(),
             rust_crate_dir: compute_rust_crate_dir(&args.common),
             template: args.template.into(),
+            skip_fvm_install: args.skip_fvm_install,
         })?,
-        Commands::BuildWeb(args) => {
-            build_web::build(args.dart_root, args.dart_coverage, args.args)?
-        }
+        Commands::BuildWeb(args) => build_web::build(
+            args.dart_root,
+            args.dart_coverage,
+            args.args,
+            args.skip_fvm_install,
+        )?,
         Commands::InternalGenerate(_args) => internal::generate()?,
     }
     Ok(())

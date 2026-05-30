@@ -14,6 +14,7 @@ pub struct CreateConfig {
     pub rust_crate_name: Option<String>,
     pub rust_crate_dir: String,
     pub template: Template,
+    pub skip_fvm_install: bool,
 }
 
 /// Create a new Flutter + Rust project.
@@ -33,7 +34,12 @@ pub fn create(config: CreateConfig) -> anyhow::Result<()> {
     );
     // frb-coverage:ignore-end
 
-    flutter_create(&config.name, &config.org, config.template)?;
+    flutter_create(
+        &config.name,
+        &config.org,
+        config.template,
+        config.skip_fvm_install,
+    )?;
 
     env::set_current_dir(&dart_root)?;
 
@@ -52,6 +58,7 @@ pub fn create(config: CreateConfig) -> anyhow::Result<()> {
         rust_crate_name: config.rust_crate_name,
         rust_crate_dir: config.rust_crate_dir,
         template: config.template,
+        skip_fvm_install: config.skip_fvm_install,
     })
 }
 
