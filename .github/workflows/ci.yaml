@@ -895,6 +895,7 @@ jobs:
         device:
           - "iPad (10th generation) Simulator (18.6)"
           - "iPhone 16 Pro Max Simulator (18.6)"
+
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
