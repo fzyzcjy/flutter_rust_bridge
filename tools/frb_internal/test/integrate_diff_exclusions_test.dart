@@ -10,6 +10,8 @@ void main() {
       ),
       "':(exclude)frb_example/flutter_via_create/macos/Flutter/Flutter-Debug.xcconfig' "
       "':(exclude)frb_example/flutter_via_create/macos/Flutter/Flutter-Release.xcconfig' "
+      "':(exclude)frb_example/flutter_via_create/pubspec.lock' "
+      "':(exclude)frb_example/flutter_via_create/pubspec.yaml' "
       "':(exclude)frb_example/flutter_via_create/ohos/' "
       "':(exclude)frb_example/flutter_via_create/rust_builder/ohos/' "
       "':(exclude)frb_example/flutter_via_create/rust_builder/pubspec.yaml'",
@@ -25,7 +27,9 @@ void main() {
           needCompareOhos: true,
         ),
         "':(exclude)frb_example/flutter_via_create/macos/Flutter/Flutter-Debug.xcconfig' "
-        "':(exclude)frb_example/flutter_via_create/macos/Flutter/Flutter-Release.xcconfig'",
+        "':(exclude)frb_example/flutter_via_create/macos/Flutter/Flutter-Release.xcconfig' "
+        "':(exclude)frb_example/flutter_via_create/pubspec.lock' "
+        "':(exclude)frb_example/flutter_via_create/pubspec.yaml'",
       );
     },
   );
