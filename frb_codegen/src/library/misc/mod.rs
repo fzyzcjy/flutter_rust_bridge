@@ -13,8 +13,8 @@ pub enum FvmInstallMode {
     Skip,
 }
 
-impl From<bool> for FvmInstallMode {
-    fn from(skip_fvm_install: bool) -> Self {
+impl FvmInstallMode {
+    pub fn from_skip_fvm_install(skip_fvm_install: bool) -> Self {
         if skip_fvm_install {
             Self::Skip
         } else {
