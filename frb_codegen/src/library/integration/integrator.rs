@@ -193,7 +193,7 @@ fn compute_replacements<'a>(
     replacements.insert("Cargo.toml.template", "Cargo.toml");
     replacements.insert("Cargo.lock.template", "Cargo.lock");
     replacements.insert(
-        "REPLACE_ME_OHOS_PLUGIN_PLATFORM",
+        "REPLACE_ME_OHOS_PLUGIN_PLATFORM_TEXT",
         if include_ohos {
             "      ohos:\n        ffiPlugin: true"
         } else {
