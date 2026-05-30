@@ -64,13 +64,33 @@ pub fn optional_empty_datetime_utc_twin_sync(
 
 #[flutter_rust_bridge::frb(sync)]
 pub fn duration_twin_sync(d: chrono::Duration) -> chrono::Duration {
-    assert_eq!(&d.num_hours(), &4);
+    let expected_micros: i64 = {
+        #[cfg(target_arch = "wasm32")]
+        {
+            14_403_002_000
+        }
+        #[cfg(not(target_arch = "wasm32"))]
+        {
+            14_403_002_001
+        }
+    };
+    assert_eq!(d.num_microseconds().unwrap(), expected_micros);
     d
 }
 
 #[flutter_rust_bridge::frb(sync)]
 pub fn std_time_duration_twin_sync(d: std::time::Duration) -> std::time::Duration {
-    assert_eq!(d.as_secs(), 4 * 60 * 60);
+    let expected_micros: i64 = {
+        #[cfg(target_arch = "wasm32")]
+        {
+            14_403_002_000
+        }
+        #[cfg(not(target_arch = "wasm32"))]
+        {
+            14_403_002_001
+        }
+    };
+    assert_eq!(d.as_micros(), expected_micros.try_into().unwrap());
     d
 }
 
@@ -101,7 +121,17 @@ pub fn std_time_system_time_before_epoch_twin_sync(
 
 #[flutter_rust_bridge::frb(sync)]
 pub fn tokio_time_duration_twin_sync(d: tokio::time::Duration) -> tokio::time::Duration {
-    assert_eq!(d.as_secs(), 4 * 60 * 60);
+    let expected_micros: i64 = {
+        #[cfg(target_arch = "wasm32")]
+        {
+            14_403_002_000
+        }
+        #[cfg(not(target_arch = "wasm32"))]
+        {
+            14_403_002_001
+        }
+    };
+    assert_eq!(d.as_micros(), expected_micros.try_into().unwrap());
     d
 }
 

@@ -68,13 +68,13 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('Duration', () async {
-    final d = Duration(hours: 4);
+    final d = preciseDuration();
     final resp = await durationTwinNormal(d: d);
-    expect(resp.inHours, d.inHours);
+    expect(resp, d);
   });
 
   test('std::time::Duration', () async {
-    final d = Duration(hours: 4);
+    final d = preciseDuration();
     final resp = await stdTimeDurationTwinNormal(d: d);
     expect(resp, d);
   });
@@ -97,7 +97,7 @@ Future<void> main({bool skipRustLibInit = false}) async {
   });
 
   test('tokio::time::Duration', () async {
-    final d = Duration(hours: 4);
+    final d = preciseDuration();
     final resp = await tokioTimeDurationTwinNormal(d: d);
     expect(resp, d);
   });
@@ -171,3 +171,10 @@ Future<void> main({bool skipRustLibInit = false}) async {
     debugPrint('$difference');
   });
 }
+
+Duration preciseDuration() => Duration(
+      hours: 4,
+      seconds: 3,
+      milliseconds: 2,
+      microseconds: kIsWeb ? 0 : 1,
+    );
