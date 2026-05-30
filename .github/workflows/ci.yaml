@@ -78,7 +78,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
-        continue-on-error: true
         with:
           comment_on_pr: false
       - uses: actions/checkout@v4
@@ -107,7 +106,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
-        continue-on-error: true
         with:
           comment_on_pr: false
       - uses: actions/checkout@v4
@@ -128,7 +126,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v1
-        continue-on-error: true
         with:
           comment_on_pr: false
       - uses: actions/checkout@v4
@@ -211,7 +208,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
-        continue-on-error: true
         with:
           comment_on_pr: false
       - uses: actions/checkout@v5
@@ -263,7 +259,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
-        continue-on-error: true
         with:
           comment_on_pr: false
       - uses: actions/checkout@v5
@@ -320,7 +315,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
-        continue-on-error: true
         with:
           comment_on_pr: false
       - uses: actions/checkout@v5
@@ -363,7 +357,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
-        continue-on-error: true
         with:
           comment_on_pr: false
       - uses: actions/checkout@v5
@@ -453,7 +446,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
-        continue-on-error: true
         with:
           comment_on_pr: false
       - uses: actions/checkout@v5
@@ -516,7 +508,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
-        continue-on-error: true
         with:
           comment_on_pr: false
       - uses: actions/checkout@v5
@@ -611,7 +602,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
-        continue-on-error: true
         with:
           comment_on_pr: false
       - uses: actions/checkout@v5
@@ -667,7 +657,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
-        continue-on-error: true
         with:
           comment_on_pr: false
       - uses: actions/checkout@v5
@@ -708,7 +697,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
-        continue-on-error: true
         with:
           comment_on_pr: false
       - uses: actions/checkout@v5
@@ -762,7 +750,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
-        continue-on-error: true
         with:
           comment_on_pr: false
       - uses: actions/checkout@v5
@@ -804,7 +791,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
-        continue-on-error: true
         with:
           comment_on_pr: false
       - uses: actions/checkout@v5
@@ -914,7 +900,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
-        continue-on-error: true
         with:
           comment_on_pr: false
       - uses: actions/checkout@v5
@@ -1000,7 +985,6 @@ jobs:
     steps:
       # setup
       - uses: catchpoint/workflow-telemetry-action@v2
-        continue-on-error: true
         with:
           comment_on_pr: false
       - uses: actions/checkout@v5
@@ -1033,7 +1017,6 @@ jobs:
 
     steps:
       - uses: catchpoint/workflow-telemetry-action@v2
-        continue-on-error: true
         with:
           comment_on_pr: false
       - uses: actions/checkout@v5
