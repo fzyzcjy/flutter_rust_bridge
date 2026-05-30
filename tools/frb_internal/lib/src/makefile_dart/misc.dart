@@ -206,7 +206,7 @@ Future<void> precommitIntegrate() async {
           setExitIfChanged: false,
           package: package,
           coverage: false,
-          needCompareOhos: false,
+          includeOhos: false,
         ),
       ),
   ]);

@@ -138,13 +138,13 @@ class GenerateIntegratePackageConfig implements GenerateConfig {
   @override
   final bool coverage;
   @CliOption(defaultsTo: false)
-  final bool needCompareOhos;
+  final bool includeOhos;
 
   const GenerateIntegratePackageConfig({
     required this.setExitIfChanged,
     required this.package,
     required this.coverage,
-    required this.needCompareOhos,
+    required this.includeOhos,
   });
 }
 
@@ -385,7 +385,7 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
     config,
     extraArgs: integrateDiffExclusionArgs(
       config.package,
-      needCompareOhos: config.needCompareOhos,
+      needCompareOhos: config.includeOhos,
     ),
     () async {
       final dirPackage = path.join(exec.pwd!, config.package);

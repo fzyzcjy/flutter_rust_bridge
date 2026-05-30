@@ -51,7 +51,7 @@ GenerateIntegratePackageConfig _$parseGenerateIntegratePackageConfigResult(
   setExitIfChanged: result['set-exit-if-changed'] as bool,
   package: convertConfigPackage(result['package'] as String),
   coverage: result['coverage'] as bool,
-  needCompareOhos: result['need-compare-ohos'] as bool,
+  includeOhos: result['include-ohos'] as bool,
 );
 
 ArgParser _$populateGenerateIntegratePackageConfigParser(ArgParser parser) =>
@@ -59,7 +59,7 @@ ArgParser _$populateGenerateIntegratePackageConfigParser(ArgParser parser) =>
       ..addFlag('set-exit-if-changed')
       ..addOption('package')
       ..addFlag('coverage')
-      ..addFlag('need-compare-ohos');
+      ..addFlag('include-ohos');
 
 final _$parserForGenerateIntegratePackageConfig =
     _$populateGenerateIntegratePackageConfigParser(ArgParser());
