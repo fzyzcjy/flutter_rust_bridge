@@ -49,7 +49,7 @@ List<Command<void>> createCommands() {
     ),
     SimpleCommand('precommit-generate', precommitGenerate),
     SimpleCommand('precommit-integrate', precommitIntegrate),
-    SimpleCommand('sync-cargokit-copies', syncCargoKitCopies),
+    SimpleCommand('sync-cargokit-copies', syncCargokitCopies),
     SimpleCommand('pub-get-all', pubGetAll),
     SimpleCommand('cargo-fetch-all', cargoFetchAll),
     CodecovPreaggregateCommand(),

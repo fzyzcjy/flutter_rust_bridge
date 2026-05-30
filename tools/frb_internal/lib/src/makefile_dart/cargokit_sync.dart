@@ -2,38 +2,31 @@ import 'dart:io';
 
 import 'package:path/path.dart' as path;
 
-const _kCargoKitCopyMappings = [
-  _CargoKitCopyMapping(
-    source: 'frb_codegen/assets/integration_template/app/rust_builder/cargokit',
-    target: 'frb_example/flutter_via_create/rust_builder/cargokit',
-  ),
-  _CargoKitCopyMapping(
-    source: 'frb_codegen/assets/integration_template/app/rust_builder/cargokit',
-    target: 'frb_example/flutter_via_integrate/rust_builder/cargokit',
-  ),
-  _CargoKitCopyMapping(
+// Mirrors Cargokit's handling in frb_codegen's Rust integrator:
+// skip VCS/docs/test files, add the copied-file prelude, and keep scripts executable.
+//
+// Do not list `flutter_via_create`, `flutter_via_integrate`, or `flutter_package`
+// here; the integrate generation CI already recreates those examples from templates.
+const _kCargokitCopyMappings = [
+  _CargokitCopyMapping(
     source: 'frb_codegen/assets/integration_template/app/rust_builder/cargokit',
     target: 'frb_example/gallery/rust_builder/cargokit',
   ),
-  _CargoKitCopyMapping(
+  _CargokitCopyMapping(
     source: 'frb_codegen/assets/integration_template/app/rust_builder/cargokit',
     target: 'frb_example/integrate_third_party/rust_builder/cargokit',
   ),
-  _CargoKitCopyMapping(
+  _CargokitCopyMapping(
     source: 'frb_codegen/assets/integration_template/app/rust_builder/cargokit',
     target: 'frb_example/rust_ui_counter/ui/rust_builder/cargokit',
   ),
-  _CargoKitCopyMapping(
+  _CargokitCopyMapping(
     source: 'frb_codegen/assets/integration_template/app/rust_builder/cargokit',
     target: 'frb_example/rust_ui_todo_list/ui/rust_builder/cargokit',
   ),
-  _CargoKitCopyMapping(
-    source: 'frb_codegen/assets/integration_template/plugin/cargokit',
-    target: 'frb_example/flutter_package/cargokit',
-  ),
 ];
 
-const _kSkippedCargoKitNames = {'.git', '.github', 'docs', 'test'};
+const _kSkippedCargokitNames = {'.git', '.github', 'docs', 'test'};
 
 const _kExecutableRelativePaths = [
   'build_pod.sh',
@@ -41,21 +34,21 @@ const _kExecutableRelativePaths = [
   'run_build_tool.cmd',
 ];
 
-const _kCargoKitPrelude = [
+const _kCargokitPrelude = [
   'This is copied from Cargokit (which is the official way to use it currently)',
   'Details: https://fzyzcjy.github.io/flutter_rust_bridge/manual/integrate/builtin',
 ];
 
-Future<void> syncCargoKitCopies() async {
+Future<void> syncCargokitCopies() async {
   final repoRoot = Directory.current.parent.parent;
 
-  for (final mapping in _kCargoKitCopyMappings) {
+  for (final mapping in _kCargokitCopyMappings) {
     final source = Directory(path.join(repoRoot.path, mapping.source));
     final target = Directory(path.join(repoRoot.path, mapping.target));
 
     if (!source.existsSync()) {
       throw Exception(
-        'CargoKit source `${mapping.source}` does not exist. '
+        'Cargokit source `${mapping.source}` does not exist. '
         'Run `git submodule update --init --recursive` first.',
       );
     }
@@ -65,33 +58,33 @@ Future<void> syncCargoKitCopies() async {
     }
     target.createSync(recursive: true);
 
-    await _copyCargoKitDirectory(source: source, target: target);
+    await _copyCargokitDirectory(source: source, target: target);
     await _makeScriptsExecutable(target);
 
     stdout.writeln('Synced ${mapping.source} -> ${mapping.target}');
   }
 }
 
-Future<void> _copyCargoKitDirectory({
+Future<void> _copyCargokitDirectory({
   required Directory source,
   required Directory target,
 }) async {
   for (final entity in source.listSync()) {
     final name = path.basename(entity.path);
-    if (_kSkippedCargoKitNames.contains(name)) continue;
+    if (_kSkippedCargokitNames.contains(name)) continue;
 
     final targetPath = path.join(target.path, name);
     if (entity is Directory) {
       final targetDirectory = Directory(targetPath)
         ..createSync(recursive: true);
-      await _copyCargoKitDirectory(source: entity, target: targetDirectory);
+      await _copyCargokitDirectory(source: entity, target: targetDirectory);
     } else if (entity is File) {
-      await _copyCargoKitFile(source: entity, targetPath: targetPath);
+      await _copyCargokitFile(source: entity, targetPath: targetPath);
     }
   }
 }
 
-Future<void> _copyCargoKitFile({
+Future<void> _copyCargokitFile({
   required File source,
   required String targetPath,
 }) async {
@@ -99,11 +92,11 @@ Future<void> _copyCargoKitFile({
   target.parent.createSync(recursive: true);
 
   final bytes = await source.readAsBytes();
-  final prelude = _computeCargoKitPrelude(targetPath);
+  final prelude = _computeCargokitPrelude(targetPath);
   await target.writeAsBytes([...prelude, ...bytes]);
 }
 
-List<int> _computeCargoKitPrelude(String targetPath) {
+List<int> _computeCargokitPrelude(String targetPath) {
   final basename = path.basename(targetPath);
   if (basename == '.gitignore') return const [];
 
@@ -112,13 +105,13 @@ List<int> _computeCargoKitPrelude(String targetPath) {
     '.yaml' || '.toml' => '#',
     '.lock' || '.cmake' || '.sh' || '.ps1' || '.cmd' => null,
     final extension => throw Exception(
-      'Unexpected CargoKit file extension `$extension` for `$targetPath`.',
+      'Unexpected Cargokit file extension `$extension` for `$targetPath`.',
     ),
   };
 
   if (commentLeading == null) return const [];
 
-  return '${_kCargoKitPrelude.map((line) => '$commentLeading $line').join('\n')}\n\n'
+  return '${_kCargokitPrelude.map((line) => '$commentLeading $line').join('\n')}\n\n'
       .codeUnits;
 }
 
@@ -135,9 +128,9 @@ Future<void> _makeScriptsExecutable(Directory target) async {
   }
 }
 
-class _CargoKitCopyMapping {
+class _CargokitCopyMapping {
   final String source;
   final String target;
 
-  const _CargoKitCopyMapping({required this.source, required this.target});
+  const _CargokitCopyMapping({required this.source, required this.target});
 }

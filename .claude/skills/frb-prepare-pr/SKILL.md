@@ -41,7 +41,7 @@ Before creating a PR, ensure generated code is up to date, lint passes, and bug 
 
 1. [ ] **REQUIRED:** Read `frb-code-generation` skill, run commands if needed
 2. [ ] **REQUIRED for integrate output diffs:** If the PR changes Flutter integrate example outputs or platform scaffolds, confirm whether `frb_codegen/assets/integration_template/` is the source that should change, then run `./frb_internal precommit-integrate`
-3. [ ] **REQUIRED for copied CargoKit diffs:** If the PR changes copied `cargokit` files under `frb_example/**`, read `frb-cargokit`, then run `./frb_internal sync-cargokit-copies`
+3. [ ] **REQUIRED for copied Cargokit diffs:** If the PR changes copied `cargokit` files under `frb_example/**`, read `frb-cargokit`, then run `./frb_internal sync-cargokit-copies`
 4. [ ] **REQUIRED:** Read `frb-lint` skill, run `./frb_internal lint --fix`
 5. [ ] (Optional) Read `frb-test` skill, run relevant tests
 6. [ ] **REQUIRED for non-trivial PRs:** Read `frb-pr-review`, run the review gate before final readiness

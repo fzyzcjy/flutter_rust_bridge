@@ -150,13 +150,13 @@ Future<void> generateInternal(
     await generateInternalContributor(config);
   });
   await generateInternalReadme(config);
-  await generateInternalCargoKitCopies(config);
+  await generateInternalCargokitCopies(config);
 }
 
-Future<void> generateInternalCargoKitCopies(GenerateConfig config) async {
+Future<void> generateInternalCargokitCopies(GenerateConfig config) async {
   await _wrapMaybeSetExitIfChanged(
     config,
-    syncCargoKitCopies,
+    syncCargokitCopies,
     extraArgs: '-- frb_example',
   );
 }
