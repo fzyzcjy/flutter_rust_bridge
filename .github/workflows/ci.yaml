@@ -829,7 +829,7 @@ jobs:
         device:
           - "pixel"
           - "Nexus 6"
-        api-level: [ 29 ]
+        api-level: [ 35 ]
 
     steps:
       # setup
@@ -867,6 +867,7 @@ jobs:
         with:
           api-level: ${{ matrix.api-level }}
           force-avd-creation: false
+          arch: x86_64
           # emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           # disable-animations: false
           script: echo "Generated AVD snapshot for caching."
@@ -876,7 +877,7 @@ jobs:
         with:
           api-level: ${{ matrix.api-level }}
           # emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
-          # arch: x86_64
+          arch: x86_64
           profile: ${{ matrix.device }}
           script: ./frb_internal test-flutter-native --flutter-test-args '--device-id emulator-5554' --package ${{ matrix.package }}
 
