@@ -233,15 +233,15 @@ fn exclude_cargokit_from_outer_analyzer(dart_root: &Path, template: &Template) -
 fn add_analyzer_exclude(text: &str, exclude: &str) -> String {
     // Use a targeted text edit so YAML comments, blank lines, and formatting stay unchanged.
     let exclude_line = format!("    - {exclude}");
-    if text.lines().any(|line| line.trim() == format!("- {exclude}")) {
+    if text
+        .lines()
+        .any(|line| line.trim() == format!("- {exclude}"))
+    {
         return text.to_owned();
     }
 
     let mut lines = text.lines().map(String::from).collect_vec();
-    let Some(analyzer_index) = lines
-        .iter()
-        .position(|line| line.trim() == "analyzer:")
-    else {
+    let Some(analyzer_index) = lines.iter().position(|line| line.trim() == "analyzer:") else {
         return format!("analyzer:\n  exclude:\n{exclude_line}\n\n{text}");
     };
 
