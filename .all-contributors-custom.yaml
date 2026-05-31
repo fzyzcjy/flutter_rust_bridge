@@ -35,6 +35,7 @@
 - alexlapa: Fix Dart_PostCObject. Fix DartOpaque.
 - kyrias: Use portable atomic. Ignore accessor fields. Update doc.
 - SilverMira: Fix StreamSink. Encoded types in DCO.
+- star4277: Support OHOS platform.
 - Integral-Tech: Use concat. Fix lint.
 - h3x4d3c1m4l: Fix when outside folder. Support publish tag.
 - Tienisto: Remove default enum case. Add mock init.
