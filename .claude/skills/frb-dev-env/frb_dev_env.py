@@ -28,7 +28,10 @@ DEFAULT_TART_BASE_VM = "frb-tart-base"
 MIN_TART_FREE_GB = 150
 REPO_LABEL = "frb.dev.repo"
 WORKTREE_LABEL = "frb.dev.worktree"
+GIT_COMMON_ROOT_LABEL = "frb.dev.git-common-root"
+LAYOUT_VERSION_LABEL = "frb.dev.layout-version"
 REPO_LABEL_VALUE = "flutter_rust_bridge"
+LAYOUT_VERSION_VALUE = "2"
 WORKSPACE_PATH = "/workspace"
 TART_WORKSPACE_SHARE_NAME = "workspace"
 TART_HOST_MAIN_SHARE_NAME = "main"
@@ -92,6 +95,25 @@ def container_name_for_worktree(worktree_root: Path) -> str:
     return f"frb-{digest}"
 
 
+def docker_volume_args(*, worktree_root: Path) -> list[str]:
+    git_common_root = resolve_git_common_root(worktree_root=worktree_root)
+    volumes = [
+        "--volume",
+        f"{worktree_root}:{WORKSPACE_PATH}",
+        "--volume",
+        f"{worktree_root}:{worktree_root}",
+    ]
+    if git_common_root != worktree_root:
+        volumes.extend(
+            [
+                "--volume",
+                f"{git_common_root}:{git_common_root}",
+            ]
+        )
+
+    return volumes
+
+
 def get_image(image: str | None) -> str:
     if image is not None:
         return image
@@ -122,6 +144,21 @@ def get_tart_base_vm(base_vm: str | None) -> str:
         return base_vm
 
     return os.environ.get("FRB_TART_BASE_VM", DEFAULT_TART_BASE_VM)
+
+
+def resolve_git_common_root(worktree_root: Path) -> Path:
+    output = exec_command(
+        ["git", "-C", str(worktree_root), "rev-parse", "--git-common-dir"],
+        capture_output=True,
+    )
+    if output is None:
+        raise CommandError(f"Unable to resolve git common directory for {worktree_root}")
+
+    git_common_dir = Path(output)
+    if not git_common_dir.is_absolute():
+        git_common_dir = worktree_root / git_common_dir
+
+    return git_common_dir.resolve().parent
 
 
 def tart_get(vm_name: str) -> dict[str, object] | None:
@@ -224,7 +261,7 @@ def tart_shell_command(command: list[str], *, worktree_root: Path) -> list[str]:
 
 
 def ensure_tart_host_path_links(*, vm_name: str, worktree_root: Path) -> None:
-    host_main_dir = Path.home() / TART_HOST_MAIN_SHARE_NAME
+    git_common_root = resolve_git_common_root(worktree_root=worktree_root)
     link_command = "\n".join(
         [
             "set -euo pipefail",
@@ -242,7 +279,7 @@ def ensure_tart_host_path_links(*, vm_name: str, worktree_root: Path) -> None:
             '    sudo -n mount_virtiofs "$tag" "$mount_point"',
             "  fi",
             "}",
-            f"ensure_mount {shlex.quote(TART_HOST_MAIN_SHARE_NAME)} {shlex.quote(str(host_main_dir))}",
+            f"ensure_mount {shlex.quote(TART_HOST_MAIN_SHARE_NAME)} {shlex.quote(str(git_common_root))}",
             f"ensure_mount {shlex.quote(TART_WORKSPACE_SHARE_NAME)} {shlex.quote(str(worktree_root))}",
         ]
     )
@@ -269,7 +306,7 @@ def start_tart_vm(
                 "run",
                 "--no-graphics",
                 f"--dir={worktree_root}:tag={TART_WORKSPACE_SHARE_NAME}",
-                f"--dir={Path.home() / TART_HOST_MAIN_SHARE_NAME}:tag={TART_HOST_MAIN_SHARE_NAME}",
+                f"--dir={resolve_git_common_root(worktree_root=worktree_root)}:tag={TART_HOST_MAIN_SHARE_NAME}",
                 vm_name,
             ],
             stdout=output,
@@ -339,12 +376,20 @@ def container_labels(container_name: str) -> dict[str, str]:
 def validate_existing_container(*, container_name: str, worktree_root: Path) -> None:
     labels = container_labels(container_name=container_name)
     expected_worktree_root = str(worktree_root)
+    expected_git_common_root = str(resolve_git_common_root(worktree_root=worktree_root))
 
-    if labels.get(REPO_LABEL) != REPO_LABEL_VALUE or labels.get(WORKTREE_LABEL) != expected_worktree_root:
+    if (
+        labels.get(REPO_LABEL) != REPO_LABEL_VALUE
+        or labels.get(WORKTREE_LABEL) != expected_worktree_root
+        or labels.get(GIT_COMMON_ROOT_LABEL) != expected_git_common_root
+        or labels.get(LAYOUT_VERSION_LABEL) != LAYOUT_VERSION_VALUE
+    ):
         raise CommandError(
             "Existing container has unexpected labels: "
             f"{container_name}. Expected {REPO_LABEL}={REPO_LABEL_VALUE} "
-            f"and {WORKTREE_LABEL}={expected_worktree_root}."
+            f"and {WORKTREE_LABEL}={expected_worktree_root} "
+            f"and {GIT_COMMON_ROOT_LABEL}={expected_git_common_root} "
+            f"and {LAYOUT_VERSION_LABEL}={LAYOUT_VERSION_VALUE}."
         )
 
 
@@ -363,10 +408,13 @@ def ensure_container(*, worktree_root: Path, image: str) -> str:
                 f"{REPO_LABEL}={REPO_LABEL_VALUE}",
                 "--label",
                 f"{WORKTREE_LABEL}={worktree_root}",
-                "--volume",
-                f"{worktree_root}:{WORKSPACE_PATH}",
+                "--label",
+                f"{GIT_COMMON_ROOT_LABEL}={resolve_git_common_root(worktree_root=worktree_root)}",
+                "--label",
+                f"{LAYOUT_VERSION_LABEL}={LAYOUT_VERSION_VALUE}",
+                *docker_volume_args(worktree_root=worktree_root),
                 "--workdir",
-                WORKSPACE_PATH,
+                str(worktree_root),
                 image,
                 "bash",
                 "-lc",
@@ -429,9 +477,13 @@ def build_info(*, worktree_root: Path, image: str) -> dict[str, object]:
         "running": running,
         "image": image,
         "workspace_path": WORKSPACE_PATH,
+        "command_workdir": str(worktree_root),
+        "git_common_root": str(resolve_git_common_root(worktree_root=worktree_root)),
         "labels": {
             REPO_LABEL: REPO_LABEL_VALUE,
             WORKTREE_LABEL: str(worktree_root),
+            GIT_COMMON_ROOT_LABEL: str(resolve_git_common_root(worktree_root=worktree_root)),
+            LAYOUT_VERSION_LABEL: LAYOUT_VERSION_VALUE,
         },
         "actual_labels": actual_labels,
     }
@@ -554,7 +606,7 @@ def exec_in_container(
             "exec",
             *exec_flags,
             "--workdir",
-            WORKSPACE_PATH,
+            str(resolved_worktree_root),
             container_name,
             *command,
         ]
