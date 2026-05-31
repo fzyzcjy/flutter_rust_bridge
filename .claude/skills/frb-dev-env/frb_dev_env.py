@@ -7,6 +7,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import shlex
 import subprocess
 import sys
 import time
@@ -29,6 +30,8 @@ REPO_LABEL = "frb.dev.repo"
 WORKTREE_LABEL = "frb.dev.worktree"
 REPO_LABEL_VALUE = "flutter_rust_bridge"
 WORKSPACE_PATH = "/workspace"
+TART_WORKSPACE_SHARE_NAME = "workspace"
+TART_HOST_MAIN_SHARE_NAME = "main"
 
 
 # ========== Common ==========
@@ -211,7 +214,44 @@ def ensure_tart_vm(*, worktree_root: Path, base_vm: str, min_free_gb: int) -> st
     return vm_name
 
 
-def start_tart_vm(*, vm_name: str, log_path: Path | None) -> None:
+def tart_shell_command(command: list[str], *, worktree_root: Path) -> list[str]:
+    quoted_command = " ".join(shlex.quote(part) for part in command)
+    return [
+        "/bin/zsh",
+        "-lc",
+        f"cd {shlex.quote(str(worktree_root))} && exec {quoted_command}",
+    ]
+
+
+def ensure_tart_host_path_links(*, vm_name: str, worktree_root: Path) -> None:
+    host_main_dir = Path.home() / TART_HOST_MAIN_SHARE_NAME
+    link_command = "\n".join(
+        [
+            "set -euo pipefail",
+            "ensure_mount() {",
+            "  local tag=$1",
+            "  local mount_point=$2",
+            '  if [ -L "$mount_point" ]; then',
+            '    sudo -n rm -f "$mount_point"',
+            "  fi",
+            '  sudo -n mkdir -p "$mount_point"',
+            '  if ! mount | grep -F " on $mount_point " >/dev/null; then',
+            '    sudo -n mount_virtiofs "$tag" "$mount_point"',
+            "  fi",
+            "}",
+            f"ensure_mount {shlex.quote(TART_HOST_MAIN_SHARE_NAME)} {shlex.quote(str(host_main_dir))}",
+            f"ensure_mount {shlex.quote(TART_WORKSPACE_SHARE_NAME)} {shlex.quote(str(worktree_root))}",
+        ]
+    )
+    exec_command(["tart", "exec", vm_name, "/bin/zsh", "-lc", link_command])
+
+
+def start_tart_vm(
+    *,
+    vm_name: str,
+    worktree_root: Path,
+    log_path: Path | None,
+) -> None:
     if tart_vm_is_running(vm_name=vm_name):
         return
 
@@ -221,7 +261,14 @@ def start_tart_vm(*, vm_name: str, log_path: Path | None) -> None:
 
     with resolved_log_path.open("ab") as output:
         subprocess.Popen(
-            ["tart", "run", "--no-graphics", vm_name],
+            [
+                "tart",
+                "run",
+                "--no-graphics",
+                f"--dir={worktree_root}:tag={TART_WORKSPACE_SHARE_NAME}",
+                f"--dir={Path.home() / TART_HOST_MAIN_SHARE_NAME}:tag={TART_HOST_MAIN_SHARE_NAME}",
+                vm_name,
+            ],
             stdout=output,
             stderr=subprocess.STDOUT,
             start_new_session=True,
@@ -240,6 +287,16 @@ def wait_for_tart_ip(*, vm_name: str, wait_seconds: int) -> str:
     elapsed = time.monotonic() - start_time
     typer.echo(f"Resolved {vm_name} IP in {elapsed:.1f}s", err=True)
     return output
+
+
+def wait_for_tart_running(*, vm_name: str, wait_seconds: int) -> None:
+    deadline = time.monotonic() + wait_seconds
+    while time.monotonic() < deadline:
+        if tart_vm_is_running(vm_name=vm_name):
+            return
+        time.sleep(1)
+
+    raise CommandError(f'Tart VM "{vm_name}" did not become running within {wait_seconds}s')
 
 
 # ========== Docker ==========
@@ -602,8 +659,14 @@ def tart_start(
         base_vm=get_tart_base_vm(base_vm=base_vm),
         min_free_gb=min_free_gb,
     )
-    start_tart_vm(vm_name=vm_name, log_path=log_path)
+    start_tart_vm(
+        vm_name=vm_name,
+        worktree_root=resolved_worktree_root,
+        log_path=log_path,
+    )
+    wait_for_tart_running(vm_name=vm_name, wait_seconds=wait)
     ip_address = wait_for_tart_ip(vm_name=vm_name, wait_seconds=wait)
+    ensure_tart_host_path_links(vm_name=vm_name, worktree_root=resolved_worktree_root)
     typer.echo(ip_address)
 
 
@@ -698,10 +761,23 @@ def tart_exec(
         min_free_gb=min_free_gb,
     )
     if not tart_vm_is_running(vm_name=vm_name):
-        start_tart_vm(vm_name=vm_name, log_path=log_path)
+        start_tart_vm(
+            vm_name=vm_name,
+            worktree_root=resolved_worktree_root,
+            log_path=log_path,
+        )
+        wait_for_tart_running(vm_name=vm_name, wait_seconds=wait)
         wait_for_tart_ip(vm_name=vm_name, wait_seconds=wait)
+    ensure_tart_host_path_links(vm_name=vm_name, worktree_root=resolved_worktree_root)
 
-    exec_command(["tart", "exec", vm_name, *command])
+    exec_command(
+        [
+            "tart",
+            "exec",
+            vm_name,
+            *tart_shell_command(command, worktree_root=resolved_worktree_root),
+        ]
+    )
 
 
 if __name__ == "__main__":
