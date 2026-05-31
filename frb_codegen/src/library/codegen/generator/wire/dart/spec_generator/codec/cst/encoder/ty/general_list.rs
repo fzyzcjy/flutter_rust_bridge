@@ -32,6 +32,8 @@ impl WireDartCodecCstGeneratorEncoderTrait for GeneralListWireDartCodecCstGenera
                             | MirType::Delegate(MirTypeDelegate::StreamSink(_))
                             | MirType::Delegate(MirTypeDelegate::Time(_))
                             | MirType::Delegate(MirTypeDelegate::Uuid)
+                            | MirType::Delegate(MirTypeDelegate::Url)
+                            | MirType::Delegate(MirTypeDelegate::UriparseUri)
                             | MirType::Delegate(MirTypeDelegate::SerdeJsonValue)
                     )
                 {

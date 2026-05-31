@@ -56,6 +56,30 @@ impl WireRustCodecDcoGeneratorEncoderTrait for DelegateWireRustCodecDcoGenerator
                         + &generate_impl_into_into_dart(&name, &Some(wrapper_name.clone())),
                 )
             }
+            MirTypeDelegate::Url => Some(
+                generate_impl_into_dart(
+                    "FrbWrapper<url::Url>",
+                    "self.0.to_string().into_dart()",
+                ) + &generate_impl_into_into_dart(
+                    "url::Url",
+                    &Some("FrbWrapper<url::Url>".to_owned()),
+                ),
+            ),
+            MirTypeDelegate::UriparseUri => Some(
+                r#"impl<'a> flutter_rust_bridge::IntoDart for FrbWrapper<uriparse::URI<'a>> {
+                    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+                        self.0.to_string().into_dart()
+                    }
+                }
+                impl<'a> flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for FrbWrapper<uriparse::URI<'a>> {}
+                impl<'a> flutter_rust_bridge::IntoIntoDart<FrbWrapper<uriparse::URI<'a>>> for uriparse::URI<'a> {
+                    fn into_into_dart(self) -> FrbWrapper<uriparse::URI<'a>> {
+                        self.into()
+                    }
+                }
+"#
+                .to_owned(),
+            ),
             _ => None,
         }
     }

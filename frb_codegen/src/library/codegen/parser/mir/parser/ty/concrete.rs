@@ -39,6 +39,8 @@ impl TypeParserWithContext<'_, '_, '_> {
             ("DateTime", args) if check_prefix("chrono") => self.parse_datetime(args)?,
 
             ("Uuid", []) if check_prefix("uuid") => Delegate(MirTypeDelegate::Uuid),
+            ("Url", []) if check_prefix("url") => Delegate(MirTypeDelegate::Url),
+            ("URI", []) if check_prefix("uriparse") => Delegate(MirTypeDelegate::UriparseUri),
             ("Value", []) if check_prefix("serde_json") => Delegate(MirTypeDelegate::SerdeJsonValue),
             ("String", []) | ("str", []) => Delegate(MirTypeDelegate::String),
             ("char", []) => Delegate(MirTypeDelegate::Char),

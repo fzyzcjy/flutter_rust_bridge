@@ -77,5 +77,7 @@ pub mod tuple_twin_rust_async;
 pub mod tuple_twin_sync;
 pub mod type_alias_twin_rust_async;
 pub mod type_alias_twin_sync;
+pub mod url_type_twin_rust_async;
+pub mod url_type_twin_sync;
 pub mod uuid_type_twin_rust_async;
 pub mod uuid_type_twin_sync;

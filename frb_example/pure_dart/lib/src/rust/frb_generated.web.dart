@@ -261,6 +261,11 @@ import 'api/pseudo_manual/type_alias_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/type_alias_twin_sse.dart';
 import 'api/pseudo_manual/type_alias_twin_sync.dart';
 import 'api/pseudo_manual/type_alias_twin_sync_sse.dart';
+import 'api/pseudo_manual/url_type_twin_rust_async.dart';
+import 'api/pseudo_manual/url_type_twin_rust_async_sse.dart';
+import 'api/pseudo_manual/url_type_twin_sse.dart';
+import 'api/pseudo_manual/url_type_twin_sync.dart';
+import 'api/pseudo_manual/url_type_twin_sync_sse.dart';
 import 'api/pseudo_manual/uuid_type_twin_rust_async.dart';
 import 'api/pseudo_manual/uuid_type_twin_rust_async_sse.dart';
 import 'api/pseudo_manual/uuid_type_twin_sse.dart';
@@ -277,6 +282,7 @@ import 'api/stream_misc.dart';
 import 'api/structure.dart';
 import 'api/tuple.dart';
 import 'api/type_alias.dart';
+import 'api/url_type.dart';
 import 'api/uuid_type.dart';
 import 'auxiliary/new_module_system/sub_module.dart';
 import 'auxiliary/old_module_system/sub_module.dart';
@@ -4563,6 +4569,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   BigInt dco_decode_U128(dynamic raw);
 
   @protected
+  Uri dco_decode_UriparseUri(dynamic raw);
+
+  @protected
+  Uri dco_decode_Url(dynamic raw);
+
+  @protected
   UuidValue dco_decode_Uuid(dynamic raw);
 
   @protected
@@ -5737,6 +5749,53 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   FeatureSerdeJsonTwinSyncSse
       dco_decode_box_autoadd_feature_serde_json_twin_sync_sse(dynamic raw);
+
+  @protected
+  FeatureUriparseUriTwinNormal
+      dco_decode_box_autoadd_feature_uriparse_uri_twin_normal(dynamic raw);
+
+  @protected
+  FeatureUriparseUriTwinRustAsync
+      dco_decode_box_autoadd_feature_uriparse_uri_twin_rust_async(dynamic raw);
+
+  @protected
+  FeatureUriparseUriTwinRustAsyncSse
+      dco_decode_box_autoadd_feature_uriparse_uri_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  FeatureUriparseUriTwinSse
+      dco_decode_box_autoadd_feature_uriparse_uri_twin_sse(dynamic raw);
+
+  @protected
+  FeatureUriparseUriTwinSync
+      dco_decode_box_autoadd_feature_uriparse_uri_twin_sync(dynamic raw);
+
+  @protected
+  FeatureUriparseUriTwinSyncSse
+      dco_decode_box_autoadd_feature_uriparse_uri_twin_sync_sse(dynamic raw);
+
+  @protected
+  FeatureUrlTwinNormal dco_decode_box_autoadd_feature_url_twin_normal(
+      dynamic raw);
+
+  @protected
+  FeatureUrlTwinRustAsync dco_decode_box_autoadd_feature_url_twin_rust_async(
+      dynamic raw);
+
+  @protected
+  FeatureUrlTwinRustAsyncSse
+      dco_decode_box_autoadd_feature_url_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  FeatureUrlTwinSse dco_decode_box_autoadd_feature_url_twin_sse(dynamic raw);
+
+  @protected
+  FeatureUrlTwinSync dco_decode_box_autoadd_feature_url_twin_sync(dynamic raw);
+
+  @protected
+  FeatureUrlTwinSyncSse dco_decode_box_autoadd_feature_url_twin_sync_sse(
+      dynamic raw);
 
   @protected
   FeatureUuidTwinNormal dco_decode_box_autoadd_feature_uuid_twin_normal(
@@ -7702,6 +7761,49 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  FeatureUriparseUriTwinNormal dco_decode_feature_uriparse_uri_twin_normal(
+      dynamic raw);
+
+  @protected
+  FeatureUriparseUriTwinRustAsync
+      dco_decode_feature_uriparse_uri_twin_rust_async(dynamic raw);
+
+  @protected
+  FeatureUriparseUriTwinRustAsyncSse
+      dco_decode_feature_uriparse_uri_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  FeatureUriparseUriTwinSse dco_decode_feature_uriparse_uri_twin_sse(
+      dynamic raw);
+
+  @protected
+  FeatureUriparseUriTwinSync dco_decode_feature_uriparse_uri_twin_sync(
+      dynamic raw);
+
+  @protected
+  FeatureUriparseUriTwinSyncSse dco_decode_feature_uriparse_uri_twin_sync_sse(
+      dynamic raw);
+
+  @protected
+  FeatureUrlTwinNormal dco_decode_feature_url_twin_normal(dynamic raw);
+
+  @protected
+  FeatureUrlTwinRustAsync dco_decode_feature_url_twin_rust_async(dynamic raw);
+
+  @protected
+  FeatureUrlTwinRustAsyncSse dco_decode_feature_url_twin_rust_async_sse(
+      dynamic raw);
+
+  @protected
+  FeatureUrlTwinSse dco_decode_feature_url_twin_sse(dynamic raw);
+
+  @protected
+  FeatureUrlTwinSync dco_decode_feature_url_twin_sync(dynamic raw);
+
+  @protected
+  FeatureUrlTwinSyncSse dco_decode_feature_url_twin_sync_sse(dynamic raw);
+
+  @protected
   FeatureUuidTwinNormal dco_decode_feature_uuid_twin_normal(dynamic raw);
 
   @protected
@@ -7924,6 +8026,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<String> dco_decode_list_String(dynamic raw);
+
+  @protected
+  List<Uri> dco_decode_list_UriparseUri(dynamic raw);
+
+  @protected
+  List<Uri> dco_decode_list_Url(dynamic raw);
 
   @protected
   List<UuidValue> dco_decode_list_Uuid(dynamic raw);
@@ -13982,6 +14090,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   BigInt sse_decode_U128(SseDeserializer deserializer);
 
   @protected
+  Uri sse_decode_UriparseUri(SseDeserializer deserializer);
+
+  @protected
+  Uri sse_decode_Url(SseDeserializer deserializer);
+
+  @protected
   UuidValue sse_decode_Uuid(SseDeserializer deserializer);
 
   @protected
@@ -15315,6 +15429,61 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   FeatureSerdeJsonTwinSyncSse
       sse_decode_box_autoadd_feature_serde_json_twin_sync_sse(
           SseDeserializer deserializer);
+
+  @protected
+  FeatureUriparseUriTwinNormal
+      sse_decode_box_autoadd_feature_uriparse_uri_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  FeatureUriparseUriTwinRustAsync
+      sse_decode_box_autoadd_feature_uriparse_uri_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  FeatureUriparseUriTwinRustAsyncSse
+      sse_decode_box_autoadd_feature_uriparse_uri_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  FeatureUriparseUriTwinSse
+      sse_decode_box_autoadd_feature_uriparse_uri_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  FeatureUriparseUriTwinSync
+      sse_decode_box_autoadd_feature_uriparse_uri_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  FeatureUriparseUriTwinSyncSse
+      sse_decode_box_autoadd_feature_uriparse_uri_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  FeatureUrlTwinNormal sse_decode_box_autoadd_feature_url_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureUrlTwinRustAsync sse_decode_box_autoadd_feature_url_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureUrlTwinRustAsyncSse
+      sse_decode_box_autoadd_feature_url_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  FeatureUrlTwinSse sse_decode_box_autoadd_feature_url_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureUrlTwinSync sse_decode_box_autoadd_feature_url_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureUrlTwinSyncSse sse_decode_box_autoadd_feature_url_twin_sync_sse(
+      SseDeserializer deserializer);
 
   @protected
   FeatureUuidTwinNormal sse_decode_box_autoadd_feature_uuid_twin_normal(
@@ -17530,6 +17699,56 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  FeatureUriparseUriTwinNormal sse_decode_feature_uriparse_uri_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureUriparseUriTwinRustAsync
+      sse_decode_feature_uriparse_uri_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  FeatureUriparseUriTwinRustAsyncSse
+      sse_decode_feature_uriparse_uri_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  FeatureUriparseUriTwinSse sse_decode_feature_uriparse_uri_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureUriparseUriTwinSync sse_decode_feature_uriparse_uri_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureUriparseUriTwinSyncSse sse_decode_feature_uriparse_uri_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureUrlTwinNormal sse_decode_feature_url_twin_normal(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureUrlTwinRustAsync sse_decode_feature_url_twin_rust_async(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureUrlTwinRustAsyncSse sse_decode_feature_url_twin_rust_async_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureUrlTwinSse sse_decode_feature_url_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureUrlTwinSync sse_decode_feature_url_twin_sync(
+      SseDeserializer deserializer);
+
+  @protected
+  FeatureUrlTwinSyncSse sse_decode_feature_url_twin_sync_sse(
+      SseDeserializer deserializer);
+
+  @protected
   FeatureUuidTwinNormal sse_decode_feature_uuid_twin_normal(
       SseDeserializer deserializer);
 
@@ -17775,6 +17994,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<String> sse_decode_list_String(SseDeserializer deserializer);
+
+  @protected
+  List<Uri> sse_decode_list_UriparseUri(SseDeserializer deserializer);
+
+  @protected
+  List<Uri> sse_decode_list_Url(SseDeserializer deserializer);
 
   @protected
   List<UuidValue> sse_decode_list_Uuid(SseDeserializer deserializer);
@@ -21852,6 +22077,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  String cst_encode_UriparseUri(Uri raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.toString());
+  }
+
+  @protected
+  String cst_encode_Url(Uri raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_String(raw.toString());
+  }
+
+  @protected
   JSAny cst_encode_Uuid(UuidValue raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_prim_u_8_strict(raw.toBytes());
@@ -23083,6 +23320,47 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       FeatureSerdeJsonTwinSync raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_feature_serde_json_twin_sync(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_feature_uriparse_uri_twin_normal(
+      FeatureUriparseUriTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_feature_uriparse_uri_twin_normal(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_feature_uriparse_uri_twin_rust_async(
+      FeatureUriparseUriTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_feature_uriparse_uri_twin_rust_async(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_feature_uriparse_uri_twin_sync(
+      FeatureUriparseUriTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_feature_uriparse_uri_twin_sync(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_feature_url_twin_normal(
+      FeatureUrlTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_feature_url_twin_normal(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_feature_url_twin_rust_async(
+      FeatureUrlTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_feature_url_twin_rust_async(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_feature_url_twin_sync(FeatureUrlTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_feature_url_twin_sync(raw);
   }
 
   @protected
@@ -25533,6 +25811,45 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  JSAny cst_encode_feature_uriparse_uri_twin_normal(
+      FeatureUriparseUriTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_UriparseUri(raw.one)].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_feature_uriparse_uri_twin_rust_async(
+      FeatureUriparseUriTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_UriparseUri(raw.one)].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_feature_uriparse_uri_twin_sync(
+      FeatureUriparseUriTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_UriparseUri(raw.one)].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_feature_url_twin_normal(FeatureUrlTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_Url(raw.one)].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_feature_url_twin_rust_async(FeatureUrlTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_Url(raw.one)].jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_feature_url_twin_sync(FeatureUrlTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return [cst_encode_Url(raw.one)].jsify()!;
+  }
+
+  @protected
   JSAny cst_encode_feature_uuid_twin_normal(FeatureUuidTwinNormal raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return [cst_encode_Uuid(raw.one)].jsify()!;
@@ -25913,6 +26230,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   JSAny cst_encode_list_String(List<String> raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return raw.map(cst_encode_String).toList().jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_list_UriparseUri(List<Uri> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.map(cst_encode_UriparseUri).toList().jsify()!;
+  }
+
+  @protected
+  JSAny cst_encode_list_Url(List<Uri> raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return raw.map(cst_encode_Url).toList().jsify()!;
   }
 
   @protected
@@ -34332,6 +34661,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void sse_encode_U128(BigInt self, SseSerializer serializer);
 
   @protected
+  void sse_encode_UriparseUri(Uri self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Url(Uri self, SseSerializer serializer);
+
+  @protected
   void sse_encode_Uuid(UuidValue self, SseSerializer serializer);
 
   @protected
@@ -35579,6 +35914,54 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_box_autoadd_feature_serde_json_twin_sync_sse(
       FeatureSerdeJsonTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feature_uriparse_uri_twin_normal(
+      FeatureUriparseUriTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feature_uriparse_uri_twin_rust_async(
+      FeatureUriparseUriTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feature_uriparse_uri_twin_rust_async_sse(
+      FeatureUriparseUriTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feature_uriparse_uri_twin_sse(
+      FeatureUriparseUriTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feature_uriparse_uri_twin_sync(
+      FeatureUriparseUriTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feature_uriparse_uri_twin_sync_sse(
+      FeatureUriparseUriTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feature_url_twin_normal(
+      FeatureUrlTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feature_url_twin_rust_async(
+      FeatureUrlTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feature_url_twin_rust_async_sse(
+      FeatureUrlTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feature_url_twin_sse(
+      FeatureUrlTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feature_url_twin_sync(
+      FeatureUrlTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_feature_url_twin_sync_sse(
+      FeatureUrlTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_feature_uuid_twin_normal(
@@ -37674,6 +38057,54 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       FeatureSerdeJsonTwinSyncSse self, SseSerializer serializer);
 
   @protected
+  void sse_encode_feature_uriparse_uri_twin_normal(
+      FeatureUriparseUriTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feature_uriparse_uri_twin_rust_async(
+      FeatureUriparseUriTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feature_uriparse_uri_twin_rust_async_sse(
+      FeatureUriparseUriTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feature_uriparse_uri_twin_sse(
+      FeatureUriparseUriTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feature_uriparse_uri_twin_sync(
+      FeatureUriparseUriTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feature_uriparse_uri_twin_sync_sse(
+      FeatureUriparseUriTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feature_url_twin_normal(
+      FeatureUrlTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feature_url_twin_rust_async(
+      FeatureUrlTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feature_url_twin_rust_async_sse(
+      FeatureUrlTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feature_url_twin_sse(
+      FeatureUrlTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feature_url_twin_sync(
+      FeatureUrlTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_feature_url_twin_sync_sse(
+      FeatureUrlTwinSyncSse self, SseSerializer serializer);
+
+  @protected
   void sse_encode_feature_uuid_twin_normal(
       FeatureUuidTwinNormal self, SseSerializer serializer);
 
@@ -37921,6 +38352,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_list_String(List<String> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_UriparseUri(List<Uri> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_Url(List<Uri> self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_Uuid(List<UuidValue> self, SseSerializer serializer);
@@ -52718,6 +53155,97 @@ class RustLibWire implements BaseWire {
               .wire__crate__api__pseudo_manual__misc_example_twin_sync_sse__handle_nested_struct_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
+  void wire__crate__api__url_type__handle_nested_uriparse_uri_twin_normal(
+          NativePortType port_, JSAny uri) =>
+      wasmModule
+          .wire__crate__api__url_type__handle_nested_uriparse_uri_twin_normal(
+              port_, uri);
+
+  void wire__crate__api__pseudo_manual__url_type_twin_rust_async__handle_nested_uriparse_uri_twin_rust_async(
+          NativePortType port_, JSAny uri) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__url_type_twin_rust_async__handle_nested_uriparse_uri_twin_rust_async(
+              port_, uri);
+
+  void wire__crate__api__pseudo_manual__url_type_twin_rust_async_sse__handle_nested_uriparse_uri_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__url_type_twin_rust_async_sse__handle_nested_uriparse_uri_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__url_type_twin_sse__handle_nested_uriparse_uri_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__url_type_twin_sse__handle_nested_uriparse_uri_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__url_type_twin_sync__handle_nested_uriparse_uri_twin_sync(
+              JSAny uri) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__url_type_twin_sync__handle_nested_uriparse_uri_twin_sync(
+                  uri);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__url_type_twin_sync_sse__handle_nested_uriparse_uri_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__url_type_twin_sync_sse__handle_nested_uriparse_uri_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__url_type__handle_nested_url_twin_normal(
+          NativePortType port_, JSAny url) =>
+      wasmModule.wire__crate__api__url_type__handle_nested_url_twin_normal(
+          port_, url);
+
+  void wire__crate__api__pseudo_manual__url_type_twin_rust_async__handle_nested_url_twin_rust_async(
+          NativePortType port_, JSAny url) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__url_type_twin_rust_async__handle_nested_url_twin_rust_async(
+              port_, url);
+
+  void wire__crate__api__pseudo_manual__url_type_twin_rust_async_sse__handle_nested_url_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__url_type_twin_rust_async_sse__handle_nested_url_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__url_type_twin_sse__handle_nested_url_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__url_type_twin_sse__handle_nested_url_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__url_type_twin_sync__handle_nested_url_twin_sync(
+              JSAny url) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__url_type_twin_sync__handle_nested_url_twin_sync(
+                  url);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__url_type_twin_sync_sse__handle_nested_url_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__url_type_twin_sync_sse__handle_nested_url_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
   void wire__crate__api__uuid_type__handle_nested_uuids_twin_normal(
           NativePortType port_, JSAny ids) =>
       wasmModule.wire__crate__api__uuid_type__handle_nested_uuids_twin_normal(
@@ -53578,6 +54106,185 @@ class RustLibWire implements BaseWire {
               int data_len_) =>
           wasmModule
               .wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__handle_type_nest_alias_id_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__url_type__handle_uriparse_uri_twin_normal(
+          NativePortType port_, String uri) =>
+      wasmModule.wire__crate__api__url_type__handle_uriparse_uri_twin_normal(
+          port_, uri);
+
+  void wire__crate__api__pseudo_manual__url_type_twin_rust_async__handle_uriparse_uri_twin_rust_async(
+          NativePortType port_, String uri) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__url_type_twin_rust_async__handle_uriparse_uri_twin_rust_async(
+              port_, uri);
+
+  void wire__crate__api__pseudo_manual__url_type_twin_rust_async_sse__handle_uriparse_uri_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__url_type_twin_rust_async_sse__handle_uriparse_uri_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__url_type_twin_sse__handle_uriparse_uri_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__url_type_twin_sse__handle_uriparse_uri_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__url_type_twin_sync__handle_uriparse_uri_twin_sync(
+              String uri) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__url_type_twin_sync__handle_uriparse_uri_twin_sync(
+                  uri);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__url_type_twin_sync_sse__handle_uriparse_uri_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__url_type_twin_sync_sse__handle_uriparse_uri_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__url_type__handle_uriparse_uris_twin_normal(
+          NativePortType port_, JSAny uris) =>
+      wasmModule.wire__crate__api__url_type__handle_uriparse_uris_twin_normal(
+          port_, uris);
+
+  void wire__crate__api__pseudo_manual__url_type_twin_rust_async__handle_uriparse_uris_twin_rust_async(
+          NativePortType port_, JSAny uris) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__url_type_twin_rust_async__handle_uriparse_uris_twin_rust_async(
+              port_, uris);
+
+  void wire__crate__api__pseudo_manual__url_type_twin_rust_async_sse__handle_uriparse_uris_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__url_type_twin_rust_async_sse__handle_uriparse_uris_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__url_type_twin_sse__handle_uriparse_uris_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__url_type_twin_sse__handle_uriparse_uris_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__url_type_twin_sync__handle_uriparse_uris_twin_sync(
+              JSAny uris) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__url_type_twin_sync__handle_uriparse_uris_twin_sync(
+                  uris);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__url_type_twin_sync_sse__handle_uriparse_uris_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__url_type_twin_sync_sse__handle_uriparse_uris_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__url_type__handle_url_twin_normal(
+          NativePortType port_, String url) =>
+      wasmModule.wire__crate__api__url_type__handle_url_twin_normal(port_, url);
+
+  void wire__crate__api__pseudo_manual__url_type_twin_rust_async__handle_url_twin_rust_async(
+          NativePortType port_, String url) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__url_type_twin_rust_async__handle_url_twin_rust_async(
+              port_, url);
+
+  void wire__crate__api__pseudo_manual__url_type_twin_rust_async_sse__handle_url_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__url_type_twin_rust_async_sse__handle_url_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__url_type_twin_sse__handle_url_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__url_type_twin_sse__handle_url_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__url_type_twin_sync__handle_url_twin_sync(
+              String url) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__url_type_twin_sync__handle_url_twin_sync(
+                  url);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__url_type_twin_sync_sse__handle_url_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__url_type_twin_sync_sse__handle_url_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__url_type__handle_urls_twin_normal(
+          NativePortType port_, JSAny urls) =>
+      wasmModule.wire__crate__api__url_type__handle_urls_twin_normal(
+          port_, urls);
+
+  void wire__crate__api__pseudo_manual__url_type_twin_rust_async__handle_urls_twin_rust_async(
+          NativePortType port_, JSAny urls) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__url_type_twin_rust_async__handle_urls_twin_rust_async(
+              port_, urls);
+
+  void wire__crate__api__pseudo_manual__url_type_twin_rust_async_sse__handle_urls_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__url_type_twin_rust_async_sse__handle_urls_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__url_type_twin_sse__handle_urls_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__url_type_twin_sse__handle_urls_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__url_type_twin_sync__handle_urls_twin_sync(
+              JSAny urls) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__url_type_twin_sync__handle_urls_twin_sync(
+                  urls);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__url_type_twin_sync_sse__handle_urls_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__url_type_twin_sync_sse__handle_urls_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__uuid_type__handle_uuid_twin_normal(
@@ -73230,6 +73937,69 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
           int rust_vec_len_,
           int data_len_);
 
+  external void
+      wire__crate__api__url_type__handle_nested_uriparse_uri_twin_normal(
+          NativePortType port_, JSAny uri);
+
+  external void
+      wire__crate__api__pseudo_manual__url_type_twin_rust_async__handle_nested_uriparse_uri_twin_rust_async(
+          NativePortType port_, JSAny uri);
+
+  external void
+      wire__crate__api__pseudo_manual__url_type_twin_rust_async_sse__handle_nested_uriparse_uri_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__url_type_twin_sse__handle_nested_uriparse_uri_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__url_type_twin_sync__handle_nested_uriparse_uri_twin_sync(
+          JSAny uri);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__url_type_twin_sync_sse__handle_nested_uriparse_uri_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void wire__crate__api__url_type__handle_nested_url_twin_normal(
+      NativePortType port_, JSAny url);
+
+  external void
+      wire__crate__api__pseudo_manual__url_type_twin_rust_async__handle_nested_url_twin_rust_async(
+          NativePortType port_, JSAny url);
+
+  external void
+      wire__crate__api__pseudo_manual__url_type_twin_rust_async_sse__handle_nested_url_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__url_type_twin_sse__handle_nested_url_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__url_type_twin_sync__handle_nested_url_twin_sync(
+          JSAny url);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__url_type_twin_sync_sse__handle_nested_url_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
   external void wire__crate__api__uuid_type__handle_nested_uuids_twin_normal(
       NativePortType port_, JSAny ids);
 
@@ -73832,6 +74602,130 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__type_alias_twin_sync_sse__handle_type_nest_alias_id_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void wire__crate__api__url_type__handle_uriparse_uri_twin_normal(
+      NativePortType port_, String uri);
+
+  external void
+      wire__crate__api__pseudo_manual__url_type_twin_rust_async__handle_uriparse_uri_twin_rust_async(
+          NativePortType port_, String uri);
+
+  external void
+      wire__crate__api__pseudo_manual__url_type_twin_rust_async_sse__handle_uriparse_uri_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__url_type_twin_sse__handle_uriparse_uri_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__url_type_twin_sync__handle_uriparse_uri_twin_sync(
+          String uri);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__url_type_twin_sync_sse__handle_uriparse_uri_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void wire__crate__api__url_type__handle_uriparse_uris_twin_normal(
+      NativePortType port_, JSAny uris);
+
+  external void
+      wire__crate__api__pseudo_manual__url_type_twin_rust_async__handle_uriparse_uris_twin_rust_async(
+          NativePortType port_, JSAny uris);
+
+  external void
+      wire__crate__api__pseudo_manual__url_type_twin_rust_async_sse__handle_uriparse_uris_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__url_type_twin_sse__handle_uriparse_uris_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__url_type_twin_sync__handle_uriparse_uris_twin_sync(
+          JSAny uris);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__url_type_twin_sync_sse__handle_uriparse_uris_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void wire__crate__api__url_type__handle_url_twin_normal(
+      NativePortType port_, String url);
+
+  external void
+      wire__crate__api__pseudo_manual__url_type_twin_rust_async__handle_url_twin_rust_async(
+          NativePortType port_, String url);
+
+  external void
+      wire__crate__api__pseudo_manual__url_type_twin_rust_async_sse__handle_url_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__url_type_twin_sse__handle_url_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__url_type_twin_sync__handle_url_twin_sync(
+          String url);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__url_type_twin_sync_sse__handle_url_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void wire__crate__api__url_type__handle_urls_twin_normal(
+      NativePortType port_, JSAny urls);
+
+  external void
+      wire__crate__api__pseudo_manual__url_type_twin_rust_async__handle_urls_twin_rust_async(
+          NativePortType port_, JSAny urls);
+
+  external void
+      wire__crate__api__pseudo_manual__url_type_twin_rust_async_sse__handle_urls_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__url_type_twin_sse__handle_urls_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__url_type_twin_sync__handle_urls_twin_sync(
+          JSAny urls);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__url_type_twin_sync_sse__handle_urls_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);

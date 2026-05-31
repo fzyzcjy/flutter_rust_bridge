@@ -78,6 +78,16 @@ impl WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator
                     "let single: Vec<u8> = self.cst_decode(); flutter_rust_bridge::for_generated::decode_uuid(single)".into(),
                 ),
             ),
+            MirTypeDelegate::Url => Acc::distribute(
+                Some(
+                    r#"let s: String = self.cst_decode(); url::Url::parse(&s).expect("Failed to deserialize url::Url")"#.into(),
+                ),
+            ),
+            MirTypeDelegate::UriparseUri => Acc::distribute(
+                Some(
+                    r#"let s: String = self.cst_decode(); uriparse::URI::try_from(s.as_str()).expect("Failed to deserialize uriparse::URI").into_owned()"#.into(),
+                ),
+            ),
             MirTypeDelegate::SerdeJsonValue => Acc::distribute(
                 Some(
                     r#"let s: String = self.cst_decode(); serde_json::from_str(&s).expect("Failed to deserialize serde_json::Value")"#.into(),
@@ -148,6 +158,12 @@ impl WireRustCodecCstGeneratorDecoderTrait for DelegateWireRustCodecCstGenerator
             MirTypeDelegate::Uuid /*| MirTypeDelegate::Uuids*/ => {
                 "self.unchecked_into::<flutter_rust_bridge::for_generated::js_sys::Uint8Array>().to_vec().into_boxed_slice().cst_decode()"
                     .into()
+            }
+            MirTypeDelegate::Url => {
+                r#"url::Url::parse(&CstDecode::<String>::cst_decode(self)).expect("Failed to deserialize url::Url")"#.into()
+            }
+            MirTypeDelegate::UriparseUri => {
+                r#"uriparse::URI::try_from(CstDecode::<String>::cst_decode(self).as_str()).expect("Failed to deserialize uriparse::URI").into_owned()"#.into()
             }
             MirTypeDelegate::SerdeJsonValue => {
                 r#"serde_json::from_str(&CstDecode::<String>::cst_decode(self)).expect("Failed to deserialize serde_json::Value")"#.into()
