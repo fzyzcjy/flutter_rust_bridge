@@ -34,6 +34,14 @@ REPO_LABEL_VALUE = "flutter_rust_bridge"
 LAYOUT_VERSION_VALUE = "3"
 TART_WORKSPACE_SHARE_NAME = "workspace"
 TART_HOST_MAIN_SHARE_NAME = "main"
+TART_LOCAL_COPY_ROOT = Path("/Users/admin/frb-dev-env-local-copies")
+TART_LOCAL_COPY_EXCLUDES = [
+    ".dart_tool",
+    ".git",
+    ".idea",
+    ".vscode",
+    "build",
+]
 
 
 # ========== Common ==========
@@ -122,8 +130,22 @@ def get_image(image: str | None) -> str:
 
 
 def tart_vm_name_for_worktree(worktree_root: Path) -> str:
-    digest = hashlib.sha256(str(worktree_root).encode()).hexdigest()[:12]
-    return f"frb-tart-{digest}"
+    return f"frb-tart-{tart_worktree_digest(worktree_root=worktree_root)}"
+
+
+def tart_worktree_digest(worktree_root: Path) -> str:
+    return hashlib.sha256(str(worktree_root).encode()).hexdigest()[:12]
+
+
+def tart_local_copy_path_for_worktree(worktree_root: Path) -> Path:
+    return TART_LOCAL_COPY_ROOT / tart_worktree_digest(worktree_root=worktree_root)
+
+
+def validate_tart_local_copy_root(local_copy_root: Path) -> Path:
+    if not local_copy_root.is_absolute():
+        raise CommandError(f"Tart local copy root must be an absolute VM path: {local_copy_root}")
+
+    return local_copy_root
 
 
 def tart_storage_root() -> Path:
@@ -218,6 +240,8 @@ def build_tart_info(*, worktree_root: Path, base_vm: str, min_free_gb: int) -> d
         "details": details,
         "base_exists": base_details is not None,
         "base_details": base_details,
+        "local_copy_path": str(tart_local_copy_path_for_worktree(worktree_root=worktree_root)),
+        "local_copy_excludes": TART_LOCAL_COPY_EXCLUDES,
     }
 
 
@@ -334,6 +358,64 @@ def wait_for_tart_running(*, vm_name: str, wait_seconds: int) -> None:
         time.sleep(1)
 
     raise CommandError(f'Tart VM "{vm_name}" did not become running within {wait_seconds}s')
+
+
+def ensure_tart_vm_running(
+    *,
+    worktree_root: Path,
+    base_vm: str,
+    min_free_gb: int,
+    log_path: Path | None,
+    wait: int,
+) -> str:
+    vm_name = ensure_tart_vm(
+        worktree_root=worktree_root,
+        base_vm=base_vm,
+        min_free_gb=min_free_gb,
+    )
+    if not tart_vm_is_running(vm_name=vm_name):
+        start_tart_vm(
+            vm_name=vm_name,
+            worktree_root=worktree_root,
+            log_path=log_path,
+        )
+        wait_for_tart_running(vm_name=vm_name, wait_seconds=wait)
+        wait_for_tart_ip(vm_name=vm_name, wait_seconds=wait)
+    ensure_tart_host_path_links(vm_name=vm_name, worktree_root=worktree_root)
+
+    return vm_name
+
+
+def upload_tart_local_copy(
+    *,
+    vm_name: str,
+    worktree_root: Path,
+    local_copy_root: Path,
+) -> Path:
+    local_copy_path = local_copy_root / tart_worktree_digest(worktree_root=worktree_root)
+    exclude_args = " ".join(
+        f"--exclude {shlex.quote(exclude)}"
+        for exclude in TART_LOCAL_COPY_EXCLUDES
+    )
+    upload_command = "\n".join(
+        [
+            "set -euo pipefail",
+            f"source_dir={shlex.quote(str(worktree_root))}",
+            f"copy_root={shlex.quote(str(local_copy_root))}",
+            f"copy_dir={shlex.quote(str(local_copy_path))}",
+            'if [ -e "$copy_dir" ] && [ ! -d "$copy_dir" ]; then',
+            '  archive_root="${TMPDIR:-/tmp}/frb-dev-env-replaced-local-copies"',
+            '  archive_name="$(date +%Y%m%d-%H%M%S)-$(basename "$copy_dir")"',
+            '  mkdir -p "$archive_root"',
+            '  mv "$copy_dir" "$archive_root/$archive_name"',
+            "fi",
+            'mkdir -p "$copy_root" "$copy_dir"',
+            f'rsync -a --delete --delete-excluded {exclude_args} "$source_dir/" "$copy_dir/"',
+        ]
+    )
+    exec_command(["tart", "exec", vm_name, "/bin/zsh", "-lc", upload_command])
+
+    return local_copy_path
 
 
 # ========== Docker ==========
@@ -773,6 +855,51 @@ def tart_delete(
     typer.echo(vm_name)
 
 
+@tart_app.command(name="upload")
+def tart_upload(
+    worktree_root: Annotated[
+        Path | None,
+        typer.Option("--worktree-root", help="FRB worktree root. Defaults to git root."),
+    ] = None,
+    base_vm: Annotated[
+        str | None,
+        typer.Option("--base-vm", help="Prepared Tart base VM. Defaults to FRB_TART_BASE_VM or frb-tart-base."),
+    ] = None,
+    min_free_gb: Annotated[
+        int,
+        typer.Option("--min-free-gb", help="Minimum free space required before creating a Tart VM."),
+    ] = MIN_TART_FREE_GB,
+    log_path: Annotated[
+        Path | None,
+        typer.Option("--log-path", help="Where to write tart run output if the VM needs to start."),
+    ] = None,
+    wait: Annotated[
+        int,
+        typer.Option("--wait", help="Seconds to wait for the VM IP if the VM needs to start."),
+    ] = 180,
+    local_copy_root: Annotated[
+        Path,
+        typer.Option("--local-copy-root", help="VM-local root for uploaded worktree copies."),
+    ] = TART_LOCAL_COPY_ROOT,
+) -> None:
+    """Upload the current worktree into a VM-local copy for heavy build/test commands."""
+
+    resolved_worktree_root = resolve_worktree_root(worktree_root=worktree_root)
+    vm_name = ensure_tart_vm_running(
+        worktree_root=resolved_worktree_root,
+        base_vm=get_tart_base_vm(base_vm=base_vm),
+        min_free_gb=min_free_gb,
+        log_path=log_path,
+        wait=wait,
+    )
+    local_copy_path = upload_tart_local_copy(
+        vm_name=vm_name,
+        worktree_root=resolved_worktree_root,
+        local_copy_root=validate_tart_local_copy_root(local_copy_root=local_copy_root),
+    )
+    typer.echo(local_copy_path)
+
+
 @tart_app.command(name="exec")
 def tart_exec(
     command: Annotated[
@@ -799,6 +926,14 @@ def tart_exec(
         int,
         typer.Option("--wait", help="Seconds to wait for the VM IP if the VM needs to start."),
     ] = 180,
+    sync_code: Annotated[
+        bool,
+        typer.Option("--sync-code", help="Upload the worktree to a VM-local copy before executing."),
+    ] = False,
+    local_copy_root: Annotated[
+        Path,
+        typer.Option("--local-copy-root", help="VM-local root for uploaded worktree copies."),
+    ] = TART_LOCAL_COPY_ROOT,
 ) -> None:
     """Ensure the Tart VM is running, then execute a command inside it."""
 
@@ -806,27 +941,27 @@ def tart_exec(
         raise typer.BadParameter("exec requires a command, for example: exec -- sw_vers")
 
     resolved_worktree_root = resolve_worktree_root(worktree_root=worktree_root)
-    vm_name = ensure_tart_vm(
+    vm_name = ensure_tart_vm_running(
         worktree_root=resolved_worktree_root,
         base_vm=get_tart_base_vm(base_vm=base_vm),
         min_free_gb=min_free_gb,
+        log_path=log_path,
+        wait=wait,
     )
-    if not tart_vm_is_running(vm_name=vm_name):
-        start_tart_vm(
+    command_worktree_root = resolved_worktree_root
+    if sync_code:
+        command_worktree_root = upload_tart_local_copy(
             vm_name=vm_name,
             worktree_root=resolved_worktree_root,
-            log_path=log_path,
+            local_copy_root=validate_tart_local_copy_root(local_copy_root=local_copy_root),
         )
-        wait_for_tart_running(vm_name=vm_name, wait_seconds=wait)
-        wait_for_tart_ip(vm_name=vm_name, wait_seconds=wait)
-    ensure_tart_host_path_links(vm_name=vm_name, worktree_root=resolved_worktree_root)
 
     exec_command(
         [
             "tart",
             "exec",
             vm_name,
-            *tart_shell_command(command, worktree_root=resolved_worktree_root),
+            *tart_shell_command(command, worktree_root=command_worktree_root),
         ]
     )
 

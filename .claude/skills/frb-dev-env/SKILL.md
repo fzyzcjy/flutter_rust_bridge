@@ -104,12 +104,21 @@ Typical usage:
 .claude/skills/frb-dev-env/frb_dev_env.py tart exec -- sw_vers
 ```
 
+For heavy iOS build/test commands, prefer uploading the current worktree to a VM-local copy and running there. This avoids writing Xcode build artifacts through the virtiofs host mount:
+
+```bash
+.claude/skills/frb-dev-env/frb_dev_env.py tart upload
+.claude/skills/frb-dev-env/frb_dev_env.py tart exec --sync-code -- ./frb_internal test-flutter-native --flutter-test-args '--device-id <UDID>' --package <package>
+```
+
+The uploaded copy lives under `/Users/admin/frb-dev-env-local-copies/<worktree-hash>` inside the VM. The upload excludes `.git`, `.dart_tool`, `build`, `.idea`, and `.vscode`, and uses rsync delete semantics so stale generated files from previous uploads do not survive.
+
 Run iOS Simulator tests by starting the worktree VM, booting an iOS simulator inside it, then running the existing FRB test command inside the VM:
 
 ```bash
 .claude/skills/frb-dev-env/frb_dev_env.py tart exec -- xcrun simctl boot <UDID>
 .claude/skills/frb-dev-env/frb_dev_env.py tart exec -- xcrun simctl bootstatus <UDID> -b
-.claude/skills/frb-dev-env/frb_dev_env.py tart exec -- ./frb_internal test-flutter-native --flutter-test-args '--device-id <UDID>' --package <package>
+.claude/skills/frb-dev-env/frb_dev_env.py tart exec --sync-code -- ./frb_internal test-flutter-native --flutter-test-args '--device-id <UDID>' --package <package>
 ```
 
 Delete the worktree VM when it is no longer needed:
