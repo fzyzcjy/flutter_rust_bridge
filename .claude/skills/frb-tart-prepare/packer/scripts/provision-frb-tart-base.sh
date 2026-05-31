@@ -97,6 +97,8 @@ rustup toolchain install "$RUST_VERSION" --profile minimal
 rustup default "$RUST_VERSION"
 rustup target add aarch64-apple-ios-sim
 rustup target add x86_64-apple-ios
+rustup target add --toolchain stable-aarch64-apple-darwin aarch64-apple-ios-sim
+rustup target add --toolchain stable-aarch64-apple-darwin x86_64-apple-ios
 
 log "Pre-caching Flutter iOS artifacts"
 flutter config --no-analytics
@@ -114,5 +116,7 @@ rustc --version
 cargo --version
 rustup target list --installed | grep '^aarch64-apple-ios-sim$'
 rustup target list --installed | grep '^x86_64-apple-ios$'
+rustup target list --toolchain stable-aarch64-apple-darwin --installed | grep '^aarch64-apple-ios-sim$'
+rustup target list --toolchain stable-aarch64-apple-darwin --installed | grep '^x86_64-apple-ios$'
 
 log "Provisioning complete"
