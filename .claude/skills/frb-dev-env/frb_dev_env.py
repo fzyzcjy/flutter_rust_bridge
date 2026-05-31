@@ -411,7 +411,7 @@ def upload_tart_local_copy(
             '  mv "$copy_dir" "$archive_root/$archive_name"',
             "fi",
             'mkdir -p "$copy_root" "$copy_dir"',
-            f'rsync -a --delete {exclude_args} "$source_dir/" "$copy_dir/"',
+            f'rsync -a {exclude_args} "$source_dir/" "$copy_dir/"',
         ]
     )
     exec_command(["tart", "exec", vm_name, "/bin/zsh", "-lc", upload_command])
