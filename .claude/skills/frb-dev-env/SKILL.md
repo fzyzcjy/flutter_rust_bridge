@@ -90,7 +90,7 @@ frb-tart-<worktree-root-sha256-prefix-12>
 
 By default, `create` clones from a prepared local base VM named `frb-tart-base`. Override it with `FRB_TART_BASE_VM` or `--base-vm`.
 
-Read `frb-tart-prepare` before creating or changing the base VM. The base VM should be cloned directly from a pinned OCI artifact and treated as immutable; do not boot it and manually install tools into it.
+Read `frb-tart-prepare` before creating or changing the base VM. The base VM should be built by the checked-in Packer template from a pinned Tart OCI artifact and treated as immutable; do not boot it and manually install tools into it.
 
 For linked git worktrees, the Tart helper shares both the canonical worktree root and the git common root into the VM, then mounts them at host-like absolute paths with `mount_virtiofs`. This keeps worktree `.git` files and submodule gitdir references valid inside the VM.
 
