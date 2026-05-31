@@ -1,6 +1,8 @@
 use crate::codegen::misc::GeneratorProgressBarPack;
+use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::integration::integrator::pub_add_dependency_frb;
 use crate::library::commands::cargo::cargo_add;
+use crate::misc::FvmInstallMode;
 use crate::utils::dart_repository::dart_repo::{DartDependencyMode, DartRepository};
 use anyhow::{anyhow, Result};
 use cargo_metadata::VersionReq;
@@ -10,24 +12,22 @@ use std::str::FromStr;
 
 pub(super) fn execute(
     progress_bar_pack: &GeneratorProgressBarPack,
-    dart_root: &Path,
-    rust_crate_dir: &Path,
-    enable_auto_upgrade: bool,
+    config: &PolisherInternalConfig,
 ) -> Result<()> {
     let _pb = progress_bar_pack.polish_upgrade.start();
 
-    let dart_upgrader = DartUpgrader::new(dart_root)?;
-    dart_upgrader.execute(enable_auto_upgrade)?;
+    let dart_upgrader = DartUpgrader::new(&config.dart_root)?;
+    dart_upgrader.execute(config)?;
 
-    let rust_upgrader = RustUpgrader::new(rust_crate_dir)?;
-    rust_upgrader.execute(enable_auto_upgrade)
+    let rust_upgrader = RustUpgrader::new(&config.rust_crate_dir)?;
+    rust_upgrader.execute(config)
 }
 
 trait Upgrader {
-    fn execute(&self, enable_auto_upgrade: bool) -> Result<()> {
+    fn execute(&self, config: &PolisherInternalConfig) -> Result<()> {
         if !self.check()? {
-            if enable_auto_upgrade {
-                self.upgrade()?;
+            if config.enable_auto_upgrade {
+                self.upgrade(config.fvm_install_mode)?;
             } else {
                 log::warn!("Auto upgrader find wrong Dart/Rust flutter_rust_bridge dependency version, please enable `auto_upgrade_dependencies` flag or upgrade manually.");
             }
@@ -37,7 +37,7 @@ trait Upgrader {
 
     fn check(&self) -> Result<bool>;
 
-    fn upgrade(&self) -> Result<()>;
+    fn upgrade(&self, fvm_install_mode: FvmInstallMode) -> Result<()>;
 }
 
 struct DartUpgrader<'a> {
@@ -66,9 +66,13 @@ impl Upgrader for DartUpgrader<'_> {
             .is_ok())
     }
 
-    fn upgrade(&self) -> Result<()> {
+    fn upgrade(&self, fvm_install_mode: FvmInstallMode) -> Result<()> {
         log::info!("Auto upgrade Dart dependency");
-        pub_add_dependency_frb(false, Some(self.base_dir))
+        // This shell-command forwarding path is exercised by integration workflows; llvm-cov
+        // does not see the external Dart command behavior as meaningful Rust coverage.
+        // frb-coverage:ignore-start
+        pub_add_dependency_frb(false, Some(self.base_dir), fvm_install_mode)
+        // frb-coverage:ignore-end
     }
 }
 
@@ -110,12 +114,64 @@ impl<'a> RustUpgrader<'a> {
     }
 }
 
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::polisher::internal_config::PolisherInternalConfig;
+    use std::cell::Cell;
+    use tempfile::tempdir;
+
+    struct RecordingUpgrader {
+        forwarded_mode: Cell<Option<FvmInstallMode>>,
+    }
+
+    impl Upgrader for RecordingUpgrader {
+        fn check(&self) -> Result<bool> {
+            Ok(false)
+        }
+
+        fn upgrade(&self, fvm_install_mode: FvmInstallMode) -> Result<()> {
+            self.forwarded_mode.set(Some(fvm_install_mode));
+            Ok(())
+        }
+    }
+
+    #[test]
+    fn upgrader_forwards_fvm_install_mode_from_config() {
+        let temp_dir = tempdir().unwrap();
+        let config = PolisherInternalConfig {
+            duplicated_c_output_path: vec![],
+            dart_format_line_length: 80,
+            dart_format: false,
+            dart_fix: false,
+            rust_format: false,
+            add_mod_to_lib: false,
+            build_runner: false,
+            web_enabled: false,
+            dart_output: temp_dir.path().join("dart_output"),
+            dart_root: temp_dir.path().join("dart_root"),
+            rust_crate_dir: temp_dir.path().join("rust_crate"),
+            rust_output_path: temp_dir.path().join("rust_output"),
+            c_output_path: None,
+            enable_auto_upgrade: true,
+            fvm_install_mode: FvmInstallMode::Skip,
+        };
+        let upgrader = RecordingUpgrader {
+            forwarded_mode: Cell::new(None),
+        };
+
+        upgrader.execute(&config).unwrap();
+
+        assert_eq!(upgrader.forwarded_mode.get(), Some(FvmInstallMode::Skip));
+    }
+}
+
 impl Upgrader for RustUpgrader<'_> {
     fn check(&self) -> Result<bool> {
         Ok(self.dependency.req() == concat!("=", env!("CARGO_PKG_VERSION")))
     }
 
-    fn upgrade(&self) -> Result<()> {
+    fn upgrade(&self, _fvm_install_mode: FvmInstallMode) -> Result<()> {
         log::info!("Auto upgrade Rust dependency");
 
         let mut args = vec![concat!("flutter_rust_bridge@=", env!("CARGO_PKG_VERSION"))];
@@ -130,5 +186,60 @@ impl Upgrader for RustUpgrader<'_> {
         }
 
         cargo_add(&args, self.base_dir)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::RustUpgrader;
+    use cargo_toml::Manifest;
+
+    fn parse_manifest(text: &str) -> Manifest {
+        toml::from_str(text).unwrap()
+    }
+
+    #[test]
+    fn test_get_dependency_from_target_specific_dependencies() {
+        let manifest = parse_manifest(
+            r#"
+                [package]
+                name = "demo"
+                version = "0.1.0"
+                edition = "2021"
+
+                [target.x86_64-unknown-linux-gnu.dependencies]
+                flutter_rust_bridge = "=1.0.0"
+            "#,
+        );
+
+        let (target_name, dependency) =
+            RustUpgrader::get_dependency(manifest, "flutter_rust_bridge").unwrap();
+
+        assert_eq!(target_name.as_deref(), Some("x86_64-unknown-linux-gnu"));
+        assert_eq!(dependency.req(), "=1.0.0");
+    }
+
+    #[test]
+    fn test_get_dependency_prefers_root_dependencies() {
+        let manifest = parse_manifest(
+            r#"
+                [package]
+                name = "demo"
+                version = "0.1.0"
+                edition = "2021"
+
+                [dependencies]
+                flutter_rust_bridge = "=2.0.0"
+
+                [target.x86_64-unknown-linux-gnu.dependencies]
+                flutter_rust_bridge = "=1.0.0"
+            "#,
+        );
+
+        let (target_name, dependency) =
+            RustUpgrader::get_dependency(manifest, "flutter_rust_bridge").unwrap();
+
+        assert_eq!(target_name, None);
+        assert_eq!(dependency.req(), "=2.0.0");
     }
 }

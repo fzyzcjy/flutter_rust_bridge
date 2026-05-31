@@ -26,7 +26,6 @@ import 'package:yaml/yaml.dart';
 part 'generate.g.dart';
 
 const _kRefreshCargoLockOrderingEnv = 'FRB_REFRESH_CARGO_LOCK_ORDERING';
-
 List<Command<void>> createCommands() {
   return [
     SimpleConfigCommand(
@@ -44,8 +43,8 @@ List<Command<void>> createCommands() {
     SimpleConfigCommand(
       'generate-run-frb-codegen-command-integrate',
       generateRunFrbCodegenCommandIntegrate,
-      _$populateGeneratePackageConfigParser,
-      _$parseGeneratePackageConfigResult,
+      _$populateGenerateIntegratePackageConfigParser,
+      _$parseGenerateIntegratePackageConfigResult,
     ),
     // more detailed command, can be used to execute just a portion of the main command
     SimpleConfigCommand(
@@ -127,6 +126,26 @@ class GeneratePackageConfig implements GenerateConfig {
     required this.setExitIfChanged,
     required this.package,
     required this.coverage,
+  });
+}
+
+@CliOptions()
+class GenerateIntegratePackageConfig implements GenerateConfig {
+  @override
+  @CliOption(defaultsTo: false)
+  final bool setExitIfChanged;
+  @CliOption(convert: convertConfigPackage)
+  final String package;
+  @override
+  final bool coverage;
+  @CliOption(defaultsTo: false)
+  final bool includeOhos;
+
+  const GenerateIntegratePackageConfig({
+    required this.setExitIfChanged,
+    required this.package,
+    required this.coverage,
+    required this.includeOhos,
   });
 }
 
@@ -366,11 +385,14 @@ Future<void> _formatPackageAfterGenerate(String package) async {
 }
 
 Future<void> generateRunFrbCodegenCommandIntegrate(
-  GeneratePackageConfig config,
+  GenerateIntegratePackageConfig config,
 ) async {
   await _wrapMaybeSetExitIfChanged(
     config,
-    extraArgs: integrateDiffExclusionArgs(config.package),
+    extraArgs: integrateDiffExclusionArgs(
+      config.package,
+      needCompareOhos: config.includeOhos,
+    ),
     () async {
       final dirPackage = path.join(exec.pwd!, config.package);
 
