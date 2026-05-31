@@ -145,6 +145,7 @@ impl InternalConfig {
                 c_output_path,
                 enable_auto_upgrade: config.auto_upgrade_dependency.unwrap_or(true)
                     && !enable_local_dependency,
+                fvm_install_mode: crate::misc::FvmInstallMode::Normal,
             },
             dumper: DumperInternalConfig {
                 dump_contents: parse_dump_contents(config),
