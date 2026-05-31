@@ -10,6 +10,7 @@ import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/generator.dart'
     as frb_example_pure_dart_generator;
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/cargokit_sync.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_apple_scaffold.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_diff_exclusions.dart';
@@ -149,6 +150,11 @@ Future<void> generateInternal(
     await generateInternalContributor(config);
   });
   await generateInternalReadme(config);
+  await generateInternalCargokitCopies(config);
+}
+
+Future<void> generateInternalCargokitCopies(GenerateConfig config) async {
+  await _wrapMaybeSetExitIfChanged(config, syncCargokitCopies);
 }
 
 Future<void> generateInternalFrbExamplePureDart(GenerateConfig config) async {
