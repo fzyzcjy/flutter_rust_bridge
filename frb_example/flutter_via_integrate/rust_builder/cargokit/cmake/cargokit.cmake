@@ -32,6 +32,7 @@ function(apply_cargokit target manifest_dir lib_name any_symbol_name)
     else()
         set(CARGOKIT_TARGET_PLATFORM "windows-x64")
     endif()
+    set(CARGOKIT_OHOS_SDK_HOME $ENV{OHOS_SDK_HOME})
 
     set(CARGOKIT_ENV
         "CARGOKIT_CMAKE=${CMAKE_COMMAND}"
@@ -42,11 +43,22 @@ function(apply_cargokit target manifest_dir lib_name any_symbol_name)
         "CARGOKIT_TARGET_PLATFORM=${CARGOKIT_TARGET_PLATFORM}"
         "CARGOKIT_TOOL_TEMP_DIR=${CARGOKIT_TEMP_DIR}/tool"
         "CARGOKIT_ROOT_PROJECT_DIR=${CMAKE_SOURCE_DIR}"
+        "CARGOKIT_OHOS_SDK_HOME=${CARGOKIT_OHOS_SDK_HOME}"
     )
 
     if (WIN32)
         set(SCRIPT_EXTENSION ".cmd")
         set(IMPORT_LIB_EXTENSION ".lib")
+    elseif (CARGOKIT_TARGET_PLATFORM STREQUAL "ohos-arm64"
+         OR CARGOKIT_TARGET_PLATFORM STREQUAL "ohos-arm"
+         OR CARGOKIT_TARGET_PLATFORM STREQUAL "ohos-x64")
+                if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Windows")
+                    set(SCRIPT_EXTENSION ".cmd")
+                else()
+                    set(SCRIPT_EXTENSION ".sh")
+                    execute_process(COMMAND chmod +x "${cargokit_cmake_root}/run_build_tool${SCRIPT_EXTENSION}")
+                endif()
+                set(IMPORT_LIB_EXTENSION "")
     else()
         set(SCRIPT_EXTENSION ".sh")
         set(IMPORT_LIB_EXTENSION "")
@@ -65,6 +77,21 @@ function(apply_cargokit target manifest_dir lib_name any_symbol_name)
                 VERBATIM
             )
         endforeach()
+    elseif (CARGOKIT_TARGET_PLATFORM STREQUAL "ohos-arm64"
+             OR CARGOKIT_TARGET_PLATFORM STREQUAL "ohos-arm"
+             OR CARGOKIT_TARGET_PLATFORM STREQUAL "ohos-x64")
+             set(SOURCE_LIB "../../ohos/.cxx/default/default/debug/${OHOS_ARCH}/lib${PROJECT_NAME}.so")
+             set(DEST_LIB "${TARGET_LIB_DIR}/lib${PROJECT_NAME}.so")
+             add_custom_command(
+                 OUTPUT
+                 ${OUTPUT_LIB}
+                 "${CMAKE_CURRENT_BINARY_DIR}/_phony_"
+                 COMMAND ${CMAKE_COMMAND} -E env ${CARGOKIT_ENV}
+                 "${cargokit_cmake_root}/run_build_tool${SCRIPT_EXTENSION}" build-cmake
+                 COMMAND ${CMAKE_COMMAND} -E copy ${OUTPUT_LIB} ${DEST_LIB}
+                 COMMENT "Building and copying ${OUTPUT_LIB} to ${DEST_LIB}"
+                 VERBATIM
+               )
     else()
         add_custom_command(
             OUTPUT

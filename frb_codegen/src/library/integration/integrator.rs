@@ -52,7 +52,8 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
     let include_ohos = platform_list_contains_ohos(&platforms);
 
     info!("Overlay template onto project");
-    let replacements = compute_replacements(&config, &dart_package_name, &rust_crate_name);
+    let replacements =
+        compute_replacements(&config, &dart_package_name, &rust_crate_name, include_ohos);
     execute_overlay_dir(
         &TemplateDirs::SHARED,
         &replacements,
@@ -172,6 +173,7 @@ fn compute_replacements<'a>(
     config: &'a IntegrateConfig,
     dart_package_name: &'a str,
     rust_crate_name: &'a str,
+    include_ohos: bool,
 ) -> HashMap<&'static str, &'a str> {
     let mut replacements = HashMap::new();
     replacements.insert("REPLACE_ME_DART_PACKAGE_NAME", dart_package_name);
@@ -188,6 +190,14 @@ fn compute_replacements<'a>(
 
     replacements.insert("Cargo.toml.template", "Cargo.toml");
     replacements.insert("Cargo.lock.template", "Cargo.lock");
+    replacements.insert(
+        "REPLACE_ME_OHOS_PLUGIN_PLATFORM_TEXT",
+        if include_ohos {
+            "\n      ohos:\n        ffiPlugin: true"
+        } else {
+            ""
+        },
+    );
 
     replacements
 }
@@ -423,6 +433,7 @@ fn filter_file(
             || path.iter().contains(&OsStr::new("windows"))
             || path.iter().contains(&OsStr::new("macos"))
             || path.iter().contains(&OsStr::new("linux"))
+            || path.iter().contains(&OsStr::new("ohos"))
             || path.iter().contains(&OsStr::new("lib"))
             || path
                 .iter()
