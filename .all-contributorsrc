@@ -369,6 +369,15 @@
       ]
     },
     {
+      "login": "star4277",
+      "name": "Star4277",
+      "avatar_url": "https://avatars.githubusercontent.com/u/54941990?v=4",
+      "profile": "https://github.com/star4277",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "Integral-Tech",
       "name": "Integral",
       "avatar_url": "https://avatars.githubusercontent.com/u/71180087?v=4",
@@ -1224,15 +1233,6 @@
       "profile": "https://thesimplekid.com",
       "contributions": [
         "doc"
-      ]
-    },
-    {
-      "login": "star4277",
-      "name": "Star4277",
-      "avatar_url": "https://avatars.githubusercontent.com/u/54941990?v=4",
-      "profile": "https://github.com/star4277",
-      "contributions": [
-        "code"
       ]
     }
   ],
