@@ -156,7 +156,7 @@ packer build \
   .
 ```
 
-The Packer template clones the raw source VM, boots it as `admin/admin`, runs `scripts/provision-frb-tart-base.sh`, and leaves a stopped local VM named by `target_vm`. The current provision step initializes Xcode, uses the Flutter SDK already present in the source Tart image, installs CocoaPods with Homebrew, installs Rust matching the devcontainer, adds the `aarch64-apple-ios-sim` Rust target, and pre-caches Flutter iOS artifacts. It also verifies the image contains Xcode and simulator tooling.
+The Packer template clones the raw source VM, boots it as `admin/admin`, runs `scripts/provision-frb-tart-base.sh`, and leaves a stopped local VM named by `target_vm`. The current provision step initializes Xcode, uses the Flutter SDK already present in the source Tart image, installs CocoaPods with Homebrew, installs Rust matching the devcontainer, adds the `aarch64-apple-ios-sim` and `x86_64-apple-ios` Rust targets, and pre-caches Flutter iOS artifacts. It also verifies the image contains Xcode and simulator tooling.
 
 Verify the candidate:
 
@@ -171,7 +171,7 @@ Do not boot and mutate `frb-tart-base` during verification. If you need to inspe
 tart clone frb-tart-base-candidate frb-tart-probe
 tart run --no-graphics frb-tart-probe
 tart ip frb-tart-probe --wait 180
-tart exec frb-tart-probe /bin/zsh -lc 'sw_vers && xcodebuild -version && flutter --version && pod --version && rustc --version && cargo --version && rustup target list --installed | grep aarch64-apple-ios-sim'
+tart exec frb-tart-probe /bin/zsh -lc 'sw_vers && xcodebuild -version && flutter --version && pod --version && rustc --version && cargo --version && rustup target list --installed | grep aarch64-apple-ios-sim && rustup target list --installed | grep x86_64-apple-ios'
 tart stop frb-tart-probe
 tart delete frb-tart-probe
 ```

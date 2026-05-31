@@ -31,7 +31,7 @@ source "tart-cli" "frb_tart_base" {
   allow_insecure = var.allow_insecure
 
   cpu_count    = 4
-  memory_gb    = 8
+  memory_gb    = 16
   disk_size_gb = 140
 
   ssh_username = "admin"

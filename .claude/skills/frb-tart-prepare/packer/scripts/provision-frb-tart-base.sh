@@ -92,10 +92,11 @@ require_command flutter
 require_command pod
 require_command rustup
 
-log "Installing Rust ${RUST_VERSION} and iOS Simulator target"
+log "Installing Rust ${RUST_VERSION} and iOS targets"
 rustup toolchain install "$RUST_VERSION" --profile minimal
 rustup default "$RUST_VERSION"
 rustup target add aarch64-apple-ios-sim
+rustup target add x86_64-apple-ios
 
 log "Pre-caching Flutter iOS artifacts"
 flutter config --no-analytics
@@ -112,5 +113,6 @@ pod --version
 rustc --version
 cargo --version
 rustup target list --installed | grep '^aarch64-apple-ios-sim$'
+rustup target list --installed | grep '^x86_64-apple-ios$'
 
 log "Provisioning complete"
