@@ -55,12 +55,7 @@ pub(super) fn polish(
     }
 
     warn_if_fail(
-        auto_upgrade::execute(
-            progress_bar_pack,
-            &config.dart_root,
-            &config.rust_crate_dir,
-            config.enable_auto_upgrade,
-        ),
+        auto_upgrade::execute(progress_bar_pack, config),
         "auto_upgrade",
     );
 
@@ -131,7 +126,7 @@ fn execute_build_runner(
     }
 
     let _pb = progress_bar_pack.polish_dart_build_runner.start();
-    dart_build_runner(&config.dart_root)
+    dart_build_runner(&config.dart_root, config.fvm_install_mode)
 }
 
 fn execute_dart_fix(
@@ -139,7 +134,7 @@ fn execute_dart_fix(
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<()> {
     let _pb = progress_bar_pack.polish_dart_fix.start();
-    dart_fix(&config.dart_output)
+    dart_fix(&config.dart_output, config.fvm_install_mode)
 }
 
 fn execute_dart_format(
@@ -147,7 +142,11 @@ fn execute_dart_format(
     progress_bar_pack: &GeneratorProgressBarPack,
 ) -> anyhow::Result<()> {
     let _pb = progress_bar_pack.polish_dart_formatter.start();
-    dart_format(&config.dart_output, config.dart_format_line_length)
+    dart_format(
+        &config.dart_output,
+        config.dart_format_line_length,
+        config.fvm_install_mode,
+    )
 }
 
 fn execute_rust_format(

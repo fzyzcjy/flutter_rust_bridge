@@ -57,7 +57,7 @@ ExternalLibrary loadExternalLibraryRaw({
     return ExternalLibrary.open(filePath);
   }
 
-  if (Platform.isAndroid) {
+  if (Platform.isAndroid || Platform.operatingSystem == 'ohos') {
     return ExternalLibrary.open('lib$stem.so');
   }
 

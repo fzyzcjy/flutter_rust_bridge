@@ -2,8 +2,10 @@ use crate::integration::utils::{overlay_dir, replace_file_content};
 use crate::library::commands::cargo::cargo_fetch;
 use crate::library::commands::dart_fix::dart_fix;
 use crate::library::commands::dart_format::dart_format;
-use crate::library::commands::flutter::{flutter_pub_add, flutter_pub_get};
-use crate::misc::Template;
+use crate::library::commands::flutter::{
+    flutter_pub_add, flutter_pub_get, platform_list_contains_ohos, resolve_flutter_platforms,
+};
+use crate::misc::{FvmInstallMode, Template};
 use crate::utils::dart_repository::get_dart_package_name;
 use crate::utils::path_utils::find_dart_package_dir;
 use anyhow::Result;
@@ -26,6 +28,8 @@ pub struct IntegrateConfig {
     pub rust_crate_name: Option<String>,
     pub rust_crate_dir: String,
     pub template: Template,
+    pub platforms: Option<String>,
+    pub fvm_install_mode: FvmInstallMode,
 }
 
 /// Integrate Rust into existing Flutter project.
@@ -44,15 +48,19 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
             }
             Template::Plugin => dart_package_name.to_owned(),
         });
+    let platforms = resolve_flutter_platforms(config.template, config.platforms.clone())?;
+    let include_ohos = platform_list_contains_ohos(&platforms);
 
     info!("Overlay template onto project");
-    let replacements = compute_replacements(&config, &dart_package_name, &rust_crate_name);
+    let replacements =
+        compute_replacements(&config, &dart_package_name, &rust_crate_name, include_ohos);
     execute_overlay_dir(
         &TemplateDirs::SHARED,
         &replacements,
         &dart_root,
         &config,
         None,
+        include_ohos,
     )?;
     let (dir, comment_out_files) = match &config.template {
         Template::App => (&TemplateDirs::APP, vec!["main.dart".to_string()]),
@@ -67,6 +75,7 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
         &dart_root,
         &config,
         Some(&comment_out_files),
+        include_ohos,
     )?;
 
     if config.enable_local_dependency && config.template == Template::Plugin {
@@ -82,21 +91,22 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
         config.enable_local_dependency,
         &rust_crate_name,
         &config.template,
+        config.fvm_install_mode,
     )?;
 
     info!("Setup cargokit dependencies");
-    setup_cargokit_dependencies(&dart_root, &config.template)?;
+    setup_cargokit_dependencies(&dart_root, &config.template, config.fvm_install_mode)?;
 
     if config.enable_dart_fix {
         info!("Apply Dart fixes");
-        dart_fix(&dart_root)?;
+        dart_fix(&dart_root, config.fvm_install_mode)?;
     } else {
         info!("Dart fix is disabled.")
     }
 
     if config.enable_dart_format {
         info!("Format Dart code");
-        dart_format(&dart_root, 80)?;
+        dart_format(&dart_root, 80, config.fvm_install_mode)?;
     } else {
         info!("Dart format is disabled.");
     }
@@ -132,6 +142,7 @@ fn execute_overlay_dir(
     dart_root: &Path,
     config: &IntegrateConfig,
     comment_out_files: Option<&[String]>,
+    include_ohos: bool,
 ) -> Result<()> {
     overlay_dir(
         current_reference_dir,
@@ -152,6 +163,7 @@ fn execute_overlay_dir(
                 path,
                 config.enable_write_lib,
                 config.enable_integration_test,
+                include_ohos,
             )
         },
     )
@@ -161,6 +173,7 @@ fn compute_replacements<'a>(
     config: &'a IntegrateConfig,
     dart_package_name: &'a str,
     rust_crate_name: &'a str,
+    include_ohos: bool,
 ) -> HashMap<&'static str, &'a str> {
     let mut replacements = HashMap::new();
     replacements.insert("REPLACE_ME_DART_PACKAGE_NAME", dart_package_name);
@@ -177,6 +190,14 @@ fn compute_replacements<'a>(
 
     replacements.insert("Cargo.toml.template", "Cargo.toml");
     replacements.insert("Cargo.lock.template", "Cargo.lock");
+    replacements.insert(
+        "REPLACE_ME_OHOS_PLUGIN_PLATFORM_TEXT",
+        if include_ohos {
+            "\n      ohos:\n        ffiPlugin: true"
+        } else {
+            ""
+        },
+    );
 
     replacements
 }
@@ -198,7 +219,11 @@ fn modify_permissions(dart_root: &Path, template: &Template) -> Result<()> {
     Ok(())
 }
 
-fn setup_cargokit_dependencies(dart_root: &Path, template: &Template) -> Result<()> {
+fn setup_cargokit_dependencies(
+    dart_root: &Path,
+    template: &Template,
+    fvm_install_mode: FvmInstallMode,
+) -> Result<()> {
     let build_tool_dir = match template {
         Template::App => dart_root
             .join("rust_builder")
@@ -207,7 +232,7 @@ fn setup_cargokit_dependencies(dart_root: &Path, template: &Template) -> Result<
         Template::Plugin => dart_root.join("cargokit").join("build_tool"),
     };
 
-    flutter_pub_get(&build_tool_dir)
+    flutter_pub_get(&build_tool_dir, fvm_install_mode)
 }
 
 #[cfg(unix)]
@@ -236,8 +261,8 @@ fn set_permission_executable(path: &Path) -> Result<()> {
 #[cfg(all(test, unix))]
 mod tests {
     use super::{
-        refresh_cargo_lock_ordering, set_permission_executable, should_refresh_cargo_lock_ordering,
-        REFRESH_CARGO_LOCK_ORDERING_ENV_VAR,
+        maybe_refresh_cargo_lock_ordering, refresh_cargo_lock_ordering, set_permission_executable,
+        should_refresh_cargo_lock_ordering, REFRESH_CARGO_LOCK_ORDERING_ENV_VAR,
     };
     use serial_test::serial;
     use std::fs;
@@ -296,6 +321,20 @@ mod tests {
 
         std::env::set_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR, "1");
         assert!(should_refresh_cargo_lock_ordering());
+
+        std::env::remove_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR);
+    }
+
+    #[test]
+    #[serial]
+    fn test_maybe_refresh_cargo_lock_ordering_skips_when_env_var_is_not_one() {
+        std::env::remove_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR);
+
+        let temp_dir = tempfile::tempdir().unwrap();
+        maybe_refresh_cargo_lock_ordering(temp_dir.path(), "does-not-need-to-exist").unwrap();
+
+        std::env::set_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR, "0");
+        maybe_refresh_cargo_lock_ordering(temp_dir.path(), "still-not-used").unwrap();
 
         std::env::remove_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR);
     }
@@ -371,7 +410,16 @@ fn comment_out_existing_file_and_write_template(
     Some((path, [commented_existing_content.as_bytes(), src].concat()))
 }
 
-fn filter_file(path: &Path, enable_write_lib: bool, enable_integration_test: bool) -> bool {
+fn filter_file(
+    path: &Path,
+    enable_write_lib: bool,
+    enable_integration_test: bool,
+    include_ohos: bool,
+) -> bool {
+    if path.iter().contains(&OsStr::new("ohos")) && !include_ohos {
+        return false;
+    }
+
     if path.iter().contains(&OsStr::new("cargokit")) {
         return ![".git", ".github", "docs", "test"].contains(&file_name(path));
     }
@@ -385,6 +433,7 @@ fn filter_file(path: &Path, enable_write_lib: bool, enable_integration_test: boo
             || path.iter().contains(&OsStr::new("windows"))
             || path.iter().contains(&OsStr::new("macos"))
             || path.iter().contains(&OsStr::new("linux"))
+            || path.iter().contains(&OsStr::new("ohos"))
             || path.iter().contains(&OsStr::new("lib"))
             || path
                 .iter()
@@ -405,6 +454,54 @@ fn filter_file(path: &Path, enable_write_lib: bool, enable_integration_test: boo
     }
 
     true
+}
+
+#[cfg(test)]
+mod filter_tests {
+    use super::filter_file;
+    use std::path::Path;
+
+    #[test]
+    fn test_filter_file_excludes_ohos_when_not_enabled() {
+        assert!(!filter_file(
+            Path::new("rust_builder/ohos/src/main/module.json5"),
+            true,
+            true,
+            false,
+        ));
+        assert!(!filter_file(
+            Path::new("ohos/src/main/module.json5"),
+            true,
+            true,
+            false,
+        ));
+    }
+
+    #[test]
+    fn test_filter_file_includes_ohos_when_enabled() {
+        assert!(filter_file(
+            Path::new("rust_builder/ohos/src/main/module.json5"),
+            true,
+            true,
+            true,
+        ));
+        assert!(filter_file(
+            Path::new("ohos/src/main/module.json5"),
+            true,
+            true,
+            true,
+        ));
+    }
+
+    #[test]
+    fn test_filter_file_no_write_lib_excludes_enabled_ohos_platform_shell() {
+        assert!(!filter_file(
+            Path::new("ohos/src/main/module.json5"),
+            false,
+            true,
+            true,
+        ));
+    }
 }
 
 fn compute_cargokit_comments(path: &Path) -> Option<String> {
@@ -451,23 +548,33 @@ fn pub_add_dependencies(
     enable_local_dependency: bool,
     rust_crate_name: &str,
     template: &Template,
+    fvm_install_mode: FvmInstallMode,
 ) -> Result<()> {
     // frb-coverage:ignore-end
     match template {
-        Template::App => flutter_pub_add(&[rust_crate_name, "--path=rust_builder"], None)?,
+        Template::App => flutter_pub_add(
+            &[rust_crate_name, "--path=rust_builder"],
+            None,
+            fvm_install_mode,
+        )?,
         Template::Plugin => flutter_pub_add(
             &["integration_test", "--dev", "--sdk=flutter"],
             Some(Path::new("example")),
+            fvm_install_mode,
         )?,
     }
 
-    pub_add_dependency_frb(enable_local_dependency, None)?;
+    pub_add_dependency_frb(enable_local_dependency, None, fvm_install_mode)?;
 
     // // Temporarily avoid `^` before https://github.com/flutter/flutter/issues/84270 is fixed
     // flutter_pub_add(&["ffigen:8.0.2", "--dev"])?;
 
     if enable_integration_test {
-        flutter_pub_add(&["integration_test", "--dev", "--sdk=flutter"], None)?;
+        flutter_pub_add(
+            &["integration_test", "--dev", "--sdk=flutter"],
+            None,
+            fvm_install_mode,
+        )?;
         // the function signature is not covered while the whole body is covered - looks like a bug in coverage tool
         // frb-coverage:ignore-start
     }
@@ -479,13 +586,23 @@ fn pub_add_dependencies(
 pub(crate) fn pub_add_dependency_frb(
     enable_local_dependency: bool,
     pwd: Option<&Path>,
+    fvm_install_mode: FvmInstallMode,
 ) -> Result<()> {
     if enable_local_dependency {
-        flutter_pub_add(&["flutter_rust_bridge", "--path=../../frb_dart"], pwd)?;
+        flutter_pub_add(
+            &["flutter_rust_bridge", "--path=../../frb_dart"],
+            pwd,
+            fvm_install_mode,
+        )?;
     } else {
         flutter_pub_add(
             &[concat!("flutter_rust_bridge:", env!("CARGO_PKG_VERSION"))],
             pwd,
+            // This argument is plumbing into the shell-command wrapper; command behavior is
+            // covered by the integrate workflows.
+            // frb-coverage:ignore-start
+            fvm_install_mode,
+            // frb-coverage:ignore-end
         )?;
     };
 

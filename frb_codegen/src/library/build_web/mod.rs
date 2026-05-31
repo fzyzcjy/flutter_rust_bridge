@@ -3,6 +3,7 @@
 use crate::command_run;
 use crate::library::commands::command_runner::{call_shell, call_shell_info, check_exit_code};
 use crate::library::commands::fvm::command_arg_maybe_fvm;
+use crate::misc::FvmInstallMode;
 use crate::utils::dart_repository::dart_repo::DartRepository;
 use crate::utils::path_utils::{find_dart_package_dir, path_to_string};
 use anyhow::{bail, Context};
@@ -19,10 +20,11 @@ pub fn build(
     dart_root: Option<PathBuf>,
     dart_coverage: bool,
     args: Vec<String>,
+    fvm_install_mode: FvmInstallMode,
 ) -> anyhow::Result<()> {
     let dart_root = parse_dart_root(dart_root)?;
     debug!("build dart_root={dart_root:?} args={args:?}");
-    execute_dart_command(&dart_root, &args, dart_coverage)
+    execute_dart_command(&dart_root, &args, dart_coverage, fvm_install_mode)
 }
 
 fn parse_dart_root(dart_root: Option<PathBuf>) -> anyhow::Result<PathBuf> {
@@ -38,6 +40,7 @@ fn execute_dart_command(
     dart_root: &Path,
     args: &[String],
     dart_coverage: bool,
+    fvm_install_mode: FvmInstallMode,
 ) -> anyhow::Result<()> {
     let repo = DartRepository::from_path(dart_root)?;
 
@@ -51,7 +54,13 @@ fn execute_dart_command(
         ans.extend(args.to_owned());
         ans
     };
-    let status = dart_run(&repo, dart_root, dart_coverage, dart_run_args)?;
+    let status = dart_run(
+        &repo,
+        dart_root,
+        dart_coverage,
+        dart_run_args,
+        fvm_install_mode,
+    )?;
 
     if !status.success() {
         // This will stop the whole generator and tell the users, so we do not care about testing it
@@ -70,9 +79,11 @@ fn dart_run(
     current_dir: &Path,
     dart_coverage: bool,
     args: Vec<String>,
+    fvm_install_mode: FvmInstallMode,
 ) -> anyhow::Result<ExitStatus> {
     let handle = {
-        let mut cmd_args: Vec<PathBuf> = if command_arg_maybe_fvm(None).is_some() {
+        let mut cmd_args: Vec<PathBuf> = if command_arg_maybe_fvm(None, fvm_install_mode).is_some()
+        {
             vec!["fvm".into(), "dart".into()]
         } else {
             vec!["dart".into()]

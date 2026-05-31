@@ -22,7 +22,7 @@ List<Command<void>> createCommands() {
 }
 
 // We do not test web, since it is already tested when building the demo on website
-enum BuildTarget { windows, macos, linux, androidAab, androidApk, ios }
+enum BuildTarget { windows, macos, linux, androidAab, androidApk, ios, ohos }
 
 @CliOptions()
 class BuildFlutterConfig {
@@ -79,5 +79,12 @@ Future<void> buildFlutter(BuildFlutterConfig config) async {
         relativePwd: package,
       );
       copyArtifacts(['build/ios/archive']);
+
+    case BuildTarget.ohos:
+      await exec(
+        'flutter build hap --no-codesign --verbose',
+        relativePwd: package,
+      );
+      copyArtifacts(['build/ohos/hap']);
   }
 }

@@ -45,6 +45,32 @@ GeneratePackageConfig parseGeneratePackageConfig(List<String> args) {
   return _$parseGeneratePackageConfigResult(result);
 }
 
+GenerateIntegratePackageConfig _$parseGenerateIntegratePackageConfigResult(
+  ArgResults result,
+) => GenerateIntegratePackageConfig(
+  setExitIfChanged: result['set-exit-if-changed'] as bool,
+  package: convertConfigPackage(result['package'] as String),
+  coverage: result['coverage'] as bool,
+  includeOhos: result['include-ohos'] as bool,
+);
+
+ArgParser _$populateGenerateIntegratePackageConfigParser(ArgParser parser) =>
+    parser
+      ..addFlag('set-exit-if-changed')
+      ..addOption('package')
+      ..addFlag('coverage')
+      ..addFlag('include-ohos');
+
+final _$parserForGenerateIntegratePackageConfig =
+    _$populateGenerateIntegratePackageConfigParser(ArgParser());
+
+GenerateIntegratePackageConfig parseGenerateIntegratePackageConfig(
+  List<String> args,
+) {
+  final result = _$parserForGenerateIntegratePackageConfig.parse(args);
+  return _$parseGenerateIntegratePackageConfigResult(result);
+}
+
 GenerateWebsiteConfig _$parseGenerateWebsiteConfigResult(ArgResults result) =>
     GenerateWebsiteConfig(coverage: result['coverage'] as bool);
 

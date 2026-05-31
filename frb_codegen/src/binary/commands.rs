@@ -43,6 +43,10 @@ pub(crate) struct GenerateCommandArgs {
 
     #[clap(flatten)]
     pub primary: GenerateCommandArgsPrimary,
+
+    /// Skip fvm installation
+    #[clap(long)]
+    pub skip_fvm_install: bool,
 }
 
 // Deliberately decoupled from `codegen::Config`,
@@ -225,6 +229,14 @@ pub(crate) struct CreateCommandArgs {
     /// The template type to use to generate the flutter files.
     #[clap(short, long, value_enum, default_value = "app")]
     pub template: TemplateArg,
+
+    /// Specify the platforms to be supported.
+    #[clap(long)]
+    pub platforms: Option<String>,
+
+    /// Skip fvm installation
+    #[clap(long)]
+    pub skip_fvm_install: bool,
 }
 
 #[derive(Debug, Args)]
@@ -252,6 +264,14 @@ pub(crate) struct IntegrateCommandArgs {
     /// being integrating with.
     #[clap(short, long, value_enum, default_value = "app")]
     pub template: TemplateArg,
+
+    /// Specify the platforms to be supported.
+    #[clap(long)]
+    pub platforms: Option<String>,
+
+    /// Skip fvm installation
+    #[clap(long)]
+    pub skip_fvm_install: bool,
 }
 
 #[derive(Debug, Copy, Clone, ValueEnum)]
@@ -299,6 +319,10 @@ pub(crate) struct BuildWebCommandArgs {
     // https://stackoverflow.com/questions/72399790/clap-capture-all-remaining-arguments-in-one-field-in-derive-api
     #[arg(trailing_var_arg = true, allow_hyphen_values = true, hide = true)]
     pub(crate) args: Vec<String>,
+
+    /// Skip fvm installation
+    #[clap(long)]
+    pub skip_fvm_install: bool,
 }
 
 #[derive(Debug, Args)]
@@ -319,5 +343,44 @@ impl From<RustOpaqueCodecModeArg> for RustOpaqueCodecMode {
             RustOpaqueCodecModeArg::Moi => RustOpaqueCodecMode::Moi,
             RustOpaqueCodecModeArg::Nom => RustOpaqueCodecMode::Nom,
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::{Cli, Commands};
+    use clap::Parser;
+
+    #[test]
+    fn test_create_command_parses_platforms() {
+        let cli = Cli::parse_from([
+            "",
+            "create",
+            "demo",
+            "--platforms",
+            "android,ios",
+            "--skip-fvm-install",
+        ]);
+        let Commands::Create(args) = cli.command else {
+            panic!("expected create command");
+        };
+
+        assert_eq!(args.platforms, Some("android,ios".to_owned()));
+    }
+
+    #[test]
+    fn test_integrate_command_parses_platforms() {
+        let cli = Cli::parse_from([
+            "",
+            "integrate",
+            "--platforms",
+            "android,ohos",
+            "--skip-fvm-install",
+        ]);
+        let Commands::Integrate(args) = cli.command else {
+            panic!("expected integrate command");
+        };
+
+        assert_eq!(args.platforms, Some("android,ohos".to_owned()));
     }
 }

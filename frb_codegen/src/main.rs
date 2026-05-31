@@ -9,6 +9,7 @@ use crate::binary::commands::{Cli, Commands, CreateOrIntegrateCommandCommonArgs}
 use crate::binary::commands_parser::{compute_codegen_config, compute_codegen_meta_config};
 use clap::Parser;
 use lib_flutter_rust_bridge_codegen::integration::{CreateConfig, IntegrateConfig};
+use lib_flutter_rust_bridge_codegen::misc::FvmInstallMode;
 use lib_flutter_rust_bridge_codegen::utils::logs::configure_opinionated_logging;
 use lib_flutter_rust_bridge_codegen::*;
 use log::{debug, warn};
@@ -27,7 +28,11 @@ fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
         Commands::Generate(args) => {
             let meta_config = compute_codegen_meta_config(&args);
             let config = compute_codegen_config(args.primary)?;
-            codegen::generate(config, meta_config)?
+            codegen::generate_with_fvm_install_mode(
+                config,
+                meta_config,
+                FvmInstallMode::from_skip_fvm_install(args.skip_fvm_install),
+            )?
         }
         Commands::Create(args) => integration::create(CreateConfig {
             name: args.name,
@@ -36,6 +41,8 @@ fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
             rust_crate_name: args.common.rust_crate_name.clone(),
             rust_crate_dir: compute_rust_crate_dir(&args.common),
             template: args.template.into(),
+            platforms: args.platforms,
+            fvm_install_mode: FvmInstallMode::from_skip_fvm_install(args.skip_fvm_install),
         })?,
         Commands::Integrate(args) => integration::integrate(IntegrateConfig {
             enable_write_lib: !args.no_write_lib,
@@ -46,10 +53,15 @@ fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
             rust_crate_name: args.common.rust_crate_name.clone(),
             rust_crate_dir: compute_rust_crate_dir(&args.common),
             template: args.template.into(),
+            platforms: args.platforms,
+            fvm_install_mode: FvmInstallMode::from_skip_fvm_install(args.skip_fvm_install),
         })?,
-        Commands::BuildWeb(args) => {
-            build_web::build(args.dart_root, args.dart_coverage, args.args)?
-        }
+        Commands::BuildWeb(args) => build_web::build(
+            args.dart_root,
+            args.dart_coverage,
+            args.args,
+            FvmInstallMode::from_skip_fvm_install(args.skip_fvm_install),
+        )?,
         Commands::InternalGenerate(_args) => internal::generate()?,
     }
     Ok(())

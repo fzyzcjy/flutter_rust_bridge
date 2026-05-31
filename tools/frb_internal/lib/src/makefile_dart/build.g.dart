@@ -34,13 +34,22 @@ const _$BuildTargetEnumMapBuildCli = <BuildTarget, String>{
   BuildTarget.androidAab: 'android-aab',
   BuildTarget.androidApk: 'android-apk',
   BuildTarget.ios: 'ios',
+  BuildTarget.ohos: 'ohos',
 };
 
-ArgParser _$populateBuildFlutterConfigParser(ArgParser parser) => parser
-  ..addOption(
-    'target',
-    allowed: ['windows', 'macos', 'linux', 'android-aab', 'android-apk', 'ios'],
-  );
+ArgParser _$populateBuildFlutterConfigParser(ArgParser parser) =>
+    parser..addOption(
+      'target',
+      allowed: [
+        'windows',
+        'macos',
+        'linux',
+        'android-aab',
+        'android-apk',
+        'ios',
+        'ohos',
+      ],
+    );
 
 final _$parserForBuildFlutterConfig = _$populateBuildFlutterConfigParser(
   ArgParser(),
