@@ -18,8 +18,8 @@ import typer
 app = typer.Typer(no_args_is_help=True)
 
 DEFAULT_IMAGE = "fzyzcjy/flutter_rust_bridge_dev:latest"
-REPO_LABEL = "tom.frb.repo"
-WORKTREE_LABEL = "tom.frb.worktree"
+REPO_LABEL = "frb.dev.repo"
+WORKTREE_LABEL = "frb.dev.worktree"
 REPO_LABEL_VALUE = "flutter_rust_bridge"
 WORKSPACE_PATH = "/workspace"
 
