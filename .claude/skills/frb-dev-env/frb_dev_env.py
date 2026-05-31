@@ -7,6 +7,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import shlex
 import subprocess
 import sys
 import time
@@ -27,8 +28,12 @@ DEFAULT_TART_BASE_VM = "frb-tart-base"
 MIN_TART_FREE_GB = 150
 REPO_LABEL = "frb.dev.repo"
 WORKTREE_LABEL = "frb.dev.worktree"
+GIT_COMMON_ROOT_LABEL = "frb.dev.git-common-root"
+LAYOUT_VERSION_LABEL = "frb.dev.layout-version"
 REPO_LABEL_VALUE = "flutter_rust_bridge"
-WORKSPACE_PATH = "/workspace"
+LAYOUT_VERSION_VALUE = "3"
+TART_WORKSPACE_SHARE_NAME = "workspace"
+TART_HOST_MAIN_SHARE_NAME = "main"
 
 
 # ========== Common ==========
@@ -89,6 +94,23 @@ def container_name_for_worktree(worktree_root: Path) -> str:
     return f"frb-{digest}"
 
 
+def docker_volume_args(*, worktree_root: Path) -> list[str]:
+    git_common_root = resolve_git_common_root(worktree_root=worktree_root)
+    volumes = [
+        "--volume",
+        f"{worktree_root}:{worktree_root}",
+    ]
+    if git_common_root != worktree_root:
+        volumes.extend(
+            [
+                "--volume",
+                f"{git_common_root}:{git_common_root}",
+            ]
+        )
+
+    return volumes
+
+
 def get_image(image: str | None) -> str:
     if image is not None:
         return image
@@ -119,6 +141,21 @@ def get_tart_base_vm(base_vm: str | None) -> str:
         return base_vm
 
     return os.environ.get("FRB_TART_BASE_VM", DEFAULT_TART_BASE_VM)
+
+
+def resolve_git_common_root(worktree_root: Path) -> Path:
+    output = exec_command(
+        ["git", "-C", str(worktree_root), "rev-parse", "--git-common-dir"],
+        capture_output=True,
+    )
+    if output is None:
+        raise CommandError(f"Unable to resolve git common directory for {worktree_root}")
+
+    git_common_dir = Path(output)
+    if not git_common_dir.is_absolute():
+        git_common_dir = worktree_root / git_common_dir
+
+    return git_common_dir.resolve().parent
 
 
 def tart_get(vm_name: str) -> dict[str, object] | None:
@@ -211,7 +248,47 @@ def ensure_tart_vm(*, worktree_root: Path, base_vm: str, min_free_gb: int) -> st
     return vm_name
 
 
-def start_tart_vm(*, vm_name: str, log_path: Path | None) -> None:
+def tart_shell_command(command: list[str], *, worktree_root: Path) -> list[str]:
+    quoted_command = " ".join(shlex.quote(part) for part in command)
+    return [
+        "/bin/zsh",
+        "-lc",
+        f"cd {shlex.quote(str(worktree_root))} && exec {quoted_command}",
+    ]
+
+
+def ensure_tart_host_path_links(*, vm_name: str, worktree_root: Path) -> None:
+    git_common_root = resolve_git_common_root(worktree_root=worktree_root)
+    link_command = "\n".join(
+        [
+            "set -euo pipefail",
+            "ensure_mount() {",
+            "  local tag=$1",
+            "  local mount_point=$2",
+            '  if [ -L "$mount_point" ]; then',
+            '    local archive_root="${TMPDIR:-/tmp}/frb-dev-env-replaced-mount-points"',
+            '    local archive_name="$(date +%Y%m%d-%H%M%S)-$(echo "$mount_point" | sed "s#[ /]#_#g")"',
+            '    sudo -n mkdir -p "$archive_root"',
+            '    sudo -n mv "$mount_point" "$archive_root/$archive_name"',
+            "  fi",
+            '  sudo -n mkdir -p "$mount_point"',
+            '  if ! mount | grep -F " on $mount_point " >/dev/null; then',
+            '    sudo -n mount_virtiofs "$tag" "$mount_point"',
+            "  fi",
+            "}",
+            f"ensure_mount {shlex.quote(TART_HOST_MAIN_SHARE_NAME)} {shlex.quote(str(git_common_root))}",
+            f"ensure_mount {shlex.quote(TART_WORKSPACE_SHARE_NAME)} {shlex.quote(str(worktree_root))}",
+        ]
+    )
+    exec_command(["tart", "exec", vm_name, "/bin/zsh", "-lc", link_command])
+
+
+def start_tart_vm(
+    *,
+    vm_name: str,
+    worktree_root: Path,
+    log_path: Path | None,
+) -> None:
     if tart_vm_is_running(vm_name=vm_name):
         return
 
@@ -221,7 +298,14 @@ def start_tart_vm(*, vm_name: str, log_path: Path | None) -> None:
 
     with resolved_log_path.open("ab") as output:
         subprocess.Popen(
-            ["tart", "run", "--no-graphics", vm_name],
+            [
+                "tart",
+                "run",
+                "--no-graphics",
+                f"--dir={worktree_root}:tag={TART_WORKSPACE_SHARE_NAME}",
+                f"--dir={resolve_git_common_root(worktree_root=worktree_root)}:tag={TART_HOST_MAIN_SHARE_NAME}",
+                vm_name,
+            ],
             stdout=output,
             stderr=subprocess.STDOUT,
             start_new_session=True,
@@ -240,6 +324,16 @@ def wait_for_tart_ip(*, vm_name: str, wait_seconds: int) -> str:
     elapsed = time.monotonic() - start_time
     typer.echo(f"Resolved {vm_name} IP in {elapsed:.1f}s", err=True)
     return output
+
+
+def wait_for_tart_running(*, vm_name: str, wait_seconds: int) -> None:
+    deadline = time.monotonic() + wait_seconds
+    while time.monotonic() < deadline:
+        if tart_vm_is_running(vm_name=vm_name):
+            return
+        time.sleep(1)
+
+    raise CommandError(f'Tart VM "{vm_name}" did not become running within {wait_seconds}s')
 
 
 # ========== Docker ==========
@@ -279,12 +373,20 @@ def container_labels(container_name: str) -> dict[str, str]:
 def validate_existing_container(*, container_name: str, worktree_root: Path) -> None:
     labels = container_labels(container_name=container_name)
     expected_worktree_root = str(worktree_root)
+    expected_git_common_root = str(resolve_git_common_root(worktree_root=worktree_root))
 
-    if labels.get(REPO_LABEL) != REPO_LABEL_VALUE or labels.get(WORKTREE_LABEL) != expected_worktree_root:
+    if (
+        labels.get(REPO_LABEL) != REPO_LABEL_VALUE
+        or labels.get(WORKTREE_LABEL) != expected_worktree_root
+        or labels.get(GIT_COMMON_ROOT_LABEL) != expected_git_common_root
+        or labels.get(LAYOUT_VERSION_LABEL) != LAYOUT_VERSION_VALUE
+    ):
         raise CommandError(
             "Existing container has unexpected labels: "
             f"{container_name}. Expected {REPO_LABEL}={REPO_LABEL_VALUE} "
-            f"and {WORKTREE_LABEL}={expected_worktree_root}."
+            f"and {WORKTREE_LABEL}={expected_worktree_root} "
+            f"and {GIT_COMMON_ROOT_LABEL}={expected_git_common_root} "
+            f"and {LAYOUT_VERSION_LABEL}={LAYOUT_VERSION_VALUE}."
         )
 
 
@@ -303,10 +405,13 @@ def ensure_container(*, worktree_root: Path, image: str) -> str:
                 f"{REPO_LABEL}={REPO_LABEL_VALUE}",
                 "--label",
                 f"{WORKTREE_LABEL}={worktree_root}",
-                "--volume",
-                f"{worktree_root}:{WORKSPACE_PATH}",
+                "--label",
+                f"{GIT_COMMON_ROOT_LABEL}={resolve_git_common_root(worktree_root=worktree_root)}",
+                "--label",
+                f"{LAYOUT_VERSION_LABEL}={LAYOUT_VERSION_VALUE}",
+                *docker_volume_args(worktree_root=worktree_root),
                 "--workdir",
-                WORKSPACE_PATH,
+                str(worktree_root),
                 image,
                 "bash",
                 "-lc",
@@ -368,10 +473,13 @@ def build_info(*, worktree_root: Path, image: str) -> dict[str, object]:
         "exists": exists,
         "running": running,
         "image": image,
-        "workspace_path": WORKSPACE_PATH,
+        "command_workdir": str(worktree_root),
+        "git_common_root": str(resolve_git_common_root(worktree_root=worktree_root)),
         "labels": {
             REPO_LABEL: REPO_LABEL_VALUE,
             WORKTREE_LABEL: str(worktree_root),
+            GIT_COMMON_ROOT_LABEL: str(resolve_git_common_root(worktree_root=worktree_root)),
+            LAYOUT_VERSION_LABEL: LAYOUT_VERSION_VALUE,
         },
         "actual_labels": actual_labels,
     }
@@ -473,7 +581,7 @@ def exec_in_container(
         typer.Option("--image", help="Docker image. Defaults to FRB_DOCKER_IMAGE or the published FRB dev image."),
     ] = None,
 ) -> None:
-    """Ensure the container is running, then execute a command in /workspace."""
+    """Ensure the container is running, then execute a command from the host-like worktree path."""
 
     if not command:
         raise typer.BadParameter("exec requires a command, for example: exec -- bash -lc './frb_internal --help'")
@@ -494,7 +602,7 @@ def exec_in_container(
             "exec",
             *exec_flags,
             "--workdir",
-            WORKSPACE_PATH,
+            str(resolved_worktree_root),
             container_name,
             *command,
         ]
@@ -602,8 +710,14 @@ def tart_start(
         base_vm=get_tart_base_vm(base_vm=base_vm),
         min_free_gb=min_free_gb,
     )
-    start_tart_vm(vm_name=vm_name, log_path=log_path)
+    start_tart_vm(
+        vm_name=vm_name,
+        worktree_root=resolved_worktree_root,
+        log_path=log_path,
+    )
+    wait_for_tart_running(vm_name=vm_name, wait_seconds=wait)
     ip_address = wait_for_tart_ip(vm_name=vm_name, wait_seconds=wait)
+    ensure_tart_host_path_links(vm_name=vm_name, worktree_root=resolved_worktree_root)
     typer.echo(ip_address)
 
 
@@ -698,10 +812,23 @@ def tart_exec(
         min_free_gb=min_free_gb,
     )
     if not tart_vm_is_running(vm_name=vm_name):
-        start_tart_vm(vm_name=vm_name, log_path=log_path)
+        start_tart_vm(
+            vm_name=vm_name,
+            worktree_root=resolved_worktree_root,
+            log_path=log_path,
+        )
+        wait_for_tart_running(vm_name=vm_name, wait_seconds=wait)
         wait_for_tart_ip(vm_name=vm_name, wait_seconds=wait)
+    ensure_tart_host_path_links(vm_name=vm_name, worktree_root=resolved_worktree_root)
 
-    exec_command(["tart", "exec", vm_name, *command])
+    exec_command(
+        [
+            "tart",
+            "exec",
+            vm_name,
+            *tart_shell_command(command, worktree_root=resolved_worktree_root),
+        ]
+    )
 
 
 if __name__ == "__main__":
