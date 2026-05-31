@@ -1,3 +1,6 @@
+/// This is copied from Cargokit (which is the official way to use it currently)
+/// Details: https://fzyzcjy.github.io/flutter_rust_bridge/manual/integrate/builtin
+
 import 'dart:io';
 
 import 'package:collection/collection.dart';
@@ -6,7 +9,10 @@ import 'package:path/path.dart' as path;
 import 'util.dart';
 
 class _Toolchain {
-  _Toolchain(this.name, this.targets);
+  _Toolchain(
+    this.name,
+    this.targets,
+  );
 
   final String name;
   final List<String> targets;
@@ -32,12 +38,14 @@ class Rustup {
   void installToolchain(String toolchain) {
     log.info("Installing Rust toolchain: $toolchain");
     runCommand("rustup", ['toolchain', 'install', toolchain]);
-    _installedToolchains.add(
-      _Toolchain(toolchain, _getInstalledTargets(toolchain)),
-    );
+    _installedToolchains
+        .add(_Toolchain(toolchain, _getInstalledTargets(toolchain)));
   }
 
-  void installTarget(String target, {required String toolchain}) {
+  void installTarget(
+    String target, {
+    required String toolchain,
+  }) {
     log.info("Installing Rust target: $target");
     runCommand("rustup", ['target', 'add', '--toolchain', toolchain, target]);
     _installedTargets(toolchain)?.add(target);
@@ -102,7 +110,12 @@ class Rustup {
         .toList(growable: true);
 
     return lines
-        .map((name) => _Toolchain(name, _getInstalledTargets(name)))
+        .map(
+          (name) => _Toolchain(
+            name,
+            _getInstalledTargets(name),
+          ),
+        )
         .toList(growable: true);
   }
 
@@ -129,13 +142,10 @@ class Rustup {
       return;
     }
     // Useful for -Z build-std
-    runCommand("rustup", [
-      'component',
-      'add',
-      'rust-src',
-      '--toolchain',
-      toolchain,
-    ]);
+    runCommand(
+      "rustup",
+      ['component', 'add', 'rust-src', '--toolchain', toolchain],
+    );
     _didInstallRustSrcForNightly = true;
   }
 
