@@ -115,7 +115,7 @@ impl<'a> RustUpgrader<'a> {
 }
 
 #[cfg(test)]
-mod tests {
+mod rust_upgrader_tests {
     use super::*;
     use crate::codegen::polisher::internal_config::PolisherInternalConfig;
     use std::cell::Cell;
