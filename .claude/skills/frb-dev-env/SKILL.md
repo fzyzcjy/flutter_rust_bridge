@@ -49,16 +49,16 @@ Use `frb_dev_env.py` next to this skill to inspect, create, start, and reuse the
 frb-<worktree-root-sha256-prefix-12>
 ```
 
-It also mounts the worktree at `/workspace` and labels the container with:
+It mounts the canonical worktree root and git common root at their host-like absolute paths, and labels the container with:
 
 ```text
 frb.dev.repo=flutter_rust_bridge
 frb.dev.worktree=<canonical worktree root>
 frb.dev.git-common-root=<git common root>
-frb.dev.layout-version=2
+frb.dev.layout-version=3
 ```
 
-For linked git worktrees, the container also mounts the canonical worktree root and git common root at their host-like absolute paths, then runs commands from the host-like worktree path. This keeps `.git` files and submodule gitdir references valid while preserving `/workspace` as a convenience mount.
+Commands run from the host-like worktree path inside the container. There is intentionally no `/workspace` alias, because linked git worktrees and submodule gitdir references need the same path shape that they have on the host.
 
 Typical usage:
 

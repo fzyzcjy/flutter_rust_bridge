@@ -31,8 +31,7 @@ WORKTREE_LABEL = "frb.dev.worktree"
 GIT_COMMON_ROOT_LABEL = "frb.dev.git-common-root"
 LAYOUT_VERSION_LABEL = "frb.dev.layout-version"
 REPO_LABEL_VALUE = "flutter_rust_bridge"
-LAYOUT_VERSION_VALUE = "2"
-WORKSPACE_PATH = "/workspace"
+LAYOUT_VERSION_VALUE = "3"
 TART_WORKSPACE_SHARE_NAME = "workspace"
 TART_HOST_MAIN_SHARE_NAME = "main"
 
@@ -98,8 +97,6 @@ def container_name_for_worktree(worktree_root: Path) -> str:
 def docker_volume_args(*, worktree_root: Path) -> list[str]:
     git_common_root = resolve_git_common_root(worktree_root=worktree_root)
     volumes = [
-        "--volume",
-        f"{worktree_root}:{WORKSPACE_PATH}",
         "--volume",
         f"{worktree_root}:{worktree_root}",
     ]
@@ -476,7 +473,6 @@ def build_info(*, worktree_root: Path, image: str) -> dict[str, object]:
         "exists": exists,
         "running": running,
         "image": image,
-        "workspace_path": WORKSPACE_PATH,
         "command_workdir": str(worktree_root),
         "git_common_root": str(resolve_git_common_root(worktree_root=worktree_root)),
         "labels": {
@@ -585,7 +581,7 @@ def exec_in_container(
         typer.Option("--image", help="Docker image. Defaults to FRB_DOCKER_IMAGE or the published FRB dev image."),
     ] = None,
 ) -> None:
-    """Ensure the container is running, then execute a command in /workspace."""
+    """Ensure the container is running, then execute a command from the host-like worktree path."""
 
     if not command:
         raise typer.BadParameter("exec requires a command, for example: exec -- bash -lc './frb_internal --help'")
