@@ -1,7 +1,7 @@
 use crate::integration::integrator;
 use crate::integration::integrator::IntegrateConfig;
 use crate::library::commands::flutter::flutter_create;
-use crate::misc::Template;
+use crate::misc::{FvmInstallMode, Template};
 use anyhow::{bail, ensure};
 use log::{debug, info};
 use std::path::Path;
@@ -14,6 +14,7 @@ pub struct CreateConfig {
     pub rust_crate_name: Option<String>,
     pub rust_crate_dir: String,
     pub template: Template,
+    pub fvm_install_mode: FvmInstallMode,
 }
 
 /// Create a new Flutter + Rust project.
@@ -33,7 +34,12 @@ pub fn create(config: CreateConfig) -> anyhow::Result<()> {
     );
     // frb-coverage:ignore-end
 
-    flutter_create(&config.name, &config.org, config.template)?;
+    flutter_create(
+        &config.name,
+        &config.org,
+        config.template,
+        config.fvm_install_mode,
+    )?;
 
     env::set_current_dir(&dart_root)?;
 
@@ -52,6 +58,7 @@ pub fn create(config: CreateConfig) -> anyhow::Result<()> {
         rust_crate_name: config.rust_crate_name,
         rust_crate_dir: config.rust_crate_dir,
         template: config.template,
+        fvm_install_mode: config.fvm_install_mode,
     })
 }
 

@@ -14,6 +14,7 @@ use crate::codegen::config::internal_config::InternalConfig;
 use crate::codegen::dumper::internal_config::ConfigDumpContent::Config as ContentConfig;
 use crate::codegen::dumper::Dumper;
 use crate::codegen::misc::GeneratorProgressBarPack;
+use crate::misc::FvmInstallMode;
 pub use config::config::{Config, MetaConfig};
 pub use dumper::internal_config::ConfigDumpContent;
 pub use ir::mir::ty::rust_opaque::RustOpaqueCodecMode;
@@ -21,9 +22,23 @@ use log::debug;
 
 /// Execute the main code generator
 pub fn generate(config: Config, meta_config: MetaConfig) -> anyhow::Result<()> {
+    // This compatibility wrapper only preserves the public API shape; behavior is covered
+    // through the explicit mode-aware generator path.
+    // frb-coverage:ignore-start
+    generate_with_fvm_install_mode(config, meta_config, FvmInstallMode::Normal)
+    // frb-coverage:ignore-end
+}
+
+/// Execute the main code generator with an explicit FVM install mode.
+pub fn generate_with_fvm_install_mode(
+    config: Config,
+    meta_config: MetaConfig,
+    fvm_install_mode: FvmInstallMode,
+) -> anyhow::Result<()> {
     debug!("config={config:?} meta_config={meta_config:?}");
 
-    let internal_config = InternalConfig::parse(&config, &meta_config)?;
+    let mut internal_config = InternalConfig::parse(&config, &meta_config)?;
+    internal_config.polisher.fvm_install_mode = fvm_install_mode;
     debug!("internal_config={internal_config:?}");
 
     let dumper = Dumper::new(&internal_config.dumper);

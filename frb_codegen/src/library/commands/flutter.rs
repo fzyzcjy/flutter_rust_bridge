@@ -2,14 +2,19 @@ use crate::command_run;
 use crate::commands::command_runner::call_shell;
 use crate::library::commands::command_runner::check_exit_code;
 use crate::library::commands::fvm::command_arg_maybe_fvm;
-use crate::misc::Template;
+use crate::misc::{FvmInstallMode, Template};
 use log::info;
 use std::path::Path;
 
 #[allow(clippy::vec_init_then_push)]
-pub fn flutter_create(name: &str, org: &Option<String>, template: Template) -> anyhow::Result<()> {
+pub fn flutter_create(
+    name: &str,
+    org: &Option<String>,
+    template: Template,
+    fvm_install_mode: FvmInstallMode,
+) -> anyhow::Result<()> {
     let mut full_args = vec![];
-    full_args.extend(command_arg_maybe_fvm(None));
+    full_args.extend(command_arg_maybe_fvm(None, fvm_install_mode));
     full_args.extend(vec![
         "flutter".to_owned(),
         "create".to_owned(),
@@ -38,9 +43,13 @@ pub fn flutter_create(name: &str, org: &Option<String>, template: Template) -> a
 }
 
 #[allow(clippy::vec_init_then_push)]
-pub fn flutter_pub_add(items: &[&str], pwd: Option<&Path>) -> anyhow::Result<()> {
+pub fn flutter_pub_add(
+    items: &[&str],
+    pwd: Option<&Path>,
+    fvm_install_mode: FvmInstallMode,
+) -> anyhow::Result<()> {
     let mut full_args = vec![];
-    full_args.extend(command_arg_maybe_fvm(pwd));
+    full_args.extend(command_arg_maybe_fvm(pwd, fvm_install_mode));
     full_args.extend(vec![
         "flutter".to_owned(),
         "pub".to_owned(),
@@ -56,9 +65,9 @@ pub fn flutter_pub_add(items: &[&str], pwd: Option<&Path>) -> anyhow::Result<()>
 }
 
 #[allow(clippy::vec_init_then_push)]
-pub fn flutter_pub_get(path: &Path) -> anyhow::Result<()> {
+pub fn flutter_pub_get(path: &Path, fvm_install_mode: FvmInstallMode) -> anyhow::Result<()> {
     let mut full_args = vec![];
-    full_args.extend(command_arg_maybe_fvm(Some(path)));
+    full_args.extend(command_arg_maybe_fvm(Some(path), fvm_install_mode));
     full_args.extend(vec![
         "flutter".to_owned(),
         "pub".to_owned(),
