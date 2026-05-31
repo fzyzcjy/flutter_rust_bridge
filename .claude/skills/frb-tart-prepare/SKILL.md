@@ -1,6 +1,6 @@
 ---
 name: frb-tart-prepare
-description: Use when preparing or explaining the FRB Tart base VM for iOS Simulator validation, including local OCI registry mirroring, direct OCI clone, and base VM hygiene.
+description: Use when preparing or explaining the FRB Tart base VM for iOS Simulator validation, including local OCI registry mirroring, Packer provisioning, and base VM hygiene.
 ---
 
 # FRB Tart Base VM Preparation
@@ -9,22 +9,24 @@ Use this skill when preparing the reusable Tart base VM used by `frb-dev-env tar
 
 ## Model
 
-The reusable base VM is a clean local VM cloned directly from a pinned OCI artifact:
+The reusable base VM is a clean local VM built by Packer from a pinned Tart OCI artifact:
 
 ```text
 ghcr.io/cirruslabs/macos-sonoma-xcode:16.1
   -> optional local OCI registry mirror
-  -> tart clone ... frb-tart-base
+  -> packer build ... frb-tart-base-candidate
+  -> smoke test candidate
+  -> promote candidate to frb-tart-base
   -> tart clone frb-tart-base frb-tart-<worktree-hash>
 ```
 
-`frb-tart-base` is the base image. Do not use it for development, do not run tests in it, and do not manually install tools into it. Treat it as immutable after creation. Per-worktree VMs are cloned from it via APFS copy-on-write and can be dirtied, stopped, deleted, and recreated.
+`frb-tart-base` is the prepared base image. Do not use it for development, do not run tests in it, and do not manually install tools into it. Treat it as immutable after creation. Per-worktree VMs are cloned from it via APFS copy-on-write and can be dirtied, stopped, deleted, and recreated.
 
 ## Why Not Mutate the Base VM
 
 Do not boot `frb-tart-base` and manually install Flutter, Android SDK packages, CocoaPods updates, Rust targets, or other dependencies into it.
 
-Manual changes make the base hard to reproduce and hard to audit. If the base needs different tools, choose or build a new pinned OCI image, document the exact source, and recreate `frb-tart-base` from that artifact. The base VM should answer the question "which OCI artifact did this come from?", not "what did someone install by hand last week?".
+Manual changes make the base hard to reproduce and hard to audit. If the base needs different tools, update the Packer template or provision script next to this skill, document the exact source, rebuild a candidate, smoke test it, and then promote it to `frb-tart-base`. The base VM should answer both questions: "which OCI artifact did this come from?" and "which provision script changed it?"
 
 ## Source Image
 
@@ -38,13 +40,19 @@ Avoid `latest` tags. Avoid broad multi-Xcode runner images unless there is a spe
 
 ## Fast Path When Network Is Good
 
-If network access to GHCR is reliable enough, create the base VM directly:
+If network access to GHCR is reliable enough, Packer can clone the raw source image directly:
 
 ```bash
-tart clone ghcr.io/cirruslabs/macos-sonoma-xcode:16.1 frb-tart-base
+cd .claude/skills/frb-tart-prepare/packer
+packer init .
+packer build \
+  -var 'source_vm=ghcr.io/cirruslabs/macos-sonoma-xcode:16.1' \
+  -var 'target_vm=frb-tart-base-candidate' \
+  -var 'allow_insecure=false' \
+  .
 ```
 
-Use this only when the direct download path is acceptable. `tart clone` uses macOS networking, so shell proxy environment variables may not control it the way they control CLI tools like `curl` or `crane`.
+Use this only when the direct download path is acceptable. Packer delegates the source VM clone to Tart, so shell proxy environment variables may not control it the way they control CLI tools like `curl` or `crane`.
 
 ## Controlled Local Registry Path
 
@@ -52,7 +60,9 @@ Use this path when direct `tart clone ghcr.io/...` is slow, unreliable, or hard 
 
 1. Run a local OCI registry on `127.0.0.1:5000`.
 2. Use `crane copy` with explicit proxy environment variables to mirror the remote Tart OCI artifact into the local registry.
-3. Run `tart clone --insecure` from the local registry to create `frb-tart-base`.
+3. Run Packer with `allow_insecure=true` and `source_vm=127.0.0.1:5000/...` to create `frb-tart-base-candidate`.
+4. Smoke test the candidate.
+5. Promote it to `frb-tart-base`.
 
 ### Start Local Registry
 
@@ -132,33 +142,49 @@ Known digest for the current source image:
 sha256:f181b76eede9acd7a6db76438a4cf73e76550c3f9e8104aed16347122e132184
 ```
 
-## Create Base VM
+## Build Base VM With Packer
 
-Create `frb-tart-base` from the local registry:
+Build a candidate base VM from the local registry:
 
 ```bash
-tart clone --insecure \
-  127.0.0.1:5000/cirruslabs/macos-sonoma-xcode:16.1 \
-  frb-tart-base
+cd .claude/skills/frb-tart-prepare/packer
+packer init .
+packer build \
+  -var 'source_vm=127.0.0.1:5000/cirruslabs/macos-sonoma-xcode:16.1' \
+  -var 'target_vm=frb-tart-base-candidate' \
+  -var 'allow_insecure=true' \
+  .
 ```
 
-Verify:
+The Packer template clones the raw source VM, boots it as `admin/admin`, runs `scripts/provision-frb-tart-base.sh`, and leaves a stopped local VM named by `target_vm`. The current provision step initializes Xcode, uses the Flutter SDK already present in the source Tart image, installs CocoaPods with Homebrew, installs Rust matching the devcontainer, adds the `aarch64-apple-ios-sim` Rust target, and pre-caches Flutter iOS artifacts. It also verifies the image contains Xcode and simulator tooling.
+
+Verify the candidate:
 
 ```bash
 tart list
-tart get frb-tart-base --format json
+tart get frb-tart-base-candidate --format json
 ```
 
-Do not boot and mutate `frb-tart-base` during verification. If you need to inspect runtime state, clone a disposable probe VM from it:
+Do not boot and mutate `frb-tart-base` during verification. If you need to inspect runtime state, clone a disposable probe VM from the candidate:
 
 ```bash
-tart clone frb-tart-base frb-tart-probe
+tart clone frb-tart-base-candidate frb-tart-probe
 tart run --no-graphics frb-tart-probe
 tart ip frb-tart-probe --wait 180
-tart exec frb-tart-probe sw_vers
+tart exec frb-tart-probe /bin/zsh -lc 'sw_vers && xcodebuild -version && flutter --version && pod --version && rustc --version && cargo --version && rustup target list --installed | grep aarch64-apple-ios-sim'
 tart stop frb-tart-probe
 tart delete frb-tart-probe
 ```
+
+After the candidate passes smoke, promote it by moving the old base out of the way and renaming the candidate:
+
+```bash
+stamp=$(date +%Y%m%d-%H%M%S)
+tart rename frb-tart-base "frb-tart-base-before-packer-$stamp"
+tart rename frb-tart-base-candidate frb-tart-base
+```
+
+If there is no existing `frb-tart-base`, only the second rename is needed.
 
 ## Cost Notes
 
