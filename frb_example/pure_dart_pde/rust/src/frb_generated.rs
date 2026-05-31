@@ -46549,7 +46549,7 @@ impl<'a> flutter_rust_bridge::IntoIntoDart<FrbWrapper<uriparse::URI<'a>>> for ur
 // Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for FrbWrapper<url::Url> {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
-        self.0.to_string().into_dart()
+        String::from(self.0).into_dart()
     }
 }
 impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive for FrbWrapper<url::Url> {}
