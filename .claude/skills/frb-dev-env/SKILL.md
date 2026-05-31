@@ -1,6 +1,6 @@
 ---
 name: frb-dev-env
-description: "Use before configuring or running local flutter_rust_bridge development commands for the user. Covers the user's personal FRB environment expectations: Docker-first local execution, per-worktree containers, submodules, dependency setup, and command hygiene."
+description: "Use only if the user wants container-based development workflow."
 ---
 
 # User FRB Environment
@@ -35,7 +35,7 @@ git submodule update --init --recursive
 
 Use Docker by default for the user's local FRB development. Each worktree should have one long-lived local container that is reused for tests, lint, code generation, and setup commands.
 
-Use `tom_frb_env.py` next to this skill to inspect, create, start, and reuse the per-worktree container. The script derives the container name from the canonical worktree root only:
+Use `frb_dev_env.py` next to this skill to inspect, create, start, and reuse the per-worktree container. The script derives the container name from the canonical worktree root only:
 
 ```text
 frb-<worktree-root-sha256-prefix-12>
@@ -51,9 +51,9 @@ tom.frb.worktree=<canonical worktree root>
 Typical usage:
 
 ```bash
-~/.claude/skills/tom-frb-env/tom_frb_env.py info
-~/.claude/skills/tom-frb-env/tom_frb_env.py create
-~/.claude/skills/tom-frb-env/tom_frb_env.py exec -- bash -lc './frb_internal --help'
+.claude/skills/frb-dev-env/frb_dev_env.py info
+.claude/skills/frb-dev-env/frb_dev_env.py create
+.claude/skills/frb-dev-env/frb_dev_env.py exec -- bash -lc './frb_internal --help'
 ```
 
 ## Cleanup
@@ -61,7 +61,7 @@ Typical usage:
 Delete a worktree's Docker container when the worktree is no longer needed, or when local Docker resources are getting crowded:
 
 ```bash
-~/.claude/skills/tom-frb-env/tom_frb_env.py delete
+.claude/skills/frb-dev-env/frb_dev_env.py delete
 ```
 
 The delete command validates the container labels before removing it. Use `--force` only when intentionally removing a mismatched container.
