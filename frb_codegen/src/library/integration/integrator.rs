@@ -251,8 +251,8 @@ fn set_permission_executable(path: &Path) -> Result<()> {
 #[cfg(all(test, unix))]
 mod tests {
     use super::{
-        refresh_cargo_lock_ordering, set_permission_executable, should_refresh_cargo_lock_ordering,
-        REFRESH_CARGO_LOCK_ORDERING_ENV_VAR,
+        maybe_refresh_cargo_lock_ordering, refresh_cargo_lock_ordering, set_permission_executable,
+        should_refresh_cargo_lock_ordering, REFRESH_CARGO_LOCK_ORDERING_ENV_VAR,
     };
     use serial_test::serial;
     use std::fs;
@@ -311,6 +311,20 @@ mod tests {
 
         std::env::set_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR, "1");
         assert!(should_refresh_cargo_lock_ordering());
+
+        std::env::remove_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR);
+    }
+
+    #[test]
+    #[serial]
+    fn test_maybe_refresh_cargo_lock_ordering_skips_when_env_var_is_not_one() {
+        std::env::remove_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR);
+
+        let temp_dir = tempfile::tempdir().unwrap();
+        maybe_refresh_cargo_lock_ordering(temp_dir.path(), "does-not-need-to-exist").unwrap();
+
+        std::env::set_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR, "0");
+        maybe_refresh_cargo_lock_ordering(temp_dir.path(), "still-not-used").unwrap();
 
         std::env::remove_var(REFRESH_CARGO_LOCK_ORDERING_ENV_VAR);
     }
