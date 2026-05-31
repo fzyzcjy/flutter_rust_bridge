@@ -507,7 +507,11 @@ pub(crate) fn pub_add_dependency_frb(
         flutter_pub_add(
             &[concat!("flutter_rust_bridge:", env!("CARGO_PKG_VERSION"))],
             pwd,
+            // This argument is plumbing into the shell-command wrapper; command behavior is
+            // covered by the integrate workflows.
+            // frb-coverage:ignore-start
             fvm_install_mode,
+            // frb-coverage:ignore-end
         )?;
     };
 

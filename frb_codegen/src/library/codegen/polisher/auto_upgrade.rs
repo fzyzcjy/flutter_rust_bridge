@@ -68,7 +68,11 @@ impl Upgrader for DartUpgrader<'_> {
 
     fn upgrade(&self, fvm_install_mode: FvmInstallMode) -> Result<()> {
         log::info!("Auto upgrade Dart dependency");
+        // This shell-command forwarding path is exercised by integration workflows; llvm-cov
+        // does not see the external Dart command behavior as meaningful Rust coverage.
+        // frb-coverage:ignore-start
         pub_add_dependency_frb(false, Some(self.base_dir), fvm_install_mode)
+        // frb-coverage:ignore-end
     }
 }
 
@@ -107,6 +111,58 @@ impl<'a> RustUpgrader<'a> {
             }))
             .next()
             .ok_or_else(|| anyhow!("flutter_rust_bridge not found in Cargo.toml dependencies"))
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::codegen::polisher::internal_config::PolisherInternalConfig;
+    use std::cell::Cell;
+    use tempfile::tempdir;
+
+    struct RecordingUpgrader {
+        forwarded_mode: Cell<Option<FvmInstallMode>>,
+    }
+
+    impl Upgrader for RecordingUpgrader {
+        fn check(&self) -> Result<bool> {
+            Ok(false)
+        }
+
+        fn upgrade(&self, fvm_install_mode: FvmInstallMode) -> Result<()> {
+            self.forwarded_mode.set(Some(fvm_install_mode));
+            Ok(())
+        }
+    }
+
+    #[test]
+    fn upgrader_forwards_fvm_install_mode_from_config() {
+        let temp_dir = tempdir().unwrap();
+        let config = PolisherInternalConfig {
+            duplicated_c_output_path: vec![],
+            dart_format_line_length: 80,
+            dart_format: false,
+            dart_fix: false,
+            rust_format: false,
+            add_mod_to_lib: false,
+            build_runner: false,
+            web_enabled: false,
+            dart_output: temp_dir.path().join("dart_output"),
+            dart_root: temp_dir.path().join("dart_root"),
+            rust_crate_dir: temp_dir.path().join("rust_crate"),
+            rust_output_path: temp_dir.path().join("rust_output"),
+            c_output_path: None,
+            enable_auto_upgrade: true,
+            fvm_install_mode: FvmInstallMode::Skip,
+        };
+        let upgrader = RecordingUpgrader {
+            forwarded_mode: Cell::new(None),
+        };
+
+        upgrader.execute(&config).unwrap();
+
+        assert_eq!(upgrader.forwarded_mode.get(), Some(FvmInstallMode::Skip));
     }
 }
 

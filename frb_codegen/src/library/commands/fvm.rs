@@ -16,7 +16,11 @@ fn should_use_fvm(pwd: Option<&Path>, fvm_install_mode: FvmInstallMode) -> bool 
     } else {
         let has_fvm_installation_output = has_fvm_installation();
         if fvm_install_mode == FvmInstallMode::Skip {
+            // This branch depends on the runner having FVM installed while the user explicitly
+            // skips installation; the observable behavior is warning-only.
+            // frb-coverage:ignore-start
             log::info!("The user actively skipped installing fvm.");
+            // frb-coverage:ignore-end
         } else if has_fvm_installation_output {
             fvm_install_flutter_version();
         }

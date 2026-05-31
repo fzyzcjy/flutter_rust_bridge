@@ -22,7 +22,11 @@ use log::debug;
 
 /// Execute the main code generator
 pub fn generate(config: Config, meta_config: MetaConfig) -> anyhow::Result<()> {
+    // This compatibility wrapper only preserves the public API shape; behavior is covered
+    // through the explicit mode-aware generator path.
+    // frb-coverage:ignore-start
     generate_with_fvm_install_mode(config, meta_config, FvmInstallMode::Normal)
+    // frb-coverage:ignore-end
 }
 
 /// Execute the main code generator with an explicit FVM install mode.

@@ -24,3 +24,20 @@ impl FvmInstallMode {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn from_skip_fvm_install_maps_cli_flag_to_mode() {
+        assert_eq!(
+            FvmInstallMode::from_skip_fvm_install(false),
+            FvmInstallMode::Normal
+        );
+        assert_eq!(
+            FvmInstallMode::from_skip_fvm_install(true),
+            FvmInstallMode::Skip
+        );
+    }
+}
