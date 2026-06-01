@@ -308,7 +308,7 @@ jobs:
       - if: matrix.platforms == 'ohos'
         name: Setup flutter-ohos
         run: |
-          git clone -b oh-3.41.9-dev https://gitcode.com/openharmony-tpc/flutter_flutter.git $GITHUB_WORKSPACE/flutter
+          git clone -b oh-3.41.9-dev https://gitcode.com/CPF-Flutter/flutter_flutter.git $GITHUB_WORKSPACE/flutter
           echo "$GITHUB_WORKSPACE/flutter/bin" >> $GITHUB_PATH
       - if: matrix.platforms == 'ohos'
         name: Export OHOS_SDK_HOME
@@ -504,7 +504,7 @@ jobs:
       - if: matrix.info.target == 'ohos'
         name: Setup flutter-ohos
         run: |
-          git clone -b oh-3.41.9-dev https://gitcode.com/openharmony-tpc/flutter_flutter.git $GITHUB_WORKSPACE/flutter
+          git clone -b oh-3.41.9-dev https://gitcode.com/CPF-Flutter/flutter_flutter.git $GITHUB_WORKSPACE/flutter
           echo "$GITHUB_WORKSPACE/flutter/bin" >> $GITHUB_PATH
       - if: matrix.info.target == 'ohos'
         name: Export OHOS_SDK_HOME
