@@ -28,6 +28,7 @@ pub mod event_listener;
 pub mod exception;
 pub mod external_impl;
 pub mod external_type_in_crate;
+pub mod frb_logging;
 pub mod impl_trait;
 pub mod init_dart_code;
 pub mod inside_macro;

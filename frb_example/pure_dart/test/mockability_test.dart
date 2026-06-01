@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:frb_example_pure_dart/src/rust/api/frb_logging.dart';
 import 'package:frb_example_pure_dart/src/rust/api/simple.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:mocktail/mocktail.dart';
@@ -17,6 +20,17 @@ Future<void> main() async {
   when(
     () => mockApi.crateApiCustomizationMyInitTwo(),
   ).thenAnswer((_) async => null);
+  when(
+    () => mockApi.crateApiFrbLoggingFrbInternalLoggingMaxLevel(),
+  ).thenReturn('WARN');
+  when(
+    () => mockApi.crateApiFrbLoggingFrbInternalLoggingSetupDartLoggingOutput(),
+  ).thenReturn(false);
+  when(
+    () => mockApi.crateApiFrbLoggingFrbInternalInitLogger(
+      maxLevel: any(named: 'maxLevel'),
+    ),
+  ).thenAnswer((_) => Stream<FrbLogRecord>.empty());
 
   await RustLib.init(api: mockApi);
 

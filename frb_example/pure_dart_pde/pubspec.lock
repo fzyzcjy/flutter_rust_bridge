@@ -360,7 +360,7 @@ packages:
     source: hosted
     version: "5.1.1"
   logging:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: logging
       sha256: c8245ada5f1717ed44271ed1c26b8ce85ca3228fd2ffdb75468ab01979309d61
@@ -712,4 +712,4 @@ packages:
     source: hosted
     version: "2.2.2"
 sdks:
-  dart: ">=3.11.0 <4.0.0"
+  dart: ">=3.10.0 <4.0.0"

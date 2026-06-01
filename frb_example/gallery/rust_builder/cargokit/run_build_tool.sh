@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -e
 
@@ -42,6 +42,12 @@ void main(List<String> args) {
 }
 EOF
 
+# Create alias for `shasum` if it does not exist and `sha1sum` exists
+if ! [ -x "$(command -v shasum)" ] && [ -x "$(command -v sha1sum)" ]; then
+  shopt -s expand_aliases
+  alias shasum="sha1sum"
+fi
+
 # Dart run will not cache any package that has a path dependency, which
 # is the case for our build_tool_runner. So instead we precompile the package
 # ourselves.
@@ -69,6 +75,11 @@ if [ ! -f "$PACKAGE_HASH_FILE" ]; then
     "$DART" pub get --no-precompile
     "$DART" compile kernel bin/build_tool_runner.dart
     echo "$PACKAGE_HASH" > "$PACKAGE_HASH_FILE"
+fi
+
+# Rebuild the tool if it was deleted by Android Studio
+if [ ! -f "bin/build_tool_runner.dill" ]; then
+  "$DART" compile kernel bin/build_tool_runner.dart
 fi
 
 set +e

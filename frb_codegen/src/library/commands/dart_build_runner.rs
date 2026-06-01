@@ -2,13 +2,14 @@ use crate::command_run;
 use crate::commands::command_runner::call_shell;
 use crate::library::commands::command_runner::ExecuteCommandOptions;
 use crate::library::commands::fvm::command_arg_maybe_fvm;
+use crate::misc::FvmInstallMode;
 use crate::utils::dart_repository::dart_repo::DartRepository;
 use anyhow::bail;
 use log::debug;
 use std::collections::HashMap;
 use std::path::Path;
 
-pub fn dart_build_runner(dart_root: &Path) -> anyhow::Result<()> {
+pub fn dart_build_runner(dart_root: &Path, fvm_install_mode: FvmInstallMode) -> anyhow::Result<()> {
     debug!("Running build_runner at dart_root={dart_root:?}");
 
     let repo = DartRepository::from_path(dart_root)?;
@@ -17,7 +18,7 @@ pub fn dart_build_runner(dart_root: &Path) -> anyhow::Result<()> {
             envs: Some(dart_run_extra_env()),
             ..Default::default()
         })],
-        ?command_arg_maybe_fvm(Some(dart_root)),
+        ?command_arg_maybe_fvm(Some(dart_root), fvm_install_mode),
         *repo.toolchain.as_run_command(),
         *repo.command_extra_args(),
         "run",

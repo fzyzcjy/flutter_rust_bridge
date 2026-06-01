@@ -1,17 +1,27 @@
 use crate::command_run;
 use crate::library::commands::command_runner::{call_shell, ExecuteCommandOptions};
+use crate::misc::FvmInstallMode;
 use std::path::Path;
 
-pub(crate) fn command_arg_maybe_fvm(pwd: Option<&Path>) -> Option<String> {
-    should_use_fvm(pwd).then(|| "fvm".to_owned())
+pub(crate) fn command_arg_maybe_fvm(
+    pwd: Option<&Path>,
+    fvm_install_mode: FvmInstallMode,
+) -> Option<String> {
+    should_use_fvm(pwd, fvm_install_mode).then(|| "fvm".to_owned())
 }
 
-fn should_use_fvm(pwd: Option<&Path>) -> bool {
+fn should_use_fvm(pwd: Option<&Path>, fvm_install_mode: FvmInstallMode) -> bool {
     if pwd.is_some() && !has_fvmrc(pwd.unwrap()) {
         false
     } else {
         let has_fvm_installation_output = has_fvm_installation();
-        if has_fvm_installation_output {
+        if fvm_install_mode == FvmInstallMode::Skip {
+            // This branch depends on the runner having FVM installed while the user explicitly
+            // skips installation; the observable behavior is warning-only.
+            // frb-coverage:ignore-start
+            log::info!("The user actively skipped installing fvm.");
+            // frb-coverage:ignore-end
+        } else if has_fvm_installation_output {
             fvm_install_flutter_version();
         }
         if !has_fvm_installation_output {

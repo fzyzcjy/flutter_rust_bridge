@@ -17,7 +17,7 @@ class PrecommitAutofixInDevContainerCommand extends Command<void> {
 
   @override
   final String description =
-      'Run precommit-autofix inside the published dev Docker image';
+      'Run precommit-autofix inside the dev Docker image';
 
   PrecommitAutofixInDevContainerCommand({
     required this.commandRunner,
@@ -69,6 +69,12 @@ class PrecommitAutofixInDevContainerCommand extends Command<void> {
         'github-notice',
         defaultsTo: false,
         help: 'Emit a ::notice:: line when a patch is produced.',
+      )
+      ..addFlag(
+        'build-if-missing',
+        defaultsTo: false,
+        help:
+            'Build the dev Docker image locally if pulling the published tag fails.',
       );
   }
 
@@ -113,6 +119,7 @@ class PrecommitAutofixInDevContainerCommand extends Command<void> {
             mode: argResults!['mode'] as String,
             outputPath: outputPath,
             artifactName: argResults!['artifact-name'] as String,
+            buildIfMissing: argResults!['build-if-missing'] as bool,
             githubHeadSha: githubHeadSha,
             githubRunId: githubRunId,
             githubOutputPath: githubOutputPath,
@@ -127,6 +134,7 @@ class PrecommitAutofixInDevContainerCommand extends Command<void> {
 
 class PrecommitAutofixInDevContainerConfig {
   final String artifactName;
+  final bool buildIfMissing;
   final String dockerfilePath;
   final String? githubHeadSha;
   final String? githubRunId;
@@ -139,6 +147,7 @@ class PrecommitAutofixInDevContainerConfig {
 
   const PrecommitAutofixInDevContainerConfig({
     required this.artifactName,
+    required this.buildIfMissing,
     required this.dockerfilePath,
     required this.githubHeadSha,
     required this.githubRunId,
@@ -211,7 +220,12 @@ class PrecommitAutofixInDevContainerService {
       outputPath: containerPatchPath,
     );
 
-    await commandRunner('docker pull ${shellEscape(imageRef)}');
+    await ensurePrecommitAutofixImage(
+      buildIfMissing: config.buildIfMissing,
+      commandRunner: commandRunner,
+      dockerfilePath: dockerfilePath,
+      imageRef: imageRef,
+    );
 
     await commandRunner(
       'docker run --rm '
@@ -281,6 +295,29 @@ class PrecommitAutofixInDevContainerService {
       hasPatch: hasPatch,
       imageRef: imageRef,
       outputPath: outputPath,
+    );
+  }
+}
+
+@visibleForTesting
+Future<void> ensurePrecommitAutofixImage({
+  required bool buildIfMissing,
+  required DevDockerWorkflowCommandRunner commandRunner,
+  required String dockerfilePath,
+  required String imageRef,
+}) async {
+  try {
+    await commandRunner('docker pull ${shellEscape(imageRef)}');
+  } on Exception {
+    if (!buildIfMissing) {
+      rethrow;
+    }
+
+    await commandRunner(
+      'docker build '
+      '-f ${shellEscape(dockerfilePath)} '
+      '-t ${shellEscape(imageRef)} '
+      '${shellEscape(path.dirname(dockerfilePath))}',
     );
   }
 }

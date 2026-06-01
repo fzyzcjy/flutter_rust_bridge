@@ -1,3 +1,4 @@
+use crate::misc::FvmInstallMode;
 use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 
@@ -17,4 +18,5 @@ pub(crate) struct PolisherInternalConfig {
     pub rust_output_path: PathBuf,
     pub c_output_path: Option<PathBuf>,
     pub enable_auto_upgrade: bool,
+    pub fvm_install_mode: FvmInstallMode,
 }

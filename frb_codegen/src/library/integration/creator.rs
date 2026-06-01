@@ -1,7 +1,7 @@
 use crate::integration::integrator;
 use crate::integration::integrator::IntegrateConfig;
 use crate::library::commands::flutter::flutter_create;
-use crate::misc::Template;
+use crate::misc::{FvmInstallMode, Template};
 use anyhow::{bail, ensure};
 use log::{debug, info};
 use std::path::Path;
@@ -14,6 +14,8 @@ pub struct CreateConfig {
     pub rust_crate_name: Option<String>,
     pub rust_crate_dir: String,
     pub template: Template,
+    pub platforms: Option<String>,
+    pub fvm_install_mode: FvmInstallMode,
 }
 
 /// Create a new Flutter + Rust project.
@@ -33,7 +35,14 @@ pub fn create(config: CreateConfig) -> anyhow::Result<()> {
     );
     // frb-coverage:ignore-end
 
-    flutter_create(&config.name, &config.org, config.template)?;
+    let platforms = config.platforms.clone();
+    flutter_create(
+        &config.name,
+        &config.org,
+        config.template,
+        platforms.clone(),
+        config.fvm_install_mode,
+    )?;
 
     env::set_current_dir(&dart_root)?;
 
@@ -52,6 +61,8 @@ pub fn create(config: CreateConfig) -> anyhow::Result<()> {
         rust_crate_name: config.rust_crate_name,
         rust_crate_dir: config.rust_crate_dir,
         template: config.template,
+        platforms,
+        fvm_install_mode: config.fvm_install_mode,
     })
 }
 
@@ -117,6 +128,10 @@ fn remove_unnecessary_plugin_files(dart_root: &Path) -> anyhow::Result<()> {
         remove_files_in_dir(&windows_dir)?;
     }
 
+    let ohos_dir = dart_root.join("ohos");
+    if ohos_dir.exists() {
+        fs::remove_dir_all(&ohos_dir)?;
+    }
     Ok(())
 }
 
@@ -131,4 +146,82 @@ fn remove_files_in_dir(dir: &Path) -> anyhow::Result<()> {
         }
     }
     Ok(())
+}
+#[cfg(test)]
+mod tests {
+    use super::{remove_files_in_dir, remove_unnecessary_plugin_files};
+    use std::fs;
+    use std::path::Path;
+
+    fn write_file(path: &Path) {
+        if let Some(parent) = path.parent() {
+            fs::create_dir_all(parent).unwrap();
+        }
+        fs::write(path, "x").unwrap();
+    }
+
+    #[test]
+    fn test_remove_files_in_dir_rejects_nested_directories() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let root = temp_dir.path().join("root");
+        fs::create_dir_all(root.join("nested")).unwrap();
+        fs::write(root.join("top.txt"), "x").unwrap();
+        fs::write(root.join("nested").join("child.txt"), "x").unwrap();
+
+        let err = remove_files_in_dir(&root).unwrap_err();
+        let message = err.to_string();
+        assert!(message.contains("expected to contain only files"));
+    }
+
+    #[test]
+    fn test_remove_unnecessary_plugin_files_cleans_platform_specific_layout() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let dart_root = temp_dir.path();
+
+        write_file(&dart_root.join("lib").join("a.dart"));
+        write_file(&dart_root.join("src").join("bridge.h"));
+        write_file(&dart_root.join("ffigen.yaml"));
+        write_file(&dart_root.join("example").join("lib").join("example.dart"));
+
+        write_file(
+            &dart_root
+                .join("android")
+                .join("src")
+                .join("main")
+                .join("plugin.kt"),
+        );
+        write_file(&dart_root.join("android").join("AndroidManifest.xml"));
+
+        write_file(&dart_root.join("ios").join("Classes").join("Plugin.swift"));
+        write_file(&dart_root.join("ios").join("podspec.yaml"));
+
+        write_file(&dart_root.join("linux").join("plugin.cc"));
+        write_file(&dart_root.join("macos").join("Classes").join("Plugin.swift"));
+        write_file(&dart_root.join("macos").join("podspec.yaml"));
+        write_file(&dart_root.join("windows").join("plugin.cpp"));
+
+        let ohos_lib = dart_root
+            .join("ohos")
+            .join("src")
+            .join("main")
+            .join("cpp")
+            .join("types")
+            .join("libmy_crate");
+        write_file(&ohos_lib.join("bridge.c"));
+        write_file(&dart_root.join("ohos").join("top.txt"));
+
+        remove_unnecessary_plugin_files(dart_root).unwrap();
+
+        assert!(!dart_root.join("ffigen.yaml").exists());
+        assert!(!dart_root.join("src").exists());
+        assert!(!dart_root.join("android").join("src").exists());
+        assert!(!dart_root.join("ios").join("Classes").exists());
+        assert!(!dart_root.join("macos").join("Classes").exists());
+        assert!(!dart_root.join("ohos").exists());
+        assert!(dart_root.join("android").exists());
+        assert!(dart_root.join("ios").exists());
+        assert!(dart_root.join("linux").exists());
+        assert!(dart_root.join("macos").exists());
+        assert!(dart_root.join("windows").exists());
+    }
 }

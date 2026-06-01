@@ -6,6 +6,7 @@ import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
 // ignore: implementation_imports
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/cargokit_sync.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
@@ -48,6 +49,7 @@ List<Command<void>> createCommands() {
     ),
     SimpleCommand('precommit-generate', precommitGenerate),
     SimpleCommand('precommit-integrate', precommitIntegrate),
+    SimpleCommand('sync-cargokit-copies', syncCargokitCopies),
     SimpleCommand('pub-get-all', pubGetAll),
     SimpleCommand('cargo-fetch-all', cargoFetchAll),
     CodecovPreaggregateCommand(),
@@ -202,10 +204,11 @@ Future<void> precommitIntegrate() async {
   await Future.wait([
     for (final package in kDartExampleIntegratePackages)
       generateRunFrbCodegenCommandIntegrate(
-        GeneratePackageConfig(
+        GenerateIntegratePackageConfig(
           setExitIfChanged: false,
           package: package,
           coverage: false,
+          includeOhos: false,
         ),
       ),
   ]);

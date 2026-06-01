@@ -10,6 +10,7 @@ import 'package:build_cli_annotations/build_cli_annotations.dart';
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/generator.dart'
     as frb_example_pure_dart_generator;
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/cargokit_sync.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_apple_scaffold.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_diff_exclusions.dart';
@@ -25,7 +26,6 @@ import 'package:yaml/yaml.dart';
 part 'generate.g.dart';
 
 const _kRefreshCargoLockOrderingEnv = 'FRB_REFRESH_CARGO_LOCK_ORDERING';
-
 List<Command<void>> createCommands() {
   return [
     SimpleConfigCommand(
@@ -43,8 +43,8 @@ List<Command<void>> createCommands() {
     SimpleConfigCommand(
       'generate-run-frb-codegen-command-integrate',
       generateRunFrbCodegenCommandIntegrate,
-      _$populateGeneratePackageConfigParser,
-      _$parseGeneratePackageConfigResult,
+      _$populateGenerateIntegratePackageConfigParser,
+      _$parseGenerateIntegratePackageConfigResult,
     ),
     // more detailed command, can be used to execute just a portion of the main command
     SimpleConfigCommand(
@@ -130,6 +130,26 @@ class GeneratePackageConfig implements GenerateConfig {
 }
 
 @CliOptions()
+class GenerateIntegratePackageConfig implements GenerateConfig {
+  @override
+  @CliOption(defaultsTo: false)
+  final bool setExitIfChanged;
+  @CliOption(convert: convertConfigPackage)
+  final String package;
+  @override
+  final bool coverage;
+  @CliOption(defaultsTo: false)
+  final bool includeOhos;
+
+  const GenerateIntegratePackageConfig({
+    required this.setExitIfChanged,
+    required this.package,
+    required this.coverage,
+    required this.includeOhos,
+  });
+}
+
+@CliOptions()
 class GenerateWebsiteConfig {
   final bool coverage;
 
@@ -149,6 +169,11 @@ Future<void> generateInternal(
     await generateInternalContributor(config);
   });
   await generateInternalReadme(config);
+  await generateInternalCargokitCopies(config);
+}
+
+Future<void> generateInternalCargokitCopies(GenerateConfig config) async {
+  await _wrapMaybeSetExitIfChanged(config, syncCargokitCopies);
 }
 
 Future<void> generateInternalFrbExamplePureDart(GenerateConfig config) async {
@@ -360,11 +385,14 @@ Future<void> _formatPackageAfterGenerate(String package) async {
 }
 
 Future<void> generateRunFrbCodegenCommandIntegrate(
-  GeneratePackageConfig config,
+  GenerateIntegratePackageConfig config,
 ) async {
   await _wrapMaybeSetExitIfChanged(
     config,
-    extraArgs: integrateDiffExclusionArgs(config.package),
+    extraArgs: integrateDiffExclusionArgs(
+      config.package,
+      needCompareOhos: config.includeOhos,
+    ),
     () async {
       final dirPackage = path.join(exec.pwd!, config.package);
 
