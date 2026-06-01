@@ -224,6 +224,9 @@ impl Upgrader for RustUpgrader<'_> {
     fn upgrade(&self, _fvm_install_mode: FvmInstallMode) -> Result<()> {
         log::info!("Auto upgrade Rust dependency");
 
+        // This shell-command forwarding path is exercised by integration workflows; llvm-cov
+        // does not see the external Cargo command behavior as meaningful Rust coverage.
+        // frb-coverage:ignore-start
         let mut args = vec![concat!("flutter_rust_bridge@=", env!("CARGO_PKG_VERSION"))];
 
         let target = self
@@ -236,5 +239,6 @@ impl Upgrader for RustUpgrader<'_> {
         }
 
         cargo_add(&args, self.base_dir)
+        // frb-coverage:ignore-end
     }
 }
