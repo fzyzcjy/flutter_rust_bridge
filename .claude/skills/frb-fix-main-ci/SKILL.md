@@ -7,20 +7,28 @@ description: Use when flutter_rust_bridge CI fails on the default branch/main/ma
 
 Use this when CI is failing on the default branch (`main` / `master`) or on a commit that is already part of the default-branch history.
 
-## First Step
+## Choose a Path
 
-Read `frb-fix-ci` first and apply its ordinary CI triage:
+Default-branch CI failures usually have two possible repair paths. Choose based on the evidence in the latest relevant run.
+
+### Path A: Ordinary CI Repair
+
+Use this path when the failure looks like a known FRB CI shape: flaky job, generated diff, lint drift, stale generated output, dependency-order failure, or downstream symptom already covered by existing CI triage.
+
+Read `frb-fix-ci` and repair the failure directly:
 
 - Check the latest relevant run, not stale status.
 - Use `gh-actions-live-logs` when reading GitHub Actions job logs.
 - Classify flakes, generated diffs, lint drift, dependency-order failures, and propagated downstream symptoms before deep debugging.
 - Prefer fixing prerequisite jobs such as `Generate`, `Integrate`, or high-relevance `Generate Internal` before chasing later build/test symptoms.
 
-## Main-Branch Difference
+### Path B: Regression Investigation
 
-A default-branch failure is usually a regression until proven otherwise. There should usually be an older default-branch commit that passed the same CI path.
+Use this path when the failure is not obviously a known FRB CI maintenance issue, or when several default-branch commits/runs suggest something recently broke.
 
-After the quick `frb-fix-ci` checks, answer these questions before writing a fix:
+A default-branch failure is often a regression. There should usually be an older default-branch commit that passed the same CI path. Study what changed between the green baseline and the red commit, then fix the source of that regression.
+
+Before writing a regression fix, answer these questions:
 
 1. What is the failing default-branch commit and workflow run?
 2. What is the nearest older default-branch commit with a green run for the same workflow or job family?
@@ -44,6 +52,7 @@ After the quick `frb-fix-ci` checks, answer these questions before writing a fix
 ## What Not To Do
 
 - Do not treat default-branch CI as "just rerun until green" unless logs strongly indicate infra flake.
+- Do not force every default-branch failure through regression bisect when `frb-fix-ci` already identifies a direct CI maintenance fix.
 - Do not only repair checked-in generated files if the generator, template, version pin, or environment change is the real source.
 - Do not chase downstream job failures while an upstream generation or integration job is still red.
 - Do not assume the newest red commit is the sole cause without checking the nearest green baseline and intervening changes.
