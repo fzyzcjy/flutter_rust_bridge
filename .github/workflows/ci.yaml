@@ -785,10 +785,10 @@ jobs:
             frb_example--pure_dart/rust/target/
             frb_example--pure_dart/.local-chromium
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-      - name: Install crates
-        if: steps.test-cache.outputs.cache-hit != 'true'
+      - name: Install web crates
         run: |
-          sh -c "$(curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf)" '' -f
+          which wasm-pack || sh -c "$(curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf)" '' -f
+          wasm-bindgen --version | grep '0.2.100' || cargo +nightly-2025-02-01 install wasm-bindgen-cli --version 0.2.100 --locked --force
 
       # execute
       - run: ./frb_internal test-dart-web --package ${{ matrix.package }}
