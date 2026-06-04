@@ -77,7 +77,8 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -109,7 +110,8 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -133,7 +135,8 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -219,7 +222,8 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -274,7 +278,8 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -308,7 +313,7 @@ jobs:
       - if: matrix.platforms == 'ohos'
         name: Setup flutter-ohos
         run: |
-          git clone -b oh-3.41.9-dev https://gitcode.com/openharmony-tpc/flutter_flutter.git $GITHUB_WORKSPACE/flutter
+          git clone -b oh-3.41.9-dev https://gitcode.com/CPF-Flutter/flutter_flutter.git $GITHUB_WORKSPACE/flutter
           echo "$GITHUB_WORKSPACE/flutter/bin" >> $GITHUB_PATH
       - if: matrix.platforms == 'ohos'
         name: Export OHOS_SDK_HOME
@@ -332,7 +337,8 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -378,7 +384,8 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -471,7 +478,8 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -504,7 +512,7 @@ jobs:
       - if: matrix.info.target == 'ohos'
         name: Setup flutter-ohos
         run: |
-          git clone -b oh-3.41.9-dev https://gitcode.com/openharmony-tpc/flutter_flutter.git $GITHUB_WORKSPACE/flutter
+          git clone -b oh-3.41.9-dev https://gitcode.com/CPF-Flutter/flutter_flutter.git $GITHUB_WORKSPACE/flutter
           echo "$GITHUB_WORKSPACE/flutter/bin" >> $GITHUB_PATH
       - if: matrix.info.target == 'ohos'
         name: Export OHOS_SDK_HOME
@@ -537,7 +545,8 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -635,7 +644,8 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -694,7 +704,8 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -738,7 +749,8 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -773,10 +785,10 @@ jobs:
             frb_example--pure_dart/rust/target/
             frb_example--pure_dart/.local-chromium
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-      - name: Install crates
-        if: steps.test-cache.outputs.cache-hit != 'true'
+      - name: Install web crates
         run: |
-          sh -c "$(curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf)" '' -f
+          which wasm-pack || sh -c "$(curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf)" '' -f
+          wasm-bindgen --version | grep '0.2.100' || cargo +nightly-2025-02-01 install wasm-bindgen-cli --version 0.2.100 --locked --force
 
       # execute
       - run: ./frb_internal test-dart-web --package ${{ matrix.package }}
@@ -795,7 +807,8 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -840,7 +853,8 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -887,7 +901,8 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         with:
           comment_on_pr: false
       - uses: actions/checkout@v5
@@ -954,7 +969,8 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -1043,7 +1059,8 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -1079,7 +1096,8 @@ jobs:
           - frb_example--gallery
 
     steps:
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
