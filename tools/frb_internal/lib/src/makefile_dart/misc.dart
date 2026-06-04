@@ -1,7 +1,5 @@
 // ignore_for_file: avoid_print
 
-import 'dart:io';
-
 import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
 // ignore: implementation_imports
@@ -12,6 +10,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/precommit_autofix_in_dev_container.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/precommit_autofix.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/pubspec_normalizer.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/codecov_preaggregator.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
@@ -108,13 +107,7 @@ class CodecovPreaggregateCommand extends Command<void> {
 
 Future<void> miscNormalizePubspec() async {
   print('Execute miscNormalizePubspec');
-  for (final package in kDartPackages) {
-    final file = File('${exec.pwd}$package/pubspec.lock');
-    final original = file.readAsStringSync();
-    final modified = original.replaceAll('pub.flutter-io.cn', 'pub.dev');
-    if (modified == original) continue;
-    file.writeAsStringSync(modified);
-  }
+  normalizePubspecs(repoRootPath: exec.pwd!, packages: kDartPackages);
 }
 
 enum PrecommitMode { fast, slow }

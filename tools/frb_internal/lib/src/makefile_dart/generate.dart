@@ -14,6 +14,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/cargokit_sync.dar
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_apple_scaffold.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_diff_exclusions.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/pubspec_normalizer.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
@@ -212,6 +213,7 @@ Future<void> generateInternalRust(GenerateConfig config) async {
       // cbindgen needs this (e.g. https://github.com/mozilla/cbindgen/issues/674)
       nightly: true,
     );
+    normalizePubspecs(repoRootPath: exec.pwd!, packages: kDartPackages);
   });
 }
 
@@ -453,6 +455,7 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
         package: config.package,
         generatedPackageDir: dirPackage,
       );
+      normalizePubspecs(repoRootPath: exec.pwd!, packages: kDartPackages);
 
       // move back compilation cache to speed up future usage
       // for (final subPath in ['build', 'rust/target']) {
