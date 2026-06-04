@@ -114,10 +114,34 @@ impl<'a> RustUpgrader<'a> {
     }
 }
 
+impl Upgrader for RustUpgrader<'_> {
+    fn check(&self) -> Result<bool> {
+        Ok(self.dependency.req() == concat!("=", env!("CARGO_PKG_VERSION")))
+    }
+
+    fn upgrade(&self, _fvm_install_mode: FvmInstallMode) -> Result<()> {
+        log::info!("Auto upgrade Rust dependency");
+
+        let mut args = vec![concat!("flutter_rust_bridge@=", env!("CARGO_PKG_VERSION"))];
+
+        let target = self
+            .target_name
+            .as_ref()
+            .map(|name| format!("--target={name}"));
+
+        if let Some(target) = &target {
+            args.push(target);
+        }
+
+        cargo_add(&args, self.base_dir)
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
     use crate::codegen::polisher::internal_config::PolisherInternalConfig;
+    use cargo_toml::Manifest;
     use std::cell::Cell;
     use tempfile::tempdir;
 
@@ -164,35 +188,6 @@ mod tests {
 
         assert_eq!(upgrader.forwarded_mode.get(), Some(FvmInstallMode::Skip));
     }
-}
-
-impl Upgrader for RustUpgrader<'_> {
-    fn check(&self) -> Result<bool> {
-        Ok(self.dependency.req() == concat!("=", env!("CARGO_PKG_VERSION")))
-    }
-
-    fn upgrade(&self, _fvm_install_mode: FvmInstallMode) -> Result<()> {
-        log::info!("Auto upgrade Rust dependency");
-
-        let mut args = vec![concat!("flutter_rust_bridge@=", env!("CARGO_PKG_VERSION"))];
-
-        let target = self
-            .target_name
-            .as_ref()
-            .map(|name| format!("--target={name}"));
-
-        if let Some(target) = &target {
-            args.push(target);
-        }
-
-        cargo_add(&args, self.base_dir)
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    use super::RustUpgrader;
-    use cargo_toml::Manifest;
 
     fn parse_manifest(text: &str) -> Manifest {
         toml::from_str(text).unwrap()

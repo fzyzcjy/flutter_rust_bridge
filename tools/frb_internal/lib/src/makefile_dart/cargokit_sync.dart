@@ -60,6 +60,7 @@ Future<void> syncCargokitCopies() async {
 
     await _copyCargokitDirectory(source: source, target: target);
     await _makeScriptsExecutable(target);
+    await _formatDartFiles(target);
 
     stdout.writeln('Synced ${mapping.source} -> ${mapping.target}');
   }
@@ -150,6 +151,18 @@ Future<void> _makeScriptsExecutable(Directory target) async {
     if (result.exitCode != 0) {
       throw Exception('Failed to chmod +x `${file.path}`: ${result.stderr}');
     }
+  }
+}
+
+Future<void> _formatDartFiles(Directory target) async {
+  final buildTool = Directory(path.join(target.path, 'build_tool'));
+  if (!buildTool.existsSync()) return;
+
+  final result = await Process.run('dart', ['format', buildTool.path]);
+  if (result.exitCode != 0) {
+    throw Exception(
+      'Failed to format copied Cargokit Dart files: ${result.stderr}',
+    );
   }
 }
 
