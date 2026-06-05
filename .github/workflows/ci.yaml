@@ -10,7 +10,6 @@ on:
       - synchronize
       - reopened
       - ready_for_review
-      - edited
   workflow_dispatch: { }
 
 env:
