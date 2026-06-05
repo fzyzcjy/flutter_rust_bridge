@@ -42,8 +42,5 @@ BigInt jsBigIntToDartBigInt(Object? raw) {
 
 /// {@macro flutter_rust_bridge.internal}
 Object? maybeDartify(Object? object) {
-  if (object is JSAny) {
-    return object.dartify();
-  }
-  return object;
+  return object.jsify().dartify();
 }
