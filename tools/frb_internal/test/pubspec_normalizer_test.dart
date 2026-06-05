@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/pubspec_normalizer.dart';
 import 'package:test/test.dart';
 
@@ -56,5 +58,37 @@ description:
   url: "https://pub.dev"
 ''',
     );
+  });
+
+  test('pubspec normalization handles nested package paths', () {
+    final temp = Directory.systemTemp.createTempSync(
+      'frb_pubspec_normalizer_test_',
+    );
+    addTearDown(() => temp.deleteSync(recursive: true));
+
+    final package = Directory('${temp.path}/outer/example')
+      ..createSync(recursive: true);
+    File('${package.path}/pubspec.yaml').writeAsStringSync('''
+environment:
+  sdk: ^3.12.0
+''');
+    File('${package.path}/pubspec.lock').writeAsStringSync('''
+sdks:
+  dart: ">=3.12.0 <4.0.0"
+''');
+
+    normalizePubspecs(
+      repoRootPath: temp.path,
+      packages: ['outer/example', 'missing_package'],
+    );
+
+    expect(File('${package.path}/pubspec.yaml').readAsStringSync(), '''
+environment:
+  sdk: ^3.11.0
+''');
+    expect(File('${package.path}/pubspec.lock').readAsStringSync(), '''
+sdks:
+  dart: ">=3.11.0 <4.0.0"
+''');
   });
 }

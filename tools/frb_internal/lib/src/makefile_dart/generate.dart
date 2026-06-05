@@ -213,7 +213,6 @@ Future<void> generateInternalRust(GenerateConfig config) async {
       // cbindgen needs this (e.g. https://github.com/mozilla/cbindgen/issues/674)
       nightly: true,
     );
-    normalizePubspecs(repoRootPath: exec.pwd!, packages: kDartPackages);
   });
 }
 
@@ -455,7 +454,6 @@ Future<void> generateRunFrbCodegenCommandIntegrate(
         package: config.package,
         generatedPackageDir: dirPackage,
       );
-      normalizePubspecs(repoRootPath: exec.pwd!, packages: kDartPackages);
 
       // move back compilation cache to speed up future usage
       // for (final subPath in ['build', 'rust/target']) {
@@ -512,6 +510,10 @@ Future<void> _wrapMaybeSetExitIfChanged(
   );
 }
 
+Future<void> _normalizePubspecsBeforeDiff() async {
+  normalizePubspecs(repoRootPath: exec.pwd!, packages: kDartModeOfPackage.keys);
+}
+
 Future<void> wrapMaybeSetExitIfChangedRaw(
   bool enable,
   Future<void> Function() inner, {
@@ -524,6 +526,7 @@ Future<void> wrapMaybeSetExitIfChangedRaw(
     phase: _GitDiffPhase.before,
   );
   await inner();
+  await _normalizePubspecsBeforeDiff();
   // The real check
   await _maybeSetExitIfChanged(
     enable,

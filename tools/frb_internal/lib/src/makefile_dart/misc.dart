@@ -107,7 +107,7 @@ class CodecovPreaggregateCommand extends Command<void> {
 
 Future<void> miscNormalizePubspec() async {
   print('Execute miscNormalizePubspec');
-  normalizePubspecs(repoRootPath: exec.pwd!, packages: kDartPackages);
+  normalizePubspecs(repoRootPath: exec.pwd!, packages: kDartModeOfPackage.keys);
 }
 
 enum PrecommitMode { fast, slow }
