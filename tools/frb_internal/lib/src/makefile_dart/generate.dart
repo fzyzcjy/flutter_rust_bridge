@@ -12,7 +12,6 @@ import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator
     as frb_example_pure_dart_generator;
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/cargokit_sync.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
-import 'package:flutter_rust_bridge_internal/src/makefile_dart/generated_file_normalizer.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_apple_scaffold.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_diff_exclusions.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/pubspec_normalizer.dart';
@@ -512,7 +511,6 @@ Future<void> _wrapMaybeSetExitIfChanged(
 }
 
 Future<void> _normalizeGeneratedOutputBeforeDiff() async {
-  normalizeGeneratedFiles(repoRootPath: exec.pwd!);
   normalizePubspecs(repoRootPath: exec.pwd!, packages: kDartModeOfPackage.keys);
 }
 
