@@ -5,10 +5,12 @@ import 'package:path/path.dart' as path;
 const _kPubHostMirror = 'pub.flutter-io.cn';
 const _kPubHostCanonical = 'pub.dev';
 
+// Keep Flutter 3.44 templates from raising checked-in app SDK floors.
 const _kPubspecYamlSdkReplacements = <String, String>{
   '  sdk: ^3.12.0': '  sdk: ^3.11.0',
 };
 
+// Keep generated lockfile floors aligned with repo and OHOS package policy.
 const _kPubspecLockSdkReplacements = <String, String>{
   '  dart: ">=3.12.0 <4.0.0"': '  dart: ">=3.11.0 <4.0.0"',
   '  dart: ">=3.10.0-0 <4.0.0"': '  dart: ">=3.9.2 <4.0.0"',
