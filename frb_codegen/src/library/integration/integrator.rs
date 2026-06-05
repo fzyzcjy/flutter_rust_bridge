@@ -15,6 +15,7 @@ use log::{debug, info, warn};
 use std::collections::HashMap;
 use std::env;
 use std::ffi::OsStr;
+use std::fs;
 use std::path::{Path, PathBuf};
 
 const REFRESH_CARGO_LOCK_ORDERING_ENV_VAR: &str = "FRB_REFRESH_CARGO_LOCK_ORDERING";
@@ -96,6 +97,8 @@ pub fn integrate(config: IntegrateConfig) -> Result<()> {
 
     info!("Setup cargokit dependencies");
     setup_cargokit_dependencies(&dart_root, &config.template, config.fvm_install_mode)?;
+
+    exclude_cargokit_from_outer_analyzer(&dart_root, &config.template)?;
 
     if config.enable_dart_fix {
         info!("Apply Dart fixes");
@@ -235,6 +238,75 @@ fn setup_cargokit_dependencies(
     flutter_pub_get(&build_tool_dir, fvm_install_mode)
 }
 
+fn exclude_cargokit_from_outer_analyzer(dart_root: &Path, template: &Template) -> Result<()> {
+    let path = dart_root.join("analysis_options.yaml");
+    if !path.exists() {
+        return Ok(());
+    }
+
+    let exclude = match template {
+        Template::App => "rust_builder/cargokit/**",
+        Template::Plugin => "cargokit/**",
+    };
+    let text = fs::read_to_string(&path)?;
+    let text = add_analyzer_exclude(&text, exclude);
+    fs::write(path, text)?;
+
+    Ok(())
+}
+
+fn add_analyzer_exclude(text: &str, exclude: &str) -> String {
+    // Use a targeted text edit so YAML comments, blank lines, and formatting stay unchanged.
+    let exclude_line = format!("    - {exclude}");
+    if text
+        .lines()
+        .any(|line| line.trim() == format!("- {exclude}"))
+    {
+        return text.to_owned();
+    }
+
+    let mut lines = text.lines().map(String::from).collect_vec();
+    let Some(analyzer_index) = lines.iter().position(|line| line.trim() == "analyzer:") else {
+        return format!("analyzer:\n  exclude:\n{exclude_line}\n\n{text}");
+    };
+
+    let block_end = lines
+        .iter()
+        .enumerate()
+        .skip(analyzer_index + 1)
+        .find(|(_, line)| {
+            let trimmed = line.trim();
+            !trimmed.is_empty() && !line.starts_with(' ') && !line.starts_with('#')
+        })
+        .map(|(index, _)| index)
+        .unwrap_or(lines.len());
+
+    if let Some(exclude_index) = lines[analyzer_index + 1..block_end]
+        .iter()
+        .position(|line| line.trim() == "exclude:")
+        .map(|index| index + analyzer_index + 1)
+    {
+        let insert_index = lines[exclude_index + 1..block_end]
+            .iter()
+            .position(|line| {
+                let trimmed = line.trim();
+                !trimmed.is_empty() && !trimmed.starts_with("- ")
+            })
+            .map(|index| index + exclude_index + 1)
+            .unwrap_or(block_end);
+        lines.insert(insert_index, exclude_line);
+    } else {
+        lines.insert(analyzer_index + 1, exclude_line);
+        lines.insert(analyzer_index + 1, "  exclude:".to_owned());
+    }
+
+    let mut output = lines.join("\n");
+    if text.ends_with('\n') {
+        output.push('\n');
+    }
+    output
+}
+
 #[cfg(unix)]
 fn set_permission_executable(path: &Path) -> Result<()> {
     use std::os::unix::fs::PermissionsExt;
@@ -261,9 +333,11 @@ fn set_permission_executable(path: &Path) -> Result<()> {
 #[cfg(all(test, unix))]
 mod tests {
     use super::{
+        add_analyzer_exclude, exclude_cargokit_from_outer_analyzer,
         maybe_refresh_cargo_lock_ordering, refresh_cargo_lock_ordering, set_permission_executable,
         should_refresh_cargo_lock_ordering, REFRESH_CARGO_LOCK_ORDERING_ENV_VAR,
     };
+    use crate::misc::Template;
     use serial_test::serial;
     use std::fs;
     use std::os::unix::fs::PermissionsExt;
@@ -289,6 +363,177 @@ mod tests {
 
         let permissions = fs::metadata(&script_path).unwrap().permissions();
         assert_eq!(permissions.mode() & 0o777, 0o755);
+    }
+
+    #[test]
+    fn test_add_analyzer_exclude_prepends_analyzer_block() {
+        let actual = add_analyzer_exclude(
+            r#"include: package:flutter_lints/flutter.yaml
+"#,
+            "cargokit/**",
+        );
+
+        assert_eq!(
+            actual,
+            r#"analyzer:
+  exclude:
+    - cargokit/**
+
+include: package:flutter_lints/flutter.yaml
+"#
+        );
+    }
+
+    #[test]
+    fn test_add_analyzer_exclude_preserves_existing_analyzer_options() {
+        let actual = add_analyzer_exclude(
+            r#"analyzer:
+  errors:
+    prefer_const_constructors: ignore
+include: package:flutter_lints/flutter.yaml
+"#,
+            "rust_builder/cargokit/**",
+        );
+
+        assert_eq!(
+            actual,
+            r#"analyzer:
+  exclude:
+    - rust_builder/cargokit/**
+  errors:
+    prefer_const_constructors: ignore
+include: package:flutter_lints/flutter.yaml
+"#
+        );
+    }
+
+    #[test]
+    fn test_add_analyzer_exclude_is_idempotent() {
+        let text = r#"analyzer:
+  exclude:
+    - rust_builder/cargokit/**
+"#;
+
+        assert_eq!(add_analyzer_exclude(text, "rust_builder/cargokit/**"), text);
+    }
+
+    #[test]
+    fn test_add_analyzer_exclude_appends_to_existing_exclude_block() {
+        let actual = add_analyzer_exclude(
+            r#"analyzer:
+  exclude:
+    - build/**
+  errors:
+    avoid_print: ignore
+"#,
+            "rust_builder/cargokit/**",
+        );
+
+        assert_eq!(
+            actual,
+            r#"analyzer:
+  exclude:
+    - build/**
+    - rust_builder/cargokit/**
+  errors:
+    avoid_print: ignore
+"#
+        );
+    }
+
+    #[test]
+    fn test_add_analyzer_exclude_appends_to_terminal_exclude_block() {
+        let actual = add_analyzer_exclude(
+            r#"analyzer:
+  exclude:
+    - build/**
+"#,
+            "rust_builder/cargokit/**",
+        );
+
+        assert_eq!(
+            actual,
+            r#"analyzer:
+  exclude:
+    - build/**
+    - rust_builder/cargokit/**
+"#
+        );
+    }
+
+    #[test]
+    fn test_add_analyzer_exclude_preserves_missing_trailing_newline() {
+        let actual = add_analyzer_exclude(
+            r#"analyzer:
+  exclude:
+    - build/**"#,
+            "rust_builder/cargokit/**",
+        );
+
+        assert_eq!(
+            actual,
+            r#"analyzer:
+  exclude:
+    - build/**
+    - rust_builder/cargokit/**"#
+        );
+    }
+
+    #[test]
+    fn test_exclude_cargokit_from_outer_analyzer_ignores_missing_file() {
+        let temp_dir = tempfile::tempdir().unwrap();
+
+        exclude_cargokit_from_outer_analyzer(temp_dir.path(), &Template::App).unwrap();
+
+        assert!(!temp_dir.path().join("analysis_options.yaml").exists());
+    }
+
+    #[test]
+    fn test_exclude_cargokit_from_outer_analyzer_writes_app_exclude() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let path = temp_dir.path().join("analysis_options.yaml");
+        fs::write(
+            &path,
+            r#"include: package:flutter_lints/flutter.yaml
+"#,
+        )
+        .unwrap();
+
+        exclude_cargokit_from_outer_analyzer(temp_dir.path(), &Template::App).unwrap();
+
+        assert_eq!(
+            fs::read_to_string(path).unwrap(),
+            r#"analyzer:
+  exclude:
+    - rust_builder/cargokit/**
+
+include: package:flutter_lints/flutter.yaml
+"#
+        );
+    }
+
+    #[test]
+    fn test_exclude_cargokit_from_outer_analyzer_writes_plugin_exclude() {
+        let temp_dir = tempfile::tempdir().unwrap();
+        let path = temp_dir.path().join("analysis_options.yaml");
+        fs::write(
+            &path,
+            r#"include: package:flutter_lints/flutter.yaml
+"#,
+        )
+        .unwrap();
+
+        exclude_cargokit_from_outer_analyzer(temp_dir.path(), &Template::Plugin).unwrap();
+
+        assert_eq!(
+            fs::read_to_string(path).unwrap(),
+            r#"analyzer:
+  exclude:
+    - cargokit/**
+
+include: package:flutter_lints/flutter.yaml
+"#
+        );
     }
 
     #[test]
