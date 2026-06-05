@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter_rust_bridge/src/loader/_common.dart';
 import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
+import 'package:meta/meta.dart';
 
 /// Load the [ExternalLibrary], with the following cases in mind:
 /// 1. When `flutter run`, or when a real app is bundled.
@@ -72,16 +73,15 @@ ExternalLibrary loadExternalLibraryRaw({
   if (Platform.isIOS || Platform.isMacOS) {
     return tryAssumingNonPackaged(
       'lib$stem.dylib',
-      (debugInfo) => _tryOpen(
-        'rust_builder.framework/rust_builder',
-        debugInfo,
-        (debugInfo) =>
-            _tryOpen('$stem.framework/$stem', debugInfo, (debugInfo) {
-              return ExternalLibrary.process(
-                iKnowHowToUseIt: true,
-                debugInfo: '$debugInfo (after falling back to process())',
-              );
-            }),
+      (debugInfo) => loadDarwinPackagedExternalLibraryForTesting(
+        stem: stem,
+        debugInfo: debugInfo,
+        open: (name, debugInfo) =>
+            ExternalLibrary.open(name, debugInfo: debugInfo),
+        process: (debugInfo) => ExternalLibrary.process(
+          iKnowHowToUseIt: true,
+          debugInfo: debugInfo,
+        ),
       ),
     );
   }
@@ -100,13 +100,47 @@ ExternalLibrary loadExternalLibraryRaw({
   );
 }
 
+@visibleForTesting
+T loadDarwinPackagedExternalLibraryForTesting<T>({
+  required String stem,
+  required String debugInfo,
+  required T Function(String name, String debugInfo) open,
+  required T Function(String debugInfo) process,
+}) {
+  return _tryOpenLibrary(
+    'rust_builder.framework/rust_builder',
+    debugInfo,
+    open,
+    (debugInfo) => _tryOpenLibrary(
+      '$stem.framework/$stem',
+      debugInfo,
+      open,
+      (debugInfo) => process('$debugInfo (after falling back to process())'),
+    ),
+  );
+}
+
 ExternalLibrary _tryOpen(
   String name,
   String debugInfo,
   ExternalLibrary Function(String debugInfo) fallback,
 ) {
+  return _tryOpenLibrary(
+    name,
+    debugInfo,
+    (name, debugInfo) => ExternalLibrary.open(name, debugInfo: debugInfo),
+    fallback,
+  );
+}
+
+T _tryOpenLibrary<T>(
+  String name,
+  String debugInfo,
+  T Function(String name, String debugInfo) open,
+  T Function(String debugInfo) fallback,
+) {
   try {
-    return ExternalLibrary.open(name, debugInfo: debugInfo);
+    return open(name, debugInfo);
   } catch (e) {
     return fallback('$debugInfo (after trying $name but has error $e)');
   }
