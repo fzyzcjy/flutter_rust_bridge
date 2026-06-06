@@ -120,19 +120,6 @@ T loadDarwinPackagedExternalLibraryForTesting<T>({
   );
 }
 
-ExternalLibrary _tryOpen(
-  String name,
-  String debugInfo,
-  ExternalLibrary Function(String debugInfo) fallback,
-) {
-  return _tryOpenLibrary(
-    name,
-    debugInfo,
-    (name, debugInfo) => ExternalLibrary.open(name, debugInfo: debugInfo),
-    fallback,
-  );
-}
-
 T _tryOpenLibrary<T>(
   String name,
   String debugInfo,
