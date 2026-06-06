@@ -1,15 +1,10 @@
-import com.android.build.api.dsl.ApplicationExtension
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
-
 plugins {
     id("com.android.application")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
-    id("org.jetbrains.kotlin.android")
     id("dev.flutter.flutter-gradle-plugin")
 }
 
-extensions.configure<ApplicationExtension>("android") {
+android {
     namespace = "com.example.flutter_via_integrate"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
@@ -39,9 +34,9 @@ extensions.configure<ApplicationExtension>("android") {
     }
 }
 
-extensions.configure<KotlinAndroidProjectExtension>("kotlin") {
+kotlin {
     compilerOptions {
-        jvmTarget = JvmTarget.JVM_17
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
     }
 }
 
