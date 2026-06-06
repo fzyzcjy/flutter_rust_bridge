@@ -126,17 +126,19 @@ adb -a -L tcp:0.0.0.0:5037 server nodaemon
 From inside the FRB Docker container, verify that the Docker-side ADB client can see the host-managed emulator:
 
 ```bash
-adb -H host.docker.internal -P 5037 devices
+.claude/skills/frb-dev-env/frb_dev_env.py docker exec --android-host-adb -- adb devices
 ```
 
 For FRB commands, point ADB clients at the host ADB server and pass the emulator serial explicitly:
 
 ```bash
-.claude/skills/frb-dev-env/frb_dev_env.py docker exec -- \
-  bash -lc 'ADB_SERVER_SOCKET=tcp:host.docker.internal:5037 ./frb_internal test-flutter-native --package frb_example--flutter_via_create --flutter-test-args "--device-id emulator-5554"'
+.claude/skills/frb-dev-env/frb_dev_env.py docker exec --android-host-adb -- \
+  bash -lc './frb_internal test-flutter-native --package frb_example--flutter_via_create --flutter-test-args "--device-id emulator-5554"'
 ```
 
-If Flutter does not honor `ADB_SERVER_SOCKET` in the current SDK/tooling combination, use an `adb` wrapper earlier in `PATH` inside the container that forwards to the host server:
+`docker exec --android-host-adb` injects `ADB_SERVER_SOCKET=tcp:host.docker.internal:5037` plus `ANDROID_ADB_SERVER_ADDRESS` and `ANDROID_ADB_SERVER_PORT` into the command environment. Override the default host and port with `--android-adb-server-host`, `--android-adb-server-port`, `FRB_ANDROID_ADB_SERVER_HOST`, or `FRB_ANDROID_ADB_SERVER_PORT`.
+
+If Flutter does not honor the injected ADB server environment in the current SDK/tooling combination, use an `adb` wrapper earlier in `PATH` inside the container that forwards to the host server:
 
 ```bash
 exec /path/to/real/adb -H host.docker.internal -P 5037 "$@"

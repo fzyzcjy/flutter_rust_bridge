@@ -25,6 +25,8 @@ app.add_typer(tart_app, name="tart", help="Manage the per-worktree Tart macOS VM
 
 DEFAULT_IMAGE = "fzyzcjy/flutter_rust_bridge_dev:latest"
 DEFAULT_TART_BASE_VM = "frb-tart-base"
+DEFAULT_ANDROID_ADB_SERVER_HOST = "host.docker.internal"
+DEFAULT_ANDROID_ADB_SERVER_PORT = 5037
 MIN_TART_FREE_GB = 150
 REPO_LABEL = "frb.dev.repo"
 WORKTREE_LABEL = "frb.dev.worktree"
@@ -125,6 +127,27 @@ def get_image(image: str | None) -> str:
         return image
 
     return os.environ.get("FRB_DOCKER_IMAGE", DEFAULT_IMAGE)
+
+
+def get_android_adb_server_host(host: str | None) -> str:
+    if host is not None:
+        return host
+
+    return os.environ.get("FRB_ANDROID_ADB_SERVER_HOST", DEFAULT_ANDROID_ADB_SERVER_HOST)
+
+
+def get_android_adb_server_port(port: int | None) -> int:
+    if port is not None:
+        return port
+
+    value = os.environ.get("FRB_ANDROID_ADB_SERVER_PORT")
+    if value is None:
+        return DEFAULT_ANDROID_ADB_SERVER_PORT
+
+    try:
+        return int(value)
+    except ValueError as error:
+        raise CommandError(f"FRB_ANDROID_ADB_SERVER_PORT must be an integer: {value}") from error
 
 
 # ========== Tart ==========
@@ -513,6 +536,22 @@ def ensure_container(*, worktree_root: Path, image: str) -> str:
     return container_name
 
 
+def android_host_adb_env(*, host: str, port: int) -> dict[str, str]:
+    return {
+        "ADB_SERVER_SOCKET": f"tcp:{host}:{port}",
+        "ANDROID_ADB_SERVER_ADDRESS": host,
+        "ANDROID_ADB_SERVER_PORT": str(port),
+    }
+
+
+def docker_exec_env_args(env: dict[str, str]) -> list[str]:
+    result: list[str] = []
+    for key, value in env.items():
+        result.extend(["--env", f"{key}={value}"])
+
+    return result
+
+
 def delete_container(*, worktree_root: Path, force: bool) -> str:
     container_name = container_name_for_worktree(worktree_root=worktree_root)
 
@@ -663,6 +702,18 @@ def exec_in_container(
         str | None,
         typer.Option("--image", help="Docker image. Defaults to FRB_DOCKER_IMAGE or the published FRB dev image."),
     ] = None,
+    android_host_adb: Annotated[
+        bool,
+        typer.Option("--android-host-adb", help="Connect Docker-side ADB clients to the host Android ADB server."),
+    ] = False,
+    android_adb_server_host: Annotated[
+        str | None,
+        typer.Option("--android-adb-server-host", help="Host ADB server address for --android-host-adb."),
+    ] = None,
+    android_adb_server_port: Annotated[
+        int | None,
+        typer.Option("--android-adb-server-port", help="Host ADB server port for --android-host-adb."),
+    ] = None,
 ) -> None:
     """Ensure the container is running, then execute a command from the host-like worktree path."""
 
@@ -679,11 +730,21 @@ def exec_in_container(
     if sys.stdin.isatty() and sys.stdout.isatty():
         exec_flags = ["-it"]
 
+    env: dict[str, str] = {}
+    if android_host_adb:
+        env.update(
+            android_host_adb_env(
+                host=get_android_adb_server_host(host=android_adb_server_host),
+                port=get_android_adb_server_port(port=android_adb_server_port),
+            )
+        )
+
     exec_command(
         [
             "docker",
             "exec",
             *exec_flags,
+            *docker_exec_env_args(env),
             "--workdir",
             str(resolved_worktree_root),
             container_name,
