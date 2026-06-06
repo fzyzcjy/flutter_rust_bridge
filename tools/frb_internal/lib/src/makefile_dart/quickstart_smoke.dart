@@ -216,23 +216,9 @@ Future<void> _captureQuickstartSmokeScreenshot({
       '-x',
       screenshotFile.path,
     ], stderrEncoding: systemEncoding),
-    _ when Platform.isWindows => await Process.run('powershell', [
-      '-NoProfile',
-      '-Command',
-      r'''
-param([string]$OutputPath)
-Add-Type -AssemblyName System.Windows.Forms
-Add-Type -AssemblyName System.Drawing
-$bounds = [System.Windows.Forms.Screen]::PrimaryScreen.Bounds
-$bitmap = New-Object System.Drawing.Bitmap $bounds.Width, $bounds.Height
-$graphics = [System.Drawing.Graphics]::FromImage($bitmap)
-$graphics.CopyFromScreen($bounds.Location, [System.Drawing.Point]::Empty, $bounds.Size)
-$bitmap.Save($OutputPath, [System.Drawing.Imaging.ImageFormat]::Png)
-$graphics.Dispose()
-$bitmap.Dispose()
-''',
-      screenshotFile.path,
-    ], stderrEncoding: systemEncoding),
+    _ when Platform.isWindows => await _captureWindowsQuickstartSmokeScreenshot(
+      screenshotFile,
+    ),
     _ => await Process.run('import', [
       '-window',
       'root',
@@ -247,6 +233,40 @@ $bitmap.Dispose()
       'Failed to capture quickstart screenshot (exitCode=${result.exitCode}, '
       'stderr=${result.stderr})',
     );
+  }
+}
+
+Future<ProcessResult> _captureWindowsQuickstartSmokeScreenshot(
+  File screenshotFile,
+) async {
+  final scriptFile = File(
+    '${screenshotFile.parent.path}/capture-quickstart-screenshot.ps1',
+  );
+  await scriptFile.writeAsString(r'''
+param([string]$OutputPath)
+Add-Type -AssemblyName System.Windows.Forms
+Add-Type -AssemblyName System.Drawing
+$bounds = [System.Windows.Forms.Screen]::PrimaryScreen.Bounds
+$bitmap = New-Object System.Drawing.Bitmap $bounds.Width, $bounds.Height
+$graphics = [System.Drawing.Graphics]::FromImage($bitmap)
+$graphics.CopyFromScreen($bounds.Location, [System.Drawing.Point]::Empty, $bounds.Size)
+$bitmap.Save($OutputPath, [System.Drawing.Imaging.ImageFormat]::Png)
+$graphics.Dispose()
+$bitmap.Dispose()
+''');
+  try {
+    return await Process.run('powershell', [
+      '-NoProfile',
+      '-ExecutionPolicy',
+      'Bypass',
+      '-File',
+      scriptFile.path,
+      screenshotFile.path,
+    ], stderrEncoding: systemEncoding);
+  } finally {
+    if (await scriptFile.exists()) {
+      await scriptFile.delete();
+    }
   }
 }
 
