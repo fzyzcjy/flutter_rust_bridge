@@ -25,6 +25,7 @@ Read these when entering the matching phase:
 - `frb-pr-review` before treating a non-trivial PR as ready.
 - `frb-fix-ci` before diagnosing any CI failure.
 - `frb-manual-test` before writing a manual regression test report under `tools/manual_tests/`.
+- `frb-narrow-ci` before creating an intentional red CI reproduction PR or temporarily narrowing CI.
 - `gh-actions-live-logs` before reading GitHub Actions logs.
 - `frb-debugging` when generated code is surprising or codegen behavior is unclear.
 
@@ -48,9 +49,7 @@ Read these when entering the matching phase:
 - Create an independent reproduction PR whose only purpose is to prove the bad behavior. The branch name, PR title, and PR body must say clearly that it is an intentional reproduction PR, not a real fix PR.
 - For intentional red CI reproduction PRs, use the title `Reproduce ISSUE_SUMMARY with intentional red CI`.
 - For manual-test reproduction PRs, use the title `Add manual reproduction for ISSUE_SUMMARY`.
-- If CI can reproduce the bad behavior, make the reproduction PR an intentional red CI PR: unchanged fix code, minimal reproducer or workflow adjustment, forced CI narrowing to only the single relevant test, command, or job path, and a failure whose error matches the user's report.
-- The reproduction PR must not run the full CI matrix, broad job families, or unrelated tests. If the current workflow cannot narrow to the single interesting test, temporarily modify the reproduction PR's CI configuration so only that reproducer runs.
-- The reproduction PR body must state the exact narrowed test, command, or job path that is expected to run and which expensive or unrelated CI paths were intentionally disabled.
+- If CI can reproduce the bad behavior, read `frb-narrow-ci` and make the reproduction PR an intentional red CI PR: unchanged fix code, minimal reproducer or workflow adjustment, mandatory CI narrowing, and a failure whose error matches the user's report.
 - If CI cannot realistically reproduce the bad behavior, read `frb-manual-test` and make the independent reproduction PR add or update `tools/manual_tests/NAME.md` with a normal manual test procedure and mechanical execution steps an agent or human can run.
 - Do not proceed to the fix PR until the reproduction PR exists and has either a matching red CI run or a precise manual test report.
 - Save the reproduction PR URL, red CI run URL when applicable, job name or manual-test path, and matching error text for the fix PR reproduction report.
