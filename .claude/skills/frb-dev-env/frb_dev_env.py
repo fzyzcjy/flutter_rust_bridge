@@ -551,43 +551,97 @@ def tart_prepare_ios_integration_test(
     vm_name: str,
     flutter_root: Path,
 ) -> None:
-    flutter_root_arg = shlex.quote(str(flutter_root))
-    prepare_command = "\n".join(
+    exec_command(
         [
-            "set -euo pipefail",
-            f"flutter_root={flutter_root_arg}",
-            'simulators_dart="$flutter_root/packages/flutter_tools/lib/src/ios/simulators.dart"',
-            'flutter_bin="$flutter_root/bin/flutter"',
-            'snapshot="$flutter_root/bin/cache/flutter_tools.snapshot"',
-            'if [ ! -f "$simulators_dart" ]; then',
-            '  echo "Missing Flutter iOS simulator source: $simulators_dart" >&2',
-            "  exit 1",
-            "fi",
-            'if [ ! -x "$flutter_bin" ]; then',
-            '  echo "Missing Flutter executable: $flutter_bin" >&2',
-            "  exit 1",
-            "fi",
-            'if ! grep -F "await logReader.start();" "$simulators_dart" >/dev/null; then',
-            '  backup="$simulators_dart.frb-ios-log-race.bak"',
-            '  if [ ! -f "$backup" ]; then',
-            '    cp "$simulators_dart" "$backup"',
-            "  fi",
-            "  perl -0pi -e 's#vmServiceDiscovery = ProtocolDiscovery\\.vmService\\(\\n        getLogReader\\(app: package\\),#final DeviceLogReader logReader = getLogReader(app: package);\\n      if (logReader is _IOSSimulatorLogReader) {\\n        await logReader.start();\\n      }\\n      vmServiceDiscovery = ProtocolDiscovery.vmService(\\n        logReader,#m' \"$simulators_dart\"",
-            "  perl -0pi -e 's#late final _linesController = StreamController<String>\\.broadcast\\(\\n    onListen: _start,#late final _linesController = StreamController<String>.broadcast(\\n    onListen: start,#m' \"$simulators_dart\"",
-            "  perl -0pi -e 's#Future<void> _start\\(\\) async \\{\\n    // Unified logging#Future<void>? _startFuture;\\n\\n  Future<void> start() {\\n    return _startFuture ??= _start();\\n  }\\n\\n  Future<void> _start() async {\\n    // Unified logging#m' \"$simulators_dart\"",
-            '  if ! grep -F "await logReader.start();" "$simulators_dart" >/dev/null; then',
-            '    echo "Failed to apply Flutter iOS simulator log reader patch" >&2',
-            "    exit 1",
-            "  fi",
-            "fi",
-            'rm -f "$snapshot"',
-            'FLUTTER_GIT_URL="file://$flutter_root" "$flutter_bin" --version --no-version-check',
-            'echo "export FLUTTER_GIT_URL=file://$flutter_root"',
-            'echo "export FRB_SKIP_FLUTTER_DOCTOR=1"',
+            "tart",
+            "exec",
+            vm_name,
+            "/usr/bin/python3",
+            "-c",
+            build_tart_prepare_ios_integration_test_script(flutter_root=flutter_root),
         ]
     )
 
-    exec_command(["tart", "exec", vm_name, "/bin/zsh", "-lc", prepare_command])
+
+def build_tart_prepare_ios_integration_test_script(*, flutter_root: Path) -> str:
+    script = """
+from pathlib import Path
+import os
+import shutil
+import subprocess
+import sys
+
+
+flutter_root = Path(__FLUTTER_ROOT__)
+simulators_dart = flutter_root / "packages/flutter_tools/lib/src/ios/simulators.dart"
+flutter_bin = flutter_root / "bin/flutter"
+snapshot = flutter_root / "bin/cache/flutter_tools.snapshot"
+
+if not simulators_dart.is_file():
+    print(f"Missing Flutter iOS simulator source: {simulators_dart}", file=sys.stderr)
+    raise SystemExit(1)
+
+if not os.access(flutter_bin, os.X_OK):
+    print(f"Missing Flutter executable: {flutter_bin}", file=sys.stderr)
+    raise SystemExit(1)
+
+text = simulators_dart.read_text()
+if "await logReader.start();" not in text:
+    backup = simulators_dart.with_name(simulators_dart.name + ".frb-ios-log-race.bak")
+    if not backup.exists():
+        shutil.copy2(simulators_dart, backup)
+
+    replacements = [
+        (
+            '''vmServiceDiscovery = ProtocolDiscovery.vmService(
+        getLogReader(app: package),''',
+            '''final DeviceLogReader logReader = getLogReader(app: package);
+      if (logReader is _IOSSimulatorLogReader) {
+        await logReader.start();
+      }
+      vmServiceDiscovery = ProtocolDiscovery.vmService(
+        logReader,''',
+        ),
+        (
+            '''late final _linesController = StreamController<String>.broadcast(
+    onListen: _start,''',
+            '''late final _linesController = StreamController<String>.broadcast(
+    onListen: start,''',
+        ),
+        (
+            '''Future<void> _start() async {
+    // Unified logging''',
+            '''Future<void>? _startFuture;
+
+  Future<void> start() {
+    return _startFuture ??= _start();
+  }
+
+  Future<void> _start() async {
+    // Unified logging''',
+        ),
+    ]
+
+    for old, new in replacements:
+        if old not in text:
+            print(f"Failed to find Flutter patch anchor: {old!r}", file=sys.stderr)
+            raise SystemExit(1)
+        text = text.replace(old, new, 1)
+
+    if "await logReader.start();" not in text:
+        print("Failed to apply Flutter iOS simulator log reader patch", file=sys.stderr)
+        raise SystemExit(1)
+
+    simulators_dart.write_text(text)
+
+snapshot.unlink(missing_ok=True)
+env = dict(os.environ)
+env["FLUTTER_GIT_URL"] = f"file://{flutter_root}"
+subprocess.run([str(flutter_bin), "--version", "--no-version-check"], check=True, env=env)
+print(f"export FLUTTER_GIT_URL=file://{flutter_root}")
+print("export FRB_SKIP_FLUTTER_DOCTOR=1")
+"""
+    return script.replace("__FLUTTER_ROOT__", repr(str(flutter_root)))
 
 
 # ========== Docker ==========
