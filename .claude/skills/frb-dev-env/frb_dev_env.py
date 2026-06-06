@@ -572,11 +572,36 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import time
 import urllib.request
 
 
 PATCH_URL = "https://github.com/flutter/flutter/pull/187643.patch"
 PATCH_INCLUDE_PATH = "packages/flutter_tools/lib/src/ios/simulators.dart"
+PATCH_DOWNLOAD_ATTEMPTS = 3
+PATCH_DOWNLOAD_TIMEOUT_SECONDS = 180
+
+
+def download_patch_text() -> str:
+    last_error: Exception | None = None
+    for attempt in range(1, PATCH_DOWNLOAD_ATTEMPTS + 1):
+        try:
+            with urllib.request.urlopen(PATCH_URL, timeout=PATCH_DOWNLOAD_TIMEOUT_SECONDS) as response:
+                return response.read().decode("utf-8")
+        except Exception as error:
+            last_error = error
+            if attempt == PATCH_DOWNLOAD_ATTEMPTS:
+                break
+            print(
+                f"Retrying Flutter patch download after attempt {attempt} failed: {error}",
+                file=sys.stderr,
+            )
+            time.sleep(5 * attempt)
+
+    print(f"Failed to download Flutter patch: {PATCH_URL}", file=sys.stderr)
+    if last_error is not None:
+        print(str(last_error), file=sys.stderr)
+    raise SystemExit(1)
 
 
 def run_git_apply_patch(
@@ -619,8 +644,7 @@ if not os.access(flutter_bin, os.X_OK):
 
 text = simulators_dart.read_text()
 if "await logReader.start();" not in text:
-    with urllib.request.urlopen(PATCH_URL, timeout=60) as response:
-        patch_text = response.read().decode("utf-8")
+    patch_text = download_patch_text()
 
     with tempfile.NamedTemporaryFile("w", suffix=".patch", delete=False) as patch_file:
         patch_file.write(patch_text)
