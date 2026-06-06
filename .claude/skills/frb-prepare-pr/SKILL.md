@@ -46,8 +46,9 @@ Before creating a PR, ensure generated code is up to date, lint passes, and bug 
 5. [ ] (Optional) Read `frb-test` skill, run relevant tests
 6. [ ] **REQUIRED for non-trivial PRs:** Read `frb-pr-review`, run the review gate before final readiness
 7. [ ] **REQUIRED for bug fixes:** PR description includes the reproduction report from `frb-develop-feature`, including baseline commit, mechanical steps, observed failure, and expected behavior
-8. [ ] Commit all changes
-9. [ ] Push and create PR
+8. [ ] **REQUIRED for CI iteration branches:** Read `frb-narrow-ci`, then revert any temporary workflow narrowing that made unrelated CI jobs not trigger, unless the PR is explicitly about changing CI behavior
+9. [ ] Commit all changes
+10. [ ] Push and create PR
 
 ## What CI Will Do
 
@@ -57,6 +58,8 @@ CI automatically runs:
 - Lint and format checks
 
 Run lint locally to avoid CI failures. Tests are optional locally.
+
+While iterating, it can be useful to temporarily narrow `.github/workflows/ci.yaml` so only the relevant job family runs. Read `frb-narrow-ci` before doing this. Do not leave temporary narrowing in the final PR unless changing CI behavior is the actual purpose of the PR.
 
 If your PR fixes Flutter integrate example outputs and the real bug is inside the embedded `cargokit` submodule, do not stop at copied example files. Push the `cargokit` fix to `fzyzcjy/cargokit` and update the submodule ref in this repo before pushing the PR branch.
 
@@ -68,4 +71,5 @@ If the PR changes integrate-generated example output but not `frb_codegen/assets
 - `frb-lint` - Lint and format checks
 - `frb-test` - For local debugging when CI fails
 - `frb-pr-review` - PR readiness review gate
+- `frb-narrow-ci` - Temporary CI narrowing rules
 - `creating-pull-requests` - Standard PR creation process

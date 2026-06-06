@@ -10,14 +10,14 @@ on:
       - synchronize
       - reopened
       - ready_for_review
-      - edited
+      - closed
   workflow_dispatch: { }
 
 env:
   CARGO_TERM_COLOR: always
   FRB_MAIN_RUST_VERSION: 1.93.1
   FRB_MAIN_DART_VERSION: 3.11.0
-  FRB_MAIN_FLUTTER_VERSION: 3.41.2
+  FRB_MAIN_FLUTTER_VERSION: 3.44.0
   FRB_RUSTFMT_NIGHTLY_VERSION: nightly-2025-02-01
 
 concurrency:
@@ -29,6 +29,7 @@ jobs:
 
   # ref https://docusaurus.io/docs/deployment#triggering-deployment-with-github-actions
   deploy_website:
+    if: ${{ github.event.action != 'closed' }}
     name: 'Deploy :: Website'
     runs-on: ubuntu-latest
 
@@ -72,12 +73,14 @@ jobs:
   # ----------------------------------- lint -----------------------------------
 
   lint_rust_primary:
+    if: ${{ github.event.action != 'closed' }}
     name: 'Lint :: Rust :: Primary'
     runs-on: ubuntu-latest
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -104,12 +107,14 @@ jobs:
       - run: ./frb_internal lint-rust
 
   lint_dart_primary:
+    if: ${{ github.event.action != 'closed' }}
     name: 'Lint :: Dart :: Primary'
     runs-on: ubuntu-latest
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -128,12 +133,14 @@ jobs:
       - run: ./frb_internal lint-dart
 
   lint_rust_feature_flag:
+    if: ${{ github.event.action != 'closed' }}
     name: 'Lint :: Rust :: Feature flag'
     runs-on: ubuntu-latest
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -187,6 +194,7 @@ jobs:
   #       cargo msrv --path frb_rust verify
 
   generate_run_frb_codegen_command_generate:
+    if: ${{ github.event.action != 'closed' }}
     name: 'Generate :: FRB Codegen :: Command Generate'
     runs-on: ${{ matrix.image }}
 
@@ -219,7 +227,8 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -249,6 +258,7 @@ jobs:
           path: target/coverage
 
   generate_run_frb_codegen_command_integrate:
+    if: ${{ github.event.action != 'closed' }}
     name: 'Generate :: FRB Codegen :: Command Integrate'
     runs-on: ${{ matrix.image }}
     env:
@@ -274,7 +284,8 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -308,7 +319,7 @@ jobs:
       - if: matrix.platforms == 'ohos'
         name: Setup flutter-ohos
         run: |
-          git clone -b oh-3.41.9-dev https://gitcode.com/openharmony-tpc/flutter_flutter.git $GITHUB_WORKSPACE/flutter
+          git clone -b oh-3.41.9-dev https://gitcode.com/CPF-Flutter/flutter_flutter.git $GITHUB_WORKSPACE/flutter
           echo "$GITHUB_WORKSPACE/flutter/bin" >> $GITHUB_PATH
       - if: matrix.platforms == 'ohos'
         name: Export OHOS_SDK_HOME
@@ -327,12 +338,14 @@ jobs:
           path: target/coverage
 
   generate_internal:
+    if: ${{ github.event.action != 'closed' }}
     name: 'Generate :: Internal'
     runs-on: ubuntu-latest
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -366,6 +379,7 @@ jobs:
   # ----------------------------------- bench -----------------------------------
 
   bench_dart_native:
+    if: ${{ github.event.action != 'closed' }}
     name: 'Bench :: Dart :: Native'
     runs-on: ${{ matrix.image }}
     strategy:
@@ -378,7 +392,8 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -409,7 +424,7 @@ jobs:
     name: 'Bench :: Upload'
     runs-on: ubuntu-latest
     # NOTE Even if some previous jobs failed, we still want partial info
-    if: ${{ always() && !cancelled() }}
+    if: ${{ github.event.action != 'closed' && always() && !cancelled() }}
     needs:
       # NOTE We do this to ensure bench upload *after* deploy website.
       # Otherwise, if they are run concurrently, they can push to git at the same time, causing failure for one of them
@@ -446,6 +461,7 @@ jobs:
   # ----------------------------------- build -----------------------------------
 
   build_flutter:
+    if: ${{ github.event.action != 'closed' }}
     name: 'Build :: Flutter'
     runs-on: ${{ matrix.info.image }}
     strategy:
@@ -471,7 +487,8 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -504,7 +521,7 @@ jobs:
       - if: matrix.info.target == 'ohos'
         name: Setup flutter-ohos
         run: |
-          git clone -b oh-3.41.9-dev https://gitcode.com/openharmony-tpc/flutter_flutter.git $GITHUB_WORKSPACE/flutter
+          git clone -b oh-3.41.9-dev https://gitcode.com/CPF-Flutter/flutter_flutter.git $GITHUB_WORKSPACE/flutter
           echo "$GITHUB_WORKSPACE/flutter/bin" >> $GITHUB_PATH
       - if: matrix.info.target == 'ohos'
         name: Export OHOS_SDK_HOME
@@ -524,6 +541,7 @@ jobs:
   # ----------------------------------- test -----------------------------------
 
   test_mimic_quickstart:
+    if: ${{ github.event.action != 'closed' }}
     name: 'Test :: MimicQuickstart'
     runs-on: ${{ matrix.image }}
     strategy:
@@ -537,7 +555,8 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -610,6 +629,7 @@ jobs:
   #         path: target/coverage
 
   test_rust:
+    if: ${{ github.event.action != 'closed' }}
     name: 'Test :: Rust'
     runs-on: ${{ matrix.info.image }}
     strategy:
@@ -635,7 +655,8 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -666,6 +687,7 @@ jobs:
           path: target/coverage
 
   test_dart_native:
+    if: ${{ github.event.action != 'closed' }}
     name: 'Test :: Dart :: Native'
     runs-on: ${{ matrix.image }}
     strategy:
@@ -694,7 +716,8 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -724,6 +747,7 @@ jobs:
           path: target/coverage
 
   test_dart_web:
+    if: ${{ github.event.action != 'closed' }}
     name: 'Test :: Dart :: Web'
     runs-on: ubuntu-latest
     strategy:
@@ -738,7 +762,8 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -773,15 +798,16 @@ jobs:
             frb_example--pure_dart/rust/target/
             frb_example--pure_dart/.local-chromium
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-      - name: Install crates
-        if: steps.test-cache.outputs.cache-hit != 'true'
+      - name: Install web crates
         run: |
-          sh -c "$(curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf)" '' -f
+          which wasm-pack || sh -c "$(curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf)" '' -f
+          wasm-bindgen --version | grep '0.2.100' || cargo +nightly-2025-02-01 install wasm-bindgen-cli --version 0.2.100 --locked --force
 
       # execute
       - run: ./frb_internal test-dart-web --package ${{ matrix.package }}
 
   test_dart_valgrind:
+    if: ${{ github.event.action != 'closed' }}
     name: 'Test :: Dart :: Valgrind'
     runs-on: ubuntu-latest
     strategy:
@@ -795,7 +821,8 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -819,6 +846,7 @@ jobs:
       - run: ./frb_internal test-dart-valgrind --package ${{ matrix.package }}
 
   test_dart_sanitizer:
+    if: ${{ github.event.action != 'closed' }}
     name: 'Test :: Dart :: Sanitizer'
     runs-on: ubuntu-latest
     strategy:
@@ -840,7 +868,8 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -869,6 +898,7 @@ jobs:
 
   # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
   test_flutter_native_android:
+    if: ${{ github.event.action != 'closed' }}
     name: 'Test :: Flutter :: Native:: Android'
     runs-on: ubuntu-latest
     strategy:
@@ -887,7 +917,8 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         with:
           comment_on_pr: false
       - uses: actions/checkout@v5
@@ -937,6 +968,7 @@ jobs:
 
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
   test_flutter_native_ios:
+    if: ${{ github.event.action != 'closed' }}
     name: 'Test :: Flutter :: Native:: iOS'
     runs-on: macos-latest
     strategy:
@@ -954,7 +986,8 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -981,6 +1014,7 @@ jobs:
       - run: ./frb_internal test-flutter-native --package ${{ matrix.package }}
 
   test_flutter_native_desktop:
+    if: ${{ github.event.action != 'closed' }}
     name: 'Test :: Flutter :: Native:: ${{ matrix.info.platform }} (${{ matrix.info.package }})'
     runs-on: ${{ matrix.info.image }}
     strategy:
@@ -1043,7 +1077,8 @@ jobs:
 
     steps:
       # setup
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -1067,6 +1102,7 @@ jobs:
       - run: ./frb_internal test-flutter-native --flutter-test-args '--device-id ${{ matrix.info.platform }}' --package ${{ matrix.info.package }}
 
   test_flutter_web:
+    if: ${{ github.event.action != 'closed' }}
     name: "Test :: Flutter :: Web (${{ matrix.wasm && 'dart2wasm' || 'dart2js' }} / ${{ matrix.package }})"
     runs-on: ubuntu-latest
     strategy:
@@ -1091,7 +1127,8 @@ jobs:
             wasm: true
 
     steps:
-      - uses: catchpoint/workflow-telemetry-action@v2
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
         continue-on-error: true
         env:
           WORKFLOW_TELEMETRY_SERVER_PORT: 7778
@@ -1144,7 +1181,7 @@ jobs:
     name: 'Misc :: Codecov'
     runs-on: ubuntu-latest
     # NOTE Even if some previous jobs failed, we still want partial info
-    if: ${{ always() && !cancelled() }}
+    if: ${{ github.event.action != 'closed' && always() && !cancelled() }}
     # NOTE need to depend on *all* jobs that may generate codecov artifacts
     needs:
       - generate_run_frb_codegen_command_generate

@@ -29,12 +29,12 @@ void main() {
             },
         dockerfilePath: '/repo/.devcontainer/Dockerfile',
         imageRef:
-            'fzyzcjy/flutter_rust_bridge_dev:flutter-3.41.2-rust-1.93.1-nightly-2025-02-01',
+            'fzyzcjy/flutter_rust_bridge_dev:flutter-3.44.0-rust-1.93.1-nightly-2025-02-01',
       );
 
       expect(commands, [
-        "docker pull 'fzyzcjy/flutter_rust_bridge_dev:flutter-3.41.2-rust-1.93.1-nightly-2025-02-01'",
-        "docker build -f '/repo/.devcontainer/Dockerfile' -t 'fzyzcjy/flutter_rust_bridge_dev:flutter-3.41.2-rust-1.93.1-nightly-2025-02-01' '/repo/.devcontainer'",
+        "docker pull 'fzyzcjy/flutter_rust_bridge_dev:flutter-3.44.0-rust-1.93.1-nightly-2025-02-01'",
+        "docker build -f '/repo/.devcontainer/Dockerfile' -t 'fzyzcjy/flutter_rust_bridge_dev:flutter-3.44.0-rust-1.93.1-nightly-2025-02-01' '/repo/.devcontainer'",
       ]);
     },
   );
@@ -114,7 +114,7 @@ void main() {
       githubRunId: '456',
       hasPatch: true,
       imageRef:
-          'fzyzcjy/flutter_rust_bridge_dev:flutter-3.41.2-rust-1.93.1-nightly-2025-02-01',
+          'fzyzcjy/flutter_rust_bridge_dev:flutter-3.44.0-rust-1.93.1-nightly-2025-02-01',
       outputPath: '/tmp/precommit-autofix.diff',
     );
 
