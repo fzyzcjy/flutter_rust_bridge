@@ -68,6 +68,7 @@ pub(crate) fn generate_api_impl_normal_function(
             }
             MirFuncMode::Sync => call_handler.clone(),
         };
+
         format!(
             "
             final {return_stream_name} = {return_stream_type}();

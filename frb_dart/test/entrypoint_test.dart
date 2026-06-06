@@ -50,7 +50,7 @@ class _FakeBaseEntrypointWithCodegenVersion extends _FakeBaseEntrypoint {
 
 class _FakeBaseEntrypoint extends BaseEntrypoint {
   // We do not care about these functions in this test (and they should not be called as well)
-  // coverage:ignore-start
+  // frb-coverage:ignore-start
   @override
   get apiImplConstructor => throw UnimplementedError();
 
@@ -68,7 +68,7 @@ class _FakeBaseEntrypoint extends BaseEntrypoint {
 
   @override
   get wireConstructor => throw UnimplementedError();
-  // coverage:ignore-end
+  // frb-coverage:ignore-end
 }
 
 class _FakeApi implements BaseApi {}
