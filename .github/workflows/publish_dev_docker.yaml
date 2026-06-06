@@ -29,6 +29,7 @@ jobs:
       rust_version: ${{ steps.metadata.outputs.rust_version }}
       rust_nightly_version: ${{ steps.metadata.outputs.rust_nightly_version }}
       version_tag: ${{ steps.metadata.outputs.version_tag }}
+      version_code_tag: ${{ steps.metadata.outputs.version_code_tag }}
       sha_tag: ${{ steps.metadata.outputs.sha_tag }}
       should_publish: ${{ steps.metadata.outputs.should_publish }}
 
@@ -47,6 +48,7 @@ jobs:
           rust_nightly_version="$(awk -F= '/^ARG RUST_NIGHTLY_VERSION=/{print $2; exit}' .devcontainer/Dockerfile)"
           short_sha="${GITHUB_SHA::7}"
           version_tag="flutter-${flutter_version}-rust-${rust_version}-nightly-${rust_nightly_version}"
+          version_code_tag="${version_tag}-code-${short_sha}"
           sha_tag="sha-${short_sha}"
 
           if [[ "${{ github.event_name }}" == "push" || "${{ inputs.publish }}" == "true" ]]; then
@@ -60,6 +62,7 @@ jobs:
             echo "rust_version=${rust_version}"
             echo "rust_nightly_version=${rust_nightly_version}"
             echo "version_tag=${version_tag}"
+            echo "version_code_tag=${version_code_tag}"
             echo "sha_tag=${sha_tag}"
             echo "should_publish=${should_publish}"
           } >> "${GITHUB_OUTPUT}"
@@ -134,8 +137,13 @@ jobs:
           push: true
           tags: |
             ${{ env.IMAGE_NAME }}:${{ needs.metadata.outputs.sha_tag }}-${{ matrix.arch }}
+            ${{ env.IMAGE_NAME }}:${{ needs.metadata.outputs.version_code_tag }}-${{ matrix.arch }}
             ${{ env.IMAGE_NAME }}:${{ needs.metadata.outputs.version_tag }}-${{ matrix.arch }}
             ${{ env.IMAGE_NAME }}:latest-${{ matrix.arch }}
+          labels: |
+            org.opencontainers.image.source=https://github.com/fzyzcjy/flutter_rust_bridge
+            org.opencontainers.image.revision=${{ github.sha }}
+            org.opencontainers.image.version=${{ needs.metadata.outputs.version_code_tag }}
 
       - name: Build workflow summary
         shell: bash
@@ -180,6 +188,7 @@ jobs:
           docker buildx imagetools create \
             -t "${IMAGE_NAME}:latest" \
             -t "${IMAGE_NAME}:${{ needs.metadata.outputs.version_tag }}" \
+            -t "${IMAGE_NAME}:${{ needs.metadata.outputs.version_code_tag }}" \
             -t "${IMAGE_NAME}:${{ needs.metadata.outputs.sha_tag }}" \
             "${IMAGE_NAME}:${{ needs.metadata.outputs.sha_tag }}-amd64" \
             "${IMAGE_NAME}:${{ needs.metadata.outputs.sha_tag }}-arm64"
@@ -198,5 +207,6 @@ jobs:
             echo "- Tags:"
             echo "  - \`latest\`"
             echo "  - \`${{ needs.metadata.outputs.version_tag }}\`"
+            echo "  - \`${{ needs.metadata.outputs.version_code_tag }}\`"
             echo "  - \`${{ needs.metadata.outputs.sha_tag }}\`"
           } >> "${GITHUB_STEP_SUMMARY}"
