@@ -50,7 +50,10 @@ Confirm the VM can see the mounted worktree and prepare the VM-local copy used f
 ```bash
 .claude/skills/frb-dev-env/frb_dev_env.py tart exec -- bash -lc 'pwd && git status --short && ./frb_internal --help'
 .claude/skills/frb-dev-env/frb_dev_env.py tart upload
+.claude/skills/frb-dev-env/frb_dev_env.py tart exec -- bash -lc 'set -euo pipefail; flutter config --no-version-check; git -C /Users/admin/flutter remote set-url origin file:///Users/admin/flutter; git -C /Users/admin/flutter remote -v'
 ```
+
+The Flutter remote override is VM-local and prevents `flutter doctor -v`, which is invoked by `./frb_internal test-flutter-native`, from blocking on remote upstream checks when the local validation host has restricted network access. Record the resulting `origin file:///Users/admin/flutter` evidence in the execution result.
 
 ## Test Data
 
