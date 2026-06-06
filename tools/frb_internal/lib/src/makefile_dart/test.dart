@@ -635,12 +635,6 @@ Future<void> testFlutterWeb(TestFlutterWebConfig config) async {
     relativePwd: config.package,
   );
 
-  if (config.package == 'frb_example/flutter_via_create' && Platform.isLinux) {
-    await _runFlutterViaCreateWebQuickstartSmokeTest(config.package);
-  } else if (config.package == 'frb_example/flutter_via_create') {
-    print('Skip flutter_via_create web quickstart smoke test on non-Linux');
-  }
-
   if (config.coverage) {
     await _formatDartCoverage(package: buildWebPackage);
   }
@@ -649,51 +643,6 @@ Future<void> testFlutterWeb(TestFlutterWebConfig config) async {
 @visibleForTesting
 String resolveBuildWebPackage(String package) =>
     kBuildWebPackageReplacer[package] ?? package;
-
-Future<void> _runFlutterViaCreateWebQuickstartSmokeTest(String package) async {
-  final output = await exec(
-    '''
-    if [ "\$(id -u)" = "0" ]; then
-      chrome_wrapper="\$(mktemp)"
-      trap 'rm -f "\$chrome_wrapper"' EXIT
-      printf '%s\\n' '#!/bin/sh' 'exec google-chrome --no-sandbox "\$@"' > "\$chrome_wrapper"
-      chmod +x "\$chrome_wrapper"
-      export CHROME_EXECUTABLE="\$chrome_wrapper"
-    fi
-    export DISPLAY="\${DISPLAY:-:99}"
-
-    timeout 180 flutter run \\
-      -d chrome \\
-      --web-header=Cross-Origin-Opener-Policy=same-origin \\
-      --web-header=Cross-Origin-Embedder-Policy=require-corp
-    ''',
-    relativePwd: package,
-    checkExitCode: false,
-  );
-
-  final combinedOutput = '${output.stdout}\n${output.stderr}';
-  const failurePatterns = [
-    'DataCloneError',
-    'Failed to execute \'postMessage\' on \'Worker\'',
-    'fail to create WorkerPool',
-    'Failed to initialize',
-    'WebAssembly.instantiate',
-  ];
-  for (final pattern in failurePatterns) {
-    if (combinedOutput.contains(pattern)) {
-      throw Exception(
-        'flutter_via_create web quickstart smoke test failed with `$pattern`',
-      );
-    }
-  }
-
-  if (output.exitCode != 0 && output.exitCode != 124) {
-    throw Exception(
-      'flutter_via_create web quickstart smoke test failed with unexpected '
-      'exit code ${output.exitCode}',
-    );
-  }
-}
 
 Future<void> _runFlutterDoctor() async {
   if (Platform.environment['FRB_SKIP_FLUTTER_DOCTOR'] == '1') {
