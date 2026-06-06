@@ -49,6 +49,7 @@ TART_LOCAL_COPY_EXCLUDES = [
     "build",
     "target",
 ]
+DEFAULT_TART_FLUTTER_ROOT = Path("/Users/admin/flutter")
 
 
 # ========== Common ==========
@@ -543,6 +544,50 @@ def upload_tart_local_copy(
     exec_command(["tart", "exec", vm_name, "/bin/zsh", "-lc", upload_command])
 
     return local_copy_path
+
+
+def tart_prepare_ios_integration_test(
+    *,
+    vm_name: str,
+    flutter_root: Path,
+) -> None:
+    flutter_root_arg = shlex.quote(str(flutter_root))
+    prepare_command = "\n".join(
+        [
+            "set -euo pipefail",
+            f"flutter_root={flutter_root_arg}",
+            'simulators_dart="$flutter_root/packages/flutter_tools/lib/src/ios/simulators.dart"',
+            'flutter_bin="$flutter_root/bin/flutter"',
+            'snapshot="$flutter_root/bin/cache/flutter_tools.snapshot"',
+            'if [ ! -f "$simulators_dart" ]; then',
+            '  echo "Missing Flutter iOS simulator source: $simulators_dart" >&2',
+            "  exit 1",
+            "fi",
+            'if [ ! -x "$flutter_bin" ]; then',
+            '  echo "Missing Flutter executable: $flutter_bin" >&2',
+            "  exit 1",
+            "fi",
+            'if ! grep -F "await logReader.start();" "$simulators_dart" >/dev/null; then',
+            '  backup="$simulators_dart.frb-ios-log-race.bak"',
+            '  if [ ! -f "$backup" ]; then',
+            '    cp "$simulators_dart" "$backup"',
+            "  fi",
+            "  perl -0pi -e 's#vmServiceDiscovery = ProtocolDiscovery\\.vmService\\(\\n        getLogReader\\(app: package\\),#final DeviceLogReader logReader = getLogReader(app: package);\\n      if (logReader is _IOSSimulatorLogReader) {\\n        await logReader.start();\\n      }\\n      vmServiceDiscovery = ProtocolDiscovery.vmService(\\n        logReader,#m' \"$simulators_dart\"",
+            "  perl -0pi -e 's#late final _linesController = StreamController<String>\\.broadcast\\(\\n    onListen: _start,#late final _linesController = StreamController<String>.broadcast(\\n    onListen: start,#m' \"$simulators_dart\"",
+            "  perl -0pi -e 's#Future<void> _start\\(\\) async \\{\\n    // Unified logging#Future<void>? _startFuture;\\n\\n  Future<void> start() {\\n    return _startFuture ??= _start();\\n  }\\n\\n  Future<void> _start() async {\\n    // Unified logging#m' \"$simulators_dart\"",
+            '  if ! grep -F "await logReader.start();" "$simulators_dart" >/dev/null; then',
+            '    echo "Failed to apply Flutter iOS simulator log reader patch" >&2',
+            "    exit 1",
+            "  fi",
+            "fi",
+            'rm -f "$snapshot"',
+            'FLUTTER_GIT_URL="file://$flutter_root" "$flutter_bin" --version --no-version-check',
+            'echo "export FLUTTER_GIT_URL=file://$flutter_root"',
+            'echo "export FRB_SKIP_FLUTTER_DOCTOR=1"',
+        ]
+    )
+
+    exec_command(["tart", "exec", vm_name, "/bin/zsh", "-lc", prepare_command])
 
 
 # ========== Docker ==========
@@ -1091,6 +1136,49 @@ def tart_upload(
         local_copy_root=validate_tart_local_copy_root(local_copy_root=local_copy_root),
     )
     typer.echo(local_copy_path)
+
+
+@tart_app.command(name="prepare-ios-integration-test")
+def tart_prepare_ios_integration_test_command(
+    worktree_root: Annotated[
+        Path | None,
+        typer.Option("--worktree-root", help="FRB worktree root. Defaults to git root."),
+    ] = None,
+    base_vm: Annotated[
+        str | None,
+        typer.Option("--base-vm", help="Prepared Tart base VM. Defaults to FRB_TART_BASE_VM or frb-tart-base."),
+    ] = None,
+    min_free_gb: Annotated[
+        int,
+        typer.Option("--min-free-gb", help="Minimum free space required before creating a Tart VM."),
+    ] = MIN_TART_FREE_GB,
+    log_path: Annotated[
+        Path | None,
+        typer.Option("--log-path", help="Where to write tart run output if the VM needs to start."),
+    ] = None,
+    wait: Annotated[
+        int,
+        typer.Option("--wait", help="Seconds to wait for the VM IP if the VM needs to start."),
+    ] = 180,
+    flutter_root: Annotated[
+        Path,
+        typer.Option("--flutter-root", help="Flutter SDK root inside the Tart VM."),
+    ] = DEFAULT_TART_FLUTTER_ROOT,
+) -> None:
+    """Prepare the Tart VM Flutter SDK for iOS integration tests."""
+
+    resolved_worktree_root = resolve_worktree_root(worktree_root=worktree_root)
+    vm_name = ensure_tart_vm_running(
+        worktree_root=resolved_worktree_root,
+        base_vm=get_tart_base_vm(base_vm=base_vm),
+        min_free_gb=min_free_gb,
+        log_path=log_path,
+        wait=wait,
+    )
+    tart_prepare_ios_integration_test(
+        vm_name=vm_name,
+        flutter_root=flutter_root,
+    )
 
 
 @tart_app.command(name="exec")
