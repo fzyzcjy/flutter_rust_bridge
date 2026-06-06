@@ -117,6 +117,7 @@ class BuildEnvironment {
 class RustBuilder {
   final Target target;
   final BuildEnvironment environment;
+  String? _resolvedToolchain;
 
   RustBuilder({
     required this.target,
@@ -130,21 +131,24 @@ class RustBuilder {
     if (rustup.installedTargets(toolchain) == null) {
       rustup.installToolchain(toolchain);
     }
+    final resolvedToolchain = rustup.resolveToolchain(toolchain);
     if (toolchain == 'nightly') {
-      rustup.installRustSrcForNightly();
+      rustup.installRustSrcForNightly(toolchain: resolvedToolchain);
     }
     if (!rustup.installedTargets(toolchain)!.contains(target.rust)) {
-      rustup.installTarget(target.rust, toolchain: toolchain);
+      rustup.installTarget(target.rust, toolchain: resolvedToolchain);
     }
     if (environment.glibcVersion != null) {
-      rustup.installZigBuild(toolchain);
+      rustup.installZigBuild(resolvedToolchain);
     }
+    _resolvedToolchain = resolvedToolchain;
   }
 
   CargoBuildOptions? get _buildOptions =>
       environment.crateOptions.cargo[environment.configuration];
 
   String get _toolchain => _buildOptions?.toolchain.name ?? 'stable';
+  String get _effectiveToolchain => _resolvedToolchain ?? _toolchain;
 
   /// Returns the path of directory containing build artifacts.
   Future<String> build() async {
@@ -154,7 +158,7 @@ class RustBuilder {
       'rustup',
       [
         'run',
-        _toolchain,
+        _effectiveToolchain,
         'cargo',
         (target.android == null && environment.glibcVersion != null)
             ? 'zigbuild'

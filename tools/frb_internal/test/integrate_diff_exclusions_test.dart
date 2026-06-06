@@ -29,7 +29,10 @@ void main() {
         "':(exclude)frb_example/flutter_via_create/macos/Flutter/Flutter-Debug.xcconfig' "
         "':(exclude)frb_example/flutter_via_create/macos/Flutter/Flutter-Release.xcconfig' "
         "':(exclude)frb_example/flutter_via_create/pubspec.lock' "
-        "':(exclude)frb_example/flutter_via_create/pubspec.yaml'",
+        "':(exclude)frb_example/flutter_via_create/pubspec.yaml' "
+        "':(exclude)frb_example/flutter_via_create/android/' "
+        "':(exclude)frb_example/flutter_via_create/macos/' "
+        "':(exclude)frb_example/flutter_via_create/windows/'",
       );
     },
   );
