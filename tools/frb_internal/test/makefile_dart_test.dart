@@ -149,6 +149,37 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
     );
   });
 
+  test(
+    'quickstart smoke waits for Flutter run readiness before screenshot',
+    () {
+      expect(
+        quickstartSmokeFlutterRunIsReadyForTesting(
+          'Debug service listening on ws://127.0.0.1:1234/ws',
+        ),
+        true,
+      );
+      expect(
+        quickstartSmokeFlutterRunIsReadyForTesting('Flutter run key commands.'),
+        true,
+      );
+    },
+  );
+
+  test('quickstart smoke does not capture while Flutter is still building', () {
+    expect(
+      quickstartSmokeFlutterRunIsReadyForTesting(
+        'Running Gradle task \'assembleDebug\'...',
+      ),
+      false,
+    );
+    expect(
+      quickstartSmokeFlutterRunIsReadyForTesting(
+        'Building Windows application...',
+      ),
+      false,
+    );
+  });
+
   test('quickstart smoke OCR rejects unrelated text', () {
     expect(
       () => checkQuickstartSmokeOcrTextForTesting(

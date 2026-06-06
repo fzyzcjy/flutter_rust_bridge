@@ -76,7 +76,9 @@ Future<void> runFlutterViaCreateQuickstartSmokeTest({
     logSink.write(text);
   });
 
-  final deadline = DateTime.now().add(const Duration(seconds: 75));
+  final deadline = DateTime.now().add(
+    quickstartSmokeFlutterRunReadyTimeoutForTesting(target),
+  );
   const failurePatterns = [
     'DataCloneError',
     'Failed to execute \'postMessage\' on \'Worker\'',
@@ -84,11 +86,19 @@ Future<void> runFlutterViaCreateQuickstartSmokeTest({
     'Failed to initialize',
     'WebAssembly.instantiate',
   ];
+  var readyForScreenshot = false;
   while (DateTime.now().isBefore(deadline)) {
     await Future<void>.delayed(const Duration(seconds: 1));
     final output = outputBuffer.toString();
     if (failurePatterns.any(output.contains)) break;
+    if (quickstartSmokeFlutterRunIsReadyForTesting(output)) {
+      readyForScreenshot = true;
+      break;
+    }
     if (observedExitCode != null) break;
+  }
+  if (readyForScreenshot) {
+    await Future<void>.delayed(const Duration(seconds: 5));
   }
 
   final screenshotFile = File('${absolutePackage.path}/$screenshotPath');
@@ -143,6 +153,13 @@ Future<void> runFlutterViaCreateQuickstartSmokeTest({
     );
   }
 
+  if (!readyForScreenshot) {
+    throw Exception(
+      'flutter_via_create $targetName quickstart smoke test did not observe '
+      'Flutter run readiness before screenshot capture',
+    );
+  }
+
   if (!ocrOutputFile.existsSync()) {
     throw Exception(
       'flutter_via_create $targetName quickstart smoke test did not produce OCR '
@@ -169,6 +186,26 @@ String quickstartSmokeDefaultDeviceIdForTesting(QuickstartSmokeTarget target) {
     if (Platform.isLinux) return 'linux';
   }
   throw Exception('No default quickstart smoke device for `$target`');
+}
+
+@visibleForTesting
+Duration quickstartSmokeFlutterRunReadyTimeoutForTesting(
+  QuickstartSmokeTarget target,
+) => switch (target) {
+  QuickstartSmokeTarget.web => const Duration(seconds: 120),
+  QuickstartSmokeTarget.desktop ||
+  QuickstartSmokeTarget.android ||
+  QuickstartSmokeTarget.ios => const Duration(minutes: 5),
+};
+
+@visibleForTesting
+bool quickstartSmokeFlutterRunIsReadyForTesting(String output) {
+  const readyPatterns = [
+    'Flutter run key commands.',
+    'Debug service listening on',
+    'A Dart VM Service',
+  ];
+  return readyPatterns.any(output.contains);
 }
 
 @visibleForTesting
