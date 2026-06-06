@@ -119,8 +119,11 @@ class CiPlan {
   );
 
   Map<String, Object?> toJson() => {
-    'jobs': {for (final job in kCiJobs) job.id: enabledJobs.contains(job.id)},
-    'matrices': matrixByJob,
+    for (final job in kCiJobs)
+      job.id: {
+        'enable': enabledJobs.contains(job.id),
+        if (job.matrix != null) 'matrix': matrixByJob[job.id],
+      },
   };
 }
 

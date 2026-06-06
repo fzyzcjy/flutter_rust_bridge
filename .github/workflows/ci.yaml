@@ -62,7 +62,7 @@ jobs:
   # ref https://docusaurus.io/docs/deployment#triggering-deployment-with-github-actions
   deploy_website:
     needs: plan_ci
-    if: ${{ fromJSON(needs.plan_ci.outputs.plan).jobs.deploy_website == true }}
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).deploy_website.enable == true }}
     name: 'Deploy :: Website'
     runs-on: ubuntu-latest
 
@@ -107,7 +107,7 @@ jobs:
 
   lint_rust_primary:
     needs: plan_ci
-    if: ${{ fromJSON(needs.plan_ci.outputs.plan).jobs.lint_rust_primary == true }}
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).lint_rust_primary.enable == true }}
     name: 'Lint :: Rust :: Primary'
     runs-on: ubuntu-latest
 
@@ -142,7 +142,7 @@ jobs:
 
   lint_dart_primary:
     needs: plan_ci
-    if: ${{ fromJSON(needs.plan_ci.outputs.plan).jobs.lint_dart_primary == true }}
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).lint_dart_primary.enable == true }}
     name: 'Lint :: Dart :: Primary'
     runs-on: ubuntu-latest
 
@@ -169,7 +169,7 @@ jobs:
 
   lint_rust_feature_flag:
     needs: plan_ci
-    if: ${{ fromJSON(needs.plan_ci.outputs.plan).jobs.lint_rust_feature_flag == true }}
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).lint_rust_feature_flag.enable == true }}
     name: 'Lint :: Rust :: Feature flag'
     runs-on: ubuntu-latest
 
@@ -231,13 +231,13 @@ jobs:
 
   generate_run_frb_codegen_command_generate:
     needs: plan_ci
-    if: ${{ fromJSON(needs.plan_ci.outputs.plan).jobs.generate_run_frb_codegen_command_generate == true }}
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).generate_run_frb_codegen_command_generate.enable == true }}
     name: 'Generate :: FRB Codegen :: Command Generate'
     runs-on: ${{ matrix.image }}
 
     strategy:
       fail-fast: false
-      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).matrices.generate_run_frb_codegen_command_generate }}
+      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).generate_run_frb_codegen_command_generate.matrix }}
 
     steps:
       # setup
@@ -273,7 +273,7 @@ jobs:
 
   generate_run_frb_codegen_command_integrate:
     needs: plan_ci
-    if: ${{ fromJSON(needs.plan_ci.outputs.plan).jobs.generate_run_frb_codegen_command_integrate == true }}
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).generate_run_frb_codegen_command_integrate.enable == true }}
     name: 'Generate :: FRB Codegen :: Command Integrate'
     runs-on: ${{ matrix.image }}
     env:
@@ -281,7 +281,7 @@ jobs:
 
     strategy:
       fail-fast: false
-      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).matrices.generate_run_frb_codegen_command_integrate }}
+      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).generate_run_frb_codegen_command_integrate.matrix }}
 
     steps:
       # setup
@@ -340,7 +340,7 @@ jobs:
 
   generate_internal:
     needs: plan_ci
-    if: ${{ fromJSON(needs.plan_ci.outputs.plan).jobs.generate_internal == true }}
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).generate_internal.enable == true }}
     name: 'Generate :: Internal'
     runs-on: ubuntu-latest
 
@@ -382,12 +382,12 @@ jobs:
 
   bench_dart_native:
     needs: plan_ci
-    if: ${{ fromJSON(needs.plan_ci.outputs.plan).jobs.bench_dart_native == true }}
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).bench_dart_native.enable == true }}
     name: 'Bench :: Dart :: Native'
     runs-on: ${{ matrix.image }}
     strategy:
       fail-fast: false
-      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).matrices.bench_dart_native }}
+      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).bench_dart_native.matrix }}
 
     steps:
       # setup
@@ -423,7 +423,7 @@ jobs:
     name: 'Bench :: Upload'
     runs-on: ubuntu-latest
     # NOTE Even if some previous jobs failed, we still want partial info
-    if: ${{ always() && !cancelled() && fromJSON(needs.plan_ci.outputs.plan).jobs.bench_upload == true }}
+    if: ${{ always() && !cancelled() && fromJSON(needs.plan_ci.outputs.plan).bench_upload.enable == true }}
     needs:
       - plan_ci
       # NOTE We do this to ensure bench upload *after* deploy website.
@@ -462,12 +462,12 @@ jobs:
 
   build_flutter:
     needs: plan_ci
-    if: ${{ fromJSON(needs.plan_ci.outputs.plan).jobs.build_flutter == true }}
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).build_flutter.enable == true }}
     name: 'Build :: Flutter'
     runs-on: ${{ matrix.info.image }}
     strategy:
       fail-fast: false
-      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).matrices.build_flutter }}
+      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).build_flutter.matrix }}
 
     steps:
       # setup
@@ -526,12 +526,12 @@ jobs:
 
   test_mimic_quickstart:
     needs: plan_ci
-    if: ${{ fromJSON(needs.plan_ci.outputs.plan).jobs.test_mimic_quickstart == true }}
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_mimic_quickstart.enable == true }}
     name: 'Test :: MimicQuickstart'
     runs-on: ${{ matrix.image }}
     strategy:
       fail-fast: false
-      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).matrices.test_mimic_quickstart }}
+      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).test_mimic_quickstart.matrix }}
 
     steps:
       # setup
@@ -610,12 +610,12 @@ jobs:
 
   test_rust:
     needs: plan_ci
-    if: ${{ fromJSON(needs.plan_ci.outputs.plan).jobs.test_rust == true }}
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_rust.enable == true }}
     name: 'Test :: Rust'
     runs-on: ${{ matrix.info.image }}
     strategy:
       fail-fast: false
-      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).matrices.test_rust }}
+      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).test_rust.matrix }}
 
     steps:
       # setup
@@ -652,12 +652,12 @@ jobs:
 
   test_dart_native:
     needs: plan_ci
-    if: ${{ fromJSON(needs.plan_ci.outputs.plan).jobs.test_dart_native == true }}
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_dart_native.enable == true }}
     name: 'Test :: Dart :: Native'
     runs-on: ${{ matrix.image }}
     strategy:
       fail-fast: false
-      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).matrices.test_dart_native }}
+      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).test_dart_native.matrix }}
 
     steps:
       # setup
@@ -693,12 +693,12 @@ jobs:
 
   test_dart_web:
     needs: plan_ci
-    if: ${{ fromJSON(needs.plan_ci.outputs.plan).jobs.test_dart_web == true }}
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_dart_web.enable == true }}
     name: 'Test :: Dart :: Web'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).matrices.test_dart_web }}
+      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).test_dart_web.matrix }}
 
     steps:
       # setup
@@ -748,12 +748,12 @@ jobs:
 
   test_dart_valgrind:
     needs: plan_ci
-    if: ${{ fromJSON(needs.plan_ci.outputs.plan).jobs.test_dart_valgrind == true }}
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_dart_valgrind.enable == true }}
     name: 'Test :: Dart :: Valgrind'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).matrices.test_dart_valgrind }}
+      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).test_dart_valgrind.matrix }}
 
     steps:
       # setup
@@ -783,12 +783,12 @@ jobs:
 
   test_dart_sanitizer:
     needs: plan_ci
-    if: ${{ fromJSON(needs.plan_ci.outputs.plan).jobs.test_dart_sanitizer == true }}
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_dart_sanitizer.enable == true }}
     name: 'Test :: Dart :: Sanitizer'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).matrices.test_dart_sanitizer }}
+      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).test_dart_sanitizer.matrix }}
 
     steps:
       # setup
@@ -823,12 +823,12 @@ jobs:
   # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
   test_flutter_native_android:
     needs: plan_ci
-    if: ${{ fromJSON(needs.plan_ci.outputs.plan).jobs.test_flutter_native_android == true }}
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_flutter_native_android.enable == true }}
     name: 'Test :: Flutter :: Native:: Android'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).matrices.test_flutter_native_android }}
+      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).test_flutter_native_android.matrix }}
 
     steps:
       # setup
@@ -884,12 +884,12 @@ jobs:
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
   test_flutter_native_ios:
     needs: plan_ci
-    if: ${{ fromJSON(needs.plan_ci.outputs.plan).jobs.test_flutter_native_ios == true }}
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_flutter_native_ios.enable == true }}
     name: 'Test :: Flutter :: Native:: iOS'
     runs-on: macos-latest
     strategy:
       fail-fast: false
-      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).matrices.test_flutter_native_ios }}
+      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).test_flutter_native_ios.matrix }}
 
     steps:
       # setup
@@ -922,12 +922,12 @@ jobs:
 
   test_flutter_native_desktop:
     needs: plan_ci
-    if: ${{ fromJSON(needs.plan_ci.outputs.plan).jobs.test_flutter_native_desktop == true }}
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_flutter_native_desktop.enable == true }}
     name: 'Test :: Flutter :: Native:: ${{ matrix.info.platform }} (${{ matrix.info.package }})'
     runs-on: ${{ matrix.info.image }}
     strategy:
       fail-fast: false
-      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).matrices.test_flutter_native_desktop }}
+      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).test_flutter_native_desktop.matrix }}
 
     steps:
       # setup
@@ -957,12 +957,12 @@ jobs:
 
   test_flutter_web:
     needs: plan_ci
-    if: ${{ fromJSON(needs.plan_ci.outputs.plan).jobs.test_flutter_web == true }}
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_flutter_web.enable == true }}
     name: 'Test :: Flutter :: Web'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).matrices.test_flutter_web }}
+      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).test_flutter_web.matrix }}
 
     steps:
       - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
@@ -1018,7 +1018,7 @@ jobs:
     name: 'Misc :: Codecov'
     runs-on: ubuntu-latest
     # NOTE Even if some previous jobs failed, we still want partial info
-    if: ${{ always() && !cancelled() && fromJSON(needs.plan_ci.outputs.plan).jobs.misc_codecov == true }}
+    if: ${{ always() && !cancelled() && fromJSON(needs.plan_ci.outputs.plan).misc_codecov.enable == true }}
     # NOTE need to depend on *all* jobs that may generate codecov artifacts
     needs:
       - plan_ci
