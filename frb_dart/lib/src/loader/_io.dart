@@ -73,7 +73,7 @@ ExternalLibrary loadExternalLibraryRaw({
   if (Platform.isIOS || Platform.isMacOS) {
     return tryAssumingNonPackaged(
       'lib$stem.dylib',
-      (debugInfo) => loadDarwinPackagedExternalLibraryForTesting(
+      (debugInfo) => loadDarwinPackagedExternalLibrary(
         stem: stem,
         debugInfo: debugInfo,
         open: (name, debugInfo) =>
@@ -100,8 +100,12 @@ ExternalLibrary loadExternalLibraryRaw({
   );
 }
 
+/// Load a packaged Darwin library.
+///
+/// Falls back to process lookup for CocoaPods static linkage, where the Rust
+/// symbols are linked into the app image instead of an embedded framework.
 @visibleForTesting
-T loadDarwinPackagedExternalLibraryForTesting<T>({
+T loadDarwinPackagedExternalLibrary<T>({
   required String stem,
   required String debugInfo,
   required T Function(String name, String debugInfo) open,

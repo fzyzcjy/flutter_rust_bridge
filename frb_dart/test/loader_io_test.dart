@@ -5,7 +5,7 @@ void main() {
   test('Darwin packaged loader falls back to process after open failures', () {
     final attempts = <String>[];
 
-    final result = loadDarwinPackagedExternalLibraryForTesting(
+    final result = loadDarwinPackagedExternalLibrary(
       stem: 'my_rust_lib',
       debugInfo: 'debug',
       open: (name, debugInfo) {
