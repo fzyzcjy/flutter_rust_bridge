@@ -300,7 +300,7 @@ void main() {
         automaticCiDisabled: false,
       );
 
-      final json = jsonDecode(jsonEncode(CiPlanOutput.fromPlan(plan)));
+      final json = jsonDecode(jsonEncode(buildCiPlanOutput(plan)));
 
       expect(json['lint_rust_primary'], {'enable': true});
       expect(json['test_dart_web'], {
