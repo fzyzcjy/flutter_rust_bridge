@@ -9,7 +9,9 @@ Use this skill before setting up, diagnosing, or running `flutter_rust_bridge` c
 
 ## Choosing an Environment
 
-Use Docker for normal FRB development checks that fit Linux containers: Rust tests, Dart tests, web tests, code generation, lint, and most `./frb_internal` commands. Docker is the default reproducible baseline when local host toolchains are missing or suspected to have drifted.
+Use Docker for normal FRB development checks that fit Linux containers: Rust tests, Dart tests, web tests, code generation, lint, Android build checks that do not need a running emulator, and most `./frb_internal` commands. Docker is the default reproducible baseline when local host toolchains are missing or suspected to have drifted.
+
+Use a host Android Emulator for local Android runtime validation when a running Android target is required. Keep FRB, Flutter, Rust, Gradle, and Android build tooling inside Docker. The host runs only the emulator and the Android SDK command-line tools needed to manage it. Docker runs its own ADB server and connects directly to the emulator TCP endpoint so Flutter's VM service forwarding stays inside Docker. See the Android section below.
 
 Use Tart only for checks that need macOS and Xcode, especially iOS Simulator validation. The Tart workflow is intentionally separate from Docker; it gives each worktree a reusable macOS VM cloned from a prepared base VM, then runs FRB commands inside that VM.
 
@@ -60,6 +62,8 @@ frb.dev.layout-version=3
 
 Commands run from the host-like worktree path inside the container. There is intentionally no `/workspace` alias, because linked git worktrees and submodule gitdir references need the same path shape that they have on the host.
 
+When creating a new per-worktree container, the helper pulls the selected Docker image before `docker run`. Existing containers are validated and reused without pulling.
+
 Typical usage:
 
 ```bash
@@ -79,6 +83,83 @@ Delete a worktree's Docker container when the worktree is no longer needed, or w
 The delete command validates the container labels before removing it. Use `--force` only when intentionally removing a mismatched container.
 
 Use the project `frb-docker` skill for image, devcontainer, and Dockerfile details.
+
+## Android Host Runtime
+
+Use this workflow for local Android runtime checks when Docker can build and run the FRB/Flutter command, but the Android target itself must be managed by the host.
+
+### Path Selection
+
+The supported Android runtime path is:
+
+```text
+host Android Emulator:
+  host runs the emulator process
+  Docker runs FRB/Flutter and its own ADB server
+  Docker ADB connects to host.docker.internal:<emulator-adb-port>
+```
+
+Physical Android phones are intentionally out of scope for this helper until that path is manually validated. The host does not need FRB, Flutter, Rust, Cargo, Java, or Gradle for the emulator path.
+
+### Host Emulator Architecture
+
+Use this split for a host Android Emulator:
+
+```text
+host:
+  Android Emulator process
+  Android SDK command-line tools for SDK packages, AVD creation, emulator start/stop, and host-side inspection
+  Android SDK root: ~/Library/Android/sdk unless ANDROID_HOME is set
+  AVD root: ~/.android/avd
+
+Docker container:
+  FRB checkout
+  Flutter, Dart, Rust, Cargo, Java, Gradle
+  Android SDK/NDK/build tools needed for builds
+  Docker-local ADB server connected to host.docker.internal:<emulator-adb-port>
+```
+
+Read the project `frb-android-emulator-prepare` skill before preparing a host emulator. The host emulator path needs Java, Android SDK command-line tools, emulator packages, a system image, and an AVD in the standard Android Studio host locations.
+
+Print the resolved host Android SDK environment if needed:
+
+```bash
+.claude/skills/frb-dev-env/frb_dev_env.py android env
+```
+
+Start the emulator on the host. Pin the port when you want a stable host serial such as `emulator-5554`; the paired emulator ADB TCP endpoint is one port higher, such as `host.docker.internal:5555`:
+
+```bash
+.claude/skills/frb-dev-env/frb_dev_env.py android emulator --avd FRB_API_35 --port 5554
+```
+
+Verify Docker-local ADB can see the host emulator:
+
+```bash
+.claude/skills/frb-dev-env/frb_dev_env.py docker exec --android-emulator-adb -- adb devices -l
+```
+
+Run the FRB/Flutter command against the Docker-visible emulator serial:
+
+```bash
+.claude/skills/frb-dev-env/frb_dev_env.py docker exec --android-emulator-adb -- \
+  bash -lc './frb_internal test-flutter-native --package frb_example--flutter_via_create --flutter-test-args "--device-id host.docker.internal:5555"'
+```
+
+`docker exec --android-emulator-adb` first runs `adb connect host.docker.internal:5555` inside the container, then runs the requested command with the Android SDK x86_64 runtime library path set. Override the default endpoint with `--android-emulator-adb-host`, `--android-emulator-adb-port`, `FRB_ANDROID_EMULATOR_ADB_HOST`, or `FRB_ANDROID_EMULATOR_ADB_PORT`.
+
+### Why Emulator Does Not Use Host ADB Server
+
+Do not use a host ADB server for host emulator full Flutter integration tests. Flutter creates dynamic VM service `adb forward` ports where the ADB server runs. If the ADB server runs on the host, those forwarded ports bind on host `127.0.0.1`, but Flutter is running inside Docker and then tries Docker-local `127.0.0.1`. This fails with DDS or VM service connection refused errors.
+
+Use `--android-emulator-adb` so the ADB server and the forwarded VM service port both live inside Docker.
+
+### Security And Cleanup
+
+- Use a single Android target when possible. With multiple emulators or devices, always pass `--device-id <serial>` through `--flutter-test-args`.
+- For host emulator Flutter integration tests, use `--android-emulator-adb` so `adb forward` creates VM service forwarding inside Docker.
+- Do not run the Android Emulator inside Tart. Do not rely on Docker nested virtualization for Android emulator runtime checks on macOS.
+- If the Docker image lacks Android SDK, NDK, or build-tools packages required by Flutter Android builds, update the FRB Docker image or mount a dedicated Android SDK into the container; do not install host Flutter or Gradle just to work around the missing container toolchain.
 
 ## Tart
 
