@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Verify that the per-worktree FRB Docker development container can run the normal headless local validation surface: Rust tests, Dart native tests, Dart web tests, and the internal development entrypoint. This test also records that Docker is not the Android emulator, iOS Simulator, or macOS GUI runtime strategy.
+Verify that the per-worktree FRB Docker development container can run the normal headless local validation surface: Rust tests, Dart native tests, Dart web tests, Flutter web tests, and the internal development entrypoint. This test also records that Docker is not the Android emulator, iOS Simulator, or macOS GUI runtime strategy.
 
 ## Source
 
@@ -19,6 +19,7 @@ Run this after changing the FRB Docker image, devcontainer setup, per-worktree D
 - Required checkout state: clean checkout with submodules initialized. Intentional local changes are allowed only if the execution record lists them.
 - Required credentials or account state: Docker must be able to pull or use the configured FRB development image. Docker Hub credentials are required only if the local setup needs authenticated pulls.
 - Required device or simulator state: none. This test does not require Android devices, Android emulators, iOS simulators, or desktop GUI sessions.
+- Required browser driver state: Flutter web drive coverage requires a compatible `chromedriver` on `PATH` and a headless WebDriver setup for the container architecture. The Docker image must provide this for both amd64 and arm64 local containers.
 
 ## Environment
 
@@ -27,7 +28,7 @@ Run this after changing the FRB Docker image, devcontainer setup, per-worktree D
 - Dart: record `dart --version` inside the Docker container.
 - Rust: record `rustc --version` and `cargo --version` inside the Docker container.
 - Device or simulator: not required.
-- Browser or external service: record the Chrome or Chromium version used by the container for headless web tests.
+- Browser or external service: record the Chrome or Chromium version and ChromeDriver version used by the container for headless web tests.
 
 ## Preparation
 
@@ -65,6 +66,7 @@ Confirm the container can run commands at the host-like worktree path.
    rustc --version
    cargo --version
    "${CHROME_BIN:-google-chrome}" --version || chromium --version || chromium-browser --version
+   chromedriver --version
    '
    ```
 
@@ -86,7 +88,13 @@ Confirm the container can run commands at the host-like worktree path.
    .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- ./frb_internal test-dart-web --package frb_example/pure_dart
    ```
 
-5. Confirm the checkout did not gain unexpected generated or cache files.
+5. Run a focused Flutter web coverage test in Docker.
+
+   ```bash
+   .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- ./frb_internal test-flutter-web --package frb_example/flutter_via_create --coverage
+   ```
+
+6. Confirm the checkout did not gain unexpected generated or cache files.
 
    ```bash
    git status --short
@@ -100,6 +108,7 @@ The Docker environment coverage test passes when every command exits successfull
 ./frb_internal test-rust-package --package frb_rust
 ./frb_internal test-dart-native --package frb_dart
 ./frb_internal test-dart-web --package frb_example/pure_dart
+./frb_internal test-flutter-web --package frb_example/flutter_via_create --coverage
 ```
 
 ## Failure Criteria
@@ -108,8 +117,9 @@ The test fails if any of the following happens:
 
 - Docker is unavailable, the per-worktree container cannot be created, or the container labels do not match the current worktree.
 - Any required tool version command fails inside the container.
-- The Rust, Dart native, or Dart web test command exits non-zero unexpectedly.
-- The Dart web test requires a visible GUI session instead of running in a headless browser.
+- The Rust, Dart native, Dart web, or Flutter web test command exits non-zero because Docker, browser startup, package setup, toolchain availability, or local environment plumbing failed.
+- The Dart or Flutter web test requires a visible GUI session instead of running in a headless browser.
+- The Flutter web drive command fails with `Unable to start a WebDriver session` because no compatible `chromedriver` is available.
 - `git status --short` shows unexpected local changes after the run.
 
 The test is blocked, not failed, if the Docker image cannot be pulled because of network or registry access.
@@ -118,14 +128,14 @@ The test is blocked, not failed, if the Docker image cannot be pulled because of
 
 - Full terminal log for all preparation and test commands.
 - Host OS, Docker version, container image, and container name from `docker info`.
-- Flutter, Dart, Rust, Cargo, and browser versions inside the container.
+- Flutter, Dart, Rust, Cargo, browser, and ChromeDriver versions inside the container.
 - Final `git status --short` output.
 
 ## Troubleshooting
 
 - If submodules are uninitialized, rerun `git submodule update --init --recursive` and record the output.
 - If the container is missing or stopped, rerun `.claude/skills/frb-dev-env/frb_dev_env.py docker create` and record the helper output.
-- If Chrome or Chromium cannot start, record the browser command, browser version, and whether the web test log mentions sandbox flags.
+- If Chrome, Chromium, or ChromeDriver cannot start, record the command, version, container architecture, and whether the web test log mentions sandbox flags.
 - If dependency downloads fail, record the failed URL or package source without adding secrets.
 - If a generated file changes, record the exact `git status --short` output and inspect whether the tested command intentionally regenerated it.
 
