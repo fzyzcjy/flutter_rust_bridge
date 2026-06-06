@@ -21,7 +21,7 @@ env:
   FRB_RUSTFMT_NIGHTLY_VERSION: nightly-2025-02-01
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  group: ${{ github.workflow }}-${{ github.event.pull_request.head.repo.full_name || github.repository }}-${{ github.head_ref || github.ref }}
   cancel-in-progress: true
 
 jobs:
