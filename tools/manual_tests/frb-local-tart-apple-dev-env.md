@@ -89,7 +89,7 @@ Confirm the VM can see the mounted worktree and prepare the VM-local copy used f
 4. Boot the selected iOS Simulator and wait for it to finish booting.
 
    ```bash
-   .claude/skills/frb-dev-env/frb_dev_env.py tart exec -- xcrun simctl boot <UDID>
+   .claude/skills/frb-dev-env/frb_dev_env.py tart exec -- bash -lc 'xcrun simctl boot <UDID> || true'
    .claude/skills/frb-dev-env/frb_dev_env.py tart exec -- xcrun simctl bootstatus <UDID> -b
    ```
 
@@ -159,7 +159,7 @@ The test is blocked, not failed, if the host does not support Tart virtualizatio
 The per-worktree Tart VM may be kept for future local FRB Apple-platform development. Shutdown the selected simulator if it should not remain booted.
 
 ```bash
-.claude/skills/frb-dev-env/frb_dev_env.py tart exec -- xcrun simctl shutdown <UDID>
+.claude/skills/frb-dev-env/frb_dev_env.py tart exec -- bash -lc 'xcrun simctl shutdown <UDID> || true'
 git status --short
 .claude/skills/frb-dev-env/frb_dev_env.py tart info
 ```
