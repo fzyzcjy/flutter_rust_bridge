@@ -1,3 +1,4 @@
+@TestOn('vm')
 import 'package:flutter_rust_bridge/src/loader/_io.dart';
 import 'package:test/test.dart';
 
