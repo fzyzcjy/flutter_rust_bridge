@@ -748,7 +748,7 @@ jobs:
 
   test_dart_web:
     if: ${{ github.event.action != 'closed' }}
-    name: 'Test :: Dart :: Web'
+    name: "Test :: Dart :: Web (${{ matrix.wasm && 'dart2wasm' || 'dart2js' }} / ${{ matrix.package }})"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -759,6 +759,17 @@ jobs:
           - frb_example--pure_dart
           - frb_example--pure_dart_pde
           # no need for `frb_example--deliberate_bad`, `frb_example--dart_build_rs`
+        wasm: [false, true]
+        exclude:
+          # The custom example web harness currently compiles Dart to JavaScript.
+          # Keep dart2wasm scoped to package:test browser coverage until the
+          # harness grows a wasm loader.
+          - package: frb_example--dart_minimal
+            wasm: true
+          - package: frb_example--pure_dart
+            wasm: true
+          - package: frb_example--pure_dart_pde
+            wasm: true
 
     steps:
       # setup
@@ -804,7 +815,7 @@ jobs:
           wasm-bindgen --version | grep '0.2.100' || cargo +nightly-2025-02-01 install wasm-bindgen-cli --version 0.2.100 --locked --force
 
       # execute
-      - run: ./frb_internal test-dart-web --package ${{ matrix.package }}
+      - run: ./frb_internal test-dart-web --package ${{ matrix.package }} ${{ matrix.wasm && '--wasm' || '' }}
 
   test_dart_valgrind:
     if: ${{ github.event.action != 'closed' }}
@@ -1103,7 +1114,7 @@ jobs:
 
   test_flutter_web:
     if: ${{ github.event.action != 'closed' }}
-    name: 'Test :: Flutter :: Web'
+    name: "Test :: Flutter :: Web (${{ matrix.wasm && 'dart2wasm' || 'dart2js' }} / ${{ matrix.package }})"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -1113,6 +1124,7 @@ jobs:
           # no `frb_example--flutter_package--example` yet
           # no `frb_example--flutter_via_integrate` since it is similar to `flutter_via_create`
           - frb_example--gallery
+        wasm: [false, true]
 
     steps:
       - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
@@ -1152,12 +1164,13 @@ jobs:
           lsof -i :4444
 
       # execute
-      - run: ./frb_internal test-flutter-web --package ${{ matrix.package }} --coverage
+      - run: ./frb_internal test-flutter-web --package ${{ matrix.package }} ${{ matrix.wasm && '--wasm' || '--coverage' }}
 
       # report
-      - uses: actions/upload-artifact@v4
+      - if: ${{ !matrix.wasm }}
+        uses: actions/upload-artifact@v4
         with:
-          name: ${{ github.job }}--${{ matrix.package }}--coverage
+          name: ${{ github.job }}--${{ matrix.package }}--dart2js--coverage
           path: target/coverage
 
   # ----------------------------------- misc -----------------------------------

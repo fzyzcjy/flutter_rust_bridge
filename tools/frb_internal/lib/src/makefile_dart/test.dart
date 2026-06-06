@@ -105,8 +105,9 @@ class TestRustPackageConfig {
 class TestDartConfig {
   @CliOption(convert: convertConfigPackage)
   final String package;
+  final bool wasm;
 
-  const TestDartConfig({required this.package});
+  const TestDartConfig({required this.package, required this.wasm});
 }
 
 @CliOptions()
@@ -154,8 +155,13 @@ class TestFlutterWebConfig {
   @CliOption(convert: convertConfigPackage)
   final String package;
   final bool coverage;
+  final bool wasm;
 
-  const TestFlutterWebConfig({required this.package, required this.coverage});
+  const TestFlutterWebConfig({
+    required this.package,
+    required this.coverage,
+    required this.wasm,
+  });
 }
 
 Future<void> testMimicQuickstart() async =>
@@ -491,9 +497,13 @@ Future<void> testDartWeb(TestDartConfig config) async {
   final package = config.package;
   if (package == 'frb_dart') {
     await exec(
-      'dart test -p chrome',
+      'dart test -p chrome ${config.wasm ? "--compiler dart2wasm" : ""}',
       relativePwd: package,
       // extraEnv: kEnvEnableRustBacktrace,
+    );
+  } else if (config.wasm) {
+    throw UnsupportedError(
+      'Dart web wasm is currently only wired for package:test browser suites.',
     );
   } else {
     final features = getRustFeaturesOfPackage(config.package);
@@ -616,7 +626,9 @@ Future<void> flutterIntegrationTestRaw({
 Future<void> testFlutterWeb(TestFlutterWebConfig config) async {
   await _runFlutterDoctor();
   await runPubGetIfNotRunYet(config.package);
-  await _installDartCoverage();
+  if (config.coverage) {
+    await _installDartCoverage();
+  }
 
   final buildWebPackage = resolveBuildWebPackage(config.package);
   await executeFrbCodegen(
@@ -631,6 +643,7 @@ Future<void> testFlutterWeb(TestFlutterWebConfig config) async {
     '--driver=test_driver/integration_test.dart '
     '--target=integration_test/simple_test.dart '
     '-d web-server '
+    '${config.wasm ? '--wasm ' : ''}'
     '--verbose',
     relativePwd: config.package,
   );
