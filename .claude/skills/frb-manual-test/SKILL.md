@@ -59,3 +59,15 @@ If the execution result belongs to a PR, issue, release checklist, or other revi
 If the result belongs only in chat, still fill out the execution markdown locally and include its path in the chat response.
 
 Run cleanup from the manual test report before declaring the execution complete, unless cleanup is intentionally skipped and documented in the execution record.
+
+### Reviewable Workflow Gate
+
+Before creating or updating a PR, issue comment, release checklist, or any other reviewable artifact that cites a manual test execution:
+
+1. Fill out the execution markdown file locally.
+2. Upload that exact execution markdown file as a GitHub gist.
+3. Copy the gist URL into the execution markdown's `Execution markdown gist` field if practical.
+4. Link the gist URL in the reviewable artifact.
+5. Keep local artifact paths only as supplemental audit evidence; they are not a substitute for the gist.
+
+Do not say that a PR-linked manual test execution is complete while only providing local artifact paths. If gist upload or GitHub access fails, report the manual test execution as complete locally but the PR/update step as blocked until a gist URL can be created and linked.
