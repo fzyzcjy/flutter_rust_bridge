@@ -647,8 +647,19 @@ String resolveBuildWebPackage(String package) =>
     kBuildWebPackageReplacer[package] ?? package;
 
 Future<void> _runFlutterViaCreateWebQuickstartSmokeTest(String package) async {
+  const artifactDir = 'target/quickstart_smoke';
+  const screenshotPath = '$artifactDir/quickstart-web.png';
+  const preprocessedScreenshotPath =
+      '$artifactDir/quickstart-web-processed.png';
+  const ocrOutputPath = '$artifactDir/quickstart-web.txt';
+  const logPath = '$artifactDir/quickstart-web.log';
+
   final output = await exec(
     '''
+    set +e
+    mkdir -p "$artifactDir"
+    rm -f "$screenshotPath" "$preprocessedScreenshotPath" "$ocrOutputPath" "$logPath"
+
     if [ "\$(id -u)" = "0" ]; then
       chrome_wrapper="\$(mktemp)"
       trap 'rm -f "\$chrome_wrapper"' EXIT
@@ -661,7 +672,50 @@ Future<void> _runFlutterViaCreateWebQuickstartSmokeTest(String package) async {
     timeout 180 flutter run \\
       -d chrome \\
       --web-header=Cross-Origin-Opener-Policy=same-origin \\
-      --web-header=Cross-Origin-Embedder-Policy=require-corp
+      --web-header=Cross-Origin-Embedder-Policy=require-corp \\
+      > "$logPath" 2>&1 &
+    flutter_run_pid="\$!"
+
+    for _ in \$(seq 1 45); do
+      sleep 1
+      if grep -E 'DataCloneError|Failed to execute '\\''postMessage'\\'' on '\\''Worker'\\''|fail to create WorkerPool|Failed to initialize|WebAssembly\\.instantiate' "$logPath" >/dev/null 2>&1; then
+        break
+      fi
+      if ! kill -0 "\$flutter_run_pid" >/dev/null 2>&1; then
+        break
+      fi
+    done
+
+    import -window root "$screenshotPath" >/dev/null 2>&1
+    screenshot_exit="\$?"
+    if [ "\$screenshot_exit" -eq 0 ] && [ -s "$screenshotPath" ]; then
+      convert "$screenshotPath" -resize 300% -colorspace Gray -normalize "$preprocessedScreenshotPath" >/dev/null 2>&1
+      if [ ! -s "$preprocessedScreenshotPath" ]; then
+        cp "$screenshotPath" "$preprocessedScreenshotPath"
+      fi
+      tesseract "$preprocessedScreenshotPath" "$artifactDir/quickstart-web" >/dev/null 2>&1
+    fi
+
+    if kill -0 "\$flutter_run_pid" >/dev/null 2>&1; then
+      kill "\$flutter_run_pid" >/dev/null 2>&1
+    fi
+    wait "\$flutter_run_pid"
+    run_exit="\$?"
+
+    printf '\\n===== flutter run log =====\\n'
+    cat "$logPath"
+    if [ -f "$ocrOutputPath" ]; then
+      printf '\\n===== screenshot OCR =====\\n'
+      cat "$ocrOutputPath"
+    fi
+    if [ "\$screenshot_exit" -ne 0 ]; then
+      printf '\\nFailed to capture quickstart screenshot with exit code %s\\n' "\$screenshot_exit" >&2
+    fi
+
+    if [ "\$run_exit" -eq 143 ]; then
+      exit 124
+    fi
+    exit "\$run_exit"
     ''',
     relativePwd: package,
     checkExitCode: false,
@@ -683,10 +737,47 @@ Future<void> _runFlutterViaCreateWebQuickstartSmokeTest(String package) async {
     }
   }
 
+  final screenshotFile = File('$package/$screenshotPath');
+  if (!screenshotFile.existsSync() || screenshotFile.lengthSync() == 0) {
+    throw Exception(
+      'flutter_via_create web quickstart smoke test failed to capture '
+      'a screenshot at `$screenshotPath`',
+    );
+  }
+
+  final ocrOutputFile = File('$package/$ocrOutputPath');
+  if (!ocrOutputFile.existsSync()) {
+    throw Exception(
+      'flutter_via_create web quickstart smoke test did not produce OCR '
+      'output at `$ocrOutputPath`',
+    );
+  }
+  checkQuickstartSmokeOcrTextForTesting(ocrOutputFile.readAsStringSync());
+
   if (output.exitCode != 0 && output.exitCode != 124) {
     throw Exception(
       'flutter_via_create web quickstart smoke test failed with unexpected '
       'exit code ${output.exitCode}',
+    );
+  }
+}
+
+@visibleForTesting
+String normalizeQuickstartSmokeOcrTextForTesting(String text) => text
+    .toLowerCase()
+    .replaceAll(RegExp(r'[^a-z0-9]+'), ' ')
+    .replaceAll(RegExp(r'\s+'), ' ')
+    .trim();
+
+@visibleForTesting
+void checkQuickstartSmokeOcrTextForTesting(String text) {
+  final normalized = normalizeQuickstartSmokeOcrTextForTesting(text);
+  final hasExpectedText =
+      normalized.contains('hello') && normalized.contains('tom');
+  if (!hasExpectedText) {
+    throw Exception(
+      'flutter_via_create web quickstart smoke test screenshot OCR did not '
+      'contain expected text `Hello, Tom` (normalized OCR: `$normalized`)',
     );
   }
 }

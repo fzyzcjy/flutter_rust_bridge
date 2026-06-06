@@ -122,6 +122,37 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
     );
   });
 
+  test('quickstart smoke OCR normalization ignores punctuation', () {
+    expect(
+      normalizeQuickstartSmokeOcrTextForTesting(
+        'Action: Call Rust `greet("Tom")`\nResult: `Hello, Tom!`',
+      ),
+      'action call rust greet tom result hello tom',
+    );
+  });
+
+  test('quickstart smoke OCR accepts hello tom text', () {
+    expect(
+      () => checkQuickstartSmokeOcrTextForTesting('Result: `Hello, Tom!`'),
+      returnsNormally,
+    );
+  });
+
+  test('quickstart smoke OCR rejects unrelated text', () {
+    expect(
+      () => checkQuickstartSmokeOcrTextForTesting(
+        'Failed to initialize the application',
+      ),
+      throwsA(
+        isA<Exception>().having(
+          (exception) => exception.toString(),
+          'message',
+          contains('Hello, Tom'),
+        ),
+      ),
+    );
+  });
+
   group('git clean check', () {
     test('classifies git diff exit codes', () {
       expect(classifyGitDiffExitCodeForTesting(0), 'clean');

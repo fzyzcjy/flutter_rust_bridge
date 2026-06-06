@@ -1147,11 +1147,18 @@ jobs:
 
           sleep 15
           lsof -i :4444
+      - run: sudo apt-get update && sudo apt-get install -y imagemagick tesseract-ocr
 
       # execute
       - run: ./frb_internal test-flutter-web --package ${{ matrix.package }} --coverage
 
       # report
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ${{ github.job }}--${{ matrix.package }}--quickstart-smoke
+          path: frb_example/flutter_via_create/target/quickstart_smoke
+          if-no-files-found: warn
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ github.job }}--${{ matrix.package }}--coverage
