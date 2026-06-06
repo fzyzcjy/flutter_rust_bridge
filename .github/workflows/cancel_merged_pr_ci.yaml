@@ -1,0 +1,70 @@
+name: Cancel merged PR CI
+
+on:
+  pull_request_target:
+    types:
+      - closed
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  cancel_pr_ci:
+    name: Cancel merged PR CI
+    if: ${{ github.event.pull_request.merged == true }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Cancel queued and running PR CI
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const currentRunId = context.runId;
+            const headBranch = context.payload.pull_request.head.ref;
+            const headSha = context.payload.pull_request.head.sha;
+            const statuses = ['queued', 'in_progress', 'requested', 'waiting', 'pending'];
+            const runsToCancel = new Map();
+
+            for (const status of statuses) {
+              for await (const response of github.paginate.iterator(
+                github.rest.actions.listWorkflowRuns,
+                {
+                  owner,
+                  repo,
+                  workflow_id: 'ci.yaml',
+                  branch: headBranch,
+                  event: 'pull_request',
+                  status,
+                  per_page: 100,
+                },
+              )) {
+                const workflowRuns = response.data.workflow_runs ?? response.data;
+
+                for (const run of workflowRuns) {
+                  if (
+                    run.id !== currentRunId &&
+                    run.head_sha === headSha &&
+                    run.event === 'pull_request'
+                  ) {
+                    runsToCancel.set(run.id, run.html_url);
+                  }
+                }
+              }
+            }
+
+            if (runsToCancel.size === 0) {
+              core.info(`No queued or running PR CI runs found for ${headBranch}@${headSha}.`);
+              return;
+            }
+
+            for (const [runId, runUrl] of runsToCancel) {
+              core.info(`Cancelling ${runUrl}`);
+              await github.rest.actions.cancelWorkflowRun({
+                owner,
+                repo,
+                run_id: runId,
+              });
+            }
