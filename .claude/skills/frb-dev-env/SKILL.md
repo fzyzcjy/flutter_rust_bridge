@@ -60,6 +60,8 @@ frb.dev.layout-version=3
 
 Commands run from the host-like worktree path inside the container. There is intentionally no `/workspace` alias, because linked git worktrees and submodule gitdir references need the same path shape that they have on the host.
 
+When creating a new per-worktree container, the helper pulls the selected Docker image before `docker run`. Existing containers are validated and reused without pulling.
+
 Typical usage:
 
 ```bash

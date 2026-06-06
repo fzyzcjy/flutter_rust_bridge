@@ -473,10 +473,16 @@ def validate_existing_container(*, container_name: str, worktree_root: Path) -> 
         )
 
 
+def pull_image(*, image: str) -> None:
+    typer.echo(f"Pulling Docker image {image}", err=True)
+    exec_command(["docker", "pull", image])
+
+
 def ensure_container(*, worktree_root: Path, image: str) -> str:
     container_name = container_name_for_worktree(worktree_root=worktree_root)
 
     if container_id_for_name(container_name=container_name) is None:
+        pull_image(image=image)
         exec_command(
             [
                 "docker",
