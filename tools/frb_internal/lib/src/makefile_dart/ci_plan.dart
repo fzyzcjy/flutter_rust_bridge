@@ -382,6 +382,11 @@ class CiFilterSpec {
     }
 
     final body = original.substring(bracketStart + 1, original.length - 1);
+    if (body.trim().isEmpty) {
+      throw FormatException(
+        'CI filter `$original` does not specify matrix filters.',
+      );
+    }
     final filters = <String, Set<String>>{};
     for (final rawCondition in _splitTopLevel(body, ',')) {
       final condition = rawCondition.trim();
