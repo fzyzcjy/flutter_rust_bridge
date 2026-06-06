@@ -499,7 +499,7 @@ Future<void> testDartWeb(TestDartConfig config) async {
     await exec(
       'dart test -p chrome ${config.wasm ? "--compiler dart2wasm" : ""}',
       relativePwd: package,
-      // extraEnv: kEnvEnableRustBacktrace,
+      extraEnv: await _dartTestChromeExtraEnv(),
     );
   } else if (config.wasm) {
     throw UnsupportedError(
@@ -513,6 +513,25 @@ Future<void> testDartWeb(TestDartConfig config) async {
       // extraEnv: kEnvEnableRustBacktrace,
     );
   }
+}
+
+Future<Map<String, String>?> _dartTestChromeExtraEnv() async {
+  final customChromeExecutable = Platform.environment['CHROME_EXECUTABLE'];
+  if (customChromeExecutable != null && customChromeExecutable.isNotEmpty) {
+    return null;
+  }
+  if (!File('/.dockerenv').existsSync()) return null;
+
+  final wrapper = File(
+    '${Directory.systemTemp.path}/frb-dart-test-chrome-no-sandbox.sh',
+  );
+  wrapper.writeAsStringSync('''
+#!/bin/sh
+exec /usr/bin/google-chrome --no-sandbox --disable-setuid-sandbox "\$@"
+''');
+  await exec('chmod 755 ${wrapper.path}');
+
+  return {'CHROME_EXECUTABLE': wrapper.path};
 }
 
 /// ref https://github.com/dart-lang/sdk/blob/master/runtime/tools/valgrind.py
