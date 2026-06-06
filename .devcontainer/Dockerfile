@@ -55,28 +55,13 @@ RUN if [ "$(dpkg --print-architecture)" = "arm64" ]; then \
             > /etc/apt/sources.list.d/ubuntu-amd64.sources \
         && apt-get update && apt-get install -y \
             libc6:amd64 \
-            libasound2t64:amd64 \
-            libatk-bridge2.0-0:amd64 \
-            libatk1.0-0:amd64 \
-            libatspi2.0-0:amd64 \
-            libcairo2:amd64 \
-            libcups2:amd64 \
             libdbus-1-3:amd64 \
-            libdrm2:amd64 \
-            libgbm1:amd64 \
+            libgcc-s1:amd64 \
             libglib2.0-0:amd64 \
             libnspr4:amd64 \
             libnss3:amd64 \
-            libpango-1.0-0:amd64 \
             libstdc++6:amd64 \
-            libx11-6:amd64 \
             libxcb1:amd64 \
-            libxcomposite1:amd64 \
-            libxdamage1:amd64 \
-            libxext6:amd64 \
-            libxfixes3:amd64 \
-            libxkbcommon0:amd64 \
-            libxrandr2:amd64 \
             zlib1g:amd64 \
         && rm -rf /var/lib/apt/lists/*; \
     fi
