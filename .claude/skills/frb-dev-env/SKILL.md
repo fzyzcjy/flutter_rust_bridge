@@ -11,7 +11,7 @@ Use this skill before setting up, diagnosing, or running `flutter_rust_bridge` c
 
 Use Docker for normal FRB development checks that fit Linux containers: Rust tests, Dart tests, web tests, code generation, lint, Android build checks that do not need a running emulator, and most `./frb_internal` commands. Docker is the default reproducible baseline when local host toolchains are missing or suspected to have drifted.
 
-Use a host Android Emulator plus a host ADB server for local Android runtime validation when a running Android device is required. Keep FRB, Flutter, Rust, Gradle, and Android build tooling inside Docker; the host should only provide the emulator runtime and the ADB server that manages it. See the Android section below.
+Use a host Android device or Android Emulator plus a host ADB server for local Android runtime validation when a running Android target is required. Keep FRB, Flutter, Rust, Gradle, and Android build tooling inside Docker; the host should only provide the Android runtime target and the ADB server that manages it. See the Android section below.
 
 Use Tart only for checks that need macOS and Xcode, especially iOS Simulator validation. The Tart workflow is intentionally separate from Docker; it gives each worktree a reusable macOS VM cloned from a prepared base VM, then runs FRB commands inside that VM.
 
@@ -82,13 +82,13 @@ The delete command validates the container labels before removing it. Use `--for
 
 Use the project `frb-docker` skill for image, devcontainer, and Dockerfile details.
 
-## Android Host Emulator
+## Android Host Runtime
 
-Use this workflow for local Android runtime checks when Docker can build and run the FRB/Flutter command, but the Android Emulator itself must run on the host for hardware virtualization support. The recommended split is:
+Use this workflow for local Android runtime checks when Docker can build and run the FRB/Flutter command, but the Android device or emulator must be managed by the host. The recommended split is:
 
 ```text
 host:
-  Android Emulator
+  Android phone or Android Emulator
   ADB server bound to a host TCP port
 
 Docker container:
@@ -98,9 +98,15 @@ Docker container:
   ADB client connected to the host ADB server
 ```
 
-The host does not need FRB, Flutter, Rust, or Gradle for this workflow. It only needs enough Android SDK components to create and boot the emulator, plus `platform-tools/adb` to run the host ADB server.
+The host does not need FRB, Flutter, Rust, or Gradle for this workflow.
 
-Use the standard Android Studio host locations. On macOS this is typically `~/Library/Android/sdk` for the SDK and `~/.android/avd` for emulator images. If `ANDROID_HOME` is already set, the helper uses it; otherwise it falls back to `~/Library/Android/sdk`.
+For a physical Android phone, the host only needs `adb` and USB debugging authorization. Start the host ADB server that Docker can reach:
+
+```bash
+.claude/skills/frb-dev-env/frb_dev_env.py android adb-server
+```
+
+For an Android Emulator, first read the project `frb-android-emulator-prepare` skill. The emulator path needs Java, Android SDK command-line tools, emulator packages, a system image, and an AVD in the standard Android Studio host locations. After that setup, print the resolved host Android SDK environment if needed:
 
 ```bash
 .claude/skills/frb-dev-env/frb_dev_env.py android env
@@ -112,7 +118,7 @@ Start the emulator on the host. Pin the port when you want a stable serial such 
 .claude/skills/frb-dev-env/frb_dev_env.py android emulator --avd FRB_API_35 --port 5554
 ```
 
-Start an ADB server on the host that Docker can reach. Keep this as a foreground process so it is easy to stop after validation:
+If the ADB server is not already running in Docker-reachable mode, start it on the host. Keep this as a foreground process so it is easy to stop after validation:
 
 ```bash
 .claude/skills/frb-dev-env/frb_dev_env.py android adb-server
@@ -142,7 +148,7 @@ exec /path/to/real/adb -H host.docker.internal -P 5037 "$@"
 Security and reliability notes:
 
 - Exposing ADB on `0.0.0.0:5037` should only be used on trusted local networks or with local firewall restrictions. Stop the foreground ADB server when the Android check is done.
-- Use a single emulator when possible. With multiple emulators or devices, always pass `--device-id <serial>` through `--flutter-test-args`.
+- Use a single Android target when possible. With multiple emulators or devices, always pass `--device-id <serial>` through `--flutter-test-args`.
 - Do not run the Android Emulator inside Tart. Do not rely on Docker nested virtualization for Android emulator runtime checks on macOS.
 - If the Docker image lacks Android SDK, NDK, or build-tools packages required by Flutter Android builds, update the FRB Docker image or mount a dedicated Android SDK into the container; do not install host Flutter or Gradle just to work around the missing container toolchain.
 

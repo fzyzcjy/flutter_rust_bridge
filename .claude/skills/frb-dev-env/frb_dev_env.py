@@ -192,6 +192,25 @@ def android_host_env() -> dict[str, str]:
     return env
 
 
+def android_adb_env() -> dict[str, str]:
+    env = dict(os.environ)
+    resolved_android_home = env_path("ANDROID_HOME")
+    if resolved_android_home is None:
+        resolved_android_home = DEFAULT_MACOS_ANDROID_HOME.expanduser().resolve()
+
+    if resolved_android_home.exists():
+        env["ANDROID_HOME"] = str(resolved_android_home)
+        env["ANDROID_SDK_ROOT"] = str(resolved_android_home)
+        env["PATH"] = os.pathsep.join(
+            [
+                str(resolved_android_home / "platform-tools"),
+                env.get("PATH", ""),
+            ]
+        )
+
+    return env
+
+
 def env_path(name: str) -> Path | None:
     value = os.environ.get(name)
     if value is None or value == "":
@@ -271,7 +290,7 @@ def android_adb_server(
 ) -> None:
     """Start a foreground host ADB server that Docker can reach."""
 
-    env = android_host_env()
+    env = android_adb_env()
     if kill_existing:
         exec_command(["adb", "kill-server"], env=env)
 
