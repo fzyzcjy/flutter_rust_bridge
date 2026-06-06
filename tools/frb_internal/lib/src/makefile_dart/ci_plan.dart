@@ -43,15 +43,7 @@ class CiPlanCommand extends Command<void> {
     );
     final githubOutputPath = argResults!['github-output'] as String?;
 
-    final outputLines = <String>[];
-    for (final job in kCiJobs) {
-      outputLines.add('${job.id}=${plan.enabledJobs.contains(job.id)}');
-      if (job.matrix != null) {
-        outputLines.add(
-          '${job.id}_matrix=${jsonEncode(plan.matrixByJob[job.id])}',
-        );
-      }
-    }
+    final outputLines = ['plan=${jsonEncode(plan.toJson())}'];
 
     if (githubOutputPath != null) {
       File(githubOutputPath).writeAsStringSync('${outputLines.join('\n')}\n');
@@ -125,6 +117,11 @@ class CiPlan {
         if (job.matrix != null) job.id: {'include': job.matrix!.entries},
     },
   );
+
+  Map<String, Object?> toJson() => {
+    'jobs': {for (final job in kCiJobs) job.id: enabledJobs.contains(job.id)},
+    'matrices': matrixByJob,
+  };
 }
 
 class CiJob {
