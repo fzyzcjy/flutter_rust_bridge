@@ -180,6 +180,24 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
     );
   });
 
+  test('quickstart smoke detects web worker startup failures', () {
+    expect(
+      quickstartSmokeOutputFailurePatternForTesting(
+        'DataCloneError: Failed to execute postMessage',
+      ),
+      'DataCloneError',
+    );
+  });
+
+  test('quickstart smoke ignores unrelated Android graphics warnings', () {
+    expect(
+      quickstartSmokeOutputFailurePatternForTesting(
+        'W/HWUI: Failed to initialize 101010-2 format, error = EGL_SUCCESS',
+      ),
+      isNull,
+    );
+  });
+
   test('quickstart smoke OCR rejects unrelated text', () {
     expect(
       () => checkQuickstartSmokeOcrTextForTesting(
