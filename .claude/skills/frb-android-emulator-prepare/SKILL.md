@@ -5,14 +5,11 @@ description: Use when preparing, installing, diagnosing, or explaining the host 
 
 # FRB Android Emulator Preparation
 
-Use this skill when a task requires a **host Android Emulator** for FRB local runtime validation. Do not use this skill for a physical Android phone that is already visible to `adb`; that path usually only needs host `adb` plus `frb-dev-env docker exec --android-host-adb`.
+Use this skill when a task requires a **host Android Emulator** for FRB local runtime validation.
 
 ## Boundary
 
-FRB Android runtime validation has two separate host paths:
-
-- **Physical Android device**: host needs `adb`; Docker runs FRB/Flutter commands through the host ADB server.
-- **Android Emulator**: host needs Java, Android SDK command-line tools, `emulator`, a system image, and an AVD; Docker runs FRB/Flutter commands through a Docker-local ADB server connected to the emulator TCP endpoint.
+FRB Android runtime validation currently supports a host Android Emulator path: host needs Java, Android SDK command-line tools, `emulator`, a system image, and an AVD; Docker runs FRB/Flutter commands through a Docker-local ADB server connected to the emulator TCP endpoint.
 
 Do not install Android Emulator packages unless the user has explicitly asked to prepare or run an emulator. Installing the emulator changes host state and downloads large SDK packages.
 
@@ -50,8 +47,6 @@ ls -ld "$HOME/Library/Android/sdk" "$HOME/.android" "$HOME/.android/avd" 2>/dev/
 which java || true
 java -version || true
 ```
-
-If a physical phone is enough for the task and `adb devices -l` shows it, do not prepare an emulator.
 
 If the task requires an emulator, record whether these tools already exist:
 
@@ -183,23 +178,13 @@ Only after both ADB checks pass, run an FRB Android runtime command. Use the Doc
   bash -lc './frb_internal test-flutter-native --package frb_example--flutter_via_create --flutter-test-args "--device-id host.docker.internal:5555"'
 ```
 
-For a physical Android phone, use the separate host ADB server path from `frb-dev-env`:
-
-```bash
-.claude/skills/frb-dev-env/frb_dev_env.py android adb-server
-.claude/skills/frb-dev-env/frb_dev_env.py docker exec --android-host-adb -- \
-  adb devices -l
-```
-
 ## Common Failures
 
-- `adb ... could not install *smartsocket* listener: Operation not permitted`: the sandbox may block starting a host ADB server. Retry the ADB command with approved host execution, or run it manually in a normal terminal.
 - `Android SDK root does not exist`: install Android Studio or command-line tools into `~/Library/Android/sdk`, or set `ANDROID_HOME`.
 - `emulator: command not found`: install the SDK `emulator` package and ensure `~/Library/Android/sdk/emulator` is on `PATH`.
 - No AVD found: create `FRB_API_35` with `avdmanager create avd`, or pass the existing AVD name to `android emulator --avd`.
 - Docker cannot see the host emulator through `--android-emulator-adb`: verify the host emulator is running on console port `5554`, verify host `adb devices -l` shows `emulator-5554`, then run `adb connect host.docker.internal:5555` inside Docker or retry the helper command.
-- Docker cannot see a physical device through host ADB: ensure host ADB server was started with `adb -a -L tcp:5037 server nodaemon`, then verify `host.docker.internal:5037` from the container. Recent ADB versions may reject `tcp:0.0.0.0:5037` with `listening on specified hostname currently unsupported`; use `tcp:5037` with `-a` instead.
-- Flutter integration test fails with a VM service or DDS connection refused on `127.0.0.1`: the command likely used `--android-host-adb` against an emulator. Use `--android-emulator-adb` so `adb forward` binds inside Docker.
+- Flutter integration test fails with a VM service or DDS connection refused on `127.0.0.1`: the command likely used a host ADB server against an emulator. Use `--android-emulator-adb` so `adb forward` binds inside Docker.
 
 ## Cleanup
 
@@ -209,4 +194,4 @@ Stop the emulator from host ADB:
 adb -s emulator-5554 emu kill
 ```
 
-If a separate physical-device host ADB server was started, stop the foreground `android adb-server` command with `Ctrl-C`. Avoid deleting SDK packages or AVDs unless the user explicitly asks.
+Avoid deleting SDK packages or AVDs unless the user explicitly asks.

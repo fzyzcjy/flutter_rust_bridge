@@ -21,14 +21,12 @@ app = typer.Typer(no_args_is_help=True)
 android_app = typer.Typer(no_args_is_help=True)
 docker_app = typer.Typer(no_args_is_help=True)
 tart_app = typer.Typer(no_args_is_help=True)
-app.add_typer(android_app, name="android", help="Manage host Android emulator and ADB commands.")
+app.add_typer(android_app, name="android", help="Manage host Android emulator commands.")
 app.add_typer(docker_app, name="docker", help="Manage the per-worktree Docker development container.")
 app.add_typer(tart_app, name="tart", help="Manage the per-worktree Tart macOS VM.")
 
 DEFAULT_IMAGE = "fzyzcjy/flutter_rust_bridge_dev:latest"
 DEFAULT_TART_BASE_VM = "frb-tart-base"
-DEFAULT_ANDROID_ADB_SERVER_HOST = "host.docker.internal"
-DEFAULT_ANDROID_ADB_SERVER_PORT = 5037
 DEFAULT_ANDROID_EMULATOR_PORT = 5554
 DEFAULT_ANDROID_EMULATOR_ADB_HOST = "host.docker.internal"
 DEFAULT_MACOS_ANDROID_HOME = Path("~/Library/Android/sdk")
@@ -141,27 +139,6 @@ def get_image(image: str | None) -> str:
     return os.environ.get("FRB_DOCKER_IMAGE", DEFAULT_IMAGE)
 
 
-def get_android_adb_server_host(host: str | None) -> str:
-    if host is not None:
-        return host
-
-    return os.environ.get("FRB_ANDROID_ADB_SERVER_HOST", DEFAULT_ANDROID_ADB_SERVER_HOST)
-
-
-def get_android_adb_server_port(port: int | None) -> int:
-    if port is not None:
-        return port
-
-    value = os.environ.get("FRB_ANDROID_ADB_SERVER_PORT")
-    if value is None:
-        return DEFAULT_ANDROID_ADB_SERVER_PORT
-
-    try:
-        return int(value)
-    except ValueError as error:
-        raise CommandError(f"FRB_ANDROID_ADB_SERVER_PORT must be an integer: {value}") from error
-
-
 def get_android_emulator_adb_host(host: str | None) -> str:
     if host is not None:
         return host
@@ -212,32 +189,6 @@ def android_host_env() -> dict[str, str]:
     env["PATH"] = os.pathsep.join([*(str(path) for path in path_prefix), env.get("PATH", "")])
 
     return env
-
-
-def android_adb_env() -> dict[str, str]:
-    env = dict(os.environ)
-    resolved_android_home = env_path("ANDROID_HOME")
-    if resolved_android_home is None:
-        resolved_android_home = DEFAULT_MACOS_ANDROID_HOME.expanduser().resolve()
-
-    if resolved_android_home.exists():
-        env["ANDROID_HOME"] = str(resolved_android_home)
-        env["ANDROID_SDK_ROOT"] = str(resolved_android_home)
-        env["PATH"] = os.pathsep.join(
-            [
-                str(resolved_android_home / "platform-tools"),
-                env.get("PATH", ""),
-            ]
-        )
-
-    return env
-
-
-def android_adb_listen_socket(*, bind_address: str | None, port: int) -> str:
-    if bind_address is None or bind_address == "" or bind_address == "0.0.0.0":
-        return f"tcp:{port}"
-
-    return f"tcp:{bind_address}:{port}"
 
 
 def env_path(name: str) -> Path | None:
@@ -299,43 +250,6 @@ def android_emulator(
             *(emulator_args or []),
         ],
         env=android_host_env(),
-    )
-
-
-@android_app.command(name="adb-server")
-def android_adb_server(
-    bind_address: Annotated[
-        str | None,
-        typer.Option(
-            "--bind-address",
-            help="Optional host address for the ADB server listen socket. Defaults to all interfaces via adb -a.",
-        ),
-    ] = None,
-    port: Annotated[
-        int,
-        typer.Option("--port", help="Host ADB server port for Docker clients."),
-    ] = DEFAULT_ANDROID_ADB_SERVER_PORT,
-    kill_existing: Annotated[
-        bool,
-        typer.Option("--kill-existing/--no-kill-existing", help="Kill any existing ADB server before starting this one."),
-    ] = True,
-) -> None:
-    """Start a foreground host ADB server that Docker can reach."""
-
-    env = android_adb_env()
-    if kill_existing:
-        exec_command(["adb", "kill-server"], env=env)
-
-    exec_command(
-        [
-            "adb",
-            "-a",
-            "-L",
-            android_adb_listen_socket(bind_address=bind_address, port=port),
-            "server",
-            "nodaemon",
-        ],
-        env=env,
     )
 
 
@@ -725,15 +639,6 @@ def ensure_container(*, worktree_root: Path, image: str) -> str:
     return container_name
 
 
-def android_host_adb_env(*, host: str, port: int) -> dict[str, str]:
-    return {
-        "ADB_SERVER_SOCKET": f"tcp:{host}:{port}",
-        "ANDROID_ADB_SERVER_ADDRESS": host,
-        "ANDROID_ADB_SERVER_PORT": str(port),
-        **android_linux_x86_64_env(),
-    }
-
-
 def android_linux_x86_64_env() -> dict[str, str]:
     return {
         "LD_LIBRARY_PATH": ANDROID_LINUX_X86_64_LIBRARY_PATH,
@@ -921,22 +826,10 @@ def exec_in_container(
         str | None,
         typer.Option("--image", help="Docker image. Defaults to FRB_DOCKER_IMAGE or the published FRB dev image."),
     ] = None,
-    android_host_adb: Annotated[
-        bool,
-        typer.Option("--android-host-adb", help="Connect Docker-side ADB clients to the host Android ADB server."),
-    ] = False,
     android_emulator_adb: Annotated[
         bool,
         typer.Option("--android-emulator-adb", help="Connect Docker-side ADB to the host Android Emulator TCP endpoint."),
     ] = False,
-    android_adb_server_host: Annotated[
-        str | None,
-        typer.Option("--android-adb-server-host", help="Host ADB server address for --android-host-adb."),
-    ] = None,
-    android_adb_server_port: Annotated[
-        int | None,
-        typer.Option("--android-adb-server-port", help="Host ADB server port for --android-host-adb."),
-    ] = None,
     android_emulator_adb_host: Annotated[
         str | None,
         typer.Option("--android-emulator-adb-host", help="Host emulator ADB endpoint for --android-emulator-adb."),
@@ -951,9 +844,6 @@ def exec_in_container(
     if not command:
         raise typer.BadParameter("exec requires a command, for example: exec -- bash -lc './frb_internal --help'")
 
-    if android_host_adb and android_emulator_adb:
-        raise typer.BadParameter("--android-host-adb and --android-emulator-adb use different ADB servers; choose one")
-
     resolved_worktree_root = resolve_worktree_root(worktree_root=worktree_root)
     container_name = ensure_container(
         worktree_root=resolved_worktree_root,
@@ -965,13 +855,6 @@ def exec_in_container(
         exec_flags = ["-it"]
 
     env: dict[str, str] = {}
-    if android_host_adb:
-        env.update(
-            android_host_adb_env(
-                host=get_android_adb_server_host(host=android_adb_server_host),
-                port=get_android_adb_server_port(port=android_adb_server_port),
-            )
-        )
     if android_emulator_adb:
         env.update(android_linux_x86_64_env())
         connect_docker_to_android_emulator(
