@@ -14,6 +14,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/cargokit_sync.dar
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_apple_scaffold.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/integrate_diff_exclusions.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/pubspec_normalizer.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
@@ -509,6 +510,10 @@ Future<void> _wrapMaybeSetExitIfChanged(
   );
 }
 
+Future<void> _normalizeGeneratedOutputBeforeDiff() async {
+  normalizePubspecs(repoRootPath: exec.pwd!, packages: kDartModeOfPackage.keys);
+}
+
 Future<void> wrapMaybeSetExitIfChangedRaw(
   bool enable,
   Future<void> Function() inner, {
@@ -521,6 +526,7 @@ Future<void> wrapMaybeSetExitIfChangedRaw(
     phase: _GitDiffPhase.before,
   );
   await inner();
+  await _normalizeGeneratedOutputBeforeDiff();
   // The real check
   await _maybeSetExitIfChanged(
     enable,

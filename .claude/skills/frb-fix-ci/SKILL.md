@@ -32,6 +32,10 @@ Use this order before diving into individual failure types:
 
 Do not answer from stale CI state. Read the latest relevant run or job information first.
 
+### Temporary CI Narrowing
+
+When CI feedback is slow and only one job family matters for the current investigation, read `frb-narrow-ci` before temporarily narrowing `.github/workflows/ci.yaml` or related workflow configuration.
+
 ## Quick Reference
 
 | Symptom | Fix |
@@ -311,6 +315,7 @@ In that situation:
 - Continuing package-by-package `Generate` sync commits after two similar generated Dart drifts, instead of escalating to clean remote `precommit-generate`
 - Fixing downstream build/test jobs before upstream generate/integrate/high-relevance generate-internal stages are stable
 - Answering from stale CI state instead of reading the latest relevant run or job information first
+- Forgetting to revert temporary workflow narrowing before treating the PR as ready
 
 ## Related Skills
 

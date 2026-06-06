@@ -22,6 +22,12 @@ For example, `./frb_internal precommit --mode fast` (or `--mode slow`) runs code
 If generated or normalized files are missing from a pull request, the `Precommit Autofix` bot comment explains how to apply its patch artifact locally.
 For fork pull requests, a follow-up trusted workflow posts the comment after the patch workflow completes, as the latter runs with read-only permissions.
 
+### Temporarily narrow CI while iterating
+
+When a PR needs several quick CI iterations, it is fine to temporarily make unrelated jobs not trigger, for example by adding an always-false `if` guard or otherwise narrowing the workflow to the jobs you are actively debugging.
+Keep this as a separate temporary commit whenever possible, and revert it before the PR is ready for review or merge.
+The final PR should run the normal CI surface again, so reviewers can trust that the broad matrix was not accidentally bypassed.
+
 ### The `just codegen`
 
 To run the `flutter_rust_bridge_codegen`, but using the local code (instead of a released version),
