@@ -54,6 +54,8 @@ Always fill out an execution markdown file before summarizing the result. Do not
 
 Execution markdown is a run artifact, not a repository test definition. Do not create it under `tools/manual_tests/` or anywhere else inside the `flutter_rust_bridge` repository. Put it in an external artifacts location such as `/private/tmp`, `~/main/artifacts/flutter_rust_bridge/`, or another run-specific artifact directory.
 
+Execution markdown must contain precise, audit-ready evidence that proves what ran and why it passed, failed, or blocked. Include the exact commands, exit status, key success or failure log lines, relevant version output, selected device or simulator identifiers, generated artifact paths, final cleanup state, and links or paths to complete logs. For successful runs, quote or summarize the concrete pass indicators such as `All tests passed!`, `test result: ok`, artifact paths, simulator UDIDs, or final `git status --short` output. Avoid vague summaries like "worked", "passed", or "looked good" without evidence.
+
 If the execution result belongs to a PR, issue, release checklist, or other reviewable workflow, upload the filled execution markdown and all review-relevant artifacts as a GitHub gist and link that gist in the PR description, PR comment, issue comment, or release checklist. Review-relevant artifacts include screenshots, recordings, logs, generated result files, and browser/device evidence needed to judge the result. The local execution markdown and artifact copies should still be kept in the run artifacts directory so the run can be audited without relying only on chat history.
 
 If the result belongs only in chat, still fill out the execution markdown locally and include its path in the chat response.

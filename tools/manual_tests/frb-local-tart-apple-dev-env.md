@@ -23,7 +23,7 @@ Run this after changing the Tart helper, Tart base VM, Apple scaffold, Flutter/X
 ## Environment
 
 - OS: host macOS capable of running Tart, plus guest macOS from `sw_vers` inside the VM.
-- Flutter: record `flutter --version` inside the Tart VM.
+- Flutter: record `flutter --version --no-version-check` inside the Tart VM.
 - Dart: record `dart --version` inside the Tart VM.
 - Rust: record `rustc --version` and `cargo --version` inside the Tart VM.
 - Device or simulator: record the selected iOS Simulator name, runtime, and UDID.
@@ -50,7 +50,10 @@ Confirm the VM can see the mounted worktree and prepare the VM-local copy used f
 ```bash
 .claude/skills/frb-dev-env/frb_dev_env.py tart exec -- bash -lc 'pwd && git status --short && ./frb_internal --help'
 .claude/skills/frb-dev-env/frb_dev_env.py tart upload
+.claude/skills/frb-dev-env/frb_dev_env.py tart exec -- bash -lc 'set -euo pipefail; flutter config --no-version-check; git -C /Users/admin/flutter remote set-url origin file:///Users/admin/flutter; git -C /Users/admin/flutter remote -v'
 ```
+
+The Flutter remote override is VM-local and prevents `flutter doctor -v`, which is invoked by `./frb_internal test-flutter-native`, from blocking on remote upstream checks when the local validation host has restricted network access. Record the resulting `origin file:///Users/admin/flutter` evidence in the execution result.
 
 ## Test Data
 
@@ -67,7 +70,7 @@ Confirm the VM can see the mounted worktree and prepare the VM-local copy used f
    sw_vers
    xcodebuild -version
    xcrun simctl list runtimes
-   flutter --version
+   flutter --version --no-version-check
    dart --version
    rustc --version
    cargo --version
