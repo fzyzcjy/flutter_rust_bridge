@@ -31,6 +31,9 @@ RUN apt-get update && apt-get install -y \
 # Android SDK platform-tools, CMake, and NDK packages provide linux-x86_64
 # binaries in the arm64 Cirrus Flutter base image. Docker Desktop can emulate
 # them, but the image still needs the matching x86_64 runtime libraries.
+# References:
+# - Debian multiarch: https://wiki.debian.org/Multiarch/HOWTO
+# - Docker Desktop emulation: https://docs.docker.com/build/guide/multi-platform/#qemu
 RUN if [ "$(dpkg --print-architecture)" = "arm64" ]; then \
         sed -i '/^Signed-By:/a Architectures: arm64' /etc/apt/sources.list.d/ubuntu.sources \
         && dpkg --add-architecture amd64 \
