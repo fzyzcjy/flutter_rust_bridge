@@ -137,6 +137,25 @@ class CiMatrix {
   const CiMatrix(this.entries);
 }
 
+const _githubHostedDesktopImages = [
+  'windows-2025',
+  'macos-15-intel',
+  'ubuntu-24.04',
+];
+
+const _exampleDartPackages = [
+  'frb_example--dart_minimal',
+  'frb_example--pure_dart',
+  'frb_example--pure_dart_pde',
+];
+
+const _flutterNativePackages = [
+  'frb_example--flutter_via_create',
+  'frb_example--flutter_package--example',
+  'frb_example--rust_ui_counter--ui',
+  'frb_example--rust_ui_todo_list--ui',
+];
+
 final kCiJobs = [
   CiJob('deploy_website'),
   CiJob('lint_rust_primary'),
@@ -145,7 +164,7 @@ final kCiJobs = [
   CiJob(
     'generate_run_frb_codegen_command_generate',
     matrix: CiMatrix([
-      for (final image in ['windows-2025', 'macos-15-intel', 'ubuntu-24.04'])
+      for (final image in _githubHostedDesktopImages)
         for (final package in [
           'frb_example--dart_minimal',
           'frb_example--pure_dart',
@@ -187,8 +206,7 @@ final kCiJobs = [
   CiJob(
     'bench_dart_native',
     matrix: CiMatrix([
-      for (final image in ['windows-2025', 'macos-15-intel', 'ubuntu-24.04'])
-        {'image': image},
+      for (final image in _githubHostedDesktopImages) {'image': image},
     ]),
   ),
   CiJob('bench_upload'),
@@ -231,14 +249,12 @@ final kCiJobs = [
   CiJob(
     'test_dart_native',
     matrix: CiMatrix([
-      for (final image in ['windows-2025', 'macos-15-intel', 'ubuntu-24.04'])
+      for (final image in _githubHostedDesktopImages)
         for (final package in [
           'frb_dart',
           'frb_utils',
           'tools--frb_internal',
-          'frb_example--dart_minimal',
-          'frb_example--pure_dart',
-          'frb_example--pure_dart_pde',
+          ..._exampleDartPackages,
           'frb_example--dart_build_rs',
         ])
           if (!_isExcludedTestDartNative(image: image, package: package))
@@ -248,47 +264,28 @@ final kCiJobs = [
   CiJob(
     'test_dart_web',
     matrix: CiMatrix([
-      for (final package in [
-        'frb_dart',
-        'frb_example--dart_minimal',
-        'frb_example--pure_dart',
-        'frb_example--pure_dart_pde',
-      ])
+      for (final package in ['frb_dart', ..._exampleDartPackages])
         {'package': package},
     ]),
   ),
   CiJob(
     'test_dart_valgrind',
     matrix: CiMatrix([
-      for (final package in [
-        'frb_example--dart_minimal',
-        'frb_example--pure_dart',
-        'frb_example--pure_dart_pde',
-      ])
-        {'package': package},
+      for (final package in _exampleDartPackages) {'package': package},
     ]),
   ),
   CiJob(
     'test_dart_sanitizer',
     matrix: CiMatrix([
       for (final sanitizer in ['asan', 'lsan'])
-        for (final package in [
-          'frb_example--dart_minimal',
-          'frb_example--pure_dart',
-          'frb_example--pure_dart_pde',
-        ])
+        for (final package in _exampleDartPackages)
           {'sanitizer': sanitizer, 'package': package},
     ]),
   ),
   CiJob(
     'test_flutter_native_android',
     matrix: CiMatrix([
-      for (final package in [
-        'frb_example--flutter_via_create',
-        'frb_example--flutter_package--example',
-        'frb_example--rust_ui_counter--ui',
-        'frb_example--rust_ui_todo_list--ui',
-      ])
+      for (final package in _flutterNativePackages)
         for (final device in ['pixel', 'Nexus 6'])
           {'package': package, 'device': device, 'api-level': 35},
     ]),
@@ -296,12 +293,7 @@ final kCiJobs = [
   CiJob(
     'test_flutter_native_ios',
     matrix: CiMatrix([
-      for (final package in [
-        'frb_example--flutter_via_create',
-        'frb_example--flutter_package--example',
-        'frb_example--rust_ui_counter--ui',
-        'frb_example--rust_ui_todo_list--ui',
-      ])
+      for (final package in _flutterNativePackages)
         for (final device in [
           'iPad (10th generation) Simulator (18.6)',
           'iPhone 16 Pro Max Simulator (18.6)',
@@ -313,81 +305,13 @@ final kCiJobs = [
     'test_flutter_native_desktop',
     matrix: CiMatrix([
       for (final info in [
-        {
-          'image': 'windows-2025',
-          'platform': 'windows',
-          'package': 'frb_example--flutter_via_create',
-        },
-        {
-          'image': 'macos-15-intel',
-          'platform': 'macos',
-          'package': 'frb_example--flutter_via_create',
-        },
-        {
-          'image': 'ubuntu-latest',
-          'platform': 'linux',
-          'package': 'frb_example--flutter_via_create',
-        },
-        {
-          'image': 'windows-2025',
-          'platform': 'windows',
-          'package': 'frb_example--flutter_package--example',
-        },
-        {
-          'image': 'macos-15-intel',
-          'platform': 'macos',
-          'package': 'frb_example--flutter_package--example',
-        },
-        {
-          'image': 'ubuntu-latest',
-          'platform': 'linux',
-          'package': 'frb_example--flutter_package--example',
-        },
-        {
-          'image': 'windows-2025',
-          'platform': 'windows',
-          'package': 'frb_example--rust_ui_counter--ui',
-        },
-        {
-          'image': 'macos-15-intel',
-          'platform': 'macos',
-          'package': 'frb_example--rust_ui_counter--ui',
-        },
-        {
-          'image': 'ubuntu-latest',
-          'platform': 'linux',
-          'package': 'frb_example--rust_ui_counter--ui',
-        },
-        {
-          'image': 'windows-2025',
-          'platform': 'windows',
-          'package': 'frb_example--rust_ui_todo_list--ui',
-        },
-        {
-          'image': 'macos-15-intel',
-          'platform': 'macos',
-          'package': 'frb_example--rust_ui_todo_list--ui',
-        },
-        {
-          'image': 'ubuntu-latest',
-          'platform': 'linux',
-          'package': 'frb_example--rust_ui_todo_list--ui',
-        },
-        {
-          'image': 'ubuntu-latest',
-          'platform': 'linux',
-          'package': 'frb_example--flutter_via_integrate',
-        },
-        {
-          'image': 'ubuntu-latest',
-          'platform': 'linux',
-          'package': 'frb_example--gallery',
-        },
-        {
-          'image': 'ubuntu-latest',
-          'platform': 'linux',
-          'package': 'frb_example--integrate_third_party',
-        },
+        for (final package in _flutterNativePackages)
+          ..._flutterDesktopPackageEntries(package),
+        ..._linuxFlutterDesktopPackageEntries([
+          'frb_example--flutter_via_integrate',
+          'frb_example--gallery',
+          'frb_example--integrate_third_party',
+        ]),
       ])
         {'info': info},
     ]),
@@ -575,3 +499,16 @@ bool _isExcludedTestDartNative({
 }) =>
     (image == 'windows-2025' || image == 'macos-15-intel') &&
     {'frb_utils', 'tools--frb_internal'}.contains(package);
+
+List<Map<String, Object?>> _flutterDesktopPackageEntries(String package) => [
+  {'image': 'windows-2025', 'platform': 'windows', 'package': package},
+  {'image': 'macos-15-intel', 'platform': 'macos', 'package': package},
+  {'image': 'ubuntu-latest', 'platform': 'linux', 'package': package},
+];
+
+List<Map<String, Object?>> _linuxFlutterDesktopPackageEntries(
+  List<String> packages,
+) => [
+  for (final package in packages)
+    {'image': 'ubuntu-latest', 'platform': 'linux', 'package': package},
+];
