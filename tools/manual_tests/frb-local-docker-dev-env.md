@@ -56,10 +56,9 @@ Ensure the nightly Rust toolchain has the components needed by the Flutter web c
 ```bash
 .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- bash -lc '
 set -euo pipefail
-nightly_host="$(rustc -vV | sed -n "s/^host: //p")"
 rustup toolchain install nightly
-rustup component add rust-src --toolchain "nightly-${nightly_host}"
-rustup component add llvm-tools-preview --toolchain "nightly-${nightly_host}"
+rustup component add rust-src --toolchain nightly
+rustup component add llvm-tools-preview --toolchain nightly
 '
 ```
 

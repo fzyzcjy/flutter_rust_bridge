@@ -97,12 +97,20 @@ String linuxBuildBundlePathForTesting({required String machineArchitecture}) =>
     'build/linux/${_linuxFlutterArchitecture(machineArchitecture)}/release/bundle';
 
 String currentMachineArchitectureForTesting() {
-  final result = Process.runSync('uname', ['-m']);
-  if (result.exitCode != 0) {
-    throw StateError('Failed to detect machine architecture: ${result.stderr}');
-  }
+  try {
+    final result = Process.runSync('uname', ['-m']);
+    if (result.exitCode != 0) {
+      throw StateError(
+        'Failed to detect machine architecture: ${result.stderr}',
+      );
+    }
 
-  return (result.stdout as String).trim();
+    return (result.stdout as String).trim();
+  } on ProcessException catch (error) {
+    throw StateError(
+      'Failed to run "uname" to detect machine architecture: ${error.message}',
+    );
+  }
 }
 
 String _linuxFlutterArchitecture(String machineArchitecture) =>
