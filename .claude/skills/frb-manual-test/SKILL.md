@@ -52,6 +52,8 @@ cp .claude/skills/frb-manual-test/execution-template.md EXECUTION_RESULT_PATH.md
 
 Always fill out an execution markdown file before summarizing the result. Do not only say that the test "passed".
 
+Execution markdown is a run artifact, not a repository test definition. Do not create it under `tools/manual_tests/` or anywhere else inside the `flutter_rust_bridge` repository. Put it in an external artifacts location such as `/private/tmp`, `~/main/artifacts/flutter_rust_bridge/`, or another run-specific artifact directory.
+
 If the execution result belongs to a PR, issue, release checklist, or other reviewable workflow, upload the filled execution markdown as a GitHub gist and link that gist in the PR description, PR comment, issue comment, or release checklist. The local execution markdown should still be kept in the run artifacts directory so the run can be audited without relying only on chat history.
 
 If the result belongs only in chat, still fill out the execution markdown locally and include its path in the chat response.
