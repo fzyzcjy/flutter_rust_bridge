@@ -328,11 +328,11 @@ void main() {
     });
 
     for (final example in [
-      _CiFilterExample(
+      const _CiFilterExample(
         filter: 'lint_dart_primary',
         enabledJobs: {'lint_dart_primary'},
       ),
-      _CiFilterExample(
+      const _CiFilterExample(
         filter: 'lint_dart_primary,test_dart_web',
         enabledJobs: {'lint_dart_primary', 'test_dart_web'},
         matrixByJob: {
@@ -346,7 +346,7 @@ void main() {
           },
         },
       ),
-      _CiFilterExample(
+      const _CiFilterExample(
         filter:
             'lint_dart_primary,test_dart_web[package=frb_example--pure_dart]',
         enabledJobs: {'lint_dart_primary', 'test_dart_web'},
@@ -358,7 +358,7 @@ void main() {
           },
         },
       ),
-      _CiFilterExample(
+      const _CiFilterExample(
         filter: 'test_dart_web[package=frb_example--pure_dart_pde]',
         enabledJobs: {'test_dart_web'},
         matrixByJob: {
@@ -369,7 +369,7 @@ void main() {
           },
         },
       ),
-      _CiFilterExample(
+      const _CiFilterExample(
         filter: 'test_dart_web[package=frb_dart|frb_example--pure_dart_pde]',
         enabledJobs: {'test_dart_web'},
         matrixByJob: {
@@ -381,7 +381,7 @@ void main() {
           },
         },
       ),
-      _CiFilterExample(
+      const _CiFilterExample(
         filter:
             'test_dart_web[package=frb_dart|frb_example--pure_dart_pde],lint_rust_primary',
         enabledJobs: {'test_dart_web', 'lint_rust_primary'},
@@ -394,7 +394,7 @@ void main() {
           },
         },
       ),
-      _CiFilterExample(
+      const _CiFilterExample(
         filter:
             'test_dart_native[image=ubuntu-24.04,package=tools--frb_internal]',
         enabledJobs: {'test_dart_native'},
@@ -406,7 +406,7 @@ void main() {
           },
         },
       ),
-      _CiFilterExample(
+      const _CiFilterExample(
         filter: 'test_rust[image=ubuntu-latest,version=nightly|1.85.0]',
         enabledJobs: {'test_rust'},
         matrixByJob: {
@@ -422,7 +422,7 @@ void main() {
           },
         },
       ),
-      _CiFilterExample(
+      const _CiFilterExample(
         filter:
             'test_rust[image=ubuntu-latest,version=nightly],test_rust[image=ubuntu-latest,version=1.85.0]',
         enabledJobs: {'test_rust'},
@@ -439,7 +439,7 @@ void main() {
           },
         },
       ),
-      _CiFilterExample(
+      const _CiFilterExample(
         filter:
             'test_flutter_native_desktop[platform=linux,package=frb_example--gallery]',
         enabledJobs: {'test_flutter_native_desktop'},
@@ -457,7 +457,7 @@ void main() {
           },
         },
       ),
-      _CiFilterExample(
+      const _CiFilterExample(
         filter:
             'test_flutter_native_android[package=frb_example--flutter_via_create,device=pixel,api-level=35]',
         enabledJobs: {'test_flutter_native_android'},
@@ -473,7 +473,7 @@ void main() {
           },
         },
       ),
-      _CiFilterExample(
+      const _CiFilterExample(
         filter:
             'test_flutter_native_ios[device=iPhone 16 Pro Max Simulator (18.6),package=frb_example--rust_ui_counter--ui]',
         enabledJobs: {'test_flutter_native_ios'},
@@ -488,7 +488,7 @@ void main() {
           },
         },
       ),
-      _CiFilterExample(
+      const _CiFilterExample(
         filter:
             'generate_run_frb_codegen_command_generate[image=ubuntu-24.04,package=frb_example--integrate_third_party]',
         enabledJobs: {'generate_run_frb_codegen_command_generate'},
@@ -503,7 +503,7 @@ void main() {
           },
         },
       ),
-      _CiFilterExample(
+      const _CiFilterExample(
         filter: 'generate_run_frb_codegen_command_integrate[platforms=ohos]',
         enabledJobs: {'generate_run_frb_codegen_command_integrate'},
         matrixByJob: {
@@ -518,7 +518,7 @@ void main() {
           },
         },
       ),
-      _CiFilterExample(
+      const _CiFilterExample(
         filter:
             'test_dart_sanitizer[sanitizer=asan,package=frb_example--pure_dart]',
         enabledJobs: {'test_dart_sanitizer'},
@@ -530,7 +530,7 @@ void main() {
           },
         },
       ),
-      _CiFilterExample(
+      const _CiFilterExample(
         filter: 'bench_dart_native[image=ubuntu-24.04]',
         enabledJobs: {'bench_dart_native'},
         matrixByJob: {

@@ -20,10 +20,10 @@ const _flutterNativePackages = [
 ];
 
 final kCiJobs = [
-  CiJob('deploy_website'),
-  CiJob('lint_rust_primary'),
-  CiJob('lint_dart_primary'),
-  CiJob('lint_rust_feature_flag'),
+  const CiJob('deploy_website'),
+  const CiJob('lint_rust_primary'),
+  const CiJob('lint_dart_primary'),
+  const CiJob('lint_rust_feature_flag'),
   CiJob(
     'generate_run_frb_codegen_command_generate',
     matrix: CiMatrix([
@@ -65,14 +65,14 @@ final kCiJobs = [
       },
     ]),
   ),
-  CiJob('generate_internal'),
+  const CiJob('generate_internal'),
   CiJob(
     'bench_dart_native',
     matrix: CiMatrix([
       for (final image in _githubHostedDesktopImages) {'image': image},
     ]),
   ),
-  CiJob('bench_upload'),
+  const CiJob('bench_upload'),
   CiJob(
     'build_flutter',
     matrix: CiMatrix([
@@ -189,7 +189,7 @@ final kCiJobs = [
         {'package': package},
     ]),
   ),
-  CiJob('misc_codecov'),
+  const CiJob('misc_codecov'),
 ];
 
 bool _isExcludedGenerateCommandGenerate({
