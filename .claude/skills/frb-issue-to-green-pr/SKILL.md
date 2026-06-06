@@ -40,6 +40,10 @@ Read these when entering the matching phase:
 
 3. Develop with the project feature or bug-fix workflow.
    - Read and follow `frb-develop-feature`; treat it as the source of truth for reproduction, iteration, local verification, regression coverage, and final example placement.
+   - For bug fixes, prefer a CI-backed bad reproduction before changing fix code when CI is the clearest oracle for the user's report. The ideal proof is: unchanged fix code, an added or narrowed CI path fails clearly, and the failing error matches the user's reported error.
+   - If that proof needs a temporary branch or PR, make it explicit in the branch name, PR title, and PR body that it is an intentional red CI reproduction, not a real fix PR.
+   - For an intentional red reproduction PR, force CI narrowing: edit the workflow so only the relevant job family runs, and do not spend the full CI matrix just to prove the known failure.
+   - Save the red CI run URL, job name, and matching error text in the reproduction report. After the fix, the corresponding CI path must become green and should be called out in the final PR status.
    - Before considering the change ready, explicitly pass the `frb-develop-feature` Final Placement Gate: final regression coverage belongs in `frb_example/pure_dart` with generated `pure_dart_pde` coverage, not only in `frb_example/dart_minimal`.
    - Keep generated-file edits produced by the appropriate generator, not by hand.
 
@@ -68,6 +72,7 @@ Read these when entering the matching phase:
 7. Monitor CI until terminal.
    - After the PR is opened or updated, do not leave the PR in an unknown queued or in-progress state.
    - On each wake-up, inspect the latest PR checks, not stale runs.
+   - For bug-fix PRs that used a CI-backed bad reproduction, explicitly find the same job family or CI path that failed in the reproduction branch and verify that it is now green on the fix PR.
    - If CI fails, read `frb-fix-ci` and `gh-actions-live-logs`, diagnose the latest relevant failure, fix it, commit, push, and continue monitoring.
    - If CI appears flaky, rerun only failed jobs when appropriate, then keep monitoring.
 
