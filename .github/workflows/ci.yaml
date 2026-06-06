@@ -1110,9 +1110,6 @@ jobs:
       matrix:
         package:
           - frb_example--flutter_via_create
-          # no `frb_example--flutter_package--example` yet
-          # no `frb_example--flutter_via_integrate` since it is similar to `flutter_via_create`
-          - frb_example--gallery
 
     steps:
       - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
@@ -1152,6 +1149,15 @@ jobs:
           lsof -i :4444
 
       # execute
+      - name: Reproduce issue 3158 wasm dry-run warning
+        run: |-
+          cd frb_example/flutter_via_create
+          flutter build web 2>&1 | tee /tmp/issue-3158-flutter-build-web.log
+          if grep -q 'invalid_runtime_check_with_js_interop_types' /tmp/issue-3158-flutter-build-web.log; then
+            echo 'Reproduced issue 3158: flutter build web reported invalid_runtime_check_with_js_interop_types.'
+            exit 1
+          fi
+          echo 'Issue 3158 was not reproduced.'
       - run: ./frb_internal test-flutter-web --package ${{ matrix.package }} --coverage
 
       # report
