@@ -176,7 +176,7 @@ String quickstartSmokePackagePathForTesting(
 }) => Directory('${repoRootPath ?? exec.pwd}$package').absolute.path;
 
 Future<File?> _createChromeWrapperIfNeeded(String artifactDir) async {
-  if (!Platform.isLinux || Platform.environment['USER'] != 'root') {
+  if (!Platform.isLinux || !await _isRunningAsRoot()) {
     return null;
   }
   final file = File('$artifactDir/chrome-no-sandbox-wrapper');
@@ -185,6 +185,13 @@ Future<File?> _createChromeWrapperIfNeeded(String artifactDir) async {
   );
   await Process.run('chmod', ['+x', file.path]);
   return file;
+}
+
+Future<bool> _isRunningAsRoot() async {
+  final result = await Process.run('id', [
+    '-u',
+  ], stdoutEncoding: systemEncoding);
+  return result.exitCode == 0 && result.stdout.toString().trim() == '0';
 }
 
 Future<void> _captureQuickstartSmokeScreenshot({
