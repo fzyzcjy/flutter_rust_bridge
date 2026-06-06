@@ -1132,6 +1132,8 @@ jobs:
           lsof -i :4444
 
       # execute
+      - if: ${{ matrix.package == 'frb_example--flutter_via_create' }}
+        run: cd frb_example/flutter_via_create && flutter build web
       - run: ./frb_internal test-flutter-web --package ${{ matrix.package }} --coverage
 
       # report
