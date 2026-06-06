@@ -43,8 +43,8 @@ Read these when entering the matching phase:
    - Read and follow `frb-develop-feature`; treat it as the source of truth for reproduction, iteration, local verification, regression coverage, and final example placement.
    - For bug fixes, before changing fix code or opening the fix PR, create an independent evidence PR that proves the bad behavior.
    - If CI can reproduce the bad behavior, the evidence PR must be an intentional red CI reproduction PR: unchanged fix code, minimal reproducer or workflow adjustment, forced CI narrowing to only the relevant job family, and a failure whose error matches the user's report. Mark the branch name, PR title, and PR body clearly as an intentional red reproduction, not a real fix PR.
-   - If CI cannot realistically reproduce the bad behavior, read `frb-manual-test` and instead create an independent manual-test PR that adds `tools/manual_tests/<name>.md` with mechanical reproduction steps. The manual-test PR is the fallback evidence PR, not a section hidden inside the fix PR.
-   - Do not proceed to the fix PR until either the intentional red CI reproduction PR exists with a matching failed run, or the manual-test PR exists with precise mechanical steps.
+   - If CI cannot realistically reproduce the bad behavior, read `frb-manual-test` and instead create an independent PR that adds or updates `tools/manual_tests/<name>.md` with a normal manual test procedure and mechanical execution steps an agent or human can run.
+   - Do not proceed to the fix PR until either the intentional red CI reproduction PR exists with a matching failed run, or the manual-test PR exists with precise manual test steps.
    - Save the evidence PR URL, red CI run URL when applicable, job name or manual-test path, and matching error text in the fix PR reproduction report.
    - Before considering the change ready, explicitly pass the `frb-develop-feature` Final Placement Gate: final regression coverage belongs in `frb_example/pure_dart` with generated `pure_dart_pde` coverage, not only in `frb_example/dart_minimal`.
    - Keep generated-file edits produced by the appropriate generator, not by hand.
@@ -75,7 +75,7 @@ Read these when entering the matching phase:
    - After the PR is opened or updated, do not leave the PR in an unknown queued or in-progress state.
    - On each wake-up, inspect the latest PR checks, not stale runs.
    - For bug-fix PRs with an intentional red CI reproduction PR, explicitly find the same job family or CI path that failed in the reproduction branch and verify that it is now green on the fix PR.
-   - For bug-fix PRs with a manual-test evidence PR, state whether the manual regression was re-run, who or what ran it, and whether the observed behavior now matches the fixed expectation.
+   - For bug-fix PRs with a manual-test report PR, state whether the manual regression was re-run, who or what ran it, and whether the observed behavior now matches the fixed expectation.
    - If CI fails, read `frb-fix-ci` and `gh-actions-live-logs`, diagnose the latest relevant failure, fix it, commit, push, and continue monitoring.
    - If CI appears flaky, rerun only failed jobs when appropriate, then keep monitoring.
 

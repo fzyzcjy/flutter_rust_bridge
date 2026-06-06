@@ -1,21 +1,26 @@
 ---
 name: frb-manual-test
-description: Use when a flutter_rust_bridge bug cannot be reproduced by CI and needs an independent manual regression test report under tools/manual_tests, or when writing, reviewing, or updating those manual test reports.
+description: Use when writing, executing, reviewing, or updating flutter_rust_bridge manual test reports under tools/manual_tests for scenarios that require human or agent-driven manual verification.
 ---
 
 # FRB Manual Test
 
-Use this skill when a bug report needs a durable manual regression test because CI cannot realistically reproduce the bad behavior. Manual tests are for cases involving external devices, host-specific setup, interactive tooling, credentials, marketplace/account state, flaky infrastructure, or other conditions that cannot be encoded as a reliable CI job yet.
+Use this skill for manual test reports in `tools/manual_tests/`. These reports describe repeatable checks that a human or agent can execute when automated tests are insufficient, unavailable, too expensive, or not the right interface for the behavior being verified.
+
+Manual tests are normal software-engineering test artifacts. They may cover devices, host-specific setup, interactive UI behavior, credentials or account state, release packaging, marketplace flows, external services, or long-running workflows. They are not tied to any single PR workflow.
 
 ## Core Rule
 
-A manual test report is an independent evidence artifact. For a bug fix in the `frb-issue-to-green-pr` workflow:
+A manual test report must be mechanical enough that a future human or agent can execute it without the original conversation.
 
-1. First try to create an intentional red CI reproduction PR with CI narrowing.
-2. If that is not realistic, create a separate manual-test PR that adds `tools/manual_tests/<name>.md`.
-3. Only after that evidence PR exists should the fix PR proceed.
+Treat the report like a test case:
 
-The manual-test PR is not the fix PR. Its PR title and body should say that it adds manual regression coverage and does not fix the bug.
+1. Define the purpose and scope.
+2. State preconditions and environment.
+3. Give exact setup and execution steps.
+4. Define pass/fail criteria.
+5. Say what results and artifacts to capture.
+6. Include cleanup and maintenance notes.
 
 ## File Location
 
@@ -25,7 +30,7 @@ Write reports under:
 tools/manual_tests/<name>.md
 ```
 
-Use a short kebab-case name. Include a date prefix when the report is an example, a one-off reproduction, or does not yet have a stable feature name, such as:
+Use a short kebab-case name. Include a date prefix when the report is an example, a one-off check, or does not yet have a stable feature name, such as:
 
 ```text
 tools/manual_tests/2026-06-06-example.md
@@ -33,44 +38,104 @@ tools/manual_tests/2026-06-06-example.md
 
 ## Required Content
 
-Each report must be mechanical enough that a human or future agent can run it without the original conversation:
+Each report should include:
 
 - Purpose and scope.
-- Source issue, PR, user report, or context link.
-- Why this is manual instead of CI-backed.
-- Baseline commit or release to test.
-- Required environment: OS, Flutter, Dart, Rust, devices, simulators, browsers, network, credentials, and any external services.
+- Source context: issue, PR, feature, release, or user report when available.
+- When to run the test: before release, after changing a subsystem, after dependency upgrades, before closing a bug, or on demand.
+- Preconditions: required branch, commit, release, account state, devices, generated files, caches, or services.
+- Environment: OS, Flutter, Dart, Rust, devices, simulators, browsers, network, credentials, and external services.
+- Test data and fixtures, including how to create or reset them.
 - Repository preparation commands.
-- Step-by-step reproduction commands or UI actions.
-- Expected bad behavior before the fix, including exact error text when known.
-- Expected fixed behavior after the fix.
+- Step-by-step execution commands or UI actions.
+- Expected result and pass/fail criteria.
+- Troubleshooting notes for common setup failures.
 - Cleanup steps.
-- Evidence to capture: logs, screenshots, artifacts, run URLs, or command output.
-- Notes on how this could later become an automated CI test.
+- Results to capture: logs, screenshots, artifacts, command output, device details, or screen recordings.
+- Execution record section where the runner can append date, executor, commit, result, and artifact links.
+- Automation notes if the test could later become an automated CI or integration test.
 
 ## Writing Rules
 
 - Keep steps copy-pasteable and ordered.
-- Do not rely on "run the app normally" or "verify it works" without concrete commands or UI actions.
+- Do not rely on "run the app normally", "check manually", or "verify it works" without concrete commands or UI actions.
 - Prefer repo tooling such as `./frb_internal` when possible.
 - Include exact paths for files to edit, commands to run, and artifacts to inspect.
 - If credentials or private services are needed, name the required capability without including secrets.
 - If the test is destructive or changes host state, include an explicit cleanup section.
+- Keep the report evergreen: update commands, device names, and expected output when the product or tooling changes.
 
-## PR Body
+## Executing A Manual Test
 
-For the manual-test PR, include:
+When executing a manual test, do not only say that it "passed". Record:
 
-```markdown
-## Changes
+- Date and timezone.
+- Executor: human name, agent, or automation.
+- Commit or release tested.
+- Environment actually used.
+- Result: pass, fail, blocked, or partial.
+- Result artifact paths or links.
+- Any deviations from the written steps.
+- Follow-up issue or PR if the result is not clean.
 
-Add a manual regression test for <scenario>.
+Append this to the report's execution record when the report is meant to keep run history. If the run history would be noisy, put the execution result in the PR, issue, or release checklist instead and keep the report itself as the stable procedure.
 
-This PR intentionally does not fix the bug. It records mechanical reproduction steps because the scenario cannot be covered by CI yet.
+## Report Skeleton
 
-## Validation
+~~~markdown
+## Purpose
 
-- Read through tools/manual_tests/<name>.md for mechanical completeness
+<What this test verifies.>
+
+## When To Run
+
+<When this test is required or useful.>
+
+## Preconditions
+
+<Branch, device, account, generated files, services, or data required before starting.>
+
+## Environment
+
+- OS:
+- Flutter:
+- Dart:
+- Rust:
+- Device / simulator:
+- External services:
+
+## Preparation
+
+```bash
+<commands>
 ```
 
-For the later fix PR, link the manual-test PR and report whether the manual test was re-run after the fix.
+## Steps
+
+1. <Action>
+2. <Action>
+
+## Expected Result
+
+<Observable pass criteria.>
+
+## Results To Capture
+
+- <Logs, screenshots, artifact paths, or command output.>
+
+## Cleanup
+
+```bash
+<commands>
+```
+
+## Execution Record
+
+| Date | Executor | Commit / version | Environment | Result | Artifacts |
+|------|----------|------------------|-------------|--------|----------|
+| YYYY-MM-DD | <name or agent> | `<sha>` | <summary> | <pass/fail/blocked> | <paths or links> |
+
+## Automation Notes
+
+<How this could become automated, or why it should remain manual.>
+~~~
