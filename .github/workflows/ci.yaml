@@ -57,13 +57,6 @@ jobs:
             --automatic-ci-disabled=${{ github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'ci-manual-dispatch') }} \
             --github-output "$GITHUB_OUTPUT"
 
-  manual_dispatch_notice:
-    if: ${{ github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'ci-manual-dispatch') }}
-    name: 'Notice :: Manual CI Dispatch'
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo 'Automatic CI is disabled by the ci-manual-dispatch label. Use workflow_dispatch with ci_filter to run focused CI.'
-
   # ----------------------------------- deploy -----------------------------------
 
   # ref https://docusaurus.io/docs/deployment#triggering-deployment-with-github-actions
