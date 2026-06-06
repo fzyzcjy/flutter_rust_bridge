@@ -19,6 +19,7 @@ class SimpleExecutor {
     String? relativePwd,
     Map<String, String>? extraEnv,
     bool? checkExitCode,
+    Duration? timeout,
   }) async {
     final String command;
     final List<String> args;
@@ -35,6 +36,7 @@ class SimpleExecutor {
       env: {...?env, ...?extraEnv},
       pwd: '${pwd ?? ""}${relativePwd ?? ""}',
       checkExitCode: checkExitCode,
+      timeout: timeout,
     );
   }
 }
