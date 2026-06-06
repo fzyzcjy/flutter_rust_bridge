@@ -18,13 +18,19 @@ import typer
 
 
 app = typer.Typer(no_args_is_help=True)
+android_app = typer.Typer(no_args_is_help=True)
 docker_app = typer.Typer(no_args_is_help=True)
 tart_app = typer.Typer(no_args_is_help=True)
+app.add_typer(android_app, name="android", help="Manage host Android emulator commands.")
 app.add_typer(docker_app, name="docker", help="Manage the per-worktree Docker development container.")
 app.add_typer(tart_app, name="tart", help="Manage the per-worktree Tart macOS VM.")
 
 DEFAULT_IMAGE = "fzyzcjy/flutter_rust_bridge_dev:latest"
 DEFAULT_TART_BASE_VM = "frb-tart-base"
+DEFAULT_ANDROID_EMULATOR_PORT = 5554
+DEFAULT_ANDROID_EMULATOR_ADB_HOST = "host.docker.internal"
+DEFAULT_MACOS_ANDROID_HOME = Path("~/Library/Android/sdk")
+ANDROID_LINUX_X86_64_LIBRARY_PATH = "/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/x86_64-linux-gnu/lib"
 MIN_TART_FREE_GB = 150
 REPO_LABEL = "frb.dev.repo"
 WORKTREE_LABEL = "frb.dev.worktree"
@@ -52,7 +58,12 @@ class CommandError(RuntimeError):
     pass
 
 
-def exec_command(cmd: list[str], *, capture_output: bool = False) -> str | None:
+def exec_command(
+    cmd: list[str],
+    *,
+    capture_output: bool = False,
+    env: dict[str, str] | None = None,
+) -> str | None:
     print(f"EXEC: {' '.join(cmd)}", file=sys.stderr, flush=True)
 
     try:
@@ -61,6 +72,7 @@ def exec_command(cmd: list[str], *, capture_output: bool = False) -> str | None:
             check=True,
             capture_output=capture_output,
             text=capture_output,
+            env=env,
         )
     except subprocess.CalledProcessError as error:
         if capture_output:
@@ -125,6 +137,120 @@ def get_image(image: str | None) -> str:
         return image
 
     return os.environ.get("FRB_DOCKER_IMAGE", DEFAULT_IMAGE)
+
+
+def get_android_emulator_adb_host(host: str | None) -> str:
+    if host is not None:
+        return host
+
+    return os.environ.get("FRB_ANDROID_EMULATOR_ADB_HOST", DEFAULT_ANDROID_EMULATOR_ADB_HOST)
+
+
+def get_android_emulator_adb_port(port: int | None) -> int:
+    if port is not None:
+        return port
+
+    value = os.environ.get("FRB_ANDROID_EMULATOR_ADB_PORT")
+    if value is None:
+        return DEFAULT_ANDROID_EMULATOR_PORT + 1
+
+    try:
+        return int(value)
+    except ValueError as error:
+        raise CommandError(f"FRB_ANDROID_EMULATOR_ADB_PORT must be an integer: {value}") from error
+
+
+def resolve_android_home() -> Path:
+    resolved_android_home = env_path("ANDROID_HOME")
+    if resolved_android_home is None:
+        resolved_android_home = DEFAULT_MACOS_ANDROID_HOME.expanduser().resolve()
+
+    if not resolved_android_home.exists():
+        raise CommandError(
+            f"Android SDK root does not exist: {resolved_android_home}. "
+            "Install Android Studio or set ANDROID_HOME to the host Android SDK root."
+        )
+
+    return resolved_android_home
+
+
+def android_host_env() -> dict[str, str]:
+    resolved_android_home = resolve_android_home()
+
+    env = dict(os.environ)
+    env["ANDROID_HOME"] = str(resolved_android_home)
+    env["ANDROID_SDK_ROOT"] = str(resolved_android_home)
+
+    path_prefix = [
+        resolved_android_home / "emulator",
+        resolved_android_home / "platform-tools",
+        resolved_android_home / "cmdline-tools" / "latest" / "bin",
+    ]
+    env["PATH"] = os.pathsep.join([*(str(path) for path in path_prefix), env.get("PATH", "")])
+
+    return env
+
+
+def env_path(name: str) -> Path | None:
+    value = os.environ.get(name)
+    if value is None or value == "":
+        return None
+
+    return Path(value).expanduser().resolve()
+
+
+def print_android_host_env() -> None:
+    android_home = resolve_android_home()
+    typer.echo(f"export ANDROID_HOME={shlex.quote(str(android_home))}")
+    typer.echo(f"export ANDROID_SDK_ROOT={shlex.quote(str(android_home))}")
+    path_prefix = (
+        f"{android_home / 'emulator'}:"
+        f"{android_home / 'platform-tools'}:"
+        f"{android_home / 'cmdline-tools' / 'latest' / 'bin'}"
+    )
+    typer.echo(
+        f"export PATH={shlex.quote(path_prefix)}:" + '"$PATH"'
+    )
+
+
+# ========== Android commands ==========
+
+
+@android_app.command(name="env")
+def android_env() -> None:
+    """Print shell exports for the host Android SDK and emulator environment."""
+
+    print_android_host_env()
+
+
+@android_app.command(name="emulator")
+def android_emulator(
+    avd: Annotated[
+        str,
+        typer.Option("--avd", help="AVD name to boot on the host."),
+    ],
+    port: Annotated[
+        int,
+        typer.Option("--port", help="Even emulator console port; the ADB serial becomes emulator-<port>."),
+    ] = DEFAULT_ANDROID_EMULATOR_PORT,
+    emulator_args: Annotated[
+        list[str] | None,
+        typer.Argument(help="Additional arguments passed to emulator after the generated -avd/-port flags."),
+    ] = None,
+) -> None:
+    """Start the host Android Emulator with the standard Android SDK locations."""
+
+    exec_command(
+        [
+            "emulator",
+            "-avd",
+            avd,
+            "-port",
+            str(port),
+            *(emulator_args or []),
+        ],
+        env=android_host_env(),
+    )
 
 
 # ========== Tart ==========
@@ -513,6 +639,20 @@ def ensure_container(*, worktree_root: Path, image: str) -> str:
     return container_name
 
 
+def android_linux_x86_64_env() -> dict[str, str]:
+    return {
+        "LD_LIBRARY_PATH": ANDROID_LINUX_X86_64_LIBRARY_PATH,
+    }
+
+
+def docker_exec_env_args(env: dict[str, str]) -> list[str]:
+    result: list[str] = []
+    for key, value in env.items():
+        result.extend(["--env", f"{key}={value}"])
+
+    return result
+
+
 def delete_container(*, worktree_root: Path, force: bool) -> str:
     container_name = container_name_for_worktree(worktree_root=worktree_root)
 
@@ -566,6 +706,29 @@ def build_info(*, worktree_root: Path, image: str) -> dict[str, object]:
         },
         "actual_labels": actual_labels,
     }
+
+
+def connect_docker_to_android_emulator(
+    *,
+    container_name: str,
+    worktree_root: Path,
+    host: str,
+    port: int,
+) -> None:
+    exec_command(
+        [
+            "docker",
+            "exec",
+            "-i",
+            *docker_exec_env_args(android_linux_x86_64_env()),
+            "--workdir",
+            str(worktree_root),
+            container_name,
+            "adb",
+            "connect",
+            f"{host}:{port}",
+        ]
+    )
 
 
 # ========== Docker commands ==========
@@ -663,6 +826,18 @@ def exec_in_container(
         str | None,
         typer.Option("--image", help="Docker image. Defaults to FRB_DOCKER_IMAGE or the published FRB dev image."),
     ] = None,
+    android_emulator_adb: Annotated[
+        bool,
+        typer.Option("--android-emulator-adb", help="Connect Docker-side ADB to the host Android Emulator TCP endpoint."),
+    ] = False,
+    android_emulator_adb_host: Annotated[
+        str | None,
+        typer.Option("--android-emulator-adb-host", help="Host emulator ADB endpoint for --android-emulator-adb."),
+    ] = None,
+    android_emulator_adb_port: Annotated[
+        int | None,
+        typer.Option("--android-emulator-adb-port", help="Host emulator ADB TCP port for --android-emulator-adb."),
+    ] = None,
 ) -> None:
     """Ensure the container is running, then execute a command from the host-like worktree path."""
 
@@ -679,11 +854,22 @@ def exec_in_container(
     if sys.stdin.isatty() and sys.stdout.isatty():
         exec_flags = ["-it"]
 
+    env: dict[str, str] = {}
+    if android_emulator_adb:
+        env.update(android_linux_x86_64_env())
+        connect_docker_to_android_emulator(
+            container_name=container_name,
+            worktree_root=resolved_worktree_root,
+            host=get_android_emulator_adb_host(host=android_emulator_adb_host),
+            port=get_android_emulator_adb_port(port=android_emulator_adb_port),
+        )
+
     exec_command(
         [
             "docker",
             "exec",
             *exec_flags,
+            *docker_exec_env_args(env),
             "--workdir",
             str(resolved_worktree_root),
             container_name,

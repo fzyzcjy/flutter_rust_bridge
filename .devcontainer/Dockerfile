@@ -28,6 +28,37 @@ RUN apt-get update && apt-get install -y \
     xz-utils \
     && rm -rf /var/lib/apt/lists/*
 
+# Android SDK platform-tools, CMake, and NDK packages provide linux-x86_64
+# binaries in the arm64 Cirrus Flutter base image. Docker Desktop can emulate
+# them, but the image still needs the matching x86_64 runtime libraries.
+# References:
+# - Debian multiarch: https://wiki.debian.org/Multiarch/HOWTO
+# - Docker Desktop emulation: https://docs.docker.com/build/guide/multi-platform/#qemu
+RUN if [ "$(dpkg --print-architecture)" = "arm64" ]; then \
+        sed -i '/^Signed-By:/a Architectures: arm64' /etc/apt/sources.list.d/ubuntu.sources \
+        && dpkg --add-architecture amd64 \
+        && printf '%s\n' \
+            'Types: deb' \
+            'URIs: http://archive.ubuntu.com/ubuntu/' \
+            'Suites: noble noble-updates noble-backports' \
+            'Components: main universe restricted multiverse' \
+            'Architectures: amd64' \
+            'Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg' \
+            '' \
+            'Types: deb' \
+            'URIs: http://security.ubuntu.com/ubuntu/' \
+            'Suites: noble-security' \
+            'Components: main universe restricted multiverse' \
+            'Architectures: amd64' \
+            'Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg' \
+            > /etc/apt/sources.list.d/ubuntu-amd64.sources \
+        && apt-get update && apt-get install -y \
+            libstdc++6:amd64 \
+            zlib1g:amd64 \
+        && rm -rf /var/lib/apt/lists/*; \
+    fi
+ENV LD_LIBRARY_PATH="/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu"
+
 # Configure pip to allow system package installation (PEP 668)
 RUN mkdir -p /etc/pip && \
     echo "[global]\nbreak-system-packages = true" > /etc/pip/pip.conf
