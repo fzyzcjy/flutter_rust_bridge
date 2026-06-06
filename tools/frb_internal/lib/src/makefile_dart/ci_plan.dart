@@ -2,6 +2,9 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:args/command_runner.dart';
+import 'package:json_annotation/json_annotation.dart';
+
+part 'ci_plan.g.dart';
 
 const kCiManualDispatchLabel = 'ci-manual-dispatch';
 
@@ -43,7 +46,7 @@ class PlanCiCommand extends Command<void> {
     );
     final githubOutputPath = argResults!['github-output'] as String?;
 
-    final outputLines = ['plan=${jsonEncode(plan.toJson())}'];
+    final outputLines = ['plan=${jsonEncode(CiPlanOutput.fromPlan(plan))}'];
 
     if (githubOutputPath != null) {
       File(githubOutputPath).writeAsStringSync('${outputLines.join('\n')}\n');
@@ -123,15 +126,137 @@ class CiPlan {
         if (job.matrix != null) job.id: {'include': job.matrix!.entries},
     },
   );
-
-  Map<String, Object?> toJson() => {
-    for (final job in kCiJobs)
-      job.id: {
-        'enable': enabledJobs.contains(job.id),
-        if (job.matrix != null) 'matrix': matrixByJob[job.id],
-      },
-  };
 }
+
+@JsonSerializable(createFactory: false, explicitToJson: true)
+class CiPlanOutput {
+  @JsonKey(name: 'deploy_website')
+  final CiPlanJobOutput deployWebsite;
+  @JsonKey(name: 'lint_rust_primary')
+  final CiPlanJobOutput lintRustPrimary;
+  @JsonKey(name: 'lint_dart_primary')
+  final CiPlanJobOutput lintDartPrimary;
+  @JsonKey(name: 'lint_rust_feature_flag')
+  final CiPlanJobOutput lintRustFeatureFlag;
+  @JsonKey(name: 'generate_run_frb_codegen_command_generate')
+  final CiPlanJobOutput generateRunFrbCodegenCommandGenerate;
+  @JsonKey(name: 'generate_run_frb_codegen_command_integrate')
+  final CiPlanJobOutput generateRunFrbCodegenCommandIntegrate;
+  @JsonKey(name: 'generate_internal')
+  final CiPlanJobOutput generateInternal;
+  @JsonKey(name: 'bench_dart_native')
+  final CiPlanJobOutput benchDartNative;
+  @JsonKey(name: 'bench_upload')
+  final CiPlanJobOutput benchUpload;
+  @JsonKey(name: 'build_flutter')
+  final CiPlanJobOutput buildFlutter;
+  @JsonKey(name: 'test_mimic_quickstart')
+  final CiPlanJobOutput testMimicQuickstart;
+  @JsonKey(name: 'test_rust')
+  final CiPlanJobOutput testRust;
+  @JsonKey(name: 'test_dart_native')
+  final CiPlanJobOutput testDartNative;
+  @JsonKey(name: 'test_dart_web')
+  final CiPlanJobOutput testDartWeb;
+  @JsonKey(name: 'test_dart_valgrind')
+  final CiPlanJobOutput testDartValgrind;
+  @JsonKey(name: 'test_dart_sanitizer')
+  final CiPlanJobOutput testDartSanitizer;
+  @JsonKey(name: 'test_flutter_native_android')
+  final CiPlanJobOutput testFlutterNativeAndroid;
+  @JsonKey(name: 'test_flutter_native_ios')
+  final CiPlanJobOutput testFlutterNativeIos;
+  @JsonKey(name: 'test_flutter_native_desktop')
+  final CiPlanJobOutput testFlutterNativeDesktop;
+  @JsonKey(name: 'test_flutter_web')
+  final CiPlanJobOutput testFlutterWeb;
+  @JsonKey(name: 'misc_codecov')
+  final CiPlanJobOutput miscCodecov;
+
+  const CiPlanOutput({
+    required this.deployWebsite,
+    required this.lintRustPrimary,
+    required this.lintDartPrimary,
+    required this.lintRustFeatureFlag,
+    required this.generateRunFrbCodegenCommandGenerate,
+    required this.generateRunFrbCodegenCommandIntegrate,
+    required this.generateInternal,
+    required this.benchDartNative,
+    required this.benchUpload,
+    required this.buildFlutter,
+    required this.testMimicQuickstart,
+    required this.testRust,
+    required this.testDartNative,
+    required this.testDartWeb,
+    required this.testDartValgrind,
+    required this.testDartSanitizer,
+    required this.testFlutterNativeAndroid,
+    required this.testFlutterNativeIos,
+    required this.testFlutterNativeDesktop,
+    required this.testFlutterWeb,
+    required this.miscCodecov,
+  });
+
+  factory CiPlanOutput.fromPlan(CiPlan plan) => CiPlanOutput(
+    deployWebsite: _jobOutput(plan: plan, jobId: 'deploy_website'),
+    lintRustPrimary: _jobOutput(plan: plan, jobId: 'lint_rust_primary'),
+    lintDartPrimary: _jobOutput(plan: plan, jobId: 'lint_dart_primary'),
+    lintRustFeatureFlag: _jobOutput(
+      plan: plan,
+      jobId: 'lint_rust_feature_flag',
+    ),
+    generateRunFrbCodegenCommandGenerate: _jobOutput(
+      plan: plan,
+      jobId: 'generate_run_frb_codegen_command_generate',
+    ),
+    generateRunFrbCodegenCommandIntegrate: _jobOutput(
+      plan: plan,
+      jobId: 'generate_run_frb_codegen_command_integrate',
+    ),
+    generateInternal: _jobOutput(plan: plan, jobId: 'generate_internal'),
+    benchDartNative: _jobOutput(plan: plan, jobId: 'bench_dart_native'),
+    benchUpload: _jobOutput(plan: plan, jobId: 'bench_upload'),
+    buildFlutter: _jobOutput(plan: plan, jobId: 'build_flutter'),
+    testMimicQuickstart: _jobOutput(plan: plan, jobId: 'test_mimic_quickstart'),
+    testRust: _jobOutput(plan: plan, jobId: 'test_rust'),
+    testDartNative: _jobOutput(plan: plan, jobId: 'test_dart_native'),
+    testDartWeb: _jobOutput(plan: plan, jobId: 'test_dart_web'),
+    testDartValgrind: _jobOutput(plan: plan, jobId: 'test_dart_valgrind'),
+    testDartSanitizer: _jobOutput(plan: plan, jobId: 'test_dart_sanitizer'),
+    testFlutterNativeAndroid: _jobOutput(
+      plan: plan,
+      jobId: 'test_flutter_native_android',
+    ),
+    testFlutterNativeIos: _jobOutput(
+      plan: plan,
+      jobId: 'test_flutter_native_ios',
+    ),
+    testFlutterNativeDesktop: _jobOutput(
+      plan: plan,
+      jobId: 'test_flutter_native_desktop',
+    ),
+    testFlutterWeb: _jobOutput(plan: plan, jobId: 'test_flutter_web'),
+    miscCodecov: _jobOutput(plan: plan, jobId: 'misc_codecov'),
+  );
+
+  Map<String, Object?> toJson() => _$CiPlanOutputToJson(this);
+}
+
+@JsonSerializable(createFactory: false, includeIfNull: false)
+class CiPlanJobOutput {
+  final bool enable;
+  final Map<String, Object?>? matrix;
+
+  const CiPlanJobOutput({required this.enable, this.matrix});
+
+  Map<String, Object?> toJson() => _$CiPlanJobOutputToJson(this);
+}
+
+CiPlanJobOutput _jobOutput({required CiPlan plan, required String jobId}) =>
+    CiPlanJobOutput(
+      enable: plan.enabledJobs.contains(jobId),
+      matrix: plan.matrixByJob[jobId],
+    );
 
 class CiJob {
   final String id;

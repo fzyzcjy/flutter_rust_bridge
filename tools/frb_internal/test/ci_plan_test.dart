@@ -292,6 +292,30 @@ void main() {
         ],
       });
     });
+
+    test('generated JSON output keeps GitHub Actions shape', () {
+      final plan = buildCiPlan(
+        filter:
+            'lint_rust_primary,test_dart_web[package=frb_example--pure_dart_pde]',
+        automaticCiDisabled: false,
+      );
+
+      final json = jsonDecode(jsonEncode(CiPlanOutput.fromPlan(plan)));
+
+      expect(json['lint_rust_primary'], {'enable': true});
+      expect(json['test_dart_web'], {
+        'enable': true,
+        'matrix': {
+          'include': [
+            {'package': 'frb_example--pure_dart_pde'},
+          ],
+        },
+      });
+      expect(json['test_rust'], {
+        'enable': false,
+        'matrix': {'include': []},
+      });
+    });
   });
 
   group('Documented ci_filter skill examples', () {
