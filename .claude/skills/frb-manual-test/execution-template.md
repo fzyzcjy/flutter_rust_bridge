@@ -46,6 +46,7 @@ Use `pass`, `fail`, `blocked`, or `partial`. The summary should explain the resu
 Link or name the artifacts captured during execution. Use `not applicable` for artifact types that do not apply.
 :::
 
+- Execution markdown gist: `TODO: gist URL if this result belongs to a PR, issue, or release checklist; otherwise not applicable`
 - Terminal log: `TODO: path or link`
 - Screenshot or recording: `TODO: path or link, or not applicable`
 - Generated artifacts: `TODO: path or link, or not applicable`
