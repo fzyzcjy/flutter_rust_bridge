@@ -16,6 +16,7 @@ concurrency:
 jobs:
   precommit_autofix:
     name: Generate precommit autofix patch
+    if: ${{ false }}
     runs-on: ubuntu-latest
     # This job checks out and executes pull request code, including code from
     # external forks. Keep it read-only; PR comments are written by the trusted
