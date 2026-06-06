@@ -1,6 +1,6 @@
 ---
 name: frb-manual-test
-description: Use when writing, executing, reviewing, or updating flutter_rust_bridge manual test reports under tools/manual_tests for scenarios that require human or agent-driven manual verification.
+description: Use when adding, executing, reviewing, or updating flutter_rust_bridge manual test reports under tools/manual_tests for scenarios that require human or agent-driven manual verification.
 ---
 
 # FRB Manual Test
@@ -9,31 +9,18 @@ Use this skill for manual test reports in `tools/manual_tests/`. These reports d
 
 Manual tests are normal software-engineering test artifacts. They may cover devices, host-specific setup, interactive UI behavior, credentials or account state, release packaging, marketplace flows, external services, or long-running workflows. They are not tied to any single PR workflow.
 
-## Core Rule
+## Add Manual Tests
 
-A manual test report must be mechanical enough that a future human or agent can execute it without the original conversation.
-
-When writing a new manual test report, do not start from a blank file. Copy the bundled template first, then edit it for the scenario:
-
-```bash
-cp .claude/skills/frb-manual-test/template.md tools/manual_tests/<name>.md
-```
-
-After copying, replace every placeholder and remove sections that truly do not apply. Keep the resulting report as a normal test case:
-
-1. Define the purpose and scope.
-2. State preconditions and environment.
-3. Give exact setup and execution steps.
-4. Define pass/fail criteria.
-5. Say what results and artifacts to capture.
-6. Include cleanup and maintenance notes.
-
-## File Location
-
-Write reports under:
+Manual test reports live under:
 
 ```text
 tools/manual_tests/<name>.md
+```
+
+When adding a report, do not start from a blank file. Copy the bundled test template first:
+
+```bash
+cp .claude/skills/frb-manual-test/test-template.md tools/manual_tests/<name>.md
 ```
 
 Use a short kebab-case name. Include a date prefix when the report is an example, a one-off check, or does not yet have a stable feature name, such as:
@@ -42,46 +29,39 @@ Use a short kebab-case name. Include a date prefix when the report is an example
 tools/manual_tests/2026-06-06-some-scenario.md
 ```
 
-## Required Content
+After copying, edit the report in place:
 
-Each report should include:
-
-- Purpose and scope.
-- Source context: issue, PR, feature, release, or user report when available.
-- When to run the test: before release, after changing a subsystem, after dependency upgrades, before closing a bug, or on demand.
-- Preconditions: required branch, commit, release, account state, devices, generated files, caches, or services.
-- Environment: OS, Flutter, Dart, Rust, devices, simulators, browsers, network, credentials, and external services.
-- Test data and fixtures, including how to create or reset them.
-- Repository preparation commands.
-- Step-by-step execution commands or UI actions.
-- Expected result and pass/fail criteria.
-- Troubleshooting notes for common setup failures.
-- Cleanup steps.
-- Results to capture: logs, screenshots, artifacts, command output, device details, or screen recordings.
-- Execution record section where the runner can append date, executor, commit, result, and artifact links.
-- Automation notes if the test could later become an automated CI or integration test.
-
-## Writing Rules
-
-- Keep steps copy-pasteable and ordered.
-- Do not rely on "run the app normally", "check manually", or "verify it works" without concrete commands or UI actions.
+- Replace every placeholder.
+- Remove sections that truly do not apply.
+- Keep commands and UI actions mechanical enough that a future human or agent can run them without the original conversation.
 - Prefer repo tooling such as `./frb_internal` when possible.
-- Include exact paths for files to edit, commands to run, and artifacts to inspect.
+- Do not rely on "run the app normally", "check manually", or "verify it works" without concrete commands or UI actions.
 - If credentials or private services are needed, name the required capability without including secrets.
-- If the test is destructive or changes host state, include an explicit cleanup section.
-- Keep the report evergreen: update commands, device names, and expected output when the product or tooling changes.
 
-## Executing A Manual Test
+The detailed content requirements live in `test-template.md`; keep that template as the source of truth for report shape.
 
-When executing a manual test, do not only say that it "passed". Record:
+## Execute Manual Tests
+
+When executing a manual test, first read the target report under `tools/manual_tests/` and follow its preparation, steps, expected result, failure criteria, troubleshooting, and cleanup sections.
+
+Before reporting the run result, use the bundled execution template:
+
+```bash
+cp .claude/skills/frb-manual-test/execution-template.md <execution-result-path>.md
+```
+
+If the result belongs in a PR comment, issue comment, release checklist, or chat response instead of a file, copy the template text there and fill it out. Do not only say that the test "passed".
+
+Fill the execution template with:
 
 - Date and timezone.
 - Executor: human name, agent, or automation.
+- Manual test path.
 - Commit or release tested.
 - Environment actually used.
 - Result: pass, fail, blocked, or partial.
 - Result artifact paths or links.
-- Any deviations from the written steps.
+- Deviations from the written steps.
 - Follow-up issue or PR if the result is not clean.
 
-Append this to the report's execution record when the report is meant to keep run history. If the run history would be noisy, put the execution result in the PR, issue, or release checklist instead and keep the report itself as the stable procedure.
+Run cleanup from the manual test report before declaring the execution complete, unless cleanup is intentionally skipped and documented in the execution record.

@@ -103,12 +103,6 @@ git status --short
 
 Remove temporary local files, stop simulators or servers started for the test, and restore any external account or device state changed during the run.
 
-## Execution Record
-
-| Date | Executor | Commit / version | Environment | Result | Artifacts |
-|------|----------|------------------|-------------|--------|----------|
-| YYYY-MM-DD | `<human-or-agent>` | `<sha-or-version>` | `<OS/device summary>` | `<pass/fail/blocked>` | `<log path, screenshot path, or PR/issue link>` |
-
 ## Future Automation
 
 If this scenario later becomes reliable and affordable to automate, replace or supplement this manual report with an automated test and link the PR here.
