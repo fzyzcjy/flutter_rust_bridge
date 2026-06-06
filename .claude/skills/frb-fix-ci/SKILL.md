@@ -32,6 +32,18 @@ Use this order before diving into individual failure types:
 
 Do not answer from stale CI state. Read the latest relevant run or job information first.
 
+### Temporary CI Narrowing
+
+When CI feedback is slow and only one job family matters for the current investigation, it is acceptable to temporarily narrow `.github/workflows/ci.yaml` so unrelated jobs do not trigger.
+Common patterns include adding an always-false `if` guard to jobs you do not care about yet, or otherwise reducing triggers to the job family being debugged.
+
+Rules:
+
+- Keep the narrowing obvious and temporary; prefer a standalone commit that can be reverted cleanly.
+- Say in the PR or follow-up status that the CI workflow is intentionally narrowed while iterating.
+- Do not treat a narrowed CI run as final readiness evidence.
+- Before final review or merge readiness, revert the temporary workflow change and run the normal CI surface again.
+
 ## Quick Reference
 
 | Symptom | Fix |
@@ -311,6 +323,7 @@ In that situation:
 - Continuing package-by-package `Generate` sync commits after two similar generated Dart drifts, instead of escalating to clean remote `precommit-generate`
 - Fixing downstream build/test jobs before upstream generate/integrate/high-relevance generate-internal stages are stable
 - Answering from stale CI state instead of reading the latest relevant run or job information first
+- Forgetting to revert temporary workflow narrowing before treating the PR as ready
 
 ## Related Skills
 
