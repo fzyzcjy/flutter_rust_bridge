@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/generator.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/ci_plan.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
@@ -11,6 +12,79 @@ void main() {
     expect(
       dartValgrindCompileCommandForTesting(),
       'dart build cli -t test/dart_valgrind_test_entrypoint.dart -o build/valgrind_test_output/',
+    );
+  });
+
+  test('CI plan full filter enables every job and full matrices', () {
+    final plan = buildCiPlan(filter: 'full', automaticCiDisabled: false);
+
+    expect(plan.enabledJobs, containsAll(kCiJobs.map((job) => job.id)));
+    expect(plan.matrixByJob['test_dart_web'], {
+      'include': [
+        {'package': 'frb_dart'},
+        {'package': 'frb_example--dart_minimal'},
+        {'package': 'frb_example--pure_dart'},
+        {'package': 'frb_example--pure_dart_pde'},
+      ],
+    });
+  });
+
+  test('CI plan filter selects one matrix entry', () {
+    final plan = buildCiPlan(
+      filter: 'test_dart_web[package=frb_example--pure_dart_pde]',
+      automaticCiDisabled: false,
+    );
+
+    expect(plan.enabledJobs, {'test_dart_web'});
+    expect(plan.matrixByJob['test_dart_web'], {
+      'include': [
+        {'package': 'frb_example--pure_dart_pde'},
+      ],
+    });
+  });
+
+  test('CI plan filter supports nested matrix dimensions and OR values', () {
+    final plan = buildCiPlan(
+      filter:
+          'test_flutter_native_desktop[platform=linux,package=frb_example--gallery|frb_example--flutter_via_integrate]',
+      automaticCiDisabled: false,
+    );
+
+    expect(plan.enabledJobs, {'test_flutter_native_desktop'});
+    expect(plan.matrixByJob['test_flutter_native_desktop'], {
+      'include': [
+        {
+          'info': {
+            'image': 'ubuntu-latest',
+            'platform': 'linux',
+            'package': 'frb_example--flutter_via_integrate',
+          },
+        },
+        {
+          'info': {
+            'image': 'ubuntu-latest',
+            'platform': 'linux',
+            'package': 'frb_example--gallery',
+          },
+        },
+      ],
+    });
+  });
+
+  test('CI plan automatic disable suppresses all jobs', () {
+    final plan = buildCiPlan(filter: 'full', automaticCiDisabled: true);
+
+    expect(plan.enabledJobs, isEmpty);
+    expect(plan.matrixByJob['test_dart_web'], {'include': []});
+  });
+
+  test('CI plan rejects unknown matrix dimensions', () {
+    expect(
+      () => buildCiPlan(
+        filter: 'test_dart_web[image=ubuntu-latest]',
+        automaticCiDisabled: false,
+      ),
+      throwsFormatException,
     );
   });
 
