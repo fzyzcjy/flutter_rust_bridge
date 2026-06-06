@@ -140,9 +140,11 @@ Future<void> runFlutterViaCreateQuickstartSmokeTest({
 
   final killedBySmoke = observedExitCode == null;
   if (killedBySmoke) {
-    process.kill();
+    await _terminateQuickstartSmokeProcess(process);
   }
-  final exitCode = await exitCodeFuture;
+  final exitCode = killedBySmoke
+      ? await _waitForQuickstartSmokeExit(exitCodeFuture)
+      : await exitCodeFuture;
   await logSink.close();
   if (chromeWrapper != null && chromeWrapper.existsSync()) {
     chromeWrapper.deleteSync();
@@ -284,6 +286,27 @@ Future<bool> _isRunningAsRoot() async {
     '-u',
   ], stdoutEncoding: systemEncoding);
   return result.exitCode == 0 && result.stdout.toString().trim() == '0';
+}
+
+Future<void> _terminateQuickstartSmokeProcess(Process process) async {
+  if (Platform.isWindows) {
+    await Process.run('taskkill', [
+      '/PID',
+      process.pid.toString(),
+      '/T',
+      '/F',
+    ], stderrEncoding: systemEncoding);
+    return;
+  }
+  process.kill();
+}
+
+Future<int?> _waitForQuickstartSmokeExit(Future<int> exitCodeFuture) async {
+  try {
+    return await exitCodeFuture.timeout(const Duration(seconds: 15));
+  } on TimeoutException {
+    return null;
+  }
 }
 
 Future<void> _captureAndOcrQuickstartSmokeScreenshot({
