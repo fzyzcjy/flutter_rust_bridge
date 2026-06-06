@@ -12,7 +12,7 @@ Use this skill when a task requires a **host Android Emulator** for FRB local ru
 FRB Android runtime validation has two separate host paths:
 
 - **Physical Android device**: host needs `adb`; Docker runs FRB/Flutter commands through the host ADB server.
-- **Android Emulator**: host needs Java, Android SDK command-line tools, `emulator`, a system image, and an AVD; Docker still runs FRB/Flutter commands through the host ADB server.
+- **Android Emulator**: host needs Java, Android SDK command-line tools, `emulator`, a system image, and an AVD; Docker runs FRB/Flutter commands through a Docker-local ADB server connected to the emulator TCP endpoint.
 
 Do not install Android Emulator packages unless the user has explicitly asked to prepare or run an emulator. Installing the emulator changes host state and downloads large SDK packages.
 
@@ -104,7 +104,7 @@ Do not use `brew install --cask temurin` in non-interactive agent runs unless th
 
 ## Install Command-Line Tools
 
-If Android Studio is not installed and `cmdline-tools/latest` is missing, install the official Android command-line tools into the standard SDK root. This follows the Android Developers command-line tools instructions: download the command-line tools package from the Android Studio page, extract it, and place it under `cmdline-tools/latest` in the Android SDK root.
+If Android Studio is not installed and `cmdline-tools/latest` is missing, install the official Android command-line tools into the standard SDK root. This follows the Android Developers command-line tools instructions on the Android Studio download page: https://developer.android.com/studio. The important shape is to download the command-line tools package from that page, extract it, and place it under `cmdline-tools/latest` in the Android SDK root.
 
 ```bash
 mkdir -p "$HOME/Library/Android/sdk/cmdline-tools/latest"
@@ -126,7 +126,7 @@ export PATH="/opt/homebrew/opt/openjdk/bin:$ANDROID_HOME/cmdline-tools/latest/bi
 
 ## Install Emulator Packages
 
-Accept licenses and install the minimal packages with `sdkmanager`, the Android SDK package manager documented by Android Developers:
+Accept licenses and install the minimal packages with `sdkmanager`, the Android SDK package manager documented by Android Developers at https://developer.android.com/tools/sdkmanager:
 
 ```bash
 yes | sdkmanager --licenses
@@ -141,7 +141,7 @@ If the user wants a smaller or non-Google image, choose a matching `system-image
 
 ## Create AVD
 
-Use a predictable AVD name that the `frb-dev-env` examples can reference. This uses `avdmanager`, the Android Developers command-line tool for creating and managing AVDs:
+Use a predictable AVD name that the `frb-dev-env` examples can reference. This uses `avdmanager`, the Android Developers command-line tool for creating and managing AVDs documented at https://developer.android.com/tools/avdmanager:
 
 ```bash
 avdmanager create avd \
@@ -158,35 +158,36 @@ avdmanager list device
 
 ## Start And Verify Emulator
 
-Start the host emulator through `frb-dev-env`. The underlying emulator invocation follows the Android Emulator command-line interface:
+Start the host emulator through `frb-dev-env`. The underlying emulator invocation follows the Android Emulator command-line interface documented at https://developer.android.com/studio/run/emulator-commandline:
 
 ```bash
 .claude/skills/frb-dev-env/frb_dev_env.py android emulator --avd FRB_API_35 --port 5554
 ```
 
-In another terminal, start the host ADB server for Docker clients:
-
-```bash
-.claude/skills/frb-dev-env/frb_dev_env.py android adb-server
-```
-
-Verify host ADB can see the emulator. This uses ADB, the Android Developers command-line tool for communicating with Android devices and emulators:
+Verify host ADB can see the emulator. This uses ADB, the Android Developers command-line tool documented at https://developer.android.com/tools/adb:
 
 ```bash
 adb devices -l
 ```
 
-Verify Docker can see the same emulator:
+For emulator runtime tests, let Docker use its own ADB server and connect directly to the host emulator ADB TCP endpoint. For emulator console port `5554`, that endpoint is `host.docker.internal:5555`:
 
 ```bash
-.claude/skills/frb-dev-env/frb_dev_env.py docker exec --android-host-adb -- adb devices -l
+.claude/skills/frb-dev-env/frb_dev_env.py docker exec --android-emulator-adb -- adb devices -l
 ```
 
-Only after both ADB checks pass, run an FRB Android runtime command:
+Only after both ADB checks pass, run an FRB Android runtime command. Use the Docker-visible emulator serial:
+
+```bash
+.claude/skills/frb-dev-env/frb_dev_env.py docker exec --android-emulator-adb -- \
+  bash -lc './frb_internal test-flutter-native --package frb_example--flutter_via_create --flutter-test-args "--device-id host.docker.internal:5555"'
+```
+
+For a physical Android phone, or for a simple host ADB connectivity smoke test, start the host ADB server for Docker clients in another terminal and use `--android-host-adb`:
 
 ```bash
 .claude/skills/frb-dev-env/frb_dev_env.py docker exec --android-host-adb -- \
-  bash -lc './frb_internal test-flutter-native --package frb_example--flutter_via_create --flutter-test-args "--device-id emulator-5554"'
+  adb devices -l
 ```
 
 ## Common Failures
@@ -195,7 +196,9 @@ Only after both ADB checks pass, run an FRB Android runtime command:
 - `Android SDK root does not exist`: install Android Studio or command-line tools into `~/Library/Android/sdk`, or set `ANDROID_HOME`.
 - `emulator: command not found`: install the SDK `emulator` package and ensure `~/Library/Android/sdk/emulator` is on `PATH`.
 - No AVD found: create `FRB_API_35` with `avdmanager create avd`, or pass the existing AVD name to `android emulator --avd`.
-- Docker cannot see host ADB: ensure host ADB server was started with `adb -a -L tcp:0.0.0.0:5037 server nodaemon`, then verify `host.docker.internal:5037` from the container.
+- Docker cannot see the host emulator through `--android-emulator-adb`: verify the host emulator is running on console port `5554`, verify host `adb devices -l` shows `emulator-5554`, then run `adb connect host.docker.internal:5555` inside Docker or retry the helper command.
+- Docker cannot see a physical device through host ADB: ensure host ADB server was started with `adb -a -L tcp:5037 server nodaemon`, then verify `host.docker.internal:5037` from the container. Recent ADB versions may reject `tcp:0.0.0.0:5037` with `listening on specified hostname currently unsupported`; use `tcp:5037` with `-a` instead.
+- Flutter integration test fails with a VM service or DDS connection refused on `127.0.0.1`: the command likely used `--android-host-adb` against an emulator. Use `--android-emulator-adb` so `adb forward` binds inside Docker.
 
 ## Cleanup
 

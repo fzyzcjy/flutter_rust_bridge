@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Verify that the FRB local development workflow can run Android runtime validation with the Android target managed by the host and FRB/Flutter commands running inside the per-worktree Docker container. This test covers both host ADB connectivity and the host Android Emulator path that Docker cannot provide directly on macOS.
+Verify that the FRB local development workflow can run Android runtime validation with the Android target managed by the host and FRB/Flutter commands running inside the per-worktree Docker container. This test covers both physical-device host ADB connectivity and the host Android Emulator path that Docker cannot provide directly on macOS.
 
 ## Source
 
@@ -50,14 +50,14 @@ For a physical Android device, connect it to the host, enable USB debugging, acc
 adb devices -l
 ```
 
-For a host Android Emulator, first prepare the SDK packages and AVD using `.claude/skills/frb-android-emulator-prepare/SKILL.md`, then start the emulator with a stable serial:
+For a host Android Emulator, first prepare the SDK packages and AVD using `.claude/skills/frb-android-emulator-prepare/SKILL.md`, then start the emulator with a stable console port:
 
 ```bash
 .claude/skills/frb-dev-env/frb_dev_env.py android env
 .claude/skills/frb-dev-env/frb_dev_env.py android emulator --avd FRB_API_35 --port 5554
 ```
 
-In a separate foreground terminal, start a host ADB server that Docker can reach:
+For a physical Android device, start a host ADB server that Docker can reach in a separate foreground terminal:
 
 ```bash
 .claude/skills/frb-dev-env/frb_dev_env.py android adb-server
@@ -76,31 +76,38 @@ In a separate foreground terminal, start a host ADB server that Docker can reach
    adb devices -l
    ```
 
-2. Record Docker tool versions and Android tool visibility.
+2. Record Docker tool versions.
 
    ```bash
-   .claude/skills/frb-dev-env/frb_dev_env.py docker exec --android-host-adb -- bash -lc '
+   .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- bash -lc '
    set -euo pipefail
    flutter --version
    dart --version
    rustc --version
    cargo --version
-   adb devices -l
    '
    ```
 
-3. Confirm Docker-side ADB can see the same host-managed Android target.
+3. Confirm Docker-side ADB can see the selected Android target. For the emulator path, use Docker-local ADB connected directly to the host emulator endpoint:
+
+   ```bash
+   .claude/skills/frb-dev-env/frb_dev_env.py docker exec --android-emulator-adb -- adb devices -l
+   ```
+
+   For a physical device connected to host USB, use the host ADB server path instead:
 
    ```bash
    .claude/skills/frb-dev-env/frb_dev_env.py docker exec --android-host-adb -- adb devices -l
    ```
 
-4. Run the Android Flutter native integration test from Docker. Replace `<SERIAL>` with the physical device serial or the emulator serial such as `emulator-5554`.
+4. Run the Android Flutter native integration test from Docker. For the emulator path with host console port `5554`, use Docker-visible serial `host.docker.internal:5555`:
 
    ```bash
-   .claude/skills/frb-dev-env/frb_dev_env.py docker exec --android-host-adb -- \
-     bash -lc './frb_internal test-flutter-native --package frb_example/flutter_via_create --flutter-test-args "--device-id <SERIAL>"'
+   .claude/skills/frb-dev-env/frb_dev_env.py docker exec --android-emulator-adb -- \
+     bash -lc './frb_internal test-flutter-native --package frb_example--flutter_via_create --flutter-test-args "--device-id host.docker.internal:5555"'
    ```
+
+   For a physical device, replace `<SERIAL>` with the device serial and use `--android-host-adb`. This path validates physical-device connectivity, but prefer the emulator path above for full Flutter runtime checks when possible because Flutter's `adb forward` binds dynamic VM service ports where the ADB server runs.
 
 5. Confirm the host checkout did not gain unexpected generated or cache files.
 
@@ -110,12 +117,12 @@ In a separate foreground terminal, start a host ADB server that Docker can reach
 
 ## Expected Result
 
-The Android host runtime coverage test passes when the host ADB server sees the selected Android target, Docker-side ADB sees the same target through `--android-host-adb`, and the Android Flutter native integration test completes successfully against the requested serial.
+The Android host runtime coverage test passes when host ADB sees the selected Android target, Docker-side ADB sees the same target through the appropriate mode, and the Android Flutter native integration test completes successfully against the requested serial.
 
 ```text
 adb devices -l
-.claude/skills/frb-dev-env/frb_dev_env.py docker exec --android-host-adb -- adb devices -l
-./frb_internal test-flutter-native --package frb_example/flutter_via_create --flutter-test-args "--device-id <SERIAL>"
+.claude/skills/frb-dev-env/frb_dev_env.py docker exec --android-emulator-adb -- adb devices -l
+./frb_internal test-flutter-native --package frb_example--flutter_via_create --flutter-test-args "--device-id host.docker.internal:5555"
 ```
 
 ## Failure Criteria
@@ -124,7 +131,7 @@ The test fails if any of the following happens:
 
 - The host ADB server cannot start in Docker-reachable mode.
 - The Android target is missing, unauthorized, offline, or the wrong serial is selected.
-- Docker-side ADB cannot see the host-managed Android target through `--android-host-adb`.
+- Docker-side ADB cannot see the host-managed Android target through the selected ADB mode.
 - The Android Flutter native integration test exits non-zero unexpectedly after the target is available.
 - `git status --short` shows unexpected local changes after the run.
 
@@ -141,8 +148,10 @@ The test is blocked, not failed, if the host has no physical Android device and 
 ## Troubleshooting
 
 - If host `adb devices -l` shows `unauthorized`, unlock the Android device or emulator and accept the USB debugging prompt.
-- If host ADB cannot start with `could not install *smartsocket* listener`, retry from a normal host terminal or with an execution context that can bind local TCP ports.
-- If Docker cannot see the target, ensure `.claude/skills/frb-dev-env/frb_dev_env.py android adb-server` is still running and using the same port as `docker exec --android-host-adb`.
+- If host ADB cannot start with `could not install *smartsocket* listener`, retry from a normal host terminal or with an execution context that can bind local TCP ports. If the error says `listening on specified hostname currently unsupported`, use `adb -a -L tcp:5037 server nodaemon` rather than `tcp:0.0.0.0:5037`.
+- If Docker cannot see a host emulator, verify host `adb devices -l` shows `emulator-5554`, then retry `.claude/skills/frb-dev-env/frb_dev_env.py docker exec --android-emulator-adb -- adb devices -l`.
+- If Docker cannot see a physical device, ensure `.claude/skills/frb-dev-env/frb_dev_env.py android adb-server` is still running and using the same port as `docker exec --android-host-adb`.
+- If the Flutter integration test fails with a VM service or DDS connection refused on `127.0.0.1`, rerun the emulator path with `--android-emulator-adb` rather than `--android-host-adb`.
 - If the emulator command is missing, read `.claude/skills/frb-android-emulator-prepare/SKILL.md` and prepare the host Android Emulator environment before retrying.
 - If Flutter cannot find Android build tools inside Docker, inspect the Docker image Android SDK contents and update the image or mount strategy; do not install host Flutter or Gradle as a workaround.
 
