@@ -21,7 +21,7 @@ Future<void> initializeWasmModule({
 
   final jsObject = web.window.getProperty(wasmBindgenName.toJS) as JSObject;
   final wasmBindgen = _JSWasmBindgen(jsObject);
-  await wasmBindgen({"module_or_path": '${root}_bg.wasm'}.jsify()).toDart;
+  await wasmBindgen('${root}_bg.wasm'.toJS).toDart;
 }
 
 void _ensureCrossOriginIsolated() {
