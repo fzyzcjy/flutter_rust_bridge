@@ -241,6 +241,192 @@ void main() {
     });
   });
 
+  group('Documented ci_filter skill examples', () {
+    test('full', () {
+      final plan = buildCiPlan(filter: 'full', automaticCiDisabled: false);
+      final fullPlan = CiPlan.full();
+
+      expect(plan.enabledJobs, fullPlan.enabledJobs);
+      expect(plan.matrixByJob, fullPlan.matrixByJob);
+    });
+
+    for (final example in [
+      _CiFilterExample(
+        filter: 'lint_dart_primary',
+        enabledJobs: {'lint_dart_primary'},
+      ),
+      _CiFilterExample(
+        filter:
+            'lint_dart_primary,test_dart_web[package=frb_example--pure_dart]',
+        enabledJobs: {'lint_dart_primary', 'test_dart_web'},
+        matrixByJob: {
+          'test_dart_web': {
+            'include': [
+              {'package': 'frb_example--pure_dart'},
+            ],
+          },
+        },
+      ),
+      _CiFilterExample(
+        filter: 'test_dart_web[package=frb_example--pure_dart_pde]',
+        enabledJobs: {'test_dart_web'},
+        matrixByJob: {
+          'test_dart_web': {
+            'include': [
+              {'package': 'frb_example--pure_dart_pde'},
+            ],
+          },
+        },
+      ),
+      _CiFilterExample(
+        filter: 'test_dart_web[package=frb_dart|frb_example--pure_dart_pde]',
+        enabledJobs: {'test_dart_web'},
+        matrixByJob: {
+          'test_dart_web': {
+            'include': [
+              {'package': 'frb_dart'},
+              {'package': 'frb_example--pure_dart_pde'},
+            ],
+          },
+        },
+      ),
+      _CiFilterExample(
+        filter:
+            'test_dart_native[image=ubuntu-24.04,package=tools--frb_internal]',
+        enabledJobs: {'test_dart_native'},
+        matrixByJob: {
+          'test_dart_native': {
+            'include': [
+              {'image': 'ubuntu-24.04', 'package': 'tools--frb_internal'},
+            ],
+          },
+        },
+      ),
+      _CiFilterExample(
+        filter: 'test_rust[image=ubuntu-latest,version=nightly|1.85.0]',
+        enabledJobs: {'test_rust'},
+        matrixByJob: {
+          'test_rust': {
+            'include': [
+              {
+                'info': {'image': 'ubuntu-latest', 'version': 'nightly'},
+              },
+              {
+                'info': {'image': 'ubuntu-latest', 'version': '1.85.0'},
+              },
+            ],
+          },
+        },
+      ),
+      _CiFilterExample(
+        filter:
+            'test_flutter_native_desktop[platform=linux,package=frb_example--gallery]',
+        enabledJobs: {'test_flutter_native_desktop'},
+        matrixByJob: {
+          'test_flutter_native_desktop': {
+            'include': [
+              {
+                'info': {
+                  'image': 'ubuntu-latest',
+                  'platform': 'linux',
+                  'package': 'frb_example--gallery',
+                },
+              },
+            ],
+          },
+        },
+      ),
+      _CiFilterExample(
+        filter:
+            'test_flutter_native_android[package=frb_example--flutter_via_create,device=pixel,api-level=35]',
+        enabledJobs: {'test_flutter_native_android'},
+        matrixByJob: {
+          'test_flutter_native_android': {
+            'include': [
+              {
+                'package': 'frb_example--flutter_via_create',
+                'device': 'pixel',
+                'api-level': 35,
+              },
+            ],
+          },
+        },
+      ),
+      _CiFilterExample(
+        filter:
+            'test_flutter_native_ios[device=iPhone 16 Pro Max Simulator (18.6),package=frb_example--rust_ui_counter--ui]',
+        enabledJobs: {'test_flutter_native_ios'},
+        matrixByJob: {
+          'test_flutter_native_ios': {
+            'include': [
+              {
+                'package': 'frb_example--rust_ui_counter--ui',
+                'device': 'iPhone 16 Pro Max Simulator (18.6)',
+              },
+            ],
+          },
+        },
+      ),
+      _CiFilterExample(
+        filter:
+            'generate_run_frb_codegen_command_generate[image=ubuntu-24.04,package=frb_example--integrate_third_party]',
+        enabledJobs: {'generate_run_frb_codegen_command_generate'},
+        matrixByJob: {
+          'generate_run_frb_codegen_command_generate': {
+            'include': [
+              {
+                'image': 'ubuntu-24.04',
+                'package': 'frb_example--integrate_third_party',
+              },
+            ],
+          },
+        },
+      ),
+      _CiFilterExample(
+        filter: 'generate_run_frb_codegen_command_integrate[platforms=ohos]',
+        enabledJobs: {'generate_run_frb_codegen_command_integrate'},
+        matrixByJob: {
+          'generate_run_frb_codegen_command_integrate': {
+            'include': [
+              {
+                'image': 'ubuntu-24.04',
+                'package': 'frb_example--flutter_via_create',
+                'platforms': 'ohos',
+              },
+            ],
+          },
+        },
+      ),
+      _CiFilterExample(
+        filter:
+            'test_dart_sanitizer[sanitizer=asan,package=frb_example--pure_dart]',
+        enabledJobs: {'test_dart_sanitizer'},
+        matrixByJob: {
+          'test_dart_sanitizer': {
+            'include': [
+              {'sanitizer': 'asan', 'package': 'frb_example--pure_dart'},
+            ],
+          },
+        },
+      ),
+      _CiFilterExample(
+        filter: 'bench_dart_native[image=ubuntu-24.04]',
+        enabledJobs: {'bench_dart_native'},
+        matrixByJob: {
+          'bench_dart_native': {
+            'include': [
+              {'image': 'ubuntu-24.04'},
+            ],
+          },
+        },
+      ),
+    ]) {
+      test(example.filter, () {
+        _expectCiFilterExample(example);
+      });
+    }
+  });
+
   group('CI filter validation', () {
     test('rejects unknown jobs', () {
       expect(
@@ -322,4 +508,32 @@ String _prettyJson(Object value) =>
 String _readSnapshot(String name) {
   final snapshotPath = 'test/ci_plan_test_snapshot_$name.json';
   return File(snapshotPath).readAsStringSync().trim();
+}
+
+void _expectCiFilterExample(_CiFilterExample example) {
+  final plan = buildCiPlan(
+    filter: example.filter,
+    automaticCiDisabled: false,
+  );
+
+  expect(plan.enabledJobs, example.enabledJobs);
+  for (final entry in plan.matrixByJob.entries) {
+    expect(
+      entry.value,
+      example.matrixByJob[entry.key] ?? {'include': []},
+      reason: '${example.filter} should select matrix entries for ${entry.key}',
+    );
+  }
+}
+
+class _CiFilterExample {
+  final String filter;
+  final Set<String> enabledJobs;
+  final Map<String, Map<String, Object?>> matrixByJob;
+
+  const _CiFilterExample({
+    required this.filter,
+    required this.enabledJobs,
+    this.matrixByJob = const {},
+  });
 }
