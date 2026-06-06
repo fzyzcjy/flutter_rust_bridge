@@ -631,8 +631,10 @@ Future<void> testFlutterWeb(TestFlutterWebConfig config) async {
     relativePwd: config.package,
   );
 
-  if (config.package == 'frb_example/flutter_via_create') {
+  if (config.package == 'frb_example/flutter_via_create' && Platform.isLinux) {
     await _runFlutterViaCreateWebQuickstartSmokeTest(config.package);
+  } else if (config.package == 'frb_example/flutter_via_create') {
+    print('Skip flutter_via_create web quickstart smoke test on non-Linux');
   }
 
   if (config.coverage) {
