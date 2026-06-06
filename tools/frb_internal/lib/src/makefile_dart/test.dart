@@ -390,7 +390,7 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
       // extra check for e.g. #1807
       await wrapMaybeSetExitIfChangedRaw(config.checkClean, () async {
         await exec(
-          '${dartMode.name} $extraFlags test ${config.coverage ? ' --coverage="coverage"' : ""}',
+          '${_testCommand(dartMode)} $extraFlags ${config.coverage ? ' --coverage="coverage"' : ""}',
           relativePwd: config.package,
           extraEnv: {
             // Deliberately do not provide backtrace env to see whether the test_utils work
@@ -406,6 +406,10 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
     await _formatDartCoverage(package: config.package);
   }
 }
+
+String _testCommand(DartMode mode) => mode == DartMode.dart
+    ? 'dart --enable-vm-service=0 run test'
+    : 'flutter test';
 
 // Follow steps in https://github.com/taiki-e/cargo-llvm-cov#get-coverage-of-external-tests
 Future<T> withLlvmCovReport<T>(
@@ -595,10 +599,12 @@ Future<void> flutterIntegrationTestRaw({
   String flutterTestArgs = '',
   required String relativePwd,
 }) async {
+  const timeout = Duration(minutes: 20);
   await retry(
     () async => await exec(
       'flutter test integration_test/simple_test.dart --verbose --reporter=expanded $flutterTestArgs',
       relativePwd: relativePwd,
+      timeout: timeout,
     ),
     maxAttempts: 3,
     onRetry: (e) => print(
@@ -638,6 +644,13 @@ Future<void> testFlutterWeb(TestFlutterWebConfig config) async {
 String resolveBuildWebPackage(String package) =>
     kBuildWebPackageReplacer[package] ?? package;
 
-Future<void> _runFlutterDoctor() async => await exec('flutter doctor -v');
+Future<void> _runFlutterDoctor() async {
+  if (Platform.environment['FRB_SKIP_FLUTTER_DOCTOR'] == '1') {
+    print('Skip flutter doctor because FRB_SKIP_FLUTTER_DOCTOR=1');
+    return;
+  }
+
+  await exec('flutter doctor -v');
+}
 
 const kEnvEnableRustBacktrace = {'RUST_BACKTRACE': 'full'};
