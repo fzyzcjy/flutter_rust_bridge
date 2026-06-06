@@ -17,7 +17,7 @@ env:
   CARGO_TERM_COLOR: always
   FRB_MAIN_RUST_VERSION: 1.93.1
   FRB_MAIN_DART_VERSION: 3.11.0
-  FRB_MAIN_FLUTTER_VERSION: 3.41.2
+  FRB_MAIN_FLUTTER_VERSION: 3.44.0
   FRB_RUSTFMT_NIGHTLY_VERSION: nightly-2025-02-01
 
 concurrency:
@@ -29,7 +29,7 @@ jobs:
 
   # ref https://docusaurus.io/docs/deployment#triggering-deployment-with-github-actions
   deploy_website:
-    if: ${{ false }}
+    if: ${{ github.event.action != 'closed' }}
     name: 'Deploy :: Website'
     runs-on: ubuntu-latest
 
@@ -73,7 +73,7 @@ jobs:
   # ----------------------------------- lint -----------------------------------
 
   lint_rust_primary:
-    if: ${{ false }}
+    if: ${{ github.event.action != 'closed' }}
     name: 'Lint :: Rust :: Primary'
     runs-on: ubuntu-latest
 
@@ -107,7 +107,7 @@ jobs:
       - run: ./frb_internal lint-rust
 
   lint_dart_primary:
-    if: ${{ false }}
+    if: ${{ github.event.action != 'closed' }}
     name: 'Lint :: Dart :: Primary'
     runs-on: ubuntu-latest
 
@@ -133,7 +133,7 @@ jobs:
       - run: ./frb_internal lint-dart
 
   lint_rust_feature_flag:
-    if: ${{ false }}
+    if: ${{ github.event.action != 'closed' }}
     name: 'Lint :: Rust :: Feature flag'
     runs-on: ubuntu-latest
 
@@ -194,7 +194,7 @@ jobs:
   #       cargo msrv --path frb_rust verify
 
   generate_run_frb_codegen_command_generate:
-    if: ${{ false }}
+    if: ${{ github.event.action != 'closed' }}
     name: 'Generate :: FRB Codegen :: Command Generate'
     runs-on: ${{ matrix.image }}
 
@@ -258,7 +258,7 @@ jobs:
           path: target/coverage
 
   generate_run_frb_codegen_command_integrate:
-    if: ${{ false }}
+    if: ${{ github.event.action != 'closed' }}
     name: 'Generate :: FRB Codegen :: Command Integrate'
     runs-on: ${{ matrix.image }}
     env:
@@ -338,7 +338,7 @@ jobs:
           path: target/coverage
 
   generate_internal:
-    if: ${{ false }}
+    if: ${{ github.event.action != 'closed' }}
     name: 'Generate :: Internal'
     runs-on: ubuntu-latest
 
@@ -379,7 +379,7 @@ jobs:
   # ----------------------------------- bench -----------------------------------
 
   bench_dart_native:
-    if: ${{ false }}
+    if: ${{ github.event.action != 'closed' }}
     name: 'Bench :: Dart :: Native'
     runs-on: ${{ matrix.image }}
     strategy:
@@ -424,7 +424,7 @@ jobs:
     name: 'Bench :: Upload'
     runs-on: ubuntu-latest
     # NOTE Even if some previous jobs failed, we still want partial info
-    if: ${{ false }}
+    if: ${{ github.event.action != 'closed' && always() && !cancelled() }}
     needs:
       # NOTE We do this to ensure bench upload *after* deploy website.
       # Otherwise, if they are run concurrently, they can push to git at the same time, causing failure for one of them
@@ -461,7 +461,7 @@ jobs:
   # ----------------------------------- build -----------------------------------
 
   build_flutter:
-    if: ${{ false }}
+    if: ${{ github.event.action != 'closed' }}
     name: 'Build :: Flutter'
     runs-on: ${{ matrix.info.image }}
     strategy:
@@ -541,7 +541,7 @@ jobs:
   # ----------------------------------- test -----------------------------------
 
   test_mimic_quickstart:
-    if: ${{ false }}
+    if: ${{ github.event.action != 'closed' }}
     name: 'Test :: MimicQuickstart'
     runs-on: ${{ matrix.image }}
     strategy:
@@ -629,7 +629,7 @@ jobs:
   #         path: target/coverage
 
   test_rust:
-    if: ${{ false }}
+    if: ${{ github.event.action != 'closed' }}
     name: 'Test :: Rust'
     runs-on: ${{ matrix.info.image }}
     strategy:
@@ -687,7 +687,7 @@ jobs:
           path: target/coverage
 
   test_dart_native:
-    if: ${{ false }}
+    if: ${{ github.event.action != 'closed' }}
     name: 'Test :: Dart :: Native'
     runs-on: ${{ matrix.image }}
     strategy:
@@ -747,7 +747,7 @@ jobs:
           path: target/coverage
 
   test_dart_web:
-    if: ${{ false }}
+    if: ${{ github.event.action != 'closed' }}
     name: 'Test :: Dart :: Web'
     runs-on: ubuntu-latest
     strategy:
@@ -807,7 +807,7 @@ jobs:
       - run: ./frb_internal test-dart-web --package ${{ matrix.package }}
 
   test_dart_valgrind:
-    if: ${{ false }}
+    if: ${{ github.event.action != 'closed' }}
     name: 'Test :: Dart :: Valgrind'
     runs-on: ubuntu-latest
     strategy:
@@ -846,7 +846,7 @@ jobs:
       - run: ./frb_internal test-dart-valgrind --package ${{ matrix.package }}
 
   test_dart_sanitizer:
-    if: ${{ false }}
+    if: ${{ github.event.action != 'closed' }}
     name: 'Test :: Dart :: Sanitizer'
     runs-on: ubuntu-latest
     strategy:
@@ -906,6 +906,10 @@ jobs:
       matrix:
         package:
           - frb_example--flutter_via_create
+          - frb_example--flutter_package--example
+          - frb_example--rust_ui_counter--ui
+          - frb_example--rust_ui_todo_list--ui
+          # no `frb_example--flutter_via_integrate` since it is similar to `flutter_via_create`
         device:
           - "pixel"
           - "Nexus 6"
@@ -952,7 +956,6 @@ jobs:
           # emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           # disable-animations: false
           script: echo "Generated AVD snapshot for caching."
-      - run: sudo apt-get update && sudo apt-get install -y imagemagick tesseract-ocr
 
       # execute
       - uses: reactivecircus/android-emulator-runner@v2
@@ -961,15 +964,7 @@ jobs:
           # emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
           arch: x86_64
           profile: ${{ matrix.device }}
-          script: |-
-            ./frb_internal test-flutter-native --flutter-test-args '--device-id emulator-5554' --package ${{ matrix.package }}
-            ./frb_internal test-flutter-quickstart-smoke --package ${{ matrix.package }} --target android --device-id emulator-5554
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: ${{ github.job }}--${{ matrix.device }}--${{ matrix.package }}--quickstart-smoke
-          path: frb_example/flutter_via_create/target/quickstart_smoke
-          if-no-files-found: warn
+          script: ./frb_internal test-flutter-native --flutter-test-args '--device-id emulator-5554' --package ${{ matrix.package }}
 
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
   test_flutter_native_ios:
@@ -981,6 +976,10 @@ jobs:
       matrix:
         package:
           - frb_example--flutter_via_create
+          - frb_example--flutter_package--example
+          - frb_example--rust_ui_counter--ui
+          - frb_example--rust_ui_todo_list--ui
+          # no `frb_example--flutter_via_integrate` since it is similar to `flutter_via_create`
         device:
           - "iPad (10th generation) Simulator (18.6)"
           - "iPhone 16 Pro Max Simulator (18.6)"
@@ -1005,23 +1004,14 @@ jobs:
           # the extra "(" is to avoid matching things like "iPhone 12 Pro Max Simulator (16.2) + Apple Watch Series 5 - 44mm (8.0)"
           UDID=$(xcrun xctrace list devices | grep '${{ matrix.device }} (' | awk '{print $NF}' | tr -d '()')
           echo UDID=$UDID
-          echo "UDID=$UDID" >> "$GITHUB_ENV"
           xcrun simctl boot "${UDID:?No Simulator with this name found}"
       - uses: flutter-actions/setup-flutter@v4
         with:
           cache: true
           version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
-      - run: HOMEBREW_NO_AUTO_UPDATE=1 brew install imagemagick tesseract
 
       # execute
-      - run: ./frb_internal test-flutter-native --flutter-test-args "--device-id $UDID" --package ${{ matrix.package }}
-      - run: ./frb_internal test-flutter-quickstart-smoke --package ${{ matrix.package }} --target ios --device-id "$UDID"
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: ${{ github.job }}--${{ matrix.device }}--${{ matrix.package }}--quickstart-smoke
-          path: frb_example/flutter_via_create/target/quickstart_smoke
-          if-no-files-found: warn
+      - run: ./frb_internal test-flutter-native --package ${{ matrix.package }}
 
   test_flutter_native_desktop:
     if: ${{ github.event.action != 'closed' }}
@@ -1042,6 +1032,49 @@ jobs:
             platform: linux
             package: frb_example--flutter_via_create
 
+          - image: windows-2025
+            platform: windows
+            package: frb_example--flutter_package--example
+          - image: macos-15-intel
+            platform: macos
+            package: frb_example--flutter_package--example
+          - image: ubuntu-latest
+            platform: linux
+            package: frb_example--flutter_package--example
+
+          - image: windows-2025
+            platform: windows
+            package: frb_example--rust_ui_counter--ui
+          - image: macos-15-intel
+            platform: macos
+            package: frb_example--rust_ui_counter--ui
+          - image: ubuntu-latest
+            platform: linux
+            package: frb_example--rust_ui_counter--ui
+
+          - image: windows-2025
+            platform: windows
+            package: frb_example--rust_ui_todo_list--ui
+          - image: macos-15-intel
+            platform: macos
+            package: frb_example--rust_ui_todo_list--ui
+          - image: ubuntu-latest
+            platform: linux
+            package: frb_example--rust_ui_todo_list--ui
+
+          # only slightly test `flutter_via_integrate` since quite similar to `flutter_via_create`
+          - image: ubuntu-latest
+            platform: linux
+            package: frb_example--flutter_via_integrate
+          # only slightly test `gallery`, since mainly used on web
+          - image: ubuntu-latest
+            platform: linux
+            package: frb_example--gallery
+          # only slightly test `integrate_third_party`, since the main point is not this
+          - image: ubuntu-latest
+            platform: linux
+            package: frb_example--integrate_third_party
+
     steps:
       # setup
       - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
@@ -1057,15 +1090,9 @@ jobs:
           submodules: recursive
       # https://docs.flutter.dev/get-started/install/linux#linux-prerequisites
       - if: runner.os == 'Linux'
-        run: sudo apt-get update && sudo apt-get install clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev imagemagick tesseract-ocr
+        run: sudo apt-get update && sudo apt-get install clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
       - if: runner.os == 'Linux'
         uses: pyvista/setup-headless-display-action@v4
-      - if: runner.os == 'macOS'
-        run: HOMEBREW_NO_AUTO_UPDATE=1 brew install imagemagick tesseract
-      - if: runner.os == 'Windows'
-        run: |-
-          choco install imagemagick.app tesseract -y
-          echo "C:\Program Files\Tesseract-OCR" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
       - uses: flutter-actions/setup-flutter@v4
         with:
           cache: true
@@ -1073,13 +1100,6 @@ jobs:
 
       # execute
       - run: ./frb_internal test-flutter-native --flutter-test-args '--device-id ${{ matrix.info.platform }}' --package ${{ matrix.info.package }}
-      - run: ./frb_internal test-flutter-quickstart-smoke --package ${{ matrix.info.package }} --target desktop --device-id ${{ matrix.info.platform }}
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: ${{ github.job }}--${{ matrix.info.platform }}--${{ matrix.info.package }}--quickstart-smoke
-          path: frb_example/flutter_via_create/target/quickstart_smoke
-          if-no-files-found: warn
 
   test_flutter_web:
     if: ${{ github.event.action != 'closed' }}
@@ -1090,6 +1110,9 @@ jobs:
       matrix:
         package:
           - frb_example--flutter_via_create
+          # no `frb_example--flutter_package--example` yet
+          # no `frb_example--flutter_via_integrate` since it is similar to `flutter_via_create`
+          - frb_example--gallery
 
     steps:
       - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
@@ -1127,23 +1150,158 @@ jobs:
 
           sleep 15
           lsof -i :4444
-      - run: sudo apt-get update && sudo apt-get install -y imagemagick tesseract-ocr
 
       # execute
       - run: ./frb_internal test-flutter-web --package ${{ matrix.package }} --coverage
-      - run: ./frb_internal test-flutter-quickstart-smoke --package ${{ matrix.package }} --target web --device-id chrome
+
+      # report
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.job }}--${{ matrix.package }}--coverage
+          path: target/coverage
+
+  test_flutter_quickstart_smoke:
+    if: ${{ github.event.action != 'closed' }}
+    name: 'Test :: Flutter :: Quickstart Smoke:: ${{ matrix.info.platform }} (${{ matrix.info.device }})'
+    runs-on: ${{ matrix.info.image }}
+    strategy:
+      fail-fast: false
+      matrix:
+        info:
+          - image: ubuntu-latest
+            platform: web
+            target: web
+            device: chrome
+            package: frb_example--flutter_via_create
+          - image: ubuntu-latest
+            platform: android
+            target: android
+            device: pixel
+            api-level: 35
+            package: frb_example--flutter_via_create
+          - image: ubuntu-latest
+            platform: android
+            target: android
+            device: Nexus 6
+            api-level: 35
+            package: frb_example--flutter_via_create
+          - image: macos-latest
+            platform: ios
+            target: ios
+            device: iPad (10th generation) Simulator (18.6)
+            package: frb_example--flutter_via_create
+          - image: macos-latest
+            platform: ios
+            target: ios
+            device: iPhone 16 Pro Max Simulator (18.6)
+            package: frb_example--flutter_via_create
+          - image: ubuntu-latest
+            platform: linux
+            target: desktop
+            device: linux
+            package: frb_example--flutter_via_create
+          - image: macos-15-intel
+            platform: macos
+            target: desktop
+            device: macos
+            package: frb_example--flutter_via_create
+          - image: windows-2025
+            platform: windows
+            target: desktop
+            device: windows
+            package: frb_example--flutter_via_create
+
+    steps:
+      # setup
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
+        continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
+        with:
+          comment_on_pr: false
+          job_summary: false
+      - uses: actions/checkout@v5
+        with:
+          submodules: recursive
+      - uses: flutter-actions/setup-flutter@v4
+        with:
+          cache: true
+          version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
+      - if: ${{ matrix.info.target == 'web' }}
+        run: rustup target add wasm32-unknown-unknown
+      - if: ${{ matrix.info.target == 'android' }}
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: "17.x"
+      - if: ${{ matrix.info.target == 'android' }}
+        name: Enable KVM group perms
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - if: ${{ matrix.info.target == 'android' }}
+        name: AVD cache
+        uses: actions/cache@v4
+        id: avd-cache
+        with:
+          path: |
+            ~/.android/avd/*
+            ~/.android/adb*
+          key: avd-${{ matrix.info.device }}-api-level-${{ matrix.info.api-level }}
+      - if: ${{ matrix.info.target == 'android' && steps.avd-cache.outputs.cache-hit != 'true' }}
+        name: Create AVD and generate snapshot for caching
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.info.api-level }}
+          force-avd-creation: false
+          arch: x86_64
+          script: echo "Generated AVD snapshot for caching."
+      - if: ${{ matrix.info.target == 'ios' }}
+        name: Start Simulator
+        run: |
+          xcrun xctrace list devices
+          UDID=$(xcrun xctrace list devices | grep '${{ matrix.info.device }} (' | awk '{print $NF}' | tr -d '()')
+          echo UDID=$UDID
+          echo "UDID=$UDID" >> "$GITHUB_ENV"
+          xcrun simctl boot "${UDID:?No Simulator with this name found}"
+      - if: ${{ runner.os == 'Linux' }}
+        run: sudo apt-get update && sudo apt-get install -y clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev imagemagick tesseract-ocr
+      - if: ${{ matrix.info.target == 'web' || matrix.info.platform == 'linux' }}
+        uses: pyvista/setup-headless-display-action@v4
+      - if: ${{ runner.os == 'macOS' }}
+        run: HOMEBREW_NO_AUTO_UPDATE=1 brew install imagemagick tesseract
+      - if: ${{ runner.os == 'Windows' }}
+        run: |-
+          choco install imagemagick.app tesseract -y
+          echo "C:\Program Files\Tesseract-OCR" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+
+      # execute
+      - if: ${{ matrix.info.target == 'android' }}
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.info.api-level }}
+          arch: x86_64
+          profile: ${{ matrix.info.device }}
+          script: ./frb_internal test-flutter-quickstart-smoke --package ${{ matrix.info.package }} --target android --device-id emulator-5554
+      - if: ${{ matrix.info.target == 'ios' }}
+        run: ./frb_internal test-flutter-quickstart-smoke --package ${{ matrix.info.package }} --target ios --device-id "$UDID"
+      - if: ${{ matrix.info.target == 'desktop' }}
+        run: ./frb_internal test-flutter-quickstart-smoke --package ${{ matrix.info.package }} --target desktop --device-id ${{ matrix.info.device }}
+      - if: ${{ matrix.info.target == 'web' }}
+        run: ./frb_internal test-flutter-quickstart-smoke --package ${{ matrix.info.package }} --target web --device-id ${{ matrix.info.device }}
 
       # report
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: ${{ github.job }}--${{ matrix.package }}--quickstart-smoke
+          name: quickstart-smoke--${{ matrix.info.platform }}--${{ matrix.info.device }}--${{ matrix.info.package }}
           path: frb_example/flutter_via_create/target/quickstart_smoke
           if-no-files-found: warn
-      - uses: actions/upload-artifact@v4
-        with:
-          name: ${{ github.job }}--${{ matrix.package }}--coverage
-          path: target/coverage
 
   # ----------------------------------- misc -----------------------------------
 
@@ -1153,7 +1311,7 @@ jobs:
     name: 'Misc :: Codecov'
     runs-on: ubuntu-latest
     # NOTE Even if some previous jobs failed, we still want partial info
-    if: ${{ false }}
+    if: ${{ github.event.action != 'closed' && always() && !cancelled() }}
     # NOTE need to depend on *all* jobs that may generate codecov artifacts
     needs:
       - generate_run_frb_codegen_command_generate
