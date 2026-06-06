@@ -52,16 +52,4 @@ cp .claude/skills/frb-manual-test/execution-template.md <execution-result-path>.
 
 If the result belongs in a PR comment, issue comment, release checklist, or chat response instead of a file, copy the template text there and fill it out. Do not only say that the test "passed".
 
-Fill the execution template with:
-
-- Date and timezone.
-- Executor: human name, agent, or automation.
-- Manual test path.
-- Commit or release tested.
-- Environment actually used.
-- Result: pass, fail, blocked, or partial.
-- Result artifact paths or links.
-- Deviations from the written steps.
-- Follow-up issue or PR if the result is not clean.
-
 Run cleanup from the manual test report before declaring the execution complete, unless cleanup is intentionally skipped and documented in the execution record.
