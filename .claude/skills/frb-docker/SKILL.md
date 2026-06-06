@@ -126,6 +126,7 @@ When publishing, it pushes per-platform images and then creates multi-arch tags:
 
 - `latest`
 - `flutter-<flutter_version>-rust-<rust_version>-nightly-<rust_nightly_version>`
+- `flutter-<flutter_version>-rust-<rust_version>-nightly-<rust_nightly_version>-code-<short_sha>`
 - `sha-<short_sha>`
 
 After publishing, inspect the manifest:
@@ -135,6 +136,13 @@ docker buildx imagetools inspect fzyzcjy/flutter_rust_bridge_dev:latest
 ```
 
 It should include `linux/amd64` and `linux/arm64`. BuildKit attestation manifests may appear as `unknown/unknown`; those are not platform images.
+
+Inspect the image revision label when checking exactly which source commit was published:
+
+```shell
+docker inspect fzyzcjy/flutter_rust_bridge_dev:latest \
+  --format '{{ index .Config.Labels "org.opencontainers.image.revision" }}'
+```
 
 ## CI Workflow Guidance
 
