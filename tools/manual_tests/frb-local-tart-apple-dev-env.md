@@ -23,7 +23,7 @@ Run this after changing the Tart helper, Tart base VM, Apple scaffold, Flutter/X
 ## Environment
 
 - OS: host macOS capable of running Tart, plus guest macOS from `sw_vers` inside the VM.
-- Flutter: record `flutter --version` inside the Tart VM.
+- Flutter: record `flutter --version --no-version-check` inside the Tart VM.
 - Dart: record `dart --version` inside the Tart VM.
 - Rust: record `rustc --version` and `cargo --version` inside the Tart VM.
 - Device or simulator: record the selected iOS Simulator name, runtime, and UDID.
@@ -67,7 +67,7 @@ Confirm the VM can see the mounted worktree and prepare the VM-local copy used f
    sw_vers
    xcodebuild -version
    xcrun simctl list runtimes
-   flutter --version
+   flutter --version --no-version-check
    dart --version
    rustc --version
    cargo --version
