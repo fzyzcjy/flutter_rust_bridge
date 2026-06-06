@@ -566,6 +566,7 @@ def tart_prepare_ios_integration_test(
 def build_tart_prepare_ios_integration_test_script(*, flutter_root: Path) -> str:
     script = """
 from pathlib import Path
+from datetime import datetime
 import os
 import shutil
 import subprocess
@@ -587,9 +588,11 @@ if not os.access(flutter_bin, os.X_OK):
 
 text = simulators_dart.read_text()
 if "await logReader.start();" not in text:
-    backup = simulators_dart.with_name(simulators_dart.name + ".frb-ios-log-race.bak")
-    if not backup.exists():
-        shutil.copy2(simulators_dart, backup)
+    backup_timestamp = datetime.now().strftime("%Y%m%d-%H%M%S-%f")
+    backup = simulators_dart.with_name(
+        f"{simulators_dart.name}.frb-ios-log-race.{backup_timestamp}.bak"
+    )
+    shutil.copy2(simulators_dart, backup)
 
     replacements = [
         (
