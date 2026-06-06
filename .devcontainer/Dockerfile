@@ -140,7 +140,10 @@ RUN flutter --version && \
     wasm-pack --version && \
     all-contributors --version && \
     "${CHROME_BIN}" --version && \
-    chromedriver --version
+    (chromedriver --version || { \
+        [ "$(dpkg --print-architecture)" = "arm64" ] \
+            && echo "chromedriver installed but cannot run; amd64 emulation is unavailable"; \
+    })
 
 # Default command
 CMD ["bash"]
