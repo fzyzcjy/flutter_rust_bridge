@@ -46,6 +46,8 @@ Read these when entering the matching phase:
 - Read and follow the reproduction parts of `frb-develop-feature`.
 - For bug fixes, do this before changing fix code or opening the fix PR.
 - Create an independent reproduction PR whose only purpose is to prove the bad behavior. The branch name, PR title, and PR body must say clearly that it is an intentional reproduction PR, not a real fix PR.
+- For intentional red CI reproduction PRs, use the title `Reproduce ISSUE_SUMMARY with intentional red CI`.
+- For manual-test reproduction PRs, use the title `Add manual reproduction for ISSUE_SUMMARY`.
 - If CI can reproduce the bad behavior, make the reproduction PR an intentional red CI PR: unchanged fix code, minimal reproducer or workflow adjustment, forced CI narrowing to only the relevant job family, and a failure whose error matches the user's report.
 - If CI cannot realistically reproduce the bad behavior, read `frb-manual-test` and make the independent reproduction PR add or update `tools/manual_tests/NAME.md` with a normal manual test procedure and mechanical execution steps an agent or human can run.
 - Do not proceed to the fix PR until the reproduction PR exists and has either a matching red CI run or a precise manual test report.
