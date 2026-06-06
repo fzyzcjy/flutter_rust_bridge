@@ -153,6 +153,24 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
     );
   });
 
+  test('quickstart smoke device id parser reads flutter test args', () {
+    expect(
+      quickstartSmokeDeviceIdForTesting(
+        flutterTestArgs: '--device-id emulator-5554',
+      ),
+      'emulator-5554',
+    );
+  });
+
+  test('quickstart smoke native target detects android emulator', () {
+    expect(
+      quickstartSmokeNativeTargetForTesting(
+        flutterTestArgs: '--device-id emulator-5554',
+      ),
+      QuickstartSmokeTarget.android,
+    );
+  });
+
   group('git clean check', () {
     test('classifies git diff exit codes', () {
       expect(classifyGitDiffExitCodeForTesting(0), 'clean');
