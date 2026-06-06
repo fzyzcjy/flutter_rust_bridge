@@ -26,4 +26,16 @@ void main() {
       'process debug (after trying rust_builder.framework/rust_builder but has error Invalid argument(s): missing rust_builder.framework/rust_builder) (after trying my_rust_lib.framework/my_rust_lib but has error Invalid argument(s): missing my_rust_lib.framework/my_rust_lib) (after falling back to process())',
     ]);
   });
+
+  test('Darwin packaged loader does not hide non-argument failures', () {
+    expect(
+      () => loadDarwinPackagedExternalLibrary(
+        stem: 'my_rust_lib',
+        debugInfo: 'debug',
+        open: (name, debugInfo) => throw StateError('unexpected'),
+        process: (debugInfo) => 'ok',
+      ),
+      throwsStateError,
+    );
+  });
 }

@@ -132,7 +132,7 @@ T _tryOpenLibrary<T>(
 ) {
   try {
     return open(name, debugInfo);
-  } catch (e) {
+  } on ArgumentError catch (e) {
     return fallback('$debugInfo (after trying $name but has error $e)');
   }
 }
