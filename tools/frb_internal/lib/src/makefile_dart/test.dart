@@ -670,7 +670,14 @@ Future<void> testFlutterWeb(TestFlutterWebConfig config) async {
 String resolveBuildWebPackage(String package) =>
     kBuildWebPackageReplacer[package] ?? package;
 
-Future<void> _runFlutterDoctor() async => await exec('flutter doctor -v');
+Future<void> _runFlutterDoctor() async {
+  if (Platform.environment['FRB_SKIP_FLUTTER_DOCTOR'] == '1') {
+    print('Skip flutter doctor because FRB_SKIP_FLUTTER_DOCTOR=1');
+    return;
+  }
+
+  await exec('flutter doctor -v');
+}
 
 Future<String> _flutterWebChromeBinaryArg() async {
   final chromeBinary = Platform.environment['CHROME_EXECUTABLE'];

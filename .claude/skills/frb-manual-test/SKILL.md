@@ -54,8 +54,24 @@ Always fill out an execution markdown file before summarizing the result. Do not
 
 Execution markdown is a run artifact, not a repository test definition. Do not create it under `tools/manual_tests/` or anywhere else inside the `flutter_rust_bridge` repository. Put it in an external artifacts location such as `/private/tmp`, `~/main/artifacts/flutter_rust_bridge/`, or another run-specific artifact directory.
 
-If the execution result belongs to a PR, issue, release checklist, or other reviewable workflow, upload the filled execution markdown as a GitHub gist and link that gist in the PR description, PR comment, issue comment, or release checklist. The local execution markdown should still be kept in the run artifacts directory so the run can be audited without relying only on chat history.
+Execution markdown must contain precise, audit-ready evidence that proves what ran and why it passed, failed, or blocked. Include the exact commands, exit status, key success or failure log lines, relevant version output, selected device or simulator identifiers, generated artifact paths, final cleanup state, and links or paths to complete logs. For successful runs, quote or summarize the concrete pass indicators such as `All tests passed!`, `test result: ok`, artifact paths, simulator UDIDs, or final `git status --short` output. Avoid vague summaries like "worked", "passed", or "looked good" without evidence.
+
+If the execution result belongs to a PR, issue, release checklist, or other reviewable workflow, upload the filled execution markdown and all review-relevant artifacts as a GitHub gist and link that gist in the PR description, PR comment, issue comment, or release checklist. Review-relevant artifacts include screenshots, recordings, logs, generated result files, and browser/device evidence needed to judge the result. The local execution markdown and artifact copies should still be kept in the run artifacts directory so the run can be audited without relying only on chat history.
 
 If the result belongs only in chat, still fill out the execution markdown locally and include its path in the chat response.
 
 Run cleanup from the manual test report before declaring the execution complete, unless cleanup is intentionally skipped and documented in the execution record.
+
+### Reviewable Workflow Gate
+
+Before creating or updating a PR, issue comment, release checklist, or any other reviewable artifact that cites a manual test execution:
+
+1. Fill out the execution markdown file locally.
+2. Collect every artifact needed by the manual test's `Results To Capture` section, especially screenshots, recordings, logs, and generated evidence files.
+3. Upload the execution markdown and those review-relevant artifacts into the same GitHub gist. Use a gist git clone and push when binary artifacts such as PNG screenshots need to be included.
+4. Copy the gist URL into the execution markdown's `Execution markdown gist` field if practical.
+5. Make the execution markdown point to the gist-contained artifact filenames, embedding screenshots or linking recordings when useful.
+6. Link the gist URL in the reviewable artifact.
+7. Keep local artifact paths only as supplemental audit evidence; they are not a substitute for gist-contained artifacts.
+
+Do not say that a PR-linked manual test execution is complete while any review-relevant artifact exists only as a local path. If gist upload or GitHub access fails, report the manual test execution as complete locally but the PR/update step as blocked until a gist containing the execution markdown and review-relevant artifacts can be created and linked.

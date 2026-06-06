@@ -169,13 +169,21 @@ Use Tart for iOS Simulator validation when Docker cannot provide the required ma
 frb-tart-<worktree-root-sha256-prefix-12>
 ```
 
+### Base VM
+
 By default, `create` clones from a prepared local base VM named `frb-tart-base`. Override it with `FRB_TART_BASE_VM` or `--base-vm`.
 
 Read `frb-tart-prepare` before creating or changing the base VM. The base VM should be built by the checked-in Packer template from a pinned Tart OCI artifact and treated as immutable; do not boot it and manually install tools into it.
 
+### Mounted Checkout
+
 For linked git worktrees, the Tart helper shares both the canonical worktree root and the git common root into the VM, then mounts them at host-like absolute paths with `mount_virtiofs`. This keeps worktree `.git` files and submodule gitdir references valid inside the VM.
 
-Typical usage:
+Use plain `tart exec` for light commands that should see the mounted host checkout exactly, such as `git status`, `flutter --version`, `xcrun simctl list`, and simulator boot commands.
+
+### VM Lifecycle
+
+Inspect, create, start, and run light commands in the per-worktree VM:
 
 ```bash
 .claude/skills/frb-dev-env/frb_dev_env.py tart info
@@ -184,6 +192,15 @@ Typical usage:
 .claude/skills/frb-dev-env/frb_dev_env.py tart ip --wait 180
 .claude/skills/frb-dev-env/frb_dev_env.py tart exec -- sw_vers
 ```
+
+Delete the worktree VM when it is no longer needed:
+
+```bash
+.claude/skills/frb-dev-env/frb_dev_env.py tart stop
+.claude/skills/frb-dev-env/frb_dev_env.py tart delete
+```
+
+### VM-Local Copy
 
 For heavy iOS build/test commands, prefer uploading the current worktree to a VM-local copy and running there. This avoids writing Xcode build artifacts through the virtiofs host mount:
 
@@ -194,7 +211,7 @@ For heavy iOS build/test commands, prefer uploading the current worktree to a VM
 
 `tart upload` and `tart exec --sync-code` both first ensure the worktree VM is running and the host-like worktree mount exists. They then run `rsync` inside the VM from the mounted host worktree to a VM-local copy under `/Users/admin/frb-dev-env-local-copies/<worktree-hash>`. The upload excludes `.git`, `.dart_tool`, `build`, `target`, `.idea`, and `.vscode`. It does not delete existing files in the VM-local copy, so build caches survive repeated runs.
 
-Use plain `tart exec` for light commands that should see the mounted host checkout exactly, such as `git status`, `flutter --version`, `xcrun simctl list`, and simulator boot commands. Use `tart exec --sync-code` for heavy build/test commands that create many artifacts, especially iOS Flutter/Xcode tests. Commands run with `--sync-code` start from the VM-local uploaded copy, not from the host-mounted path.
+Commands run with `--sync-code` start from the VM-local uploaded copy, not from the host-mounted path.
 
 Examples:
 
@@ -202,34 +219,39 @@ Examples:
 # Show the VM-local path after uploading the current worktree.
 .claude/skills/frb-dev-env/frb_dev_env.py tart upload
 
-# Run a light command from the mounted host worktree.
-.claude/skills/frb-dev-env/frb_dev_env.py tart exec -- git status --short
-
 # Run a heavy command from the uploaded VM-local copy.
 .claude/skills/frb-dev-env/frb_dev_env.py tart exec --sync-code -- ./frb_internal test-flutter-native --package frb_example--flutter_via_create --flutter-test-args '--device-id <UDID>'
 ```
 
-Run iOS Simulator tests by starting the worktree VM, choosing and booting an iOS simulator inside it, then running the existing FRB test command from the VM-local uploaded copy:
+### iOS Integration Preparation
+
+Before running iOS Simulator integration tests, prepare the VM Flutter SDK once per VM or after replacing Flutter. This applies the runtime portion of `https://github.com/flutter/flutter/pull/187643.patch` as an idempotent Flutter tool workaround for an iOS simulator VM Service discovery race where `simctl launch` can emit the Dart VM Service log before Flutter's `simctl log stream` listener is ready.
+
+The preparation command also rebuilds `flutter_tools.snapshot`:
+
+```bash
+.claude/skills/frb-dev-env/frb_dev_env.py tart prepare-ios-integration-test
+```
+
+Use the environment shown in the test command below for the integration test. `FLUTTER_GIT_URL` keeps `flutter doctor` and Flutter metadata consistent when the VM uses a local Flutter checkout. `FRB_SKIP_FLUTTER_DOCTOR=1` skips the FRB wrapper's preflight doctor because the simulator integration test itself is the validation target and doctor can hang after printing device checks in Tart.
+
+### iOS Integration Test
+
+Run iOS Simulator tests by starting the worktree VM, preparing the VM Flutter SDK, choosing and booting an iOS simulator inside the VM, then running the existing FRB test command from the VM-local uploaded copy:
 
 ```bash
 .claude/skills/frb-dev-env/frb_dev_env.py tart start --wait 300
+.claude/skills/frb-dev-env/frb_dev_env.py tart prepare-ios-integration-test
 .claude/skills/frb-dev-env/frb_dev_env.py tart exec -- xcrun simctl list devices available
 .claude/skills/frb-dev-env/frb_dev_env.py tart exec -- xcrun simctl boot <UDID>
 .claude/skills/frb-dev-env/frb_dev_env.py tart exec -- xcrun simctl bootstatus <UDID> -b
-.claude/skills/frb-dev-env/frb_dev_env.py tart exec --sync-code -- ./frb_internal test-flutter-native --package frb_example--flutter_via_create --flutter-test-args '--device-id <UDID>'
+.claude/skills/frb-dev-env/frb_dev_env.py tart exec --sync-code -- bash -lc 'export FLUTTER_GIT_URL=file:///Users/admin/flutter; export FRB_SKIP_FLUTTER_DOCTOR=1; ./frb_internal test-flutter-native --package frb_example/flutter_via_create --flutter-test-args "--device-id <UDID>"'
 ```
 
 For example, when an iOS 18.1 `iPhone 16 Pro Max` simulator with UDID `826DC3E8-2073-42A9-A6DB-05C1926DC82A` is available:
 
 ```bash
-.claude/skills/frb-dev-env/frb_dev_env.py tart exec --sync-code -- ./frb_internal test-flutter-native --package frb_example--flutter_via_create --flutter-test-args '--device-id 826DC3E8-2073-42A9-A6DB-05C1926DC82A'
-```
-
-Delete the worktree VM when it is no longer needed:
-
-```bash
-.claude/skills/frb-dev-env/frb_dev_env.py tart stop
-.claude/skills/frb-dev-env/frb_dev_env.py tart delete
+.claude/skills/frb-dev-env/frb_dev_env.py tart exec --sync-code -- bash -lc 'export FLUTTER_GIT_URL=file:///Users/admin/flutter; export FRB_SKIP_FLUTTER_DOCTOR=1; ./frb_internal test-flutter-native --package frb_example/flutter_via_create --flutter-test-args "--device-id 826DC3E8-2073-42A9-A6DB-05C1926DC82A"'
 ```
 
 ## Project Skills
