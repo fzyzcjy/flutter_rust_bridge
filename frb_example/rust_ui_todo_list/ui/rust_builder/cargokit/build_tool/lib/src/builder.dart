@@ -128,11 +128,10 @@ class RustBuilder {
     Rustup rustup,
   ) {
     final toolchain = _toolchain;
-    var resolvedToolchain = rustup.resolveToolchain(toolchain);
     if (rustup.installedTargets(toolchain) == null) {
       rustup.installToolchain(toolchain);
-      resolvedToolchain = rustup.resolveToolchain(toolchain);
     }
+    final resolvedToolchain = rustup.resolveToolchain(toolchain);
     if (toolchain == 'nightly') {
       rustup.installRustSrcForNightly(toolchain: resolvedToolchain);
     }
