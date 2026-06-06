@@ -10,29 +10,40 @@ void main() {
       _readCurrentDockerfileText(),
     );
 
-    expect(metadata.flutterVersion, '3.41.2');
+    expect(metadata.flutterVersion, '3.44.0');
     expect(metadata.rustVersion, '1.93.1');
     expect(metadata.rustNightlyVersion, '2025-02-01');
     expect(
       metadata.versionTag,
-      'flutter-3.41.2-rust-1.93.1-nightly-2025-02-01',
+      'flutter-3.44.0-rust-1.93.1-nightly-2025-02-01',
     );
     expect(
       metadata.imageRef(imageName: 'fzyzcjy/flutter_rust_bridge_dev'),
-      'fzyzcjy/flutter_rust_bridge_dev:flutter-3.41.2-rust-1.93.1-nightly-2025-02-01',
+      'fzyzcjy/flutter_rust_bridge_dev:flutter-3.44.0-rust-1.93.1-nightly-2025-02-01',
+    );
+    expect(
+      metadata.versionCodeTag(shortSha: 'abcdef0'),
+      'flutter-3.44.0-rust-1.93.1-nightly-2025-02-01-code-abcdef0',
+    );
+    expect(
+      metadata.imageRefForRevision(
+        imageName: 'fzyzcjy/flutter_rust_bridge_dev',
+        shortSha: 'abcdef0',
+      ),
+      'fzyzcjy/flutter_rust_bridge_dev:flutter-3.44.0-rust-1.93.1-nightly-2025-02-01-code-abcdef0',
     );
   });
 
   test('metadata imageRef respects custom image name', () {
     const metadata = DevDockerMetadata(
-      flutterVersion: '3.41.2',
+      flutterVersion: '3.44.0',
       rustVersion: '1.93.1',
       rustNightlyVersion: '2025-02-01',
     );
 
     expect(
       metadata.imageRef(imageName: 'example/custom-dev-image'),
-      'example/custom-dev-image:flutter-3.41.2-rust-1.93.1-nightly-2025-02-01',
+      'example/custom-dev-image:flutter-3.44.0-rust-1.93.1-nightly-2025-02-01',
     );
   });
 }

@@ -18,13 +18,19 @@ import typer
 
 
 app = typer.Typer(no_args_is_help=True)
+android_app = typer.Typer(no_args_is_help=True)
 docker_app = typer.Typer(no_args_is_help=True)
 tart_app = typer.Typer(no_args_is_help=True)
+app.add_typer(android_app, name="android", help="Manage host Android emulator commands.")
 app.add_typer(docker_app, name="docker", help="Manage the per-worktree Docker development container.")
 app.add_typer(tart_app, name="tart", help="Manage the per-worktree Tart macOS VM.")
 
 DEFAULT_IMAGE = "fzyzcjy/flutter_rust_bridge_dev:latest"
 DEFAULT_TART_BASE_VM = "frb-tart-base"
+DEFAULT_ANDROID_EMULATOR_PORT = 5554
+DEFAULT_ANDROID_EMULATOR_ADB_HOST = "host.docker.internal"
+DEFAULT_MACOS_ANDROID_HOME = Path("~/Library/Android/sdk")
+ANDROID_LINUX_X86_64_LIBRARY_PATH = "/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/x86_64-linux-gnu/lib"
 MIN_TART_FREE_GB = 150
 REPO_LABEL = "frb.dev.repo"
 WORKTREE_LABEL = "frb.dev.worktree"
@@ -43,6 +49,7 @@ TART_LOCAL_COPY_EXCLUDES = [
     "build",
     "target",
 ]
+DEFAULT_TART_FLUTTER_ROOT = Path("/Users/admin/flutter")
 
 
 # ========== Common ==========
@@ -52,7 +59,12 @@ class CommandError(RuntimeError):
     pass
 
 
-def exec_command(cmd: list[str], *, capture_output: bool = False) -> str | None:
+def exec_command(
+    cmd: list[str],
+    *,
+    capture_output: bool = False,
+    env: dict[str, str] | None = None,
+) -> str | None:
     print(f"EXEC: {' '.join(cmd)}", file=sys.stderr, flush=True)
 
     try:
@@ -61,6 +73,7 @@ def exec_command(cmd: list[str], *, capture_output: bool = False) -> str | None:
             check=True,
             capture_output=capture_output,
             text=capture_output,
+            env=env,
         )
     except subprocess.CalledProcessError as error:
         if capture_output:
@@ -125,6 +138,120 @@ def get_image(image: str | None) -> str:
         return image
 
     return os.environ.get("FRB_DOCKER_IMAGE", DEFAULT_IMAGE)
+
+
+def get_android_emulator_adb_host(host: str | None) -> str:
+    if host is not None:
+        return host
+
+    return os.environ.get("FRB_ANDROID_EMULATOR_ADB_HOST", DEFAULT_ANDROID_EMULATOR_ADB_HOST)
+
+
+def get_android_emulator_adb_port(port: int | None) -> int:
+    if port is not None:
+        return port
+
+    value = os.environ.get("FRB_ANDROID_EMULATOR_ADB_PORT")
+    if value is None:
+        return DEFAULT_ANDROID_EMULATOR_PORT + 1
+
+    try:
+        return int(value)
+    except ValueError as error:
+        raise CommandError(f"FRB_ANDROID_EMULATOR_ADB_PORT must be an integer: {value}") from error
+
+
+def resolve_android_home() -> Path:
+    resolved_android_home = env_path("ANDROID_HOME")
+    if resolved_android_home is None:
+        resolved_android_home = DEFAULT_MACOS_ANDROID_HOME.expanduser().resolve()
+
+    if not resolved_android_home.exists():
+        raise CommandError(
+            f"Android SDK root does not exist: {resolved_android_home}. "
+            "Install Android Studio or set ANDROID_HOME to the host Android SDK root."
+        )
+
+    return resolved_android_home
+
+
+def android_host_env() -> dict[str, str]:
+    resolved_android_home = resolve_android_home()
+
+    env = dict(os.environ)
+    env["ANDROID_HOME"] = str(resolved_android_home)
+    env["ANDROID_SDK_ROOT"] = str(resolved_android_home)
+
+    path_prefix = [
+        resolved_android_home / "emulator",
+        resolved_android_home / "platform-tools",
+        resolved_android_home / "cmdline-tools" / "latest" / "bin",
+    ]
+    env["PATH"] = os.pathsep.join([*(str(path) for path in path_prefix), env.get("PATH", "")])
+
+    return env
+
+
+def env_path(name: str) -> Path | None:
+    value = os.environ.get(name)
+    if value is None or value == "":
+        return None
+
+    return Path(value).expanduser().resolve()
+
+
+def print_android_host_env() -> None:
+    android_home = resolve_android_home()
+    typer.echo(f"export ANDROID_HOME={shlex.quote(str(android_home))}")
+    typer.echo(f"export ANDROID_SDK_ROOT={shlex.quote(str(android_home))}")
+    path_prefix = (
+        f"{android_home / 'emulator'}:"
+        f"{android_home / 'platform-tools'}:"
+        f"{android_home / 'cmdline-tools' / 'latest' / 'bin'}"
+    )
+    typer.echo(
+        f"export PATH={shlex.quote(path_prefix)}:" + '"$PATH"'
+    )
+
+
+# ========== Android commands ==========
+
+
+@android_app.command(name="env")
+def android_env() -> None:
+    """Print shell exports for the host Android SDK and emulator environment."""
+
+    print_android_host_env()
+
+
+@android_app.command(name="emulator")
+def android_emulator(
+    avd: Annotated[
+        str,
+        typer.Option("--avd", help="AVD name to boot on the host."),
+    ],
+    port: Annotated[
+        int,
+        typer.Option("--port", help="Even emulator console port; the ADB serial becomes emulator-<port>."),
+    ] = DEFAULT_ANDROID_EMULATOR_PORT,
+    emulator_args: Annotated[
+        list[str] | None,
+        typer.Argument(help="Additional arguments passed to emulator after the generated -avd/-port flags."),
+    ] = None,
+) -> None:
+    """Start the host Android Emulator with the standard Android SDK locations."""
+
+    exec_command(
+        [
+            "emulator",
+            "-avd",
+            avd,
+            "-port",
+            str(port),
+            *(emulator_args or []),
+        ],
+        env=android_host_env(),
+    )
 
 
 # ========== Tart ==========
@@ -419,6 +546,174 @@ def upload_tart_local_copy(
     return local_copy_path
 
 
+def tart_prepare_ios_integration_test(
+    *,
+    vm_name: str,
+    flutter_root: Path,
+) -> None:
+    exec_command(
+        [
+            "tart",
+            "exec",
+            vm_name,
+            "/usr/bin/python3",
+            "-c",
+            build_tart_prepare_ios_integration_test_script(flutter_root=flutter_root),
+        ]
+    )
+
+
+def build_tart_prepare_ios_integration_test_script(*, flutter_root: Path) -> str:
+    script = """
+from pathlib import Path
+from datetime import datetime
+import os
+import shutil
+import subprocess
+import sys
+import tempfile
+import time
+import urllib.request
+
+
+PATCH_URL = "https://github.com/flutter/flutter/pull/187643.patch"
+PATCH_INCLUDE_PATH = "packages/flutter_tools/lib/src/ios/simulators.dart"
+PATCH_DOWNLOAD_ATTEMPTS = 5
+PATCH_DOWNLOAD_TIMEOUT_SECONDS = 300
+
+
+def download_patch_text() -> str:
+    curl_result = subprocess.run(
+        [
+            "curl",
+            "-fsSL",
+            "--retry",
+            str(PATCH_DOWNLOAD_ATTEMPTS),
+            "--retry-delay",
+            "5",
+            "--connect-timeout",
+            "30",
+            "--max-time",
+            str(PATCH_DOWNLOAD_TIMEOUT_SECONDS),
+            PATCH_URL,
+        ],
+        text=True,
+        capture_output=True,
+    )
+    if curl_result.returncode == 0:
+        return curl_result.stdout
+
+    print(curl_result.stderr, end="", file=sys.stderr)
+    print("curl failed; retrying Flutter patch download with urllib", file=sys.stderr)
+
+    last_error: Exception | None = None
+    for attempt in range(1, PATCH_DOWNLOAD_ATTEMPTS + 1):
+        try:
+            with urllib.request.urlopen(PATCH_URL, timeout=PATCH_DOWNLOAD_TIMEOUT_SECONDS) as response:
+                return response.read().decode("utf-8")
+        except Exception as error:
+            last_error = error
+            if attempt == PATCH_DOWNLOAD_ATTEMPTS:
+                break
+            print(
+                f"Retrying Flutter patch download after urllib attempt {attempt} failed: {error}",
+                file=sys.stderr,
+            )
+            time.sleep(5 * attempt)
+
+    print(f"Failed to download Flutter patch: {PATCH_URL}", file=sys.stderr)
+    if last_error is not None:
+        print(str(last_error), file=sys.stderr)
+    raise SystemExit(1)
+
+
+def run_git_apply_patch(
+    *,
+    flutter_root: Path,
+    patch_path: Path,
+    check_only: bool,
+) -> subprocess.CompletedProcess[str]:
+    command = [
+        "git",
+        "-C",
+        str(flutter_root),
+        "apply",
+        f"--include={PATCH_INCLUDE_PATH}",
+    ]
+    if check_only:
+        command.append("--check")
+    command.append(str(patch_path))
+
+    return subprocess.run(
+        command,
+        text=True,
+        capture_output=check_only,
+        check=not check_only,
+    )
+
+
+flutter_root = Path(__FLUTTER_ROOT__)
+simulators_dart = flutter_root / "packages/flutter_tools/lib/src/ios/simulators.dart"
+flutter_bin = flutter_root / "bin/flutter"
+snapshot = flutter_root / "bin/cache/flutter_tools.snapshot"
+
+if not simulators_dart.is_file():
+    print(f"Missing Flutter iOS simulator source: {simulators_dart}", file=sys.stderr)
+    raise SystemExit(1)
+
+if not os.access(flutter_bin, os.X_OK):
+    print(f"Missing Flutter executable: {flutter_bin}", file=sys.stderr)
+    raise SystemExit(1)
+
+text = simulators_dart.read_text()
+if "await logReader.start();" not in text:
+    patch_text = download_patch_text()
+
+    with tempfile.NamedTemporaryFile("w", suffix=".patch", delete=False) as patch_file:
+        patch_file.write(patch_text)
+        patch_path = Path(patch_file.name)
+
+    try:
+        check_result = run_git_apply_patch(
+            flutter_root=flutter_root,
+            patch_path=patch_path,
+            check_only=True,
+        )
+        if check_result.returncode != 0:
+            print(check_result.stdout, end="")
+            print(check_result.stderr, end="", file=sys.stderr)
+            print(f"Failed to apply Flutter patch: {PATCH_URL}", file=sys.stderr)
+            raise SystemExit(check_result.returncode)
+
+        backup_timestamp = datetime.now().strftime("%Y%m%d-%H%M%S-%f")
+        backup = simulators_dart.with_name(
+            f"{simulators_dart.name}.frb-ios-log-race.{backup_timestamp}.bak"
+        )
+        shutil.copy2(simulators_dart, backup)
+
+        run_git_apply_patch(
+            flutter_root=flutter_root,
+            patch_path=patch_path,
+            check_only=False,
+        )
+    finally:
+        patch_path.unlink(missing_ok=True)
+
+    text = simulators_dart.read_text()
+    if "await logReader.start();" not in text:
+        print(f"Flutter patch did not update expected simulator source: {PATCH_URL}", file=sys.stderr)
+        raise SystemExit(1)
+else:
+    print(f"Flutter patch already applied: {PATCH_URL}")
+
+snapshot.unlink(missing_ok=True)
+env = dict(os.environ)
+env["FLUTTER_GIT_URL"] = f"file://{flutter_root}"
+subprocess.run([str(flutter_bin), "--version", "--no-version-check"], check=True, env=env)
+"""
+    return script.replace("__FLUTTER_ROOT__", repr(str(flutter_root)))
+
+
 # ========== Docker ==========
 
 
@@ -473,10 +768,16 @@ def validate_existing_container(*, container_name: str, worktree_root: Path) -> 
         )
 
 
+def pull_image(*, image: str) -> None:
+    typer.echo(f"Pulling Docker image {image}", err=True)
+    exec_command(["docker", "pull", image])
+
+
 def ensure_container(*, worktree_root: Path, image: str) -> str:
     container_name = container_name_for_worktree(worktree_root=worktree_root)
 
     if container_id_for_name(container_name=container_name) is None:
+        pull_image(image=image)
         exec_command(
             [
                 "docker",
@@ -511,6 +812,20 @@ def ensure_container(*, worktree_root: Path, image: str) -> str:
             exec_command(["docker", "start", container_name])
 
     return container_name
+
+
+def android_linux_x86_64_env() -> dict[str, str]:
+    return {
+        "LD_LIBRARY_PATH": ANDROID_LINUX_X86_64_LIBRARY_PATH,
+    }
+
+
+def docker_exec_env_args(env: dict[str, str]) -> list[str]:
+    result: list[str] = []
+    for key, value in env.items():
+        result.extend(["--env", f"{key}={value}"])
+
+    return result
 
 
 def delete_container(*, worktree_root: Path, force: bool) -> str:
@@ -566,6 +881,29 @@ def build_info(*, worktree_root: Path, image: str) -> dict[str, object]:
         },
         "actual_labels": actual_labels,
     }
+
+
+def connect_docker_to_android_emulator(
+    *,
+    container_name: str,
+    worktree_root: Path,
+    host: str,
+    port: int,
+) -> None:
+    exec_command(
+        [
+            "docker",
+            "exec",
+            "-i",
+            *docker_exec_env_args(android_linux_x86_64_env()),
+            "--workdir",
+            str(worktree_root),
+            container_name,
+            "adb",
+            "connect",
+            f"{host}:{port}",
+        ]
+    )
 
 
 # ========== Docker commands ==========
@@ -663,6 +1001,18 @@ def exec_in_container(
         str | None,
         typer.Option("--image", help="Docker image. Defaults to FRB_DOCKER_IMAGE or the published FRB dev image."),
     ] = None,
+    android_emulator_adb: Annotated[
+        bool,
+        typer.Option("--android-emulator-adb", help="Connect Docker-side ADB to the host Android Emulator TCP endpoint."),
+    ] = False,
+    android_emulator_adb_host: Annotated[
+        str | None,
+        typer.Option("--android-emulator-adb-host", help="Host emulator ADB endpoint for --android-emulator-adb."),
+    ] = None,
+    android_emulator_adb_port: Annotated[
+        int | None,
+        typer.Option("--android-emulator-adb-port", help="Host emulator ADB TCP port for --android-emulator-adb."),
+    ] = None,
 ) -> None:
     """Ensure the container is running, then execute a command from the host-like worktree path."""
 
@@ -679,11 +1029,22 @@ def exec_in_container(
     if sys.stdin.isatty() and sys.stdout.isatty():
         exec_flags = ["-it"]
 
+    env: dict[str, str] = {}
+    if android_emulator_adb:
+        env.update(android_linux_x86_64_env())
+        connect_docker_to_android_emulator(
+            container_name=container_name,
+            worktree_root=resolved_worktree_root,
+            host=get_android_emulator_adb_host(host=android_emulator_adb_host),
+            port=get_android_emulator_adb_port(port=android_emulator_adb_port),
+        )
+
     exec_command(
         [
             "docker",
             "exec",
             *exec_flags,
+            *docker_exec_env_args(env),
             "--workdir",
             str(resolved_worktree_root),
             container_name,
@@ -899,6 +1260,49 @@ def tart_upload(
         local_copy_root=validate_tart_local_copy_root(local_copy_root=local_copy_root),
     )
     typer.echo(local_copy_path)
+
+
+@tart_app.command(name="prepare-ios-integration-test")
+def tart_prepare_ios_integration_test_command(
+    worktree_root: Annotated[
+        Path | None,
+        typer.Option("--worktree-root", help="FRB worktree root. Defaults to git root."),
+    ] = None,
+    base_vm: Annotated[
+        str | None,
+        typer.Option("--base-vm", help="Prepared Tart base VM. Defaults to FRB_TART_BASE_VM or frb-tart-base."),
+    ] = None,
+    min_free_gb: Annotated[
+        int,
+        typer.Option("--min-free-gb", help="Minimum free space required before creating a Tart VM."),
+    ] = MIN_TART_FREE_GB,
+    log_path: Annotated[
+        Path | None,
+        typer.Option("--log-path", help="Where to write tart run output if the VM needs to start."),
+    ] = None,
+    wait: Annotated[
+        int,
+        typer.Option("--wait", help="Seconds to wait for the VM IP if the VM needs to start."),
+    ] = 180,
+    flutter_root: Annotated[
+        Path,
+        typer.Option("--flutter-root", help="Flutter SDK root inside the Tart VM."),
+    ] = DEFAULT_TART_FLUTTER_ROOT,
+) -> None:
+    """Prepare the Tart VM Flutter SDK for iOS integration tests."""
+
+    resolved_worktree_root = resolve_worktree_root(worktree_root=worktree_root)
+    vm_name = ensure_tart_vm_running(
+        worktree_root=resolved_worktree_root,
+        base_vm=get_tart_base_vm(base_vm=base_vm),
+        min_free_gb=min_free_gb,
+        log_path=log_path,
+        wait=wait,
+    )
+    tart_prepare_ios_integration_test(
+        vm_name=vm_name,
+        flutter_root=flutter_root,
+    )
 
 
 @tart_app.command(name="exec")
