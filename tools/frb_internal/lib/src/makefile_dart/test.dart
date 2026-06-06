@@ -650,9 +650,11 @@ Future<void> _runFlutterViaCreateWebQuickstartSmokeTest(String package) async {
   final output = await exec(
     '''
     if [ "\$(id -u)" = "0" ]; then
-      printf '%s\\n' '#!/bin/sh' 'exec google-chrome --no-sandbox "\$@"' > /tmp/frb_chrome_no_sandbox
-      chmod +x /tmp/frb_chrome_no_sandbox
-      export CHROME_EXECUTABLE=/tmp/frb_chrome_no_sandbox
+      chrome_wrapper="\$(mktemp)"
+      trap 'rm -f "\$chrome_wrapper"' EXIT
+      printf '%s\\n' '#!/bin/sh' 'exec google-chrome --no-sandbox "\$@"' > "\$chrome_wrapper"
+      chmod +x "\$chrome_wrapper"
+      export CHROME_EXECUTABLE="\$chrome_wrapper"
     fi
     export DISPLAY="\${DISPLAY:-:99}"
 
