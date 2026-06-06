@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/generator.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/quickstart_smoke.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:test/test.dart';
 
@@ -150,24 +151,6 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
           contains('Hello, Tom'),
         ),
       ),
-    );
-  });
-
-  test('quickstart smoke device id parser reads flutter test args', () {
-    expect(
-      quickstartSmokeDeviceIdForTesting(
-        flutterTestArgs: '--device-id emulator-5554',
-      ),
-      'emulator-5554',
-    );
-  });
-
-  test('quickstart smoke native target detects android emulator', () {
-    expect(
-      quickstartSmokeNativeTargetForTesting(
-        flutterTestArgs: '--device-id emulator-5554',
-      ),
-      QuickstartSmokeTarget.android,
     );
   });
 

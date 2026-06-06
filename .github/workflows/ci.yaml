@@ -961,7 +961,9 @@ jobs:
           # emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
           arch: x86_64
           profile: ${{ matrix.device }}
-          script: ./frb_internal test-flutter-native --flutter-test-args '--device-id emulator-5554' --package ${{ matrix.package }}
+          script: |-
+            ./frb_internal test-flutter-native --flutter-test-args '--device-id emulator-5554' --package ${{ matrix.package }}
+            ./frb_internal test-flutter-quickstart-smoke --package ${{ matrix.package }} --target android --device-id emulator-5554
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -1013,6 +1015,7 @@ jobs:
 
       # execute
       - run: ./frb_internal test-flutter-native --flutter-test-args "--device-id $UDID" --package ${{ matrix.package }}
+      - run: ./frb_internal test-flutter-quickstart-smoke --package ${{ matrix.package }} --target ios --device-id "$UDID"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -1070,6 +1073,7 @@ jobs:
 
       # execute
       - run: ./frb_internal test-flutter-native --flutter-test-args '--device-id ${{ matrix.info.platform }}' --package ${{ matrix.info.package }}
+      - run: ./frb_internal test-flutter-quickstart-smoke --package ${{ matrix.info.package }} --target desktop --device-id ${{ matrix.info.platform }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -1127,6 +1131,7 @@ jobs:
 
       # execute
       - run: ./frb_internal test-flutter-web --package ${{ matrix.package }} --coverage
+      - run: ./frb_internal test-flutter-quickstart-smoke --package ${{ matrix.package }} --target web --device-id chrome
 
       # report
       - uses: actions/upload-artifact@v4
