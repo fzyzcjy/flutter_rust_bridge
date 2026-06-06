@@ -20,7 +20,7 @@ Run this after changing the FRB Docker image, devcontainer setup, per-worktree D
 - Required credentials or account state: Docker must be able to pull or use the configured FRB development image. Docker Hub credentials are required only if the local setup needs authenticated pulls.
 - Required device or simulator state: none. This test does not require Android devices, Android emulators, iOS simulators, or visible desktop GUI sessions.
 - Required browser driver state: Flutter web drive coverage requires a compatible `chromedriver` on `PATH` and a headless WebDriver setup for the container architecture. The Docker image must provide this for both amd64 and arm64 local containers.
-- Required Rust web build state: Flutter web drive coverage requires `rust-src` on the container's `nightly` Rust toolchain because `build-web --dart-coverage` builds the standard library with `-Z build-std`.
+- Required Rust web build state: Flutter web drive coverage requires `rust-src` and `llvm-tools-preview` on the container's `nightly` Rust toolchain because `build-web --dart-coverage` builds the standard library with `-Z build-std` under `cargo llvm-cov`.
 - Required Linux desktop test state: Linux Flutter native coverage requires the container to provide Flutter Linux desktop build dependencies and a headless display runner such as `xvfb-run`.
 
 ## Environment
@@ -51,7 +51,7 @@ Confirm the container can run commands at the host-like worktree path.
 .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- bash -lc 'pwd && ./frb_internal --help'
 ```
 
-Ensure the nightly Rust toolchain has the `rust-src` component needed by the Flutter web coverage step.
+Ensure the nightly Rust toolchain has the components needed by the Flutter web coverage step.
 
 ```bash
 .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- bash -lc '
@@ -59,6 +59,7 @@ set -euo pipefail
 nightly_host="$(rustc -vV | sed -n "s/^host: //p")"
 rustup toolchain install nightly
 rustup component add rust-src --toolchain "nightly-${nightly_host}"
+rustup component add llvm-tools-preview --toolchain "nightly-${nightly_host}"
 '
 ```
 
@@ -172,6 +173,7 @@ The test is blocked, not failed, if the Docker image cannot be pulled because of
 - If the container is missing or stopped, rerun `.claude/skills/frb-dev-env/frb_dev_env.py docker create` and record the helper output.
 - If Chrome, Chromium, or ChromeDriver cannot start, record the command, version, container architecture, and whether the web test log mentions sandbox flags.
 - If the Flutter web coverage step fails with a missing `Cargo.lock` under the nightly standard library source, rerun the preparation command that installs `rust-src` for the container's `nightly` host toolchain.
+- If the Flutter web coverage step fails with `can't find crate for profiler_builtins`, rerun the preparation command that installs `llvm-tools-preview` for the container's `nightly` host toolchain.
 - If the Linux Flutter native test cannot start, record `flutter devices`, `xvfb-run --help`, and whether the log mentions GTK, display, OpenGL, or missing Linux desktop dependencies.
 - If the Linux Flutter build fails, record `flutter doctor -v`, `cmake --version`, `ninja --version`, and `pkg-config --version` from inside the container.
 - If dependency downloads fail, record the failed URL or package source without adding secrets.
