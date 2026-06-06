@@ -652,6 +652,7 @@ Future<void> _runFlutterViaCreateWebQuickstartSmokeTest(String package) async {
       chmod +x /tmp/frb_chrome_no_sandbox
       export CHROME_EXECUTABLE=/tmp/frb_chrome_no_sandbox
     fi
+    export DISPLAY="\${DISPLAY:-:99}"
 
     timeout 180 flutter run \\
       -d chrome \\
