@@ -650,10 +650,11 @@ Future<void> testFlutterWeb(TestFlutterWebConfig config) async {
   }
 
   final buildWebPackage = resolveBuildWebPackage(config.package);
+  final enableCodegenCoverage = config.coverage && !config.wasm;
   await executeFrbCodegen(
-    'build-web --dart-coverage',
+    'build-web ${config.coverage ? "--dart-coverage" : ""}',
     relativePwd: buildWebPackage,
-    coverage: config.coverage,
+    coverage: enableCodegenCoverage,
     coverageName: 'TestFlutterWeb',
   );
 
