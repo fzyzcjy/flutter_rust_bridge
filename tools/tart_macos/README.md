@@ -38,7 +38,7 @@ Avoid `latest` tags. Avoid broad multi-Xcode runner images unless there is a spe
 If network access to GHCR is reliable enough, Packer can clone the raw source image directly:
 
 ```bash
-cd .claude/skills/frb-tart-prepare/packer
+cd tools/tart_macos/packer
 packer init .
 packer build \
   -var 'source_vm=ghcr.io/cirruslabs/macos-sonoma-xcode:16.1' \
@@ -142,7 +142,7 @@ sha256:f181b76eede9acd7a6db76438a4cf73e76550c3f9e8104aed16347122e132184
 Build a candidate base VM from the local registry:
 
 ```bash
-cd .claude/skills/frb-tart-prepare/packer
+cd tools/tart_macos/packer
 packer init .
 packer build \
   -var 'source_vm=127.0.0.1:5000/cirruslabs/macos-sonoma-xcode:16.1' \
