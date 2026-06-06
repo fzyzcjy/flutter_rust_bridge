@@ -1164,13 +1164,12 @@ jobs:
           lsof -i :4444
 
       # execute
-      - run: ./frb_internal test-flutter-web --package ${{ matrix.package }} ${{ matrix.wasm && '--wasm' || '--coverage' }}
+      - run: ./frb_internal test-flutter-web --package ${{ matrix.package }} --coverage ${{ matrix.wasm && '--wasm' || '' }}
 
       # report
-      - if: ${{ !matrix.wasm }}
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
-          name: ${{ github.job }}--${{ matrix.package }}--dart2js--coverage
+          name: ${{ github.job }}--${{ matrix.package }}--${{ matrix.wasm && 'dart2wasm' || 'dart2js' }}--coverage
           path: target/coverage
 
   # ----------------------------------- misc -----------------------------------
