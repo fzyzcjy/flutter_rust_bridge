@@ -56,16 +56,13 @@ Read these when entering the matching phase:
 - Read and follow the fix, iteration, local verification, regression coverage, and final placement parts of `frb-develop-feature`.
 - Implement the smallest change that fixes the reproduced behavior.
 - Add final regression coverage with the fixed behavior as the expected result.
+- Make atomic commits as soon as each completed logical unit is written; do not wait until the end of the task.
+- Stage only files intentionally changed for this task.
+- Always create a new commit unless the user explicitly asks to amend.
 - Before considering the change ready, explicitly pass the `frb-develop-feature` Final Placement Gate: final regression coverage belongs in `frb_example/pure_dart` with generated `pure_dart_pde` coverage, not only in `frb_example/dart_minimal`.
 - Keep generated-file edits produced by the appropriate generator, not by hand.
 
-### 5. Commit each completed logical unit immediately
-
-- Make atomic commits as soon as a minimal unit is written; do not wait until the end of the task.
-- Stage only files intentionally changed for this task.
-- Always create a new commit unless the user explicitly asks to amend.
-
-### 6. Prepare and open the PR
+### 5. Prepare and open the PR
 
 - Follow `frb-prepare-pr`.
 - Re-check that no final regression or feature coverage remains only in `frb_example/dart_minimal`. If it does, stop PR preparation and migrate it to `frb_example/pure_dart` first.
@@ -74,7 +71,7 @@ Read these when entering the matching phase:
 - Create the PR according to the active PR workflow and repository/user PR body rules.
 - If the work comes from a GitHub issue, ensure the PR body includes the appropriate closing keyword such as `Close #1234`, unless the active PR workflow explicitly requires an empty body.
 
-### 7. Handle Gemini review
+### 6. Handle Gemini review
 
 - Follow `frb-pr-review` for the full PR review gate, including correctness review, test-weakening review, and Gemini.
 - After pushing the PR and once you believe the code is reasonably ready, post a PR comment containing exactly `/gemini review` to request a Gemini pass; do not wait for CI to be green before requesting this first self-initiated review.
@@ -84,7 +81,7 @@ Read these when entering the matching phase:
 - After substantial follow-up fixes, request another Gemini pass when you again believe the code is reasonably ready.
 - Wait for each new Gemini response on GitHub, then resolve any actionable follow-up feedback.
 
-### 8. Monitor CI until terminal
+### 7. Monitor CI until terminal
 
 - After the PR is opened or updated, do not leave the PR in an unknown queued or in-progress state.
 - On each wake-up, inspect the latest PR checks, not stale runs.
@@ -93,7 +90,7 @@ Read these when entering the matching phase:
 - If CI fails, read `frb-fix-ci` and `gh-actions-live-logs`, diagnose the latest relevant failure, fix it, commit, push, and continue monitoring.
 - If CI appears flaky, rerun only failed jobs when appropriate, then keep monitoring.
 
-### 9. Stop only when ready
+### 8. Stop only when ready
 
 - The PR checks are green or all remaining non-green checks are clearly unrelated and explained.
 - Gemini has no unresolved actionable feedback after the latest self-initiated `/gemini review` pass.
