@@ -49,6 +49,7 @@ TART_LOCAL_COPY_EXCLUDES = [
     "build",
     "target",
 ]
+DEFAULT_TART_FLUTTER_ROOT = Path("/Users/admin/flutter")
 
 
 # ========== Common ==========
@@ -543,6 +544,174 @@ def upload_tart_local_copy(
     exec_command(["tart", "exec", vm_name, "/bin/zsh", "-lc", upload_command])
 
     return local_copy_path
+
+
+def tart_prepare_ios_integration_test(
+    *,
+    vm_name: str,
+    flutter_root: Path,
+) -> None:
+    exec_command(
+        [
+            "tart",
+            "exec",
+            vm_name,
+            "/usr/bin/python3",
+            "-c",
+            build_tart_prepare_ios_integration_test_script(flutter_root=flutter_root),
+        ]
+    )
+
+
+def build_tart_prepare_ios_integration_test_script(*, flutter_root: Path) -> str:
+    script = """
+from pathlib import Path
+from datetime import datetime
+import os
+import shutil
+import subprocess
+import sys
+import tempfile
+import time
+import urllib.request
+
+
+PATCH_URL = "https://github.com/flutter/flutter/pull/187643.patch"
+PATCH_INCLUDE_PATH = "packages/flutter_tools/lib/src/ios/simulators.dart"
+PATCH_DOWNLOAD_ATTEMPTS = 5
+PATCH_DOWNLOAD_TIMEOUT_SECONDS = 300
+
+
+def download_patch_text() -> str:
+    curl_result = subprocess.run(
+        [
+            "curl",
+            "-fsSL",
+            "--retry",
+            str(PATCH_DOWNLOAD_ATTEMPTS),
+            "--retry-delay",
+            "5",
+            "--connect-timeout",
+            "30",
+            "--max-time",
+            str(PATCH_DOWNLOAD_TIMEOUT_SECONDS),
+            PATCH_URL,
+        ],
+        text=True,
+        capture_output=True,
+    )
+    if curl_result.returncode == 0:
+        return curl_result.stdout
+
+    print(curl_result.stderr, end="", file=sys.stderr)
+    print("curl failed; retrying Flutter patch download with urllib", file=sys.stderr)
+
+    last_error: Exception | None = None
+    for attempt in range(1, PATCH_DOWNLOAD_ATTEMPTS + 1):
+        try:
+            with urllib.request.urlopen(PATCH_URL, timeout=PATCH_DOWNLOAD_TIMEOUT_SECONDS) as response:
+                return response.read().decode("utf-8")
+        except Exception as error:
+            last_error = error
+            if attempt == PATCH_DOWNLOAD_ATTEMPTS:
+                break
+            print(
+                f"Retrying Flutter patch download after urllib attempt {attempt} failed: {error}",
+                file=sys.stderr,
+            )
+            time.sleep(5 * attempt)
+
+    print(f"Failed to download Flutter patch: {PATCH_URL}", file=sys.stderr)
+    if last_error is not None:
+        print(str(last_error), file=sys.stderr)
+    raise SystemExit(1)
+
+
+def run_git_apply_patch(
+    *,
+    flutter_root: Path,
+    patch_path: Path,
+    check_only: bool,
+) -> subprocess.CompletedProcess[str]:
+    command = [
+        "git",
+        "-C",
+        str(flutter_root),
+        "apply",
+        f"--include={PATCH_INCLUDE_PATH}",
+    ]
+    if check_only:
+        command.append("--check")
+    command.append(str(patch_path))
+
+    return subprocess.run(
+        command,
+        text=True,
+        capture_output=check_only,
+        check=not check_only,
+    )
+
+
+flutter_root = Path(__FLUTTER_ROOT__)
+simulators_dart = flutter_root / "packages/flutter_tools/lib/src/ios/simulators.dart"
+flutter_bin = flutter_root / "bin/flutter"
+snapshot = flutter_root / "bin/cache/flutter_tools.snapshot"
+
+if not simulators_dart.is_file():
+    print(f"Missing Flutter iOS simulator source: {simulators_dart}", file=sys.stderr)
+    raise SystemExit(1)
+
+if not os.access(flutter_bin, os.X_OK):
+    print(f"Missing Flutter executable: {flutter_bin}", file=sys.stderr)
+    raise SystemExit(1)
+
+text = simulators_dart.read_text()
+if "await logReader.start();" not in text:
+    patch_text = download_patch_text()
+
+    with tempfile.NamedTemporaryFile("w", suffix=".patch", delete=False) as patch_file:
+        patch_file.write(patch_text)
+        patch_path = Path(patch_file.name)
+
+    try:
+        check_result = run_git_apply_patch(
+            flutter_root=flutter_root,
+            patch_path=patch_path,
+            check_only=True,
+        )
+        if check_result.returncode != 0:
+            print(check_result.stdout, end="")
+            print(check_result.stderr, end="", file=sys.stderr)
+            print(f"Failed to apply Flutter patch: {PATCH_URL}", file=sys.stderr)
+            raise SystemExit(check_result.returncode)
+
+        backup_timestamp = datetime.now().strftime("%Y%m%d-%H%M%S-%f")
+        backup = simulators_dart.with_name(
+            f"{simulators_dart.name}.frb-ios-log-race.{backup_timestamp}.bak"
+        )
+        shutil.copy2(simulators_dart, backup)
+
+        run_git_apply_patch(
+            flutter_root=flutter_root,
+            patch_path=patch_path,
+            check_only=False,
+        )
+    finally:
+        patch_path.unlink(missing_ok=True)
+
+    text = simulators_dart.read_text()
+    if "await logReader.start();" not in text:
+        print(f"Flutter patch did not update expected simulator source: {PATCH_URL}", file=sys.stderr)
+        raise SystemExit(1)
+else:
+    print(f"Flutter patch already applied: {PATCH_URL}")
+
+snapshot.unlink(missing_ok=True)
+env = dict(os.environ)
+env["FLUTTER_GIT_URL"] = f"file://{flutter_root}"
+subprocess.run([str(flutter_bin), "--version", "--no-version-check"], check=True, env=env)
+"""
+    return script.replace("__FLUTTER_ROOT__", repr(str(flutter_root)))
 
 
 # ========== Docker ==========
@@ -1091,6 +1260,49 @@ def tart_upload(
         local_copy_root=validate_tart_local_copy_root(local_copy_root=local_copy_root),
     )
     typer.echo(local_copy_path)
+
+
+@tart_app.command(name="prepare-ios-integration-test")
+def tart_prepare_ios_integration_test_command(
+    worktree_root: Annotated[
+        Path | None,
+        typer.Option("--worktree-root", help="FRB worktree root. Defaults to git root."),
+    ] = None,
+    base_vm: Annotated[
+        str | None,
+        typer.Option("--base-vm", help="Prepared Tart base VM. Defaults to FRB_TART_BASE_VM or frb-tart-base."),
+    ] = None,
+    min_free_gb: Annotated[
+        int,
+        typer.Option("--min-free-gb", help="Minimum free space required before creating a Tart VM."),
+    ] = MIN_TART_FREE_GB,
+    log_path: Annotated[
+        Path | None,
+        typer.Option("--log-path", help="Where to write tart run output if the VM needs to start."),
+    ] = None,
+    wait: Annotated[
+        int,
+        typer.Option("--wait", help="Seconds to wait for the VM IP if the VM needs to start."),
+    ] = 180,
+    flutter_root: Annotated[
+        Path,
+        typer.Option("--flutter-root", help="Flutter SDK root inside the Tart VM."),
+    ] = DEFAULT_TART_FLUTTER_ROOT,
+) -> None:
+    """Prepare the Tart VM Flutter SDK for iOS integration tests."""
+
+    resolved_worktree_root = resolve_worktree_root(worktree_root=worktree_root)
+    vm_name = ensure_tart_vm_running(
+        worktree_root=resolved_worktree_root,
+        base_vm=get_tart_base_vm(base_vm=base_vm),
+        min_free_gb=min_free_gb,
+        log_path=log_path,
+        wait=wait,
+    )
+    tart_prepare_ios_integration_test(
+        vm_name=vm_name,
+        flutter_root=flutter_root,
+    )
 
 
 @tart_app.command(name="exec")
