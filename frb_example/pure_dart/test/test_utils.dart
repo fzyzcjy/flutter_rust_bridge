@@ -70,9 +70,8 @@ void debugPrint(String message) {
 
 Uint8List createLargeList({required int mb}) => Uint8List(1000000 * mb);
 
-/// borrowed from flutter foundation [kIsWeb](https://api.flutter.dev/flutter/foundation/kIsWeb-constant.html),
-/// but allows for using it in a Dart context alike
-const bool kIsWeb = identical(0, 0.0);
+/// Whether the current Dart compilation target is Web.
+const bool kIsWeb = bool.fromEnvironment('dart.library.js_interop');
 
 String? skipWeb([String reason = 'unspecified']) =>
     kIsWeb ? 'Skipped on web (reason: $reason)' : null;
