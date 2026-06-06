@@ -50,10 +50,9 @@ class PlanCiCommand extends Command<void> {
 
     if (githubOutputPath != null) {
       File(githubOutputPath).writeAsStringSync('${outputLines.join('\n')}\n');
-    } else {
-      stdout.write(outputLines.join('\n'));
-      stdout.write('\n');
     }
+    stdout.write(outputLines.join('\n'));
+    stdout.write('\n');
   }
 }
 
