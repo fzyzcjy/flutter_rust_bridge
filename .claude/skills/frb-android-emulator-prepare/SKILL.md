@@ -30,6 +30,14 @@ Respect `ANDROID_HOME` if it is already set. Otherwise use `~/Library/Android/sd
 
 ## Preflight
 
+Official references for this workflow:
+
+- Android Studio and command-line tools download page: https://developer.android.com/studio
+- `sdkmanager` command-line package manager: https://developer.android.com/tools/sdkmanager
+- `avdmanager` command-line AVD manager: https://developer.android.com/tools/avdmanager
+- Android Emulator command line: https://developer.android.com/studio/run/emulator-commandline
+- ADB command-line tool: https://developer.android.com/tools/adb
+
 Run these before installing anything:
 
 ```bash
@@ -96,7 +104,7 @@ Do not use `brew install --cask temurin` in non-interactive agent runs unless th
 
 ## Install Command-Line Tools
 
-If Android Studio is not installed and `cmdline-tools/latest` is missing, install the official Android command-line tools into the standard SDK root:
+If Android Studio is not installed and `cmdline-tools/latest` is missing, install the official Android command-line tools into the standard SDK root. This follows the Android Developers command-line tools instructions: download the command-line tools package from the Android Studio page, extract it, and place it under `cmdline-tools/latest` in the Android SDK root.
 
 ```bash
 mkdir -p "$HOME/Library/Android/sdk/cmdline-tools/latest"
@@ -118,7 +126,7 @@ export PATH="/opt/homebrew/opt/openjdk/bin:$ANDROID_HOME/cmdline-tools/latest/bi
 
 ## Install Emulator Packages
 
-Accept licenses and install the minimal packages:
+Accept licenses and install the minimal packages with `sdkmanager`, the Android SDK package manager documented by Android Developers:
 
 ```bash
 yes | sdkmanager --licenses
@@ -133,7 +141,7 @@ If the user wants a smaller or non-Google image, choose a matching `system-image
 
 ## Create AVD
 
-Use a predictable AVD name that the `frb-dev-env` examples can reference:
+Use a predictable AVD name that the `frb-dev-env` examples can reference. This uses `avdmanager`, the Android Developers command-line tool for creating and managing AVDs:
 
 ```bash
 avdmanager create avd \
@@ -150,7 +158,7 @@ avdmanager list device
 
 ## Start And Verify Emulator
 
-Start the host emulator through `frb-dev-env`:
+Start the host emulator through `frb-dev-env`. The underlying emulator invocation follows the Android Emulator command-line interface:
 
 ```bash
 .claude/skills/frb-dev-env/frb_dev_env.py android emulator --avd FRB_API_35 --port 5554
@@ -162,7 +170,7 @@ In another terminal, start the host ADB server for Docker clients:
 .claude/skills/frb-dev-env/frb_dev_env.py android adb-server
 ```
 
-Verify host ADB can see the emulator:
+Verify host ADB can see the emulator. This uses ADB, the Android Developers command-line tool for communicating with Android devices and emulators:
 
 ```bash
 adb devices -l
