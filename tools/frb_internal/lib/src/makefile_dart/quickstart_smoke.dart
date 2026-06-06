@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:meta/meta.dart';
 
 enum QuickstartSmokeTarget { web, desktop, android, ios }
@@ -17,7 +18,9 @@ Future<void> runFlutterViaCreateQuickstartSmokeTest({
       '$artifactDir/quickstart-$targetName-processed.png';
   final ocrOutputPath = '$artifactDir/quickstart-$targetName.txt';
   final logPath = '$artifactDir/quickstart-$targetName.log';
-  final absolutePackage = Directory(package).absolute;
+  final absolutePackage = Directory(
+    quickstartSmokePackagePathForTesting(package),
+  );
   final absoluteArtifactDir = Directory('${absolutePackage.path}/$artifactDir');
   absoluteArtifactDir.createSync(recursive: true);
   for (final relativePath in [
@@ -165,6 +168,12 @@ String quickstartSmokeDefaultDeviceIdForTesting(QuickstartSmokeTarget target) {
   }
   throw Exception('No default quickstart smoke device for `$target`');
 }
+
+@visibleForTesting
+String quickstartSmokePackagePathForTesting(
+  String package, {
+  String? repoRootPath,
+}) => Directory('${repoRootPath ?? exec.pwd}$package').absolute.path;
 
 Future<File?> _createChromeWrapperIfNeeded(String artifactDir) async {
   if (!Platform.isLinux || Platform.environment['USER'] != 'root') {

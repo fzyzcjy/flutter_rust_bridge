@@ -139,6 +139,16 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
     );
   });
 
+  test('quickstart smoke resolves package from repo root instead of cwd', () {
+    expect(
+      quickstartSmokePackagePathForTesting(
+        'frb_example/flutter_via_create',
+        repoRootPath: '/workspace/flutter_rust_bridge/',
+      ),
+      '/workspace/flutter_rust_bridge/frb_example/flutter_via_create',
+    );
+  });
+
   test('quickstart smoke OCR rejects unrelated text', () {
     expect(
       () => checkQuickstartSmokeOcrTextForTesting(
