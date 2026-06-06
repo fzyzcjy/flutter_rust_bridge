@@ -11,7 +11,7 @@ Use this skill before setting up, diagnosing, or running `flutter_rust_bridge` c
 
 Use Docker for normal FRB development checks that fit Linux containers: Rust tests, Dart tests, web tests, code generation, lint, Android build checks that do not need a running emulator, and most `./frb_internal` commands. Docker is the default reproducible baseline when local host toolchains are missing or suspected to have drifted.
 
-Use a host Android device or Android Emulator plus a host ADB server for local Android runtime validation when a running Android target is required. Keep FRB, Flutter, Rust, Gradle, and Android build tooling inside Docker; the host should only provide the Android runtime target and the ADB server that manages it. See the Android section below.
+Use a host Android device or Android Emulator for local Android runtime validation when a running Android target is required. Keep FRB, Flutter, Rust, Gradle, and Android build tooling inside Docker. For a physical phone, Docker talks to a host ADB server that can see the USB device. For a host Android Emulator, Docker runs its own ADB server and connects directly to the emulator TCP endpoint so Flutter's VM service forwarding stays inside Docker. See the Android section below.
 
 Use Tart only for checks that need macOS and Xcode, especially iOS Simulator validation. The Tart workflow is intentionally separate from Docker; it gives each worktree a reusable macOS VM cloned from a prepared base VM, then runs FRB commands inside that VM.
 
@@ -84,18 +84,36 @@ Use the project `frb-docker` skill for image, devcontainer, and Dockerfile detai
 
 ## Android Host Runtime
 
-Use this workflow for local Android runtime checks when Docker can build and run the FRB/Flutter command, but the Android device or emulator must be managed by the host. The recommended split is:
+Use this workflow for local Android runtime checks when Docker can build and run the FRB/Flutter command, but the Android target itself must be managed by the host. There are two distinct paths.
+
+For a **host Android Emulator**, use this split:
 
 ```text
 host:
-  Android phone or Android Emulator
-  ADB server for physical devices, or emulator ADB TCP endpoint
+  Android Emulator process
+  Android SDK command-line tools for SDK packages, AVD creation, emulator start/stop, and host-side inspection
+  Android SDK root: ~/Library/Android/sdk unless ANDROID_HOME is set
+  AVD root: ~/.android/avd
 
 Docker container:
   FRB checkout
   Flutter, Dart, Rust, Cargo, Java, Gradle
   Android SDK/NDK/build tools needed for builds
-  ADB client/server for emulator tests, or ADB client connected to the host ADB server for physical devices
+  Docker-local ADB server connected to host.docker.internal:<emulator-adb-port>
+```
+
+For a **physical Android phone**, use this split:
+
+```text
+host:
+  Android phone connected over USB
+  Host ADB server that can see the USB device
+
+Docker container:
+  FRB checkout
+  Flutter, Dart, Rust, Cargo, Java, Gradle
+  Android SDK/NDK/build tools needed for builds
+  ADB client connected to the host ADB server
 ```
 
 The host does not need FRB, Flutter, Rust, or Gradle for this workflow.
@@ -145,7 +163,7 @@ If you intentionally need the host ADB server path, for example a physical devic
 
 `android adb-server` runs `adb -a -L tcp:<port> server nodaemon` by default. `docker exec --android-host-adb` injects `ADB_SERVER_SOCKET=tcp:host.docker.internal:5037` plus `ANDROID_ADB_SERVER_ADDRESS` and `ANDROID_ADB_SERVER_PORT` into the command environment. Override the default host and port with `--android-adb-server-host`, `--android-adb-server-port`, `FRB_ANDROID_ADB_SERVER_HOST`, or `FRB_ANDROID_ADB_SERVER_PORT`. If the host ADB server uses a non-default port, pass the same port to both `android adb-server --port <port>` and `docker exec --android-adb-server-port <port>`.
 
-If Flutter does not honor the injected ADB server environment in the current SDK/tooling combination, use an `adb` wrapper earlier in `PATH` inside the container that forwards to the host server:
+If Flutter does not honor the injected ADB server environment in the current SDK/tooling combination for a physical-device check, use an `adb` wrapper earlier in `PATH` inside the container that forwards to the host server:
 
 ```bash
 exec /path/to/real/adb -H host.docker.internal -P 5037 "$@"

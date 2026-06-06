@@ -1,6 +1,6 @@
 ---
 name: frb-android-emulator-prepare
-description: Use when preparing, installing, diagnosing, or explaining the host Android Emulator environment for flutter_rust_bridge local runtime validation, including Android SDK command-line tools, emulator packages, AVD creation, host ADB server setup, and Docker-to-host ADB connectivity.
+description: Use when preparing, installing, diagnosing, or explaining the host Android Emulator environment for flutter_rust_bridge local runtime validation, including Android SDK command-line tools, emulator packages, AVD creation, host emulator startup, and Docker-local ADB connectivity to the emulator TCP endpoint.
 ---
 
 # FRB Android Emulator Preparation
@@ -183,9 +183,10 @@ Only after both ADB checks pass, run an FRB Android runtime command. Use the Doc
   bash -lc './frb_internal test-flutter-native --package frb_example--flutter_via_create --flutter-test-args "--device-id host.docker.internal:5555"'
 ```
 
-For a physical Android phone, or for a simple host ADB connectivity smoke test, start the host ADB server for Docker clients in another terminal and use `--android-host-adb`:
+For a physical Android phone, use the separate host ADB server path from `frb-dev-env`:
 
 ```bash
+.claude/skills/frb-dev-env/frb_dev_env.py android adb-server
 .claude/skills/frb-dev-env/frb_dev_env.py docker exec --android-host-adb -- \
   adb devices -l
 ```
@@ -208,4 +209,4 @@ Stop the emulator from host ADB:
 adb -s emulator-5554 emu kill
 ```
 
-Stop the foreground `android adb-server` command with `Ctrl-C`. Avoid deleting SDK packages or AVDs unless the user explicitly asks.
+If a separate physical-device host ADB server was started, stop the foreground `android adb-server` command with `Ctrl-C`. Avoid deleting SDK packages or AVDs unless the user explicitly asks.
