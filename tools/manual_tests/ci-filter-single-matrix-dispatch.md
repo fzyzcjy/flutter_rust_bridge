@@ -41,7 +41,7 @@ Run from the repository root:
 
 ```bash
 git fetch origin master
-git switch -c codex/manual-test-ci-filter origin/master
+git switch -c codex/ci-filter-dummy-YYYYMMDD-HHMMSS origin/master
 git status --short
 git submodule update --init --recursive
 ```
@@ -55,7 +55,7 @@ If the local environment does not have the FRB toolchain, run the smoke check th
 
 ## Test Data
 
-- Input files, API examples, account fixtures, or generated assets: a dummy branch containing a low-risk documentation-only change.
+- Input files, API examples, account fixtures, or generated assets: a temporary dummy branch containing an empty commit or other low-risk no-op change.
 - Reset procedure before each run: create a fresh branch from the latest `origin/master` and use a new PR, or close/delete any prior dummy PR before reusing the branch name.
 
 ## Steps
@@ -64,20 +64,21 @@ If the local environment does not have the FRB toolchain, run the smoke check th
 
    ```bash
    git fetch origin master
-   git switch -c codex/manual-test-ci-filter origin/master
+   git switch -c codex/ci-filter-dummy-YYYYMMDD-HHMMSS origin/master
+   git commit --allow-empty -m "Create dummy PR for CI filter manual test"
    git status --short
-   git push -u origin codex/manual-test-ci-filter
+   git push -u origin codex/ci-filter-dummy-YYYYMMDD-HHMMSS
    ```
 
-2. Create a PR for the dummy branch and apply the `ci-manual-dispatch` label before treating CI status as meaningful.
+2. Create a temporary dummy PR for the dummy branch and apply the `ci-manual-dispatch` label before treating CI status as meaningful.
 
    ```bash
    gh pr create \
      --repo fzyzcjy/flutter_rust_bridge \
      --base master \
-     --head codex/manual-test-ci-filter \
-     --title "Add CI filter manual test" \
-     --body "Manual test PR for ci_filter single matrix dispatch." \
+     --head codex/ci-filter-dummy-YYYYMMDD-HHMMSS \
+     --title "Manual CI filter dummy PR" \
+     --body "Temporary dummy PR for executing the CI filter manual test. This PR should be closed after evidence is captured." \
      --label ci-manual-dispatch
    ```
 
@@ -91,7 +92,7 @@ If the local environment does not have the FRB toolchain, run the smoke check th
 
    ```bash
    gh pr checks <PR_NUMBER> --repo fzyzcjy/flutter_rust_bridge
-   gh run list --repo fzyzcjy/flutter_rust_bridge --branch codex/manual-test-ci-filter --event pull_request --limit 5
+   gh run list --repo fzyzcjy/flutter_rust_bridge --branch codex/ci-filter-dummy-YYYYMMDD-HHMMSS --event pull_request --limit 5
    ```
 
 4. Dispatch exactly one Linux Dart native matrix item.
@@ -99,14 +100,14 @@ If the local environment does not have the FRB toolchain, run the smoke check th
    ```bash
    gh workflow run ci.yaml \
      --repo fzyzcjy/flutter_rust_bridge \
-     --ref codex/manual-test-ci-filter \
+     --ref codex/ci-filter-dummy-YYYYMMDD-HHMMSS \
      -f 'ci_filter=test_dart_native[image=ubuntu-24.04,package=frb_example--dart_minimal]'
    ```
 
 5. Identify the workflow dispatch run and watch its jobs.
 
    ```bash
-   gh run list --repo fzyzcjy/flutter_rust_bridge --branch codex/manual-test-ci-filter --event workflow_dispatch --limit 5
+   gh run list --repo fzyzcjy/flutter_rust_bridge --branch codex/ci-filter-dummy-YYYYMMDD-HHMMSS --event workflow_dispatch --limit 5
    gh run view <RUN_ID> --repo fzyzcjy/flutter_rust_bridge --json status,conclusion,url,headSha,attempt
    gh api repos/fzyzcjy/flutter_rust_bridge/actions/runs/<RUN_ID>/jobs --paginate
    ```
@@ -168,7 +169,7 @@ gh pr edit <PR_NUMBER> --repo fzyzcjy/flutter_rust_bridge --remove-label ci-manu
 git status --short
 ```
 
-Close the dummy PR and delete the remote branch if the manual-test PR is not intended to be merged.
+Close the dummy PR and delete the remote branch after the execution evidence is captured. Do not merge the dummy PR.
 
 ## Future Automation
 
