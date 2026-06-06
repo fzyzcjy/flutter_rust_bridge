@@ -1,23 +1,23 @@
-# Manual Test Example
+# Manual Test Template
 
 ## Purpose
 
-This example demonstrates the expected structure of a manual test report for flutter_rust_bridge. It is not tied to a real bug and should be copied or adapted for future manual verification work.
+<What this test verifies.>
 
 ## Source
 
-- Context: Example report added to document the manual-test workflow.
-- Related skill: `.claude/skills/frb-manual-test/SKILL.md`
+- Context: `<issue, PR, feature, release, or user report>`
+- Related docs or skills: `<paths or links>`
 
 ## When To Run
 
-Run a manual test when the scenario depends on an external device, local host configuration, credentials, interactive UI behavior, release packaging, marketplace/account state, or another condition that is better verified by a human or agent following explicit steps.
+<When this test is required or useful.>
 
 ## Preconditions
 
 - Repository: `fzyzcjy/flutter_rust_bridge`
 - Commit or release under test: `<commit-or-version>`
-- Required branch state: clean checkout with submodules initialized
+- Required branch state: `<clean checkout with submodules initialized, generated files present, etc.>`
 - Required credentials or account state: `<required capability, never paste secrets>`
 - Required device or simulator state: `<device must be available / app uninstalled / cache reset / etc.>`
 
@@ -52,23 +52,23 @@ If this test needs generated output or dependencies, list the exact setup comman
 
 ## Steps
 
-1. Prepare the target package or example.
+1. <Prepare the target package, example, device, account, or service.>
 
    ```bash
-   ./frb_internal precommit-generate
+   <command>
    ```
 
-2. Run the command or manual action that exposes the behavior.
+2. <Run the command or manual action that verifies the behavior.>
 
    ```bash
-   ./frb_internal test-dart-native --package frb_example/pure_dart
+   <command>
    ```
 
 3. If UI interaction is required, describe each click, field value, device action, or expected screen by name.
 
 ## Expected Result
 
-The command or manual flow should complete successfully and show the expected observable behavior.
+<The command or manual flow should complete successfully and show the expected observable behavior.>
 
 ```text
 <success output, UI text, artifact path, or other pass criteria>

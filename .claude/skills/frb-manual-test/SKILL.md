@@ -13,7 +13,13 @@ Manual tests are normal software-engineering test artifacts. They may cover devi
 
 A manual test report must be mechanical enough that a future human or agent can execute it without the original conversation.
 
-Treat the report like a test case:
+When writing a new manual test report, do not start from a blank file. Copy the bundled template first, then edit it for the scenario:
+
+```bash
+cp .claude/skills/frb-manual-test/template.md tools/manual_tests/<name>.md
+```
+
+After copying, replace every placeholder and remove sections that truly do not apply. Keep the resulting report as a normal test case:
 
 1. Define the purpose and scope.
 2. State preconditions and environment.
@@ -33,7 +39,7 @@ tools/manual_tests/<name>.md
 Use a short kebab-case name. Include a date prefix when the report is an example, a one-off check, or does not yet have a stable feature name, such as:
 
 ```text
-tools/manual_tests/2026-06-06-example.md
+tools/manual_tests/2026-06-06-some-scenario.md
 ```
 
 ## Required Content
@@ -79,63 +85,3 @@ When executing a manual test, do not only say that it "passed". Record:
 - Follow-up issue or PR if the result is not clean.
 
 Append this to the report's execution record when the report is meant to keep run history. If the run history would be noisy, put the execution result in the PR, issue, or release checklist instead and keep the report itself as the stable procedure.
-
-## Report Skeleton
-
-~~~markdown
-## Purpose
-
-<What this test verifies.>
-
-## When To Run
-
-<When this test is required or useful.>
-
-## Preconditions
-
-<Branch, device, account, generated files, services, or data required before starting.>
-
-## Environment
-
-- OS:
-- Flutter:
-- Dart:
-- Rust:
-- Device / simulator:
-- External services:
-
-## Preparation
-
-```bash
-<commands>
-```
-
-## Steps
-
-1. <Action>
-2. <Action>
-
-## Expected Result
-
-<Observable pass criteria.>
-
-## Results To Capture
-
-- <Logs, screenshots, artifact paths, or command output.>
-
-## Cleanup
-
-```bash
-<commands>
-```
-
-## Execution Record
-
-| Date | Executor | Commit / version | Environment | Result | Artifacts |
-|------|----------|------------------|-------------|--------|----------|
-| YYYY-MM-DD | <name or agent> | `<sha>` | <summary> | <pass/fail/blocked> | <paths or links> |
-
-## Automation Notes
-
-<How this could become automated, or why it should remain manual.>
-~~~
