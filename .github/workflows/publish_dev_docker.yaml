@@ -120,6 +120,7 @@ jobs:
             rustup target list --toolchain nightly-${{ needs.metadata.outputs.rust_nightly_version }} --installed
             wasm-pack --version
             "${CHROME_BIN}" --version
+            chromedriver --version
             rustup target list --toolchain nightly-${{ needs.metadata.outputs.rust_nightly_version }} --installed | grep wasm32-unknown-unknown
             rustup show | grep "nightly-${{ needs.metadata.outputs.rust_nightly_version }}"
           '
