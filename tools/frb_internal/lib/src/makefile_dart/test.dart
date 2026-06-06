@@ -595,10 +595,12 @@ Future<void> flutterIntegrationTestRaw({
   String flutterTestArgs = '',
   required String relativePwd,
 }) async {
+  const timeout = Duration(minutes: 20);
   await retry(
     () async => await exec(
       'flutter test integration_test/simple_test.dart --verbose --reporter=expanded $flutterTestArgs',
       relativePwd: relativePwd,
+      timeout: timeout,
     ),
     maxAttempts: 3,
     onRetry: (e) => print(
