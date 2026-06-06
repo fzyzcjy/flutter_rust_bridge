@@ -70,6 +70,23 @@ void main() {
       });
     });
 
+    test('comma-separated whole job filters enable each selected job', () {
+      final plan = buildCiPlan(
+        filter: 'lint_dart_primary,test_dart_web',
+        automaticCiDisabled: false,
+      );
+
+      expect(plan.enabledJobs, {'lint_dart_primary', 'test_dart_web'});
+      expect(plan.matrixByJob['test_dart_web'], {
+        'include': [
+          {'package': 'frb_dart'},
+          {'package': 'frb_example--dart_minimal'},
+          {'package': 'frb_example--pure_dart'},
+          {'package': 'frb_example--pure_dart_pde'},
+        ],
+      });
+    });
+
     test('matrix job without brackets enables its full matrix', () {
       final plan = buildCiPlan(
         filter: 'test_dart_valgrind',
@@ -239,6 +256,42 @@ void main() {
         ],
       });
     });
+
+    test('repeated matrix job filters are unioned', () {
+      final plan = buildCiPlan(
+        filter:
+            'test_rust[image=ubuntu-latest,version=nightly],test_rust[image=ubuntu-latest,version=1.85.0]',
+        automaticCiDisabled: false,
+      );
+
+      expect(plan.enabledJobs, {'test_rust'});
+      expect(plan.matrixByJob['test_rust'], {
+        'include': [
+          {
+            'info': {'image': 'ubuntu-latest', 'version': 'nightly'},
+          },
+          {
+            'info': {'image': 'ubuntu-latest', 'version': '1.85.0'},
+          },
+        ],
+      });
+    });
+
+    test('repeated matrix job filters deduplicate by original matrix order', () {
+      final plan = buildCiPlan(
+        filter:
+            'test_dart_web[package=frb_example--pure_dart_pde],test_dart_web[package=frb_dart|frb_example--pure_dart_pde]',
+        automaticCiDisabled: false,
+      );
+
+      expect(plan.enabledJobs, {'test_dart_web'});
+      expect(plan.matrixByJob['test_dart_web'], {
+        'include': [
+          {'package': 'frb_dart'},
+          {'package': 'frb_example--pure_dart_pde'},
+        ],
+      });
+    });
   });
 
   group('Documented ci_filter skill examples', () {
@@ -254,6 +307,20 @@ void main() {
       _CiFilterExample(
         filter: 'lint_dart_primary',
         enabledJobs: {'lint_dart_primary'},
+      ),
+      _CiFilterExample(
+        filter: 'lint_dart_primary,test_dart_web',
+        enabledJobs: {'lint_dart_primary', 'test_dart_web'},
+        matrixByJob: {
+          'test_dart_web': {
+            'include': [
+              {'package': 'frb_dart'},
+              {'package': 'frb_example--dart_minimal'},
+              {'package': 'frb_example--pure_dart'},
+              {'package': 'frb_example--pure_dart_pde'},
+            ],
+          },
+        },
       ),
       _CiFilterExample(
         filter:
@@ -292,6 +359,19 @@ void main() {
       ),
       _CiFilterExample(
         filter:
+            'test_dart_web[package=frb_dart|frb_example--pure_dart_pde],lint_rust_primary',
+        enabledJobs: {'test_dart_web', 'lint_rust_primary'},
+        matrixByJob: {
+          'test_dart_web': {
+            'include': [
+              {'package': 'frb_dart'},
+              {'package': 'frb_example--pure_dart_pde'},
+            ],
+          },
+        },
+      ),
+      _CiFilterExample(
+        filter:
             'test_dart_native[image=ubuntu-24.04,package=tools--frb_internal]',
         enabledJobs: {'test_dart_native'},
         matrixByJob: {
@@ -304,6 +384,23 @@ void main() {
       ),
       _CiFilterExample(
         filter: 'test_rust[image=ubuntu-latest,version=nightly|1.85.0]',
+        enabledJobs: {'test_rust'},
+        matrixByJob: {
+          'test_rust': {
+            'include': [
+              {
+                'info': {'image': 'ubuntu-latest', 'version': 'nightly'},
+              },
+              {
+                'info': {'image': 'ubuntu-latest', 'version': '1.85.0'},
+              },
+            ],
+          },
+        },
+      ),
+      _CiFilterExample(
+        filter:
+            'test_rust[image=ubuntu-latest,version=nightly],test_rust[image=ubuntu-latest,version=1.85.0]',
         enabledJobs: {'test_rust'},
         matrixByJob: {
           'test_rust': {
@@ -470,6 +567,7 @@ void main() {
         'test_dart_web]',
         'test_dart_web[package=frb_dart',
         '[package=frb_dart]',
+        'test_dart_web[]',
       ]) {
         expect(
           () => buildCiPlan(filter: filter, automaticCiDisabled: false),
@@ -482,6 +580,7 @@ void main() {
     test('rejects malformed conditions', () {
       for (final filter in [
         'test_dart_web[package]',
+        'test_dart_web[frb_dart,frb_example--pure_dart_pde],lint_rust_primary',
         'test_dart_web[=frb_dart]',
         'test_dart_web[package=]',
       ]) {
@@ -511,10 +610,7 @@ String _readSnapshot(String name) {
 }
 
 void _expectCiFilterExample(_CiFilterExample example) {
-  final plan = buildCiPlan(
-    filter: example.filter,
-    automaticCiDisabled: false,
-  );
+  final plan = buildCiPlan(filter: example.filter, automaticCiDisabled: false);
 
   expect(plan.enabledJobs, example.enabledJobs);
   for (final entry in plan.matrixByJob.entries) {

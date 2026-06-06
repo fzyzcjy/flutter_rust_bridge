@@ -95,7 +95,13 @@ CiPlan buildCiPlan({
         'CI filter `${spec.original}` did not match any matrix entries.',
       );
     }
-    matrixByJob[job.id] = {'include': entries};
+    matrixByJob[job.id] = {
+      'include': _mergeMatrixEntries(
+        matrix: matrix,
+        current: matrixByJob[job.id]!['include'] as List<Map<String, Object?>>,
+        additions: entries,
+      ),
+    };
   }
 
   return CiPlan(enabledJobs: enabledJobs, matrixByJob: matrixByJob);
@@ -422,6 +428,18 @@ List<Map<String, Object?>> _filterMatrixEntries({
   return [
     for (final entry in job.matrix!.entries)
       if (_entryMatchesFilters(entry: entry, filters: filters)) entry,
+  ];
+}
+
+List<Map<String, Object?>> _mergeMatrixEntries({
+  required CiMatrix matrix,
+  required List<Map<String, Object?>> current,
+  required List<Map<String, Object?>> additions,
+}) {
+  final selected = {...current, ...additions};
+  return [
+    for (final entry in matrix.entries)
+      if (selected.contains(entry)) entry,
   ];
 }
 
