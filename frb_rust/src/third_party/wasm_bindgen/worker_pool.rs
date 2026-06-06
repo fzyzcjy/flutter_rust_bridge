@@ -104,7 +104,7 @@ impl WorkerPool {
             const FRB_ACTION_PANIC = 3;
             onmessage = event => {{
                 const [module, memory] = event.data;
-                let init = {wasm_bindgen_name}({{ module_or_path: module, memory }}).catch(err => {{
+                let init = {wasm_bindgen_name}(module, memory).catch(err => {{
                     setTimeout(() => {{ throw err }})
                     throw err
                 }})
