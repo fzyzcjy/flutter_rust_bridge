@@ -52,7 +52,7 @@ List<Command<void>> createCommands() {
     SimpleCommand('sync-cargokit-copies', syncCargokitCopies),
     SimpleCommand('pub-get-all', pubGetAll),
     SimpleCommand('cargo-fetch-all', cargoFetchAll),
-    CiPlanCommand(),
+    PlanCiCommand(),
     CodecovPreaggregateCommand(),
   ];
 }

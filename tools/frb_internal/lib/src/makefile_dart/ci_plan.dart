@@ -5,7 +5,7 @@ import 'package:args/command_runner.dart';
 
 const kCiManualDispatchLabel = 'ci-manual-dispatch';
 
-class CiPlanCommand extends Command<void> {
+class PlanCiCommand extends Command<void> {
   @override
   final String name = 'plan-ci';
 
@@ -13,7 +13,7 @@ class CiPlanCommand extends Command<void> {
   final String description =
       'Plan GitHub Actions CI jobs and matrices from a compact filter';
 
-  CiPlanCommand() {
+  PlanCiCommand() {
     argParser
       ..addOption(
         'filter',
