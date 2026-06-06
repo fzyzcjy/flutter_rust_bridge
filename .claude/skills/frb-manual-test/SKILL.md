@@ -14,13 +14,13 @@ Manual tests are normal software-engineering test artifacts. They may cover devi
 Manual test reports live under:
 
 ```text
-tools/manual_tests/<name>.md
+tools/manual_tests/NAME.md
 ```
 
 When adding a report, do not start from a blank file. Copy the bundled test template first:
 
 ```bash
-cp .claude/skills/frb-manual-test/test-template.md tools/manual_tests/<name>.md
+cp .claude/skills/frb-manual-test/test-template.md tools/manual_tests/NAME.md
 ```
 
 Use a short kebab-case name. Include a date prefix when the report is an example, a one-off check, or does not yet have a stable feature name, such as:
@@ -47,7 +47,7 @@ When executing a manual test, first read the target report under `tools/manual_t
 Before reporting the run result, use the bundled execution template:
 
 ```bash
-cp .claude/skills/frb-manual-test/execution-template.md <execution-result-path>.md
+cp .claude/skills/frb-manual-test/execution-template.md EXECUTION_RESULT_PATH.md
 ```
 
 If the result belongs in a PR comment, issue comment, release checklist, or chat response instead of a file, copy the template text there and fill it out. Do not only say that the test "passed".
