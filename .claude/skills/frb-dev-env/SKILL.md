@@ -227,13 +227,13 @@ Examples:
 
 Before running iOS Simulator integration tests, prepare the VM Flutter SDK once per VM or after replacing Flutter. This applies the runtime portion of `https://github.com/flutter/flutter/pull/187643.patch` as an idempotent Flutter tool workaround for an iOS simulator VM Service discovery race where `simctl launch` can emit the Dart VM Service log before Flutter's `simctl log stream` listener is ready.
 
-The preparation command also rebuilds `flutter_tools.snapshot` and prints the environment exports expected by the test command:
+The preparation command also rebuilds `flutter_tools.snapshot`:
 
 ```bash
 .claude/skills/frb-dev-env/frb_dev_env.py tart prepare-ios-integration-test
 ```
 
-Use the printed environment for the integration test. `FLUTTER_GIT_URL` keeps `flutter doctor` and Flutter metadata consistent when the VM uses a local Flutter checkout. `FRB_SKIP_FLUTTER_DOCTOR=1` skips the FRB wrapper's preflight doctor because the simulator integration test itself is the validation target and doctor can hang after printing device checks in Tart.
+Use the environment shown in the test command below for the integration test. `FLUTTER_GIT_URL` keeps `flutter doctor` and Flutter metadata consistent when the VM uses a local Flutter checkout. `FRB_SKIP_FLUTTER_DOCTOR=1` skips the FRB wrapper's preflight doctor because the simulator integration test itself is the validation target and doctor can hang after printing device checks in Tart.
 
 ### iOS Integration Test
 

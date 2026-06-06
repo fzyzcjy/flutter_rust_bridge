@@ -579,6 +579,31 @@ PATCH_URL = "https://github.com/flutter/flutter/pull/187643.patch"
 PATCH_INCLUDE_PATH = "packages/flutter_tools/lib/src/ios/simulators.dart"
 
 
+def run_git_apply_patch(
+    *,
+    flutter_root: Path,
+    patch_path: Path,
+    check_only: bool,
+) -> subprocess.CompletedProcess[str]:
+    command = [
+        "git",
+        "-C",
+        str(flutter_root),
+        "apply",
+        f"--include={PATCH_INCLUDE_PATH}",
+    ]
+    if check_only:
+        command.append("--check")
+    command.append(str(patch_path))
+
+    return subprocess.run(
+        command,
+        text=True,
+        capture_output=check_only,
+        check=not check_only,
+    )
+
+
 flutter_root = Path(__FLUTTER_ROOT__)
 simulators_dart = flutter_root / "packages/flutter_tools/lib/src/ios/simulators.dart"
 flutter_bin = flutter_root / "bin/flutter"
@@ -602,18 +627,10 @@ if "await logReader.start();" not in text:
         patch_path = Path(patch_file.name)
 
     try:
-        check_result = subprocess.run(
-            [
-                "git",
-                "-C",
-                str(flutter_root),
-                "apply",
-                "--check",
-                f"--include={PATCH_INCLUDE_PATH}",
-                str(patch_path),
-            ],
-            text=True,
-            capture_output=True,
+        check_result = run_git_apply_patch(
+            flutter_root=flutter_root,
+            patch_path=patch_path,
+            check_only=True,
         )
         if check_result.returncode != 0:
             print(check_result.stdout, end="")
@@ -627,16 +644,10 @@ if "await logReader.start();" not in text:
         )
         shutil.copy2(simulators_dart, backup)
 
-        subprocess.run(
-            [
-                "git",
-                "-C",
-                str(flutter_root),
-                "apply",
-                f"--include={PATCH_INCLUDE_PATH}",
-                str(patch_path),
-            ],
-            check=True,
+        run_git_apply_patch(
+            flutter_root=flutter_root,
+            patch_path=patch_path,
+            check_only=False,
         )
     finally:
         patch_path.unlink(missing_ok=True)
@@ -652,8 +663,6 @@ snapshot.unlink(missing_ok=True)
 env = dict(os.environ)
 env["FLUTTER_GIT_URL"] = f"file://{flutter_root}"
 subprocess.run([str(flutter_bin), "--version", "--no-version-check"], check=True, env=env)
-print(f"export FLUTTER_GIT_URL=file://{flutter_root}")
-print("export FRB_SKIP_FLUTTER_DOCTOR=1")
 """
     return script.replace("__FLUTTER_ROOT__", repr(str(flutter_root)))
 
