@@ -16,7 +16,7 @@ Run this before publishing or announcing a release, after changing the website d
 ## Preconditions
 
 - Repository: `fzyzcjy/flutter_rust_bridge`
-- Required checkout state: a checkout is useful for recording this manual test result, but the browser verification targets the published website, not local files.
+- Required checkout state: not required; the browser verification targets the published website, not local files.
 - Required credentials or account state: none.
 - Required device or simulator state: none.
 - Required network state: outbound HTTPS access to `https://cjycode.com`.
@@ -31,13 +31,6 @@ Run this before publishing or announcing a release, after changing the website d
 - Browser or external service: Chromium, Chrome, Firefox, Safari, or an equivalent browser that supports Flutter web and WebAssembly threads. Record the browser name and version in the execution result.
 
 ## Preparation
-
-From the repository root, record the current revision and checkout state for the execution result.
-
-```bash
-git rev-parse --short HEAD
-git status --short
-```
 
 Open the published demo page in a fresh browser tab or clean browser context.
 
@@ -101,7 +94,6 @@ Mark the run as blocked, not failed, if the executor has no network access to `h
 - Screenshot after the Mandelbrot render appears.
 - Whether the `Time: <number>ms` label appeared, including the observed text.
 - Any relevant browser console errors, network failures, or crash messages.
-- `git rev-parse --short HEAD` and `git status --short` from the checkout used to record the result.
 
 ## Troubleshooting
 
@@ -113,10 +105,6 @@ Mark the run as blocked, not failed, if the executor has no network access to `h
 ## Cleanup
 
 Close the browser tab or browser automation context used for the run. No repository files, devices, services, or external account state should be changed by this test.
-
-```bash
-git status --short
-```
 
 ## Future Automation
 
