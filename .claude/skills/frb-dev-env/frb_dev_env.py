@@ -578,11 +578,34 @@ import urllib.request
 
 PATCH_URL = "https://github.com/flutter/flutter/pull/187643.patch"
 PATCH_INCLUDE_PATH = "packages/flutter_tools/lib/src/ios/simulators.dart"
-PATCH_DOWNLOAD_ATTEMPTS = 3
-PATCH_DOWNLOAD_TIMEOUT_SECONDS = 180
+PATCH_DOWNLOAD_ATTEMPTS = 5
+PATCH_DOWNLOAD_TIMEOUT_SECONDS = 300
 
 
 def download_patch_text() -> str:
+    curl_result = subprocess.run(
+        [
+            "curl",
+            "-fsSL",
+            "--retry",
+            str(PATCH_DOWNLOAD_ATTEMPTS),
+            "--retry-delay",
+            "5",
+            "--connect-timeout",
+            "30",
+            "--max-time",
+            str(PATCH_DOWNLOAD_TIMEOUT_SECONDS),
+            PATCH_URL,
+        ],
+        text=True,
+        capture_output=True,
+    )
+    if curl_result.returncode == 0:
+        return curl_result.stdout
+
+    print(curl_result.stderr, end="", file=sys.stderr)
+    print("curl failed; retrying Flutter patch download with urllib", file=sys.stderr)
+
     last_error: Exception | None = None
     for attempt in range(1, PATCH_DOWNLOAD_ATTEMPTS + 1):
         try:
@@ -593,7 +616,7 @@ def download_patch_text() -> str:
             if attempt == PATCH_DOWNLOAD_ATTEMPTS:
                 break
             print(
-                f"Retrying Flutter patch download after attempt {attempt} failed: {error}",
+                f"Retrying Flutter patch download after urllib attempt {attempt} failed: {error}",
                 file=sys.stderr,
             )
             time.sleep(5 * attempt)
