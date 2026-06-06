@@ -29,7 +29,7 @@ jobs:
 
   # ref https://docusaurus.io/docs/deployment#triggering-deployment-with-github-actions
   deploy_website:
-    if: ${{ github.event.action != 'closed' }}
+    if: ${{ false }}
     name: 'Deploy :: Website'
     runs-on: ubuntu-latest
 
@@ -73,7 +73,7 @@ jobs:
   # ----------------------------------- lint -----------------------------------
 
   lint_rust_primary:
-    if: ${{ github.event.action != 'closed' }}
+    if: ${{ false }}
     name: 'Lint :: Rust :: Primary'
     runs-on: ubuntu-latest
 
@@ -107,7 +107,7 @@ jobs:
       - run: ./frb_internal lint-rust
 
   lint_dart_primary:
-    if: ${{ github.event.action != 'closed' }}
+    if: ${{ false }}
     name: 'Lint :: Dart :: Primary'
     runs-on: ubuntu-latest
 
@@ -133,7 +133,7 @@ jobs:
       - run: ./frb_internal lint-dart
 
   lint_rust_feature_flag:
-    if: ${{ github.event.action != 'closed' }}
+    if: ${{ false }}
     name: 'Lint :: Rust :: Feature flag'
     runs-on: ubuntu-latest
 
@@ -194,7 +194,7 @@ jobs:
   #       cargo msrv --path frb_rust verify
 
   generate_run_frb_codegen_command_generate:
-    if: ${{ github.event.action != 'closed' }}
+    if: ${{ false }}
     name: 'Generate :: FRB Codegen :: Command Generate'
     runs-on: ${{ matrix.image }}
 
@@ -258,7 +258,7 @@ jobs:
           path: target/coverage
 
   generate_run_frb_codegen_command_integrate:
-    if: ${{ github.event.action != 'closed' }}
+    if: ${{ false }}
     name: 'Generate :: FRB Codegen :: Command Integrate'
     runs-on: ${{ matrix.image }}
     env:
@@ -338,7 +338,7 @@ jobs:
           path: target/coverage
 
   generate_internal:
-    if: ${{ github.event.action != 'closed' }}
+    if: ${{ false }}
     name: 'Generate :: Internal'
     runs-on: ubuntu-latest
 
@@ -379,7 +379,7 @@ jobs:
   # ----------------------------------- bench -----------------------------------
 
   bench_dart_native:
-    if: ${{ github.event.action != 'closed' }}
+    if: ${{ false }}
     name: 'Bench :: Dart :: Native'
     runs-on: ${{ matrix.image }}
     strategy:
@@ -424,7 +424,7 @@ jobs:
     name: 'Bench :: Upload'
     runs-on: ubuntu-latest
     # NOTE Even if some previous jobs failed, we still want partial info
-    if: ${{ github.event.action != 'closed' && always() && !cancelled() }}
+    if: ${{ false }}
     needs:
       # NOTE We do this to ensure bench upload *after* deploy website.
       # Otherwise, if they are run concurrently, they can push to git at the same time, causing failure for one of them
@@ -461,7 +461,7 @@ jobs:
   # ----------------------------------- build -----------------------------------
 
   build_flutter:
-    if: ${{ github.event.action != 'closed' }}
+    if: ${{ false }}
     name: 'Build :: Flutter'
     runs-on: ${{ matrix.info.image }}
     strategy:
@@ -541,7 +541,7 @@ jobs:
   # ----------------------------------- test -----------------------------------
 
   test_mimic_quickstart:
-    if: ${{ github.event.action != 'closed' }}
+    if: ${{ false }}
     name: 'Test :: MimicQuickstart'
     runs-on: ${{ matrix.image }}
     strategy:
@@ -629,7 +629,7 @@ jobs:
   #         path: target/coverage
 
   test_rust:
-    if: ${{ github.event.action != 'closed' }}
+    if: ${{ false }}
     name: 'Test :: Rust'
     runs-on: ${{ matrix.info.image }}
     strategy:
@@ -687,7 +687,7 @@ jobs:
           path: target/coverage
 
   test_dart_native:
-    if: ${{ github.event.action != 'closed' }}
+    if: ${{ false }}
     name: 'Test :: Dart :: Native'
     runs-on: ${{ matrix.image }}
     strategy:
@@ -747,7 +747,7 @@ jobs:
           path: target/coverage
 
   test_dart_web:
-    if: ${{ github.event.action != 'closed' }}
+    if: ${{ false }}
     name: 'Test :: Dart :: Web'
     runs-on: ubuntu-latest
     strategy:
@@ -807,7 +807,7 @@ jobs:
       - run: ./frb_internal test-dart-web --package ${{ matrix.package }}
 
   test_dart_valgrind:
-    if: ${{ github.event.action != 'closed' }}
+    if: ${{ false }}
     name: 'Test :: Dart :: Valgrind'
     runs-on: ubuntu-latest
     strategy:
@@ -846,7 +846,7 @@ jobs:
       - run: ./frb_internal test-dart-valgrind --package ${{ matrix.package }}
 
   test_dart_sanitizer:
-    if: ${{ github.event.action != 'closed' }}
+    if: ${{ false }}
     name: 'Test :: Dart :: Sanitizer'
     runs-on: ubuntu-latest
     strategy:
@@ -898,7 +898,7 @@ jobs:
 
   # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
   test_flutter_native_android:
-    if: ${{ github.event.action != 'closed' }}
+    if: ${{ false }}
     name: 'Test :: Flutter :: Native:: Android'
     runs-on: ubuntu-latest
     strategy:
@@ -968,7 +968,7 @@ jobs:
 
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
   test_flutter_native_ios:
-    if: ${{ github.event.action != 'closed' }}
+    if: ${{ false }}
     name: 'Test :: Flutter :: Native:: iOS'
     runs-on: macos-latest
     strategy:
@@ -1014,7 +1014,7 @@ jobs:
       - run: ./frb_internal test-flutter-native --package ${{ matrix.package }}
 
   test_flutter_native_desktop:
-    if: ${{ github.event.action != 'closed' }}
+    if: ${{ false }}
     name: 'Test :: Flutter :: Native:: ${{ matrix.info.platform }} (${{ matrix.info.package }})'
     runs-on: ${{ matrix.info.image }}
     strategy:
@@ -1174,7 +1174,7 @@ jobs:
     name: 'Misc :: Codecov'
     runs-on: ubuntu-latest
     # NOTE Even if some previous jobs failed, we still want partial info
-    if: ${{ github.event.action != 'closed' && always() && !cancelled() }}
+    if: ${{ false }}
     # NOTE need to depend on *all* jobs that may generate codecov artifacts
     needs:
       - generate_run_frb_codegen_command_generate
