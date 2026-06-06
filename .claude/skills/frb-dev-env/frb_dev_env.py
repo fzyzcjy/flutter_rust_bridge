@@ -4,7 +4,6 @@
 # ///
 from __future__ import annotations
 
-from dataclasses import dataclass
 import hashlib
 import json
 import os
@@ -32,6 +31,7 @@ DEFAULT_ANDROID_ADB_SERVER_HOST = "host.docker.internal"
 DEFAULT_ANDROID_ADB_SERVER_PORT = 5037
 DEFAULT_ANDROID_ADB_SERVER_BIND_ADDRESS = "0.0.0.0"
 DEFAULT_ANDROID_EMULATOR_PORT = 5554
+DEFAULT_MACOS_ANDROID_HOME = Path("~/Library/Android/sdk")
 MIN_TART_FREE_GB = 150
 REPO_LABEL = "frb.dev.repo"
 WORKTREE_LABEL = "frb.dev.worktree"
@@ -57,14 +57,6 @@ TART_LOCAL_COPY_EXCLUDES = [
 
 class CommandError(RuntimeError):
     pass
-
-
-@dataclass(frozen=True)
-class AndroidHostEnv:
-    android_home: Path
-    android_avd_home: Path | None
-    android_user_home: Path | None
-    env: dict[str, str]
 
 
 def exec_command(
@@ -169,49 +161,26 @@ def get_android_adb_server_port(port: int | None) -> int:
         raise CommandError(f"FRB_ANDROID_ADB_SERVER_PORT must be an integer: {value}") from error
 
 
-def resolve_android_host_env(
-    *,
-    android_root: Path | None,
-    android_home: Path | None,
-    android_avd_home: Path | None,
-    android_user_home: Path | None,
-) -> AndroidHostEnv:
-    resolved_android_root = android_root or env_path("FRB_ANDROID_ROOT")
-
-    if android_home is not None:
-        resolved_android_home = android_home.expanduser().resolve()
-    elif resolved_android_root is not None:
-        resolved_android_home = (resolved_android_root / "sdk").expanduser().resolve()
-    else:
-        resolved_android_home = env_path("ANDROID_HOME")
-
+def resolve_android_home() -> Path:
+    resolved_android_home = env_path("ANDROID_HOME")
     if resolved_android_home is None:
+        resolved_android_home = DEFAULT_MACOS_ANDROID_HOME.expanduser().resolve()
+
+    if not resolved_android_home.exists():
         raise CommandError(
-            "Unable to resolve Android SDK root. Provide --android-root, "
-            "--android-home, FRB_ANDROID_ROOT, or ANDROID_HOME."
+            f"Android SDK root does not exist: {resolved_android_home}. "
+            "Install Android Studio or set ANDROID_HOME to the host Android SDK root."
         )
 
-    if android_avd_home is not None:
-        resolved_android_avd_home = android_avd_home.expanduser().resolve()
-    elif resolved_android_root is not None:
-        resolved_android_avd_home = (resolved_android_root / "avd").expanduser().resolve()
-    else:
-        resolved_android_avd_home = env_path("ANDROID_AVD_HOME")
+    return resolved_android_home
 
-    if android_user_home is not None:
-        resolved_android_user_home = android_user_home.expanduser().resolve()
-    elif resolved_android_root is not None:
-        resolved_android_user_home = (resolved_android_root / "user-home").expanduser().resolve()
-    else:
-        resolved_android_user_home = env_path("ANDROID_USER_HOME")
+
+def android_host_env() -> dict[str, str]:
+    resolved_android_home = resolve_android_home()
 
     env = dict(os.environ)
     env["ANDROID_HOME"] = str(resolved_android_home)
     env["ANDROID_SDK_ROOT"] = str(resolved_android_home)
-    if resolved_android_avd_home is not None:
-        env["ANDROID_AVD_HOME"] = str(resolved_android_avd_home)
-    if resolved_android_user_home is not None:
-        env["ANDROID_USER_HOME"] = str(resolved_android_user_home)
 
     path_prefix = [
         resolved_android_home / "emulator",
@@ -220,12 +189,7 @@ def resolve_android_host_env(
     ]
     env["PATH"] = os.pathsep.join([*(str(path) for path in path_prefix), env.get("PATH", "")])
 
-    return AndroidHostEnv(
-        android_home=resolved_android_home,
-        android_avd_home=resolved_android_avd_home,
-        android_user_home=resolved_android_user_home,
-        env=env,
-    )
+    return env
 
 
 def env_path(name: str) -> Path | None:
@@ -236,17 +200,14 @@ def env_path(name: str) -> Path | None:
     return Path(value).expanduser().resolve()
 
 
-def print_android_host_env(android_env: AndroidHostEnv) -> None:
-    typer.echo(f"export ANDROID_HOME={shlex.quote(str(android_env.android_home))}")
-    typer.echo(f"export ANDROID_SDK_ROOT={shlex.quote(str(android_env.android_home))}")
-    if android_env.android_avd_home is not None:
-        typer.echo(f"export ANDROID_AVD_HOME={shlex.quote(str(android_env.android_avd_home))}")
-    if android_env.android_user_home is not None:
-        typer.echo(f"export ANDROID_USER_HOME={shlex.quote(str(android_env.android_user_home))}")
+def print_android_host_env() -> None:
+    android_home = resolve_android_home()
+    typer.echo(f"export ANDROID_HOME={shlex.quote(str(android_home))}")
+    typer.echo(f"export ANDROID_SDK_ROOT={shlex.quote(str(android_home))}")
     path_prefix = (
-        f"{android_env.android_home / 'emulator'}:"
-        f"{android_env.android_home / 'platform-tools'}:"
-        f"{android_env.android_home / 'cmdline-tools' / 'latest' / 'bin'}"
+        f"{android_home / 'emulator'}:"
+        f"{android_home / 'platform-tools'}:"
+        f"{android_home / 'cmdline-tools' / 'latest' / 'bin'}"
     )
     typer.echo(
         f"export PATH={shlex.quote(path_prefix)}:" + '"$PATH"'
@@ -257,37 +218,10 @@ def print_android_host_env(android_env: AndroidHostEnv) -> None:
 
 
 @android_app.command(name="env")
-def android_env(
-    android_root: Annotated[
-        Path | None,
-        typer.Option("--android-root", help="Isolated Android root. Uses <root>/sdk, <root>/avd, and <root>/user-home."),
-    ] = None,
-    android_home: Annotated[
-        Path | None,
-        typer.Option("--android-home", help="Android SDK root. Defaults to <android-root>/sdk or ANDROID_HOME."),
-    ] = None,
-    android_avd_home: Annotated[
-        Path | None,
-        typer.Option("--android-avd-home", help="AVD directory. Defaults to <android-root>/avd when --android-root is set."),
-    ] = None,
-    android_user_home: Annotated[
-        Path | None,
-        typer.Option(
-            "--android-user-home",
-            help="Android user config directory. Defaults to <android-root>/user-home when --android-root is set.",
-        ),
-    ] = None,
-) -> None:
+def android_env() -> None:
     """Print shell exports for the host Android SDK and emulator environment."""
 
-    print_android_host_env(
-        resolve_android_host_env(
-            android_root=android_root,
-            android_home=android_home,
-            android_avd_home=android_avd_home,
-            android_user_home=android_user_home,
-        )
-    )
+    print_android_host_env()
 
 
 @android_app.command(name="emulator")
@@ -300,38 +234,13 @@ def android_emulator(
         int,
         typer.Option("--port", help="Even emulator console port; the ADB serial becomes emulator-<port>."),
     ] = DEFAULT_ANDROID_EMULATOR_PORT,
-    android_root: Annotated[
-        Path | None,
-        typer.Option("--android-root", help="Isolated Android root. Uses <root>/sdk, <root>/avd, and <root>/user-home."),
-    ] = None,
-    android_home: Annotated[
-        Path | None,
-        typer.Option("--android-home", help="Android SDK root. Defaults to <android-root>/sdk or ANDROID_HOME."),
-    ] = None,
-    android_avd_home: Annotated[
-        Path | None,
-        typer.Option("--android-avd-home", help="AVD directory. Defaults to <android-root>/avd when --android-root is set."),
-    ] = None,
-    android_user_home: Annotated[
-        Path | None,
-        typer.Option(
-            "--android-user-home",
-            help="Android user config directory. Defaults to <android-root>/user-home when --android-root is set.",
-        ),
-    ] = None,
     emulator_args: Annotated[
         list[str] | None,
         typer.Argument(help="Additional arguments passed to emulator after the generated -avd/-port flags."),
     ] = None,
 ) -> None:
-    """Start the host Android Emulator with an isolated Android environment."""
+    """Start the host Android Emulator with the standard Android SDK locations."""
 
-    android_env = resolve_android_host_env(
-        android_root=android_root,
-        android_home=android_home,
-        android_avd_home=android_avd_home,
-        android_user_home=android_user_home,
-    )
     exec_command(
         [
             "emulator",
@@ -341,7 +250,7 @@ def android_emulator(
             str(port),
             *(emulator_args or []),
         ],
-        env=android_env.env,
+        env=android_host_env(),
     )
 
 
@@ -359,36 +268,12 @@ def android_adb_server(
         bool,
         typer.Option("--kill-existing/--no-kill-existing", help="Kill any existing ADB server before starting this one."),
     ] = True,
-    android_root: Annotated[
-        Path | None,
-        typer.Option("--android-root", help="Isolated Android root. Uses <root>/sdk, <root>/avd, and <root>/user-home."),
-    ] = None,
-    android_home: Annotated[
-        Path | None,
-        typer.Option("--android-home", help="Android SDK root. Defaults to <android-root>/sdk or ANDROID_HOME."),
-    ] = None,
-    android_avd_home: Annotated[
-        Path | None,
-        typer.Option("--android-avd-home", help="AVD directory. Defaults to <android-root>/avd when --android-root is set."),
-    ] = None,
-    android_user_home: Annotated[
-        Path | None,
-        typer.Option(
-            "--android-user-home",
-            help="Android user config directory. Defaults to <android-root>/user-home when --android-root is set.",
-        ),
-    ] = None,
 ) -> None:
     """Start a foreground host ADB server that Docker can reach."""
 
-    android_env = resolve_android_host_env(
-        android_root=android_root,
-        android_home=android_home,
-        android_avd_home=android_avd_home,
-        android_user_home=android_user_home,
-    )
+    env = android_host_env()
     if kill_existing:
-        exec_command(["adb", "kill-server"], env=android_env.env)
+        exec_command(["adb", "kill-server"], env=env)
 
     exec_command(
         [
@@ -399,7 +284,7 @@ def android_adb_server(
             "server",
             "nodaemon",
         ],
-        env=android_env.env,
+        env=env,
     )
 
 

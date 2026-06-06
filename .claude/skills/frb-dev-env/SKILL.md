@@ -100,22 +100,22 @@ Docker container:
 
 The host does not need FRB, Flutter, Rust, or Gradle for this workflow. It only needs enough Android SDK components to create and boot the emulator, plus `platform-tools/adb` to run the host ADB server.
 
-Prefer an isolated host Android root instead of the default global Android locations. The FRB helper intentionally has no repo-level default path for this root; pass `--android-root`, set `FRB_ANDROID_ROOT`, or use an existing `ANDROID_HOME`.
+Use the standard Android Studio host locations. On macOS this is typically `~/Library/Android/sdk` for the SDK and `~/.android/avd` for emulator images. If `ANDROID_HOME` is already set, the helper uses it; otherwise it falls back to `~/Library/Android/sdk`.
 
 ```bash
-.claude/skills/frb-dev-env/frb_dev_env.py android env --android-root <android-root>
+.claude/skills/frb-dev-env/frb_dev_env.py android env
 ```
 
 Start the emulator on the host. Pin the port when you want a stable serial such as `emulator-5554`:
 
 ```bash
-.claude/skills/frb-dev-env/frb_dev_env.py android emulator --android-root <android-root> --avd FRB_API_35 --port 5554
+.claude/skills/frb-dev-env/frb_dev_env.py android emulator --avd FRB_API_35 --port 5554
 ```
 
 Start an ADB server on the host that Docker can reach. Keep this as a foreground process so it is easy to stop after validation:
 
 ```bash
-.claude/skills/frb-dev-env/frb_dev_env.py android adb-server --android-root <android-root>
+.claude/skills/frb-dev-env/frb_dev_env.py android adb-server
 ```
 
 From inside the FRB Docker container, verify that the Docker-side ADB client can see the host-managed emulator:
