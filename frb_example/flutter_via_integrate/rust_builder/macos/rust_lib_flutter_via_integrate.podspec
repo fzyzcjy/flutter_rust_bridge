@@ -41,4 +41,7 @@ A new Flutter FFI plugin project.
     'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386',
     'OTHER_LDFLAGS' => '-force_load ${BUILT_PRODUCTS_DIR}/librust_lib_flutter_via_integrate.a',
   }
+  s.user_target_xcconfig = {
+    'OTHER_LDFLAGS' => '-force_load ${PODS_CONFIGURATION_BUILD_DIR}/rust_lib_flutter_via_integrate/librust_lib_flutter_via_integrate.a',
+  }
 end

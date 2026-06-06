@@ -43,4 +43,7 @@ A new Flutter FFI plugin project.
     'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386',
     'OTHER_LDFLAGS' => '-force_load ${PODS_CONFIGURATION_BUILD_DIR}/REPLACE_ME_RUST_CRATE_NAME/libREPLACE_ME_RUST_CRATE_NAME.a',
   }
+  s.user_target_xcconfig = {
+    'OTHER_LDFLAGS' => '-force_load ${PODS_CONFIGURATION_BUILD_DIR}/REPLACE_ME_RUST_CRATE_NAME/libREPLACE_ME_RUST_CRATE_NAME.a',
+  }
 end

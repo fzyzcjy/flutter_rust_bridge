@@ -42,4 +42,7 @@ A new Flutter FFI plugin project.
     'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386',
     'OTHER_LDFLAGS' => '-force_load ${PODS_CONFIGURATION_BUILD_DIR}/flutter_package/libflutter_package.a',
   }
+  s.user_target_xcconfig = {
+    'OTHER_LDFLAGS' => '-force_load ${PODS_CONFIGURATION_BUILD_DIR}/flutter_package/libflutter_package.a',
+  }
 end
