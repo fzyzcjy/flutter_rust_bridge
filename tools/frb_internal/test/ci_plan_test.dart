@@ -321,7 +321,7 @@ void main() {
   group('Documented ci_filter skill examples', () {
     test('full', () {
       final plan = buildCiPlan(filter: 'full', automaticCiDisabled: false);
-      final fullPlan = CiPlan.full();
+      final fullPlan = buildCiPlan(filter: '', automaticCiDisabled: false);
 
       expect(plan.enabledJobs, fullPlan.enabledJobs);
       expect(plan.matrixByJob, fullPlan.matrixByJob);

@@ -2,7 +2,7 @@
 
 // ignore_for_file: prefer_const_constructors
 
-part of 'ci_plan.dart';
+part of 'structs.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
