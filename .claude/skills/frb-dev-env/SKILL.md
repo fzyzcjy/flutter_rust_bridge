@@ -225,7 +225,7 @@ Examples:
 
 ### iOS Integration Preparation
 
-Before running iOS Simulator integration tests, prepare the VM Flutter SDK once per VM or after replacing Flutter. This applies an idempotent Flutter tool workaround for an iOS simulator VM Service discovery race where `simctl launch` can emit the Dart VM Service log before Flutter's `simctl log stream` listener is ready.
+Before running iOS Simulator integration tests, prepare the VM Flutter SDK once per VM or after replacing Flutter. This applies the runtime portion of `https://github.com/flutter/flutter/pull/187643.patch` as an idempotent Flutter tool workaround for an iOS simulator VM Service discovery race where `simctl launch` can emit the Dart VM Service log before Flutter's `simctl log stream` listener is ready.
 
 The preparation command also rebuilds `flutter_tools.snapshot` and prints the environment exports expected by the test command:
 

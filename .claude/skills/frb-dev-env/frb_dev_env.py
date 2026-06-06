@@ -571,6 +571,12 @@ import os
 import shutil
 import subprocess
 import sys
+import tempfile
+import urllib.request
+
+
+PATCH_URL = "https://github.com/flutter/flutter/pull/187643.patch"
+PATCH_INCLUDE_PATH = "packages/flutter_tools/lib/src/ios/simulators.dart"
 
 
 flutter_root = Path(__FLUTTER_ROOT__)
@@ -588,54 +594,59 @@ if not os.access(flutter_bin, os.X_OK):
 
 text = simulators_dart.read_text()
 if "await logReader.start();" not in text:
-    backup_timestamp = datetime.now().strftime("%Y%m%d-%H%M%S-%f")
-    backup = simulators_dart.with_name(
-        f"{simulators_dart.name}.frb-ios-log-race.{backup_timestamp}.bak"
-    )
-    shutil.copy2(simulators_dart, backup)
+    with urllib.request.urlopen(PATCH_URL, timeout=60) as response:
+        patch_text = response.read().decode("utf-8")
 
-    replacements = [
-        (
-            '''vmServiceDiscovery = ProtocolDiscovery.vmService(
-        getLogReader(app: package),''',
-            '''final DeviceLogReader logReader = getLogReader(app: package);
-      if (logReader is _IOSSimulatorLogReader) {
-        await logReader.start();
-      }
-      vmServiceDiscovery = ProtocolDiscovery.vmService(
-        logReader,''',
-        ),
-        (
-            '''late final _linesController = StreamController<String>.broadcast(
-    onListen: _start,''',
-            '''late final _linesController = StreamController<String>.broadcast(
-    onListen: start,''',
-        ),
-        (
-            '''Future<void> _start() async {
-    // Unified logging''',
-            '''Future<void>? _startFuture;
+    with tempfile.NamedTemporaryFile("w", suffix=".patch", delete=False) as patch_file:
+        patch_file.write(patch_text)
+        patch_path = Path(patch_file.name)
 
-  Future<void> start() {
-    return _startFuture ??= _start();
-  }
+    try:
+        check_result = subprocess.run(
+            [
+                "git",
+                "-C",
+                str(flutter_root),
+                "apply",
+                "--check",
+                f"--include={PATCH_INCLUDE_PATH}",
+                str(patch_path),
+            ],
+            text=True,
+            capture_output=True,
+        )
+        if check_result.returncode != 0:
+            print(check_result.stdout, end="")
+            print(check_result.stderr, end="", file=sys.stderr)
+            print(f"Failed to apply Flutter patch: {PATCH_URL}", file=sys.stderr)
+            raise SystemExit(check_result.returncode)
 
-  Future<void> _start() async {
-    // Unified logging''',
-        ),
-    ]
+        backup_timestamp = datetime.now().strftime("%Y%m%d-%H%M%S-%f")
+        backup = simulators_dart.with_name(
+            f"{simulators_dart.name}.frb-ios-log-race.{backup_timestamp}.bak"
+        )
+        shutil.copy2(simulators_dart, backup)
 
-    for old, new in replacements:
-        if old not in text:
-            print(f"Failed to find Flutter patch anchor: {old!r}", file=sys.stderr)
-            raise SystemExit(1)
-        text = text.replace(old, new, 1)
+        subprocess.run(
+            [
+                "git",
+                "-C",
+                str(flutter_root),
+                "apply",
+                f"--include={PATCH_INCLUDE_PATH}",
+                str(patch_path),
+            ],
+            check=True,
+        )
+    finally:
+        patch_path.unlink(missing_ok=True)
 
+    text = simulators_dart.read_text()
     if "await logReader.start();" not in text:
-        print("Failed to apply Flutter iOS simulator log reader patch", file=sys.stderr)
+        print(f"Flutter patch did not update expected simulator source: {PATCH_URL}", file=sys.stderr)
         raise SystemExit(1)
-
-    simulators_dart.write_text(text)
+else:
+    print(f"Flutter patch already applied: {PATCH_URL}")
 
 snapshot.unlink(missing_ok=True)
 env = dict(os.environ)
