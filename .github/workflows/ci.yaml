@@ -760,16 +760,6 @@ jobs:
           - frb_example--pure_dart_pde
           # no need for `frb_example--deliberate_bad`, `frb_example--dart_build_rs`
         wasm: [false, true]
-        exclude:
-          # The custom example web harness currently compiles Dart to JavaScript.
-          # Keep dart2wasm scoped to package:test browser coverage until the
-          # harness grows a wasm loader.
-          - package: frb_example--dart_minimal
-            wasm: true
-          - package: frb_example--pure_dart
-            wasm: true
-          - package: frb_example--pure_dart_pde
-            wasm: true
 
     steps:
       # setup
@@ -1150,8 +1140,8 @@ jobs:
           toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
       - run: cargo install cargo-llvm-cov --version 0.6.24 --locked
       - run: |-
-          rustup toolchain install nightly
-          rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
+          rustup toolchain install ${{ env.FRB_RUSTFMT_NIGHTLY_VERSION }}
+          rustup component add rust-src --toolchain ${{ env.FRB_RUSTFMT_NIGHTLY_VERSION }}
       - uses: nanasess/setup-chromedriver@v2
       # ref https://github.com/dewbambs/flutter_github_actions/blob/dev/.github/workflows/e2e_test.yml
       - run: |-

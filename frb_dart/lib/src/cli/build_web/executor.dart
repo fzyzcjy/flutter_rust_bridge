@@ -49,6 +49,9 @@ class BuildWebArgs {
   final String? dartCompileJsEntrypoint;
 
   /// {@macro flutter_rust_bridge.cli}
+  final String? dartCompileWasmEntrypoint;
+
+  /// {@macro flutter_rust_bridge.cli}
   final List<String> features;
 
   /// {@macro flutter_rust_bridge.cli}
@@ -62,6 +65,7 @@ class BuildWebArgs {
     required this.wasmPackRustupToolchain,
     required this.wasmPackRustflags,
     required this.dartCompileJsEntrypoint,
+    this.dartCompileWasmEntrypoint,
     this.features = const [],
   });
 }
@@ -72,6 +76,8 @@ extension on BuildWebArgs {
   String get outputWasm => '$output/pkg';
 
   String get outputDart => '$output/main.dart.js';
+
+  String get outputDartWasm => '$output/main.dart.wasm';
 }
 
 /// {@macro flutter_rust_bridge.cli}
@@ -89,7 +95,11 @@ Future<void> executeBuildWeb(BuildWebArgs args) async {
   }
 
   if (args.dartCompileJsEntrypoint != null) {
-    await _executeDartCompile(args);
+    await _executeDartCompileJs(args);
+  }
+
+  if (args.dartCompileWasmEntrypoint != null) {
+    await _executeDartCompileWasm(args);
   }
 }
 
@@ -281,7 +291,7 @@ Future<void> _executeWasmBindgen(
   ]);
 }
 
-Future<void> _executeDartCompile(BuildWebArgs args) async {
+Future<void> _executeDartCompileJs(BuildWebArgs args) async {
   await runCommand('dart', [
     'compile',
     'js',
@@ -291,5 +301,17 @@ Future<void> _executeDartCompile(BuildWebArgs args) async {
     if (stdout.supportsAnsiEscapes) '--enable-diagnostic-colors',
     if (args.verbose) '--verbose',
     args.dartCompileJsEntrypoint!,
+  ]);
+}
+
+Future<void> _executeDartCompileWasm(BuildWebArgs args) async {
+  await runCommand('dart', [
+    'compile',
+    'wasm',
+    '-o',
+    args.outputDartWasm,
+    '-Dfrb.test.dart_wasm=true',
+    if (args.verbose) '--verbose',
+    args.dartCompileWasmEntrypoint!,
   ]);
 }

@@ -26335,7 +26335,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   JSAny cst_encode_list_prim_i_64_strict(Int64List raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.inner.jsify()!;
+    return cstEncodeInt64List(raw.inner);
   }
 
   @protected
@@ -26377,7 +26377,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   JSAny cst_encode_list_prim_u_64_strict(Uint64List raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
-    return raw.inner.jsify()!;
+    return cstEncodeUint64List(raw.inner);
   }
 
   @protected

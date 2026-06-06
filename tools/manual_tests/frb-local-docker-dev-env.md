@@ -94,19 +94,36 @@ Confirm the container can run commands at the host-like worktree path.
    .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- ./frb_internal test-dart-web --package frb_dart --wasm
    ```
 
-6. Run the Flutter web JavaScript coverage command in Docker.
+6. Start the headless WebDriver service used by Flutter web drive commands.
+
+   ```bash
+   .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- bash -lc '
+   set -euo pipefail
+   export DISPLAY=:99
+   if ! curl -fsS http://127.0.0.1:4444/status >/tmp/frb-local-webdriver-status.log 2>&1; then
+     chromedriver --port=4444 --verbose >/tmp/frb-local-chromedriver.log 2>&1 &
+   fi
+   if ! xdpyinfo -display :99 >/tmp/frb-local-xdpyinfo.log 2>&1; then
+     Xvfb -ac :99 -screen 0 1280x1024x24 >/tmp/frb-local-xvfb.log 2>&1 &
+   fi
+   sleep 15
+   curl -fsS http://127.0.0.1:4444/status
+   '
+   ```
+
+7. Run the Flutter web JavaScript coverage command in Docker.
 
    ```bash
    .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- ./frb_internal test-flutter-web --package frb_example/flutter_via_create --coverage
    ```
 
-7. Run the Flutter web dart2wasm coverage command in Docker.
+8. Run the Flutter web dart2wasm coverage command in Docker.
 
    ```bash
    .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- ./frb_internal test-flutter-web --package frb_example/flutter_via_create --coverage --wasm
    ```
 
-8. Confirm the checkout did not gain unexpected generated or cache files.
+9. Confirm the checkout did not gain unexpected generated or cache files.
 
    ```bash
    git status --short

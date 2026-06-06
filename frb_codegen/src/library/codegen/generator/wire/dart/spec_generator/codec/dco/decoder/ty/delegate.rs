@@ -1,5 +1,4 @@
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::base::*;
-use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::misc::gen_decode_simple_type_cast;
 use crate::codegen::generator::wire::dart::spec_generator::codec::dco::decoder::ty::WireDartCodecDcoGeneratorDecoderTrait;
 use crate::codegen::ir::mir::ty::delegate::{
     MirTypeDelegate, MirTypeDelegateArrayMode, MirTypeDelegatePrimitiveEnum, MirTypeDelegateTime,
@@ -13,7 +12,7 @@ impl WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGenerator
         match &self.mir {
             MirTypeDelegate::Array(array) => match &array.mode {
                 MirTypeDelegateArrayMode::General(general) => format!(
-                    r"return {}((raw as List<dynamic>).map(dco_decode_{}).toList());",
+                    r"return {}(dcoDecodeList(raw).map(dco_decode_{}).toList());",
                     ApiDartGenerator::new(self.mir.clone(), self.context.as_api_dart_context())
                         .dart_api_type(),
                     general.safe_ident(),
@@ -34,23 +33,20 @@ impl WireDartCodecDcoGeneratorDecoderTrait for DelegateWireDartCodecDcoGenerator
             //         self.mir.get_delegate().safe_ident()
             //     )
             // }
-            MirTypeDelegate::String
-            | MirTypeDelegate::Backtrace
-            /*| MirTypeDelegate::ZeroCopyBufferVecPrimitive(_)*/ => {
-                gen_decode_simple_type_cast(self.mir.clone().into(), self.context)
-            }
+            MirTypeDelegate::String => "return dcoDecodeString(raw);".to_owned(),
+            MirTypeDelegate::Backtrace => "return dcoDecodeString(raw);".to_owned(),
             MirTypeDelegate::Char => {
-                "return String.fromCharCode(raw);".to_owned()
+                "return String.fromCharCode(dcoDecodePrimitiveInt(raw));".to_owned()
             }
             // MirTypeDelegate::StringList => {
             //     "return (raw as List<dynamic>).cast<String>();".to_owned()
             // }
             MirTypeDelegate::PrimitiveEnum(MirTypeDelegatePrimitiveEnum { mir, .. }) => {
                 format!(
-                    "return {}.values[raw as int];",
+                    "return {}.values[dcoDecodePrimitiveInt(raw)];",
                     ApiDartGenerator::new(mir.clone(), self.context.as_api_dart_context())
                         .dart_api_type()
-                ) // here `as int` is neccessary in strict dynamic mode
+                )
             }
             MirTypeDelegate::Time(mir) => {
                 if mir == &MirTypeDelegateTime::Duration {

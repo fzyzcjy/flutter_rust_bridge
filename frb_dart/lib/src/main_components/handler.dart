@@ -46,10 +46,20 @@ class BaseHandler {
     List<dynamic> message,
     GeneralizedFrbRustBinding generalizedFrbRustBinding,
   ) {
-    final [closureDartOpaque, ...args] = message;
+    final [closureDartOpaque, callId, ...args] = message;
     final closureDartObject =
         decodeDartOpaque(closureDartOpaque, generalizedFrbRustBinding)
             as Function;
-    Function.apply(closureDartObject, args);
+    Function.apply(closureDartObject, [_decodeProtocolInt(callId), ...args]);
   }
+}
+
+int _decodeProtocolInt(Object? raw) {
+  if (raw is int) return raw;
+  if (raw is double && raw.isFinite && raw == raw.truncateToDouble()) {
+    return raw.toInt();
+  }
+  throw Exception(
+    'decodeProtocolInt see unexpected type=${raw.runtimeType} value=$raw',
+  );
 }

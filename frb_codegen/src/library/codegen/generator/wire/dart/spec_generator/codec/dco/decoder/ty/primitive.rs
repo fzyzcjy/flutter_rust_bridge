@@ -13,6 +13,12 @@ impl WireDartCodecDcoGeneratorDecoderTrait for PrimitiveWireDartCodecDcoGenerato
             MirTypePrimitive::U64 | MirTypePrimitive::Usize => {
                 "return dcoDecodeU64(raw);".to_owned()
             }
+            MirTypePrimitive::U8
+            | MirTypePrimitive::I8
+            | MirTypePrimitive::U16
+            | MirTypePrimitive::I16
+            | MirTypePrimitive::U32
+            | MirTypePrimitive::I32 => "return dcoDecodePrimitiveInt(raw);".to_owned(),
             _ => gen_decode_simple_type_cast(self.mir.clone().into(), self.context),
         }
     }

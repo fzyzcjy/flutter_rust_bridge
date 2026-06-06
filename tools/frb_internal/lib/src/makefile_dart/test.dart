@@ -12,6 +12,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester.dart'
     as dart_sanitizer_tester;
 import 'package:flutter_rust_bridge_internal/src/utils/codecov_transformer.dart';
+import 'package:flutter_rust_bridge_internal/src/utils/execute_process.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:meta/meta.dart';
 import 'package:retry/retry.dart';
@@ -501,14 +502,10 @@ Future<void> testDartWeb(TestDartConfig config) async {
       relativePwd: package,
       extraEnv: await _dartTestChromeExtraEnv(),
     );
-  } else if (config.wasm) {
-    throw UnsupportedError(
-      'Dart web wasm is currently only wired for package:test browser suites.',
-    );
   } else {
     final features = getRustFeaturesOfPackage(config.package);
     await exec(
-      'dart run flutter_rust_bridge_utils test-web --entrypoint ../$package/test/dart_web_test_entrypoint.dart ${features != null ? "--rust-features $features" : ""}',
+      'dart run flutter_rust_bridge_utils test-web --entrypoint ../$package/test/dart_web_test_entrypoint.dart ${features != null ? "--rust-features $features" : ""} ${config.wasm ? "--wasm" : ""}',
       relativePwd: 'frb_utils',
       // extraEnv: kEnvEnableRustBacktrace,
     );
@@ -645,7 +642,9 @@ Future<void> testFlutterWeb(TestFlutterWebConfig config) async {
   final buildWebPackage = resolveBuildWebPackage(config.package);
   final enableCodegenCoverage = config.coverage && !config.wasm;
   await executeFrbCodegen(
-    'build-web ${config.coverage ? "--dart-coverage" : ""}',
+    'build-web '
+    '${config.coverage ? "--dart-coverage" : ""} '
+    '${config.wasm ? "--wasm-pack-rustup-toolchain $kPinnedRustfmtNightly" : ""}',
     relativePwd: buildWebPackage,
     coverage: enableCodegenCoverage,
     coverageName: 'TestFlutterWeb',
