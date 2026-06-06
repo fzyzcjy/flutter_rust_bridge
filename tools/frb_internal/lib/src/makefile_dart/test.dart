@@ -476,7 +476,7 @@ Future<void> _formatDartCoverage({required String package}) async {
 
   final reportOn = '${exec.pwd}/frb_dart';
   await exec(
-    'format_coverage --check-ignore --lcov --in=coverage --out=${getCoverageDir('dart')}/lcov.info --packages=.dart_tool/package_config.json --report-on=$reportOn',
+    'dart pub global run coverage:format_coverage --check-ignore --lcov --in=coverage --out=${getCoverageDir('dart')}/lcov.info --packages=.dart_tool/package_config.json --report-on=$reportOn',
     relativePwd: package,
   );
 }
@@ -520,18 +520,11 @@ Future<Map<String, String>?> _dartTestChromeExtraEnv() async {
   if (customChromeExecutable != null && customChromeExecutable.isNotEmpty) {
     return null;
   }
-  if (!File('/.dockerenv').existsSync()) return null;
 
-  final wrapper = File(
-    '${Directory.systemTemp.path}/frb-dart-test-chrome-no-sandbox.sh',
-  );
-  wrapper.writeAsStringSync('''
-#!/bin/sh
-exec /usr/bin/google-chrome --no-sandbox --disable-setuid-sandbox "\$@"
-''');
-  await exec('chmod 755 ${wrapper.path}');
+  final wrapperPath = await _dockerChromeWrapperPath();
+  if (wrapperPath == null) return null;
 
-  return {'CHROME_EXECUTABLE': wrapper.path};
+  return {'CHROME_EXECUTABLE': wrapperPath};
 }
 
 /// ref https://github.com/dart-lang/sdk/blob/master/runtime/tools/valgrind.py
@@ -663,6 +656,7 @@ Future<void> testFlutterWeb(TestFlutterWebConfig config) async {
     '--driver=test_driver/integration_test.dart '
     '--target=integration_test/simple_test.dart '
     '-d web-server '
+    '${await _flutterWebChromeBinaryArg()}'
     '${config.wasm ? '--wasm ' : ''}'
     '--verbose',
     relativePwd: config.package,
@@ -678,5 +672,28 @@ String resolveBuildWebPackage(String package) =>
     kBuildWebPackageReplacer[package] ?? package;
 
 Future<void> _runFlutterDoctor() async => await exec('flutter doctor -v');
+
+Future<String> _flutterWebChromeBinaryArg() async {
+  final chromeBinary = Platform.environment['CHROME_EXECUTABLE'];
+  if (chromeBinary != null && chromeBinary.isNotEmpty) {
+    return '--chrome-binary=$chromeBinary ';
+  }
+
+  final wrapperPath = await _dockerChromeWrapperPath();
+  return wrapperPath == null ? '' : '--chrome-binary=$wrapperPath ';
+}
+
+Future<String?> _dockerChromeWrapperPath() async {
+  if (!File('/.dockerenv').existsSync()) return null;
+
+  final wrapper = File('${Directory.systemTemp.path}/frb-test-chrome.sh');
+  wrapper.writeAsStringSync('''
+#!/bin/sh
+exec /usr/bin/google-chrome --no-sandbox --disable-setuid-sandbox --disable-dev-shm-usage "\$@"
+''');
+  await exec('chmod 755 ${wrapper.path}');
+
+  return wrapper.path;
+}
 
 const kEnvEnableRustBacktrace = {'RUST_BACKTRACE': 'full'};

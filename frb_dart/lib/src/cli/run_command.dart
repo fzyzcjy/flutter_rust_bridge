@@ -31,11 +31,24 @@ Future<RunCommandOutput> runCommand(
   bool silent = false,
   bool? checkExitCode,
   bool printCommandInStderr = false,
+  List<String> removedParentEnvKeys = const [],
   Duration? timeout,
 }) async {
+  final processEnvironment = removedParentEnvKeys.isEmpty
+      ? env
+      : {
+          for (final entry in Platform.environment.entries)
+            if (!removedParentEnvKeys.contains(entry.key))
+              entry.key: entry.value,
+          ...?env,
+        };
+  final displayEnvironment = removedParentEnvKeys.isEmpty
+      ? env
+      : {...?env, 'removedParentEnvKeys': removedParentEnvKeys.join(',')};
+
   // ignore: avoid_print
   (printCommandInStderr ? stderr : stdout).writeAndFlush(
-    '\x1B[1m> $command ${arguments.join(' ')}\x1B[0m (pwd: $pwd, env: $env)\n',
+    '\x1B[1m> $command ${arguments.join(' ')}\x1B[0m (pwd: $pwd, env: $displayEnvironment)\n',
   );
 
   final process = await Process.start(
@@ -43,8 +56,8 @@ Future<RunCommandOutput> runCommand(
     arguments,
     runInShell: shell,
     workingDirectory: pwd,
-    environment: env,
-    includeParentEnvironment: true,
+    environment: processEnvironment,
+    includeParentEnvironment: removedParentEnvKeys.isEmpty,
   );
 
   final stdoutText = <String>[];

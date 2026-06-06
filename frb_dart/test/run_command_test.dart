@@ -16,6 +16,22 @@ void main() {
   });
 
   test(
+    'runCommand can remove selected parent environment keys',
+    skip: !(Platform.isLinux || Platform.isMacOS),
+    () async {
+      final output = await runCommand(
+        '/usr/bin/env',
+        [],
+        shell: false,
+        silent: true,
+        removedParentEnvKeys: const ['PATH'],
+      );
+
+      expect(output.stdout.split('\n'), isNot(contains(startsWith('PATH='))));
+    },
+  );
+
+  test(
     'runCommand kills the process tree when timeout expires',
     skip: !(Platform.isLinux || Platform.isMacOS),
     () async {

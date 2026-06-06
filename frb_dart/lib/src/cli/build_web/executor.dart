@@ -7,6 +7,18 @@ import 'package:flutter_rust_bridge/src/cli/cli_utils.dart';
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:meta/meta.dart';
 
+const _cargoLlvmCovEnvKeys = [
+  'LLVM_PROFILE_FILE',
+  '__CARGO_LLVM_COV_RUSTC_WRAPPER',
+  '__CARGO_LLVM_COV_RUSTC_WRAPPER_RUSTFLAGS',
+  '__CARGO_LLVM_COV_RUSTC_WRAPPER_CRATE_NAMES',
+  'RUSTC_WRAPPER',
+  'CARGO_LLVM_COV',
+  'CARGO_LLVM_COV_SHOW_ENV',
+  'CARGO_LLVM_COV_TARGET_DIR',
+  'CARGO_LLVM_COV_BUILD_DIR',
+];
+
 /// {@macro flutter_rust_bridge.cli}
 class BuildWebArgs {
   /// {@macro flutter_rust_bridge.cli}
@@ -193,6 +205,7 @@ Future<void> _executeWasmPack(
       'RUSTFLAGS': rustflagsResolution.rustflags,
       if (stdout.supportsAnsiEscapes) 'CARGO_TERM_COLOR': 'always',
     },
+    removedParentEnvKeys: _cargoLlvmCovEnvKeys,
   );
 }
 
