@@ -60,6 +60,10 @@ gh pr edit <pr-number> --remove-label ci-manual-dispatch
 
 Then let the normal full CI surface run. Removing the label triggers PR CI because the workflow listens to `labeled` and `unlabeled` pull request events.
 
+## Manual Dispatch PR Comment
+
+Manual `workflow_dispatch` runs of `.github/workflows/ci.yaml` comment from `Plan :: CI` on the matching open PR with the selected `ci_filter` and run link; normal `push` and `pull_request` runs do not comment.
+
 ## Local Planning
 
 Before dispatching an expensive manual run, smoke the filter locally:
