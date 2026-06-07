@@ -381,7 +381,9 @@ sealed class KitchenSinkTwinRustAsyncSse {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function(
-            {int int32, required double float64, required bool boolean})?
+            {required int int32,
+            required double float64,
+            required bool boolean})?
         primitives,
     TResult Function(int field0, KitchenSinkTwinRustAsyncSse field1)? nested,
     TResult Function(int? field0, int? field1)? optional,
