@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/generator.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/build.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/quickstart_smoke.dart';
@@ -26,6 +27,29 @@ void main() {
     expect(
       dartValgrindOutputExecutablePathForTesting(),
       'build/valgrind_test_output/bundle/bin/dart_valgrind_test_entrypoint',
+    );
+  });
+
+  test('linux build bundle path follows the current machine architecture', () {
+    expect(
+      linuxBuildBundlePathForTesting(machineArchitecture: 'x86_64'),
+      'build/linux/x64/release/bundle',
+    );
+    expect(
+      linuxBuildBundlePathForTesting(machineArchitecture: 'amd64'),
+      'build/linux/x64/release/bundle',
+    );
+    expect(
+      linuxBuildBundlePathForTesting(machineArchitecture: 'aarch64'),
+      'build/linux/arm64/release/bundle',
+    );
+    expect(
+      linuxBuildBundlePathForTesting(machineArchitecture: 'arm64'),
+      'build/linux/arm64/release/bundle',
+    );
+    expect(
+      linuxBuildBundlePathForTesting(machineArchitecture: 'riscv64'),
+      'build/linux/riscv64/release/bundle',
     );
   });
 
