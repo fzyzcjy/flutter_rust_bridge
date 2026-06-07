@@ -63,11 +63,16 @@ fn ensure_const_default_value(default_value: String) -> String {
     if default_value.contains('(')
         && !default_value.starts_with("const ")
         && !is_dart_string_literal(&default_value)
+        && !is_parenthesized_expression(&default_value)
     {
         format!("const {default_value}")
     } else {
         default_value
     }
+}
+
+fn is_parenthesized_expression(value: &str) -> bool {
+    value.starts_with('(')
 }
 
 fn is_dart_string_literal(value: &str) -> bool {
@@ -141,6 +146,10 @@ mod tests {
         assert_eq!(
             &ensure_const_default_value("r'hello()'".to_string()),
             "r'hello()'"
+        );
+        assert_eq!(
+            &ensure_const_default_value("(1 + 2)".to_string()),
+            "(1 + 2)"
         );
     }
 }
