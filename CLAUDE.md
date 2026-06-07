@@ -10,18 +10,15 @@
 | `*.freezed.dart` | Freezed output |
 | `*.g.dart` | Code generator output |
 
-### Feature flags that need both enabled and disabled coverage
+### Feature flags
 
-When adding a feature flag whose enabled and disabled behavior both need coverage:
-
-- Add the flag to `flutter_rust_bridge.yaml` and the command-line interface.
-- Also prefer adding an item-level `#[frb(...)]` override when the feature can reasonably be scoped to a Rust item.
-- In `frb_example/pure_dart` tests, prefer using the `#[frb(...)]` override to cover enabled and disabled behavior in the same package instead of relying only on package-level config differences.
+When adding or testing feature flags, read `frb-feature-flag`.
 
 ## Skills
 
 - `frb-code-generation` - Which generation commands to run
 - `frb-develop-feature` - New feature development workflow
+- `frb-feature-flag` - Feature flag API surface and enabled/disabled coverage rules
 - `frb-test` - How to run tests
 - `frb-debugging` - Debug code generation issues
 - `frb-lint` - Lint and format checks

@@ -29,8 +29,7 @@ Before pushing, opening a PR, requesting review, or monitoring CI as if the work
 - Confirm every final regression or feature test has been moved from `frb_example/dart_minimal` to `frb_example/pure_dart`.
 - Confirm the final Rust APIs/types/functions in `pure_dart` use the `TwinNormal` suffix pattern where applicable.
 - Confirm code generation has produced the matching `pure_dart_pde` coverage.
-- For feature flags whose enabled and disabled behavior both need coverage, confirm the flag is exposed in `flutter_rust_bridge.yaml` and the command-line interface, and prefer adding an item-level `#[frb(...)]` override when feasible.
-- For such feature flags, prefer `pure_dart` tests that use the `#[frb(...)]` override so enabled and disabled cases are both exercised in the same package.
+- For feature flags, read and apply `frb-feature-flag` before treating the coverage as final.
 - Remove the temporary `dart_minimal` reproducer unless it is intentionally kept as a minimal example in addition to the `pure_dart` regression.
 
 If any of these checks fail, return to Phase 2. Do not treat a passing `dart_minimal` test as final readiness.
