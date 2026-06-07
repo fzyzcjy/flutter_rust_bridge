@@ -1,6 +1,6 @@
 ---
 name: frb-feature-flag
-description: Use when adding or testing flutter_rust_bridge feature flags, especially flags that require coverage for both enabled and disabled states or should have package-level config plus item-level #[frb(...)] overrides.
+description: "Use when adding or testing flutter_rust_bridge feature flags, especially flags that require coverage for both enabled and disabled states or should have package-level config plus item-level #[frb(...)] overrides."
 ---
 
 # FRB Feature Flags
