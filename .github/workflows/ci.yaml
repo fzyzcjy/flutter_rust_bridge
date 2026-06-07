@@ -104,35 +104,39 @@ jobs:
               '',
             ].join('\n');
 
-            const comments = await github.paginate(github.rest.issues.listComments, {
-              owner,
-              repo,
-              issue_number: pullRequest.number,
-              per_page: 100,
-            });
-            const existingComment = comments.find(
-              (comment) =>
-                comment.user?.type === 'Bot' &&
-                typeof comment.body === 'string' &&
-                comment.body.includes(marker),
-            );
-
-            if (existingComment) {
-              await github.rest.issues.updateComment({
+            try {
+              const comments = await github.paginate(github.rest.issues.listComments, {
                 owner,
                 repo,
-                comment_id: existingComment.id,
+                issue_number: pullRequest.number,
+                per_page: 100,
+              });
+              const existingComment = comments.find(
+                (comment) =>
+                  comment.user?.type === 'Bot' &&
+                  typeof comment.body === 'string' &&
+                  comment.body.includes(marker),
+              );
+
+              if (existingComment) {
+                await github.rest.issues.updateComment({
+                  owner,
+                  repo,
+                  comment_id: existingComment.id,
+                  body,
+                });
+                return;
+              }
+
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: pullRequest.number,
                 body,
               });
-              return;
+            } catch (error) {
+              core.warning(`Could not write manual CI dispatch PR comment: ${error.message}`);
             }
-
-            await github.rest.issues.createComment({
-              owner,
-              repo,
-              issue_number: pullRequest.number,
-              body,
-            });
 
   # ----------------------------------- deploy -----------------------------------
 
