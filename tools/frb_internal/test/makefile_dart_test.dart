@@ -188,6 +188,12 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
       ),
       ['simctl', 'io', 'IPHONE-UDID', 'screenshot', '/tmp/quickstart.png'],
     );
+    expect(quickstartSmokeMacosScreenshotArgsForTesting('/tmp/smoke.png'), [
+      '-x',
+      '-T',
+      '1',
+      '/tmp/smoke.png',
+    ]);
   });
 
   test(

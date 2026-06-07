@@ -36,6 +36,7 @@ Future<void> runFlutterViaCreateQuickstartSmokeTest({
     final screenshotEvidence = await _captureQuickstartSmokeEvidence(
       context: context,
       readyForScreenshot: readyForScreenshot,
+      flutterRun: activeFlutterRun,
     );
     final exitStatus = await _stopQuickstartSmokeFlutterRun(
       flutterRun: activeFlutterRun,
@@ -290,6 +291,11 @@ List<String> quickstartSmokeIosScreenshotArgsForTesting({
   required String screenshotPath,
 }) => ['simctl', 'io', deviceId, 'screenshot', screenshotPath];
 
+@visibleForTesting
+List<String> quickstartSmokeMacosScreenshotArgsForTesting(
+  String screenshotPath,
+) => ['-x', '-T', '1', screenshotPath];
+
 Future<_QuickstartSmokeFlutterRun> _startQuickstartSmokeFlutterRun(
   _QuickstartSmokeContext context,
 ) async {
@@ -359,6 +365,7 @@ Future<bool> _waitForQuickstartSmokeFlutterRunReady({
 Future<_QuickstartSmokeScreenshotEvidence> _captureQuickstartSmokeEvidence({
   required _QuickstartSmokeContext context,
   required bool readyForScreenshot,
+  required _QuickstartSmokeFlutterRun flutterRun,
 }) async {
   if (!readyForScreenshot) {
     print('Capturing one diagnostic screenshot before failing readiness check');
@@ -604,10 +611,9 @@ Future<void> _captureQuickstartSmokeScreenshot({
       ),
       stderrEncoding: systemEncoding,
     ),
-    _ when Platform.isMacOS => await Process.run('screencapture', [
-      '-x',
-      screenshotFile.path,
-    ], stderrEncoding: systemEncoding),
+    _ when Platform.isMacOS => await _captureMacosQuickstartSmokeScreenshot(
+      screenshotFile,
+    ),
     _ when Platform.isWindows => await _captureWindowsQuickstartSmokeScreenshot(
       screenshotFile,
     ),
@@ -624,6 +630,30 @@ Future<void> _captureQuickstartSmokeScreenshot({
     throw Exception(
       'Failed to capture quickstart screenshot (exitCode=${result.exitCode}, '
       'stderr=${result.stderr})',
+    );
+  }
+}
+
+Future<ProcessResult> _captureMacosQuickstartSmokeScreenshot(
+  File screenshotFile,
+) async {
+  await _activateMacosQuickstartSmokeApp();
+  return Process.run(
+    'screencapture',
+    quickstartSmokeMacosScreenshotArgsForTesting(screenshotFile.path),
+    stderrEncoding: systemEncoding,
+  );
+}
+
+Future<void> _activateMacosQuickstartSmokeApp() async {
+  final result = await Process.run('osascript', [
+    '-e',
+    'tell application "flutter_via_create" to activate',
+  ], stderrEncoding: systemEncoding);
+  if (result.exitCode != 0) {
+    print(
+      'Failed to activate macOS quickstart app before screenshot '
+      '(exitCode=${result.exitCode}, stderr=${result.stderr})',
     );
   }
 }
