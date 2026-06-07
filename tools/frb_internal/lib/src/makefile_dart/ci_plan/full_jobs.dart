@@ -189,6 +189,72 @@ final kCiJobs = [
         {'package': package},
     ]),
   ),
+  CiJob(
+    'test_flutter_quickstart_smoke',
+    matrix: CiMatrix([
+      for (final info in [
+        {
+          'image': 'ubuntu-latest',
+          'platform': 'web',
+          'target': 'web',
+          'device': 'chrome',
+          'package': 'frb_example--flutter_via_create',
+        },
+        {
+          'image': 'ubuntu-latest',
+          'platform': 'android',
+          'target': 'android',
+          'device': 'pixel',
+          'api-level': 35,
+          'package': 'frb_example--flutter_via_create',
+        },
+        {
+          'image': 'ubuntu-latest',
+          'platform': 'android',
+          'target': 'android',
+          'device': 'Nexus 6',
+          'api-level': 35,
+          'package': 'frb_example--flutter_via_create',
+        },
+        {
+          'image': 'macos-latest',
+          'platform': 'ios',
+          'target': 'ios',
+          'device': 'iPad (10th generation) Simulator (18.6)',
+          'package': 'frb_example--flutter_via_create',
+        },
+        {
+          'image': 'macos-latest',
+          'platform': 'ios',
+          'target': 'ios',
+          'device': 'iPhone 16 Pro Max Simulator (18.6)',
+          'package': 'frb_example--flutter_via_create',
+        },
+        {
+          'image': 'ubuntu-latest',
+          'platform': 'linux',
+          'target': 'desktop',
+          'device': 'linux',
+          'package': 'frb_example--flutter_via_create',
+        },
+        {
+          'image': 'macos-15-intel',
+          'platform': 'macos',
+          'target': 'desktop',
+          'device': 'macos',
+          'package': 'frb_example--flutter_via_create',
+        },
+        {
+          'image': 'windows-2025',
+          'platform': 'windows',
+          'target': 'desktop',
+          'device': 'windows',
+          'package': 'frb_example--flutter_via_create',
+        },
+      ])
+        {'info': info},
+    ]),
+  ),
   const CiJob('misc_codecov'),
 ];
 

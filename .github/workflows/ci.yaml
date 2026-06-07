@@ -1091,6 +1091,109 @@ jobs:
           name: ${{ github.job }}--${{ matrix.package }}--coverage
           path: target/coverage
 
+  test_flutter_quickstart_smoke:
+    needs: plan_ci
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_flutter_quickstart_smoke.enable == true }}
+    name: 'Test :: Flutter :: Quickstart Smoke:: ${{ matrix.info.platform }} (${{ matrix.info.device }})'
+    runs-on: ${{ matrix.info.image }}
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).test_flutter_quickstart_smoke.matrix }}
+
+    steps:
+      # setup
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
+        continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
+        with:
+          comment_on_pr: false
+          job_summary: false
+      - uses: actions/checkout@v5
+        with:
+          submodules: recursive
+      - uses: flutter-actions/setup-flutter@v4
+        with:
+          cache: true
+          version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
+      - if: ${{ matrix.info.target == 'web' }}
+        run: rustup target add wasm32-unknown-unknown
+      - if: ${{ matrix.info.target == 'web' }}
+        run: |-
+          rustup toolchain install nightly
+          rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
+      - if: ${{ matrix.info.target == 'android' }}
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: "17.x"
+      - if: ${{ matrix.info.target == 'android' }}
+        name: Enable KVM group perms
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - if: ${{ matrix.info.target == 'android' }}
+        name: AVD cache
+        uses: actions/cache@v4
+        id: avd-cache
+        with:
+          path: |
+            ~/.android/avd/*
+            ~/.android/adb*
+          key: avd-${{ matrix.info.device }}-api-level-${{ matrix.info.api-level }}
+      - if: ${{ matrix.info.target == 'android' && steps.avd-cache.outputs.cache-hit != 'true' }}
+        name: Create AVD and generate snapshot for caching
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.info.api-level }}
+          force-avd-creation: false
+          arch: x86_64
+          script: echo "Generated AVD snapshot for caching."
+      - if: ${{ matrix.info.target == 'ios' }}
+        name: Start Simulator
+        run: |
+          xcrun xctrace list devices
+          UDID=$(xcrun xctrace list devices | grep '${{ matrix.info.device }} (' | awk '{print $NF}' | tr -d '()')
+          echo UDID=$UDID
+          echo "UDID=$UDID" >> "$GITHUB_ENV"
+          echo "QUICKSTART_SMOKE_DEVICE_ID=$UDID" >> "$GITHUB_ENV"
+          xcrun simctl boot "${UDID:?No Simulator with this name found}"
+      - if: ${{ runner.os == 'Linux' }}
+        run: sudo apt-get update && sudo apt-get install -y clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev imagemagick tesseract-ocr
+      - if: ${{ matrix.info.target == 'web' || matrix.info.platform == 'linux' }}
+        uses: pyvista/setup-headless-display-action@v4
+      - if: ${{ runner.os == 'macOS' }}
+        run: HOMEBREW_NO_AUTO_UPDATE=1 brew install imagemagick tesseract
+      - if: ${{ runner.os == 'Windows' }}
+        run: |-
+          choco install imagemagick.app tesseract -y
+          echo "C:\Program Files\Tesseract-OCR" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+
+      # execute
+      - if: ${{ matrix.info.target == 'android' }}
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.info.api-level }}
+          arch: x86_64
+          profile: ${{ matrix.info.device }}
+          script: ./frb_internal test-flutter-quickstart-smoke --package ${{ matrix.info.package }} --target android --device-id emulator-5554
+      - if: ${{ matrix.info.target != 'android' }}
+        shell: bash
+        run: ./frb_internal test-flutter-quickstart-smoke --package ${{ matrix.info.package }} --target ${{ matrix.info.target }} --device-id "${QUICKSTART_SMOKE_DEVICE_ID:-${{ matrix.info.device }}}"
+
+      # report
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: quickstart-smoke--${{ matrix.info.platform }}--${{ matrix.info.device }}--${{ matrix.info.package }}
+          path: frb_example/flutter_via_create/target/quickstart_smoke
+          if-no-files-found: warn
+
   # ----------------------------------- misc -----------------------------------
 
   # Why one separate codecov job: Otherwise, when some jobs upload artifact while some not,

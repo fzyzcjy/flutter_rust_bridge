@@ -224,6 +224,29 @@ void main() {
       });
     });
 
+    test('quickstart smoke matrix can be filtered by platform and device', () {
+      final plan = buildCiPlan(
+        filter:
+            'test_flutter_quickstart_smoke[platform=web,device=chrome,package=frb_example--flutter_via_create]',
+        automaticCiDisabled: false,
+      );
+
+      expect(plan.enabledJobs, {'test_flutter_quickstart_smoke'});
+      expect(plan.matrixByJob['test_flutter_quickstart_smoke'], {
+        'include': [
+          {
+            'info': {
+              'image': 'ubuntu-latest',
+              'platform': 'web',
+              'target': 'web',
+              'device': 'chrome',
+              'package': 'frb_example--flutter_via_create',
+            },
+          },
+        ],
+      });
+    });
+
     test('values containing spaces are accepted verbatim', () {
       final plan = buildCiPlan(
         filter:
