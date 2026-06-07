@@ -137,7 +137,7 @@ impl WorkerPool {
         // messages about code to run on the wasm module.
         let module = wasm_bindgen::module();
         let memory = wasm_bindgen::memory();
-        worker.post_message(&Array::from_iter([module, memory]))?;
+        worker.post_message(&Array::of2(&module, &memory))?;
 
         Ok(worker)
     }
