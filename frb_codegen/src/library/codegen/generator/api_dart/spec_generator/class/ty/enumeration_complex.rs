@@ -260,7 +260,7 @@ impl EnumRefApiDartGenerator<'_> {
             .iter()
             .map(|field| {
                 let required = if matches!(&variant.kind, MirVariantKind::Struct(st) if st.is_fields_named) {
-                    generate_field_required_modifier(field)
+                    "required "
                 } else {
                     ""
                 };
@@ -301,10 +301,6 @@ impl EnumRefApiDartGenerator<'_> {
     }
 
     fn generate_native_common_getters(&self, src: &MirEnum) -> String {
-        if !self.mir.is_exception {
-            return "".to_owned();
-        }
-
         self.compute_native_common_getters(src)
             .into_iter()
             .map(|(field_name, type_str)| {
