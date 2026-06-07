@@ -241,11 +241,15 @@ Duration quickstartSmokeFlutterRunReadyTimeoutForTesting(
 Duration quickstartSmokeVisibleTextTimeoutForTesting(
   QuickstartSmokeTarget target,
 ) => switch (target) {
-  QuickstartSmokeTarget.web => const Duration(seconds: 45),
+  QuickstartSmokeTarget.web ||
   QuickstartSmokeTarget.desktop ||
   QuickstartSmokeTarget.android ||
-  QuickstartSmokeTarget.ios => const Duration(seconds: 90),
+  QuickstartSmokeTarget.ios => const Duration(seconds: 30),
 };
+
+@visibleForTesting
+Duration quickstartSmokeScreenshotRetryIntervalForTesting() =>
+    const Duration(seconds: 2);
 
 @visibleForTesting
 String? quickstartSmokeOutputFailurePatternForTesting(String output) {
@@ -384,10 +388,10 @@ Future<_QuickstartSmokeScreenshotEvidence> _captureQuickstartSmokeEvidence({
   print(
     'Waiting up to $visibleTextTimeout for quickstart text to become OCR-visible',
   );
-  await Future<void>.delayed(const Duration(seconds: 5));
 
   Exception? lastOcrException;
   var attempt = 0;
+  final retryInterval = quickstartSmokeScreenshotRetryIntervalForTesting();
   do {
     attempt++;
     print('Capturing quickstart screenshot/OCR attempt #$attempt');
@@ -406,7 +410,7 @@ Future<_QuickstartSmokeScreenshotEvidence> _captureQuickstartSmokeEvidence({
       lastOcrException = exception;
       print('Quickstart screenshot OCR did not match yet: $exception');
       if (!DateTime.now().isBefore(visibleTextDeadline)) break;
-      await Future<void>.delayed(const Duration(seconds: 5));
+      await Future<void>.delayed(retryInterval);
     }
   } while (DateTime.now().isBefore(visibleTextDeadline));
 

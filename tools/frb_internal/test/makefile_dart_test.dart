@@ -163,6 +163,19 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
     );
   });
 
+  test('quickstart smoke polls screenshots quickly for visible text', () {
+    for (final target in QuickstartSmokeTarget.values) {
+      expect(
+        quickstartSmokeVisibleTextTimeoutForTesting(target),
+        const Duration(seconds: 30),
+      );
+    }
+    expect(
+      quickstartSmokeScreenshotRetryIntervalForTesting(),
+      const Duration(seconds: 2),
+    );
+  });
+
   test('quickstart smoke resolves package from repo root instead of cwd', () {
     expect(
       quickstartSmokePackagePathForTesting(
