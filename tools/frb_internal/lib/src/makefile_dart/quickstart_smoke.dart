@@ -280,6 +280,16 @@ String quickstartSmokePackagePathForTesting(
   String? repoRootPath,
 }) => Directory('${repoRootPath ?? exec.pwd}$package').absolute.path;
 
+@visibleForTesting
+List<String> quickstartSmokeAndroidScreenshotArgsForTesting(String deviceId) =>
+    ['-s', deviceId, 'exec-out', 'screencap', '-p'];
+
+@visibleForTesting
+List<String> quickstartSmokeIosScreenshotArgsForTesting({
+  required String deviceId,
+  required String screenshotPath,
+}) => ['simctl', 'io', deviceId, 'screenshot', screenshotPath];
+
 Future<_QuickstartSmokeFlutterRun> _startQuickstartSmokeFlutterRun(
   _QuickstartSmokeContext context,
 ) async {
@@ -489,6 +499,7 @@ Future<void> _captureAndOcrQuickstartSmokeScreenshotFromContext(
 ) async {
   await _captureAndOcrQuickstartSmokeScreenshot(
     target: context.target,
+    deviceId: context.resolvedDeviceId,
     screenshotFile: context.screenshotFile,
     preprocessedScreenshotFile: context.preprocessedScreenshotFile,
     ocrOutputFile: context.ocrOutputFile,
@@ -538,6 +549,7 @@ Future<int?> _waitForQuickstartSmokeExit(Future<int> exitCodeFuture) async {
 
 Future<void> _captureAndOcrQuickstartSmokeScreenshot({
   required QuickstartSmokeTarget target,
+  required String deviceId,
   required File screenshotFile,
   required File preprocessedScreenshotFile,
   required File ocrOutputFile,
@@ -545,6 +557,7 @@ Future<void> _captureAndOcrQuickstartSmokeScreenshot({
 }) async {
   await _captureQuickstartSmokeScreenshot(
     target: target,
+    deviceId: deviceId,
     screenshotFile: screenshotFile,
   );
   await _preprocessQuickstartSmokeScreenshot(
@@ -573,22 +586,24 @@ Future<void> _captureAndOcrQuickstartSmokeScreenshot({
 
 Future<void> _captureQuickstartSmokeScreenshot({
   required QuickstartSmokeTarget target,
+  required String deviceId,
   required File screenshotFile,
 }) async {
   final result = switch (target) {
     QuickstartSmokeTarget.android => await Process.run(
       'adb',
-      ['exec-out', 'screencap', '-p'],
+      quickstartSmokeAndroidScreenshotArgsForTesting(deviceId),
       stdoutEncoding: null,
       stderrEncoding: systemEncoding,
     ),
-    QuickstartSmokeTarget.ios => await Process.run('xcrun', [
-      'simctl',
-      'io',
-      'booted',
-      'screenshot',
-      screenshotFile.path,
-    ], stderrEncoding: systemEncoding),
+    QuickstartSmokeTarget.ios => await Process.run(
+      'xcrun',
+      quickstartSmokeIosScreenshotArgsForTesting(
+        deviceId: deviceId,
+        screenshotPath: screenshotFile.path,
+      ),
+      stderrEncoding: systemEncoding,
+    ),
     _ when Platform.isMacOS => await Process.run('screencapture', [
       '-x',
       screenshotFile.path,

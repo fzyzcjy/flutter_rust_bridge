@@ -173,6 +173,23 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
     );
   });
 
+  test('quickstart smoke screenshots target the requested device', () {
+    expect(quickstartSmokeAndroidScreenshotArgsForTesting('emulator-5556'), [
+      '-s',
+      'emulator-5556',
+      'exec-out',
+      'screencap',
+      '-p',
+    ]);
+    expect(
+      quickstartSmokeIosScreenshotArgsForTesting(
+        deviceId: 'IPHONE-UDID',
+        screenshotPath: '/tmp/quickstart.png',
+      ),
+      ['simctl', 'io', 'IPHONE-UDID', 'screenshot', '/tmp/quickstart.png'],
+    );
+  });
+
   test(
     'quickstart smoke waits for Flutter run readiness before screenshot',
     () {
