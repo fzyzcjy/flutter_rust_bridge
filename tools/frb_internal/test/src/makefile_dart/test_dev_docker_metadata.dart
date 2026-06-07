@@ -21,6 +21,17 @@ void main() {
       metadata.imageRef(imageName: 'fzyzcjy/flutter_rust_bridge_dev'),
       'fzyzcjy/flutter_rust_bridge_dev:flutter-3.44.0-rust-1.93.1-nightly-2025-02-01',
     );
+    expect(
+      metadata.versionCodeTag(shortSha: 'abcdef0'),
+      'flutter-3.44.0-rust-1.93.1-nightly-2025-02-01-code-abcdef0',
+    );
+    expect(
+      metadata.imageRefForRevision(
+        imageName: 'fzyzcjy/flutter_rust_bridge_dev',
+        shortSha: 'abcdef0',
+      ),
+      'fzyzcjy/flutter_rust_bridge_dev:flutter-3.44.0-rust-1.93.1-nightly-2025-02-01-code-abcdef0',
+    );
   });
 
   test('metadata imageRef respects custom image name', () {

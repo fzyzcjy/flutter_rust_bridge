@@ -24,21 +24,24 @@ Record when, by whom, and against exactly what commit or release the manual test
 ## Procedure
 
 :::info
-Record whether the written test was followed exactly. Any deviation matters, even if the result passed.
+Record whether the written test was followed exactly. Any deviation matters, even if the result passed. Include exact commands or a path to a command script when the run used one.
 :::
 
 - Followed report revision: `TODO: commit containing the manual test report`
+- Command script or exact commands: `TODO: path to script, inline commands, or not applicable`
 - Deviations from written steps: `TODO: none, or list exact deviations`
 - Cleanup completed: `TODO: yes/no; explain if no`
 
 ## Result
 
 :::info
-Use `pass`, `fail`, `blocked`, or `partial`. The summary should explain the result without requiring the reader to open logs first.
+Use `pass`, `fail`, `blocked`, or `partial`. The summary should explain the result without requiring the reader to open logs first. Include exact command exit status and concrete pass/fail indicators from the logs.
 :::
 
 - Status: `TODO: pass/fail/blocked/partial`
 - Summary: `TODO: one or two sentences`
+- Command results: `TODO: each required command with exit status`
+- Evidence lines: `TODO: exact success/failure strings, log line numbers, or grep output proving the result`
 
 ## Artifacts
 
@@ -46,10 +49,13 @@ Use `pass`, `fail`, `blocked`, or `partial`. The summary should explain the resu
 Link or name the artifacts captured during execution. Use `not applicable` for artifact types that do not apply.
 :::
 
+- Execution markdown gist: `TODO: gist URL if this result belongs to a PR, issue, or release checklist; otherwise not applicable`
 - Terminal log: `TODO: path or link`
 - Screenshot or recording: `TODO: path or link, or not applicable`
 - Generated artifacts: `TODO: path or link, or not applicable`
-- Other evidence: `TODO: path or link, or not applicable`
+- Environment evidence: `TODO: exact tool versions, device/simulator name and UDID, browser version, or not applicable`
+- Cleanup evidence: `TODO: final git status, VM/container/device state, cleanup command output, or not applicable`
+- Other evidence: `TODO: path, link, log excerpt, or not applicable`
 
 ## Follow-up
 

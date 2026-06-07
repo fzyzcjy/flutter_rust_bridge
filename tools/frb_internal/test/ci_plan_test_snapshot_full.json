@@ -1,0 +1,724 @@
+{
+  "jobs": [
+    {
+      "id": "deploy_website"
+    },
+    {
+      "id": "lint_rust_primary"
+    },
+    {
+      "id": "lint_dart_primary"
+    },
+    {
+      "id": "lint_rust_feature_flag"
+    },
+    {
+      "id": "generate_run_frb_codegen_command_generate",
+      "matrix": [
+        {
+          "image": "windows-2025",
+          "package": "frb_example--dart_minimal"
+        },
+        {
+          "image": "windows-2025",
+          "package": "frb_example--pure_dart"
+        },
+        {
+          "image": "windows-2025",
+          "package": "frb_example--pure_dart_pde"
+        },
+        {
+          "image": "windows-2025",
+          "package": "frb_example--dart_build_rs"
+        },
+        {
+          "image": "windows-2025",
+          "package": "frb_example--flutter_via_create"
+        },
+        {
+          "image": "windows-2025",
+          "package": "frb_example--flutter_package"
+        },
+        {
+          "image": "windows-2025",
+          "package": "frb_example--rust_ui_counter--ui"
+        },
+        {
+          "image": "windows-2025",
+          "package": "frb_example--rust_ui_todo_list--ui"
+        },
+        {
+          "image": "macos-15-intel",
+          "package": "frb_example--dart_minimal"
+        },
+        {
+          "image": "macos-15-intel",
+          "package": "frb_example--pure_dart"
+        },
+        {
+          "image": "macos-15-intel",
+          "package": "frb_example--pure_dart_pde"
+        },
+        {
+          "image": "macos-15-intel",
+          "package": "frb_example--dart_build_rs"
+        },
+        {
+          "image": "macos-15-intel",
+          "package": "frb_example--flutter_via_create"
+        },
+        {
+          "image": "macos-15-intel",
+          "package": "frb_example--flutter_package"
+        },
+        {
+          "image": "macos-15-intel",
+          "package": "frb_example--rust_ui_counter--ui"
+        },
+        {
+          "image": "macos-15-intel",
+          "package": "frb_example--rust_ui_todo_list--ui"
+        },
+        {
+          "image": "ubuntu-24.04",
+          "package": "frb_example--dart_minimal"
+        },
+        {
+          "image": "ubuntu-24.04",
+          "package": "frb_example--pure_dart"
+        },
+        {
+          "image": "ubuntu-24.04",
+          "package": "frb_example--pure_dart_pde"
+        },
+        {
+          "image": "ubuntu-24.04",
+          "package": "frb_example--dart_build_rs"
+        },
+        {
+          "image": "ubuntu-24.04",
+          "package": "frb_example--deliberate_bad"
+        },
+        {
+          "image": "ubuntu-24.04",
+          "package": "frb_example--integrate_third_party"
+        },
+        {
+          "image": "ubuntu-24.04",
+          "package": "frb_example--flutter_via_create"
+        },
+        {
+          "image": "ubuntu-24.04",
+          "package": "frb_example--flutter_via_integrate"
+        },
+        {
+          "image": "ubuntu-24.04",
+          "package": "frb_example--flutter_package"
+        },
+        {
+          "image": "ubuntu-24.04",
+          "package": "frb_example--rust_ui_counter--ui"
+        },
+        {
+          "image": "ubuntu-24.04",
+          "package": "frb_example--rust_ui_todo_list--ui"
+        }
+      ]
+    },
+    {
+      "id": "generate_run_frb_codegen_command_integrate",
+      "matrix": [
+        {
+          "image": "macos-15-intel",
+          "package": "frb_example--flutter_via_create",
+          "platforms": "default"
+        },
+        {
+          "image": "macos-15-intel",
+          "package": "frb_example--flutter_via_integrate",
+          "platforms": "default"
+        },
+        {
+          "image": "macos-15-intel",
+          "package": "frb_example--flutter_package",
+          "platforms": "default"
+        },
+        {
+          "image": "windows-2025",
+          "package": "frb_example--flutter_via_create",
+          "platforms": "default"
+        },
+        {
+          "image": "windows-2025",
+          "package": "frb_example--flutter_via_integrate",
+          "platforms": "default"
+        },
+        {
+          "image": "windows-2025",
+          "package": "frb_example--flutter_package",
+          "platforms": "default"
+        },
+        {
+          "image": "ubuntu-24.04",
+          "package": "frb_example--flutter_via_create",
+          "platforms": "default"
+        },
+        {
+          "image": "ubuntu-24.04",
+          "package": "frb_example--flutter_via_integrate",
+          "platforms": "default"
+        },
+        {
+          "image": "ubuntu-24.04",
+          "package": "frb_example--flutter_package",
+          "platforms": "default"
+        },
+        {
+          "image": "ubuntu-24.04",
+          "package": "frb_example--flutter_via_create",
+          "platforms": "ohos"
+        }
+      ]
+    },
+    {
+      "id": "generate_internal"
+    },
+    {
+      "id": "bench_dart_native",
+      "matrix": [
+        {
+          "image": "windows-2025"
+        },
+        {
+          "image": "macos-15-intel"
+        },
+        {
+          "image": "ubuntu-24.04"
+        }
+      ]
+    },
+    {
+      "id": "bench_upload"
+    },
+    {
+      "id": "build_flutter",
+      "matrix": [
+        {
+          "info": {
+            "image": "windows-2025",
+            "target": "windows"
+          }
+        },
+        {
+          "info": {
+            "image": "windows-11-arm",
+            "target": "windows"
+          }
+        },
+        {
+          "info": {
+            "image": "macos-15-intel",
+            "target": "macos"
+          }
+        },
+        {
+          "info": {
+            "image": "ubuntu-latest",
+            "target": "linux"
+          }
+        },
+        {
+          "info": {
+            "image": "ubuntu-latest",
+            "target": "android-aab"
+          }
+        },
+        {
+          "info": {
+            "image": "ubuntu-latest",
+            "target": "android-apk"
+          }
+        },
+        {
+          "info": {
+            "image": "macos-15-intel",
+            "target": "ios"
+          }
+        },
+        {
+          "info": {
+            "image": "ubuntu-latest",
+            "target": "ohos"
+          }
+        }
+      ]
+    },
+    {
+      "id": "test_mimic_quickstart",
+      "matrix": [
+        {
+          "image": "windows-2025"
+        },
+        {
+          "image": "macos-15-intel"
+        },
+        {
+          "image": "ubuntu-latest"
+        }
+      ]
+    },
+    {
+      "id": "test_rust",
+      "matrix": [
+        {
+          "info": {
+            "image": "macos-15-intel",
+            "version": ""
+          }
+        },
+        {
+          "info": {
+            "image": "windows-2025",
+            "version": ""
+          }
+        },
+        {
+          "info": {
+            "image": "ubuntu-latest",
+            "version": ""
+          }
+        },
+        {
+          "info": {
+            "image": "ubuntu-latest",
+            "version": "nightly"
+          }
+        },
+        {
+          "info": {
+            "image": "ubuntu-latest",
+            "version": "1.85.0"
+          }
+        }
+      ]
+    },
+    {
+      "id": "test_dart_native",
+      "matrix": [
+        {
+          "image": "windows-2025",
+          "package": "frb_dart"
+        },
+        {
+          "image": "windows-2025",
+          "package": "frb_example--dart_minimal"
+        },
+        {
+          "image": "windows-2025",
+          "package": "frb_example--pure_dart"
+        },
+        {
+          "image": "windows-2025",
+          "package": "frb_example--pure_dart_pde"
+        },
+        {
+          "image": "windows-2025",
+          "package": "frb_example--dart_build_rs"
+        },
+        {
+          "image": "macos-15-intel",
+          "package": "frb_dart"
+        },
+        {
+          "image": "macos-15-intel",
+          "package": "frb_example--dart_minimal"
+        },
+        {
+          "image": "macos-15-intel",
+          "package": "frb_example--pure_dart"
+        },
+        {
+          "image": "macos-15-intel",
+          "package": "frb_example--pure_dart_pde"
+        },
+        {
+          "image": "macos-15-intel",
+          "package": "frb_example--dart_build_rs"
+        },
+        {
+          "image": "ubuntu-24.04",
+          "package": "frb_dart"
+        },
+        {
+          "image": "ubuntu-24.04",
+          "package": "frb_utils"
+        },
+        {
+          "image": "ubuntu-24.04",
+          "package": "tools--frb_internal"
+        },
+        {
+          "image": "ubuntu-24.04",
+          "package": "frb_example--dart_minimal"
+        },
+        {
+          "image": "ubuntu-24.04",
+          "package": "frb_example--pure_dart"
+        },
+        {
+          "image": "ubuntu-24.04",
+          "package": "frb_example--pure_dart_pde"
+        },
+        {
+          "image": "ubuntu-24.04",
+          "package": "frb_example--dart_build_rs"
+        }
+      ]
+    },
+    {
+      "id": "test_dart_web",
+      "matrix": [
+        {
+          "package": "frb_dart"
+        },
+        {
+          "package": "frb_example--dart_minimal"
+        },
+        {
+          "package": "frb_example--pure_dart"
+        },
+        {
+          "package": "frb_example--pure_dart_pde"
+        }
+      ]
+    },
+    {
+      "id": "test_dart_valgrind",
+      "matrix": [
+        {
+          "package": "frb_example--dart_minimal"
+        },
+        {
+          "package": "frb_example--pure_dart"
+        },
+        {
+          "package": "frb_example--pure_dart_pde"
+        }
+      ]
+    },
+    {
+      "id": "test_dart_sanitizer",
+      "matrix": [
+        {
+          "sanitizer": "asan",
+          "package": "frb_example--dart_minimal"
+        },
+        {
+          "sanitizer": "asan",
+          "package": "frb_example--pure_dart"
+        },
+        {
+          "sanitizer": "asan",
+          "package": "frb_example--pure_dart_pde"
+        },
+        {
+          "sanitizer": "lsan",
+          "package": "frb_example--dart_minimal"
+        },
+        {
+          "sanitizer": "lsan",
+          "package": "frb_example--pure_dart"
+        },
+        {
+          "sanitizer": "lsan",
+          "package": "frb_example--pure_dart_pde"
+        }
+      ]
+    },
+    {
+      "id": "test_flutter_native_android",
+      "matrix": [
+        {
+          "package": "frb_example--flutter_via_create",
+          "device": "pixel",
+          "api-level": 35
+        },
+        {
+          "package": "frb_example--flutter_via_create",
+          "device": "Nexus 6",
+          "api-level": 35
+        },
+        {
+          "package": "frb_example--flutter_package--example",
+          "device": "pixel",
+          "api-level": 35
+        },
+        {
+          "package": "frb_example--flutter_package--example",
+          "device": "Nexus 6",
+          "api-level": 35
+        },
+        {
+          "package": "frb_example--rust_ui_counter--ui",
+          "device": "pixel",
+          "api-level": 35
+        },
+        {
+          "package": "frb_example--rust_ui_counter--ui",
+          "device": "Nexus 6",
+          "api-level": 35
+        },
+        {
+          "package": "frb_example--rust_ui_todo_list--ui",
+          "device": "pixel",
+          "api-level": 35
+        },
+        {
+          "package": "frb_example--rust_ui_todo_list--ui",
+          "device": "Nexus 6",
+          "api-level": 35
+        }
+      ]
+    },
+    {
+      "id": "test_flutter_native_ios",
+      "matrix": [
+        {
+          "package": "frb_example--flutter_via_create",
+          "device": "iPad (10th generation) Simulator (18.6)"
+        },
+        {
+          "package": "frb_example--flutter_via_create",
+          "device": "iPhone 16 Pro Max Simulator (18.6)"
+        },
+        {
+          "package": "frb_example--flutter_package--example",
+          "device": "iPad (10th generation) Simulator (18.6)"
+        },
+        {
+          "package": "frb_example--flutter_package--example",
+          "device": "iPhone 16 Pro Max Simulator (18.6)"
+        },
+        {
+          "package": "frb_example--rust_ui_counter--ui",
+          "device": "iPad (10th generation) Simulator (18.6)"
+        },
+        {
+          "package": "frb_example--rust_ui_counter--ui",
+          "device": "iPhone 16 Pro Max Simulator (18.6)"
+        },
+        {
+          "package": "frb_example--rust_ui_todo_list--ui",
+          "device": "iPad (10th generation) Simulator (18.6)"
+        },
+        {
+          "package": "frb_example--rust_ui_todo_list--ui",
+          "device": "iPhone 16 Pro Max Simulator (18.6)"
+        }
+      ]
+    },
+    {
+      "id": "test_flutter_native_desktop",
+      "matrix": [
+        {
+          "info": {
+            "image": "windows-2025",
+            "platform": "windows",
+            "package": "frb_example--flutter_via_create"
+          }
+        },
+        {
+          "info": {
+            "image": "macos-15-intel",
+            "platform": "macos",
+            "package": "frb_example--flutter_via_create"
+          }
+        },
+        {
+          "info": {
+            "image": "ubuntu-latest",
+            "platform": "linux",
+            "package": "frb_example--flutter_via_create"
+          }
+        },
+        {
+          "info": {
+            "image": "windows-2025",
+            "platform": "windows",
+            "package": "frb_example--flutter_package--example"
+          }
+        },
+        {
+          "info": {
+            "image": "macos-15-intel",
+            "platform": "macos",
+            "package": "frb_example--flutter_package--example"
+          }
+        },
+        {
+          "info": {
+            "image": "ubuntu-latest",
+            "platform": "linux",
+            "package": "frb_example--flutter_package--example"
+          }
+        },
+        {
+          "info": {
+            "image": "windows-2025",
+            "platform": "windows",
+            "package": "frb_example--rust_ui_counter--ui"
+          }
+        },
+        {
+          "info": {
+            "image": "macos-15-intel",
+            "platform": "macos",
+            "package": "frb_example--rust_ui_counter--ui"
+          }
+        },
+        {
+          "info": {
+            "image": "ubuntu-latest",
+            "platform": "linux",
+            "package": "frb_example--rust_ui_counter--ui"
+          }
+        },
+        {
+          "info": {
+            "image": "windows-2025",
+            "platform": "windows",
+            "package": "frb_example--rust_ui_todo_list--ui"
+          }
+        },
+        {
+          "info": {
+            "image": "macos-15-intel",
+            "platform": "macos",
+            "package": "frb_example--rust_ui_todo_list--ui"
+          }
+        },
+        {
+          "info": {
+            "image": "ubuntu-latest",
+            "platform": "linux",
+            "package": "frb_example--rust_ui_todo_list--ui"
+          }
+        },
+        {
+          "info": {
+            "image": "ubuntu-latest",
+            "platform": "linux",
+            "package": "frb_example--flutter_via_integrate"
+          }
+        },
+        {
+          "info": {
+            "image": "ubuntu-latest",
+            "platform": "linux",
+            "package": "frb_example--gallery"
+          }
+        },
+        {
+          "info": {
+            "image": "ubuntu-latest",
+            "platform": "linux",
+            "package": "frb_example--integrate_third_party"
+          }
+        }
+      ]
+    },
+    {
+      "id": "test_flutter_web",
+      "matrix": [
+        {
+          "package": "frb_example--flutter_via_create"
+        },
+        {
+          "package": "frb_example--gallery"
+        }
+      ]
+    },
+    {
+      "id": "test_flutter_quickstart_smoke",
+      "matrix": [
+        {
+          "info": {
+            "image": "ubuntu-latest",
+            "platform": "web",
+            "target": "web",
+            "device": "chrome",
+            "package": "frb_example--flutter_via_create"
+          }
+        },
+        {
+          "info": {
+            "image": "ubuntu-latest",
+            "platform": "android",
+            "target": "android",
+            "device": "pixel",
+            "api-level": 35,
+            "package": "frb_example--flutter_via_create"
+          }
+        },
+        {
+          "info": {
+            "image": "ubuntu-latest",
+            "platform": "android",
+            "target": "android",
+            "device": "Nexus 6",
+            "api-level": 35,
+            "package": "frb_example--flutter_via_create"
+          }
+        },
+        {
+          "info": {
+            "image": "macos-latest",
+            "platform": "ios",
+            "target": "ios",
+            "device": "iPad (10th generation) Simulator (18.6)",
+            "package": "frb_example--flutter_via_create"
+          }
+        },
+        {
+          "info": {
+            "image": "macos-latest",
+            "platform": "ios",
+            "target": "ios",
+            "device": "iPhone 16 Pro Max Simulator (18.6)",
+            "package": "frb_example--flutter_via_create"
+          }
+        },
+        {
+          "info": {
+            "image": "ubuntu-latest",
+            "platform": "linux",
+            "target": "desktop",
+            "device": "linux",
+            "package": "frb_example--flutter_via_create"
+          }
+        },
+        {
+          "info": {
+            "image": "macos-15-intel",
+            "platform": "macos",
+            "target": "desktop",
+            "device": "macos",
+            "package": "frb_example--flutter_via_create"
+          }
+        },
+        {
+          "info": {
+            "image": "windows-2025",
+            "platform": "windows",
+            "target": "desktop",
+            "device": "windows",
+            "package": "frb_example--flutter_via_create"
+          }
+        }
+      ]
+    },
+    {
+      "id": "misc_codecov"
+    }
+  ]
+}
