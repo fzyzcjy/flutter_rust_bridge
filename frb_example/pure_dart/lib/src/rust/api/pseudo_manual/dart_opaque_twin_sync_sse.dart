@@ -8,8 +8,6 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import '../dart_opaque.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-part 'dart_opaque_twin_sync_sse.freezed.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `deref`, `initialize`
 
@@ -118,8 +116,7 @@ class DartOpaqueNestedTwinSyncSse {
           second == other.second;
 }
 
-@freezed
-sealed class EnumDartOpaqueTwinSyncSse with _$EnumDartOpaqueTwinSyncSse {
+sealed class EnumDartOpaqueTwinSyncSse {
   const EnumDartOpaqueTwinSyncSse._();
 
   const factory EnumDartOpaqueTwinSyncSse.primitive(
@@ -128,4 +125,40 @@ sealed class EnumDartOpaqueTwinSyncSse with _$EnumDartOpaqueTwinSyncSse {
   const factory EnumDartOpaqueTwinSyncSse.opaque(
     Object field0,
   ) = EnumDartOpaqueTwinSyncSse_Opaque;
+}
+
+class EnumDartOpaqueTwinSyncSse_Primitive extends EnumDartOpaqueTwinSyncSse {
+  final int field0;
+
+  const EnumDartOpaqueTwinSyncSse_Primitive(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumDartOpaqueTwinSyncSse_Primitive &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumDartOpaqueTwinSyncSse_Opaque extends EnumDartOpaqueTwinSyncSse {
+  final Object field0;
+
+  const EnumDartOpaqueTwinSyncSse_Opaque(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumDartOpaqueTwinSyncSse_Opaque &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
 }

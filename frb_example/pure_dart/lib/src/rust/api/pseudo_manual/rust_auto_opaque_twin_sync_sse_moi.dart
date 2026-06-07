@@ -7,9 +7,7 @@ import 'dart:io';
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_auto_opaque_twin_moi.dart';
-part 'rust_auto_opaque_twin_sync_sse_moi.freezed.dart';
 
 void rustAutoOpaqueArgOwnTwinSyncSseMoi(
         {required NonCloneSimpleTwinSyncSseMoi arg, required int expect}) =>
@@ -268,9 +266,7 @@ abstract class MyTraitTwinSyncSseMoi {
   Future<void> f();
 }
 
-@freezed
-sealed class EnumWithGoodAndOpaqueTwinSyncSseMoi
-    with _$EnumWithGoodAndOpaqueTwinSyncSseMoi {
+sealed class EnumWithGoodAndOpaqueTwinSyncSseMoi {
   const EnumWithGoodAndOpaqueTwinSyncSseMoi._();
 
   const factory EnumWithGoodAndOpaqueTwinSyncSseMoi.good(
@@ -279,6 +275,44 @@ sealed class EnumWithGoodAndOpaqueTwinSyncSseMoi
   const factory EnumWithGoodAndOpaqueTwinSyncSseMoi.opaque(
     NonCloneSimpleTwinSyncSseMoi field0,
   ) = EnumWithGoodAndOpaqueTwinSyncSseMoi_Opaque;
+}
+
+class EnumWithGoodAndOpaqueTwinSyncSseMoi_Good
+    extends EnumWithGoodAndOpaqueTwinSyncSseMoi {
+  final String field0;
+
+  const EnumWithGoodAndOpaqueTwinSyncSseMoi_Good(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithGoodAndOpaqueTwinSyncSseMoi_Good &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumWithGoodAndOpaqueTwinSyncSseMoi_Opaque
+    extends EnumWithGoodAndOpaqueTwinSyncSseMoi {
+  final NonCloneSimpleTwinSyncSseMoi field0;
+
+  const EnumWithGoodAndOpaqueTwinSyncSseMoi_Opaque(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithGoodAndOpaqueTwinSyncSseMoi_Opaque &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinSyncSseMoi {

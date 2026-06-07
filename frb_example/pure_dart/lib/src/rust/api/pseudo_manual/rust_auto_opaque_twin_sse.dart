@@ -7,9 +7,7 @@ import 'dart:io';
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_auto_opaque_twin_moi.dart';
-part 'rust_auto_opaque_twin_sse.freezed.dart';
 
 Future<void> rustAutoOpaqueArgOwnTwinSse(
         {required NonCloneSimpleTwinSse arg, required int expect}) =>
@@ -264,8 +262,7 @@ abstract class MyTraitTwinSse {
   Future<void> f();
 }
 
-@freezed
-sealed class EnumWithGoodAndOpaqueTwinSse with _$EnumWithGoodAndOpaqueTwinSse {
+sealed class EnumWithGoodAndOpaqueTwinSse {
   const EnumWithGoodAndOpaqueTwinSse._();
 
   const factory EnumWithGoodAndOpaqueTwinSse.good(
@@ -274,6 +271,42 @@ sealed class EnumWithGoodAndOpaqueTwinSse with _$EnumWithGoodAndOpaqueTwinSse {
   const factory EnumWithGoodAndOpaqueTwinSse.opaque(
     NonCloneSimpleTwinSse field0,
   ) = EnumWithGoodAndOpaqueTwinSse_Opaque;
+}
+
+class EnumWithGoodAndOpaqueTwinSse_Good extends EnumWithGoodAndOpaqueTwinSse {
+  final String field0;
+
+  const EnumWithGoodAndOpaqueTwinSse_Good(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithGoodAndOpaqueTwinSse_Good &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumWithGoodAndOpaqueTwinSse_Opaque extends EnumWithGoodAndOpaqueTwinSse {
+  final NonCloneSimpleTwinSse field0;
+
+  const EnumWithGoodAndOpaqueTwinSse_Opaque(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithGoodAndOpaqueTwinSse_Opaque &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinSse {

@@ -8,8 +8,6 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-part 'method_twin_rust_async.freezed.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 
@@ -132,8 +130,7 @@ class MyCallableTwinRustAsync {
           one == other.one;
 }
 
-@freezed
-sealed class SimpleEnumTwinRustAsync with _$SimpleEnumTwinRustAsync {
+sealed class SimpleEnumTwinRustAsync {
   const SimpleEnumTwinRustAsync._();
 
   const factory SimpleEnumTwinRustAsync.first() = SimpleEnumTwinRustAsync_First;
@@ -151,6 +148,37 @@ sealed class SimpleEnumTwinRustAsync with _$SimpleEnumTwinRustAsync {
           .crateApiPseudoManualMethodTwinRustAsyncSimpleEnumTwinRustAsyncSimpleMethodTwinRustAsync(
         that: this,
       );
+}
+
+class SimpleEnumTwinRustAsync_First extends SimpleEnumTwinRustAsync {
+  const SimpleEnumTwinRustAsync_First() : super._();
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SimpleEnumTwinRustAsync_First &&
+          runtimeType == other.runtimeType;
+}
+
+class SimpleEnumTwinRustAsync_Second extends SimpleEnumTwinRustAsync {
+  final String field0;
+
+  const SimpleEnumTwinRustAsync_Second(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SimpleEnumTwinRustAsync_Second &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
 }
 
 enum SimplePrimitiveEnumTwinRustAsync {

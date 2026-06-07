@@ -8,9 +8,7 @@ import 'dart:io';
 import '../../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_opaque_twin_moi.dart';
-part 'rust_opaque_twin_rust_async_moi.freezed.dart';
 
 Future<HideDataTwinRustAsyncMoi> createOpaqueTwinRustAsyncMoi() => RustLib
     .instance.api
@@ -127,8 +125,7 @@ abstract class NonCloneDataTwinRustAsyncMoi implements RustOpaqueInterface {}
 // Rust type: RustOpaqueMoi<RwLock < HideDataTwinRustAsyncMoi >>
 abstract class RwLockHideDataTwinRustAsyncMoi implements RustOpaqueInterface {}
 
-@freezed
-sealed class EnumOpaqueTwinRustAsyncMoi with _$EnumOpaqueTwinRustAsyncMoi {
+sealed class EnumOpaqueTwinRustAsyncMoi {
   const EnumOpaqueTwinRustAsyncMoi._();
 
   const factory EnumOpaqueTwinRustAsyncMoi.struct(
@@ -148,6 +145,109 @@ sealed class EnumOpaqueTwinRustAsyncMoi with _$EnumOpaqueTwinRustAsyncMoi {
   ) = EnumOpaqueTwinRustAsyncMoi_RwLock;
   const factory EnumOpaqueTwinRustAsyncMoi.nothing() =
       EnumOpaqueTwinRustAsyncMoi_Nothing;
+}
+
+class EnumOpaqueTwinRustAsyncMoi_Struct extends EnumOpaqueTwinRustAsyncMoi {
+  final HideDataTwinRustAsyncMoi field0;
+
+  const EnumOpaqueTwinRustAsyncMoi_Struct(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinRustAsyncMoi_Struct &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumOpaqueTwinRustAsyncMoi_Primitive extends EnumOpaqueTwinRustAsyncMoi {
+  final I16 field0;
+
+  const EnumOpaqueTwinRustAsyncMoi_Primitive(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinRustAsyncMoi_Primitive &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumOpaqueTwinRustAsyncMoi_TraitObj extends EnumOpaqueTwinRustAsyncMoi {
+  final BoxDartDebugTwinRustAsyncMoi field0;
+
+  const EnumOpaqueTwinRustAsyncMoi_TraitObj(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinRustAsyncMoi_TraitObj &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumOpaqueTwinRustAsyncMoi_Mutex extends EnumOpaqueTwinRustAsyncMoi {
+  final MutexHideDataTwinRustAsyncMoi field0;
+
+  const EnumOpaqueTwinRustAsyncMoi_Mutex(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinRustAsyncMoi_Mutex &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumOpaqueTwinRustAsyncMoi_RwLock extends EnumOpaqueTwinRustAsyncMoi {
+  final RwLockHideDataTwinRustAsyncMoi field0;
+
+  const EnumOpaqueTwinRustAsyncMoi_RwLock(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinRustAsyncMoi_RwLock &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumOpaqueTwinRustAsyncMoi_Nothing extends EnumOpaqueTwinRustAsyncMoi {
+  const EnumOpaqueTwinRustAsyncMoi_Nothing() : super._();
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumOpaqueTwinRustAsyncMoi_Nothing &&
+          runtimeType == other.runtimeType;
 }
 
 class EnumOpaqueTwinRustAsyncMoiArray5

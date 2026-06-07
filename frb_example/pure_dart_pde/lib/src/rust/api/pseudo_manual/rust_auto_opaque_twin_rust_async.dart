@@ -7,8 +7,6 @@ import 'dart:io';
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-part 'rust_auto_opaque_twin_rust_async.freezed.dart';
 
 // These functions are ignored (category: IgnoreBecauseNotAllowedOwner): `f`
 
@@ -270,9 +268,7 @@ abstract class MyTraitTwinRustAsync {
   Future<void> f();
 }
 
-@freezed
-sealed class EnumWithGoodAndOpaqueTwinRustAsync
-    with _$EnumWithGoodAndOpaqueTwinRustAsync {
+sealed class EnumWithGoodAndOpaqueTwinRustAsync {
   const EnumWithGoodAndOpaqueTwinRustAsync._();
 
   const factory EnumWithGoodAndOpaqueTwinRustAsync.good(
@@ -281,6 +277,44 @@ sealed class EnumWithGoodAndOpaqueTwinRustAsync
   const factory EnumWithGoodAndOpaqueTwinRustAsync.opaque(
     NonCloneSimpleTwinRustAsync field0,
   ) = EnumWithGoodAndOpaqueTwinRustAsync_Opaque;
+}
+
+class EnumWithGoodAndOpaqueTwinRustAsync_Good
+    extends EnumWithGoodAndOpaqueTwinRustAsync {
+  final String field0;
+
+  const EnumWithGoodAndOpaqueTwinRustAsync_Good(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithGoodAndOpaqueTwinRustAsync_Good &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumWithGoodAndOpaqueTwinRustAsync_Opaque
+    extends EnumWithGoodAndOpaqueTwinRustAsync {
+  final NonCloneSimpleTwinRustAsync field0;
+
+  const EnumWithGoodAndOpaqueTwinRustAsync_Opaque(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithGoodAndOpaqueTwinRustAsync_Opaque &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinRustAsync {

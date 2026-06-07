@@ -7,8 +7,6 @@ import 'dart:io';
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-part 'basic_twin_sse.freezed.dart';
 
 Future<int> exampleBasicTypeI8TwinSse(
         {required int arg, required String expect}) =>
@@ -121,8 +119,7 @@ Future<BasicStructTwinSse> exampleBasicTypeBasicStructTwinSseTwinSse(
         .crateApiPseudoManualBasicTwinSseExampleBasicTypeBasicStructTwinSseTwinSse(
             arg: arg);
 
-@freezed
-sealed class BasicGeneralEnumTwinSse with _$BasicGeneralEnumTwinSse {
+sealed class BasicGeneralEnumTwinSse {
   const BasicGeneralEnumTwinSse._();
 
   const factory BasicGeneralEnumTwinSse.apple({
@@ -130,6 +127,37 @@ sealed class BasicGeneralEnumTwinSse with _$BasicGeneralEnumTwinSse {
   }) = BasicGeneralEnumTwinSse_Apple;
   const factory BasicGeneralEnumTwinSse.orange() =
       BasicGeneralEnumTwinSse_Orange;
+}
+
+class BasicGeneralEnumTwinSse_Apple extends BasicGeneralEnumTwinSse {
+  final String field;
+
+  const BasicGeneralEnumTwinSse_Apple({
+    required this.field,
+  }) : super._();
+
+  @override
+  int get hashCode => field.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BasicGeneralEnumTwinSse_Apple &&
+          runtimeType == other.runtimeType &&
+          field == other.field;
+}
+
+class BasicGeneralEnumTwinSse_Orange extends BasicGeneralEnumTwinSse {
+  const BasicGeneralEnumTwinSse_Orange() : super._();
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BasicGeneralEnumTwinSse_Orange &&
+          runtimeType == other.runtimeType;
 }
 
 enum BasicPrimitiveEnumTwinSse {

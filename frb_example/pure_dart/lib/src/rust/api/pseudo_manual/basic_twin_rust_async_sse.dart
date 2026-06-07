@@ -7,8 +7,6 @@ import 'dart:io';
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-part 'basic_twin_rust_async_sse.freezed.dart';
 
 Future<int> exampleBasicTypeI8TwinRustAsyncSse(
         {required int arg, required String expect}) =>
@@ -129,9 +127,7 @@ Future<BasicStructTwinRustAsyncSse>
             .crateApiPseudoManualBasicTwinRustAsyncSseExampleBasicTypeBasicStructTwinRustAsyncSseTwinRustAsyncSse(
                 arg: arg);
 
-@freezed
-sealed class BasicGeneralEnumTwinRustAsyncSse
-    with _$BasicGeneralEnumTwinRustAsyncSse {
+sealed class BasicGeneralEnumTwinRustAsyncSse {
   const BasicGeneralEnumTwinRustAsyncSse._();
 
   const factory BasicGeneralEnumTwinRustAsyncSse.apple({
@@ -139,6 +135,39 @@ sealed class BasicGeneralEnumTwinRustAsyncSse
   }) = BasicGeneralEnumTwinRustAsyncSse_Apple;
   const factory BasicGeneralEnumTwinRustAsyncSse.orange() =
       BasicGeneralEnumTwinRustAsyncSse_Orange;
+}
+
+class BasicGeneralEnumTwinRustAsyncSse_Apple
+    extends BasicGeneralEnumTwinRustAsyncSse {
+  final String field;
+
+  const BasicGeneralEnumTwinRustAsyncSse_Apple({
+    required this.field,
+  }) : super._();
+
+  @override
+  int get hashCode => field.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BasicGeneralEnumTwinRustAsyncSse_Apple &&
+          runtimeType == other.runtimeType &&
+          field == other.field;
+}
+
+class BasicGeneralEnumTwinRustAsyncSse_Orange
+    extends BasicGeneralEnumTwinRustAsyncSse {
+  const BasicGeneralEnumTwinRustAsyncSse_Orange() : super._();
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BasicGeneralEnumTwinRustAsyncSse_Orange &&
+          runtimeType == other.runtimeType;
 }
 
 enum BasicPrimitiveEnumTwinRustAsyncSse {

@@ -7,9 +7,7 @@ import 'dart:io';
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_auto_opaque_twin_rust_async.dart';
-part 'rust_auto_opaque_twin_sync.freezed.dart';
 
 void rustAutoOpaqueArgOwnTwinSync(
         {required NonCloneSimpleTwinSync arg, required int expect}) =>
@@ -261,9 +259,7 @@ abstract class MyTraitTwinSync {
   Future<void> f();
 }
 
-@freezed
-sealed class EnumWithGoodAndOpaqueTwinSync
-    with _$EnumWithGoodAndOpaqueTwinSync {
+sealed class EnumWithGoodAndOpaqueTwinSync {
   const EnumWithGoodAndOpaqueTwinSync._();
 
   const factory EnumWithGoodAndOpaqueTwinSync.good(
@@ -272,6 +268,43 @@ sealed class EnumWithGoodAndOpaqueTwinSync
   const factory EnumWithGoodAndOpaqueTwinSync.opaque(
     NonCloneSimpleTwinSync field0,
   ) = EnumWithGoodAndOpaqueTwinSync_Opaque;
+}
+
+class EnumWithGoodAndOpaqueTwinSync_Good extends EnumWithGoodAndOpaqueTwinSync {
+  final String field0;
+
+  const EnumWithGoodAndOpaqueTwinSync_Good(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithGoodAndOpaqueTwinSync_Good &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumWithGoodAndOpaqueTwinSync_Opaque
+    extends EnumWithGoodAndOpaqueTwinSync {
+  final NonCloneSimpleTwinSync field0;
+
+  const EnumWithGoodAndOpaqueTwinSync_Opaque(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithGoodAndOpaqueTwinSync_Opaque &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinSync {

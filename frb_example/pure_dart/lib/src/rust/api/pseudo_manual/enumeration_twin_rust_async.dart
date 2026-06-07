@@ -7,203 +7,513 @@ import 'dart:io';
 
 import '../../frb_generated.dart';
 import 'misc_example_twin_rust_async.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-part 'enumeration_twin_rust_async.freezed.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
 
-Future<EnumSimpleTwinRustAsync> funcEnumSimpleTwinRustAsync(
-        {required EnumSimpleTwinRustAsync arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumSimpleTwinRustAsync(
-            arg: arg);
+            // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
 
-Future<EnumWithItemMixedTwinRustAsync> funcEnumWithItemMixedTwinRustAsync(
-        {required EnumWithItemMixedTwinRustAsync arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumWithItemMixedTwinRustAsync(
-            arg: arg);
 
-Future<EnumWithItemTupleTwinRustAsync> funcEnumWithItemTupleTwinRustAsync(
-        {required EnumWithItemTupleTwinRustAsync arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumWithItemTupleTwinRustAsync(
-            arg: arg);
+            Future<EnumSimpleTwinRustAsync>  funcEnumSimpleTwinRustAsync({required EnumSimpleTwinRustAsync arg }) => RustLib.instance.api.crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumSimpleTwinRustAsync(arg: arg);
 
-Future<EnumWithItemStructTwinRustAsync> funcEnumWithItemStructTwinRustAsync(
-        {required EnumWithItemStructTwinRustAsync arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumWithItemStructTwinRustAsync(
-            arg: arg);
+Future<EnumWithItemMixedTwinRustAsync>  funcEnumWithItemMixedTwinRustAsync({required EnumWithItemMixedTwinRustAsync arg }) => RustLib.instance.api.crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumWithItemMixedTwinRustAsync(arg: arg);
 
-Future<EnumWithDiscriminantTwinRustAsync> funcEnumWithDiscriminantTwinRustAsync(
-        {required EnumWithDiscriminantTwinRustAsync arg}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumWithDiscriminantTwinRustAsync(
-            arg: arg);
+Future<EnumWithItemTupleTwinRustAsync>  funcEnumWithItemTupleTwinRustAsync({required EnumWithItemTupleTwinRustAsync arg }) => RustLib.instance.api.crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumWithItemTupleTwinRustAsync(arg: arg);
 
-Future<Uint8List> printNoteTwinRustAsync({required NoteTwinRustAsync note}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncPrintNoteTwinRustAsync(
-            note: note);
+Future<EnumWithItemStructTwinRustAsync>  funcEnumWithItemStructTwinRustAsync({required EnumWithItemStructTwinRustAsync arg }) => RustLib.instance.api.crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumWithItemStructTwinRustAsync(arg: arg);
 
-Future<WeekdaysTwinRustAsync?> handleReturnEnumTwinRustAsync(
-        {required String input}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncHandleReturnEnumTwinRustAsync(
-            input: input);
+Future<EnumWithDiscriminantTwinRustAsync>  funcEnumWithDiscriminantTwinRustAsync({required EnumWithDiscriminantTwinRustAsync arg }) => RustLib.instance.api.crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumWithDiscriminantTwinRustAsync(arg: arg);
 
-Future<WeekdaysTwinRustAsync> handleEnumParameterTwinRustAsync(
-        {required WeekdaysTwinRustAsync weekday}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncHandleEnumParameterTwinRustAsync(
-            weekday: weekday);
+Future<Uint8List>  printNoteTwinRustAsync({required NoteTwinRustAsync note }) => RustLib.instance.api.crateApiPseudoManualEnumerationTwinRustAsyncPrintNoteTwinRustAsync(note: note);
 
-Future<MeasureTwinRustAsync?> multiplyByTenTwinRustAsync(
-        {required MeasureTwinRustAsync measure}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncMultiplyByTenTwinRustAsync(
-            measure: measure);
+Future<WeekdaysTwinRustAsync?>  handleReturnEnumTwinRustAsync({required String input }) => RustLib.instance.api.crateApiPseudoManualEnumerationTwinRustAsyncHandleReturnEnumTwinRustAsync(input: input);
 
-Future<KitchenSinkTwinRustAsync> handleEnumStructTwinRustAsync(
-        {required KitchenSinkTwinRustAsync val}) =>
-    RustLib.instance.api
-        .crateApiPseudoManualEnumerationTwinRustAsyncHandleEnumStructTwinRustAsync(
-            val: val);
+Future<WeekdaysTwinRustAsync>  handleEnumParameterTwinRustAsync({required WeekdaysTwinRustAsync weekday }) => RustLib.instance.api.crateApiPseudoManualEnumerationTwinRustAsyncHandleEnumParameterTwinRustAsync(weekday: weekday);
 
-@freezed
-sealed class DistanceTwinRustAsync with _$DistanceTwinRustAsync {
-  const DistanceTwinRustAsync._();
+Future<MeasureTwinRustAsync?>  multiplyByTenTwinRustAsync({required MeasureTwinRustAsync measure }) => RustLib.instance.api.crateApiPseudoManualEnumerationTwinRustAsyncMultiplyByTenTwinRustAsync(measure: measure);
 
-  const factory DistanceTwinRustAsync.unknown() = DistanceTwinRustAsync_Unknown;
-  const factory DistanceTwinRustAsync.map(
-    double field0,
-  ) = DistanceTwinRustAsync_Map;
-}
+Future<KitchenSinkTwinRustAsync>  handleEnumStructTwinRustAsync({required KitchenSinkTwinRustAsync val }) => RustLib.instance.api.crateApiPseudoManualEnumerationTwinRustAsyncHandleEnumStructTwinRustAsync(val: val);
+
+            sealed class DistanceTwinRustAsync  {
+                    const DistanceTwinRustAsync._();
+
+                     const factory DistanceTwinRustAsync.unknown() = DistanceTwinRustAsync_Unknown;
+ const factory DistanceTwinRustAsync.map(  double field0,) = DistanceTwinRustAsync_Map;
+
+                    
+                }
+
+                class DistanceTwinRustAsync_Unknown extends DistanceTwinRustAsync  {
+                
+
+                const DistanceTwinRustAsync_Unknown() : super._();
+
+                
+        @override
+        int get hashCode => 0;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is DistanceTwinRustAsync_Unknown &&
+                runtimeType == other.runtimeType
+                ;
+        
+            }
+class DistanceTwinRustAsync_Map extends DistanceTwinRustAsync  {
+                final double field0;
+
+                const DistanceTwinRustAsync_Map(this.field0 ,) : super._();
+
+                
+        @override
+        int get hashCode => field0.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is DistanceTwinRustAsync_Map &&
+                runtimeType == other.runtimeType
+                && field0 == other.field0;
+        
+            }
 
 enum EnumSimpleTwinRustAsync {
-  a,
-  b,
-  ;
-}
+                    a,
+b,
+                    ;
+                    
+                }
 
 enum EnumWithDiscriminantTwinRustAsync {
-  oneHundred,
-  fifty,
-  ;
-}
+                    oneHundred,
+fifty,
+                    ;
+                    
+                }
 
-@freezed
-sealed class EnumWithItemMixedTwinRustAsync
-    with _$EnumWithItemMixedTwinRustAsync {
-  const EnumWithItemMixedTwinRustAsync._();
+sealed class EnumWithItemMixedTwinRustAsync  {
+                    const EnumWithItemMixedTwinRustAsync._();
 
-  const factory EnumWithItemMixedTwinRustAsync.a() =
-      EnumWithItemMixedTwinRustAsync_A;
-  const factory EnumWithItemMixedTwinRustAsync.b(
-    Uint8List field0,
-  ) = EnumWithItemMixedTwinRustAsync_B;
-  const factory EnumWithItemMixedTwinRustAsync.c({
-    required String cField,
-  }) = EnumWithItemMixedTwinRustAsync_C;
-}
+                     const factory EnumWithItemMixedTwinRustAsync.a() = EnumWithItemMixedTwinRustAsync_A;
+ const factory EnumWithItemMixedTwinRustAsync.b(  Uint8List field0,) = EnumWithItemMixedTwinRustAsync_B;
+ const factory EnumWithItemMixedTwinRustAsync.c({   required String cField , }) = EnumWithItemMixedTwinRustAsync_C;
 
-@freezed
-sealed class EnumWithItemStructTwinRustAsync
-    with _$EnumWithItemStructTwinRustAsync {
-  const EnumWithItemStructTwinRustAsync._();
+                    
+                }
 
-  const factory EnumWithItemStructTwinRustAsync.a({
-    required Uint8List aField,
-  }) = EnumWithItemStructTwinRustAsync_A;
-  const factory EnumWithItemStructTwinRustAsync.b({
-    required Int32List bField,
-  }) = EnumWithItemStructTwinRustAsync_B;
-}
+                class EnumWithItemMixedTwinRustAsync_A extends EnumWithItemMixedTwinRustAsync  {
+                
 
-@freezed
-sealed class EnumWithItemTupleTwinRustAsync
-    with _$EnumWithItemTupleTwinRustAsync {
-  const EnumWithItemTupleTwinRustAsync._();
+                const EnumWithItemMixedTwinRustAsync_A() : super._();
 
-  const factory EnumWithItemTupleTwinRustAsync.a(
-    Uint8List field0,
-  ) = EnumWithItemTupleTwinRustAsync_A;
-  const factory EnumWithItemTupleTwinRustAsync.b(
-    int field0,
-  ) = EnumWithItemTupleTwinRustAsync_B;
-}
+                
+        @override
+        int get hashCode => 0;
+        
 
-@freezed
-sealed class KitchenSinkTwinRustAsync with _$KitchenSinkTwinRustAsync {
-  const KitchenSinkTwinRustAsync._();
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is EnumWithItemMixedTwinRustAsync_A &&
+                runtimeType == other.runtimeType
+                ;
+        
+            }
+class EnumWithItemMixedTwinRustAsync_B extends EnumWithItemMixedTwinRustAsync  {
+                final Uint8List field0;
 
-  /// Comment on variant
-  const factory KitchenSinkTwinRustAsync.empty() =
-      KitchenSinkTwinRustAsync_Empty;
-  const factory KitchenSinkTwinRustAsync.primitives({
-    /// Dart field comment
-    @Default(-1) int int32,
-    required double float64,
-    required bool boolean,
-  }) = KitchenSinkTwinRustAsync_Primitives;
-  const factory KitchenSinkTwinRustAsync.nested(
-    int field0, [
-    @Default(KitchenSinkTwinRustAsync.empty()) KitchenSinkTwinRustAsync field1,
-  ]) = KitchenSinkTwinRustAsync_Nested;
-  const factory KitchenSinkTwinRustAsync.optional([
-    /// Comment on anonymous field
-    @Default(-1) int? field0,
-    int? field1,
-  ]) = KitchenSinkTwinRustAsync_Optional;
-  const factory KitchenSinkTwinRustAsync.buffer(
-    Uint8List field0,
-  ) = KitchenSinkTwinRustAsync_Buffer;
-  const factory KitchenSinkTwinRustAsync.enums([
-    @Default(WeekdaysTwinRustAsync.sunday) WeekdaysTwinRustAsync field0,
-  ]) = KitchenSinkTwinRustAsync_Enums;
-}
+                const EnumWithItemMixedTwinRustAsync_B(this.field0 ,) : super._();
 
-@freezed
-sealed class MeasureTwinRustAsync with _$MeasureTwinRustAsync {
-  const MeasureTwinRustAsync._();
+                
+        @override
+        int get hashCode => const DeepCollectionEquality().hash(field0);
+        
 
-  const factory MeasureTwinRustAsync.speed(
-    SpeedTwinRustAsync field0,
-  ) = MeasureTwinRustAsync_Speed;
-  const factory MeasureTwinRustAsync.distance(
-    DistanceTwinRustAsync field0,
-  ) = MeasureTwinRustAsync_Distance;
-}
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is EnumWithItemMixedTwinRustAsync_B &&
+                runtimeType == other.runtimeType
+                && const DeepCollectionEquality().equals(field0, other.field0);
+        
+            }
+class EnumWithItemMixedTwinRustAsync_C extends EnumWithItemMixedTwinRustAsync  {
+                final String cField;
 
-class NoteTwinRustAsync {
-  final WeekdaysTwinRustAsync day;
-  final String body;
+                const EnumWithItemMixedTwinRustAsync_C({ required this.cField , }) : super._();
 
-  const NoteTwinRustAsync({
-    this.day = WeekdaysTwinRustAsync.sunday,
-    required this.body,
-  });
+                
+        @override
+        int get hashCode => cField.hashCode;
+        
 
-  @override
-  int get hashCode => day.hashCode ^ body.hashCode;
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is EnumWithItemMixedTwinRustAsync_C &&
+                runtimeType == other.runtimeType
+                && cField == other.cField;
+        
+            }
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is NoteTwinRustAsync &&
-          runtimeType == other.runtimeType &&
-          day == other.day &&
-          body == other.body;
-}
+sealed class EnumWithItemStructTwinRustAsync  {
+                    const EnumWithItemStructTwinRustAsync._();
 
-@freezed
-sealed class SpeedTwinRustAsync with _$SpeedTwinRustAsync {
-  const SpeedTwinRustAsync._();
+                     const factory EnumWithItemStructTwinRustAsync.a({   required Uint8List aField , }) = EnumWithItemStructTwinRustAsync_A;
+ const factory EnumWithItemStructTwinRustAsync.b({   required Int32List bField , }) = EnumWithItemStructTwinRustAsync_B;
 
-  const factory SpeedTwinRustAsync.unknown() = SpeedTwinRustAsync_Unknown;
-  const factory SpeedTwinRustAsync.gps(
-    double field0,
-  ) = SpeedTwinRustAsync_GPS;
-}
+                    
+                }
+
+                class EnumWithItemStructTwinRustAsync_A extends EnumWithItemStructTwinRustAsync  {
+                final Uint8List aField;
+
+                const EnumWithItemStructTwinRustAsync_A({ required this.aField , }) : super._();
+
+                
+        @override
+        int get hashCode => const DeepCollectionEquality().hash(aField);
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is EnumWithItemStructTwinRustAsync_A &&
+                runtimeType == other.runtimeType
+                && const DeepCollectionEquality().equals(aField, other.aField);
+        
+            }
+class EnumWithItemStructTwinRustAsync_B extends EnumWithItemStructTwinRustAsync  {
+                final Int32List bField;
+
+                const EnumWithItemStructTwinRustAsync_B({ required this.bField , }) : super._();
+
+                
+        @override
+        int get hashCode => const DeepCollectionEquality().hash(bField);
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is EnumWithItemStructTwinRustAsync_B &&
+                runtimeType == other.runtimeType
+                && const DeepCollectionEquality().equals(bField, other.bField);
+        
+            }
+
+sealed class EnumWithItemTupleTwinRustAsync  {
+                    const EnumWithItemTupleTwinRustAsync._();
+
+                     const factory EnumWithItemTupleTwinRustAsync.a(  Uint8List field0,) = EnumWithItemTupleTwinRustAsync_A;
+ const factory EnumWithItemTupleTwinRustAsync.b(  int field0,) = EnumWithItemTupleTwinRustAsync_B;
+
+                    
+                }
+
+                class EnumWithItemTupleTwinRustAsync_A extends EnumWithItemTupleTwinRustAsync  {
+                final Uint8List field0;
+
+                const EnumWithItemTupleTwinRustAsync_A(this.field0 ,) : super._();
+
+                
+        @override
+        int get hashCode => const DeepCollectionEquality().hash(field0);
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is EnumWithItemTupleTwinRustAsync_A &&
+                runtimeType == other.runtimeType
+                && const DeepCollectionEquality().equals(field0, other.field0);
+        
+            }
+class EnumWithItemTupleTwinRustAsync_B extends EnumWithItemTupleTwinRustAsync  {
+                final int field0;
+
+                const EnumWithItemTupleTwinRustAsync_B(this.field0 ,) : super._();
+
+                
+        @override
+        int get hashCode => field0.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is EnumWithItemTupleTwinRustAsync_B &&
+                runtimeType == other.runtimeType
+                && field0 == other.field0;
+        
+            }
+
+sealed class KitchenSinkTwinRustAsync  {
+                    const KitchenSinkTwinRustAsync._();
+
+                     /// Comment on variant
+const factory KitchenSinkTwinRustAsync.empty() = KitchenSinkTwinRustAsync_Empty;
+ const factory KitchenSinkTwinRustAsync.primitives({ /// Dart field comment
+ = -1 int int32 ,  required double float64 ,  required bool boolean , }) = KitchenSinkTwinRustAsync_Primitives;
+ const factory KitchenSinkTwinRustAsync.nested(  int field0,[ = KitchenSinkTwinRustAsync.empty() KitchenSinkTwinRustAsync field1,]) = KitchenSinkTwinRustAsync_Nested;
+ const factory KitchenSinkTwinRustAsync.optional([/// Comment on anonymous field
+ = -1 int? field0,  int? field1,]) = KitchenSinkTwinRustAsync_Optional;
+ const factory KitchenSinkTwinRustAsync.buffer(  Uint8List field0,) = KitchenSinkTwinRustAsync_Buffer;
+ const factory KitchenSinkTwinRustAsync.enums([ = WeekdaysTwinRustAsync.sunday WeekdaysTwinRustAsync field0,]) = KitchenSinkTwinRustAsync_Enums;
+
+                    
+                }
+
+                class KitchenSinkTwinRustAsync_Empty extends KitchenSinkTwinRustAsync  {
+                
+
+                const KitchenSinkTwinRustAsync_Empty() : super._();
+
+                
+        @override
+        int get hashCode => 0;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is KitchenSinkTwinRustAsync_Empty &&
+                runtimeType == other.runtimeType
+                ;
+        
+            }
+class KitchenSinkTwinRustAsync_Primitives extends KitchenSinkTwinRustAsync  {
+                /// Dart field comment
+final int int32;
+final double float64;
+final bool boolean;
+
+                const KitchenSinkTwinRustAsync_Primitives({ this.int32 = -1,required this.float64 ,required this.boolean , }) : super._();
+
+                
+        @override
+        int get hashCode => int32.hashCode^float64.hashCode^boolean.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is KitchenSinkTwinRustAsync_Primitives &&
+                runtimeType == other.runtimeType
+                && int32 == other.int32&& float64 == other.float64&& boolean == other.boolean;
+        
+            }
+class KitchenSinkTwinRustAsync_Nested extends KitchenSinkTwinRustAsync  {
+                final int field0;
+final KitchenSinkTwinRustAsync field1;
+
+                const KitchenSinkTwinRustAsync_Nested(this.field0 ,[this.field1 = KitchenSinkTwinRustAsync.empty(),]) : super._();
+
+                
+        @override
+        int get hashCode => field0.hashCode^field1.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is KitchenSinkTwinRustAsync_Nested &&
+                runtimeType == other.runtimeType
+                && field0 == other.field0&& field1 == other.field1;
+        
+            }
+class KitchenSinkTwinRustAsync_Optional extends KitchenSinkTwinRustAsync  {
+                /// Comment on anonymous field
+final int? field0;
+final int? field1;
+
+                const KitchenSinkTwinRustAsync_Optional([this.field0 = -1,this.field1 ,]) : super._();
+
+                
+        @override
+        int get hashCode => field0.hashCode^field1.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is KitchenSinkTwinRustAsync_Optional &&
+                runtimeType == other.runtimeType
+                && field0 == other.field0&& field1 == other.field1;
+        
+            }
+class KitchenSinkTwinRustAsync_Buffer extends KitchenSinkTwinRustAsync  {
+                final Uint8List field0;
+
+                const KitchenSinkTwinRustAsync_Buffer(this.field0 ,) : super._();
+
+                
+        @override
+        int get hashCode => const DeepCollectionEquality().hash(field0);
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is KitchenSinkTwinRustAsync_Buffer &&
+                runtimeType == other.runtimeType
+                && const DeepCollectionEquality().equals(field0, other.field0);
+        
+            }
+class KitchenSinkTwinRustAsync_Enums extends KitchenSinkTwinRustAsync  {
+                final WeekdaysTwinRustAsync field0;
+
+                const KitchenSinkTwinRustAsync_Enums([this.field0 = WeekdaysTwinRustAsync.sunday,]) : super._();
+
+                
+        @override
+        int get hashCode => field0.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is KitchenSinkTwinRustAsync_Enums &&
+                runtimeType == other.runtimeType
+                && field0 == other.field0;
+        
+            }
+
+sealed class MeasureTwinRustAsync  {
+                    const MeasureTwinRustAsync._();
+
+                     const factory MeasureTwinRustAsync.speed(  SpeedTwinRustAsync field0,) = MeasureTwinRustAsync_Speed;
+ const factory MeasureTwinRustAsync.distance(  DistanceTwinRustAsync field0,) = MeasureTwinRustAsync_Distance;
+
+                    
+                }
+
+                class MeasureTwinRustAsync_Speed extends MeasureTwinRustAsync  {
+                final SpeedTwinRustAsync field0;
+
+                const MeasureTwinRustAsync_Speed(this.field0 ,) : super._();
+
+                
+        @override
+        int get hashCode => field0.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is MeasureTwinRustAsync_Speed &&
+                runtimeType == other.runtimeType
+                && field0 == other.field0;
+        
+            }
+class MeasureTwinRustAsync_Distance extends MeasureTwinRustAsync  {
+                final DistanceTwinRustAsync field0;
+
+                const MeasureTwinRustAsync_Distance(this.field0 ,) : super._();
+
+                
+        @override
+        int get hashCode => field0.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is MeasureTwinRustAsync_Distance &&
+                runtimeType == other.runtimeType
+                && field0 == other.field0;
+        
+            }
+
+class NoteTwinRustAsync  {
+                final WeekdaysTwinRustAsync day;
+final String body;
+
+                const NoteTwinRustAsync({this.day = WeekdaysTwinRustAsync.sunday,required this.body ,});
+
+
+
+
+
+        @override
+        int get hashCode => day.hashCode^body.hashCode;
+
+
+
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is NoteTwinRustAsync &&
+                runtimeType == other.runtimeType
+                && day == other.day&& body == other.body;
+
+            }
+
+sealed class SpeedTwinRustAsync  {
+                    const SpeedTwinRustAsync._();
+
+                     const factory SpeedTwinRustAsync.unknown() = SpeedTwinRustAsync_Unknown;
+ const factory SpeedTwinRustAsync.gps(  double field0,) = SpeedTwinRustAsync_GPS;
+
+                    
+                }
+
+                class SpeedTwinRustAsync_Unknown extends SpeedTwinRustAsync  {
+                
+
+                const SpeedTwinRustAsync_Unknown() : super._();
+
+                
+        @override
+        int get hashCode => 0;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is SpeedTwinRustAsync_Unknown &&
+                runtimeType == other.runtimeType
+                ;
+        
+            }
+class SpeedTwinRustAsync_GPS extends SpeedTwinRustAsync  {
+                final double field0;
+
+                const SpeedTwinRustAsync_GPS(this.field0 ,) : super._();
+
+                
+        @override
+        int get hashCode => field0.hashCode;
+        
+
+                
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is SpeedTwinRustAsync_GPS &&
+                runtimeType == other.runtimeType
+                && field0 == other.field0;
+        
+            }
+            

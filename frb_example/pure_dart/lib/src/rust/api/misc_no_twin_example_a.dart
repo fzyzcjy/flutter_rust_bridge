@@ -244,14 +244,31 @@ sealed class MyEnumWithJsonSerializableTwinNormal
       );
 }
 
-@freezed
-sealed class MyEnumWithoutFnWithUnignoreTwinNormal
-    with _$MyEnumWithoutFnWithUnignoreTwinNormal {
+sealed class MyEnumWithoutFnWithUnignoreTwinNormal {
   const MyEnumWithoutFnWithUnignoreTwinNormal._();
 
   const factory MyEnumWithoutFnWithUnignoreTwinNormal.one(
     String field0,
   ) = MyEnumWithoutFnWithUnignoreTwinNormal_One;
+}
+
+class MyEnumWithoutFnWithUnignoreTwinNormal_One
+    extends MyEnumWithoutFnWithUnignoreTwinNormal {
+  final String field0;
+
+  const MyEnumWithoutFnWithUnignoreTwinNormal_One(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MyEnumWithoutFnWithUnignoreTwinNormal_One &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
 }
 
 @freezed

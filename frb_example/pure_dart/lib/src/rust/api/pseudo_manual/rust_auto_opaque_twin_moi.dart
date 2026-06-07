@@ -7,8 +7,6 @@ import 'dart:io';
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-part 'rust_auto_opaque_twin_moi.freezed.dart';
 
 // These functions are ignored (category: IgnoreBecauseNotAllowedOwner): `f`
 
@@ -268,8 +266,7 @@ abstract class MyTraitTwinMoi {
   Future<void> f();
 }
 
-@freezed
-sealed class EnumWithGoodAndOpaqueTwinMoi with _$EnumWithGoodAndOpaqueTwinMoi {
+sealed class EnumWithGoodAndOpaqueTwinMoi {
   const EnumWithGoodAndOpaqueTwinMoi._();
 
   const factory EnumWithGoodAndOpaqueTwinMoi.good(
@@ -278,6 +275,42 @@ sealed class EnumWithGoodAndOpaqueTwinMoi with _$EnumWithGoodAndOpaqueTwinMoi {
   const factory EnumWithGoodAndOpaqueTwinMoi.opaque(
     NonCloneSimpleTwinMoi field0,
   ) = EnumWithGoodAndOpaqueTwinMoi_Opaque;
+}
+
+class EnumWithGoodAndOpaqueTwinMoi_Good extends EnumWithGoodAndOpaqueTwinMoi {
+  final String field0;
+
+  const EnumWithGoodAndOpaqueTwinMoi_Good(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithGoodAndOpaqueTwinMoi_Good &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumWithGoodAndOpaqueTwinMoi_Opaque extends EnumWithGoodAndOpaqueTwinMoi {
+  final NonCloneSimpleTwinMoi field0;
+
+  const EnumWithGoodAndOpaqueTwinMoi_Opaque(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithGoodAndOpaqueTwinMoi_Opaque &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinMoi {

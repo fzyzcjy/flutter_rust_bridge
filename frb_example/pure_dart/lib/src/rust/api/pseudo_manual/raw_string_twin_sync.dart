@@ -7,8 +7,6 @@ import 'dart:io';
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-part 'raw_string_twin_sync.freezed.dart';
 
 RawStringItemStructTwinSync testRawStringItemStructTwinSync() =>
     RustLib.instance.api
@@ -50,8 +48,7 @@ class MoreThanJustOneRawStringStructTwinSync {
           another == other.another;
 }
 
-@freezed
-sealed class RawStringItemEnumTwinSync with _$RawStringItemEnumTwinSync {
+sealed class RawStringItemEnumTwinSync {
   const RawStringItemEnumTwinSync._();
 
   const factory RawStringItemEnumTwinSync.regular({
@@ -60,6 +57,42 @@ sealed class RawStringItemEnumTwinSync with _$RawStringItemEnumTwinSync {
   const factory RawStringItemEnumTwinSync.raw({
     required String type,
   }) = RawStringItemEnumTwinSync_Raw;
+}
+
+class RawStringItemEnumTwinSync_Regular extends RawStringItemEnumTwinSync {
+  final String regular;
+
+  const RawStringItemEnumTwinSync_Regular({
+    required this.regular,
+  }) : super._();
+
+  @override
+  int get hashCode => regular.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is RawStringItemEnumTwinSync_Regular &&
+          runtimeType == other.runtimeType &&
+          regular == other.regular;
+}
+
+class RawStringItemEnumTwinSync_Raw extends RawStringItemEnumTwinSync {
+  final String type;
+
+  const RawStringItemEnumTwinSync_Raw({
+    required this.type,
+  }) : super._();
+
+  @override
+  int get hashCode => type.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is RawStringItemEnumTwinSync_Raw &&
+          runtimeType == other.runtimeType &&
+          type == other.type;
 }
 
 class RawStringItemStructTwinSync {

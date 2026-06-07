@@ -8,8 +8,6 @@ import 'dart:io';
 import '../frb_generated.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-part 'method.freezed.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`
 
@@ -127,8 +125,7 @@ class MyCallableTwinNormal {
           one == other.one;
 }
 
-@freezed
-sealed class SimpleEnumTwinNormal with _$SimpleEnumTwinNormal {
+sealed class SimpleEnumTwinNormal {
   const SimpleEnumTwinNormal._();
 
   const factory SimpleEnumTwinNormal.first() = SimpleEnumTwinNormal_First;
@@ -145,6 +142,36 @@ sealed class SimpleEnumTwinNormal with _$SimpleEnumTwinNormal {
           .crateApiMethodSimpleEnumTwinNormalSimpleMethodTwinNormal(
         that: this,
       );
+}
+
+class SimpleEnumTwinNormal_First extends SimpleEnumTwinNormal {
+  const SimpleEnumTwinNormal_First() : super._();
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SimpleEnumTwinNormal_First && runtimeType == other.runtimeType;
+}
+
+class SimpleEnumTwinNormal_Second extends SimpleEnumTwinNormal {
+  final String field0;
+
+  const SimpleEnumTwinNormal_Second(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SimpleEnumTwinNormal_Second &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
 }
 
 enum SimplePrimitiveEnumTwinNormal {

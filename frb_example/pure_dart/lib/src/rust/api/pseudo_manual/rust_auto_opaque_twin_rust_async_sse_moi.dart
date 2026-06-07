@@ -7,9 +7,7 @@ import 'dart:io';
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'rust_auto_opaque_twin_moi.dart';
-part 'rust_auto_opaque_twin_rust_async_sse_moi.freezed.dart';
 
 Future<void> rustAutoOpaqueArgOwnTwinRustAsyncSseMoi(
         {required NonCloneSimpleTwinRustAsyncSseMoi arg,
@@ -276,9 +274,7 @@ abstract class MyTraitTwinRustAsyncSseMoi {
   Future<void> f();
 }
 
-@freezed
-sealed class EnumWithGoodAndOpaqueTwinRustAsyncSseMoi
-    with _$EnumWithGoodAndOpaqueTwinRustAsyncSseMoi {
+sealed class EnumWithGoodAndOpaqueTwinRustAsyncSseMoi {
   const EnumWithGoodAndOpaqueTwinRustAsyncSseMoi._();
 
   const factory EnumWithGoodAndOpaqueTwinRustAsyncSseMoi.good(
@@ -287,6 +283,44 @@ sealed class EnumWithGoodAndOpaqueTwinRustAsyncSseMoi
   const factory EnumWithGoodAndOpaqueTwinRustAsyncSseMoi.opaque(
     NonCloneSimpleTwinRustAsyncSseMoi field0,
   ) = EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_Opaque;
+}
+
+class EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_Good
+    extends EnumWithGoodAndOpaqueTwinRustAsyncSseMoi {
+  final String field0;
+
+  const EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_Good(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_Good &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_Opaque
+    extends EnumWithGoodAndOpaqueTwinRustAsyncSseMoi {
+  final NonCloneSimpleTwinRustAsyncSseMoi field0;
+
+  const EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_Opaque(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithGoodAndOpaqueTwinRustAsyncSseMoi_Opaque &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
 }
 
 class StructWithExplicitAutoOpaqueFieldTwinRustAsyncSseMoi {

@@ -7,8 +7,6 @@ import 'dart:io';
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-part 'basic.freezed.dart';
 
 Future<int> exampleBasicTypeI8TwinNormal(
         {required int arg, required String expect}) =>
@@ -114,8 +112,7 @@ Future<BasicStructTwinNormal> exampleBasicTypeBasicStructTwinNormalTwinNormal(
         .crateApiPseudoManualBasicExampleBasicTypeBasicStructTwinNormalTwinNormal(
             arg: arg);
 
-@freezed
-sealed class BasicGeneralEnumTwinNormal with _$BasicGeneralEnumTwinNormal {
+sealed class BasicGeneralEnumTwinNormal {
   const BasicGeneralEnumTwinNormal._();
 
   const factory BasicGeneralEnumTwinNormal.apple({
@@ -123,6 +120,37 @@ sealed class BasicGeneralEnumTwinNormal with _$BasicGeneralEnumTwinNormal {
   }) = BasicGeneralEnumTwinNormal_Apple;
   const factory BasicGeneralEnumTwinNormal.orange() =
       BasicGeneralEnumTwinNormal_Orange;
+}
+
+class BasicGeneralEnumTwinNormal_Apple extends BasicGeneralEnumTwinNormal {
+  final String field;
+
+  const BasicGeneralEnumTwinNormal_Apple({
+    required this.field,
+  }) : super._();
+
+  @override
+  int get hashCode => field.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BasicGeneralEnumTwinNormal_Apple &&
+          runtimeType == other.runtimeType &&
+          field == other.field;
+}
+
+class BasicGeneralEnumTwinNormal_Orange extends BasicGeneralEnumTwinNormal {
+  const BasicGeneralEnumTwinNormal_Orange() : super._();
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BasicGeneralEnumTwinNormal_Orange &&
+          runtimeType == other.runtimeType;
 }
 
 enum BasicPrimitiveEnumTwinNormal {

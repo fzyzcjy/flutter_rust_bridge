@@ -7,8 +7,6 @@ import 'dart:io';
 
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-part 'exception_twin_rust_async_sse.freezed.dart';
 
 Future<int> funcReturnErrorTwinRustAsyncSse() => RustLib.instance.api
     .crateApiPseudoManualExceptionTwinRustAsyncSseFuncReturnErrorTwinRustAsyncSse();
@@ -79,46 +77,121 @@ Future<Stream<String>> streamSinkThrowAnyhowTwinRustAsyncSse() => RustLib
     .instance.api
     .crateApiPseudoManualExceptionTwinRustAsyncSseStreamSinkThrowAnyhowTwinRustAsyncSse();
 
-@freezed
-sealed class CustomEnumErrorTwinRustAsyncSse
-    with _$CustomEnumErrorTwinRustAsyncSse
-    implements FrbException {
+sealed class CustomEnumErrorTwinRustAsyncSse implements FrbException {
   const CustomEnumErrorTwinRustAsyncSse._();
 
-  @Implements<FrbBacktracedException>()
   const factory CustomEnumErrorTwinRustAsyncSse.one({
     required String message,
     required String backtrace,
   }) = CustomEnumErrorTwinRustAsyncSse_One;
-  @Implements<FrbBacktracedException>()
   const factory CustomEnumErrorTwinRustAsyncSse.two({
     required int message,
     required String backtrace,
   }) = CustomEnumErrorTwinRustAsyncSse_Two;
 }
 
-@freezed
-sealed class CustomErrorTwinRustAsyncSse
-    with _$CustomErrorTwinRustAsyncSse
-    implements FrbException {
+class CustomEnumErrorTwinRustAsyncSse_One
+    extends CustomEnumErrorTwinRustAsyncSse implements FrbBacktracedException {
+  final String message;
+  final String backtrace;
+
+  const CustomEnumErrorTwinRustAsyncSse_One({
+    required this.message,
+    required this.backtrace,
+  }) : super._();
+
+  @override
+  int get hashCode => message.hashCode ^ backtrace.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CustomEnumErrorTwinRustAsyncSse_One &&
+          runtimeType == other.runtimeType &&
+          message == other.message &&
+          backtrace == other.backtrace;
+}
+
+class CustomEnumErrorTwinRustAsyncSse_Two
+    extends CustomEnumErrorTwinRustAsyncSse implements FrbBacktracedException {
+  final int message;
+  final String backtrace;
+
+  const CustomEnumErrorTwinRustAsyncSse_Two({
+    required this.message,
+    required this.backtrace,
+  }) : super._();
+
+  @override
+  int get hashCode => message.hashCode ^ backtrace.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CustomEnumErrorTwinRustAsyncSse_Two &&
+          runtimeType == other.runtimeType &&
+          message == other.message &&
+          backtrace == other.backtrace;
+}
+
+sealed class CustomErrorTwinRustAsyncSse implements FrbException {
   const CustomErrorTwinRustAsyncSse._();
 
-  @Implements<FrbBacktracedException>()
   const factory CustomErrorTwinRustAsyncSse.error0({
     required String e,
     required String backtrace,
   }) = CustomErrorTwinRustAsyncSse_Error0;
-  @Implements<FrbBacktracedException>()
   const factory CustomErrorTwinRustAsyncSse.error1({
     required int e,
     required String backtrace,
   }) = CustomErrorTwinRustAsyncSse_Error1;
 }
 
-@freezed
-sealed class CustomNestedError1TwinRustAsyncSse
-    with _$CustomNestedError1TwinRustAsyncSse
-    implements FrbException {
+class CustomErrorTwinRustAsyncSse_Error0 extends CustomErrorTwinRustAsyncSse
+    implements FrbBacktracedException {
+  final String e;
+  final String backtrace;
+
+  const CustomErrorTwinRustAsyncSse_Error0({
+    required this.e,
+    required this.backtrace,
+  }) : super._();
+
+  @override
+  int get hashCode => e.hashCode ^ backtrace.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CustomErrorTwinRustAsyncSse_Error0 &&
+          runtimeType == other.runtimeType &&
+          e == other.e &&
+          backtrace == other.backtrace;
+}
+
+class CustomErrorTwinRustAsyncSse_Error1 extends CustomErrorTwinRustAsyncSse
+    implements FrbBacktracedException {
+  final int e;
+  final String backtrace;
+
+  const CustomErrorTwinRustAsyncSse_Error1({
+    required this.e,
+    required this.backtrace,
+  }) : super._();
+
+  @override
+  int get hashCode => e.hashCode ^ backtrace.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CustomErrorTwinRustAsyncSse_Error1 &&
+          runtimeType == other.runtimeType &&
+          e == other.e &&
+          backtrace == other.backtrace;
+}
+
+sealed class CustomNestedError1TwinRustAsyncSse implements FrbException {
   const CustomNestedError1TwinRustAsyncSse._();
 
   const factory CustomNestedError1TwinRustAsyncSse.customNested1(
@@ -129,9 +202,45 @@ sealed class CustomNestedError1TwinRustAsyncSse
   ) = CustomNestedError1TwinRustAsyncSse_ErrorNested;
 }
 
-@freezed
-sealed class CustomNestedError2TwinRustAsyncSse
-    with _$CustomNestedError2TwinRustAsyncSse {
+class CustomNestedError1TwinRustAsyncSse_CustomNested1
+    extends CustomNestedError1TwinRustAsyncSse {
+  final String field0;
+
+  const CustomNestedError1TwinRustAsyncSse_CustomNested1(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CustomNestedError1TwinRustAsyncSse_CustomNested1 &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class CustomNestedError1TwinRustAsyncSse_ErrorNested
+    extends CustomNestedError1TwinRustAsyncSse {
+  final CustomNestedError2TwinRustAsyncSse field0;
+
+  const CustomNestedError1TwinRustAsyncSse_ErrorNested(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CustomNestedError1TwinRustAsyncSse_ErrorNested &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+sealed class CustomNestedError2TwinRustAsyncSse {
   const CustomNestedError2TwinRustAsyncSse._();
 
   const factory CustomNestedError2TwinRustAsyncSse.customNested2(
@@ -142,9 +251,45 @@ sealed class CustomNestedError2TwinRustAsyncSse
   ) = CustomNestedError2TwinRustAsyncSse_CustomNested2Number;
 }
 
-@freezed
-sealed class CustomNestedErrorInnerTwinRustAsyncSse
-    with _$CustomNestedErrorInnerTwinRustAsyncSse {
+class CustomNestedError2TwinRustAsyncSse_CustomNested2
+    extends CustomNestedError2TwinRustAsyncSse {
+  final String field0;
+
+  const CustomNestedError2TwinRustAsyncSse_CustomNested2(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CustomNestedError2TwinRustAsyncSse_CustomNested2 &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class CustomNestedError2TwinRustAsyncSse_CustomNested2Number
+    extends CustomNestedError2TwinRustAsyncSse {
+  final int field0;
+
+  const CustomNestedError2TwinRustAsyncSse_CustomNested2Number(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CustomNestedError2TwinRustAsyncSse_CustomNested2Number &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+sealed class CustomNestedErrorInnerTwinRustAsyncSse {
   const CustomNestedErrorInnerTwinRustAsyncSse._();
 
   const factory CustomNestedErrorInnerTwinRustAsyncSse.three(
@@ -155,9 +300,45 @@ sealed class CustomNestedErrorInnerTwinRustAsyncSse
   ) = CustomNestedErrorInnerTwinRustAsyncSse_Four;
 }
 
-@freezed
-sealed class CustomNestedErrorOuterTwinRustAsyncSse
-    with _$CustomNestedErrorOuterTwinRustAsyncSse {
+class CustomNestedErrorInnerTwinRustAsyncSse_Three
+    extends CustomNestedErrorInnerTwinRustAsyncSse {
+  final String field0;
+
+  const CustomNestedErrorInnerTwinRustAsyncSse_Three(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CustomNestedErrorInnerTwinRustAsyncSse_Three &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class CustomNestedErrorInnerTwinRustAsyncSse_Four
+    extends CustomNestedErrorInnerTwinRustAsyncSse {
+  final int field0;
+
+  const CustomNestedErrorInnerTwinRustAsyncSse_Four(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CustomNestedErrorInnerTwinRustAsyncSse_Four &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+sealed class CustomNestedErrorOuterTwinRustAsyncSse {
   const CustomNestedErrorOuterTwinRustAsyncSse._();
 
   const factory CustomNestedErrorOuterTwinRustAsyncSse.one(
@@ -166,6 +347,44 @@ sealed class CustomNestedErrorOuterTwinRustAsyncSse
   const factory CustomNestedErrorOuterTwinRustAsyncSse.two(
     CustomNestedErrorInnerTwinRustAsyncSse field0,
   ) = CustomNestedErrorOuterTwinRustAsyncSse_Two;
+}
+
+class CustomNestedErrorOuterTwinRustAsyncSse_One
+    extends CustomNestedErrorOuterTwinRustAsyncSse {
+  final String field0;
+
+  const CustomNestedErrorOuterTwinRustAsyncSse_One(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CustomNestedErrorOuterTwinRustAsyncSse_One &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class CustomNestedErrorOuterTwinRustAsyncSse_Two
+    extends CustomNestedErrorOuterTwinRustAsyncSse {
+  final CustomNestedErrorInnerTwinRustAsyncSse field0;
+
+  const CustomNestedErrorOuterTwinRustAsyncSse_Two(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CustomNestedErrorOuterTwinRustAsyncSse_Two &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
 }
 
 class CustomStructErrorAnotherTwinRustAsyncSse implements FrbException {

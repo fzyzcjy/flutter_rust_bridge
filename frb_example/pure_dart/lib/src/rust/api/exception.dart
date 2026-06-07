@@ -7,8 +7,6 @@ import 'dart:io';
 
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-part 'exception.freezed.dart';
 
 Future<int> funcReturnErrorTwinNormal() =>
     RustLib.instance.api.crateApiExceptionFuncReturnErrorTwinNormal();
@@ -74,46 +72,121 @@ Future<void> panicWithCustomResultTwinNormal() =>
 Future<Stream<String>> streamSinkThrowAnyhowTwinNormal() =>
     RustLib.instance.api.crateApiExceptionStreamSinkThrowAnyhowTwinNormal();
 
-@freezed
-sealed class CustomEnumErrorTwinNormal
-    with _$CustomEnumErrorTwinNormal
-    implements FrbException {
+sealed class CustomEnumErrorTwinNormal implements FrbException {
   const CustomEnumErrorTwinNormal._();
 
-  @Implements<FrbBacktracedException>()
   const factory CustomEnumErrorTwinNormal.one({
     required String message,
     required String backtrace,
   }) = CustomEnumErrorTwinNormal_One;
-  @Implements<FrbBacktracedException>()
   const factory CustomEnumErrorTwinNormal.two({
     required int message,
     required String backtrace,
   }) = CustomEnumErrorTwinNormal_Two;
 }
 
-@freezed
-sealed class CustomErrorTwinNormal
-    with _$CustomErrorTwinNormal
-    implements FrbException {
+class CustomEnumErrorTwinNormal_One extends CustomEnumErrorTwinNormal
+    implements FrbBacktracedException {
+  final String message;
+  final String backtrace;
+
+  const CustomEnumErrorTwinNormal_One({
+    required this.message,
+    required this.backtrace,
+  }) : super._();
+
+  @override
+  int get hashCode => message.hashCode ^ backtrace.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CustomEnumErrorTwinNormal_One &&
+          runtimeType == other.runtimeType &&
+          message == other.message &&
+          backtrace == other.backtrace;
+}
+
+class CustomEnumErrorTwinNormal_Two extends CustomEnumErrorTwinNormal
+    implements FrbBacktracedException {
+  final int message;
+  final String backtrace;
+
+  const CustomEnumErrorTwinNormal_Two({
+    required this.message,
+    required this.backtrace,
+  }) : super._();
+
+  @override
+  int get hashCode => message.hashCode ^ backtrace.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CustomEnumErrorTwinNormal_Two &&
+          runtimeType == other.runtimeType &&
+          message == other.message &&
+          backtrace == other.backtrace;
+}
+
+sealed class CustomErrorTwinNormal implements FrbException {
   const CustomErrorTwinNormal._();
 
-  @Implements<FrbBacktracedException>()
   const factory CustomErrorTwinNormal.error0({
     required String e,
     required String backtrace,
   }) = CustomErrorTwinNormal_Error0;
-  @Implements<FrbBacktracedException>()
   const factory CustomErrorTwinNormal.error1({
     required int e,
     required String backtrace,
   }) = CustomErrorTwinNormal_Error1;
 }
 
-@freezed
-sealed class CustomNestedError1TwinNormal
-    with _$CustomNestedError1TwinNormal
-    implements FrbException {
+class CustomErrorTwinNormal_Error0 extends CustomErrorTwinNormal
+    implements FrbBacktracedException {
+  final String e;
+  final String backtrace;
+
+  const CustomErrorTwinNormal_Error0({
+    required this.e,
+    required this.backtrace,
+  }) : super._();
+
+  @override
+  int get hashCode => e.hashCode ^ backtrace.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CustomErrorTwinNormal_Error0 &&
+          runtimeType == other.runtimeType &&
+          e == other.e &&
+          backtrace == other.backtrace;
+}
+
+class CustomErrorTwinNormal_Error1 extends CustomErrorTwinNormal
+    implements FrbBacktracedException {
+  final int e;
+  final String backtrace;
+
+  const CustomErrorTwinNormal_Error1({
+    required this.e,
+    required this.backtrace,
+  }) : super._();
+
+  @override
+  int get hashCode => e.hashCode ^ backtrace.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CustomErrorTwinNormal_Error1 &&
+          runtimeType == other.runtimeType &&
+          e == other.e &&
+          backtrace == other.backtrace;
+}
+
+sealed class CustomNestedError1TwinNormal implements FrbException {
   const CustomNestedError1TwinNormal._();
 
   const factory CustomNestedError1TwinNormal.customNested1(
@@ -124,8 +197,45 @@ sealed class CustomNestedError1TwinNormal
   ) = CustomNestedError1TwinNormal_ErrorNested;
 }
 
-@freezed
-sealed class CustomNestedError2TwinNormal with _$CustomNestedError2TwinNormal {
+class CustomNestedError1TwinNormal_CustomNested1
+    extends CustomNestedError1TwinNormal {
+  final String field0;
+
+  const CustomNestedError1TwinNormal_CustomNested1(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CustomNestedError1TwinNormal_CustomNested1 &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class CustomNestedError1TwinNormal_ErrorNested
+    extends CustomNestedError1TwinNormal {
+  final CustomNestedError2TwinNormal field0;
+
+  const CustomNestedError1TwinNormal_ErrorNested(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CustomNestedError1TwinNormal_ErrorNested &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+sealed class CustomNestedError2TwinNormal {
   const CustomNestedError2TwinNormal._();
 
   const factory CustomNestedError2TwinNormal.customNested2(
@@ -136,9 +246,45 @@ sealed class CustomNestedError2TwinNormal with _$CustomNestedError2TwinNormal {
   ) = CustomNestedError2TwinNormal_CustomNested2Number;
 }
 
-@freezed
-sealed class CustomNestedErrorInnerTwinNormal
-    with _$CustomNestedErrorInnerTwinNormal {
+class CustomNestedError2TwinNormal_CustomNested2
+    extends CustomNestedError2TwinNormal {
+  final String field0;
+
+  const CustomNestedError2TwinNormal_CustomNested2(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CustomNestedError2TwinNormal_CustomNested2 &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class CustomNestedError2TwinNormal_CustomNested2Number
+    extends CustomNestedError2TwinNormal {
+  final int field0;
+
+  const CustomNestedError2TwinNormal_CustomNested2Number(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CustomNestedError2TwinNormal_CustomNested2Number &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+sealed class CustomNestedErrorInnerTwinNormal {
   const CustomNestedErrorInnerTwinNormal._();
 
   const factory CustomNestedErrorInnerTwinNormal.three(
@@ -149,9 +295,45 @@ sealed class CustomNestedErrorInnerTwinNormal
   ) = CustomNestedErrorInnerTwinNormal_Four;
 }
 
-@freezed
-sealed class CustomNestedErrorOuterTwinNormal
-    with _$CustomNestedErrorOuterTwinNormal {
+class CustomNestedErrorInnerTwinNormal_Three
+    extends CustomNestedErrorInnerTwinNormal {
+  final String field0;
+
+  const CustomNestedErrorInnerTwinNormal_Three(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CustomNestedErrorInnerTwinNormal_Three &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class CustomNestedErrorInnerTwinNormal_Four
+    extends CustomNestedErrorInnerTwinNormal {
+  final int field0;
+
+  const CustomNestedErrorInnerTwinNormal_Four(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CustomNestedErrorInnerTwinNormal_Four &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+sealed class CustomNestedErrorOuterTwinNormal {
   const CustomNestedErrorOuterTwinNormal._();
 
   const factory CustomNestedErrorOuterTwinNormal.one(
@@ -160,6 +342,44 @@ sealed class CustomNestedErrorOuterTwinNormal
   const factory CustomNestedErrorOuterTwinNormal.two(
     CustomNestedErrorInnerTwinNormal field0,
   ) = CustomNestedErrorOuterTwinNormal_Two;
+}
+
+class CustomNestedErrorOuterTwinNormal_One
+    extends CustomNestedErrorOuterTwinNormal {
+  final String field0;
+
+  const CustomNestedErrorOuterTwinNormal_One(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CustomNestedErrorOuterTwinNormal_One &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class CustomNestedErrorOuterTwinNormal_Two
+    extends CustomNestedErrorOuterTwinNormal {
+  final CustomNestedErrorInnerTwinNormal field0;
+
+  const CustomNestedErrorOuterTwinNormal_Two(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CustomNestedErrorOuterTwinNormal_Two &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
 }
 
 class CustomStructErrorAnotherTwinNormal implements FrbException {

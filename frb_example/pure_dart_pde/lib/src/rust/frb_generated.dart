@@ -155,10 +155,8 @@ import 'frb_generated.dart';
 import 'frb_generated.io.dart'
     if (dart.library.js_interop) 'frb_generated.web.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 import 'package:meta/meta.dart' as meta;
 import 'package:uuid/uuid.dart';
-part 'frb_generated.freezed.dart';
 
 /// Main entrypoint of the Rust API
 class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
@@ -79837,10 +79835,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 }
 
-@freezed
-sealed class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum
-    with
-        _$Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum {
+sealed class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum {
   const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum._();
 
   const factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum.variant0(
@@ -79851,9 +79846,45 @@ sealed class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueI
   ) = Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1;
 }
 
-@freezed
-sealed class SimpleTraitForDynTwinNormalImplementor
-    with _$SimpleTraitForDynTwinNormalImplementor {
+class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0
+    extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum {
+  final MyNodeTwinNormal field0;
+
+  const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0 &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1
+    extends Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum {
+  final MyNodeTwinNormal field0;
+
+  const Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1 &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+sealed class SimpleTraitForDynTwinNormalImplementor {
   const SimpleTraitForDynTwinNormalImplementor._();
 
   const factory SimpleTraitForDynTwinNormalImplementor.variant0(
@@ -79862,6 +79893,44 @@ sealed class SimpleTraitForDynTwinNormalImplementor
   const factory SimpleTraitForDynTwinNormalImplementor.variant1(
     StructTwoWithTraitForDynTwinNormal field0,
   ) = SimpleTraitForDynTwinNormalImplementor_Variant1;
+}
+
+class SimpleTraitForDynTwinNormalImplementor_Variant0
+    extends SimpleTraitForDynTwinNormalImplementor {
+  final StructOneWithTraitForDynTwinNormal field0;
+
+  const SimpleTraitForDynTwinNormalImplementor_Variant0(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SimpleTraitForDynTwinNormalImplementor_Variant0 &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class SimpleTraitForDynTwinNormalImplementor_Variant1
+    extends SimpleTraitForDynTwinNormalImplementor {
+  final StructTwoWithTraitForDynTwinNormal field0;
+
+  const SimpleTraitForDynTwinNormalImplementor_Variant1(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SimpleTraitForDynTwinNormalImplementor_Variant1 &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
 }
 
 @sealed
