@@ -120,6 +120,7 @@ The manual test passes when all of the following are true:
 - The automatic pull request CI run only executes the lightweight planning/status surface and does not run unrelated heavy matrix jobs.
 - The workflow dispatch run is named with the selected filter.
 - The `Plan :: CI` job succeeds and prints a plan where `test_dart_native.enable` is `true`.
+- The `Plan :: CI` job posts a PR comment for the manual dispatch, including the exact `ci_filter`, the workflow run link, and a reminder that it is not the normal automatic PR CI surface.
 - Exactly one `Test :: Dart :: Native` matrix job is scheduled for `ubuntu-24.04` and `frb_example--dart_minimal`.
 - Unselected CI jobs are skipped or absent from the scheduled job set.
 - The selected matrix job exits successfully.
@@ -148,6 +149,7 @@ Mark the run as blocked, not failed, if GitHub Actions capacity prevents the sel
 - PR labels at the time of dispatch.
 - Exact `ci_filter` string.
 - Local `plan-ci` smoke-check output.
+- Manual dispatch PR comment URL or screenshot.
 - Pull request event run URL and job summary.
 - Workflow dispatch run URL and job summary.
 - Selected job URL, status, conclusion, runner image, and key success log lines.
