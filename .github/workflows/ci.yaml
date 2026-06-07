@@ -39,6 +39,10 @@ jobs:
     if: ${{ github.event.action != 'closed' }}
     name: 'Plan :: CI'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: read
     outputs:
       plan: ${{ steps.plan.outputs.plan }}
 
@@ -56,6 +60,79 @@ jobs:
             --filter '${{ inputs.ci_filter || 'full' }}' \
             --automatic-ci-disabled=${{ github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'ci-manual-dispatch') }} \
             --github-output "$GITHUB_OUTPUT"
+      - name: Comment on matching pull request
+        if: ${{ always() && github.event_name == 'workflow_dispatch' }}
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const ref = context.ref;
+
+            if (!ref.startsWith('refs/heads/')) {
+              core.notice(`Manual CI dispatch ref ${ref} is not a branch; skipping PR comment.`);
+              return;
+            }
+
+            const branch = ref.substring('refs/heads/'.length);
+            const pullRequests = await github.paginate(github.rest.pulls.list, {
+              owner,
+              repo,
+              state: 'open',
+              head: `${owner}:${branch}`,
+              per_page: 100,
+            });
+
+            if (pullRequests.length === 0) {
+              core.notice(`No open PR found for branch ${branch}; skipping PR comment.`);
+              return;
+            }
+
+            const pullRequest = pullRequests[0];
+            const marker = `<!-- ci-manual-dispatch-comment:${context.runId} -->`;
+            const runUrl = `${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId}`;
+            const ciFilter = context.payload.inputs?.ci_filter ?? 'full';
+            const body = [
+              marker,
+              '## Manual CI dispatch',
+              '',
+              `Filter: \`${ciFilter}\``,
+              `Run: [${context.runId}](${runUrl})`,
+              `Branch: \`${branch}\``,
+              '',
+              'This is a manually dispatched CI run. It is not the normal automatic PR CI surface.',
+              '',
+            ].join('\n');
+
+            const comments = await github.paginate(github.rest.issues.listComments, {
+              owner,
+              repo,
+              issue_number: pullRequest.number,
+              per_page: 100,
+            });
+            const existingComment = comments.find(
+              (comment) =>
+                comment.user?.type === 'Bot' &&
+                typeof comment.body === 'string' &&
+                comment.body.includes(marker),
+            );
+
+            if (existingComment) {
+              await github.rest.issues.updateComment({
+                owner,
+                repo,
+                comment_id: existingComment.id,
+                body,
+              });
+              return;
+            }
+
+            await github.rest.issues.createComment({
+              owner,
+              repo,
+              issue_number: pullRequest.number,
+              body,
+            });
 
   # ----------------------------------- deploy -----------------------------------
 
