@@ -13,194 +13,205 @@ Future<void> runFlutterViaCreateQuickstartSmokeTest({
   required QuickstartSmokeTarget target,
   required String? deviceId,
 }) async {
-  const artifactDir = 'target/quickstart_smoke';
-  final targetName = target.name;
-  final screenshotPath = '$artifactDir/quickstart-$targetName.png';
-  final preprocessedScreenshotPath =
-      '$artifactDir/quickstart-$targetName-processed.png';
-  final ocrOutputPath = '$artifactDir/quickstart-$targetName.txt';
-  final preprocessedOcrOutputPath =
-      '$artifactDir/quickstart-$targetName-processed.txt';
-  final logPath = '$artifactDir/quickstart-$targetName.log';
-  final absolutePackage = Directory(
-    quickstartSmokePackagePathForTesting(package),
+  final context = await _QuickstartSmokeContext.create(
+    package: package,
+    target: target,
+    deviceId: deviceId,
   );
-  final absoluteArtifactDir = Directory('${absolutePackage.path}/$artifactDir');
-  absoluteArtifactDir.createSync(recursive: true);
-  for (final relativePath in [
-    screenshotPath,
-    preprocessedScreenshotPath,
-    ocrOutputPath,
-    preprocessedOcrOutputPath,
-    logPath,
-  ]) {
-    final file = File('${absolutePackage.path}/$relativePath');
-    if (file.existsSync()) file.deleteSync();
+
+  print(
+    'Start quickstart smoke: package=${context.package}, '
+    'target=${context.targetName}, device=${context.resolvedDeviceId}',
+  );
+  print('Quickstart smoke artifacts: ${context.absoluteArtifactDir.path}');
+
+  _QuickstartSmokeFlutterRun? flutterRun;
+  try {
+    flutterRun = await _startQuickstartSmokeFlutterRun(context);
+    final activeFlutterRun = flutterRun;
+    final readyForScreenshot = await _waitForQuickstartSmokeFlutterRunReady(
+      context: context,
+      flutterRun: activeFlutterRun,
+    );
+    final screenshotEvidence = await _captureQuickstartSmokeEvidence(
+      context: context,
+      readyForScreenshot: readyForScreenshot,
+    );
+    final exitStatus = await _stopQuickstartSmokeFlutterRun(
+      flutterRun: activeFlutterRun,
+    );
+    await activeFlutterRun.closeLog();
+    _printQuickstartSmokeEvidence(context);
+    _validateQuickstartSmokeResult(
+      context: context,
+      combinedOutput: activeFlutterRun.combinedOutput,
+      screenshotEvidence: screenshotEvidence,
+      exitStatus: exitStatus,
+    );
+  } finally {
+    await flutterRun?.closeLog();
+    context.deleteTemporaryFiles();
+  }
+}
+
+class _QuickstartSmokeContext {
+  static const artifactDir = 'target/quickstart_smoke';
+
+  final String package;
+  final QuickstartSmokeTarget target;
+  final String targetName;
+  final String resolvedDeviceId;
+  final Directory absolutePackage;
+  final Directory absoluteArtifactDir;
+  final File screenshotFile;
+  final File preprocessedScreenshotFile;
+  final File ocrOutputFile;
+  final File preprocessedOcrOutputFile;
+  final File logFile;
+  final File? chromeWrapper;
+
+  const _QuickstartSmokeContext({
+    required this.package,
+    required this.target,
+    required this.targetName,
+    required this.resolvedDeviceId,
+    required this.absolutePackage,
+    required this.absoluteArtifactDir,
+    required this.screenshotFile,
+    required this.preprocessedScreenshotFile,
+    required this.ocrOutputFile,
+    required this.preprocessedOcrOutputFile,
+    required this.logFile,
+    required this.chromeWrapper,
+  });
+
+  static Future<_QuickstartSmokeContext> create({
+    required String package,
+    required QuickstartSmokeTarget target,
+    required String? deviceId,
+  }) async {
+    final targetName = target.name;
+    final absolutePackage = Directory(
+      quickstartSmokePackagePathForTesting(package),
+    );
+    final absoluteArtifactDir = Directory(
+      '${absolutePackage.path}/$artifactDir',
+    );
+    absoluteArtifactDir.createSync(recursive: true);
+
+    final context = _QuickstartSmokeContext(
+      package: package,
+      target: target,
+      targetName: targetName,
+      resolvedDeviceId:
+          deviceId ?? quickstartSmokeDefaultDeviceIdForTesting(target),
+      absolutePackage: absolutePackage,
+      absoluteArtifactDir: absoluteArtifactDir,
+      screenshotFile: File(
+        '${absolutePackage.path}/$artifactDir/quickstart-$targetName.png',
+      ),
+      preprocessedScreenshotFile: File(
+        '${absolutePackage.path}/$artifactDir/quickstart-$targetName-processed.png',
+      ),
+      ocrOutputFile: File(
+        '${absolutePackage.path}/$artifactDir/quickstart-$targetName.txt',
+      ),
+      preprocessedOcrOutputFile: File(
+        '${absolutePackage.path}/$artifactDir/quickstart-$targetName-processed.txt',
+      ),
+      logFile: File(
+        '${absolutePackage.path}/$artifactDir/quickstart-$targetName.log',
+      ),
+      chromeWrapper: await _createChromeWrapperIfNeeded(
+        absoluteArtifactDir.path,
+      ),
+    );
+    context.clearArtifacts();
+    return context;
   }
 
-  final logFile = File('${absolutePackage.path}/$logPath');
-  final logSink = logFile.openWrite();
-  final flutterRunArgs = [
+  List<String> get flutterRunArgs => [
     'run',
     '-d',
-    deviceId ?? quickstartSmokeDefaultDeviceIdForTesting(target),
+    resolvedDeviceId,
     if (target == QuickstartSmokeTarget.web) ...[
       '--web-header=Cross-Origin-Opener-Policy=same-origin',
       '--web-header=Cross-Origin-Embedder-Policy=require-corp',
     ],
   ];
-  final environment = <String, String>{
+
+  Map<String, String> get environment => {
     if (Platform.isLinux) 'DISPLAY': Platform.environment['DISPLAY'] ?? ':99',
+    if (chromeWrapper != null) 'CHROME_EXECUTABLE': chromeWrapper!.path,
   };
-  final chromeWrapper = await _createChromeWrapperIfNeeded(
-    absoluteArtifactDir.path,
-  );
-  if (chromeWrapper != null) {
-    environment['CHROME_EXECUTABLE'] = chromeWrapper.path;
-  }
 
-  final process = await Process.start(
-    'flutter',
-    flutterRunArgs,
-    workingDirectory: absolutePackage.path,
-    environment: environment,
-    runInShell: Platform.isWindows,
-  );
-  int? observedExitCode;
-  final exitCodeFuture = process.exitCode;
-  unawaited(exitCodeFuture.then((exitCode) => observedExitCode = exitCode));
-  final outputBuffer = StringBuffer();
-  process.stdout.transform(systemEncoding.decoder).listen((text) {
-    outputBuffer.write(text);
-    logSink.write(text);
-  });
-  process.stderr.transform(systemEncoding.decoder).listen((text) {
-    outputBuffer.write(text);
-    logSink.write(text);
-  });
-
-  final deadline = DateTime.now().add(
-    quickstartSmokeFlutterRunReadyTimeoutForTesting(target),
-  );
-  var readyForScreenshot = false;
-  while (DateTime.now().isBefore(deadline)) {
-    await Future<void>.delayed(const Duration(seconds: 1));
-    final output = outputBuffer.toString();
-    if (quickstartSmokeOutputHasFailurePatternForTesting(output)) break;
-    if (quickstartSmokeFlutterRunIsReadyForTesting(output)) {
-      readyForScreenshot = true;
-      break;
+  void clearArtifacts() {
+    for (final file in [
+      screenshotFile,
+      preprocessedScreenshotFile,
+      ocrOutputFile,
+      preprocessedOcrOutputFile,
+      logFile,
+    ]) {
+      if (file.existsSync()) file.deleteSync();
     }
-    if (observedExitCode != null) break;
-  }
-  var ocrMatched = false;
-  Exception? lastOcrException;
-  if (readyForScreenshot) {
-    final visibleTextDeadline = DateTime.now().add(
-      quickstartSmokeVisibleTextTimeoutForTesting(target),
-    );
-    await Future<void>.delayed(const Duration(seconds: 5));
-    do {
-      await _captureAndOcrQuickstartSmokeScreenshot(
-        target: target,
-        screenshotFile: File('${absolutePackage.path}/$screenshotPath'),
-        preprocessedScreenshotFile: File(
-          '${absolutePackage.path}/$preprocessedScreenshotPath',
-        ),
-        ocrOutputFile: File('${absolutePackage.path}/$ocrOutputPath'),
-        preprocessedOcrOutputFile: File(
-          '${absolutePackage.path}/$preprocessedOcrOutputPath',
-        ),
-      );
-      try {
-        checkQuickstartSmokeOcrTextForTesting(
-          File('${absolutePackage.path}/$ocrOutputPath').readAsStringSync(),
-        );
-        ocrMatched = true;
-        break;
-      } on Exception catch (exception) {
-        lastOcrException = exception;
-        if (!DateTime.now().isBefore(visibleTextDeadline)) break;
-        await Future<void>.delayed(const Duration(seconds: 5));
-      }
-    } while (DateTime.now().isBefore(visibleTextDeadline));
-  } else {
-    await _captureAndOcrQuickstartSmokeScreenshot(
-      target: target,
-      screenshotFile: File('${absolutePackage.path}/$screenshotPath'),
-      preprocessedScreenshotFile: File(
-        '${absolutePackage.path}/$preprocessedScreenshotPath',
-      ),
-      ocrOutputFile: File('${absolutePackage.path}/$ocrOutputPath'),
-      preprocessedOcrOutputFile: File(
-        '${absolutePackage.path}/$preprocessedOcrOutputPath',
-      ),
-    );
   }
 
-  final killedBySmoke = observedExitCode == null;
-  if (killedBySmoke) {
-    await _terminateQuickstartSmokeProcess(process);
+  void deleteTemporaryFiles() {
+    if (chromeWrapper != null && chromeWrapper!.existsSync()) {
+      chromeWrapper!.deleteSync();
+    }
   }
-  final exitCode = killedBySmoke
-      ? await _waitForQuickstartSmokeExit(exitCodeFuture)
-      : await exitCodeFuture;
-  await logSink.close();
-  if (chromeWrapper != null && chromeWrapper.existsSync()) {
-    chromeWrapper.deleteSync();
+}
+
+class _QuickstartSmokeFlutterRun {
+  final Process process;
+  final IOSink logSink;
+  final Future<int> exitCodeFuture;
+  final StringBuffer outputBuffer = StringBuffer();
+  var _logClosed = false;
+
+  int? observedExitCode;
+
+  _QuickstartSmokeFlutterRun({required this.process, required this.logSink})
+    : exitCodeFuture = process.exitCode {
+    unawaited(exitCodeFuture.then((exitCode) => observedExitCode = exitCode));
   }
 
-  final combinedOutput = outputBuffer.toString();
-  final screenshotFile = File('${absolutePackage.path}/$screenshotPath');
-  final ocrOutputFile = File('${absolutePackage.path}/$ocrOutputPath');
-  print('\n===== flutter run log ($targetName) =====');
-  print(logFile.readAsStringSync());
-  if (ocrOutputFile.existsSync()) {
-    print('\n===== screenshot OCR ($targetName) =====');
-    print(ocrOutputFile.readAsStringSync());
+  String get combinedOutput => outputBuffer.toString();
+
+  void recordOutput(String text) {
+    outputBuffer.write(text);
+    logSink.write(text);
   }
 
-  final failurePattern = quickstartSmokeOutputFailurePatternForTesting(
-    combinedOutput,
-  );
-  if (failurePattern != null) {
-    throw Exception(
-      'flutter_via_create $targetName quickstart smoke test failed '
-      'with `$failurePattern`',
-    );
+  Future<void> closeLog() async {
+    if (_logClosed) return;
+    _logClosed = true;
+    await logSink.close();
   }
+}
 
-  if (!screenshotFile.existsSync() || screenshotFile.lengthSync() == 0) {
-    throw Exception(
-      'flutter_via_create $targetName quickstart smoke test failed to capture '
-      'a screenshot at `$screenshotPath`',
-    );
-  }
+class _QuickstartSmokeScreenshotEvidence {
+  final bool readyForScreenshot;
+  final bool ocrMatched;
+  final Exception? lastOcrException;
 
-  if (!readyForScreenshot) {
-    throw Exception(
-      'flutter_via_create $targetName quickstart smoke test did not observe '
-      'Flutter run readiness before screenshot capture',
-    );
-  }
+  const _QuickstartSmokeScreenshotEvidence({
+    required this.readyForScreenshot,
+    required this.ocrMatched,
+    required this.lastOcrException,
+  });
+}
 
-  if (!ocrOutputFile.existsSync()) {
-    throw Exception(
-      'flutter_via_create $targetName quickstart smoke test did not produce OCR '
-      'output at `$ocrOutputPath`',
-    );
-  }
-  if (!ocrMatched) {
-    if (lastOcrException != null) throw lastOcrException;
-    checkQuickstartSmokeOcrTextForTesting(ocrOutputFile.readAsStringSync());
-  }
+class _QuickstartSmokeExitStatus {
+  final bool killedBySmoke;
+  final int? exitCode;
 
-  if (!killedBySmoke && exitCode != 0) {
-    throw Exception(
-      'flutter_via_create $targetName quickstart smoke test failed with '
-      'unexpected exit code $exitCode',
-    );
-  }
+  const _QuickstartSmokeExitStatus({
+    required this.killedBySmoke,
+    required this.exitCode,
+  });
 }
 
 @visibleForTesting
@@ -268,6 +279,222 @@ String quickstartSmokePackagePathForTesting(
   String package, {
   String? repoRootPath,
 }) => Directory('${repoRootPath ?? exec.pwd}$package').absolute.path;
+
+Future<_QuickstartSmokeFlutterRun> _startQuickstartSmokeFlutterRun(
+  _QuickstartSmokeContext context,
+) async {
+  print(
+    'Starting `flutter ${context.flutterRunArgs.join(' ')}` '
+    'in ${context.absolutePackage.path}',
+  );
+  if (context.environment.isNotEmpty) {
+    print('Quickstart smoke environment overrides: ${context.environment}');
+  }
+
+  final process = await Process.start(
+    'flutter',
+    context.flutterRunArgs,
+    workingDirectory: context.absolutePackage.path,
+    environment: context.environment,
+    runInShell: Platform.isWindows,
+  );
+  print('Started flutter run pid=${process.pid}');
+
+  final result = _QuickstartSmokeFlutterRun(
+    process: process,
+    logSink: context.logFile.openWrite(),
+  );
+  process.stdout.transform(systemEncoding.decoder).listen(result.recordOutput);
+  process.stderr.transform(systemEncoding.decoder).listen(result.recordOutput);
+  return result;
+}
+
+Future<bool> _waitForQuickstartSmokeFlutterRunReady({
+  required _QuickstartSmokeContext context,
+  required _QuickstartSmokeFlutterRun flutterRun,
+}) async {
+  final timeout = quickstartSmokeFlutterRunReadyTimeoutForTesting(
+    context.target,
+  );
+  final deadline = DateTime.now().add(timeout);
+  print('Waiting up to $timeout for flutter run readiness');
+
+  while (DateTime.now().isBefore(deadline)) {
+    await Future<void>.delayed(const Duration(seconds: 1));
+    final output = flutterRun.combinedOutput;
+    final failurePattern = quickstartSmokeOutputFailurePatternForTesting(
+      output,
+    );
+    if (failurePattern != null) {
+      print('Observed early flutter run failure pattern: $failurePattern');
+      return false;
+    }
+    if (quickstartSmokeFlutterRunIsReadyForTesting(output)) {
+      print('Observed flutter run readiness; screenshot capture can start');
+      return true;
+    }
+    if (flutterRun.observedExitCode != null) {
+      print(
+        'flutter run exited before readiness '
+        '(exitCode=${flutterRun.observedExitCode})',
+      );
+      return false;
+    }
+  }
+
+  print('Timed out waiting for flutter run readiness');
+  return false;
+}
+
+Future<_QuickstartSmokeScreenshotEvidence> _captureQuickstartSmokeEvidence({
+  required _QuickstartSmokeContext context,
+  required bool readyForScreenshot,
+}) async {
+  if (!readyForScreenshot) {
+    print('Capturing one diagnostic screenshot before failing readiness check');
+    await _captureAndOcrQuickstartSmokeScreenshotFromContext(context);
+    return _QuickstartSmokeScreenshotEvidence(
+      readyForScreenshot: readyForScreenshot,
+      ocrMatched: false,
+      lastOcrException: null,
+    );
+  }
+
+  final visibleTextTimeout = quickstartSmokeVisibleTextTimeoutForTesting(
+    context.target,
+  );
+  final visibleTextDeadline = DateTime.now().add(visibleTextTimeout);
+  print(
+    'Waiting up to $visibleTextTimeout for quickstart text to become OCR-visible',
+  );
+  await Future<void>.delayed(const Duration(seconds: 5));
+
+  Exception? lastOcrException;
+  var attempt = 0;
+  do {
+    attempt++;
+    print('Capturing quickstart screenshot/OCR attempt #$attempt');
+    await _captureAndOcrQuickstartSmokeScreenshotFromContext(context);
+    try {
+      checkQuickstartSmokeOcrTextForTesting(
+        context.ocrOutputFile.readAsStringSync(),
+      );
+      print('Quickstart screenshot OCR contains expected text');
+      return _QuickstartSmokeScreenshotEvidence(
+        readyForScreenshot: readyForScreenshot,
+        ocrMatched: true,
+        lastOcrException: null,
+      );
+    } on Exception catch (exception) {
+      lastOcrException = exception;
+      print('Quickstart screenshot OCR did not match yet: $exception');
+      if (!DateTime.now().isBefore(visibleTextDeadline)) break;
+      await Future<void>.delayed(const Duration(seconds: 5));
+    }
+  } while (DateTime.now().isBefore(visibleTextDeadline));
+
+  return _QuickstartSmokeScreenshotEvidence(
+    readyForScreenshot: readyForScreenshot,
+    ocrMatched: false,
+    lastOcrException: lastOcrException,
+  );
+}
+
+Future<_QuickstartSmokeExitStatus> _stopQuickstartSmokeFlutterRun({
+  required _QuickstartSmokeFlutterRun flutterRun,
+}) async {
+  final killedBySmoke = flutterRun.observedExitCode == null;
+  if (killedBySmoke) {
+    print('Terminating flutter run after successful evidence capture');
+    await _terminateQuickstartSmokeProcess(flutterRun.process);
+  }
+
+  final exitCode = killedBySmoke
+      ? await _waitForQuickstartSmokeExit(flutterRun.exitCodeFuture)
+      : await flutterRun.exitCodeFuture;
+  print(
+    'flutter run exit status: exitCode=$exitCode, killedBySmoke=$killedBySmoke',
+  );
+  return _QuickstartSmokeExitStatus(
+    killedBySmoke: killedBySmoke,
+    exitCode: exitCode,
+  );
+}
+
+void _printQuickstartSmokeEvidence(_QuickstartSmokeContext context) {
+  print('\n===== flutter run log (${context.targetName}) =====');
+  print(context.logFile.readAsStringSync());
+  if (context.ocrOutputFile.existsSync()) {
+    print('\n===== screenshot OCR (${context.targetName}) =====');
+    print(context.ocrOutputFile.readAsStringSync());
+  }
+}
+
+void _validateQuickstartSmokeResult({
+  required _QuickstartSmokeContext context,
+  required String combinedOutput,
+  required _QuickstartSmokeScreenshotEvidence screenshotEvidence,
+  required _QuickstartSmokeExitStatus exitStatus,
+}) {
+  final failurePattern = quickstartSmokeOutputFailurePatternForTesting(
+    combinedOutput,
+  );
+  if (failurePattern != null) {
+    throw Exception(
+      'flutter_via_create ${context.targetName} quickstart smoke test failed '
+      'with `$failurePattern`',
+    );
+  }
+
+  if (!context.screenshotFile.existsSync() ||
+      context.screenshotFile.lengthSync() == 0) {
+    throw Exception(
+      'flutter_via_create ${context.targetName} quickstart smoke test failed '
+      'to capture a screenshot at `${context.screenshotFile.path}`',
+    );
+  }
+
+  if (!screenshotEvidence.readyForScreenshot) {
+    throw Exception(
+      'flutter_via_create ${context.targetName} quickstart smoke test did not '
+      'observe Flutter run readiness before screenshot capture',
+    );
+  }
+
+  if (!context.ocrOutputFile.existsSync()) {
+    throw Exception(
+      'flutter_via_create ${context.targetName} quickstart smoke test did not '
+      'produce OCR output at `${context.ocrOutputFile.path}`',
+    );
+  }
+  if (!screenshotEvidence.ocrMatched) {
+    if (screenshotEvidence.lastOcrException != null) {
+      throw screenshotEvidence.lastOcrException!;
+    }
+    checkQuickstartSmokeOcrTextForTesting(
+      context.ocrOutputFile.readAsStringSync(),
+    );
+  }
+
+  if (!exitStatus.killedBySmoke && exitStatus.exitCode != 0) {
+    throw Exception(
+      'flutter_via_create ${context.targetName} quickstart smoke test failed '
+      'with unexpected exit code ${exitStatus.exitCode}',
+    );
+  }
+}
+
+Future<void> _captureAndOcrQuickstartSmokeScreenshotFromContext(
+  _QuickstartSmokeContext context,
+) async {
+  await _captureAndOcrQuickstartSmokeScreenshot(
+    target: context.target,
+    screenshotFile: context.screenshotFile,
+    preprocessedScreenshotFile: context.preprocessedScreenshotFile,
+    ocrOutputFile: context.ocrOutputFile,
+    preprocessedOcrOutputFile: context.preprocessedOcrOutputFile,
+  );
+}
 
 Future<File?> _createChromeWrapperIfNeeded(String artifactDir) async {
   if (!Platform.isLinux || !await _isRunningAsRoot()) {
