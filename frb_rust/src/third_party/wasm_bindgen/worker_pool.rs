@@ -4,7 +4,7 @@
 
 use crate::misc::web_utils::script_path;
 use crate::web_transfer::transfer_closure::TransferClosure;
-use js_sys::{Array, Object, Reflect};
+use js_sys::Array;
 use std::cell::RefCell;
 use std::iter::FromIterator;
 use std::rc::Rc;
@@ -136,14 +136,7 @@ impl WorkerPool {
         // messages about code to run on the wasm module.
         let module = wasm_bindgen::module();
         let memory = wasm_bindgen::memory();
-        let wasm_init_object = Object::new();
-        Reflect::set(
-            &wasm_init_object,
-            &JsValue::from_str("module_or_path"),
-            &module,
-        )?;
-        Reflect::set(&wasm_init_object, &JsValue::from_str("memory"), &memory)?;
-        worker.post_message(&Array::from_iter([JsValue::from(wasm_init_object)]))?;
+        worker.post_message(&Array::of2(&module, &memory))?;
 
         Ok(worker)
     }
