@@ -114,6 +114,33 @@ impl<'a> RustUpgrader<'a> {
     }
 }
 
+impl Upgrader for RustUpgrader<'_> {
+    fn check(&self) -> Result<bool> {
+        Ok(self.dependency.req() == concat!("=", env!("CARGO_PKG_VERSION")))
+    }
+
+    fn upgrade(&self, _fvm_install_mode: FvmInstallMode) -> Result<()> {
+        // This shell-command forwarding path is exercised by integration workflows; llvm-cov
+        // does not see the external Cargo command behavior as meaningful Rust coverage.
+        // frb-coverage:ignore-start
+        log::info!("Auto upgrade Rust dependency");
+
+        let mut args = vec![concat!("flutter_rust_bridge@=", env!("CARGO_PKG_VERSION"))];
+
+        let target = self
+            .target_name
+            .as_ref()
+            .map(|name| format!("--target={name}"));
+
+        if let Some(target) = &target {
+            args.push(target);
+        }
+
+        cargo_add(&args, self.base_dir)
+        // frb-coverage:ignore-end
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -213,32 +240,5 @@ mod tests {
 
         assert_eq!(target_name, None);
         assert_eq!(dependency.req(), "=2.0.0");
-    }
-}
-
-impl Upgrader for RustUpgrader<'_> {
-    fn check(&self) -> Result<bool> {
-        Ok(self.dependency.req() == concat!("=", env!("CARGO_PKG_VERSION")))
-    }
-
-    fn upgrade(&self, _fvm_install_mode: FvmInstallMode) -> Result<()> {
-        // This shell-command forwarding path is exercised by integration workflows; llvm-cov
-        // does not see the external Cargo command behavior as meaningful Rust coverage.
-        // frb-coverage:ignore-start
-        log::info!("Auto upgrade Rust dependency");
-
-        let mut args = vec![concat!("flutter_rust_bridge@=", env!("CARGO_PKG_VERSION"))];
-
-        let target = self
-            .target_name
-            .as_ref()
-            .map(|name| format!("--target={name}"));
-
-        if let Some(target) = &target {
-            args.push(target);
-        }
-
-        cargo_add(&args, self.base_dir)
-        // frb-coverage:ignore-end
     }
 }
