@@ -60,15 +60,21 @@ fn compute_default_value(field: &MirField, dart_enums_style: bool) -> Option<Str
 }
 
 fn ensure_const_default_value(default_value: String) -> String {
-    if default_value.contains('(')
-        && !default_value.starts_with("const ")
-        && !is_dart_string_literal(&default_value)
-        && !is_parenthesized_expression(&default_value)
+    let trimmed = default_value.trim_start();
+    if !trimmed.starts_with("const ")
+        && (is_dart_collection_literal(trimmed)
+            || (trimmed.contains('(')
+                && !is_dart_string_literal(trimmed)
+                && !is_parenthesized_expression(trimmed)))
     {
         format!("const {default_value}")
     } else {
         default_value
     }
+}
+
+fn is_dart_collection_literal(value: &str) -> bool {
+    value.starts_with('[') || value.starts_with('{')
 }
 
 fn is_parenthesized_expression(value: &str) -> bool {
@@ -150,6 +156,18 @@ mod tests {
         assert_eq!(
             &ensure_const_default_value("(1 + 2)".to_string()),
             "(1 + 2)"
+        );
+        assert_eq!(
+            &ensure_const_default_value("[1, 2]".to_string()),
+            "const [1, 2]"
+        );
+        assert_eq!(
+            &ensure_const_default_value("{'answer': 42}".to_string()),
+            "const {'answer': 42}"
+        );
+        assert_eq!(
+            &ensure_const_default_value("{1, 2}".to_string()),
+            "const {1, 2}"
         );
     }
 }
