@@ -10,510 +10,519 @@ import 'misc_example_twin_sync_sse.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
 
-            // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
+EnumSimpleTwinSyncSse funcEnumSimpleTwinSyncSse(
+        {required EnumSimpleTwinSyncSse arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSyncSseFuncEnumSimpleTwinSyncSse(
+            arg: arg);
 
+EnumWithItemMixedTwinSyncSse funcEnumWithItemMixedTwinSyncSse(
+        {required EnumWithItemMixedTwinSyncSse arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSyncSseFuncEnumWithItemMixedTwinSyncSse(
+            arg: arg);
 
-            EnumSimpleTwinSyncSse  funcEnumSimpleTwinSyncSse({required EnumSimpleTwinSyncSse arg }) => RustLib.instance.api.crateApiPseudoManualEnumerationTwinSyncSseFuncEnumSimpleTwinSyncSse(arg: arg);
+EnumWithItemTupleTwinSyncSse funcEnumWithItemTupleTwinSyncSse(
+        {required EnumWithItemTupleTwinSyncSse arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSyncSseFuncEnumWithItemTupleTwinSyncSse(
+            arg: arg);
 
-EnumWithItemMixedTwinSyncSse  funcEnumWithItemMixedTwinSyncSse({required EnumWithItemMixedTwinSyncSse arg }) => RustLib.instance.api.crateApiPseudoManualEnumerationTwinSyncSseFuncEnumWithItemMixedTwinSyncSse(arg: arg);
+EnumWithItemStructTwinSyncSse funcEnumWithItemStructTwinSyncSse(
+        {required EnumWithItemStructTwinSyncSse arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSyncSseFuncEnumWithItemStructTwinSyncSse(
+            arg: arg);
 
-EnumWithItemTupleTwinSyncSse  funcEnumWithItemTupleTwinSyncSse({required EnumWithItemTupleTwinSyncSse arg }) => RustLib.instance.api.crateApiPseudoManualEnumerationTwinSyncSseFuncEnumWithItemTupleTwinSyncSse(arg: arg);
+EnumWithDiscriminantTwinSyncSse funcEnumWithDiscriminantTwinSyncSse(
+        {required EnumWithDiscriminantTwinSyncSse arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSyncSseFuncEnumWithDiscriminantTwinSyncSse(
+            arg: arg);
 
-EnumWithItemStructTwinSyncSse  funcEnumWithItemStructTwinSyncSse({required EnumWithItemStructTwinSyncSse arg }) => RustLib.instance.api.crateApiPseudoManualEnumerationTwinSyncSseFuncEnumWithItemStructTwinSyncSse(arg: arg);
+Uint8List printNoteTwinSyncSse({required NoteTwinSyncSse note}) => RustLib
+    .instance.api
+    .crateApiPseudoManualEnumerationTwinSyncSsePrintNoteTwinSyncSse(note: note);
 
-EnumWithDiscriminantTwinSyncSse  funcEnumWithDiscriminantTwinSyncSse({required EnumWithDiscriminantTwinSyncSse arg }) => RustLib.instance.api.crateApiPseudoManualEnumerationTwinSyncSseFuncEnumWithDiscriminantTwinSyncSse(arg: arg);
+WeekdaysTwinSyncSse? handleReturnEnumTwinSyncSse({required String input}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSyncSseHandleReturnEnumTwinSyncSse(
+            input: input);
 
-Uint8List  printNoteTwinSyncSse({required NoteTwinSyncSse note }) => RustLib.instance.api.crateApiPseudoManualEnumerationTwinSyncSsePrintNoteTwinSyncSse(note: note);
+WeekdaysTwinSyncSse handleEnumParameterTwinSyncSse(
+        {required WeekdaysTwinSyncSse weekday}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSyncSseHandleEnumParameterTwinSyncSse(
+            weekday: weekday);
 
-WeekdaysTwinSyncSse?  handleReturnEnumTwinSyncSse({required String input }) => RustLib.instance.api.crateApiPseudoManualEnumerationTwinSyncSseHandleReturnEnumTwinSyncSse(input: input);
+MeasureTwinSyncSse? multiplyByTenTwinSyncSse(
+        {required MeasureTwinSyncSse measure}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSyncSseMultiplyByTenTwinSyncSse(
+            measure: measure);
 
-WeekdaysTwinSyncSse  handleEnumParameterTwinSyncSse({required WeekdaysTwinSyncSse weekday }) => RustLib.instance.api.crateApiPseudoManualEnumerationTwinSyncSseHandleEnumParameterTwinSyncSse(weekday: weekday);
+KitchenSinkTwinSyncSse handleEnumStructTwinSyncSse(
+        {required KitchenSinkTwinSyncSse val}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSyncSseHandleEnumStructTwinSyncSse(
+            val: val);
 
-MeasureTwinSyncSse?  multiplyByTenTwinSyncSse({required MeasureTwinSyncSse measure }) => RustLib.instance.api.crateApiPseudoManualEnumerationTwinSyncSseMultiplyByTenTwinSyncSse(measure: measure);
+sealed class DistanceTwinSyncSse {
+  const DistanceTwinSyncSse._();
 
-KitchenSinkTwinSyncSse  handleEnumStructTwinSyncSse({required KitchenSinkTwinSyncSse val }) => RustLib.instance.api.crateApiPseudoManualEnumerationTwinSyncSseHandleEnumStructTwinSyncSse(val: val);
+  const factory DistanceTwinSyncSse.unknown() = DistanceTwinSyncSse_Unknown;
+  const factory DistanceTwinSyncSse.map(
+    double field0,
+  ) = DistanceTwinSyncSse_Map;
+}
 
-            sealed class DistanceTwinSyncSse  {
-                    const DistanceTwinSyncSse._();
+class DistanceTwinSyncSse_Unknown extends DistanceTwinSyncSse {
+  const DistanceTwinSyncSse_Unknown() : super._();
 
-                     const factory DistanceTwinSyncSse.unknown() = DistanceTwinSyncSse_Unknown;
- const factory DistanceTwinSyncSse.map(  double field0,) = DistanceTwinSyncSse_Map;
+  @override
+  int get hashCode => 0;
 
-                    
-                }
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is DistanceTwinSyncSse_Unknown && runtimeType == other.runtimeType;
+}
 
-                class DistanceTwinSyncSse_Unknown extends DistanceTwinSyncSse  {
-                
+class DistanceTwinSyncSse_Map extends DistanceTwinSyncSse {
+  final double field0;
 
-                const DistanceTwinSyncSse_Unknown() : super._();
+  const DistanceTwinSyncSse_Map(
+    this.field0,
+  ) : super._();
 
-                
-        @override
-        int get hashCode => 0;
-        
+  @override
+  int get hashCode => field0.hashCode;
 
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is DistanceTwinSyncSse_Unknown &&
-                runtimeType == other.runtimeType
-                ;
-        
-            }
-class DistanceTwinSyncSse_Map extends DistanceTwinSyncSse  {
-                final double field0;
-
-                const DistanceTwinSyncSse_Map(this.field0 ,) : super._();
-
-                
-        @override
-        int get hashCode => field0.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is DistanceTwinSyncSse_Map &&
-                runtimeType == other.runtimeType
-                && field0 == other.field0;
-        
-            }
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is DistanceTwinSyncSse_Map &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
 
 enum EnumSimpleTwinSyncSse {
-                    a,
-b,
-                    ;
-                    
-                }
+  a,
+  b,
+  ;
+}
 
 enum EnumWithDiscriminantTwinSyncSse {
-                    oneHundred,
-fifty,
-                    ;
-                    
-                }
-
-sealed class EnumWithItemMixedTwinSyncSse  {
-                    const EnumWithItemMixedTwinSyncSse._();
-
-                     const factory EnumWithItemMixedTwinSyncSse.a() = EnumWithItemMixedTwinSyncSse_A;
- const factory EnumWithItemMixedTwinSyncSse.b(  Uint8List field0,) = EnumWithItemMixedTwinSyncSse_B;
- const factory EnumWithItemMixedTwinSyncSse.c({   required String cField , }) = EnumWithItemMixedTwinSyncSse_C;
-
-                    
-                }
-
-                class EnumWithItemMixedTwinSyncSse_A extends EnumWithItemMixedTwinSyncSse  {
-                
-
-                const EnumWithItemMixedTwinSyncSse_A() : super._();
-
-                
-        @override
-        int get hashCode => 0;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is EnumWithItemMixedTwinSyncSse_A &&
-                runtimeType == other.runtimeType
-                ;
-        
-            }
-class EnumWithItemMixedTwinSyncSse_B extends EnumWithItemMixedTwinSyncSse  {
-                final Uint8List field0;
-
-                const EnumWithItemMixedTwinSyncSse_B(this.field0 ,) : super._();
-
-                
-        @override
-        int get hashCode => const DeepCollectionEquality().hash(field0);
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is EnumWithItemMixedTwinSyncSse_B &&
-                runtimeType == other.runtimeType
-                && const DeepCollectionEquality().equals(field0, other.field0);
-        
-            }
-class EnumWithItemMixedTwinSyncSse_C extends EnumWithItemMixedTwinSyncSse  {
-                final String cField;
-
-                const EnumWithItemMixedTwinSyncSse_C({ required this.cField , }) : super._();
-
-                
-        @override
-        int get hashCode => cField.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is EnumWithItemMixedTwinSyncSse_C &&
-                runtimeType == other.runtimeType
-                && cField == other.cField;
-        
-            }
-
-sealed class EnumWithItemStructTwinSyncSse  {
-                    const EnumWithItemStructTwinSyncSse._();
-
-                     const factory EnumWithItemStructTwinSyncSse.a({   required Uint8List aField , }) = EnumWithItemStructTwinSyncSse_A;
- const factory EnumWithItemStructTwinSyncSse.b({   required Int32List bField , }) = EnumWithItemStructTwinSyncSse_B;
-
-                    
-                }
-
-                class EnumWithItemStructTwinSyncSse_A extends EnumWithItemStructTwinSyncSse  {
-                final Uint8List aField;
-
-                const EnumWithItemStructTwinSyncSse_A({ required this.aField , }) : super._();
-
-                
-        @override
-        int get hashCode => const DeepCollectionEquality().hash(aField);
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is EnumWithItemStructTwinSyncSse_A &&
-                runtimeType == other.runtimeType
-                && const DeepCollectionEquality().equals(aField, other.aField);
-        
-            }
-class EnumWithItemStructTwinSyncSse_B extends EnumWithItemStructTwinSyncSse  {
-                final Int32List bField;
-
-                const EnumWithItemStructTwinSyncSse_B({ required this.bField , }) : super._();
-
-                
-        @override
-        int get hashCode => const DeepCollectionEquality().hash(bField);
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is EnumWithItemStructTwinSyncSse_B &&
-                runtimeType == other.runtimeType
-                && const DeepCollectionEquality().equals(bField, other.bField);
-        
-            }
-
-sealed class EnumWithItemTupleTwinSyncSse  {
-                    const EnumWithItemTupleTwinSyncSse._();
-
-                     const factory EnumWithItemTupleTwinSyncSse.a(  Uint8List field0,) = EnumWithItemTupleTwinSyncSse_A;
- const factory EnumWithItemTupleTwinSyncSse.b(  int field0,) = EnumWithItemTupleTwinSyncSse_B;
-
-                    
-                }
-
-                class EnumWithItemTupleTwinSyncSse_A extends EnumWithItemTupleTwinSyncSse  {
-                final Uint8List field0;
-
-                const EnumWithItemTupleTwinSyncSse_A(this.field0 ,) : super._();
-
-                
-        @override
-        int get hashCode => const DeepCollectionEquality().hash(field0);
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is EnumWithItemTupleTwinSyncSse_A &&
-                runtimeType == other.runtimeType
-                && const DeepCollectionEquality().equals(field0, other.field0);
-        
-            }
-class EnumWithItemTupleTwinSyncSse_B extends EnumWithItemTupleTwinSyncSse  {
-                final int field0;
-
-                const EnumWithItemTupleTwinSyncSse_B(this.field0 ,) : super._();
-
-                
-        @override
-        int get hashCode => field0.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is EnumWithItemTupleTwinSyncSse_B &&
-                runtimeType == other.runtimeType
-                && field0 == other.field0;
-        
-            }
-
-sealed class KitchenSinkTwinSyncSse  {
-                    const KitchenSinkTwinSyncSse._();
-
-                     /// Comment on variant
-const factory KitchenSinkTwinSyncSse.empty() = KitchenSinkTwinSyncSse_Empty;
- const factory KitchenSinkTwinSyncSse.primitives({ /// Dart field comment
- = -1 int int32 ,  required double float64 ,  required bool boolean , }) = KitchenSinkTwinSyncSse_Primitives;
- const factory KitchenSinkTwinSyncSse.nested(  int field0,[ = KitchenSinkTwinSyncSse.empty() KitchenSinkTwinSyncSse field1,]) = KitchenSinkTwinSyncSse_Nested;
- const factory KitchenSinkTwinSyncSse.optional([/// Comment on anonymous field
- = -1 int? field0,  int? field1,]) = KitchenSinkTwinSyncSse_Optional;
- const factory KitchenSinkTwinSyncSse.buffer(  Uint8List field0,) = KitchenSinkTwinSyncSse_Buffer;
- const factory KitchenSinkTwinSyncSse.enums([ = WeekdaysTwinSyncSse.sunday WeekdaysTwinSyncSse field0,]) = KitchenSinkTwinSyncSse_Enums;
-
-                    
-                }
-
-                class KitchenSinkTwinSyncSse_Empty extends KitchenSinkTwinSyncSse  {
-                
-
-                const KitchenSinkTwinSyncSse_Empty() : super._();
-
-                
-        @override
-        int get hashCode => 0;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is KitchenSinkTwinSyncSse_Empty &&
-                runtimeType == other.runtimeType
-                ;
-        
-            }
-class KitchenSinkTwinSyncSse_Primitives extends KitchenSinkTwinSyncSse  {
-                /// Dart field comment
-final int int32;
-final double float64;
-final bool boolean;
-
-                const KitchenSinkTwinSyncSse_Primitives({ this.int32 = -1,required this.float64 ,required this.boolean , }) : super._();
-
-                
-        @override
-        int get hashCode => int32.hashCode^float64.hashCode^boolean.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is KitchenSinkTwinSyncSse_Primitives &&
-                runtimeType == other.runtimeType
-                && int32 == other.int32&& float64 == other.float64&& boolean == other.boolean;
-        
-            }
-class KitchenSinkTwinSyncSse_Nested extends KitchenSinkTwinSyncSse  {
-                final int field0;
-final KitchenSinkTwinSyncSse field1;
-
-                const KitchenSinkTwinSyncSse_Nested(this.field0 ,[this.field1 = KitchenSinkTwinSyncSse.empty(),]) : super._();
-
-                
-        @override
-        int get hashCode => field0.hashCode^field1.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is KitchenSinkTwinSyncSse_Nested &&
-                runtimeType == other.runtimeType
-                && field0 == other.field0&& field1 == other.field1;
-        
-            }
-class KitchenSinkTwinSyncSse_Optional extends KitchenSinkTwinSyncSse  {
-                /// Comment on anonymous field
-final int? field0;
-final int? field1;
-
-                const KitchenSinkTwinSyncSse_Optional([this.field0 = -1,this.field1 ,]) : super._();
-
-                
-        @override
-        int get hashCode => field0.hashCode^field1.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is KitchenSinkTwinSyncSse_Optional &&
-                runtimeType == other.runtimeType
-                && field0 == other.field0&& field1 == other.field1;
-        
-            }
-class KitchenSinkTwinSyncSse_Buffer extends KitchenSinkTwinSyncSse  {
-                final Uint8List field0;
-
-                const KitchenSinkTwinSyncSse_Buffer(this.field0 ,) : super._();
-
-                
-        @override
-        int get hashCode => const DeepCollectionEquality().hash(field0);
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is KitchenSinkTwinSyncSse_Buffer &&
-                runtimeType == other.runtimeType
-                && const DeepCollectionEquality().equals(field0, other.field0);
-        
-            }
-class KitchenSinkTwinSyncSse_Enums extends KitchenSinkTwinSyncSse  {
-                final WeekdaysTwinSyncSse field0;
-
-                const KitchenSinkTwinSyncSse_Enums([this.field0 = WeekdaysTwinSyncSse.sunday,]) : super._();
-
-                
-        @override
-        int get hashCode => field0.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is KitchenSinkTwinSyncSse_Enums &&
-                runtimeType == other.runtimeType
-                && field0 == other.field0;
-        
-            }
-
-sealed class MeasureTwinSyncSse  {
-                    const MeasureTwinSyncSse._();
-
-                     const factory MeasureTwinSyncSse.speed(  SpeedTwinSyncSse field0,) = MeasureTwinSyncSse_Speed;
- const factory MeasureTwinSyncSse.distance(  DistanceTwinSyncSse field0,) = MeasureTwinSyncSse_Distance;
-
-                    
-                }
-
-                class MeasureTwinSyncSse_Speed extends MeasureTwinSyncSse  {
-                final SpeedTwinSyncSse field0;
-
-                const MeasureTwinSyncSse_Speed(this.field0 ,) : super._();
-
-                
-        @override
-        int get hashCode => field0.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is MeasureTwinSyncSse_Speed &&
-                runtimeType == other.runtimeType
-                && field0 == other.field0;
-        
-            }
-class MeasureTwinSyncSse_Distance extends MeasureTwinSyncSse  {
-                final DistanceTwinSyncSse field0;
-
-                const MeasureTwinSyncSse_Distance(this.field0 ,) : super._();
-
-                
-        @override
-        int get hashCode => field0.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is MeasureTwinSyncSse_Distance &&
-                runtimeType == other.runtimeType
-                && field0 == other.field0;
-        
-            }
-
-class NoteTwinSyncSse  {
-                final WeekdaysTwinSyncSse day;
-final String body;
-
-                const NoteTwinSyncSse({this.day = WeekdaysTwinSyncSse.sunday,required this.body ,});
-
-
-
-
-
-        @override
-        int get hashCode => day.hashCode^body.hashCode;
-
-
-
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is NoteTwinSyncSse &&
-                runtimeType == other.runtimeType
-                && day == other.day&& body == other.body;
-
-            }
-
-sealed class SpeedTwinSyncSse  {
-                    const SpeedTwinSyncSse._();
-
-                     const factory SpeedTwinSyncSse.unknown() = SpeedTwinSyncSse_Unknown;
- const factory SpeedTwinSyncSse.gps(  double field0,) = SpeedTwinSyncSse_GPS;
-
-                    
-                }
-
-                class SpeedTwinSyncSse_Unknown extends SpeedTwinSyncSse  {
-                
-
-                const SpeedTwinSyncSse_Unknown() : super._();
-
-                
-        @override
-        int get hashCode => 0;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is SpeedTwinSyncSse_Unknown &&
-                runtimeType == other.runtimeType
-                ;
-        
-            }
-class SpeedTwinSyncSse_GPS extends SpeedTwinSyncSse  {
-                final double field0;
-
-                const SpeedTwinSyncSse_GPS(this.field0 ,) : super._();
-
-                
-        @override
-        int get hashCode => field0.hashCode;
-        
-
-                
-        @override
-        bool operator ==(Object other) =>
-            identical(this, other) ||
-            other is SpeedTwinSyncSse_GPS &&
-                runtimeType == other.runtimeType
-                && field0 == other.field0;
-        
-            }
-            
+  oneHundred,
+  fifty,
+  ;
+}
+
+sealed class EnumWithItemMixedTwinSyncSse {
+  const EnumWithItemMixedTwinSyncSse._();
+
+  const factory EnumWithItemMixedTwinSyncSse.a() =
+      EnumWithItemMixedTwinSyncSse_A;
+  const factory EnumWithItemMixedTwinSyncSse.b(
+    Uint8List field0,
+  ) = EnumWithItemMixedTwinSyncSse_B;
+  const factory EnumWithItemMixedTwinSyncSse.c({
+    required String cField,
+  }) = EnumWithItemMixedTwinSyncSse_C;
+}
+
+class EnumWithItemMixedTwinSyncSse_A extends EnumWithItemMixedTwinSyncSse {
+  const EnumWithItemMixedTwinSyncSse_A() : super._();
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithItemMixedTwinSyncSse_A &&
+          runtimeType == other.runtimeType;
+}
+
+class EnumWithItemMixedTwinSyncSse_B extends EnumWithItemMixedTwinSyncSse {
+  final Uint8List field0;
+
+  const EnumWithItemMixedTwinSyncSse_B(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => const DeepCollectionEquality().hash(field0);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithItemMixedTwinSyncSse_B &&
+          runtimeType == other.runtimeType &&
+          const DeepCollectionEquality().equals(field0, other.field0);
+}
+
+class EnumWithItemMixedTwinSyncSse_C extends EnumWithItemMixedTwinSyncSse {
+  final String cField;
+
+  const EnumWithItemMixedTwinSyncSse_C({
+    required this.cField,
+  }) : super._();
+
+  @override
+  int get hashCode => cField.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithItemMixedTwinSyncSse_C &&
+          runtimeType == other.runtimeType &&
+          cField == other.cField;
+}
+
+sealed class EnumWithItemStructTwinSyncSse {
+  const EnumWithItemStructTwinSyncSse._();
+
+  const factory EnumWithItemStructTwinSyncSse.a({
+    required Uint8List aField,
+  }) = EnumWithItemStructTwinSyncSse_A;
+  const factory EnumWithItemStructTwinSyncSse.b({
+    required Int32List bField,
+  }) = EnumWithItemStructTwinSyncSse_B;
+}
+
+class EnumWithItemStructTwinSyncSse_A extends EnumWithItemStructTwinSyncSse {
+  final Uint8List aField;
+
+  const EnumWithItemStructTwinSyncSse_A({
+    required this.aField,
+  }) : super._();
+
+  @override
+  int get hashCode => const DeepCollectionEquality().hash(aField);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithItemStructTwinSyncSse_A &&
+          runtimeType == other.runtimeType &&
+          const DeepCollectionEquality().equals(aField, other.aField);
+}
+
+class EnumWithItemStructTwinSyncSse_B extends EnumWithItemStructTwinSyncSse {
+  final Int32List bField;
+
+  const EnumWithItemStructTwinSyncSse_B({
+    required this.bField,
+  }) : super._();
+
+  @override
+  int get hashCode => const DeepCollectionEquality().hash(bField);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithItemStructTwinSyncSse_B &&
+          runtimeType == other.runtimeType &&
+          const DeepCollectionEquality().equals(bField, other.bField);
+}
+
+sealed class EnumWithItemTupleTwinSyncSse {
+  const EnumWithItemTupleTwinSyncSse._();
+
+  const factory EnumWithItemTupleTwinSyncSse.a(
+    Uint8List field0,
+  ) = EnumWithItemTupleTwinSyncSse_A;
+  const factory EnumWithItemTupleTwinSyncSse.b(
+    int field0,
+  ) = EnumWithItemTupleTwinSyncSse_B;
+}
+
+class EnumWithItemTupleTwinSyncSse_A extends EnumWithItemTupleTwinSyncSse {
+  final Uint8List field0;
+
+  const EnumWithItemTupleTwinSyncSse_A(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => const DeepCollectionEquality().hash(field0);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithItemTupleTwinSyncSse_A &&
+          runtimeType == other.runtimeType &&
+          const DeepCollectionEquality().equals(field0, other.field0);
+}
+
+class EnumWithItemTupleTwinSyncSse_B extends EnumWithItemTupleTwinSyncSse {
+  final int field0;
+
+  const EnumWithItemTupleTwinSyncSse_B(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EnumWithItemTupleTwinSyncSse_B &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+sealed class KitchenSinkTwinSyncSse {
+  const KitchenSinkTwinSyncSse._();
+
+  /// Comment on variant
+  const factory KitchenSinkTwinSyncSse.empty() = KitchenSinkTwinSyncSse_Empty;
+  const factory KitchenSinkTwinSyncSse.primitives({
+    /// Dart field comment
+    int int32,
+    required double float64,
+    required bool boolean,
+  }) = KitchenSinkTwinSyncSse_Primitives;
+  const factory KitchenSinkTwinSyncSse.nested(
+    int field0, [
+    KitchenSinkTwinSyncSse field1,
+  ]) = KitchenSinkTwinSyncSse_Nested;
+  const factory KitchenSinkTwinSyncSse.optional([
+    /// Comment on anonymous field
+    int? field0,
+    int? field1,
+  ]) = KitchenSinkTwinSyncSse_Optional;
+  const factory KitchenSinkTwinSyncSse.buffer(
+    Uint8List field0,
+  ) = KitchenSinkTwinSyncSse_Buffer;
+  const factory KitchenSinkTwinSyncSse.enums([
+    WeekdaysTwinSyncSse field0,
+  ]) = KitchenSinkTwinSyncSse_Enums;
+}
+
+class KitchenSinkTwinSyncSse_Empty extends KitchenSinkTwinSyncSse {
+  const KitchenSinkTwinSyncSse_Empty() : super._();
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is KitchenSinkTwinSyncSse_Empty && runtimeType == other.runtimeType;
+}
+
+class KitchenSinkTwinSyncSse_Primitives extends KitchenSinkTwinSyncSse {
+  /// Dart field comment
+  final int int32;
+  final double float64;
+  final bool boolean;
+
+  const KitchenSinkTwinSyncSse_Primitives({
+    this.int32 = -1,
+    required this.float64,
+    required this.boolean,
+  }) : super._();
+
+  @override
+  int get hashCode => int32.hashCode ^ float64.hashCode ^ boolean.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is KitchenSinkTwinSyncSse_Primitives &&
+          runtimeType == other.runtimeType &&
+          int32 == other.int32 &&
+          float64 == other.float64 &&
+          boolean == other.boolean;
+}
+
+class KitchenSinkTwinSyncSse_Nested extends KitchenSinkTwinSyncSse {
+  final int field0;
+  final KitchenSinkTwinSyncSse field1;
+
+  const KitchenSinkTwinSyncSse_Nested(
+    this.field0, [
+    this.field1 = const KitchenSinkTwinSyncSse.empty(),
+  ]) : super._();
+
+  @override
+  int get hashCode => field0.hashCode ^ field1.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is KitchenSinkTwinSyncSse_Nested &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0 &&
+          field1 == other.field1;
+}
+
+class KitchenSinkTwinSyncSse_Optional extends KitchenSinkTwinSyncSse {
+  /// Comment on anonymous field
+  final int? field0;
+  final int? field1;
+
+  const KitchenSinkTwinSyncSse_Optional([
+    this.field0 = -1,
+    this.field1,
+  ]) : super._();
+
+  @override
+  int get hashCode => field0.hashCode ^ field1.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is KitchenSinkTwinSyncSse_Optional &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0 &&
+          field1 == other.field1;
+}
+
+class KitchenSinkTwinSyncSse_Buffer extends KitchenSinkTwinSyncSse {
+  final Uint8List field0;
+
+  const KitchenSinkTwinSyncSse_Buffer(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => const DeepCollectionEquality().hash(field0);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is KitchenSinkTwinSyncSse_Buffer &&
+          runtimeType == other.runtimeType &&
+          const DeepCollectionEquality().equals(field0, other.field0);
+}
+
+class KitchenSinkTwinSyncSse_Enums extends KitchenSinkTwinSyncSse {
+  final WeekdaysTwinSyncSse field0;
+
+  const KitchenSinkTwinSyncSse_Enums([
+    this.field0 = WeekdaysTwinSyncSse.sunday,
+  ]) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is KitchenSinkTwinSyncSse_Enums &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+sealed class MeasureTwinSyncSse {
+  const MeasureTwinSyncSse._();
+
+  const factory MeasureTwinSyncSse.speed(
+    SpeedTwinSyncSse field0,
+  ) = MeasureTwinSyncSse_Speed;
+  const factory MeasureTwinSyncSse.distance(
+    DistanceTwinSyncSse field0,
+  ) = MeasureTwinSyncSse_Distance;
+}
+
+class MeasureTwinSyncSse_Speed extends MeasureTwinSyncSse {
+  final SpeedTwinSyncSse field0;
+
+  const MeasureTwinSyncSse_Speed(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MeasureTwinSyncSse_Speed &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class MeasureTwinSyncSse_Distance extends MeasureTwinSyncSse {
+  final DistanceTwinSyncSse field0;
+
+  const MeasureTwinSyncSse_Distance(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MeasureTwinSyncSse_Distance &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}
+
+class NoteTwinSyncSse {
+  final WeekdaysTwinSyncSse day;
+  final String body;
+
+  const NoteTwinSyncSse({
+    this.day = WeekdaysTwinSyncSse.sunday,
+    required this.body,
+  });
+
+  @override
+  int get hashCode => day.hashCode ^ body.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is NoteTwinSyncSse &&
+          runtimeType == other.runtimeType &&
+          day == other.day &&
+          body == other.body;
+}
+
+sealed class SpeedTwinSyncSse {
+  const SpeedTwinSyncSse._();
+
+  const factory SpeedTwinSyncSse.unknown() = SpeedTwinSyncSse_Unknown;
+  const factory SpeedTwinSyncSse.gps(
+    double field0,
+  ) = SpeedTwinSyncSse_GPS;
+}
+
+class SpeedTwinSyncSse_Unknown extends SpeedTwinSyncSse {
+  const SpeedTwinSyncSse_Unknown() : super._();
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SpeedTwinSyncSse_Unknown && runtimeType == other.runtimeType;
+}
+
+class SpeedTwinSyncSse_GPS extends SpeedTwinSyncSse {
+  final double field0;
+
+  const SpeedTwinSyncSse_GPS(
+    this.field0,
+  ) : super._();
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SpeedTwinSyncSse_GPS &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
+}

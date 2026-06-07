@@ -22,6 +22,27 @@ pub(crate) fn generate_field_default(
     dart_enums_style: bool,
 ) -> String {
     // frb-coverage:ignore-end
+    let Some(default_value) = compute_default_value(field, dart_enums_style) else {
+        return "".to_string();
+    };
+
+    if freezed {
+        format!("@Default({default_value})")
+    } else {
+        format!("= {default_value}")
+    }
+}
+
+pub(crate) fn generate_field_default_for_constructor(
+    field: &MirField,
+    dart_enums_style: bool,
+) -> String {
+    compute_default_value(field, dart_enums_style)
+        .map(|default_value| format!("= {}", ensure_const_default_value(default_value)))
+        .unwrap_or_default()
+}
+
+fn compute_default_value(field: &MirField, dart_enums_style: bool) -> Option<String> {
     if let Some(default_value) = field.default.as_ref() {
         let default_value = match default_value {
             MirDefaultValue::String { content }
@@ -32,13 +53,17 @@ pub(crate) fn generate_field_default(
             _ => default_value.to_dart_literal(),
         };
 
-        if freezed {
-            format!("@Default({default_value})")
-        } else {
-            format!("= {default_value}")
-        }
+        Some(default_value.to_string())
     } else {
-        "".to_string()
+        None
+    }
+}
+
+fn ensure_const_default_value(default_value: String) -> String {
+    if default_value.contains('(') && !default_value.starts_with("const ") {
+        format!("const {default_value}")
+    } else {
+        default_value
     }
 }
 
@@ -82,6 +107,22 @@ mod tests {
         assert_eq!(
             &default_value_to_dart_style("const Foo.bar()"),
             "const Foo.bar()"
+        );
+    }
+
+    #[test]
+    pub fn test_ensure_const_default_value() {
+        assert_eq!(
+            &ensure_const_default_value("Foo.bar()".to_string()),
+            "const Foo.bar()"
+        );
+        assert_eq!(
+            &ensure_const_default_value("const Foo.bar()".to_string()),
+            "const Foo.bar()"
+        );
+        assert_eq!(
+            &ensure_const_default_value("Foo.bar".to_string()),
+            "Foo.bar"
         );
     }
 }

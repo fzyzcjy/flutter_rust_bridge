@@ -1,5 +1,6 @@
 use crate::codegen::generator::api_dart::spec_generator::class::field::{
-    generate_field_default, generate_field_required_modifier,
+    generate_field_default, generate_field_default_for_constructor,
+    generate_field_required_modifier,
 };
 use crate::codegen::generator::api_dart::spec_generator::class::ty::structure_non_freezed::{
     generate_equals, generate_hashcode, needs_deep_equality,
@@ -133,7 +134,7 @@ impl EnumRefApiDartGenerator<'_> {
             .iter()
             .map(|field| {
                 // If no split, default values are not valid.
-                let default = if optional_boundary_index(&st.fields).is_some() {
+                let default = if freezed && optional_boundary_index(&st.fields).is_some() {
                     generate_field_default(field, freezed, self.context.config.dart_enums_style)
                 } else {
                     Default::default()
@@ -142,7 +143,11 @@ impl EnumRefApiDartGenerator<'_> {
                 let type_str =
                     ApiDartGenerator::new(field.ty.clone(), self.context).dart_api_type();
                 let name_str = field.name.dart_style();
-                format!("{comments} {default} {type_str} {name_str},")
+                if freezed {
+                    format!("{comments} {default} {type_str} {name_str},")
+                } else {
+                    format!("{comments} {type_str} {name_str} {default},")
+                }
             })
             .collect_vec();
 
@@ -160,18 +165,18 @@ impl EnumRefApiDartGenerator<'_> {
             .fields
             .iter()
             .map(|field| {
-                format!(
-                    "{comments} {default} {required}{} {} ,",
-                    ApiDartGenerator::new(field.ty.clone(), self.context).dart_api_type(),
-                    field.name.dart_style(),
-                    required = generate_field_required_modifier(field),
-                    comments = generate_dart_comments(&field.comments),
-                    default = generate_field_default(
-                        field,
-                        freezed,
-                        self.context.config.dart_enums_style
-                    ),
-                )
+                let comments = generate_dart_comments(&field.comments);
+                let type_str =
+                    ApiDartGenerator::new(field.ty.clone(), self.context).dart_api_type();
+                let name = field.name.dart_style();
+                let required = generate_field_required_modifier(field);
+                if freezed {
+                    let default =
+                        generate_field_default(field, true, self.context.config.dart_enums_style);
+                    format!("{comments} {default} {required}{type_str} {name} ,")
+                } else {
+                    format!("{comments} {required}{type_str} {name},")
+                }
             })
             .collect_vec();
         format!("{{ {} }}", fields.join(""))
@@ -246,8 +251,10 @@ impl EnumRefApiDartGenerator<'_> {
                     "{required}this.{name} {default},",
                     name = field.name.dart_style(),
                     required = generate_field_required_modifier(field),
-                    default =
-                        generate_field_default(field, false, self.context.config.dart_enums_style),
+                    default = generate_field_default_for_constructor(
+                        field,
+                        self.context.config.dart_enums_style
+                    ),
                 )
             })
             .collect_vec()
@@ -262,7 +269,10 @@ impl EnumRefApiDartGenerator<'_> {
             .iter()
             .map(|field| {
                 let default = if optional_boundary_index(&st.fields).is_some() {
-                    generate_field_default(field, false, self.context.config.dart_enums_style)
+                    generate_field_default_for_constructor(
+                        field,
+                        self.context.config.dart_enums_style,
+                    )
                 } else {
                     Default::default()
                 };
