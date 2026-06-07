@@ -677,6 +677,10 @@ Future<void> testFlutterQuickstartSmoke(
 
   await _runFlutterDoctor();
   await runPubGetIfNotRunYet(config.package);
+  if (config.target == QuickstartSmokeTarget.web) {
+    print('Building web wasm artifacts before quickstart smoke');
+    await executeFrbCodegen('build-web', relativePwd: config.package);
+  }
   await runFlutterViaCreateQuickstartSmokeTest(
     package: config.package,
     target: config.target,
