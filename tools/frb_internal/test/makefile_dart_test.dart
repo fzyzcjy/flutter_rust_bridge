@@ -188,6 +188,12 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
       ),
       ['simctl', 'io', 'IPHONE-UDID', 'screenshot', '/tmp/quickstart.png'],
     );
+    expect(quickstartSmokeMacosScreenshotArgsForTesting('/tmp/smoke.png'), [
+      '-x',
+      '-T',
+      '1',
+      '/tmp/smoke.png',
+    ]);
   });
 
   test(
@@ -205,34 +211,6 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
       );
     },
   );
-
-  test('quickstart smoke parses Flutter VM service URL from logs', () {
-    expect(
-      quickstartSmokeVmServiceUriForTesting(
-        'A Dart VM Service on macOS is available at: '
-        'http://127.0.0.1:61042/NXgpX5-MgL0=/',
-      ).toString(),
-      'http://127.0.0.1:61042/NXgpX5-MgL0=/',
-    );
-  });
-
-  test('quickstart smoke extracts Text data from inspector properties', () {
-    expect(
-      quickstartSmokeInspectorTextForTesting({
-        'result': {
-          'result': [
-            {
-              'type': 'StringProperty',
-              'name': 'data',
-              'value':
-                  'Action: Call Rust `greet("Tom")`\nResult: `Hello, Tom!`',
-            },
-          ],
-        },
-      }),
-      contains('Result: `Hello, Tom!`'),
-    );
-  });
 
   test('quickstart smoke does not capture while Flutter is still building', () {
     expect(

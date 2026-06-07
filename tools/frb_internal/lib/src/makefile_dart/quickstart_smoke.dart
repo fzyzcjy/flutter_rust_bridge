@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_print
 
 import 'dart:async';
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
@@ -69,7 +68,6 @@ class _QuickstartSmokeContext {
   final File preprocessedScreenshotFile;
   final File ocrOutputFile;
   final File preprocessedOcrOutputFile;
-  final File vmServiceOutputFile;
   final File logFile;
   final File? chromeWrapper;
 
@@ -84,7 +82,6 @@ class _QuickstartSmokeContext {
     required this.preprocessedScreenshotFile,
     required this.ocrOutputFile,
     required this.preprocessedOcrOutputFile,
-    required this.vmServiceOutputFile,
     required this.logFile,
     required this.chromeWrapper,
   });
@@ -123,9 +120,6 @@ class _QuickstartSmokeContext {
       preprocessedOcrOutputFile: File(
         '${absolutePackage.path}/$artifactDir/quickstart-$targetName-processed.txt',
       ),
-      vmServiceOutputFile: File(
-        '${absolutePackage.path}/$artifactDir/quickstart-$targetName-vm-service.txt',
-      ),
       logFile: File(
         '${absolutePackage.path}/$artifactDir/quickstart-$targetName.log',
       ),
@@ -158,7 +152,6 @@ class _QuickstartSmokeContext {
       preprocessedScreenshotFile,
       ocrOutputFile,
       preprocessedOcrOutputFile,
-      vmServiceOutputFile,
       logFile,
     ]) {
       if (file.existsSync()) file.deleteSync();
@@ -203,13 +196,11 @@ class _QuickstartSmokeFlutterRun {
 class _QuickstartSmokeScreenshotEvidence {
   final bool readyForScreenshot;
   final bool ocrMatched;
-  final bool vmServiceMatched;
   final Exception? lastOcrException;
 
   const _QuickstartSmokeScreenshotEvidence({
     required this.readyForScreenshot,
     required this.ocrMatched,
-    required this.vmServiceMatched,
     required this.lastOcrException,
   });
 }
@@ -285,22 +276,6 @@ bool quickstartSmokeFlutterRunIsReadyForTesting(String output) {
 }
 
 @visibleForTesting
-Uri? quickstartSmokeVmServiceUriForTesting(String output) {
-  final match = RegExp(
-    r'A Dart VM Service.*? at: (http://\S+/)',
-  ).firstMatch(output);
-  if (match == null) return null;
-  return Uri.parse(match.group(1)!);
-}
-
-@visibleForTesting
-String quickstartSmokeInspectorTextForTesting(Object? json) {
-  final buffer = StringBuffer();
-  _writeQuickstartSmokeInspectorText(buffer, json);
-  return buffer.toString();
-}
-
-@visibleForTesting
 String quickstartSmokePackagePathForTesting(
   String package, {
   String? repoRootPath,
@@ -315,6 +290,11 @@ List<String> quickstartSmokeIosScreenshotArgsForTesting({
   required String deviceId,
   required String screenshotPath,
 }) => ['simctl', 'io', deviceId, 'screenshot', screenshotPath];
+
+@visibleForTesting
+List<String> quickstartSmokeMacosScreenshotArgsForTesting(
+  String screenshotPath,
+) => ['-x', '-T', '1', screenshotPath];
 
 Future<_QuickstartSmokeFlutterRun> _startQuickstartSmokeFlutterRun(
   _QuickstartSmokeContext context,
@@ -393,7 +373,6 @@ Future<_QuickstartSmokeScreenshotEvidence> _captureQuickstartSmokeEvidence({
     return _QuickstartSmokeScreenshotEvidence(
       readyForScreenshot: readyForScreenshot,
       ocrMatched: false,
-      vmServiceMatched: false,
       lastOcrException: null,
     );
   }
@@ -421,7 +400,6 @@ Future<_QuickstartSmokeScreenshotEvidence> _captureQuickstartSmokeEvidence({
       return _QuickstartSmokeScreenshotEvidence(
         readyForScreenshot: readyForScreenshot,
         ocrMatched: true,
-        vmServiceMatched: false,
         lastOcrException: null,
       );
     } on Exception catch (exception) {
@@ -432,115 +410,11 @@ Future<_QuickstartSmokeScreenshotEvidence> _captureQuickstartSmokeEvidence({
     }
   } while (DateTime.now().isBefore(visibleTextDeadline));
 
-  final vmServiceMatched = await _captureQuickstartMacosVmServiceEvidence(
-    context: context,
-    flutterRun: flutterRun,
-  );
-
   return _QuickstartSmokeScreenshotEvidence(
     readyForScreenshot: readyForScreenshot,
     ocrMatched: false,
-    vmServiceMatched: vmServiceMatched,
     lastOcrException: lastOcrException,
   );
-}
-
-Future<bool> _captureQuickstartMacosVmServiceEvidence({
-  required _QuickstartSmokeContext context,
-  required _QuickstartSmokeFlutterRun flutterRun,
-}) async {
-  if (context.target != QuickstartSmokeTarget.desktop || !Platform.isMacOS) {
-    return false;
-  }
-
-  print('Trying macOS Flutter VM service evidence after screenshot OCR miss');
-  try {
-    final text = await _readQuickstartMacosVmServiceText(
-      flutterRun.combinedOutput,
-    );
-    context.vmServiceOutputFile.writeAsStringSync(text);
-    checkQuickstartSmokeOcrTextForTesting(text);
-    print('macOS Flutter VM service evidence contains expected text');
-    return true;
-  } on Exception catch (exception) {
-    context.vmServiceOutputFile.writeAsStringSync(exception.toString());
-    print('macOS Flutter VM service evidence did not match: $exception');
-    return false;
-  }
-}
-
-Future<String> _readQuickstartMacosVmServiceText(
-  String flutterRunOutput,
-) async {
-  final vmServiceUri = quickstartSmokeVmServiceUriForTesting(flutterRunOutput);
-  if (vmServiceUri == null) {
-    throw Exception('Could not find Flutter VM Service URL in flutter run log');
-  }
-
-  final vm = await _getQuickstartSmokeVmServiceJson(
-    vmServiceUri.resolve('getVM'),
-  );
-  final isolates = (vm['result'] as Map<String, Object?>)['isolates'] as List;
-  if (isolates.isEmpty) {
-    throw Exception('Flutter VM Service reported no app isolates');
-  }
-  final isolateId = (isolates.single as Map<String, Object?>)['id'] as String;
-
-  final tree = await _getQuickstartSmokeVmServiceJson(
-    vmServiceUri.replace(
-      path:
-          '${vmServiceUri.path}ext.flutter.inspector.getRootWidgetSummaryTree',
-      queryParameters: {
-        'isolateId': isolateId,
-        'objectGroup': 'quickstartSmoke',
-        'subtreeDepth': '20',
-      },
-    ),
-  );
-  final textWidgetIds = _findQuickstartSmokeTextWidgetIds(tree);
-  if (textWidgetIds.isEmpty) {
-    throw Exception('Flutter inspector did not report any app Text widgets');
-  }
-
-  final buffer = StringBuffer();
-  for (final textWidgetId in textWidgetIds) {
-    final properties = await _getQuickstartSmokeVmServiceJson(
-      vmServiceUri.replace(
-        path: '${vmServiceUri.path}ext.flutter.inspector.getProperties',
-        queryParameters: {
-          'isolateId': isolateId,
-          'objectGroup': 'quickstartSmoke',
-          'arg': textWidgetId,
-        },
-      ),
-    );
-    buffer.writeln(quickstartSmokeInspectorTextForTesting(properties));
-  }
-  return buffer.toString();
-}
-
-Future<Map<String, Object?>> _getQuickstartSmokeVmServiceJson(Uri uri) async {
-  final client = HttpClient();
-  try {
-    final request = await client.getUrl(uri);
-    final response = await request.close();
-    final body = await response.transform(utf8.decoder).join();
-    if (response.statusCode != HttpStatus.ok) {
-      throw Exception(
-        'Flutter VM Service request failed '
-        '(status=${response.statusCode}, uri=$uri, body=$body)',
-      );
-    }
-    return jsonDecode(body) as Map<String, Object?>;
-  } finally {
-    client.close(force: true);
-  }
-}
-
-List<String> _findQuickstartSmokeTextWidgetIds(Object? json) {
-  final result = <String>[];
-  _collectQuickstartSmokeTextWidgetIds(result, json);
-  return result;
 }
 
 Future<_QuickstartSmokeExitStatus> _stopQuickstartSmokeFlutterRun({
@@ -570,10 +444,6 @@ void _printQuickstartSmokeEvidence(_QuickstartSmokeContext context) {
   if (context.ocrOutputFile.existsSync()) {
     print('\n===== screenshot OCR (${context.targetName}) =====');
     print(context.ocrOutputFile.readAsStringSync());
-  }
-  if (context.vmServiceOutputFile.existsSync()) {
-    print('\n===== VM service evidence (${context.targetName}) =====');
-    print(context.vmServiceOutputFile.readAsStringSync());
   }
 }
 
@@ -614,7 +484,7 @@ void _validateQuickstartSmokeResult({
       'produce OCR output at `${context.ocrOutputFile.path}`',
     );
   }
-  if (!screenshotEvidence.ocrMatched && !screenshotEvidence.vmServiceMatched) {
+  if (!screenshotEvidence.ocrMatched) {
     if (screenshotEvidence.lastOcrException != null) {
       throw screenshotEvidence.lastOcrException!;
     }
@@ -741,10 +611,9 @@ Future<void> _captureQuickstartSmokeScreenshot({
       ),
       stderrEncoding: systemEncoding,
     ),
-    _ when Platform.isMacOS => await Process.run('screencapture', [
-      '-x',
-      screenshotFile.path,
-    ], stderrEncoding: systemEncoding),
+    _ when Platform.isMacOS => await _captureMacosQuickstartSmokeScreenshot(
+      screenshotFile,
+    ),
     _ when Platform.isWindows => await _captureWindowsQuickstartSmokeScreenshot(
       screenshotFile,
     ),
@@ -761,6 +630,30 @@ Future<void> _captureQuickstartSmokeScreenshot({
     throw Exception(
       'Failed to capture quickstart screenshot (exitCode=${result.exitCode}, '
       'stderr=${result.stderr})',
+    );
+  }
+}
+
+Future<ProcessResult> _captureMacosQuickstartSmokeScreenshot(
+  File screenshotFile,
+) async {
+  await _activateMacosQuickstartSmokeApp();
+  return Process.run(
+    'screencapture',
+    quickstartSmokeMacosScreenshotArgsForTesting(screenshotFile.path),
+    stderrEncoding: systemEncoding,
+  );
+}
+
+Future<void> _activateMacosQuickstartSmokeApp() async {
+  final result = await Process.run('osascript', [
+    '-e',
+    'tell application "flutter_via_create" to activate',
+  ], stderrEncoding: systemEncoding);
+  if (result.exitCode != 0) {
+    print(
+      'Failed to activate macOS quickstart app before screenshot '
+      '(exitCode=${result.exitCode}, stderr=${result.stderr})',
     );
   }
 }
@@ -831,42 +724,6 @@ Future<void> _runQuickstartSmokeOcr({
       'Failed to OCR quickstart screenshot (exitCode=${result.exitCode}, '
       'stderr=${result.stderr})',
     );
-  }
-}
-
-void _collectQuickstartSmokeTextWidgetIds(List<String> result, Object? json) {
-  if (json is List) {
-    for (final item in json) {
-      _collectQuickstartSmokeTextWidgetIds(result, item);
-    }
-    return;
-  }
-  if (json is! Map) return;
-
-  if (json['widgetRuntimeType'] == 'Text' &&
-      json['createdByLocalProject'] == true &&
-      json['valueId'] is String) {
-    result.add(json['valueId'] as String);
-  }
-  for (final value in json.values) {
-    _collectQuickstartSmokeTextWidgetIds(result, value);
-  }
-}
-
-void _writeQuickstartSmokeInspectorText(StringBuffer buffer, Object? json) {
-  if (json is List) {
-    for (final item in json) {
-      _writeQuickstartSmokeInspectorText(buffer, item);
-    }
-    return;
-  }
-  if (json is! Map) return;
-
-  if (json['type'] == 'StringProperty' && json['value'] is String) {
-    buffer.writeln(json['value']);
-  }
-  for (final value in json.values) {
-    _writeQuickstartSmokeInspectorText(buffer, value);
   }
 }
 
