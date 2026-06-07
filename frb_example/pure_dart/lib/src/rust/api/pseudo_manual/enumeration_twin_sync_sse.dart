@@ -9,8 +9,10 @@ import '../../frb_generated.dart';
 import 'misc_example_twin_sync_sse.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+part 'enumeration_twin_sync_sse.freezed.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
 
 EnumSimpleTwinSyncSse funcEnumSimpleTwinSyncSse(
         {required EnumSimpleTwinSyncSse arg}) =>
@@ -40,6 +42,12 @@ EnumWithDiscriminantTwinSyncSse funcEnumWithDiscriminantTwinSyncSse(
         {required EnumWithDiscriminantTwinSyncSse arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualEnumerationTwinSyncSseFuncEnumWithDiscriminantTwinSyncSse(
+            arg: arg);
+
+EnumWithFreezedOverrideTwinSyncSse funcEnumWithFreezedOverrideTwinSyncSse(
+        {required EnumWithFreezedOverrideTwinSyncSse arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSyncSseFuncEnumWithFreezedOverrideTwinSyncSse(
             arg: arg);
 
 Uint8List printNoteTwinSyncSse({required NoteTwinSyncSse note}) => RustLib
@@ -132,6 +140,18 @@ enum EnumWithDiscriminantTwinSyncSse {
   oneHundred,
   fifty,
   ;
+}
+
+@freezed
+sealed class EnumWithFreezedOverrideTwinSyncSse
+    with _$EnumWithFreezedOverrideTwinSyncSse {
+  const EnumWithFreezedOverrideTwinSyncSse._();
+
+  const factory EnumWithFreezedOverrideTwinSyncSse.empty() =
+      EnumWithFreezedOverrideTwinSyncSse_Empty;
+  const factory EnumWithFreezedOverrideTwinSyncSse.named({
+    @Default(-1) int count,
+  }) = EnumWithFreezedOverrideTwinSyncSse_Named;
 }
 
 sealed class EnumWithItemMixedTwinSyncSse {

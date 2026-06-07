@@ -9,8 +9,10 @@ import '../../frb_generated.dart';
 import 'misc_example_twin_sync.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+part 'enumeration_twin_sync.freezed.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
 
 EnumSimpleTwinSync funcEnumSimpleTwinSync({required EnumSimpleTwinSync arg}) =>
     RustLib.instance.api
@@ -39,6 +41,12 @@ EnumWithDiscriminantTwinSync funcEnumWithDiscriminantTwinSync(
         {required EnumWithDiscriminantTwinSync arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualEnumerationTwinSyncFuncEnumWithDiscriminantTwinSync(
+            arg: arg);
+
+EnumWithFreezedOverrideTwinSync funcEnumWithFreezedOverrideTwinSync(
+        {required EnumWithFreezedOverrideTwinSync arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSyncFuncEnumWithFreezedOverrideTwinSync(
             arg: arg);
 
 Uint8List printNoteTwinSync({required NoteTwinSync note}) =>
@@ -130,6 +138,18 @@ enum EnumWithDiscriminantTwinSync {
   oneHundred,
   fifty,
   ;
+}
+
+@freezed
+sealed class EnumWithFreezedOverrideTwinSync
+    with _$EnumWithFreezedOverrideTwinSync {
+  const EnumWithFreezedOverrideTwinSync._();
+
+  const factory EnumWithFreezedOverrideTwinSync.empty() =
+      EnumWithFreezedOverrideTwinSync_Empty;
+  const factory EnumWithFreezedOverrideTwinSync.named({
+    @Default(-1) int count,
+  }) = EnumWithFreezedOverrideTwinSync_Named;
 }
 
 sealed class EnumWithItemMixedTwinSync {

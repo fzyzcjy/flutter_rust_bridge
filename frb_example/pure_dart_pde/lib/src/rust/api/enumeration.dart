@@ -9,8 +9,10 @@ import '../frb_generated.dart';
 import 'misc_example.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+part 'enumeration.freezed.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
 
 Future<EnumSimpleTwinNormal> funcEnumSimpleTwinNormal(
         {required EnumSimpleTwinNormal arg}) =>
@@ -35,6 +37,11 @@ Future<EnumWithDiscriminantTwinNormal> funcEnumWithDiscriminantTwinNormal(
         {required EnumWithDiscriminantTwinNormal arg}) =>
     RustLib.instance.api
         .crateApiEnumerationFuncEnumWithDiscriminantTwinNormal(arg: arg);
+
+Future<EnumWithFreezedOverrideTwinNormal> funcEnumWithFreezedOverrideTwinNormal(
+        {required EnumWithFreezedOverrideTwinNormal arg}) =>
+    RustLib.instance.api
+        .crateApiEnumerationFuncEnumWithFreezedOverrideTwinNormal(arg: arg);
 
 Future<Uint8List> printNoteTwinNormal({required NoteTwinNormal note}) =>
     RustLib.instance.api.crateApiEnumerationPrintNoteTwinNormal(note: note);
@@ -122,6 +129,18 @@ enum EnumWithDiscriminantTwinNormal {
   oneHundred,
   fifty,
   ;
+}
+
+@freezed
+sealed class EnumWithFreezedOverrideTwinNormal
+    with _$EnumWithFreezedOverrideTwinNormal {
+  const EnumWithFreezedOverrideTwinNormal._();
+
+  const factory EnumWithFreezedOverrideTwinNormal.empty() =
+      EnumWithFreezedOverrideTwinNormal_Empty;
+  const factory EnumWithFreezedOverrideTwinNormal.named({
+    @Default(-1) int count,
+  }) = EnumWithFreezedOverrideTwinNormal_Named;
 }
 
 sealed class EnumWithItemMixedTwinNormal {

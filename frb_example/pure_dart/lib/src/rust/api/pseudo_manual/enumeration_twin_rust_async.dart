@@ -9,8 +9,10 @@ import '../../frb_generated.dart';
 import 'misc_example_twin_rust_async.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+part 'enumeration_twin_rust_async.freezed.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
 
 Future<EnumSimpleTwinRustAsync> funcEnumSimpleTwinRustAsync(
         {required EnumSimpleTwinRustAsync arg}) =>
@@ -40,6 +42,13 @@ Future<EnumWithDiscriminantTwinRustAsync> funcEnumWithDiscriminantTwinRustAsync(
         {required EnumWithDiscriminantTwinRustAsync arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumWithDiscriminantTwinRustAsync(
+            arg: arg);
+
+Future<
+    EnumWithFreezedOverrideTwinRustAsync> funcEnumWithFreezedOverrideTwinRustAsync(
+        {required EnumWithFreezedOverrideTwinRustAsync arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinRustAsyncFuncEnumWithFreezedOverrideTwinRustAsync(
             arg: arg);
 
 Future<Uint8List> printNoteTwinRustAsync({required NoteTwinRustAsync note}) =>
@@ -135,6 +144,18 @@ enum EnumWithDiscriminantTwinRustAsync {
   oneHundred,
   fifty,
   ;
+}
+
+@freezed
+sealed class EnumWithFreezedOverrideTwinRustAsync
+    with _$EnumWithFreezedOverrideTwinRustAsync {
+  const EnumWithFreezedOverrideTwinRustAsync._();
+
+  const factory EnumWithFreezedOverrideTwinRustAsync.empty() =
+      EnumWithFreezedOverrideTwinRustAsync_Empty;
+  const factory EnumWithFreezedOverrideTwinRustAsync.named({
+    @Default(-1) int count,
+  }) = EnumWithFreezedOverrideTwinRustAsync_Named;
 }
 
 sealed class EnumWithItemMixedTwinRustAsync {

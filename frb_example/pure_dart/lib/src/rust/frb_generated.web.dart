@@ -5516,6 +5516,34 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       dynamic raw);
 
   @protected
+  EnumWithFreezedOverrideTwinNormal
+      dco_decode_box_autoadd_enum_with_freezed_override_twin_normal(
+          dynamic raw);
+
+  @protected
+  EnumWithFreezedOverrideTwinRustAsync
+      dco_decode_box_autoadd_enum_with_freezed_override_twin_rust_async(
+          dynamic raw);
+
+  @protected
+  EnumWithFreezedOverrideTwinRustAsyncSse
+      dco_decode_box_autoadd_enum_with_freezed_override_twin_rust_async_sse(
+          dynamic raw);
+
+  @protected
+  EnumWithFreezedOverrideTwinSse
+      dco_decode_box_autoadd_enum_with_freezed_override_twin_sse(dynamic raw);
+
+  @protected
+  EnumWithFreezedOverrideTwinSync
+      dco_decode_box_autoadd_enum_with_freezed_override_twin_sync(dynamic raw);
+
+  @protected
+  EnumWithFreezedOverrideTwinSyncSse
+      dco_decode_box_autoadd_enum_with_freezed_override_twin_sync_sse(
+          dynamic raw);
+
+  @protected
   EnumWithGoodAndOpaqueTwinMoi
       dco_decode_box_autoadd_enum_with_good_and_opaque_twin_moi(dynamic raw);
 
@@ -7492,6 +7520,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   EnumWithDiscriminantTwinSyncSse
       dco_decode_enum_with_discriminant_twin_sync_sse(dynamic raw);
+
+  @protected
+  EnumWithFreezedOverrideTwinNormal
+      dco_decode_enum_with_freezed_override_twin_normal(dynamic raw);
+
+  @protected
+  EnumWithFreezedOverrideTwinRustAsync
+      dco_decode_enum_with_freezed_override_twin_rust_async(dynamic raw);
+
+  @protected
+  EnumWithFreezedOverrideTwinRustAsyncSse
+      dco_decode_enum_with_freezed_override_twin_rust_async_sse(dynamic raw);
+
+  @protected
+  EnumWithFreezedOverrideTwinSse dco_decode_enum_with_freezed_override_twin_sse(
+      dynamic raw);
+
+  @protected
+  EnumWithFreezedOverrideTwinSync
+      dco_decode_enum_with_freezed_override_twin_sync(dynamic raw);
+
+  @protected
+  EnumWithFreezedOverrideTwinSyncSse
+      dco_decode_enum_with_freezed_override_twin_sync_sse(dynamic raw);
 
   @protected
   EnumWithGoodAndOpaqueTwinMoi dco_decode_enum_with_good_and_opaque_twin_moi(
@@ -15066,6 +15118,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       SseDeserializer deserializer);
 
   @protected
+  EnumWithFreezedOverrideTwinNormal
+      sse_decode_box_autoadd_enum_with_freezed_override_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithFreezedOverrideTwinRustAsync
+      sse_decode_box_autoadd_enum_with_freezed_override_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithFreezedOverrideTwinRustAsyncSse
+      sse_decode_box_autoadd_enum_with_freezed_override_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithFreezedOverrideTwinSse
+      sse_decode_box_autoadd_enum_with_freezed_override_twin_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithFreezedOverrideTwinSync
+      sse_decode_box_autoadd_enum_with_freezed_override_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithFreezedOverrideTwinSyncSse
+      sse_decode_box_autoadd_enum_with_freezed_override_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
   EnumWithGoodAndOpaqueTwinMoi
       sse_decode_box_autoadd_enum_with_good_and_opaque_twin_moi(
           SseDeserializer deserializer);
@@ -17292,6 +17374,35 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   EnumWithDiscriminantTwinSyncSse
       sse_decode_enum_with_discriminant_twin_sync_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithFreezedOverrideTwinNormal
+      sse_decode_enum_with_freezed_override_twin_normal(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithFreezedOverrideTwinRustAsync
+      sse_decode_enum_with_freezed_override_twin_rust_async(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithFreezedOverrideTwinRustAsyncSse
+      sse_decode_enum_with_freezed_override_twin_rust_async_sse(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithFreezedOverrideTwinSse sse_decode_enum_with_freezed_override_twin_sse(
+      SseDeserializer deserializer);
+
+  @protected
+  EnumWithFreezedOverrideTwinSync
+      sse_decode_enum_with_freezed_override_twin_sync(
+          SseDeserializer deserializer);
+
+  @protected
+  EnumWithFreezedOverrideTwinSyncSse
+      sse_decode_enum_with_freezed_override_twin_sync_sse(
           SseDeserializer deserializer);
 
   @protected
@@ -22894,6 +23005,27 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  JSAny cst_encode_box_autoadd_enum_with_freezed_override_twin_normal(
+      EnumWithFreezedOverrideTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_enum_with_freezed_override_twin_normal(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_enum_with_freezed_override_twin_rust_async(
+      EnumWithFreezedOverrideTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_enum_with_freezed_override_twin_rust_async(raw);
+  }
+
+  @protected
+  JSAny cst_encode_box_autoadd_enum_with_freezed_override_twin_sync(
+      EnumWithFreezedOverrideTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    return cst_encode_enum_with_freezed_override_twin_sync(raw);
+  }
+
+  @protected
   JSAny cst_encode_box_autoadd_enum_with_good_and_opaque_twin_moi(
       EnumWithGoodAndOpaqueTwinMoi raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
@@ -25134,6 +25266,48 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       EnumOpaqueTwinSyncMoiArray5 raw) {
     // Codec=Cst (C-struct based), see doc to use other codecs
     return cst_encode_list_enum_opaque_twin_sync_moi(raw);
+  }
+
+  @protected
+  JSAny cst_encode_enum_with_freezed_override_twin_normal(
+      EnumWithFreezedOverrideTwinNormal raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    if (raw is EnumWithFreezedOverrideTwinNormal_Empty) {
+      return [0].jsify()!;
+    }
+    if (raw is EnumWithFreezedOverrideTwinNormal_Named) {
+      return [1, cst_encode_i_32(raw.count)].jsify()!;
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  JSAny cst_encode_enum_with_freezed_override_twin_rust_async(
+      EnumWithFreezedOverrideTwinRustAsync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    if (raw is EnumWithFreezedOverrideTwinRustAsync_Empty) {
+      return [0].jsify()!;
+    }
+    if (raw is EnumWithFreezedOverrideTwinRustAsync_Named) {
+      return [1, cst_encode_i_32(raw.count)].jsify()!;
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  JSAny cst_encode_enum_with_freezed_override_twin_sync(
+      EnumWithFreezedOverrideTwinSync raw) {
+    // Codec=Cst (C-struct based), see doc to use other codecs
+    if (raw is EnumWithFreezedOverrideTwinSync_Empty) {
+      return [0].jsify()!;
+    }
+    if (raw is EnumWithFreezedOverrideTwinSync_Named) {
+      return [1, cst_encode_i_32(raw.count)].jsify()!;
+    }
+
+    throw Exception('unreachable');
   }
 
   @protected
@@ -35367,6 +35541,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       EnumOpaqueTwinSyncSseMoi self, SseSerializer serializer);
 
   @protected
+  void sse_encode_box_autoadd_enum_with_freezed_override_twin_normal(
+      EnumWithFreezedOverrideTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_freezed_override_twin_rust_async(
+      EnumWithFreezedOverrideTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_freezed_override_twin_rust_async_sse(
+      EnumWithFreezedOverrideTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_freezed_override_twin_sse(
+      EnumWithFreezedOverrideTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_freezed_override_twin_sync(
+      EnumWithFreezedOverrideTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_enum_with_freezed_override_twin_sync_sse(
+      EnumWithFreezedOverrideTwinSyncSse self, SseSerializer serializer);
+
+  @protected
   void sse_encode_box_autoadd_enum_with_good_and_opaque_twin_moi(
       EnumWithGoodAndOpaqueTwinMoi self, SseSerializer serializer);
 
@@ -37453,6 +37651,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   void sse_encode_enum_with_discriminant_twin_sync_sse(
       EnumWithDiscriminantTwinSyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_freezed_override_twin_normal(
+      EnumWithFreezedOverrideTwinNormal self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_freezed_override_twin_rust_async(
+      EnumWithFreezedOverrideTwinRustAsync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_freezed_override_twin_rust_async_sse(
+      EnumWithFreezedOverrideTwinRustAsyncSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_freezed_override_twin_sse(
+      EnumWithFreezedOverrideTwinSse self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_freezed_override_twin_sync(
+      EnumWithFreezedOverrideTwinSync self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_enum_with_freezed_override_twin_sync_sse(
+      EnumWithFreezedOverrideTwinSyncSse self, SseSerializer serializer);
 
   @protected
   void sse_encode_enum_with_good_and_opaque_twin_moi(
@@ -50319,6 +50541,52 @@ class RustLibWire implements BaseWire {
               int data_len_) =>
           wasmModule
               .wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_enum_with_discriminant_twin_sync_sse(
+                  ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__enumeration__func_enum_with_freezed_override_twin_normal(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__enumeration__func_enum_with_freezed_override_twin_normal(
+              port_, arg);
+
+  void wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_freezed_override_twin_rust_async(
+          NativePortType port_, JSAny arg) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_freezed_override_twin_rust_async(
+              port_, arg);
+
+  void wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__func_enum_with_freezed_override_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__func_enum_with_freezed_override_twin_rust_async_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  void wire__crate__api__pseudo_manual__enumeration_twin_sse__func_enum_with_freezed_override_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_) =>
+      wasmModule
+          .wire__crate__api__pseudo_manual__enumeration_twin_sse__func_enum_with_freezed_override_twin_sse(
+              port_, ptr_, rust_vec_len_, data_len_);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_freezed_override_twin_sync(
+              JSAny arg) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_freezed_override_twin_sync(
+                  arg);
+
+  JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_enum_with_freezed_override_twin_sync_sse(
+              PlatformGeneralizedUint8ListPtr ptr_,
+              int rust_vec_len_,
+              int data_len_) =>
+          wasmModule
+              .wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_enum_with_freezed_override_twin_sync_sse(
                   ptr_, rust_vec_len_, data_len_);
 
   void wire__crate__api__enumeration__func_enum_with_item_mixed_twin_normal(
@@ -71550,6 +71818,38 @@ extension type RustLibWasmModule._(JSObject _) implements JSObject {
 
   external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
       wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_enum_with_discriminant_twin_sync_sse(
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__enumeration__func_enum_with_freezed_override_twin_normal(
+          NativePortType port_, JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_freezed_override_twin_rust_async(
+          NativePortType port_, JSAny arg);
+
+  external void
+      wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__func_enum_with_freezed_override_twin_rust_async_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external void
+      wire__crate__api__pseudo_manual__enumeration_twin_sse__func_enum_with_freezed_override_twin_sse(
+          NativePortType port_,
+          PlatformGeneralizedUint8ListPtr ptr_,
+          int rust_vec_len_,
+          int data_len_);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartDco */
+      wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_freezed_override_twin_sync(
+          JSAny arg);
+
+  external JSAny? /* flutter_rust_bridge::for_generated::WireSyncRust2DartSse */
+      wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_enum_with_freezed_override_twin_sync_sse(
           PlatformGeneralizedUint8ListPtr ptr_,
           int rust_vec_len_,
           int data_len_);

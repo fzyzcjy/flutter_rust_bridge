@@ -26,7 +26,10 @@ impl EnumRefApiDartGenerator<'_> {
         extra_body: &str,
         header: DartHeaderCode,
     ) -> Option<ApiDartGeneratedClass> {
-        let use_freezed = self.context.config.dart_enums_freezed || src.needs_json_serializable;
+        let use_freezed = src
+            .dart_enums_freezed
+            .unwrap_or(self.context.config.dart_enums_freezed)
+            || src.needs_json_serializable;
         let variants = src
             .variants()
             .iter()

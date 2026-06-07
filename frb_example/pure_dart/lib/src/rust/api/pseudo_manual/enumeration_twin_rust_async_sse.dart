@@ -9,8 +9,10 @@ import '../../frb_generated.dart';
 import 'misc_example_twin_rust_async_sse.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+part 'enumeration_twin_rust_async_sse.freezed.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
 
 Future<EnumSimpleTwinRustAsyncSse> funcEnumSimpleTwinRustAsyncSse(
         {required EnumSimpleTwinRustAsyncSse arg}) =>
@@ -43,6 +45,13 @@ Future<
     RustLib.instance.api
         .crateApiPseudoManualEnumerationTwinRustAsyncSseFuncEnumWithDiscriminantTwinRustAsyncSse(
             arg: arg);
+
+Future<EnumWithFreezedOverrideTwinRustAsyncSse>
+    funcEnumWithFreezedOverrideTwinRustAsyncSse(
+            {required EnumWithFreezedOverrideTwinRustAsyncSse arg}) =>
+        RustLib.instance.api
+            .crateApiPseudoManualEnumerationTwinRustAsyncSseFuncEnumWithFreezedOverrideTwinRustAsyncSse(
+                arg: arg);
 
 Future<Uint8List> printNoteTwinRustAsyncSse(
         {required NoteTwinRustAsyncSse note}) =>
@@ -139,6 +148,18 @@ enum EnumWithDiscriminantTwinRustAsyncSse {
   oneHundred,
   fifty,
   ;
+}
+
+@freezed
+sealed class EnumWithFreezedOverrideTwinRustAsyncSse
+    with _$EnumWithFreezedOverrideTwinRustAsyncSse {
+  const EnumWithFreezedOverrideTwinRustAsyncSse._();
+
+  const factory EnumWithFreezedOverrideTwinRustAsyncSse.empty() =
+      EnumWithFreezedOverrideTwinRustAsyncSse_Empty;
+  const factory EnumWithFreezedOverrideTwinRustAsyncSse.named({
+    @Default(-1) int count,
+  }) = EnumWithFreezedOverrideTwinRustAsyncSse_Named;
 }
 
 sealed class EnumWithItemMixedTwinRustAsyncSse {

@@ -9,8 +9,10 @@ import '../../frb_generated.dart';
 import 'misc_example_twin_sse.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+part 'enumeration_twin_sse.freezed.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `clone`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`, `fmt`
 
 Future<EnumSimpleTwinSse> funcEnumSimpleTwinSse(
         {required EnumSimpleTwinSse arg}) =>
@@ -39,6 +41,12 @@ Future<EnumWithDiscriminantTwinSse> funcEnumWithDiscriminantTwinSse(
         {required EnumWithDiscriminantTwinSse arg}) =>
     RustLib.instance.api
         .crateApiPseudoManualEnumerationTwinSseFuncEnumWithDiscriminantTwinSse(
+            arg: arg);
+
+Future<EnumWithFreezedOverrideTwinSse> funcEnumWithFreezedOverrideTwinSse(
+        {required EnumWithFreezedOverrideTwinSse arg}) =>
+    RustLib.instance.api
+        .crateApiPseudoManualEnumerationTwinSseFuncEnumWithFreezedOverrideTwinSse(
             arg: arg);
 
 Future<Uint8List> printNoteTwinSse({required NoteTwinSse note}) =>
@@ -131,6 +139,18 @@ enum EnumWithDiscriminantTwinSse {
   oneHundred,
   fifty,
   ;
+}
+
+@freezed
+sealed class EnumWithFreezedOverrideTwinSse
+    with _$EnumWithFreezedOverrideTwinSse {
+  const EnumWithFreezedOverrideTwinSse._();
+
+  const factory EnumWithFreezedOverrideTwinSse.empty() =
+      EnumWithFreezedOverrideTwinSse_Empty;
+  const factory EnumWithFreezedOverrideTwinSse.named({
+    @Default(-1) int count,
+  }) = EnumWithFreezedOverrideTwinSse_Named;
 }
 
 sealed class EnumWithItemMixedTwinSse {

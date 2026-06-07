@@ -748,6 +748,45 @@ typedef struct wire_cst_sequences {
   struct wire_cst_list_prim_i_32_strict *field0;
 } wire_cst_sequences;
 
+typedef struct wire_cst_EnumWithFreezedOverrideTwinNormal_Named {
+  int32_t count;
+} wire_cst_EnumWithFreezedOverrideTwinNormal_Named;
+
+typedef union EnumWithFreezedOverrideTwinNormalKind {
+  struct wire_cst_EnumWithFreezedOverrideTwinNormal_Named Named;
+} EnumWithFreezedOverrideTwinNormalKind;
+
+typedef struct wire_cst_enum_with_freezed_override_twin_normal {
+  int32_t tag;
+  union EnumWithFreezedOverrideTwinNormalKind kind;
+} wire_cst_enum_with_freezed_override_twin_normal;
+
+typedef struct wire_cst_EnumWithFreezedOverrideTwinRustAsync_Named {
+  int32_t count;
+} wire_cst_EnumWithFreezedOverrideTwinRustAsync_Named;
+
+typedef union EnumWithFreezedOverrideTwinRustAsyncKind {
+  struct wire_cst_EnumWithFreezedOverrideTwinRustAsync_Named Named;
+} EnumWithFreezedOverrideTwinRustAsyncKind;
+
+typedef struct wire_cst_enum_with_freezed_override_twin_rust_async {
+  int32_t tag;
+  union EnumWithFreezedOverrideTwinRustAsyncKind kind;
+} wire_cst_enum_with_freezed_override_twin_rust_async;
+
+typedef struct wire_cst_EnumWithFreezedOverrideTwinSync_Named {
+  int32_t count;
+} wire_cst_EnumWithFreezedOverrideTwinSync_Named;
+
+typedef union EnumWithFreezedOverrideTwinSyncKind {
+  struct wire_cst_EnumWithFreezedOverrideTwinSync_Named Named;
+} EnumWithFreezedOverrideTwinSyncKind;
+
+typedef struct wire_cst_enum_with_freezed_override_twin_sync {
+  int32_t tag;
+  union EnumWithFreezedOverrideTwinSyncKind kind;
+} wire_cst_enum_with_freezed_override_twin_sync;
+
 typedef struct wire_cst_EnumWithItemMixedTwinNormal_B {
   struct wire_cst_list_prim_u_8_strict *field0;
 } wire_cst_EnumWithItemMixedTwinNormal_B;
@@ -8143,6 +8182,28 @@ WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manua
                                                                                                                                                         int32_t rust_vec_len_,
                                                                                                                                                         int32_t data_len_);
 
+void frbgen_frb_example_pure_dart_wire__crate__api__enumeration__func_enum_with_freezed_override_twin_normal(int64_t port_,
+                                                                                                             struct wire_cst_enum_with_freezed_override_twin_normal *arg);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_freezed_override_twin_rust_async(int64_t port_,
+                                                                                                                                                struct wire_cst_enum_with_freezed_override_twin_rust_async *arg);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__func_enum_with_freezed_override_twin_rust_async_sse(int64_t port_,
+                                                                                                                                                        uint8_t *ptr_,
+                                                                                                                                                        int32_t rust_vec_len_,
+                                                                                                                                                        int32_t data_len_);
+
+void frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sse__func_enum_with_freezed_override_twin_sse(int64_t port_,
+                                                                                                                                  uint8_t *ptr_,
+                                                                                                                                  int32_t rust_vec_len_,
+                                                                                                                                  int32_t data_len_);
+
+WireSyncRust2DartDco frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_freezed_override_twin_sync(struct wire_cst_enum_with_freezed_override_twin_sync *arg);
+
+WireSyncRust2DartSse frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_enum_with_freezed_override_twin_sync_sse(uint8_t *ptr_,
+                                                                                                                                                            int32_t rust_vec_len_,
+                                                                                                                                                            int32_t data_len_);
+
 void frbgen_frb_example_pure_dart_wire__crate__api__enumeration__func_enum_with_item_mixed_twin_normal(int64_t port_,
                                                                                                        struct wire_cst_enum_with_item_mixed_twin_normal *arg);
 
@@ -15170,6 +15231,12 @@ struct wire_cst_enum_opaque_twin_sync *frbgen_frb_example_pure_dart_cst_new_box_
 
 struct wire_cst_enum_opaque_twin_sync_moi *frbgen_frb_example_pure_dart_cst_new_box_autoadd_enum_opaque_twin_sync_moi(void);
 
+struct wire_cst_enum_with_freezed_override_twin_normal *frbgen_frb_example_pure_dart_cst_new_box_autoadd_enum_with_freezed_override_twin_normal(void);
+
+struct wire_cst_enum_with_freezed_override_twin_rust_async *frbgen_frb_example_pure_dart_cst_new_box_autoadd_enum_with_freezed_override_twin_rust_async(void);
+
+struct wire_cst_enum_with_freezed_override_twin_sync *frbgen_frb_example_pure_dart_cst_new_box_autoadd_enum_with_freezed_override_twin_sync(void);
+
 struct wire_cst_enum_with_good_and_opaque_twin_moi *frbgen_frb_example_pure_dart_cst_new_box_autoadd_enum_with_good_and_opaque_twin_moi(void);
 
 struct wire_cst_enum_with_good_and_opaque_twin_normal *frbgen_frb_example_pure_dart_cst_new_box_autoadd_enum_with_good_and_opaque_twin_normal(void);
@@ -15953,6 +16020,9 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_enum_opaque_twin_rust_async_moi);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_enum_opaque_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_enum_opaque_twin_sync_moi);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_enum_with_freezed_override_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_enum_with_freezed_override_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_enum_with_freezed_override_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_enum_with_good_and_opaque_twin_moi);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_enum_with_good_and_opaque_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_cst_new_box_autoadd_enum_with_good_and_opaque_twin_rust_async);
@@ -16865,6 +16935,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__dyn_trait__func_arg_dyn_trait_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__enumeration__func_enum_simple_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__enumeration__func_enum_with_discriminant_twin_normal);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__enumeration__func_enum_with_freezed_override_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__enumeration__func_enum_with_item_mixed_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__enumeration__func_enum_with_item_struct_twin_normal);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__enumeration__func_enum_with_item_tuple_twin_normal);
@@ -17949,6 +18020,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__dropping_twin_sync_sse__DroppableTwinSyncSse_simple_method_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_simple_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_discriminant_twin_rust_async);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_freezed_override_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_item_mixed_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_item_struct_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async__func_enum_with_item_tuple_twin_rust_async);
@@ -17959,6 +18031,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async__print_note_twin_rust_async);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__func_enum_simple_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__func_enum_with_discriminant_twin_rust_async_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__func_enum_with_freezed_override_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__func_enum_with_item_mixed_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__func_enum_with_item_struct_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__func_enum_with_item_tuple_twin_rust_async_sse);
@@ -17969,6 +18042,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_rust_async_sse__print_note_twin_rust_async_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sse__func_enum_simple_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sse__func_enum_with_discriminant_twin_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sse__func_enum_with_freezed_override_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sse__func_enum_with_item_mixed_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sse__func_enum_with_item_struct_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sse__func_enum_with_item_tuple_twin_sse);
@@ -17979,6 +18053,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sse__print_note_twin_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_simple_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_discriminant_twin_sync);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_freezed_override_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_item_mixed_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_item_struct_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sync__func_enum_with_item_tuple_twin_sync);
@@ -17989,6 +18064,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sync__print_note_twin_sync);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_enum_simple_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_enum_with_discriminant_twin_sync_sse);
+    dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_enum_with_freezed_override_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_enum_with_item_mixed_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_enum_with_item_struct_twin_sync_sse);
     dummy_var ^= ((int64_t) (void*) frbgen_frb_example_pure_dart_wire__crate__api__pseudo_manual__enumeration_twin_sync_sse__func_enum_with_item_tuple_twin_sync_sse);

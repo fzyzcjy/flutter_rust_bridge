@@ -69,6 +69,7 @@ impl TypeParserWithContext<'_, '_, '_> {
             variants,
             mode,
             ignore,
+            dart_enums_freezed: attributes.dart_enums_freezed(),
             needs_json_serializable: attributes.json_serializable(),
         })
     }

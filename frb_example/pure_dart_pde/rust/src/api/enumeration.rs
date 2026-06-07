@@ -59,6 +59,22 @@ pub fn func_enum_with_discriminant_twin_normal(
     arg
 }
 
+#[frb(dart_enums_freezed)]
+#[derive(Debug, Clone)]
+pub enum EnumWithFreezedOverrideTwinNormal {
+    Empty,
+    Named {
+        #[frb(default = -1)]
+        count: i32,
+    },
+}
+
+pub fn func_enum_with_freezed_override_twin_normal(
+    arg: EnumWithFreezedOverrideTwinNormal,
+) -> EnumWithFreezedOverrideTwinNormal {
+    arg
+}
+
 #[frb]
 #[derive(Debug)]
 pub struct NoteTwinNormal {
