@@ -172,3 +172,37 @@ TestFlutterWebConfig parseTestFlutterWebConfig(List<String> args) {
   final result = _$parserForTestFlutterWebConfig.parse(args);
   return _$parseTestFlutterWebConfigResult(result);
 }
+
+TestFlutterQuickstartSmokeConfig _$parseTestFlutterQuickstartSmokeConfigResult(
+  ArgResults result,
+) => TestFlutterQuickstartSmokeConfig(
+  package: convertConfigPackage(result['package'] as String),
+  target: _$enumValueHelper(
+    _$QuickstartSmokeTargetEnumMapBuildCli,
+    result['target'] as String,
+  ),
+  deviceId: result['device-id'] as String?,
+);
+
+const _$QuickstartSmokeTargetEnumMapBuildCli = <QuickstartSmokeTarget, String>{
+  QuickstartSmokeTarget.web: 'web',
+  QuickstartSmokeTarget.desktop: 'desktop',
+  QuickstartSmokeTarget.android: 'android',
+  QuickstartSmokeTarget.ios: 'ios',
+};
+
+ArgParser _$populateTestFlutterQuickstartSmokeConfigParser(ArgParser parser) =>
+    parser
+      ..addOption('package')
+      ..addOption('target', allowed: ['web', 'desktop', 'android', 'ios'])
+      ..addOption('device-id');
+
+final _$parserForTestFlutterQuickstartSmokeConfig =
+    _$populateTestFlutterQuickstartSmokeConfigParser(ArgParser());
+
+TestFlutterQuickstartSmokeConfig parseTestFlutterQuickstartSmokeConfig(
+  List<String> args,
+) {
+  final result = _$parserForTestFlutterQuickstartSmokeConfig.parse(args);
+  return _$parseTestFlutterQuickstartSmokeConfigResult(result);
+}

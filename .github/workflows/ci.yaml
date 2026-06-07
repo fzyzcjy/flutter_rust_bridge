@@ -11,7 +11,17 @@ on:
       - reopened
       - ready_for_review
       - closed
-  workflow_dispatch: { }
+      - labeled
+      - unlabeled
+  workflow_dispatch:
+    inputs:
+      ci_filter:
+        description: 'CI filter, e.g. test_dart_web[package=frb_dart], or full'
+        required: true
+        default: full
+        type: string
+
+run-name: ${{ github.event_name == 'workflow_dispatch' && format('CI ({0})', inputs.ci_filter) || 'CI' }}
 
 env:
   CARGO_TERM_COLOR: always
@@ -25,11 +35,115 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  plan_ci:
+    if: ${{ github.event.action != 'closed' }}
+    name: 'Plan :: CI'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
+    outputs:
+      plan: ${{ steps.plan.outputs.plan }}
+
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          submodules: recursive
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: ${{ env.FRB_MAIN_DART_VERSION }}
+          architecture: x64
+      - id: plan
+        run: |-
+          ./frb_internal plan-ci \
+            --filter '${{ inputs.ci_filter || 'full' }}' \
+            --automatic-ci-disabled=${{ github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'ci-manual-dispatch') }} \
+            --github-output "$GITHUB_OUTPUT"
+      - name: Comment on matching pull request
+        if: ${{ always() && github.event_name == 'workflow_dispatch' }}
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const ref = context.ref;
+
+            if (!ref.startsWith('refs/heads/')) {
+              core.notice(`Manual CI dispatch ref ${ref} is not a branch; skipping PR comment.`);
+              return;
+            }
+
+            const branch = ref.substring('refs/heads/'.length);
+            const pullRequests = await github.paginate(github.rest.pulls.list, {
+              owner,
+              repo,
+              state: 'open',
+              head: `${owner}:${branch}`,
+              per_page: 100,
+            });
+
+            if (pullRequests.length === 0) {
+              core.notice(`No open PR found for branch ${branch}; skipping PR comment.`);
+              return;
+            }
+
+            const pullRequest = pullRequests[0];
+            const marker = `<!-- ci-manual-dispatch-comment:${context.runId} -->`;
+            const runUrl = `${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId}`;
+            const ciFilter = context.payload.inputs?.ci_filter ?? 'full';
+            const body = [
+              marker,
+              '## Manual CI dispatch',
+              '',
+              `Filter: \`${ciFilter}\``,
+              `Run: [${context.runId}](${runUrl})`,
+              `Branch: \`${branch}\``,
+              '',
+              'This is a manually dispatched CI run. It is not the normal automatic PR CI surface.',
+              '',
+            ].join('\n');
+
+            try {
+              const comments = await github.paginate(github.rest.issues.listComments, {
+                owner,
+                repo,
+                issue_number: pullRequest.number,
+                per_page: 100,
+              });
+              const existingComment = comments.find(
+                (comment) =>
+                  comment.user?.type === 'Bot' &&
+                  typeof comment.body === 'string' &&
+                  comment.body.includes(marker),
+              );
+
+              if (existingComment) {
+                await github.rest.issues.updateComment({
+                  owner,
+                  repo,
+                  comment_id: existingComment.id,
+                  body,
+                });
+                return;
+              }
+
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: pullRequest.number,
+                body,
+              });
+            } catch (error) {
+              core.warning(`Could not write manual CI dispatch PR comment: ${error.message}`);
+            }
+
   # ----------------------------------- deploy -----------------------------------
 
   # ref https://docusaurus.io/docs/deployment#triggering-deployment-with-github-actions
   deploy_website:
-    if: ${{ github.event.action != 'closed' }}
+    needs: plan_ci
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).deploy_website.enable == true }}
     name: 'Deploy :: Website'
     runs-on: ubuntu-latest
 
@@ -73,7 +187,8 @@ jobs:
   # ----------------------------------- lint -----------------------------------
 
   lint_rust_primary:
-    if: ${{ github.event.action != 'closed' }}
+    needs: plan_ci
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).lint_rust_primary.enable == true }}
     name: 'Lint :: Rust :: Primary'
     runs-on: ubuntu-latest
 
@@ -107,7 +222,8 @@ jobs:
       - run: ./frb_internal lint-rust
 
   lint_dart_primary:
-    if: ${{ github.event.action != 'closed' }}
+    needs: plan_ci
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).lint_dart_primary.enable == true }}
     name: 'Lint :: Dart :: Primary'
     runs-on: ubuntu-latest
 
@@ -133,7 +249,8 @@ jobs:
       - run: ./frb_internal lint-dart
 
   lint_rust_feature_flag:
-    if: ${{ github.event.action != 'closed' }}
+    needs: plan_ci
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).lint_rust_feature_flag.enable == true }}
     name: 'Lint :: Rust :: Feature flag'
     runs-on: ubuntu-latest
 
@@ -194,36 +311,14 @@ jobs:
   #       cargo msrv --path frb_rust verify
 
   generate_run_frb_codegen_command_generate:
-    if: ${{ github.event.action != 'closed' }}
+    needs: plan_ci
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).generate_run_frb_codegen_command_generate.enable == true }}
     name: 'Generate :: FRB Codegen :: Command Generate'
     runs-on: ${{ matrix.image }}
 
     strategy:
       fail-fast: false
-      matrix:
-        image:
-          - windows-2025
-          - macos-15-intel
-          - ubuntu-24.04
-        package:
-          - frb_example--dart_minimal
-          - frb_example--pure_dart
-          - frb_example--pure_dart_pde
-          - frb_example--dart_build_rs
-          - frb_example--deliberate_bad
-          - frb_example--integrate_third_party
-          - frb_example--flutter_via_create
-          - frb_example--flutter_via_integrate
-          - frb_example--flutter_package
-          - frb_example--rust_ui_counter--ui
-          - frb_example--rust_ui_todo_list--ui
-        exclude:
-          - { image: windows-2025, package: frb_example--deliberate_bad }
-          - { image: macos-15-intel, package: frb_example--deliberate_bad }
-          - { image: windows-2025, package: frb_example--integrate_third_party }
-          - { image: macos-15-intel, package: frb_example--integrate_third_party }
-          - { image: windows-2025, package: frb_example--flutter_via_integrate }
-          - { image: macos-15-intel, package: frb_example--flutter_via_integrate }
+      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).generate_run_frb_codegen_command_generate.matrix }}
 
     steps:
       # setup
@@ -258,7 +353,8 @@ jobs:
           path: target/coverage
 
   generate_run_frb_codegen_command_integrate:
-    if: ${{ github.event.action != 'closed' }}
+    needs: plan_ci
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).generate_run_frb_codegen_command_integrate.enable == true }}
     name: 'Generate :: FRB Codegen :: Command Integrate'
     runs-on: ${{ matrix.image }}
     env:
@@ -266,21 +362,7 @@ jobs:
 
     strategy:
       fail-fast: false
-      matrix:
-        image:
-          - macos-15-intel
-          - windows-2025
-          - ubuntu-24.04
-        package:
-          - frb_example--flutter_via_create
-          - frb_example--flutter_via_integrate
-          - frb_example--flutter_package
-        platforms:
-          - default
-        include:
-          - image: ubuntu-24.04
-            package: frb_example--flutter_via_create
-            platforms: ohos
+      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).generate_run_frb_codegen_command_integrate.matrix }}
 
     steps:
       # setup
@@ -338,7 +420,8 @@ jobs:
           path: target/coverage
 
   generate_internal:
-    if: ${{ github.event.action != 'closed' }}
+    needs: plan_ci
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).generate_internal.enable == true }}
     name: 'Generate :: Internal'
     runs-on: ubuntu-latest
 
@@ -379,16 +462,13 @@ jobs:
   # ----------------------------------- bench -----------------------------------
 
   bench_dart_native:
-    if: ${{ github.event.action != 'closed' }}
+    needs: plan_ci
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).bench_dart_native.enable == true }}
     name: 'Bench :: Dart :: Native'
     runs-on: ${{ matrix.image }}
     strategy:
       fail-fast: false
-      matrix:
-        image:
-          - windows-2025
-          - macos-15-intel
-          - ubuntu-24.04
+      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).bench_dart_native.matrix }}
 
     steps:
       # setup
@@ -424,8 +504,9 @@ jobs:
     name: 'Bench :: Upload'
     runs-on: ubuntu-latest
     # NOTE Even if some previous jobs failed, we still want partial info
-    if: ${{ github.event.action != 'closed' && always() && !cancelled() }}
+    if: ${{ always() && !cancelled() && fromJSON(needs.plan_ci.outputs.plan).bench_upload.enable == true }}
     needs:
+      - plan_ci
       # NOTE We do this to ensure bench upload *after* deploy website.
       # Otherwise, if they are run concurrently, they can push to git at the same time, causing failure for one of them
       - deploy_website
@@ -461,29 +542,13 @@ jobs:
   # ----------------------------------- build -----------------------------------
 
   build_flutter:
-    if: ${{ github.event.action != 'closed' }}
+    needs: plan_ci
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).build_flutter.enable == true }}
     name: 'Build :: Flutter'
     runs-on: ${{ matrix.info.image }}
     strategy:
       fail-fast: false
-      matrix:
-        info:
-          - image: windows-2025
-            target: windows
-          - image: windows-11-arm
-            target: windows
-          - image: macos-15-intel
-            target: macos
-          - image: ubuntu-latest
-            target: linux
-          - image: ubuntu-latest
-            target: android-aab
-          - image: ubuntu-latest
-            target: android-apk
-          - image: macos-15-intel
-            target: ios
-          - image: ubuntu-latest
-            target: ohos
+      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).build_flutter.matrix }}
 
     steps:
       # setup
@@ -541,17 +606,13 @@ jobs:
   # ----------------------------------- test -----------------------------------
 
   test_mimic_quickstart:
-    if: ${{ github.event.action != 'closed' }}
+    needs: plan_ci
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_mimic_quickstart.enable == true }}
     name: 'Test :: MimicQuickstart'
     runs-on: ${{ matrix.image }}
     strategy:
       fail-fast: false
-      matrix:
-        image:
-          - windows-2025
-          # need macos-"13" because https://github.com/fzyzcjy/flutter_rust_bridge/issues/1225
-          - macos-15-intel
-          - ubuntu-latest
+      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).test_mimic_quickstart.matrix }}
 
     steps:
       # setup
@@ -629,29 +690,13 @@ jobs:
   #         path: target/coverage
 
   test_rust:
-    if: ${{ github.event.action != 'closed' }}
+    needs: plan_ci
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_rust.enable == true }}
     name: 'Test :: Rust'
     runs-on: ${{ matrix.info.image }}
     strategy:
       fail-fast: false
-      matrix:
-        info:
-          # run on various platforms
-          - image: macos-15-intel
-            version: ''
-          - image: windows-2025
-            version: ''
-          - image: ubuntu-latest
-            version: ''
-          # run on various rust versions
-          - image: ubuntu-latest
-            version: nightly
-          # tests the MSRV
-          # run on all rust packages, though only needed for frb_rust and frb_codegen
-          - image: ubuntu-latest
-            # update this, if a later MSRV is needed
-            # Need at least 1.85.0 for latest cargo-expand; if need older Rust version may pin a old cargo-expand
-            version: 1.85.0
+      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).test_rust.matrix }}
 
     steps:
       # setup
@@ -687,32 +732,13 @@ jobs:
           path: target/coverage
 
   test_dart_native:
-    if: ${{ github.event.action != 'closed' }}
+    needs: plan_ci
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_dart_native.enable == true }}
     name: 'Test :: Dart :: Native'
     runs-on: ${{ matrix.image }}
     strategy:
       fail-fast: false
-      matrix:
-        image:
-          - windows-2025
-          - macos-15-intel
-          - ubuntu-24.04
-        package:
-          - frb_dart
-          - frb_utils
-          - tools--frb_internal
-          - frb_example--dart_minimal
-          - frb_example--pure_dart
-          - frb_example--pure_dart_pde
-          - frb_example--dart_build_rs
-          # - frb_example--deliberate_bad
-        exclude:
-          - { image: windows-2025, package: frb_utils }
-          - { image: macos-15-intel, package: frb_utils }
-          - { image: windows-2025, package: tools--frb_internal }
-          - { image: macos-15-intel, package: tools--frb_internal }
-          # - { image: windows-2025, package: frb_example--deliberate_bad }
-          # - { image: macos-15-intel, package: frb_example--deliberate_bad }
+      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).test_dart_native.matrix }}
 
     steps:
       # setup
@@ -747,18 +773,13 @@ jobs:
           path: target/coverage
 
   test_dart_web:
-    if: ${{ github.event.action != 'closed' }}
+    needs: plan_ci
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_dart_web.enable == true }}
     name: 'Test :: Dart :: Web'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix:
-        package:
-          - frb_dart
-          - frb_example--dart_minimal
-          - frb_example--pure_dart
-          - frb_example--pure_dart_pde
-          # no need for `frb_example--deliberate_bad`, `frb_example--dart_build_rs`
+      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).test_dart_web.matrix }}
 
     steps:
       # setup
@@ -807,17 +828,13 @@ jobs:
       - run: ./frb_internal test-dart-web --package ${{ matrix.package }}
 
   test_dart_valgrind:
-    if: ${{ github.event.action != 'closed' }}
+    needs: plan_ci
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_dart_valgrind.enable == true }}
     name: 'Test :: Dart :: Valgrind'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix:
-        package:
-          - frb_example--dart_minimal
-          - frb_example--pure_dart
-          - frb_example--pure_dart_pde
-          # no need for `frb_example--deliberate_bad`, `frb_example--dart_build_rs`
+      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).test_dart_valgrind.matrix }}
 
     steps:
       # setup
@@ -846,25 +863,13 @@ jobs:
       - run: ./frb_internal test-dart-valgrind --package ${{ matrix.package }}
 
   test_dart_sanitizer:
-    if: ${{ github.event.action != 'closed' }}
+    needs: plan_ci
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_dart_sanitizer.enable == true }}
     name: 'Test :: Dart :: Sanitizer'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix:
-        sanitizer:
-          - asan
-          - lsan
-          # Every time we build TSAN in https://github.com/fzyzcjy/dart_lang_ci, it fails near the end.
-          # Since it is unlikely we will have thread issues, we temporarily disable TSAN now.
-          # - tsan
-          # - msan
-        package:
-          - frb_example--dart_minimal
-          - frb_example--pure_dart
-          - frb_example--pure_dart_pde
-          # - frb_example--deliberate_bad # wait for https://github.com/rust-lang/rust/issues/111073
-          # no need for `frb_example--dart_build_rs`
+      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).test_dart_sanitizer.matrix }}
 
     steps:
       # setup
@@ -898,22 +903,13 @@ jobs:
 
   # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
   test_flutter_native_android:
-    if: ${{ github.event.action != 'closed' }}
+    needs: plan_ci
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_flutter_native_android.enable == true }}
     name: 'Test :: Flutter :: Native:: Android'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix:
-        package:
-          - frb_example--flutter_via_create
-          - frb_example--flutter_package--example
-          - frb_example--rust_ui_counter--ui
-          - frb_example--rust_ui_todo_list--ui
-          # no `frb_example--flutter_via_integrate` since it is similar to `flutter_via_create`
-        device:
-          - "pixel"
-          - "Nexus 6"
-        api-level: [ 35 ]
+      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).test_flutter_native_android.matrix }}
 
     steps:
       # setup
@@ -968,21 +964,13 @@ jobs:
 
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
   test_flutter_native_ios:
-    if: ${{ github.event.action != 'closed' }}
+    needs: plan_ci
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_flutter_native_ios.enable == true }}
     name: 'Test :: Flutter :: Native:: iOS'
     runs-on: macos-latest
     strategy:
       fail-fast: false
-      matrix:
-        package:
-          - frb_example--flutter_via_create
-          - frb_example--flutter_package--example
-          - frb_example--rust_ui_counter--ui
-          - frb_example--rust_ui_todo_list--ui
-          # no `frb_example--flutter_via_integrate` since it is similar to `flutter_via_create`
-        device:
-          - "iPad (10th generation) Simulator (18.6)"
-          - "iPhone 16 Pro Max Simulator (18.6)"
+      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).test_flutter_native_ios.matrix }}
 
     steps:
       # setup
@@ -1014,66 +1002,13 @@ jobs:
       - run: ./frb_internal test-flutter-native --package ${{ matrix.package }}
 
   test_flutter_native_desktop:
-    if: ${{ github.event.action != 'closed' }}
+    needs: plan_ci
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_flutter_native_desktop.enable == true }}
     name: 'Test :: Flutter :: Native:: ${{ matrix.info.platform }} (${{ matrix.info.package }})'
     runs-on: ${{ matrix.info.image }}
     strategy:
       fail-fast: false
-      matrix:
-        info:
-          - image: windows-2025
-            platform: windows
-            package: frb_example--flutter_via_create
-          # need macos-"13" because https://github.com/fzyzcjy/flutter_rust_bridge/issues/1225
-          - image: macos-15-intel
-            platform: macos
-            package: frb_example--flutter_via_create
-          - image: ubuntu-latest
-            platform: linux
-            package: frb_example--flutter_via_create
-
-          - image: windows-2025
-            platform: windows
-            package: frb_example--flutter_package--example
-          - image: macos-15-intel
-            platform: macos
-            package: frb_example--flutter_package--example
-          - image: ubuntu-latest
-            platform: linux
-            package: frb_example--flutter_package--example
-
-          - image: windows-2025
-            platform: windows
-            package: frb_example--rust_ui_counter--ui
-          - image: macos-15-intel
-            platform: macos
-            package: frb_example--rust_ui_counter--ui
-          - image: ubuntu-latest
-            platform: linux
-            package: frb_example--rust_ui_counter--ui
-
-          - image: windows-2025
-            platform: windows
-            package: frb_example--rust_ui_todo_list--ui
-          - image: macos-15-intel
-            platform: macos
-            package: frb_example--rust_ui_todo_list--ui
-          - image: ubuntu-latest
-            platform: linux
-            package: frb_example--rust_ui_todo_list--ui
-
-          # only slightly test `flutter_via_integrate` since quite similar to `flutter_via_create`
-          - image: ubuntu-latest
-            platform: linux
-            package: frb_example--flutter_via_integrate
-          # only slightly test `gallery`, since mainly used on web
-          - image: ubuntu-latest
-            platform: linux
-            package: frb_example--gallery
-          # only slightly test `integrate_third_party`, since the main point is not this
-          - image: ubuntu-latest
-            platform: linux
-            package: frb_example--integrate_third_party
+      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).test_flutter_native_desktop.matrix }}
 
     steps:
       # setup
@@ -1102,29 +1037,13 @@ jobs:
       - run: ./frb_internal test-flutter-native --flutter-test-args '--device-id ${{ matrix.info.platform }}' --package ${{ matrix.info.package }}
 
   test_flutter_web:
-    if: ${{ github.event.action != 'closed' }}
+    needs: plan_ci
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_flutter_web.enable == true }}
     name: "Test :: Flutter :: Web (${{ matrix.wasm && 'dart2wasm' || 'dart2js' }} / ${{ matrix.package }})"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix:
-        package:
-          - frb_example--flutter_via_create
-          # no `frb_example--flutter_package--example` yet
-          # no `frb_example--flutter_via_integrate` since it is similar to `flutter_via_create`
-          - frb_example--gallery
-        # Run each package twice: once compiled to JavaScript (dart2js), once to WebAssembly (dart2wasm).
-        # dart2wasm coverage is not collected — coverage tooling is dart2js-only.
-        wasm: [false, true]
-        exclude:
-          # gallery's mandelbrot uses WorkerPool, which fails to initialise under
-          # dart2wasm (pre-existing infra limitation, unrelated to this DCO fix —
-          # see #2914 / #2575). Under --wasm the app hangs at startup before any
-          # FRB decode runs, so this cell would test the loader bug, not our change.
-          # The dart2wasm runtime gate for this PR is flutter_via_create x dart2wasm
-          # plus the frb_dart dco_codec_test (run under --compiler dart2wasm).
-          - package: frb_example--gallery
-            wasm: true
+      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).test_flutter_web.matrix }}
 
     steps:
       - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
@@ -1173,6 +1092,109 @@ jobs:
           name: ${{ github.job }}--${{ matrix.package }}--coverage
           path: target/coverage
 
+  test_flutter_quickstart_smoke:
+    needs: plan_ci
+    if: ${{ fromJSON(needs.plan_ci.outputs.plan).test_flutter_quickstart_smoke.enable == true }}
+    name: 'Test :: Flutter :: Quickstart Smoke:: ${{ matrix.info.platform }} (${{ matrix.info.device }})'
+    runs-on: ${{ matrix.info.image }}
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.plan_ci.outputs.plan).test_flutter_quickstart_smoke.matrix }}
+
+    steps:
+      # setup
+      - if: ${{ vars.ENABLE_WORKFLOW_TELEMETRY == 'true' }}
+        uses: catchpoint/workflow-telemetry-action@v2
+        continue-on-error: true
+        env:
+          WORKFLOW_TELEMETRY_SERVER_PORT: 7778
+        with:
+          comment_on_pr: false
+          job_summary: false
+      - uses: actions/checkout@v5
+        with:
+          submodules: recursive
+      - uses: flutter-actions/setup-flutter@v4
+        with:
+          cache: true
+          version: ${{ env.FRB_MAIN_FLUTTER_VERSION }}
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ env.FRB_MAIN_RUST_VERSION }}
+      - if: ${{ matrix.info.target == 'web' }}
+        run: rustup target add wasm32-unknown-unknown
+      - if: ${{ matrix.info.target == 'web' }}
+        run: |-
+          rustup toolchain install nightly
+          rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
+      - if: ${{ matrix.info.target == 'android' }}
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: "17.x"
+      - if: ${{ matrix.info.target == 'android' }}
+        name: Enable KVM group perms
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - if: ${{ matrix.info.target == 'android' }}
+        name: AVD cache
+        uses: actions/cache@v4
+        id: avd-cache
+        with:
+          path: |
+            ~/.android/avd/*
+            ~/.android/adb*
+          key: avd-${{ matrix.info.device }}-api-level-${{ matrix.info.api-level }}
+      - if: ${{ matrix.info.target == 'android' && steps.avd-cache.outputs.cache-hit != 'true' }}
+        name: Create AVD and generate snapshot for caching
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.info.api-level }}
+          force-avd-creation: false
+          arch: x86_64
+          script: echo "Generated AVD snapshot for caching."
+      - if: ${{ matrix.info.target == 'ios' }}
+        name: Start Simulator
+        run: |
+          xcrun xctrace list devices
+          UDID=$(xcrun xctrace list devices | grep '${{ matrix.info.device }} (' | awk '{print $NF}' | tr -d '()')
+          echo UDID=$UDID
+          echo "UDID=$UDID" >> "$GITHUB_ENV"
+          echo "QUICKSTART_SMOKE_DEVICE_ID=$UDID" >> "$GITHUB_ENV"
+          xcrun simctl boot "${UDID:?No Simulator with this name found}"
+      - if: ${{ runner.os == 'Linux' }}
+        run: sudo apt-get update && sudo apt-get install -y clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev imagemagick tesseract-ocr
+      - if: ${{ matrix.info.target == 'web' || matrix.info.platform == 'linux' }}
+        uses: pyvista/setup-headless-display-action@v4
+      - if: ${{ runner.os == 'macOS' }}
+        run: HOMEBREW_NO_AUTO_UPDATE=1 brew install imagemagick tesseract
+      - if: ${{ runner.os == 'Windows' }}
+        run: |-
+          choco install imagemagick.app tesseract -y
+          echo "C:\Program Files\Tesseract-OCR" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+
+      # execute
+      - if: ${{ matrix.info.target == 'android' }}
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.info.api-level }}
+          arch: x86_64
+          profile: ${{ matrix.info.device }}
+          script: ./frb_internal test-flutter-quickstart-smoke --package ${{ matrix.info.package }} --target android --device-id emulator-5554
+      - if: ${{ matrix.info.target != 'android' }}
+        shell: bash
+        run: ./frb_internal test-flutter-quickstart-smoke --package ${{ matrix.info.package }} --target ${{ matrix.info.target }} --device-id "${QUICKSTART_SMOKE_DEVICE_ID:-${{ matrix.info.device }}}"
+
+      # report
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: quickstart-smoke--${{ matrix.info.platform }}--${{ matrix.info.device }}--${{ matrix.info.package }}
+          path: frb_example/flutter_via_create/target/quickstart_smoke
+          if-no-files-found: warn
+
   # ----------------------------------- misc -----------------------------------
 
   # Why one separate codecov job: Otherwise, when some jobs upload artifact while some not,
@@ -1181,9 +1203,10 @@ jobs:
     name: 'Misc :: Codecov'
     runs-on: ubuntu-latest
     # NOTE Even if some previous jobs failed, we still want partial info
-    if: ${{ github.event.action != 'closed' && always() && !cancelled() }}
+    if: ${{ always() && !cancelled() && fromJSON(needs.plan_ci.outputs.plan).misc_codecov.enable == true }}
     # NOTE need to depend on *all* jobs that may generate codecov artifacts
     needs:
+      - plan_ci
       - generate_run_frb_codegen_command_generate
       - generate_run_frb_codegen_command_integrate
       - generate_internal

@@ -5,6 +5,7 @@ import 'package:build_cli_annotations/build_cli_annotations.dart';
 // ignore: implementation_imports
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/cargokit_sync.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/ci_plan.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
@@ -51,6 +52,7 @@ List<Command<void>> createCommands() {
     SimpleCommand('sync-cargokit-copies', syncCargokitCopies),
     SimpleCommand('pub-get-all', pubGetAll),
     SimpleCommand('cargo-fetch-all', cargoFetchAll),
+    PlanCiCommand(),
     CodecovPreaggregateCommand(),
   ];
 }

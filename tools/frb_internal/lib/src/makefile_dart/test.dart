@@ -8,6 +8,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/post_release.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/quickstart_smoke.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester.dart'
     as dart_sanitizer_tester;
@@ -71,6 +72,12 @@ List<Command<void>> createCommands() {
       testFlutterWeb,
       _$populateTestFlutterWebConfigParser,
       _$parseTestFlutterWebConfigResult,
+    ),
+    SimpleConfigCommand(
+      'test-flutter-quickstart-smoke',
+      testFlutterQuickstartSmoke,
+      _$populateTestFlutterQuickstartSmokeConfigParser,
+      _$parseTestFlutterQuickstartSmokeConfigResult,
     ),
   ];
 }
@@ -160,6 +167,20 @@ class TestFlutterWebConfig {
     required this.package,
     required this.coverage,
     required this.wasm,
+  });
+}
+
+@CliOptions()
+class TestFlutterQuickstartSmokeConfig {
+  @CliOption(convert: convertConfigPackage)
+  final String package;
+  final QuickstartSmokeTarget target;
+  final String? deviceId;
+
+  const TestFlutterQuickstartSmokeConfig({
+    required this.package,
+    required this.target,
+    this.deviceId,
   });
 }
 
@@ -657,6 +678,41 @@ Future<void> testFlutterWeb(TestFlutterWebConfig config) async {
 String resolveBuildWebPackage(String package) =>
     kBuildWebPackageReplacer[package] ?? package;
 
-Future<void> _runFlutterDoctor() async => await exec('flutter doctor -v');
+Future<void> testFlutterQuickstartSmoke(
+  TestFlutterQuickstartSmokeConfig config,
+) async {
+  if (config.package != 'frb_example/flutter_via_create') {
+    throw Exception(
+      'test-flutter-quickstart-smoke currently supports only '
+      '`frb_example/flutter_via_create`, but got `${config.package}`',
+    );
+  }
+
+  await _runFlutterDoctor();
+  await runPubGetIfNotRunYet(config.package);
+  if (config.target == QuickstartSmokeTarget.web) {
+    print('Building web wasm artifacts before quickstart smoke');
+    await executeFrbCodegen(
+      'build-web',
+      relativePwd: config.package,
+      coverage: false,
+      coverageName: 'TestFlutterQuickstartSmoke',
+    );
+  }
+  await runFlutterViaCreateQuickstartSmokeTest(
+    package: config.package,
+    target: config.target,
+    deviceId: config.deviceId,
+  );
+}
+
+Future<void> _runFlutterDoctor() async {
+  if (Platform.environment['FRB_SKIP_FLUTTER_DOCTOR'] == '1') {
+    print('Skip flutter doctor because FRB_SKIP_FLUTTER_DOCTOR=1');
+    return;
+  }
+
+  await exec('flutter doctor -v');
+}
 
 const kEnvEnableRustBacktrace = {'RUST_BACKTRACE': 'full'};

@@ -16,7 +16,15 @@ class DevDockerMetadata {
   String get versionTag =>
       'flutter-$flutterVersion-rust-$rustVersion-nightly-$rustNightlyVersion';
 
+  String versionCodeTag({required String shortSha}) =>
+      '$versionTag-code-$shortSha';
+
   String imageRef({required String imageName}) => '$imageName:$versionTag';
+
+  String imageRefForRevision({
+    required String imageName,
+    required String shortSha,
+  }) => '$imageName:${versionCodeTag(shortSha: shortSha)}';
 }
 
 @visibleForTesting
