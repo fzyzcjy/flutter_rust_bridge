@@ -10,10 +10,15 @@
 | `*.freezed.dart` | Freezed output |
 | `*.g.dart` | Code generator output |
 
+### Feature flags
+
+When adding or testing feature flags, read `frb-feature-flag`.
+
 ## Skills
 
 - `frb-code-generation` - Which generation commands to run
 - `frb-develop-feature` - New feature development workflow
+- `frb-feature-flag` - Feature flag API surface and enabled/disabled coverage rules
 - `frb-test` - How to run tests
 - `frb-debugging` - Debug code generation issues
 - `frb-lint` - Lint and format checks
