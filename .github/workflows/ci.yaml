@@ -1098,11 +1098,8 @@ jobs:
           profile: ${{ matrix.info.device }}
           script: ./frb_internal test-flutter-quickstart-smoke --package ${{ matrix.info.package }} --target android --device-id emulator-5554
       - if: ${{ matrix.info.target != 'android' }}
-        run: |-
-          ./frb_internal test-flutter-quickstart-smoke \
-            --package ${{ matrix.info.package }} \
-            --target ${{ matrix.info.target }} \
-            --device-id "${QUICKSTART_SMOKE_DEVICE_ID:-${{ matrix.info.device }}}"
+        shell: bash
+        run: ./frb_internal test-flutter-quickstart-smoke --package ${{ matrix.info.package }} --target ${{ matrix.info.target }} --device-id "${QUICKSTART_SMOKE_DEVICE_ID:-${{ matrix.info.device }}}"
 
       # report
       - uses: actions/upload-artifact@v4
