@@ -136,6 +136,20 @@ sealed class SimpleEnumTwinSyncSse {
     String field0,
   ) = SimpleEnumTwinSyncSse_Second;
 
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? first,
+    TResult Function(String field0)? second,
+  }) {
+    final self = this;
+    if (self is SimpleEnumTwinSyncSse_First) {
+      return first?.call();
+    }
+    if (self is SimpleEnumTwinSyncSse_Second) {
+      return second?.call(self.field0);
+    }
+    return null;
+  }
+
   static SimpleEnumTwinSyncSse returnSelfTwinSyncSse({required String one}) =>
       RustLib.instance.api
           .crateApiPseudoManualMethodTwinSyncSseSimpleEnumTwinSyncSseReturnSelfTwinSyncSse(

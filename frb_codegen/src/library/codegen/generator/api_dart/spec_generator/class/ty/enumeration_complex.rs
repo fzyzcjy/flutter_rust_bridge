@@ -33,9 +33,11 @@ impl EnumRefApiDartGenerator<'_> {
             .map(|variant| self.generate_mode_complex_variant_factory(variant, use_freezed))
             .collect_vec()
             .join("\n");
-        let variant_classes = (!self.context.config.dart_enums_freezed)
-            .then(|| self.generate_mode_complex_variant_classes(src))
-            .unwrap_or_default();
+        let variant_classes = if !self.context.config.dart_enums_freezed {
+            self.generate_mode_complex_variant_classes(src)
+        } else {
+            Default::default()
+        };
         let name = &self.mir.ident.0.name;
         let sealed = if self.context.config.dart3 {
             "sealed"
@@ -68,10 +70,13 @@ impl EnumRefApiDartGenerator<'_> {
 
                     {variants}
 
+                    {native_extra_body}
+
                     {extra_body}
                 }}
 
                 {variant_classes}",
+                native_extra_body = self.generate_native_extra_body(src),
             )
         };
 
@@ -188,6 +193,194 @@ impl EnumRefApiDartGenerator<'_> {
             .map(|variant| self.generate_mode_complex_variant_class(variant))
             .collect_vec()
             .join("\n")
+    }
+
+    fn generate_native_extra_body(&self, src: &MirEnum) -> String {
+        [
+            self.generate_native_common_getters(src),
+            self.generate_native_when_or_null(src),
+        ]
+        .into_iter()
+        .filter(|part| !part.is_empty())
+        .join("\n")
+    }
+
+    fn generate_native_when_or_null(&self, src: &MirEnum) -> String {
+        let generic = "TResult";
+        let callbacks = src
+            .variants()
+            .iter()
+            .map(|variant| {
+                format!(
+                    "{}? {},",
+                    self.generate_native_when_or_null_callback_type(variant, generic),
+                    variant.name.dart_style(),
+                )
+            })
+            .collect_vec()
+            .join("\n");
+        let branches = src
+            .variants()
+            .iter()
+            .map(|variant| {
+                let wrapper_name = variant.wrapper_name.rust_style(true);
+                let variant_name = variant.name.dart_style();
+                let args = self.generate_native_when_or_null_callback_args(variant);
+                format!(
+                    "if (self is {wrapper_name}) {{
+                        return {variant_name}?.call({args});
+                    }}"
+                )
+            })
+            .collect_vec()
+            .join("\n");
+
+        format!(
+            "{generic}? whenOrNull<{generic} extends Object?>({{
+                {callbacks}
+            }}) {{
+                final self = this;
+                {branches}
+                return null;
+            }}"
+        )
+    }
+
+    fn generate_native_when_or_null_callback_type(
+        &self,
+        variant: &MirEnumVariant,
+        generic: &str,
+    ) -> String {
+        let fields = variant.kind.fields();
+        if fields.is_empty() {
+            return format!("{generic} Function()");
+        }
+
+        let fields = fields
+            .iter()
+            .map(|field| {
+                let required = if matches!(&variant.kind, MirVariantKind::Struct(st) if st.is_fields_named) {
+                    generate_field_required_modifier(field)
+                } else {
+                    ""
+                };
+                format!(
+                    "{required}{} {}",
+                    ApiDartGenerator::new(field.ty.clone(), self.context).dart_api_type(),
+                    field.name.dart_style(),
+                )
+            })
+            .collect_vec()
+            .join(",");
+
+        if matches!(&variant.kind, MirVariantKind::Struct(st) if st.is_fields_named) {
+            format!("{generic} Function({{ {fields} }})")
+        } else {
+            format!("{generic} Function({fields})")
+        }
+    }
+
+    fn generate_native_when_or_null_callback_args(&self, variant: &MirEnumVariant) -> String {
+        let fields = variant.kind.fields();
+        if fields.is_empty() {
+            return "".to_owned();
+        }
+
+        fields
+            .iter()
+            .map(|field| {
+                let name = field.name.dart_style();
+                if matches!(&variant.kind, MirVariantKind::Struct(st) if st.is_fields_named) {
+                    format!("{name}: self.{name}")
+                } else {
+                    format!("self.{name}")
+                }
+            })
+            .collect_vec()
+            .join(",")
+    }
+
+    fn generate_native_common_getters(&self, src: &MirEnum) -> String {
+        if !self.mir.is_exception {
+            return "".to_owned();
+        }
+
+        self.compute_native_common_getters(src)
+            .into_iter()
+            .map(|(field_name, type_str)| {
+                let branches = src
+                    .variants()
+                    .iter()
+                    .map(|variant| {
+                        let wrapper_name = variant.wrapper_name.rust_style(true);
+                        format!(
+                            "if (self is {wrapper_name}) {{
+                                return self.{field_name};
+                            }}"
+                        )
+                    })
+                    .collect_vec()
+                    .join("\n");
+                format!(
+                    "{type_str} get {field_name} {{
+                        final self = this;
+                        {branches}
+                        throw StateError('Unreachable enum variant');
+                    }}"
+                )
+            })
+            .collect_vec()
+            .join("\n")
+    }
+
+    fn compute_native_common_getters(&self, src: &MirEnum) -> Vec<(String, String)> {
+        let variants = src.variants();
+        let Some(first_fields) = variants.first().and_then(|variant| match &variant.kind {
+            MirVariantKind::Struct(MirStruct {
+                is_fields_named: true,
+                fields,
+                ..
+            }) => Some(fields),
+            _ => None,
+        }) else {
+            return vec![];
+        };
+
+        first_fields
+            .iter()
+            .filter_map(|first_field| {
+                let field_name = first_field.name.dart_style();
+                let field_types = variants
+                    .iter()
+                    .map(|variant| self.find_named_variant_field_type(variant, &field_name))
+                    .collect::<Option<Vec<_>>>()?;
+                let type_str = field_types
+                    .first()
+                    .filter(|first| field_types.iter().all(|value| value == *first))
+                    .cloned()
+                    .unwrap_or_else(|| "Object?".to_owned());
+                Some((field_name, type_str))
+            })
+            .collect_vec()
+    }
+
+    fn find_named_variant_field_type(
+        &self,
+        variant: &MirEnumVariant,
+        field_name: &str,
+    ) -> Option<String> {
+        let MirVariantKind::Struct(MirStruct {
+            is_fields_named: true,
+            fields,
+            ..
+        }) = &variant.kind
+        else {
+            return None;
+        };
+        fields
+            .iter()
+            .find(|field| field.name.dart_style() == field_name)
+            .map(|field| ApiDartGenerator::new(field.ty.clone(), self.context).dart_api_type())
     }
 
     fn generate_mode_complex_variant_class(&self, variant: &MirEnumVariant) -> String {

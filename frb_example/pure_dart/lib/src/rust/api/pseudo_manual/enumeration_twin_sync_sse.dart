@@ -76,6 +76,20 @@ sealed class DistanceTwinSyncSse {
   const factory DistanceTwinSyncSse.map(
     double field0,
   ) = DistanceTwinSyncSse_Map;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unknown,
+    TResult Function(double field0)? map,
+  }) {
+    final self = this;
+    if (self is DistanceTwinSyncSse_Unknown) {
+      return unknown?.call();
+    }
+    if (self is DistanceTwinSyncSse_Map) {
+      return map?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class DistanceTwinSyncSse_Unknown extends DistanceTwinSyncSse {
@@ -131,6 +145,24 @@ sealed class EnumWithItemMixedTwinSyncSse {
   const factory EnumWithItemMixedTwinSyncSse.c({
     required String cField,
   }) = EnumWithItemMixedTwinSyncSse_C;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? a,
+    TResult Function(Uint8List field0)? b,
+    TResult Function({required String cField})? c,
+  }) {
+    final self = this;
+    if (self is EnumWithItemMixedTwinSyncSse_A) {
+      return a?.call();
+    }
+    if (self is EnumWithItemMixedTwinSyncSse_B) {
+      return b?.call(self.field0);
+    }
+    if (self is EnumWithItemMixedTwinSyncSse_C) {
+      return c?.call(cField: self.cField);
+    }
+    return null;
+  }
 }
 
 class EnumWithItemMixedTwinSyncSse_A extends EnumWithItemMixedTwinSyncSse {
@@ -191,6 +223,20 @@ sealed class EnumWithItemStructTwinSyncSse {
   const factory EnumWithItemStructTwinSyncSse.b({
     required Int32List bField,
   }) = EnumWithItemStructTwinSyncSse_B;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function({required Uint8List aField})? a,
+    TResult Function({required Int32List bField})? b,
+  }) {
+    final self = this;
+    if (self is EnumWithItemStructTwinSyncSse_A) {
+      return a?.call(aField: self.aField);
+    }
+    if (self is EnumWithItemStructTwinSyncSse_B) {
+      return b?.call(bField: self.bField);
+    }
+    return null;
+  }
 }
 
 class EnumWithItemStructTwinSyncSse_A extends EnumWithItemStructTwinSyncSse {
@@ -238,6 +284,20 @@ sealed class EnumWithItemTupleTwinSyncSse {
   const factory EnumWithItemTupleTwinSyncSse.b(
     int field0,
   ) = EnumWithItemTupleTwinSyncSse_B;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Uint8List field0)? a,
+    TResult Function(int field0)? b,
+  }) {
+    final self = this;
+    if (self is EnumWithItemTupleTwinSyncSse_A) {
+      return a?.call(self.field0);
+    }
+    if (self is EnumWithItemTupleTwinSyncSse_B) {
+      return b?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class EnumWithItemTupleTwinSyncSse_A extends EnumWithItemTupleTwinSyncSse {
@@ -302,6 +362,39 @@ sealed class KitchenSinkTwinSyncSse {
   const factory KitchenSinkTwinSyncSse.enums([
     WeekdaysTwinSyncSse field0,
   ]) = KitchenSinkTwinSyncSse_Enums;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(
+            {int int32, required double float64, required bool boolean})?
+        primitives,
+    TResult Function(int field0, KitchenSinkTwinSyncSse field1)? nested,
+    TResult Function(int? field0, int? field1)? optional,
+    TResult Function(Uint8List field0)? buffer,
+    TResult Function(WeekdaysTwinSyncSse field0)? enums,
+  }) {
+    final self = this;
+    if (self is KitchenSinkTwinSyncSse_Empty) {
+      return empty?.call();
+    }
+    if (self is KitchenSinkTwinSyncSse_Primitives) {
+      return primitives?.call(
+          int32: self.int32, float64: self.float64, boolean: self.boolean);
+    }
+    if (self is KitchenSinkTwinSyncSse_Nested) {
+      return nested?.call(self.field0, self.field1);
+    }
+    if (self is KitchenSinkTwinSyncSse_Optional) {
+      return optional?.call(self.field0, self.field1);
+    }
+    if (self is KitchenSinkTwinSyncSse_Buffer) {
+      return buffer?.call(self.field0);
+    }
+    if (self is KitchenSinkTwinSyncSse_Enums) {
+      return enums?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class KitchenSinkTwinSyncSse_Empty extends KitchenSinkTwinSyncSse {
@@ -429,6 +522,20 @@ sealed class MeasureTwinSyncSse {
   const factory MeasureTwinSyncSse.distance(
     DistanceTwinSyncSse field0,
   ) = MeasureTwinSyncSse_Distance;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(SpeedTwinSyncSse field0)? speed,
+    TResult Function(DistanceTwinSyncSse field0)? distance,
+  }) {
+    final self = this;
+    if (self is MeasureTwinSyncSse_Speed) {
+      return speed?.call(self.field0);
+    }
+    if (self is MeasureTwinSyncSse_Distance) {
+      return distance?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class MeasureTwinSyncSse_Speed extends MeasureTwinSyncSse {
@@ -495,6 +602,20 @@ sealed class SpeedTwinSyncSse {
   const factory SpeedTwinSyncSse.gps(
     double field0,
   ) = SpeedTwinSyncSse_GPS;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unknown,
+    TResult Function(double field0)? gps,
+  }) {
+    final self = this;
+    if (self is SpeedTwinSyncSse_Unknown) {
+      return unknown?.call();
+    }
+    if (self is SpeedTwinSyncSse_GPS) {
+      return gps?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class SpeedTwinSyncSse_Unknown extends SpeedTwinSyncSse {

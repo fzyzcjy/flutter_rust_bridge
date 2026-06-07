@@ -57,6 +57,20 @@ sealed class RawStringItemEnumTwinRustAsync {
   const factory RawStringItemEnumTwinRustAsync.raw({
     required String type,
   }) = RawStringItemEnumTwinRustAsync_Raw;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function({required String regular})? regular,
+    TResult Function({required String type})? raw,
+  }) {
+    final self = this;
+    if (self is RawStringItemEnumTwinRustAsync_Regular) {
+      return regular?.call(regular: self.regular);
+    }
+    if (self is RawStringItemEnumTwinRustAsync_Raw) {
+      return raw?.call(type: self.type);
+    }
+    return null;
+  }
 }
 
 class RawStringItemEnumTwinRustAsync_Regular

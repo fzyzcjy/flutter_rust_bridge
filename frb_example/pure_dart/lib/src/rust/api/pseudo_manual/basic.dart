@@ -120,6 +120,20 @@ sealed class BasicGeneralEnumTwinNormal {
   }) = BasicGeneralEnumTwinNormal_Apple;
   const factory BasicGeneralEnumTwinNormal.orange() =
       BasicGeneralEnumTwinNormal_Orange;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function({required String field})? apple,
+    TResult Function()? orange,
+  }) {
+    final self = this;
+    if (self is BasicGeneralEnumTwinNormal_Apple) {
+      return apple?.call(field: self.field);
+    }
+    if (self is BasicGeneralEnumTwinNormal_Orange) {
+      return orange?.call();
+    }
+    return null;
+  }
 }
 
 class BasicGeneralEnumTwinNormal_Apple extends BasicGeneralEnumTwinNormal {

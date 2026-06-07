@@ -106,6 +106,28 @@ sealed class AbcTwinRustAsyncSse {
   const factory AbcTwinRustAsyncSse.justInt(
     int field0,
   ) = AbcTwinRustAsyncSse_JustInt;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(ATwinRustAsyncSse field0)? a,
+    TResult Function(BTwinRustAsyncSse field0)? b,
+    TResult Function(CTwinRustAsyncSse field0)? c,
+    TResult Function(int field0)? justInt,
+  }) {
+    final self = this;
+    if (self is AbcTwinRustAsyncSse_A) {
+      return a?.call(self.field0);
+    }
+    if (self is AbcTwinRustAsyncSse_B) {
+      return b?.call(self.field0);
+    }
+    if (self is AbcTwinRustAsyncSse_C) {
+      return c?.call(self.field0);
+    }
+    if (self is AbcTwinRustAsyncSse_JustInt) {
+      return justInt?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class AbcTwinRustAsyncSse_A extends AbcTwinRustAsyncSse {

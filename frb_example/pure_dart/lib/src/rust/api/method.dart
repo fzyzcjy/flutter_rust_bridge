@@ -133,6 +133,20 @@ sealed class SimpleEnumTwinNormal {
     String field0,
   ) = SimpleEnumTwinNormal_Second;
 
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? first,
+    TResult Function(String field0)? second,
+  }) {
+    final self = this;
+    if (self is SimpleEnumTwinNormal_First) {
+      return first?.call();
+    }
+    if (self is SimpleEnumTwinNormal_Second) {
+      return second?.call(self.field0);
+    }
+    return null;
+  }
+
   static Future<SimpleEnumTwinNormal> returnSelfTwinNormal(
           {required String one}) =>
       RustLib.instance.api

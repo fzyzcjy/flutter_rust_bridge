@@ -272,6 +272,20 @@ sealed class EnumWithGoodAndOpaqueTwinSyncSse {
   const factory EnumWithGoodAndOpaqueTwinSyncSse.opaque(
     NonCloneSimpleTwinSyncSse field0,
   ) = EnumWithGoodAndOpaqueTwinSyncSse_Opaque;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String field0)? good,
+    TResult Function(NonCloneSimpleTwinSyncSse field0)? opaque,
+  }) {
+    final self = this;
+    if (self is EnumWithGoodAndOpaqueTwinSyncSse_Good) {
+      return good?.call(self.field0);
+    }
+    if (self is EnumWithGoodAndOpaqueTwinSyncSse_Opaque) {
+      return opaque?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class EnumWithGoodAndOpaqueTwinSyncSse_Good

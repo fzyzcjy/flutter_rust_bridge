@@ -132,6 +132,20 @@ sealed class EnumDartOpaqueTwinRustAsyncSse {
   const factory EnumDartOpaqueTwinRustAsyncSse.opaque(
     Object field0,
   ) = EnumDartOpaqueTwinRustAsyncSse_Opaque;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(int field0)? primitive,
+    TResult Function(Object field0)? opaque,
+  }) {
+    final self = this;
+    if (self is EnumDartOpaqueTwinRustAsyncSse_Primitive) {
+      return primitive?.call(self.field0);
+    }
+    if (self is EnumDartOpaqueTwinRustAsyncSse_Opaque) {
+      return opaque?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class EnumDartOpaqueTwinRustAsyncSse_Primitive

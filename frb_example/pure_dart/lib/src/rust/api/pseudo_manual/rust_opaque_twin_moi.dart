@@ -125,6 +125,36 @@ sealed class EnumOpaqueTwinMoi {
     RwLockHideDataTwinMoi field0,
   ) = EnumOpaqueTwinMoi_RwLock;
   const factory EnumOpaqueTwinMoi.nothing() = EnumOpaqueTwinMoi_Nothing;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(HideDataTwinMoi field0)? struct,
+    TResult Function(I16 field0)? primitive,
+    TResult Function(BoxDartDebugTwinMoi field0)? traitObj,
+    TResult Function(MutexHideDataTwinMoi field0)? mutex,
+    TResult Function(RwLockHideDataTwinMoi field0)? rwLock,
+    TResult Function()? nothing,
+  }) {
+    final self = this;
+    if (self is EnumOpaqueTwinMoi_Struct) {
+      return struct?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinMoi_Primitive) {
+      return primitive?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinMoi_TraitObj) {
+      return traitObj?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinMoi_Mutex) {
+      return mutex?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinMoi_RwLock) {
+      return rwLock?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinMoi_Nothing) {
+      return nothing?.call();
+    }
+    return null;
+  }
 }
 
 class EnumOpaqueTwinMoi_Struct extends EnumOpaqueTwinMoi {

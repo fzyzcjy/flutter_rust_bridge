@@ -250,6 +250,16 @@ sealed class MyEnumWithoutFnWithUnignoreTwinNormal {
   const factory MyEnumWithoutFnWithUnignoreTwinNormal.one(
     String field0,
   ) = MyEnumWithoutFnWithUnignoreTwinNormal_One;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String field0)? one,
+  }) {
+    final self = this;
+    if (self is MyEnumWithoutFnWithUnignoreTwinNormal_One) {
+      return one?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class MyEnumWithoutFnWithUnignoreTwinNormal_One

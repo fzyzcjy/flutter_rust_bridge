@@ -273,6 +273,20 @@ sealed class EnumWithGoodAndOpaqueTwinRustAsync {
   const factory EnumWithGoodAndOpaqueTwinRustAsync.opaque(
     NonCloneSimpleTwinRustAsync field0,
   ) = EnumWithGoodAndOpaqueTwinRustAsync_Opaque;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String field0)? good,
+    TResult Function(NonCloneSimpleTwinRustAsync field0)? opaque,
+  }) {
+    final self = this;
+    if (self is EnumWithGoodAndOpaqueTwinRustAsync_Good) {
+      return good?.call(self.field0);
+    }
+    if (self is EnumWithGoodAndOpaqueTwinRustAsync_Opaque) {
+      return opaque?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class EnumWithGoodAndOpaqueTwinRustAsync_Good

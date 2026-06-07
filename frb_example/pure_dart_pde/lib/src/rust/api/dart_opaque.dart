@@ -126,6 +126,20 @@ sealed class EnumDartOpaqueTwinNormal {
   const factory EnumDartOpaqueTwinNormal.opaque(
     Object field0,
   ) = EnumDartOpaqueTwinNormal_Opaque;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(int field0)? primitive,
+    TResult Function(Object field0)? opaque,
+  }) {
+    final self = this;
+    if (self is EnumDartOpaqueTwinNormal_Primitive) {
+      return primitive?.call(self.field0);
+    }
+    if (self is EnumDartOpaqueTwinNormal_Opaque) {
+      return opaque?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class EnumDartOpaqueTwinNormal_Primitive extends EnumDartOpaqueTwinNormal {

@@ -272,6 +272,20 @@ sealed class EnumWithGoodAndOpaqueTwinSseMoi {
   const factory EnumWithGoodAndOpaqueTwinSseMoi.opaque(
     NonCloneSimpleTwinSseMoi field0,
   ) = EnumWithGoodAndOpaqueTwinSseMoi_Opaque;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String field0)? good,
+    TResult Function(NonCloneSimpleTwinSseMoi field0)? opaque,
+  }) {
+    final self = this;
+    if (self is EnumWithGoodAndOpaqueTwinSseMoi_Good) {
+      return good?.call(self.field0);
+    }
+    if (self is EnumWithGoodAndOpaqueTwinSseMoi_Opaque) {
+      return opaque?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class EnumWithGoodAndOpaqueTwinSseMoi_Good

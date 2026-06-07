@@ -85,6 +85,28 @@ sealed class AbcTwinNormal {
   const factory AbcTwinNormal.justInt(
     int field0,
   ) = AbcTwinNormal_JustInt;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(ATwinNormal field0)? a,
+    TResult Function(BTwinNormal field0)? b,
+    TResult Function(CTwinNormal field0)? c,
+    TResult Function(int field0)? justInt,
+  }) {
+    final self = this;
+    if (self is AbcTwinNormal_A) {
+      return a?.call(self.field0);
+    }
+    if (self is AbcTwinNormal_B) {
+      return b?.call(self.field0);
+    }
+    if (self is AbcTwinNormal_C) {
+      return c?.call(self.field0);
+    }
+    if (self is AbcTwinNormal_JustInt) {
+      return justInt?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class AbcTwinNormal_A extends AbcTwinNormal {

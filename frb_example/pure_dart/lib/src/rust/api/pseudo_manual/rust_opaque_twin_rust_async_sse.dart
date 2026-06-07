@@ -145,6 +145,36 @@ sealed class EnumOpaqueTwinRustAsyncSse {
   ) = EnumOpaqueTwinRustAsyncSse_RwLock;
   const factory EnumOpaqueTwinRustAsyncSse.nothing() =
       EnumOpaqueTwinRustAsyncSse_Nothing;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(HideDataTwinRustAsyncSse field0)? struct,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebugTwinRustAsyncSse field0)? traitObj,
+    TResult Function(MutexHideDataTwinRustAsyncSse field0)? mutex,
+    TResult Function(RwLockHideDataTwinRustAsyncSse field0)? rwLock,
+    TResult Function()? nothing,
+  }) {
+    final self = this;
+    if (self is EnumOpaqueTwinRustAsyncSse_Struct) {
+      return struct?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinRustAsyncSse_Primitive) {
+      return primitive?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinRustAsyncSse_TraitObj) {
+      return traitObj?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinRustAsyncSse_Mutex) {
+      return mutex?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinRustAsyncSse_RwLock) {
+      return rwLock?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinRustAsyncSse_Nothing) {
+      return nothing?.call();
+    }
+    return null;
+  }
 }
 
 class EnumOpaqueTwinRustAsyncSse_Struct extends EnumOpaqueTwinRustAsyncSse {

@@ -169,6 +169,24 @@ sealed class ApplicationMessage {
     required int y,
   }) = ApplicationMessage_RenderPixel;
   const factory ApplicationMessage.exit() = ApplicationMessage_Exit;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String field0)? displayMessage,
+    TResult Function({required int x, required int y})? renderPixel,
+    TResult Function()? exit,
+  }) {
+    final self = this;
+    if (self is ApplicationMessage_DisplayMessage) {
+      return displayMessage?.call(self.field0);
+    }
+    if (self is ApplicationMessage_RenderPixel) {
+      return renderPixel?.call(x: self.x, y: self.y);
+    }
+    if (self is ApplicationMessage_Exit) {
+      return exit?.call();
+    }
+    return null;
+  }
 }
 
 class ApplicationMessage_DisplayMessage extends ApplicationMessage {
@@ -410,6 +428,24 @@ sealed class RawStringEnumMirrored {
   const factory RawStringEnumMirrored.listOfNested(
     ListOfNestedRawStringMirrored field0,
   ) = RawStringEnumMirrored_ListOfNested;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(RawStringMirrored field0)? raw,
+    TResult Function(NestedRawStringMirrored field0)? nested,
+    TResult Function(ListOfNestedRawStringMirrored field0)? listOfNested,
+  }) {
+    final self = this;
+    if (self is RawStringEnumMirrored_Raw) {
+      return raw?.call(self.field0);
+    }
+    if (self is RawStringEnumMirrored_Nested) {
+      return nested?.call(self.field0);
+    }
+    if (self is RawStringEnumMirrored_ListOfNested) {
+      return listOfNested?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class RawStringEnumMirrored_Raw extends RawStringEnumMirrored {

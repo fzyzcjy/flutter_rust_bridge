@@ -57,6 +57,20 @@ sealed class RawStringItemEnumTwinSyncSse {
   const factory RawStringItemEnumTwinSyncSse.raw({
     required String type,
   }) = RawStringItemEnumTwinSyncSse_Raw;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function({required String regular})? regular,
+    TResult Function({required String type})? raw,
+  }) {
+    final self = this;
+    if (self is RawStringItemEnumTwinSyncSse_Regular) {
+      return regular?.call(regular: self.regular);
+    }
+    if (self is RawStringItemEnumTwinSyncSse_Raw) {
+      return raw?.call(type: self.type);
+    }
+    return null;
+  }
 }
 
 class RawStringItemEnumTwinSyncSse_Regular

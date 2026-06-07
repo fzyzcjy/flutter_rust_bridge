@@ -78,6 +78,20 @@ sealed class DistanceTwinRustAsync {
   const factory DistanceTwinRustAsync.map(
     double field0,
   ) = DistanceTwinRustAsync_Map;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unknown,
+    TResult Function(double field0)? map,
+  }) {
+    final self = this;
+    if (self is DistanceTwinRustAsync_Unknown) {
+      return unknown?.call();
+    }
+    if (self is DistanceTwinRustAsync_Map) {
+      return map?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class DistanceTwinRustAsync_Unknown extends DistanceTwinRustAsync {
@@ -134,6 +148,24 @@ sealed class EnumWithItemMixedTwinRustAsync {
   const factory EnumWithItemMixedTwinRustAsync.c({
     required String cField,
   }) = EnumWithItemMixedTwinRustAsync_C;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? a,
+    TResult Function(Uint8List field0)? b,
+    TResult Function({required String cField})? c,
+  }) {
+    final self = this;
+    if (self is EnumWithItemMixedTwinRustAsync_A) {
+      return a?.call();
+    }
+    if (self is EnumWithItemMixedTwinRustAsync_B) {
+      return b?.call(self.field0);
+    }
+    if (self is EnumWithItemMixedTwinRustAsync_C) {
+      return c?.call(cField: self.cField);
+    }
+    return null;
+  }
 }
 
 class EnumWithItemMixedTwinRustAsync_A extends EnumWithItemMixedTwinRustAsync {
@@ -194,6 +226,20 @@ sealed class EnumWithItemStructTwinRustAsync {
   const factory EnumWithItemStructTwinRustAsync.b({
     required Int32List bField,
   }) = EnumWithItemStructTwinRustAsync_B;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function({required Uint8List aField})? a,
+    TResult Function({required Int32List bField})? b,
+  }) {
+    final self = this;
+    if (self is EnumWithItemStructTwinRustAsync_A) {
+      return a?.call(aField: self.aField);
+    }
+    if (self is EnumWithItemStructTwinRustAsync_B) {
+      return b?.call(bField: self.bField);
+    }
+    return null;
+  }
 }
 
 class EnumWithItemStructTwinRustAsync_A
@@ -243,6 +289,20 @@ sealed class EnumWithItemTupleTwinRustAsync {
   const factory EnumWithItemTupleTwinRustAsync.b(
     int field0,
   ) = EnumWithItemTupleTwinRustAsync_B;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Uint8List field0)? a,
+    TResult Function(int field0)? b,
+  }) {
+    final self = this;
+    if (self is EnumWithItemTupleTwinRustAsync_A) {
+      return a?.call(self.field0);
+    }
+    if (self is EnumWithItemTupleTwinRustAsync_B) {
+      return b?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class EnumWithItemTupleTwinRustAsync_A extends EnumWithItemTupleTwinRustAsync {
@@ -308,6 +368,39 @@ sealed class KitchenSinkTwinRustAsync {
   const factory KitchenSinkTwinRustAsync.enums([
     WeekdaysTwinRustAsync field0,
   ]) = KitchenSinkTwinRustAsync_Enums;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(
+            {int int32, required double float64, required bool boolean})?
+        primitives,
+    TResult Function(int field0, KitchenSinkTwinRustAsync field1)? nested,
+    TResult Function(int? field0, int? field1)? optional,
+    TResult Function(Uint8List field0)? buffer,
+    TResult Function(WeekdaysTwinRustAsync field0)? enums,
+  }) {
+    final self = this;
+    if (self is KitchenSinkTwinRustAsync_Empty) {
+      return empty?.call();
+    }
+    if (self is KitchenSinkTwinRustAsync_Primitives) {
+      return primitives?.call(
+          int32: self.int32, float64: self.float64, boolean: self.boolean);
+    }
+    if (self is KitchenSinkTwinRustAsync_Nested) {
+      return nested?.call(self.field0, self.field1);
+    }
+    if (self is KitchenSinkTwinRustAsync_Optional) {
+      return optional?.call(self.field0, self.field1);
+    }
+    if (self is KitchenSinkTwinRustAsync_Buffer) {
+      return buffer?.call(self.field0);
+    }
+    if (self is KitchenSinkTwinRustAsync_Enums) {
+      return enums?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class KitchenSinkTwinRustAsync_Empty extends KitchenSinkTwinRustAsync {
@@ -436,6 +529,20 @@ sealed class MeasureTwinRustAsync {
   const factory MeasureTwinRustAsync.distance(
     DistanceTwinRustAsync field0,
   ) = MeasureTwinRustAsync_Distance;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(SpeedTwinRustAsync field0)? speed,
+    TResult Function(DistanceTwinRustAsync field0)? distance,
+  }) {
+    final self = this;
+    if (self is MeasureTwinRustAsync_Speed) {
+      return speed?.call(self.field0);
+    }
+    if (self is MeasureTwinRustAsync_Distance) {
+      return distance?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class MeasureTwinRustAsync_Speed extends MeasureTwinRustAsync {
@@ -502,6 +609,20 @@ sealed class SpeedTwinRustAsync {
   const factory SpeedTwinRustAsync.gps(
     double field0,
   ) = SpeedTwinRustAsync_GPS;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unknown,
+    TResult Function(double field0)? gps,
+  }) {
+    final self = this;
+    if (self is SpeedTwinRustAsync_Unknown) {
+      return unknown?.call();
+    }
+    if (self is SpeedTwinRustAsync_GPS) {
+      return gps?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class SpeedTwinRustAsync_Unknown extends SpeedTwinRustAsync {

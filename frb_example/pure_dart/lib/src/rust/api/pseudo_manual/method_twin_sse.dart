@@ -135,6 +135,20 @@ sealed class SimpleEnumTwinSse {
     String field0,
   ) = SimpleEnumTwinSse_Second;
 
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? first,
+    TResult Function(String field0)? second,
+  }) {
+    final self = this;
+    if (self is SimpleEnumTwinSse_First) {
+      return first?.call();
+    }
+    if (self is SimpleEnumTwinSse_Second) {
+      return second?.call(self.field0);
+    }
+    return null;
+  }
+
   static Future<SimpleEnumTwinSse> returnSelfTwinSse({required String one}) =>
       RustLib.instance.api
           .crateApiPseudoManualMethodTwinSseSimpleEnumTwinSseReturnSelfTwinSse(

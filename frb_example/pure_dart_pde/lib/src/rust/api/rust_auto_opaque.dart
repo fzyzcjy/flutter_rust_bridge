@@ -264,6 +264,20 @@ sealed class EnumWithGoodAndOpaqueTwinNormal {
   const factory EnumWithGoodAndOpaqueTwinNormal.opaque(
     NonCloneSimpleTwinNormal field0,
   ) = EnumWithGoodAndOpaqueTwinNormal_Opaque;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String field0)? good,
+    TResult Function(NonCloneSimpleTwinNormal field0)? opaque,
+  }) {
+    final self = this;
+    if (self is EnumWithGoodAndOpaqueTwinNormal_Good) {
+      return good?.call(self.field0);
+    }
+    if (self is EnumWithGoodAndOpaqueTwinNormal_Opaque) {
+      return opaque?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class EnumWithGoodAndOpaqueTwinNormal_Good

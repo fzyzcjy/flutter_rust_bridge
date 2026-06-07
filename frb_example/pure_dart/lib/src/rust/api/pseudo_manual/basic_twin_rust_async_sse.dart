@@ -135,6 +135,20 @@ sealed class BasicGeneralEnumTwinRustAsyncSse {
   }) = BasicGeneralEnumTwinRustAsyncSse_Apple;
   const factory BasicGeneralEnumTwinRustAsyncSse.orange() =
       BasicGeneralEnumTwinRustAsyncSse_Orange;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function({required String field})? apple,
+    TResult Function()? orange,
+  }) {
+    final self = this;
+    if (self is BasicGeneralEnumTwinRustAsyncSse_Apple) {
+      return apple?.call(field: self.field);
+    }
+    if (self is BasicGeneralEnumTwinRustAsyncSse_Orange) {
+      return orange?.call();
+    }
+    return null;
+  }
 }
 
 class BasicGeneralEnumTwinRustAsyncSse_Apple

@@ -93,6 +93,28 @@ sealed class AbcTwinSyncSse {
   const factory AbcTwinSyncSse.justInt(
     int field0,
   ) = AbcTwinSyncSse_JustInt;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(ATwinSyncSse field0)? a,
+    TResult Function(BTwinSyncSse field0)? b,
+    TResult Function(CTwinSyncSse field0)? c,
+    TResult Function(int field0)? justInt,
+  }) {
+    final self = this;
+    if (self is AbcTwinSyncSse_A) {
+      return a?.call(self.field0);
+    }
+    if (self is AbcTwinSyncSse_B) {
+      return b?.call(self.field0);
+    }
+    if (self is AbcTwinSyncSse_C) {
+      return c?.call(self.field0);
+    }
+    if (self is AbcTwinSyncSse_JustInt) {
+      return justInt?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class AbcTwinSyncSse_A extends AbcTwinSyncSse {

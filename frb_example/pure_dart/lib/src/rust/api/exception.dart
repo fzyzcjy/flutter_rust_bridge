@@ -83,6 +83,42 @@ sealed class CustomEnumErrorTwinNormal implements FrbException {
     required int message,
     required String backtrace,
   }) = CustomEnumErrorTwinNormal_Two;
+
+  Object? get message {
+    final self = this;
+    if (self is CustomEnumErrorTwinNormal_One) {
+      return self.message;
+    }
+    if (self is CustomEnumErrorTwinNormal_Two) {
+      return self.message;
+    }
+    throw StateError('Unreachable enum variant');
+  }
+
+  String get backtrace {
+    final self = this;
+    if (self is CustomEnumErrorTwinNormal_One) {
+      return self.backtrace;
+    }
+    if (self is CustomEnumErrorTwinNormal_Two) {
+      return self.backtrace;
+    }
+    throw StateError('Unreachable enum variant');
+  }
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function({required String message, required String backtrace})? one,
+    TResult Function({required int message, required String backtrace})? two,
+  }) {
+    final self = this;
+    if (self is CustomEnumErrorTwinNormal_One) {
+      return one?.call(message: self.message, backtrace: self.backtrace);
+    }
+    if (self is CustomEnumErrorTwinNormal_Two) {
+      return two?.call(message: self.message, backtrace: self.backtrace);
+    }
+    return null;
+  }
 }
 
 class CustomEnumErrorTwinNormal_One extends CustomEnumErrorTwinNormal
@@ -140,6 +176,42 @@ sealed class CustomErrorTwinNormal implements FrbException {
     required int e,
     required String backtrace,
   }) = CustomErrorTwinNormal_Error1;
+
+  Object? get e {
+    final self = this;
+    if (self is CustomErrorTwinNormal_Error0) {
+      return self.e;
+    }
+    if (self is CustomErrorTwinNormal_Error1) {
+      return self.e;
+    }
+    throw StateError('Unreachable enum variant');
+  }
+
+  String get backtrace {
+    final self = this;
+    if (self is CustomErrorTwinNormal_Error0) {
+      return self.backtrace;
+    }
+    if (self is CustomErrorTwinNormal_Error1) {
+      return self.backtrace;
+    }
+    throw StateError('Unreachable enum variant');
+  }
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function({required String e, required String backtrace})? error0,
+    TResult Function({required int e, required String backtrace})? error1,
+  }) {
+    final self = this;
+    if (self is CustomErrorTwinNormal_Error0) {
+      return error0?.call(e: self.e, backtrace: self.backtrace);
+    }
+    if (self is CustomErrorTwinNormal_Error1) {
+      return error1?.call(e: self.e, backtrace: self.backtrace);
+    }
+    return null;
+  }
 }
 
 class CustomErrorTwinNormal_Error0 extends CustomErrorTwinNormal
@@ -195,6 +267,20 @@ sealed class CustomNestedError1TwinNormal implements FrbException {
   const factory CustomNestedError1TwinNormal.errorNested(
     CustomNestedError2TwinNormal field0,
   ) = CustomNestedError1TwinNormal_ErrorNested;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String field0)? customNested1,
+    TResult Function(CustomNestedError2TwinNormal field0)? errorNested,
+  }) {
+    final self = this;
+    if (self is CustomNestedError1TwinNormal_CustomNested1) {
+      return customNested1?.call(self.field0);
+    }
+    if (self is CustomNestedError1TwinNormal_ErrorNested) {
+      return errorNested?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class CustomNestedError1TwinNormal_CustomNested1
@@ -244,6 +330,20 @@ sealed class CustomNestedError2TwinNormal {
   const factory CustomNestedError2TwinNormal.customNested2Number(
     int field0,
   ) = CustomNestedError2TwinNormal_CustomNested2Number;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String field0)? customNested2,
+    TResult Function(int field0)? customNested2Number,
+  }) {
+    final self = this;
+    if (self is CustomNestedError2TwinNormal_CustomNested2) {
+      return customNested2?.call(self.field0);
+    }
+    if (self is CustomNestedError2TwinNormal_CustomNested2Number) {
+      return customNested2Number?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class CustomNestedError2TwinNormal_CustomNested2
@@ -293,6 +393,20 @@ sealed class CustomNestedErrorInnerTwinNormal {
   const factory CustomNestedErrorInnerTwinNormal.four(
     int field0,
   ) = CustomNestedErrorInnerTwinNormal_Four;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String field0)? three,
+    TResult Function(int field0)? four,
+  }) {
+    final self = this;
+    if (self is CustomNestedErrorInnerTwinNormal_Three) {
+      return three?.call(self.field0);
+    }
+    if (self is CustomNestedErrorInnerTwinNormal_Four) {
+      return four?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class CustomNestedErrorInnerTwinNormal_Three
@@ -342,6 +456,20 @@ sealed class CustomNestedErrorOuterTwinNormal {
   const factory CustomNestedErrorOuterTwinNormal.two(
     CustomNestedErrorInnerTwinNormal field0,
   ) = CustomNestedErrorOuterTwinNormal_Two;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String field0)? one,
+    TResult Function(CustomNestedErrorInnerTwinNormal field0)? two,
+  }) {
+    final self = this;
+    if (self is CustomNestedErrorOuterTwinNormal_One) {
+      return one?.call(self.field0);
+    }
+    if (self is CustomNestedErrorOuterTwinNormal_Two) {
+      return two?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class CustomNestedErrorOuterTwinNormal_One

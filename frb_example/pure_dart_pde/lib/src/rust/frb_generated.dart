@@ -79844,6 +79844,22 @@ sealed class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueI
   const factory Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum.variant1(
     MyNodeTwinNormal field0,
   ) = Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(MyNodeTwinNormal field0)? variant0,
+    TResult Function(MyNodeTwinNormal field0)? variant1,
+  }) {
+    final self = this;
+    if (self
+        is Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0) {
+      return variant0?.call(self.field0);
+    }
+    if (self
+        is Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant1) {
+      return variant1?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerMyAudioParamTwinNormalProxyEnum_Variant0
@@ -79893,6 +79909,20 @@ sealed class SimpleTraitForDynTwinNormalImplementor {
   const factory SimpleTraitForDynTwinNormalImplementor.variant1(
     StructTwoWithTraitForDynTwinNormal field0,
   ) = SimpleTraitForDynTwinNormalImplementor_Variant1;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(StructOneWithTraitForDynTwinNormal field0)? variant0,
+    TResult Function(StructTwoWithTraitForDynTwinNormal field0)? variant1,
+  }) {
+    final self = this;
+    if (self is SimpleTraitForDynTwinNormalImplementor_Variant0) {
+      return variant0?.call(self.field0);
+    }
+    if (self is SimpleTraitForDynTwinNormalImplementor_Variant1) {
+      return variant1?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class SimpleTraitForDynTwinNormalImplementor_Variant0

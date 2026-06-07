@@ -66,6 +66,20 @@ sealed class DistanceTwinNormal {
   const factory DistanceTwinNormal.map(
     double field0,
   ) = DistanceTwinNormal_Map;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unknown,
+    TResult Function(double field0)? map,
+  }) {
+    final self = this;
+    if (self is DistanceTwinNormal_Unknown) {
+      return unknown?.call();
+    }
+    if (self is DistanceTwinNormal_Map) {
+      return map?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class DistanceTwinNormal_Unknown extends DistanceTwinNormal {
@@ -120,6 +134,24 @@ sealed class EnumWithItemMixedTwinNormal {
   const factory EnumWithItemMixedTwinNormal.c({
     required String cField,
   }) = EnumWithItemMixedTwinNormal_C;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? a,
+    TResult Function(Uint8List field0)? b,
+    TResult Function({required String cField})? c,
+  }) {
+    final self = this;
+    if (self is EnumWithItemMixedTwinNormal_A) {
+      return a?.call();
+    }
+    if (self is EnumWithItemMixedTwinNormal_B) {
+      return b?.call(self.field0);
+    }
+    if (self is EnumWithItemMixedTwinNormal_C) {
+      return c?.call(cField: self.cField);
+    }
+    return null;
+  }
 }
 
 class EnumWithItemMixedTwinNormal_A extends EnumWithItemMixedTwinNormal {
@@ -180,6 +212,20 @@ sealed class EnumWithItemStructTwinNormal {
   const factory EnumWithItemStructTwinNormal.b({
     required Int32List bField,
   }) = EnumWithItemStructTwinNormal_B;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function({required Uint8List aField})? a,
+    TResult Function({required Int32List bField})? b,
+  }) {
+    final self = this;
+    if (self is EnumWithItemStructTwinNormal_A) {
+      return a?.call(aField: self.aField);
+    }
+    if (self is EnumWithItemStructTwinNormal_B) {
+      return b?.call(bField: self.bField);
+    }
+    return null;
+  }
 }
 
 class EnumWithItemStructTwinNormal_A extends EnumWithItemStructTwinNormal {
@@ -227,6 +273,20 @@ sealed class EnumWithItemTupleTwinNormal {
   const factory EnumWithItemTupleTwinNormal.b(
     int field0,
   ) = EnumWithItemTupleTwinNormal_B;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Uint8List field0)? a,
+    TResult Function(int field0)? b,
+  }) {
+    final self = this;
+    if (self is EnumWithItemTupleTwinNormal_A) {
+      return a?.call(self.field0);
+    }
+    if (self is EnumWithItemTupleTwinNormal_B) {
+      return b?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class EnumWithItemTupleTwinNormal_A extends EnumWithItemTupleTwinNormal {
@@ -291,6 +351,39 @@ sealed class KitchenSinkTwinNormal {
   const factory KitchenSinkTwinNormal.enums([
     WeekdaysTwinNormal field0,
   ]) = KitchenSinkTwinNormal_Enums;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(
+            {int int32, required double float64, required bool boolean})?
+        primitives,
+    TResult Function(int field0, KitchenSinkTwinNormal field1)? nested,
+    TResult Function(int? field0, int? field1)? optional,
+    TResult Function(Uint8List field0)? buffer,
+    TResult Function(WeekdaysTwinNormal field0)? enums,
+  }) {
+    final self = this;
+    if (self is KitchenSinkTwinNormal_Empty) {
+      return empty?.call();
+    }
+    if (self is KitchenSinkTwinNormal_Primitives) {
+      return primitives?.call(
+          int32: self.int32, float64: self.float64, boolean: self.boolean);
+    }
+    if (self is KitchenSinkTwinNormal_Nested) {
+      return nested?.call(self.field0, self.field1);
+    }
+    if (self is KitchenSinkTwinNormal_Optional) {
+      return optional?.call(self.field0, self.field1);
+    }
+    if (self is KitchenSinkTwinNormal_Buffer) {
+      return buffer?.call(self.field0);
+    }
+    if (self is KitchenSinkTwinNormal_Enums) {
+      return enums?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class KitchenSinkTwinNormal_Empty extends KitchenSinkTwinNormal {
@@ -418,6 +511,20 @@ sealed class MeasureTwinNormal {
   const factory MeasureTwinNormal.distance(
     DistanceTwinNormal field0,
   ) = MeasureTwinNormal_Distance;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(SpeedTwinNormal field0)? speed,
+    TResult Function(DistanceTwinNormal field0)? distance,
+  }) {
+    final self = this;
+    if (self is MeasureTwinNormal_Speed) {
+      return speed?.call(self.field0);
+    }
+    if (self is MeasureTwinNormal_Distance) {
+      return distance?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class MeasureTwinNormal_Speed extends MeasureTwinNormal {
@@ -484,6 +591,20 @@ sealed class SpeedTwinNormal {
   const factory SpeedTwinNormal.gps(
     double field0,
   ) = SpeedTwinNormal_GPS;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unknown,
+    TResult Function(double field0)? gps,
+  }) {
+    final self = this;
+    if (self is SpeedTwinNormal_Unknown) {
+      return unknown?.call();
+    }
+    if (self is SpeedTwinNormal_GPS) {
+      return gps?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class SpeedTwinNormal_Unknown extends SpeedTwinNormal {

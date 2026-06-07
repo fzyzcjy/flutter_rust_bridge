@@ -121,6 +121,36 @@ sealed class EnumOpaqueTwinNormal {
     RwLockHideDataTwinNormal field0,
   ) = EnumOpaqueTwinNormal_RwLock;
   const factory EnumOpaqueTwinNormal.nothing() = EnumOpaqueTwinNormal_Nothing;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(HideDataTwinNormal field0)? struct,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebugTwinNormal field0)? traitObj,
+    TResult Function(MutexHideDataTwinNormal field0)? mutex,
+    TResult Function(RwLockHideDataTwinNormal field0)? rwLock,
+    TResult Function()? nothing,
+  }) {
+    final self = this;
+    if (self is EnumOpaqueTwinNormal_Struct) {
+      return struct?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinNormal_Primitive) {
+      return primitive?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinNormal_TraitObj) {
+      return traitObj?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinNormal_Mutex) {
+      return mutex?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinNormal_RwLock) {
+      return rwLock?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinNormal_Nothing) {
+      return nothing?.call();
+    }
+    return null;
+  }
 }
 
 class EnumOpaqueTwinNormal_Struct extends EnumOpaqueTwinNormal {

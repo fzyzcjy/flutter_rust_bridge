@@ -124,6 +124,36 @@ sealed class EnumOpaqueTwinSync {
     RwLockHideDataTwinSync field0,
   ) = EnumOpaqueTwinSync_RwLock;
   const factory EnumOpaqueTwinSync.nothing() = EnumOpaqueTwinSync_Nothing;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(HideDataTwinSync field0)? struct,
+    TResult Function(I32 field0)? primitive,
+    TResult Function(BoxDartDebugTwinSync field0)? traitObj,
+    TResult Function(MutexHideDataTwinSync field0)? mutex,
+    TResult Function(RwLockHideDataTwinSync field0)? rwLock,
+    TResult Function()? nothing,
+  }) {
+    final self = this;
+    if (self is EnumOpaqueTwinSync_Struct) {
+      return struct?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinSync_Primitive) {
+      return primitive?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinSync_TraitObj) {
+      return traitObj?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinSync_Mutex) {
+      return mutex?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinSync_RwLock) {
+      return rwLock?.call(self.field0);
+    }
+    if (self is EnumOpaqueTwinSync_Nothing) {
+      return nothing?.call();
+    }
+    return null;
+  }
 }
 
 class EnumOpaqueTwinSync_Struct extends EnumOpaqueTwinSync {

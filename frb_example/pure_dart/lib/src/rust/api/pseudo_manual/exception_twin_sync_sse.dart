@@ -86,6 +86,42 @@ sealed class CustomEnumErrorTwinSyncSse implements FrbException {
     required int message,
     required String backtrace,
   }) = CustomEnumErrorTwinSyncSse_Two;
+
+  Object? get message {
+    final self = this;
+    if (self is CustomEnumErrorTwinSyncSse_One) {
+      return self.message;
+    }
+    if (self is CustomEnumErrorTwinSyncSse_Two) {
+      return self.message;
+    }
+    throw StateError('Unreachable enum variant');
+  }
+
+  String get backtrace {
+    final self = this;
+    if (self is CustomEnumErrorTwinSyncSse_One) {
+      return self.backtrace;
+    }
+    if (self is CustomEnumErrorTwinSyncSse_Two) {
+      return self.backtrace;
+    }
+    throw StateError('Unreachable enum variant');
+  }
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function({required String message, required String backtrace})? one,
+    TResult Function({required int message, required String backtrace})? two,
+  }) {
+    final self = this;
+    if (self is CustomEnumErrorTwinSyncSse_One) {
+      return one?.call(message: self.message, backtrace: self.backtrace);
+    }
+    if (self is CustomEnumErrorTwinSyncSse_Two) {
+      return two?.call(message: self.message, backtrace: self.backtrace);
+    }
+    return null;
+  }
 }
 
 class CustomEnumErrorTwinSyncSse_One extends CustomEnumErrorTwinSyncSse
@@ -143,6 +179,42 @@ sealed class CustomErrorTwinSyncSse implements FrbException {
     required int e,
     required String backtrace,
   }) = CustomErrorTwinSyncSse_Error1;
+
+  Object? get e {
+    final self = this;
+    if (self is CustomErrorTwinSyncSse_Error0) {
+      return self.e;
+    }
+    if (self is CustomErrorTwinSyncSse_Error1) {
+      return self.e;
+    }
+    throw StateError('Unreachable enum variant');
+  }
+
+  String get backtrace {
+    final self = this;
+    if (self is CustomErrorTwinSyncSse_Error0) {
+      return self.backtrace;
+    }
+    if (self is CustomErrorTwinSyncSse_Error1) {
+      return self.backtrace;
+    }
+    throw StateError('Unreachable enum variant');
+  }
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function({required String e, required String backtrace})? error0,
+    TResult Function({required int e, required String backtrace})? error1,
+  }) {
+    final self = this;
+    if (self is CustomErrorTwinSyncSse_Error0) {
+      return error0?.call(e: self.e, backtrace: self.backtrace);
+    }
+    if (self is CustomErrorTwinSyncSse_Error1) {
+      return error1?.call(e: self.e, backtrace: self.backtrace);
+    }
+    return null;
+  }
 }
 
 class CustomErrorTwinSyncSse_Error0 extends CustomErrorTwinSyncSse
@@ -198,6 +270,20 @@ sealed class CustomNestedError1TwinSyncSse implements FrbException {
   const factory CustomNestedError1TwinSyncSse.errorNested(
     CustomNestedError2TwinSyncSse field0,
   ) = CustomNestedError1TwinSyncSse_ErrorNested;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String field0)? customNested1,
+    TResult Function(CustomNestedError2TwinSyncSse field0)? errorNested,
+  }) {
+    final self = this;
+    if (self is CustomNestedError1TwinSyncSse_CustomNested1) {
+      return customNested1?.call(self.field0);
+    }
+    if (self is CustomNestedError1TwinSyncSse_ErrorNested) {
+      return errorNested?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class CustomNestedError1TwinSyncSse_CustomNested1
@@ -247,6 +333,20 @@ sealed class CustomNestedError2TwinSyncSse {
   const factory CustomNestedError2TwinSyncSse.customNested2Number(
     int field0,
   ) = CustomNestedError2TwinSyncSse_CustomNested2Number;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String field0)? customNested2,
+    TResult Function(int field0)? customNested2Number,
+  }) {
+    final self = this;
+    if (self is CustomNestedError2TwinSyncSse_CustomNested2) {
+      return customNested2?.call(self.field0);
+    }
+    if (self is CustomNestedError2TwinSyncSse_CustomNested2Number) {
+      return customNested2Number?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class CustomNestedError2TwinSyncSse_CustomNested2
@@ -296,6 +396,20 @@ sealed class CustomNestedErrorInnerTwinSyncSse {
   const factory CustomNestedErrorInnerTwinSyncSse.four(
     int field0,
   ) = CustomNestedErrorInnerTwinSyncSse_Four;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String field0)? three,
+    TResult Function(int field0)? four,
+  }) {
+    final self = this;
+    if (self is CustomNestedErrorInnerTwinSyncSse_Three) {
+      return three?.call(self.field0);
+    }
+    if (self is CustomNestedErrorInnerTwinSyncSse_Four) {
+      return four?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class CustomNestedErrorInnerTwinSyncSse_Three
@@ -345,6 +459,20 @@ sealed class CustomNestedErrorOuterTwinSyncSse {
   const factory CustomNestedErrorOuterTwinSyncSse.two(
     CustomNestedErrorInnerTwinSyncSse field0,
   ) = CustomNestedErrorOuterTwinSyncSse_Two;
+
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String field0)? one,
+    TResult Function(CustomNestedErrorInnerTwinSyncSse field0)? two,
+  }) {
+    final self = this;
+    if (self is CustomNestedErrorOuterTwinSyncSse_One) {
+      return one?.call(self.field0);
+    }
+    if (self is CustomNestedErrorOuterTwinSyncSse_Two) {
+      return two?.call(self.field0);
+    }
+    return null;
+  }
 }
 
 class CustomNestedErrorOuterTwinSyncSse_One
