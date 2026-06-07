@@ -1076,6 +1076,7 @@ jobs:
           UDID=$(xcrun xctrace list devices | grep '${{ matrix.info.device }} (' | awk '{print $NF}' | tr -d '()')
           echo UDID=$UDID
           echo "UDID=$UDID" >> "$GITHUB_ENV"
+          echo "QUICKSTART_SMOKE_DEVICE_ID=$UDID" >> "$GITHUB_ENV"
           xcrun simctl boot "${UDID:?No Simulator with this name found}"
       - if: ${{ runner.os == 'Linux' }}
         run: sudo apt-get update && sudo apt-get install -y clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev imagemagick tesseract-ocr
@@ -1096,12 +1097,12 @@ jobs:
           arch: x86_64
           profile: ${{ matrix.info.device }}
           script: ./frb_internal test-flutter-quickstart-smoke --package ${{ matrix.info.package }} --target android --device-id emulator-5554
-      - if: ${{ matrix.info.target == 'ios' }}
-        run: ./frb_internal test-flutter-quickstart-smoke --package ${{ matrix.info.package }} --target ios --device-id "$UDID"
-      - if: ${{ matrix.info.target == 'desktop' }}
-        run: ./frb_internal test-flutter-quickstart-smoke --package ${{ matrix.info.package }} --target desktop --device-id ${{ matrix.info.device }}
-      - if: ${{ matrix.info.target == 'web' }}
-        run: ./frb_internal test-flutter-quickstart-smoke --package ${{ matrix.info.package }} --target web --device-id ${{ matrix.info.device }}
+      - if: ${{ matrix.info.target != 'android' }}
+        run: |-
+          ./frb_internal test-flutter-quickstart-smoke \
+            --package ${{ matrix.info.package }} \
+            --target ${{ matrix.info.target }} \
+            --device-id "${QUICKSTART_SMOKE_DEVICE_ID:-${{ matrix.info.device }}}"
 
       # report
       - uses: actions/upload-artifact@v4
