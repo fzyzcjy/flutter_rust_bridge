@@ -42,6 +42,7 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgsPrima
         rust_preamble: args.rust_preamble,
         dart_collection_deep_equality: positive_bool_arg(args.dart_collection_deep_equality),
         dart_enums_style: negative_bool_arg(args.no_dart_enums_style),
+        dart_enums_freezed: negative_bool_arg(args.no_dart_enums_freezed),
         add_mod_to_lib: negative_bool_arg(args.no_add_mod_to_lib),
         llvm_path: args.llvm_path,
         llvm_compiler_opts: args.llvm_compiler_opts,
@@ -200,6 +201,15 @@ mod tests {
             .expect("failed to parse cli args")
             .dart_collection_deep_equality,
             Some(true)
+        );
+        assert_eq!(
+            run_command_line(concat([
+                common_args.clone(),
+                vec!["--no-dart-enums-freezed"]
+            ]))
+            .expect("failed to parse cli args")
+            .dart_enums_freezed,
+            Some(false)
         );
     }
 

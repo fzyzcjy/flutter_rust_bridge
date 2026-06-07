@@ -1,6 +1,6 @@
 # Enums
 
-Rust's `enum` are known to be very expressive and powerful - it allows each enum variant to have different associated data. Dart does not have such things in built-in enums, but no worries - we will automatically translate it into the equivalent using the `freezed` Dart library. The syntax for `freezed` may look a bit strange at the first glance, but please look at [its doc](https://pub.dev/packages/freezed) and see its powerfulness.
+Rust's `enum` are known to be very expressive and powerful - it allows each enum variant to have different associated data. Dart does not have such things in built-in enums, but no worries - we will automatically translate it into the equivalent using the `freezed` Dart library by default. The syntax for `freezed` may look a bit strange at the first glance, but please look at [its doc](https://pub.dev/packages/freezed) and see its powerfulness.
 
 Some features are documented in [structs](struct.md). For example, how to make it support json serialization, how to unignore a type, etc.
 
@@ -87,3 +87,19 @@ if (maybe case Maybe_Some(:final value)) {
   ..
 }
 ```
+
+## Native Dart classes without Freezed
+
+If you only need Dart 3 sealed classes and pattern matching, and do not need Freezed-generated helpers such as `copyWith`, `map`, or `when`, disable Freezed for complex enum generation:
+
+```yaml
+dart_enums_freezed: false
+```
+
+Or pass the CLI flag:
+
+```bash
+flutter_rust_bridge_codegen generate --no-dart-enums-freezed
+```
+
+With this option, complex Rust enums are generated as a native Dart base class plus concrete variant subclasses. The constructors and variant class names remain compatible with the Freezed-backed shape used by FRB, so generated codec code and Dart pattern matching continue to use names such as `Maybe.some(...)` and `Maybe_Some`.

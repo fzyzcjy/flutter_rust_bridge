@@ -106,7 +106,10 @@ impl StructRefApiDartGenerator<'_> {
     }
 }
 
-fn generate_hashcode(fields: &[MirField], dart_collection_deep_equality: bool) -> String {
+pub(crate) fn generate_hashcode(
+    fields: &[MirField],
+    dart_collection_deep_equality: bool,
+) -> String {
     let body = if fields.is_empty() {
         "0".to_owned()
     } else {
@@ -131,7 +134,7 @@ fn generate_hashcode(fields: &[MirField], dart_collection_deep_equality: bool) -
     )
 }
 
-fn generate_equals(
+pub(crate) fn generate_equals(
     fields: &[MirField],
     struct_name: &str,
     dart_collection_deep_equality: bool,
@@ -160,7 +163,7 @@ fn generate_equals(
     )
 }
 
-fn needs_deep_equality(ty: &MirType) -> bool {
+pub(crate) fn needs_deep_equality(ty: &MirType) -> bool {
     match ty {
         MirType::Boxed(boxed) => needs_deep_equality(&boxed.inner),
         MirType::GeneralList(_) | MirType::PrimitiveList(_) => true,
