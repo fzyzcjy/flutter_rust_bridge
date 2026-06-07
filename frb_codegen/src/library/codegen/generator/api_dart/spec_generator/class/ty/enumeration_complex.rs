@@ -33,7 +33,7 @@ impl EnumRefApiDartGenerator<'_> {
             .map(|variant| self.generate_mode_complex_variant_factory(variant, use_freezed))
             .collect_vec()
             .join("\n");
-        let variant_classes = if !self.context.config.dart_enums_freezed {
+        let variant_classes = if !use_freezed {
             self.generate_mode_complex_variant_classes(src)
         } else {
             Default::default()

@@ -60,11 +60,21 @@ fn compute_default_value(field: &MirField, dart_enums_style: bool) -> Option<Str
 }
 
 fn ensure_const_default_value(default_value: String) -> String {
-    if default_value.contains('(') && !default_value.starts_with("const ") {
+    if default_value.contains('(')
+        && !default_value.starts_with("const ")
+        && !is_dart_string_literal(&default_value)
+    {
         format!("const {default_value}")
     } else {
         default_value
     }
+}
+
+fn is_dart_string_literal(value: &str) -> bool {
+    value.starts_with('\'')
+        || value.starts_with('"')
+        || value.starts_with("r'")
+        || value.starts_with("r\"")
 }
 
 fn default_value_maybe_to_dart_style(value: &str, enable: bool) -> Cow<'_, str> {
@@ -123,6 +133,14 @@ mod tests {
         assert_eq!(
             &ensure_const_default_value("Foo.bar".to_string()),
             "Foo.bar"
+        );
+        assert_eq!(
+            &ensure_const_default_value("'hello()'".to_string()),
+            "'hello()'"
+        );
+        assert_eq!(
+            &ensure_const_default_value("r'hello()'".to_string()),
+            "r'hello()'"
         );
     }
 }
