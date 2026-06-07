@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -30,6 +31,7 @@ Future<RunCommandOutput> runCommand(
   bool silent = false,
   bool? checkExitCode,
   bool printCommandInStderr = false,
+  Duration? timeout,
 }) async {
   // ignore: avoid_print
   (printCommandInStderr ? stderr : stdout).writeAndFlush(
@@ -58,7 +60,18 @@ Future<RunCommandOutput> runCommand(
     stderrText.add(line);
   });
 
-  final exitCode = await process.exitCode;
+  final int exitCode;
+  try {
+    exitCode = timeout == null
+        ? await process.exitCode
+        : await process.exitCode.timeout(timeout);
+  } on TimeoutException {
+    await _killProcessTree(process.pid);
+    throw TimeoutException(
+      'Command timed out after $timeout: $command ${arguments.join(" ")}',
+      timeout,
+    );
+  }
   if ((checkExitCode ?? true) && (exitCode != 0)) {
     const envKey = 'FRB_DART_RUN_COMMAND_STDERR';
     final enableStderr = Platform.environment[envKey] == '1';
@@ -78,6 +91,61 @@ Future<RunCommandOutput> runCommand(
     stderr: stderrText.join(''),
     exitCode: exitCode,
   );
+}
+
+Future<void> _killProcessTree(int pid) async {
+  // ignore: avoid_print
+  print('Killing process tree rooted at PID $pid');
+
+  if (Platform.isWindows) {
+    try {
+      await Process.run('taskkill', ['/F', '/T', '/PID', '$pid']);
+    } on ProcessException {
+      Process.killPid(pid, ProcessSignal.sigkill);
+    }
+    return;
+  }
+
+  final pids = await _processTreeIds(pid);
+  var didSignal = false;
+  for (final pid in pids.reversed) {
+    didSignal |= Process.killPid(pid);
+  }
+  if (!didSignal) {
+    return;
+  }
+
+  await Future<void>.delayed(const Duration(milliseconds: 500));
+  for (final pid in pids.reversed) {
+    Process.killPid(pid, ProcessSignal.sigkill);
+  }
+}
+
+Future<List<int>> _processTreeIds(int pid) async {
+  final pids = [pid];
+  for (final childPid in await _childProcessIds(pid)) {
+    pids.addAll(await _processTreeIds(childPid));
+  }
+  return pids;
+}
+
+Future<List<int>> _childProcessIds(int pid) async {
+  final ProcessResult result;
+  try {
+    result = await Process.run('ps', ['-eo', 'pid=,ppid=']);
+  } on ProcessException {
+    return const [];
+  }
+
+  if (result.exitCode != 0) return const [];
+
+  return (result.stdout as String)
+      .split('\n')
+      .map((line) => line.trim().split(RegExp(r'\s+')))
+      .where((parts) => parts.length == 2 && parts[1] == '$pid')
+      .map((parts) => int.tryParse(parts[0]))
+      .nonNulls
+      .toList();
 }
 
 extension on IOSink {

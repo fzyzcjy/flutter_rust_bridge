@@ -17,6 +17,8 @@
 - `frb-test` - How to run tests
 - `frb-debugging` - Debug code generation issues
 - `frb-lint` - Lint and format checks
+- `frb-manual-test` - Manual regression test reports
 - `frb-prepare-pr` - PR preparation
 - `frb-fix-ci` - CI fixes
+- `frb-fix-main-ci` - Default-branch CI regression triage
 - `frb-docker` - Docker/devcontainer usage and dev image publishing

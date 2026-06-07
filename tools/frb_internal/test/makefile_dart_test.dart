@@ -1,8 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/generator.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/build.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/quickstart_smoke.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:test/test.dart';
 
@@ -25,6 +27,29 @@ void main() {
     expect(
       dartValgrindOutputExecutablePathForTesting(),
       'build/valgrind_test_output/bundle/bin/dart_valgrind_test_entrypoint',
+    );
+  });
+
+  test('linux build bundle path follows the current machine architecture', () {
+    expect(
+      linuxBuildBundlePathForTesting(machineArchitecture: 'x86_64'),
+      'build/linux/x64/release/bundle',
+    );
+    expect(
+      linuxBuildBundlePathForTesting(machineArchitecture: 'amd64'),
+      'build/linux/x64/release/bundle',
+    );
+    expect(
+      linuxBuildBundlePathForTesting(machineArchitecture: 'aarch64'),
+      'build/linux/arm64/release/bundle',
+    );
+    expect(
+      linuxBuildBundlePathForTesting(machineArchitecture: 'arm64'),
+      'build/linux/arm64/release/bundle',
+    );
+    expect(
+      linuxBuildBundlePathForTesting(machineArchitecture: 'riscv64'),
+      'build/linux/riscv64/release/bundle',
     );
   });
 
@@ -119,6 +144,119 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
     expect(
       resolveBuildWebPackage('frb_example/gallery'),
       'frb_example/gallery',
+    );
+  });
+
+  test('quickstart smoke OCR normalization ignores punctuation', () {
+    expect(
+      normalizeQuickstartSmokeOcrTextForTesting(
+        'Action: Call Rust `greet("Tom")`\nResult: `Hello, Tom!`',
+      ),
+      'action call rust greet tom result hello tom',
+    );
+  });
+
+  test('quickstart smoke OCR accepts hello tom text', () {
+    expect(
+      () => checkQuickstartSmokeOcrTextForTesting('Result: `Hello, Tom!`'),
+      returnsNormally,
+    );
+  });
+
+  test('quickstart smoke resolves package from repo root instead of cwd', () {
+    expect(
+      quickstartSmokePackagePathForTesting(
+        'frb_example/flutter_via_create',
+        repoRootPath: '/workspace/flutter_rust_bridge/',
+      ),
+      '/workspace/flutter_rust_bridge/frb_example/flutter_via_create',
+    );
+  });
+
+  test('quickstart smoke screenshots target the requested device', () {
+    expect(quickstartSmokeAndroidScreenshotArgsForTesting('emulator-5556'), [
+      '-s',
+      'emulator-5556',
+      'exec-out',
+      'screencap',
+      '-p',
+    ]);
+    expect(
+      quickstartSmokeIosScreenshotArgsForTesting(
+        deviceId: 'IPHONE-UDID',
+        screenshotPath: '/tmp/quickstart.png',
+      ),
+      ['simctl', 'io', 'IPHONE-UDID', 'screenshot', '/tmp/quickstart.png'],
+    );
+    expect(quickstartSmokeMacosScreenshotArgsForTesting('/tmp/smoke.png'), [
+      '-x',
+      '-T',
+      '1',
+      '/tmp/smoke.png',
+    ]);
+  });
+
+  test(
+    'quickstart smoke waits for Flutter run readiness before screenshot',
+    () {
+      expect(
+        quickstartSmokeFlutterRunIsReadyForTesting(
+          'Debug service listening on ws://127.0.0.1:1234/ws',
+        ),
+        true,
+      );
+      expect(
+        quickstartSmokeFlutterRunIsReadyForTesting('Flutter run key commands.'),
+        true,
+      );
+    },
+  );
+
+  test('quickstart smoke does not capture while Flutter is still building', () {
+    expect(
+      quickstartSmokeFlutterRunIsReadyForTesting(
+        'Running Gradle task \'assembleDebug\'...',
+      ),
+      false,
+    );
+    expect(
+      quickstartSmokeFlutterRunIsReadyForTesting(
+        'Building Windows application...',
+      ),
+      false,
+    );
+  });
+
+  test('quickstart smoke detects web worker startup failures', () {
+    expect(
+      quickstartSmokeOutputFailurePatternForTesting(
+        'DataCloneError: Failed to execute postMessage',
+      ),
+      'DataCloneError',
+    );
+  });
+
+  test('quickstart smoke ignores unrelated Android graphics warnings', () {
+    expect(
+      quickstartSmokeOutputFailurePatternForTesting(
+        'W/HWUI: Failed to initialize 101010-2 format, error = EGL_SUCCESS',
+      ),
+      isNull,
+    );
+  });
+
+  test('quickstart smoke OCR rejects unrelated text', () {
+    expect(
+      () => checkQuickstartSmokeOcrTextForTesting(
+        'Failed to initialize the application',
+      ),
+      throwsA(
+        isA<Exception>().having(
+          (exception) => exception.toString(),
+          'message',
+          contains('Hello, Tom'),
+        ),
+      ),
     );
   });
 

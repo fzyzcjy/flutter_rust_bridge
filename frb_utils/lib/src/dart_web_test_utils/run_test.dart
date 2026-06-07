@@ -116,6 +116,10 @@ Future<Browser> _launchBrowser({
 
   return await HttpOverrides.runZoned(() async {
     final browser = await puppeteer.launch(
+      executablePath: browserExecutablePathFromEnvironment(
+        Platform.environment,
+        isInContainer: isInContainer,
+      ),
       headless: headless,
       timeout: const Duration(minutes: 5),
       args: isInContainer ? ['--no-sandbox', '--disable-setuid-sandbox'] : [],
@@ -126,6 +130,25 @@ Future<Browser> _launchBrowser({
     await page.goto('$baseAddr/$_kTestEntrypointHttpName');
     return browser;
   }, findProxyFromEnvironment: findWebTestProxyFromEnvironment);
+}
+
+String? browserExecutablePathFromEnvironment(
+  Map<String, String> environment, {
+  required bool isInContainer,
+}) {
+  for (final key in [
+    'PUPPETEER_EXECUTABLE_PATH',
+    'CHROME_EXECUTABLE',
+  ]) {
+    final value = environment[key]?.trim();
+    if (value != null && value.isNotEmpty) return value;
+  }
+
+  final chromeBin = environment['CHROME_BIN']?.trim();
+  if (isInContainer && chromeBin != null && chromeBin.isNotEmpty) {
+    return chromeBin;
+  }
+  return null;
 }
 
 void _configurePageLogging(Page page) {

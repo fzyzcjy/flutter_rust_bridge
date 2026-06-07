@@ -1,17 +1,17 @@
 // ignore_for_file: avoid_print
 
-import 'dart:io';
-
 import 'package:args/command_runner.dart';
 import 'package:build_cli_annotations/build_cli_annotations.dart';
 // ignore: implementation_imports
 import 'package:flutter_rust_bridge/src/cli/run_command.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/cargokit_sync.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/ci_plan.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/precommit_autofix_in_dev_container.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/precommit_autofix.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/pubspec_normalizer.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/codecov_preaggregator.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
@@ -52,6 +52,7 @@ List<Command<void>> createCommands() {
     SimpleCommand('sync-cargokit-copies', syncCargokitCopies),
     SimpleCommand('pub-get-all', pubGetAll),
     SimpleCommand('cargo-fetch-all', cargoFetchAll),
+    PlanCiCommand(),
     CodecovPreaggregateCommand(),
   ];
 }
@@ -108,13 +109,7 @@ class CodecovPreaggregateCommand extends Command<void> {
 
 Future<void> miscNormalizePubspec() async {
   print('Execute miscNormalizePubspec');
-  for (final package in kDartPackages) {
-    final file = File('${exec.pwd}$package/pubspec.lock');
-    final original = file.readAsStringSync();
-    final modified = original.replaceAll('pub.flutter-io.cn', 'pub.dev');
-    if (modified == original) continue;
-    file.writeAsStringSync(modified);
-  }
+  normalizePubspecs(repoRootPath: exec.pwd!, packages: kDartModeOfPackage.keys);
 }
 
 enum PrecommitMode { fast, slow }

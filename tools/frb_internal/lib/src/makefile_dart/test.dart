@@ -8,6 +8,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/post_release.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/quickstart_smoke.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester.dart'
     as dart_sanitizer_tester;
@@ -71,6 +72,12 @@ List<Command<void>> createCommands() {
       testFlutterWeb,
       _$populateTestFlutterWebConfigParser,
       _$parseTestFlutterWebConfigResult,
+    ),
+    SimpleConfigCommand(
+      'test-flutter-quickstart-smoke',
+      testFlutterQuickstartSmoke,
+      _$populateTestFlutterQuickstartSmokeConfigParser,
+      _$parseTestFlutterQuickstartSmokeConfigResult,
     ),
   ];
 }
@@ -156,6 +163,20 @@ class TestFlutterWebConfig {
   final bool coverage;
 
   const TestFlutterWebConfig({required this.package, required this.coverage});
+}
+
+@CliOptions()
+class TestFlutterQuickstartSmokeConfig {
+  @CliOption(convert: convertConfigPackage)
+  final String package;
+  final QuickstartSmokeTarget target;
+  final String? deviceId;
+
+  const TestFlutterQuickstartSmokeConfig({
+    required this.package,
+    required this.target,
+    this.deviceId,
+  });
 }
 
 Future<void> testMimicQuickstart() async =>
@@ -390,7 +411,7 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
       // extra check for e.g. #1807
       await wrapMaybeSetExitIfChangedRaw(config.checkClean, () async {
         await exec(
-          '${dartMode.name} $extraFlags test ${config.coverage ? ' --coverage="coverage"' : ""}',
+          '${_testCommand(dartMode)} $extraFlags ${config.coverage ? ' --coverage="coverage"' : ""}',
           relativePwd: config.package,
           extraEnv: {
             // Deliberately do not provide backtrace env to see whether the test_utils work
@@ -406,6 +427,10 @@ Future<void> testDartNative(TestDartNativeConfig config) async {
     await _formatDartCoverage(package: config.package);
   }
 }
+
+String _testCommand(DartMode mode) => mode == DartMode.dart
+    ? 'dart --enable-vm-service=0 run test'
+    : 'flutter test';
 
 // Follow steps in https://github.com/taiki-e/cargo-llvm-cov#get-coverage-of-external-tests
 Future<T> withLlvmCovReport<T>(
@@ -595,10 +620,12 @@ Future<void> flutterIntegrationTestRaw({
   String flutterTestArgs = '',
   required String relativePwd,
 }) async {
+  const timeout = Duration(minutes: 20);
   await retry(
     () async => await exec(
       'flutter test integration_test/simple_test.dart --verbose --reporter=expanded $flutterTestArgs',
       relativePwd: relativePwd,
+      timeout: timeout,
     ),
     maxAttempts: 3,
     onRetry: (e) => print(
@@ -638,6 +665,41 @@ Future<void> testFlutterWeb(TestFlutterWebConfig config) async {
 String resolveBuildWebPackage(String package) =>
     kBuildWebPackageReplacer[package] ?? package;
 
-Future<void> _runFlutterDoctor() async => await exec('flutter doctor -v');
+Future<void> testFlutterQuickstartSmoke(
+  TestFlutterQuickstartSmokeConfig config,
+) async {
+  if (config.package != 'frb_example/flutter_via_create') {
+    throw Exception(
+      'test-flutter-quickstart-smoke currently supports only '
+      '`frb_example/flutter_via_create`, but got `${config.package}`',
+    );
+  }
+
+  await _runFlutterDoctor();
+  await runPubGetIfNotRunYet(config.package);
+  if (config.target == QuickstartSmokeTarget.web) {
+    print('Building web wasm artifacts before quickstart smoke');
+    await executeFrbCodegen(
+      'build-web',
+      relativePwd: config.package,
+      coverage: false,
+      coverageName: 'TestFlutterQuickstartSmoke',
+    );
+  }
+  await runFlutterViaCreateQuickstartSmokeTest(
+    package: config.package,
+    target: config.target,
+    deviceId: config.deviceId,
+  );
+}
+
+Future<void> _runFlutterDoctor() async {
+  if (Platform.environment['FRB_SKIP_FLUTTER_DOCTOR'] == '1') {
+    print('Skip flutter doctor because FRB_SKIP_FLUTTER_DOCTOR=1');
+    return;
+  }
+
+  await exec('flutter doctor -v');
+}
 
 const kEnvEnableRustBacktrace = {'RUST_BACKTRACE': 'full'};

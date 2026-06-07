@@ -1,4 +1,4 @@
-ARG FLUTTER_VERSION=3.41.2
+ARG FLUTTER_VERSION=3.44.0
 FROM ghcr.io/cirruslabs/flutter:${FLUTTER_VERSION}
 
 # Configurable version parameters
@@ -27,6 +27,45 @@ RUN apt-get update && apt-get install -y \
     unzip \
     xz-utils \
     && rm -rf /var/lib/apt/lists/*
+
+# Android SDK platform-tools, CMake, NDK packages, and Chrome for Testing
+# chromedriver provide linux-x86_64 binaries in the arm64 Cirrus Flutter base
+# image. Docker Desktop can emulate them, but the image still needs the
+# matching x86_64 runtime libraries.
+# References:
+# - Debian multiarch: https://wiki.debian.org/Multiarch/HOWTO
+# - Docker Desktop emulation: https://docs.docker.com/build/guide/multi-platform/#qemu
+RUN if [ "$(dpkg --print-architecture)" = "arm64" ]; then \
+        sed -i '/^Signed-By:/a Architectures: arm64' /etc/apt/sources.list.d/ubuntu.sources \
+        && dpkg --add-architecture amd64 \
+        && printf '%s\n' \
+            'Types: deb' \
+            'URIs: http://archive.ubuntu.com/ubuntu/' \
+            'Suites: noble noble-updates noble-backports' \
+            'Components: main universe restricted multiverse' \
+            'Architectures: amd64' \
+            'Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg' \
+            '' \
+            'Types: deb' \
+            'URIs: http://security.ubuntu.com/ubuntu/' \
+            'Suites: noble-security' \
+            'Components: main universe restricted multiverse' \
+            'Architectures: amd64' \
+            'Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg' \
+            > /etc/apt/sources.list.d/ubuntu-amd64.sources \
+        && apt-get update && apt-get install -y \
+            libc6:amd64 \
+            libdbus-1-3:amd64 \
+            libgcc-s1:amd64 \
+            libglib2.0-0:amd64 \
+            libnspr4:amd64 \
+            libnss3:amd64 \
+            libstdc++6:amd64 \
+            libxcb1:amd64 \
+            zlib1g:amd64 \
+        && rm -rf /var/lib/apt/lists/*; \
+    fi
+ENV LD_LIBRARY_PATH="/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu"
 
 # Configure pip to allow system package installation (PEP 668)
 RUN mkdir -p /etc/pip && \
@@ -68,10 +107,10 @@ ENV PLAYWRIGHT_BROWSERS_PATH=/opt/ms-playwright
 RUN npm install -g "playwright@${PLAYWRIGHT_VERSION}" && \
     playwright install --with-deps chromium && \
     ln -s "$(find "${PLAYWRIGHT_BROWSERS_PATH}" -path "*/chrome-linux*/chrome" -type f | head -n 1)" /usr/bin/google-chrome && \
-    CHROMIUM_VERSION="$(node -e "const p=require.resolve('playwright-core/browsers.json', {paths: ['/usr/local/lib/node_modules/playwright']}); const b=require(p); console.log(b.browsers.find(x=>x.name==='chromium').browserVersion)")" && \
+    CHROMIUM_VERSION="$(node -e "const b=require('/usr/local/lib/node_modules/playwright/node_modules/playwright-core/browsers.json'); console.log(b.browsers.find(x=>x.name==='chromium').browserVersion)")" && \
     ARCH="$(dpkg --print-architecture)" && \
     case "$ARCH" in \
-        amd64) \
+        amd64|arm64) \
             CHROMEDRIVER_PLATFORM="linux64" && \
             curl -fsSL \
                 "https://storage.googleapis.com/chrome-for-testing-public/${CHROMIUM_VERSION}/${CHROMEDRIVER_PLATFORM}/chromedriver-${CHROMEDRIVER_PLATFORM}.zip" \
@@ -79,7 +118,6 @@ RUN npm install -g "playwright@${PLAYWRIGHT_VERSION}" && \
             unzip -q /tmp/chromedriver.zip -d /tmp && \
             install -m 0755 "/tmp/chromedriver-${CHROMEDRIVER_PLATFORM}/chromedriver" /usr/local/bin/chromedriver && \
             rm -rf /tmp/chromedriver.zip "/tmp/chromedriver-${CHROMEDRIVER_PLATFORM}" ;; \
-        arm64) echo "Chrome for Testing does not provide linux-arm64 chromedriver for ${CHROMIUM_VERSION}" ;; \
         *) echo "Unsupported architecture: $ARCH" >&2; exit 1 ;; \
     esac
 ENV CHROME_BIN=/usr/bin/google-chrome
@@ -102,7 +140,10 @@ RUN flutter --version && \
     wasm-pack --version && \
     all-contributors --version && \
     "${CHROME_BIN}" --version && \
-    if command -v chromedriver >/dev/null; then chromedriver --version; else echo "chromedriver unavailable on $(dpkg --print-architecture)"; fi
+    (chromedriver --version || { \
+        [ "$(dpkg --print-architecture)" = "arm64" ] \
+            && echo "chromedriver installed but cannot run; amd64 emulation is unavailable"; \
+    })
 
 # Default command
 CMD ["bash"]
