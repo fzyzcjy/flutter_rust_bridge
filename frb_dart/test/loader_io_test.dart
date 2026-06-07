@@ -33,7 +33,10 @@ void main() {
         stem: 'my_rust_lib',
         debugInfo: 'debug',
         open: (name, debugInfo) => throw StateError('unexpected'),
+        // This callback must not be reached when the open failure is non-recoverable.
+        // coverage:ignore-start
         process: (debugInfo) => 'ok',
+        // coverage:ignore-end
       ),
       throwsStateError,
     );
