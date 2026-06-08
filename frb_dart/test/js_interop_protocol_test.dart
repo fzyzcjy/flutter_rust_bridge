@@ -64,7 +64,11 @@ class _FakeGeneralizedFrbRustBinding extends GeneralizedFrbRustBinding {
   @override
   Object dartOpaqueRust2DartDecode(int ptr) {
     lastDecodedPointer = ptr;
-    return values[ptr]!;
+    final value = values[ptr];
+    if (value == null) {
+      throw StateError('Missing fake Dart opaque value for pointer $ptr');
+    }
+    return value;
   }
 
   @override
