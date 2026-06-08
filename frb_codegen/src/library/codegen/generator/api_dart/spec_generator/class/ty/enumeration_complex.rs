@@ -169,6 +169,10 @@ impl EnumRefApiDartGenerator<'_> {
     }
 
     fn generate_variant_struct_named(&self, st: &MirStruct, freezed: bool) -> String {
+        if st.fields.is_empty() {
+            return "".to_owned();
+        }
+
         let fields = st
             .fields
             .iter()
@@ -435,6 +439,10 @@ impl EnumRefApiDartGenerator<'_> {
     }
 
     fn generate_variant_constructor_params_named(&self, st: &MirStruct) -> String {
+        if st.fields.is_empty() {
+            return "".to_owned();
+        }
+
         let fields = st
             .fields
             .iter()

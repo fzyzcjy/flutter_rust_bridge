@@ -21,6 +21,8 @@ Future<void>  thirdFunction({required DeepCollectionStruct arg }) => RustLib.ins
 
 Future<void>  fourthFunction({required ShallowCollectionStruct arg }) => RustLib.instance.api.crateApiFourthFunction(arg: arg);
 
+Future<void>  fifthFunction({required EnumWithEmptyNamedVariant arg }) => RustLib.instance.api.crateApiFifthFunction(arg: arg);
+
 
             class U8Array3 extends NonGrowableListView<int> {
                 static const arraySize = 3;
