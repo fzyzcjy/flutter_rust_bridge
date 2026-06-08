@@ -90,31 +90,31 @@ rustup component list --toolchain "${nightly_toolchain}" --installed | grep llvm
    '
    ```
 
-2. Run a focused Rust package test in Docker.
+1. Run a focused Rust package test in Docker.
 
    ```bash
    .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- ./frb_internal test-rust-package --package frb_rust
    ```
 
-3. Run a focused Dart native test in Docker.
+1. Run a focused Dart native test in Docker.
 
    ```bash
    .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- ./frb_internal test-dart-native --package frb_dart
    ```
 
-4. Run a focused Dart web JavaScript test in Docker.
+1. Run a focused Dart web JavaScript test in Docker.
 
    ```bash
    .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- ./frb_internal test-dart-web --package frb_example/pure_dart
    ```
 
-5. Run the Dart web dart2wasm browser test command in Docker.
+1. Run the Dart web dart2wasm browser test command in Docker.
 
    ```bash
    .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- ./frb_internal test-dart-web --package frb_dart --wasm
    ```
 
-6. Start the headless WebDriver service used by Flutter web drive commands.
+1. Start the headless WebDriver service used by Flutter web drive commands.
 
    ```bash
    .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- bash -lc '
@@ -131,31 +131,31 @@ rustup component list --toolchain "${nightly_toolchain}" --installed | grep llvm
    '
    ```
 
-7. Run the Flutter web JavaScript coverage command in Docker.
+1. Run the Flutter web JavaScript coverage command in Docker.
 
    ```bash
    .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- ./frb_internal test-flutter-web --package frb_example/flutter_via_create --coverage
    ```
 
-8. Run the Flutter web dart2wasm coverage command in Docker.
+1. Run the Flutter web dart2wasm coverage command in Docker.
 
    ```bash
    .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- ./frb_internal test-flutter-web --package frb_example/flutter_via_create --coverage --wasm
    ```
 
-9. Run a focused Linux Flutter native integration test in Docker through a headless display.
+1. Run a focused Linux Flutter native integration test in Docker through a headless display.
 
    ```bash
    .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- xvfb-run -a ./frb_internal test-flutter-native --package frb_example/flutter_via_create --flutter-test-args '--device-id linux'
    ```
 
-10. Smoke-test the Linux Flutter release build command in Docker.
+1. Smoke-test the Linux Flutter release build command in Docker.
 
    ```bash
    .claude/skills/frb-dev-env/frb_dev_env.py docker exec -- ./frb_internal build-flutter --target linux
    ```
 
-11. Confirm the checkout did not gain unexpected generated or cache files.
+1. Confirm the checkout did not gain unexpected generated or cache files.
 
    ```bash
    git status --short
