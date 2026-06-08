@@ -19,8 +19,8 @@ const _cargoLlvmCovEnvKeys = [
   'CARGO_LLVM_COV_BUILD_DIR',
 ];
 
-@visibleForTesting
 /// Command runner used by build-web, injectable by tests.
+@visibleForTesting
 typedef BuildWebCommandRunner =
     Future<RunCommandOutput> Function(
       String command,
