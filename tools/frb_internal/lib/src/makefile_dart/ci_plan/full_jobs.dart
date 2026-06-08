@@ -182,14 +182,13 @@ final kCiJobs = [
   CiJob(
     'test_flutter_web',
     matrix: CiMatrix([
-      // Each package runs under dart2js (`wasm: false`, with coverage);
-      // `flutter_via_create` additionally runs under dart2wasm (`wasm: true`,
-      // coverage tooling is dart2js-only). `gallery` is skipped under
-      // dart2wasm: its mandelbrot uses WorkerPool, which fails to initialise
-      // under dart2wasm before any FRB decode runs (pre-existing infra
-      // limitation, see #2914).
-      {'package': 'frb_example--flutter_via_create', 'wasm': false},
-      {'package': 'frb_example--flutter_via_create', 'wasm': true},
+      // `flutter_via_create` runs under both dart2js (`wasm: false`, with
+      // coverage) and dart2wasm (`wasm: true`; coverage tooling is dart2js-only).
+      for (final wasm in [false, true])
+        {'package': 'frb_example--flutter_via_create', 'wasm': wasm},
+      // `gallery` runs under dart2js only: its mandelbrot uses WorkerPool, which
+      // fails to initialise under dart2wasm before any FRB decode runs
+      // (pre-existing infra limitation, see #2914).
       {'package': 'frb_example--gallery', 'wasm': false},
     ]),
   ),
