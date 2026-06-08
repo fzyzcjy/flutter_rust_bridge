@@ -16,6 +16,21 @@ void main() {
     expect(binding.lastDecodedPointer, 7);
   });
 
+  test('Dart opaque decoder reports missing fake pointers in tests', () {
+    final binding = _FakeGeneralizedFrbRustBinding(values: const {});
+
+    expect(
+      () => decodeDartOpaqueCommon(7.0, binding),
+      throwsA(
+        isA<StateError>().having(
+          (error) => error.message,
+          'message',
+          'Missing fake Dart opaque value for pointer 7',
+        ),
+      ),
+    );
+  });
+
   test('Dart function handler accepts integral JavaScript call ids', () {
     var observedCallId = -1;
     var observedArgument = '';

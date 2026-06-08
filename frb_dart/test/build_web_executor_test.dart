@@ -202,6 +202,93 @@ void main() {
       ]);
     },
   );
+
+  test('executeBuildWeb runs wasm-bindgen when flags are configured', () async {
+    final crateDir = await Directory.systemTemp.createTemp(
+      'frb_build_web_test_',
+    );
+    addTearDown(() async {
+      if (await crateDir.exists()) {
+        await crateDir.delete(recursive: true);
+      }
+    });
+    await File('${crateDir.path}/Cargo.toml').writeAsString('[package]\n');
+    final calls = <_CommandCall>[];
+
+    await executeBuildWeb(
+      BuildWebArgs(
+        output: 'web',
+        release: false,
+        verbose: false,
+        rustCrateDir: crateDir.path,
+        cargoBuildArgs: const [],
+        wasmBindgenArgs: const ['--weak-refs'],
+        wasmPackRustupToolchain: 'nightly-2026-01-01',
+        wasmPackRustflags: buildWebDefaultWasmPackRustflags,
+        dartCompileJsEntrypoint: null,
+      ),
+      runCommandImpl:
+          (
+            command,
+            arguments, {
+            pwd,
+            env,
+            shell = true,
+            silent = false,
+            checkExitCode,
+            printCommandInStderr = false,
+            removedParentEnvKeys = const [],
+            timeout,
+          }) async {
+            calls.add(
+              _CommandCall(
+                command: command,
+                arguments: arguments,
+                pwd: pwd,
+                env: env,
+                silent: silent,
+                removedParentEnvKeys: removedParentEnvKeys,
+              ),
+            );
+            if (command == 'cargo' && arguments.first == 'read-manifest') {
+              return RunCommandOutput(
+                stdout: jsonEncode({
+                  'targets': [
+                    {
+                      'kind': ['cdylib'],
+                      'name': 'demo_crate',
+                    },
+                  ],
+                }),
+                stderr: '',
+                exitCode: 0,
+              );
+            }
+            return const RunCommandOutput(stdout: '', stderr: '', exitCode: 0);
+          },
+    );
+
+    final wasmPack = calls.singleWhere((call) => call.command == 'wasm-pack');
+    expect(wasmPack.arguments, contains('--dev'));
+    expect(
+      wasmPack.env,
+      containsPair('RUSTUP_TOOLCHAIN', 'nightly-2026-01-01'),
+    );
+
+    final wasmBindgen = calls.singleWhere(
+      (call) => call.command == 'wasm-bindgen',
+    );
+    expect(
+      wasmBindgen.arguments,
+      containsAllInOrder([
+        '${crateDir.path}/target/wasm32-unknown-unknown/debug/demo_crate.wasm',
+        '--out-dir',
+        'web/pkg',
+        '--weak-refs',
+      ]),
+    );
+    expect(calls.where((call) => call.command == 'dart'), isEmpty);
+  });
 }
 
 class _CommandCall {
