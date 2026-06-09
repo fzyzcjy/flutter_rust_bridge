@@ -67,6 +67,14 @@ void main() {
   test('DCO string decoder accepts integer character codes', () {
     expect(dcoDecodeString(65), 'A');
   });
+
+  test('Fake binding encodes Dart opaque values as null pointers', () {
+    final binding = _FakeGeneralizedFrbRustBinding(values: const {});
+
+    final pointer = binding.dartOpaqueDart2RustEncode(Object(), 0);
+
+    expect(PlatformPointerUtil.isNullPtr(pointer), isTrue);
+  });
 }
 
 class _FakeGeneralizedFrbRustBinding extends GeneralizedFrbRustBinding {

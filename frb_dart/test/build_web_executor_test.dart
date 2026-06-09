@@ -224,7 +224,7 @@ void main() {
         cargoBuildArgs: const [],
         wasmBindgenArgs: const ['--weak-refs'],
         wasmPackRustupToolchain: 'nightly-2026-01-01',
-        wasmPackRustflags: buildWebDefaultWasmPackRustflags,
+        wasmPackRustflags: '-C target-feature=+atomics',
         dartCompileJsEntrypoint: null,
       ),
       runCommandImpl:
@@ -273,6 +273,10 @@ void main() {
     expect(
       wasmPack.env,
       containsPair('RUSTUP_TOOLCHAIN', 'nightly-2026-01-01'),
+    );
+    expect(
+      wasmPack.env,
+      containsPair('RUSTFLAGS', '-C target-feature=+atomics'),
     );
 
     final wasmBindgen = calls.singleWhere(
