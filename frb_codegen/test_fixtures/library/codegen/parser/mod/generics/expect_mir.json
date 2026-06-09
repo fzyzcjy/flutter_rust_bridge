@@ -3,6 +3,7 @@
   "enum_pool": {
     "crate::api/MyGenericEnum": {
       "comments": [],
+      "dart_enums_freezed": null,
       "ignore": true,
       "mode": "Complex",
       "name": "crate::api/MyGenericEnum",

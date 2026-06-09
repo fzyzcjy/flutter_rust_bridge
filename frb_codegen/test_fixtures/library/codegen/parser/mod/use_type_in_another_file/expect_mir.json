@@ -3,6 +3,7 @@
   "enum_pool": {
     "crate::another_file/EnumInAnotherFile": {
       "comments": [],
+      "dart_enums_freezed": null,
       "ignore": false,
       "mode": "Simple",
       "name": "crate::another_file/EnumInAnotherFile",
