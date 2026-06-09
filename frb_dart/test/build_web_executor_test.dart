@@ -293,6 +293,98 @@ void main() {
     );
     expect(calls.where((call) => call.command == 'dart'), isEmpty);
   });
+
+  test(
+    'executeBuildWeb installs wasm-bindgen when configured binary is missing',
+    () async {
+      final crateDir = await Directory.systemTemp.createTemp(
+        'frb_build_web_test_',
+      );
+      addTearDown(() async {
+        if (await crateDir.exists()) {
+          await crateDir.delete(recursive: true);
+        }
+      });
+      await File('${crateDir.path}/Cargo.toml').writeAsString('[package]\n');
+      final calls = <_CommandCall>[];
+      var wasmBindgenCheckCount = 0;
+
+      await executeBuildWeb(
+        BuildWebArgs(
+          output: 'web',
+          release: false,
+          verbose: false,
+          rustCrateDir: crateDir.path,
+          cargoBuildArgs: const [],
+          wasmBindgenArgs: const ['--weak-refs'],
+          wasmPackRustupToolchain: null,
+          wasmPackRustflags: null,
+          dartCompileJsEntrypoint: null,
+        ),
+        runCommandImpl:
+            (
+              command,
+              arguments, {
+              pwd,
+              env,
+              shell = true,
+              silent = false,
+              checkExitCode,
+              printCommandInStderr = false,
+              removedParentEnvKeys = const [],
+              timeout,
+            }) async {
+              calls.add(
+                _CommandCall(
+                  command: command,
+                  arguments: arguments,
+                  pwd: pwd,
+                  env: env,
+                  silent: silent,
+                  removedParentEnvKeys: removedParentEnvKeys,
+                ),
+              );
+              if (arguments.length == 1 && arguments.first == 'wasm-bindgen') {
+                wasmBindgenCheckCount++;
+                if (wasmBindgenCheckCount == 1) {
+                  throw Exception('wasm-bindgen missing');
+                }
+              }
+              if (command == 'cargo' && arguments.first == 'read-manifest') {
+                return RunCommandOutput(
+                  stdout: jsonEncode({
+                    'targets': [
+                      {
+                        'kind': ['cdylib'],
+                        'name': 'demo_crate',
+                      },
+                    ],
+                  }),
+                  stderr: '',
+                  exitCode: 0,
+                );
+              }
+              return const RunCommandOutput(
+                stdout: '',
+                stderr: '',
+                exitCode: 0,
+              );
+            },
+      );
+
+      expect(wasmBindgenCheckCount, 2);
+      expect(
+        calls
+            .where((call) => call.command == 'cargo')
+            .map((call) => call.arguments),
+        contains(equals(['install', '-f', 'wasm-bindgen-cli'])),
+      );
+      expect(
+        calls.map((call) => call.command),
+        containsAllInOrder(['wasm-pack', 'wasm-bindgen']),
+      );
+    },
+  );
 }
 
 class _CommandCall {
