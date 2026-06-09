@@ -17,6 +17,6 @@ For feature flags requiring coverage for both enabled and disabled states:
 
 ## Test Coverage
 
-In `frb_example/pure_dart`, prefer tests that use the item-level `#[frb(...)]` override so enabled and disabled cases are both exercised in the same package.
+In `frb_example/pure_dart`, prefer item-level `#[frb(...)]` overrides so enabled and disabled cases are both exercised in the same package.
 
-Do not rely only on package-level config differences when both states can be covered clearly with item-level `#[frb(...)]` overrides.
+Avoid relying only on package-level config differences when item-level `#[frb(...)]` overrides can cover both states clearly.

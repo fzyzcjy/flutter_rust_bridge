@@ -29,7 +29,7 @@ Before pushing, opening a PR, requesting review, or monitoring CI as if the work
 - Confirm every final regression or feature test has been moved from `frb_example/dart_minimal` to `frb_example/pure_dart`.
 - Confirm the final Rust APIs/types/functions in `pure_dart` use the `TwinNormal` suffix pattern where applicable.
 - Confirm code generation has produced the matching `pure_dart_pde` coverage.
-- Confirm feature flags have followed `frb-feature-flag` before treating the coverage as final.
+- Confirm feature flags follow `frb-feature-flag`, including enabled/disabled coverage when applicable.
 - Remove the temporary `dart_minimal` reproducer unless it is intentionally kept as a minimal example in addition to the `pure_dart` regression.
 
 If any of these checks fail, return to Phase 2. Do not treat a passing `dart_minimal` test as final readiness.
