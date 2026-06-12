@@ -89,20 +89,18 @@ List<String> _flutterViaCreateExclusions(
   String package, {
   required bool needCompareOhos,
   required bool hasRustBuilder,
-}) =>
-    [
-      '$package/macos/Flutter/Flutter-Debug.xcconfig',
-      '$package/macos/Flutter/Flutter-Release.xcconfig',
-      '$package/pubspec.lock',
-      '$package/pubspec.yaml',
-      if (needCompareOhos) '$package/android/',
-      if (needCompareOhos) '$package/macos/',
-      if (needCompareOhos) '$package/windows/',
-      if (!needCompareOhos) '$package/ohos/',
-      if (!needCompareOhos && hasRustBuilder) '$package/rust_builder/ohos/',
-      if (!needCompareOhos && hasRustBuilder)
-        '$package/rust_builder/pubspec.yaml',
-    ];
+}) => [
+  '$package/macos/Flutter/Flutter-Debug.xcconfig',
+  '$package/macos/Flutter/Flutter-Release.xcconfig',
+  '$package/pubspec.lock',
+  '$package/pubspec.yaml',
+  if (needCompareOhos) '$package/android/',
+  if (needCompareOhos) '$package/macos/',
+  if (needCompareOhos) '$package/windows/',
+  if (!needCompareOhos) '$package/ohos/',
+  if (!needCompareOhos && hasRustBuilder) '$package/rust_builder/ohos/',
+  if (!needCompareOhos && hasRustBuilder) '$package/rust_builder/pubspec.yaml',
+];
 
 @visibleForTesting
 String generateDiffExclusionArgsForTesting(String package) =>

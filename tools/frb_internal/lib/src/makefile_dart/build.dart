@@ -59,19 +59,13 @@ Future<void> buildFlutter(BuildFlutterConfig config) async {
 
     case BuildTarget.macos:
       // https://docs.flutter.dev/deployment/macos
-      await exec(
-        'flutter build macos --verbose',
-        relativePwd: config.package,
-      );
+      await exec('flutter build macos --verbose', relativePwd: config.package);
       copyArtifacts(['build/macos/Build/Products/Release']);
 
     case BuildTarget.linux:
       // https://docs.flutter.dev/deployment/linux
       // https://stackoverflow.com/questions/73278689/how-to-run-a-standalone-linux-app-built-with-flutter
-      await exec(
-        'flutter build linux --verbose',
-        relativePwd: config.package,
-      );
+      await exec('flutter build linux --verbose', relativePwd: config.package);
       copyArtifacts([
         linuxBuildBundlePathForTesting(
           machineArchitecture: currentMachineArchitectureForTesting(),

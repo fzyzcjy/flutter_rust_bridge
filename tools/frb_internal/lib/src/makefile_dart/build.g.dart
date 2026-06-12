@@ -38,21 +38,20 @@ const _$BuildTargetEnumMapBuildCli = <BuildTarget, String>{
   BuildTarget.ohos: 'ohos',
 };
 
-ArgParser _$populateBuildFlutterConfigParser(ArgParser parser) =>
-    parser
-      ..addOption('package', defaultsTo: 'frb_example/flutter_via_create')
-      ..addOption(
-        'target',
-        allowed: [
-          'windows',
-          'macos',
-          'linux',
-          'android-aab',
-          'android-apk',
-          'ios',
-          'ohos',
-        ],
-      );
+ArgParser _$populateBuildFlutterConfigParser(ArgParser parser) => parser
+  ..addOption('package', defaultsTo: 'frb_example/flutter_via_create')
+  ..addOption(
+    'target',
+    allowed: [
+      'windows',
+      'macos',
+      'linux',
+      'android-aab',
+      'android-apk',
+      'ios',
+      'ohos',
+    ],
+  );
 
 final _$parserForBuildFlutterConfig = _$populateBuildFlutterConfigParser(
   ArgParser(),
