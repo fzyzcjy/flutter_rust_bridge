@@ -447,18 +447,8 @@
           "api-level": 35
         },
         {
-          "package": "frb_example--flutter_via_create",
-          "device": "Nexus 6",
-          "api-level": 35
-        },
-        {
           "package": "frb_example--flutter_package--example",
           "device": "pixel",
-          "api-level": 35
-        },
-        {
-          "package": "frb_example--flutter_package--example",
-          "device": "Nexus 6",
           "api-level": 35
         },
         {
@@ -467,18 +457,8 @@
           "api-level": 35
         },
         {
-          "package": "frb_example--rust_ui_counter--ui",
-          "device": "Nexus 6",
-          "api-level": 35
-        },
-        {
           "package": "frb_example--rust_ui_todo_list--ui",
           "device": "pixel",
-          "api-level": 35
-        },
-        {
-          "package": "frb_example--rust_ui_todo_list--ui",
-          "device": "Nexus 6",
           "api-level": 35
         }
       ]
@@ -488,15 +468,7 @@
       "matrix": [
         {
           "package": "frb_example--flutter_via_create",
-          "device": "iPad (10th generation) Simulator (18.6)"
-        },
-        {
-          "package": "frb_example--flutter_via_create",
           "device": "iPhone 16 Pro Max Simulator (18.6)"
-        },
-        {
-          "package": "frb_example--flutter_package--example",
-          "device": "iPad (10th generation) Simulator (18.6)"
         },
         {
           "package": "frb_example--flutter_package--example",
@@ -504,15 +476,7 @@
         },
         {
           "package": "frb_example--rust_ui_counter--ui",
-          "device": "iPad (10th generation) Simulator (18.6)"
-        },
-        {
-          "package": "frb_example--rust_ui_counter--ui",
           "device": "iPhone 16 Pro Max Simulator (18.6)"
-        },
-        {
-          "package": "frb_example--rust_ui_todo_list--ui",
-          "device": "iPad (10th generation) Simulator (18.6)"
         },
         {
           "package": "frb_example--rust_ui_todo_list--ui",
@@ -660,25 +624,6 @@
             "target": "android",
             "device": "pixel",
             "api-level": 35,
-            "package": "frb_example--flutter_via_create"
-          }
-        },
-        {
-          "info": {
-            "image": "ubuntu-latest",
-            "platform": "android",
-            "target": "android",
-            "device": "Nexus 6",
-            "api-level": 35,
-            "package": "frb_example--flutter_via_create"
-          }
-        },
-        {
-          "info": {
-            "image": "macos-latest",
-            "platform": "ios",
-            "target": "ios",
-            "device": "iPad (10th generation) Simulator (18.6)",
             "package": "frb_example--flutter_via_create"
           }
         },
