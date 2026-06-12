@@ -671,10 +671,15 @@ String resolveBuildWebPackage(String package) =>
 Future<void> testFlutterQuickstartSmoke(
   TestFlutterQuickstartSmokeConfig config,
 ) async {
-  if (config.package != 'frb_example/flutter_via_create') {
+  const supportedPackages = {
+    'frb_example/flutter_via_create',
+    'frb_example/flutter_via_create_native_assets',
+  };
+  if (!supportedPackages.contains(config.package)) {
     throw Exception(
       'test-flutter-quickstart-smoke currently supports only '
-      '`frb_example/flutter_via_create`, but got `${config.package}`',
+      '${supportedPackages.map((package) => '`$package`').join(', ')}, '
+      'but got `${config.package}`',
     );
   }
 
