@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_rust_bridge/src/loader/_common.dart';
@@ -55,13 +54,7 @@ ExternalLibrary loadExternalLibraryRaw({
       return ExternalLibrary.open(filePath);
     }
 
-    final codeAssetLibrary = _tryOpenCodeAssetFromHookOutput(stem);
-    if (codeAssetLibrary != null) {
-      return codeAssetLibrary;
-    }
-    return fallback(
-      '(after trying $filePath but it does not exist, and after trying code asset hook output)',
-    );
+    return fallback('(after trying $filePath but it does not exist)');
   }
 
   if (Platform.isAndroid || Platform.operatingSystem == 'ohos') {
@@ -101,47 +94,6 @@ ExternalLibrary loadExternalLibraryRaw({
     'loadExternalLibrary failed: Unknown platform=${Platform.operatingSystem}',
   );
 }
-
-ExternalLibrary? _tryOpenCodeAssetFromHookOutput(String stem) {
-  final hookRunnerDirectory = Directory('.dart_tool/hooks_runner');
-  if (!hookRunnerDirectory.existsSync()) {
-    return null;
-  }
-
-  try {
-    final candidateNames = _candidateLibraryFileNames(stem);
-    final outputFiles = hookRunnerDirectory
-        .listSync(recursive: true)
-        .whereType<File>()
-        .where((file) => file.uri.pathSegments.last == 'output.json');
-    for (final outputFile in outputFiles) {
-      final outputJson = jsonDecode(outputFile.readAsStringSync());
-      final assets = outputJson is Map<String, Object?> ? outputJson['assets'] : null;
-      if (assets is! List<Object?>) {
-        continue;
-      }
-      for (final asset in assets.whereType<Map<String, Object?>>()) {
-        final encoding = asset['encoding'];
-        final file = encoding is Map<String, Object?> ? encoding['file'] : null;
-        if (file is String && candidateNames.contains(_fileName(file))) {
-          return ExternalLibrary.open(file);
-        }
-      }
-    }
-  } catch (_) {
-    return null;
-  }
-
-  return null;
-}
-
-Set<String> _candidateLibraryFileNames(String stem) => {
-  'lib$stem.so',
-  'lib$stem.dylib',
-  '$stem.dll',
-};
-
-String _fileName(String path) => path.replaceAll('\\', '/').split('/').last;
 
 ExternalLibrary _tryOpen(
   String name,
