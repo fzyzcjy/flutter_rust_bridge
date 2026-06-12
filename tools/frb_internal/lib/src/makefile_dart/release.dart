@@ -1,14 +1,17 @@
 // ignore_for_file: avoid_print
 
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:args/command_runner.dart';
 import 'package:collection/collection.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:glob/glob.dart';
 import 'package:glob/list_local_fs.dart';
+import 'package:toml/toml.dart';
 import 'package:yaml/yaml.dart';
 
 List<Command<void>> createCommands() {
@@ -20,6 +23,7 @@ List<Command<void>> createCommands() {
     SimpleCommand('release-update-git', releaseUpdateGit),
     SimpleCommand('release-update-github', releaseUpdateGithub),
     SimpleCommand('release-publish-all', releasePublishAll),
+    SimpleCommand('get-released-version', getReleasedVersion),
   ];
 }
 
@@ -168,6 +172,119 @@ Future<void> releasePublishAll() async {
     'cd frb_dart && flutter pub publish --force --server=https://pub.dartlang.org',
   );
 }
+
+Future<void> getReleasedVersion() async {
+  final statuses = await fetchReleasePackageStatuses();
+  print(
+    const JsonEncoder.withIndent(
+      '  ',
+    ).convert(buildReleasePackageStatusOutput(statuses)),
+  );
+}
+
+class ReleasePackageStatus {
+  final String registry;
+  final String name;
+  final String manifestVersion;
+  final String? releasedVersion;
+
+  const ReleasePackageStatus({
+    required this.registry,
+    required this.name,
+    required this.manifestVersion,
+    required this.releasedVersion,
+  });
+
+  bool get isReleased => manifestVersion == releasedVersion;
+
+  Map<String, Object?> toJson() => {
+    'registry': registry,
+    'name': name,
+    'manifestVersion': manifestVersion,
+    'releasedVersion': releasedVersion,
+    'isReleased': isReleased,
+  };
+}
+
+typedef ReleaseMetadataFetcher = Future<Map<String, dynamic>> Function(Uri uri);
+
+Future<List<ReleasePackageStatus>> fetchReleasePackageStatuses({
+  ReleaseMetadataFetcher fetcher = _defaultReleaseMetadataFetcher,
+}) async {
+  final rustVersion = getWorkspaceRustVersion();
+  final dartVersion = getFrbDartVersion();
+
+  return [
+    for (final package in [
+      'flutter_rust_bridge_codegen',
+      'flutter_rust_bridge_macros',
+      'flutter_rust_bridge',
+    ])
+      ReleasePackageStatus(
+        registry: 'crates.io',
+        name: package,
+        manifestVersion: rustVersion,
+        releasedVersion: await fetchCratesIoReleasedVersion(
+          package,
+          fetcher: fetcher,
+        ),
+      ),
+    ReleasePackageStatus(
+      registry: 'pub.dev',
+      name: 'flutter_rust_bridge',
+      manifestVersion: dartVersion,
+      releasedVersion: await fetchPubDevReleasedVersion(
+        'flutter_rust_bridge',
+        fetcher: fetcher,
+      ),
+    ),
+  ];
+}
+
+Map<String, Object?> buildReleasePackageStatusOutput(
+  List<ReleasePackageStatus> statuses,
+) => {
+  'allReleased': statuses.every((status) => status.isReleased),
+  'packages': statuses.map((status) => status.toJson()).toList(),
+};
+
+Future<String?> fetchCratesIoReleasedVersion(
+  String package, {
+  ReleaseMetadataFetcher fetcher = _defaultReleaseMetadataFetcher,
+}) async {
+  final json = await fetcher(Uri.https('crates.io', '/api/v1/crates/$package'));
+  return parseCratesIoReleasedVersion(json);
+}
+
+String? parseCratesIoReleasedVersion(Map<String, dynamic> json) =>
+    (json['crate'] as Map<String, dynamic>?)?['max_version'] as String?;
+
+Future<String?> fetchPubDevReleasedVersion(
+  String package, {
+  ReleaseMetadataFetcher fetcher = _defaultReleaseMetadataFetcher,
+}) async {
+  final json = await fetcher(Uri.https('pub.dev', '/api/packages/$package'));
+  return parsePubDevReleasedVersion(json);
+}
+
+String? parsePubDevReleasedVersion(Map<String, dynamic> json) =>
+    (json['latest'] as Map<String, dynamic>?)?['version'] as String?;
+
+Future<Map<String, dynamic>> _defaultReleaseMetadataFetcher(Uri uri) async {
+  final response = await Dio().getUri<Map<String, dynamic>>(uri);
+  final data = response.data;
+  if (data == null) {
+    throw Exception('No release metadata returned from $uri');
+  }
+  return data;
+}
+
+String getWorkspaceRustVersion() =>
+    parseWorkspaceRustVersion(File('${exec.pwd}Cargo.toml').readAsStringSync());
+
+String parseWorkspaceRustVersion(String raw) =>
+    TomlDocument.parse(raw).toMap()['workspace']['package']['version']
+        as String;
 
 String getFrbDartVersion() => loadYaml(
   File('${exec.pwd}frb_dart/pubspec.yaml').readAsStringSync(),

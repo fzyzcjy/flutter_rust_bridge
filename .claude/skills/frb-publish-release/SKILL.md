@@ -1,0 +1,87 @@
+---
+name: frb-publish-release
+description: Publish a flutter_rust_bridge release end to end: preflight checks, changelog preparation, frb_internal release publishing, released-version polling, CI babysitting, and post-release CI verification.
+---
+
+# FRB Publish Release
+
+Use this skill when preparing, publishing, or babysitting a `flutter_rust_bridge` release.
+
+## Workflow
+
+### 1. Preflight
+
+- Work from the repository root on the intended release branch, normally fresh `master`.
+- Check `git status --short --branch` and do not start publishing from a dirty tree.
+- Confirm the target version in `CHANGELOG.md`, root `Cargo.toml`, and `frb_dart/pubspec.yaml`.
+- Confirm GitHub, crates.io, and pub.dev credentials are available before starting irreversible publish steps.
+- Confirm normal CI is green for the release commit before publishing.
+
+### 2. Write Changelog
+
+- Use `frb-write-changelog` to create or refresh the target release section in `CHANGELOG.md`.
+- Review the release section manually before publishing. The top `CHANGELOG.md` version is the source used by `frb_internal release`.
+- If changelog or version files changed, commit that release preparation before publishing.
+
+### 3. Publish
+
+Use the repository release command:
+
+```bash
+./frb_internal release
+```
+
+This command computes old/new versions from `CHANGELOG.md`, updates checked-in versions and generated version text, updates Scoop metadata, commits and pushes the version bump, creates a draft GitHub release, then runs:
+
+```bash
+./frb_internal release-publish-all
+```
+
+`release-publish-all` publishes these packages:
+
+- `frb_codegen` -> crates.io package `flutter_rust_bridge_codegen`
+- `frb_macros` -> crates.io package `flutter_rust_bridge_macros`
+- `frb_rust` -> crates.io package `flutter_rust_bridge`
+- `frb_dart` -> pub.dev package `flutter_rust_bridge`
+
+If the version bump and GitHub draft already exist and only registry publication is needed, use `./frb_internal release-publish-all` directly.
+
+### 4. Check Released Versions
+
+Poll registry state with:
+
+```bash
+./frb_internal get-released-version
+```
+
+The command prints JSON:
+
+```json
+{
+  "allReleased": true,
+  "packages": [
+    {
+      "registry": "crates.io",
+      "name": "flutter_rust_bridge_codegen",
+      "manifestVersion": "2.12.0",
+      "releasedVersion": "2.12.0",
+      "isReleased": true
+    }
+  ]
+}
+```
+
+Wait until every package has `isReleased: true` and `allReleased: true`. If one registry lags, keep polling with bounded waits and record the mismatched package instead of assuming the publish failed.
+
+### 5. Babysit CI And Post-Release CI
+
+- Keep watching the release commit's normal CI until it is green.
+- After `./frb_internal get-released-version` reports `allReleased: true`, trigger `.github/workflows/post_release.yaml` for the release commit or `master`.
+- Babysit post-release CI until it is green. Use `gh-actions-live-logs` when reading GitHub Actions logs.
+- If post-release fails, classify the failure by install mode (`cargo-install`, `cargo-binstall`, `scoop`, or `homebrew`) before changing code or rerunning.
+
+## Related Skills
+
+- `frb-write-changelog` for the release section.
+- `frb-fix-ci` or `frb-fix-main-ci` for CI failures.
+- `gh-actions-live-logs` for GitHub Actions logs.

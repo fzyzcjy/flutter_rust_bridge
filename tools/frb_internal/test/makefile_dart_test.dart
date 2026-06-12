@@ -5,6 +5,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/build.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/quickstart_smoke.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:test/test.dart';
 
@@ -341,6 +342,61 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
           ),
         ),
       );
+    });
+  });
+
+  group('release version check', () {
+    test('parses crates.io package metadata', () {
+      expect(
+        parseCratesIoReleasedVersion({
+          'crate': {'max_version': '2.12.0'},
+        }),
+        '2.12.0',
+      );
+    });
+
+    test('parses pub.dev package metadata', () {
+      expect(
+        parsePubDevReleasedVersion({
+          'latest': {'version': '2.12.0'},
+        }),
+        '2.12.0',
+      );
+    });
+
+    test('summarizes whether every package is published', () {
+      final output = buildReleasePackageStatusOutput([
+        const ReleasePackageStatus(
+          registry: 'crates.io',
+          name: 'flutter_rust_bridge',
+          manifestVersion: '2.12.0',
+          releasedVersion: '2.12.0',
+        ),
+        const ReleasePackageStatus(
+          registry: 'pub.dev',
+          name: 'flutter_rust_bridge',
+          manifestVersion: '2.12.0',
+          releasedVersion: '2.11.1',
+        ),
+      ]);
+
+      expect(output['allReleased'], false);
+      expect(output['packages'], [
+        {
+          'registry': 'crates.io',
+          'name': 'flutter_rust_bridge',
+          'manifestVersion': '2.12.0',
+          'releasedVersion': '2.12.0',
+          'isReleased': true,
+        },
+        {
+          'registry': 'pub.dev',
+          'name': 'flutter_rust_bridge',
+          'manifestVersion': '2.12.0',
+          'releasedVersion': '2.11.1',
+          'isReleased': false,
+        },
+      ]);
     });
   });
 
