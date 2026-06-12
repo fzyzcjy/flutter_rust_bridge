@@ -2,6 +2,12 @@ mod backend_cargokit;
 mod overlay;
 mod pubspec;
 
+use self::backend_cargokit::{
+    exclude_cargokit_from_outer_analyzer, modify_permissions, setup_cargokit_dependencies,
+};
+use self::overlay::{compute_replacements, execute_overlay_templates};
+pub(crate) use self::pubspec::pub_add_dependency_frb;
+use self::pubspec::{add_publish_to_none, pub_add_dependencies};
 use crate::library::commands::cargo::cargo_fetch;
 use crate::library::commands::dart_fix::dart_fix;
 use crate::library::commands::dart_format::dart_format;
@@ -13,14 +19,6 @@ use anyhow::Result;
 use log::{debug, info};
 use std::env;
 use std::path::Path;
-
-use self::backend_cargokit::{
-    exclude_cargokit_from_outer_analyzer, modify_permissions, setup_cargokit_dependencies,
-};
-use self::overlay::{compute_replacements, execute_overlay_templates};
-use self::pubspec::{add_publish_to_none, pub_add_dependencies};
-
-pub(crate) use self::pubspec::pub_add_dependency_frb;
 
 const REFRESH_CARGO_LOCK_ORDERING_ENV_VAR: &str = "FRB_REFRESH_CARGO_LOCK_ORDERING";
 
