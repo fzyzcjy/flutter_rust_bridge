@@ -1,5 +1,6 @@
 @TestOn('vm')
 import 'package:flutter_rust_bridge/src/cli/build_web/entrypoint.dart';
+import 'package:path/path.dart' as path;
 import 'package:test/test.dart';
 
 void main() {
@@ -15,7 +16,7 @@ void main() {
 
     final args = parseBuildWebConfigToArgs(config);
 
-    expect(args.output, 'example/web');
+    expect(args.output, path.join('example', 'web'));
     expect(args.dartCompileJsEntrypoint, 'web/main.dart');
     expect(args.dartCompileWasmEntrypoint, 'web/main.dart');
   });

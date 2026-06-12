@@ -661,13 +661,12 @@ Future<void> testFlutterWeb(TestFlutterWebConfig config) async {
   }
 
   final buildWebPackage = resolveBuildWebPackage(config.package);
-  final enableCodegenCoverage = config.coverage && !config.wasm;
   await executeFrbCodegen(
     'build-web '
     '${config.coverage ? "--dart-coverage" : ""} '
     '--wasm-pack-rustup-toolchain $kPinnedRustfmtNightly',
     relativePwd: buildWebPackage,
-    coverage: enableCodegenCoverage,
+    coverage: config.coverage,
     coverageName: 'TestFlutterWeb',
   );
 
