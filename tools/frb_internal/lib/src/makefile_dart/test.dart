@@ -10,6 +10,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/post_release.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/quickstart_smoke.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/released_version.dart';
 import 'package:flutter_rust_bridge_internal/src/misc/dart_sanitizer_tester.dart'
     as dart_sanitizer_tester;
 import 'package:flutter_rust_bridge_internal/src/utils/codecov_transformer.dart';

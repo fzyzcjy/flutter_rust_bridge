@@ -12,7 +12,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/misc.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/makefile_dart_infra.dart';
 import 'package:glob/glob.dart';
 import 'package:glob/list_local_fs.dart';
-import 'package:yaml/yaml.dart';
+import 'package:pub_semver/pub_semver.dart';
 
 part 'release.g.dart';
 
@@ -215,247 +215,204 @@ Future<void> releasePublishAll() async {
   );
 }
 
-String getFrbDartVersion() => loadYaml(
-  File('${exec.pwd}frb_dart/pubspec.yaml').readAsStringSync(),
-)['version'];
-
 VersionInfo computeVersionInfo(ReleaseConfig config) {
-  final oldVersion = getFrbDartVersion();
+  final versionInfo = extractVersionInfoFromChangelog(config.newVersion);
   validateNextReleaseVersion(
-    oldVersion: oldVersion,
-    newVersion: config.newVersion,
+    oldVersion: versionInfo.oldVersion,
+    newVersion: versionInfo.newVersion,
   );
-  return VersionInfo(oldVersion: oldVersion, newVersion: config.newVersion);
+  return versionInfo;
+}
+
+VersionInfo extractVersionInfoFromChangelog(String newVersion) {
+  final versions = _extractChangelogVersions();
+  final newVersionIndex = versions.indexWhere((item) => item.$2 == newVersion);
+  if (newVersionIndex < 0 || newVersionIndex + 1 >= versions.length) {
+    throw Exception(
+      'CHANGELOG.md must contain $newVersion above the previous version',
+    );
+  }
+  return VersionInfo(
+    oldVersion: versions[newVersionIndex + 1].$2,
+    newVersion: newVersion,
+  );
 }
 
 void validateNextReleaseVersion({
   required String oldVersion,
   required String newVersion,
 }) {
-  final oldParsed = ReleaseVersion.parse(oldVersion);
-  final newParsed = ReleaseVersion.parse(newVersion);
-  if (newParsed.compareTo(oldParsed) <= 0) {
-    throw ArgumentError.value(
-      newVersion,
-      'newVersion',
-      'Must be greater than current version $oldVersion.',
-    );
-  }
-
-  if (oldParsed.hasPrerelease) {
-    _validatePrereleaseSuccessor(oldParsed, newParsed);
-  } else {
-    _validateStableSuccessor(oldParsed, newParsed);
-  }
+  _ReleaseVersionValidator.validate(
+    oldVersion: oldVersion,
+    newVersion: newVersion,
+  );
 }
 
-void _validateStableSuccessor(
-  ReleaseVersion oldVersion,
-  ReleaseVersion newVersion,
-) {
-  final allowedCores = {
-    oldVersion.nextPatchCore,
-    oldVersion.nextMinorCore,
-    oldVersion.nextMajorCore,
-  };
-  if (!allowedCores.contains(newVersion.core)) {
-    throw ArgumentError.value(
-      newVersion.raw,
-      'newVersion',
-      'Must be the next patch, minor, or major version after ${oldVersion.raw}.',
-    );
-  }
-  if (newVersion.hasPrerelease) {
-    _validateFirstPrerelease(newVersion.prerelease, newVersion.raw);
-  }
-}
+class _ReleaseVersionValidator {
+  static const _stages = ['alpha', 'beta', 'rc'];
 
-void _validatePrereleaseSuccessor(
-  ReleaseVersion oldVersion,
-  ReleaseVersion newVersion,
-) {
-  if (newVersion.core != oldVersion.core) {
-    throw ArgumentError.value(
-      newVersion.raw,
-      'newVersion',
-      'Must finish the ${oldVersion.core} prerelease series before changing '
-          'the version core.',
-    );
-  }
-  if (!newVersion.hasPrerelease) {
-    return;
-  }
-
-  final oldPrerelease = ParsedPrerelease.parse(
-    oldVersion.prerelease,
-    oldVersion.raw,
-  );
-  final newPrerelease = ParsedPrerelease.parse(
-    newVersion.prerelease,
-    newVersion.raw,
-  );
-  if (newPrerelease.stage == oldPrerelease.stage) {
-    if (newPrerelease.number != oldPrerelease.number + 1) {
+  static void validate({
+    required String oldVersion,
+    required String newVersion,
+  }) {
+    final oldParsed = _parseVersion(oldVersion);
+    final newParsed = _parseVersion(newVersion);
+    if (newParsed.compareTo(oldParsed) <= 0) {
       throw ArgumentError.value(
-        newVersion.raw,
+        newVersion,
         'newVersion',
-        'Must increment ${oldPrerelease.stage}.'
-            '${oldPrerelease.number} by exactly one.',
+        'Must be greater than current version $oldVersion.',
       );
     }
-    return;
+
+    if (oldParsed.isPreRelease) {
+      _validatePrereleaseSuccessor(
+        oldVersion: oldVersion,
+        oldParsed: oldParsed,
+        newVersion: newVersion,
+        newParsed: newParsed,
+      );
+    } else {
+      _validateStableSuccessor(
+        oldVersion: oldVersion,
+        oldParsed: oldParsed,
+        newVersion: newVersion,
+        newParsed: newParsed,
+      );
+    }
   }
 
-  if (newPrerelease.stageIndex != oldPrerelease.stageIndex + 1 ||
-      newPrerelease.number != 1) {
-    throw ArgumentError.value(
-      newVersion.raw,
-      'newVersion',
-      'Must move from ${oldPrerelease.stage}.${oldPrerelease.number} to the '
-          'next prerelease stage ending in .1.',
-    );
-  }
-}
-
-void _validateFirstPrerelease(List<String> prerelease, String rawVersion) {
-  final parsed = ParsedPrerelease.parse(prerelease, rawVersion);
-  if (parsed.number != 1) {
-    throw ArgumentError.value(
-      rawVersion,
-      'newVersion',
-      'First prerelease for a version core must end in .1.',
-    );
-  }
-}
-
-class ReleaseVersion implements Comparable<ReleaseVersion> {
-  static final _regex = RegExp(
-    r'^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)'
-    r'(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$',
-  );
-
-  final String raw;
-  final int major;
-  final int minor;
-  final int patch;
-  final List<String> prerelease;
-
-  const ReleaseVersion({
-    required this.raw,
-    required this.major,
-    required this.minor,
-    required this.patch,
-    required this.prerelease,
-  });
-
-  static ReleaseVersion parse(String raw) {
-    final match = _regex.firstMatch(raw);
-    if (match == null) {
+  static Version _parseVersion(String raw) {
+    try {
+      return Version.parse(raw);
+    } on FormatException {
       throw ArgumentError.value(
         raw,
         'version',
         'Must be a SemVer version such as 2.13.0 or 2.13.0-beta.1.',
       );
     }
-    final prereleaseText = match.group(4);
-    return ReleaseVersion(
-      raw: raw,
-      major: int.parse(match.group(1)!),
-      minor: int.parse(match.group(2)!),
-      patch: int.parse(match.group(3)!),
-      prerelease: prereleaseText == null ? [] : prereleaseText.split('.'),
-    );
   }
 
-  String get core => '$major.$minor.$patch';
+  static void _validateStableSuccessor({
+    required String oldVersion,
+    required Version oldParsed,
+    required String newVersion,
+    required Version newParsed,
+  }) {
+    final allowedCores = {
+      _core(oldParsed.nextPatch),
+      _core(oldParsed.nextMinor),
+      _core(oldParsed.nextMajor),
+    };
+    if (!allowedCores.contains(_core(newParsed))) {
+      throw ArgumentError.value(
+        newVersion,
+        'newVersion',
+        'Must be the next patch, minor, or major version after $oldVersion.',
+      );
+    }
+    if (newParsed.isPreRelease) {
+      _validateFirstPrerelease(newParsed.preRelease, newVersion);
+    }
+  }
 
-  String get nextPatchCore => '$major.$minor.${patch + 1}';
-
-  String get nextMinorCore => '$major.${minor + 1}.0';
-
-  String get nextMajorCore => '${major + 1}.0.0';
-
-  bool get hasPrerelease => prerelease.isNotEmpty;
-
-  @override
-  int compareTo(ReleaseVersion other) {
-    for (final pair in [
-      (major, other.major),
-      (minor, other.minor),
-      (patch, other.patch),
-    ]) {
-      final compared = pair.$1.compareTo(pair.$2);
-      if (compared != 0) return compared;
+  static void _validatePrereleaseSuccessor({
+    required String oldVersion,
+    required Version oldParsed,
+    required String newVersion,
+    required Version newParsed,
+  }) {
+    if (_core(newParsed) != _core(oldParsed)) {
+      throw ArgumentError.value(
+        newVersion,
+        'newVersion',
+        'Must finish the ${_core(oldParsed)} prerelease series before changing '
+            'the version core.',
+      );
+    }
+    if (!newParsed.isPreRelease) {
+      return;
     }
 
-    if (!hasPrerelease && !other.hasPrerelease) return 0;
-    if (!hasPrerelease) return 1;
-    if (!other.hasPrerelease) return -1;
-    return _comparePrerelease(prerelease, other.prerelease);
+    final oldPrerelease = _ParsedPrerelease.parse(
+      oldParsed.preRelease,
+      oldVersion,
+    );
+    final newPrerelease = _ParsedPrerelease.parse(
+      newParsed.preRelease,
+      newVersion,
+    );
+    if (newPrerelease.stage == oldPrerelease.stage) {
+      if (newPrerelease.number != oldPrerelease.number + 1) {
+        throw ArgumentError.value(
+          newVersion,
+          'newVersion',
+          'Must increment ${oldPrerelease.stage}.'
+              '${oldPrerelease.number} by exactly one.',
+        );
+      }
+      return;
+    }
+
+    if (newPrerelease.stageIndex != oldPrerelease.stageIndex + 1 ||
+        newPrerelease.number != 1) {
+      throw ArgumentError.value(
+        newVersion,
+        'newVersion',
+        'Must move from ${oldPrerelease.stage}.${oldPrerelease.number} to the '
+            'next prerelease stage ending in .1.',
+      );
+    }
   }
+
+  static void _validateFirstPrerelease(
+    List<Object> prerelease,
+    String rawVersion,
+  ) {
+    final parsed = _ParsedPrerelease.parse(prerelease, rawVersion);
+    if (parsed.number != 1) {
+      throw ArgumentError.value(
+        rawVersion,
+        'newVersion',
+        'First prerelease for a version core must end in .1.',
+      );
+    }
+  }
+
+  static String _core(Version version) =>
+      '${version.major}.${version.minor}.${version.patch}';
 }
 
-int _comparePrerelease(List<String> left, List<String> right) {
-  for (var i = 0; i < left.length && i < right.length; ++i) {
-    final compared = _comparePrereleaseIdentifier(left[i], right[i]);
-    if (compared != 0) return compared;
-  }
-  return left.length.compareTo(right.length);
-}
-
-int _comparePrereleaseIdentifier(String left, String right) {
-  final leftNumeric = _isNumericIdentifier(left);
-  final rightNumeric = _isNumericIdentifier(right);
-  if (leftNumeric && rightNumeric) {
-    return int.parse(left).compareTo(int.parse(right));
-  }
-  if (leftNumeric) return -1;
-  if (rightNumeric) return 1;
-  return left.compareTo(right);
-}
-
-class ParsedPrerelease {
-  static const _stages = ['alpha', 'beta', 'rc'];
-
+class _ParsedPrerelease {
   final String stage;
   final int number;
 
-  const ParsedPrerelease({required this.stage, required this.number});
+  const _ParsedPrerelease({required this.stage, required this.number});
 
-  static ParsedPrerelease parse(List<String> prerelease, String rawVersion) {
+  static _ParsedPrerelease parse(List<Object> prerelease, String rawVersion) {
     if (prerelease.length != 2 ||
-        !_stages.contains(prerelease[0]) ||
-        !_isNumericIdentifier(prerelease[1]) ||
-        int.parse(prerelease[1]) == 0) {
+        prerelease[0] is! String ||
+        !_ReleaseVersionValidator._stages.contains(prerelease[0]) ||
+        prerelease[1] is! int ||
+        (prerelease[1] as int) == 0) {
       throw ArgumentError.value(
         rawVersion,
         'newVersion',
         'Prerelease versions must use alpha.N, beta.N, or rc.N.',
       );
     }
-    return ParsedPrerelease(
-      stage: prerelease[0],
-      number: int.parse(prerelease[1]),
+    return _ParsedPrerelease(
+      stage: prerelease[0] as String,
+      number: prerelease[1] as int,
     );
   }
 
-  int get stageIndex => _stages.indexOf(stage);
-}
-
-bool _isNumericIdentifier(String value) {
-  return RegExp(r'^(0|[1-9]\d*)$').hasMatch(value);
+  int get stageIndex => _ReleaseVersionValidator._stages.indexOf(stage);
 }
 
 String _extractChangelog(VersionInfo versionInfo) {
-  final lines = File('${exec.pwd}CHANGELOG.md').readAsStringSync().split('\n');
-  final versions = lines
-      .mapIndexed((index, line) {
-        final version = RegExp(r'^## (\d.+)$').firstMatch(line)?.group(1);
-        return version == null ? null : (index, version);
-      })
-      .nonNulls
-      .toList();
-
+  final versions = _extractChangelogVersions();
   final newVersion = versions.firstWhereOrNull(
     (item) => item.$2 == versionInfo.newVersion,
   );
@@ -470,7 +427,26 @@ String _extractChangelog(VersionInfo versionInfo) {
       '${versionInfo.oldVersion}',
     );
   }
-  return lines.sublist(newVersion.$1 + 1, oldVersion.$1).join("\n").trim();
+  return _readChangelogLines()
+      .sublist(newVersion.$1 + 1, oldVersion.$1)
+      .join("\n")
+      .trim();
+}
+
+List<(int, String)> _extractChangelogVersions() {
+  final lines = _readChangelogLines();
+  return lines
+      .mapIndexed((index, line) {
+        final version = RegExp(r'^## (\d.+)$').firstMatch(line)?.group(1);
+        return version == null ? null : (index, version);
+      })
+      .nonNulls
+      .toList();
+}
+
+List<String> _readChangelogLines() {
+  final lines = File('${exec.pwd}CHANGELOG.md').readAsStringSync().split('\n');
+  return lines;
 }
 
 String simpleReplaceSection(

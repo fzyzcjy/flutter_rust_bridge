@@ -16,6 +16,7 @@ dependencies:
   flutter_rust_bridge:
     path: ../../frb_dart
   path: ^1.8.1
+  pub_semver: ^2.1.4
   meta: ^1.8.0
   yaml: ^3.1.2
   retry: ^3.1.2
