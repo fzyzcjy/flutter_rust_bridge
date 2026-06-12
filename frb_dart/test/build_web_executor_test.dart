@@ -78,7 +78,7 @@ void main() {
   );
 
   test('wasm-pack environment drops cargo llvm-cov variables', () {
-    final resolution = computeWasmPackEnvironmentResolution(
+    final environment = computeWasmPackEnvironment(
       baseEnvironment: const {
         'PATH': '/usr/bin',
         'HOME': '/home/test',
@@ -96,7 +96,6 @@ void main() {
       rustflags: '-C target-feature=+atomics',
       cargoTermColor: true,
     );
-    final environment = resolution.environment;
 
     expect(environment['PATH'], '/usr/bin');
     expect(environment['HOME'], '/home/test');
@@ -111,18 +110,5 @@ void main() {
     expect(environment, isNot(contains('RUSTC_WRAPPER')));
     expect(environment, isNot(contains('__CARGO_LLVM_COV_RUSTC_WRAPPER')));
     expect(environment, isNot(contains('__CARGO_LLVM_COV_EXTRA')));
-    expect(
-      resolution.removedCoverageEnvironmentKeys,
-      containsAllInOrder([
-        'CARGO_LLVM_COV',
-        'CARGO_LLVM_COV_EXTRA',
-        'CARGO_LLVM_COV_TARGET_DIR',
-        'LLVM_PROFILE_FILE',
-        'RUSTC_WRAPPER',
-        'RUSTFLAGS',
-        '__CARGO_LLVM_COV_EXTRA',
-        '__CARGO_LLVM_COV_RUSTC_WRAPPER',
-      ]),
-    );
   });
 }

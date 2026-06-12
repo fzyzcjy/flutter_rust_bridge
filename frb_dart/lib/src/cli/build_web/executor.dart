@@ -165,16 +165,18 @@ Future<void> _executeWasmPack(
   if (rustflagsResolution.warning != null) {
     print(rustflagsResolution.warning);
   }
-  final environmentResolution = computeWasmPackEnvironmentResolution(
+  final environment = computeWasmPackEnvironment(
     baseEnvironment: Platform.environment,
     rustupToolchain: args.wasmPackRustupToolchain ?? 'nightly',
     rustflags: rustflagsResolution.rustflags,
     cargoTermColor: stdout.supportsAnsiEscapes,
   );
-  if (environmentResolution.removedCoverageEnvironmentKeys.isNotEmpty) {
+  final removedCoverageEnvironmentKeys =
+      _removedWasmPackCoverageEnvironmentKeys(Platform.environment);
+  if (removedCoverageEnvironmentKeys.isNotEmpty) {
     print(
       'INFO: Removed cargo-llvm-cov environment variables before running '
-      'wasm-pack: ${environmentResolution.removedCoverageEnvironmentKeys.join(', ')}',
+      'wasm-pack: ${removedCoverageEnvironmentKeys.join(', ')}',
     );
   }
 
@@ -200,7 +202,7 @@ Future<void> _executeWasmPack(
       // if (config.cliOpts.noDefaultFeatures) '--no-default-features',
       // if (config.cliOpts.features != null) '--features=${config.cliOpts.features}'
     ],
-    env: environmentResolution.environment,
+    env: environment,
     includeParentEnvironment: false,
   );
 }
@@ -217,21 +219,6 @@ class WasmPackRustflagsResolution {
   const WasmPackRustflagsResolution({
     required this.rustflags,
     required this.warning,
-  });
-}
-
-/// Resolved environment output for a `wasm-pack` invocation.
-class WasmPackEnvironmentResolution {
-  /// The complete environment that will be passed to `wasm-pack`.
-  final Map<String, String> environment;
-
-  /// Coverage-specific environment keys removed before running `wasm-pack`.
-  final List<String> removedCoverageEnvironmentKeys;
-
-  /// Creates a resolved `wasm-pack` environment result.
-  const WasmPackEnvironmentResolution({
-    required this.environment,
-    required this.removedCoverageEnvironmentKeys,
   });
 }
 
@@ -280,42 +267,17 @@ Map<String, String> computeWasmPackEnvironment({
   required String rustupToolchain,
   required String rustflags,
   required bool cargoTermColor,
-}) => computeWasmPackEnvironmentResolution(
-  baseEnvironment: baseEnvironment,
-  rustupToolchain: rustupToolchain,
-  rustflags: rustflags,
-  cargoTermColor: cargoTermColor,
-).environment;
+}) => {
+  for (final MapEntry(key: key, value: value) in baseEnvironment.entries)
+    if (!_isWasmPackCoverageEnvironmentKey(key)) key: value,
+  'RUSTUP_TOOLCHAIN': rustupToolchain,
+  'RUSTFLAGS': rustflags,
+  if (cargoTermColor) 'CARGO_TERM_COLOR': 'always',
+};
 
-@visibleForTesting
-/// Resolves the complete `wasm-pack` environment and removed coverage keys.
-WasmPackEnvironmentResolution computeWasmPackEnvironmentResolution({
-  required Map<String, String> baseEnvironment,
-  required String rustupToolchain,
-  required String rustflags,
-  required bool cargoTermColor,
-}) {
-  final environment = Map<String, String>.of(baseEnvironment);
-  final removedCoverageEnvironmentKeys =
-      environment.keys.where(_isWasmPackCoverageEnvironmentKey).toList()
-        ..sort();
-  for (final key in removedCoverageEnvironmentKeys) {
-    environment.remove(key);
-  }
-
-  environment['RUSTUP_TOOLCHAIN'] = rustupToolchain;
-  environment['RUSTFLAGS'] = rustflags;
-  if (cargoTermColor) {
-    environment['CARGO_TERM_COLOR'] = 'always';
-  } else {
-    environment.remove('CARGO_TERM_COLOR');
-  }
-
-  return WasmPackEnvironmentResolution(
-    environment: environment,
-    removedCoverageEnvironmentKeys: removedCoverageEnvironmentKeys,
-  );
-}
+List<String> _removedWasmPackCoverageEnvironmentKeys(
+  Map<String, String> environment,
+) => environment.keys.where(_isWasmPackCoverageEnvironmentKey).toList()..sort();
 
 bool _isWasmPackCoverageEnvironmentKey(String key) =>
     key == 'LLVM_PROFILE_FILE' ||
