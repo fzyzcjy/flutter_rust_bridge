@@ -60,28 +60,13 @@ pub(crate) fn pub_add_dependency_frb_hooks(
     pwd: Option<&Path>,
     fvm_install_mode: FvmInstallMode,
 ) -> Result<()> {
-    if enable_local_dependency {
-        flutter_pub_add(
-            &["flutter_rust_bridge_hooks", "--path=../../frb_hooks"],
-            pwd,
-            fvm_install_mode,
-        )?;
-    } else {
-        // This release dependency path is plumbing into the shell-command wrapper; command behavior
-        // is covered by the integrate workflows.
-        // frb-coverage:ignore-start
-        flutter_pub_add(
-            &[concat!(
-                "flutter_rust_bridge_hooks:",
-                env!("CARGO_PKG_VERSION")
-            )],
-            pwd,
-            fvm_install_mode,
-        )?;
-        // frb-coverage:ignore-end
-    };
-
-    Ok(())
+    pub_add_dependency(
+        "flutter_rust_bridge_hooks",
+        "../../frb_hooks",
+        enable_local_dependency,
+        pwd,
+        fvm_install_mode,
+    )
 }
 
 pub(crate) fn pub_add_dependency_frb(
@@ -89,21 +74,31 @@ pub(crate) fn pub_add_dependency_frb(
     pwd: Option<&Path>,
     fvm_install_mode: FvmInstallMode,
 ) -> Result<()> {
+    pub_add_dependency(
+        "flutter_rust_bridge",
+        "../../frb_dart",
+        enable_local_dependency,
+        pwd,
+        fvm_install_mode,
+    )
+}
+
+fn pub_add_dependency(
+    package: &'static str,
+    local_path: &'static str,
+    enable_local_dependency: bool,
+    pwd: Option<&Path>,
+    fvm_install_mode: FvmInstallMode,
+) -> Result<()> {
     if enable_local_dependency {
-        flutter_pub_add(
-            &["flutter_rust_bridge", "--path=../../frb_dart"],
-            pwd,
-            fvm_install_mode,
-        )?;
+        let path_arg = format!("--path={local_path}");
+        flutter_pub_add(&[package, path_arg.as_str()], pwd, fvm_install_mode)?;
     } else {
         // This release dependency path is plumbing into the shell-command wrapper; command behavior
         // is covered by the integrate workflows.
         // frb-coverage:ignore-start
-        flutter_pub_add(
-            &[concat!("flutter_rust_bridge:", env!("CARGO_PKG_VERSION"))],
-            pwd,
-            fvm_install_mode,
-        )?;
+        let version_arg = format!("{package}:{}", env!("CARGO_PKG_VERSION"));
+        flutter_pub_add(&[version_arg.as_str()], pwd, fvm_install_mode)?;
         // frb-coverage:ignore-end
     };
 
