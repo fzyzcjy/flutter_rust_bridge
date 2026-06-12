@@ -165,14 +165,18 @@ Future<void> _executeWasmPack(
   if (rustflagsResolution.warning != null) {
     print(rustflagsResolution.warning);
   }
-  final environment = computeWasmPackEnvironment(
-    baseEnvironment: Platform.environment,
+  final environmentSplit = _splitByPredicate(
+    Platform.environment.entries,
+    (entry) => _isWasmPackCoverageEnvironmentKey(entry.key),
+  );
+  final environment = _computeWasmPackEnvironmentFromEntries(
+    environmentEntries: environmentSplit.unmatched,
     rustupToolchain: args.wasmPackRustupToolchain ?? 'nightly',
     rustflags: rustflagsResolution.rustflags,
     cargoTermColor: stdout.supportsAnsiEscapes,
   );
   final removedCoverageEnvironmentKeys =
-      _removedWasmPackCoverageEnvironmentKeys(Platform.environment);
+      environmentSplit.matched.map((entry) => entry.key).toList()..sort();
   if (removedCoverageEnvironmentKeys.isNotEmpty) {
     print(
       'INFO: Removed cargo-llvm-cov environment variables before running '
@@ -267,17 +271,45 @@ Map<String, String> computeWasmPackEnvironment({
   required String rustupToolchain,
   required String rustflags,
   required bool cargoTermColor,
-}) => {
-  for (final MapEntry(key: key, value: value) in baseEnvironment.entries)
-    if (!_isWasmPackCoverageEnvironmentKey(key)) key: value,
-  'RUSTUP_TOOLCHAIN': rustupToolchain,
-  'RUSTFLAGS': rustflags,
-  if (cargoTermColor) 'CARGO_TERM_COLOR': 'always',
-};
+}) {
+  final split = _splitByPredicate(
+    baseEnvironment.entries,
+    (entry) => _isWasmPackCoverageEnvironmentKey(entry.key),
+  );
+  return _computeWasmPackEnvironmentFromEntries(
+    environmentEntries: split.unmatched,
+    rustupToolchain: rustupToolchain,
+    rustflags: rustflags,
+    cargoTermColor: cargoTermColor,
+  );
+}
 
-List<String> _removedWasmPackCoverageEnvironmentKeys(
-  Map<String, String> environment,
-) => environment.keys.where(_isWasmPackCoverageEnvironmentKey).toList()..sort();
+Map<String, String> _computeWasmPackEnvironmentFromEntries({
+  required Iterable<MapEntry<String, String>> environmentEntries,
+  required String rustupToolchain,
+  required String rustflags,
+  required bool cargoTermColor,
+}) {
+  return {
+    for (final MapEntry(key: key, value: value) in environmentEntries)
+      key: value,
+    'RUSTUP_TOOLCHAIN': rustupToolchain,
+    'RUSTFLAGS': rustflags,
+    if (cargoTermColor) 'CARGO_TERM_COLOR': 'always',
+  };
+}
+
+({List<T> matched, List<T> unmatched}) _splitByPredicate<T>(
+  Iterable<T> values,
+  bool Function(T value) predicate,
+) {
+  final matched = <T>[];
+  final unmatched = <T>[];
+  for (final value in values) {
+    (predicate(value) ? matched : unmatched).add(value);
+  }
+  return (matched: matched, unmatched: unmatched);
+}
 
 bool _isWasmPackCoverageEnvironmentKey(String key) =>
     key == 'LLVM_PROFILE_FILE' ||
