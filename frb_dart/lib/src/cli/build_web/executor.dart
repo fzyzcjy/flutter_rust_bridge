@@ -270,6 +270,7 @@ Map<String, String> computeWasmPackEnvironment({
 const _wasmPackInheritedEnvironmentKeys = [
   'PATH',
   'HOME',
+  'USERPROFILE',
   'USER',
   'USERNAME',
   'SHELL',
@@ -289,6 +290,11 @@ const _wasmPackInheritedEnvironmentKeys = [
   'http_proxy',
   'https_proxy',
   'no_proxy',
+  'SSH_AUTH_SOCK',
+  'LANG',
+  'LC_ALL',
+  'LC_CTYPE',
+  'TERM',
 ];
 
 Future<void> _executeWasmBindgen(

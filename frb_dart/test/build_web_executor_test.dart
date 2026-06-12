@@ -82,6 +82,12 @@ void main() {
       baseEnvironment: const {
         'PATH': '/usr/bin',
         'HOME': '/home/test',
+        'USERPROFILE': r'C:\Users\test',
+        'SSH_AUTH_SOCK': '/tmp/ssh-agent.sock',
+        'LANG': 'en_US.UTF-8',
+        'LC_ALL': 'en_US.UTF-8',
+        'LC_CTYPE': 'en_US.UTF-8',
+        'TERM': 'xterm-256color',
         'CARGO_LLVM_COV': '1',
         'CARGO_LLVM_COV_TARGET_DIR': '/tmp/target',
         'LLVM_PROFILE_FILE': '/tmp/profile-%p.profraw',
@@ -96,6 +102,12 @@ void main() {
 
     expect(environment['PATH'], '/usr/bin');
     expect(environment['HOME'], '/home/test');
+    expect(environment['USERPROFILE'], r'C:\Users\test');
+    expect(environment['SSH_AUTH_SOCK'], '/tmp/ssh-agent.sock');
+    expect(environment['LANG'], 'en_US.UTF-8');
+    expect(environment['LC_ALL'], 'en_US.UTF-8');
+    expect(environment['LC_CTYPE'], 'en_US.UTF-8');
+    expect(environment['TERM'], 'xterm-256color');
     expect(environment['RUSTUP_TOOLCHAIN'], 'nightly');
     expect(environment['RUSTFLAGS'], '-C target-feature=+atomics');
     expect(environment['CARGO_TERM_COLOR'], 'always');
