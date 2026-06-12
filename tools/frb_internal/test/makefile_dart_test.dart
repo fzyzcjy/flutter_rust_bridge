@@ -5,7 +5,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/build.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/quickstart_smoke.dart';
-import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/released_version.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:test/test.dart';
 
@@ -397,6 +397,28 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
           'isReleased': false,
         },
       ]);
+    });
+
+    test('uses explicit target version for every published package', () async {
+      final statuses = await fetchReleasePackageStatuses(
+        targetVersion: '9.9.9',
+        fetcher: (uri) async {
+          if (uri.host == 'crates.io') {
+            return {
+              'crate': {'max_version': '9.9.9'},
+            };
+          }
+          return {
+            'latest': {'version': '9.9.9'},
+          };
+        },
+      );
+
+      expect(
+        statuses.map((status) => status.manifestVersion),
+        everyElement('9.9.9'),
+      );
+      expect(statuses.map((status) => status.isReleased), everyElement(true));
     });
   });
 

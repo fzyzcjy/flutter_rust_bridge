@@ -54,6 +54,12 @@ Poll registry state with:
 ./frb_internal get-released-version
 ```
 
+To check a target version from a checkout whose manifests have not been bumped, pass it explicitly:
+
+```bash
+./frb_internal get-released-version --version <VERSION>
+```
+
 The command prints JSON:
 
 ```json
@@ -71,7 +77,7 @@ The command prints JSON:
 }
 ```
 
-Wait until every package has `isReleased: true` and `allReleased: true`. If one registry lags, keep polling with bounded waits and record the mismatched package instead of assuming the publish failed.
+Wait until every package has `isReleased: true` and `allReleased: true`. If one registry lags, keep polling with bounded waits and record the mismatched package instead of assuming the publish failed. Do not add the target version option to the mutating `release-*` subcommands; they derive their version from `CHANGELOG.md` and checked-in manifests.
 
 ### 5. Babysit CI And Post-Release CI
 
