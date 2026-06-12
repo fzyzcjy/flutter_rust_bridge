@@ -5,6 +5,7 @@ import 'package:flutter_rust_bridge_internal/src/makefile_dart/build.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/generate.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/lint.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/quickstart_smoke.dart';
+import 'package:flutter_rust_bridge_internal/src/makefile_dart/release.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/test.dart';
 import 'package:test/test.dart';
 
@@ -410,6 +411,102 @@ late final callback = ptr.asFunction<voidFunction(ffi.Pointer<ffi.Void>)>();
 ==3667== To see them, rerun with: --leak-check=full --show-leak-kinds=all
     '''),
         throwsA(isA<Exception>()),
+      );
+    });
+  });
+
+  group('release version config and validation', () {
+    test('requires new version option', () {
+      expect(() => parseReleaseConfigForTesting([]), throwsArgumentError);
+    });
+
+    test('accepts explicit beta version', () {
+      expect(
+        parseReleaseConfigForTesting([
+          '--new-version',
+          '2.13.0-beta.1',
+        ]).newVersion,
+        '2.13.0-beta.1',
+      );
+    });
+
+    test('allows first beta of next minor', () {
+      expect(
+        () => validateNextReleaseVersion(
+          oldVersion: '2.12.0',
+          newVersion: '2.13.0-beta.1',
+        ),
+        returnsNormally,
+      );
+    });
+
+    test('rejects skipped minor version', () {
+      expect(
+        () => validateNextReleaseVersion(
+          oldVersion: '2.12.0',
+          newVersion: '2.14.0-beta.1',
+        ),
+        throwsArgumentError,
+      );
+    });
+
+    test('rejects skipped beta number', () {
+      expect(
+        () => validateNextReleaseVersion(
+          oldVersion: '2.12.0',
+          newVersion: '2.13.0-beta.2',
+        ),
+        throwsArgumentError,
+      );
+    });
+
+    test('rejects compact beta suffix', () {
+      expect(
+        () => validateNextReleaseVersion(
+          oldVersion: '2.12.0',
+          newVersion: '2.13.0-beta1',
+        ),
+        throwsArgumentError,
+      );
+    });
+
+    test('allows beta increment by one', () {
+      expect(
+        () => validateNextReleaseVersion(
+          oldVersion: '2.13.0-beta.1',
+          newVersion: '2.13.0-beta.2',
+        ),
+        returnsNormally,
+      );
+    });
+
+    test('allows beta to rc transition', () {
+      expect(
+        () => validateNextReleaseVersion(
+          oldVersion: '2.13.0-beta.2',
+          newVersion: '2.13.0-rc.1',
+        ),
+        returnsNormally,
+      );
+    });
+
+    test('allows prerelease to stable release', () {
+      expect(
+        () => validateNextReleaseVersion(
+          oldVersion: '2.13.0-rc.1',
+          newVersion: '2.13.0',
+        ),
+        returnsNormally,
+      );
+    });
+
+    test('rejects changing core during prerelease', () {
+      expect(
+        () => validateNextReleaseVersion(
+          oldVersion: '2.13.0-beta.1',
+          newVersion: '2.13.1',
+        ),
+        throwsArgumentError,
       );
     });
   });

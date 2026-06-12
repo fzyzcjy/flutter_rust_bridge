@@ -2,6 +2,7 @@
 
 import 'dart:io';
 
+import 'package:args/args.dart';
 import 'package:args/command_runner.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_rust_bridge_internal/src/makefile_dart/consts.dart';
@@ -13,14 +14,31 @@ import 'package:yaml/yaml.dart';
 
 List<Command<void>> createCommands() {
   return [
-    SimpleCommand('release', release),
-    SimpleCommand('release-update-version', releaseUpdateVersion),
-    SimpleCommand('release-update-code', releaseUpdateCode),
+    _releaseConfigCommand('release', release),
+    _releaseConfigCommand('release-update-version', releaseUpdateVersion),
+    _releaseConfigCommand('release-update-code', releaseUpdateCode),
     SimpleCommand('release-update-scoop', releaseUpdateScoop),
-    SimpleCommand('release-update-git', releaseUpdateGit),
-    SimpleCommand('release-update-github', releaseUpdateGithub),
+    _releaseConfigCommand('release-update-git', releaseUpdateGit),
+    _releaseConfigCommand('release-update-github', releaseUpdateGithub),
     SimpleCommand('release-publish-all', releasePublishAll),
   ];
+}
+
+SimpleConfigCommand<ReleaseConfig> _releaseConfigCommand(
+  String name,
+  Future<void> Function(ReleaseConfig config) executor,
+) => SimpleConfigCommand(
+  name,
+  executor,
+  populateReleaseConfigParser,
+  parseReleaseConfigResult,
+  description: 'Release command that requires --new-version.',
+);
+
+class ReleaseConfig {
+  final String newVersion;
+
+  const ReleaseConfig({required this.newVersion});
 }
 
 class VersionInfo {
@@ -34,19 +52,40 @@ class VersionInfo {
       '_VersionInfo{oldVersion: $oldVersion, newVersion: $newVersion}';
 }
 
-Future<void> release() async {
-  print('Version info: ${computeVersionInfo()}');
-  await releaseUpdateVersion();
-  await releaseUpdateCode();
+void populateReleaseConfigParser(ArgParser parser) {
+  parser.addOption(
+    'new-version',
+    help: 'The exact version to release, for example 2.13.0-beta.1.',
+    mandatory: true,
+  );
+}
+
+ReleaseConfig parseReleaseConfigResult(ArgResults result) {
+  return ReleaseConfig(newVersion: result['new-version'] as String);
+}
+
+ReleaseConfig parseReleaseConfigForTesting(List<String> args) {
+  final parser = ArgParser();
+  populateReleaseConfigParser(parser);
+  return parseReleaseConfigResult(parser.parse(args));
+}
+
+Future<void> release(ReleaseConfig config) async {
+  final versionInfo = computeVersionInfo(config);
+  print('Version info: $versionInfo');
+  await releaseUpdateVersionWithInfo(versionInfo);
+  await releaseUpdateCodeWithInfo(versionInfo);
   await releaseUpdateScoop();
-  await releaseUpdateGit();
-  await releaseUpdateGithub();
+  await releaseUpdateGitWithInfo(versionInfo);
+  await releaseUpdateGithubWithInfo(versionInfo);
   await releasePublishAll();
 }
 
-Future<void> releaseUpdateVersion() async {
-  final versionInfo = computeVersionInfo();
+Future<void> releaseUpdateVersion(ReleaseConfig config) async {
+  await releaseUpdateVersionWithInfo(computeVersionInfo(config));
+}
 
+Future<void> releaseUpdateVersionWithInfo(VersionInfo versionInfo) async {
   simpleReplaceFile(
     '${exec.pwd}Cargo.toml',
     '\nversion = "${versionInfo.oldVersion}"\n',
@@ -65,8 +104,12 @@ Future<void> releaseUpdateVersion() async {
   );
 }
 
-Future<void> releaseUpdateCode() async {
-  _updateVersionInText();
+Future<void> releaseUpdateCode(ReleaseConfig config) async {
+  await releaseUpdateCodeWithInfo(computeVersionInfo(config));
+}
+
+Future<void> releaseUpdateCodeWithInfo(VersionInfo versionInfo) async {
+  _updateVersionInText(versionInfo);
   await pubGetAll();
   await miscNormalizePubspec();
   await cargoFetchAll();
@@ -79,9 +122,7 @@ class FrbDartCodeVersionInfo {
       "const kFlutterRustBridgeRuntimeVersion = '$version';";
 }
 
-void _updateVersionInText() {
-  final versionInfo = computeVersionInfo();
-
+void _updateVersionInText(VersionInfo versionInfo) {
   simpleReplaceFile(
     FrbDartCodeVersionInfo.kPath,
     FrbDartCodeVersionInfo.createCode(versionInfo.oldVersion),
@@ -133,8 +174,11 @@ Future<void> releaseUpdateScoop() async {
   );
 }
 
-Future<void> releaseUpdateGit() async {
-  final versionInfo = computeVersionInfo();
+Future<void> releaseUpdateGit(ReleaseConfig config) async {
+  await releaseUpdateGitWithInfo(computeVersionInfo(config));
+}
+
+Future<void> releaseUpdateGitWithInfo(VersionInfo versionInfo) async {
   await exec('git add --all');
   await exec('git status && git diff --staged | grep ""');
   await exec(
@@ -143,11 +187,12 @@ Future<void> releaseUpdateGit() async {
   await exec('git push');
 }
 
-Future<void> releaseUpdateGithub() async {
-  final versionInfo = computeVersionInfo();
+Future<void> releaseUpdateGithub(ReleaseConfig config) async {
+  await releaseUpdateGithubWithInfo(computeVersionInfo(config));
+}
 
-  File('${exec.pwd}temp.txt').writeAsStringSync(_extractChangelog().$2);
-
+Future<void> releaseUpdateGithubWithInfo(VersionInfo versionInfo) async {
+  File('${exec.pwd}temp.txt').writeAsStringSync(_extractChangelog(versionInfo));
   await exec(
     'gh release create v${versionInfo.newVersion} '
     '--notes-file temp.txt '
@@ -173,9 +218,234 @@ String getFrbDartVersion() => loadYaml(
   File('${exec.pwd}frb_dart/pubspec.yaml').readAsStringSync(),
 )['version'];
 
-VersionInfo computeVersionInfo() => _extractChangelog().$1;
+VersionInfo computeVersionInfo(ReleaseConfig config) {
+  final oldVersion = getFrbDartVersion();
+  validateNextReleaseVersion(
+    oldVersion: oldVersion,
+    newVersion: config.newVersion,
+  );
+  return VersionInfo(oldVersion: oldVersion, newVersion: config.newVersion);
+}
 
-(VersionInfo, String) _extractChangelog() {
+void validateNextReleaseVersion({
+  required String oldVersion,
+  required String newVersion,
+}) {
+  final oldParsed = ReleaseVersion.parse(oldVersion);
+  final newParsed = ReleaseVersion.parse(newVersion);
+  if (newParsed.compareTo(oldParsed) <= 0) {
+    throw ArgumentError.value(
+      newVersion,
+      'newVersion',
+      'Must be greater than current version $oldVersion.',
+    );
+  }
+
+  if (oldParsed.hasPrerelease) {
+    _validatePrereleaseSuccessor(oldParsed, newParsed);
+  } else {
+    _validateStableSuccessor(oldParsed, newParsed);
+  }
+}
+
+void _validateStableSuccessor(
+  ReleaseVersion oldVersion,
+  ReleaseVersion newVersion,
+) {
+  final allowedCores = {
+    oldVersion.nextPatchCore,
+    oldVersion.nextMinorCore,
+    oldVersion.nextMajorCore,
+  };
+  if (!allowedCores.contains(newVersion.core)) {
+    throw ArgumentError.value(
+      newVersion.raw,
+      'newVersion',
+      'Must be the next patch, minor, or major version after ${oldVersion.raw}.',
+    );
+  }
+  if (newVersion.hasPrerelease) {
+    _validateFirstPrerelease(newVersion.prerelease, newVersion.raw);
+  }
+}
+
+void _validatePrereleaseSuccessor(
+  ReleaseVersion oldVersion,
+  ReleaseVersion newVersion,
+) {
+  if (newVersion.core != oldVersion.core) {
+    throw ArgumentError.value(
+      newVersion.raw,
+      'newVersion',
+      'Must finish the ${oldVersion.core} prerelease series before changing '
+          'the version core.',
+    );
+  }
+  if (!newVersion.hasPrerelease) {
+    return;
+  }
+
+  final oldPrerelease = ParsedPrerelease.parse(
+    oldVersion.prerelease,
+    oldVersion.raw,
+  );
+  final newPrerelease = ParsedPrerelease.parse(
+    newVersion.prerelease,
+    newVersion.raw,
+  );
+  if (newPrerelease.stage == oldPrerelease.stage) {
+    if (newPrerelease.number != oldPrerelease.number + 1) {
+      throw ArgumentError.value(
+        newVersion.raw,
+        'newVersion',
+        'Must increment ${oldPrerelease.stage}.'
+            '${oldPrerelease.number} by exactly one.',
+      );
+    }
+    return;
+  }
+
+  if (newPrerelease.stageIndex != oldPrerelease.stageIndex + 1 ||
+      newPrerelease.number != 1) {
+    throw ArgumentError.value(
+      newVersion.raw,
+      'newVersion',
+      'Must move from ${oldPrerelease.stage}.${oldPrerelease.number} to the '
+          'next prerelease stage ending in .1.',
+    );
+  }
+}
+
+void _validateFirstPrerelease(List<String> prerelease, String rawVersion) {
+  final parsed = ParsedPrerelease.parse(prerelease, rawVersion);
+  if (parsed.number != 1) {
+    throw ArgumentError.value(
+      rawVersion,
+      'newVersion',
+      'First prerelease for a version core must end in .1.',
+    );
+  }
+}
+
+class ReleaseVersion implements Comparable<ReleaseVersion> {
+  static final _regex = RegExp(
+    r'^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)'
+    r'(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$',
+  );
+
+  final String raw;
+  final int major;
+  final int minor;
+  final int patch;
+  final List<String> prerelease;
+
+  const ReleaseVersion({
+    required this.raw,
+    required this.major,
+    required this.minor,
+    required this.patch,
+    required this.prerelease,
+  });
+
+  static ReleaseVersion parse(String raw) {
+    final match = _regex.firstMatch(raw);
+    if (match == null) {
+      throw ArgumentError.value(
+        raw,
+        'version',
+        'Must be a SemVer version such as 2.13.0 or 2.13.0-beta.1.',
+      );
+    }
+    final prereleaseText = match.group(4);
+    return ReleaseVersion(
+      raw: raw,
+      major: int.parse(match.group(1)!),
+      minor: int.parse(match.group(2)!),
+      patch: int.parse(match.group(3)!),
+      prerelease: prereleaseText == null ? [] : prereleaseText.split('.'),
+    );
+  }
+
+  String get core => '$major.$minor.$patch';
+
+  String get nextPatchCore => '$major.$minor.${patch + 1}';
+
+  String get nextMinorCore => '$major.${minor + 1}.0';
+
+  String get nextMajorCore => '${major + 1}.0.0';
+
+  bool get hasPrerelease => prerelease.isNotEmpty;
+
+  @override
+  int compareTo(ReleaseVersion other) {
+    for (final pair in [
+      (major, other.major),
+      (minor, other.minor),
+      (patch, other.patch),
+    ]) {
+      final compared = pair.$1.compareTo(pair.$2);
+      if (compared != 0) return compared;
+    }
+
+    if (!hasPrerelease && !other.hasPrerelease) return 0;
+    if (!hasPrerelease) return 1;
+    if (!other.hasPrerelease) return -1;
+    return _comparePrerelease(prerelease, other.prerelease);
+  }
+}
+
+int _comparePrerelease(List<String> left, List<String> right) {
+  for (var i = 0; i < left.length && i < right.length; ++i) {
+    final compared = _comparePrereleaseIdentifier(left[i], right[i]);
+    if (compared != 0) return compared;
+  }
+  return left.length.compareTo(right.length);
+}
+
+int _comparePrereleaseIdentifier(String left, String right) {
+  final leftNumeric = _isNumericIdentifier(left);
+  final rightNumeric = _isNumericIdentifier(right);
+  if (leftNumeric && rightNumeric) {
+    return int.parse(left).compareTo(int.parse(right));
+  }
+  if (leftNumeric) return -1;
+  if (rightNumeric) return 1;
+  return left.compareTo(right);
+}
+
+class ParsedPrerelease {
+  static const _stages = ['alpha', 'beta', 'rc'];
+
+  final String stage;
+  final int number;
+
+  const ParsedPrerelease({required this.stage, required this.number});
+
+  static ParsedPrerelease parse(List<String> prerelease, String rawVersion) {
+    if (prerelease.length != 2 ||
+        !_stages.contains(prerelease[0]) ||
+        !_isNumericIdentifier(prerelease[1]) ||
+        int.parse(prerelease[1]) == 0) {
+      throw ArgumentError.value(
+        rawVersion,
+        'newVersion',
+        'Prerelease versions must use alpha.N, beta.N, or rc.N.',
+      );
+    }
+    return ParsedPrerelease(
+      stage: prerelease[0],
+      number: int.parse(prerelease[1]),
+    );
+  }
+
+  int get stageIndex => _stages.indexOf(stage);
+}
+
+bool _isNumericIdentifier(String value) {
+  return RegExp(r'^(0|[1-9]\d*)$').hasMatch(value);
+}
+
+String _extractChangelog(VersionInfo versionInfo) {
   final lines = File('${exec.pwd}CHANGELOG.md').readAsStringSync().split('\n');
   final versions = lines
       .mapIndexed((index, line) {
@@ -185,16 +455,21 @@ VersionInfo computeVersionInfo() => _extractChangelog().$1;
       .nonNulls
       .toList();
 
-  final newVersion = versions[0];
-  final oldVersion = versions[1];
-  if (oldVersion == newVersion) {
-    throw Exception('version in changelog is weird');
-  }
-
-  return (
-    VersionInfo(newVersion: newVersion.$2, oldVersion: oldVersion.$2),
-    lines.sublist(newVersion.$1 + 1, oldVersion.$1).join("\n").trim(),
+  final newVersion = versions.firstWhereOrNull(
+    (item) => item.$2 == versionInfo.newVersion,
   );
+  final oldVersion = versions.firstWhereOrNull(
+    (item) => item.$2 == versionInfo.oldVersion,
+  );
+  if (newVersion == null ||
+      oldVersion == null ||
+      newVersion.$1 >= oldVersion.$1) {
+    throw Exception(
+      'CHANGELOG.md must contain ${versionInfo.newVersion} above '
+      '${versionInfo.oldVersion}',
+    );
+  }
+  return lines.sublist(newVersion.$1 + 1, oldVersion.$1).join("\n").trim();
 }
 
 String simpleReplaceSection(
