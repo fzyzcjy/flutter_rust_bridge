@@ -404,7 +404,7 @@ Future<void> generateAppleScaffold() async {
           setExitIfChanged: false,
           package: package,
           coverage: false,
-          includeOhos: false,
+          includeOhos: true,
           skipCheckedInAppleScaffold: true,
         ),
       );
