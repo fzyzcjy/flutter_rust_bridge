@@ -232,8 +232,8 @@ Duration quickstartSmokeFlutterRunReadyTimeoutForTesting(
 ) => switch (target) {
   QuickstartSmokeTarget.web => const Duration(seconds: 120),
   QuickstartSmokeTarget.desktop ||
-  QuickstartSmokeTarget.android ||
-  QuickstartSmokeTarget.ios => const Duration(minutes: 5),
+  QuickstartSmokeTarget.android => const Duration(minutes: 5),
+  QuickstartSmokeTarget.ios => const Duration(minutes: 10),
 };
 
 @visibleForTesting
