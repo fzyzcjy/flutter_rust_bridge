@@ -35,22 +35,16 @@ String integrateDiffExclusionArgs(
 Map<String, List<String>> _integrateSetExitIfChangedExcludedPathsByPackage({
   required bool needCompareOhos,
 }) => <String, List<String>>{
-  for (final package in [
+  'frb_example/flutter_via_create': _flutterViaCreateExclusions(
     'frb_example/flutter_via_create',
+    needCompareOhos: needCompareOhos,
+    hasRustBuilder: true,
+  ),
+  'frb_example/flutter_via_create_native_assets': _flutterViaCreateExclusions(
     'frb_example/flutter_via_create_native_assets',
-  ])
-    package: [
-      '$package/macos/Flutter/Flutter-Debug.xcconfig',
-      '$package/macos/Flutter/Flutter-Release.xcconfig',
-      '$package/pubspec.lock',
-      '$package/pubspec.yaml',
-      if (needCompareOhos) '$package/android/',
-      if (needCompareOhos) '$package/macos/',
-      if (needCompareOhos) '$package/windows/',
-      if (!needCompareOhos) '$package/ohos/',
-      if (!needCompareOhos) '$package/rust_builder/ohos/',
-      '$package/rust_builder/pubspec.yaml',
-    ],
+    needCompareOhos: needCompareOhos,
+    hasRustBuilder: false,
+  ),
   for (final package in [
     'frb_example/flutter_via_integrate',
     'frb_example/flutter_via_integrate_native_assets',
@@ -90,6 +84,25 @@ Map<String, List<String>> _generateSetExitIfChangedExcludedPathsByPackage() =>
           '$package/example/macos/Flutter/Flutter-Release.xcconfig',
         ],
     };
+
+List<String> _flutterViaCreateExclusions(
+  String package, {
+  required bool needCompareOhos,
+  required bool hasRustBuilder,
+}) =>
+    [
+      '$package/macos/Flutter/Flutter-Debug.xcconfig',
+      '$package/macos/Flutter/Flutter-Release.xcconfig',
+      '$package/pubspec.lock',
+      '$package/pubspec.yaml',
+      if (needCompareOhos) '$package/android/',
+      if (needCompareOhos) '$package/macos/',
+      if (needCompareOhos) '$package/windows/',
+      if (!needCompareOhos) '$package/ohos/',
+      if (!needCompareOhos && hasRustBuilder) '$package/rust_builder/ohos/',
+      if (!needCompareOhos && hasRustBuilder)
+        '$package/rust_builder/pubspec.yaml',
+    ];
 
 @visibleForTesting
 String generateDiffExclusionArgsForTesting(String package) =>

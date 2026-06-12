@@ -49,44 +49,48 @@ void main() {
   });
 
   test('integrate extra args are explicit for flutter_via_create', () {
-    for (final package in [
-      'frb_example/flutter_via_create',
-      'frb_example/flutter_via_create_native_assets',
-    ]) {
+    const package = 'frb_example/flutter_via_create';
+    expect(
+      integrateDiffExclusionArgsForTesting(package, needCompareOhos: false),
+      "':(exclude)$package/macos/Flutter/Flutter-Debug.xcconfig' "
+      "':(exclude)$package/macos/Flutter/Flutter-Release.xcconfig' "
+      "':(exclude)$package/pubspec.lock' "
+      "':(exclude)$package/pubspec.yaml' "
+      "':(exclude)$package/ohos/' "
+      "':(exclude)$package/rust_builder/ohos/' "
+      "':(exclude)$package/rust_builder/pubspec.yaml'",
+    );
+  });
+
+  test(
+    'integrate extra args are explicit for flutter_via_create_native_assets',
+    () {
+      const package = 'frb_example/flutter_via_create_native_assets';
       expect(
         integrateDiffExclusionArgsForTesting(package, needCompareOhos: false),
         "':(exclude)$package/macos/Flutter/Flutter-Debug.xcconfig' "
         "':(exclude)$package/macos/Flutter/Flutter-Release.xcconfig' "
         "':(exclude)$package/pubspec.lock' "
         "':(exclude)$package/pubspec.yaml' "
-        "':(exclude)$package/ohos/' "
-        "':(exclude)$package/rust_builder/ohos/' "
-        "':(exclude)$package/rust_builder/pubspec.yaml'",
-        reason: package,
+        "':(exclude)$package/ohos/'",
       );
-    }
-  });
+    },
+  );
 
   test(
     'integrate extra args compare ohos for flutter_via_create when requested',
     () {
-      for (final package in [
-        'frb_example/flutter_via_create',
-        'frb_example/flutter_via_create_native_assets',
-      ]) {
-        expect(
-          integrateDiffExclusionArgsForTesting(package, needCompareOhos: true),
-          "':(exclude)$package/macos/Flutter/Flutter-Debug.xcconfig' "
-          "':(exclude)$package/macos/Flutter/Flutter-Release.xcconfig' "
-          "':(exclude)$package/pubspec.lock' "
-          "':(exclude)$package/pubspec.yaml' "
-          "':(exclude)$package/android/' "
-          "':(exclude)$package/macos/' "
-          "':(exclude)$package/windows/' "
-          "':(exclude)$package/rust_builder/pubspec.yaml'",
-          reason: package,
-        );
-      }
+      const package = 'frb_example/flutter_via_create';
+      expect(
+        integrateDiffExclusionArgsForTesting(package, needCompareOhos: true),
+        "':(exclude)$package/macos/Flutter/Flutter-Debug.xcconfig' "
+        "':(exclude)$package/macos/Flutter/Flutter-Release.xcconfig' "
+        "':(exclude)$package/pubspec.lock' "
+        "':(exclude)$package/pubspec.yaml' "
+        "':(exclude)$package/android/' "
+        "':(exclude)$package/macos/' "
+        "':(exclude)$package/windows/'",
+      );
     },
   );
 
